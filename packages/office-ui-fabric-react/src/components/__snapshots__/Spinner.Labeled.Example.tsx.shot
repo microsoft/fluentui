@@ -32,11 +32,11 @@ exports[`Component Examples renders Spinner.Labeled.Example.tsx correctly 1`] = 
             -webkit-font-smoothing: antialiased;
             box-shadow: none;
             box-sizing: border-box;
-            color: #333333;
+            color: #323130;
             display: block;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
-            font-weight: 400;
+            font-weight: 600;
             margin-bottom: 0px;
             margin-left: 0px;
             margin-right: 0px;
@@ -85,11 +85,16 @@ exports[`Component Examples renders Spinner.Labeled.Example.tsx correctly 1`] = 
         className=
             ms-Spinner-label
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               color: #0078d4;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 12px;
+              font-weight: 400;
               margin-bottom: 0;
               margin-left: 0;
               margin-right: 0;
-              margin-top: 10px;
+              margin-top: 8px;
               text-align: center;
             }
       >
@@ -106,11 +111,11 @@ exports[`Component Examples renders Spinner.Labeled.Example.tsx correctly 1`] = 
             -webkit-font-smoothing: antialiased;
             box-shadow: none;
             box-sizing: border-box;
-            color: #333333;
+            color: #323130;
             display: block;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
-            font-weight: 400;
+            font-weight: 600;
             margin-bottom: 0px;
             margin-left: 0px;
             margin-right: 0px;
@@ -159,8 +164,13 @@ exports[`Component Examples renders Spinner.Labeled.Example.tsx correctly 1`] = 
         className=
             ms-Spinner-label
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               color: #0078d4;
-              margin-bottom: 10px;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 12px;
+              font-weight: 400;
+              margin-bottom: 8px;
               margin-left: 0;
               margin-right: 0;
               margin-top: 0;
@@ -180,11 +190,11 @@ exports[`Component Examples renders Spinner.Labeled.Example.tsx correctly 1`] = 
             -webkit-font-smoothing: antialiased;
             box-shadow: none;
             box-sizing: border-box;
-            color: #333333;
+            color: #323130;
             display: block;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
-            font-weight: 400;
+            font-weight: 600;
             margin-bottom: 0px;
             margin-left: 0px;
             margin-right: 0px;
@@ -233,9 +243,14 @@ exports[`Component Examples renders Spinner.Labeled.Example.tsx correctly 1`] = 
         className=
             ms-Spinner-label
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               color: #0078d4;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 12px;
+              font-weight: 400;
               margin-bottom: 0;
-              margin-left: 10px;
+              margin-left: 8px;
               margin-right: 0;
               margin-top: 0;
               text-align: center;
@@ -254,11 +269,11 @@ exports[`Component Examples renders Spinner.Labeled.Example.tsx correctly 1`] = 
             -webkit-font-smoothing: antialiased;
             box-shadow: none;
             box-sizing: border-box;
-            color: #333333;
+            color: #323130;
             display: block;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
-            font-weight: 400;
+            font-weight: 600;
             margin-bottom: 0px;
             margin-left: 0px;
             margin-right: 0px;
@@ -307,10 +322,15 @@ exports[`Component Examples renders Spinner.Labeled.Example.tsx correctly 1`] = 
         className=
             ms-Spinner-label
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               color: #0078d4;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 12px;
+              font-weight: 400;
               margin-bottom: 0;
               margin-left: 0;
-              margin-right: 10px;
+              margin-right: 8px;
               margin-top: 0;
               text-align: center;
             }

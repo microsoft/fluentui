@@ -1,12 +1,12 @@
 import * as React from 'react';
 
-import { ColorPalette } from '@uifabric/example-app-base/lib/index2';
+import { ColorPalette, MarkdownHeader } from '@uifabric/example-app-base/lib/index2';
 
 export const Teams = () => {
   return (
     <>
-      <h2>Teams</h2>
-      <h3>Default theme</h3>
+      <MarkdownHeader as="h2">Teams</MarkdownHeader>
+      <MarkdownHeader as="h3">Default theme</MarkdownHeader>
       <ColorPalette
         colors={[
           {
@@ -39,7 +39,7 @@ export const Teams = () => {
           }
         ]}
       />
-      <h3>Default theme neutrals</h3>
+      <MarkdownHeader as="h3">Default theme neutrals</MarkdownHeader>
       <ColorPalette
         colors={[
           {
@@ -124,7 +124,7 @@ export const Teams = () => {
           }
         ]}
       />
-      <h3>Dark theme neutrals</h3>
+      <MarkdownHeader as="h3">Dark theme neutrals</MarkdownHeader>
       <ColorPalette
         colors={[
           {
@@ -209,7 +209,7 @@ export const Teams = () => {
           }
         ]}
       />
-      <h3>Call theme neutrals</h3>
+      <MarkdownHeader as="h3">Call theme neutrals</MarkdownHeader>
       <ColorPalette
         colors={[
           {

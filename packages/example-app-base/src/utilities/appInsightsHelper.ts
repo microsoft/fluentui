@@ -54,7 +54,13 @@ export enum EventNames {
   ClickedExternalLink = 'ClickedExternalLink',
 
   /** The user clicked the search filter option in the left nav. */
-  ClickedSearchFilter = 'ClickedSearchFilter'
+  ClickedSearchFilter = 'ClickedSearchFilter',
+
+  /** The user clicked a "go back" link or button. */
+  ClickedGoBack = 'ClickedGoBack',
+
+  /** The user landed on a page that doesn't exist. */
+  PageNotFound = 'PageNotFound'
 }
 
 export interface IEventProperties {

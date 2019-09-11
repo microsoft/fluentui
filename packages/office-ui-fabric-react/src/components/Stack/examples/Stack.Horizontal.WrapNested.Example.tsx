@@ -1,129 +1,102 @@
 import * as React from 'react';
 import { Slider } from 'office-ui-fabric-react/lib/Slider';
-import { Stack } from '../Stack';
-import { mergeStyleSets, IStyleSet, DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
+import { Stack, IStackStyles, IStackTokens } from 'office-ui-fabric-react/lib/Stack';
+import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 
-export interface IExampleState {
-  stackWidth: number;
-}
-
-export class HorizontalStackWrapNestedExample extends React.Component<{}, IExampleState> {
-  constructor(props: {}) {
-    super(props);
-    this.state = {
-      stackWidth: 100
-    };
+// Non-mutating styles definition
+const textStyles: React.CSSProperties = {
+  width: 50,
+  height: 50,
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  color: DefaultPalette.white
+};
+const firstStackStyles: IStackStyles = {
+  root: {
+    background: DefaultPalette.neutralTertiary
   }
+};
+const firstStackItemStyles: React.CSSProperties = {
+  ...textStyles,
+  background: DefaultPalette.themePrimary
+};
+const secondStackStyles: IStackStyles = {
+  root: {
+    background: DefaultPalette.neutralSecondary
+  }
+};
+const secondStackItemStyles: React.CSSProperties = {
+  ...textStyles,
+  background: DefaultPalette.themeDark
+};
+const thirdStackStyles: IStackStyles = {
+  root: {}
+};
+const thirdStackItemStyles: React.CSSProperties = {
+  ...textStyles,
+  background: DefaultPalette.themeDarker
+};
 
-  public render(): JSX.Element {
-    const textStyles = {
-      width: 50,
-      height: 50,
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      color: DefaultPalette.white
-    } as IStyleSet<{}>;
+// Tokens definition
+const sectionStackTokens: IStackTokens = { childrenGap: 10 };
+const wrapStackTokens: IStackTokens = { childrenGap: '30 40' };
+const firstStackTokens: IStackTokens = { childrenGap: '10 30' };
+const secondStackTokens: IStackTokens = { childrenGap: '20 50' };
 
-    const styles = mergeStyleSets({
-      root: {
-        background: DefaultPalette.themeTertiary,
-        width: `${this.state.stackWidth}%`
-      },
+export const HorizontalStackWrapNestedExample: React.FunctionComponent = () => {
+  const [stackWidth, setStackWidth] = React.useState<number>(100);
 
-      stackOne: {
-        background: DefaultPalette.neutralTertiary,
-        selectors: {
-          '& span': {
-            ...textStyles,
-            background: DefaultPalette.themePrimary
-          }
-        }
-      },
+  // Mutating styles definition
+  const containerStackStyles: IStackStyles = {
+    root: {
+      background: DefaultPalette.themeTertiary,
+      width: `${stackWidth}%`
+    }
+  };
 
-      stackTwo: {
-        background: DefaultPalette.neutralSecondary,
-        selectors: {
-          '& span': {
-            ...textStyles,
-            background: DefaultPalette.themeDark
-          }
-        }
-      },
+  return (
+    <Stack tokens={sectionStackTokens}>
+      <Slider
+        label="Change the stack width to see how child items wrap onto multiple rows:"
+        min={1}
+        max={100}
+        step={1}
+        defaultValue={100}
+        showValue={true}
+        onChange={setStackWidth}
+      />
 
-      stackThree: {
-        background: DefaultPalette.neutralPrimary,
-        selectors: {
-          '& span': {
-            ...textStyles,
-            background: DefaultPalette.themeDarker
-          }
-        }
-      }
-    });
+      <Stack horizontal wrap styles={containerStackStyles} tokens={wrapStackTokens}>
+        <Stack horizontal wrap styles={firstStackStyles} tokens={firstStackTokens}>
+          <span style={firstStackItemStyles}>1</span>
+          <span style={firstStackItemStyles}>2</span>
+          <span style={firstStackItemStyles}>3</span>
+          <span style={firstStackItemStyles}>4</span>
+          <span style={firstStackItemStyles}>5</span>
+          <span style={firstStackItemStyles}>6</span>
+          <span style={firstStackItemStyles}>7</span>
+        </Stack>
 
-    const tokens = {
-      sectionStack: {
-        childrenGap: 10
-      },
-      wrapStack: {
-        childrenGap: '30 40'
-      },
-      firstStack: {
-        childrenGap: '10 30'
-      },
-      secondStack: {
-        childrenGap: '20 50'
-      }
-    };
+        <Stack horizontal wrap styles={secondStackStyles} tokens={secondStackTokens}>
+          <span style={secondStackItemStyles}>1</span>
+          <span style={secondStackItemStyles}>2</span>
+          <span style={secondStackItemStyles}>3</span>
+        </Stack>
 
-    return (
-      <Stack tokens={tokens.sectionStack}>
-        <Slider
-          label="Change the stack width to see how child items wrap onto multiple rows:"
-          min={1}
-          max={100}
-          step={1}
-          defaultValue={100}
-          showValue={true}
-          onChange={this._onWidthChange}
-        />
-
-        <Stack horizontal wrap tokens={tokens.wrapStack} className={styles.root}>
-          <Stack horizontal wrap tokens={tokens.firstStack} className={styles.stackOne}>
-            <span>1</span>
-            <span>2</span>
-            <span>3</span>
-            <span>4</span>
-            <span>5</span>
-            <span>6</span>
-            <span>7</span>
-          </Stack>
-
-          <Stack horizontal wrap tokens={tokens.secondStack} className={styles.stackTwo}>
-            <span>1</span>
-            <span>2</span>
-            <span>3</span>
-          </Stack>
-
-          <Stack horizontal wrap className={styles.stackThree}>
-            <span>1</span>
-            <span>2</span>
-            <span>3</span>
-            <span>4</span>
-            <span>5</span>
-            <span>6</span>
-            <span>7</span>
-            <span>8</span>
-            <span>9</span>
-            <span>10</span>
-          </Stack>
+        <Stack horizontal wrap styles={thirdStackStyles}>
+          <span style={thirdStackItemStyles}>1</span>
+          <span style={thirdStackItemStyles}>2</span>
+          <span style={thirdStackItemStyles}>3</span>
+          <span style={thirdStackItemStyles}>4</span>
+          <span style={thirdStackItemStyles}>5</span>
+          <span style={thirdStackItemStyles}>6</span>
+          <span style={thirdStackItemStyles}>7</span>
+          <span style={thirdStackItemStyles}>8</span>
+          <span style={thirdStackItemStyles}>9</span>
+          <span style={thirdStackItemStyles}>10</span>
         </Stack>
       </Stack>
-    );
-  }
-
-  private _onWidthChange = (value: number): void => {
-    this.setState({ stackWidth: value });
-  };
-}
+    </Stack>
+  );
+};

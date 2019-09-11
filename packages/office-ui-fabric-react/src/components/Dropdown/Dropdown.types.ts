@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
 import { IStyle, ITheme } from '../../Styling';
 import { ISelectableOption } from '../../utilities/selectableOption/SelectableOption.types';
@@ -10,10 +11,17 @@ import { IPanelStyleProps } from '../Panel/Panel.types';
 
 export { SelectableOptionMenuItemType as DropdownMenuItemType } from '../../utilities/selectableOption/SelectableOption.types';
 
+export { ResponsiveMode }; // Exported because the type is an optional prop and not exported otherwise.
+
 /**
  * {@docCategory Dropdown}
  */
 export interface IDropdown {
+  /**
+   * All selected options
+   */
+  readonly selectedOptions: IDropdownOption[];
+
   focus: (shouldOpenOnFocus?: boolean) => void;
 }
 
@@ -47,6 +55,11 @@ export interface IDropdownProps extends ISelectableDroppableTextProps<IDropdown,
    * Callback issues when the options callout is dismissed
    */
   onDismiss?: () => void;
+
+  /**
+   * Custom render function for the label.
+   */
+  onRenderLabel?: IRenderFunction<IDropdownProps>;
 
   /**
    * Optional custom renderer for placeholder text
@@ -159,6 +172,11 @@ export type IDropdownStyleProps = Pick<IDropdownProps, 'theme' | 'className' | '
   hasError: boolean;
 
   /**
+   * Specifies if the dropdown has label content.
+   */
+  hasLabel: boolean;
+
+  /**
    * Whether the dropdown is in an opened state.
    */
   isOpen: boolean;
@@ -229,6 +247,9 @@ export interface IDropdownStyles {
 
   /** Style for a dropdown item when it is both selected and disabled. */
   dropdownItemSelectedAndDisabled: IStyle;
+
+  /** Style for a dropdown item when it is hidden */
+  dropdownItemHidden: IStyle;
 
   /**
    * Refers to the text element that renders the actual dropdown item/option text. This would be wrapped by the element

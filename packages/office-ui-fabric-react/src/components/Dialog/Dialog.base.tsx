@@ -41,7 +41,7 @@ export class DialogBase extends React.Component<IDialogProps, {}> {
     this._defaultTitleTextId = this._id + '-title';
     this._defaultSubTextId = this._id + '-subText';
 
-    if (typeof process !== 'undefined' && process.env.NODE_ENV !== 'production') {
+    if (process.env.NODE_ENV !== 'production') {
       warnDeprecations('Dialog', props, {
         isOpen: 'hidden',
         type: 'dialogContentProps.type',

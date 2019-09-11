@@ -8,7 +8,9 @@ const baseUrl = 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master
 
 export const ColorsPresencePage: React.StatelessComponent<IStylesPageProps> = props => {
   const { platform } = props;
-  return <StylesAreaPage {...props} {...ColorsPresencePageProps[platform]} otherSections={_otherSections(platform)} />;
+  return (
+    <StylesAreaPage {...props} {...ColorsPresencePageProps[platform]} otherSections={_otherSections(platform) as IPageSectionProps[]} />
+  );
 };
 
 function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
@@ -52,15 +54,6 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                 ]}
               />
             </>
-          )
-        },
-        {
-          sectionName: 'Implementation',
-          editUrl: `${baseUrl}/web/ColorsImplementation.md`,
-          content: (
-            <Markdown>
-              {require('!raw-loader!@uifabric/fabric-website/src/pages/Styles/Colors/docs/web/ColorsImplementation.md') as string}
-            </Markdown>
           )
         }
       ];

@@ -13,10 +13,10 @@ import {
   IGroup,
   Selection,
   SelectionMode,
-  buildColumns
+  buildColumns,
+  IDetailsColumnProps
 } from 'office-ui-fabric-react/lib/DetailsList';
-import { createListItems, isGroupable, IExampleItem } from 'office-ui-fabric-react/lib/utilities/exampleData';
-import { IDetailsColumnProps } from 'office-ui-fabric-react/lib/components/DetailsList/DetailsColumn';
+import { createListItems, isGroupable, IExampleItem } from '@uifabric/example-data';
 import { memoizeFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { getTheme, mergeStyles, mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
 
@@ -30,7 +30,7 @@ const classNames = mergeStyleSets({
     display: 'none',
     background: theme.palette.themePrimary,
     position: 'absolute',
-    top: 0,
+    top: 16,
     bottom: 0,
     width: '1px',
     zIndex: 5
@@ -179,6 +179,7 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
           ariaLabelForListHeader="Column headers. Click to sort."
           ariaLabelForSelectAllCheckbox="Toggle selection for all items"
           ariaLabelForSelectionColumn="Toggle selection"
+          checkButtonAriaLabel="Row checkbox"
           onRenderMissingItem={this._onRenderMissingItem}
         />
 

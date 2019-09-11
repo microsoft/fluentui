@@ -30,15 +30,15 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                background-color: #f4f4f4;
+                background-color: #ffffff;
                 display: flex;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
-                height: 40px;
+                height: 44px;
                 padding-bottom: 0;
-                padding-left: 16px;
-                padding-right: 16px;
+                padding-left: 24px;
+                padding-right: 14px;
                 padding-top: 0;
               }
           data-focuszone-id="FocusZone0"
@@ -79,21 +79,18 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                       outline: transparent;
                       position: relative;
                     }
-                    @media screen and (-ms-high-contrast: active){& {
-                      border: none;
-                    }
                     &::-moz-focus-inner {
                       border: 0;
                     }
                     .ms-Fabric--isFocusVisible &:focus:after {
                       border: 1px solid #ffffff;
-                      bottom: 1px;
+                      bottom: 3px;
                       content: "";
-                      left: 1px;
-                      outline: 1px solid #666666;
+                      left: 3px;
+                      outline: 1px solid #605e5c;
                       position: absolute;
-                      right: 1px;
-                      top: 1px;
+                      right: 3px;
+                      top: 3px;
                       z-index: 1;
                     }
                     @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -102,6 +99,36 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                       left: -2px;
                       right: -2px;
                       top: -2px;
+                    }
+                    & .ms-Button--default {
+                      border-bottom-right-radius: 0;
+                      border-right: none;
+                      border-top-right-radius: 0;
+                    }
+                    & .ms-Button--primary {
+                      border-bottom-right-radius: 0;
+                      border-top-right-radius: 0;
+                      border: none;
+                    }
+                    @media screen and (-ms-high-contrast: active){& .ms-Button--primary {
+                      -ms-high-contrast-adjust: none;
+                      background-color: WindowText;
+                      color: Window;
+                    }
+                    & .ms-Button--primary + .ms-Button {
+                      border: none;
+                    }
+                    @media screen and (-ms-high-contrast: active){& {
+                      border: none;
+                    }
+                    @media screen and (-ms-high-contrast: active){&:hover .ms-Button--primary {
+                      background-color: Highlight;
+                      color: Window;
+                    }
+                    @media screen and (-ms-high-contrast: active){&:hover .ms-Button.is-disabled {
+                      background-color: Window;
+                      border-color: GrayText;
+                      color: GrayText;
                     }
                     &:focus {
                       outline: none!important;
@@ -130,11 +157,11 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                         {
                           -moz-osx-font-smoothing: grayscale;
                           -webkit-font-smoothing: antialiased;
-                          background-color: #f4f4f4;
+                          background-color: #ffffff;
                           border-radius: 0px;
-                          border: 1px solid transparent;
+                          border: none;
                           box-sizing: border-box;
-                          color: #333333;
+                          color: #323130;
                           cursor: pointer;
                           display: inline-block;
                           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -157,14 +184,14 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                           border: 0;
                         }
                         .ms-Fabric--isFocusVisible &:focus:after {
-                          border: 1px solid #ffffff;
-                          bottom: 0px;
+                          border: 1px solid transparent;
+                          bottom: 3px;
                           content: "";
-                          left: 0px;
-                          outline: 1px solid #666666;
+                          left: 3px;
+                          outline: 1px solid #605e5c;
                           position: absolute;
-                          right: 0px;
-                          top: 0px;
+                          right: 3px;
+                          top: 3px;
                           z-index: 1;
                         }
                         @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -184,15 +211,27 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                           border: none;
                         }
                         &:hover {
-                          background-color: #eaeaea;
-                          color: #212121;
+                          background-color: #f3f2f1;
+                          color: #201f1e;
                         }
                         @media screen and (-ms-high-contrast: active){&:hover {
                           color: Highlight;
                         }
+                        &:hover .ms-Button-icon {
+                          color: #106ebe;
+                        }
+                        &:hover .ms-Button-menuIcon {
+                          color: #323130;
+                        }
                         &:active {
-                          background-color: #dadada;
-                          color: #000000;
+                          background-color: #edebe9;
+                          color: #201f1e;
+                        }
+                        &:active .ms-Button-icon {
+                          color: #005a9e;
+                        }
+                        &:active .ms-Button-menuIcon {
+                          color: #323130;
                         }
                     data-is-focusable={false}
                     name="New"
@@ -205,7 +244,7 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                     tabIndex={-1}
                     type="button"
                   >
-                    <div
+                    <span
                       className=
                           ms-Button-flexContainer
                           {
@@ -215,27 +254,34 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                             height: 100%;
                             justify-content: center;
                           }
+                      data-automationid="splitbuttonprimary"
                     >
                       <i
+                        aria-hidden={true}
                         className=
+                            ms-Icon
                             ms-Button-icon
+                            {
+                              display: inline-block;
+                            }
                             {
                               -moz-osx-font-smoothing: grayscale;
                               -webkit-font-smoothing: antialiased;
-                              color: #106ebe;
-                              display: inline-block;
-                              flex-shrink: 0;
                               font-family: "FabricMDL2Icons";
-                              font-size: 16px;
                               font-style: normal;
                               font-weight: normal;
+                              speak: none;
+                            }
+                            {
+                              color: #0078d4;
+                              flex-shrink: 0;
+                              font-size: 16px;
                               height: 16px;
                               line-height: 16px;
                               margin-bottom: 0;
                               margin-left: 4px;
                               margin-right: 4px;
                               margin-top: 0;
-                              speak: none;
                               text-align: center;
                               vertical-align: middle;
                             }
@@ -244,17 +290,19 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                       >
                         
                       </i>
-                      <div
+                      <span
                         className=
                             ms-Button-textContainer
                             {
+                              display: block;
                               flex-grow: 1;
                             }
                       >
-                        <div
+                        <span
                           className=
                               ms-Button-label
                               {
+                                display: block;
                                 font-weight: normal;
                                 line-height: 100%;
                                 margin-bottom: 0;
@@ -266,9 +314,9 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                           id="id__1"
                         >
                           New
-                        </div>
-                      </div>
-                    </div>
+                        </span>
+                      </span>
+                    </span>
                   </button>
                   <button
                     aria-expanded={false}
@@ -276,15 +324,21 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                     className=
                         ms-Button
                         {
-                          background-color: #f4f4f4;
+                          background-color: #ffffff;
+                          border-bottom-right-radius: 0;
+                          border-left: none;
                           border-radius: 0px;
-                          border: 0px;
+                          border-top-right-radius: 0;
+                          border: none;
                           box-sizing: border-box;
-                          color: #333333;
+                          color: #605e5c;
                           cursor: pointer;
                           display: inline-block;
                           height: auto;
+                          margin-bottom: 0px;
                           margin-left: -1px;
+                          margin-right: 0px;
+                          margin-top: 0px;
                           outline: transparent;
                           padding-bottom: 6px;
                           padding-left: 6px;
@@ -297,11 +351,20 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                           width: 32px;
                         }
                         &:hover {
-                          background-color: #eaeaea;
-                          color: #212121;
+                          background-color: #f3f2f1;
+                          color: #201f1e;
                         }
                         @media screen and (-ms-high-contrast: active){&:hover {
                           color: Highlight;
+                        }
+                        &:hover .ms-Button-icon {
+                          color: #323130;
+                        }
+                        &:active {
+                          background-color: #edebe9;
+                        }
+                        &:active .ms-Button-icon {
+                          color: #323130;
                         }
                     data-is-focusable={false}
                     onClick={[Function]}
@@ -313,7 +376,7 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                     tabIndex={-1}
                     type="button"
                   >
-                    <div
+                    <span
                       className=
                           ms-Button-flexContainer
                           {
@@ -323,28 +386,49 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                             height: 100%;
                             justify-content: center;
                           }
+                      data-automationid="splitbuttonprimary"
                     >
                       <i
+                        aria-hidden={true}
                         className=
+                            ms-Icon
                             ms-Button-icon
                             ms-Button-menuIcon
+                            ms-Button-menuIcon
+                            {
+                              display: inline-block;
+                            }
                             {
                               -moz-osx-font-smoothing: grayscale;
                               -webkit-font-smoothing: antialiased;
-                              color: #666666;
-                              display: inline-block;
-                              flex-shrink: 0;
                               font-family: "FabricMDL2Icons";
-                              font-size: 12px;
                               font-style: normal;
                               font-weight: normal;
+                              speak: none;
+                            }
+                            {
+                              color: #323130;
+                              flex-shrink: 0;
+                              font-size: 12px;
                               height: 16px;
                               line-height: 16px;
                               margin-bottom: 0;
                               margin-left: 4px;
                               margin-right: 4px;
                               margin-top: 0;
-                              speak: none;
+                              text-align: center;
+                              vertical-align: middle;
+                            }
+                            {
+                              color: #605e5c;
+                              flex-shrink: 0;
+                              font-size: 12px;
+                              height: 16px;
+                              line-height: 16px;
+                              margin-bottom: 0;
+                              margin-left: 4px;
+                              margin-right: 4px;
+                              margin-top: 0;
                               text-align: center;
                               vertical-align: middle;
                             }
@@ -353,13 +437,14 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                       >
                         
                       </i>
-                    </div>
+                    </span>
                   </button>
                   <span
+                    aria-hidden={true}
                     className=
 
                         {
-                          background-color: #c8c8c8;
+                          background-color: #c8c6c4;
                           bottom: 8px;
                           margin-bottom: 4px;
                           margin-top: 4px;
@@ -392,21 +477,18 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                       outline: none;
                       position: relative;
                     }
-                    @media screen and (-ms-high-contrast: active){& {
-                      border: none;
-                    }
                     &::-moz-focus-inner {
                       border: 0;
                     }
                     .ms-Fabric--isFocusVisible &:focus:after {
                       border: 1px solid #ffffff;
-                      bottom: 1px;
+                      bottom: 3px;
                       content: "";
-                      left: 1px;
-                      outline: 1px solid #666666;
+                      left: 3px;
+                      outline: 1px solid #605e5c;
                       position: absolute;
-                      right: 1px;
-                      top: 1px;
+                      right: 3px;
+                      top: 3px;
                       z-index: 1;
                     }
                     @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -415,6 +497,30 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                       left: -2px;
                       right: -2px;
                       top: -2px;
+                    }
+                    & .ms-Button--default {
+                      border-bottom-right-radius: 0;
+                      border-right: none;
+                      border-top-right-radius: 0;
+                    }
+                    & .ms-Button--primary {
+                      border-bottom-right-radius: 0;
+                      border-top-right-radius: 0;
+                      border: none;
+                    }
+                    @media screen and (-ms-high-contrast: active){& .ms-Button--primary {
+                      -ms-high-contrast-adjust: none;
+                      background-color: WindowText;
+                      color: Window;
+                    }
+                    & .ms-Button--primary + .ms-Button {
+                      border: none;
+                    }
+                    @media screen and (-ms-high-contrast: active){& {
+                      background-color: Window;
+                      border-color: GrayText;
+                      border: none;
+                      color: GrayText;
                     }
                 data-automation-id="uploadButton"
                 data-is-focusable={true}
@@ -441,11 +547,12 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                         {
                           -moz-osx-font-smoothing: grayscale;
                           -webkit-font-smoothing: antialiased;
-                          background-color: #f4f4f4;
+                          background-color: #ffffff;
+                          border-color: #f3f2f1;
                           border-radius: 0px;
-                          border: 1px solid transparent;
+                          border: none;
                           box-sizing: border-box;
-                          color: #a6a6a6;
+                          color: #a19f9d;
                           cursor: default;
                           display: inline-block;
                           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -469,14 +576,14 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                           border: 0;
                         }
                         .ms-Fabric--isFocusVisible &:focus:after {
-                          border: 1px solid #ffffff;
-                          bottom: 0px;
+                          border: 1px solid transparent;
+                          bottom: 2px;
                           content: "";
-                          left: 0px;
-                          outline: 1px solid #666666;
+                          left: 2px;
+                          outline: 1px solid #605e5c;
                           position: absolute;
-                          right: 0px;
-                          top: 0px;
+                          right: 2px;
+                          top: 2px;
                           z-index: 1;
                         }
                         @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -493,8 +600,8 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                           top: 0px;
                         }
                         @media screen and (-ms-high-contrast: active){& {
+                          border-color: grayText;
                           border: none;
-                          bordercolor: grayText;
                           color: grayText;
                         }
                         &:hover {
@@ -502,6 +609,9 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                         }
                         &:focus {
                           outline: 0px;
+                        }
+                        & .ms-Button-icon {
+                          color: #c8c6c4;
                         }
                     data-automation-id="uploadButton"
                     data-is-focusable={false}
@@ -516,7 +626,7 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                     tabIndex={-1}
                     type="button"
                   >
-                    <div
+                    <span
                       className=
                           ms-Button-flexContainer
                           {
@@ -526,27 +636,34 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                             height: 100%;
                             justify-content: center;
                           }
+                      data-automationid="splitbuttonprimary"
                     >
                       <i
+                        aria-hidden={true}
                         className=
+                            ms-Icon
                             ms-Button-icon
+                            {
+                              display: inline-block;
+                            }
                             {
                               -moz-osx-font-smoothing: grayscale;
                               -webkit-font-smoothing: antialiased;
-                              color: #a6a6a6;
-                              display: inline-block;
-                              flex-shrink: 0;
                               font-family: "FabricMDL2Icons";
-                              font-size: 16px;
                               font-style: normal;
                               font-weight: normal;
+                              speak: none;
+                            }
+                            {
+                              color: #a19f9d;
+                              flex-shrink: 0;
+                              font-size: 16px;
                               height: 16px;
                               line-height: 16px;
                               margin-bottom: 0;
                               margin-left: 4px;
                               margin-right: 4px;
                               margin-top: 0;
-                              speak: none;
                               text-align: center;
                               vertical-align: middle;
                             }
@@ -555,17 +672,19 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                       >
                         
                       </i>
-                      <div
+                      <span
                         className=
                             ms-Button-textContainer
                             {
+                              display: block;
                               flex-grow: 1;
                             }
                       >
-                        <div
+                        <span
                           className=
                               ms-Button-label
                               {
+                                display: block;
                                 font-weight: normal;
                                 line-height: 100%;
                                 margin-bottom: 0;
@@ -577,9 +696,9 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                           id="id__7"
                         >
                           Upload
-                        </div>
-                      </div>
-                    </div>
+                        </span>
+                      </span>
+                    </span>
                   </button>
                   <button
                     aria-disabled={true}
@@ -589,15 +708,21 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                         ms-Button
                         is-disabled
                         {
-                          background-color: #f4f4f4;
+                          background-color: #ffffff;
+                          border-bottom-right-radius: 0;
+                          border-left: none;
                           border-radius: 0px;
-                          border: 0px;
+                          border-top-right-radius: 0;
+                          border: none;
                           box-sizing: border-box;
-                          color: #333333;
+                          color: #605e5c;
                           cursor: pointer;
                           display: inline-block;
                           height: auto;
+                          margin-bottom: 0px;
                           margin-left: -1px;
+                          margin-right: 0px;
+                          margin-top: 0px;
                           outline: transparent;
                           padding-bottom: 6px;
                           padding-left: 6px;
@@ -611,12 +736,26 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                           width: 32px;
                         }
                         &:hover {
-                          background-color: #f4f4f4;
-                          color: #212121;
+                          background-color: #f3f2f1;
+                          color: #201f1e;
                           cursor: default;
                         }
                         @media screen and (-ms-high-contrast: active){&:hover {
                           color: Highlight;
+                        }
+                        &:hover .ms-Button-icon {
+                          color: #323130;
+                        }
+                        &:active {
+                          background-color: #edebe9;
+                        }
+                        &:active .ms-Button-icon {
+                          color: #323130;
+                        }
+                        @media screen and (-ms-high-contrast: active){& .ms-Button--primary {
+                          background-color: Window;
+                          border-color: GrayText;
+                          color: GrayText;
                         }
                     data-is-focusable={false}
                     disabled={false}
@@ -629,7 +768,7 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                     tabIndex={-1}
                     type="button"
                   >
-                    <div
+                    <span
                       className=
                           ms-Button-flexContainer
                           {
@@ -639,28 +778,49 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                             height: 100%;
                             justify-content: center;
                           }
+                      data-automationid="splitbuttonprimary"
                     >
                       <i
+                        aria-hidden={true}
                         className=
+                            ms-Icon
                             ms-Button-icon
                             ms-Button-menuIcon
+                            ms-Button-menuIcon
+                            {
+                              display: inline-block;
+                            }
                             {
                               -moz-osx-font-smoothing: grayscale;
                               -webkit-font-smoothing: antialiased;
-                              color: #a6a6a6;
-                              display: inline-block;
-                              flex-shrink: 0;
                               font-family: "FabricMDL2Icons";
-                              font-size: 12px;
                               font-style: normal;
                               font-weight: normal;
+                              speak: none;
+                            }
+                            {
+                              color: #a19f9d;
+                              flex-shrink: 0;
+                              font-size: 12px;
                               height: 16px;
                               line-height: 16px;
                               margin-bottom: 0;
                               margin-left: 4px;
                               margin-right: 4px;
                               margin-top: 0;
-                              speak: none;
+                              text-align: center;
+                              vertical-align: middle;
+                            }
+                            {
+                              color: #605e5c;
+                              flex-shrink: 0;
+                              font-size: 12px;
+                              height: 16px;
+                              line-height: 16px;
+                              margin-bottom: 0;
+                              margin-left: 4px;
+                              margin-right: 4px;
+                              margin-top: 0;
                               text-align: center;
                               vertical-align: middle;
                             }
@@ -669,13 +829,14 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                       >
                         
                       </i>
-                    </div>
+                    </span>
                   </button>
                   <span
+                    aria-hidden={true}
                     className=
 
                         {
-                          background-color: #c8c8c8;
+                          background-color: #c8c6c4;
                           bottom: 8px;
                           margin-bottom: 4px;
                           margin-top: 4px;
@@ -706,11 +867,12 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                     {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
-                      background-color: #f4f4f4;
+                      background-color: #ffffff;
+                      border-color: #f3f2f1;
                       border-radius: 0px;
-                      border: 1px solid transparent;
+                      border: none;
                       box-sizing: border-box;
-                      color: #a6a6a6;
+                      color: #a19f9d;
                       cursor: default;
                       display: inline-block;
                       font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -734,14 +896,14 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                       border: 0;
                     }
                     .ms-Fabric--isFocusVisible &:focus:after {
-                      border: 1px solid #ffffff;
-                      bottom: 0px;
+                      border: 1px solid transparent;
+                      bottom: 2px;
                       content: "";
-                      left: 0px;
-                      outline: 1px solid #666666;
+                      left: 2px;
+                      outline: 1px solid #605e5c;
                       position: absolute;
-                      right: 0px;
-                      top: 0px;
+                      right: 2px;
+                      top: 2px;
                       z-index: 1;
                     }
                     @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -758,8 +920,8 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                       top: 0px;
                     }
                     @media screen and (-ms-high-contrast: active){& {
+                      border-color: grayText;
                       border: none;
-                      bordercolor: grayText;
                       color: grayText;
                     }
                     &:hover {
@@ -767,6 +929,9 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                     }
                     &:focus {
                       outline: 0px;
+                    }
+                    & .ms-Button-icon {
+                      color: #c8c6c4;
                     }
                 data-is-focusable={true}
                 disabled={false}
@@ -780,7 +945,7 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                 role="menuitem"
                 type="button"
               >
-                <div
+                <span
                   className=
                       ms-Button-flexContainer
                       {
@@ -790,27 +955,34 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                         height: 100%;
                         justify-content: center;
                       }
+                  data-automationid="splitbuttonprimary"
                 >
                   <i
+                    aria-hidden={true}
                     className=
+                        ms-Icon
                         ms-Button-icon
+                        {
+                          display: inline-block;
+                        }
                         {
                           -moz-osx-font-smoothing: grayscale;
                           -webkit-font-smoothing: antialiased;
-                          color: #a6a6a6;
-                          display: inline-block;
-                          flex-shrink: 0;
                           font-family: "FabricMDL2Icons";
-                          font-size: 16px;
                           font-style: normal;
                           font-weight: normal;
+                          speak: none;
+                        }
+                        {
+                          color: #a19f9d;
+                          flex-shrink: 0;
+                          font-size: 16px;
                           height: 16px;
                           line-height: 16px;
                           margin-bottom: 0;
                           margin-left: 4px;
                           margin-right: 4px;
                           margin-top: 0;
-                          speak: none;
                           text-align: center;
                           vertical-align: middle;
                         }
@@ -819,17 +991,19 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                   >
                     
                   </i>
-                  <div
+                  <span
                     className=
                         ms-Button-textContainer
                         {
+                          display: block;
                           flex-grow: 1;
                         }
                   >
-                    <div
+                    <span
                       className=
                           ms-Button-label
                           {
+                            display: block;
                             font-weight: normal;
                             line-height: 100%;
                             margin-bottom: 0;
@@ -841,9 +1015,9 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                       id="id__13"
                     >
                       Share
-                    </div>
-                  </div>
-                </div>
+                    </span>
+                  </span>
+                </span>
               </button>
             </div>
             <div
@@ -862,6 +1036,7 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                     }
                 onBlurCapture={[Function]}
                 onFocusCapture={[Function]}
+                onKeyDown={[Function]}
                 onMouseEnter={[Function]}
                 onMouseLeave={[Function]}
               >
@@ -875,11 +1050,12 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                       {
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
-                        background-color: #f4f4f4;
+                        background-color: #ffffff;
+                        border-color: #f3f2f1;
                         border-radius: 0px;
-                        border: 1px solid transparent;
+                        border: none;
                         box-sizing: border-box;
-                        color: #a6a6a6;
+                        color: #a19f9d;
                         cursor: default;
                         display: inline-block;
                         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -903,14 +1079,14 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                         border: 0;
                       }
                       .ms-Fabric--isFocusVisible &:focus:after {
-                        border: 1px solid #ffffff;
-                        bottom: 0px;
+                        border: 1px solid transparent;
+                        bottom: 2px;
                         content: "";
-                        left: 0px;
-                        outline: 1px solid #666666;
+                        left: 2px;
+                        outline: 1px solid #605e5c;
                         position: absolute;
-                        right: 0px;
-                        top: 0px;
+                        right: 2px;
+                        top: 2px;
                         z-index: 1;
                       }
                       @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -927,8 +1103,8 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                         top: 0px;
                       }
                       @media screen and (-ms-high-contrast: active){& {
+                        border-color: grayText;
                         border: none;
-                        bordercolor: grayText;
                         color: grayText;
                       }
                       &:hover {
@@ -936,6 +1112,9 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                       }
                       &:focus {
                         outline: 0px;
+                      }
+                      & .ms-Button-icon {
+                        color: #c8c6c4;
                       }
                   data-is-focusable={true}
                   disabled={false}
@@ -949,7 +1128,7 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                   role="menuitem"
                   type="button"
                 >
-                  <div
+                  <span
                     className=
                         ms-Button-flexContainer
                         {
@@ -959,27 +1138,34 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                           height: 100%;
                           justify-content: center;
                         }
+                    data-automationid="splitbuttonprimary"
                   >
                     <i
+                      aria-hidden={true}
                       className=
+                          ms-Icon
                           ms-Button-icon
+                          {
+                            display: inline-block;
+                          }
                           {
                             -moz-osx-font-smoothing: grayscale;
                             -webkit-font-smoothing: antialiased;
-                            color: #a6a6a6;
-                            display: inline-block;
-                            flex-shrink: 0;
                             font-family: "FabricMDL2Icons";
-                            font-size: 16px;
                             font-style: normal;
                             font-weight: normal;
+                            speak: none;
+                          }
+                          {
+                            color: #a19f9d;
+                            flex-shrink: 0;
+                            font-size: 16px;
                             height: 16px;
                             line-height: 16px;
                             margin-bottom: 0;
                             margin-left: 4px;
                             margin-right: 4px;
                             margin-top: 0;
-                            speak: none;
                             text-align: center;
                             vertical-align: middle;
                           }
@@ -988,7 +1174,7 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                     >
                       
                     </i>
-                  </div>
+                  </span>
                 </button>
               </div>
             </div>
@@ -1012,11 +1198,11 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                     {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
-                      background-color: #f4f4f4;
+                      background-color: #ffffff;
                       border-radius: 0px;
-                      border: 1px solid transparent;
+                      border: none;
                       box-sizing: border-box;
-                      color: #333333;
+                      color: #323130;
                       cursor: pointer;
                       display: inline-block;
                       font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -1038,14 +1224,14 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                       border: 0;
                     }
                     .ms-Fabric--isFocusVisible &:focus:after {
-                      border: 1px solid #ffffff;
-                      bottom: 0px;
+                      border: 1px solid transparent;
+                      bottom: 3px;
                       content: "";
-                      left: 0px;
-                      outline: 1px solid #666666;
+                      left: 3px;
+                      outline: 1px solid #605e5c;
                       position: absolute;
-                      right: 0px;
-                      top: 0px;
+                      right: 3px;
+                      top: 3px;
                       z-index: 1;
                     }
                     @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -1065,15 +1251,27 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                       border: none;
                     }
                     &:hover {
-                      background-color: #eaeaea;
-                      color: #212121;
+                      background-color: #f3f2f1;
+                      color: #201f1e;
                     }
                     @media screen and (-ms-high-contrast: active){&:hover {
                       color: Highlight;
                     }
+                    &:hover .ms-Button-icon {
+                      color: #106ebe;
+                    }
+                    &:hover .ms-Button-menuIcon {
+                      color: #323130;
+                    }
                     &:active {
-                      background-color: #dadada;
-                      color: #000000;
+                      background-color: #edebe9;
+                      color: #201f1e;
+                    }
+                    &:active .ms-Button-icon {
+                      color: #005a9e;
+                    }
+                    &:active .ms-Button-menuIcon {
+                      color: #323130;
                     }
                 data-is-focusable={true}
                 onClick={[Function]}
@@ -1084,7 +1282,7 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                 onMouseUp={[Function]}
                 type="button"
               >
-                <div
+                <span
                   className=
                       ms-Button-flexContainer
                       {
@@ -1094,27 +1292,34 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                         height: 100%;
                         justify-content: center;
                       }
+                  data-automationid="splitbuttonprimary"
                 >
                   <i
+                    aria-hidden={true}
                     className=
+                        ms-Icon
                         ms-Button-menuIcon
+                        {
+                          display: inline-block;
+                        }
                         {
                           -moz-osx-font-smoothing: grayscale;
                           -webkit-font-smoothing: antialiased;
-                          color: #666666;
-                          display: inline-block;
-                          flex-shrink: 0;
                           font-family: "FabricMDL2Icons";
-                          font-size: 17px;
                           font-style: normal;
                           font-weight: normal;
+                          speak: none;
+                        }
+                        {
+                          color: #605e5c;
+                          flex-shrink: 0;
+                          font-size: 17px;
                           height: 16px;
                           line-height: 16px;
                           margin-bottom: 0;
                           margin-left: 4px;
                           margin-right: 4px;
                           margin-top: 0;
-                          speak: none;
                           text-align: center;
                           vertical-align: middle;
                         }
@@ -1123,7 +1328,7 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                   >
                     
                   </i>
-                </div>
+                </span>
               </button>
             </div>
           </div>
@@ -1157,11 +1362,11 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                     {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
-                      background-color: #f4f4f4;
+                      background-color: #ffffff;
                       border-radius: 0px;
-                      border: 1px solid transparent;
+                      border: none;
                       box-sizing: border-box;
-                      color: #333333;
+                      color: #323130;
                       cursor: pointer;
                       display: inline-block;
                       font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -1184,14 +1389,14 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                       border: 0;
                     }
                     .ms-Fabric--isFocusVisible &:focus:after {
-                      border: 1px solid #ffffff;
-                      bottom: 0px;
+                      border: 1px solid transparent;
+                      bottom: 3px;
                       content: "";
-                      left: 0px;
-                      outline: 1px solid #666666;
+                      left: 3px;
+                      outline: 1px solid #605e5c;
                       position: absolute;
-                      right: 0px;
-                      top: 0px;
+                      right: 3px;
+                      top: 3px;
                       z-index: 1;
                     }
                     @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -1211,15 +1416,27 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                       border: none;
                     }
                     &:hover {
-                      background-color: #eaeaea;
-                      color: #212121;
+                      background-color: #f3f2f1;
+                      color: #201f1e;
                     }
                     @media screen and (-ms-high-contrast: active){&:hover {
                       color: Highlight;
                     }
+                    &:hover .ms-Button-icon {
+                      color: #106ebe;
+                    }
+                    &:hover .ms-Button-menuIcon {
+                      color: #323130;
+                    }
                     &:active {
-                      background-color: #dadada;
-                      color: #000000;
+                      background-color: #edebe9;
+                      color: #201f1e;
+                    }
+                    &:active .ms-Button-icon {
+                      color: #005a9e;
+                    }
+                    &:active .ms-Button-menuIcon {
+                      color: #323130;
                     }
                 data-is-focusable={true}
                 name="Sort"
@@ -1232,7 +1449,7 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                 role="menuitem"
                 type="button"
               >
-                <div
+                <span
                   className=
                       ms-Button-flexContainer
                       {
@@ -1242,27 +1459,34 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                         height: 100%;
                         justify-content: center;
                       }
+                  data-automationid="splitbuttonprimary"
                 >
                   <i
+                    aria-hidden={true}
                     className=
+                        ms-Icon
                         ms-Button-icon
+                        {
+                          display: inline-block;
+                        }
                         {
                           -moz-osx-font-smoothing: grayscale;
                           -webkit-font-smoothing: antialiased;
-                          color: #106ebe;
-                          display: inline-block;
-                          flex-shrink: 0;
                           font-family: "FabricMDL2Icons";
-                          font-size: 16px;
                           font-style: normal;
                           font-weight: normal;
+                          speak: none;
+                        }
+                        {
+                          color: #0078d4;
+                          flex-shrink: 0;
+                          font-size: 16px;
                           height: 16px;
                           line-height: 16px;
                           margin-bottom: 0;
                           margin-left: 4px;
                           margin-right: 4px;
                           margin-top: 0;
-                          speak: none;
                           text-align: center;
                           vertical-align: middle;
                         }
@@ -1271,17 +1495,19 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                   >
                     
                   </i>
-                  <div
+                  <span
                     className=
                         ms-Button-textContainer
                         {
+                          display: block;
                           flex-grow: 1;
                         }
                   >
-                    <div
+                    <span
                       className=
                           ms-Button-label
                           {
+                            display: block;
                             font-weight: normal;
                             line-height: 100%;
                             margin-bottom: 0;
@@ -1293,9 +1519,9 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                       id="id__23"
                     >
                       Sort
-                    </div>
-                  </div>
-                </div>
+                    </span>
+                  </span>
+                </span>
               </button>
             </div>
             <div
@@ -1314,6 +1540,7 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                     }
                 onBlurCapture={[Function]}
                 onFocusCapture={[Function]}
+                onKeyDown={[Function]}
                 onMouseEnter={[Function]}
                 onMouseLeave={[Function]}
               >
@@ -1326,11 +1553,11 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                       {
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
-                        background-color: #f4f4f4;
+                        background-color: #ffffff;
                         border-radius: 0px;
-                        border: 1px solid transparent;
+                        border: none;
                         box-sizing: border-box;
-                        color: #333333;
+                        color: #323130;
                         cursor: pointer;
                         display: inline-block;
                         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -1353,14 +1580,14 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                         border: 0;
                       }
                       .ms-Fabric--isFocusVisible &:focus:after {
-                        border: 1px solid #ffffff;
-                        bottom: 0px;
+                        border: 1px solid transparent;
+                        bottom: 3px;
                         content: "";
-                        left: 0px;
-                        outline: 1px solid #666666;
+                        left: 3px;
+                        outline: 1px solid #605e5c;
                         position: absolute;
-                        right: 0px;
-                        top: 0px;
+                        right: 3px;
+                        top: 3px;
                         z-index: 1;
                       }
                       @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -1380,15 +1607,27 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                         border: none;
                       }
                       &:hover {
-                        background-color: #eaeaea;
-                        color: #212121;
+                        background-color: #f3f2f1;
+                        color: #201f1e;
                       }
                       @media screen and (-ms-high-contrast: active){&:hover {
                         color: Highlight;
                       }
+                      &:hover .ms-Button-icon {
+                        color: #106ebe;
+                      }
+                      &:hover .ms-Button-menuIcon {
+                        color: #323130;
+                      }
                       &:active {
-                        background-color: #dadada;
-                        color: #000000;
+                        background-color: #edebe9;
+                        color: #201f1e;
+                      }
+                      &:active .ms-Button-icon {
+                        color: #005a9e;
+                      }
+                      &:active .ms-Button-menuIcon {
+                        color: #323130;
                       }
                   data-is-focusable={true}
                   name="Grid view"
@@ -1401,7 +1640,7 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                   role="menuitem"
                   type="button"
                 >
-                  <div
+                  <span
                     className=
                         ms-Button-flexContainer
                         {
@@ -1411,27 +1650,34 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                           height: 100%;
                           justify-content: center;
                         }
+                    data-automationid="splitbuttonprimary"
                   >
                     <i
+                      aria-hidden={true}
                       className=
+                          ms-Icon
                           ms-Button-icon
+                          {
+                            display: inline-block;
+                          }
                           {
                             -moz-osx-font-smoothing: grayscale;
                             -webkit-font-smoothing: antialiased;
-                            color: #106ebe;
-                            display: inline-block;
-                            flex-shrink: 0;
                             font-family: "FabricMDL2Icons";
-                            font-size: 16px;
                             font-style: normal;
                             font-weight: normal;
+                            speak: none;
+                          }
+                          {
+                            color: #0078d4;
+                            flex-shrink: 0;
+                            font-size: 16px;
                             height: 16px;
                             line-height: 16px;
                             margin-bottom: 0;
                             margin-left: 4px;
                             margin-right: 4px;
                             margin-top: 0;
-                            speak: none;
                             text-align: center;
                             vertical-align: middle;
                           }
@@ -1440,7 +1686,7 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                     >
                       
                     </i>
-                  </div>
+                  </span>
                 </button>
               </div>
             </div>
@@ -1460,6 +1706,7 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                     }
                 onBlurCapture={[Function]}
                 onFocusCapture={[Function]}
+                onKeyDown={[Function]}
                 onMouseEnter={[Function]}
                 onMouseLeave={[Function]}
               >
@@ -1472,11 +1719,11 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                       {
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
-                        background-color: #f4f4f4;
+                        background-color: #ffffff;
                         border-radius: 0px;
-                        border: 1px solid transparent;
+                        border: none;
                         box-sizing: border-box;
-                        color: #333333;
+                        color: #323130;
                         cursor: pointer;
                         display: inline-block;
                         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -1499,14 +1746,14 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                         border: 0;
                       }
                       .ms-Fabric--isFocusVisible &:focus:after {
-                        border: 1px solid #ffffff;
-                        bottom: 0px;
+                        border: 1px solid transparent;
+                        bottom: 3px;
                         content: "";
-                        left: 0px;
-                        outline: 1px solid #666666;
+                        left: 3px;
+                        outline: 1px solid #605e5c;
                         position: absolute;
-                        right: 0px;
-                        top: 0px;
+                        right: 3px;
+                        top: 3px;
                         z-index: 1;
                       }
                       @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -1526,15 +1773,27 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                         border: none;
                       }
                       &:hover {
-                        background-color: #eaeaea;
-                        color: #212121;
+                        background-color: #f3f2f1;
+                        color: #201f1e;
                       }
                       @media screen and (-ms-high-contrast: active){&:hover {
                         color: Highlight;
                       }
+                      &:hover .ms-Button-icon {
+                        color: #106ebe;
+                      }
+                      &:hover .ms-Button-menuIcon {
+                        color: #323130;
+                      }
                       &:active {
-                        background-color: #dadada;
-                        color: #000000;
+                        background-color: #edebe9;
+                        color: #201f1e;
+                      }
+                      &:active .ms-Button-icon {
+                        color: #005a9e;
+                      }
+                      &:active .ms-Button-menuIcon {
+                        color: #323130;
                       }
                   data-is-focusable={true}
                   name="Info"
@@ -1547,7 +1806,7 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                   role="menuitem"
                   type="button"
                 >
-                  <div
+                  <span
                     className=
                         ms-Button-flexContainer
                         {
@@ -1557,27 +1816,34 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                           height: 100%;
                           justify-content: center;
                         }
+                    data-automationid="splitbuttonprimary"
                   >
                     <i
+                      aria-hidden={true}
                       className=
+                          ms-Icon
                           ms-Button-icon
+                          {
+                            display: inline-block;
+                          }
                           {
                             -moz-osx-font-smoothing: grayscale;
                             -webkit-font-smoothing: antialiased;
-                            color: #106ebe;
-                            display: inline-block;
-                            flex-shrink: 0;
                             font-family: "FabricMDL2Icons";
-                            font-size: 16px;
                             font-style: normal;
                             font-weight: normal;
+                            speak: none;
+                          }
+                          {
+                            color: #0078d4;
+                            flex-shrink: 0;
+                            font-size: 16px;
                             height: 16px;
                             line-height: 16px;
                             margin-bottom: 0;
                             margin-left: 4px;
                             margin-right: 4px;
                             margin-top: 0;
-                            speak: none;
                             text-align: center;
                             vertical-align: middle;
                           }
@@ -1586,7 +1852,7 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                     >
                       
                     </i>
-                  </div>
+                  </span>
                 </button>
               </div>
             </div>

@@ -3,26 +3,37 @@
 exports[`Component Examples renders Icon.ImageSheet.Example.tsx correctly 1`] = `
 <div>
   <div
+    aria-hidden={true}
     className=
+        ms-Icon
         ms-Icon-imageContainer
-        ms-IconImageSheetExample-one
         {
           display: inline-block;
+        }
+        {
           overflow: hidden;
+        }
+        {
+          height: 44px;
+          margin-left: 27px;
+          width: 48px;
         }
     role="presentation"
   >
     <div
       className=
           ms-Image
-          ms-IconImageSheetExample-one-image
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
+            display: inline-block;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
             font-weight: 400;
+            left: -6px;
             overflow: hidden;
+            position: relative;
+            top: -4px;
           }
       style={
         Object {
@@ -48,26 +59,37 @@ exports[`Component Examples renders Icon.ImageSheet.Example.tsx correctly 1`] = 
     </div>
   </div>
   <div
+    aria-hidden={true}
     className=
+        ms-Icon
         ms-Icon-imageContainer
-        ms-IconImageSheetExample-check
         {
           display: inline-block;
+        }
+        {
           overflow: hidden;
+        }
+        {
+          height: 43px;
+          margin-left: 55px;
+          width: 35px;
         }
     role="presentation"
   >
     <div
       className=
           ms-Image
-          ms-IconImageSheetExample-check-image
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
+            display: inline-block;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
             font-weight: 400;
+            left: -60px;
             overflow: hidden;
+            position: relative;
+            top: -5px;
           }
       style={
         Object {
@@ -93,26 +115,37 @@ exports[`Component Examples renders Icon.ImageSheet.Example.tsx correctly 1`] = 
     </div>
   </div>
   <div
+    aria-hidden={true}
     className=
+        ms-Icon
         ms-Icon-imageContainer
-        ms-IconImageSheetExample-lock
         {
           display: inline-block;
+        }
+        {
           overflow: hidden;
+        }
+        {
+          height: 42px;
+          margin-left: 65px;
+          width: 35px;
         }
     role="presentation"
   >
     <div
       className=
           ms-Image
-          ms-IconImageSheetExample-lock-image
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
+            display: inline-block;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
             font-weight: 400;
             overflow: hidden;
+            position: relative;
+            top: -5px;
+            width: -109px;
           }
       style={
         Object {

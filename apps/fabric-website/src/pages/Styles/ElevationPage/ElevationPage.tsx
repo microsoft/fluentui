@@ -10,7 +10,7 @@ const baseUrl = 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master
 
 export const ElevationPage: React.StatelessComponent<IStylesPageProps> = props => {
   const { platform } = props;
-  return <StylesAreaPage {...props} {...ElevationPageProps[platform]} otherSections={_otherSections(platform)} />;
+  return <StylesAreaPage {...props} {...ElevationPageProps[platform]} otherSections={_otherSections(platform) as IPageSectionProps[]} />;
 };
 
 function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
@@ -56,7 +56,7 @@ function _renderDepthsTable() {
       columns={[
         {
           title: 'Level',
-          data: 'level',
+          rowProperty: 'level',
           percentWidth: 8
         },
         {
@@ -65,7 +65,7 @@ function _renderDepthsTable() {
         },
         {
           title: 'Usage',
-          data: 'usage',
+          rowProperty: 'usage',
           percentWidth: 25
         },
         {
@@ -92,7 +92,6 @@ function _renderDepthsTable() {
       ]}
       /* tslint:disable-next-line jsx-no-lambda */
       formatter={(column, row) => {
-        const content = row[column.data];
         const depth = depthUsage.filter(x => x.level === row.level)[0];
         switch (column.title) {
           case 'Core class':
@@ -116,7 +115,7 @@ function _renderDepthsTable() {
               </div>
             );
           default:
-            return content;
+            return row[column.rowProperty];
         }
       }}
     />

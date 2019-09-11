@@ -8,8 +8,7 @@ import {
   SuggestionsStore
 } from 'office-ui-fabric-react/lib/FloatingPicker';
 import { SearchBox } from 'office-ui-fabric-react/lib/SearchBox';
-// Fake data for examples. Not exported by any package.
-import { people } from '../../../ExtendedPicker/examples/PeopleExampleData';
+import { people } from '@uifabric/example-data';
 
 export interface IPeoplePickerExampleState {
   peopleList: IPersonaProps[];
@@ -85,7 +84,7 @@ export class FloatingPeoplePickerTypesExample extends React.Component<{}, IPeopl
     }
   };
 
-  private _onSearchChange = (newValue: string): void => {
+  private _onSearchChange = (ev: React.ChangeEvent<HTMLInputElement>, newValue: string): void => {
     if (newValue !== this.state.searchValue && this._picker.current) {
       this.setState({ searchValue: newValue });
       this._picker.current.onQueryStringChanged(newValue);

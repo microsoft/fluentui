@@ -9,9 +9,9 @@ import {
   DocumentCardType,
   IDocumentCardActivityPerson
 } from 'office-ui-fabric-react/lib/DocumentCard';
-import { Stack } from 'office-ui-fabric-react/lib/Stack';
+import { Stack, IStackTokens } from 'office-ui-fabric-react/lib/Stack';
 import { getTheme } from 'office-ui-fabric-react/lib/Styling';
-import { TestImages } from '../../../common/TestImages';
+import { TestImages } from '@uifabric/example-data';
 
 const people: IDocumentCardActivityPerson[] = [
   { name: 'Annie Lindqvist', profileImageSrc: TestImages.personaFemale },
@@ -28,7 +28,8 @@ export class DocumentCardCompactExample extends React.PureComponent {
         {
           name: 'Revenue stream proposal fiscal year 2016 version02.pptx',
           linkProps: {
-            href: 'http://bing.com'
+            href: 'http://bing.com',
+            target: '_blank'
           },
           previewImageSrc: TestImages.documentPreview,
           iconSrc: TestImages.iconPpt,
@@ -37,7 +38,8 @@ export class DocumentCardCompactExample extends React.PureComponent {
         {
           name: 'New Contoso Collaboration for Conference Presentation Draft',
           linkProps: {
-            href: 'http://bing.com'
+            href: 'http://bing.com',
+            target: '_blank'
           },
           previewImageSrc: TestImages.documentPreviewTwo,
           iconSrc: TestImages.iconPpt,
@@ -46,7 +48,8 @@ export class DocumentCardCompactExample extends React.PureComponent {
         {
           name: 'Spec Sheet for design',
           linkProps: {
-            href: 'http://bing.com'
+            href: 'http://bing.com',
+            target: '_blank'
           },
           previewImageSrc: TestImages.documentPreviewThree,
           iconSrc: TestImages.iconPpt,
@@ -55,7 +58,8 @@ export class DocumentCardCompactExample extends React.PureComponent {
         {
           name: 'Contoso Marketing Presentation',
           linkProps: {
-            href: 'http://bing.com'
+            href: 'http://bing.com',
+            target: '_blank'
           },
           previewImageSrc: TestImages.documentPreview,
           iconSrc: TestImages.iconPpt,
@@ -65,14 +69,16 @@ export class DocumentCardCompactExample extends React.PureComponent {
     };
 
     const theme = getTheme();
+    const { palette, fonts } = theme;
+
     const previewPropsUsingIcon: IDocumentCardPreviewProps = {
       previewImages: [
         {
-          previewIconProps: { iconName: 'OpenFile', styles: { root: { fontSize: 42, color: theme.palette.white } } },
+          previewIconProps: { iconName: 'OpenFile', styles: { root: { fontSize: fonts.superLarge.fontSize, color: palette.white } } },
           width: 144
         }
       ],
-      styles: { previewIcon: { backgroundColor: theme.palette.themePrimary } }
+      styles: { previewIcon: { backgroundColor: palette.themePrimary } }
     };
 
     const previewOutlookUsingIcon: IDocumentCardPreviewProps = {
@@ -82,9 +88,9 @@ export class DocumentCardCompactExample extends React.PureComponent {
             iconName: 'OutlookLogo',
             styles: {
               root: {
-                fontSize: 42,
+                fontSize: fonts.superLarge.fontSize,
                 color: '#0078d7',
-                backgroundColor: theme.palette.neutralLighterAlt
+                backgroundColor: palette.neutralLighterAlt
               }
             }
           },
@@ -92,12 +98,14 @@ export class DocumentCardCompactExample extends React.PureComponent {
         }
       ],
       styles: {
-        previewIcon: { backgroundColor: theme.palette.neutralLighterAlt }
+        previewIcon: { backgroundColor: palette.neutralLighterAlt }
       }
     };
 
+    const stackTokens: IStackTokens = { childrenGap: 20 };
+
     return (
-      <Stack gap={20}>
+      <Stack tokens={stackTokens}>
         {/* Document preview */}
         <DocumentCard type={DocumentCardType.compact} onClickHref="http://bing.com">
           <DocumentCardPreview previewImages={[previewProps.previewImages[0]]} />

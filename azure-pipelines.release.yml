@@ -1,0 +1,133 @@
+pr: none
+trigger: none
+
+# Customize build number to include major version
+# Example: v7_20190626.1
+name: 'v7_$(Date:yyyyMMdd)$(Rev:.r)'
+
+variables:
+  - group: 'Github and NPM secrets'
+
+pool:
+  vmImage: 'Ubuntu 16.04'
+
+schedules:
+  # minute 0, hour 12 in UTC (5am in UTC+7), any day of month, any month, days 1-5 of week (M-F)
+  # https://docs.microsoft.com/en-us/azure/devops/pipelines/build/triggers?tabs=yaml&view=azure-devops#supported-cron-syntax
+  - cron: '0 12 * * 1-5'
+    displayName: 'Daily release (M-F at 5am)' # will be 4am when DST ends unless trigger is updated
+    branches:
+      include:
+        - master
+
+steps:
+  - task: NodeTool@0
+    inputs:
+      versionSpec: '10.x'
+    displayName: 'Install Node.js'
+
+  - script: |
+      git config user.name "UI Fabric Build"
+      git config user.email "fabrictactical@service.microsoft.com"
+      git remote set-url origin https://$(githubUser):$(githubPAT)@github.com/OfficeDev/office-ui-fabric-react.git
+    displayName: Authenticate git for pushes
+
+  - script: |
+      yarn
+    displayName: yarn
+
+  - script: |
+      yarn generate-version-files
+    displayName: yarn generate-version-files
+
+  - script: |
+      yarn build --production
+    displayName: yarn build (Create production build)
+
+  - script: |
+      echo Making $(Build.ArtifactStagingDirectory)/api &&
+      mkdir -p $(Build.ArtifactStagingDirectory)/api &&
+      cp packages/*/dist/*.api.json $(Build.ArtifactStagingDirectory)/api
+    displayName: Copy api.json files to artifact staging directory
+
+  - task: PublishBuildArtifacts@1
+    inputs:
+      pathtoPublish: $(Build.ArtifactStagingDirectory)/api
+      artifactName: 'api-json'
+      publishLocation: 'Container'
+    displayName: 'Publish Artifact: api.json'
+
+  - task: PublishBuildArtifacts@1
+    inputs:
+      pathtoPublish: apps/fabric-website/dist
+      artifactName: 'fabric-website'
+      publishLocation: 'Container'
+    displayName: 'Publish Artifact: Fabric Website'
+
+  - task: PublishBuildArtifacts@1
+    inputs:
+      pathtoPublish: apps/fabric-website/index.html
+      artifactName: 'fabric-website-index'
+      publishLocation: 'Container'
+    displayName: 'Publish Artifact: Fabric Website index.html'
+
+  - task: PublishBuildArtifacts@1
+    inputs:
+      pathtoPublish: packages/office-ui-fabric-react/dist
+      artifactName: 'fabric'
+      publishLocation: 'Container'
+    displayName: 'Publish Artifact: Fabric'
+
+  - script: |
+      npm run publish:beachball -- -b origin/master -n $(npmToken) --access public -y
+    displayName: 'Publish Change Requests and Bump Versions'
+
+  - script: |
+      node scripts/updateReleaseNotes/index.js --token=$(githubPAT) --apply --debug
+    displayName: 'Update github release notes'
+
+  - script: |
+      oufrVersion=$(node -p -e "require('./packages/office-ui-fabric-react/package.json').version") &&
+      echo "OUFR Version: $oufrVersion" &&
+      echo $oufrVersion > oufr-version.txt &&
+      echo "##vso[task.setvariable variable=oufrVersion;]$oufrVersion"
+    displayName: 'Set OUFR Version Task Variable'
+
+  - task: PublishBuildArtifacts@1
+    inputs:
+      pathtoPublish: ./oufr-version.txt
+      artifactName: 'oufr-version'
+      publishLocation: 'Container'
+    displayName: 'Publish Artifact: oufr-version.txt'
+
+  - script: |
+      npm run create-public-flight-config -- --baseCDNUrl https://fabricweb.azureedge.net/fabric-website/$(Build.BuildNumber)/
+    workingDirectory: apps/fabric-website
+    displayName: 'Generate Fabric Website Flight Manifest Files'
+
+  - task: PublishBuildArtifacts@1
+    inputs:
+      pathtoPublish: apps/fabric-website/flights
+      artifactName: 'fabric-website-manifests'
+      publishLocation: 'Container'
+    displayName: 'Publish Artifact: Website manifests'
+
+  - task: PublishBuildArtifacts@1
+    inputs:
+      pathtoPublish: apps/fabric-website-resources/dist
+      artifactName: 'fabric-website-resources'
+      publishLocation: 'Container'
+    displayName: 'Publish Artifact: Fabric Website Resources'
+
+  - script: |
+      yarn workspace @uifabric/build just generate-package-manifest
+    displayName: 'Generates a package manifest'
+
+  - task: AzureUpload@1
+    displayName: Upload Package Manifest
+    inputs:
+      SourcePath: 'package-manifest.json'
+      azureSubscription: 'UI Fabric (bac044cf-49e1-4843-8dda-1ce9662606c8)'
+      storage: fabricweb
+      ContainerName: 'fabric'
+      BlobPrefix: 'package-manifest/latest'

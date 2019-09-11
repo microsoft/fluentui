@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`MaskedTextField renders TextField correctly 1`] = `
+exports[`MaskedTextField renders correctly 1`] = `
 <div
   className=
       ms-TextField
@@ -36,11 +36,11 @@ exports[`MaskedTextField renders TextField correctly 1`] = `
             -webkit-font-smoothing: antialiased;
             box-shadow: none;
             box-sizing: border-box;
-            color: #333333;
+            color: #323130;
             display: block;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
-            font-weight: 400;
+            font-weight: 600;
             margin-bottom: 0px;
             margin-left: 0px;
             margin-right: 0px;
@@ -53,6 +53,7 @@ exports[`MaskedTextField renders TextField correctly 1`] = `
             word-wrap: break-word;
           }
       htmlFor="TextField0"
+      id="TextFieldLabel2"
     >
       With input mask
     </label>
@@ -62,7 +63,8 @@ exports[`MaskedTextField renders TextField correctly 1`] = `
           {
             align-items: stretch;
             background: #ffffff;
-            border: 1px solid #a6a6a6;
+            border-radius: 2px;
+            border: 1px solid #8a8886;
             box-shadow: none;
             box-sizing: border-box;
             cursor: text;
@@ -80,7 +82,7 @@ exports[`MaskedTextField renders TextField correctly 1`] = `
             position: relative;
           }
           &:hover {
-            border-color: #333333;
+            border-color: #323130;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
             border-color: Highlight;
@@ -88,6 +90,7 @@ exports[`MaskedTextField renders TextField correctly 1`] = `
     >
       <input
         aria-invalid={false}
+        aria-labelledby="TextFieldLabel2"
         className=
             ms-TextField-field
             {
@@ -99,7 +102,7 @@ exports[`MaskedTextField renders TextField correctly 1`] = `
               border: none;
               box-shadow: none;
               box-sizing: border-box;
-              color: #333333;
+              color: #323130;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
               font-weight: 400;
@@ -110,13 +113,19 @@ exports[`MaskedTextField renders TextField correctly 1`] = `
               min-width: 0px;
               outline: 0px;
               padding-bottom: 0;
-              padding-left: 12px;
-              padding-right: 12px;
+              padding-left: 8px;
+              padding-right: 8px;
               padding-top: 0;
               text-overflow: ellipsis;
               width: 100%;
             }
-            &:active, &:focus, &:hover {
+            &:active {
+              outline: 0px;
+            }
+            &:focus {
+              outline: 0px;
+            }
+            &:hover {
               outline: 0px;
             }
             &::-ms-clear {
@@ -125,7 +134,7 @@ exports[`MaskedTextField renders TextField correctly 1`] = `
             &::placeholder {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
-              color: #666666;
+              color: #605e5c;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
               font-weight: 400;
@@ -134,7 +143,16 @@ exports[`MaskedTextField renders TextField correctly 1`] = `
             &:-ms-input-placeholder {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
-              color: #666666;
+              color: #605e5c;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
+              opacity: 1;
+            }
+            &::-ms-input-placeholder {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              color: #605e5c;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
               font-weight: 400;

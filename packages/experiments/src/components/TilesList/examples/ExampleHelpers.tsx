@@ -1,5 +1,5 @@
-import { TilesGridMode, ITilesGridItem, ITilesGridSegment, ITileSize } from '../TilesList.types';
-import { lorem } from '@uifabric/example-app-base';
+import { TilesGridMode, ITilesGridItem, ITilesGridSegment, ITileSize } from '@uifabric/experiments/lib/TilesList';
+import { lorem } from '@uifabric/example-data';
 
 type IAspectRatioByProbability = { [probability: string]: number };
 

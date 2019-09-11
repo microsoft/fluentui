@@ -1,5 +1,6 @@
+import * as React from 'react';
 import { ITheme, IStyle } from '../../Styling';
-import { IBaseProps, IRefObject, IStyleFunctionOrObject } from '../../Utilities';
+import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 import { IColor } from '../../utilities/color/interfaces';
 
 /**
@@ -13,7 +14,7 @@ export interface IColorPicker {
 /**
  * {@docCategory ColorPicker}
  */
-export interface IColorPickerProps extends IBaseProps<IColorPicker> {
+export interface IColorPickerProps {
   /**
    * Gets the component ref.
    */
@@ -23,14 +24,6 @@ export interface IColorPickerProps extends IBaseProps<IColorPicker> {
    * Object or CSS-compatible string to describe the color.
    */
   color: IColor | string;
-
-  /**
-   * Callback for when the user changes the color.
-   * (To preserve existing behavior, this is also called when the color changes via props.)
-   *
-   * @deprecated Use `onChange` instead.
-   */
-  onColorChanged?: (color: string, colorObject: IColor) => void;
 
   /**
    * Callback for when the user changes the color.
@@ -87,6 +80,12 @@ export interface IColorPickerProps extends IBaseProps<IColorPicker> {
    * Call to provide customized styling that will layer on top of the variant rules.
    */
   styles?: IStyleFunctionOrObject<IColorPickerStyleProps, IColorPickerStyles>;
+
+  /**
+   * Whether to show color preview box.
+   * @defaultvalue false
+   */
+  showPreview?: boolean;
 }
 
 /**
@@ -114,9 +113,14 @@ export interface IColorPickerStyles {
   root?: IStyle;
 
   /**
-   * Style set for the panel element that contains the color rectangle.
+   * Style set for the panel element that contains the color rectangle, color sliders and inputs .
    */
   panel?: IStyle;
+
+  /**
+   * Style set for the panel element that contains the color rectangle
+   */
+  colorRectangle?: IStyle;
 
   /**
    * Style set for the table element that contains the color sliders and inputs.
@@ -137,4 +141,24 @@ export interface IColorPickerStyles {
    * Style set for each text field input.
    */
   input?: IStyle;
+
+  /**
+   * Color Square
+   */
+  colorSquare?: IStyle;
+
+  /**
+   * flexContainer
+   */
+  flexContainer?: IStyle;
+
+  /**
+   * flexSlider
+   */
+  flexSlider?: IStyle;
+
+  /**
+   * flexPreviewBox
+   */
+  flexPreviewBox?: IStyle;
 }

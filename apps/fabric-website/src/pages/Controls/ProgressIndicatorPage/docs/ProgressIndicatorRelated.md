@@ -1,2 +1,0 @@
-- [Web Progress Indicator](#/controls/web/progressindicator)
-- [iOS Progress Indicator](#/controls/ios/progressindicator)

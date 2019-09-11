@@ -18,7 +18,6 @@ exports[`TagPicker renders correctly 1`] = `
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
-    role="presentation"
   >
     <div
       className="ms-SelectionZone"
@@ -37,7 +36,8 @@ exports[`TagPicker renders correctly 1`] = `
             ms-BasePicker-text
             {
               align-items: center;
-              border: 1px solid #a6a6a6;
+              border-radius: 2px;
+              border: 1px solid #8a8886;
               box-sizing: border-box;
               display: flex;
               flex-wrap: wrap;
@@ -46,7 +46,7 @@ exports[`TagPicker renders correctly 1`] = `
               position: relative;
             }
             &:hover {
-              border-color: #333333;
+              border-color: #323130;
             }
       >
         <input
@@ -60,6 +60,7 @@ exports[`TagPicker renders correctly 1`] = `
               ms-BasePicker-input
               {
                 align-self: flex-end;
+                border-radius: 2px;
                 border: none;
                 flex-grow: 1;
                 height: 30px;

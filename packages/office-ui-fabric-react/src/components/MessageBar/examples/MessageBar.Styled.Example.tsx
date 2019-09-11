@@ -23,7 +23,9 @@ export const MessageBarStyledExample: React.StatelessComponent = () => (
         }}
       >
         Info lorem ipsum dolor sit amet, a elit sem interdum consectetur adipiscing elit.{' '}
-        <Link href="www.bing.com">Visit our website.</Link>
+        <Link href="www.bing.com" target="_blank">
+          Visit our website.
+        </Link>
       </MessageBar>
     </StackItem>
 
@@ -50,7 +52,10 @@ export const MessageBarStyledExample: React.StatelessComponent = () => (
         onDismiss={log('test')}
         dismissButtonAriaLabel="Close"
       >
-        Lorem ipsum dolor sit amet, a elit sem interdum consectetur adipiscing elit. <Link href="www.bing.com">Visit our website.</Link>
+        Lorem ipsum dolor sit amet, a elit sem interdum consectetur adipiscing elit.{' '}
+        <Link href="www.bing.com" target="_blank">
+          Visit our website.
+        </Link>
       </MessageBar>
     </StackItem>
 
@@ -97,7 +102,9 @@ export const MessageBarStyledExample: React.StatelessComponent = () => (
         lacus. Vivamus ac efficitur leo. Cras faucibus mauris libero, ac placerat erat euismod et. Donec pulvinar commodo odio sit amet
         faucibus. In hac habitasse platea dictumst. Duis eu ante commodo, condimentum nibh pellentesque, laoreet enim. Fusce massa lorem,
         ultrices eu mi a, fermentum suscipit magna. Integer porta purus pulvinar, hendrerit felis eget, condimentum mauris.{' '}
-        <Link href="www.bing.com">Visit our website.</Link>
+        <Link href="www.bing.com" target="_blank">
+          Visit our website.
+        </Link>
       </MessageBar>
     </StackItem>
 
@@ -117,7 +124,10 @@ export const MessageBarStyledExample: React.StatelessComponent = () => (
           </div>
         }
       >
-        Lorem ipsum dolor sit amet, a elit sem interdum consectetur adipiscing elit. <Link href="www.bing.com">Visit our website.</Link>
+        Lorem ipsum dolor sit amet, a elit sem interdum consectetur adipiscing elit.{' '}
+        <Link href="www.bing.com" target="_blank">
+          Visit our website.
+        </Link>
       </MessageBar>
     </StackItem>
 
@@ -134,7 +144,10 @@ export const MessageBarStyledExample: React.StatelessComponent = () => (
         messageBarType={MessageBarType.success}
         isMultiline={false}
       >
-        Lorem ipsum dolor sit amet. <Link href="www.bing.com">Visit our website.</Link>
+        Lorem ipsum dolor sit amet.{' '}
+        <Link href="www.bing.com" target="_blank">
+          Visit our website.
+        </Link>
       </MessageBar>
     </StackItem>
 
@@ -162,7 +175,10 @@ export const MessageBarStyledExample: React.StatelessComponent = () => (
           </div>
         }
       >
-        Lorem ipsum dolor sit amet, a elit sem interdum consectetur adipiscing elit. <Link href="www.bing.com">Visit our website.</Link>
+        Lorem ipsum dolor sit amet, a elit sem interdum consectetur adipiscing elit.{' '}
+        <Link href="www.bing.com" target="_blank">
+          Visit our website.
+        </Link>
       </MessageBar>
     </StackItem>
 
@@ -197,7 +213,9 @@ export const MessageBarStyledExample: React.StatelessComponent = () => (
         lacus. Vivamus ac efficitur leo. Cras faucibus mauris libero, ac placerat erat euismod et. Donec pulvinar commodo odio sit amet
         faucibus. In hac habitasse platea dictumst. Duis eu ante commodo, condimentum nibh pellentesque, laoreet enim. Fusce massa lorem,
         ultrices eu mi a, fermentum suscipit magna. Integer porta purus pulvinar, hendrerit felis eget, condimentum mauris.
-        <Link href="www.bing.com">Visit our website.</Link>
+        <Link href="www.bing.com" target="_blank">
+          Visit our website.
+        </Link>
       </MessageBar>
     </StackItem>
   </Stack>

@@ -92,7 +92,8 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
     this._focusOnUpdate = false;
   }
 
-  public componentWillReceiveProps(nextProps: ICalendarProps): void {
+  // tslint:disable-next-line function-name
+  public UNSAFE_componentWillReceiveProps(nextProps: ICalendarProps): void {
     const { autoNavigateOnSelection, value, today = new Date() } = nextProps;
 
     // Make sure auto-navigation is supported for programmatic changes to selected date, i.e.,
@@ -138,7 +139,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
       yearPickerHidden,
       today
     } = this.props;
-    const nativeProps = getNativeProps(this.props, divProperties, ['value']);
+    const nativeProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties, ['value']);
 
     const { selectedDate, navigatedDayDate, navigatedMonthDate, isMonthPickerVisible, isDayPickerVisible } = this.state;
     const onHeaderSelect = showMonthPickerAsOverlay ? this._onHeaderSelect : undefined;
@@ -324,6 +325,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
     }
 
     this._navigateDayPickerDay(today!);
+    this._focusOnUpdate = true;
   };
 
   private _onGotoTodayClick = (ev: React.MouseEvent<HTMLElement>): void => {

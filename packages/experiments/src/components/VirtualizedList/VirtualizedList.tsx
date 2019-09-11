@@ -2,7 +2,7 @@ import * as React from 'react';
 import { IVirtualizedListProps } from './VirtualizedList.types';
 import { IScrollContainerContext, ScrollContainerContextTypes } from '../../utilities/scrolling/ScrollContainer';
 import { IObjectWithKey } from 'office-ui-fabric-react/lib/Selection';
-import { BaseComponent, getParent, css, createRef } from 'office-ui-fabric-react/lib/Utilities';
+import { BaseComponent, getParent, css } from 'office-ui-fabric-react/lib/Utilities';
 
 interface IRange {
   /** Start of range */
@@ -26,7 +26,7 @@ export class VirtualizedList<TItem extends IObjectWithKey> extends BaseComponent
   public static contextTypes: typeof ScrollContainerContextTypes = ScrollContainerContextTypes;
   public context: IScrollContainerContext;
 
-  private _root = createRef<HTMLDivElement>();
+  private _root = React.createRef<HTMLDivElement>();
 
   private _spacerElements: { [key: string]: HTMLElement } = {};
 
@@ -48,7 +48,9 @@ export class VirtualizedList<TItem extends IObjectWithKey> extends BaseComponent
   }
 
   public componentDidMount(): void {
-    this._events.on(this._root, 'focus', this._onFocus, true);
+    if (this._root.current) {
+      this._events.on(this._root.current, 'focus', this._onFocus, true);
+    }
 
     this.context.scrollContainer.registerVisibleCallback((scrollTop: number) => {
       this._render(scrollTop);
@@ -61,7 +63,8 @@ export class VirtualizedList<TItem extends IObjectWithKey> extends BaseComponent
     this._updateObservedElements();
   }
 
-  public componentWillUpdate(): void {
+  // tslint:disable-next-line function-name
+  public UNSAFE_componentWillUpdate(): void {
     for (const key of Object.keys(this._spacerElements)) {
       const ref = this._spacerElements[key];
       this.context.scrollContainer.unobserve(ref);
@@ -174,7 +177,7 @@ export class VirtualizedList<TItem extends IObjectWithKey> extends BaseComponent
     }
 
     // tslint:disable-next-line:jsx-ban-props
-    return <ItemTag ref={this._spacerRef.bind(this, key)} key={key} style={{ height: spacerHeight }} />;
+    return React.createElement(ItemTag, { ref: this._spacerRef.bind(this, key), key, style: { height: spacerHeight } });
   }
 
   private _spacerRef = (key: string, ref: HTMLElement): void => {

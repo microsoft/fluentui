@@ -1,36 +1,17 @@
 import * as React from 'react';
-import { BaseComponent, classNamesFunction } from '../../../Utilities';
+import { classNamesFunction, initializeComponentRef, EventGroup } from '../../../Utilities';
 import { IColorSliderProps, IColorSliderStyleProps, IColorSliderStyles } from './ColorSlider.types';
 
 const getClassNames = classNamesFunction<IColorSliderStyleProps, IColorSliderStyles>();
 
-/**
- * {@docCategory ColorPicker}
- */
-export interface IColorSliderProps {
-  componentRef?: () => void;
-  minValue?: number;
-  maxValue?: number;
-  value?: number;
-  thumbColor?: string;
-  overlayStyle?: any;
-  onChange?: (event: React.MouseEvent<HTMLElement>, newValue?: number) => void;
-  onChanged?: (newValue: number) => void;
-
-  className?: string;
-  style?: any;
-}
-
 export interface IColorSliderState {
-  isAdjusting?: boolean;
-  origin?: { x: number; originalValue: number };
   currentValue?: number;
 }
 
 /**
  * {@docCategory ColorPicker}
  */
-export class ColorSliderBase extends BaseComponent<IColorSliderProps, IColorSliderState> {
+export class ColorSliderBase extends React.Component<IColorSliderProps, IColorSliderState> {
   public static defaultProps = {
     minValue: 0,
     maxValue: 100,
@@ -38,28 +19,31 @@ export class ColorSliderBase extends BaseComponent<IColorSliderProps, IColorSlid
     value: 0
   };
 
+  private _events: EventGroup;
   private _root = React.createRef<HTMLDivElement>();
 
   constructor(props: IColorSliderProps) {
     super(props);
 
-    this._warnDeprecations({
-      onChanged: 'onChange'
-    });
+    initializeComponentRef(this);
+    this._events = new EventGroup(this);
 
     const { value } = this.props;
 
     this.state = {
-      isAdjusting: false,
-      origin: undefined,
       currentValue: value
     };
   }
 
-  public componentWillReceiveProps(newProps: IColorSliderProps): void {
+  // tslint:disable-next-line function-name
+  public UNSAFE_componentWillReceiveProps(newProps: IColorSliderProps): void {
     if (newProps && newProps.value) {
       this.setState({ currentValue: newProps.value });
     }
+  }
+
+  public componentWillUnmount() {
+    this._events.dispose();
   }
 
   public render(): JSX.Element {
@@ -107,23 +91,18 @@ export class ColorSliderBase extends BaseComponent<IColorSliderProps, IColorSlid
       return;
     }
 
-    const { onChange, onChanged, minValue, maxValue } = this.props;
+    const { onChange, minValue, maxValue } = this.props;
     const rectSize = this._root.current.getBoundingClientRect();
 
     const currentPercentage = (ev.clientX - rectSize.left) / rectSize.width;
     const newValue = Math.min(maxValue!, Math.max(minValue!, currentPercentage * maxValue!));
 
     this.setState({
-      isAdjusting: true,
       currentValue: newValue
     });
 
     if (onChange) {
       onChange(ev, newValue);
-    }
-
-    if (onChanged) {
-      onChanged(newValue);
     }
 
     ev.preventDefault();
@@ -132,10 +111,5 @@ export class ColorSliderBase extends BaseComponent<IColorSliderProps, IColorSlid
 
   private _onMouseUp = (ev: React.MouseEvent<HTMLElement>): void => {
     this._events.off();
-
-    this.setState({
-      isAdjusting: false,
-      origin: undefined
-    });
   };
 }

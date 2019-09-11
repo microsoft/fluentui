@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { FocusZone } from './FocusZone';
-import { IRefObject } from '../../Utilities';
+import { IRefObject, IPoint } from '../../Utilities';
 
 /**
  * FocusZone component class interface.
@@ -23,6 +23,13 @@ export interface IFocusZone {
    * @returns True if focus could be set to an active element, false if no operation was taken.
    */
   focusElement(childElement?: HTMLElement): boolean;
+
+  /**
+   * Forces horizontal alignment in the context of vertical arrowing to use specific point as the reference, rather than a center based on
+   * the last horizontal motion.
+   * @param point - the new reference point.
+   */
+  setFocusAlignment(point: IPoint): void;
 }
 
 /**
@@ -62,7 +69,7 @@ export interface IFocusZoneProps extends React.HTMLAttributes<HTMLElement | Focu
    * Element type the root element will use. Default is "div".
    * @deprecated Use 'as' instead.
    */
-  elementType?: keyof React.ReactHTML;
+  elementType?: any /* TODO should be `keyof React.ReactHTML`, tracking with https://github.com/Microsoft/TypeScript/issues/30050 */;
 
   /**
    * A component that should be used as the root element of the FocusZone component.
@@ -84,11 +91,13 @@ export interface IFocusZoneProps extends React.HTMLAttributes<HTMLElement | Focu
 
   /**
    * Sets the aria-labelledby attribute.
+   * @deprecated Directly use the `aria-labelledby` attribute instead
    */
   ariaLabelledBy?: string;
 
   /**
    * Sets the aria-describedby attribute.
+   * @deprecated Directly use the `aria-describedby` attribute instead
    */
   ariaDescribedBy?: string;
 
@@ -154,7 +163,6 @@ export interface IFocusZoneProps extends React.HTMLAttributes<HTMLElement | Focu
    */
   onFocusNotification?: () => void;
 }
-
 /**
  * {@docCategory FocusZone}
  */
@@ -185,5 +193,11 @@ export enum FocusZoneDirection {
   horizontal = 1,
 
   /** React to all arrows. */
-  bidirectional = 2
+  bidirectional = 2,
+
+  /**
+   * React to all arrows. Navigate next item in DOM on right/down arrow keys and previous - left/up arrow keys.
+   * Right and Left arrow keys are swapped in RTL mode.
+   */
+  domOrder = 3
 }

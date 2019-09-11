@@ -1,6 +1,275 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Mon, 06 May 2019 12:35:11 GMT and should not be manually modified.
+This log was last generated on Wed, 04 Sep 2019 04:09:58 GMT and should not be manually modified.
+
+## 7.6.4
+Wed, 04 Sep 2019 04:09:58 GMT
+
+### Patches
+
+- fix version file (kchau@microsoft.com)
+## 7.6.3
+Fri, 30 Aug 2019 12:30:57 GMT
+
+### Patches
+
+- Deprecate example data exports (use `@uifabric/example-data` instead) (elcraig@microsoft.com)
+## 7.6.2
+Mon, 26 Aug 2019 12:30:49 GMT
+
+### Patches
+
+- Move most editor-related logic to EditorWrapper (elcraig@microsoft.com)
+## 7.6.1
+Fri, 23 Aug 2019 12:35:28 GMT
+
+### Patches
+
+- Update npmignores, delete unused jest setup files (elcraig@microsoft.com)
+- Get rid of monaco-editor-webpack-plugin (elcraig@microsoft.com)
+- Fix up readme and package.json descriptions (elcraig@microsoft.com)
+
+## 7.6.0
+Thu, 15 Aug 2019 12:30:43 GMT
+
+### Minor changes
+
+- Rename deprecated React lifecycle functions to prevent development mode warnings in React 16.9. (jagore@microsoft.com)
+
+### Patches
+
+- Fix example issues from Accessibility Insights (elcraig@microsoft.com)
+
+## 7.5.1
+Tue, 13 Aug 2019 12:31:12 GMT
+
+### Patches
+
+- Updated snpashots and styles which use $ syntax. (dzearing@microsoft.com)
+
+## 7.5.0
+Mon, 12 Aug 2019 12:30:25 GMT
+
+### Minor changes
+
+- Adding import scripts check (esteban.230@hotmail.com)
+
+## 7.4.1
+Thu, 08 Aug 2019 12:32:41 GMT
+
+### Patches
+
+- getQueryParam gracefully falls back when window is not defined (jdh@microsoft.com)
+- Add check for monaco global in example card (elcraig@microsoft.com)
+
+## 7.4.0
+Wed, 07 Aug 2019 12:32:28 GMT
+
+### Minor changes
+
+- Updating styles to not use $ syntax. (dzearing@microsoft.com)
+
+## 7.3.0
+Tue, 06 Aug 2019 12:32:07 GMT
+
+### Minor changes
+
+- Tsx-editor: Adding error bar (esteban.230@hotmail.com)
+
+### Patches
+
+- Tsx editor - Code not showing fix (esteban.230@hotmail.com)
+
+## 7.2.1
+Mon, 05 Aug 2019 12:33:41 GMT
+
+### Patches
+
+- updated style to add spinner for loading editor (t-nikaz@microsoft.com)
+
+## 7.2.0
+Fri, 02 Aug 2019 12:33:29 GMT
+
+### Minor changes
+
+- Website changes to work with monaco editor state management (t-nikaz@microsoft.com)
+
+## 7.1.7
+Tue, 30 Jul 2019 12:28:32 GMT
+
+### Patches
+
+- Replace the usage of deprecated Stack props to remove the console warnings. (vibraga@microsoft.com)
+
+## 7.1.6
+Mon, 22 Jul 2019 12:28:42 GMT
+
+### Patches
+
+- Add a way to get settings from query or session storage (elcraig@microsoft.com)
+
+## 7.1.5
+Wed, 17 Jul 2019 18:58:57 GMT
+
+### Patches
+
+- Allowing example title to show completely even when it goes past one line. (Humberto.Morimoto@microsoft.com)
+- Adding @types/react and @types/react-dom to package.json that have peer dependencies on react and react-dom. (makotom@microsoft.com)
+- Fix API reference tables' flash of content on scroll (706967+KevinTCoughlin@users.noreply.github.com)
+
+## 7.1.3
+Mon, 01 Jul 2019 18:51:42 GMT
+
+### Patches
+
+- adds react-app-polyfill
+
+## 7.1.2
+Thu, 27 Jun 2019 18:25:04 GMT
+
+### Patches
+
+- Addressing a variety of problems related to style recalculations.
+
+## 7.1.1
+Thu, 20 Jun 2019 12:27:38 GMT
+
+### Patches
+
+- Renamed instances of "Microsoft UI Fabric" to "UI Fabric"
+
+## 7.1.0
+Wed, 19 Jun 2019 12:27:03 GMT
+
+### Minor changes
+
+- Adds conditional logic to the render of specific regions on the page to enable use of the examples on docs.microsoft portal for OUFR.
+
+## 7.0.4
+Tue, 18 Jun 2019 12:26:19 GMT
+
+### Patches
+
+- ColorPalette: fix missing react code breaking rendering
+
+## 7.0.3
+Fri, 14 Jun 2019 12:26:30 GMT
+
+### Patches
+
+- Fix export to codepen in fabric 7
+- Fix missing assets in production build.
+
+## 7.0.2
+Thu, 13 Jun 2019 00:24:48 GMT
+
+### Patches
+
+- Initial release of Fabric 7
+
+## 7.0.0
+Wed, 12 Jun 2019 00:42:26 GMT
+
+### Breaking changes
+
+- Remove deprecated components; some styling fixes
+
+### Minor changes
+
+- Move Router to example-app-base
+
+### Patches
+
+- Revert example-app-base font changes
+- Update and dedupe React deps.
+- Remove use of deprecated @autobind decorator
+- Nav, Calendar, and DatePicker move into office-ui-fabric-react
+
+## 6.23.1
+Wed, 29 May 2019 12:21:24 GMT
+
+### Patches
+
+- Revert styled perf fixes temporarily.
+
+## 6.23.0
+Wed, 22 May 2019 12:21:34 GMT
+
+### Minor changes
+
+- Addressing a variety of problems related to style recalculations.
+
+### Patches
+
+- Use new fluent styles in ExampleCard; code highlighting cleanup; unused style cleanup
+- Update withPlatform return type
+
+## 6.22.0
+Tue, 21 May 2019 12:20:44 GMT
+
+### Minor changes
+
+- Add createDemoApp
+
+## 6.21.1
+Mon, 20 May 2019 12:22:33 GMT
+
+### Patches
+
+- ApiReferencesTable: use maps and combine if statements
+
+## 6.21.0
+Wed, 15 May 2019 12:31:44 GMT
+
+### Minor changes
+
+- Add randomEntry utility
+
+### Patches
+
+- PlatformContext: improve types, add displayName
+
+## 6.20.1
+Tue, 14 May 2019 07:50:30 GMT
+
+### Patches
+
+- getSiteArea now pulls name from page definition instead of URL
+- Update Fabric assets link
+
+## 6.20.0
+Tue, 14 May 2019 01:56:43 GMT
+
+### Minor changes
+
+- Add `themeSlots` api to ColorPalette.
+- ApiReferencesTable/ApiReferencesTableSet: handle type aliases.
+
+## 6.19.0
+Thu, 09 May 2019 12:35:50 GMT
+
+### Minor changes
+
+- Add SiteMessageBar component and renderSiteMessageBar api to ISiteDefinition
+
+## 6.18.0
+Tue, 07 May 2019 12:34:52 GMT
+
+### Minor changes
+
+- Use kebab case IDs and add more jump link options
+
+### Patches
+
+- Fix UHF header style bugs.
+- Allow regex redirects
+
+## 6.17.4
+Mon, 06 May 2019 19:32:45 GMT
+
+### Patches
+
+- Fix UHF styling conflicts
 
 ## 6.17.3
 Mon, 06 May 2019 12:35:11 GMT
@@ -299,7 +568,7 @@ Mon, 08 Oct 2018 12:24:15 GMT
 
 ### Patches
 
-- Moving tslint/prettier dependencies 
+- Moving tslint/prettier dependencies
 
 ## 6.7.3
 Fri, 21 Sep 2018 14:25:46 GMT

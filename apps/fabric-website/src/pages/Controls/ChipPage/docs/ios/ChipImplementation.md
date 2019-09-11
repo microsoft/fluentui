@@ -1,14 +1,17 @@
-### Designs
-
-Coming soon
-
 ### Control name
 
 `MSBadgeView` Individual chip/badge object
+
 `MSBadgeField` Input field lets users type in names that get resolved into badges, enabled delete and drag & drop.
 
-### Library
+### Source code
 
-[UI Fabric iOS](https://github.com/OfficeDev/ui-fabric-ios)
+[MSBadgeView](https://github.com/OfficeDev/ui-fabric-ios/blob/master/OfficeUIFabric/Badge%20Field/MSBadgeView.swift)
 
-[Sample Code](https://github.com/OfficeDev/ui-fabric-ios/blob/master/OfficeUIFabric.Demo/OfficeUIFabric.Demo/Demos/MSBadgeFieldDemoController.swift)
+[MSBadgeField](https://github.com/OfficeDev/ui-fabric-ios/blob/master/OfficeUIFabric/Badge%20Field/MSBadgeField.swift)
+
+### Sample code
+
+[MSBadgeView demo](https://github.com/OfficeDev/ui-fabric-ios/blob/master/OfficeUIFabric.Demo/OfficeUIFabric.Demo/Demos/MSBadgeViewDemoController.swift)
+
+[MSBadgeField demo](https://github.com/OfficeDev/ui-fabric-ios/blob/master/OfficeUIFabric.Demo/OfficeUIFabric.Demo/Demos/MSBadgeFieldDemoController.swift)

@@ -1,11 +1,11 @@
 import * as React from 'react';
 
-import { ColorPalette } from '@uifabric/example-app-base/lib/index2';
+import { ColorPalette, MarkdownHeader } from '@uifabric/example-app-base/lib/index2';
 
 export const Exchange = () => {
   return (
     <>
-      <h2>Exchange</h2>
+      <MarkdownHeader as="h2">Exchange</MarkdownHeader>
       <ColorPalette
         colors={[
           {
@@ -75,7 +75,7 @@ export const Exchange = () => {
         ]}
       />
 
-      <h3>Neutrals</h3>
+      <MarkdownHeader as="h3">Neutrals</MarkdownHeader>
       <ColorPalette
         colors={[
           {

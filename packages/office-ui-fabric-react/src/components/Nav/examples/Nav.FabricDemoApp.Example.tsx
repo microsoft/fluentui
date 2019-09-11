@@ -1,11 +1,12 @@
 import * as React from 'react';
 import { Nav } from 'office-ui-fabric-react/lib/Nav';
 
-export const NavFabricDemoAppExample: React.StatelessComponent = () => {
+export const NavFabricDemoAppExample: React.FunctionComponent = () => {
   return (
     <Nav
       styles={{ root: { width: 300 } }}
       expandButtonAriaLabel="Expand or collapse"
+      ariaLabel="Nav example similiar to one found in this demo page"
       groups={[
         {
           name: 'Basic components',
@@ -38,12 +39,12 @@ export const NavFabricDemoAppExample: React.StatelessComponent = () => {
             {
               key: 'ExtendedPeoplePicker',
               name: 'ExtendedPeoplePicker',
-              url: '#examples/extendedpeoplepicker'
+              url: '#/examples/extendedpeoplepicker'
             },
             {
               key: 'GroupedList',
               name: 'GroupedList',
-              url: '#examples/groupedlist'
+              url: '#/examples/groupedlist'
             }
           ]
         },
@@ -53,17 +54,17 @@ export const NavFabricDemoAppExample: React.StatelessComponent = () => {
             {
               key: 'FocusTrapZone',
               name: 'FocusTrapZone',
-              url: '#examples/focustrapzone'
+              url: '#/examples/focustrapzone'
             },
             {
               key: 'FocusZone',
               name: 'FocusZone',
-              url: '#examples/focuszone'
+              url: '#/examples/focuszone'
             },
             {
               key: 'MarqueeSelection',
               name: 'MarqueeSelection',
-              url: '#examples/marqueeselection'
+              url: '#/examples/marqueeselection'
             }
           ]
         }

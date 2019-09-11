@@ -1,9 +1,16 @@
 import * as React from 'react';
-import { Tile, getTileLayout, renderTileWithLayout } from '@uifabric/experiments/lib/Tile';
-import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
-import { SignalField, NewSignal, CommentsSignal, TrendingSignal, SharedSignal } from '../../signals/Signals';
-import { lorem } from '@uifabric/example-app-base';
-import { css, ISize, fitContentToBounds } from '@uifabric/experiments/lib/Utilities';
+import { Checkbox, css, ISize, fitContentToBounds } from 'office-ui-fabric-react';
+import {
+  SignalField,
+  NewSignal,
+  CommentsSignal,
+  TrendingSignal,
+  SharedSignal,
+  Tile,
+  getTileLayout,
+  renderTileWithLayout
+} from '@uifabric/experiments';
+import { lorem } from '@uifabric/example-data';
 import * as TileExampleStylesModule from './Tile.Example.scss';
 
 // tslint:disable-next-line:no-any

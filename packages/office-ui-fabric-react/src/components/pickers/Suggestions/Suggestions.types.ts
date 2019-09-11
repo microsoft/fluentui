@@ -4,6 +4,7 @@ import { IRefObject, IRenderFunction, KeyCodes, IStyleFunctionOrObject } from '.
 import { IPersonaProps } from '../../Persona/Persona.types';
 import { IStyle, ITheme } from '../../../Styling';
 import { ISpinnerStyleProps } from '../../Spinner/Spinner.types';
+import { ISuggestionItemProps } from './SuggestionsItem.types';
 
 /**
  * Suggestions component.
@@ -47,7 +48,7 @@ export interface ISuggestionsProps<T> extends React.Props<any> {
   /**
    * How the suggestion should look in the suggestion list.
    */
-  onRenderSuggestion?: (props: T, suggestionItemProps: T) => JSX.Element;
+  onRenderSuggestion: (props: T, suggestionItemProps: ISuggestionItemProps<T>) => JSX.Element;
 
   /**
    * What should occur when a suggestion is clicked
@@ -215,7 +216,7 @@ export interface ISuggestionsProps<T> extends React.Props<any> {
   suggestionsListId?: string;
 
   /** Call to provide customized styling that will layer on top of the variant rules. */
-  styles?: IStyleFunctionOrObject<{}, {}>;
+  styles?: IStyleFunctionOrObject<any, any>;
 
   /** Theme provided by High-Order Component. */
   theme?: ITheme;

@@ -18,7 +18,7 @@ const headerHeight = 50;
 const navWidth = 300;
 
 export const getStyles: IStyleFunction<IAppStyleProps, IAppStyles> = props => {
-  const { responsiveMode, theme = getTheme() } = props;
+  const { responsiveMode, theme = getTheme(), showOnlyExamples } = props;
   const isLargeDown = responsiveMode <= ResponsiveMode.large;
   return {
     root: [
@@ -67,9 +67,9 @@ export const getStyles: IStyleFunction<IAppStyleProps, IAppStyles> = props => {
     content: [
       {
         position: 'absolute',
-        left: isLargeDown ? 0 : navWidth,
+        left: isLargeDown || showOnlyExamples ? 0 : navWidth,
         right: 0,
-        top: headerHeight,
+        top: !showOnlyExamples ? headerHeight : 0,
         bottom: 0,
         padding: isLargeDown ? 5 : undefined,
         overflowX: 'auto',
@@ -128,6 +128,9 @@ export const getStyles: IStyleFunction<IAppStyleProps, IAppStyles> = props => {
           left: 0,
           right: 0,
           bottom: 0
+        },
+        groupContent: {
+          marginBottom: 20
         }
       },
       navPanel: { root: { top: headerHeight } }

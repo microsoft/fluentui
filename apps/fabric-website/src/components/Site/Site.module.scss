@@ -1,13 +1,23 @@
-@import '../../styles/variables';
-@import '../../styles/mixins';
+@import "../../styles/variables";
+@import "../../styles/mixins";
 
-// #headerWrapper is the UHF header wrapper. The p, ul, ol style in _typography.scss was making
-// the header links larger than they should be, so reset that here.
-:global(#headerWrapper, #footerWrapper, #socialMediaContainer, .m-back-to-top) {
-  p,
-  ul,
-  ol {
-    font-size: inherit;
+:global {
+  // #headerWrapper is the UHF header wrapper. The p, ul, ol style in _typography.scss was making
+  // the header links larger than they should be, so reset that here.
+  #headerWrapper,
+  #footerWrapper,
+  #socialMediaContainer,
+  .m-back-to-top {
+    p,
+    ul,
+    ol {
+      font-size: inherit;
+    }
+  }
+
+  // Hide UHF back to top button that attempts to go to a nonexistent #main-content page
+  a.m-back-to-top {
+    display: none !important;
   }
 }
 
@@ -99,7 +109,9 @@
 
   .siteWrapper:not(.fullWidth) .siteContent {
     @include ms-padding-left($App-padding-md);
-    max-width: calc(100% - #{$Nav-width-sm}); // IE needs max-width, it was ignoring width
+    max-width: calc(
+      100% - #{$Nav-width-sm}
+    ); // IE needs max-width, it was ignoring width
     width: calc(100% - #{$Nav-width-sm});
   }
 }

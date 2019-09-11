@@ -1,6 +1,432 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Tue, 30 Apr 2019 12:31:36 GMT and should not be manually modified.
+This log was last generated on Fri, 06 Sep 2019 12:34:51 GMT and should not be manually modified.
+
+## 7.16.1
+Fri, 06 Sep 2019 12:34:51 GMT
+
+### Patches
+
+- added isSelectable prop for Tile.types; unshow checkbox if item is not selectable (huaxi@microsoft.com)
+- Foundation: Allowing recomposition in composed. (humbertomakotomorimoto@gmail.com)
+## 7.16.0
+Thu, 05 Sep 2019 12:34:51 GMT
+
+### Minor changes
+
+- slider: added dos and don'ts to the documentation (sneharoy321@gmail.com)
+## 7.15.0
+Wed, 04 Sep 2019 12:32:15 GMT
+
+### Minor changes
+
+- Add change file for new icons snapshots (pejahn@microsoft.com)
+## 7.14.1
+Wed, 04 Sep 2019 04:09:58 GMT
+
+### Patches
+
+- fix version file (kchau@microsoft.com)
+## 7.14.0
+Mon, 02 Sep 2019 12:33:56 GMT
+
+### Minor changes
+
+- Updating Button to use new composed approach with slots as options. (humbertomakotomorimoto@gmail.com)
+### Patches
+
+- Update experiments readme to include build instructions. (elcraig@microsoft.com)
+## 7.13.5
+Fri, 30 Aug 2019 12:30:57 GMT
+
+### Patches
+
+- Fix example imports and SelectedItemsList export structure (elcraig@microsoft.com)
+## 7.13.4
+Thu, 29 Aug 2019 12:30:00 GMT
+
+### Patches
+
+- Renaming createComponent to compose and moving View inside component options object. (humbertomakotomorimoto@gmail.com)
+## 7.13.3
+Tue, 27 Aug 2019 12:33:51 GMT
+
+### Patches
+
+- Remove some relative imports from examples (elcraig@microsoft.com)
+## 7.13.2
+Mon, 26 Aug 2019 12:30:49 GMT
+
+### Patches
+
+- Memoizing styling in createComponent for components that have their default styling determined entirely by tokens. (Humberto.Morimoto@microsoft.com)
+- Updating snapshots. (dzearing@hotmail.com)
+## 7.13.1
+Fri, 23 Aug 2019 12:35:28 GMT
+
+### Patches
+
+- Update npmignores, delete unused jest setup files (elcraig@microsoft.com)
+- Fix up readme and package.json descriptions (elcraig@microsoft.com)
+
+## 7.13.0
+Thu, 22 Aug 2019 12:34:59 GMT
+
+### Minor changes
+
+- Button: Using FontIcon and ImageIcon instead of Icon in both oufr and experiments Button. (Humberto.Morimoto@microsoft.com)
+
+## 7.12.0
+Thu, 15 Aug 2019 12:30:43 GMT
+
+### Minor changes
+
+- Rename deprecated React lifecycle functions to prevent development mode warnings in React 16.9. (jagore@microsoft.com)
+
+## 7.11.2
+Tue, 13 Aug 2019 12:31:12 GMT
+
+### Patches
+
+- Updating snapshots. (dzearing@microsoft.com)
+
+## 7.11.1
+Fri, 09 Aug 2019 12:31:50 GMT
+
+### Patches
+
+- Chiclet: Preview image no longer overflows (t-stcar@microsoft.com)
+
+## 7.11.0
+Wed, 07 Aug 2019 12:32:28 GMT
+
+### Minor changes
+
+- Chiclet: Medium chiclet is styled according to redlines and xSmall Chiclet url displays properly (t-stcar@microsoft.com)
+- Updating styles to not use $ syntax. (dzearing@microsoft.com)
+
+## 7.10.1
+Tue, 06 Aug 2019 12:32:07 GMT
+
+### Patches
+
+- Ignore left/right keypress from inner text input/textarea (rezha@microsoft.com)
+
+## 7.10.0
+Fri, 02 Aug 2019 12:33:29 GMT
+
+### Minor changes
+
+- MenuButton: Removing use of StackItem to improve performance. (Humberto.Morimoto@microsoft.com)
+
+### Patches
+
+- Button: Creating separate Actionable view to improve perf of Actionable, small perf improvements and perf scenario updates. (Humberto.Morimoto@microsoft.com)
+
+## 7.9.1
+Tue, 30 Jul 2019 12:28:32 GMT
+
+### Patches
+
+- Button: Making Button variants themable by using createComponent instead of wrappers. (Humberto.Morimoto@microsoft.com)
+
+## 7.9.0
+Mon, 29 Jul 2019 12:26:00 GMT
+
+### Minor changes
+
+- Chiclet: add preview prop and its styling and don't do icon lookup for preview (t-stcar@microsoft.com)
+
+## 7.8.1
+Tue, 23 Jul 2019 16:33:51 GMT
+
+### Patches
+
+- Chiclet: Url is now a required prop and two test files are combined into one (t-stcar@microsoft.com)
+
+## 7.8.0
+Mon, 22 Jul 2019 12:28:42 GMT
+
+### Minor changes
+
+- Refactor out BaseComponent from Tile (706967+KevinTCoughlin@users.noreply.github.com)
+- Tile: Add ability for screen reader to read selected state. (Humberto.Morimoto@microsoft.com)
+
+### Patches
+
+- Button: Updating Button styles to use corresponding semanticColors instead of palette. (Humberto.Morimoto@microsoft.com)
+- Improve how to get the min query string (elcraig@microsoft.com)
+
+## 7.7.0
+Fri, 19 Jul 2019 12:25:58 GMT
+
+### Minor changes
+
+- Chiclet: removes imageHeight and imageWidth props (t-stcar@microsoft.com)
+
+## 7.6.2
+Wed, 17 Jul 2019 18:58:57 GMT
+
+### Patches
+
+- Adding @types/react and @types/react-dom to package.json that have peer dependencies on react and react-dom. (makotom@microsoft.com)
+- Remove fluent customizations. (vibraga@microsoft.com)
+
+## 7.6.0
+Sat, 13 Jul 2019 22:20:41 GMT
+
+### Minor changes
+
+- Change media tile to show metadata only on hover (jocobb@microsoft.com)
+
+### Patches
+
+- Button: Updating Button styles to use corresponding semanticColors instead of palette. (Humberto.Morimoto@microsoft.com)
+
+## 7.5.0
+Fri, 12 Jul 2019 12:29:52 GMT
+
+### Minor changes
+
+- Add screener tests for media tiles (jocobb@microsoft.com)
+
+### Patches
+
+- Chiclet: adjust xsmall chiclet title height (natalie.ethell@microsoft.com)
+
+## 7.4.2
+Wed, 10 Jul 2019 12:28:00 GMT
+
+### Patches
+
+- Update names in floatingSuggestons + expose needed functionality for UnifiedPicker t (mhuan13@gmail.com)
+
+## 7.4.1
+Wed, 03 Jul 2019 12:30:55 GMT
+
+### Patches
+
+- Filter out disallowed props from Tile root element (tmichon@microsoft.com)
+
+## 7.4.0
+Mon, 01 Jul 2019 18:51:42 GMT
+
+### Minor changes
+
+- Button: Renaming BaseButton to Actionable, extending Button from Actionable and removing content and icon from Actionable types.
+
+### Patches
+
+- adds react-app-polyfill
+
+## 7.3.0
+Thu, 27 Jun 2019 18:25:04 GMT
+
+### Minor changes
+
+-  Button: Removing Stack usage from vanilla Button's slots and view to improve perf.
+- Chiclet: Add x-small variant
+
+### Patches
+
+- Button example updated.
+
+## 7.2.3
+Tue, 25 Jun 2019 12:26:09 GMT
+
+### Patches
+
+- Updates to tileslist, list and marquee selection
+
+## 7.2.2
+Mon, 24 Jun 2019 23:11:20 GMT
+
+### Patches
+
+- Button: Adding focus tests for Button, MenuButton and SplitButton.
+
+## 7.2.1
+Fri, 21 Jun 2019 12:27:05 GMT
+
+### Patches
+
+- update snapshots due to Tooltip bug fix
+
+## 7.2.0
+Thu, 20 Jun 2019 12:27:38 GMT
+
+### Minor changes
+
+- Removing charting from dependencies.
+
+## 7.1.1
+Tue, 18 Jun 2019 12:26:19 GMT
+
+### Patches
+
+- Button: Getting anchor native props if href prop is specified.
+
+## 7.1.0
+Fri, 14 Jun 2019 15:54:00 GMT
+
+### Minor changes
+
+- Major bumping the foundation package.
+
+## 7.0.3
+Fri, 14 Jun 2019 12:26:30 GMT
+
+### Patches
+
+- Fix missing assets in production build.
+
+## 7.0.2
+Thu, 13 Jun 2019 00:24:48 GMT
+
+### Patches
+
+- Initial release of Fabric 7
+
+## 7.0.0
+Wed, 12 Jun 2019 00:42:26 GMT
+
+### Breaking changes
+
+- Experiments package: remove Shimmer component
+
+### Minor changes
+
+- Button: Adding allowDisabledFocus prop and adding @docCategory tags on exports.
+- Button: Changing style of all variants to be Fluent by default and removing use of palette in favor of semantic slots.
+- Button: Adding keytips to new Button.
+- Button: Making all MenuButton props optional.
+- Button: Adding uniqueId prop.
+- Convert foundation components that have state to hooks.
+- Support slots API changes.
+- Changes to support slots API refactoring.
+- SplitButton: Improving screenreader narration for secondary action and fixing styling in fabric 7 branch.
+- SplitButton: Adding ability to use Alt+Down key combination from first focus stop and cleaning up API.
+- Button: Adding toggle/checked functionality to Button.
+- Add FloatingSuggestions (FloatingPeoplePicker without inheritence)
+- SelectedItemsList: Add reworked Selected Items (no inheritence + hooks)
+
+### Patches
+
+- Button: Fixing SplitButton so that `root` and `button` slot props do not propagate to inner slots.
+- Button: Conditionally rendering KeytipData.
+- Button: Fixing some className assignments in styling.
+- Render demo app with Markdown instead of PageMarkdown
+- Revert unintended change to Button example.
+- Update and dedupe React deps.
+- Support changes to createComponent API.
+- Remove use of deprecated @autobind decorator
+- SplitButton: Fixing some styling bugs related to the divider.
+- Button: Adding documentation to tokens.
+
+## 6.78.7
+Tue, 11 Jun 2019 12:21:35 GMT
+
+### Patches
+
+- Updating snapshots to conform with `getNativeAttributes` changes which should filter out unexpected attributes from primatives more accurately.
+
+## 6.78.6
+Mon, 10 Jun 2019 12:23:59 GMT
+
+### Patches
+
+- Snapshot updates to components for adding aria-hidden to icon component conditionally
+
+## 6.78.5
+Tue, 04 Jun 2019 12:22:17 GMT
+
+### Patches
+
+- Added a signal to wrap an icon for republising reminder
+
+## 6.78.4
+Mon, 03 Jun 2019 23:04:02 GMT
+
+*Version update only*
+
+## 6.78.3
+Fri, 31 May 2019 12:21:26 GMT
+
+### Patches
+
+- Fix issue where SideBar ignored colors props
+- and updated snapshots.
+
+## 6.78.2
+Wed, 29 May 2019 12:21:24 GMT
+
+### Patches
+
+- Revert styled perf fixes temporarily.
+- PersonaCoin: use renamed persona color function
+
+## 6.78.1
+Thu, 23 May 2019 22:14:40 GMT
+
+### Patches
+
+- Examples: Remove relative imports.
+
+## 6.78.0
+Wed, 22 May 2019 12:21:34 GMT
+
+### Minor changes
+
+- Added a variant to MicroFeedback and converted to use Slots
+
+### Patches
+
+- update azure-themes version
+- Button example updated.
+
+## 6.77.0
+Tue, 21 May 2019 12:20:44 GMT
+
+### Minor changes
+
+- <Fabric> element does not affect global button styling.
+
+### Patches
+
+- Use shared demo app bootstrapping code
+
+## 6.76.4
+Fri, 17 May 2019 12:22:31 GMT
+
+### Patches
+
+- Chiclet: update examples and use opengraph API
+
+## 6.76.3
+Thu, 16 May 2019 17:34:08 GMT
+
+*Version update only*
+
+## 6.76.2
+Tue, 14 May 2019 07:50:30 GMT
+
+### Patches
+
+- Update Fabric assets link
+
+## 6.76.1
+Fri, 10 May 2019 12:36:11 GMT
+
+### Patches
+
+- Update snapshot
+
+## 6.76.0
+Tue, 07 May 2019 12:34:52 GMT
+
+### Minor changes
+
+- Add isFluentStyling prop and styles to Tile component
 
 ## 6.75.0
 Tue, 30 Apr 2019 12:31:36 GMT
@@ -686,7 +1112,7 @@ Mon, 08 Oct 2018 12:24:15 GMT
 
 ### Patches
 
-- Moving tslint/prettier dependencies 
+- Moving tslint/prettier dependencies
 - Fix a11y violations in Fluent ContextualMenu examples
 - Sidebar: Fixed filename and imports
 
@@ -1062,7 +1488,7 @@ Thu, 12 Jul 2018 10:29:30 GMT
 
 ### Patches
 
-- Consume horizontal bar chart in card, fix bad import 
+- Consume horizontal bar chart in card, fix bad import
 
 ## 6.13.5
 Tue, 10 Jul 2018 21:54:07 GMT
@@ -1197,7 +1623,7 @@ Mon, 18 Jun 2018 16:57:14 GMT
 
 ### Minor changes
 
-- Dashboard Card Component for Admin Portals Dashboard which will be hosted inside react-grid-layout. 
+- Dashboard Card Component for Admin Portals Dashboard which will be hosted inside react-grid-layout.
 - Add GridList component into the existing Dashboard Card Component
 
 ### Patches
@@ -1443,7 +1869,7 @@ Tue, 10 Apr 2018 17:37:28 GMT
 
 ### Minor changes
 
-- FloatingPicker: add show/hide picker call backs, fix double resolve when queryString is the same 
+- FloatingPicker: add show/hide picker call backs, fix double resolve when queryString is the same
 
 ### Patches
 

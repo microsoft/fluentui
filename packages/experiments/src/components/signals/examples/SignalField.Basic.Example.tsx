@@ -1,8 +1,7 @@
 import * as React from 'react';
-import { SignalField, SignalFieldMode } from '../SignalField';
-import { YouCheckedOutSignal, AwaitingApprovalSignal } from '../Signals';
-import { lorem } from '@uifabric/example-app-base';
-import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
+import { SignalField, SignalFieldMode, YouCheckedOutSignal, AwaitingApprovalSignal } from '@uifabric/experiments';
+import { lorem } from '@uifabric/example-data';
+import { Checkbox } from 'office-ui-fabric-react';
 
 export interface ISignalFieldBasicExampleState {
   mode: SignalFieldMode;

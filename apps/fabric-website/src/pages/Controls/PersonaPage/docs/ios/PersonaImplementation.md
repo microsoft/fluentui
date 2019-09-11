@@ -1,17 +1,15 @@
-### Design
-
-Coming soon
-
 ### Control names
 
-`MSAvatarView` Individual profile picture in standard sizes.
+`MSPersonaListView`
 
-`MSPersonaListView` Organizes persona avatars into list cells to render a set of people or addressable groups.
+`MSPersonaCell`
 
-### Library
+### Source code
 
-[UI Fabric iOS](https://github.com/OfficeDev/ui-fabric-ios)
+[MSPersonaListView](https://github.com/OfficeDev/ui-fabric-ios/blob/master/OfficeUIFabric/People%20Picker/MSPersonaListView.swift)
 
-[Sample Code for Avatar View](https://github.com/OfficeDev/ui-fabric-ios/blob/master/OfficeUIFabric.Demo/OfficeUIFabric.Demo/Demos/MSAvatarViewDemoController.swift)
+[MSPersonaCell](https://github.com/OfficeDev/ui-fabric-ios/blob/master/OfficeUIFabric/People%20Picker/MSPersonaCell.swift)
 
-[Sample Code for Persona List View](https://github.com/OfficeDev/ui-fabric-ios/blob/master/OfficeUIFabric.Demo/OfficeUIFabric.Demo/Demos/MSPersonaListViewDemoController.swift)
+### Sample code
+
+[MSPersonaListView demo](https://github.com/OfficeDev/ui-fabric-ios/blob/master/OfficeUIFabric.Demo/OfficeUIFabric.Demo/Demos/MSPersonaListViewDemoController.swift)

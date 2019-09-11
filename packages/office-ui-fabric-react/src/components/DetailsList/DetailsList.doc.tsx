@@ -6,6 +6,10 @@ import { DetailsListBasicExample } from './examples/DetailsList.Basic.Example';
 const DetailsListBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DetailsList/examples/DetailsList.Basic.Example.tsx') as string;
 const DetailsListBasicExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/DetailsList/examples/DetailsList.Basic.Example.tsx') as string;
 
+import { DetailsListAnimationExample } from './examples/DetailsList.Animation.Example';
+const DetailsListAnimationExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DetailsList/examples/DetailsList.Animation.Example.tsx') as string;
+const DetailsListAnimationExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/DetailsList/examples/DetailsList.Animation.Example.tsx') as string;
+
 import { DetailsListCompactExample } from './examples/DetailsList.Compact.Example';
 const DetailsListCompactExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DetailsList/examples/DetailsList.Compact.Example.tsx') as string;
 const DetailsListCompactExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/DetailsList/examples/DetailsList.Compact.Example.tsx') as string;
@@ -91,6 +95,13 @@ export const DetailsListBasicPageProps: IDocPageProps = generateProps({
   code: DetailsListBasicExampleCode,
   codepenJS: DetailsListBasicExampleCodepen,
   view: <DetailsListBasicExample />
+});
+
+export const DetailsListAnimationPageProps: IDocPageProps = generateProps({
+  title: 'DetailsList with Row animation when cell content changed',
+  code: DetailsListAnimationExampleCode,
+  codepenJS: DetailsListAnimationExampleCodepen,
+  view: <DetailsListAnimationExample />
 });
 
 export const DetailsListCompactPageProps: IDocPageProps = generateProps({

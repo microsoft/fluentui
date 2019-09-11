@@ -1,9 +1,8 @@
+import * as React from 'react';
 import { ReactWrapper, mount } from 'enzyme';
 import { Component } from 'react';
 import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-dom/test-utils';
-
-export type __TS_2_8_WORKAROUND_COMPONENT__ = Component;
 
 export function findNodes(wrapper: ReactWrapper<any, any>, className: string): ReactWrapper<any, any> {
   return wrapper.find(className).filterWhere((node: ReactWrapper<any, any>) => typeof node.type() === 'string');
@@ -21,6 +20,7 @@ export function expectMissing(wrapper: ReactWrapper<any, any>, className: string
   expectNodes(wrapper, className, 0);
 }
 
+/** @deprecated Use fake timers and `jest.runAllTimers()` instead */
 export function delay(millisecond: number): Promise<void> {
   return new Promise<void>(resolve => setTimeout(resolve, millisecond));
 }
@@ -44,4 +44,12 @@ export function renderIntoDocument(element: React.ReactElement<any>): HTMLElemen
 export function mockEvent(targetValue: string = ''): ReactTestUtils.SyntheticEventData {
   const target: EventTarget = { value: targetValue } as HTMLInputElement;
   return { target };
+}
+
+/**
+ * Hack for forcing Jest to run pending promises
+ * https://github.com/facebook/jest/issues/2157#issuecomment-279171856
+ */
+export function flushPromises() {
+  return new Promise<void>(resolve => setImmediate(resolve));
 }

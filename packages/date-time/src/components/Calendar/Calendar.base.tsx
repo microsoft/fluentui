@@ -8,12 +8,12 @@ import {
   ICalendarStyleProps,
   ICalendarStyles
 } from './Calendar.types';
-import { DayOfWeek, FirstWeekOfYear, DateRangeType } from '../../utilities/dateValues/DateValues';
+import { DayOfWeek, FirstWeekOfYear, DateRangeType } from 'office-ui-fabric-react/lib/utilities/dateValues/DateValues';
 import { CalendarDay } from './CalendarDay/CalendarDay';
 import { CalendarMonth } from './CalendarMonth/CalendarMonth';
 import { ICalendarDay } from './CalendarDay/CalendarDay.types';
 import { ICalendarMonth } from './CalendarMonth/CalendarMonth.types';
-import { css, BaseComponent, KeyCodes, classNamesFunction } from '@uifabric/utilities';
+import { css, BaseComponent, KeyCodes, classNamesFunction, focusAsync } from '@uifabric/utilities';
 import { IProcessedStyleSet } from '@uifabric/styling';
 
 const getClassNames = classNamesFunction<ICalendarStyleProps, ICalendarStyles>();
@@ -28,7 +28,10 @@ const DEFAULT_STRINGS = {
   nextMonthAriaLabel: 'Go to next month',
   prevYearAriaLabel: 'Go to previous year',
   nextYearAriaLabel: 'Go to next year',
-  closeButtonAriaLabel: 'Close date picker'
+  prevYearRangeAriaLabel: 'Previous year range',
+  nextYearRangeAriaLabel: 'Next year range',
+  closeButtonAriaLabel: 'Close date picker',
+  weekNumberFormatString: 'Week number {0}'
 };
 
 const leftArrow = 'Up';
@@ -121,7 +124,8 @@ export class CalendarBase extends BaseComponent<ICalendarProps, ICalendarState> 
     this._focusOnUpdate = false;
   }
 
-  public componentWillReceiveProps(nextProps: ICalendarProps): void {
+  // tslint:disable-next-line function-name
+  public UNSAFE_componentWillReceiveProps(nextProps: ICalendarProps): void {
     const { value, today = new Date() } = nextProps;
 
     this.setState({
@@ -157,7 +161,9 @@ export class CalendarBase extends BaseComponent<ICalendarProps, ICalendarState> 
       allFocusable,
       styles,
       showWeekNumbers,
-      theme
+      theme,
+      calendarDayProps,
+      calendarMonthProps
     } = this.props;
     const { selectedDate, navigatedDayDate, navigatedMonthDate, isMonthPickerVisible, isDayPickerVisible } = this.state;
     const onHeaderSelect = showMonthPickerAsOverlay ? this._onHeaderSelect : undefined;
@@ -202,6 +208,7 @@ export class CalendarBase extends BaseComponent<ICalendarProps, ICalendarState> 
             componentRef={this._dayPicker}
             showCloseButton={showCloseButton}
             allFocusable={allFocusable}
+            {...calendarDayProps} // at end of list so consumer's custom functions take precedence
           />
         )}
         {isDayPickerVisible && isMonthPickerVisible && <div className={classes.divider} />}
@@ -215,12 +222,13 @@ export class CalendarBase extends BaseComponent<ICalendarProps, ICalendarState> 
               today={this.props.today}
               highlightCurrentMonth={highlightCurrentMonth!}
               highlightSelectedMonth={highlightSelectedMonth!}
-              onHeaderSelect={this._onHeaderSelect}
+              onHeaderSelect={onHeaderSelect}
               navigationIcons={navigationIcons!}
               dateTimeFormatter={this.props.dateTimeFormatter!}
               minDate={minDate}
               maxDate={maxDate}
               componentRef={this._monthPicker}
+              {...calendarMonthProps} // at end of list so consumer's custom functions take precedence
             />
             {this._renderGoToTodayButton(classes)}
           </div>
@@ -233,9 +241,9 @@ export class CalendarBase extends BaseComponent<ICalendarProps, ICalendarState> 
 
   public focus(): void {
     if (this.state.isDayPickerVisible && this._dayPicker.current) {
-      this._dayPicker.current.focus();
+      focusAsync(this._dayPicker.current);
     } else if (this.state.isMonthPickerVisible && this._monthPicker.current) {
-      this._monthPicker.current.focus();
+      focusAsync(this._monthPicker.current);
     }
   }
 

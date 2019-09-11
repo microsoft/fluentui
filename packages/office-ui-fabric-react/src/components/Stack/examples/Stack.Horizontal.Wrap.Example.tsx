@@ -1,77 +1,55 @@
 import * as React from 'react';
-import { Slider } from 'office-ui-fabric-react/lib/Slider';
-import { Stack } from '../Stack';
-import { mergeStyleSets, DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
+import { DefaultPalette, Slider, Stack, IStackStyles, IStackTokens } from 'office-ui-fabric-react';
 
-export interface IExampleState {
-  stackWidth: number;
-}
+// Non-mutating styles definition
+const itemStyles: React.CSSProperties = {
+  alignItems: 'center',
+  background: DefaultPalette.themePrimary,
+  color: DefaultPalette.white,
+  display: 'flex',
+  height: 50,
+  justifyContent: 'center',
+  width: 50
+};
 
-export class HorizontalStackWrapExample extends React.Component<{}, IExampleState> {
-  constructor(props: {}) {
-    super(props);
-    this.state = {
-      stackWidth: 100
-    };
-  }
+// Tokens definition
+const sectionStackTokens: IStackTokens = { childrenGap: 10 };
+const wrapStackTokens: IStackTokens = { childrenGap: 30 };
 
-  public render(): JSX.Element {
-    const styles = mergeStyleSets({
-      root: {
-        background: DefaultPalette.themeTertiary,
-        width: `${this.state.stackWidth}%`,
-        selectors: {
-          '& span': {
-            width: 50,
-            height: 50,
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            background: DefaultPalette.themePrimary,
-            color: DefaultPalette.white
-          }
-        }
-      }
-    });
-
-    const tokens = {
-      sectionStack: {
-        childrenGap: 10
-      },
-      wrapStack: {
-        childrenGap: 30
-      }
-    };
-
-    return (
-      <Stack tokens={tokens.sectionStack}>
-        <Slider
-          label="Change the stack width to see how child items wrap onto multiple rows:"
-          min={1}
-          max={100}
-          step={1}
-          defaultValue={100}
-          showValue={true}
-          onChange={this._onWidthChange}
-        />
-
-        <Stack horizontal wrap tokens={tokens.wrapStack} className={styles.root}>
-          <span>1</span>
-          <span>2</span>
-          <span>3</span>
-          <span>4</span>
-          <span>5</span>
-          <span>6</span>
-          <span>7</span>
-          <span>8</span>
-          <span>9</span>
-          <span>10</span>
-        </Stack>
-      </Stack>
-    );
-  }
-
-  private _onWidthChange = (value: number): void => {
-    this.setState({ stackWidth: value });
+export const HorizontalStackWrapExample: React.FunctionComponent = () => {
+  const [stackWidth, setStackWidth] = React.useState<number>(100);
+  // Mutating styles definition
+  const stackStyles: IStackStyles = {
+    root: {
+      background: DefaultPalette.themeTertiary,
+      width: `${stackWidth}%`
+    }
   };
-}
+
+  return (
+    <Stack tokens={sectionStackTokens}>
+      <Slider
+        label="Change the stack width to see how child items wrap onto multiple rows:"
+        min={1}
+        max={100}
+        step={1}
+        defaultValue={100}
+        showValue={true}
+        onChange={setStackWidth}
+      />
+
+      <Stack horizontal wrap styles={stackStyles} tokens={wrapStackTokens}>
+        <span style={itemStyles}>1</span>
+        <span style={itemStyles}>2</span>
+        <span style={itemStyles}>3</span>
+        <span style={itemStyles}>4</span>
+        <span style={itemStyles}>5</span>
+        <span style={itemStyles}>6</span>
+        <span style={itemStyles}>7</span>
+        <span style={itemStyles}>8</span>
+        <span style={itemStyles}>9</span>
+        <span style={itemStyles}>10</span>
+      </Stack>
+    </Stack>
+  );
+};

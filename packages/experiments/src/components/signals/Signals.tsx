@@ -41,6 +41,10 @@ export const RecordSignal: Signal = (props: ISignalProps): JSX.Element => {
   return <IconSignal {...props} signalClass={SignalsStyles.record} iconName="lock" />;
 };
 
+export const NeedsRepublishingSignal: Signal = (props: ISignalProps): JSX.Element => {
+  return <IconSignal {...props} signalClass={SignalsStyles.needsRepublishing} iconName="readingmode" />;
+};
+
 /**
  * Renders a signal marking the proceeding content as new.
  */

@@ -1,36 +1,41 @@
-let path = require('path');
-let resources = require('../../scripts/webpack/webpack-resources');
+// @ts-check
 
-const devServerConfig = {
-  inline: true,
-  port: 4321
-};
+const path = require('path');
+const resources = require('@uifabric/build/webpack/webpack-resources');
+const { addMonacoConfig } = require('@uifabric/tsx-editor/scripts/monaco-webpack');
 
-const outputConfig = {
-  filename: 'fabric-sitev5.js'
-};
+const entryPointName = 'fabric-sitev5';
 
-module.exports = resources.createServeConfig({
-  entry: './src/root.tsx',
+module.exports = resources.createServeConfig(
+  addMonacoConfig({
+    entry: {
+      [entryPointName]: './src/root.tsx'
+    },
 
-  output: outputConfig,
+    output: {
+      chunkFilename: `${entryPointName}-[name].js`
+    },
 
-  devServer: devServerConfig,
+    externals: {
+      react: 'React',
+      'react-dom': 'ReactDOM'
+    },
 
-  externals: {
-    react: 'React',
-    'react-dom': 'ReactDOM'
-  },
+    optimization: {
+      removeAvailableModules: false
+    },
 
-  resolve: {
-    alias: {
-      '@uifabric/fabric-website/src': path.join(__dirname, 'src'),
-      '@uifabric/fabric-website/lib': path.join(__dirname, 'lib'),
-      'office-ui-fabric-react/src': path.join(__dirname, 'node_modules/office-ui-fabric-react/src'),
-      'office-ui-fabric-react/lib': path.join(__dirname, 'node_modules/office-ui-fabric-react/lib'),
-      '@uifabric/example-app-base$': path.join(__dirname, '../../packages/example-app-base/src'),
-      'Props.ts.js': 'Props',
-      'Example.tsx.js': 'Example'
+    resolve: {
+      alias: {
+        '@uifabric/fabric-website/src': path.join(__dirname, 'src'),
+        '@uifabric/fabric-website/lib': path.join(__dirname, 'lib'),
+        '@uifabric/example-app-base$': path.resolve(__dirname, '../../packages/example-app-base/src'),
+        'office-ui-fabric-react$': path.resolve(__dirname, '../../packages/office-ui-fabric-react/lib'),
+        'office-ui-fabric-react/src': path.resolve(__dirname, '../../packages/office-ui-fabric-react/src'),
+        'office-ui-fabric-react/lib': path.resolve(__dirname, '../../packages/office-ui-fabric-react/lib'),
+        'Props.ts.js': 'Props',
+        'Example.tsx.js': 'Example'
+      }
     }
-  }
-});
+  })
+);

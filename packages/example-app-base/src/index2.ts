@@ -17,6 +17,7 @@ export * from './components/PlatformPicker/index';
 export * from './components/PropertiesTable/index';
 export * from './components/ScrollBars/index';
 export * from './components/SideRail/index';
+export * from './components/SiteMessageBar/index';
 export * from './components/Table/index';
 export * from './components/TopNav/index';
 export * from './components/Video/index';

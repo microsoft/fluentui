@@ -1,147 +1,120 @@
 import * as React from 'react';
 import { Slider } from 'office-ui-fabric-react/lib/Slider';
-import { Stack } from '../Stack';
-import { mergeStyleSets, IStyleSet, DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
+import { Stack, IStackStyles, IStackTokens } from 'office-ui-fabric-react/lib/Stack';
+import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 
-export interface IExampleState {
-  stackHeight: number;
-}
-
-export class VerticalStackWrapNestedExample extends React.Component<{}, IExampleState> {
-  constructor(props: {}) {
-    super(props);
-    this.state = {
-      stackHeight: 420
-    };
+// Non-mutating styles definition
+const textStyles: React.CSSProperties = {
+  width: 50,
+  height: 50,
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  color: DefaultPalette.white
+};
+const firstStackStyles: IStackStyles = {
+  root: {
+    background: DefaultPalette.neutralTertiary
   }
+};
+const firstStackItemStyles: React.CSSProperties = {
+  ...textStyles,
+  background: DefaultPalette.themePrimary
+};
+const secondStackStyles: IStackStyles = {
+  root: {
+    background: DefaultPalette.neutralSecondary
+  }
+};
+const secondStackItemStyles: React.CSSProperties = {
+  ...textStyles,
+  background: DefaultPalette.themeDark
+};
+const thirdStackStyles: IStackStyles = {
+  root: {
+    background: DefaultPalette.neutralPrimary
+  }
+};
+const thirdStackItemStyles: React.CSSProperties = {
+  ...textStyles,
+  background: DefaultPalette.themeDarker
+};
 
-  public render(): JSX.Element {
-    const textStyles = {
-      width: 50,
-      height: 50,
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      color: DefaultPalette.white
-    } as IStyleSet<{}>;
+// Tokens definition
+const sectionStackTokens: IStackTokens = { childrenGap: 10 };
+const wrapStackTokens: IStackTokens = { childrenGap: '30 40' };
+const firstStackTokens: IStackTokens = { childrenGap: '10 30' };
+const secondStackTokens: IStackTokens = { childrenGap: '20 50' };
 
-    const { stackHeight } = this.state;
+export const VerticalStackWrapNestedExample: React.FunctionComponent = () => {
+  const [stackHeight, setStackHeight] = React.useState<number>(420);
 
-    const styles = mergeStyleSets({
-      root: {
-        background: DefaultPalette.themeTertiary,
-        height: stackHeight
-      },
+  // Mutating styles definition
+  const containerStackStyles: IStackStyles = {
+    root: {
+      background: DefaultPalette.themeTertiary,
+      height: stackHeight
+    }
+  };
 
-      stackOne: {
-        background: DefaultPalette.neutralTertiary,
-        selectors: {
-          '& span': {
-            ...textStyles,
-            background: DefaultPalette.themePrimary
-          }
-        }
-      },
+  return (
+    <Stack tokens={sectionStackTokens}>
+      <Slider
+        label="Change the stack height to see how child items wrap onto multiple columns:"
+        min={1}
+        max={420}
+        step={1}
+        defaultValue={420}
+        showValue={true}
+        onChange={setStackHeight}
+      />
 
-      stackTwo: {
-        background: DefaultPalette.neutralSecondary,
-        selectors: {
-          '& span': {
-            ...textStyles,
-            background: DefaultPalette.themeDark
-          }
-        }
-      },
-
-      stackThree: {
-        background: DefaultPalette.neutralPrimary,
-        selectors: {
-          '& span': {
-            ...textStyles,
-            background: DefaultPalette.themeDarker
-          }
-        }
-      }
-    });
-
-    const tokens = {
-      sectionStack: {
-        childrenGap: 10
-      },
-      wrapStack: {
-        childrenGap: '30 40'
-      },
-      firstStack: {
-        childrenGap: '10 30'
-      },
-      secondStack: {
-        childrenGap: '20 50'
-      }
-    };
-
-    return (
-      <Stack tokens={tokens.sectionStack}>
-        <Slider
-          label="Change the stack height to see how child items wrap onto multiple columns:"
-          min={1}
-          max={420}
-          step={1}
-          defaultValue={420}
-          showValue={true}
-          onChange={this._onHeightChange}
-        />
-
-        <Stack wrap tokens={tokens.wrapStack} className={styles.root}>
-          <Stack wrap tokens={tokens.firstStack} className={styles.stackOne}>
-            <span>1</span>
-            <span>2</span>
-            <span>3</span>
-            <span>4</span>
-            <span>5</span>
-            <span>6</span>
-            <span>7</span>
-          </Stack>
-
-          <Stack wrap tokens={tokens.secondStack} className={styles.stackTwo}>
-            <span>1</span>
-            <span>2</span>
-            <span>3</span>
-          </Stack>
-
-          <Stack wrap className={styles.stackThree}>
-            <span>1</span>
-            <span>2</span>
-            <span>3</span>
-            <span>4</span>
-            <span>5</span>
-            <span>6</span>
-            <span>7</span>
-            <span>8</span>
-            <span>9</span>
-            <span>10</span>
-          </Stack>
+      <Stack wrap styles={containerStackStyles} tokens={wrapStackTokens}>
+        <Stack wrap styles={firstStackStyles} tokens={firstStackTokens}>
+          <span style={firstStackItemStyles}>1</span>
+          <span style={firstStackItemStyles}>2</span>
+          <span style={firstStackItemStyles}>3</span>
+          <span style={firstStackItemStyles}>4</span>
+          <span style={firstStackItemStyles}>5</span>
+          <span style={firstStackItemStyles}>6</span>
+          <span style={firstStackItemStyles}>7</span>
         </Stack>
 
-        <span>
-          <b>Note:</b>
-        </span>
-        <span>
-          Support for nested wrapping of vertical flex-boxes is scarce across browsers, especially in the way they handle overflows.
-        </span>
-        <span>Most browsers don't scale the width of the flex-box when the inner items overflow and wrap around it.</span>
-        <span>
-          The one exception to this case being Microsoft Edge that handles it correctly (though this might go soon with the switch to
-          Chromium).
-        </span>
-        <span>There are ways in which we could have gone around this issue.</span>
-        <span>
-          However, we have chosen to adhere to the flex-box spec so that we have the correct implementation if support comes down the line.
-        </span>
-      </Stack>
-    );
-  }
+        <Stack wrap styles={secondStackStyles} tokens={secondStackTokens}>
+          <span style={secondStackItemStyles}>1</span>
+          <span style={secondStackItemStyles}>2</span>
+          <span style={secondStackItemStyles}>3</span>
+        </Stack>
 
-  private _onHeightChange = (value: number): void => {
-    this.setState({ stackHeight: value });
-  };
-}
+        <Stack wrap styles={thirdStackStyles}>
+          <span style={thirdStackItemStyles}>1</span>
+          <span style={thirdStackItemStyles}>2</span>
+          <span style={thirdStackItemStyles}>3</span>
+          <span style={thirdStackItemStyles}>4</span>
+          <span style={thirdStackItemStyles}>5</span>
+          <span style={thirdStackItemStyles}>6</span>
+          <span style={thirdStackItemStyles}>7</span>
+          <span style={thirdStackItemStyles}>8</span>
+          <span style={thirdStackItemStyles}>9</span>
+          <span style={thirdStackItemStyles}>10</span>
+        </Stack>
+      </Stack>
+
+      <span>
+        <b>Note:</b>
+      </span>
+      <span>
+        Support for nested wrapping of vertical flex-boxes is scarce across browsers, especially in the way they handle overflows.
+      </span>
+      <span>Most browsers don't scale the width of the flex-box when the inner items overflow and wrap around it.</span>
+      <span>
+        The one exception to this case being Microsoft Edge that handles it correctly (though this might go soon with the switch to
+        Chromium).
+      </span>
+      <span>There are ways in which we could have gone around this issue.</span>
+      <span>
+        However, we have chosen to adhere to the flex-box spec so that we have the correct implementation if support comes down the line.
+      </span>
+    </Stack>
+  );
+};

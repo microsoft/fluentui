@@ -2,16 +2,27 @@ import * as React from 'react';
 import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react/lib/FocusZone';
 import { List } from 'office-ui-fabric-react/lib/List';
 import { Image, ImageFit } from 'office-ui-fabric-react/lib/Image';
-import { mergeStyleSets, getTheme, DefaultFontStyles, FontSizes, getFocusStyle } from 'office-ui-fabric-react/lib/Styling';
-
-export type IExampleItem = { name: string; thumbnail: string };
+import { ITheme, mergeStyleSets, getTheme, getFocusStyle } from 'office-ui-fabric-react/lib/Styling';
+import { createListItems, IExampleItem } from '@uifabric/example-data';
 
 export interface IListGhostingExampleProps {
-  items: IExampleItem[];
+  items?: IExampleItem[];
 }
 
-const theme = getTheme();
-const classNames = mergeStyleSets({
+interface IListGhostingExampleClassObject {
+  container: string;
+  itemCell: string;
+  itemImage: string;
+  itemContent: string;
+  itemName: string;
+  itemIndex: string;
+  chevron: string;
+}
+
+const theme: ITheme = getTheme();
+const { palette, semanticColors, fonts } = theme;
+
+const classNames: IListGhostingExampleClassObject = mergeStyleSets({
   container: {
     overflow: 'auto',
     maxHeight: 500
@@ -22,10 +33,10 @@ const classNames = mergeStyleSets({
       minHeight: 54,
       padding: 10,
       boxSizing: 'border-box',
-      borderBottom: `1px solid ${theme.semanticColors.bodyDivider}`,
+      borderBottom: `1px solid ${semanticColors.bodyDivider}`,
       display: 'flex',
       selectors: {
-        '&:hover': { background: theme.palette.neutralLight }
+        '&:hover': { background: palette.neutralLight }
       }
     }
   ],
@@ -38,7 +49,7 @@ const classNames = mergeStyleSets({
     flexGrow: 1
   },
   itemName: [
-    DefaultFontStyles.xLarge,
+    fonts.xLarge,
     {
       whiteSpace: 'nowrap',
       overflow: 'hidden',
@@ -46,27 +57,31 @@ const classNames = mergeStyleSets({
     }
   ],
   itemIndex: {
-    fontSize: FontSizes.small,
-    color: theme.palette.neutralTertiary,
+    fontSize: fonts.small.fontSize,
+    color: palette.neutralTertiary,
     marginBottom: 10
   },
   chevron: {
     alignSelf: 'center',
     marginLeft: 10,
-    color: theme.palette.neutralTertiary,
-    fontSize: FontSizes.large,
+    color: palette.neutralTertiary,
+    fontSize: fonts.large.fontSize,
     flexShrink: 0
   }
 });
 
 export class ListGhostingExample extends React.Component<IListGhostingExampleProps> {
-  public render(): JSX.Element {
-    const { items } = this.props;
+  private _items: IExampleItem[];
+  constructor(props: IListGhostingExampleProps) {
+    super(props);
+    this._items = props.items || createListItems(5000);
+  }
 
+  public render(): JSX.Element {
     return (
       <FocusZone direction={FocusZoneDirection.vertical}>
         <div className={classNames.container} data-is-scrollable={true}>
-          <List items={items} onRenderCell={this._onRenderCell} />
+          <List items={this._items} onRenderCell={this._onRenderCell} />
         </div>
       </FocusZone>
     );

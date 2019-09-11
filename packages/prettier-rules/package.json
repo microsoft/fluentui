@@ -1,14 +1,11 @@
 {
   "name": "@uifabric/prettier-rules",
-  "version": "1.0.1",
+  "version": "7.0.4",
   "description": "Shared Prettier rules for UI Fabric projects",
   "main": "prettier.config.js",
-  "scripts": {
-    "clean": "",
-    "build": "node -v",
-    "code-style": "node ../../scripts/just.js code-style"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/OfficeDev/office-ui-fabric-react"
   },
-  "disabledTasks": [
-    "verify-api-extractor"
-  ]
+  "license": "MIT"
 }

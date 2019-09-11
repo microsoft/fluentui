@@ -17,11 +17,12 @@
     "preserveConstEnums": true,
     "lib": ["es5", "dom", "es2015.promise"],
     "skipLibCheck": true,
-    "typeRoots": ["node_modules/@types", "../../typings"],
+    "typeRoots": ["../../node_modules/@types", "../../typings"],
     "types": ["jest", "webpack-env", "custom-global"],
     "paths": {
-      "office-ui-fabric-react/lib/*": ["./src/*"]
+      "office-ui-fabric-react/lib/*": ["./src/*"],
+      "office-ui-fabric-react": ["./src"]
     }
   },
-  "include": ["src"]
+  "include": ["src", "../../typings"]
 }

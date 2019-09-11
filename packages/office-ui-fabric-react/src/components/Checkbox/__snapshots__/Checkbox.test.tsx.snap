@@ -9,8 +9,32 @@ exports[`Checkbox renders Checkbox correctly 1`] = `
         display: flex;
         position: relative;
       }
+      &:hover .ms-Checkbox-checkbox {
+        border-color: #323130;
+      }
+      @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
+        border-color: Highlight;
+      }
+      &:focus .ms-Checkbox-checkbox {
+        border-color: #323130;
+      }
+      &:hover .ms-Checkbox-checkmark {
+        color: #605e5c;
+        opacity: 1;
+      }
+      @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkmark {
+        color: Highlight;
+      }
+      &:hover .ms-Checkbox-text {
+        color: #201f1e;
+      }
+      &:focus .ms-Checkbox-text {
+        color: #201f1e;
+      }
 >
   <input
+    aria-checked="false"
+    aria-label="Standard checkbox"
     className=
 
         {
@@ -20,7 +44,7 @@ exports[`Checkbox renders Checkbox correctly 1`] = `
         }
         .ms-Fabric--isFocusVisible &:focus + label::before {
           outline-offset: 2px;
-          outline: 1px solid #666666;
+          outline: 1px solid #605e5c;
         }
         @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
           outline: 1px solid ActiveBorder;
@@ -47,27 +71,14 @@ exports[`Checkbox renders Checkbox correctly 1`] = `
           text-align: left;
           user-select: none;
         }
-        &:hover .ms-Checkbox-checkbox {
-          border-color: #333333;
-        }
-        @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
-          border-color: Highlight;
-        }
-        &:focus .ms-Checkbox-checkbox {
-          border-color: #333333;
-        }
-        &:hover .ms-Checkbox-checkmark {
-          color: #a6a6a6;
-          opacity: 1;
-        }
-        @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkmark {
-          color: Highlight;
-        }
-        &:hover .ms-Checkbox-text {
-          color: #333333;
-        }
-        &:focus .ms-Checkbox-text {
-          color: #333333;
+        &::before {
+          bottom: 0px;
+          content: "";
+          left: 0px;
+          pointer-events: none;
+          position: absolute;
+          right: 0px;
+          top: 0px;
         }
     htmlFor="checkbox-0"
   >
@@ -76,9 +87,8 @@ exports[`Checkbox renders Checkbox correctly 1`] = `
           ms-Checkbox-checkbox
           {
             align-items: center;
-            border-color: #666666;
-            border-style: solid;
-            border-width: 1px;
+            border-radius: 2px;
+            border: 1px solid #323130;
             box-sizing: border-box;
             display: flex;
             flex-shrink: 0;
@@ -86,6 +96,7 @@ exports[`Checkbox renders Checkbox correctly 1`] = `
             justify-content: center;
             margin-right: 4px;
             overflow: hidden;
+            position: relative;
             transition-duration: 200ms;
             transition-property: background, border, border-color;
             transition-timing-function: cubic-bezier(.4, 0, .23, 1);
@@ -93,6 +104,7 @@ exports[`Checkbox renders Checkbox correctly 1`] = `
           }
     >
       <i
+        aria-hidden={true}
         className=
             ms-Checkbox-checkmark
             {
@@ -117,10 +129,11 @@ exports[`Checkbox renders Checkbox correctly 1`] = `
       </i>
     </div>
     <span
+      aria-hidden="true"
       className=
           ms-Checkbox-text
           {
-            color: #333333;
+            color: #323130;
             font-size: 14px;
             line-height: 20px;
             margin-left: 4px;

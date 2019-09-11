@@ -3,7 +3,10 @@ import { IconButton } from '../../Button';
 import { Label } from '../../Label';
 import { Icon } from '../../Icon';
 import {
-  BaseComponent,
+  initializeComponentRef,
+  initializeFocusRects,
+  warnMutuallyExclusive,
+  Async,
   getId,
   KeyCodes,
   customizable,
@@ -49,7 +52,7 @@ export type DefaultProps = Required<
 type ISpinButtonInternalProps = ISpinButtonProps & DefaultProps;
 
 @customizable('SpinButton', ['theme', 'styles'], true)
-export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState> implements ISpinButton {
+export class SpinButton extends React.Component<ISpinButtonProps, ISpinButtonState> implements ISpinButton {
   public static defaultProps: DefaultProps = {
     step: 1,
     min: 0,
@@ -61,6 +64,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
     decrementButtonIcon: { iconName: 'ChevronDownSmall' }
   };
 
+  private _async: Async;
   private _input = React.createRef<HTMLInputElement>();
   private _inputId: string;
   private _labelId: string;
@@ -76,7 +80,10 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
   constructor(props: ISpinButtonProps) {
     super(props);
 
-    this._warnMutuallyExclusive({
+    initializeComponentRef(this);
+    initializeFocusRects();
+
+    warnMutuallyExclusive('SpinButton', props, {
       value: 'defaultValue'
     });
 
@@ -92,6 +99,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
       keyboardSpinDirection: KeyboardSpinDirection.notSpinning
     };
 
+    this._async = new Async(this);
     this._currentStepFunctionHandle = -1;
     this._labelId = getId('Label');
     this._inputId = getId('input');
@@ -99,10 +107,15 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
     this._valueToValidate = undefined;
   }
 
+  public componentWillUnmount(): void {
+    this._async.dispose();
+  }
+
   /**
    * Invoked when a component is receiving new props. This method is not called for the initial render.
    */
-  public componentWillReceiveProps(newProps: ISpinButtonProps): void {
+  // tslint:disable-next-line function-name
+  public UNSAFE_componentWillReceiveProps(newProps: ISpinButtonProps): void {
     this._lastValidValue = this.state.value;
     let value: string = newProps.value ? newProps.value : String(newProps.min);
     if (newProps.defaultValue) {
@@ -141,14 +154,16 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
       ariaValueNow,
       ariaValueText,
       keytipProps,
-      className
+      className,
+      inputProps,
+      iconButtonProps
     } = this.props as ISpinButtonInternalProps;
 
     const { isFocused, value, keyboardSpinDirection } = this.state;
 
     const classNames = this.props.getClassNames
-      ? this.props.getClassNames(theme!, !!disabled, !!isFocused, keyboardSpinDirection, labelPosition, className)
-      : getClassNames(getStyles(theme!, customStyles), !!disabled, !!isFocused, keyboardSpinDirection, labelPosition, className);
+      ? this.props.getClassNames(theme!, disabled, isFocused, keyboardSpinDirection, labelPosition, className)
+      : getClassNames(getStyles(theme!, customStyles), disabled, isFocused, keyboardSpinDirection, labelPosition, className);
 
     return (
       <div className={classNames.root}>
@@ -156,7 +171,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
           <div className={classNames.labelWrapper}>
             {iconProps && <Icon {...iconProps} className={classNames.icon} aria-hidden="true" />}
             {label && (
-              <Label id={this._labelId} htmlFor={this._inputId} className={classNames.label}>
+              <Label id={this._labelId} htmlFor={this._inputId} className={classNames.label} disabled={disabled}>
                 {label}
               </Label>
             )}
@@ -196,6 +211,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
                 aria-disabled={disabled}
                 data-lpignore={true}
                 data-ktp-execute-target={keytipAttributes['data-ktp-execute-target']}
+                {...inputProps}
               />
               <span className={classNames.arrowBox}>
                 <IconButton
@@ -210,6 +226,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
                   tabIndex={-1}
                   ariaLabel={incrementButtonAriaLabel}
                   data-is-focusable={false}
+                  {...iconButtonProps}
                 />
                 <IconButton
                   styles={getArrowButtonStyles(theme!, false, customDownArrowButtonStyles)}
@@ -223,6 +240,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
                   tabIndex={-1}
                   ariaLabel={decrementButtonAriaLabel}
                   data-is-focusable={false}
+                  {...iconButtonProps}
                 />
               </span>
             </div>
@@ -232,7 +250,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
           <div className={classNames.labelWrapper}>
             {iconProps && <Icon iconName={iconProps.iconName} className={classNames.icon} aria-hidden="true" />}
             {label && (
-              <Label id={this._labelId} htmlFor={this._inputId} className={classNames.label}>
+              <Label id={this._labelId} htmlFor={this._inputId} className={classNames.label} disabled={disabled}>
                 {label}
               </Label>
             )}
@@ -344,11 +362,13 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
 
   private _onChange(): void {
     /**
-     * A noop input change handler.
-     * https://github.com/facebook/react/issues/7027.
-     * Using the native onInput handler fixes the issue but onChange
-     * still need to be wired to avoid React console errors
-     * TODO: Check if issue is resolved when React 16 is available.
+     * A noop input change handler. Using onInput instead of onChange was meant to address an issue
+     * which apparently has been resolved in React 16 (https://github.com/facebook/react/issues/7027).
+     * The no-op onChange handler was still needed because React gives console errors if an input
+     * doesn't have onChange.
+     *
+     * TODO (Fabric 8?) - switch to just calling onChange (this is a breaking change for any tests,
+     * ours or 3rd-party, which simulate entering text in a SpinButton)
      */
   }
 

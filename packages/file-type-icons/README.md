@@ -1,10 +1,10 @@
-# [Office UI Fabric - File Type Icons](http://dev.office.com/fabric)
+# @uifabric/file-type-icons
 
-##### The React-based front-end framework for building experiences for Office and Office 365.
+**File type icons for [Office UI Fabric React](https://dev.microsoft.com/fabric)**
 
-Fabric File Type Icons includes a collection of icons to represent file types.
+This package includes a collection of icons to represent file types.
 
-# Getting started
+## Getting started
 
 If you are using Fabric React components, you can make all file type icons available by calling the `initializeFileTypeIcons` function from the `@uifabric/file-type-icons` package:
 
@@ -18,7 +18,7 @@ initializeFileTypeIcons();
 initializeFileTypeIcons('https://my.cdn.com/path/to/icons/');
 ```
 
-# Usage in code
+## Usage in code
 
 If you are using Fabric React, you can use the `Icon` component and pass in the corresponding icon properties to render a given icon.
 
@@ -29,6 +29,16 @@ import { getFileTypeIconProps } from '@uifabric/file-type-icons';
 <Icon {...getFileTypeIconProps({extension: 'docx', size: 16}) />
 ```
 
-# Notes
+## Fluent file type icons
 
-See [Office UI Fabric React](http://github.com/OfficeDev/office-ui-fabric-react) for more details on the UI Fabric project and packages within.
+You can use the new Fluent file type icons as they become available by passing the following path to `initializeFileTypeIcons`:
+
+```tsx
+initializeFileTypeIcons('https://spoprod-a.akamaihd.net/files/fabric/assets/item-types-fluent/');
+```
+
+In Fabric 7, the new Fluent file type icons will be the default.
+
+## Notes
+
+See [Office UI Fabric React](https://github.com/OfficeDev/office-ui-fabric-react) for more details on the UI Fabric project and packages within.

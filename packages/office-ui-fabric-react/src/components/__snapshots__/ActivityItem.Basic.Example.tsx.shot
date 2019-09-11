@@ -10,7 +10,7 @@ exports[`Component Examples renders ActivityItem.Basic.Example.tsx correctly 1`]
           -webkit-font-smoothing: antialiased;
           align-items: flex-start;
           box-sizing: border-box;
-          color: #666666;
+          color: #605e5c;
           display: flex;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 12px;
@@ -30,6 +30,7 @@ exports[`Component Examples renders ActivityItem.Basic.Example.tsx correctly 1`]
           }
     >
       <i
+        aria-hidden={true}
         className=
 
             {
@@ -95,7 +96,7 @@ exports[`Component Examples renders ActivityItem.Basic.Example.tsx correctly 1`]
                 user-select: text;
               }
               .ms-Fabric--isFocusVisible &:focus {
-                box-shadow: 0 0 0 1px #666666 inset;
+                box-shadow: 0 0 0 1px #605e5c inset;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
                 outline: 1px solid WindowText;
@@ -109,10 +110,16 @@ exports[`Component Examples renders ActivityItem.Basic.Example.tsx correctly 1`]
               @media screen and (-ms-high-contrast: black-on-white){& {
                 color: #00009F;
               }
-              &:active, &:hover, &:active:hover {
+              &:active {
                 color: #004578;
+                text-decoration: underline;
               }
-              @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
+              &:hover {
+                color: #004578;
+                text-decoration: underline;
+              }
+              &:active:hover {
+                color: #004578;
                 text-decoration: underline;
               }
               &:focus {
@@ -131,7 +138,7 @@ exports[`Component Examples renders ActivityItem.Basic.Example.tsx correctly 1`]
         className=
             ms-ActivityItem-commentText
             {
-              color: #333333;
+              color: #323130;
             }
       >
         <span>
@@ -168,7 +175,7 @@ exports[`Component Examples renders ActivityItem.Basic.Example.tsx correctly 1`]
                 user-select: text;
               }
               .ms-Fabric--isFocusVisible &:focus {
-                box-shadow: 0 0 0 1px #666666 inset;
+                box-shadow: 0 0 0 1px #605e5c inset;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
                 outline: 1px solid WindowText;
@@ -182,10 +189,16 @@ exports[`Component Examples renders ActivityItem.Basic.Example.tsx correctly 1`]
               @media screen and (-ms-high-contrast: black-on-white){& {
                 color: #00009F;
               }
-              &:active, &:hover, &:active:hover {
+              &:active {
                 color: #004578;
+                text-decoration: underline;
               }
-              @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
+              &:hover {
+                color: #004578;
+                text-decoration: underline;
+              }
+              &:active:hover {
+                color: #004578;
                 text-decoration: underline;
               }
               &:focus {
@@ -206,7 +219,7 @@ exports[`Component Examples renders ActivityItem.Basic.Example.tsx correctly 1`]
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
-              color: #666666;
+              color: #605e5c;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
               font-weight: 400;
@@ -224,7 +237,7 @@ exports[`Component Examples renders ActivityItem.Basic.Example.tsx correctly 1`]
           -webkit-font-smoothing: antialiased;
           align-items: flex-start;
           box-sizing: border-box;
-          color: #666666;
+          color: #605e5c;
           display: flex;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 12px;
@@ -244,6 +257,7 @@ exports[`Component Examples renders ActivityItem.Basic.Example.tsx correctly 1`]
           }
     >
       <i
+        aria-hidden={true}
         className=
 
             {
@@ -309,7 +323,7 @@ exports[`Component Examples renders ActivityItem.Basic.Example.tsx correctly 1`]
                 user-select: text;
               }
               .ms-Fabric--isFocusVisible &:focus {
-                box-shadow: 0 0 0 1px #666666 inset;
+                box-shadow: 0 0 0 1px #605e5c inset;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
                 outline: 1px solid WindowText;
@@ -323,10 +337,16 @@ exports[`Component Examples renders ActivityItem.Basic.Example.tsx correctly 1`]
               @media screen and (-ms-high-contrast: black-on-white){& {
                 color: #00009F;
               }
-              &:active, &:hover, &:active:hover {
+              &:active {
                 color: #004578;
+                text-decoration: underline;
               }
-              @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
+              &:hover {
+                color: #004578;
+                text-decoration: underline;
+              }
+              &:active:hover {
+                color: #004578;
                 text-decoration: underline;
               }
               &:focus {
@@ -356,7 +376,7 @@ exports[`Component Examples renders ActivityItem.Basic.Example.tsx correctly 1`]
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
-              color: #666666;
+              color: #605e5c;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
               font-weight: 400;
@@ -374,7 +394,7 @@ exports[`Component Examples renders ActivityItem.Basic.Example.tsx correctly 1`]
           -webkit-font-smoothing: antialiased;
           align-items: flex-start;
           box-sizing: border-box;
-          color: #666666;
+          color: #605e5c;
           display: flex;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 12px;
@@ -394,6 +414,7 @@ exports[`Component Examples renders ActivityItem.Basic.Example.tsx correctly 1`]
           }
     >
       <i
+        aria-hidden={true}
         className=
 
             {
@@ -459,7 +480,7 @@ exports[`Component Examples renders ActivityItem.Basic.Example.tsx correctly 1`]
                 user-select: text;
               }
               .ms-Fabric--isFocusVisible &:focus {
-                box-shadow: 0 0 0 1px #666666 inset;
+                box-shadow: 0 0 0 1px #605e5c inset;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
                 outline: 1px solid WindowText;
@@ -473,10 +494,16 @@ exports[`Component Examples renders ActivityItem.Basic.Example.tsx correctly 1`]
               @media screen and (-ms-high-contrast: black-on-white){& {
                 color: #00009F;
               }
-              &:active, &:hover, &:active:hover {
+              &:active {
                 color: #004578;
+                text-decoration: underline;
               }
-              @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
+              &:hover {
+                color: #004578;
+                text-decoration: underline;
+              }
+              &:active:hover {
+                color: #004578;
                 text-decoration: underline;
               }
               &:focus {
@@ -521,7 +548,7 @@ exports[`Component Examples renders ActivityItem.Basic.Example.tsx correctly 1`]
                 user-select: text;
               }
               .ms-Fabric--isFocusVisible &:focus {
-                box-shadow: 0 0 0 1px #666666 inset;
+                box-shadow: 0 0 0 1px #605e5c inset;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
                 outline: 1px solid WindowText;
@@ -535,10 +562,16 @@ exports[`Component Examples renders ActivityItem.Basic.Example.tsx correctly 1`]
               @media screen and (-ms-high-contrast: black-on-white){& {
                 color: #00009F;
               }
-              &:active, &:hover, &:active:hover {
+              &:active {
                 color: #004578;
+                text-decoration: underline;
               }
-              @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
+              &:hover {
+                color: #004578;
+                text-decoration: underline;
+              }
+              &:active:hover {
+                color: #004578;
                 text-decoration: underline;
               }
               &:focus {
@@ -583,7 +616,7 @@ exports[`Component Examples renders ActivityItem.Basic.Example.tsx correctly 1`]
                 user-select: text;
               }
               .ms-Fabric--isFocusVisible &:focus {
-                box-shadow: 0 0 0 1px #666666 inset;
+                box-shadow: 0 0 0 1px #605e5c inset;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
                 outline: 1px solid WindowText;
@@ -597,10 +630,16 @@ exports[`Component Examples renders ActivityItem.Basic.Example.tsx correctly 1`]
               @media screen and (-ms-high-contrast: black-on-white){& {
                 color: #00009F;
               }
-              &:active, &:hover, &:active:hover {
+              &:active {
                 color: #004578;
+                text-decoration: underline;
               }
-              @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
+              &:hover {
+                color: #004578;
+                text-decoration: underline;
+              }
+              &:active:hover {
+                color: #004578;
                 text-decoration: underline;
               }
               &:focus {
@@ -618,7 +657,7 @@ exports[`Component Examples renders ActivityItem.Basic.Example.tsx correctly 1`]
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
-              color: #666666;
+              color: #605e5c;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
               font-weight: 400;

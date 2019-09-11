@@ -1,25 +1,42 @@
 import * as React from 'react';
 import { CommandButton } from 'office-ui-fabric-react/lib/Button';
-import { ICodepenProps, ICodepenStyleProps, ICodepenStyles } from './CodepenComponent.types';
 import { IStyleFunction, classNamesFunction, styled } from 'office-ui-fabric-react/lib/Utilities';
+import { ICodepenProps, ICodepenStyleProps, ICodepenStyles } from './CodepenComponent.types';
 
 const getStyles: IStyleFunction<ICodepenStyleProps, ICodepenStyles> = () => ({});
 
 const getClassNames = classNamesFunction<ICodepenStyleProps, ICodepenStyles>();
 
+function script(path: string) {
+  return `<script src="//unpkg.com/${path}"></script>`;
+}
+
+interface ICodepenPrefill {
+  title: string;
+  html: string;
+  head: string;
+  js: string;
+  js_pre_processor: string;
+  css_pre_processor: string;
+  // and other options--see https://blog.codepen.io/documentation/api/prefill/
+}
+
 const CodepenComponentBase: React.StatelessComponent<ICodepenProps> = props => {
-  const { jsContent, buttonAs: ButtonType = CommandButton, buttonClassName, styles, theme } = props;
+  const { jsContent, buttonAs: ButtonType = CommandButton, styles, theme } = props;
 
   const classNames = getClassNames(styles, { theme: theme! });
   const buttonStyles = classNames.subComponentStyles.button;
 
   // boilerplate for codepen API
-  const htmlContent = '<script src="//unpkg.com/office-ui-fabric-react/dist/office-ui-fabric-react.js"></script>\n<div id="content"></div>';
+  const htmlContent = [
+    script('office-ui-fabric-react@7/dist/office-ui-fabric-react.js'),
+    jsContent.indexOf('window.FabricExampleData') !== -1 ? script('@uifabric/example-data@7/dist/example-data.js') : '',
+    '<div id="content"></div>'
+  ].join('\n');
 
-  const headContent =
-    '<script type="text/javascript" src="https://unpkg.com/react@16/umd/react.development.js"></script>\n<script type="text/javascript" src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>';
+  const headContent = [script('react@16.8.6/umd/react.development.js'), script('react-dom@16.8.6/umd/react-dom.development.js')].join('\n');
 
-  const valueData = {
+  const valueData: ICodepenPrefill = {
     title: 'Fabric Example Pen',
     html: htmlContent,
     head: headContent,
@@ -40,7 +57,6 @@ const CodepenComponentBase: React.StatelessComponent<ICodepenProps> = props => {
         type="submit"
         iconProps={{ iconName: 'OpenInNewWindow' }}
         text="Export to CodePen"
-        className={buttonClassName}
         styles={typeof buttonStyles === 'function' ? buttonStyles({}) : buttonStyles}
       />
     </form>

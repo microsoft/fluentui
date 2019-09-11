@@ -22,8 +22,14 @@ describe('Toggle', () => {
     expect(tree).toMatchSnapshot();
   });
 
-  it('renders toggle correctly with inline label', () => {
+  it('renders toggle correctly with inline label (string)', () => {
     const component = renderer.create(<Toggle label="Label" inlineLabel={true} />);
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('renders toggle correctly with inline label (JSX Element)', () => {
+    const component = renderer.create(<Toggle label={<p>Label</p>} inlineLabel={true} />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });

@@ -1,13 +1,13 @@
 import * as React from 'react';
+import { getTheme, mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
+import { lorem } from '@uifabric/example-data';
 import { ScrollablePane } from 'office-ui-fabric-react/lib/ScrollablePane';
 import { Sticky, StickyPositionType } from 'office-ui-fabric-react/lib/Sticky';
-import { lorem } from 'office-ui-fabric-react/lib/utilities/exampleData';
-import { getTheme, mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
 
 const theme = getTheme();
 const classNames = mergeStyleSets({
   wrapper: {
-    height: '80vh',
+    height: '40vh',
     position: 'relative',
     maxHeight: 'inherit'
   },

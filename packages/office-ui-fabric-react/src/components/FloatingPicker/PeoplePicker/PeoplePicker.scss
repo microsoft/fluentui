@@ -1,4 +1,3 @@
-
 @import '../../../common/common';
 
 .resultContent {
@@ -11,13 +10,13 @@
 
 .peoplePickerPersona {
   width: 180px;
-   :global(.ms-Persona-details) {
+  :global(.ms-Persona-details) {
     width: 100%;
   }
 }
 
 .peoplePicker {
-   :global(.ms-BasePicker-text) {
+  :global(.ms-BasePicker-text) {
     min-height: 40px;
   }
 }

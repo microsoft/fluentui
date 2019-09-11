@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { buttonProperties, getNativeProps, KeyCodes, mergeAriaAttributeValues } from '../../../Utilities';
+import { buttonProperties, getNativeProps, KeyCodes, mergeAriaAttributeValues, memoizeFunction } from '../../../Utilities';
 import { ContextualMenuItem } from '../ContextualMenuItem';
 import { IContextualMenuItem } from '../ContextualMenu.types';
 import { IMenuItemClassNames, getSplitButtonVerticalDividerClassNames } from '../ContextualMenu.classNames';
@@ -7,6 +7,7 @@ import { KeytipData } from '../../../KeytipData';
 import { isItemDisabled, hasSubmenu } from '../../../utilities/contextualMenu/index';
 import { VerticalDivider } from '../../../Divider';
 import { ContextualMenuItemWrapper } from './ContextualMenuItemWrapper';
+import { IKeytipProps } from '../../Keytip/Keytip.types';
 
 export interface IContextualMenuSplitButtonState {}
 
@@ -16,6 +17,13 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
   private _splitButton: HTMLDivElement;
   private _lastTouchTimeoutId: number | undefined;
   private _processingTouch: boolean;
+
+  private _getMemoizedMenuButtonKeytipProps = memoizeFunction((keytipProps: IKeytipProps) => {
+    return {
+      ...keytipProps,
+      hasMenu: true
+    };
+  });
 
   public componentDidMount() {
     if (this._splitButton && 'onpointerdown' in this._splitButton) {
@@ -40,10 +48,7 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
 
     let { keytipProps } = item;
     if (keytipProps) {
-      keytipProps = {
-        ...keytipProps,
-        hasMenu: true
-      };
+      keytipProps = this._getMemoizedMenuButtonKeytipProps(keytipProps);
     }
 
     return (

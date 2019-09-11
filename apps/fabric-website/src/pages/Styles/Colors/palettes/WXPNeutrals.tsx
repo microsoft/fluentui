@@ -1,12 +1,12 @@
 import * as React from 'react';
 
-import { ColorPalette } from '@uifabric/example-app-base/lib/index2';
+import { ColorPalette, MarkdownHeader } from '@uifabric/example-app-base/lib/index2';
 
 export class WXPNeutrals extends React.Component {
   public render() {
     return (
       <>
-        <h3>Colorful Theme</h3>
+        <MarkdownHeader as="h3">Colorful Theme</MarkdownHeader>
         <ColorPalette
           colors={[
             {
@@ -92,7 +92,7 @@ export class WXPNeutrals extends React.Component {
           ]}
         />
 
-        <h3>Dark Gray Theme</h3>
+        <MarkdownHeader as="h3">Dark Gray Theme</MarkdownHeader>
         <ColorPalette
           colors={[
             {
@@ -202,7 +202,7 @@ export class WXPNeutrals extends React.Component {
           ]}
         />
 
-        <h3>Black Theme</h3>
+        <MarkdownHeader as="h3">Black Theme</MarkdownHeader>
         <ColorPalette
           colors={[
             {

@@ -347,7 +347,7 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
       >
         {suggestions.map((suggestion, index) => (
           <div
-            ref={suggestion.selected ? this._selectedElement : ''}
+            ref={suggestion.selected ? this._selectedElement : undefined}
             // tslint:disable-next-line:no-string-literal
             key={(suggestion.item as any)['key'] ? (suggestion.item as any)['key'] : index}
             id={'sug-' + index}
@@ -357,7 +357,7 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
           >
             <StyledTypedSuggestionsItem
               suggestionModel={suggestion}
-              RenderSuggestion={onRenderSuggestion as any}
+              RenderSuggestion={onRenderSuggestion}
               onClick={this._onClickTypedSuggestionsItem(suggestion.item, index)}
               className={suggestionsItemClassName}
               showRemoveButton={showRemoveButtons}

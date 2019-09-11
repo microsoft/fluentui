@@ -1,29 +1,9 @@
-# [Office UI Fabric React DateTime](http://dev.microsoft.com/fabric)
+# @uifabric/date-time
 
-##### DateTime components for Office UI Fabric React
+**Date and time-related components for [Office UI Fabric React](https://dev.microsoft.com/fabric)**
 
-These are not production-ready components and **should never be used in product**. This space is useful for testing new components whose APIs might change before final release.
-
-To import DateTime components:
+To import the components:
 
 ```js
-import { ComponentName } from '@uifabric/date-time';
+import { Calendar, DatePicker } from '@uifabric/date-time';
 ```
-
-Once the DateTime component graduates to a production release, the component will be available at:
-
-```js
-import { ComponentName } from 'office-ui-fabric-react';
-```
-
-#### Development Notes
-
-Initial refactor in progress, still TODO:
-
-- Move the DatePicker control in to the date-time package
-- Refactoring the Calendar control:
-  - Unit tests all need to be copied over and updated to work with the refactor
-  - Styling pass needs to be done to make sure we didn't drop styles
-  - Integrate the latest missing changes from OUFR version
-    - Year picker
-    - Accessibility updates

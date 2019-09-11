@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ColorPalette, IColor } from '@uifabric/example-app-base/lib/index2';
+import { ColorPalette, IColorSwatch, MarkdownHeader } from '@uifabric/example-app-base/lib/index2';
 import { SharePointNeutrals, SharePointThemes } from './sharePointThemes';
 
 export class SharePoint extends React.Component<{}, { activeThemeName?: string }> {
@@ -16,9 +16,9 @@ export class SharePoint extends React.Component<{}, { activeThemeName?: string }
 
     return (
       <>
-        <h2>SharePoint</h2>
+        <MarkdownHeader as="h2">SharePoint</MarkdownHeader>
 
-        <h3>Themes</h3>
+        <MarkdownHeader as="h3">Themes</MarkdownHeader>
         <ColorPalette
           colors={SharePointThemes.map(theme => ({
             name: theme.name,
@@ -31,10 +31,10 @@ export class SharePoint extends React.Component<{}, { activeThemeName?: string }
 
         {activeThemeColors && (
           <>
-            <h3>{`${activeThemeName} theme`}</h3>
+            <MarkdownHeader as="h3">{`${activeThemeName} theme`}</MarkdownHeader>
             <ColorPalette colors={activeThemeColors} />
 
-            <h3>{`Neutrals for ${activeThemeName} theme (${activeThemeData.background} background)`}</h3>
+            <MarkdownHeader as="h3">{`Neutrals for ${activeThemeName} theme (${activeThemeData.background} background)`}</MarkdownHeader>
             <ColorPalette colors={activeNeutralColors} />
           </>
         )}
@@ -42,7 +42,7 @@ export class SharePoint extends React.Component<{}, { activeThemeName?: string }
     );
   }
 
-  private _changeTheme = (theme: IColor) => {
+  private _changeTheme = (theme: IColorSwatch) => {
     this.setState(
       prevState =>
         prevState.activeThemeName !== theme.name && {

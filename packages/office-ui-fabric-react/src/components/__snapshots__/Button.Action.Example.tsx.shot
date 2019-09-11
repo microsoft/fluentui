@@ -1,161 +1,158 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Component Examples renders Button.Action.Example.tsx correctly 1`] = `
-<div
+<button
   className=
-      ms-BasicButtonsExample
-      & .ms-Button {
-        margin-bottom: 10px;
-        margin-left: 0;
-        margin-right: 0;
-        margin-top: 10px;
+      ms-Button
+      ms-Button--action
+      ms-Button--command
+      {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        background-color: transparent;
+        border-radius: 2px;
+        border: 1px solid transparent;
+        box-sizing: border-box;
+        color: #323130;
+        cursor: pointer;
+        display: inline-block;
+        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        height: 40px;
+        outline: transparent;
+        padding-bottom: 0;
+        padding-left: 4px;
+        padding-right: 4px;
+        padding-top: 0;
+        position: relative;
+        text-align: center;
+        text-decoration: none;
+        user-select: none;
+        vertical-align: top;
       }
+      &::-moz-focus-inner {
+        border: 0;
+      }
+      .ms-Fabric--isFocusVisible &:focus:after {
+        border: 1px solid transparent;
+        bottom: 2px;
+        content: "";
+        left: 2px;
+        outline: 1px solid #605e5c;
+        position: absolute;
+        right: 2px;
+        top: 2px;
+        z-index: 1;
+      }
+      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+        border: none;
+        bottom: -2px;
+        left: -2px;
+        outline-color: ButtonText;
+        right: -2px;
+        top: -2px;
+      }
+      &:active > * {
+        left: 0px;
+        position: relative;
+        top: 0px;
+      }
+      &:hover {
+        color: #0078d4;
+      }
+      @media screen and (-ms-high-contrast: active){&:hover {
+        border-color: Highlight;
+        color: Highlight;
+      }
+      &:hover .ms-Button-icon {
+        color: #0078d4;
+      }
+      &:active {
+        color: #000000;
+      }
+      &:active .ms-Button-icon {
+        color: #004578;
+      }
+  data-is-focusable={true}
+  onClick={[Function]}
+  onKeyDown={[Function]}
+  onKeyPress={[Function]}
+  onKeyUp={[Function]}
+  onMouseDown={[Function]}
+  onMouseUp={[Function]}
+  type="button"
 >
-  <button
+  <span
     className=
-        ms-Button
-        ms-Button--action
-        ms-Button--command
+        ms-Button-flexContainer
         {
-          -moz-osx-font-smoothing: grayscale;
-          -webkit-font-smoothing: antialiased;
-          background-color: transparent;
-          border-radius: 0px;
-          border: 1px solid transparent;
-          box-sizing: border-box;
-          color: #333333;
-          cursor: pointer;
-          display: inline-block;
-          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-          font-size: 14px;
-          font-weight: 400;
-          height: 40px;
-          outline: transparent;
-          padding-bottom: 0;
-          padding-left: 4px;
-          padding-right: 4px;
-          padding-top: 0;
-          position: relative;
-          text-align: center;
-          text-decoration: none;
-          user-select: none;
-          vertical-align: top;
+          align-items: center;
+          display: flex;
+          flex-wrap: nowrap;
+          height: 100%;
+          justify-content: flex-start;
         }
-        &::-moz-focus-inner {
-          border: 0;
-        }
-        .ms-Fabric--isFocusVisible &:focus:after {
-          border: 1px solid #ffffff;
-          bottom: 0px;
-          content: "";
-          left: 0px;
-          outline: 1px solid #666666;
-          position: absolute;
-          right: 0px;
-          top: 0px;
-          z-index: 1;
-        }
-        @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-          border: none;
-          bottom: -2px;
-          left: -2px;
-          outline-color: ButtonText;
-          right: -2px;
-          top: -2px;
-        }
-        &:active > * {
-          left: 0px;
-          position: relative;
-          top: 0px;
-        }
-        &:hover {
-          color: #0078d4;
-        }
-        @media screen and (-ms-high-contrast: active){&:hover {
-          border-color: Highlight;
-          color: Highlight;
-        }
-        &:hover .ms-Button-icon {
-          color: #0078d4;
-        }
-        &:active {
-          color: #000000;
-        }
-        &:active .ms-Button-icon {
-          color: #004578;
-        }
-    data-automation-id="test"
-    data-is-focusable={true}
-    onClick={[Function]}
-    onKeyDown={[Function]}
-    onKeyPress={[Function]}
-    onKeyUp={[Function]}
-    onMouseDown={[Function]}
-    onMouseUp={[Function]}
-    type="button"
+    data-automationid="splitbuttonprimary"
   >
-    <div
+    <i
+      aria-hidden={true}
       className=
-          ms-Button-flexContainer
+          ms-Icon
+          ms-Button-icon
           {
-            align-items: center;
-            display: flex;
-            flex-wrap: nowrap;
-            height: 100%;
-            justify-content: flex-start;
+            display: inline-block;
+          }
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            font-family: "FabricMDL2Icons";
+            font-style: normal;
+            font-weight: normal;
+            speak: none;
+          }
+          {
+            color: #106ebe;
+            flex-shrink: 0;
+            font-size: 16px;
+            height: 16px;
+            line-height: 16px;
+            margin-bottom: 0;
+            margin-left: 4px;
+            margin-right: 4px;
+            margin-top: 0;
+            text-align: center;
+            vertical-align: middle;
+          }
+      data-icon-name="AddFriend"
+      role="presentation"
+    >
+      
+    </i>
+    <span
+      className=
+          ms-Button-textContainer
+          {
+            display: block;
+            flex-grow: 0;
           }
     >
-      <i
+      <span
         className=
-            ms-Button-icon
+            ms-Button-label
             {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              color: #106ebe;
-              display: inline-block;
-              flex-shrink: 0;
-              font-family: "FabricMDL2Icons";
-              font-size: 16px;
-              font-style: normal;
-              font-weight: normal;
-              height: 16px;
-              line-height: 16px;
+              display: block;
+              line-height: 100%;
               margin-bottom: 0;
               margin-left: 4px;
               margin-right: 4px;
               margin-top: 0;
-              speak: none;
-              text-align: center;
-              vertical-align: middle;
             }
-        data-icon-name="AddFriend"
-        role="presentation"
+        id="id__0"
       >
-        
-      </i>
-      <div
-        className=
-            ms-Button-textContainer
-            {
-              flex-grow: 0;
-            }
-      >
-        <div
-          className=
-              ms-Button-label
-              {
-                line-height: 100%;
-                margin-bottom: 0;
-                margin-left: 4px;
-                margin-right: 4px;
-                margin-top: 0;
-              }
-          id="id__0"
-        >
-          Create account
-        </div>
-      </div>
-    </div>
-  </button>
-</div>
+        Create account
+      </span>
+    </span>
+  </span>
+</button>
 `;

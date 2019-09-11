@@ -1,6 +1,61 @@
 # Change Log - @uifabric/icons
 
-This log was last generated on Tue, 02 Apr 2019 00:38:15 GMT and should not be manually modified.
+This log was last generated on Wed, 04 Sep 2019 12:32:15 GMT and should not be manually modified.
+
+## 7.2.0
+Wed, 04 Sep 2019 12:32:15 GMT
+
+### Minor changes
+
+- Update Fabric icons to v3.46, adding many new icons. (pejahn@microsoft.com)
+## 7.1.3
+Wed, 04 Sep 2019 04:09:58 GMT
+
+### Patches
+
+- fix version file (kchau@microsoft.com)
+## 7.1.2
+Fri, 23 Aug 2019 12:35:28 GMT
+
+### Patches
+
+- Update npmignores, delete unused jest setup files (elcraig@microsoft.com)
+- Fix up readme and package.json descriptions (elcraig@microsoft.com)
+
+## 7.1.1
+Wed, 17 Jul 2019 18:58:57 GMT
+
+### Patches
+
+- Adding @types/react and @types/react-dom to package.json that have peer dependencies on react and react-dom. (makotom@microsoft.com)
+
+## 7.1.0
+Tue, 02 Jul 2019 12:29:06 GMT
+
+### Minor changes
+
+- Update MDL2 icons. Add AllIconNames.json
+
+## 7.0.2
+Fri, 14 Jun 2019 12:26:30 GMT
+
+### Patches
+
+- Fix missing assets in production build.
+
+## 7.0.1
+Thu, 13 Jun 2019 00:24:48 GMT
+
+### Patches
+
+- Initial release of Fabric 7
+
+## 6.5.2
+Tue, 14 May 2019 07:50:30 GMT
+
+### Patches
+
+- Update Fabric assets link
 
 ## 6.5.1
 Tue, 02 Apr 2019 00:38:15 GMT
@@ -42,7 +97,7 @@ Mon, 08 Oct 2018 12:24:15 GMT
 
 ### Patches
 
-- Moving tslint/prettier dependencies 
+- Moving tslint/prettier dependencies
 
 ## 6.1.1
 Fri, 21 Sep 2018 14:25:46 GMT

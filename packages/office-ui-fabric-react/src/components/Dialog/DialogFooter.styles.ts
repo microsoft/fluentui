@@ -20,7 +20,7 @@ export const getStyles = (props: IDialogFooterStyleProps): IDialogFooterStyles =
         width: '100%',
         minHeight: '24px',
         lineHeight: '24px',
-        margin: '20px 0 0',
+        margin: '16px 0 0',
         fontSize: '0',
 
         selectors: {
@@ -32,20 +32,19 @@ export const getStyles = (props: IDialogFooterStyleProps): IDialogFooterStyles =
       className
     ],
 
-    action: [classNames.action],
+    action: [
+      classNames.action,
+      {
+        margin: '0 4px'
+      }
+    ],
 
     actionsRight: [
       classNames.actionsRight,
       {
         textAlign: 'right',
         marginRight: '-4px',
-        fontSize: '0',
-
-        selectors: {
-          $action: {
-            margin: '0 4px'
-          }
-        }
+        fontSize: '0'
       }
     ]
   };

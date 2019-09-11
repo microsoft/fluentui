@@ -1,6 +1,149 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Thu, 02 May 2019 12:36:35 GMT and should not be manually modified.
+This log was last generated on Wed, 04 Sep 2019 04:09:58 GMT and should not be manually modified.
+
+## 7.0.9
+Wed, 04 Sep 2019 04:09:58 GMT
+
+### Patches
+
+- fix version file (kchau@microsoft.com)
+## 7.0.8
+Fri, 23 Aug 2019 12:35:28 GMT
+
+### Patches
+
+- Update npmignores, delete unused jest setup files (elcraig@microsoft.com)
+- Fix up readme and package.json descriptions (elcraig@microsoft.com)
+
+## 7.0.7
+Wed, 17 Jul 2019 18:58:57 GMT
+
+### Patches
+
+- Adding @types/react and @types/react-dom to package.json that have peer dependencies on react and react-dom. (makotom@microsoft.com)
+
+## 7.0.6
+Mon, 01 Jul 2019 18:51:42 GMT
+
+### Patches
+
+- adds react-app-polyfill
+
+## 7.0.5
+Thu, 27 Jun 2019 22:14:22 GMT
+
+### Patches
+
+- Utilities: Update implementation for raising a click event to support IE
+
+## 7.0.4
+Thu, 27 Jun 2019 18:25:04 GMT
+
+### Patches
+
+- Adding a null check in the case a stylesheet instance is not avaiable or old.
+- The `getClassNames` function now returns memoized classnames, resulting in improved performance in high repeat scenarios (like lists rendering checks.) Reintroduction of #8761.
+- Add placeholder as TextArea property
+
+## 7.0.3
+Fri, 14 Jun 2019 12:26:30 GMT
+
+### Patches
+
+- Fix missing assets in production build.
+
+## 7.0.2
+Thu, 13 Jun 2019 00:24:48 GMT
+
+### Patches
+
+- Initial release of Fabric 7
+
+## 7.0.0
+Wed, 12 Jun 2019 00:42:26 GMT
+
+### Breaking changes
+
+- Remove deprecated `autobind` decorator.
+- createRef: removed (use React.createRef instead)
+
+### Minor changes
+
+- Add utility for checking controlled/uncontrolled prop usage
+
+### Patches
+
+- Update and dedupe React deps.
+
+## 6.41.0
+Tue, 11 Jun 2019 12:21:35 GMT
+
+### Minor changes
+
+- Updating `getNativeAttributes` element allow lists to be more refined, reducing unexpected attributes from being injected on primative elements. For example, `min` and `max` were being allowed to be injected for `div` elements. Now they are only injected for `input` elements.
+
+### Patches
+
+- Setting the styles props only when either of defaultProps or componentProps have it defined
+- upgrade to api-extractor 7.1.6
+
+## 6.40.1
+Thu, 06 Jun 2019 12:22:24 GMT
+
+### Patches
+
+- Fix ./index import from selection
+
+## 6.40.0
+Wed, 05 Jun 2019 12:22:30 GMT
+
+### Minor changes
+
+- Migrate Selection to Utilities
+
+## 6.39.3
+Wed, 29 May 2019 12:21:24 GMT
+
+### Patches
+
+- Revert styled and classNameFunctions perf improvements temporarily.
+
+## 6.39.2
+Fri, 24 May 2019 14:51:14 GMT
+
+### Patches
+
+- remove usage of process
+
+## 6.39.1
+Fri, 24 May 2019 12:21:33 GMT
+
+### Patches
+
+- Fix wrapped styled regression caused by nested style arrays.
+- Mutually exclusive warnings are not displayed if value of the prop is undefined
+
+## 6.39.0
+Wed, 22 May 2019 12:21:34 GMT
+
+### Minor changes
+
+- The `getClassNames` function now returns memoized classnames, resulting in improved performance in high repeat scenarios (like lists rendering checks.)
+
+## 6.38.3
+Tue, 14 May 2019 07:50:30 GMT
+
+### Patches
+
+- Update Fabric assets link
+
+## 6.38.2
+Tue, 14 May 2019 01:56:43 GMT
+
+### Patches
+
+- Removed a few more `typeof window` references to avoid memory leaks with IE11.
 
 ## 6.38.1
 Thu, 02 May 2019 12:36:35 GMT
@@ -257,7 +400,7 @@ Mon, 08 Oct 2018 12:24:15 GMT
 
 ### Patches
 
-- Moving tslint/prettier dependencies 
+- Moving tslint/prettier dependencies
 
 ## 6.21.1
 Wed, 26 Sep 2018 12:27:23 GMT
@@ -381,7 +524,7 @@ Fri, 27 Jul 2018 10:25:39 GMT
 
 ### Patches
 
-- prop-types version 
+- prop-types version
 
 ## 6.12.0
 Mon, 23 Jul 2018 10:28:08 GMT
@@ -1134,7 +1277,7 @@ Fri, 26 May 2017 10:21:03 GMT
 
 ### Patches
 
-- Utilities: Fixed incorrect calculation of initials. Properly remove unwanted ASCII characters, and do not calculate initials for Arabic and CJK based languages. 
+- Utilities: Fixed incorrect calculation of initials. Properly remove unwanted ASCII characters, and do not calculate initials for Arabic and CJK based languages.
 
 ## 1.10.1
 Wed, 24 May 2017 23:52:09 GMT

@@ -1,19 +1,21 @@
 import { IButtonStyles } from './Button.types';
 import { memoizeFunction } from '../../Utilities';
-import { HighContrastSelector, ITheme, IRawStyle, getFocusStyle, FontSizes, hiddenContentStyle } from '../../Styling';
+import { HighContrastSelector, ITheme, IRawStyle, getFocusStyle, hiddenContentStyle } from '../../Styling';
 
 const noOutline: IRawStyle = {
   outline: 0
 };
 
-const iconStyle = {
-  fontSize: FontSizes.icon,
-  margin: '0 4px',
-  height: '16px',
-  lineHeight: '16px',
-  textAlign: 'center',
-  verticalAlign: 'middle',
-  flexShrink: 0
+const iconStyle = (fontSize?: string | number): IRawStyle => {
+  return {
+    fontSize: fontSize,
+    margin: '0 4px',
+    height: '16px',
+    lineHeight: '16px',
+    textAlign: 'center',
+    verticalAlign: 'middle',
+    flexShrink: 0
+  };
 };
 
 /**
@@ -23,7 +25,7 @@ const iconStyle = {
  */
 export const getStyles = memoizeFunction(
   (theme: ITheme): IButtonStyles => {
-    const { semanticColors } = theme;
+    const { semanticColors, effects, fonts } = theme;
 
     const border = semanticColors.buttonBorder;
     const disabledBackground = semanticColors.disabledBackground;
@@ -39,7 +41,7 @@ export const getStyles = memoizeFunction(
 
     return {
       root: [
-        getFocusStyle(theme, { inset: -1, highContrastStyle: buttonHighContrastFocus }),
+        getFocusStyle(theme, { inset: 1, highContrastStyle: buttonHighContrastFocus, borderColor: 'transparent' }),
         theme.fonts.medium,
         {
           boxSizing: 'border-box',
@@ -51,7 +53,7 @@ export const getStyles = memoizeFunction(
           cursor: 'pointer',
           verticalAlign: 'top',
           padding: '0 16px',
-          borderRadius: 0,
+          borderRadius: effects.roundedCorner2,
 
           selectors: {
             // IE11 workaround for preventing shift of child elements of a button when active.
@@ -65,9 +67,10 @@ export const getStyles = memoizeFunction(
       ],
 
       rootDisabled: [
-        getFocusStyle(theme, { inset: -1, highContrastStyle: buttonHighContrastFocus }),
+        getFocusStyle(theme, { inset: 1, highContrastStyle: buttonHighContrastFocus, borderColor: 'transparent' }),
         {
           backgroundColor: disabledBackground,
+          borderColor: disabledBackground,
           color: disabledText,
           cursor: 'default',
           pointerEvents: 'none',
@@ -76,7 +79,7 @@ export const getStyles = memoizeFunction(
             ':focus': noOutline,
             [HighContrastSelector]: {
               color: 'grayText',
-              bordercolor: 'grayText'
+              borderColor: 'grayText'
             }
           }
         }
@@ -97,23 +100,23 @@ export const getStyles = memoizeFunction(
         justifyContent: 'center',
         alignItems: 'center'
       },
-
-      textContainer: {
-        flexGrow: 1
+      description: {
+        display: 'block'
       },
 
-      icon: iconStyle,
+      textContainer: {
+        flexGrow: 1,
+        display: 'block'
+      },
 
-      menuIcon: [
-        iconStyle,
-        {
-          fontSize: FontSizes.small
-        }
-      ],
+      icon: iconStyle(fonts.mediumPlus.fontSize),
+
+      menuIcon: iconStyle(fonts.small.fontSize),
 
       label: {
         margin: '0 4px',
-        lineHeight: '100%'
+        lineHeight: '100%',
+        display: 'block'
       },
 
       screenReaderText: hiddenContentStyle

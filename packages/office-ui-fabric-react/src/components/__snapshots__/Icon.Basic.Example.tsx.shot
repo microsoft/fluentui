@@ -3,16 +3,28 @@
 exports[`Component Examples renders Icon.Basic.Example.tsx correctly 1`] = `
 <div>
   <i
+    aria-hidden={true}
     className=
-        ms-IconExample
+        ms-Icon
+        {
+          display: inline-block;
+        }
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
-          display: inline-block;
           font-family: "FabricMDL2Icons-2";
           font-style: normal;
           font-weight: normal;
           speak: none;
+        }
+        {
+          font-size: 50px;
+          height: 50px;
+          margin-bottom: 0;
+          margin-left: 25px;
+          margin-right: 25px;
+          margin-top: 0;
+          width: 50px;
         }
     data-icon-name="CompassNW"
     role="presentation"
@@ -20,16 +32,28 @@ exports[`Component Examples renders Icon.Basic.Example.tsx correctly 1`] = `
     
   </i>
   <i
+    aria-hidden={true}
     className=
-        ms-IconExample
+        ms-Icon
+        {
+          display: inline-block;
+        }
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
-          display: inline-block;
           font-family: "FabricMDL2Icons-1";
           font-style: normal;
           font-weight: normal;
           speak: none;
+        }
+        {
+          font-size: 50px;
+          height: 50px;
+          margin-bottom: 0;
+          margin-left: 25px;
+          margin-right: 25px;
+          margin-top: 0;
+          width: 50px;
         }
     data-icon-name="Dictionary"
     role="presentation"
@@ -37,16 +61,28 @@ exports[`Component Examples renders Icon.Basic.Example.tsx correctly 1`] = `
     
   </i>
   <i
+    aria-hidden={true}
     className=
-        ms-IconExample
+        ms-Icon
+        {
+          display: inline-block;
+        }
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
-          display: inline-block;
           font-family: "FabricMDL2Icons-4";
           font-style: normal;
           font-weight: normal;
           speak: none;
+        }
+        {
+          font-size: 50px;
+          height: 50px;
+          margin-bottom: 0;
+          margin-left: 25px;
+          margin-right: 25px;
+          margin-top: 0;
+          width: 50px;
         }
     data-icon-name="TrainSolid"
     role="presentation"

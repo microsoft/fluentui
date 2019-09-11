@@ -1,6 +1,98 @@
 # Change Log - @uifabric/fluent-theme
 
-This log was last generated on Tue, 30 Apr 2019 12:31:36 GMT and should not be manually modified.
+This log was last generated on Wed, 04 Sep 2019 04:09:58 GMT and should not be manually modified.
+
+## 7.1.4
+Wed, 04 Sep 2019 04:09:58 GMT
+
+### Patches
+
+- fix version file (kchau@microsoft.com)
+## 7.1.3
+Fri, 23 Aug 2019 12:35:28 GMT
+
+### Patches
+
+- Update npmignores, delete unused jest setup files (elcraig@microsoft.com)
+- Fix up readme and package.json descriptions (elcraig@microsoft.com)
+
+## 7.1.2
+Tue, 20 Aug 2019 12:31:26 GMT
+
+### Patches
+
+- Nav: update to latest redlines (phkuo@microsoft.com)
+
+## 7.1.1
+Tue, 13 Aug 2019 12:31:12 GMT
+
+### Patches
+
+- Updating snpashots and styles which use $ syntax. (dzearing@microsoft.com)
+
+## 7.1.0
+Wed, 07 Aug 2019 12:32:28 GMT
+
+### Minor changes
+
+- Updating styles to not use $ syntax. (dzearing@microsoft.com)
+
+## 7.0.4
+Wed, 17 Jul 2019 18:58:57 GMT
+
+### Patches
+
+- Adding @types/react and @types/react-dom to package.json that have peer dependencies on react and react-dom. (makotom@microsoft.com)
+
+## 7.0.3
+Wed, 10 Jul 2019 12:28:00 GMT
+
+### Patches
+
+- Button: Fixing CompoundButton and SplitButton high contrast mode styling. (humbertomakotomorimoto@gmail.com)
+
+## 7.0.2
+Fri, 14 Jun 2019 12:26:30 GMT
+
+### Patches
+
+- Fix missing assets in production build.
+
+## 7.0.1
+Thu, 13 Jun 2019 00:24:48 GMT
+
+### Patches
+
+- Initial release of Fabric 7
+
+## 0.16.11
+Wed, 12 Jun 2019 00:42:26 GMT
+
+### Patches
+
+- Update DatePicker import path
+- Nav, Calendar, and DatePicker move into office-ui-fabric-react
+
+## 0.16.10
+Tue, 21 May 2019 12:20:44 GMT
+
+### Patches
+
+- IconButton: change the background color when in diabled state
+
+## 0.16.9
+Tue, 14 May 2019 07:50:30 GMT
+
+### Patches
+
+- Update Fabric assets link
+
+## 0.16.8
+Tue, 14 May 2019 01:56:43 GMT
+
+### Patches
+
+- Update border colors during rest state for certain components
 
 ## 0.16.7
 Tue, 30 Apr 2019 12:31:36 GMT
@@ -104,7 +196,7 @@ Mon, 28 Jan 2019 13:35:27 GMT
 
 ### Patches
 
-- Dropdown: fixes a misalignment of some items in the dropdown. 
+- Dropdown: fixes a misalignment of some items in the dropdown.
 
 ## 0.13.3
 Fri, 25 Jan 2019 13:38:07 GMT

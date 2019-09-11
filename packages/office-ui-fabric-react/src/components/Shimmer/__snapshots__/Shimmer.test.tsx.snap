@@ -13,26 +13,19 @@ exports[`Shimmer renders Shimmer correctly 1`] = `
         height: auto;
         position: relative;
       }
-  width="50%"
 >
   <div
     className=
         ms-Shimmer-shimmerWrapper
         {
-          animation-direction: normal;
-          animation-duration: 2s;
-          animation-iteration-count: infinite;
-          animation-name: keyframes 0%{background-position:-1000%;}100%{background-position:1000%;};
-          animation-timing-function: ease-in-out;
-          background: #f4f4f4
-                            linear-gradient(
-                              to right,
-                              #f4f4f4 0%,
-                              #eaeaea 50%,
-                              #f4f4f4 100%)
-                            0 0 / 90% 100%
-                            no-repeat;
+          background-color: #f3f2f1;
+          overflow: hidden;
+          position: relative;
+          transform: translateZ(0);
           transition: opacity 200ms;
+        }
+        & > * {
+          transform: translateZ(0);
         }
         @media screen and (-ms-high-contrast: active){& {
           background: WindowText
@@ -52,6 +45,31 @@ exports[`Shimmer renders Shimmer correctly 1`] = `
   >
     <div
       className=
+          ms-Shimmer-shimmerGradient
+          {
+            animation-direction: normal;
+            animation-duration: 2s;
+            animation-iteration-count: infinite;
+            animation-name: keyframes 0%{transform:translateX(-100%);}100%{transform:translateX(100%);};
+            animation-timing-function: ease-in-out;
+            background: #f3f2f1
+                                linear-gradient(
+                                  to right,
+                                  #f3f2f1 0%,
+                                  #edebe9 50%,
+                                  #f3f2f1 100%)
+                                0 0 / 90% 100%
+                                no-repeat;
+            height: 100%;
+            left: 0px;
+            position: absolute;
+            top: 0px;
+            transform: translateX(-100%);
+            width: 100%;
+          }
+    />
+    <div
+      className=
           ms-ShimmerElementsGroup-root
           {
             -moz-osx-font-smoothing: grayscale;
@@ -62,6 +80,7 @@ exports[`Shimmer renders Shimmer correctly 1`] = `
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
             font-weight: 400;
+            position: relative;
           }
       style={
         Object {
@@ -151,6 +170,7 @@ exports[`Shimmer renders Shimmer correctly 1`] = `
               border-color: #ffffff;
               border-top-style: solid;
               border-top-width: 5px;
+              border-width: 0px;
               box-sizing: content-box;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
@@ -254,26 +274,19 @@ exports[`Shimmer renders Shimmer with custom elements correctly 1`] = `
         height: auto;
         position: relative;
       }
-  width={350}
 >
   <div
     className=
         ms-Shimmer-shimmerWrapper
         {
-          animation-direction: normal;
-          animation-duration: 2s;
-          animation-iteration-count: infinite;
-          animation-name: keyframes 0%{background-position:-1000%;}100%{background-position:1000%;};
-          animation-timing-function: ease-in-out;
-          background: #f4f4f4
-                            linear-gradient(
-                              to right,
-                              #f4f4f4 0%,
-                              #eaeaea 50%,
-                              #f4f4f4 100%)
-                            0 0 / 90% 100%
-                            no-repeat;
+          background-color: #f3f2f1;
+          overflow: hidden;
+          position: relative;
+          transform: translateZ(0);
           transition: opacity 200ms;
+        }
+        & > * {
+          transform: translateZ(0);
         }
         @media screen and (-ms-high-contrast: active){& {
           background: WindowText
@@ -291,6 +304,31 @@ exports[`Shimmer renders Shimmer with custom elements correctly 1`] = `
       }
     }
   >
+    <div
+      className=
+          ms-Shimmer-shimmerGradient
+          {
+            animation-direction: normal;
+            animation-duration: 2s;
+            animation-iteration-count: infinite;
+            animation-name: keyframes 0%{transform:translateX(-100%);}100%{transform:translateX(100%);};
+            animation-timing-function: ease-in-out;
+            background: #f3f2f1
+                                linear-gradient(
+                                  to right,
+                                  #f3f2f1 0%,
+                                  #edebe9 50%,
+                                  #f3f2f1 100%)
+                                0 0 / 90% 100%
+                                no-repeat;
+            height: 100%;
+            left: 0px;
+            position: absolute;
+            top: 0px;
+            transform: translateX(-100%);
+            width: 100%;
+          }
+    />
     <div
       style={
         Object {
@@ -310,6 +348,7 @@ exports[`Shimmer renders Shimmer with custom elements correctly 1`] = `
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
               font-weight: 400;
+              position: relative;
             }
         style={
           Object {
@@ -328,6 +367,7 @@ exports[`Shimmer renders Shimmer with custom elements correctly 1`] = `
                 border-color: #ffffff;
                 border-top-style: solid;
                 border-top-width: 0px;
+                border-width: 0px;
                 box-sizing: content-box;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
@@ -455,6 +495,7 @@ exports[`Shimmer renders Shimmer with custom elements correctly 1`] = `
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
               font-weight: 400;
+              position: relative;
             }
         style={
           Object {
@@ -473,6 +514,7 @@ exports[`Shimmer renders Shimmer with custom elements correctly 1`] = `
                 border-color: #ffffff;
                 border-top-style: solid;
                 border-top-width: 5px;
+                border-width: 0px;
                 box-sizing: content-box;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
@@ -569,6 +611,7 @@ exports[`Shimmer renders Shimmer with custom elements correctly 1`] = `
                 border-color: #ffffff;
                 border-top-style: solid;
                 border-top-width: 5px;
+                border-width: 0px;
                 box-sizing: content-box;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;

@@ -7,115 +7,93 @@ import {
   DelayedRender,
   IStyleFunctionOrObject,
   classNamesFunction,
-  createRef,
   getId,
   getNativeProps,
   initializeComponentRef,
   inputProperties,
+  isControlled,
   textAreaProperties,
-  warnDeprecations,
+  warn,
+  warnControlledUsage,
   warnMutuallyExclusive
 } from '../../Utilities';
 import { ITextField, ITextFieldProps, ITextFieldStyleProps, ITextFieldStyles } from './TextField.types';
 
 const getClassNames = classNamesFunction<ITextFieldStyleProps, ITextFieldStyles>();
 
+/** @internal */
 export interface ITextFieldState {
-  value: string;
+  /** The currently displayed value if uncontrolled. */
+  uncontrolledValue: string | undefined;
 
   /** Is true when the control has focus. */
-  isFocused: boolean;
+  isFocused?: boolean;
 
   /**
-   * The validation error message.
-   *
-   * - If there is no validation error or we have not validated the input value, errorMessage is an empty string.
-   * - If we have done the validation and there is validation error, errorMessage is the validation error message.
+   * Dynamic error message returned by `onGetErrorMessage`.
+   * Use `this._errorMessage` to get the actual current error message.
    */
-  errorMessage: string;
+  errorMessage: string | JSX.Element;
 }
 
-const DEFAULT_STATE_VALUE = '';
-
-export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldState> implements ITextField {
-  public static defaultProps: ITextFieldProps = {
-    multiline: false,
-    resizable: true,
-    autoAdjustHeight: false,
-    underlined: false,
-    borderless: false,
-    onChange: () => {
-      /* noop */
-    },
-    onBeforeChange: () => {
-      /* noop */
-    },
-    onNotifyValidationResult: () => {
-      /* noop */
-    },
-    onGetErrorMessage: () => undefined,
-    deferredValidationTime: 200,
-    errorMessage: '',
-    validateOnFocusIn: false,
-    validateOnFocusOut: false,
-    validateOnLoad: true
-  };
-
-  private _id: string;
-  private _descriptionId: string;
-  private _delayedValidate: (value: string | undefined) => void;
-  private _isMounted: boolean;
-  private _lastValidation: number;
-  private _latestValue: string | undefined;
-  private _latestValidateValue: string | undefined;
-  private _textElement = createRef<HTMLTextAreaElement | HTMLInputElement | null>();
-  private _classNames: IProcessedStyleSet<ITextFieldStyles>;
-  private _async: Async;
-
-  /**
-   * If true, the text field is changing between single- and multi-line, so we'll need to reset
-   * focus after the change completes.
-   */
-  private _shouldResetFocusAfterRender: boolean | undefined;
+/** @internal */
+export interface ITextFieldSnapshot {
   /**
    * If set, the text field is changing between single- and multi-line, so we'll need to reset
    * selection/cursor after the change completes.
    */
-  private _selectionBeforeInputTypeChange: [number | null, number | null] | undefined;
+  selection?: [number | null, number | null];
+}
+
+const DEFAULT_STATE_VALUE = '';
+const COMPONENT_NAME = 'TextField';
+
+export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldState, ITextFieldSnapshot> implements ITextField {
+  public static defaultProps: ITextFieldProps = {
+    resizable: true,
+    deferredValidationTime: 200,
+    validateOnLoad: true
+  };
+
+  /** Fallback ID if none is provided in props. Access proper value via `this._id`. */
+  private _fallbackId: string;
+  private _descriptionId: string;
+  private _labelId: string;
+  private _delayedValidate: (value: string | undefined) => void;
+  private _lastValidation: number;
+  private _latestValidateValue: string | undefined;
+  private _hasWarnedNullValue: boolean | undefined;
+  private _textElement = React.createRef<HTMLTextAreaElement | HTMLInputElement>();
+  private _classNames: IProcessedStyleSet<ITextFieldStyles>;
+  private _async: Async;
+  /** Most recent value from a change or input event, to help avoid processing events twice */
+  private _lastChangeValue: string | undefined;
 
   public constructor(props: ITextFieldProps) {
     super(props);
 
     initializeComponentRef(this);
-
     this._async = new Async(this);
 
-    if (typeof process !== 'undefined' && process.env.NODE_ENV !== 'production') {
-      warnDeprecations('TextField', props, {
-        iconClass: 'iconProps',
-        addonString: 'prefix',
-        onRenderAddon: 'onRenderPrefix',
-        onChanged: 'onChange'
-      });
-
-      warnMutuallyExclusive('TextField', props, {
-        value: 'defaultValue'
+    if (process.env.NODE_ENV !== 'production') {
+      warnMutuallyExclusive(COMPONENT_NAME, props, {
+        errorMessage: 'onGetErrorMessage'
       });
     }
 
-    this._id = props.id || getId('TextField');
-    this._descriptionId = getId('TextFieldDescription');
+    this._fallbackId = getId(COMPONENT_NAME);
+    this._descriptionId = getId(COMPONENT_NAME + 'Description');
+    this._labelId = getId(COMPONENT_NAME + 'Label');
 
-    if (props.value !== undefined) {
-      this._latestValue = props.value;
-    } else if (props.defaultValue !== undefined) {
-      this._latestValue = props.defaultValue;
-    } else {
-      this._latestValue = DEFAULT_STATE_VALUE;
+    this._warnControlledUsage();
+
+    let { defaultValue = DEFAULT_STATE_VALUE } = props;
+    if (typeof defaultValue === 'number') {
+      // This isn't allowed per the props, but happens anyway.
+      defaultValue = String(defaultValue);
     }
-
     this.state = {
-      value: this._latestValue,
+      uncontrolledValue: this._isControlled ? undefined : defaultValue,
       isFocused: false,
       errorMessage: ''
     };
@@ -128,67 +106,66 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
    * Gets the current value of the text field.
    */
   public get value(): string | undefined {
-    return this.state.value;
+    return _getValue(this.props, this.state);
   }
 
   public componentDidMount(): void {
-    this._isMounted = true;
     this._adjustInputHeight();
 
     if (this.props.validateOnLoad) {
-      this._validate(this.state.value);
+      this._validate(this.value);
     }
   }
 
-  public componentWillReceiveProps(newProps: ITextFieldProps): void {
-    const { onBeforeChange } = this.props;
-
-    // If old value prop was undefined, then component is controlled and we should
-    //    respect new undefined value and update state accordingly.
-    if (newProps.value !== this.state.value && (newProps.value !== undefined || this.props.value !== undefined)) {
-      if (onBeforeChange) {
-        onBeforeChange(newProps.value);
-      }
-
-      this._id = newProps.id || this._id;
-      this._setValue(newProps.value);
-
-      if (_shouldValidateAllChanges(newProps)) {
-        this._delayedValidate(newProps.value);
-      }
-    }
-
-    // If component is not currently controlled and defaultValue changes, set value to new defaultValue.
-    if (newProps.defaultValue !== this.props.defaultValue && newProps.value === undefined) {
-      this._setValue(newProps.defaultValue);
-    }
-
-    // Text field is changing between single- and multi-line. After the change is complete,
-    // we'll need to reset focus and selection/cursor.
-    if (!!newProps.multiline !== !!this.props.multiline && this.state.isFocused) {
-      this._shouldResetFocusAfterRender = true;
-      this._selectionBeforeInputTypeChange = [this.selectionStart, this.selectionEnd];
-    }
+  public componentWillUnmount() {
+    this._async.dispose();
   }
 
-  public componentDidUpdate(): void {
-    if (this._shouldResetFocusAfterRender) {
+  public getSnapshotBeforeUpdate(prevProps: ITextFieldProps, prevState: ITextFieldState): ITextFieldSnapshot | null {
+    return {
+      selection: [this.selectionStart, this.selectionEnd]
+    };
+  }
+
+  public componentDidUpdate(prevProps: ITextFieldProps, prevState: ITextFieldState, snapshot: ITextFieldSnapshot): void {
+    const props = this.props;
+    const { selection = [null, null] } = snapshot || {};
+    const [start, end] = selection;
+
+    if (!!prevProps.multiline !== !!props.multiline && prevState.isFocused) {
       // The text field has just changed between single- and multi-line, so we need to reset focus
       // and selection/cursor.
-      this._shouldResetFocusAfterRender = false;
       this.focus();
-      if (this._selectionBeforeInputTypeChange) {
-        const [start, end] = this._selectionBeforeInputTypeChange;
-        if (start !== null && end !== null) {
-          this.setSelectionRange(start, end);
-        }
+      if (start !== null && end !== null && start >= 0 && end >= 0) {
+        this.setSelectionRange(start, end);
       }
     }
-  }
 
-  public componentWillUnmount(): void {
-    this._isMounted = false;
-    this._async.dispose();
+    const prevValue = _getValue(prevProps, prevState);
+    const value = this.value;
+    if (prevValue !== value) {
+      // Handle controlled/uncontrolled warnings and status
+      this._warnControlledUsage(prevProps);
+
+      // Clear error message if needed
+      // TODO: is there any way to do this without an extra render?
+      if (this.state.errorMessage && !props.errorMessage) {
+        this.setState({ errorMessage: '' });
+      }
+
+      // Adjust height if needed based on new value
+      this._adjustInputHeight();
+
+      // Reset the record of the last value seen by a change/input event
+      this._lastChangeValue = undefined;
+
+      // TODO: #5875 added logic to trigger validation in componentWillReceiveProps and other places.
+      // This seems a bit odd and hard to integrate with the new approach.
+      // (Starting to think we should just put the validation logic in a separate wrapper component...?)
+      if (_shouldValidateAllChanges(props)) {
+        this._delayedValidate(value);
+      }
+    }
   }
 
   public render(): JSX.Element {
@@ -196,21 +173,18 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
       borderless,
       className,
       disabled,
-      iconClass,
       iconProps,
       inputClassName,
       label,
       multiline,
       required,
       underlined,
-      addonString, // @deprecated
       prefix,
       resizable,
       suffix,
       theme,
       styles,
       autoAdjustHeight,
-      onRenderAddon = this._onRenderAddon, // @deprecated
       onRenderPrefix = this._onRenderPrefix,
       onRenderSuffix = this._onRenderSuffix,
       onRenderLabel = this._onRenderLabel,
@@ -232,7 +206,6 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
       resizable,
       hasIcon: !!iconProps,
       underlined,
-      iconClass,
       inputClassName,
       autoAdjustHeight
     });
@@ -242,14 +215,11 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
         <div className={this._classNames.wrapper}>
           {onRenderLabel(this.props, this._onRenderLabel)}
           <div className={this._classNames.fieldGroup}>
-            {(addonString !== undefined || this.props.onRenderAddon) && (
-              <div className={this._classNames.prefix}>{onRenderAddon(this.props, this._onRenderAddon)}</div>
-            )}
             {(prefix !== undefined || this.props.onRenderPrefix) && (
               <div className={this._classNames.prefix}>{onRenderPrefix(this.props, this._onRenderPrefix)}</div>
             )}
             {multiline ? this._renderTextArea() : this._renderInput()}
-            {(iconClass || iconProps) && <Icon className={this._classNames.icon} {...iconProps} />}
+            {iconProps && <Icon className={this._classNames.icon} {...iconProps} />}
             {(suffix !== undefined || this.props.onRenderSuffix) && (
               <div className={this._classNames.suffix}>{onRenderSuffix(this.props, this._onRenderSuffix)}</div>
             )}
@@ -343,17 +313,35 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
     }
   }
 
-  private _setValue(value?: string) {
-    this._latestValue = value;
-    this.setState(
-      {
-        value: value || DEFAULT_STATE_VALUE,
-        errorMessage: ''
-      } as ITextFieldState,
-      () => {
-        this._adjustInputHeight();
-      }
-    );
+  private _warnControlledUsage(prevProps?: ITextFieldProps): void {
+    // Show warnings if props are being used in an invalid way
+    warnControlledUsage({
+      componentId: this._id,
+      componentName: COMPONENT_NAME,
+      props: this.props,
+      oldProps: prevProps,
+      valueProp: 'value',
+      defaultValueProp: 'defaultValue',
+      onChangeProp: 'onChange',
+      readOnlyProp: 'readOnly'
+    });
+
+    if (this.props.value === null && !this._hasWarnedNullValue) {
+      this._hasWarnedNullValue = true;
+      warn(
+        `Warning: 'value' prop on '${COMPONENT_NAME}' should not be null. Consider using an ` +
+          'empty string to clear the component or undefined to indicate an uncontrolled component.'
+      );
+    }
+  }
+
+  /** Returns `props.id` if available, or a fallback if not. */
+  private get _id(): string {
+    return this.props.id || this._fallbackId;
+  }
+
+  private get _isControlled(): boolean {
+    return isControlled(this.props, 'value');
   }
 
   private _onFocus = (ev: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>): void => {
@@ -361,10 +349,11 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
       this.props.onFocus(ev);
     }
 
-    this.setState({ isFocused: true });
-    if (this.props.validateOnFocusIn) {
-      this._validate(this.state.value);
-    }
+    this.setState({ isFocused: true }, () => {
+      if (this.props.validateOnFocusIn) {
+        this._validate(this.value);
+      }
+    });
   };
 
   private _onBlur = (ev: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>): void => {
@@ -372,10 +361,11 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
       this.props.onBlur(ev);
     }
 
-    this.setState({ isFocused: false });
-    if (this.props.validateOnFocusOut) {
-      this._validate(this.state.value);
-    }
+    this.setState({ isFocused: false }, () => {
+      if (this.props.validateOnFocusOut) {
+        this._validate(this.value);
+      }
+    });
   };
 
   private _onRenderLabel = (props: ITextFieldProps): JSX.Element | null => {
@@ -387,7 +377,7 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
 
     if (label) {
       return (
-        <Label required={required} htmlFor={this._id} styles={labelStyles} disabled={props.disabled}>
+        <Label required={required} htmlFor={this._id} styles={labelStyles} disabled={props.disabled} id={this._labelId}>
           {props.label}
         </Label>
       );
@@ -402,12 +392,6 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
     return null;
   };
 
-  // @deprecated
-  private _onRenderAddon(props: ITextFieldProps): JSX.Element {
-    const { addonString } = props;
-    return <span style={{ paddingBottom: '1px' }}>{addonString}</span>;
-  }
-
   private _onRenderPrefix(props: ITextFieldProps): JSX.Element {
     const { prefix } = props;
     return <span style={{ paddingBottom: '1px' }}>{prefix}</span>;
@@ -418,13 +402,15 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
     return <span style={{ paddingBottom: '1px' }}>{suffix}</span>;
   }
 
-  private get _errorMessage(): string | undefined {
-    let { errorMessage } = this.state;
-    if (!errorMessage && this.props.errorMessage) {
-      errorMessage = this.props.errorMessage;
-    }
-
-    return errorMessage;
+  /**
+   * Current error message from either `props.errorMessage` or the result of `props.onGetErrorMessage`.
+   *
+   * - If there is no validation error or we have not validated the input value, errorMessage is an empty string.
+   * - If we have done the validation and there is validation error, errorMessage is the validation error message.
+   */
+  private get _errorMessage(): string | JSX.Element {
+    const { errorMessage = this.state.errorMessage } = this.props;
+    return errorMessage || '';
   }
 
   /**
@@ -437,14 +423,16 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
   }
 
   private _renderTextArea(): React.ReactElement<React.HTMLAttributes<HTMLAreaElement>> {
-    const textAreaProps = getNativeProps(this.props, textAreaProperties, ['defaultValue']);
+    const textAreaProps = getNativeProps<React.TextareaHTMLAttributes<HTMLTextAreaElement>>(this.props, textAreaProperties, [
+      'defaultValue'
+    ]);
 
     return (
       <textarea
         id={this._id}
         {...textAreaProps}
-        ref={this._textElement}
-        value={this.state.value}
+        ref={this._textElement as React.RefObject<HTMLTextAreaElement>}
+        value={this.value || ''}
         onInput={this._onInputChange}
         onChange={this._onInputChange}
         className={this._classNames.field}
@@ -460,14 +448,15 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
 
   private _renderInput(): React.ReactElement<React.HTMLAttributes<HTMLInputElement>> {
     const inputProps = getNativeProps<React.HTMLAttributes<HTMLInputElement>>(this.props, inputProperties, ['defaultValue']);
-
+    const ariaLabelledBy = this.props['aria-labelledby'] || (this.props.label ? this._labelId : undefined);
     return (
       <input
         type={'text'}
         id={this._id}
+        aria-labelledby={ariaLabelledBy}
         {...inputProps}
-        ref={this._textElement}
-        value={this.state.value}
+        ref={this._textElement as React.RefObject<HTMLInputElement>}
+        value={this.value || ''}
         onInput={this._onInputChange}
         onChange={this._onInputChange}
         className={this._classNames.field}
@@ -482,57 +471,70 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
   }
 
   private _onInputChange = (event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>): void => {
-    event.persist();
-    const element: HTMLInputElement = event.target as HTMLInputElement;
-    const value: string = element.value;
+    // Previously, we needed to call both onInput and onChange due to some weird IE/React issues,
+    // which have *probably* been fixed now:
+    // - https://github.com/OfficeDev/office-ui-fabric-react/issues/744 (likely fixed)
+    // - https://github.com/OfficeDev/office-ui-fabric-react/issues/824 (confirmed fixed)
 
-    // Avoid doing unnecessary work when the value has not changed.
-    if (value === this._latestValue) {
+    // TODO (Fabric 8?) - Switch to calling only onChange. This switch is pretty disruptive for
+    // tests (ours and maybe consumers' too), so it seemed best to do the switch in a major bump.
+
+    const element = event.target as HTMLInputElement;
+    const value = element.value;
+    // Ignore this event if the value is undefined (in case one of the IE bugs comes back)
+    if (value === undefined || value === this._lastChangeValue) {
       return;
     }
-    this._latestValue = value;
+    this._lastChangeValue = value;
 
-    this.setState({ value: value } as ITextFieldState, () => {
-      this._adjustInputHeight();
+    // This is so developers can access the event properties in asynchronous callbacks
+    // https://reactjs.org/docs/events.html#event-pooling
+    event.persist();
 
-      if (this.props.onChange) {
-        this.props.onChange(event, value);
+    let isSameValue: boolean;
+    this.setState(
+      (prevState: ITextFieldState, props: ITextFieldProps) => {
+        const prevValue = _getValue(props, prevState) || '';
+        isSameValue = value === prevValue;
+        // Avoid doing unnecessary work when the value has not changed.
+        if (isSameValue) {
+          return null;
+        }
+
+        // ONLY if this is an uncontrolled component, update the displayed value.
+        // (Controlled components must update the `value` prop from `onChange`.)
+        return this._isControlled ? null : { uncontrolledValue: value };
+      },
+      () => {
+        // If the value actually changed, call onChange (for either controlled or uncontrolled)
+        const { onChange } = this.props;
+        if (!isSameValue && onChange) {
+          onChange(event, value);
+        }
       }
-
-      if (this.props.onChanged) {
-        this.props.onChanged(value);
-      }
-    });
-
-    if (_shouldValidateAllChanges(this.props)) {
-      this._delayedValidate(value);
-    }
-
-    if (this.props.onBeforeChange) {
-      this.props.onBeforeChange(value);
-    }
+    );
   };
 
   private _validate(value: string | undefined): void {
-    // In case of _validate called multi-times during executing validate logic with promise return.
+    // In case _validate is called again while validation promise is executing
     if (this._latestValidateValue === value && _shouldValidateAllChanges(this.props)) {
       return;
     }
 
     this._latestValidateValue = value;
-    const onGetErrorMessage = this.props.onGetErrorMessage as (value: string) => string | PromiseLike<string> | undefined;
-    const result = onGetErrorMessage(value || '');
+    const onGetErrorMessage = this.props.onGetErrorMessage;
+    const result = onGetErrorMessage && onGetErrorMessage(value || '');
 
     if (result !== undefined) {
-      if (typeof result === 'string') {
-        this.setState({ errorMessage: result } as ITextFieldState);
+      if (typeof result === 'string' || !('then' in result)) {
+        this.setState({ errorMessage: result });
         this._notifyAfterValidate(value, result);
       } else {
         const currentValidation: number = ++this._lastValidation;
 
-        result.then((errorMessage: string) => {
-          if (this._isMounted && currentValidation === this._lastValidation) {
-            this.setState({ errorMessage } as ITextFieldState);
+        result.then((errorMessage: string | JSX.Element) => {
+          if (currentValidation === this._lastValidation) {
+            this.setState({ errorMessage });
           }
           this._notifyAfterValidate(value, errorMessage);
         });
@@ -542,8 +544,8 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
     }
   }
 
-  private _notifyAfterValidate(value: string | undefined, errorMessage: string): void {
-    if (this._isMounted && value === this.state.value && this.props.onNotifyValidationResult) {
+  private _notifyAfterValidate(value: string | undefined, errorMessage: string | JSX.Element): void {
+    if (value === this.value && this.props.onNotifyValidationResult) {
       this.props.onNotifyValidationResult(errorMessage, value);
     }
   }
@@ -555,6 +557,16 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
       textField.style.height = textField.scrollHeight + 'px';
     }
   }
+}
+
+/** Get the value from the given state and props (converting from number to string if needed) */
+function _getValue(props: ITextFieldProps, state: ITextFieldState): string | undefined {
+  const { value = state.uncontrolledValue } = props;
+  if (typeof value === 'number') {
+    // not allowed per typings, but happens anyway
+    return String(value);
+  }
+  return value;
 }
 
 /**

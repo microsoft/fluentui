@@ -1,45 +1,26 @@
 import * as React from 'react';
-import { css, classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
-import { getStyles, IButtonBasicExampleStyleProps, IButtonBasicExampleStyles } from './Button.Basic.Example.styles';
-import { DefaultButton, PrimaryButton, IButtonProps } from 'office-ui-fabric-react/lib/Button';
-import { Label } from 'office-ui-fabric-react/lib/Label';
+import { DefaultButton, PrimaryButton, Stack, IStackTokens } from 'office-ui-fabric-react';
 
-export class ButtonDefaultExample extends React.Component<IButtonProps, {}> {
-  public render(): JSX.Element {
-    const { disabled, checked } = this.props;
+export interface IButtonExampleProps {
+  // These are set based on the toggles shown above the examples (not needed in real code)
+  disabled?: boolean;
+  checked?: boolean;
+}
 
-    const getClassNames = classNamesFunction<IButtonBasicExampleStyleProps, IButtonBasicExampleStyles>();
-    const classNames = getClassNames(getStyles, {});
+// Example formatting
+const stackTokens: IStackTokens = { childrenGap: 40 };
 
-    return (
-      <div className={css(classNames.twoup)}>
-        <div>
-          <Label>Standard</Label>
-          <DefaultButton
-            data-automation-id="test"
-            allowDisabledFocus={true}
-            disabled={disabled}
-            checked={checked}
-            text="Button"
-            onClick={this._alertClicked}
-          />
-        </div>
-        <div>
-          <Label>Primary</Label>
-          <PrimaryButton
-            data-automation-id="test"
-            disabled={disabled}
-            checked={checked}
-            text="Button"
-            onClick={this._alertClicked}
-            allowDisabledFocus={true}
-          />
-        </div>
-      </div>
-    );
-  }
+export const ButtonDefaultExample: React.FunctionComponent<IButtonExampleProps> = props => {
+  const { disabled, checked } = props;
 
-  private _alertClicked(): void {
-    alert('Clicked');
-  }
+  return (
+    <Stack horizontal tokens={stackTokens}>
+      <DefaultButton text="Standard" onClick={_alertClicked} allowDisabledFocus disabled={disabled} checked={checked} />
+      <PrimaryButton text="Primary" onClick={_alertClicked} allowDisabledFocus disabled={disabled} checked={checked} />
+    </Stack>
+  );
+};
+
+function _alertClicked(): void {
+  alert('Clicked');
 }

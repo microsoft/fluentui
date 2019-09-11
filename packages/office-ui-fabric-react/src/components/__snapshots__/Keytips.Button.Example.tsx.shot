@@ -34,11 +34,11 @@ exports[`Component Examples renders Keytips.Button.Example.tsx correctly 1`] = `
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
-            background-color: #f4f4f4;
-            border-radius: 0px;
-            border: 1px solid transparent;
+            background-color: #ffffff;
+            border-radius: 2px;
+            border: 1px solid #8a8886;
             box-sizing: border-box;
-            color: #333333;
+            color: #323130;
             cursor: pointer;
             display: inline-block;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -61,14 +61,14 @@ exports[`Component Examples renders Keytips.Button.Example.tsx correctly 1`] = `
             border: 0;
           }
           .ms-Fabric--isFocusVisible &:focus:after {
-            border: 1px solid #ffffff;
-            bottom: 0px;
+            border: 1px solid transparent;
+            bottom: 2px;
             content: "";
-            left: 0px;
-            outline: 1px solid #666666;
+            left: 2px;
+            outline: 1px solid #605e5c;
             position: absolute;
-            right: 0px;
-            top: 0px;
+            right: 2px;
+            top: 2px;
             z-index: 1;
           }
           @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -85,16 +85,16 @@ exports[`Component Examples renders Keytips.Button.Example.tsx correctly 1`] = `
             top: 0px;
           }
           &:hover {
-            background-color: #eaeaea;
-            color: #212121;
+            background-color: #f3f2f1;
+            color: #201f1e;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
             border-color: Highlight;
             color: Highlight;
           }
           &:active {
-            background-color: #c8c8c8;
-            color: #212121;
+            background-color: #edebe9;
+            color: #201f1e;
           }
       data-is-focusable={true}
       data-ktp-execute-target="ktp-1-a"
@@ -107,7 +107,7 @@ exports[`Component Examples renders Keytips.Button.Example.tsx correctly 1`] = `
       onMouseUp={[Function]}
       type="button"
     >
-      <div
+      <span
         className=
             ms-Button-flexContainer
             {
@@ -117,18 +117,21 @@ exports[`Component Examples renders Keytips.Button.Example.tsx correctly 1`] = `
               height: 100%;
               justify-content: center;
             }
+        data-automationid="splitbuttonprimary"
       >
-        <div
+        <span
           className=
               ms-Button-textContainer
               {
+                display: block;
                 flex-grow: 1;
               }
         >
-          <div
+          <span
             className=
                 ms-Button-label
                 {
+                  display: block;
                   font-weight: 600;
                   line-height: 100%;
                   margin-bottom: 0;
@@ -139,9 +142,9 @@ exports[`Component Examples renders Keytips.Button.Example.tsx correctly 1`] = `
             id="id__0"
           >
             Button
-          </div>
-        </div>
-      </div>
+          </span>
+        </span>
+      </span>
     </button>
     <button
       aria-describedby="id__4  ktp-layer-id ktp-1-b"
@@ -152,11 +155,11 @@ exports[`Component Examples renders Keytips.Button.Example.tsx correctly 1`] = `
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
-            background-color: #f4f4f4;
-            border-radius: 0px;
-            border: 1px solid transparent;
+            background-color: #ffffff;
+            border-radius: 2px;
+            border: 1px solid #8a8886;
             box-sizing: border-box;
-            color: #333333;
+            color: #323130;
             cursor: pointer;
             display: inline-block;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -167,10 +170,10 @@ exports[`Component Examples renders Keytips.Button.Example.tsx correctly 1`] = `
             max-width: 280px;
             min-height: 72px;
             outline: transparent;
-            padding-bottom: 20px;
-            padding-left: 20px;
-            padding-right: 20px;
-            padding-top: 20px;
+            padding-bottom: 16px;
+            padding-left: 12px;
+            padding-right: 12px;
+            padding-top: 16px;
             position: relative;
             text-align: center;
             text-decoration: none;
@@ -181,14 +184,14 @@ exports[`Component Examples renders Keytips.Button.Example.tsx correctly 1`] = `
             border: 0;
           }
           .ms-Fabric--isFocusVisible &:focus:after {
-            border: 1px solid #ffffff;
-            bottom: 0px;
+            border: 1px solid transparent;
+            bottom: 2px;
             content: "";
-            left: 0px;
-            outline: 1px solid #666666;
+            left: 2px;
+            outline: 1px solid #605e5c;
             position: absolute;
-            right: 0px;
-            top: 0px;
+            right: 2px;
+            top: 2px;
             z-index: 1;
           }
           @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -205,19 +208,19 @@ exports[`Component Examples renders Keytips.Button.Example.tsx correctly 1`] = `
             top: 0px;
           }
           &:hover {
-            background-color: #eaeaea;
-            color: #212121;
+            background-color: #f3f2f1;
+            color: #201f1e;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
             border-color: Highlight;
             color: Highlight;
           }
           &:hover .ms-Button-description {
-            color: #212121;
+            color: #201f1e;
           }
           &:active {
-            background-color: #c8c8c8;
-            color: #212121;
+            background-color: #edebe9;
+            color: #201f1e;
           }
           &:active .ms-Button-description {
             color: inherit;
@@ -233,7 +236,7 @@ exports[`Component Examples renders Keytips.Button.Example.tsx correctly 1`] = `
       onMouseUp={[Function]}
       type="button"
     >
-      <div
+      <span
         className=
             ms-Button-flexContainer
             {
@@ -249,19 +252,22 @@ exports[`Component Examples renders Keytips.Button.Example.tsx correctly 1`] = `
               margin-top: ;
               min-width: 100%;
             }
+        data-automationid="splitbuttonprimary"
       >
-        <div
+        <span
           className=
               ms-Button-textContainer
               {
+                display: block;
                 flex-grow: 1;
                 text-align: left;
               }
         >
-          <div
+          <span
             className=
                 ms-Button-label
                 {
+                  display: block;
                   font-weight: 600;
                   line-height: 100%;
                   margin-bottom: 5px;
@@ -272,14 +278,15 @@ exports[`Component Examples renders Keytips.Button.Example.tsx correctly 1`] = `
             id="id__3"
           >
             Compound Button
-          </div>
-          <div
+          </span>
+          <span
             className=
                 ms-Button-description
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #666666;
+                  color: #605e5c;
+                  display: block;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 12px;
                   font-weight: 400;
@@ -288,9 +295,9 @@ exports[`Component Examples renders Keytips.Button.Example.tsx correctly 1`] = `
             id="id__4"
           >
             With a Keytip
-          </div>
-        </div>
-      </div>
+          </span>
+        </span>
+      </span>
     </button>
     <button
       aria-describedby="ktp-layer-id ktp-2-a"
@@ -303,11 +310,11 @@ exports[`Component Examples renders Keytips.Button.Example.tsx correctly 1`] = `
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
-            background-color: #f4f4f4;
-            border-radius: 0px;
-            border: 1px solid transparent;
+            background-color: #ffffff;
+            border-radius: 2px;
+            border: 1px solid #8a8886;
             box-sizing: border-box;
-            color: #333333;
+            color: #323130;
             cursor: pointer;
             display: inline-block;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -330,14 +337,14 @@ exports[`Component Examples renders Keytips.Button.Example.tsx correctly 1`] = `
             border: 0;
           }
           .ms-Fabric--isFocusVisible &:focus:after {
-            border: 1px solid #ffffff;
-            bottom: 0px;
+            border: 1px solid transparent;
+            bottom: 2px;
             content: "";
-            left: 0px;
-            outline: 1px solid #666666;
+            left: 2px;
+            outline: 1px solid #605e5c;
             position: absolute;
-            right: 0px;
-            top: 0px;
+            right: 2px;
+            top: 2px;
             z-index: 1;
           }
           @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -354,16 +361,16 @@ exports[`Component Examples renders Keytips.Button.Example.tsx correctly 1`] = `
             top: 0px;
           }
           &:hover {
-            background-color: #eaeaea;
-            color: #212121;
+            background-color: #f3f2f1;
+            color: #201f1e;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
             border-color: Highlight;
             color: Highlight;
           }
           &:active {
-            background-color: #c8c8c8;
-            color: #212121;
+            background-color: #edebe9;
+            color: #201f1e;
           }
       data-is-focusable={true}
       data-ktp-execute-target="ktp-2-a"
@@ -376,7 +383,7 @@ exports[`Component Examples renders Keytips.Button.Example.tsx correctly 1`] = `
       onMouseUp={[Function]}
       type="button"
     >
-      <div
+      <span
         className=
             ms-Button-flexContainer
             {
@@ -386,18 +393,21 @@ exports[`Component Examples renders Keytips.Button.Example.tsx correctly 1`] = `
               height: 100%;
               justify-content: center;
             }
+        data-automationid="splitbuttonprimary"
       >
-        <div
+        <span
           className=
               ms-Button-textContainer
               {
+                display: block;
                 flex-grow: 1;
               }
         >
-          <div
+          <span
             className=
                 ms-Button-label
                 {
+                  display: block;
                   font-weight: 600;
                   line-height: 100%;
                   margin-bottom: 0;
@@ -408,27 +418,33 @@ exports[`Component Examples renders Keytips.Button.Example.tsx correctly 1`] = `
             id="id__6"
           >
             Button with Menu
-          </div>
-        </div>
+          </span>
+        </span>
         <i
+          aria-hidden={true}
           className=
+              ms-Icon
               ms-Button-menuIcon
+              {
+                display: inline-block;
+              }
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                display: inline-block;
-                flex-shrink: 0;
                 font-family: "FabricMDL2Icons";
-                font-size: 12px;
                 font-style: normal;
                 font-weight: normal;
+                speak: none;
+              }
+              {
+                flex-shrink: 0;
+                font-size: 12px;
                 height: 16px;
                 line-height: 16px;
                 margin-bottom: 0;
                 margin-left: 4px;
                 margin-right: 4px;
                 margin-top: 0;
-                speak: none;
                 text-align: center;
                 vertical-align: middle;
               }
@@ -437,7 +453,7 @@ exports[`Component Examples renders Keytips.Button.Example.tsx correctly 1`] = `
         >
           
         </i>
-      </div>
+      </span>
     </button>
     <div
       aria-describedby="ktp-layer-id ktp-2-b"
@@ -459,13 +475,13 @@ exports[`Component Examples renders Keytips.Button.Example.tsx correctly 1`] = `
           }
           .ms-Fabric--isFocusVisible &:focus:after {
             border: 1px solid #ffffff;
-            bottom: 1px;
+            bottom: 3px;
             content: "";
-            left: 1px;
-            outline: 1px solid #666666;
+            left: 3px;
+            outline: 1px solid #605e5c;
             position: absolute;
-            right: 1px;
-            top: 1px;
+            right: 3px;
+            top: 3px;
             z-index: 1;
           }
           @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -474,6 +490,33 @@ exports[`Component Examples renders Keytips.Button.Example.tsx correctly 1`] = `
             left: -2px;
             right: -2px;
             top: -2px;
+          }
+          & .ms-Button--default {
+            border-bottom-right-radius: 0;
+            border-right: none;
+            border-top-right-radius: 0;
+          }
+          & .ms-Button--primary {
+            border-bottom-right-radius: 0;
+            border-top-right-radius: 0;
+            border: none;
+          }
+          @media screen and (-ms-high-contrast: active){& .ms-Button--primary {
+            -ms-high-contrast-adjust: none;
+            background-color: WindowText;
+            color: Window;
+          }
+          & .ms-Button--primary + .ms-Button {
+            border: none;
+          }
+          @media screen and (-ms-high-contrast: active){&:hover .ms-Button--primary {
+            background-color: Highlight;
+            color: Window;
+          }
+          @media screen and (-ms-high-contrast: active){&:hover .ms-Button.is-disabled {
+            background-color: Window;
+            border-color: GrayText;
+            color: GrayText;
           }
           &:focus {
             outline: none!important;
@@ -501,11 +544,11 @@ exports[`Component Examples renders Keytips.Button.Example.tsx correctly 1`] = `
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                background-color: #f4f4f4;
-                border-radius: 0px;
-                border: 1px solid transparent;
+                background-color: #ffffff;
+                border-radius: 2px;
+                border: 1px solid #8a8886;
                 box-sizing: border-box;
-                color: #333333;
+                color: #323130;
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -528,14 +571,14 @@ exports[`Component Examples renders Keytips.Button.Example.tsx correctly 1`] = `
                 border: 0;
               }
               .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: 0px;
+                border: 1px solid transparent;
+                bottom: 2px;
                 content: "";
-                left: 0px;
-                outline: 1px solid #666666;
+                left: 2px;
+                outline: 1px solid #605e5c;
                 position: absolute;
-                right: 0px;
-                top: 0px;
+                right: 2px;
+                top: 2px;
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -552,16 +595,16 @@ exports[`Component Examples renders Keytips.Button.Example.tsx correctly 1`] = `
                 top: 0px;
               }
               &:hover {
-                background-color: #eaeaea;
-                color: #212121;
+                background-color: #f3f2f1;
+                color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
                 color: Highlight;
               }
               &:active {
-                background-color: #c8c8c8;
-                color: #212121;
+                background-color: #edebe9;
+                color: #201f1e;
               }
           data-is-focusable={false}
           onKeyDown={[Function]}
@@ -572,7 +615,7 @@ exports[`Component Examples renders Keytips.Button.Example.tsx correctly 1`] = `
           tabIndex={-1}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -582,18 +625,21 @@ exports[`Component Examples renders Keytips.Button.Example.tsx correctly 1`] = `
                   height: 100%;
                   justify-content: center;
                 }
+            data-automationid="splitbuttonprimary"
           >
-            <div
+            <span
               className=
                   ms-Button-textContainer
                   {
+                    display: block;
                     flex-grow: 1;
                   }
             >
-              <div
+              <span
                 className=
                     ms-Button-label
                     {
+                      display: block;
                       font-weight: 600;
                       line-height: 100%;
                       margin-bottom: 0;
@@ -604,9 +650,9 @@ exports[`Component Examples renders Keytips.Button.Example.tsx correctly 1`] = `
                 id="id__9"
               >
                 Split Button
-              </div>
-            </div>
-          </div>
+              </span>
+            </span>
+          </span>
         </button>
         <button
           aria-expanded={false}
@@ -614,15 +660,21 @@ exports[`Component Examples renders Keytips.Button.Example.tsx correctly 1`] = `
           className=
               ms-Button
               {
-                background-color: #f4f4f4;
+                background-color: transparent;
+                border-bottom-right-radius: 2px;
+                border-left: none;
                 border-radius: 0px;
-                border: 0px;
+                border-top-right-radius: 2px;
+                border: 1px solid #8a8886;
                 box-sizing: border-box;
                 color: #ffffff;
                 cursor: pointer;
                 display: inline-block;
                 height: auto;
+                margin-bottom: 0px;
                 margin-left: -1px;
+                margin-right: 0px;
+                margin-top: 0px;
                 outline: transparent;
                 padding-bottom: 6px;
                 padding-left: 6px;
@@ -635,7 +687,7 @@ exports[`Component Examples renders Keytips.Button.Example.tsx correctly 1`] = `
                 width: 32px;
               }
               &:hover {
-                background-color: #eaeaea;
+                background-color: #edebe9;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 color: Highlight;
@@ -651,7 +703,7 @@ exports[`Component Examples renders Keytips.Button.Example.tsx correctly 1`] = `
           tabIndex={-1}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -661,28 +713,48 @@ exports[`Component Examples renders Keytips.Button.Example.tsx correctly 1`] = `
                   height: 100%;
                   justify-content: center;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <i
+              aria-hidden={true}
               className=
+                  ms-Icon
                   ms-Button-icon
                   ms-Button-menuIcon
+                  ms-Button-menuIcon
+                  {
+                    display: inline-block;
+                  }
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
-                    color: #333333;
-                    display: inline-block;
-                    flex-shrink: 0;
                     font-family: "FabricMDL2Icons";
-                    font-size: 12px;
                     font-style: normal;
                     font-weight: normal;
+                    speak: none;
+                  }
+                  {
+                    color: #323130;
+                    flex-shrink: 0;
+                    font-size: 12px;
                     height: 16px;
                     line-height: 16px;
                     margin-bottom: 0;
                     margin-left: 4px;
                     margin-right: 4px;
                     margin-top: 0;
-                    speak: none;
+                    text-align: center;
+                    vertical-align: middle;
+                  }
+                  {
+                    flex-shrink: 0;
+                    font-size: 12px;
+                    height: 16px;
+                    line-height: 16px;
+                    margin-bottom: 0;
+                    margin-left: 4px;
+                    margin-right: 4px;
+                    margin-top: 0;
                     text-align: center;
                     vertical-align: middle;
                   }
@@ -691,13 +763,14 @@ exports[`Component Examples renders Keytips.Button.Example.tsx correctly 1`] = `
             >
               
             </i>
-          </div>
+          </span>
         </button>
         <span
+          aria-hidden={true}
           className=
 
               {
-                background-color: #c8c8c8;
+                background-color: #c8c6c4;
                 bottom: 8px;
                 position: absolute;
                 right: 31px;
@@ -714,11 +787,11 @@ exports[`Component Examples renders Keytips.Button.Example.tsx correctly 1`] = `
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
-            background-color: #f4f4f4;
-            border-radius: 0px;
-            border: 1px solid transparent;
+            background-color: #ffffff;
+            border-radius: 2px;
+            border: 1px solid #8a8886;
             box-sizing: border-box;
-            color: #333333;
+            color: #323130;
             cursor: pointer;
             display: inline-block;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -741,14 +814,14 @@ exports[`Component Examples renders Keytips.Button.Example.tsx correctly 1`] = `
             border: 0;
           }
           .ms-Fabric--isFocusVisible &:focus:after {
-            border: 1px solid #ffffff;
-            bottom: 0px;
+            border: 1px solid transparent;
+            bottom: 2px;
             content: "";
-            left: 0px;
-            outline: 1px solid #666666;
+            left: 2px;
+            outline: 1px solid #605e5c;
             position: absolute;
-            right: 0px;
-            top: 0px;
+            right: 2px;
+            top: 2px;
             z-index: 1;
           }
           @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -765,16 +838,16 @@ exports[`Component Examples renders Keytips.Button.Example.tsx correctly 1`] = `
             top: 0px;
           }
           &:hover {
-            background-color: #eaeaea;
-            color: #212121;
+            background-color: #f3f2f1;
+            color: #201f1e;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
             border-color: Highlight;
             color: Highlight;
           }
           &:active {
-            background-color: #c8c8c8;
-            color: #212121;
+            background-color: #edebe9;
+            color: #201f1e;
           }
       data-is-focusable={true}
       onClick={[Function]}
@@ -785,7 +858,7 @@ exports[`Component Examples renders Keytips.Button.Example.tsx correctly 1`] = `
       onMouseUp={[Function]}
       type="button"
     >
-      <div
+      <span
         className=
             ms-Button-flexContainer
             {
@@ -795,18 +868,21 @@ exports[`Component Examples renders Keytips.Button.Example.tsx correctly 1`] = `
               height: 100%;
               justify-content: center;
             }
+        data-automationid="splitbuttonprimary"
       >
-        <div
+        <span
           className=
               ms-Button-textContainer
               {
+                display: block;
                 flex-grow: 1;
               }
         >
-          <div
+          <span
             className=
                 ms-Button-label
                 {
+                  display: block;
                   font-weight: 600;
                   line-height: 100%;
                   margin-bottom: 0;
@@ -817,9 +893,9 @@ exports[`Component Examples renders Keytips.Button.Example.tsx correctly 1`] = `
             id="id__15"
           >
             I do not have a keytip
-          </div>
-        </div>
-      </div>
+          </span>
+        </span>
+      </span>
     </button>
   </div>
   <p>
@@ -833,11 +909,11 @@ exports[`Component Examples renders Keytips.Button.Example.tsx correctly 1`] = `
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
-          background-color: #f4f4f4;
-          border-radius: 0px;
-          border: 1px solid transparent;
+          background-color: #ffffff;
+          border-radius: 2px;
+          border: 1px solid #8a8886;
           box-sizing: border-box;
-          color: #333333;
+          color: #323130;
           cursor: pointer;
           display: inline-block;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -861,14 +937,14 @@ exports[`Component Examples renders Keytips.Button.Example.tsx correctly 1`] = `
           border: 0;
         }
         .ms-Fabric--isFocusVisible &:focus:after {
-          border: 1px solid #ffffff;
-          bottom: 0px;
+          border: 1px solid transparent;
+          bottom: 2px;
           content: "";
-          left: 0px;
-          outline: 1px solid #666666;
+          left: 2px;
+          outline: 1px solid #605e5c;
           position: absolute;
-          right: 0px;
-          top: 0px;
+          right: 2px;
+          top: 2px;
           z-index: 1;
         }
         @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -885,16 +961,16 @@ exports[`Component Examples renders Keytips.Button.Example.tsx correctly 1`] = `
           top: 0px;
         }
         &:hover {
-          background-color: #eaeaea;
-          color: #212121;
+          background-color: #f3f2f1;
+          color: #201f1e;
         }
         @media screen and (-ms-high-contrast: active){&:hover {
           border-color: Highlight;
           color: Highlight;
         }
         &:active {
-          background-color: #c8c8c8;
-          color: #212121;
+          background-color: #edebe9;
+          color: #201f1e;
         }
     data-is-focusable={true}
     data-ktp-execute-target="ktp-0-0"
@@ -907,7 +983,7 @@ exports[`Component Examples renders Keytips.Button.Example.tsx correctly 1`] = `
     onMouseUp={[Function]}
     type="button"
   >
-    <div
+    <span
       className=
           ms-Button-flexContainer
           {
@@ -917,18 +993,21 @@ exports[`Component Examples renders Keytips.Button.Example.tsx correctly 1`] = `
             height: 100%;
             justify-content: center;
           }
+      data-automationid="splitbuttonprimary"
     >
-      <div
+      <span
         className=
             ms-Button-textContainer
             {
+              display: block;
               flex-grow: 1;
             }
       >
-        <div
+        <span
           className=
               ms-Button-label
               {
+                display: block;
                 font-weight: 600;
                 line-height: 100%;
                 margin-bottom: 0;
@@ -939,9 +1018,9 @@ exports[`Component Examples renders Keytips.Button.Example.tsx correctly 1`] = `
           id="id__18"
         >
           Button keytip offset 10x10
-        </div>
-      </div>
-    </div>
+        </span>
+      </span>
+    </span>
   </button>
   <p>
     When a Keytip's corresponding component is disabled, the keytip still appears but cannot be triggered.
@@ -977,23 +1056,22 @@ exports[`Component Examples renders Keytips.Button.Example.tsx correctly 1`] = `
               align-items: center;
               background: #0078d4;
               border-color: transparent;
-              border-radius: 1em;
-              border-style: solid;
-              border-width: 1px;
+              border-radius: 10px;
+              border: 1px solid #605e5c;
               box-sizing: border-box;
               cursor: pointer;
               display: flex;
               font-size: 20px;
-              height: 1em;
+              height: 20px;
               justify-content: flex-end;
               outline: transparent;
               padding-bottom: 0;
-              padding-left: .2em;
-              padding-right: .2em;
+              padding-left: 3px;
+              padding-right: 3px;
               padding-top: 0;
               position: relative;
               transition: all 0.1s ease;
-              width: 2.2em;
+              width: 40px;
             }
             &::-moz-focus-inner {
               border: 0;
@@ -1003,14 +1081,14 @@ exports[`Component Examples renders Keytips.Button.Example.tsx correctly 1`] = `
               bottom: -2px;
               content: "";
               left: -2px;
-              outline: 1px solid #666666;
+              outline: 1px solid #605e5c;
               position: absolute;
               right: -2px;
               top: -2px;
               z-index: 1;
             }
             &:hover {
-              background-color: #106ebe;
+              background-color: #005a9e;
               border-color: transparent;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
@@ -1033,13 +1111,13 @@ exports[`Component Examples renders Keytips.Button.Example.tsx correctly 1`] = `
               {
                 background-color: #ffffff;
                 border-color: transparent;
-                border-radius: .5em;
+                border-radius: 50%;
                 border-style: solid;
                 border-width: .28em;
                 box-sizing: border-box;
-                height: .5em;
+                height: 12px;
                 transition: all 0.1s ease;
-                width: .5em;
+                width: 12px;
               }
               @media screen and (-ms-high-contrast: active){& {
                 background-color: Window;
@@ -1056,11 +1134,11 @@ exports[`Component Examples renders Keytips.Button.Example.tsx correctly 1`] = `
               -webkit-font-smoothing: antialiased;
               box-shadow: none;
               box-sizing: border-box;
-              color: #333333;
+              color: #323130;
               display: block;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
-              font-weight: 400;
+              font-weight: 600;
               margin-bottom: 0px;
               margin-left: 0px;
               margin-right: 0px;
@@ -1073,6 +1151,7 @@ exports[`Component Examples renders Keytips.Button.Example.tsx correctly 1`] = `
               word-wrap: break-word;
             }
             && {
+              font-weight: 400;
               margin-bottom: 0;
               margin-left: 8px;
               margin-right: 8px;
@@ -1098,11 +1177,11 @@ exports[`Component Examples renders Keytips.Button.Example.tsx correctly 1`] = `
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
-          background-color: #f4f4f4;
-          border-radius: 0px;
-          border: 1px solid transparent;
+          background-color: #ffffff;
+          border-radius: 2px;
+          border: 1px solid #8a8886;
           box-sizing: border-box;
-          color: #333333;
+          color: #323130;
           cursor: pointer;
           display: inline-block;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -1125,14 +1204,14 @@ exports[`Component Examples renders Keytips.Button.Example.tsx correctly 1`] = `
           border: 0;
         }
         .ms-Fabric--isFocusVisible &:focus:after {
-          border: 1px solid #ffffff;
-          bottom: 0px;
+          border: 1px solid transparent;
+          bottom: 2px;
           content: "";
-          left: 0px;
-          outline: 1px solid #666666;
+          left: 2px;
+          outline: 1px solid #605e5c;
           position: absolute;
-          right: 0px;
-          top: 0px;
+          right: 2px;
+          top: 2px;
           z-index: 1;
         }
         @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -1149,16 +1228,16 @@ exports[`Component Examples renders Keytips.Button.Example.tsx correctly 1`] = `
           top: 0px;
         }
         &:hover {
-          background-color: #eaeaea;
-          color: #212121;
+          background-color: #f3f2f1;
+          color: #201f1e;
         }
         @media screen and (-ms-high-contrast: active){&:hover {
           border-color: Highlight;
           color: Highlight;
         }
         &:active {
-          background-color: #c8c8c8;
-          color: #212121;
+          background-color: #edebe9;
+          color: #201f1e;
         }
     data-is-focusable={true}
     data-ktp-execute-target="ktp-0-1"
@@ -1171,7 +1250,7 @@ exports[`Component Examples renders Keytips.Button.Example.tsx correctly 1`] = `
     onMouseUp={[Function]}
     type="button"
   >
-    <div
+    <span
       className=
           ms-Button-flexContainer
           {
@@ -1181,18 +1260,21 @@ exports[`Component Examples renders Keytips.Button.Example.tsx correctly 1`] = `
             height: 100%;
             justify-content: center;
           }
+      data-automationid="splitbuttonprimary"
     >
-      <div
+      <span
         className=
             ms-Button-textContainer
             {
+              display: block;
               flex-grow: 1;
             }
       >
-        <div
+        <span
           className=
               ms-Button-label
               {
+                display: block;
                 font-weight: 600;
                 line-height: 100%;
                 margin-bottom: 0;
@@ -1203,9 +1285,9 @@ exports[`Component Examples renders Keytips.Button.Example.tsx correctly 1`] = `
           id="id__22"
         >
           Enabled Button
-        </div>
-      </div>
-    </div>
+        </span>
+      </span>
+    </span>
   </button>
 </div>
 `;

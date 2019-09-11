@@ -9,6 +9,7 @@ import { TextFieldMultilineExample } from './examples/TextField.Multiline.Exampl
 import { TextFieldControlledExample } from './examples/TextField.Controlled.Example';
 import { TextFieldPrefixAndSuffixExample } from './examples/TextField.PrefixAndSuffix.Example';
 import { TextFieldStyledExample } from './examples/TextField.Styled.Example';
+import { TextFieldMaskedExample } from './examples/TextField.Masked.Example';
 
 const TextFieldBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.Basic.Example.tsx') as string;
 const TextFieldBasicExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.Basic.Example.tsx') as string;
@@ -26,6 +27,8 @@ const TextFieldPrefixAndSuffixExampleCode = require('!raw-loader!office-ui-fabri
 const TextFieldPrefixAndSuffixExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.PrefixAndSuffix.Example.tsx') as string;
 const TextFieldStyledExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.Styled.Example.tsx') as string;
 const TextFieldStyledExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.Styled.Example.tsx') as string;
+const TextFieldMaskedExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.Masked.Example.tsx') as string;
+const TextFieldMaskedExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.Masked.Example.tsx') as string;
 
 export const TextFieldPageProps: IDocPageProps = {
   title: 'TextField',
@@ -57,6 +60,12 @@ export const TextFieldPageProps: IDocPageProps = {
       codepenJS: TextFieldBorderlessExampleCodepen
     },
     {
+      title: 'Customizable Masked TextField',
+      code: TextFieldMaskedExampleCode,
+      view: <TextFieldMaskedExample />,
+      codepenJS: TextFieldMaskedExampleCodepen
+    },
+    {
       title: 'TextField with prefix and/or suffix',
       code: TextFieldPrefixAndSuffixExampleCode,
       codepenJS: TextFieldPrefixAndSuffixExampleCodepen,
@@ -85,7 +94,7 @@ export const TextFieldPageProps: IDocPageProps = {
   bestPractices: '',
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/TextField/docs/TextFieldDos.md'),
   donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/TextField/docs/TextFieldDonts.md'),
-  isHeaderVisible: true,
+  isHeaderVisible: false,
   isFeedbackVisible: true,
   allowNativeProps: true,
   nativePropsElement: ['input', 'textarea']

@@ -1,19 +1,19 @@
+// @ts-check
+
 const mustache = require('mustache');
 const argv = require('yargs').argv;
 const fs = require('fs');
-const exec = require('./exec-sync');
-const readConfig = require('./read-config');
-const writeConfig = require('./write-config');
+const { spawnSync } = require('child_process');
+const findGitRoot = require('./monorepo/findGitRoot');
 const path = require('path');
 
 // The package name can be given as a named or positional argument
-const newPackageName = argv.name || argv._[0];
+const newPackageName = /** @type {string} */ (argv.name || argv._[0]);
 const newPackageNpmName = '@uifabric/' + newPackageName;
-const generate = argv.generate !== false;
 
 if (!newPackageName) {
   console.error('Please specify a name for the new package.');
-  return;
+  process.exit(1);
 }
 
 // Convert any package names given in dash-case (e.g. my-new-package) to PascalCase (e.g. MyNewPackage)
@@ -31,22 +31,15 @@ const packagePath = path.join(process.cwd(), 'packages', newPackageName);
 const templateFolderPath = path.join(process.cwd(), 'scripts', 'templates', 'create-package');
 if (fs.existsSync(packagePath)) {
   console.error(`New package path ${packagePath} already exists.`);
-  return;
-}
-
-// rush.json contents
-const rushJson = readConfig('rush.json');
-if (!rushJson) {
-  console.error('Could not find rush.json.');
-  return;
+  process.exit(1);
 }
 
 // @uifabric/experiments package.json contents
-// (current dependency versions are copied from here to avoid causing issues with rush check)
+// (current dependency versions are copied from here to avoid causing issues with yarn checkchange)
 const experimentsPackagePath = path.join(process.cwd(), 'packages/experiments/package.json');
 if (!fs.existsSync(experimentsPackagePath)) {
   console.error('Could not find @uifabric/experiments package.json (needed to get current dependency versions)');
-  return;
+  process.exit(1);
 }
 const experimentsPackageJson = JSON.parse(fs.readFileSync(experimentsPackagePath, 'utf8'));
 
@@ -58,7 +51,7 @@ const steps = [
   { template: 'ChangelogMarkdown', output: 'CHANGELOG.md' },
   { template: 'License', output: 'LICENSE' },
   { template: 'Readme', output: 'README.md' },
-  { template: 'IndexHtml', output: 'index.html' },
+  { template: 'JustConfig', output: 'just.config.js' },
   { template: 'JestConfig', output: 'jest.config.js' },
   { template: 'JsConfig', output: 'jsconfig.json' },
   { template: 'PackageJson', output: 'package.json' },
@@ -69,25 +62,19 @@ const steps = [
   { template: 'WebpackServeConfig', output: 'webpack.serve.config.js' },
   { template: 'Tests', output: path.join('config', 'tests.js') },
   { template: 'PreCopy', output: path.join('config', 'pre-copy.json') },
-  { template: 'Tests', output: path.join('src', 'common', 'tests.js') },
   { template: 'IndexTs', output: path.join('src', 'index.ts') },
   { template: 'Version', output: path.join('src', 'version.ts') },
   { template: 'AppDefinition', output: path.join('src', 'demo', 'AppDefinition.tsx') },
-  { template: 'ColorStyles', output: path.join('src', 'demo', 'ColorStyles.scss') },
-  { template: 'GettingStartedPageStyles', output: path.join('src', 'demo', 'GettingStartedPage.scss') },
   { template: 'GettingStartedPage', output: path.join('src', 'demo', 'GettingStartedPage.tsx') },
-  { template: 'DemoStyles', output: path.join('src', 'demo', 'index.scss') },
   { template: 'Demo', output: path.join('src', 'demo', 'index.tsx') }
 ];
 
 // Strings
 const successCreatedPackage = `New package ${newPackageName} successfully created.`;
-const npmGenerateMessage = 'Running "npm generate" (to bypass this step, use --no-generate arg)';
-const rushPackagePresent = `Package ${newPackageNpmName} is already present in rush.json`;
+const yarnMessage = 'Running "yarn"';
 const errorUnableToCreatePackage = `Error creating package directory ${packagePath}`;
 const errorUnableToOpenTemplate = templateFile => `Unable to open mustache template ${templateFile} for component`;
 const errorUnableToWriteFile = step => `Unable to write ${step} file`;
-const errorUnableToUpdateRush = `Could not add an entry for ${newPackageNpmName} to list of projects in rush.json. You must add this entry manually.`;
 
 // Functions
 function handleError(error, errorPrependMessage) {
@@ -101,7 +88,8 @@ function handleError(error, errorPrependMessage) {
 
 function performStep(stepIndex) {
   if (stepIndex >= steps.length) {
-    updateRush();
+    yarnInstall();
+    console.log(successCreatedPackage);
     return;
   }
 
@@ -124,6 +112,15 @@ function performStep(stepIndex) {
   });
 }
 
+function yarnInstall() {
+  console.log(yarnMessage);
+  const yarnResult = spawnSync('yarn', ['--ignore-scripts'], { cwd: findGitRoot(), stdio: 'inherit' });
+  if (yarnResult.status !== 0) {
+    console.error('Something went wrong with running yarn. Please check previous logs for details');
+    process.exit(1);
+  }
+}
+
 function readFileCallback(error, data, templateName, outputFilePath, callback, readFileError, writeFileError) {
   if (!handleError(error, readFileError)) {
     return;
@@ -139,7 +136,7 @@ function readFileCallback(error, data, templateName, outputFilePath, callback, r
   };
   if (templateName.toLowerCase().indexOf('packagejson') !== -1) {
     // The package.json template has an additional tag for the version of each dependency.
-    // This is preferable over hardcoding dependency versions to prevent errors with rush check.
+    // This is preferable over hardcoding dependency versions to prevent errors with dependency consistency.
     // As of writing, @uifabric/experiments also depends on all the packages the template needs,
     // so we grab the current versions from there and add tags for them in the view object.
     const templatePackageJson = JSON.parse(data);
@@ -155,6 +152,10 @@ function readFileCallback(error, data, templateName, outputFilePath, callback, r
         console.warn(`Could not determine appropriate version of ${package} from @uifabric/experiments package.json`);
       }
     }
+    view.typesReactPeerDep = experimentsPackageJson.peerDependencies['@types/react'];
+    view.typesReactDomPeerDep = experimentsPackageJson.peerDependencies['@types/react-dom'];
+    view.reactPeerDep = experimentsPackageJson.peerDependencies.react;
+    view.reactDomPeerDep = experimentsPackageJson.peerDependencies['react-dom'];
   }
 
   const fileData = mustache.render(data, view);
@@ -173,43 +174,13 @@ function writeFileCallback(error, writeFileError, callback) {
   }
 }
 
-function updateRush() {
-  // don't add the same package to rush.json twice
-  if (rushJson.projects.some(project => project.packageName === newPackageNpmName)) {
-    console.error(rushPackagePresent);
-    postRushUpdate();
-    return;
-  }
-
-  rushJson.projects.push({
-    packageName: newPackageNpmName,
-    projectFolder: 'packages/' + newPackageName,
-    shouldPublish: false
-  });
-  if (!writeConfig('rush.json', rushJson)) {
-    console.error(errorUnableToUpdateRush);
-  }
-  postRushUpdate();
-}
-
-function postRushUpdate() {
-  console.log(successCreatedPackage);
-
-  if (generate) {
-    console.log(npmGenerateMessage);
-    exec('npm run generate');
-  }
-}
-
 function makePackage(error) {
   if (!handleError(error, errorUnableToCreatePackage)) {
     return;
   }
 
-  fs.mkdirSync(`${packagePath}/.vscode`);
   fs.mkdirSync(`${packagePath}/config`);
   fs.mkdirSync(`${packagePath}/src`);
-  fs.mkdirSync(`${packagePath}/src/common`);
   fs.mkdirSync(`${packagePath}/src/demo`);
   fs.mkdirSync(`${packagePath}/src/components`);
 

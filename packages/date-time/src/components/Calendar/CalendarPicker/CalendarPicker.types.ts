@@ -1,4 +1,5 @@
 import { IStyle, ITheme } from '@uifabric/styling';
+import { AnimationDirection } from '../Calendar.types';
 
 export interface ICalendarPickerStyleProps {
   /**
@@ -25,6 +26,16 @@ export interface ICalendarPickerStyleProps {
    * Whether the picker should highlight the selected item
    */
   highlightSelected?: boolean;
+
+  /**
+   * The cardinal directions for animation to occur during transitions, either horizontal or veritcal
+   */
+  animationDirection?: AnimationDirection;
+
+  /**
+   * Whether grid entering animation should be forwards or backwards
+   */
+  animateBackwards?: boolean;
 }
 
 export interface ICalendarPickerStyles {
@@ -42,6 +53,8 @@ export interface ICalendarPickerStyles {
   navigationButton: IStyle;
 
   gridContainer: IStyle;
+
+  buttonRow: IStyle;
 
   itemButton: IStyle;
 

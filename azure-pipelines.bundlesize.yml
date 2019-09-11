@@ -1,0 +1,59 @@
+jobs:
+  - job: build
+    pool:
+      name: Hosted VS2017
+      demands: npm
+    steps:
+      - task: NodeTool@0
+        inputs:
+          versionSpec: '10.x'
+        displayName: 'Install Node.js'
+
+      - script: yarn
+        displayName: yarn
+
+      - script: yarn buildto test-bundles -- --min
+        displayName: yarn build to test-bundles, with no tests or webpack
+
+      - script: yarn workspace test-bundles build
+        displayName: yarn build test-bundles
+
+      - script: yarn workspace office-ui-fabric-react just webpack
+        displayName: yarn bundle OUFR
+
+      - script: yarn bundlesizecollect
+        displayName: 'Collate Bundle Size Information'
+
+      - task: PublishBuildArtifacts@1
+        displayName: 'Publish Bundle Size information to Azure Dev Ops Artifacts'
+        inputs:
+          PathtoPublish: 'apps/test-bundles/dist/bundlesizes.json'
+
+      - task: PublishBuildArtifacts@1
+        displayName: 'Publish Artifact ActivityItem stats.json file for comparing performance'
+        inputs:
+          PathtoPublish: 'apps/test-bundles/dist/office-ui-fabric-react-ActivityItem.stats.json'
+          ArtifactName: activityitemstatsdrop
+
+      - task: PublishBuildArtifacts@1
+        displayName: 'Publish Artifact dist folder upon build for debug'
+        inputs:
+          PathtoPublish: 'apps/test-bundles/dist'
+          ArtifactName: distdrop
+
+      - task: PublishBuildArtifacts@1
+        displayName: 'Publish Artifact office-ui-fabric-react.js from dist folder'
+        inputs:
+          PathtoPublish: 'packages/office-ui-fabric-react/dist/office-ui-fabric-react.js'
+          ArtifactName: oufrdrop
+
+  - job: lightrail
+    pool: server
+    dependsOn: build
+    steps:
+      - task: odefun.odsp-lightrail-tasks-partner.odsp-lightrail-tasks-SizeAuditorWorker.SizeAuditorWorker@0
+        displayName: 'Size Auditor Check on LightRail'
+        inputs:
+          connectedServiceName: lowimpact
+          sourceVersionMessage: '$(Build.SourceVersionMessage)'
+          sourceRepositoryUrl: 'https://github.com/OfficeDev/office-ui-fabric-react'

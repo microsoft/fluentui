@@ -12,11 +12,12 @@ import {
   DirectionalHint,
   ActionButton,
   Stack,
-  IRawStyle
+  IRawStyle,
+  css
 } from 'office-ui-fabric-react';
-import { trackEvent, EventNames, getSiteArea } from '@uifabric/example-app-base/lib/index2';
+import { trackEvent, EventNames, getSiteArea, MarkdownHeader } from '@uifabric/example-app-base/lib/index2';
 import { platforms } from '../../SiteDefinition/SiteDefinition.platforms';
-import { AndroidLogo, AppleLogo, WebLogo, getParameterByName } from '../../utilities/index';
+import { AndroidLogo, AppleLogo, WebLogo } from '../../utilities/index';
 import { IHomePageProps, IHomePageStyles, IHomePageStyleProps } from './HomePage.types';
 import { monoFont } from './HomePage.styles';
 const reactPackageData = require<any>('office-ui-fabric-react/package.json');
@@ -47,23 +48,24 @@ const fabricUsageIcons = [
   { src: fabricUsageIconBaseUrl + 'teams_48x1.svg', title: 'Teams' }
 ];
 
-const fabricVersionOptions: IContextualMenuItem[] = [
-  {
-    key: '6',
-    text: 'Fabric 6',
-    data: '6'
-  },
-  {
-    key: '5',
-    text: 'Fabric 5',
-    data: '5'
-  }
-];
+const CURRENT_VERSION = '7';
+const VERSIONS = ['7', '6', '5'];
+const fabricVersionOptions: IContextualMenuItem[] = VERSIONS.map(version => ({
+  key: version,
+  text: 'Fabric ' + version,
+  checked: version === CURRENT_VERSION
+}));
+
+interface IRenderLinkOptions {
+  disabled?: boolean;
+  isCTA?: boolean;
+  icon?: string;
+  dark?: boolean;
+}
 
 export interface IHomePageState {
   isMounted: boolean;
   isMountedOffset: boolean;
-  fabricVer: string;
 }
 
 export class HomePageBase extends React.Component<IHomePageProps, IHomePageState> {
@@ -73,17 +75,9 @@ export class HomePageBase extends React.Component<IHomePageProps, IHomePageState
   constructor(props: IHomePageProps) {
     super(props);
 
-    let sessionStorageVersion: string | undefined;
-    try {
-      sessionStorageVersion = window.sessionStorage.getItem('fabricVer');
-    } catch (ex) {
-      // ignore
-    }
-
     this.state = {
       isMounted: false,
-      isMountedOffset: false,
-      fabricVer: getParameterByName('fabricVer') || sessionStorageVersion || fabricVersionOptions[0].data
+      isMountedOffset: false
     };
   }
 
@@ -131,11 +125,11 @@ export class HomePageBase extends React.Component<IHomePageProps, IHomePageState
           </div>
           <div className={this._classNames.oneFourth}>
             <p>
-              Together, we’ve created Microsoft UI Fabric, a collection of UX frameworks you can use to build Fluent experiences that fit
-              seamlessly into a broad range of Microsoft products.
+              Together, we’ve created UI Fabric, a collection of UX frameworks you can use to build Fluent experiences that fit seamlessly
+              into a broad range of Microsoft products.
             </p>
             <p>Connect with the cross-platform styles, controls and resources you need to do amazing things.</p>
-            <p>{this._renderLink('#/get-started', 'Get started', false, true)}</p>
+            <p>{this._renderLink('#/get-started', 'Get started', { isCTA: true, dark: false })}</p>
           </div>
         </div>
       </section>
@@ -168,7 +162,9 @@ export class HomePageBase extends React.Component<IHomePageProps, IHomePageState
           <div className={classNames.card} style={{ background: platforms.web.color }}>
             <Icon iconName="WebLogo-homePage" className={classNames.cardIcon} />
             <Stack horizontal verticalAlign="baseline" horizontalAlign="space-between">
-              <h3 className={classNames.cardTitle}>Web</h3>
+              <MarkdownHeader as="h3" className={classNames.cardTitle}>
+                Web
+              </MarkdownHeader>
               <ActionButton
                 allowDisabledFocus={true}
                 className={classNames.versionSwitcher}
@@ -204,16 +200,22 @@ export class HomePageBase extends React.Component<IHomePageProps, IHomePageState
           </div>
           <div className={classNames.card} style={{ background: platforms.ios.color }}>
             <Icon iconName="AppleLogo-homePage" className={classNames.cardIcon} />
-            <h3 className={classNames.cardTitle}>iOS</h3>
+            <MarkdownHeader as="h3" className={classNames.cardTitle}>
+              iOS
+            </MarkdownHeader>
             <ul className={classNames.cardList}>
               <li className={classNames.cardListItem}>{this._renderLink('#/controls/ios', 'Controls')}</li>
+              <li className={classNames.cardListItem}>{this._renderLink('#/get-started/ios', 'Get started')}</li>
             </ul>
           </div>
           <div className={classNames.card} style={{ background: platforms.android.color }}>
             <Icon iconName="AndroidLogo-homePage" className={classNames.cardIcon} />
-            <h3 className={classNames.cardTitle}>Android</h3>
+            <MarkdownHeader as="h3" className={classNames.cardTitle}>
+              Android
+            </MarkdownHeader>
             <ul className={classNames.cardList}>
               <li className={classNames.cardListItem}>{this._renderLink('#/controls/android', 'Controls')}</li>
+              <li className={classNames.cardListItem}>{this._renderLink('#/get-started/android', 'Get started')}</li>
             </ul>
           </div>
         </div>
@@ -264,7 +266,7 @@ export class HomePageBase extends React.Component<IHomePageProps, IHomePageState
           <div className={this._classNames.oneFourth}>
             <h2 className={this._classNames.resourcesTitle}>Discover resources</h2>
             <p>Find design, inclusive and developer onboarding resources, and learn about how to become a contributor.</p>
-            <p>{this._renderLink('#/resources', 'See resources')}</p>
+            <p>{this._renderLink('#/resources', 'See resources', { dark: false })}</p>
           </div>
         </div>
       </section>
@@ -292,10 +294,11 @@ export class HomePageBase extends React.Component<IHomePageProps, IHomePageState
   };
 
   /**Renders a link with an icon */
-  private _renderLink = (url: string, text: React.ReactNode, disabled?: boolean, isCTA?: boolean, icon = 'Forward'): JSX.Element => {
+  private _renderLink = (url: string, text: React.ReactNode, options: IRenderLinkOptions = {}): JSX.Element => {
+    const { disabled, isCTA, icon = 'Forward', dark = true } = options;
     return (
       <Link
-        className={this._classNames.link}
+        className={css(this._classNames.link, dark && this._classNames.linkDark)}
         href={url}
         disabled={!!disabled}
         // tslint:disable-next-line jsx-no-lambda
@@ -326,13 +329,16 @@ export class HomePageBase extends React.Component<IHomePageProps, IHomePageState
     trackEvent(EventNames.ClickedInternalLink, {
       topic: url, // @TODO: Remove topic when data is stale.
       currentArea: getSiteArea(),
-      nextArea: getSiteArea(url),
+      nextArea: getSiteArea(undefined, url),
       nextPage: url,
       currentPage: window.location.hash
     });
   };
 
   private _onVersionMenuClick = (event: any, item: IContextualMenuItem): void => {
-    this.setState({ fabricVer: item.data });
+    if (item.key !== CURRENT_VERSION) {
+      // Reload the page to switch versions
+      location.href = `${location.protocol}//${location.host}${location.pathname}?fabricVer=${item.key}`;
+    }
   };
 }

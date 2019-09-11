@@ -1,5 +1,6 @@
+import * as React from 'react';
 import { ITheme, IStyle } from '../../../Styling';
-import { IBaseProps, IRefObject, IStyleFunctionOrObject } from '../../../Utilities';
+import { IRefObject, IStyleFunctionOrObject } from '../../../Utilities';
 import { IColor } from '../../../utilities/color/interfaces';
 
 /**
@@ -13,7 +14,7 @@ export interface IColorRectangle {
 /**
  * {@docCategory ColorPicker}
  */
-export interface IColorRectangleProps extends IBaseProps<IColorRectangle> {
+export interface IColorRectangleProps {
   /**
    * Gets the component ref.
    */
@@ -46,12 +47,6 @@ export interface IColorRectangleProps extends IBaseProps<IColorRectangle> {
 
   /**
    * Callback for when the color changes.
-   * @deprecated Use `onChange`
-   */
-  onSVChanged?: (s: number, v: number) => void;
-
-  /**
-   * Callback for when the color changes.
    */
   onChange?: (ev: React.MouseEvent<HTMLElement>, color: IColor) => void;
 }
@@ -69,6 +64,11 @@ export interface IColorRectangleStyleProps {
    * Additional CSS class(es) to apply to the ColorRectangle.
    */
   className?: string;
+
+  /**
+   * Minimum width and height.
+   */
+  minSize?: number;
 }
 
 /**

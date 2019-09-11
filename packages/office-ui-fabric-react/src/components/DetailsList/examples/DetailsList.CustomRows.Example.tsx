@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { DetailsList, DetailsRow, IDetailsRowProps, IDetailsRowStyles } from 'office-ui-fabric-react/lib/DetailsList';
-import { createListItems, IExampleItem } from 'office-ui-fabric-react/lib/utilities/exampleData';
+import { createListItems, IExampleItem } from '@uifabric/example-data';
 import { getTheme } from 'office-ui-fabric-react/lib/Styling';
 
 const theme = getTheme();
@@ -14,7 +14,7 @@ export class DetailsListCustomRowsExample extends React.Component<{}, {}> {
   }
 
   public render() {
-    return <DetailsList items={this._items} setKey="set" onRenderRow={this._onRenderRow} />;
+    return <DetailsList items={this._items} setKey="set" onRenderRow={this._onRenderRow} checkButtonAriaLabel="Row checkbox" />;
   }
 
   private _onRenderRow = (props: IDetailsRowProps): JSX.Element => {

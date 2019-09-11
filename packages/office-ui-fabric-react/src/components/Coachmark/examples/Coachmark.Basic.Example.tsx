@@ -1,15 +1,21 @@
 import * as React from 'react';
-import { Coachmark } from '../Coachmark';
-import { TeachingBubbleContent } from 'office-ui-fabric-react/lib/TeachingBubble';
-import { DefaultButton, IButtonProps } from 'office-ui-fabric-react/lib/Button';
-import { DirectionalHint } from 'office-ui-fabric-react/lib/common/DirectionalHint';
-import { IStyle } from 'office-ui-fabric-react/lib/Styling';
-import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
-import { BaseComponent, classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
+import {
+  BaseComponent,
+  classNamesFunction,
+  Coachmark,
+  DefaultButton,
+  DirectionalHint,
+  Dropdown,
+  IButtonProps,
+  IDropdownOption,
+  IStyle,
+  TeachingBubbleContent
+} from 'office-ui-fabric-react';
 
 export interface ICoachmarkBasicExampleState {
   isCoachmarkVisible?: boolean;
   coachmarkPosition: DirectionalHint;
+  dropdownSelectedOptionKey: string | number;
 }
 
 export interface ICoachmarkBasicExampleStyles {
@@ -37,12 +43,13 @@ export class CoachmarkBasicExample extends BaseComponent<{}, ICoachmarkBasicExam
 
     this.state = {
       isCoachmarkVisible: false,
-      coachmarkPosition: DirectionalHint.bottomAutoEdge
+      coachmarkPosition: DirectionalHint.bottomAutoEdge,
+      dropdownSelectedOptionKey: 'H'
     };
   }
 
   public render(): JSX.Element {
-    const { isCoachmarkVisible } = this.state;
+    const { isCoachmarkVisible, dropdownSelectedOptionKey } = this.state;
 
     const getClassNames = classNamesFunction<{}, ICoachmarkBasicExampleStyles>();
     const classNames = getClassNames(() => {
@@ -70,7 +77,7 @@ export class CoachmarkBasicExample extends BaseComponent<{}, ICoachmarkBasicExam
         <div className={classNames.dropdownContainer}>
           <Dropdown
             label="Coachmark position"
-            defaultSelectedKey="H"
+            selectedKey={dropdownSelectedOptionKey}
             onFocus={this._onDismiss}
             options={[
               { key: 'A', text: 'Top Left Edge', data: DirectionalHint.topLeftEdge },
@@ -100,7 +107,7 @@ export class CoachmarkBasicExample extends BaseComponent<{}, ICoachmarkBasicExam
             target={this._targetButton.current}
             positioningContainerProps={{
               directionalHint: this.state.coachmarkPosition,
-              doNotLayer: true
+              doNotLayer: false
             }}
             ariaAlertText="A Coachmark has appeared"
             ariaDescribedBy={'coachmark-desc1'}
@@ -134,7 +141,8 @@ export class CoachmarkBasicExample extends BaseComponent<{}, ICoachmarkBasicExam
 
   private _onDropdownChange = (event: React.FormEvent<HTMLDivElement>, option: IDropdownOption): void => {
     this.setState({
-      coachmarkPosition: option.data
+      coachmarkPosition: option.data,
+      dropdownSelectedOptionKey: option.key
     });
   };
 

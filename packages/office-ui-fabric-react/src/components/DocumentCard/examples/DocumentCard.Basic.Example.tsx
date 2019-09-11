@@ -7,7 +7,7 @@ import {
   IDocumentCardPreviewProps
 } from 'office-ui-fabric-react/lib/DocumentCard';
 import { ImageFit } from 'office-ui-fabric-react/lib/Image';
-import { TestImages } from '../../../common/TestImages';
+import { TestImages } from '@uifabric/example-data';
 
 export class DocumentCardBasicExample extends React.PureComponent {
   public render(): JSX.Element {
@@ -16,7 +16,8 @@ export class DocumentCardBasicExample extends React.PureComponent {
         {
           name: 'Revenue stream proposal fiscal year 2016 version02.pptx',
           linkProps: {
-            href: 'http://bing.com'
+            href: 'http://bing.com',
+            target: '_blank'
           },
           previewImageSrc: TestImages.documentPreview,
           iconSrc: TestImages.iconPpt,

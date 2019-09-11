@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { Icon } from '../../Icon';
-import { BaseComponent, IRenderFunction, IDisposable, classNamesFunction, IClassNames } from '../../Utilities';
-import { IColumn, ColumnActionsMode } from './DetailsList.types';
+import { Icon, FontIcon } from '../../Icon';
+import { initializeComponentRef, EventGroup, Async, IDisposable, classNamesFunction, IClassNames } from '../../Utilities';
+import { ColumnActionsMode } from './DetailsList.types';
 
 import { ITooltipHostProps } from '../../Tooltip';
 import { IDragDropOptions } from './../../utilities/dragdrop/interfaces';
@@ -16,13 +16,36 @@ const TRANSITION_DURATION_DRAG = 200; // ms
 const TRANSITION_DURATION_DROP = 1500; // ms
 const CLASSNAME_ADD_INTERVAL = 20; // ms
 
-export class DetailsColumnBase extends BaseComponent<IDetailsColumnProps> {
+/**
+ * Component for rendering columns in a `DetailsList`.
+ *
+ * {@docCategory DetailsList}
+ */
+export class DetailsColumnBase extends React.Component<IDetailsColumnProps> {
+  private _async: Async;
+  private _events: EventGroup;
   private _root = React.createRef<HTMLDivElement>();
   private _dragDropSubscription: IDisposable;
   private _classNames: IClassNames<IDetailsColumnStyles>;
 
+  constructor(props: IDetailsColumnProps) {
+    super(props);
+    initializeComponentRef(this);
+    this._async = new Async(this);
+    this._events = new EventGroup(this);
+  }
+
   public render(): JSX.Element {
-    const { column, columnIndex, parentId, isDraggable, styles, theme, cellStyleProps = DEFAULT_CELL_STYLE_PROPS } = this.props;
+    const {
+      column,
+      columnIndex,
+      parentId,
+      isDraggable,
+      styles,
+      theme,
+      cellStyleProps = DEFAULT_CELL_STYLE_PROPS,
+      useFastIcons = true
+    } = this.props;
     const { onRenderColumnHeaderTooltip = this._onRenderColumnHeaderTooltip } = this.props;
 
     this._classNames = getClassNames(styles, {
@@ -40,6 +63,7 @@ export class DetailsColumnBase extends BaseComponent<IDetailsColumnProps> {
     });
 
     const classNames = this._classNames;
+    const IconComponent = useFastIcons ? FontIcon : Icon;
 
     return (
       <>
@@ -62,7 +86,7 @@ export class DetailsColumnBase extends BaseComponent<IDetailsColumnProps> {
           data-automationid={'ColumnsHeaderColumn'}
           data-item-key={column.key}
         >
-          {isDraggable && <Icon iconName="GripperBarVertical" className={classNames.gripperBarVerticalStyle} />}
+          {isDraggable && <IconComponent iconName="GripperBarVertical" className={classNames.gripperBarVerticalStyle} />}
           {onRenderColumnHeaderTooltip(
             {
               hostClassName: classNames.cellTooltip,
@@ -85,27 +109,29 @@ export class DetailsColumnBase extends BaseComponent<IDetailsColumnProps> {
                   aria-describedby={
                     !this.props.onRenderColumnHeaderTooltip && this._hasAccessibleLabel() ? `${parentId}-${column.key}-tooltip` : undefined
                   }
-                  onContextMenu={this._onColumnContextMenu.bind(this, column)}
-                  onClick={this._onColumnClick.bind(this, column)}
+                  onContextMenu={this._onColumnContextMenu}
+                  onClick={this._onColumnClick}
                   aria-haspopup={column.columnActionsMode === ColumnActionsMode.hasDropdown}
-                  aria-expanded={
-                    column.columnActionsMode === ColumnActionsMode.hasDropdown ? (column.isMenuOpen ? true : false) : undefined
-                  }
+                  aria-expanded={column.columnActionsMode === ColumnActionsMode.hasDropdown ? !!column.isMenuOpen : undefined}
                 >
                   <span id={`${parentId}-${column.key}-name`} className={classNames.cellName}>
-                    {(column.iconName || column.iconClassName) && <Icon className={classNames.iconClassName} iconName={column.iconName} />}
+                    {(column.iconName || column.iconClassName) && (
+                      <IconComponent className={classNames.iconClassName} iconName={column.iconName} />
+                    )}
 
                     {column.isIconOnly ? <span className={classNames.accessibleLabel}>{column.name}</span> : column.name}
                   </span>
 
-                  {column.isFiltered && <Icon className={classNames.nearIcon} iconName={'Filter'} />}
+                  {column.isFiltered && <IconComponent className={classNames.nearIcon} iconName="Filter" />}
 
-                  {column.isSorted && <Icon className={classNames.sortIcon} iconName={column.isSortedDescending ? 'SortDown' : 'SortUp'} />}
+                  {column.isSorted && (
+                    <IconComponent className={classNames.sortIcon} iconName={column.isSortedDescending ? 'SortDown' : 'SortUp'} />
+                  )}
 
-                  {column.isGrouped && <Icon className={classNames.nearIcon} iconName={'GroupedDescending'} />}
+                  {column.isGrouped && <IconComponent className={classNames.nearIcon} iconName="GroupedDescending" />}
 
                   {column.columnActionsMode === ColumnActionsMode.hasDropdown && !column.isIconOnly && (
-                    <Icon aria-hidden={true} className={classNames.filterChevron} iconName={'ChevronDown'} />
+                    <IconComponent aria-hidden={true} className={classNames.filterChevron} iconName="ChevronDown" />
                   )}
                 </span>
               )
@@ -119,20 +145,8 @@ export class DetailsColumnBase extends BaseComponent<IDetailsColumnProps> {
   }
 
   public componentDidMount(): void {
-    if (this._dragDropSubscription) {
-      this._dragDropSubscription.dispose();
-      delete this._dragDropSubscription;
-    }
-
     if (this.props.dragDropHelper && this.props.isDraggable) {
-      this._dragDropSubscription = this.props.dragDropHelper.subscribe(
-        this._root.current as HTMLElement,
-        this._events,
-        this._getColumnDragDropOptions()
-      );
-
-      // We need to use native on this to avoid MarqueeSelection from handling the event before us.
-      this._events.on(this._root.current, 'mousedown', this._onRootMouseDown);
+      this._addDragDropHandling();
     }
 
     const classNames = this._classNames;
@@ -162,19 +176,15 @@ export class DetailsColumnBase extends BaseComponent<IDetailsColumnProps> {
       this._dragDropSubscription.dispose();
       delete this._dragDropSubscription;
     }
+    this._async.dispose();
+    this._events.dispose();
   }
 
   public componentDidUpdate(): void {
     if (!this._dragDropSubscription && this.props.dragDropHelper && this.props.isDraggable) {
-      this._dragDropSubscription = this.props.dragDropHelper.subscribe(
-        this._root.current as HTMLElement,
-        this._events,
-        this._getColumnDragDropOptions()
-      );
-
-      // We need to use native on this to avoid MarqueeSelection from handling the event before us.
-      this._events.on(this._root.current, 'mousedown', this._onRootMouseDown);
+      this._addDragDropHandling();
     }
+
     if (this._dragDropSubscription && !this.props.isDraggable) {
       this._dragDropSubscription.dispose();
       this._events.off(this._root.current, 'mousedown');
@@ -182,19 +192,16 @@ export class DetailsColumnBase extends BaseComponent<IDetailsColumnProps> {
     }
   }
 
-  private _onRenderColumnHeaderTooltip = (
-    tooltipHostProps: ITooltipHostProps,
-    defaultRender?: IRenderFunction<ITooltipHostProps>
-  ): JSX.Element => {
+  private _onRenderColumnHeaderTooltip = (tooltipHostProps: ITooltipHostProps): JSX.Element => {
     return <span className={tooltipHostProps.hostClassName}>{tooltipHostProps.children}</span>;
   };
 
-  private _onColumnClick(column: IColumn, ev: React.MouseEvent<HTMLElement>): void {
+  private _onColumnClick = (ev: React.MouseEvent<HTMLElement>): void => {
+    const { onColumnClick, column } = this.props;
+
     if (column.columnActionsMode === ColumnActionsMode.disabled) {
       return;
     }
-
-    const { onColumnClick } = this.props;
 
     if (column.onColumnClick) {
       column.onColumnClick(ev, column);
@@ -203,7 +210,7 @@ export class DetailsColumnBase extends BaseComponent<IDetailsColumnProps> {
     if (onColumnClick) {
       onColumnClick(ev, column);
     }
-  }
+  };
 
   private _getColumnDragDropOptions(): IDragDropOptions {
     const { columnIndex } = this.props;
@@ -250,7 +257,7 @@ export class DetailsColumnBase extends BaseComponent<IDetailsColumnProps> {
     const classNames = this._classNames;
     if (itemIndex) {
       this._updateHeaderDragInfo(itemIndex);
-      (this._root.current as HTMLElement).classList.add(classNames.borderWhileDragging);
+      this._root.current!.classList.add(classNames.borderWhileDragging);
       this._async.setTimeout(() => {
         if (this._root.current) {
           this._root.current.classList.add(classNames.noBorderWhileDragging);
@@ -264,8 +271,8 @@ export class DetailsColumnBase extends BaseComponent<IDetailsColumnProps> {
     if (event) {
       this._updateHeaderDragInfo(-1, event);
     }
-    (this._root.current as HTMLElement).classList.remove(classNames.borderWhileDragging);
-    (this._root.current as HTMLElement).classList.remove(classNames.noBorderWhileDragging);
+    this._root.current!.classList.remove(classNames.borderWhileDragging);
+    this._root.current!.classList.remove(classNames.noBorderWhileDragging);
   };
 
   private _updateHeaderDragInfo = (itemIndex: number, event?: MouseEvent) => {
@@ -277,8 +284,8 @@ export class DetailsColumnBase extends BaseComponent<IDetailsColumnProps> {
     }
   };
 
-  private _onColumnContextMenu(column: IColumn, ev: React.MouseEvent<HTMLElement>): void {
-    const { onColumnContextMenu } = this.props;
+  private _onColumnContextMenu = (ev: React.MouseEvent<HTMLElement>): void => {
+    const { onColumnContextMenu, column } = this.props;
     if (column.onColumnContextMenu) {
       column.onColumnContextMenu(column, ev);
       ev.preventDefault();
@@ -287,7 +294,7 @@ export class DetailsColumnBase extends BaseComponent<IDetailsColumnProps> {
       onColumnContextMenu(column, ev);
       ev.preventDefault();
     }
-  }
+  };
 
   private _onRootMouseDown = (ev: MouseEvent): void => {
     const { isDraggable } = this.props;
@@ -296,4 +303,11 @@ export class DetailsColumnBase extends BaseComponent<IDetailsColumnProps> {
       ev.stopPropagation();
     }
   };
+
+  private _addDragDropHandling() {
+    this._dragDropSubscription = this.props.dragDropHelper!.subscribe(this._root.current!, this._events, this._getColumnDragDropOptions());
+
+    // We need to use native on this to prevent MarqueeSelection from handling the event before us.
+    this._events.on(this._root.current, 'mousedown', this._onRootMouseDown);
+  }
 }

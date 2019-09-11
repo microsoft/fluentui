@@ -1,9 +1,12 @@
-import { ITooltipStyleProps, ITooltipStyles, TooltipDelay } from './Tooltip.types';
+import { ITooltipStyleProps, ITooltipStyles } from './Tooltip.types';
 import { AnimationClassNames } from '../../Styling';
 
 export const getStyles = (props: ITooltipStyleProps): ITooltipStyles => {
-  const { className, delay, maxWidth, theme } = props;
-  const { palette, fonts } = theme;
+  const { className, beakWidth = 16, gapSpace = 0, maxWidth, theme } = props;
+  const { palette, fonts, effects } = theme;
+
+  // The math here is done to account for the 45 degree rotation of the beak
+  const tooltipGapSpace = -(Math.sqrt((beakWidth * beakWidth) / 2) + gapSpace);
 
   return {
     root: [
@@ -12,15 +15,20 @@ export const getStyles = (props: ITooltipStyleProps): ITooltipStyles => {
       AnimationClassNames.fadeIn200,
       {
         background: palette.white,
+        boxShadow: effects.elevation8,
         padding: '8px',
-        animationDelay: '300ms',
-        maxWidth: maxWidth
-      },
-      delay === TooltipDelay.zero && {
-        animationDelay: '0s'
-      },
-      delay === TooltipDelay.long && {
-        animationDelay: '500ms'
+        maxWidth: maxWidth,
+        selectors: {
+          ':after': {
+            content: `''`,
+            position: 'absolute',
+            bottom: tooltipGapSpace,
+            left: tooltipGapSpace,
+            right: tooltipGapSpace,
+            top: tooltipGapSpace,
+            zIndex: 0
+          }
+        }
       },
       className
     ],
@@ -28,6 +36,8 @@ export const getStyles = (props: ITooltipStyleProps): ITooltipStyles => {
       'ms-Tooltip-content',
       fonts.small,
       {
+        position: 'relative',
+        zIndex: 1,
         color: palette.neutralPrimary,
         wordWrap: 'break-word',
         overflowWrap: 'break-word',

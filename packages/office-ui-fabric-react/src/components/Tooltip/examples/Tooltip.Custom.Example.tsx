@@ -11,14 +11,21 @@ export class TooltipCustomExample extends React.Component<any, any> {
   public render(): JSX.Element {
     return (
       <TooltipHost
-        calloutProps={{ gapSpace: 20 }}
         tooltipProps={{
           onRenderContent: () => {
             return (
               <div>
                 <ul style={{ margin: 0, padding: 0 }}>
-                  <li>1. One</li>
-                  <li>2. Two</li>
+                  <li>
+                    <a target="_blank" href="#">
+                      1. One
+                    </a>
+                  </li>
+                  <li>
+                    <a target="_blank" href="#">
+                      2. Two
+                    </a>
+                  </li>
                 </ul>
               </div>
             );
@@ -27,6 +34,7 @@ export class TooltipCustomExample extends React.Component<any, any> {
         delay={TooltipDelay.zero}
         id={this._hostId}
         directionalHint={DirectionalHint.bottomCenter}
+        styles={{ root: { display: 'inline-block' } }}
       >
         <DefaultButton aria-labelledby={this._hostId} text="Hover Over Me" />
       </TooltipHost>

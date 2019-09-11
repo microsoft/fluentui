@@ -48,6 +48,8 @@ export class BreadcrumbBase extends BaseComponent<IBreadcrumbProps, any> {
   }
 
   public render(): JSX.Element {
+    this._validateProps(this.props);
+
     const { onReduceData = this._onReduceData, overflowIndex, maxDisplayedItems, items, className, theme, styles } = this.props;
     const renderedItems = [...items];
     const renderedOverflowItems = renderedItems.splice(overflowIndex!, renderedItems.length - maxDisplayedItems!);
@@ -63,10 +65,6 @@ export class BreadcrumbBase extends BaseComponent<IBreadcrumbProps, any> {
     });
 
     return <ResizeGroup onRenderData={this._onRenderBreadcrumb} onReduceData={onReduceData} data={breadcrumbData} />;
-  }
-
-  public componentWillReceiveProps(nextProps: IBreadcrumbProps): void {
-    this._validateProps(nextProps);
   }
 
   private _onReduceData = (data: IBreadcrumbData): IBreadcrumbData | undefined => {
@@ -143,7 +141,7 @@ export class BreadcrumbBase extends BaseComponent<IBreadcrumbProps, any> {
       );
     }
 
-    const nativeProps = getNativeProps(this.props, htmlElementProperties, ['className']);
+    const nativeProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, htmlElementProperties, ['className']);
 
     return (
       <div className={this._classNames.root} role="navigation" aria-label={ariaLabel} {...nativeProps}>
@@ -158,12 +156,13 @@ export class BreadcrumbBase extends BaseComponent<IBreadcrumbProps, any> {
     if (item.onClick || item.href) {
       return (
         <Link
+          as={'a'}
           className={this._classNames.itemLink}
           href={item.href}
           aria-current={item.isCurrentItem ? 'page' : undefined}
           onClick={this._onBreadcrumbClicked.bind(this, item)}
         >
-          <TooltipHost content={item.text} overflowMode={TooltipOverflowMode.Parent}>
+          <TooltipHost content={item.text} overflowMode={TooltipOverflowMode.Parent} {...this.props.tooltipHostProps}>
             {item.text}
           </TooltipHost>
         </Link>
@@ -171,7 +170,7 @@ export class BreadcrumbBase extends BaseComponent<IBreadcrumbProps, any> {
     } else {
       return (
         <span className={this._classNames.item}>
-          <TooltipHost content={item.text} overflowMode={TooltipOverflowMode.Parent}>
+          <TooltipHost content={item.text} overflowMode={TooltipOverflowMode.Parent} {...this.props.tooltipHostProps}>
             {item.text}
           </TooltipHost>
         </span>

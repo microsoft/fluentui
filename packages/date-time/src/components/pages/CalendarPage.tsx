@@ -1,14 +1,12 @@
 import * as React from 'react';
-import { ExampleCard, ComponentPage, PropertiesTableSet, PageMarkdown } from '@uifabric/example-app-base';
+import { ExampleCard, ComponentPage, PropertiesTableSet, Markdown } from '@uifabric/example-app-base';
 import { DateRangeType, DayOfWeek } from '../Calendar/Calendar.types';
 import { CalendarButtonExample } from '../Calendar/examples/Calendar.Button.Example';
 import { CalendarInlineExample } from '../Calendar/examples/Calendar.Inline.Example';
-import { addMonths, addYears, addDays } from '../../utilities/dateMath/DateMath';
+import { addMonths, addYears, addDays } from 'office-ui-fabric-react/lib/utilities/dateMath/DateMath';
 
 const CalendarButtonExampleCode = require('!raw-loader!@uifabric/date-time/src/components/Calendar/examples/Calendar.Button.Example.tsx') as string;
-const CalendarButtonExampleCodepen = require('!@uifabric/codepen-loader!@uifabric/date-time/src/components/Calendar/examples/Calendar.Button.Example.tsx') as string;
 const CalendarInlineExampleCode = require('!raw-loader!@uifabric/date-time/src/components/Calendar/examples/Calendar.Inline.Example.tsx') as string;
-const CalendarInlineExampleCodepen = require('!@uifabric/codepen-loader!@uifabric/date-time/src/components/Calendar/examples/Calendar.Inline.Example.tsx') as string;
 
 const today = new Date(Date.now());
 
@@ -20,7 +18,7 @@ export class CalendarPage extends React.Component<{}, {}> {
         componentName="Calendar"
         exampleCards={
           <div>
-            <ExampleCard title="Inline Calendar" code={CalendarInlineExampleCode} codepenJS={CalendarInlineExampleCodepen}>
+            <ExampleCard title="Inline Calendar" code={CalendarInlineExampleCode}>
               <CalendarInlineExample
                 isMonthPickerVisible={false}
                 dateRangeType={DateRangeType.Day}
@@ -124,7 +122,7 @@ export class CalendarPage extends React.Component<{}, {}> {
                 workWeekDays={[DayOfWeek.Tuesday, DayOfWeek.Saturday, DayOfWeek.Wednesday, DayOfWeek.Friday]}
               />
             </ExampleCard>
-            <ExampleCard title="Calendar launched from a button" code={CalendarButtonExampleCode} codepenJS={CalendarButtonExampleCodepen}>
+            <ExampleCard title="Calendar launched from a button" code={CalendarButtonExampleCode}>
               <CalendarButtonExample highlightCurrentMonth={true} />
             </ExampleCard>
             <ExampleCard title="Month picker launched from a button" code={CalendarButtonExampleCode}>
@@ -160,15 +158,12 @@ export class CalendarPage extends React.Component<{}, {}> {
         propertiesTables={
           <PropertiesTableSet sources={[require<string>('!raw-loader!@uifabric/date-time/src/components/Calendar/Calendar.types.ts')]} />
         }
-        // tslint:disable:deprecation
         overview={
-          <PageMarkdown>{require<string>('!raw-loader!@uifabric/date-time/src/components/Calendar/docs/CalendarOverview.md')}</PageMarkdown>
+          <Markdown>{require<string>('!raw-loader!@uifabric/date-time/src/components/Calendar/docs/CalendarOverview.md')}</Markdown>
         }
         bestPractices={<div />}
-        dos={<PageMarkdown>{require<string>('!raw-loader!@uifabric/date-time/src/components/Calendar/docs/CalendarDos.md')}</PageMarkdown>}
-        donts={
-          <PageMarkdown>{require<string>('!raw-loader!@uifabric/date-time/src/components/Calendar/docs/CalendarDonts.md')}</PageMarkdown>
-        }
+        dos={<Markdown>{require<string>('!raw-loader!@uifabric/date-time/src/components/Calendar/docs/CalendarDos.md')}</Markdown>}
+        donts={<Markdown>{require<string>('!raw-loader!@uifabric/date-time/src/components/Calendar/docs/CalendarDonts.md')}</Markdown>}
       />
     );
   }

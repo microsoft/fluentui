@@ -8,7 +8,6 @@ import * as styles from '../Page.module.scss';
 
 export const MarkdownSection: React.StatelessComponent<IPageSectionProps> = props => {
   const {
-    // prettier-ignore
     className,
     content: markdown,
     fileNamePrefix,
@@ -17,11 +16,13 @@ export const MarkdownSection: React.StatelessComponent<IPageSectionProps> = prop
     sectionName,
     readableSectionName = sectionName,
     style,
+    id,
     title = 'Page'
   } = props;
-  const sectionId = pascalize(sectionName || 'Markdown');
   const editUrl =
-    props.editUrl || (componentUrl && getEditUrl({ name: fileNamePrefix || title, section: sectionId, baseUrl: componentUrl, platform }));
+    props.editUrl ||
+    (componentUrl &&
+      getEditUrl({ name: fileNamePrefix || title, section: pascalize(sectionName || 'Markdown'), baseUrl: componentUrl, platform }));
 
   const editSection = editUrl && (
     <EditSection className={styles.edit} title={sectionName} section={readableSectionName || 'Markdown'} url={editUrl} />
@@ -31,7 +32,7 @@ export const MarkdownSection: React.StatelessComponent<IPageSectionProps> = prop
     <div className={className} style={style}>
       {readableSectionName ? (
         <div className={styles.sectionHeader}>
-          <h2 className={styles.subHeading} id={sectionId}>
+          <h2 className={styles.subHeading} id={id}>
             {readableSectionName}
           </h2>
           {editSection}

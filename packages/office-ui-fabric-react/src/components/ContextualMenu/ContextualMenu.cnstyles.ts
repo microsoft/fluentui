@@ -1,17 +1,17 @@
 import {
   concatStyleSets,
-  FontSizes,
   getFocusStyle,
   HighContrastSelector,
   IRawStyle,
   ITheme,
   getScreenSelector,
-  ScreenWidthMaxMedium
+  ScreenWidthMaxMedium,
+  IconFontSizes
 } from '../../Styling';
 import { IMenuItemStyles } from './ContextualMenu.types';
 import { memoizeFunction } from '../../Utilities';
 
-export const CONTEXTUAL_MENU_ITEM_HEIGHT = '32px';
+export const CONTEXTUAL_MENU_ITEM_HEIGHT = 36;
 
 const MediumScreenSelector = getScreenSelector(0, ScreenWidthMaxMedium);
 
@@ -32,9 +32,10 @@ const getItemHighContrastStyles = memoizeFunction(
 
 export const getMenuItemStyles = memoizeFunction(
   (theme: ITheme): IMenuItemStyles => {
-    const { semanticColors, fonts } = theme;
+    const { semanticColors, fonts, palette } = theme;
     const ContextualMenuItemBackgroundHoverColor = semanticColors.menuItemBackgroundHovered;
-    const ContextualMenuItemBackgroundSelectedColor = semanticColors.menuItemBackgroundChecked;
+    const ContextualMenuItemTextHoverColor = semanticColors.menuItemTextHovered;
+    const ContextualMenuItemBackgroundSelectedColor = semanticColors.menuItemBackgroundPressed;
     const ContextualMenuItemDividerColor = semanticColors.bodyDivider;
 
     const menuItemStyles: IMenuItemStyles = {
@@ -81,17 +82,39 @@ export const getMenuItemStyles = memoizeFunction(
       },
       rootHovered: {
         backgroundColor: ContextualMenuItemBackgroundHoverColor,
+        color: ContextualMenuItemTextHoverColor,
+        selectors: {
+          '.ms-ContextualMenu-icon': {
+            color: palette.themeDarkAlt
+          },
+          '.ms-ContextualMenu-submenuIcon': {
+            color: palette.neutralPrimary
+          }
+        },
         ...getItemHighContrastStyles()
       },
       rootFocused: {
-        backgroundColor: ContextualMenuItemBackgroundHoverColor,
+        backgroundColor: palette.white,
         ...getItemHighContrastStyles()
       },
       rootChecked: {
+        selectors: {
+          '.ms-ContextualMenu-checkmarkIcon': {
+            color: palette.neutralPrimary
+          }
+        },
         ...getItemHighContrastStyles()
       },
       rootPressed: {
         backgroundColor: ContextualMenuItemBackgroundSelectedColor,
+        selectors: {
+          '.ms-ContextualMenu-icon': {
+            color: palette.themeDark
+          },
+          '.ms-ContextualMenu-submenuIcon': {
+            color: palette.neutralPrimary
+          }
+        },
         ...getItemHighContrastStyles()
       },
       rootExpanded: {
@@ -136,10 +159,17 @@ export const getMenuItemStyles = memoizeFunction(
         display: 'inline-block',
         minHeight: '1px',
         maxHeight: CONTEXTUAL_MENU_ITEM_HEIGHT,
-        width: '14px',
+        fontSize: IconFontSizes.medium,
+        width: IconFontSizes.medium,
         margin: '0 4px',
         verticalAlign: 'middle',
-        flexShrink: '0'
+        flexShrink: '0',
+        selectors: {
+          [MediumScreenSelector]: {
+            fontSize: IconFontSizes.large,
+            width: IconFontSizes.large
+          }
+        }
       },
       iconColor: {
         color: semanticColors.menuIcon,
@@ -177,14 +207,21 @@ export const getMenuItemStyles = memoizeFunction(
       subMenuIcon: {
         height: CONTEXTUAL_MENU_ITEM_HEIGHT,
         lineHeight: CONTEXTUAL_MENU_ITEM_HEIGHT,
+        color: palette.neutralSecondary,
         textAlign: 'center',
         display: 'inline-block',
         verticalAlign: 'middle',
         flexShrink: '0',
-        fontSize: FontSizes.small, // 12px
+        fontSize: IconFontSizes.small, // 12px
         selectors: {
+          ':hover': {
+            color: palette.neutralPrimary
+          },
+          ':active': {
+            color: palette.neutralPrimary
+          },
           [MediumScreenSelector]: {
-            fontSize: FontSizes.icon // 16px
+            fontSize: IconFontSizes.medium // 16px
           }
         }
       },
@@ -195,7 +232,7 @@ export const getMenuItemStyles = memoizeFunction(
           height: CONTEXTUAL_MENU_ITEM_HEIGHT,
           flexWrap: 'nowrap',
           justifyContent: 'center',
-          alignItems: 'center'
+          alignItems: 'flex-start'
         }
       ]
     };

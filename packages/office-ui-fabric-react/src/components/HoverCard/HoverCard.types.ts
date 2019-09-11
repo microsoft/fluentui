@@ -124,7 +124,14 @@ export interface IHoverCardProps extends React.HTMLAttributes<HTMLDivElement> {
    * If not provided and using HoverCard as a wrapper, don't set 'data-is-focusable=true' attribute to the root of the wrapped child.
    * When no target given, HoverCard will use it's root as a target and become the focusable element with a focus listener attached to it.
    */
-  target?: HTMLElement | string;
+  target?: HTMLElement | string | null;
+
+  /**
+   * This prop is to separate the target to anchor hover card from the target to attach event listener.
+   * If set, this prop separates the target to anchor the hover card from the target to attach the event listener.
+   * When no `eventListenerTarget` given, HoverCard will use `target` prop or its root to set event listener.
+   */
+  eventListenerTarget?: HTMLElement | string | null;
 
   /**
    * Theme provided by higher order component.

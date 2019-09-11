@@ -3,10 +3,20 @@
 exports[`Component Examples renders Icon.Svg.Example.tsx correctly 1`] = `
 <div>
   <i
+    aria-hidden={true}
     className=
-        ms-IconExample
+        ms-Icon
         {
           display: inline-block;
+        }
+        {
+          font-size: 50px;
+          height: 50px;
+          margin-bottom: 0;
+          margin-left: 25px;
+          margin-right: 25px;
+          margin-top: 0;
+          width: 50px;
         }
     data-icon-name="onedrive-svg"
     role="presentation"
@@ -35,11 +45,21 @@ exports[`Component Examples renders Icon.Svg.Example.tsx correctly 1`] = `
     </svg>
   </i>
   <i
+    aria-hidden={true}
     className=
-        ms-IconExample
+        ms-Icon
         {
           display: inline-block;
+        }
+        {
           fill: red;
+          font-size: 50px;
+          height: 50px;
+          margin-bottom: 0;
+          margin-left: 25px;
+          margin-right: 25px;
+          margin-top: 0;
+          width: 50px;
         }
         & .thing {
           fill: green;
@@ -72,11 +92,19 @@ exports[`Component Examples renders Icon.Svg.Example.tsx correctly 1`] = `
     </svg>
   </i>
   <i
+    aria-hidden={true}
     className=
-        ms-IconExample
+        ms-Icon
         {
           display: inline-block;
+        }
+        {
+          font-size: 50px;
           height: 50px;
+          margin-bottom: 0;
+          margin-left: 25px;
+          margin-right: 25px;
+          margin-top: 0;
           width: 50px;
         }
         & .borderblinds-part1 {

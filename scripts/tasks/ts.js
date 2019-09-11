@@ -1,8 +1,7 @@
 // @ts-check
 
 const path = require('path');
-const { argv } = require('just-task');
-const { tscTask } = require('just-scripts');
+const { tscTask, argv } = require('just-scripts');
 const libPath = path.resolve(process.cwd(), 'lib');
 const srcPath = path.resolve(process.cwd(), 'src');
 
@@ -17,7 +16,7 @@ module.exports.ts = {
   },
   esm: () => {
     const extraOptions = getExtraTscParams(argv());
-    return tscTask({ ...extraOptions, outDir: 'lib', module: 'es2015' });
+    return tscTask({ ...extraOptions, outDir: 'lib', module: 'esnext' });
   },
   amd: () => {
     const extraOptions = getExtraTscParams(argv());

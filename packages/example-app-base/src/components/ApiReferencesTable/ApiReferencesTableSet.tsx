@@ -33,7 +33,7 @@ export class ApiReferencesTableSet extends React.Component<IApiReferencesTableSe
   public render(): JSX.Element {
     const { className } = this.props;
     return (
-      <Stack gap={LARGE_GAP_SIZE} className={className}>
+      <Stack tokens={{ childrenGap: LARGE_GAP_SIZE }} className={className}>
         {this._renderFirst()}
         {this._renderEach()}
       </Stack>
@@ -81,7 +81,7 @@ export class ApiReferencesTableSet extends React.Component<IApiReferencesTableSe
 
     if (this.state.properties.length > 1) {
       return (
-        <Stack gap={MEDIUM_GAP_SIZE}>
+        <Stack tokens={{ childrenGap: MEDIUM_GAP_SIZE }}>
           <ActionButton
             iconProps={{ iconName: this.state.showSeeMore ? 'SkypeCircleMinus' : 'CirclePlus' }}
             onClick={this._onClickSeeMore}
@@ -91,7 +91,7 @@ export class ApiReferencesTableSet extends React.Component<IApiReferencesTableSe
             See More
           </ActionButton>
           {this.state.showSeeMore && (
-            <Stack gap={LARGE_GAP_SIZE}>
+            <Stack tokens={{ childrenGap: LARGE_GAP_SIZE }}>
               {this.state.properties.map((item: IApiProperty, index: number) =>
                 index !== 0 ? this._renderReferencesTable(item) : undefined
               )}
@@ -115,6 +115,7 @@ export class ApiReferencesTableSet extends React.Component<IApiReferencesTableSe
         methods={item.methods}
         renderAsEnum={item.propertyType === PropertyType.enum}
         renderAsClass={item.propertyType === PropertyType.class}
+        renderAsTypeAlias={item.propertyType === PropertyType.typeAlias}
       />
     );
   }
@@ -177,6 +178,10 @@ export class ApiReferencesTableSet extends React.Component<IApiReferencesTableSe
             preResults.push(this._generateClassProperty(jsonDocs.tables[j]));
             break;
           }
+          case 'typeAlias': {
+            preResults.push(this._generateTypeAliasProperty(jsonDocs.tables[j]));
+            break;
+          }
         }
       }
     }
@@ -185,17 +190,16 @@ export class ApiReferencesTableSet extends React.Component<IApiReferencesTableSe
   }
 
   private _generateEnumProperty(table: ITableJson): IApiProperty {
-    const enumMembers: IApiEnumProperty[] = [];
-
     const members: IEnumTableRowJson[] = table.members as IEnumTableRowJson[];
-    for (let k = 0; k < members.length; k++) {
+
+    const enumMembers: IApiEnumProperty[] = members.map((member: IEnumTableRowJson) =>
       // each member within the enum
-      enumMembers.push({
-        description: members[k].description,
-        name: members[k].name,
-        value: members[k].value
-      });
-    }
+      ({
+        description: member.description,
+        name: member.name,
+        value: member.value
+      })
+    );
 
     // the enum
     return {
@@ -207,20 +211,31 @@ export class ApiReferencesTableSet extends React.Component<IApiReferencesTableSe
     };
   }
 
-  private _generateInterfaceProperty(table: ITableJson): IApiProperty {
-    const interfaceMembers: IApiInterfaceProperty[] = [];
+  private _generateTypeAliasProperty(table: ITableJson): IApiProperty {
+    // the type alias
+    return {
+      propertyName: table.name,
+      extendsTokens: table.extendsTokens,
+      description: table.description,
+      title: table.name,
+      propertyType: PropertyType.typeAlias,
+      property: []
+    };
+  }
 
+  private _generateInterfaceProperty(table: ITableJson): IApiProperty {
     const members: ITableRowJson[] = table.members as ITableRowJson[];
-    for (let k = 0; k < members.length; k++) {
+
+    const interfaceMembers: IApiInterfaceProperty[] = members.map((member: ITableRowJson) =>
       // each member within the interface
-      interfaceMembers.push({
-        description: members[k].description,
-        name: members[k].name,
-        typeTokens: members[k].typeTokens,
-        deprecated: members[k].deprecated,
-        defaultValue: members[k].defaultValue || ''
-      });
-    }
+      ({
+        description: member.description,
+        name: member.name,
+        typeTokens: member.typeTokens,
+        deprecated: member.deprecated,
+        defaultValue: member.defaultValue || ''
+      })
+    );
 
     // the interface
     return {
@@ -239,23 +254,23 @@ export class ApiReferencesTableSet extends React.Component<IApiReferencesTableSe
     const classMethods: IMethod[] = [];
 
     const members: ITableRowJson[] = table.members as ITableRowJson[];
-    for (let k = 0; k < members.length; k++) {
-      if (members[k].kind === 'Method') {
+    members.forEach((member: ITableRowJson) => {
+      if (member.kind === 'Method') {
         classMethods.push({
-          description: members[k].description,
-          name: members[k].name,
-          typeTokens: members[k].typeTokens
+          description: member.description,
+          name: member.name,
+          typeTokens: member.typeTokens
         });
       } else {
         classMembers.push({
-          description: members[k].description,
-          name: members[k].name,
-          typeTokens: members[k].typeTokens,
-          deprecated: members[k].deprecated,
-          defaultValue: members[k].defaultValue || ''
+          description: member.description,
+          name: member.name,
+          typeTokens: member.typeTokens,
+          deprecated: member.deprecated,
+          defaultValue: member.defaultValue || ''
         });
       }
-    }
+    });
 
     // the class
     return {

@@ -1,14 +1,12 @@
-# [Office UI Fabric React](http://dev.office.com/fabric)
+# [Office UI Fabric React](https://dev.microsoft.com/fabric)
 
 **The React-based front-end framework for building experiences for Office and Office 365.**
 
-[![npm version](https://badge.fury.io/js/office-ui-fabric-react.svg)](https://badge.fury.io/js/office-ui-fabric-react)
+**Fabric 7**: Summary, breaking changes, and more details available in [the wiki](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Fabric-7).
 
-[![Build Status](https://uifabric.visualstudio.com/fabricpublic/_apis/build/status/office-ui-fabric-react%20-%20PR?branchName=master)](https://uifabric.visualstudio.com/fabricpublic/_build/latest?definitionId=84&branchName=master)
+[![npm version](https://badge.fury.io/js/office-ui-fabric-react.svg)](https://badge.fury.io/js/office-ui-fabric-react) [![Build Status](https://uifabric.visualstudio.com/fabricpublic/_apis/build/status/office-ui-fabric-react%20-%20PR?branchName=master)](https://uifabric.visualstudio.com/fabricpublic/_build/latest?definitionId=84&branchName=master)
 
 Fabric React is a collection of robust React-based components designed to make it simple for you to create consistent web experiences using the Office Design Language.
-
-**Fabric 7 (the next major version of Fabric) is under development.** Roadmap, breaking changes, and more details available in [the wiki](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Fabric-7).
 
 ## Who uses UI Fabric?
 
@@ -23,6 +21,8 @@ Please see the [wiki](https://github.com/OfficeDev/office-ui-fabric-react/wiki).
 ## Contents
 
 - [Using Fabric React](#using-fabric-react)
+  - [Starter apps](#starter-apps)
+  - [Integrating in your project](#integrating-in-your-project)
   - [Version policy](#version-policy)
   - [Browser support](#browser-support)
   - [Right-to-left support](#right-to-left-support)
@@ -37,7 +37,26 @@ Please see the [wiki](https://github.com/OfficeDev/office-ui-fabric-react/wiki).
 
 ## Using Fabric React
 
-[Here is a step-by-step tutorial](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Sample-App) on how to build a simple React app with office-ui-fabric-react components.
+### Starter apps
+
+To create a simple starter app using Fabric components, [install the latest LTS node.js](https://nodejs.org), then run:
+
+```
+npm init uifabric
+```
+
+It'll prompt you for a project name. If you choose to create a project called `my-app`, you can start working on the project like this:
+
+```
+cd my-app
+npm start
+```
+
+This scaffold uses the [`just`](https://github.com/microsoft/just) build library. It is very flexible and requires no "eject" script to allow for customization on its configurations.
+
+If you prefer to use `create-react-app`, [follow these instructions](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Getting-Started-with-UI-Fabric#create-react-app).
+
+### Integrating in your project
 
 How to integrate components into your project depends heavily on your setup. The recommended setup is to use a bundler such as [Webpack](https://webpack.js.org/) which can resolve NPM package imports in your code and bundle only the specific things you import.
 
@@ -97,40 +116,29 @@ To view the documentation including examples, contracts, component status, and t
 
 1. `git clone https://github.com/OfficeDev/office-ui-fabric-react.git`
 2. `cd office-ui-fabric-react`
-3. `npm install`
-4. `npm start`
+3. `yarn`
+4. `yarn builddemo`
+5. `yarn start`
 
 This will start a demo page from the office-ui-fabric-react package folder, which will open a web browser with the example page. You can make changes to the code which will automatically build and refresh the page using live-reload.
 
-To build and run tests for all packages in the repo, run `npm run build` from the root.
+To build and run tests for all packages in the repo, run `yarn build` from the root.
 
-To build individual packages within the `packages/*` or `apps/*` folders, `cd` to the relevant folder and run `npm run build`. Note that because the packages are symlinked together, you must manage building dependencies in the right order, or use the `rush` tool to build to the specific package you want. (See advanced tips below.)
+To build individual packages within the `packages/*` or `apps/*` folders, `cd` to the relevant folder and run `yarn build`. Note that because the packages are symlinked together, you must manage building dependencies in the right order, or use the `yarn buildto` script to build to the specific package you want.
+
+#### Advanced build commands
+
+There are more advanced build commands listed in the [Build Commands](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Build-Commands) wiki page.
 
 ### Testing
 
 For info about testing, see our [testing documentation](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Testing).
 
-### Advanced building tips
-
-The repo contains many packages, each which may have dependencies on each other. You can use [Rush](https://rushjs.io/) to build projects in the correct order, if you have it globally installed.
-
-```bash
-npm install -g @microsoft/rush
-```
-
-To use Rush to build, you can run `rush build`, which will incrementally build the entire repo (only build what has changed since the last build). If you don't have Rush globally installed, you can use the command `npm run buildfast`, which abstracts `rush build`.
-
-To build up to a specific project, use the `--to <package>` argument. For example, to build up to `office-ui-fabric-react`, run:
-
-```bash
-rush build --to office-ui-fabric-react
-```
-
 ## Licenses
 
 All files on the Office UI Fabric React GitHub repository are subject to the MIT license. Please read the License file at the root of the project.
 
-Usage of the fonts and icons referenced in Office UI Fabric is subject to the terms of the [assets license agreement](http://aka.ms/fabric-assets-license).
+Usage of the fonts and icons referenced in Office UI Fabric is subject to the terms of the [assets license agreement](https://aka.ms/fabric-assets-license).
 
 ## Changelog
 

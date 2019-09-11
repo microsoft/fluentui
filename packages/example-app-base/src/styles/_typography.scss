@@ -1,4 +1,4 @@
-@import '../../node_modules/office-ui-fabric-core/dist/sass/References';
+@import '~office-ui-fabric-core/dist/sass/References';
 @import './variables';
 
 // Standard text size and spacing
@@ -38,7 +38,7 @@
     @include ms-fontColor-gray160;
     @include ms-fontSize-16;
     @include ms-fontWeight-regular;
-    margin-bottom: $uhf-p-margin-bottom;
+    margin-bottom: 8px;
   }
 
   ol {

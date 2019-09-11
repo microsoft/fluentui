@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { IStyle, ITheme } from '../../Styling';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { IPoint, IRectangle, IStyleFunctionOrObject } from '../../Utilities';
@@ -7,7 +8,7 @@ import { ILayerProps } from '../../Layer';
 /**
  * {@docCategory Callout}
  */
-export type Target = Element | string | MouseEvent | IPoint | null;
+export type Target = Element | string | MouseEvent | IPoint | null | React.RefObject<Element>;
 
 /**
  * {@docCategory Callout}
@@ -226,6 +227,14 @@ export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement> {
    * once the callout is visible.
    */
   hidden?: boolean;
+
+  /**
+   * If specified, determines whether the underlying "Popup" component should try to restore
+   * focus when it is dismissed.  When set to false, the Popup won't try to restore focus to
+   * the last focused element.
+   * @defaultvalue true;
+   */
+  shouldRestoreFocus?: boolean;
 }
 
 /**

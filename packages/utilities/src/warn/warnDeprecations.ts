@@ -9,7 +9,7 @@ import { ISettingsMap, warn } from './warn';
  * either null or a replacement prop name.
  */
 export function warnDeprecations<P>(componentName: string, props: P, deprecationMap: ISettingsMap<P>): void {
-  if (typeof process !== 'undefined' && process.env.NODE_ENV !== 'production') {
+  if (process.env.NODE_ENV !== 'production') {
     for (const propName in deprecationMap) {
       if (props && propName in props) {
         let deprecationMessage = `${componentName} property '${propName}' was used but has been deprecated.`;

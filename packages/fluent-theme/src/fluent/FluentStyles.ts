@@ -22,12 +22,14 @@ import { IconButtonStyles } from './styles/IconButton.styles';
 import { LabelStyles } from './styles/Label.styles';
 import { LinkStyles } from './styles/Link.styles';
 import { ModalStyles } from './styles/Modal.styles';
+import { NavStyles } from './styles/Nav.styles';
 import { PanelStyles } from './styles/Panel.styles';
 import { PeoplePickerItemStyles } from './styles/PeoplePicker.styles';
 import { PersonaStyles } from './styles/Persona.styles';
 import { PivotStyles } from './styles/Pivot.styles';
 import { PrimaryButtonStyles } from './styles/PrimaryButton.styles';
 import { RatingStyles } from './styles/Rating.styles';
+import { SearchBoxStyles } from './styles/SearchBox.styles';
 import { SliderStyles } from './styles/Slider.styles';
 import { SpinButtonStyles } from './styles/SpinButton.styles';
 import { SuggestionItemStyles, SuggestionsStyles } from './styles/PickerSuggestions.styles';
@@ -129,6 +131,9 @@ export const FluentStyles: any = {
   Modal: {
     styles: ModalStyles
   },
+  Nav: {
+    styles: NavStyles
+  },
   Panel: {
     styles: PanelStyles
   },
@@ -152,6 +157,9 @@ export const FluentStyles: any = {
   },
   Rating: {
     styles: RatingStyles
+  },
+  SearchBox: {
+    styles: SearchBoxStyles
   },
   Slider: {
     styles: SliderStyles

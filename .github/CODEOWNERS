@@ -22,31 +22,36 @@ webpack.config.js @kenotron @ecraig12345
 webpack.serve.config.js @kenotron @ecraig12345
 jest.config.js @kenotron @ecraig12345
 tsconfig.json @kenotron @ecraig12345
-rush.json @kenotron @ecraig12345
+lerna.json @kenotron @ecraig12345
 LICENSE @kenotron @ecraig12345
 azure-pipelines.yml @ecraig12345 @kenotron
 .appveyor.yml @kenotron @ecraig12345
 .npmrc @kenotron @ecraig12345
 .npmignore @kenotron @ecraig12345
+sizeauditor.json @aftab-hassan
 
 #### Deprecated API Files
 *.api.ts @natalieethell
 
 #### Apps
 # component-demo/
-fabric-website/ @jordandrako
+fabric-website/ @ecraig12345 @Jahnp
+fabric-website-resources/ @ecraig12345
+perf-test/ @JasonGore
 # ssr-tests/
 # test-bundle-button/ @dzearing
 # todo-app/
+Controls/web.tsx @Vitalius1 @natalieethell
 
 #### Packages
-packages/charting/ @Raghurk @veeray @chankev
+packages/charting/ @Raghurk
 packages/codepen-loader/ @ecraig12345 @kenotron
 packages/foundation/ @JasonGore
-# packages/example-app-base/
+packages/example-app-base/ @ecraig12345
 packages/file-type-icons/  @KatherineThayerMicrosoft @jahnp @bigbadcapers
 # packages/icons/
 # packages/jest-serializer-merge-styles/
+packages/lists/ @dzearing @KevinTCoughlin @aditima
 # packages/merge-styles/
 # packages/prettier-rules/
 # packages/tslint-rules/
@@ -55,8 +60,9 @@ packages/styling/src/interfaces/ @phkuo
 packages/styling/src/styles/ @phkuo
 # packages/utilities/
 packages/utilities/positioning/ @joschect
-packages/date-time @OfficeDev/uifabric-calendar @jh2he @evlevy
+packages/date-time @OfficeDev/uifabric-calendar @lorejoh @evlevy
 packages/migration/ @ecraig12345 @kenotron
+packages/tsx-editor @ecraig12345
 
 ### Fabric
 # common/
@@ -65,8 +71,8 @@ common/_themeOverrides.scss @phkuo
 common/_common.scss @phkuo
 
 ### Utilities
-dateMath/     @OfficeDev/uifabric-calendar
-dateValues/   @OfficeDev/uifabric-calendar
+dateMath/     @OfficeDev/uifabric-calendar @lorejoh
+dateValues/   @OfficeDev/uifabric-calendar @lorejoh
 
 ## Components
 Accordion/ @JasonGore
@@ -74,24 +80,25 @@ ActivityItem/ @jdhuntington
 Announced/ @natalieethell
 Breadcrumb/ @jdhuntington
 Button/ @khmakoto
-Calendar/ @OfficeDev/uifabric-calendar
+Calendar/ @OfficeDev/uifabric-calendar @lorejoh
 Callout/ @joschect
 react-cards/Card/  @khmakoto
 Check/ @KevinTCoughlin
 Checkbox/ @cliffkoh
-ChoiceGroup/ @srideshpande
+ChoiceGroup/ @srideshpande @ecraig12345
+Coachmark/ @leddie24
 CollapsibleSection/ @JasonGore
 ColorPicker/ @ecraig12345
-ComboBox/ @ecraig12345
+ComboBox/ @joschect
 CommandBar/ @micahgodbolt @joschect
 ContextualMenu/ @joschect
-DatePicker/ @OfficeDev/uifabric-calendar
+DatePicker/ @OfficeDev/uifabric-calendar @lorejoh
 DetailsList/ @KevinTCoughlin
 Dialog/ @kkjeer
 DocumentCard/ @yiminwu
-Dropdown/ @ecraig12345
+Dropdown/ @joschect
 Fabric/ @dzearing
-FacePile/ @markionium
+FacePile/ @markionium @mtennoe
 FolderCover/ @ThomasMichon
 FocusTrapZone/ @JasonGore
 FocusZone/ @JasonGore
@@ -106,14 +113,14 @@ List/ @KevinTCoughlin
 MarqueeSelection/ @dzearing
 MessageBar/ @ecraig12345
 Modal/ @JasonGore
-Nav/ @jdhuntington
+office-ui-fabric-react/src/components/Nav/ @jdhuntington
 OverflowSet/ @micahgodbolt
 Overlay/ @kkjeer
 Pagination/ @caradong
 Panel/ @kkjeer
-Persona/ @markionium
-PersonaCoin/ @mtennoe @jakob101
-Persona/PersonaConsts.tsx @mtennoe @jakob101
+Persona/ @markionium @mtennoe
+PersonaCoin/ @mtennoe @markionium
+Persona/PersonaConsts.tsx @mtennoe
 pickers/  @joschect
 Pivot/ @jdhuntington
 Popup/ @JasonGore
@@ -144,7 +151,7 @@ Tooltip/ @micahgodbolt
 Announced/docs/ @natalieethell
 # Breadcrumb/docs/
 Button/docs/  @khmakoto
-Calendar/docs/   @OfficeDev/uifabric-calendar
+Calendar/docs/   @OfficeDev/uifabric-calendar @lorejoh
 Callout/docs/  @joschect
 react-cards/Card/docs/  @khmakoto
 # Check/docs/
@@ -154,7 +161,7 @@ ChoiceGroup/docs/   @srideshpande
 # ComboBox/docs/
 CommandBar/docs/   @micahgodbolt
 ContextualMenu/docs/  @joschect
-DatePicker/docs/   @OfficeDev/uifabric-calendar
+DatePicker/docs/   @OfficeDev/uifabric-calendar @lorejoh
 DetailsList/docs/ @KevinTCoughlin
 # Dialog/docs/
 DocumentCard/docs/ @yiminwu
@@ -178,7 +185,7 @@ List/docs/ @KevinTCoughlin
 OverflowSet/docs/  @micahgodbolt
 # Overlay/docs/
 # Panel/docs/
-Persona/docs/ @markionium
+Persona/docs/ @markionium @mtennoe
 pickers/docs/  @joschect
 # Pivot/docs/
 # Popup/docs/

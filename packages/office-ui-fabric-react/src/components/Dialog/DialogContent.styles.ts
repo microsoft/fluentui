@@ -1,5 +1,5 @@
 import { IDialogContentStyleProps, IDialogContentStyles } from './DialogContent.types';
-import { FontWeights, getGlobalClassNames } from '../../Styling';
+import { FontWeights, getGlobalClassNames, IconFontSizes } from '../../Styling';
 
 const GlobalClassNames = {
   contentLgHeader: 'ms-Dialog-lgHeader',
@@ -16,7 +16,7 @@ const GlobalClassNames = {
 export const getStyles = (props: IDialogContentStyleProps): IDialogContentStyles => {
   const { className, theme, isLargeHeader, isClose, hidden, isMultiline, draggableHeaderClassName } = props;
 
-  const { palette, fonts } = theme;
+  const { palette, fonts, effects } = theme;
 
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
@@ -40,7 +40,7 @@ export const getStyles = (props: IDialogContentStyleProps): IDialogContentStyles
         color: palette.neutralPrimary,
         lineHeight: '1.5',
         wordWrap: 'break-word',
-        fontWeight: FontWeights.semilight
+        fontWeight: FontWeights.regular
       }
     ],
 
@@ -72,7 +72,7 @@ export const getStyles = (props: IDialogContentStyleProps): IDialogContentStyles
         selectors: {
           '.ms-Icon.ms-Icon--Cancel': {
             color: palette.neutralSecondary,
-            fontSize: '16px'
+            fontSize: IconFontSizes.medium
           }
         }
       }
@@ -81,7 +81,7 @@ export const getStyles = (props: IDialogContentStyleProps): IDialogContentStyles
     inner: [
       classNames.inner,
       {
-        padding: isMultiline ? '0 20px 20px' : '0 28px 20px'
+        padding: '0 24px 24px'
       }
     ],
 
@@ -89,40 +89,26 @@ export const getStyles = (props: IDialogContentStyleProps): IDialogContentStyles
       classNames.content,
       {
         position: 'relative',
-        width: '100%',
-
-        selectors: {
-          '.ms-Button.ms-Button--compount': {
-            marginBottom: '20px',
-
-            selectors: {
-              '&:last-child': {
-                marginBottom: '0'
-              }
-            }
-          }
-        }
-      },
-      className
+        width: '100%'
+      }
     ],
 
     title: [
       classNames.title,
+      fonts.xLarge,
       {
         color: palette.neutralPrimary,
         margin: '0',
-        padding: '20px 36px 20px 28px'
+        padding: '16px 46px 24px 24px',
+        lineHeight: 'normal'
       },
-      fonts.xLarge,
-      isLargeHeader && [
-        {
-          color: palette.white,
-          marginBottom: '8px',
-          padding: '26px 28px 28px'
-        },
-        fonts.xxLarge
-      ],
-      isMultiline && fonts.xxLarge
+      isLargeHeader && {
+        fontSize: fonts.xxLarge.fontSize,
+        color: palette.white,
+        marginBottom: '8px',
+        padding: '22px 24px'
+      },
+      isMultiline && { fontSize: fonts.xxLarge.fontSize }
     ],
 
     topButton: [
@@ -133,11 +119,18 @@ export const getStyles = (props: IDialogContentStyleProps): IDialogContentStyles
         position: 'absolute',
         top: '0',
         right: '0',
-        padding: '12px 12px 0 0',
+        padding: '14px 14px 0 0',
 
         selectors: {
           '> *': {
             flex: '0 0 auto'
+          },
+          '.ms-Dialog-button': {
+            color: palette.neutralSecondary
+          },
+          '.ms-Dialog-button:hover': {
+            color: palette.neutralDark,
+            borderRadius: effects.roundedCorner2
           }
         }
       }

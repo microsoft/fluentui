@@ -36,11 +36,11 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
             -webkit-font-smoothing: antialiased;
             box-shadow: none;
             box-sizing: border-box;
-            color: #333333;
+            color: #323130;
             display: inline-block;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
-            font-weight: 400;
+            font-weight: 600;
             margin-bottom: 0px;
             margin-left: 0px;
             margin-right: 0px;
@@ -66,9 +66,10 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
+            border-color: #605e5c;
             box-shadow: none;
             box-sizing: border-box;
-            color: #333333;
+            color: #323130;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
             font-weight: 400;
@@ -86,15 +87,15 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
             width: 300px;
           }
           &:hover .ms-Dropdown-title {
-            border-color: #212121;
-            color: #212121;
+            border-color: #323130;
+            color: #201f1e;
           }
           @media screen and (-ms-high-contrast: active){&:hover .ms-Dropdown-title {
             border-color: Highlight;
           }
           &:focus .ms-Dropdown-title {
             border-color: #0078d4;
-            color: #212121;
+            color: #201f1e;
           }
           @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-title {
             background-color: Highlight;
@@ -108,17 +109,17 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
             -ms-high-contrast-adjust: none;
           }
           &:active .ms-Dropdown-title {
-            border-color: #005a9e;
-            color: #212121;
+            border-color: #0078d4;
+            color: #201f1e;
           }
           @media screen and (-ms-high-contrast: active){&:active .ms-Dropdown-title {
             border-color: Highlight;
           }
           &:hover .ms-Dropdown-caretDown {
-            color: #212121;
+            color: #323130;
           }
           &:focus .ms-Dropdown-caretDown {
-            color: #212121;
+            color: #323130;
           }
           @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-caretDown {
             color: HighlightText;
@@ -127,25 +128,25 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
             -ms-high-contrast-adjust: none;
           }
           &:active .ms-Dropdown-caretDown {
-            color: #212121;
+            color: #323130;
           }
           &:hover .ms-Dropdown-titleIsPlaceHolder {
-            color: #666666;
+            color: #323130;
           }
           &:focus .ms-Dropdown-titleIsPlaceHolder {
-            color: #666666;
+            color: #323130;
           }
           &:active .ms-Dropdown-titleIsPlaceHolder {
-            color: #666666;
+            color: #323130;
           }
           &:hover .ms-Dropdown-title--hasError {
-            border-color: #a80000;
+            border-color: #a4262c;
           }
           &:active .ms-Dropdown-title--hasError {
-            border-color: #a80000;
+            border-color: #a4262c;
           }
           &:focus .ms-Dropdown-title--hasError {
-            border-color: #a80000;
+            border-color: #a4262c;
           }
       data-is-focusable={true}
       id="Dropdown0"
@@ -154,7 +155,6 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
       onFocus={[Function]}
       onKeyDown={[Function]}
       onKeyUp={[Function]}
-      placeholder="Select an option"
       role="listbox"
       tabIndex={0}
     >
@@ -168,12 +168,13 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
             ms-Dropdown-titleIsPlaceHolder
             {
               background-color: #ffffff;
-              border-color: #a6a6a6;
+              border-color: #8a8886;
+              border-radius: 2px;
               border-style: solid;
               border-width: 1px;
               box-shadow: none;
               box-sizing: border-box;
-              color: #666666;
+              color: #605e5c;
               cursor: pointer;
               display: block;
               height: 32px;
@@ -184,8 +185,8 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
               margin-top: 0px;
               overflow: hidden;
               padding-bottom: 0;
-              padding-left: 12px;
-              padding-right: 32px;
+              padding-left: 8px;
+              padding-right: 28px;
               padding-top: 0;
               position: relative;
               text-overflow: ellipsis;
@@ -206,17 +207,18 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
               height: 32px;
               line-height: 30px;
               position: absolute;
-              right: 12px;
+              right: 8px;
               top: 1px;
             }
       >
         <i
+          aria-hidden={true}
           className=
               ms-Dropdown-caretDown
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                color: #666666;
+                color: #605e5c;
                 display: inline-block;
                 font-family: "FabricMDL2Icons";
                 font-size: 12px;
@@ -247,11 +249,11 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
             -webkit-font-smoothing: antialiased;
             box-shadow: none;
             box-sizing: border-box;
-            color: #333333;
+            color: #a19f9d;
             display: inline-block;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
-            font-weight: 400;
+            font-weight: 600;
             margin-bottom: 0px;
             margin-left: 0px;
             margin-right: 0px;
@@ -262,6 +264,9 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
             padding-right: 0;
             padding-top: 5px;
             word-wrap: break-word;
+          }
+          @media screen and (-ms-high-contrast: active){& {
+            color: GrayText;
           }
       htmlFor="Dropdown1"
       id="Dropdown1-label"
@@ -279,9 +284,10 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
+            border-color: #605e5c;
             box-shadow: none;
             box-sizing: border-box;
-            color: #333333;
+            color: #323130;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
             font-weight: 400;
@@ -299,7 +305,7 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
             width: 300px;
           }
           &:hover .ms-Dropdown-title {
-            border-color: #212121;
+            border-color: #323130;
           }
           @media screen and (-ms-high-contrast: active){&:hover .ms-Dropdown-title {
             border-color: Highlight;
@@ -319,7 +325,7 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
             -ms-high-contrast-adjust: none;
           }
           &:active .ms-Dropdown-title {
-            border-color: #005a9e;
+            border-color: #0078d4;
           }
           @media screen and (-ms-high-contrast: active){&:active .ms-Dropdown-title {
             border-color: Highlight;
@@ -330,23 +336,14 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
           @media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: black-on-white){&:focus .ms-Dropdown-caretDown {
             -ms-high-contrast-adjust: none;
           }
-          &:hover .ms-Dropdown-titleIsPlaceHolder {
-            color: #666666;
-          }
-          &:focus .ms-Dropdown-titleIsPlaceHolder {
-            color: #666666;
-          }
-          &:active .ms-Dropdown-titleIsPlaceHolder {
-            color: #666666;
-          }
           &:hover .ms-Dropdown-title--hasError {
-            border-color: #a80000;
+            border-color: #a4262c;
           }
           &:active .ms-Dropdown-title--hasError {
-            border-color: #a80000;
+            border-color: #a4262c;
           }
           &:focus .ms-Dropdown-title--hasError {
-            border-color: #a80000;
+            border-color: #a4262c;
           }
       data-is-focusable={false}
       id="Dropdown1"
@@ -364,14 +361,15 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
         className=
             ms-Dropdown-title
             {
-              background-color: #f4f4f4;
-              border-color: #a6a6a6;
+              background-color: #f3f2f1;
+              border-color: #8a8886;
+              border-radius: 2px;
               border-style: solid;
               border-width: 1px;
               border: none;
               box-shadow: none;
               box-sizing: border-box;
-              color: #a6a6a6;
+              color: #a19f9d;
               cursor: default;
               display: block;
               height: 32px;
@@ -382,8 +380,8 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
               margin-top: 0px;
               overflow: hidden;
               padding-bottom: 0;
-              padding-left: 12px;
-              padding-right: 32px;
+              padding-left: 8px;
+              padding-right: 28px;
               padding-top: 0;
               position: relative;
               text-overflow: ellipsis;
@@ -406,17 +404,18 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
               height: 32px;
               line-height: 30px;
               position: absolute;
-              right: 12px;
+              right: 8px;
               top: 1px;
             }
       >
         <i
+          aria-hidden={true}
           className=
               ms-Dropdown-caretDown
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                color: #a6a6a6;
+                color: #a19f9d;
                 display: inline-block;
                 font-family: "FabricMDL2Icons";
                 font-size: 12px;
@@ -450,11 +449,11 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
             -webkit-font-smoothing: antialiased;
             box-shadow: none;
             box-sizing: border-box;
-            color: #333333;
+            color: #323130;
             display: inline-block;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
-            font-weight: 400;
+            font-weight: 600;
             margin-bottom: 0px;
             margin-left: 0px;
             margin-right: 0px;
@@ -480,9 +479,10 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
+            border-color: #605e5c;
             box-shadow: none;
             box-sizing: border-box;
-            color: #333333;
+            color: #323130;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
             font-weight: 400;
@@ -500,15 +500,15 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
             width: 300px;
           }
           &:hover .ms-Dropdown-title {
-            border-color: #212121;
-            color: #212121;
+            border-color: #323130;
+            color: #201f1e;
           }
           @media screen and (-ms-high-contrast: active){&:hover .ms-Dropdown-title {
             border-color: Highlight;
           }
           &:focus .ms-Dropdown-title {
             border-color: #0078d4;
-            color: #212121;
+            color: #201f1e;
           }
           @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-title {
             background-color: Highlight;
@@ -522,17 +522,17 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
             -ms-high-contrast-adjust: none;
           }
           &:active .ms-Dropdown-title {
-            border-color: #005a9e;
-            color: #212121;
+            border-color: #0078d4;
+            color: #201f1e;
           }
           @media screen and (-ms-high-contrast: active){&:active .ms-Dropdown-title {
             border-color: Highlight;
           }
           &:hover .ms-Dropdown-caretDown {
-            color: #212121;
+            color: #323130;
           }
           &:focus .ms-Dropdown-caretDown {
-            color: #212121;
+            color: #323130;
           }
           @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-caretDown {
             color: HighlightText;
@@ -541,25 +541,25 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
             -ms-high-contrast-adjust: none;
           }
           &:active .ms-Dropdown-caretDown {
-            color: #212121;
+            color: #323130;
           }
           &:hover .ms-Dropdown-titleIsPlaceHolder {
-            color: #666666;
+            color: #323130;
           }
           &:focus .ms-Dropdown-titleIsPlaceHolder {
-            color: #666666;
+            color: #323130;
           }
           &:active .ms-Dropdown-titleIsPlaceHolder {
-            color: #666666;
+            color: #323130;
           }
           &:hover .ms-Dropdown-title--hasError {
-            border-color: #a80000;
+            border-color: #a4262c;
           }
           &:active .ms-Dropdown-title--hasError {
-            border-color: #a80000;
+            border-color: #a4262c;
           }
           &:focus .ms-Dropdown-title--hasError {
-            border-color: #a80000;
+            border-color: #a4262c;
           }
       data-is-focusable={true}
       id="Dropdown2"
@@ -568,7 +568,6 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
       onFocus={[Function]}
       onKeyDown={[Function]}
       onKeyUp={[Function]}
-      placeholder="Select options"
       tabIndex={0}
     >
       <span
@@ -579,7 +578,8 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
             ms-Dropdown-title
             {
               background-color: #ffffff;
-              border-color: #a6a6a6;
+              border-color: #8a8886;
+              border-radius: 2px;
               border-style: solid;
               border-width: 1px;
               box-shadow: none;
@@ -594,8 +594,8 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
               margin-top: 0px;
               overflow: hidden;
               padding-bottom: 0;
-              padding-left: 12px;
-              padding-right: 32px;
+              padding-left: 8px;
+              padding-right: 28px;
               padding-top: 0;
               position: relative;
               text-overflow: ellipsis;
@@ -615,17 +615,18 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
               height: 32px;
               line-height: 30px;
               position: absolute;
-              right: 12px;
+              right: 8px;
               top: 1px;
             }
       >
         <i
+          aria-hidden={true}
           className=
               ms-Dropdown-caretDown
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                color: #666666;
+                color: #605e5c;
                 display: inline-block;
                 font-family: "FabricMDL2Icons";
                 font-size: 12px;

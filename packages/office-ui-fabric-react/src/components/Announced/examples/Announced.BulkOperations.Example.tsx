@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { Announced } from 'office-ui-fabric-react/lib/Announced';
 import { Link } from 'office-ui-fabric-react/lib/Link';
-import { DetailsList, Selection } from 'office-ui-fabric-react/lib/DetailsList';
+import { DetailsList, IDragDropEvents } from 'office-ui-fabric-react/lib/DetailsList';
+import { Selection } from 'office-ui-fabric-react/lib/Selection';
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
 import { IColumn } from 'office-ui-fabric-react/lib/DetailsList';
 import { Text } from 'office-ui-fabric-react/lib/Text';
 import { IStackTokens, Stack } from 'office-ui-fabric-react/lib/Stack';
-import { IDragDropEvents } from 'office-ui-fabric-react/lib/utilities/dragdrop/interfaces';
 import { mergeStyles, getTheme } from 'office-ui-fabric-react/lib/Styling';
 
 const _items: IFileExampleItem[] = [];
@@ -38,8 +38,8 @@ const _names: string[] = [
   'Makenzie Sharett'
 ];
 
-function generateRandomDate(): string {
-  return new Date(new Date(2010, 0, 1).getTime() + Math.random() * (new Date().getTime() - new Date(2010, 0, 1).getTime())).toDateString();
+function getMockDateString(): string {
+  return 'Thu Jan 05 2017‌';
 }
 
 export interface IFileExampleItem {
@@ -73,7 +73,7 @@ export class AnnouncedBulkOperationsExample extends React.Component<{}, IAnnounc
         _items.push({
           key: 'item-' + i,
           name: 'Item ' + i,
-          modified: generateRandomDate(),
+          modified: getMockDateString(),
           modifiedby: _names[Math.floor(Math.random() * _names.length)],
           filesize: Math.floor(Math.random() * 30).toString() + ' MB'
         });

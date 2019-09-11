@@ -19,16 +19,23 @@ import { IPanel, IPanelProps, IPanelStyleProps, IPanelStyles, PanelType } from '
 
 const getClassNames = classNamesFunction<IPanelStyleProps, IPanelStyles>();
 
-export interface IPanelState {
+enum PanelVisibilityState {
+  closed,
+  animatingOpen,
+  open,
+  animatingClosed
+}
+
+interface IPanelState {
   isFooterSticky?: boolean;
-  isAnimating?: boolean;
   id?: string;
+  visibility: PanelVisibilityState;
 }
 
 export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implements IPanel {
   public static defaultProps: IPanelProps = {
     isHiddenOnDismiss: false,
-    isOpen: false,
+    isOpen: undefined,
     isBlocking: true,
     hasCloseButton: true,
     type: PanelType.smallFixedFar
@@ -37,7 +44,20 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
   private _panel = React.createRef<HTMLDivElement>();
   private _classNames: IProcessedStyleSet<IPanelStyles>;
   private _scrollableContent: HTMLDivElement | null;
-  private _isOpen: boolean;
+  private _animationCallback: number | null = null;
+
+  public static getDerivedStateFromProps(props: IPanelProps, state: IPanelState): IPanelState {
+    if (props.isOpen === undefined) {
+      return state;
+    }
+    if (props.isOpen && (state.visibility === PanelVisibilityState.closed || state.visibility === PanelVisibilityState.animatingClosed)) {
+      return { ...state, visibility: PanelVisibilityState.animatingOpen };
+    }
+    if (!props.isOpen && (state.visibility === PanelVisibilityState.open || state.visibility === PanelVisibilityState.animatingOpen)) {
+      return { ...state, visibility: PanelVisibilityState.animatingClosed };
+    }
+    return state;
+  }
 
   constructor(props: IPanelProps) {
     super(props);
@@ -47,11 +67,10 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
       forceFocusInsideTrap: 'focusTrapZoneProps',
       firstFocusableSelector: 'focusTrapZoneProps'
     });
-    this._isOpen = !!props.isOpen;
 
     this.state = {
       isFooterSticky: false,
-      isAnimating: false,
+      visibility: PanelVisibilityState.closed, // intentionally ignore props so animation takes place during componentDidMount
       id: getId('Panel')
     };
   }
@@ -64,28 +83,27 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
     }
 
     if (this.props.isOpen) {
-      this.open();
+      this.setState({ visibility: PanelVisibilityState.animatingOpen });
     }
   }
 
-  public componentDidUpdate(previousProps: IPanelProps): void {
+  public componentDidUpdate(previousProps: IPanelProps, previousState: IPanelState): void {
     const shouldListenOnOuterClick = this._shouldListenForOuterClick(this.props);
     const previousShouldListenOnOuterClick = this._shouldListenForOuterClick(previousProps);
+
+    if (this.state.visibility !== previousState.visibility) {
+      this._clearExistingAnimationTimer();
+      if (this.state.visibility === PanelVisibilityState.animatingOpen) {
+        this._animateTo(PanelVisibilityState.open);
+      } else if (this.state.visibility === PanelVisibilityState.animatingClosed) {
+        this._animateTo(PanelVisibilityState.closed);
+      }
+    }
 
     if (shouldListenOnOuterClick && !previousShouldListenOnOuterClick) {
       this._events.on(document.body, 'mousedown', this._dismissOnOuterClick, true);
     } else if (!shouldListenOnOuterClick && previousShouldListenOnOuterClick) {
       this._events.off(document.body, 'mousedown', this._dismissOnOuterClick, true);
-    }
-  }
-
-  public componentWillReceiveProps(newProps: IPanelProps): void {
-    if (newProps.isOpen !== this._isOpen) {
-      if (newProps.isOpen) {
-        this.open();
-      } else {
-        this.dismiss();
-      }
     }
   }
 
@@ -105,6 +123,7 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
       isLightDismiss,
       isHiddenOnDismiss,
       layerProps,
+      overlayProps,
       type,
       styles,
       theme,
@@ -115,15 +134,15 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
       onRenderBody = this._onRenderBody,
       onRenderFooter = this._onRenderFooter
     } = this.props;
-    const { isFooterSticky, isAnimating, id } = this.state;
+    const { isFooterSticky, visibility, id } = this.state;
     const isLeft = type === PanelType.smallFixedNear || type === PanelType.customNear ? true : false;
     const isRTL = getRTL();
     const isOnRightSide = isRTL ? isLeft : !isLeft;
     const headerTextId = headerText && id + '-headerText';
     const customWidthStyles = type === PanelType.custom || type === PanelType.customNear ? { width: customWidth } : {};
-    const nativeProps = getNativeProps(this.props, divProperties);
-
-    const isOpen = this._isOpen;
+    const nativeProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties);
+    const isOpen = this.isActive;
+    const isAnimating = visibility === PanelVisibilityState.animatingClosed || visibility === PanelVisibilityState.animatingOpen;
 
     if (!isOpen && !isAnimating && !isHiddenOnDismiss) {
       return null;
@@ -136,8 +155,8 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
       hasCloseButton,
       headerClassName,
       isAnimating,
-      isFooterAtBottom,
       isFooterSticky,
+      isFooterAtBottom,
       isOnRightSide,
       isOpen,
       isHiddenOnDismiss,
@@ -148,7 +167,14 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
 
     let overlay;
     if (isBlocking && isOpen) {
-      overlay = <Overlay className={_classNames.overlay} isDarkThemed={false} onClick={isLightDismiss ? onLightDismissClick : undefined} />;
+      overlay = (
+        <Overlay
+          className={_classNames.overlay}
+          isDarkThemed={false}
+          onClick={isLightDismiss ? onLightDismissClick : undefined}
+          {...overlayProps}
+        />
+      );
     }
 
     const header = onRenderHeader(this.props, this._onRenderHeader, headerTextId);
@@ -192,42 +218,46 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
   }
 
   public open() {
-    if (!this._isOpen) {
-      this._isOpen = true;
-      this.setState(
-        {
-          isAnimating: true
-        },
-        () => {
-          this._async.setTimeout(this._onTransitionComplete, 200);
-        }
-      );
-
-      if (this.props.onOpen) {
-        this.props.onOpen();
-      }
+    if (this.props.isOpen !== undefined) {
+      return;
     }
+
+    if (this.isActive) {
+      return;
+    }
+
+    if (this.props.onOpen) {
+      this.props.onOpen();
+    }
+    this.setState({ visibility: PanelVisibilityState.animatingOpen });
+  }
+
+  public close() {
+    if (this.props.isOpen !== undefined) {
+      return;
+    }
+
+    if (!this.isActive) {
+      return;
+    }
+
+    this.setState({ visibility: PanelVisibilityState.animatingClosed });
   }
 
   public dismiss = (ev?: React.SyntheticEvent<HTMLElement>): void => {
-    if (this._isOpen) {
-      this._isOpen = false;
-      if (this.props.onDismiss) {
-        this.props.onDismiss(ev);
-      }
+    if (this.props.onDismiss) {
+      this.props.onDismiss(ev);
+    }
 
-      if (!ev || (ev && !ev.defaultPrevented)) {
-        this.setState(
-          {
-            isAnimating: true
-          },
-          () => {
-            this._async.setTimeout(this._onTransitionComplete, 200);
-          }
-        );
-      }
+    if (!ev || (ev && !ev.defaultPrevented)) {
+      this.close();
     }
   };
+
+  /** isActive is true when panel is open or opening. */
+  get isActive(): boolean {
+    return this.state.visibility === PanelVisibilityState.open || this.state.visibility === PanelVisibilityState.animatingOpen;
+  }
 
   // Allow the user to scroll within the panel but not on the body
   private _allowScrollOnPanel = (elt: HTMLDivElement | null): void => {
@@ -277,6 +307,7 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
           className={this._classNames.closeButton}
           onClick={this._onPanelClick}
           ariaLabel={closeButtonAriaLabel}
+          title={closeButtonAriaLabel}
           data-is-visible={true}
           iconProps={{ iconName: 'Cancel' }}
         />
@@ -334,7 +365,7 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
 
   private _dismissOnOuterClick(ev: any): void {
     const panel = this._panel.current;
-    if (this._isOpen && panel) {
+    if (this.isActive && panel) {
       if (!elementContains(panel, ev.target)) {
         if (this.props.onOuterClick) {
           this.props.onOuterClick();
@@ -346,21 +377,31 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
     }
   }
 
+  private _animateTo = (newVisibilityState: PanelVisibilityState): void => {
+    this._animationCallback = this._async.setTimeout(() => {
+      this.setState({ visibility: newVisibilityState });
+      this._onTransitionComplete();
+    }, 200);
+  };
+
+  private _clearExistingAnimationTimer = (): void => {
+    if (this._animationCallback !== null) {
+      this._async.clearTimeout(this._animationCallback);
+    }
+  };
+
   private _onPanelClick = (ev?: any): void => {
     this.dismiss(ev);
   };
 
   private _onTransitionComplete = (): void => {
     this._updateFooterPosition();
-    this.setState({
-      isAnimating: false
-    });
 
-    if (this._isOpen && this.props.onOpened) {
+    if (this.state.visibility === PanelVisibilityState.open && this.props.onOpened) {
       this.props.onOpened();
     }
 
-    if (!this._isOpen && this.props.onDismissed) {
+    if (this.state.visibility === PanelVisibilityState.closed && this.props.onDismissed) {
       this.props.onDismissed();
     }
   };

@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/webpack-utils",
-  "version": "0.8.1",
+  "version": "7.0.4",
   "description": "Office UI Fabric utilities for Webpack bundler.",
   "repository": {
     "type": "git",
@@ -8,22 +8,19 @@
   },
   "license": "MIT",
   "scripts": {
-    "build": "node ../../scripts/just.js build-commonjs-only",
-    "code-style": "node ../../scripts/just.js code-style",
-    "clean": "node ../../scripts/just.js clean",
-    "start": "node ../../scripts/node_modules/typescript/bin/tsc -w --outDir lib -m commonjs -t es5"
+    "build": "just-scripts build",
+    "code-style": "just-scripts code-style",
+    "clean": "just-scripts clean",
+    "start": "node ../../node_modules/typescript/bin/tsc -w --outDir lib -m commonjs -t es5",
+    "just": "just-scripts"
   },
-  "disabledTasks": [
-    "copy",
-    "webpack",
-    "verify-api-extractor"
-  ],
   "devDependencies": {
     "@types/jest": "23.0.0",
     "@types/loader-utils": "1.1.3",
     "@types/webpack": "4.4.0",
-    "@uifabric/prettier-rules": "^1.0.1",
-    "@uifabric/tslint-rules": "^1.0.1",
+    "@uifabric/build": "^7.0.0",
+    "@uifabric/prettier-rules": "^7.0.4",
+    "@uifabric/tslint-rules": "^7.0.5",
     "webpack": "4.29.5"
   },
   "dependencies": {

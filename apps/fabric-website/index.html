@@ -21,58 +21,6 @@
         justify-content: center;
       }
     </style>
-    <!--
-      <script type="text/javascript">
-        var appInsights =
-          window.appInsights ||
-          (function(a) {
-            function b(a) {
-              c[a] = function() {
-                var b = arguments;
-                c.queue.push(function() {
-                  c[a].apply(c, b);
-                });
-              };
-            }
-            var c = { config: a },
-              d = document,
-              e = window;
-            setTimeout(function() {
-              var b = d.createElement('script');
-              (b.src = a.url || 'https://az416426.vo.msecnd.net/scripts/a/ai.0.js'),
-                d.getElementsByTagName('script')[0].parentNode.appendChild(b);
-            });
-            try {
-              c.cookie = d.cookie;
-            } catch (a) {}
-            c.queue = [];
-            for (var f = ['Event', 'Exception', 'Metric', 'PageView', 'Trace', 'Dependency']; f.length; ) b('track' + f.pop());
-            if (
-              (b('setAuthenticatedUserContext'),
-              b('clearAuthenticatedUserContext'),
-              b('startTrackEvent'),
-              b('stopTrackEvent'),
-              b('startTrackPage'),
-              b('stopTrackPage'),
-              b('flush'),
-              !a.disableExceptionTracking)
-            ) {
-              (f = 'onerror'), b('_' + f);
-              var g = e[f];
-              e[f] = function(a, b, d, e, h) {
-                var i = g && g(a, b, d, e, h);
-                return !0 !== i && c['_' + f](a, b, d, e, h), i;
-              };
-            }
-            return c;
-          })({
-            instrumentationKey: '18e07455-6fee-47f7-ab59-8dbf99a31d23'
-          });
-
-        // @TODO: Add custom referrer tracking here. https://stackoverflow.com/questions/5097808/is-document-referrer-cross-browser-compatible
-        (window.appInsights = appInsights), appInsights.queue && 0 === appInsights.queue.length && appInsights.trackPageView();
-      </script>
-    -->
   </head>
 
   <body>
@@ -89,38 +37,28 @@
     </div>
 
     <script type="text/javascript">
-      var isLocal = window.location.hostname === 'localhost' || window.location.hostname.indexOf('ngrok.io') > -1;
-      var isDogfood = false;
-      var isProduction = false;
-
-      // Query params
-      var dogfoodParam = getParameterByName('isDogfood');
-      var productionParam = getParameterByName('isProduction');
+      var isLocal = location.hostname === 'localhost' || location.hostname.indexOf('ngrok.io') > -1;
+      var isProduction = location.hostname === 'developer.microsoft.com' || getParameterByName('isProduction');
       var devhost = getParameterByName('devhost');
-
       var entryPointFilename = 'fabric-sitev5';
       var appPath = '';
       var Flight = {};
-
-      // Determine production or staging/dogfood
-      if (location.hostname === 'developer.microsoft.com' || productionParam) {
-        isProduction = true;
-      } else if (location.hostname === 'uifabric-tst.azurewebsites.net' || dogfoodParam) {
-        isDogfood = true;
-      }
+      // Suffix used on our built JS files. Starts out as .min.js, and if that fails to load,
+      // switches to .js (non-min). This helps us determine whether to load the min or non-min
+      // variants of the Monaco workers.
+      var jsSuffix = '.min.js';
 
       // If the site is hosted, load the flight config script for production or dogfood
       if (devhost !== null) {
         if (devhost === '') {
-          var loc = window.location;
-          devhost = loc.protocol + '//' + loc.host + loc.pathname.replace('index.html', '');
+          devhost = location.origin + location.pathname.replace('index.html', '');
         }
         appPath = devhost;
         Flight.baseCDNUrl = devhost;
-        loadAppScripts(appPath);
+        loadAppScripts();
       } else if (!isLocal) {
         // Update as new fabric versions and its documentation are supported
-        var fabricVersions = [5, 6];
+        var fabricVersions = [5, 6, 7];
 
         // Get fabricVer from URL param, session value, or latest version in array
         var fabricVersion = Number(
@@ -136,19 +74,19 @@
           fabricVersions.indexOf(fabricVersion) > -1 && fabricVersion !== fabricVersions.slice(-1)[0] ? 'v' + fabricVersion + '-' : '';
         // If a devhost is provided, override the config app path
 
-        var configPrefix = `fabric-website-${prefixVer}${isProduction ? 'prod' : 'df'}`;
+        var configPrefix = 'fabric-website-' + prefixVer + (isProduction ? 'prod' : 'df');
 
         var configScript = ['https://fabricweb.azureedge.net/fabric-website/manifests/' + configPrefix + '.js'];
 
         loadScripts(configScript, function() {
           if (window.Flight) {
-            appPath += window.Flight.baseCDNUrl;
-
-            loadAppScripts(appPath);
+            appPath = window.Flight.baseCDNUrl;
+            loadAppScripts();
           }
         });
       } else {
-        loadAppScripts(appPath);
+        appPath = location.origin + '/';
+        loadAppScripts();
       }
 
       // Simple synchronous script loader with callback. Adapted from https://stackoverflow.com/questions/1866717
@@ -174,7 +112,10 @@
         (function run() {
           if (array.length != 0) {
             const scriptName = array.shift();
-            loader(scriptName, run, () => {
+            loader(scriptName, run, function() {
+              // Load failures may occur because the min version of the script doesn't exist.
+              // Try loading the non-min version instead.
+              jsSuffix = '.js';
               loader(scriptName.replace('.min.js', '.js'), run);
             });
           } else {
@@ -183,20 +124,38 @@
         })();
       }
 
-      function loadAppScripts(appPath) {
+      function loadAppScripts() {
         var version = isLocal ? '.development.js' : '.production.min.js';
-        var reactPath = '//cdnjs.cloudflare.com/ajax/libs/react/16.8.3/umd/react' + version;
-        var reactDomPath = '//cdnjs.cloudflare.com/ajax/libs/react-dom/16.8.3/umd/react-dom' + version;
+        var reactPath = '//cdnjs.cloudflare.com/ajax/libs/react/16.8.6/umd/react' + version;
+        var reactDomPath = '//cdnjs.cloudflare.com/ajax/libs/react-dom/16.8.6/umd/react-dom' + version;
 
-        var scripts = [reactPath, reactDomPath, appPath + entryPointFilename + '.min.js'];
+        var scripts = [reactPath, reactDomPath, appPath + entryPointFilename + jsSuffix];
 
         // Load React and app scripts
         loadScripts(scripts);
+
+        // Required configuration to make Monaco work
+        window.MonacoEnvironment = {
+          // This is needed for cases where the JS files will be on a different domain (the CDN)
+          // instead of the domain the HTML is running on. Web workers (used by Monaco) can't be
+          // loaded by script residing on a different domain, so we use this proxy script on the
+          // main domain to load the worker script. (Also do this with localhost/devhost for testing.)
+          // https://github.com/microsoft/monaco-editor/blob/master/docs/integrate-amd-cross.md
+          getWorkerUrl: function(workerId, label) {
+            var workerName = label === 'typescript' || label === 'javascript' ? 'ts.worker' : 'editor.worker';
+            return (
+              'data:text/javascript;charset=utf-8,' +
+              encodeURIComponent(
+                'self.MonacoEnvironment = { baseUrl: "' + appPath + '" }; importScripts("' + appPath + workerName + jsSuffix + '");'
+              )
+            );
+          }
+        };
       }
 
       function getParameterByName(name, url) {
         if (!url) {
-          url = window.location.href;
+          url = location.href;
         }
         name = name.replace(/[\[\]]/g, '\\$&');
         var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),

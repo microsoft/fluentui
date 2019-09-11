@@ -81,7 +81,7 @@ export interface ISliderProps extends React.ClassAttributes<SliderBase> {
   /**
    * Callback on mouse up or touch end
    */
-  onChanged?: (event: MouseEvent | TouchEvent, value: number) => void;
+  onChanged?: (event: MouseEvent | TouchEvent | KeyboardEvent, value: number) => void;
 
   /**
    * A description of the Slider for the benefit of screen readers.
@@ -100,8 +100,15 @@ export interface ISliderProps extends React.ClassAttributes<SliderBase> {
 
   /**
    * Optional flag to render the Slider as disabled.
+   * @defaultvalue false
    */
   disabled?: boolean;
+
+  /**
+   * Optional flag to decide that thumb will snap to closest value while moving the slider
+   * @defaultvalue false
+   */
+  snapToStep?: boolean;
 
   /**
    * Optional className to attach to the slider root element.
@@ -117,6 +124,12 @@ export interface ISliderProps extends React.ClassAttributes<SliderBase> {
    * Optional function to format the slider value.
    */
   valueFormat?: (value: number) => string;
+
+  /**
+   * Optional flag to attach the origin of slider to zero. Helpful when the range include negatives.
+   * @defaultvalue false
+   */
+  originFromZero?: boolean;
 }
 
 /**
@@ -133,14 +146,58 @@ export type ISliderStyleProps = Required<Pick<ISliderProps, 'theme'>> &
  * {@docCategory Slider}
  */
 export interface ISliderStyles {
+  /**
+   * Style set for the root element.
+   */
   root: IStyle;
+
+  /**
+   * Style set for the title label above the slider.
+   */
   titleLabel: IStyle;
+
+  /**
+   * Style set for the container of the slider.
+   */
   container: IStyle;
+
+  /**
+   * Style set for the actual box containting interactive elements of the slider.
+   */
   slideBox: IStyle;
+
+  /**
+   * Style set for element that contains all the lines.
+   */
   line: IStyle;
+
+  /**
+   * Style set for thumb of the slider.
+   */
   thumb: IStyle;
+
+  /**
+   * Style set for both active and inactive sections of the line.
+   */
   lineContainer: IStyle;
+
+  /**
+   * Style set for active portion of the line.
+   */
   activeSection: IStyle;
+
+  /**
+   * Style set for inactive portion of the line.
+   */
   inactiveSection: IStyle;
+
+  /**
+   * Style set for value label on right/below of the slider.
+   */
   valueLabel: IStyle;
+
+  /**
+   * Style set for tick on 0 on number line. This element only shows up when originFromZero prop is true.
+   */
+  zeroTick: IStyle;
 }

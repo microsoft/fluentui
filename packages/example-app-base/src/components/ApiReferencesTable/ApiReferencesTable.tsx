@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IRenderFunction, getDocument } from 'office-ui-fabric-react/lib/Utilities';
+import { IRenderFunction } from 'office-ui-fabric-react/lib/Utilities';
 import {
   DetailsList,
   DetailsRow,
@@ -16,6 +16,7 @@ import { Text } from 'office-ui-fabric-react/lib/Text';
 import { ILinkToken } from 'office-ui-fabric-react/lib/common/DocPage.types';
 import { IApiInterfaceProperty, IApiEnumProperty, IMethod } from './ApiReferencesTableSet.types';
 import { Markdown } from '../Markdown/index';
+import { getCurrentUrl } from '../../utilities/getCurrentUrl';
 
 export interface IApiReferencesTableProps {
   title?: string;
@@ -23,6 +24,7 @@ export interface IApiReferencesTableProps {
   methods?: IMethod[];
   renderAsEnum?: boolean;
   renderAsClass?: boolean;
+  renderAsTypeAlias?: boolean;
   key?: string;
   name?: string;
   description?: string;
@@ -34,6 +36,7 @@ export interface IApiReferencesTableState {
   methods?: IMethod[];
   isEnum: boolean;
   isClass: boolean;
+  isTypeAlias: boolean;
 }
 
 export const XSMALL_GAP_SIZE = 2.5;
@@ -92,7 +95,8 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
       this.state = {
         properties,
         isEnum: true,
-        isClass: false
+        isClass: false,
+        isTypeAlias: false
       };
     } else if (props.renderAsClass) {
       const members = (props.properties as IApiInterfaceProperty[])
@@ -107,6 +111,7 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
         properties: members,
         isEnum: false,
         isClass: true,
+        isTypeAlias: false,
         methods: methods
       };
     } else {
@@ -117,12 +122,12 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
       this.state = {
         properties,
         isEnum: !!props.renderAsEnum,
-        isClass: !!props.renderAsClass
+        isClass: !!props.renderAsClass,
+        isTypeAlias: !!props.renderAsTypeAlias
       };
     }
 
-    const doc = getDocument();
-    this._baseUrl = doc ? document.location.href : '';
+    this._baseUrl = getCurrentUrl();
 
     this._defaultColumns = [
       {
@@ -254,20 +259,16 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
     const { properties, isEnum, isClass } = this.state;
 
     return (
-      <Stack gap={MEDIUM_GAP_SIZE}>
-        {description && extendsTokens && extendsTokens.length > 0 ? (
-          <Stack gap={SMALL_GAP_SIZE}>
-            {this._renderTitle()}
-            {(description || (extendsTokens && extendsTokens.length > 0)) && (
-              <Stack gap={XSMALL_GAP_SIZE}>
-                {this._renderDescription()}
-                {this._renderExtends()}
-              </Stack>
-            )}
-          </Stack>
-        ) : (
-          this._renderTitle()
-        )}
+      <Stack tokens={{ childrenGap: MEDIUM_GAP_SIZE }}>
+        <Stack tokens={{ childrenGap: SMALL_GAP_SIZE }}>
+          {this._renderTitle()}
+          {(description || (extendsTokens && extendsTokens.length > 0)) && (
+            <Stack tokens={{ childrenGap: XSMALL_GAP_SIZE }}>
+              {this._renderDescription()}
+              {this._renderExtends()}
+            </Stack>
+          )}
+        </Stack>
         {isClass
           ? this._renderClass()
           : properties.length >= 1 && (
@@ -277,6 +278,7 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
                 items={properties}
                 columns={isEnum ? this._enumColumns : this._defaultColumns}
                 onRenderRow={this._onRenderRow}
+                onShouldVirtualize={this._onShouldVirtualize}
               />
             )}
       </Stack>
@@ -346,13 +348,17 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
     return textElements;
   }
 
+  private _onShouldVirtualize = (): boolean => {
+    return false;
+  };
+
   private _renderClass(): JSX.Element | undefined {
     const { properties, methods } = this.state;
 
     return (
-      <Stack gap={MEDIUM_GAP_SIZE}>
+      <Stack tokens={{ childrenGap: MEDIUM_GAP_SIZE }}>
         {properties && properties.length > 0 && (
-          <Stack gap={SMALL_GAP_SIZE}>
+          <Stack tokens={{ childrenGap: SMALL_GAP_SIZE }}>
             <Text variant={'medium'}>Members</Text>
             <DetailsList
               selectionMode={SelectionMode.none}
@@ -360,11 +366,12 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
               items={properties}
               columns={this._defaultColumns}
               onRenderRow={this._onRenderRow}
+              onShouldVirtualize={this._onShouldVirtualize}
             />
           </Stack>
         )}
         {methods && methods.length > 0 && (
-          <Stack gap={SMALL_GAP_SIZE}>
+          <Stack tokens={{ childrenGap: SMALL_GAP_SIZE }}>
             <Text variant={'medium'}>Methods</Text>
             <DetailsList
               selectionMode={SelectionMode.none}
@@ -372,6 +379,7 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
               items={methods}
               columns={this._methodColumns}
               onRenderRow={this._onRenderRow}
+              onShouldVirtualize={this._onShouldVirtualize}
             />
           </Stack>
         )}
@@ -421,8 +429,16 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
   };
 
   private _parseILinkTokens(extend: boolean, linkTokens?: ILinkToken[]): JSX.Element | undefined {
+    const { isTypeAlias } = this.state;
+
     if (linkTokens && linkTokens.length > 0) {
-      if (extend) {
+      if (isTypeAlias) {
+        return (
+          <Text variant={'medium'}>
+            <code>{this._parseILinkTokensHelper(linkTokens, false)}</code>
+          </Text>
+        );
+      } else if (extend) {
         return (
           <Text variant={'small'}>
             {'Extends '}
@@ -470,18 +486,14 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
             if (token.pageKind === 'References') {
               const referencePage = hash + token.pageKind.toLowerCase() + '/' + token.hyperlinkedPage.toLowerCase();
               href = '#' + referencePage + '#' + token.text;
-              if (cleanedSplit.length > 1) {
-                if (cleanedSplit[1] === referencePage) {
-                  newTab = false;
-                }
+              if (cleanedSplit.length > 1 && cleanedSplit[1] === referencePage) {
+                newTab = false;
               }
             } else {
               const componentPage = hash + token.hyperlinkedPage.toLowerCase();
               href = '#' + componentPage + '#' + token.text;
-              if (cleanedSplit.length > 1) {
-                if (cleanedSplit[1] === componentPage) {
-                  newTab = false;
-                }
+              if (cleanedSplit.length > 1 && cleanedSplit[1] === componentPage) {
+                newTab = false;
               }
             }
 

@@ -4,10 +4,10 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as es6Promise from 'es6-promise';
 import { Fabric, setBaseUrl } from 'office-ui-fabric-react';
-import { Route, Router } from 'office-ui-fabric-react/lib/utilities/router/index';
 import { initializeIcons } from '@uifabric/icons/lib/index';
-import { Site } from '../components/Site/index';
 import { INavPage, ISiteDefinition, currentFabricBreakpoint, jumpToAnchor, handleRedirects } from '@uifabric/example-app-base/lib/index2';
+import { Route, Router } from '@uifabric/example-app-base';
+import { Site } from '../components/Site/index';
 import { hasUHF, isLocal } from './location';
 
 // Polyfill needed by FeedbackList
@@ -42,7 +42,6 @@ if (!isProduction) {
 }
 
 let rootElement: HTMLElement;
-let scrollDistance: number;
 
 export function createSite<TPlatforms extends string>(
   siteDefinition: ISiteDefinition<TPlatforms>,
@@ -57,7 +56,6 @@ export function createSite<TPlatforms extends string>(
 
   function _getBreakpoint(): void {
     const currentBreakpoint = currentFabricBreakpoint();
-    scrollDistance = currentBreakpoint === 'lg' ? 240 : 200;
   }
 
   function _createRoutes(pages: INavPage<TPlatforms>[]): JSX.Element[] {

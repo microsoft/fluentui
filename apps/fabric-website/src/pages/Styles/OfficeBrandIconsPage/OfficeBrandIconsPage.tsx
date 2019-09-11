@@ -2,7 +2,7 @@ import * as React from 'react';
 import { IconGrid } from '../../../components/IconGrid/IconGrid';
 import { Image, Icon } from 'office-ui-fabric-react';
 import { getFileTypeIconProps } from '@uifabric/file-type-icons';
-import { Markdown, IPageSectionProps } from '@uifabric/example-app-base/lib/index2';
+import { Markdown, MarkdownHeader, IPageSectionProps } from '@uifabric/example-app-base/lib/index2';
 import { IStylesPageProps, StylesAreaPage } from '../StylesAreaPage';
 import { OfficeBrandIconsPageProps } from './OfficeBrandIconsPage.doc';
 import { Platforms } from '../../../interfaces/Platforms';
@@ -18,7 +18,9 @@ const monochromeIcons = require('@uifabric/fabric-website/lib/data/brand-icons-m
 
 export const OfficeBrandIconsPage: React.StatelessComponent<IStylesPageProps> = props => {
   const { platform } = props;
-  return <StylesAreaPage {...props} {...OfficeBrandIconsPageProps[platform]} otherSections={_otherSections(platform)} />;
+  return (
+    <StylesAreaPage {...props} {...OfficeBrandIconsPageProps[platform]} otherSections={_otherSections(platform) as IPageSectionProps[]} />
+  );
 };
 
 function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
@@ -35,7 +37,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                   require('!raw-loader!@uifabric/fabric-website/src/pages/Styles/OfficeBrandIconsPage/docs/web/OfficeBrandIconsOverview.md') as string
                 }
               </Markdown>
-              <h3>Product icons</h3>
+              <MarkdownHeader as="h3">Product icons</MarkdownHeader>
               <div className="ms-Grid">
                 <div className="ms-Grid-row">
                   <div className="ms-Grid-col ms-sm12 ms-lg6">
@@ -73,7 +75,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                 </div>
               </div>
 
-              <h3>File type icons</h3>
+              <MarkdownHeader as="h3">File type icons</MarkdownHeader>
               <div className="ms-Grid">
                 <div className="ms-Grid-row">
                   <div className="ms-Grid-col ms-sm12 ms-lg6">
@@ -219,7 +221,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
           sectionName: 'Branded icon library',
           content: (
             <>
-              <h3>Product icons</h3>
+              <MarkdownHeader as="h3">Product icons</MarkdownHeader>
               <ul className={styles.iconList}>
                 {productIcons.map((icon, iconIndex) => (
                   <li key={iconIndex}>
@@ -235,7 +237,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                 ))}
               </ul>
 
-              <h3>File type icons</h3>
+              <MarkdownHeader as="h3">File type icons</MarkdownHeader>
               <ul className={styles.iconList}>
                 {documentIcons.map((icon, iconIndex) => (
                   <li key={iconIndex}>
@@ -255,7 +257,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                 ))}
               </ul>
 
-              <h3>Single-color icons</h3>
+              <MarkdownHeader as="h3">Single-color icons</MarkdownHeader>
               <Markdown>
                 {
                   require('!raw-loader!@uifabric/fabric-website/src/pages/Styles/OfficeBrandIconsPage/docs/web/OfficeBrandIconsSingleColor.md') as string

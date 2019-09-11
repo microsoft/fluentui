@@ -26,11 +26,7 @@ export const getStyles = (props: IFabricStyleProps): IFabricStyles => {
         selectors: {
           '& button': inheritFont,
           '& input': inheritFont,
-          '& textarea': inheritFont,
-          ':global(button)': {
-            overflow: 'visible',
-            margin: 0
-          }
+          '& textarea': inheritFont
         }
       },
       className

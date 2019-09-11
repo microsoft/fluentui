@@ -1,13 +1,11 @@
-### Design
-
-Coming soon
-
 ### Control name
 
-Coming soon
+`Tooltip`
 
-### Library
+### Source code
 
-[UI Fabric Android](https://github.com/OfficeDev/ui-fabric-android)
+[Tooltip](https://github.com/OfficeDev/ui-fabric-android/blob/master/OfficeUIFabric/src/main/java/com/microsoft/officeuifabric/tooltip/Tooltip.kt)
 
-[Sample Code](https://github.com/OfficeDev/ui-fabric-android/blob/master/OfficeUIFabric.Demo/src/main/java/com/microsoft/officeuifabricdemo/demos/TooltipActivity.kt)
+### Sample code
+
+[Tooltip demo activity](https://github.com/OfficeDev/ui-fabric-android/blob/master/OfficeUIFabric.Demo/src/main/java/com/microsoft/officeuifabricdemo/demos/TooltipActivity.kt)

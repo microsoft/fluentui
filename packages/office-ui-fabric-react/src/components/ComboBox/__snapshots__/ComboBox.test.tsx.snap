@@ -2,7 +2,6 @@
 
 exports[`ComboBox Renders correctly 1`] = `
 <div
-  autoComplete="on"
   className="ms-ComboBox-container "
 >
   <div
@@ -12,12 +11,13 @@ exports[`ComboBox Renders correctly 1`] = `
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
           background-color: #ffffff;
-          border-color: #a6a6a6;
+          border-color: #8a8886;
+          border-radius: 2px;
           border-style: solid;
           border-width: 1px;
           box-shadow: none;
           box-sizing: border-box;
-          color: #333333;
+          color: #323130;
           cursor: text;
           display: block;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -28,7 +28,7 @@ exports[`ComboBox Renders correctly 1`] = `
           outline: 0;
           overflow: hidden;
           padding-bottom: 1px;
-          padding-left: 12px;
+          padding-left: 8px;
           padding-right: 32px;
           padding-top: 1px;
           position: relative;
@@ -40,11 +40,8 @@ exports[`ComboBox Renders correctly 1`] = `
           display: inline-block;
           margin-bottom: 8px;
         }
-        & input::-ms-clear {
-          display: none;
-        }
         &.is-open {
-          border-color: #0078d4;
+          border-color: #8a8886;
         }
         @media screen and (-ms-high-contrast: active){&.is-open {
           -ms-high-contrast-adjust: none;
@@ -61,7 +58,19 @@ exports[`ComboBox Renders correctly 1`] = `
           top: -2px;
         }
         &:hover {
-          border-color: #333333;
+          border-color: #323130;
+        }
+        &:hover .ms-ComboBox-Input {
+          color: #201f1e;
+        }
+        &:hover .ms-ComboBox-Input::placeholder {
+          color: #201f1e;
+        }
+        &:hover .ms-ComboBox-Input:-ms-input-placeholder {
+          color: #201f1e;
+        }
+        &:hover .ms-ComboBox-Input::-ms-input-placeholder {
+          color: #201f1e;
         }
         @media screen and (-ms-high-contrast: active){&:hover {
           -ms-high-contrast-adjust: none;
@@ -88,6 +97,9 @@ exports[`ComboBox Renders correctly 1`] = `
         }
         &:focus {
           border-color: #0078d4;
+        }
+        &:focus .ms-ComboBox-Input {
+          color: #201f1e;
         }
         @media screen and (-ms-high-contrast: active){&:focus {
           -ms-high-contrast-adjust: none;
@@ -116,7 +128,7 @@ exports[`ComboBox Renders correctly 1`] = `
             background-color: #ffffff;
             border-style: none;
             box-sizing: border-box;
-            color: #333333;
+            color: #323130;
             font: inherit;
             height: 28px;
             outline: none;
@@ -126,6 +138,18 @@ exports[`ComboBox Renders correctly 1`] = `
             padding-top: 0;
             text-overflow: ellipsis;
             width: 100%;
+          }
+          &::placeholder {
+            color: #605e5c;
+          }
+          &:-ms-input-placeholder {
+            color: #605e5c;
+          }
+          &::-ms-input-placeholder {
+            color: #605e5c;
+          }
+          &::-ms-clear {
+            display: none;
           }
       data-is-interactable={true}
       data-lpignore={true}
@@ -148,7 +172,6 @@ exports[`ComboBox Renders correctly 1`] = `
     />
     <button
       aria-hidden={true}
-      checked={false}
       className=
           ms-Button
           ms-Button--icon
@@ -157,10 +180,10 @@ exports[`ComboBox Renders correctly 1`] = `
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
             background-color: transparent;
-            border-radius: 0px;
+            border-radius: 2px;
             border: none;
             box-sizing: border-box;
-            color: #666666;
+            color: #605e5c;
             cursor: default;
             display: inline-block;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -168,6 +191,7 @@ exports[`ComboBox Renders correctly 1`] = `
             font-weight: 400;
             height: 32px;
             line-height: 30px;
+            min-width: 32px;
             outline: transparent;
             padding-bottom: 0;
             padding-left: 4px;
@@ -186,14 +210,14 @@ exports[`ComboBox Renders correctly 1`] = `
             border: 0;
           }
           .ms-Fabric--isFocusVisible &:focus:after {
-            border: 1px solid #ffffff;
-            bottom: 0px;
+            border: 1px solid transparent;
+            bottom: 2px;
             content: "";
-            left: 0px;
-            outline: 1px solid #666666;
+            left: 2px;
+            outline: 1px solid #605e5c;
             position: absolute;
-            right: 0px;
-            top: 0px;
+            right: 2px;
+            top: 2px;
             z-index: 1;
           }
           @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -216,8 +240,8 @@ exports[`ComboBox Renders correctly 1`] = `
             color: ButtonText;
           }
           &:hover {
-            background-color: #f4f4f4;
-            color: #212121;
+            background-color: #f3f2f1;
+            color: #201f1e;
             cursor: pointer;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
@@ -225,10 +249,11 @@ exports[`ComboBox Renders correctly 1`] = `
             color: Highlight;
           }
           &:active {
-            background-color: #eaeaea;
-            color: #212121;
+            background-color: #edebe9;
+            color: #201f1e;
           }
       data-is-focusable={false}
+      onBlur={[Function]}
       onClick={[Function]}
       onKeyDown={[Function]}
       onKeyPress={[Function]}
@@ -239,7 +264,7 @@ exports[`ComboBox Renders correctly 1`] = `
       tabIndex={-1}
       type="button"
     >
-      <div
+      <span
         className=
             ms-Button-flexContainer
             {
@@ -249,26 +274,33 @@ exports[`ComboBox Renders correctly 1`] = `
               height: 100%;
               justify-content: center;
             }
+        data-automationid="splitbuttonprimary"
       >
         <i
+          aria-hidden={true}
           className=
+              ms-Icon
               ms-Button-icon
+              {
+                display: inline-block;
+              }
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                display: inline-block;
-                flex-shrink: 0;
                 font-family: "FabricMDL2Icons";
-                font-size: 12px;
                 font-style: normal;
                 font-weight: normal;
+                speak: none;
+              }
+              {
+                flex-shrink: 0;
+                font-size: 12px;
                 height: 16px;
                 line-height: 16px;
                 margin-bottom: 0;
                 margin-left: 4px;
                 margin-right: 4px;
                 margin-top: 0;
-                speak: none;
                 text-align: center;
                 vertical-align: middle;
               }
@@ -277,7 +309,7 @@ exports[`ComboBox Renders correctly 1`] = `
         >
           
         </i>
-      </div>
+      </span>
     </button>
   </div>
 </div>
@@ -285,7 +317,6 @@ exports[`ComboBox Renders correctly 1`] = `
 
 exports[`ComboBox renders with a Keytip correctly 1`] = `
 <div
-  autoComplete="on"
   className="ms-ComboBox-container "
 >
   <div
@@ -295,12 +326,13 @@ exports[`ComboBox renders with a Keytip correctly 1`] = `
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
           background-color: #ffffff;
-          border-color: #a6a6a6;
+          border-color: #8a8886;
+          border-radius: 2px;
           border-style: solid;
           border-width: 1px;
           box-shadow: none;
           box-sizing: border-box;
-          color: #333333;
+          color: #323130;
           cursor: text;
           display: block;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -311,7 +343,7 @@ exports[`ComboBox renders with a Keytip correctly 1`] = `
           outline: 0;
           overflow: hidden;
           padding-bottom: 1px;
-          padding-left: 12px;
+          padding-left: 8px;
           padding-right: 32px;
           padding-top: 1px;
           position: relative;
@@ -323,11 +355,8 @@ exports[`ComboBox renders with a Keytip correctly 1`] = `
           display: inline-block;
           margin-bottom: 8px;
         }
-        & input::-ms-clear {
-          display: none;
-        }
         &.is-open {
-          border-color: #0078d4;
+          border-color: #8a8886;
         }
         @media screen and (-ms-high-contrast: active){&.is-open {
           -ms-high-contrast-adjust: none;
@@ -344,7 +373,19 @@ exports[`ComboBox renders with a Keytip correctly 1`] = `
           top: -2px;
         }
         &:hover {
-          border-color: #333333;
+          border-color: #323130;
+        }
+        &:hover .ms-ComboBox-Input {
+          color: #201f1e;
+        }
+        &:hover .ms-ComboBox-Input::placeholder {
+          color: #201f1e;
+        }
+        &:hover .ms-ComboBox-Input:-ms-input-placeholder {
+          color: #201f1e;
+        }
+        &:hover .ms-ComboBox-Input::-ms-input-placeholder {
+          color: #201f1e;
         }
         @media screen and (-ms-high-contrast: active){&:hover {
           -ms-high-contrast-adjust: none;
@@ -371,6 +412,9 @@ exports[`ComboBox renders with a Keytip correctly 1`] = `
         }
         &:focus {
           border-color: #0078d4;
+        }
+        &:focus .ms-ComboBox-Input {
+          color: #201f1e;
         }
         @media screen and (-ms-high-contrast: active){&:focus {
           -ms-high-contrast-adjust: none;
@@ -401,7 +445,7 @@ exports[`ComboBox renders with a Keytip correctly 1`] = `
             background-color: #ffffff;
             border-style: none;
             box-sizing: border-box;
-            color: #333333;
+            color: #323130;
             font: inherit;
             height: 28px;
             outline: none;
@@ -411,6 +455,18 @@ exports[`ComboBox renders with a Keytip correctly 1`] = `
             padding-top: 0;
             text-overflow: ellipsis;
             width: 100%;
+          }
+          &::placeholder {
+            color: #605e5c;
+          }
+          &:-ms-input-placeholder {
+            color: #605e5c;
+          }
+          &::-ms-input-placeholder {
+            color: #605e5c;
+          }
+          &::-ms-clear {
+            display: none;
           }
       data-is-interactable={true}
       data-ktp-execute-target="ktp-a"
@@ -434,7 +490,6 @@ exports[`ComboBox renders with a Keytip correctly 1`] = `
     />
     <button
       aria-hidden={true}
-      checked={false}
       className=
           ms-Button
           ms-Button--icon
@@ -443,10 +498,10 @@ exports[`ComboBox renders with a Keytip correctly 1`] = `
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
             background-color: transparent;
-            border-radius: 0px;
+            border-radius: 2px;
             border: none;
             box-sizing: border-box;
-            color: #666666;
+            color: #605e5c;
             cursor: default;
             display: inline-block;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -454,6 +509,7 @@ exports[`ComboBox renders with a Keytip correctly 1`] = `
             font-weight: 400;
             height: 32px;
             line-height: 30px;
+            min-width: 32px;
             outline: transparent;
             padding-bottom: 0;
             padding-left: 4px;
@@ -472,14 +528,14 @@ exports[`ComboBox renders with a Keytip correctly 1`] = `
             border: 0;
           }
           .ms-Fabric--isFocusVisible &:focus:after {
-            border: 1px solid #ffffff;
-            bottom: 0px;
+            border: 1px solid transparent;
+            bottom: 2px;
             content: "";
-            left: 0px;
-            outline: 1px solid #666666;
+            left: 2px;
+            outline: 1px solid #605e5c;
             position: absolute;
-            right: 0px;
-            top: 0px;
+            right: 2px;
+            top: 2px;
             z-index: 1;
           }
           @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -502,8 +558,8 @@ exports[`ComboBox renders with a Keytip correctly 1`] = `
             color: ButtonText;
           }
           &:hover {
-            background-color: #f4f4f4;
-            color: #212121;
+            background-color: #f3f2f1;
+            color: #201f1e;
             cursor: pointer;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
@@ -511,10 +567,11 @@ exports[`ComboBox renders with a Keytip correctly 1`] = `
             color: Highlight;
           }
           &:active {
-            background-color: #eaeaea;
-            color: #212121;
+            background-color: #edebe9;
+            color: #201f1e;
           }
       data-is-focusable={false}
+      onBlur={[Function]}
       onClick={[Function]}
       onKeyDown={[Function]}
       onKeyPress={[Function]}
@@ -525,7 +582,7 @@ exports[`ComboBox renders with a Keytip correctly 1`] = `
       tabIndex={-1}
       type="button"
     >
-      <div
+      <span
         className=
             ms-Button-flexContainer
             {
@@ -535,26 +592,33 @@ exports[`ComboBox renders with a Keytip correctly 1`] = `
               height: 100%;
               justify-content: center;
             }
+        data-automationid="splitbuttonprimary"
       >
         <i
+          aria-hidden={true}
           className=
+              ms-Icon
               ms-Button-icon
+              {
+                display: inline-block;
+              }
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                display: inline-block;
-                flex-shrink: 0;
                 font-family: "FabricMDL2Icons";
-                font-size: 12px;
                 font-style: normal;
                 font-weight: normal;
+                speak: none;
+              }
+              {
+                flex-shrink: 0;
+                font-size: 12px;
                 height: 16px;
                 line-height: 16px;
                 margin-bottom: 0;
                 margin-left: 4px;
                 margin-right: 4px;
                 margin-top: 0;
-                speak: none;
                 text-align: center;
                 vertical-align: middle;
               }
@@ -563,7 +627,7 @@ exports[`ComboBox renders with a Keytip correctly 1`] = `
         >
           
         </i>
-      </div>
+      </span>
     </button>
   </div>
 </div>

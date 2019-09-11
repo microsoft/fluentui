@@ -40,7 +40,7 @@ export class SwatchColorPickerBase extends React.Component<ISwatchColorPickerPro
 
     this._id = props.id || getId('swatchColorPicker');
 
-    if (typeof process !== 'undefined' && process.env.NODE_ENV !== 'production') {
+    if (process.env.NODE_ENV !== 'production') {
       warnMutuallyExclusive('SwatchColorPicker', this.props, {
         focusOnHover: 'onHover'
       });
@@ -67,7 +67,8 @@ export class SwatchColorPickerBase extends React.Component<ISwatchColorPickerPro
     };
   }
 
-  public componentWillReceiveProps(newProps: ISwatchColorPickerProps): void {
+  // tslint:disable-next-line function-name
+  public UNSAFE_componentWillReceiveProps(newProps: ISwatchColorPickerProps): void {
     if (newProps.selectedId !== undefined) {
       this.setState({
         selectedIndex: this._getSelectedIndex(newProps.colorCells, newProps.selectedId)

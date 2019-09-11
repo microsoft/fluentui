@@ -1,6 +1,195 @@
 # Change Log - @uifabric/date-time
 
-This log was last generated on Sat, 04 May 2019 00:01:53 GMT and should not be manually modified.
+This log was last generated on Wed, 04 Sep 2019 04:09:58 GMT and should not be manually modified.
+
+## 7.4.4
+Wed, 04 Sep 2019 04:09:58 GMT
+
+### Patches
+
+- fix version file (kchau@microsoft.com)
+## 7.4.3
+Thu, 29 Aug 2019 12:30:00 GMT
+
+### Patches
+
+- small bug fixes. Fix overflow issue in firefox, fix mouse hover issue in all, fix perf issue in month view rendering of Calendar (jolore@microsoft.com)
+## 7.4.2
+Mon, 26 Aug 2019 12:30:49 GMT
+
+### Patches
+
+- Updating snapshots. (dzearing@hotmail.com)
+## 7.4.1
+Fri, 23 Aug 2019 12:35:28 GMT
+
+### Patches
+
+- Update npmignores, delete unused jest setup files (elcraig@microsoft.com)
+- Fix up readme and package.json descriptions (elcraig@microsoft.com)
+
+## 7.4.0
+Thu, 15 Aug 2019 12:30:43 GMT
+
+### Minor changes
+
+- Rename deprecated React lifecycle functions to prevent development mode warnings in React 16.9. (jagore@microsoft.com)
+
+## 7.3.0
+Thu, 08 Aug 2019 12:32:41 GMT
+
+### Minor changes
+
+- Moves aria-label to same element as role=combobox on the datepicker as required by the aria docs (susunda@microsoft.com)
+
+## 7.2.1
+Tue, 06 Aug 2019 12:32:07 GMT
+
+### Patches
+
+- fixing broken IE11 by removing findIndex call, fixing the weeklydaypicker not rerendering when passed new initial date (jolore@microsoft.com)
+
+## 7.2.0
+Fri, 02 Aug 2019 12:33:29 GMT
+
+### Minor changes
+
+- finishing up the slide animation to apply to calendar and month and year pickers, and allow consumer to specify direction (jolore@microsoft.com)
+
+## 7.1.7
+Mon, 22 Jul 2019 12:28:42 GMT
+
+### Patches
+
+- fixing issue where buttons don't hide if they have focus, adding touch for navigation (jolore@microsoft.com)
+- Improve how to get the min query string (elcraig@microsoft.com)
+
+## 7.1.6
+Wed, 17 Jul 2019 18:58:57 GMT
+
+### Patches
+
+- Adding @types/react and @types/react-dom to package.json that have peer dependencies on react and react-dom. (makotom@microsoft.com)
+
+## 7.1.4
+Thu, 04 Jul 2019 12:29:39 GMT
+
+### Patches
+
+- fix date conversion for weeklydaypicker (jolore@microsoft.com)
+
+## 7.1.3
+Mon, 01 Jul 2019 18:51:42 GMT
+
+### Patches
+
+- adds react-app-polyfill
+
+## 7.1.2
+Wed, 26 Jun 2019 12:23:41 GMT
+
+### Patches
+
+- update snapshots
+
+## 7.1.1
+Thu, 20 Jun 2019 12:27:38 GMT
+
+### Patches
+
+- fixing min/max date being ignored
+
+## 7.1.0
+Mon, 17 Jun 2019 12:26:51 GMT
+
+### Minor changes
+
+- adding new weekdaypicker component, refactoring calendardaygrid out of calendarday to share with new component
+
+## 7.0.2
+Fri, 14 Jun 2019 12:26:30 GMT
+
+### Patches
+
+- Fix missing assets in production build.
+
+## 7.0.1
+Thu, 13 Jun 2019 00:24:48 GMT
+
+### Patches
+
+- Initial release of Fabric 7
+
+## 6.3.3
+Wed, 12 Jun 2019 00:42:26 GMT
+
+### Patches
+
+- Re-export shared date utilities rather than duplicating
+- Render demo app with Markdown instead of PageMarkdown
+- Update and dedupe React deps.
+
+## 6.3.2
+Tue, 11 Jun 2019 12:21:35 GMT
+
+### Patches
+
+- upgrade to api-extractor 7.1.6
+
+## 6.3.1
+Mon, 10 Jun 2019 12:23:59 GMT
+
+### Patches
+
+- Snapshot updates to components for adding aria-hidden to icon component conditionally
+
+## 6.3.0
+Fri, 07 Jun 2019 12:21:48 GMT
+
+### Minor changes
+
+- styling updates for datetime calendar
+
+## 6.2.1
+Wed, 05 Jun 2019 12:22:30 GMT
+
+### Patches
+
+- add tooltips to Calendar buttons without text and fix text overflow bug in calendar header button with long names
+- TextField: adds aria-labelledby to input
+
+## 6.2.0
+Mon, 03 Jun 2019 12:23:18 GMT
+
+### Minor changes
+
+- Updating DatePicker and Calendar accessibility
+
+### Patches
+
+- passing through props as the api expects them to be
+
+## 6.1.2
+Tue, 21 May 2019 12:20:44 GMT
+
+### Patches
+
+- Use shared demo app bootstrapping code
+- DatePicker: keep validation errors after noop
+
+## 6.1.1
+Tue, 14 May 2019 07:50:30 GMT
+
+### Patches
+
+- Update Fabric assets link
+
+## 6.1.0
+Wed, 08 May 2019 12:37:40 GMT
+
+### Minor changes
+
+- adding DatePicker component and examples
 
 ## 6.0.4
 Sat, 04 May 2019 00:01:53 GMT

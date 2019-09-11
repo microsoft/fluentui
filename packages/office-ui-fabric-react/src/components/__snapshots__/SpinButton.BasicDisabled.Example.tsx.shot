@@ -22,8 +22,10 @@ exports[`Component Examples renders SpinButton.BasicDisabled.Example.tsx correct
       className=
 
           {
+            align-items: center;
             display: inline-flex;
             float: left;
+            height: 32px;
             margin-right: 10px;
           }
     >
@@ -35,21 +37,21 @@ exports[`Component Examples renders SpinButton.BasicDisabled.Example.tsx correct
               -webkit-font-smoothing: antialiased;
               box-shadow: none;
               box-sizing: border-box;
-              color: #a6a6a6;
-              cursor: default;
+              color: #a19f9d;
               display: block;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
-              font-weight: 400;
+              font-weight: 600;
+              line-height: 20px;
               margin-bottom: 0px;
               margin-left: 0px;
               margin-right: 0px;
               margin-top: 0px;
               overflow-wrap: break-word;
-              padding-bottom: 2px;
+              padding-bottom: 5px;
               padding-left: 0;
               padding-right: 0;
-              padding-top: 2px;
+              padding-top: 5px;
               pointer-events: none;
               word-wrap: break-word;
             }
@@ -66,12 +68,12 @@ exports[`Component Examples renders SpinButton.BasicDisabled.Example.tsx correct
       className=
 
           {
-            background-color: #f4f4f4;
+            background-color: #f3f2f1;
             border-color: transparent;
-            border-style: solid;
-            border-width: 1px;
+            border-radius: 2px;
+            border: 1px solid #8a8886;
             box-sizing: border-box;
-            color: #a6a6a6;
+            color: #a19f9d;
             cursor: default;
             display: flex;
             height: 32px;
@@ -92,32 +94,33 @@ exports[`Component Examples renders SpinButton.BasicDisabled.Example.tsx correct
         className=
             ms-spinButton-input
             {
-              background-color: #f4f4f4;
+              background-color: #f3f2f1;
               border-color: transparent;
+              border-radius: 2px 0 0 2px;
               border-style: none;
               box-shadow: none;
               box-sizing: border-box;
-              color: #a6a6a6;
+              color: #a19f9d;
               cursor: default;
               display: block;
-              float: left;
+              flex: 1;
               font-size: 14px;
               height: 100%;
-              margin-bottom: 0;
-              margin-left: 0;
-              margin-right: 0;
-              margin-top: 0;
+              margin-bottom: 0px;
+              margin-left: 0px;
+              margin-right: 0px;
+              margin-top: 0px;
               min-width: 72px;
-              outline: 0;
+              outline: 0px;
               overflow: hidden;
               padding-bottom: 0;
-              padding-left: 12px;
-              padding-right: 12px;
+              padding-left: 8px;
+              padding-right: 8px;
               padding-top: 0;
               pointer-events: none;
               text-overflow: ellipsis;
               user-select: text;
-              width: calc(100% - 14px);
+              white-space: nowrap;
             }
             @media screen and (-ms-high-contrast: active){& {
               color: GrayText;
@@ -139,20 +142,12 @@ exports[`Component Examples renders SpinButton.BasicDisabled.Example.tsx correct
         className=
 
             {
-              background-color: #f4f4f4;
+              background-color: #f3f2f1;
               border-color: transparent;
-              box-sizing: border-box;
-              color: #a6a6a6;
+              color: #a19f9d;
               cursor: default;
               display: block;
-              float: left;
-              font-size: 12px;
               height: 100%;
-              outline: none;
-              padding-bottom: 0;
-              padding-left: 0;
-              padding-right: 0;
-              padding-top: 0;
               pointer-events: none;
             }
             @media screen and (-ms-high-contrast: active){& {
@@ -162,7 +157,6 @@ exports[`Component Examples renders SpinButton.BasicDisabled.Example.tsx correct
         <button
           aria-disabled={true}
           aria-label="Increase value by 1"
-          checked={false}
           className=
               ms-Button
               ms-Button--icon
@@ -171,43 +165,45 @@ exports[`Component Examples renders SpinButton.BasicDisabled.Example.tsx correct
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                background-color: #f4f4f4;
-                border-radius: 0px;
+                background-color: #f3f2f1;
+                border-color: #f3f2f1;
+                border-radius: 2px;
                 border: none;
                 box-sizing: border-box;
-                color: #a6a6a6;
+                color: #c8c6c4;
                 cursor: default;
                 display: block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
                 height: 50%;
+                min-width: 32px;
                 opacity: 0.5;
                 outline: transparent;
-                padding-bottom: 0;
-                padding-left: 0;
-                padding-right: 0;
-                padding-top: 0;
+                padding-bottom: 0px;
+                padding-left: 0px;
+                padding-right: 0px;
+                padding-top: 0px;
                 pointer-events: none;
                 position: relative;
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
                 vertical-align: top;
-                width: 14px;
+                width: 23px;
               }
               &::-moz-focus-inner {
                 border: 0;
               }
               .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: 0px;
+                border: 1px solid transparent;
+                bottom: 2px;
                 content: "";
-                left: 0px;
-                outline: 1px solid #666666;
+                left: 2px;
+                outline: 1px solid #605e5c;
                 position: absolute;
-                right: 0px;
-                top: 0px;
+                right: 2px;
+                top: 2px;
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -223,6 +219,12 @@ exports[`Component Examples renders SpinButton.BasicDisabled.Example.tsx correct
                 position: relative;
                 top: 0px;
               }
+              &.ms-DownButton {
+                border-radius: 0 0 2px 0;
+              }
+              &.ms-UpButton {
+                border-radius: 0 2px 0 0;
+              }
               &:hover {
                 outline: 0px;
               }
@@ -230,7 +232,7 @@ exports[`Component Examples renders SpinButton.BasicDisabled.Example.tsx correct
                 outline: 0px;
               }
               @media screen and (-ms-high-contrast: active){& {
-                bordercolor: grayText;
+                border-color: grayText;
                 color: GrayText;
                 opacity: 1;
               }
@@ -246,7 +248,7 @@ exports[`Component Examples renders SpinButton.BasicDisabled.Example.tsx correct
           tabIndex={-1}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -256,27 +258,34 @@ exports[`Component Examples renders SpinButton.BasicDisabled.Example.tsx correct
                   height: 100%;
                   justify-content: center;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <i
+              aria-hidden={true}
               className=
+                  ms-Icon
                   ms-Button-icon
+                  {
+                    display: inline-block;
+                  }
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
-                    color: #a6a6a6;
-                    display: inline-block;
-                    flex-shrink: 0;
                     font-family: "FabricMDL2Icons-2";
-                    font-size: 6px;
                     font-style: normal;
                     font-weight: normal;
+                    speak: none;
+                  }
+                  {
+                    color: #a19f9d;
+                    flex-shrink: 0;
+                    font-size: 8px;
                     height: 16px;
                     line-height: 16px;
-                    margin-bottom: 0;
-                    margin-left: 0;
-                    margin-right: 0;
-                    margin-top: 0;
-                    speak: none;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
                     text-align: center;
                     vertical-align: middle;
                   }
@@ -285,12 +294,11 @@ exports[`Component Examples renders SpinButton.BasicDisabled.Example.tsx correct
             >
               
             </i>
-          </div>
+          </span>
         </button>
         <button
           aria-disabled={true}
           aria-label="Decrease value by 1"
-          checked={false}
           className=
               ms-Button
               ms-Button--icon
@@ -299,43 +307,45 @@ exports[`Component Examples renders SpinButton.BasicDisabled.Example.tsx correct
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                background-color: #f4f4f4;
-                border-radius: 0px;
+                background-color: #f3f2f1;
+                border-color: #f3f2f1;
+                border-radius: 2px;
                 border: none;
                 box-sizing: border-box;
-                color: #a6a6a6;
+                color: #c8c6c4;
                 cursor: default;
                 display: block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
                 height: 50%;
+                min-width: 32px;
                 opacity: 0.5;
                 outline: transparent;
-                padding-bottom: 0;
-                padding-left: 0;
-                padding-right: 0;
-                padding-top: 0;
+                padding-bottom: 0px;
+                padding-left: 0px;
+                padding-right: 0px;
+                padding-top: 0px;
                 pointer-events: none;
                 position: relative;
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
                 vertical-align: top;
-                width: 14px;
+                width: 23px;
               }
               &::-moz-focus-inner {
                 border: 0;
               }
               .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: 0px;
+                border: 1px solid transparent;
+                bottom: 2px;
                 content: "";
-                left: 0px;
-                outline: 1px solid #666666;
+                left: 2px;
+                outline: 1px solid #605e5c;
                 position: absolute;
-                right: 0px;
-                top: 0px;
+                right: 2px;
+                top: 2px;
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -351,6 +361,12 @@ exports[`Component Examples renders SpinButton.BasicDisabled.Example.tsx correct
                 position: relative;
                 top: 0px;
               }
+              &.ms-DownButton {
+                border-radius: 0 0 2px 0;
+              }
+              &.ms-UpButton {
+                border-radius: 0 2px 0 0;
+              }
               &:hover {
                 outline: 0px;
               }
@@ -358,7 +374,7 @@ exports[`Component Examples renders SpinButton.BasicDisabled.Example.tsx correct
                 outline: 0px;
               }
               @media screen and (-ms-high-contrast: active){& {
-                bordercolor: grayText;
+                border-color: grayText;
                 color: GrayText;
                 opacity: 1;
               }
@@ -374,7 +390,7 @@ exports[`Component Examples renders SpinButton.BasicDisabled.Example.tsx correct
           tabIndex={-1}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -384,27 +400,34 @@ exports[`Component Examples renders SpinButton.BasicDisabled.Example.tsx correct
                   height: 100%;
                   justify-content: center;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <i
+              aria-hidden={true}
               className=
+                  ms-Icon
                   ms-Button-icon
+                  {
+                    display: inline-block;
+                  }
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
-                    color: #a6a6a6;
-                    display: inline-block;
-                    flex-shrink: 0;
                     font-family: "FabricMDL2Icons-2";
-                    font-size: 6px;
                     font-style: normal;
                     font-weight: normal;
+                    speak: none;
+                  }
+                  {
+                    color: #a19f9d;
+                    flex-shrink: 0;
+                    font-size: 8px;
                     height: 16px;
                     line-height: 16px;
-                    margin-bottom: 0;
-                    margin-left: 0;
-                    margin-right: 0;
-                    margin-top: 0;
-                    speak: none;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
                     text-align: center;
                     vertical-align: middle;
                   }
@@ -413,7 +436,7 @@ exports[`Component Examples renders SpinButton.BasicDisabled.Example.tsx correct
             >
               
             </i>
-          </div>
+          </span>
         </button>
       </span>
     </div>

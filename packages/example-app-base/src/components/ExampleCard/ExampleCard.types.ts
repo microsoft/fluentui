@@ -21,16 +21,18 @@ export interface IExampleCardProps {
   isScrollable?: boolean;
   /** JS string used in the example card's "Export to CodePen" button */
   codepenJS?: string;
-  /** Code highlighting component to use when showing code (default CodeSnippet) */
-  codeHighlighter?: React.ComponentType;
-  /** Props for the code highlighting component */
-  codeHighlighterProps?: {};
 
   /** Theme provided by higher-order component. */
   theme?: ITheme;
 
   /** Optional override styles */
   styles?: IStyleFunctionOrObject<IExampleCardStyleProps, IExampleCardStyles>;
+
+  /** On click handler to ensure only one code editor instance is shown at once */
+  onToggleEditor?: (card: string) => void;
+
+  /** Whether code example is visible */
+  isCodeVisible?: boolean;
 }
 
 export type IExampleCardStyleProps = Pick<IExampleCardProps, 'isRightAligned' | 'isScrollable' | 'theme'> & {

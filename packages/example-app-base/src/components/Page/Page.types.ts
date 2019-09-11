@@ -88,7 +88,9 @@ export interface IPageProps<TPlatforms extends string = string> {
   hideImplementationTitle?: boolean;
 
   /** (8) Array of custom sections. */
+  // TODO: TPlatforms generic should be forwarded to otherSections. Requires resolving TODO in Page.tsx.
   otherSections?: IPageSectionProps[];
+  // otherSections?: IPageSectionProps<TPlatforms>[];
 
   /** (9) If true, render the feedback section with GitHub issues. **/
   isFeedbackVisible?: boolean;
@@ -116,11 +118,27 @@ export interface IExample extends IExampleCardProps {
 
 export interface IPageSectionProps<TPlatforms extends string = string>
   extends Pick<IPageProps<TPlatforms>, 'title' | 'componentUrl' | 'fileNamePrefix' | 'platform'> {
-  /** The name of the section. Used to generate the section ID. */
+  /** ID for the section (auto-generated if not specified) */
+  id?: string;
+
+  /**
+   * The name of the section. Used in the UI if `readableSectionName` is not specified.
+   * It's also used to generate the edit URL if `editUrl` is not provided, and to generate
+   * the key/id if `readableSectionName` and `id` are not given.
+   */
   sectionName?: string;
 
-  /** Use when the section name and Markdown file name are different. */
+  /**
+   * Text to display in the UI when the section name and Markdown file name are different.
+   * Also used to generate the key/id if `id` is not given.
+   */
   readableSectionName?: string;
+
+  /**
+   * Custom text for the side rail jump link for this section, if for some reason you want it to be
+   * different from both `sectionName` and `realSectionName`.
+   */
+  jumpLinkName?: string;
 
   /** Content to render into the section. */
   content?: JSX.Element | string;
@@ -136,6 +154,20 @@ export interface IPageSectionProps<TPlatforms extends string = string>
 
   /** What section type to render. */
   renderAs?: IComponentAs<IPageSectionProps<TPlatforms>>;
+
+  /**
+   * Extra jump links for the side rail, pointing to things within this section.
+   * Note that the `url` property should be an element ID (no leading #).
+   */
+  jumpLinks?: ISideRailLink[];
 }
+
+/** Version of IPageSectionProps where `sectionName` is required. */
+// TODO: I'm not sure the best way to fix this, and the TS watch issue is making it harder to iterate and try fixes.
+//        Equating types with a slight loss in type safety for now.
+export type IPageSectionPropsWithSectionName = IPageSectionProps;
+// export type IPageSectionPropsWithSectionName<TPlatform extends string = string> =
+//   Required<Pick<IPageSectionProps<TPlatform>, 'sectionName'>> & Omit<IPageSectionProps<TPlatform>, 'sectionName'>;
+// export type IPageSectionPropsWithSectionName = Required<Pick<IPageSectionProps, 'sectionName'>> & Omit<IPageSectionProps, 'sectionName'>;
 
 export type TPlatformPageProps<TPlatforms extends string> = { [platform in TPlatforms]?: IPageProps<TPlatforms> };

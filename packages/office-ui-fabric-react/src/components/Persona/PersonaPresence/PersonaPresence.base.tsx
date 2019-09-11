@@ -29,15 +29,18 @@ export class PersonaPresenceBase extends BaseComponent<IPersonaPresenceProps, {}
   public render(): JSX.Element | null {
     const {
       coinSize,
+      isOutOfOffice,
       styles, // Use getStyles from props.
       presence,
-      theme
+      theme,
+      presenceTitle
     } = this.props;
     const size = sizeBoolean(this.props.size as PersonaSize);
 
     // Render Presence Icon if Persona is above size 32.
     const renderIcon =
-      !(size.isSize10 || size.isSize16 || size.isSize24 || size.isSize28 || size.isSize32) && (coinSize ? coinSize > 32 : true);
+      !(size.isSize8 || size.isSize10 || size.isSize16 || size.isSize24 || size.isSize28 || size.isSize32) &&
+      (coinSize ? coinSize > 32 : true);
 
     const presenceHeightWidth: string = coinSize
       ? coinSize / coinSizePresenceScaleFactor < presenceMaxSize
@@ -56,7 +59,8 @@ export class PersonaPresenceBase extends BaseComponent<IPersonaPresenceProps, {}
     const classNames = getClassNames(styles, {
       theme: theme!,
       presence,
-      size: this.props.size
+      size: this.props.size,
+      isOutOfOffice
     });
 
     if (presence === PersonaPresenceEnum.none) {
@@ -64,37 +68,34 @@ export class PersonaPresenceBase extends BaseComponent<IPersonaPresenceProps, {}
     }
 
     return (
-      <div className={classNames.presence} style={coinSizeWithPresenceStyle}>
+      <div className={classNames.presence} style={coinSizeWithPresenceStyle} title={presenceTitle}>
         {renderIcon && this._onRenderIcon(classNames.presenceIcon, coinSizeWithPresenceIconStyle)}
       </div>
     );
   }
 
   private _onRenderIcon = (className?: string, style?: React.CSSProperties): JSX.Element => (
-    <Icon className={className} iconName={this._determineIcon()} style={style} />
+    <Icon className={className} iconName={determineIcon(this.props.presence, this.props.isOutOfOffice)} style={style} />
   );
+}
 
-  private _determineIcon = (): string | undefined => {
-    const { presence } = this.props;
+function determineIcon(presence: PersonaPresenceEnum | undefined, isOutOfOffice: boolean | undefined): string | undefined {
+  if (!presence) {
+    return undefined;
+  }
 
-    if (presence !== PersonaPresenceEnum.none) {
-      let userPresence = PersonaPresenceEnum[presence as PersonaPresenceEnum];
+  const oofIcon = 'SkypeArrow';
 
-      switch (userPresence) {
-        case 'online':
-          userPresence = 'SkypeCheck';
-          break;
-        case 'away':
-          userPresence = 'SkypeClock';
-          break;
-        case 'dnd':
-          userPresence = 'SkypeMinus';
-          break;
-        default:
-          userPresence = '';
-      }
+  switch (PersonaPresenceEnum[presence]) {
+    case 'online':
+      return 'SkypeCheck';
+    case 'away':
+      return isOutOfOffice ? oofIcon : 'SkypeClock';
+    case 'dnd':
+      return 'SkypeMinus';
+    case 'offline':
+      return isOutOfOffice ? oofIcon : '';
+  }
 
-      return userPresence;
-    }
-  };
+  return '';
 }

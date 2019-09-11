@@ -10,13 +10,14 @@
     "experimentalDecorators": true,
     "importHelpers": true,
     "noImplicitAny": true,
+    "noUnusedLocals": true,
     "strictNullChecks": true,
     "forceConsistentCasingInFileNames": true,
     "moduleResolution": "node",
     "preserveConstEnums": true,
     "skipLibCheck": true,
-    "typeRoots": ["node_modules/@types", "../../typings"],
-    "types": ["jest", "custom-global"]
+    "typeRoots": ["../../node_modules/@types", "../../typings"],
+    "types": ["jest", "custom-global", "node"]
   },
-  "include": ["src"]
+  "include": ["src", "../../typings"]
 }

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { css, FocusZone, FocusZoneDirection, Link, IProcessedStyleSet, classNamesFunction, styled } from 'office-ui-fabric-react';
 import { isPageActive, removeAnchorLink, jumpToAnchor } from '../../utilities/index2';
+import { MarkdownHeader } from '../Markdown/index';
 import { ISideRailProps, ISideRailLink, ISideRailStyles, ISideRailStyleProps } from './SideRail.types';
 import { getStyles } from './SideRail.styles';
 
@@ -90,7 +91,9 @@ class SideRailBase extends React.Component<ISideRailProps, ISideRailState> {
     ));
     return (
       <div className={css(classNames.section, classNames.jumpLinkSection)}>
-        <h3 className={classNames.sectionTitle}>On this page</h3>
+        <MarkdownHeader as="h3" className={classNames.sectionTitle}>
+          On this page
+        </MarkdownHeader>
         <ul className={classNames.links}>{links}</ul>
       </div>
     );
@@ -120,7 +123,9 @@ class SideRailBase extends React.Component<ISideRailProps, ISideRailState> {
     if (links) {
       return (
         <div className={css(classNames.section)}>
-          <h3 className={classNames.sectionTitle}>{title}</h3>
+          <MarkdownHeader as="h3" className={classNames.sectionTitle}>
+            {title}
+          </MarkdownHeader>
           {links}
         </div>
       );

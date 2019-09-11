@@ -74,6 +74,11 @@ export interface ITeachingBubbleProps extends React.ClassAttributes<TeachingBubb
   secondaryButtonProps?: IButtonProps;
 
   /**
+   * Text that will be rendered in the footer of the TeachingBubble. May be rendered alongside primary and secondary buttons.
+   */
+  footerContent?: string | JSX.Element;
+
+  /**
    * @deprecated use target instead
    * Element to anchor the TeachingBubble to.
    */

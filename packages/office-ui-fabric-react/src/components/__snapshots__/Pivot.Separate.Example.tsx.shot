@@ -25,7 +25,6 @@ exports[`Component Examples renders Pivot.Separate.Example.tsx correctly 1`] = `
       onFocus={[Function]}
       onKeyDown={[Function]}
       onMouseDownCapture={[Function]}
-      role="presentation"
     >
       <div
         className=
@@ -67,14 +66,14 @@ exports[`Component Examples renders Pivot.Separate.Example.tsx correctly 1`] = `
                 border-radius: 0px;
                 border: 0px;
                 box-sizing: border-box;
-                color: #333333;
+                color: #323130;
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 600;
-                height: 40px;
-                line-height: 40px;
+                height: 44px;
+                line-height: 44px;
                 margin-right: 8px;
                 outline: transparent;
                 padding-bottom: 0;
@@ -92,13 +91,13 @@ exports[`Component Examples renders Pivot.Separate.Example.tsx correctly 1`] = `
               }
               .ms-Fabric--isFocusVisible &:focus:after {
                 border: 0px;
-                bottom: 0px;
+                bottom: 2px;
                 content: attr(data-content);
-                left: 0px;
-                outline: 1px solid #666666;
+                left: 2px;
+                outline: 1px solid #605e5c;
                 position: relative;
-                right: 0px;
-                top: 0px;
+                right: 2px;
+                top: 2px;
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -115,7 +114,8 @@ exports[`Component Examples renders Pivot.Separate.Example.tsx correctly 1`] = `
                 top: 0px;
               }
               &:hover {
-                color: #212121;
+                background-color: #f3f2f1;
+                color: #201f1e;
                 cursor: pointer;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
@@ -129,22 +129,22 @@ exports[`Component Examples renders Pivot.Separate.Example.tsx correctly 1`] = `
                 outline: none;
               }
               &:active {
-                color: #000000;
+                background-color: #edebe9;
+                color: #201f1e;
               }
               &:active .ms-Button-icon {
                 color: #004578;
               }
               &:before {
-                background-color: transparent;
-                border-bottom: 2px solid #0078d4;
+                background-color: #0078d4;
                 bottom: 0px;
-                box-sizing: border-box;
                 content: "";
                 height: 2px;
                 left: 8px;
                 position: absolute;
                 right: 8px;
-                transition: background-color 0.267s cubic-bezier(.1,.25,.75,.9);
+                transition: left 0.267s cubic-bezier(.1,.25,.75,.9),
+                                    right 0.267s cubic-bezier(.1,.25,.75,.9);
               }
               &:after {
                 color: transparent;
@@ -156,10 +156,14 @@ exports[`Component Examples renders Pivot.Separate.Example.tsx correctly 1`] = `
                 visibility: hidden;
               }
               .ms-Fabric--isFocusVisible &:focus {
-                outline: 1px solid #666666;
+                outline: 1px solid #605e5c;
               }
               @media screen and (-ms-high-contrast: active){&:before {
-                border-bottom-color: Highlight;
+                background-color: Highlight;
+              }
+              &:hover::before {
+                left: 0px;
+                right: 0px;
               }
               @media screen and (-ms-high-contrast: active){& {
                 color: Highlight;
@@ -177,7 +181,7 @@ exports[`Component Examples renders Pivot.Separate.Example.tsx correctly 1`] = `
           role="tab"
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -187,11 +191,20 @@ exports[`Component Examples renders Pivot.Separate.Example.tsx correctly 1`] = `
                   height: 100%;
                   justify-content: flex-start;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <span
               className=
                   ms-Pivot-linkContent
-
+                  {
+                    flex: 0 1 100%;
+                  }
+                  & > *  {
+                    margin-left: 4px;
+                  }
+                  & > *:first-child {
+                    margin-left: 0px;
+                  }
             >
               <span
                 className=
@@ -205,7 +218,7 @@ exports[`Component Examples renders Pivot.Separate.Example.tsx correctly 1`] = `
                 Rectangle red
               </span>
             </span>
-          </div>
+          </span>
         </button>
         <button
           aria-selected={false}
@@ -221,14 +234,14 @@ exports[`Component Examples renders Pivot.Separate.Example.tsx correctly 1`] = `
                 border-radius: 0px;
                 border: 0px;
                 box-sizing: border-box;
-                color: #333333;
+                color: #323130;
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
-                height: 40px;
-                line-height: 40px;
+                height: 44px;
+                line-height: 44px;
                 margin-right: 8px;
                 outline: transparent;
                 padding-bottom: 0;
@@ -246,13 +259,13 @@ exports[`Component Examples renders Pivot.Separate.Example.tsx correctly 1`] = `
               }
               .ms-Fabric--isFocusVisible &:focus:after {
                 border: 0px;
-                bottom: 0px;
+                bottom: 2px;
                 content: attr(data-content);
-                left: 0px;
-                outline: 1px solid #666666;
+                left: 2px;
+                outline: 1px solid #605e5c;
                 position: relative;
-                right: 0px;
-                top: 0px;
+                right: 2px;
+                top: 2px;
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -269,7 +282,8 @@ exports[`Component Examples renders Pivot.Separate.Example.tsx correctly 1`] = `
                 top: 0px;
               }
               &:hover {
-                color: #212121;
+                background-color: #f3f2f1;
+                color: #201f1e;
                 cursor: pointer;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
@@ -283,7 +297,8 @@ exports[`Component Examples renders Pivot.Separate.Example.tsx correctly 1`] = `
                 outline: none;
               }
               &:active {
-                color: #000000;
+                background-color: #edebe9;
+                color: #201f1e;
               }
               &:active .ms-Button-icon {
                 color: #004578;
@@ -296,7 +311,8 @@ exports[`Component Examples renders Pivot.Separate.Example.tsx correctly 1`] = `
                 left: 8px;
                 position: absolute;
                 right: 8px;
-                transition: background-color 0.267s cubic-bezier(.1,.25,.75,.9);
+                transition: left 0.267s cubic-bezier(.1,.25,.75,.9),
+                                    right 0.267s cubic-bezier(.1,.25,.75,.9);
               }
               &:after {
                 color: transparent;
@@ -308,11 +324,7 @@ exports[`Component Examples renders Pivot.Separate.Example.tsx correctly 1`] = `
                 visibility: hidden;
               }
               .ms-Fabric--isFocusVisible &:focus {
-                outline: 1px solid #666666;
-              }
-              &:hover::before {
-                border-bottom: 2px solid transparent;
-                box-sizing: border-box;
+                outline: 1px solid #605e5c;
               }
           data-content="Square red"
           data-is-focusable={true}
@@ -327,7 +339,7 @@ exports[`Component Examples renders Pivot.Separate.Example.tsx correctly 1`] = `
           role="tab"
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -337,11 +349,20 @@ exports[`Component Examples renders Pivot.Separate.Example.tsx correctly 1`] = `
                   height: 100%;
                   justify-content: flex-start;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <span
               className=
                   ms-Pivot-linkContent
-
+                  {
+                    flex: 0 1 100%;
+                  }
+                  & > *  {
+                    margin-left: 4px;
+                  }
+                  & > *:first-child {
+                    margin-left: 0px;
+                  }
             >
               <span
                 className=
@@ -355,7 +376,7 @@ exports[`Component Examples renders Pivot.Separate.Example.tsx correctly 1`] = `
                 Square red
               </span>
             </span>
-          </div>
+          </span>
         </button>
         <button
           aria-selected={false}
@@ -371,14 +392,14 @@ exports[`Component Examples renders Pivot.Separate.Example.tsx correctly 1`] = `
                 border-radius: 0px;
                 border: 0px;
                 box-sizing: border-box;
-                color: #333333;
+                color: #323130;
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
-                height: 40px;
-                line-height: 40px;
+                height: 44px;
+                line-height: 44px;
                 margin-right: 8px;
                 outline: transparent;
                 padding-bottom: 0;
@@ -396,13 +417,13 @@ exports[`Component Examples renders Pivot.Separate.Example.tsx correctly 1`] = `
               }
               .ms-Fabric--isFocusVisible &:focus:after {
                 border: 0px;
-                bottom: 0px;
+                bottom: 2px;
                 content: attr(data-content);
-                left: 0px;
-                outline: 1px solid #666666;
+                left: 2px;
+                outline: 1px solid #605e5c;
                 position: relative;
-                right: 0px;
-                top: 0px;
+                right: 2px;
+                top: 2px;
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -419,7 +440,8 @@ exports[`Component Examples renders Pivot.Separate.Example.tsx correctly 1`] = `
                 top: 0px;
               }
               &:hover {
-                color: #212121;
+                background-color: #f3f2f1;
+                color: #201f1e;
                 cursor: pointer;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
@@ -433,7 +455,8 @@ exports[`Component Examples renders Pivot.Separate.Example.tsx correctly 1`] = `
                 outline: none;
               }
               &:active {
-                color: #000000;
+                background-color: #edebe9;
+                color: #201f1e;
               }
               &:active .ms-Button-icon {
                 color: #004578;
@@ -446,7 +469,8 @@ exports[`Component Examples renders Pivot.Separate.Example.tsx correctly 1`] = `
                 left: 8px;
                 position: absolute;
                 right: 8px;
-                transition: background-color 0.267s cubic-bezier(.1,.25,.75,.9);
+                transition: left 0.267s cubic-bezier(.1,.25,.75,.9),
+                                    right 0.267s cubic-bezier(.1,.25,.75,.9);
               }
               &:after {
                 color: transparent;
@@ -458,11 +482,7 @@ exports[`Component Examples renders Pivot.Separate.Example.tsx correctly 1`] = `
                 visibility: hidden;
               }
               .ms-Fabric--isFocusVisible &:focus {
-                outline: 1px solid #666666;
-              }
-              &:hover::before {
-                border-bottom: 2px solid transparent;
-                box-sizing: border-box;
+                outline: 1px solid #605e5c;
               }
           data-content="Rectangle green"
           data-is-focusable={true}
@@ -477,7 +497,7 @@ exports[`Component Examples renders Pivot.Separate.Example.tsx correctly 1`] = `
           role="tab"
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -487,11 +507,20 @@ exports[`Component Examples renders Pivot.Separate.Example.tsx correctly 1`] = `
                   height: 100%;
                   justify-content: flex-start;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <span
               className=
                   ms-Pivot-linkContent
-
+                  {
+                    flex: 0 1 100%;
+                  }
+                  & > *  {
+                    margin-left: 4px;
+                  }
+                  & > *:first-child {
+                    margin-left: 0px;
+                  }
             >
               <span
                 className=
@@ -505,7 +534,7 @@ exports[`Component Examples renders Pivot.Separate.Example.tsx correctly 1`] = `
                 Rectangle green
               </span>
             </span>
-          </div>
+          </span>
         </button>
       </div>
     </div>

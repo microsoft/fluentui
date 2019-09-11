@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { IFocusTrapZoneProps } from '../../FocusTrapZone';
 import { ILayerProps } from '../../Layer';
+import { IOverlayProps } from '../../Overlay';
 import { IStyle, ITheme } from '../../Styling';
 import { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
 import { PanelBase } from './Panel.base';
@@ -32,7 +33,10 @@ export interface IPanelProps extends React.HTMLAttributes<PanelBase> {
 
   /**
    * Whether the panel is displayed.
-   * @defaultvalue false
+   * If true, will cause panel to stay open even if dismissed.
+   * If false, will cause panel to stay hidden.
+   * If undefined, will allow the panel to control its own visility through open/dismiss methods.
+   * @defaultvalue undefined
    */
   isOpen?: boolean;
 
@@ -90,7 +94,8 @@ export interface IPanelProps extends React.HTMLAttributes<PanelBase> {
   onDismiss?: (ev?: React.SyntheticEvent<HTMLElement>) => void;
 
   /**
-   * A callback function which is called after the Panel is dismissed and the animation is complete.
+   * A callback function which is called **after** the Panel is dismissed and the animation is complete.
+   * (If you need to update the Panel's `isOpen` prop in response to a dismiss event, use `onDismiss` instead.)
    */
   onDismissed?: () => void;
 
@@ -169,6 +174,11 @@ export interface IPanelProps extends React.HTMLAttributes<PanelBase> {
    * Optional props to pass to the Layer component hosting the panel.
    */
   layerProps?: ILayerProps;
+
+  /**
+   * Optional props to pass to the Overlay component that the panel uses.
+   */
+  overlayProps?: IOverlayProps;
 
   /**
    * Optional custom function to handle clicks outside the panel in lightdismiss mode

@@ -1,6 +1,7 @@
 import { IPersonaProps, PersonaPresence } from 'office-ui-fabric-react/lib/Persona';
-import { TestImages } from '../../../../common/TestImages';
+import { TestImages } from '@uifabric/example-data';
 
+/** @deprecated Use the version from `@uifabric/example-data` instead. */
 export const people: (IPersonaProps & { key: string | number })[] = [
   {
     key: 1,
@@ -404,4 +405,5 @@ export const people: (IPersonaProps & { key: string | number })[] = [
   }
 ];
 
+/** @deprecated Use the version from `@uifabric/example-data` instead. */
 export const mru: IPersonaProps[] = people.slice(0, 5);

@@ -1,6 +1,5 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
     "outDir": "dist",
     "target": "es5",
     "module": "commonjs",
@@ -15,7 +14,8 @@
     "moduleResolution": "node",
     "preserveConstEnums": true,
     "lib": ["es2017", "dom"],
-    "types": ["jest"]
+    "types": ["jest"],
+    "jsx": "react"
   },
   "include": ["src"]
 }

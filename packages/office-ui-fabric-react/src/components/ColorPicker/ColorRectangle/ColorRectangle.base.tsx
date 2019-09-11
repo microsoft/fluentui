@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, classNamesFunction } from '../../../Utilities';
+import { classNamesFunction, EventGroup, initializeComponentRef } from '../../../Utilities';
 import { IColor } from '../../../utilities/color/interfaces';
 import { MAX_COLOR_SATURATION, MAX_COLOR_VALUE } from '../../../utilities/color/consts';
 import { getFullColorString } from '../../../utilities/color/getFullColorString';
@@ -16,19 +16,19 @@ export interface IColorRectangleState {
 /**
  * {@docCategory ColorPicker}
  */
-export class ColorRectangleBase extends BaseComponent<IColorRectangleProps, IColorRectangleState> implements IColorRectangle {
+export class ColorRectangleBase extends React.Component<IColorRectangleProps, IColorRectangleState> implements IColorRectangle {
   public static defaultProps = {
     minSize: 220
   };
 
+  private _events: EventGroup;
   private _root = React.createRef<HTMLDivElement>();
 
   constructor(props: IColorRectangleProps) {
     super(props);
 
-    this._warnDeprecations({
-      onSVChanged: 'onChange'
-    });
+    initializeComponentRef(this);
+    this._events = new EventGroup(this);
 
     const { color } = this.props;
 
@@ -41,12 +41,17 @@ export class ColorRectangleBase extends BaseComponent<IColorRectangleProps, ICol
     return this.state.color;
   }
 
-  public componentWillReceiveProps(newProps: IColorRectangleProps): void {
+  // tslint:disable-next-line function-name
+  public UNSAFE_componentWillReceiveProps(newProps: IColorRectangleProps): void {
     const { color } = newProps;
 
     this.setState({
       color: color
     });
+  }
+
+  public componentWillUnmount() {
+    this._events.dispose();
   }
 
   public render(): JSX.Element {
@@ -55,14 +60,15 @@ export class ColorRectangleBase extends BaseComponent<IColorRectangleProps, ICol
 
     const classNames = getClassNames(styles!, {
       theme: theme!,
-      className
+      className,
+      minSize
     });
 
     return (
       <div
         ref={this._root}
         className={classNames.root}
-        style={{ minWidth: minSize, minHeight: minSize, backgroundColor: getFullColorString(color) }}
+        style={{ backgroundColor: getFullColorString(color) }}
         onMouseDown={this._onMouseDown}
       >
         <div className={classNames.light} />
@@ -83,7 +89,7 @@ export class ColorRectangleBase extends BaseComponent<IColorRectangleProps, ICol
   };
 
   private _onMouseMove = (ev: React.MouseEvent<HTMLElement>): void => {
-    const { color, onSVChanged, onChange } = this.props;
+    const { color, onChange } = this.props;
 
     if (!this._root.current) {
       return;
@@ -105,10 +111,6 @@ export class ColorRectangleBase extends BaseComponent<IColorRectangleProps, ICol
 
       if (onChange) {
         onChange(ev, newColor);
-      }
-
-      if (onSVChanged) {
-        onSVChanged(newColor.s, newColor.v);
       }
     }
 

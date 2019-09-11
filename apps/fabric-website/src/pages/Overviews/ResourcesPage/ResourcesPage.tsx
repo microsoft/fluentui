@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Markdown, withPlatform, Page, IPageProps, IPageSectionProps } from '@uifabric/example-app-base/lib/index2';
+import { Markdown, PlatformContext, Page, IPageProps, IPageSectionProps } from '@uifabric/example-app-base/lib/index2';
 import { ResourcesPageProps } from './ResourcesPage.doc';
 import { Platforms } from '../../../interfaces/Platforms';
 
@@ -49,4 +49,6 @@ function _otherSections(): IPageSectionProps[] {
   ];
 }
 
-export const ResourcesPage: React.StatelessComponent<IResourcesPageProps> = withPlatform<Platforms>(ResourcesPageBase);
+export const ResourcesPage: React.StatelessComponent<IResourcesPageProps> = (props: IResourcesPageProps) => (
+  <PlatformContext.Consumer>{(platform: Platforms) => <ResourcesPageBase platform={platform} {...props} />}</PlatformContext.Consumer>
+);

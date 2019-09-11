@@ -9,7 +9,7 @@ import {
   IDocumentCardPreviewProps
 } from 'office-ui-fabric-react/lib/DocumentCard';
 import { ImageFit } from 'office-ui-fabric-react/lib/Image';
-import { TestImages } from '../../../common/TestImages';
+import { TestImages } from '@uifabric/example-data';
 
 export class DocumentCardCompleteExample extends React.PureComponent {
   public render(): JSX.Element {
@@ -19,7 +19,8 @@ export class DocumentCardCompleteExample extends React.PureComponent {
         {
           name: '2016 Conference Presentation',
           linkProps: {
-            href: 'http://bing.com'
+            href: 'http://bing.com',
+            target: '_blank'
           },
           previewImageSrc: TestImages.documentPreview,
           iconSrc: TestImages.iconPpt,
@@ -30,7 +31,8 @@ export class DocumentCardCompleteExample extends React.PureComponent {
         {
           name: 'New Contoso Collaboration for Conference Presentation Draft',
           linkProps: {
-            href: 'http://bing.com'
+            href: 'http://bing.com',
+            target: '_blank'
           },
           previewImageSrc: TestImages.documentPreviewTwo,
           iconSrc: TestImages.iconPpt,
@@ -41,7 +43,8 @@ export class DocumentCardCompleteExample extends React.PureComponent {
         {
           name: 'Spec Sheet for design',
           linkProps: {
-            href: 'http://bing.com'
+            href: 'http://bing.com',
+            target: '_blank'
           },
           previewImageSrc: TestImages.documentPreviewThree,
           iconSrc: TestImages.iconPpt,
@@ -52,7 +55,8 @@ export class DocumentCardCompleteExample extends React.PureComponent {
         {
           name: 'Contoso Marketing Presentation',
           linkProps: {
-            href: 'http://bing.com'
+            href: 'http://bing.com',
+            target: '_blank'
           },
           previewImageSrc: TestImages.documentPreview,
           iconSrc: TestImages.iconPpt,
@@ -63,7 +67,8 @@ export class DocumentCardCompleteExample extends React.PureComponent {
         {
           name: 'Notes from Ignite conference',
           linkProps: {
-            href: 'http://bing.com'
+            href: 'http://bing.com',
+            target: '_blank'
           },
           previewImageSrc: TestImages.documentPreviewTwo,
           iconSrc: TestImages.iconPpt,
@@ -74,7 +79,8 @@ export class DocumentCardCompleteExample extends React.PureComponent {
         {
           name: 'FY17 Cost Projections',
           linkProps: {
-            href: 'http://bing.com'
+            href: 'http://bing.com',
+            target: '_blank'
           },
           previewImageSrc: TestImages.documentPreviewThree,
           iconSrc: TestImages.iconPpt,

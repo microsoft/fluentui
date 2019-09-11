@@ -12,8 +12,7 @@
     "preserveConstEnums": true,
     "strict": true,
     "lib": ["es6", "dom"],
-    "typeRoots": ["node_modules/@types"],
-    "types": ["webpack-env"],
+    "types": ["webpack-env", "webpack-node-externals"],
     "skipLibCheck": true
   },
   "include": ["src"]

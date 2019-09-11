@@ -1,68 +1,33 @@
 import * as React from 'react';
-import { CommandButton, IButtonProps } from 'office-ui-fabric-react/lib/Button';
-import { Label } from 'office-ui-fabric-react/lib/Label';
-import { css, classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
-import { getStyles, IButtonBasicExampleStyleProps, IButtonBasicExampleStyles } from './Button.Basic.Example.styles';
+import { CommandButton, IContextualMenuProps, IIconProps } from 'office-ui-fabric-react';
 
-export class ButtonCommandExample extends React.Component<IButtonProps, {}> {
-  public render(): JSX.Element {
-    const { disabled, checked } = this.props;
-
-    const getClassNames = classNamesFunction<IButtonBasicExampleStyleProps, IButtonBasicExampleStyles>();
-    const classNames = getClassNames(getStyles, {});
-
-    return (
-      <div className={css(classNames.twoup)}>
-        <div>
-          <Label>CommandButton that focuses on menu</Label>
-          <CommandButton
-            data-automation-id="test"
-            disabled={disabled}
-            checked={checked}
-            iconProps={{ iconName: 'Add' }}
-            text="Create account"
-            menuProps={{
-              items: [
-                {
-                  key: 'emailMessage',
-                  text: 'Email message',
-                  iconProps: { iconName: 'Mail' }
-                },
-                {
-                  key: 'calendarEvent',
-                  text: 'Calendar event',
-                  iconProps: { iconName: 'Calendar' }
-                }
-              ]
-            }}
-          />
-        </div>
-        <div>
-          <Label>CommandButton that doesn't focus on menu</Label>
-          <CommandButton
-            data-automation-id="test"
-            disabled={disabled}
-            checked={checked}
-            iconProps={{ iconName: 'Add' }}
-            text="Create account"
-            menuProps={{
-              shouldFocusOnMount: false,
-              items: [
-                {
-                  key: 'emailMessage',
-                  text: 'Email message',
-                  iconProps: { iconName: 'Mail' }
-                },
-                {
-                  key: 'calendarEvent',
-                  text: 'Calendar event',
-                  iconProps: { iconName: 'Calendar' }
-                }
-              ]
-            }}
-          />
-        </div>
-      </div>
-    );
-  }
+export interface IButtonExampleProps {
+  // These are set based on the toggles shown above the examples (not needed in real code)
+  disabled?: boolean;
+  checked?: boolean;
 }
+
+const menuProps: IContextualMenuProps = {
+  items: [
+    {
+      key: 'emailMessage',
+      text: 'Email message',
+      iconProps: { iconName: 'Mail' }
+    },
+    {
+      key: 'calendarEvent',
+      text: 'Calendar event',
+      iconProps: { iconName: 'Calendar' }
+    }
+  ]
+  // By default, the menu will be focused when it opens. Uncomment the next line to prevent this.
+  // shouldFocusOnMount: false
+};
+
+const addIcon: IIconProps = { iconName: 'Add' };
+
+export const ButtonCommandExample: React.FunctionComponent<IButtonExampleProps> = props => {
+  const { disabled, checked } = props;
+
+  return <CommandButton iconProps={addIcon} text="New item" menuProps={menuProps} disabled={disabled} checked={checked} />;
+};

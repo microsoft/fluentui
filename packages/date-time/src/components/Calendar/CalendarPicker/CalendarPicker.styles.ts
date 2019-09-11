@@ -1,9 +1,21 @@
 import { ICalendarPickerStyleProps, ICalendarPickerStyles } from './CalendarPicker.types';
-import { normalize, FontSizes, FontWeights, getFocusStyle } from '@uifabric/styling';
+import { normalize, FontSizes, FontWeights, getFocusStyle, IRawStyle, AnimationStyles } from '@uifabric/styling';
+import { AnimationDirection } from '../Calendar.types';
 
 export const getStyles = (props: ICalendarPickerStyleProps): ICalendarPickerStyles => {
-  const { className, theme, hasHeaderClickCallback, highlightCurrent, highlightSelected } = props;
+  const { className, theme, hasHeaderClickCallback, highlightCurrent, highlightSelected, animateBackwards, animationDirection } = props;
   const { palette } = theme;
+
+  let animationStyle: IRawStyle = {};
+  if (animateBackwards !== undefined) {
+    if (animationDirection === AnimationDirection.Horizontal) {
+      animationStyle = animateBackwards ? AnimationStyles.slideRightIn20 : AnimationStyles.slideLeftIn20;
+    } else {
+      animationStyle = animateBackwards ? AnimationStyles.slideDownIn20 : AnimationStyles.slideUpIn20;
+    }
+  }
+
+  const headerAnimationStyle: IRawStyle = animateBackwards !== undefined ? AnimationStyles.fadeIn200 : {};
 
   return {
     root: [
@@ -11,7 +23,8 @@ export const getStyles = (props: ICalendarPickerStyleProps): ICalendarPickerStyl
       {
         width: 196,
         padding: 12,
-        boxSizing: 'content-box'
+        boxSizing: 'content-box',
+        overflow: 'hidden'
       },
       className
     ],
@@ -21,6 +34,7 @@ export const getStyles = (props: ICalendarPickerStyleProps): ICalendarPickerStyl
     currentItemButton: [
       getFocusStyle(theme, { inset: -1 }),
       {
+        ...headerAnimationStyle,
         fontSize: FontSizes.medium,
         fontWeight: FontWeights.semibold,
         textAlign: 'left',
@@ -74,6 +88,15 @@ export const getStyles = (props: ICalendarPickerStyleProps): ICalendarPickerStyl
     gridContainer: {
       marginTop: 4
     },
+    buttonRow: {
+      ...animationStyle,
+      marginBottom: 16,
+      selectors: {
+        '&:nth-child(n + 3)': {
+          marginBottom: 0
+        }
+      }
+    },
     itemButton: [
       getFocusStyle(theme, { inset: -1 }),
       {
@@ -84,7 +107,7 @@ export const getStyles = (props: ICalendarPickerStyleProps): ICalendarPickerStyl
         lineHeight: 40,
         fontSize: FontSizes.small,
         padding: 0,
-        margin: '0 12px 16px 0',
+        margin: '0 12px 0 0',
         color: palette.neutralPrimary,
         backgroundColor: 'transparent',
         border: 'none',

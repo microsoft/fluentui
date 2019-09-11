@@ -1,4 +1,4 @@
-// @uifabric/theme-samples@0.1.5
+// @uifabric/theme-samples@7.0.4
 // Do not modify this file, the file is generated as part of publish. The checked in version is a placeholder only.
 import { setVersion } from '@uifabric/set-version';
-setVersion('@uifabric/theme-samples', '0.1.5');
+setVersion('@uifabric/theme-samples', '7.0.4');

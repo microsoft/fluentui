@@ -63,9 +63,22 @@ export interface IStyleSheetConfig {
 }
 
 const STYLESHEET_SETTING = '__stylesheet__';
+/**
+ * MSIE 11 doesn't cascade styles based on DOM ordering, but rather on the order that each style node
+ * is created. As such, to maintain consistent priority, IE11 should reuse a single style node.
+ */
+const REUSE_STYLE_NODE = typeof navigator !== 'undefined' && /rv:11.0/.test(navigator.userAgent);
 
 // tslint:disable-next-line:no-any
-const _fileScopedGlobal: { [key: string]: any } = {};
+let _global: { [key: string]: any } = {};
+
+// Grab window.
+try {
+  _global = window;
+} catch {
+  /* leave as blank object */
+}
+
 let _stylesheet: Stylesheet;
 
 /**
@@ -94,14 +107,13 @@ export class Stylesheet {
    */
   public static getInstance(): Stylesheet {
     // tslint:disable-next-line:no-any
-    const global: any = typeof window !== 'undefined' ? window : _fileScopedGlobal;
-    _stylesheet = global[STYLESHEET_SETTING] as Stylesheet;
+    _stylesheet = _global[STYLESHEET_SETTING] as Stylesheet;
 
     if (!_stylesheet || (_stylesheet._lastStyleElement && _stylesheet._lastStyleElement.ownerDocument !== document)) {
       // tslint:disable-next-line:no-string-literal
-      const fabricConfig = (global && global['FabricConfig']) || {};
+      const fabricConfig = (_global && _global['FabricConfig']) || {};
 
-      _stylesheet = global[STYLESHEET_SETTING] = new Stylesheet(fabricConfig.mergeStyles);
+      _stylesheet = _global[STYLESHEET_SETTING] = new Stylesheet(fabricConfig.mergeStyles);
     }
 
     return _stylesheet;
@@ -258,19 +270,21 @@ export class Stylesheet {
     if (!this._styleElement && typeof document !== 'undefined') {
       this._styleElement = this._createStyleElement();
 
-      // Reset the style element on the next frame.
-      window.requestAnimationFrame(() => {
-        this._styleElement = undefined;
-      });
+      if (!REUSE_STYLE_NODE) {
+        // Reset the style element on the next frame.
+        window.requestAnimationFrame(() => {
+          this._styleElement = undefined;
+        });
+      }
     }
     return this._styleElement;
   }
 
   private _createStyleElement(): HTMLStyleElement {
+    const head: HTMLHeadElement = document.head;
     const styleElement = document.createElement('style');
 
     styleElement.setAttribute('data-merge-styles', 'true');
-    styleElement.type = 'text/css';
 
     const { cspSettings } = this._config;
     if (cspSettings) {
@@ -278,13 +292,29 @@ export class Stylesheet {
         styleElement.setAttribute('nonce', cspSettings.nonce);
       }
     }
-    if (this._lastStyleElement && this._lastStyleElement.nextElementSibling) {
-      document.head!.insertBefore(styleElement, this._lastStyleElement.nextElementSibling);
+    if (this._lastStyleElement) {
+      // If the `nextElementSibling` is null, then the insertBefore will act as a regular append.
+      // https://developer.mozilla.org/en-US/docs/Web/API/Node/insertBefore#Syntax
+      head!.insertBefore(styleElement, this._lastStyleElement.nextElementSibling);
     } else {
-      document.head!.appendChild(styleElement);
+      const placeholderStyleTag: Element | null = this._findPlaceholderStyleTag();
+
+      if (placeholderStyleTag) {
+        head!.insertBefore(styleElement, placeholderStyleTag.nextElementSibling);
+      } else {
+        head!.insertBefore(styleElement, head.childNodes[0]);
+      }
     }
     this._lastStyleElement = styleElement;
 
     return styleElement;
+  }
+
+  private _findPlaceholderStyleTag(): Element | null {
+    const head: HTMLHeadElement = document.head;
+    if (head) {
+      return head.querySelector('style[data-merge-styles]');
+    }
+    return null;
   }
 }

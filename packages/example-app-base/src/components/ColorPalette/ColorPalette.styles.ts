@@ -18,13 +18,16 @@ const square: IRawStyle = {
 };
 
 export const getStyles: IStyleFunction<IColorPaletteStyleProps, IColorPaletteStyles> = props => {
-  const { isCondensed, theme } = props;
+  const { isCondensed, theme, className } = props;
   return {
-    root: {
-      alignItems: 'flex-start',
-      display: 'flex',
-      marginTop: 28
-    },
+    root: [
+      {
+        alignItems: 'flex-start',
+        display: 'flex',
+        marginTop: 28
+      },
+      className
+    ],
     grid: {
       display: 'flex',
       flexBasis: '60%',
@@ -67,6 +70,12 @@ export const getStyles: IStyleFunction<IColorPaletteStyleProps, IColorPaletteSty
           top: 0
         }
       }
+    },
+    swatchTooltip: {
+      width: '100%',
+      height: '100%',
+      display: 'flex',
+      alignItems: 'flex-end'
     },
     swatchContent: {
       alignItems: 'center',

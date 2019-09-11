@@ -4,7 +4,7 @@ import { SearchBox } from 'office-ui-fabric-react/lib/SearchBox';
 import { Icon } from 'office-ui-fabric-react/lib/Icon';
 import './ContextualMenuExample.scss';
 import { IContextualMenuListProps, IContextualMenuItem } from 'office-ui-fabric-react/lib/ContextualMenu';
-import { IRenderFunction } from '@uifabric/utilities';
+import { IRenderFunction } from 'office-ui-fabric-react/lib/Utilities';
 
 const ITEMS: IContextualMenuItem[] = [
   {
@@ -90,7 +90,7 @@ export class ContextualMenuWithCustomMenuListExample extends React.Component<
     this.setState({ items: ITEMS });
   };
 
-  private _onChange = (newValue: string) => {
+  private _onChange = (ev: React.ChangeEvent<HTMLInputElement>, newValue: string) => {
     const filteredItems = ITEMS.filter(item => item.text && item.text.toLowerCase().indexOf(newValue.toLowerCase()) !== -1);
 
     if (!filteredItems || !filteredItems.length) {

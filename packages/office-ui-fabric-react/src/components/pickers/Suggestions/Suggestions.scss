@@ -10,6 +10,7 @@
   box-sizing: border-box;
   width: 100%;
   position: relative;
+  overflow: hidden;
 
   &:hover {
     background: $ms-color-neutralLighter;

@@ -9,7 +9,7 @@ export type ISettingsMap<T> = { [P in keyof T]?: string };
  * @param message - Warning message.
  */
 export function warn(message: string): void {
-  if (_warningCallback && typeof process !== 'undefined' && process.env.NODE_ENV !== 'production') {
+  if (_warningCallback && process.env.NODE_ENV !== 'production') {
     _warningCallback(message);
   } else if (console && console.warn) {
     console.warn(message);

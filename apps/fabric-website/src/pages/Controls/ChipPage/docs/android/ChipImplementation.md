@@ -1,13 +1,11 @@
-### Design
-
-Coming soon
-
 ### Control name
 
 `PersonaChipView`
 
-### Library
+### Source code
 
-[UI Fabric Android](https://github.com/OfficeDev/ui-fabric-android)
+[PersonaChipView](https://github.com/OfficeDev/ui-fabric-android/blob/master/OfficeUIFabric/src/main/java/com/microsoft/officeuifabric/persona/PersonaChipView.kt)
 
-[Sample Code](https://github.com/OfficeDev/ui-fabric-android/blob/master/OfficeUIFabric.Demo/src/main/java/com/microsoft/officeuifabricdemo/demos/PersonaChipViewActivity.kt)
+### Sample code
+
+[PersonaChipView demo activity](https://github.com/OfficeDev/ui-fabric-android/blob/master/OfficeUIFabric.Demo/src/main/java/com/microsoft/officeuifabricdemo/demos/PersonaChipViewActivity.kt)

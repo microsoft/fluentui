@@ -1,8 +1,9 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
+import { mount } from 'enzyme';
 
 import { SplitButton } from './SplitButton';
-import { ISplitButtonProps } from './SplitButton.types';
+import { ISplitButton, ISplitButtonProps } from './SplitButton.types';
 
 const menuProps: ISplitButtonProps['menu'] = {
   items: [
@@ -17,7 +18,7 @@ const menuProps: ISplitButtonProps['menu'] = {
   ]
 };
 
-describe('SplitButton view', () => {
+describe('SplitButton', () => {
   it('renders a SplitButton correctly', () => {
     const component = renderer.create(<SplitButton icon="Add" content="Default button" menu={menuProps} />);
     const tree = component.toJSON();
@@ -56,5 +57,31 @@ describe('SplitButton view', () => {
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot;
+  });
+
+  it('focuses correctly when focus is triggered via ISplitButton interface', () => {
+    const button1 = React.createRef<ISplitButton>();
+    const button2 = React.createRef<ISplitButton>();
+    const button3 = React.createRef<ISplitButton>();
+
+    const wrapper = mount(
+      <div>
+        <SplitButton content="Button 1" componentRef={button1} />
+        <SplitButton content="Button 2" componentRef={button2} />
+        <SplitButton content="Button 3" componentRef={button3} />
+      </div>
+    );
+
+    const buttons = wrapper.getDOMNode().querySelectorAll('span.ms-SplitButton > button.ms-Button') as NodeListOf<HTMLButtonElement>;
+    expect(buttons.length).toEqual(3);
+
+    button1.current!.focus();
+    expect(document.activeElement!).toBe(buttons[0]);
+
+    button2.current!.focus();
+    expect(document.activeElement!).toBe(buttons[1]);
+
+    button3.current!.focus();
+    expect(document.activeElement!).toBe(buttons[2]);
   });
 });

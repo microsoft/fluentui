@@ -71,7 +71,7 @@ export interface ICommandBarProps extends React.HTMLAttributes<HTMLDivElement> {
    * Custom function to reduce data if items do not fit in given space. Return `undefined`
    * if no more steps can be taken to avoid infinate loop.
    */
-  onReduceData?: (data: ICommandBarData) => ICommandBarData;
+  onReduceData?: (data: ICommandBarData) => ICommandBarData | undefined;
 
   /**
    * Custom function to grow data if items are too small for the given space.
@@ -88,6 +88,14 @@ export interface ICommandBarProps extends React.HTMLAttributes<HTMLDivElement> {
    * Function callback invoked when data has been grown.
    */
   onDataGrown?: (movedItem: ICommandBarItemProps) => void;
+
+  /**
+   * Function to be called every time data is rendered. It provides the data that was actually rendered.
+   * A use case would be adding telemetry when a particular control is shown in an overflow well or
+   * dropped as a result of onReduceData or to count the number of renders that an implementation of
+   * onReduceData triggers.
+   */
+  dataDidRender?: (renderedData: any) => void;
 
   /**
    * Additional css class to apply to the command bar

@@ -5,10 +5,23 @@ import {
   ScreenWidthMaxSmall,
   ScreenWidthMinMedium,
   getFocusStyle,
-  getScreenSelector
+  getScreenSelector,
+  getGlobalClassNames,
+  FontWeights
 } from '../../Styling';
 import { IBreadcrumbStyleProps, IBreadcrumbStyles } from './Breadcrumb.types';
 import { IsFocusVisibleClassName } from '../../Utilities';
+
+const GlobalClassNames = {
+  root: 'ms-Breadcrumb',
+  list: 'ms-Breadcrumb-list',
+  listItem: 'ms-Breadcrumb-listItem',
+  chevron: 'ms-Breadcrumb-chevron',
+  overflow: 'ms-Breadcrumb-overflow',
+  overflowButton: 'ms-Breadcrumb-overflowButton',
+  itemLink: 'ms-Breadcrumb-itemLink',
+  item: 'ms-Breadcrumb-item'
+};
 
 const SingleLineTextStyle: IRawStyle = {
   whiteSpace: 'nowrap',
@@ -16,27 +29,80 @@ const SingleLineTextStyle: IRawStyle = {
   overflow: 'hidden'
 };
 
+const overflowButtonFontSize = 16;
+const chevronSmallFontSize = 8;
+const itemLineHeight = 36;
+const itemFontSize = 18;
+
 const MinimumScreenSelector = getScreenSelector(0, ScreenWidthMaxSmall);
 const MediumScreenSelector = getScreenSelector(ScreenWidthMinMedium, ScreenWidthMaxMedium);
 
 export const getStyles = (props: IBreadcrumbStyleProps): IBreadcrumbStyles => {
   const { className, theme } = props;
+  const { palette, semanticColors, fonts } = theme;
 
-  const overflowButtonFontSize = 16;
-  const chevronSmallFontSize = 8;
+  const classNames = getGlobalClassNames(GlobalClassNames, theme);
+
+  // Tokens
+  const itemBackgroundHoveredColor = semanticColors.menuItemBackgroundHovered;
+  const itemBackgroundPressedColor = semanticColors.menuItemBackgroundPressed;
+  const itemTextColor = palette.neutralSecondary;
+  const itemTextFontWeight = FontWeights.regular;
+  const itemTextHoveredOrPressedColor = palette.neutralPrimary;
+  const itemLastChildTextColor = palette.neutralPrimary;
+  const itemLastChildTextFontWeight = FontWeights.semibold;
+  const chevronButtonColor = palette.neutralSecondary;
+  const overflowButtonColor = palette.neutralSecondary;
+
+  const lastChildItemStyles: IRawStyle = {
+    fontWeight: itemLastChildTextFontWeight,
+    color: itemLastChildTextColor
+  };
+
+  const itemStateSelectors = {
+    ':hover': {
+      color: itemTextHoveredOrPressedColor,
+      backgroundColor: itemBackgroundHoveredColor,
+      cursor: 'pointer',
+      selectors: {
+        [HighContrastSelector]: {
+          color: 'Highlight'
+        }
+      }
+    },
+    ':active': {
+      backgroundColor: itemBackgroundPressedColor,
+      color: itemTextHoveredOrPressedColor
+    },
+    '&:active:hover': {
+      color: itemTextHoveredOrPressedColor,
+      backgroundColor: itemBackgroundPressedColor
+    },
+    '&:active, &:hover, &:active:hover': {
+      textDecoration: 'none'
+    }
+  };
+
+  const commonItemStyles: IRawStyle = {
+    color: itemTextColor,
+    padding: '0 8px',
+    lineHeight: itemLineHeight,
+    fontSize: itemFontSize,
+    fontWeight: itemTextFontWeight
+  };
 
   return {
     root: [
-      'ms-Breadcrumb',
-      theme.fonts.medium,
+      classNames.root,
+      fonts.medium,
       {
-        margin: '23px 0 1px'
+        margin: '11px 0 1px'
       },
       className
     ],
 
     list: [
-      'ms-Breadcrumb-list',
+      classNames.list,
       {
         whiteSpace: 'nowrap',
         padding: 0,
@@ -47,22 +113,26 @@ export const getStyles = (props: IBreadcrumbStyleProps): IBreadcrumbStyles => {
     ],
 
     listItem: [
-      'ms-Breadcrumb-listItem',
+      classNames.listItem,
       {
         listStyleType: 'none',
         margin: '0',
         padding: '0',
         display: 'flex',
         position: 'relative',
-        alignItems: 'center'
+        alignItems: 'center',
+        selectors: {
+          '&:last-child .ms-Breadcrumb-itemLink': lastChildItemStyles,
+          '&:last-child .ms-Breadcrumb-item': lastChildItemStyles
+        }
       }
     ],
 
     chevron: [
-      'ms-Breadcrumb-chevron',
+      classNames.chevron,
       {
-        color: theme.palette.neutralSecondary,
-        fontSize: theme.fonts.small.fontSize,
+        color: chevronButtonColor,
+        fontSize: fonts.small.fontSize,
         selectors: {
           [HighContrastSelector]: {
             color: 'WindowText',
@@ -79,7 +149,7 @@ export const getStyles = (props: IBreadcrumbStyleProps): IBreadcrumbStyles => {
     ],
 
     overflow: [
-      'ms-Breadcrumb-overflow',
+      classNames.overflow,
       {
         position: 'relative',
         display: 'flex',
@@ -88,78 +158,48 @@ export const getStyles = (props: IBreadcrumbStyleProps): IBreadcrumbStyles => {
     ],
 
     overflowButton: [
-      'ms-Breadcrumb-overflowButton',
+      classNames.overflowButton,
       getFocusStyle(theme),
       SingleLineTextStyle,
       {
         fontSize: overflowButtonFontSize,
+        color: overflowButtonColor,
         height: '100%',
         cursor: 'pointer',
         selectors: {
-          ':hover': {
-            backgroundColor: theme.palette.neutralLighter
-          },
-          ':active': {
-            backgroundColor: theme.palette.neutralTertiaryAlt,
-            color: theme.semanticColors.bodyText
-          },
-          ':hover:active': {
-            // This seems unnecessary.
-            backgroundColor: theme.palette.neutralQuaternary
-          },
+          ...itemStateSelectors,
           [MinimumScreenSelector]: {
             padding: '4px 6px'
           },
           [MediumScreenSelector]: {
-            fontSize: theme.fonts.mediumPlus.fontSize
+            fontSize: fonts.mediumPlus.fontSize
           }
         }
       }
     ],
 
     itemLink: [
-      'ms-Breadcrumb-itemLink',
+      classNames.itemLink,
       getFocusStyle(theme),
       SingleLineTextStyle,
-      theme.fonts.xLarge,
       {
-        textDecoration: 'none',
-        color: theme.semanticColors.bodyText,
-        padding: '0 8px',
-
+        ...commonItemStyles,
         selectors: {
-          ':hover': {
-            backgroundColor: theme.semanticColors.menuItemBackgroundHovered,
-            color: 'initial',
-            cursor: 'pointer',
-            selectors: {
-              [HighContrastSelector]: {
-                color: 'Highlight'
-              }
-            }
-          },
           ':focus': {
-            color: theme.palette.neutralDark
+            color: palette.neutralDark
           },
-          ':active': {
-            backgroundColor: theme.palette.neutralTertiaryAlt,
-            color: theme.palette.neutralPrimary
-          },
-          [MediumScreenSelector]: theme.fonts.large,
-          [MinimumScreenSelector]: [theme.fonts.medium],
           [`.${IsFocusVisibleClassName} &:focus`]: {
             outline: `none`
-          }
+          },
+          ...itemStateSelectors
         }
       }
     ],
-    item: [
-      'ms-Breadcrumb-item',
-      theme.fonts.xLarge,
-      {
-        color: theme.semanticColors.bodyText,
-        padding: '0 8px',
 
+    item: [
+      classNames.item,
+      {
+        ...commonItemStyles,
         selectors: {
           ':hover': {
             cursor: 'default'
