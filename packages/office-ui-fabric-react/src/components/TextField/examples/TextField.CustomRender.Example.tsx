@@ -21,11 +21,17 @@ export class TextFieldCustomRenderExample extends React.Component<{}, ITextField
 
   private _descriptionId: string = getId('description');
   private _iconButtonId: string = getId('iconButton');
+  private _labelId: string = getId('label');
 
   public render(): JSX.Element {
     return (
       <Stack tokens={stackTokens}>
-        <TextField label="Custom label rendering" onRenderLabel={this._onRenderLabel} description="Click the (i) icon!" />
+        <TextField
+          aria-labelledby={this._labelId}
+          label="Custom label rendering"
+          onRenderLabel={this._onRenderLabel}
+          description="Click the (i) icon!"
+        />
 
         <TextField
           label="Custom description rendering"
@@ -49,7 +55,7 @@ export class TextFieldCustomRenderExample extends React.Component<{}, ITextField
     return (
       <>
         <Stack horizontal verticalAlign="center">
-          <span>{props.label}</span>
+          <span id={this._labelId}>{props.label}</span>
           <IconButton
             id={this._iconButtonId}
             iconProps={{ iconName: 'Info' }}
