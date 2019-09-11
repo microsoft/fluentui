@@ -4,6 +4,8 @@
 
 ```ts
 
+import * as React from 'react';
+
 // @internal (undocumented)
 export function createGroups(groupCount: number, groupDepth: number, startIndex: number, itemsPerGroup: number, level?: number, key?: string, isCollapsed?: boolean): IExampleGroup[];
 
@@ -56,7 +58,7 @@ export interface IExampleFacepilePersona {
     // (undocumented)
     initialsColor?: number;
     // (undocumented)
-    onClick?: (ev: unknown, persona?: IExampleFacepilePersona) => void;
+    onClick?: (ev: React.MouseEvent<HTMLElement>, persona?: IExampleFacepilePersona) => void;
     // (undocumented)
     personaName?: string;
 }

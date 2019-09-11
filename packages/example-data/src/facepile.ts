@@ -1,3 +1,5 @@
+import * as React from 'react';
+
 import { TestImages } from './testImages';
 
 /**
@@ -11,7 +13,7 @@ export interface IExampleFacepilePersona {
   imageInitials?: string;
   initialsColor?: number;
   personaName?: string;
-  onClick?: (ev: unknown, persona?: IExampleFacepilePersona) => void;
+  onClick?: (ev: React.MouseEvent<HTMLElement>, persona?: IExampleFacepilePersona) => void;
   data?: any; // tslint:disable-line:no-any
 }
 
@@ -64,7 +66,7 @@ export const facepilePersonas: IExampleFacepilePersona[] = [
   {
     personaName: 'Alex Lundberg',
     data: '75%',
-    onClick: (ev: unknown, persona: IExampleFacepilePersona) =>
+    onClick: (ev: React.MouseEvent<HTMLElement>, persona: IExampleFacepilePersona) =>
       alert('You clicked on ' + persona.personaName + '. Extra data: ' + persona.data)
   },
   {
@@ -83,7 +85,7 @@ export const facepilePersonas: IExampleFacepilePersona[] = [
     personaName: 'Valentina Lovric',
     initialsColor: PersonaInitialsColor.lightBlue,
     data: 'Emp1234',
-    onClick: (ev: unknown, persona: IExampleFacepilePersona) =>
+    onClick: (ev: React.MouseEvent<HTMLElement>, persona: IExampleFacepilePersona) =>
       alert('You clicked on ' + persona.personaName + '. Extra data: ' + persona.data)
   },
   {
@@ -104,7 +106,7 @@ export const facepilePersonas: IExampleFacepilePersona[] = [
     personaName: 'Aaron Reid2',
     initialsColor: PersonaInitialsColor.magenta,
     data: 'Emp1234',
-    onClick: (ev: unknown, persona: IExampleFacepilePersona) =>
+    onClick: (ev: React.MouseEvent<HTMLElement>, persona: IExampleFacepilePersona) =>
       alert('You clicked on ' + persona.personaName + '. Extra data: ' + persona.data)
   },
   {
