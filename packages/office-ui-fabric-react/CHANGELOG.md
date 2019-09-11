@@ -1,7 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 06 Sep 2019 12:24:17 GMT and should not be manually modified.
+This log was last generated on Wed, 11 Sep 2019 12:24:40 GMT and should not be manually modified.
 
+## 6.203.4
+Wed, 11 Sep 2019 12:24:40 GMT
+
+### Patches
+
+- Cherry pick PRs #9110 and #10344 from Fabric 7 master branch to Fabric 6, used to show focus indicator in checkbox (lilijing@microsoft.com)
 ## 6.203.3
 Fri, 06 Sep 2019 12:24:17 GMT
 

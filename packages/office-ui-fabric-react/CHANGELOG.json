@@ -2,6 +2,20 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Wed, 11 Sep 2019 12:24:40 GMT",
+      "tag": "office-ui-fabric-react_v6.203.4",
+      "version": "6.203.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Cherry pick PRs #9110 and #10344 from Fabric 7 master branch to Fabric 6, used to show focus indicator in checkbox",
+            "author": "lilijing@microsoft.com",
+            "commit": "a66649e604e813069c9d84c9f60f0401e1b562c2"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 06 Sep 2019 12:24:17 GMT",
       "tag": "office-ui-fabric-react_v6.203.3",
       "version": "6.203.3",
