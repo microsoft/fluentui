@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Listen to onCompositionUpdate instead of onInput for IME composition",
+  "packageName": "office-ui-fabric-react",
+  "email": "amyngu@microsoft.com",
+  "commit": "6887a0c16112c7267bed6998cea0ec119bc6ca6d",
+  "date": "2019-09-11T22:47:59.415Z"
+}
