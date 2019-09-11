@@ -2,6 +2,20 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Wed, 11 Sep 2019 12:35:47 GMT",
+      "tag": "office-ui-fabric-react_v7.31.3",
+      "version": "7.31.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Combobox: ensure that state doesn't mutate in controlled scenario",
+            "author": "joschect@microsoft.com",
+            "commit": "194aa66c1cfd4aa517b686383c01508403a229e4"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 09 Sep 2019 21:43:18 GMT",
       "tag": "office-ui-fabric-react_v7.31.2",
       "version": "7.31.2",

@@ -1,7 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 09 Sep 2019 21:43:18 GMT and should not be manually modified.
+This log was last generated on Wed, 11 Sep 2019 12:35:47 GMT and should not be manually modified.
 
+## 7.31.3
+Wed, 11 Sep 2019 12:35:47 GMT
+
+### Patches
+
+- Combobox: ensure that state doesn't mutate in controlled scenario (joschect@microsoft.com)
 ## 7.31.2
 Mon, 09 Sep 2019 21:43:18 GMT
 

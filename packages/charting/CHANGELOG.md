@@ -1,7 +1,13 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Wed, 04 Sep 2019 04:09:58 GMT and should not be manually modified.
+This log was last generated on Wed, 11 Sep 2019 12:35:47 GMT and should not be manually modified.
 
+## 0.135.0
+Wed, 11 Sep 2019 12:35:47 GMT
+
+### Minor changes
+
+- Expose hideLegend prop for stacked bar chart (v-ragor@microsoft.com)
 ## 0.134.4
 Wed, 04 Sep 2019 04:09:58 GMT
 
