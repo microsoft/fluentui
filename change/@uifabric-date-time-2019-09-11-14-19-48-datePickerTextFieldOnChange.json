@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "DatePicker: call custom text field onChange handler if it exists in default onChange handler",
+  "packageName": "@uifabric/date-time",
+  "email": "naethell@microsoft.com",
+  "commit": "66c08397d029b26f7044440f86232aa72ae4d352",
+  "date": "2019-09-11T21:19:33.301Z"
+}
