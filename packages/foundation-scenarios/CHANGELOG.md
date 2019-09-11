@@ -1,7 +1,13 @@
 # Change Log - @uifabric/foundation-scenarios
 
-This log was last generated on Fri, 23 Aug 2019 12:35:28 GMT and should not be manually modified.
+This log was last generated on Wed, 04 Sep 2019 04:09:58 GMT and should not be manually modified.
 
+## 0.102.4
+Wed, 04 Sep 2019 04:09:58 GMT
+
+### Patches
+
+- fix version file (kchau@microsoft.com)
 ## 0.102.3
 Fri, 23 Aug 2019 12:35:28 GMT
 

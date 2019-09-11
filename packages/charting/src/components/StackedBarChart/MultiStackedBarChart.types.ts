@@ -35,6 +35,13 @@ export interface IMultiStackedBarChartProps {
   hideRatio?: boolean[];
 
   /**
+   * Do not show the legend at the bottom of chart
+   *
+   * @default false
+   */
+  hideLegend?: boolean;
+
+  /**
    * Call to provide customized styling that will layer on top of the variant rules.
    */
   styles?: IStyleFunctionOrObject<IMultiStackedBarChartStyleProps, IMultiStackedBarChartStyles>;

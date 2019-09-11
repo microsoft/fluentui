@@ -46,8 +46,10 @@ function lintImports() {
     '@uifabric/experiments/lib/utilities/scrolling/ScrollContainer',
     // Once the components using this data are promoted, the data should go into @uifabric/example-data
     '@uifabric/experiments/lib/common/TestImages',
-    '@uifabric/experiments/lib/components/TilesList/examples/ExampleHelpers'
+    '@uifabric/experiments/lib/components/TilesList/examples/ExampleHelpers',
+    '@uifabric/foundation/lib/next/composed'
   ];
+  const allowedReexportedImports = ['@uifabric/foundation/lib/next/composed'];
   const reExportedPackages = {
     '@uifabric/foundation': 'Foundation',
     '@uifabric/icons': 'Icons',
@@ -222,7 +224,7 @@ function lintImports() {
         importErrors.pathDeep.matches[relativePath] = { importPath };
       }
 
-      if (reExportedPackages[pkgName]) {
+      if (reExportedPackages[pkgName] && !allowedReexportedImports.includes(importPath)) {
         importErrors.pathReExported.count++;
         importErrors.pathReExported.matches[relativePath] = {
           importPath,

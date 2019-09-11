@@ -2,6 +2,48 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "date": "Mon, 09 Sep 2019 21:43:18 GMT",
+      "tag": "@uifabric/fabric-website_v7.4.6",
+      "version": "7.4.6",
+      "comments": {
+        "patch": [
+          {
+            "comment": "updated docs for BottomSheet and Drawer",
+            "author": "willdo@microsoft.com",
+            "commit": "07dff065fcd5b67559080e838627481af411c059"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 06 Sep 2019 12:34:51 GMT",
+      "tag": "@uifabric/fabric-website_v7.4.5",
+      "version": "7.4.5",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Hacked an examplecard msicon override for a specific DetailsList Drag and Drop page in fabric website",
+            "author": "kchau@microsoft.com",
+            "commit": "b988c64fa3b73070e9e58607d4100ba26ffa44ab"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 04 Sep 2019 04:09:58 GMT",
+      "tag": "@uifabric/fabric-website_v7.4.4",
+      "version": "7.4.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fix version file",
+            "author": "kchau@microsoft.com",
+            "commit": "fbccfaf91bfe3c77d95c614ac2cb69b7c9e1dad1"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 02 Sep 2019 12:33:56 GMT",
       "tag": "@uifabric/fabric-website_v7.4.3",
       "version": "7.4.3",
