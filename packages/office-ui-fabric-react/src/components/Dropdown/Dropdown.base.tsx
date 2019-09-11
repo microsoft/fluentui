@@ -213,34 +213,7 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
     const disabled = this._isDisabled();
 
     const optionId = id + '-option';
-    const ariaAttrs = disabled
-      ? {
-          role: undefined,
-          ariaActiveDescendant: undefined,
-          childRole: undefined,
-          ariaSetSize: undefined,
-          ariaPosInSet: undefined,
-          ariaSelected: undefined
-        }
-      : multiSelect
-      ? {
-          role: 'listbox',
-          ariaActiveDescendant: undefined,
-          childRole: 'option',
-          ariaSetSize: this._sizePosCache.optionSetSize,
-          ariaPosInSet: undefined, // multiple options (and therefore, positions) may be selected
-          ariaSelected: selectedIndices[0] === undefined ? undefined : true
-        }
-      : // single select
-        {
-          role: 'listbox',
-          ariaActiveDescendant:
-            isOpen && selectedIndices.length === 1 && selectedIndices[0] >= 0 ? this._id + '-list' + selectedIndices[0] : optionId,
-          childRole: 'option',
-          ariaSetSize: this._sizePosCache.optionSetSize,
-          ariaPosInSet: this._sizePosCache.positionInSet(selectedIndices[0]),
-          ariaSelected: selectedIndices[0] === undefined ? undefined : true
-        };
+    const ariaAttrs = this._getAriaAttributes(optionId, disabled);
 
     this._classNames = getClassNames(propStyles, {
       theme,
@@ -390,6 +363,50 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
       onChanged(changedOpt, index);
     }
   };
+
+  private _getAriaAttributes(
+    optionId: string,
+    disabled?: boolean
+  ): {
+    role?: string;
+    ariaActiveDescendant?: string;
+    childRole?: string;
+    ariaSetSize?: number;
+    ariaPosInSet?: number;
+    ariaSelected?: boolean;
+  } {
+    const { multiSelect } = this.props;
+    const { isOpen, selectedIndices } = this.state;
+
+    return disabled
+      ? {
+          role: undefined,
+          ariaActiveDescendant: undefined,
+          childRole: undefined,
+          ariaSetSize: undefined,
+          ariaPosInSet: undefined,
+          ariaSelected: undefined
+        }
+      : multiSelect
+      ? {
+          role: 'listbox',
+          ariaActiveDescendant: undefined,
+          childRole: 'option',
+          ariaSetSize: this._sizePosCache.optionSetSize,
+          ariaPosInSet: undefined, // multiple options (and therefore, positions) may be selected
+          ariaSelected: selectedIndices[0] === undefined ? undefined : true
+        }
+      : // single select
+        {
+          role: 'listbox',
+          ariaActiveDescendant:
+            isOpen && selectedIndices.length === 1 && selectedIndices[0] >= 0 ? this._id + '-list' + selectedIndices[0] : optionId,
+          childRole: 'option',
+          ariaSetSize: this._sizePosCache.optionSetSize,
+          ariaPosInSet: this._sizePosCache.positionInSet(selectedIndices[0]),
+          ariaSelected: selectedIndices[0] === undefined ? undefined : true
+        };
+  }
 
   /** Get either props.placeholder (new name) or props.placeHolder (old name) */
   private get _placeholder(): string | undefined {
