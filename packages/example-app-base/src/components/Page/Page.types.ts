@@ -66,6 +66,9 @@ export interface IPageProps<TPlatforms extends string = string> {
   /** (7) Properties table(s) as Markdown string. Mutually exclusive with `jsonDocs`. */
   propertiesTablesSources?: string[];
 
+  /** (8) The accessibility guidelines as Markdown string. */
+  accessibility?: string;
+
   /**
    * For properties (implementation) section, whether the component allows native props.
    * Only relevant if using `propertiesTableSources`.

@@ -48,6 +48,7 @@ export const SearchBoxPageProps: IDocPageProps = {
       view: <SearchBoxSmallExample />
     }
   ],
+
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/SearchBox/docs/SearchBoxOverview.md'),
   bestPractices: require<string>('!raw-loader!office-ui-fabric-react/src/components/SearchBox/docs/SearchBoxBestPractices.md'),
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/SearchBox/docs/SearchBoxDos.md'),
