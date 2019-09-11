@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "add accessibility section and add content for modal",
+  "packageName": "@uifabric/fabric-website-resources",
+  "email": "mgodbolt@microsoft.com",
+  "commit": "8bd0327d2378b7af36d3e1fecbba990aa3ac483b",
+  "date": "2019-09-11T21:52:36.779Z"
+}
