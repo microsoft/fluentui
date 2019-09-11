@@ -102,6 +102,7 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
     if (this.props.multiSelect) {
       const selectedKeys = props.defaultSelectedKeys !== undefined ? props.defaultSelectedKeys : props.selectedKeys;
       selectedIndices = this._getSelectedIndexes(props.options, selectedKeys);
+      this._sizePosCache.updateOptions(props.options);
     } else {
       const selectedKey = props.defaultSelectedKey !== undefined ? props.defaultSelectedKey : props.selectedKey;
       selectedIndices = this._getSelectedIndexes(props.options, selectedKey!);
@@ -160,10 +161,7 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
       });
     }
 
-    if (
-      newProps.options !== this.props.options && // preexisting code assumes purity of the options...
-      !newProps.multiSelect // only relevant in single selection
-    ) {
+    if (newProps.options !== this.props.options) {
       this._sizePosCache.updateOptions(newProps.options);
     }
   }
@@ -208,31 +206,41 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
     const onRenderPlaceholder = props.onRenderPlaceholder || props.onRenderPlaceHolder || this._onRenderPlaceholder;
 
     const selectedOptions = getAllSelectedOptions(options, selectedIndices);
+    const selectedOptionsAriaLabel = this._joinMultiSelectItems(selectedOptions);
     const divProps = getNativeProps(props, divProperties);
 
     const disabled = this._isDisabled();
 
     const optionId = id + '-option';
-    const ariaAttrs =
-      multiSelect || disabled
-        ? {
-            role: undefined,
-            ariaActiveDescendant: undefined,
-            childRole: undefined,
-            ariaSetSize: undefined,
-            ariaPosInSet: undefined,
-            ariaSelected: undefined
-          }
-        : // single select
-          {
-            role: 'listbox',
-            ariaActiveDescendant:
-              isOpen && selectedIndices.length === 1 && selectedIndices[0] >= 0 ? this._id + '-list' + selectedIndices[0] : optionId,
-            childRole: 'option',
-            ariaSetSize: this._sizePosCache.optionSetSize,
-            ariaPosInSet: this._sizePosCache.positionInSet(selectedIndices[0]),
-            ariaSelected: selectedIndices[0] === undefined ? undefined : true
-          };
+    const ariaAttrs = disabled
+      ? {
+          role: undefined,
+          ariaActiveDescendant: undefined,
+          childRole: undefined,
+          ariaSetSize: undefined,
+          ariaPosInSet: undefined,
+          ariaSelected: undefined
+        }
+      : multiSelect
+      ? {
+          role: 'listbox',
+          ariaActiveDescendant:
+            isOpen && selectedIndices.length === 1 && selectedIndices[0] >= 0 ? this._id + '-list' + selectedIndices[0] : optionId,
+          childRole: 'option',
+          ariaSetSize: this._sizePosCache.optionSetSize,
+          ariaPosInSet: undefined, // multiple options (and therefore, positions) may be selected
+          ariaSelected: selectedIndices[0] === undefined ? undefined : true
+        }
+      : // single select
+        {
+          role: 'listbox',
+          ariaActiveDescendant:
+            isOpen && selectedIndices.length === 1 && selectedIndices[0] >= 0 ? this._id + '-list' + selectedIndices[0] : optionId,
+          childRole: 'option',
+          ariaSetSize: this._sizePosCache.optionSetSize,
+          ariaPosInSet: this._sizePosCache.positionInSet(selectedIndices[0]),
+          ariaSelected: selectedIndices[0] === undefined ? undefined : true
+        };
 
     this._classNames = getClassNames(propStyles, {
       theme,
@@ -282,7 +290,7 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
                 aria-atomic={true}
                 role={ariaAttrs.childRole}
                 aria-live={!hasFocus || disabled || multiSelect || isOpen ? 'off' : 'assertive'}
-                aria-label={selectedOptions.length ? selectedOptions[0].text : this._placeholder}
+                aria-label={selectedOptions.length ? selectedOptionsAriaLabel : this._placeholder}
                 aria-setsize={ariaAttrs.ariaSetSize}
                 aria-posinset={ariaAttrs.ariaPosInSet}
                 aria-selected={ariaAttrs.ariaSelected}
@@ -444,12 +452,18 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
     return index;
   }
 
-  /** Render text in dropdown input */
-  private _onRenderTitle = (items: IDropdownOption[]): JSX.Element => {
+  /**
+   * Returns the array of dropdown options as its text property values in a single string separated by commas
+   */
+  private _joinMultiSelectItems(items: IDropdownOption[]): string {
     const { multiSelectDelimiter = ', ' } = this.props;
 
-    const displayTxt = items.map(i => i.text).join(multiSelectDelimiter);
-    return <span>{displayTxt}</span>;
+    return items.map(i => i.text).join(multiSelectDelimiter);
+  }
+
+  /** Render text in dropdown input */
+  private _onRenderTitle = (items: IDropdownOption[]): JSX.Element => {
+    return <span>{this._joinMultiSelectItems(items)}</span>;
   };
 
   /** Render placeholder text in dropdown input */
