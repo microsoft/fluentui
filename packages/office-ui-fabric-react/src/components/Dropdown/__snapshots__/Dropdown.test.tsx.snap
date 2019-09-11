@@ -102,11 +102,13 @@ exports[`Dropdown multi-select Renders multiselect Dropdown correctly 1`] = `
     onFocus={[Function]}
     onKeyDown={[Function]}
     onKeyUp={[Function]}
+    role="listbox"
     tabIndex={0}
   >
     <span
       aria-atomic={true}
       aria-live="off"
+      aria-setsize={6}
       className=
           ms-Dropdown-title
           ms-Dropdown-titleIsPlaceHolder
@@ -137,6 +139,7 @@ exports[`Dropdown multi-select Renders multiselect Dropdown correctly 1`] = `
             white-space: nowrap;
           }
       id="Dropdown0-option"
+      role="option"
     />
     <span
       className=

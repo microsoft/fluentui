@@ -568,12 +568,15 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
       onFocus={[Function]}
       onKeyDown={[Function]}
       onKeyUp={[Function]}
+      role="listbox"
       tabIndex={0}
     >
       <span
         aria-atomic={true}
-        aria-label="Apple"
+        aria-label="Apple, Banana, Grape"
         aria-live="off"
+        aria-selected={true}
+        aria-setsize={7}
         className=
             ms-Dropdown-title
             {
@@ -602,6 +605,7 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
               white-space: nowrap;
             }
         id="Dropdown2-option"
+        role="option"
       >
         <span>
           Apple, Banana, Grape

@@ -135,12 +135,14 @@ exports[`Component Examples renders Dropdown.ControlledMulti.Example.tsx correct
     onFocus={[Function]}
     onKeyDown={[Function]}
     onKeyUp={[Function]}
+    role="listbox"
     tabIndex={0}
   >
     <span
       aria-atomic={true}
       aria-label="Select options"
       aria-live="off"
+      aria-setsize={7}
       className=
           ms-Dropdown-title
           ms-Dropdown-titleIsPlaceHolder
@@ -171,6 +173,7 @@ exports[`Component Examples renders Dropdown.ControlledMulti.Example.tsx correct
             white-space: nowrap;
           }
       id="Dropdown0-option"
+      role="option"
     >
       <span>
         Select options
