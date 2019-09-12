@@ -1,7 +1,13 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Fri, 06 Sep 2019 12:34:51 GMT and should not be manually modified.
+This log was last generated on Thu, 12 Sep 2019 12:34:15 GMT and should not be manually modified.
 
+## 7.16.2
+Thu, 12 Sep 2019 12:34:15 GMT
+
+### Patches
+
+- Update examples to only export one component (elcraig@microsoft.com)
 ## 7.16.1
 Fri, 06 Sep 2019 12:34:51 GMT
 

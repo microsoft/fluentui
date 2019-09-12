@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fix examples to only export a single component",
-  "packageName": "office-ui-fabric-react",
-  "email": "elcraig@microsoft.com",
-  "commit": "485574797c272506647b6fb98d4ae5989d8eb9f9",
-  "date": "2019-09-10T18:33:20.358Z"
-}

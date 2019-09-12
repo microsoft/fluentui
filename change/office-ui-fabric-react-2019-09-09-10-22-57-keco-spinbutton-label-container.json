@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Only render SpinButton label container if label or icon is present",
-  "packageName": "office-ui-fabric-react",
-  "email": "KevinTCoughlin@users.noreply.github.com",
-  "commit": "912210e2a0f36b0951af95248fa12674a2f16289",
-  "date": "2019-09-09T17:22:57.013Z"
-}

@@ -1,7 +1,13 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Mon, 09 Sep 2019 21:43:18 GMT and should not be manually modified.
+This log was last generated on Thu, 12 Sep 2019 12:34:15 GMT and should not be manually modified.
 
+## 7.4.7
+Thu, 12 Sep 2019 12:34:15 GMT
+
+### Patches
+
+- Update readme and fix minor IE compat issue (elcraig@microsoft.com)
 ## 7.4.6
 Mon, 09 Sep 2019 21:43:18 GMT
 

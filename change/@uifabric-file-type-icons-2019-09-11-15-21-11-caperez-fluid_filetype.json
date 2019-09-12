@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "updating office file type to include .b",
-  "packageName": "@uifabric/file-type-icons",
-  "email": "caperez@microsoft.com",
-  "commit": "59b7ad45e279e234a94b9eaa493140cc9ac85eda",
-  "date": "2019-09-11T22:21:11.248Z"
-}

@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Build the kebabRules map instead of shipping it",
-  "packageName": "@uifabric/merge-styles",
-  "email": "mark@thedutchies.com",
-  "commit": "6c2bb6b120a0fca24259bd21bd0a73989bbeff7a",
-  "date": "2019-09-11T18:51:36.254Z"
-}
