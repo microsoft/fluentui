@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Tooltip: Changed examples from aria-labelledby to aria-describedby to follow a11y spec.",
+  "packageName": "office-ui-fabric-react",
+  "email": "v-mare@microsoft.com",
+  "commit": "b8e24dd006914f031a44d11affd37e788c30a192",
+  "date": "2019-09-12T17:46:07.404Z"
+}
