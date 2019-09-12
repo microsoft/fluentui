@@ -219,6 +219,8 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
       focused && {
         borderColor: semanticColors.inputFocusBorderAlt,
         borderWidth: '2px',
+        top: '-1px',
+        left: '-1px',
         selectors: {
           [HighContrastSelector]: {
             borderWidth: 2,

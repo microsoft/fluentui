@@ -317,7 +317,9 @@ export const getStyles = memoizeFunction(
 
       rootPressed: {
         borderColor: root.borderPressedColor,
-        //borderWidth: '2px',
+        borderWidth: '2px',
+        top: '-1px',
+        left: '-1px',
         selectors: {
           [HighContrastSelector]: ComboBoxRootHighContrastFocused
         }
@@ -326,6 +328,8 @@ export const getStyles = memoizeFunction(
       rootFocused: {
         borderColor: root.borderFocusedColor,
         borderWidth: '2px',
+        top: '-1px',
+        left: '-1px',
         selectors: {
           '.ms-ComboBox-Input': {
             color: semanticColors.inputTextHovered
