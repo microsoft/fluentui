@@ -410,7 +410,7 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
   private _getBounds(): IRectangle {
     if (!this._bounds) {
       const bounds = this.props.bounds;
-      let currentBounds = typeof bounds === 'function' ? bounds(this.props.target) : bounds;
+      let currentBounds = typeof bounds === 'function' ? bounds(this.props.target, this._targetWindow) : bounds;
 
       if (!currentBounds) {
         currentBounds = {

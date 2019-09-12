@@ -66,7 +66,7 @@ export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement> {
   /**
    * The bounding rectangle (or callback that returns a rectangle) for which  the contextual menu can appear in.
    */
-  bounds?: IRectangle | ((target?: Target) => IRectangle | undefined);
+  bounds?: IRectangle | ((target?: Target, targetWindow?: Window) => IRectangle | undefined);
 
   /**
    * The minimum distance the callout will be away from the edge of the screen.

@@ -2092,7 +2092,7 @@ export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement> {
     ariaLabelledBy?: string;
     backgroundColor?: string;
     beakWidth?: number;
-    bounds?: IRectangle | ((target?: Target) => IRectangle | undefined);
+    bounds?: IRectangle | ((target?: Target, targetWindow?: Window) => IRectangle | undefined);
     calloutMaxHeight?: number;
     calloutMaxWidth?: number;
     calloutWidth?: number;
