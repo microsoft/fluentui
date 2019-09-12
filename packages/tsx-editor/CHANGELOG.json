@@ -2,6 +2,20 @@
   "name": "@uifabric/tsx-editor",
   "entries": [
     {
+      "date": "Thu, 12 Sep 2019 12:34:15 GMT",
+      "tag": "@uifabric/tsx-editor_v0.5.0",
+      "version": "0.5.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Show TS errors in detail, and assorted cleanup",
+            "author": "elcraig@microsoft.com",
+            "commit": "485574797c272506647b6fb98d4ae5989d8eb9f9"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 26 Aug 2019 12:30:49 GMT",
       "tag": "@uifabric/tsx-editor_v0.4.0",
       "version": "0.4.0",

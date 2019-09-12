@@ -192,6 +192,31 @@ describe('ComboBox', () => {
     expect(inputElement.value).toEqual('2');
   });
 
+  it('Does not automatically change items in controlled case', () => {
+    domNode = renderIntoDocument(<ComboBox selectedKey="1" options={DEFAULT_OPTIONS} />);
+
+    const buttonElement = domNode.querySelector('.ms-ComboBox button')!;
+    ReactTestUtils.Simulate.click(buttonElement);
+
+    const secondItemElement = document.querySelector('.ms-ComboBox-option[data-index="1"]')!;
+    ReactTestUtils.Simulate.click(secondItemElement);
+
+    const inputElement = domNode.querySelector('.ms-ComboBox input') as HTMLInputElement;
+    expect(inputElement.value).toEqual('1');
+  });
+
+  it('Multiselect does not mutate props', () => {
+    domNode = renderIntoDocument(<ComboBox selectedKey="1" options={DEFAULT_OPTIONS} multiSelect />);
+
+    const buttonElement = domNode.querySelector('.ms-ComboBox button')!;
+    ReactTestUtils.Simulate.click(buttonElement);
+
+    const buttons = document.querySelectorAll('.ms-ComboBox-option > input');
+    ReactTestUtils.Simulate.change(buttons[1]);
+
+    expect(!!DEFAULT_OPTIONS[1].selected).toEqual(false);
+  });
+
   it('Can insert text in uncontrolled case with autoComplete and allowFreeform on', () => {
     wrapper = mount(<ComboBox defaultSelectedKey="1" options={DEFAULT_OPTIONS2} autoComplete="on" allowFreeform={true} />);
 
@@ -627,7 +652,8 @@ describe('ComboBox', () => {
     const componentRef = React.createRef<any>();
     const comboBoxOption: IComboBoxOption = {
       key: 'ManuallyEnteredValue',
-      text: 'ManuallyEnteredValue'
+      text: 'ManuallyEnteredValue',
+      selected: true
     };
     wrapper = mount(
       <ComboBox
@@ -654,7 +680,8 @@ describe('ComboBox', () => {
     const componentRef = React.createRef<any>();
     const comboBoxOption: IComboBoxOption = {
       key: 'ManuallyEnteredValue',
-      text: 'ManuallyEnteredValue'
+      text: 'ManuallyEnteredValue',
+      selected: true
     };
     wrapper = mount(<ComboBox multiSelect options={DEFAULT_OPTIONS} allowFreeform={true} componentRef={componentRef} />);
     const inputElement: InputElementWrapper = wrapper.find('.ms-ComboBox input');
@@ -667,11 +694,16 @@ describe('ComboBox', () => {
     inputElement.simulate('blur');
     _verifyStateVariables(componentRef, false, [...DEFAULT_OPTIONS, { ...comboBoxOption }], [3]);
 
-    // this should toggle the checkbox
     inputElement.simulate('focus');
     _verifyStateVariables(componentRef, true, [...DEFAULT_OPTIONS, { ...comboBoxOption }], [3]);
     inputElement.simulate('input', { target: { value: 'ManuallyEnteredValue' } });
     _verifyStateVariables(componentRef, true, [...DEFAULT_OPTIONS, { ...comboBoxOption }], [3]);
+
+    // this should toggle the checkbox
+    wrapper.find('.ms-ComboBox button').simulate('click');
+    const buttons = document.querySelectorAll('.ms-ComboBox-option > input');
+    ReactTestUtils.Simulate.change(buttons[3]);
+
     inputElement.simulate('blur');
     _verifyStateVariables(
       componentRef,
@@ -705,13 +737,15 @@ describe('ComboBox', () => {
     inputElement.simulate('blur');
     _verifyStateVariables(componentRef, false, [...DEFAULT_OPTIONS, { ...comboBoxOption }], [3]);
 
-    // this should toggle the checkbox
     inputElement.simulate('focus');
     _verifyStateVariables(componentRef, true, [...DEFAULT_OPTIONS, { ...comboBoxOption }], [3]);
-    inputElement.simulate('input', { target: { value: 'ManuallyEnteredValue' } });
-    _verifyStateVariables(componentRef, true, [...DEFAULT_OPTIONS, { ...comboBoxOption }], [3]);
+    const buttonElement: any = wrapper.find('.ms-ComboBox button')! as any;
+    buttonElement.simulate('click');
+    const secondItem = document.querySelector('.ms-ComboBox-option[data-index="2"]')!;
+    ReactTestUtils.Simulate.click(secondItem);
+
     inputElement.simulate('blur');
-    _verifyStateVariables(componentRef, false, [...DEFAULT_OPTIONS, { ...comboBoxOption }], [3]);
+    _verifyStateVariables(componentRef, false, [...DEFAULT_OPTIONS, { ...comboBoxOption }], [2]);
   });
 
   function _verifyStateVariables(

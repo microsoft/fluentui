@@ -21,7 +21,7 @@ const tableClassName = mergeStyles({
   }
 });
 
-const StaticListTableExample = () => {
+export const StaticListTableExample = () => {
   return (
     <table className={tableClassName}>
       <thead>
@@ -47,5 +47,3 @@ const StaticListTableExample = () => {
     </table>
   );
 };
-
-export { StaticListTableExample };
