@@ -3,8 +3,13 @@ import * as React from 'react';
 import { IEditorProps, ITextModel } from './Editor.types';
 import { codeFontFamily } from './TypeScriptSnippet';
 
+const typescript = monaco.languages.typescript;
+const typescriptDefaults = typescript.typescriptDefaults;
+
+const filePrefix = 'file:///';
+
 export const Editor: React.FunctionComponent<IEditorProps> = (props: IEditorProps) => {
-  const { width, height, onChange, language = 'typescript', code } = props;
+  const { width, height, onChange, code } = props;
 
   // Hooks must be called unconditionally, so we have to create a backup ref here even if we
   // immediately throw it away to use the one passed in.
@@ -18,29 +23,27 @@ export const Editor: React.FunctionComponent<IEditorProps> = (props: IEditorProp
     // Fetching Fabric typings to allow for intellisense in editor
     fetch('https://unpkg.com/office-ui-fabric-react/dist/office-ui-fabric-react.d.ts').then(response => {
       response.text().then(fabricTypings => {
-        monaco.languages.typescript.typescriptDefaults.addExtraLib(
-          fabricTypings,
-          'file:///node_modules/@types/office-ui-fabric-react/index.d.ts'
-        );
+        typescriptDefaults.addExtraLib(fabricTypings, 'file:///node_modules/@types/office-ui-fabric-react/index.d.ts');
       });
     });
 
-    monaco.languages.typescript.typescriptDefaults.setCompilerOptions({
+    typescriptDefaults.setCompilerOptions({
       allowNonTsExtensions: true,
-      target: monaco.languages.typescript.ScriptTarget.ES5,
-      jsx: monaco.languages.typescript.JsxEmit.React,
-      alwaysStrict: true,
+      target: typescript.ScriptTarget.ES5,
+      jsx: typescript.JsxEmit.React,
       jsxFactory: 'React.createElement',
       experimentalDecorators: true,
       preserveConstEnums: true,
-      outDir: 'lib',
-      module: monaco.languages.typescript.ModuleKind.ESNext,
-      lib: ['es5', 'dom']
+      noUnusedLocals: true,
+      strictNullChecks: true,
+      noImplicitAny: true,
+      module: typescript.ModuleKind.ESNext,
+      baseUrl: filePrefix
     });
 
-    monaco.languages.typescript.typescriptDefaults.setDiagnosticsOptions({ noSemanticValidation: true });
+    typescriptDefaults.setDiagnosticsOptions({ noSemanticValidation: true });
 
-    const model = (modelRef.current = monaco.editor.createModel(code, language, monaco.Uri.parse('file:///main.tsx')));
+    const model = (modelRef.current = monaco.editor.createModel(code, 'typescript', monaco.Uri.parse(filePrefix + 'main.tsx')));
 
     if (onChange) {
       onChange(model);
@@ -48,8 +51,6 @@ export const Editor: React.FunctionComponent<IEditorProps> = (props: IEditorProp
 
     const editor = monaco.editor.create(ref.current!, {
       model: model,
-      value: code,
-      language,
       minimap: { enabled: false },
       fontFamily: codeFontFamily
     });
@@ -65,8 +66,7 @@ export const Editor: React.FunctionComponent<IEditorProps> = (props: IEditorProp
       editor.dispose();
       modelRef.current = undefined;
     };
-  }, [onChange, language, code, modelRef]);
+  }, [onChange, code, modelRef]);
 
   return <div ref={ref} style={style} />;
 };
-export default Editor;

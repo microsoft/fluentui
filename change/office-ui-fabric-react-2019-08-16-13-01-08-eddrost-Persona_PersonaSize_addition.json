@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Persona: Adding size120 to the PersonaSize enum, updating API.",
-  "packageName": "office-ui-fabric-react",
-  "email": "eddrost@microsoft.com",
-  "commit": "246968501d470e15a735f101c21c5e955169f7ba",
-  "date": "2019-08-16T20:01:08.147Z"
-}

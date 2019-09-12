@@ -46,14 +46,8 @@ export const EditorWrapper: React.FunctionComponent<IEditorWrapperProps> = props
     if (typeof useEditor === 'boolean') {
       return useEditor;
     }
-    const win = getWindow();
-    return (
-      !!(win && (win as any).MonacoEnvironment) && // tslint:disable-line:no-any
-      getSetting('useEditor') === '1' &&
-      !isIE11() &&
-      transformExample(code!, previewId).error === undefined
-    );
-  }, [useEditor, code, previewId]);
+    return _isEditorSupported(code);
+  }, [useEditor, code]);
 
   // Load editor modules and Fabric global
   React.useEffect(() => {
@@ -134,7 +128,7 @@ export const EditorWrapper: React.FunctionComponent<IEditorWrapperProps> = props
         </div>
       )}
 
-      <EditorError error={error} />
+      {isCodeVisible && <EditorError error={error} />}
 
       {onRenderPreview({ className: previewClassName, id: previewId, children }, _onRenderPreview)}
     </div>
@@ -143,4 +137,22 @@ export const EditorWrapper: React.FunctionComponent<IEditorWrapperProps> = props
 
 function _onRenderPreview(props: IEditorPreviewProps): React.ReactNode {
   return <EditorPreview {...props} />;
+}
+
+function _isEditorSupported(code: string): boolean {
+  const win = getWindow();
+  return (
+    // Not server-side rendering
+    !!win &&
+    // Required environment config available
+    !!(win as any).MonacoEnvironment && // tslint:disable-line:no-any
+    // Opt-in query param or session storage is set
+    getSetting('useEditor') === '1' &&
+    // Not IE 11
+    !isIE11() &&
+    // Service worker available
+    !!win.navigator.serviceWorker &&
+    // No immediate issues detected in example (or exceptions thrown from parsing)
+    typeof transformExample(code!, 'fake') !== 'string'
+  );
 }

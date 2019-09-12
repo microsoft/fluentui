@@ -2,6 +2,47 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Thu, 12 Sep 2019 12:34:15 GMT",
+      "tag": "office-ui-fabric-react_v7.32.0",
+      "version": "7.32.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Persona: Adding size120 to the PersonaSize enum, updating API.",
+            "author": "eddrost@microsoft.com",
+            "commit": "246968501d470e15a735f101c21c5e955169f7ba"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Only render SpinButton label container if label or icon is present",
+            "author": "KevinTCoughlin@users.noreply.github.com",
+            "commit": "912210e2a0f36b0951af95248fa12674a2f16289"
+          },
+          {
+            "comment": "Fix examples to only export a single component",
+            "author": "elcraig@microsoft.com",
+            "commit": "485574797c272506647b6fb98d4ae5989d8eb9f9"
+          },
+          {
+            "comment": "Combobox: Fix issue where it would mutate props",
+            "author": "joschect@microsoft.com",
+            "commit": "d8d84c26efff001fa1e0c58f50d5c12982d964a7"
+          },
+          {
+            "comment": "Pickers: make background color of input transparent so it doesn't clip border",
+            "author": "joschect@microsoft.com",
+            "commit": "32f0b9cc893c0d33c423143da95ce6c5710172fc"
+          },
+          {
+            "comment": "GroupedList: Fixed selected prop value not being set. ",
+            "author": "v-mare@microsoft.com",
+            "commit": "2d760955d88add839a016f830580f922d07b4abd"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 11 Sep 2019 12:35:47 GMT",
       "tag": "office-ui-fabric-react_v7.31.3",
       "version": "7.31.3",
