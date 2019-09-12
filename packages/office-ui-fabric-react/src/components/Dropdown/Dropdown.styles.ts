@@ -200,13 +200,14 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
             !disabled && rootHoverFocusActiveSelectorNeutralDarkMixin,
             {
               borderColor:
-                palette.themePrimary /* see https://github.com/OfficeDev/office-ui-fabric-react/pull/9182 for semantic color disc */
+                palette.themePrimary /* see https://github.com/OfficeDev/office-ui-fabric-react/pull/9182 for semantic color disc */,
+              borderWidth: '2px'
             },
             highContrastItemAndTitleStateMixin
           ],
           ['&:active .' + globalClassnames.title]: [
             !disabled && rootHoverFocusActiveSelectorNeutralDarkMixin,
-            { borderColor: palette.themePrimary },
+            { borderColor: palette.themePrimary, borderWidth: '2px' },
             highContrastBorderState
           ],
 

@@ -218,6 +218,7 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
         },
       focused && {
         borderColor: semanticColors.inputFocusBorderAlt,
+        borderWidth: '2px',
         selectors: {
           [HighContrastSelector]: {
             borderWidth: 2,
@@ -237,6 +238,7 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
       },
       underlined &&
         focused && {
+          borderWidth: '2px',
           selectors: {
             [HighContrastSelector]: {
               height: 31 // -1px to prevent jumpiness in HC with the increased border-width to 2px
