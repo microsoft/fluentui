@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "give tooltip hoverable area an index lower than the content",
+  "packageName": "office-ui-fabric-react",
+  "email": "mgodbolt@microsoft.com",
+  "commit": "555cf61228750ecabaad6b250b563fcff757e9c8",
+  "date": "2019-09-04T17:01:47.513Z"
+}
