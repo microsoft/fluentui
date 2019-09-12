@@ -8,7 +8,7 @@ UI Fabric is a collection of projects that represent the Fluent design language 
 
 See the [readme](https://github.com/OfficeDev/office-ui-fabric-react) for instructions on getting started with Fabric development.
 
-Once your repo is set up, run the following to start a local copy of the website:
+Once your repo is set up, run the following to start a local copy of the website. (Be sure to **start from the root of the repo**, not the `fabric-website` folder.)
 
 ```
 yarn

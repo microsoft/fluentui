@@ -851,7 +851,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     // Are we at a new index? If so, update the state, otherwise
     // there is nothing to do
     if (this.props.multiSelect || selectedIndices.length < 1 || (selectedIndices.length === 1 && selectedIndices[0] !== index)) {
-      const option: IComboBoxOption = currentOptions[index];
+      const option: IComboBoxOption = { ...currentOptions[index] };
       if (!option) {
         return;
       }
@@ -876,10 +876,15 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
           onChange(submitPendingValueEvent, option, index, undefined);
         }
       } else {
+        // Update current options
+        const changedOptions = currentOptions.slice();
+        changedOptions[index] = option;
+
         // Call onChange after state is updated
         this.setState(
           {
-            selectedIndices: selectedIndices
+            selectedIndices: selectedIndices,
+            currentOptions: changedOptions
           },
           () => {
             // If ComboBox value is changed, revert preview first
@@ -1051,12 +1056,16 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
           onChange(submitPendingValueEvent, undefined, undefined, currentPendingValue);
         }
       } else {
-        // If we are not controlled, create a new option
+        // If we are not controlled, create a new selected option
         const newOption: IComboBoxOption = {
           key: currentPendingValue || getId(),
           text: this._normalizeToString(currentPendingValue)
         };
-        const newOptions: IComboBoxOption[] = [...currentOptions, newOption];
+        // If it's multiselect, set selected state to true
+        if (this.props.multiSelect) {
+          newOption.selected = true;
+        }
+        const newOptions: IComboBoxOption[] = currentOptions.concat([newOption]);
         if (selectedIndices) {
           if (!this.props.multiSelect) {
             selectedIndices = [];

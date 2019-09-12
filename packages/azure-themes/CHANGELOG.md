@@ -1,7 +1,13 @@
 # Change Log - @uifabric/azure-themes
 
-This log was last generated on Wed, 04 Sep 2019 12:32:15 GMT and should not be manually modified.
+This log was last generated on Wed, 11 Sep 2019 12:35:47 GMT and should not be manually modified.
 
+## 7.0.9
+Wed, 11 Sep 2019 12:35:47 GMT
+
+### Patches
+
+- Checkbox alignment and visual artifact fix (rykelly@microsoft.com)
 ## 7.0.8
 Wed, 04 Sep 2019 12:32:15 GMT
 
