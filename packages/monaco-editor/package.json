@@ -1,0 +1,16 @@
+{
+  "name": "@uifabric/monaco-editor",
+  "version": "0.1.0",
+  "main": "index.js",
+  "license": "MIT",
+  "typings": "./lib/esm/vs/editor/editor.api.d.ts",
+  "module": "./lib/esm/vs/editor/editor.main.js",
+  "scripts": {
+    "build": "just-scripts build"
+  },
+  "devDependencies": {
+    "glob": "^7.1.4",
+    "monaco-editor": "^0.17.0",
+    "@uifabric/build": "^7.0.0"
+  }
+}
