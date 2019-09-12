@@ -13,7 +13,7 @@ task(
   series(
     'clean',
     copyInstructionsTask({
-      copyInstructions: copyInstructions.copyFilesToDestinationDirectory(monacoEditorPath, path.join(__dirname, 'lib'))
+      copyInstructions: copyInstructions.copyFilesInDirectory(monacoEditorPath, path.join(__dirname, 'lib'))
     }),
     transformCssTask,
     () => {
