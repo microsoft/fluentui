@@ -189,6 +189,7 @@ export const getStyles = memoizeFunction(
       },
       spinButtonWrapperFocused: {
         borderColor: SpinButtonRootBorderColorFocused,
+        borderWidth: '2px',
         selectors: {
           [HighContrastSelector]: {
             borderColor: 'Highlight'
