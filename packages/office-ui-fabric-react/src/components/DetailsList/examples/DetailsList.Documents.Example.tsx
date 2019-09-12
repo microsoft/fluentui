@@ -56,7 +56,7 @@ export interface IDetailsListDocumentsExampleState {
   selectionDetails: string;
   isModalSelection: boolean;
   isCompactMode: boolean;
-  announced?: JSX.Element;
+  announcedMessage?: string;
 }
 
 export interface IDocument {
@@ -173,12 +173,12 @@ export class DetailsListDocumentsExample extends React.Component<{}, IDetailsLis
       selectionDetails: this._getSelectionDetails(),
       isModalSelection: false,
       isCompactMode: false,
-      announced: undefined
+      announcedMessage: undefined
     };
   }
 
   public render() {
-    const { columns, isCompactMode, items, selectionDetails, isModalSelection, announced } = this.state;
+    const { columns, isCompactMode, items, selectionDetails, isModalSelection, announcedMessage } = this.state;
 
     return (
       <Fabric>
@@ -202,7 +202,7 @@ export class DetailsListDocumentsExample extends React.Component<{}, IDetailsLis
           <TextField label="Filter by name:" onChange={this._onChangeText} styles={controlStyles} />
         </div>
         <div className={classNames.selectionDetails}>{selectionDetails}</div>
-        {announced}
+        {announcedMessage ? <Announced message={announcedMessage} /> : undefined}
         <MarqueeSelection selection={this._selection}>
           <DetailsList
             items={items}
@@ -276,7 +276,7 @@ export class DetailsListDocumentsExample extends React.Component<{}, IDetailsLis
         currColumn.isSortedDescending = !currColumn.isSortedDescending;
         currColumn.isSorted = true;
         this.setState({
-          announced: <Announced message={`${currColumn.name} is sorted ${currColumn.isSortedDescending ? 'descending' : 'ascending'}`} />
+          announcedMessage: `${currColumn.name} is sorted ${currColumn.isSortedDescending ? 'descending' : 'ascending'}`
         });
       } else {
         newCol.isSorted = false;

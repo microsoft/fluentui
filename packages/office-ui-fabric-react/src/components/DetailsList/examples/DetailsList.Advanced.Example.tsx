@@ -72,7 +72,7 @@ export interface IDetailsListAdvancedExampleState {
   selectionMode?: SelectionMode;
   sortedColumnKey?: string;
   selectionCount: number;
-  announced?: JSX.Element;
+  announcedMessage?: string;
 }
 
 export class DetailsListAdvancedExample extends React.Component<{}, IDetailsListAdvancedExampleState> {
@@ -124,7 +124,7 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
       items,
       layoutMode,
       selectionMode,
-      announced
+      announcedMessage
     } = this.state;
 
     const isGrouped = groups && groups.length > 0;
@@ -159,7 +159,7 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
 
         {isGrouped ? <TextField label="Group item limit" onChange={this._onItemLimitChanged} /> : null}
 
-        {announced}
+        {announcedMessage ? <Announced message={announcedMessage} /> : undefined}
 
         <DetailsList
           setKey="items"
@@ -547,7 +547,7 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
 
     this.setState({
       items: sortedItems,
-      announced: <Announced message={`${columnKey} is sorted ${isSortedDescending ? 'descending' : 'ascending'}`} />,
+      announcedMessage: `${columnKey} is sorted ${isSortedDescending ? 'descending' : 'ascending'}`,
       groups: undefined,
       columns: this._buildColumns(
         sortedItems,
