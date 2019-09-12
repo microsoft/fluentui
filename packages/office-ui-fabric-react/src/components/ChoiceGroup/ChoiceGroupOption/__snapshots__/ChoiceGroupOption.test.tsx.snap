@@ -469,6 +469,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
       <input
         className=
             ms-ChoiceField-input
+            is-disabled
             {
               height: 100%;
               margin-bottom: 0px;
@@ -581,6 +582,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
         checked={true}
         className=
             ms-ChoiceField-input
+            is-disabled
             {
               height: 100%;
               margin-bottom: 0px;
@@ -1366,6 +1368,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
       <input
         className=
             ms-ChoiceField-input
+            is-disabled
             {
               height: 100%;
               margin-bottom: 0px;

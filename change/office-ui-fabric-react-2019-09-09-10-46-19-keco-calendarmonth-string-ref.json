@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "CalendarMonth: Prefer createRef over string ref",
+  "packageName": "office-ui-fabric-react",
+  "email": "KevinTCoughlin@users.noreply.github.com",
+  "commit": "8be3407f9e11859e60b074b05b321df68c71776a",
+  "date": "2019-09-09T17:46:19.266Z"
+}

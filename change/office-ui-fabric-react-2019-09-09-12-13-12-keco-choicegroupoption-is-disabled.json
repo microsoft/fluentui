@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Add .is-disabled to ChoiceGroupOption when disabled",
+  "packageName": "office-ui-fabric-react",
+  "email": "KevinTCoughlin@users.noreply.github.com",
+  "commit": "0606a256096122b70180b760a815c3dbcbe65b9c",
+  "date": "2019-09-09T19:13:12.243Z"
+}
