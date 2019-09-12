@@ -72,7 +72,7 @@ export class FolderCover extends React.Component<IFolderCoverProps, IFolderCover
       metadata,
       signal,
       children,
-      isFluent, //
+      isFluent,
       ...divProps
     } = this.props;
 
