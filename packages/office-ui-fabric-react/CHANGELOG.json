@@ -2,6 +2,20 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Thu, 12 Sep 2019 12:22:18 GMT",
+      "tag": "office-ui-fabric-react_v6.203.5",
+      "version": "6.203.5",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Slider: Cherrypicked ability to log event object from onChanged prop",
+            "author": "v-mare@microsoft.com",
+            "commit": "1732ef0611c8a8fb2931d00219571c08b9e656af"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 11 Sep 2019 12:24:40 GMT",
       "tag": "office-ui-fabric-react_v6.203.4",
       "version": "6.203.4",

@@ -1,7 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 11 Sep 2019 12:24:40 GMT and should not be manually modified.
+This log was last generated on Thu, 12 Sep 2019 12:22:18 GMT and should not be manually modified.
 
+## 6.203.5
+Thu, 12 Sep 2019 12:22:18 GMT
+
+### Patches
+
+- Slider: Cherrypicked ability to log event object from onChanged prop (v-mare@microsoft.com)
 ## 6.203.4
 Wed, 11 Sep 2019 12:24:40 GMT
 

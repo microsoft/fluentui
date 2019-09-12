@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Adding .b extension to Office file type",
-  "packageName": "@uifabric/file-type-icons",
-  "email": "caperez@microsoft.com",
-  "commit": "8be57fd7168bd9182abcf2a288d291112e38a7fd",
-  "date": "2019-09-11T22:40:34.213Z"
-}
