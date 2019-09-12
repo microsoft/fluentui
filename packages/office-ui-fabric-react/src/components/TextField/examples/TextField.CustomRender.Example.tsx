@@ -1,10 +1,11 @@
 import * as React from 'react';
 import { TextField, ITextFieldProps } from 'office-ui-fabric-react/lib/TextField';
 import { DefaultButton, IconButton } from 'office-ui-fabric-react/lib/Button';
+import { Icon } from 'office-ui-fabric-react/lib/Icon';
 import { Callout } from 'office-ui-fabric-react/lib/Callout';
 import { IStackTokens, Stack } from 'office-ui-fabric-react/lib/Stack';
 import { Text } from 'office-ui-fabric-react/lib/Text';
-import { getId } from 'office-ui-fabric-react/lib/Utilities';
+import { getId, IRenderFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { getTheme, FontWeights } from 'office-ui-fabric-react/lib/Styling';
 
 export interface ITextFieldCustomRenderExampleState {
@@ -31,6 +32,12 @@ export class TextFieldCustomRenderExample extends React.Component<{}, ITextField
           label="Custom label rendering"
           onRenderLabel={this._onRenderLabel}
           description="Click the (i) icon!"
+        />
+
+        <TextField
+          aria-labelledby={this._labelId}
+          label="Wrapping default label renderer"
+          onRenderLabel={this._onWrapDefaultLabelRenderer}
         />
 
         <TextField
@@ -79,6 +86,17 @@ export class TextFieldCustomRenderExample extends React.Component<{}, ITextField
             </Stack>
           </Callout>
         )}
+      </>
+    );
+  };
+
+  private _onWrapDefaultLabelRenderer = (props: ITextFieldProps, defaultRender: IRenderFunction<ITextFieldProps>): JSX.Element => {
+    return (
+      <>
+        <Stack horizontal verticalAlign="center" gap={6}>
+          <span>{defaultRender(props)}</span>
+          <Icon id={this._iconButtonId} iconName="Globe" title="Globe" ariaLabel="Globe" styles={{ root: { marginBottom: -3 } }} />
+        </Stack>
       </>
     );
   };
