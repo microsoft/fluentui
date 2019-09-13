@@ -22,9 +22,27 @@ export function initializeIcons(
     },
     fontFace: {
       fontFamily: `"FabricMDL2Icons-3"`,
-      src: `url('${baseUrl}fabric-icons-3-2f2b65b9.woff') format('woff')`
+      src: `url('${baseUrl}fabric-icons-3-566d0c7a.woff') format('woff')`
     },
     icons: {
+      'ConstructionCone': '\uE98F',
+      'DoubleChevronLeftMed': '\uE991',
+      'Volume0': '\uE992',
+      'Volume1': '\uE993',
+      'Volume2': '\uE994',
+      'Volume3': '\uE995',
+      'Chart': '\uE999',
+      'Robot': '\uE99A',
+      'Manufacturing': '\uE99C',
+      'LockSolid': '\uE9A2',
+      'FitPage': '\uE9A6',
+      'FitWidth': '\uE9A7',
+      'BidiLtr': '\uE9AA',
+      'BidiRtl': '\uE9AB',
+      'RightDoubleQuote': '\uE9B1',
+      'Sunny': '\uE9BD',
+      'CloudWeather': '\uE9BE',
+      'Cloudy': '\uE9BF',
       'PartlyCloudyDay': '\uE9C0',
       'PartlyCloudyNight': '\uE9C1',
       'ClearNight': '\uE9C2',
@@ -106,25 +124,7 @@ export function initializeIcons(
       'MiniExpandMirrored': '\uEA5A',
       'OpenPaneMirrored': '\uEA5B',
       'ParkingLocationMirrored': '\uEA5E',
-      'SendMirrored': '\uEA63',
-      'ShowResultsMirrored': '\uEA65',
-      'ThumbnailViewMirrored': '\uEA67',
-      'Media': '\uEA69',
-      'Devices3': '\uEA6C',
-      'Focus': '\uEA6F',
-      'VideoLightOff': '\uEA74',
-      'Lightbulb': '\uEA80',
-      'StatusTriangle': '\uEA82',
-      'VolumeDisabled': '\uEA85',
-      'Puzzle': '\uEA86',
-      'EmojiNeutral': '\uEA87',
-      'EmojiDisappointed': '\uEA88',
-      'HomeSolid': '\uEA8A',
-      'Ringer': '\uEA8F',
-      'PDF': '\uEA90',
-      'HeartBroken': '\uEA92',
-      'StoreLogo16': '\uEA96',
-      'MultiSelectMirrored': '\uEA98'
+      'SendMirrored': '\uEA63'
     }
   };
 

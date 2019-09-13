@@ -2,6 +2,7 @@
   "name": "{{{packageNpmName}}}",
   "version": "0.1.0",
   "description": "Experimental React components for building experiences for Office 365.",
+  "private": true,
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "typings": "lib/index.d.ts",
@@ -51,7 +52,9 @@
     "tslib": "{{{tslib}}}"
   },
   "peerDependencies": {
-    "react": "{{{react}}}",
-    "react-dom": "{{{reactDom}}}"
+    "@types/react": "{{{typesReactPeerDep}}}",
+    "@types/react-dom": "{{{typesReactDomPeerDep}}}",
+    "react": "{{{reactPeerDep}}}",
+    "react-dom": "{{{reactDomPeerDep}}}"
   }
 }

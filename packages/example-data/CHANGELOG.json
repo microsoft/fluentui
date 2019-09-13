@@ -1,0 +1,19 @@
+{
+  "name": "@uifabric/example-data",
+  "entries": [
+    {
+      "date": "Tue, 27 Aug 2019 12:33:51 GMT",
+      "tag": "@uifabric/example-data_v7.0.1",
+      "version": "7.0.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add example data package",
+            "author": "elcraig@microsoft.com",
+            "commit": "ac31cd661f1331fb298330c54074ef81c83a36cc"
+          }
+        ]
+      }
+    }
+  ]
+}

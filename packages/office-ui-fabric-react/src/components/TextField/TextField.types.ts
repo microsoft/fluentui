@@ -88,6 +88,8 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
 
   /**
    * Custom renderer for the label.
+   * If you don't call defaultRender, ensure that you give your custom-rendered label an id and that
+   * you set the textfield's aria-labelledby prop to that id.
    */
   onRenderLabel?: IRenderFunction<ITextFieldProps>;
 
@@ -161,7 +163,8 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
 
   /**
    * Callback for when the input value changes.
-   * This is called on both `input` and `change` native events.
+   * This is called on both `input` and `change` events.
+   * (In a later version, this will probably only be called for the `change` event.)
    */
   onChange?: (event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, newValue?: string) => void;
 
@@ -249,6 +252,7 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
   autoComplete?: string;
 
   /**
+   * Only used by MaskedTextField:
    * The masking string that defines the mask's behavior.
    * A backslash will escape any character.
    * Special format characters are:
@@ -261,12 +265,14 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
   mask?: string;
 
   /**
+   * Only used by MaskedTextField:
    * The character to show in place of unfilled characters of the mask.
    * @defaultvalue '_'
    */
   maskChar?: string;
 
   /**
+   * Only used by MaskedTextField:
    * An object defining the format characters and corresponding regexp values.
    * Default format characters: \{
    *  '9': /[0-9]/,

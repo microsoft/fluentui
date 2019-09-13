@@ -8,8 +8,13 @@ export class TooltipNoScrollExample extends BaseComponent<{}> {
 
   public render(): JSX.Element {
     return (
-      <TooltipHost content="This is the tooltip" id={this.tooltipId} tooltipProps={{ style: { overflowY: 'auto' } }}>
-        <DefaultButton aria-labelledby={this.tooltipId}>Tooltip without scroll</DefaultButton>
+      <TooltipHost
+        content="This is the tooltip"
+        id={this.tooltipId}
+        tooltipProps={{ style: { overflowY: 'auto' } }}
+        styles={{ root: { display: 'inline-block' } }}
+      >
+        <DefaultButton aria-describedby={this.tooltipId}>Tooltip without scroll</DefaultButton>
       </TooltipHost>
     );
   }

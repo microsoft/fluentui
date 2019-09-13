@@ -62,17 +62,21 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
     return this._inputElement.current;
   }
 
-  public componentWillReceiveProps(nextProps: IAutofillProps): void {
-    let newValue;
-
+  // tslint:disable-next-line function-name
+  public UNSAFE_componentWillReceiveProps(nextProps: IAutofillProps): void {
     if (this.props.updateValueInWillReceiveProps) {
-      newValue = this.props.updateValueInWillReceiveProps();
+      const updatedInputValue = this.props.updateValueInWillReceiveProps();
+      // Don't update if we have a null value or the value isn't changing
+      // the value should still update if an empty string is passed in
+      if (updatedInputValue !== null && updatedInputValue !== this._value) {
+        this._value = updatedInputValue;
+      }
     }
 
-    newValue = this._getDisplayValue(newValue ? newValue : this._value, nextProps.suggestedDisplayValue);
+    const newDisplayValue = this._getDisplayValue(this._value, nextProps.suggestedDisplayValue);
 
-    if (typeof newValue === 'string') {
-      this.setState({ displayValue: newValue });
+    if (typeof newDisplayValue === 'string') {
+      this.setState({ displayValue: newDisplayValue });
     }
   }
 
@@ -121,6 +125,7 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
         autoComplete={'off'}
         onCompositionStart={this._onCompositionStart}
         onCompositionEnd={this._onCompositionEnd}
+        // TODO (Fabric 8?) - switch to calling only onChange. See notes in TextField._onInputChange.
         onChange={this._onChanged}
         onInput={this._onInputChanged}
         onKeyDown={this._onKeyDown}

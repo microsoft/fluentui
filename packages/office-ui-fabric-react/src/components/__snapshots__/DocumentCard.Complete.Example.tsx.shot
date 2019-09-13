@@ -42,8 +42,13 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
     className=
         ms-DocumentCardPreview
         {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
           background-color: #ffffff;
           border-bottom: 1px solid #edebe9;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 12px;
+          font-weight: 400;
           overflow: hidden;
           position: relative;
         }
@@ -75,7 +80,6 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
             }
             & a {
               color: #201f1e;
-              font-size: 12px;
               text-decoration: none;
             }
             & a:hover {
@@ -145,7 +149,15 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                 @media screen and (-ms-high-contrast: active){& {
                   border-bottom: none;
                 }
-                &:active, &:hover, &:active:hover {
+                &:active {
+                  color: #004578;
+                  text-decoration: underline;
+                }
+                &:hover {
+                  color: #004578;
+                  text-decoration: underline;
+                }
+                &:active:hover {
                   color: #004578;
                   text-decoration: underline;
                 }
@@ -221,7 +233,15 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                 @media screen and (-ms-high-contrast: active){& {
                   border-bottom: none;
                 }
-                &:active, &:hover, &:active:hover {
+                &:active {
+                  color: #004578;
+                  text-decoration: underline;
+                }
+                &:hover {
+                  color: #004578;
+                  text-decoration: underline;
+                }
+                &:active:hover {
                   color: #004578;
                   text-decoration: underline;
                 }
@@ -297,7 +317,15 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                 @media screen and (-ms-high-contrast: active){& {
                   border-bottom: none;
                 }
-                &:active, &:hover, &:active:hover {
+                &:active {
+                  color: #004578;
+                  text-decoration: underline;
+                }
+                &:hover {
+                  color: #004578;
+                  text-decoration: underline;
+                }
+                &:active:hover {
                   color: #004578;
                   text-decoration: underline;
                 }
@@ -316,7 +344,6 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
 
             {
               display: block;
-              font-size: 12px;
               padding-bottom: 8px;
               padding-left: 16px;
               padding-right: 16px;
@@ -332,9 +359,13 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
     className=
         ms-DocumentCardLocation
         {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
           color: #323130;
           display: block;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 12px;
+          font-weight: 400;
           overflow: hidden;
           padding-bottom: 8px;
           padding-left: 16px;
@@ -594,6 +625,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
               font-size: 14px;
               font-weight: 400;
               height: 32px;
+              min-width: 32px;
               outline: transparent;
               padding-bottom: 0;
               padding-left: 4px;
@@ -604,7 +636,6 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
               text-decoration: none;
               user-select: none;
               vertical-align: top;
-              width: 32px;
             }
             &::-moz-focus-inner {
               border: 0;
@@ -654,7 +685,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
         onMouseUp={[Function]}
         type="button"
       >
-        <div
+        <span
           className=
               ms-Button-flexContainer
               {
@@ -664,27 +695,33 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                 height: 100%;
                 justify-content: center;
               }
+          data-automationid="splitbuttonprimary"
         >
           <i
             aria-hidden={true}
             className=
+                ms-Icon
                 ms-Button-icon
+                {
+                  display: inline-block;
+                }
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  display: inline-block;
-                  flex-shrink: 0;
                   font-family: "FabricMDL2Icons";
-                  font-size: 16px;
                   font-style: normal;
                   font-weight: normal;
+                  speak: none;
+                }
+                {
+                  flex-shrink: 0;
+                  font-size: 16px;
                   height: 16px;
                   line-height: 16px;
                   margin-bottom: 0;
                   margin-left: 4px;
                   margin-right: 4px;
                   margin-top: 0;
-                  speak: none;
                   text-align: center;
                   vertical-align: middle;
                 }
@@ -693,7 +730,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
           >
             
           </i>
-        </div>
+        </span>
       </button>
     </div>
     <div
@@ -734,6 +771,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
               font-size: 14px;
               font-weight: 400;
               height: 32px;
+              min-width: 32px;
               outline: transparent;
               padding-bottom: 0;
               padding-left: 4px;
@@ -744,7 +782,6 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
               text-decoration: none;
               user-select: none;
               vertical-align: top;
-              width: 32px;
             }
             &::-moz-focus-inner {
               border: 0;
@@ -794,7 +831,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
         onMouseUp={[Function]}
         type="button"
       >
-        <div
+        <span
           className=
               ms-Button-flexContainer
               {
@@ -804,27 +841,33 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                 height: 100%;
                 justify-content: center;
               }
+          data-automationid="splitbuttonprimary"
         >
           <i
             aria-hidden={true}
             className=
+                ms-Icon
                 ms-Button-icon
+                {
+                  display: inline-block;
+                }
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  display: inline-block;
-                  flex-shrink: 0;
                   font-family: "FabricMDL2Icons-0";
-                  font-size: 16px;
                   font-style: normal;
                   font-weight: normal;
+                  speak: none;
+                }
+                {
+                  flex-shrink: 0;
+                  font-size: 16px;
                   height: 16px;
                   line-height: 16px;
                   margin-bottom: 0;
                   margin-left: 4px;
                   margin-right: 4px;
                   margin-top: 0;
-                  speak: none;
                   text-align: center;
                   vertical-align: middle;
                 }
@@ -833,7 +876,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
           >
             
           </i>
-        </div>
+        </span>
       </button>
     </div>
     <div
@@ -874,6 +917,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
               font-size: 14px;
               font-weight: 400;
               height: 32px;
+              min-width: 32px;
               outline: transparent;
               padding-bottom: 0;
               padding-left: 4px;
@@ -884,7 +928,6 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
               text-decoration: none;
               user-select: none;
               vertical-align: top;
-              width: 32px;
             }
             &::-moz-focus-inner {
               border: 0;
@@ -934,7 +977,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
         onMouseUp={[Function]}
         type="button"
       >
-        <div
+        <span
           className=
               ms-Button-flexContainer
               {
@@ -944,27 +987,33 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                 height: 100%;
                 justify-content: center;
               }
+          data-automationid="splitbuttonprimary"
         >
           <i
             aria-hidden={true}
             className=
+                ms-Icon
                 ms-Button-icon
+                {
+                  display: inline-block;
+                }
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  display: inline-block;
-                  flex-shrink: 0;
-                  font-family: "FabricMDL2Icons-3";
-                  font-size: 16px;
+                  font-family: "FabricMDL2Icons-4";
                   font-style: normal;
                   font-weight: normal;
+                  speak: none;
+                }
+                {
+                  flex-shrink: 0;
+                  font-size: 16px;
                   height: 16px;
                   line-height: 16px;
                   margin-bottom: 0;
                   margin-left: 4px;
                   margin-right: 4px;
                   margin-top: 0;
-                  speak: none;
                   text-align: center;
                   vertical-align: middle;
                 }
@@ -973,7 +1022,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
           >
             
           </i>
-        </div>
+        </span>
       </button>
     </div>
     <div

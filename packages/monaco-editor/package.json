@@ -1,0 +1,18 @@
+{
+  "name": "@uifabric/monaco-editor",
+  "version": "0.1.0",
+  "license": "MIT",
+  "main": "index.js",
+  "module": "./lib/esm/vs/editor/editor.main.js",
+  "typings": "./lib/esm/vs/editor/editor.api.d.ts",
+  "scripts": {
+    "build": "just-scripts build"
+  },
+  "devDependencies": {
+    "@microsoft/load-themed-styles": "^1.7.13",
+    "@microsoft/loader-load-themed-styles": "^1.6.0",
+    "@uifabric/build": "^7.0.0",
+    "glob": "^7.1.4",
+    "monaco-editor": "^0.17.0"
+  }
+}

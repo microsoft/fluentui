@@ -22,9 +22,27 @@ export function initializeIcons(
     },
     fontFace: {
       fontFamily: `"FabricMDL2Icons-1"`,
-      src: `url('${baseUrl}fabric-icons-1-72f0c8d2.woff') format('woff')`
+      src: `url('${baseUrl}fabric-icons-1-fb793ec0.woff') format('woff')`
     },
     icons: {
+      'SaveAs': '\uE792',
+      'Light': '\uE793',
+      'Filters': '\uE795',
+      'AspectRatio': '\uE799',
+      'Contrast': '\uE7A1',
+      'Redo': '\uE7A6',
+      'Crop': '\uE7A8',
+      'PhotoCollection': '\uE7AA',
+      'Album': '\uE7AB',
+      'Rotate': '\uE7AD',
+      'PanoIndicator': '\uE7B0',
+      'Translate': '\uE7B2',
+      'RedEye': '\uE7B3',
+      'ViewOriginal': '\uE7B4',
+      'ThumbnailView': '\uE7B6',
+      'Package': '\uE7B8',
+      'Telemarketer': '\uE7B9',
+      'Warning': '\uE7BA',
       'Financial': '\uE7BB',
       'Education': '\uE7BE',
       'ShoppingCart': '\uE7BF',
@@ -106,25 +124,7 @@ export function initializeIcons(
       'Read': '\uE8C3',
       'Cut': '\uE8C6',
       'PaymentCard': '\uE8C7',
-      'Copy': '\uE8C8',
-      'Important': '\uE8C9',
-      'MailReply': '\uE8CA',
-      'GotoToday': '\uE8D1',
-      'Font': '\uE8D2',
-      'FontColor': '\uE8D3',
-      'FolderFill': '\uE8D5',
-      'Permissions': '\uE8D7',
-      'DisableUpdates': '\uE8D8',
-      'Unfavorite': '\uE8D9',
-      'Italic': '\uE8DB',
-      'Underline': '\uE8DC',
-      'Bold': '\uE8DD',
-      'MoveToFolder': '\uE8DE',
-      'Dislike': '\uE8E0',
-      'Like': '\uE8E1',
-      'AlignCenter': '\uE8E3',
-      'OpenFile': '\uE8E5',
-      'ClearSelection': '\uE8E6'
+      'Copy': '\uE8C8'
     }
   };
 

@@ -4,7 +4,7 @@ import { Check } from 'office-ui-fabric-react/lib/Check';
 import { IContextualMenuItem } from 'office-ui-fabric-react/lib/ContextualMenu';
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
 import { ISelection, Selection, SelectionMode, SelectionZone } from 'office-ui-fabric-react/lib/Selection';
-import { createListItems, IExampleItem } from 'office-ui-fabric-react/lib/utilities/exampleData';
+import { createListItems, IExampleItem } from '@uifabric/example-data';
 import { mergeStyleSets, IRawStyle } from 'office-ui-fabric-react/lib/Styling';
 import { memoizeFunction } from 'office-ui-fabric-react/lib/Utilities';
 
@@ -44,7 +44,7 @@ export interface ISelectionBasicExampleState {
   canSelect: 'all' | 'vowels';
 }
 
-export interface ISelectionItemExampleProps {
+interface ISelectionItemExampleProps {
   item: IExampleItem;
   itemIndex?: number;
   selection?: ISelection;
@@ -54,7 +54,7 @@ export interface ISelectionItemExampleProps {
 /**
  * The SelectionItemExample controls and displays the selection state of a single item
  */
-export const SelectionItemExample: React.StatelessComponent<ISelectionItemExampleProps> = (props: ISelectionItemExampleProps) => {
+const SelectionItemExample: React.StatelessComponent<ISelectionItemExampleProps> = (props: ISelectionItemExampleProps) => {
   const { item, itemIndex, selection } = props;
   let isSelected = false;
 

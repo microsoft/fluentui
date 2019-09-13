@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Callout: add the ability for bounds to take a callback",
+  "packageName": "office-ui-fabric-react",
+  "email": "jspurlin@microsoft.com",
+  "commit": "8e0bf26ec97bd4b76e8f1af3f0dc075f5e21dd2e",
+  "date": "2019-09-11T22:32:05.471Z"
+}

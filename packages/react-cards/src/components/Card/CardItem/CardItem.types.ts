@@ -3,7 +3,7 @@ import { IBaseProps } from '@uifabric/utilities';
 import { IStackItemProps, IStackItemSlots, IStackItemTokens } from 'office-ui-fabric-react';
 
 /**
- * {@docCategory CardItem}
+ * {@docCategory Card}
  */
 export type ICardItemComponent = IComponent<ICardItemProps, ICardItemTokens, ICardItemStyles, ICardItemViewProps>;
 
@@ -12,32 +12,32 @@ export type ICardItemComponent = IComponent<ICardItemProps, ICardItemTokens, ICa
 // For now, these helper types can be used to provide return type safety when specifying tokens and styles functions.
 
 /**
- * {@docCategory CardItem}
+ * {@docCategory Card}
  */
 export type ICardItemTokenReturnType = ReturnType<Extract<ICardItemComponent['tokens'], Function>>;
 
 /**
- * {@docCategory CardItem}
+ * {@docCategory Card}
  */
 export type ICardItemStylesReturnType = ReturnType<Extract<ICardItemComponent['styles'], Function>>;
 
 /**
- * {@docCategory CardItem}
+ * {@docCategory Card}
  */
 export type ICardItemSlot = ISlotProp<ICardItemProps>;
 
 /**
- * {@docCategory CardItem}
+ * {@docCategory Card}
  */
 export interface ICardItemSlots extends IStackItemSlots {}
 
 /**
- * {@docCategory CardItem}
+ * {@docCategory Card}
  */
 export interface ICardItem {}
 
 /**
- * {@docCategory CardItem}
+ * {@docCategory Card}
  */
 export interface ICardItemProps
   extends ICardItemSlots,
@@ -51,16 +51,16 @@ export interface ICardItemProps
 }
 
 /**
- * {@docCategory CardItem}
+ * {@docCategory Card}
  */
 export interface ICardItemViewProps extends ICardItemProps {}
 
 /**
- * {@docCategory CardItem}
+ * {@docCategory Card}
  */
 export interface ICardItemTokens extends IStackItemTokens {}
 
 /**
- * {@docCategory CardItem}
+ * {@docCategory Card}
  */
 export type ICardItemStyles = IComponentStyles<ICardItemSlots>;

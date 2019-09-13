@@ -1,5 +1,13 @@
 import { IDemoPageProps } from './DemoPage.types';
-import { ComponentPage, ExampleCard, ApiReferencesTableSet, PropertiesTableSet, Markdown, FeedbackList } from '@uifabric/example-app-base';
+import {
+  ComponentPage,
+  ExampleCard,
+  ApiReferencesTableSet,
+  PropertiesTableSet,
+  Markdown,
+  FeedbackList,
+  IExampleCardProps
+} from '@uifabric/example-app-base';
 import * as React from 'react';
 
 export const DemoPage: React.StatelessComponent<IDemoPageProps> = demoPageProps => {
@@ -11,6 +19,7 @@ export const DemoPage: React.StatelessComponent<IDemoPageProps> = demoPageProps 
     bestPractices,
     dos,
     donts,
+    accessibility,
     // Passing the extra props to ComponentPage like this helps to keep the prop names in sync
     ...componentPageProps
   } = demoPageProps;
@@ -23,9 +32,9 @@ export const DemoPage: React.StatelessComponent<IDemoPageProps> = demoPageProps 
             {exampleKnobs}
             {examples &&
               examples.map(example => {
-                const { view, ...cardProps } = example;
+                const { view, styles, ...cardProps } = example;
                 return (
-                  <ExampleCard key={cardProps.title} {...cardProps}>
+                  <ExampleCard key={cardProps.title} styles={styles as IExampleCardProps['styles']} {...cardProps}>
                     {view}
                   </ExampleCard>
                 );
@@ -37,6 +46,7 @@ export const DemoPage: React.StatelessComponent<IDemoPageProps> = demoPageProps 
         (componentPageProps.jsonDocs && <ApiReferencesTableSet jsonDocs={componentPageProps.jsonDocs} />) ||
         (propertiesTablesSources && <PropertiesTableSet sources={propertiesTablesSources} />)
       }
+      accessibility={accessibility ? <Markdown>{accessibility}</Markdown> : undefined}
       overview={overview ? <Markdown>{overview}</Markdown> : undefined}
       bestPractices={bestPractices ? <Markdown>{bestPractices}</Markdown> : undefined}
       dos={dos ? <Markdown>{dos}</Markdown> : undefined}

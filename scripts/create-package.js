@@ -62,7 +62,6 @@ const steps = [
   { template: 'WebpackServeConfig', output: 'webpack.serve.config.js' },
   { template: 'Tests', output: path.join('config', 'tests.js') },
   { template: 'PreCopy', output: path.join('config', 'pre-copy.json') },
-  { template: 'Tests', output: path.join('src', 'common', 'tests.js') },
   { template: 'IndexTs', output: path.join('src', 'index.ts') },
   { template: 'Version', output: path.join('src', 'version.ts') },
   { template: 'AppDefinition', output: path.join('src', 'demo', 'AppDefinition.tsx') },
@@ -153,6 +152,10 @@ function readFileCallback(error, data, templateName, outputFilePath, callback, r
         console.warn(`Could not determine appropriate version of ${package} from @uifabric/experiments package.json`);
       }
     }
+    view.typesReactPeerDep = experimentsPackageJson.peerDependencies['@types/react'];
+    view.typesReactDomPeerDep = experimentsPackageJson.peerDependencies['@types/react-dom'];
+    view.reactPeerDep = experimentsPackageJson.peerDependencies.react;
+    view.reactDomPeerDep = experimentsPackageJson.peerDependencies['react-dom'];
   }
 
   const fileData = mustache.render(data, view);
@@ -176,10 +179,8 @@ function makePackage(error) {
     return;
   }
 
-  fs.mkdirSync(`${packagePath}/.vscode`);
   fs.mkdirSync(`${packagePath}/config`);
   fs.mkdirSync(`${packagePath}/src`);
-  fs.mkdirSync(`${packagePath}/src/common`);
   fs.mkdirSync(`${packagePath}/src/demo`);
   fs.mkdirSync(`${packagePath}/src/components`);
 

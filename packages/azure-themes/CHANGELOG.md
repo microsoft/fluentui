@@ -1,6 +1,32 @@
 # Change Log - @uifabric/azure-themes
 
-This log was last generated on Mon, 29 Jul 2019 12:26:00 GMT and should not be manually modified.
+This log was last generated on Wed, 11 Sep 2019 12:35:47 GMT and should not be manually modified.
+
+## 7.0.9
+Wed, 11 Sep 2019 12:35:47 GMT
+
+### Patches
+
+- Checkbox alignment and visual artifact fix (rykelly@microsoft.com)
+## 7.0.8
+Wed, 04 Sep 2019 12:32:15 GMT
+
+### Patches
+
+- DropDown: Fixed dropdownItem and dropdownItemSelected azure-theme styles. (xinychen@microsoft.com)
+## 7.0.7
+Wed, 04 Sep 2019 04:09:58 GMT
+
+### Patches
+
+- fix version file (kchau@microsoft.com)
+## 7.0.6
+Fri, 23 Aug 2019 12:35:28 GMT
+
+### Patches
+
+- Update npmignores, delete unused jest setup files (elcraig@microsoft.com)
+- Fix up readme and package.json descriptions (elcraig@microsoft.com)
 
 ## 7.0.5
 Mon, 29 Jul 2019 12:26:00 GMT

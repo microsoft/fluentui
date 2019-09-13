@@ -2,6 +2,95 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "date": "Wed, 11 Sep 2019 12:35:47 GMT",
+      "tag": "@uifabric/charting_v0.135.0",
+      "version": "0.135.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Expose hideLegend prop for stacked bar chart",
+            "author": "v-ragor@microsoft.com",
+            "commit": "21d5f3be8e206956a48b9c15ea15e55c7ffe36c8"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 04 Sep 2019 04:09:58 GMT",
+      "tag": "@uifabric/charting_v0.134.4",
+      "version": "0.134.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fix version file",
+            "author": "kchau@microsoft.com",
+            "commit": "fbccfaf91bfe3c77d95c614ac2cb69b7c9e1dad1"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 27 Aug 2019 12:33:51 GMT",
+      "tag": "@uifabric/charting_v0.134.3",
+      "version": "0.134.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Remove relative imports from examples and fix incorrectly named example files",
+            "author": "elcraig@microsoft.com",
+            "commit": "9bfb3b5f1dbec3c8ef57558d3d47f5bdc2f9648c"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 23 Aug 2019 12:35:28 GMT",
+      "tag": "@uifabric/charting_v0.134.2",
+      "version": "0.134.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update npmignores, delete unused jest setup files",
+            "author": "elcraig@microsoft.com",
+            "commit": "b12aaa280221562003af1e0f02aa5f3a5b008041"
+          },
+          {
+            "comment": "Fix up readme and package.json descriptions",
+            "author": "elcraig@microsoft.com",
+            "commit": "b1aef500b4b86eb5643d9f7db4c06114b5d7cc71"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 13 Aug 2019 12:31:12 GMT",
+      "tag": "@uifabric/charting_v0.134.1",
+      "version": "0.134.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix donut chart transform when height and width props change",
+            "author": "v-ragor@microsoft.com",
+            "commit": "7c5619a4fdf31fdbb966a1e50c9cc12a2dcb0180"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 07 Aug 2019 12:32:28 GMT",
+      "tag": "@uifabric/charting_v0.134.0",
+      "version": "0.134.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Initial implementation of clickable legends",
+            "author": "atgupta@microsoft.com",
+            "commit": "98ff6951712d70a787f19dab3b48ab94ef7d107a"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 22 Jul 2019 12:28:42 GMT",
       "tag": "@uifabric/charting_v0.133.5",
       "version": "0.133.5",

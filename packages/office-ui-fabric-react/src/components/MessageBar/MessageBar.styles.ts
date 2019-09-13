@@ -5,7 +5,9 @@ import {
   HighContrastSelector,
   ScreenWidthMaxSmall,
   getScreenSelector,
-  getGlobalClassNames
+  getGlobalClassNames,
+  getFocusStyle,
+  IconFontSizes
 } from '../../Styling';
 import { IMessageBarStyleProps, IMessageBarStyles, MessageBarType } from './MessageBar.types';
 
@@ -72,7 +74,7 @@ export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
   const dismissalAndExpandIconStyle: IStyle = {
-    fontSize: 10,
+    fontSize: IconFontSizes.xSmall,
     height: 10,
     lineHeight: '10px',
     color: palette.neutralPrimary,
@@ -84,21 +86,31 @@ export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
     }
   };
 
-  const dismissalAndExpandStyle: IStyle = {
-    flexShrink: 0,
-    width: 32,
-    height: 32,
-    padding: '8px 12px',
-    selectors: {
-      '& .ms-Button-icon': dismissalAndExpandIconStyle,
-      ':hover': {
-        backgroundColor: 'transparent'
+  const dismissalAndExpandStyle: IStyle = [
+    getFocusStyle(theme, {
+      inset: 1,
+      highContrastStyle: {
+        outlineOffset: '-4px',
+        outlineColor: 'Window'
       },
-      ':active': {
-        backgroundColor: 'transparent'
+      borderColor: 'transparent'
+    }),
+    {
+      flexShrink: 0,
+      width: 32,
+      height: 32,
+      padding: '8px 12px',
+      selectors: {
+        '& .ms-Button-icon': dismissalAndExpandIconStyle,
+        ':hover': {
+          backgroundColor: 'transparent'
+        },
+        ':active': {
+          backgroundColor: 'transparent'
+        }
       }
     }
-  };
+  ];
 
   return {
     root: [
@@ -146,7 +158,7 @@ export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
     iconContainer: [
       classNames.iconContainer,
       {
-        fontSize: 16,
+        fontSize: IconFontSizes.medium,
         minWidth: 16,
         minHeight: 16,
         display: 'flex',

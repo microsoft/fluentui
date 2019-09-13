@@ -38,7 +38,7 @@ export interface IButton {
  * {@docCategory Button}
  */
 export interface IButtonProps
-  extends React.AllHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLDivElement | BaseButton | Button> {
+  extends React.AllHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLDivElement | BaseButton | Button | HTMLSpanElement> {
   /**
    * Optional callback to access the IButton interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
@@ -306,6 +306,11 @@ export interface IButtonProps
    * yet unknown docs
    */
   defaultRender?: any;
+
+  /**
+   * Optional props to be applied only to the primary action button of SplitButton and not to the overall SplitButton container
+   */
+  primaryActionButtonProps?: IButtonProps;
 }
 
 /**

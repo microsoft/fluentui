@@ -71,6 +71,11 @@ describe('mergeStyles', () => {
     expect(_stylesheet.getRules()).toEqual('.css-0{margin-top:4px;margin-right:8px;margin-bottom:4px;margin-left:4px;}');
   });
 
+  it('can merge comma delimitted selectors correctly', () => {
+    mergeStyles({ selectors: { ':hover': { background: 'red' } } }, { selectors: { ':hover, :active': { background: 'blue' } } });
+    expect(_stylesheet.getRules()).toEqual('.css-0:hover{background:blue;}.css-0:active{background:blue;}');
+  });
+
   it('can expand className lists', () => {
     const classes1 = mergeStyles('ms-Foo', { background: 'red' });
     const classes2 = mergeStyles(classes1, { background: 'green' });

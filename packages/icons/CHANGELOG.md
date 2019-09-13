@@ -1,6 +1,32 @@
 # Change Log - @uifabric/icons
 
-This log was last generated on Wed, 17 Jul 2019 18:58:57 GMT and should not be manually modified.
+This log was last generated on Thu, 12 Sep 2019 12:34:15 GMT and should not be manually modified.
+
+## 7.2.1
+Thu, 12 Sep 2019 12:34:15 GMT
+
+### Patches
+
+- Enable api-extractor for OUFR deps (elcraig@microsoft.com)
+## 7.2.0
+Wed, 04 Sep 2019 12:32:15 GMT
+
+### Minor changes
+
+- Update Fabric icons to v3.46, adding many new icons. (pejahn@microsoft.com)
+## 7.1.3
+Wed, 04 Sep 2019 04:09:58 GMT
+
+### Patches
+
+- fix version file (kchau@microsoft.com)
+## 7.1.2
+Fri, 23 Aug 2019 12:35:28 GMT
+
+### Patches
+
+- Update npmignores, delete unused jest setup files (elcraig@microsoft.com)
+- Fix up readme and package.json descriptions (elcraig@microsoft.com)
 
 ## 7.1.1
 Wed, 17 Jul 2019 18:58:57 GMT
@@ -77,7 +103,7 @@ Mon, 08 Oct 2018 12:24:15 GMT
 
 ### Patches
 
-- Moving tslint/prettier dependencies 
+- Moving tslint/prettier dependencies
 
 ## 6.1.1
 Fri, 21 Sep 2018 14:25:46 GMT

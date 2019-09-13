@@ -446,7 +446,8 @@ export class ResizeGroupBase extends BaseComponent<IResizeGroupProps, IResizeGro
     return !shallowCompare(this.props, nextProps) || !shallowCompare(this.state, nextState);
   }
 
-  public componentWillReceiveProps(nextProps: IResizeGroupProps): void {
+  // tslint:disable-next-line function-name
+  public UNSAFE_componentWillReceiveProps(nextProps: IResizeGroupProps): void {
     let scaledNewData = undefined;
 
     if (
@@ -475,6 +476,7 @@ export class ResizeGroupBase extends BaseComponent<IResizeGroupProps, IResizeGro
         measureContainer: true // Receiving new props means the parent might rerender and the root width/height might change
       });
     }
+
   }
 
   public componentDidUpdate(prevProps: IResizeGroupProps) {

@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "TextField: remove invalid aria-labelledby",
+  "packageName": "office-ui-fabric-react",
+  "email": "naethell@microsoft.com",
+  "commit": "3711fcd3145e19b939a2b0c58c5e9b655562d13f",
+  "date": "2019-09-11T21:09:01.169Z"
+}

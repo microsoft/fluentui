@@ -12,7 +12,6 @@ exports[`Pivot renders Pivot correctly when itemCount is a string 1`] = `
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
-    role="presentation"
   >
     <div
       className=
@@ -169,7 +168,7 @@ exports[`Pivot renders Pivot correctly when itemCount is a string 1`] = `
         role="tab"
         type="button"
       >
-        <div
+        <span
           className=
               ms-Button-flexContainer
               {
@@ -179,12 +178,19 @@ exports[`Pivot renders Pivot correctly when itemCount is a string 1`] = `
                 height: 100%;
                 justify-content: flex-start;
               }
+          data-automationid="splitbuttonprimary"
         >
           <span
             className=
                 ms-Pivot-linkContent
                 {
                   flex: 0 1 100%;
+                }
+                & > *  {
+                  margin-left: 4px;
+                }
+                & > *:first-child {
+                  margin-left: 0px;
                 }
           >
             <span
@@ -199,7 +205,7 @@ exports[`Pivot renders Pivot correctly when itemCount is a string 1`] = `
               test
             </span>
           </span>
-        </div>
+        </span>
       </button>
       <button
         aria-selected={false}
@@ -320,7 +326,7 @@ exports[`Pivot renders Pivot correctly when itemCount is a string 1`] = `
         role="tab"
         type="button"
       >
-        <div
+        <span
           className=
               ms-Button-flexContainer
               {
@@ -330,12 +336,19 @@ exports[`Pivot renders Pivot correctly when itemCount is a string 1`] = `
                 height: 100%;
                 justify-content: flex-start;
               }
+          data-automationid="splitbuttonprimary"
         >
           <span
             className=
                 ms-Pivot-linkContent
                 {
                   flex: 0 1 100%;
+                }
+                & > *  {
+                  margin-left: 4px;
+                }
+                & > *:first-child {
+                  margin-left: 0px;
                 }
           >
             <span
@@ -354,7 +367,6 @@ exports[`Pivot renders Pivot correctly when itemCount is a string 1`] = `
                   ms-Pivot-count
                   {
                     display: inline-block;
-                    margin-left: 4px;
                     vertical-align: top;
                   }
             >
@@ -363,7 +375,7 @@ exports[`Pivot renders Pivot correctly when itemCount is a string 1`] = `
               )
             </span>
           </span>
-        </div>
+        </span>
       </button>
     </div>
   </div>
@@ -390,7 +402,6 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
-    role="presentation"
   >
     <div
       className=
@@ -547,7 +558,7 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
         role="tab"
         type="button"
       >
-        <div
+        <span
           className=
               ms-Button-flexContainer
               {
@@ -557,12 +568,19 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
                 height: 100%;
                 justify-content: flex-start;
               }
+          data-automationid="splitbuttonprimary"
         >
           <span
             className=
                 ms-Pivot-linkContent
                 {
                   flex: 0 1 100%;
+                }
+                & > *  {
+                  margin-left: 4px;
+                }
+                & > *:first-child {
+                  margin-left: 0px;
                 }
           >
             <span
@@ -577,7 +595,7 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
               Test Link 1
             </span>
           </span>
-        </div>
+        </span>
       </button>
       <button
         aria-selected={false}
@@ -698,7 +716,7 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
         role="tab"
         type="button"
       >
-        <div
+        <span
           className=
               ms-Button-flexContainer
               {
@@ -708,12 +726,19 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
                 height: 100%;
                 justify-content: flex-start;
               }
+          data-automationid="splitbuttonprimary"
         >
           <span
             className=
                 ms-Pivot-linkContent
                 {
                   flex: 0 1 100%;
+                }
+                & > *  {
+                  margin-left: 4px;
+                }
+                & > *:first-child {
+                  margin-left: 0px;
                 }
           >
             <span
@@ -728,7 +753,7 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
               Test Link 2
             </span>
           </span>
-        </div>
+        </span>
       </button>
     </div>
   </div>
@@ -755,7 +780,6 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
-    role="presentation"
   >
     <div
       className=
@@ -911,7 +935,7 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
         role="tab"
         type="button"
       >
-        <div
+        <span
           className=
               ms-Button-flexContainer
               {
@@ -921,6 +945,7 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
                 height: 100%;
                 justify-content: flex-start;
               }
+          data-automationid="splitbuttonprimary"
         >
           <span
             className=
@@ -928,13 +953,18 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
                 {
                   flex: 0 1 100%;
                 }
+                & > *  {
+                  margin-left: 4px;
+                }
+                & > *:first-child {
+                  margin-left: 0px;
+                }
           >
             <span
               className=
                   ms-Pivot-count
                   {
                     display: inline-block;
-                    margin-left: 4px;
                     vertical-align: top;
                   }
             >
@@ -943,7 +973,7 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
               )
             </span>
           </span>
-        </div>
+        </span>
       </button>
       <button
         aria-selected={false}
@@ -1064,7 +1094,7 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
         role="tab"
         type="button"
       >
-        <div
+        <span
           className=
               ms-Button-flexContainer
               {
@@ -1074,12 +1104,19 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
                 height: 100%;
                 justify-content: flex-start;
               }
+          data-automationid="splitbuttonprimary"
         >
           <span
             className=
                 ms-Pivot-linkContent
                 {
                   flex: 0 1 100%;
+                }
+                & > *  {
+                  margin-left: 4px;
+                }
+                & > *:first-child {
+                  margin-left: 0px;
                 }
           >
             <span
@@ -1098,7 +1135,6 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
                   ms-Pivot-count
                   {
                     display: inline-block;
-                    margin-left: 4px;
                     vertical-align: top;
                   }
             >
@@ -1107,7 +1143,7 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
               )
             </span>
           </span>
-        </div>
+        </span>
       </button>
       <button
         aria-selected={false}
@@ -1228,7 +1264,7 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
         role="tab"
         type="button"
       >
-        <div
+        <span
           className=
               ms-Button-flexContainer
               {
@@ -1238,6 +1274,7 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
                 height: 100%;
                 justify-content: flex-start;
               }
+          data-automationid="splitbuttonprimary"
         >
           <span
             className=
@@ -1245,13 +1282,17 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
                 {
                   flex: 0 1 100%;
                 }
+                & > *  {
+                  margin-left: 4px;
+                }
+                & > *:first-child {
+                  margin-left: 0px;
+                }
           >
             <span
               className=
                   ms-Pivot-icon
-                  & + $text {
-                    margin-left: 4px;
-                  }
+
             >
               <i
                 aria-hidden={true}
@@ -1284,7 +1325,7 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
               Text with icon
             </span>
           </span>
-        </div>
+        </span>
       </button>
     </div>
   </div>
@@ -1309,7 +1350,6 @@ exports[`Pivot renders large link Pivot correctly 1`] = `
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
-    role="presentation"
   >
     <div
       className=
@@ -1467,7 +1507,7 @@ exports[`Pivot renders large link Pivot correctly 1`] = `
         role="tab"
         type="button"
       >
-        <div
+        <span
           className=
               ms-Button-flexContainer
               {
@@ -1477,12 +1517,19 @@ exports[`Pivot renders large link Pivot correctly 1`] = `
                 height: 100%;
                 justify-content: flex-start;
               }
+          data-automationid="splitbuttonprimary"
         >
           <span
             className=
                 ms-Pivot-linkContent
                 {
                   flex: 0 1 100%;
+                }
+                & > *  {
+                  margin-left: 4px;
+                }
+                & > *:first-child {
+                  margin-left: 0px;
                 }
           >
             <span
@@ -1497,7 +1544,7 @@ exports[`Pivot renders large link Pivot correctly 1`] = `
               Test Link 1
             </span>
           </span>
-        </div>
+        </span>
       </button>
       <button
         aria-selected={false}
@@ -1618,7 +1665,7 @@ exports[`Pivot renders large link Pivot correctly 1`] = `
         role="tab"
         type="button"
       >
-        <div
+        <span
           className=
               ms-Button-flexContainer
               {
@@ -1628,12 +1675,19 @@ exports[`Pivot renders large link Pivot correctly 1`] = `
                 height: 100%;
                 justify-content: flex-start;
               }
+          data-automationid="splitbuttonprimary"
         >
           <span
             className=
                 ms-Pivot-linkContent
                 {
                   flex: 0 1 100%;
+                }
+                & > *  {
+                  margin-left: 4px;
+                }
+                & > *:first-child {
+                  margin-left: 0px;
                 }
           >
             <span
@@ -1648,7 +1702,7 @@ exports[`Pivot renders large link Pivot correctly 1`] = `
               
             </span>
           </span>
-        </div>
+        </span>
       </button>
     </div>
   </div>
@@ -1673,7 +1727,6 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
-    role="presentation"
   >
     <div
       className=
@@ -1841,7 +1894,7 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
         role="tab"
         type="button"
       >
-        <div
+        <span
           className=
               ms-Button-flexContainer
               {
@@ -1851,12 +1904,19 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
                 height: 100%;
                 justify-content: flex-start;
               }
+          data-automationid="splitbuttonprimary"
         >
           <span
             className=
                 ms-Pivot-linkContent
                 {
                   flex: 0 1 100%;
+                }
+                & > *  {
+                  margin-left: 4px;
+                }
+                & > *:first-child {
+                  margin-left: 0px;
                 }
           >
             <span
@@ -1871,7 +1931,7 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
               Test Link 1
             </span>
           </span>
-        </div>
+        </span>
       </button>
       <button
         aria-selected={false}
@@ -1935,8 +1995,8 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
               top: 0px;
             }
             &:hover {
-              background-color: #f3f2f1;
-              color: #201f1e;
+              background-color: #0078d4;
+              color: #ffffff;
               cursor: pointer;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
@@ -1947,12 +2007,13 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
               color: #0078d4;
             }
             &:focus {
+              color: #000000;
               outline-offset: -1px;
               outline: none;
             }
             &:active {
-              background-color: #edebe9;
-              color: #201f1e;
+              background-color: #0078d4;
+              color: #ffffff;
             }
             &:active .ms-Button-icon {
               color: #004578;
@@ -1985,13 +2046,6 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
               height: auto;
               transition: none;
             }
-            &:hover, &:focus {
-              color: #000000;
-            }
-            &:active, &:hover {
-              background-color: #0078d4;
-              color: #ffffff;
-            }
         data-content=""
         data-is-focusable={true}
         id="Pivot0-Tab1"
@@ -2005,7 +2059,7 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
         role="tab"
         type="button"
       >
-        <div
+        <span
           className=
               ms-Button-flexContainer
               {
@@ -2015,12 +2069,19 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
                 height: 100%;
                 justify-content: flex-start;
               }
+          data-automationid="splitbuttonprimary"
         >
           <span
             className=
                 ms-Pivot-linkContent
                 {
                   flex: 0 1 100%;
+                }
+                & > *  {
+                  margin-left: 4px;
+                }
+                & > *:first-child {
+                  margin-left: 0px;
                 }
           >
             <span
@@ -2035,7 +2096,7 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
               
             </span>
           </span>
-        </div>
+        </span>
       </button>
     </div>
   </div>
@@ -2060,7 +2121,6 @@ exports[`Pivot renders link Pivot correctly 1`] = `
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
-    role="presentation"
   >
     <div
       className=
@@ -2217,7 +2277,7 @@ exports[`Pivot renders link Pivot correctly 1`] = `
         role="tab"
         type="button"
       >
-        <div
+        <span
           className=
               ms-Button-flexContainer
               {
@@ -2227,12 +2287,19 @@ exports[`Pivot renders link Pivot correctly 1`] = `
                 height: 100%;
                 justify-content: flex-start;
               }
+          data-automationid="splitbuttonprimary"
         >
           <span
             className=
                 ms-Pivot-linkContent
                 {
                   flex: 0 1 100%;
+                }
+                & > *  {
+                  margin-left: 4px;
+                }
+                & > *:first-child {
+                  margin-left: 0px;
                 }
           >
             <span
@@ -2247,7 +2314,7 @@ exports[`Pivot renders link Pivot correctly 1`] = `
               Test Link 1
             </span>
           </span>
-        </div>
+        </span>
       </button>
       <button
         aria-selected={false}
@@ -2368,7 +2435,7 @@ exports[`Pivot renders link Pivot correctly 1`] = `
         role="tab"
         type="button"
       >
-        <div
+        <span
           className=
               ms-Button-flexContainer
               {
@@ -2378,12 +2445,19 @@ exports[`Pivot renders link Pivot correctly 1`] = `
                 height: 100%;
                 justify-content: flex-start;
               }
+          data-automationid="splitbuttonprimary"
         >
           <span
             className=
                 ms-Pivot-linkContent
                 {
                   flex: 0 1 100%;
+                }
+                & > *  {
+                  margin-left: 4px;
+                }
+                & > *:first-child {
+                  margin-left: 0px;
                 }
           >
             <span
@@ -2398,7 +2472,7 @@ exports[`Pivot renders link Pivot correctly 1`] = `
               
             </span>
           </span>
-        </div>
+        </span>
       </button>
     </div>
   </div>
@@ -2423,7 +2497,6 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
-    role="presentation"
   >
     <div
       className=
@@ -2590,7 +2663,7 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
         role="tab"
         type="button"
       >
-        <div
+        <span
           className=
               ms-Button-flexContainer
               {
@@ -2600,12 +2673,19 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
                 height: 100%;
                 justify-content: flex-start;
               }
+          data-automationid="splitbuttonprimary"
         >
           <span
             className=
                 ms-Pivot-linkContent
                 {
                   flex: 0 1 100%;
+                }
+                & > *  {
+                  margin-left: 4px;
+                }
+                & > *:first-child {
+                  margin-left: 0px;
                 }
           >
             <span
@@ -2620,7 +2700,7 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
               Test Link 1
             </span>
           </span>
-        </div>
+        </span>
       </button>
       <button
         aria-selected={false}
@@ -2684,8 +2764,8 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
               top: 0px;
             }
             &:hover {
-              background-color: #f3f2f1;
-              color: #201f1e;
+              background-color: #0078d4;
+              color: #ffffff;
               cursor: pointer;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
@@ -2696,12 +2776,13 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
               color: #0078d4;
             }
             &:focus {
+              color: #000000;
               outline-offset: -1px;
               outline: none;
             }
             &:active {
-              background-color: #edebe9;
-              color: #201f1e;
+              background-color: #0078d4;
+              color: #ffffff;
             }
             &:active .ms-Button-icon {
               color: #004578;
@@ -2734,13 +2815,6 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
               height: auto;
               transition: none;
             }
-            &:hover, &:focus {
-              color: #000000;
-            }
-            &:active, &:hover {
-              background-color: #0078d4;
-              color: #ffffff;
-            }
         data-content=""
         data-is-focusable={true}
         id="Pivot0-Tab1"
@@ -2754,7 +2828,7 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
         role="tab"
         type="button"
       >
-        <div
+        <span
           className=
               ms-Button-flexContainer
               {
@@ -2764,12 +2838,19 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
                 height: 100%;
                 justify-content: flex-start;
               }
+          data-automationid="splitbuttonprimary"
         >
           <span
             className=
                 ms-Pivot-linkContent
                 {
                   flex: 0 1 100%;
+                }
+                & > *  {
+                  margin-left: 4px;
+                }
+                & > *:first-child {
+                  margin-left: 0px;
                 }
           >
             <span
@@ -2784,7 +2865,7 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
               
             </span>
           </span>
-        </div>
+        </span>
       </button>
     </div>
   </div>
@@ -2809,7 +2890,6 @@ exports[`Pivot supports JSX expressions 1`] = `
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
-    role="presentation"
   >
     <div
       className=
@@ -2955,7 +3035,7 @@ exports[`Pivot supports JSX expressions 1`] = `
         role="tab"
         type="button"
       >
-        <div
+        <span
           className=
               ms-Button-flexContainer
               {
@@ -2965,12 +3045,19 @@ exports[`Pivot supports JSX expressions 1`] = `
                 height: 100%;
                 justify-content: flex-start;
               }
+          data-automationid="splitbuttonprimary"
         >
           <span
             className=
                 ms-Pivot-linkContent
                 {
                   flex: 0 1 100%;
+                }
+                & > *  {
+                  margin-left: 4px;
+                }
+                & > *:first-child {
+                  margin-left: 0px;
                 }
           >
             <span
@@ -2985,7 +3072,7 @@ exports[`Pivot supports JSX expressions 1`] = `
               Test Link 1
             </span>
           </span>
-        </div>
+        </span>
       </button>
       <button
         aria-selected={true}
@@ -3117,7 +3204,7 @@ exports[`Pivot supports JSX expressions 1`] = `
         role="tab"
         type="button"
       >
-        <div
+        <span
           className=
               ms-Button-flexContainer
               {
@@ -3127,12 +3214,19 @@ exports[`Pivot supports JSX expressions 1`] = `
                 height: 100%;
                 justify-content: flex-start;
               }
+          data-automationid="splitbuttonprimary"
         >
           <span
             className=
                 ms-Pivot-linkContent
                 {
                   flex: 0 1 100%;
+                }
+                & > *  {
+                  margin-left: 4px;
+                }
+                & > *:first-child {
+                  margin-left: 0px;
                 }
           >
             <span
@@ -3147,7 +3241,7 @@ exports[`Pivot supports JSX expressions 1`] = `
               Test Link 3
             </span>
           </span>
-        </div>
+        </span>
       </button>
     </div>
   </div>

@@ -20,7 +20,6 @@ exports[`Component Examples renders PeoplePicker.Types.Example.tsx correctly 1`]
       onFocus={[Function]}
       onKeyDown={[Function]}
       onMouseDownCapture={[Function]}
-      role="presentation"
     >
       <div
         className="ms-SelectionZone"
@@ -64,6 +63,7 @@ exports[`Component Examples renders PeoplePicker.Types.Example.tsx correctly 1`]
                 ms-BasePicker-input
                 {
                   align-self: flex-end;
+                  background-color: transparent;
                   border-radius: 2px;
                   border: none;
                   flex-grow: 1;
@@ -345,6 +345,8 @@ exports[`Component Examples renders PeoplePicker.Types.Example.tsx correctly 1`]
           }
     >
       <input
+        aria-checked="false"
+        aria-label="Disable People Picker"
         checked={false}
         className=
 
@@ -407,6 +409,7 @@ exports[`Component Examples renders PeoplePicker.Types.Example.tsx correctly 1`]
                 justify-content: center;
                 margin-right: 4px;
                 overflow: hidden;
+                position: relative;
                 transition-duration: 200ms;
                 transition-property: background, border, border-color;
                 transition-timing-function: cubic-bezier(.4, 0, .23, 1);
@@ -439,6 +442,7 @@ exports[`Component Examples renders PeoplePicker.Types.Example.tsx correctly 1`]
           </i>
         </div>
         <span
+          aria-hidden="true"
           className=
               ms-Checkbox-text
               {
@@ -668,7 +672,7 @@ exports[`Component Examples renders PeoplePicker.Types.Example.tsx correctly 1`]
     onMouseUp={[Function]}
     type="button"
   >
-    <div
+    <span
       className=
           ms-Button-flexContainer
           {
@@ -678,18 +682,21 @@ exports[`Component Examples renders PeoplePicker.Types.Example.tsx correctly 1`]
             height: 100%;
             justify-content: center;
           }
+      data-automationid="splitbuttonprimary"
     >
-      <div
+      <span
         className=
             ms-Button-textContainer
             {
+              display: block;
               flex-grow: 1;
             }
       >
-        <div
+        <span
           className=
               ms-Button-label
               {
+                display: block;
                 font-weight: 600;
                 line-height: 100%;
                 margin-bottom: 0;
@@ -700,9 +707,9 @@ exports[`Component Examples renders PeoplePicker.Types.Example.tsx correctly 1`]
           id="id__5"
         >
           Set focus
-        </div>
-      </div>
-    </div>
+        </span>
+      </span>
+    </span>
   </button>
 </div>
 `;

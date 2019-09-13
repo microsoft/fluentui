@@ -11,7 +11,7 @@ import {
 } from 'office-ui-fabric-react/lib/DocumentCard';
 import { Stack, IStackTokens } from 'office-ui-fabric-react/lib/Stack';
 import { getTheme } from 'office-ui-fabric-react/lib/Styling';
-import { TestImages } from '../../../common/TestImages';
+import { TestImages } from '@uifabric/example-data';
 
 const people: IDocumentCardActivityPerson[] = [
   { name: 'Annie Lindqvist', profileImageSrc: TestImages.personaFemale },
@@ -69,14 +69,16 @@ export class DocumentCardCompactExample extends React.PureComponent {
     };
 
     const theme = getTheme();
+    const { palette, fonts } = theme;
+
     const previewPropsUsingIcon: IDocumentCardPreviewProps = {
       previewImages: [
         {
-          previewIconProps: { iconName: 'OpenFile', styles: { root: { fontSize: 42, color: theme.palette.white } } },
+          previewIconProps: { iconName: 'OpenFile', styles: { root: { fontSize: fonts.superLarge.fontSize, color: palette.white } } },
           width: 144
         }
       ],
-      styles: { previewIcon: { backgroundColor: theme.palette.themePrimary } }
+      styles: { previewIcon: { backgroundColor: palette.themePrimary } }
     };
 
     const previewOutlookUsingIcon: IDocumentCardPreviewProps = {
@@ -86,9 +88,9 @@ export class DocumentCardCompactExample extends React.PureComponent {
             iconName: 'OutlookLogo',
             styles: {
               root: {
-                fontSize: 42,
+                fontSize: fonts.superLarge.fontSize,
                 color: '#0078d7',
-                backgroundColor: theme.palette.neutralLighterAlt
+                backgroundColor: palette.neutralLighterAlt
               }
             }
           },
@@ -96,7 +98,7 @@ export class DocumentCardCompactExample extends React.PureComponent {
         }
       ],
       styles: {
-        previewIcon: { backgroundColor: theme.palette.neutralLighterAlt }
+        previewIcon: { backgroundColor: palette.neutralLighterAlt }
       }
     };
 

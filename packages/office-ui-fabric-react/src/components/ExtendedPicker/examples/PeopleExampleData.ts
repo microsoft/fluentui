@@ -1,9 +1,10 @@
 // If this file is moved or split, the scripts for building codepen examples will likely need to be updated.
 
-import { PersonaPresence } from '../../../Persona';
-import { IExtendedPersonaProps } from '../../../SelectedItemsList';
-import { TestImages } from '../../../common/TestImages';
+import { PersonaPresence } from 'office-ui-fabric-react/lib/Persona';
+import { IExtendedPersonaProps } from 'office-ui-fabric-react/lib/SelectedItemsList';
+import { TestImages } from '@uifabric/example-data';
 
+/** @deprecated Use the version from `@uifabric/example-data` instead. */
 export const people: (IExtendedPersonaProps & { key: string | number })[] = [
   {
     key: 1,
@@ -461,8 +462,11 @@ export const people: (IExtendedPersonaProps & { key: string | number })[] = [
   }
 ];
 
+/** @deprecated Use the version from `@uifabric/example-data` instead. */
 export const mru: IExtendedPersonaProps[] = people.slice(0, 5);
 
+/** @deprecated Use the version from `@uifabric/example-data` instead. */
 export const groupOne: IExtendedPersonaProps[] = people.slice(6, 10);
 
+/** @deprecated Use the version from `@uifabric/example-data` instead. */
 export const groupTwo: IExtendedPersonaProps[] = people.slice(11, 16);

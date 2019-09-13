@@ -2,6 +2,187 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "date": "Thu, 12 Sep 2019 12:34:15 GMT",
+      "tag": "@uifabric/fabric-website_v7.4.7",
+      "version": "7.4.7",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update readme and fix minor IE compat issue",
+            "author": "elcraig@microsoft.com",
+            "commit": "485574797c272506647b6fb98d4ae5989d8eb9f9"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 09 Sep 2019 21:43:18 GMT",
+      "tag": "@uifabric/fabric-website_v7.4.6",
+      "version": "7.4.6",
+      "comments": {
+        "patch": [
+          {
+            "comment": "updated docs for BottomSheet and Drawer",
+            "author": "willdo@microsoft.com",
+            "commit": "07dff065fcd5b67559080e838627481af411c059"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 06 Sep 2019 12:34:51 GMT",
+      "tag": "@uifabric/fabric-website_v7.4.5",
+      "version": "7.4.5",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Hacked an examplecard msicon override for a specific DetailsList Drag and Drop page in fabric website",
+            "author": "kchau@microsoft.com",
+            "commit": "b988c64fa3b73070e9e58607d4100ba26ffa44ab"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 04 Sep 2019 04:09:58 GMT",
+      "tag": "@uifabric/fabric-website_v7.4.4",
+      "version": "7.4.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fix version file",
+            "author": "kchau@microsoft.com",
+            "commit": "fbccfaf91bfe3c77d95c614ac2cb69b7c9e1dad1"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 02 Sep 2019 12:33:56 GMT",
+      "tag": "@uifabric/fabric-website_v7.4.3",
+      "version": "7.4.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add PopupMenu and BottomSheet to mobile docs.",
+            "author": "emlynam@microsoft.com",
+            "commit": "9be8ad3ec737d22c263d7516e9d3ea93d931234e"
+          },
+          {
+            "comment": "Add PopupMenu title",
+            "author": "emlynam@microsoft.com",
+            "commit": "8d4cfae2dabddb2fd3b620c12c36d1bb7c11e421"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 23 Aug 2019 12:35:28 GMT",
+      "tag": "@uifabric/fabric-website_v7.4.2",
+      "version": "7.4.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Get rid of monaco-editor-webpack-plugin",
+            "author": "elcraig@microsoft.com",
+            "commit": "8404e0edc3591a74cda292aedd1e4bff58768e7c"
+          },
+          {
+            "comment": "Fix up readme and package.json descriptions",
+            "author": "elcraig@microsoft.com",
+            "commit": "b1aef500b4b86eb5643d9f7db4c06114b5d7cc71"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 21 Aug 2019 12:34:09 GMT",
+      "tag": "@uifabric/fabric-website_v7.4.1",
+      "version": "7.4.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Use toggles for button example page knobs",
+            "author": "elcraig@microsoft.com",
+            "commit": "dc83b75a4a45fb5b4d5ad62f856b959d39b6c1da"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 15 Aug 2019 12:30:43 GMT",
+      "tag": "@uifabric/fabric-website_v7.4.0",
+      "version": "7.4.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Card: Showing examples on demo page and website",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "6a6de09946ec1473cf7fcc483474e11384508c1f"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Rename deprecated React lifecycle functions to prevent development mode warnings in React 16.9.",
+            "author": "jagore@microsoft.com",
+            "commit": "ce48383da2d27474122aef769af0c313e29281d0"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 08 Aug 2019 12:32:41 GMT",
+      "tag": "@uifabric/fabric-website_v7.3.2",
+      "version": "7.3.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update webpack configs to make Monaco work cross-domain",
+            "author": "elcraig@microsoft.com",
+            "commit": "3e6d5375a58386bc28819855d98c0c1a6b2d790f"
+          },
+          {
+            "comment": "Fix some markdown bookmarks to enable click navigation to the bookmarked sections.",
+            "author": "vibraga@microsoft.com",
+            "commit": "b8567798e866ede6bd95e5fcbc99f2f0cdcea830"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 07 Aug 2019 12:32:28 GMT",
+      "tag": "@uifabric/fabric-website_v7.3.1",
+      "version": "7.3.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add customization section to Typography pages",
+            "author": "naethell@microsoft.com",
+            "commit": "68361da1ab491641dc11bdf38447074eb360e680"
+          },
+          {
+            "comment": "Fix Keytips demo page by adding a KeytipLayer",
+            "author": "keyou@microsoft.com",
+            "commit": "007ad920796ff13326ec6f26eed425dd60a32369"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 02 Aug 2019 12:33:29 GMT",
+      "tag": "@uifabric/fabric-website_v7.3.0",
+      "version": "7.3.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Website changes to work with monaco editor state management",
+            "author": "t-nikaz@microsoft.com",
+            "commit": "0843c196be248757bd1fff674f900346490cd206"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 24 Jul 2019 12:27:56 GMT",
       "tag": "@uifabric/fabric-website_v7.2.9",
       "version": "7.2.9",

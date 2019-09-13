@@ -116,16 +116,12 @@ function extractRules(args: IStyle[], rules: IRuleSet = { __order: [] }, current
                 newSelector = newSelector + '{' + currentSelector;
                 extractRules([selectorValue], rules, newSelector);
               } else if (newSelector.indexOf(',') > -1) {
-                const commaSeparatedSelectors = expandCommaSeparatedGlobals(newSelector)
-                  .split(/,/g)
-                  .map((s: string) => s.trim());
-                extractRules(
-                  [selectorValue],
-                  rules,
-                  commaSeparatedSelectors
-                    .map((commaSeparatedSelector: string) => expandSelector(commaSeparatedSelector, currentSelector))
-                    .join(', ')
-                );
+                expandCommaSeparatedGlobals(newSelector)
+                  .split(',')
+                  .map((s: string) => s.trim())
+                  .forEach((separatedSelector: string) =>
+                    extractRules([selectorValue], rules, expandSelector(separatedSelector, currentSelector))
+                  );
               } else {
                 extractRules([selectorValue], rules, expandSelector(newSelector, currentSelector));
               }
@@ -240,7 +236,7 @@ export function styleToRegistration(...args: IStyle[]): IRegistration | undefine
   }
 }
 
-export function applyRegistration(registration: IRegistration, classMap?: { [key: string]: string }): void {
+export function applyRegistration(registration: IRegistration): void {
   const stylesheet = Stylesheet.getInstance();
   const { className, key, args, rulesToInsert } = registration;
 
@@ -251,18 +247,7 @@ export function applyRegistration(registration: IRegistration, classMap?: { [key
       if (rules) {
         let selector = rulesToInsert[i];
 
-        // Fix selector using map.
-        selector = selector.replace(
-          /(&)|\$([\w-]+)\b/g,
-          (match: string, amp: string, cn: string): string => {
-            if (amp) {
-              return '.' + registration.className;
-            } else if (cn) {
-              return '.' + ((classMap && classMap[cn]) || cn);
-            }
-            return '';
-          }
-        );
+        selector = selector.replace(/&/g, '.' + registration.className);
 
         // Insert. Note if a media query, we must close the query with a final bracket.
         const processedRule = `${selector}{${rules}}${selector.indexOf('@') === 0 ? '}' : ''}`;

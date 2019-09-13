@@ -1,14 +1,14 @@
 import * as React from 'react';
-import { Stack, IStackProps, IStackTokens } from 'office-ui-fabric-react/lib/Stack';
+import { Stack, IStackTokens } from 'office-ui-fabric-react/lib/Stack';
 import { Text } from 'office-ui-fabric-react/lib/Text';
 import { IMenuButtonProps, IMenuButtonStyles, IMenuButtonTokens, MenuButton } from '@uifabric/experiments/lib/MenuButton';
 import { ISplitButtonProps, ISplitButtonTokens, SplitButton } from '@uifabric/experiments/lib/SplitButton';
 
-export interface IRibbonMenuButtonProps extends IMenuButtonProps {
+interface IRibbonMenuButtonProps extends IMenuButtonProps {
   vertical?: boolean;
 }
 
-export interface ISplitRibbonMenuButtonProps extends ISplitButtonProps {
+interface ISplitRibbonMenuButtonProps extends ISplitButtonProps {
   vertical?: boolean;
 }
 
@@ -59,7 +59,7 @@ const RibbonMenuButtonVerticalStyles: IMenuButtonStyles = {
   }
 };
 
-export const RibbonMenuButton: React.SFC<IRibbonMenuButtonProps> = props => {
+const RibbonMenuButton: React.SFC<IRibbonMenuButtonProps> = props => {
   const mergedProps: IMenuButtonProps = props.vertical
     ? {
         ...props,
@@ -116,12 +116,14 @@ const SplitMenuButtonVerticalSlots: ISplitRibbonMenuButtonProps['slots'] = {
   splitDivider: { render: () => null }
 };
 
-export const RibbonSplitMenuButton: React.SFC<ISplitRibbonMenuButtonProps> = props => {
+const RibbonSplitMenuButton: React.SFC<ISplitRibbonMenuButtonProps> = props => {
   const { content, vertical, ...rest } = props;
 
-  const rootProps: IStackProps = {
-    horizontal: false,
-    horizontalAlign: 'center'
+  const rootProps: React.DetailedHTMLProps<React.HtmlHTMLAttributes<any>, any> = {
+    style: {
+      alignItems: 'center',
+      flexDirection: 'column'
+    }
   };
 
   // TODO: This cast is required because menu is required in IMenuButtonSlots.

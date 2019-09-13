@@ -1,11 +1,12 @@
 import * as React from 'react';
-import { Nav } from '../index';
+import { Nav } from 'office-ui-fabric-react/lib/Nav';
 
-export const NavFabricDemoAppExample: React.StatelessComponent = () => {
+export const NavFabricDemoAppExample: React.FunctionComponent = () => {
   return (
     <Nav
       styles={{ root: { width: 300 } }}
       expandButtonAriaLabel="Expand or collapse"
+      ariaLabel="Nav example similiar to one found in this demo page"
       groups={[
         {
           name: 'Basic components',

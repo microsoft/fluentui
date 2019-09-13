@@ -2,6 +2,325 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "date": "Thu, 12 Sep 2019 12:34:15 GMT",
+      "tag": "@uifabric/experiments_v7.16.2",
+      "version": "7.16.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update examples to only export one component",
+            "author": "elcraig@microsoft.com",
+            "commit": "485574797c272506647b6fb98d4ae5989d8eb9f9"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 06 Sep 2019 12:34:51 GMT",
+      "tag": "@uifabric/experiments_v7.16.1",
+      "version": "7.16.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "added isSelectable prop for Tile.types; unshow checkbox if item is not selectable",
+            "author": "huaxi@microsoft.com",
+            "commit": "b5240a289ee31211cd039980f97064645630ff2c"
+          },
+          {
+            "comment": "Foundation: Allowing recomposition in composed.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "09f5eec64d1270f1294208cacfa07a1da757effe"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 05 Sep 2019 12:34:51 GMT",
+      "tag": "@uifabric/experiments_v7.16.0",
+      "version": "7.16.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "slider: added dos and don'ts to the documentation",
+            "author": "sneharoy321@gmail.com",
+            "commit": "f037bb2de2b24231ac171e15b4faedbfc8074ec5"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 04 Sep 2019 12:32:15 GMT",
+      "tag": "@uifabric/experiments_v7.15.0",
+      "version": "7.15.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add change file for new icons snapshots",
+            "author": "pejahn@microsoft.com",
+            "commit": "44e972ea7ac581303bbc4cc931ae89bac7c719d1"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 04 Sep 2019 04:09:58 GMT",
+      "tag": "@uifabric/experiments_v7.14.1",
+      "version": "7.14.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fix version file",
+            "author": "kchau@microsoft.com",
+            "commit": "fbccfaf91bfe3c77d95c614ac2cb69b7c9e1dad1"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 02 Sep 2019 12:33:56 GMT",
+      "tag": "@uifabric/experiments_v7.14.0",
+      "version": "7.14.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Updating Button to use new composed approach with slots as options.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "3946cadd372b0d10ee99e78b4025592e551f0abb"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Update experiments readme to include build instructions.",
+            "author": "elcraig@microsoft.com",
+            "commit": "d0fb4fa09133189dfe947fda211557a66b0b3909"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 30 Aug 2019 12:30:57 GMT",
+      "tag": "@uifabric/experiments_v7.13.5",
+      "version": "7.13.5",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix example imports and SelectedItemsList export structure",
+            "author": "elcraig@microsoft.com",
+            "commit": "b3952ba9bbc421acbc9abc240634c876e3e973c9"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 29 Aug 2019 12:30:00 GMT",
+      "tag": "@uifabric/experiments_v7.13.4",
+      "version": "7.13.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Renaming createComponent to compose and moving View inside component options object.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "1568bc0023d3a97bf8b75c3b2a3689d041d16eb0"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 27 Aug 2019 12:33:51 GMT",
+      "tag": "@uifabric/experiments_v7.13.3",
+      "version": "7.13.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Remove some relative imports from examples",
+            "author": "elcraig@microsoft.com",
+            "commit": "9bfb3b5f1dbec3c8ef57558d3d47f5bdc2f9648c"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 26 Aug 2019 12:30:49 GMT",
+      "tag": "@uifabric/experiments_v7.13.2",
+      "version": "7.13.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Memoizing styling in createComponent for components that have their default styling determined entirely by tokens.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "8507da7511cf1a7dd1c9de98568fc5c48fe22ba5"
+          },
+          {
+            "comment": "Updating snapshots.",
+            "author": "dzearing@hotmail.com",
+            "commit": "ba4fa6f2ea29cea78bf9024f2d7469c80da099ce"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 23 Aug 2019 12:35:28 GMT",
+      "tag": "@uifabric/experiments_v7.13.1",
+      "version": "7.13.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update npmignores, delete unused jest setup files",
+            "author": "elcraig@microsoft.com",
+            "commit": "b12aaa280221562003af1e0f02aa5f3a5b008041"
+          },
+          {
+            "comment": "Fix up readme and package.json descriptions",
+            "author": "elcraig@microsoft.com",
+            "commit": "b1aef500b4b86eb5643d9f7db4c06114b5d7cc71"
+          }
+        ],
+        "none": [
+          {
+            "comment": "snapshot updates",
+            "author": "kchau@microsoft.com",
+            "commit": "259c8a65cca2b9bd229f7429937b82a96e2376f9"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 22 Aug 2019 12:34:59 GMT",
+      "tag": "@uifabric/experiments_v7.13.0",
+      "version": "7.13.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Button: Using FontIcon and ImageIcon instead of Icon in both oufr and experiments Button.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "c98b154a94543323c31e34b39eae8d2058c53c10"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 21 Aug 2019 12:34:09 GMT",
+      "tag": "@uifabric/experiments_v7.12.0",
+      "version": "7.12.0",
+      "comments": {
+        "none": [
+          {
+            "comment": "Updated ComboBox snapshots",
+            "author": "v-mare@microsoft.com",
+            "commit": "9a3955fc93cb4fea86dab7de73967f799a0501f3"
+          },
+          {
+            "comment": "Remove relative imports in new Button examples",
+            "author": "elcraig@microsoft.com",
+            "commit": "dc83b75a4a45fb5b4d5ad62f856b959d39b6c1da"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 15 Aug 2019 12:30:43 GMT",
+      "tag": "@uifabric/experiments_v7.12.0",
+      "version": "7.12.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Rename deprecated React lifecycle functions to prevent development mode warnings in React 16.9.",
+            "author": "jagore@microsoft.com",
+            "commit": "ce48383da2d27474122aef769af0c313e29281d0"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 13 Aug 2019 12:31:12 GMT",
+      "tag": "@uifabric/experiments_v7.11.2",
+      "version": "7.11.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Updating snapshots.",
+            "author": "dzearing@microsoft.com",
+            "commit": ""
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 09 Aug 2019 12:31:50 GMT",
+      "tag": "@uifabric/experiments_v7.11.1",
+      "version": "7.11.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Chiclet: Preview image no longer overflows",
+            "author": "t-stcar@microsoft.com",
+            "commit": "c55d6b287597f8f874678777df218a73c7271324"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 07 Aug 2019 12:32:28 GMT",
+      "tag": "@uifabric/experiments_v7.11.0",
+      "version": "7.11.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Chiclet: Medium chiclet is styled according to redlines and xSmall Chiclet url displays properly",
+            "author": "t-stcar@microsoft.com",
+            "commit": "195a5ca8ad9acca8c3562d6797f7d86b95654c87"
+          },
+          {
+            "comment": "Updating styles to not use $ syntax.",
+            "author": "dzearing@microsoft.com",
+            "commit": "de03449faca7e6256e3863892a1c465721fd0ec4"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 06 Aug 2019 12:32:07 GMT",
+      "tag": "@uifabric/experiments_v7.10.1",
+      "version": "7.10.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Ignore left/right keypress from inner text input/textarea",
+            "author": "rezha@microsoft.com",
+            "commit": "1bf48c5c0a3e3e9ee566d4f5df2253bbeab0dec9"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 02 Aug 2019 12:33:29 GMT",
+      "tag": "@uifabric/experiments_v7.10.0",
+      "version": "7.10.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Button: Creating separate Actionable view to improve perf of Actionable, small perf improvements and perf scenario updates.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "b83bcc1af7a91f2ceb7966aea79a495b6330e166"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Experiments snapshot",
+            "author": "cliff.koh@microsoft.com",
+            "commit": "68e92fda0699006a704575a93cb55335230a4ba6"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "MenuButton: Removing use of StackItem to improve performance.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "86861599655f59191d65fb7d844a4943f4ade6ca"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 30 Jul 2019 12:28:32 GMT",
       "tag": "@uifabric/experiments_v7.9.1",
       "version": "7.9.1",

@@ -113,7 +113,8 @@ export class Site<TPlatforms extends string = string> extends React.Component<IS
     window.removeEventListener('hashchange', this._handleRouteChange);
   }
 
-  public componentWillReceiveProps(nextProps: ISiteProps): void {
+  // tslint:disable-next-line function-name
+  public UNSAFE_componentWillReceiveProps(nextProps: ISiteProps): void {
     if (nextProps && nextProps.children !== this.props.children) {
       document.body.scrollTop = document.documentElement.scrollTop = 0;
     }
@@ -150,9 +151,9 @@ export class Site<TPlatforms extends string = string> extends React.Component<IS
         {this._renderMessageBar()}
         <div className={css(styles.siteWrapper, isContentFullBleed && styles.fullWidth)}>
           {this._renderPageNav()}
-          <main className={styles.siteContent} data-is-scrollable="true" data-app-content-div="true" role="main">
+          <div className={styles.siteContent} data-is-scrollable="true" data-app-content-div="true" role="main">
             {childrenWithPlatform}
-          </main>
+          </div>
         </div>
         {this._renderPlatformBar()}
       </div>

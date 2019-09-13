@@ -56,7 +56,6 @@ exports[`Component Examples renders Announced.SearchResults.Example.tsx correctl
       onFocus={[Function]}
       onKeyDown={[Function]}
       onMouseDownCapture={[Function]}
-      role="presentation"
     >
       <div
         className="ms-SelectionZone"
@@ -100,6 +99,7 @@ exports[`Component Examples renders Announced.SearchResults.Example.tsx correctl
                 ms-BasePicker-input
                 {
                   align-self: flex-end;
+                  background-color: transparent;
                   border-radius: 2px;
                   border: none;
                   flex-grow: 1;

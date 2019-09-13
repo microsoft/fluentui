@@ -2,11 +2,11 @@ import * as React from 'react';
 import { Chiclet, ChicletSize } from '@uifabric/experiments';
 import { IButtonProps, IconButton } from 'office-ui-fabric-react/lib/Button';
 import { Text } from 'office-ui-fabric-react/lib/Text';
-import { mergeStyles } from '@uifabric/merge-styles/lib/mergeStyles';
+import { mergeStyles, FontWeights } from 'office-ui-fabric-react/lib/Styling';
 
 const SAMPLE_URL = 'https://contoso.sharepoint.com';
 
-export class FooterComponent extends React.Component<IFooterComponent, {}> {
+class FooterComponent extends React.Component<IFooterComponent, {}> {
   public render(): JSX.Element {
     const { buttonProps, activities } = this.props;
 
@@ -15,26 +15,28 @@ export class FooterComponent extends React.Component<IFooterComponent, {}> {
 }
 
 const footerStyle = mergeStyles({
+  display: 'flex',
+  position: 'absolute',
+  alignItems: 'flex-end',
+  justifyContent: 'flex-start',
   height: 36,
-  paddingLeft: 11
+  width: '100%',
+  bottom: 0
 });
 
 const activitiesStyle = mergeStyles({
-  width: 184,
-  lineHeight: 1.83,
-  float: 'left',
-  paddingTop: 18,
-  paddingBottom: 12,
-  marginTop: 0
+  paddingLeft: 16,
+  paddingBottom: 8,
+  fontWeight: FontWeights.semibold
 });
 
 const actionsStyle = mergeStyles({
-  paddingRight: 6,
-  position: 'relative'
+  display: 'flex',
+  fontSize: 16,
+  marginLeft: 'auto'
 });
 
 const actionStyle = mergeStyles({
-  float: 'right',
   cursor: 'pointer',
   width: 32,
   height: 36,

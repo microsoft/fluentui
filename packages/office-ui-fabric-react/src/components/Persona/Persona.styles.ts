@@ -1,5 +1,5 @@
 import { IPersonaStyleProps, IPersonaStyles, PersonaPresence, PersonaSize } from './Persona.types';
-import { FontSizes, FontWeights, IStyle, normalize, noWrap, getGlobalClassNames } from '../../Styling';
+import { FontWeights, IStyle, normalize, noWrap, getGlobalClassNames } from '../../Styling';
 import { personaSize, presenceBoolean, sizeBoolean } from './PersonaConsts';
 
 const GlobalClassNames = {
@@ -15,6 +15,7 @@ const GlobalClassNames = {
   size56: 'ms-Persona--size56',
   size72: 'ms-Persona--size72',
   size100: 'ms-Persona--size100',
+  size120: 'ms-Persona--size120',
   available: 'ms-Persona--online',
   away: 'ms-Persona--away',
   blocked: 'ms-Persona--blocked',
@@ -32,7 +33,7 @@ const GlobalClassNames = {
 export const getStyles = (props: IPersonaStyleProps): IPersonaStyles => {
   const { className, showSecondaryText, theme } = props;
 
-  const { palette } = theme;
+  const { palette, fonts } = theme;
 
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
@@ -44,7 +45,7 @@ export const getStyles = (props: IPersonaStyleProps): IPersonaStyles => {
   const sharedTextStyles: IStyle = {
     color: palette.neutralSecondary,
     fontWeight: FontWeights.regular,
-    fontSize: FontSizes.small
+    fontSize: fonts.small.fontSize
   };
 
   return {
@@ -54,8 +55,6 @@ export const getStyles = (props: IPersonaStyleProps): IPersonaStyles => {
       normalize,
       {
         color: palette.neutralPrimary,
-        fontSize: FontSizes.medium,
-        fontWeight: FontWeights.regular,
         position: 'relative',
         height: personaSize.size48,
         minWidth: personaSize.size48,
@@ -65,14 +64,6 @@ export const getStyles = (props: IPersonaStyleProps): IPersonaStyles => {
         selectors: {
           '.contextualHost': {
             display: 'none'
-          },
-
-          ':hover': {
-            selectors: {
-              $primaryText: {
-                color: palette.neutralDark
-              }
-            }
           }
         }
       },
@@ -172,6 +163,14 @@ export const getStyles = (props: IPersonaStyleProps): IPersonaStyles => {
         }
       ],
 
+      size.isSize120 && [
+        classNames.size120,
+        {
+          height: personaSize.size120,
+          minWidth: personaSize.size120
+        }
+      ],
+
       /**
        * Modifiers: presence
        */
@@ -215,7 +214,12 @@ export const getStyles = (props: IPersonaStyleProps): IPersonaStyles => {
       {
         color: palette.neutralPrimary,
         fontWeight: FontWeights.regular,
-        fontSize: FontSizes.medium
+        fontSize: fonts.medium.fontSize,
+        selectors: {
+          ':hover': {
+            color: palette.neutralDark
+          }
+        }
       },
 
       showSecondaryText && {
@@ -225,7 +229,7 @@ export const getStyles = (props: IPersonaStyleProps): IPersonaStyles => {
       },
 
       (size.isSize8 || size.isSize10) && {
-        fontSize: FontSizes.small,
+        fontSize: fonts.small.fontSize,
         lineHeight: personaSize.size8
       },
 
@@ -238,11 +242,11 @@ export const getStyles = (props: IPersonaStyleProps): IPersonaStyles => {
           height: 18
         },
 
-      (size.isSize56 || size.isSize72 || size.isSize100) && {
-        fontSize: 20 // TODO: after type ramp reconcile this needs to be replaced with a FontSize variable.
+      (size.isSize56 || size.isSize72 || size.isSize100 || size.isSize120) && {
+        fontSize: fonts.xLarge.fontSize
       },
 
-      (size.isSize56 || size.isSize72 || size.isSize100) &&
+      (size.isSize56 || size.isSize72 || size.isSize100 || size.isSize120) &&
         showSecondaryText && {
           height: 22
         }
@@ -269,11 +273,11 @@ export const getStyles = (props: IPersonaStyleProps): IPersonaStyles => {
           height: 18
         },
 
-      (size.isSize56 || size.isSize72 || size.isSize100) && {
-        fontSize: FontSizes.medium
+      (size.isSize56 || size.isSize72 || size.isSize100 || size.isSize120) && {
+        fontSize: fonts.medium.fontSize
       },
 
-      (size.isSize56 || size.isSize72 || size.isSize100) &&
+      (size.isSize56 || size.isSize72 || size.isSize100 || size.isSize120) &&
         showSecondaryText && {
           height: 18
         }
@@ -285,10 +289,10 @@ export const getStyles = (props: IPersonaStyleProps): IPersonaStyles => {
       sharedTextStyles,
       {
         display: 'none',
-        fontSize: FontSizes.medium
+        fontSize: fonts.medium.fontSize
       },
 
-      (size.isSize72 || size.isSize100) && {
+      (size.isSize72 || size.isSize100 || size.isSize120) && {
         display: 'block'
       }
     ],
@@ -299,10 +303,10 @@ export const getStyles = (props: IPersonaStyleProps): IPersonaStyles => {
       sharedTextStyles,
       {
         display: 'none',
-        fontSize: FontSizes.medium
+        fontSize: fonts.medium.fontSize
       },
 
-      size.isSize100 && {
+      (size.isSize100 || size.isSize120) && {
         display: 'block'
       }
     ],

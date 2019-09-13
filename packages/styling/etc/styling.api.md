@@ -460,6 +460,8 @@ export interface ISemanticColors extends ISemanticTextColors {
     accentButtonBackground: string;
     blockingBackground: string;
     bodyBackground: string;
+    bodyBackgroundChecked: string;
+    bodyBackgroundHovered: string;
     bodyDivider: string;
     bodyFrameBackground: string;
     bodyFrameDivider: string;
@@ -474,6 +476,7 @@ export interface ISemanticColors extends ISemanticTextColors {
     buttonBorderDisabled: string;
     defaultStateBackground: string;
     disabledBackground: string;
+    disabledBorder: string;
     errorBackground: string;
     focusBorder: string;
     inputBackground: string;
@@ -483,6 +486,10 @@ export interface ISemanticColors extends ISemanticTextColors {
     inputBorderHovered: string;
     inputFocusBorderAlt: string;
     inputForegroundChecked: string;
+    inputIcon: string;
+    inputIconDisabled: string;
+    inputIconHovered: string;
+    inputPlaceholderBackgroundChecked: string;
     listBackground: string;
     listHeaderBackgroundHovered: string;
     listHeaderBackgroundPressed: string;

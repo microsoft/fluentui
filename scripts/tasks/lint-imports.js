@@ -1,25 +1,30 @@
 // @ts-check
 
-const getAllPackageInfo = require('../monorepo/getAllPackageInfo');
-const findConfig = require('../find-config');
-const { readConfig } = require('../read-config');
-const importStatementGlobalRegex = /^import [{} a-zA-Z0-9_,*\r?\n ]*(?:from )?['"]{1}([.\/a-zA-Z0-9_@\-]+)['"]{1};.*$/gm;
-const importStatementRegex = /^import [{} a-zA-Z0-9_,*\r?\n ]*(?:from )?['"]{1}([.\/a-zA-Z0-9_@\-]+)['"]{1};.*$/;
-const pkgNameRegex = /^(@[a-z\-]+\/[a-z\-]+)|([a-z\-]+)/;
-
 /**
  * @typedef {{
  *   count: number;
- *   matches: { [key: string]: string }
+ *   matches: { [filePath: string]: { importPath: string; alternative?: string; }[] };
  * }} ImportErrorGroup
+ *
+ * @typedef {{
+ *   pathNotFile: ImportErrorGroup;
+ *   pathRelative: ImportErrorGroup;
+ *   pathDeep: ImportErrorGroup;
+ *   pathReExported: ImportErrorGroup;
+ *   importStar: ImportErrorGroup;
+ *   exportMulti: ImportErrorGroup;
+ *   exportDefault: ImportErrorGroup;
+ * }} ImportErrors
  *
  * @typedef {{
  *   totalImportKeywords: number;
  *   totalImportStatements: number;
- *   pathNotFile: ImportErrorGroup;
- *   pathRelative: ImportErrorGroup;
- * }} ImportErrors
+ * }} ImportStats
  */
+
+const getAllPackageInfo = require('../monorepo/getAllPackageInfo');
+const findConfig = require('../find-config');
+const { readConfig } = require('../read-config');
 
 function lintImports() {
   const path = require('path');
@@ -31,82 +36,33 @@ function lintImports() {
   const sourcePath = path.resolve(process.cwd(), 'src');
   const cwdNodeModulesPath = path.resolve(process.cwd(), 'node_modules');
   const nodeModulesPath = path.resolve(gitRoot, 'node_modules');
-  const rootFolder = gitRoot;
 
-  const allowRelativeImportExamples = [
-    // These were added to reduce the initial ramifications of disabling relative imports across all examples,
-    // the primary goal being to eliminate usage of relative imports going forward.
+  const allowedDeepImports = [
+    // This is a temporary measure until we figure out what root file these should be exported from.
     // TODO: Ideally these would eventually be removed.
-    'ActivityItem.Compact.Example.tsx',
-    'ActivityItem.Persona.Example.tsx',
-    'Button.CustomSplit.Example.tsx',
-    'Button.Keytips.Example.tsx',
-    'Button.Toggle.Example.tsx',
-    'Button.Variants.Example.tsx',
-    'Chiclet.Basic.Example.tsx',
-    'ChoiceGroup.Image.Example.tsx',
-    'DocumentCard.Basic.Example.tsx',
-    'DocumentCard.Compact.Example.tsx',
-    'DocumentCard.Complete.Example.tsx',
-    'DocumentCard.Conversation.Example.tsx',
-    'DocumentCard.Image.Example.tsx',
-    'ExtendedPeoplePicker.Basic.Example.tsx',
-    'ExtendedPeoplePicker.Controlled.Example.tsx',
-    'Facepile.AddFace.Example.tsx',
-    'Facepile.Basic.Example.tsx',
-    'Facepile.Overflow.Example.tsx',
-    'FacepileExampleData.ts',
-    'FloatingPeoplePicker.Basic.Example.tsx',
-    'Icon.ImageSheet.Example.tsx',
-    'Keytips.Basic.Example.tsx',
-    'Keytips.Button.Example.tsx',
-    'Keytips.CommandBar.Example.tsx',
-    'Keytips.Overflow.Example.tsx',
-    'Nav.Basic.Example.tsx',
-    'Nav.CustomGroupHeaders.Example.tsx',
-    'Nav.FabricDemoApp.Example.tsx',
-    'Nav.Nested.Example.tsx',
-    'PeoplePicker.Types.Example.tsx',
-    'PeoplePickerExampleData.ts',
-    'Persona.Alternate.Example.tsx',
-    'Persona.Basic.Example.tsx',
-    'Persona.CustomCoinRender.Example.tsx',
-    'Persona.CustomRender.Example.tsx',
-    'Persona.UnknownPersona.Example.tsx',
-    'Persona.Presence.Example.tsx',
-    'Picker.CustomResult.Example.tsx',
-    'Pivot.Fabric.Example.tsx',
-    'SelectedPeopleList.Basic.Example.tsx',
-    'SelectedPeopleList.Controlled.Example.tsx',
-    'SelectedPeopleList.WithContextMenu.Example.tsx',
-    'SelectedPeopleList.WithEdit.Example.tsx',
-    'SelectedPeopleList.WithEditInContextMenu.Example.tsx',
-    'SelectedPeopleList.WithGroupExpand.Example.tsx',
-    'Stack.Horizontal.Basic.Example.tsx',
-    'Stack.Horizontal.Configure.Example.tsx',
-    'Stack.Horizontal.Grow.Example.tsx',
-    'Stack.Horizontal.HorizontalAlign.Example.tsx',
-    'Stack.Horizontal.Reversed.Example.tsx',
-    'Stack.Horizontal.Shrink.Example.tsx',
-    'Stack.Horizontal.Spacing.Example.tsx',
-    'Stack.Horizontal.VerticalAlign.Example.tsx',
-    'Stack.Horizontal.Wrap.Example.tsx',
-    'Stack.Horizontal.WrapAdvanced.Example.tsx',
-    'Stack.Horizontal.WrapNested.Example.tsx',
-    'Stack.Vertical.Basic.Example.tsx',
-    'Stack.Vertical.Configure.Example.tsx',
-    'Stack.Vertical.Grow.Example.tsx',
-    'Stack.Vertical.HorizontalAlign.Example.tsx',
-    'Stack.Vertical.Reversed.Example.tsx',
-    'Stack.Vertical.Shrink.Example.tsx',
-    'Stack.Vertical.Spacing.Example.tsx',
-    'Stack.Vertical.VerticalAlign.Example.tsx',
-    'Stack.Vertical.Wrap.Example.tsx',
-    'Stack.Vertical.WrapAdvanced.Example.tsx',
-    'Stack.Vertical.WrapNested.Example.tsx',
-    'TilesList.Document.Example.tsx',
-    'TilesList.Media.Example.tsx'
+    'office-ui-fabric-react/lib/components/Keytip/examples/KeytipSetup',
+    'office-ui-fabric-react/lib/utilities/dateMath/DateMath',
+    'office-ui-fabric-react/lib/utilities/keytips/index',
+    'office-ui-fabric-react/lib/utilities/positioning',
+    '@uifabric/charting/lib/types/IDataPoint',
+    '@uifabric/date-time/lib/utilities/dateMath/DateMath',
+    '@uifabric/experiments/lib/utilities/scrolling/ScrollContainer',
+    // Once the components using this data are promoted, the data should go into @uifabric/example-data
+    '@uifabric/experiments/lib/common/TestImages',
+    '@uifabric/experiments/lib/components/TilesList/examples/ExampleHelpers',
+    // Only used in experimental examples. Will need a different approach for this to work with the editor.
+    '@uifabric/foundation/lib/next/composed',
+    // Imported by theming examples. Need to find a different approach.
+    '@uifabric/experiments/lib/components/CollapsibleSection/examples/CollapsibleSection.Recursive.Example'
   ];
+  const allowedReexportedImports = ['@uifabric/foundation/lib/next/composed'];
+  const reExportedPackages = {
+    '@uifabric/foundation': 'Foundation',
+    '@uifabric/icons': 'Icons',
+    '@uifabric/merge-styles': 'Styling',
+    '@uifabric/styling': 'Styling',
+    '@uifabric/utilities': 'Utilities'
+  };
 
   const packagesInfo = getAllPackageInfo();
 
@@ -119,42 +75,37 @@ function lintImports() {
     const files = _getFiles(sourcePath, /\.(ts|tsx)$/i);
     /** @type {ImportErrors} */
     const importErrors = {
+      pathNotFile: { count: 0, matches: {} },
+      pathRelative: { count: 0, matches: {} },
+      pathDeep: { count: 0, matches: {} },
+      pathReExported: { count: 0, matches: {} },
+      importStar: { count: 0, matches: {} },
+      exportMulti: { count: 0, matches: {} },
+      exportDefault: { count: 0, matches: {} }
+    };
+    /** @type {ImportStats} */
+    const importStats = {
       totalImportKeywords: 0,
-      totalImportStatements: 0,
-      pathNotFile: {
-        count: 0,
-        matches: {}
-      },
-      pathRelative: {
-        count: 0,
-        matches: {}
-      }
+      totalImportStatements: 0
     };
 
     for (const file of files) {
-      const filename = file
-        .split('\\')
-        .pop()
-        .split('/')
-        .pop();
+      const isExample = file.includes('.Example.') && !file.includes('.scss');
 
-      // Do not allow relative imports in example files.
-      const allowRelativeImports = file.indexOf('.Example.') === -1 || allowRelativeImportExamples.includes(filename);
-
-      _evaluateFile(file, importErrors, allowRelativeImports);
+      _evaluateFile(file, importErrors, importStats, isExample);
     }
 
     // A mismatch here identifies a potential issue with the import regex properly matching all import statements.
     // If you're here for this error check out commented out code in _evaluateFile for troubleshooting.
-    if (importErrors.totalImportKeywords !== importErrors.totalImportStatements) {
+    if (importStats.totalImportKeywords !== importStats.totalImportStatements) {
       console.log('!!!!!!!!!!!!!!!!!!!!!!!!!');
       console.log('WARNING: Potential missed import statements.');
-      console.log(`Import keywords found: ${importErrors.totalImportKeywords}`);
-      console.log(`Import statements found: ${importErrors.totalImportStatements}`);
+      console.log(`Import keywords found: ${importStats.totalImportKeywords}`);
+      console.log(`Import statements found: ${importStats.totalImportStatements}`);
       console.log('!!!!!!!!!!!!!!!!!!!!!!!!!');
     }
 
-    if (reportFilePathErrors(importErrors.pathNotFile, importErrors.pathRelative)) {
+    if (reportFilePathErrors(importErrors)) {
       return Promise.reject('Errors in imports were found!');
     }
 
@@ -193,16 +144,19 @@ function lintImports() {
   /**
    * @param {string} filePath
    * @param {ImportErrors} importErrors
-   * @param {boolean} allowRelativeImports
+   * @param {ImportStats} importStats
+   * @param {boolean} isExample
    */
-  function _evaluateFile(filePath, importErrors, allowRelativeImports) {
+  function _evaluateFile(filePath, importErrors, importStats, isExample) {
+    const importStatementRegex = /^import [^'"]*(?:from )?['"]([^'"]+)['"];.*$/;
+
     const fileContent = fs.readFileSync(filePath, 'utf8');
 
-    const importKeywords = fileContent.match(importStatementGlobalRegex);
-    const importStatements = fileContent.match(importStatementGlobalRegex);
+    const importKeywords = fileContent.match(/^import /gm);
+    const importStatements = fileContent.match(new RegExp(importStatementRegex, 'gm'));
 
-    importErrors.totalImportKeywords += importKeywords ? importKeywords.length : 0;
-    importErrors.totalImportStatements += importStatements ? importStatements.length : 0;
+    importStats.totalImportKeywords += importKeywords ? importKeywords.length : 0;
+    importStats.totalImportStatements += importStatements ? importStatements.length : 0;
 
     // This code is left here to help troubleshoot any instances of mismatch import keywords and statements.
     // if (importKeywords && (!importStatements || importKeywords.length !== importStatements.length)) {
@@ -215,23 +169,49 @@ function lintImports() {
         const parts = importStatementRegex.exec(statement);
 
         if (parts) {
-          _evaluateImport(filePath, parts[1], importErrors, allowRelativeImports);
+          _evaluateImport(filePath, parts, importErrors, isExample);
         }
       });
+    }
+
+    if (isExample) {
+      // borrowing this script to also check for some problematic export patterns in examples
+      const relativePath = path.relative(sourcePath, filePath);
+
+      // Check for multiple exported things that might be components (if this happens, the example editor
+      // and export to codepen won't know what to render)
+      const exportRegex = /^export (const|class) (\w+)/;
+      const exportStatements = fileContent.match(new RegExp(exportRegex, 'gm'));
+      if (!exportStatements) {
+        _addError(importErrors.exportMulti, relativePath, 'no exported class or const');
+      } else if (exportStatements.length > 1) {
+        const exports = exportStatements.map(exp => exp.match(exportRegex)[2]);
+        _addError(importErrors.exportMulti, relativePath, 'choose one of ' + exports.join(', '));
+      }
+
+      // Check for default exports
+      const defaultExport = fileContent.match(/^export default (class |const )?(\w+)/m);
+      if (defaultExport) {
+        _addError(importErrors.exportDefault, relativePath, defaultExport[2]);
+      }
     }
   }
 
   /**
    * @param {string} filePath
-   * @param {string} importPath
+   * @param {RegExpMatchArray} importMatch - Result of running `importStatementRegex` against a single import
+   * (`[1]` will be the import path)
    * @param {ImportErrors} importErrors
-   * @param {boolean} allowRelativeImports
+   * @param {boolean} isExample
    */
-  function _evaluateImport(filePath, importPath, importErrors, allowRelativeImports) {
+  function _evaluateImport(filePath, importMatch, importErrors, isExample) {
+    const importPath = importMatch[1];
     let fullImportPath;
     let pathIsRelative = false;
+    let pathIsDeep = false;
+    let pkgName;
 
-    if (importPath.indexOf('.') === 0) {
+    if (importPath[0] === '.') {
       // import is a file path. is this a file?
       fullImportPath = _evaluateImportPath(path.dirname(filePath), importPath);
       pathIsRelative = true;
@@ -239,14 +219,13 @@ function lintImports() {
       // skip the full import of packages within the monorepo
       return;
     } else {
-      const pkgNameMatch = importPath.match(pkgNameRegex);
+      const pkgNameMatch = importPath.match(/^(@[\w-]+\/[\w-]+|[\w-]+)/);
       if (pkgNameMatch === null) {
-        // This means the import does not adhere to what we are looking for (usually import * from 'react';, which
-        // we would skipping linting for.
+        // This means the import does not adhere to what we are looking for, so skip linting.
         return;
       }
 
-      const pkgName = pkgNameMatch[1] || pkgNameMatch[2];
+      pkgName = pkgNameMatch[1];
 
       // we don't evaluate imports of non monorepo packages
       if (!Object.keys(packagesInfo).includes(pkgName)) {
@@ -260,20 +239,36 @@ function lintImports() {
         fullImportPath =
           _evaluateImportPath(nodeModulesPath, './' + importPath) || _evaluateImportPath(cwdNodeModulesPath, './' + importPath);
       }
+
+      // A "deep" path is anything that goes further into the package than <pkg>/lib/<file>
+      const allowedSegments = pkgName[0] === '@' ? 4 : 3;
+      pathIsDeep = importPath.split(/\//g).length > allowedSegments;
     }
+
+    const relativePath = path.relative(sourcePath, filePath);
 
     if (!fullImportPath || fs.statSync(fullImportPath).isDirectory()) {
-      const pathNotFile = importErrors.pathNotFile;
-      const relativePath = path.relative(sourcePath, filePath);
-      pathNotFile.count++;
-      pathNotFile.matches[relativePath] = importPath;
+      _addError(importErrors.pathNotFile, relativePath, importPath);
     }
 
-    if (!allowRelativeImports && pathIsRelative && importPath.indexOf('.scss') === -1) {
-      const pathRelative = importErrors.pathRelative;
-      const relativePath = path.relative(sourcePath, filePath);
-      pathRelative.count++;
-      pathRelative.matches[relativePath] = importPath;
+    if (isExample) {
+      const isScss = importPath.endsWith('.scss');
+
+      if (pathIsRelative && !isScss) {
+        _addError(importErrors.pathRelative, relativePath, importPath);
+      }
+
+      if (pathIsDeep && !allowedDeepImports.includes(importPath)) {
+        _addError(importErrors.pathDeep, relativePath, importPath);
+      }
+
+      if (reExportedPackages[pkgName] && !allowedReexportedImports.includes(importPath)) {
+        _addError(importErrors.pathReExported, relativePath, importPath, 'office-ui-fabric-react/lib/' + reExportedPackages[pkgName]);
+      }
+
+      if (importMatch[0].startsWith('import * from') && !isScss) {
+        _addError(importErrors.importStar, relativePath, importPath);
+      }
     }
   }
 
@@ -297,35 +292,60 @@ function lintImports() {
   }
 
   /**
-   * @param {ImportErrorGroup} pathNotFile
-   * @param {ImportErrorGroup} pathRelative
+   * @param {ImportErrorGroup} errorGroup
+   * @param {string} relativePath
+   * @param {string} importPath
+   * @param {string} [alternative]
    */
-  function reportFilePathErrors(pathNotFile, pathRelative) {
-    if (pathNotFile.count) {
-      console.error(
-        `${chalk.red('ERROR')}: ${
-          pathNotFile.count
-        } import path(s) do not reference physical files. This can break AMD imports. Please ensure the following imports reference physical files:`
-      );
-      console.error('-------------------------------------');
-      for (const filePath in pathNotFile.matches) {
-        console.error(`  ${filePath}: ${chalk.inverse(pathNotFile.matches[filePath])}`);
+  function _addError(errorGroup, relativePath, importPath, alternative) {
+    errorGroup.count++;
+    errorGroup.matches[relativePath] = errorGroup.matches[relativePath] || [];
+    errorGroup.matches[relativePath].push({ importPath, alternative });
+  }
+
+  /**
+   * @param {ImportErrors} importErrors
+   */
+  function reportFilePathErrors(importErrors) {
+    /** @type {{ [k in keyof ImportErrors]: string }} */
+    const errorMessages = {
+      pathNotFile:
+        '{count} import path(s) do not reference physical files. This can break AMD imports. ' +
+        'Please ensure the following imports reference physical files:',
+      pathRelative:
+        'example files are using relative imports. For example portability, please ensure that the following imports are absolute:',
+      pathDeep:
+        'example files are using deep imports. ' +
+        'To promote best practices, please only import from root-level files (<package-name> or <package-name>/lib/<file>).',
+      pathReExported:
+        'example files are directly importing from packages that office-ui-fabric-react re-exports. ' +
+        'Please change the following imports to reference office-ui-fabric-react instead:',
+      importStar:
+        'example files are using "import *" which causes problems with the website example editor. Please import things by name instead.',
+      exportMulti: 'example files are exporting multiple classes/consts (or none). Please export exactly one component per example.',
+      exportDefault: 'example files are using a default export. Please use only named exports.'
+    };
+
+    let hasError = false;
+    for (const groupName of Object.keys(importErrors)) {
+      /** @type {ImportErrorGroup} */
+      const errorGroup = importErrors[groupName];
+      if (errorGroup.count) {
+        hasError = true;
+        console.error(`${chalk.red('ERROR')}: ${errorGroup.count} ${errorMessages[groupName]}`);
+        console.error('-------------------------------------');
+        for (const filePath in errorGroup.matches) {
+          console.error(`  ${filePath}:`);
+          for (const { importPath, alternative } of errorGroup.matches[filePath]) {
+            console.error(`    ${chalk.inverse(importPath)}`);
+            if (alternative) {
+              console.error(`        (use instead: '${alternative}')`);
+            }
+          }
+        }
       }
     }
-
-    if (pathRelative.count) {
-      console.error(
-        `${chalk.red('ERROR')}: ${
-          pathRelative.count
-        } Example files are using relative imports. For example portability, please ensure that the following imports are absolute:`
-      );
-      console.error('-------------------------------------');
-      for (const filePath in pathRelative.matches) {
-        console.error(`  ${filePath}: ${chalk.inverse(pathRelative.matches[filePath])}`);
-      }
-    }
-
-    return pathNotFile.count > 0 || pathRelative.count > 0;
+    return hasError;
   }
 }
 
