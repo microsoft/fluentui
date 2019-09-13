@@ -2,6 +2,20 @@
   "name": "@uifabric/tsx-editor",
   "entries": [
     {
+      "date": "Fri, 13 Sep 2019 12:34:39 GMT",
+      "tag": "@uifabric/tsx-editor_v0.5.1",
+      "version": "0.5.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "creates a wrapper monaco-editor package to be published to make it easy for consumers to consume without css-loader",
+            "author": "kchau@microsoft.com",
+            "commit": "d0d188ef9c664efedee503ea0b639d43bac43f92"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 12 Sep 2019 12:34:15 GMT",
       "tag": "@uifabric/tsx-editor_v0.5.0",
       "version": "0.5.0",

@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "creates a wrapper monaco-editor package to be published to make it easy for consumers to consume without css-loader",
-  "packageName": "@uifabric/monaco-editor",
-  "email": "kchau@microsoft.com",
-  "commit": "d0d188ef9c664efedee503ea0b639d43bac43f92",
-  "date": "2019-09-12T21:32:48.160Z"
-}
