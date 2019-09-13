@@ -123,6 +123,11 @@ export interface IBreadcrumbItem {
    * breadcrumb link
    */
   isCurrentItem?: boolean;
+
+  /**
+   * Optional boolean to have the current item be rendered as a heading.
+   */
+  currentItemHeading?: boolean;
 }
 
 /**

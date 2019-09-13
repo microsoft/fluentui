@@ -99,6 +99,16 @@ export const BreadcrumbBasicExample: React.FunctionComponent = () => {
         ariaLabel="Breadcrumb with maxDisplayedItems set to 2 and overflowIndex set to 1"
         overflowAriaLabel="More links"
       />
+      <Label styles={labelStyles}>With current item rendered as a heading</Label>
+      <Breadcrumb
+        items={[
+          { text: 'Files', key: 'Files', onClick: _onBreadcrumbItemClicked },
+          { text: 'This is folder 1', key: 'd1', onClick: _onBreadcrumbItemClicked },
+          { text: 'This is folder 2', key: 'd2', isCurrentItem: true, currentItemHeading: true }
+        ]}
+        ariaLabel="Current item rendered as a heading"
+        overflowAriaLabel="More links"
+      />
     </div>
   );
 };
