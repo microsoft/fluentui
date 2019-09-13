@@ -153,7 +153,7 @@ export class BreadcrumbBase extends BaseComponent<IBreadcrumbProps, any> {
   };
 
   private _onRenderItem = (item: IBreadcrumbItem) => {
-    const Tag = item.currentItemHeading ? item.currentItemHeading : 'span';
+    const Tag = item.isCurrentItem && item.currentItemHeading ? item.currentItemHeading : 'span';
     const breadcrumbItem = (): JSX.Element => (
       <Tag className={this._classNames.item}>
         <TooltipHost content={item.text} overflowMode={TooltipOverflowMode.Parent} {...this.props.tooltipHostProps}>
