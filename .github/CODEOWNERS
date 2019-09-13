@@ -94,7 +94,7 @@ CommandBar/ @micahgodbolt @joschect
 ContextualMenu/ @joschect
 DatePicker/ @OfficeDev/uifabric-calendar @lorejoh
 DetailsList/ @KevinTCoughlin
-Dialog/ @kkjeer
+Dialog/ @JasonGore
 DocumentCard/ @yiminwu
 Dropdown/ @joschect
 Fabric/ @dzearing
@@ -115,9 +115,9 @@ MessageBar/ @ecraig12345
 Modal/ @JasonGore
 office-ui-fabric-react/src/components/Nav/ @jdhuntington
 OverflowSet/ @micahgodbolt
-Overlay/ @kkjeer
+Overlay/ @aneeshack4
 Pagination/ @caradong
-Panel/ @kkjeer
+Panel/ @aneeshack4
 Persona/ @markionium @mtennoe
 PersonaCoin/ @mtennoe @markionium
 Persona/PersonaConsts.tsx @mtennoe
@@ -134,7 +134,7 @@ Signals/ @ThomasMichon
 Slider/ @aneeshack4
 SpinButton/ @aneeshack4
 Spinner/ @aneeshack4
-Stack/  @khmakoto @kkjeer
+Stack/  @khmakoto
 SwatchColorPicker/ @ecraig12345
 TeachingBubble/ @micahgodbolt
 Text/ @natalieethell

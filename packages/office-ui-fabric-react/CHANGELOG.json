@@ -2,6 +2,52 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Fri, 13 Sep 2019 12:34:39 GMT",
+      "tag": "office-ui-fabric-react_v7.33.0",
+      "version": "7.33.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "give tooltip hoverable area an index lower than the content",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "555cf61228750ecabaad6b250b563fcff757e9c8"
+          },
+          {
+            "comment": "Add .is-disabled to ChoiceGroupOption when disabled",
+            "author": "KevinTCoughlin@users.noreply.github.com",
+            "commit": "0606a256096122b70180b760a815c3dbcbe65b9c"
+          },
+          {
+            "comment": "TextField: remove invalid aria-labelledby",
+            "author": "naethell@microsoft.com",
+            "commit": "3711fcd3145e19b939a2b0c58c5e9b655562d13f"
+          },
+          {
+            "comment": "DetailsList: add Announced to examples with sortable columns",
+            "author": "naethell@microsoft.com",
+            "commit": "e4f9941fb5b14f087a6b13ae7e0b484110dbd159"
+          },
+          {
+            "comment": "Tooltip: Changed examples from aria-labelledby to aria-describedby to follow a11y spec.",
+            "author": "v-mare@microsoft.com",
+            "commit": "b8e24dd006914f031a44d11affd37e788c30a192"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "CalendarMonth: Prefer createRef over string ref",
+            "author": "KevinTCoughlin@users.noreply.github.com",
+            "commit": "8be3407f9e11859e60b074b05b321df68c71776a"
+          },
+          {
+            "comment": "Callout: add the ability for bounds to take a callback",
+            "author": "jspurlin@microsoft.com",
+            "commit": "8e0bf26ec97bd4b76e8f1af3f0dc075f5e21dd2e"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 12 Sep 2019 12:34:15 GMT",
       "tag": "office-ui-fabric-react_v7.32.0",
       "version": "7.32.0",

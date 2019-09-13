@@ -1,4 +1,4 @@
-import * as monaco from 'monaco-editor';
+import * as monaco from '@uifabric/monaco-editor';
 import * as React from 'react';
 import { IEditorProps, ITextModel } from './Editor.types';
 import { codeFontFamily } from './TypeScriptSnippet';

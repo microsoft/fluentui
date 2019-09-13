@@ -1,7 +1,21 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 12 Sep 2019 12:34:15 GMT and should not be manually modified.
+This log was last generated on Fri, 13 Sep 2019 12:34:39 GMT and should not be manually modified.
 
+## 7.33.0
+Fri, 13 Sep 2019 12:34:39 GMT
+
+### Minor changes
+
+- CalendarMonth: Prefer createRef over string ref (KevinTCoughlin@users.noreply.github.com)
+- Callout: add the ability for bounds to take a callback (jspurlin@microsoft.com)
+### Patches
+
+- give tooltip hoverable area an index lower than the content (mgodbolt@microsoft.com)
+- Add .is-disabled to ChoiceGroupOption when disabled (KevinTCoughlin@users.noreply.github.com)
+- TextField: remove invalid aria-labelledby (naethell@microsoft.com)
+- DetailsList: add Announced to examples with sortable columns (naethell@microsoft.com)
+- Tooltip: Changed examples from aria-labelledby to aria-describedby to follow a11y spec. (v-mare@microsoft.com)
 ## 7.32.0
 Thu, 12 Sep 2019 12:34:15 GMT
 

@@ -1,5 +1,5 @@
 import * as ts from 'typescript';
-import * as monaco from 'monaco-editor';
+import * as monaco from '@uifabric/monaco-editor';
 import IWorkerContext = monaco.worker.IWorkerContext;
 export interface IExtraLib {
   content: string;
