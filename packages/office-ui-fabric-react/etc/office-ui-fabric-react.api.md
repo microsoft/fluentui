@@ -1806,7 +1806,7 @@ export interface IBreadcrumbData {
 
 // @public (undocumented)
 export interface IBreadcrumbItem {
-    currentItemHeading?: boolean;
+    currentItemHeading?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
     href?: string;
     isCurrentItem?: boolean;
     key: string;
