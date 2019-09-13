@@ -4,7 +4,7 @@ import { ListBasicExample } from './examples/List.Basic.Example';
 import { ListGridExample } from './examples/List.Grid.Example';
 import { ListScrollingExample } from './examples/List.Scrolling.Example';
 import { ListGhostingExample } from './examples/List.Ghosting.Example';
-import { createListItems } from '../../utilities/exampleData';
+import { createListItems } from '@uifabric/example-data';
 
 const ListBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/List/examples/List.Basic.Example.tsx') as string;
 const ListGridExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/List/examples/List.Grid.Example.tsx') as string;

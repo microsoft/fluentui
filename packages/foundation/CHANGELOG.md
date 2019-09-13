@@ -1,7 +1,37 @@
 # Change Log - @uifabric/foundation
 
-This log was last generated on Mon, 26 Aug 2019 12:30:49 GMT and should not be manually modified.
+This log was last generated on Thu, 12 Sep 2019 12:34:15 GMT and should not be manually modified.
 
+## 7.4.1
+Thu, 12 Sep 2019 12:34:15 GMT
+
+### Patches
+
+- Enable api-extractor, and minor import fixes to prevent api-extractor errors (elcraig@microsoft.com)
+## 7.4.0
+Fri, 06 Sep 2019 12:34:51 GMT
+
+### Minor changes
+
+- Foundation: Allowing recomposition in composed. (humbertomakotomorimoto@gmail.com)
+## 7.3.1
+Wed, 04 Sep 2019 04:09:58 GMT
+
+### Patches
+
+- fix version file (kchau@microsoft.com)
+## 7.3.0
+Mon, 02 Sep 2019 12:33:56 GMT
+
+### Minor changes
+
+- Foundation: Moving slots inside composed options. (humbertomakotomorimoto@gmail.com)
+## 7.2.0
+Thu, 29 Aug 2019 12:30:00 GMT
+
+### Minor changes
+
+- Renaming createComponent to compose and moving View inside component options object. (humbertomakotomorimoto@gmail.com)
 ## 7.1.0
 Mon, 26 Aug 2019 12:30:49 GMT
 

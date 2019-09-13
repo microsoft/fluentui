@@ -1,7 +1,25 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Fri, 23 Aug 2019 12:35:28 GMT and should not be manually modified.
+This log was last generated on Wed, 11 Sep 2019 12:35:47 GMT and should not be manually modified.
 
+## 0.135.0
+Wed, 11 Sep 2019 12:35:47 GMT
+
+### Minor changes
+
+- Expose hideLegend prop for stacked bar chart (v-ragor@microsoft.com)
+## 0.134.4
+Wed, 04 Sep 2019 04:09:58 GMT
+
+### Patches
+
+- fix version file (kchau@microsoft.com)
+## 0.134.3
+Tue, 27 Aug 2019 12:33:51 GMT
+
+### Patches
+
+- Remove relative imports from examples and fix incorrectly named example files (elcraig@microsoft.com)
 ## 0.134.2
 Fri, 23 Aug 2019 12:35:28 GMT
 

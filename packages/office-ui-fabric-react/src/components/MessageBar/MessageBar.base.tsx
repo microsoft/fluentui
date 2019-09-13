@@ -3,6 +3,7 @@ import { BaseComponent, DelayedRender, getId, classNamesFunction, getNativeProps
 import { IconButton } from '../../Button';
 import { Icon } from '../../Icon';
 import { IMessageBarProps, IMessageBarStyleProps, IMessageBarStyles, MessageBarType } from './MessageBar.types';
+import { css } from '@uifabric/utilities';
 
 const getClassNames = classNamesFunction<IMessageBarStyleProps, IMessageBarStyles>();
 
@@ -57,13 +58,14 @@ export class MessageBarBase extends BaseComponent<IMessageBarProps, IMessageBarS
   }
 
   private _getDismissDiv(): JSX.Element | null {
-    if (this.props.onDismiss) {
+    const { onDismiss, dismissIconProps } = this.props;
+    if (onDismiss) {
       return (
         <IconButton
           disabled={false}
           className={this._classNames.dismissal}
-          onClick={this.props.onDismiss}
-          iconProps={{ iconName: 'Clear' }}
+          onClick={onDismiss}
+          iconProps={dismissIconProps ? dismissIconProps : { iconName: 'Clear' }}
           ariaLabel={this.props.dismissButtonAriaLabel}
         />
       );
@@ -98,9 +100,14 @@ export class MessageBarBase extends BaseComponent<IMessageBarProps, IMessageBarS
   }
 
   private _getIconSpan(): JSX.Element {
+    const { messageBarIconProps } = this.props;
     return (
       <div className={this._classNames.iconContainer} aria-hidden>
-        <Icon iconName={this.ICON_MAP[this.props.messageBarType!]} className={this._classNames.icon} />
+        {messageBarIconProps ? (
+          <Icon {...messageBarIconProps} className={css(this._classNames.icon, messageBarIconProps.className)} />
+        ) : (
+          <Icon iconName={this.ICON_MAP[this.props.messageBarType!]} className={this._classNames.icon} />
+        )}
       </div>
     );
   }

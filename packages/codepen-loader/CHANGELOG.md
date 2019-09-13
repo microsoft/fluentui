@@ -1,7 +1,19 @@
 # Change Log - @uifabric/codepen-loader
 
-This log was last generated on Fri, 23 Aug 2019 12:35:28 GMT and should not be manually modified.
+This log was last generated on Fri, 30 Aug 2019 12:30:57 GMT and should not be manually modified.
 
+## 7.0.8
+Fri, 30 Aug 2019 12:30:57 GMT
+
+### Patches
+
+- Handle example-data package (elcraig@microsoft.com)
+## 7.0.7
+Wed, 28 Aug 2019 12:29:56 GMT
+
+### Patches
+
+- bumps just-scripts and just-task both to make jest do forceexit to prevent issues with timeouts (kchau@microsoft.com)
 ## 7.0.6
 Fri, 23 Aug 2019 12:35:28 GMT
 

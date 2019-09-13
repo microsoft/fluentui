@@ -1,7 +1,38 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Fri, 23 Aug 2019 12:35:28 GMT and should not be manually modified.
+This log was last generated on Thu, 12 Sep 2019 12:34:15 GMT and should not be manually modified.
 
+## 7.4.7
+Thu, 12 Sep 2019 12:34:15 GMT
+
+### Patches
+
+- Update readme and fix minor IE compat issue (elcraig@microsoft.com)
+## 7.4.6
+Mon, 09 Sep 2019 21:43:18 GMT
+
+### Patches
+
+- updated docs for BottomSheet and Drawer (willdo@microsoft.com)
+## 7.4.5
+Fri, 06 Sep 2019 12:34:51 GMT
+
+### Patches
+
+- Hacked an examplecard msicon override for a specific DetailsList Drag and Drop page in fabric website (kchau@microsoft.com)
+## 7.4.4
+Wed, 04 Sep 2019 04:09:58 GMT
+
+### Patches
+
+- fix version file (kchau@microsoft.com)
+## 7.4.3
+Mon, 02 Sep 2019 12:33:56 GMT
+
+### Patches
+
+- Add PopupMenu and BottomSheet to mobile docs. (emlynam@microsoft.com)
+- Add PopupMenu title (emlynam@microsoft.com)
 ## 7.4.2
 Fri, 23 Aug 2019 12:35:28 GMT
 

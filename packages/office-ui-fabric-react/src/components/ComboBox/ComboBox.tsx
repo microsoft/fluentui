@@ -835,11 +835,10 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   ): void {
     const { onChange, onPendingValueChanged } = this.props;
     const { currentOptions } = this.state;
-    let { selectedIndices } = this.state;
+    const { selectedIndices: initialIndices } = this.state;
 
-    if (!selectedIndices) {
-      selectedIndices = [];
-    }
+    // Clone selectedIndices so we don't mutate state
+    let selectedIndices = initialIndices ? initialIndices.slice() : [];
 
     // Find the next selectable index, if searchDirection is none
     // we will get our starting index back
@@ -852,7 +851,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     // Are we at a new index? If so, update the state, otherwise
     // there is nothing to do
     if (this.props.multiSelect || selectedIndices.length < 1 || (selectedIndices.length === 1 && selectedIndices[0] !== index)) {
-      const option: IComboBoxOption = currentOptions[index];
+      const option: IComboBoxOption = { ...currentOptions[index] };
       if (!option) {
         return;
       }
@@ -870,23 +869,36 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       }
 
       submitPendingValueEvent.persist();
-      // Call onChange after state is updated
-      this.setState(
-        {
-          selectedIndices: selectedIndices
-        },
-        () => {
-          // If ComboBox value is changed, revert preview first
-          if (this._hasPendingValue && onPendingValueChanged) {
-            onPendingValueChanged();
-            this._hasPendingValue = false;
-          }
 
-          if (onChange) {
-            onChange(submitPendingValueEvent, option, index, undefined);
-          }
+      // Only setstate if combobox is uncontrolled.
+      if (this.props.selectedKey || this.props.selectedKey === null) {
+        if (onChange) {
+          onChange(submitPendingValueEvent, option, index, undefined);
         }
-      );
+      } else {
+        // Update current options
+        const changedOptions = currentOptions.slice();
+        changedOptions[index] = option;
+
+        // Call onChange after state is updated
+        this.setState(
+          {
+            selectedIndices: selectedIndices,
+            currentOptions: changedOptions
+          },
+          () => {
+            // If ComboBox value is changed, revert preview first
+            if (this._hasPendingValue && onPendingValueChanged) {
+              onPendingValueChanged();
+              this._hasPendingValue = false;
+            }
+
+            if (onChange) {
+              onChange(submitPendingValueEvent, option, index, undefined);
+            }
+          }
+        );
+      }
     }
 
     // clear all of the pending info
@@ -1044,12 +1056,16 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
           onChange(submitPendingValueEvent, undefined, undefined, currentPendingValue);
         }
       } else {
-        // If we are not controlled, create a new option
+        // If we are not controlled, create a new selected option
         const newOption: IComboBoxOption = {
           key: currentPendingValue || getId(),
           text: this._normalizeToString(currentPendingValue)
         };
-        const newOptions: IComboBoxOption[] = [...currentOptions, newOption];
+        // If it's multiselect, set selected state to true
+        if (this.props.multiSelect) {
+          newOption.selected = true;
+        }
+        const newOptions: IComboBoxOption[] = currentOptions.concat([newOption]);
         if (selectedIndices) {
           if (!this.props.multiSelect) {
             selectedIndices = [];

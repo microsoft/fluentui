@@ -13,6 +13,7 @@ exports[`Component Examples renders Nav.Nested.Example.tsx correctly 1`] = `
   onMouseDownCapture={[Function]}
 >
   <nav
+    aria-label="Nav example with nested links"
     className=
         ms-Nav
         {

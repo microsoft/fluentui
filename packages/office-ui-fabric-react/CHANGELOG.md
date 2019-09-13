@@ -1,7 +1,114 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 26 Aug 2019 12:30:49 GMT and should not be manually modified.
+This log was last generated on Fri, 13 Sep 2019 12:34:39 GMT and should not be manually modified.
 
+## 7.33.0
+Fri, 13 Sep 2019 12:34:39 GMT
+
+### Minor changes
+
+- CalendarMonth: Prefer createRef over string ref (KevinTCoughlin@users.noreply.github.com)
+- Callout: add the ability for bounds to take a callback (jspurlin@microsoft.com)
+### Patches
+
+- give tooltip hoverable area an index lower than the content (mgodbolt@microsoft.com)
+- Add .is-disabled to ChoiceGroupOption when disabled (KevinTCoughlin@users.noreply.github.com)
+- TextField: remove invalid aria-labelledby (naethell@microsoft.com)
+- DetailsList: add Announced to examples with sortable columns (naethell@microsoft.com)
+- Tooltip: Changed examples from aria-labelledby to aria-describedby to follow a11y spec. (v-mare@microsoft.com)
+## 7.32.0
+Thu, 12 Sep 2019 12:34:15 GMT
+
+### Minor changes
+
+- Persona: Adding size120 to the PersonaSize enum, updating API. (eddrost@microsoft.com)
+### Patches
+
+- Only render SpinButton label container if label or icon is present (KevinTCoughlin@users.noreply.github.com)
+- Fix examples to only export a single component (elcraig@microsoft.com)
+- Combobox: Fix issue where it would mutate props (joschect@microsoft.com)
+- Pickers: make background color of input transparent so it doesn't clip border (joschect@microsoft.com)
+- GroupedList: Fixed selected prop value not being set.  (v-mare@microsoft.com)
+## 7.31.3
+Wed, 11 Sep 2019 12:35:47 GMT
+
+### Patches
+
+- Combobox: ensure that state doesn't mutate in controlled scenario (joschect@microsoft.com)
+## 7.31.2
+Mon, 09 Sep 2019 21:43:18 GMT
+
+### Patches
+
+- Update Nav.base.tsx (michael.david.lauria@gmail.com)
+## 7.31.1
+Fri, 06 Sep 2019 12:34:51 GMT
+
+### Patches
+
+- Nav: Added aria-labels to Nav examples per issue request (v-mare@microsoft.com)
+## 7.31.0
+Thu, 05 Sep 2019 12:34:51 GMT
+
+### Minor changes
+
+- Adding Preview pan to the color picker component, increasing the width and height of the color rectangle and css changes (navkuma@microsoft.com)
+### Patches
+
+- give tooltip hoverable area an index lower than the content (mgodbolt@microsoft.com)
+## 7.30.0
+Wed, 04 Sep 2019 12:32:15 GMT
+
+### Minor changes
+
+- Update snapshots (pejahn@microsoft.com)
+### Patches
+
+- Dropdown: Fix bug where it was not programatically possible to focus on Dropdown with `tabIndex=-1`.  (cliff.koh@microsoft.com)
+- Checkbox: Added initializeFocusRects to fix focus issue. (v-mare@microsoft.com)
+## 7.29.2
+Wed, 04 Sep 2019 04:09:58 GMT
+
+### Patches
+
+- DetailsList: Fix function mutations with onClick and onContextMenuClick in DetailsColumn (KevinTCoughlin@users.noreply.github.com)
+- fix version file (kchau@microsoft.com)
+## 7.29.1
+Wed, 04 Sep 2019 00:37:31 GMT
+
+### Patches
+
+- Button: Fixing SplitButton outline when focused. (humbertomakotomorimoto@gmail.com)
+## 7.29.0
+Mon, 02 Sep 2019 12:33:56 GMT
+
+### Minor changes
+
+- Add FocusZone direction domOrder (sohuts@microsoft.com)
+### Patches
+
+- Nav Component isOnTop property set can set focus to the Nav focusZone (inateeg@microsoft.com)
+## 7.28.3
+Fri, 30 Aug 2019 12:30:57 GMT
+
+### Patches
+
+- Fix imports in examples and deprecate old example data (elcraig@microsoft.com)
+- Dialog: Changed demo copy to match real OWA text (v-mare@microsoft.com)
+## 7.28.2
+Thu, 29 Aug 2019 12:30:00 GMT
+
+### Patches
+
+- ColorRectangle styling fixes (elcraig@microsoft.com)
+- Fix override handling for CommandBarButton (tmichon@microsoft.com)
+## 7.28.1
+Tue, 27 Aug 2019 12:33:51 GMT
+
+### Patches
+
+- Link, Stack, and Toggle example updates (elcraig@microsoft.com)
+- Remove some relative imports from examples (elcraig@microsoft.com)
 ## 7.28.0
 Mon, 26 Aug 2019 12:30:49 GMT
 

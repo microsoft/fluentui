@@ -1,7 +1,65 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Mon, 26 Aug 2019 12:30:49 GMT and should not be manually modified.
+This log was last generated on Thu, 12 Sep 2019 12:34:15 GMT and should not be manually modified.
 
+## 7.16.2
+Thu, 12 Sep 2019 12:34:15 GMT
+
+### Patches
+
+- Update examples to only export one component (elcraig@microsoft.com)
+## 7.16.1
+Fri, 06 Sep 2019 12:34:51 GMT
+
+### Patches
+
+- added isSelectable prop for Tile.types; unshow checkbox if item is not selectable (huaxi@microsoft.com)
+- Foundation: Allowing recomposition in composed. (humbertomakotomorimoto@gmail.com)
+## 7.16.0
+Thu, 05 Sep 2019 12:34:51 GMT
+
+### Minor changes
+
+- slider: added dos and don'ts to the documentation (sneharoy321@gmail.com)
+## 7.15.0
+Wed, 04 Sep 2019 12:32:15 GMT
+
+### Minor changes
+
+- Add change file for new icons snapshots (pejahn@microsoft.com)
+## 7.14.1
+Wed, 04 Sep 2019 04:09:58 GMT
+
+### Patches
+
+- fix version file (kchau@microsoft.com)
+## 7.14.0
+Mon, 02 Sep 2019 12:33:56 GMT
+
+### Minor changes
+
+- Updating Button to use new composed approach with slots as options. (humbertomakotomorimoto@gmail.com)
+### Patches
+
+- Update experiments readme to include build instructions. (elcraig@microsoft.com)
+## 7.13.5
+Fri, 30 Aug 2019 12:30:57 GMT
+
+### Patches
+
+- Fix example imports and SelectedItemsList export structure (elcraig@microsoft.com)
+## 7.13.4
+Thu, 29 Aug 2019 12:30:00 GMT
+
+### Patches
+
+- Renaming createComponent to compose and moving View inside component options object. (humbertomakotomorimoto@gmail.com)
+## 7.13.3
+Tue, 27 Aug 2019 12:33:51 GMT
+
+### Patches
+
+- Remove some relative imports from examples (elcraig@microsoft.com)
 ## 7.13.2
 Mon, 26 Aug 2019 12:30:49 GMT
 

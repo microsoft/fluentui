@@ -73,6 +73,14 @@ describe('ColorPicker', () => {
     expect(colorPicker!.color).toEqual(color);
   });
 
+  it('handles color object with 0 values correctly', () => {
+    const color = getColorFromString('#000000')!;
+    wrapper = mount(<ColorPicker color={color} onChange={noOp} componentRef={colorPickerRef} />);
+
+    const inputs = wrapper.getDOMNode().querySelectorAll('.ms-TextField input') as NodeListOf<HTMLInputElement>;
+    expect(inputs[1].value).toBe('0'); // not empty string
+  });
+
   it('respects color prop change', () => {
     wrapper = mount(<ColorPicker color="#abcdef" onChange={onChange} componentRef={colorPickerRef} />);
 
@@ -101,6 +109,24 @@ describe('ColorPicker', () => {
     expect(alphaSlider.exists()).toBe(false);
     expect(tableHeaders).toHaveLength(4);
     expect(inputs).toHaveLength(4);
+  });
+
+  it('show preview box', () => {
+    wrapper = mount(<ColorPicker color="#FFFFFF" showPreview={true} />);
+
+    const previewBox = wrapper.find('.is-preview');
+
+    // There should be one preview box
+    expect(previewBox.exists()).toBe(true);
+  });
+
+  it('hide preview box', () => {
+    wrapper = mount(<ColorPicker color="#FFFFFF" showPreview={false} />);
+
+    const previewBox = wrapper.find('.is-preview');
+
+    // There should be one preview box
+    expect(previewBox.exists()).toBe(false);
   });
 
   it('renders default RGBA/Hex strings', () => {

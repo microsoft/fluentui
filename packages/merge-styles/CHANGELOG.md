@@ -1,7 +1,19 @@
 # Change Log - @uifabric/merge-styles
 
-This log was last generated on Mon, 26 Aug 2019 12:30:49 GMT and should not be manually modified.
+This log was last generated on Thu, 12 Sep 2019 12:34:15 GMT and should not be manually modified.
 
+## 7.5.2
+Thu, 12 Sep 2019 12:34:15 GMT
+
+### Patches
+
+- Build the kebabRules map instead of shipping it (mark@thedutchies.com)
+## 7.5.1
+Wed, 04 Sep 2019 04:09:58 GMT
+
+### Patches
+
+- fix version file (kchau@microsoft.com)
 ## 7.5.0
 Mon, 26 Aug 2019 12:30:49 GMT
 

@@ -3,7 +3,7 @@ import { Chiclet, ChicletSize } from '@uifabric/experiments/lib/Chiclet';
 import { IButtonProps, IconButton } from 'office-ui-fabric-react/lib/Button';
 import { Icon, IIconProps } from 'office-ui-fabric-react/lib/Icon';
 import { Text } from 'office-ui-fabric-react/lib/Text';
-import { mergeStyles } from '@uifabric/merge-styles/lib/mergeStyles';
+import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 
 const SAMPLE_URL = 'https://contoso.sharepoint.com';
 
@@ -55,14 +55,14 @@ export const ChicletXsmallFooterExample: React.FunctionComponent<{}> = () => {
   );
 };
 
-export class FooterComponent extends React.Component<IFooterComponent, {}> {
+class FooterComponent extends React.Component<IFooterComponent, {}> {
   public render(): JSX.Element {
     const { buttonProps, attachProps } = this.props;
     return _renderFooter(buttonProps, attachProps);
   }
 }
 
-export interface IFooterComponent extends React.Props<FooterComponent> {
+interface IFooterComponent extends React.Props<FooterComponent> {
   buttonProps: IButtonProps[];
   attachProps: IIconProps;
 }

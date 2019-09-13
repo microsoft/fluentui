@@ -1,10 +1,11 @@
 import * as React from 'react';
-import { createComponent } from '@uifabric/foundation';
+// Temporary import file to experiment with next version of foundation.
+import { composed } from '@uifabric/foundation/lib/next/composed';
 import { FontWeights } from '../../../Styling';
 import { useButtonState as state } from '../Button.state';
 import { ButtonStyles as styles } from '../Button.styles';
 import { IButtonComponent, IButtonProps, IButtonTokenReturnType } from '../Button.types';
-import { ButtonView } from '../Button.view';
+import { ButtonSlots as slots, ButtonView as view } from '../Button.view';
 
 const baseTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenReturnType => {
   const { palette, semanticColors } = theme;
@@ -70,9 +71,11 @@ const IconButtonTokens: IButtonComponent['tokens'] = (props, theme): IButtonToke
   props.disabled && disabledTokens
 ];
 
-export const IconButton: React.StatelessComponent<IButtonProps> = createComponent(ButtonView, {
+export const IconButton: React.StatelessComponent<IButtonProps> = composed({
   displayName: 'IconButton',
+  slots,
   state,
   styles,
-  tokens: IconButtonTokens
+  tokens: IconButtonTokens,
+  view
 });

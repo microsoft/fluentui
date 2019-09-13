@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { GroupedList, IGroup, IGroupHeaderProps, IGroupFooterProps } from 'office-ui-fabric-react/lib/GroupedList';
 import { Link } from 'office-ui-fabric-react/lib/Link';
-import { createListItems, createGroups, IExampleItem } from 'office-ui-fabric-react/lib/utilities/exampleData';
+import { createListItems, createGroups, IExampleItem } from '@uifabric/example-data';
 import { getTheme, mergeStyleSets, IRawStyle } from 'office-ui-fabric-react/lib/Styling';
 
 const theme = getTheme();

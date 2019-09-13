@@ -6,6 +6,8 @@
 
 import { BaseComponent } from '@uifabric/utilities';
 import { EventGroup } from '@uifabric/utilities';
+import { groupOne } from '@uifabric/example-data';
+import { groupTwo } from '@uifabric/example-data';
 import { IBaseProps } from '@uifabric/utilities';
 import { IComponent } from '@uifabric/foundation';
 import { IComponentAs } from '@uifabric/utilities';
@@ -32,7 +34,9 @@ import { IStyleFunctionOrObject } from '@uifabric/utilities';
 import { IStyleSet } from '@uifabric/styling';
 import { ITheme } from '@uifabric/styling';
 import { KeyCodes } from '@uifabric/utilities';
+import { mru } from '@uifabric/example-data';
 import { Omit } from '@uifabric/utilities';
+import { people } from '@uifabric/example-data';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import { Selection } from '@uifabric/utilities';
@@ -1272,6 +1276,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
 // @public (undocumented)
 export enum FocusZoneDirection {
     bidirectional = 2,
+    domOrder = 3,
     horizontal = 1,
     vertical = 0
 }
@@ -1400,8 +1405,7 @@ export const GroupFooter: React.StatelessComponent<IGroupFooterProps>;
 // @public (undocumented)
 export const GroupHeader: React.StatelessComponent<IGroupHeaderProps>;
 
-// @public (undocumented)
-export const groupOne: IExtendedPersonaProps[];
+export { groupOne }
 
 // @public (undocumented)
 export const GroupShowAll: React.StatelessComponent<IGroupShowAllProps>;
@@ -1409,8 +1413,7 @@ export const GroupShowAll: React.StatelessComponent<IGroupShowAllProps>;
 // @public (undocumented)
 export const GroupSpacer: React.FunctionComponent<IGroupSpacerProps>;
 
-// @public (undocumented)
-export const groupTwo: IExtendedPersonaProps[];
+export { groupTwo }
 
 // @public
 export const HEX_REGEX: RegExp;
@@ -2089,7 +2092,7 @@ export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement> {
     ariaLabelledBy?: string;
     backgroundColor?: string;
     beakWidth?: number;
-    bounds?: IRectangle;
+    bounds?: IRectangle | ((target?: Target, targetWindow?: Window) => IRectangle | undefined);
     calloutMaxHeight?: number;
     calloutMaxWidth?: number;
     calloutWidth?: number;
@@ -2528,6 +2531,7 @@ export interface IColorPickerProps {
     hexLabel?: string;
     onChange?: (ev: React.SyntheticEvent<HTMLElement>, color: IColor) => void;
     redLabel?: string;
+    showPreview?: boolean;
     styles?: IStyleFunctionOrObject<IColorPickerStyleProps, IColorPickerStyles>;
     theme?: ITheme;
 }
@@ -2551,6 +2555,11 @@ export interface IColorPickerStyleProps {
 
 // @public (undocumented)
 export interface IColorPickerStyles {
+    colorRectangle?: IStyle;
+    colorSquare?: IStyle;
+    flexContainer?: IStyle;
+    flexPreviewBox?: IStyle;
+    flexSlider?: IStyle;
     input?: IStyle;
     panel?: IStyle;
     root?: IStyle;
@@ -2578,6 +2587,7 @@ export interface IColorRectangleProps {
 // @public (undocumented)
 export interface IColorRectangleStyleProps {
     className?: string;
+    minSize?: number;
     theme: ITheme;
 }
 
@@ -5426,7 +5436,9 @@ export interface IMessageBarProps extends React.HTMLAttributes<HTMLElement> {
     className?: string;
     componentRef?: IRefObject<IMessageBar>;
     dismissButtonAriaLabel?: string;
+    dismissIconProps?: IIconProps;
     isMultiline?: boolean;
+    messageBarIconProps?: IIconProps;
     messageBarType?: MessageBarType;
     onDismiss?: (ev?: React.MouseEvent<HTMLElement | BaseButton | Button>) => any;
     overflowButtonAriaLabel?: string;
@@ -5529,6 +5541,7 @@ export interface IModalStyles {
 
 // @public (undocumented)
 export interface INav {
+    focus(forceIntoFirstElement?: boolean): boolean;
     selectedKey: string | undefined;
 }
 
@@ -8072,8 +8085,7 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
     UNSAFE_componentWillReceiveProps(newProps: IModalProps): void;
 }
 
-// @public (undocumented)
-export const mru: IExtendedPersonaProps[];
+export { mru }
 
 // @public (undocumented)
 export const Nav: React.StatelessComponent<INavProps>;
@@ -8083,6 +8095,7 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
     constructor(props: INavProps);
     // (undocumented)
     static defaultProps: INavProps;
+    focus(forceIntoFirstElement?: boolean): boolean;
     // (undocumented)
     render(): JSX.Element | null;
     // (undocumented)
@@ -8175,10 +8188,7 @@ export enum PanelType {
     smallFluid = 0
 }
 
-// @public (undocumented)
-export const people: (IExtendedPersonaProps & {
-    key: string | number;
-})[];
+export { people }
 
 // @public (undocumented)
 export const PeoplePickerItem: React.FunctionComponent<IPeoplePickerItemSelectedProps>;
@@ -8302,6 +8312,8 @@ export namespace personaPresenceSize {
     size20 = "20px";
     const // (undocumented)
     size28 = "28px";
+    const // (undocumented)
+    size32 = "32px";
     const // @deprecated (undocumented)
     border = "2px";
 }
@@ -8321,6 +8333,7 @@ export enum PersonaSize {
     // @deprecated
     size10 = 9,
     size100 = 15,
+    size120 = 18,
     // @deprecated
     size16 = 8,
     size24 = 10,
@@ -8362,6 +8375,8 @@ export namespace personaSize {
     size72 = "72px";
     const // (undocumented)
     size100 = "100px";
+    const // (undocumented)
+    size120 = "120px";
 }
 
 // @public
@@ -8814,6 +8829,7 @@ export const sizeBoolean: (size: PersonaSize) => {
     isSize56: boolean;
     isSize72: boolean;
     isSize100: boolean;
+    isSize120: boolean;
 };
 
 // @public (undocumented)

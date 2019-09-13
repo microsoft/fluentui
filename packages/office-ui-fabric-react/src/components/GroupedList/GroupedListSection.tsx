@@ -201,6 +201,7 @@ export class GroupedListSection extends React.Component<IGroupedListSectionProps
       groupIndex,
       groupLevel: group ? group.level : 0,
       isSelected,
+      selected: isSelected,
       viewport,
       selectionMode,
       groups,
