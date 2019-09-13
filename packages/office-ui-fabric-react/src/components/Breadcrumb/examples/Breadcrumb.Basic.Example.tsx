@@ -104,7 +104,7 @@ export const BreadcrumbBasicExample: React.FunctionComponent = () => {
         items={[
           { text: 'Files', key: 'Files', onClick: _onBreadcrumbItemClicked },
           { text: 'This is folder 1', key: 'd1', onClick: _onBreadcrumbItemClicked },
-          { text: 'This is folder 2', key: 'd2', isCurrentItem: true, currentItemHeading: true }
+          { text: 'This is folder 2', key: 'd2', isCurrentItem: true, currentItemHeading: 'h2' }
         ]}
         ariaLabel="Current item rendered as a heading"
         overflowAriaLabel="More links"

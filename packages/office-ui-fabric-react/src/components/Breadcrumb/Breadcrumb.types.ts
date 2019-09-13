@@ -125,9 +125,9 @@ export interface IBreadcrumbItem {
   isCurrentItem?: boolean;
 
   /**
-   * Optional boolean to have the current item be rendered as a heading.
+   * Optional prop to render the current item as a heading of your choice.
    */
-  currentItemHeading?: boolean;
+  currentItemHeading?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 }
 
 /**
