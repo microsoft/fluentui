@@ -48,7 +48,7 @@ interface IPhoto {
 
 export const FocusZonePhotosExample: React.FunctionComponent = () => {
   //  Initialize the items when the component is first rendered (same array will be reused)
-  const items = useConst(() => _getItems());
+  const items = useConst(_getItems);
   return (
     <FocusZone as="ul" className={classNames.photoList}>
       {items.map((item: IPhoto, index: number) => (
