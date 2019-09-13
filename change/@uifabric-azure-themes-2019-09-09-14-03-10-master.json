@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Checkbox alignment and visual artifact fix",
-  "packageName": "@uifabric/azure-themes",
-  "email": "rykelly@microsoft.com",
-  "commit": "89c4cac97bee518446b6a8226fb4b6e0f0e7bb0e",
-  "date": "2019-09-09T21:03:10.219Z"
-}
