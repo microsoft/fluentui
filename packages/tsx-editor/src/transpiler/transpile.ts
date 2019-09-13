@@ -1,4 +1,4 @@
-import * as monaco from 'monaco-editor';
+import * as monaco from '@uifabric/monaco-editor';
 import { TypeScriptWorker, EmitOutput } from './monacoTypescriptWorker.d';
 import { transformExample } from './exampleTransform';
 import { _getErrorMessages } from './transpileHelpers';
