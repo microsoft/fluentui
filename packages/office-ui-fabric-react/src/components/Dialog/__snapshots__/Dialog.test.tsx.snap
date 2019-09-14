@@ -34,7 +34,7 @@ exports[`Dialog renders Dialog correctly 1`] = `
             margin-left: 0;
             margin-right: 0;
             margin-top: 0;
-            padding-bottom: 24px;
+            padding-bottom: 20px;
             padding-left: 24px;
             padding-right: 46px;
             padding-top: 16px;
@@ -50,8 +50,8 @@ exports[`Dialog renders Dialog correctly 1`] = `
             flex-wrap: nowrap;
             padding-bottom: 0;
             padding-left: 0;
-            padding-right: 14px;
-            padding-top: 14px;
+            padding-right: 15px;
+            padding-top: 15px;
             position: absolute;
             right: 0;
             top: 0;
@@ -60,7 +60,7 @@ exports[`Dialog renders Dialog correctly 1`] = `
             flex: 0 0 auto;
           }
           & .ms-Dialog-button {
-            color: #605e5c;
+            color: #323130;
           }
           & .ms-Dialog-button:hover {
             border-radius: 2px;
@@ -124,7 +124,7 @@ exports[`Dialog renders Dialog with a jsx title 1`] = `
             margin-left: 0;
             margin-right: 0;
             margin-top: 0;
-            padding-bottom: 24px;
+            padding-bottom: 20px;
             padding-left: 24px;
             padding-right: 46px;
             padding-top: 16px;
@@ -149,8 +149,8 @@ exports[`Dialog renders Dialog with a jsx title 1`] = `
             flex-wrap: nowrap;
             padding-bottom: 0;
             padding-left: 0;
-            padding-right: 14px;
-            padding-top: 14px;
+            padding-right: 15px;
+            padding-top: 15px;
             position: absolute;
             right: 0;
             top: 0;
@@ -159,7 +159,7 @@ exports[`Dialog renders Dialog with a jsx title 1`] = `
             flex: 0 0 auto;
           }
           & .ms-Dialog-button {
-            color: #605e5c;
+            color: #323130;
           }
           & .ms-Dialog-button:hover {
             border-radius: 2px;
