@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "DatePicker: utilize custom onChange handler when provided (#10424)",
+  "packageName": "office-ui-fabric-react",
+  "email": "mateusz.przybyla@outlook.com",
+  "commit": "43b5d9fd49e1822e6b2e659b40d8c55fc9f09b25",
+  "date": "2019-09-15T16:01:58.648Z"
+}
