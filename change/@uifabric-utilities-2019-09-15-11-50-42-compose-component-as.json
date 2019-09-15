@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Add composeComponentAs to compose React decorator components",
+  "packageName": "@uifabric/utilities",
+  "email": "tmichon@microsoft.com",
+  "commit": "0ad2440153218b174cb0d6a12d91c0ca1764c2f6",
+  "date": "2019-09-15T18:50:42.353Z"
+}
