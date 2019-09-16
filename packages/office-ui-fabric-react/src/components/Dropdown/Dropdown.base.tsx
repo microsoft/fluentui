@@ -378,7 +378,7 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
     const { multiSelect } = this.props;
     const { isOpen, selectedIndices } = this.state;
 
-    return disabled
+    return disabled || multiSelect
       ? {
           role: undefined,
           ariaActiveDescendant: undefined,
@@ -386,15 +386,6 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
           ariaSetSize: undefined,
           ariaPosInSet: undefined,
           ariaSelected: undefined
-        }
-      : multiSelect
-      ? {
-          role: undefined,
-          ariaActiveDescendant: undefined,
-          childRole: undefined,
-          ariaSetSize: undefined,
-          ariaPosInSet: undefined, // multiple options (and therefore, positions) may be selected
-          ariaSelected: selectedIndices[0] === undefined ? undefined : true
         }
       : // single select
         {
