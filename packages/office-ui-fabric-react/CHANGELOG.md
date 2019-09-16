@@ -1,7 +1,17 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 13 Sep 2019 12:34:39 GMT and should not be manually modified.
+This log was last generated on Mon, 16 Sep 2019 12:34:47 GMT and should not be manually modified.
 
+## 7.34.0
+Mon, 16 Sep 2019 12:34:47 GMT
+
+### Minor changes
+
+- update to use icon prop instead of string (chiechan@microsoft.com)
+### Patches
+
+- Use new hooks in some examples (elcraig@microsoft.com)
+- DatePicker: call custom text field onChange handler if it exists in default onChange handler (naethell@microsoft.com)
 ## 7.33.0
 Fri, 13 Sep 2019 12:34:39 GMT
 
