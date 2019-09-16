@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Button: Add prop to set aria-expanded value",
+  "packageName": "office-ui-fabric-react",
+  "email": "erabelle@microsoft.com",
+  "commit": "a12e4c6405557d2d192604af0f010d07188c79b3",
+  "date": "2019-09-16T23:53:53.636Z"
+}
