@@ -15,7 +15,7 @@ export class PanelControlledExample extends React.Component<{}, IPanelMediumExam
     return (
       <div>
         <DefaultButton secondaryText="Opens the Sample Panel" onClick={this._showPanel} text="Open Panel" />
-        <Panel isOpen={this.state.showPanel} type={PanelType.medium} headerText="Controlled Panel">
+        <Panel isOpen={this.state.showPanel} closeButtonAriaLabel="Close" type={PanelType.medium} headerText="Controlled Panel">
           <p>
             Because <code>isOpen</code> is specified and <code>onDismiss</code> does not modify the example's <code>state</code>, clicking
             the button below is the only way to close this Panel.
