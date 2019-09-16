@@ -2119,6 +2119,7 @@ export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement> {
     role?: string;
     setInitialFocus?: boolean;
     shouldRestoreFocus?: boolean;
+    shouldUpdateWhenHidden?: boolean;
     style?: React.CSSProperties;
     styles?: IStyleFunctionOrObject<ICalloutContentStyleProps, ICalloutContentStyles>;
     target?: Target;
@@ -3030,6 +3031,7 @@ export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, IWith
     onRenderSubMenu?: IRenderFunction<IContextualMenuProps>;
     shouldFocusOnContainer?: boolean;
     shouldFocusOnMount?: boolean;
+    shouldUpdateWhenHidden?: boolean;
     styles?: IStyleFunctionOrObject<IContextualMenuStyleProps, IContextualMenuStyles>;
     subMenuHoverDelay?: number;
     target?: Target;
