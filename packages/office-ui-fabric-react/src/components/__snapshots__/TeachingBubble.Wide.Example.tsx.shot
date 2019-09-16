@@ -1,0 +1,129 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component Examples renders TeachingBubble.Wide.Example.tsx correctly 1`] = `
+<div
+  className="ms-TeachingBubbleExample"
+>
+  <span
+    className="ms-TeachingBubbleBasicExample-buttonArea"
+  >
+    <button
+      className=
+          ms-Button
+          ms-Button--default
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            background-color: #ffffff;
+            border-radius: 2px;
+            border: 1px solid #8a8886;
+            box-sizing: border-box;
+            color: #323130;
+            cursor: pointer;
+            display: inline-block;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            height: 32px;
+            min-width: 80px;
+            outline: transparent;
+            padding-bottom: 0;
+            padding-left: 16px;
+            padding-right: 16px;
+            padding-top: 0;
+            position: relative;
+            text-align: center;
+            text-decoration: none;
+            user-select: none;
+            vertical-align: top;
+          }
+          &::-moz-focus-inner {
+            border: 0;
+          }
+          .ms-Fabric--isFocusVisible &:focus:after {
+            border: 1px solid transparent;
+            bottom: 2px;
+            content: "";
+            left: 2px;
+            outline: 1px solid #605e5c;
+            position: absolute;
+            right: 2px;
+            top: 2px;
+            z-index: 1;
+          }
+          @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+            border: none;
+            bottom: -2px;
+            left: -2px;
+            outline-color: ButtonText;
+            right: -2px;
+            top: -2px;
+          }
+          &:active > * {
+            left: 0px;
+            position: relative;
+            top: 0px;
+          }
+          &:hover {
+            background-color: #f3f2f1;
+            color: #201f1e;
+          }
+          @media screen and (-ms-high-contrast: active){&:hover {
+            border-color: Highlight;
+            color: Highlight;
+          }
+          &:active {
+            background-color: #edebe9;
+            color: #201f1e;
+          }
+      data-is-focusable={true}
+      onClick={[Function]}
+      onKeyDown={[Function]}
+      onKeyPress={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseUp={[Function]}
+      type="button"
+    >
+      <span
+        className=
+            ms-Button-flexContainer
+            {
+              align-items: center;
+              display: flex;
+              flex-wrap: nowrap;
+              height: 100%;
+              justify-content: center;
+            }
+        data-automationid="splitbuttonprimary"
+      >
+        <span
+          className=
+              ms-Button-textContainer
+              {
+                display: block;
+                flex-grow: 1;
+              }
+        >
+          <span
+            className=
+                ms-Button-label
+                {
+                  display: block;
+                  font-weight: 600;
+                  line-height: 100%;
+                  margin-bottom: 0;
+                  margin-left: 4px;
+                  margin-right: 4px;
+                  margin-top: 0;
+                }
+            id="id__0"
+          >
+            Show TeachingBubble
+          </span>
+        </span>
+      </span>
+    </button>
+  </span>
+</div>
+`;
