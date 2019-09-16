@@ -132,7 +132,7 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
               }
           id="RatingLabel1-1"
         >
-          1 of 5 stars selected
+          Select 1 of 5 stars
         </span>
         <div
           className=
@@ -271,7 +271,7 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
               }
           id="RatingLabel1-2"
         >
-          2 of 5 stars selected
+          Select 2 of 5 stars
         </span>
         <div
           className=
@@ -410,7 +410,7 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
               }
           id="RatingLabel1-3"
         >
-          3 of 5 stars selected
+          Select 3 of 5 stars
         </span>
         <div
           className=
@@ -549,7 +549,7 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
               }
           id="RatingLabel1-4"
         >
-          4 of 5 stars selected
+          Select 4 of 5 stars
         </span>
         <div
           className=
@@ -688,7 +688,7 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
               }
           id="RatingLabel1-5"
         >
-          5 of 5 stars selected
+          Select 5 of 5 stars
         </span>
         <div
           className=
