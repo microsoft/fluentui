@@ -389,10 +389,10 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
         }
       : multiSelect
       ? {
-          role: 'listbox',
+          role: undefined,
           ariaActiveDescendant: undefined,
-          childRole: 'option',
-          ariaSetSize: this._sizePosCache.optionSetSize,
+          childRole: undefined,
+          ariaSetSize: undefined,
           ariaPosInSet: undefined, // multiple options (and therefore, positions) may be selected
           ariaSelected: selectedIndices[0] === undefined ? undefined : true
         }
