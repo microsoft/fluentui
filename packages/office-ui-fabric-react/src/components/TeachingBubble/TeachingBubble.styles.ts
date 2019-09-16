@@ -108,7 +108,7 @@ export const getStyles = (props: ITeachingBubbleStyleProps): ITeachingBubbleStyl
       {
         padding: 20
       },
-      isWide && {
+      !isWide && {
         maxWidth: 302
       }
     ],
