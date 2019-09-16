@@ -139,6 +139,9 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
             }
             &:active {
               border-color: #0078d4;
+              border-width: 2px;
+              left: -1px;
+              top: -1px;
             }
             @media screen and (-ms-high-contrast: active){&:active {
               -ms-high-contrast-adjust: none;
@@ -156,6 +159,9 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
             }
             &:focus {
               border-color: #0078d4;
+              border-width: 2px;
+              left: -1px;
+              top: -1px;
             }
             &:focus .ms-ComboBox-Input {
               color: #201f1e;
@@ -616,6 +622,9 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
           }
           &:active {
             border-color: #0078d4;
+            border-width: 2px;
+            left: -1px;
+            top: -1px;
           }
           @media screen and (-ms-high-contrast: active){&:active {
             -ms-high-contrast-adjust: none;
@@ -633,6 +642,9 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
           }
           &:focus {
             border-color: #0078d4;
+            border-width: 2px;
+            left: -1px;
+            top: -1px;
           }
           &:focus .ms-ComboBox-Input {
             color: #201f1e;
@@ -958,6 +970,9 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
           }
           &:active {
             border-color: #0078d4;
+            border-width: 2px;
+            left: -1px;
+            top: -1px;
           }
           @media screen and (-ms-high-contrast: active){&:active {
             -ms-high-contrast-adjust: none;
@@ -975,6 +990,9 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
           }
           &:focus {
             border-color: #0078d4;
+            border-width: 2px;
+            left: -1px;
+            top: -1px;
           }
           &:focus .ms-ComboBox-Input {
             color: #201f1e;
@@ -1301,6 +1319,9 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
           }
           &:active {
             border-color: #0078d4;
+            border-width: 2px;
+            left: -1px;
+            top: -1px;
           }
           @media screen and (-ms-high-contrast: active){&:active {
             -ms-high-contrast-adjust: none;
@@ -1318,6 +1339,9 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
           }
           &:focus {
             border-color: #0078d4;
+            border-width: 2px;
+            left: -1px;
+            top: -1px;
           }
           &:focus .ms-ComboBox-Input {
             color: #201f1e;
