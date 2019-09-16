@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Updated focus states on textField, dropdown, comboBox and spinButton to comply with WCAG 2.1 for non-text contrast.",
+  "packageName": "office-ui-fabric-react",
+  "email": "betrue@microsoft.com",
+  "commit": "0a388fb107ed097470848130387471c716f67f58",
+  "date": "2019-09-16T17:53:12.753Z"
+}
