@@ -58,11 +58,6 @@ export interface ICalendarDayGridProps extends IBaseProps<ICalendarDayGrid> {
   onSelectDate?: (date: Date, selectedDateRangeArray?: Date[]) => void;
 
   /**
-   * Callback issued when a date is hovered over or focused
-   */
-  onMouseOverOrFocusDate?: (date: Date, event: React.MouseEvent<HTMLElement> | React.FocusEvent<HTMLElement>) => void;
-
-  /**
    * Callback issued when a date in the calendar is navigated
    * @param date - The date that is navigated to
    * @param focusOnNavigatedDay - Whether to set the focus to the navigated date.
@@ -111,9 +106,10 @@ export interface ICalendarDayGridProps extends IBaseProps<ICalendarDayGrid> {
   dateTimeFormatter: ICalendarFormatDateCallbacks;
 
   /**
-   * Optionally apply CSS class(es) to any given date
+   * Props to apply to the <td> for the date. Can be used to apply custom styles for specific days, inject callback functions
+   * on hover or focus, or disable specific days if required
    */
-  customDayCellProps?: (date: Date) => React.HTMLAttributes<HTMLElement>;
+  customDayCellProps?: (date: Date) => React.HTMLAttributes<HTMLElement> | React.ButtonHTMLAttributes<HTMLElement>;
 
   /**
    * How many weeks to show by default. If not provided, will show enough weeks to display the current

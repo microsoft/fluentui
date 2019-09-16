@@ -229,12 +229,10 @@ export class CalendarDayGridBase extends BaseComponent<ICalendarDayGridProps, IC
     const { activeDescendantId } = this.state;
     const isNavigatedDate = compareDates(navigatedDate, day.originalDate);
 
+    const customProps = this.props.customDayCellProps && this.props.customDayCellProps(day.originalDate);
+
     return (
-      <td
-        key={day.key}
-        className={classNames.dayCellWrapper}
-        {...this.props.customDayCellProps && this.props.customDayCellProps(day.originalDate)}
-      >
+      <td key={day.key} className={classNames.dayCellWrapper} {...customProps}>
         <div
           className={css(
             classNames.dayCell,
@@ -266,6 +264,7 @@ export class CalendarDayGridBase extends BaseComponent<ICalendarDayGridProps, IC
             type="button"
             role="gridcell" // create grid structure
             aria-readonly={true} // prevent grid from being "editable"
+            {...customProps!.disabled}
           >
             <span aria-hidden="true">{dateTimeFormatter.formatDay(day.originalDate)}</span>
           </button>

@@ -110,14 +110,15 @@ export class CalendarPage extends React.Component<{}, {}> {
             </ExampleCard>
             <ExampleCard title="Calendar with customDayCellProps applying a tooltip to each day" code={CalendarInlineExampleCode}>
               <CalendarInlineExample
-                dateRangeType={DateRangeType.Week}
+                dateRangeType={DateRangeType.Day}
                 highlightCurrentMonth={false}
                 highlightSelectedMonth={true}
                 showGoToToday={true}
                 calendarDayProps={{
                   customDayCellProps: (date: Date) => {
                     return {
-                      title: 'custom title from customDayCellProps: ' + date.toString()
+                      title: 'custom title from customDayCellProps: ' + date.toString(),
+                      disabled: date.getDay() === 0 || date.getDay() === 6
                     };
                   }
                 }}
