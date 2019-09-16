@@ -109,6 +109,12 @@ export interface IButtonProps
   ariaLabel?: string;
 
   /**
+   * The expanded status of the button for the benefit of screen readers. This value is already determined internally for buttons with
+   * expandable menus. This prop may be passed as an override when the button does not contain `menuProps`.
+   */
+  ariaExpanded?: boolean;
+
+  /**
    * Detailed description of the button for the benefit of screen readers.
    *
    * Besides the compound button, other button types will need more information provided to screen reader.

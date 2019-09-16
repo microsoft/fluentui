@@ -103,7 +103,8 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       variantClassName,
       theme,
       toggle,
-      getClassNames
+      getClassNames,
+      ariaExpanded
     } = this.props;
 
     // Button is disabled if the whole button (in case of splitbutton is disabled) or if the primary action is disabled
@@ -195,7 +196,8 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       'aria-describedby': ariaDescribedBy,
       'aria-disabled': isPrimaryButtonDisabled,
       'data-is-focusable': dataIsFocusable,
-      'aria-pressed': toggle ? !!checked : undefined // aria-pressed attribute should only be present for toggle buttons
+      'aria-pressed': toggle ? !!checked : undefined, // aria-pressed attribute should only be present for toggle buttons
+      'aria-expanded': ariaExpanded
     });
 
     if (ariaHidden) {
@@ -206,7 +208,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       return this._onRenderSplitButtonContent(tag, buttonProps);
     } else if (this.props.menuProps) {
       assign(buttonProps, {
-        'aria-expanded': this._isExpanded,
+        'aria-expanded': ariaExpanded || this._isExpanded,
         'aria-owns': this.state.menuProps ? this._labelId + '-menu' : null,
         'aria-haspopup': true
       });
