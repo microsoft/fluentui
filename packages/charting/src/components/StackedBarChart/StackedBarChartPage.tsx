@@ -3,6 +3,7 @@ import * as React from 'react';
 import { ComponentPage, ExampleCard, IComponentDemoPageProps, PropertiesTableSet } from '@uifabric/example-app-base';
 
 import { StackedBarChartBasicExample } from './examples/StackedBarChart.Basic.Example';
+import { StackedBarChartBenchmarkExample } from './examples/StackedBarChart.Benchmark.Example';
 import { StackedBarChartMultipleExample } from './examples/StackedBarChart.Multiple.Example';
 import { StackedBarChartDynamicExample } from './examples/StackedBarChart.Dynamic.Example';
 import { MultiStackedBarChartExample } from './examples/MultiStackedBarChart.Example';
@@ -10,6 +11,7 @@ import { StackedBarChartBaseBarExample } from './examples/StackedBarChart.BaseBa
 import { MultiStackedBarChartWithPlaceholderExample } from './examples/MultiStackedBarChartWithPlaceHolder.Example';
 
 const StackedBarChartBasicExampleCode = require('!raw-loader!@uifabric/charting/src/components/StackedBarChart/examples/StackedBarChart.Basic.Example.tsx') as string;
+const StackedBarChartBenchmarkExampleCode = require('!raw-loader!@uifabric/charting/src/components/StackedBarChart/examples/StackedBarChart.Benchmark.Example.tsx') as string;
 const StackedBarChartMultipleExampleCode = require('!raw-loader!@uifabric/charting/src/components/StackedBarChart/examples/StackedBarChart.Multiple.Example.tsx') as string;
 const StackedBarChartDynamicExampleCode = require('!raw-loader!@uifabric/charting/src/components/StackedBarChart/examples/StackedBarChart.Dynamic.Example.tsx') as string;
 const MultiStackedBarChartExampleCode = require('!raw-loader!@uifabric/charting/src/components/StackedBarChart/examples/MultiStackedBarChart.Example.tsx') as string;
@@ -26,6 +28,9 @@ export class StackedBarChartPage extends React.Component<IComponentDemoPageProps
           <div>
             <ExampleCard title="StackedBarChart basic" code={StackedBarChartBasicExampleCode}>
               <StackedBarChartBasicExample />
+            </ExampleCard>
+            <ExampleCard title="StackedBarChart benchmark" code={StackedBarChartBenchmarkExampleCode}>
+              <StackedBarChartBenchmarkExample />
             </ExampleCard>
             <ExampleCard title="StackBarChart Empty" code={StackedBarChartBaseBarExampleCode}>
               <StackedBarChartBaseBarExample />

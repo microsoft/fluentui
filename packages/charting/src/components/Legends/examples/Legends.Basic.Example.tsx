@@ -42,6 +42,7 @@ export class LegendBasicExample extends React.Component<{}, {}> {
       {
         title: 'Legend 4',
         color: DefaultPalette.yellow,
+        shape: 'triangle',
         action: () => {
           alert('Legend4 clicked');
         },

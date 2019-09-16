@@ -53,10 +53,31 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
 
   public render(): JSX.Element {
     this._adjustProps();
-    const { data, hideNumberDisplay, hideLegend, theme, styles, barBackgroundColor, href, ignoreFixStyle, hideDenominator } = this.props;
+    const {
+      data,
+      benchmarkData,
+      targetData,
+      hideNumberDisplay,
+      hideLegend,
+      theme,
+      styles,
+      barBackgroundColor,
+      href,
+      ignoreFixStyle,
+      hideDenominator
+    } = this.props;
     const { palette } = theme!;
     const barHeight = ignoreFixStyle || data!.chartData!.length > 2 ? this.props.barHeight : 8;
-    const bars = this._createBarsAndLegends(data!, barHeight!, palette, barBackgroundColor, href);
+    if (benchmarkData) {
+      benchmarkData.color = benchmarkData.color || '#A19F9D';
+    }
+
+    if (targetData) {
+      targetData.color = targetData.color || '#484644';
+    }
+    const totalData = this._getTotalChartData(data!);
+
+    const bars = this._createBarsAndLegends(data!, barHeight!, palette, barBackgroundColor, href, benchmarkData, targetData);
     const showRatio = hideNumberDisplay === false && (!ignoreFixStyle && data!.chartData!.length === 2);
     const showNumber = hideNumberDisplay === false && (!ignoreFixStyle && data!.chartData!.length === 1);
     let total = 0;
@@ -93,7 +114,12 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
             </div>
           )}
         </div>
-
+        {benchmarkData && (
+          <div className={this._classNames.benchmarkContainer}>
+            {benchmarkData && this._createBenchmark(totalData, benchmarkData)}
+            {targetData && this._createBenchmark(totalData, targetData)}
+          </div>
+        )}
         <svg className={this._classNames.chart}>
           <g>{bars[0]}</g>
           {isCalloutVisible ? (
@@ -127,12 +153,39 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
     });
   }
 
+  private _getTotalChartData(data: IChartProps): number {
+    let sum = 0;
+    if (data.chartData && data.chartData.length > 0) {
+      const chartData = data.chartData;
+      for (let i = 0, n = chartData.length; i < n; i++) {
+        sum += chartData[i].data || 0;
+      }
+    }
+
+    return sum;
+  }
+
+  private _createBenchmark(totalData: number, dataPoint: IChartDataPoint): JSX.Element {
+    const ratio = (dataPoint.data! / totalData) * 100;
+
+    const styles = {
+      marginLeft: 'calc(' + ratio + '% - 4px)',
+      marginRight: 'calc(' + (100 - ratio) + '% - 4px)',
+      borderTopColor: dataPoint.color
+    };
+
+    // tslint:disable-next-line:jsx-ban-props
+    return <div className={this._classNames.triangle} style={styles} />;
+  }
+
   private _createBarsAndLegends(
     data: IChartProps,
     barHeight: number,
     palette: IPalette,
     barBackgroundColor?: string,
-    href?: string
+    href?: string,
+    benchmarkData?: IChartDataPoint,
+    targetData?: IChartDataPoint
   ): [JSX.Element[], JSX.Element] {
     const defaultPalette: string[] = [palette.blueLight, palette.blue, palette.blueMid, palette.red, palette.black];
     const legendDataItems: ILegend[] = [];
@@ -201,11 +254,26 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
       );
     });
 
+    // add benchmark legends
+    this._addLegend(legendDataItems, benchmarkData);
+    this._addLegend(legendDataItems, targetData);
     const legends = <Legends legends={legendDataItems} />;
     return [
       total === 0 ? [this._generateEmptyBar(barHeight, barBackgroundColor ? barBackgroundColor : palette.neutralTertiary)] : bars,
       legends
     ];
+  }
+
+  private _addLegend(legendDataItems: ILegend[], data?: IChartDataPoint): void {
+    if (data) {
+      const legend: ILegend = {
+        title: data.legend!,
+        color: data.color!,
+        shape: 'triangle'
+      };
+
+      legendDataItems.push(legend);
+    }
   }
 
   private _generateEmptyBar(barHeight: number, color: string): JSX.Element {

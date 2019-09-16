@@ -34,6 +34,15 @@ export const getStyles = (props: ILegendStyleProps): ILegendsStyles => {
       borderColor: props.borderColor ? props.borderColor : palette.black,
       opacity: props.colorOnSelectedState === palette.white ? '0.6' : ''
     },
+    triangle: {
+      width: '0',
+      height: '0',
+      borderLeft: '6px solid transparent',
+      borderRight: '6px solid transparent',
+      borderTop: '12px solid',
+      borderTopColor: props.colorOnSelectedState,
+      marginRight: '3px'
+    },
     text: {
       fontSize: '12px',
       lineHeight: '16px',

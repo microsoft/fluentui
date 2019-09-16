@@ -60,6 +60,20 @@ export const getStyles = (props: IStackedBarChartStyleProps): IStackedBarChartSt
       fontSize: FontSizes.small,
       color: theme.palette.black,
       opacity: '0.6'
+    },
+    benchmarkContainer: {
+      position: 'relative',
+      height: '14px'
+    },
+    triangle: {
+      position: 'absolute',
+      width: '0',
+      height: '0',
+      borderLeft: '5px solid transparent',
+      borderRight: '5px solid transparent',
+      borderTop: '10px solid',
+      borderTopColor: '#A19F9D',
+      marginBottom: '4px'
     }
   };
 };
