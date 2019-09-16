@@ -166,20 +166,14 @@ export function getStyles(props: ICoachmarkStyleProps): ICoachmarkStyles {
       {
         position: 'absolute',
         top: '50%',
-        transform: 'translate(-50%, -50%)',
+        left: '50%',
+        transform: getRTL() ? 'translate(50%, -50%)' : 'translate(-50%, -50%)',
         width: '0px',
         height: '0px',
         borderRadius: '225px',
         borderStyle: 'solid',
         opacity: '0'
       },
-      getRTL()
-        ? {
-            right: '50%'
-          }
-        : {
-            left: '50%'
-          },
       isCollapsed && isBeaconAnimating && ContinuousPulseAnimation
     ],
     // Translate Animation Layer
