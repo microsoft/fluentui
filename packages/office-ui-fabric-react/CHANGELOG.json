@@ -2,6 +2,32 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Mon, 16 Sep 2019 12:34:47 GMT",
+      "tag": "office-ui-fabric-react_v7.34.0",
+      "version": "7.34.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Use new hooks in some examples",
+            "author": "elcraig@microsoft.com",
+            "commit": "c7a6e4ebaa063a7516e1ffb53ee1c12166df9258"
+          },
+          {
+            "comment": "DatePicker: call custom text field onChange handler if it exists in default onChange handler",
+            "author": "naethell@microsoft.com",
+            "commit": "66c08397d029b26f7044440f86232aa72ae4d352"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "update to use icon prop instead of string",
+            "author": "chiechan@microsoft.com",
+            "commit": "dc1164aa712afb535b0c1efb7717ad1ceb87abf5"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 13 Sep 2019 12:34:39 GMT",
       "tag": "office-ui-fabric-react_v7.33.0",
       "version": "7.33.0",

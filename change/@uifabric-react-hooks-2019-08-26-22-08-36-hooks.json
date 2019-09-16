@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Add hooks package",
-  "packageName": "@uifabric/react-hooks",
-  "email": "elcraig@microsoft.com",
-  "commit": "c7a6e4ebaa063a7516e1ffb53ee1c12166df9258",
-  "date": "2019-08-27T05:08:31.449Z"
-}
