@@ -247,7 +247,7 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
     );
   };
 
-  private _getShapeClass(classNames: IProcessedStyleSet<ILegendsStyles>, legend: ILegend) {
+  private _getShapeClass(classNames: IProcessedStyleSet<ILegendsStyles>, legend: ILegend): string {
     switch (legend.shape) {
       case 'triangle':
         return classNames.triangle;
