@@ -1,5 +1,5 @@
 {
-  "type": "patch",
+  "type": "minor",
   "comment": "BasePicker: deprecate onFocus",
   "packageName": "office-ui-fabric-react",
   "email": "naethell@microsoft.com",
