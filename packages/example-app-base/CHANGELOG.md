@@ -1,7 +1,13 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Wed, 04 Sep 2019 04:09:58 GMT and should not be manually modified.
+This log was last generated on Fri, 13 Sep 2019 12:34:39 GMT and should not be manually modified.
 
+## 7.7.0
+Fri, 13 Sep 2019 12:34:39 GMT
+
+### Minor changes
+
+- add accessibility section and add content for modal (mgodbolt@microsoft.com)
 ## 7.6.4
 Wed, 04 Sep 2019 04:09:58 GMT
 

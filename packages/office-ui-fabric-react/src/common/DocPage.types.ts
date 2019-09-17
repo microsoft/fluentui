@@ -42,6 +42,9 @@ export interface IDocPageProps {
   /** Overview of the component as markdown string */
   overview?: string;
 
+  /** Accessibility of the component as markdown string */
+  accessibility?: string;
+
   /** DO's blurb as markdown string */
   dos?: string;
 

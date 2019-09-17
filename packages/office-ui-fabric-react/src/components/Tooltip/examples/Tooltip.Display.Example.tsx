@@ -16,7 +16,7 @@ export class TooltipDisplayExample extends React.Component<any, any> {
           recommended to modify the display property of the TooltipHost as in the following example.
         </p>
         <TooltipHost content="Incorrect positioning" id={this._host1Id} calloutProps={{ gapSpace: 0 }}>
-          <button style={{ fontSize: '2em' }} aria-labelledby={this._host1Id}>
+          <button style={{ fontSize: '2em' }} aria-describedby={this._host1Id}>
             Hover Over Me
           </button>
         </TooltipHost>{' '}
@@ -26,7 +26,7 @@ export class TooltipDisplayExample extends React.Component<any, any> {
           id={this._host2Id}
           calloutProps={{ gapSpace: 0 }}
         >
-          <button style={{ fontSize: '2em' }} aria-labelledby={this._host2Id}>
+          <button style={{ fontSize: '2em' }} aria-describedby={this._host2Id}>
             Hover Over Me
           </button>
         </TooltipHost>
