@@ -19,6 +19,7 @@ export const DemoPage: React.StatelessComponent<IDemoPageProps> = demoPageProps 
     bestPractices,
     dos,
     donts,
+    accessibility,
     // Passing the extra props to ComponentPage like this helps to keep the prop names in sync
     ...componentPageProps
   } = demoPageProps;
@@ -45,6 +46,7 @@ export const DemoPage: React.StatelessComponent<IDemoPageProps> = demoPageProps 
         (componentPageProps.jsonDocs && <ApiReferencesTableSet jsonDocs={componentPageProps.jsonDocs} />) ||
         (propertiesTablesSources && <PropertiesTableSet sources={propertiesTablesSources} />)
       }
+      accessibility={accessibility ? <Markdown>{accessibility}</Markdown> : undefined}
       overview={overview ? <Markdown>{overview}</Markdown> : undefined}
       bestPractices={bestPractices ? <Markdown>{bestPractices}</Markdown> : undefined}
       dos={dos ? <Markdown>{dos}</Markdown> : undefined}

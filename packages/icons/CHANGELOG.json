@@ -2,6 +2,20 @@
   "name": "@uifabric/icons",
   "entries": [
     {
+      "date": "Thu, 12 Sep 2019 12:34:15 GMT",
+      "tag": "@uifabric/icons_v7.2.1",
+      "version": "7.2.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Enable api-extractor for OUFR deps",
+            "author": "elcraig@microsoft.com",
+            "commit": "485574797c272506647b6fb98d4ae5989d8eb9f9"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 04 Sep 2019 12:32:15 GMT",
       "tag": "@uifabric/icons_v7.2.0",
       "version": "7.2.0",

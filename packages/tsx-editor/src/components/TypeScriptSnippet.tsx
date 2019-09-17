@@ -69,10 +69,6 @@ for (const key of Object.keys(style)) {
 const rootClass = mergeStyles({
   maxHeight: 400
 });
-const lineNumberStyle: React.CSSProperties = {
-  color: '#237893', // matches Monaco
-  paddingRight: 6
-};
 
 export interface ITypeScriptSnippetProps {
   className?: string;
@@ -80,13 +76,7 @@ export interface ITypeScriptSnippetProps {
 
 export const TypeScriptSnippet: React.FunctionComponent<ITypeScriptSnippetProps> = props => {
   return (
-    <SyntaxHighlighter
-      className={css(rootClass, props.className)}
-      language="tsx"
-      showLineNumbers
-      lineNumberStyle={lineNumberStyle}
-      style={style}
-    >
+    <SyntaxHighlighter className={css(rootClass, props.className)} language="tsx" style={style}>
       {props.children}
     </SyntaxHighlighter>
   );

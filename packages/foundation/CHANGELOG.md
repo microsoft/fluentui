@@ -1,7 +1,13 @@
 # Change Log - @uifabric/foundation
 
-This log was last generated on Fri, 06 Sep 2019 12:34:51 GMT and should not be manually modified.
+This log was last generated on Thu, 12 Sep 2019 12:34:15 GMT and should not be manually modified.
 
+## 7.4.1
+Thu, 12 Sep 2019 12:34:15 GMT
+
+### Patches
+
+- Enable api-extractor, and minor import fixes to prevent api-extractor errors (elcraig@microsoft.com)
 ## 7.4.0
 Fri, 06 Sep 2019 12:34:51 GMT
 

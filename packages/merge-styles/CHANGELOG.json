@@ -2,6 +2,20 @@
   "name": "@uifabric/merge-styles",
   "entries": [
     {
+      "date": "Thu, 12 Sep 2019 12:34:15 GMT",
+      "tag": "@uifabric/merge-styles_v7.5.2",
+      "version": "7.5.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Build the kebabRules map instead of shipping it",
+            "author": "mark@thedutchies.com",
+            "commit": "6c2bb6b120a0fca24259bd21bd0a73989bbeff7a"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 04 Sep 2019 04:09:58 GMT",
       "tag": "@uifabric/merge-styles_v7.5.1",
       "version": "7.5.1",

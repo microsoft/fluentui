@@ -21,7 +21,8 @@ exports[`Component Examples renders Tooltip.Absolute.Position.Example.tsx correc
     onMouseLeave={[Function]}
   >
     <button
-      aria-labelledby="tooltipHost0"
+      aria-describedby="tooltipHost0"
+      aria-labelledby="id__2"
       className=
           ms-Button
           ms-Button--default
