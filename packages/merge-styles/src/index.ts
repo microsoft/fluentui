@@ -12,6 +12,8 @@ export { mergeStyleSets } from './mergeStyleSets';
 
 export { concatStyleSets } from './concatStyleSets';
 
+export { concatStyleSetsWithProps } from './concatStyleSetsWithProps';
+
 export { fontFace } from './fontFace';
 
 export { keyframes } from './keyframes';

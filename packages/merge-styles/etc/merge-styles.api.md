@@ -29,6 +29,9 @@ export function concatStyleSets<TStyleSet1 extends IStyleSet<TStyleSet1>, TStyle
 export function concatStyleSets(...styleSets: (IStyleSet<any> | false | null | undefined)[]): IConcatenatedStyleSet<any>;
 
 // @public
+export function concatStyleSetsWithProps<TStyleProps, TStyleSet extends IStyleSet<TStyleSet>>(styleProps: TStyleProps, ...allStyles: (IStyleFunctionOrObject<TStyleProps, TStyleSet> | undefined)[]): Partial<TStyleSet>;
+
+// @public
 export function fontFace(font: IFontFace): void;
 
 // @public
