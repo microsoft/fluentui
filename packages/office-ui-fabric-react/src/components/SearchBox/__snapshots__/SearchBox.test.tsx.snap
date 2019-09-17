@@ -2,6 +2,7 @@
 
 exports[`SearchBox renders SearchBox correctly 1`] = `
 <div
+  aria-role="search"
   className=
       ms-SearchBox
       {
@@ -84,6 +85,7 @@ exports[`SearchBox renders SearchBox correctly 1`] = `
     </i>
   </div>
   <input
+    aria-role="searchbox"
     className=
         ms-SearchBox-field
         {
@@ -135,6 +137,7 @@ exports[`SearchBox renders SearchBox correctly 1`] = `
 
 exports[`SearchBox renders SearchBox without animation correctly 1`] = `
 <div
+  aria-role="search"
   className=
       ms-SearchBox
       {
@@ -215,6 +218,7 @@ exports[`SearchBox renders SearchBox without animation correctly 1`] = `
     </i>
   </div>
   <input
+    aria-role="searchbox"
     className=
         ms-SearchBox-field
         {
@@ -255,7 +259,7 @@ exports[`SearchBox renders SearchBox without animation correctly 1`] = `
         &::-ms-clear {
           display: none;
         }
-    id="SearchBox5"
+    id="SearchBox2"
     onChange={[Function]}
     onInput={[Function]}
     onKeyDown={[Function]}

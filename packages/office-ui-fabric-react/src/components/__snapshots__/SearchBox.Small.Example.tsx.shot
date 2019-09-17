@@ -2,6 +2,7 @@
 
 exports[`Component Examples renders SearchBox.Small.Example.tsx correctly 1`] = `
 <div
+  aria-role="search"
   className=
       ms-SearchBox
       {
@@ -86,6 +87,7 @@ exports[`Component Examples renders SearchBox.Small.Example.tsx correctly 1`] = 
   </div>
   <input
     aria-label="Search"
+    aria-role="searchbox"
     className=
         ms-SearchBox-field
         {
