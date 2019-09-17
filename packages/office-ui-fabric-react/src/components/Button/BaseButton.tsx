@@ -112,29 +112,29 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
 
     this._classNames = getClassNames
       ? getClassNames(
-          theme!,
-          className!,
-          variantClassName!,
-          iconProps && iconProps.className,
-          menuIconProps && menuIconProps.className,
-          isPrimaryButtonDisabled!,
-          checked!,
-          this._isExpanded,
-          this.props.split,
-          !!allowDisabledFocus
-        )
+        theme!,
+        className!,
+        variantClassName!,
+        iconProps && iconProps.className,
+        menuIconProps && menuIconProps.className,
+        isPrimaryButtonDisabled!,
+        checked!,
+        this._isExpanded,
+        this.props.split,
+        !!allowDisabledFocus
+      )
       : getBaseButtonClassNames(
-          theme!,
-          styles!,
-          className!,
-          variantClassName!,
-          iconProps && iconProps.className,
-          menuIconProps && menuIconProps.className,
-          isPrimaryButtonDisabled!,
-          checked!,
-          this._isExpanded,
-          this.props.split
-        );
+        theme!,
+        styles!,
+        className!,
+        variantClassName!,
+        iconProps && iconProps.className,
+        menuIconProps && menuIconProps.className,
+        isPrimaryButtonDisabled!,
+        checked!,
+        this._isExpanded,
+        this.props.split
+      );
 
     const { _ariaDescriptionId, _labelId, _descriptionId } = this;
     // Anchor tag cannot be disabled hence in disabled state rendering
@@ -196,8 +196,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       'aria-describedby': ariaDescribedBy,
       'aria-disabled': isPrimaryButtonDisabled,
       'data-is-focusable': dataIsFocusable,
-      'aria-pressed': toggle ? !!checked : undefined, // aria-pressed attribute should only be present for toggle buttons
-      'aria-expanded': ariaExpanded
+      'aria-pressed': toggle ? !!checked : undefined // aria-pressed attribute should only be present for toggle buttons
     });
 
     if (ariaHidden) {
@@ -208,10 +207,14 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       return this._onRenderSplitButtonContent(tag, buttonProps);
     } else if (this.props.menuProps) {
       assign(buttonProps, {
-        'aria-expanded': ariaExpanded || this._isExpanded,
+        'aria-expanded': this._isExpanded,
         'aria-owns': this.state.menuProps ? this._labelId + '-menu' : null,
         'aria-haspopup': true
       });
+    }
+
+    if (ariaExpanded !== undefined) {
+      buttonProps['aria-expanded'] = ariaExpanded;
     }
 
     return this._onRenderContent(tag, buttonProps);
