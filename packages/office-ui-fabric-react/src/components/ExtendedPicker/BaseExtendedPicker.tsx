@@ -15,7 +15,6 @@ export interface IBaseExtendedPickerState<T> {
   queryString: string | null;
   selectedItems: T[] | null;
   suggestionItems: T[] | null;
-  suggestionsShown: boolean;
 }
 
 export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extends BaseComponent<P, IBaseExtendedPickerState<T>>
@@ -41,8 +40,7 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
         ? (this.props.defaultSelectedItems as T[])
         : this.props.selectedItems
         ? (this.props.selectedItems as T[])
-        : null,
-      suggestionsShown: false
+        : null
     };
 
     this.floatingPickerProps = this.props.floatingPickerProps;
