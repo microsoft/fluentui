@@ -1,7 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 12 Sep 2019 12:22:18 GMT and should not be manually modified.
+This log was last generated on Tue, 17 Sep 2019 12:24:52 GMT and should not be manually modified.
 
+## 6.204.0
+Tue, 17 Sep 2019 12:24:52 GMT
+
+### Minor changes
+
+- CalendarMonth: Prefer createRef over string ref (KevinTCoughlin@users.noreply.github.com)
 ## 6.203.5
 Thu, 12 Sep 2019 12:22:18 GMT
 

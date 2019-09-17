@@ -2,6 +2,20 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Tue, 17 Sep 2019 12:24:52 GMT",
+      "tag": "office-ui-fabric-react_v6.204.0",
+      "version": "6.204.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "CalendarMonth: Prefer createRef over string ref",
+            "author": "KevinTCoughlin@users.noreply.github.com",
+            "commit": "8be3407f9e11859e60b074b05b321df68c71776a"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 12 Sep 2019 12:22:18 GMT",
       "tag": "office-ui-fabric-react_v6.203.5",
       "version": "6.203.5",
