@@ -1851,6 +1851,7 @@ export interface IButton {
 export interface IButtonProps extends React.AllHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLDivElement | BaseButton | Button> {
     allowDisabledFocus?: boolean;
     ariaDescription?: string;
+    ariaExpanded?: boolean;
     ariaHidden?: boolean;
     ariaLabel?: string;
     // @deprecated
