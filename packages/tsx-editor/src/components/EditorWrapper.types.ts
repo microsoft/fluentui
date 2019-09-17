@@ -23,7 +23,7 @@ export interface IEditorWrapperProps {
   width?: number | string;
 
   /** Used to access the editor model. Cleared when editor component is disposed to avoid memory leaks. */
-  modelRef?: React.MutableRefObject<ITextModel>;
+  modelRef?: React.MutableRefObject<ITextModel | undefined>;
 
   /** Force using the editor (vs the code viewer) on or off */
   useEditor?: boolean;

@@ -2,6 +2,20 @@
   "name": "@uifabric/azure-themes",
   "entries": [
     {
+      "date": "Wed, 11 Sep 2019 12:35:47 GMT",
+      "tag": "@uifabric/azure-themes_v7.0.9",
+      "version": "7.0.9",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Checkbox alignment and visual artifact fix",
+            "author": "rykelly@microsoft.com",
+            "commit": "89c4cac97bee518446b6a8226fb4b6e0f0e7bb0e"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 04 Sep 2019 12:32:15 GMT",
       "tag": "@uifabric/azure-themes_v7.0.8",
       "version": "7.0.8",

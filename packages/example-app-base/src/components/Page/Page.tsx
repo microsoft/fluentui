@@ -127,7 +127,8 @@ export class Page extends React.Component<IPageProps, IPageState> {
       hideImplementationTitle,
       jsonDocs,
       title,
-      usage
+      usage,
+      accessibility
     } = this.props;
 
     const sectionProps: IPageSectionProps = {
@@ -199,6 +200,15 @@ export class Page extends React.Component<IPageProps, IPageState> {
       };
       sections.push(propertiesTablesProps);
     }
+
+    accessibility &&
+      sections.push({
+        renderAs: MarkdownSection,
+        ...sectionProps,
+        sectionName: 'Accessibility',
+        readableSectionName: 'Accessibility Best Practices',
+        content: accessibility
+      });
 
     otherSections &&
       otherSections.forEach((section: IPageSectionProps, index: number) =>
