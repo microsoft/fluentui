@@ -6,7 +6,7 @@ import { IDiagnostic, _getLineStarts, _getErrorLineInfo, _getErrorMessages } fro
 const example = fs
   .readFileSync(path.join(__dirname, 'examples/class.txt'))
   .toString()
-  .replace(/\\r/g, '');
+  .replace(/\r/g, '');
 const diagnostics: IDiagnostic[] = [
   { start: 23, length: 7, messageText: "Cannot find module 'react'.", code: 2307, category: 1 },
   { start: 192, length: 3, messageText: "Cannot find namespace 'JSX'.", code: 2503, category: 1 },
