@@ -364,8 +364,11 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
     }
   }
 
-  // Return whether the contextual menu is hidden.
-  // Undefined value for hidden is equivalent to hidden being false.
+  /**
+   * Return whether the contextual menu is hidden.
+   * Undefined value for hidden is equivalent to hidden being false.
+   * @param props - Props for the component
+   */
   private _isHidden(props: IContextualMenuProps) {
     return !!props.hidden;
   }
