@@ -98,6 +98,16 @@ describe('Button', () => {
     expect(tree).toMatchSnapshot();
   });
 
+  it('applies aria-expanded', () => {
+    const button = render(
+      <DefaultButton href="http://www.microsoft.com" target="_blank" aria-expanded={true}>
+        Hello
+      </DefaultButton>
+    );
+
+    expect(button.getAttribute('aria-expanded')).toEqual('true');
+  });
+
   describe('DefaultButton', () => {
     it('can render without an onClick.', () => {
       const button = render(<DefaultButton>Hello</DefaultButton>);
