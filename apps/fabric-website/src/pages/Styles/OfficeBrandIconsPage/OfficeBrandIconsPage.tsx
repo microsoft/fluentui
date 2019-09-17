@@ -37,41 +37,38 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                   require('!raw-loader!@uifabric/fabric-website/src/pages/Styles/OfficeBrandIconsPage/docs/web/OfficeBrandIconsOverview.md') as string
                 }
               </Markdown>
-              <MarkdownHeader as="h3">When should I use product icons?</MarkdownHeader>
+              <MarkdownHeader as="h3">When should I use Office Brand icons?</MarkdownHeader>
               <div className="ms-Grid">
                 <div className="ms-Grid-row">
                   <div className="ms-Grid-col ms-sm12 ms-lg6">
                     <p>
-                      Use product icons to help your users transition between Microsoft products. Product icons should only be used when the
-                      behavior of the command (app icon) is to launch the application. Do not use a product icon to create a new file of
-                      that type. For example, do not create a Word file from a Word product icon.
+                      Use Office brand icons to help your users transition between Microsoft products. Product icons should only be used
+                      when the behavior of the command (app icon) is to launch the application. Do not use a product icon to create a new
+                      file of that type. For example, do not use the Word app icon for the menu option that allows users create a new Word
+                      document.
                     </p>
                     <p>
-                      If you are looking for icons for command bars, navigation, status indicators, or similar, go to the{' '}
+                      If you are looking for icons for command bars, navigation, status indicators, or similar, check out the{' '}
                       <Link href="#/styles/web/icons">Fabric icons page</Link>. Alternatively, if you're looking for file type icons to
-                      indicate to users that they are creating a new file of that type, go to the{' '}
+                      represent digital content or to indicate to users that they are creating a new file of that type, check out the{' '}
                       <Link href="#/styles/web/file-type-icons">Fabric file type icons page</Link>.
                     </p>
                   </div>
                   <div className="ms-Grid-col ms-sm12 ms-lg6">
                     <ul className={styles.exampleIcons}>
                       <li>
-                        <Image
-                          src={`${fabricCDN}/brand-icons/product-fluent/svg/word_48x1.svg`}
-                          className={styles.productIcon}
-                          alt="Word logo"
-                        />
+                        <Image src={`${fabricCDN}/brand-icons/product/svg/word_48x1.svg`} className={styles.productIcon} alt="Word logo" />
                       </li>
                       <li>
                         <Image
-                          src={`${fabricCDN}/brand-icons/product-fluent/svg/excel_48x1.svg`}
+                          src={`${fabricCDN}/brand-icons/product/svg/excel_48x1.svg`}
                           className={styles.productIcon}
                           alt="Excel logo"
                         />
                       </li>
                       <li>
                         <Image
-                          src={`${fabricCDN}/brand-icons/product-fluent/svg/powerpoint_48x1.svg`}
+                          src={`${fabricCDN}/brand-icons/product/svg/powerpoint_48x1.svg`}
                           className={styles.productIcon}
                           alt="PowerPoint logo"
                         />
@@ -171,7 +168,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                 {productIcons.map((icon, iconIndex) => (
                   <li key={iconIndex}>
                     <Image
-                      src={`${fabricCDN}/brand-icons/product-fluent/svg/${icon.icon}_48x1.svg`}
+                      src={`${fabricCDN}/brand-icons/product/svg/${icon.icon}_48x1.svg`}
                       width="48"
                       height="48"
                       alt={icon.name + ' product icon'}

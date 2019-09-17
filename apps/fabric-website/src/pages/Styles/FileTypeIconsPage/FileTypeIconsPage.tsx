@@ -38,19 +38,19 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                 }
               </Markdown>
 
-              <MarkdownHeader as="h3">When should I use file type icons?</MarkdownHeader>
+              <MarkdownHeader as="h3">When should I use File type icons?</MarkdownHeader>
               <div className="ms-Grid">
                 <div className="ms-Grid-row">
                   <div className="ms-Grid-col ms-sm12 ms-lg6">
                     <p>
                       Use file type icons to indicate to users that they are creating a new file of that type. Make sure that a file of the
-                      type that the icon represents loads when the user selects the icon. File type icons should always represent Microsoft
-                      Office files. For example, do not use a Word .docx icon to open a .txt file.
+                      type that the icon represents loads when the user selects the icon. For example, do not use a Word .docx icon to open
+                      a .txt file. File type icons should always represent Microsoft Office files.
                       <br />
                       <br />
-                      If you are looking for icons for command bars, navigation, status indicators, or similar, go to the{' '}
+                      If you are looking for icons for command bars, navigation, status indicators, or similar, check out the{' '}
                       <Link href="#/styles/web/icons">Fabric icons page</Link>. Alternatively, if you're looking for brand logos, or the
-                      icons of apps themselves, go to the <Link href="#/styles/web/office-brand-icons">Fabric brand icons page</Link>.
+                      icons of apps themselves, check out the <Link href="#/styles/web/office-brand-icons">Fabric brand icons page</Link>.
                     </p>
                   </div>
                   <div className="ms-Grid-col ms-sm12 ms-lg6">
@@ -121,17 +121,6 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
           )
         },
         {
-          sectionName: 'Resolutions',
-          editUrl: `${baseUrl}/web/FileTypeIconsResolutions.md`,
-          content: (
-            <Markdown>
-              {
-                require('!raw-loader!@uifabric/fabric-website/src/pages/Styles/FileTypeIconsPage/docs/web/FileTypeIconsResolutions.md') as string
-              }
-            </Markdown>
-          )
-        },
-        {
           sectionName: 'Implementation',
           editUrl: `${baseUrl}/web/FileTypeIconsImplementation.md`,
           content: (
@@ -144,7 +133,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
         },
 
         {
-          sectionName: 'File type icon library',
+          sectionName: 'File-type icon examples',
           content: (
             <>
               <ul className={styles.iconList}>

@@ -1,4 +1,4 @@
-The most durable and future-proof way to get the right icon for a file or item is to use the [file-type-icons package from Fabric](https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/file-type-icons) (`@uifabric/file-type-icons` on npm).
+The most durable and future-proof way to get the right icon for a file or item is to use the [file-type-icons package](https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/file-type-icons) from Fabric (`@uifabric/file-type-icons` on npm).
 
 The following code shows you how to specify a file type icon by extension, item type, icon size, and image type using the `file-type-icons` package along with Fabric's `<Icon>` component:
 
@@ -15,7 +15,7 @@ import { getFileTypeIconProps, FileIconType } from '@uifabric/file-type-icons';
 <Icon {...getFileTypeIconProps({ type: FileIconType.folder, size: 20, imageFileType: 'svg' }) } />
 ```
 
-File type icons come in the following predefined dimensions: 16px, 20px, 32px, 40px, 48px, 64px, and 96px. When specifying `size`, stick to these default sizes so the images appear as intended. When specifying image file format (`imageFileType`) and `size`, consider the screen size and pixel density of the screen you're targeting. Note that Fabric Core includes custom media queries that will automatically display the PNG icons in a different resolution depending on the device's pixel density.
+When specifying `size`, stick to these default sizes so the images appear as intended. When specifying image file format (`imageFileType`) and `size`, consider the screen size and pixel density of the screen you're targeting. Note that Fabric Core includes custom media queries that will automatically display the PNG icons in a different resolution depending on the device's pixel density.
 
 #### References
 
