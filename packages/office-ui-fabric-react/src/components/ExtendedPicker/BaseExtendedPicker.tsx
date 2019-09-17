@@ -283,6 +283,10 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
     }
   };
 
+  protected _onSelectedItemsChanged = (): void => {
+    this.focus();
+  };
+
   /**
    * The floating picker is the source of truth for if the menu has been opened or not.
    *
@@ -294,10 +298,6 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
    */
   private _onSuggestionsShownOrHidden = () => {
     this.forceUpdate();
-  };
-
-  protected _onSelectedItemsChanged = (): void => {
-    this.focus();
   };
 
   private _addProcessedItem(newItem: T) {
