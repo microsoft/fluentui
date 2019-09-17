@@ -1,7 +1,13 @@
 # Change Log - @uifabric/icons
 
-This log was last generated on Wed, 04 Sep 2019 12:32:15 GMT and should not be manually modified.
+This log was last generated on Thu, 12 Sep 2019 12:34:15 GMT and should not be manually modified.
 
+## 7.2.1
+Thu, 12 Sep 2019 12:34:15 GMT
+
+### Patches
+
+- Enable api-extractor for OUFR deps (elcraig@microsoft.com)
 ## 7.2.0
 Wed, 04 Sep 2019 12:32:15 GMT
 

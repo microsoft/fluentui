@@ -2,6 +2,161 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Mon, 16 Sep 2019 12:34:47 GMT",
+      "tag": "office-ui-fabric-react_v7.34.0",
+      "version": "7.34.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Use new hooks in some examples",
+            "author": "elcraig@microsoft.com",
+            "commit": "c7a6e4ebaa063a7516e1ffb53ee1c12166df9258"
+          },
+          {
+            "comment": "DatePicker: call custom text field onChange handler if it exists in default onChange handler",
+            "author": "naethell@microsoft.com",
+            "commit": "66c08397d029b26f7044440f86232aa72ae4d352"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "update to use icon prop instead of string",
+            "author": "chiechan@microsoft.com",
+            "commit": "dc1164aa712afb535b0c1efb7717ad1ceb87abf5"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 13 Sep 2019 12:34:39 GMT",
+      "tag": "office-ui-fabric-react_v7.33.0",
+      "version": "7.33.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "give tooltip hoverable area an index lower than the content",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "555cf61228750ecabaad6b250b563fcff757e9c8"
+          },
+          {
+            "comment": "Add .is-disabled to ChoiceGroupOption when disabled",
+            "author": "KevinTCoughlin@users.noreply.github.com",
+            "commit": "0606a256096122b70180b760a815c3dbcbe65b9c"
+          },
+          {
+            "comment": "TextField: remove invalid aria-labelledby",
+            "author": "naethell@microsoft.com",
+            "commit": "3711fcd3145e19b939a2b0c58c5e9b655562d13f"
+          },
+          {
+            "comment": "DetailsList: add Announced to examples with sortable columns",
+            "author": "naethell@microsoft.com",
+            "commit": "e4f9941fb5b14f087a6b13ae7e0b484110dbd159"
+          },
+          {
+            "comment": "Tooltip: Changed examples from aria-labelledby to aria-describedby to follow a11y spec.",
+            "author": "v-mare@microsoft.com",
+            "commit": "b8e24dd006914f031a44d11affd37e788c30a192"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "CalendarMonth: Prefer createRef over string ref",
+            "author": "KevinTCoughlin@users.noreply.github.com",
+            "commit": "8be3407f9e11859e60b074b05b321df68c71776a"
+          },
+          {
+            "comment": "Callout: add the ability for bounds to take a callback",
+            "author": "jspurlin@microsoft.com",
+            "commit": "8e0bf26ec97bd4b76e8f1af3f0dc075f5e21dd2e"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 12 Sep 2019 12:34:15 GMT",
+      "tag": "office-ui-fabric-react_v7.32.0",
+      "version": "7.32.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Persona: Adding size120 to the PersonaSize enum, updating API.",
+            "author": "eddrost@microsoft.com",
+            "commit": "246968501d470e15a735f101c21c5e955169f7ba"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Only render SpinButton label container if label or icon is present",
+            "author": "KevinTCoughlin@users.noreply.github.com",
+            "commit": "912210e2a0f36b0951af95248fa12674a2f16289"
+          },
+          {
+            "comment": "Fix examples to only export a single component",
+            "author": "elcraig@microsoft.com",
+            "commit": "485574797c272506647b6fb98d4ae5989d8eb9f9"
+          },
+          {
+            "comment": "Combobox: Fix issue where it would mutate props",
+            "author": "joschect@microsoft.com",
+            "commit": "d8d84c26efff001fa1e0c58f50d5c12982d964a7"
+          },
+          {
+            "comment": "Pickers: make background color of input transparent so it doesn't clip border",
+            "author": "joschect@microsoft.com",
+            "commit": "32f0b9cc893c0d33c423143da95ce6c5710172fc"
+          },
+          {
+            "comment": "GroupedList: Fixed selected prop value not being set. ",
+            "author": "v-mare@microsoft.com",
+            "commit": "2d760955d88add839a016f830580f922d07b4abd"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 11 Sep 2019 12:35:47 GMT",
+      "tag": "office-ui-fabric-react_v7.31.3",
+      "version": "7.31.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Combobox: ensure that state doesn't mutate in controlled scenario",
+            "author": "joschect@microsoft.com",
+            "commit": "194aa66c1cfd4aa517b686383c01508403a229e4"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 09 Sep 2019 21:43:18 GMT",
+      "tag": "office-ui-fabric-react_v7.31.2",
+      "version": "7.31.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update Nav.base.tsx",
+            "author": "michael.david.lauria@gmail.com",
+            "commit": "da9ced2bfd38fc3dac875901cd540a87d23e1a7e"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 06 Sep 2019 12:34:51 GMT",
+      "tag": "office-ui-fabric-react_v7.31.1",
+      "version": "7.31.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Nav: Added aria-labels to Nav examples per issue request",
+            "author": "v-mare@microsoft.com",
+            "commit": "c5d5cc8b5b364741292b783319842ebea49963ab"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 05 Sep 2019 12:34:51 GMT",
       "tag": "office-ui-fabric-react_v7.31.0",
       "version": "7.31.0",

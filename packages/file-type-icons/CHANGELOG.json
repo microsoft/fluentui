@@ -2,6 +2,20 @@
   "name": "@uifabric/file-type-icons",
   "entries": [
     {
+      "date": "Thu, 12 Sep 2019 12:34:15 GMT",
+      "tag": "@uifabric/file-type-icons_v7.1.0",
+      "version": "7.1.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "updating office file type to include .b",
+            "author": "caperez@microsoft.com",
+            "commit": "59b7ad45e279e234a94b9eaa493140cc9ac85eda"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 04 Sep 2019 04:09:58 GMT",
       "tag": "@uifabric/file-type-icons_v7.0.8",
       "version": "7.0.8",

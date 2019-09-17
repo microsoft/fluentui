@@ -15,6 +15,7 @@ const GlobalClassNames = {
   size56: 'ms-Persona--size56',
   size72: 'ms-Persona--size72',
   size100: 'ms-Persona--size100',
+  size120: 'ms-Persona--size120',
   available: 'ms-Persona--online',
   away: 'ms-Persona--away',
   blocked: 'ms-Persona--blocked',
@@ -162,6 +163,14 @@ export const getStyles = (props: IPersonaStyleProps): IPersonaStyles => {
         }
       ],
 
+      size.isSize120 && [
+        classNames.size120,
+        {
+          height: personaSize.size120,
+          minWidth: personaSize.size120
+        }
+      ],
+
       /**
        * Modifiers: presence
        */
@@ -233,11 +242,11 @@ export const getStyles = (props: IPersonaStyleProps): IPersonaStyles => {
           height: 18
         },
 
-      (size.isSize56 || size.isSize72 || size.isSize100) && {
+      (size.isSize56 || size.isSize72 || size.isSize100 || size.isSize120) && {
         fontSize: fonts.xLarge.fontSize
       },
 
-      (size.isSize56 || size.isSize72 || size.isSize100) &&
+      (size.isSize56 || size.isSize72 || size.isSize100 || size.isSize120) &&
         showSecondaryText && {
           height: 22
         }
@@ -264,11 +273,11 @@ export const getStyles = (props: IPersonaStyleProps): IPersonaStyles => {
           height: 18
         },
 
-      (size.isSize56 || size.isSize72 || size.isSize100) && {
+      (size.isSize56 || size.isSize72 || size.isSize100 || size.isSize120) && {
         fontSize: fonts.medium.fontSize
       },
 
-      (size.isSize56 || size.isSize72 || size.isSize100) &&
+      (size.isSize56 || size.isSize72 || size.isSize100 || size.isSize120) &&
         showSecondaryText && {
           height: 18
         }
@@ -283,7 +292,7 @@ export const getStyles = (props: IPersonaStyleProps): IPersonaStyles => {
         fontSize: fonts.medium.fontSize
       },
 
-      (size.isSize72 || size.isSize100) && {
+      (size.isSize72 || size.isSize100 || size.isSize120) && {
         display: 'block'
       }
     ],
@@ -297,7 +306,7 @@ export const getStyles = (props: IPersonaStyleProps): IPersonaStyles => {
         fontSize: fonts.medium.fontSize
       },
 
-      size.isSize100 && {
+      (size.isSize100 || size.isSize120) && {
         display: 'block'
       }
     ],

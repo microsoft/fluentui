@@ -1,7 +1,13 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Wed, 04 Sep 2019 04:09:58 GMT and should not be manually modified.
+This log was last generated on Mon, 16 Sep 2019 12:34:47 GMT and should not be manually modified.
 
+## 7.0.10
+Mon, 16 Sep 2019 12:34:47 GMT
+
+### Patches
+
+- Move getId to its own file (elcraig@microsoft.com)
 ## 7.0.9
 Wed, 04 Sep 2019 04:09:58 GMT
 
