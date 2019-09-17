@@ -1,12 +1,21 @@
 import * as React from 'react';
-import { Async, classNamesFunction, KeyCodes, getId, warnMutuallyExclusive, warnConditionallyRequiredProps } from '../../Utilities';
+import {
+  Async,
+  classNamesFunction,
+  findIndex,
+  KeyCodes,
+  getId,
+  warnMutuallyExclusive,
+  warnConditionallyRequiredProps
+} from '../../Utilities';
 import { ISwatchColorPickerProps, ISwatchColorPickerStyleProps, ISwatchColorPickerStyles } from './SwatchColorPicker.types';
 import { Grid } from '../../utilities/grid/Grid';
 import { IColorCellProps } from './ColorPickerGridCell.types';
 import { ColorPickerGridCell } from './ColorPickerGridCell';
+import { memoizeFunction } from '@uifabric/utilities';
 
 export interface ISwatchColorPickerState {
-  selectedId?: string;
+  selectedIndex?: number;
 }
 
 const getClassNames = classNamesFunction<ISwatchColorPickerStyleProps, ISwatchColorPickerStyles>();
@@ -26,6 +35,13 @@ export class SwatchColorPickerBase extends React.Component<ISwatchColorPickerPro
   private isNavigationIdle: boolean;
   private readonly navigationIdleDelay: number = 250 /* ms */;
   private async: Async;
+
+  // Add an index to each color cells. Memoizes this so that color cells do not re-render on every update.
+  private _getItemsWithIndex = memoizeFunction((items: IColorCellProps[]) => {
+    return items.map((item, index) => {
+      return { ...item, index: index };
+    });
+  });
 
   constructor(props: ISwatchColorPickerProps) {
     super(props);
@@ -49,8 +65,13 @@ export class SwatchColorPickerBase extends React.Component<ISwatchColorPickerPro
     this.isNavigationIdle = true;
     this.async = new Async(this);
 
+    let selectedIndex: number | undefined;
+    if (props.selectedId) {
+      selectedIndex = this._getSelectedIndex(props.colorCells, props.selectedId);
+    }
+
     this.state = {
-      selectedId: props.selectedId
+      selectedIndex
     };
   }
 
@@ -58,7 +79,7 @@ export class SwatchColorPickerBase extends React.Component<ISwatchColorPickerPro
   public UNSAFE_componentWillReceiveProps(newProps: ISwatchColorPickerProps): void {
     if (newProps.selectedId !== undefined) {
       this.setState({
-        selectedId: newProps.selectedId
+        selectedIndex: this._getSelectedIndex(newProps.colorCells, newProps.selectedId)
       });
     }
   }
@@ -95,7 +116,7 @@ export class SwatchColorPickerBase extends React.Component<ISwatchColorPickerPro
     return (
       <Grid
         {...this.props}
-        items={colorCells}
+        items={this._getItemsWithIndex(colorCells)}
         columnCount={columnCount}
         onRenderItem={this._renderOption}
         positionInSet={positionInSet && positionInSet}
@@ -126,6 +147,17 @@ export class SwatchColorPickerBase extends React.Component<ISwatchColorPickerPro
   };
 
   /**
+   * Get the selected item's index
+   * @param items - The items to search
+   * @param selectedId - The selected item's id to find
+   * @returns - The index of the selected item's id, -1 if there was no match
+   */
+  private _getSelectedIndex(items: IColorCellProps[], selectedId: string): number | undefined {
+    const selectedIndex = findIndex(items, item => item.id === selectedId);
+    return selectedIndex >= 0 ? selectedIndex : undefined;
+  }
+
+  /**
    * Render a color cell
    * @param item - The item to render
    * @returns - Element representing the item
@@ -143,7 +175,7 @@ export class SwatchColorPickerBase extends React.Component<ISwatchColorPickerPro
         onClick={this._onCellClick}
         onHover={this._onGridCellHovered}
         onFocus={this._onGridCellFocused}
-        selected={this.state.selectedId === item.id}
+        selected={this.state.selectedIndex !== undefined && this.state.selectedIndex === item.index}
         circle={this.props.cellShape === 'circle'}
         label={item.label}
         onMouseEnter={this._onMouseEnter}
@@ -306,9 +338,11 @@ export class SwatchColorPickerBase extends React.Component<ISwatchColorPickerPro
       return;
     }
 
+    const index = item.index as number;
+
     // If we have a valid index and it is not already
     // selected, select it
-    if (item.id !== this.state.selectedId) {
+    if (index >= 0 && index !== this.state.selectedIndex) {
       if (this.props.onCellFocused && this._cellFocused) {
         this._cellFocused = false;
         this.props.onCellFocused();
@@ -321,7 +355,7 @@ export class SwatchColorPickerBase extends React.Component<ISwatchColorPickerPro
       // Update internal state only if the component is uncontrolled
       if (this.props.isControlled !== true) {
         this.setState({
-          selectedId: item.id
+          selectedIndex: index
         });
       }
     }
