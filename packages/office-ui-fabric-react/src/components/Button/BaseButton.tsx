@@ -251,17 +251,6 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
         this.props.onAfterMenuDismiss();
       }
     }
-
-    if (this.props.persistMenu && this.props.persistMenu !== prevProps.persistMenu) {
-      if (this.props.menuProps) {
-        this.setState({
-          menuProps: {
-            ...(this.state.menuProps || this.props.menuProps),
-            ...{ hidden: !this._isExpanded }
-          }
-        });
-      }
-    }
   }
 
   public focus(): void {
