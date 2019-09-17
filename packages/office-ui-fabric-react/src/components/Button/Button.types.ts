@@ -282,11 +282,27 @@ export interface IButtonProps
   /**
    * Menu will not be created or destroyed when opened or closed, instead it
    * will be hidden. This will improve perf of the menu opening but could potentially
-   * impact overall perf by having more elemnts in the dom. Should only be used
+   * impact overall perf by having more elements in the dom. Should only be used
    * when perf is important.
    * Note: This may increase the amount of time it takes for the button itself to mount.
    */
   persistMenu?: boolean;
+
+  /**
+   * If true, the persisted menu is rendered hidden when the button
+   * initially mounts. Non-persisted menus will
+   * not be in the component tree unless they are being shown
+   *
+   * Note 1: There is known bug in Edge when this prop is true where
+   * scrollbars overlap with the content when a menu is first rendered hidden.
+   * See: https://github.com/OfficeDev/office-ui-fabric-react/issues/9034
+   *
+   * Note 2: This increases the time the button will take to mount, but
+   * can improve perceived menu open perf. when the user opens the menu.
+   *
+   * @default undefined, equivalent to false
+   */
+  renderPersistedMenuHiddenOnMount?: boolean;
 
   /**
    * Experimental prop that get passed into the menuButton that's rendered as part of

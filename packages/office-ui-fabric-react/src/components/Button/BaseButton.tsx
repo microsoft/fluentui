@@ -67,7 +67,6 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   private _classNames: IButtonClassNames;
   private _processingTouch: boolean;
   private _lastTouchTimeoutId: number | undefined;
-  private _renderedPersistentMenu: boolean = false;
 
   private _getMemoizedMenuButtonKeytipProps = memoizeFunction((keytipProps: IKeytipProps) => {
     return {
@@ -90,8 +89,16 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     this._descriptionId = getId();
     this._ariaDescriptionId = getId();
 
+    let menuProps = null;
+
+    // If menu should be rendered hidden on mount and persistMenu is true,
+    // we set the menu props so that the menu can be rendered hidden.
+    if (props.renderPersistedMenuHiddenOnMount && props.persistMenu && props.menuProps) {
+      menuProps = { ...props.menuProps, hidden: true };
+    }
+
     this.state = {
-      menuProps: null
+      menuProps: menuProps
     };
   }
 
@@ -242,6 +249,17 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     if (this.props.onAfterMenuDismiss && prevState.menuProps) {
       if (!this.state.menuProps || (this.props.persistMenu && !prevState.menuProps.hidden && this.state.menuProps.hidden)) {
         this.props.onAfterMenuDismiss();
+      }
+    }
+
+    if (this.props.persistMenu && this.props.persistMenu !== prevProps.persistMenu) {
+      if (this.props.menuProps) {
+        this.setState({
+          menuProps: {
+            ...(this.state.menuProps || this.props.menuProps),
+            ...{ hidden: !this._isExpanded }
+          }
+        });
       }
     }
   }
@@ -469,7 +487,6 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     if (this.props.menuProps) {
       const menuProps = { ...this.props.menuProps, shouldFocusOnContainer, shouldFocusOnMount };
       if (this.props.persistMenu) {
-        this._renderedPersistentMenu = true;
         menuProps.hidden = false;
       }
       this.setState({ menuProps: menuProps });
@@ -482,12 +499,11 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     if (this.props.menuProps && this.props.menuProps.shouldFocusOnMount === false) {
       shouldFocusOnMount = false;
     }
+
     if (this.props.persistMenu) {
-      // _renderedPersistentMenu ensures that the first rendering of
-      // the menu happens on-screen, as edge's scrollbar calcuations are off if done while hidden.
-      !this._renderedPersistentMenu || (currentMenuProps && currentMenuProps.hidden)
-        ? this._openMenu(shouldFocusOnContainer, shouldFocusOnMount)
-        : this._dismissMenu();
+      // If currentMenuProps is null/undefined, then menu is hidden.
+      // This could happen when this is the first opening a persistedMenu and renderMenuHiddenOnMount is false.
+      !currentMenuProps || currentMenuProps.hidden ? this._openMenu(shouldFocusOnContainer, shouldFocusOnMount) : this._dismissMenu();
     } else {
       currentMenuProps ? this._dismissMenu() : this._openMenu(shouldFocusOnContainer, shouldFocusOnMount);
     }
