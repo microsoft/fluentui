@@ -3,7 +3,10 @@ import path from 'path';
 import { IDiagnostic, _getLineStarts, _getErrorLineInfo, _getErrorMessages } from './transpileHelpers';
 
 // Real diagnostics copied from loading ./examples/class.txt in the editor while type checking wasn't set up
-const example = fs.readFileSync(path.join(__dirname, 'examples/class.txt')).toString();
+const example = fs
+  .readFileSync(path.join(__dirname, 'examples/class.txt'))
+  .toString()
+  .replace(/\\r/g, '');
 const diagnostics: IDiagnostic[] = [
   { start: 23, length: 7, messageText: "Cannot find module 'react'.", code: 2307, category: 1 },
   { start: 192, length: 3, messageText: "Cannot find namespace 'JSX'.", code: 2503, category: 1 },
