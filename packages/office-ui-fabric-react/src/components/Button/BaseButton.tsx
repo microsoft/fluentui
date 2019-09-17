@@ -67,6 +67,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   private _classNames: IButtonClassNames;
   private _processingTouch: boolean;
   private _lastTouchTimeoutId: number | undefined;
+  private _renderedVisibleMenu: boolean = false;
 
   private _getMemoizedMenuButtonKeytipProps = memoizeFunction((keytipProps: IKeytipProps) => {
     return {
@@ -93,7 +94,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
 
     // If menu should be rendered hidden on mount and persistMenu is true,
     // we set the menu props so that the menu can be rendered hidden.
-    if (props.renderPersistedMenuHiddenOnMount && props.persistMenu && props.menuProps) {
+    if (props.renderMenuHiddenOnMount && props.persistMenu && props.menuProps) {
       menuProps = { ...props.menuProps, hidden: true };
     }
 
@@ -251,6 +252,17 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
         this.props.onAfterMenuDismiss();
       }
     }
+
+    if (this.props.persistMenu && this.props.persistMenu !== prevProps.persistMenu) {
+      if (this.props.menuProps) {
+        this.setState({
+          menuProps: {
+            ...(this.state.menuProps || this.props.menuProps),
+            ...{ hidden: !this._isExpanded }
+          }
+        });
+      }
+    }
   }
 
   public focus(): void {
@@ -297,7 +309,10 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
           {!this._isSplitButton &&
             (menuProps || menuIconProps || this.props.onRenderMenuIcon) &&
             onRenderMenuIcon(this.props, this._onRenderMenuIcon)}
-          {this.state.menuProps && !this.state.menuProps.doNotLayer && onRenderMenu(menuProps, this._onRenderMenu)}
+          {this.state.menuProps &&
+            !this.state.menuProps.doNotLayer &&
+            this._shouldRenderMenu() &&
+            onRenderMenu(menuProps, this._onRenderMenu)}
         </span>
       </Tag>
     );
@@ -319,12 +334,33 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       return (
         <span style={{ display: 'inline-block' }}>
           {Content}
-          {this.state.menuProps && onRenderMenu(menuProps, this._onRenderMenu)}
+          {this._shouldRenderMenu() && onRenderMenu(menuProps, this._onRenderMenu)}
         </span>
       );
     }
 
     return Content;
+  }
+
+  /**
+   * Method to help determine if the menu's component tree should
+   * be rendered. It takes into account whether the menu is expanded,
+   * whether it is a persisted menu and whether it has been shown to the user.
+   */
+  private _shouldRenderMenu() {
+    if (this._isExpanded) {
+      // Always should render a menu when it is expanded
+      return true;
+    } else if (this.props.persistMenu) {
+      // _renderedVisibleMenu ensures that the first rendering of
+      // the menu happens on-screen, as edge's scrollbar calculations are off if done while hidden.
+      // We ignore this if the prop renderPersistedMenuHiddenOnMount is true though.
+      if (this._renderedVisibleMenu || this.props.renderPersistedMenuHiddenOnMount) {
+        return true;
+      }
+    }
+
+    return false;
   }
 
   private _onRenderIcon = (buttonProps?: IButtonProps, defaultRender?: IRenderFunction<IButtonProps>): JSX.Element | null => {
@@ -479,23 +515,17 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
         menuProps.hidden = false;
       }
       this.setState({ menuProps: menuProps });
+      this._renderedVisibleMenu = true;
     }
   };
 
   private _onToggleMenu = (shouldFocusOnContainer: boolean): void => {
-    const currentMenuProps = this.state.menuProps;
     let shouldFocusOnMount = true;
     if (this.props.menuProps && this.props.menuProps.shouldFocusOnMount === false) {
       shouldFocusOnMount = false;
     }
 
-    if (this.props.persistMenu) {
-      // If currentMenuProps is null/undefined, then menu is hidden.
-      // This could happen when this is the first opening a persistedMenu and renderMenuHiddenOnMount is false.
-      !currentMenuProps || currentMenuProps.hidden ? this._openMenu(shouldFocusOnContainer, shouldFocusOnMount) : this._dismissMenu();
-    } else {
-      currentMenuProps ? this._dismissMenu() : this._openMenu(shouldFocusOnContainer, shouldFocusOnMount);
-    }
+    this._isExpanded ? this._dismissMenu() : this._openMenu(shouldFocusOnContainer, shouldFocusOnMount);
   };
 
   private _onRenderSplitButtonContent(tag: any, buttonProps: IButtonProps): JSX.Element {
