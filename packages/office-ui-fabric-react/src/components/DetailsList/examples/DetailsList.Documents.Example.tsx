@@ -2,6 +2,7 @@ import * as React from 'react';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
 import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
+import { Announced } from 'office-ui-fabric-react/lib/Announced';
 import { DetailsList, DetailsListLayoutMode, Selection, SelectionMode, IColumn } from 'office-ui-fabric-react/lib/DetailsList';
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
 import { mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
@@ -55,6 +56,7 @@ export interface IDetailsListDocumentsExampleState {
   selectionDetails: string;
   isModalSelection: boolean;
   isCompactMode: boolean;
+  announcedMessage?: string;
 }
 
 export interface IDocument {
@@ -170,12 +172,13 @@ export class DetailsListDocumentsExample extends React.Component<{}, IDetailsLis
       columns: columns,
       selectionDetails: this._getSelectionDetails(),
       isModalSelection: false,
-      isCompactMode: false
+      isCompactMode: false,
+      announcedMessage: undefined
     };
   }
 
   public render() {
-    const { columns, isCompactMode, items, selectionDetails, isModalSelection } = this.state;
+    const { columns, isCompactMode, items, selectionDetails, isModalSelection, announcedMessage } = this.state;
 
     return (
       <Fabric>
@@ -199,6 +202,7 @@ export class DetailsListDocumentsExample extends React.Component<{}, IDetailsLis
           <TextField label="Filter by name:" onChange={this._onChangeText} styles={controlStyles} />
         </div>
         <div className={classNames.selectionDetails}>{selectionDetails}</div>
+        {announcedMessage ? <Announced message={announcedMessage} /> : undefined}
         <MarqueeSelection selection={this._selection}>
           <DetailsList
             items={items}
@@ -271,6 +275,9 @@ export class DetailsListDocumentsExample extends React.Component<{}, IDetailsLis
       if (newCol === currColumn) {
         currColumn.isSortedDescending = !currColumn.isSortedDescending;
         currColumn.isSorted = true;
+        this.setState({
+          announcedMessage: `${currColumn.name} is sorted ${currColumn.isSortedDescending ? 'descending' : 'ascending'}`
+        });
       } else {
         newCol.isSorted = false;
         newCol.isSortedDescending = true;

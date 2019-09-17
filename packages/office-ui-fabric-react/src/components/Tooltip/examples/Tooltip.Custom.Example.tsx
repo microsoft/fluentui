@@ -16,16 +16,8 @@ export class TooltipCustomExample extends React.Component<any, any> {
             return (
               <div>
                 <ul style={{ margin: 0, padding: 0 }}>
-                  <li>
-                    <a target="_blank" href="#">
-                      1. One
-                    </a>
-                  </li>
-                  <li>
-                    <a target="_blank" href="#">
-                      2. Two
-                    </a>
-                  </li>
+                  <li>1. One</li>
+                  <li>2. Two</li>
                 </ul>
               </div>
             );
@@ -36,7 +28,7 @@ export class TooltipCustomExample extends React.Component<any, any> {
         directionalHint={DirectionalHint.bottomCenter}
         styles={{ root: { display: 'inline-block' } }}
       >
-        <DefaultButton aria-labelledby={this._hostId} text="Hover Over Me" />
+        <DefaultButton aria-describedby={this._hostId} text="Hover Over Me" />
       </TooltipHost>
     );
   }

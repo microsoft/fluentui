@@ -250,6 +250,7 @@ export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, IWith
    * to improve rendering performance when it becomes visible.
    * Note: When ContextualMenu is hidden its content will not be rendered. It will only render
    * once the ContextualMenu is visible.
+   * @defaultValue undefined
    */
   hidden?: boolean;
 
