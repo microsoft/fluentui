@@ -44,7 +44,7 @@ export class Beak extends BaseComponent<IBeakProps, {}> {
         pointOne = `0, 0`;
         pointTwo = `${BEAK_HEIGHT}, ${BEAK_HEIGHT}`;
         pointThree = `0, ${BEAK_WIDTH}`;
-        transform = getRTL() ? 'translateX(260%)' : 'translateX(100%)';
+        transform = 'translateX(100%)';
         break;
       case RectangleEdge.bottom:
         pointOne = `0, 0`;
@@ -56,7 +56,7 @@ export class Beak extends BaseComponent<IBeakProps, {}> {
         pointOne = `${BEAK_HEIGHT}, 0`;
         pointTwo = `0, ${BEAK_HEIGHT}`;
         pointThree = `${BEAK_HEIGHT}, ${BEAK_WIDTH}`;
-        transform = getRTL() ? 'translateX(-260%)' : 'translateX(-100%)';
+        transform = 'translateX(-100%)';
         break;
     }
 
