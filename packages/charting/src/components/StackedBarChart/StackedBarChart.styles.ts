@@ -63,16 +63,16 @@ export const getStyles = (props: IStackedBarChartStyleProps): IStackedBarChartSt
     },
     benchmarkContainer: {
       position: 'relative',
-      height: '14px'
+      height: '11.8px'
     },
     triangle: {
       position: 'absolute',
       width: '0',
       height: '0',
-      borderLeft: '5px solid transparent',
-      borderRight: '5px solid transparent',
-      borderTop: '10px solid',
-      borderTopColor: '#A19F9D',
+      borderLeft: '4.5px solid transparent',
+      borderRight: '4.5px solid transparent',
+      borderTop: '7.8px solid',
+      borderTopColor: theme.palette.neutralTertiary,
       marginBottom: '4px'
     }
   };

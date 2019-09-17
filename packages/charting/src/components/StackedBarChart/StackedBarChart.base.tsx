@@ -69,11 +69,11 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
     const { palette } = theme!;
     const barHeight = ignoreFixStyle || data!.chartData!.length > 2 ? this.props.barHeight : 8;
     if (benchmarkData) {
-      benchmarkData.color = benchmarkData.color || '#A19F9D';
+      benchmarkData.color = benchmarkData.color || palette.neutralTertiary;
     }
 
     if (targetData) {
-      targetData.color = targetData.color || '#484644';
+      targetData.color = targetData.color || palette.neutralSecondary;
     }
     const totalData = this._getTotalChartData(data!);
 

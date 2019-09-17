@@ -20,14 +20,12 @@ export class StackedBarChartBenchmarkExample extends React.Component<{}, {}> {
 
     const benchmarkData2: IChartDataPoint = {
       legend: 'Benchmark',
-      data: 10,
-      color: DefaultPalette.yellow
+      data: 10
     };
 
     const targetData: IChartDataPoint = {
       legend: 'Your target',
-      data: 50,
-      color: DefaultPalette.yellowDark
+      data: 50
     };
 
     return (

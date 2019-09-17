@@ -39,9 +39,9 @@ export const getStyles = (props: ILegendStyleProps): ILegendsStyles => {
       height: '0',
       borderLeft: '6px solid transparent',
       borderRight: '6px solid transparent',
-      borderTop: '12px solid',
+      borderTop: '10.4px solid',
       borderTopColor: props.colorOnSelectedState,
-      marginRight: '3px'
+      marginRight: '8px'
     },
     text: {
       fontSize: '12px',

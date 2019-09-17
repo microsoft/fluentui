@@ -241,11 +241,20 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
         onBlur={onMouseOut}
         data-is-focusable={true}
       >
-        <div className={legend.shape === 'triangle' ? classNames.triangle : classNames.rect} />
+        <div className={this._getShapeClass(classNames, legend)} />
         <div className={classNames.text}>{legend.title}</div>
       </div>
     );
   };
+
+  private _getShapeClass(classNames: IProcessedStyleSet<ILegendsStyles>, legend: ILegend) {
+    switch (legend.shape) {
+      case 'triangle':
+        return classNames.triangle;
+      default:
+        return classNames.rect;
+    }
+  }
 
   private _getColor(title: string, color: string): string {
     const { theme } = this.props;
