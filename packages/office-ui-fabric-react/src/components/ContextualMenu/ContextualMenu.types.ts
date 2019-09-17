@@ -254,11 +254,11 @@ export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, IWith
   hidden?: boolean;
 
   /**
-   * If true, the component even when hidden=true.
+   * If true, the component will be updated even when hidden=true.
    * Note that this would consume resources to update even though
    * nothing is being shown to the user.
    * This might be helpful though if your updates are small and you want the
-   * callout to be revealed fast to the user when hidden is set to false.
+   * contextual menu to be revealed fast to the user when hidden is set to false.
    */
   shouldUpdateWhenHidden?: boolean;
 

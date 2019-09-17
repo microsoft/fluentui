@@ -229,7 +229,7 @@ export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement> {
   hidden?: boolean;
 
   /**
-   * If true, the component even when hidden=true.
+   * If true, the component will be updated even when hidden=true.
    * Note that this would consume resources to update even though
    * nothing is being shown to the user.
    * This might be helpful though if your updates are small and you want the
