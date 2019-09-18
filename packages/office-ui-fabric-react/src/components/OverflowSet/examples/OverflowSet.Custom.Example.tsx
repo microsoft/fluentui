@@ -52,27 +52,6 @@ export class OverflowSetCustomExample extends React.PureComponent {
         ]}
         overflowItems={[
           {
-            key: 'newItem',
-            name: 'Add',
-            icon: 'Add',
-            ariaLabel: 'New. Use left and right arrow keys to navigate',
-            onClick: noOp,
-            subMenuProps: {
-              items: [
-                {
-                  key: 'emailMessage',
-                  name: 'Email message',
-                  icon: 'Mail'
-                },
-                {
-                  key: 'calendarEvent',
-                  name: 'Calendar event',
-                  icon: 'Calendar'
-                }
-              ]
-            }
-          },
-          {
             key: 'move',
             name: 'Move to...',
             icon: 'MoveToFolder',

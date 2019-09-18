@@ -61,6 +61,8 @@ export class OverflowSetBasicExample extends React.PureComponent {
         height: 'auto'
       }
     };
-    return <IconButton styles={buttonStyles} menuIconProps={{ iconName: 'More' }} menuProps={{ items: overflowItems! }} />;
+    return (
+      <IconButton title="More options" styles={buttonStyles} menuIconProps={{ iconName: 'More' }} menuProps={{ items: overflowItems! }} />
+    );
   };
 }

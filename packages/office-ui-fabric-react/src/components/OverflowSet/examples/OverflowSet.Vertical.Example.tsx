@@ -53,15 +53,19 @@ export class OverflowSetVerticalExample extends React.PureComponent {
 
   private _onRenderItem = (item: IOverflowSetItemProps): JSX.Element => {
     return (
-      <TooltipHost content={item.name} calloutProps={{ directionalHint: DirectionalHint.rightCenter, beakWidth: 12 }}>
-        <CommandBarButton styles={{ root: { padding: '10px' } }} iconProps={{ iconName: item.icon }} onClick={item.onClick} />
-      </TooltipHost>
+      <CommandBarButton
+        title={item.name}
+        styles={{ root: { padding: '10px' } }}
+        iconProps={{ iconName: item.icon }}
+        onClick={item.onClick}
+      />
     );
   };
 
   private _onRenderOverflowButton = (overflowItems: any[] | undefined): JSX.Element => {
     return (
       <CommandBarButton
+        title="More items"
         styles={{ root: { padding: '10px' }, menuIcon: { fontSize: '16px' } }}
         menuIconProps={{ iconName: 'More' }}
         menuProps={{ items: overflowItems! }}
