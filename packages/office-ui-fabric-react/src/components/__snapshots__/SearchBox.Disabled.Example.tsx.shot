@@ -5,7 +5,6 @@ exports[`Component Examples renders SearchBox.Disabled.Example.tsx correctly 1`]
   className="ms-SearchBoxExample"
 >
   <div
-    aria-role="search"
     className=
         ms-SearchBox
         is-disabled
@@ -51,6 +50,7 @@ exports[`Component Examples renders SearchBox.Disabled.Example.tsx correctly 1`]
           color: #005a9e;
         }
     onFocusCapture={[Function]}
+    role="search"
   >
     <div
       aria-hidden={true}
@@ -93,7 +93,6 @@ exports[`Component Examples renders SearchBox.Disabled.Example.tsx correctly 1`]
     </div>
     <input
       aria-label="Search"
-      aria-role="searchbox"
       className=
           ms-SearchBox-field
           {
@@ -140,11 +139,11 @@ exports[`Component Examples renders SearchBox.Disabled.Example.tsx correctly 1`]
       onInput={[Function]}
       onKeyDown={[Function]}
       placeholder="Search"
+      role="searchbox"
       value=""
     />
   </div>
   <div
-    aria-role="search"
     className=
         ms-SearchBox
         is-disabled
@@ -192,6 +191,7 @@ exports[`Component Examples renders SearchBox.Disabled.Example.tsx correctly 1`]
           color: #005a9e;
         }
     onFocusCapture={[Function]}
+    role="search"
   >
     <div
       aria-hidden={true}
@@ -234,7 +234,6 @@ exports[`Component Examples renders SearchBox.Disabled.Example.tsx correctly 1`]
     </div>
     <input
       aria-label="Search"
-      aria-role="searchbox"
       className=
           ms-SearchBox-field
           {
@@ -281,6 +280,7 @@ exports[`Component Examples renders SearchBox.Disabled.Example.tsx correctly 1`]
       onInput={[Function]}
       onKeyDown={[Function]}
       placeholder="Search"
+      role="searchbox"
       value=""
     />
   </div>

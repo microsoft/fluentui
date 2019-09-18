@@ -10,7 +10,6 @@ exports[`Component Examples renders FloatingPeoplePicker.Basic.Example.tsx corre
     }
   >
     <div
-      aria-role="search"
       className=
           ms-SearchBox
           {
@@ -52,6 +51,7 @@ exports[`Component Examples renders FloatingPeoplePicker.Basic.Example.tsx corre
             color: #005a9e;
           }
       onFocusCapture={[Function]}
+      role="search"
     >
       <div
         aria-hidden={true}
@@ -94,7 +94,6 @@ exports[`Component Examples renders FloatingPeoplePicker.Basic.Example.tsx corre
       </div>
       <input
         aria-label="Search for person"
-        aria-role="searchbox"
         className=
             ms-SearchBox-field
             {
@@ -140,6 +139,7 @@ exports[`Component Examples renders FloatingPeoplePicker.Basic.Example.tsx corre
         onInput={[Function]}
         onKeyDown={[Function]}
         placeholder="Search for person"
+        role="searchbox"
         value=""
       />
     </div>

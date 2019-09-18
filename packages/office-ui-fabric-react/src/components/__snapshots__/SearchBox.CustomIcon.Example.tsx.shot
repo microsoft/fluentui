@@ -5,7 +5,6 @@ exports[`Component Examples renders SearchBox.CustomIcon.Example.tsx correctly 1
   className="ms-SearchBoxExample"
 >
   <div
-    aria-role="search"
     className=
         ms-SearchBox
         {
@@ -47,6 +46,7 @@ exports[`Component Examples renders SearchBox.CustomIcon.Example.tsx correctly 1
           color: #005a9e;
         }
     onFocusCapture={[Function]}
+    role="search"
   >
     <div
       aria-hidden={true}
@@ -89,7 +89,6 @@ exports[`Component Examples renders SearchBox.CustomIcon.Example.tsx correctly 1
     </div>
     <input
       aria-label="Filter"
-      aria-role="searchbox"
       className=
           ms-SearchBox-field
           {
@@ -135,6 +134,7 @@ exports[`Component Examples renders SearchBox.CustomIcon.Example.tsx correctly 1
       onInput={[Function]}
       onKeyDown={[Function]}
       placeholder="Filter"
+      role="searchbox"
       value=""
     />
   </div>

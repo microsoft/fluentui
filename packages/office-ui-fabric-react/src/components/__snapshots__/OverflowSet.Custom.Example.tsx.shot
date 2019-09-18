@@ -28,7 +28,6 @@ exports[`Component Examples renders OverflowSet.Custom.Example.tsx correctly 1`]
         }
   >
     <div
-      aria-role="search"
       className=
           ms-SearchBox
           {
@@ -71,6 +70,7 @@ exports[`Component Examples renders OverflowSet.Custom.Example.tsx correctly 1`]
             color: #005a9e;
           }
       onFocusCapture={[Function]}
+      role="search"
     >
       <div
         aria-hidden={true}
@@ -113,7 +113,6 @@ exports[`Component Examples renders OverflowSet.Custom.Example.tsx correctly 1`]
       </div>
       <input
         aria-label="Search"
-        aria-role="searchbox"
         className=
             ms-SearchBox-field
             {
@@ -159,6 +158,7 @@ exports[`Component Examples renders OverflowSet.Custom.Example.tsx correctly 1`]
         onInput={[Function]}
         onKeyDown={[Function]}
         placeholder="Search"
+        role="searchbox"
         value=""
       />
     </div>
