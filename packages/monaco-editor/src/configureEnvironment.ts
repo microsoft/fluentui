@@ -10,7 +10,7 @@ export interface IMonacoConfig {
   crossDomain?: boolean;
 }
 
-const globalObj = (typeof self !== 'undefined' ? self : typeof 'window' !== undefined ? window : {}) as Window & {
+const globalObj = (typeof self !== 'undefined' ? self : typeof window !== 'undefined' ? window : {}) as Window & {
   MonacoEnvironment?: any;
   MonacoConfig?: IMonacoConfig;
   // TODO: remove once fabric-website homepage.htm is updated
