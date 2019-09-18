@@ -2,6 +2,20 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "date": "Wed, 18 Sep 2019 12:32:55 GMT",
+      "tag": "@uifabric/experiments_v7.17.0",
+      "version": "7.17.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "listen to composition events only for IME languages in autofill",
+            "author": "amyngu@microsoft.com",
+            "commit": "55e2fb7ba136edd05f864ebac4b18cd6cae5a229"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 12 Sep 2019 12:34:15 GMT",
       "tag": "@uifabric/experiments_v7.16.2",
       "version": "7.16.2",

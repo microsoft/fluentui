@@ -46,6 +46,7 @@ exports[`Component Examples renders SearchBox.FullSize.Example.tsx correctly 1`]
           color: #005a9e;
         }
     onFocusCapture={[Function]}
+    role="search"
   >
     <div
       aria-hidden={true}
@@ -133,6 +134,7 @@ exports[`Component Examples renders SearchBox.FullSize.Example.tsx correctly 1`]
       onInput={[Function]}
       onKeyDown={[Function]}
       placeholder="Search"
+      role="searchbox"
       value=""
     />
   </div>
@@ -178,6 +180,7 @@ exports[`Component Examples renders SearchBox.FullSize.Example.tsx correctly 1`]
           color: #005a9e;
         }
     onFocusCapture={[Function]}
+    role="search"
   >
     <div
       aria-hidden={true}
@@ -263,6 +266,7 @@ exports[`Component Examples renders SearchBox.FullSize.Example.tsx correctly 1`]
       onInput={[Function]}
       onKeyDown={[Function]}
       placeholder="Search with no animation"
+      role="searchbox"
       value=""
     />
   </div>

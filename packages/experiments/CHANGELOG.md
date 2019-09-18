@@ -1,7 +1,13 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Thu, 12 Sep 2019 12:34:15 GMT and should not be manually modified.
+This log was last generated on Wed, 18 Sep 2019 12:32:55 GMT and should not be manually modified.
 
+## 7.17.0
+Wed, 18 Sep 2019 12:32:55 GMT
+
+### Minor changes
+
+- listen to composition events only for IME languages in autofill (amyngu@microsoft.com)
 ## 7.16.2
 Thu, 12 Sep 2019 12:34:15 GMT
 
