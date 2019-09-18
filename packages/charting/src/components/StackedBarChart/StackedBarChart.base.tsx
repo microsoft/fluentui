@@ -114,7 +114,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
             </div>
           )}
         </div>
-        {benchmarkData && (
+        {(benchmarkData || targetData) && (
           <div className={this._classNames.benchmarkContainer}>
             {benchmarkData && this._createBenchmark(totalData, benchmarkData)}
             {targetData && this._createBenchmark(totalData, targetData)}
@@ -169,8 +169,8 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
     const ratio = (dataPoint.data! / totalData) * 100;
 
     const styles = {
-      marginLeft: 'calc(' + ratio + '% - 4px)',
-      marginRight: 'calc(' + (100 - ratio) + '% - 4px)',
+      marginLeft: 'calc(' + ratio + '% - 4.5px)',
+      marginRight: 'calc(' + (100 - ratio) + '% - 4.5px)',
       borderTopColor: dataPoint.color
     };
 

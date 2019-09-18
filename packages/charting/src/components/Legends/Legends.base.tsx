@@ -248,12 +248,11 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
   };
 
   private _getShapeClass(classNames: IProcessedStyleSet<ILegendsStyles>, legend: ILegend): string {
-    switch (legend.shape) {
-      case 'triangle':
-        return classNames.triangle;
-      default:
-        return classNames.rect;
+    if (legend.shape === 'triangle') {
+      return classNames.triangle;
     }
+
+    return classNames.rect;
   }
 
   private _getColor(title: string, color: string): string {
