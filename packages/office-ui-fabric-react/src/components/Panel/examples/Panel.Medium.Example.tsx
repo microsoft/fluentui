@@ -20,7 +20,7 @@ export class PanelMediumExample extends React.Component<{}, IPanelMediumExampleS
           isOpen={this.state.showPanel}
           onDismiss={this._hidePanel}
           type={PanelType.medium}
-          headerText="Medium Panel"
+          headerText="Medium panel"
         >
           <span>Content goes here.</span>
         </Panel>
