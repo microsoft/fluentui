@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Spinner, SpinnerSize } from 'office-ui-fabric-react/lib/Spinner';
 import { Stack } from 'office-ui-fabric-react/lib/Stack';
 import { getWindow, isIE11, getId } from 'office-ui-fabric-react/lib/Utilities';
+import { getMonacoConfig } from '@uifabric/monaco-editor/lib/configureEnvironment';
 import { transformExample } from '../transpiler/exampleTransform';
 import { getSetting } from '../utilities/settings';
 import { EditorPreview } from './EditorPreview';
@@ -145,7 +146,7 @@ function _isEditorSupported(code: string): boolean {
     // Not server-side rendering
     !!win &&
     // Required environment config available
-    !!(win as any).MonacoEnvironment && // tslint:disable-line:no-any
+    !!getMonacoConfig() &&
     // Opt-in query param or session storage is set
     getSetting('useEditor') === '1' &&
     // Not IE 11

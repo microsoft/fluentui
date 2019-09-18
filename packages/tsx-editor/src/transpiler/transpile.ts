@@ -1,5 +1,5 @@
 import * as monaco from '@uifabric/monaco-editor';
-import { TypeScriptWorker, EmitOutput } from './monacoTypescriptWorker.d';
+import { TypeScriptWorker, EmitOutput } from '@uifabric/monaco-editor/monaco-typescript.d';
 import { transformExample } from './exampleTransform';
 import { _getErrorMessages } from './transpileHelpers';
 

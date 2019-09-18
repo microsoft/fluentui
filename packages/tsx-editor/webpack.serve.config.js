@@ -1,14 +1,13 @@
+// @ts-check
 const path = require('path');
-const resources = require('../../scripts/webpack/webpack-resources');
-const webpack = resources.webpack;
+const resources = require('@uifabric/build/webpack/webpack-resources');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
-const { addMonacoConfig } = require('./scripts/monaco-webpack');
+const { addMonacoWebpackConfig } = require('@uifabric/monaco-editor/scripts/addMonacoWebpackConfig');
 
 const BUNDLE_NAME = 'demo-app';
-const PACKAGE_NAME = require('./package.json').name;
 
 module.exports = resources.createServeConfig(
-  addMonacoConfig({
+  addMonacoWebpackConfig({
     entry: {
       [BUNDLE_NAME]: './src/demo/index.tsx'
     },
