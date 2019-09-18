@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Updated focus states on textField, dropdown, comboBox and spinButton to comply with WCAG 2.1 for non-text contrast.",
+  "packageName": "@uifabric/experiments",
+  "email": "KevinTCoughlin@users.noreply.github.com",
+  "commit": "07d052338ab3207b61a76d313b2ca3cc80dfae92",
+  "date": "2019-09-18T00:45:49.015Z"
+}
