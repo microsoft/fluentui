@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Async, KeyCodes, divProperties, doesElementContainFocus, getDocument, getNativeProps, on } from '../../Utilities';
+import { Async, KeyCodes, divProperties, doesElementContainFocus, getDocument, getNativeProps, on, getWindow } from '../../Utilities';
 import { IPopupProps } from './Popup.types';
 
 export interface IPopupState {
@@ -36,7 +36,7 @@ export class Popup extends React.Component<IPopupProps, IPopupState> {
       this._disposables.push(
         on(this._root.current, 'focus', this._onFocus, true),
         on(this._root.current, 'blur', this._onBlur, true),
-        on(window, 'keydown', this._onKeyDown as any)
+        on(getWindow(this._root.current) || window, 'keydown', this._onKeyDown as any)
       );
       if (doesElementContainFocus(this._root.current)) {
         this._containsFocus = true;
