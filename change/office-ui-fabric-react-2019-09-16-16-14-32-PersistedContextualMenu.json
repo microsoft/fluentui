@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Contextual Menu calls onMenuOpened when hidden is changed from undefined to false.",
+  "packageName": "office-ui-fabric-react",
+  "email": "kushaly@microsoft.com",
+  "commit": "9d70e17c26c39eaf5d5e838e9723132c416a30f4",
+  "date": "2019-09-16T23:14:32.297Z"
+}
