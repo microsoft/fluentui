@@ -9,6 +9,7 @@ export class OverflowSetVerticalExample extends React.PureComponent {
   public render(): JSX.Element {
     return (
       <OverflowSet
+        aria-label="Vertical Example"
         vertical
         items={[
           {
@@ -54,7 +55,8 @@ export class OverflowSetVerticalExample extends React.PureComponent {
   private _onRenderItem = (item: IOverflowSetItemProps): JSX.Element => {
     return (
       <CommandBarButton
-        title={item.name}
+        role="menuitem"
+        aria-label={item.name}
         styles={{ root: { padding: '10px' } }}
         iconProps={{ iconName: item.icon }}
         onClick={item.onClick}
@@ -65,6 +67,7 @@ export class OverflowSetVerticalExample extends React.PureComponent {
   private _onRenderOverflowButton = (overflowItems: any[] | undefined): JSX.Element => {
     return (
       <CommandBarButton
+        role="menu"
         title="More items"
         styles={{ root: { padding: '10px' }, menuIcon: { fontSize: '16px' } }}
         menuIconProps={{ iconName: 'More' }}
