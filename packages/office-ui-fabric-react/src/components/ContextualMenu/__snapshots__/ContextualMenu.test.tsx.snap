@@ -226,6 +226,7 @@ exports[`ContextualMenu ContextualMenu snapshot ContextualMenu should be present
             tabIndex={-1}
           >
             <div
+              aria-hidden={true}
               className=
                   ms-Callout-main
                   {
