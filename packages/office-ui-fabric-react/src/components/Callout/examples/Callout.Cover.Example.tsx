@@ -68,6 +68,7 @@ export class CalloutCoverExample extends React.Component<{}, ICalloutCoverExampl
             coverTarget={true}
             isBeakVisible={false}
             gapSpace={0}
+            setInitialFocus={true}
           >
             <div className="ms-CalloutExample-header">
               <p className="ms-CalloutExample-title">I'm covering the target!</p>
