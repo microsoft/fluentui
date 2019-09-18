@@ -1,8 +1,5 @@
 import * as React from 'react';
-import { DefaultButton } from 'office-ui-fabric-react';
-import { FocusTrapCallout } from 'office-ui-fabric-react';
-import { CommandBar, ICommandBarItemProps } from 'office-ui-fabric-react';
-import { getId } from 'office-ui-fabric-react';
+import { DefaultButton, FocusTrapCallout, CommandBar, ICommandBarItemProps, getId } from 'office-ui-fabric-react';
 import './CalloutExample.scss';
 
 export interface ICalloutFocusTrapExampleState {
