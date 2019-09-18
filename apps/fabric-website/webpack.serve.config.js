@@ -2,7 +2,7 @@
 
 const path = require('path');
 const resources = require('@uifabric/build/webpack/webpack-resources');
-const { addMonacoWebpackConfig } = require('@uifabric/monaco-editor/scripts/addMonacoWebpackConfig');
+const { addMonacoWebpackConfig } = require('@uifabric/tsx-editor/scripts/addMonacoWebpackConfig');
 
 const entryPointName = 'fabric-sitev5';
 

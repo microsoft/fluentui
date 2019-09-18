@@ -3,7 +3,7 @@
 module.exports = function(env) {
   const path = require('path');
   const resources = require('@uifabric/build/webpack/webpack-resources');
-  const { addMonacoWebpackConfig } = require('@uifabric/monaco-editor/scripts/addMonacoWebpackConfig');
+  const { addMonacoWebpackConfig } = require('@uifabric/tsx-editor/scripts/addMonacoWebpackConfig');
   // @ts-ignore
   const version = require('./package.json').version;
   const isProductionArg = env && env.production;
