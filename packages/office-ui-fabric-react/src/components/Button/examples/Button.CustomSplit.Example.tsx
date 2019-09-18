@@ -50,6 +50,7 @@ export const ButtonSplitCustomExample: React.FunctionComponent<IButtonExamplePro
         menuProps={menuProps}
         // This text is hidden by the styles
         text="New item"
+        title="New item"
         onClick={_alertClicked}
         disabled={disabled}
         checked={checked}
