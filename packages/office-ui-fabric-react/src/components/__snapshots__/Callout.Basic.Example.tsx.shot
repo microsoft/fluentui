@@ -228,7 +228,6 @@ exports[`Component Examples renders Callout.Basic.Example.tsx correctly 1`] = `
         >
           <div
             aria-describedby="callout-description1"
-            aria-hidden={true}
             aria-labelledby="callout-label0"
             className=
                 ms-Callout-main
