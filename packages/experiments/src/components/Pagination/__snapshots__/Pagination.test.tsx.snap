@@ -1518,6 +1518,7 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
         onClick={[Function]}
         onCompositionEnd={[Function]}
         onCompositionStart={[Function]}
+        onCompositionUpdate={[Function]}
         onFocus={[Function]}
         onInput={[Function]}
         onKeyDown={[Function]}

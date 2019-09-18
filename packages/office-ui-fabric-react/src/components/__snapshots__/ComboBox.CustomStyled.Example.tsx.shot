@@ -220,6 +220,7 @@ exports[`Component Examples renders ComboBox.CustomStyled.Example.tsx correctly 
         onClick={[Function]}
         onCompositionEnd={[Function]}
         onCompositionStart={[Function]}
+        onCompositionUpdate={[Function]}
         onFocus={[Function]}
         onInput={[Function]}
         onKeyDown={[Function]}
@@ -562,6 +563,7 @@ exports[`Component Examples renders ComboBox.CustomStyled.Example.tsx correctly 
         onClick={[Function]}
         onCompositionEnd={[Function]}
         onCompositionStart={[Function]}
+        onCompositionUpdate={[Function]}
         onFocus={[Function]}
         onInput={[Function]}
         onKeyDown={[Function]}

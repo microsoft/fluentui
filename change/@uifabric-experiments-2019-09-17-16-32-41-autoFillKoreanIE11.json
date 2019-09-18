@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "listen to composition events only for IME languages in autofill",
+  "packageName": "@uifabric/experiments",
+  "email": "amyngu@microsoft.com",
+  "commit": "55e2fb7ba136edd05f864ebac4b18cd6cae5a229",
+  "date": "2019-09-17T23:32:41.951Z"
+}
