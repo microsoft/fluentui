@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "BasePicker: deprecate onFocus",
-  "packageName": "office-ui-fabric-react",
-  "email": "naethell@microsoft.com",
-  "commit": "63a96a5e67d68838a5ae84c47f4ad4b3dba56937",
-  "date": "2019-09-17T22:58:25.263Z"
-}

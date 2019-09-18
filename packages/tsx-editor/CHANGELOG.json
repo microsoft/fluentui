@@ -2,6 +2,20 @@
   "name": "@uifabric/tsx-editor",
   "entries": [
     {
+      "date": "Wed, 18 Sep 2019 12:32:55 GMT",
+      "tag": "@uifabric/tsx-editor_v0.5.1",
+      "version": "0.5.1",
+      "comments": {
+        "none": [
+          {
+            "comment": "Fix newline issue in test",
+            "author": "elcraig@microsoft.com",
+            "commit": "36f3c57bf0d4403f4a2573cba56fe5759e7edc77"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 13 Sep 2019 12:34:39 GMT",
       "tag": "@uifabric/tsx-editor_v0.5.1",
       "version": "0.5.1",
