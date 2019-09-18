@@ -7,14 +7,19 @@ const webpack = require('webpack');
 
 /**
  * Add Monaco-related webpack configuration to an existing config object.
- * @param {webpack.Configuration & { [key: string]: any }} config - Webpack config to merge the monaco config into.
- * `entry` must be an object (or not provided) for this to work.
+ * @param {webpack.Configuration & { [key: string]: any }} config - Webpack config to merge the
+ * monaco-related config into. It must be an object (not an array or function). `config.entry`
+ * also must be an object (not a string, array, or function).
  * @param {boolean} [includeAllLanguages] - If true, include all language contributions in the main
  * Monaco bundle and add entry configs for CSS/HTML/JSON workers in addition to TS. If false (default),
  * only include TS features.
  * @returns {webpack.Configuration & { [key: string]: any }} The merged config
  */
 function addMonacoWebpackConfig(config, includeAllLanguages) {
+  if (Array.isArray(config) || typeof config === 'function') {
+    throw new Error('config passed to addMonacoConfig must be an object, not an array or function.');
+  }
+
   const { entry, output, resolve } = config;
   if (!entry || typeof entry !== 'object') {
     throw new Error(`config.entry passed to addMonacoWebpackConfig must be an object. Got: ${JSON.stringify(entry)}`);

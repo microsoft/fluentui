@@ -19,12 +19,12 @@ In your `webpack.config.js`, call the `addMonacoWebpackConfig` helper to add Mon
 const { addMonacoWebpackConfig } = require('@uifabric/monaco-editor/scripts/addMonacoWebpackConfig');
 
 // Somewhere in this file, call:
-config = addMonacoWebpackConfig(config, includeAllLanguages);
+config = addMonacoWebpackConfig(originalConfig, includeAllLanguages);
 ```
 
 Parameters:
 
-- `config` (`webpack.Configuration`): Your configuration. Its `entry` **must** be an object, and the `output.globalObject` setting (if any) will be ignored.
+- `config` (`webpack.Configuration`): Your configuration object. Its `entry` **must** be an object (not an array or function), and the `output.globalObject` setting (if any) will be ignored.
 - `includeAllLanguages` (`boolean`):
   - `false` (default): Imports for `@uifabric/monaco-editor` will be remapped to `@uifabric/monaco-editor/lib/monacoCoreBundle`, which includes only core editor features and TypeScript language features. Entry configs will be added for the main editor worker (`editor.worker.js`) and TS worker (`ts.worker.js`) but not other languages.
   - `true`: Imports for `@uifabric/monaco-editor` will be remapped to `@uifabric/monaco-editor/lib/monacoBundle`, which includes all language contributions. Also, entry configs will be added for CSS/HTML/JSON workers in addition to TS.
