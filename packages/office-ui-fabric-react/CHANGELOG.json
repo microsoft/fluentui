@@ -2,6 +2,32 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Wed, 18 Sep 2019 12:32:55 GMT",
+      "tag": "office-ui-fabric-react_v7.35.0",
+      "version": "7.35.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Listen to onCompositionUpdate instead of onInput for IME composition",
+            "author": "amyngu@microsoft.com",
+            "commit": "6887a0c16112c7267bed6998cea0ec119bc6ca6d"
+          },
+          {
+            "comment": "BasePicker: deprecate onFocus",
+            "author": "naethell@microsoft.com",
+            "commit": "63a96a5e67d68838a5ae84c47f4ad4b3dba56937"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Contextual Menu calls onMenuOpened when hidden is changed from undefined to false.",
+            "author": "kushaly@microsoft.com",
+            "commit": "9d70e17c26c39eaf5d5e838e9723132c416a30f4"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 16 Sep 2019 12:34:47 GMT",
       "tag": "office-ui-fabric-react_v7.34.0",
       "version": "7.34.0",

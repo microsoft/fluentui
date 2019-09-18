@@ -1,7 +1,17 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 16 Sep 2019 12:34:47 GMT and should not be manually modified.
+This log was last generated on Wed, 18 Sep 2019 12:32:55 GMT and should not be manually modified.
 
+## 7.35.0
+Wed, 18 Sep 2019 12:32:55 GMT
+
+### Minor changes
+
+- Listen to onCompositionUpdate instead of onInput for IME composition (amyngu@microsoft.com)
+- BasePicker: deprecate onFocus (naethell@microsoft.com)
+### Patches
+
+- Contextual Menu calls onMenuOpened when hidden is changed from undefined to false. (kushaly@microsoft.com)
 ## 7.34.0
 Mon, 16 Sep 2019 12:34:47 GMT
 
