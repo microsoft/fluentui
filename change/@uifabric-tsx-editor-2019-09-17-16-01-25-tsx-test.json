@@ -1,0 +1,8 @@
+{
+  "type": "none",
+  "comment": "Fix newline issue in test",
+  "packageName": "@uifabric/tsx-editor",
+  "email": "elcraig@microsoft.com",
+  "commit": "36f3c57bf0d4403f4a2573cba56fe5759e7edc77",
+  "date": "2019-09-17T23:01:25.825Z"
+}
