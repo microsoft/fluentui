@@ -22,10 +22,12 @@ export const getStyles = (props: IDialogContentStyleProps): IDialogContentStyles
 
   return {
     content: [
-      isLargeHeader &&
-        classNames.contentLgHeader && {
+      isLargeHeader && [
+        classNames.contentLgHeader,
+        {
           borderTop: `4px solid ${palette.themePrimary}`
-        },
+        }
+      ],
       isClose && classNames.close,
       {
         flexGrow: 1,
