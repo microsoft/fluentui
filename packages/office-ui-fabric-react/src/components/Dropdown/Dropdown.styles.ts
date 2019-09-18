@@ -31,7 +31,7 @@ const GlobalClassNames = {
   titleHasError: 'ms-Dropdown-title--hasError'
 };
 
-const DROPDOWN_HEIGHT = 32;
+const DROPDOWN_HEIGHT = 34;
 const DROPDOWN_ITEM_HEIGHT = 36;
 
 const highContrastAdjustMixin = {
@@ -112,7 +112,7 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
       width: '100%',
       minHeight: DROPDOWN_ITEM_HEIGHT,
       lineHeight: 20,
-      height: '1vh',
+      height: 0, // IE11 fix, is overridden by minHeight
       position: 'relative',
       border: '1px solid transparent',
       borderRadius: 0,
