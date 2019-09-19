@@ -73,7 +73,8 @@ export interface IDocument {
 }
 
 export class DetailsListDocumentsExample extends React.Component<{}, IDetailsListDocumentsExampleState> {
-  private _selection: Selection;
+  private _selectionNone: Selection;
+  private _selectionMultiple: Selection;
   private _allItems: IDocument[];
 
   constructor(props: {}) {
@@ -159,12 +160,17 @@ export class DetailsListDocumentsExample extends React.Component<{}, IDetailsLis
       }
     ];
 
-    this._selection = new Selection({
+    this._selectionNone = new Selection({
+      selectionMode: SelectionMode.none
+    });
+
+    this._selectionMultiple = new Selection({
       onSelectionChanged: () => {
         this.setState({
           selectionDetails: this._getSelectionDetails()
         });
-      }
+      },
+      selectionMode: SelectionMode.multiple
     });
 
     this.state = {
@@ -203,8 +209,9 @@ export class DetailsListDocumentsExample extends React.Component<{}, IDetailsLis
         </div>
         <div className={classNames.selectionDetails}>{selectionDetails}</div>
         {announcedMessage ? <Announced message={announcedMessage} /> : undefined}
-        <MarqueeSelection selection={this._selection}>
+        <MarqueeSelection selection={isModalSelection ? this._selectionMultiple : this._selectionNone}>
           <DetailsList
+            key={isModalSelection ? 1 : 2}
             items={items}
             compact={isCompactMode}
             columns={columns}
@@ -213,13 +220,13 @@ export class DetailsListDocumentsExample extends React.Component<{}, IDetailsLis
             setKey="set"
             layoutMode={DetailsListLayoutMode.justified}
             isHeaderVisible={true}
-            selection={this._selection}
+            selection={isModalSelection ? this._selectionMultiple : this._selectionNone}
             selectionPreservedOnEmptyClick={true}
             onItemInvoked={this._onItemInvoked}
             enterModalSelectionOnTouch={true}
-            ariaLabelForSelectionColumn="Toggle selection"
-            ariaLabelForSelectAllCheckbox="Toggle selection for all items"
-            checkButtonAriaLabel="Row checkbox"
+            ariaLabelForSelectionColumn={isModalSelection ? 'Toggle selection' : undefined}
+            ariaLabelForSelectAllCheckbox={isModalSelection ? 'Toggle selection for all items' : undefined}
+            checkButtonAriaLabel={isModalSelection ? 'Row checkbox' : undefined}
           />
         </MarqueeSelection>
       </Fabric>
@@ -228,7 +235,7 @@ export class DetailsListDocumentsExample extends React.Component<{}, IDetailsLis
 
   public componentDidUpdate(previousProps: any, previousState: IDetailsListDocumentsExampleState) {
     if (previousState.isModalSelection !== this.state.isModalSelection && !this.state.isModalSelection) {
-      this._selection.setAllSelected(false);
+      this._selectionMultiple.setAllSelected(false);
     }
   }
 
@@ -255,13 +262,13 @@ export class DetailsListDocumentsExample extends React.Component<{}, IDetailsLis
   }
 
   private _getSelectionDetails(): string {
-    const selectionCount = this._selection.getSelectedCount();
+    const selectionCount = this._selectionMultiple.getSelectedCount();
 
     switch (selectionCount) {
       case 0:
         return 'No items selected';
       case 1:
-        return '1 item selected: ' + (this._selection.getSelection()[0] as IDocument).name;
+        return '1 item selected: ' + (this._selectionMultiple.getSelection()[0] as IDocument).name;
       default:
         return `${selectionCount} items selected`;
     }
