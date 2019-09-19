@@ -15,8 +15,9 @@ export function isEditorSupported(code: string, supportedPackages: IPackageGroup
     getSetting('useEditor') === '1' &&
     // Not IE 11
     !isIE11() &&
-    // Service worker available
-    !!win.navigator.serviceWorker &&
+    // Service worker available (for some reason win.navigator.serviceWorker is always undefined,
+    // at least in Chrome...?)
+    !!navigator.serviceWorker &&
     // No immediate issues detected in example (or exceptions thrown from parsing)
     typeof tryParseExample(code!, supportedPackages) !== 'string'
   );
