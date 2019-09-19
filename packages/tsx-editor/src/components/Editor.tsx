@@ -1,7 +1,7 @@
 import * as monaco from '@uifabric/monaco-editor';
 import * as React from 'react';
 import { IEditorProps, ITextModel } from './Editor.types';
-import { codeFontFamily } from './TypeScriptSnippet';
+import { codeFontFamily } from './common';
 
 const typescript = monaco.languages.typescript;
 const typescriptDefaults = typescript.typescriptDefaults;
