@@ -1,22 +1,16 @@
 import * as React from 'react';
-import { Spinner, SpinnerSize } from 'office-ui-fabric-react/lib/Spinner';
-import { Stack } from 'office-ui-fabric-react/lib/Stack';
-import { getWindow, isIE11, getId } from 'office-ui-fabric-react/lib/Utilities';
-import { getMonacoConfig } from '@uifabric/monaco-editor/lib/configureEnvironment';
-import { transformExample } from '../transpiler/exampleTransform';
-import { getSetting } from '../utilities/settings';
+import { getId } from 'office-ui-fabric-react/lib/Utilities';
 import { EditorPreview } from './EditorPreview';
-import { ITextModel, IEditorProps } from './Editor.types';
 import { IEditorWrapperProps, IEditorPreviewProps } from './EditorWrapper.types';
 import { EditorError } from './EditorError';
 import { TypeScriptSnippet } from './TypeScriptSnippet';
+import { EditorLoading } from './EditorLoading';
+import { SUPPORTED_PACKAGES } from '../utilities/defaultSupportedPackages';
+import { isEditorSupported } from '../utilities/isEditorSupported';
 
-// This file MUST NOT directly load the main Editor module which depends on Monaco.
-// It can reference the module for types, but not use it at runtime.
-import * as editorModuleType from './Editor';
-
-// Override setTimeout from Node.js which is not actually the one used here
-declare function setTimeout(callback: Function, delay: number): number;
+// This file MUST NOT directly load the main TsxEditor module which depends on Monaco, to avoid
+// pulling it into a bundle. Importing/rendering with React.lazy solves this.
+const TsxEditorLazy = React.lazy(() => import('./TsxEditor'));
 
 export const EditorWrapper: React.FunctionComponent<IEditorWrapperProps> = props => {
   const {
@@ -29,6 +23,7 @@ export const EditorWrapper: React.FunctionComponent<IEditorWrapperProps> = props
     width = 'auto',
     modelRef,
     useEditor,
+    supportedPackages = SUPPORTED_PACKAGES,
     children
   } = props;
 
@@ -38,90 +33,25 @@ export const EditorWrapper: React.FunctionComponent<IEditorWrapperProps> = props
   }
   const previewId = idRef.current!;
 
-  const [editorModule, setEditorModule] = React.useState<typeof editorModuleType>();
   const [error, setError] = React.useState<string | string[]>();
-  const onChangeRef = React.useRef<IEditorProps['onChange']>();
 
   // Check if editing should be enabled
   const canEdit = React.useMemo(() => {
     if (typeof useEditor === 'boolean') {
       return useEditor;
     }
-    return _isEditorSupported(code);
-  }, [useEditor, code]);
-
-  // Load editor modules and Fabric global
-  React.useEffect(() => {
-    let isDisposed = false;
-    let debounceTimeout: number;
-
-    if (!isCodeVisible || !canEdit) {
-      return;
-    }
-
-    // tslint:disable:no-any
-    if (!(window as any).Fabric) {
-      import('office-ui-fabric-react').then(Fabric => {
-        (window as any).Fabric = Fabric;
-      });
-    }
-    // tslint:enable:no-any
-
-    // Delay load the editor module and the transpiler module (which depend on Monaco).
-    // We're loading the editor like this rather than with React.lazy because loading via React.lazy
-    // pulled the editor into the main bundle for some reason.
-    Promise.all([
-      import(/* webpackChunkName: 'tsx-editor-core' */ './Editor'),
-      import(/* webpackChunkName: 'tsx-editor-core' */ '../transpiler/transpile')
-    ]).then(([_editorModule, transpileModule]) => {
-      if (isDisposed) {
-        return;
-      }
-
-      // Set up transpiling on change
-      onChangeRef.current = (model: ITextModel) => {
-        if (debounceTimeout) {
-          clearTimeout(debounceTimeout);
-        }
-        debounceTimeout = setTimeout(() => {
-          transpileModule.transpile(model).then(output => {
-            if (isDisposed) {
-              return;
-            }
-            if (output.outputString !== undefined) {
-              setError(transpileModule.evalCode(output.outputString, previewId));
-            } else {
-              setError(output.error);
-            }
-          });
-        }, 500);
-      };
-
-      setEditorModule(_editorModule);
-    });
-
-    return () => {
-      isDisposed = true;
-      if (debounceTimeout) {
-        clearTimeout(debounceTimeout);
-      }
-    };
-  }, [isCodeVisible, canEdit, onChangeRef, previewId]);
+    return isEditorSupported(code, supportedPackages);
+  }, [useEditor, code, supportedPackages]);
 
   return (
     <div>
       {isCodeVisible && (
         <div className={editorClassName}>
           {canEdit ? (
-            editorModule ? (
-              // Editing supported -- render editor module
-              <editorModule.Editor code={code} onChange={onChangeRef.current!} width={width} height={height} modelRef={modelRef} />
-            ) : (
-              // Editing supported, but editor not loaded -- render loading spinner
-              <Stack horizontalAlign="center" verticalAlign="center" styles={{ root: { height } }}>
-                <Spinner size={SpinnerSize.large} label="Loading editor..." />
-              </Stack>
-            )
+            // Editing supported -- render editor module (or loading spinner)
+            <React.Suspense fallback={<EditorLoading height={height} />}>
+              <TsxEditorLazy editorProps={{ code, width, height, modelRef }} onTransformFinished={setError} previewId={previewId} />
+            </React.Suspense>
           ) : (
             // Editing not supported
             <TypeScriptSnippet>{code}</TypeScriptSnippet>
@@ -138,22 +68,4 @@ export const EditorWrapper: React.FunctionComponent<IEditorWrapperProps> = props
 
 function _onRenderPreview(props: IEditorPreviewProps): React.ReactNode {
   return <EditorPreview {...props} />;
-}
-
-function _isEditorSupported(code: string): boolean {
-  const win = getWindow();
-  return (
-    // Not server-side rendering
-    !!win &&
-    // Required environment config available
-    !!getMonacoConfig() &&
-    // Opt-in query param or session storage is set
-    getSetting('useEditor') === '1' &&
-    // Not IE 11
-    !isIE11() &&
-    // Service worker available
-    !!win.navigator.serviceWorker &&
-    // No immediate issues detected in example (or exceptions thrown from parsing)
-    typeof transformExample(code!, 'fake') !== 'string'
-  );
 }

@@ -25,6 +25,7 @@ module.exports = resources.createConfig(
       alias: {
         '@uifabric/tsx-editor/src': path.join(__dirname, 'src'),
         '@uifabric/tsx-editor/lib': path.join(__dirname, 'lib'),
+        '@uifabric/tsx-editor/dist': path.join(__dirname, 'dist'),
         '@uifabric/tsx-editor': path.join(__dirname, 'lib')
       }
     }

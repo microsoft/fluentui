@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Adding `concatStyleSetsWithProps` to help resolve stylesets that are functional, resolving with props.",
+  "packageName": "@uifabric/merge-styles",
+  "email": "dzearing@microsoft.com",
+  "commit": "8065917a76a5e08b27721e34e13903adba3730f1",
+  "date": "2019-09-17T19:27:34.289Z"
+}
