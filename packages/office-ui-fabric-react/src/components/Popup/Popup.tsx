@@ -36,7 +36,7 @@ export class Popup extends React.Component<IPopupProps, IPopupState> {
       this._disposables.push(
         on(this._root.current, 'focus', this._onFocus, true),
         on(this._root.current, 'blur', this._onBlur, true),
-        on(getWindow(this._root.current) || window, 'keydown', this._onKeyDown as any)
+        on(getWindow(this._root.current), 'keydown', this._onKeyDown as any)
       );
       if (doesElementContainFocus(this._root.current)) {
         this._containsFocus = true;
