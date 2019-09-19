@@ -3000,7 +3000,7 @@ export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, IWith
     alignTargetEdge?: boolean;
     ariaLabel?: string;
     beakWidth?: number;
-    bounds?: IRectangle;
+    bounds?: IRectangle | ((target?: Target, targetWindow?: Window) => IRectangle | undefined);
     calloutProps?: ICalloutProps;
     className?: string;
     componentRef?: IRefObject<IContextualMenu>;
