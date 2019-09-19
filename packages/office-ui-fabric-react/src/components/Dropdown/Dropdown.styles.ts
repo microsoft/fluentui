@@ -31,7 +31,7 @@ const GlobalClassNames = {
   titleHasError: 'ms-Dropdown-title--hasError'
 };
 
-const DROPDOWN_HEIGHT = 34;
+const DROPDOWN_HEIGHT = 32;
 const DROPDOWN_ITEM_HEIGHT = 36;
 
 const highContrastAdjustMixin = {
