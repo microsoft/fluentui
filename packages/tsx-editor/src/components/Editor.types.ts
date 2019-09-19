@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as monaco from '@uifabric/monaco-editor/lib/esm/vs/editor/editor.api';
+import * as monaco from '@uifabric/monaco-editor/esm/vs/editor/editor.api';
 
 export type ITextModel = monaco.editor.ITextModel;
 
