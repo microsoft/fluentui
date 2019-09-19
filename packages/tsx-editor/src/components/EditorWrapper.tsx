@@ -10,7 +10,7 @@ import { isEditorSupported } from '../utilities/isEditorSupported';
 
 // This file MUST NOT directly load the main TsxEditor module which depends on Monaco, to avoid
 // pulling it into a bundle. Importing/rendering with React.lazy solves this.
-const TsxEditorLazy = React.lazy(() => import(/* webpackChunkName: 'tsx-editor-core' */ './TsxEditor'));
+const TsxEditorLazy = React.lazy(() => import('./TsxEditor'));
 
 export const EditorWrapper: React.FunctionComponent<IEditorWrapperProps> = props => {
   const {

@@ -122,7 +122,7 @@ function _loadTypes(supportedPackages: IPackageGroup[]): Promise<void> {
   // React must be loaded first
   promises.push(
     // @ts-ignore: this import is handled by webpack
-    import(/* webpackChunkName: 'react-types' */ '!raw-loader!@types/react/index.d.ts') // prettier-ignore
+    import('!raw-loader!@types/react/index.d.ts') // prettier-ignore
       .then((result: { default: string }) => {
         typescriptDefaults.addExtraLib(result.default, `${typesPrefix}/react/index.d.ts`);
       })
