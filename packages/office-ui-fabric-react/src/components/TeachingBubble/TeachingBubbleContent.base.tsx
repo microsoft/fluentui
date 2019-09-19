@@ -92,7 +92,7 @@ export class TeachingBubbleContentBase extends BaseComponent<ITeachingBubbleProp
 
       headerContent = (
         <div className={classNames.header}>
-          <HeaderWrapperAs aria-level="2" role="heading" className={classNames.headline} id={ariaLabelledBy}>
+          <HeaderWrapperAs role="heading" className={classNames.headline} id={ariaLabelledBy}>
             {headline}
           </HeaderWrapperAs>
         </div>
