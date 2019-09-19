@@ -2,9 +2,9 @@ import { getWindow, isIE11 } from 'office-ui-fabric-react/lib/Utilities';
 import { getMonacoConfig } from '@uifabric/monaco-editor/lib/configureEnvironment';
 import { tryParseExample } from '../transpiler/exampleParser';
 import { getSetting } from '../utilities/settings';
-import { IPackageGroup } from '../interfaces/packageGroup';
+import { IBasicPackageGroup } from '../interfaces/packageGroup';
 
-export function isEditorSupported(code: string, supportedPackages: IPackageGroup[]): boolean {
+export function isEditorSupported(code: string, supportedPackages: IBasicPackageGroup[]): boolean {
   const win = getWindow();
   return (
     // Not server-side rendering
@@ -15,9 +15,8 @@ export function isEditorSupported(code: string, supportedPackages: IPackageGroup
     getSetting('useEditor') === '1' &&
     // Not IE 11
     !isIE11() &&
-    // Service worker available (for some reason win.navigator.serviceWorker is always undefined,
-    // at least in Chrome...?)
-    !!navigator.serviceWorker &&
+    // Web worker available
+    typeof Worker !== 'undefined' &&
     // No immediate issues detected in example (or exceptions thrown from parsing)
     typeof tryParseExample(code!, supportedPackages) !== 'string'
   );

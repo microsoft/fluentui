@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Fix web worker check",
+  "packageName": "@uifabric/tsx-editor",
+  "email": "elcraig@microsoft.com",
+  "commit": "17f52a8e9ac4538477fb7d6b8e76129b4f7f4a29",
+  "date": "2019-09-19T22:48:22.374Z"
+}
