@@ -14,7 +14,6 @@ import { PanelLightDismissExample } from './examples/Panel.LightDismiss.Example'
 import { PanelLightDismissCustomExample } from './examples/Panel.LightDismissCustom.Example';
 import { PanelMediumExample } from './examples/Panel.Medium.Example';
 import { PanelNonModalExample } from './examples/Panel.NonModal.Example';
-import { PanelScrollExample } from './examples/Panel.Scroll.Example';
 import { PanelSmallFluidExample } from './examples/Panel.SmallFluid.Example';
 import { PanelSmallLeftExample } from './examples/Panel.SmallLeft.Example';
 import { PanelSmallRightExample } from './examples/Panel.SmallRight.Example';
@@ -38,7 +37,6 @@ const PanelNonModalExampleCode = require('!raw-loader!office-ui-fabric-react/src
 const PanelFooterExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Panel/examples/Panel.Footer.Example.tsx') as string;
 const PanelNavigationExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Panel/examples/Panel.Navigation.Example.tsx') as string;
 const PanelHandleDismissTargetExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Panel/examples/Panel.HandleDismissTarget.Example.tsx') as string;
-const PanelScrollExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Panel/examples/Panel.Scroll.Example.tsx') as string;
 
 export const PanelPageProps: IDocPageProps = {
   title: 'Panel',
@@ -131,11 +129,6 @@ export const PanelPageProps: IDocPageProps = {
       title: 'Panel - Handle Dismiss Target Sample',
       code: PanelHandleDismissTargetExampleCode,
       view: <PanelHandleDismissTargetExample />
-    },
-    {
-      title: 'Panel - Scrolling Content Sample',
-      code: PanelScrollExampleCode,
-      view: <PanelScrollExample />
     }
   ],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Panel/docs/PanelOverview.md'),
