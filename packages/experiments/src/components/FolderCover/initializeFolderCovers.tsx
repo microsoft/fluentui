@@ -15,7 +15,7 @@ export function initializeFolderCovers(baseUrl: string = ASSET_CDN_BASE_URL, opt
       icons: {
         folderCoverLargeDefaultFront: <img src={`${baseUrl}/lg-fg.svg`} />,
         folderCoverLargeDefaultBack: <img src={`${baseUrl}/lg-bg.svg`} />,
-        folderCoverLargeMediaFront: <img src={`${baseUrl}/lg-fg-media`} />,
+        folderCoverLargeMediaFront: <img src={`${baseUrl}/lg-fg-media.svg`} />,
         folderCoverLargeMediaBack: <img src={`${baseUrl}/lg-bg.svg`} />
       }
     },
@@ -33,7 +33,7 @@ export function initializeFolderCovers(baseUrl: string = ASSET_CDN_BASE_URL, opt
       icons: {
         folderCoverSmallDefaultFront: <img src={`${baseUrl}/sm-fg.svg`} />,
         folderCoverSmallDefaultBack: <img src={`${baseUrl}/sm-bg.svg`} />,
-        folderCoverSmallMediaFront: <img src={`${baseUrl}/sm-fg-media`} />,
+        folderCoverSmallMediaFront: <img src={`${baseUrl}/sm-fg-media.svg`} />,
         folderCoverSmallMediaBack: <img src={`${baseUrl}/sm-bg.svg`} />
       }
     },

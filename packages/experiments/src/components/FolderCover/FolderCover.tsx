@@ -16,9 +16,9 @@ export interface IFolderCoverState {
 
 const FolderCoverLayoutValues = {
   smallWidth: 72 as 72,
-  smallHeight: 52 as 52,
+  smallHeight: 44 as 44,
   largeWidth: 112 as 112,
-  largeHeight: 80 as 80,
+  largeHeight: 72 as 72,
   contentPadding: 4 as 4
 };
 
@@ -128,8 +128,6 @@ function getFolderCoverLayoutFromProps(folderCoverProps: IFolderCoverProps): IFo
   const { folderCoverSize = 'large' } = folderCoverProps;
 
   const contentSize = { ...SIZES[folderCoverSize] };
-
-  contentSize.height -= 8;
 
   return {
     contentSize
