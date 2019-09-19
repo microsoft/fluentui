@@ -1,6 +1,7 @@
 import fs from 'fs';
 import path from 'path';
-import { IDiagnostic, _getLineStarts, _getErrorLineInfo, _getErrorMessages } from './transpileHelpers';
+import { IDiagnostic, _getLineStarts, _getErrorLineInfo, _getErrorMessages, _supportedPackageToGlobalMap } from './transpileHelpers';
+import { SUPPORTED_PACKAGES } from '../utilities/defaultSupportedPackages';
 
 // Real diagnostics copied from loading ./examples/class.txt in the editor while type checking wasn't set up
 const exampleLines = fs
@@ -52,5 +53,28 @@ describe('_getErrorMessages', () => {
     const { messageText, code, ...rest } = diagnostics[0];
     const diagnostic = { ...rest, code: 0, messageText: { messageText: messageText as string, code } };
     expect(_getErrorMessages([diagnostic], example)).toEqual(["Line 1 - Cannot find module 'react'. (TS2307)"]);
+  });
+});
+
+describe('_supportedPackageToGlobalMap', () => {
+  it('works', () => {
+    expect(_supportedPackageToGlobalMap(SUPPORTED_PACKAGES)).toEqual({
+      'office-ui-fabric-react': 'Fabric',
+      '@uifabric/foundation': 'Fabric',
+      '@uifabric/icons': 'Fabric',
+      '@uifabric/merge-styles': 'Fabric',
+      '@uifabric/styling': 'Fabric',
+      '@uifabric/utilities': 'Fabric',
+      '@uifabric/example-data': 'FabricExampleData'
+    });
+  });
+
+  it('is memoized', () => {
+    const result1 = _supportedPackageToGlobalMap(SUPPORTED_PACKAGES);
+    const result2 = _supportedPackageToGlobalMap(SUPPORTED_PACKAGES);
+    expect(result1).toBe(result2);
+
+    const result3 = _supportedPackageToGlobalMap([{ globalName: 'Foo', packages: [{ packageName: 'foo' }] }]);
+    expect(result3).not.toEqual(result2);
   });
 });

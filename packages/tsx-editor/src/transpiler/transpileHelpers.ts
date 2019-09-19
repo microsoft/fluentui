@@ -1,3 +1,6 @@
+import { memoizeFunction } from 'office-ui-fabric-react/lib/Utilities';
+import { IBasicPackageGroup } from '../interfaces/packageGroup';
+
 // Helper methods for transpile(). They're in a separate file that doesn't import Monaco so they
 // can be tested with Jest (which doesn't like Monaco's ES modules).
 
@@ -47,3 +50,14 @@ export function _getErrorLineInfo(error: IDiagnostic, lineStarts: number[]): { l
   }
   return { line, col: error.start! - lineStarts[line - 1] + 1 };
 }
+
+/** Convert from IPackageGroup[] to a map from package name to global name. @internal */
+export const _supportedPackageToGlobalMap = memoizeFunction((supportedPackages: IBasicPackageGroup[]) => {
+  const packagesToGlobals: { [packageName: string]: string } = {};
+  for (const group of supportedPackages) {
+    for (const pkg of group.packages) {
+      packagesToGlobals[pkg.packageName] = group.globalName;
+    }
+  }
+  return packagesToGlobals;
+});
