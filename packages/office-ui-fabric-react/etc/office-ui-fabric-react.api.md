@@ -1568,7 +1568,7 @@ export interface IBaseButtonProps extends IButtonProps {
 // @public (undocumented)
 export interface IBaseButtonState {
     // (undocumented)
-    menuProps?: IContextualMenuProps | null;
+    menuHidden: boolean;
 }
 
 // @public (undocumented)
@@ -1910,7 +1910,6 @@ export interface IButtonProps extends React.AllHTMLAttributes<HTMLAnchorElement 
     primary?: boolean;
     primaryActionButtonProps?: IButtonProps;
     primaryDisabled?: boolean;
-    renderPersistedMenuHiddenOnMount?: boolean;
     // @deprecated
     rootProps?: React.ButtonHTMLAttributes<HTMLButtonElement> | React.AnchorHTMLAttributes<HTMLAnchorElement>;
     secondaryText?: string;
