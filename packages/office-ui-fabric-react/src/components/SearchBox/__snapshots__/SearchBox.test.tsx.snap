@@ -79,7 +79,6 @@ exports[`SearchBox renders SearchBox correctly 1`] = `
             transition: opacity 0.167s 0s;
           }
       data-icon-name="Search"
-      role="presentation"
     >
       
     </i>
@@ -212,7 +211,6 @@ exports[`SearchBox renders SearchBox without animation correctly 1`] = `
             speak: none;
           }
       data-icon-name="Search"
-      role="presentation"
     >
       
     </i>

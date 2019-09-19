@@ -220,7 +220,6 @@ exports[`ActivityItem renders compact with an icon correctly 1`] = `
             speak: none;
           }
       data-icon-name="Message"
-      role="presentation"
     >
       
     </i>
@@ -937,7 +936,6 @@ exports[`ActivityItem renders with an icon correctly 1`] = `
             speak: none;
           }
       data-icon-name="Message"
-      role="presentation"
     >
       
     </i>

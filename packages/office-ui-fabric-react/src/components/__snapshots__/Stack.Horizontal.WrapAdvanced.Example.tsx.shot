@@ -838,7 +838,6 @@ exports[`Component Examples renders Stack.Horizontal.WrapAdvanced.Example.tsx co
                     speak: none;
                   }
               data-icon-name="ChevronDown"
-              role="presentation"
             >
               
             </i>
@@ -1067,7 +1066,6 @@ exports[`Component Examples renders Stack.Horizontal.WrapAdvanced.Example.tsx co
                     speak: none;
                   }
               data-icon-name="ChevronDown"
-              role="presentation"
             >
               
             </i>
@@ -1296,7 +1294,6 @@ exports[`Component Examples renders Stack.Horizontal.WrapAdvanced.Example.tsx co
                     speak: none;
                   }
               data-icon-name="ChevronDown"
-              role="presentation"
             >
               
             </i>
