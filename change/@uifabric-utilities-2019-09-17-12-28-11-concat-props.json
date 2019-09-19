@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Consuming latest merge-styles bits with `concatStyleSetsWithProps`.",
+  "packageName": "@uifabric/utilities",
+  "email": "dzearing@microsoft.com",
+  "commit": "8065917a76a5e08b27721e34e13903adba3730f1",
+  "date": "2019-09-17T19:28:11.018Z"
+}
