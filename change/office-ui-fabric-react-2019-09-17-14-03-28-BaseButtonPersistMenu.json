@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Introducing a new prop renderPersistedMenuHiddenOnMount for BaseButton. We do not need the _renderedPersistedMenu property anymore. A small refactor was needed inside _onToggleMenu although.",
-  "packageName": "office-ui-fabric-react",
-  "email": "kushaly@microsoft.com",
-  "commit": "2a61dcfc5bdc3abd2774c548d033858bd294a5e2",
-  "date": "2019-09-17T21:03:28.210Z"
-}
