@@ -206,7 +206,6 @@ export class DetailsListDocumentsExample extends React.Component<{}, IDetailsLis
         {isModalSelection ? (
           <MarqueeSelection selection={this._selection}>
             <DetailsList
-              key={1}
               items={items}
               compact={isCompactMode}
               columns={columns}
@@ -226,7 +225,6 @@ export class DetailsListDocumentsExample extends React.Component<{}, IDetailsLis
           </MarqueeSelection>
         ) : (
           <DetailsList
-            key={2}
             items={items}
             compact={isCompactMode}
             columns={columns}
