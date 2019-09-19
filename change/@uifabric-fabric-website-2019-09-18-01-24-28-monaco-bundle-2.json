@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Use new way of consuming Monaco bundle",
-  "packageName": "@uifabric/fabric-website",
-  "email": "elcraig@microsoft.com",
-  "commit": "90fbbbfd43f93dbe8d95c094f1cd988614ae39bd",
-  "date": "2019-09-18T08:23:31.789Z"
-}

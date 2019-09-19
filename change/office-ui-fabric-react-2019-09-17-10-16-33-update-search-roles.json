@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "add landmark and widget role to searchbox",
-  "packageName": "office-ui-fabric-react",
-  "email": "mgodbolt@microsoft.com",
-  "commit": "f559f2b95df4136e1f1831b4a3c969fcb4739fec",
-  "date": "2019-09-17T17:16:33.464Z"
-}

@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Rating: Fixed duplicates ID on stars with fractional values.",
-  "packageName": "office-ui-fabric-react",
-  "email": "v-mare@microsoft.com",
-  "commit": "3498b5168dcc2deec69da4bba9136fa41a47cc0f",
-  "date": "2019-09-06T20:05:17.399Z"
-}

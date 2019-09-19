@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Add readme and bundle helpers; update bundle structure",
-  "packageName": "@uifabric/monaco-editor",
-  "email": "elcraig@microsoft.com",
-  "commit": "90fbbbfd43f93dbe8d95c094f1cd988614ae39bd",
-  "date": "2019-09-18T08:24:06.618Z"
-}

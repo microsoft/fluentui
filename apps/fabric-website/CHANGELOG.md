@@ -1,7 +1,13 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Thu, 12 Sep 2019 12:34:15 GMT and should not be manually modified.
+This log was last generated on Thu, 19 Sep 2019 13:05:24 GMT and should not be manually modified.
 
+## 7.4.8
+Thu, 19 Sep 2019 13:05:24 GMT
+
+### Patches
+
+- Use new way of consuming Monaco bundle (elcraig@microsoft.com)
 ## 7.4.7
 Thu, 12 Sep 2019 12:34:15 GMT
 

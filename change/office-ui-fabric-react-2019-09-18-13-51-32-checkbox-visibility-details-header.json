@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Apply CheckboxVisiblity to header as well in DetailsList",
-  "packageName": "office-ui-fabric-react",
-  "email": "thomas.gassmann@hotmail.com",
-  "commit": "184b1853c0fd593241dd362fb40f7fbdaf8d1ac7",
-  "date": "2019-09-18T11:51:32.292Z"
-}

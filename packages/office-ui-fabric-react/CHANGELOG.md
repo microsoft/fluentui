@@ -1,7 +1,22 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 18 Sep 2019 12:32:55 GMT and should not be manually modified.
+This log was last generated on Thu, 19 Sep 2019 13:05:24 GMT and should not be manually modified.
 
+## 7.36.0
+Thu, 19 Sep 2019 13:05:24 GMT
+
+### Minor changes
+
+- TagPicker: Updated styles to match toolkit. Added more screener tests. Added read only state. (v-mare@microsoft.com)
+- Apply CheckboxVisiblity to header as well in DetailsList (thomas.gassmann@hotmail.com)
+### Patches
+
+- ComboBox: fix for issue resetting suggestedDisplayValue after clearing the content of a comboBox (marygans@microsoft.com)
+- keep aria-label in sync with FloatingPicker open state in BaseExtendedPicker (mhuan13@gmail.com)
+- SplitButton: Updated high contrast styling (v-mare@microsoft.com)
+- Rating: Fixed duplicates ID on stars with fractional values. (v-mare@microsoft.com)
+- Coachmark: Fixed pulse beacon RTL animation direction issue. (v-mare@microsoft.com)
+- add landmark and widget role to searchbox (mgodbolt@microsoft.com)
 ## 7.35.0
 Wed, 18 Sep 2019 12:32:55 GMT
 

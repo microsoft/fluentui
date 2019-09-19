@@ -2,6 +2,57 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Thu, 19 Sep 2019 13:05:24 GMT",
+      "tag": "office-ui-fabric-react_v7.36.0",
+      "version": "7.36.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "ComboBox: fix for issue resetting suggestedDisplayValue after clearing the content of a comboBox",
+            "author": "marygans@microsoft.com",
+            "commit": "dfe2d06a0ee27fb9fc918110228baaecacd261f8"
+          },
+          {
+            "comment": "keep aria-label in sync with FloatingPicker open state in BaseExtendedPicker",
+            "author": "mhuan13@gmail.com",
+            "commit": "c88a91e9007158986ee9d359166ff9c376dc5127"
+          },
+          {
+            "comment": "SplitButton: Updated high contrast styling",
+            "author": "v-mare@microsoft.com",
+            "commit": "30e2d55c945ee42943770227e084ee1d13a19258"
+          },
+          {
+            "comment": "Rating: Fixed duplicates ID on stars with fractional values.",
+            "author": "v-mare@microsoft.com",
+            "commit": "3498b5168dcc2deec69da4bba9136fa41a47cc0f"
+          },
+          {
+            "comment": "Coachmark: Fixed pulse beacon RTL animation direction issue.",
+            "author": "v-mare@microsoft.com",
+            "commit": "0ff9ae22e3e272c7c4736d4fda23b0eda7e6c098"
+          },
+          {
+            "comment": "add landmark and widget role to searchbox",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "f559f2b95df4136e1f1831b4a3c969fcb4739fec"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "TagPicker: Updated styles to match toolkit. Added more screener tests. Added read only state.",
+            "author": "v-mare@microsoft.com",
+            "commit": "cb391cf51c1f0ba03ab9a1ecc4a186e31277a4b4"
+          },
+          {
+            "comment": "Apply CheckboxVisiblity to header as well in DetailsList",
+            "author": "thomas.gassmann@hotmail.com",
+            "commit": "184b1853c0fd593241dd362fb40f7fbdaf8d1ac7"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 18 Sep 2019 12:32:55 GMT",
       "tag": "office-ui-fabric-react_v7.35.0",
       "version": "7.35.0",

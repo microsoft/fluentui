@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "ComboBox: fix for issue resetting suggestedDisplayValue after clearing the content of a comboBox",
-  "packageName": "office-ui-fabric-react",
-  "email": "marygans@microsoft.com",
-  "commit": "dfe2d06a0ee27fb9fc918110228baaecacd261f8",
-  "date": "2019-08-08T21:20:33.721Z"
-}
