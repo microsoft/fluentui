@@ -1,5 +1,5 @@
 import { IDropdownStyles, IDropdownStyleProps } from './Dropdown.types';
-import { IStyleFunction, IsFocusVisibleClassName } from '../../Utilities';
+import { IStyleFunction, IsFocusVisibleClassName, isIE11 } from '../../Utilities';
 import { RectangleEdge } from '../../utilities/positioning';
 import {
   FontWeights,
@@ -112,7 +112,7 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
       width: '100%',
       minHeight: DROPDOWN_ITEM_HEIGHT,
       lineHeight: 20,
-      height: 0, // IE11 fix, is overridden by minHeight
+      height: isIE11 ? 0 : 'auto', // auto does not work in IE11 properly
       position: 'relative',
       border: '1px solid transparent',
       borderRadius: 0,
