@@ -321,18 +321,15 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
    */
   private _shouldRenderMenu() {
     const { menuHidden } = this.state;
-    const { persistMenu, renderPersistedMenuHiddenOnMount } = this.props;
+    const { persistMenu } = this.props;
 
     if (!menuHidden) {
       // Always should render a menu when it is expanded
       return true;
-    } else if (persistMenu) {
+    } else if (persistMenu && this._renderedVisibleMenu) {
       // _renderedVisibleMenu ensures that the first rendering of
       // the menu happens on-screen, as edge's scrollbar calculations are off if done while hidden.
-      // We ignore this if the prop renderPersistedMenuHiddenOnMount is true though.
-      if (this._renderedVisibleMenu || renderPersistedMenuHiddenOnMount) {
-        return true;
-      }
+      return true;
     }
 
     return false;
