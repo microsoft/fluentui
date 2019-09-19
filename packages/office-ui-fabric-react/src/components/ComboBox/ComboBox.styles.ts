@@ -316,21 +316,33 @@ export const getStyles = memoizeFunction(
       },
 
       rootPressed: {
-        borderColor: root.borderPressedColor,
-        borderWidth: '2px',
-        top: '-1px',
-        left: '-1px',
         selectors: {
+          ':after': {
+            content: '',
+            position: 'absolute',
+            left: 0,
+            top: 0,
+            bottom: 0,
+            right: 0,
+            borderColor: root.borderPressedColor,
+            borderWidth: '2px'
+          },
           [HighContrastSelector]: ComboBoxRootHighContrastFocused
         }
       },
 
       rootFocused: {
-        borderColor: root.borderFocusedColor,
-        borderWidth: '2px',
-        top: '-1px',
-        left: '-1px',
         selectors: {
+          ':after': {
+            content: '',
+            position: 'absolute',
+            left: 0,
+            top: 0,
+            bottom: 0,
+            right: 0,
+            borderColor: root.borderFocusedColor,
+            borderWidth: '2px'
+          },
           '.ms-ComboBox-Input': {
             color: semanticColors.inputTextHovered
           },
