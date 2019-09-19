@@ -73,8 +73,7 @@ export interface IDocument {
 }
 
 export class DetailsListDocumentsExample extends React.Component<{}, IDetailsListDocumentsExampleState> {
-  private _selectionNone: Selection;
-  private _selectionMultiple: Selection;
+  private _selection: Selection;
   private _allItems: IDocument[];
 
   constructor(props: {}) {
@@ -160,17 +159,12 @@ export class DetailsListDocumentsExample extends React.Component<{}, IDetailsLis
       }
     ];
 
-    this._selectionNone = new Selection({
-      selectionMode: SelectionMode.none
-    });
-
-    this._selectionMultiple = new Selection({
+    this._selection = new Selection({
       onSelectionChanged: () => {
         this.setState({
           selectionDetails: this._getSelectionDetails()
         });
-      },
-      selectionMode: SelectionMode.multiple
+      }
     });
 
     this.state = {
@@ -209,33 +203,48 @@ export class DetailsListDocumentsExample extends React.Component<{}, IDetailsLis
         </div>
         <div className={classNames.selectionDetails}>{selectionDetails}</div>
         {announcedMessage ? <Announced message={announcedMessage} /> : undefined}
-        <MarqueeSelection selection={isModalSelection ? this._selectionMultiple : this._selectionNone}>
+        {isModalSelection ? (
+          <MarqueeSelection selection={this._selection}>
+            <DetailsList
+              key={1}
+              items={items}
+              compact={isCompactMode}
+              columns={columns}
+              selectionMode={SelectionMode.multiple}
+              getKey={this._getKey}
+              setKey="multiple"
+              layoutMode={DetailsListLayoutMode.justified}
+              isHeaderVisible={true}
+              selection={this._selection}
+              selectionPreservedOnEmptyClick={true}
+              onItemInvoked={this._onItemInvoked}
+              enterModalSelectionOnTouch={true}
+              ariaLabelForSelectionColumn="Toggle selection"
+              ariaLabelForSelectAllCheckbox="Toggle selection for all items"
+              checkButtonAriaLabel="Row checkbox"
+            />
+          </MarqueeSelection>
+        ) : (
           <DetailsList
-            key={isModalSelection ? 1 : 2}
+            key={2}
             items={items}
             compact={isCompactMode}
             columns={columns}
-            selectionMode={isModalSelection ? SelectionMode.multiple : SelectionMode.none}
+            selectionMode={SelectionMode.none}
             getKey={this._getKey}
-            setKey="set"
+            setKey="none"
             layoutMode={DetailsListLayoutMode.justified}
             isHeaderVisible={true}
-            selection={isModalSelection ? this._selectionMultiple : this._selectionNone}
-            selectionPreservedOnEmptyClick={true}
             onItemInvoked={this._onItemInvoked}
-            enterModalSelectionOnTouch={true}
-            ariaLabelForSelectionColumn={isModalSelection ? 'Toggle selection' : undefined}
-            ariaLabelForSelectAllCheckbox={isModalSelection ? 'Toggle selection for all items' : undefined}
-            checkButtonAriaLabel={isModalSelection ? 'Row checkbox' : undefined}
           />
-        </MarqueeSelection>
+        )}
       </Fabric>
     );
   }
 
   public componentDidUpdate(previousProps: any, previousState: IDetailsListDocumentsExampleState) {
     if (previousState.isModalSelection !== this.state.isModalSelection && !this.state.isModalSelection) {
-      this._selectionMultiple.setAllSelected(false);
+      this._selection.setAllSelected(false);
     }
   }
 
@@ -262,13 +271,13 @@ export class DetailsListDocumentsExample extends React.Component<{}, IDetailsLis
   }
 
   private _getSelectionDetails(): string {
-    const selectionCount = this._selectionMultiple.getSelectedCount();
+    const selectionCount = this._selection.getSelectedCount();
 
     switch (selectionCount) {
       case 0:
         return 'No items selected';
       case 1:
-        return '1 item selected: ' + (this._selectionMultiple.getSelection()[0] as IDocument).name;
+        return '1 item selected: ' + (this._selection.getSelection()[0] as IDocument).name;
       default:
         return `${selectionCount} items selected`;
     }
