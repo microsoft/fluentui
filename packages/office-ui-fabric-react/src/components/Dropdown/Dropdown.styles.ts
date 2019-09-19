@@ -112,7 +112,7 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
       width: '100%',
       minHeight: DROPDOWN_ITEM_HEIGHT,
       lineHeight: 20,
-      height: isIE11 ? 0 : 'auto', // auto does not work in IE11 properly
+      height: isIE11 ? 0 : 'auto', // auto does not work properly in IE11
       position: 'relative',
       border: '1px solid transparent',
       borderRadius: 0,
