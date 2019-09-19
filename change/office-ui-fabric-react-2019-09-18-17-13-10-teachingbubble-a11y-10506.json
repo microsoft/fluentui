@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "TeachingBubble: Wrap contents in a FocusTrapZone to better support keyboard navigation.",
+  "packageName": "office-ui-fabric-react",
+  "email": "jdh@microsoft.com",
+  "commit": "0f58a30bfefe51982623152fb61b3363201a2f7d",
+  "date": "2019-09-19T00:13:10.734Z"
+}

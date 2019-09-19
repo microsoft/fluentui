@@ -5,6 +5,7 @@ import { ITeachingBubbleState } from './TeachingBubble.base';
 import { PrimaryButton, DefaultButton, IconButton } from '../../Button';
 import { Image, ImageFit } from '../../Image';
 import { Stack } from '../../Stack';
+import { FocusTrapZone } from '../../FocusTrapZone';
 
 const getClassNames = classNamesFunction<ITeachingBubbleStyleProps, ITeachingBubbleStyles>();
 
@@ -147,12 +148,14 @@ export class TeachingBubbleContentBase extends BaseComponent<ITeachingBubbleProp
         data-is-focusable={true}
       >
         {imageContent}
-        <div className={classNames.bodyContent}>
-          {headerContent}
-          {bodyContent}
-          {footerContent}
-          {closeButton}
-        </div>
+        <FocusTrapZone isClickableOutsideFocusTrap={true}>
+          <div className={classNames.bodyContent}>
+            {headerContent}
+            {bodyContent}
+            {footerContent}
+            {closeButton}
+          </div>
+        </FocusTrapZone>
       </div>
     );
   }
