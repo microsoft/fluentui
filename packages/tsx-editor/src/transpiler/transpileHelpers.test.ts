@@ -3,17 +3,27 @@ import path from 'path';
 import { IDiagnostic, _getLineStarts, _getErrorLineInfo, _getErrorMessages } from './transpileHelpers';
 
 // Real diagnostics copied from loading ./examples/class.txt in the editor while type checking wasn't set up
-const example = fs.readFileSync(path.join(__dirname, 'examples/class.txt')).toString();
+const exampleLines = fs
+  .readFileSync(path.join(__dirname, 'examples/class.txt'))
+  .toString()
+  .split(/\r?\n/g);
+const example = exampleLines.join('\n');
+const exampleCRLF = exampleLines.join('\r\n');
 const diagnostics: IDiagnostic[] = [
   { start: 23, length: 7, messageText: "Cannot find module 'react'.", code: 2307, category: 1 },
   { start: 192, length: 3, messageText: "Cannot find namespace 'JSX'.", code: 2503, category: 1 },
   { start: 225, length: 32, messageText: "JSX element implicitly has type 'any'.", code: 7026, category: 1 }
 ];
 const lineStarts = [0, 32, 100, 101, 173, 206, 219, 258, 278, 305, 343, 361, 381, 400, 459, 518, 577, 588, 601, 608, 612, 614];
+const lineStartsCRLF = [0, 33, 102, 104, 177, 211, 225, 265, 286, 314, 353, 372, 393, 413, 473, 533, 593, 605, 619, 627, 632, 635];
 
 describe('_getLineStarts', () => {
-  it('works', () => {
+  it('works with LF', () => {
     expect(_getLineStarts(example)).toEqual(lineStarts);
+  });
+
+  it('works with CRLF', () => {
+    expect(_getLineStarts(exampleCRLF)).toEqual(lineStartsCRLF);
   });
 });
 

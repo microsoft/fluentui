@@ -1,6 +1,7 @@
+// @ts-check
 const path = require('path');
 const resources = require('@uifabric/build/webpack/webpack-resources');
-const { addMonacoConfig } = require('./scripts/monaco-webpack');
+const { addMonacoWebpackConfig } = require('@uifabric/monaco-editor/scripts/addMonacoWebpackConfig');
 
 const BUNDLE_NAME = 'tsx-editor';
 const IS_PRODUCTION = process.argv.indexOf('--production') > -1;
@@ -8,7 +9,7 @@ const IS_PRODUCTION = process.argv.indexOf('--production') > -1;
 module.exports = resources.createConfig(
   BUNDLE_NAME,
   IS_PRODUCTION,
-  addMonacoConfig({
+  addMonacoWebpackConfig({
     entry: {
       [BUNDLE_NAME]: './lib/index.js'
     },

@@ -116,6 +116,7 @@ exports[`Component Examples renders Announced.SearchResults.Example.tsx correctl
             onClick={[Function]}
             onCompositionEnd={[Function]}
             onCompositionStart={[Function]}
+            onCompositionUpdate={[Function]}
             onFocus={[Function]}
             onInput={[Function]}
             onKeyDown={[Function]}

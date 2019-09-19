@@ -145,11 +145,13 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
       theme,
       onRenderDetailsCheckbox,
       groupNestingDepth,
-      useFastIcons
+      useFastIcons,
+      checkboxVisibility
     } = this.props;
     const { isAllSelected, columnResizeDetails, isSizing, isAllCollapsed } = this.state;
     const showCheckbox = selectAllVisibility !== SelectAllVisibility.none;
     const isCheckboxHidden = selectAllVisibility === SelectAllVisibility.hidden;
+    const isCheckboxAlwaysVisible = checkboxVisibility === CheckboxVisibility.always;
 
     const columnReorderProps = this._getColumnReorderProps();
     const frozenColumnCountFromStart =
@@ -220,6 +222,7 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
                         className={classNames.check}
                         onRenderDetailsCheckbox={onRenderDetailsCheckbox}
                         useFastIcons={useFastIcons}
+                        isVisible={isCheckboxAlwaysVisible}
                       />
                     )
                   },

@@ -43,10 +43,6 @@
       var entryPointFilename = 'fabric-sitev5';
       var appPath = '';
       var Flight = {};
-      // Suffix used on our built JS files. Starts out as .min.js, and if that fails to load,
-      // switches to .js (non-min). This helps us determine whether to load the min or non-min
-      // variants of the Monaco workers.
-      var jsSuffix = '.min.js';
 
       // If the site is hosted, load the flight config script for production or dogfood
       if (devhost !== null) {
@@ -115,7 +111,7 @@
             loader(scriptName, run, function() {
               // Load failures may occur because the min version of the script doesn't exist.
               // Try loading the non-min version instead.
-              jsSuffix = '.js';
+              window.MonacoConfig.useMinified = false;
               loader(scriptName.replace('.min.js', '.js'), run);
             });
           } else {
@@ -129,27 +125,15 @@
         var reactPath = '//cdnjs.cloudflare.com/ajax/libs/react/16.8.6/umd/react' + version;
         var reactDomPath = '//cdnjs.cloudflare.com/ajax/libs/react-dom/16.8.6/umd/react-dom' + version;
 
-        var scripts = [reactPath, reactDomPath, appPath + entryPointFilename + jsSuffix];
+        var scripts = [reactPath, reactDomPath, appPath + entryPointFilename + '.js'];
 
         // Load React and app scripts
         loadScripts(scripts);
 
-        // Required configuration to make Monaco work
-        window.MonacoEnvironment = {
-          // This is needed for cases where the JS files will be on a different domain (the CDN)
-          // instead of the domain the HTML is running on. Web workers (used by Monaco) can't be
-          // loaded by script residing on a different domain, so we use this proxy script on the
-          // main domain to load the worker script. (Also do this with localhost/devhost for testing.)
-          // https://github.com/microsoft/monaco-editor/blob/master/docs/integrate-amd-cross.md
-          getWorkerUrl: function(workerId, label) {
-            var workerName = label === 'typescript' || label === 'javascript' ? 'ts.worker' : 'editor.worker';
-            return (
-              'data:text/javascript;charset=utf-8,' +
-              encodeURIComponent(
-                'self.MonacoEnvironment = { baseUrl: "' + appPath + '" }; importScripts("' + appPath + workerName + jsSuffix + '");'
-              )
-            );
-          }
+        // Required configuration to make our Monaco wrapper work
+        window.MonacoConfig = {
+          baseUrl: appPath,
+          useMinified: !isLocal
         };
       }
 
