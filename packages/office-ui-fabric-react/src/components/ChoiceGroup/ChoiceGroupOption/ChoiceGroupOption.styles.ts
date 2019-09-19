@@ -283,7 +283,8 @@ export const getStyles = (props: IChoiceGroupOptionStyleProps): IChoiceGroupOpti
         width: '100%',
         height: '100%',
         margin: 0
-      }
+      },
+      disabled && 'is-disabled'
     ],
     field: [
       classNames.field,

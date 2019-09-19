@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { KeyCodes, createArray, getRTLSafeKeyCode } from 'office-ui-fabric-react/lib/Utilities';
+import { useConst } from '@uifabric/react-hooks';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { Link } from 'office-ui-fabric-react/lib/Link';
 import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react/lib/FocusZone';
@@ -36,7 +37,7 @@ const COLUMNS: IColumn[] = [
 
 export const FocusZoneListExample: React.FunctionComponent = () => {
   //  Initialize the selection when the component is first rendered (same instance will be reused)
-  const [selection] = React.useState(() => {
+  const selection = useConst(() => {
     const sel = new Selection();
     sel.setItems(ITEMS);
     return sel;

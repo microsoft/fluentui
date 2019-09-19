@@ -1,7 +1,25 @@
 # Change Log - @uifabric/tsx-editor
 
-This log was last generated on Mon, 26 Aug 2019 12:30:49 GMT and should not be manually modified.
+This log was last generated on Thu, 19 Sep 2019 13:05:24 GMT and should not be manually modified.
 
+## 0.6.0
+Thu, 19 Sep 2019 13:05:24 GMT
+
+### Minor changes
+
+- Use new way of consuming Monaco bundle (elcraig@microsoft.com)
+## 0.5.1
+Fri, 13 Sep 2019 12:34:39 GMT
+
+### Patches
+
+- creates a wrapper monaco-editor package to be published to make it easy for consumers to consume without css-loader (kchau@microsoft.com)
+## 0.5.0
+Thu, 12 Sep 2019 12:34:15 GMT
+
+### Minor changes
+
+- Show TS errors in detail, and assorted cleanup (elcraig@microsoft.com)
 ## 0.4.0
 Mon, 26 Aug 2019 12:30:49 GMT
 

@@ -2,6 +2,20 @@
   "name": "@uifabric/date-time",
   "entries": [
     {
+      "date": "Mon, 16 Sep 2019 12:34:47 GMT",
+      "tag": "@uifabric/date-time_v7.4.5",
+      "version": "7.4.5",
+      "comments": {
+        "patch": [
+          {
+            "comment": "DatePicker: call custom text field onChange handler if it exists in default onChange handler",
+            "author": "naethell@microsoft.com",
+            "commit": "66c08397d029b26f7044440f86232aa72ae4d352"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 04 Sep 2019 04:09:58 GMT",
       "tag": "@uifabric/date-time_v7.4.4",
       "version": "7.4.4",

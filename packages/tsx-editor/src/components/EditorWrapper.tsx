@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Spinner, SpinnerSize } from 'office-ui-fabric-react/lib/Spinner';
 import { Stack } from 'office-ui-fabric-react/lib/Stack';
 import { getWindow, isIE11, getId } from 'office-ui-fabric-react/lib/Utilities';
+import { getMonacoConfig } from '@uifabric/monaco-editor/lib/configureEnvironment';
 import { transformExample } from '../transpiler/exampleTransform';
 import { getSetting } from '../utilities/settings';
 import { EditorPreview } from './EditorPreview';
@@ -46,14 +47,8 @@ export const EditorWrapper: React.FunctionComponent<IEditorWrapperProps> = props
     if (typeof useEditor === 'boolean') {
       return useEditor;
     }
-    const win = getWindow();
-    return (
-      !!(win && (win as any).MonacoEnvironment) && // tslint:disable-line:no-any
-      getSetting('useEditor') === '1' &&
-      !isIE11() &&
-      transformExample(code!, previewId).error === undefined
-    );
-  }, [useEditor, code, previewId]);
+    return _isEditorSupported(code);
+  }, [useEditor, code]);
 
   // Load editor modules and Fabric global
   React.useEffect(() => {
@@ -134,7 +129,7 @@ export const EditorWrapper: React.FunctionComponent<IEditorWrapperProps> = props
         </div>
       )}
 
-      <EditorError error={error} />
+      {isCodeVisible && <EditorError error={error} />}
 
       {onRenderPreview({ className: previewClassName, id: previewId, children }, _onRenderPreview)}
     </div>
@@ -143,4 +138,22 @@ export const EditorWrapper: React.FunctionComponent<IEditorWrapperProps> = props
 
 function _onRenderPreview(props: IEditorPreviewProps): React.ReactNode {
   return <EditorPreview {...props} />;
+}
+
+function _isEditorSupported(code: string): boolean {
+  const win = getWindow();
+  return (
+    // Not server-side rendering
+    !!win &&
+    // Required environment config available
+    !!getMonacoConfig() &&
+    // Opt-in query param or session storage is set
+    getSetting('useEditor') === '1' &&
+    // Not IE 11
+    !isIE11() &&
+    // Service worker available
+    !!win.navigator.serviceWorker &&
+    // No immediate issues detected in example (or exceptions thrown from parsing)
+    typeof transformExample(code!, 'fake') !== 'string'
+  );
 }

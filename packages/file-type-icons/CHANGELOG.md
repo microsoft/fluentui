@@ -1,7 +1,13 @@
 # Change Log - @uifabric/file-type-icons
 
-This log was last generated on Wed, 04 Sep 2019 04:09:58 GMT and should not be manually modified.
+This log was last generated on Thu, 12 Sep 2019 12:34:15 GMT and should not be manually modified.
 
+## 7.1.0
+Thu, 12 Sep 2019 12:34:15 GMT
+
+### Minor changes
+
+- updating office file type to include .b (caperez@microsoft.com)
 ## 7.0.8
 Wed, 04 Sep 2019 04:09:58 GMT
 

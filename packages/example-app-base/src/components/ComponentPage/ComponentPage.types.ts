@@ -22,6 +22,7 @@ export interface IComponentPageProps {
   dos?: JSX.Element;
   donts?: JSX.Element;
   overview?: JSX.Element;
+  accessibility?: JSX.Element;
   /**
    * Related link
    */

@@ -32,12 +32,10 @@ const listClassName = mergeStyles({
   }
 });
 
-const StaticListExample = () => {
+export const StaticListExample = () => {
   return (
     <StaticList items={ITEMS} className={listClassName}>
       {(_item: number, index: number) => <li key={index}>{`Item #${index}`}</li>}
     </StaticList>
   );
 };
-
-export { StaticListExample };

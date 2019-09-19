@@ -134,5 +134,27 @@ export const MessageBarBasicExample: React.StatelessComponent = () => (
         </Link>
       </MessageBar>
     </StackItem>
+
+    <StackItem>
+      <Label>Warning MessageBar - single line, with dismiss, action buttons, and custom icons</Label>
+      <MessageBar
+        messageBarType={MessageBarType.warning}
+        isMultiline={false}
+        onDismiss={log('test')}
+        dismissButtonAriaLabel="Close"
+        actions={
+          <div>
+            <MessageBarButton>Action</MessageBarButton>
+          </div>
+        }
+        dismissIconProps={{ iconName: 'AddFriend' }}
+        messageBarIconProps={{ iconName: 'Search' }}
+      >
+        Warning lorem ipsum dolor sit amet, a elit sem interdum consectetur adipiscing elit.{' '}
+        <Link href="www.bing.com" target="_blank">
+          Visit our website.
+        </Link>
+      </MessageBar>
+    </StackItem>
   </Stack>
 );
