@@ -20,10 +20,10 @@ import { getStyles } from './ExampleCard.styles';
 import {
   EditorWrapper,
   SUPPORTED_PACKAGES,
-  isEditorSupported,
   IEditorPreviewProps,
   IMonacoTextModel,
-  transformExample
+  transformExample,
+  isExampleValid
 } from '@uifabric/tsx-editor/lib/index-min';
 // DO NOT import anything from the root of tsx-editor, to avoid pulling Monaco into the main bundle!
 
@@ -51,7 +51,9 @@ const regionStyles: IStackComponent['styles'] = (props, theme) => ({
 
 export class ExampleCardBase extends React.Component<IExampleCardProps, IExampleCardState> {
   private _monacoModelRef: React.MutableRefObject<IMonacoTextModel | undefined> = { current: undefined };
-  private _canEdit: boolean;
+  /** Whether the initial example code can be transformed for editing and/or export to codepen */
+  private _canTransform: boolean;
+
   private _themeCustomizations: IExampleCardCustomizations[] | undefined;
   private _themeOptions: IDropdownOption[];
   private _classNames: IProcessedStyleSet<IExampleCardStyles>;
@@ -59,24 +61,15 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
 
   constructor(props: IExampleCardProps) {
     super(props);
+    const { code = '' } = this.props;
     this.state = {
       isCodeVisible: false,
       schemeIndex: 0,
       themeIndex: 0,
-      latestCode: props.code || ''
+      latestCode: code
     };
 
-    try {
-      // Auto-detect whether editing (and export to codepen) is supported
-      this._canEdit = isEditorSupported(this.state.latestCode, SUPPORTED_PACKAGES);
-    } catch (ex) {
-      // isEditorSupported shouldn't throw, but log in case it does to help with debugging
-      console.warn('Exception while parsing example!');
-      console.warn(ex);
-      console.warn('Code:');
-      console.warn(this.state.latestCode);
-      this._canEdit = false;
-    }
+    this._canTransform = isExampleValid(code, SUPPORTED_PACKAGES);
 
     if (props.isCodeVisible !== undefined && props.onToggleEditor === undefined && process.env.NODE_ENV !== 'production') {
       warn('ExampleCard: the onToggleEditor prop is required if isCodeVisible is set. Otherwise the show/hide code button will not work.');
@@ -121,7 +114,7 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
               <div className={classNames.header}>
                 <span className={classNames.title}>{title}</span>
                 <div className={classNames.toggleButtons}>
-                  {(codepenJS || this._canEdit) && (
+                  {(codepenJS || this._canTransform) && (
                     <CodepenComponent
                       jsContent={this._getCodepenContent}
                       styles={{ subComponentStyles: { button: subComponentStyles.codeButtons } }}
@@ -161,7 +154,7 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
               </div>
               <EditorWrapper
                 code={latestCode}
-                useEditor={this._canEdit}
+                supportedPackages={SUPPORTED_PACKAGES}
                 isCodeVisible={isCodeVisible}
                 editorClassName={classNames.code}
                 height={500}
@@ -225,21 +218,22 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
   };
 
   private _getCodepenContent = (): string => {
-    if (this._canEdit) {
-      // Use the latest edited code if possible when exporting to codepen
-      const code = this._monacoModelRef.current ? this._monacoModelRef.current.getValue() : this.state.latestCode;
-      let result = transformExample({
+    const transform = (code: string) =>
+      transformExample({
         tsCode: code,
         id: CONTENT_ID,
         supportedPackages: SUPPORTED_PACKAGES
       });
-      if (result.error && code !== this.props.code) {
-        // Error transforming code, and the code has been edited. Fall back to original code.
-        result = transformExample({
-          tsCode: this.props.code || '',
-          id: CONTENT_ID,
-          supportedPackages: SUPPORTED_PACKAGES
-        });
+
+    if (this._canTransform) {
+      // Use a client-side transform if possible. Start by trying to transform the latest code,
+      // then fall back to the initial code (which we know is valid) if needed.
+      const monacoModel = this._monacoModelRef.current;
+      let result = transform(monacoModel ? monacoModel.getValue() : this.state.latestCode);
+
+      if (result.error) {
+        // Error transforming code--fall back to original code.
+        result = transform(this.props.code || '');
       }
       if (result.output) {
         return result.output;
@@ -254,16 +248,12 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
     if (isCodeVisible !== undefined && onToggleEditor !== undefined) {
       // Editor visibility is controlled
       wasCodeVisible = isCodeVisible;
-      if (isCodeVisible) {
-        onToggleEditor('');
-      } else {
-        onToggleEditor(title);
-      }
+      onToggleEditor(wasCodeVisible ? '' : title);
     } else {
       // Editor visibility is uncontrolled
       wasCodeVisible = !!this.state.isCodeVisible;
       this.setState({
-        isCodeVisible: !this.state.isCodeVisible
+        isCodeVisible: !wasCodeVisible
       });
     }
 
