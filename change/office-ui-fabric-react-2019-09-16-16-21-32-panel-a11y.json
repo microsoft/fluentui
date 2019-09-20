@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Update Panel examples to improve accessibility.",
+  "packageName": "office-ui-fabric-react",
+  "email": "jdh@microsoft.com",
+  "commit": "b4ba803a7c5d983b833fe13333ab881f091a56e4",
+  "date": "2019-09-16T23:21:32.149Z"
+}
