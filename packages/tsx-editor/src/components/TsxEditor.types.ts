@@ -1,5 +1,5 @@
 import { IEditorProps } from './Editor.types';
-import { ICompilerOptions, IPackageGroup } from '../interfaces/index';
+import { ICompilerOptions, IPackageGroup, ITransformedCode } from '../interfaces/index';
 
 export interface ITsxEditorProps {
   /**
@@ -12,11 +12,8 @@ export interface ITsxEditorProps {
   /** ID of a div to render the example into. */
   previewId: string;
 
-  /**
-   * Callback to notify when transforming finishes. Called with an error string if there was
-   * a problem transpiling/transforming/eval-ing succeeded, or undefined if it succeeded.
-   */
-  onTransformFinished: (error: string | undefined) => void;
+  /** Callback to notify when transforming finishes. */
+  onTransformFinished: (result: ITransformedCode) => void;
 
   /**
    * TS compiler option overrides. Overrides to certain options essential to the TsxEditor's

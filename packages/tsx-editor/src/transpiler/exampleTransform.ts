@@ -1,13 +1,8 @@
 import { tryParseExample, IMPORT_REGEX } from './exampleParser';
 import { _supportedPackageToGlobalMap } from './transpileHelpers';
-import { IBasicPackageGroup } from '../interfaces/index';
+import { IBasicPackageGroup, ITransformedCode } from '../interfaces/index';
 // Don't reference anything importing Monaco in this file to avoid pulling Monaco into the
 // main bundle or breaking tests!
-
-export interface ITransformedExample {
-  output?: string;
-  error?: string;
-}
 
 export interface ITransformExampleParams {
   /**
@@ -33,7 +28,7 @@ declare const window: Window & {
 /**
  * Transform an example for rendering in a browser context (example page or codepen).
  */
-export function transformExample(params: ITransformExampleParams): ITransformedExample {
+export function transformExample(params: ITransformExampleParams): ITransformedCode {
   const { tsCode, jsCode, id, supportedPackages } = params;
 
   // Imports or exports will be removed since they are not supported.
@@ -42,7 +37,7 @@ export function transformExample(params: ITransformExampleParams): ITransformedE
     .replace(/^export /gm, '')
     .trim();
 
-  const output: ITransformedExample = {};
+  const output: ITransformedCode = {};
 
   // Get info about the example's imports and exports
   const exampleInfo = tryParseExample(tsCode, supportedPackages);
