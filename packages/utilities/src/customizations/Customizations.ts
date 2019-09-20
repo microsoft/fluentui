@@ -76,15 +76,19 @@ export class Customizations {
     return settings;
   }
 
-  /** Used to run some code that sets Customizations without triggering an update.
-   * Useful for applying Customizations that don't affect anything currently rendered.
+  /** Used to run some code that sets Customizations without triggering an update until the end.
+   * Useful for applying Customizations that don't affect anything currently rendered, or for
+   * applying many customizations at once.
+   * @param suppressUpdate Do not raise the change event at the end, preventing all updates
    */
-  public static suppressUpdates(code: () => void): void {
+  public static applyBatchedUpdates(code: () => void, suppressUpdate?: boolean): void {
     Customizations._suppressUpdates = true;
     try {
       code();
-    } finally {
-      Customizations._suppressUpdates = false;
+    } catch { /* do nothing */ }
+    Customizations._suppressUpdates = false;
+    if (!suppressUpdate) {
+      Customizations._raiseChange();
     }
   }
 

@@ -143,6 +143,7 @@ export function customizable(scope: string, fields: string[], concatStyles?: boo
 
 // @public (undocumented)
 export class Customizations {
+    static applyBatchedUpdates(code: () => void, suppressUpdate?: boolean): void;
     static applyScopedSettings(scopeName: string, settings: ISettings): void;
     static applySettings(settings: ISettings): void;
     // (undocumented)
@@ -151,7 +152,6 @@ export class Customizations {
     static observe(onChange: () => void): void;
     // (undocumented)
     static reset(): void;
-    static suppressUpdates(code: () => void): void;
     // (undocumented)
     static unobserve(onChange: () => void): void;
 }
