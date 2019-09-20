@@ -45,7 +45,6 @@ Controls/web.tsx @Vitalius1 @natalieethell
 
 #### Packages
 packages/charting/ @Raghurk
-packages/codepen-loader/ @ecraig12345 @kenotron
 packages/date-time @OfficeDev/uifabric-calendar @lorejoh @evlevy
 packages/example-app-base/ @ecraig12345
 packages/file-type-icons/  @KatherineThayerMicrosoft @jahnp @bigbadcapers
