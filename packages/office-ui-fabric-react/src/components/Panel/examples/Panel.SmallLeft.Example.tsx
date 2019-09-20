@@ -19,6 +19,7 @@ export class PanelSmallLeftExample extends React.Component<{}, IPanelSmallLeftEx
           isOpen={this.state.showPanel}
           type={PanelType.smallFixedNear}
           onDismiss={this._hidePanel}
+          closeButtonAriaLabel="Close"
           headerText="Panel - Small, left-aligned, fixed"
         >
           <span>Content goes here.</span>

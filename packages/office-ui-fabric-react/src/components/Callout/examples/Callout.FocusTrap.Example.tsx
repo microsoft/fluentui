@@ -1,8 +1,5 @@
 import * as React from 'react';
-import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
-import { FocusTrapCallout } from 'office-ui-fabric-react/lib/Callout';
-import { CommandBar, ICommandBarItemProps } from 'office-ui-fabric-react/lib/CommandBar';
-import { getId } from 'office-ui-fabric-react/lib/Utilities';
+import { DefaultButton, FocusTrapCallout, CommandBar, ICommandBarItemProps, getId } from 'office-ui-fabric-react';
 import './CalloutExample.scss';
 
 export interface ICalloutFocusTrapExampleState {
@@ -50,7 +47,7 @@ export class CalloutFocusTrapExample extends React.Component<{}, ICalloutFocusTr
                   </p>
                 </div>
               </div>
-              <CommandBar items={/* tslint:disable-line:no-use-before-declare */ items} />
+              <CommandBar overflowButtonProps={{ name: 'More' }} items={/* tslint:disable-line:no-use-before-declare */ items} />
             </FocusTrapCallout>
           </div>
         ) : null}

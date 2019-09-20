@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Add full typings support; refactor editor component into layers; improve example parsing",
+  "packageName": "@uifabric/tsx-editor",
+  "email": "elcraig@microsoft.com",
+  "commit": "d62bda1f875f495aa4324c308650cbe334139ed9",
+  "date": "2019-09-19T20:51:39.183Z"
+}

@@ -59,7 +59,19 @@ The api surfaces consists of 3 methods and a handful of interfaces:
 
 `mergeStyleSets(...args[]: IStyleSet[]): { [key: string]: string }` - Takes in one or more style set objects, each consisting of a set of areas, each which will produce a class name. Using this is analogous to calling mergeStyles for each property in the object, but ensures we maintain the set ordering when multiple style sets are merged.
 
-`concatStyleSet(...args[]: IStyleSet[]): IStyleSet` - In some cases you simply need to combine style sets, without actually generating class names (it is costs in performance to generate class names.) This tool returns a single set merging many together.
+`concatStyleSets(...args[]: IStyleSet[]): IStyleSet` - In some cases you simply need to combine style sets, without actually generating class names (it is costs in performance to generate class names.) This tool returns a single set merging many together.
+
+`concatStyleSetsWithProps(props: {}, ...args[]: IStyleSet[]): IStyleSet` - Similar to `concatStyleSet` except that style sets which contain functional evaluation of styles are evaluated prior to concatenating.
+
+Example:
+
+```tsx
+const result = concatStyleSetsWithProps<IFooProps, IFooStyles>(
+  { foo: 'bar' },
+  (props: IFooProps) => ({ root: { background: props.foo } }),
+  (props: IFooProps) => ({ root: { color: props.foo } })
+);
+```
 
 ## Vocabulary
 

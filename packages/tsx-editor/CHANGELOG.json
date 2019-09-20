@@ -2,6 +2,34 @@
   "name": "@uifabric/tsx-editor",
   "entries": [
     {
+      "date": "Thu, 19 Sep 2019 13:05:24 GMT",
+      "tag": "@uifabric/tsx-editor_v0.6.0",
+      "version": "0.6.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Use new way of consuming Monaco bundle",
+            "author": "elcraig@microsoft.com",
+            "commit": "90fbbbfd43f93dbe8d95c094f1cd988614ae39bd"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 18 Sep 2019 12:32:55 GMT",
+      "tag": "@uifabric/tsx-editor_v0.5.1",
+      "version": "0.5.1",
+      "comments": {
+        "none": [
+          {
+            "comment": "Fix newline issue in test",
+            "author": "elcraig@microsoft.com",
+            "commit": "36f3c57bf0d4403f4a2573cba56fe5759e7edc77"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 13 Sep 2019 12:34:39 GMT",
       "tag": "@uifabric/tsx-editor_v0.5.1",
       "version": "0.5.1",

@@ -931,6 +931,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                                                   margin-top: 0px;
                                                 }
                                             id="example-label1"
+                                            role="heading"
                                           >
                                             Example Title
                                           </p>

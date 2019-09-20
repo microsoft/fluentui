@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "ContextualMenu: Update the bounds prop to allow for the same functionality that the Callout has",
+  "packageName": "office-ui-fabric-react",
+  "email": "jspurlin@microsoft.com",
+  "commit": "a7bf73ab77f60f69422ff777802ddf256e0c0930",
+  "date": "2019-09-19T19:49:16.543Z"
+}
