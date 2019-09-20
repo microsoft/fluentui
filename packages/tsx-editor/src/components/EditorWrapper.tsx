@@ -6,7 +6,7 @@ import { EditorError } from './EditorError';
 import { TypeScriptSnippet } from './TypeScriptSnippet';
 import { EditorLoading } from './EditorLoading';
 import { SUPPORTED_PACKAGES, isEditorSupported } from '../utilities/index';
-import { ITransformedCode } from '../interfaces';
+import { ITransformedCode } from '../interfaces/index';
 
 // This file MUST NOT directly load the main TsxEditor module which depends on Monaco, to avoid
 // pulling it into a bundle. Importing/rendering with React.lazy solves this.

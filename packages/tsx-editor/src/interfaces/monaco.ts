@@ -1,5 +1,4 @@
 // Convenience re-exports of Monaco interfaces.
-// Don't import this file from anything that will be used in a Jest test.
 
 // This import MUST be from the API file (not the root) to prevent Monaco from being pulled into
 // the main bundle.
