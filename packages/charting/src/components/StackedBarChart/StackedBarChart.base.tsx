@@ -69,26 +69,34 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
     const { palette } = theme!;
     const barHeight = ignoreFixStyle || data!.chartData!.length > 2 ? this.props.barHeight : 8;
     if (benchmarkData) {
+      // benchmark color is used to render color for benchmark triangle and benchmark legend
       benchmarkData.color = benchmarkData.color || palette.neutralTertiary;
     }
-
     if (targetData) {
+      // target color is used to render color for target triangle and target legend
       targetData.color = targetData.color || palette.neutralSecondary;
     }
-    const totalData = this._getTotalChartData(data!);
-
     const bars = this._createBarsAndLegends(data!, barHeight!, palette, barBackgroundColor, href, benchmarkData, targetData);
     const showRatio = hideNumberDisplay === false && (!ignoreFixStyle && data!.chartData!.length === 2);
     const showNumber = hideNumberDisplay === false && (!ignoreFixStyle && data!.chartData!.length === 1);
-    let total = 0;
-    if (showRatio === true) {
-      total = data!.chartData!.reduce((acc: number, value: IChartDataPoint) => acc + (value.data ? value.data : 0), 0);
+    const total = data!.chartData!.reduce((acc: number, value: IChartDataPoint) => acc + (value.data ? value.data : 0), 0);
+    let benchmarkRatio = 0;
+    if (benchmarkData && total) {
+      benchmarkRatio = (benchmarkData.data! / total) * 100;
+    }
+    let targetRatio = 0;
+    if (targetData && total) {
+      targetRatio = (targetData.data! / total) * 100;
     }
     const showLegend = hideLegend === false && (ignoreFixStyle || data!.chartData!.length > 2);
     const { isCalloutVisible } = this.state;
     this._classNames = getClassNames(styles!, {
       legendColor: this.state.color,
-      theme: theme!
+      theme: theme!,
+      benchmarkColor: benchmarkData ? benchmarkData.color : '',
+      benchmarkRatio,
+      targetColor: targetData ? targetData.color : '',
+      targetRatio
     });
     return (
       <div className={this._classNames.root}>
@@ -116,8 +124,8 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
         </div>
         {(benchmarkData || targetData) && (
           <div className={this._classNames.benchmarkContainer}>
-            {benchmarkData && this._createBenchmark(totalData, benchmarkData)}
-            {targetData && this._createBenchmark(totalData, targetData)}
+            {benchmarkData && <div className={this._classNames.benchmark} />}
+            {targetData && <div className={this._classNames.target} />}
           </div>
         )}
         <svg className={this._classNames.chart}>
@@ -151,31 +159,6 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
       barHeight: barHeight!,
       className
     });
-  }
-
-  private _getTotalChartData(data: IChartProps): number {
-    let sum = 0;
-    if (data.chartData && data.chartData.length > 0) {
-      const chartData = data.chartData;
-      for (let i = 0, n = chartData.length; i < n; i++) {
-        sum += chartData[i].data || 0;
-      }
-    }
-
-    return sum;
-  }
-
-  private _createBenchmark(totalData: number, dataPoint: IChartDataPoint): JSX.Element {
-    const ratio = (dataPoint.data! / totalData) * 100;
-
-    const styles = {
-      marginLeft: 'calc(' + ratio + '% - 4.5px)',
-      marginRight: 'calc(' + (100 - ratio) + '% - 4.5px)',
-      borderTopColor: dataPoint.color
-    };
-
-    // tslint:disable-next-line:jsx-ban-props
-    return <div className={this._classNames.triangle} style={styles} />;
   }
 
   private _createBarsAndLegends(

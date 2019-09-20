@@ -2,7 +2,19 @@ import { IStackedBarChartStyleProps, IStackedBarChartStyles } from './StackedBar
 import { FontSizes, FontWeights } from 'office-ui-fabric-react/lib/Styling';
 
 export const getStyles = (props: IStackedBarChartStyleProps): IStackedBarChartStyles => {
-  const { className, width, barHeight, legendColor, shouldHighlight, theme, href } = props;
+  const {
+    className,
+    width,
+    barHeight,
+    legendColor,
+    shouldHighlight,
+    theme,
+    href,
+    benchmarkColor,
+    benchmarkRatio,
+    targetColor,
+    targetRatio
+  } = props;
   return {
     root: [
       theme.fonts.medium,
@@ -65,14 +77,26 @@ export const getStyles = (props: IStackedBarChartStyleProps): IStackedBarChartSt
       position: 'relative',
       height: '11.8px'
     },
-    triangle: {
+    benchmark: {
       position: 'absolute',
+      left: 'calc(' + benchmarkRatio + '% - 4.5px)',
       width: '0',
       height: '0',
       borderLeft: '4.5px solid transparent',
       borderRight: '4.5px solid transparent',
       borderTop: '7.8px solid',
-      borderTopColor: theme.palette.neutralTertiary,
+      borderTopColor: benchmarkColor,
+      marginBottom: '4px'
+    },
+    target: {
+      position: 'absolute',
+      left: 'calc(' + targetRatio + '% - 4.5px)',
+      width: '0',
+      height: '0',
+      borderLeft: '4.5px solid transparent',
+      borderRight: '4.5px solid transparent',
+      borderTop: '7.8px solid',
+      borderTopColor: targetColor,
       marginBottom: '4px'
     }
   };

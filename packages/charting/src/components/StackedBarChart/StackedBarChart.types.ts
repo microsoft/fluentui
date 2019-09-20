@@ -121,6 +121,26 @@ export interface IStackedBarChartStyleProps {
    * prop to check to decide cursor type
    */
   href?: string;
+
+  /**
+   * the color for the benchmark triangle
+   */
+  benchmarkColor?: string;
+
+  /**
+   * the ratio position for the benchmark triangle
+   */
+  benchmarkRatio?: number;
+
+  /**
+   * the color for the target triangle
+   */
+  targetColor?: string;
+
+  /**
+   * the ratio position for the target triangle
+   */
+  targetRatio?: number;
 }
 
 export interface IStackedBarChartStyles {
@@ -182,5 +202,10 @@ export interface IStackedBarChartStyles {
   /**
    * Style for the benchmark triangle
    */
-  triangle: IStyle;
+  benchmark: IStyle;
+
+  /**
+   * Style for the target triangle
+   */
+  target: IStyle;
 }
