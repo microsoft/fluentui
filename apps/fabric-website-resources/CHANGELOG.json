@@ -2,6 +2,20 @@
   "name": "@uifabric/fabric-website-resources",
   "entries": [
     {
+      "date": "Fri, 13 Sep 2019 12:34:39 GMT",
+      "tag": "@uifabric/fabric-website-resources_v7.3.0",
+      "version": "7.3.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "add accessibility section and add content for modal",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "8bd0327d2378b7af36d3e1fecbba990aa3ac483b"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 04 Sep 2019 04:09:58 GMT",
       "tag": "@uifabric/fabric-website-resources_v7.2.7",
       "version": "7.2.7",

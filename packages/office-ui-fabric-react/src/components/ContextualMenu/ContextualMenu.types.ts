@@ -99,9 +99,9 @@ export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, IWith
   useTargetAsMinWidth?: boolean;
 
   /**
-   * The bounding rectangle for which the contextual menu can appear in.
+   * The bounding rectangle (or callback that returns a rectangle) for which  the contextual menu can appear in.
    */
-  bounds?: IRectangle;
+  bounds?: IRectangle | ((target?: Target, targetWindow?: Window) => IRectangle | undefined);
 
   /**
    * If true then the beak is visible. If false it will not be shown.
@@ -250,6 +250,7 @@ export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, IWith
    * to improve rendering performance when it becomes visible.
    * Note: When ContextualMenu is hidden its content will not be rendered. It will only render
    * once the ContextualMenu is visible.
+   * @defaultValue undefined
    */
   hidden?: boolean;
 

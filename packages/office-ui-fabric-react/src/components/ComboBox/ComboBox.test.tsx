@@ -472,6 +472,22 @@ describe('ComboBox', () => {
     expect(changedValue).toEqual('');
   });
 
+  it('suggestedDisplayValue is called undefined when the selected input is cleared', () => {
+    const componentRef = React.createRef<any>();
+    wrapper = mount(<ComboBox selectedKey="1" options={DEFAULT_OPTIONS} componentRef={componentRef} />);
+
+    // SelectedKey is still the same
+    const inputElement: InputElementWrapper = wrapper.find('.ms-ComboBox input');
+    expect(inputElement.props().value).toEqual('1');
+
+    // SelectedKey is set to null
+    wrapper.setProps({ selectedKey: null });
+    expect(wrapper.find('input').props().value).toEqual('\u200B');
+
+    const suggestedDisplay = (componentRef.current as ComboBox).state.suggestedDisplayValue;
+    expect(suggestedDisplay).toEqual(undefined);
+  });
+
   it('Can type a complete option with autocomplete and allowFreeform on and submit it', () => {
     let updatedOption;
     let updatedIndex;

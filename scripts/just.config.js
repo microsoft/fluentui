@@ -20,8 +20,9 @@ const checkForModifiedFiles = require('./tasks/check-for-modified-files');
 const generateVersionFiles = require('./tasks/generate-version-files');
 const generatePackageManifestTask = require('./tasks/generate-package-manifest');
 
-module.exports = function preset() {
-  // this add s a resolve path for the build tooling deps like TS from the scripts folder
+/** Do only the bare minimum setup of options and resolve paths */
+function basicPreset() {
+  // this adds a resolve path for the build tooling deps like TS from the scripts folder
   addResolvePath(__dirname);
 
   option('production');
@@ -35,6 +36,10 @@ module.exports = function preset() {
   option('commonjs');
 
   option('cached', { default: false });
+}
+
+module.exports = function preset() {
+  basicPreset();
 
   task('clean', clean);
   task('copy', copy);
@@ -84,3 +89,5 @@ module.exports = function preset() {
 
   task('no-op', () => {}).cached();
 };
+
+module.exports.basic = basicPreset;

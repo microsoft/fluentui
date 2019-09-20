@@ -1,7 +1,56 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 12 Sep 2019 12:34:15 GMT and should not be manually modified.
+This log was last generated on Thu, 19 Sep 2019 13:05:24 GMT and should not be manually modified.
 
+## 7.36.0
+Thu, 19 Sep 2019 13:05:24 GMT
+
+### Minor changes
+
+- TagPicker: Updated styles to match toolkit. Added more screener tests. Added read only state. (v-mare@microsoft.com)
+- Apply CheckboxVisiblity to header as well in DetailsList (thomas.gassmann@hotmail.com)
+### Patches
+
+- ComboBox: fix for issue resetting suggestedDisplayValue after clearing the content of a comboBox (marygans@microsoft.com)
+- keep aria-label in sync with FloatingPicker open state in BaseExtendedPicker (mhuan13@gmail.com)
+- SplitButton: Updated high contrast styling (v-mare@microsoft.com)
+- Rating: Fixed duplicates ID on stars with fractional values. (v-mare@microsoft.com)
+- Coachmark: Fixed pulse beacon RTL animation direction issue. (v-mare@microsoft.com)
+- add landmark and widget role to searchbox (mgodbolt@microsoft.com)
+## 7.35.0
+Wed, 18 Sep 2019 12:32:55 GMT
+
+### Minor changes
+
+- Listen to onCompositionUpdate instead of onInput for IME composition (amyngu@microsoft.com)
+- BasePicker: deprecate onFocus (naethell@microsoft.com)
+### Patches
+
+- Contextual Menu calls onMenuOpened when hidden is changed from undefined to false. (kushaly@microsoft.com)
+## 7.34.0
+Mon, 16 Sep 2019 12:34:47 GMT
+
+### Minor changes
+
+- update to use icon prop instead of string (chiechan@microsoft.com)
+### Patches
+
+- Use new hooks in some examples (elcraig@microsoft.com)
+- DatePicker: call custom text field onChange handler if it exists in default onChange handler (naethell@microsoft.com)
+## 7.33.0
+Fri, 13 Sep 2019 12:34:39 GMT
+
+### Minor changes
+
+- CalendarMonth: Prefer createRef over string ref (KevinTCoughlin@users.noreply.github.com)
+- Callout: add the ability for bounds to take a callback (jspurlin@microsoft.com)
+### Patches
+
+- give tooltip hoverable area an index lower than the content (mgodbolt@microsoft.com)
+- Add .is-disabled to ChoiceGroupOption when disabled (KevinTCoughlin@users.noreply.github.com)
+- TextField: remove invalid aria-labelledby (naethell@microsoft.com)
+- DetailsList: add Announced to examples with sortable columns (naethell@microsoft.com)
+- Tooltip: Changed examples from aria-labelledby to aria-describedby to follow a11y spec. (v-mare@microsoft.com)
 ## 7.32.0
 Thu, 12 Sep 2019 12:34:15 GMT
 

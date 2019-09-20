@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "DetailsList: add Announced to examples with sortable columns",
-  "packageName": "office-ui-fabric-react",
-  "email": "naethell@microsoft.com",
-  "commit": "e4f9941fb5b14f087a6b13ae7e0b484110dbd159",
-  "date": "2019-09-11T22:52:19.031Z"
-}
