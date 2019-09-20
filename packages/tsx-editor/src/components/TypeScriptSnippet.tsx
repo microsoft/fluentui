@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { IRawStyle, mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 import { css } from 'office-ui-fabric-react/lib/Utilities';
-import { codeFontFamily } from './common';
+import { codeFontFamily } from './consts';
 
 // react-syntax-highlighter has typings, but they're wrong aside from the props and missing many paths...
 // tslint:disable no-any
@@ -71,6 +71,7 @@ export interface ITypeScriptSnippetProps {
   className?: string;
 }
 
+/** TypeScript code snippet with a theme similar to Monaco's VS light. */
 export const TypeScriptSnippet: React.FunctionComponent<ITypeScriptSnippetProps> = props => {
   return (
     <SyntaxHighlighter className={css(rootClass, props.className)} language="tsx" style={style}>

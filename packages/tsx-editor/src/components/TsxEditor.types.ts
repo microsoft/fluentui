@@ -1,6 +1,5 @@
 import { IEditorProps } from './Editor.types';
-import { ICompilerOptions } from '../interfaces/monaco';
-import { IPackageGroup } from '../interfaces/packageGroup';
+import { ICompilerOptions, IPackageGroup } from '../interfaces/index';
 
 export interface ITsxEditorProps {
   /**

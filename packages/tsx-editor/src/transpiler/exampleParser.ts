@@ -1,5 +1,7 @@
-import { IBasicPackageGroup } from '../interfaces/packageGroup';
+import { IBasicPackageGroup } from '../interfaces/index';
 import { _supportedPackageToGlobalMap } from './transpileHelpers';
+// Don't reference anything importing Monaco in this file to avoid pulling Monaco into the
+// main bundle or breaking tests!
 
 /**
  * Match an import from a TS file.

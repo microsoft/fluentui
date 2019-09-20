@@ -1,4 +1,4 @@
-import { IPackageGroup } from '../interfaces/packageGroup';
+import { IPackageGroup } from '../interfaces/index';
 
 const fabricGroup: IPackageGroup = {
   globalName: 'Fabric',

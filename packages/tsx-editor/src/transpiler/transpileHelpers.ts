@@ -1,5 +1,6 @@
 import { memoizeFunction } from 'office-ui-fabric-react/lib/Utilities';
-import { IBasicPackageGroup } from '../interfaces/packageGroup';
+import { IBasicPackageGroup } from '../interfaces/index';
+// Don't reference anything importing Monaco in this file!
 
 // Helper methods for transpile(). They're in a separate file that doesn't import Monaco so they
 // can be tested with Jest (which doesn't like Monaco's ES modules).
