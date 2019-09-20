@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { IRawStyle, mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 import { css } from 'office-ui-fabric-react/lib/Utilities';
-import { FontSizes } from '@uifabric/fluent-theme';
+import { FontSizes } from '@uifabric/styling';
 
 // react-syntax-highlighter has typings, but they're wrong aside from the props and missing many paths...
 // tslint:disable no-any
@@ -30,7 +30,7 @@ const colorMap: { [key: string]: string } = {
 };
 const codeStyle: IRawStyle = {
   fontFamily: codeFontFamily,
-  fontSize: FontSizes.size12, // matches Monaco
+  fontSize: FontSizes.small, // matches Monaco
   color: 'black',
   lineHeight: '1.6',
   border: 'none',
