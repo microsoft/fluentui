@@ -10,6 +10,62 @@
   },
   "glyphs": [
     {
+      "name": "AddFavoriteFill",
+      "unicode": "F0C9"
+    },
+    {
+      "name": "BufferTimeBefore",
+      "unicode": "F0CF"
+    },
+    {
+      "name": "BufferTimeAfter",
+      "unicode": "F0D0"
+    },
+    {
+      "name": "BufferTimeBoth",
+      "unicode": "F0D1"
+    },
+    {
+      "name": "PublishContent",
+      "unicode": "F0D4"
+    },
+    {
+      "name": "ClipboardList",
+      "unicode": "F0E3"
+    },
+    {
+      "name": "ClipboardListMirrored",
+      "unicode": "F0E4"
+    },
+    {
+      "name": "CannedChat",
+      "unicode": "F0F2"
+    },
+    {
+      "name": "SkypeForBusinessLogo",
+      "unicode": "F0FC"
+    },
+    {
+      "name": "TabCenter",
+      "unicode": "F100"
+    },
+    {
+      "name": "PageCheckedin",
+      "unicode": "F104"
+    },
+    {
+      "name": "PageList",
+      "unicode": "F106"
+    },
+    {
+      "name": "ReadOutLoud",
+      "unicode": "F112"
+    },
+    {
+      "name": "CaretBottomLeftSolid8",
+      "unicode": "F121"
+    },
+    {
       "name": "CaretBottomRightSolid8",
       "unicode": "F122"
     },
@@ -112,6 +168,10 @@
     {
       "name": "BranchFork",
       "unicode": "F173"
+    },
+    {
+      "name": "MuteChat",
+      "unicode": "F17A"
     },
     {
       "name": "AddHome",
@@ -348,66 +408,6 @@
     {
       "name": "ViewList",
       "unicode": "F247"
-    },
-    {
-      "name": "ViewListGroup",
-      "unicode": "F248"
-    },
-    {
-      "name": "ViewListTree",
-      "unicode": "F249"
-    },
-    {
-      "name": "TriggerAuto",
-      "unicode": "F24A"
-    },
-    {
-      "name": "TriggerUser",
-      "unicode": "F24B"
-    },
-    {
-      "name": "PivotChart",
-      "unicode": "F24C"
-    },
-    {
-      "name": "StackedBarChart",
-      "unicode": "F24D"
-    },
-    {
-      "name": "StackedLineChart",
-      "unicode": "F24E"
-    },
-    {
-      "name": "BuildQueue",
-      "unicode": "F24F"
-    },
-    {
-      "name": "BuildQueueNew",
-      "unicode": "F250"
-    },
-    {
-      "name": "UserFollowed",
-      "unicode": "F25C"
-    },
-    {
-      "name": "ContactLink",
-      "unicode": "F25F"
-    },
-    {
-      "name": "Stack",
-      "unicode": "F26F"
-    },
-    {
-      "name": "Bullseye",
-      "unicode": "F272"
-    },
-    {
-      "name": "VennDiagram",
-      "unicode": "F273"
-    },
-    {
-      "name": "FiveTileGrid",
-      "unicode": "F274"
     }
   ]
 }

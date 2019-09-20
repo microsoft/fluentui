@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ITextModel } from './Editor.types';
+import { IMonacoTextModel, IPackageGroup } from '../interfaces/index';
 
 export interface IEditorWrapperProps {
   /** Code to edit */
@@ -23,10 +23,19 @@ export interface IEditorWrapperProps {
   width?: number | string;
 
   /** Used to access the editor model. Cleared when editor component is disposed to avoid memory leaks. */
-  modelRef?: React.MutableRefObject<ITextModel | undefined>;
+  modelRef?: React.MutableRefObject<IMonacoTextModel | undefined>;
 
   /** Force using the editor (vs the code viewer) on or off */
   useEditor?: boolean;
+
+  /**
+   * Supported packages for imports (React is implicitly supported).
+   * Defaults to `office-ui-fabric-react` (and everything it exports) plus `@uifabric/example-data`.
+   *
+   * WARNING: Changing this prop will cause editor initialization to re-run.
+   * (Save the value in a constant to prevent it from mutating every render.)
+   */
+  supportedPackages?: IPackageGroup[];
 
   /** Initial children to show in the example results div (will be replaced when the example runs) */
   children?: React.ReactNode;

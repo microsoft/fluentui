@@ -2,6 +2,20 @@
   "name": "@uifabric/monaco-editor",
   "entries": [
     {
+      "date": "Thu, 19 Sep 2019 13:05:24 GMT",
+      "tag": "@uifabric/monaco-editor_v0.2.0",
+      "version": "0.2.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add readme and bundle helpers; update bundle structure",
+            "author": "elcraig@microsoft.com",
+            "commit": "90fbbbfd43f93dbe8d95c094f1cd988614ae39bd"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 13 Sep 2019 12:34:39 GMT",
       "tag": "@uifabric/monaco-editor_v0.1.1",
       "version": "0.1.1",

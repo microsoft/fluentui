@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { IAutofillProps, IAutofill } from './Autofill.types';
-import { BaseComponent, KeyCodes, getNativeProps, inputProperties } from '../../Utilities';
+import { BaseComponent, KeyCodes, getNativeProps, inputProperties, isIE11 } from '../../Utilities';
 
 export interface IAutofillState {
   displayValue?: string;
@@ -159,7 +159,9 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
   // Some examples of this are mobile text input and languages like Japanese or Arabic.
   // Find out more at https://developer.mozilla.org/en-US/docs/Web/Events/compositionstart
   private _onCompositionUpdate = () => {
-    this._updateValue(this._getCurrentInputValue());
+    if (isIE11()) {
+      this._updateValue(this._getCurrentInputValue());
+    }
   };
 
   // Composition events are used when the character/text requires several keystrokes to be completed.
@@ -218,8 +220,8 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
     // Right now typing does not have isComposing, once that has been fixed any should be removed.
     this._tryEnableAutofill(value, this._value, (ev.nativeEvent as any).isComposing);
 
-    // If is currently composing, rely on onCompositionUpdate event instead of onInput
-    if (!this._isComposing) {
+    // If it is not IE11 and currently composing, update the value
+    if (!(isIE11() && this._isComposing)) {
       this._updateValue(value);
     }
   };

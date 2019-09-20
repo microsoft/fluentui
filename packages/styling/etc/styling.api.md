@@ -5,6 +5,7 @@
 ```ts
 
 import { concatStyleSets } from '@uifabric/merge-styles';
+import { concatStyleSetsWithProps } from '@uifabric/merge-styles';
 import { fontFace } from '@uifabric/merge-styles';
 import { ICSPSettings } from '@uifabric/merge-styles';
 import { ICustomizerContext } from '@uifabric/utilities';
@@ -43,6 +44,8 @@ export function buildClassMap<T extends Object>(styles: T): {
 export const ColorClassNames: IColorClassNames;
 
 export { concatStyleSets }
+
+export { concatStyleSetsWithProps }
 
 // @public (undocumented)
 export function createFontStyles(localeCode: string | null): IFontStyles;

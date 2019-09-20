@@ -1,8 +1,0 @@
-{
-  "comment": "TagPicker: Updated styles to match toolkit. Added more screener tests. Added read only state.",
-  "type": "minor",
-  "packageName": "office-ui-fabric-react",
-  "email": "v-mare@microsoft.com",
-  "commit": "cb391cf51c1f0ba03ab9a1ecc4a186e31277a4b4",
-  "date": "2019-08-20T05:01:07.229Z"
-}
