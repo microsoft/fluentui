@@ -19,6 +19,7 @@ export class PanelSmallFluidExample extends React.Component<{}, IPanelSmallFluid
           isOpen={this.state.showPanel}
           type={PanelType.smallFluid}
           onDismiss={this._hidePanel}
+          closeButtonAriaLabel="Close"
           headerText="Panel - Small, right-aligned, fixed"
         >
           <span>Content goes here.</span>
