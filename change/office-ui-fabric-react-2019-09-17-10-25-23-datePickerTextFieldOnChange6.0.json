@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "DatePicker: call custom text field onChange handler if it exists in default onChande handler",
-  "packageName": "office-ui-fabric-react",
-  "email": "naethell@microsoft.com",
-  "commit": "c43321b1c06a6e5844ca4edf70c84fb061c8579e",
-  "date": "2019-09-17T17:25:23.568Z"
-}

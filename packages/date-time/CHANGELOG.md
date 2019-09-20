@@ -1,7 +1,13 @@
 # Change Log - @uifabric/date-time
 
-This log was last generated on Wed, 04 Sep 2019 12:24:13 GMT and should not be manually modified.
+This log was last generated on Fri, 20 Sep 2019 12:24:05 GMT and should not be manually modified.
 
+## 6.3.8
+Fri, 20 Sep 2019 12:24:05 GMT
+
+### Patches
+
+- DatePicker: call custom text field onChange handler if it exists in default onChange handler (naethell@microsoft.com)
 ## 6.3.7
 Wed, 04 Sep 2019 12:24:13 GMT
 

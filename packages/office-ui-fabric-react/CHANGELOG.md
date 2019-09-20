@@ -1,7 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 17 Sep 2019 12:24:52 GMT and should not be manually modified.
+This log was last generated on Fri, 20 Sep 2019 12:24:05 GMT and should not be manually modified.
 
+## 6.204.1
+Fri, 20 Sep 2019 12:24:05 GMT
+
+### Patches
+
+- DatePicker: call custom text field onChange handler if it exists in default onChande handler (naethell@microsoft.com)
 ## 6.204.0
 Tue, 17 Sep 2019 12:24:52 GMT
 
