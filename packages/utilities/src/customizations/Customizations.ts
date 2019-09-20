@@ -79,7 +79,7 @@ export class Customizations {
   /** Used to run some code that sets Customizations without triggering an update until the end.
    * Useful for applying Customizations that don't affect anything currently rendered, or for
    * applying many customizations at once.
-   * @param suppressUpdate Do not raise the change event at the end, preventing all updates
+   * @param suppressUpdate - Do not raise the change event at the end, preventing all updates
    */
   public static applyBatchedUpdates(code: () => void, suppressUpdate?: boolean): void {
     Customizations._suppressUpdates = true;
