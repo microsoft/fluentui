@@ -1,7 +1,13 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Wed, 04 Sep 2019 12:24:13 GMT and should not be manually modified.
+This log was last generated on Fri, 20 Sep 2019 23:15:56 GMT and should not be manually modified.
 
+## 6.42.0
+Fri, 20 Sep 2019 23:15:56 GMT
+
+### Minor changes
+
+- Customizations: add suppressUpdates() (phkuo@microsoft.com)
 ## 6.41.7
 Wed, 04 Sep 2019 12:24:13 GMT
 

@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Positioning: Fix issue where anchor edge would flip even if previous positions calculated",
-  "packageName": "office-ui-fabric-react",
-  "email": "joschect@microsoft.com",
-  "commit": "52bfddc7567b8f910189142d75c2762358c0e62b",
-  "date": "2019-09-20T18:01:17.186Z"
-}

@@ -2,6 +2,20 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "date": "Fri, 20 Sep 2019 23:15:56 GMT",
+      "tag": "@uifabric/utilities_v6.42.0",
+      "version": "6.42.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Customizations: add suppressUpdates()",
+            "author": "phkuo@microsoft.com",
+            "commit": "7e04bff5fac9d38a7392e7238306b35b2fa95b17"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 04 Sep 2019 12:24:13 GMT",
       "tag": "@uifabric/utilities_v6.41.7",
       "version": "6.41.7",

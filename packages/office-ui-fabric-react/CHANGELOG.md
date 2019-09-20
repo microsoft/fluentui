@@ -1,7 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 20 Sep 2019 12:24:05 GMT and should not be manually modified.
+This log was last generated on Fri, 20 Sep 2019 23:15:56 GMT and should not be manually modified.
 
+## 6.204.2
+Fri, 20 Sep 2019 23:15:56 GMT
+
+### Patches
+
+- Positioning: Fix issue where anchor edge would flip even if previous positions calculated (joschect@microsoft.com)
 ## 6.204.1
 Fri, 20 Sep 2019 12:24:05 GMT
 

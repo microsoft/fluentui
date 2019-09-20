@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Customizations: add suppressUpdates()",
-  "packageName": "@uifabric/utilities",
-  "email": "phkuo@microsoft.com",
-  "commit": "7e04bff5fac9d38a7392e7238306b35b2fa95b17",
-  "date": "2019-09-20T01:40:13.542Z"
-}

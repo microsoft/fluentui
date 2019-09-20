@@ -2,6 +2,20 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Fri, 20 Sep 2019 23:15:56 GMT",
+      "tag": "office-ui-fabric-react_v6.204.2",
+      "version": "6.204.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Positioning: Fix issue where anchor edge would flip even if previous positions calculated",
+            "author": "joschect@microsoft.com",
+            "commit": "52bfddc7567b8f910189142d75c2762358c0e62b"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 20 Sep 2019 12:24:05 GMT",
       "tag": "office-ui-fabric-react_v6.204.1",
       "version": "6.204.1",
