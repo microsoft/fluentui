@@ -10,6 +10,70 @@
   },
   "glyphs": [
     {
+      "name": "FinancialSolid",
+      "unicode": "F346"
+    },
+    {
+      "name": "FinancialMirroredSolid",
+      "unicode": "F347"
+    },
+    {
+      "name": "HeadsetSolid",
+      "unicode": "F348"
+    },
+    {
+      "name": "PermissionsSolid",
+      "unicode": "F349"
+    },
+    {
+      "name": "ParkingSolid",
+      "unicode": "F34A"
+    },
+    {
+      "name": "ParkingMirroredSolid",
+      "unicode": "F34B"
+    },
+    {
+      "name": "DiamondSolid",
+      "unicode": "F34C"
+    },
+    {
+      "name": "AsteriskSolid",
+      "unicode": "F34D"
+    },
+    {
+      "name": "OfflineStorageSolid",
+      "unicode": "F34E"
+    },
+    {
+      "name": "BankSolid",
+      "unicode": "F34F"
+    },
+    {
+      "name": "DecisionSolid",
+      "unicode": "F350"
+    },
+    {
+      "name": "Parachute",
+      "unicode": "F351"
+    },
+    {
+      "name": "ParachuteSolid",
+      "unicode": "F352"
+    },
+    {
+      "name": "FiltersSolid",
+      "unicode": "F353"
+    },
+    {
+      "name": "ColorSolid",
+      "unicode": "F354"
+    },
+    {
+      "name": "ReviewSolid",
+      "unicode": "F355"
+    },
+    {
       "name": "ReviewRequestSolid",
       "unicode": "F356"
     },
@@ -344,70 +408,6 @@
     {
       "name": "DeclineCall",
       "unicode": "F405"
-    },
-    {
-      "name": "RectangularClipping",
-      "unicode": "F407"
-    },
-    {
-      "name": "TeamsLogo16",
-      "unicode": "F40A"
-    },
-    {
-      "name": "TeamsLogoFill16",
-      "unicode": "F40B"
-    },
-    {
-      "name": "Spacer",
-      "unicode": "F40D"
-    },
-    {
-      "name": "SkypeLogo16",
-      "unicode": "F40E"
-    },
-    {
-      "name": "SkypeForBusinessLogo16",
-      "unicode": "F40F"
-    },
-    {
-      "name": "SkypeForBusinessLogoFill16",
-      "unicode": "F410"
-    },
-    {
-      "name": "FilterSolid",
-      "unicode": "F412"
-    },
-    {
-      "name": "MailUndelivered",
-      "unicode": "F415"
-    },
-    {
-      "name": "MailTentative",
-      "unicode": "F416"
-    },
-    {
-      "name": "MailTentativeMirrored",
-      "unicode": "F417"
-    },
-    {
-      "name": "MailReminder",
-      "unicode": "F418"
-    },
-    {
-      "name": "ReceiptUndelivered",
-      "unicode": "F419"
-    },
-    {
-      "name": "ReceiptTentative",
-      "unicode": "F41A"
-    },
-    {
-      "name": "ReceiptTentativeMirrored",
-      "unicode": "F41B"
-    },
-    {
-      "name": "Inbox",
-      "unicode": "F41C"
     }
   ]
 }

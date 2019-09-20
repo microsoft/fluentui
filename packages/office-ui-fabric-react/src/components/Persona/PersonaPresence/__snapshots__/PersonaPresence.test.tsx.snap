@@ -175,7 +175,7 @@ exports[`PersonaPresence renders away + out of office 1`] = `
           border-color: #B4009E;
           color: #B4009E;
           display: inline-block;
-          font-family: "FabricMDL2Icons-15";
+          font-family: "FabricMDL2Icons-16";
           font-size: 6px;
           font-style: normal;
           font-weight: normal;
@@ -677,7 +677,7 @@ exports[`PersonaPresence renders offline + out of office 1`] = `
           border-color: #B4009E;
           color: #B4009E;
           display: inline-block;
-          font-family: "FabricMDL2Icons-15";
+          font-family: "FabricMDL2Icons-16";
           font-size: 6px;
           font-style: normal;
           font-weight: normal;
