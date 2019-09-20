@@ -22,9 +22,25 @@ export function initializeIcons(
     },
     fontFace: {
       fontFamily: `"FabricMDL2Icons-11"`,
-      src: `url('${baseUrl}fabric-icons-11-a6f8c51a.woff') format('woff')`
+      src: `url('${baseUrl}fabric-icons-11-2a8393d6.woff') format('woff')`
     },
     icons: {
+      'BoxAdditionSolid': '\uF2D4',
+      'BoxMultiplySolid': '\uF2D5',
+      'BoxPlaySolid': '\uF2D6',
+      'BoxCheckmarkSolid': '\uF2D7',
+      'CirclePauseSolid': '\uF2D8',
+      'CirclePause': '\uF2D9',
+      'MSNVideosSolid': '\uF2DA',
+      'CircleStopSolid': '\uF2DB',
+      'CircleStop': '\uF2DC',
+      'NavigateBack': '\uF2DD',
+      'NavigateBackMirrored': '\uF2DE',
+      'NavigateForward': '\uF2DF',
+      'NavigateForwardMirrored': '\uF2E0',
+      'UnknownSolid': '\uF2E1',
+      'UnknownMirroredSolid': '\uF2E2',
+      'CircleAddition': '\uF2E3',
       'CircleAdditionSolid': '\uF2E4',
       'FilePDB': '\uF2E5',
       'FileTemplate': '\uF2E6',
@@ -108,23 +124,7 @@ export function initializeIcons(
       'ShoppingCartSolid': '\uF342',
       'MailSolid': '\uF343',
       'ChatSolid': '\uF344',
-      'RibbonSolid': '\uF345',
-      'FinancialSolid': '\uF346',
-      'FinancialMirroredSolid': '\uF347',
-      'HeadsetSolid': '\uF348',
-      'PermissionsSolid': '\uF349',
-      'ParkingSolid': '\uF34A',
-      'ParkingMirroredSolid': '\uF34B',
-      'DiamondSolid': '\uF34C',
-      'AsteriskSolid': '\uF34D',
-      'OfflineStorageSolid': '\uF34E',
-      'BankSolid': '\uF34F',
-      'DecisionSolid': '\uF350',
-      'Parachute': '\uF351',
-      'ParachuteSolid': '\uF352',
-      'FiltersSolid': '\uF353',
-      'ColorSolid': '\uF354',
-      'ReviewSolid': '\uF355'
+      'RibbonSolid': '\uF345'
     }
   };
 

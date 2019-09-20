@@ -2,6 +2,20 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "date": "Fri, 20 Sep 2019 12:34:28 GMT",
+      "tag": "@uifabric/utilities_v7.0.11",
+      "version": "7.0.11",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Consuming latest merge-styles bits with `concatStyleSetsWithProps`.",
+            "author": "dzearing@microsoft.com",
+            "commit": "8065917a76a5e08b27721e34e13903adba3730f1"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 16 Sep 2019 12:34:47 GMT",
       "tag": "@uifabric/utilities_v7.0.10",
       "version": "7.0.10",

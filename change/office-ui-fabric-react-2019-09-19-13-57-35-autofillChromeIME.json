@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Listen to composition events only for IE11",
-  "packageName": "office-ui-fabric-react",
-  "email": "amyngu@microsoft.com",
-  "commit": "9ea6a0a856a74d8666964110d9482f4640dd91d1",
-  "date": "2019-09-19T20:57:35.252Z"
-}

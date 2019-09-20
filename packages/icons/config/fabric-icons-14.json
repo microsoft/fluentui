@@ -10,6 +10,70 @@
   },
   "glyphs": [
     {
+      "name": "Snooze",
+      "unicode": "F4BD"
+    },
+    {
+      "name": "WaffleOffice365",
+      "unicode": "F4E0"
+    },
+    {
+      "name": "ImageSearch",
+      "unicode": "F4E8"
+    },
+    {
+      "name": "NewsSearch",
+      "unicode": "F4E9"
+    },
+    {
+      "name": "VideoSearch",
+      "unicode": "F4EA"
+    },
+    {
+      "name": "R",
+      "unicode": "F4EB"
+    },
+    {
+      "name": "FontColorA",
+      "unicode": "F4EC"
+    },
+    {
+      "name": "FontColorSwatch",
+      "unicode": "F4ED"
+    },
+    {
+      "name": "LightWeight",
+      "unicode": "F4EE"
+    },
+    {
+      "name": "NormalWeight",
+      "unicode": "F4EF"
+    },
+    {
+      "name": "SemiboldWeight",
+      "unicode": "F4F0"
+    },
+    {
+      "name": "GroupObject",
+      "unicode": "F4F1"
+    },
+    {
+      "name": "UngroupObject",
+      "unicode": "F4F2"
+    },
+    {
+      "name": "AlignHorizontalLeft",
+      "unicode": "F4F3"
+    },
+    {
+      "name": "AlignHorizontalCenter",
+      "unicode": "F4F4"
+    },
+    {
+      "name": "AlignHorizontalRight",
+      "unicode": "F4F5"
+    },
+    {
       "name": "AlignVerticalTop",
       "unicode": "F4F6"
     },
@@ -344,70 +408,6 @@
     {
       "name": "ContactCardSettingsMirrored",
       "unicode": "F557"
-    },
-    {
-      "name": "CalendarSettings",
-      "unicode": "F558"
-    },
-    {
-      "name": "CalendarSettingsMirrored",
-      "unicode": "F559"
-    },
-    {
-      "name": "HardDriveLock",
-      "unicode": "F55A"
-    },
-    {
-      "name": "HardDriveUnlock",
-      "unicode": "F55B"
-    },
-    {
-      "name": "AccountManagement",
-      "unicode": "F55C"
-    },
-    {
-      "name": "ReportWarning",
-      "unicode": "F569"
-    },
-    {
-      "name": "TransitionPop",
-      "unicode": "F5B2"
-    },
-    {
-      "name": "TransitionPush",
-      "unicode": "F5B3"
-    },
-    {
-      "name": "TransitionEffect",
-      "unicode": "F5B4"
-    },
-    {
-      "name": "LookupEntities",
-      "unicode": "F5B5"
-    },
-    {
-      "name": "ExploreData",
-      "unicode": "F5B6"
-    },
-    {
-      "name": "AddBookmark",
-      "unicode": "F5B7"
-    },
-    {
-      "name": "SearchBookmark",
-      "unicode": "F5B8"
-    },
-    {
-      "name": "DrillThrough",
-      "unicode": "F5B9"
-    },
-    {
-      "name": "MasterDatabase",
-      "unicode": "F5BA"
-    },
-    {
-      "name": "CertifiedDatabase",
-      "unicode": "F5BB"
     }
   ]
 }

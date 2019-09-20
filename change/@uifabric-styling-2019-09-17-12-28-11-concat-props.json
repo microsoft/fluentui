@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Exporting new merge-styles apis.",
-  "packageName": "@uifabric/styling",
-  "email": "dzearing@microsoft.com",
-  "commit": "8065917a76a5e08b27721e34e13903adba3730f1",
-  "date": "2019-09-17T19:27:48.193Z"
-}

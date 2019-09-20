@@ -4780,7 +4780,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
-                    font-family: "FabricMDL2Icons-2";
+                    font-family: "FabricMDL2Icons-3";
                     font-style: normal;
                     font-weight: normal;
                     speak: none;
@@ -5230,7 +5230,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                       -moz-osx-font-smoothing: grayscale;
                                       -webkit-font-smoothing: antialiased;
                                       display: inline-block;
-                                      font-family: "FabricMDL2Icons-2";
+                                      font-family: "FabricMDL2Icons-3";
                                       font-style: normal;
                                       font-weight: normal;
                                       speak: none;
@@ -5843,7 +5843,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                       -moz-osx-font-smoothing: grayscale;
                                       -webkit-font-smoothing: antialiased;
                                       display: inline-block;
-                                      font-family: "FabricMDL2Icons-2";
+                                      font-family: "FabricMDL2Icons-3";
                                       font-style: normal;
                                       font-weight: normal;
                                       speak: none;

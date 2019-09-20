@@ -2,6 +2,47 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Fri, 20 Sep 2019 12:34:28 GMT",
+      "tag": "office-ui-fabric-react_v7.37.0",
+      "version": "7.37.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Breadcrumb: Added ability to make current item a heading.",
+            "author": "v-mare@microsoft.com",
+            "commit": "3bc0b6f69ee4c26c76bdc1a1e7983bc928974527"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Update Panel examples to improve accessibility.",
+            "author": "jdh@microsoft.com",
+            "commit": "b4ba803a7c5d983b833fe13333ab881f091a56e4"
+          },
+          {
+            "comment": "Fixes various a11y issues in docs and controls",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "ea31c7a0dcffff4bd4301ff510c50eedc9a6e2e5"
+          },
+          {
+            "comment": "TeachingBubble: Specify heading role for header.",
+            "author": "jdh@microsoft.com",
+            "commit": "94e08d81e92182ec878c66199b59844aa090f6e0"
+          },
+          {
+            "comment": "ContextualMenu: Update the bounds prop to allow for the same functionality that the Callout has",
+            "author": "jspurlin@microsoft.com",
+            "commit": "a7bf73ab77f60f69422ff777802ddf256e0c0930"
+          },
+          {
+            "comment": "Listen to composition events only for IE11",
+            "author": "amyngu@microsoft.com",
+            "commit": "9ea6a0a856a74d8666964110d9482f4640dd91d1"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 19 Sep 2019 13:05:24 GMT",
       "tag": "office-ui-fabric-react_v7.36.0",
       "version": "7.36.0",
