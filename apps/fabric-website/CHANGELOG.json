@@ -2,6 +2,20 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "date": "Fri, 20 Sep 2019 12:34:28 GMT",
+      "tag": "@uifabric/fabric-website_v7.5.0",
+      "version": "7.5.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Website: Split Brand icons page into Brand Icons and File Type Icons pages",
+            "author": "marygans@microsoft.com",
+            "commit": "55b31ad0a74beb68b6316e5878c8b99551b1b9b5"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 19 Sep 2019 13:05:24 GMT",
       "tag": "@uifabric/fabric-website_v7.4.8",
       "version": "7.4.8",

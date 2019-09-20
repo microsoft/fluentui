@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "TeachingBubble: Specify heading role for header.",
-  "packageName": "office-ui-fabric-react",
-  "email": "jdh@microsoft.com",
-  "commit": "94e08d81e92182ec878c66199b59844aa090f6e0",
-  "date": "2019-09-18T22:10:54.545Z"
-}

@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Website: Split Brand icons page into Brand Icons and File Type Icons pages",
-  "packageName": "@uifabric/fabric-website",
-  "email": "marygans@microsoft.com",
-  "commit": "55b31ad0a74beb68b6316e5878c8b99551b1b9b5",
-  "date": "2019-09-04T16:41:06.000Z"
-}
