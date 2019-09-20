@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "FocusTrapZone: Add aria-modal attribute.",
+  "packageName": "office-ui-fabric-react",
+  "email": "jagore@microsoft.com",
+  "commit": "bd8f150e61169ed814584042a59eeef5017154cf",
+  "date": "2019-09-20T19:59:47.600Z"
+}
