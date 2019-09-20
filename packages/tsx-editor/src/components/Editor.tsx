@@ -1,72 +1,69 @@
 import * as monaco from '@uifabric/monaco-editor';
 import * as React from 'react';
-import { IEditorProps, ITextModel } from './Editor.types';
-import { codeFontFamily } from './TypeScriptSnippet';
+import { IEditorProps } from './Editor.types';
+import { codeFontFamily } from './common';
+import { IMonacoTextModel } from '../interfaces/monaco';
 
-const typescript = monaco.languages.typescript;
-const typescriptDefaults = typescript.typescriptDefaults;
-
-const filePrefix = 'file:///';
-
+/**
+ * Language-agnostic wrapper for a Monaco editor instance.
+ */
 export const Editor: React.FunctionComponent<IEditorProps> = (props: IEditorProps) => {
-  const { width, height, onChange, code } = props;
+  const { width, height, className, code = '', language, filename, onChange, debounceTime = 500, editorOptions } = props;
 
   // Hooks must be called unconditionally, so we have to create a backup ref here even if we
   // immediately throw it away to use the one passed in.
-  const backupModelRef = React.useRef<ITextModel>();
+  const backupModelRef = React.useRef<IMonacoTextModel>();
   const modelRef = props.modelRef || backupModelRef;
 
-  const ref = React.useRef<HTMLDivElement>(null);
-  const style = { width, height };
+  // Store the latest onChange and debounceTime in a ref to ensure that we get the latest values
+  // (if they change at all, which they ideally shouldn't) without needing to re-create the editor
+  const internalState = React.useRef<Pick<IEditorProps, 'onChange' | 'debounceTime'>>();
+  internalState.current = { onChange, debounceTime };
+
+  const divRef = React.useRef<HTMLDivElement>(null);
 
   React.useEffect(() => {
-    // Fetching Fabric typings to allow for intellisense in editor
-    fetch('https://unpkg.com/office-ui-fabric-react/dist/office-ui-fabric-react.d.ts').then(response => {
-      response.text().then(fabricTypings => {
-        typescriptDefaults.addExtraLib(fabricTypings, 'file:///node_modules/@types/office-ui-fabric-react/index.d.ts');
-      });
+    const model = (modelRef.current = monaco.editor.createModel(code, language, filename ? monaco.Uri.parse(filename) : undefined));
+    const editor = monaco.editor.create(divRef.current!, {
+      minimap: { enabled: false },
+      fontFamily: codeFontFamily,
+      // add editorOptions default value here (NOT in main destructuring) to avoid re-calling the effect
+      ...(editorOptions || {}),
+      model
     });
 
-    typescriptDefaults.setCompilerOptions({
-      allowNonTsExtensions: true,
-      target: typescript.ScriptTarget.ES5,
-      jsx: typescript.JsxEmit.React,
-      jsxFactory: 'React.createElement',
-      experimentalDecorators: true,
-      preserveConstEnums: true,
-      noUnusedLocals: true,
-      strictNullChecks: true,
-      noImplicitAny: true,
-      module: typescript.ModuleKind.ESNext,
-      baseUrl: filePrefix
-    });
-
-    typescriptDefaults.setDiagnosticsOptions({ noSemanticValidation: true });
-
-    const model = (modelRef.current = monaco.editor.createModel(code, 'typescript', monaco.Uri.parse(filePrefix + 'main.tsx')));
-
-    if (onChange) {
-      onChange(model);
+    if (internalState.current!.onChange) {
+      internalState.current!.onChange(model.getValue());
     }
 
-    const editor = monaco.editor.create(ref.current!, {
-      model: model,
-      minimap: { enabled: false },
-      fontFamily: codeFontFamily
-    });
-
+    // Handle changes (debounced)
+    // tslint:disable-next-line:no-any due to mismatch between Node and browser typings
+    let debounceTimeout: any;
     editor.onDidChangeModelContent(() => {
-      if (onChange) {
-        onChange(editor.getModel()!);
+      // Destructure these locally to get the latest values
+      const { debounceTime: currDebounceTime, onChange: currOnChange } = internalState.current!;
+      if (!currOnChange) {
+        return;
+      }
+
+      if (debounceTimeout) {
+        clearTimeout(debounceTimeout);
+      }
+
+      if (currDebounceTime) {
+        debounceTimeout = setTimeout(() => currOnChange(model.getValue()), currDebounceTime);
+      } else {
+        currOnChange(model.getValue());
       }
     });
 
     return () => {
-      editor.getModel()!.dispose();
+      clearTimeout(debounceTimeout);
+      model.dispose();
       editor.dispose();
       modelRef.current = undefined;
     };
-  }, [onChange, code, modelRef]);
+  }, [code, language, filename, modelRef, internalState, editorOptions]);
 
-  return <div ref={ref} style={style} />;
+  return <div ref={divRef} style={{ width, height }} className={className} />;
 };
