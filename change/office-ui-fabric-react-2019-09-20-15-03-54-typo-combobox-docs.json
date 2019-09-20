@@ -1,5 +1,5 @@
 {
-  "type": "minor",
+  "type": "patch",
   "comment": "fix typo in ComboBox and Button docs",
   "packageName": "office-ui-fabric-react",
   "email": "thomas.gassmann@hotmail.com",
