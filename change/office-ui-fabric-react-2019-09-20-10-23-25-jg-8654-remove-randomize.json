@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "FocusTrapZone example: Remove Randomize function.",
+  "packageName": "office-ui-fabric-react",
+  "email": "jagore@microsoft.com",
+  "commit": "b1d05d0b7b8fd5b6109a6cb8afc2e8b1b48ae977",
+  "date": "2019-09-20T17:23:25.239Z"
+}
