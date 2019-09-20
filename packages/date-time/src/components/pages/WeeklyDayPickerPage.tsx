@@ -4,7 +4,6 @@ import { DateRangeType } from '../Calendar/Calendar.types';
 import { WeeklyDayPickerInlineExample } from '../WeeklyDayPicker/examples/WeeklyDayPicker.Inline.Example';
 
 const WeeklyDayPickerInlineExampleCode = require('!raw-loader!@uifabric/date-time/src/components/WeeklyDayPicker/examples/WeeklyDayPicker.Inline.Example.tsx') as string;
-const WeeklyDayPickerInlineExampleCodepen = require('!@uifabric/codepen-loader!@uifabric/date-time/src/components/WeeklyDayPicker/examples/WeeklyDayPicker.Inline.Example.tsx') as string;
 
 export class WeeklyDayPickerPage extends React.Component<{}, {}> {
   public render(): JSX.Element {
