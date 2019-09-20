@@ -143,9 +143,7 @@ export function customizable(scope: string, fields: string[], concatStyles?: boo
 
 // @public (undocumented)
 export class Customizations {
-    // (undocumented)
     static applyScopedSettings(scopeName: string, settings: ISettings): void;
-    // (undocumented)
     static applySettings(settings: ISettings): void;
     // (undocumented)
     static getSettings(properties: string[], scopeName?: string, localSettings?: ICustomizations): any;
@@ -153,6 +151,7 @@ export class Customizations {
     static observe(onChange: () => void): void;
     // (undocumented)
     static reset(): void;
+    static suppressUpdates(code: () => void): void;
     // (undocumented)
     static unobserve(onChange: () => void): void;
 }

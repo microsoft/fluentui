@@ -205,4 +205,32 @@ describe('Customizer', () => {
       }
     );
   });
+
+  it('can suppress updates', () => {
+    Customizations.applySettings({ field: 'globalName' });
+
+    safeMount(
+      <Customizer settings={{ nonMatch: 'customName' }}>
+        <Bar />
+      </Customizer>,
+      wrapper => {
+        // verify base state
+        expect(wrapper.html()).toEqual('<div>globalName</div>');
+
+        // verify it doesn't update during suppressUpdates(), and it works through errors
+        expect(() => {
+          Customizations.suppressUpdates(() => {
+            Customizations.applySettings({ field: 'notGlobalName' });
+            expect(wrapper.html()).toEqual('<div>globalName</div>');
+            throw new Error();
+          });
+          expect(wrapper.html()).toEqual('<div>globalName</div>');
+        }).toThrow();
+
+        // verify it updates after suppressUpdates()
+        Customizations.applySettings({ field2: 'lastGlobalName' });
+        expect(wrapper.html()).toEqual('<div>notGlobalNamelastGlobalName</div>');
+      }
+    );
+  });
 });
