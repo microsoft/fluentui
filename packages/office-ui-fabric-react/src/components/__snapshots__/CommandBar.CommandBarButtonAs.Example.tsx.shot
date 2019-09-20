@@ -849,6 +849,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                                 id="coachmark-desc1"
                               />
                               <div
+                                aria-modal="true"
                                 onBlur={[Function]}
                                 onFocus={[Function]}
                                 onFocusCapture={[Function]}

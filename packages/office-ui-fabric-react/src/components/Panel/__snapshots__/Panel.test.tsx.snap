@@ -55,7 +55,6 @@ exports[`Panel renders Panel correctly 1`] = `
   >
     <div
       aria-labelledby="Panel0-headerText"
-      aria-modal="true"
       className=
 
 
@@ -116,6 +115,7 @@ exports[`Panel renders Panel correctly 1`] = `
               }
         />
         <div
+          aria-modal="true"
           className=
               ms-Panel-main
               {

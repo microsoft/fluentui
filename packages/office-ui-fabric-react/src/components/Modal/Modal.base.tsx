@@ -221,7 +221,6 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
         <Layer {...mergedLayerProps}>
           <Popup
             role={isModeless || !isBlocking ? 'dialog' : 'alertdialog'}
-            aria-modal={!isModeless}
             ariaLabelledBy={titleAriaId}
             ariaDescribedBy={subtitleAriaId}
             onDismiss={onDismiss}

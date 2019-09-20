@@ -113,6 +113,7 @@ exports[`HoverCard renders ExpandingCard correctly 1`] = `
           }
         >
           <div
+            aria-modal="true"
             onBlur={[Function]}
             onFocus={[Function]}
             onFocusCapture={[Function]}
@@ -276,6 +277,7 @@ exports[`HoverCard renders PlainCard correctly 1`] = `
           }
         >
           <div
+            aria-modal="true"
             onBlur={[Function]}
             onFocus={[Function]}
             onFocusCapture={[Function]}

@@ -93,6 +93,7 @@ export class FocusTrapZone extends React.Component<IFocusTrapZoneProps, {}> impl
         className={className}
         ref={this._root}
         aria-labelledby={ariaLabelledBy}
+        aria-modal="true"
         onFocusCapture={this._onFocusCapture}
         onFocus={this._onRootFocus}
         onBlur={this._onRootBlur}

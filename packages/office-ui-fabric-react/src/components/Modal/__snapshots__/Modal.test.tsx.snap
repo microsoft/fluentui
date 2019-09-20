@@ -54,7 +54,6 @@ exports[`Modal renders Draggable Modal correctly 1`] = `
     onSubmit={[Function]}
   >
     <div
-      aria-modal={false}
       onKeyDown={[Function]}
       role="dialog"
       style={
@@ -88,6 +87,7 @@ exports[`Modal renders Draggable Modal correctly 1`] = `
             }
       >
         <div
+          aria-modal="true"
           className=
               ms-Dialog-main
               test-containerClassName
@@ -217,7 +217,6 @@ exports[`Modal renders Modal correctly 1`] = `
     onSubmit={[Function]}
   >
     <div
-      aria-modal={true}
       onKeyDown={[Function]}
       role="dialog"
       style={
@@ -273,6 +272,7 @@ exports[`Modal renders Modal correctly 1`] = `
               }
         />
         <div
+          aria-modal="true"
           className=
               ms-Dialog-main
               test-containerClassName
@@ -389,7 +389,6 @@ exports[`Modal renders Modeless Modal correctly 1`] = `
     onSubmit={[Function]}
   >
     <div
-      aria-modal={false}
       onKeyDown={[Function]}
       role="dialog"
       style={
@@ -423,6 +422,7 @@ exports[`Modal renders Modeless Modal correctly 1`] = `
             }
       >
         <div
+          aria-modal="true"
           className=
               ms-Dialog-main
               test-containerClassName

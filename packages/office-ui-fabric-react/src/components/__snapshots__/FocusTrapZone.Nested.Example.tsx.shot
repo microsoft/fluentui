@@ -121,6 +121,7 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
     </span>
   </button>
   <div
+    aria-modal="true"
     onBlur={[Function]}
     onFocus={[Function]}
     onFocusCapture={[Function]}
@@ -450,6 +451,7 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
         </span>
       </button>
       <div
+        aria-modal="true"
         onBlur={[Function]}
         onFocus={[Function]}
         onFocusCapture={[Function]}
@@ -780,6 +782,7 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
             </span>
           </button>
           <div
+            aria-modal="true"
             onBlur={[Function]}
             onFocus={[Function]}
             onFocusCapture={[Function]}
@@ -1123,6 +1126,7 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
             />
           </div>
           <div
+            aria-modal="true"
             onBlur={[Function]}
             onFocus={[Function]}
             onFocusCapture={[Function]}
@@ -1479,6 +1483,7 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
         />
       </div>
       <div
+        aria-modal="true"
         onBlur={[Function]}
         onFocus={[Function]}
         onFocusCapture={[Function]}
