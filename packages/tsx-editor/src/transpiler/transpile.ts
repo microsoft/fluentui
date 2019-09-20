@@ -9,6 +9,10 @@ interface ITranspiledOutput {
   error?: string | string[];
 }
 
+declare const window: Window & {
+  transpileLogging?: boolean;
+};
+
 /**
  * Transpile the model's current code from TS to JS.
  */
@@ -24,8 +28,10 @@ export function transpile(model: IMonacoTextModel): Promise<ITranspiledOutput> {
       return worker.getEmitOutput(filename).then((output: EmitOutput) => {
         if (!output.emitSkipped) {
           transpiledOutput.outputString = output.outputFiles[0].text;
-          console.log('TRANSPILED:');
-          console.log(transpiledOutput.outputString);
+          if (window.transpileLogging) {
+            console.log('TRANSPILED:');
+            console.log(transpiledOutput.outputString);
+          }
           return transpiledOutput;
         }
         // There was an error, so get diagnostics

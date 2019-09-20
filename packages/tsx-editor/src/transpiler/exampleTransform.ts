@@ -26,6 +26,10 @@ export interface ITransformExampleParams {
   supportedPackages: IBasicPackageGroup[];
 }
 
+declare const window: Window & {
+  transformLogging?: boolean;
+};
+
 /**
  * Transform an example for rendering in a browser context (example page or codepen).
  */
@@ -86,7 +90,9 @@ ${mainCode}
 ReactDOM.render(${createComponentElement}, document.getElementById('${id}'));
 `;
 
-  console.log('TRANSFORMED:');
-  console.log(output.output);
+  if (window.transformLogging) {
+    console.log('TRANSFORMED:');
+    console.log(output.output);
+  }
   return output;
 }

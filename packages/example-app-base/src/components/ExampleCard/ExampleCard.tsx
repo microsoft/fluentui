@@ -14,17 +14,26 @@ import {
 import { ISchemeNames, IProcessedStyleSet } from 'office-ui-fabric-react/lib/Styling';
 import { IStackComponent, Stack } from 'office-ui-fabric-react/lib/Stack';
 import { AppCustomizationsContext, IAppCustomizations, IExampleCardCustomizations } from '../../utilities/customizations';
-import { CodepenComponent } from '../CodepenComponent/CodepenComponent';
+import { CodepenComponent, CONTENT_ID } from '../CodepenComponent/CodepenComponent';
 import { IExampleCardProps, IExampleCardStyleProps, IExampleCardStyles } from './ExampleCard.types';
 import { getStyles } from './ExampleCard.styles';
-import { EditorWrapper } from '@uifabric/tsx-editor/lib/components/EditorWrapper';
-import { IEditorPreviewProps } from '@uifabric/tsx-editor';
+import {
+  EditorWrapper,
+  SUPPORTED_PACKAGES,
+  isEditorSupported,
+  IEditorPreviewProps,
+  IMonacoTextModel,
+  transformExample
+} from '@uifabric/tsx-editor/lib/index-min';
+// DO NOT import anything from the root of tsx-editor, to avoid pulling Monaco into the main bundle!
 
 export interface IExampleCardState {
   /** only used if props.isCodeVisible and props.onToggleEditor are undefined */
-  isCodeVisible?: boolean;
+  isCodeVisible: boolean;
   schemeIndex: number;
   themeIndex: number;
+  /** State of the code as of the last time the code viewer was opened or closed. */
+  latestCode: string;
 }
 
 const getClassNames = classNamesFunction<IExampleCardStyleProps, IExampleCardStyles>();
@@ -41,6 +50,8 @@ const regionStyles: IStackComponent['styles'] = (props, theme) => ({
 });
 
 export class ExampleCardBase extends React.Component<IExampleCardProps, IExampleCardState> {
+  private _monacoModelRef: React.MutableRefObject<IMonacoTextModel | undefined> = { current: undefined };
+  private _canEdit: boolean;
   private _themeCustomizations: IExampleCardCustomizations[] | undefined;
   private _themeOptions: IDropdownOption[];
   private _classNames: IProcessedStyleSet<IExampleCardStyles>;
@@ -51,8 +62,21 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
     this.state = {
       isCodeVisible: false,
       schemeIndex: 0,
-      themeIndex: 0
+      themeIndex: 0,
+      latestCode: props.code || ''
     };
+
+    try {
+      // Auto-detect whether editing (and export to codepen) is supported
+      this._canEdit = isEditorSupported(this.state.latestCode, SUPPORTED_PACKAGES);
+    } catch (ex) {
+      // isEditorSupported shouldn't throw, but log in case it does to help with debugging
+      console.warn('Exception while parsing example!');
+      console.warn(ex);
+      console.warn('Code:');
+      console.warn(this.state.latestCode);
+      this._canEdit = false;
+    }
 
     if (props.isCodeVisible !== undefined && props.onToggleEditor === undefined && process.env.NODE_ENV !== 'production') {
       warn('ExampleCard: the onToggleEditor prop is required if isCodeVisible is set. Otherwise the show/hide code button will not work.');
@@ -60,9 +84,17 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
   }
 
   public render(): JSX.Element {
-    const { title, code, children, styles, isRightAligned = false, isScrollable = true, codepenJS, theme } = this.props;
-    const { themeIndex } = this.state;
-    const { isCodeVisible = this.state.isCodeVisible } = this.props;
+    const {
+      title,
+      children,
+      styles,
+      isRightAligned = false,
+      isScrollable = true,
+      codepenJS,
+      theme,
+      isCodeVisible = this.state.isCodeVisible
+    } = this.props;
+    const { themeIndex, latestCode } = this.state;
 
     return (
       <AppCustomizationsContext.Consumer>
@@ -89,8 +121,11 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
               <div className={classNames.header}>
                 <span className={classNames.title}>{title}</span>
                 <div className={classNames.toggleButtons}>
-                  {codepenJS && (
-                    <CodepenComponent jsContent={codepenJS} styles={{ subComponentStyles: { button: subComponentStyles.codeButtons } }} />
+                  {(codepenJS || this._canEdit) && (
+                    <CodepenComponent
+                      jsContent={this._getCodepenContent}
+                      styles={{ subComponentStyles: { button: subComponentStyles.codeButtons } }}
+                    />
                   )}
 
                   {exampleCardCustomizations && (
@@ -111,7 +146,7 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
                     />
                   )}
 
-                  {code && (
+                  {latestCode && (
                     <CommandButton
                       iconProps={{ iconName: 'Embed' }}
                       onClick={this._onToggleCodeClick}
@@ -125,13 +160,15 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
                 </div>
               </div>
               <EditorWrapper
-                code={code!}
-                isCodeVisible={!!isCodeVisible}
+                code={latestCode}
+                useEditor={this._canEdit}
+                isCodeVisible={isCodeVisible}
                 editorClassName={classNames.code}
                 height={500}
                 width="auto"
                 previewClassName={classNames.example}
                 onRenderPreview={this._onRenderPreview}
+                modelRef={this._monacoModelRef}
               >
                 {children}
               </EditorWrapper>
@@ -187,17 +224,54 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
     this.setState({ themeIndex: value.key as number });
   };
 
+  private _getCodepenContent = (): string => {
+    if (this._canEdit) {
+      // Use the latest edited code if possible when exporting to codepen
+      const code = this._monacoModelRef.current ? this._monacoModelRef.current.getValue() : this.state.latestCode;
+      let result = transformExample({
+        tsCode: code,
+        id: CONTENT_ID,
+        supportedPackages: SUPPORTED_PACKAGES
+      });
+      if (result.error && code !== this.props.code) {
+        // Error transforming code, and the code has been edited. Fall back to original code.
+        result = transformExample({
+          tsCode: this.props.code || '',
+          id: CONTENT_ID,
+          supportedPackages: SUPPORTED_PACKAGES
+        });
+      }
+      if (result.output) {
+        return result.output;
+      }
+    }
+    return this.props.codepenJS || '';
+  };
+
   private _onToggleCodeClick = () => {
     const { isCodeVisible, onToggleEditor, title } = this.props;
+    let wasCodeVisible: boolean;
     if (isCodeVisible !== undefined && onToggleEditor !== undefined) {
+      // Editor visibility is controlled
+      wasCodeVisible = isCodeVisible;
       if (isCodeVisible) {
         onToggleEditor('');
       } else {
         onToggleEditor(title);
       }
     } else {
+      // Editor visibility is uncontrolled
+      wasCodeVisible = !!this.state.isCodeVisible;
       this.setState({
         isCodeVisible: !this.state.isCodeVisible
+      });
+    }
+
+    // In either case, if we're about to hide the code and it was being edited, grab the latest code
+    // before closing so we can restore it when the editor is re-opened.
+    if (wasCodeVisible && this._monacoModelRef.current) {
+      this.setState({
+        latestCode: this._monacoModelRef.current.getValue()
       });
     }
   };
