@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getId } from 'office-ui-fabric-react/lib/Utilities';
+import { useId } from '@uifabric/react-hooks';
 import { EditorPreview } from './EditorPreview';
 import { IEditorWrapperProps, IEditorPreviewProps } from './EditorWrapper.types';
 import { EditorError } from './EditorError';
@@ -27,11 +27,7 @@ export const EditorWrapper: React.FunctionComponent<IEditorWrapperProps> = props
     children
   } = props;
 
-  const idRef = React.useRef<string>();
-  if (!idRef.current) {
-    idRef.current = getId('EditorPreview');
-  }
-  const previewId = idRef.current!;
+  const previewId = useId('EditorPreview');
 
   const [error, setError] = React.useState<string | string[]>();
 
