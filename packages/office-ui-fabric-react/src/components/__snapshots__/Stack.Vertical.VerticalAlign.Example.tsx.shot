@@ -54,7 +54,6 @@ exports[`Component Examples renders Stack.Vertical.VerticalAlign.Example.tsx cor
             flex-grow: 1;
             flex-wrap: nowrap;
             height: auto;
-            overflow: hidden;
             width: auto;
           }
           & > * {
@@ -150,7 +149,6 @@ exports[`Component Examples renders Stack.Vertical.VerticalAlign.Example.tsx cor
             flex-grow: 1;
             flex-wrap: nowrap;
             height: auto;
-            overflow: hidden;
             width: auto;
           }
           & > * {
@@ -246,7 +244,6 @@ exports[`Component Examples renders Stack.Vertical.VerticalAlign.Example.tsx cor
             flex-grow: 1;
             flex-wrap: nowrap;
             height: auto;
-            overflow: hidden;
             width: auto;
           }
           & > * {
@@ -365,7 +362,6 @@ exports[`Component Examples renders Stack.Vertical.VerticalAlign.Example.tsx cor
             flex-grow: 1;
             flex-wrap: nowrap;
             height: auto;
-            overflow: hidden;
             width: auto;
           }
           & > * {
@@ -461,7 +457,6 @@ exports[`Component Examples renders Stack.Vertical.VerticalAlign.Example.tsx cor
             flex-grow: 1;
             flex-wrap: nowrap;
             height: auto;
-            overflow: hidden;
             width: auto;
           }
           & > * {
@@ -557,7 +552,6 @@ exports[`Component Examples renders Stack.Vertical.VerticalAlign.Example.tsx cor
             flex-grow: 1;
             flex-wrap: nowrap;
             height: auto;
-            overflow: hidden;
             width: auto;
           }
           & > * {
