@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Animations should not leave invisible elements behind so setting visibility to hidden on fade out to get rid of any interactivity where the faded element was",
+  "packageName": "@uifabric/styling",
+  "email": "email not defined",
+  "commit": "ae723d3294a8e6b55323c80d9a6f57fc9799ec2b",
+  "date": "2019-09-21T00:35:52.564Z"
+}
