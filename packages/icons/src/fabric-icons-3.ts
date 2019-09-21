@@ -22,9 +22,21 @@ export function initializeIcons(
     },
     fontFace: {
       fontFamily: `"FabricMDL2Icons-3"`,
-      src: `url('${baseUrl}fabric-icons-3-566d0c7a.woff') format('woff')`
+      src: `url('${baseUrl}fabric-icons-3-089e217a.woff') format('woff')`
     },
     icons: {
+      'ChevronDownSmall': '\uE96E',
+      'ChevronLeftSmall': '\uE96F',
+      'ChevronRightSmall': '\uE970',
+      'ChevronUpMed': '\uE971',
+      'ChevronDownMed': '\uE972',
+      'ChevronLeftMed': '\uE973',
+      'ChevronRightMed': '\uE974',
+      'Devices2': '\uE975',
+      'PC1': '\uE977',
+      'PresenceChickletVideo': '\uE979',
+      'Reply': '\uE97A',
+      'HalfAlpha': '\uE97E',
       'ConstructionCone': '\uE98F',
       'DoubleChevronLeftMed': '\uE991',
       'Volume0': '\uE992',
@@ -112,19 +124,7 @@ export function initializeIcons(
       'ClosePaneMirrored': '\uEA49',
       'DockLeftMirrored': '\uEA4C',
       'DoubleChevronLeftMedMirrored': '\uEA4D',
-      'GoMirrored': '\uEA4F',
-      'HelpMirrored': '\uEA51',
-      'ImportMirrored': '\uEA52',
-      'ImportAllMirrored': '\uEA53',
-      'ListMirrored': '\uEA55',
-      'MailForwardMirrored': '\uEA56',
-      'MailReplyMirrored': '\uEA57',
-      'MailReplyAllMirrored': '\uEA58',
-      'MiniContractMirrored': '\uEA59',
-      'MiniExpandMirrored': '\uEA5A',
-      'OpenPaneMirrored': '\uEA5B',
-      'ParkingLocationMirrored': '\uEA5E',
-      'SendMirrored': '\uEA63'
+      'GoMirrored': '\uEA4F'
     }
   };
 

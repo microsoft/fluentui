@@ -22,9 +22,23 @@ export function initializeIcons(
     },
     fontFace: {
       fontFamily: `"FabricMDL2Icons-9"`,
-      src: `url('${baseUrl}fabric-icons-9-f3b3c57a.woff') format('woff')`
+      src: `url('${baseUrl}fabric-icons-9-c6162b42.woff') format('woff')`
     },
     icons: {
+      'AddFavoriteFill': '\uF0C9',
+      'BufferTimeBefore': '\uF0CF',
+      'BufferTimeAfter': '\uF0D0',
+      'BufferTimeBoth': '\uF0D1',
+      'PublishContent': '\uF0D4',
+      'ClipboardList': '\uF0E3',
+      'ClipboardListMirrored': '\uF0E4',
+      'CannedChat': '\uF0F2',
+      'SkypeForBusinessLogo': '\uF0FC',
+      'TabCenter': '\uF100',
+      'PageCheckedin': '\uF104',
+      'PageList': '\uF106',
+      'ReadOutLoud': '\uF112',
+      'CaretBottomLeftSolid8': '\uF121',
       'CaretBottomRightSolid8': '\uF122',
       'FolderHorizontal': '\uF12B',
       'MicrosoftStaffhubLogo': '\uF130',
@@ -51,6 +65,7 @@ export function initializeIcons(
       'ProgressRingDots': '\uF16A',
       'CaloriesAdd': '\uF172',
       'BranchFork': '\uF173',
+      'MuteChat': '\uF17A',
       'AddHome': '\uF17B',
       'AddWork': '\uF17C',
       'MobileReport': '\uF18A',
@@ -109,22 +124,7 @@ export function initializeIcons(
       'StepSharedAdd': '\uF244',
       'StepSharedInsert': '\uF245',
       'ViewDashboard': '\uF246',
-      'ViewList': '\uF247',
-      'ViewListGroup': '\uF248',
-      'ViewListTree': '\uF249',
-      'TriggerAuto': '\uF24A',
-      'TriggerUser': '\uF24B',
-      'PivotChart': '\uF24C',
-      'StackedBarChart': '\uF24D',
-      'StackedLineChart': '\uF24E',
-      'BuildQueue': '\uF24F',
-      'BuildQueueNew': '\uF250',
-      'UserFollowed': '\uF25C',
-      'ContactLink': '\uF25F',
-      'Stack': '\uF26F',
-      'Bullseye': '\uF272',
-      'VennDiagram': '\uF273',
-      'FiveTileGrid': '\uF274'
+      'ViewList': '\uF247'
     }
   };
 

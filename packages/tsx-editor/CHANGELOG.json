@@ -2,6 +2,27 @@
   "name": "@uifabric/tsx-editor",
   "entries": [
     {
+      "date": "Fri, 20 Sep 2019 12:34:28 GMT",
+      "tag": "@uifabric/tsx-editor_v0.7.0",
+      "version": "0.7.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add full typings support; refactor editor component into layers; improve example parsing",
+            "author": "elcraig@microsoft.com",
+            "commit": "d62bda1f875f495aa4324c308650cbe334139ed9"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Fix web worker check",
+            "author": "elcraig@microsoft.com",
+            "commit": "17f52a8e9ac4538477fb7d6b8e76129b4f7f4a29"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 19 Sep 2019 13:05:24 GMT",
       "tag": "@uifabric/tsx-editor_v0.6.0",
       "version": "0.6.0",

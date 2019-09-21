@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Breadcrumb: Added ability to make current item a heading.",
-  "packageName": "office-ui-fabric-react",
-  "email": "v-mare@microsoft.com",
-  "commit": "3bc0b6f69ee4c26c76bdc1a1e7983bc928974527",
-  "date": "2019-09-13T20:13:05.878Z"
-}

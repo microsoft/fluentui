@@ -15,7 +15,13 @@ export class PanelLargeExample extends React.Component<{}, IPanelLargeExampleSta
     return (
       <div>
         <DefaultButton secondaryText="Opens the Sample Panel" onClick={this._showPanel} text="Open Panel" />
-        <Panel isOpen={this.state.showPanel} onDismiss={this._hidePanel} type={PanelType.large} headerText="Large Panel">
+        <Panel
+          isOpen={this.state.showPanel}
+          closeButtonAriaLabel="Close"
+          onDismiss={this._hidePanel}
+          type={PanelType.large}
+          headerText="Large Panel"
+        >
           <span>Content goes here.</span>
         </Panel>
       </div>

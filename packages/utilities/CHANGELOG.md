@@ -1,7 +1,13 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Mon, 16 Sep 2019 12:34:47 GMT and should not be manually modified.
+This log was last generated on Fri, 20 Sep 2019 12:34:28 GMT and should not be manually modified.
 
+## 7.0.11
+Fri, 20 Sep 2019 12:34:28 GMT
+
+### Patches
+
+- Consuming latest merge-styles bits with `concatStyleSetsWithProps`. (dzearing@microsoft.com)
 ## 7.0.10
 Mon, 16 Sep 2019 12:34:47 GMT
 

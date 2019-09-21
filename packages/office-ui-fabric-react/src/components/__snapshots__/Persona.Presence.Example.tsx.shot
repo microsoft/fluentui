@@ -2680,7 +2680,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                         border-color: #B4009E;
                         color: #B4009E;
                         display: inline-block;
-                        font-family: "FabricMDL2Icons-15";
+                        font-family: "FabricMDL2Icons-16";
                         font-size: 6px;
                         font-style: normal;
                         font-weight: normal;
@@ -2858,7 +2858,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                         border-color: #B4009E;
                         color: #B4009E;
                         display: inline-block;
-                        font-family: "FabricMDL2Icons-15";
+                        font-family: "FabricMDL2Icons-16";
                         font-size: 12px;
                         font-style: normal;
                         font-weight: normal;
@@ -7762,7 +7762,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                         border-color: #B4009E;
                         color: #B4009E;
                         display: inline-block;
-                        font-family: "FabricMDL2Icons-15";
+                        font-family: "FabricMDL2Icons-16";
                         font-size: 6px;
                         font-style: normal;
                         font-weight: normal;
@@ -7939,7 +7939,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                         border-color: #B4009E;
                         color: #B4009E;
                         display: inline-block;
-                        font-family: "FabricMDL2Icons-15";
+                        font-family: "FabricMDL2Icons-16";
                         font-size: 12px;
                         font-style: normal;
                         font-weight: normal;

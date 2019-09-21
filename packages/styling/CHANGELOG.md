@@ -1,7 +1,13 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Wed, 04 Sep 2019 04:09:58 GMT and should not be manually modified.
+This log was last generated on Fri, 20 Sep 2019 12:34:28 GMT and should not be manually modified.
 
+## 7.7.0
+Fri, 20 Sep 2019 12:34:28 GMT
+
+### Minor changes
+
+- Exporting new merge-styles apis. (dzearing@microsoft.com)
 ## 7.6.2
 Wed, 04 Sep 2019 04:09:58 GMT
 

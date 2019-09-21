@@ -392,7 +392,7 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  font-family: "FabricMDL2Icons-2";
+                  font-family: "FabricMDL2Icons-3";
                   font-style: normal;
                   font-weight: normal;
                   speak: none;
@@ -814,7 +814,7 @@ exports[`SpinButton renders SpinButton correctly with values that the user passe
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  font-family: "FabricMDL2Icons-2";
+                  font-family: "FabricMDL2Icons-3";
                   font-style: normal;
                   font-weight: normal;
                   speak: none;
