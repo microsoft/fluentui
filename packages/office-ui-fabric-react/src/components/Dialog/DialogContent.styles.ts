@@ -1,5 +1,5 @@
 import { IDialogContentStyleProps, IDialogContentStyles } from './DialogContent.types';
-import { FontWeights, getGlobalClassNames, IconFontSizes } from '../../Styling';
+import { FontWeights, getGlobalClassNames, IconFontSizes, ScreenWidthMinSmall, ScreenWidthMaxSmall } from '../../Styling';
 
 const GlobalClassNames = {
   contentLgHeader: 'ms-Dialog-lgHeader',
@@ -79,7 +79,12 @@ export const getStyles = (props: IDialogContentStyleProps): IDialogContentStyles
     inner: [
       classNames.inner,
       {
-        padding: '0 24px 24px'
+        padding: '0 24px 24px',
+        selectors: {
+          [`@media (min-width: ${ScreenWidthMinSmall}px) and (max-width: ${ScreenWidthMaxSmall}px)`]: {
+            padding: '0 16px 16px'
+          }
+        }
       }
     ],
 
@@ -98,7 +103,12 @@ export const getStyles = (props: IDialogContentStyleProps): IDialogContentStyles
         color: semanticColors.bodyText,
         margin: '0',
         padding: '16px 46px 20px 24px',
-        lineHeight: 'normal'
+        lineHeight: 'normal',
+        selectors: {
+          [`@media (min-width: ${ScreenWidthMinSmall}px) and (max-width: ${ScreenWidthMaxSmall}px)`]: {
+            padding: '16px 46px 16px 16px'
+          }
+        }
       },
       isLargeHeader && {
         color: semanticColors.menuHeader
@@ -125,6 +135,9 @@ export const getStyles = (props: IDialogContentStyleProps): IDialogContentStyles
           '.ms-Dialog-button:hover': {
             color: semanticColors.buttonTextHovered,
             borderRadius: effects.roundedCorner2
+          },
+          [`@media (min-width: ${ScreenWidthMinSmall}px) and (max-width: ${ScreenWidthMaxSmall}px)`]: {
+            padding: '15px 8px 0 0'
           }
         }
       }
