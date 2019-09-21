@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Stack doesn't need to set overflow=hidden when grow=true to restrict size of flexbox children. Users are having to override this with overflow=visible to prevent clipping inner children",
+  "packageName": "office-ui-fabric-react",
+  "email": "email not defined",
+  "commit": "987173b9bb37750ff190850e5a4f85c90a0be7de",
+  "date": "2019-09-21T00:02:33.838Z"
+}
