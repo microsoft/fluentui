@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Fix return type of onGrowData() in CommandBar.",
+  "packageName": "office-ui-fabric-react",
+  "email": "1721514+gordianschuda@users.noreply.github.com",
+  "commit": "fc08a14367ab9f3cbdb306d8bd6bd5f9ed59b4f2",
+  "date": "2019-09-22T16:29:44.667Z"
+}
