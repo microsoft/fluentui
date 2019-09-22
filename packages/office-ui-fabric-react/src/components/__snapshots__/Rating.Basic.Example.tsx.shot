@@ -188,7 +188,6 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                   width: 100%;
                 }
             data-icon-name="FavoriteStarFill"
-            role="presentation"
           >
             
           </i>
@@ -217,7 +216,6 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                   color: Highlight;
                 }
             data-icon-name="FavoriteStarFill"
-            role="presentation"
             style={
               Object {
                 "width": "100%",
@@ -345,7 +343,6 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                   width: 100%;
                 }
             data-icon-name="FavoriteStar"
-            role="presentation"
           >
             
           </i>
@@ -374,7 +371,6 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                   color: Highlight;
                 }
             data-icon-name="FavoriteStar"
-            role="presentation"
             style={
               Object {
                 "width": "0%",
@@ -502,7 +498,6 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                   width: 100%;
                 }
             data-icon-name="FavoriteStar"
-            role="presentation"
           >
             
           </i>
@@ -531,7 +526,6 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                   color: Highlight;
                 }
             data-icon-name="FavoriteStar"
-            role="presentation"
             style={
               Object {
                 "width": "0%",
@@ -659,7 +653,6 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                   width: 100%;
                 }
             data-icon-name="FavoriteStar"
-            role="presentation"
           >
             
           </i>
@@ -688,7 +681,6 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                   color: Highlight;
                 }
             data-icon-name="FavoriteStar"
-            role="presentation"
             style={
               Object {
                 "width": "0%",
@@ -816,7 +808,6 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                   width: 100%;
                 }
             data-icon-name="FavoriteStar"
-            role="presentation"
           >
             
           </i>
@@ -845,7 +836,6 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                   color: Highlight;
                 }
             data-icon-name="FavoriteStar"
-            role="presentation"
             style={
               Object {
                 "width": "0%",
@@ -1041,7 +1031,6 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                   width: 100%;
                 }
             data-icon-name="FavoriteStarFill"
-            role="presentation"
           >
             
           </i>
@@ -1070,7 +1059,6 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                   color: Highlight;
                 }
             data-icon-name="FavoriteStarFill"
-            role="presentation"
             style={
               Object {
                 "width": "100%",
@@ -1198,7 +1186,6 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                   width: 100%;
                 }
             data-icon-name="FavoriteStarFill"
-            role="presentation"
           >
             
           </i>
@@ -1227,7 +1214,6 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                   color: Highlight;
                 }
             data-icon-name="FavoriteStarFill"
-            role="presentation"
             style={
               Object {
                 "width": "100%",
@@ -1356,7 +1342,6 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                   width: 100%;
                 }
             data-icon-name="FavoriteStarFill"
-            role="presentation"
           >
             
           </i>
@@ -1385,7 +1370,6 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                   color: Highlight;
                 }
             data-icon-name="FavoriteStarFill"
-            role="presentation"
             style={
               Object {
                 "width": "100%",
@@ -1513,7 +1497,6 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                   width: 100%;
                 }
             data-icon-name="FavoriteStar"
-            role="presentation"
           >
             
           </i>
@@ -1542,7 +1525,6 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                   color: Highlight;
                 }
             data-icon-name="FavoriteStar"
-            role="presentation"
             style={
               Object {
                 "width": "0%",
@@ -1670,7 +1652,6 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                   width: 100%;
                 }
             data-icon-name="FavoriteStar"
-            role="presentation"
           >
             
           </i>
@@ -1699,7 +1680,6 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                   color: Highlight;
                 }
             data-icon-name="FavoriteStar"
-            role="presentation"
             style={
               Object {
                 "width": "0%",
@@ -1896,7 +1876,6 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                   width: 100%;
                 }
             data-icon-name="FavoriteStarFill"
-            role="presentation"
           >
             
           </i>
@@ -1925,7 +1904,6 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                   color: Highlight;
                 }
             data-icon-name="FavoriteStarFill"
-            role="presentation"
             style={
               Object {
                 "width": "100%",
@@ -2053,7 +2031,6 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                   width: 100%;
                 }
             data-icon-name="FavoriteStar"
-            role="presentation"
           >
             
           </i>
@@ -2082,7 +2059,6 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                   color: Highlight;
                 }
             data-icon-name="FavoriteStar"
-            role="presentation"
             style={
               Object {
                 "width": "0%",
@@ -2210,7 +2186,6 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                   width: 100%;
                 }
             data-icon-name="FavoriteStar"
-            role="presentation"
           >
             
           </i>
@@ -2239,7 +2214,6 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                   color: Highlight;
                 }
             data-icon-name="FavoriteStar"
-            role="presentation"
             style={
               Object {
                 "width": "0%",
@@ -2367,7 +2341,6 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                   width: 100%;
                 }
             data-icon-name="FavoriteStar"
-            role="presentation"
           >
             
           </i>
@@ -2396,7 +2369,6 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                   color: Highlight;
                 }
             data-icon-name="FavoriteStar"
-            role="presentation"
             style={
               Object {
                 "width": "0%",
@@ -2524,7 +2496,6 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                   width: 100%;
                 }
             data-icon-name="FavoriteStar"
-            role="presentation"
           >
             
           </i>
@@ -2553,7 +2524,6 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                   color: Highlight;
                 }
             data-icon-name="FavoriteStar"
-            role="presentation"
             style={
               Object {
                 "width": "0%",
@@ -2681,7 +2651,6 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                   width: 100%;
                 }
             data-icon-name="FavoriteStar"
-            role="presentation"
           >
             
           </i>
@@ -2710,7 +2679,6 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                   color: Highlight;
                 }
             data-icon-name="FavoriteStar"
-            role="presentation"
             style={
               Object {
                 "width": "0%",
@@ -2838,7 +2806,6 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                   width: 100%;
                 }
             data-icon-name="FavoriteStar"
-            role="presentation"
           >
             
           </i>
@@ -2867,7 +2834,6 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                   color: Highlight;
                 }
             data-icon-name="FavoriteStar"
-            role="presentation"
             style={
               Object {
                 "width": "0%",
@@ -2995,7 +2961,6 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                   width: 100%;
                 }
             data-icon-name="FavoriteStar"
-            role="presentation"
           >
             
           </i>
@@ -3024,7 +2989,6 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                   color: Highlight;
                 }
             data-icon-name="FavoriteStar"
-            role="presentation"
             style={
               Object {
                 "width": "0%",
@@ -3152,7 +3116,6 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                   width: 100%;
                 }
             data-icon-name="FavoriteStar"
-            role="presentation"
           >
             
           </i>
@@ -3181,7 +3144,6 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                   color: Highlight;
                 }
             data-icon-name="FavoriteStar"
-            role="presentation"
             style={
               Object {
                 "width": "0%",
@@ -3309,7 +3271,6 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                   width: 100%;
                 }
             data-icon-name="FavoriteStar"
-            role="presentation"
           >
             
           </i>
@@ -3338,7 +3299,6 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                   color: Highlight;
                 }
             data-icon-name="FavoriteStar"
-            role="presentation"
             style={
               Object {
                 "width": "0%",
@@ -3513,7 +3473,6 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                   color: GrayText;
                 }
             data-icon-name="FavoriteStarFill"
-            role="presentation"
           >
             
           </i>
@@ -3621,7 +3580,6 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                   color: GrayText;
                 }
             data-icon-name="FavoriteStar"
-            role="presentation"
           >
             
           </i>
@@ -3729,7 +3687,6 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                   color: GrayText;
                 }
             data-icon-name="FavoriteStar"
-            role="presentation"
           >
             
           </i>
@@ -3837,7 +3794,6 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                   color: GrayText;
                 }
             data-icon-name="FavoriteStar"
-            role="presentation"
           >
             
           </i>
@@ -3945,7 +3901,6 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                   color: GrayText;
                 }
             data-icon-name="FavoriteStar"
-            role="presentation"
           >
             
           </i>
@@ -4109,7 +4064,6 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                   width: 100%;
                 }
             data-icon-name="FavoriteStarFill"
-            role="presentation"
           >
             
           </i>
@@ -4138,7 +4092,6 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                   color: Highlight;
                 }
             data-icon-name="FavoriteStarFill"
-            role="presentation"
             style={
               Object {
                 "width": "100%",
@@ -4248,7 +4201,6 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                   width: 100%;
                 }
             data-icon-name="FavoriteStarFill"
-            role="presentation"
           >
             
           </i>
@@ -4277,7 +4229,6 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                   color: Highlight;
                 }
             data-icon-name="FavoriteStarFill"
-            role="presentation"
             style={
               Object {
                 "width": "100%",
@@ -4388,7 +4339,6 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                   width: 100%;
                 }
             data-icon-name="FavoriteStarFill"
-            role="presentation"
           >
             
           </i>
@@ -4417,7 +4367,6 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                   color: Highlight;
                 }
             data-icon-name="FavoriteStarFill"
-            role="presentation"
             style={
               Object {
                 "width": "50%",
@@ -4527,7 +4476,6 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                   width: 100%;
                 }
             data-icon-name="FavoriteStar"
-            role="presentation"
           >
             
           </i>
@@ -4556,7 +4504,6 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                   color: Highlight;
                 }
             data-icon-name="FavoriteStar"
-            role="presentation"
             style={
               Object {
                 "width": "0%",
@@ -4666,7 +4613,6 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                   width: 100%;
                 }
             data-icon-name="FavoriteStar"
-            role="presentation"
           >
             
           </i>
@@ -4695,7 +4641,6 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                   color: Highlight;
                 }
             data-icon-name="FavoriteStar"
-            role="presentation"
             style={
               Object {
                 "width": "0%",
@@ -4891,7 +4836,6 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                   width: 100%;
                 }
             data-icon-name="StarburstSolid"
-            role="presentation"
           >
             
           </i>
@@ -4920,7 +4864,6 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                   color: Highlight;
                 }
             data-icon-name="StarburstSolid"
-            role="presentation"
             style={
               Object {
                 "width": "100%",
@@ -5048,7 +4991,6 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                   width: 100%;
                 }
             data-icon-name="StarburstSolid"
-            role="presentation"
           >
             
           </i>
@@ -5077,7 +5019,6 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                   color: Highlight;
                 }
             data-icon-name="StarburstSolid"
-            role="presentation"
             style={
               Object {
                 "width": "100%",
@@ -5206,7 +5147,6 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                   width: 100%;
                 }
             data-icon-name="StarburstSolid"
-            role="presentation"
           >
             
           </i>
@@ -5235,7 +5175,6 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                   color: Highlight;
                 }
             data-icon-name="StarburstSolid"
-            role="presentation"
             style={
               Object {
                 "width": "50%",
@@ -5363,7 +5302,6 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                   width: 100%;
                 }
             data-icon-name="Starburst"
-            role="presentation"
           >
             
           </i>
@@ -5392,7 +5330,6 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                   color: Highlight;
                 }
             data-icon-name="Starburst"
-            role="presentation"
             style={
               Object {
                 "width": "0%",
@@ -5520,7 +5457,6 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                   width: 100%;
                 }
             data-icon-name="Starburst"
-            role="presentation"
           >
             
           </i>
@@ -5549,7 +5485,6 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                   color: Highlight;
                 }
             data-icon-name="Starburst"
-            role="presentation"
             style={
               Object {
                 "width": "0%",
@@ -5746,7 +5681,6 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                   width: 100%;
                 }
             data-icon-name="FavoriteStarFill"
-            role="presentation"
           >
             
           </i>
@@ -5775,7 +5709,6 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                   color: Highlight;
                 }
             data-icon-name="FavoriteStarFill"
-            role="presentation"
             style={
               Object {
                 "width": "100%",
@@ -5903,7 +5836,6 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                   width: 100%;
                 }
             data-icon-name="FavoriteStar"
-            role="presentation"
           >
             
           </i>
@@ -5932,7 +5864,6 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                   color: Highlight;
                 }
             data-icon-name="FavoriteStar"
-            role="presentation"
             style={
               Object {
                 "width": "0%",
@@ -6060,7 +5991,6 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                   width: 100%;
                 }
             data-icon-name="FavoriteStar"
-            role="presentation"
           >
             
           </i>
@@ -6089,7 +6019,6 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                   color: Highlight;
                 }
             data-icon-name="FavoriteStar"
-            role="presentation"
             style={
               Object {
                 "width": "0%",
@@ -6217,7 +6146,6 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                   width: 100%;
                 }
             data-icon-name="FavoriteStar"
-            role="presentation"
           >
             
           </i>
@@ -6246,7 +6174,6 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                   color: Highlight;
                 }
             data-icon-name="FavoriteStar"
-            role="presentation"
             style={
               Object {
                 "width": "0%",
@@ -6374,7 +6301,6 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                   width: 100%;
                 }
             data-icon-name="FavoriteStar"
-            role="presentation"
           >
             
           </i>
@@ -6403,7 +6329,6 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                   color: Highlight;
                 }
             data-icon-name="FavoriteStar"
-            role="presentation"
             style={
               Object {
                 "width": "0%",

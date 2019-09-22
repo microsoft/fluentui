@@ -199,7 +199,6 @@ exports[`Component Examples renders Facepile.AddFace.Example.tsx correctly 1`] =
                       speak: none;
                     }
                 data-icon-name="AddFriend"
-                role="presentation"
               >
                 
               </i>

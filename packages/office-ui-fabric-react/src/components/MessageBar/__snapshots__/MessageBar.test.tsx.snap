@@ -83,7 +83,6 @@ exports[`MessageBar renders MessageBar correctly 1`] = `
                 color: Window;
               }
           data-icon-name="Info"
-          role="presentation"
         >
           
         </i>

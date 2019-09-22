@@ -201,7 +201,6 @@ exports[`Component Examples renders DatePicker.WeekNumbers.Example.tsx correctly
                   }
               data-icon-name="Calendar"
               onClick={[Function]}
-              role="presentation"
             >
               
             </i>
@@ -416,7 +415,6 @@ exports[`Component Examples renders DatePicker.WeekNumbers.Example.tsx correctly
                 speak: none;
               }
           data-icon-name="ChevronDown"
-          role="presentation"
         >
           
         </i>

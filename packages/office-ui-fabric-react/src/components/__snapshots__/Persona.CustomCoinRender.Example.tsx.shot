@@ -154,7 +154,6 @@ exports[`Component Examples renders Persona.CustomCoinRender.Example.tsx correct
                   color: Window;
                 }
             data-icon-name="SkypeCheck"
-            role="presentation"
             style={
               Object {
                 "fontSize": "12px",

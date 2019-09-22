@@ -258,7 +258,6 @@ exports[`Component Examples renders Dropdown.Required.Example.tsx correctly 1`] 
                   speak: none;
                 }
             data-icon-name="ChevronDown"
-            role="presentation"
           >
             
           </i>
@@ -581,7 +580,6 @@ exports[`Component Examples renders Dropdown.Required.Example.tsx correctly 1`] 
                 speak: none;
               }
           data-icon-name="ChevronDown"
-          role="presentation"
         >
           
         </i>

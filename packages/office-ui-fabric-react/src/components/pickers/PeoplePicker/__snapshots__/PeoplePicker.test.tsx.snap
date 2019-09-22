@@ -596,7 +596,6 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
                         vertical-align: middle;
                       }
                   data-icon-name="Cancel"
-                  role="presentation"
                 >
                   
                 </i>

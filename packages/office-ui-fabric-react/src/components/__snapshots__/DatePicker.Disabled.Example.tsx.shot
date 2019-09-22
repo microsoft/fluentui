@@ -202,7 +202,6 @@ exports[`Component Examples renders DatePicker.Disabled.Example.tsx correctly 1`
                   }
               data-icon-name="Calendar"
               onClick={[Function]}
-              role="presentation"
             >
               
             </i>
@@ -442,7 +441,6 @@ exports[`Component Examples renders DatePicker.Disabled.Example.tsx correctly 1`
                   }
               data-icon-name="Calendar"
               onClick={[Function]}
-              role="presentation"
             >
               
             </i>

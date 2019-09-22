@@ -161,7 +161,6 @@ exports[`DocumentCard renders DocumentCard correctly 1`] = `
                       speak: none;
                     }
                 data-icon-name="Contact"
-                role="presentation"
               >
                 
               </i>
