@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "fix typo in ComboBox and Button docs",
+  "packageName": "office-ui-fabric-react",
+  "email": "thomas.gassmann@hotmail.com",
+  "commit": "e24ea49e563cb23b8eb1d3cdbde631a79080c518",
+  "date": "2019-09-20T13:03:54.699Z"
+}
