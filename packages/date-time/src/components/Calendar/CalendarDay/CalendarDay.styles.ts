@@ -37,7 +37,7 @@ export const styles = (props: ICalendarDayStyleProps): ICalendarDayStyles => {
       width: '100%'
     },
     monthAndYear: [
-      getFocusStyle(theme, { inset: -1 }),
+      getFocusStyle(theme, { inset: 1 }),
       {
         ...headerAnimationStyle,
         alignItems: 'center',
@@ -85,6 +85,7 @@ export const styles = (props: ICalendarDayStyleProps): ICalendarDayStyles => {
         backgroundColor: 'transparent',
         border: 'none',
         padding: 0,
+        overflow: 'visible', // explicitly specify for IE11
         selectors: {
           '&:hover': {
             color: palette.neutralDark,
