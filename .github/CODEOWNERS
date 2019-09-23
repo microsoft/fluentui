@@ -55,6 +55,7 @@ packages/foundation/ @JasonGore
 packages/lists/ @dzearing @KevinTCoughlin @aditima
 packages/merge-styles/ @dzearing
 packages/migration/ @ecraig12345 @kenotron
+packages/monaco-editor/ @ecraig12345 @kenotron
 packages/prettier-rules/ @ecraig12345 @kenotron
 packages/react-hooks/ @ecraig12345
 packages/styling/ @dzearing

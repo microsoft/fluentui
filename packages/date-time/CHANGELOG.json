@@ -2,6 +2,20 @@
   "name": "@uifabric/date-time",
   "entries": [
     {
+      "date": "Mon, 23 Sep 2019 12:33:15 GMT",
+      "tag": "@uifabric/date-time_v7.4.6",
+      "version": "7.4.6",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Icon Accessibility updates: update aria-hidden to pull aria-labelledBy from root and imageProps and removed role presentation - should not apply when a label is provided.",
+            "author": "marygans@microsoft.com",
+            "commit": "df4c69f030235b4039f9104d30639acfb29dfca0"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 16 Sep 2019 12:34:47 GMT",
       "tag": "@uifabric/date-time_v7.4.5",
       "version": "7.4.5",

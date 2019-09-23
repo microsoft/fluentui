@@ -125,7 +125,6 @@ exports[`Component Examples renders Checkbox.Other.Example.tsx correctly 1`] = `
                 color: Window;
               }
           data-icon-name="CheckMark"
-          role="presentation"
         >
           
         </i>
@@ -288,7 +287,6 @@ exports[`Component Examples renders Checkbox.Other.Example.tsx correctly 1`] = `
                 color: Window;
               }
           data-icon-name="CheckMark"
-          role="presentation"
         >
           
         </i>
@@ -415,7 +413,6 @@ exports[`Component Examples renders Checkbox.Other.Example.tsx correctly 1`] = `
                 color: InactiveBorder;
               }
           data-icon-name="CheckMark"
-          role="presentation"
         >
           
         </i>
@@ -548,7 +545,6 @@ exports[`Component Examples renders Checkbox.Other.Example.tsx correctly 1`] = `
                 color: InactiveBorder;
               }
           data-icon-name="CheckMark"
-          role="presentation"
         >
           
         </i>
@@ -695,7 +691,6 @@ exports[`Component Examples renders Checkbox.Other.Example.tsx correctly 1`] = `
                 color: Window;
               }
           data-icon-name="CheckMark"
-          role="presentation"
         >
           
         </i>
@@ -841,7 +836,6 @@ exports[`Component Examples renders Checkbox.Other.Example.tsx correctly 1`] = `
                 color: Window;
               }
           data-icon-name="CheckMark"
-          role="presentation"
         >
           
         </i>
@@ -984,7 +978,6 @@ exports[`Component Examples renders Checkbox.Other.Example.tsx correctly 1`] = `
                 color: Window;
               }
           data-icon-name="CheckMark"
-          role="presentation"
         >
           
         </i>
@@ -1144,7 +1137,6 @@ exports[`Component Examples renders Checkbox.Other.Example.tsx correctly 1`] = `
                 color: Window;
               }
           data-icon-name="CheckMark"
-          role="presentation"
         >
           
         </i>
@@ -1308,7 +1300,6 @@ exports[`Component Examples renders Checkbox.Other.Example.tsx correctly 1`] = `
                 color: Window;
               }
           data-icon-name="CheckMark"
-          role="presentation"
         >
           
         </i>
@@ -1451,7 +1442,6 @@ exports[`Component Examples renders Checkbox.Other.Example.tsx correctly 1`] = `
                 color: InactiveBorder;
               }
           data-icon-name="CheckMark"
-          role="presentation"
         >
           
         </i>
@@ -1597,7 +1587,6 @@ exports[`Component Examples renders Checkbox.Other.Example.tsx correctly 1`] = `
                 color: InactiveBorder;
               }
           data-icon-name="CheckMark"
-          role="presentation"
         >
           
         </i>

@@ -1,7 +1,46 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 18 Sep 2019 12:32:55 GMT and should not be manually modified.
+This log was last generated on Mon, 23 Sep 2019 12:33:15 GMT and should not be manually modified.
 
+## 7.37.1
+Mon, 23 Sep 2019 12:33:15 GMT
+
+### Patches
+
+- Icon Accessibility: update aria-hidden to pull aria-labelledBy from root and imageProps and removed role presentation - should not apply when a label is provided.  (marygans@microsoft.com)
+- Update icons to v3.50. May change subset font files for some components. (pejahn@microsoft.com)
+- FocusTrapZone example: Remove Randomize function. (jagore@microsoft.com)
+- Positioning: Fix issue where anchor edge would flip even if previous positions calculated (joschect@microsoft.com)
+- fix typo in ComboBox and Button docs (thomas.gassmann@hotmail.com)
+- Stack doesn't need to set overflow=hidden when grow=true to restrict size of flexbox children. Users are having to override this with overflow=visible to prevent clipping inner children (email not defined)
+## 7.37.0
+Fri, 20 Sep 2019 12:34:28 GMT
+
+### Minor changes
+
+- Breadcrumb: Added ability to make current item a heading. (v-mare@microsoft.com)
+### Patches
+
+- Update Panel examples to improve accessibility. (jdh@microsoft.com)
+- Fixes various a11y issues in docs and controls (mgodbolt@microsoft.com)
+- TeachingBubble: Specify heading role for header. (jdh@microsoft.com)
+- ContextualMenu: Update the bounds prop to allow for the same functionality that the Callout has (jspurlin@microsoft.com)
+- Listen to composition events only for IE11 (amyngu@microsoft.com)
+## 7.36.0
+Thu, 19 Sep 2019 13:05:24 GMT
+
+### Minor changes
+
+- TagPicker: Updated styles to match toolkit. Added more screener tests. Added read only state. (v-mare@microsoft.com)
+- Apply CheckboxVisiblity to header as well in DetailsList (thomas.gassmann@hotmail.com)
+### Patches
+
+- ComboBox: fix for issue resetting suggestedDisplayValue after clearing the content of a comboBox (marygans@microsoft.com)
+- keep aria-label in sync with FloatingPicker open state in BaseExtendedPicker (mhuan13@gmail.com)
+- SplitButton: Updated high contrast styling (v-mare@microsoft.com)
+- Rating: Fixed duplicates ID on stars with fractional values. (v-mare@microsoft.com)
+- Coachmark: Fixed pulse beacon RTL animation direction issue. (v-mare@microsoft.com)
+- add landmark and widget role to searchbox (mgodbolt@microsoft.com)
 ## 7.35.0
 Wed, 18 Sep 2019 12:32:55 GMT
 

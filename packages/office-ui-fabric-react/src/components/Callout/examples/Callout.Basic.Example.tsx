@@ -1,9 +1,5 @@
 import * as React from 'react';
-import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
-import { Callout } from 'office-ui-fabric-react/lib/Callout';
-import { Link } from 'office-ui-fabric-react/lib/Link';
-import { getTheme, FontWeights, mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
-import { getId } from 'office-ui-fabric-react/lib/Utilities';
+import { DefaultButton, Callout, Link, getTheme, FontWeights, mergeStyleSets, getId } from 'office-ui-fabric-react';
 
 export interface ICalloutBasicExampleState {
   isCalloutVisible?: boolean;

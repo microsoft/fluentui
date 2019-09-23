@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { IRawStyle, mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 import { css } from 'office-ui-fabric-react/lib/Utilities';
-import { FontSizes } from '@uifabric/fluent-theme';
+import { codeFontFamily } from './common';
 
 // react-syntax-highlighter has typings, but they're wrong aside from the props and missing many paths...
 // tslint:disable no-any
@@ -16,9 +16,6 @@ const style: { [key: string]: IRawStyle } = require('react-syntax-highlighter/di
 // Register languages
 SyntaxHighlighter.registerLanguage('tsx', ts);
 
-/** Font family for code snippets/editors */
-export const codeFontFamily = 'Monaco, Menlo, Consolas, "Droid Sans Mono", "Inconsolata", "Courier New", monospace';
-
 // Customize the styles, including to match the colors from Monaco
 // (because that looks better but also because Monaco's colors are more accesssible)
 // https://github.com/conorhastings/react-syntax-highlighter/blob/master/src/styles/prism/vs.js
@@ -30,7 +27,7 @@ const colorMap: { [key: string]: string } = {
 };
 const codeStyle: IRawStyle = {
   fontFamily: codeFontFamily,
-  fontSize: FontSizes.size12, // matches Monaco
+  fontSize: '12px', // matches Monaco
   color: 'black',
   lineHeight: '1.6',
   border: 'none',

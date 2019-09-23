@@ -213,7 +213,6 @@ exports[`Component Examples renders Callout.Cover.Example.tsx correctly 1`] = `
                   speak: none;
                 }
             data-icon-name="ChevronDown"
-            role="presentation"
           >
             
           </i>

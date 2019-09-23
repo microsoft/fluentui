@@ -168,7 +168,6 @@ exports[`Component Examples renders Nav.Nested.Example.tsx correctly 1`] = `
                         transition: transform .1s linear;
                       }
                   data-icon-name="ChevronDown"
-                  role="presentation"
                 >
                   
                 </i>
@@ -411,7 +410,6 @@ exports[`Component Examples renders Nav.Nested.Example.tsx correctly 1`] = `
                         transition: transform .1s linear;
                       }
                   data-icon-name="ChevronDown"
-                  role="presentation"
                 >
                   
                 </i>

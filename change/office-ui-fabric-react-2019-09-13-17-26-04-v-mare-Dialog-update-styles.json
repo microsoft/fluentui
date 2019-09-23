@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Dialog: Updated styles to match toolkit.",
+  "packageName": "office-ui-fabric-react",
+  "email": "v-mare@microsoft.com",
+  "commit": "70d346679d01ac4a4a678d10d3e824eb25d3b524",
+  "date": "2019-09-14T00:26:04.814Z"
+}

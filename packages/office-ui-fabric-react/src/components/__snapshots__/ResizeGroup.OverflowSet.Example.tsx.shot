@@ -3632,7 +3632,6 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   color: Window;
                 }
             data-icon-name="CheckMark"
-            role="presentation"
           >
             
           </i>
@@ -3775,7 +3774,6 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   color: Window;
                 }
             data-icon-name="CheckMark"
-            role="presentation"
           >
             
           </i>
@@ -3918,7 +3916,6 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   color: Window;
                 }
             data-icon-name="CheckMark"
-            role="presentation"
           >
             
           </i>
@@ -4145,7 +4142,6 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                     speak: none;
                   }
               data-icon-name="ChevronDown"
-              role="presentation"
             >
               
             </i>
