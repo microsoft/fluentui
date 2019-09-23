@@ -819,7 +819,8 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                                     visibility: hidden;
                                   }
                                   @media screen and (-ms-high-contrast: active){& {
-                                    background-color: Highlight;
+                                    background-color: Window;
+                                    border: 1px solid WindowText;
                                   }
                               data-is-focusable={true}
                               role="dialog"
