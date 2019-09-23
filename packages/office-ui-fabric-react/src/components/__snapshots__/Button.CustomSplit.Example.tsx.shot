@@ -32,6 +32,7 @@ exports[`Component Examples renders Button.CustomSplit.Example.tsx correctly 1`]
   <div
     aria-expanded={false}
     aria-haspopup={true}
+    aria-label="New item"
     aria-roledescription="split button"
     className=
 
@@ -110,6 +111,7 @@ exports[`Component Examples renders Button.CustomSplit.Example.tsx correctly 1`]
       }
     >
       <button
+        aria-label="New item"
         aria-roledescription="split button"
         className=
             ms-Button
@@ -186,7 +188,6 @@ exports[`Component Examples renders Button.CustomSplit.Example.tsx correctly 1`]
         onMouseDown={[Function]}
         onMouseUp={[Function]}
         tabIndex={-1}
-        title="New item"
         type="button"
       >
         <span

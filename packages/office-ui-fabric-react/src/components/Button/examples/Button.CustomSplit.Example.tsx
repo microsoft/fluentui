@@ -48,7 +48,7 @@ export const ButtonSplitCustomExample: React.FunctionComponent<IButtonExamplePro
         aria-roledescription="split button"
         styles={customSplitButtonStyles}
         menuProps={menuProps}
-        title="New item"
+        ariaLabel="New item"
         onClick={_alertClicked}
         disabled={disabled}
         checked={checked}
