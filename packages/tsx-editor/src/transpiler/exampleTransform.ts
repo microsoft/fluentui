@@ -1,3 +1,4 @@
+import { getWindow } from 'office-ui-fabric-react/lib/Utilities';
 import { tryParseExample, IMPORT_REGEX } from './exampleParser';
 import { _supportedPackageToGlobalMap } from './transpileHelpers';
 import { IBasicPackageGroup, ITransformedCode } from '../interfaces/index';
@@ -21,9 +22,11 @@ export interface ITransformExampleParams {
   supportedPackages: IBasicPackageGroup[];
 }
 
-declare const window: Window & {
-  transformLogging?: boolean;
-};
+const win = getWindow() as
+  | Window & {
+      transformLogging?: boolean;
+    }
+  | undefined;
 
 /**
  * Transform an example for rendering in a browser context (example page or codepen).
@@ -85,7 +88,7 @@ ${mainCode}
 ReactDOM.render(${createComponentElement}, document.getElementById('${id}'));
 `;
 
-  if (window.transformLogging) {
+  if (win && win.transformLogging) {
     console.log('TRANSFORMED:');
     console.log(output.output);
   }

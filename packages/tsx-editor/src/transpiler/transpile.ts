@@ -1,12 +1,15 @@
 import * as monaco from '@uifabric/monaco-editor';
 import { TypeScriptWorker, EmitOutput } from '@uifabric/monaco-editor/monaco-typescript.d';
+import { getWindow } from 'office-ui-fabric-react/lib/Utilities';
 import { transformExample } from './exampleTransform';
 import { _getErrorMessages } from './transpileHelpers';
 import { IMonacoTextModel, IBasicPackageGroup, ITransformedCode } from '../interfaces/index';
 
-declare const window: Window & {
-  transpileLogging?: boolean;
-};
+const win = getWindow() as
+  | Window & {
+      transpileLogging?: boolean;
+    }
+  | undefined;
 
 /**
  * Transpile the model's current code from TS to JS.
@@ -23,7 +26,7 @@ export function transpile(model: IMonacoTextModel): Promise<ITransformedCode> {
       return worker.getEmitOutput(filename).then((output: EmitOutput) => {
         if (!output.emitSkipped) {
           transpiledOutput.output = output.outputFiles[0].text;
-          if (window.transpileLogging) {
+          if (win && win.transpileLogging) {
             console.log('TRANSPILED:');
             console.log(transpiledOutput.output);
           }
