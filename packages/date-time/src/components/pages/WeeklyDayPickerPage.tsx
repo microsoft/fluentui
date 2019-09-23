@@ -6,6 +6,9 @@ import { WeeklyDayPickerInlineExpandableExample } from '../WeeklyDayPicker/examp
 const WeeklyDayPickerInlineExampleCode = require('!raw-loader!@uifabric/date-time/src/components/WeeklyDayPicker/examples/WeeklyDayPicker.Inline.Example.tsx') as string;
 const WeeklyDayPickerInlineExampleCodepen = require('!@uifabric/codepen-loader!@uifabric/date-time/src/components/WeeklyDayPicker/examples/WeeklyDayPicker.Inline.Example.tsx') as string;
 
+const WeeklyDayPickerInlineExpandableExampleCode = require('!raw-loader!@uifabric/date-time/src/components/WeeklyDayPicker/examples/WeeklyDayPicker.Inline.Expandable.Example.tsx') as string;
+const WeeklyDayPickerInlineExpandableExampleCodepen = require('!@uifabric/codepen-loader!@uifabric/date-time/src/components/WeeklyDayPicker/examples/WeeklyDayPicker.Inline.Expandable.Example.tsx') as string;
+
 export class WeeklyDayPickerPage extends React.Component<{}, {}> {
   public render(): JSX.Element {
     return (
@@ -29,9 +32,9 @@ export class WeeklyDayPickerPage extends React.Component<{}, {}> {
               <WeeklyDayPickerInlineExample showNavigateButtons={true} />
             </ExampleCard>
             <ExampleCard
-              title="Inline WeeklyDayPicker with externally controlled date"
-              code={WeeklyDayPickerInlineExampleCode}
-              codepenJS={WeeklyDayPickerInlineExampleCodepen}
+              title="Inline WeeklyDayPicker that can be expanded to full month picker"
+              code={WeeklyDayPickerInlineExpandableExampleCode}
+              codepenJS={WeeklyDayPickerInlineExpandableExampleCodepen}
             >
               <WeeklyDayPickerInlineExpandableExample showExpandButton={true} weeksToShow={6} />
             </ExampleCard>
