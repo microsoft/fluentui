@@ -2216,7 +2216,6 @@ exports[`Button renders a primary Button with custom content and icon right-alig
           speak: none;
         }
     data-icon-name="Upload"
-    role="presentation"
   >
     
   </i>

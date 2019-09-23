@@ -386,7 +386,6 @@ exports[`Stack renders horizontal Stack with grow correctly 1`] = `
           flex-grow: 5;
           flex-wrap: nowrap;
           height: auto;
-          overflow: hidden;
           width: auto;
         }
         & > * {
@@ -411,7 +410,6 @@ exports[`Stack renders horizontal Stack with grow correctly 1`] = `
           flex-grow: 2;
           flex-wrap: nowrap;
           height: auto;
-          overflow: hidden;
           width: auto;
         }
         & > * {
@@ -436,7 +434,6 @@ exports[`Stack renders horizontal Stack with grow correctly 1`] = `
           flex-grow: 1;
           flex-wrap: nowrap;
           height: auto;
-          overflow: hidden;
           width: auto;
         }
         & > * {
@@ -840,7 +837,6 @@ exports[`Stack renders vertical Stack with grow correctly 1`] = `
           flex-grow: 5;
           flex-wrap: nowrap;
           height: auto;
-          overflow: hidden;
           width: auto;
         }
         & > * {
@@ -865,7 +861,6 @@ exports[`Stack renders vertical Stack with grow correctly 1`] = `
           flex-grow: 2;
           flex-wrap: nowrap;
           height: auto;
-          overflow: hidden;
           width: auto;
         }
         & > * {
@@ -890,7 +885,6 @@ exports[`Stack renders vertical Stack with grow correctly 1`] = `
           flex-grow: 1;
           flex-wrap: nowrap;
           height: auto;
-          overflow: hidden;
           width: auto;
         }
         & > * {

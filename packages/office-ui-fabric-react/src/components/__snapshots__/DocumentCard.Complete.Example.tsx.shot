@@ -1050,7 +1050,6 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
               vertical-align: top;
             }
         data-icon-name="View"
-        role="presentation"
       >
         
       </i>

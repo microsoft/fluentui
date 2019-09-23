@@ -1,7 +1,18 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 20 Sep 2019 12:34:28 GMT and should not be manually modified.
+This log was last generated on Mon, 23 Sep 2019 12:33:15 GMT and should not be manually modified.
 
+## 7.37.1
+Mon, 23 Sep 2019 12:33:15 GMT
+
+### Patches
+
+- Icon Accessibility: update aria-hidden to pull aria-labelledBy from root and imageProps and removed role presentation - should not apply when a label is provided.  (marygans@microsoft.com)
+- Update icons to v3.50. May change subset font files for some components. (pejahn@microsoft.com)
+- FocusTrapZone example: Remove Randomize function. (jagore@microsoft.com)
+- Positioning: Fix issue where anchor edge would flip even if previous positions calculated (joschect@microsoft.com)
+- fix typo in ComboBox and Button docs (thomas.gassmann@hotmail.com)
+- Stack doesn't need to set overflow=hidden when grow=true to restrict size of flexbox children. Users are having to override this with overflow=visible to prevent clipping inner children (email not defined)
 ## 7.37.0
 Fri, 20 Sep 2019 12:34:28 GMT
 

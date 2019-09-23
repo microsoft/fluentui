@@ -1156,7 +1156,6 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                       speak: none;
                                     }
                                 data-icon-name="Tag"
-                                role="presentation"
                               >
                                 
                               </i>
@@ -1226,7 +1225,6 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                       transition: transform .1s linear;
                                     }
                                 data-icon-name="ChevronRightMed"
-                                role="presentation"
                               >
                                 
                               </i>
