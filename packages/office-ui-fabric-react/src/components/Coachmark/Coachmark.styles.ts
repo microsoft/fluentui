@@ -243,7 +243,8 @@ export function getStyles(props: ICoachmarkStyleProps): ICoachmarkStyles {
         visibility: 'hidden',
         selectors: {
           [HighContrastSelector]: {
-            backgroundColor: 'Highlight'
+            backgroundColor: 'Window',
+            border: '1px solid WindowText'
           }
         }
       },
