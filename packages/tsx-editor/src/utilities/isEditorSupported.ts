@@ -1,7 +1,7 @@
 import { getWindow, isIE11 } from 'office-ui-fabric-react/lib/Utilities';
 import { getMonacoConfig } from '@uifabric/monaco-editor/lib/configureEnvironment';
-import { tryParseExample } from '../transpiler/exampleParser';
-import { getSetting } from '../utilities/settings';
+import { isExampleValid } from '../transpiler/exampleParser';
+import { getSetting } from './settings';
 import { IBasicPackageGroup } from '../interfaces/packageGroup';
 
 export function isEditorSupported(code: string, supportedPackages: IBasicPackageGroup[]): boolean {
@@ -18,6 +18,6 @@ export function isEditorSupported(code: string, supportedPackages: IBasicPackage
     // Web worker available
     typeof Worker !== 'undefined' &&
     // No immediate issues detected in example (or exceptions thrown from parsing)
-    typeof tryParseExample(code!, supportedPackages) !== 'string'
+    isExampleValid(code, supportedPackages)
   );
 }
