@@ -1,9 +1,8 @@
 import * as React from 'react';
-import { WeeklyDayPicker, DayOfWeek, addDays } from '@uifabric/date-time';
+import { WeeklyDayPicker, DayOfWeek, addDays, IWeeklyDayPickerProps } from '@uifabric/date-time';
 
 import * as styles from './WeeklyDayPicker.Example.scss';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
-import { IWeeklyDayPickerProps } from '../WeeklyDayPicker.types';
 
 const DayPickerStrings = {
   months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
@@ -21,20 +20,26 @@ const DayPickerStrings = {
   closeButtonAriaLabel: 'Close'
 };
 
-export interface IWeeklyDayPickerInlineExampleState {
+export interface IWeeklyDayPickerInlineExpandableExampleState {
   selectedDate?: Date;
+  expanded?: boolean;
 }
 
-export interface IWeeklyDayPickerInlineExampleProps extends Omit<IWeeklyDayPickerProps, 'strings'> {
+export interface IWeeklyDayPickerInlineExpandableExampleProps extends Omit<IWeeklyDayPickerProps, 'strings'> {
+  showExpandButton?: boolean;
   showNavigateButtons?: boolean;
 }
 
-export class WeeklyDayPickerInlineExample extends React.Component<IWeeklyDayPickerInlineExampleProps, IWeeklyDayPickerInlineExampleState> {
-  public constructor(props: IWeeklyDayPickerInlineExampleProps) {
+export class WeeklyDayPickerInlineExpandableExample extends React.Component<
+  IWeeklyDayPickerInlineExpandableExampleProps,
+  IWeeklyDayPickerInlineExpandableExampleState
+> {
+  public constructor(props: IWeeklyDayPickerInlineExpandableExampleProps) {
     super(props);
 
     this.state = {
-      selectedDate: new Date()
+      selectedDate: new Date(),
+      expanded: false
     };
 
     this._onSelectDate = this._onSelectDate.bind(this);
@@ -69,6 +74,11 @@ export class WeeklyDayPickerInlineExample extends React.Component<IWeeklyDayPick
             </span>
           </div>
         )}
+        {this.props.showExpandButton && (
+          <div>
+            <DefaultButton className={styles.button} onClick={this._expand} text="Expand/collapse" />
+          </div>
+        )}
         <WeeklyDayPicker
           onSelectDate={this._onSelectDate}
           firstDayOfWeek={this.props.firstDayOfWeek ? this.props.firstDayOfWeek : DayOfWeek.Sunday}
@@ -77,6 +87,7 @@ export class WeeklyDayPickerInlineExample extends React.Component<IWeeklyDayPick
           maxDate={this.props.maxDate}
           restrictedDates={this.props.restrictedDates}
           initialDate={this.state.selectedDate}
+          showFullMonth={this.state.expanded}
         />
         {this.props.showNavigateButtons && (
           <div>
@@ -89,7 +100,7 @@ export class WeeklyDayPickerInlineExample extends React.Component<IWeeklyDayPick
   }
 
   private _onSelectDate(date: Date): void {
-    this.setState((prevState: IWeeklyDayPickerInlineExampleState) => {
+    this.setState((prevState: IWeeklyDayPickerInlineExpandableExampleState) => {
       return {
         selectedDate: date
       };
@@ -106,5 +117,11 @@ export class WeeklyDayPickerInlineExample extends React.Component<IWeeklyDayPick
     if (this.state && this.state.selectedDate) {
       this._onSelectDate(addDays(this.state.selectedDate, 1));
     }
+  };
+
+  private _expand = () => {
+    this.setState({
+      expanded: !this.state.expanded
+    });
   };
 }
