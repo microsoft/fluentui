@@ -39,6 +39,12 @@ exports[`Dialog renders Dialog correctly 1`] = `
             padding-right: 46px;
             padding-top: 16px;
           }
+          @media (min-width: 320px) and (max-width: 479px){& {
+            padding-bottom: 16px;
+            padding-left: 16px;
+            padding-right: 46px;
+            padding-top: 16px;
+          }
       role="heading"
     />
     <div
@@ -66,6 +72,12 @@ exports[`Dialog renders Dialog correctly 1`] = `
             border-radius: 2px;
             color: #201f1e;
           }
+          @media (min-width: 320px) and (max-width: 479px){& {
+            padding-bottom: 0;
+            padding-left: 0;
+            padding-right: 8px;
+            padding-top: 15px;
+          }
     />
   </div>
   <div
@@ -75,6 +87,12 @@ exports[`Dialog renders Dialog correctly 1`] = `
           padding-bottom: 24px;
           padding-left: 24px;
           padding-right: 24px;
+          padding-top: 0;
+        }
+        @media (min-width: 320px) and (max-width: 479px){& {
+          padding-bottom: 16px;
+          padding-left: 16px;
+          padding-right: 16px;
           padding-top: 0;
         }
   >
@@ -129,6 +147,12 @@ exports[`Dialog renders Dialog with a jsx title 1`] = `
             padding-right: 46px;
             padding-top: 16px;
           }
+          @media (min-width: 320px) and (max-width: 479px){& {
+            padding-bottom: 16px;
+            padding-left: 16px;
+            padding-right: 46px;
+            padding-top: 16px;
+          }
       role="heading"
     >
       <div>
@@ -165,6 +189,12 @@ exports[`Dialog renders Dialog with a jsx title 1`] = `
             border-radius: 2px;
             color: #201f1e;
           }
+          @media (min-width: 320px) and (max-width: 479px){& {
+            padding-bottom: 0;
+            padding-left: 0;
+            padding-right: 8px;
+            padding-top: 15px;
+          }
     />
   </div>
   <div
@@ -174,6 +204,12 @@ exports[`Dialog renders Dialog with a jsx title 1`] = `
           padding-bottom: 24px;
           padding-left: 24px;
           padding-right: 24px;
+          padding-top: 0;
+        }
+        @media (min-width: 320px) and (max-width: 479px){& {
+          padding-bottom: 16px;
+          padding-left: 16px;
+          padding-right: 16px;
           padding-top: 0;
         }
   >
