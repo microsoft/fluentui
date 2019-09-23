@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Update icons to v3.50. May change subset font files for some components.",
-  "packageName": "office-ui-fabric-react",
-  "email": "pejahn@microsoft.com",
-  "commit": "dbde2699023f4640b9bbae66571bf57189adbfaa",
-  "date": "2019-09-20T03:30:42.643Z"
-}

@@ -2,6 +2,45 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Mon, 23 Sep 2019 12:33:15 GMT",
+      "tag": "office-ui-fabric-react_v7.37.1",
+      "version": "7.37.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Icon Accessibility: update aria-hidden to pull aria-labelledBy from root and imageProps and removed role presentation - should not apply when a label is provided. ",
+            "author": "marygans@microsoft.com",
+            "commit": "d4a4face14c49917346e3ed5d9f08586e2c8cf0b"
+          },
+          {
+            "comment": "Update icons to v3.50. May change subset font files for some components.",
+            "author": "pejahn@microsoft.com",
+            "commit": "dbde2699023f4640b9bbae66571bf57189adbfaa"
+          },
+          {
+            "comment": "FocusTrapZone example: Remove Randomize function.",
+            "author": "jagore@microsoft.com",
+            "commit": "b1d05d0b7b8fd5b6109a6cb8afc2e8b1b48ae977"
+          },
+          {
+            "comment": "Positioning: Fix issue where anchor edge would flip even if previous positions calculated",
+            "author": "joschect@microsoft.com",
+            "commit": "52bfddc7567b8f910189142d75c2762358c0e62b"
+          },
+          {
+            "comment": "fix typo in ComboBox and Button docs",
+            "author": "thomas.gassmann@hotmail.com",
+            "commit": "e24ea49e563cb23b8eb1d3cdbde631a79080c518"
+          },
+          {
+            "comment": "Stack doesn't need to set overflow=hidden when grow=true to restrict size of flexbox children. Users are having to override this with overflow=visible to prevent clipping inner children",
+            "author": "email not defined",
+            "commit": "987173b9bb37750ff190850e5a4f85c90a0be7de"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 20 Sep 2019 12:34:28 GMT",
       "tag": "office-ui-fabric-react_v7.37.0",
       "version": "7.37.0",

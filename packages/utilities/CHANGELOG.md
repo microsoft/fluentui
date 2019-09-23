@@ -1,7 +1,13 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Fri, 20 Sep 2019 12:34:28 GMT and should not be manually modified.
+This log was last generated on Mon, 23 Sep 2019 12:33:15 GMT and should not be manually modified.
 
+## 7.1.0
+Mon, 23 Sep 2019 12:33:15 GMT
+
+### Minor changes
+
+- Customizations: add a way to batch updates (phkuo@microsoft.com)
 ## 7.0.11
 Fri, 20 Sep 2019 12:34:28 GMT
 

@@ -212,7 +212,6 @@ exports[`Component Examples renders Dropdown.Custom.Example.tsx correctly 1`] = 
                   speak: none;
                 }
             data-icon-name="MessageFill"
-            role="presentation"
             style={
               Object {
                 "marginRight": "8px",
@@ -252,7 +251,6 @@ exports[`Component Examples renders Dropdown.Custom.Example.tsx correctly 1`] = 
                 speak: none;
               }
           data-icon-name="CirclePlus"
-          role="presentation"
         >
           
         </i>
@@ -595,7 +593,6 @@ exports[`Component Examples renders Dropdown.Custom.Example.tsx correctly 1`] = 
                 speak: none;
               }
           data-icon-name="ChevronDown"
-          role="presentation"
         >
           
         </i>

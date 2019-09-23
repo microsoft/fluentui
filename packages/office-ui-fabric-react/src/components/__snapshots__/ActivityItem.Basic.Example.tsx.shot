@@ -43,7 +43,6 @@ exports[`Component Examples renders ActivityItem.Basic.Example.tsx correctly 1`]
               speak: none;
             }
         data-icon-name="Message"
-        role="presentation"
       >
         
       </i>
@@ -270,7 +269,6 @@ exports[`Component Examples renders ActivityItem.Basic.Example.tsx correctly 1`]
               speak: none;
             }
         data-icon-name="Trash"
-        role="presentation"
       >
         
       </i>
@@ -427,7 +425,6 @@ exports[`Component Examples renders ActivityItem.Basic.Example.tsx correctly 1`]
               speak: none;
             }
         data-icon-name="FabricMovetoFolder"
-        role="presentation"
       >
         
       </i>
