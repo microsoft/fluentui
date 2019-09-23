@@ -80,12 +80,10 @@ export class WeeklyDayPickerInlineExpandableExample extends React.Component<
           </div>
         )}
         <WeeklyDayPicker
+          {...this.props}
           onSelectDate={this._onSelectDate}
           firstDayOfWeek={this.props.firstDayOfWeek ? this.props.firstDayOfWeek : DayOfWeek.Sunday}
           strings={DayPickerStrings}
-          minDate={this.props.minDate}
-          maxDate={this.props.maxDate}
-          restrictedDates={this.props.restrictedDates}
           initialDate={this.state.selectedDate}
           showFullMonth={this.state.expanded}
         />

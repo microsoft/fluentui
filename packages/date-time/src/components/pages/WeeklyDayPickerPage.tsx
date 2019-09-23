@@ -33,7 +33,7 @@ export class WeeklyDayPickerPage extends React.Component<{}, {}> {
               code={WeeklyDayPickerInlineExampleCode}
               codepenJS={WeeklyDayPickerInlineExampleCodepen}
             >
-              <WeeklyDayPickerInlineExpandableExample showExpandButton={true} />
+              <WeeklyDayPickerInlineExpandableExample showExpandButton={true} weeksToShow={6} />
             </ExampleCard>
           </div>
         }
