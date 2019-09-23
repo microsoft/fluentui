@@ -50,7 +50,7 @@ module.exports = function preset() {
   task('sass', sass);
   task('postprocess:amd', postprocessAmdTask);
   task('postprocess:commonjs', postprocessCommonjsTask);
-  task('ts:commonjs', series(ts.commonjs, 'postprocess:commonjs'));
+  task('ts:commonjs', ts.commonjs);
   task('ts:esm', ts.esm);
   task('ts:amd', series(ts.amd, 'postprocess:amd'));
   task('tslint', tslint);
