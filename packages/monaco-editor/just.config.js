@@ -1,21 +1,22 @@
-const { just } = require('@uifabric/build');
-const { task, series, copyInstructions, copyInstructionsTask, cleanTask } = just;
+// @ts-check
+const { just, preset } = require('@uifabric/build');
+const { task, series, parallel, copyInstructions, copyInstructionsTask, cleanTask } = just;
+const { ts } = require('@uifabric/build/tasks/ts');
 const path = require('path');
-const fs = require('fs');
-const { transformCssTask } = require('./transformCssTask');
+const { transformCssTask } = require('./tasks/transformCssTask');
 
 const monacoEditorPath = path.dirname(require.resolve('monaco-editor/package.json'));
 
+preset.basic();
+
+task('clean', cleanTask({ paths: ['esm', 'lib'] }));
 task(
-  'build',
-  series(
-    cleanTask({ paths: ['lib'] }),
-    copyInstructionsTask({
-      copyInstructions: copyInstructions.copyFilesInDirectory(monacoEditorPath, path.join(__dirname, 'lib'))
-    }),
-    transformCssTask,
-    () => {
-      fs.unlinkSync(path.join(__dirname, 'lib', 'package.json'));
-    }
-  )
+  'copy',
+  copyInstructionsTask({
+    copyInstructions: copyInstructions.copyFilesInDirectory(path.join(monacoEditorPath, 'esm'), path.join(__dirname, 'esm'))
+  })
 );
+task('transform-css', transformCssTask);
+task('ts', ts.esm);
+
+task('build', series('clean', 'copy', parallel('transform-css', 'ts'))).cached();

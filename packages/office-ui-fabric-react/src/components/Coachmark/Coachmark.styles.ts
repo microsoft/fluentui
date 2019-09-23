@@ -1,5 +1,6 @@
 import { keyframes, PulsingBeaconAnimationStyles } from '../../Styling';
 import { ICoachmarkStyleProps, ICoachmarkStyles } from './Coachmark.types';
+import { getRTL } from '../../Utilities';
 
 export const COACHMARK_WIDTH = 32;
 export const COACHMARK_HEIGHT = 32;
@@ -166,7 +167,7 @@ export function getStyles(props: ICoachmarkStyleProps): ICoachmarkStyles {
         position: 'absolute',
         top: '50%',
         left: '50%',
-        transform: 'translate(-50%, -50%)',
+        transform: getRTL() ? 'translate(50%, -50%)' : 'translate(-50%, -50%)',
         width: '0px',
         height: '0px',
         borderRadius: '225px',

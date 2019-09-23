@@ -1,13 +1,38 @@
-import { transformExample, identifierPattern, importPattern, classNamePattern, constNamePattern } from './exampleTransform';
+import { transformExample } from './exampleTransform';
 import * as fs from 'fs';
 import * as path from 'path';
+import { SUPPORTED_PACKAGES } from '../utilities/defaultSupportedPackages';
+import { IBasicPackageGroup } from '../interfaces/packageGroup';
 
 describe('example transform', () => {
-  function transformFile(file: string) {
+  // silence diagnostic output
+  const consoleLog = console.log;
+  beforeAll(() => {
+    console.log = () => undefined;
+  });
+  afterAll(() => {
+    console.log = consoleLog;
+  });
+
+  function transformFile(file: string, useJs?: boolean, supportedPackages: IBasicPackageGroup[] = SUPPORTED_PACKAGES) {
     const filename = path.resolve(__dirname, './examples/' + file);
-    const fileContents = fs.readFileSync(filename).toString();
-    return transformExample(fileContents, 'fake');
+    const tsCode = fs.readFileSync(filename).toString();
+    let jsCode: string | undefined;
+    if (useJs) {
+      jsCode = fs.readFileSync(filename.replace('.txt', 'Transpiled.txt')).toString();
+    }
+    return transformExample({
+      id: 'fake',
+      jsCode,
+      tsCode,
+      supportedPackages: supportedPackages
+    });
   }
+
+  it('returns an error for an unsupported example', () => {
+    const result = transformFile('relativeImport.txt');
+    expect(result.error).toBe('Importing scss is not supported by the editor.');
+  });
 
   it('handles examples with function components', () => {
     const result = transformFile('function.txt');
@@ -19,129 +44,26 @@ describe('example transform', () => {
     expect(result.output).toMatchSnapshot();
   });
 
-  it('returns an error from relative imports', () => {
-    const result = transformFile('relativeImport.txt');
-    expect(result.error).toBe("Error while transforming example: Unsupported import - import '../../fake.scss';.");
-  });
-
   it('handles transpiled examples with function components', () => {
-    const result = transformFile('functionTranspiled.txt');
+    const result = transformFile('function.txt', true);
     expect(result.output).toMatchSnapshot();
   });
 
   it('handles transpiled examples with class components', () => {
-    const result = transformFile('classTranspiled.txt');
+    const result = transformFile('class.txt', true);
     expect(result.output).toMatchSnapshot();
   });
 
-  it('returns an error from relative imports in code that was transpiled', () => {
-    const result = transformFile('realtiveImportTranspiled.txt');
-    expect(result.error).toBe("Error while transforming example: Unsupported import - import '../../fake.scss';.");
+  const fooGroup: IBasicPackageGroup = { globalName: 'Foo', packages: [{ packageName: 'foo' }] };
+  const fabricGroup: IBasicPackageGroup = { globalName: 'Fabric', packages: [{ packageName: 'office-ui-fabric-react' }] };
+
+  it('handles examples with custom supportedPackages', () => {
+    const result = transformFile('customPackages.txt', false, [fooGroup]);
+    expect(result.output).toMatchSnapshot();
   });
 
-  it('detects class names', () => {
-    const classNamePatternCopy = new RegExp(classNamePattern.source);
-    // This is needed to get rid of the global flag from the RegExp
-    expect(`var SpinButtonBasicExample = /** @class */ (function (_super) {
-      __extends(SpinButtonBasicExample, _super);
-      function SpinButtonBasicExample() {
-          return _super !== null && _super.apply(this, arguments) || this;
-      }
-      SpinButtonBasicExample.prototype.render = function () {
-          return (React.createElement("div", { style: { width: '400px' } },
-              React.createElement(SpinButton, { defaultValue: "0",
-              label: 'Basic SpinButton:', min: 0, max: 100, step: 1,
-               iconProps: { iconName: 'IncreaseIndentLegacy' },
-               incrementButtonAriaLabel: 'Increase value by 1',
-               decrementButtonAriaLabel: 'Decrease value by 1' })));
-      };
-      return SpinButtonBasicExample;
-      }(React.Component));
-      export { SpinButtonBasicExample };`).toMatch(classNamePatternCopy);
-    expect(`var ButtonDefaultExample = /** @class */ (function (_super) {
-      __extends(ButtonDefaultExample, _super);
-      function ButtonDefaultExample() {
-          return _super !== null && _super.apply(this, arguments) || this;
-      }
-      ButtonDefaultExample.prototype.render = function () {
-          var _a = this.props, disabled = _a.disabled,
-          checked = _a.checked;
-          return (React.createElement("div", { className: css(classNames.twoup) },
-              React.createElement("div", null,
-                  React.createElement(Label, null, "Standard"),
-                  React.createElement(DefaultButton,
-                    { "data-automation-id": "test", allowDisabledFocus: true,
-                    disabled: disabled, checked: checked,
-                    text: "Standard Button", onClick: this._alertClicked })),
-              React.createElement("div", null,
-                  React.createElement(Label, null, "Primary"),
-                  React.createElement(PrimaryButton, {
-                    "data-automation-id": "test", disabled: disabled,
-                    checked: checked, text: "Primary Button",
-                    onClick: this._alertClicked, allowDisabledFocus: true }))));
-      };
-      ButtonDefaultExample.prototype._alertClicked = function () {
-          alert('Clicked');
-      };
-      return ButtonDefaultExample;
-      }(React.Component));
-      { ButtonDefaultExample };
-      return React.createElement("div");`).toMatch(classNamePatternCopy);
-    expect(`import * as React from 'react';
-      import { Label } from 'office-ui-fabric-react/lib/Label';
-      export var LabelBasicExample = function () {
-      return React.createElement("div");
-    };
-    `).not.toMatch(classNamePatternCopy);
-  });
-
-  it('detects const names', () => {
-    const constNamePatternCopy = new RegExp(constNamePattern.source);
-    expect(`import * as React from 'react';
-      import { Label } from 'office-ui-fabric-react/lib/Label';
-      export var LabelBasicExample = function () {
-          return React.createElement("div");
-        };
-    `).toMatch(constNamePatternCopy);
-    expect(`var stackTokens = { childrenGap: 20 };
-      var DropdownBasicExample = function () {
-      return (React.createElement(Stack, { tokens: stackTokens },
-      React.createElement(Dropdown, { placeholder: "Select an option",
-      label: "Basic uncontrolled example",
-      options: options, styles: dropdownStyles }),
-      React.createElement(Dropdown, {
-        label: "Disabled example with defaultSelectedKey",
-        defaultSelectedKey: "broccoli", options: options,
-        disabled: true, styles: dropdownStyles }),
-      React.createElement(Dropdown, {
-        placeholder: "Select options",
-        label: "Multi-select uncontrolled example",
-        defaultSelectedKeys: ['apple', 'banana', 'grape'],
-        multiSelect: true, options: options,
-        styles: dropdownStyles })));
-      };
-    return React.createElement("div");`).toMatch(constNamePatternCopy);
-    expect(`var SpinButtonBasicExample = /** @class */ (function (_super) {
-      __extends(SpinButtonBasicExample, _super);
-      function SpinButtonBasicExample() {
-          return _super !== null && _super.apply(this, arguments) || this;
-      }
-      return SpinButtonBasicExample;
-      }(React.Component));
-      export { SpinButtonBasicExample };`).not.toMatch(constNamePatternCopy);
-  });
-
-  it('detects imports', () => {
-    const importPatternCopy = new RegExp(importPattern.source);
-    expect(`import { exampleData } from '../../exampleData';`).toMatch(importPatternCopy);
-    expect(`import { Label, Stack, Button } from 'office-ui-fabric-react';`).toMatch(importPatternCopy);
-    expect(`const x = require('../../fake.scss');`).not.toMatch(importPatternCopy);
-  });
-
-  it('detects identifiers', () => {
-    const identifierPatternCopy = new RegExp(identifierPattern.source);
-    expect(`import { Label, Stack, Button } from 'office-ui-fabric-react';`).toMatch(identifierPatternCopy);
-    expect(`import { exampleData } from '../../exampleData';`).toMatch(identifierPatternCopy);
-    expect(`import '../../fake';`).not.toMatch(identifierPatternCopy);
+  it('handles examples with custom supportedPackages and Fabric', () => {
+    const result = transformFile('customPackagesFabric.txt', false, [fooGroup, fabricGroup]);
+    expect(result.output).toMatchSnapshot();
   });
 });

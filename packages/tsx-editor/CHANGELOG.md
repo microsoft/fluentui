@@ -1,7 +1,22 @@
 # Change Log - @uifabric/tsx-editor
 
-This log was last generated on Fri, 13 Sep 2019 12:34:39 GMT and should not be manually modified.
+This log was last generated on Fri, 20 Sep 2019 12:34:28 GMT and should not be manually modified.
 
+## 0.7.0
+Fri, 20 Sep 2019 12:34:28 GMT
+
+### Minor changes
+
+- Add full typings support; refactor editor component into layers; improve example parsing (elcraig@microsoft.com)
+### Patches
+
+- Fix web worker check (elcraig@microsoft.com)
+## 0.6.0
+Thu, 19 Sep 2019 13:05:24 GMT
+
+### Minor changes
+
+- Use new way of consuming Monaco bundle (elcraig@microsoft.com)
 ## 0.5.1
 Fri, 13 Sep 2019 12:34:39 GMT
 

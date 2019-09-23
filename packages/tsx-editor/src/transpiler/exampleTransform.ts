@@ -1,115 +1,90 @@
-/**
- * classNamePattern - pattern to find the name of the class that should render
- * constNamePattern - pattern to find the name of the const that should render
- * identifierPattern - pattern to get all identifiers from the imports
- * importPattern - pattern to get all imports even if they have multilines
- */
-export const classNamePattern = new RegExp('(?![var ])(.*)(?= = \\/\\*\\* @class \\*\\/ \\(function \\(_super\\))', 'g');
-export const constNamePattern = new RegExp('(?![export var ])(.*)(?= = function)', 'g');
-export const identifierPattern = new RegExp('(?![import {])([\\s\\S]*)(?=})');
-export const importPattern = new RegExp("(?:import)([\\s\\S]+?)';", 'g');
+import { tryParseExample, IMPORT_REGEX } from './exampleParser';
+import { _supportedPackageToGlobalMap } from './transpileHelpers';
+import { IBasicPackageGroup } from '../interfaces/packageGroup';
 
 export interface ITransformedExample {
   output?: string;
   error?: string;
 }
 
-interface IExampleData {
-  [key: string]: string;
-  exampleData: string;
-  TestImages: string;
-  PeopleExampleData: string;
+export interface ITransformExampleParams {
+  /**
+   * TS for the example. Will be used to find imports/exports. Will also be used in the final
+   * returned code if `jsCode` is not provided.
+   */
+  tsCode: string;
+  /**
+   * The example transpiled into JS, output module format ES2015 or ESNext.
+   * Will be used in the final returned code if provided.
+   */
+  jsCode?: string;
+  /** ID for the component to be rendered into */
+  id: string;
+  /** Supported package groups (React is implicitly supported) */
+  supportedPackages: IBasicPackageGroup[];
 }
 
-const exampleDataFiles: IExampleData = {
-  exampleData: require('!raw-loader!office-ui-fabric-react/lib/utilities/exampleData'),
-  TestImages: require('!raw-loader!office-ui-fabric-react/lib/common/TestImages'),
-  PeopleExampleData: require('!raw-loader!office-ui-fabric-react/lib/components/ExtendedPicker/examples/PeopleExampleData')
-};
+/**
+ * Transform an example for rendering in a browser context (example page or codepen).
+ */
+export function transformExample(params: ITransformExampleParams): ITransformedExample {
+  const { tsCode, jsCode, id, supportedPackages } = params;
 
-export function transformExample(example: string, id: string) {
-  // RegExp need to reset because of global flag
-  classNamePattern.lastIndex = 0;
-  constNamePattern.lastIndex = 0;
-  identifierPattern.lastIndex = 0;
-  importPattern.lastIndex = 0;
+  // Imports or exports will be removed since they are not supported.
+  const mainCode = (jsCode || tsCode)
+    .replace(new RegExp(IMPORT_REGEX, 'gm'), '')
+    .replace(/^export /gm, '')
+    .trim();
 
-  const identifiers: string[] = [];
-  const imports: string[] = [];
-  let temp;
-  let className;
-  const output: ITransformedExample = { output: undefined, error: undefined };
+  const output: ITransformedExample = {};
 
-  example = example.replace("import * as React from 'react';", '');
-
-  /**
-   * Getting class name that should render, it will find all class names but will only
-   * use the last one since the examples have the class that should render at the end.
-   * If there is no such class then it will check for the last const which should be
-   * the const that should be the one to render.
-   */
-  while ((temp = classNamePattern.exec(example))) {
-    className = temp[0];
-  }
-  if (className === undefined) {
-    while ((temp = constNamePattern.exec(example))) {
-      className = temp[0];
-    }
-    if (className !== undefined) {
-      className = className.replace('var ', '');
-    }
+  // Get info about the example's imports and exports
+  const exampleInfo = tryParseExample(tsCode, supportedPackages);
+  if (typeof exampleInfo === 'string') {
+    // this means it's an error
+    output.error = exampleInfo;
+    return output;
   }
 
-  /**
-   * Getting all the imports from fabric and pushing them into an array.
-   * If there are imports that do not come from OUFR then it will add an
-   * error since the import is not supported.
-   */
-  while ((temp = importPattern.exec(example))) {
-    let foundExampleImport = false;
-    for (const filename of Object.keys(exampleDataFiles)) {
-      if (temp[0].indexOf('/' + filename) !== -1) {
-        example += `\n${exampleDataFiles[filename]}`;
-        example = example.replace(temp[0], '');
-        foundExampleImport = true;
-      }
+  const { component, imports } = exampleInfo;
+
+  // Make a list of all the identifiers imported from each global, including converting renamed
+  // identifiers ("foo as bar") to be renamed destructuring-style ("foo: bar")
+  const supportedPackagesToGlobals = _supportedPackageToGlobalMap(supportedPackages);
+  const identifiersByGlobal: { [globalName: string]: string[] } = {};
+  for (const imprt of imports) {
+    if (imprt.packageName === 'react') {
+      continue; // React is globally available and other imports from it aren't supported
     }
-    if (!/office-ui-fabric-react/.test(temp[0]) && !foundExampleImport) {
-      output.error = `Error while transforming example: Unsupported import - ${temp[0]}.`;
-    } else if (!foundExampleImport) {
-      imports.push(temp[0]);
+    const globalName = supportedPackagesToGlobals[imprt.packageName];
+    identifiersByGlobal[globalName] = identifiersByGlobal[globalName] || [];
+    identifiersByGlobal[globalName].push(...imprt.identifiers.map(item => (item.as ? `${item.name}: ${item.as}` : item.name)));
+  }
+
+  // Generate the line to render the component
+  let createComponentElement = `React.createElement(${component}, null)`;
+  if (identifiersByGlobal.Fabric) {
+    // If this is a Fabric example, wrap in a <Fabric> (and add an import for that if needed)
+    createComponentElement = `React.createElement(Fabric, null, ${createComponentElement})`;
+    if (identifiersByGlobal.Fabric.indexOf('Fabric') === -1) {
+      identifiersByGlobal.Fabric.push('Fabric');
     }
   }
 
-  /**
-   * This will loop through all imports getting and saving the identifiers,
-   * if no identifiers were found then it will just eliminate the import.
-   * If identifiers were found, the string will be split, spaces will be removed,
-   * and next line characters will also be removed.
-   */
-  imports.forEach((imp: string) => {
-    temp = identifierPattern.exec(imp);
-    if (temp !== null) {
-      temp[0].split(',').forEach((ident: string) => {
-        identifiers.push(ident.replace(/\s/g, ''));
-      });
-    }
-    example = example.replace(imp, '');
-  });
+  // Add const destructuring for formerly-imported identifiers
+  const importLines = Object.keys(identifiersByGlobal).map(
+    globalName => `const { ${identifiersByGlobal[globalName].join(', ')} } = window.${globalName};`
+  );
 
-  // If there are exports in the code then they will be removed since they are not supported.
-  example = example.replace(/^export /gm, '');
+  // All together!
+  output.output = `${importLines.join('\n')}
 
-  /**
-   * adding line to render React and adding identifiers.
-   */
-  example = `const { ${identifiers.join(', ')}, Fabric } = window.Fabric;\n
-    ${example}
-    ReactDOM.render(
-      React.createElement(Fabric, null, React.createElement(${className}, null)),
-      document.getElementById('${id}')
-    );
-    `;
-  output.output = example;
+${mainCode}
+
+ReactDOM.render(${createComponentElement}, document.getElementById('${id}'));
+`;
+
+  console.log('TRANSFORMED:');
+  console.log(output.output);
   return output;
 }
