@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Updates icons to v3.50, adding new icons and visual changes to some existing ones.",
-  "packageName": "@uifabric/icons",
-  "email": "pejahn@microsoft.com",
-  "commit": "dbde2699023f4640b9bbae66571bf57189adbfaa",
-  "date": "2019-09-20T03:28:27.947Z"
-}

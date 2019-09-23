@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Icon Accessibility: update aria-hidden to pull aria-labelledBy from root and imageProps and removed role presentation - should not apply when a label is provided. ",
-  "packageName": "office-ui-fabric-react",
-  "email": "marygans@microsoft.com",
-  "commit": "d4a4face14c49917346e3ed5d9f08586e2c8cf0b",
-  "date": "2019-09-19T19:55:44.720Z"
-}

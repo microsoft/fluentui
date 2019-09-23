@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Icon Accessibility updates: update aria-hidden to pull aria-labelledBy from root and imageProps and removed role presentation - should not apply when a label is provided.",
-  "packageName": "@uifabric/experiments",
-  "email": "marygans@microsoft.com",
-  "commit": "df4c69f030235b4039f9104d30639acfb29dfca0",
-  "date": "2019-09-21T01:32:30.348Z"
-}

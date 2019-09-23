@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Customizations: add a way to batch updates",
-  "packageName": "@uifabric/utilities",
-  "email": "phkuo@microsoft.com",
-  "commit": "3e60b124b6f072b741a68c5559ed7cf5241fe379",
-  "date": "2019-09-21T00:46:49.523Z"
-}
