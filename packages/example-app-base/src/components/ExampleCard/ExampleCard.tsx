@@ -22,8 +22,7 @@ import {
   SUPPORTED_PACKAGES,
   IEditorPreviewProps,
   IMonacoTextModel,
-  transformExample,
-  isExampleValid
+  transformExample
 } from '@uifabric/tsx-editor/lib/index-min';
 // DO NOT import anything from the root of tsx-editor, to avoid pulling Monaco into the main bundle!
 
@@ -51,8 +50,11 @@ const regionStyles: IStackComponent['styles'] = (props, theme) => ({
 
 export class ExampleCardBase extends React.Component<IExampleCardProps, IExampleCardState> {
   private _monacoModelRef: React.MutableRefObject<IMonacoTextModel | undefined> = { current: undefined };
-  /** Whether the initial example code can be transformed for editing and/or export to codepen */
-  private _canTransform: boolean;
+  /**
+   * Transformed version of the initial `props.code` for editing and/or export to codepen,
+   * if the code is "valid" for transform purposes.
+   */
+  private _transformedInitialCode: string | undefined;
 
   private _themeCustomizations: IExampleCardCustomizations[] | undefined;
   private _themeOptions: IDropdownOption[];
@@ -69,7 +71,7 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
       latestCode: code
     };
 
-    this._canTransform = isExampleValid(code, SUPPORTED_PACKAGES);
+    this._transformedInitialCode = this._transformCode(code);
 
     if (props.isCodeVisible !== undefined && props.onToggleEditor === undefined && process.env.NODE_ENV !== 'production') {
       warn('ExampleCard: the onToggleEditor prop is required if isCodeVisible is set. Otherwise the show/hide code button will not work.');
@@ -114,7 +116,7 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
               <div className={classNames.header}>
                 <span className={classNames.title}>{title}</span>
                 <div className={classNames.toggleButtons}>
-                  {(codepenJS || this._canTransform) && (
+                  {(codepenJS || this._transformedInitialCode) && (
                     <CodepenComponent
                       jsContent={this._getCodepenContent}
                       styles={{ subComponentStyles: { button: subComponentStyles.codeButtons } }}
@@ -217,27 +219,22 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
     this.setState({ themeIndex: value.key as number });
   };
 
+  private _transformCode(code: string): string | undefined {
+    return transformExample({
+      tsCode: code,
+      id: CONTENT_ID,
+      supportedPackages: SUPPORTED_PACKAGES
+    }).output;
+  }
+
   private _getCodepenContent = (): string => {
-    const transform = (code: string) =>
-      transformExample({
-        tsCode: code,
-        id: CONTENT_ID,
-        supportedPackages: SUPPORTED_PACKAGES
-      });
-
-    if (this._canTransform) {
-      // Use a client-side transform if possible. Start by trying to transform the latest code,
-      // then fall back to the initial code (which we know is valid) if needed.
+    // Use a client-side transform if possible, or fall back to codepen JS.
+    if (this._transformedInitialCode) {
+      // The initial code was transformable, which means it could have been edited. Try transforming
+      // the latest version, or fall back to the initial version if the transform fails.
       const monacoModel = this._monacoModelRef.current;
-      let result = transform(monacoModel ? monacoModel.getValue() : this.state.latestCode);
-
-      if (result.error) {
-        // Error transforming code--fall back to original code.
-        result = transform(this.props.code || '');
-      }
-      if (result.output) {
-        return result.output;
-      }
+      const latestCode = monacoModel ? monacoModel.getValue() : this.state.latestCode;
+      return this._transformCode(latestCode) || this._transformedInitialCode;
     }
     return this.props.codepenJS || '';
   };

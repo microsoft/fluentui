@@ -65,6 +65,7 @@ describe('_supportedPackageToGlobalMap', () => {
       '@uifabric/merge-styles': 'Fabric',
       '@uifabric/styling': 'Fabric',
       '@uifabric/utilities': 'Fabric',
+      '@uifabric/react-hooks': 'FabricReactHooks',
       '@uifabric/example-data': 'FabricExampleData'
     });
   });

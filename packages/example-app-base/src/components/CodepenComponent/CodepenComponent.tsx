@@ -33,17 +33,20 @@ const CodepenComponentBase: React.FunctionComponent<ICodepenProps> = props => {
   const buttonStyles = classNames.subComponentStyles.button;
 
   // Wait to generate the JS content until the button is clicked, to ensure we export the latest code
-  const onClick = () => {
+  const onClick = React.useCallback(() => {
     const jsContentStr = typeof jsContent === 'string' ? jsContent : jsContent();
 
     // boilerplate for codepen API
     const htmlContent = [
-      // load core Fabric bundle
+      // load core Fabric bundle and hooks bundle
       script('office-ui-fabric-react@7/dist/office-ui-fabric-react.js'),
+      script('@uifabric/react-hooks@7/dist/react-hooks.js'),
       // load example data bundle only if used
       jsContentStr.indexOf('window.FabricExampleData') !== -1 ? script('@uifabric/example-data@7/dist/example-data.js') : '',
       `<div id="${CONTENT_ID}"></div>`
-    ].join('\n');
+    ]
+      .filter(line => !!line)
+      .join('\n');
 
     const headContent = `${script('react@16.8.6/umd/react.development.js')}\n${script('react-dom@16.8.6/umd/react-dom.development.js')}`;
 
@@ -63,7 +66,7 @@ const CodepenComponentBase: React.FunctionComponent<ICodepenProps> = props => {
 
     // set the value and allow the form submit action to continue
     inputRef.current!.value = JSONstring;
-  };
+  }, [jsContent]);
 
   return (
     <form action="https://codepen.io/pen/define" method="POST" target="_blank">
