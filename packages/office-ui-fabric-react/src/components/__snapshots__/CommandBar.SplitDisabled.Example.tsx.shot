@@ -71,7 +71,6 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
               <div
                 aria-expanded={false}
                 aria-haspopup={true}
-                aria-label="New"
                 className=
 
                     {
