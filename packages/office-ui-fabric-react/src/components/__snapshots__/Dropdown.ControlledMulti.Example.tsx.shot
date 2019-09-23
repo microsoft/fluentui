@@ -205,7 +205,6 @@ exports[`Component Examples renders Dropdown.ControlledMulti.Example.tsx correct
               speak: none;
             }
         data-icon-name="ChevronDown"
-        role="presentation"
       >
         
       </i>

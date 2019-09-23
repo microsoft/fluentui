@@ -2,6 +2,20 @@
   "name": "@uifabric/merge-styles",
   "entries": [
     {
+      "date": "Fri, 20 Sep 2019 12:34:28 GMT",
+      "tag": "@uifabric/merge-styles_v7.6.0",
+      "version": "7.6.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Adding `concatStyleSetsWithProps` to help resolve stylesets that are functional, resolving with props.",
+            "author": "dzearing@microsoft.com",
+            "commit": "8065917a76a5e08b27721e34e13903adba3730f1"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 12 Sep 2019 12:34:15 GMT",
       "tag": "@uifabric/merge-styles_v7.5.2",
       "version": "7.5.2",

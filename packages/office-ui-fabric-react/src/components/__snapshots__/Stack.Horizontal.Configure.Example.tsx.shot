@@ -482,7 +482,6 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                         color: Window;
                       }
                   data-icon-name="CheckMark"
-                  role="presentation"
                 >
                   
                 </i>
@@ -624,7 +623,6 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                         color: Window;
                       }
                   data-icon-name="CheckMark"
-                  role="presentation"
                 >
                   
                 </i>
@@ -826,7 +824,6 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                         color: Window;
                       }
                   data-icon-name="CheckMark"
-                  role="presentation"
                 >
                   
                 </i>
@@ -968,7 +965,6 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                         color: Window;
                       }
                   data-icon-name="CheckMark"
-                  role="presentation"
                 >
                   
                 </i>
@@ -3202,7 +3198,6 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                     speak: none;
                   }
               data-icon-name="ChevronDown"
-              role="presentation"
             >
               
             </i>
@@ -3430,7 +3425,6 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                     speak: none;
                   }
               data-icon-name="ChevronDown"
-              role="presentation"
             >
               
             </i>
@@ -3574,7 +3568,6 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                     color: Window;
                   }
               data-icon-name="CheckMark"
-              role="presentation"
             >
               
             </i>

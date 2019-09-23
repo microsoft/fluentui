@@ -146,7 +146,6 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 1 1`] = `
                       font-size: 8px;
                     }
                 data-icon-name="ChevronRight"
-                role="presentation"
               >
                 
               </i>
@@ -235,7 +234,6 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 1 1`] = `
                       font-size: 8px;
                     }
                 data-icon-name="ChevronRight"
-                role="presentation"
               >
                 
               </i>
@@ -324,7 +322,6 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 1 1`] = `
                       font-size: 8px;
                     }
                 data-icon-name="ChevronRight"
-                role="presentation"
               >
                 
               </i>
@@ -643,7 +640,6 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 2 1`] = `
                       font-size: 8px;
                     }
                 data-icon-name="ChevronRight"
-                role="presentation"
               >
                 
               </i>
@@ -732,7 +728,6 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 2 1`] = `
                       font-size: 8px;
                     }
                 data-icon-name="ChevronRight"
-                role="presentation"
               >
                 
               </i>
@@ -1265,7 +1260,6 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 4 1`] = `
                       font-size: 8px;
                     }
                 data-icon-name="ChevronRight"
-                role="presentation"
               >
                 
               </i>
@@ -1455,7 +1449,6 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 4 1`] = `
                       font-size: 8px;
                     }
                 data-icon-name="ChevronRight"
-                role="presentation"
               >
                 
               </i>
@@ -1673,7 +1666,6 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 5 1`] = `
                       font-size: 8px;
                     }
                 data-icon-name="ChevronRight"
-                role="presentation"
               >
                 
               </i>

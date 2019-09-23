@@ -1,7 +1,13 @@
 # Change Log - @uifabric/merge-styles
 
-This log was last generated on Thu, 12 Sep 2019 12:34:15 GMT and should not be manually modified.
+This log was last generated on Fri, 20 Sep 2019 12:34:28 GMT and should not be manually modified.
 
+## 7.6.0
+Fri, 20 Sep 2019 12:34:28 GMT
+
+### Minor changes
+
+- Adding `concatStyleSetsWithProps` to help resolve stylesets that are functional, resolving with props. (dzearing@microsoft.com)
 ## 7.5.2
 Thu, 12 Sep 2019 12:34:15 GMT
 

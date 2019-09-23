@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Changing ColorPicker to use a selectedId instead of selectedIndex in its state.",
+  "packageName": "office-ui-fabric-react",
+  "email": "kushaly@microsoft.com",
+  "commit": "f388d37561eecf3c458a19367c4cdc41768f1f88",
+  "date": "2019-09-16T23:40:44.615Z"
+}
