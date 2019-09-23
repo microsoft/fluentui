@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "TeachingBubble: alt tags for example images.",
+  "packageName": "office-ui-fabric-react",
+  "email": "jdh@microsoft.com",
+  "commit": "47b7a27fa2a32635f62f74765338410d7846456a",
+  "date": "2019-09-19T21:14:30.017Z"
+}

@@ -841,7 +841,6 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
                     speak: none;
                   }
               data-icon-name="Calendar"
-              role="presentation"
             >
               
             </i>
@@ -1068,7 +1067,6 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
                     speak: none;
                   }
               data-icon-name="CalendarWeek"
-              role="presentation"
             >
               
             </i>
@@ -1293,7 +1291,6 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
                     speak: none;
                   }
               data-icon-name="CalendarDay"
-              role="presentation"
             >
               
             </i>
@@ -1495,7 +1492,6 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
                     speak: none;
                   }
               data-icon-name="CalendarWeek"
-              role="presentation"
             >
               
             </i>

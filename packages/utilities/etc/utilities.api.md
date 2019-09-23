@@ -132,9 +132,8 @@ export function customizable(scope: string, fields: string[], concatStyles?: boo
 
 // @public (undocumented)
 export class Customizations {
-    // (undocumented)
+    static applyBatchedUpdates(code: () => void, suppressUpdate?: boolean): void;
     static applyScopedSettings(scopeName: string, settings: ISettings): void;
-    // (undocumented)
     static applySettings(settings: ISettings): void;
     // (undocumented)
     static getSettings(properties: string[], scopeName?: string, localSettings?: ICustomizations): any;

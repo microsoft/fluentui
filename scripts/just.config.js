@@ -19,6 +19,8 @@ const bundleSizeCollect = require('./tasks/bundle-size-collect');
 const checkForModifiedFiles = require('./tasks/check-for-modified-files');
 const generateVersionFiles = require('./tasks/generate-version-files');
 const generatePackageManifestTask = require('./tasks/generate-package-manifest');
+const { postprocessAmdTask } = require('./tasks/postprocess-amd');
+const { postprocessCommonjsTask } = require('./tasks/postprocess-commonjs');
 
 /** Do only the bare minimum setup of options and resolve paths */
 function basicPreset() {
@@ -46,9 +48,11 @@ module.exports = function preset() {
   task('jest', jest);
   task('jest-watch', jestWatch);
   task('sass', sass);
+  task('postprocess:amd', postprocessAmdTask);
+  task('postprocess:commonjs', postprocessCommonjsTask);
   task('ts:commonjs', ts.commonjs);
   task('ts:esm', ts.esm);
-  task('ts:amd', ts.amd);
+  task('ts:amd', series(ts.amd, 'postprocess:amd'));
   task('tslint', tslint);
   task('ts:commonjs-only', ts.commonjsOnly);
   task('webpack', webpack);

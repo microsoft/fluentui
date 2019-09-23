@@ -80,7 +80,6 @@ exports[`Component Examples renders SearchBox.Small.Example.tsx correctly 1`] = 
             transition: opacity 0.167s 0s;
           }
       data-icon-name="Search"
-      role="presentation"
     >
       
     </i>

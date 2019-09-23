@@ -2,6 +2,20 @@
   "name": "@uifabric/styling",
   "entries": [
     {
+      "date": "Mon, 23 Sep 2019 12:33:15 GMT",
+      "tag": "@uifabric/styling_v7.7.1",
+      "version": "7.7.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Animations should not leave invisible elements behind so setting visibility to hidden on fade out to get rid of any interactivity where the faded element was",
+            "author": "email not defined",
+            "commit": "ae723d3294a8e6b55323c80d9a6f57fc9799ec2b"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 20 Sep 2019 12:34:28 GMT",
       "tag": "@uifabric/styling_v7.7.0",
       "version": "7.7.0",

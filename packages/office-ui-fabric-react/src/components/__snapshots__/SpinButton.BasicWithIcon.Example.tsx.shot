@@ -48,7 +48,6 @@ exports[`Component Examples renders SpinButton.BasicWithIcon.Example.tsx correct
               speak: none;
             }
         data-icon-name="IncreaseIndentLegacy"
-        role="presentation"
       >
         
       </i>
