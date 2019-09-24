@@ -1,7 +1,6 @@
 import * as React from 'react';
-import { DefaultButton, FocusTrapCallout, Stack, getId, FocusZone } from 'office-ui-fabric-react';
+import { DefaultButton, FocusTrapCallout, Stack, getId, FocusZone, PrimaryButton } from 'office-ui-fabric-react';
 import './CalloutExample.scss';
-import { PrimaryButton } from '../../Button';
 
 export interface ICalloutFocusTrapExampleState {
   isCalloutVisible: boolean;
