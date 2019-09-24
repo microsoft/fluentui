@@ -140,6 +140,7 @@ exports[`Component Examples renders Dropdown.Controlled.Example.tsx correctly 1`
   >
     <span
       aria-atomic={true}
+      aria-invalid={false}
       aria-label="Select an option"
       aria-live="off"
       aria-setsize={7}
