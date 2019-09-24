@@ -125,7 +125,7 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
       new Selection({
         onSelectionChanged: undefined,
         getKey: props.getKey,
-        selectionMode: this.props.selectionMode
+        selectionMode: props.selectionMode
       });
 
     if (!this.props.disableSelectionZone) {
