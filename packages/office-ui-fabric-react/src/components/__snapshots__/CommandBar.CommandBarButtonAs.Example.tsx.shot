@@ -75,7 +75,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
               className=
                   ms-Button
                   ms-Button--commandBar
-                  ms-Button-hasMenu
+                  ms-Button--hasMenu
                   ms-CommandBarItem-link
                   {
                     -moz-osx-font-smoothing: grayscale;
@@ -1313,7 +1313,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
               className=
                   ms-Button
                   ms-Button--commandBar
-                  ms-Button-hasMenu
+                  ms-Button--hasMenu
                   ms-CommandBar-overflowButton
                   {
                     -moz-osx-font-smoothing: grayscale;

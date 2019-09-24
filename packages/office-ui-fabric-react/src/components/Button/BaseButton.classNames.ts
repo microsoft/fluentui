@@ -16,7 +16,7 @@ export interface IButtonClassNames {
 
 export const ButtonGlobalClassNames = {
   msButton: 'ms-Button',
-  msButtonHasMenu: 'ms-Button-hasMenu',
+  msButtonHasMenu: 'ms-Button--hasMenu',
   msButtonIcon: 'ms-Button-icon',
   msButtonMenuIcon: 'ms-Button-menuIcon',
   msButtonLabel: 'ms-Button-label',

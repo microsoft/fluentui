@@ -131,7 +131,7 @@ exports[`Button renders CommandBarButton correctly 1`] = `
   className=
       ms-Button
       ms-Button--commandBar
-      ms-Button-hasMenu
+      ms-Button--hasMenu
       {
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
