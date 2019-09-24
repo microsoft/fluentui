@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { DefaultButton, FocusTrapCallout, CommandBar, ICommandBarItemProps, getId } from 'office-ui-fabric-react';
+import { DefaultButton, FocusTrapCallout, Stack, getId, FocusZone, PrimaryButton } from 'office-ui-fabric-react';
 import './CalloutExample.scss';
 
 export interface ICalloutFocusTrapExampleState {
@@ -47,7 +47,12 @@ export class CalloutFocusTrapExample extends React.Component<{}, ICalloutFocusTr
                   </p>
                 </div>
               </div>
-              <CommandBar overflowButtonProps={{ name: 'More' }} items={/* tslint:disable-line:no-use-before-declare */ items} />
+              <FocusZone>
+                <Stack className="ms-CalloutExample-buttons" gap={8} horizontal>
+                  <PrimaryButton onClick={this._onDismiss}>Agree</PrimaryButton>
+                  <DefaultButton onClick={this._onDismiss}>Cancel</DefaultButton>
+                </Stack>
+              </FocusZone>
             </FocusTrapCallout>
           </div>
         ) : null}
@@ -61,22 +66,3 @@ export class CalloutFocusTrapExample extends React.Component<{}, ICalloutFocusTr
     });
   };
 }
-
-const onCommandClick = (ev: any, item?: ICommandBarItemProps) => console.log(item && item.name);
-const items: ICommandBarItemProps[] = [
-  {
-    key: 'newItem',
-    name: 'New',
-    iconProps: { iconName: 'Add' },
-    ariaLabel: 'New. Use left and right arrow keys to navigate',
-    subMenuProps: {
-      items: [
-        { key: 'emailMessage', name: 'Email message', iconProps: { iconName: 'Mail' } },
-        { key: 'calendarEvent', name: 'Calendar event', iconProps: { iconName: 'Calendar' } }
-      ]
-    }
-  },
-  { key: 'upload', name: 'Upload', iconProps: { iconName: 'Upload' }, href: 'https://dev.office.com/fabric', target: '_blank' },
-  { key: 'share', name: 'Share', iconProps: { iconName: 'Share' }, onClick: onCommandClick },
-  { key: 'download', name: 'Download', iconProps: { iconName: 'Download' }, onClick: onCommandClick }
-];

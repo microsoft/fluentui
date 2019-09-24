@@ -1,7 +1,13 @@
 # Change Log - @uifabric/tsx-editor
 
-This log was last generated on Fri, 20 Sep 2019 12:34:28 GMT and should not be manually modified.
+This log was last generated on Tue, 24 Sep 2019 12:35:43 GMT and should not be manually modified.
 
+## 0.7.1
+Tue, 24 Sep 2019 12:35:43 GMT
+
+### Patches
+
+- Restructure index files and exports (elcraig@microsoft.com)
 ## 0.7.0
 Fri, 20 Sep 2019 12:34:28 GMT
 

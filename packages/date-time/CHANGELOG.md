@@ -1,7 +1,13 @@
 # Change Log - @uifabric/date-time
 
-This log was last generated on Mon, 23 Sep 2019 12:33:15 GMT and should not be manually modified.
+This log was last generated on Tue, 24 Sep 2019 12:35:43 GMT and should not be manually modified.
 
+## 7.4.7
+Tue, 24 Sep 2019 12:35:43 GMT
+
+### Patches
+
+- Remove codepen-loader usage (elcraig@microsoft.com)
 ## 7.4.6
 Mon, 23 Sep 2019 12:33:15 GMT
 

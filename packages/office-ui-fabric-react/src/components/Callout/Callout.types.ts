@@ -229,6 +229,15 @@ export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement> {
   hidden?: boolean;
 
   /**
+   * If true, the component will be updated even when hidden=true.
+   * Note that this would consume resources to update even though
+   * nothing is being shown to the user.
+   * This might be helpful though if your updates are small and you want the
+   * callout to be revealed fast to the user when hidden is set to false.
+   */
+  shouldUpdateWhenHidden?: boolean;
+
+  /**
    * If specified, determines whether the underlying "Popup" component should try to restore
    * focus when it is dismissed.  When set to false, the Popup won't try to restore focus to
    * the last focused element.

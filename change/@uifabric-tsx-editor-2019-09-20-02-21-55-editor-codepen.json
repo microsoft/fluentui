@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Restructure index files and exports",
-  "packageName": "@uifabric/tsx-editor",
-  "email": "elcraig@microsoft.com",
-  "commit": "f9a483c37857c9bdba359a287b065ebe59dd361b",
-  "date": "2019-09-20T09:21:55.717Z"
-}
