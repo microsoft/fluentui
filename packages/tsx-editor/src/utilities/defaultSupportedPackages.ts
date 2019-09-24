@@ -1,8 +1,13 @@
-import { IPackageGroup } from '../interfaces/packageGroup';
+import { IPackageGroup } from '../interfaces/index';
 
 const fabricGroup: IPackageGroup = {
   globalName: 'Fabric',
   loadGlobal: () => import('office-ui-fabric-react'),
+  packages: []
+};
+const hooksGroup: IPackageGroup = {
+  globalName: 'FabricReactHooks',
+  loadGlobal: () => import('@uifabric/react-hooks'),
   packages: []
 };
 const exampleDataGroup: IPackageGroup = {
@@ -26,7 +31,8 @@ if (typesContext) {
     // (example path: '!raw-loader!@uifabric/tsx-editor/dist/types/utilities.d.ts')
     const unscopedName = dtsPath.match(/\/(.*?)\.d\.ts$/)![1];
     const packageName = unscopedName === 'office-ui-fabric-react' ? unscopedName : '@uifabric/' + unscopedName;
-    const packageGroup = packageName === '@uifabric/example-data' ? exampleDataGroup : fabricGroup;
+    const packageGroup =
+      packageName === '@uifabric/example-data' ? exampleDataGroup : packageName === '@uifabric/react-hooks' ? hooksGroup : fabricGroup;
     packageGroup.packages.push({
       packageName,
       loadTypes: () => typesContext!(dtsPath)
@@ -43,6 +49,7 @@ if (typesContext) {
     { packageName: '@uifabric/styling', loadTypes },
     { packageName: '@uifabric/utilities', loadTypes }
   );
+  hooksGroup.packages.push({ packageName: '@uifabric/react-hooks', loadTypes });
   exampleDataGroup.packages.push({ packageName: '@uifabric/example-data', loadTypes });
 }
 
@@ -50,4 +57,4 @@ if (typesContext) {
  * Default supported packages for imports: `office-ui-fabric-react` and everything it exports,
  * plus `@uifabric/example-data`. (React is implicitly supported.)
  */
-export const SUPPORTED_PACKAGES: IPackageGroup[] = [fabricGroup, exampleDataGroup];
+export const SUPPORTED_PACKAGES: IPackageGroup[] = [fabricGroup, hooksGroup, exampleDataGroup];

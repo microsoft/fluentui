@@ -1,5 +1,7 @@
-import { IBasicPackageGroup } from '../interfaces/packageGroup';
+import { IBasicPackageGroup } from '../interfaces/index';
 import { _supportedPackageToGlobalMap } from './transpileHelpers';
+// Don't reference anything importing Monaco in this file to avoid pulling Monaco into the
+// main bundle or breaking tests!
 
 /**
  * Match an import from a TS file.
@@ -55,14 +57,29 @@ export interface IExampleInfo {
 }
 
 /**
+ * Determines whether an example is "valid" for purposes of the transform code: it conforms to the
+ * expected structure and only contains imports from supported packages.
+ *
+ * NOTE: You should confirm that the code is syntactically valid before calling this function.
+ * If the code is not syntactically valid, this function's behavior is undefined.
+ *
+ * @param example - Syntactically valid TS code for an example
+ * @param supportedPackages - Supported packages for imports (React is implicitly supported)
+ * @returns Whether the example is valid
+ */
+export function isExampleValid(example: string, supportedPackages: IBasicPackageGroup[]): boolean {
+  return typeof tryParseExample(example, supportedPackages) !== 'string';
+}
+
+/**
  * Determines whether an example is editable and if so, returns the code and the component to render.
  * If it's not editable, returns an error message.
  *
  * NOTE: You should confirm that the code is syntactically valid before calling this function.
  * If the code is not syntactically valid, this function's behavior is undefined (it will likely
- * either throw an exception or return incorrect/illogical output).
+ * return incorrect/illogical output).
  *
- * @param example - Valid TS code for an example
+ * @param example - Syntactically valid TS code for an example
  * @param supportedPackages - Supported packages for imports (React is implicitly supported)
  * @returns Example info if the example is valid, or an error message if not
  */

@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Export to codepen can use in-browser transform and latest edited code",
+  "packageName": "@uifabric/example-app-base",
+  "email": "elcraig@microsoft.com",
+  "commit": "f9a483c37857c9bdba359a287b065ebe59dd361b",
+  "date": "2019-09-20T09:21:40.016Z"
+}

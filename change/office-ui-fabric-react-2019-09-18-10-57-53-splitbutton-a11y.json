@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Added a title in the custom SplitButton example",
+  "packageName": "office-ui-fabric-react",
+  "email": "kchau@microsoft.com",
+  "commit": "86c5c9548680d44ecb708367dcb05494ae30e608",
+  "date": "2019-09-18T17:57:53.405Z"
+}

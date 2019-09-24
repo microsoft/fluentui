@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Build commonjs variant",
+  "packageName": "@uifabric/monaco-editor",
+  "email": "elcraig@microsoft.com",
+  "commit": "afb1540f91c059295b41cc63d33d0b7cd820b3af",
+  "date": "2019-09-20T23:49:24.238Z"
+}

@@ -1,11 +1,9 @@
+import { getWindow } from 'office-ui-fabric-react/lib/Utilities';
 import { tryParseExample, IMPORT_REGEX } from './exampleParser';
 import { _supportedPackageToGlobalMap } from './transpileHelpers';
-import { IBasicPackageGroup } from '../interfaces/packageGroup';
-
-export interface ITransformedExample {
-  output?: string;
-  error?: string;
-}
+import { IBasicPackageGroup, ITransformedCode } from '../interfaces/index';
+// Don't reference anything importing Monaco in this file to avoid pulling Monaco into the
+// main bundle or breaking tests!
 
 export interface ITransformExampleParams {
   /**
@@ -24,10 +22,16 @@ export interface ITransformExampleParams {
   supportedPackages: IBasicPackageGroup[];
 }
 
+const win = getWindow() as
+  | Window & {
+      transformLogging?: boolean;
+    }
+  | undefined;
+
 /**
  * Transform an example for rendering in a browser context (example page or codepen).
  */
-export function transformExample(params: ITransformExampleParams): ITransformedExample {
+export function transformExample(params: ITransformExampleParams): ITransformedCode {
   const { tsCode, jsCode, id, supportedPackages } = params;
 
   // Imports or exports will be removed since they are not supported.
@@ -36,7 +40,7 @@ export function transformExample(params: ITransformExampleParams): ITransformedE
     .replace(/^export /gm, '')
     .trim();
 
-  const output: ITransformedExample = {};
+  const output: ITransformedCode = {};
 
   // Get info about the example's imports and exports
   const exampleInfo = tryParseExample(tsCode, supportedPackages);
@@ -84,7 +88,9 @@ ${mainCode}
 ReactDOM.render(${createComponentElement}, document.getElementById('${id}'));
 `;
 
-  console.log('TRANSFORMED:');
-  console.log(output.output);
+  if (win && win.transformLogging) {
+    console.log('TRANSFORMED:');
+    console.log(output.output);
+  }
   return output;
 }

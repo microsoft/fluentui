@@ -1,12 +1,12 @@
 import * as React from 'react';
-import { getId } from 'office-ui-fabric-react/lib/Utilities';
+import { useId } from '@uifabric/react-hooks';
 import { EditorPreview } from './EditorPreview';
 import { IEditorWrapperProps, IEditorPreviewProps } from './EditorWrapper.types';
 import { EditorError } from './EditorError';
 import { TypeScriptSnippet } from './TypeScriptSnippet';
 import { EditorLoading } from './EditorLoading';
-import { SUPPORTED_PACKAGES } from '../utilities/defaultSupportedPackages';
-import { isEditorSupported } from '../utilities/isEditorSupported';
+import { SUPPORTED_PACKAGES, isEditorSupported } from '../utilities/index';
+import { ITransformedCode } from '../interfaces/index';
 
 // This file MUST NOT directly load the main TsxEditor module which depends on Monaco, to avoid
 // pulling it into a bundle. Importing/rendering with React.lazy solves this.
@@ -27,11 +27,7 @@ export const EditorWrapper: React.FunctionComponent<IEditorWrapperProps> = props
     children
   } = props;
 
-  const idRef = React.useRef<string>();
-  if (!idRef.current) {
-    idRef.current = getId('EditorPreview');
-  }
-  const previewId = idRef.current!;
+  const previewId = useId('EditorPreview');
 
   const [error, setError] = React.useState<string | string[]>();
 
@@ -43,6 +39,13 @@ export const EditorWrapper: React.FunctionComponent<IEditorWrapperProps> = props
     return isEditorSupported(code, supportedPackages);
   }, [useEditor, code, supportedPackages]);
 
+  const onTransformFinished = (result: ITransformedCode) => {
+    setError(result.error);
+    if (props.onTransformFinished) {
+      props.onTransformFinished(result);
+    }
+  };
+
   return (
     <div>
       {isCodeVisible && (
@@ -50,7 +53,11 @@ export const EditorWrapper: React.FunctionComponent<IEditorWrapperProps> = props
           {canEdit ? (
             // Editing supported -- render editor module (or loading spinner)
             <React.Suspense fallback={<EditorLoading height={height} />}>
-              <TsxEditorLazy editorProps={{ code, width, height, modelRef }} onTransformFinished={setError} previewId={previewId} />
+              <TsxEditorLazy
+                editorProps={{ code, width, height, modelRef }}
+                onTransformFinished={onTransformFinished}
+                previewId={previewId}
+              />
             </React.Suspense>
           ) : (
             // Editing not supported
