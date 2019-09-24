@@ -244,7 +244,7 @@ export function getStyles(props: ICoachmarkStyleProps): ICoachmarkStyles {
         selectors: {
           [HighContrastSelector]: {
             backgroundColor: 'Window',
-            border: '2px solid Highlight'
+            border: '2px solid WindowText'
           }
         }
       },
