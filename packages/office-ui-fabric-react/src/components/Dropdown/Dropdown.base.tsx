@@ -264,7 +264,7 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
               aria-expanded={isOpen ? 'true' : 'false'}
               role={ariaAttrs.role}
               aria-label={ariaLabel}
-              aria-labelledby={mergeAriaAttributeValues(label && !ariaLabel ? id + '-label' : undefined)}
+              aria-labelledby={label && !ariaLabel ? id + '-label' : undefined}
               aria-describedby={mergeAriaAttributeValues(optionId, keytipAttributes['aria-describedby'])}
               aria-activedescendant={isOpen ? ariaAttrs.ariaActiveDescendant : undefined}
               aria-required={required}
