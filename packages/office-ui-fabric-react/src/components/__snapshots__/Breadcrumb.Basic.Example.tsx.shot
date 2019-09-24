@@ -2129,6 +2129,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                   className=
                       ms-Button
                       ms-Button--icon
+                      ms-Button-hasMenu
                       ms-Breadcrumb-overflowButton
                       {
                         -moz-osx-font-smoothing: grayscale;
@@ -2157,7 +2158,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         user-select: none;
                         vertical-align: top;
                         white-space: nowrap;
-                        width: 32px;
+                        width: auto;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -2906,6 +2907,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                   className=
                       ms-Button
                       ms-Button--icon
+                      ms-Button-hasMenu
                       ms-Breadcrumb-overflowButton
                       {
                         -moz-osx-font-smoothing: grayscale;
@@ -2934,7 +2936,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         user-select: none;
                         vertical-align: top;
                         white-space: nowrap;
-                        width: 32px;
+                        width: auto;
                       }
                       &::-moz-focus-inner {
                         border: 0;

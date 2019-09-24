@@ -177,6 +177,7 @@ exports[`Component Examples renders OverflowSet.Custom.Example.tsx correctly 1`]
       className=
           ms-Button
           ms-Button--commandBar
+          ms-Button-hasMenu
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
@@ -733,6 +734,7 @@ exports[`Component Examples renders OverflowSet.Custom.Example.tsx correctly 1`]
       className=
           ms-Button
           ms-Button--commandBar
+          ms-Button-hasMenu
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;

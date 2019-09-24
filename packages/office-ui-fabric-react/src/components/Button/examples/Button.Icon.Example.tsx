@@ -30,7 +30,7 @@ export const ButtonIconExample: React.FunctionComponent<IButtonExampleProps> = p
 
   return (
     <div>
-      <Stack gap={8} horizontal>
+      <Stack tokens={{ childrenGap: 8 }} horizontal>
         <IconButton iconProps={emojiIcon} title="Emoji" ariaLabel="Emoji" disabled={disabled} checked={checked} />
         <IconButton menuProps={menuProps} iconProps={emojiIcon} title="Emoji" ariaLabel="Emoji" disabled={disabled} checked={checked} />
       </Stack>

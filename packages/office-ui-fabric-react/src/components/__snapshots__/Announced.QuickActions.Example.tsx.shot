@@ -1553,6 +1553,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                 className=
                                     ms-Button
                                     ms-Button--icon
+                                    ms-Button-hasMenu
                                     {
                                       -moz-osx-font-smoothing: grayscale;
                                       -webkit-font-smoothing: antialiased;
@@ -1578,7 +1579,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                       text-decoration: none;
                                       user-select: none;
                                       vertical-align: top;
-                                      width: 32px;
+                                      width: auto;
                                     }
                                     &::-moz-focus-inner {
                                       border: 0;
@@ -2253,6 +2254,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                 className=
                                     ms-Button
                                     ms-Button--icon
+                                    ms-Button-hasMenu
                                     {
                                       -moz-osx-font-smoothing: grayscale;
                                       -webkit-font-smoothing: antialiased;
@@ -2278,7 +2280,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                       text-decoration: none;
                                       user-select: none;
                                       vertical-align: top;
-                                      width: 32px;
+                                      width: auto;
                                     }
                                     &::-moz-focus-inner {
                                       border: 0;
@@ -2953,6 +2955,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                 className=
                                     ms-Button
                                     ms-Button--icon
+                                    ms-Button-hasMenu
                                     {
                                       -moz-osx-font-smoothing: grayscale;
                                       -webkit-font-smoothing: antialiased;
@@ -2978,7 +2981,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                       text-decoration: none;
                                       user-select: none;
                                       vertical-align: top;
-                                      width: 32px;
+                                      width: auto;
                                     }
                                     &::-moz-focus-inner {
                                       border: 0;
@@ -3653,6 +3656,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                 className=
                                     ms-Button
                                     ms-Button--icon
+                                    ms-Button-hasMenu
                                     {
                                       -moz-osx-font-smoothing: grayscale;
                                       -webkit-font-smoothing: antialiased;
@@ -3678,7 +3682,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                       text-decoration: none;
                                       user-select: none;
                                       vertical-align: top;
-                                      width: 32px;
+                                      width: auto;
                                     }
                                     &::-moz-focus-inner {
                                       border: 0;
@@ -4353,6 +4357,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                 className=
                                     ms-Button
                                     ms-Button--icon
+                                    ms-Button-hasMenu
                                     {
                                       -moz-osx-font-smoothing: grayscale;
                                       -webkit-font-smoothing: antialiased;
@@ -4378,7 +4383,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                       text-decoration: none;
                                       user-select: none;
                                       vertical-align: top;
-                                      width: 32px;
+                                      width: auto;
                                     }
                                     &::-moz-focus-inner {
                                       border: 0;
@@ -5053,6 +5058,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                 className=
                                     ms-Button
                                     ms-Button--icon
+                                    ms-Button-hasMenu
                                     {
                                       -moz-osx-font-smoothing: grayscale;
                                       -webkit-font-smoothing: antialiased;
@@ -5078,7 +5084,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                       text-decoration: none;
                                       user-select: none;
                                       vertical-align: top;
-                                      width: 32px;
+                                      width: auto;
                                     }
                                     &::-moz-focus-inner {
                                       border: 0;
@@ -5753,6 +5759,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                 className=
                                     ms-Button
                                     ms-Button--icon
+                                    ms-Button-hasMenu
                                     {
                                       -moz-osx-font-smoothing: grayscale;
                                       -webkit-font-smoothing: antialiased;
@@ -5778,7 +5785,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                       text-decoration: none;
                                       user-select: none;
                                       vertical-align: top;
-                                      width: 32px;
+                                      width: auto;
                                     }
                                     &::-moz-focus-inner {
                                       border: 0;
@@ -6453,6 +6460,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                 className=
                                     ms-Button
                                     ms-Button--icon
+                                    ms-Button-hasMenu
                                     {
                                       -moz-osx-font-smoothing: grayscale;
                                       -webkit-font-smoothing: antialiased;
@@ -6478,7 +6486,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                       text-decoration: none;
                                       user-select: none;
                                       vertical-align: top;
-                                      width: 32px;
+                                      width: auto;
                                     }
                                     &::-moz-focus-inner {
                                       border: 0;
@@ -7153,6 +7161,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                 className=
                                     ms-Button
                                     ms-Button--icon
+                                    ms-Button-hasMenu
                                     {
                                       -moz-osx-font-smoothing: grayscale;
                                       -webkit-font-smoothing: antialiased;
@@ -7178,7 +7187,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                       text-decoration: none;
                                       user-select: none;
                                       vertical-align: top;
-                                      width: 32px;
+                                      width: auto;
                                     }
                                     &::-moz-focus-inner {
                                       border: 0;
@@ -7853,6 +7862,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                 className=
                                     ms-Button
                                     ms-Button--icon
+                                    ms-Button-hasMenu
                                     {
                                       -moz-osx-font-smoothing: grayscale;
                                       -webkit-font-smoothing: antialiased;
@@ -7878,7 +7888,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                       text-decoration: none;
                                       user-select: none;
                                       vertical-align: top;
-                                      width: 32px;
+                                      width: auto;
                                     }
                                     &::-moz-focus-inner {
                                       border: 0;
