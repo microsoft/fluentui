@@ -820,7 +820,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                                   }
                                   @media screen and (-ms-high-contrast: active){& {
                                     background-color: Window;
-                                    border: 2px solid Highlight;
+                                    border: 2px solid WindowText;
                                   }
                               data-is-focusable={true}
                               role="dialog"
