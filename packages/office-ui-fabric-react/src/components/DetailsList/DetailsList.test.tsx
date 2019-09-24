@@ -481,6 +481,6 @@ describe('DetailsList', () => {
     const component = mount(<DetailsList items={mockData(5)} columns={mockData(5, true)} selectionMode={SelectionMode.none} />);
 
     const selectionZone = component.find(SelectionZone);
-    expect(selectionZone.props().selectionMode).toEqual(SelectionMode.none);
+    expect(selectionZone.props().selection.mode).toEqual(SelectionMode.none);
   });
 });
