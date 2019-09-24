@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Remove codepen-loader usage",
-  "packageName": "office-ui-fabric-react",
-  "email": "elcraig@microsoft.com",
-  "commit": "d637c537d4a367e7a2e3e5e8e5fe7c902e8d3b31",
-  "date": "2019-09-20T10:07:44.256Z"
-}

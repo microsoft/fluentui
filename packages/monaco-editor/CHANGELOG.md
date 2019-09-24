@@ -1,7 +1,13 @@
 # Change Log - @uifabric/monaco-editor
 
-This log was last generated on Thu, 19 Sep 2019 13:05:24 GMT and should not be manually modified.
+This log was last generated on Tue, 24 Sep 2019 12:35:43 GMT and should not be manually modified.
 
+## 0.2.1
+Tue, 24 Sep 2019 12:35:43 GMT
+
+### Patches
+
+- Build commonjs variant (elcraig@microsoft.com)
 ## 0.2.0
 Thu, 19 Sep 2019 13:05:24 GMT
 
