@@ -1,6 +1,7 @@
 // Convenience re-exports of Monaco interfaces.
-// Don't import this file from anything that will be used in a Jest test.
 
+// This import MUST be from the API file (not the root) to prevent Monaco from being pulled into
+// the main bundle.
 import * as monaco from '@uifabric/monaco-editor/esm/vs/editor/editor.api';
 
 export type ICompilerOptions = monaco.languages.typescript.CompilerOptions;

@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "updated callout example with better, accessible example",
+  "packageName": "office-ui-fabric-react",
+  "email": "mgodbolt@microsoft.com",
+  "commit": "e4af01f5eff86d09c3c68f4acef478ae3d8ce738",
+  "date": "2019-09-23T23:49:48.862Z"
+}

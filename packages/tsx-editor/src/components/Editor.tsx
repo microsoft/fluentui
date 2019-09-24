@@ -1,8 +1,8 @@
 import * as monaco from '@uifabric/monaco-editor';
 import * as React from 'react';
 import { IEditorProps } from './Editor.types';
-import { codeFontFamily } from './common';
-import { IMonacoTextModel } from '../interfaces/monaco';
+import { codeFontFamily } from './consts';
+import { IMonacoTextModel } from '../interfaces/index';
 
 /**
  * Language-agnostic wrapper for a Monaco editor instance.

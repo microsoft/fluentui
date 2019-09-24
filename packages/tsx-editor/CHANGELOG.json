@@ -2,6 +2,20 @@
   "name": "@uifabric/tsx-editor",
   "entries": [
     {
+      "date": "Tue, 24 Sep 2019 12:35:43 GMT",
+      "tag": "@uifabric/tsx-editor_v0.7.1",
+      "version": "0.7.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Restructure index files and exports",
+            "author": "elcraig@microsoft.com",
+            "commit": "f9a483c37857c9bdba359a287b065ebe59dd361b"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 20 Sep 2019 12:34:28 GMT",
       "tag": "@uifabric/tsx-editor_v0.7.0",
       "version": "0.7.0",

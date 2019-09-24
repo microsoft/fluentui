@@ -3,11 +3,10 @@ import * as monaco from '@uifabric/monaco-editor';
 import { LanguageServiceDefaultsImpl as TypescriptDefaults } from '@uifabric/monaco-editor/monaco-typescript.d';
 import { ITsxEditorProps } from './TsxEditor.types';
 import { transpileAndEval } from '../transpiler/index';
-import { IMonacoTextModel, ICompilerOptions } from '../interfaces/monaco';
+import { IMonacoTextModel, ICompilerOptions, IPackageGroup } from '../interfaces/index';
 import { Editor } from './Editor';
 import { EditorLoading } from './EditorLoading';
-import { SUPPORTED_PACKAGES } from '../utilities/defaultSupportedPackages';
-import { IPackageGroup } from '../interfaces/packageGroup';
+import { SUPPORTED_PACKAGES } from '../utilities/index';
 
 const typescript = monaco.languages.typescript;
 const typescriptDefaults = typescript.typescriptDefaults as TypescriptDefaults;
