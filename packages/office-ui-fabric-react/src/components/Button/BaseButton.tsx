@@ -516,13 +516,14 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       tabIndex: -1,
       'data-is-focusable': false
     });
+
     const ariaDescribedBy = buttonProps.ariaDescription;
 
     if (keytipProps && menuProps) {
       keytipProps = this._getMemoizedMenuButtonKeytipProps(keytipProps);
     }
 
-    const containerProps = getNativeProps<React.HTMLAttributes<HTMLSpanElement>>(buttonProps, [], ['disabled']);
+    const containerProps = getNativeProps<React.HTMLAttributes<HTMLSpanElement>>(buttonProps, [], ['disabled', 'aria-label']);
 
     // Add additional props to apply on primary action button
     if (primaryActionButtonProps) {
