@@ -237,7 +237,6 @@ storiesOf('IconButton Scenarios', module)
   .addStory('icon button with menu', () => (
     <div>
       <IconButton
-        styles={{ root: { width: 'auto' } }}
         iconProps={{ iconName: 'Globe' }}
         primary={true}
         menuProps={{
