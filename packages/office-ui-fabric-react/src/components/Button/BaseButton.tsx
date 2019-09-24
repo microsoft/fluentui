@@ -61,8 +61,9 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   private _lastTouchTimeoutId: number | undefined;
   private _renderedVisibleMenu: boolean = false;
 
-  private _shouldFocusOnContainer: boolean | undefined;
-  private _shouldFocusOnMount: boolean | undefined;
+  // These fields will be used to set corresponding props on the menu.
+  private _menuShouldFocusOnContainer: boolean | undefined;
+  private _menuShouldFocusOnMount: boolean | undefined;
 
   private _getMemoizedMenuButtonKeytipProps = memoizeFunction((keytipProps: IKeytipProps) => {
     return {
@@ -462,8 +463,8 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
         id={this._labelId + '-menu'}
         directionalHint={DirectionalHint.bottomLeftEdge}
         {...menuProps}
-        shouldFocusOnContainer={this._shouldFocusOnContainer}
-        shouldFocusOnMount={this._shouldFocusOnMount}
+        shouldFocusOnContainer={this._menuShouldFocusOnContainer}
+        shouldFocusOnMount={this._menuShouldFocusOnMount}
         hidden={persistMenu ? menuHidden : undefined}
         className={css('ms-BaseButton-menuhost', menuProps.className)}
         target={this._isSplitButton ? this._splitButtonContainer.current : this._buttonElement.current}
@@ -473,15 +474,15 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   };
 
   private _dismissMenu = (): void => {
-    this._shouldFocusOnMount = undefined;
-    this._shouldFocusOnContainer = undefined;
+    this._menuShouldFocusOnMount = undefined;
+    this._menuShouldFocusOnContainer = undefined;
     this.setState({ menuHidden: true });
   };
 
   private _openMenu = (shouldFocusOnContainer?: boolean, shouldFocusOnMount: boolean = true): void => {
     if (this.props.menuProps) {
-      this._shouldFocusOnContainer = shouldFocusOnContainer;
-      this._shouldFocusOnMount = shouldFocusOnMount;
+      this._menuShouldFocusOnContainer = shouldFocusOnContainer;
+      this._menuShouldFocusOnMount = shouldFocusOnMount;
       this._renderedVisibleMenu = true;
       this.setState({ menuHidden: false });
     }
@@ -607,8 +608,6 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     const { menuHidden } = this.state;
     let menuIconProps = this.props.menuIconProps;
 
-    const {} = this.props;
-
     if (menuIconProps === undefined) {
       menuIconProps = {
         iconName: 'ChevronDown'
@@ -730,11 +729,11 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
 
       if (!this.state.menuHidden && this.props.menuProps) {
         const currentShouldFocusOnMount =
-          this._shouldFocusOnMount !== undefined ? this._shouldFocusOnMount : this.props.menuProps.shouldFocusOnMount;
+          this._menuShouldFocusOnMount !== undefined ? this._menuShouldFocusOnMount : this.props.menuProps.shouldFocusOnMount;
         if (!currentShouldFocusOnMount) {
           ev.preventDefault();
           ev.stopPropagation();
-          this._shouldFocusOnMount = true;
+          this._menuShouldFocusOnMount = true;
           this.forceUpdate();
         }
       }
