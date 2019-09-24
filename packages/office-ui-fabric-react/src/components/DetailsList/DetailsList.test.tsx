@@ -1,7 +1,6 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as renderer from 'react-test-renderer';
-import * as ReactTestUtils from 'react-dom/test-utils';
 import { mount } from 'enzyme';
 
 import { DetailsList } from './DetailsList';
@@ -10,7 +9,7 @@ import { DetailsListBase } from './DetailsList.base';
 import { IDetailsList, IColumn, DetailsListLayoutMode, CheckboxVisibility } from './DetailsList.types';
 import { IDetailsColumnProps } from 'office-ui-fabric-react/lib/components/DetailsList/DetailsColumn';
 import { IDetailsHeaderProps, DetailsHeader } from './DetailsHeader';
-import { EventGroup, IRenderFunction, KeyCodes } from '../../Utilities';
+import { EventGroup, IRenderFunction } from '../../Utilities';
 import { IDragDropEvents } from './../../utilities/dragdrop/index';
 import { SelectionMode, Selection, SelectionZone } from '../../utilities/selection/index';
 import { getTheme } from '../../Styling';
