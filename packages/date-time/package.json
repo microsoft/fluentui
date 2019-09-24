@@ -33,7 +33,6 @@
     "@types/react-dom": "16.8.4",
     "@types/react-test-renderer": "^16.0.0",
     "@types/webpack-env": "1.13.9",
-    "@uifabric/codepen-loader": "^7.0.8",
     "@uifabric/example-app-base": "^7.7.0",
     "@uifabric/jest-serializer-merge-styles": "^7.0.6",
     "@uifabric/prettier-rules": "^7.0.4",
