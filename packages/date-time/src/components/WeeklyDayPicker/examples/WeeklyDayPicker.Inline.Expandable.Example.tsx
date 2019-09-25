@@ -17,7 +17,9 @@ const DayPickerStrings = {
   nextYearAriaLabel: 'Next year',
   prevYearRangeAriaLabel: 'Previous year range',
   nextYearRangeAriaLabel: 'Next year range',
-  closeButtonAriaLabel: 'Close'
+  closeButtonAriaLabel: 'Close',
+  prevWeekAriaLabel: 'Previous week',
+  nextWeekAriaLabel: 'Next week'
 };
 
 export interface IWeeklyDayPickerInlineExpandableExampleState {
@@ -76,7 +78,7 @@ export class WeeklyDayPickerInlineExpandableExample extends React.Component<
         )}
         {this.props.showExpandButton && (
           <div>
-            <DefaultButton className={styles.button} onClick={this._expand} text="Expand/collapse" />
+            <DefaultButton className={styles.button} onClick={this._expand} text="Expand/collapse" aria-expanded={this.state.expanded} />
           </div>
         )}
         <WeeklyDayPicker

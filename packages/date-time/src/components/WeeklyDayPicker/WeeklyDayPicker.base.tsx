@@ -143,7 +143,13 @@ export class WeeklyDayPickerBase extends BaseComponent<IWeeklyDayPickerProps, IW
     });
 
     return (
-      <div className={classNames.root} onKeyDown={this._onWrapperKeyDown} onTouchStart={this._onTouchStart} onTouchMove={this._onTouchMove}>
+      <div
+        className={classNames.root}
+        onKeyDown={this._onWrapperKeyDown}
+        onTouchStart={this._onTouchStart}
+        onTouchMove={this._onTouchMove}
+        aria-expanded={showFullMonth}
+      >
         {this.renderPreviousWeekNavigationButton(classNames)}
         <CalendarDayGrid
           styles={styles}
