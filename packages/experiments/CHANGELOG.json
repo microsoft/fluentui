@@ -2,6 +2,20 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "date": "Wed, 25 Sep 2019 12:22:00 GMT",
+      "tag": "@uifabric/experiments_v6.83.0",
+      "version": "6.83.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Golden Folder grid view CSS cleanup and update to filetype salt to bust thru CDN cache",
+            "author": "caperez@microsoft.com",
+            "commit": "599531b28e137575c7b5e742c4c86d89f17901fe"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 04 Sep 2019 12:24:13 GMT",
       "tag": "@uifabric/experiments_v6.82.2",
       "version": "6.82.2",

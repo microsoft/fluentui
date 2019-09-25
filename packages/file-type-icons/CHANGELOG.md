@@ -1,7 +1,13 @@
 # Change Log - @uifabric/file-type-icons
 
-This log was last generated on Thu, 12 Sep 2019 12:22:18 GMT and should not be manually modified.
+This log was last generated on Wed, 25 Sep 2019 12:22:00 GMT and should not be manually modified.
 
+## 6.7.0
+Wed, 25 Sep 2019 12:22:00 GMT
+
+### Minor changes
+
+- Golden Folder grid view CSS cleanup and update to filetype salt to bust thru CDN cache (caperez@microsoft.com)
 ## 6.6.0
 Thu, 12 Sep 2019 12:22:18 GMT
 

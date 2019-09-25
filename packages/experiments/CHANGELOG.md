@@ -1,7 +1,13 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Wed, 04 Sep 2019 12:24:13 GMT and should not be manually modified.
+This log was last generated on Wed, 25 Sep 2019 12:22:00 GMT and should not be manually modified.
 
+## 6.83.0
+Wed, 25 Sep 2019 12:22:00 GMT
+
+### Minor changes
+
+- Golden Folder grid view CSS cleanup and update to filetype salt to bust thru CDN cache (caperez@microsoft.com)
 ## 6.82.2
 Wed, 04 Sep 2019 12:24:13 GMT
 

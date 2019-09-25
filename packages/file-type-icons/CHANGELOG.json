@@ -2,6 +2,20 @@
   "name": "@uifabric/file-type-icons",
   "entries": [
     {
+      "date": "Wed, 25 Sep 2019 12:22:00 GMT",
+      "tag": "@uifabric/file-type-icons_v6.7.0",
+      "version": "6.7.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Golden Folder grid view CSS cleanup and update to filetype salt to bust thru CDN cache",
+            "author": "caperez@microsoft.com",
+            "commit": "599531b28e137575c7b5e742c4c86d89f17901fe"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 12 Sep 2019 12:22:18 GMT",
       "tag": "@uifabric/file-type-icons_v6.6.0",
       "version": "6.6.0",

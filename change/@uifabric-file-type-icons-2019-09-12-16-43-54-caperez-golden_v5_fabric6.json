@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Golden Folder grid view CSS cleanup and update to filetype salt to bust thru CDN cache",
-  "packageName": "@uifabric/file-type-icons",
-  "email": "caperez@microsoft.com",
-  "commit": "599531b28e137575c7b5e742c4c86d89f17901fe",
-  "date": "2019-09-12T23:43:54.131Z"
-}
