@@ -1,0 +1,8 @@
+{
+  "type": "none",
+  "comment": "updated accessibility location on page, and added basic input a11y info",
+  "packageName": "@uifabric/experiments",
+  "email": "mgodbolt@microsoft.com",
+  "commit": "07de14c757f22336247e81ffc30ff8002f8640c4",
+  "date": "2019-09-25T22:46:52.819Z"
+}
