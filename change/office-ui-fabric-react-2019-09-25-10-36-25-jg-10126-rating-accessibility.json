@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Rating: Align read-only functionality with ARIA standards.",
+  "packageName": "office-ui-fabric-react",
+  "email": "jagore@microsoft.com",
+  "commit": "2bb4a845d352319c2b0893a63edae063e756331b",
+  "date": "2019-09-25T17:36:25.070Z"
+}
