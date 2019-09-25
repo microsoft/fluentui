@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "DetailsList: initialize selection object mode with selectionMode prop if it is defined",
-  "packageName": "office-ui-fabric-react",
-  "email": "naethell@microsoft.com",
-  "commit": "1b60a86309fa911834c5b320233ba7ec1a7f45c6",
-  "date": "2019-09-19T23:53:36.441Z"
-}

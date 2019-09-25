@@ -1,7 +1,13 @@
 # Change Log - @uifabric/tsx-editor
 
-This log was last generated on Tue, 24 Sep 2019 12:35:43 GMT and should not be manually modified.
+This log was last generated on Wed, 25 Sep 2019 12:34:56 GMT and should not be manually modified.
 
+## 0.7.2
+Wed, 25 Sep 2019 12:34:56 GMT
+
+### Patches
+
+- Update regex for IE friendliness (anhw@microsoft.com)
 ## 0.7.1
 Tue, 24 Sep 2019 12:35:43 GMT
 

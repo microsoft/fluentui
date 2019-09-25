@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Update regex for IE friendliness",
-  "packageName": "@uifabric/tsx-editor",
-  "email": "anhw@microsoft.com",
-  "commit": "cbbd1aaaf944920cc8101476b36838c23ae5d949",
-  "date": "2019-09-25T01:07:41.967Z"
-}

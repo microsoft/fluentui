@@ -1,7 +1,13 @@
 # Change Log - @uifabric/date-time
 
-This log was last generated on Tue, 24 Sep 2019 12:35:43 GMT and should not be manually modified.
+This log was last generated on Wed, 25 Sep 2019 12:34:56 GMT and should not be manually modified.
 
+## 7.4.8
+Wed, 25 Sep 2019 12:34:56 GMT
+
+### Patches
+
+- fixing focus outline in IE11. The outline in IE11 does not show if it overflows the div it's in unless we explicitly set overflow: visible on the div (other browsers have this as the default). (jolore@microsoft.com)
 ## 7.4.7
 Tue, 24 Sep 2019 12:35:43 GMT
 
