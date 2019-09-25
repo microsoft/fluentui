@@ -818,6 +818,10 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                                     transition: border-radius 250ms, width 500ms, height 500ms cubic-bezier(0.5, 0, 0, 1);
                                     visibility: hidden;
                                   }
+                                  @media screen and (-ms-high-contrast: active){& {
+                                    background-color: Window;
+                                    border: 2px solid WindowText;
+                                  }
                               data-is-focusable={true}
                               role="dialog"
                               tabIndex={-1}
