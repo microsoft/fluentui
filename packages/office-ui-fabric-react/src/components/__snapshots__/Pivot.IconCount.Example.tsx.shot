@@ -530,9 +530,10 @@ exports[`Component Examples renders Pivot.IconCount.Example.tsx correctly 1`] = 
               .ms-Fabric--isFocusVisible &:focus {
                 outline: 1px solid #605e5c;
               }
-          data-content=" xx"
+          data-content="Placeholder xx"
           data-is-focusable={true}
           id="Pivot0-Tab2"
+          name="Placeholder"
           onClick={[Function]}
           onKeyDown={[Function]}
           onKeyPress={[Function]}
@@ -589,6 +590,17 @@ exports[`Component Examples renders Pivot.IconCount.Example.tsx correctly 1`] = 
                 >
                   
                 </i>
+              </span>
+              <span
+                className=
+                    ms-Pivot-text
+                    {
+                      display: inline-block;
+                      vertical-align: top;
+                    }
+              >
+                 
+                Placeholder
               </span>
             </span>
           </span>

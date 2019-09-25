@@ -1,7 +1,23 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 24 Sep 2019 12:35:43 GMT and should not be manually modified.
+This log was last generated on Wed, 25 Sep 2019 12:34:56 GMT and should not be manually modified.
 
+## 7.39.0
+Wed, 25 Sep 2019 12:34:56 GMT
+
+### Minor changes
+
+- Adding a prop shouldUpdateWhenHidden to decide whether to udpate hidden callouts and contextual menus (kushaly@microsoft.com)
+- Fix return type of onGrowData() in CommandBar. (1721514+gordianschuda@users.noreply.github.com)
+### Patches
+
+- DetailsList: initialize selection object mode with selectionMode prop if it is defined (naethell@microsoft.com)
+- fixing focus outline in IE11. The outline in IE11 does not show if it overflows the div it's in unless we explicitly set overflow: visible on the div (other browsers have this as the default). (jolore@microsoft.com)
+- Coachmark Accessibility: adding HighContrastSelector to coachmark (marygans@microsoft.com)
+- updated callout example with better, accessible example (mgodbolt@microsoft.com)
+- Pivot: Fix accessibility of example. (jdh@microsoft.com)
+- Use correct type in docs for 'collapseAllVisibility' in 'GroupedList' (thomas.gassmann@hotmail.com)
+- Pivot: Improve accessibility of examples. (jdh@microsoft.com)
 ## 7.38.0
 Tue, 24 Sep 2019 12:35:43 GMT
 

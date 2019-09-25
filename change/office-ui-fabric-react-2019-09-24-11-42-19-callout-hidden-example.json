@@ -1,8 +1,0 @@
-{
-  "type": "none",
-  "comment": "remove 'hidden' prop from demo",
-  "packageName": "office-ui-fabric-react",
-  "email": "mgodbolt@microsoft.com",
-  "commit": "cca2092e8d95e92d6a8318b99e6e6de01d867f17",
-  "date": "2019-09-24T18:42:19.655Z"
-}

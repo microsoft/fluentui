@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Adding a prop shouldUpdateWhenHidden to decide whether to udpate hidden callouts and contextual menus",
-  "packageName": "office-ui-fabric-react",
-  "email": "kushaly@microsoft.com",
-  "commit": "355ebb3c68fc1ef9bd20adacbc464c0e519bb394",
-  "date": "2019-09-16T22:56:59.045Z"
-}
