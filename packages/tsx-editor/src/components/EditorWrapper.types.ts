@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IMonacoTextModel, IPackageGroup } from '../interfaces/index';
+import { IMonacoTextModel, IPackageGroup, ITransformedCode } from '../interfaces/index';
 
 export interface IEditorWrapperProps {
   /** Code to edit */
@@ -36,6 +36,9 @@ export interface IEditorWrapperProps {
    * (Save the value in a constant to prevent it from mutating every render.)
    */
   supportedPackages?: IPackageGroup[];
+
+  /** Callback to notify when transforming finishes. */
+  onTransformFinished?: (result: ITransformedCode) => void;
 
   /** Initial children to show in the example results div (will be replaced when the example runs) */
   children?: React.ReactNode;

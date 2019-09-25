@@ -13,8 +13,7 @@ export const LabelPageProps: IDocPageProps = {
     {
       title: 'Label',
       code: LabelBasicExampleCode,
-      view: <LabelBasicExample />,
-      codepenJS: require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/Label/examples/Label.Basic.Example.tsx') as string
+      view: <LabelBasicExample />
     }
   ],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Label/docs/LabelOverview.md'),

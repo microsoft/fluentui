@@ -139,6 +139,7 @@ exports[`Component Examples renders Dropdown.ControlledMulti.Example.tsx correct
   >
     <span
       aria-atomic={true}
+      aria-invalid={false}
       aria-label="Select options"
       aria-live="polite"
       className=
@@ -205,7 +206,6 @@ exports[`Component Examples renders Dropdown.ControlledMulti.Example.tsx correct
               speak: none;
             }
         data-icon-name="ChevronDown"
-        role="presentation"
       >
         
       </i>

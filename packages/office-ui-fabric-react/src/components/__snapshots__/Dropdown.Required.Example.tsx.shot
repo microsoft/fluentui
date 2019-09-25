@@ -190,6 +190,7 @@ exports[`Component Examples renders Dropdown.Required.Example.tsx correctly 1`] 
       >
         <span
           aria-atomic={true}
+          aria-invalid={false}
           aria-label="Select an option"
           aria-live="polite"
           aria-setsize={5}
@@ -258,7 +259,6 @@ exports[`Component Examples renders Dropdown.Required.Example.tsx correctly 1`] 
                   speak: none;
                 }
             data-icon-name="ChevronDown"
-            role="presentation"
           >
             
           </i>
@@ -513,6 +513,7 @@ exports[`Component Examples renders Dropdown.Required.Example.tsx correctly 1`] 
     >
       <span
         aria-atomic={true}
+        aria-invalid={false}
         aria-label="Required with no label"
         aria-live="polite"
         aria-setsize={5}
@@ -581,7 +582,6 @@ exports[`Component Examples renders Dropdown.Required.Example.tsx correctly 1`] 
                 speak: none;
               }
           data-icon-name="ChevronDown"
-          role="presentation"
         >
           
         </i>

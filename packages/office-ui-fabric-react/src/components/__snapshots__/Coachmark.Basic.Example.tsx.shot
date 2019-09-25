@@ -147,6 +147,7 @@ exports[`Component Examples renders Coachmark.Basic.Example.tsx correctly 1`] = 
       >
         <span
           aria-atomic={true}
+          aria-invalid={false}
           aria-label="Bottom Auto Edge"
           aria-live="polite"
           aria-posinset={8}
@@ -215,7 +216,6 @@ exports[`Component Examples renders Coachmark.Basic.Example.tsx correctly 1`] = 
                   speak: none;
                 }
             data-icon-name="ChevronDown"
-            role="presentation"
           >
             
           </i>

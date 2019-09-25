@@ -106,6 +106,7 @@ exports[`Dropdown multi-select Renders multiselect Dropdown correctly 1`] = `
   >
     <span
       aria-atomic={true}
+      aria-invalid={false}
       aria-live="polite"
       className=
           ms-Dropdown-title
@@ -167,7 +168,6 @@ exports[`Dropdown multi-select Renders multiselect Dropdown correctly 1`] = `
               speak: none;
             }
         data-icon-name="ChevronDown"
-        role="presentation"
       >
         
       </i>
@@ -283,6 +283,7 @@ exports[`Dropdown single-select Renders single-select Dropdown correctly 1`] = `
   >
     <span
       aria-atomic={true}
+      aria-invalid={false}
       aria-live="polite"
       aria-setsize={6}
       className=
@@ -346,7 +347,6 @@ exports[`Dropdown single-select Renders single-select Dropdown correctly 1`] = `
               speak: none;
             }
         data-icon-name="ChevronDown"
-        role="presentation"
       >
         
       </i>

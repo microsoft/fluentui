@@ -770,6 +770,7 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
         >
           <span
             aria-atomic={true}
+            aria-invalid={false}
             aria-label="Left"
             aria-live="polite"
             aria-posinset={1}
@@ -838,7 +839,6 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
                     speak: none;
                   }
               data-icon-name="ChevronDown"
-              role="presentation"
             >
               
             </i>
@@ -999,6 +999,7 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
         >
           <span
             aria-atomic={true}
+            aria-invalid={false}
             aria-label="Top"
             aria-live="polite"
             aria-posinset={1}
@@ -1067,7 +1068,6 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
                     speak: none;
                   }
               data-icon-name="ChevronDown"
-              role="presentation"
             >
               
             </i>
@@ -1228,6 +1228,7 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
         >
           <span
             aria-atomic={true}
+            aria-invalid={false}
             aria-label="Visible"
             aria-live="polite"
             aria-posinset={1}
@@ -1296,7 +1297,6 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
                     speak: none;
                   }
               data-icon-name="ChevronDown"
-              role="presentation"
             >
               
             </i>

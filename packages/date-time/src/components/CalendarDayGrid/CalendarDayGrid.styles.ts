@@ -143,6 +143,7 @@ export const styles = (props: ICalendarDayGridStyleProps): ICalendarDayGridStyle
         color: 'inherit',
         backgroundColor: 'transparent',
         cursor: 'pointer',
+        overflow: 'visible', // explicitly specify for IE11
         selectors: {
           span: {
             height: 'inherit',

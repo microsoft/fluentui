@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Pivot, PivotItem } from 'office-ui-fabric-react/lib/Pivot';
-import { IconButton } from 'office-ui-fabric-react/lib/Button';
+import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 
 export class PivotSeparateNoSelectedKeyExample extends React.Component<any, any> {
   public state = { selectedKey: 'Settings' };
@@ -32,9 +32,10 @@ export class PivotSeparateNoSelectedKeyExample extends React.Component<any, any>
               <PivotItem key={`pivotItemKey_${name}`} headerText={name} itemKey={name} />
             ))}
           </Pivot>
-          <IconButton
+          <DefaultButton
             iconProps={{ iconName: 'Settings', style: { color: this.state.selectedKey === 'Settings' ? 'blue' : 'black' } }}
             onClick={this._handleSettingsIconClick}
+            text="Settings"
           />
         </div>
         {items[this.state.selectedKey]}

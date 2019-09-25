@@ -25,6 +25,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
         }
       >
         <div
+          aria-orientation="horizontal"
           className=
               ms-FocusZone
               ms-OverflowSet
@@ -3631,7 +3632,6 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   color: Window;
                 }
             data-icon-name="CheckMark"
-            role="presentation"
           >
             
           </i>
@@ -3774,7 +3774,6 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   color: Window;
                 }
             data-icon-name="CheckMark"
-            role="presentation"
           >
             
           </i>
@@ -3917,7 +3916,6 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   color: Window;
                 }
             data-icon-name="CheckMark"
-            role="presentation"
           >
             
           </i>
@@ -4076,6 +4074,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
         >
           <span
             aria-atomic={true}
+            aria-invalid={false}
             aria-label="20"
             aria-live="polite"
             aria-posinset={1}
@@ -4144,7 +4143,6 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                     speak: none;
                   }
               data-icon-name="ChevronDown"
-              role="presentation"
             >
               
             </i>

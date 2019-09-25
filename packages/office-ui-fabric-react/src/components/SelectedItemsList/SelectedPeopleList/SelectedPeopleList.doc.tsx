@@ -6,9 +6,7 @@ import { SelectedPeopleListBasicExample } from '../examples/SelectedPeopleList.B
 import { SelectedPeopleListControlledExample } from '../examples/SelectedPeopleList.Controlled.Example';
 
 const SelectedPeopleListBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/SelectedItemsList/examples/SelectedPeopleList.Basic.Example.tsx') as string;
-const SelectedPeopleListBasicExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/SelectedItemsList/examples/SelectedPeopleList.Basic.Example.tsx') as string;
 const SelectedPeopleListControlledExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/SelectedItemsList/examples/SelectedPeopleList.Controlled.Example.tsx') as string;
-const SelectedPeopleListControlledExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/SelectedItemsList/examples/SelectedPeopleList.Controlled.Example.tsx') as string;
 
 export const SelectedPeopleListPageProps: IDocPageProps = {
   title: 'SelectedPeopleList',
@@ -19,13 +17,11 @@ export const SelectedPeopleListPageProps: IDocPageProps = {
     {
       title: 'Selected People List (uncontrolled)',
       code: SelectedPeopleListBasicExampleCode,
-      codepenJS: SelectedPeopleListBasicExampleCodepen,
       view: <SelectedPeopleListBasicExample />
     },
     {
       title: 'Selected People List (controlled)',
       code: SelectedPeopleListControlledExampleCode,
-      codepenJS: SelectedPeopleListControlledExampleCodepen,
       view: <SelectedPeopleListControlledExample />
     }
   ],
