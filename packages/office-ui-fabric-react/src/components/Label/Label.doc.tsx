@@ -20,6 +20,7 @@ export const LabelPageProps: IDocPageProps = {
   bestPractices: '',
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Label/docs/LabelDos.md'),
   donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Label/docs/LabelDonts.md'),
+  accessibility: require<string>('!raw-loader!office-ui-fabric-react/src/components/Label/docs/LabelA11y.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
   allowNativeProps: true

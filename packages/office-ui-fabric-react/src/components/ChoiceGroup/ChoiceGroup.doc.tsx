@@ -49,6 +49,7 @@ export const ChoiceGroupPageProps: IDocPageProps = {
   bestPractices: '',
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/ChoiceGroup/docs/ChoiceGroupDos.md'),
   donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/ChoiceGroup/docs/ChoiceGroupDonts.md'),
+  accessibility: require<string>('!raw-loader!office-ui-fabric-react/src/components/ChoiceGroup/docs/ChoiceGroupA11y.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
   allowNativeProps: true,

@@ -52,6 +52,7 @@ export const ComboBoxPageProps: IDocPageProps = {
   bestPractices: '',
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/ComboBox/docs/ComboBoxDos.md'),
   donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/ComboBox/docs/ComboBoxDonts.md'),
+  accessibility: require<string>('!raw-loader!office-ui-fabric-react/src/components/ComboBox/docs/ComboBoxA11y.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
   allowNativeProps: true

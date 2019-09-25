@@ -105,6 +105,7 @@ export const ButtonPageProps = (props: IButtonDocPageProps): IDocPageProps => ({
   allowNativeProps: true,
   nativePropsElement: ['a', 'button'],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Button/docs/ButtonOverview.md'),
+  accessibility: require<string>('!raw-loader!office-ui-fabric-react/src/components/Button/docs/ButtonA11y.md'),
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Button/docs/ButtonDos.md'),
   donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Button/docs/ButtonDonts.md'),
   isHeaderVisible: true,

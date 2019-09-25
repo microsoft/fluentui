@@ -186,6 +186,15 @@ export class Page extends React.Component<IPageProps, IPageState> {
       sections.push(examplesProps);
     }
 
+    accessibility &&
+      sections.push({
+        renderAs: MarkdownSection,
+        ...sectionProps,
+        sectionName: 'Accessibility',
+        readableSectionName: 'Accessibility',
+        content: accessibility
+      });
+
     if (propertiesTablesSources || jsonDocs) {
       const propertiesTablesProps: IImplementationSectionProps = {
         renderAs: ImplementationSection,
@@ -200,15 +209,6 @@ export class Page extends React.Component<IPageProps, IPageState> {
       };
       sections.push(propertiesTablesProps);
     }
-
-    accessibility &&
-      sections.push({
-        renderAs: MarkdownSection,
-        ...sectionProps,
-        sectionName: 'Accessibility',
-        readableSectionName: 'Accessibility Best Practices',
-        content: accessibility
-      });
 
     otherSections &&
       otherSections.forEach((section: IPageSectionProps, index: number) =>

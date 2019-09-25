@@ -60,6 +60,7 @@ export const DropdownPageProps: IDocPageProps = {
   bestPractices: '',
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Dropdown/docs/DropdownDos.md'),
   donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Dropdown/docs/DropdownDonts.md'),
+  accessibility: require<string>('!raw-loader!office-ui-fabric-react/src/components/Dropdown/docs/DropdownA11y.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
   allowNativeProps: true
