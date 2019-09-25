@@ -606,6 +606,178 @@ exports[`Component Examples renders ChoiceGroup.Custom.Example.tsx correctly 1`]
                 Option C
               </span>
             </label>
+<<<<<<< HEAD
+=======
+            <div
+              className=
+                  ms-Dropdown-container
+                  {
+                    margin-bottom: 0px;
+                    margin-left: 5px;
+                  }
+            >
+              <div
+                aria-describedby="Dropdown2-option"
+                aria-disabled={true}
+                aria-expanded="false"
+                aria-label="Select a time span"
+                className=
+                    ms-Dropdown
+                    is-disabled
+                    {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      border-color: #605e5c;
+                      box-shadow: none;
+                      box-sizing: border-box;
+                      color: #323130;
+                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                      font-size: 14px;
+                      font-weight: 400;
+                      margin-bottom: 0px;
+                      margin-left: 0px;
+                      margin-right: 0px;
+                      margin-top: 0px;
+                      outline: 0px;
+                      padding-bottom: 0px;
+                      padding-left: 0px;
+                      padding-right: 0px;
+                      padding-top: 0px;
+                      position: relative;
+                      user-select: none;
+                    }
+                    &:hover .ms-Dropdown-title {
+                      border-color: #323130;
+                    }
+                    @media screen and (-ms-high-contrast: active){&:hover .ms-Dropdown-title {
+                      border-color: Highlight;
+                    }
+                    &:focus .ms-Dropdown-title {
+                      border-color: #0078d4;
+                    }
+                    @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-title {
+                      background-color: Highlight;
+                      border-color: Highlight;
+                      color: HighlightText;
+                    }
+                    @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-title:hover {
+                      color: HighlightText;
+                    }
+                    @media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: black-on-white){&:focus .ms-Dropdown-title {
+                      -ms-high-contrast-adjust: none;
+                    }
+                    &:active .ms-Dropdown-title {
+                      border-color: #0078d4;
+                    }
+                    @media screen and (-ms-high-contrast: active){&:active .ms-Dropdown-title {
+                      border-color: Highlight;
+                    }
+                    @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-caretDown {
+                      color: HighlightText;
+                    }
+                    @media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: black-on-white){&:focus .ms-Dropdown-caretDown {
+                      -ms-high-contrast-adjust: none;
+                    }
+                    &:hover .ms-Dropdown-title--hasError {
+                      border-color: #a4262c;
+                    }
+                    &:active .ms-Dropdown-title--hasError {
+                      border-color: #a4262c;
+                    }
+                    &:focus .ms-Dropdown-title--hasError {
+                      border-color: #a4262c;
+                    }
+                data-is-focusable={false}
+                id="Dropdown2"
+                onBlur={[Function]}
+                onClick={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyUp={[Function]}
+                tabIndex={-1}
+              >
+                <span
+                  aria-atomic={true}
+                  aria-invalid={false}
+                  aria-label="5 seconds"
+                  aria-live="off"
+                  className=
+                      ms-Dropdown-title
+                      {
+                        background-color: #f3f2f1;
+                        border-color: #8a8886;
+                        border-radius: 2px;
+                        border-style: solid;
+                        border-width: 1px;
+                        border: none;
+                        box-shadow: none;
+                        box-sizing: border-box;
+                        color: #a19f9d;
+                        cursor: default;
+                        display: block;
+                        height: 32px;
+                        line-height: 30px;
+                        margin-bottom: 0px;
+                        margin-left: 0px;
+                        margin-right: 0px;
+                        margin-top: 0px;
+                        overflow: hidden;
+                        padding-bottom: 0;
+                        padding-left: 8px;
+                        padding-right: 28px;
+                        padding-top: 0;
+                        position: relative;
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
+                      }
+                      @media screen and (-ms-high-contrast: active){& {
+                        border: 1px solid GrayText;
+                        color: GrayText;
+                      }
+                  id="Dropdown2-option"
+                >
+                  <span>
+                    5 seconds
+                  </span>
+                </span>
+                <span
+                  className=
+                      ms-Dropdown-caretDownWrapper
+                      {
+                        height: 32px;
+                        line-height: 30px;
+                        position: absolute;
+                        right: 8px;
+                        top: 1px;
+                      }
+                >
+                  <i
+                    aria-hidden={true}
+                    className=
+                        ms-Dropdown-caretDown
+                        {
+                          -moz-osx-font-smoothing: grayscale;
+                          -webkit-font-smoothing: antialiased;
+                          color: #a19f9d;
+                          display: inline-block;
+                          font-family: "FabricMDL2Icons";
+                          font-size: 12px;
+                          font-style: normal;
+                          font-weight: normal;
+                          pointer-events: none;
+                          speak: none;
+                        }
+                        @media screen and (-ms-high-contrast: active){& {
+                          color: GrayText;
+                        }
+                    data-icon-name="ChevronDown"
+                  >
+                    
+                  </i>
+                </span>
+              </div>
+            </div>
+>>>>>>> cc58ddbb1... Dropdown: Error messages in Dropdown are now linked to the Dropdown (from a programmatic accessibility POV). (#10605)
           </div>
         </div>
         <div

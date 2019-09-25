@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Dropdown: Error messages in Dropdown are now linked to the Dropdown (from a programmatic accessibility POV).",
+  "packageName": "office-ui-fabric-react",
+  "email": "cliff.koh@microsoft.com",
+  "commit": "640471f2eb88fec33cbc46a96d60aedd4db8a647",
+  "date": "2019-09-24T22:51:17.487Z"
+}
