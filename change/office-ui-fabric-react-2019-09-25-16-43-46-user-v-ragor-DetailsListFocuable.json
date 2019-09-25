@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Expose dataIsFocusable prop to on or off Focus for Deatils list  Data",
+  "packageName": "office-ui-fabric-react",
+  "email": "v-ragor@microsoft.com",
+  "commit": "1817b6220ad2cb7a1f850e6fe26f57042ebdc635",
+  "date": "2019-09-25T11:13:46.498Z"
+}
