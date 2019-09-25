@@ -60,6 +60,7 @@ exports[`PeoplePicker renders correctly 1`] = `
               ms-BasePicker-input
               {
                 align-self: flex-end;
+                background-color: transparent;
                 border-radius: 2px;
                 border: none;
                 flex-grow: 1;
@@ -76,6 +77,7 @@ exports[`PeoplePicker renders correctly 1`] = `
           onClick={[Function]}
           onCompositionEnd={[Function]}
           onCompositionStart={[Function]}
+          onCompositionUpdate={[Function]}
           onFocus={[Function]}
           onInput={[Function]}
           onKeyDown={[Function]}
@@ -594,7 +596,6 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
                         vertical-align: middle;
                       }
                   data-icon-name="Cancel"
-                  role="presentation"
                 >
                   
                 </i>
@@ -614,6 +615,7 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
               ms-BasePicker-input
               {
                 align-self: flex-end;
+                background-color: transparent;
                 border-radius: 2px;
                 border: none;
                 flex-grow: 1;
@@ -630,6 +632,7 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
           onClick={[Function]}
           onCompositionEnd={[Function]}
           onCompositionStart={[Function]}
+          onCompositionUpdate={[Function]}
           onFocus={[Function]}
           onInput={[Function]}
           onKeyDown={[Function]}

@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Coachmark Accessibility: adding HighContrastSelector to coachmark",
+  "packageName": "office-ui-fabric-react",
+  "email": "marygans@microsoft.com",
+  "commit": "045ec97eea0e1b1f44809f7d479358de14401551",
+  "date": "2019-09-23T22:12:05.639Z"
+}

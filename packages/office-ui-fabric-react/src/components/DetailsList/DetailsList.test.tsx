@@ -11,7 +11,7 @@ import { IDetailsColumnProps } from 'office-ui-fabric-react/lib/components/Detai
 import { IDetailsHeaderProps, DetailsHeader } from './DetailsHeader';
 import { EventGroup, IRenderFunction } from '../../Utilities';
 import { IDragDropEvents } from './../../utilities/dragdrop/index';
-import { SelectionMode, Selection } from '../../utilities/selection/index';
+import { SelectionMode, Selection, SelectionZone } from '../../utilities/selection/index';
 import { getTheme } from '../../Styling';
 
 // Populate mock data for testing
@@ -475,5 +475,12 @@ describe('DetailsList', () => {
 
     expect(onRenderCheckboxMock).toHaveBeenCalledTimes(6);
     expect(onRenderCheckboxMock.mock.calls[5][0]).toEqual({ checked: true, theme });
+  });
+
+  it('initializes the selection mode object with the selectionMode prop', () => {
+    const component = mount(<DetailsList items={mockData(5)} columns={mockData(5, true)} selectionMode={SelectionMode.none} />);
+
+    const selectionZone = component.find(SelectionZone);
+    expect(selectionZone.props().selection.mode).toEqual(SelectionMode.none);
   });
 });

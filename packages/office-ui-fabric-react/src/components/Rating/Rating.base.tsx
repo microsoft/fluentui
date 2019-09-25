@@ -121,7 +121,7 @@ export class RatingBase extends React.Component<IRatingProps, IRatingState> {
             role="presentation"
             type="button"
           >
-            {this._getLabel((rating as number) % 1 ? rating : i)}
+            {this._getLabel(i)}
             <RatingStar key={i + 'rating'} {...ratingStarProps} />
           </button>
         );

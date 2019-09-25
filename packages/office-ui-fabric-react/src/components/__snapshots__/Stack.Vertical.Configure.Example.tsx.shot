@@ -483,7 +483,6 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                         color: Window;
                       }
                   data-icon-name="CheckMark"
-                  role="presentation"
                 >
                   
                 </i>
@@ -626,7 +625,6 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                         color: Window;
                       }
                   data-icon-name="CheckMark"
-                  role="presentation"
                 >
                   
                 </i>
@@ -769,7 +767,6 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                         color: Window;
                       }
                   data-icon-name="CheckMark"
-                  role="presentation"
                 >
                   
                 </i>
@@ -911,7 +908,6 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                         color: Window;
                       }
                   data-icon-name="CheckMark"
-                  role="presentation"
                 >
                   
                 </i>
@@ -1331,7 +1327,6 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       color: Window;
                     }
                 data-icon-name="CheckMark"
-                role="presentation"
               >
                 
               </i>
@@ -1914,7 +1909,6 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                           speak: none;
                         }
                     data-icon-name="ChevronDown"
-                    role="presentation"
                   >
                     
                   </i>
@@ -2143,7 +2137,6 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                           speak: none;
                         }
                     data-icon-name="ChevronDown"
-                    role="presentation"
                   >
                     
                   </i>
@@ -2287,7 +2280,6 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                           color: Window;
                         }
                     data-icon-name="CheckMark"
-                    role="presentation"
                   >
                     
                   </i>

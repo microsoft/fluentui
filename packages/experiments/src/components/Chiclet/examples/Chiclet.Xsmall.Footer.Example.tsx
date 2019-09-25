@@ -55,14 +55,14 @@ export const ChicletXsmallFooterExample: React.FunctionComponent<{}> = () => {
   );
 };
 
-export class FooterComponent extends React.Component<IFooterComponent, {}> {
+class FooterComponent extends React.Component<IFooterComponent, {}> {
   public render(): JSX.Element {
     const { buttonProps, attachProps } = this.props;
     return _renderFooter(buttonProps, attachProps);
   }
 }
 
-export interface IFooterComponent extends React.Props<FooterComponent> {
+interface IFooterComponent extends React.Props<FooterComponent> {
   buttonProps: IButtonProps[];
   attachProps: IIconProps;
 }

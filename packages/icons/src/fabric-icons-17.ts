@@ -22,9 +22,27 @@ export function initializeIcons(
     },
     fontFace: {
       fontFamily: `"FabricMDL2Icons-17"`,
-      src: `url('${baseUrl}fabric-icons-17-4c14834f.woff') format('woff')`
+      src: `url('${baseUrl}fabric-icons-17-0c4ed701.woff') format('woff')`
     },
     icons: {
+      'CustomizeToolbar': '\uF828',
+      'DuplicateRow': '\uF82A',
+      'RemoveFromTrash': '\uF82B',
+      'MailOptions': '\uF82C',
+      'Childof': '\uF82D',
+      'Footer': '\uF82E',
+      'Header': '\uF82F',
+      'BarChartVerticalFill': '\uF830',
+      'StackedColumnChart2Fill': '\uF831',
+      'PlainText': '\uF834',
+      'AccessibiltyChecker': '\uF835',
+      'DatabaseSync': '\uF842',
+      'ReservationOrders': '\uF845',
+      'TabOneColumn': '\uF849',
+      'TabTwoColumn': '\uF84A',
+      'TabThreeColumn': '\uF84B',
+      'BulletedTreeList': '\uF84C',
+      'MicrosoftTranslatorLogoGreen': '\uF852',
       'MicrosoftTranslatorLogoBlue': '\uF853',
       'InternalInvestigation': '\uF854',
       'AddReaction': '\uF85D',

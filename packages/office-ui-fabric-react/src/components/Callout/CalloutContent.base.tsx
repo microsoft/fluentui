@@ -114,7 +114,7 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
   }
 
   public shouldComponentUpdate(newProps: ICalloutProps, newState: ICalloutState): boolean {
-    if (this.props.hidden && newProps.hidden) {
+    if (!newProps.shouldUpdateWhenHidden && this.props.hidden && newProps.hidden) {
       // Do not update when hidden.
       return false;
     }
@@ -409,7 +409,8 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
 
   private _getBounds(): IRectangle {
     if (!this._bounds) {
-      let currentBounds = this.props.bounds;
+      const bounds = this.props.bounds;
+      let currentBounds = typeof bounds === 'function' ? bounds(this.props.target, this._targetWindow) : bounds;
 
       if (!currentBounds) {
         currentBounds = {

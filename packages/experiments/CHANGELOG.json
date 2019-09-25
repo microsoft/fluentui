@@ -2,6 +2,81 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "date": "Mon, 23 Sep 2019 12:33:15 GMT",
+      "tag": "@uifabric/experiments_v7.17.1",
+      "version": "7.17.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Icon Accessibility updates: update aria-hidden to pull aria-labelledBy from root and imageProps and removed role presentation - should not apply when a label is provided.",
+            "author": "marygans@microsoft.com",
+            "commit": "df4c69f030235b4039f9104d30639acfb29dfca0"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 18 Sep 2019 12:32:55 GMT",
+      "tag": "@uifabric/experiments_v7.17.0",
+      "version": "7.17.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "listen to composition events only for IME languages in autofill",
+            "author": "amyngu@microsoft.com",
+            "commit": "55e2fb7ba136edd05f864ebac4b18cd6cae5a229"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 12 Sep 2019 12:34:15 GMT",
+      "tag": "@uifabric/experiments_v7.16.2",
+      "version": "7.16.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update examples to only export one component",
+            "author": "elcraig@microsoft.com",
+            "commit": "485574797c272506647b6fb98d4ae5989d8eb9f9"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 06 Sep 2019 12:34:51 GMT",
+      "tag": "@uifabric/experiments_v7.16.1",
+      "version": "7.16.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "added isSelectable prop for Tile.types; unshow checkbox if item is not selectable",
+            "author": "huaxi@microsoft.com",
+            "commit": "b5240a289ee31211cd039980f97064645630ff2c"
+          },
+          {
+            "comment": "Foundation: Allowing recomposition in composed.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "09f5eec64d1270f1294208cacfa07a1da757effe"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 05 Sep 2019 12:34:51 GMT",
+      "tag": "@uifabric/experiments_v7.16.0",
+      "version": "7.16.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "slider: added dos and don'ts to the documentation",
+            "author": "sneharoy321@gmail.com",
+            "commit": "f037bb2de2b24231ac171e15b4faedbfc8074ec5"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 04 Sep 2019 12:32:15 GMT",
       "tag": "@uifabric/experiments_v7.15.0",
       "version": "7.15.0",

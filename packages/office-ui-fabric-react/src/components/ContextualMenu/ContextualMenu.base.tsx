@@ -142,7 +142,7 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
   };
 
   public shouldComponentUpdate(newProps: IContextualMenuProps, newState: IContextualMenuState): boolean {
-    if (this.props.hidden && newProps.hidden) {
+    if (!newProps.shouldUpdateWhenHidden && this.props.hidden && newProps.hidden) {
       // Do not update when hidden.
       return false;
     }
@@ -156,8 +156,9 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
       const newTarget = newProps.target;
       this._setTargetWindowAndElement(newTarget!);
     }
-    if (newProps.hidden !== this.props.hidden) {
-      if (newProps.hidden) {
+
+    if (this._isHidden(newProps) !== this._isHidden(this.props)) {
+      if (this._isHidden(newProps)) {
         this._onMenuClosed();
       } else {
         this._onMenuOpened();
@@ -361,6 +362,15 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
     } else {
       return null;
     }
+  }
+
+  /**
+   * Return whether the contextual menu is hidden.
+   * Undefined value for hidden is equivalent to hidden being false.
+   * @param props - Props for the component
+   */
+  private _isHidden(props: IContextualMenuProps) {
+    return !!props.hidden;
   }
 
   private _onMenuOpened() {

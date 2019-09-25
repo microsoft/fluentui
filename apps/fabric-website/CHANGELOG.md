@@ -1,7 +1,37 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Wed, 04 Sep 2019 04:09:58 GMT and should not be manually modified.
+This log was last generated on Fri, 20 Sep 2019 12:34:28 GMT and should not be manually modified.
 
+## 7.5.0
+Fri, 20 Sep 2019 12:34:28 GMT
+
+### Minor changes
+
+- Website: Split Brand icons page into Brand Icons and File Type Icons pages (marygans@microsoft.com)
+## 7.4.8
+Thu, 19 Sep 2019 13:05:24 GMT
+
+### Patches
+
+- Use new way of consuming Monaco bundle (elcraig@microsoft.com)
+## 7.4.7
+Thu, 12 Sep 2019 12:34:15 GMT
+
+### Patches
+
+- Update readme and fix minor IE compat issue (elcraig@microsoft.com)
+## 7.4.6
+Mon, 09 Sep 2019 21:43:18 GMT
+
+### Patches
+
+- updated docs for BottomSheet and Drawer (willdo@microsoft.com)
+## 7.4.5
+Fri, 06 Sep 2019 12:34:51 GMT
+
+### Patches
+
+- Hacked an examplecard msicon override for a specific DetailsList Drag and Drop page in fabric website (kchau@microsoft.com)
 ## 7.4.4
 Wed, 04 Sep 2019 04:09:58 GMT
 

@@ -2,6 +2,48 @@
   "name": "@uifabric/date-time",
   "entries": [
     {
+      "date": "Tue, 24 Sep 2019 12:35:43 GMT",
+      "tag": "@uifabric/date-time_v7.4.7",
+      "version": "7.4.7",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Remove codepen-loader usage",
+            "author": "elcraig@microsoft.com",
+            "commit": "d637c537d4a367e7a2e3e5e8e5fe7c902e8d3b31"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 23 Sep 2019 12:33:15 GMT",
+      "tag": "@uifabric/date-time_v7.4.6",
+      "version": "7.4.6",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Icon Accessibility updates: update aria-hidden to pull aria-labelledBy from root and imageProps and removed role presentation - should not apply when a label is provided.",
+            "author": "marygans@microsoft.com",
+            "commit": "df4c69f030235b4039f9104d30639acfb29dfca0"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 16 Sep 2019 12:34:47 GMT",
+      "tag": "@uifabric/date-time_v7.4.5",
+      "version": "7.4.5",
+      "comments": {
+        "patch": [
+          {
+            "comment": "DatePicker: call custom text field onChange handler if it exists in default onChange handler",
+            "author": "naethell@microsoft.com",
+            "commit": "66c08397d029b26f7044440f86232aa72ae4d352"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 04 Sep 2019 04:09:58 GMT",
       "tag": "@uifabric/date-time_v7.4.4",
       "version": "7.4.4",

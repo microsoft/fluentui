@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Use correct type in docs for 'collapseAllVisibility' in 'GroupedList'",
+  "packageName": "office-ui-fabric-react",
+  "email": "thomas.gassmann@hotmail.com",
+  "commit": "279c24fabb91048c9d14e984df68bde7fd44e9b6",
+  "date": "2019-09-24T14:42:44.163Z"
+}

@@ -33,7 +33,6 @@
   var entryPointFilename = 'fabric-sitev5';
   var appPath = '';
   var Flight = {};
-  var jsSuffix = '.min.js';
 
   if (devhost !== null) {
     if (devhost === '') {
@@ -91,7 +90,7 @@
       if (array.length != 0) {
         const scriptName = array.shift();
         loader(scriptName, run, function() {
-          jsSuffix = '.js';
+          window.MonacoConfig.useMinified = false;
           loader(scriptName.replace('.min.js', '.js'), run);
         });
       } else {
@@ -115,16 +114,9 @@
 
     loadScripts(scripts);
 
-    window.MonacoEnvironment = {
-      getWorkerUrl: function(workerId, label) {
-        var workerName = label === 'typescript' || label === 'javascript' ? 'ts.worker' : 'editor.worker';
-        return (
-          'data:text/javascript;charset=utf-8,' +
-          encodeURIComponent(
-            'self.MonacoEnvironment = { baseUrl: "' + appPath + '" }; ' + 'importScripts("' + appPath + workerName + jsSuffix + '");'
-          )
-        );
-      }
+    window.MonacoConfig = {
+      baseUrl: appPath,
+      useMinified: true
     };
   }
 

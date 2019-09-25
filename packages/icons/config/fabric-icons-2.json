@@ -10,6 +10,50 @@
   },
   "glyphs": [
     {
+      "name": "Picture",
+      "unicode": "E8B9"
+    },
+    {
+      "name": "ChromeClose",
+      "unicode": "E8BB"
+    },
+    {
+      "name": "ShowResults",
+      "unicode": "E8BC"
+    },
+    {
+      "name": "Message",
+      "unicode": "E8BD"
+    },
+    {
+      "name": "CalendarDay",
+      "unicode": "E8BF"
+    },
+    {
+      "name": "CalendarWeek",
+      "unicode": "E8C0"
+    },
+    {
+      "name": "MailReplyAll",
+      "unicode": "E8C2"
+    },
+    {
+      "name": "Read",
+      "unicode": "E8C3"
+    },
+    {
+      "name": "Cut",
+      "unicode": "E8C6"
+    },
+    {
+      "name": "PaymentCard",
+      "unicode": "E8C7"
+    },
+    {
+      "name": "Copy",
+      "unicode": "E8C8"
+    },
+    {
       "name": "Important",
       "unicode": "E8C9"
     },
@@ -354,60 +398,16 @@
       "unicode": "E95E"
     },
     {
+      "name": "Webcam2",
+      "unicode": "E960"
+    },
+    {
       "name": "FrontCamera",
       "unicode": "E96B"
     },
     {
       "name": "ChevronUpSmall",
       "unicode": "E96D"
-    },
-    {
-      "name": "ChevronDownSmall",
-      "unicode": "E96E"
-    },
-    {
-      "name": "ChevronLeftSmall",
-      "unicode": "E96F"
-    },
-    {
-      "name": "ChevronRightSmall",
-      "unicode": "E970"
-    },
-    {
-      "name": "ChevronUpMed",
-      "unicode": "E971"
-    },
-    {
-      "name": "ChevronDownMed",
-      "unicode": "E972"
-    },
-    {
-      "name": "ChevronLeftMed",
-      "unicode": "E973"
-    },
-    {
-      "name": "ChevronRightMed",
-      "unicode": "E974"
-    },
-    {
-      "name": "Devices2",
-      "unicode": "E975"
-    },
-    {
-      "name": "PC1",
-      "unicode": "E977"
-    },
-    {
-      "name": "PresenceChickletVideo",
-      "unicode": "E979"
-    },
-    {
-      "name": "Reply",
-      "unicode": "E97A"
-    },
-    {
-      "name": "HalfAlpha",
-      "unicode": "E97E"
     }
   ]
 }

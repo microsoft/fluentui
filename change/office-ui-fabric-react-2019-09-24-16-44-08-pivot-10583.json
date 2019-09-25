@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Pivot: Improve accessibility of examples.",
+  "packageName": "office-ui-fabric-react",
+  "email": "jdh@microsoft.com",
+  "commit": "0f42884cc9d513f7b83d72c8ae775073d6f1f404",
+  "date": "2019-09-24T23:44:07.956Z"
+}

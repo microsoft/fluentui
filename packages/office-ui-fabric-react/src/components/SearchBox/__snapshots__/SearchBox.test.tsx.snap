@@ -43,6 +43,7 @@ exports[`SearchBox renders SearchBox correctly 1`] = `
         color: #005a9e;
       }
   onFocusCapture={[Function]}
+  role="search"
 >
   <div
     aria-hidden={true}
@@ -78,7 +79,6 @@ exports[`SearchBox renders SearchBox correctly 1`] = `
             transition: opacity 0.167s 0s;
           }
       data-icon-name="Search"
-      role="presentation"
     >
       
     </i>
@@ -128,6 +128,7 @@ exports[`SearchBox renders SearchBox correctly 1`] = `
     onChange={[Function]}
     onInput={[Function]}
     onKeyDown={[Function]}
+    role="searchbox"
     value=""
   />
 </div>
@@ -176,6 +177,7 @@ exports[`SearchBox renders SearchBox without animation correctly 1`] = `
         color: #005a9e;
       }
   onFocusCapture={[Function]}
+  role="search"
 >
   <div
     aria-hidden={true}
@@ -209,7 +211,6 @@ exports[`SearchBox renders SearchBox without animation correctly 1`] = `
             speak: none;
           }
       data-icon-name="Search"
-      role="presentation"
     >
       
     </i>
@@ -259,6 +260,7 @@ exports[`SearchBox renders SearchBox without animation correctly 1`] = `
     onChange={[Function]}
     onInput={[Function]}
     onKeyDown={[Function]}
+    role="searchbox"
     value=""
   />
 </div>

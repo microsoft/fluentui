@@ -10,6 +10,70 @@
   },
   "glyphs": [
     {
+      "name": "CalendarSettings",
+      "unicode": "F558"
+    },
+    {
+      "name": "CalendarSettingsMirrored",
+      "unicode": "F559"
+    },
+    {
+      "name": "HardDriveLock",
+      "unicode": "F55A"
+    },
+    {
+      "name": "HardDriveUnlock",
+      "unicode": "F55B"
+    },
+    {
+      "name": "AccountManagement",
+      "unicode": "F55C"
+    },
+    {
+      "name": "ReportWarning",
+      "unicode": "F569"
+    },
+    {
+      "name": "TransitionPop",
+      "unicode": "F5B2"
+    },
+    {
+      "name": "TransitionPush",
+      "unicode": "F5B3"
+    },
+    {
+      "name": "TransitionEffect",
+      "unicode": "F5B4"
+    },
+    {
+      "name": "LookupEntities",
+      "unicode": "F5B5"
+    },
+    {
+      "name": "ExploreData",
+      "unicode": "F5B6"
+    },
+    {
+      "name": "AddBookmark",
+      "unicode": "F5B7"
+    },
+    {
+      "name": "SearchBookmark",
+      "unicode": "F5B8"
+    },
+    {
+      "name": "DrillThrough",
+      "unicode": "F5B9"
+    },
+    {
+      "name": "MasterDatabase",
+      "unicode": "F5BA"
+    },
+    {
+      "name": "CertifiedDatabase",
+      "unicode": "F5BB"
+    },
+    {
       "name": "MaximumValue",
       "unicode": "F5BC"
     },
@@ -344,70 +408,6 @@
     {
       "name": "OfficeChat",
       "unicode": "F70F"
-    },
-    {
-      "name": "OfficeChatSolid",
-      "unicode": "F710"
-    },
-    {
-      "name": "MailSchedule",
-      "unicode": "F72E"
-    },
-    {
-      "name": "WarningSolid",
-      "unicode": "F736"
-    },
-    {
-      "name": "Blocked2Solid",
-      "unicode": "F737"
-    },
-    {
-      "name": "SkypeCircleArrow",
-      "unicode": "F747"
-    },
-    {
-      "name": "SkypeArrow",
-      "unicode": "F748"
-    },
-    {
-      "name": "SyncStatus",
-      "unicode": "F751"
-    },
-    {
-      "name": "SyncStatusSolid",
-      "unicode": "F752"
-    },
-    {
-      "name": "ProjectDocument",
-      "unicode": "F759"
-    },
-    {
-      "name": "ToDoLogoOutline",
-      "unicode": "F75B"
-    },
-    {
-      "name": "VisioOnlineLogoFill32",
-      "unicode": "F75F"
-    },
-    {
-      "name": "VisioOnlineLogo32",
-      "unicode": "F760"
-    },
-    {
-      "name": "VisioOnlineLogoCloud32",
-      "unicode": "F761"
-    },
-    {
-      "name": "VisioDiagramSync",
-      "unicode": "F762"
-    },
-    {
-      "name": "Event12",
-      "unicode": "F763"
-    },
-    {
-      "name": "EventDateMissed12",
-      "unicode": "F764"
     }
   ]
 }
