@@ -542,26 +542,26 @@ exports[`Component Examples renders Pivot.SeparateNoSelectedKey.Example.tsx corr
     <button
       className=
           ms-Button
-          ms-Button--icon
+          ms-Button--default
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
-            background-color: transparent;
+            background-color: #ffffff;
             border-radius: 2px;
-            border: none;
+            border: 1px solid #8a8886;
             box-sizing: border-box;
-            color: #0078d4;
+            color: #323130;
             cursor: pointer;
             display: inline-block;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
             font-weight: 400;
             height: 32px;
-            min-width: 32px;
+            min-width: 80px;
             outline: transparent;
             padding-bottom: 0;
-            padding-left: 4px;
-            padding-right: 4px;
+            padding-left: 16px;
+            padding-right: 16px;
             padding-top: 0;
             position: relative;
             text-align: center;
@@ -598,7 +598,7 @@ exports[`Component Examples renders Pivot.SeparateNoSelectedKey.Example.tsx corr
           }
           &:hover {
             background-color: #f3f2f1;
-            color: #106ebe;
+            color: #201f1e;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
             border-color: Highlight;
@@ -606,7 +606,7 @@ exports[`Component Examples renders Pivot.SeparateNoSelectedKey.Example.tsx corr
           }
           &:active {
             background-color: #edebe9;
-            color: #005a9e;
+            color: #201f1e;
           }
       data-is-focusable={true}
       onClick={[Function]}
@@ -667,6 +667,31 @@ exports[`Component Examples renders Pivot.SeparateNoSelectedKey.Example.tsx corr
         >
           
         </i>
+        <span
+          className=
+              ms-Button-textContainer
+              {
+                display: block;
+                flex-grow: 1;
+              }
+        >
+          <span
+            className=
+                ms-Button-label
+                {
+                  display: block;
+                  font-weight: 600;
+                  line-height: 100%;
+                  margin-bottom: 0;
+                  margin-left: 4px;
+                  margin-right: 4px;
+                  margin-top: 0;
+                }
+            id="id__11"
+          >
+            Settings
+          </span>
+        </span>
       </span>
     </button>
   </div>
