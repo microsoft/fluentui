@@ -30,7 +30,6 @@ export class SliderPage extends React.Component<IComponentDemoPageProps, {}> {
         bestPractices={<div />}
         dos={<Markdown>{require<string>('!raw-loader!@uifabric/experiments/src/components/Slider/docs/SliderDos.md')}</Markdown>}
         donts={<Markdown>{require<string>('!raw-loader!@uifabric/experiments/src/components/Slider/docs/SliderDonts.md')}</Markdown>}
-        accessibility={<Markdown>{require<string>('!raw-loader!@uifabric/experiments/src/components/Slider/docs/SliderA11y.md')}</Markdown>}
         isHeaderVisible={this.props.isHeaderVisible}
       />
     );

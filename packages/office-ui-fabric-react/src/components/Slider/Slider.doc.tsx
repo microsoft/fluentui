@@ -27,6 +27,7 @@ export const SliderPageProps: IDocPageProps = {
   bestPractices: '',
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Slider/docs/SliderDos.md'),
   donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Slider/docs/SliderDonts.md'),
+  accessibility: require<string>('!raw-loader!office-ui-fabric-react/src/components/Slider/docs/SliderA11y.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true
 };
