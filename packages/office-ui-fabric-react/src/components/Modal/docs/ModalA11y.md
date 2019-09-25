@@ -1,3 +1,5 @@
+Modal is accessible if these considerations are followed:
+
 - Use `aria-labelledby` and `aria-describedby` on modal container to associate the title and description.
 - Use `aria-modal=true` on the modal container.
 - In case of modal dialog, the default focus should be on the least destructive control.
