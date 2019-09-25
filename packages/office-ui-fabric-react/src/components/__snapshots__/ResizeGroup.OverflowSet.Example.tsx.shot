@@ -4074,6 +4074,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
         >
           <span
             aria-atomic={true}
+            aria-invalid={false}
             aria-label="20"
             aria-live="off"
             aria-posinset={1}

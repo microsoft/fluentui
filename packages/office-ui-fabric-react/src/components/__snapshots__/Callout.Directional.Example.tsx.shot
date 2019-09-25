@@ -830,6 +830,7 @@ exports[`Component Examples renders Callout.Directional.Example.tsx correctly 1`
       >
         <span
           aria-atomic={true}
+          aria-invalid={false}
           aria-label="Bottom Left Edge"
           aria-live="off"
           aria-posinset={5}
