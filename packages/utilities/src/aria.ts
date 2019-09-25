@@ -6,7 +6,7 @@
  */
 export function mergeAriaAttributeValues(...ariaAttributes: (string | undefined | false)[]): string | undefined {
   const mergedAttribute = ariaAttributes
-    .filter((arg: string | undefined | false) => arg !== undefined && arg !== null && arg !== false)
+    .filter((arg: string | undefined | false) => arg)
     .join(' ')
     .trim();
   return mergedAttribute === '' ? undefined : mergedAttribute;
