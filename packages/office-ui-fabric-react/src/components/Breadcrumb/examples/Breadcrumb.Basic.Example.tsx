@@ -3,6 +3,8 @@ import { Breadcrumb, IBreadcrumbItem, IDividerAsProps } from 'office-ui-fabric-r
 import { Label } from 'office-ui-fabric-react/lib/Label';
 import * as exampleStylesImport from '../../../common/_exampleStyles.scss';
 import { TooltipHost } from 'office-ui-fabric-react/lib/Tooltip';
+import { Icon } from 'office-ui-fabric-react/lib/Icon';
+
 const exampleStyles: any = exampleStylesImport;
 
 export class BreadcrumbBasicExample extends React.Component<any, any> {
@@ -40,6 +42,22 @@ export class BreadcrumbBasicExample extends React.Component<any, any> {
           ]}
           dividerAs={this._getCustomDivider}
           ariaLabel={'Breadcrumb with custom divider icon'}
+        />
+
+        <Label className={exampleStyles.exampleLabel} style={{ marginTop: '24px' }}>
+          With Custom Overflow Icon
+        </Label>
+        <Breadcrumb
+          items={[
+            { text: 'Files', key: 'Files', onClick: this._onBreadcrumbItemClicked },
+            { text: 'This is folder 1', key: 'f1', onClick: this._onBreadcrumbItemClicked },
+            { text: 'This is folder 2 with a long name', key: 'f2', onClick: this._onBreadcrumbItemClicked },
+            { text: 'This is folder 3 long', key: 'f3', onClick: this._onBreadcrumbItemClicked },
+            { text: 'This is folder 4', key: 'f4', onClick: this._onBreadcrumbItemClicked },
+            { text: 'This is folder 5 another', key: 'f5', onClick: this._onBreadcrumbItemClicked, isCurrentItem: true }
+          ]}
+          ariaLabel={'Breadcrumb with no maxDisplayedItems'}
+          onRenderOverflowIcon={this._getCustomOverflowIcon}
         />
 
         <Label className={exampleStyles.exampleLabel} style={{ marginTop: '24px' }}>
@@ -117,5 +135,9 @@ export class BreadcrumbBasicExample extends React.Component<any, any> {
         </span>
       </TooltipHost>
     );
+  };
+
+  private _getCustomOverflowIcon = () => {
+    return <Icon iconName={'ChevronDown'} />;
   };
 }
