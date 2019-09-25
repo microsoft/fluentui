@@ -2,6 +2,20 @@
   "name": "@uifabric/date-time",
   "entries": [
     {
+      "date": "Wed, 25 Sep 2019 12:34:56 GMT",
+      "tag": "@uifabric/date-time_v7.4.8",
+      "version": "7.4.8",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fixing focus outline in IE11. The outline in IE11 does not show if it overflows the div it's in unless we explicitly set overflow: visible on the div (other browsers have this as the default).",
+            "author": "jolore@microsoft.com",
+            "commit": "12f8a6108f9a9451745988002902256b6c917536"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 24 Sep 2019 12:35:43 GMT",
       "tag": "@uifabric/date-time_v7.4.7",
       "version": "7.4.7",
