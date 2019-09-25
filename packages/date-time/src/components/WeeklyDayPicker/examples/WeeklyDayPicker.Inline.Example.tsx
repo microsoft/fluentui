@@ -1,9 +1,8 @@
 import * as React from 'react';
-import { WeeklyDayPicker, DayOfWeek, addDays } from '@uifabric/date-time';
+import { WeeklyDayPicker, IWeeklyDayPickerProps, DayOfWeek, addDays } from '@uifabric/date-time';
 
 import * as styles from './WeeklyDayPicker.Example.scss';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
-import { IWeeklyDayPickerProps } from '../WeeklyDayPicker.types';
 
 const DayPickerStrings = {
   months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],

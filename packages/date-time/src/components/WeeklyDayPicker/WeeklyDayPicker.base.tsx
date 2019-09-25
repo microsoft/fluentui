@@ -219,8 +219,8 @@ export class WeeklyDayPickerBase extends BaseComponent<IWeeklyDayPickerProps, IW
         })}
         disabled={!prevWeekInBounds}
         aria-disabled={!prevWeekInBounds}
-        onClick={prevWeekInBounds ? this._onSelectPrev : undefined}
-        onKeyDown={prevWeekInBounds ? this._onButtonKeyDown(this._onSelectPrev) : undefined}
+        onClick={prevWeekInBounds ? this._onSelectPrevDateRange : undefined}
+        onKeyDown={prevWeekInBounds ? this._onButtonKeyDown(this._onSelectPrevDateRange) : undefined}
         title={
           strings.prevWeekAriaLabel ? strings.prevWeekAriaLabel + ' ' + strings.months[addDays(navigatedDate!, -7).getMonth()] : undefined
         }
@@ -246,8 +246,8 @@ export class WeeklyDayPickerBase extends BaseComponent<IWeeklyDayPickerProps, IW
         })}
         disabled={!nextWeekInBounds}
         aria-disabled={!nextWeekInBounds}
-        onClick={nextWeekInBounds ? this._onSelectNext : undefined}
-        onKeyDown={nextWeekInBounds ? this._onButtonKeyDown(this._onSelectNext) : undefined}
+        onClick={nextWeekInBounds ? this._onSelectNextDateRange : undefined}
+        onKeyDown={nextWeekInBounds ? this._onButtonKeyDown(this._onSelectNextDateRange) : undefined}
         title={
           strings.nextWeekAriaLabel ? strings.nextWeekAriaLabel + ' ' + strings.months[addDays(navigatedDate!, -7).getMonth()] : undefined
         }
@@ -258,7 +258,7 @@ export class WeeklyDayPickerBase extends BaseComponent<IWeeklyDayPickerProps, IW
     );
   };
 
-  private _onSelectPrev = () => {
+  private _onSelectPrevDateRange = () => {
     if (this.props.showFullMonth) {
       this._navigateDate(addMonths(this.state.navigatedDate, -1));
     } else {
@@ -266,7 +266,7 @@ export class WeeklyDayPickerBase extends BaseComponent<IWeeklyDayPickerProps, IW
     }
   };
 
-  private _onSelectNext = () => {
+  private _onSelectNextDateRange = () => {
     if (this.props.showFullMonth) {
       this._navigateDate(addMonths(this.state.navigatedDate, 1));
     } else {
@@ -321,10 +321,10 @@ export class WeeklyDayPickerBase extends BaseComponent<IWeeklyDayPickerProps, IW
     if (touch && this._initialTouchX !== undefined && touch.clientX !== this._initialTouchX) {
       if ((touch.clientX - this._initialTouchX) * (isRtl ? -1 : 1) < 0) {
         // swipe right
-        this._onSelectNext();
+        this._onSelectNextDateRange();
       } else {
         // swipe left
-        this._onSelectPrev();
+        this._onSelectPrevDateRange();
       }
       this._initialTouchX = undefined;
     }
