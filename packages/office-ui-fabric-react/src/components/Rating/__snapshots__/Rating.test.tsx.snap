@@ -2,7 +2,6 @@
 
 exports[`Rating renders correctly. 1`] = `
 <div
-  aria-label=""
   className=
       ms-Rating-star
       ms-RatingStar-root
@@ -26,7 +25,6 @@ exports[`Rating renders correctly. 1`] = `
   id="Rating0"
 >
   <div
-    aria-label=""
     className=
         ms-FocusZone
         ms-Rating-focuszone
@@ -57,11 +55,9 @@ exports[`Rating renders correctly. 1`] = `
           height: 32px;
         }
     data-focuszone-id="FocusZone2"
-    data-is-focusable={false}
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
-    tabIndex={-1}
   >
     <button
       className=
