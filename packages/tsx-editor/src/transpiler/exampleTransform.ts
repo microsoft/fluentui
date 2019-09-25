@@ -36,7 +36,7 @@ export function transformExample(params: ITransformExampleParams): ITransformedC
 
   // Imports or exports will be removed since they are not supported.
   const mainCode = (jsCode || tsCode)
-    .replace(new RegExp(IMPORT_REGEX, 'gm'), '')
+    .replace(new RegExp(IMPORT_REGEX.source, 'gm'), '')
     .replace(/^export /gm, '')
     .trim();
 
