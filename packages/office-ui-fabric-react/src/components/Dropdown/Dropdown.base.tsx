@@ -281,7 +281,7 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
                 className={this._classNames.title}
                 aria-atomic={true}
                 role={ariaAttrs.childRole}
-                aria-live={!hasFocus || disabled || multiSelect || isOpen ? 'off' : 'assertive'}
+                aria-live={!hasFocus || disabled || multiSelect || isOpen ? 'polite' : 'assertive'}
                 aria-label={selectedOptions.length ? selectedOptions[0].text : this._placeholder}
                 aria-setsize={ariaAttrs.ariaSetSize}
                 aria-posinset={ariaAttrs.ariaPosInSet}
