@@ -46,6 +46,7 @@ exports[`Button renders a Button inside a CommandBar correctly 1`] = `
         role="menubar"
       >
         <div
+          aria-orientation="horizontal"
           className=
               ms-OverflowSet
               ms-CommandBar-primaryCommand

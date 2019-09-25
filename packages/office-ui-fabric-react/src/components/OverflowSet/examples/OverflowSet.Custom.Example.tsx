@@ -9,6 +9,7 @@ export class OverflowSetCustomExample extends React.PureComponent {
   public render(): JSX.Element {
     return (
       <OverflowSet
+        aria-label="Custom Example"
         items={[
           {
             key: 'search',
@@ -52,27 +53,6 @@ export class OverflowSetCustomExample extends React.PureComponent {
         ]}
         overflowItems={[
           {
-            key: 'newItem',
-            name: 'Add',
-            icon: 'Add',
-            ariaLabel: 'New. Use left and right arrow keys to navigate',
-            onClick: noOp,
-            subMenuProps: {
-              items: [
-                {
-                  key: 'emailMessage',
-                  name: 'Email message',
-                  icon: 'Mail'
-                },
-                {
-                  key: 'calendarEvent',
-                  name: 'Calendar event',
-                  icon: 'Calendar'
-                }
-              ]
-            }
-          },
-          {
             key: 'move',
             name: 'Move to...',
             icon: 'MoveToFolder',
@@ -108,7 +88,7 @@ export class OverflowSetCustomExample extends React.PureComponent {
     if (item.onRender) {
       return item.onRender(item);
     }
-    return <CommandBarButton iconProps={{ iconName: item.icon }} menuProps={item.subMenuProps} text={item.name} />;
+    return <CommandBarButton role="menuitem" iconProps={{ iconName: item.icon }} menuProps={item.subMenuProps} text={item.name} />;
   };
 
   private _onRenderOverflowButton = (overflowItems: any[] | undefined): JSX.Element => {
@@ -120,6 +100,8 @@ export class OverflowSetCustomExample extends React.PureComponent {
         height: 'auto'
       }
     };
-    return <CommandBarButton styles={buttonStyles} menuIconProps={{ iconName: 'More' }} menuProps={{ items: overflowItems! }} />;
+    return (
+      <CommandBarButton role="menu" styles={buttonStyles} menuIconProps={{ iconName: 'More' }} menuProps={{ items: overflowItems! }} />
+    );
   };
 }

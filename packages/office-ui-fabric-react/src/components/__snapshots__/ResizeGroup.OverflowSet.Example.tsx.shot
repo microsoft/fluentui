@@ -25,6 +25,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
         }
       >
         <div
+          aria-orientation="horizontal"
           className=
               ms-FocusZone
               ms-OverflowSet
