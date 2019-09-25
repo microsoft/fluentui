@@ -96,6 +96,9 @@ export interface IDetailsRowBaseProps
    */
   item: any;
 
+  /** Customized focus for Details row.If it is false then Details row is not focused   */
+  dataIsFocusable?: boolean;
+
   /**
    * Index of the collection of items of the DetailsList
    */

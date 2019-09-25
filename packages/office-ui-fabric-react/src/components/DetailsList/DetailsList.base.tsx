@@ -546,7 +546,8 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
       cellStyleProps = DEFAULT_CELL_STYLE_PROPS,
       onRenderCheckbox,
       enableUpdateAnimations,
-      useFastIcons
+      useFastIcons,
+      dataRowIsFocusable
     } = this.props;
     const collapseAllVisibility = groupProps && groupProps.collapseAllVisibility;
     const selection = this._selection;
@@ -581,7 +582,8 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
       onRenderDetailsCheckbox: onRenderCheckbox,
       enableUpdateAnimations,
       rowWidth: this._sumColumnWidths(columns),
-      useFastIcons
+      useFastIcons,
+      dataIsFocusable: dataRowIsFocusable
     };
 
     if (!item) {

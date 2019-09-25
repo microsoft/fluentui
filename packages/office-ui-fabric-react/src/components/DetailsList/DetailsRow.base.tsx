@@ -260,7 +260,7 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
         aria-label={ariaLabel}
         aria-describedby={ariaDescribedBy}
         className={this._classNames.root}
-        data-is-focusable={true}
+        data-is-focusable={this.props.dataIsFocusable ? this.props.dataIsFocusable : true}
         data-selection-index={itemIndex}
         data-item-index={itemIndex}
         aria-rowindex={itemIndex + 1}

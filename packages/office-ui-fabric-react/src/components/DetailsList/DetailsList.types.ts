@@ -86,6 +86,9 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
   /** The items to render. */
   items: any[];
 
+  /** Customized focus for Details row.If it is false then Details row is not focused   */
+  dataRowIsFocusable?: boolean;
+
   /** Set this to true to indicate that the items being displayed is placeholder data. */
   isPlaceholderData?: boolean;
 
