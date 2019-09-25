@@ -3,7 +3,8 @@ import { Breadcrumb, IBreadcrumbItem, IDividerAsProps } from 'office-ui-fabric-r
 import { Label } from 'office-ui-fabric-react/lib/Label';
 import * as exampleStylesImport from '../../../common/_exampleStyles.scss';
 import { TooltipHost } from 'office-ui-fabric-react/lib/Tooltip';
-import { Icon } from '../../Icon';
+import { Icon } from 'office-ui-fabric-react/lib/Icon';
+
 const exampleStyles: any = exampleStylesImport;
 
 export class BreadcrumbBasicExample extends React.Component<any, any> {
