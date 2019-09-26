@@ -293,7 +293,7 @@ exports[`Component Examples renders ContextualMenu.Directional.Example.tsx corre
           aria-atomic={true}
           aria-invalid={false}
           aria-label="Bottom Left Edge"
-          aria-live="off"
+          aria-live="polite"
           aria-posinset={5}
           aria-selected={true}
           aria-setsize={14}

@@ -772,7 +772,7 @@ exports[`Component Examples renders Stack.Horizontal.WrapAdvanced.Example.tsx co
             aria-atomic={true}
             aria-invalid={false}
             aria-label="Left"
-            aria-live="off"
+            aria-live="polite"
             aria-posinset={1}
             aria-selected={true}
             aria-setsize={6}
@@ -1001,7 +1001,7 @@ exports[`Component Examples renders Stack.Horizontal.WrapAdvanced.Example.tsx co
             aria-atomic={true}
             aria-invalid={false}
             aria-label="Top"
-            aria-live="off"
+            aria-live="polite"
             aria-posinset={1}
             aria-selected={true}
             aria-setsize={3}
@@ -1230,7 +1230,7 @@ exports[`Component Examples renders Stack.Horizontal.WrapAdvanced.Example.tsx co
             aria-atomic={true}
             aria-invalid={false}
             aria-label="Visible"
-            aria-live="off"
+            aria-live="polite"
             aria-posinset={1}
             aria-selected={true}
             aria-setsize={3}

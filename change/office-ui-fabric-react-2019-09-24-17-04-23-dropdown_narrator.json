@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Dropdown: Narrator should announce options before, during, and after expanding/collapsing.",
+  "packageName": "office-ui-fabric-react",
+  "email": "aneeshak@microsoft.com",
+  "commit": "f49dc20269bb4622e2858a5d627436b352e64cf2",
+  "date": "2019-09-25T00:04:23.055Z"
+}

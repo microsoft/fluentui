@@ -107,7 +107,7 @@ exports[`Dropdown multi-select Renders multiselect Dropdown correctly 1`] = `
     <span
       aria-atomic={true}
       aria-invalid={false}
-      aria-live="off"
+      aria-live="polite"
       className=
           ms-Dropdown-title
           ms-Dropdown-titleIsPlaceHolder
@@ -284,7 +284,7 @@ exports[`Dropdown single-select Renders single-select Dropdown correctly 1`] = `
     <span
       aria-atomic={true}
       aria-invalid={false}
-      aria-live="off"
+      aria-live="polite"
       aria-setsize={6}
       className=
           ms-Dropdown-title

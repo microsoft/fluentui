@@ -4076,7 +4076,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
             aria-atomic={true}
             aria-invalid={false}
             aria-label="20"
-            aria-live="off"
+            aria-live="polite"
             aria-posinset={1}
             aria-selected={true}
             aria-setsize={7}

@@ -349,7 +349,7 @@ exports[`Component Examples renders DatePicker.WeekNumbers.Example.tsx correctly
         aria-atomic={true}
         aria-invalid={false}
         aria-label="Monday"
-        aria-live="off"
+        aria-live="polite"
         aria-posinset={2}
         aria-selected={true}
         aria-setsize={7}

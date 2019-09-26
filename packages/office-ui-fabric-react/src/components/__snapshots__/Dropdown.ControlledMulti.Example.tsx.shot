@@ -141,7 +141,7 @@ exports[`Component Examples renders Dropdown.ControlledMulti.Example.tsx correct
       aria-atomic={true}
       aria-invalid={false}
       aria-label="Select options"
-      aria-live="off"
+      aria-live="polite"
       className=
           ms-Dropdown-title
           ms-Dropdown-titleIsPlaceHolder

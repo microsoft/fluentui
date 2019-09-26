@@ -192,7 +192,7 @@ exports[`Component Examples renders Dropdown.Required.Example.tsx correctly 1`] 
           aria-atomic={true}
           aria-invalid={false}
           aria-label="Select an option"
-          aria-live="off"
+          aria-live="polite"
           aria-setsize={5}
           className=
               ms-Dropdown-title
@@ -515,7 +515,7 @@ exports[`Component Examples renders Dropdown.Required.Example.tsx correctly 1`] 
         aria-atomic={true}
         aria-invalid={false}
         aria-label="Required with no label"
-        aria-live="off"
+        aria-live="polite"
         aria-setsize={5}
         className=
             ms-Dropdown-title

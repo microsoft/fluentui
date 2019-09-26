@@ -3132,7 +3132,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
             aria-atomic={true}
             aria-invalid={false}
             aria-label="Left"
-            aria-live="off"
+            aria-live="polite"
             aria-posinset={1}
             aria-selected={true}
             aria-setsize={6}
@@ -3360,7 +3360,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
             aria-atomic={true}
             aria-invalid={false}
             aria-label="Top"
-            aria-live="off"
+            aria-live="polite"
             aria-posinset={1}
             aria-selected={true}
             aria-setsize={3}
