@@ -386,7 +386,6 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
                     font-size: 14px;
                     font-weight: 400;
                     height: 32px;
-                    min-width: 32px;
                     outline: transparent;
                     padding-bottom: 8px;
                     padding-left: 12px;
@@ -708,7 +707,6 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
                     font-size: 14px;
                     font-weight: 400;
                     height: 32px;
-                    min-width: 32px;
                     outline: transparent;
                     padding-bottom: 8px;
                     padding-left: 12px;
@@ -856,7 +854,6 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
                     font-size: 14px;
                     font-weight: 400;
                     height: 32px;
-                    min-width: 32px;
                     outline: transparent;
                     padding-bottom: 8px;
                     padding-left: 12px;
@@ -2184,7 +2181,6 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
                     font-size: 14px;
                     font-weight: 400;
                     height: 32px;
-                    min-width: 32px;
                     outline: transparent;
                     padding-bottom: 8px;
                     padding-left: 12px;
@@ -2492,7 +2488,6 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
                   font-size: 14px;
                   font-weight: 400;
                   height: 32px;
-                  min-width: 32px;
                   outline: transparent;
                   padding-bottom: 8px;
                   padding-left: 12px;

@@ -471,6 +471,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 2 1`] = `
                 className=
                     ms-Button
                     ms-Button--icon
+                    ms-Button--hasMenu
                     ms-Breadcrumb-overflowButton
                     {
                       -moz-osx-font-smoothing: grayscale;
@@ -486,7 +487,6 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 2 1`] = `
                       font-size: 16px;
                       font-weight: 400;
                       height: 100%;
-                      min-width: 32px;
                       outline: transparent;
                       overflow: hidden;
                       padding-bottom: 0;
@@ -500,6 +500,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 2 1`] = `
                       user-select: none;
                       vertical-align: top;
                       white-space: nowrap;
+                      width: auto;
                     }
                     &::-moz-focus-inner {
                       border: 0;
@@ -1280,6 +1281,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 4 1`] = `
                 className=
                     ms-Button
                     ms-Button--icon
+                    ms-Button--hasMenu
                     ms-Breadcrumb-overflowButton
                     {
                       -moz-osx-font-smoothing: grayscale;
@@ -1295,7 +1297,6 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 4 1`] = `
                       font-size: 16px;
                       font-weight: 400;
                       height: 100%;
-                      min-width: 32px;
                       outline: transparent;
                       overflow: hidden;
                       padding-bottom: 0;
@@ -1309,6 +1310,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 4 1`] = `
                       user-select: none;
                       vertical-align: top;
                       white-space: nowrap;
+                      width: auto;
                     }
                     &::-moz-focus-inner {
                       border: 0;
@@ -1686,6 +1688,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 5 1`] = `
                 className=
                     ms-Button
                     ms-Button--icon
+                    ms-Button--hasMenu
                     ms-Breadcrumb-overflowButton
                     {
                       -moz-osx-font-smoothing: grayscale;
@@ -1701,7 +1704,6 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 5 1`] = `
                       font-size: 16px;
                       font-weight: 400;
                       height: 100%;
-                      min-width: 32px;
                       outline: transparent;
                       overflow: hidden;
                       padding-bottom: 0;
@@ -1715,6 +1717,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 5 1`] = `
                       user-select: none;
                       vertical-align: top;
                       white-space: nowrap;
+                      width: auto;
                     }
                     &::-moz-focus-inner {
                       border: 0;
@@ -1916,6 +1919,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 6 1`] = `
                 className=
                     ms-Button
                     ms-Button--icon
+                    ms-Button--hasMenu
                     ms-Breadcrumb-overflowButton
                     {
                       -moz-osx-font-smoothing: grayscale;
@@ -1931,7 +1935,6 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 6 1`] = `
                       font-size: 16px;
                       font-weight: 400;
                       height: 100%;
-                      min-width: 32px;
                       outline: transparent;
                       overflow: hidden;
                       padding-bottom: 0;
@@ -1945,6 +1948,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 6 1`] = `
                       user-select: none;
                       vertical-align: top;
                       white-space: nowrap;
+                      width: auto;
                     }
                     &::-moz-focus-inner {
                       border: 0;

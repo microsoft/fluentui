@@ -153,6 +153,7 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                     className=
                         ms-Button
                         ms-Button--commandBar
+                        ms-Button--hasMenu
                         ms-CommandBarItem-link
                         {
                           -moz-osx-font-smoothing: grayscale;
@@ -537,6 +538,7 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                     className=
                         ms-Button
                         ms-Button--commandBar
+                        ms-Button--hasMenu
                         is-disabled
                         ms-CommandBarItem-link
                         {
@@ -1197,6 +1199,7 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                 className=
                     ms-Button
                     ms-Button--commandBar
+                    ms-Button--hasMenu
                     ms-CommandBar-overflowButton
                     {
                       -moz-osx-font-smoothing: grayscale;

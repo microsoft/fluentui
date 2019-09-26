@@ -76,6 +76,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
               className=
                   ms-Button
                   ms-Button--commandBar
+                  ms-Button--hasMenu
                   ms-CommandBarItem-link
                   {
                     -moz-osx-font-smoothing: grayscale;
@@ -986,7 +987,6 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                                               font-size: 12px;
                                               font-weight: 400;
                                               height: 32px;
-                                              min-width: 32px;
                                               outline: transparent;
                                               padding-bottom: 0;
                                               padding-left: 4px;
@@ -999,6 +999,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                                               top: 0px;
                                               user-select: none;
                                               vertical-align: top;
+                                              width: 32px;
                                             }
                                             &::-moz-focus-inner {
                                               border: 0;
@@ -1317,6 +1318,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
               className=
                   ms-Button
                   ms-Button--commandBar
+                  ms-Button--hasMenu
                   ms-CommandBar-overflowButton
                   {
                     -moz-osx-font-smoothing: grayscale;
