@@ -1841,6 +1841,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
               >
                 <span
                   aria-atomic={true}
+                  aria-invalid={false}
                   aria-label="Top"
                   aria-live="off"
                   aria-posinset={1}
@@ -2069,6 +2070,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
               >
                 <span
                   aria-atomic={true}
+                  aria-invalid={false}
                   aria-label="Left"
                   aria-live="off"
                   aria-posinset={1}

@@ -925,7 +925,7 @@ export function memoizeFunction<T extends (...args: any[]) => RET_TYPE, RET_TYPE
 export function merge<T = {}>(target: Partial<T>, ...args: (Partial<T> | null | undefined | false)[]): T;
 
 // @public
-export function mergeAriaAttributeValues(...ariaAttributes: (string | undefined)[]): string | undefined;
+export function mergeAriaAttributeValues(...ariaAttributes: (string | undefined | false)[]): string | undefined;
 
 // @public
 export function mergeCustomizations(props: ICustomizerProps, parentContext: ICustomizerContext): ICustomizerContext;

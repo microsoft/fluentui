@@ -291,6 +291,7 @@ exports[`Component Examples renders ContextualMenu.Directional.Example.tsx corre
       >
         <span
           aria-atomic={true}
+          aria-invalid={false}
           aria-label="Bottom Left Edge"
           aria-live="off"
           aria-posinset={5}
