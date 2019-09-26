@@ -204,7 +204,7 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
                     children: (
                       <DetailsRowCheck
                         id={`${this._id}-check`}
-                        aria-label={ariaLabelForSelectionColumn}
+                        aria-label={ariaLabelForSelectAllCheckbox}
                         aria-describedby={
                           !isCheckboxHidden
                             ? ariaLabelForSelectAllCheckbox && !this.props.onRenderColumnHeaderTooltip
