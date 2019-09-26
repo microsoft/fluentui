@@ -2,6 +2,27 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "date": "Thu, 26 Sep 2019 12:32:32 GMT",
+      "tag": "@uifabric/utilities_v7.2.0",
+      "version": "7.2.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "mergeStyles and mergeStyleSets have a companion method which accepts options for setting RTL",
+            "author": "jdh@microsoft.com",
+            "commit": "db3504b65c6363d9d840d58076a31abe8bade56a"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Minor refinement to mergeAriaAttributeValues to correctly handleu false, therefore allowing (`cond && \"something\").",
+            "author": "cliff.koh@microsoft.com",
+            "commit": "640471f2eb88fec33cbc46a96d60aedd4db8a647"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 23 Sep 2019 12:33:15 GMT",
       "tag": "@uifabric/utilities_v7.1.0",
       "version": "7.1.0",

@@ -2,6 +2,20 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "date": "Thu, 26 Sep 2019 12:32:32 GMT",
+      "tag": "@uifabric/experiments_v7.17.1",
+      "version": "7.17.1",
+      "comments": {
+        "none": [
+          {
+            "comment": "Fixing overflow set a11y issues",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "347411e4987b6fd26c40c21872faa628da32af30"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 23 Sep 2019 12:33:15 GMT",
       "tag": "@uifabric/experiments_v7.17.1",
       "version": "7.17.1",

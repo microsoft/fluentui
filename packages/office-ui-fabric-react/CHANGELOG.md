@@ -1,7 +1,14 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 25 Sep 2019 12:34:56 GMT and should not be manually modified.
+This log was last generated on Thu, 26 Sep 2019 12:32:32 GMT and should not be manually modified.
 
+## 7.39.1
+Thu, 26 Sep 2019 12:32:32 GMT
+
+### Patches
+
+- simplified examples and fix a11y issues (mgodbolt@microsoft.com)
+- Dropdown: Error messages in Dropdown are now linked to the Dropdown (from a programmatic accessibility POV). (cliff.koh@microsoft.com)
 ## 7.39.0
 Wed, 25 Sep 2019 12:34:56 GMT
 

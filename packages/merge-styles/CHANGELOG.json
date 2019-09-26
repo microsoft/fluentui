@@ -2,6 +2,20 @@
   "name": "@uifabric/merge-styles",
   "entries": [
     {
+      "date": "Thu, 26 Sep 2019 12:32:32 GMT",
+      "tag": "@uifabric/merge-styles_v7.7.0",
+      "version": "7.7.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "mergeStyles and mergeStyleSets have a companion method which accepts options for setting RTL",
+            "author": "jdh@microsoft.com",
+            "commit": "db3504b65c6363d9d840d58076a31abe8bade56a"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 20 Sep 2019 12:34:28 GMT",
       "tag": "@uifabric/merge-styles_v7.6.0",
       "version": "7.6.0",

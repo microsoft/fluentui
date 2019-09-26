@@ -1,7 +1,13 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Mon, 23 Sep 2019 12:33:15 GMT and should not be manually modified.
+This log was last generated on Thu, 26 Sep 2019 12:32:32 GMT and should not be manually modified.
 
+## 7.7.2
+Thu, 26 Sep 2019 12:32:32 GMT
+
+### Patches
+
+- Add optional rtl property to IScheme (jdh@microsoft.com)
 ## 7.7.1
 Mon, 23 Sep 2019 12:33:15 GMT
 

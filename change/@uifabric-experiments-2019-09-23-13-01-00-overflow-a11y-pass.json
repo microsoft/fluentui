@@ -1,8 +1,0 @@
-{
-  "type": "none",
-  "comment": "Fixing overflow set a11y issues",
-  "packageName": "@uifabric/experiments",
-  "email": "mgodbolt@microsoft.com",
-  "commit": "347411e4987b6fd26c40c21872faa628da32af30",
-  "date": "2019-09-23T20:01:00.685Z"
-}

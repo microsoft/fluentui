@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Minor refinement to mergeAriaAttributeValues to correctly handleu false, therefore allowing (`cond && \"something\").",
-  "packageName": "@uifabric/utilities",
-  "email": "cliff.koh@microsoft.com",
-  "commit": "640471f2eb88fec33cbc46a96d60aedd4db8a647",
-  "date": "2019-09-24T22:52:15.667Z"
-}

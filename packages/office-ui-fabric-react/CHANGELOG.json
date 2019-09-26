@@ -2,6 +2,32 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Thu, 26 Sep 2019 12:32:32 GMT",
+      "tag": "office-ui-fabric-react_v7.39.1",
+      "version": "7.39.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "simplified examples and fix a11y issues",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "724f92ecbf819bfb24b5c7bfc02a1615efca2d15"
+          },
+          {
+            "comment": "Dropdown: Error messages in Dropdown are now linked to the Dropdown (from a programmatic accessibility POV).",
+            "author": "cliff.koh@microsoft.com",
+            "commit": "640471f2eb88fec33cbc46a96d60aedd4db8a647"
+          }
+        ],
+        "none": [
+          {
+            "comment": "changed overflow example to more accessible checkbox example",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "4cc7d0e0d909d4a9dc384d3118d9f40d771d32e4"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 25 Sep 2019 12:34:56 GMT",
       "tag": "office-ui-fabric-react_v7.39.0",
       "version": "7.39.0",
