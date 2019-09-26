@@ -10,6 +10,7 @@ $Calendar-dayPicker-margin: 10px;
   @include ms-normalize;
 
   * {
+    overflow: visible;
     @include focus-border($color: $ms-color-neutralSecondary);
   }
 }
