@@ -97,7 +97,6 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
                 font-weight: 400;
                 height: 32px;
                 margin-bottom: -3px;
-                min-width: 32px;
                 outline: transparent;
                 padding-bottom: 0;
                 padding-left: 4px;
@@ -108,6 +107,7 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
                 text-decoration: none;
                 user-select: none;
                 vertical-align: top;
+                width: 32px;
               }
               &::-moz-focus-inner {
                 border: 0;

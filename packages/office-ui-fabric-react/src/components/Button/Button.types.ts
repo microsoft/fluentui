@@ -251,6 +251,7 @@ export interface IButtonProps
     disabled: boolean,
     checked: boolean,
     expanded: boolean,
+    hasMenu: boolean,
     isSplit: boolean | undefined,
     allowDisabledFocus: boolean
   ) => IButtonClassNames;
@@ -394,6 +395,11 @@ export interface IButtonStyles {
    * Style override applied to the root on hover in a expanded state on hover
    */
   rootExpandedHovered?: IStyle;
+
+  /**
+   * Style override for the root element when it has a menu button, layered on top of the root style.
+   */
+  rootHasMenu?: IStyle;
 
   /**
    * Style for the flexbox container within the root element.
