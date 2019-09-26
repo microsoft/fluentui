@@ -5169,7 +5169,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                       speak: none;
                                     }
                                 data-icon-name="Tag"
-                                role="presentation"
                               >
                                 
                               </i>
@@ -5239,7 +5238,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                       transition: transform .1s linear;
                                     }
                                 data-icon-name="ChevronRightMed"
-                                role="presentation"
                               >
                                 
                               </i>
@@ -5782,7 +5780,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                       speak: none;
                                     }
                                 data-icon-name="Tag"
-                                role="presentation"
                               >
                                 
                               </i>
@@ -5852,7 +5849,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                       transition: transform .1s linear;
                                     }
                                 data-icon-name="ChevronRightMed"
-                                role="presentation"
                               >
                                 
                               </i>

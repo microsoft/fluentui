@@ -51,8 +51,7 @@ export class IconBase extends React.Component<IIconProps, IIconState> {
           'aria-label': ariaLabel
         }
       : {
-          role: 'presentation',
-          'aria-hidden': imageProps.alt || imageProps['aria-labelledby'] ? false : true
+          'aria-hidden': this.props['aria-labelledby'] || imageProps['aria-labelledby'] ? false : true
         };
 
     return (

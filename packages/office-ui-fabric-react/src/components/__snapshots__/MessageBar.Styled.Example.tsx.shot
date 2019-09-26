@@ -145,7 +145,6 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
                     color: Window;
                   }
               data-icon-name="Info"
-              role="presentation"
             >
               
             </i>
@@ -314,7 +313,6 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
                     color: Window;
                   }
               data-icon-name="ErrorBadge"
-              role="presentation"
             >
               
             </i>
@@ -637,7 +635,6 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
                     color: Window;
                   }
               data-icon-name="Blocked2"
-              role="presentation"
             >
               
             </i>
@@ -1107,7 +1104,6 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
                     color: Window;
                   }
               data-icon-name="Warning"
-              role="presentation"
             >
               
             </i>
@@ -1535,7 +1531,6 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
                     color: Window;
                   }
               data-icon-name="Completed"
-              role="presentation"
             >
               
             </i>
@@ -1973,7 +1968,6 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
                     color: Window;
                   }
               data-icon-name="Info"
-              role="presentation"
             >
               
             </i>
@@ -2438,7 +2432,6 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
                     color: Window;
                   }
               data-icon-name="Info"
-              role="presentation"
             >
               
             </i>

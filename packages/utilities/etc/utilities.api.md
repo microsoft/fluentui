@@ -132,9 +132,8 @@ export function customizable(scope: string, fields: string[], concatStyles?: boo
 
 // @public (undocumented)
 export class Customizations {
-    // (undocumented)
+    static applyBatchedUpdates(code: () => void, suppressUpdate?: boolean): void;
     static applyScopedSettings(scopeName: string, settings: ISettings): void;
-    // (undocumented)
     static applySettings(settings: ISettings): void;
     // (undocumented)
     static getSettings(properties: string[], scopeName?: string, localSettings?: ICustomizations): any;
@@ -926,7 +925,7 @@ export function memoizeFunction<T extends (...args: any[]) => RET_TYPE, RET_TYPE
 export function merge<T = {}>(target: Partial<T>, ...args: (Partial<T> | null | undefined | false)[]): T;
 
 // @public
-export function mergeAriaAttributeValues(...ariaAttributes: (string | undefined)[]): string | undefined;
+export function mergeAriaAttributeValues(...ariaAttributes: (string | undefined | false)[]): string | undefined;
 
 // @public
 export function mergeCustomizations(props: ICustomizerProps, parentContext: ICustomizerContext): ICustomizerContext;

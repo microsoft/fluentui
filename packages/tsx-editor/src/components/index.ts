@@ -1,10 +1,10 @@
 export { Editor } from './Editor';
-export * from './Editor.types';
-export { EditorWrapper } from './EditorWrapper';
-export * from './EditorWrapper.types';
+export { IEditorProps } from './Editor.types';
 export { TsxEditor } from './TsxEditor';
-export * from './TsxEditor.types';
-export * from './TypeScriptSnippet';
-export { codeFontFamily } from './common';
+export { ITsxEditorProps } from './TsxEditor.types';
+export { EditorWrapper } from './EditorWrapper';
+export { IEditorWrapperProps, IEditorPreviewProps } from './EditorWrapper.types';
+export { codeFontFamily } from './consts';
 
-// Intentionally not exporting EditorError, EditorLoading, and EditorPreview since they're basically internal helpers
+// Intentionally not exporting EditorError, EditorLoading, EditorPreview, and TypeScriptSnippet
+//  since they're basically internal helpers
