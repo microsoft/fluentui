@@ -105,7 +105,6 @@ export class CalendarDayGridBase extends BaseComponent<ICalendarDayGridProps, IC
       labelledBy,
       lightenDaysOutsideNavigatedMonth,
       animationDirection
-      // daysToSelectInDayView
     } = this.props;
 
     this.classNames = getClassNames(styles, {
@@ -121,9 +120,6 @@ export class CalendarDayGridBase extends BaseComponent<ICalendarDayGridProps, IC
 
     // When the month is highlighted get the corner dates so that styles can be added to them
     const weekCorners: IWeekCorners = this._getWeekCornerStyles(classNames, weeks!);
-    // if (!(dateRangeType === DateRangeType.Day && daysToSelectInDayView && daysToSelectInDayView > 1)) {
-    //   weekCorners = this._getWeekCornerStyles(classNames, weeks!);
-    // }
 
     return (
       <FocusZone className={classNames.wrapper}>
