@@ -59,6 +59,7 @@ Array [
               font-weight: 400;
               height: 33px;
               margin-right: -17px;
+              min-width: 32px;
               outline: transparent;
               padding-bottom: 0;
               padding-left: 4px;
@@ -394,6 +395,7 @@ Array [
               font-size: 14px;
               font-weight: 400;
               height: 33px;
+              min-width: 32px;
               outline: transparent;
               padding-bottom: 0;
               padding-left: 4px;
@@ -569,6 +571,7 @@ Array [
               font-weight: 400;
               height: 33px;
               margin-right: -17px;
+              min-width: 32px;
               outline: transparent;
               padding-bottom: 0;
               padding-left: 4px;
@@ -904,6 +907,7 @@ Array [
               font-size: 14px;
               font-weight: 400;
               height: 33px;
+              min-width: 32px;
               outline: transparent;
               padding-bottom: 0;
               padding-left: 4px;
