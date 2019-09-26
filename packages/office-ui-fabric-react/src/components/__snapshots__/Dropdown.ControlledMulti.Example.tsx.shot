@@ -124,9 +124,6 @@ exports[`Component Examples renders Dropdown.ControlledMulti.Example.tsx correct
         &:active .ms-Dropdown-title--hasError {
           border-color: #a4262c;
         }
-        &:focus .ms-Dropdown-title--hasError {
-          border-color: #a4262c;
-        }
     data-is-focusable={true}
     id="Dropdown0"
     onBlur={[Function]}

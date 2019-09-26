@@ -3114,9 +3114,6 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
               &:active .ms-Dropdown-title--hasError {
                 border-color: #a4262c;
               }
-              &:focus .ms-Dropdown-title--hasError {
-                border-color: #a4262c;
-              }
           data-is-focusable={true}
           id="Dropdown12"
           onBlur={[Function]}
@@ -3340,9 +3337,6 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                 border-color: #a4262c;
               }
               &:active .ms-Dropdown-title--hasError {
-                border-color: #a4262c;
-              }
-              &:focus .ms-Dropdown-title--hasError {
                 border-color: #a4262c;
               }
           data-is-focusable={true}

@@ -852,9 +852,6 @@ exports[`Component Examples renders Facepile.Basic.Example.tsx correctly 1`] = `
             &:active .ms-Dropdown-title--hasError {
               border-color: #a4262c;
             }
-            &:focus .ms-Dropdown-title--hasError {
-              border-color: #a4262c;
-            }
         data-is-focusable={true}
         id="Dropdown5"
         onBlur={[Function]}
