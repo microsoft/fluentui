@@ -153,7 +153,6 @@ exports[`Component Examples renders Callout.Directional.Example.tsx correctly 1`
                   color: Window;
                 }
             data-icon-name="CheckMark"
-            role="presentation"
           >
             
           </i>
@@ -831,8 +830,9 @@ exports[`Component Examples renders Callout.Directional.Example.tsx correctly 1`
       >
         <span
           aria-atomic={true}
+          aria-invalid={false}
           aria-label="Bottom Left Edge"
-          aria-live="off"
+          aria-live="polite"
           aria-posinset={5}
           aria-selected={true}
           aria-setsize={14}
@@ -899,7 +899,6 @@ exports[`Component Examples renders Callout.Directional.Example.tsx correctly 1`
                   speak: none;
                 }
             data-icon-name="ChevronDown"
-            role="presentation"
           >
             
           </i>

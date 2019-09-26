@@ -442,13 +442,22 @@ function _getFlankingEdges(edge: RectangleEdge): { positiveEdge: RectangleEdge; 
 /**
  * Retrieve the final value for the return edge of elementRectangle.
  * If the elementRectangle is closer to one side of the bounds versus the other, the return edge is flipped to grow inward.
+ * The finalized return edge should not flip if the element has already been positiuoned successfully to prevent the callout from
+ * appearing to jump
  *
  * @param elementRectangle
  * @param targetEdge
  * @param bounds
+ * @param previousPositions
  */
-function _finalizeReturnEdge(elementRectangle: Rectangle, returnEdge: RectangleEdge, bounds?: Rectangle): RectangleEdge {
+function _finalizeReturnEdge(
+  elementRectangle: Rectangle,
+  returnEdge: RectangleEdge,
+  bounds?: Rectangle,
+  previousPositions?: boolean
+): RectangleEdge {
   if (
+    !previousPositions &&
     bounds &&
     Math.abs(_getRelativeEdgeDifference(elementRectangle, bounds, returnEdge)) >
       Math.abs(_getRelativeEdgeDifference(elementRectangle, bounds, returnEdge * -1))
@@ -472,6 +481,7 @@ function _finalizeReturnEdge(elementRectangle: Rectangle, returnEdge: RectangleE
  * @param {RectangleEdge} bounds
  * @param {RectangleEdge} [alignmentEdge]
  * @param {boolean} coverTarget
+ * @param {previousPositions} previousPositions
  * @returns {IPartialIRectangle}
  */
 function _finalizeElementPosition(
@@ -480,7 +490,8 @@ function _finalizeElementPosition(
   targetEdge: RectangleEdge,
   bounds?: Rectangle,
   alignmentEdge?: RectangleEdge,
-  coverTarget?: boolean
+  coverTarget?: boolean,
+  previousPositions?: boolean
 ): IPartialIRectangle {
   const returnValue: IPartialIRectangle = {};
 
@@ -490,7 +501,8 @@ function _finalizeElementPosition(
   const returnEdge = _finalizeReturnEdge(
     elementRectangle,
     alignmentEdge ? alignmentEdge : _getFlankingEdges(targetEdge).positiveEdge,
-    bounds
+    bounds,
+    previousPositions
   );
 
   returnValue[elementEdgeString] = _getRelativeEdgeDifference(elementRectangle, hostRect, elementEdge);
@@ -755,11 +767,20 @@ function _positionElementRelative(
   return { ...positionedElement, targetRectangle: targetRect };
 }
 
+/**
+ *
+ * @param positionedElement The elements estimated position, is not page relative yet
+ * @param hostElement The element which is hosting the positioning element
+ * @param bounds The space in which the positioning element can render
+ * @param coverTarget Whether or not the element should cover the target
+ * @param previousPositions If the element has already been positioned before.
+ */
 function _finalizePositionData(
   positionedElement: IElementPosition,
   hostElement: HTMLElement,
   bounds?: Rectangle,
-  coverTarget?: boolean
+  coverTarget?: boolean,
+  previousPositions?: boolean
 ): IPositionedData {
   const finalizedElement: IPartialIRectangle = _finalizeElementPosition(
     positionedElement.elementRectangle,
@@ -767,7 +788,8 @@ function _finalizePositionData(
     positionedElement.targetEdge,
     bounds,
     positionedElement.alignmentEdge,
-    coverTarget
+    coverTarget,
+    previousPositions
   );
   return {
     elementPosition: finalizedElement,
@@ -786,7 +808,7 @@ function _positionElement(
     ? _getRectangleFromIRect(props.bounds)
     : new Rectangle(0, window.innerWidth - getScrollbarWidth(), 0, window.innerHeight);
   const positionedElement: IElementPosition = _positionElementRelative(props, elementToPosition, boundingRect, previousPositions);
-  return _finalizePositionData(positionedElement, hostElement, boundingRect, props.coverTarget);
+  return _finalizePositionData(positionedElement, hostElement, boundingRect, props.coverTarget, !!previousPositions);
 }
 
 function _positionCallout(
@@ -806,7 +828,7 @@ function _positionCallout(
   const beakPositioned: Rectangle = _positionBeak(beakWidth, positionedElement);
   const finalizedBeakPosition: ICalloutBeakPositionedInfo = _finalizeBeakPosition(positionedElement, beakPositioned, boundingRect);
   return {
-    ..._finalizePositionData(positionedElement, hostElement, boundingRect, props.coverTarget),
+    ..._finalizePositionData(positionedElement, hostElement, boundingRect, props.coverTarget, !!previousPositions),
     beakPosition: finalizedBeakPosition
   };
 }

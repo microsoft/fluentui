@@ -467,7 +467,6 @@ exports[`ContextualMenu ContextualMenu snapshot ContextualMenu should be present
                                   font-size: 16px;
                                 }
                             data-icon-name="ChevronRight"
-                            role="presentation"
                           >
                             
                           </i>

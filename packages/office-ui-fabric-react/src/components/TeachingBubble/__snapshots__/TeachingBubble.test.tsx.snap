@@ -181,6 +181,7 @@ exports[`TeachingBubble renders TeachingBubbleContent correctly 1`] = `
               margin-right: 0px;
               margin-top: 0px;
             }
+        role="heading"
       >
         Test Title
       </p>
@@ -261,6 +262,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
               margin-right: 0px;
               margin-top: 0px;
             }
+        role="heading"
       >
         Test Title
       </p>
@@ -769,6 +771,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with condensed headline co
               margin-right: 0px;
               margin-top: 0px;
             }
+        role="heading"
       >
         Test Title
       </p>
@@ -962,6 +965,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with image correctly 1`] =
               margin-right: 0px;
               margin-top: 0px;
             }
+        role="heading"
       >
         Test Title
       </p>
@@ -1049,6 +1053,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with small headline correc
               margin-right: 0px;
               margin-top: 0px;
             }
+        role="heading"
       >
         Test Title
       </p>

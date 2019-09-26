@@ -10,6 +10,70 @@
   },
   "glyphs": [
     {
+      "name": "OfficeChatSolid",
+      "unicode": "F710"
+    },
+    {
+      "name": "MailSchedule",
+      "unicode": "F72E"
+    },
+    {
+      "name": "WarningSolid",
+      "unicode": "F736"
+    },
+    {
+      "name": "Blocked2Solid",
+      "unicode": "F737"
+    },
+    {
+      "name": "SkypeCircleArrow",
+      "unicode": "F747"
+    },
+    {
+      "name": "SkypeArrow",
+      "unicode": "F748"
+    },
+    {
+      "name": "SyncStatus",
+      "unicode": "F751"
+    },
+    {
+      "name": "SyncStatusSolid",
+      "unicode": "F752"
+    },
+    {
+      "name": "ProjectDocument",
+      "unicode": "F759"
+    },
+    {
+      "name": "ToDoLogoOutline",
+      "unicode": "F75B"
+    },
+    {
+      "name": "VisioOnlineLogoFill32",
+      "unicode": "F75F"
+    },
+    {
+      "name": "VisioOnlineLogo32",
+      "unicode": "F760"
+    },
+    {
+      "name": "VisioOnlineLogoCloud32",
+      "unicode": "F761"
+    },
+    {
+      "name": "VisioDiagramSync",
+      "unicode": "F762"
+    },
+    {
+      "name": "Event12",
+      "unicode": "F763"
+    },
+    {
+      "name": "EventDateMissed12",
+      "unicode": "F764"
+    },
+    {
       "name": "UserOptional",
       "unicode": "F767"
     },
@@ -64,6 +128,10 @@
     {
       "name": "BarChartVerticalFilterSolid",
       "unicode": "F77F"
+    },
+    {
+      "name": "MicOff2",
+      "unicode": "F781"
     },
     {
       "name": "MicrosoftTranslatorLogo",
@@ -340,74 +408,6 @@
     {
       "name": "SkypeSlash",
       "unicode": "F826"
-    },
-    {
-      "name": "CustomizeToolbar",
-      "unicode": "F828"
-    },
-    {
-      "name": "DuplicateRow",
-      "unicode": "F82A"
-    },
-    {
-      "name": "RemoveFromTrash",
-      "unicode": "F82B"
-    },
-    {
-      "name": "MailOptions",
-      "unicode": "F82C"
-    },
-    {
-      "name": "Childof",
-      "unicode": "F82D"
-    },
-    {
-      "name": "Footer",
-      "unicode": "F82E"
-    },
-    {
-      "name": "Header",
-      "unicode": "F82F"
-    },
-    {
-      "name": "BarChartVerticalFill",
-      "unicode": "F830"
-    },
-    {
-      "name": "StackedColumnChart2Fill",
-      "unicode": "F831"
-    },
-    {
-      "name": "PlainText",
-      "unicode": "F834"
-    },
-    {
-      "name": "AccessibiltyChecker",
-      "unicode": "F835"
-    },
-    {
-      "name": "DatabaseSync",
-      "unicode": "F842"
-    },
-    {
-      "name": "ReservationOrders",
-      "unicode": "F845"
-    },
-    {
-      "name": "TabOneColumn",
-      "unicode": "F849"
-    },
-    {
-      "name": "TabTwoColumn",
-      "unicode": "F84A"
-    },
-    {
-      "name": "TabThreeColumn",
-      "unicode": "F84B"
-    },
-    {
-      "name": "MicrosoftTranslatorLogoGreen",
-      "unicode": "F852"
     }
   ]
 }

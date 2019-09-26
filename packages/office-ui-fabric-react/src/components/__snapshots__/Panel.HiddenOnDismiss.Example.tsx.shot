@@ -269,6 +269,7 @@ exports[`Component Examples renders Panel.HiddenOnDismiss.Example.tsx correctly 
                     }
               >
                 <button
+                  aria-label="Close"
                   className=
                       ms-Button
                       ms-Button--icon
@@ -348,6 +349,7 @@ exports[`Component Examples renders Panel.HiddenOnDismiss.Example.tsx correctly 
                   onKeyUp={[Function]}
                   onMouseDown={[Function]}
                   onMouseUp={[Function]}
+                  title="Close"
                   type="button"
                 >
                   <span

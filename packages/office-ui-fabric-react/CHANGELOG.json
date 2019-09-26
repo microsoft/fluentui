@@ -2,6 +2,211 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Thu, 26 Sep 2019 12:32:32 GMT",
+      "tag": "office-ui-fabric-react_v7.39.1",
+      "version": "7.39.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "simplified examples and fix a11y issues",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "724f92ecbf819bfb24b5c7bfc02a1615efca2d15"
+          },
+          {
+            "comment": "Dropdown: Error messages in Dropdown are now linked to the Dropdown (from a programmatic accessibility POV).",
+            "author": "cliff.koh@microsoft.com",
+            "commit": "640471f2eb88fec33cbc46a96d60aedd4db8a647"
+          }
+        ],
+        "none": [
+          {
+            "comment": "changed overflow example to more accessible checkbox example",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "4cc7d0e0d909d4a9dc384d3118d9f40d771d32e4"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 25 Sep 2019 12:34:56 GMT",
+      "tag": "office-ui-fabric-react_v7.39.0",
+      "version": "7.39.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Adding a prop shouldUpdateWhenHidden to decide whether to udpate hidden callouts and contextual menus",
+            "author": "kushaly@microsoft.com",
+            "commit": "355ebb3c68fc1ef9bd20adacbc464c0e519bb394"
+          },
+          {
+            "comment": "Fix return type of onGrowData() in CommandBar.",
+            "author": "1721514+gordianschuda@users.noreply.github.com",
+            "commit": "fc08a14367ab9f3cbdb306d8bd6bd5f9ed59b4f2"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "DetailsList: initialize selection object mode with selectionMode prop if it is defined",
+            "author": "naethell@microsoft.com",
+            "commit": "1b60a86309fa911834c5b320233ba7ec1a7f45c6"
+          },
+          {
+            "comment": "fixing focus outline in IE11. The outline in IE11 does not show if it overflows the div it's in unless we explicitly set overflow: visible on the div (other browsers have this as the default).",
+            "author": "jolore@microsoft.com",
+            "commit": "12f8a6108f9a9451745988002902256b6c917536"
+          },
+          {
+            "comment": "Coachmark Accessibility: adding HighContrastSelector to coachmark",
+            "author": "marygans@microsoft.com",
+            "commit": "045ec97eea0e1b1f44809f7d479358de14401551"
+          },
+          {
+            "comment": "updated callout example with better, accessible example",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "e4af01f5eff86d09c3c68f4acef478ae3d8ce738"
+          },
+          {
+            "comment": "Pivot: Fix accessibility of example.",
+            "author": "jdh@microsoft.com",
+            "commit": "ea96413e060f4a17156c48862407b67ba65bb4d5"
+          },
+          {
+            "comment": "Use correct type in docs for 'collapseAllVisibility' in 'GroupedList'",
+            "author": "thomas.gassmann@hotmail.com",
+            "commit": "279c24fabb91048c9d14e984df68bde7fd44e9b6"
+          },
+          {
+            "comment": "Pivot: Improve accessibility of examples.",
+            "author": "jdh@microsoft.com",
+            "commit": "0f42884cc9d513f7b83d72c8ae775073d6f1f404"
+          }
+        ],
+        "none": [
+          {
+            "comment": "remove 'hidden' prop from demo",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "cca2092e8d95e92d6a8318b99e6e6de01d867f17"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 24 Sep 2019 12:35:43 GMT",
+      "tag": "office-ui-fabric-react_v7.38.0",
+      "version": "7.38.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Dialog: Updated styles to match toolkit.",
+            "author": "v-mare@microsoft.com",
+            "commit": "70d346679d01ac4a4a678d10d3e824eb25d3b524"
+          },
+          {
+            "comment": "Added a title in the custom SplitButton example",
+            "author": "kchau@microsoft.com",
+            "commit": "86c5c9548680d44ecb708367dcb05494ae30e608"
+          },
+          {
+            "comment": "TeachingBubble: alt tags for example images.",
+            "author": "jdh@microsoft.com",
+            "commit": "47b7a27fa2a32635f62f74765338410d7846456a"
+          },
+          {
+            "comment": "Remove codepen-loader usage",
+            "author": "elcraig@microsoft.com",
+            "commit": "d637c537d4a367e7a2e3e5e8e5fe7c902e8d3b31"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Changing ColorPicker to use a selectedId instead of selectedIndex in its state.",
+            "author": "kushaly@microsoft.com",
+            "commit": "f388d37561eecf3c458a19367c4cdc41768f1f88"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 23 Sep 2019 12:33:15 GMT",
+      "tag": "office-ui-fabric-react_v7.37.1",
+      "version": "7.37.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Icon Accessibility: update aria-hidden to pull aria-labelledBy from root and imageProps and removed role presentation - should not apply when a label is provided. ",
+            "author": "marygans@microsoft.com",
+            "commit": "d4a4face14c49917346e3ed5d9f08586e2c8cf0b"
+          },
+          {
+            "comment": "Update icons to v3.50. May change subset font files for some components.",
+            "author": "pejahn@microsoft.com",
+            "commit": "dbde2699023f4640b9bbae66571bf57189adbfaa"
+          },
+          {
+            "comment": "FocusTrapZone example: Remove Randomize function.",
+            "author": "jagore@microsoft.com",
+            "commit": "b1d05d0b7b8fd5b6109a6cb8afc2e8b1b48ae977"
+          },
+          {
+            "comment": "Positioning: Fix issue where anchor edge would flip even if previous positions calculated",
+            "author": "joschect@microsoft.com",
+            "commit": "52bfddc7567b8f910189142d75c2762358c0e62b"
+          },
+          {
+            "comment": "fix typo in ComboBox and Button docs",
+            "author": "thomas.gassmann@hotmail.com",
+            "commit": "e24ea49e563cb23b8eb1d3cdbde631a79080c518"
+          },
+          {
+            "comment": "Stack doesn't need to set overflow=hidden when grow=true to restrict size of flexbox children. Users are having to override this with overflow=visible to prevent clipping inner children",
+            "author": "email not defined",
+            "commit": "987173b9bb37750ff190850e5a4f85c90a0be7de"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 20 Sep 2019 12:34:28 GMT",
+      "tag": "office-ui-fabric-react_v7.37.0",
+      "version": "7.37.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Breadcrumb: Added ability to make current item a heading.",
+            "author": "v-mare@microsoft.com",
+            "commit": "3bc0b6f69ee4c26c76bdc1a1e7983bc928974527"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Update Panel examples to improve accessibility.",
+            "author": "jdh@microsoft.com",
+            "commit": "b4ba803a7c5d983b833fe13333ab881f091a56e4"
+          },
+          {
+            "comment": "Fixes various a11y issues in docs and controls",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "ea31c7a0dcffff4bd4301ff510c50eedc9a6e2e5"
+          },
+          {
+            "comment": "TeachingBubble: Specify heading role for header.",
+            "author": "jdh@microsoft.com",
+            "commit": "94e08d81e92182ec878c66199b59844aa090f6e0"
+          },
+          {
+            "comment": "ContextualMenu: Update the bounds prop to allow for the same functionality that the Callout has",
+            "author": "jspurlin@microsoft.com",
+            "commit": "a7bf73ab77f60f69422ff777802ddf256e0c0930"
+          },
+          {
+            "comment": "Listen to composition events only for IE11",
+            "author": "amyngu@microsoft.com",
+            "commit": "9ea6a0a856a74d8666964110d9482f4640dd91d1"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 19 Sep 2019 13:05:24 GMT",
       "tag": "office-ui-fabric-react_v7.36.0",
       "version": "7.36.0",

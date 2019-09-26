@@ -620,7 +620,7 @@ export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPi
 export const ColorPickerGridCell: React.StatelessComponent<IColorPickerGridCellProps>;
 
 // @public (undocumented)
-export class ColorPickerGridCellBase extends React.Component<IColorPickerGridCellProps, {}> {
+export class ColorPickerGridCellBase extends React.PureComponent<IColorPickerGridCellProps, {}> {
     // (undocumented)
     static defaultProps: IColorPickerGridCellProps;
     // (undocumented)
@@ -1807,6 +1807,7 @@ export interface IBreadcrumbData {
 
 // @public (undocumented)
 export interface IBreadcrumbItem {
+    as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
     href?: string;
     isCurrentItem?: boolean;
     key: string;
@@ -2120,6 +2121,7 @@ export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement> {
     role?: string;
     setInitialFocus?: boolean;
     shouldRestoreFocus?: boolean;
+    shouldUpdateWhenHidden?: boolean;
     style?: React.CSSProperties;
     styles?: IStyleFunctionOrObject<ICalloutContentStyleProps, ICalloutContentStyles>;
     target?: Target;
@@ -2833,7 +2835,7 @@ export interface ICommandBarProps extends React.HTMLAttributes<HTMLDivElement> {
     items: ICommandBarItemProps[];
     onDataGrown?: (movedItem: ICommandBarItemProps) => void;
     onDataReduced?: (movedItem: ICommandBarItemProps) => void;
-    onGrowData?: (data: ICommandBarData) => ICommandBarData;
+    onGrowData?: (data: ICommandBarData) => ICommandBarData | undefined;
     onReduceData?: (data: ICommandBarData) => ICommandBarData | undefined;
     overflowButtonAs?: IComponentAs<IButtonProps>;
     overflowButtonProps?: IButtonProps;
@@ -3000,7 +3002,7 @@ export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, IWith
     alignTargetEdge?: boolean;
     ariaLabel?: string;
     beakWidth?: number;
-    bounds?: IRectangle;
+    bounds?: IRectangle | ((target?: Target, targetWindow?: Window) => IRectangle | undefined);
     calloutProps?: ICalloutProps;
     className?: string;
     componentRef?: IRefObject<IContextualMenu>;
@@ -3031,6 +3033,7 @@ export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, IWith
     onRenderSubMenu?: IRenderFunction<IContextualMenuProps>;
     shouldFocusOnContainer?: boolean;
     shouldFocusOnMount?: boolean;
+    shouldUpdateWhenHidden?: boolean;
     styles?: IStyleFunctionOrObject<IContextualMenuStyleProps, IContextualMenuStyles>;
     subMenuHoverDelay?: number;
     target?: Target;

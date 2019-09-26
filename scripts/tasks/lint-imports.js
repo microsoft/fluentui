@@ -92,7 +92,9 @@ function lintImports() {
     for (const file of files) {
       const isExample = file.includes('.Example.') && !file.includes('.scss');
 
-      _evaluateFile(file, importErrors, importStats, isExample);
+      if (!file.includes('.test.ts')) {
+        _evaluateFile(file, importErrors, importStats, isExample);
+      }
     }
 
     // A mismatch here identifies a potential issue with the import regex properly matching all import statements.

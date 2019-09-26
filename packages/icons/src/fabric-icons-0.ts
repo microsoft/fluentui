@@ -22,7 +22,7 @@ export function initializeIcons(
     },
     fontFace: {
       fontFamily: `"FabricMDL2Icons-0"`,
-      src: `url('${baseUrl}fabric-icons-0-3d691a77.woff') format('woff')`
+      src: `url('${baseUrl}fabric-icons-0-467ee27f.woff') format('woff')`
     },
     icons: {
       'PageLink': '\uE302',
@@ -42,6 +42,15 @@ export function initializeIcons(
       'DependencyRemove': '\uE345',
       'EntitlementPolicy': '\uE346',
       'EntitlementRedemption': '\uE347',
+      'SchoolDataSyncLogo': '\uE34C',
+      'PinSolid12': '\uE352',
+      'PinSolidOff12': '\uE353',
+      'AddLink': '\uE35E',
+      'SharepointAppIcon16': '\uE365',
+      'DataflowsLink': '\uE366',
+      'TimePicker': '\uE367',
+      'UserWarning': '\uE368',
+      'ComplianceAudit': '\uE369',
       'InternetSharing': '\uE704',
       'Brightness': '\uE706',
       'MapPin': '\uE707',
@@ -115,16 +124,7 @@ export function initializeIcons(
       'Unpin': '\uE77A',
       'Contact': '\uE77B',
       'Memo': '\uE77C',
-      'IncomingCall': '\uE77E',
-      'Paste': '\uE77F',
-      'WindowsLogo': '\uE782',
-      'Error': '\uE783',
-      'GripperBarVertical': '\uE784',
-      'Unlock': '\uE785',
-      'Slideshow': '\uE786',
-      'AutoEnhanceOn': '\uE78D',
-      'AutoEnhanceOff': '\uE78E',
-      'Color': '\uE790'
+      'IncomingCall': '\uE77E'
     }
   };
 

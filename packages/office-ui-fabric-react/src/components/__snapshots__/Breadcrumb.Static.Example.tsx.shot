@@ -256,7 +256,6 @@ exports[`Component Examples renders Breadcrumb.Static.Example.tsx correctly 1`] 
                         font-size: 8px;
                       }
                   data-icon-name="ChevronRight"
-                  role="presentation"
                 >
                   
                 </i>
@@ -416,7 +415,6 @@ exports[`Component Examples renders Breadcrumb.Static.Example.tsx correctly 1`] 
                         font-size: 8px;
                       }
                   data-icon-name="ChevronRight"
-                  role="presentation"
                 >
                   
                 </i>
@@ -576,7 +574,6 @@ exports[`Component Examples renders Breadcrumb.Static.Example.tsx correctly 1`] 
                         font-size: 8px;
                       }
                   data-icon-name="ChevronRight"
-                  role="presentation"
                 >
                   
                 </i>

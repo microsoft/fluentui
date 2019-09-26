@@ -1,9 +1,5 @@
 import * as React from 'react';
-import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
-import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
-import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
-import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
-import { Slider } from 'office-ui-fabric-react/lib/Slider';
+import { DefaultButton, Callout, DirectionalHint, Dropdown, IDropdownOption, Checkbox, Slider } from 'office-ui-fabric-react';
 import './CalloutExample.scss';
 
 export interface ICalloutDirectionalExampleState {
@@ -77,6 +73,7 @@ export class CalloutDirectionalExample extends React.Component<{}, ICalloutDirec
             beakWidth={beakWidth}
             onDismiss={this._onCalloutDismiss}
             directionalHint={directionalHint}
+            setInitialFocus={true}
           >
             <div className="ms-CalloutExample-header">
               <p className="ms-CalloutExample-title">All of your favorite people</p>

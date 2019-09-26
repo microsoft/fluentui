@@ -13,12 +13,6 @@ const HoverCardPlainCardExampleCode = require('!raw-loader!office-ui-fabric-reac
 const HoverCardInstantDismissExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/HoverCard/examples/HoverCard.InstantDismiss.Example.tsx') as string;
 const HoverCardEventListenerTargetExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/HoverCard/examples/HoverCard.EventListenerTarget.Example.tsx') as string;
 
-const HoverCardBasicExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/HoverCard/examples/HoverCard.Basic.Example.tsx') as string;
-const HoverCardTargetExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/HoverCard/examples/HoverCard.Target.Example.tsx') as string;
-const HoverCardPlainCardExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/HoverCard/examples/HoverCard.PlainCard.Example.tsx') as string;
-const HoverCardInstantDismissExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/HoverCard/examples/HoverCard.InstantDismiss.Example.tsx') as string;
-const HoverCardEventListenerTargetExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/HoverCard/examples/HoverCard.EventListenerTarget.Example.tsx') as string;
-
 export const HoverCardPageProps: IDocPageProps = {
   title: 'HoverCard',
   componentName: 'HoverCard',
@@ -27,31 +21,26 @@ export const HoverCardPageProps: IDocPageProps = {
     {
       title: 'Example 1: Expanding HoverCard wrapping an element',
       code: HoverCardBasicExampleCode,
-      codepenJS: HoverCardBasicExampleCodepen,
       view: <HoverCardBasicExample />
     },
     {
       title: 'Example 2: Expanding HoverCard using Target, DirectionalHint and custom HotKey',
       code: HoverCardTargetExampleCode,
-      codepenJS: HoverCardTargetExampleCodepen,
       view: <HoverCardTargetExample />
     },
     {
       title: 'Example 3: Plain HoverCard wrapping an element',
       code: HoverCardPlainCardExampleCode,
-      codepenJS: HoverCardPlainCardExampleCodepen,
       view: <HoverCardPlainCardExample />
     },
     {
       title: 'Example 4: Plain HoverCard with instant dismiss from within the card button click',
       code: HoverCardInstantDismissExampleCode,
-      codepenJS: HoverCardInstantDismissExampleCodepen,
       view: <HoverCardInstantDismissExample />
     },
     {
       title: 'Example 5: HoverCard using eventListenerTarget to trigger card open',
       code: HoverCardEventListenerTargetExampleCode,
-      codepenJS: HoverCardEventListenerTargetExampleCodepen,
       view: <HoverCardEventListenerTargetExample />
     }
   ],

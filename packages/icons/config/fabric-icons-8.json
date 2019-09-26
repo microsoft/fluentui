@@ -10,6 +10,58 @@
   },
   "glyphs": [
     {
+      "name": "CollapseMenu",
+      "unicode": "EF66"
+    },
+    {
+      "name": "ExpandMenu",
+      "unicode": "EF67"
+    },
+    {
+      "name": "Boards",
+      "unicode": "EF68"
+    },
+    {
+      "name": "SunAdd",
+      "unicode": "EF69"
+    },
+    {
+      "name": "SunQuestionMark",
+      "unicode": "EF6A"
+    },
+    {
+      "name": "LandscapeOrientation",
+      "unicode": "EF6B"
+    },
+    {
+      "name": "DocumentSearch",
+      "unicode": "EF6C"
+    },
+    {
+      "name": "PublicCalendar",
+      "unicode": "EF6D"
+    },
+    {
+      "name": "PublicContactCard",
+      "unicode": "EF6E"
+    },
+    {
+      "name": "PublicEmail",
+      "unicode": "EF6F"
+    },
+    {
+      "name": "PublicFolder",
+      "unicode": "EF70"
+    },
+    {
+      "name": "WordDocument",
+      "unicode": "EF71"
+    },
+    {
+      "name": "PowerPointDocument",
+      "unicode": "EF72"
+    },
+    {
       "name": "ExcelDocument",
       "unicode": "EF73"
     },
@@ -206,6 +258,10 @@
       "unicode": "F02C"
     },
     {
+      "name": "PageShared",
+      "unicode": "F02D"
+    },
+    {
       "name": "SaveAndClose",
       "unicode": "F038"
     },
@@ -352,62 +408,6 @@
     {
       "name": "AddFavorite",
       "unicode": "F0C8"
-    },
-    {
-      "name": "AddFavoriteFill",
-      "unicode": "F0C9"
-    },
-    {
-      "name": "BufferTimeBefore",
-      "unicode": "F0CF"
-    },
-    {
-      "name": "BufferTimeAfter",
-      "unicode": "F0D0"
-    },
-    {
-      "name": "BufferTimeBoth",
-      "unicode": "F0D1"
-    },
-    {
-      "name": "PublishContent",
-      "unicode": "F0D4"
-    },
-    {
-      "name": "ClipboardList",
-      "unicode": "F0E3"
-    },
-    {
-      "name": "ClipboardListMirrored",
-      "unicode": "F0E4"
-    },
-    {
-      "name": "CannedChat",
-      "unicode": "F0F2"
-    },
-    {
-      "name": "SkypeForBusinessLogo",
-      "unicode": "F0FC"
-    },
-    {
-      "name": "TabCenter",
-      "unicode": "F100"
-    },
-    {
-      "name": "PageCheckedin",
-      "unicode": "F104"
-    },
-    {
-      "name": "PageList",
-      "unicode": "F106"
-    },
-    {
-      "name": "ReadOutLoud",
-      "unicode": "F112"
-    },
-    {
-      "name": "CaretBottomLeftSolid8",
-      "unicode": "F121"
     }
   ]
 }

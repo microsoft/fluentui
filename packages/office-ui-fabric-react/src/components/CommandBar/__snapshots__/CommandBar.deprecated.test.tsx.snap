@@ -48,6 +48,7 @@ exports[`CommandBar renders commands correctly 1`] = `
         role="menubar"
       >
         <div
+          aria-orientation="horizontal"
           className=
               ms-OverflowSet
               ms-CommandBar-primaryCommand
