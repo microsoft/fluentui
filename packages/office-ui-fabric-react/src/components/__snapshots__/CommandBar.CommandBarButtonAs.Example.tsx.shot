@@ -47,6 +47,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
         role="menubar"
       >
         <div
+          aria-orientation="horizontal"
           className=
               ms-OverflowSet
               ms-CommandBar-primaryCommand
@@ -75,6 +76,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
               className=
                   ms-Button
                   ms-Button--commandBar
+                  ms-Button--hasMenu
                   ms-CommandBarItem-link
                   {
                     -moz-osx-font-smoothing: grayscale;
@@ -818,6 +820,10 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                                     transition: border-radius 250ms, width 500ms, height 500ms cubic-bezier(0.5, 0, 0, 1);
                                     visibility: hidden;
                                   }
+                                  @media screen and (-ms-high-contrast: active){& {
+                                    background-color: Window;
+                                    border: 2px solid WindowText;
+                                  }
                               data-is-focusable={true}
                               role="dialog"
                               tabIndex={-1}
@@ -981,7 +987,6 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                                               font-size: 12px;
                                               font-weight: 400;
                                               height: 32px;
-                                              min-width: 32px;
                                               outline: transparent;
                                               padding-bottom: 0;
                                               padding-left: 4px;
@@ -994,6 +999,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                                               top: 0px;
                                               user-select: none;
                                               vertical-align: top;
+                                              width: 32px;
                                             }
                                             &::-moz-focus-inner {
                                               border: 0;
@@ -1312,6 +1318,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
               className=
                   ms-Button
                   ms-Button--commandBar
+                  ms-Button--hasMenu
                   ms-CommandBar-overflowButton
                   {
                     -moz-osx-font-smoothing: grayscale;
@@ -1451,6 +1458,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
           </div>
         </div>
         <div
+          aria-orientation="horizontal"
           className=
               ms-OverflowSet
               ms-CommandBar-secondaryCommand

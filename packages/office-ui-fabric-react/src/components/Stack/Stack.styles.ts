@@ -158,8 +158,7 @@ export const styles: IStackComponent['styles'] = (props, theme, tokens): IStackS
         }
       },
       grow && {
-        flexGrow: grow === true ? 1 : grow,
-        overflow: 'hidden'
+        flexGrow: grow === true ? 1 : grow
       },
       horizontalAlign && {
         [horizontal ? 'justifyContent' : 'alignItems']: nameMap[horizontalAlign] || horizontalAlign

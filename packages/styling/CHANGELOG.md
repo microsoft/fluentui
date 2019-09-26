@@ -1,7 +1,19 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Fri, 20 Sep 2019 12:34:28 GMT and should not be manually modified.
+This log was last generated on Thu, 26 Sep 2019 12:32:32 GMT and should not be manually modified.
 
+## 7.7.2
+Thu, 26 Sep 2019 12:32:32 GMT
+
+### Patches
+
+- Add optional rtl property to IScheme (jdh@microsoft.com)
+## 7.7.1
+Mon, 23 Sep 2019 12:33:15 GMT
+
+### Patches
+
+- Animations should not leave invisible elements behind so setting visibility to hidden on fade out to get rid of any interactivity where the faded element was (email not defined)
 ## 7.7.0
 Fri, 20 Sep 2019 12:34:28 GMT
 

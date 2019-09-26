@@ -114,7 +114,6 @@ exports[`Component Examples renders Persona.UnknownPersona.Example.tsx correctly
                   speak: none;
                 }
             data-icon-name="Help"
-            role="presentation"
           >
             
           </i>
@@ -318,7 +317,6 @@ exports[`Component Examples renders Persona.UnknownPersona.Example.tsx correctly
                   speak: none;
                 }
             data-icon-name="Help"
-            role="presentation"
           >
             
           </i>

@@ -41,7 +41,8 @@ export const getStyles = (props: ICalendarPickerStyleProps): ICalendarPickerStyl
         backgroundColor: 'transparent',
         flexGrow: 1,
         padding: '0 4px 0 10px',
-        border: 'none'
+        border: 'none',
+        overflow: 'visible' // explicitly specify for IE11
       },
       hasHeaderClickCallback && {
         selectors: {
@@ -75,6 +76,7 @@ export const getStyles = (props: ICalendarPickerStyleProps): ICalendarPickerStyl
         backgroundColor: 'transparent',
         border: 'none',
         padding: 0,
+        overflow: 'visible', // explicitly specify for IE11
         selectors: {
           '&:hover': {
             color: palette.neutralDark,
@@ -112,6 +114,7 @@ export const getStyles = (props: ICalendarPickerStyleProps): ICalendarPickerStyl
         backgroundColor: 'transparent',
         border: 'none',
         borderRadius: 2,
+        overflow: 'visible', // explicitly specify for IE11
         selectors: {
           '&:nth-child(4n + 4)': {
             marginRight: 0

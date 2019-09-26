@@ -8,4 +8,4 @@ export const ColorPickerGridCell: React.StatelessComponent<IColorPickerGridCellP
   IColorPickerGridCellProps,
   IColorPickerGridCellStyleProps,
   IColorPickerGridCellStyles
->(ColorPickerGridCellBase, getStyles, undefined, { scope: 'ColorPickerGridCell' });
+>(ColorPickerGridCellBase, getStyles, undefined, { scope: 'ColorPickerGridCell' }, true);

@@ -1,4 +1,4 @@
-import { keyframes, PulsingBeaconAnimationStyles } from '../../Styling';
+import { keyframes, PulsingBeaconAnimationStyles, HighContrastSelector } from '../../Styling';
 import { ICoachmarkStyleProps, ICoachmarkStyles } from './Coachmark.types';
 import { getRTL } from '../../Utilities';
 
@@ -240,7 +240,13 @@ export function getStyles(props: ICoachmarkStyleProps): ICoachmarkStyles {
         backgroundColor: color,
         borderRadius: COACHMARK_WIDTH,
         transition: 'border-radius 250ms, width 500ms, height 500ms cubic-bezier(0.5, 0, 0, 1)',
-        visibility: 'hidden'
+        visibility: 'hidden',
+        selectors: {
+          [HighContrastSelector]: {
+            backgroundColor: 'Window',
+            border: '2px solid WindowText'
+          }
+        }
       },
       !isMeasuring && {
         width: COACHMARK_WIDTH,

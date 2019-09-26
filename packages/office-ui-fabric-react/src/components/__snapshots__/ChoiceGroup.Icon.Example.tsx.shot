@@ -247,7 +247,6 @@ exports[`Component Examples renders ChoiceGroup.Icon.Example.tsx correctly 1`] =
                         speak: none;
                       }
                   data-icon-name="CalendarDay"
-                  role="presentation"
                 >
                   
                 </i>
@@ -458,7 +457,6 @@ exports[`Component Examples renders ChoiceGroup.Icon.Example.tsx correctly 1`] =
                         speak: none;
                       }
                   data-icon-name="CalendarWeek"
-                  role="presentation"
                 >
                   
                 </i>
@@ -665,7 +663,6 @@ exports[`Component Examples renders ChoiceGroup.Icon.Example.tsx correctly 1`] =
                         speak: none;
                       }
                   data-icon-name="Calendar"
-                  role="presentation"
                 >
                   
                 </i>
