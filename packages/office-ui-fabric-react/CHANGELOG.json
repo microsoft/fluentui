@@ -2,6 +2,20 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Thu, 26 Sep 2019 12:22:35 GMT",
+      "tag": "office-ui-fabric-react_v6.204.3",
+      "version": "6.204.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Allow setting a custom overflow icon on the Breadcrumb component",
+            "author": "madomi@microsoft.com",
+            "commit": "f5164fd724812ef0b1877445b0ac825debf96504"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 20 Sep 2019 23:15:56 GMT",
       "tag": "office-ui-fabric-react_v6.204.2",
       "version": "6.204.2",

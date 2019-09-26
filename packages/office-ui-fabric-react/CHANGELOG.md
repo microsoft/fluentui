@@ -1,7 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 20 Sep 2019 23:15:56 GMT and should not be manually modified.
+This log was last generated on Thu, 26 Sep 2019 12:22:35 GMT and should not be manually modified.
 
+## 6.204.3
+Thu, 26 Sep 2019 12:22:35 GMT
+
+### Patches
+
+- Allow setting a custom overflow icon on the Breadcrumb component (madomi@microsoft.com)
 ## 6.204.2
 Fri, 20 Sep 2019 23:15:56 GMT
 
