@@ -146,7 +146,8 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
       onRenderDetailsCheckbox,
       groupNestingDepth,
       useFastIcons,
-      checkboxVisibility
+      checkboxVisibility,
+      selectionMode
     } = this.props;
     const { isAllSelected, columnResizeDetails, isSizing, isAllCollapsed } = this.state;
     const showCheckbox = selectAllVisibility !== SelectAllVisibility.none;
@@ -204,7 +205,7 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
                     children: (
                       <DetailsRowCheck
                         id={`${this._id}-check`}
-                        aria-label={ariaLabelForSelectAllCheckbox}
+                        aria-label={selectionMode === SelectionMode.multiple ? ariaLabelForSelectAllCheckbox : ariaLabelForSelectionColumn}
                         aria-describedby={
                           !isCheckboxHidden
                             ? ariaLabelForSelectAllCheckbox && !this.props.onRenderColumnHeaderTooltip
