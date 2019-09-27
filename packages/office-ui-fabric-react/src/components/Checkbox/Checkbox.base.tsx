@@ -13,7 +13,7 @@ import { KeytipData } from '../../KeytipData';
 
 export interface ICheckboxState {
   /** Is true when Uncontrolled control is checked. */
-  isChecked?: boolean | undefined;
+  isChecked?: boolean;
   isIndeterminate?: boolean;
 }
 
@@ -28,18 +28,15 @@ export class CheckboxBase extends React.Component<ICheckboxProps, ICheckboxState
   private _id: string;
   private _classNames: { [key in keyof ICheckboxStyles]: string };
 
-  public static getDerivedStateFromProps(props: ICheckboxProps, state: ICheckboxState): ICheckboxState | null {
-    if (!props.defaultIndeterminate && state.isIndeterminate) {
-      return {
-        isIndeterminate: !!props.indeterminate
-      };
+  public static getDerivedStateFromProps(nextProps: ICheckboxProps, prevState: ICheckboxState): ICheckboxState | null {
+    const state: Partial<ICheckboxState> = {};
+    if (!nextProps.defaultIndeterminate && prevState.isIndeterminate) {
+      prevState.isIndeterminate = !!nextProps.indeterminate;
     }
-    if (props.checked !== undefined) {
-      return {
-        isChecked: !!props.checked
-      };
+    if (nextProps.checked !== undefined) {
+      prevState.isChecked = !!nextProps.checked;
     }
-    return null;
+    return Object.keys(state).length ? state : null;
   }
 
   /**
@@ -73,9 +70,7 @@ export class CheckboxBase extends React.Component<ICheckboxProps, ICheckboxState
    */
   public render(): JSX.Element {
     const {
-      checked,
       className,
-      defaultChecked,
       disabled,
       inputProps,
       name,
@@ -91,13 +86,10 @@ export class CheckboxBase extends React.Component<ICheckboxProps, ICheckboxState
       ariaSetSize,
       keytipProps,
       title,
-      label,
-      indeterminate
+      label
     } = this.props;
 
-    const isChecked = checked === undefined ? this.state.isChecked : checked;
-    const isIndeterminate = !!(indeterminate === undefined ? this.state.isIndeterminate : indeterminate);
-    const isReversed = boxSide !== 'start' ? true : false;
+    const { isChecked, isIndeterminate } = this.state;
 
     this._classNames = getClassNames(styles!, {
       theme: theme!,
@@ -105,7 +97,7 @@ export class CheckboxBase extends React.Component<ICheckboxProps, ICheckboxState
       disabled,
       indeterminate: isIndeterminate,
       checked: isChecked,
-      reversed: isReversed,
+      reversed: boxSide !== 'start',
       isUsingCustomLabelRender: onRenderLabel !== this._onRenderLabel
     });
 
@@ -117,8 +109,7 @@ export class CheckboxBase extends React.Component<ICheckboxProps, ICheckboxState
               type="checkbox"
               {...inputProps}
               data-ktp-execute-target={keytipAttributes['data-ktp-execute-target']}
-              {...checked !== undefined && { checked }}
-              {...defaultChecked !== undefined && { defaultChecked }}
+              {...isChecked !== undefined && { checked: isChecked }}
               disabled={disabled}
               className={this._classNames.input}
               ref={this._checkBox}
@@ -149,11 +140,11 @@ export class CheckboxBase extends React.Component<ICheckboxProps, ICheckboxState
   }
 
   public get indeterminate(): boolean {
-    return this.state.isIndeterminate!;
+    return !!this.state.isIndeterminate;
   }
 
   public get checked(): boolean {
-    return this.state.isChecked!;
+    return !!this.state.isChecked;
   }
 
   public focus(): void {

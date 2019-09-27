@@ -527,7 +527,7 @@ export class CheckboxBase extends React.Component<ICheckboxProps, ICheckboxState
     // (undocumented)
     focus(): void;
     // (undocumented)
-    static getDerivedStateFromProps(props: ICheckboxProps, state: ICheckboxState): ICheckboxState | null;
+    static getDerivedStateFromProps(nextProps: ICheckboxProps, prevState: ICheckboxState): ICheckboxState | null;
     // (undocumented)
     readonly indeterminate: boolean;
     render(): JSX.Element;
@@ -2173,7 +2173,7 @@ export interface ICheckboxProps extends React.ButtonHTMLAttributes<HTMLElement |
 
 // @public (undocumented)
 export interface ICheckboxState {
-    isChecked?: boolean | undefined;
+    isChecked?: boolean;
     // (undocumented)
     isIndeterminate?: boolean;
 }

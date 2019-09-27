@@ -1,119 +1,43 @@
 import * as React from 'react';
-import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
+import { Checkbox, ICheckboxProps } from 'office-ui-fabric-react/lib/Checkbox';
+import { Link } from 'office-ui-fabric-react/lib/Link';
+import { Stack } from 'office-ui-fabric-react/lib/Stack';
 
-export interface ICheckboxOtherExamplesState {
-  isChecked: boolean;
-  isChecked2: boolean;
-  isChecked3: boolean;
-  isIndeter: boolean;
-}
+// Optional extra props to pass through to the input element
+const inputProps: ICheckboxProps['inputProps'] = {
+  onFocus: () => console.log('Checkbox is focused'),
+  onBlur: () => console.log('Checkbox is blurred')
+};
+// Used to add spacing between example checkboxes
+const stackTokens = { childrenGap: 10 };
 
-export class CheckboxOtherExamples extends React.Component<{}, ICheckboxOtherExamplesState> {
-  public state: ICheckboxOtherExamplesState = {
-    isChecked: false,
-    isChecked2: false,
-    isChecked3: false,
-    isIndeter: true
-  };
+export const CheckboxOtherExample: React.FunctionComponent = () => {
+  // Only for the first checkbox, which is controlled
+  const [isChecked, setIsChecked] = React.useState(true);
+  const onChange = React.useCallback((ev: React.FormEvent<HTMLElement>, checked: boolean): void => {
+    setIsChecked(!!checked);
+  }, []);
 
-  public render(): JSX.Element {
-    const { isChecked, isChecked2, isChecked3, isIndeter } = this.state;
+  return (
+    <Stack tokens={stackTokens}>
+      <Checkbox label="Controlled checkbox" checked={isChecked} onChange={onChange} />
 
-    const checkboxStyles = () => {
-      return {
-        root: {
-          marginTop: '10px'
-        }
-      };
-    };
+      <Checkbox label='Checkbox rendered with boxSide "end"' boxSide="end" />
 
-    return (
-      <div>
-        <Checkbox
-          label="Uncontrolled checkbox"
-          onChange={this._onCheckboxChange}
-          inputProps={{
-            onFocus: () => {
-              console.log('Uncontrolled checkbox is focused');
-            },
-            onBlur: () => {
-              console.log('Uncontrolled checkbox is blured');
-            }
-          }}
-          styles={checkboxStyles}
-        />
+      <Checkbox label="Checkbox with extra props for the input" inputProps={inputProps} />
 
-        <Checkbox
-          label="Uncontrolled checkbox with defaultChecked true"
-          defaultChecked={true}
-          onChange={this._onCheckboxChange}
-          styles={checkboxStyles}
-        />
+      <Checkbox label="Checkbox with link inside the label" onRenderLabel={_renderLabelWithLink} />
+    </Stack>
+  );
+};
 
-        <Checkbox label="Disabled uncontrolled checkbox" disabled={true} styles={checkboxStyles} />
-
-        <Checkbox
-          label="Disabled uncontrolled checkbox with defaultChecked true"
-          disabled={true}
-          defaultChecked={true}
-          onChange={this._onCheckboxChange}
-          styles={checkboxStyles}
-        />
-
-        <Checkbox label="Controlled checkbox" checked={isChecked} onChange={this._onControlledCheckboxChange} styles={checkboxStyles} />
-
-        <Checkbox label='Checkbox rendered with boxSide "end" test' boxSide="end" styles={checkboxStyles} />
-
-        <Checkbox label="Persona Checkbox" styles={checkboxStyles} onRenderLabel={this._renderLabelWithLink} />
-
-        <Checkbox
-          label="Controlled Indeterminate Uncontrolled check Checkbox"
-          styles={checkboxStyles}
-          onChange={this._onControlledIndeterminateChange}
-          indeterminate={isIndeter}
-          checked={isChecked2}
-        />
-
-        <Checkbox
-          label="Uncontrolled Indeterminate Controlled Check Checkbox"
-          styles={checkboxStyles}
-          checked={isChecked3}
-          onChange={this._onControlledCheckboxChange2}
-          defaultIndeterminate
-        />
-
-        <Checkbox label="Disabled Controlled Indeterminate Checkbox" styles={checkboxStyles} disabled={true} indeterminate={true} />
-
-        <Checkbox label="Disabled Uncontrolled Indeterminate Checkbox" styles={checkboxStyles} disabled={true} defaultIndeterminate />
-      </div>
-    );
-  }
-
-  private _onCheckboxChange = (ev: React.FormEvent<HTMLElement>, isChecked: boolean) => {
-    console.log(`The option has been changed to ${isChecked}.`);
-  };
-
-  private _onControlledIndeterminateChange = (ev: React.FormEvent<HTMLElement>, checked: boolean): void => {
-    if (this.state.isIndeter) {
-      this.setState({ isIndeter: false });
-    } else {
-      this.setState({ isChecked2: checked! });
-    }
-  };
-
-  private _onControlledCheckboxChange = (ev: React.FormEvent<HTMLElement>, checked: boolean): void => {
-    this.setState({ isChecked: checked! });
-  };
-
-  private _onControlledCheckboxChange2 = (ev: React.FormEvent<HTMLElement>, checked: boolean): void => {
-    this.setState({ isChecked3: checked! });
-  };
-
-  private _renderLabelWithLink = () => {
-    return (
-      <span>
-        This is a <a href="https://www.microsoft.com">link</a> inside a label.
-      </span>
-    );
-  };
+function _renderLabelWithLink() {
+  return (
+    <span>
+      Custom-rendered label with a{' '}
+      <Link href="https://www.microsoft.com" target="_blank">
+        link
+      </Link>
+    </span>
+  );
 }
