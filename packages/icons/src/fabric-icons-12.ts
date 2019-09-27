@@ -22,9 +22,25 @@ export function initializeIcons(
     },
     fontFace: {
       fontFamily: `"FabricMDL2Icons-12"`,
-      src: `url('${baseUrl}fabric-icons-12-e7bd8254.woff') format('woff')`
+      src: `url('${baseUrl}fabric-icons-12-7e945a1e.woff') format('woff')`
     },
     icons: {
+      'FinancialSolid': '\uF346',
+      'FinancialMirroredSolid': '\uF347',
+      'HeadsetSolid': '\uF348',
+      'PermissionsSolid': '\uF349',
+      'ParkingSolid': '\uF34A',
+      'ParkingMirroredSolid': '\uF34B',
+      'DiamondSolid': '\uF34C',
+      'AsteriskSolid': '\uF34D',
+      'OfflineStorageSolid': '\uF34E',
+      'BankSolid': '\uF34F',
+      'DecisionSolid': '\uF350',
+      'Parachute': '\uF351',
+      'ParachuteSolid': '\uF352',
+      'FiltersSolid': '\uF353',
+      'ColorSolid': '\uF354',
+      'ReviewSolid': '\uF355',
       'ReviewRequestSolid': '\uF356',
       'ReviewRequestMirroredSolid': '\uF357',
       'ReviewResponseSolid': '\uF358',
@@ -108,23 +124,7 @@ export function initializeIcons(
       'PlayReverse': '\uF3E5',
       'SearchData': '\uF3F1',
       'UnSetColor': '\uF3F9',
-      'DeclineCall': '\uF405',
-      'RectangularClipping': '\uF407',
-      'TeamsLogo16': '\uF40A',
-      'TeamsLogoFill16': '\uF40B',
-      'Spacer': '\uF40D',
-      'SkypeLogo16': '\uF40E',
-      'SkypeForBusinessLogo16': '\uF40F',
-      'SkypeForBusinessLogoFill16': '\uF410',
-      'FilterSolid': '\uF412',
-      'MailUndelivered': '\uF415',
-      'MailTentative': '\uF416',
-      'MailTentativeMirrored': '\uF417',
-      'MailReminder': '\uF418',
-      'ReceiptUndelivered': '\uF419',
-      'ReceiptTentative': '\uF41A',
-      'ReceiptTentativeMirrored': '\uF41B',
-      'Inbox': '\uF41C'
+      'DeclineCall': '\uF405'
     }
   };
 

@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Golden Folder grid view CSS cleanup for Fabric Master",
+  "packageName": "@uifabric/experiments",
+  "email": "caperez@microsoft.com",
+  "commit": "dcbea452fae639fd4fd48c486f3256f5309ac66e",
+  "date": "2019-09-25T11:19:41.075Z"
+}

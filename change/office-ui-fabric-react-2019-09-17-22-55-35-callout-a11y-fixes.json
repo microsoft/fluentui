@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fixes various a11y issues in docs and controls",
-  "packageName": "office-ui-fabric-react",
-  "email": "mgodbolt@microsoft.com",
-  "commit": "ea31c7a0dcffff4bd4301ff510c50eedc9a6e2e5",
-  "date": "2019-09-18T05:55:35.297Z"
-}

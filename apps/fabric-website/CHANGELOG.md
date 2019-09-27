@@ -1,7 +1,13 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Thu, 19 Sep 2019 13:05:24 GMT and should not be manually modified.
+This log was last generated on Fri, 20 Sep 2019 12:34:28 GMT and should not be manually modified.
 
+## 7.5.0
+Fri, 20 Sep 2019 12:34:28 GMT
+
+### Minor changes
+
+- Website: Split Brand icons page into Brand Icons and File Type Icons pages (marygans@microsoft.com)
 ## 7.4.8
 Thu, 19 Sep 2019 13:05:24 GMT
 

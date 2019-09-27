@@ -4,7 +4,6 @@ import { DateRangeType } from '../Calendar/Calendar.types';
 import { WeeklyDayPickerInlineExample } from '../WeeklyDayPicker/examples/WeeklyDayPicker.Inline.Example';
 
 const WeeklyDayPickerInlineExampleCode = require('!raw-loader!@uifabric/date-time/src/components/WeeklyDayPicker/examples/WeeklyDayPicker.Inline.Example.tsx') as string;
-const WeeklyDayPickerInlineExampleCodepen = require('!@uifabric/codepen-loader!@uifabric/date-time/src/components/WeeklyDayPicker/examples/WeeklyDayPicker.Inline.Example.tsx') as string;
 
 export class WeeklyDayPickerPage extends React.Component<{}, {}> {
   public render(): JSX.Element {
@@ -14,11 +13,7 @@ export class WeeklyDayPickerPage extends React.Component<{}, {}> {
         componentName="WeeklyDayPicker"
         exampleCards={
           <div>
-            <ExampleCard
-              title="Inline WeeklyDayPicker"
-              code={WeeklyDayPickerInlineExampleCode}
-              codepenJS={WeeklyDayPickerInlineExampleCodepen}
-            >
+            <ExampleCard title="Inline WeeklyDayPicker" code={WeeklyDayPickerInlineExampleCode}>
               <WeeklyDayPickerInlineExample
                 isMonthPickerVisible={false}
                 dateRangeType={DateRangeType.Day}
@@ -26,11 +21,7 @@ export class WeeklyDayPickerPage extends React.Component<{}, {}> {
                 showGoToToday={true}
               />
             </ExampleCard>
-            <ExampleCard
-              title="Inline WeeklyDayPicker with externally controlled date"
-              code={WeeklyDayPickerInlineExampleCode}
-              codepenJS={WeeklyDayPickerInlineExampleCodepen}
-            >
+            <ExampleCard title="Inline WeeklyDayPicker with externally controlled date" code={WeeklyDayPickerInlineExampleCode}>
               <WeeklyDayPickerInlineExample
                 isMonthPickerVisible={false}
                 dateRangeType={DateRangeType.Day}

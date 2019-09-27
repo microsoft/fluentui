@@ -201,7 +201,6 @@ exports[`Component Examples renders DatePicker.WeekNumbers.Example.tsx correctly
                   }
               data-icon-name="Calendar"
               onClick={[Function]}
-              role="presentation"
             >
               
             </i>
@@ -348,8 +347,9 @@ exports[`Component Examples renders DatePicker.WeekNumbers.Example.tsx correctly
     >
       <span
         aria-atomic={true}
+        aria-invalid={false}
         aria-label="Monday"
-        aria-live="off"
+        aria-live="polite"
         aria-posinset={2}
         aria-selected={true}
         aria-setsize={7}
@@ -416,7 +416,6 @@ exports[`Component Examples renders DatePicker.WeekNumbers.Example.tsx correctly
                 speak: none;
               }
           data-icon-name="ChevronDown"
-          role="presentation"
         >
           
         </i>

@@ -48,7 +48,6 @@ exports[`Component Examples renders SpinButton.BasicWithIcon.Example.tsx correct
               speak: none;
             }
         data-icon-name="IncreaseIndentLegacy"
-        role="presentation"
       >
         
       </i>
@@ -188,7 +187,6 @@ exports[`Component Examples renders SpinButton.BasicWithIcon.Example.tsx correct
                 font-size: 14px;
                 font-weight: 400;
                 height: 50%;
-                min-width: 32px;
                 outline: none;
                 padding-bottom: 0px;
                 padding-left: 0px;
@@ -328,7 +326,6 @@ exports[`Component Examples renders SpinButton.BasicWithIcon.Example.tsx correct
                 font-size: 14px;
                 font-weight: 400;
                 height: 50%;
-                min-width: 32px;
                 outline: none;
                 padding-bottom: 0px;
                 padding-left: 0px;
@@ -424,7 +421,7 @@ exports[`Component Examples renders SpinButton.BasicWithIcon.Example.tsx correct
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
-                    font-family: "FabricMDL2Icons-2";
+                    font-family: "FabricMDL2Icons-3";
                     font-style: normal;
                     font-weight: normal;
                     speak: none;

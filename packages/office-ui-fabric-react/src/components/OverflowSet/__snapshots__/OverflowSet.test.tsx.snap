@@ -2,6 +2,7 @@
 
 exports[`OverflowSet snapshot tests basicSnapshot 1`] = `
 <div
+  aria-orientation="horizontal"
   className=
       ms-FocusZone
       ms-OverflowSet
@@ -23,6 +24,7 @@ exports[`OverflowSet snapshot tests basicSnapshot 1`] = `
 
 exports[`OverflowSet snapshot tests snapshot with classname 1`] = `
 <div
+  aria-orientation="horizontal"
   className=
       ms-FocusZone
       ms-OverflowSet
@@ -45,6 +47,7 @@ exports[`OverflowSet snapshot tests snapshot with classname 1`] = `
 
 exports[`OverflowSet snapshot tests snapshot with classname and vertical layout 1`] = `
 <div
+  aria-orientation="vertical"
   className=
       ms-FocusZone
       ms-OverflowSet

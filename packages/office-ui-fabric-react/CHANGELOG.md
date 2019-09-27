@@ -1,7 +1,66 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 19 Sep 2019 13:05:24 GMT and should not be manually modified.
+This log was last generated on Thu, 26 Sep 2019 12:32:32 GMT and should not be manually modified.
 
+## 7.39.1
+Thu, 26 Sep 2019 12:32:32 GMT
+
+### Patches
+
+- simplified examples and fix a11y issues (mgodbolt@microsoft.com)
+- Dropdown: Error messages in Dropdown are now linked to the Dropdown (from a programmatic accessibility POV). (cliff.koh@microsoft.com)
+## 7.39.0
+Wed, 25 Sep 2019 12:34:56 GMT
+
+### Minor changes
+
+- Adding a prop shouldUpdateWhenHidden to decide whether to udpate hidden callouts and contextual menus (kushaly@microsoft.com)
+- Fix return type of onGrowData() in CommandBar. (1721514+gordianschuda@users.noreply.github.com)
+### Patches
+
+- DetailsList: initialize selection object mode with selectionMode prop if it is defined (naethell@microsoft.com)
+- fixing focus outline in IE11. The outline in IE11 does not show if it overflows the div it's in unless we explicitly set overflow: visible on the div (other browsers have this as the default). (jolore@microsoft.com)
+- Coachmark Accessibility: adding HighContrastSelector to coachmark (marygans@microsoft.com)
+- updated callout example with better, accessible example (mgodbolt@microsoft.com)
+- Pivot: Fix accessibility of example. (jdh@microsoft.com)
+- Use correct type in docs for 'collapseAllVisibility' in 'GroupedList' (thomas.gassmann@hotmail.com)
+- Pivot: Improve accessibility of examples. (jdh@microsoft.com)
+## 7.38.0
+Tue, 24 Sep 2019 12:35:43 GMT
+
+### Minor changes
+
+- Changing ColorPicker to use a selectedId instead of selectedIndex in its state. (kushaly@microsoft.com)
+### Patches
+
+- Dialog: Updated styles to match toolkit. (v-mare@microsoft.com)
+- Added a title in the custom SplitButton example (kchau@microsoft.com)
+- TeachingBubble: alt tags for example images. (jdh@microsoft.com)
+- Remove codepen-loader usage (elcraig@microsoft.com)
+## 7.37.1
+Mon, 23 Sep 2019 12:33:15 GMT
+
+### Patches
+
+- Icon Accessibility: update aria-hidden to pull aria-labelledBy from root and imageProps and removed role presentation - should not apply when a label is provided.  (marygans@microsoft.com)
+- Update icons to v3.50. May change subset font files for some components. (pejahn@microsoft.com)
+- FocusTrapZone example: Remove Randomize function. (jagore@microsoft.com)
+- Positioning: Fix issue where anchor edge would flip even if previous positions calculated (joschect@microsoft.com)
+- fix typo in ComboBox and Button docs (thomas.gassmann@hotmail.com)
+- Stack doesn't need to set overflow=hidden when grow=true to restrict size of flexbox children. Users are having to override this with overflow=visible to prevent clipping inner children (email not defined)
+## 7.37.0
+Fri, 20 Sep 2019 12:34:28 GMT
+
+### Minor changes
+
+- Breadcrumb: Added ability to make current item a heading. (v-mare@microsoft.com)
+### Patches
+
+- Update Panel examples to improve accessibility. (jdh@microsoft.com)
+- Fixes various a11y issues in docs and controls (mgodbolt@microsoft.com)
+- TeachingBubble: Specify heading role for header. (jdh@microsoft.com)
+- ContextualMenu: Update the bounds prop to allow for the same functionality that the Callout has (jspurlin@microsoft.com)
+- Listen to composition events only for IE11 (amyngu@microsoft.com)
 ## 7.36.0
 Thu, 19 Sep 2019 13:05:24 GMT
 

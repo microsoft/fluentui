@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { CommandBarButton } from 'office-ui-fabric-react/lib/Button';
-import { TooltipHost, DirectionalHint } from 'office-ui-fabric-react/lib/Tooltip';
 import { IOverflowSetItemProps, OverflowSet } from 'office-ui-fabric-react/lib/OverflowSet';
 
 const noOp = () => undefined;
@@ -9,6 +8,7 @@ export class OverflowSetVerticalExample extends React.PureComponent {
   public render(): JSX.Element {
     return (
       <OverflowSet
+        aria-label="Vertical Example"
         vertical
         items={[
           {
@@ -53,15 +53,21 @@ export class OverflowSetVerticalExample extends React.PureComponent {
 
   private _onRenderItem = (item: IOverflowSetItemProps): JSX.Element => {
     return (
-      <TooltipHost content={item.name} calloutProps={{ directionalHint: DirectionalHint.rightCenter, beakWidth: 12 }}>
-        <CommandBarButton styles={{ root: { padding: '10px' } }} iconProps={{ iconName: item.icon }} onClick={item.onClick} />
-      </TooltipHost>
+      <CommandBarButton
+        role="menuitem"
+        aria-label={item.name}
+        styles={{ root: { padding: '10px' } }}
+        iconProps={{ iconName: item.icon }}
+        onClick={item.onClick}
+      />
     );
   };
 
   private _onRenderOverflowButton = (overflowItems: any[] | undefined): JSX.Element => {
     return (
       <CommandBarButton
+        role="menu"
+        title="More items"
         styles={{ root: { padding: '10px' }, menuIcon: { fontSize: '16px' } }}
         menuIconProps={{ iconName: 'More' }}
         menuProps={{ items: overflowItems! }}

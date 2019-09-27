@@ -6,9 +6,7 @@ import { MessageBarBasicExample } from './examples/MessageBar.Basic.Example';
 import { MessageBarStyledExample } from './examples/MessageBar.Styled.Example';
 
 const MessageBarBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/MessageBar/examples/MessageBar.Basic.Example.tsx') as string;
-const MessageBarBasicExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/MessageBar/examples/MessageBar.Basic.Example.tsx') as string;
 const MessageBarStyledExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/MessageBar/examples/MessageBar.Styled.Example.tsx') as string;
-const MessageBarStyledExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/MessageBar/examples/MessageBar.Styled.Example.tsx') as string;
 
 export const MessageBarPageProps: IDocPageProps = {
   title: 'MessageBar',
@@ -18,14 +16,12 @@ export const MessageBarPageProps: IDocPageProps = {
     {
       title: 'Various MessageBar types',
       code: MessageBarBasicExampleCode,
-      view: <MessageBarBasicExample />,
-      codepenJS: MessageBarBasicExampleCodepen
+      view: <MessageBarBasicExample />
     },
     {
       title: 'Custom styled MessageBars',
       code: MessageBarStyledExampleCode,
-      view: <MessageBarStyledExample />,
-      codepenJS: MessageBarStyledExampleCodepen
+      view: <MessageBarStyledExample />
     }
   ],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/MessageBar/docs/MessageBarOverview.md'),
