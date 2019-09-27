@@ -3,7 +3,7 @@ import { TypeScriptWorker, EmitOutput } from '@uifabric/monaco-editor/monaco-typ
 import { getWindow } from 'office-ui-fabric-react/lib/Utilities';
 import { transformExample } from './exampleTransform';
 import { _getErrorMessages } from './transpileHelpers';
-import { IMonacoTextModel, IBasicPackageGroup, ITransformedCode } from '../interfaces/index';
+import { IMonacoTextModel, IBasicPackageGroup, ITransformedCode, ITransformedExample } from '../interfaces/index';
 
 const win = getWindow() as
   | Window & {
@@ -60,18 +60,18 @@ export function transpile(model: IMonacoTextModel): Promise<ITransformedCode> {
  * Transpiles the code, does an additional transform to prepare for rendering, and evals the code.
  *
  * @param model - Current editor text model
- * @param id - `id` of the `div` element the example will be rendered into after transforming
  * @param supportedPackages - Supported packages for imports, grouped by global name
  * (React is implicitly supported)
- * @returns Returns an object with the output string if successful, and errors if unsuccessful.
+ * @returns Returns an object with the output string and component to render if successful,
+ * or error(s) if unsuccessful.
  */
 // This is intentionally not an async function, because debugging within transpiled async functions
 // is next to impossible.
-export function transpileAndEval(model: IMonacoTextModel, id: string, supportedPackages: IBasicPackageGroup[]): Promise<ITransformedCode> {
+export function transpileAndEval(model: IMonacoTextModel, supportedPackages: IBasicPackageGroup[]): Promise<ITransformedExample> {
   const exampleTs = model.getValue();
   return transpile(model)
     .then(
-      (transpileOutput: ITransformedCode): ITransformedCode => {
+      (transpileOutput: ITransformedCode): ITransformedExample => {
         if (transpileOutput.error) {
           return transpileOutput;
         }
@@ -80,20 +80,18 @@ export function transpileAndEval(model: IMonacoTextModel, id: string, supportedP
         const transformedExample = transformExample({
           tsCode: exampleTs,
           jsCode: transpileOutput.output,
-          supportedPackages,
-          id
+          returnComponent: true,
+          supportedPackages
         });
-        if (transformedExample.output !== undefined) {
-          // Run the example inside a closure to avoid conflicts with pre-existing globals
-          eval(`{ ${transformedExample.output} }`);
-          return transformedExample;
+        if (transformedExample.output) {
+          return { ...transformedExample, component: eval(transformedExample.output) };
         } else {
           return { error: transformedExample.error || 'Unknown error transforming example' };
         }
       }
     )
     .catch(
-      (err: string | Error): ITransformedCode => {
+      (err: string | Error): ITransformedExample => {
         // Log the error to the console so people can see the full stack/etc if they want
         console.error(err);
         return { error: typeof err === 'string' ? err : err.message };

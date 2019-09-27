@@ -30,6 +30,7 @@
 <script type="text/javascript">
   // @ts-check
   var isProduction = location.hostname === 'developer.microsoft.com';
+  var isDev = getParameterByName('isDev') === '1';
   var devhost = getParameterByName('devhost');
   var entryPointFilename = 'fabric-sitev5';
   var appPath = '';
@@ -101,7 +102,7 @@
   }
 
   function loadAppScripts(appPath) {
-    var scripts = [appPath + entryPointFilename + '.min.js'];
+    var scripts = [appPath + entryPointFilename + (isDev ? '.js' : '.min.js')];
 
     if (!window.React) {
       // Only needed for Fabric 5 and 6 (7 bundles React)
@@ -117,7 +118,7 @@
 
     window.MonacoConfig = {
       baseUrl: appPath,
-      useMinified: true,
+      useMinified: !isDev,
       crossDomain: true
     };
   }
