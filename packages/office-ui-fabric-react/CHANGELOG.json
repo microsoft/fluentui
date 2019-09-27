@@ -2,6 +2,40 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Fri, 27 Sep 2019 12:33:04 GMT",
+      "tag": "office-ui-fabric-react_v7.39.2",
+      "version": "7.39.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "SwatchColorPicker: Updates web fluent styles per toolkit",
+            "author": "v-mare@microsoft.com",
+            "commit": "0d638cff92219bbf7bc79115f6a4f948eade2632"
+          },
+          {
+            "comment": "revert icon button back to fixed width",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "855b171137d267e4dac8d1e06a9e0de152553640"
+          },
+          {
+            "comment": "Dropdown: Narrator should announce options before, during, and after expanding/collapsing.",
+            "author": "aneeshak@microsoft.com",
+            "commit": "f49dc20269bb4622e2858a5d627436b352e64cf2"
+          },
+          {
+            "comment": "DetailsList: Narrator should announce SelectAll Checkbox as a toggle selection for all items",
+            "author": "aneeshak@microsoft.com",
+            "commit": "24028884d7f00767de402aa6cb9e2dc9874c8f21"
+          },
+          {
+            "comment": "TextField: Multiline textfields are now correctly associated with their labels with `aria-labelledby`.",
+            "author": "aneeshak@microsoft.com",
+            "commit": "44513977f9292c8eb860c6ae35e9420a005cc67b"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 26 Sep 2019 12:32:32 GMT",
       "tag": "office-ui-fabric-react_v7.39.1",
       "version": "7.39.1",

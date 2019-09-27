@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "TextField: Multiline textfields are now correctly associated with their labels with `aria-labelledby`.",
-  "packageName": "office-ui-fabric-react",
-  "email": "aneeshak@microsoft.com",
-  "commit": "44513977f9292c8eb860c6ae35e9420a005cc67b",
-  "date": "2019-09-25T21:32:36.811Z"
-}

@@ -1,7 +1,13 @@
 # Change Log - @uifabric/file-type-icons
 
-This log was last generated on Thu, 12 Sep 2019 12:34:15 GMT and should not be manually modified.
+This log was last generated on Fri, 27 Sep 2019 12:33:04 GMT and should not be manually modified.
 
+## 7.1.1
+Fri, 27 Sep 2019 12:33:04 GMT
+
+### Patches
+
+- Golden Folder grid view css cleanup for Fabric Master, rev filetype version param string (caperez@microsoft.com)
 ## 7.1.0
 Thu, 12 Sep 2019 12:34:15 GMT
 
