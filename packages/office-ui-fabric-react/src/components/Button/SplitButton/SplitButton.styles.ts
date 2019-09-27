@@ -1,5 +1,5 @@
 import { IButtonStyles } from '../Button.types';
-import { ITheme, concatStyleSets, getFocusStyle, IStyle } from '../../../Styling';
+import { HighContrastSelector, ITheme, concatStyleSets, getFocusStyle, IStyle } from '../../../Styling';
 import { memoizeFunction } from '../../../Utilities';
 
 export const getStyles = memoizeFunction(
@@ -20,11 +20,29 @@ export const getStyles = memoizeFunction(
       bottom: 8
     };
 
+    const splitButtonDividerDisabled: IStyle = {
+      position: 'absolute',
+      width: 1,
+      right: 31,
+      top: 8,
+      bottom: 8,
+      selectors: {
+        [HighContrastSelector]: {
+          backgroundColor: 'GrayText'
+        }
+      }
+    };
+
     const splitButtonStyles: IButtonStyles = {
       splitButtonContainer: [
         getFocusStyle(theme, { highContrastStyle: buttonHighContrastFocus }),
         {
-          display: 'inline-flex'
+          display: 'inline-flex',
+          selectors: {
+            '.ms-Button--default, .ms-Button--primary': {
+              borderRight: 'none'
+            }
+          }
         }
       ],
       splitButtonContainerFocused: {
@@ -51,12 +69,17 @@ export const getStyles = memoizeFunction(
       },
 
       splitButtonDivider: splitButtonDivider,
-      splitButtonDividerDisabled: splitButtonDivider,
+      splitButtonDividerDisabled: splitButtonDividerDisabled,
       splitButtonMenuButtonDisabled: {
         pointerEvents: 'none',
         selectors: {
           ':hover': {
             cursor: 'default'
+          },
+          [HighContrastSelector]: {
+            border: `1px solid GrayText`,
+            color: 'GrayText',
+            backgroundColor: 'Window'
           }
         }
       },

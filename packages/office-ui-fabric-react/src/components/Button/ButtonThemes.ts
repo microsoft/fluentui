@@ -1,5 +1,6 @@
 import { IButtonStyles } from './Button.types';
 import { ITheme, HighContrastSelector } from '../../Styling';
+import { IsFocusVisibleClassName } from '../../Utilities';
 
 export function standardStyles(theme: ITheme): IButtonStyles {
   const s = theme.semanticColors;
@@ -70,6 +71,10 @@ export function standardStyles(theme: ITheme): IButtonStyles {
               color: 'Highlight'
             }
           }
+        },
+        [HighContrastSelector]: {
+          border: `1px solid white`,
+          borderLeft: 'none'
         }
       }
     },
@@ -84,7 +89,17 @@ export function standardStyles(theme: ITheme): IButtonStyles {
     },
 
     splitButtonDivider: {
-      backgroundColor: theme.palette.neutralTertiaryAlt
+      backgroundColor: theme.palette.neutralTertiaryAlt,
+      position: 'absolute',
+      width: 1,
+      right: 31,
+      top: 8,
+      bottom: 8,
+      selectors: {
+        [HighContrastSelector]: {
+          backgroundColor: 'WindowText'
+        }
+      }
     },
 
     splitButtonDividerDisabled: {
@@ -181,7 +196,17 @@ export function primaryStyles(theme: ITheme): IButtonStyles {
     },
 
     splitButtonDivider: {
-      backgroundColor: theme.palette.white
+      backgroundColor: theme.palette.white,
+      position: 'absolute',
+      width: 1,
+      right: 31,
+      top: 8,
+      bottom: 8,
+      selectors: {
+        [HighContrastSelector]: {
+          backgroundColor: 'Window'
+        }
+      }
     },
 
     splitButtonDividerDisabled: {
@@ -192,6 +217,9 @@ export function primaryStyles(theme: ITheme): IButtonStyles {
       backgroundColor: theme.palette.themePrimary,
       color: theme.palette.white,
       selectors: {
+        [HighContrastSelector]: {
+          backgroundColor: 'WindowText'
+        },
         ':hover': {
           backgroundColor: theme.palette.themeDark,
           selectors: {
