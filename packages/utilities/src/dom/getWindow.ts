@@ -1,5 +1,6 @@
 import { _isSSR } from './setSSR';
-import * as ReactDOM from 'react-dom';
+import { Component } from 'react';
+import { findDOMNode } from 'react-dom';
 
 let _window: Window | undefined = undefined;
 
@@ -20,12 +21,12 @@ try {
  *
  * @public
  */
-export function getWindow(rootElement?: Element | React.Component | null): Window | undefined {
+export function getWindow(rootElement?: Element | Component | null): Window | undefined {
   if (_isSSR || typeof _window === 'undefined') {
     return undefined;
   } else {
     if (rootElement && !(rootElement as Element).ownerDocument) {
-      rootElement = ReactDOM.findDOMNode(rootElement) as Element;
+      rootElement = findDOMNode(rootElement) as Element;
     }
     const el = rootElement as Element;
 

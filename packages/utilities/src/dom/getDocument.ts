@@ -1,5 +1,6 @@
 import { _isSSR } from './setSSR';
-import * as ReactDOM from 'react-dom';
+import { Component } from 'react';
+import { findDOMNode } from 'react-dom';
 
 /**
  * Helper to get the document object. Note that in popup window cases, document
@@ -9,13 +10,13 @@ import * as ReactDOM from 'react-dom';
  *
  * @public
  */
-export function getDocument(rootElement?: HTMLElement | React.Component | null): Document | undefined {
+export function getDocument(rootElement?: HTMLElement | Component | null): Document | undefined {
   if (_isSSR || typeof document === 'undefined') {
     return undefined;
   } else {
     if (rootElement && !(rootElement as Element).ownerDocument) {
       // tslint:disable-next-line:no-any
-      rootElement = ReactDOM.findDOMNode(rootElement) as any;
+      rootElement = findDOMNode(rootElement) as any;
     }
     const el = rootElement as Element;
 
