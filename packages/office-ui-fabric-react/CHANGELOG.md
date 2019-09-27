@@ -1,7 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 26 Sep 2019 12:22:35 GMT and should not be manually modified.
+This log was last generated on Fri, 27 Sep 2019 12:23:16 GMT and should not be manually modified.
 
+## 6.204.4
+Fri, 27 Sep 2019 12:23:16 GMT
+
+### Patches
+
+- fixing focus outline in IE11. The outline in IE11 does not show if it overflows the div it's in unless we explicitly set overflow: visible on the div (other browsers have this as the default). (jolore@microsoft.com)
 ## 6.204.3
 Thu, 26 Sep 2019 12:22:35 GMT
 
