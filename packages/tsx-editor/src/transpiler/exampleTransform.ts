@@ -36,6 +36,7 @@ export function transformExample(params: ITransformExampleParams): ITransformedC
 
   // Imports or exports will be removed since they are not supported.
   const mainCode = (jsCode || tsCode)
+    // Use .source because IE 11 doesn't support creating a regex from a regex
     .replace(new RegExp(IMPORT_REGEX.source, 'gm'), '')
     .replace(/^export /gm, '')
     .trim();
