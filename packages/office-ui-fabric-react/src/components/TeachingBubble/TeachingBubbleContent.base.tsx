@@ -114,12 +114,14 @@ export class TeachingBubbleContentBase extends BaseComponent<ITeachingBubbleProp
 
     if (primaryButtonProps || secondaryButtonProps || customFooterContent) {
       footerContent = (
-        <Stack className={classNames.footer} horizontal horizontalAlign={customFooterContent ? 'space-between' : 'end'}>
-          {<span>{customFooterContent}</span>}
-          <div>
+        <Stack horizontal horizontalAlign={customFooterContent ? 'space-between' : 'end'}>
+          <Stack.Item className={classNames.footer} align="center">
+            {<span>{customFooterContent}</span>}
+          </Stack.Item>
+          <Stack.Item>
             {secondaryButtonProps && <DefaultButton {...secondaryButtonProps} className={classNames.secondaryButton} />}
             {primaryButtonProps && <PrimaryButton {...primaryButtonProps} className={classNames.primaryButton} />}
-          </div>
+          </Stack.Item>
         </Stack>
       );
     }
