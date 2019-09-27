@@ -226,6 +226,9 @@ exports[`Component Examples renders Button.CommandBar.Example.tsx correctly 1`] 
             right: -2px;
             top: -2px;
           }
+          & .ms-Button--default, & .ms-Button--primary {
+            border-right: none;
+          }
           &:focus {
             outline: none!important;
           }

@@ -103,6 +103,9 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                       right: -2px;
                       top: -2px;
                     }
+                    & .ms-Button--default, & .ms-Button--primary {
+                      border-right: none;
+                    }
                     &:focus {
                       outline: none!important;
                     }
@@ -426,6 +429,9 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                       right: -2px;
                       top: -2px;
                     }
+                    & .ms-Button--default, & .ms-Button--primary {
+                      border-right: none;
+                    }
                 data-automation-id="uploadButton"
                 data-is-focusable={true}
                 onFocusCapture={[Function]}
@@ -636,6 +642,11 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                         @media screen and (-ms-high-contrast: active){&:hover {
                           color: Highlight;
                         }
+                        @media screen and (-ms-high-contrast: active){& {
+                          background-color: Window;
+                          border: 1px solid GrayText;
+                          color: GrayText;
+                        }
                     data-is-focusable={false}
                     disabled={false}
                     onClick={[Function]}
@@ -703,6 +714,9 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                           right: 31px;
                           top: 8px;
                           width: 1px;
+                        }
+                        @media screen and (-ms-high-contrast: active){& {
+                          background-color: GrayText;
                         }
                   />
                 </span>

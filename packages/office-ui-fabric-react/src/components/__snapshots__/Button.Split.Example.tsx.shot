@@ -77,6 +77,9 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
             right: -2px;
             top: -2px;
           }
+          & .ms-Button--default, & .ms-Button--primary {
+            border-right: none;
+          }
           &:focus {
             outline: none!important;
           }
@@ -257,6 +260,10 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
               @media screen and (-ms-high-contrast: active){&:hover {
                 color: Highlight;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                border-left: none;
+                border: 1px solid white;
+              }
           data-is-focusable={false}
           onClick={[Function]}
           onKeyDown={[Function]}
@@ -321,6 +328,9 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
                 right: 31px;
                 top: 8px;
                 width: 1px;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                background-color: WindowText;
               }
         />
       </span>
@@ -388,6 +398,9 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
             left: -2px;
             right: -2px;
             top: -2px;
+          }
+          & .ms-Button--default, & .ms-Button--primary {
+            border-right: none;
           }
           &:focus {
             outline: none!important;
@@ -572,6 +585,9 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
                 vertical-align: top;
                 width: 32px;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                background-color: WindowText;
+              }
               &:hover {
                 background-color: #005a9e;
               }
@@ -643,6 +659,9 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
                 top: 8px;
                 width: 1px;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                background-color: Window;
+              }
         />
       </span>
     </div>
@@ -709,6 +728,9 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
             left: -2px;
             right: -2px;
             top: -2px;
+          }
+          & .ms-Button--default, & .ms-Button--primary {
+            border-right: none;
           }
           &:focus {
             outline: none!important;
@@ -887,6 +909,9 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
                 vertical-align: top;
                 width: 32px;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                background-color: WindowText;
+              }
               &:hover {
                 background-color: #005a9e;
               }
@@ -958,6 +983,9 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
                 top: 8px;
                 width: 1px;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                background-color: GrayText;
+              }
         />
       </span>
     </div>
@@ -1026,6 +1054,9 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
             left: -2px;
             right: -2px;
             top: -2px;
+          }
+          & .ms-Button--default, & .ms-Button--primary {
+            border-right: none;
           }
       data-automation-id="test"
       data-is-focusable={true}
@@ -1204,6 +1235,11 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
                 vertical-align: top;
                 width: 32px;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                background-color: Window;
+                border: 1px solid GrayText;
+                color: GrayText;
+              }
               &:hover {
                 background-color: #f4f4f4;
                 cursor: default;
@@ -1277,6 +1313,9 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
                 top: 8px;
                 width: 1px;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                background-color: GrayText;
+              }
         />
       </span>
     </div>
@@ -1344,6 +1383,9 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 2`] = `
           left: -2px;
           right: -2px;
           top: -2px;
+        }
+        & .ms-Button--default, & .ms-Button--primary {
+          border-right: none;
         }
         @media screen and (-ms-high-contrast: active){& {
           border: none;
