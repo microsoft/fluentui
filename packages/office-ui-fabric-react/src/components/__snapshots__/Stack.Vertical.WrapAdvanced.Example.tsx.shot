@@ -754,9 +754,6 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
               &:active .ms-Dropdown-title--hasError {
                 border-color: #a4262c;
               }
-              &:focus .ms-Dropdown-title--hasError {
-                border-color: #a4262c;
-              }
           data-is-focusable={true}
           id="Dropdown2"
           onBlur={[Function]}
@@ -983,9 +980,6 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
               &:active .ms-Dropdown-title--hasError {
                 border-color: #a4262c;
               }
-              &:focus .ms-Dropdown-title--hasError {
-                border-color: #a4262c;
-              }
           data-is-focusable={true}
           id="Dropdown3"
           onBlur={[Function]}
@@ -1210,9 +1204,6 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
                 border-color: #a4262c;
               }
               &:active .ms-Dropdown-title--hasError {
-                border-color: #a4262c;
-              }
-              &:focus .ms-Dropdown-title--hasError {
                 border-color: #a4262c;
               }
           data-is-focusable={true}

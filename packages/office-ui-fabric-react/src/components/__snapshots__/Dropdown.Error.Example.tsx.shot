@@ -317,9 +317,6 @@ exports[`Component Examples renders Dropdown.Error.Example.tsx correctly 1`] = `
           &:active .ms-Dropdown-title--hasError {
             border-color: #a4262c;
           }
-          &:focus .ms-Dropdown-title--hasError {
-            border-color: #a4262c;
-          }
       data-is-focusable={true}
       id="Dropdown1"
       onBlur={[Function]}
