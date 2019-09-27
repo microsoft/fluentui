@@ -955,7 +955,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                                                 {
                                                   color: #ffffff;
                                                   font-size: 14px;
-                                                  font-weight: 300;
+                                                  font-weight: 400;
                                                   margin-bottom: 0px;
                                                   margin-left: 0px;
                                                   margin-right: 0px;
