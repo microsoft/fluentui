@@ -126,6 +126,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
           menuIconProps && menuIconProps.className,
           isPrimaryButtonDisabled!,
           checked!,
+          !!this.props.menuProps,
           !menuHidden,
           this.props.split,
           !!allowDisabledFocus
@@ -138,6 +139,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
           iconProps && iconProps.className,
           menuIconProps && menuIconProps.className,
           isPrimaryButtonDisabled!,
+          !!this.props.menuProps,
           checked!,
           !menuHidden,
           this.props.split
@@ -521,13 +523,14 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       tabIndex: -1,
       'data-is-focusable': false
     });
+
     const ariaDescribedBy = buttonProps.ariaDescription;
 
     if (keytipProps && menuProps) {
       keytipProps = this._getMemoizedMenuButtonKeytipProps(keytipProps);
     }
 
-    const containerProps = getNativeProps<React.HTMLAttributes<HTMLSpanElement>>(buttonProps, [], ['disabled']);
+    const containerProps = getNativeProps<React.HTMLAttributes<HTMLSpanElement>>(buttonProps, [], ['disabled', 'aria-label']);
 
     // Add additional props to apply on primary action button
     if (primaryActionButtonProps) {
