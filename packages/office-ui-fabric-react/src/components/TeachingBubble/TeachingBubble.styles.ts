@@ -143,9 +143,6 @@ export const getStyles = (props: ITeachingBubbleStyleProps): ITeachingBubbleStyl
     footer: [
       classNames.footer,
       {
-        display: 'flex',
-        justifyContent: 'flex-end',
-        alignItems: 'center',
         color: palette.white,
         selectors: {
           // TODO: global class name usage should be converted to a button styles function once Button supports JS styling
@@ -197,6 +194,7 @@ export const getStyles = (props: ITeachingBubbleStyleProps): ITeachingBubbleStyl
         borderColor: palette.white,
         color: palette.themePrimary,
         whiteSpace: 'nowrap',
+        marginLeft: '10px',
         selectors: {
           // TODO: global class name usage should be converted to a button styles function once Button supports JS styling
           [`.${classNames.buttonLabel}`]: fonts.medium,
@@ -249,7 +247,7 @@ export const getStyles = (props: ITeachingBubbleStyleProps): ITeachingBubbleStyl
         margin: 0,
         fontSize: fonts.medium.fontSize,
         color: palette.white,
-        fontWeight: FontWeights.semilight
+        fontWeight: FontWeights.regular
       }
     ],
     subComponentStyles: {

@@ -3,11 +3,11 @@ import * as React from 'react';
 import { DefaultButton, IButtonProps } from 'office-ui-fabric-react/lib/Button';
 import { TeachingBubble } from 'office-ui-fabric-react/lib/TeachingBubble';
 
-export interface ITeachingBubbleBasicExampleState {
+export interface ITeachingBubbleMultiStepExampleState {
   isTeachingBubbleVisible?: boolean;
 }
 
-export class TeachingBubbleBasicExample extends React.Component<{}, ITeachingBubbleBasicExampleState> {
+export class TeachingBubbleMultiStepExample extends React.Component<{}, ITeachingBubbleMultiStepExampleState> {
   private _menuButtonElement: HTMLElement;
 
   constructor(props: {}) {
@@ -23,17 +23,17 @@ export class TeachingBubbleBasicExample extends React.Component<{}, ITeachingBub
 
   public render(): JSX.Element {
     const { isTeachingBubbleVisible } = this.state;
-    const examplePrimaryButton: IButtonProps = {
-      children: 'Try it out'
-    };
     const exampleSecondaryButtonProps: IButtonProps = {
-      children: 'Maybe later',
+      children: 'Previous',
       onClick: this._onDismiss
+    };
+    const examplePrimaryButton: IButtonProps = {
+      children: 'Next'
     };
 
     return (
       <div className="ms-TeachingBubbleExample">
-        <span className="ms-TeachingBubbleBasicExample-buttonArea" ref={menuButton => (this._menuButtonElement = menuButton!)}>
+        <span className="ms-TeachingBubbleMultiStepExample-buttonArea" ref={menuButton => (this._menuButtonElement = menuButton!)}>
           <DefaultButton
             onClick={isTeachingBubbleVisible ? this._onDismiss : this._onShow}
             text={isTeachingBubbleVisible ? 'Hide TeachingBubble' : 'Show TeachingBubble'}
@@ -43,9 +43,10 @@ export class TeachingBubbleBasicExample extends React.Component<{}, ITeachingBub
           <div>
             <TeachingBubble
               target={this._menuButtonElement}
-              primaryButtonProps={examplePrimaryButton}
               secondaryButtonProps={exampleSecondaryButtonProps}
+              primaryButtonProps={examplePrimaryButton}
               onDismiss={this._onDismiss}
+              footerContent="2 of 3"
               headline="Discover what’s trending around you"
             >
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, nulla, ipsum? Molestiae quis aliquam magni harum non?
