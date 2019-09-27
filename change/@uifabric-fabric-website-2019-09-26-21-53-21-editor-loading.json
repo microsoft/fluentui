@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Don't load minified editor files",
+  "packageName": "@uifabric/fabric-website",
+  "email": "elcraig@microsoft.com",
+  "commit": "d4b0254c3aa931b39801f2f71e33952fbc149480",
+  "date": "2019-09-27T04:53:03.565Z"
+}
