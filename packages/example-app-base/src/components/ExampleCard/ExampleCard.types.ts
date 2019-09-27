@@ -19,7 +19,11 @@ export interface IExampleCardProps {
   donts?: JSX.Element;
   /** Whether the example is scrollable */
   isScrollable?: boolean;
-  /** JS string used in the example card's "Export to CodePen" button */
+  /**
+   * JS string used for the example card's "Export to CodePen" button.
+   * @deprecated Determining if export to codepen is supported and transforming the example
+   * are now handled automatically at runtime.
+   */
   codepenJS?: string;
 
   /** Theme provided by higher-order component. */

@@ -22,9 +22,25 @@ export function initializeIcons(
     },
     fontFace: {
       fontFamily: `"FabricMDL2Icons-16"`,
-      src: `url('${baseUrl}fabric-icons-16-0d3edeb2.woff') format('woff')`
+      src: `url('${baseUrl}fabric-icons-16-9cf93f3b.woff') format('woff')`
     },
     icons: {
+      'OfficeChatSolid': '\uF710',
+      'MailSchedule': '\uF72E',
+      'WarningSolid': '\uF736',
+      'Blocked2Solid': '\uF737',
+      'SkypeCircleArrow': '\uF747',
+      'SkypeArrow': '\uF748',
+      'SyncStatus': '\uF751',
+      'SyncStatusSolid': '\uF752',
+      'ProjectDocument': '\uF759',
+      'ToDoLogoOutline': '\uF75B',
+      'VisioOnlineLogoFill32': '\uF75F',
+      'VisioOnlineLogo32': '\uF760',
+      'VisioOnlineLogoCloud32': '\uF761',
+      'VisioDiagramSync': '\uF762',
+      'Event12': '\uF763',
+      'EventDateMissed12': '\uF764',
       'UserOptional': '\uF767',
       'ResponsesMenu': '\uF768',
       'DoubleDownArrow': '\uF769',
@@ -39,6 +55,7 @@ export function initializeIcons(
       'PromotedDatabase': '\uF77D',
       'BarChartVerticalFilter': '\uF77E',
       'BarChartVerticalFilterSolid': '\uF77F',
+      'MicOff2': '\uF781',
       'MicrosoftTranslatorLogo': '\uF782',
       'ShowTimeAs': '\uF787',
       'FileRequest': '\uF789',
@@ -107,24 +124,7 @@ export function initializeIcons(
       'SecondaryNav': '\uF814',
       'ColumnVerticalSection': '\uF81E',
       'SkypeCircleSlash': '\uF825',
-      'SkypeSlash': '\uF826',
-      'CustomizeToolbar': '\uF828',
-      'DuplicateRow': '\uF82A',
-      'RemoveFromTrash': '\uF82B',
-      'MailOptions': '\uF82C',
-      'Childof': '\uF82D',
-      'Footer': '\uF82E',
-      'Header': '\uF82F',
-      'BarChartVerticalFill': '\uF830',
-      'StackedColumnChart2Fill': '\uF831',
-      'PlainText': '\uF834',
-      'AccessibiltyChecker': '\uF835',
-      'DatabaseSync': '\uF842',
-      'ReservationOrders': '\uF845',
-      'TabOneColumn': '\uF849',
-      'TabTwoColumn': '\uF84A',
-      'TabThreeColumn': '\uF84B',
-      'MicrosoftTranslatorLogoGreen': '\uF852'
+      'SkypeSlash': '\uF826'
     }
   };
 

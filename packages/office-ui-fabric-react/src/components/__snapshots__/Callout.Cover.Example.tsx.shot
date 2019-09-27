@@ -129,9 +129,6 @@ exports[`Component Examples renders Callout.Cover.Example.tsx correctly 1`] = `
             &:active .ms-Dropdown-title--hasError {
               border-color: #a4262c;
             }
-            &:focus .ms-Dropdown-title--hasError {
-              border-color: #a4262c;
-            }
         data-is-focusable={true}
         id="Dropdown0"
         onBlur={[Function]}
@@ -145,8 +142,9 @@ exports[`Component Examples renders Callout.Cover.Example.tsx correctly 1`] = `
       >
         <span
           aria-atomic={true}
+          aria-invalid={false}
           aria-label="Bottom Left Edge"
-          aria-live="off"
+          aria-live="polite"
           aria-posinset={5}
           aria-selected={true}
           aria-setsize={14}
@@ -213,7 +211,6 @@ exports[`Component Examples renders Callout.Cover.Example.tsx correctly 1`] = `
                   speak: none;
                 }
             data-icon-name="ChevronDown"
-            role="presentation"
           >
             
           </i>

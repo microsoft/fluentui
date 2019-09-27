@@ -242,12 +242,20 @@ describe('Callout Positioning', () => {
     expect(finalizedPosition.elementPosition.bottom).toBeDefined();
     expect(finalizedPosition.elementPosition.left).toBeUndefined();
 
+    // With bounds introduced, if the elementRectangle is closer to one edge of bounds than another,
+    // but it has already been positioned previously, then don't change the edge
+    // In this case, that's bottom (opposite of target) and left
+    finalizedPosition = __positioningTestPackage._finalizePositionData(pos, host as any, bounds, false, true);
+    expect(finalizedPosition.elementPosition.left).toBeDefined();
+    expect(finalizedPosition.elementPosition.bottom).toBeDefined();
+    expect(finalizedPosition.elementPosition.right).toBeUndefined();
+
     // With bounds introduced, the alignment should apply to the beak as well, aligning it to
     // the edge closest to bounds
     // In this case, that's the bottom (opposite of target) and right (closer to edge of bounds)
     const finalizedBeakPosition = __positioningTestPackage._finalizeBeakPosition(pos, beakPos, bounds);
     expect(finalizedBeakPosition.elementPosition.right).toBeDefined();
     expect(finalizedBeakPosition.elementPosition.bottom).toBeDefined();
-    expect(finalizedPosition.elementPosition.left).toBeUndefined();
+    expect(finalizedBeakPosition.elementPosition.left).toBeUndefined();
   });
 });

@@ -483,7 +483,6 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                         color: Window;
                       }
                   data-icon-name="CheckMark"
-                  role="presentation"
                 >
                   
                 </i>
@@ -626,7 +625,6 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                         color: Window;
                       }
                   data-icon-name="CheckMark"
-                  role="presentation"
                 >
                   
                 </i>
@@ -769,7 +767,6 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                         color: Window;
                       }
                   data-icon-name="CheckMark"
-                  role="presentation"
                 >
                   
                 </i>
@@ -911,7 +908,6 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                         color: Window;
                       }
                   data-icon-name="CheckMark"
-                  role="presentation"
                 >
                   
                 </i>
@@ -1331,7 +1327,6 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       color: Window;
                     }
                 data-icon-name="CheckMark"
-                role="presentation"
               >
                 
               </i>
@@ -1830,9 +1825,6 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     &:active .ms-Dropdown-title--hasError {
                       border-color: #a4262c;
                     }
-                    &:focus .ms-Dropdown-title--hasError {
-                      border-color: #a4262c;
-                    }
                 data-is-focusable={true}
                 id="Dropdown8"
                 onBlur={[Function]}
@@ -1846,8 +1838,9 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
               >
                 <span
                   aria-atomic={true}
+                  aria-invalid={false}
                   aria-label="Top"
-                  aria-live="off"
+                  aria-live="polite"
                   aria-posinset={1}
                   aria-selected={true}
                   aria-setsize={6}
@@ -1914,7 +1907,6 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                           speak: none;
                         }
                     data-icon-name="ChevronDown"
-                    role="presentation"
                   >
                     
                   </i>
@@ -2059,9 +2051,6 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     &:active .ms-Dropdown-title--hasError {
                       border-color: #a4262c;
                     }
-                    &:focus .ms-Dropdown-title--hasError {
-                      border-color: #a4262c;
-                    }
                 data-is-focusable={true}
                 id="Dropdown9"
                 onBlur={[Function]}
@@ -2075,8 +2064,9 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
               >
                 <span
                   aria-atomic={true}
+                  aria-invalid={false}
                   aria-label="Left"
-                  aria-live="off"
+                  aria-live="polite"
                   aria-posinset={1}
                   aria-selected={true}
                   aria-setsize={3}
@@ -2143,7 +2133,6 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                           speak: none;
                         }
                     data-icon-name="ChevronDown"
-                    role="presentation"
                   >
                     
                   </i>
@@ -2287,7 +2276,6 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                           color: Window;
                         }
                     data-icon-name="CheckMark"
-                    role="presentation"
                   >
                     
                   </i>

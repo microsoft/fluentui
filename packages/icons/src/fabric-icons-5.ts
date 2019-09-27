@@ -22,15 +22,28 @@ export function initializeIcons(
     },
     fontFace: {
       fontFamily: `"FabricMDL2Icons-5"`,
-      src: `url('${baseUrl}fabric-icons-5-03ad3f64.woff') format('woff')`
+      src: `url('${baseUrl}fabric-icons-5-f95ba260.woff') format('woff')`
     },
     icons: {
+      'Certificate': '\uEB95',
+      'FastForward': '\uEB9D',
+      'Rewind': '\uEB9E',
+      'Photo2': '\uEB9F',
+      'OpenSource': '\uEBC2',
+      'Movers': '\uEBCD',
+      'CloudDownload': '\uEBD3',
+      'Family': '\uEBDA',
+      'WindDirection': '\uEBE6',
+      'Bug': '\uEBE8',
+      'SiteScan': '\uEBEC',
+      'BrowserScreenShot': '\uEBED',
       'F12DevTools': '\uEBEE',
       'CSS': '\uEBEF',
       'JS': '\uEBF0',
       'DeliveryTruck': '\uEBF4',
       'ReminderPerson': '\uEBF7',
       'ReminderGroup': '\uEBF8',
+      'ReminderTime': '\uEBF9',
       'TabletMode': '\uEBFC',
       'Umbrella': '\uEC04',
       'NetworkTower': '\uEC05',
@@ -111,20 +124,7 @@ export function initializeIcons(
       'Uneditable': '\uED1D',
       'ReturnToSession': '\uED24',
       'OpenFolderHorizontal': '\uED25',
-      'CalendarMirrored': '\uED28',
-      'SwayLogoInverse': '\uED29',
-      'OutOfOffice': '\uED34',
-      'Trophy': '\uED3F',
-      'ReopenPages': '\uED50',
-      'EmojiTabSymbols': '\uED58',
-      'AADLogo': '\uED68',
-      'AccessLogo': '\uED69',
-      'AdminALogoInverse32': '\uED6A',
-      'AdminCLogoInverse32': '\uED6B',
-      'AdminDLogoInverse32': '\uED6C',
-      'AdminELogoInverse32': '\uED6D',
-      'AdminLLogoInverse32': '\uED6E',
-      'AdminMLogoInverse32': '\uED6F'
+      'CalendarMirrored': '\uED28'
     }
   };
 
