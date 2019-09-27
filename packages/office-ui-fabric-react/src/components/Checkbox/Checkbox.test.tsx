@@ -88,6 +88,12 @@ describe('Checkbox', () => {
     component.setProps({ defaultChecked: false });
     expect(component.find('input').prop('checked')).toBe(true);
     expect(checkbox!.checked).toBe(true);
+    component.unmount();
+
+    component = mount(<Checkbox componentRef={checkboxRef} />);
+    component.setProps({ defaultChecked: true });
+    expect(component.find('input').prop('checked')).toBe(false);
+    expect(checkbox!.checked).toBe(false);
   });
 
   it('respects checked prop', () => {
@@ -137,15 +143,35 @@ describe('Checkbox', () => {
     expect(onChange).toHaveBeenCalledTimes(1);
   });
 
-  it('renders with indeterminate when uncontrolled', () => {
-    component = mount(<Checkbox label="Uncontrolled Indeterminate checkbox" defaultIndeterminate componentRef={checkboxRef} />);
+  it('respects defaultIndeterminate prop', () => {
+    component = mount(<Checkbox defaultIndeterminate componentRef={checkboxRef} />);
 
     expect(component.find('input').prop('aria-checked')).toBe('mixed');
     expect(checkbox!.indeterminate).toEqual(true);
   });
 
+  it('respects defaultIndeterminate prop when defaultChecked is true', () => {
+    component = mount(<Checkbox defaultIndeterminate defaultChecked componentRef={checkboxRef} />);
+
+    expect(component.find('input').prop('aria-checked')).toBe('mixed');
+    expect(checkbox!.indeterminate).toEqual(true);
+  });
+
+  it('ignores defaultIndeterminate updates', () => {
+    component = mount(<Checkbox defaultIndeterminate componentRef={checkboxRef} />);
+    component.setProps({ defaultIndeterminate: false });
+    expect(component.find('input').prop('aria-checked')).toBe('mixed');
+    expect(checkbox!.indeterminate).toEqual(true);
+    component.unmount();
+
+    component = mount(<Checkbox componentRef={checkboxRef} />);
+    component.setProps({ defaultIndeterminate: true });
+    expect(component.find('input').prop('aria-checked')).toBe('false');
+    expect(checkbox!.indeterminate).toEqual(false);
+  });
+
   it('removes uncontrolled indeterminate state', () => {
-    component = mount(<Checkbox label="Uncontrolled Indeterminate checkbox" defaultIndeterminate componentRef={checkboxRef} />);
+    component = mount(<Checkbox defaultIndeterminate componentRef={checkboxRef} />);
 
     let input = component.find('input');
     expect(input.prop('aria-checked')).toBe('mixed');
@@ -154,7 +180,7 @@ describe('Checkbox', () => {
 
     input.simulate('change');
 
-    // get an updated ReactWrapper for the input (otherwise it would be out of)
+    // get an updated ReactWrapper for the input (otherwise it would be out of sync)
     input = component.find('input');
     expect(input.prop('aria-checked')).toBe('false');
     expect(input.prop('checked')).toBe(false);
