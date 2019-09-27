@@ -1,6 +1,7 @@
 import { getDocument } from './dom/getDocument';
 import { mergeStyles } from '@uifabric/merge-styles';
 import { EventGroup } from './EventGroup';
+import { getWindow } from './dom/getWindow';
 
 let _scrollbarWidth: number;
 let _bodyScrollDisabledCount = 0;
@@ -153,9 +154,10 @@ export function getScrollbarWidth(): number {
  */
 export function findScrollableParent(startingElement: HTMLElement | null): HTMLElement | null {
   let el: HTMLElement | null = startingElement;
+  const doc = getDocument(startingElement)!;
 
   // First do a quick scan for the scrollable attribute.
-  while (el && el !== document.body) {
+  while (el && el !== doc.body) {
     if (el.getAttribute(DATA_IS_SCROLLABLE_ATTRIBUTE) === 'true') {
       return el;
     }
@@ -165,7 +167,7 @@ export function findScrollableParent(startingElement: HTMLElement | null): HTMLE
   // If we haven't found it, the use the slower method: compute styles to evaluate if overflow is set.
   el = startingElement;
 
-  while (el && el !== document.body) {
+  while (el && el !== doc.body) {
     if (el.getAttribute(DATA_IS_SCROLLABLE_ATTRIBUTE) !== 'false') {
       const computedStyles = getComputedStyle(el);
       let overflowY = computedStyles ? computedStyles.getPropertyValue('overflow-y') : '';
@@ -179,9 +181,9 @@ export function findScrollableParent(startingElement: HTMLElement | null): HTMLE
   }
 
   // Fall back to window scroll.
-  if (!el || el === document.body) {
+  if (!el || el === doc.body) {
     // tslint:disable-next-line:no-any
-    el = window as any;
+    el = getWindow(startingElement) as any;
   }
 
   return el;

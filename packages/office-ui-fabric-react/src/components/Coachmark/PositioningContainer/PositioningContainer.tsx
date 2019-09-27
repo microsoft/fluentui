@@ -360,12 +360,12 @@ export class PositioningContainer extends BaseComponent<IPositioningContainerPro
       if (typeof target === 'string') {
         const currentDoc: Document = getDocument()!;
         this._target = currentDoc ? (currentDoc.querySelector(target) as HTMLElement) : null;
-        this._targetWindow = getWindow()!;
+        this._targetWindow = getWindow(this)!;
       } else if ((target as MouseEvent).stopPropagation) {
         this._targetWindow = getWindow((target as MouseEvent).toElement as HTMLElement)!;
         this._target = target;
       } else if ((target as IPoint).x !== undefined && (target as IPoint).y !== undefined) {
-        this._targetWindow = getWindow()!;
+        this._targetWindow = getWindow(this)!;
         this._target = target;
       } else {
         const targetElement: HTMLElement = target as HTMLElement;
@@ -373,7 +373,7 @@ export class PositioningContainer extends BaseComponent<IPositioningContainerPro
         this._target = target;
       }
     } else {
-      this._targetWindow = getWindow()!;
+      this._targetWindow = getWindow(this)!;
     }
   }
 

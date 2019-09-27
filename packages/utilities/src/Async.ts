@@ -1,3 +1,5 @@
+import { getWindow } from './dom/getWindow';
+
 declare function setTimeout(cb: Function, delay: number): number;
 declare function setInterval(cb: Function, delay: number): number;
 
@@ -141,6 +143,7 @@ export class Async {
    */
   public setImmediate(callback: () => void): number {
     let immediateId = 0;
+    const win = getWindow()!;
 
     if (!this._isDisposed) {
       if (!this._immediateIds) {
@@ -162,7 +165,7 @@ export class Async {
         }
       };
 
-      immediateId = window.setTimeout(setImmediateCallback, 0);
+      immediateId = win.setTimeout(setImmediateCallback, 0);
       /* tslint:enable:ban-native-functions */
 
       this._immediateIds[immediateId] = true;
@@ -175,10 +178,12 @@ export class Async {
    * Clears the immediate.
    * @param id - Id to cancel.
    */
-  public clearImmediate(id: number): void {
+  public clearImmediate(id: number, targetElement?: Element): void {
+    const win = getWindow(targetElement)!;
+
     if (this._immediateIds && this._immediateIds[id]) {
       /* tslint:disable:ban-native-functions */
-      window.clearTimeout(id);
+      win.clearTimeout(id);
       delete this._immediateIds[id];
       /* tslint:enable:ban-native-functions */
     }
@@ -438,8 +443,9 @@ export class Async {
     return resultFunction;
   }
 
-  public requestAnimationFrame(callback: () => void): number {
+  public requestAnimationFrame(callback: () => void, targetElement?: Element): number {
     let animationFrameId = 0;
+    const win = getWindow(targetElement)!;
 
     if (!this._isDisposed) {
       if (!this._animationFrameIds) {
@@ -460,9 +466,9 @@ export class Async {
         }
       };
 
-      animationFrameId = window.requestAnimationFrame
-        ? window.requestAnimationFrame(animationFrameCallback)
-        : window.setTimeout(animationFrameCallback, 0);
+      animationFrameId = win.requestAnimationFrame
+        ? win.requestAnimationFrame(animationFrameCallback)
+        : win.setTimeout(animationFrameCallback, 0);
       /* tslint:enable:ban-native-functions */
 
       this._animationFrameIds[animationFrameId] = true;
@@ -471,10 +477,12 @@ export class Async {
     return animationFrameId;
   }
 
-  public cancelAnimationFrame(id: number): void {
+  public cancelAnimationFrame(id: number, targetElement?: Element): void {
+    const win = getWindow(targetElement)!;
+
     if (this._animationFrameIds && this._animationFrameIds[id]) {
       /* tslint:disable:ban-native-functions */
-      window.cancelAnimationFrame ? window.cancelAnimationFrame(id) : window.clearTimeout(id);
+      win.cancelAnimationFrame ? win.cancelAnimationFrame(id) : win.clearTimeout(id);
       /* tslint:enable:ban-native-functions */
       delete this._animationFrameIds[id];
     }

@@ -140,7 +140,7 @@ function _onRenderPreview(props: IEditorPreviewProps): React.ReactNode {
 }
 
 function _isEditorSupported(code: string): boolean {
-  const win = getWindow();
+  const win = getWindow(this);
   return (
     // Not server-side rendering
     !!win &&

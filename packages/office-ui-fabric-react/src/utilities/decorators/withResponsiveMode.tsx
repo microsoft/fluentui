@@ -35,7 +35,7 @@ export function withResponsiveMode<TProps extends { responsiveMode?: ResponsiveM
       this._updateComposedComponentRef = this._updateComposedComponentRef.bind(this);
 
       this.state = {
-        responsiveMode: this._getResponsiveMode()
+        responsiveMode: ResponsiveMode.large
       };
     }
 
@@ -63,7 +63,7 @@ export function withResponsiveMode<TProps extends { responsiveMode?: ResponsiveM
 
     private _getResponsiveMode(): ResponsiveMode {
       let responsiveMode = ResponsiveMode.small;
-      const win = getWindow();
+      const win = getWindow(this);
 
       if (typeof win !== 'undefined') {
         try {
