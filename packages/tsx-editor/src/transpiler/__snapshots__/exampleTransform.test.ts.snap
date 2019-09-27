@@ -3,9 +3,6 @@
 exports[`example transform handles examples with class components 1`] = `
 "const { SpinButton, Fabric } = window.Fabric;
 
-    
-
-
 class SpinButtonBasicExample extends React.Component<any, any> {
   public render(): JSX.Element {
     return (
@@ -25,18 +22,43 @@ class SpinButtonBasicExample extends React.Component<any, any> {
   }
 }
 
-    ReactDOM.render(
-      React.createElement(Fabric, null, React.createElement(undefined, null)),
-      document.getElementById('fake')
-    );
-    "
+ReactDOM.render(React.createElement(Fabric, null, React.createElement(SpinButtonBasicExample, null)), document.getElementById('fake'));
+"
+`;
+
+exports[`example transform handles examples with custom supportedPackages 1`] = `
+"const { FooLabel } = window.Foo;
+
+const FooExample = () => {
+  return (
+    <div>
+      <FooLabel>I'm a FooLabel</FooLabel>
+    </div>
+  );
+};
+
+ReactDOM.render(React.createElement(FooExample, null), document.getElementById('fake'));
+"
+`;
+
+exports[`example transform handles examples with custom supportedPackages and Fabric 1`] = `
+"const { Stack, Fabric } = window.Fabric;
+const { FooLabel } = window.Foo;
+
+const FooExample = () => {
+  return (
+    <Stack>
+      <FooLabel>I'm a FooLabel</FooLabel>
+    </Stack>
+  );
+};
+
+ReactDOM.render(React.createElement(Fabric, null, React.createElement(FooExample, null)), document.getElementById('fake'));
+"
 `;
 
 exports[`example transform handles examples with function components 1`] = `
 "const { Label, Fabric } = window.Fabric;
-
-    
-
 
 const LabelBasicExample = () => {
   return (
@@ -46,17 +68,14 @@ const LabelBasicExample = () => {
   );
 };
 
-    ReactDOM.render(
-      React.createElement(Fabric, null, React.createElement(undefined, null)),
-      document.getElementById('fake')
-    );
-    "
+ReactDOM.render(React.createElement(Fabric, null, React.createElement(LabelBasicExample, null)), document.getElementById('fake'));
+"
 `;
 
 exports[`example transform handles transpiled examples with class components 1`] = `
 "const { SpinButton, Fabric } = window.Fabric;
 
-    var __extends = (this && this.__extends) || (function () {
+var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
             ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -84,26 +103,18 @@ var SpinButtonBasicExample = /** @class */ (function (_super) {
 }(React.Component));
 { SpinButtonBasicExample };
 
-    ReactDOM.render(
-      React.createElement(Fabric, null, React.createElement(SpinButtonBasicExample, null)),
-      document.getElementById('fake')
-    );
-    "
+ReactDOM.render(React.createElement(Fabric, null, React.createElement(SpinButtonBasicExample, null)), document.getElementById('fake'));
+"
 `;
 
 exports[`example transform handles transpiled examples with function components 1`] = `
 "const { Label, Fabric } = window.Fabric;
-
-    
 
 var LabelBasicExample = function () {
     return (React.createElement(\\"div\\", null,
         React.createElement(Label, null, \\"I'm a Label\\")));
 };
 
-    ReactDOM.render(
-      React.createElement(Fabric, null, React.createElement(LabelBasicExample, null)),
-      document.getElementById('fake')
-    );
-    "
+ReactDOM.render(React.createElement(Fabric, null, React.createElement(LabelBasicExample, null)), document.getElementById('fake'));
+"
 `;

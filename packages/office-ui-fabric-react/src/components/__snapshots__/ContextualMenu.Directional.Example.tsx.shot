@@ -134,7 +134,6 @@ exports[`Component Examples renders ContextualMenu.Directional.Example.tsx corre
                   color: Window;
                 }
             data-icon-name="CheckMark"
-            role="presentation"
           >
             
           </i>
@@ -292,8 +291,9 @@ exports[`Component Examples renders ContextualMenu.Directional.Example.tsx corre
       >
         <span
           aria-atomic={true}
+          aria-invalid={false}
           aria-label="Bottom Left Edge"
-          aria-live="off"
+          aria-live="polite"
           aria-posinset={5}
           aria-selected={true}
           aria-setsize={14}
@@ -360,7 +360,6 @@ exports[`Component Examples renders ContextualMenu.Directional.Example.tsx corre
                   speak: none;
                 }
             data-icon-name="ChevronDown"
-            role="presentation"
           >
             
           </i>
@@ -378,6 +377,7 @@ exports[`Component Examples renders ContextualMenu.Directional.Example.tsx corre
       className=
           ms-Button
           ms-Button--default
+          ms-Button--hasMenu
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;

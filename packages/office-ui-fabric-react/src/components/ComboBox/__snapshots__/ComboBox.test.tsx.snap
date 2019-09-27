@@ -159,6 +159,7 @@ exports[`ComboBox Renders correctly 1`] = `
       onClick={[Function]}
       onCompositionEnd={[Function]}
       onCompositionStart={[Function]}
+      onCompositionUpdate={[Function]}
       onFocus={[Function]}
       onInput={[Function]}
       onKeyDown={[Function]}
@@ -191,7 +192,6 @@ exports[`ComboBox Renders correctly 1`] = `
             font-weight: 400;
             height: 32px;
             line-height: 30px;
-            min-width: 32px;
             outline: transparent;
             padding-bottom: 0;
             padding-left: 4px;
@@ -477,6 +477,7 @@ exports[`ComboBox renders with a Keytip correctly 1`] = `
       onClick={[Function]}
       onCompositionEnd={[Function]}
       onCompositionStart={[Function]}
+      onCompositionUpdate={[Function]}
       onFocus={[Function]}
       onInput={[Function]}
       onKeyDown={[Function]}
@@ -509,7 +510,6 @@ exports[`ComboBox renders with a Keytip correctly 1`] = `
             font-weight: 400;
             height: 32px;
             line-height: 30px;
-            min-width: 32px;
             outline: transparent;
             padding-bottom: 0;
             padding-left: 4px;

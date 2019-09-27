@@ -203,25 +203,39 @@ export class DetailsListDocumentsExample extends React.Component<{}, IDetailsLis
         </div>
         <div className={classNames.selectionDetails}>{selectionDetails}</div>
         {announcedMessage ? <Announced message={announcedMessage} /> : undefined}
-        <MarqueeSelection selection={this._selection}>
+        {isModalSelection ? (
+          <MarqueeSelection selection={this._selection}>
+            <DetailsList
+              items={items}
+              compact={isCompactMode}
+              columns={columns}
+              selectionMode={SelectionMode.multiple}
+              getKey={this._getKey}
+              setKey="multiple"
+              layoutMode={DetailsListLayoutMode.justified}
+              isHeaderVisible={true}
+              selection={this._selection}
+              selectionPreservedOnEmptyClick={true}
+              onItemInvoked={this._onItemInvoked}
+              enterModalSelectionOnTouch={true}
+              ariaLabelForSelectionColumn="Toggle selection"
+              ariaLabelForSelectAllCheckbox="Toggle selection for all items"
+              checkButtonAriaLabel="Row checkbox"
+            />
+          </MarqueeSelection>
+        ) : (
           <DetailsList
             items={items}
             compact={isCompactMode}
             columns={columns}
-            selectionMode={isModalSelection ? SelectionMode.multiple : SelectionMode.none}
+            selectionMode={SelectionMode.none}
             getKey={this._getKey}
-            setKey="set"
+            setKey="none"
             layoutMode={DetailsListLayoutMode.justified}
             isHeaderVisible={true}
-            selection={this._selection}
-            selectionPreservedOnEmptyClick={true}
             onItemInvoked={this._onItemInvoked}
-            enterModalSelectionOnTouch={true}
-            ariaLabelForSelectionColumn="Toggle selection"
-            ariaLabelForSelectAllCheckbox="Toggle selection for all items"
-            checkButtonAriaLabel="Row checkbox"
           />
-        </MarqueeSelection>
+        )}
       </Fabric>
     );
   }

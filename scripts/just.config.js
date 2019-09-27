@@ -19,9 +19,12 @@ const bundleSizeCollect = require('./tasks/bundle-size-collect');
 const checkForModifiedFiles = require('./tasks/check-for-modified-files');
 const generateVersionFiles = require('./tasks/generate-version-files');
 const generatePackageManifestTask = require('./tasks/generate-package-manifest');
+const { postprocessAmdTask } = require('./tasks/postprocess-amd');
+const { postprocessCommonjsTask } = require('./tasks/postprocess-commonjs');
 
-module.exports = function preset() {
-  // this add s a resolve path for the build tooling deps like TS from the scripts folder
+/** Do only the bare minimum setup of options and resolve paths */
+function basicPreset() {
+  // this adds a resolve path for the build tooling deps like TS from the scripts folder
   addResolvePath(__dirname);
 
   option('production');
@@ -35,15 +38,21 @@ module.exports = function preset() {
   option('commonjs');
 
   option('cached', { default: false });
+}
+
+module.exports = function preset() {
+  basicPreset();
 
   task('clean', clean);
   task('copy', copy);
   task('jest', jest);
   task('jest-watch', jestWatch);
   task('sass', sass);
+  task('postprocess:amd', postprocessAmdTask);
+  task('postprocess:commonjs', postprocessCommonjsTask);
   task('ts:commonjs', ts.commonjs);
   task('ts:esm', ts.esm);
-  task('ts:amd', ts.amd);
+  task('ts:amd', series(ts.amd, 'postprocess:amd'));
   task('tslint', tslint);
   task('ts:commonjs-only', ts.commonjsOnly);
   task('webpack', webpack);
@@ -84,3 +93,5 @@ module.exports = function preset() {
 
   task('no-op', () => {}).cached();
 };
+
+module.exports.basic = basicPreset;

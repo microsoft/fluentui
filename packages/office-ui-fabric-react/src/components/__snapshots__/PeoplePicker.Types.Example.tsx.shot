@@ -81,6 +81,7 @@ exports[`Component Examples renders PeoplePicker.Types.Example.tsx correctly 1`]
             onClick={[Function]}
             onCompositionEnd={[Function]}
             onCompositionStart={[Function]}
+            onCompositionUpdate={[Function]}
             onFocus={[Function]}
             onInput={[Function]}
             onKeyDown={[Function]}
@@ -237,8 +238,9 @@ exports[`Component Examples renders PeoplePicker.Types.Example.tsx correctly 1`]
       >
         <span
           aria-atomic={true}
+          aria-invalid={false}
           aria-label="Normal"
-          aria-live="off"
+          aria-live="polite"
           aria-posinset={1}
           aria-selected={true}
           aria-setsize={7}
@@ -305,7 +307,6 @@ exports[`Component Examples renders PeoplePicker.Types.Example.tsx correctly 1`]
                   speak: none;
                 }
             data-icon-name="ChevronDown"
-            role="presentation"
           >
             
           </i>
@@ -436,7 +437,6 @@ exports[`Component Examples renders PeoplePicker.Types.Example.tsx correctly 1`]
                   color: Window;
                 }
             data-icon-name="CheckMark"
-            role="presentation"
           >
             
           </i>
@@ -617,12 +617,12 @@ exports[`Component Examples renders PeoplePicker.Types.Example.tsx correctly 1`]
           border: 0;
         }
         .ms-Fabric--isFocusVisible &:focus:after {
-          border-color: #ffffff;
-          border: 1px solid transparent;
+          border: none;
           bottom: 2px;
           content: "";
           left: 2px;
-          outline: none;
+          outline-color: #ffffff;
+          outline: 1px solid #605e5c;
           position: absolute;
           right: 2px;
           top: 2px;

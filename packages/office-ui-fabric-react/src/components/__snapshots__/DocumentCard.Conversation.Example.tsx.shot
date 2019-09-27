@@ -69,7 +69,6 @@ exports[`Component Examples renders DocumentCard.Conversation.Example.tsx correc
               speak: none;
             }
         data-icon-name="OutlookLogo"
-        role="presentation"
       >
         
       </i>
@@ -175,7 +174,6 @@ exports[`Component Examples renders DocumentCard.Conversation.Example.tsx correc
                 speak: none;
               }
           data-icon-name="attach"
-          role="presentation"
         >
           
         </i>
@@ -501,7 +499,6 @@ exports[`Component Examples renders DocumentCard.Conversation.Example.tsx correc
               speak: none;
             }
         data-icon-name="OutlookLogo"
-        role="presentation"
       >
         
       </i>
@@ -597,7 +594,6 @@ exports[`Component Examples renders DocumentCard.Conversation.Example.tsx correc
                 speak: none;
               }
           data-icon-name="attach"
-          role="presentation"
         >
           
         </i>
@@ -923,7 +919,6 @@ exports[`Component Examples renders DocumentCard.Conversation.Example.tsx correc
               speak: none;
             }
         data-icon-name="OutlookLogo"
-        role="presentation"
       >
         
       </i>

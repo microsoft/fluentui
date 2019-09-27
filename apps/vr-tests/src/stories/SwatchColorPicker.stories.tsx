@@ -21,24 +21,25 @@ storiesOf('SwatchColorPicker', module)
     <Screener
       steps={new Screener.Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
-        .hover('.ms-Button-flexContainer')
-        .snapshot('hover', { cropTo: '.testWrapper' })
-        .mouseDown('.ms-Button-flexContainer')
-        .snapshot('mousedown', { cropTo: '.testWrapper' })
-        .click('.ms-Button-flexContainer')
-        .hover('.ms-Button-flexContainer')
-        .snapshot('click', { cropTo: '.testWrapper' })
         .executeScript(
           "document.getElementsByClassName('testWrapper')[0].classList.add('ms-Fabric--isFocusVisible')"
         )
         .executeScript("document.getElementsByClassName('ms-Button')[1].focus()")
-        .snapshot('not selected focus', { cropTo: '.testWrapper' })
-        .executeScript("document.getElementsByClassName('ms-Button')[1].blur()")
-        .executeScript("document.getElementsByClassName('ms-Button')[0].focus()")
-        .snapshot('selected focus', { cropTo: '.testWrapper' })
+        .snapshot('Focused', { cropTo: '.testWrapper' })
         .executeScript(
           "document.getElementsByClassName('testWrapper')[0].classList.remove('ms-Fabric--isFocusVisible')"
         )
+        .executeScript("document.getElementsByClassName('ms-Button')[1].blur()")
+        .hover('.ms-Button-flexContainer')
+        .snapshot('Hovered', { cropTo: '.testWrapper' })
+        .mouseDown('.ms-Button-flexContainer')
+        .snapshot('Mousedown', { cropTo: '.testWrapper' })
+        .mouseUp('.ms-Button-flexContainer')
+        .click('.ms-Button-flexContainer')
+        .hover('.ms-Button-flexContainer')
+        .snapshot('Selected and Hovered', { cropTo: '.testWrapper' })
+        .executeScript("document.getElementsByClassName('ms-Button')[0].focus()")
+        .snapshot('Selected and Focused', { cropTo: '.testWrapper' })
         .end()}
     >
       {story()}

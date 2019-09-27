@@ -134,6 +134,7 @@ exports[`Component Examples renders TextField.Multiline.Example.tsx correctly 1`
         >
           <textarea
             aria-invalid={false}
+            aria-labelledby="TextFieldLabel2"
             className=
                 ms-TextField-field
                 {
@@ -310,6 +311,7 @@ exports[`Component Examples renders TextField.Multiline.Example.tsx correctly 1`
         >
           <textarea
             aria-invalid={false}
+            aria-labelledby="TextFieldLabel5"
             className=
                 ms-TextField-field
                 {
@@ -485,6 +487,7 @@ exports[`Component Examples renders TextField.Multiline.Example.tsx correctly 1`
         >
           <textarea
             aria-invalid={false}
+            aria-labelledby="TextFieldLabel8"
             className=
                 ms-TextField-field
                 ms-TextField--unresizable
@@ -681,6 +684,7 @@ exports[`Component Examples renders TextField.Multiline.Example.tsx correctly 1`
         >
           <textarea
             aria-invalid={false}
+            aria-labelledby="TextFieldLabel11"
             className=
                 ms-TextField-field
                 {

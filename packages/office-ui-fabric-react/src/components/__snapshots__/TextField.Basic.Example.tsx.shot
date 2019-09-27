@@ -1438,7 +1438,6 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
                   top: auto;
                 }
             data-icon-name="Calendar"
-            role="presentation"
           >
             
           </i>

@@ -1,7 +1,19 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Thu, 12 Sep 2019 12:34:15 GMT and should not be manually modified.
+This log was last generated on Mon, 23 Sep 2019 12:33:15 GMT and should not be manually modified.
 
+## 7.17.1
+Mon, 23 Sep 2019 12:33:15 GMT
+
+### Patches
+
+- Icon Accessibility updates: update aria-hidden to pull aria-labelledBy from root and imageProps and removed role presentation - should not apply when a label is provided. (marygans@microsoft.com)
+## 7.17.0
+Wed, 18 Sep 2019 12:32:55 GMT
+
+### Minor changes
+
+- listen to composition events only for IME languages in autofill (amyngu@microsoft.com)
 ## 7.16.2
 Thu, 12 Sep 2019 12:34:15 GMT
 

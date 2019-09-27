@@ -2,6 +2,20 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "date": "Wed, 18 Sep 2019 12:32:55 GMT",
+      "tag": "@uifabric/charting_v0.135.0",
+      "version": "0.135.0",
+      "comments": {
+        "none": [
+          {
+            "comment": "Update readme of charting package",
+            "author": "chenwe@microsoft.com",
+            "commit": "88c6886d642ecda739961c2821554358ca88cb13"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 11 Sep 2019 12:35:47 GMT",
       "tag": "@uifabric/charting_v0.135.0",
       "version": "0.135.0",

@@ -14,12 +14,17 @@ export const getStyles = memoizeFunction(
       border: 'none'
     };
 
-    const splitButtonDivider: IStyle = {
+    const splitButtonDividerDisabled: IStyle = {
       position: 'absolute',
       width: 1,
       right: 31,
       top: 8,
-      bottom: 8
+      bottom: 8,
+      selectors: {
+        [HighContrastSelector]: {
+          backgroundColor: 'GrayText'
+        }
+      }
     };
 
     const splitButtonStyles: IButtonStyles = {
@@ -124,9 +129,7 @@ export const getStyles = memoizeFunction(
         marginRight: 0,
         marginBottom: 0
       },
-
-      splitButtonDivider: splitButtonDivider,
-      splitButtonDividerDisabled: splitButtonDivider,
+      splitButtonDividerDisabled: splitButtonDividerDisabled,
       splitButtonMenuButtonDisabled: {
         pointerEvents: 'none',
         border: 'none',
@@ -143,6 +146,11 @@ export const getStyles = memoizeFunction(
                 backgroundColor: 'Window'
               }
             }
+          },
+          [HighContrastSelector]: {
+            border: `1px solid GrayText`,
+            color: 'GrayText',
+            backgroundColor: 'Window'
           }
         }
       },
@@ -158,7 +166,6 @@ export const getStyles = memoizeFunction(
       splitButtonContainerDisabled: {
         outline: 'none',
         border: 'none',
-
         selectors: {
           [HighContrastSelector]: {
             color: 'GrayText',

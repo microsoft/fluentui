@@ -2,6 +2,48 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "date": "Thu, 26 Sep 2019 12:32:32 GMT",
+      "tag": "@uifabric/experiments_v7.17.1",
+      "version": "7.17.1",
+      "comments": {
+        "none": [
+          {
+            "comment": "Fixing overflow set a11y issues",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "347411e4987b6fd26c40c21872faa628da32af30"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 23 Sep 2019 12:33:15 GMT",
+      "tag": "@uifabric/experiments_v7.17.1",
+      "version": "7.17.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Icon Accessibility updates: update aria-hidden to pull aria-labelledBy from root and imageProps and removed role presentation - should not apply when a label is provided.",
+            "author": "marygans@microsoft.com",
+            "commit": "df4c69f030235b4039f9104d30639acfb29dfca0"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 18 Sep 2019 12:32:55 GMT",
+      "tag": "@uifabric/experiments_v7.17.0",
+      "version": "7.17.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "listen to composition events only for IME languages in autofill",
+            "author": "amyngu@microsoft.com",
+            "commit": "55e2fb7ba136edd05f864ebac4b18cd6cae5a229"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 12 Sep 2019 12:34:15 GMT",
       "tag": "@uifabric/experiments_v7.16.2",
       "version": "7.16.2",

@@ -32,7 +32,12 @@ export interface ISwatchColorPickerProps {
   selectedId?: string;
 
   /**
-   * The color cells that will be made available to the user
+   * The color cells that will be made available to the user.
+   *
+   * Note: When the reference to this prop changes,
+   * regardless of how many color cells change, all of the color cells
+   * will be re-rendered (potentially bad perf.) because we memoize
+   * based on this prop's reference.
    */
   colorCells: IColorCellProps[];
 

@@ -1,7 +1,13 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Fri, 13 Sep 2019 12:34:39 GMT and should not be manually modified.
+This log was last generated on Tue, 24 Sep 2019 12:35:43 GMT and should not be manually modified.
 
+## 7.8.0
+Tue, 24 Sep 2019 12:35:43 GMT
+
+### Minor changes
+
+- Export to codepen can use in-browser transform and latest edited code (elcraig@microsoft.com)
 ## 7.7.0
 Fri, 13 Sep 2019 12:34:39 GMT
 

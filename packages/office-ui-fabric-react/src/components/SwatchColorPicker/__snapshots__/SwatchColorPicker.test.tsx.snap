@@ -127,7 +127,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 }
                 &:hover {
                   background-color: #ffffff;
-                  border: 2px solid #edebe9;
+                  border: 2px solid #f3f2f1;
                   color: #0078d4;
                   padding-bottom: 2px;
                   padding-left: 2px;
@@ -136,7 +136,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 }
                 &:active {
                   background-color: #ffffff;
-                  border: 2px solid #edebe9;
+                  border: 2px solid #f3f2f1;
                   color: #000000;
                   padding-bottom: 2px;
                   padding-left: 2px;
@@ -146,7 +146,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 &:focus {
                   background-color: #ffffff;
                   border-color: #ffffff;
-                  border: 2px solid #edebe9;
+                  border: 2px solid #f3f2f1;
                   padding-bottom: 0px;
                   padding-left: 0px;
                   padding-right: 0px;
@@ -297,7 +297,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 }
                 &:hover {
                   background-color: #ffffff;
-                  border: 2px solid #edebe9;
+                  border: 2px solid #f3f2f1;
                   color: #0078d4;
                   padding-bottom: 2px;
                   padding-left: 2px;
@@ -306,7 +306,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 }
                 &:active {
                   background-color: #ffffff;
-                  border: 2px solid #edebe9;
+                  border: 2px solid #f3f2f1;
                   color: #000000;
                   padding-bottom: 2px;
                   padding-left: 2px;
@@ -316,7 +316,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 &:focus {
                   background-color: #ffffff;
                   border-color: #ffffff;
-                  border: 2px solid #edebe9;
+                  border: 2px solid #f3f2f1;
                   padding-bottom: 0px;
                   padding-left: 0px;
                   padding-right: 0px;
@@ -467,7 +467,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 }
                 &:hover {
                   background-color: #ffffff;
-                  border: 2px solid #edebe9;
+                  border: 2px solid #f3f2f1;
                   color: #0078d4;
                   padding-bottom: 2px;
                   padding-left: 2px;
@@ -476,7 +476,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 }
                 &:active {
                   background-color: #ffffff;
-                  border: 2px solid #edebe9;
+                  border: 2px solid #f3f2f1;
                   color: #000000;
                   padding-bottom: 2px;
                   padding-left: 2px;
@@ -486,7 +486,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 &:focus {
                   background-color: #ffffff;
                   border-color: #ffffff;
-                  border: 2px solid #edebe9;
+                  border: 2px solid #f3f2f1;
                   padding-bottom: 0px;
                   padding-left: 0px;
                   padding-right: 0px;
@@ -637,7 +637,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 }
                 &:hover {
                   background-color: #ffffff;
-                  border: 2px solid #edebe9;
+                  border: 2px solid #f3f2f1;
                   color: #0078d4;
                   padding-bottom: 2px;
                   padding-left: 2px;
@@ -646,7 +646,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 }
                 &:active {
                   background-color: #ffffff;
-                  border: 2px solid #edebe9;
+                  border: 2px solid #f3f2f1;
                   color: #000000;
                   padding-bottom: 2px;
                   padding-left: 2px;
@@ -656,7 +656,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 &:focus {
                   background-color: #ffffff;
                   border-color: #ffffff;
-                  border: 2px solid #edebe9;
+                  border: 2px solid #f3f2f1;
                   padding-bottom: 0px;
                   padding-left: 0px;
                   padding-right: 0px;
@@ -811,7 +811,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 }
                 &:hover {
                   background-color: #ffffff;
-                  border: 2px solid #edebe9;
+                  border: 2px solid #f3f2f1;
                   color: #0078d4;
                   padding-bottom: 2px;
                   padding-left: 2px;
@@ -820,7 +820,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 }
                 &:active {
                   background-color: #ffffff;
-                  border: 2px solid #edebe9;
+                  border: 2px solid #f3f2f1;
                   color: #000000;
                   padding-bottom: 2px;
                   padding-left: 2px;
@@ -830,7 +830,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 &:focus {
                   background-color: #ffffff;
                   border-color: #ffffff;
-                  border: 2px solid #edebe9;
+                  border: 2px solid #f3f2f1;
                   padding-bottom: 0px;
                   padding-left: 0px;
                   padding-right: 0px;
@@ -981,7 +981,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 }
                 &:hover {
                   background-color: #ffffff;
-                  border: 2px solid #edebe9;
+                  border: 2px solid #f3f2f1;
                   color: #0078d4;
                   padding-bottom: 2px;
                   padding-left: 2px;
@@ -990,7 +990,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 }
                 &:active {
                   background-color: #ffffff;
-                  border: 2px solid #edebe9;
+                  border: 2px solid #f3f2f1;
                   color: #000000;
                   padding-bottom: 2px;
                   padding-left: 2px;
@@ -1000,7 +1000,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 &:focus {
                   background-color: #ffffff;
                   border-color: #ffffff;
-                  border: 2px solid #edebe9;
+                  border: 2px solid #f3f2f1;
                   padding-bottom: 0px;
                   padding-left: 0px;
                   padding-right: 0px;
@@ -1151,7 +1151,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 }
                 &:hover {
                   background-color: #ffffff;
-                  border: 2px solid #edebe9;
+                  border: 2px solid #f3f2f1;
                   color: #0078d4;
                   padding-bottom: 2px;
                   padding-left: 2px;
@@ -1160,7 +1160,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 }
                 &:active {
                   background-color: #ffffff;
-                  border: 2px solid #edebe9;
+                  border: 2px solid #f3f2f1;
                   color: #000000;
                   padding-bottom: 2px;
                   padding-left: 2px;
@@ -1170,7 +1170,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 &:focus {
                   background-color: #ffffff;
                   border-color: #ffffff;
-                  border: 2px solid #edebe9;
+                  border: 2px solid #f3f2f1;
                   padding-bottom: 0px;
                   padding-left: 0px;
                   padding-right: 0px;
@@ -1321,7 +1321,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 }
                 &:hover {
                   background-color: #ffffff;
-                  border: 2px solid #edebe9;
+                  border: 2px solid #f3f2f1;
                   color: #0078d4;
                   padding-bottom: 2px;
                   padding-left: 2px;
@@ -1330,7 +1330,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 }
                 &:active {
                   background-color: #ffffff;
-                  border: 2px solid #edebe9;
+                  border: 2px solid #f3f2f1;
                   color: #000000;
                   padding-bottom: 2px;
                   padding-left: 2px;
@@ -1340,7 +1340,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 &:focus {
                   background-color: #ffffff;
                   border-color: #ffffff;
-                  border: 2px solid #edebe9;
+                  border: 2px solid #f3f2f1;
                   padding-bottom: 0px;
                   padding-left: 0px;
                   padding-right: 0px;
@@ -1495,7 +1495,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 }
                 &:hover {
                   background-color: #ffffff;
-                  border: 2px solid #edebe9;
+                  border: 2px solid #f3f2f1;
                   color: #0078d4;
                   padding-bottom: 2px;
                   padding-left: 2px;
@@ -1504,7 +1504,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 }
                 &:active {
                   background-color: #ffffff;
-                  border: 2px solid #edebe9;
+                  border: 2px solid #f3f2f1;
                   color: #000000;
                   padding-bottom: 2px;
                   padding-left: 2px;
@@ -1514,7 +1514,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 &:focus {
                   background-color: #ffffff;
                   border-color: #ffffff;
-                  border: 2px solid #edebe9;
+                  border: 2px solid #f3f2f1;
                   padding-bottom: 0px;
                   padding-left: 0px;
                   padding-right: 0px;
@@ -1665,7 +1665,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 }
                 &:hover {
                   background-color: #ffffff;
-                  border: 2px solid #edebe9;
+                  border: 2px solid #f3f2f1;
                   color: #0078d4;
                   padding-bottom: 2px;
                   padding-left: 2px;
@@ -1674,7 +1674,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 }
                 &:active {
                   background-color: #ffffff;
-                  border: 2px solid #edebe9;
+                  border: 2px solid #f3f2f1;
                   color: #000000;
                   padding-bottom: 2px;
                   padding-left: 2px;
@@ -1684,7 +1684,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 &:focus {
                   background-color: #ffffff;
                   border-color: #ffffff;
-                  border: 2px solid #edebe9;
+                  border: 2px solid #f3f2f1;
                   padding-bottom: 0px;
                   padding-left: 0px;
                   padding-right: 0px;
@@ -1771,7 +1771,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  background-color: #edebe9;
+                  background-color: #a19f9d;
                   border-radius: 50%;
                   border: none;
                   box-sizing: border-box;
@@ -1835,7 +1835,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 }
                 &:hover {
                   background-color: #ffffff;
-                  border: 2px solid #edebe9;
+                  border: 2px solid #f3f2f1;
                   color: #0078d4;
                   padding-bottom: 2px;
                   padding-left: 2px;
@@ -1844,7 +1844,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 }
                 &:active {
                   background-color: #ffffff;
-                  border: 2px solid #edebe9;
+                  border: 2px solid #f3f2f1;
                   color: #000000;
                   padding-bottom: 2px;
                   padding-left: 2px;
@@ -1854,7 +1854,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 &:focus {
                   background-color: #ffffff;
                   border-color: #ffffff;
-                  border: 2px solid #edebe9;
+                  border: 2px solid #f3f2f1;
                   padding-bottom: 0px;
                   padding-left: 0px;
                   padding-right: 0px;
@@ -2005,7 +2005,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 }
                 &:hover {
                   background-color: #ffffff;
-                  border: 2px solid #edebe9;
+                  border: 2px solid #f3f2f1;
                   color: #0078d4;
                   padding-bottom: 2px;
                   padding-left: 2px;
@@ -2014,7 +2014,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 }
                 &:active {
                   background-color: #ffffff;
-                  border: 2px solid #edebe9;
+                  border: 2px solid #f3f2f1;
                   color: #000000;
                   padding-bottom: 2px;
                   padding-left: 2px;
@@ -2024,7 +2024,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 &:focus {
                   background-color: #ffffff;
                   border-color: #ffffff;
-                  border: 2px solid #edebe9;
+                  border: 2px solid #f3f2f1;
                   padding-bottom: 0px;
                   padding-left: 0px;
                   padding-right: 0px;

@@ -114,7 +114,7 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
   }
 
   public shouldComponentUpdate(newProps: ICalloutProps, newState: ICalloutState): boolean {
-    if (this.props.hidden && newProps.hidden) {
+    if (!newProps.shouldUpdateWhenHidden && this.props.hidden && newProps.hidden) {
       // Do not update when hidden.
       return false;
     }

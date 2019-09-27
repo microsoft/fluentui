@@ -32,7 +32,7 @@ function expandSourcePath(pattern) {
   }
 }
 
-exports.copy = () => {
+function copy() {
   let tasks = [];
   let configPath = path.resolve(process.cwd(), 'config/pre-copy.json');
 
@@ -51,4 +51,6 @@ exports.copy = () => {
   }
 
   return series.apply(null, tasks);
-};
+}
+
+module.exports = { expandSourcePath, copy };
