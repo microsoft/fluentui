@@ -45,9 +45,8 @@ export const getStyles = (props: IStackedBarChartStyleProps): IStackedBarChartSt
       lineHeight: '14px'
     },
     hoverCardDataStyles: {
+      ...theme.fonts.xxLarge,
       color: legendColor === '' ? theme.palette.black : legendColor,
-      fontSize: FontSizes.xxLarge,
-      fontFamily: 'Segoe UI',
       fontWeight: FontWeights.bold,
       lineHeight: '31px'
     },

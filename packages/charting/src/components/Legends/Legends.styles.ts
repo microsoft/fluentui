@@ -3,7 +3,7 @@ import { HighContrastSelector } from 'office-ui-fabric-react/lib/Styling';
 
 export const getStyles = (props: ILegendStyleProps): ILegendsStyles => {
   const { className, theme } = props;
-  const { palette } = theme!;
+  const { palette, fonts } = theme!;
   return {
     root: [
       {
@@ -44,9 +44,8 @@ export const getStyles = (props: ILegendStyleProps): ILegendsStyles => {
       marginRight: '8px'
     },
     text: {
-      fontSize: '12px',
+      ...fonts.small,
       lineHeight: '16px',
-      fontFamily: 'Segoe UI',
       marginRight: '16px',
       color: palette.black,
       opacity: props.colorOnSelectedState === palette.white ? '0.6' : ''
@@ -62,8 +61,7 @@ export const getStyles = (props: ILegendStyleProps): ILegendsStyles => {
     overflowIndicationTextStyle: {
       cursor: 'pointer',
       color: palette.themePrimary,
-      fontFamily: 'Segoe UI',
-      fontSize: '12px',
+      ...fonts.small,
       lineHeight: '14px'
     }
   };
