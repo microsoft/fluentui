@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "SplitButton: Fixed high contrast borders",
+  "packageName": "office-ui-fabric-react",
+  "email": "v-mare@microsoft.com",
+  "commit": "3e9f68c3815f3aba578f4ca4af3b1a707ff2d14a",
+  "date": "2019-09-27T21:26:14.904Z"
+}
