@@ -28,6 +28,7 @@
 </div>
 
 <script type="text/javascript">
+  // @ts-check
   var isProduction = location.hostname === 'developer.microsoft.com';
   var devhost = getParameterByName('devhost');
   var entryPointFilename = 'fabric-sitev5';
@@ -116,7 +117,8 @@
 
     window.MonacoConfig = {
       baseUrl: appPath,
-      useMinified: true
+      useMinified: true,
+      crossDomain: true
     };
   }
 

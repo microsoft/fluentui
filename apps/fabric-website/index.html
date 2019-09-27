@@ -37,6 +37,7 @@
     </div>
 
     <script type="text/javascript">
+      // @ts-check
       var isLocal = location.hostname === 'localhost' || location.hostname.indexOf('ngrok.io') > -1;
       var isProduction = location.hostname === 'developer.microsoft.com' || getParameterByName('isProduction');
       var devhost = getParameterByName('devhost');
@@ -133,7 +134,7 @@
         // Required configuration to make our Monaco wrapper work
         window.MonacoConfig = {
           baseUrl: appPath,
-          useMinified: !isLocal
+          useMinified: isProduction
         };
       }
 
