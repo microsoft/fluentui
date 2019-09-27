@@ -118,6 +118,7 @@ export class CalendarPage extends React.Component<{}, {}> {
                 highlightSelectedMonth={true}
                 showGoToToday={true}
                 calendarDayProps={{ daysToSelectInDayView: 4 }}
+                showDaysToSelectInDayViewDropdown={true}
               />
             </ExampleCard>
             <ExampleCard title="Calendar launched from a button" code={CalendarButtonExampleCode}>

@@ -667,7 +667,7 @@ export class CalendarDayGridBase extends BaseComponent<ICalendarDayGridProps, IC
    *
    */
 
-  private getDayInfosInRangeOfDay = (day: IDayInfo) => {
+  private getDayInfosInRangeOfDay = (day: IDayInfo): IDayInfo[] => {
     const { weeks } = this.state;
     const { dateRangeType, firstDayOfWeek, workWeekDays, daysToSelectInDayView } = this.props;
 
@@ -687,7 +687,7 @@ export class CalendarDayGridBase extends BaseComponent<ICalendarDayGridProps, IC
     return dayInfosInRange;
   };
 
-  private getRefsFromDayInfos = (dayInfosInRange: IDayInfo[]) => {
+  private getRefsFromDayInfos = (dayInfosInRange: IDayInfo[]): (HTMLElement | null)[] => {
     let dayRefs: (HTMLElement | null)[] = [];
     if (this.days) {
       dayRefs = dayInfosInRange.map((dayInfo: IDayInfo) => this.days[dayInfo.key]);
@@ -711,14 +711,16 @@ export class CalendarDayGridBase extends BaseComponent<ICalendarDayGridProps, IC
             this.props.daysToSelectInDayView > 1
           ) {
             // remove the static classes first to overwrite them
-            dayRef.classList.remove(this.classNames.bottomLeftCornerDate!);
-            dayRef.classList.remove(this.classNames.bottomRightCornerDate!);
-            dayRef.classList.remove(this.classNames.topLeftCornerDate!);
-            dayRef.classList.remove(this.classNames.topRightCornerDate!);
+            dayRef.classList.remove(
+              this.classNames.bottomLeftCornerDate!,
+              this.classNames.bottomRightCornerDate!,
+              this.classNames.topLeftCornerDate!,
+              this.classNames.topRightCornerDate!
+            );
 
             const classNames = this._calculateRoundedStyles(this.classNames, false, false, index > 0, index < dayRefs.length - 1).trim();
             if (classNames) {
-              classNames.split(' ').forEach((c: string) => dayRef.classList.add(c));
+              dayRef.classList.add(...classNames.split(' '));
             }
           }
         }
@@ -769,7 +771,7 @@ export class CalendarDayGridBase extends BaseComponent<ICalendarDayGridProps, IC
           ) {
             const classNames = this._calculateRoundedStyles(this.classNames, false, false, index > 0, index < dayRefs.length - 1).trim();
             if (classNames) {
-              classNames.split(' ').forEach((c: string) => dayRef.classList.remove(c));
+              dayRef.classList.remove(...classNames.split(' '));
             }
           }
         }
