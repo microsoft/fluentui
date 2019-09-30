@@ -25,14 +25,22 @@ export const DocumentCardImageExample: React.StatelessComponent = () => {
 
   return (
     <div>
-      <DocumentCard styles={cardStyles} onClickHref="http://bing.com">
+      <DocumentCard
+        aria-label="Document Card with image. How to make a good design. Last modified by Annie Lindqvist and 2 others in March 13, 2018."
+        styles={cardStyles}
+        onClickHref="http://bing.com"
+      >
         <DocumentCardImage height={150} imageFit={ImageFit.cover} imageSrc={TestImages.documentPreviewTwo} />
         <DocumentCardDetails>
           <DocumentCardTitle title="How to make a good design" shouldTruncate />
         </DocumentCardDetails>
         <DocumentCardActivity activity="Modified March 13, 2018" people={people.slice(0, 3)} />
       </DocumentCard>
-      <DocumentCard styles={cardStyles} onClickHref="http://bing.com">
+      <DocumentCard
+        aria-label="Document Card with icon. How to make a good design. Last modified by Christian Bergqvist in January 1, 2019."
+        styles={cardStyles}
+        onClickHref="http://bing.com"
+      >
         <DocumentCardImage
           height={150}
           imageFit={ImageFit.cover}
