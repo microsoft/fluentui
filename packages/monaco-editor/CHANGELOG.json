@@ -2,6 +2,20 @@
   "name": "@uifabric/monaco-editor",
   "entries": [
     {
+      "date": "Mon, 30 Sep 2019 12:35:16 GMT",
+      "tag": "@uifabric/monaco-editor_v0.2.2",
+      "version": "0.2.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix inference of cross-domain setting",
+            "author": "elcraig@microsoft.com",
+            "commit": "d4b0254c3aa931b39801f2f71e33952fbc149480"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 24 Sep 2019 12:35:43 GMT",
       "tag": "@uifabric/monaco-editor_v0.2.1",
       "version": "0.2.1",

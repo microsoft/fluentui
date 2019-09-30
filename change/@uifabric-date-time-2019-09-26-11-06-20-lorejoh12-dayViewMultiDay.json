@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "initial commit of multi-day day view implementation. Lots of style updates to allow the hover states to work- previously hover states were always static, but now the classes have to update dynamically as the mouse moves over days",
-  "packageName": "@uifabric/date-time",
-  "email": "jolore@microsoft.com",
-  "commit": "472ab496b3fe9f811b1d4842fec5fdbd2aacbb19",
-  "date": "2019-09-26T18:05:57.908Z"
-}

@@ -1,7 +1,16 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 27 Sep 2019 12:33:04 GMT and should not be manually modified.
+This log was last generated on Mon, 30 Sep 2019 12:35:16 GMT and should not be manually modified.
 
+## 7.40.0
+Mon, 30 Sep 2019 12:35:16 GMT
+
+### Minor changes
+
+- dateMath change to include extra parameter when calculating date range (jolore@microsoft.com)
+### Patches
+
+- Dropdown: There is now a visible focus border on Dropdowns in the error state. (cliff.koh@microsoft.com)
 ## 7.39.2
 Fri, 27 Sep 2019 12:33:04 GMT
 

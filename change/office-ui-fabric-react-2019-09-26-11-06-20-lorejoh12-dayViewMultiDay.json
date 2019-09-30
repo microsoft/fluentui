@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "dateMath change to include extra parameter when calculating date range",
-  "packageName": "office-ui-fabric-react",
-  "email": "jolore@microsoft.com",
-  "commit": "472ab496b3fe9f811b1d4842fec5fdbd2aacbb19",
-  "date": "2019-09-26T18:06:20.515Z"
-}

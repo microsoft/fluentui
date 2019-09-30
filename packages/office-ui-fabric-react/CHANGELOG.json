@@ -2,6 +2,27 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Mon, 30 Sep 2019 12:35:16 GMT",
+      "tag": "office-ui-fabric-react_v7.40.0",
+      "version": "7.40.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "dateMath change to include extra parameter when calculating date range",
+            "author": "jolore@microsoft.com",
+            "commit": "472ab496b3fe9f811b1d4842fec5fdbd2aacbb19"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Dropdown: There is now a visible focus border on Dropdowns in the error state.",
+            "author": "cliff.koh@microsoft.com",
+            "commit": "3c18ed963ca5d8112a5dfddc56896a47f5dfa125"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 27 Sep 2019 12:33:04 GMT",
       "tag": "office-ui-fabric-react_v7.39.2",
       "version": "7.39.2",
