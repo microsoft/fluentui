@@ -1,5 +1,3 @@
-import * as React from 'react';
-
 const _layersByHostId: { [hostId: string]: (() => void)[] } = {};
 
 let _defaultHostSelector: string | undefined;

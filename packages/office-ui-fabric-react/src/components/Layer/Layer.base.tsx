@@ -95,7 +95,7 @@ export class LayerBase extends React.Component<ILayerProps, ILayerBaseState> {
 
     layerElement.className = classNames.root!;
     setPortalAttribute(layerElement);
-    setVirtualParent(layerElement, this._rootRef.current);
+    setVirtualParent(layerElement, this._rootRef.current!);
 
     this.props.insertFirst ? host.insertBefore(layerElement, host.firstChild) : host.appendChild(layerElement);
 
@@ -207,58 +207,3 @@ function _getFilteredEvents() {
 
   return _filteredEventProps;
 }
-
-/**
- * Hook which given a hostId, will return a ref for the layer and a corresponding
- * layer element.
- */
-const useLayeredElement = (hostId: string | undefined) => {
-  const [updateCount, setUpdateCount] = React.useState(0);
-  const layerSourceRef = React.useRef<HTMLSpanElement>(null);
-  const [layerTargetElement, setLayerTargetElement] = React.useState<HTMLSpanElement | null>(null);
-
-  React.useLayoutEffect(() => {
-    const doc = getDocument(layerSourceRef.current)!;
-    const el = doc.createElement('div');
-    const parent = (hostId && doc.getElementById(hostId)) || doc.body;
-    const onHostChanged = () => setUpdateCount(updateCount + 1);
-
-    if (layerSourceRef.current) {
-      hostId && registerLayer(hostId, onHostChanged);
-      parent.appendChild(el);
-      setVirtualParent(el, layerSourceRef.current);
-      setLayerTargetElement(el);
-    }
-    return () => {
-      hostId && unregisterLayer(hostId, onHostChanged);
-      parent.removeChild(el);
-    };
-  }, [hostId, updateCount]);
-
-  return {
-    layerSourceRef,
-    layerTargetElement
-  };
-};
-
-export const LayerBase2 = (props: ILayerProps) => {
-  const { className, styles, theme, hostId, eventBubblingEnabled } = props;
-  const { layerSourceRef, layerTargetElement } = useLayeredElement(hostId);
-  const classNames = getClassNames(styles!, {
-    theme: theme!,
-    className,
-    isNotHost: !props.hostId
-  });
-
-  return (
-    <span className={classNames.root} ref={layerSourceRef}>
-      {layerTargetElement &&
-        ReactDOM.createPortal(
-          <Fabric {...eventBubblingEnabled && _getFilteredEvents()} className={classNames.content}>
-            {props.children}
-          </Fabric>,
-          layerTargetElement
-        )}
-    </span>
-  );
-};

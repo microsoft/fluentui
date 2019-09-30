@@ -984,10 +984,10 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
     const visibleRect = {
       top: visibleTop,
       left: surfaceRect.left,
-      bottom: visibleTop + win.innerHeight,
+      bottom: visibleTop + win!.innerHeight,
       right: surfaceRect.right,
       width: surfaceRect.width,
-      height: win.innerHeight
+      height: win!.innerHeight
     };
 
     // The required/allowed rects are adjusted versions of the visible rect.
