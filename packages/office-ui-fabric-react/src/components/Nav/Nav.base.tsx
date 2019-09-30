@@ -300,7 +300,7 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
       return link.key === this.props.selectedKey;
     } else if (this.state.selectedKey !== undefined) {
       return link.key === this.state.selectedKey;
-    } else if (typeof getWindow(this) === 'undefined' || !link.url) {
+    } else if (typeof getWindow() === 'undefined' || !link.url) {
       // resolve is not supported for ssr
       return false;
     } else {
