@@ -1,7 +1,14 @@
 # Change Log - @uifabric/date-time
 
-This log was last generated on Wed, 25 Sep 2019 12:34:56 GMT and should not be manually modified.
+This log was last generated on Mon, 30 Sep 2019 12:35:16 GMT and should not be manually modified.
 
+## 7.5.0
+Mon, 30 Sep 2019 12:35:16 GMT
+
+### Minor changes
+
+- undefined (jolore@microsoft.com)
+- initial commit of multi-day day view implementation. Lots of style updates to allow the hover states to work- previously hover states were always static, but now the classes have to update dynamically as the mouse moves over days (jolore@microsoft.com)
 ## 7.4.8
 Wed, 25 Sep 2019 12:34:56 GMT
 

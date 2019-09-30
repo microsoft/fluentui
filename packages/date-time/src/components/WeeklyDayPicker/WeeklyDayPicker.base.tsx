@@ -13,7 +13,7 @@ import {
 } from '../Calendar/Calendar.types';
 import { CalendarDayGrid } from '../CalendarDayGrid/CalendarDayGrid';
 import { ICalendarDayGrid } from '../CalendarDayGrid/CalendarDayGrid.types';
-import { compareDatePart, getStartDateOfWeek, addDays, compareDates } from '../../utilities/dateMath/DateMath';
+import { compareDatePart, getStartDateOfWeek, addDays, addMonths, compareDates } from '../../utilities/dateMath/DateMath';
 import { Icon } from 'office-ui-fabric-react/lib/Icon';
 
 const getClassNames = classNamesFunction<IWeeklyDayPickerStyleProps, IWeeklyDayPickerStyles>();
@@ -55,6 +55,12 @@ export interface IWeeklyDayPickerState {
 
   /** The currently selected date in the calendar */
   selectedDate: Date;
+
+  /** Tracking whether we just toggled showFullMonth */
+  previousShowFullMonth: boolean;
+
+  /** Whether to animate veritcally or horizontally */
+  animationDirection: AnimationDirection;
 }
 
 export class WeeklyDayPickerBase extends BaseComponent<IWeeklyDayPickerProps, IWeeklyDayPickerState> {
@@ -75,17 +81,24 @@ export class WeeklyDayPickerBase extends BaseComponent<IWeeklyDayPickerProps, IW
 
   public static getDerivedStateFromProps(props: IWeeklyDayPickerProps, state: IWeeklyDayPickerState): IWeeklyDayPickerState {
     const currentDate = props.initialDate && !isNaN(props.initialDate.getTime()) ? props.initialDate : props.today || new Date();
+    const showFullMonth = !!props.showFullMonth;
+    const newAnimationDirection =
+      showFullMonth !== state.previousShowFullMonth ? AnimationDirection.Vertical : AnimationDirection.Horizontal;
 
     if (!compareDates(currentDate, state.selectedDate)) {
       return {
         selectedDate: currentDate,
-        navigatedDate: currentDate
+        navigatedDate: currentDate,
+        previousShowFullMonth: showFullMonth,
+        animationDirection: newAnimationDirection
       };
     }
 
     return {
       selectedDate: currentDate,
-      navigatedDate: state.navigatedDate
+      navigatedDate: state.navigatedDate,
+      previousShowFullMonth: showFullMonth,
+      animationDirection: newAnimationDirection
     };
   }
 
@@ -95,7 +108,9 @@ export class WeeklyDayPickerBase extends BaseComponent<IWeeklyDayPickerProps, IW
 
     this.state = {
       selectedDate: currentDate,
-      navigatedDate: currentDate
+      navigatedDate: currentDate,
+      previousShowFullMonth: !!props.showFullMonth,
+      animationDirection: props.animationDirection!
     };
     this._focusOnUpdate = false;
   }
@@ -118,7 +133,8 @@ export class WeeklyDayPickerBase extends BaseComponent<IWeeklyDayPickerProps, IW
       styles,
       theme,
       className,
-      animationDirection
+      showFullMonth,
+      weeksToShow
     } = this.props;
 
     const classNames = getClassNames(styles, {
@@ -127,7 +143,13 @@ export class WeeklyDayPickerBase extends BaseComponent<IWeeklyDayPickerProps, IW
     });
 
     return (
-      <div className={classNames.root} onKeyDown={this._onWrapperKeyDown} onTouchStart={this._onTouchStart} onTouchMove={this._onTouchMove}>
+      <div
+        className={classNames.root}
+        onKeyDown={this._onWrapperKeyDown}
+        onTouchStart={this._onTouchStart}
+        onTouchMove={this._onTouchMove}
+        aria-expanded={showFullMonth}
+      >
         {this.renderPreviousWeekNavigationButton(classNames)}
         <CalendarDayGrid
           styles={styles}
@@ -138,7 +160,7 @@ export class WeeklyDayPickerBase extends BaseComponent<IWeeklyDayPickerProps, IW
           firstDayOfWeek={firstDayOfWeek!}
           firstWeekOfYear={FirstWeekOfYear.FirstDay}
           dateRangeType={DateRangeType.Day}
-          weeksToShow={1}
+          weeksToShow={showFullMonth ? weeksToShow : 1}
           dateTimeFormatter={dateTimeFormatter!}
           minDate={minDate}
           maxDate={maxDate}
@@ -146,8 +168,8 @@ export class WeeklyDayPickerBase extends BaseComponent<IWeeklyDayPickerProps, IW
           onSelectDate={this._onSelectDate}
           onNavigateDate={this._onNavigateDate}
           today={today}
-          lightenDaysOutsideNavigatedMonth={false}
-          animationDirection={animationDirection}
+          lightenDaysOutsideNavigatedMonth={showFullMonth}
+          animationDirection={this.state.animationDirection}
         />
         {this.renderNextWeekNavigationButton(classNames)}
       </div>
@@ -203,8 +225,8 @@ export class WeeklyDayPickerBase extends BaseComponent<IWeeklyDayPickerProps, IW
         })}
         disabled={!prevWeekInBounds}
         aria-disabled={!prevWeekInBounds}
-        onClick={prevWeekInBounds ? this._onSelectPrevWeek : undefined}
-        onKeyDown={prevWeekInBounds ? this._onButtonKeyDown(this._onSelectPrevWeek) : undefined}
+        onClick={prevWeekInBounds ? this._onSelectPrevDateRange : undefined}
+        onKeyDown={prevWeekInBounds ? this._onButtonKeyDown(this._onSelectPrevDateRange) : undefined}
         title={
           strings.prevWeekAriaLabel ? strings.prevWeekAriaLabel + ' ' + strings.months[addDays(navigatedDate!, -7).getMonth()] : undefined
         }
@@ -230,8 +252,8 @@ export class WeeklyDayPickerBase extends BaseComponent<IWeeklyDayPickerProps, IW
         })}
         disabled={!nextWeekInBounds}
         aria-disabled={!nextWeekInBounds}
-        onClick={nextWeekInBounds ? this._onSelectNextWeek : undefined}
-        onKeyDown={nextWeekInBounds ? this._onButtonKeyDown(this._onSelectNextWeek) : undefined}
+        onClick={nextWeekInBounds ? this._onSelectNextDateRange : undefined}
+        onKeyDown={nextWeekInBounds ? this._onButtonKeyDown(this._onSelectNextDateRange) : undefined}
         title={
           strings.nextWeekAriaLabel ? strings.nextWeekAriaLabel + ' ' + strings.months[addDays(navigatedDate!, -7).getMonth()] : undefined
         }
@@ -242,12 +264,20 @@ export class WeeklyDayPickerBase extends BaseComponent<IWeeklyDayPickerProps, IW
     );
   };
 
-  private _onSelectPrevWeek = () => {
-    this._navigateDate(addDays(this.state.navigatedDate, -7));
+  private _onSelectPrevDateRange = () => {
+    if (this.props.showFullMonth) {
+      this._navigateDate(addMonths(this.state.navigatedDate, -1));
+    } else {
+      this._navigateDate(addDays(this.state.navigatedDate, -7));
+    }
   };
 
-  private _onSelectNextWeek = () => {
-    this._navigateDate(addDays(this.state.navigatedDate, 7));
+  private _onSelectNextDateRange = () => {
+    if (this.props.showFullMonth) {
+      this._navigateDate(addMonths(this.state.navigatedDate, 1));
+    } else {
+      this._navigateDate(addDays(this.state.navigatedDate, 7));
+    }
   };
 
   private _navigateDate = (date: Date) => {
@@ -297,10 +327,10 @@ export class WeeklyDayPickerBase extends BaseComponent<IWeeklyDayPickerProps, IW
     if (touch && this._initialTouchX !== undefined && touch.clientX !== this._initialTouchX) {
       if ((touch.clientX - this._initialTouchX) * (isRtl ? -1 : 1) < 0) {
         // swipe right
-        this._onSelectNextWeek();
+        this._onSelectNextDateRange();
       } else {
         // swipe left
-        this._onSelectPrevWeek();
+        this._onSelectPrevDateRange();
       }
       this._initialTouchX = undefined;
     }

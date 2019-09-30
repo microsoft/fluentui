@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { DefaultButton } from 'office-ui-fabric-react';
+import { DefaultButton, Dropdown, IDropdownOption } from 'office-ui-fabric-react';
 import { addDays, getDateRangeArray } from 'office-ui-fabric-react/lib/utilities/dateMath/DateMath';
-import { Calendar, DateRangeType, DayOfWeek } from '@uifabric/date-time';
+import { Calendar, ICalendarProps, DateRangeType, DayOfWeek } from '@uifabric/date-time';
 
 import * as styles from './Calendar.Example.scss';
 
@@ -24,25 +24,12 @@ const DayPickerStrings = {
 export interface ICalendarInlineExampleState {
   selectedDate?: Date | null;
   selectedDateRange?: Date[] | null;
+  daysToSelectInDayView?: number;
 }
 
-export interface ICalendarInlineExampleProps {
-  isMonthPickerVisible?: boolean;
-  dateRangeType: DateRangeType;
-  autoNavigateOnSelection: boolean;
-  showGoToToday: boolean;
+export interface ICalendarInlineExampleProps extends ICalendarProps {
   showNavigateButtons?: boolean;
-  highlightCurrentMonth?: boolean;
-  highlightSelectedMonth?: boolean;
-  isDayPickerVisible?: boolean;
-  showMonthPickerAsOverlay?: boolean;
-  showWeekNumbers?: boolean;
-  minDate?: Date;
-  maxDate?: Date;
-  restrictedDates?: Date[];
-  showSixWeeksByDefault?: boolean;
-  workWeekDays?: DayOfWeek[];
-  firstDayOfWeek?: DayOfWeek;
+  showDaysToSelectInDayViewDropdown?: boolean;
 }
 
 export class CalendarInlineExample extends React.Component<ICalendarInlineExampleProps, ICalendarInlineExampleState> {
@@ -51,7 +38,8 @@ export class CalendarInlineExample extends React.Component<ICalendarInlineExampl
 
     this.state = {
       selectedDate: null,
-      selectedDateRange: null
+      selectedDateRange: null,
+      daysToSelectInDayView: props.calendarDayProps ? props.calendarDayProps.daysToSelectInDayView : 1
     };
 
     this._onDismiss = this._onDismiss.bind(this);
@@ -101,6 +89,7 @@ export class CalendarInlineExample extends React.Component<ICalendarInlineExampl
           </div>
         )}
         <Calendar
+          {...this.props}
           onSelectDate={this._onSelectDate}
           onDismiss={this._onDismiss}
           isMonthPickerVisible={this.props.isMonthPickerVisible}
@@ -119,6 +108,10 @@ export class CalendarInlineExample extends React.Component<ICalendarInlineExampl
           restrictedDates={this.props.restrictedDates}
           showSixWeeksByDefault={this.props.showSixWeeksByDefault}
           workWeekDays={this.props.workWeekDays}
+          calendarDayProps={{
+            ...this.props.calendarDayProps,
+            daysToSelectInDayView: this.state.daysToSelectInDayView
+          }}
         />
         {this.props.showNavigateButtons && (
           <div>
@@ -126,9 +119,36 @@ export class CalendarInlineExample extends React.Component<ICalendarInlineExampl
             <DefaultButton className={styles.button} onClick={this._goNext} text="Next" />
           </div>
         )}
+        {this.props.showDaysToSelectInDayViewDropdown && (
+          <div>
+            <Dropdown
+              className={styles.dropdown}
+              selectedKey={this.state.daysToSelectInDayView && this.state.daysToSelectInDayView}
+              label="Choose days to select"
+              options={[
+                { key: 1, text: '1' },
+                { key: 2, text: '2' },
+                { key: 3, text: '3' },
+                { key: 4, text: '4' },
+                { key: 5, text: '5' },
+                { key: 6, text: '6' }
+              ]}
+              onChange={this._onDaysToSelectInDayViewDropdownChange}
+            />
+          </div>
+        )}
       </div>
     );
   }
+
+  private _onDaysToSelectInDayViewDropdownChange = (ev: React.FormEvent<HTMLElement>, option: IDropdownOption | undefined): void => {
+    this.setState((prevState: ICalendarInlineExampleState) => {
+      return {
+        ...prevState,
+        daysToSelectInDayView: option && (option.key as number)
+      };
+    });
+  };
 
   private _onDismiss(): void {
     this.setState((prevState: ICalendarInlineExampleState) => {
@@ -139,7 +159,7 @@ export class CalendarInlineExample extends React.Component<ICalendarInlineExampl
   private _goPrevious(): void {
     this.setState((prevState: ICalendarInlineExampleState) => {
       const selectedDate = prevState.selectedDate || new Date();
-      const dateRangeArray = getDateRangeArray(selectedDate, this.props.dateRangeType, DayOfWeek.Sunday);
+      const dateRangeArray = getDateRangeArray(selectedDate, this.props.dateRangeType!, DayOfWeek.Sunday);
 
       let subtractFrom = dateRangeArray[0];
       let daysToSubtract = dateRangeArray.length;
@@ -160,7 +180,7 @@ export class CalendarInlineExample extends React.Component<ICalendarInlineExampl
   private _goNext(): void {
     this.setState((prevState: ICalendarInlineExampleState) => {
       const selectedDate = prevState.selectedDate || new Date();
-      const dateRangeArray = getDateRangeArray(selectedDate, this.props.dateRangeType, DayOfWeek.Sunday);
+      const dateRangeArray = getDateRangeArray(selectedDate, this.props.dateRangeType!, DayOfWeek.Sunday);
       const newSelectedDate = addDays(dateRangeArray.pop()!, 1);
 
       return {

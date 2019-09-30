@@ -1,7 +1,13 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Mon, 23 Sep 2019 12:33:15 GMT and should not be manually modified.
+This log was last generated on Fri, 27 Sep 2019 12:33:04 GMT and should not be manually modified.
 
+## 7.18.0
+Fri, 27 Sep 2019 12:33:04 GMT
+
+### Minor changes
+
+- Golden Folder grid view CSS cleanup for Fabric Master (caperez@microsoft.com)
 ## 7.17.1
 Mon, 23 Sep 2019 12:33:15 GMT
 

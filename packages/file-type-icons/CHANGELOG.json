@@ -2,6 +2,20 @@
   "name": "@uifabric/file-type-icons",
   "entries": [
     {
+      "date": "Fri, 27 Sep 2019 12:33:04 GMT",
+      "tag": "@uifabric/file-type-icons_v7.1.1",
+      "version": "7.1.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Golden Folder grid view css cleanup for Fabric Master, rev filetype version param string",
+            "author": "caperez@microsoft.com",
+            "commit": "dcbea452fae639fd4fd48c486f3256f5309ac66e"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 12 Sep 2019 12:34:15 GMT",
       "tag": "@uifabric/file-type-icons_v7.1.0",
       "version": "7.1.0",

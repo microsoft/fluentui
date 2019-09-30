@@ -37,7 +37,9 @@
     </div>
 
     <script type="text/javascript">
+      // @ts-check
       var isLocal = location.hostname === 'localhost' || location.hostname.indexOf('ngrok.io') > -1;
+      var isDev = isLocal || getParameterByName('isDev');
       var isProduction = location.hostname === 'developer.microsoft.com' || getParameterByName('isProduction');
       var devhost = getParameterByName('devhost');
       var entryPointFilename = 'fabric-sitev5';
@@ -121,7 +123,7 @@
       }
 
       function loadAppScripts() {
-        var version = isLocal ? '.development.js' : '.production.min.js';
+        var version = isDev ? '.development.js' : '.production.min.js';
         var reactPath = '//cdnjs.cloudflare.com/ajax/libs/react/16.8.6/umd/react' + version;
         var reactDomPath = '//cdnjs.cloudflare.com/ajax/libs/react-dom/16.8.6/umd/react-dom' + version;
 
@@ -133,7 +135,7 @@
         // Required configuration to make our Monaco wrapper work
         window.MonacoConfig = {
           baseUrl: appPath,
-          useMinified: !isLocal
+          useMinified: isProduction
         };
       }
 

@@ -34,7 +34,6 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
             font-size: 14px;
             font-weight: 400;
             height: 32px;
-            min-width: 32px;
             outline: transparent;
             padding-bottom: 0;
             padding-left: 4px;
@@ -46,6 +45,7 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
             text-decoration: none;
             user-select: none;
             vertical-align: top;
+            width: 32px;
           }
           &::-moz-focus-inner {
             border: 0;
@@ -164,7 +164,6 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
             font-size: 14px;
             font-weight: 400;
             height: 32px;
-            min-width: 32px;
             outline: transparent;
             padding-bottom: 0;
             padding-left: 4px;
@@ -176,6 +175,7 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
             text-decoration: none;
             user-select: none;
             vertical-align: top;
+            width: 32px;
           }
           &::-moz-focus-inner {
             border: 0;
@@ -826,7 +826,6 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
             font-size: 14px;
             font-weight: 400;
             height: 32px;
-            min-width: 32px;
             outline: transparent;
             padding-bottom: 0;
             padding-left: 4px;
@@ -837,6 +836,7 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
             text-decoration: none;
             user-select: none;
             vertical-align: top;
+            width: 32px;
           }
           &::-moz-focus-inner {
             border: 0;
@@ -965,7 +965,6 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
               font-size: 14px;
               font-weight: 400;
               height: 32px;
-              min-width: 32px;
               outline: transparent;
               padding-bottom: 0;
               padding-left: 4px;
@@ -976,6 +975,7 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
               text-decoration: none;
               user-select: none;
               vertical-align: top;
+              width: 32px;
             }
             &::-moz-focus-inner {
               border: 0;
@@ -1116,7 +1116,6 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
           font-size: 14px;
           font-weight: 400;
           height: 32px;
-          min-width: 32px;
           outline: transparent;
           padding-bottom: 0;
           padding-left: 4px;
@@ -1128,6 +1127,7 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
           text-decoration: none;
           user-select: none;
           vertical-align: top;
+          width: 32px;
         }
         &::-moz-focus-inner {
           border: 0;
@@ -1246,7 +1246,6 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
           font-size: 14px;
           font-weight: 400;
           height: 32px;
-          min-width: 32px;
           outline: transparent;
           padding-bottom: 0;
           padding-left: 4px;
@@ -1258,6 +1257,7 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
           text-decoration: none;
           user-select: none;
           vertical-align: top;
+          width: 32px;
         }
         &::-moz-focus-inner {
           border: 0;
@@ -1551,7 +1551,6 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
               font-weight: 400;
               height: 32px;
               line-height: 30px;
-              min-width: 32px;
               outline: transparent;
               padding-bottom: 0;
               padding-left: 4px;
@@ -1692,7 +1691,6 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
           font-size: 14px;
           font-weight: 400;
           height: 32px;
-          min-width: 32px;
           outline: transparent;
           padding-bottom: 0;
           padding-left: 4px;
@@ -1703,6 +1701,7 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
           text-decoration: none;
           user-select: none;
           vertical-align: top;
+          width: 32px;
         }
         &::-moz-focus-inner {
           border: 0;
@@ -1818,7 +1817,6 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
           font-size: 14px;
           font-weight: 400;
           height: 32px;
-          min-width: 32px;
           outline: transparent;
           padding-bottom: 0;
           padding-left: 4px;
@@ -1829,6 +1827,7 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
           text-decoration: none;
           user-select: none;
           vertical-align: top;
+          width: 32px;
         }
         &::-moz-focus-inner {
           border: 0;
