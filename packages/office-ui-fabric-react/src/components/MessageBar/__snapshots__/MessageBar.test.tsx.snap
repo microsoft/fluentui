@@ -38,6 +38,7 @@ exports[`MessageBar renders MessageBar correctly 1`] = `
           background: WindowText;
           color: Window;
         }
+    role="region"
   >
     <div
       className=
