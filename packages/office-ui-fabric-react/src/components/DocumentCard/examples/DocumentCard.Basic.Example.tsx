@@ -30,7 +30,7 @@ export class DocumentCardBasicExample extends React.PureComponent {
 
     return (
       <DocumentCard
-        aria-label="Default Document Card with large file name. Created by Annie Lindqvist a few minutes ago"
+        aria-label="Default Document Card with large file name. Created by Annie Lindqvist a few minutes ago."
         onClickHref="http://bing.com"
       >
         <DocumentCardPreview {...previewProps} />

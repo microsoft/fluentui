@@ -108,7 +108,8 @@ export class DocumentCardCompactExample extends React.PureComponent {
       <Stack tokens={stackTokens}>
         {/* Document preview */}
         <DocumentCard
-          aria-label="Document Card with document preview. Revenue stream proposal fiscal year 2016 version 2. Created by Roko Kolar a few minutes ago"
+          aria-label="Document Card with document preview. Revenue stream proposal fiscal year 2016 version 2.
+          Created by Roko Kolar a few minutes ago"
           type={DocumentCardType.compact}
           onClickHref="http://bing.com"
         >
@@ -144,7 +145,8 @@ export class DocumentCardCompactExample extends React.PureComponent {
         </DocumentCard>
         {/* Email conversation */}
         <DocumentCard
-          aria-label="Document Card with email conversation. Conversation about takeaways from annual SharePoint conference. Sent by Christian Bergqvist a few minutes ago"
+          aria-label="Document Card with email conversation. Conversation about takeaways from annual SharePoint conference.
+          Sent by Christian Bergqvist a few minutes ago"
           type={DocumentCardType.compact}
           onClickHref="http://bing.com"
         >
