@@ -1568,7 +1568,7 @@ export interface IBaseButtonProps extends IButtonProps {
 // @public (undocumented)
 export interface IBaseButtonState {
     // (undocumented)
-    menuProps?: IContextualMenuProps | null;
+    menuHidden: boolean;
 }
 
 // @public (undocumented)
