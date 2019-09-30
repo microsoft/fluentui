@@ -2,6 +2,20 @@
   "name": "@uifabric/tsx-editor",
   "entries": [
     {
+      "date": "Mon, 30 Sep 2019 12:35:16 GMT",
+      "tag": "@uifabric/tsx-editor_v0.7.2",
+      "version": "0.7.2",
+      "comments": {
+        "none": [
+          {
+            "comment": "Add comments about IE 11 regex fix",
+            "author": "elcraig@microsoft.com",
+            "commit": "d4b0254c3aa931b39801f2f71e33952fbc149480"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 25 Sep 2019 12:34:56 GMT",
       "tag": "@uifabric/tsx-editor_v0.7.2",
       "version": "0.7.2",

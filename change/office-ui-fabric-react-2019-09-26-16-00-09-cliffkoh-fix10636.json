@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Dropdown: There is now a visible focus border on Dropdowns in the error state.",
-  "packageName": "office-ui-fabric-react",
-  "email": "cliff.koh@microsoft.com",
-  "commit": "3c18ed963ca5d8112a5dfddc56896a47f5dfa125",
-  "date": "2019-09-26T23:00:09.845Z"
-}

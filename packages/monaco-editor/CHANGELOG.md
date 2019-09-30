@@ -1,7 +1,13 @@
 # Change Log - @uifabric/monaco-editor
 
-This log was last generated on Tue, 24 Sep 2019 12:35:43 GMT and should not be manually modified.
+This log was last generated on Mon, 30 Sep 2019 12:35:16 GMT and should not be manually modified.
 
+## 0.2.2
+Mon, 30 Sep 2019 12:35:16 GMT
+
+### Patches
+
+- Fix inference of cross-domain setting (elcraig@microsoft.com)
 ## 0.2.1
 Tue, 24 Sep 2019 12:35:43 GMT
 
