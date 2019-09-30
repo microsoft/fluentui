@@ -116,7 +116,7 @@ export class MessageBarBase extends BaseComponent<IMessageBarProps, IMessageBarS
     const { theme } = this.props;
     return (
       <div style={{ background: theme!.semanticColors.bodyBackground }}>
-        <div className={this._classNames.root}>
+        <div className={this._classNames.root} role="region">
           <div className={this._classNames.content}>
             {this._getIconSpan()}
             {this._renderInnerText()}
@@ -132,7 +132,7 @@ export class MessageBarBase extends BaseComponent<IMessageBarProps, IMessageBarS
     const { theme } = this.props;
     return (
       <div style={{ background: theme!.semanticColors.bodyBackground }}>
-        <div className={this._classNames.root}>
+        <div className={this._classNames.root} role="region">
           <div className={this._classNames.content}>
             {this._getIconSpan()}
             {this._renderInnerText()}
