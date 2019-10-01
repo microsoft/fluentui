@@ -12,12 +12,13 @@ export enum ResponsiveMode {
   large = 2,
   xLarge = 3,
   xxLarge = 4,
-  xxxLarge = 5
+  xxxLarge = 5,
+  unknown = 999
 }
 
 const RESPONSIVE_MAX_CONSTRAINT = [479, 639, 1023, 1365, 1919, 99999999];
 
-let _defaultMode: ResponsiveMode | undefined;
+let _defaultMode: ResponsiveMode | undefined = ResponsiveMode.unknown;
 
 /**
  * Allows a server rendered scenario to provide a default responsive mode.
@@ -35,35 +36,40 @@ export function withResponsiveMode<TProps extends { responsiveMode?: ResponsiveM
       this._updateComposedComponentRef = this._updateComposedComponentRef.bind(this);
 
       this.state = {
-        responsiveMode: this._getResponsiveMode()
+        responsiveMode: _defaultMode
       };
     }
 
     public componentDidMount(): void {
-      this._events.on(window, 'resize', () => {
-        const responsiveMode = this._getResponsiveMode();
-
-        if (responsiveMode !== this.state.responsiveMode) {
-          this.setState({
-            responsiveMode: responsiveMode
-          });
-        }
-      });
+      this._events.on(window, 'resize', this._onResize);
+      this._onResize();
     }
 
     public componentWillUnmount(): void {
       this._events.dispose();
     }
 
-    public render(): JSX.Element {
+    public render(): JSX.Element | null {
       const { responsiveMode } = this.state;
 
-      return <ComposedComponent ref={this._updateComposedComponentRef} responsiveMode={responsiveMode} {...this.props as any} />;
+      return responsiveMode === ResponsiveMode.unknown ? null : (
+        <ComposedComponent ref={this._updateComposedComponentRef} responsiveMode={responsiveMode} {...this.props as any} />
+      );
     }
+
+    private _onResize = () => {
+      const responsiveMode = this._getResponsiveMode();
+
+      if (responsiveMode !== this.state.responsiveMode) {
+        this.setState({
+          responsiveMode: responsiveMode
+        });
+      }
+    };
 
     private _getResponsiveMode(): ResponsiveMode {
       let responsiveMode = ResponsiveMode.small;
-      const win = getWindow();
+      const win = getWindow(this);
 
       if (typeof win !== 'undefined') {
         try {

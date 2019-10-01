@@ -24,6 +24,7 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
   >
     <div
       aria-label="Rating value is 0 of 5"
+      aria-readonly={true}
       className=
           ms-FocusZone
           ms-Rating-focuszone

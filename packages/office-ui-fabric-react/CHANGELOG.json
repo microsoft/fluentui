@@ -2,6 +2,32 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Tue, 01 Oct 2019 12:33:48 GMT",
+      "tag": "office-ui-fabric-react_v7.41.0",
+      "version": "7.41.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Refactoring BaseButton with respect to how it processes menuProps",
+            "author": "kushaly@microsoft.com",
+            "commit": "5d4ab08674d02a1c3e813ad2325bc55b1eeb4634"
+          },
+          {
+            "comment": "Rating: Align read-only functionality with ARIA standards.",
+            "author": "jagore@microsoft.com",
+            "commit": "2bb4a845d352319c2b0893a63edae063e756331b"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Layer: now works better when rendering from a child window.",
+            "author": "dzearing@microsoft.com",
+            "commit": "565f663abf4a51090c4d81abf185cb405105ba54"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 30 Sep 2019 12:35:16 GMT",
       "tag": "office-ui-fabric-react_v7.40.0",
       "version": "7.40.0",

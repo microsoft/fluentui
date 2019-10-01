@@ -21,8 +21,8 @@
     "@uifabric/react-cards": "^0.108.1",
     "@uifabric/styling": "^7.7.2",
     "@uifabric/tslint-rules": "^7.0.5",
-    "@uifabric/utilities": "^7.2.0",
-    "office-ui-fabric-react": "^7.40.0"
+    "@uifabric/utilities": "^7.3.0",
+    "office-ui-fabric-react": "^7.41.0"
   },
   "dependencies": {
     "@microsoft/tsdoc": "0.12.12",

@@ -1,7 +1,13 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Thu, 26 Sep 2019 12:32:32 GMT and should not be manually modified.
+This log was last generated on Tue, 01 Oct 2019 12:33:48 GMT and should not be manually modified.
 
+## 7.3.0
+Tue, 01 Oct 2019 12:33:48 GMT
+
+### Minor changes
+
+- Async helpers now take in a target element which will be used to find the window object. (dzearing@microsoft.com)
 ## 7.2.0
 Thu, 26 Sep 2019 12:32:32 GMT
 
