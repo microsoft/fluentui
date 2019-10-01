@@ -12,7 +12,7 @@ const getCellText = (item: any, column: IColumn): string => {
   }
 
   if (typeof value === 'boolean') {
-    return String(value);
+    return value.toString();
   }
 
   return value;
