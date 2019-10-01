@@ -45,7 +45,7 @@ export function transformExample(params: ITransformExampleParams): ITransformedC
   const { tsCode, jsCode, id = 'content', supportedPackages, returnComponent } = params;
 
   // Imports or exports will be removed since they are not supported.
-  let code = (jsCode || tsCode)
+  const code = (jsCode || tsCode)
     // Use .source because IE 11 doesn't support creating a regex from a regex
     .replace(new RegExp(IMPORT_REGEX.source, 'gm'), '')
     .replace(/^export /gm, '')
@@ -76,28 +76,36 @@ export function transformExample(params: ITransformExampleParams): ITransformedC
     identifiersByGlobal[globalName].push(...imprt.identifiers.map(item => (item.as ? `${item.name}: ${item.as}` : item.name)));
   }
 
-  // Generate a Fabric wrapper for the component if appropriate
+  let lines = [code];
+
+  // Generate Fabric wrapper stuff for the component if appropriate
   let finalComponent = component;
   if (identifiersByGlobal.Fabric) {
-    // If this is a Fabric example, wrap in a <Fabric> (and add an import for that if needed)
+    // If this is a Fabric example, wrap in a <Fabric> (and add an import for that if needed),
+    // and initialize icons in case the example uses them.
     finalComponent = component + 'Wrapper';
 
     // If immediately running the code, the component can't use JSX format
     const wrapperCode = returnComponent
       ? `React.createElement(Fabric, null, React.createElement(${component}, null))`
       : `<Fabric><${component} /></Fabric>`;
-    code += `\n\n const ${finalComponent} = () => ${wrapperCode};`;
+    lines.push('', `const ${finalComponent} = () => ${wrapperCode};`);
 
     if (identifiersByGlobal.Fabric.indexOf('Fabric') === -1) {
       identifiersByGlobal.Fabric.push('Fabric');
     }
+
+    if (identifiersByGlobal.Fabric.indexOf('initializeIcons') === -1) {
+      lines.unshift('// Initialize icons in case this example uses them', 'initializeIcons();', '');
+      identifiersByGlobal.Fabric.push('initializeIcons');
+    }
   }
 
   // Add const destructuring for formerly-imported identifiers
-  const lines = Object.keys(identifiersByGlobal).map(
-    globalName => `const { ${identifiersByGlobal[globalName].join(', ')} } = window.${globalName};`
-  );
-  lines.push('', code, '');
+  lines.unshift('');
+  lines = Object.keys(identifiersByGlobal)
+    .map(globalName => `const { ${identifiersByGlobal[globalName].join(', ')} } = window.${globalName};`)
+    .concat(lines);
 
   if (returnComponent) {
     // Wrap in IIFE
