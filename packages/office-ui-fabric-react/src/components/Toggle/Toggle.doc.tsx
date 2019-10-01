@@ -5,7 +5,6 @@ import { ToggleCustomLabelExample } from './examples/Toggle.CustomLabel.Example'
 import { IDocPageProps } from '../../common/DocPage.types';
 
 const ToggleBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Toggle/examples/Toggle.Basic.Example.tsx') as string;
-const ToggleBasicExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/Toggle/examples/Toggle.Basic.Example.tsx') as string;
 const ToggleCustomLabelExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Toggle/examples/Toggle.CustomLabel.Example.tsx') as string;
 
 export const TogglePageProps: IDocPageProps = {
@@ -16,8 +15,7 @@ export const TogglePageProps: IDocPageProps = {
     {
       title: 'Basic Toggles',
       code: ToggleBasicExampleCode,
-      view: <ToggleBasicExample />,
-      codepenJS: ToggleBasicExampleCodepen
+      view: <ToggleBasicExample />
     },
     {
       title: 'Toggles with Custom Labels',

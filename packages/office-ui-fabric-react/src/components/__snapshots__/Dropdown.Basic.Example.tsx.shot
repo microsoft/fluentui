@@ -148,9 +148,6 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
           &:active .ms-Dropdown-title--hasError {
             border-color: #a4262c;
           }
-          &:focus .ms-Dropdown-title--hasError {
-            border-color: #a4262c;
-          }
       data-is-focusable={true}
       id="Dropdown0"
       onBlur={[Function]}
@@ -163,8 +160,9 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
     >
       <span
         aria-atomic={true}
+        aria-invalid={false}
         aria-label="Select an option"
-        aria-live="off"
+        aria-live="polite"
         aria-setsize={7}
         className=
             ms-Dropdown-title
@@ -231,7 +229,6 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
                 speak: none;
               }
           data-icon-name="ChevronDown"
-          role="presentation"
         >
           
         </i>
@@ -348,9 +345,6 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
           &:active .ms-Dropdown-title--hasError {
             border-color: #a4262c;
           }
-          &:focus .ms-Dropdown-title--hasError {
-            border-color: #a4262c;
-          }
       data-is-focusable={false}
       id="Dropdown1"
       onBlur={[Function]}
@@ -362,8 +356,9 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
     >
       <span
         aria-atomic={true}
+        aria-invalid={false}
         aria-label="Broccoli"
-        aria-live="off"
+        aria-live="polite"
         className=
             ms-Dropdown-title
             {
@@ -434,7 +429,6 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
                 color: GrayText;
               }
           data-icon-name="ChevronDown"
-          role="presentation"
         >
           
         </i>
@@ -567,9 +561,6 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
           &:active .ms-Dropdown-title--hasError {
             border-color: #a4262c;
           }
-          &:focus .ms-Dropdown-title--hasError {
-            border-color: #a4262c;
-          }
       data-is-focusable={true}
       id="Dropdown2"
       onBlur={[Function]}
@@ -581,8 +572,9 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
     >
       <span
         aria-atomic={true}
+        aria-invalid={false}
         aria-label="Apple"
-        aria-live="off"
+        aria-live="polite"
         className=
             ms-Dropdown-title
             {
@@ -645,7 +637,6 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
                 speak: none;
               }
           data-icon-name="ChevronDown"
-          role="presentation"
         >
           
         </i>

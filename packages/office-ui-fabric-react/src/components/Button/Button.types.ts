@@ -251,6 +251,7 @@ export interface IButtonProps
     disabled: boolean,
     checked: boolean,
     expanded: boolean,
+    hasMenu: boolean,
     isSplit: boolean | undefined,
     allowDisabledFocus: boolean
   ) => IButtonClassNames;
@@ -282,7 +283,7 @@ export interface IButtonProps
   /**
    * Menu will not be created or destroyed when opened or closed, instead it
    * will be hidden. This will improve perf of the menu opening but could potentially
-   * impact overall perf by having more elemnts in the dom. Should only be used
+   * impact overall perf by having more elements in the dom. Should only be used
    * when perf is important.
    * Note: This may increase the amount of time it takes for the button itself to mount.
    */
@@ -394,6 +395,11 @@ export interface IButtonStyles {
    * Style override applied to the root on hover in a expanded state on hover
    */
   rootExpandedHovered?: IStyle;
+
+  /**
+   * Style override for the root element when it has a menu button, layered on top of the root style.
+   */
+  rootHasMenu?: IStyle;
 
   /**
    * Style for the flexbox container within the root element.

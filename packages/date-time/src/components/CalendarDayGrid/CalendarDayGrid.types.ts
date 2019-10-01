@@ -90,6 +90,13 @@ export interface ICalendarDayGridProps extends IBaseProps<ICalendarDayGrid> {
   dateRangeType: DateRangeType;
 
   /**
+   * The number of days to select while dateRangeType === DateRangeType.Day. Used in order to have multi-day
+   * views.
+   * @defaultValue 1
+   */
+  daysToSelectInDayView?: number;
+
+  /**
    * Value of today. If null, current time in client machine will be used.
    */
   today?: Date;

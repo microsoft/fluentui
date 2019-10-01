@@ -130,15 +130,15 @@ exports[`Component Examples renders PeoplePicker.Types.Example.tsx correctly 1`]
               padding-top: 5px;
               word-wrap: break-word;
             }
-        htmlFor="Dropdown2"
-        id="Dropdown2-label"
+        htmlFor="Dropdown7"
+        id="Dropdown7-label"
       >
         Select People Picker Type
       </label>
       <div
-        aria-describedby="Dropdown2-option"
+        aria-describedby="Dropdown7-option"
         aria-expanded="false"
-        aria-labelledby="Dropdown2-label"
+        aria-labelledby="Dropdown7-label"
         className=
             ms-Dropdown
             {
@@ -225,11 +225,8 @@ exports[`Component Examples renders PeoplePicker.Types.Example.tsx correctly 1`]
             &:active .ms-Dropdown-title--hasError {
               border-color: #a4262c;
             }
-            &:focus .ms-Dropdown-title--hasError {
-              border-color: #a4262c;
-            }
         data-is-focusable={true}
-        id="Dropdown2"
+        id="Dropdown7"
         onBlur={[Function]}
         onChange={[Function]}
         onClick={[Function]}
@@ -241,8 +238,9 @@ exports[`Component Examples renders PeoplePicker.Types.Example.tsx correctly 1`]
       >
         <span
           aria-atomic={true}
+          aria-invalid={false}
           aria-label="Normal"
-          aria-live="off"
+          aria-live="polite"
           aria-posinset={1}
           aria-selected={true}
           aria-setsize={7}
@@ -273,7 +271,7 @@ exports[`Component Examples renders PeoplePicker.Types.Example.tsx correctly 1`]
                 text-overflow: ellipsis;
                 white-space: nowrap;
               }
-          id="Dropdown2-option"
+          id="Dropdown7-option"
           role="option"
         >
           <span>
@@ -309,7 +307,6 @@ exports[`Component Examples renders PeoplePicker.Types.Example.tsx correctly 1`]
                   speak: none;
                 }
             data-icon-name="ChevronDown"
-            role="presentation"
           >
             
           </i>
@@ -366,7 +363,7 @@ exports[`Component Examples renders PeoplePicker.Types.Example.tsx correctly 1`]
             @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
               outline: 1px solid ActiveBorder;
             }
-        id="checkbox-3"
+        id="checkbox-2"
         onBlur={[Function]}
         onChange={[Function]}
         onFocus={[Function]}
@@ -397,7 +394,7 @@ exports[`Component Examples renders PeoplePicker.Types.Example.tsx correctly 1`]
               right: 0px;
               top: 0px;
             }
-        htmlFor="checkbox-3"
+        htmlFor="checkbox-2"
       >
         <div
           className=
@@ -440,7 +437,6 @@ exports[`Component Examples renders PeoplePicker.Types.Example.tsx correctly 1`]
                   color: Window;
                 }
             data-icon-name="CheckMark"
-            role="presentation"
           >
             
           </i>
@@ -498,8 +494,8 @@ exports[`Component Examples renders PeoplePicker.Types.Example.tsx correctly 1`]
               padding-top: 5px;
               word-wrap: break-word;
             }
-        htmlFor="Toggle4"
-        id="Toggle4-label"
+        htmlFor="Toggle3"
+        id="Toggle3-label"
       >
         Delay Suggestion Results
       </label>
@@ -513,7 +509,7 @@ exports[`Component Examples renders PeoplePicker.Types.Example.tsx correctly 1`]
       >
         <button
           aria-checked={false}
-          aria-labelledby="Toggle4-label"
+          aria-labelledby="Toggle3-label"
           className=
               ms-Toggle-background
               {
@@ -562,7 +558,7 @@ exports[`Component Examples renders PeoplePicker.Types.Example.tsx correctly 1`]
                 border-color: Highlight;
               }
           data-is-focusable={true}
-          id="Toggle4"
+          id="Toggle3"
           onChange={[Function]}
           onClick={[Function]}
           role="switch"
@@ -708,7 +704,7 @@ exports[`Component Examples renders PeoplePicker.Types.Example.tsx correctly 1`]
                 margin-right: 4px;
                 margin-top: 0;
               }
-          id="id__5"
+          id="id__4"
         >
           Set focus
         </span>

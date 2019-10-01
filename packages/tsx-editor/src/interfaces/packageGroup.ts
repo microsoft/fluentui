@@ -1,4 +1,4 @@
-// Don't reference anything importing Monaco in this file (it may break tests)
+// Don't reference anything importing Monaco in this file (it will break tests)
 
 /**
  * Group of packages which are available at runtime under the same global, with loaders for

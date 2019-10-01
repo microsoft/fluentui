@@ -775,6 +775,7 @@ exports[`TextField snapshots renders multiline resizable correctly 1`] = `
     >
       <textarea
         aria-invalid={false}
+        aria-labelledby="TextFieldLabel2"
         className=
             ms-TextField-field
             {
@@ -950,6 +951,7 @@ exports[`TextField snapshots renders multiline unresizable correctly 1`] = `
     >
       <textarea
         aria-invalid={false}
+        aria-labelledby="TextFieldLabel2"
         className=
             ms-TextField-field
             ms-TextField--unresizable
@@ -1127,6 +1129,7 @@ exports[`TextField snapshots renders multiline with placeholder correctly 1`] = 
     >
       <textarea
         aria-invalid={false}
+        aria-labelledby="TextFieldLabel2"
         className=
             ms-TextField-field
             {

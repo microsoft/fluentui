@@ -9,7 +9,7 @@ const monacoEditorPath = path.dirname(require.resolve('monaco-editor/package.jso
 
 preset.basic();
 
-task('clean', cleanTask({ paths: ['esm', 'lib'] }));
+task('clean', cleanTask({ paths: ['esm', 'lib', 'lib-commonjs'] }));
 task(
   'copy',
   copyInstructionsTask({
@@ -17,6 +17,8 @@ task(
   })
 );
 task('transform-css', transformCssTask);
-task('ts', ts.esm);
+task('ts:esm', ts.esm);
+task('ts:commonjs', ts.commonjs);
+task('ts', parallel('ts:esm', 'ts:commonjs'));
 
 task('build', series('clean', 'copy', parallel('transform-css', 'ts'))).cached();

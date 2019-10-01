@@ -2,6 +2,62 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "date": "Tue, 01 Oct 2019 12:33:48 GMT",
+      "tag": "@uifabric/fabric-website_v7.5.1",
+      "version": "7.5.1",
+      "comments": {
+        "none": [
+          {
+            "comment": "add figma file to docs",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "d3acb2edb383b4c728b15df472e97003d05739aa"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 30 Sep 2019 12:35:16 GMT",
+      "tag": "@uifabric/fabric-website_v7.5.1",
+      "version": "7.5.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Don't load minified editor files",
+            "author": "elcraig@microsoft.com",
+            "commit": "d4b0254c3aa931b39801f2f71e33952fbc149480"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 23 Sep 2019 12:33:15 GMT",
+      "tag": "@uifabric/fabric-website_v7.5.0",
+      "version": "7.5.0",
+      "comments": {
+        "none": [
+          {
+            "comment": "Website: Update Powerapps theme color",
+            "author": "marygans@microsoft.com",
+            "commit": "42656124f9c42818bb6268870c858e94067ceae3"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 20 Sep 2019 12:34:28 GMT",
+      "tag": "@uifabric/fabric-website_v7.5.0",
+      "version": "7.5.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Website: Split Brand icons page into Brand Icons and File Type Icons pages",
+            "author": "marygans@microsoft.com",
+            "commit": "55b31ad0a74beb68b6316e5878c8b99551b1b9b5"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 19 Sep 2019 13:05:24 GMT",
       "tag": "@uifabric/fabric-website_v7.4.8",
       "version": "7.4.8",

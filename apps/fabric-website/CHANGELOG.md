@@ -1,7 +1,19 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Thu, 19 Sep 2019 13:05:24 GMT and should not be manually modified.
+This log was last generated on Mon, 30 Sep 2019 12:35:16 GMT and should not be manually modified.
 
+## 7.5.1
+Mon, 30 Sep 2019 12:35:16 GMT
+
+### Patches
+
+- Don't load minified editor files (elcraig@microsoft.com)
+## 7.5.0
+Fri, 20 Sep 2019 12:34:28 GMT
+
+### Minor changes
+
+- Website: Split Brand icons page into Brand Icons and File Type Icons pages (marygans@microsoft.com)
 ## 7.4.8
 Thu, 19 Sep 2019 13:05:24 GMT
 

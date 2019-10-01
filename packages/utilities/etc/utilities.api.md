@@ -4,6 +4,7 @@
 
 ```ts
 
+import { Component } from 'react';
 import { IProcessedStyleSet } from '@uifabric/merge-styles';
 import { IStyleFunction } from '@uifabric/merge-styles';
 import { IStyleFunctionOrObject } from '@uifabric/merge-styles';
@@ -44,8 +45,8 @@ export function assign(target: any, ...args: any[]): any;
 export class Async {
     constructor(parent?: object, onError?: (e: any) => void);
     // (undocumented)
-    cancelAnimationFrame(id: number): void;
-    clearImmediate(id: number): void;
+    cancelAnimationFrame(id: number, targetElement?: Element): void;
+    clearImmediate(id: number, targetElement?: Element): void;
     clearInterval(id: number): void;
     clearTimeout(id: number): void;
     debounce<T extends Function>(func: T, wait?: number, options?: {
@@ -57,8 +58,8 @@ export class Async {
     // (undocumented)
     protected _logError(e: any): void;
     // (undocumented)
-    requestAnimationFrame(callback: () => void): number;
-    setImmediate(callback: () => void): number;
+    requestAnimationFrame(callback: () => void, targetElement?: Element): number;
+    setImmediate(callback: () => void, targetElement?: Element): number;
     setInterval(callback: () => void, duration: number): number;
     setTimeout(callback: () => void, duration: number): number;
     throttle<T extends Function>(func: T, wait?: number, options?: {
@@ -132,9 +133,8 @@ export function customizable(scope: string, fields: string[], concatStyles?: boo
 
 // @public (undocumented)
 export class Customizations {
-    // (undocumented)
+    static applyBatchedUpdates(code: () => void, suppressUpdate?: boolean): void;
     static applyScopedSettings(scopeName: string, settings: ISettings): void;
-    // (undocumented)
     static applySettings(settings: ISettings): void;
     // (undocumented)
     static getSettings(properties: string[], scopeName?: string, localSettings?: ICustomizations): any;
@@ -284,7 +284,7 @@ export function getChildren(parent: HTMLElement, allowVirtualChildren?: boolean)
 export function getDistanceBetweenPoints(point1: IPoint, point2: IPoint): number;
 
 // @public
-export function getDocument(rootElement?: HTMLElement | null): Document | undefined;
+export function getDocument(rootElement?: HTMLElement | Component | null): Document | undefined;
 
 // @public
 export function getElementIndexPath(fromElement: HTMLElement, toElement: HTMLElement): number[];
@@ -344,7 +344,7 @@ export function getScrollbarWidth(): number;
 export function getVirtualParent(child: HTMLElement): HTMLElement | undefined;
 
 // @public
-export function getWindow(rootElement?: Element | null): Window | undefined;
+export function getWindow(rootElement?: Element | Component | null): Window | undefined;
 
 // @public
 export class GlobalSettings {
@@ -926,7 +926,7 @@ export function memoizeFunction<T extends (...args: any[]) => RET_TYPE, RET_TYPE
 export function merge<T = {}>(target: Partial<T>, ...args: (Partial<T> | null | undefined | false)[]): T;
 
 // @public
-export function mergeAriaAttributeValues(...ariaAttributes: (string | undefined)[]): string | undefined;
+export function mergeAriaAttributeValues(...ariaAttributes: (string | undefined | false)[]): string | undefined;
 
 // @public
 export function mergeCustomizations(props: ICustomizerProps, parentContext: ICustomizerContext): ICustomizerContext;
