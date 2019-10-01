@@ -68,6 +68,7 @@ const headerStyle = (
     hasSmallHeadline && classNames.headerIsSmall,
     !hasSmallHeadline && classNames.headerIsLarge,
     {
+      marginBottom: 10,
       selectors: {
         ':not(:last-child)': {
           marginBottom: 14
@@ -118,6 +119,7 @@ export const getStyles = (props: ITeachingBubbleStyleProps): ITeachingBubbleStyl
         position: 'absolute',
         right: 0,
         top: 0,
+        margin: '15px 10px 0px 0px',
         borderRadius: 0,
         color: palette.white,
         fontSize: fonts.small.fontSize,
@@ -166,7 +168,8 @@ export const getStyles = (props: ITeachingBubbleStyleProps): ITeachingBubbleStyl
     headline: [
       classNames.headline,
       {
-        margin: 0,
+        marginBottom: 10,
+        marginTop: 0,
         color: palette.white,
         fontWeight: FontWeights.semibold
       },
@@ -182,7 +185,6 @@ export const getStyles = (props: ITeachingBubbleStyleProps): ITeachingBubbleStyl
       isWide && {
         display: 'flex',
         alignItems: 'center',
-        paddingLeft: 20,
         maxWidth: 154
       }
     ],

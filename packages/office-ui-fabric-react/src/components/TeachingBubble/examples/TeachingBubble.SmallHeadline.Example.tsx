@@ -23,7 +23,8 @@ export class TeachingBubbleSmallHeadlineExample extends React.Component<{}, ITea
   public render(): JSX.Element {
     const { isTeachingBubbleVisible } = this.state;
     const examplePrimaryButton: IButtonProps = {
-      children: 'Try it out'
+      children: 'Try it out',
+      onClick: this._onDismiss
     };
 
     return (
