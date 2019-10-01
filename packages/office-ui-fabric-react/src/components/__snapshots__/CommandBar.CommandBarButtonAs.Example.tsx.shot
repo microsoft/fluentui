@@ -920,6 +920,9 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                                           className=
                                               ms-TeachingBubble-header
                                               ms-TeachingBubble-header--large
+                                              {
+                                                margin-bottom: 10px;
+                                              }
                                               &:not(:last-child) {
                                                 margin-bottom: 14px;
                                               }
@@ -931,9 +934,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                                                   color: #ffffff;
                                                   font-size: 20px;
                                                   font-weight: 600;
-                                                  margin-bottom: 0px;
-                                                  margin-left: 0px;
-                                                  margin-right: 0px;
+                                                  margin-bottom: 10px;
                                                   margin-top: 0px;
                                                 }
                                             id="example-label1"
@@ -987,6 +988,10 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                                               font-size: 12px;
                                               font-weight: 400;
                                               height: 32px;
+                                              margin-bottom: 0px;
+                                              margin-left: 0px;
+                                              margin-right: 10px;
+                                              margin-top: 15px;
                                               outline: transparent;
                                               padding-bottom: 0;
                                               padding-left: 4px;

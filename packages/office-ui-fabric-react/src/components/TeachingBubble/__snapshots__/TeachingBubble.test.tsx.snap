@@ -165,6 +165,9 @@ exports[`TeachingBubble renders TeachingBubbleContent correctly 1`] = `
       className=
           ms-TeachingBubble-header
           ms-TeachingBubble-header--large
+          {
+            margin-bottom: 10px;
+          }
           &:not(:last-child) {
             margin-bottom: 14px;
           }
@@ -176,9 +179,7 @@ exports[`TeachingBubble renders TeachingBubbleContent correctly 1`] = `
               color: #ffffff;
               font-size: 20px;
               font-weight: 600;
-              margin-bottom: 0px;
-              margin-left: 0px;
-              margin-right: 0px;
+              margin-bottom: 10px;
               margin-top: 0px;
             }
         role="heading"
@@ -246,6 +247,9 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
       className=
           ms-TeachingBubble-header
           ms-TeachingBubble-header--large
+          {
+            margin-bottom: 10px;
+          }
           &:not(:last-child) {
             margin-bottom: 14px;
           }
@@ -257,9 +261,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
               color: #ffffff;
               font-size: 20px;
               font-weight: 600;
-              margin-bottom: 0px;
-              margin-left: 0px;
-              margin-right: 0px;
+              margin-bottom: 10px;
               margin-top: 0px;
             }
         role="heading"
@@ -651,6 +653,10 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
           font-size: 12px;
           font-weight: 400;
           height: 32px;
+          margin-bottom: 0px;
+          margin-left: 0px;
+          margin-right: 10px;
+          margin-top: 15px;
           outline: transparent;
           padding-bottom: 0;
           padding-left: 4px;
@@ -813,9 +819,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with condensed headline co
             {
               color: #ffffff;
               font-weight: 600;
-              margin-bottom: 0px;
-              margin-left: 0px;
-              margin-right: 0px;
+              margin-bottom: 10px;
               margin-top: 0px;
             }
         role="heading"
@@ -1040,6 +1044,9 @@ exports[`TeachingBubble renders TeachingBubbleContent with image correctly 1`] =
       className=
           ms-TeachingBubble-header
           ms-TeachingBubble-header--large
+          {
+            margin-bottom: 10px;
+          }
           &:not(:last-child) {
             margin-bottom: 14px;
           }
@@ -1051,9 +1058,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with image correctly 1`] =
               color: #ffffff;
               font-size: 20px;
               font-weight: 600;
-              margin-bottom: 0px;
-              margin-left: 0px;
-              margin-right: 0px;
+              margin-bottom: 10px;
               margin-top: 0px;
             }
         role="heading"
@@ -1127,6 +1132,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with small headline correc
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
             font-weight: 600;
+            margin-bottom: 10px;
             margin-right: 10px;
           }
           &:not(:last-child) {
@@ -1139,9 +1145,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with small headline correc
             {
               color: #ffffff;
               font-weight: 600;
-              margin-bottom: 0px;
-              margin-left: 0px;
-              margin-right: 0px;
+              margin-bottom: 10px;
               margin-top: 0px;
             }
         role="heading"
