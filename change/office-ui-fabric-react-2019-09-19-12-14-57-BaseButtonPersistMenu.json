@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Refactoring BaseButton with respect to how it processes menuProps",
-  "packageName": "office-ui-fabric-react",
-  "email": "kushaly@microsoft.com",
-  "commit": "5d4ab08674d02a1c3e813ad2325bc55b1eeb4634",
-  "date": "2019-09-19T19:14:57.020Z"
-}

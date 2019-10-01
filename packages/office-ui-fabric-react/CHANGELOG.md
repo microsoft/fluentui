@@ -1,7 +1,17 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 30 Sep 2019 12:35:16 GMT and should not be manually modified.
+This log was last generated on Tue, 01 Oct 2019 12:33:48 GMT and should not be manually modified.
 
+## 7.41.0
+Tue, 01 Oct 2019 12:33:48 GMT
+
+### Minor changes
+
+- Layer: now works better when rendering from a child window. (dzearing@microsoft.com)
+### Patches
+
+- Refactoring BaseButton with respect to how it processes menuProps (kushaly@microsoft.com)
+- Rating: Align read-only functionality with ARIA standards. (jagore@microsoft.com)
 ## 7.40.0
 Mon, 30 Sep 2019 12:35:16 GMT
 

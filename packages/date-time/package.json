@@ -50,8 +50,8 @@
     "@microsoft/load-themed-styles": "^1.7.13",
     "@uifabric/set-version": "^7.0.2",
     "@uifabric/styling": "^7.7.2",
-    "@uifabric/utilities": "^7.2.0",
-    "office-ui-fabric-react": "^7.40.0",
+    "@uifabric/utilities": "^7.3.0",
+    "office-ui-fabric-react": "^7.41.0",
     "tslib": "^1.7.1"
   },
   "peerDependencies": {
