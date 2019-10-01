@@ -25,10 +25,7 @@ export function getWindow(rootElement?: Element | Component | null): Window | un
   if (_isSSR || typeof _window === 'undefined') {
     return undefined;
   } else {
-    if (rootElement && !(rootElement as Element).ownerDocument) {
-      rootElement = findDOMNode(rootElement) as Element;
-    }
-    const el = rootElement as Element;
+    const el = rootElement && !(rootElement as Element).ownerDocument ? (findDOMNode(rootElement) as Element) : (rootElement as Element);
 
     return el && el.ownerDocument && el.ownerDocument.defaultView ? el.ownerDocument.defaultView : _window;
   }
