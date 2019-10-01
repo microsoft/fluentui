@@ -8556,6 +8556,8 @@ export enum ResponsiveMode {
     // (undocumented)
     small = 0,
     // (undocumented)
+    unknown = 999,
+    // (undocumented)
     xLarge = 3,
     // (undocumented)
     xxLarge = 4,
