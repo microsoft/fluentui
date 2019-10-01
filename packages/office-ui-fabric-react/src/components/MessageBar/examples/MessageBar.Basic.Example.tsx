@@ -3,6 +3,7 @@ import { MessageBarButton, Link, Stack, StackItem, MessageBar, MessageBarType, C
 
 export const MessageBarBasicExample: React.StatelessComponent = () => {
   const [choice, setChoice] = React.useState<string | undefined>(undefined);
+  const showAll = choice === 'all';
   const resetChoice = () => setChoice(undefined);
 
   const DefaultExample = () => (
@@ -165,19 +166,19 @@ export const MessageBarBasicExample: React.StatelessComponent = () => {
         />
       </StackItem>
       <Stack styles={{ root: { overflow: 'hidden', width: '100%' } }} tokens={{ childrenGap: 20 }}>
-        {(choice === 'default' || choice === 'all') && <DefaultExample />}
+        {(choice === 'default' || showAll) && <DefaultExample />}
 
-        {(choice === 'error' || choice === 'all') && <ErrorExample />}
+        {(choice === 'error' || showAll) && <ErrorExample />}
 
-        {(choice === 'blocked' || choice === 'all') && <BlockedExample />}
+        {(choice === 'blocked' || showAll) && <BlockedExample />}
 
-        {(choice === 'severe' || choice === 'all') && <SevereExample />}
+        {(choice === 'severe' || showAll) && <SevereExample />}
 
-        {(choice === 'success' || choice === 'all') && <SuccessExample />}
+        {(choice === 'success' || showAll) && <SuccessExample />}
 
-        {(choice === 'warning' || choice === 'all') && <WarningExample />}
+        {(choice === 'warning' || showAll) && <WarningExample />}
 
-        {(choice === 'warning2' || choice === 'all') && <WarningExample2 />}
+        {(choice === 'warning2' || showAll) && <WarningExample2 />}
       </Stack>
     </Stack>
   );
