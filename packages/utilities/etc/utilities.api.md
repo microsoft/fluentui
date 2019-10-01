@@ -59,7 +59,7 @@ export class Async {
     protected _logError(e: any): void;
     // (undocumented)
     requestAnimationFrame(callback: () => void, targetElement?: Element): number;
-    setImmediate(callback: () => void): number;
+    setImmediate(callback: () => void, targetElement?: Element): number;
     setInterval(callback: () => void, duration: number): number;
     setTimeout(callback: () => void, duration: number): number;
     throttle<T extends Function>(func: T, wait?: number, options?: {

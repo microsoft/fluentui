@@ -139,11 +139,12 @@ export class Async {
   /**
    * SetImmediate override, which will auto cancel the immediate during dispose.
    * @param callback - Callback to execute.
+   * @param targetElement - Optional target element to use for identifying the correct window.
    * @returns The setTimeout id.
    */
-  public setImmediate(callback: () => void): number {
+  public setImmediate(callback: () => void, targetElement?: Element): number {
     let immediateId = 0;
-    const win = getWindow()!;
+    const win = getWindow(targetElement)!;
 
     if (!this._isDisposed) {
       if (!this._immediateIds) {
@@ -177,6 +178,7 @@ export class Async {
   /**
    * Clears the immediate.
    * @param id - Id to cancel.
+   * @param targetElement - Optional target element to use for identifying the correct window.
    */
   public clearImmediate(id: number, targetElement?: Element): void {
     const win = getWindow(targetElement)!;
