@@ -18,18 +18,7 @@ class CalloutContentWrapper extends React.Component<ICalloutProps, {}> {
 
 describe('Callout', () => {
   it('renders Callout correctly', () => {
-    const createNodeMock = (el: React.ReactElement<{}>) => {
-      return {
-        addEventListener: () => {
-          /* no-op */
-        },
-        removeEventListener: () => {
-          /* no-op */
-        }
-      };
-    };
-
-    const component = renderer.create(<CalloutContentWrapper>Content</CalloutContentWrapper>, { createNodeMock });
+    const component = renderer.create(<CalloutContentWrapper>Content</CalloutContentWrapper>);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });

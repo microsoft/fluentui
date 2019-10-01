@@ -1179,12 +1179,12 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
       if (typeof target === 'string') {
         const currentDoc: Document = getDocument()!;
         this._target = currentDoc ? (currentDoc.querySelector(target) as Element) : null;
-        this._targetWindow = getWindow()!;
+        this._targetWindow = getWindow(this)!;
       } else if ((target as MouseEvent).stopPropagation) {
         this._targetWindow = getWindow((target as MouseEvent).toElement as HTMLElement)!;
         this._target = target;
       } else if ((target as IPoint).x !== undefined && (target as IPoint).y !== undefined) {
-        this._targetWindow = getWindow()!;
+        this._targetWindow = getWindow(this)!;
         this._target = target;
       } else {
         const targetElement: Element = target as Element;
@@ -1192,7 +1192,7 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
         this._target = target;
       }
     } else {
-      this._targetWindow = getWindow()!;
+      this._targetWindow = getWindow(this)!;
     }
   }
 

@@ -698,15 +698,15 @@ exports[`Component Examples renders Callout.Directional.Example.tsx correctly 1`
               padding-top: 5px;
               word-wrap: break-word;
             }
-        htmlFor="Dropdown3"
-        id="Dropdown3-label"
+        htmlFor="Dropdown6"
+        id="Dropdown6-label"
       >
         Directional hint
       </label>
       <div
-        aria-describedby="Dropdown3-option"
+        aria-describedby="Dropdown6-option"
         aria-expanded="false"
-        aria-labelledby="Dropdown3-label"
+        aria-labelledby="Dropdown6-label"
         className=
             ms-Dropdown
             {
@@ -793,7 +793,7 @@ exports[`Component Examples renders Callout.Directional.Example.tsx correctly 1`
               border-color: #a80000;
             }
         data-is-focusable={true}
-        id="Dropdown3"
+        id="Dropdown6"
         onBlur={[Function]}
         onChange={[Function]}
         onClick={[Function]}
@@ -836,7 +836,7 @@ exports[`Component Examples renders Callout.Directional.Example.tsx correctly 1`
                 text-overflow: ellipsis;
                 white-space: nowrap;
               }
-          id="Dropdown3-option"
+          id="Dropdown6-option"
           role="option"
         >
           <span>
@@ -995,7 +995,7 @@ exports[`Component Examples renders Callout.Directional.Example.tsx correctly 1`
                   margin-right: 4px;
                   margin-top: 0;
                 }
-            id="id__4"
+            id="id__3"
           >
             Show callout
           </div>

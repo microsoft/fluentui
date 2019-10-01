@@ -69,7 +69,7 @@ export function withViewport<TProps extends { viewport?: IViewport }, TState>(
 
     public componentDidMount(): void {
       const { skipViewportMeasures } = this.props as IWithViewportProps;
-      const win = getWindow();
+      const win = getWindow(this);
 
       this._onAsyncResize = this._async.debounce(this._onAsyncResize, RESIZE_DELAY, {
         leading: false
@@ -93,7 +93,7 @@ export function withViewport<TProps extends { viewport?: IViewport }, TState>(
     public componentDidUpdate(newProps: TProps) {
       const { skipViewportMeasures: oldSkipViewportMeasures } = this.props as IWithViewportProps;
       const { skipViewportMeasures: newSkipViewportMeasures } = newProps as IWithViewportProps;
-      const win = getWindow();
+      const win = getWindow(this);
 
       if (oldSkipViewportMeasures !== newSkipViewportMeasures) {
         if (newSkipViewportMeasures) {
@@ -138,13 +138,13 @@ export function withViewport<TProps extends { viewport?: IViewport }, TState>(
     }
 
     private _isResizeObserverAvailable(): boolean {
-      const win = getWindow();
+      const win = getWindow(this);
 
       return win && (win as any).ResizeObserver;
     }
 
     private _registerResizeObserver = () => {
-      const win = getWindow();
+      const win = getWindow(this);
 
       this._viewportResizeObserver = new (win as any).ResizeObserver(this._onAsyncResize);
       this._viewportResizeObserver.observe(this._root.current);
