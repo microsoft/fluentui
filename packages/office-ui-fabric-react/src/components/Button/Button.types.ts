@@ -297,7 +297,7 @@ export interface IButtonProps
    * Note: This increases the time the button will take to mount, but
    * can improve perceived menu open perf. when the user opens the menu.
    *
-   * @default undefined, equivalent to false
+   * @defaultvalue undefined, equivalent to false
    *
    * @deprecated There is known bug in Edge when this prop is true where scrollbars
    * overlap with the content when a menu is first rendered hidden.
