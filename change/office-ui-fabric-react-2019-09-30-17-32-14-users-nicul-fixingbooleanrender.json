@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Fixing the rendering of boolean values in Lists",
+  "packageName": "office-ui-fabric-react",
+  "email": "nicul@microsoft.com",
+  "commit": "3cdd0cde16afc66813b6388879c9ddab89677800",
+  "date": "2019-10-01T00:32:14.526Z"
+}
