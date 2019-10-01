@@ -760,15 +760,15 @@ exports[`Component Examples renders Facepile.Basic.Example.tsx correctly 1`] = `
               padding-top: 5px;
               word-wrap: break-word;
             }
-        htmlFor="Dropdown5"
-        id="Dropdown5-label"
+        htmlFor="Dropdown6"
+        id="Dropdown6-label"
       >
         Persona Size:
       </label>
       <div
-        aria-describedby="Dropdown5-option"
+        aria-describedby="Dropdown6-option"
         aria-expanded="false"
-        aria-labelledby="Dropdown5-label"
+        aria-labelledby="Dropdown6-label"
         className=
             ms-Dropdown
             {
@@ -853,7 +853,7 @@ exports[`Component Examples renders Facepile.Basic.Example.tsx correctly 1`] = `
               border-color: #a4262c;
             }
         data-is-focusable={true}
-        id="Dropdown5"
+        id="Dropdown6"
         onBlur={[Function]}
         onChange={[Function]}
         onClick={[Function]}
@@ -898,7 +898,7 @@ exports[`Component Examples renders Facepile.Basic.Example.tsx correctly 1`] = `
                 text-overflow: ellipsis;
                 white-space: nowrap;
               }
-          id="Dropdown5-option"
+          id="Dropdown6-option"
           role="option"
         >
           <span>
@@ -1006,7 +1006,7 @@ exports[`Component Examples renders Facepile.Basic.Example.tsx correctly 1`] = `
             @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
               outline: 1px solid ActiveBorder;
             }
-        id="checkbox-6"
+        id="checkbox-5"
         onBlur={[Function]}
         onChange={[Function]}
         onFocus={[Function]}
@@ -1037,7 +1037,7 @@ exports[`Component Examples renders Facepile.Basic.Example.tsx correctly 1`] = `
               right: 0px;
               top: 0px;
             }
-        htmlFor="checkbox-6"
+        htmlFor="checkbox-5"
       >
         <div
           className=
