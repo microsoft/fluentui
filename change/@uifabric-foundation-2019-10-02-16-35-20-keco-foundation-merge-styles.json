@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Foundation next requires @uifabric/merge-styles dependency",
+  "packageName": "@uifabric/foundation",
+  "email": "KevinTCoughlin@users.noreply.github.com",
+  "commit": "cd4565bf67647fe0fd6267845b05561f7d6563a2",
+  "date": "2019-10-02T23:35:20.459Z"
+}
