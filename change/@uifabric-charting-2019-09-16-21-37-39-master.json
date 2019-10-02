@@ -1,5 +1,5 @@
 {
-  "type": "patch",
+  "type": "minor",
   "comment": "Add benchmark triangle in stackedBarChart",
   "packageName": "@uifabric/charting",
   "email": "dajiang@microsoft.com",

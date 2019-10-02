@@ -74,7 +74,7 @@ export const getStyles = (props: IStackedBarChartStyleProps): IStackedBarChartSt
     },
     benchmarkContainer: {
       position: 'relative',
-      height: '11.8px'
+      height: '12px'
     },
     benchmark: {
       position: 'absolute',
