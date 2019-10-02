@@ -38,7 +38,6 @@ exports[`MessageBar renders MessageBar correctly 1`] = `
           background: WindowText;
           color: Window;
         }
-    role="region"
   >
     <div
       className=
@@ -108,7 +107,6 @@ exports[`MessageBar renders MessageBar correctly 1`] = `
             @media screen and (-ms-high-contrast: active){& {
               -ms-high-contrast-adjust: none;
             }
-        id="MessageBar0"
       >
         <span
           aria-live="polite"
@@ -120,6 +118,7 @@ exports[`MessageBar renders MessageBar correctly 1`] = `
               & span a {
                 padding-left: 4px;
               }
+          id="MessageBar0"
           role="status"
         />
       </div>
