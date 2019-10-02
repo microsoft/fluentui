@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Async helpers now take in a target element which will be used to find the window object.",
-  "packageName": "@uifabric/utilities",
-  "email": "dzearing@microsoft.com",
-  "commit": "565f663abf4a51090c4d81abf185cb405105ba54",
-  "date": "2019-09-30T04:53:06.581Z"
-}

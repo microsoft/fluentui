@@ -2,6 +2,20 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Wed, 02 Oct 2019 04:37:41 GMT",
+      "tag": "office-ui-fabric-react_v6.205.0",
+      "version": "6.205.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Layer: now works better when rendering from a child window.",
+            "author": "dzearing@microsoft.com",
+            "commit": "565f663abf4a51090c4d81abf185cb405105ba54"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 27 Sep 2019 12:23:16 GMT",
       "tag": "office-ui-fabric-react_v6.204.4",
       "version": "6.204.4",

@@ -1,7 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 27 Sep 2019 12:23:16 GMT and should not be manually modified.
+This log was last generated on Wed, 02 Oct 2019 04:37:41 GMT and should not be manually modified.
 
+## 6.205.0
+Wed, 02 Oct 2019 04:37:41 GMT
+
+### Minor changes
+
+- Layer: now works better when rendering from a child window. (dzearing@microsoft.com)
 ## 6.204.4
 Fri, 27 Sep 2019 12:23:16 GMT
 
