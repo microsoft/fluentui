@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Add benchmark triangle in stackedBarChart",
+  "packageName": "@uifabric/charting",
+  "email": "dajiang@microsoft.com",
+  "commit": "842e7fc9eeec95d4d7e9e7cb25da6d6e610a3a66",
+  "date": "2019-09-16T13:37:39.516Z"
+}
