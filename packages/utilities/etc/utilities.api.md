@@ -45,8 +45,8 @@ export function assign(target: any, ...args: any[]): any;
 export class Async {
     constructor(parent?: object, onError?: (e: any) => void);
     // (undocumented)
-    cancelAnimationFrame(id: number, targetElement?: Element): void;
-    clearImmediate(id: number, targetElement?: Element): void;
+    cancelAnimationFrame(id: number, targetElement?: Element | Component | null): void;
+    clearImmediate(id: number, targetElement?: Element | Component | null): void;
     clearInterval(id: number): void;
     clearTimeout(id: number): void;
     debounce<T extends Function>(func: T, wait?: number, options?: {
@@ -58,8 +58,8 @@ export class Async {
     // (undocumented)
     protected _logError(e: any): void;
     // (undocumented)
-    requestAnimationFrame(callback: () => void, targetElement?: Element): number;
-    setImmediate(callback: () => void, targetElement?: Element): number;
+    requestAnimationFrame(callback: () => void, targetElement?: Element | Component | null): number;
+    setImmediate(callback: () => void, targetElement?: Element | Component | null): number;
     setInterval(callback: () => void, duration: number): number;
     setTimeout(callback: () => void, duration: number): number;
     throttle<T extends Function>(func: T, wait?: number, options?: {
