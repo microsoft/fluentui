@@ -1,9 +1,19 @@
 import * as React from 'react';
-import { MessageBarButton, Link, Stack, StackItem, MessageBar, MessageBarType, ChoiceGroup } from 'office-ui-fabric-react';
+import { MessageBarButton, Link, Stack, StackItem, MessageBar, MessageBarType, ChoiceGroup, IStackProps } from 'office-ui-fabric-react';
+
+const horizontalStackProps: IStackProps = {
+  horizontal: true,
+  tokens: { childrenGap: 16 }
+};
+const verticalStackProps: IStackProps = {
+  styles: { root: { overflow: 'hidden', width: '100%' } },
+  tokens: { childrenGap: 20 }
+};
 
 export const MessageBarBasicExample: React.StatelessComponent = () => {
   const [choice, setChoice] = React.useState<string | undefined>(undefined);
   const showAll = choice === 'all';
+
   const resetChoice = () => setChoice(undefined);
 
   const DefaultExample = () => (
@@ -33,8 +43,8 @@ export const MessageBarBasicExample: React.StatelessComponent = () => {
       truncated={true}
       overflowButtonAriaLabel="See more"
     >
-      Blocked MessageBar - single line, with dismiss button and truncated text. Truncation is not available if you use action buttons or
-      multiline and should be used sparingly. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi luctus, purus a lobortis
+      <b>Blocked MessageBar - single line, with dismiss button and truncated text.</b> Truncation is not available if you use action buttons
+      or multiline and should be used sparingly. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi luctus, purus a lobortis
       tristique, odio augue pharetra metus, ac placerat nunc mi nec dui. Vestibulum aliquam et nunc semper scelerisque. Curabitur vitae orci
       nec quam condimentum porttitor et sed lacus. Vivamus ac efficitur leo. Cras faucibus mauris libero, ac placerat erat euismod et. Donec
       pulvinar commodo odio sit amet faucibus. In hac habitasse platea dictumst. Duis eu ante commodo, condimentum nibh pellentesque,
@@ -102,7 +112,6 @@ export const MessageBarBasicExample: React.StatelessComponent = () => {
       onDismiss={resetChoice}
       dismissButtonAriaLabel="Close"
       messageBarType={MessageBarType.warning}
-      ariaLabel="Aria help text here"
       actions={
         <div>
           <MessageBarButton>Yes</MessageBarButton>
@@ -110,11 +119,12 @@ export const MessageBarBasicExample: React.StatelessComponent = () => {
         </div>
       }
     >
-      Warning lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi luctus, purus a lobortis tristique, odio augue pharetra metus,
-      ac placerat nunc mi nec dui. Vestibulum aliquam et nunc semper scelerisque. Curabitur vitae orci nec quam condimentum porttitor et sed
-      lacus. Vivamus ac efficitur leo. Cras faucibus mauris libero, ac placerat erat euismod et. Donec pulvinar commodo odio sit amet
-      faucibus. In hac habitasse platea dictumst. Duis eu ante commodo, condimentum nibh pellentesque, laoreet enim. Fusce massa lorem,
-      ultrices eu mi a, fermentum suscipit magna. Integer porta purus pulvinar, hendrerit felis eget, condimentum mauris.
+      <b>Warning defaults to multiline</b>. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi luctus, purus a lobortis
+      tristique, odio augue pharetra metus, ac placerat nunc mi nec dui. Vestibulum aliquam et nunc semper scelerisque. Curabitur vitae orci
+      nec quam condimentum porttitor et sed lacus. Vivamus ac efficitur leo. Cras faucibus mauris libero, ac placerat erat euismod et. Donec
+      pulvinar commodo odio sit amet faucibus. In hac habitasse platea dictumst. Duis eu ante commodo, condimentum nibh pellentesque,
+      laoreet enim. Fusce massa lorem, ultrices eu mi a, fermentum suscipit magna. Integer porta purus pulvinar, hendrerit felis eget,
+      condimentum mauris.
       <Link href="www.bing.com" target="_blank">
         Visit our website.
       </Link>
@@ -122,7 +132,7 @@ export const MessageBarBasicExample: React.StatelessComponent = () => {
   );
 
   return (
-    <Stack horizontal tokens={{ childrenGap: 16 }}>
+    <Stack {...horizontalStackProps}>
       <StackItem disableShrink>
         <ChoiceGroup
           label="Select a MessageBar Example Below"
@@ -165,7 +175,7 @@ export const MessageBarBasicExample: React.StatelessComponent = () => {
           ]}
         />
       </StackItem>
-      <Stack styles={{ root: { overflow: 'hidden', width: '100%' } }} tokens={{ childrenGap: 20 }}>
+      <Stack {...verticalStackProps}>
         {(choice === 'default' || showAll) && <DefaultExample />}
 
         {(choice === 'error' || showAll) && <ErrorExample />}
