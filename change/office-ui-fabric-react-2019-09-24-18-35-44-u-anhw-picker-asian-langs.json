@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Prevent suggestion autocomplete without selection",
-  "packageName": "office-ui-fabric-react",
-  "email": "anhw@microsoft.com",
-  "commit": "87c6dca185d61a8ed15782090e5b2f7a30fe7fc4",
-  "date": "2019-09-25T01:35:44.321Z"
-}

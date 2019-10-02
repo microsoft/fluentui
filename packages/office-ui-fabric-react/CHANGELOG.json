@@ -2,6 +2,42 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Wed, 02 Oct 2019 12:31:15 GMT",
+      "tag": "office-ui-fabric-react_v7.42.0",
+      "version": "7.42.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Nav: improve ARIA labels for group headings.",
+            "author": "jdh@microsoft.com",
+            "commit": "9d540be0defe78c97bbb81b1472050cceafd9e93"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Prevent suggestion autocomplete without selection",
+            "author": "anhw@microsoft.com",
+            "commit": "87c6dca185d61a8ed15782090e5b2f7a30fe7fc4"
+          },
+          {
+            "comment": "DocumentCard: Adding aria-label descriptions to all examples.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "425ce7d7d7d148b1bc7ddc063b0880ed5553f5dd"
+          },
+          {
+            "comment": "Teachingbubble Example: Fix illustration example",
+            "author": "joschect@microsoft.com",
+            "commit": "3c86870146ce3ac8707ecf57b671116a4a8c36e9"
+          },
+          {
+            "comment": "Fixing the rendering of boolean values in Lists",
+            "author": "nicul@microsoft.com",
+            "commit": "3cdd0cde16afc66813b6388879c9ddab89677800"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 01 Oct 2019 12:33:48 GMT",
       "tag": "office-ui-fabric-react_v7.41.0",
       "version": "7.41.0",

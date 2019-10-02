@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "DocumentCard: Adding aria-label descriptions to all examples.",
-  "packageName": "office-ui-fabric-react",
-  "email": "Humberto.Morimoto@microsoft.com",
-  "commit": "425ce7d7d7d148b1bc7ddc063b0880ed5553f5dd",
-  "date": "2019-09-30T18:45:49.124Z"
-}

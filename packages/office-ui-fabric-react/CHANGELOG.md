@@ -1,7 +1,19 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 01 Oct 2019 12:33:48 GMT and should not be manually modified.
+This log was last generated on Wed, 02 Oct 2019 12:31:15 GMT and should not be manually modified.
 
+## 7.42.0
+Wed, 02 Oct 2019 12:31:15 GMT
+
+### Minor changes
+
+- Nav: improve ARIA labels for group headings. (jdh@microsoft.com)
+### Patches
+
+- Prevent suggestion autocomplete without selection (anhw@microsoft.com)
+- DocumentCard: Adding aria-label descriptions to all examples. (Humberto.Morimoto@microsoft.com)
+- Teachingbubble Example: Fix illustration example (joschect@microsoft.com)
+- Fixing the rendering of boolean values in Lists (nicul@microsoft.com)
 ## 7.41.0
 Tue, 01 Oct 2019 12:33:48 GMT
 
