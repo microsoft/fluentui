@@ -29,7 +29,10 @@ export class DocumentCardBasicExample extends React.PureComponent {
     };
 
     return (
-      <DocumentCard onClickHref="http://bing.com">
+      <DocumentCard
+        aria-label="Default Document Card with large file name. Created by Annie Lindqvist a few minutes ago."
+        onClickHref="http://bing.com"
+      >
         <DocumentCardPreview {...previewProps} />
         <DocumentCardTitle
           title="Large_file_name_with_underscores_used_to_separate_all_of_the_words_and_there_are_so_many_words_it_needs_truncating.pptx"

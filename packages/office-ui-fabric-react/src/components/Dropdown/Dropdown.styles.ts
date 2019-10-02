@@ -222,8 +222,7 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
           ['&:active .' + globalClassnames.titleIsPlaceHolder]: !disabled && rootHoverFocusActiveSelectorNeutralPrimaryMixin,
 
           ['&:hover .' + globalClassnames.titleHasError]: borderColorError,
-          ['&:active .' + globalClassnames.titleHasError]: borderColorError,
-          ['&:focus .' + globalClassnames.titleHasError]: borderColorError
+          ['&:active .' + globalClassnames.titleHasError]: borderColorError
         }
       },
       isOpen && 'is-open',

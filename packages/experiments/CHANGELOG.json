@@ -2,6 +2,27 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "date": "Fri, 27 Sep 2019 12:33:04 GMT",
+      "tag": "@uifabric/experiments_v7.18.0",
+      "version": "7.18.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Golden Folder grid view CSS cleanup for Fabric Master",
+            "author": "caperez@microsoft.com",
+            "commit": "dcbea452fae639fd4fd48c486f3256f5309ac66e"
+          }
+        ],
+        "none": [
+          {
+            "comment": "updating button styles",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "42966c482ad6d471205a9dbeab9bf3cf70aad330"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 26 Sep 2019 12:32:32 GMT",
       "tag": "@uifabric/experiments_v7.17.1",
       "version": "7.17.1",

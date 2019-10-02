@@ -1,4 +1,6 @@
 import { _isSSR } from './setSSR';
+import { Component } from 'react';
+import { findDOMNode } from 'react-dom';
 
 let _window: Window | undefined = undefined;
 
@@ -19,12 +21,12 @@ try {
  *
  * @public
  */
-export function getWindow(rootElement?: Element | null): Window | undefined {
+export function getWindow(rootElement?: Element | Component | null): Window | undefined {
   if (_isSSR || typeof _window === 'undefined') {
     return undefined;
   } else {
-    return rootElement && rootElement.ownerDocument && rootElement.ownerDocument.defaultView
-      ? rootElement.ownerDocument.defaultView
-      : _window;
+    const el = rootElement && !(rootElement as Element).ownerDocument ? (findDOMNode(rootElement) as Element) : (rootElement as Element);
+
+    return el && el.ownerDocument && el.ownerDocument.defaultView ? el.ownerDocument.defaultView : _window;
   }
 }

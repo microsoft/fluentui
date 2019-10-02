@@ -33,7 +33,6 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
     onFocus={[Function]}
   >
     <div
-      aria-label=""
       className=
           ms-FocusZone
           ms-Rating-focuszone
@@ -64,11 +63,9 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
             height: 36px;
           }
       data-focuszone-id="FocusZone2"
-      data-is-focusable={false}
       onFocus={[Function]}
       onKeyDown={[Function]}
       onMouseDownCapture={[Function]}
-      tabIndex={-1}
     >
       <button
         className=
@@ -877,7 +874,6 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
     onFocus={[Function]}
   >
     <div
-      aria-label=""
       className=
           ms-FocusZone
           ms-Rating-focuszone
@@ -908,11 +904,9 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
             height: 32px;
           }
       data-focuszone-id="FocusZone5"
-      data-is-focusable={false}
       onFocus={[Function]}
       onKeyDown={[Function]}
       onMouseDownCapture={[Function]}
-      tabIndex={-1}
     >
       <button
         className=
@@ -1721,7 +1715,6 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
     onFocus={[Function]}
   >
     <div
-      aria-label=""
       className=
           ms-FocusZone
           ms-Rating-focuszone
@@ -1752,11 +1745,9 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
             height: 32px;
           }
       data-focuszone-id="FocusZone8"
-      data-is-focusable={false}
       onFocus={[Function]}
       onKeyDown={[Function]}
       onMouseDownCapture={[Function]}
-      tabIndex={-1}
     >
       <button
         className=
@@ -3313,7 +3304,6 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
   </div>
   Disabled:
   <div
-    aria-label=""
     className=
         ms-Rating-star
         ms-RatingStar-root
@@ -3333,7 +3323,6 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
     onFocus={[Function]}
   >
     <div
-      aria-label=""
       className=
           ms-FocusZone
           ms-Rating-focuszone
@@ -3364,11 +3353,9 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
             height: 32px;
           }
       data-focuszone-id="FocusZone11"
-      data-is-focusable={false}
       onFocus={[Function]}
       onKeyDown={[Function]}
       onMouseDownCapture={[Function]}
-      tabIndex={-1}
     >
       <button
         className=
@@ -3929,6 +3916,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
   >
     <div
       aria-label="Rating value is 2.5 of 5"
+      aria-readonly={true}
       className=
           ms-FocusZone
           ms-Rating-focuszone
@@ -4682,7 +4670,6 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
     onFocus={[Function]}
   >
     <div
-      aria-label=""
       className=
           ms-FocusZone
           ms-Rating-focuszone
@@ -4713,11 +4700,9 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
             height: 32px;
           }
       data-focuszone-id="FocusZone17"
-      data-is-focusable={false}
       onFocus={[Function]}
       onKeyDown={[Function]}
       onMouseDownCapture={[Function]}
-      tabIndex={-1}
     >
       <button
         className=
@@ -5526,7 +5511,6 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
     onFocus={[Function]}
   >
     <div
-      aria-label=""
       className=
           ms-FocusZone
           ms-Rating-focuszone
@@ -5557,11 +5541,9 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
             height: 32px;
           }
       data-focuszone-id="FocusZone20"
-      data-is-focusable={false}
       onFocus={[Function]}
       onKeyDown={[Function]}
       onMouseDownCapture={[Function]}
-      tabIndex={-1}
     >
       <button
         className=

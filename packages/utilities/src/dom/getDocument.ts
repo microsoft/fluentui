@@ -1,4 +1,7 @@
 import { _isSSR } from './setSSR';
+import { Component } from 'react';
+import { findDOMNode } from 'react-dom';
+
 /**
  * Helper to get the document object. Note that in popup window cases, document
  * might be the wrong document, which is why we look at ownerDocument for the
@@ -7,10 +10,12 @@ import { _isSSR } from './setSSR';
  *
  * @public
  */
-export function getDocument(rootElement?: HTMLElement | null): Document | undefined {
+export function getDocument(rootElement?: HTMLElement | Component | null): Document | undefined {
   if (_isSSR || typeof document === 'undefined') {
     return undefined;
   } else {
-    return rootElement && rootElement.ownerDocument ? rootElement.ownerDocument : document;
+    const el = rootElement && !(rootElement as Element).ownerDocument ? findDOMNode(rootElement) : (rootElement as Element);
+
+    return el && el.ownerDocument ? el.ownerDocument : document;
   }
 }

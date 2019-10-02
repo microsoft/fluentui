@@ -1568,7 +1568,7 @@ export interface IBaseButtonProps extends IButtonProps {
 // @public (undocumented)
 export interface IBaseButtonState {
     // (undocumented)
-    menuProps?: IContextualMenuProps | null;
+    menuHidden: boolean;
 }
 
 // @public (undocumented)
@@ -5179,7 +5179,8 @@ export interface ILayer {
 
 // @public (undocumented)
 export type ILayerBaseState = {
-    hasMounted: boolean;
+    hostId?: string;
+    layerElement?: HTMLElement;
 };
 
 // @public (undocumented)
@@ -5190,6 +5191,7 @@ export interface ILayerProps extends React.HTMLAttributes<HTMLDivElement | Layer
     hostId?: string;
     insertFirst?: boolean;
     onLayerDidMount?: () => void;
+    // @deprecated
     onLayerMounted?: () => void;
     onLayerWillUnmount?: () => void;
     styles?: IStyleFunctionOrObject<ILayerStyleProps, ILayerStyles>;
@@ -5555,7 +5557,9 @@ export interface INavLink {
     [propertyName: string]: any;
     ariaLabel?: string;
     automationId?: string;
+    collapseAriaLabel?: string;
     disabled?: boolean;
+    expandAriaLabel?: string;
     forceAnchor?: boolean;
     icon?: string;
     // @deprecated
@@ -5574,7 +5578,9 @@ export interface INavLink {
 // @public (undocumented)
 export interface INavLinkGroup {
     automationId?: string;
+    collapseAriaLabel?: string;
     collapseByDefault?: boolean;
+    expandAriaLabel?: string;
     links: INavLink[];
     name?: string;
     onHeaderClick?: (ev?: React.MouseEvent<HTMLElement>, isCollapsing?: boolean) => void;
@@ -5585,6 +5591,7 @@ export interface INavProps {
     ariaLabel?: string;
     className?: string;
     componentRef?: IRefObject<INav>;
+    // @deprecated
     expandButtonAriaLabel?: string;
     groups: INavLinkGroup[] | null;
     initialSelectedKey?: string;
@@ -7891,11 +7898,7 @@ export class LayerBase extends React.Component<ILayerProps, ILayerBaseState> {
     static defaultProps: ILayerProps;
     // (undocumented)
     render(): React.ReactNode;
-    // (undocumented)
-    UNSAFE_componentWillMount(): void;
-    // (undocumented)
-    UNSAFE_componentWillUpdate(): void;
-}
+    }
 
 // Warning: (ae-forgotten-export) The symbol "ILayerHostProps" needs to be exported by the entry point index.d.ts
 // 
@@ -8557,6 +8560,8 @@ export enum ResponsiveMode {
     medium = 1,
     // (undocumented)
     small = 0,
+    // (undocumented)
+    unknown = 999,
     // (undocumented)
     xLarge = 3,
     // (undocumented)
