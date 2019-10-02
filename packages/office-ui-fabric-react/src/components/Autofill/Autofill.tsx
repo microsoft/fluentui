@@ -217,8 +217,9 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
   private _onInputChanged = (ev: React.FormEvent<HTMLElement>) => {
     const value: string = this._getCurrentInputValue(ev);
 
-    // Right now typing does not have isComposing, once that has been fixed any should be removed.
-    this._tryEnableAutofill(value, this._value, (ev.nativeEvent as any).isComposing);
+    if (!this._isComposing) {
+      this._tryEnableAutofill(value, this._value, (ev.nativeEvent as any).isComposing);
+    }
 
     // If it is not IE11 and currently composing, update the value
     if (!(isIE11() && this._isComposing)) {
