@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Layer: now works better when rendering from a child window.",
+  "packageName": "office-ui-fabric-react",
+  "email": "dzearing@microsoft.com",
+  "commit": "565f663abf4a51090c4d81abf185cb405105ba54",
+  "date": "2019-09-30T04:52:45.818Z"
+}

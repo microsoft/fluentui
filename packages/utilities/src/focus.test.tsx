@@ -177,6 +177,7 @@ describe('focusAsync', () => {
   it('can focus a component which implements focus()', () => {
     let calledFocus = false;
     const fakeComponent = {
+      ownerDocument: {},
       focus: () => (calledFocus = true)
     };
 

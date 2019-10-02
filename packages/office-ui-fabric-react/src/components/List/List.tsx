@@ -2,13 +2,14 @@ import * as React from 'react';
 import {
   BaseComponent,
   IRectangle,
+  IRenderFunction,
   css,
+  divProperties,
   findIndex,
   findScrollableParent,
-  getParent,
-  divProperties,
   getNativeProps,
-  IRenderFunction
+  getParent,
+  getWindow
 } from '../../Utilities';
 import { IList, IListProps, IPage, IPageProps, ScrollToMode } from './List.types';
 
@@ -966,13 +967,14 @@ export class List<T = any> extends BaseComponent<IListProps<T>, IListState<T>> i
     // The first time the list gets rendered we need to calculate the rectangle. The width of the list is
     // used to calculate the width of the list items.
     const visibleTop = Math.max(0, -surfaceRect.top);
+    const win = getWindow(this);
     const visibleRect = {
       top: visibleTop,
       left: surfaceRect.left,
-      bottom: visibleTop + window.innerHeight,
+      bottom: visibleTop + win!.innerHeight,
       right: surfaceRect.right,
       width: surfaceRect.width,
-      height: window.innerHeight
+      height: win!.innerHeight
     };
 
     // The required/allowed rects are adjusted versions of the visible rect.

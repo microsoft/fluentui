@@ -5183,7 +5183,8 @@ export interface ILayer {
 
 // @public (undocumented)
 export type ILayerBaseState = {
-    hasMounted: boolean;
+    hostId?: string;
+    layerElement?: HTMLElement;
 };
 
 // @public (undocumented)
@@ -5194,6 +5195,7 @@ export interface ILayerProps extends React.HTMLAttributes<HTMLDivElement | Layer
     hostId?: string;
     insertFirst?: boolean;
     onLayerDidMount?: () => void;
+    // @deprecated
     onLayerMounted?: () => void;
     onLayerWillUnmount?: () => void;
     styles?: IStyleFunctionOrObject<ILayerStyleProps, ILayerStyles>;
@@ -7898,11 +7900,7 @@ export class LayerBase extends React.Component<ILayerProps, ILayerBaseState> {
     // (undocumented)
     componentDidUpdate(): void;
     // (undocumented)
-    componentWillMount(): void;
-    // (undocumented)
     componentWillUnmount(): void;
-    // (undocumented)
-    componentWillUpdate(): void;
     // (undocumented)
     static defaultProps: ILayerProps;
     // (undocumented)
@@ -8560,6 +8558,8 @@ export enum ResponsiveMode {
     medium = 1,
     // (undocumented)
     small = 0,
+    // (undocumented)
+    unknown = 999,
     // (undocumented)
     xLarge = 3,
     // (undocumented)
