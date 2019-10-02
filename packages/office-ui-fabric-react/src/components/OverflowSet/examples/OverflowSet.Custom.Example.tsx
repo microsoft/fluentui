@@ -3,6 +3,12 @@ import { CommandBarButton, IButtonStyles, IOverflowSetItemProps, OverflowSet, Ch
 
 const noOp = () => undefined;
 
+const checkboxStyles = {
+  root: {
+    marginRight: 5
+  }
+};
+
 export class OverflowSetCustomExample extends React.PureComponent {
   public render(): JSX.Element {
     return (
@@ -12,7 +18,7 @@ export class OverflowSetCustomExample extends React.PureComponent {
           {
             key: 'checkbox',
             onRender: () => {
-              return <Checkbox label="A Checkbox" styles={{ root: { marginRight: 5 } }} />;
+              return <Checkbox role="menuitem" label="A Checkbox" styles={checkboxStyles} />;
             }
           },
           {
@@ -101,7 +107,7 @@ export class OverflowSetCustomExample extends React.PureComponent {
     return (
       <CommandBarButton
         ariaLabel="More items"
-        role="menu"
+        role="menuitem"
         styles={buttonStyles}
         menuIconProps={{ iconName: 'More' }}
         menuProps={{ items: overflowItems! }}
