@@ -4368,6 +4368,7 @@ export interface IDropdownStyles {
 // @public (undocumented)
 export interface IDropdownSubComponentStyles {
     label: IStyleFunctionOrObject<ILabelStyleProps, any>;
+    multiSelectItem: IStyleFunctionOrObject<ICheckboxStyleProps, any>;
     panel: IStyleFunctionOrObject<IPanelStyleProps, any>;
 }
 

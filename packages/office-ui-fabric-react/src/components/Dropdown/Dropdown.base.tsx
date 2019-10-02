@@ -21,7 +21,7 @@ import {
   warnMutuallyExclusive
 } from '../../Utilities';
 import { Callout } from '../../Callout';
-import { Checkbox } from '../../Checkbox';
+import { Checkbox, ICheckboxStyleProps, ICheckboxStyles } from '../../Checkbox';
 import { CommandButton } from '../../Button';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { DropdownMenuItemType, IDropdownOption, IDropdownProps, IDropdownStyleProps, IDropdownStyles, IDropdown } from './Dropdown.types';
@@ -591,6 +591,10 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
 
     const { title = item.text } = item;
 
+    const multiSelectItemStyles = this._classNames.subComponentStyles
+      ? (this._classNames.subComponentStyles.multiSelectItem as IStyleFunctionOrObject<ICheckboxStyleProps, ICheckboxStyles>)
+      : undefined;
+
     return !this.props.multiSelect ? (
       <CommandButton
         id={id + '-list' + item.index}
@@ -630,10 +634,7 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
         role="option"
         aria-selected={isItemSelected ? 'true' : 'false'}
         checked={isItemSelected}
-        // Since the Checkbox is triggered via a click on either the checkbox itself or its label, we need to make the label span the
-        // entire width of the Dropdown so users can select and unselect the checkbox as long as they are clicking in the area adjacent
-        // to it.
-        styles={{ label: { width: '100%' } }}
+        styles={multiSelectItemStyles}
       />
     );
   };
