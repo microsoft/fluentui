@@ -168,7 +168,7 @@ export class MessageBarBase extends BaseComponent<IMessageBarProps, IMessageBarS
   private _getRegionProps = () => {
     const hasActions = !!this._getActionsDiv() || !!this._getDismissDiv();
     const regionProps = {
-      ariaDescribedBy: this.state.labelId,
+      'aria-describedby': this.state.labelId,
       role: 'region'
     };
 
