@@ -160,7 +160,6 @@ export const getStyles = (props: ITeachingBubbleStyleProps): ITeachingBubbleStyl
       (hasCondensedHeadline || hasSmallHeadline) && [
         fonts.medium,
         {
-          marginRight: 10,
           fontWeight: FontWeights.semibold
         }
       ]
