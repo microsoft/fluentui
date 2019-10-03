@@ -108,11 +108,31 @@ const classNameSelectors: { [key: string]: string } = {
   MessageBar: 'ms-MessageBar'
 };
 
+const excludedComponents: string[] = [
+  'Button',
+  'Keytip', // helper component, not meant to take a className
+  'KeytipData', // helper component, not meant to take a className
+  'KeytipLayer', // helper component, not meant to take a className
+  'ColorRectangle', // className is not injected
+  'ContextualMenuItemWrapper',
+  'Dialog', // className is deprecated
+  'PositioningContainer', // className is not injected
+  'ShimmerCircle', // className is not injected
+  'ShimmerElementsGroup', // className is not injected
+  'ShimmerLine', // className is not injected
+  'ShimmerGap', // className is not injected
+  'Sticky', // accepts stickyClassName instead of className
+  'ThemeGenerator' // not intended to be tested
+];
+
 // NOTE: Please consider modifying your component to work with this test instead
 //        of adding it to the exclusion list as this will make regression harder to detect.
-const excludedComponents: string[] = [
+const excludedClassNameComponents: string[] = [
+  'ActivityItem',
+  'Announced',
+  'Autofill',
+  'Button',
   'Beak', // className is not injected
-  'Button', // deprecated, test Button variants instead
   'CardCallout', // className injected one level above
   'ChoiceGroupOption', // className is not injected
   'Coachmark', // className is not injected
@@ -134,7 +154,65 @@ const excludedComponents: string[] = [
   'SpinButton', // className is not injected
   'Sticky', // accepts stickyClassName instead of className
   'TeachingBubble', // does not accept className
-  'ThemeGenerator' // not intended to be tested
+  'ThemeGenerator' // not intended to be tested];
+];
+
+const excludedDataAttributeComponents: string[] = [
+  'ActivityItem',
+  'Announced',
+  'Autofill',
+  'Button',
+  'Beak', // className is not injected
+  'CardCallout', // className injected one level above
+  'ChoiceGroupOption', // className is not injected
+  'Coachmark', // className is not injected
+  'ColorRectangle', // className is not injected
+  'ContextualMenuItemWrapper', // className is not injected
+  'Dialog', // className is deprecated
+  'Keytip', // helper component, not meant to take a className
+  'KeytipData', // helper component, not meant to take a className
+  'KeytipLayer', // helper component, not meant to take a className
+  'Layer', // className is not injected
+  'PersonaPresence', // className is not injected
+  'PositioningContainer', // className is not injected
+  'Rating', // className is not injected
+  'SelectedPeopleList', // does not accept className
+  'ShimmerCircle', // className is not injected
+  'ShimmerElementsGroup', // className is not injected
+  'ShimmerLine', // className is not injected
+  'ShimmerGap', // className is not injected
+  'SpinButton', // className is not injected
+  'Sticky', // accepts stickyClassName instead of className
+  'TeachingBubble', // does not accept className
+  'ThemeGenerator', // not intended to be tested
+  'Calendar',
+  'Check',
+  'Checkbox',
+  'ColorPicker',
+  'ColorSlider',
+  'CommandBar',
+  'ContextualMenu',
+  'DetailsList',
+  'Dropdown',
+  'Facepile',
+  'GroupedList',
+  'HoverCard',
+  'Image',
+  'MarqueeSelection',
+  'MessageBar',
+  'Modal',
+  'Nav',
+  'Suggestions',
+  'TagPicker',
+  'ProgressIndicator',
+  'SearchBox',
+  'Separator',
+  'Slider',
+  'StackItem',
+  'SwatchColorPicker',
+  'MaskedTextField',
+  'TextField',
+  'Toggle'
 ];
 
 // Some components require nodes to be mocked when creating the test component (e.g. components that use refs)
@@ -162,78 +240,87 @@ const mockNodeComponents = ['ScrollablePane'];
  *    harder to catch.
  */
 describe('Component File Conformance', () => {
-  beforeAll(() => {
-    // Mock Layer since otherwise components that use Layer will have empty JSON representations
-    jest.mock('./Layer', () => {
-      return {
-        Layer: jest.fn().mockImplementation(props => {
-          return props.children;
-        })
-      };
-    });
-  });
-
   const files: string[] = glob.sync(path.resolve(process.cwd(), 'src/components/**/*.ts*')).filter((file: string) => {
     const componentName = path.basename(path.dirname(file));
     const fileName = path.basename(file);
     const isComponentFile = fileName === componentName + '.tsx' || fileName === componentName + '.ts';
-    return isComponentFile && excludedComponents.indexOf(componentName) === -1;
+    return isComponentFile && excludedClassNameComponents.indexOf(componentName) === -1;
   });
 
   files.forEach((file: string) => {
     const componentName = path.basename(file).split('.')[0];
 
-    it(componentName + ' injects a className prop', () => {
-      try {
-        const ComponentFile = require(file);
-        const Component: React.ComponentClass = ComponentFile[componentName];
-        if (!Component || typeof Component !== 'function') {
-          return;
-        }
-
-        const testClass = 'testClass';
-        const props = {
-          ...requiredProps[componentName],
-          className: testClass
+    try {
+      // Mock Layer since otherwise components that use Layer will have empty JSON representations
+      jest.mock('./Layer', () => {
+        return {
+          Layer: jest.fn().mockImplementation(mockprops => {
+            return mockprops.children;
+          })
         };
+      });
 
-        let component;
-        if (mockNodeComponents.indexOf(componentName) === -1) {
-          component = renderer.create(<Component {...props} />);
-        } else {
-          component = renderer.create(<Component {...props} />, {
-            createNodeMock: () => {
-              return { __events__: {} };
-            }
-          });
-        }
-
-        const json = component.toJSON();
-        if (!json) {
-          fail(componentName + ' is null');
-          return;
-        }
-
-        let componentProps = json.props;
-        if (classNameSelectors[componentName]) {
-          const instanceHasClassName = (instance: renderer.ReactTestInstance) => {
-            return instance.props.className && instance.props.className.split(' ').indexOf(classNameSelectors[componentName]) !== -1;
-          };
-          componentProps = component.root.find(instanceHasClassName).props;
-        }
-
-        expect(componentProps.className).toContain(testClass);
-      } catch (e) {
-        console.warn(
-          'ERROR: ' +
-            e +
-            ', TEST NOTE: Failure with ' +
-            componentName +
-            '. ' +
-            'Have you recently added a component? If so, please see notes in Conformance.test.tsx.'
-        );
+      const ComponentFile = require(file);
+      const Component: React.ComponentClass = ComponentFile[componentName];
+      if (!Component || typeof Component !== 'function') {
+        return;
       }
-    });
+
+      const testClass = 'testClass';
+      const props = {
+        ...requiredProps[componentName],
+        className: testClass,
+        'data-foo': 'bar'
+      };
+
+      let component;
+      if (mockNodeComponents.indexOf(componentName) === -1) {
+        component = renderer.create(<Component {...props} />);
+      } else {
+        component = renderer.create(<Component {...props} />, {
+          createNodeMock: () => {
+            return { __events__: {} };
+          }
+        });
+      }
+
+      const json = component.toJSON();
+      if (!json) {
+        fail(componentName + ' is null');
+        return;
+      }
+
+      let componentProps = json.props;
+      if (classNameSelectors[componentName]) {
+        const instanceHasClassName = (instance: renderer.ReactTestInstance) => {
+          return instance.props.className && instance.props.className.split(' ').indexOf(classNameSelectors[componentName]) !== -1;
+        };
+        componentProps = component.root.find(instanceHasClassName).props;
+      }
+
+      // ClassName Test
+      if (excludedClassNameComponents.indexOf(componentName) === -1) {
+        it(componentName + ' injects a className prop', () => {
+          expect(componentProps.className).toContain(testClass);
+        });
+      }
+
+      // Data Attribute Test
+      if (excludedDataAttributeComponents.indexOf(componentName) === -1) {
+        it(componentName + ' injects a data attribute prop', () => {
+          expect(componentProps['data-foo']).toEqual('bar');
+        });
+      }
+    } catch (e) {
+      console.warn(
+        'ERROR: ' +
+          e +
+          ', TEST NOTE: Failure with ' +
+          componentName +
+          '. ' +
+          'Have you recently added a component? If so, please see notes in Conformance.test.tsx.'
+      );
+    }
   });
 });
 
