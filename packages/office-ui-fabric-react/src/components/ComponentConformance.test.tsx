@@ -144,57 +144,34 @@ const excludedDataAttributeComponents: string[] = [
   'ActivityItem',
   'Announced',
   'Autofill',
-  'Beak', // className is not injected
   'Button',
   'Calendar',
-  'CardCallout', // className injected one level above
   'Check',
   'Checkbox',
-  'ChoiceGroupOption', // className is not injected
-  'Coachmark', // className is not injected
   'ColorPicker',
-  'ColorRectangle', // className is not injected
   'ColorSlider',
   'CommandBar',
   'ContextualMenu',
-  'ContextualMenuItemWrapper', // className is not injected
   'DetailsList',
-  'Dialog', // className is deprecated
   'Dropdown',
   'Facepile',
   'GroupedList',
   'HoverCard',
   'Image',
-  'Keytip', // helper component, not meant to take a className
-  'KeytipData', // helper component, not meant to take a className
-  'KeytipLayer', // helper component, not meant to take a className
-  'Layer', // className is not injected
   'MarqueeSelection',
   'MaskedTextField',
   'MessageBar',
   'Modal',
   'Nav',
-  'PersonaPresence', // className is not injected
-  'PositioningContainer', // className is not injected
   'ProgressIndicator',
-  'Rating', // className is not injected
   'SearchBox',
-  'SelectedPeopleList', // does not accept className
   'Separator',
-  'ShimmerCircle', // className is not injected
-  'ShimmerElementsGroup', // className is not injected
-  'ShimmerGap', // className is not injected
-  'ShimmerLine', // className is not injected
   'Slider',
-  'SpinButton', // className is not injected
   'StackItem',
-  'Sticky', // accepts stickyClassName instead of className
   'Suggestions',
   'SwatchColorPicker',
   'TagPicker',
-  'TeachingBubble', // does not accept className
   'TextField', // data attributes are placed on the input
-  'ThemeGenerator', // not intended to be tested
   'Toggle'
 ];
 
