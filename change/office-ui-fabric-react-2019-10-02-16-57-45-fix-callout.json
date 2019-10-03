@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Callout: Addressing regression when target is an event.",
+  "packageName": "office-ui-fabric-react",
+  "email": "dzearing@microsoft.com",
+  "commit": "930e9059016e06f0b7ad6b44ac7a62e094600f59",
+  "date": "2019-10-02T23:57:08.150Z"
+}
