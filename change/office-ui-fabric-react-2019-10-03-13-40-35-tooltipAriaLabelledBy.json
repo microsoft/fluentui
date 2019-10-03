@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Tooltip: Creating aria placeholder for accessibility scenarios with Tooltips with a render delay.",
+  "packageName": "office-ui-fabric-react",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "commit": "41295984b0c8c979c5e5b25eb3f333a672212622",
+  "date": "2019-10-03T20:40:35.757Z"
+}
