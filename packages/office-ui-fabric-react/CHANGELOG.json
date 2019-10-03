@@ -2,6 +2,20 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Thu, 03 Oct 2019 02:23:13 GMT",
+      "tag": "office-ui-fabric-react_v6.206.0",
+      "version": "6.206.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Callout: Addressing regression when target is an event.",
+            "author": "dzearing@microsoft.com",
+            "commit": "930e9059016e06f0b7ad6b44ac7a62e094600f59"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 02 Oct 2019 04:37:41 GMT",
       "tag": "office-ui-fabric-react_v6.205.0",
       "version": "6.205.0",

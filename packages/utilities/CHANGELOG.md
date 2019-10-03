@@ -1,7 +1,13 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Wed, 02 Oct 2019 04:37:41 GMT and should not be manually modified.
+This log was last generated on Thu, 03 Oct 2019 02:23:13 GMT and should not be manually modified.
 
+## 6.44.0
+Thu, 03 Oct 2019 02:23:13 GMT
+
+### Minor changes
+
+- Async methods can now take a React component as the target being passed to `getWindow`. (dzearing@microsoft.com)
 ## 6.43.0
 Wed, 02 Oct 2019 04:37:41 GMT
 

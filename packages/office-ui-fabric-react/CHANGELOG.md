@@ -1,7 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 02 Oct 2019 04:37:41 GMT and should not be manually modified.
+This log was last generated on Thu, 03 Oct 2019 02:23:13 GMT and should not be manually modified.
 
+## 6.206.0
+Thu, 03 Oct 2019 02:23:13 GMT
+
+### Minor changes
+
+- Callout: Addressing regression when target is an event. (dzearing@microsoft.com)
 ## 6.205.0
 Wed, 02 Oct 2019 04:37:41 GMT
 

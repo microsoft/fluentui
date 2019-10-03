@@ -2,6 +2,20 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "date": "Thu, 03 Oct 2019 02:23:13 GMT",
+      "tag": "@uifabric/utilities_v6.44.0",
+      "version": "6.44.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Async methods can now take a React component as the target being passed to `getWindow`.",
+            "author": "dzearing@microsoft.com",
+            "commit": "930e9059016e06f0b7ad6b44ac7a62e094600f59"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 02 Oct 2019 04:37:41 GMT",
       "tag": "@uifabric/utilities_v6.43.0",
       "version": "6.43.0",
