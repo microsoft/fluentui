@@ -1,6 +1,6 @@
 {
-  "type": "patch",
-  "comment": "Allow setting a custom overflow icon on the Breadcrumb component",
+  "type": "minor",
+  "comment": "Breadcrumb: Allow setting a custom overflow icon.",
   "packageName": "office-ui-fabric-react",
   "email": "madomi@microsoft.com",
   "commit": "f5164fd724812ef0b1877445b0ac825debf96504",
