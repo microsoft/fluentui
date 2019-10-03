@@ -7,6 +7,7 @@ import { IMonacoTextModel, ICompilerOptions, IPackageGroup } from '../interfaces
 import { Editor } from './Editor';
 import { EditorLoading } from './EditorLoading';
 import { SUPPORTED_PACKAGES } from '../utilities/index';
+import { DEFAULT_HEIGHT } from './consts';
 
 const typescript = monaco.languages.typescript;
 const typescriptDefaults = typescript.typescriptDefaults as TypescriptDefaults;
@@ -18,7 +19,7 @@ const filename = filePrefix + 'main.tsx';
  * Wrapper for rendering a Monaco instance and also transpiling/eval-ing the React example code inside.
  */
 export const TsxEditor: React.FunctionComponent<ITsxEditorProps> = (props: ITsxEditorProps) => {
-  const { editorProps, onTransformFinished, previewId, compilerOptions, supportedPackages = SUPPORTED_PACKAGES } = props;
+  const { editorProps, onTransformFinished, compilerOptions, supportedPackages = SUPPORTED_PACKAGES } = props;
 
   // Hooks must be called unconditionally, so we have to create a backup ref here even if we
   // immediately throw it away to use the one passed in.
@@ -40,14 +41,14 @@ export const TsxEditor: React.FunctionComponent<ITsxEditorProps> = (props: ITsxE
       // If the consumer provided an additional onChange, call that too
       editorProps.onChange(text);
     }
-    transpileAndEval(modelRef.current!, previewId, supportedPackages).then(onTransformFinished);
+    transpileAndEval(modelRef.current!, supportedPackages).then(onTransformFinished);
   };
 
   // Render loading spinner while globals are loading
   return hasLoadedGlobals ? (
     <Editor {...editorProps} filename={filename} modelRef={modelRef} onChange={onChange} />
   ) : (
-    <EditorLoading height={editorProps.height} />
+    <EditorLoading height={editorProps.height || DEFAULT_HEIGHT} />
   );
 };
 

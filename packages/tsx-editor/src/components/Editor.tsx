@@ -1,14 +1,25 @@
 import * as monaco from '@uifabric/monaco-editor';
 import * as React from 'react';
 import { IEditorProps } from './Editor.types';
-import { codeFontFamily } from './consts';
+import { CODE_FONT_FAMILY, DEFAULT_WIDTH, DEFAULT_HEIGHT } from './consts';
 import { IMonacoTextModel } from '../interfaces/index';
 
 /**
  * Language-agnostic wrapper for a Monaco editor instance.
  */
 export const Editor: React.FunctionComponent<IEditorProps> = (props: IEditorProps) => {
-  const { width, height, className, code = '', language, filename, onChange, debounceTime = 500, editorOptions } = props;
+  const {
+    width = DEFAULT_WIDTH,
+    height = DEFAULT_HEIGHT,
+    className,
+    code = '',
+    language,
+    filename,
+    onChange,
+    debounceTime = 500,
+    ariaLabel,
+    editorOptions
+  } = props;
 
   // Hooks must be called unconditionally, so we have to create a backup ref here even if we
   // immediately throw it away to use the one passed in.
@@ -26,7 +37,9 @@ export const Editor: React.FunctionComponent<IEditorProps> = (props: IEditorProp
     const model = (modelRef.current = monaco.editor.createModel(code, language, filename ? monaco.Uri.parse(filename) : undefined));
     const editor = monaco.editor.create(divRef.current!, {
       minimap: { enabled: false },
-      fontFamily: codeFontFamily,
+      fontFamily: CODE_FONT_FAMILY,
+      ariaLabel,
+      accessibilityHelpUrl: 'https://github.com/Microsoft/monaco-editor/wiki/Monaco-Editor-Accessibility-Guide',
       // add editorOptions default value here (NOT in main destructuring) to avoid re-calling the effect
       ...(editorOptions || {}),
       model
@@ -63,7 +76,7 @@ export const Editor: React.FunctionComponent<IEditorProps> = (props: IEditorProp
       editor.dispose();
       modelRef.current = undefined;
     };
-  }, [code, language, filename, modelRef, internalState, editorOptions]);
+  }, [code, language, filename, modelRef, internalState, ariaLabel, editorOptions]);
 
   return <div ref={divRef} style={{ width, height }} className={className} />;
 };

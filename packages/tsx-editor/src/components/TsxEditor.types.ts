@@ -1,5 +1,5 @@
 import { IEditorProps } from './Editor.types';
-import { ICompilerOptions, IPackageGroup, ITransformedCode } from '../interfaces/index';
+import { ICompilerOptions, IPackageGroup, ITransformedExample } from '../interfaces/index';
 
 export interface ITsxEditorProps {
   /**
@@ -9,11 +9,12 @@ export interface ITsxEditorProps {
    */
   editorProps: IEditorProps;
 
-  /** ID of a div to render the example into. */
-  previewId: string;
-
-  /** Callback to notify when transforming finishes. */
-  onTransformFinished: (result: ITransformedCode) => void;
+  /**
+   * Callback to notify when transforming finishes.
+   * If successful, `result.component` will be the example component you should render.
+   * (The editor doesn't render the component itself to avoid stomping on existing React-managed DOM.)
+   */
+  onTransformFinished: (result: ITransformedExample) => void;
 
   /**
    * TS compiler option overrides. Overrides to certain options essential to the TsxEditor's

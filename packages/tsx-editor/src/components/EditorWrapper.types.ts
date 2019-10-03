@@ -1,28 +1,47 @@
 import * as React from 'react';
-import { IMonacoTextModel, IPackageGroup, ITransformedCode } from '../interfaces/index';
+import { IMonacoTextModel, IPackageGroup, ITransformedExample } from '../interfaces/index';
 
 export interface IEditorWrapperProps {
-  /** Code to edit */
+  /**
+   * Initial code to edit. WARNING: Changing this will re-create the editor. (For this reason, the
+   * editor wrapper should NOT be used as a controlled component.)
+   */
   code: string;
 
   /** Whether the editor (or code viewer) is visible */
   isCodeVisible?: boolean;
 
-  onRenderPreview?: (props: IEditorPreviewProps, defaultRender: (props: IEditorPreviewProps) => React.ReactNode) => React.ReactNode;
-
   /** Class to use on the div wrapping the editor/loading spinner/code viewer */
   editorClassName?: string;
+
+  /** Custom component for the preview. It **must** render the children passed in. */
+  previewAs?: React.ComponentType<{ className?: string }>;
 
   /** Class to use on the wrapper for the rendered example */
   previewClassName?: string;
 
-  /** Editor height */
+  /**
+   * Editor height. (Changing this prop should not re-create the editor, but it might not affect
+   * the layout of the existing editor.)
+   */
   height?: number | string;
 
-  /** Editor width */
+  /**
+   * Editor width. (Changing this prop should not re-create the editor, but it might not affect
+   * the layout of the existing editor.)
+   */
   width?: number | string;
 
-  /** Used to access the editor model. Cleared when editor component is disposed to avoid memory leaks. */
+  /**
+   * Label for the editor for screen reader users. This is applied to the Monaco instance itself,
+   * not the wrapper. WARNING: Changing this will re-create the editor.
+   */
+  editorAriaLabel?: string;
+
+  /**
+   * Used to access the editor model. Cleared when editor component is disposed to avoid memory leaks.
+   * WARNING: Changing this will re-create the editor.
+   */
   modelRef?: React.MutableRefObject<IMonacoTextModel | undefined>;
 
   /** Force using the editor (vs the code viewer) on or off */
@@ -30,30 +49,15 @@ export interface IEditorWrapperProps {
 
   /**
    * Supported packages for imports (React is implicitly supported).
-   * Defaults to `office-ui-fabric-react` (and everything it exports) plus `@uifabric/example-data`.
    *
    * WARNING: Changing this prop will cause editor initialization to re-run.
    * (Save the value in a constant to prevent it from mutating every render.)
    */
-  supportedPackages?: IPackageGroup[];
+  supportedPackages: IPackageGroup[];
 
   /** Callback to notify when transforming finishes. */
-  onTransformFinished?: (result: ITransformedCode) => void;
+  onTransformFinished?: (result: ITransformedExample) => void;
 
-  /** Initial children to show in the example results div (will be replaced when the example runs) */
-  children?: React.ReactNode;
-}
-
-export interface IEditorPreviewProps {
-  /** ID of the div the preview will be rendered into */
-  id: string;
-
-  /** Class name for the preview container */
-  className?: string;
-
-  /** Whether the preview container should have a data-is-scrollable attribute */
-  isScrollable?: boolean;
-
-  /** Initial children to show in the example results div (will be replaced when the example runs) */
+  /** Initial children to show in the example results div (will be hidden when example runs) */
   children?: React.ReactNode;
 }

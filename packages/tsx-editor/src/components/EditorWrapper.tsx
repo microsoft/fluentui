@@ -1,12 +1,11 @@
 import * as React from 'react';
-import { useId } from '@uifabric/react-hooks';
-import { EditorPreview } from './EditorPreview';
-import { IEditorWrapperProps, IEditorPreviewProps } from './EditorWrapper.types';
+import { IEditorWrapperProps } from './EditorWrapper.types';
 import { EditorError } from './EditorError';
 import { TypeScriptSnippet } from './TypeScriptSnippet';
 import { EditorLoading } from './EditorLoading';
-import { SUPPORTED_PACKAGES, isEditorSupported } from '../utilities/index';
-import { ITransformedCode } from '../interfaces/index';
+import { isEditorSupported } from '../utilities/index';
+import { ITransformedExample } from '../interfaces/index';
+import { DEFAULT_HEIGHT } from './consts';
 
 // This file MUST NOT directly load the main TsxEditor module which depends on Monaco, to avoid
 // pulling it into a bundle. Importing/rendering with React.lazy solves this.
@@ -16,20 +15,20 @@ export const EditorWrapper: React.FunctionComponent<IEditorWrapperProps> = props
   const {
     code,
     isCodeVisible,
-    onRenderPreview = _onRenderPreview,
+    previewAs: Preview = EditorPreview,
     editorClassName,
     previewClassName,
-    height = 500,
-    width = 'auto',
+    height = DEFAULT_HEIGHT,
+    width,
+    editorAriaLabel,
     modelRef,
     useEditor,
-    supportedPackages = SUPPORTED_PACKAGES,
+    supportedPackages,
     children
   } = props;
 
-  const previewId = useId('EditorPreview');
-
   const [error, setError] = React.useState<string | string[]>();
+  const [ExampleComponent, setExampleComponent] = React.useState<React.ComponentType>();
 
   // Check if editing should be enabled
   const canEdit = React.useMemo(() => {
@@ -39,8 +38,11 @@ export const EditorWrapper: React.FunctionComponent<IEditorWrapperProps> = props
     return isEditorSupported(code, supportedPackages);
   }, [useEditor, code, supportedPackages]);
 
-  const onTransformFinished = (result: ITransformedCode) => {
+  const onTransformFinished = (result: ITransformedExample) => {
     setError(result.error);
+    if (result.component) {
+      setExampleComponent(result.component);
+    }
     if (props.onTransformFinished) {
       props.onTransformFinished(result);
     }
@@ -54,9 +56,8 @@ export const EditorWrapper: React.FunctionComponent<IEditorWrapperProps> = props
             // Editing supported -- render editor module (or loading spinner)
             <React.Suspense fallback={<EditorLoading height={height} />}>
               <TsxEditorLazy
-                editorProps={{ code, width, height, modelRef }}
+                editorProps={{ code, width, height, modelRef, ariaLabel: editorAriaLabel }}
                 onTransformFinished={onTransformFinished}
-                previewId={previewId}
               />
             </React.Suspense>
           ) : (
@@ -68,11 +69,11 @@ export const EditorWrapper: React.FunctionComponent<IEditorWrapperProps> = props
 
       {isCodeVisible && <EditorError error={error} />}
 
-      {onRenderPreview({ className: previewClassName, id: previewId, children }, _onRenderPreview)}
+      <Preview className={previewClassName}>{ExampleComponent ? <ExampleComponent /> : children}</Preview>
     </div>
   );
 };
 
-function _onRenderPreview(props: IEditorPreviewProps): React.ReactNode {
-  return <EditorPreview {...props} />;
-}
+const EditorPreview: React.FunctionComponent<{ className?: string }> = props => {
+  return <div className={props.className}>{props.children}</div>;
+};
