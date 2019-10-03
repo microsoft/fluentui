@@ -2,6 +2,20 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "date": "Thu, 03 Oct 2019 01:14:35 GMT",
+      "tag": "@uifabric/charting_v0.136.0",
+      "version": "0.136.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add benchmark triangle in stackedBarChart",
+            "author": "dajiang@microsoft.com",
+            "commit": "842e7fc9eeec95d4d7e9e7cb25da6d6e610a3a66"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 18 Sep 2019 12:32:55 GMT",
       "tag": "@uifabric/charting_v0.135.0",
       "version": "0.135.0",

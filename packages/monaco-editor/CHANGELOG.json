@@ -2,6 +2,20 @@
   "name": "@uifabric/monaco-editor",
   "entries": [
     {
+      "date": "Thu, 03 Oct 2019 01:14:35 GMT",
+      "tag": "@uifabric/monaco-editor_v0.2.3",
+      "version": "0.2.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Move monaco-editor to a non-dev dependency",
+            "author": "elcraig@microsoft.com",
+            "commit": "afe85bef18cbd324d8775f1878890f74d21cb3e9"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 30 Sep 2019 12:35:16 GMT",
       "tag": "@uifabric/monaco-editor_v0.2.2",
       "version": "0.2.2",

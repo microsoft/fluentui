@@ -6,13 +6,13 @@ export interface IEditorProps {
    * Editor height. (Changing this prop should not re-create the editor, but it might not affect
    * the layout of the existing editor.)
    */
-  height: number | string;
+  height?: number | string;
 
   /**
    * Editor width. (Changing this prop should not re-create the editor, but it might not affect
    * the layout of the existing editor.)
    */
-  width: number | string;
+  width?: number | string;
 
   /** Class for the div containing the editor. (Can be changed without re-creating the editor.) */
   className?: string;
@@ -28,6 +28,9 @@ export interface IEditorProps {
 
   /** Name for the fake file. WARNING: Changing this will re-create the editor. */
   filename?: string;
+
+  /** Label for the editor for screen reader users. WARNING: Changing this will re-create the editor. */
+  ariaLabel?: string;
 
   /** Options for creating the editor. WARNING: Changing this will re-create the editor. */
   editorOptions?: IMonacoEditorOptions;

@@ -290,7 +290,7 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
   protected _setInitialFocus = (): void => {
     if (this.props.setInitialFocus && !this._didSetInitialFocus && this.state.positions && this._calloutElement.current) {
       this._didSetInitialFocus = true;
-      this._async.requestAnimationFrame(() => focusFirstChild(this._calloutElement.current!), this._target as Element);
+      this._async.requestAnimationFrame(() => focusFirstChild(this._calloutElement.current!), this);
     }
   };
 
@@ -349,7 +349,7 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
   }
 
   private _updateAsyncPosition(): void {
-    this._async.requestAnimationFrame(() => this._updatePosition(), this._target as HTMLElement);
+    this._async.requestAnimationFrame(() => this._updatePosition(), this);
   }
 
   private _getBeakPosition(): React.CSSProperties {
@@ -514,30 +514,27 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
 
   private _setHeightOffsetEveryFrame(): void {
     if (this._calloutElement.current && this.props.finalHeight) {
-      this._setHeightOffsetTimer = this._async.requestAnimationFrame(
-        () => {
-          const calloutMainElem = this._calloutElement.current && (this._calloutElement.current.lastChild as HTMLElement);
+      this._setHeightOffsetTimer = this._async.requestAnimationFrame(() => {
+        const calloutMainElem = this._calloutElement.current && (this._calloutElement.current.lastChild as HTMLElement);
 
-          if (!calloutMainElem) {
-            return;
-          }
+        if (!calloutMainElem) {
+          return;
+        }
 
-          const cardScrollHeight: number = calloutMainElem.scrollHeight;
-          const cardCurrHeight: number = calloutMainElem.offsetHeight;
-          const scrollDiff: number = cardScrollHeight - cardCurrHeight;
+        const cardScrollHeight: number = calloutMainElem.scrollHeight;
+        const cardCurrHeight: number = calloutMainElem.offsetHeight;
+        const scrollDiff: number = cardScrollHeight - cardCurrHeight;
 
-          this.setState({
-            heightOffset: this.state.heightOffset! + scrollDiff
-          });
+        this.setState({
+          heightOffset: this.state.heightOffset! + scrollDiff
+        });
 
-          if (calloutMainElem.offsetHeight < this.props.finalHeight!) {
-            this._setHeightOffsetEveryFrame();
-          } else {
-            this._async.cancelAnimationFrame(this._setHeightOffsetTimer, this._target as Element);
-          }
-        },
-        this._target as Element
-      );
+        if (calloutMainElem.offsetHeight < this.props.finalHeight!) {
+          this._setHeightOffsetEveryFrame();
+        } else {
+          this._async.cancelAnimationFrame(this._setHeightOffsetTimer, this._target as Element);
+        }
+      }, this);
     }
   }
 

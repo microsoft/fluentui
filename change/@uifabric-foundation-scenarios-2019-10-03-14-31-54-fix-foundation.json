@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Fixes publish issue from beachball",
+  "packageName": "@uifabric/foundation-scenarios",
+  "email": "odbuild@microsoft.com",
+  "commit": "1e11c2717931bce666279a9c9fc95c26d2c3cf87",
+  "date": "2019-10-03T21:31:54.813Z"
+}

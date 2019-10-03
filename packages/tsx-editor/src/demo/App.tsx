@@ -1,6 +1,7 @@
 import React from 'react';
 import { PrimaryButton, mergeStyleSets, Stack, Toggle } from 'office-ui-fabric-react';
 import { EditorWrapper } from '../components/EditorWrapper';
+import { SUPPORTED_PACKAGES } from '../utilities/index';
 
 const example = require('!raw-loader!../transpiler/examples/class.txt');
 
@@ -34,6 +35,7 @@ export const App: React.FunctionComponent = () => {
         previewClassName={classNames.preview}
         isCodeVisible={!editorHidden}
         useEditor={useEditor}
+        supportedPackages={SUPPORTED_PACKAGES}
       />
     </Stack>
   );

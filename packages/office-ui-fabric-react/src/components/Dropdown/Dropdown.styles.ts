@@ -112,7 +112,7 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
       width: '100%',
       minHeight: DROPDOWN_ITEM_HEIGHT,
       lineHeight: 20,
-      height: 'auto',
+      height: 0,
       position: 'relative',
       border: '1px solid transparent',
       borderRadius: 0,
@@ -347,6 +347,16 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
     ],
     subComponentStyles: {
       label: { root: { display: 'inline-block' } },
+      multiSelectItem: {
+        root: {
+          padding: 0
+        },
+        label: {
+          alignSelf: 'stretch',
+          padding: '0 8px',
+          width: '100%'
+        }
+      },
       panel: {
         root: [panelClassName],
         main: {

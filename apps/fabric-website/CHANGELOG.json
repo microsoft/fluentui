@@ -2,6 +2,25 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "date": "Thu, 03 Oct 2019 01:14:35 GMT",
+      "tag": "@uifabric/fabric-website_v7.5.2",
+      "version": "7.5.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bundle React even in serve mode for more representative testing environment",
+            "author": "elcraig@microsoft.com",
+            "commit": "fe59f6fd3c26d9d1bf44bcc4ee44ed01c9816cf9"
+          },
+          {
+            "comment": "Adding iOS NavBar to website docs.",
+            "author": "emlynam@microsoft.com",
+            "commit": "e489bbd40878adc51a49c3d71b17b27809668e38"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 01 Oct 2019 12:33:48 GMT",
       "tag": "@uifabric/fabric-website_v7.5.1",
       "version": "7.5.1",

@@ -5,8 +5,9 @@ import { ISelectableOption } from '../../utilities/selectableOption/SelectableOp
 import { ISelectableDroppableTextProps } from '../../utilities/selectableOption/SelectableDroppableText.types';
 import { ResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
 import { IKeytipProps } from '../../Keytip';
-import { ILabelStyleProps } from '../../Label';
 import { RectangleEdge } from '../../utilities/positioning';
+import { ICheckboxStyleProps } from '../Checkbox/Checkbox.types';
+import { ILabelStyleProps } from '../Label/Label.types';
 import { IPanelStyleProps } from '../Panel/Panel.types';
 
 export { SelectableOptionMenuItemType as DropdownMenuItemType } from '../../utilities/selectableOption/SelectableOption.types';
@@ -286,5 +287,9 @@ export interface IDropdownSubComponentStyles {
 
   /** Refers to the primary label for the Dropdown. */
   label: IStyleFunctionOrObject<ILabelStyleProps, any>;
+  // #5690: replace any with ILabelStyles in TS 2.9
+
+  /** Refers to the the individual dropdown item when the multiSelect prop is true. */
+  multiSelectItem: IStyleFunctionOrObject<ICheckboxStyleProps, any>;
   // #5690: replace any with ILabelStyles in TS 2.9
 }

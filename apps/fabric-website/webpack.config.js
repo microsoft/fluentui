@@ -34,6 +34,9 @@ module.exports = function(env) {
         chunkFilename: `${entryPointName}-${version}-[name]-${now}${minFileNamePart}.js`
       },
 
+      // The website config intentionally doesn't have React as an external because we bundle it
+      // to ensure we get a consistent version.
+
       resolve: {
         alias: {
           '@uifabric/fabric-website/src': path.join(__dirname, 'src'),

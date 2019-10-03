@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Fixes publish issue from beachball",
+  "packageName": "@uifabric/experiments",
+  "email": "odbuild@microsoft.com",
+  "commit": "32bf0a91859d5171342731f769fcb2ff0c961e48",
+  "date": "2019-10-03T21:32:27.121Z"
+}

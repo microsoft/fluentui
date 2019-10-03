@@ -1,7 +1,13 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Wed, 11 Sep 2019 12:35:47 GMT and should not be manually modified.
+This log was last generated on Thu, 03 Oct 2019 01:14:35 GMT and should not be manually modified.
 
+## 0.136.0
+Thu, 03 Oct 2019 01:14:35 GMT
+
+### Minor changes
+
+- Add benchmark triangle in stackedBarChart (dajiang@microsoft.com)
 ## 0.135.0
 Wed, 11 Sep 2019 12:35:47 GMT
 

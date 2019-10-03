@@ -2,7 +2,19 @@ import { IStackedBarChartStyleProps, IStackedBarChartStyles } from './StackedBar
 import { FontSizes, FontWeights } from 'office-ui-fabric-react/lib/Styling';
 
 export const getStyles = (props: IStackedBarChartStyleProps): IStackedBarChartStyles => {
-  const { className, width, barHeight, legendColor, shouldHighlight, theme, href } = props;
+  const {
+    className,
+    width,
+    barHeight,
+    legendColor,
+    shouldHighlight,
+    theme,
+    href,
+    benchmarkColor,
+    benchmarkRatio,
+    targetColor,
+    targetRatio
+  } = props;
   return {
     root: [
       theme.fonts.medium,
@@ -33,9 +45,8 @@ export const getStyles = (props: IStackedBarChartStyleProps): IStackedBarChartSt
       lineHeight: '14px'
     },
     hoverCardDataStyles: {
+      ...theme.fonts.xxLarge,
       color: legendColor === '' ? theme.palette.black : legendColor,
-      fontSize: FontSizes.xxLarge,
-      fontFamily: 'Segoe UI',
       fontWeight: FontWeights.bold,
       lineHeight: '31px'
     },
@@ -60,6 +71,32 @@ export const getStyles = (props: IStackedBarChartStyleProps): IStackedBarChartSt
       fontSize: FontSizes.small,
       color: theme.palette.black,
       opacity: '0.6'
+    },
+    benchmarkContainer: {
+      position: 'relative',
+      height: '12px'
+    },
+    benchmark: {
+      position: 'absolute',
+      left: 'calc(' + benchmarkRatio + '% - 4.5px)',
+      width: '0',
+      height: '0',
+      borderLeft: '4.5px solid transparent',
+      borderRight: '4.5px solid transparent',
+      borderTop: '7.8px solid',
+      borderTopColor: benchmarkColor,
+      marginBottom: '4px'
+    },
+    target: {
+      position: 'absolute',
+      left: 'calc(' + targetRatio + '% - 4.5px)',
+      width: '0',
+      height: '0',
+      borderLeft: '4.5px solid transparent',
+      borderRight: '4.5px solid transparent',
+      borderTop: '7.8px solid',
+      borderTopColor: targetColor,
+      marginBottom: '4px'
     }
   };
 };

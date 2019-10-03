@@ -1,7 +1,13 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Tue, 24 Sep 2019 12:35:43 GMT and should not be manually modified.
+This log was last generated on Thu, 03 Oct 2019 01:14:35 GMT and should not be manually modified.
 
+## 7.8.1
+Thu, 03 Oct 2019 01:14:35 GMT
+
+### Patches
+
+- Editor: add accessibility props and improve preview rendering (elcraig@microsoft.com)
 ## 7.8.0
 Tue, 24 Sep 2019 12:35:43 GMT
 

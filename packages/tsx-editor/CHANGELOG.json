@@ -2,6 +2,20 @@
   "name": "@uifabric/tsx-editor",
   "entries": [
     {
+      "date": "Thu, 03 Oct 2019 01:14:35 GMT",
+      "tag": "@uifabric/tsx-editor_v0.8.0",
+      "version": "0.8.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "  Return component rather than rendering, and add a11y props to editor",
+            "author": "elcraig@microsoft.com",
+            "commit": "fe59f6fd3c26d9d1bf44bcc4ee44ed01c9816cf9"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 30 Sep 2019 12:35:16 GMT",
       "tag": "@uifabric/tsx-editor_v0.7.2",
       "version": "0.7.2",
