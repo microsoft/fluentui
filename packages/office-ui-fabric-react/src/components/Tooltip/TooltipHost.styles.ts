@@ -2,7 +2,8 @@ import { ITooltipHostStyleProps, ITooltipHostStyles } from './TooltipHost.types'
 import { getGlobalClassNames } from '../../Styling';
 
 const GlobalClassNames = {
-  root: 'ms-TooltipHost'
+  root: 'ms-TooltipHost',
+  ariaPlaceholder: 'ms-TooltipHost-aria-placeholder'
 };
 
 export const getStyles = (props: ITooltipHostStyleProps): ITooltipHostStyles => {
@@ -16,6 +17,15 @@ export const getStyles = (props: ITooltipHostStyleProps): ITooltipHostStyles => 
         display: 'inline'
       },
       className
+    ],
+    ariaPlaceholder: [
+      classNames.ariaPlaceholder,
+      {
+        height: 0,
+        position: 'fixed',
+        visibility: 'hidden',
+        width: 0
+      }
     ]
   };
 };
