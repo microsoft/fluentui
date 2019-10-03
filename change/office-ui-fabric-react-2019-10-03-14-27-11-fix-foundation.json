@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Fixes broken publish",
+  "packageName": "office-ui-fabric-react",
+  "email": "odbuild@microsoft.com",
+  "commit": "e72c1748e076cfea80c9ca8f7e0210a328d790ba",
+  "date": "2019-10-03T21:27:11.013Z"
+}

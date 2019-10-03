@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Fixes broken publish",
+  "packageName": "@uifabric/lists",
+  "email": "odbuild@microsoft.com",
+  "commit": "58c5ee28cbb9c416c641f25655ec7149d8dd1575",
+  "date": "2019-10-03T21:28:49.327Z"
+}
