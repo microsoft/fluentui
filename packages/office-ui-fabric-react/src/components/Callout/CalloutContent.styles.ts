@@ -21,7 +21,7 @@ export const getStyles = (props: ICalloutContentStyleProps): ICalloutContentStyl
 
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
-  const { palette, effects } = theme;
+  const { semanticColors, effects } = theme;
 
   return {
     container: [
@@ -55,7 +55,7 @@ export const getStyles = (props: ICalloutContentStyleProps): ICalloutContentStyl
       classNames.beak,
       {
         position: 'absolute',
-        backgroundColor: palette.white,
+        backgroundColor: semanticColors.menuBackground,
         boxShadow: 'inherit',
         border: 'inherit',
         boxSizing: 'border-box',
@@ -74,14 +74,14 @@ export const getStyles = (props: ICalloutContentStyleProps): ICalloutContentStyl
         right: 0,
         bottom: 0,
         left: 0,
-        backgroundColor: palette.white,
+        backgroundColor: semanticColors.menuBackground,
         borderRadius: effects.roundedCorner2
       }
     ],
     calloutMain: [
       classNames.calloutMain,
       {
-        backgroundColor: palette.white,
+        backgroundColor: semanticColors.menuBackground,
         overflowX: 'hidden',
         overflowY: 'auto',
         position: 'relative',
