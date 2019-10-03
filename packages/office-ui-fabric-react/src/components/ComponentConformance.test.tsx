@@ -108,23 +108,6 @@ const classNameSelectors: { [key: string]: string } = {
   MessageBar: 'ms-MessageBar'
 };
 
-const excludedComponents: string[] = [
-  'Button',
-  'Keytip', // helper component, not meant to take a className
-  'KeytipData', // helper component, not meant to take a className
-  'KeytipLayer', // helper component, not meant to take a className
-  'ColorRectangle', // className is not injected
-  'ContextualMenuItemWrapper',
-  'Dialog', // className is deprecated
-  'PositioningContainer', // className is not injected
-  'ShimmerCircle', // className is not injected
-  'ShimmerElementsGroup', // className is not injected
-  'ShimmerLine', // className is not injected
-  'ShimmerGap', // className is not injected
-  'Sticky', // accepts stickyClassName instead of className
-  'ThemeGenerator' // not intended to be tested
-];
-
 // NOTE: Please consider modifying your component to work with this test instead
 //        of adding it to the exclusion list as this will make regression harder to detect.
 const excludedClassNameComponents: string[] = [
@@ -161,57 +144,57 @@ const excludedDataAttributeComponents: string[] = [
   'ActivityItem',
   'Announced',
   'Autofill',
-  'Button',
   'Beak', // className is not injected
-  'CardCallout', // className injected one level above
-  'ChoiceGroupOption', // className is not injected
-  'Coachmark', // className is not injected
-  'ColorRectangle', // className is not injected
-  'ContextualMenuItemWrapper', // className is not injected
-  'Dialog', // className is deprecated
-  'Keytip', // helper component, not meant to take a className
-  'KeytipData', // helper component, not meant to take a className
-  'KeytipLayer', // helper component, not meant to take a className
-  'Layer', // className is not injected
-  'PersonaPresence', // className is not injected
-  'PositioningContainer', // className is not injected
-  'Rating', // className is not injected
-  'SelectedPeopleList', // does not accept className
-  'ShimmerCircle', // className is not injected
-  'ShimmerElementsGroup', // className is not injected
-  'ShimmerLine', // className is not injected
-  'ShimmerGap', // className is not injected
-  'SpinButton', // className is not injected
-  'Sticky', // accepts stickyClassName instead of className
-  'TeachingBubble', // does not accept className
-  'ThemeGenerator', // not intended to be tested
+  'Button',
   'Calendar',
+  'CardCallout', // className injected one level above
   'Check',
   'Checkbox',
+  'ChoiceGroupOption', // className is not injected
+  'Coachmark', // className is not injected
   'ColorPicker',
+  'ColorRectangle', // className is not injected
   'ColorSlider',
   'CommandBar',
   'ContextualMenu',
+  'ContextualMenuItemWrapper', // className is not injected
   'DetailsList',
+  'Dialog', // className is deprecated
   'Dropdown',
   'Facepile',
   'GroupedList',
   'HoverCard',
   'Image',
+  'Keytip', // helper component, not meant to take a className
+  'KeytipData', // helper component, not meant to take a className
+  'KeytipLayer', // helper component, not meant to take a className
+  'Layer', // className is not injected
   'MarqueeSelection',
+  'MaskedTextField',
   'MessageBar',
   'Modal',
   'Nav',
-  'Suggestions',
-  'TagPicker',
+  'PersonaPresence', // className is not injected
+  'PositioningContainer', // className is not injected
   'ProgressIndicator',
+  'Rating', // className is not injected
   'SearchBox',
+  'SelectedPeopleList', // does not accept className
   'Separator',
+  'ShimmerCircle', // className is not injected
+  'ShimmerElementsGroup', // className is not injected
+  'ShimmerGap', // className is not injected
+  'ShimmerLine', // className is not injected
   'Slider',
+  'SpinButton', // className is not injected
   'StackItem',
+  'Sticky', // accepts stickyClassName instead of className
+  'Suggestions',
   'SwatchColorPicker',
-  'MaskedTextField',
-  'TextField',
+  'TagPicker',
+  'TeachingBubble', // does not accept className
+  'TextField', // data attributes are placed on the input
+  'ThemeGenerator', // not intended to be tested
   'Toggle'
 ];
 
