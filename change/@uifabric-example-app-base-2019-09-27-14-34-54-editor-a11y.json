@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Editor: add accessibility props and improve preview rendering",
+  "packageName": "@uifabric/example-app-base",
+  "email": "elcraig@microsoft.com",
+  "commit": "fe59f6fd3c26d9d1bf44bcc4ee44ed01c9816cf9",
+  "date": "2019-09-27T21:34:24.597Z"
+}
