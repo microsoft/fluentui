@@ -1,7 +1,13 @@
 # Change Log - @uifabric/foundation
 
-This log was last generated on Thu, 12 Sep 2019 12:34:15 GMT and should not be manually modified.
+This log was last generated on Thu, 03 Oct 2019 01:14:35 GMT and should not be manually modified.
 
+## 7.4.2
+Thu, 03 Oct 2019 01:14:35 GMT
+
+### Patches
+
+- Foundation next requires @uifabric/merge-styles dependency (KevinTCoughlin@users.noreply.github.com)
 ## 7.4.1
 Thu, 12 Sep 2019 12:34:15 GMT
 

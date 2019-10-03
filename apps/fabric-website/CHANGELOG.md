@@ -1,7 +1,14 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Mon, 30 Sep 2019 12:35:16 GMT and should not be manually modified.
+This log was last generated on Thu, 03 Oct 2019 01:14:35 GMT and should not be manually modified.
 
+## 7.5.2
+Thu, 03 Oct 2019 01:14:35 GMT
+
+### Patches
+
+- Bundle React even in serve mode for more representative testing environment (elcraig@microsoft.com)
+- Adding iOS NavBar to website docs. (emlynam@microsoft.com)
 ## 7.5.1
 Mon, 30 Sep 2019 12:35:16 GMT
 

@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Adding iOS NavBar to website docs.",
-  "packageName": "@uifabric/fabric-website",
-  "email": "emlynam@microsoft.com",
-  "commit": "e489bbd40878adc51a49c3d71b17b27809668e38",
-  "date": "2019-10-02T17:14:02.724Z"
-}

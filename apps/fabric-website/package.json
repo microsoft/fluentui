@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/fabric-website",
-  "version": "7.5.1",
+  "version": "7.5.2",
   "description": "The official website for the UI Fabric project.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -46,7 +46,7 @@
   "dependencies": {
     "@microsoft/load-themed-styles": "^1.7.13",
     "@uifabric/api-docs": "^7.0.7",
-    "@uifabric/example-app-base": "^7.8.0",
+    "@uifabric/example-app-base": "^7.8.1",
     "@uifabric/experiments": "^7.18.0",
     "@uifabric/fabric-website-resources": "^7.3.0",
     "@uifabric/file-type-icons": "^7.1.1",
@@ -56,7 +56,7 @@
     "@uifabric/set-version": "^7.0.2",
     "@uifabric/theme-samples": "^7.0.5",
     "json-loader": "^0.5.7",
-    "office-ui-fabric-react": "^7.42.0",
+    "office-ui-fabric-react": "^7.43.0",
     "tslib": "^1.7.1",
     "whatwg-fetch": "2.0.4"
   }

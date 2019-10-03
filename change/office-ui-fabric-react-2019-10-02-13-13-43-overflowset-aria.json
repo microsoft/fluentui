@@ -1,8 +1,0 @@
-{
-  "type": "none",
-  "comment": "overflow set consistent menuitem and added a11y in overview",
-  "packageName": "office-ui-fabric-react",
-  "email": "mgodbolt@microsoft.com",
-  "commit": "123bdabb2df6bfba6a13df1119b930a766aa2863",
-  "date": "2019-10-02T20:13:43.848Z"
-}

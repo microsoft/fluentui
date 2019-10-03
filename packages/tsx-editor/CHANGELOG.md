@@ -1,7 +1,13 @@
 # Change Log - @uifabric/tsx-editor
 
-This log was last generated on Wed, 25 Sep 2019 12:34:56 GMT and should not be manually modified.
+This log was last generated on Thu, 03 Oct 2019 01:14:35 GMT and should not be manually modified.
 
+## 0.8.0
+Thu, 03 Oct 2019 01:14:35 GMT
+
+### Minor changes
+
+-   Return component rather than rendering, and add a11y props to editor (elcraig@microsoft.com)
 ## 0.7.2
 Wed, 25 Sep 2019 12:34:56 GMT
 

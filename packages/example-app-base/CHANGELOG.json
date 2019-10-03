@@ -2,6 +2,20 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "date": "Thu, 03 Oct 2019 01:14:35 GMT",
+      "tag": "@uifabric/example-app-base_v7.8.1",
+      "version": "7.8.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Editor: add accessibility props and improve preview rendering",
+            "author": "elcraig@microsoft.com",
+            "commit": "fe59f6fd3c26d9d1bf44bcc4ee44ed01c9816cf9"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 24 Sep 2019 12:35:43 GMT",
       "tag": "@uifabric/example-app-base_v7.8.0",
       "version": "7.8.0",

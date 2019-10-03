@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Move monaco-editor to a non-dev dependency",
-  "packageName": "@uifabric/monaco-editor",
-  "email": "elcraig@microsoft.com",
-  "commit": "afe85bef18cbd324d8775f1878890f74d21cb3e9",
-  "date": "2019-10-01T01:42:26.203Z"
-}

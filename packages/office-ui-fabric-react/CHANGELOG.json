@@ -2,6 +2,39 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Thu, 03 Oct 2019 01:14:35 GMT",
+      "tag": "office-ui-fabric-react_v7.43.0",
+      "version": "7.43.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Dropdown: adjust option styling for IE11",
+            "author": "naethell@microsoft.com",
+            "commit": "f6ca241142ee54cd2f32ad993382e55f9ecf141c"
+          },
+          {
+            "comment": "Dropdown: Making multiselect options clickable outside of the options label while still within Dropdown's boundaries.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "0bc0285686046f72721eae5c6730b3717473cc1a"
+          }
+        ],
+        "none": [
+          {
+            "comment": "overflow set consistent menuitem and added a11y in overview",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "123bdabb2df6bfba6a13df1119b930a766aa2863"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Callout: Addressing regression when target is an event.",
+            "author": "dzearing@microsoft.com",
+            "commit": "930e9059016e06f0b7ad6b44ac7a62e094600f59"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 02 Oct 2019 12:31:15 GMT",
       "tag": "office-ui-fabric-react_v7.42.0",
       "version": "7.42.0",

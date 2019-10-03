@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Dropdown: adjust option styling for IE11",
-  "packageName": "office-ui-fabric-react",
-  "email": "naethell@microsoft.com",
-  "commit": "f6ca241142ee54cd2f32ad993382e55f9ecf141c",
-  "date": "2019-09-18T00:22:09.872Z"
-}

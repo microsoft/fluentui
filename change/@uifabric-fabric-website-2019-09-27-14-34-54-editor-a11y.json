@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Bundle React even in serve mode for more representative testing environment",
-  "packageName": "@uifabric/fabric-website",
-  "email": "elcraig@microsoft.com",
-  "commit": "fe59f6fd3c26d9d1bf44bcc4ee44ed01c9816cf9",
-  "date": "2019-09-27T21:33:25.235Z"
-}

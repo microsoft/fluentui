@@ -1,7 +1,17 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 02 Oct 2019 12:31:15 GMT and should not be manually modified.
+This log was last generated on Thu, 03 Oct 2019 01:14:35 GMT and should not be manually modified.
 
+## 7.43.0
+Thu, 03 Oct 2019 01:14:35 GMT
+
+### Minor changes
+
+- Callout: Addressing regression when target is an event. (dzearing@microsoft.com)
+### Patches
+
+- Dropdown: adjust option styling for IE11 (naethell@microsoft.com)
+- Dropdown: Making multiselect options clickable outside of the options label while still within Dropdown's boundaries. (Humberto.Morimoto@microsoft.com)
 ## 7.42.0
 Wed, 02 Oct 2019 12:31:15 GMT
 

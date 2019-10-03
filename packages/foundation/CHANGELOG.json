@@ -2,6 +2,20 @@
   "name": "@uifabric/foundation",
   "entries": [
     {
+      "date": "Thu, 03 Oct 2019 01:14:35 GMT",
+      "tag": "@uifabric/foundation_v7.4.2",
+      "version": "7.4.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Foundation next requires @uifabric/merge-styles dependency",
+            "author": "KevinTCoughlin@users.noreply.github.com",
+            "commit": "cd4565bf67647fe0fd6267845b05561f7d6563a2"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 12 Sep 2019 12:34:15 GMT",
       "tag": "@uifabric/foundation_v7.4.1",
       "version": "7.4.1",
