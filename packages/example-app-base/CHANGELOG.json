@@ -2,6 +2,20 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "date": "Thu, 03 Oct 2019 23:14:46 GMT",
+      "tag": "@uifabric/example-app-base_v7.8.3",
+      "version": "7.8.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix a publish issue with example-app-base",
+            "author": "odbuild@microsoft.com",
+            "commit": "a1d4cf099c5a29a4ddfd635b6baab8de60485e1c"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 03 Oct 2019 01:14:35 GMT",
       "tag": "@uifabric/example-app-base_v7.8.1",
       "version": "7.8.1",

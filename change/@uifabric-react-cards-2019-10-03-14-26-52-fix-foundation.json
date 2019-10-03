@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fixes broken publish",
-  "packageName": "@uifabric/react-cards",
-  "email": "odbuild@microsoft.com",
-  "commit": "446e0792af4b59ab5d306efb22f478daf0c22c29",
-  "date": "2019-10-03T21:26:52.714Z"
-}

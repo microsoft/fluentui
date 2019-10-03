@@ -2,6 +2,20 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "date": "Thu, 03 Oct 2019 23:14:46 GMT",
+      "tag": "@uifabric/experiments_v7.18.2",
+      "version": "7.18.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fixes publish issue from beachball",
+            "author": "odbuild@microsoft.com",
+            "commit": "32bf0a91859d5171342731f769fcb2ff0c961e48"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 27 Sep 2019 12:33:04 GMT",
       "tag": "@uifabric/experiments_v7.18.0",
       "version": "7.18.0",

@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fixing a publishing issue with foundation",
-  "packageName": "@uifabric/foundation",
-  "email": "odbuild@microsoft.com",
-  "commit": "efe7986d5db47ebb4b2430a7d1930244886af713",
-  "date": "2019-10-03T17:05:19.295Z"
-}

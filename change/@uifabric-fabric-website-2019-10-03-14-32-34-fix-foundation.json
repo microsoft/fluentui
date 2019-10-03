@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fixes publish issue from beachball",
-  "packageName": "@uifabric/fabric-website",
-  "email": "odbuild@microsoft.com",
-  "commit": "306c59d9c3dd07f3eca7717bfdc84e15bfd70b39",
-  "date": "2019-10-03T21:32:34.021Z"
-}

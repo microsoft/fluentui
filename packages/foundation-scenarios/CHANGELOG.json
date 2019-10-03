@@ -2,6 +2,20 @@
   "name": "@uifabric/foundation-scenarios",
   "entries": [
     {
+      "date": "Thu, 03 Oct 2019 23:14:46 GMT",
+      "tag": "@uifabric/foundation-scenarios_v0.102.6",
+      "version": "0.102.6",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fixes publish issue from beachball",
+            "author": "odbuild@microsoft.com",
+            "commit": "1e11c2717931bce666279a9c9fc95c26d2c3cf87"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 04 Sep 2019 04:09:58 GMT",
       "tag": "@uifabric/foundation-scenarios_v0.102.4",
       "version": "0.102.4",

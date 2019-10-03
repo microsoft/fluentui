@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fix broken publish with a bump",
-  "packageName": "@uifabric/tsx-editor",
-  "email": "odbuild@microsoft.com",
-  "commit": "146ad8142dff53be1245aa269a4b70720ac5cf7b",
-  "date": "2019-10-03T21:26:11.871Z"
-}
