@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/fabric-website",
-  "version": "7.5.2",
+  "version": "7.5.3",
   "description": "The official website for the UI Fabric project.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",

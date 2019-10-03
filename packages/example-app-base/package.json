@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/example-app-base",
-  "version": "7.8.1",
+  "version": "7.8.2",
   "description": "UI Fabric components for building documentation sites.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",

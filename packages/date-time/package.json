@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/date-time",
-  "version": "7.5.0",
+  "version": "7.5.1",
   "description": "Date and time related React components for building experiences for Office 365.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
