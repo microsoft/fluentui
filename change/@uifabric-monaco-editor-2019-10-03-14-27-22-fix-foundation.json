@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Fixes broken publish",
+  "packageName": "@uifabric/monaco-editor",
+  "email": "odbuild@microsoft.com",
+  "commit": "be07b87e075674d117e7c92f0dc9a869075280c2",
+  "date": "2019-10-03T21:27:22.430Z"
+}
