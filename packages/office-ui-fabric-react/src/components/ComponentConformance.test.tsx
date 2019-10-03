@@ -108,6 +108,9 @@ const classNameSelectors: { [key: string]: string } = {
   MessageBar: 'ms-MessageBar'
 };
 
+// TODO create core list of exceptions so that we don't have any false positives
+// const coreExcluded: string[] =[]
+
 // NOTE: Please consider modifying your component to work with this test instead
 //        of adding it to the exclusion list as this will make regression harder to detect.
 const excludedClassNameComponents: string[] = [
@@ -140,6 +143,7 @@ const excludedClassNameComponents: string[] = [
   'ThemeGenerator' // not intended to be tested];
 ];
 
+// excpetions in addition to className exceptions
 const excludedDataAttributeComponents: string[] = [
   'ActivityItem',
   'Announced',
