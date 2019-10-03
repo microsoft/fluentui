@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Async methods can now take a React component as the target being passed to `getWindow`.",
+  "packageName": "@uifabric/utilities",
+  "email": "dzearing@microsoft.com",
+  "commit": "930e9059016e06f0b7ad6b44ac7a62e094600f59",
+  "date": "2019-10-02T23:57:45.256Z"
+}
