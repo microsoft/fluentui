@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Dropdown: Making multiselect options clickable outside of the options label while still within Dropdown's boundaries.",
+  "packageName": "office-ui-fabric-react",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "commit": "0bc0285686046f72721eae5c6730b3717473cc1a",
+  "date": "2019-09-30T23:54:53.190Z"
+}

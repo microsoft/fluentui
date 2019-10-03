@@ -347,6 +347,16 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
     ],
     subComponentStyles: {
       label: { root: { display: 'inline-block' } },
+      multiSelectItem: {
+        root: {
+          padding: 0
+        },
+        label: {
+          alignSelf: 'stretch',
+          padding: '0 8px',
+          width: '100%'
+        }
+      },
       panel: {
         root: [panelClassName],
         main: {
