@@ -1,0 +1,9 @@
+{
+  "type": "minor",
+  "comment": "Enable editor by default",
+  "packageName": "@uifabric/tsx-editor",
+  "email": "elcraig@microsoft.com",
+  "commit": "6082711ea1018d7a2f13480ab20519ce4e37f261",
+  "date": "2019-10-04T23:48:22.669Z",
+  "file": "/Users/elizabeth/git/fabric-react5/change/@uifabric-tsx-editor-2019-10-04-16-48-22-editor-live.json"
+}
