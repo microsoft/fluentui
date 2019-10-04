@@ -2,6 +2,20 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "date": "Thu, 03 Oct 2019 23:14:46 GMT",
+      "tag": "@uifabric/fabric-website_v7.5.4",
+      "version": "7.5.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fixes publish issue from beachball",
+            "author": "odbuild@microsoft.com",
+            "commit": "306c59d9c3dd07f3eca7717bfdc84e15bfd70b39"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 03 Oct 2019 01:14:35 GMT",
       "tag": "@uifabric/fabric-website_v7.5.2",
       "version": "7.5.2",

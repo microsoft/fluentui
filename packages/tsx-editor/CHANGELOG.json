@@ -2,6 +2,20 @@
   "name": "@uifabric/tsx-editor",
   "entries": [
     {
+      "date": "Thu, 03 Oct 2019 23:14:46 GMT",
+      "tag": "@uifabric/tsx-editor_v0.8.1",
+      "version": "0.8.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix broken publish with a bump",
+            "author": "odbuild@microsoft.com",
+            "commit": "146ad8142dff53be1245aa269a4b70720ac5cf7b"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 03 Oct 2019 01:14:35 GMT",
       "tag": "@uifabric/tsx-editor_v0.8.0",
       "version": "0.8.0",

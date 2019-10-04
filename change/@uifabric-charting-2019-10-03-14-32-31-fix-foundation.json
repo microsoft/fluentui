@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fixes publish issue from beachball",
-  "packageName": "@uifabric/charting",
-  "email": "odbuild@microsoft.com",
-  "commit": "c9aabad39c56bafd0d86f91831b12f945eff7483",
-  "date": "2019-10-03T21:32:31.260Z"
-}

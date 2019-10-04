@@ -2,6 +2,25 @@
   "name": "@uifabric/foundation",
   "entries": [
     {
+      "date": "Thu, 03 Oct 2019 23:14:46 GMT",
+      "tag": "@uifabric/foundation_v7.4.4",
+      "version": "7.4.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fixing a publishing issue with foundation",
+            "author": "odbuild@microsoft.com",
+            "commit": "efe7986d5db47ebb4b2430a7d1930244886af713"
+          },
+          {
+            "comment": "Fixes broken publish",
+            "author": "odbuild@microsoft.com",
+            "commit": "3cc8a4af24aaf8eda29a69e293459c532202864d"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 03 Oct 2019 01:14:35 GMT",
       "tag": "@uifabric/foundation_v7.4.2",
       "version": "7.4.2",

@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fixes broken publish",
-  "packageName": "@uifabric/foundation",
-  "email": "odbuild@microsoft.com",
-  "commit": "3cc8a4af24aaf8eda29a69e293459c532202864d",
-  "date": "2019-10-03T21:29:26.921Z"
-}

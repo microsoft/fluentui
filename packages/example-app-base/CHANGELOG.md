@@ -1,7 +1,13 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Thu, 03 Oct 2019 01:14:35 GMT and should not be manually modified.
+This log was last generated on Thu, 03 Oct 2019 23:14:46 GMT and should not be manually modified.
 
+## 7.8.3
+Thu, 03 Oct 2019 23:14:46 GMT
+
+### Patches
+
+- Fix a publish issue with example-app-base (odbuild@microsoft.com)
 ## 7.8.1
 Thu, 03 Oct 2019 01:14:35 GMT
 

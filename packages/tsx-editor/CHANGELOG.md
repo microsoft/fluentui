@@ -1,7 +1,13 @@
 # Change Log - @uifabric/tsx-editor
 
-This log was last generated on Thu, 03 Oct 2019 01:14:35 GMT and should not be manually modified.
+This log was last generated on Thu, 03 Oct 2019 23:14:46 GMT and should not be manually modified.
 
+## 0.8.1
+Thu, 03 Oct 2019 23:14:46 GMT
+
+### Patches
+
+- Fix broken publish with a bump (odbuild@microsoft.com)
 ## 0.8.0
 Thu, 03 Oct 2019 01:14:35 GMT
 

@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fix a publish issue with example-app-base",
-  "packageName": "@uifabric/example-app-base",
-  "email": "odbuild@microsoft.com",
-  "commit": "a1d4cf099c5a29a4ddfd635b6baab8de60485e1c",
-  "date": "2019-10-03T17:05:38.467Z"
-}
