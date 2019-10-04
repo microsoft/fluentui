@@ -1,5 +1,4 @@
 import { IColorPickerStyleProps, IColorPickerStyles } from './ColorPicker.types';
-import { HighContrastSelector } from '../../Styling';
 
 export const getStyles = (props: IColorPickerStyleProps): IColorPickerStyles => {
   const { className, theme } = props;
