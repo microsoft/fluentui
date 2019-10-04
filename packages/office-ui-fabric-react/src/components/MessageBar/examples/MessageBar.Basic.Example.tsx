@@ -14,6 +14,12 @@ const verticalStackProps: IStackProps = {
   tokens: { childrenGap: 20 }
 };
 
+const choiceGroupStyles = {
+  label: {
+    maxWidth: 250
+  }
+};
+
 const DefaultExample = () => (
   <MessageBar>
     Info/Default MessageBar.
@@ -173,7 +179,8 @@ export const MessageBarBasicExample: React.StatelessComponent = () => {
     <Stack {...horizontalStackProps}>
       <StackItem disableShrink>
         <ChoiceGroup
-          label="Select a MessageBar Example Below"
+          styles={choiceGroupStyles}
+          label="Select a MessageBar Example Below. To test in narrator, show one message at a time."
           selectedKey={choice}
           // tslint:disable-next-line: jsx-no-lambda
           onChange={(e, v) => setChoice(v!.key)}
