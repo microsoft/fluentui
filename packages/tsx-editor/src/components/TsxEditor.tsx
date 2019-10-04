@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as monaco from '@uifabric/monaco-editor';
 import { LanguageServiceDefaultsImpl as TypescriptDefaults } from '@uifabric/monaco-editor/monaco-typescript.d';
 import { ITsxEditorProps } from './TsxEditor.types';
-import { transpileAndEval } from '../transpiler/index';
+import { transpileAndEval } from '../transpiler/transpile';
 import { IMonacoTextModel, ICompilerOptions, IPackageGroup } from '../interfaces/index';
 import { Editor } from './Editor';
 import { EditorLoading } from './EditorLoading';

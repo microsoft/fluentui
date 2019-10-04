@@ -18,8 +18,7 @@ import { AppCustomizationsContext, IAppCustomizations, IExampleCardCustomization
 import { CodepenComponent, CONTENT_ID } from '../CodepenComponent/CodepenComponent';
 import { IExampleCardProps, IExampleCardStyleProps, IExampleCardStyles } from './ExampleCard.types';
 import { getStyles } from './ExampleCard.styles';
-import { EditorWrapper, SUPPORTED_PACKAGES, IMonacoTextModel, transformExample } from '@uifabric/tsx-editor/lib/index-min';
-// DO NOT import anything from the root of tsx-editor, to avoid pulling Monaco into the main bundle!
+import { EditorWrapper, SUPPORTED_PACKAGES, IMonacoTextModel, transformExample } from '@uifabric/tsx-editor';
 
 export interface IExampleCardState {
   /** only used if props.isCodeVisible and props.onToggleEditor are undefined */

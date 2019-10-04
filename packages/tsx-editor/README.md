@@ -27,7 +27,7 @@ If the user's browser can't support the editor (mainly IE 11 and some mobile bro
 Any project consuming `@uifabric/tsx-editor` should follow the Webpack and runtime configuration instructions from the [`@uifabric/monaco-editor` readme](https://github.com/OfficeDev/office-ui-fabric-react/blob/master/packages/monaco-editor/README.md). Note that the helpers used are re-exported from this package for convenience:
 
 - `addMonacoWebpackConfig`: import from `@uifabric/tsx-editor/scripts/addMonacoWebpackConfig`
-- `configureEnvironment` and `IMonacoConfig`: import from `@uifabric/tsx-editor/lib/index-min`
+- `configureEnvironment` and `IMonacoConfig`: import from `@uifabric/tsx-editor`
 
 The editor code also assumes that React is available on the page as a global.
 
@@ -44,8 +44,6 @@ Note that these are **still subject to change** until a major release.
 `EditorWrapper` renders a Monaco editor, a container where the example is rendered, and a message bar with errors (when applicable). As the user types, `EditorWrapper` transpiles the updated example component code, evals it, and re-renders the example component.
 
 If the user's browser can't support the editor, the code will be rendered read-only.
-
-Note that if you choose this option, you should **only import from** `@uifabric/tsx-editor/lib/index-min`. This will prevent Monaco from being pulled into your main bundle.
 
 TODO: add usage example
 
