@@ -1,7 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 03 Oct 2019 23:14:46 GMT and should not be manually modified.
+This log was last generated on Fri, 04 Oct 2019 22:19:48 GMT and should not be manually modified.
 
+## 7.43.2
+Fri, 04 Oct 2019 22:19:48 GMT
+
+### Patches
+
+- ContextualMenu: Removing deprecated check for getMenuClassNames that was stopping callout subComponentStyles from being applied. (Humberto.Morimoto@microsoft.com)
 ## 7.43.1
 Thu, 03 Oct 2019 23:14:46 GMT
 

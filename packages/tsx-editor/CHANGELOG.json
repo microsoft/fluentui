@@ -2,6 +2,20 @@
   "name": "@uifabric/tsx-editor",
   "entries": [
     {
+      "date": "Fri, 04 Oct 2019 22:19:48 GMT",
+      "tag": "@uifabric/tsx-editor_v0.9.0",
+      "version": "0.9.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Improve bundle structure, and add error boundary around example so errors don't crash the page",
+            "author": "elcraig@microsoft.com",
+            "commit": "5769e0419f9162970898c424da471e8fb9c53ccf"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 03 Oct 2019 23:14:46 GMT",
       "tag": "@uifabric/tsx-editor_v0.8.1",
       "version": "0.8.1",

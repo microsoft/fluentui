@@ -2,6 +2,20 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Fri, 04 Oct 2019 22:19:48 GMT",
+      "tag": "office-ui-fabric-react_v7.43.2",
+      "version": "7.43.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "ContextualMenu: Removing deprecated check for getMenuClassNames that was stopping callout subComponentStyles from being applied.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "74b2f0f973bcb377b56dd337f578d7d07388eb83"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 03 Oct 2019 23:14:46 GMT",
       "tag": "office-ui-fabric-react_v7.43.1",
       "version": "7.43.1",

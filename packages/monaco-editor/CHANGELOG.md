@@ -1,7 +1,13 @@
 # Change Log - @uifabric/monaco-editor
 
-This log was last generated on Thu, 03 Oct 2019 23:14:46 GMT and should not be manually modified.
+This log was last generated on Fri, 04 Oct 2019 22:19:48 GMT and should not be manually modified.
 
+## 0.3.0
+Fri, 04 Oct 2019 22:19:48 GMT
+
+### Minor changes
+
+- Fix monaco bundle paths to use transformed CSS (elcraig@microsoft.com)
 ## 0.2.4
 Thu, 03 Oct 2019 23:14:46 GMT
 

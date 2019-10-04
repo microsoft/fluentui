@@ -1,7 +1,13 @@
 # Change Log - @uifabric/tsx-editor
 
-This log was last generated on Thu, 03 Oct 2019 23:14:46 GMT and should not be manually modified.
+This log was last generated on Fri, 04 Oct 2019 22:19:48 GMT and should not be manually modified.
 
+## 0.9.0
+Fri, 04 Oct 2019 22:19:48 GMT
+
+### Minor changes
+
+- Improve bundle structure, and add error boundary around example so errors don't crash the page (elcraig@microsoft.com)
 ## 0.8.1
 Thu, 03 Oct 2019 23:14:46 GMT
 

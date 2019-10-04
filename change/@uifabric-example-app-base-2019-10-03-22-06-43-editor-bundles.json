@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Use latest tsx-editor APIs",
-  "packageName": "@uifabric/example-app-base",
-  "email": "elcraig@microsoft.com",
-  "commit": "5769e0419f9162970898c424da471e8fb9c53ccf",
-  "date": "2019-10-04T05:06:00.317Z"
-}
