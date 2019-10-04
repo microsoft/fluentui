@@ -35,8 +35,11 @@ export function transpile(model: IMonacoTextModel): Promise<ITransformedCode> {
         // There was an error, so get diagnostics
         return Promise.all([worker.getSyntacticDiagnostics(filename), worker.getSemanticDiagnostics(filename)]).then(
           ([syntacticDiagnostics, semanticDiagnostics]) => {
-            const diagnostics = syntacticDiagnostics.concat(semanticDiagnostics).filter(d => d.category === 1 /*error*/);
-            diagnostics.sort((a, b) => a.start! - b.start!);
+            syntacticDiagnostics = syntacticDiagnostics.filter(d => d.category === 1 /*error*/);
+            semanticDiagnostics = semanticDiagnostics.filter(d => d.category === 1);
+
+            // If there's a syntax error, draw attention to that first and ignore any semantic errors
+            const diagnostics = syntacticDiagnostics.length ? syntacticDiagnostics : semanticDiagnostics;
             if (diagnostics.length) {
               transpiledOutput.error = _getErrorMessages(diagnostics, model.getValue());
             } else {
