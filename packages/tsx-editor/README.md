@@ -51,9 +51,10 @@ TODO: add usage example
 
 `TsxEditor` is like `EditorWrapper`, but without the example container, error bar, or read-only fallback. Instead of rendering the example itself, it takes in an `onTransformFinished` callback to pass the example component up to the parent for rendering.
 
-Cautions for this option:
+Notes for this option:
 
-- **Delay load** the `TsxEditor` component to prevent Monaco from being pulled into your main bundle.
+- You should **delay load** the `TsxEditor` component to prevent Monaco from being pulled into your main bundle.
+  - `TsxEditor` isn't included in `@uifabric/tsx-editor/lib/index` due to importing Monaco. It should be imported from `@uifabric/tsx-editor/lib/TsxEditor` instead.
 - When rendering the example component, be sure to wrap it in an error boundary; otherwise **runtime errors in the example will crash the page**. (One option is using `EditorErrorBoundary`, which also handles displaying transform errors.)
 
 TODO: add usage example
@@ -62,7 +63,7 @@ TODO: add usage example
 
 `Editor` renders only Monaco. It works with any language and doesn't do any extra TypeScript setup.
 
-Note that if you choose this option, you should **delay load** the `Editor` component to prevent Monaco from being pulled into your main bundle.
+Note that if you choose this option, you should **delay load** the `Editor` component to prevent Monaco from being pulled into your main bundle. (`Editor` isn't included in `@uifabric/tsx-editor/lib/index` due to importing Monaco. It should be imported from `@uifabric/tsx-editor/lib/Editor` instead.)
 
 TODO: add usage example
 
