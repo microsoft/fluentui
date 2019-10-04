@@ -16,7 +16,7 @@ export const Editor: React.FunctionComponent<IEditorProps> = (props: IEditorProp
     language,
     filename,
     onChange,
-    debounceTime = 500,
+    debounceTime = 1000,
     ariaLabel,
     editorOptions
   } = props;

@@ -41,7 +41,7 @@ export interface IEditorProps {
   /**
    * Debounce `onChange` calls by this many milliseconds, or 0 to disable.
    * (Can be changed without re-creating the editor.)
-   * @defaultvalue 500
+   * @defaultvalue 1000
    */
   debounceTime?: number;
 
