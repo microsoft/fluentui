@@ -64,12 +64,16 @@ export class ColorRectangleBase extends React.Component<IColorRectangleProps, IC
       minSize
     });
 
+    // The rectangle is aria-hidden because it currently isn't keyboard-accessible and has no label
+    // so exposing it to screen reader users would just be confusing (and the full range of colors
+    // can still be chosen by editing the text fields)
     return (
       <div
         ref={this._root}
         className={classNames.root}
         style={{ backgroundColor: getFullColorString(color) }}
         onMouseDown={this._onMouseDown}
+        aria-hidden
       >
         <div className={classNames.light} />
         <div className={classNames.dark} />

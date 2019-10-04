@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { ColorPicker, Toggle, getColorFromString, IColor, IColorPickerStyles, updateA } from 'office-ui-fabric-react/lib/index';
-import { mergeStyleSets, HighContrastSelector } from 'office-ui-fabric-react/lib/Styling';
+import { ColorPicker, Toggle, getColorFromString, IColor, IColorPickerStyles, updateA, mergeStyleSets } from 'office-ui-fabric-react';
+import { useConstCallback } from '@uifabric/react-hooks';
 
 const classNames = mergeStyleSets({
   wrapper: {
@@ -8,17 +8,6 @@ const classNames = mergeStyleSets({
   },
   column2: {
     marginLeft: 10
-  },
-  colorSquare: {
-    width: 100,
-    height: 100,
-    margin: '16px 0',
-    border: '1px solid #c8c6c4',
-    selectors: {
-      [HighContrastSelector]: {
-        MsHighContrastAdjust: 'none'
-      }
-    }
   }
 });
 
@@ -31,53 +20,41 @@ const colorPickerStyles: Partial<IColorPickerStyles> = {
   colorRectangle: { height: 268 }
 };
 
-export interface IBasicColorPickerExampleState {
-  color: IColor;
-  alphaSliderHidden: boolean;
-  showPreview: boolean;
-}
+export const ColorPickerBasicExample: React.FunctionComponent = () => {
+  const [color, setColor] = React.useState<IColor>(() => getColorFromString('#ffffff')!);
+  const [showPreview, setShowPreview] = React.useState(true);
+  const [showAlphaSlider, setShowAlphaSlider] = React.useState(true);
 
-export class ColorPickerBasicExample extends React.Component<{}, IBasicColorPickerExampleState> {
-  public state: IBasicColorPickerExampleState = {
-    color: getColorFromString('#ffffff')!,
-    alphaSliderHidden: false,
-    showPreview: true
-  };
+  const updateColor = useConstCallback((ev: React.SyntheticEvent<HTMLElement>, colorObj: IColor) => {
+    setColor(colorObj);
+  });
 
-  public render(): JSX.Element {
-    const { color, alphaSliderHidden, showPreview: showPreview } = this.state;
-    return (
-      <div className={classNames.wrapper}>
-        <ColorPicker
-          color={color}
-          onChange={this._updateColor}
-          alphaSliderHidden={alphaSliderHidden}
-          showPreview={showPreview}
-          styles={colorPickerStyles}
-        />
+  const onShowPreviewClick = useConstCallback((ev: React.MouseEvent<HTMLElement>, checked?: boolean) => {
+    setShowPreview(!!checked);
+  });
 
-        <div className={classNames.column2}>
-          <Toggle label="Hide alpha slider" onChange={this._onHideAlphaClick} checked={alphaSliderHidden} />
-          <Toggle label="Show Preview Box" onChange={this._onShowPreviewBoxClick} checked={showPreview} />
-        </div>
-      </div>
-    );
-  }
-
-  private _updateColor = (ev: React.SyntheticEvent<HTMLElement>, colorObj: IColor) => {
-    this.setState({ color: colorObj });
-  };
-
-  private _onHideAlphaClick = (ev: React.MouseEvent<HTMLElement>, checked?: boolean) => {
-    let color = this.state.color;
-    if (checked) {
+  const onShowAlphaClick = useConstCallback((ev: React.MouseEvent<HTMLElement>, checked?: boolean) => {
+    setShowAlphaSlider(!!checked);
+    if (!checked) {
       // If hiding the alpha slider, remove transparency from the color
-      color = updateA(this.state.color, 100);
+      setColor(prevColor => updateA(prevColor, 100));
     }
-    this.setState({ alphaSliderHidden: !!checked, color });
-  };
+  });
 
-  private _onShowPreviewBoxClick = (ev: React.MouseEvent<HTMLElement>, checked?: boolean) => {
-    this.setState({ showPreview: !!checked });
-  };
-}
+  return (
+    <div className={classNames.wrapper}>
+      <ColorPicker
+        color={color}
+        onChange={updateColor}
+        alphaSliderHidden={!showAlphaSlider}
+        showPreview={showPreview}
+        styles={colorPickerStyles}
+      />
+
+      <div className={classNames.column2}>
+        <Toggle label="Show alpha slider" onChange={onShowAlphaClick} checked={showAlphaSlider} />
+        <Toggle label="Show preview box" onChange={onShowPreviewClick} checked={showPreview} />
+      </div>
+    </div>
+  );
+};

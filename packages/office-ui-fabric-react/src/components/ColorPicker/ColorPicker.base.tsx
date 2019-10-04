@@ -119,9 +119,9 @@ export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPi
               )}
             </div>
             {props.showPreview && (
-              <div className={classNames.flexPreviewBox}>
+              <div className={classNames.flexPreviewBox} aria-hidden>
                 <div
-                  className={classNames.colorSquare + ' is-preview'}
+                  className={classNames.colorSquare}
                   style={{
                     backgroundColor: color.str
                   }}

@@ -25,6 +25,7 @@ exports[`ColorPicker renders correctly 1`] = `
         }
   >
     <div
+      aria-hidden={true}
       className=
           ms-ColorPicker-colorRect
           {
@@ -117,6 +118,7 @@ exports[`ColorPicker renders correctly 1`] = `
             }
       >
         <div
+          aria-hidden={true}
           className=
               ms-ColorPicker-slider
               is-hue
@@ -170,6 +172,7 @@ exports[`ColorPicker renders correctly 1`] = `
           />
         </div>
         <div
+          aria-hidden={true}
           className=
               ms-ColorPicker-slider
               is-alpha

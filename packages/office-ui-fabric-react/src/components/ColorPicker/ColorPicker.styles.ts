@@ -1,4 +1,5 @@
 import { IColorPickerStyleProps, IColorPickerStyles } from './ColorPicker.types';
+import { HighContrastSelector } from '../../Styling';
 
 export const getStyles = (props: IColorPickerStyleProps): IColorPickerStyles => {
   const { className, theme } = props;
@@ -41,13 +42,12 @@ export const getStyles = (props: IColorPickerStyleProps): IColorPickerStyles => 
         }
       }
     ],
-    tableHexCell: [
-      {
-        width: '25%'
-      }
-    ],
+    tableHexCell: {
+      width: '25%'
+    },
     colorSquare: [
       'ms-ColorPicker-colorSquare',
+      'is-preview',
       {
         width: 48,
         height: 48,
@@ -55,21 +55,15 @@ export const getStyles = (props: IColorPickerStyleProps): IColorPickerStyles => 
         border: '1px solid #c8c6c4'
       }
     ],
-    flexContainer: [
-      {
-        display: 'flex'
-      }
-    ],
-    flexSlider: [
-      {
-        flexGrow: '1'
-      }
-    ],
-    flexPreviewBox: [
-      {
-        flexGrow: '0'
-      }
-    ],
+    flexContainer: {
+      display: 'flex'
+    },
+    flexSlider: {
+      flexGrow: '1'
+    },
+    flexPreviewBox: {
+      flexGrow: '0'
+    },
     input: [
       'ms-ColorPicker-input',
       {

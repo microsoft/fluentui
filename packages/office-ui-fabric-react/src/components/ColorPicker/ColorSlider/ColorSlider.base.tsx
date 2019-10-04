@@ -71,8 +71,11 @@ export class ColorSliderBase extends React.Component<IColorSliderProps, IColorSl
 
     const sliderStyle = isAlpha ? alphaStyle : hueStyle;
 
+    // The slider is aria-hidden because it currently isn't keyboard-accessible and has no label,
+    // so exposing it to screen reader users would just be confusing (and the full range of colors
+    // can still be chosen by editing the text fields)
     return (
-      <div ref={this._root} className={classNames.root} onMouseDown={this._onMouseDown} style={sliderStyle}>
+      <div ref={this._root} className={classNames.root} onMouseDown={this._onMouseDown} style={sliderStyle} aria-hidden>
         <div className={classNames.sliderOverlay} style={overlayStyle} />
         <div className={classNames.sliderThumb} style={{ left: currentPercentage + '%' }} />
       </div>
