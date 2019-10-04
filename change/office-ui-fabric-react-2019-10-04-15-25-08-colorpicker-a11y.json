@@ -1,0 +1,9 @@
+{
+  "type": "patch",
+  "comment": "ColorPicker: add aria-hidden to elements which aren't keyboard-accessible",
+  "packageName": "office-ui-fabric-react",
+  "email": "elcraig@microsoft.com",
+  "commit": "5e7c3260af8463d99fc21e4ebaec674e452a411a",
+  "date": "2019-10-04T22:25:08.061Z",
+  "file": "/Users/elizabeth/git/fabric-react5/change/office-ui-fabric-react-2019-10-04-15-25-08-colorpicker-a11y.json"
+}
