@@ -149,14 +149,8 @@ export class MessageBarBase extends BaseComponent<IMessageBarProps, IMessageBarS
     const nativeProps = getNativeProps<React.HTMLAttributes<HTMLSpanElement>>(this.props, htmlElementProperties, ['className']);
 
     return (
-      <div className={this._classNames.text}>
-        <span
-          className={this._classNames.innerText}
-          id={this.state.labelId}
-          role="status"
-          aria-live={this._getAnnouncementPriority()}
-          {...nativeProps}
-        >
+      <div className={this._classNames.text} id={this.state.labelId} role="status" aria-live={this._getAnnouncementPriority()}>
+        <span className={this._classNames.innerText} {...nativeProps}>
           <DelayedRender>
             <span>{this.props.children}</span>
           </DelayedRender>
