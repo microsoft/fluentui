@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Fix monaco bundle paths to use transformed CSS",
+  "packageName": "@uifabric/monaco-editor",
+  "email": "elcraig@microsoft.com",
+  "commit": "5769e0419f9162970898c424da471e8fb9c53ccf",
+  "date": "2019-10-04T05:06:07.516Z"
+}
