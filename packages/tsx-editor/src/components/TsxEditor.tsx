@@ -1,6 +1,8 @@
 import * as React from 'react';
+import * as ReactDOM from 'react-dom';
 import * as monaco from '@uifabric/monaco-editor';
 import { LanguageServiceDefaultsImpl as TypescriptDefaults } from '@uifabric/monaco-editor/monaco-typescript.d';
+import { getWindow } from 'office-ui-fabric-react/lib/Utilities';
 import { ITsxEditorProps } from './TsxEditor.types';
 import { transpileAndEval } from '../transpiler/transpile';
 import { IMonacoTextModel, ICompilerOptions, IPackageGroup } from '../interfaces/index';
@@ -68,13 +70,20 @@ function _useGlobals(supportedPackages: IPackageGroup[]): boolean {
   const [hasLoadedGlobals, setHasLoadedGlobals] = React.useState<boolean>(false);
   React.useEffect(() => {
     setHasLoadedGlobals(false);
+
+    const win = getWindow() as Window & { [key: string]: any }; // tslint:disable-line:no-any
+    if (!win.React) {
+      win.React = React;
+    }
+    if (!win.ReactDOM) {
+      win.ReactDOM = ReactDOM;
+    }
     Promise.all(
       supportedPackages.map(group => {
-        // tslint:disable:no-any
-        if (!(window as any)[group.globalName]) {
-          return group.loadGlobal().then((globalModule: any) => ((window as any)[group.globalName] = globalModule));
+        if (!win[group.globalName]) {
+          // tslint:disable-next-line:no-any
+          return group.loadGlobal().then((globalModule: any) => (win[group.globalName] = globalModule));
         }
-        // tslint:enable:no-any
       })
     ).then(() => setHasLoadedGlobals(true));
   }, [supportedPackages]);
