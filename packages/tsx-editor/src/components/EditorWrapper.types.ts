@@ -8,17 +8,14 @@ export interface IEditorWrapperProps {
    */
   code: string;
 
-  /** Whether the editor (or code viewer) is visible */
-  isCodeVisible?: boolean;
-
   /** Class to use on the div wrapping the editor/loading spinner/code viewer */
   editorClassName?: string;
 
   /** Custom component for the preview. It **must** render the children passed in. */
-  previewAs?: React.ComponentType<{ className?: string }>;
+  previewAs?: React.ComponentType<{}>;
 
-  /** Class to use on the wrapper for the rendered example */
-  previewClassName?: string;
+  /** Props to use on the wrapper for the rendered example. */
+  previewProps?: {};
 
   /**
    * Editor height. (Changing this prop should not re-create the editor, but it might not affect

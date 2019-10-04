@@ -3,7 +3,7 @@
 // @uifabric/monaco-editor root imports here.
 
 // @ts-ignore because monaco doesn't provide typings for this file
-export * from 'monaco-editor/esm/vs/editor/editor.main.js';
+export * from '../esm/vs/editor/editor.main.js';
 
 // If the consumer has set a MonacoConfig global, this will set up Monaco's required
 // MonacoEnvironment globals (otherwise the consumer can manually call this function later)

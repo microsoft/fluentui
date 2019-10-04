@@ -16,7 +16,7 @@ export const Editor: React.FunctionComponent<IEditorProps> = (props: IEditorProp
     language,
     filename,
     onChange,
-    debounceTime = 500,
+    debounceTime = 1000,
     ariaLabel,
     editorOptions
   } = props;
@@ -44,10 +44,6 @@ export const Editor: React.FunctionComponent<IEditorProps> = (props: IEditorProp
       ...(editorOptions || {}),
       model
     });
-
-    if (internalState.current!.onChange) {
-      internalState.current!.onChange(model.getValue());
-    }
 
     // Handle changes (debounced)
     // tslint:disable-next-line:no-any due to mismatch between Node and browser typings

@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Improve bundle structure, and add error boundary around example so errors don't crash the page",
+  "packageName": "@uifabric/tsx-editor",
+  "email": "elcraig@microsoft.com",
+  "commit": "5769e0419f9162970898c424da471e8fb9c53ccf",
+  "date": "2019-10-04T05:06:43.636Z"
+}
