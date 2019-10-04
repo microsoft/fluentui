@@ -5,9 +5,8 @@ import { ITsxEditorProps } from './TsxEditor.types';
 import { transpileAndEval } from '../transpiler/transpile';
 import { IMonacoTextModel, ICompilerOptions, IPackageGroup } from '../interfaces/index';
 import { Editor } from './Editor';
-import { EditorLoading } from './EditorLoading';
 import { SUPPORTED_PACKAGES } from '../utilities/index';
-import { DEFAULT_HEIGHT } from './consts';
+import { IEditorProps } from './Editor.types';
 
 const typescript = monaco.languages.typescript;
 const typescriptDefaults = typescript.typescriptDefaults as TypescriptDefaults;
@@ -34,9 +33,12 @@ export const TsxEditor: React.FunctionComponent<ITsxEditorProps> = (props: ITsxE
   _useCompilerOptions(compilerOptions);
 
   // Set up type checking after globals are loaded
-  _useTypes(supportedPackages, hasLoadedGlobals);
+  const hasLoadedTypes = _useTypes(supportedPackages, hasLoadedGlobals);
 
-  const onChange = (text: string) => {
+  // Store the latest onChange in a ref to ensure that we get the latest values
+  // without forcing re-rendering
+  const onChangeRef = React.useRef<IEditorProps['onChange']>();
+  onChangeRef.current = (text: string) => {
     if (editorProps.onChange) {
       // If the consumer provided an additional onChange, call that too
       editorProps.onChange(text);
@@ -44,11 +46,21 @@ export const TsxEditor: React.FunctionComponent<ITsxEditorProps> = (props: ITsxE
     transpileAndEval(modelRef.current!, supportedPackages).then(onTransformFinished);
   };
 
-  // Render loading spinner while globals are loading
-  return hasLoadedGlobals ? (
-    <Editor {...editorProps} filename={filename} modelRef={modelRef} onChange={onChange} />
-  ) : (
-    <EditorLoading height={editorProps.height || DEFAULT_HEIGHT} />
+  // After type checking and globals are set up, call onChange to transpile
+  React.useEffect(() => {
+    if (hasLoadedTypes && modelRef.current) {
+      onChangeRef.current!(modelRef.current.getValue());
+    }
+  }, [onChangeRef, hasLoadedTypes, modelRef.current]);
+
+  return (
+    <Editor
+      {...editorProps}
+      filename={filename}
+      modelRef={modelRef}
+      // Don't track changes until types have loaded
+      onChange={hasLoadedTypes ? onChangeRef.current : undefined}
+    />
   );
 };
 
@@ -92,21 +104,21 @@ function _useCompilerOptions(compilerOptions: ICompilerOptions | undefined): voi
 }
 
 function _useTypes(supportedPackages: IPackageGroup[], isReady: boolean) {
+  const [hasLoadedTypes, setHasLoadedTypes] = React.useState<boolean>(false);
   React.useEffect(() => {
     if (!isReady) {
       return;
     }
 
-    // Initially disable type checking, and load real types after 1 second
+    // Initially disable type checking
     typescriptDefaults.setDiagnosticsOptions({ noSemanticValidation: true });
-    const typesTimeout = setTimeout(() => {
-      _loadTypes(supportedPackages);
-    }, 1000);
-
-    return () => {
-      clearTimeout(typesTimeout);
-    };
+    // Load types and then turn on full type checking
+    _loadTypes(supportedPackages).then(() => {
+      typescriptDefaults.setDiagnosticsOptions({ noSemanticValidation: false });
+      setHasLoadedTypes(true);
+    });
   }, [supportedPackages, isReady]);
+  return hasLoadedTypes;
 }
 
 /**
@@ -152,12 +164,11 @@ function _loadTypes(supportedPackages: IPackageGroup[]): Promise<void> {
   }
 
   return Promise.all(promises).then(() => {
-    // Add the path mappings and turn on full error checking
+    // Add the path mappings
     typescriptDefaults.setCompilerOptions({
       ...typescriptDefaults.getCompilerOptions(),
       paths: pathMappings
     });
-    typescriptDefaults.setDiagnosticsOptions({ noSemanticValidation: false });
   });
 }
 
