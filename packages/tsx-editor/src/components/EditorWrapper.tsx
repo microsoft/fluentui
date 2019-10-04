@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { IEditorWrapperProps } from './EditorWrapper.types';
-import { EditorError } from './EditorError';
+import { EditorErrorBoundary } from './EditorErrorHandler';
 import { TypeScriptSnippet } from './TypeScriptSnippet';
 import { EditorLoading } from './EditorLoading';
 import { isEditorSupported } from '../utilities/index';
@@ -65,9 +65,9 @@ export const EditorWrapper: React.FunctionComponent<IEditorWrapperProps> = props
         )}
       </div>
 
-      <EditorError error={error} />
-
-      <Preview {...previewProps}>{ExampleComponent ? <ExampleComponent /> : children}</Preview>
+      <EditorErrorBoundary transformResult={transformResult}>
+        <Preview {...previewProps}>{ExampleComponent ? <ExampleComponent /> : children}</Preview>
+      </EditorErrorBoundary>
     </div>
   );
 };
