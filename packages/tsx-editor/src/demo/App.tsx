@@ -1,5 +1,5 @@
 import React from 'react';
-import { PrimaryButton, mergeStyleSets, Stack, Toggle } from 'office-ui-fabric-react';
+import { mergeStyleSets, Stack, Toggle } from 'office-ui-fabric-react';
 import { EditorWrapper } from '../components/EditorWrapper';
 import { SUPPORTED_PACKAGES } from '../utilities/index';
 
@@ -16,24 +16,17 @@ const classNames = mergeStyleSets({
 const width = 800;
 
 export const App: React.FunctionComponent = () => {
-  const [editorHidden, setEditorHidden] = React.useState<boolean>(true);
   const [useEditor, setUseEditor] = React.useState<boolean>(true);
-
-  const onButtonClick = () => setEditorHidden(!editorHidden);
   const onToggleChange = () => setUseEditor(!useEditor);
 
   return (
     <Stack styles={{ root: { width, margin: '0 auto' } }} tokens={{ childrenGap: 20 }}>
       <h1>Typescript + React editor</h1>
-      <Stack horizontal tokens={{ childrenGap: 40 }}>
-        <PrimaryButton text={editorHidden ? 'Show code' : 'Hide code'} onClick={onButtonClick} />
-        <Toggle inlineLabel label="Use editor" checked={useEditor} onChange={onToggleChange} />
-      </Stack>
+      <Toggle inlineLabel label="Use editor" checked={useEditor} onChange={onToggleChange} />
       <EditorWrapper
         code={example}
         editorClassName={classNames.component}
-        previewClassName={classNames.preview}
-        isCodeVisible={!editorHidden}
+        previewProps={{ className: classNames.preview }}
         useEditor={useEditor}
         supportedPackages={SUPPORTED_PACKAGES}
       />
