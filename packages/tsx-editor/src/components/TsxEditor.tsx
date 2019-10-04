@@ -75,20 +75,17 @@ function _useCompilerOptions(compilerOptions: ICompilerOptions | undefined): voi
     typescriptDefaults.setCompilerOptions({
       experimentalDecorators: true,
       preserveConstEnums: true,
-      noUnusedLocals: true,
-      strictNullChecks: true,
-      noImplicitAny: true,
       // Mix in provided options
       ...compilerOptions,
       // These options are essential to making the transform/eval and types code work (no overriding)
+      noEmitOnError: true,
       allowNonTsExtensions: true,
       target: typescript.ScriptTarget.ES2015,
       jsx: typescript.JsxEmit.React,
       jsxFactory: 'React.createElement',
       module: typescript.ModuleKind.ESNext,
       baseUrl: filePrefix,
-      // These are updated after types are loaded, so preserve the old settings
-      noEmitOnError: oldCompilerOptions.noEmitOnError,
+      // This is updated after types are loaded, so preserve the old setting
       paths: oldCompilerOptions.paths
     });
   }, [compilerOptions]);
@@ -100,11 +97,11 @@ function _useTypes(supportedPackages: IPackageGroup[], isReady: boolean) {
       return;
     }
 
-    // Initially disable type checking, and load real types after 2 seconds
+    // Initially disable type checking, and load real types after 1 second
     typescriptDefaults.setDiagnosticsOptions({ noSemanticValidation: true });
     const typesTimeout = setTimeout(() => {
       _loadTypes(supportedPackages);
-    }, 2000);
+    }, 1000);
 
     return () => {
       clearTimeout(typesTimeout);
@@ -139,16 +136,18 @@ function _loadTypes(supportedPackages: IPackageGroup[]): Promise<void> {
       const typesPackageName = scopedMatch ? `${scopedMatch[1]}__${scopedMatch[2]}` : packageName;
 
       // Call the provided loader function
-      return Promise.resolve(loadTypes()).then(contents => {
-        const indexPath = `${typesPrefix}/${typesPackageName}/index`;
-        // This makes TS automatically find typings for package-level imports
-        typescriptDefaults.addExtraLib(contents, `${indexPath}.d.ts`);
-        // But for deeper path imports, we likely need to map them back to the root index file
-        // (do still include '*' as a default in case the types include module paths--
-        // api-extractor rollups don't do this, but other packages' typings might)
-        // https://www.typescriptlang.org/docs/handbook/module-resolution.html#path-mapping
-        pathMappings[packageName + '/lib/*'] = ['*', indexPath];
-      });
+      promises.push(
+        Promise.resolve(loadTypes()).then(contents => {
+          const indexPath = `${typesPrefix}/${typesPackageName}/index`;
+          // This makes TS automatically find typings for package-level imports
+          typescriptDefaults.addExtraLib(contents, `${indexPath}.d.ts`);
+          // But for deeper path imports, we likely need to map them back to the root index file
+          // (do still include '*' as a default in case the types include module paths--
+          // api-extractor rollups don't do this, but other packages' typings might)
+          // https://www.typescriptlang.org/docs/handbook/module-resolution.html#path-mapping
+          pathMappings[packageName + '/lib/*'] = ['*', indexPath];
+        })
+      );
     }
   }
 
@@ -156,8 +155,7 @@ function _loadTypes(supportedPackages: IPackageGroup[]): Promise<void> {
     // Add the path mappings and turn on full error checking
     typescriptDefaults.setCompilerOptions({
       ...typescriptDefaults.getCompilerOptions(),
-      paths: pathMappings,
-      noEmitOnError: true
+      paths: pathMappings
     });
     typescriptDefaults.setDiagnosticsOptions({ noSemanticValidation: false });
   });
