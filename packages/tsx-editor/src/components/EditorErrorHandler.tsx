@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ITransformedExample } from '../interfaces';
+import { ITransformedExample } from '../interfaces/index';
 import { EditorError } from './EditorError';
 
 export interface IEditorErrorBoundaryProps {
