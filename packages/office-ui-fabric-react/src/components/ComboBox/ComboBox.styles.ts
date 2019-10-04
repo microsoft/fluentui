@@ -167,9 +167,6 @@ export const getCaretDownButtonStyles = memoizeFunction(
         color: caret.buttonTextColor,
         fontSize: fonts.small.fontSize,
         position: 'absolute',
-        // The negative positioning accounts for the 1px root border now that box-sizing is border-box
-        top: '-1px',
-        right: '-1px',
         height: ComboBoxHeight,
         lineHeight: ComboBoxLineHeight,
         width: ComboBoxCaretDownWidth,
@@ -276,10 +273,6 @@ export const getStyles = memoizeFunction(
           outline: '0',
           userSelect: 'none',
           backgroundColor: root.backgroundColor,
-          borderWidth: '1px',
-          borderStyle: 'solid',
-          borderColor: root.borderColor,
-          borderRadius: effects.roundedCorner2,
           cursor: 'text',
           display: 'block',
           height: ComboBoxHeight,
@@ -292,6 +285,19 @@ export const getStyles = memoizeFunction(
               display: 'inline-block',
               marginBottom: '8px'
             },
+            ':after': {
+              pointerEvents: 'none',
+              content: "''",
+              position: 'absolute',
+              left: 0,
+              top: 0,
+              bottom: 0,
+              right: 0,
+              borderWidth: '1px',
+              borderStyle: 'solid',
+              borderColor: root.borderColor,
+              borderRadius: effects.roundedCorner2
+            },
             '&.is-open': {
               borderColor: root.borderColor,
               selectors: {
@@ -303,14 +309,20 @@ export const getStyles = memoizeFunction(
       ],
 
       rootHovered: {
-        borderColor: root.borderHoveredColor,
         selectors: {
           '.ms-ComboBox-Input': [{ color: semanticColors.inputTextHovered }, getPlaceholderStyles(placeholderStylesHovered)],
+          ':after': {
+            borderColor: root.borderHoveredColor
+          },
           [HighContrastSelector]: {
             color: 'HighlightText',
-            borderColor: 'Highlight',
             backgroundColor: 'Window',
-            MsHighContrastAdjust: 'none'
+            MsHighContrastAdjust: 'none',
+            selectors: {
+              ':after': {
+                borderColor: 'Highlight'
+              }
+            }
           }
         }
       },
@@ -318,12 +330,6 @@ export const getStyles = memoizeFunction(
       rootPressed: {
         selectors: {
           ':after': {
-            content: '',
-            position: 'absolute',
-            left: 0,
-            top: 0,
-            bottom: 0,
-            right: 0,
             borderColor: root.borderPressedColor,
             borderWidth: '2px'
           },
@@ -334,12 +340,6 @@ export const getStyles = memoizeFunction(
       rootFocused: {
         selectors: {
           ':after': {
-            content: '',
-            position: 'absolute',
-            left: 0,
-            top: 0,
-            bottom: 0,
-            right: 0,
             borderColor: root.borderFocusedColor,
             borderWidth: '2px'
           },
@@ -353,8 +353,11 @@ export const getStyles = memoizeFunction(
       rootDisabled: getDisabledStyles(theme),
 
       rootError: {
-        borderColor: root.erroredColor,
-        marginBottom: '5px'
+        selectors: {
+          ':after': {
+            borderColor: root.erroredColor
+          }
+        }
       },
 
       rootDisallowFreeForm: {},
@@ -384,7 +387,8 @@ export const getStyles = memoizeFunction(
       errorMessage: [
         theme.fonts.small,
         {
-          color: root.erroredColor
+          color: root.erroredColor,
+          marginTop: '5px'
         }
       ],
 
