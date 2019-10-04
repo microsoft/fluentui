@@ -810,7 +810,6 @@ exports[`TeachingBubble renders TeachingBubbleContent with condensed headline co
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
             font-weight: 600;
-            margin-right: 10px;
           }
     >
       <p
@@ -1133,7 +1132,6 @@ exports[`TeachingBubble renders TeachingBubbleContent with small headline correc
             font-size: 14px;
             font-weight: 600;
             margin-bottom: 10px;
-            margin-right: 10px;
           }
           &:not(:last-child) {
             margin-bottom: 14px;
