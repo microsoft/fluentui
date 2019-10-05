@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { classNamesFunction, initializeComponentRef, EventGroup, KeyCodes, getWindow } from '../../../Utilities';
+import { classNamesFunction, initializeComponentRef, EventGroup, KeyCodes, getWindow, getRTLSafeKeyCode } from '../../../Utilities';
 import { IColorSliderProps, IColorSliderStyleProps, IColorSliderStyles } from './ColorSlider.types';
 
 const getClassNames = classNamesFunction<IColorSliderStyleProps, IColorSliderStyles>();
@@ -91,7 +91,7 @@ export class ColorSliderBase extends React.Component<IColorSliderProps, IColorSl
     const { minValue = 0, maxValue = 100 } = this.props;
     const increment = ev.shiftKey ? 10 : 1;
 
-    switch (ev.which) {
+    switch (getRTLSafeKeyCode(ev.which)) {
       case KeyCodes.left: {
         currentValue = Math.max(minValue, currentValue - increment);
         break;

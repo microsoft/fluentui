@@ -1,12 +1,11 @@
 import * as React from 'react';
-import { classNamesFunction, EventGroup, initializeComponentRef } from '../../../Utilities';
+import { classNamesFunction, EventGroup, initializeComponentRef, getRTLSafeKeyCode, KeyCodes } from '../../../Utilities';
 import { IColor } from '../../../utilities/color/interfaces';
 import { MAX_COLOR_SATURATION, MAX_COLOR_VALUE } from '../../../utilities/color/consts';
 import { getFullColorString } from '../../../utilities/color/getFullColorString';
 import { updateSV } from '../../../utilities/color/updateSV';
 import { clamp } from '../../../utilities/color/clamp';
 import { IColorRectangleProps, IColorRectangleStyleProps, IColorRectangleStyles, IColorRectangle } from './ColorRectangle.types';
-import { KeyCodes } from '@uifabric/utilities';
 
 const getClassNames = classNamesFunction<IColorRectangleStyleProps, IColorRectangleStyles>();
 
@@ -91,7 +90,7 @@ export class ColorRectangleBase extends React.Component<IColorRectangleProps, IC
 
     const increment = ev.shiftKey ? 10 : 1;
 
-    switch (ev.which) {
+    switch (getRTLSafeKeyCode(ev.which)) {
       case KeyCodes.up: {
         v = Math.min(100, v + increment);
         break;
