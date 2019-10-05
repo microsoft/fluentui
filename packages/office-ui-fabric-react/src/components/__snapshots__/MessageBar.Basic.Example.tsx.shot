@@ -7,7 +7,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
       {
         box-sizing: border-box;
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         flex-wrap: nowrap;
         height: auto;
         width: auto;
@@ -16,7 +16,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
         text-overflow: ellipsis;
       }
       & > *:not(:first-child) {
-        margin-top: 20px;
+        margin-left: 16px;
       }
       & > *:not(.ms-StackItem) {
         flex-shrink: 1;
@@ -28,7 +28,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
-          flex-shrink: 1;
+          flex-shrink: 0;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
           font-weight: 400;
@@ -36,2821 +36,1146 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
           width: auto;
         }
   >
-    <label
-      className=
-          ms-Label
-          {
-            -moz-osx-font-smoothing: grayscale;
-            -webkit-font-smoothing: antialiased;
-            box-shadow: none;
-            box-sizing: border-box;
-            color: #323130;
-            display: block;
-            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-            font-size: 14px;
-            font-weight: 600;
-            margin-bottom: 0px;
-            margin-left: 0px;
-            margin-right: 0px;
-            margin-top: 0px;
-            overflow-wrap: break-word;
-            padding-bottom: 5px;
-            padding-left: 0;
-            padding-right: 0;
-            padding-top: 5px;
-            word-wrap: break-word;
-          }
-    >
-      Info/Default MessageBar
-    </label>
     <div
-      style={
-        Object {
-          "background": "#ffffff",
-        }
-      }
+      className=
+
+
     >
       <div
+        aria-labelledby="ChoiceGroup0-label"
         className=
-            ms-MessageBar
-            ms-MessageBar-multiline
+            ms-ChoiceFieldGroup
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
-              background: #f3f2f1;
-              color: #323130;
-              display: flex;
-              flex-direction: column;
+              display: block;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
               font-weight: 400;
-              min-height: 32px;
-              width: 100%;
-              word-break: break-word;
             }
-            & .ms-Link {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              color: #005a9e;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 12px;
-              font-weight: 400;
-            }
-            @media screen and (-ms-high-contrast: active){& {
-              background: WindowText;
-              color: Window;
-            }
+        role="radiogroup"
       >
+        <label
+          className=
+              ms-Label
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                box-shadow: none;
+                box-sizing: border-box;
+                color: #323130;
+                display: block;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 600;
+                margin-bottom: 0px;
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-top: 0px;
+                max-width: 250px;
+                overflow-wrap: break-word;
+                padding-bottom: 5px;
+                padding-left: 0;
+                padding-right: 0;
+                padding-top: 5px;
+                word-wrap: break-word;
+              }
+          id="ChoiceGroup0-label"
+        >
+          Select a MessageBar Example Below. To test in narrator, show one message at a time.
+        </label>
         <div
           className=
-              ms-MessageBar-content
-              {
-                display: flex;
-                line-height: normal;
-                width: 100%;
-              }
+              ms-ChoiceFieldGroup-flexContainer
+
         >
           <div
-            aria-hidden={true}
             className=
-                ms-MessageBar-icon
-                {
-                  display: flex;
-                  flex-shrink: 0;
-                  font-size: 16px;
-                  margin-bottom: 8px;
-                  margin-left: 12px;
-                  margin-right: 0;
-                  margin-top: 8px;
-                  min-height: 16px;
-                  min-width: 16px;
-                }
-          >
-            <i
-              aria-hidden={true}
-              className=
-
-                  {
-                    -moz-osx-font-smoothing: grayscale;
-                    -webkit-font-smoothing: antialiased;
-                    color: #605e5c;
-                    display: inline-block;
-                    font-family: "FabricMDL2Icons";
-                    font-style: normal;
-                    font-weight: normal;
-                    speak: none;
-                  }
-                  @media screen and (-ms-high-contrast: active){& {
-                    -ms-high-contrast-adjust: none;
-                    color: Window;
-                  }
-              data-icon-name="Info"
-            >
-              
-            </i>
-          </div>
-          <div
-            className=
-                ms-MessageBar-text
+                ms-ChoiceField
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  display: flex;
-                  flex-grow: 1;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 12px;
-                  font-weight: 400;
-                  margin-bottom: 8px;
-                  margin-left: 8px;
-                  margin-right: 12px;
-                  margin-top: 8px;
-                  min-width: 0px;
-                }
-                @media screen and (-ms-high-contrast: active){& {
-                  -ms-high-contrast-adjust: none;
-                }
-            id="MessageBar0"
-          >
-            <span
-              aria-live="polite"
-              className=
-                  ms-MessageBar-innerText
-                  {
-                    line-height: 16px;
-                  }
-                  & span a {
-                    padding-left: 4px;
-                  }
-              role="status"
-            />
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div
-    className=
-        ms-StackItem
-        {
-          -moz-osx-font-smoothing: grayscale;
-          -webkit-font-smoothing: antialiased;
-          flex-shrink: 1;
-          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-          font-size: 14px;
-          font-weight: 400;
-          height: auto;
-          width: auto;
-        }
-  >
-    <label
-      className=
-          ms-Label
-          {
-            -moz-osx-font-smoothing: grayscale;
-            -webkit-font-smoothing: antialiased;
-            box-shadow: none;
-            box-sizing: border-box;
-            color: #323130;
-            display: block;
-            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-            font-size: 14px;
-            font-weight: 600;
-            margin-bottom: 0px;
-            margin-left: 0px;
-            margin-right: 0px;
-            margin-top: 0px;
-            overflow-wrap: break-word;
-            padding-bottom: 5px;
-            padding-left: 0;
-            padding-right: 0;
-            padding-top: 5px;
-            word-wrap: break-word;
-          }
-    >
-      Error MessageBar - single line, with dismiss button
-    </label>
-    <div
-      style={
-        Object {
-          "background": "#ffffff",
-        }
-      }
-    >
-      <div
-        className=
-            ms-MessageBar
-            ms-MessageBar--error
-            ms-MessageBar-singleline
-            ms-MessageBar-dismissalSingleLine
-            {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              background: rgba(245, 135, 145, .2);
-              color: #323130;
-              display: flex;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 14px;
-              font-weight: 400;
-              min-height: 32px;
-              width: 100%;
-              word-break: break-word;
-            }
-            & .ms-Link {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              color: #005a9e;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 12px;
-              font-weight: 400;
-            }
-            @media screen and (-ms-high-contrast: active){& {
-              background: WindowText;
-              color: Window;
-            }
-      >
-        <div
-          className=
-              ms-MessageBar-content
-              {
-                display: flex;
-                line-height: normal;
-                width: 100%;
-              }
-        >
-          <div
-            aria-hidden={true}
-            className=
-                ms-MessageBar-icon
-                {
-                  display: flex;
-                  flex-shrink: 0;
-                  font-size: 16px;
-                  margin-bottom: 8px;
-                  margin-left: 12px;
-                  margin-right: 0;
-                  margin-top: 8px;
-                  min-height: 16px;
-                  min-width: 16px;
-                }
-          >
-            <i
-              aria-hidden={true}
-              className=
-
-                  {
-                    -moz-osx-font-smoothing: grayscale;
-                    -webkit-font-smoothing: antialiased;
-                    color: #a4262c;
-                    display: inline-block;
-                    font-family: "FabricMDL2Icons-3";
-                    font-style: normal;
-                    font-weight: normal;
-                    speak: none;
-                  }
-                  @media screen and (-ms-high-contrast: active){& {
-                    -ms-high-contrast-adjust: none;
-                    color: Window;
-                  }
-              data-icon-name="ErrorBadge"
-            >
-              
-            </i>
-          </div>
-          <div
-            className=
-                ms-MessageBar-text
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  display: flex;
-                  flex-grow: 1;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 12px;
-                  font-weight: 400;
-                  margin-bottom: 8px;
-                  margin-left: 8px;
-                  margin-right: 8px;
-                  margin-top: 8px;
-                  min-width: 0px;
-                }
-                @media screen and (-ms-high-contrast: active){& {
-                  -ms-high-contrast-adjust: none;
-                }
-            id="MessageBar1"
-          >
-            <span
-              aria-live="assertive"
-              className=
-                  ms-MessageBar-innerText
-                  {
-                    line-height: 16px;
-                    overflow: hidden;
-                    text-overflow: ellipsis;
-                    white-space: nowrap;
-                  }
-                  & span a {
-                    padding-left: 4px;
-                  }
-                  @media only screen and (min-width: 0px) and (max-width: 479px){& {
-                    overflow: visible;
-                    white-space: pre-wrap;
-                  }
-              role="status"
-            />
-          </div>
-          <div
-            className=
-                ms-MessageBar-dismissSingleLine
-
-          >
-            <button
-              aria-label="Close"
-              className=
-                  ms-Button
-                  ms-Button--icon
-                  ms-MessageBar-dismissal
-                  {
-                    -moz-osx-font-smoothing: grayscale;
-                    -webkit-font-smoothing: antialiased;
-                    background-color: transparent;
-                    border-radius: 2px;
-                    border: none;
-                    box-sizing: border-box;
-                    color: #0078d4;
-                    cursor: pointer;
-                    display: inline-block;
-                    flex-shrink: 0;
-                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                    font-size: 14px;
-                    font-weight: 400;
-                    height: 32px;
-                    outline: transparent;
-                    padding-bottom: 8px;
-                    padding-left: 12px;
-                    padding-right: 12px;
-                    padding-top: 8px;
-                    position: relative;
-                    text-align: center;
-                    text-decoration: none;
-                    user-select: none;
-                    vertical-align: top;
-                    width: 32px;
-                  }
-                  &::-moz-focus-inner {
-                    border: 0;
-                  }
-                  .ms-Fabric--isFocusVisible &:focus:after {
-                    border: 1px solid transparent;
-                    bottom: 2px;
-                    content: "";
-                    left: 2px;
-                    outline: 1px solid #605e5c;
-                    position: absolute;
-                    right: 2px;
-                    top: 2px;
-                    z-index: 1;
-                  }
-                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                    border: none;
-                    bottom: -2px;
-                    left: -2px;
-                    outline-color: Window;
-                    outline-offset: -4px;
-                    right: -2px;
-                    top: -2px;
-                  }
-                  &:active > * {
-                    left: 0px;
-                    position: relative;
-                    top: 0px;
-                  }
-                  &:hover {
-                    background-color: transparent;
-                    color: #106ebe;
-                  }
-                  @media screen and (-ms-high-contrast: active){&:hover {
-                    border-color: Highlight;
-                    color: Highlight;
-                  }
-                  &:active {
-                    background-color: transparent;
-                    color: #005a9e;
-                  }
-                  & .ms-Button-icon {
-                    color: #323130;
-                    font-size: 10px;
-                    height: 10px;
-                    line-height: 10px;
-                  }
-                  @media screen and (-ms-high-contrast: active){& .ms-Button-icon {
-                    -ms-high-contrast-adjust: none;
-                    color: Window;
-                  }
-              data-is-focusable={true}
-              onClick={[Function]}
-              onKeyDown={[Function]}
-              onKeyPress={[Function]}
-              onKeyUp={[Function]}
-              onMouseDown={[Function]}
-              onMouseUp={[Function]}
-              type="button"
-            >
-              <span
-                className=
-                    ms-Button-flexContainer
-                    {
-                      align-items: center;
-                      display: flex;
-                      flex-wrap: nowrap;
-                      height: 100%;
-                      justify-content: center;
-                    }
-                data-automationid="splitbuttonprimary"
-              >
-                <i
-                  aria-hidden={true}
-                  className=
-                      ms-Icon
-                      ms-Button-icon
-                      {
-                        display: inline-block;
-                      }
-                      {
-                        -moz-osx-font-smoothing: grayscale;
-                        -webkit-font-smoothing: antialiased;
-                        font-family: "FabricMDL2Icons";
-                        font-style: normal;
-                        font-weight: normal;
-                        speak: none;
-                      }
-                      {
-                        flex-shrink: 0;
-                        font-size: 16px;
-                        height: 16px;
-                        line-height: 16px;
-                        margin-bottom: 0;
-                        margin-left: 4px;
-                        margin-right: 4px;
-                        margin-top: 0;
-                        text-align: center;
-                        vertical-align: middle;
-                      }
-                  data-icon-name="Clear"
-                  role="presentation"
-                >
-                  
-                </i>
-              </span>
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div
-    className=
-        ms-StackItem
-        {
-          -moz-osx-font-smoothing: grayscale;
-          -webkit-font-smoothing: antialiased;
-          flex-shrink: 1;
-          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-          font-size: 14px;
-          font-weight: 400;
-          height: auto;
-          width: auto;
-        }
-  >
-    <label
-      className=
-          ms-Label
-          {
-            -moz-osx-font-smoothing: grayscale;
-            -webkit-font-smoothing: antialiased;
-            box-shadow: none;
-            box-sizing: border-box;
-            color: #323130;
-            display: block;
-            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-            font-size: 14px;
-            font-weight: 600;
-            margin-bottom: 0px;
-            margin-left: 0px;
-            margin-right: 0px;
-            margin-top: 0px;
-            overflow-wrap: break-word;
-            padding-bottom: 5px;
-            padding-left: 0;
-            padding-right: 0;
-            padding-top: 5px;
-            word-wrap: break-word;
-          }
-    >
-      Blocked MessageBar - single line, with dismiss button and truncated text. Truncation is not available if you use action buttons or multiline and should be used sparingly.
-    </label>
-    <div
-      style={
-        Object {
-          "background": "#ffffff",
-        }
-      }
-    >
-      <div
-        className=
-            ms-MessageBar
-            ms-MessageBar--blocked
-            ms-MessageBar-singleline
-            ms-MessageBar-dismissalSingleLine
-            ms-MessageBar-expandingSingleLine
-            {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              background: rgba(245, 135, 145, .2);
-              color: #323130;
-              display: flex;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 14px;
-              font-weight: 400;
-              min-height: 32px;
-              width: 100%;
-              word-break: break-word;
-            }
-            & .ms-Link {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              color: #005a9e;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 12px;
-              font-weight: 400;
-            }
-            @media screen and (-ms-high-contrast: active){& {
-              background: WindowText;
-              color: Window;
-            }
-      >
-        <div
-          className=
-              ms-MessageBar-content
-              {
-                display: flex;
-                line-height: normal;
-                width: 100%;
-              }
-        >
-          <div
-            aria-hidden={true}
-            className=
-                ms-MessageBar-icon
-                {
-                  display: flex;
-                  flex-shrink: 0;
-                  font-size: 16px;
-                  margin-bottom: 8px;
-                  margin-left: 12px;
-                  margin-right: 0;
-                  margin-top: 8px;
-                  min-height: 16px;
-                  min-width: 16px;
-                }
-          >
-            <i
-              aria-hidden={true}
-              className=
-
-                  {
-                    -moz-osx-font-smoothing: grayscale;
-                    -webkit-font-smoothing: antialiased;
-                    color: #a4262c;
-                    display: inline-block;
-                    font-family: "FabricMDL2Icons-5";
-                    font-style: normal;
-                    font-weight: normal;
-                    speak: none;
-                  }
-                  @media screen and (-ms-high-contrast: active){& {
-                    -ms-high-contrast-adjust: none;
-                    color: Window;
-                  }
-              data-icon-name="Blocked2"
-            >
-              
-            </i>
-          </div>
-          <div
-            className=
-                ms-MessageBar-text
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  display: flex;
-                  flex-grow: 1;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 12px;
-                  font-weight: 400;
-                  margin-bottom: 8px;
-                  margin-left: 8px;
-                  margin-right: 8px;
-                  margin-top: 8px;
-                  min-width: 0px;
-                }
-                @media screen and (-ms-high-contrast: active){& {
-                  -ms-high-contrast-adjust: none;
-                }
-            id="MessageBar5"
-          >
-            <span
-              aria-live="assertive"
-              className=
-                  ms-MessageBar-innerText
-                  {
-                    line-height: 16px;
-                    overflow: hidden;
-                    text-overflow: ellipsis;
-                    white-space: nowrap;
-                  }
-                  & span a {
-                    padding-left: 4px;
-                  }
-              role="status"
-            />
-          </div>
-          <div
-            className=
-                ms-MessageBar-expandSingleLine
-
-          >
-            <button
-              aria-controls="MessageBar5"
-              aria-expanded={false}
-              aria-label="See more"
-              className=
-                  ms-Button
-                  ms-Button--icon
-                  ms-MessageBar-expand
-                  {
-                    -moz-osx-font-smoothing: grayscale;
-                    -webkit-font-smoothing: antialiased;
-                    background-color: transparent;
-                    border-radius: 2px;
-                    border: none;
-                    box-sizing: border-box;
-                    color: #0078d4;
-                    cursor: pointer;
-                    display: inline-block;
-                    flex-shrink: 0;
-                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                    font-size: 14px;
-                    font-weight: 400;
-                    height: 32px;
-                    outline: transparent;
-                    padding-bottom: 8px;
-                    padding-left: 12px;
-                    padding-right: 12px;
-                    padding-top: 8px;
-                    position: relative;
-                    text-align: center;
-                    text-decoration: none;
-                    user-select: none;
-                    vertical-align: top;
-                    width: 32px;
-                  }
-                  &::-moz-focus-inner {
-                    border: 0;
-                  }
-                  .ms-Fabric--isFocusVisible &:focus:after {
-                    border: 1px solid transparent;
-                    bottom: 2px;
-                    content: "";
-                    left: 2px;
-                    outline: 1px solid #605e5c;
-                    position: absolute;
-                    right: 2px;
-                    top: 2px;
-                    z-index: 1;
-                  }
-                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                    border: none;
-                    bottom: -2px;
-                    left: -2px;
-                    outline-color: Window;
-                    outline-offset: -4px;
-                    right: -2px;
-                    top: -2px;
-                  }
-                  &:active > * {
-                    left: 0px;
-                    position: relative;
-                    top: 0px;
-                  }
-                  &:hover {
-                    background-color: transparent;
-                    color: #106ebe;
-                  }
-                  @media screen and (-ms-high-contrast: active){&:hover {
-                    border-color: Highlight;
-                    color: Highlight;
-                  }
-                  &:active {
-                    background-color: transparent;
-                    color: #005a9e;
-                  }
-                  & .ms-Button-icon {
-                    color: #323130;
-                    font-size: 10px;
-                    height: 10px;
-                    line-height: 10px;
-                  }
-                  @media screen and (-ms-high-contrast: active){& .ms-Button-icon {
-                    -ms-high-contrast-adjust: none;
-                    color: Window;
-                  }
-              data-is-focusable={true}
-              onClick={[Function]}
-              onKeyDown={[Function]}
-              onKeyPress={[Function]}
-              onKeyUp={[Function]}
-              onMouseDown={[Function]}
-              onMouseUp={[Function]}
-              type="button"
-            >
-              <span
-                className=
-                    ms-Button-flexContainer
-                    {
-                      align-items: center;
-                      display: flex;
-                      flex-wrap: nowrap;
-                      height: 100%;
-                      justify-content: center;
-                    }
-                data-automationid="splitbuttonprimary"
-              >
-                <i
-                  aria-hidden={true}
-                  className=
-                      ms-Icon
-                      ms-Button-icon
-                      {
-                        display: inline-block;
-                      }
-                      {
-                        -moz-osx-font-smoothing: grayscale;
-                        -webkit-font-smoothing: antialiased;
-                        font-family: "FabricMDL2Icons-7";
-                        font-style: normal;
-                        font-weight: normal;
-                        speak: none;
-                      }
-                      {
-                        flex-shrink: 0;
-                        font-size: 16px;
-                        height: 16px;
-                        line-height: 16px;
-                        margin-bottom: 0;
-                        margin-left: 4px;
-                        margin-right: 4px;
-                        margin-top: 0;
-                        text-align: center;
-                        vertical-align: middle;
-                      }
-                  data-icon-name="DoubleChevronDown"
-                  role="presentation"
-                >
-                  
-                </i>
-              </span>
-            </button>
-          </div>
-          <div
-            className=
-                ms-MessageBar-dismissSingleLine
-
-          >
-            <button
-              aria-label="Close"
-              className=
-                  ms-Button
-                  ms-Button--icon
-                  ms-MessageBar-dismissal
-                  {
-                    -moz-osx-font-smoothing: grayscale;
-                    -webkit-font-smoothing: antialiased;
-                    background-color: transparent;
-                    border-radius: 2px;
-                    border: none;
-                    box-sizing: border-box;
-                    color: #0078d4;
-                    cursor: pointer;
-                    display: inline-block;
-                    flex-shrink: 0;
-                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                    font-size: 14px;
-                    font-weight: 400;
-                    height: 32px;
-                    outline: transparent;
-                    padding-bottom: 8px;
-                    padding-left: 12px;
-                    padding-right: 12px;
-                    padding-top: 8px;
-                    position: relative;
-                    text-align: center;
-                    text-decoration: none;
-                    user-select: none;
-                    vertical-align: top;
-                    width: 32px;
-                  }
-                  &::-moz-focus-inner {
-                    border: 0;
-                  }
-                  .ms-Fabric--isFocusVisible &:focus:after {
-                    border: 1px solid transparent;
-                    bottom: 2px;
-                    content: "";
-                    left: 2px;
-                    outline: 1px solid #605e5c;
-                    position: absolute;
-                    right: 2px;
-                    top: 2px;
-                    z-index: 1;
-                  }
-                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                    border: none;
-                    bottom: -2px;
-                    left: -2px;
-                    outline-color: Window;
-                    outline-offset: -4px;
-                    right: -2px;
-                    top: -2px;
-                  }
-                  &:active > * {
-                    left: 0px;
-                    position: relative;
-                    top: 0px;
-                  }
-                  &:hover {
-                    background-color: transparent;
-                    color: #106ebe;
-                  }
-                  @media screen and (-ms-high-contrast: active){&:hover {
-                    border-color: Highlight;
-                    color: Highlight;
-                  }
-                  &:active {
-                    background-color: transparent;
-                    color: #005a9e;
-                  }
-                  & .ms-Button-icon {
-                    color: #323130;
-                    font-size: 10px;
-                    height: 10px;
-                    line-height: 10px;
-                  }
-                  @media screen and (-ms-high-contrast: active){& .ms-Button-icon {
-                    -ms-high-contrast-adjust: none;
-                    color: Window;
-                  }
-              data-is-focusable={true}
-              onClick={[Function]}
-              onKeyDown={[Function]}
-              onKeyPress={[Function]}
-              onKeyUp={[Function]}
-              onMouseDown={[Function]}
-              onMouseUp={[Function]}
-              type="button"
-            >
-              <span
-                className=
-                    ms-Button-flexContainer
-                    {
-                      align-items: center;
-                      display: flex;
-                      flex-wrap: nowrap;
-                      height: 100%;
-                      justify-content: center;
-                    }
-                data-automationid="splitbuttonprimary"
-              >
-                <i
-                  aria-hidden={true}
-                  className=
-                      ms-Icon
-                      ms-Button-icon
-                      {
-                        display: inline-block;
-                      }
-                      {
-                        -moz-osx-font-smoothing: grayscale;
-                        -webkit-font-smoothing: antialiased;
-                        font-family: "FabricMDL2Icons";
-                        font-style: normal;
-                        font-weight: normal;
-                        speak: none;
-                      }
-                      {
-                        flex-shrink: 0;
-                        font-size: 16px;
-                        height: 16px;
-                        line-height: 16px;
-                        margin-bottom: 0;
-                        margin-left: 4px;
-                        margin-right: 4px;
-                        margin-top: 0;
-                        text-align: center;
-                        vertical-align: middle;
-                      }
-                  data-icon-name="Clear"
-                  role="presentation"
-                >
-                  
-                </i>
-              </span>
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div
-    className=
-        ms-StackItem
-        {
-          -moz-osx-font-smoothing: grayscale;
-          -webkit-font-smoothing: antialiased;
-          flex-shrink: 1;
-          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-          font-size: 14px;
-          font-weight: 400;
-          height: auto;
-          width: auto;
-        }
-  >
-    <label
-      className=
-          ms-Label
-          {
-            -moz-osx-font-smoothing: grayscale;
-            -webkit-font-smoothing: antialiased;
-            box-shadow: none;
-            box-sizing: border-box;
-            color: #323130;
-            display: block;
-            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-            font-size: 14px;
-            font-weight: 600;
-            margin-bottom: 0px;
-            margin-left: 0px;
-            margin-right: 0px;
-            margin-top: 0px;
-            overflow-wrap: break-word;
-            padding-bottom: 5px;
-            padding-left: 0;
-            padding-right: 0;
-            padding-top: 5px;
-            word-wrap: break-word;
-          }
-    >
-      SevereWarning MessageBar - defaults to multiline, with action buttons
-    </label>
-    <div
-      style={
-        Object {
-          "background": "#ffffff",
-        }
-      }
-    >
-      <div
-        className=
-            ms-MessageBar
-            ms-MessageBar--severeWarning
-            ms-MessageBar-multiline
-            {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              background: rgba(250, 65, 0, .2);
-              color: #323130;
-              display: flex;
-              flex-direction: column;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 14px;
-              font-weight: 400;
-              min-height: 32px;
-              width: 100%;
-              word-break: break-word;
-            }
-            & .ms-Link {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              color: #005a9e;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 12px;
-              font-weight: 400;
-            }
-            @media screen and (-ms-high-contrast: active){& {
-              background: WindowText;
-              color: Window;
-            }
-      >
-        <div
-          className=
-              ms-MessageBar-content
-              {
-                display: flex;
-                line-height: normal;
-                width: 100%;
-              }
-        >
-          <div
-            aria-hidden={true}
-            className=
-                ms-MessageBar-icon
-                {
-                  display: flex;
-                  flex-shrink: 0;
-                  font-size: 16px;
-                  margin-bottom: 8px;
-                  margin-left: 12px;
-                  margin-right: 0;
-                  margin-top: 8px;
-                  min-height: 16px;
-                  min-width: 16px;
-                }
-          >
-            <i
-              aria-hidden={true}
-              className=
-
-                  {
-                    -moz-osx-font-smoothing: grayscale;
-                    -webkit-font-smoothing: antialiased;
-                    color: #a4262c;
-                    display: inline-block;
-                    font-family: "FabricMDL2Icons-1";
-                    font-style: normal;
-                    font-weight: normal;
-                    speak: none;
-                  }
-                  @media screen and (-ms-high-contrast: active){& {
-                    -ms-high-contrast-adjust: none;
-                    color: Window;
-                  }
-              data-icon-name="Warning"
-            >
-              
-            </i>
-          </div>
-          <div
-            className=
-                ms-MessageBar-text
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  display: flex;
-                  flex-grow: 1;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 12px;
-                  font-weight: 400;
-                  margin-bottom: 8px;
-                  margin-left: 8px;
-                  margin-right: 12px;
-                  margin-top: 8px;
-                  min-width: 0px;
-                }
-                @media screen and (-ms-high-contrast: active){& {
-                  -ms-high-contrast-adjust: none;
-                }
-            id="MessageBar12"
-          >
-            <span
-              aria-live="assertive"
-              className=
-                  ms-MessageBar-innerText
-                  {
-                    line-height: 16px;
-                  }
-                  & span a {
-                    padding-left: 4px;
-                  }
-              role="status"
-            />
-          </div>
-        </div>
-        <div
-          className=
-              ms-MessageBar-actions
-              {
-                align-items: center;
-                display: flex;
-                flex-basis: auto;
-                flex-direction: row-reverse;
-                flex-grow: 0;
-                flex-shrink: 0;
-                margin-bottom: 8px;
-                margin-left: 8px;
-                margin-right: 12px;
-                margin-top: 0;
-              }
-              & button:nth-child(n+2) {
-                margin-left: 8px;
-              }
-        >
-          <div>
-            <button
-              className=
-                  ms-Button
-                  ms-Button--default
-                  {
-                    -moz-osx-font-smoothing: grayscale;
-                    -webkit-font-smoothing: antialiased;
-                    background-color: #ffffff;
-                    border-color: #c8c6c4;
-                    border-radius: 2px;
-                    border: 1px solid #8a8886;
-                    box-sizing: border-box;
-                    color: #323130;
-                    cursor: pointer;
-                    display: inline-block;
-                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                    font-size: 14px;
-                    font-weight: 400;
-                    height: 24px;
-                    min-width: 80px;
-                    outline: transparent;
-                    padding-bottom: 0;
-                    padding-left: 16px;
-                    padding-right: 16px;
-                    padding-top: 0;
-                    position: relative;
-                    text-align: center;
-                    text-decoration: none;
-                    user-select: none;
-                    vertical-align: top;
-                  }
-                  &::-moz-focus-inner {
-                    border: 0;
-                  }
-                  .ms-Fabric--isFocusVisible &:focus:after {
-                    border: 1px solid transparent;
-                    bottom: 2px;
-                    content: "";
-                    left: 2px;
-                    outline: 1px solid #605e5c;
-                    position: absolute;
-                    right: 2px;
-                    top: 2px;
-                    z-index: 1;
-                  }
-                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                    border: none;
-                    bottom: -2px;
-                    left: -2px;
-                    outline-color: ActiveBorder;
-                    outline-offset: -4px;
-                    right: -2px;
-                    top: -2px;
-                  }
-                  &:active > * {
-                    left: 0px;
-                    position: relative;
-                    top: 0px;
-                  }
-                  &:hover {
-                    background-color: #f3f2f1;
-                    color: #201f1e;
-                  }
-                  @media screen and (-ms-high-contrast: active){&:hover {
-                    border-color: Highlight;
-                    color: Highlight;
-                  }
-                  &:active {
-                    background-color: #edebe9;
-                    color: #201f1e;
-                  }
-              data-is-focusable={true}
-              onClick={[Function]}
-              onKeyDown={[Function]}
-              onKeyPress={[Function]}
-              onKeyUp={[Function]}
-              onMouseDown={[Function]}
-              onMouseUp={[Function]}
-              type="button"
-            >
-              <span
-                className=
-                    ms-Button-flexContainer
-                    {
-                      align-items: center;
-                      display: flex;
-                      flex-wrap: nowrap;
-                      height: 100%;
-                      justify-content: center;
-                    }
-                data-automationid="splitbuttonprimary"
-              >
-                <span
-                  className=
-                      ms-Button-textContainer
-                      {
-                        display: block;
-                        flex-grow: 1;
-                      }
-                >
-                  <span
-                    className=
-                        ms-Button-label
-                        {
-                          display: block;
-                          font-weight: 600;
-                          line-height: 100%;
-                          margin-bottom: 0;
-                          margin-left: 4px;
-                          margin-right: 4px;
-                          margin-top: 0;
-                        }
-                    id="id__13"
-                  >
-                    Yes
-                  </span>
-                </span>
-              </span>
-            </button>
-            <button
-              className=
-                  ms-Button
-                  ms-Button--default
-                  {
-                    -moz-osx-font-smoothing: grayscale;
-                    -webkit-font-smoothing: antialiased;
-                    background-color: #ffffff;
-                    border-color: #c8c6c4;
-                    border-radius: 2px;
-                    border: 1px solid #8a8886;
-                    box-sizing: border-box;
-                    color: #323130;
-                    cursor: pointer;
-                    display: inline-block;
-                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                    font-size: 14px;
-                    font-weight: 400;
-                    height: 24px;
-                    min-width: 80px;
-                    outline: transparent;
-                    padding-bottom: 0;
-                    padding-left: 16px;
-                    padding-right: 16px;
-                    padding-top: 0;
-                    position: relative;
-                    text-align: center;
-                    text-decoration: none;
-                    user-select: none;
-                    vertical-align: top;
-                  }
-                  &::-moz-focus-inner {
-                    border: 0;
-                  }
-                  .ms-Fabric--isFocusVisible &:focus:after {
-                    border: 1px solid transparent;
-                    bottom: 2px;
-                    content: "";
-                    left: 2px;
-                    outline: 1px solid #605e5c;
-                    position: absolute;
-                    right: 2px;
-                    top: 2px;
-                    z-index: 1;
-                  }
-                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                    border: none;
-                    bottom: -2px;
-                    left: -2px;
-                    outline-color: ActiveBorder;
-                    outline-offset: -4px;
-                    right: -2px;
-                    top: -2px;
-                  }
-                  &:active > * {
-                    left: 0px;
-                    position: relative;
-                    top: 0px;
-                  }
-                  &:hover {
-                    background-color: #f3f2f1;
-                    color: #201f1e;
-                  }
-                  @media screen and (-ms-high-contrast: active){&:hover {
-                    border-color: Highlight;
-                    color: Highlight;
-                  }
-                  &:active {
-                    background-color: #edebe9;
-                    color: #201f1e;
-                  }
-              data-is-focusable={true}
-              onClick={[Function]}
-              onKeyDown={[Function]}
-              onKeyPress={[Function]}
-              onKeyUp={[Function]}
-              onMouseDown={[Function]}
-              onMouseUp={[Function]}
-              type="button"
-            >
-              <span
-                className=
-                    ms-Button-flexContainer
-                    {
-                      align-items: center;
-                      display: flex;
-                      flex-wrap: nowrap;
-                      height: 100%;
-                      justify-content: center;
-                    }
-                data-automationid="splitbuttonprimary"
-              >
-                <span
-                  className=
-                      ms-Button-textContainer
-                      {
-                        display: block;
-                        flex-grow: 1;
-                      }
-                >
-                  <span
-                    className=
-                        ms-Button-label
-                        {
-                          display: block;
-                          font-weight: 600;
-                          line-height: 100%;
-                          margin-bottom: 0;
-                          margin-left: 4px;
-                          margin-right: 4px;
-                          margin-top: 0;
-                        }
-                    id="id__16"
-                  >
-                    No
-                  </span>
-                </span>
-              </span>
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div
-    className=
-        ms-StackItem
-        {
-          -moz-osx-font-smoothing: grayscale;
-          -webkit-font-smoothing: antialiased;
-          flex-shrink: 1;
-          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-          font-size: 14px;
-          font-weight: 400;
-          height: auto;
-          width: auto;
-        }
-  >
-    <label
-      className=
-          ms-Label
-          {
-            -moz-osx-font-smoothing: grayscale;
-            -webkit-font-smoothing: antialiased;
-            box-shadow: none;
-            box-sizing: border-box;
-            color: #323130;
-            display: block;
-            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-            font-size: 14px;
-            font-weight: 600;
-            margin-bottom: 0px;
-            margin-left: 0px;
-            margin-right: 0px;
-            margin-top: 0px;
-            overflow-wrap: break-word;
-            padding-bottom: 5px;
-            padding-left: 0;
-            padding-right: 0;
-            padding-top: 5px;
-            word-wrap: break-word;
-          }
-    >
-      Success MessageBar - single line, with action buttons
-    </label>
-    <div
-      style={
-        Object {
-          "background": "#ffffff",
-        }
-      }
-    >
-      <div
-        className=
-            ms-MessageBar
-            ms-MessageBar--success
-            ms-MessageBar-singleline
-            {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              background: rgba(95, 210, 85, .2);
-              color: #323130;
-              display: flex;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 14px;
-              font-weight: 400;
-              min-height: 32px;
-              width: 100%;
-              word-break: break-word;
-            }
-            & .ms-Link {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              color: #005a9e;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 12px;
-              font-weight: 400;
-            }
-            @media screen and (-ms-high-contrast: active){& {
-              background: WindowText;
-              color: Window;
-            }
-      >
-        <div
-          className=
-              ms-MessageBar-content
-              {
-                display: flex;
-                line-height: normal;
-                width: 100%;
-              }
-        >
-          <div
-            aria-hidden={true}
-            className=
-                ms-MessageBar-icon
-                {
-                  display: flex;
-                  flex-shrink: 0;
-                  font-size: 16px;
-                  margin-bottom: 8px;
-                  margin-left: 12px;
-                  margin-right: 0;
-                  margin-top: 8px;
-                  min-height: 16px;
-                  min-width: 16px;
-                }
-          >
-            <i
-              aria-hidden={true}
-              className=
-
-                  {
-                    -moz-osx-font-smoothing: grayscale;
-                    -webkit-font-smoothing: antialiased;
-                    color: #107c10;
-                    display: inline-block;
-                    font-family: "FabricMDL2Icons-2";
-                    font-style: normal;
-                    font-weight: normal;
-                    speak: none;
-                  }
-                  @media screen and (-ms-high-contrast: active){& {
-                    -ms-high-contrast-adjust: none;
-                    color: Window;
-                  }
-              data-icon-name="Completed"
-            >
-              
-            </i>
-          </div>
-          <div
-            className=
-                ms-MessageBar-text
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  display: flex;
-                  flex-grow: 1;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 12px;
-                  font-weight: 400;
-                  margin-bottom: 8px;
-                  margin-left: 8px;
-                  margin-right: 12px;
-                  margin-top: 8px;
-                  min-width: 0px;
-                }
-                @media screen and (-ms-high-contrast: active){& {
-                  -ms-high-contrast-adjust: none;
-                }
-            id="MessageBar19"
-          >
-            <span
-              aria-live="polite"
-              className=
-                  ms-MessageBar-innerText
-                  {
-                    line-height: 16px;
-                    overflow: hidden;
-                    text-overflow: ellipsis;
-                    white-space: nowrap;
-                  }
-                  & span a {
-                    padding-left: 4px;
-                  }
-                  @media only screen and (min-width: 0px) and (max-width: 479px){& {
-                    overflow: visible;
-                    white-space: pre-wrap;
-                  }
-              role="status"
-            />
-          </div>
-          <div
-            className=
-                ms-MessageBar-actionsSingleLine
-                {
                   align-items: center;
-                  display: flex;
-                  flex-basis: auto;
-                  flex-direction: row-reverse;
-                  flex-grow: 0;
-                  flex-shrink: 0;
-                  margin-bottom: 0;
-                  margin-left: 8px;
-                  margin-right: 12px;
-                  margin-top: 0;
-                }
-                & button:nth-child(n+2) {
-                  margin-left: 8px;
-                }
-          >
-            <div>
-              <button
-                className=
-                    ms-Button
-                    ms-Button--default
-                    {
-                      -moz-osx-font-smoothing: grayscale;
-                      -webkit-font-smoothing: antialiased;
-                      background-color: #ffffff;
-                      border-color: #c8c6c4;
-                      border-radius: 2px;
-                      border: 1px solid #8a8886;
-                      box-sizing: border-box;
-                      color: #323130;
-                      cursor: pointer;
-                      display: inline-block;
-                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                      font-size: 14px;
-                      font-weight: 400;
-                      height: 24px;
-                      min-width: 80px;
-                      outline: transparent;
-                      padding-bottom: 0;
-                      padding-left: 16px;
-                      padding-right: 16px;
-                      padding-top: 0;
-                      position: relative;
-                      text-align: center;
-                      text-decoration: none;
-                      user-select: none;
-                      vertical-align: top;
-                    }
-                    &::-moz-focus-inner {
-                      border: 0;
-                    }
-                    .ms-Fabric--isFocusVisible &:focus:after {
-                      border: 1px solid transparent;
-                      bottom: 2px;
-                      content: "";
-                      left: 2px;
-                      outline: 1px solid #605e5c;
-                      position: absolute;
-                      right: 2px;
-                      top: 2px;
-                      z-index: 1;
-                    }
-                    @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                      border: none;
-                      bottom: -2px;
-                      left: -2px;
-                      outline-color: ActiveBorder;
-                      outline-offset: -4px;
-                      right: -2px;
-                      top: -2px;
-                    }
-                    &:active > * {
-                      left: 0px;
-                      position: relative;
-                      top: 0px;
-                    }
-                    &:hover {
-                      background-color: #f3f2f1;
-                      color: #201f1e;
-                    }
-                    @media screen and (-ms-high-contrast: active){&:hover {
-                      border-color: Highlight;
-                      color: Highlight;
-                    }
-                    &:active {
-                      background-color: #edebe9;
-                      color: #201f1e;
-                    }
-                data-is-focusable={true}
-                onClick={[Function]}
-                onKeyDown={[Function]}
-                onKeyPress={[Function]}
-                onKeyUp={[Function]}
-                onMouseDown={[Function]}
-                onMouseUp={[Function]}
-                type="button"
-              >
-                <span
-                  className=
-                      ms-Button-flexContainer
-                      {
-                        align-items: center;
-                        display: flex;
-                        flex-wrap: nowrap;
-                        height: 100%;
-                        justify-content: center;
-                      }
-                  data-automationid="splitbuttonprimary"
-                >
-                  <span
-                    className=
-                        ms-Button-textContainer
-                        {
-                          display: block;
-                          flex-grow: 1;
-                        }
-                  >
-                    <span
-                      className=
-                          ms-Button-label
-                          {
-                            display: block;
-                            font-weight: 600;
-                            line-height: 100%;
-                            margin-bottom: 0;
-                            margin-left: 4px;
-                            margin-right: 4px;
-                            margin-top: 0;
-                          }
-                      id="id__20"
-                    >
-                      Yes
-                    </span>
-                  </span>
-                </span>
-              </button>
-              <button
-                className=
-                    ms-Button
-                    ms-Button--default
-                    {
-                      -moz-osx-font-smoothing: grayscale;
-                      -webkit-font-smoothing: antialiased;
-                      background-color: #ffffff;
-                      border-color: #c8c6c4;
-                      border-radius: 2px;
-                      border: 1px solid #8a8886;
-                      box-sizing: border-box;
-                      color: #323130;
-                      cursor: pointer;
-                      display: inline-block;
-                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                      font-size: 14px;
-                      font-weight: 400;
-                      height: 24px;
-                      min-width: 80px;
-                      outline: transparent;
-                      padding-bottom: 0;
-                      padding-left: 16px;
-                      padding-right: 16px;
-                      padding-top: 0;
-                      position: relative;
-                      text-align: center;
-                      text-decoration: none;
-                      user-select: none;
-                      vertical-align: top;
-                    }
-                    &::-moz-focus-inner {
-                      border: 0;
-                    }
-                    .ms-Fabric--isFocusVisible &:focus:after {
-                      border: 1px solid transparent;
-                      bottom: 2px;
-                      content: "";
-                      left: 2px;
-                      outline: 1px solid #605e5c;
-                      position: absolute;
-                      right: 2px;
-                      top: 2px;
-                      z-index: 1;
-                    }
-                    @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                      border: none;
-                      bottom: -2px;
-                      left: -2px;
-                      outline-color: ActiveBorder;
-                      outline-offset: -4px;
-                      right: -2px;
-                      top: -2px;
-                    }
-                    &:active > * {
-                      left: 0px;
-                      position: relative;
-                      top: 0px;
-                    }
-                    &:hover {
-                      background-color: #f3f2f1;
-                      color: #201f1e;
-                    }
-                    @media screen and (-ms-high-contrast: active){&:hover {
-                      border-color: Highlight;
-                      color: Highlight;
-                    }
-                    &:active {
-                      background-color: #edebe9;
-                      color: #201f1e;
-                    }
-                data-is-focusable={true}
-                onClick={[Function]}
-                onKeyDown={[Function]}
-                onKeyPress={[Function]}
-                onKeyUp={[Function]}
-                onMouseDown={[Function]}
-                onMouseUp={[Function]}
-                type="button"
-              >
-                <span
-                  className=
-                      ms-Button-flexContainer
-                      {
-                        align-items: center;
-                        display: flex;
-                        flex-wrap: nowrap;
-                        height: 100%;
-                        justify-content: center;
-                      }
-                  data-automationid="splitbuttonprimary"
-                >
-                  <span
-                    className=
-                        ms-Button-textContainer
-                        {
-                          display: block;
-                          flex-grow: 1;
-                        }
-                  >
-                    <span
-                      className=
-                          ms-Button-label
-                          {
-                            display: block;
-                            font-weight: 600;
-                            line-height: 100%;
-                            margin-bottom: 0;
-                            margin-left: 4px;
-                            margin-right: 4px;
-                            margin-top: 0;
-                          }
-                      id="id__23"
-                    >
-                      No
-                    </span>
-                  </span>
-                </span>
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div
-    className=
-        ms-StackItem
-        {
-          -moz-osx-font-smoothing: grayscale;
-          -webkit-font-smoothing: antialiased;
-          flex-shrink: 1;
-          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-          font-size: 14px;
-          font-weight: 400;
-          height: auto;
-          width: auto;
-        }
-  >
-    <label
-      className=
-          ms-Label
-          {
-            -moz-osx-font-smoothing: grayscale;
-            -webkit-font-smoothing: antialiased;
-            box-shadow: none;
-            box-sizing: border-box;
-            color: #323130;
-            display: block;
-            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-            font-size: 14px;
-            font-weight: 600;
-            margin-bottom: 0px;
-            margin-left: 0px;
-            margin-right: 0px;
-            margin-top: 0px;
-            overflow-wrap: break-word;
-            padding-bottom: 5px;
-            padding-left: 0;
-            padding-right: 0;
-            padding-top: 5px;
-            word-wrap: break-word;
-          }
-    >
-      Warning MessageBar - single line, with dismiss and action buttons
-    </label>
-    <div
-      style={
-        Object {
-          "background": "#ffffff",
-        }
-      }
-    >
-      <div
-        className=
-            ms-MessageBar
-            ms-MessageBar--warning
-            ms-MessageBar-singleline
-            ms-MessageBar-dismissalSingleLine
-            {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              background: rgba(255, 200, 10, .2);
-              color: #323130;
-              display: flex;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 14px;
-              font-weight: 400;
-              min-height: 32px;
-              width: 100%;
-              word-break: break-word;
-            }
-            & .ms-Link {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              color: #005a9e;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 12px;
-              font-weight: 400;
-            }
-            @media screen and (-ms-high-contrast: active){& {
-              background: WindowText;
-              color: Window;
-            }
-      >
-        <div
-          className=
-              ms-MessageBar-content
-              {
-                display: flex;
-                line-height: normal;
-                width: 100%;
-              }
-        >
-          <div
-            aria-hidden={true}
-            className=
-                ms-MessageBar-icon
-                {
-                  display: flex;
-                  flex-shrink: 0;
-                  font-size: 16px;
-                  margin-bottom: 8px;
-                  margin-left: 12px;
-                  margin-right: 0;
-                  margin-top: 8px;
-                  min-height: 16px;
-                  min-width: 16px;
-                }
-          >
-            <i
-              aria-hidden={true}
-              className=
-
-                  {
-                    -moz-osx-font-smoothing: grayscale;
-                    -webkit-font-smoothing: antialiased;
-                    color: #333333;
-                    display: inline-block;
-                    font-family: "FabricMDL2Icons";
-                    font-style: normal;
-                    font-weight: normal;
-                    speak: none;
-                  }
-                  @media screen and (-ms-high-contrast: active){& {
-                    -ms-high-contrast-adjust: none;
-                    color: Window;
-                  }
-              data-icon-name="Info"
-            >
-              
-            </i>
-          </div>
-          <div
-            className=
-                ms-MessageBar-text
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  display: flex;
-                  flex-grow: 1;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 12px;
-                  font-weight: 400;
-                  margin-bottom: 8px;
-                  margin-left: 8px;
-                  margin-right: 8px;
-                  margin-top: 8px;
-                  min-width: 0px;
-                }
-                @media screen and (-ms-high-contrast: active){& {
-                  -ms-high-contrast-adjust: none;
-                }
-            id="MessageBar26"
-          >
-            <span
-              aria-live="polite"
-              className=
-                  ms-MessageBar-innerText
-                  {
-                    line-height: 16px;
-                    overflow: hidden;
-                    text-overflow: ellipsis;
-                    white-space: nowrap;
-                  }
-                  & span a {
-                    padding-left: 4px;
-                  }
-                  @media only screen and (min-width: 0px) and (max-width: 479px){& {
-                    overflow: visible;
-                    white-space: pre-wrap;
-                  }
-              role="status"
-            />
-          </div>
-          <div
-            className=
-                ms-MessageBar-actionsSingleLine
-                {
-                  align-items: center;
-                  display: flex;
-                  flex-basis: auto;
-                  flex-direction: row-reverse;
-                  flex-grow: 0;
-                  flex-shrink: 0;
-                  margin-bottom: 0;
-                  margin-left: 8px;
-                  margin-right: 0px;
-                  margin-top: 0;
-                }
-                & button:nth-child(n+2) {
-                  margin-left: 8px;
-                }
-          >
-            <div>
-              <button
-                className=
-                    ms-Button
-                    ms-Button--default
-                    {
-                      -moz-osx-font-smoothing: grayscale;
-                      -webkit-font-smoothing: antialiased;
-                      background-color: #ffffff;
-                      border-color: #c8c6c4;
-                      border-radius: 2px;
-                      border: 1px solid #8a8886;
-                      box-sizing: border-box;
-                      color: #323130;
-                      cursor: pointer;
-                      display: inline-block;
-                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                      font-size: 14px;
-                      font-weight: 400;
-                      height: 24px;
-                      min-width: 80px;
-                      outline: transparent;
-                      padding-bottom: 0;
-                      padding-left: 16px;
-                      padding-right: 16px;
-                      padding-top: 0;
-                      position: relative;
-                      text-align: center;
-                      text-decoration: none;
-                      user-select: none;
-                      vertical-align: top;
-                    }
-                    &::-moz-focus-inner {
-                      border: 0;
-                    }
-                    .ms-Fabric--isFocusVisible &:focus:after {
-                      border: 1px solid transparent;
-                      bottom: 2px;
-                      content: "";
-                      left: 2px;
-                      outline: 1px solid #605e5c;
-                      position: absolute;
-                      right: 2px;
-                      top: 2px;
-                      z-index: 1;
-                    }
-                    @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                      border: none;
-                      bottom: -2px;
-                      left: -2px;
-                      outline-color: ActiveBorder;
-                      outline-offset: -4px;
-                      right: -2px;
-                      top: -2px;
-                    }
-                    &:active > * {
-                      left: 0px;
-                      position: relative;
-                      top: 0px;
-                    }
-                    &:hover {
-                      background-color: #f3f2f1;
-                      color: #201f1e;
-                    }
-                    @media screen and (-ms-high-contrast: active){&:hover {
-                      border-color: Highlight;
-                      color: Highlight;
-                    }
-                    &:active {
-                      background-color: #edebe9;
-                      color: #201f1e;
-                    }
-                data-is-focusable={true}
-                onClick={[Function]}
-                onKeyDown={[Function]}
-                onKeyPress={[Function]}
-                onKeyUp={[Function]}
-                onMouseDown={[Function]}
-                onMouseUp={[Function]}
-                type="button"
-              >
-                <span
-                  className=
-                      ms-Button-flexContainer
-                      {
-                        align-items: center;
-                        display: flex;
-                        flex-wrap: nowrap;
-                        height: 100%;
-                        justify-content: center;
-                      }
-                  data-automationid="splitbuttonprimary"
-                >
-                  <span
-                    className=
-                        ms-Button-textContainer
-                        {
-                          display: block;
-                          flex-grow: 1;
-                        }
-                  >
-                    <span
-                      className=
-                          ms-Button-label
-                          {
-                            display: block;
-                            font-weight: 600;
-                            line-height: 100%;
-                            margin-bottom: 0;
-                            margin-left: 4px;
-                            margin-right: 4px;
-                            margin-top: 0;
-                          }
-                      id="id__27"
-                    >
-                      Action
-                    </span>
-                  </span>
-                </span>
-              </button>
-            </div>
-          </div>
-          <div
-            className=
-                ms-MessageBar-dismissSingleLine
-
-          >
-            <button
-              aria-label="Close"
-              className=
-                  ms-Button
-                  ms-Button--icon
-                  ms-MessageBar-dismissal
-                  {
-                    -moz-osx-font-smoothing: grayscale;
-                    -webkit-font-smoothing: antialiased;
-                    background-color: transparent;
-                    border-radius: 2px;
-                    border: none;
-                    box-sizing: border-box;
-                    color: #0078d4;
-                    cursor: pointer;
-                    display: inline-block;
-                    flex-shrink: 0;
-                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                    font-size: 14px;
-                    font-weight: 400;
-                    height: 32px;
-                    outline: transparent;
-                    padding-bottom: 8px;
-                    padding-left: 12px;
-                    padding-right: 12px;
-                    padding-top: 8px;
-                    position: relative;
-                    text-align: center;
-                    text-decoration: none;
-                    user-select: none;
-                    vertical-align: top;
-                    width: 32px;
-                  }
-                  &::-moz-focus-inner {
-                    border: 0;
-                  }
-                  .ms-Fabric--isFocusVisible &:focus:after {
-                    border: 1px solid transparent;
-                    bottom: 2px;
-                    content: "";
-                    left: 2px;
-                    outline: 1px solid #605e5c;
-                    position: absolute;
-                    right: 2px;
-                    top: 2px;
-                    z-index: 1;
-                  }
-                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                    border: none;
-                    bottom: -2px;
-                    left: -2px;
-                    outline-color: Window;
-                    outline-offset: -4px;
-                    right: -2px;
-                    top: -2px;
-                  }
-                  &:active > * {
-                    left: 0px;
-                    position: relative;
-                    top: 0px;
-                  }
-                  &:hover {
-                    background-color: transparent;
-                    color: #106ebe;
-                  }
-                  @media screen and (-ms-high-contrast: active){&:hover {
-                    border-color: Highlight;
-                    color: Highlight;
-                  }
-                  &:active {
-                    background-color: transparent;
-                    color: #005a9e;
-                  }
-                  & .ms-Button-icon {
-                    color: #323130;
-                    font-size: 10px;
-                    height: 10px;
-                    line-height: 10px;
-                  }
-                  @media screen and (-ms-high-contrast: active){& .ms-Button-icon {
-                    -ms-high-contrast-adjust: none;
-                    color: Window;
-                  }
-              data-is-focusable={true}
-              onClick={[Function]}
-              onKeyDown={[Function]}
-              onKeyPress={[Function]}
-              onKeyUp={[Function]}
-              onMouseDown={[Function]}
-              onMouseUp={[Function]}
-              type="button"
-            >
-              <span
-                className=
-                    ms-Button-flexContainer
-                    {
-                      align-items: center;
-                      display: flex;
-                      flex-wrap: nowrap;
-                      height: 100%;
-                      justify-content: center;
-                    }
-                data-automationid="splitbuttonprimary"
-              >
-                <i
-                  aria-hidden={true}
-                  className=
-                      ms-Icon
-                      ms-Button-icon
-                      {
-                        display: inline-block;
-                      }
-                      {
-                        -moz-osx-font-smoothing: grayscale;
-                        -webkit-font-smoothing: antialiased;
-                        font-family: "FabricMDL2Icons";
-                        font-style: normal;
-                        font-weight: normal;
-                        speak: none;
-                      }
-                      {
-                        flex-shrink: 0;
-                        font-size: 16px;
-                        height: 16px;
-                        line-height: 16px;
-                        margin-bottom: 0;
-                        margin-left: 4px;
-                        margin-right: 4px;
-                        margin-top: 0;
-                        text-align: center;
-                        vertical-align: middle;
-                      }
-                  data-icon-name="Clear"
-                  role="presentation"
-                >
-                  
-                </i>
-              </span>
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div
-    className=
-        ms-StackItem
-        {
-          -moz-osx-font-smoothing: grayscale;
-          -webkit-font-smoothing: antialiased;
-          flex-shrink: 1;
-          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-          font-size: 14px;
-          font-weight: 400;
-          height: auto;
-          width: auto;
-        }
-  >
-    <label
-      className=
-          ms-Label
-          {
-            -moz-osx-font-smoothing: grayscale;
-            -webkit-font-smoothing: antialiased;
-            box-shadow: none;
-            box-sizing: border-box;
-            color: #323130;
-            display: block;
-            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-            font-size: 14px;
-            font-weight: 600;
-            margin-bottom: 0px;
-            margin-left: 0px;
-            margin-right: 0px;
-            margin-top: 0px;
-            overflow-wrap: break-word;
-            padding-bottom: 5px;
-            padding-left: 0;
-            padding-right: 0;
-            padding-top: 5px;
-            word-wrap: break-word;
-          }
-    >
-      Warning MessageBar - defaults to multiline, with dismiss and action buttons
-    </label>
-    <div
-      style={
-        Object {
-          "background": "#ffffff",
-        }
-      }
-    >
-      <div
-        className=
-            ms-MessageBar
-            ms-MessageBar--warning
-            ms-MessageBar-multiline
-            {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              background: rgba(255, 200, 10, .2);
-              color: #323130;
-              display: flex;
-              flex-direction: column;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 14px;
-              font-weight: 400;
-              min-height: 32px;
-              width: 100%;
-              word-break: break-word;
-            }
-            & .ms-Link {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              color: #005a9e;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 12px;
-              font-weight: 400;
-            }
-            @media screen and (-ms-high-contrast: active){& {
-              background: WindowText;
-              color: Window;
-            }
-      >
-        <div
-          className=
-              ms-MessageBar-content
-              {
-                display: flex;
-                line-height: normal;
-                width: 100%;
-              }
-        >
-          <div
-            aria-hidden={true}
-            className=
-                ms-MessageBar-icon
-                {
-                  display: flex;
-                  flex-shrink: 0;
-                  font-size: 16px;
-                  margin-bottom: 8px;
-                  margin-left: 12px;
-                  margin-right: 0;
-                  margin-top: 8px;
-                  min-height: 16px;
-                  min-width: 16px;
-                }
-          >
-            <i
-              aria-hidden={true}
-              className=
-
-                  {
-                    -moz-osx-font-smoothing: grayscale;
-                    -webkit-font-smoothing: antialiased;
-                    color: #333333;
-                    display: inline-block;
-                    font-family: "FabricMDL2Icons";
-                    font-style: normal;
-                    font-weight: normal;
-                    speak: none;
-                  }
-                  @media screen and (-ms-high-contrast: active){& {
-                    -ms-high-contrast-adjust: none;
-                    color: Window;
-                  }
-              data-icon-name="Info"
-            >
-              
-            </i>
-          </div>
-          <div
-            className=
-                ms-MessageBar-text
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  display: flex;
-                  flex-grow: 1;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 12px;
-                  font-weight: 400;
-                  margin-bottom: 8px;
-                  margin-left: 8px;
-                  margin-right: 8px;
-                  margin-top: 8px;
-                  min-width: 0px;
-                }
-                @media screen and (-ms-high-contrast: active){& {
-                  -ms-high-contrast-adjust: none;
-                }
-            id="MessageBar33"
-          >
-            <span
-              aria-live="polite"
-              className=
-                  ms-MessageBar-innerText
-                  {
-                    line-height: 16px;
-                  }
-                  & span a {
-                    padding-left: 4px;
-                  }
-              role="status"
-            />
-          </div>
-          <button
-            aria-label="Close"
-            className=
-                ms-Button
-                ms-Button--icon
-                ms-MessageBar-dismissal
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  background-color: transparent;
-                  border-radius: 2px;
                   border: none;
                   box-sizing: border-box;
-                  color: #0078d4;
-                  cursor: pointer;
-                  display: inline-block;
-                  flex-shrink: 0;
+                  color: #323130;
+                  display: flex;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
-                  height: 32px;
-                  outline: transparent;
-                  padding-bottom: 8px;
-                  padding-left: 12px;
-                  padding-right: 12px;
-                  padding-top: 8px;
+                  margin-top: 8px;
+                  min-height: 26px;
                   position: relative;
-                  text-align: center;
-                  text-decoration: none;
-                  user-select: none;
-                  vertical-align: top;
-                  width: 32px;
                 }
-                &::-moz-focus-inner {
-                  border: 0;
+                & .ms-ChoiceFieldLabel {
+                  display: inline-block;
+                  padding-left: 26px;
                 }
-                .ms-Fabric--isFocusVisible &:focus:after {
-                  border: 1px solid transparent;
-                  bottom: 2px;
-                  content: "";
-                  left: 2px;
-                  outline: 1px solid #605e5c;
-                  position: absolute;
-                  right: 2px;
-                  top: 2px;
-                  z-index: 1;
-                }
-                @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                  border: none;
-                  bottom: -2px;
-                  left: -2px;
-                  outline-color: Window;
-                  outline-offset: -4px;
-                  right: -2px;
-                  top: -2px;
-                }
-                &:active > * {
-                  left: 0px;
-                  position: relative;
-                  top: 0px;
-                }
-                &:hover {
-                  background-color: transparent;
-                  color: #106ebe;
-                }
-                @media screen and (-ms-high-contrast: active){&:hover {
-                  border-color: Highlight;
-                  color: Highlight;
-                }
-                &:active {
-                  background-color: transparent;
-                  color: #005a9e;
-                }
-                & .ms-Button-icon {
-                  color: #323130;
-                  font-size: 10px;
-                  height: 10px;
-                  line-height: 10px;
-                }
-                @media screen and (-ms-high-contrast: active){& .ms-Button-icon {
-                  -ms-high-contrast-adjust: none;
-                  color: Window;
-                }
-            data-is-focusable={true}
-            onClick={[Function]}
-            onKeyDown={[Function]}
-            onKeyPress={[Function]}
-            onKeyUp={[Function]}
-            onMouseDown={[Function]}
-            onMouseUp={[Function]}
-            type="button"
           >
-            <span
+            <div
               className=
-                  ms-Button-flexContainer
-                  {
-                    align-items: center;
-                    display: flex;
-                    flex-wrap: nowrap;
-                    height: 100%;
-                    justify-content: center;
-                  }
-              data-automationid="splitbuttonprimary"
+                  ms-ChoiceField-wrapper
+
             >
-              <i
-                aria-hidden={true}
+              <input
+                checked={false}
                 className=
-                    ms-Icon
-                    ms-Button-icon
+                    ms-ChoiceField-input
                     {
+                      height: 100%;
+                      margin-bottom: 0px;
+                      margin-left: 0px;
+                      margin-right: 0px;
+                      margin-top: 0px;
+                      opacity: 0;
+                      position: absolute;
+                      right: 0px;
+                      top: 0px;
+                      width: 100%;
+                    }
+                id="ChoiceGroup0-default"
+                name="ChoiceGroup0"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                type="radio"
+              />
+              <label
+                className=
+                    ms-ChoiceField-field
+                    {
+                      cursor: pointer;
                       display: inline-block;
+                      margin-top: 0px;
+                      min-height: 20px;
+                      position: relative;
+                      user-select: none;
+                      vertical-align: top;
                     }
-                    {
-                      -moz-osx-font-smoothing: grayscale;
-                      -webkit-font-smoothing: antialiased;
-                      font-family: "FabricMDL2Icons";
-                      font-style: normal;
+                    &:hover .ms-ChoiceFieldLabel {
+                      color: #201f1e;
+                    }
+                    &:hover:before {
+                      border-color: #323130;
+                    }
+                    &:hover:after {
+                      background-color: #605e5c;
+                      content: "";
+                      height: 10px;
+                      left: 5px;
+                      top: 5px;
+                      transition-property: background-color;
+                      width: 10px;
+                    }
+                    &:focus .ms-ChoiceFieldLabel {
+                      color: #201f1e;
+                    }
+                    &:focus:before {
+                      border-color: #323130;
+                    }
+                    &:focus:after {
+                      background-color: #605e5c;
+                      content: "";
+                      height: 10px;
+                      left: 5px;
+                      top: 5px;
+                      transition-property: background-color;
+                      width: 10px;
+                    }
+                    &:before {
+                      background-color: #ffffff;
+                      border-color: #323130;
+                      border-radius: 50%;
+                      border-style: solid;
+                      border-width: 1px;
+                      box-sizing: border-box;
+                      content: "";
+                      display: inline-block;
                       font-weight: normal;
-                      speak: none;
+                      height: 20px;
+                      left: 0px;
+                      position: absolute;
+                      top: 0px;
+                      transition-duration: 200ms;
+                      transition-property: border-color;
+                      transition-timing-function: cubic-bezier(.4, 0, .23, 1);
+                      width: 20px;
                     }
-                    {
-                      flex-shrink: 0;
-                      font-size: 16px;
-                      height: 16px;
-                      line-height: 16px;
-                      margin-bottom: 0;
-                      margin-left: 4px;
-                      margin-right: 4px;
-                      margin-top: 0;
-                      text-align: center;
-                      vertical-align: middle;
+                    &:after {
+                      border-radius: 50%;
+                      box-sizing: border-box;
+                      content: "";
+                      height: 0px;
+                      left: 10px;
+                      position: absolute;
+                      right: 0px;
+                      transition-duration: 200ms;
+                      transition-property: border-width;
+                      transition-timing-function: cubic-bezier(.4, 0, .23, 1);
+                      width: 0px;
                     }
-                data-icon-name="Clear"
-                role="presentation"
-              >
-                
-              </i>
-            </span>
-          </button>
-        </div>
-        <div
-          className=
-              ms-MessageBar-actions
-              {
-                align-items: center;
-                display: flex;
-                flex-basis: auto;
-                flex-direction: row-reverse;
-                flex-grow: 0;
-                flex-shrink: 0;
-                margin-bottom: 8px;
-                margin-left: 8px;
-                margin-right: 12px;
-                margin-top: 0;
-              }
-              & button:nth-child(n+2) {
-                margin-left: 8px;
-              }
-        >
-          <div>
-            <button
-              className=
-                  ms-Button
-                  ms-Button--default
-                  {
-                    -moz-osx-font-smoothing: grayscale;
-                    -webkit-font-smoothing: antialiased;
-                    background-color: #ffffff;
-                    border-color: #c8c6c4;
-                    border-radius: 2px;
-                    border: 1px solid #8a8886;
-                    box-sizing: border-box;
-                    color: #323130;
-                    cursor: pointer;
-                    display: inline-block;
-                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                    font-size: 14px;
-                    font-weight: 400;
-                    height: 24px;
-                    min-width: 80px;
-                    outline: transparent;
-                    padding-bottom: 0;
-                    padding-left: 16px;
-                    padding-right: 16px;
-                    padding-top: 0;
-                    position: relative;
-                    text-align: center;
-                    text-decoration: none;
-                    user-select: none;
-                    vertical-align: top;
-                  }
-                  &::-moz-focus-inner {
-                    border: 0;
-                  }
-                  .ms-Fabric--isFocusVisible &:focus:after {
-                    border: 1px solid transparent;
-                    bottom: 2px;
-                    content: "";
-                    left: 2px;
-                    outline: 1px solid #605e5c;
-                    position: absolute;
-                    right: 2px;
-                    top: 2px;
-                    z-index: 1;
-                  }
-                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                    border: none;
-                    bottom: -2px;
-                    left: -2px;
-                    outline-color: ActiveBorder;
-                    outline-offset: -4px;
-                    right: -2px;
-                    top: -2px;
-                  }
-                  &:active > * {
-                    left: 0px;
-                    position: relative;
-                    top: 0px;
-                  }
-                  &:hover {
-                    background-color: #f3f2f1;
-                    color: #201f1e;
-                  }
-                  @media screen and (-ms-high-contrast: active){&:hover {
-                    border-color: Highlight;
-                    color: Highlight;
-                  }
-                  &:active {
-                    background-color: #edebe9;
-                    color: #201f1e;
-                  }
-              data-is-focusable={true}
-              onClick={[Function]}
-              onKeyDown={[Function]}
-              onKeyPress={[Function]}
-              onKeyUp={[Function]}
-              onMouseDown={[Function]}
-              onMouseUp={[Function]}
-              type="button"
-            >
-              <span
-                className=
-                    ms-Button-flexContainer
-                    {
-                      align-items: center;
-                      display: flex;
-                      flex-wrap: nowrap;
-                      height: 100%;
-                      justify-content: center;
-                    }
-                data-automationid="splitbuttonprimary"
+                htmlFor="ChoiceGroup0-default"
               >
                 <span
-                  className=
-                      ms-Button-textContainer
-                      {
-                        display: block;
-                        flex-grow: 1;
-                      }
+                  className="ms-ChoiceFieldLabel"
+                  id="ChoiceGroupLabel1-default"
                 >
-                  <span
-                    className=
-                        ms-Button-label
-                        {
-                          display: block;
-                          font-weight: 600;
-                          line-height: 100%;
-                          margin-bottom: 0;
-                          margin-left: 4px;
-                          margin-right: 4px;
-                          margin-top: 0;
-                        }
-                    id="id__37"
-                  >
-                    Yes
-                  </span>
+                  Default
                 </span>
-              </span>
-            </button>
-            <button
+              </label>
+            </div>
+          </div>
+          <div
+            className=
+                ms-ChoiceField
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  align-items: center;
+                  border: none;
+                  box-sizing: border-box;
+                  color: #323130;
+                  display: flex;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                  margin-top: 8px;
+                  min-height: 26px;
+                  position: relative;
+                }
+                & .ms-ChoiceFieldLabel {
+                  display: inline-block;
+                  padding-left: 26px;
+                }
+          >
+            <div
               className=
-                  ms-Button
-                  ms-Button--default
-                  {
-                    -moz-osx-font-smoothing: grayscale;
-                    -webkit-font-smoothing: antialiased;
-                    background-color: #ffffff;
-                    border-color: #c8c6c4;
-                    border-radius: 2px;
-                    border: 1px solid #8a8886;
-                    box-sizing: border-box;
-                    color: #323130;
-                    cursor: pointer;
-                    display: inline-block;
-                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                    font-size: 14px;
-                    font-weight: 400;
-                    height: 24px;
-                    min-width: 80px;
-                    outline: transparent;
-                    padding-bottom: 0;
-                    padding-left: 16px;
-                    padding-right: 16px;
-                    padding-top: 0;
-                    position: relative;
-                    text-align: center;
-                    text-decoration: none;
-                    user-select: none;
-                    vertical-align: top;
-                  }
-                  &::-moz-focus-inner {
-                    border: 0;
-                  }
-                  .ms-Fabric--isFocusVisible &:focus:after {
-                    border: 1px solid transparent;
-                    bottom: 2px;
-                    content: "";
-                    left: 2px;
-                    outline: 1px solid #605e5c;
-                    position: absolute;
-                    right: 2px;
-                    top: 2px;
-                    z-index: 1;
-                  }
-                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                    border: none;
-                    bottom: -2px;
-                    left: -2px;
-                    outline-color: ActiveBorder;
-                    outline-offset: -4px;
-                    right: -2px;
-                    top: -2px;
-                  }
-                  &:active > * {
-                    left: 0px;
-                    position: relative;
-                    top: 0px;
-                  }
-                  &:hover {
-                    background-color: #f3f2f1;
-                    color: #201f1e;
-                  }
-                  @media screen and (-ms-high-contrast: active){&:hover {
-                    border-color: Highlight;
-                    color: Highlight;
-                  }
-                  &:active {
-                    background-color: #edebe9;
-                    color: #201f1e;
-                  }
-              data-is-focusable={true}
-              onClick={[Function]}
-              onKeyDown={[Function]}
-              onKeyPress={[Function]}
-              onKeyUp={[Function]}
-              onMouseDown={[Function]}
-              onMouseUp={[Function]}
-              type="button"
+                  ms-ChoiceField-wrapper
+
             >
-              <span
+              <input
+                checked={false}
                 className=
-                    ms-Button-flexContainer
+                    ms-ChoiceField-input
                     {
-                      align-items: center;
-                      display: flex;
-                      flex-wrap: nowrap;
                       height: 100%;
-                      justify-content: center;
+                      margin-bottom: 0px;
+                      margin-left: 0px;
+                      margin-right: 0px;
+                      margin-top: 0px;
+                      opacity: 0;
+                      position: absolute;
+                      right: 0px;
+                      top: 0px;
+                      width: 100%;
                     }
-                data-automationid="splitbuttonprimary"
+                id="ChoiceGroup0-error"
+                name="ChoiceGroup0"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                type="radio"
+              />
+              <label
+                className=
+                    ms-ChoiceField-field
+                    {
+                      cursor: pointer;
+                      display: inline-block;
+                      margin-top: 0px;
+                      min-height: 20px;
+                      position: relative;
+                      user-select: none;
+                      vertical-align: top;
+                    }
+                    &:hover .ms-ChoiceFieldLabel {
+                      color: #201f1e;
+                    }
+                    &:hover:before {
+                      border-color: #323130;
+                    }
+                    &:hover:after {
+                      background-color: #605e5c;
+                      content: "";
+                      height: 10px;
+                      left: 5px;
+                      top: 5px;
+                      transition-property: background-color;
+                      width: 10px;
+                    }
+                    &:focus .ms-ChoiceFieldLabel {
+                      color: #201f1e;
+                    }
+                    &:focus:before {
+                      border-color: #323130;
+                    }
+                    &:focus:after {
+                      background-color: #605e5c;
+                      content: "";
+                      height: 10px;
+                      left: 5px;
+                      top: 5px;
+                      transition-property: background-color;
+                      width: 10px;
+                    }
+                    &:before {
+                      background-color: #ffffff;
+                      border-color: #323130;
+                      border-radius: 50%;
+                      border-style: solid;
+                      border-width: 1px;
+                      box-sizing: border-box;
+                      content: "";
+                      display: inline-block;
+                      font-weight: normal;
+                      height: 20px;
+                      left: 0px;
+                      position: absolute;
+                      top: 0px;
+                      transition-duration: 200ms;
+                      transition-property: border-color;
+                      transition-timing-function: cubic-bezier(.4, 0, .23, 1);
+                      width: 20px;
+                    }
+                    &:after {
+                      border-radius: 50%;
+                      box-sizing: border-box;
+                      content: "";
+                      height: 0px;
+                      left: 10px;
+                      position: absolute;
+                      right: 0px;
+                      transition-duration: 200ms;
+                      transition-property: border-width;
+                      transition-timing-function: cubic-bezier(.4, 0, .23, 1);
+                      width: 0px;
+                    }
+                htmlFor="ChoiceGroup0-error"
               >
                 <span
-                  className=
-                      ms-Button-textContainer
-                      {
-                        display: block;
-                        flex-grow: 1;
-                      }
+                  className="ms-ChoiceFieldLabel"
+                  id="ChoiceGroupLabel1-error"
                 >
-                  <span
-                    className=
-                        ms-Button-label
-                        {
-                          display: block;
-                          font-weight: 600;
-                          line-height: 100%;
-                          margin-bottom: 0;
-                          margin-left: 4px;
-                          margin-right: 4px;
-                          margin-top: 0;
-                        }
-                    id="id__40"
-                  >
-                    No
-                  </span>
+                  Error MessageBar
                 </span>
-              </span>
-            </button>
+              </label>
+            </div>
+          </div>
+          <div
+            className=
+                ms-ChoiceField
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  align-items: center;
+                  border: none;
+                  box-sizing: border-box;
+                  color: #323130;
+                  display: flex;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                  margin-top: 8px;
+                  min-height: 26px;
+                  position: relative;
+                }
+                & .ms-ChoiceFieldLabel {
+                  display: inline-block;
+                  padding-left: 26px;
+                }
+          >
+            <div
+              className=
+                  ms-ChoiceField-wrapper
+
+            >
+              <input
+                checked={false}
+                className=
+                    ms-ChoiceField-input
+                    {
+                      height: 100%;
+                      margin-bottom: 0px;
+                      margin-left: 0px;
+                      margin-right: 0px;
+                      margin-top: 0px;
+                      opacity: 0;
+                      position: absolute;
+                      right: 0px;
+                      top: 0px;
+                      width: 100%;
+                    }
+                id="ChoiceGroup0-blocked"
+                name="ChoiceGroup0"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                type="radio"
+              />
+              <label
+                className=
+                    ms-ChoiceField-field
+                    {
+                      cursor: pointer;
+                      display: inline-block;
+                      margin-top: 0px;
+                      min-height: 20px;
+                      position: relative;
+                      user-select: none;
+                      vertical-align: top;
+                    }
+                    &:hover .ms-ChoiceFieldLabel {
+                      color: #201f1e;
+                    }
+                    &:hover:before {
+                      border-color: #323130;
+                    }
+                    &:hover:after {
+                      background-color: #605e5c;
+                      content: "";
+                      height: 10px;
+                      left: 5px;
+                      top: 5px;
+                      transition-property: background-color;
+                      width: 10px;
+                    }
+                    &:focus .ms-ChoiceFieldLabel {
+                      color: #201f1e;
+                    }
+                    &:focus:before {
+                      border-color: #323130;
+                    }
+                    &:focus:after {
+                      background-color: #605e5c;
+                      content: "";
+                      height: 10px;
+                      left: 5px;
+                      top: 5px;
+                      transition-property: background-color;
+                      width: 10px;
+                    }
+                    &:before {
+                      background-color: #ffffff;
+                      border-color: #323130;
+                      border-radius: 50%;
+                      border-style: solid;
+                      border-width: 1px;
+                      box-sizing: border-box;
+                      content: "";
+                      display: inline-block;
+                      font-weight: normal;
+                      height: 20px;
+                      left: 0px;
+                      position: absolute;
+                      top: 0px;
+                      transition-duration: 200ms;
+                      transition-property: border-color;
+                      transition-timing-function: cubic-bezier(.4, 0, .23, 1);
+                      width: 20px;
+                    }
+                    &:after {
+                      border-radius: 50%;
+                      box-sizing: border-box;
+                      content: "";
+                      height: 0px;
+                      left: 10px;
+                      position: absolute;
+                      right: 0px;
+                      transition-duration: 200ms;
+                      transition-property: border-width;
+                      transition-timing-function: cubic-bezier(.4, 0, .23, 1);
+                      width: 0px;
+                    }
+                htmlFor="ChoiceGroup0-blocked"
+              >
+                <span
+                  className="ms-ChoiceFieldLabel"
+                  id="ChoiceGroupLabel1-blocked"
+                >
+                  Blocked MessageBar
+                </span>
+              </label>
+            </div>
+          </div>
+          <div
+            className=
+                ms-ChoiceField
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  align-items: center;
+                  border: none;
+                  box-sizing: border-box;
+                  color: #323130;
+                  display: flex;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                  margin-top: 8px;
+                  min-height: 26px;
+                  position: relative;
+                }
+                & .ms-ChoiceFieldLabel {
+                  display: inline-block;
+                  padding-left: 26px;
+                }
+          >
+            <div
+              className=
+                  ms-ChoiceField-wrapper
+
+            >
+              <input
+                checked={false}
+                className=
+                    ms-ChoiceField-input
+                    {
+                      height: 100%;
+                      margin-bottom: 0px;
+                      margin-left: 0px;
+                      margin-right: 0px;
+                      margin-top: 0px;
+                      opacity: 0;
+                      position: absolute;
+                      right: 0px;
+                      top: 0px;
+                      width: 100%;
+                    }
+                id="ChoiceGroup0-severe"
+                name="ChoiceGroup0"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                type="radio"
+              />
+              <label
+                className=
+                    ms-ChoiceField-field
+                    {
+                      cursor: pointer;
+                      display: inline-block;
+                      margin-top: 0px;
+                      min-height: 20px;
+                      position: relative;
+                      user-select: none;
+                      vertical-align: top;
+                    }
+                    &:hover .ms-ChoiceFieldLabel {
+                      color: #201f1e;
+                    }
+                    &:hover:before {
+                      border-color: #323130;
+                    }
+                    &:hover:after {
+                      background-color: #605e5c;
+                      content: "";
+                      height: 10px;
+                      left: 5px;
+                      top: 5px;
+                      transition-property: background-color;
+                      width: 10px;
+                    }
+                    &:focus .ms-ChoiceFieldLabel {
+                      color: #201f1e;
+                    }
+                    &:focus:before {
+                      border-color: #323130;
+                    }
+                    &:focus:after {
+                      background-color: #605e5c;
+                      content: "";
+                      height: 10px;
+                      left: 5px;
+                      top: 5px;
+                      transition-property: background-color;
+                      width: 10px;
+                    }
+                    &:before {
+                      background-color: #ffffff;
+                      border-color: #323130;
+                      border-radius: 50%;
+                      border-style: solid;
+                      border-width: 1px;
+                      box-sizing: border-box;
+                      content: "";
+                      display: inline-block;
+                      font-weight: normal;
+                      height: 20px;
+                      left: 0px;
+                      position: absolute;
+                      top: 0px;
+                      transition-duration: 200ms;
+                      transition-property: border-color;
+                      transition-timing-function: cubic-bezier(.4, 0, .23, 1);
+                      width: 20px;
+                    }
+                    &:after {
+                      border-radius: 50%;
+                      box-sizing: border-box;
+                      content: "";
+                      height: 0px;
+                      left: 10px;
+                      position: absolute;
+                      right: 0px;
+                      transition-duration: 200ms;
+                      transition-property: border-width;
+                      transition-timing-function: cubic-bezier(.4, 0, .23, 1);
+                      width: 0px;
+                    }
+                htmlFor="ChoiceGroup0-severe"
+              >
+                <span
+                  className="ms-ChoiceFieldLabel"
+                  id="ChoiceGroupLabel1-severe"
+                >
+                  SevereWarning MessageBar
+                </span>
+              </label>
+            </div>
+          </div>
+          <div
+            className=
+                ms-ChoiceField
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  align-items: center;
+                  border: none;
+                  box-sizing: border-box;
+                  color: #323130;
+                  display: flex;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                  margin-top: 8px;
+                  min-height: 26px;
+                  position: relative;
+                }
+                & .ms-ChoiceFieldLabel {
+                  display: inline-block;
+                  padding-left: 26px;
+                }
+          >
+            <div
+              className=
+                  ms-ChoiceField-wrapper
+
+            >
+              <input
+                checked={false}
+                className=
+                    ms-ChoiceField-input
+                    {
+                      height: 100%;
+                      margin-bottom: 0px;
+                      margin-left: 0px;
+                      margin-right: 0px;
+                      margin-top: 0px;
+                      opacity: 0;
+                      position: absolute;
+                      right: 0px;
+                      top: 0px;
+                      width: 100%;
+                    }
+                id="ChoiceGroup0-success"
+                name="ChoiceGroup0"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                type="radio"
+              />
+              <label
+                className=
+                    ms-ChoiceField-field
+                    {
+                      cursor: pointer;
+                      display: inline-block;
+                      margin-top: 0px;
+                      min-height: 20px;
+                      position: relative;
+                      user-select: none;
+                      vertical-align: top;
+                    }
+                    &:hover .ms-ChoiceFieldLabel {
+                      color: #201f1e;
+                    }
+                    &:hover:before {
+                      border-color: #323130;
+                    }
+                    &:hover:after {
+                      background-color: #605e5c;
+                      content: "";
+                      height: 10px;
+                      left: 5px;
+                      top: 5px;
+                      transition-property: background-color;
+                      width: 10px;
+                    }
+                    &:focus .ms-ChoiceFieldLabel {
+                      color: #201f1e;
+                    }
+                    &:focus:before {
+                      border-color: #323130;
+                    }
+                    &:focus:after {
+                      background-color: #605e5c;
+                      content: "";
+                      height: 10px;
+                      left: 5px;
+                      top: 5px;
+                      transition-property: background-color;
+                      width: 10px;
+                    }
+                    &:before {
+                      background-color: #ffffff;
+                      border-color: #323130;
+                      border-radius: 50%;
+                      border-style: solid;
+                      border-width: 1px;
+                      box-sizing: border-box;
+                      content: "";
+                      display: inline-block;
+                      font-weight: normal;
+                      height: 20px;
+                      left: 0px;
+                      position: absolute;
+                      top: 0px;
+                      transition-duration: 200ms;
+                      transition-property: border-color;
+                      transition-timing-function: cubic-bezier(.4, 0, .23, 1);
+                      width: 20px;
+                    }
+                    &:after {
+                      border-radius: 50%;
+                      box-sizing: border-box;
+                      content: "";
+                      height: 0px;
+                      left: 10px;
+                      position: absolute;
+                      right: 0px;
+                      transition-duration: 200ms;
+                      transition-property: border-width;
+                      transition-timing-function: cubic-bezier(.4, 0, .23, 1);
+                      width: 0px;
+                    }
+                htmlFor="ChoiceGroup0-success"
+              >
+                <span
+                  className="ms-ChoiceFieldLabel"
+                  id="ChoiceGroupLabel1-success"
+                >
+                  Success MessageBar
+                </span>
+              </label>
+            </div>
+          </div>
+          <div
+            className=
+                ms-ChoiceField
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  align-items: center;
+                  border: none;
+                  box-sizing: border-box;
+                  color: #323130;
+                  display: flex;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                  margin-top: 8px;
+                  min-height: 26px;
+                  position: relative;
+                }
+                & .ms-ChoiceFieldLabel {
+                  display: inline-block;
+                  padding-left: 26px;
+                }
+          >
+            <div
+              className=
+                  ms-ChoiceField-wrapper
+
+            >
+              <input
+                checked={false}
+                className=
+                    ms-ChoiceField-input
+                    {
+                      height: 100%;
+                      margin-bottom: 0px;
+                      margin-left: 0px;
+                      margin-right: 0px;
+                      margin-top: 0px;
+                      opacity: 0;
+                      position: absolute;
+                      right: 0px;
+                      top: 0px;
+                      width: 100%;
+                    }
+                id="ChoiceGroup0-warning"
+                name="ChoiceGroup0"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                type="radio"
+              />
+              <label
+                className=
+                    ms-ChoiceField-field
+                    {
+                      cursor: pointer;
+                      display: inline-block;
+                      margin-top: 0px;
+                      min-height: 20px;
+                      position: relative;
+                      user-select: none;
+                      vertical-align: top;
+                    }
+                    &:hover .ms-ChoiceFieldLabel {
+                      color: #201f1e;
+                    }
+                    &:hover:before {
+                      border-color: #323130;
+                    }
+                    &:hover:after {
+                      background-color: #605e5c;
+                      content: "";
+                      height: 10px;
+                      left: 5px;
+                      top: 5px;
+                      transition-property: background-color;
+                      width: 10px;
+                    }
+                    &:focus .ms-ChoiceFieldLabel {
+                      color: #201f1e;
+                    }
+                    &:focus:before {
+                      border-color: #323130;
+                    }
+                    &:focus:after {
+                      background-color: #605e5c;
+                      content: "";
+                      height: 10px;
+                      left: 5px;
+                      top: 5px;
+                      transition-property: background-color;
+                      width: 10px;
+                    }
+                    &:before {
+                      background-color: #ffffff;
+                      border-color: #323130;
+                      border-radius: 50%;
+                      border-style: solid;
+                      border-width: 1px;
+                      box-sizing: border-box;
+                      content: "";
+                      display: inline-block;
+                      font-weight: normal;
+                      height: 20px;
+                      left: 0px;
+                      position: absolute;
+                      top: 0px;
+                      transition-duration: 200ms;
+                      transition-property: border-color;
+                      transition-timing-function: cubic-bezier(.4, 0, .23, 1);
+                      width: 20px;
+                    }
+                    &:after {
+                      border-radius: 50%;
+                      box-sizing: border-box;
+                      content: "";
+                      height: 0px;
+                      left: 10px;
+                      position: absolute;
+                      right: 0px;
+                      transition-duration: 200ms;
+                      transition-property: border-width;
+                      transition-timing-function: cubic-bezier(.4, 0, .23, 1);
+                      width: 0px;
+                    }
+                htmlFor="ChoiceGroup0-warning"
+              >
+                <span
+                  className="ms-ChoiceFieldLabel"
+                  id="ChoiceGroupLabel1-warning"
+                >
+                  Warning MessageBar - single line
+                </span>
+              </label>
+            </div>
+          </div>
+          <div
+            className=
+                ms-ChoiceField
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  align-items: center;
+                  border: none;
+                  box-sizing: border-box;
+                  color: #323130;
+                  display: flex;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                  margin-top: 8px;
+                  min-height: 26px;
+                  position: relative;
+                }
+                & .ms-ChoiceFieldLabel {
+                  display: inline-block;
+                  padding-left: 26px;
+                }
+          >
+            <div
+              className=
+                  ms-ChoiceField-wrapper
+
+            >
+              <input
+                checked={false}
+                className=
+                    ms-ChoiceField-input
+                    {
+                      height: 100%;
+                      margin-bottom: 0px;
+                      margin-left: 0px;
+                      margin-right: 0px;
+                      margin-top: 0px;
+                      opacity: 0;
+                      position: absolute;
+                      right: 0px;
+                      top: 0px;
+                      width: 100%;
+                    }
+                id="ChoiceGroup0-warning2"
+                name="ChoiceGroup0"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                type="radio"
+              />
+              <label
+                className=
+                    ms-ChoiceField-field
+                    {
+                      cursor: pointer;
+                      display: inline-block;
+                      margin-top: 0px;
+                      min-height: 20px;
+                      position: relative;
+                      user-select: none;
+                      vertical-align: top;
+                    }
+                    &:hover .ms-ChoiceFieldLabel {
+                      color: #201f1e;
+                    }
+                    &:hover:before {
+                      border-color: #323130;
+                    }
+                    &:hover:after {
+                      background-color: #605e5c;
+                      content: "";
+                      height: 10px;
+                      left: 5px;
+                      top: 5px;
+                      transition-property: background-color;
+                      width: 10px;
+                    }
+                    &:focus .ms-ChoiceFieldLabel {
+                      color: #201f1e;
+                    }
+                    &:focus:before {
+                      border-color: #323130;
+                    }
+                    &:focus:after {
+                      background-color: #605e5c;
+                      content: "";
+                      height: 10px;
+                      left: 5px;
+                      top: 5px;
+                      transition-property: background-color;
+                      width: 10px;
+                    }
+                    &:before {
+                      background-color: #ffffff;
+                      border-color: #323130;
+                      border-radius: 50%;
+                      border-style: solid;
+                      border-width: 1px;
+                      box-sizing: border-box;
+                      content: "";
+                      display: inline-block;
+                      font-weight: normal;
+                      height: 20px;
+                      left: 0px;
+                      position: absolute;
+                      top: 0px;
+                      transition-duration: 200ms;
+                      transition-property: border-color;
+                      transition-timing-function: cubic-bezier(.4, 0, .23, 1);
+                      width: 20px;
+                    }
+                    &:after {
+                      border-radius: 50%;
+                      box-sizing: border-box;
+                      content: "";
+                      height: 0px;
+                      left: 10px;
+                      position: absolute;
+                      right: 0px;
+                      transition-duration: 200ms;
+                      transition-property: border-width;
+                      transition-timing-function: cubic-bezier(.4, 0, .23, 1);
+                      width: 0px;
+                    }
+                htmlFor="ChoiceGroup0-warning2"
+              >
+                <span
+                  className="ms-ChoiceFieldLabel"
+                  id="ChoiceGroupLabel1-warning2"
+                >
+                  Warning MessageBar - multiline
+                </span>
+              </label>
+            </div>
+          </div>
+          <div
+            className=
+                ms-ChoiceField
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  align-items: center;
+                  border: none;
+                  box-sizing: border-box;
+                  color: #323130;
+                  display: flex;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                  margin-top: 8px;
+                  min-height: 26px;
+                  position: relative;
+                }
+                & .ms-ChoiceFieldLabel {
+                  display: inline-block;
+                  padding-left: 26px;
+                }
+          >
+            <div
+              className=
+                  ms-ChoiceField-wrapper
+
+            >
+              <input
+                checked={false}
+                className=
+                    ms-ChoiceField-input
+                    {
+                      height: 100%;
+                      margin-bottom: 0px;
+                      margin-left: 0px;
+                      margin-right: 0px;
+                      margin-top: 0px;
+                      opacity: 0;
+                      position: absolute;
+                      right: 0px;
+                      top: 0px;
+                      width: 100%;
+                    }
+                id="ChoiceGroup0-all"
+                name="ChoiceGroup0"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                type="radio"
+              />
+              <label
+                className=
+                    ms-ChoiceField-field
+                    {
+                      cursor: pointer;
+                      display: inline-block;
+                      margin-top: 0px;
+                      min-height: 20px;
+                      position: relative;
+                      user-select: none;
+                      vertical-align: top;
+                    }
+                    &:hover .ms-ChoiceFieldLabel {
+                      color: #201f1e;
+                    }
+                    &:hover:before {
+                      border-color: #323130;
+                    }
+                    &:hover:after {
+                      background-color: #605e5c;
+                      content: "";
+                      height: 10px;
+                      left: 5px;
+                      top: 5px;
+                      transition-property: background-color;
+                      width: 10px;
+                    }
+                    &:focus .ms-ChoiceFieldLabel {
+                      color: #201f1e;
+                    }
+                    &:focus:before {
+                      border-color: #323130;
+                    }
+                    &:focus:after {
+                      background-color: #605e5c;
+                      content: "";
+                      height: 10px;
+                      left: 5px;
+                      top: 5px;
+                      transition-property: background-color;
+                      width: 10px;
+                    }
+                    &:before {
+                      background-color: #ffffff;
+                      border-color: #323130;
+                      border-radius: 50%;
+                      border-style: solid;
+                      border-width: 1px;
+                      box-sizing: border-box;
+                      content: "";
+                      display: inline-block;
+                      font-weight: normal;
+                      height: 20px;
+                      left: 0px;
+                      position: absolute;
+                      top: 0px;
+                      transition-duration: 200ms;
+                      transition-property: border-color;
+                      transition-timing-function: cubic-bezier(.4, 0, .23, 1);
+                      width: 20px;
+                    }
+                    &:after {
+                      border-radius: 50%;
+                      box-sizing: border-box;
+                      content: "";
+                      height: 0px;
+                      left: 10px;
+                      position: absolute;
+                      right: 0px;
+                      transition-duration: 200ms;
+                      transition-property: border-width;
+                      transition-timing-function: cubic-bezier(.4, 0, .23, 1);
+                      width: 0px;
+                    }
+                htmlFor="ChoiceGroup0-all"
+              >
+                <span
+                  className="ms-ChoiceFieldLabel"
+                  id="ChoiceGroupLabel1-all"
+                >
+                  Show All
+                </span>
+              </label>
+            </div>
           </div>
         </div>
       </div>
@@ -2858,463 +1183,25 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
   </div>
   <div
     className=
-        ms-StackItem
+        ms-Stack
         {
-          -moz-osx-font-smoothing: grayscale;
-          -webkit-font-smoothing: antialiased;
-          flex-shrink: 1;
-          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-          font-size: 14px;
-          font-weight: 400;
+          box-sizing: border-box;
+          display: flex;
+          flex-direction: column;
+          flex-wrap: nowrap;
           height: auto;
-          width: auto;
+          overflow: hidden;
+          width: 100%;
         }
-  >
-    <label
-      className=
-          ms-Label
-          {
-            -moz-osx-font-smoothing: grayscale;
-            -webkit-font-smoothing: antialiased;
-            box-shadow: none;
-            box-sizing: border-box;
-            color: #323130;
-            display: block;
-            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-            font-size: 14px;
-            font-weight: 600;
-            margin-bottom: 0px;
-            margin-left: 0px;
-            margin-right: 0px;
-            margin-top: 0px;
-            overflow-wrap: break-word;
-            padding-bottom: 5px;
-            padding-left: 0;
-            padding-right: 0;
-            padding-top: 5px;
-            word-wrap: break-word;
-          }
-    >
-      Warning MessageBar - single line, with dismiss, action buttons, and custom icons
-    </label>
-    <div
-      style={
-        Object {
-          "background": "#ffffff",
+        & > * {
+          text-overflow: ellipsis;
         }
-      }
-    >
-      <div
-        className=
-            ms-MessageBar
-            ms-MessageBar--warning
-            ms-MessageBar-singleline
-            ms-MessageBar-dismissalSingleLine
-            {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              background: rgba(255, 200, 10, .2);
-              color: #323130;
-              display: flex;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 14px;
-              font-weight: 400;
-              min-height: 32px;
-              width: 100%;
-              word-break: break-word;
-            }
-            & .ms-Link {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              color: #005a9e;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 12px;
-              font-weight: 400;
-            }
-            @media screen and (-ms-high-contrast: active){& {
-              background: WindowText;
-              color: Window;
-            }
-      >
-        <div
-          className=
-              ms-MessageBar-content
-              {
-                display: flex;
-                line-height: normal;
-                width: 100%;
-              }
-        >
-          <div
-            aria-hidden={true}
-            className=
-                ms-MessageBar-icon
-                {
-                  display: flex;
-                  flex-shrink: 0;
-                  font-size: 16px;
-                  margin-bottom: 8px;
-                  margin-left: 12px;
-                  margin-right: 0;
-                  margin-top: 8px;
-                  min-height: 16px;
-                  min-width: 16px;
-                }
-          >
-            <i
-              aria-hidden={true}
-              className=
-
-                  {
-                    -moz-osx-font-smoothing: grayscale;
-                    -webkit-font-smoothing: antialiased;
-                    color: #333333;
-                    display: inline-block;
-                    font-family: "FabricMDL2Icons";
-                    font-style: normal;
-                    font-weight: normal;
-                    speak: none;
-                  }
-                  @media screen and (-ms-high-contrast: active){& {
-                    -ms-high-contrast-adjust: none;
-                    color: Window;
-                  }
-              data-icon-name="Search"
-            >
-              
-            </i>
-          </div>
-          <div
-            className=
-                ms-MessageBar-text
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  display: flex;
-                  flex-grow: 1;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 12px;
-                  font-weight: 400;
-                  margin-bottom: 8px;
-                  margin-left: 8px;
-                  margin-right: 8px;
-                  margin-top: 8px;
-                  min-width: 0px;
-                }
-                @media screen and (-ms-high-contrast: active){& {
-                  -ms-high-contrast-adjust: none;
-                }
-            id="MessageBar43"
-          >
-            <span
-              aria-live="polite"
-              className=
-                  ms-MessageBar-innerText
-                  {
-                    line-height: 16px;
-                    overflow: hidden;
-                    text-overflow: ellipsis;
-                    white-space: nowrap;
-                  }
-                  & span a {
-                    padding-left: 4px;
-                  }
-                  @media only screen and (min-width: 0px) and (max-width: 479px){& {
-                    overflow: visible;
-                    white-space: pre-wrap;
-                  }
-              role="status"
-            />
-          </div>
-          <div
-            className=
-                ms-MessageBar-actionsSingleLine
-                {
-                  align-items: center;
-                  display: flex;
-                  flex-basis: auto;
-                  flex-direction: row-reverse;
-                  flex-grow: 0;
-                  flex-shrink: 0;
-                  margin-bottom: 0;
-                  margin-left: 8px;
-                  margin-right: 0px;
-                  margin-top: 0;
-                }
-                & button:nth-child(n+2) {
-                  margin-left: 8px;
-                }
-          >
-            <div>
-              <button
-                className=
-                    ms-Button
-                    ms-Button--default
-                    {
-                      -moz-osx-font-smoothing: grayscale;
-                      -webkit-font-smoothing: antialiased;
-                      background-color: #ffffff;
-                      border-color: #c8c6c4;
-                      border-radius: 2px;
-                      border: 1px solid #8a8886;
-                      box-sizing: border-box;
-                      color: #323130;
-                      cursor: pointer;
-                      display: inline-block;
-                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                      font-size: 14px;
-                      font-weight: 400;
-                      height: 24px;
-                      min-width: 80px;
-                      outline: transparent;
-                      padding-bottom: 0;
-                      padding-left: 16px;
-                      padding-right: 16px;
-                      padding-top: 0;
-                      position: relative;
-                      text-align: center;
-                      text-decoration: none;
-                      user-select: none;
-                      vertical-align: top;
-                    }
-                    &::-moz-focus-inner {
-                      border: 0;
-                    }
-                    .ms-Fabric--isFocusVisible &:focus:after {
-                      border: 1px solid transparent;
-                      bottom: 2px;
-                      content: "";
-                      left: 2px;
-                      outline: 1px solid #605e5c;
-                      position: absolute;
-                      right: 2px;
-                      top: 2px;
-                      z-index: 1;
-                    }
-                    @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                      border: none;
-                      bottom: -2px;
-                      left: -2px;
-                      outline-color: ActiveBorder;
-                      outline-offset: -4px;
-                      right: -2px;
-                      top: -2px;
-                    }
-                    &:active > * {
-                      left: 0px;
-                      position: relative;
-                      top: 0px;
-                    }
-                    &:hover {
-                      background-color: #f3f2f1;
-                      color: #201f1e;
-                    }
-                    @media screen and (-ms-high-contrast: active){&:hover {
-                      border-color: Highlight;
-                      color: Highlight;
-                    }
-                    &:active {
-                      background-color: #edebe9;
-                      color: #201f1e;
-                    }
-                data-is-focusable={true}
-                onClick={[Function]}
-                onKeyDown={[Function]}
-                onKeyPress={[Function]}
-                onKeyUp={[Function]}
-                onMouseDown={[Function]}
-                onMouseUp={[Function]}
-                type="button"
-              >
-                <span
-                  className=
-                      ms-Button-flexContainer
-                      {
-                        align-items: center;
-                        display: flex;
-                        flex-wrap: nowrap;
-                        height: 100%;
-                        justify-content: center;
-                      }
-                  data-automationid="splitbuttonprimary"
-                >
-                  <span
-                    className=
-                        ms-Button-textContainer
-                        {
-                          display: block;
-                          flex-grow: 1;
-                        }
-                  >
-                    <span
-                      className=
-                          ms-Button-label
-                          {
-                            display: block;
-                            font-weight: 600;
-                            line-height: 100%;
-                            margin-bottom: 0;
-                            margin-left: 4px;
-                            margin-right: 4px;
-                            margin-top: 0;
-                          }
-                      id="id__44"
-                    >
-                      Action
-                    </span>
-                  </span>
-                </span>
-              </button>
-            </div>
-          </div>
-          <div
-            className=
-                ms-MessageBar-dismissSingleLine
-
-          >
-            <button
-              aria-label="Close"
-              className=
-                  ms-Button
-                  ms-Button--icon
-                  ms-MessageBar-dismissal
-                  {
-                    -moz-osx-font-smoothing: grayscale;
-                    -webkit-font-smoothing: antialiased;
-                    background-color: transparent;
-                    border-radius: 2px;
-                    border: none;
-                    box-sizing: border-box;
-                    color: #0078d4;
-                    cursor: pointer;
-                    display: inline-block;
-                    flex-shrink: 0;
-                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                    font-size: 14px;
-                    font-weight: 400;
-                    height: 32px;
-                    outline: transparent;
-                    padding-bottom: 8px;
-                    padding-left: 12px;
-                    padding-right: 12px;
-                    padding-top: 8px;
-                    position: relative;
-                    text-align: center;
-                    text-decoration: none;
-                    user-select: none;
-                    vertical-align: top;
-                    width: 32px;
-                  }
-                  &::-moz-focus-inner {
-                    border: 0;
-                  }
-                  .ms-Fabric--isFocusVisible &:focus:after {
-                    border: 1px solid transparent;
-                    bottom: 2px;
-                    content: "";
-                    left: 2px;
-                    outline: 1px solid #605e5c;
-                    position: absolute;
-                    right: 2px;
-                    top: 2px;
-                    z-index: 1;
-                  }
-                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                    border: none;
-                    bottom: -2px;
-                    left: -2px;
-                    outline-color: Window;
-                    outline-offset: -4px;
-                    right: -2px;
-                    top: -2px;
-                  }
-                  &:active > * {
-                    left: 0px;
-                    position: relative;
-                    top: 0px;
-                  }
-                  &:hover {
-                    background-color: transparent;
-                    color: #106ebe;
-                  }
-                  @media screen and (-ms-high-contrast: active){&:hover {
-                    border-color: Highlight;
-                    color: Highlight;
-                  }
-                  &:active {
-                    background-color: transparent;
-                    color: #005a9e;
-                  }
-                  & .ms-Button-icon {
-                    color: #323130;
-                    font-size: 10px;
-                    height: 10px;
-                    line-height: 10px;
-                  }
-                  @media screen and (-ms-high-contrast: active){& .ms-Button-icon {
-                    -ms-high-contrast-adjust: none;
-                    color: Window;
-                  }
-              data-is-focusable={true}
-              onClick={[Function]}
-              onKeyDown={[Function]}
-              onKeyPress={[Function]}
-              onKeyUp={[Function]}
-              onMouseDown={[Function]}
-              onMouseUp={[Function]}
-              type="button"
-            >
-              <span
-                className=
-                    ms-Button-flexContainer
-                    {
-                      align-items: center;
-                      display: flex;
-                      flex-wrap: nowrap;
-                      height: 100%;
-                      justify-content: center;
-                    }
-                data-automationid="splitbuttonprimary"
-              >
-                <i
-                  aria-hidden={true}
-                  className=
-                      ms-Icon
-                      ms-Button-icon
-                      {
-                        display: inline-block;
-                      }
-                      {
-                        -moz-osx-font-smoothing: grayscale;
-                        -webkit-font-smoothing: antialiased;
-                        font-family: "FabricMDL2Icons";
-                        font-style: normal;
-                        font-weight: normal;
-                        speak: none;
-                      }
-                      {
-                        flex-shrink: 0;
-                        font-size: 16px;
-                        height: 16px;
-                        line-height: 16px;
-                        margin-bottom: 0;
-                        margin-left: 4px;
-                        margin-right: 4px;
-                        margin-top: 0;
-                        text-align: center;
-                        vertical-align: middle;
-                      }
-                  data-icon-name="AddFriend"
-                  role="presentation"
-                >
-                  
-                </i>
-              </span>
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+        & > *:not(:first-child) {
+          margin-top: 20px;
+        }
+        & > *:not(.ms-StackItem) {
+          flex-shrink: 1;
+        }
+  />
 </div>
 `;
