@@ -290,7 +290,7 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
   protected _setInitialFocus = (): void => {
     if (this.props.setInitialFocus && !this._didSetInitialFocus && this.state.positions && this._calloutElement.current) {
       this._didSetInitialFocus = true;
-      this._async.requestAnimationFrame(() => focusFirstChild(this._calloutElement.current!), this);
+      this._async.requestAnimationFrame(() => focusFirstChild(this._calloutElement.current!), this._calloutElement.current);
     }
   };
 
@@ -349,7 +349,7 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
   }
 
   private _updateAsyncPosition(): void {
-    this._async.requestAnimationFrame(() => this._updatePosition(), this);
+    this._async.requestAnimationFrame(() => this._updatePosition(), this._calloutElement.current);
   }
 
   private _getBeakPosition(): React.CSSProperties {
@@ -487,11 +487,13 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
   }
 
   private _setTargetWindowAndElement(target: Target): void {
+    const currentElement = this._calloutElement.current;
+
     if (target) {
       if (typeof target === 'string') {
-        const currentDoc: Document = getDocument(this)!;
+        const currentDoc: Document = getDocument(currentElement)!;
         this._target = currentDoc ? (currentDoc.querySelector(target) as Element) : null;
-        this._targetWindow = getWindow(this)!;
+        this._targetWindow = getWindow(currentElement)!;
       } else if ((target as MouseEvent).stopPropagation) {
         this._targetWindow = getWindow((target as MouseEvent).toElement as HTMLElement)!;
         this._target = target as MouseEvent;
@@ -504,11 +506,11 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
         this._targetWindow = getWindow(this._target)!;
         // HTMLImgElements can have x and y values. The check for it being a point must go last.
       } else {
-        this._targetWindow = getWindow(this)!;
+        this._targetWindow = getWindow(currentElement)!;
         this._target = target as IPoint;
       }
     } else {
-      this._targetWindow = getWindow(this)!;
+      this._targetWindow = getWindow(currentElement)!;
     }
   }
 
@@ -532,9 +534,9 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
         if (calloutMainElem.offsetHeight < this.props.finalHeight!) {
           this._setHeightOffsetEveryFrame();
         } else {
-          this._async.cancelAnimationFrame(this._setHeightOffsetTimer, this._target as Element);
+          this._async.cancelAnimationFrame(this._setHeightOffsetTimer, this._calloutElement.current);
         }
-      }, this);
+      }, this._calloutElement.current);
     }
   }
 
