@@ -2583,7 +2583,7 @@ export interface IColorRectangleProps {
     color: IColor;
     componentRef?: IRefObject<IColorRectangle>;
     minSize?: number;
-    onChange?: (ev: React.MouseEvent<HTMLElement>, color: IColor) => void;
+    onChange?: (ev: React.MouseEvent | React.KeyboardEvent, color: IColor) => void;
     styles?: IStyleFunctionOrObject<IColorRectangleStyleProps, IColorRectangleStyles>;
     theme?: ITheme;
 }
@@ -2614,7 +2614,7 @@ export interface IColorSliderProps {
     isAlpha?: boolean;
     maxValue?: number;
     minValue?: number;
-    onChange?: (event: React.MouseEvent<HTMLElement>, newValue?: number) => void;
+    onChange?: (event: React.MouseEvent | React.KeyboardEvent, newValue?: number) => void;
     overlayStyle?: any;
     styles?: IStyleFunctionOrObject<IColorSliderStyleProps, IColorSliderStyles>;
     theme?: ITheme;

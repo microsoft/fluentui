@@ -1,4 +1,5 @@
 import { IColorSliderStyleProps, IColorSliderStyles } from './ColorSlider.types';
+import { IsFocusVisibleClassName } from '../../../Utilities';
 
 export const getStyles = (props: IColorSliderStyleProps): IColorSliderStyles => {
   const { theme, className } = props;
@@ -14,9 +15,10 @@ export const getStyles = (props: IColorSliderStyleProps): IColorSliderStyles => 
         border: `1px solid ${palette.neutralLight}`,
         borderRadius: effects.roundedCorner2,
         boxSizing: 'border-box',
+        outline: 'none',
 
         selectors: {
-          ':focus': {
+          [`.${IsFocusVisibleClassName} &:focus`]: {
             outline: `1px solid ${palette.neutralSecondary}`
           }
         }

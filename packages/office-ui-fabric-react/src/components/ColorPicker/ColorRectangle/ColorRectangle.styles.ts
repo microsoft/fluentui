@@ -1,5 +1,6 @@
 import { IColorRectangleStyleProps, IColorRectangleStyles } from './ColorRectangle.types';
 import { HighContrastSelector } from '../../../Styling';
+import { IsFocusVisibleClassName } from '../../../Utilities';
 
 export const getStyles = (props: IColorRectangleStyleProps): IColorRectangleStyles => {
   const { className, theme, minSize } = props;
@@ -15,12 +16,14 @@ export const getStyles = (props: IColorRectangleStyleProps): IColorRectangleStyl
         borderRadius: effects.roundedCorner2,
         minWidth: minSize,
         minHeight: minSize,
+        outline: 'none',
+
         selectors: {
           [HighContrastSelector]: {
             MsHighContrastAdjust: 'none'
           },
 
-          ':focus': {
+          [`.${IsFocusVisibleClassName} &:focus`]: {
             outline: `1px solid ${palette.neutralSecondary}`
           }
         }
