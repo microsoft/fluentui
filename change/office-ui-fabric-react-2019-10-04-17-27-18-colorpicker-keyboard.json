@@ -1,0 +1,9 @@
+{
+  "type": "minor",
+  "comment": "ColorPicker: Adding keyboard accessibility to swatch and sliders.",
+  "packageName": "office-ui-fabric-react",
+  "email": "dzearing@microsoft.com",
+  "commit": "82cf1a015590db75009c0ec312b3909e329407e7",
+  "date": "2019-10-05T00:27:18.419Z",
+  "file": "/Users/david/fabric/branch0/change/office-ui-fabric-react-2019-10-04-17-27-18-colorpicker-keyboard.json"
+}
