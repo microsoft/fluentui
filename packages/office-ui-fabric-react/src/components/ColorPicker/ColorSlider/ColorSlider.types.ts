@@ -44,7 +44,7 @@ export interface IColorSliderProps {
   /**
    * Callback issued when the value changes.
    */
-  onChange?: (event: React.MouseEvent<HTMLElement>, newValue?: number) => void;
+  onChange?: (event: React.MouseEvent | React.KeyboardEvent, newValue?: number) => void;
 
   /**
    * If true, the slider represents an alpha slider.

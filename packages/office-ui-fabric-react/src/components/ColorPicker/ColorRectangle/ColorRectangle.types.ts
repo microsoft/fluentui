@@ -48,7 +48,7 @@ export interface IColorRectangleProps {
   /**
    * Callback for when the color changes.
    */
-  onChange?: (ev: React.MouseEvent<HTMLElement>, color: IColor) => void;
+  onChange?: (ev: React.MouseEvent | React.KeyboardEvent, color: IColor) => void;
 }
 
 /**

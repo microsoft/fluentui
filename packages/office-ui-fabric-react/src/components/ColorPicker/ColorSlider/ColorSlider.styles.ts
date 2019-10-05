@@ -13,7 +13,13 @@ export const getStyles = (props: IColorSliderStyleProps): IColorSliderStyles => 
         marginBottom: 8,
         border: `1px solid ${palette.neutralLight}`,
         borderRadius: effects.roundedCorner2,
-        boxSizing: 'border-box'
+        boxSizing: 'border-box',
+
+        selectors: {
+          ':focus': {
+            outline: `1px solid ${palette.neutralSecondary}`
+          }
+        }
       },
       className
     ],

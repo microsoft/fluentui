@@ -18,6 +18,10 @@ export const getStyles = (props: IColorRectangleStyleProps): IColorRectangleStyl
         selectors: {
           [HighContrastSelector]: {
             MsHighContrastAdjust: 'none'
+          },
+
+          ':focus': {
+            outline: `1px solid ${palette.neutralSecondary}`
           }
         }
       },

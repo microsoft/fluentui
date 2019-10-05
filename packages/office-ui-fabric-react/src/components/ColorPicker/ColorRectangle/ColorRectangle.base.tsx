@@ -6,6 +6,7 @@ import { getFullColorString } from '../../../utilities/color/getFullColorString'
 import { updateSV } from '../../../utilities/color/updateSV';
 import { clamp } from '../../../utilities/color/clamp';
 import { IColorRectangleProps, IColorRectangleStyleProps, IColorRectangleStyles, IColorRectangle } from './ColorRectangle.types';
+import { KeyCodes } from '@uifabric/utilities';
 
 const getClassNames = classNamesFunction<IColorRectangleStyleProps, IColorRectangleStyles>();
 
@@ -67,9 +68,11 @@ export class ColorRectangleBase extends React.Component<IColorRectangleProps, IC
     return (
       <div
         ref={this._root}
+        tabIndex={0}
         className={classNames.root}
         style={{ backgroundColor: getFullColorString(color) }}
         onMouseDown={this._onMouseDown}
+        onKeyDown={this._onKeyDown}
       >
         <div className={classNames.light} />
         <div className={classNames.dark} />
@@ -81,15 +84,58 @@ export class ColorRectangleBase extends React.Component<IColorRectangleProps, IC
     );
   }
 
-  private _onMouseDown = (ev: React.MouseEvent<HTMLElement>): void => {
+  private _onKeyDown = (ev: React.KeyboardEvent<HTMLElement>): void => {
+    const { color } = this.state;
+    let s = color.s;
+    let v = color.v;
+
+    const increment = ev.shiftKey ? 10 : 1;
+
+    switch (ev.which) {
+      case KeyCodes.up: {
+        v = Math.min(100, v + increment);
+        break;
+      }
+      case KeyCodes.down: {
+        v = Math.max(0, v - increment);
+        break;
+      }
+      case KeyCodes.left: {
+        s = Math.max(0, s - increment);
+        break;
+      }
+      case KeyCodes.right: {
+        s = Math.min(100, s + increment);
+        break;
+      }
+      default:
+        return;
+    }
+    this._updateColor(ev, updateSV(color, (s / 100) * MAX_COLOR_SATURATION, (v / 100) * MAX_COLOR_VALUE));
+  };
+
+  private _updateColor(ev: React.MouseEvent | React.KeyboardEvent, color: IColor): void {
+    const { onChange } = this.props;
+
+    if (onChange) {
+      onChange(ev, color);
+    }
+
+    if (!ev.defaultPrevented && ev.type === 'keydown') {
+      this.setState({ color });
+      ev.preventDefault();
+    }
+  }
+
+  private _onMouseDown = (ev: React.MouseEvent): void => {
     this._events.on(window, 'mousemove', this._onMouseMove, true);
     this._events.on(window, 'mouseup', this._disableEvents, true);
 
     this._onMouseMove(ev);
   };
 
-  private _onMouseMove = (ev: React.MouseEvent<HTMLElement>): void => {
-    const { color, onChange } = this.props;
+  private _onMouseMove = (ev: React.MouseEvent): void => {
+    const { color } = this.props;
 
     if (!this._root.current) {
       return;
@@ -104,18 +150,10 @@ export class ColorRectangleBase extends React.Component<IColorRectangleProps, IC
     }
 
     const newColor = _getNewColor(ev, color, this._root.current);
+
     if (newColor) {
-      this.setState({
-        color: newColor
-      });
-
-      if (onChange) {
-        onChange(ev, newColor);
-      }
+      this._updateColor(ev, newColor);
     }
-
-    ev.preventDefault();
-    ev.stopPropagation();
   };
 
   private _disableEvents = (): void => {
@@ -127,7 +165,7 @@ export class ColorRectangleBase extends React.Component<IColorRectangleProps, IC
  * Exported for testing only.
  * @internal
  */
-export function _getNewColor(ev: React.MouseEvent<HTMLElement>, prevColor: IColor, root: HTMLElement): IColor | undefined {
+export function _getNewColor(ev: React.MouseEvent, prevColor: IColor, root: HTMLElement): IColor | undefined {
   const rectSize = root.getBoundingClientRect();
 
   const sPercentage = (ev.clientX - rectSize.left) / rectSize.width;

@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { classNamesFunction, initializeComponentRef, EventGroup } from '../../../Utilities';
+import { classNamesFunction, initializeComponentRef, EventGroup, KeyCodes, getWindow } from '../../../Utilities';
 import { IColorSliderProps, IColorSliderStyleProps, IColorSliderStyles } from './ColorSlider.types';
 
 const getClassNames = classNamesFunction<IColorSliderStyleProps, IColorSliderStyles>();
 
 export interface IColorSliderState {
-  currentValue?: number;
+  currentValue: number;
 }
 
 /**
@@ -31,7 +31,7 @@ export class ColorSliderBase extends React.Component<IColorSliderProps, IColorSl
     const { value } = this.props;
 
     this.state = {
-      currentValue: value
+      currentValue: value || 0
     };
   }
 
@@ -72,44 +72,89 @@ export class ColorSliderBase extends React.Component<IColorSliderProps, IColorSl
     const sliderStyle = isAlpha ? alphaStyle : hueStyle;
 
     return (
-      <div ref={this._root} className={classNames.root} onMouseDown={this._onMouseDown} style={sliderStyle}>
+      <div
+        ref={this._root}
+        className={classNames.root}
+        tabIndex={0}
+        onKeyDown={this._onKeyDown}
+        onMouseDown={this._onMouseDown}
+        style={sliderStyle}
+      >
         <div className={classNames.sliderOverlay} style={overlayStyle} />
         <div className={classNames.sliderThumb} style={{ left: currentPercentage + '%' }} />
       </div>
     );
   }
 
+  private _onKeyDown = (ev: React.KeyboardEvent): void => {
+    let { currentValue = 0 } = this.state;
+    const { minValue = 0, maxValue = 100 } = this.props;
+    const increment = ev.shiftKey ? 10 : 1;
+
+    switch (ev.which) {
+      case KeyCodes.left: {
+        currentValue = Math.max(minValue, currentValue - increment);
+        break;
+      }
+      case KeyCodes.right: {
+        currentValue = Math.min(maxValue, currentValue + increment);
+        break;
+      }
+      case KeyCodes.home: {
+        currentValue = minValue;
+        break;
+      }
+      case KeyCodes.end: {
+        currentValue = maxValue;
+        break;
+      }
+      default: {
+        return;
+      }
+    }
+
+    this._updateValue(ev, currentValue);
+  };
+
   private _onMouseDown = (ev: React.MouseEvent<HTMLElement>): void => {
-    this._events.on(window, 'mousemove', this._onMouseMove, true);
-    this._events.on(window, 'mouseup', this._onMouseUp, true);
+    const win = getWindow(this);
+
+    this._events.on(win, 'mousemove', this._onMouseMove, true);
+    this._events.on(win, 'mouseup', this._onMouseUp, true);
 
     this._onMouseMove(ev);
   };
 
-  private _onMouseMove = (ev: React.MouseEvent<HTMLElement>): void => {
+  private _updateValue(ev: React.MouseEvent | React.KeyboardEvent, currentValue: number) {
+    const { onChange } = this.props;
+
+    if (onChange) {
+      onChange(ev, currentValue);
+    }
+
+    if (!ev.defaultPrevented) {
+      this.setState({
+        currentValue
+      });
+      ev.preventDefault();
+    }
+  }
+
+  private _onMouseMove = (ev: React.MouseEvent): void => {
     if (!this._root.current) {
       return;
     }
 
-    const { onChange, minValue, maxValue } = this.props;
+    const { minValue, maxValue } = this.props;
     const rectSize = this._root.current.getBoundingClientRect();
 
     const currentPercentage = (ev.clientX - rectSize.left) / rectSize.width;
     const newValue = Math.min(maxValue!, Math.max(minValue!, currentPercentage * maxValue!));
 
-    this.setState({
-      currentValue: newValue
-    });
-
-    if (onChange) {
-      onChange(ev, newValue);
-    }
-
-    ev.preventDefault();
-    ev.stopPropagation();
+    this._updateValue(ev, newValue);
   };
 
-  private _onMouseUp = (ev: React.MouseEvent<HTMLElement>): void => {
+  private _onMouseUp = (ev: React.MouseEvent): void => {
     this._events.off();
   };
 }
