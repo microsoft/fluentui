@@ -1186,16 +1186,18 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
   };
 
   private _setTargetWindowAndElement(target: Target): void {
+    const currentElement = this._host;
+
     if (target) {
       if (typeof target === 'string') {
-        const currentDoc: Document = getDocument()!;
+        const currentDoc: Document = getDocument(currentElement)!;
         this._target = currentDoc ? (currentDoc.querySelector(target) as Element) : null;
-        this._targetWindow = getWindow(this)!;
+        this._targetWindow = getWindow(currentElement)!;
       } else if ((target as MouseEvent).stopPropagation) {
         this._targetWindow = getWindow((target as MouseEvent).toElement as HTMLElement)!;
         this._target = target as MouseEvent;
       } else if ((target as IPoint).x !== undefined && (target as IPoint).y !== undefined) {
-        this._targetWindow = getWindow(this)!;
+        this._targetWindow = getWindow(currentElement)!;
         this._target = target as IPoint;
       } else if ((target as React.RefObject<Element>).current !== undefined) {
         this._target = (target as React.RefObject<Element>).current;
@@ -1206,7 +1208,7 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
         this._target = target as Element;
       }
     } else {
-      this._targetWindow = getWindow(this)!;
+      this._targetWindow = getWindow(currentElement)!;
     }
   }
 
