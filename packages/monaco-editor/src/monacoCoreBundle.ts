@@ -4,12 +4,12 @@
 
 // Main editor features
 // @ts-ignore because monaco doesn't provide typings for this file
-export * from 'monaco-editor/esm/vs/editor/edcore.main.js';
+export * from '../esm/vs/editor/edcore.main.js';
 
 // TS language features are registered as a side effect of these imports
-import 'monaco-editor/esm/vs/basic-languages/typescript/typescript.contribution.js';
-import 'monaco-editor/esm/vs/basic-languages/javascript/javascript.contribution.js';
-import 'monaco-editor/esm/vs/language/typescript/monaco.contribution.js';
+import '../esm/vs/basic-languages/typescript/typescript.contribution.js';
+import '../esm/vs/basic-languages/javascript/javascript.contribution.js';
+import '../esm/vs/language/typescript/monaco.contribution.js';
 
 // If the consumer has set a MonacoConfig global, this will set up Monaco's required
 // MonacoEnvironment globals (otherwise the consumer can manually call this function later)

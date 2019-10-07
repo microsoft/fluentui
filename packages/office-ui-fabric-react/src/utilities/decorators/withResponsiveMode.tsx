@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { findDOMNode } from 'react-dom';
 import { BaseDecorator } from './BaseDecorator';
 import { getWindow, hoistStatics } from '../../Utilities';
 
@@ -69,7 +70,8 @@ export function withResponsiveMode<TProps extends { responsiveMode?: ResponsiveM
 
     private _getResponsiveMode(): ResponsiveMode {
       let responsiveMode = ResponsiveMode.small;
-      const win = getWindow(this);
+      const element = findDOMNode(this) as Element;
+      const win = getWindow(element);
 
       if (typeof win !== 'undefined') {
         try {

@@ -1,7 +1,13 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Thu, 03 Oct 2019 23:14:46 GMT and should not be manually modified.
+This log was last generated on Fri, 04 Oct 2019 22:19:48 GMT and should not be manually modified.
 
+## 7.8.4
+Fri, 04 Oct 2019 22:19:48 GMT
+
+### Patches
+
+- Use latest tsx-editor APIs (elcraig@microsoft.com)
 ## 7.8.3
 Thu, 03 Oct 2019 23:14:46 GMT
 

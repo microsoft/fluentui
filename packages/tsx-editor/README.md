@@ -27,7 +27,7 @@ If the user's browser can't support the editor (mainly IE 11 and some mobile bro
 Any project consuming `@uifabric/tsx-editor` should follow the Webpack and runtime configuration instructions from the [`@uifabric/monaco-editor` readme](https://github.com/OfficeDev/office-ui-fabric-react/blob/master/packages/monaco-editor/README.md). Note that the helpers used are re-exported from this package for convenience:
 
 - `addMonacoWebpackConfig`: import from `@uifabric/tsx-editor/scripts/addMonacoWebpackConfig`
-- `configureEnvironment` and `IMonacoConfig`: import from `@uifabric/tsx-editor/lib/index-min`
+- `configureEnvironment` and `IMonacoConfig`: import from `@uifabric/tsx-editor`
 
 The editor code also assumes that React is available on the page as a global.
 
@@ -45,15 +45,17 @@ Note that these are **still subject to change** until a major release.
 
 If the user's browser can't support the editor, the code will be rendered read-only.
 
-Note that if you choose this option, you should **only import from** `@uifabric/tsx-editor/lib/index-min`. This will prevent Monaco from being pulled into your main bundle.
-
 TODO: add usage example
 
 ### `TsxEditor`: Editor + transpile/eval example
 
 `TsxEditor` is like `EditorWrapper`, but without the example container, error bar, or read-only fallback. Instead of rendering the example itself, it takes in an `onTransformFinished` callback to pass the example component up to the parent for rendering.
 
-Note that if you choose this option, you should **delay load** the `TsxEditor` component to prevent Monaco from being pulled into your main bundle.
+Notes for this option:
+
+- You should **delay load** the `TsxEditor` component to prevent Monaco from being pulled into your main bundle.
+  - `TsxEditor` isn't included in `@uifabric/tsx-editor/lib/index` due to importing Monaco. It should be imported from `@uifabric/tsx-editor/lib/TsxEditor` instead.
+- When rendering the example component, be sure to wrap it in an error boundary; otherwise **runtime errors in the example will crash the page**. (One option is using `EditorErrorBoundary`, which also handles displaying transform errors.)
 
 TODO: add usage example
 
@@ -61,7 +63,7 @@ TODO: add usage example
 
 `Editor` renders only Monaco. It works with any language and doesn't do any extra TypeScript setup.
 
-Note that if you choose this option, you should **delay load** the `Editor` component to prevent Monaco from being pulled into your main bundle.
+Note that if you choose this option, you should **delay load** the `Editor` component to prevent Monaco from being pulled into your main bundle. (`Editor` isn't included in `@uifabric/tsx-editor/lib/index` due to importing Monaco. It should be imported from `@uifabric/tsx-editor/lib/Editor` instead.)
 
 TODO: add usage example
 

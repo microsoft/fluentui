@@ -18,8 +18,7 @@ import { AppCustomizationsContext, IAppCustomizations, IExampleCardCustomization
 import { CodepenComponent, CONTENT_ID } from '../CodepenComponent/CodepenComponent';
 import { IExampleCardProps, IExampleCardStyleProps, IExampleCardStyles } from './ExampleCard.types';
 import { getStyles } from './ExampleCard.styles';
-import { EditorWrapper, SUPPORTED_PACKAGES, IMonacoTextModel, transformExample } from '@uifabric/tsx-editor/lib/index-min';
-// DO NOT import anything from the root of tsx-editor, to avoid pulling Monaco into the main bundle!
+import { EditorWrapper, SUPPORTED_PACKAGES, IMonacoTextModel, transformExample } from '@uifabric/tsx-editor';
 
 export interface IExampleCardState {
   /** only used if props.isCodeVisible and props.onToggleEditor are undefined */
@@ -106,7 +105,9 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
           const { subComponentStyles } = classNames;
           const { codeButtons: codeButtonStyles } = subComponentStyles;
 
-          const exampleCard = (
+          const ExamplePreview = this._getPreviewComponent(this._activeCustomizations, schemeIndex);
+
+          return (
             <div className={css(classNames.root, isCodeVisible && 'is-codeVisible')}>
               <div className={classNames.header}>
                 <span className={classNames.title}>{title}</span>
@@ -149,22 +150,24 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
                   )}
                 </div>
               </div>
-              <EditorWrapper
-                code={latestCode}
-                supportedPackages={SUPPORTED_PACKAGES}
-                isCodeVisible={isCodeVisible}
-                editorClassName={classNames.code}
-                editorAriaLabel={`Editor for the example "${title}". The example will be updated as you type.`}
-                previewAs={this._getPreviewComponent(this._activeCustomizations, schemeIndex)}
-                modelRef={this._monacoModelRef}
-              >
-                {children}
-              </EditorWrapper>
+              {isCodeVisible ? (
+                <EditorWrapper
+                  code={latestCode}
+                  supportedPackages={SUPPORTED_PACKAGES}
+                  editorClassName={classNames.code}
+                  editorAriaLabel={`Editor for the example "${title}". The example will be updated as you type.`}
+                  modelRef={this._monacoModelRef}
+                  previewAs={(ExamplePreview as any) as React.FunctionComponent<{}>} // tslint:disable-line:no-any
+                >
+                  {children}
+                </EditorWrapper>
+              ) : (
+                <ExamplePreview>{children}</ExamplePreview>
+              )}
 
               {this._getDosAndDonts()}
             </div>
           );
-          return exampleCard;
         }}
       </AppCustomizationsContext.Consumer>
     );
