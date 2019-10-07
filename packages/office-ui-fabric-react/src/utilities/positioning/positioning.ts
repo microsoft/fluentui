@@ -472,6 +472,7 @@ function _finalizeReturnEdge(elementRectangle: Rectangle, returnEdge: RectangleE
  * @param {RectangleEdge} bounds
  * @param {RectangleEdge} [alignmentEdge]
  * @param {boolean} coverTarget
+ * @param {boolean} doNotFinalizeReturnEdge
  * @returns {IPartialIRectangle}
  */
 function _finalizeElementPosition(
