@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Callout & Tooltip: Making background color themable.",
+  "packageName": "office-ui-fabric-react",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "commit": "6aa84713cd454fdab87851df68bc9af845eec00d",
+  "date": "2019-10-03T00:24:07.290Z"
+}
