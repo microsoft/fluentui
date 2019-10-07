@@ -809,7 +809,7 @@ function _positionCallout(
   const beakPositioned: Rectangle = _positionBeak(beakWidth, positionedElement);
   const finalizedBeakPosition: ICalloutBeakPositionedInfo = _finalizeBeakPosition(positionedElement, beakPositioned, boundingRect);
   return {
-    ..._finalizePositionData(positionedElement, hostElement, boundingRect, props.coverTarget),
+    ..._finalizePositionData(positionedElement, hostElement, boundingRect, props.coverTarget, doNotFinalizeReturnEdge),
     beakPosition: finalizedBeakPosition
   };
 }
