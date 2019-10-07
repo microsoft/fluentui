@@ -61,14 +61,18 @@ const headerStyle = (
   hasSmallHeadline?: boolean
 ): IStyle[] => {
   if (hasCondensedHeadline) {
-    return [classNames.headerIsCondensed];
+    return [
+      classNames.headerIsCondensed,
+      {
+        marginBottom: 14
+      }
+    ];
   }
 
   return [
     hasSmallHeadline && classNames.headerIsSmall,
     !hasSmallHeadline && classNames.headerIsLarge,
     {
-      marginBottom: 10,
       selectors: {
         ':not(:last-child)': {
           marginBottom: 14
@@ -119,7 +123,7 @@ export const getStyles = (props: ITeachingBubbleStyleProps): ITeachingBubbleStyl
         position: 'absolute',
         right: 0,
         top: 0,
-        margin: '15px 10px 0px 0px',
+        margin: '15px 15px 0 0',
         borderRadius: 0,
         color: palette.white,
         fontSize: fonts.small.fontSize,
@@ -145,6 +149,9 @@ export const getStyles = (props: ITeachingBubbleStyleProps): ITeachingBubbleStyl
     footer: [
       classNames.footer,
       {
+        display: 'flex',
+        justifyContent: 'flex-end',
+        alignItems: 'center',
         color: palette.white,
         selectors: {
           // TODO: global class name usage should be converted to a button styles function once Button supports JS styling
@@ -160,6 +167,7 @@ export const getStyles = (props: ITeachingBubbleStyleProps): ITeachingBubbleStyl
       (hasCondensedHeadline || hasSmallHeadline) && [
         fonts.medium,
         {
+          marginRight: 10,
           fontWeight: FontWeights.semibold
         }
       ]
@@ -167,8 +175,7 @@ export const getStyles = (props: ITeachingBubbleStyleProps): ITeachingBubbleStyl
     headline: [
       classNames.headline,
       {
-        marginBottom: 10,
-        marginTop: 0,
+        margin: 0,
         color: palette.white,
         fontWeight: FontWeights.semibold
       },

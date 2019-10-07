@@ -153,8 +153,8 @@ export class TeachingBubbleContentBase extends BaseComponent<ITeachingBubbleProp
           {headerContent}
           {bodyContent}
           {footerContent}
+          {closeButton}
         </div>
-        {closeButton}
       </div>
     );
   }
