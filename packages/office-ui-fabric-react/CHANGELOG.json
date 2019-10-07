@@ -2,6 +2,27 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Mon, 07 Oct 2019 12:33:45 GMT",
+      "tag": "office-ui-fabric-react_v7.44.0",
+      "version": "7.44.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fixed minor a11y bugs, revamped example page",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "8af1c39a5f3dc74707add30e8aee498e1422aa7e"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Reverting dependency on ReactDOM findDOMNode in utilities to avoid bundle problems in partners.",
+            "author": "dzearing@microsoft.com",
+            "commit": "60e9282babcde13e7ad810d99113a1399e13d479"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 04 Oct 2019 22:19:48 GMT",
       "tag": "office-ui-fabric-react_v7.43.2",
       "version": "7.43.2",

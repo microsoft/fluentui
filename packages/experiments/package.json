@@ -64,10 +64,10 @@
     "@uifabric/set-version": "^7.0.2",
     "@uifabric/styling": "^7.7.2",
     "@uifabric/theme-samples": "^7.0.5",
-    "@uifabric/utilities": "^7.4.0",
+    "@uifabric/utilities": "^7.5.0",
     "@uifabric/variants": "^7.0.5",
     "deep-assign": "^2.0.0",
-    "office-ui-fabric-react": "^7.43.2",
+    "office-ui-fabric-react": "^7.44.0",
     "prop-types": "^15.5.10",
     "tslib": "^1.7.1"
   },

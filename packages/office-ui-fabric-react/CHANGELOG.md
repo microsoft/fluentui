@@ -1,7 +1,16 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 04 Oct 2019 22:19:48 GMT and should not be manually modified.
+This log was last generated on Mon, 07 Oct 2019 12:33:45 GMT and should not be manually modified.
 
+## 7.44.0
+Mon, 07 Oct 2019 12:33:45 GMT
+
+### Minor changes
+
+- Reverting dependency on ReactDOM findDOMNode in utilities to avoid bundle problems in partners. (dzearing@microsoft.com)
+### Patches
+
+- fixed minor a11y bugs, revamped example page (mgodbolt@microsoft.com)
 ## 7.43.2
 Fri, 04 Oct 2019 22:19:48 GMT
 
