@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Adding a new prop renderPersistedMenuHiddenOnMount",
-  "packageName": "office-ui-fabric-react",
-  "email": "kushaly@microsoft.com",
-  "commit": "bbb6467fe349e611f5b7414f28ee2053adf0f342",
-  "date": "2019-09-30T19:15:49.787Z"
-}

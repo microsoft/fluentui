@@ -1,7 +1,17 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 07 Oct 2019 12:33:45 GMT and should not be manually modified.
+This log was last generated on Mon, 07 Oct 2019 23:42:31 GMT and should not be manually modified.
 
+## 7.45.0
+Mon, 07 Oct 2019 23:42:31 GMT
+
+### Minor changes
+
+- Adding a new prop renderPersistedMenuHiddenOnMount (kushaly@microsoft.com)
+- Callout and Card: Fix anchors for both (joschect@microsoft.com)
+### Patches
+
+- Callout & Tooltip: Making background color themable. (Humberto.Morimoto@microsoft.com)
 ## 7.44.0
 Mon, 07 Oct 2019 12:33:45 GMT
 
