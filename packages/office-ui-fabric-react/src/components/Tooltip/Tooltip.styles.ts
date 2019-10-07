@@ -3,7 +3,7 @@ import { AnimationClassNames } from '../../Styling';
 
 export const getStyles = (props: ITooltipStyleProps): ITooltipStyles => {
   const { className, beakWidth = 16, gapSpace = 0, maxWidth, theme } = props;
-  const { palette, fonts, effects } = theme;
+  const { palette, semanticColors, fonts, effects } = theme;
 
   // The math here is done to account for the 45 degree rotation of the beak
   const tooltipGapSpace = -(Math.sqrt((beakWidth * beakWidth) / 2) + gapSpace);
@@ -14,7 +14,7 @@ export const getStyles = (props: ITooltipStyleProps): ITooltipStyles => {
       theme.fonts.medium,
       AnimationClassNames.fadeIn200,
       {
-        background: palette.white,
+        background: semanticColors.menuBackground,
         boxShadow: effects.elevation8,
         padding: '8px',
         maxWidth: maxWidth,
