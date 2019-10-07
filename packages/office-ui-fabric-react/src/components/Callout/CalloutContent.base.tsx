@@ -22,7 +22,8 @@ import {
   IPositionProps,
   getMaxHeight,
   IPosition,
-  RectangleEdge
+  RectangleEdge,
+  positionCard
 } from '../../utilities/positioning';
 import { Popup } from '../../Popup';
 import { classNamesFunction } from '../../Utilities';
@@ -383,7 +384,11 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
       currentProps = assign(currentProps, this.props);
       currentProps!.bounds = this._getBounds();
       currentProps!.target = this._target!;
-      const newPositions: ICalloutPositionedInfo = positionCallout(currentProps!, hostElement, calloutElement, positions);
+      // If there is a finalHeight given then we assume that the user knows and will handle
+      // additional positioning adjustments so we should call positionCard
+      const newPositions: ICalloutPositionedInfo = this.props.finalHeight
+        ? positionCard(currentProps!, hostElement, calloutElement, positions)
+        : positionCallout(currentProps!, hostElement, calloutElement, positions);
 
       // Set the new position only when the positions are not exists or one of the new callout positions are different.
       // The position should not change if the position is within 2 decimal places.
