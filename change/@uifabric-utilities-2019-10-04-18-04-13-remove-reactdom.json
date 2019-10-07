@@ -1,9 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Reverting dependency on ReactDOM findDOMNode in getWindow and getDocument helpers to avoid bundle problems for partners.",
-  "packageName": "@uifabric/utilities",
-  "email": "dzearing@microsoft.com",
-  "commit": "60e9282babcde13e7ad810d99113a1399e13d479",
-  "date": "2019-10-05T01:04:13.175Z",
-  "file": "/Users/david/fabric/branch0/change/@uifabric-utilities-2019-10-04-18-04-13-remove-reactdom.json"
-}
