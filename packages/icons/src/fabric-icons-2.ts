@@ -22,9 +22,20 @@ export function initializeIcons(
     },
     fontFace: {
       fontFamily: `"FabricMDL2Icons-2"`,
-      src: `url('${baseUrl}fabric-icons-2-19094ccc.woff') format('woff')`
+      src: `url('${baseUrl}fabric-icons-2-63c99abf.woff') format('woff')`
     },
     icons: {
+      'Picture': '\uE8B9',
+      'ChromeClose': '\uE8BB',
+      'ShowResults': '\uE8BC',
+      'Message': '\uE8BD',
+      'CalendarDay': '\uE8BF',
+      'CalendarWeek': '\uE8C0',
+      'MailReplyAll': '\uE8C2',
+      'Read': '\uE8C3',
+      'Cut': '\uE8C6',
+      'PaymentCard': '\uE8C7',
+      'Copy': '\uE8C8',
       'Important': '\uE8C9',
       'MailReply': '\uE8CA',
       'GotoToday': '\uE8D1',
@@ -111,20 +122,9 @@ export function initializeIcons(
       'Communications': '\uE95A',
       'Headset': '\uE95B',
       'Health': '\uE95E',
+      'Webcam2': '\uE960',
       'FrontCamera': '\uE96B',
-      'ChevronUpSmall': '\uE96D',
-      'ChevronDownSmall': '\uE96E',
-      'ChevronLeftSmall': '\uE96F',
-      'ChevronRightSmall': '\uE970',
-      'ChevronUpMed': '\uE971',
-      'ChevronDownMed': '\uE972',
-      'ChevronLeftMed': '\uE973',
-      'ChevronRightMed': '\uE974',
-      'Devices2': '\uE975',
-      'PC1': '\uE977',
-      'PresenceChickletVideo': '\uE979',
-      'Reply': '\uE97A',
-      'HalfAlpha': '\uE97E'
+      'ChevronUpSmall': '\uE96D'
     }
   };
 

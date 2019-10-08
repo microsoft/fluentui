@@ -92,7 +92,11 @@ export class DocumentCardCompleteExample extends React.PureComponent {
     };
 
     return (
-      <DocumentCard onClick={this._onClick}>
+      <DocumentCard
+        aria-label="Document Card with multiple items, commands and views. Marketing documents. 6 files were uploaded.
+        Created by Annie Lindqvist in February 23, 2016. 432 views."
+        onClick={this._onClick}
+      >
         <DocumentCardPreview {...previewProps} />
         <DocumentCardLocation
           location="Marketing Documents"

@@ -153,10 +153,19 @@ export class BreadcrumbBase extends BaseComponent<IBreadcrumbProps, any> {
   };
 
   private _onRenderItem = (item: IBreadcrumbItem) => {
+    const Tag = item.as ? item.as : 'span';
+    const breadcrumbItem = (): JSX.Element => (
+      <Tag className={this._classNames.item}>
+        <TooltipHost content={item.text} overflowMode={TooltipOverflowMode.Parent} {...this.props.tooltipHostProps}>
+          {item.text}
+        </TooltipHost>
+      </Tag>
+    );
+
     if (item.onClick || item.href) {
       return (
         <Link
-          as={'a'}
+          as={item.as ? item.as : 'a'}
           className={this._classNames.itemLink}
           href={item.href}
           aria-current={item.isCurrentItem ? 'page' : undefined}
@@ -168,13 +177,7 @@ export class BreadcrumbBase extends BaseComponent<IBreadcrumbProps, any> {
         </Link>
       );
     } else {
-      return (
-        <span className={this._classNames.item}>
-          <TooltipHost content={item.text} overflowMode={TooltipOverflowMode.Parent} {...this.props.tooltipHostProps}>
-            {item.text}
-          </TooltipHost>
-        </span>
-      );
+      return breadcrumbItem();
     }
   };
 

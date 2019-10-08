@@ -3,7 +3,7 @@
 module.exports = function(env) {
   const path = require('path');
   const resources = require('@uifabric/build/webpack/webpack-resources');
-  const { addMonacoConfig } = require('@uifabric/tsx-editor/scripts/monaco-webpack');
+  const { addMonacoWebpackConfig } = require('@uifabric/tsx-editor/scripts/addMonacoWebpackConfig');
   // @ts-ignore
   const version = require('./package.json').version;
   const isProductionArg = env && env.production;
@@ -24,7 +24,7 @@ module.exports = function(env) {
   return resources.createConfig(
     entryPointName,
     isProductionArg,
-    addMonacoConfig({
+    addMonacoWebpackConfig({
       entry: {
         [entryPointName]: './lib/root.js'
       },
@@ -33,6 +33,9 @@ module.exports = function(env) {
         publicPath: publicPath,
         chunkFilename: `${entryPointName}-${version}-[name]-${now}${minFileNamePart}.js`
       },
+
+      // The website config intentionally doesn't have React as an external because we bundle it
+      // to ensure we get a consistent version.
 
       resolve: {
         alias: {

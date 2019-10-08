@@ -482,7 +482,6 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                         color: Window;
                       }
                   data-icon-name="CheckMark"
-                  role="presentation"
                 >
                   
                 </i>
@@ -624,7 +623,6 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                         color: Window;
                       }
                   data-icon-name="CheckMark"
-                  role="presentation"
                 >
                   
                 </i>
@@ -826,7 +824,6 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                         color: Window;
                       }
                   data-icon-name="CheckMark"
-                  role="presentation"
                 >
                   
                 </i>
@@ -968,7 +965,6 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                         color: Window;
                       }
                   data-icon-name="CheckMark"
-                  role="presentation"
                 >
                   
                 </i>
@@ -3026,15 +3022,15 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                 padding-top: 5px;
                 word-wrap: break-word;
               }
-          htmlFor="Dropdown12"
-          id="Dropdown12-label"
+          htmlFor="Dropdown16"
+          id="Dropdown16-label"
         >
           Horizontal alignment:
         </label>
         <div
-          aria-describedby="Dropdown12-option"
+          aria-describedby="Dropdown16-option"
           aria-expanded="false"
-          aria-labelledby="Dropdown12-label"
+          aria-labelledby="Dropdown16-label"
           className=
               ms-Dropdown
               {
@@ -3118,11 +3114,8 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
               &:active .ms-Dropdown-title--hasError {
                 border-color: #a4262c;
               }
-              &:focus .ms-Dropdown-title--hasError {
-                border-color: #a4262c;
-              }
           data-is-focusable={true}
-          id="Dropdown12"
+          id="Dropdown16"
           onBlur={[Function]}
           onChange={[Function]}
           onClick={[Function]}
@@ -3134,8 +3127,9 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
         >
           <span
             aria-atomic={true}
+            aria-invalid={false}
             aria-label="Left"
-            aria-live="off"
+            aria-live="polite"
             aria-posinset={1}
             aria-selected={true}
             aria-setsize={6}
@@ -3166,7 +3160,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                   text-overflow: ellipsis;
                   white-space: nowrap;
                 }
-            id="Dropdown12-option"
+            id="Dropdown16-option"
             role="option"
           >
             <span>
@@ -3202,7 +3196,6 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                     speak: none;
                   }
               data-icon-name="ChevronDown"
-              role="presentation"
             >
               
             </i>
@@ -3254,15 +3247,15 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                 padding-top: 5px;
                 word-wrap: break-word;
               }
-          htmlFor="Dropdown13"
-          id="Dropdown13-label"
+          htmlFor="Dropdown17"
+          id="Dropdown17-label"
         >
           Vertical alignment:
         </label>
         <div
-          aria-describedby="Dropdown13-option"
+          aria-describedby="Dropdown17-option"
           aria-expanded="false"
-          aria-labelledby="Dropdown13-label"
+          aria-labelledby="Dropdown17-label"
           className=
               ms-Dropdown
               {
@@ -3346,11 +3339,8 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
               &:active .ms-Dropdown-title--hasError {
                 border-color: #a4262c;
               }
-              &:focus .ms-Dropdown-title--hasError {
-                border-color: #a4262c;
-              }
           data-is-focusable={true}
-          id="Dropdown13"
+          id="Dropdown17"
           onBlur={[Function]}
           onChange={[Function]}
           onClick={[Function]}
@@ -3362,8 +3352,9 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
         >
           <span
             aria-atomic={true}
+            aria-invalid={false}
             aria-label="Top"
-            aria-live="off"
+            aria-live="polite"
             aria-posinset={1}
             aria-selected={true}
             aria-setsize={3}
@@ -3394,7 +3385,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                   text-overflow: ellipsis;
                   white-space: nowrap;
                 }
-            id="Dropdown13-option"
+            id="Dropdown17-option"
             role="option"
           >
             <span>
@@ -3430,7 +3421,6 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                     speak: none;
                   }
               data-icon-name="ChevronDown"
-              role="presentation"
             >
               
             </i>
@@ -3500,7 +3490,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
                 outline: 1px solid ActiveBorder;
               }
-          id="checkbox-14"
+          id="checkbox-12"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
@@ -3531,7 +3521,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                 right: 0px;
                 top: 0px;
               }
-          htmlFor="checkbox-14"
+          htmlFor="checkbox-12"
         >
           <div
             className=
@@ -3574,7 +3564,6 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                     color: Window;
                   }
               data-icon-name="CheckMark"
-              role="presentation"
             >
               
             </i>
@@ -3660,8 +3649,8 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                   padding-top: 5px;
                   word-wrap: break-word;
                 }
-            htmlFor="TextField15"
-            id="TextFieldLabel17"
+            htmlFor="TextField13"
+            id="TextFieldLabel15"
           >
             Enter a space-separated list of empty children (e.g. 1 2 3):
           </label>
@@ -3698,7 +3687,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
           >
             <input
               aria-invalid={false}
-              aria-labelledby="TextFieldLabel17"
+              aria-labelledby="TextFieldLabel15"
               className=
                   ms-TextField-field
                   {
@@ -3766,7 +3755,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                     font-weight: 400;
                     opacity: 1;
                   }
-              id="TextField15"
+              id="TextField13"
               onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}

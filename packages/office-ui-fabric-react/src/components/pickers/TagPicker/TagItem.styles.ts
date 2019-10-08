@@ -1,6 +1,7 @@
 import { getGlobalClassNames, getFocusStyle, HighContrastSelector } from '../../../Styling';
 import { ButtonGlobalClassNames } from '../../Button/BaseButton.classNames';
 import { ITagItemStyleProps, ITagItemStyles } from './TagPicker.types';
+import { getRTL } from '../../../Utilities';
 
 const GlobalClassNames = {
   root: 'ms-TagItem',
@@ -39,6 +40,7 @@ export function getStyles(props: ITagItemStyleProps): ITagItemStyles {
           ':hover': [
             !disabled &&
               !selected && {
+                color: palette.neutralDark,
                 background: palette.neutralLight,
                 selectors: {
                   '.ms-TagItem-close': {
@@ -94,14 +96,17 @@ export function getStyles(props: ITagItemStyleProps): ITagItemStyles {
         width: 30,
         height: '100%',
         flex: '0 0 auto',
-        borderRadius: `0 ${effects.roundedCorner2} ${effects.roundedCorner2} 0`,
+        borderRadius: getRTL()
+          ? `${effects.roundedCorner2} 0 0 ${effects.roundedCorner2}`
+          : `0 ${effects.roundedCorner2} ${effects.roundedCorner2} 0`,
         selectors: {
           ':hover': {
             background: palette.neutralQuaternaryAlt,
             color: palette.neutralPrimary
           },
           ':active': {
-            color: palette.white
+            color: palette.white,
+            backgroundColor: palette.themeDark
           }
         }
       },

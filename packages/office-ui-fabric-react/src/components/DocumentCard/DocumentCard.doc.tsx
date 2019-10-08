@@ -8,15 +8,10 @@ import { DocumentCardImageExample } from './examples/DocumentCard.Image.Example'
 import { DocumentCardConversationExample } from './examples/DocumentCard.Conversation.Example';
 
 const DocumentCardBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DocumentCard/examples/DocumentCard.Basic.Example.tsx') as string;
-const DocumentCardBasicExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/DocumentCard/examples/DocumentCard.Basic.Example.tsx') as string;
 const DocumentCardCompactExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DocumentCard/examples/DocumentCard.Compact.Example.tsx') as string;
-const DocumentCardCompactExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/DocumentCard/examples/DocumentCard.Compact.Example.tsx') as string;
 const DocumentCardCompleteExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DocumentCard/examples/DocumentCard.Complete.Example.tsx') as string;
-const DocumentCardCompleteExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/DocumentCard/examples/DocumentCard.Complete.Example.tsx') as string;
 const DocumentCardImageExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DocumentCard/examples/DocumentCard.Image.Example.tsx') as string;
-const DocumentCardImageExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/DocumentCard/examples/DocumentCard.Image.Example.tsx') as string;
 const DocumentCardConversationExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DocumentCard/examples/DocumentCard.Conversation.Example.tsx') as string;
-const DocumentCardConversationExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/DocumentCard/examples/DocumentCard.Conversation.Example.tsx') as string;
 
 export const DocumentCardPageProps: IDocPageProps = {
   title: 'DocumentCard',
@@ -27,7 +22,6 @@ export const DocumentCardPageProps: IDocPageProps = {
     {
       title: 'Default DocumentCard',
       code: DocumentCardBasicExampleCode,
-      codepenJS: DocumentCardBasicExampleCodepen,
       view: (
         <>
           <p>
@@ -41,7 +35,6 @@ export const DocumentCardPageProps: IDocPageProps = {
     {
       title: 'DocumentCard with compact layout ',
       code: DocumentCardCompactExampleCode,
-      codepenJS: DocumentCardCompactExampleCodepen,
       view: (
         <>
           <p>
@@ -59,7 +52,6 @@ export const DocumentCardPageProps: IDocPageProps = {
     {
       title: 'DocumentCard with multiple items, commands, and views',
       code: DocumentCardCompleteExampleCode,
-      codepenJS: DocumentCardCompleteExampleCodepen,
       view: (
         <>
           <p>
@@ -73,7 +65,6 @@ export const DocumentCardPageProps: IDocPageProps = {
     {
       title: 'DocumentCard with image or icon',
       code: DocumentCardImageExampleCode,
-      codepenJS: DocumentCardImageExampleCodepen,
       view: (
         <>
           <p>This example shows a simplified method of displaying an image or icon on the DocumentCard.</p>
@@ -84,7 +75,6 @@ export const DocumentCardPageProps: IDocPageProps = {
     {
       title: 'Conversation cards with logo, text preview, and status',
       code: DocumentCardConversationExampleCode,
-      codepenJS: DocumentCardConversationExampleCodepen,
       view: (
         <>
           <p>This example shows the logo, text preview, and status used for conversation cards.</p>

@@ -2,6 +2,109 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "date": "Thu, 03 Oct 2019 23:14:46 GMT",
+      "tag": "@uifabric/fabric-website_v7.5.4",
+      "version": "7.5.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fixes publish issue from beachball",
+            "author": "odbuild@microsoft.com",
+            "commit": "306c59d9c3dd07f3eca7717bfdc84e15bfd70b39"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 03 Oct 2019 01:14:35 GMT",
+      "tag": "@uifabric/fabric-website_v7.5.2",
+      "version": "7.5.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bundle React even in serve mode for more representative testing environment",
+            "author": "elcraig@microsoft.com",
+            "commit": "fe59f6fd3c26d9d1bf44bcc4ee44ed01c9816cf9"
+          },
+          {
+            "comment": "Adding iOS NavBar to website docs.",
+            "author": "emlynam@microsoft.com",
+            "commit": "e489bbd40878adc51a49c3d71b17b27809668e38"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 01 Oct 2019 12:33:48 GMT",
+      "tag": "@uifabric/fabric-website_v7.5.1",
+      "version": "7.5.1",
+      "comments": {
+        "none": [
+          {
+            "comment": "add figma file to docs",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "d3acb2edb383b4c728b15df472e97003d05739aa"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 30 Sep 2019 12:35:16 GMT",
+      "tag": "@uifabric/fabric-website_v7.5.1",
+      "version": "7.5.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Don't load minified editor files",
+            "author": "elcraig@microsoft.com",
+            "commit": "d4b0254c3aa931b39801f2f71e33952fbc149480"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 23 Sep 2019 12:33:15 GMT",
+      "tag": "@uifabric/fabric-website_v7.5.0",
+      "version": "7.5.0",
+      "comments": {
+        "none": [
+          {
+            "comment": "Website: Update Powerapps theme color",
+            "author": "marygans@microsoft.com",
+            "commit": "42656124f9c42818bb6268870c858e94067ceae3"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 20 Sep 2019 12:34:28 GMT",
+      "tag": "@uifabric/fabric-website_v7.5.0",
+      "version": "7.5.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Website: Split Brand icons page into Brand Icons and File Type Icons pages",
+            "author": "marygans@microsoft.com",
+            "commit": "55b31ad0a74beb68b6316e5878c8b99551b1b9b5"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 19 Sep 2019 13:05:24 GMT",
+      "tag": "@uifabric/fabric-website_v7.4.8",
+      "version": "7.4.8",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Use new way of consuming Monaco bundle",
+            "author": "elcraig@microsoft.com",
+            "commit": "90fbbbfd43f93dbe8d95c094f1cd988614ae39bd"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 12 Sep 2019 12:34:15 GMT",
       "tag": "@uifabric/fabric-website_v7.4.7",
       "version": "7.4.7",

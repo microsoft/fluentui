@@ -23,8 +23,8 @@ export function getWindow(rootElement?: Element | null): Window | undefined {
   if (_isSSR || typeof _window === 'undefined') {
     return undefined;
   } else {
-    return rootElement && rootElement.ownerDocument && rootElement.ownerDocument.defaultView
-      ? rootElement.ownerDocument.defaultView
-      : _window;
+    const el = rootElement as Element;
+
+    return el && el.ownerDocument && el.ownerDocument.defaultView ? el.ownerDocument.defaultView : _window;
   }
 }

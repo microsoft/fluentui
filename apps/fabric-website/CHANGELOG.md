@@ -1,7 +1,38 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Thu, 12 Sep 2019 12:34:15 GMT and should not be manually modified.
+This log was last generated on Thu, 03 Oct 2019 23:14:46 GMT and should not be manually modified.
 
+## 7.5.4
+Thu, 03 Oct 2019 23:14:46 GMT
+
+### Patches
+
+- Fixes publish issue from beachball (odbuild@microsoft.com)
+## 7.5.2
+Thu, 03 Oct 2019 01:14:35 GMT
+
+### Patches
+
+- Bundle React even in serve mode for more representative testing environment (elcraig@microsoft.com)
+- Adding iOS NavBar to website docs. (emlynam@microsoft.com)
+## 7.5.1
+Mon, 30 Sep 2019 12:35:16 GMT
+
+### Patches
+
+- Don't load minified editor files (elcraig@microsoft.com)
+## 7.5.0
+Fri, 20 Sep 2019 12:34:28 GMT
+
+### Minor changes
+
+- Website: Split Brand icons page into Brand Icons and File Type Icons pages (marygans@microsoft.com)
+## 7.4.8
+Thu, 19 Sep 2019 13:05:24 GMT
+
+### Patches
+
+- Use new way of consuming Monaco bundle (elcraig@microsoft.com)
 ## 7.4.7
 Thu, 12 Sep 2019 12:34:15 GMT
 

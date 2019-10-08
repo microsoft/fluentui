@@ -230,7 +230,7 @@ export interface IGroupRenderProps {
 
   /**
    * Flag to indicate whether to ignore the collapsing icon on header.
-   * @defaultvalue CheckboxVisibility.visible
+   * @defaultvalue CollapseAllVisibility.visible
    */
   collapseAllVisibility?: CollapseAllVisibility;
 

@@ -620,7 +620,7 @@ export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPi
 export const ColorPickerGridCell: React.StatelessComponent<IColorPickerGridCellProps>;
 
 // @public (undocumented)
-export class ColorPickerGridCellBase extends React.Component<IColorPickerGridCellProps, {}> {
+export class ColorPickerGridCellBase extends React.PureComponent<IColorPickerGridCellProps, {}> {
     // (undocumented)
     static defaultProps: IColorPickerGridCellProps;
     // (undocumented)
@@ -1568,7 +1568,7 @@ export interface IBaseButtonProps extends IButtonProps {
 // @public (undocumented)
 export interface IBaseButtonState {
     // (undocumented)
-    menuProps?: IContextualMenuProps | null;
+    menuHidden: boolean;
 }
 
 // @public (undocumented)
@@ -1690,6 +1690,7 @@ export interface IBasePickerProps<T> extends React.Props<any> {
     // @deprecated
     onEmptyInputFocus?: (selectedItems?: T[]) => T[] | PromiseLike<T[]>;
     onEmptyResolveSuggestions?: (selectedItems?: T[]) => T[] | PromiseLike<T[]>;
+    // @deprecated
     onFocus?: React.FocusEventHandler<HTMLInputElement | BaseAutoFill>;
     onGetMoreResults?: (filter: string, selectedItems?: T[]) => T[] | PromiseLike<T[]>;
     onInputChange?: (input: string) => string;
@@ -1806,6 +1807,7 @@ export interface IBreadcrumbData {
 
 // @public (undocumented)
 export interface IBreadcrumbItem {
+    as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
     href?: string;
     isCurrentItem?: boolean;
     key: string;
@@ -1885,7 +1887,7 @@ export interface IButtonProps extends React.AllHTMLAttributes<HTMLAnchorElement 
     description?: IStyle;
     disabled?: boolean;
     // Warning: (ae-forgotten-export) The symbol "IButtonClassNames" needs to be exported by the entry point index.d.ts
-    getClassNames?: (theme: ITheme, className: string, variantClassName: string, iconClassName: string | undefined, menuIconClassName: string | undefined, disabled: boolean, checked: boolean, expanded: boolean, isSplit: boolean | undefined, allowDisabledFocus: boolean) => IButtonClassNames;
+    getClassNames?: (theme: ITheme, className: string, variantClassName: string, iconClassName: string | undefined, menuIconClassName: string | undefined, disabled: boolean, checked: boolean, expanded: boolean, hasMenu: boolean, isSplit: boolean | undefined, allowDisabledFocus: boolean) => IButtonClassNames;
     // Warning: (ae-forgotten-export) The symbol "ISplitButtonClassNames" needs to be exported by the entry point index.d.ts
     getSplitButtonClassNames?: (disabled: boolean, expanded: boolean, checked: boolean, allowDisabledFocus: boolean) => ISplitButtonClassNames;
     href?: string;
@@ -1909,6 +1911,8 @@ export interface IButtonProps extends React.AllHTMLAttributes<HTMLAnchorElement 
     primary?: boolean;
     primaryActionButtonProps?: IButtonProps;
     primaryDisabled?: boolean;
+    // @deprecated
+    renderPersistedMenuHiddenOnMount?: boolean;
     // @deprecated
     rootProps?: React.ButtonHTMLAttributes<HTMLButtonElement> | React.AnchorHTMLAttributes<HTMLAnchorElement>;
     secondaryText?: string;
@@ -1959,6 +1963,7 @@ export interface IButtonStyles {
     rootExpanded?: IStyle;
     rootExpandedHovered?: IStyle;
     rootFocused?: IStyle;
+    rootHasMenu?: IStyle;
     rootHovered?: IStyle;
     rootPressed?: IStyle;
     screenReaderText?: IStyle;
@@ -2119,6 +2124,7 @@ export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement> {
     role?: string;
     setInitialFocus?: boolean;
     shouldRestoreFocus?: boolean;
+    shouldUpdateWhenHidden?: boolean;
     style?: React.CSSProperties;
     styles?: IStyleFunctionOrObject<ICalloutContentStyleProps, ICalloutContentStyles>;
     target?: Target;
@@ -2832,7 +2838,7 @@ export interface ICommandBarProps extends React.HTMLAttributes<HTMLDivElement> {
     items: ICommandBarItemProps[];
     onDataGrown?: (movedItem: ICommandBarItemProps) => void;
     onDataReduced?: (movedItem: ICommandBarItemProps) => void;
-    onGrowData?: (data: ICommandBarData) => ICommandBarData;
+    onGrowData?: (data: ICommandBarData) => ICommandBarData | undefined;
     onReduceData?: (data: ICommandBarData) => ICommandBarData | undefined;
     overflowButtonAs?: IComponentAs<IButtonProps>;
     overflowButtonProps?: IButtonProps;
@@ -2999,7 +3005,7 @@ export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, IWith
     alignTargetEdge?: boolean;
     ariaLabel?: string;
     beakWidth?: number;
-    bounds?: IRectangle;
+    bounds?: IRectangle | ((target?: Target, targetWindow?: Window) => IRectangle | undefined);
     calloutProps?: ICalloutProps;
     className?: string;
     componentRef?: IRefObject<IContextualMenu>;
@@ -3030,6 +3036,7 @@ export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, IWith
     onRenderSubMenu?: IRenderFunction<IContextualMenuProps>;
     shouldFocusOnContainer?: boolean;
     shouldFocusOnMount?: boolean;
+    shouldUpdateWhenHidden?: boolean;
     styles?: IStyleFunctionOrObject<IContextualMenuStyleProps, IContextualMenuStyles>;
     subMenuHoverDelay?: number;
     target?: Target;
@@ -4363,6 +4370,7 @@ export interface IDropdownStyles {
 // @public (undocumented)
 export interface IDropdownSubComponentStyles {
     label: IStyleFunctionOrObject<ILabelStyleProps, any>;
+    multiSelectItem: IStyleFunctionOrObject<ICheckboxStyleProps, any>;
     panel: IStyleFunctionOrObject<IPanelStyleProps, any>;
 }
 
@@ -5174,7 +5182,8 @@ export interface ILayer {
 
 // @public (undocumented)
 export type ILayerBaseState = {
-    hasMounted: boolean;
+    hostId?: string;
+    layerElement?: HTMLElement;
 };
 
 // @public (undocumented)
@@ -5185,6 +5194,7 @@ export interface ILayerProps extends React.HTMLAttributes<HTMLDivElement | Layer
     hostId?: string;
     insertFirst?: boolean;
     onLayerDidMount?: () => void;
+    // @deprecated
     onLayerMounted?: () => void;
     onLayerWillUnmount?: () => void;
     styles?: IStyleFunctionOrObject<ILayerStyleProps, ILayerStyles>;
@@ -5550,7 +5560,9 @@ export interface INavLink {
     [propertyName: string]: any;
     ariaLabel?: string;
     automationId?: string;
+    collapseAriaLabel?: string;
     disabled?: boolean;
+    expandAriaLabel?: string;
     forceAnchor?: boolean;
     icon?: string;
     // @deprecated
@@ -5569,7 +5581,9 @@ export interface INavLink {
 // @public (undocumented)
 export interface INavLinkGroup {
     automationId?: string;
+    collapseAriaLabel?: string;
     collapseByDefault?: boolean;
+    expandAriaLabel?: string;
     links: INavLink[];
     name?: string;
     onHeaderClick?: (ev?: React.MouseEvent<HTMLElement>, isCollapsing?: boolean) => void;
@@ -5580,6 +5594,7 @@ export interface INavProps {
     ariaLabel?: string;
     className?: string;
     componentRef?: IRefObject<INav>;
+    // @deprecated
     expandButtonAriaLabel?: string;
     groups: INavLinkGroup[] | null;
     initialSelectedKey?: string;
@@ -7886,11 +7901,7 @@ export class LayerBase extends React.Component<ILayerProps, ILayerBaseState> {
     static defaultProps: ILayerProps;
     // (undocumented)
     render(): React.ReactNode;
-    // (undocumented)
-    UNSAFE_componentWillMount(): void;
-    // (undocumented)
-    UNSAFE_componentWillUpdate(): void;
-}
+    }
 
 // Warning: (ae-forgotten-export) The symbol "ILayerHostProps" needs to be exported by the entry point index.d.ts
 // 
@@ -8552,6 +8563,8 @@ export enum ResponsiveMode {
     medium = 1,
     // (undocumented)
     small = 0,
+    // (undocumented)
+    unknown = 999,
     // (undocumented)
     xLarge = 3,
     // (undocumented)

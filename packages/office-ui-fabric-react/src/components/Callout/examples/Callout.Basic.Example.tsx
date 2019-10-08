@@ -1,9 +1,5 @@
 import * as React from 'react';
-import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
-import { Callout } from 'office-ui-fabric-react/lib/Callout';
-import { Link } from 'office-ui-fabric-react/lib/Link';
-import { getTheme, FontWeights, mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
-import { getId } from 'office-ui-fabric-react/lib/Utilities';
+import { DefaultButton, Callout, Link, getTheme, FontWeights, mergeStyleSets, getId } from 'office-ui-fabric-react';
 
 export interface ICalloutBasicExampleState {
   isCalloutVisible?: boolean;
@@ -69,35 +65,36 @@ export class CalloutBasicExample extends React.Component<{}, ICalloutBasicExampl
         <div className={styles.buttonArea} ref={this._menuButtonElement}>
           <DefaultButton onClick={this._onShowMenuClicked} text={isCalloutVisible ? 'Hide callout' : 'Show callout'} />
         </div>
-        <Callout
-          className="ms-CalloutExample-callout"
-          ariaLabelledBy={this._labelId}
-          ariaDescribedBy={this._descriptionId}
-          role="alertdialog"
-          gapSpace={0}
-          target={this._menuButtonElement.current}
-          onDismiss={this._onCalloutDismiss}
-          setInitialFocus={true}
-          hidden={!this.state.isCalloutVisible}
-        >
-          <div className="ms-CalloutExample-header">
-            <p className="ms-CalloutExample-title" id={this._labelId}>
-              All of your favorite people
-            </p>
-          </div>
-          <div className="ms-CalloutExample-inner">
-            <div className="ms-CalloutExample-content">
-              <p className="ms-CalloutExample-subText" id={this._descriptionId}>
-                Message body is optional. If help documentation is available, consider adding a link to learn more at the bottom.
+        {this.state.isCalloutVisible && (
+          <Callout
+            className="ms-CalloutExample-callout"
+            ariaLabelledBy={this._labelId}
+            ariaDescribedBy={this._descriptionId}
+            role="alertdialog"
+            gapSpace={0}
+            target={this._menuButtonElement.current}
+            onDismiss={this._onCalloutDismiss}
+            setInitialFocus={true}
+          >
+            <div className="ms-CalloutExample-header">
+              <p className="ms-CalloutExample-title" id={this._labelId}>
+                All of your favorite people
               </p>
             </div>
-            <div className="ms-CalloutExample-actions">
-              <Link className="ms-CalloutExample-link" href="http://microsoft.com" target="_blank">
-                Go to microsoft
-              </Link>
+            <div className="ms-CalloutExample-inner">
+              <div className="ms-CalloutExample-content">
+                <p className="ms-CalloutExample-subText" id={this._descriptionId}>
+                  Message body is optional. If help documentation is available, consider adding a link to learn more at the bottom.
+                </p>
+              </div>
+              <div className="ms-CalloutExample-actions">
+                <Link className="ms-CalloutExample-link" href="http://microsoft.com" target="_blank">
+                  Go to microsoft
+                </Link>
+              </div>
             </div>
-          </div>
-        </Callout>
+          </Callout>
+        )}
       </div>
     );
   }

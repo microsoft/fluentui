@@ -1,7 +1,46 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Mon, 16 Sep 2019 12:34:47 GMT and should not be manually modified.
+This log was last generated on Mon, 07 Oct 2019 12:33:45 GMT and should not be manually modified.
 
+## 7.5.0
+Mon, 07 Oct 2019 12:33:45 GMT
+
+### Minor changes
+
+- Reverting dependency on ReactDOM findDOMNode in getWindow and getDocument helpers to avoid bundle problems for partners. (dzearing@microsoft.com)
+## 7.4.0
+Thu, 03 Oct 2019 01:14:35 GMT
+
+### Minor changes
+
+- Async methods can now take a React component as the target being passed to `getWindow`. (dzearing@microsoft.com)
+## 7.3.0
+Tue, 01 Oct 2019 12:33:48 GMT
+
+### Minor changes
+
+- Async helpers now take in a target element which will be used to find the window object. (dzearing@microsoft.com)
+## 7.2.0
+Thu, 26 Sep 2019 12:32:32 GMT
+
+### Minor changes
+
+- mergeStyles and mergeStyleSets have a companion method which accepts options for setting RTL (jdh@microsoft.com)
+### Patches
+
+- Minor refinement to mergeAriaAttributeValues to correctly handleu false, therefore allowing (`cond && "something"). (cliff.koh@microsoft.com)
+## 7.1.0
+Mon, 23 Sep 2019 12:33:15 GMT
+
+### Minor changes
+
+- Customizations: add a way to batch updates (phkuo@microsoft.com)
+## 7.0.11
+Fri, 20 Sep 2019 12:34:28 GMT
+
+### Patches
+
+- Consuming latest merge-styles bits with `concatStyleSetsWithProps`. (dzearing@microsoft.com)
 ## 7.0.10
 Mon, 16 Sep 2019 12:34:47 GMT
 

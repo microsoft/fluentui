@@ -892,6 +892,7 @@ exports[`Component Examples renders TextField.Borderless.Example.tsx correctly 1
         >
           <textarea
             aria-invalid={false}
+            aria-labelledby="TextFieldLabel14"
             className=
                 ms-TextField-field
                 {

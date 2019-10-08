@@ -21,7 +21,7 @@ import {
   warnMutuallyExclusive
 } from '../../Utilities';
 import { Callout } from '../../Callout';
-import { Checkbox } from '../../Checkbox';
+import { Checkbox, ICheckboxStyleProps, ICheckboxStyles } from '../../Checkbox';
 import { CommandButton } from '../../Button';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { DropdownMenuItemType, IDropdownOption, IDropdownProps, IDropdownStyleProps, IDropdownStyles, IDropdown } from './Dropdown.types';
@@ -248,6 +248,8 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
       calloutRenderEdge: calloutRenderEdge
     });
 
+    const hasErrorMessage: boolean = !!errorMessage && errorMessage.length > 0;
+
     return (
       <div className={this._classNames.root}>
         {onRenderLabel(this.props, this._onRenderLabel)}
@@ -281,11 +283,13 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
                 className={this._classNames.title}
                 aria-atomic={true}
                 role={ariaAttrs.childRole}
-                aria-live={!hasFocus || disabled || multiSelect || isOpen ? 'off' : 'assertive'}
+                aria-live={!hasFocus || disabled || multiSelect || isOpen ? 'polite' : 'assertive'}
                 aria-label={selectedOptions.length ? selectedOptions[0].text : this._placeholder}
+                aria-invalid={hasErrorMessage}
                 aria-setsize={ariaAttrs.ariaSetSize}
                 aria-posinset={ariaAttrs.ariaPosInSet}
                 aria-selected={ariaAttrs.ariaSelected}
+                aria-describedby={mergeAriaAttributeValues(hasErrorMessage && id + '-errorMessage')}
               >
                 {// If option is selected render title, otherwise render the placeholder text
                 selectedOptions.length
@@ -297,7 +301,11 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
           )}
         </KeytipData>
         {isOpen && onRenderContainer(props, this._onRenderContainer)}
-        {errorMessage && errorMessage.length > 0 && <div className={this._classNames.errorMessage}>{errorMessage}</div>}
+        {hasErrorMessage && (
+          <div id={id + '-errorMessage'} className={this._classNames.errorMessage}>
+            {errorMessage}
+          </div>
+        )}
       </div>
     );
   }
@@ -583,6 +591,10 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
 
     const { title = item.text } = item;
 
+    const multiSelectItemStyles = this._classNames.subComponentStyles
+      ? (this._classNames.subComponentStyles.multiSelectItem as IStyleFunctionOrObject<ICheckboxStyleProps, ICheckboxStyles>)
+      : undefined;
+
     return !this.props.multiSelect ? (
       <CommandButton
         id={id + '-list' + item.index}
@@ -622,6 +634,7 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
         role="option"
         aria-selected={isItemSelected ? 'true' : 'false'}
         checked={isItemSelected}
+        styles={multiSelectItemStyles}
       />
     );
   };

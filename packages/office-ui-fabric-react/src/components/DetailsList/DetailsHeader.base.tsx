@@ -142,14 +142,17 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
       onColumnContextMenu,
       onRenderColumnHeaderTooltip = this._onRenderColumnHeaderTooltip,
       styles,
+      selectionMode,
       theme,
       onRenderDetailsCheckbox,
       groupNestingDepth,
-      useFastIcons
+      useFastIcons,
+      checkboxVisibility
     } = this.props;
     const { isAllSelected, columnResizeDetails, isSizing, isAllCollapsed } = this.state;
     const showCheckbox = selectAllVisibility !== SelectAllVisibility.none;
     const isCheckboxHidden = selectAllVisibility === SelectAllVisibility.hidden;
+    const isCheckboxAlwaysVisible = checkboxVisibility === CheckboxVisibility.always;
 
     const columnReorderProps = this._getColumnReorderProps();
     const frozenColumnCountFromStart =
@@ -202,7 +205,7 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
                     children: (
                       <DetailsRowCheck
                         id={`${this._id}-check`}
-                        aria-label={ariaLabelForSelectionColumn}
+                        aria-label={selectionMode === SelectionMode.multiple ? ariaLabelForSelectAllCheckbox : ariaLabelForSelectionColumn}
                         aria-describedby={
                           !isCheckboxHidden
                             ? ariaLabelForSelectAllCheckbox && !this.props.onRenderColumnHeaderTooltip
@@ -220,6 +223,7 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
                         className={classNames.check}
                         onRenderDetailsCheckbox={onRenderDetailsCheckbox}
                         useFastIcons={useFastIcons}
+                        isVisible={isCheckboxAlwaysVisible}
                       />
                     )
                   },

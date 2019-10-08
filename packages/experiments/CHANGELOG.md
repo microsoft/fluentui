@@ -1,7 +1,37 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Thu, 12 Sep 2019 12:34:15 GMT and should not be manually modified.
+This log was last generated on Tue, 08 Oct 2019 12:31:37 GMT and should not be manually modified.
 
+## 7.18.3
+Tue, 08 Oct 2019 12:31:37 GMT
+
+### Patches
+
+- Updating snapshots. (Humberto.Morimoto@microsoft.com)
+## 7.18.2
+Thu, 03 Oct 2019 23:14:46 GMT
+
+### Patches
+
+- Fixes publish issue from beachball (odbuild@microsoft.com)
+## 7.18.0
+Fri, 27 Sep 2019 12:33:04 GMT
+
+### Minor changes
+
+- Golden Folder grid view CSS cleanup for Fabric Master (caperez@microsoft.com)
+## 7.17.1
+Mon, 23 Sep 2019 12:33:15 GMT
+
+### Patches
+
+- Icon Accessibility updates: update aria-hidden to pull aria-labelledBy from root and imageProps and removed role presentation - should not apply when a label is provided. (marygans@microsoft.com)
+## 7.17.0
+Wed, 18 Sep 2019 12:32:55 GMT
+
+### Minor changes
+
+- listen to composition events only for IME languages in autofill (amyngu@microsoft.com)
 ## 7.16.2
 Thu, 12 Sep 2019 12:34:15 GMT
 

@@ -123,6 +123,11 @@ export interface IBreadcrumbItem {
    * breadcrumb link
    */
   isCurrentItem?: boolean;
+
+  /**
+   * Optional prop to render item as a heading of your choice.
+   */
+  as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 }
 
 /**
