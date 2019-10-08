@@ -1,0 +1,8 @@
+{
+  "type": "none",
+  "comment": "Update missing sass slots and theme designer semantic slot mappings",
+  "packageName": "office-ui-fabric-react",
+  "email": "marygans@microsoft.com",
+  "commit": "186a8a5335af259b44157e674ed4d30c616dcd49",
+  "date": "2019-10-08T16:49:50.034Z"
+}
