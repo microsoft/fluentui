@@ -167,7 +167,7 @@ export const getStyles = (props: ITeachingBubbleStyleProps): ITeachingBubbleStyl
       (hasCondensedHeadline || hasSmallHeadline) && [
         fonts.medium,
         {
-          marginRight: 10,
+          marginRight: 24,
           fontWeight: FontWeights.semibold
         }
       ]
@@ -202,7 +202,6 @@ export const getStyles = (props: ITeachingBubbleStyleProps): ITeachingBubbleStyl
         borderColor: palette.white,
         color: palette.themePrimary,
         whiteSpace: 'nowrap',
-        marginLeft: '10px',
         selectors: {
           // TODO: global class name usage should be converted to a button styles function once Button supports JS styling
           [`.${classNames.buttonLabel}`]: fonts.medium,
@@ -230,6 +229,7 @@ export const getStyles = (props: ITeachingBubbleStyleProps): ITeachingBubbleStyl
         backgroundColor: palette.themePrimary,
         borderColor: palette.white,
         whiteSpace: 'nowrap',
+        marginRight: '10px',
         selectors: {
           // TODO: global class name usage should be converted to a button styles function once Button supports JS styling
           [`.${classNames.buttonLabel}`]: [

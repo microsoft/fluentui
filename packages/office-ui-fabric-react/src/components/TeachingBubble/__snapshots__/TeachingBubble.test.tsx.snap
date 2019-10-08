@@ -372,6 +372,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
                 font-size: 14px;
                 font-weight: 400;
                 height: 32px;
+                margin-right: 10px;
                 min-width: 80px;
                 outline: transparent;
                 padding-bottom: 0;
@@ -507,7 +508,6 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
                 font-size: 14px;
                 font-weight: 400;
                 height: 32px;
-                margin-left: 10px;
                 min-width: 80px;
                 outline: transparent;
                 padding-bottom: 0;
@@ -812,7 +812,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with condensed headline co
             font-size: 14px;
             font-weight: 600;
             margin-bottom: 14px;
-            margin-right: 10px;
+            margin-right: 24px;
           }
     >
       <p
@@ -1138,7 +1138,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with small headline correc
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
             font-weight: 600;
-            margin-right: 10px;
+            margin-right: 24px;
           }
           &:not(:last-child) {
             margin-bottom: 14px;
