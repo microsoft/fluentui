@@ -372,6 +372,24 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
           </span>
         </button>
       </div>
+      <div
+        aria-atomic="true"
+        aria-live="polite"
+        className=
+
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              color: #a4262c;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 12px;
+              font-weight: 400;
+            }
+        id="ComboBox0-error"
+        role="region"
+      >
+        
+      </div>
     </div>
     <button
       className=
@@ -849,6 +867,24 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
         </span>
       </button>
     </div>
+    <div
+      aria-atomic="true"
+      aria-live="polite"
+      className=
+
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            color: #a4262c;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 12px;
+            font-weight: 400;
+          }
+      id="ComboBox7-error"
+      role="region"
+    >
+      
+    </div>
   </div>
   <div
     className="ms-ComboBox-container "
@@ -1191,6 +1227,24 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
           </i>
         </span>
       </button>
+    </div>
+    <div
+      aria-atomic="true"
+      aria-live="polite"
+      className=
+
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            color: #a4262c;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 12px;
+            font-weight: 400;
+          }
+      id="ComboBox11-error"
+      role="region"
+    >
+      
     </div>
   </div>
   <div
@@ -3302,6 +3356,24 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
         </div>
       </div>
     </span>
+    <div
+      aria-atomic="true"
+      aria-live="polite"
+      className=
+
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            color: #a4262c;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 12px;
+            font-weight: 400;
+          }
+      id="ComboBox15-error"
+      role="region"
+    >
+      
+    </div>
   </div>
   <div
     className="ms-ComboBox-container "
@@ -4276,6 +4348,24 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
           </i>
         </span>
       </button>
+    </div>
+    <div
+      aria-atomic="true"
+      aria-live="polite"
+      className=
+
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            color: #a4262c;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 12px;
+            font-weight: 400;
+          }
+      id="ComboBox27-error"
+      role="region"
+    >
+      
     </div>
   </div>
 </div>

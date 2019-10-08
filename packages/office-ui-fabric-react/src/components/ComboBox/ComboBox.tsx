@@ -311,6 +311,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   // Primary Render
   public render(): JSX.Element {
     const id = this._id;
+    const errorMessageId = id + '-error';
     const {
       className,
       label,
@@ -393,7 +394,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
                 aria-label={ariaLabel && !label ? ariaLabel : undefined}
                 aria-describedby={
                   errorMessage !== undefined
-                    ? mergeAriaAttributeValues(ariaDescribedBy, keytipAttributes['aria-describedby'], this._id + '-error')
+                    ? mergeAriaAttributeValues(ariaDescribedBy, keytipAttributes['aria-describedby'], errorMessageId)
                     : mergeAriaAttributeValues(ariaDescribedBy, keytipAttributes['aria-describedby'])
                 }
                 aria-activedescendant={this._getAriaActiveDescentValue()}
@@ -439,11 +440,9 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
             },
             this._onRenderContainer
           )}
-        {errorMessage !== undefined && (
-          <div role="region" aria-live="polite" aria-atomic="true" id={this._id + '-error'} className={this._classNames.errorMessage}>
-            {errorMessage}
-          </div>
-        )}
+        <div role="region" aria-live="polite" aria-atomic="true" id={errorMessageId} className={this._classNames.errorMessage}>
+          {errorMessage !== undefined ? errorMessage : ''}
+        </div>
       </div>
     );
   }
