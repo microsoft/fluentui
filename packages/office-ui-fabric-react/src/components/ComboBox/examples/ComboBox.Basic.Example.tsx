@@ -4,6 +4,7 @@ import {
   Fabric,
   IComboBox,
   IComboBoxOption,
+  IComboBoxProps,
   mergeStyles,
   PrimaryButton,
   SelectableOptionMenuItemType
@@ -32,9 +33,20 @@ const wrapperClassName = mergeStyles({
   }
 });
 
+interface IComboBoxBasicExampleState {
+  dynamicErrorValue: number | string;
+}
+
 // tslint:disable:jsx-no-lambda
-export class ComboBoxBasicExample extends React.Component<{}, {}> {
+export class ComboBoxBasicExample extends React.Component<{}, IComboBoxBasicExampleState> {
   private _basicComboBox = React.createRef<IComboBox>();
+
+  constructor(props: {}) {
+    super(props);
+    this.state = {
+      dynamicErrorValue: ''
+    };
+  }
 
   public render(): JSX.Element {
     return (
@@ -94,14 +106,35 @@ export class ComboBoxBasicExample extends React.Component<{}, {}> {
         />
 
         <ComboBox
-          label="ComboBox with error message"
+          label="ComboBox with static error message"
           defaultSelectedKey="B"
           errorMessage="Oh no! This ComboBox has an error!"
+          options={INITIAL_OPTIONS}
+        />
+
+        <ComboBox
+          label="ComboBox with dynamic error message"
+          onChange={this._onChange}
+          selectedKey={this.state.dynamicErrorValue}
+          errorMessage={this._getErrorMessage(this.state.dynamicErrorValue)}
           options={INITIAL_OPTIONS}
         />
 
         <ComboBox disabled label="Disabled ComboBox" defaultSelectedKey="D" options={INITIAL_OPTIONS} />
       </Fabric>
     );
+  }
+
+  private _onChange: IComboBoxProps['onChange'] = (event, option) => {
+    if (option) {
+      this.setState({ dynamicErrorValue: option.key });
+    }
+  };
+
+  private _getErrorMessage(value: number | string) {
+    if (value === 'B') {
+      return 'B is not an allowed option!';
+    }
+    return '';
   }
 }

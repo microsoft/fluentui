@@ -1,0 +1,9 @@
+{
+  "type": "patch",
+  "comment": "ComboBox: Making error messages accessible to screen readers.",
+  "packageName": "office-ui-fabric-react",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "commit": "fb4674198f21545c70ee18e61ddbd3dcb61ad115",
+  "date": "2019-10-04T21:03:17.756Z",
+  "file": "E:\\office-ui-fabric-react\\change\\office-ui-fabric-react-2019-10-04-14-03-17-comboBoxErrorMessage.json"
+}
