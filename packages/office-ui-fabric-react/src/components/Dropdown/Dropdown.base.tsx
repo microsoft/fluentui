@@ -375,19 +375,13 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
     multiSelect?: boolean
   ) => {
     const { onChange, onChanged } = this.props;
-    if (onChange) {
+    if (onChange || onChanged) {
       // for single-select, option passed in will always be selected.
       // for multi-select, flip the checked value
       const changedOpt = multiSelect ? { ...options[index], selected: !checked } : options[index];
 
-      onChange({ ...event, target: this._dropDown.current as EventTarget }, changedOpt, index);
-    }
-
-    if (onChanged) {
-      // for single-select, option passed in will always be selected.
-      // for multi-select, flip the checked value
-      const changedOpt = multiSelect ? { ...options[index], selected: !checked } : options[index];
-      onChanged(changedOpt, index);
+      onChange && onChange({ ...event, target: this._dropDown.current as EventTarget }, changedOpt, index);
+      onChanged && onChanged(changedOpt, index);
     }
   };
 
