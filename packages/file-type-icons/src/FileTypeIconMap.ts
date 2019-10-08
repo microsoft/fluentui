@@ -37,6 +37,9 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
     ]
   },
   channelfolder: {},
+  calendar: {
+    extensions: ['ical', 'icalendar', 'ics', 'ifb', 'vcs']
+  },
   code: {
     extensions: [
       'abap',
@@ -243,13 +246,16 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
       'zsh'
     ]
   },
+  contact: {
+    extensions: ['vcf']
+  },
   css: {}, // we dont have the icon yet, but i believe we want it, snapping to 'code' for now
   csv: {
     extensions: ['csv']
   },
   docset: {},
   docx: {
-    extensions: ['b', 'doc', 'docm', 'docx', 'docb']
+    extensions: ['doc', 'docm', 'docx', 'docb']
   },
   dotx: {
     extensions: ['dot', 'dotm', 'dotx']
@@ -263,6 +269,9 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
   folder: {},
   font: {
     extensions: ['ttf', 'otf', 'woff']
+  },
+  fluid: {
+    extensions: ['b', 'fluid']
   },
   genericfile: {},
   html: {
@@ -363,7 +372,7 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
     extensions: ['pot', 'potm', 'potx']
   },
   powerbi: {
-    extensions: ['pbix']
+    extensions: ['pbids', 'pbix']
   },
   ppsx: {
     extensions: ['pps', 'ppsm', 'ppsx']
