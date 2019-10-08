@@ -1,9 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Updating snapshots.",
-  "packageName": "@uifabric/experiments",
-  "email": "Humberto.Morimoto@microsoft.com",
-  "commit": "26226b3417d578e0f8573cd67f80e486884440ad",
-  "date": "2019-10-08T00:26:17.879Z",
-  "file": "E:\\office-ui-fabric-react\\change\\@uifabric-experiments-2019-10-07-17-26-17-comboBoxErrorMessage.json"
-}

@@ -1,7 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 07 Oct 2019 23:42:31 GMT and should not be manually modified.
+This log was last generated on Tue, 08 Oct 2019 12:31:37 GMT and should not be manually modified.
 
+## 7.45.1
+Tue, 08 Oct 2019 12:31:37 GMT
+
+### Patches
+
+- ComboBox: Making error messages accessible to screen readers. (Humberto.Morimoto@microsoft.com)
 ## 7.45.0
 Mon, 07 Oct 2019 23:42:31 GMT
 

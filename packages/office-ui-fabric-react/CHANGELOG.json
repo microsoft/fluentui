@@ -2,6 +2,20 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Tue, 08 Oct 2019 12:31:37 GMT",
+      "tag": "office-ui-fabric-react_v7.45.1",
+      "version": "7.45.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "ComboBox: Making error messages accessible to screen readers.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "fb4674198f21545c70ee18e61ddbd3dcb61ad115"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 07 Oct 2019 23:42:31 GMT",
       "tag": "office-ui-fabric-react_v7.45.0",
       "version": "7.45.0",
