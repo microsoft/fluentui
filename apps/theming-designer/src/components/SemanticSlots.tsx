@@ -44,6 +44,7 @@ export const SemanticSlots: React.StatelessComponent<ISemanticSlotsProps> = (pro
     'bodySubtext', // neutralSecondary
     'bodyDivider', // neutralLight
     'disabledBodyText', // neutralTertiary
+    'disabledBorder', // neutralTertiaryAlt
     'focusBorder', // neutralSecondary
     'variantBorder', // neutralLight
     'variantBorderHovered', // neutralTertiary
@@ -87,6 +88,7 @@ export const SemanticSlots: React.StatelessComponent<ISemanticSlotsProps> = (pro
     'inputBackground', // white
     'inputBackgroundChecked', // themePrimary
     'inputBackgroundCheckedHovered', // themeDarkAlt
+    'inputPlaceholderBackgroundChecked', // themeLighter
     'inputForegroundChecked', // white
     'inputFocusBorderAlt', // themePrimary
     'smallInputBorder', // neutralSecondary
@@ -96,6 +98,7 @@ export const SemanticSlots: React.StatelessComponent<ISemanticSlotsProps> = (pro
     'disabledBackground', // neutralLighter
     'disabledText', // neutralTertiary
     'disabledSubText', // neutralQuaternary
+    'disabledBodySubtext', // neutralTertiaryAlt
     // LISTS - 7
     'listBackground', // white
     'listText', // neutralPrimary
@@ -163,6 +166,7 @@ export const SemanticSlots: React.StatelessComponent<ISemanticSlotsProps> = (pro
     inputBackground: 'white',
     inputBackgroundChecked: 'themePrimary',
     inputBackgroundCheckedHovered: 'themeDarkAlt',
+    inputPlaceholderBackgroundChecked: 'themeLighter',
     inputForegroundChecked: 'white',
     inputFocusBorderAlt: 'themePrimary',
     smallInputBorder: 'neutralSecondary',
@@ -172,6 +176,7 @@ export const SemanticSlots: React.StatelessComponent<ISemanticSlotsProps> = (pro
     disabledBackground: 'neutralLighter',
     disabledText: 'neutralTertiary',
     disabledSubtext: 'neutralQuaternary',
+    disabledBorder: 'neutralTertiaryAlt',
     listBackground: 'white',
     listText: 'neutralPrimary',
     listItemBackgroundHovered: 'neutralLighter',
@@ -247,6 +252,7 @@ export const SemanticSlots: React.StatelessComponent<ISemanticSlotsProps> = (pro
     inputBackground: 'white',
     inputBackgroundChecked: 'N/A',
     inputBackgroundCheckedHovered: 'N/A',
+    inputPlaceholderBackgroundChecked: 'N/A',
     inputForegroundChecked: 'N/A',
     inputFocusBorderAlt: 'themePrimary',
     smallInputBorder: 'N/A',
@@ -256,6 +262,7 @@ export const SemanticSlots: React.StatelessComponent<ISemanticSlotsProps> = (pro
     disabledBackground: props.theme ? (!props.theme.isInverted ? 'neutralLight' : 'neutralLighter') : 'N/A',
     disabledText: 'neutralTertiary',
     disabledBodySubtext: 'neutralTertiaryAlt',
+    disabledBorder: 'neutralTertiaryAlt',
     listBackground: 'N/A',
     listText: 'N/A',
     listItemBackgroundHovered: 'N/A',
@@ -321,6 +328,7 @@ export const SemanticSlots: React.StatelessComponent<ISemanticSlotsProps> = (pro
     inputBackground: 'white',
     inputBackgroundChecked: 'themePrimary',
     inputBackgroundCheckedHovered: 'themeDarkAlt',
+    inputPlaceholderBackgroundChecked: 'themeLighter',
     inputForegroundChecked: 'themeLighter',
     inputFocusBorderAlt: 'themePrimary',
     smallInputBorder: 'N/A',
@@ -330,6 +338,7 @@ export const SemanticSlots: React.StatelessComponent<ISemanticSlotsProps> = (pro
     disabledBackground: 'neutralLight',
     disabledText: 'neutralTertiary',
     disabledBodySubtext: 'neutralTertiaryAlt',
+    disabledBorder: 'N/A',
     listBackground: 'N/A',
     listText: 'N/A',
     listItemBackgroundHovered: 'N/A',
@@ -395,6 +404,7 @@ export const SemanticSlots: React.StatelessComponent<ISemanticSlotsProps> = (pro
     inputBackground: 'white',
     inputBackgroundChecked: 'white',
     inputBackgroundCheckedHovered: 'themePrimary',
+    inputPlaceholderBackgroundChecked: 'neutralQuaternary',
     inputForegroundChecked: 'themeDark',
     inputFocusBorderAlt: 'themeTertiary',
     smallInputBorder: 'N/A',
@@ -404,6 +414,7 @@ export const SemanticSlots: React.StatelessComponent<ISemanticSlotsProps> = (pro
     disabledBackground: 'themeDarkAlt',
     disabledText: 'themeTertiary',
     disabledBodySubtext: 'neutralTertiaryAlt',
+    disabledBorder: 'N/A',
     listBackground: 'N/A',
     listText: 'N/A',
     listItemBackgroundHovered: 'N/A',
