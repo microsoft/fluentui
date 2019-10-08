@@ -17,15 +17,6 @@ export const getStyles = (props: ITooltipHostStyleProps): ITooltipHostStyles => 
         display: 'inline'
       },
       className
-    ],
-    ariaPlaceholder: [
-      classNames.ariaPlaceholder,
-      {
-        height: 0,
-        position: 'fixed',
-        visibility: 'hidden',
-        width: 0
-      }
     ]
   };
 };

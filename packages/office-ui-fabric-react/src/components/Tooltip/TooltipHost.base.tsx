@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { hiddenContentStyle } from '../../Styling';
 import {
   initializeComponentRef,
   Async,
@@ -110,7 +111,7 @@ export class TooltipHostBase extends React.Component<ITooltipHostProps, ITooltip
           />
         )}
         {isAriaPlaceholderRendered && (
-          <div id={tooltipId} className={this._classNames.ariaPlaceholder}>
+          <div id={tooltipId} style={hiddenContentStyle as React.CSSProperties}>
             {content}
           </div>
         )}

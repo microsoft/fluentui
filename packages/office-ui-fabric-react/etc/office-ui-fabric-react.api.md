@@ -7742,7 +7742,6 @@ export interface ITooltipHostStyleProps {
 
 // @public (undocumented)
 export interface ITooltipHostStyles {
-    ariaPlaceholder: IStyle;
     root: IStyle;
 }
 

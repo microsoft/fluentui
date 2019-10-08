@@ -139,10 +139,4 @@ export interface ITooltipHostStyles {
    * Style for the host wrapper element.
    */
   root: IStyle;
-
-  /**
-   * Style for the accessibility placeholder that's needed to correctly label 'aria-describedby' and 'aria-labelledby' scenarios pointing at
-   * Tooltips that have a delay and won't be rendered at the time focus comes in to their corresponding elements.
-   */
-  ariaPlaceholder: IStyle;
 }
