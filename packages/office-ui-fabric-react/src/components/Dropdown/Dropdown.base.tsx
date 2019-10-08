@@ -34,13 +34,13 @@ import { IProcessedStyleSet } from '../../Styling';
 import { IWithResponsiveModeState } from '../../utilities/decorators/withResponsiveMode';
 import { KeytipData } from '../../KeytipData';
 import { Panel, IPanelStyleProps, IPanelStyles } from '../../Panel';
-import { ResponsiveMode, withResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
+import { ResponsiveMode, getResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
 import { SelectableOptionMenuItemType, getAllSelectedOptions, ISelectableDroppableTextProps } from '../../utilities/selectableOption/index';
 
 const getClassNames = classNamesFunction<IDropdownStyleProps, IDropdownStyles>();
 
 /** Internal only props interface to support mixing in responsive mode */
-export interface IDropdownInternalProps extends IDropdownProps, IWithResponsiveModeState {}
+export interface IDropdownInternalProps extends IDropdownProps {}
 
 export interface IDropdownState {
   isOpen: boolean;
@@ -50,7 +50,6 @@ export interface IDropdownState {
   calloutRenderEdge?: RectangleEdge;
 }
 
-@withResponsiveMode
 export class DropdownBase extends React.Component<IDropdownInternalProps, IDropdownState> implements IDropdown {
   public static defaultProps = {
     options: [] as any[]
@@ -471,7 +470,12 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
   /** Render Callout or Panel container and pass in list */
   private _onRenderContainer = (props: ISelectableDroppableTextProps<IDropdown, HTMLDivElement>): JSX.Element => {
     const { calloutProps, panelProps } = props;
-    const { responsiveMode, dropdownWidth } = this.props;
+    const { dropdownWidth } = this.props;
+    let { responsiveMode } = this.props;
+
+    if (responsiveMode === undefined) {
+      responsiveMode = getResponsiveMode(this._dropDown.current as Element);
+    }
 
     const isSmall = responsiveMode! <= ResponsiveMode.medium;
 

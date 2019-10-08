@@ -47,6 +47,21 @@ describe('Dropdown', () => {
       expect(tree).toMatchSnapshot();
     });
 
+    it('mounts componentRef before the parent mounts', () => {
+      class Wrapped extends React.Component {
+        private _componentRef = React.createRef<IDropdown>();
+
+        public componentDidMount() {
+          expect(this._componentRef.current).toBeTruthy();
+        }
+
+        public render() {
+          return <Dropdown componentRef={this._componentRef} label="testgroup" options={DEFAULT_OPTIONS} />;
+        }
+      }
+      wrapper = mount(<Wrapped />);
+    });
+
     it('Can flip between enabled and disabled.', () => {
       wrapper = mount(<Dropdown label="testgroup" options={DEFAULT_OPTIONS} />);
       const dropdownRoot = wrapper.getDOMNode().querySelector('.ms-Dropdown') as HTMLElement;

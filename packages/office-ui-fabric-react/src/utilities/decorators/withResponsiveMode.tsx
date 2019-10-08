@@ -59,7 +59,7 @@ export function withResponsiveMode<TProps extends { responsiveMode?: ResponsiveM
     }
 
     private _onResize = () => {
-      const responsiveMode = this._getResponsiveMode();
+      const responsiveMode = getResponsiveMode(findDOMNode(this._composedComponentInstance) as Element);
 
       if (responsiveMode !== this.state.responsiveMode) {
         this.setState({
@@ -67,34 +67,33 @@ export function withResponsiveMode<TProps extends { responsiveMode?: ResponsiveM
         });
       }
     };
-
-    private _getResponsiveMode(): ResponsiveMode {
-      let responsiveMode = ResponsiveMode.small;
-      const element = findDOMNode(this) as Element;
-      const win = getWindow(element);
-
-      if (typeof win !== 'undefined') {
-        try {
-          while (win.innerWidth > RESPONSIVE_MAX_CONSTRAINT[responsiveMode]) {
-            responsiveMode++;
-          }
-        } catch (e) {
-          // Return a best effort result in cases where we're in the browser but it throws on getting innerWidth.
-          responsiveMode = ResponsiveMode.large;
-        }
-      } else {
-        if (_defaultMode !== undefined) {
-          responsiveMode = _defaultMode;
-        } else {
-          throw new Error(
-            'Content was rendered in a server environment without providing a default responsive mode. ' +
-              'Call setResponsiveMode to define what the responsive mode is.'
-          );
-        }
-      }
-
-      return responsiveMode;
-    }
   };
   return hoistStatics(ComposedComponent, resultClass);
 }
+
+export const getResponsiveMode = (targetElement?: Element): ResponsiveMode => {
+  let responsiveMode = ResponsiveMode.small;
+  const win = getWindow(targetElement);
+
+  if (typeof win !== 'undefined') {
+    try {
+      while (win.innerWidth > RESPONSIVE_MAX_CONSTRAINT[responsiveMode]) {
+        responsiveMode++;
+      }
+    } catch (e) {
+      // Return a best effort result in cases where we're in the browser but it throws on getting innerWidth.
+      responsiveMode = ResponsiveMode.large;
+    }
+  } else {
+    if (_defaultMode !== undefined) {
+      responsiveMode = _defaultMode;
+    } else {
+      throw new Error(
+        'Content was rendered in a server environment without providing a default responsive mode. ' +
+          'Call setResponsiveMode to define what the responsive mode is.'
+      );
+    }
+  }
+
+  return responsiveMode;
+};
