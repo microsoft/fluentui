@@ -83,7 +83,7 @@ export const SemanticSlots: React.StatelessComponent<ISemanticSlotsProps> = (pro
     'accentButtonBackground', // accent
     'accentButtonText', // white
     // INPUTS - 14
-    'inputBorder', // neutralTertiary
+    'inputBorder', // neutralSecondaryAlt
     'inputBorderHovered', // neutralPrimary
     'inputBackground', // white
     'inputBackgroundChecked', // themePrimary
@@ -161,7 +161,7 @@ export const SemanticSlots: React.StatelessComponent<ISemanticSlotsProps> = (pro
     primaryButtonTextDisabled: 'neutralQuaternary',
     accentButtonBackground: 'accent',
     accentButtonText: 'white',
-    inputBorder: 'neutralTertiary',
+    inputBorder: 'neutralSecondaryAlt',
     inputBorderHovered: 'neutralPrimary',
     inputBackground: 'white',
     inputBackgroundChecked: 'themePrimary',
@@ -247,7 +247,7 @@ export const SemanticSlots: React.StatelessComponent<ISemanticSlotsProps> = (pro
     primaryButtonTextDisabled: 'N/A',
     accentButtonBackground: 'accent',
     accentButtonText: 'white',
-    inputBorder: 'neutralTertiary',
+    inputBorder: 'neutralSecondaryAlt',
     inputBorderHovered: 'neutralPrimary',
     inputBackground: 'white',
     inputBackgroundChecked: 'N/A',
@@ -323,7 +323,7 @@ export const SemanticSlots: React.StatelessComponent<ISemanticSlotsProps> = (pro
     primaryButtonTextDisabled: 'N/A',
     accentButtonBackground: 'accent',
     accentButtonText: 'white',
-    inputBorder: 'neutralTertiary',
+    inputBorder: 'neutralSecondaryAlt',
     inputBorderHovered: 'neutralPrimary',
     inputBackground: 'white',
     inputBackgroundChecked: 'themePrimary',
