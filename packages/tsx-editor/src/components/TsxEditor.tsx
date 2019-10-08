@@ -94,10 +94,10 @@ function _useCompilerOptions(compilerOptions: ICompilerOptions | undefined): voi
   React.useEffect(() => {
     const oldCompilerOptions = typescriptDefaults.getCompilerOptions();
     typescriptDefaults.setCompilerOptions({
-      // The compiler options used here generally should *not* be strict, because compile errors
-      // will prevent code from rendering
+      // The compiler options used here generally should *not* be strict, to make quick edits easier
       experimentalDecorators: true,
       preserveConstEnums: true,
+      // implicit global `this` usage is almost always a bug
       noImplicitThis: true,
       // Mix in provided options
       ...compilerOptions,
