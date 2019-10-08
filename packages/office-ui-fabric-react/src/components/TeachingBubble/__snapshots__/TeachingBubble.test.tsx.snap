@@ -154,7 +154,6 @@ exports[`TeachingBubble renders TeachingBubbleContent correctly 1`] = `
     className=
         ms-TeachingBubble-bodycontent
         {
-          max-width: 302px;
           padding-bottom: 20px;
           padding-left: 20px;
           padding-right: 20px;
@@ -236,7 +235,6 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
     className=
         ms-TeachingBubble-bodycontent
         {
-          max-width: 302px;
           padding-bottom: 20px;
           padding-left: 20px;
           padding-right: 20px;
@@ -742,7 +740,6 @@ exports[`TeachingBubble renders TeachingBubbleContent with condensed headline co
     className=
         ms-TeachingBubble-bodycontent
         {
-          max-width: 302px;
           padding-bottom: 20px;
           padding-left: 20px;
           padding-right: 20px;
@@ -828,7 +825,6 @@ exports[`TeachingBubble renders TeachingBubbleContent with custom footer text 1`
     className=
         ms-TeachingBubble-bodycontent
         {
-          max-width: 302px;
           padding-bottom: 20px;
           padding-left: 20px;
           padding-right: 20px;
@@ -942,7 +938,6 @@ exports[`TeachingBubble renders TeachingBubbleContent with image correctly 1`] =
     className=
         ms-TeachingBubble-bodycontent
         {
-          max-width: 302px;
           padding-bottom: 20px;
           padding-left: 20px;
           padding-right: 20px;
@@ -1024,7 +1019,6 @@ exports[`TeachingBubble renders TeachingBubbleContent with small headline correc
     className=
         ms-TeachingBubble-bodycontent
         {
-          max-width: 302px;
           padding-bottom: 20px;
           padding-left: 20px;
           padding-right: 20px;
