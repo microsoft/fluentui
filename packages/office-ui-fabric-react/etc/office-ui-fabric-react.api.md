@@ -1826,6 +1826,7 @@ export interface IBreadcrumbProps extends React.HTMLAttributes<HTMLElement> {
     maxDisplayedItems?: number;
     onReduceData?: (data: IBreadcrumbData) => IBreadcrumbData | undefined;
     onRenderItem?: IRenderFunction<IBreadcrumbItem>;
+    onRenderOverflowIcon?: IRenderFunction<IButtonProps>;
     overflowAriaLabel?: string;
     overflowIndex?: number;
     // (undocumented)

@@ -88,7 +88,8 @@ export class BreadcrumbBase extends BaseComponent<IBreadcrumbProps, any> {
       dividerAs: DividerType = Icon as React.ReactType<IDividerAsProps>,
       onRenderItem = this._onRenderItem,
       overflowAriaLabel,
-      overflowIndex
+      overflowIndex,
+      onRenderOverflowIcon
     } = data.props;
     const { renderedOverflowItems, renderedItems } = data;
 
@@ -114,17 +115,20 @@ export class BreadcrumbBase extends BaseComponent<IBreadcrumbProps, any> {
     ));
 
     if (hasOverflowItems) {
+      const iconProps = !onRenderOverflowIcon ? { iconName: 'More' } : {};
+      const onRenderMenuIcon = onRenderOverflowIcon ? onRenderOverflowIcon : nullFunction;
+
       itemElements.splice(
         overflowIndex!,
         0,
         <li className={this._classNames.overflow} key={OVERFLOW_KEY}>
           <IconButton
             className={this._classNames.overflowButton}
-            iconProps={{ iconName: 'More' }}
+            iconProps={iconProps}
             role="button"
             aria-haspopup="true"
             ariaLabel={overflowAriaLabel}
-            onRenderMenuIcon={nullFunction}
+            onRenderMenuIcon={onRenderMenuIcon}
             menuProps={{
               items: contextualItems,
               directionalHint: DirectionalHint.bottomLeftEdge
