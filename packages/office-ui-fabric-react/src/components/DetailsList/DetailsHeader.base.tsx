@@ -142,6 +142,7 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
       onColumnContextMenu,
       onRenderColumnHeaderTooltip = this._onRenderColumnHeaderTooltip,
       styles,
+      selectionMode,
       theme,
       onRenderDetailsCheckbox,
       groupNestingDepth,
@@ -204,7 +205,7 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
                     children: (
                       <DetailsRowCheck
                         id={`${this._id}-check`}
-                        aria-label={ariaLabelForSelectAllCheckbox}
+                        aria-label={selectionMode === SelectionMode.multiple ? ariaLabelForSelectAllCheckbox : ariaLabelForSelectionColumn}
                         aria-describedby={
                           !isCheckboxHidden
                             ? ariaLabelForSelectAllCheckbox && !this.props.onRenderColumnHeaderTooltip
