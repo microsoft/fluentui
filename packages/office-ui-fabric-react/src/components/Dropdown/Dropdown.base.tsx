@@ -71,9 +71,10 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
 
   /** Flag for when we get the first mouseMove */
   private _gotMouseMove: boolean;
-
   /** Flag for identifiying dropdown is opened by getting focus using keyboard */
   private _isOpenedByKeyboardFocus: boolean;
+  /** Flag for tracking whether focus is triggered by click event */
+  private _isFocusedByClick: boolean;
 
   constructor(props: IDropdownProps) {
     super(props);
@@ -279,6 +280,7 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
               onKeyDown={this._onDropdownKeyDown}
               onKeyUp={this._onDropdownKeyUp}
               onClick={this._onDropdownClick}
+              onMouseDown={this._onDropdownMouseDown}
               onFocus={this._onFocus}
             >
               <span
@@ -1045,6 +1047,10 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
     this._isOpenedByKeyboardFocus = false;
   };
 
+  private _onDropdownMouseDown = (_ev: React.MouseEvent<HTMLDivElement>): void => {
+    this._isFocusedByClick = true;
+  };
+
   private _onFocus = (ev: React.FocusEvent<HTMLDivElement>): void => {
     const { isOpen, selectedIndices, hasFocus } = this.state;
     const { multiSelect, openOnKeyboardFocus } = this.props;
@@ -1052,7 +1058,7 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
     const disabled = this._isDisabled();
 
     if (!disabled) {
-      if (!isOpen && selectedIndices.length === 0 && !multiSelect) {
+      if (!this._isFocusedByClick && !isOpen && selectedIndices.length === 0 && !multiSelect) {
         // Per aria
         this._moveIndex(ev, 1, 0, -1);
       }
@@ -1067,6 +1073,8 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
 
       this.setState(state);
     }
+
+    this._isFocusedByClick = false;
   };
 
   /**
