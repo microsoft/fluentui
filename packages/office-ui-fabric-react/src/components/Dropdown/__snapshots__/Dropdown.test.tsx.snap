@@ -99,6 +99,7 @@ exports[`Dropdown multi-select Renders multiselect Dropdown correctly 1`] = `
     onFocus={[Function]}
     onKeyDown={[Function]}
     onKeyUp={[Function]}
+    onMouseDown={[Function]}
     tabIndex={0}
   >
     <span
@@ -272,6 +273,7 @@ exports[`Dropdown single-select Renders single-select Dropdown correctly 1`] = `
     onFocus={[Function]}
     onKeyDown={[Function]}
     onKeyUp={[Function]}
+    onMouseDown={[Function]}
     role="listbox"
     tabIndex={0}
   >
