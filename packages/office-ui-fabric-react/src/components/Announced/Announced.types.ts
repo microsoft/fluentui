@@ -19,7 +19,7 @@ export interface IAnnouncedProps extends React.Props<AnnouncedBase>, React.HTMLA
    * Priority with which the screen reader should treat updates to this region
    * @default 'polite'
    */
-  'aria-live'?: string;
+  'aria-live'?: 'off' | 'polite' | 'assertive';
 }
 
 /**
