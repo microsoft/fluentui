@@ -324,6 +324,7 @@ exports[`Component Examples renders Dropdown.Error.Example.tsx correctly 1`] = `
       onFocus={[Function]}
       onKeyDown={[Function]}
       onKeyUp={[Function]}
+      onMouseDown={[Function]}
       role="listbox"
       tabIndex={0}
     >
