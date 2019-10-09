@@ -2,6 +2,20 @@
   "name": "@uifabric/tsx-editor",
   "entries": [
     {
+      "date": "Wed, 09 Oct 2019 12:34:23 GMT",
+      "tag": "@uifabric/tsx-editor_v0.10.1",
+      "version": "0.10.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix examples with fragments and refine diagnostic options",
+            "author": "elcraig@microsoft.com",
+            "commit": "0ca82fbc0625a093136d5d1ea228466b58834497"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 07 Oct 2019 23:42:31 GMT",
       "tag": "@uifabric/tsx-editor_v0.10.0",
       "version": "0.10.0",
