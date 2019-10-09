@@ -72,6 +72,9 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
   /** Flag for when we get the first mouseMove */
   private _gotMouseMove: boolean;
 
+  /** Flag for identifiying dropdown is opened by getting focus using keyboard */
+  private _isOpenedByKeyboardFocus: boolean;
+
   constructor(props: IDropdownProps) {
     super(props);
 
@@ -375,19 +378,13 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
     multiSelect?: boolean
   ) => {
     const { onChange, onChanged } = this.props;
-    if (onChange) {
+    if (onChange || onChanged) {
       // for single-select, option passed in will always be selected.
       // for multi-select, flip the checked value
       const changedOpt = multiSelect ? { ...options[index], selected: !checked } : options[index];
 
-      onChange({ ...event, target: this._dropDown.current as EventTarget }, changedOpt, index);
-    }
-
-    if (onChanged) {
-      // for single-select, option passed in will always be selected.
-      // for multi-select, flip the checked value
-      const changedOpt = multiSelect ? { ...options[index], selected: !checked } : options[index];
-      onChanged(changedOpt, index);
+      onChange && onChange({ ...event, target: this._dropDown.current as EventTarget }, changedOpt, index);
+      onChanged && onChanged(changedOpt, index);
     }
   };
 
@@ -1039,11 +1036,13 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
     const { isOpen } = this.state;
     const disabled = this._isDisabled();
 
-    if (!disabled) {
+    if (!disabled && !(this._isOpenedByKeyboardFocus && isOpen)) {
       this.setState({
         isOpen: !isOpen
       });
     }
+
+    this._isOpenedByKeyboardFocus = false;
   };
 
   private _onFocus = (ev: React.FocusEvent<HTMLDivElement>): void => {
@@ -1063,7 +1062,9 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
       const state: Pick<IDropdownState, 'hasFocus'> | Pick<IDropdownState, 'hasFocus' | 'isOpen'> = { hasFocus: true };
       if (openOnKeyboardFocus && !hasFocus) {
         (state as Pick<IDropdownState, 'hasFocus' | 'isOpen'>).isOpen = true;
+        this._isOpenedByKeyboardFocus = true;
       }
+
       this.setState(state);
     }
   };

@@ -183,15 +183,15 @@ exports[`Component Examples renders ContextualMenu.Directional.Example.tsx corre
               padding-top: 5px;
               word-wrap: break-word;
             }
-        htmlFor="Dropdown4"
-        id="Dropdown4-label"
+        htmlFor="Dropdown1"
+        id="Dropdown1-label"
       >
         Directional hint
       </label>
       <div
-        aria-describedby="Dropdown4-option"
+        aria-describedby="Dropdown1-option"
         aria-expanded="false"
-        aria-labelledby="Dropdown4-label"
+        aria-labelledby="Dropdown1-label"
         className=
             ms-Dropdown
             {
@@ -276,7 +276,7 @@ exports[`Component Examples renders ContextualMenu.Directional.Example.tsx corre
               border-color: #a4262c;
             }
         data-is-focusable={true}
-        id="Dropdown4"
+        id="Dropdown1"
         onBlur={[Function]}
         onChange={[Function]}
         onClick={[Function]}
@@ -321,7 +321,7 @@ exports[`Component Examples renders ContextualMenu.Directional.Example.tsx corre
                 text-overflow: ellipsis;
                 white-space: nowrap;
               }
-          id="Dropdown4-option"
+          id="Dropdown1-option"
           role="option"
         >
           <span>
@@ -481,7 +481,7 @@ exports[`Component Examples renders ContextualMenu.Directional.Example.tsx corre
                   margin-right: 4px;
                   margin-top: 0;
                 }
-            id="id__1"
+            id="id__2"
           >
             Show context menu
           </span>

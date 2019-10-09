@@ -2,6 +2,27 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Wed, 09 Oct 2019 22:25:09 GMT",
+      "tag": "office-ui-fabric-react_v7.47.0",
+      "version": "7.47.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Dropdown: when `openOnKeyboardFocus` prop is set to true, the Dropdown now does not close the options callout immediately.",
+            "author": "xgao@microsoft.com",
+            "commit": "575aeee692cd0f947e453ec6aa6ccebf10b25622"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "ResponsiveMode: defaulting to large to avoid breaking changes for scenarios assuming it would be available on first render.",
+            "author": "dzearing@microsoft.com",
+            "commit": "b129b4bb7ba3bb6cef8989ff5fb4dd7977e67c6c"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 09 Oct 2019 12:34:23 GMT",
       "tag": "office-ui-fabric-react_v7.46.0",
       "version": "7.46.0",
