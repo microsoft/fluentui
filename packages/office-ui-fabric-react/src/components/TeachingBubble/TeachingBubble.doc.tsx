@@ -41,7 +41,7 @@ export const TeachingBubblePageProps: IDocPageProps = {
       view: <TeachingBubbleIllustrationExample />
     },
     {
-      title: 'TeachingBubble wide with Illustration',
+      title: 'TeachingBubble Wide with Illustration',
       code: TeachingBubbleWideIllustrationExampleCode,
       view: <TeachingBubbleWideIllustrationExample />
     },
