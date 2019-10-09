@@ -1,7 +1,24 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 07 Oct 2019 23:42:31 GMT and should not be manually modified.
+This log was last generated on Wed, 09 Oct 2019 12:34:23 GMT and should not be manually modified.
 
+## 7.46.0
+Wed, 09 Oct 2019 12:34:23 GMT
+
+### Minor changes
+
+- Breadcrumb: Allow setting a custom overflow icon. (madomi@microsoft.com)
+- Announced: default aria live to polite (naethell@microsoft.com)
+### Patches
+
+- DetailsList: ariaLabel for select all checkbox should be dependent on selection mode (aneeshak@microsoft.com)
+- Changing order of arguments passed to getClassNames. Until now it was inconsistent with type defined in Button.types.ts (kushaly@microsoft.com)
+## 7.45.1
+Tue, 08 Oct 2019 12:31:37 GMT
+
+### Patches
+
+- ComboBox: Making error messages accessible to screen readers. (Humberto.Morimoto@microsoft.com)
 ## 7.45.0
 Mon, 07 Oct 2019 23:42:31 GMT
 

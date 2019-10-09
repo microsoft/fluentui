@@ -38,6 +38,8 @@ describe('Dropdown', () => {
       wrapper.unmount();
       wrapper = undefined;
     }
+
+    document.body.innerHTML = '';
   });
 
   describe('single-select', () => {
@@ -341,6 +343,15 @@ describe('Dropdown', () => {
       wrapper = mount(<Dropdown openOnKeyboardFocus label="testgroup" options={DEFAULT_OPTIONS} />);
 
       wrapper.find('.ms-Dropdown').simulate('focus');
+
+      const secondItemElement = document.querySelector('.ms-Dropdown-item[data-index="2"]') as HTMLElement;
+      expect(secondItemElement).toBeTruthy();
+    });
+
+    it('opens on click if openOnKeyboardFocus is true', () => {
+      wrapper = mount(<Dropdown openOnKeyboardFocus={true} label="testgroup" options={DEFAULT_OPTIONS} />);
+
+      wrapper.find('.ms-Dropdown').simulate('click');
 
       const secondItemElement = document.querySelector('.ms-Dropdown-item[data-index="2"]') as HTMLElement;
       expect(secondItemElement).toBeTruthy();
