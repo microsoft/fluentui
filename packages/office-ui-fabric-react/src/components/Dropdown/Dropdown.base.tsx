@@ -68,13 +68,12 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
   private _sizePosCache: DropdownSizePosCache = new DropdownSizePosCache();
   private _classNames: IProcessedStyleSet<IDropdownStyles>;
   private _requestAnimationFrame = safeRequestAnimationFrame(this);
-
   /** Flag for when we get the first mouseMove */
   private _gotMouseMove: boolean;
   /** Flag for identifiying dropdown is opened by getting focus using keyboard */
   private _isOpenedByKeyboardFocus: boolean;
   /** Flag for tracking whether focus is triggered by click event */
-  private _isFocusedByClick: boolean;
+  private _isMouseDownBeforeFocus: boolean;
 
   constructor(props: IDropdownProps) {
     super(props);
@@ -1048,7 +1047,7 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
   };
 
   private _onDropdownMouseDown = (_ev: React.MouseEvent<HTMLDivElement>): void => {
-    this._isFocusedByClick = true;
+    this._isMouseDownBeforeFocus = true;
   };
 
   private _onFocus = (ev: React.FocusEvent<HTMLDivElement>): void => {
@@ -1058,7 +1057,7 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
     const disabled = this._isDisabled();
 
     if (!disabled) {
-      if (!this._isFocusedByClick && !isOpen && selectedIndices.length === 0 && !multiSelect) {
+      if (!this._isMouseDownBeforeFocus && !isOpen && selectedIndices.length === 0 && !multiSelect) {
         // Per aria
         this._moveIndex(ev, 1, 0, -1);
       }
@@ -1074,7 +1073,7 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
       this.setState(state);
     }
 
-    this._isFocusedByClick = false;
+    this._isMouseDownBeforeFocus = false;
   };
 
   /**
