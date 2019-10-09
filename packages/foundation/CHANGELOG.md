@@ -1,7 +1,14 @@
 # Change Log - @uifabric/foundation
 
-This log was last generated on Thu, 03 Oct 2019 01:14:35 GMT and should not be manually modified.
+This log was last generated on Thu, 03 Oct 2019 23:14:46 GMT and should not be manually modified.
 
+## 7.4.4
+Thu, 03 Oct 2019 23:14:46 GMT
+
+### Patches
+
+- Fixing a publishing issue with foundation (odbuild@microsoft.com)
+- Fixes broken publish (odbuild@microsoft.com)
 ## 7.4.2
 Thu, 03 Oct 2019 01:14:35 GMT
 

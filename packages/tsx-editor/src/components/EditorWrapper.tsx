@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { IEditorWrapperProps } from './EditorWrapper.types';
-import { EditorError } from './EditorError';
+import { EditorErrorBoundary } from './EditorErrorHandler';
 import { TypeScriptSnippet } from './TypeScriptSnippet';
 import { EditorLoading } from './EditorLoading';
 import { isEditorSupported } from '../utilities/index';
@@ -14,21 +14,21 @@ const TsxEditorLazy = React.lazy(() => import('./TsxEditor'));
 export const EditorWrapper: React.FunctionComponent<IEditorWrapperProps> = props => {
   const {
     code,
-    isCodeVisible,
     previewAs: Preview = EditorPreview,
     editorClassName,
-    previewClassName,
+    previewProps = {},
     height = DEFAULT_HEIGHT,
     width,
     editorAriaLabel,
     modelRef,
     useEditor,
     supportedPackages,
+    onTransformFinished: onTransformFinishedFromProps,
     children
   } = props;
 
-  const [error, setError] = React.useState<string | string[]>();
-  const [ExampleComponent, setExampleComponent] = React.useState<React.ComponentType>();
+  const [transformResult, setTransformResult] = React.useState<ITransformedExample>({});
+  const { component: ExampleComponent } = transformResult;
 
   // Check if editing should be enabled
   const canEdit = React.useMemo(() => {
@@ -38,42 +38,40 @@ export const EditorWrapper: React.FunctionComponent<IEditorWrapperProps> = props
     return isEditorSupported(code, supportedPackages);
   }, [useEditor, code, supportedPackages]);
 
-  const onTransformFinished = (result: ITransformedExample) => {
-    setError(result.error);
-    if (result.component) {
-      setExampleComponent(result.component);
-    }
-    if (props.onTransformFinished) {
-      props.onTransformFinished(result);
-    }
-  };
+  const onTransformFinished = React.useCallback(
+    (result: ITransformedExample) => {
+      setTransformResult(result);
+      if (props.onTransformFinished) {
+        props.onTransformFinished(result);
+      }
+    },
+    [onTransformFinishedFromProps]
+  );
 
   return (
     <div>
-      {isCodeVisible && (
-        <div className={editorClassName}>
-          {canEdit ? (
-            // Editing supported -- render editor module (or loading spinner)
-            <React.Suspense fallback={<EditorLoading height={height} />}>
-              <TsxEditorLazy
-                editorProps={{ code, width, height, modelRef, ariaLabel: editorAriaLabel }}
-                onTransformFinished={onTransformFinished}
-              />
-            </React.Suspense>
-          ) : (
-            // Editing not supported
-            <TypeScriptSnippet>{code}</TypeScriptSnippet>
-          )}
-        </div>
-      )}
+      <div className={editorClassName}>
+        {canEdit ? (
+          // Editing supported -- render editor module (or loading spinner)
+          <React.Suspense fallback={<EditorLoading height={height} />}>
+            <TsxEditorLazy
+              editorProps={{ code, width, height, modelRef, ariaLabel: editorAriaLabel }}
+              onTransformFinished={onTransformFinished}
+            />
+          </React.Suspense>
+        ) : (
+          // Editing not supported
+          <TypeScriptSnippet>{code}</TypeScriptSnippet>
+        )}
+      </div>
 
-      {isCodeVisible && <EditorError error={error} />}
-
-      <Preview className={previewClassName}>{ExampleComponent ? <ExampleComponent /> : children}</Preview>
+      <EditorErrorBoundary transformResult={transformResult}>
+        <Preview {...previewProps}>{ExampleComponent ? <ExampleComponent /> : children}</Preview>
+      </EditorErrorBoundary>
     </div>
   );
 };
 
-const EditorPreview: React.FunctionComponent<{ className?: string }> = props => {
-  return <div className={props.className}>{props.children}</div>;
+const EditorPreview: React.FunctionComponent<{}> = props => {
+  return <div {...props} />;
 };

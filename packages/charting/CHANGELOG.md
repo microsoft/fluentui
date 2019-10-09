@@ -1,7 +1,13 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Thu, 03 Oct 2019 01:14:35 GMT and should not be manually modified.
+This log was last generated on Thu, 03 Oct 2019 23:14:46 GMT and should not be manually modified.
 
+## 0.136.2
+Thu, 03 Oct 2019 23:14:46 GMT
+
+### Patches
+
+- Fixes publish issue from beachball (odbuild@microsoft.com)
 ## 0.136.0
 Thu, 03 Oct 2019 01:14:35 GMT
 

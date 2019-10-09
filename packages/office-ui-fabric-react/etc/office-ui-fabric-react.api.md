@@ -1826,6 +1826,7 @@ export interface IBreadcrumbProps extends React.HTMLAttributes<HTMLElement> {
     maxDisplayedItems?: number;
     onReduceData?: (data: IBreadcrumbData) => IBreadcrumbData | undefined;
     onRenderItem?: IRenderFunction<IBreadcrumbItem>;
+    onRenderOverflowIcon?: IRenderFunction<IButtonProps>;
     overflowAriaLabel?: string;
     overflowIndex?: number;
     // (undocumented)
@@ -1911,6 +1912,8 @@ export interface IButtonProps extends React.AllHTMLAttributes<HTMLAnchorElement 
     primary?: boolean;
     primaryActionButtonProps?: IButtonProps;
     primaryDisabled?: boolean;
+    // @deprecated
+    renderPersistedMenuHiddenOnMount?: boolean;
     // @deprecated
     rootProps?: React.ButtonHTMLAttributes<HTMLButtonElement> | React.AnchorHTMLAttributes<HTMLAnchorElement>;
     secondaryText?: string;

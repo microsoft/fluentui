@@ -24,28 +24,24 @@ export function transpile(model: IMonacoTextModel): Promise<ITransformedCode> {
     .then((getWorker: (uri: monaco.Uri) => Promise<TypeScriptWorker>) => getWorker(model.uri))
     .then(worker => {
       return worker.getEmitOutput(filename).then((output: EmitOutput) => {
-        if (!output.emitSkipped) {
-          transpiledOutput.output = output.outputFiles[0].text;
-          if (win && win.transpileLogging) {
-            console.log('TRANSPILED:');
-            console.log(transpiledOutput.output);
+        // Get diagnostics to find out if there were any syntax errors (there's also getSemanticDiagnostics
+        // for type errors etc, but it may be better to allow the user to just find and fix those
+        // via intellisense rather than blocking compilation, since they may be non-fatal)
+        return worker.getSyntacticDiagnostics(filename).then(syntacticDiagnostics => {
+          syntacticDiagnostics = syntacticDiagnostics.filter(d => d.category === 1 /*error*/);
+
+          if (syntacticDiagnostics.length) {
+            // Don't try to run the example if there's a syntax error
+            transpiledOutput.error = _getErrorMessages(syntacticDiagnostics, model.getValue());
+          } else {
+            transpiledOutput.output = output.outputFiles[0].text;
+            if (win && win.transpileLogging) {
+              console.log('TRANSPILED:');
+              console.log(transpiledOutput.output);
+            }
           }
           return transpiledOutput;
-        }
-        // There was an error, so get diagnostics
-        return Promise.all([worker.getSyntacticDiagnostics(filename), worker.getSemanticDiagnostics(filename)]).then(
-          ([syntacticDiagnostics, semanticDiagnostics]) => {
-            const diagnostics = syntacticDiagnostics.concat(semanticDiagnostics).filter(d => d.category === 1 /*error*/);
-            diagnostics.sort((a, b) => a.start! - b.start!);
-            if (diagnostics.length) {
-              transpiledOutput.error = _getErrorMessages(diagnostics, model.getValue());
-            } else {
-              transpiledOutput.error = 'Error transpiling code';
-            }
-
-            return transpiledOutput;
-          }
-        );
+        });
       });
     })
     .catch(ex => {

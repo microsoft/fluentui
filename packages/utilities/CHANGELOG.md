@@ -1,7 +1,13 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Thu, 03 Oct 2019 01:14:35 GMT and should not be manually modified.
+This log was last generated on Mon, 07 Oct 2019 12:33:45 GMT and should not be manually modified.
 
+## 7.5.0
+Mon, 07 Oct 2019 12:33:45 GMT
+
+### Minor changes
+
+- Reverting dependency on ReactDOM findDOMNode in getWindow and getDocument helpers to avoid bundle problems for partners. (dzearing@microsoft.com)
 ## 7.4.0
 Thu, 03 Oct 2019 01:14:35 GMT
 

@@ -2,6 +2,20 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "date": "Mon, 07 Oct 2019 12:33:45 GMT",
+      "tag": "@uifabric/utilities_v7.5.0",
+      "version": "7.5.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Reverting dependency on ReactDOM findDOMNode in getWindow and getDocument helpers to avoid bundle problems for partners.",
+            "author": "dzearing@microsoft.com",
+            "commit": "60e9282babcde13e7ad810d99113a1399e13d479"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 03 Oct 2019 01:14:35 GMT",
       "tag": "@uifabric/utilities_v7.4.0",
       "version": "7.4.0",

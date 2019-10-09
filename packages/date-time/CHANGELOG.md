@@ -1,7 +1,13 @@
 # Change Log - @uifabric/date-time
 
-This log was last generated on Mon, 30 Sep 2019 12:35:16 GMT and should not be manually modified.
+This log was last generated on Thu, 03 Oct 2019 23:14:46 GMT and should not be manually modified.
 
+## 7.5.2
+Thu, 03 Oct 2019 23:14:46 GMT
+
+### Patches
+
+- Fixes publish issue from beachball (odbuild@microsoft.com)
 ## 7.5.0
 Mon, 30 Sep 2019 12:35:16 GMT
 

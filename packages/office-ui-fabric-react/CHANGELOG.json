@@ -2,6 +2,126 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Wed, 09 Oct 2019 12:34:23 GMT",
+      "tag": "office-ui-fabric-react_v7.46.0",
+      "version": "7.46.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Breadcrumb: Allow setting a custom overflow icon.",
+            "author": "madomi@microsoft.com",
+            "commit": "f5164fd724812ef0b1877445b0ac825debf96504"
+          },
+          {
+            "comment": "Announced: default aria live to polite",
+            "author": "naethell@microsoft.com",
+            "commit": "10d61e3f27ff20c0da970f53dddae52f7dfa9b72"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "DetailsList: ariaLabel for select all checkbox should be dependent on selection mode",
+            "author": "aneeshak@microsoft.com",
+            "commit": "37df5d69b6b259ee236eee68be1c926d733478b7"
+          },
+          {
+            "comment": "Changing order of arguments passed to getClassNames. Until now it was inconsistent with type defined in Button.types.ts",
+            "author": "kushaly@microsoft.com",
+            "commit": "93ba0469f7268622bd3d2e4068c6aa4689b3bd19"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 08 Oct 2019 12:31:37 GMT",
+      "tag": "office-ui-fabric-react_v7.45.1",
+      "version": "7.45.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "ComboBox: Making error messages accessible to screen readers.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "fb4674198f21545c70ee18e61ddbd3dcb61ad115"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 07 Oct 2019 23:42:31 GMT",
+      "tag": "office-ui-fabric-react_v7.45.0",
+      "version": "7.45.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Adding a new prop renderPersistedMenuHiddenOnMount",
+            "author": "kushaly@microsoft.com",
+            "commit": "bbb6467fe349e611f5b7414f28ee2053adf0f342"
+          },
+          {
+            "comment": "Callout and Card: Fix anchors for both",
+            "author": "joschect@microsoft.com",
+            "commit": "cbc935cf6a0e1d4fb1b7e980b347074dce817745"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Callout & Tooltip: Making background color themable.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "6aa84713cd454fdab87851df68bc9af845eec00d"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 07 Oct 2019 12:33:45 GMT",
+      "tag": "office-ui-fabric-react_v7.44.0",
+      "version": "7.44.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fixed minor a11y bugs, revamped example page",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "8af1c39a5f3dc74707add30e8aee498e1422aa7e"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Reverting dependency on ReactDOM findDOMNode in utilities to avoid bundle problems in partners.",
+            "author": "dzearing@microsoft.com",
+            "commit": "60e9282babcde13e7ad810d99113a1399e13d479"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 04 Oct 2019 22:19:48 GMT",
+      "tag": "office-ui-fabric-react_v7.43.2",
+      "version": "7.43.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "ContextualMenu: Removing deprecated check for getMenuClassNames that was stopping callout subComponentStyles from being applied.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "74b2f0f973bcb377b56dd337f578d7d07388eb83"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 03 Oct 2019 23:14:46 GMT",
+      "tag": "office-ui-fabric-react_v7.43.1",
+      "version": "7.43.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fixes broken publish",
+            "author": "odbuild@microsoft.com",
+            "commit": "e72c1748e076cfea80c9ca8f7e0210a328d790ba"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 03 Oct 2019 01:14:35 GMT",
       "tag": "office-ui-fabric-react_v7.43.0",
       "version": "7.43.0",
