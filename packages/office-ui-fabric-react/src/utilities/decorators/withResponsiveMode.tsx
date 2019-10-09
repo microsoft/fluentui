@@ -19,7 +19,7 @@ export enum ResponsiveMode {
 
 const RESPONSIVE_MAX_CONSTRAINT = [479, 639, 1023, 1365, 1919, 99999999];
 
-let _defaultMode: ResponsiveMode | undefined = ResponsiveMode.unknown;
+let _defaultMode: ResponsiveMode | undefined;
 
 /**
  * Allows a server rendered scenario to provide a default responsive mode.
@@ -37,7 +37,7 @@ export function withResponsiveMode<TProps extends { responsiveMode?: ResponsiveM
       this._updateComposedComponentRef = this._updateComposedComponentRef.bind(this);
 
       this.state = {
-        responsiveMode: _defaultMode
+        responsiveMode: _defaultMode || ResponsiveMode.large
       };
     }
 
