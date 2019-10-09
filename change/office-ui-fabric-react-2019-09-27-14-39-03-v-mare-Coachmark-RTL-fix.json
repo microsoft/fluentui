@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Coachmark: Fixed pulseBeacon animation direction in RTL",
+  "packageName": "office-ui-fabric-react",
+  "email": "v-mare@microsoft.com",
+  "commit": "31c51d607813abd1c9922d5593037f6e06f13e52",
+  "date": "2019-09-27T21:39:03.123Z"
+}
