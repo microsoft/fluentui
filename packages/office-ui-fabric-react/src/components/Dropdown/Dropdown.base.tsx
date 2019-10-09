@@ -1058,7 +1058,7 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
 
     if (!disabled) {
       if (!this._isMouseDownBeforeFocus && !isOpen && selectedIndices.length === 0 && !multiSelect) {
-        // Per aria
+        // Per aria: https://www.w3.org/TR/wai-aria-practices-1.1/#listbox_kbd_interaction
         this._moveIndex(ev, 1, 0, -1);
       }
       if (this.props.onFocus) {
