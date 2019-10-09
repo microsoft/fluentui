@@ -1046,7 +1046,7 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
     this._isOpenedByKeyboardFocus = false;
   };
 
-  private _onDropdownMouseDown = (_ev: React.MouseEvent<HTMLDivElement>): void => {
+  private _onDropdownMouseDown = (): void => {
     this._isMouseDownBeforeFocus = true;
   };
 
