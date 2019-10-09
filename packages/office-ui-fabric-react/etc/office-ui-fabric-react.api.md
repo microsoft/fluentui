@@ -4283,7 +4283,7 @@ export interface IDropdown {
 }
 
 // @public
-export interface IDropdownInternalProps extends IDropdownProps, IWithResponsiveModeState {
+export interface IDropdownInternalProps extends IDropdownProps {
 }
 
 // @public (undocumented)
