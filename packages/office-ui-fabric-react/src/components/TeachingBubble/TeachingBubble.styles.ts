@@ -111,7 +111,7 @@ export const getStyles = (props: ITeachingBubbleStyleProps): ITeachingBubbleStyl
     bodyContent: [
       classNames.bodyContent,
       {
-        padding: 20
+        padding: 24
       },
       isWide && {
         maxWidth: 302
