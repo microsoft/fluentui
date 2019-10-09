@@ -1,0 +1,9 @@
+{
+  "type": "patch",
+  "comment": "added header examples and updated alt descriptions for BottomSheet",
+  "packageName": "@uifabric/fabric-website",
+  "email": "willdo@microsoft.com",
+  "commit": "4da101885f9572d9f35f44784f0b919ca0f70a2e",
+  "date": "2019-10-09T20:49:10.926Z",
+  "file": "/git/office-ui-fabric-react/change/@uifabric-fabric-website-2019-10-09-13-49-10-fabric-android-bottom-sheet-header-documentation-updates.json"
+}
