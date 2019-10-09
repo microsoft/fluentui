@@ -1,0 +1,9 @@
+{
+  "type": "patch",
+  "comment": "Fixed dropdown to not select first option automatically unless it's selected using keyboard navigation per aria",
+  "packageName": "office-ui-fabric-react",
+  "email": "xgao@microsoft.com",
+  "commit": "43f40feb7596224a82cecf98f48121567c883783",
+  "date": "2019-10-09T04:55:21.494Z",
+  "file": "/Users/xugao/Projects/office-ui-fabric-react/change/office-ui-fabric-react-2019-10-08-21-55-21-dropdown-fix.json"
+}
