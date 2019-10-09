@@ -70,10 +70,8 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
   private _requestAnimationFrame = safeRequestAnimationFrame(this);
   /** Flag for when we get the first mouseMove */
   private _gotMouseMove: boolean;
-  /** Flag for identifiying dropdown is opened by getting focus using keyboard */
-  private _isOpenedByKeyboardFocus: boolean;
-  /** Flag for tracking whether focus is triggered by click event */
-  private _isMouseDownBeforeFocus: boolean;
+  /** Flag for tracking whether focus is triggered by click (alternatively triggered by keyboard nav) */
+  private _isFocusedByClick: boolean;
 
   constructor(props: IDropdownProps) {
     super(props);
@@ -1037,27 +1035,27 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
     const { isOpen } = this.state;
     const disabled = this._isDisabled();
 
-    if (!disabled && !(this._isOpenedByKeyboardFocus && isOpen)) {
+    if (!disabled && !this._shouldOpenOnFocus()) {
       this.setState({
         isOpen: !isOpen
       });
     }
 
-    this._isOpenedByKeyboardFocus = false;
+    this._isFocusedByClick = false; // reset
   };
 
   private _onDropdownMouseDown = (): void => {
-    this._isMouseDownBeforeFocus = true;
+    this._isFocusedByClick = true;
   };
 
   private _onFocus = (ev: React.FocusEvent<HTMLDivElement>): void => {
-    const { isOpen, selectedIndices, hasFocus } = this.state;
-    const { multiSelect, openOnKeyboardFocus } = this.props;
+    const { isOpen, selectedIndices } = this.state;
+    const { multiSelect } = this.props;
 
     const disabled = this._isDisabled();
 
     if (!disabled) {
-      if (!this._isMouseDownBeforeFocus && !isOpen && selectedIndices.length === 0 && !multiSelect) {
+      if (!this._isFocusedByClick && !isOpen && selectedIndices.length === 0 && !multiSelect) {
         // Per aria: https://www.w3.org/TR/wai-aria-practices-1.1/#listbox_kbd_interaction
         this._moveIndex(ev, 1, 0, -1);
       }
@@ -1065,15 +1063,12 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
         this.props.onFocus(ev);
       }
       const state: Pick<IDropdownState, 'hasFocus'> | Pick<IDropdownState, 'hasFocus' | 'isOpen'> = { hasFocus: true };
-      if (openOnKeyboardFocus && !hasFocus) {
+      if (this._shouldOpenOnFocus()) {
         (state as Pick<IDropdownState, 'hasFocus' | 'isOpen'>).isOpen = true;
-        this._isOpenedByKeyboardFocus = true;
       }
 
       this.setState(state);
     }
-
-    this._isMouseDownBeforeFocus = false;
   };
 
   /**
@@ -1113,4 +1108,10 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
       </Label>
     ) : null;
   };
+
+  private _shouldOpenOnFocus(): boolean {
+    const { hasFocus } = this.state;
+    const { openOnKeyboardFocus } = this.props;
+    return !this._isFocusedByClick && openOnKeyboardFocus === true && !hasFocus;
+  }
 }
