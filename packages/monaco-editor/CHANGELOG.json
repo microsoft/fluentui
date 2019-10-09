@@ -2,6 +2,48 @@
   "name": "@uifabric/monaco-editor",
   "entries": [
     {
+      "date": "Fri, 04 Oct 2019 22:19:48 GMT",
+      "tag": "@uifabric/monaco-editor_v0.3.0",
+      "version": "0.3.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Fix monaco bundle paths to use transformed CSS",
+            "author": "elcraig@microsoft.com",
+            "commit": "5769e0419f9162970898c424da471e8fb9c53ccf"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 03 Oct 2019 23:14:46 GMT",
+      "tag": "@uifabric/monaco-editor_v0.2.4",
+      "version": "0.2.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fixes broken publish",
+            "author": "odbuild@microsoft.com",
+            "commit": "be07b87e075674d117e7c92f0dc9a869075280c2"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 03 Oct 2019 01:14:35 GMT",
+      "tag": "@uifabric/monaco-editor_v0.2.3",
+      "version": "0.2.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Move monaco-editor to a non-dev dependency",
+            "author": "elcraig@microsoft.com",
+            "commit": "afe85bef18cbd324d8775f1878890f74d21cb3e9"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 30 Sep 2019 12:35:16 GMT",
       "tag": "@uifabric/monaco-editor_v0.2.2",
       "version": "0.2.2",

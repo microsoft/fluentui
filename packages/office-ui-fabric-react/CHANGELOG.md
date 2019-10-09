@@ -1,7 +1,54 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 02 Oct 2019 12:31:15 GMT and should not be manually modified.
+This log was last generated on Tue, 08 Oct 2019 12:31:37 GMT and should not be manually modified.
 
+## 7.45.1
+Tue, 08 Oct 2019 12:31:37 GMT
+
+### Patches
+
+- ComboBox: Making error messages accessible to screen readers. (Humberto.Morimoto@microsoft.com)
+## 7.45.0
+Mon, 07 Oct 2019 23:42:31 GMT
+
+### Minor changes
+
+- Adding a new prop renderPersistedMenuHiddenOnMount (kushaly@microsoft.com)
+- Callout and Card: Fix anchors for both (joschect@microsoft.com)
+### Patches
+
+- Callout & Tooltip: Making background color themable. (Humberto.Morimoto@microsoft.com)
+## 7.44.0
+Mon, 07 Oct 2019 12:33:45 GMT
+
+### Minor changes
+
+- Reverting dependency on ReactDOM findDOMNode in utilities to avoid bundle problems in partners. (dzearing@microsoft.com)
+### Patches
+
+- fixed minor a11y bugs, revamped example page (mgodbolt@microsoft.com)
+## 7.43.2
+Fri, 04 Oct 2019 22:19:48 GMT
+
+### Patches
+
+- ContextualMenu: Removing deprecated check for getMenuClassNames that was stopping callout subComponentStyles from being applied. (Humberto.Morimoto@microsoft.com)
+## 7.43.1
+Thu, 03 Oct 2019 23:14:46 GMT
+
+### Patches
+
+- Fixes broken publish (odbuild@microsoft.com)
+## 7.43.0
+Thu, 03 Oct 2019 01:14:35 GMT
+
+### Minor changes
+
+- Callout: Addressing regression when target is an event. (dzearing@microsoft.com)
+### Patches
+
+- Dropdown: adjust option styling for IE11 (naethell@microsoft.com)
+- Dropdown: Making multiselect options clickable outside of the options label while still within Dropdown's boundaries. (Humberto.Morimoto@microsoft.com)
 ## 7.42.0
 Wed, 02 Oct 2019 12:31:15 GMT
 

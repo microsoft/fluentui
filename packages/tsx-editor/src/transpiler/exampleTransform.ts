@@ -11,13 +11,23 @@ export interface ITransformExampleParams {
    * returned code if `jsCode` is not provided.
    */
   tsCode: string;
+
   /**
    * The example transpiled into JS, output module format ES2015 or ESNext.
    * Will be used in the final returned code if provided.
    */
   jsCode?: string;
-  /** ID for the component to be rendered into */
-  id: string;
+
+  /**
+   * If true, the code will be transformed into an immediately invoked function expression which
+   * returns the component (rather than including a `ReactDOM.render(...)` line). If false, the code
+   * will not be wrapped in a function and will actually render the component.
+   */
+  returnComponent?: boolean;
+
+  /** ID for the component to be rendered into (required unless `returnComponent` is true) */
+  id?: string;
+
   /** Supported package groups (React is implicitly supported) */
   supportedPackages: IBasicPackageGroup[];
 }
@@ -32,10 +42,10 @@ const win = getWindow() as
  * Transform an example for rendering in a browser context (example page or codepen).
  */
 export function transformExample(params: ITransformExampleParams): ITransformedCode {
-  const { tsCode, jsCode, id, supportedPackages } = params;
+  const { tsCode, jsCode, id = 'content', supportedPackages, returnComponent } = params;
 
   // Imports or exports will be removed since they are not supported.
-  const mainCode = (jsCode || tsCode)
+  const code = (jsCode || tsCode)
     // Use .source because IE 11 doesn't support creating a regex from a regex
     .replace(new RegExp(IMPORT_REGEX.source, 'gm'), '')
     .replace(/^export /gm, '')
@@ -66,28 +76,48 @@ export function transformExample(params: ITransformExampleParams): ITransformedC
     identifiersByGlobal[globalName].push(...imprt.identifiers.map(item => (item.as ? `${item.name}: ${item.as}` : item.name)));
   }
 
-  // Generate the line to render the component
-  let createComponentElement = `React.createElement(${component}, null)`;
+  let lines = [code];
+
+  // Generate Fabric wrapper stuff for the component if appropriate
+  let finalComponent = component;
   if (identifiersByGlobal.Fabric) {
-    // If this is a Fabric example, wrap in a <Fabric> (and add an import for that if needed)
-    createComponentElement = `React.createElement(Fabric, null, ${createComponentElement})`;
+    // If this is a Fabric example, wrap in a <Fabric> (and add an import for that if needed),
+    // and initialize icons in case the example uses them.
+    finalComponent = component + 'Wrapper';
+
+    // If immediately running the code, the component can't use JSX format
+    const wrapperCode = returnComponent
+      ? `React.createElement(Fabric, null, React.createElement(${component}, null))`
+      : `<Fabric><${component} /></Fabric>`;
+    lines.push('', `const ${finalComponent} = () => ${wrapperCode};`);
+
     if (identifiersByGlobal.Fabric.indexOf('Fabric') === -1) {
       identifiersByGlobal.Fabric.push('Fabric');
+    }
+
+    if (identifiersByGlobal.Fabric.indexOf('initializeIcons') === -1) {
+      lines.unshift('// Initialize icons in case this example uses them', 'initializeIcons();', '');
+      identifiersByGlobal.Fabric.push('initializeIcons');
     }
   }
 
   // Add const destructuring for formerly-imported identifiers
-  const importLines = Object.keys(identifiersByGlobal).map(
-    globalName => `const { ${identifiersByGlobal[globalName].join(', ')} } = window.${globalName};`
-  );
+  lines.unshift('');
+  lines = Object.keys(identifiersByGlobal)
+    .map(globalName => `const { ${identifiersByGlobal[globalName].join(', ')} } = window.${globalName};`)
+    .concat(lines);
 
-  // All together!
-  output.output = `${importLines.join('\n')}
+  if (returnComponent) {
+    // Wrap in IIFE
+    lines.unshift('(function() {');
+    lines.push(`return ${finalComponent};`);
+    lines.push('})()');
+  } else {
+    // Add render line
+    lines.push(`ReactDOM.render(<${finalComponent} />, document.getElementById('${id}'))`);
+  }
 
-${mainCode}
-
-ReactDOM.render(${createComponentElement}, document.getElementById('${id}'));
-`;
+  output.output = lines.join('\n');
 
   if (win && win.transformLogging) {
     console.log('TRANSFORMED:');

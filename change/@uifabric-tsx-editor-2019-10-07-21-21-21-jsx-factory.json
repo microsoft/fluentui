@@ -1,0 +1,9 @@
+{
+  "type": "patch",
+  "comment": "Fix examples with fragments and refine diagnostic options",
+  "packageName": "@uifabric/tsx-editor",
+  "email": "elcraig@microsoft.com",
+  "commit": "0ca82fbc0625a093136d5d1ea228466b58834497",
+  "date": "2019-10-08T04:21:21.369Z",
+  "file": "/Users/elizabeth/git/fabric-react10/change/@uifabric-tsx-editor-2019-10-07-21-21-21-jsx-factory.json"
+}

@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Changing order of arguments passed to getClassNames. Until now it was inconsistent with type defined in Button.types.ts",
+  "packageName": "office-ui-fabric-react",
+  "email": "kushaly@microsoft.com",
+  "commit": "93ba0469f7268622bd3d2e4068c6aa4689b3bd19",
+  "date": "2019-10-08T00:46:52.606Z"
+}

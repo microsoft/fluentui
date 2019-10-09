@@ -63,7 +63,13 @@ export class OverflowSetBasicExample extends React.PureComponent {
       }
     };
     return (
-      <IconButton title="More options" styles={buttonStyles} menuIconProps={{ iconName: 'More' }} menuProps={{ items: overflowItems! }} />
+      <IconButton
+        role="menuitem"
+        title="More options"
+        styles={buttonStyles}
+        menuIconProps={{ iconName: 'More' }}
+        menuProps={{ items: overflowItems! }}
+      />
     );
   };
 }

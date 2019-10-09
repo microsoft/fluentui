@@ -41,7 +41,7 @@ Note that these are **still subject to change** until a major release.
 
 ### `EditorWrapper`: Full editor + example rendering
 
-`EditorWrapper` renders a Monaco editor, a container where the example is rendered, and a message bar with errors (when applicable). As the user types, the component transpiles and evals the code to update the rendered example.
+`EditorWrapper` renders a Monaco editor, a container where the example is rendered, and a message bar with errors (when applicable). As the user types, `EditorWrapper` transpiles the updated example component code, evals it, and re-renders the example component.
 
 If the user's browser can't support the editor, the code will be rendered read-only.
 
@@ -49,13 +49,21 @@ TODO: add usage example
 
 ### `TsxEditor`: Editor + transpile/eval example
 
-`TsxEditor` is like `EditorWrapper`, but without the example container, error bar, or read-only fallback. It takes in the ID of a pre-existing div to render the example into and provides a callback to inform the consumer of transpile/eval errors.
+`TsxEditor` is like `EditorWrapper`, but without the example container, error bar, or read-only fallback. Instead of rendering the example itself, it takes in an `onTransformFinished` callback to pass the example component up to the parent for rendering.
+
+Notes for this option:
+
+- You should **delay load** the `TsxEditor` component to prevent Monaco from being pulled into your main bundle.
+  - `TsxEditor` isn't included in `@uifabric/tsx-editor/lib/index` due to importing Monaco. It should be imported from `@uifabric/tsx-editor/lib/TsxEditor` instead.
+- When rendering the example component, be sure to wrap it in an error boundary; otherwise **runtime errors in the example will crash the page**. (One option is using `EditorErrorBoundary`, which also handles displaying transform errors.)
 
 TODO: add usage example
 
 ### `Editor`: Editor only
 
 `Editor` renders only Monaco. It works with any language and doesn't do any extra TypeScript setup.
+
+Note that if you choose this option, you should **delay load** the `Editor` component to prevent Monaco from being pulled into your main bundle. (`Editor` isn't included in `@uifabric/tsx-editor/lib/index` due to importing Monaco. It should be imported from `@uifabric/tsx-editor/lib/Editor` instead.)
 
 TODO: add usage example
 

@@ -133,7 +133,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   /** The menu item element that is currently selected */
   private _selectedElement = React.createRef<HTMLSpanElement>();
 
-  /** The base id for the comboBox */
+  /** The base id for the ComboBox */
   private _id: string;
 
   /**
@@ -311,6 +311,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   // Primary Render
   public render(): JSX.Element {
     const id = this._id;
+    const errorMessageId = id + '-error';
     const {
       className,
       label,
@@ -391,7 +392,11 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
                 readOnly={disabled || !allowFreeform}
                 aria-labelledby={label && id + '-label'}
                 aria-label={ariaLabel && !label ? ariaLabel : undefined}
-                aria-describedby={mergeAriaAttributeValues(ariaDescribedBy, keytipAttributes['aria-describedby'])}
+                aria-describedby={
+                  errorMessage !== undefined
+                    ? mergeAriaAttributeValues(ariaDescribedBy, keytipAttributes['aria-describedby'], errorMessageId)
+                    : mergeAriaAttributeValues(ariaDescribedBy, keytipAttributes['aria-describedby'])
+                }
                 aria-activedescendant={this._getAriaActiveDescentValue()}
                 aria-required={required}
                 aria-disabled={disabled}
@@ -435,7 +440,9 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
             },
             this._onRenderContainer
           )}
-        {errorMessage && <div className={this._classNames.errorMessage}>{errorMessage}</div>}
+        <div role="region" aria-live="polite" aria-atomic="true" id={errorMessageId} className={this._classNames.errorMessage}>
+          {errorMessage !== undefined ? errorMessage : ''}
+        </div>
       </div>
     );
   }

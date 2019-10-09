@@ -1,7 +1,25 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Tue, 24 Sep 2019 12:35:43 GMT and should not be manually modified.
+This log was last generated on Fri, 04 Oct 2019 22:19:48 GMT and should not be manually modified.
 
+## 7.8.4
+Fri, 04 Oct 2019 22:19:48 GMT
+
+### Patches
+
+- Use latest tsx-editor APIs (elcraig@microsoft.com)
+## 7.8.3
+Thu, 03 Oct 2019 23:14:46 GMT
+
+### Patches
+
+- Fix a publish issue with example-app-base (odbuild@microsoft.com)
+## 7.8.1
+Thu, 03 Oct 2019 01:14:35 GMT
+
+### Patches
+
+- Editor: add accessibility props and improve preview rendering (elcraig@microsoft.com)
 ## 7.8.0
 Tue, 24 Sep 2019 12:35:43 GMT
 

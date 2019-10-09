@@ -142,7 +142,7 @@ export class Async {
    * @param targetElement - Optional target element to use for identifying the correct window.
    * @returns The setTimeout id.
    */
-  public setImmediate(callback: () => void, targetElement?: Element): number {
+  public setImmediate(callback: () => void, targetElement?: Element | null): number {
     let immediateId = 0;
     const win = getWindow(targetElement)!;
 
@@ -180,7 +180,7 @@ export class Async {
    * @param id - Id to cancel.
    * @param targetElement - Optional target element to use for identifying the correct window.
    */
-  public clearImmediate(id: number, targetElement?: Element): void {
+  public clearImmediate(id: number, targetElement?: Element | null): void {
     const win = getWindow(targetElement)!;
 
     if (this._immediateIds && this._immediateIds[id]) {
@@ -445,7 +445,7 @@ export class Async {
     return resultFunction;
   }
 
-  public requestAnimationFrame(callback: () => void, targetElement?: Element): number {
+  public requestAnimationFrame(callback: () => void, targetElement?: Element | null): number {
     let animationFrameId = 0;
     const win = getWindow(targetElement)!;
 
@@ -479,7 +479,7 @@ export class Async {
     return animationFrameId;
   }
 
-  public cancelAnimationFrame(id: number, targetElement?: Element): void {
+  public cancelAnimationFrame(id: number, targetElement?: Element | null): void {
     const win = getWindow(targetElement)!;
 
     if (this._animationFrameIds && this._animationFrameIds[id]) {
