@@ -1,0 +1,9 @@
+{
+  "type": "patch",
+  "comment": "Announced: explicitly show aria-live property in Announced types",
+  "packageName": "office-ui-fabric-react",
+  "email": "naethell@microsoft.com",
+  "commit": "f387bd52fabef7244663acb5b0bb5d87518f21d1",
+  "date": "2019-10-09T22:57:38.235Z",
+  "file": "C:\\Users\\naethell\\office-ui-fabric-react\\change\\office-ui-fabric-react-2019-10-09-15-57-38-announcedAriaLiveProp.json"
+}
