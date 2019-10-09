@@ -31,7 +31,6 @@ import { ICalloutPositionedInfo, RectangleEdge } from '../../utilities/positioni
 import { Icon } from '../../Icon';
 import { ILabelStyleProps, ILabelStyles, Label } from '../../Label';
 import { IProcessedStyleSet } from '../../Styling';
-import { IWithResponsiveModeState } from '../../utilities/decorators/withResponsiveMode';
 import { KeytipData } from '../../KeytipData';
 import { Panel, IPanelStyleProps, IPanelStyles } from '../../Panel';
 import { ResponsiveMode, getResponsiveMode } from '../../utilities/decorators/withResponsiveMode';

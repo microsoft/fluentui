@@ -3022,15 +3022,15 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                 padding-top: 5px;
                 word-wrap: break-word;
               }
-          htmlFor="Dropdown16"
-          id="Dropdown16-label"
+          htmlFor="Dropdown12"
+          id="Dropdown12-label"
         >
           Horizontal alignment:
         </label>
         <div
-          aria-describedby="Dropdown16-option"
+          aria-describedby="Dropdown12-option"
           aria-expanded="false"
-          aria-labelledby="Dropdown16-label"
+          aria-labelledby="Dropdown12-label"
           className=
               ms-Dropdown
               {
@@ -3115,7 +3115,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                 border-color: #a4262c;
               }
           data-is-focusable={true}
-          id="Dropdown16"
+          id="Dropdown12"
           onBlur={[Function]}
           onChange={[Function]}
           onClick={[Function]}
@@ -3160,7 +3160,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                   text-overflow: ellipsis;
                   white-space: nowrap;
                 }
-            id="Dropdown16-option"
+            id="Dropdown12-option"
             role="option"
           >
             <span>
@@ -3247,15 +3247,15 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                 padding-top: 5px;
                 word-wrap: break-word;
               }
-          htmlFor="Dropdown17"
-          id="Dropdown17-label"
+          htmlFor="Dropdown13"
+          id="Dropdown13-label"
         >
           Vertical alignment:
         </label>
         <div
-          aria-describedby="Dropdown17-option"
+          aria-describedby="Dropdown13-option"
           aria-expanded="false"
-          aria-labelledby="Dropdown17-label"
+          aria-labelledby="Dropdown13-label"
           className=
               ms-Dropdown
               {
@@ -3340,7 +3340,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                 border-color: #a4262c;
               }
           data-is-focusable={true}
-          id="Dropdown17"
+          id="Dropdown13"
           onBlur={[Function]}
           onChange={[Function]}
           onClick={[Function]}
@@ -3385,7 +3385,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                   text-overflow: ellipsis;
                   white-space: nowrap;
                 }
-            id="Dropdown17-option"
+            id="Dropdown13-option"
             role="option"
           >
             <span>
@@ -3490,7 +3490,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
                 outline: 1px solid ActiveBorder;
               }
-          id="checkbox-12"
+          id="checkbox-14"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
@@ -3521,7 +3521,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                 right: 0px;
                 top: 0px;
               }
-          htmlFor="checkbox-12"
+          htmlFor="checkbox-14"
         >
           <div
             className=
@@ -3649,8 +3649,8 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                   padding-top: 5px;
                   word-wrap: break-word;
                 }
-            htmlFor="TextField13"
-            id="TextFieldLabel15"
+            htmlFor="TextField15"
+            id="TextFieldLabel17"
           >
             Enter a space-separated list of empty children (e.g. 1 2 3):
           </label>
@@ -3687,7 +3687,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
           >
             <input
               aria-invalid={false}
-              aria-labelledby="TextFieldLabel15"
+              aria-labelledby="TextFieldLabel17"
               className=
                   ms-TextField-field
                   {
@@ -3755,7 +3755,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                     font-weight: 400;
                     opacity: 1;
                   }
-              id="TextField13"
+              id="TextField15"
               onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}
