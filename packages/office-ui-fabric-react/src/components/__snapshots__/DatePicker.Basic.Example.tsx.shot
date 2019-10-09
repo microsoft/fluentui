@@ -201,7 +201,6 @@ exports[`Component Examples renders DatePicker.Basic.Example.tsx correctly 1`] =
                   }
               data-icon-name="Calendar"
               onClick={[Function]}
-              role="presentation"
             >
               
             </i>
@@ -332,9 +331,6 @@ exports[`Component Examples renders DatePicker.Basic.Example.tsx correctly 1`] =
           &:active .ms-Dropdown-title--hasError {
             border-color: #a4262c;
           }
-          &:focus .ms-Dropdown-title--hasError {
-            border-color: #a4262c;
-          }
       data-is-focusable={true}
       id="Dropdown5"
       onBlur={[Function]}
@@ -348,8 +344,9 @@ exports[`Component Examples renders DatePicker.Basic.Example.tsx correctly 1`] =
     >
       <span
         aria-atomic={true}
+        aria-invalid={false}
         aria-label="Sunday"
-        aria-live="off"
+        aria-live="polite"
         aria-posinset={1}
         aria-selected={true}
         aria-setsize={7}
@@ -416,7 +413,6 @@ exports[`Component Examples renders DatePicker.Basic.Example.tsx correctly 1`] =
                 speak: none;
               }
           data-icon-name="ChevronDown"
-          role="presentation"
         >
           
         </i>

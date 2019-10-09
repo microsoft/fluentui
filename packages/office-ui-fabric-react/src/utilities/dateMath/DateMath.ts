@@ -150,9 +150,17 @@ export function compareDatePart(date1: Date, date2: Date): Number {
  * @param {DateRangeType} dateRangeType - The desired date range type, i.e., day, week, month, etc.
  * @param {DayOfWeek} firstDayOfWeek - The first day of the week.
  * @param {DayOfWeek[]} workWeekDays - The allowed days in work week. If not provided, assumes all days are allowed.
+ * @param {number} daysToSelectInDayView - The number of days to include when using dateRangeType === DateRangeType.Day
+ * for multiday view. Defaults to 1
  * @returns {Date[]} An array of dates representing the date range containing the specified date.
  */
-export function getDateRangeArray(date: Date, dateRangeType: DateRangeType, firstDayOfWeek: DayOfWeek, workWeekDays?: DayOfWeek[]): Date[] {
+export function getDateRangeArray(
+  date: Date,
+  dateRangeType: DateRangeType,
+  firstDayOfWeek: DayOfWeek,
+  workWeekDays?: DayOfWeek[],
+  daysToSelectInDayView: number = 1
+): Date[] {
   const datesArray = new Array<Date>();
   let startDate: Date;
   let endDate = null;
@@ -161,10 +169,12 @@ export function getDateRangeArray(date: Date, dateRangeType: DateRangeType, firs
     workWeekDays = [DayOfWeek.Monday, DayOfWeek.Tuesday, DayOfWeek.Wednesday, DayOfWeek.Thursday, DayOfWeek.Friday];
   }
 
+  daysToSelectInDayView = Math.max(daysToSelectInDayView, 1);
+
   switch (dateRangeType) {
     case DateRangeType.Day:
       startDate = getDatePart(date);
-      endDate = addDays(startDate, 1);
+      endDate = addDays(startDate, daysToSelectInDayView);
       break;
 
     case DateRangeType.Week:

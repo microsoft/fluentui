@@ -1,5 +1,6 @@
-import { keyframes, PulsingBeaconAnimationStyles } from '../../Styling';
+import { keyframes, PulsingBeaconAnimationStyles, HighContrastSelector } from '../../Styling';
 import { ICoachmarkStyleProps, ICoachmarkStyles } from './Coachmark.types';
+import { getRTL } from '../../Utilities';
 
 export const COACHMARK_WIDTH = 32;
 export const COACHMARK_HEIGHT = 32;
@@ -166,7 +167,7 @@ export function getStyles(props: ICoachmarkStyleProps): ICoachmarkStyles {
         position: 'absolute',
         top: '50%',
         left: '50%',
-        transform: 'translate(-50%, -50%)',
+        transform: getRTL() ? 'translate(50%, -50%)' : 'translate(-50%, -50%)',
         width: '0px',
         height: '0px',
         borderRadius: '225px',
@@ -239,7 +240,13 @@ export function getStyles(props: ICoachmarkStyleProps): ICoachmarkStyles {
         backgroundColor: color,
         borderRadius: COACHMARK_WIDTH,
         transition: 'border-radius 250ms, width 500ms, height 500ms cubic-bezier(0.5, 0, 0, 1)',
-        visibility: 'hidden'
+        visibility: 'hidden',
+        selectors: {
+          [HighContrastSelector]: {
+            backgroundColor: 'Window',
+            border: '2px solid WindowText'
+          }
+        }
       },
       !isMeasuring && {
         width: COACHMARK_WIDTH,

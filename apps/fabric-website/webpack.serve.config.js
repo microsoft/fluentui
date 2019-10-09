@@ -2,12 +2,12 @@
 
 const path = require('path');
 const resources = require('@uifabric/build/webpack/webpack-resources');
-const { addMonacoConfig } = require('@uifabric/tsx-editor/scripts/monaco-webpack');
+const { addMonacoWebpackConfig } = require('@uifabric/tsx-editor/scripts/addMonacoWebpackConfig');
 
 const entryPointName = 'fabric-sitev5';
 
 module.exports = resources.createServeConfig(
-  addMonacoConfig({
+  addMonacoWebpackConfig({
     entry: {
       [entryPointName]: './src/root.tsx'
     },
@@ -16,10 +16,8 @@ module.exports = resources.createServeConfig(
       chunkFilename: `${entryPointName}-[name].js`
     },
 
-    externals: {
-      react: 'React',
-      'react-dom': 'ReactDOM'
-    },
+    // The website config intentionally doesn't have React as an external because we bundle it
+    // to ensure we get a consistent version.
 
     optimization: {
       removeAvailableModules: false

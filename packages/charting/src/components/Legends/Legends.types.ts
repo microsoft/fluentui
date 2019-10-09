@@ -24,6 +24,11 @@ export interface ILegendsStyles {
   rect: IStyle;
 
   /**
+   * Style set for the triangle that represents a legend
+   */
+  triangle: IStyle;
+
+  /**
    * Style for the legend text
    */
   text: IStyle;
@@ -64,6 +69,11 @@ export interface ILegend {
    * The color for the legend
    */
   color: string;
+
+  /**
+   * The shape for the legend
+   */
+  shape?: LegendShape;
 }
 
 export interface ILegendStyleProps {
@@ -100,3 +110,10 @@ export interface ILegendsProps {
    */
   centerLegends?: boolean;
 }
+
+/**
+ * The shape for the legend
+ * default: show the rect legend
+ * triangle: show the triangle legend
+ */
+export type LegendShape = 'default' | 'triangle';

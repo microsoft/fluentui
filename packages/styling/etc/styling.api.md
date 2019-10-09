@@ -5,6 +5,7 @@
 ```ts
 
 import { concatStyleSets } from '@uifabric/merge-styles';
+import { concatStyleSetsWithProps } from '@uifabric/merge-styles';
 import { fontFace } from '@uifabric/merge-styles';
 import { ICSPSettings } from '@uifabric/merge-styles';
 import { ICustomizerContext } from '@uifabric/utilities';
@@ -43,6 +44,8 @@ export function buildClassMap<T extends Object>(styles: T): {
 export const ColorClassNames: IColorClassNames;
 
 export { concatStyleSets }
+
+export { concatStyleSetsWithProps }
 
 // @public (undocumented)
 export function createFontStyles(localeCode: string | null): IFontStyles;
@@ -422,6 +425,7 @@ export type IPartialTheme = {
     semanticColors?: Partial<ISemanticColors>;
     isInverted?: boolean;
     disableGlobalClassNames?: boolean;
+    rtl?: boolean;
     spacing?: Partial<ISpacing>;
     effects?: Partial<IEffects>;
     schemes?: {
@@ -444,6 +448,8 @@ export interface IScheme {
     isInverted: boolean;
     // (undocumented)
     palette: IPalette;
+    // (undocumented)
+    rtl?: boolean;
     // (undocumented)
     semanticColors: ISemanticColors;
     // @internal
@@ -688,8 +694,8 @@ export namespace ZIndexes {
 
 // Warnings were encountered during analysis:
 // 
-// lib/interfaces/ITheme.d.ts:68:5 - (ae-incompatible-release-tags) The symbol "spacing" is marked as @public, but its signature references "ISpacing" which is marked as @internal
-// lib/interfaces/ITheme.d.ts:70:5 - (ae-incompatible-release-tags) The symbol "schemes" is marked as @public, but its signature references "ISchemeNames" which is marked as @internal
+// lib/interfaces/ITheme.d.ts:70:5 - (ae-incompatible-release-tags) The symbol "spacing" is marked as @public, but its signature references "ISpacing" which is marked as @internal
+// lib/interfaces/ITheme.d.ts:72:5 - (ae-incompatible-release-tags) The symbol "schemes" is marked as @public, but its signature references "ISchemeNames" which is marked as @internal
 // lib/styles/PulsingBeaconAnimationStyles.d.ts:6:5 - (ae-forgotten-export) The symbol "_continuousPulseAnimationDouble" needs to be exported by the entry point index.d.ts
 // lib/styles/PulsingBeaconAnimationStyles.d.ts:7:5 - (ae-forgotten-export) The symbol "_continuousPulseAnimationSingle" needs to be exported by the entry point index.d.ts
 // lib/styles/PulsingBeaconAnimationStyles.d.ts:8:5 - (ae-forgotten-export) The symbol "_createDefaultAnimation" needs to be exported by the entry point index.d.ts

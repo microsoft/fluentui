@@ -10,6 +10,7 @@ export {
   InjectionMode,
   Stylesheet,
   concatStyleSets,
+  concatStyleSetsWithProps,
   fontFace,
   keyframes,
   mergeStyleSets,

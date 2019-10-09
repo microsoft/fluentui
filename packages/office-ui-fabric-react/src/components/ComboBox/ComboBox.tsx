@@ -133,7 +133,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   /** The menu item element that is currently selected */
   private _selectedElement = React.createRef<HTMLSpanElement>();
 
-  /** The base id for the comboBox */
+  /** The base id for the ComboBox */
   private _id: string;
 
   /**
@@ -234,6 +234,11 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         selectedIndices: indices,
         currentOptions: newProps.options
       });
+      if (newProps.selectedKey === null) {
+        this.setState({
+          suggestedDisplayValue: undefined
+        });
+      }
     }
   }
 
@@ -306,6 +311,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   // Primary Render
   public render(): JSX.Element {
     const id = this._id;
+    const errorMessageId = id + '-error';
     const {
       className,
       label,
@@ -386,7 +392,11 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
                 readOnly={disabled || !allowFreeform}
                 aria-labelledby={label && id + '-label'}
                 aria-label={ariaLabel && !label ? ariaLabel : undefined}
-                aria-describedby={mergeAriaAttributeValues(ariaDescribedBy, keytipAttributes['aria-describedby'])}
+                aria-describedby={
+                  errorMessage !== undefined
+                    ? mergeAriaAttributeValues(ariaDescribedBy, keytipAttributes['aria-describedby'], errorMessageId)
+                    : mergeAriaAttributeValues(ariaDescribedBy, keytipAttributes['aria-describedby'])
+                }
                 aria-activedescendant={this._getAriaActiveDescentValue()}
                 aria-required={required}
                 aria-disabled={disabled}
@@ -430,7 +440,9 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
             },
             this._onRenderContainer
           )}
-        {errorMessage && <div className={this._classNames.errorMessage}>{errorMessage}</div>}
+        <div role="region" aria-live="polite" aria-atomic="true" id={errorMessageId} className={this._classNames.errorMessage}>
+          {errorMessage !== undefined ? errorMessage : ''}
+        </div>
       </div>
     );
   }
@@ -835,11 +847,10 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   ): void {
     const { onChange, onPendingValueChanged } = this.props;
     const { currentOptions } = this.state;
-    let { selectedIndices } = this.state;
+    const { selectedIndices: initialIndices } = this.state;
 
-    if (!selectedIndices) {
-      selectedIndices = [];
-    }
+    // Clone selectedIndices so we don't mutate state
+    let selectedIndices = initialIndices ? initialIndices.slice() : [];
 
     // Find the next selectable index, if searchDirection is none
     // we will get our starting index back
@@ -852,7 +863,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     // Are we at a new index? If so, update the state, otherwise
     // there is nothing to do
     if (this.props.multiSelect || selectedIndices.length < 1 || (selectedIndices.length === 1 && selectedIndices[0] !== index)) {
-      const option: IComboBoxOption = currentOptions[index];
+      const option: IComboBoxOption = { ...currentOptions[index] };
       if (!option) {
         return;
       }
@@ -870,23 +881,36 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       }
 
       submitPendingValueEvent.persist();
-      // Call onChange after state is updated
-      this.setState(
-        {
-          selectedIndices: selectedIndices
-        },
-        () => {
-          // If ComboBox value is changed, revert preview first
-          if (this._hasPendingValue && onPendingValueChanged) {
-            onPendingValueChanged();
-            this._hasPendingValue = false;
-          }
 
-          if (onChange) {
-            onChange(submitPendingValueEvent, option, index, undefined);
-          }
+      // Only setstate if combobox is uncontrolled.
+      if (this.props.selectedKey || this.props.selectedKey === null) {
+        if (onChange) {
+          onChange(submitPendingValueEvent, option, index, undefined);
         }
-      );
+      } else {
+        // Update current options
+        const changedOptions = currentOptions.slice();
+        changedOptions[index] = option;
+
+        // Call onChange after state is updated
+        this.setState(
+          {
+            selectedIndices: selectedIndices,
+            currentOptions: changedOptions
+          },
+          () => {
+            // If ComboBox value is changed, revert preview first
+            if (this._hasPendingValue && onPendingValueChanged) {
+              onPendingValueChanged();
+              this._hasPendingValue = false;
+            }
+
+            if (onChange) {
+              onChange(submitPendingValueEvent, option, index, undefined);
+            }
+          }
+        );
+      }
     }
 
     // clear all of the pending info
@@ -1044,12 +1068,16 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
           onChange(submitPendingValueEvent, undefined, undefined, currentPendingValue);
         }
       } else {
-        // If we are not controlled, create a new option
+        // If we are not controlled, create a new selected option
         const newOption: IComboBoxOption = {
           key: currentPendingValue || getId(),
           text: this._normalizeToString(currentPendingValue)
         };
-        const newOptions: IComboBoxOption[] = [...currentOptions, newOption];
+        // If it's multiselect, set selected state to true
+        if (this.props.multiSelect) {
+          newOption.selected = true;
+        }
+        const newOptions: IComboBoxOption[] = currentOptions.concat([newOption]);
         if (selectedIndices) {
           if (!this.props.multiSelect) {
             selectedIndices = [];

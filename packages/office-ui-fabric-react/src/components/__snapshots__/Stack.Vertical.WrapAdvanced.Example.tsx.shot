@@ -754,9 +754,6 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
               &:active .ms-Dropdown-title--hasError {
                 border-color: #a4262c;
               }
-              &:focus .ms-Dropdown-title--hasError {
-                border-color: #a4262c;
-              }
           data-is-focusable={true}
           id="Dropdown2"
           onBlur={[Function]}
@@ -770,8 +767,9 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
         >
           <span
             aria-atomic={true}
+            aria-invalid={false}
             aria-label="Left"
-            aria-live="off"
+            aria-live="polite"
             aria-posinset={1}
             aria-selected={true}
             aria-setsize={3}
@@ -838,7 +836,6 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
                     speak: none;
                   }
               data-icon-name="ChevronDown"
-              role="presentation"
             >
               
             </i>
@@ -983,9 +980,6 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
               &:active .ms-Dropdown-title--hasError {
                 border-color: #a4262c;
               }
-              &:focus .ms-Dropdown-title--hasError {
-                border-color: #a4262c;
-              }
           data-is-focusable={true}
           id="Dropdown3"
           onBlur={[Function]}
@@ -999,8 +993,9 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
         >
           <span
             aria-atomic={true}
+            aria-invalid={false}
             aria-label="Top"
-            aria-live="off"
+            aria-live="polite"
             aria-posinset={1}
             aria-selected={true}
             aria-setsize={6}
@@ -1067,7 +1062,6 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
                     speak: none;
                   }
               data-icon-name="ChevronDown"
-              role="presentation"
             >
               
             </i>
@@ -1212,9 +1206,6 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
               &:active .ms-Dropdown-title--hasError {
                 border-color: #a4262c;
               }
-              &:focus .ms-Dropdown-title--hasError {
-                border-color: #a4262c;
-              }
           data-is-focusable={true}
           id="Dropdown4"
           onBlur={[Function]}
@@ -1228,8 +1219,9 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
         >
           <span
             aria-atomic={true}
+            aria-invalid={false}
             aria-label="Visible"
-            aria-live="off"
+            aria-live="polite"
             aria-posinset={1}
             aria-selected={true}
             aria-setsize={3}
@@ -1296,7 +1288,6 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
                     speak: none;
                   }
               data-icon-name="ChevronDown"
-              role="presentation"
             >
               
             </i>

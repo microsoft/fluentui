@@ -159,6 +159,7 @@ exports[`ComboBox Renders correctly 1`] = `
       onClick={[Function]}
       onCompositionEnd={[Function]}
       onCompositionStart={[Function]}
+      onCompositionUpdate={[Function]}
       onFocus={[Function]}
       onInput={[Function]}
       onKeyDown={[Function]}
@@ -191,7 +192,6 @@ exports[`ComboBox Renders correctly 1`] = `
             font-weight: 400;
             height: 32px;
             line-height: 30px;
-            min-width: 32px;
             outline: transparent;
             padding-bottom: 0;
             padding-left: 4px;
@@ -311,6 +311,24 @@ exports[`ComboBox Renders correctly 1`] = `
         </i>
       </span>
     </button>
+  </div>
+  <div
+    aria-atomic="true"
+    aria-live="polite"
+    className=
+
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          color: #a4262c;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 12px;
+          font-weight: 400;
+        }
+    id="ComboBox0-error"
+    role="region"
+  >
+    
   </div>
 </div>
 `;
@@ -477,6 +495,7 @@ exports[`ComboBox renders with a Keytip correctly 1`] = `
       onClick={[Function]}
       onCompositionEnd={[Function]}
       onCompositionStart={[Function]}
+      onCompositionUpdate={[Function]}
       onFocus={[Function]}
       onInput={[Function]}
       onKeyDown={[Function]}
@@ -509,7 +528,6 @@ exports[`ComboBox renders with a Keytip correctly 1`] = `
             font-weight: 400;
             height: 32px;
             line-height: 30px;
-            min-width: 32px;
             outline: transparent;
             padding-bottom: 0;
             padding-left: 4px;
@@ -629,6 +647,24 @@ exports[`ComboBox renders with a Keytip correctly 1`] = `
         </i>
       </span>
     </button>
+  </div>
+  <div
+    aria-atomic="true"
+    aria-live="polite"
+    className=
+
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          color: #a4262c;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 12px;
+          font-weight: 400;
+        }
+    id="ComboBox4-error"
+    role="region"
+  >
+    
   </div>
 </div>
 `;

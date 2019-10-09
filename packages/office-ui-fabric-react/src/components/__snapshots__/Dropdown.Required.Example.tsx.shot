@@ -80,15 +80,15 @@ exports[`Component Examples renders Dropdown.Required.Example.tsx correctly 1`] 
               content: ' *';
               padding-right: 12px;
             }
-        htmlFor="Dropdown0"
-        id="Dropdown0-label"
+        htmlFor="Dropdown3"
+        id="Dropdown3-label"
       >
         Required dropdown example
       </label>
       <div
-        aria-describedby="Dropdown0-option"
+        aria-describedby="Dropdown3-option"
         aria-expanded="false"
-        aria-labelledby="Dropdown0-label"
+        aria-labelledby="Dropdown3-label"
         aria-required={true}
         className=
             ms-Dropdown
@@ -175,11 +175,8 @@ exports[`Component Examples renders Dropdown.Required.Example.tsx correctly 1`] 
             &:active .ms-Dropdown-title--hasError {
               border-color: #a4262c;
             }
-            &:focus .ms-Dropdown-title--hasError {
-              border-color: #a4262c;
-            }
         data-is-focusable={true}
-        id="Dropdown0"
+        id="Dropdown3"
         onBlur={[Function]}
         onClick={[Function]}
         onFocus={[Function]}
@@ -190,8 +187,9 @@ exports[`Component Examples renders Dropdown.Required.Example.tsx correctly 1`] 
       >
         <span
           aria-atomic={true}
+          aria-invalid={false}
           aria-label="Select an option"
-          aria-live="off"
+          aria-live="polite"
           aria-setsize={5}
           className=
               ms-Dropdown-title
@@ -222,7 +220,7 @@ exports[`Component Examples renders Dropdown.Required.Example.tsx correctly 1`] 
                 text-overflow: ellipsis;
                 white-space: nowrap;
               }
-          id="Dropdown0-option"
+          id="Dropdown3-option"
           role="option"
         >
           <span>
@@ -258,7 +256,6 @@ exports[`Component Examples renders Dropdown.Required.Example.tsx correctly 1`] 
                   speak: none;
                 }
             data-icon-name="ChevronDown"
-            role="presentation"
           >
             
           </i>
@@ -299,12 +296,12 @@ exports[`Component Examples renders Dropdown.Required.Example.tsx correctly 1`] 
             border: 0;
           }
           .ms-Fabric--isFocusVisible &:focus:after {
-            border-color: #ffffff;
-            border: 1px solid transparent;
+            border: none;
             bottom: 2px;
             content: "";
             left: 2px;
-            outline: none;
+            outline-color: #ffffff;
+            outline: 1px solid #605e5c;
             position: absolute;
             right: 2px;
             top: 2px;
@@ -386,7 +383,7 @@ exports[`Component Examples renders Dropdown.Required.Example.tsx correctly 1`] 
                   margin-right: 4px;
                   margin-top: 0;
                 }
-            id="id__1"
+            id="id__0"
           >
             Set focus
           </span>
@@ -488,9 +485,6 @@ exports[`Component Examples renders Dropdown.Required.Example.tsx correctly 1`] 
           &:active .ms-Dropdown-title--hasError {
             border-color: #a4262c;
           }
-          &:focus .ms-Dropdown-title--hasError {
-            border-color: #a4262c;
-          }
           &:after {
             color: #a4262c;
             content: '*';
@@ -513,8 +507,9 @@ exports[`Component Examples renders Dropdown.Required.Example.tsx correctly 1`] 
     >
       <span
         aria-atomic={true}
+        aria-invalid={false}
         aria-label="Required with no label"
-        aria-live="off"
+        aria-live="polite"
         aria-setsize={5}
         className=
             ms-Dropdown-title
@@ -581,7 +576,6 @@ exports[`Component Examples renders Dropdown.Required.Example.tsx correctly 1`] 
                 speak: none;
               }
           data-icon-name="ChevronDown"
-          role="presentation"
         >
           
         </i>

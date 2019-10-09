@@ -1,16 +1,7 @@
 import { Stylesheet } from '@uifabric/merge-styles';
-import { getWindow } from './dom/getWindow';
+import { getId, resetIds } from './getId';
 
-// Initialize global window id.
-const CURRENT_ID_PROPERTY = '__currentId__';
-const DEFAULT_ID_STRING = 'id__';
-
-// tslint:disable-next-line:no-any
-let _global: any = getWindow() || {};
-
-if (_global[CURRENT_ID_PROPERTY] === undefined) {
-  _global[CURRENT_ID_PROPERTY] = 0;
-}
+export { getId, resetIds };
 
 // tslint:disable-next-line:no-any
 function checkProperties(a: any, b: any): boolean {
@@ -83,26 +74,6 @@ const stylesheet = Stylesheet.getInstance();
 
 if (stylesheet && stylesheet.onReset) {
   stylesheet.onReset(resetIds);
-}
-
-/**
- * Generates a unique id in the global scope (this spans across duplicate copies of the same library.)
- *
- * @public
- */
-export function getId(prefix?: string): string {
-  let index = _global[CURRENT_ID_PROPERTY]++;
-
-  return (prefix || DEFAULT_ID_STRING) + index;
-}
-
-/**
- * Resets id counter to an (optional) number.
- *
- * @public
- */
-export function resetIds(counter: number = 0): void {
-  _global[CURRENT_ID_PROPERTY] = counter;
 }
 
 /* Takes an enum and iterates over each value of the enum (as a string), running the callback on each, returning a mapped array.

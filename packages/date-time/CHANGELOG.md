@@ -1,7 +1,44 @@
 # Change Log - @uifabric/date-time
 
-This log was last generated on Wed, 04 Sep 2019 04:09:58 GMT and should not be manually modified.
+This log was last generated on Thu, 03 Oct 2019 23:14:46 GMT and should not be manually modified.
 
+## 7.5.2
+Thu, 03 Oct 2019 23:14:46 GMT
+
+### Patches
+
+- Fixes publish issue from beachball (odbuild@microsoft.com)
+## 7.5.0
+Mon, 30 Sep 2019 12:35:16 GMT
+
+### Minor changes
+
+- undefined (jolore@microsoft.com)
+- initial commit of multi-day day view implementation. Lots of style updates to allow the hover states to work- previously hover states were always static, but now the classes have to update dynamically as the mouse moves over days (jolore@microsoft.com)
+## 7.4.8
+Wed, 25 Sep 2019 12:34:56 GMT
+
+### Patches
+
+- fixing focus outline in IE11. The outline in IE11 does not show if it overflows the div it's in unless we explicitly set overflow: visible on the div (other browsers have this as the default). (jolore@microsoft.com)
+## 7.4.7
+Tue, 24 Sep 2019 12:35:43 GMT
+
+### Patches
+
+- Remove codepen-loader usage (elcraig@microsoft.com)
+## 7.4.6
+Mon, 23 Sep 2019 12:33:15 GMT
+
+### Patches
+
+- Icon Accessibility updates: update aria-hidden to pull aria-labelledBy from root and imageProps and removed role presentation - should not apply when a label is provided. (marygans@microsoft.com)
+## 7.4.5
+Mon, 16 Sep 2019 12:34:47 GMT
+
+### Patches
+
+- DatePicker: call custom text field onChange handler if it exists in default onChange handler (naethell@microsoft.com)
 ## 7.4.4
 Wed, 04 Sep 2019 04:09:58 GMT
 

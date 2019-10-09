@@ -24,6 +24,7 @@ export class PanelLightDismissCustomExample extends React.Component<{}, IPanelLi
           headerText="Light Dismiss Panel"
           onDismiss={this._hidePanel}
           onLightDismissClick={this._showDialog}
+          closeButtonAriaLabel="Close"
         >
           <span>Light Dismiss usage is meant for the Contextual Menu on mobile sized breakpoints.</span>
         </Panel>
