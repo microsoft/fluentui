@@ -1109,6 +1109,10 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
     ) : null;
   };
 
+  /**
+   * Returns true if dropdown should set to open on focus.
+   * Otherwise, isOpen state should be toggled on click
+   */
   private _shouldOpenOnFocus(): boolean {
     const { hasFocus } = this.state;
     const { openOnKeyboardFocus } = this.props;
