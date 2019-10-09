@@ -12,6 +12,7 @@ export * from './DetailsRow.types';
 export { DetailsRowGlobalClassNames } from './DetailsRow.styles';
 export * from './DetailsRowCheck';
 export * from './DetailsRowCheck.types';
+export * from './DetailsRowFields';
 export * from './DetailsRowFields.types';
 export * from './DetailsFooter.types';
 export * from './DetailsColumn.base';
