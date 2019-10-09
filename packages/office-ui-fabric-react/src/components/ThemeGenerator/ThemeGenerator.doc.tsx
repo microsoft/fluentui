@@ -81,6 +81,7 @@ export class ThemeGeneratorPage extends BaseComponent<{}, IThemeGeneratorPageSta
       this._fabricSlotWidget(FabricSlots.neutralPrimary),
       this._fabricSlotWidget(FabricSlots.neutralPrimaryAlt),
       this._fabricSlotWidget(FabricSlots.neutralSecondary),
+      this._fabricSlotWidget(FabricSlots.neutralSecondaryAlt),
       this._fabricSlotWidget(FabricSlots.neutralTertiary)
     ];
     const fabricNeutralBackgroundSlots = [
