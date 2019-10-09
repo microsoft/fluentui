@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "DetailsList: ariaLabel for select all checkbox should be dependent on selection mode",
-  "packageName": "office-ui-fabric-react",
-  "email": "aneeshak@microsoft.com",
-  "commit": "37df5d69b6b259ee236eee68be1c926d733478b7",
-  "date": "2019-09-27T03:04:40.271Z"
-}
