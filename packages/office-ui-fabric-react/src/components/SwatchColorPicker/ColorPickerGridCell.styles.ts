@@ -61,7 +61,19 @@ export const getStyles = (props: IColorPickerGridCellStyleProps): IColorPickerGr
       },
       selected && {
         padding: DIVIDING_PADDING,
-        border: `${calculatedBorderWidth}px solid ${theme.palette.neutralTertiaryAlt}`
+        border: `${calculatedBorderWidth}px solid ${theme.palette.neutralTertiaryAlt}`,
+        selectors: {
+          ['&:hover::before']: {
+            content: '""',
+            height: height,
+            width: width,
+            position: 'absolute',
+            top: -calculatedBorderWidth,
+            left: -calculatedBorderWidth,
+            borderRadius: circle ? '50%' : 'default',
+            boxShadow: `inset 0 0 0 1px ${theme.palette.neutralSecondary}`
+          }
+        }
       },
       !selected && {
         selectors: {
