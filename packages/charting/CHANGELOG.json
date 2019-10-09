@@ -2,6 +2,20 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "date": "Wed, 09 Oct 2019 22:25:09 GMT",
+      "tag": "@uifabric/charting_v0.137.0",
+      "version": "0.137.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add placeholder mode to StackedBarChart",
+            "author": "dajiang@microsoft.com",
+            "commit": "842e7fc9eeec95d4d7e9e7cb25da6d6e610a3a66"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 03 Oct 2019 23:14:46 GMT",
       "tag": "@uifabric/charting_v0.136.2",
       "version": "0.136.2",

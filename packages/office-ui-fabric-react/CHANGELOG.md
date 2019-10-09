@@ -1,7 +1,16 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 09 Oct 2019 12:34:23 GMT and should not be manually modified.
+This log was last generated on Wed, 09 Oct 2019 22:25:09 GMT and should not be manually modified.
 
+## 7.47.0
+Wed, 09 Oct 2019 22:25:09 GMT
+
+### Minor changes
+
+- ResponsiveMode: defaulting to large to avoid breaking changes for scenarios assuming it would be available on first render. (dzearing@microsoft.com)
+### Patches
+
+- Dropdown: when `openOnKeyboardFocus` prop is set to true, the Dropdown now does not close the options callout immediately. (xgao@microsoft.com)
 ## 7.46.0
 Wed, 09 Oct 2019 12:34:23 GMT
 
