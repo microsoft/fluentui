@@ -179,11 +179,11 @@ Array [
         "annotations": Array [
           Object {
             "snippet": Object {
-              "text": "<div data-automation-id=\\"test\\" aria-roledescription=\\"split button\\" aria-disabled=\\"true\\" data-is-focusable=\\"true\\" role=\\"button\\" aria-haspopup=\\"true\\" aria-expanded=\\"false\\" class=\\"css-35\\" tabindex=\\"0\\">",
+              "text": "<div data-automation-id=\\"test\\" aria-roledescription=\\"split button\\" aria-disabled=\\"true\\" data-is-focusable=\\"true\\" role=\\"button\\" aria-haspopup=\\"true\\" aria-expanded=\\"false\\" class=\\"css-36\\" tabindex=\\"0\\">",
             },
           },
         ],
-        "fullyQualifiedLogicalName": ".css-35",
+        "fullyQualifiedLogicalName": ".css-36",
         "physicalLocation": Object {
           "fileLocation": Object {
             "uri": "about:blank",
@@ -197,7 +197,7 @@ Array [
       "text": "Fix all of the following: ARIA attribute is not widely supported in screen readers and assistive technologies:  aria-roledescription.",
     },
     "partialFingerprints": Object {
-      "fullyQualifiedLogicalName": ".css-35",
+      "fullyQualifiedLogicalName": ".css-36",
       "ruleId": "aria-allowed-attr",
     },
     "properties": Object {
@@ -298,11 +298,11 @@ Array [
         "annotations": Array [
           Object {
             "snippet": Object {
-              "text": "<button type=\\"button\\" aria-haspopup=\\"true\\" aria-expanded=\\"false\\" data-is-focusable=\\"false\\" tabindex=\\"-1\\" class=\\"ms-Button is-disabled root-37\\" aria-disabled=\\"true\\">",
+              "text": "<button type=\\"button\\" aria-haspopup=\\"true\\" aria-expanded=\\"false\\" data-is-focusable=\\"false\\" tabindex=\\"-1\\" class=\\"ms-Button is-disabled root-38\\" aria-disabled=\\"true\\">",
             },
           },
         ],
-        "fullyQualifiedLogicalName": ".is-disabled.root-37",
+        "fullyQualifiedLogicalName": ".root-38",
         "physicalLocation": Object {
           "fileLocation": Object {
             "uri": "about:blank",
@@ -323,7 +323,7 @@ Array [
       "text": "Fix any of the following: Element has a value attribute and the value attribute is empty. Element has no value attribute or the value attribute is empty. Element does not have inner text that is visible to screen readers. aria-label attribute does not exist or is empty. aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty. Element's default semantics were not overridden with role=\\"presentation\\". Element's default semantics were not overridden with role=\\"none\\". Element has no title attribute or the title attribute is empty.",
     },
     "partialFingerprints": Object {
-      "fullyQualifiedLogicalName": ".is-disabled.root-37",
+      "fullyQualifiedLogicalName": ".root-38",
       "ruleId": "button-name",
     },
     "properties": Object {

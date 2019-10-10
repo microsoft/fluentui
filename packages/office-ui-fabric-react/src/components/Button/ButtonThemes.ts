@@ -84,7 +84,17 @@ export function standardStyles(theme: ITheme): IButtonStyles {
     },
 
     splitButtonDivider: {
-      backgroundColor: theme.palette.neutralTertiaryAlt
+      backgroundColor: theme.palette.neutralTertiaryAlt,
+      position: 'absolute',
+      width: 1,
+      right: 31,
+      top: 8,
+      bottom: 8,
+      selectors: {
+        [HighContrastSelector]: {
+          backgroundColor: 'WindowText'
+        }
+      }
     },
 
     splitButtonDividerDisabled: {
@@ -181,7 +191,17 @@ export function primaryStyles(theme: ITheme): IButtonStyles {
     },
 
     splitButtonDivider: {
-      backgroundColor: theme.palette.white
+      backgroundColor: theme.palette.white,
+      position: 'absolute',
+      width: 1,
+      right: 31,
+      top: 8,
+      bottom: 8,
+      selectors: {
+        [HighContrastSelector]: {
+          backgroundColor: 'Window'
+        }
+      }
     },
 
     splitButtonDividerDisabled: {
@@ -192,6 +212,9 @@ export function primaryStyles(theme: ITheme): IButtonStyles {
       backgroundColor: theme.palette.themePrimary,
       color: theme.palette.white,
       selectors: {
+        [HighContrastSelector]: {
+          backgroundColor: 'WindowText'
+        },
         ':hover': {
           backgroundColor: theme.palette.themeDark,
           selectors: {
