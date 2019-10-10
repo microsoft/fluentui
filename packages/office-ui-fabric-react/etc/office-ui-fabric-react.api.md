@@ -956,6 +956,9 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
 // @public (undocumented)
 export const DetailsRowCheck: React.FunctionComponent<IDetailsRowCheckProps>;
 
+// @public
+export const DetailsRowFields: React.FunctionComponent<IDetailsRowFieldsProps>;
+
 // @public (undocumented)
 export const DetailsRowGlobalClassNames: {
     root: string;
