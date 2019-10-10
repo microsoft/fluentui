@@ -1,9 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Editor should include re-exported types",
-  "packageName": "@uifabric/tsx-editor",
-  "email": "elcraig@microsoft.com",
-  "commit": "f5d6048b0856ddbe3e20083ada40a9d18588c6bf",
-  "date": "2019-10-10T00:57:17.895Z",
-  "file": "/Users/elizabeth/git/fabric-react3/change/@uifabric-tsx-editor-2019-10-09-17-57-17-icon-types.json"
-}

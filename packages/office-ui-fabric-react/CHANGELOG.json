@@ -2,6 +2,32 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Thu, 10 Oct 2019 12:32:08 GMT",
+      "tag": "office-ui-fabric-react_v7.48.0",
+      "version": "7.48.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fixed dropdown to not select first option automatically unless it's selected using keyboard navigation per aria",
+            "author": "xgao@microsoft.com",
+            "commit": "43f40feb7596224a82cecf98f48121567c883783"
+          },
+          {
+            "comment": "Announced: explicitly show aria-live property in Announced types",
+            "author": "naethell@microsoft.com",
+            "commit": "f387bd52fabef7244663acb5b0bb5d87518f21d1"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Export DetailsRowFields",
+            "author": "KevinTCoughlin@users.noreply.github.com",
+            "commit": "bd56a5d2336484622be395eaa0e7c50c7ee91166"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 09 Oct 2019 22:25:09 GMT",
       "tag": "office-ui-fabric-react_v7.47.0",
       "version": "7.47.0",
