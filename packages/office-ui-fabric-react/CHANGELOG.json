@@ -2,6 +2,32 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Thu, 10 Oct 2019 03:54:03 GMT",
+      "tag": "office-ui-fabric-react_v6.208.0",
+      "version": "6.208.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "SwatchColorPicker: Added missing border for selected-hovered state.",
+            "author": "v-mare@microsoft.com",
+            "commit": "cfb9035c7b1f43ce0c8c2a7608bb6e7db1f46a0b"
+          },
+          {
+            "comment": "Coachmark: Fixed pulseBeacon animation direction in RTL",
+            "author": "v-mare@microsoft.com",
+            "commit": "31c51d607813abd1c9922d5593037f6e06f13e52"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "ResponsiveMode: defaulting to large to avoid breaking changes for scenarios assuming it would be available on first render.",
+            "author": "dzearing@microsoft.com",
+            "commit": "b129b4bb7ba3bb6cef8989ff5fb4dd7977e67c6c"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 07 Oct 2019 12:24:52 GMT",
       "tag": "office-ui-fabric-react_v6.207.0",
       "version": "6.207.0",

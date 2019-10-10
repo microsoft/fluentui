@@ -1,7 +1,17 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 07 Oct 2019 12:24:52 GMT and should not be manually modified.
+This log was last generated on Thu, 10 Oct 2019 03:54:03 GMT and should not be manually modified.
 
+## 6.208.0
+Thu, 10 Oct 2019 03:54:03 GMT
+
+### Minor changes
+
+- ResponsiveMode: defaulting to large to avoid breaking changes for scenarios assuming it would be available on first render. (dzearing@microsoft.com)
+### Patches
+
+- SwatchColorPicker: Added missing border for selected-hovered state. (v-mare@microsoft.com)
+- Coachmark: Fixed pulseBeacon animation direction in RTL (v-mare@microsoft.com)
 ## 6.207.0
 Mon, 07 Oct 2019 12:24:52 GMT
 
