@@ -147,7 +147,8 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
       onRenderDetailsCheckbox,
       groupNestingDepth,
       useFastIcons,
-      checkboxVisibility
+      checkboxVisibility,
+      className
     } = this.props;
     const { isAllSelected, columnResizeDetails, isSizing, isAllCollapsed } = this.state;
     const showCheckbox = selectAllVisibility !== SelectAllVisibility.none;
@@ -167,7 +168,8 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
       isResizingColumn: !!columnResizeDetails && isSizing,
       isSizing,
       isAllCollapsed,
-      isCheckboxHidden
+      isCheckboxHidden,
+      className
     });
 
     const classNames = this._classNames;
