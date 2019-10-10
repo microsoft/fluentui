@@ -64,6 +64,7 @@ export const SemanticSlots: React.StatelessComponent<ISemanticSlotsProps> = (pro
   const isASemanticColor = (semanticString: string): boolean => {
     return (
       semanticString.startsWith('body') ||
+      semanticString.startsWith('primary') ||
       semanticString.startsWith('disabled') ||
       semanticString.startsWith('focus') ||
       semanticString.startsWith('variant') ||
