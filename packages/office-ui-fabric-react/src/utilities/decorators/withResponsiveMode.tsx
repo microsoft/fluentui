@@ -19,7 +19,16 @@ export enum ResponsiveMode {
 
 const RESPONSIVE_MAX_CONSTRAINT = [479, 639, 1023, 1365, 1919, 99999999];
 
-let _defaultMode: ResponsiveMode | undefined = ResponsiveMode.unknown;
+/**
+ * User specified mode to default to, useful for server side rendering scenarios.
+ */
+let _defaultMode: ResponsiveMode | undefined;
+
+/**
+ * Tracking the last mode we successfully rendered, which allows us to
+ * paint initial renders with the correct size.
+ */
+let _lastMode: ResponsiveMode | undefined;
 
 /**
  * Allows a server rendered scenario to provide a default responsive mode.
@@ -37,7 +46,7 @@ export function withResponsiveMode<TProps extends { responsiveMode?: ResponsiveM
       this._updateComposedComponentRef = this._updateComposedComponentRef.bind(this);
 
       this.state = {
-        responsiveMode: _defaultMode
+        responsiveMode: _defaultMode || _lastMode || ResponsiveMode.large
       };
     }
 
@@ -80,8 +89,12 @@ export function withResponsiveMode<TProps extends { responsiveMode?: ResponsiveM
           }
         } catch (e) {
           // Return a best effort result in cases where we're in the browser but it throws on getting innerWidth.
-          responsiveMode = ResponsiveMode.large;
+          responsiveMode = _defaultMode || _lastMode || ResponsiveMode.large;
         }
+
+        // Tracking last mode just gives us a better default in future renders,
+        // which avoids starting with the wrong value if we've measured once.
+        _lastMode = responsiveMode;
       } else {
         if (_defaultMode !== undefined) {
           responsiveMode = _defaultMode;
