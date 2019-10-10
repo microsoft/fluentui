@@ -26,7 +26,7 @@ module.exports = function copyTypes() {
 
       // add any other @uifabric packages it references for processing (ignore React imports and other imports)
       const dtsContents = fs.readFileSync(dtsPath).toString();
-      const importRegex = /import .*? from '(@uifabric\/[\w-]+)/gm;
+      const importRegex = /(?:import|export) .*? from ['"](@uifabric\/[\w-]+)/gm;
       let importMatch;
       while ((importMatch = importRegex.exec(dtsContents))) {
         const packageName = importMatch[1];
