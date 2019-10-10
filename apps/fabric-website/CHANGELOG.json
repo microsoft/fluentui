@@ -2,6 +2,20 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "date": "Thu, 10 Oct 2019 12:32:08 GMT",
+      "tag": "@uifabric/fabric-website_v7.5.5",
+      "version": "7.5.5",
+      "comments": {
+        "patch": [
+          {
+            "comment": "added header examples and updated alt descriptions for BottomSheet",
+            "author": "willdo@microsoft.com",
+            "commit": "4da101885f9572d9f35f44784f0b919ca0f70a2e"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 03 Oct 2019 23:14:46 GMT",
       "tag": "@uifabric/fabric-website_v7.5.4",
       "version": "7.5.4",

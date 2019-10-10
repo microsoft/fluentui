@@ -1,7 +1,17 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 09 Oct 2019 22:25:09 GMT and should not be manually modified.
+This log was last generated on Thu, 10 Oct 2019 12:32:08 GMT and should not be manually modified.
 
+## 7.48.0
+Thu, 10 Oct 2019 12:32:08 GMT
+
+### Minor changes
+
+- Export DetailsRowFields (KevinTCoughlin@users.noreply.github.com)
+### Patches
+
+- Fixed dropdown to not select first option automatically unless it's selected using keyboard navigation per aria (xgao@microsoft.com)
+- Announced: explicitly show aria-live property in Announced types (naethell@microsoft.com)
 ## 7.47.0
 Wed, 09 Oct 2019 22:25:09 GMT
 

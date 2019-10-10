@@ -2,6 +2,20 @@
   "name": "@uifabric/tsx-editor",
   "entries": [
     {
+      "date": "Thu, 10 Oct 2019 12:32:08 GMT",
+      "tag": "@uifabric/tsx-editor_v0.10.2",
+      "version": "0.10.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Editor should include re-exported types",
+            "author": "elcraig@microsoft.com",
+            "commit": "f5d6048b0856ddbe3e20083ada40a9d18588c6bf"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 09 Oct 2019 12:34:23 GMT",
       "tag": "@uifabric/tsx-editor_v0.10.1",
       "version": "0.10.1",

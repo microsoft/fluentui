@@ -283,6 +283,7 @@ exports[`Component Examples renders ContextualMenu.Directional.Example.tsx corre
         onFocus={[Function]}
         onKeyDown={[Function]}
         onKeyUp={[Function]}
+        onMouseDown={[Function]}
         role="listbox"
         tabIndex={0}
       >

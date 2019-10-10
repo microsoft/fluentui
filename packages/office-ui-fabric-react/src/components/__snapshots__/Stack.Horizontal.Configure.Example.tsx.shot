@@ -3122,6 +3122,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
           onFocus={[Function]}
           onKeyDown={[Function]}
           onKeyUp={[Function]}
+          onMouseDown={[Function]}
           role="listbox"
           tabIndex={0}
         >
@@ -3347,6 +3348,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
           onFocus={[Function]}
           onKeyDown={[Function]}
           onKeyUp={[Function]}
+          onMouseDown={[Function]}
           role="listbox"
           tabIndex={0}
         >
