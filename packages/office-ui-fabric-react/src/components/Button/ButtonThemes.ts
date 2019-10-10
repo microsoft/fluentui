@@ -70,10 +70,6 @@ export function standardStyles(theme: ITheme): IButtonStyles {
               color: 'Highlight'
             }
           }
-        },
-        [HighContrastSelector]: {
-          border: `1px solid white`,
-          borderLeft: 'none'
         }
       }
     },

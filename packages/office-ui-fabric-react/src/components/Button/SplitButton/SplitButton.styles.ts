@@ -65,7 +65,13 @@ export const getStyles = memoizeFunction(
         marginLeft: -1,
         marginTop: 0,
         marginRight: 0,
-        marginBottom: 0
+        marginBottom: 0,
+        selectors: {
+          [HighContrastSelector]: {
+            border: `1px solid white`,
+            borderLeft: 'none'
+          }
+        }
       },
 
       splitButtonDivider: splitButtonDivider,
