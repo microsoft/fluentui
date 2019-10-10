@@ -75,7 +75,7 @@ export interface ICardItemViewProps extends ICardItemProps {
 
 // @public (undocumented)
 export interface ICardProps extends ICardSlots, IStyleableComponentProps<ICardProps, ICardTokens, ICardStyles>, IBaseProps<ICard>, React.AllHTMLAttributes<HTMLElement> {
-    compact?: boolean;
+    horizontal?: boolean;
     onClick?: (ev: React.MouseEvent<HTMLElement>) => void;
 }
 
