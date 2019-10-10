@@ -1,5 +1,5 @@
 {
-  "type": "patch",
+  "type": "minor",
   "comment": "Card: Renamed compact prop to horizontal and updated examples and tests accordingly.",
   "packageName": "@uifabric/react-cards",
   "email": "Humberto.Morimoto@microsoft.com",
