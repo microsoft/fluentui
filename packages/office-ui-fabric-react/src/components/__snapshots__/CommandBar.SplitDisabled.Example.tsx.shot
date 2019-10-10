@@ -314,6 +314,10 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                         @media screen and (-ms-high-contrast: active){&:hover {
                           color: Highlight;
                         }
+                        @media screen and (-ms-high-contrast: active){& {
+                          border-left: none;
+                          border: 1px solid white;
+                        }
                     data-is-focusable={false}
                     onClick={[Function]}
                     onKeyDown={[Function]}
@@ -644,6 +648,7 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                         }
                         @media screen and (-ms-high-contrast: active){& {
                           background-color: Window;
+                          border-left: none;
                           border: 1px solid GrayText;
                           color: GrayText;
                         }
