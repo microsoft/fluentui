@@ -111,7 +111,7 @@ export const getStyles = (props: ITeachingBubbleStyleProps): ITeachingBubbleStyl
     bodyContent: [
       classNames.bodyContent,
       {
-        padding: 20
+        padding: '20px 24px 20px 24px'
       }
     ],
     closeButton: [
@@ -153,7 +153,7 @@ export const getStyles = (props: ITeachingBubbleStyleProps): ITeachingBubbleStyl
         selectors: {
           // TODO: global class name usage should be converted to a button styles function once Button supports JS styling
           [`.${classNames.button}:not(:first-child)`]: {
-            marginLeft: 16
+            marginLeft: 10
           }
         }
       }

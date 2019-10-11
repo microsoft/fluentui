@@ -911,8 +911,8 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                                             ms-TeachingBubble-bodycontent
                                             {
                                               padding-bottom: 20px;
-                                              padding-left: 20px;
-                                              padding-right: 20px;
+                                              padding-left: 24px;
+                                              padding-right: 24px;
                                               padding-top: 20px;
                                             }
                                       >

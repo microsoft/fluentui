@@ -95,8 +95,8 @@ exports[`TeachingBubble renders TeachingBubble correctly 1`] = `
                 ms-TeachingBubble-bodycontent
                 {
                   padding-bottom: 20px;
-                  padding-left: 20px;
-                  padding-right: 20px;
+                  padding-left: 24px;
+                  padding-right: 24px;
                   padding-top: 20px;
                 }
           >
@@ -155,8 +155,8 @@ exports[`TeachingBubble renders TeachingBubbleContent correctly 1`] = `
         ms-TeachingBubble-bodycontent
         {
           padding-bottom: 20px;
-          padding-left: 20px;
-          padding-right: 20px;
+          padding-left: 24px;
+          padding-right: 24px;
           padding-top: 20px;
         }
   >
@@ -236,8 +236,8 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
         ms-TeachingBubble-bodycontent
         {
           padding-bottom: 20px;
-          padding-left: 20px;
-          padding-right: 20px;
+          padding-left: 24px;
+          padding-right: 24px;
           padding-top: 20px;
         }
   >
@@ -292,11 +292,15 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
     <div
       className=
           ms-Stack
+          ms-TeachingBubble-footer
           {
+            align-items: center;
             box-sizing: border-box;
+            color: #ffffff;
             display: flex;
             flex-direction: row;
             flex-wrap: nowrap;
+            flex: auto;
             height: auto;
             justify-content: flex-end;
             width: auto;
@@ -310,28 +314,23 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
           & > *:not(.ms-StackItem) {
             flex-shrink: 1;
           }
+          & .ms-Button:not(:first-child) {
+            margin-left: 10px;
+          }
     >
       <div
         className=
             ms-StackItem
-            ms-TeachingBubble-footer
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
-              align-items: center;
               align-self: center;
-              color: #ffffff;
-              display: flex;
               flex-shrink: 1;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
               font-weight: 400;
               height: auto;
-              justify-content: flex-end;
               width: auto;
-            }
-            & .ms-Button:not(:first-child) {
-              margin-left: 16px;
             }
       >
         <span />
@@ -371,7 +370,6 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
                 font-size: 14px;
                 font-weight: 400;
                 height: 32px;
-                margin-right: 10px;
                 min-width: 80px;
                 outline: transparent;
                 padding-bottom: 0;
@@ -795,8 +793,8 @@ exports[`TeachingBubble renders TeachingBubbleContent with condensed headline co
         ms-TeachingBubble-bodycontent
         {
           padding-bottom: 20px;
-          padding-left: 20px;
-          padding-right: 20px;
+          padding-left: 24px;
+          padding-right: 24px;
           padding-top: 20px;
         }
   >
@@ -881,8 +879,8 @@ exports[`TeachingBubble renders TeachingBubbleContent with custom footer text 1`
         ms-TeachingBubble-bodycontent
         {
           padding-bottom: 20px;
-          padding-left: 20px;
-          padding-right: 20px;
+          padding-left: 24px;
+          padding-right: 24px;
           padding-top: 20px;
         }
   >
@@ -912,11 +910,15 @@ exports[`TeachingBubble renders TeachingBubbleContent with custom footer text 1`
     <div
       className=
           ms-Stack
+          ms-TeachingBubble-footer
           {
+            align-items: center;
             box-sizing: border-box;
+            color: #ffffff;
             display: flex;
             flex-direction: row;
             flex-wrap: nowrap;
+            flex: auto;
             height: auto;
             justify-content: space-between;
             width: auto;
@@ -930,28 +932,23 @@ exports[`TeachingBubble renders TeachingBubbleContent with custom footer text 1`
           & > *:not(.ms-StackItem) {
             flex-shrink: 1;
           }
+          & .ms-Button:not(:first-child) {
+            margin-left: 10px;
+          }
     >
       <div
         className=
             ms-StackItem
-            ms-TeachingBubble-footer
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
-              align-items: center;
               align-self: center;
-              color: #ffffff;
-              display: flex;
               flex-shrink: 1;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
               font-weight: 400;
               height: auto;
-              justify-content: flex-end;
               width: auto;
-            }
-            & .ms-Button:not(:first-child) {
-              margin-left: 16px;
             }
       >
         <span>
@@ -1041,8 +1038,8 @@ exports[`TeachingBubble renders TeachingBubbleContent with image correctly 1`] =
         ms-TeachingBubble-bodycontent
         {
           padding-bottom: 20px;
-          padding-left: 20px;
-          padding-right: 20px;
+          padding-left: 24px;
+          padding-right: 24px;
           padding-top: 20px;
         }
   >
@@ -1122,8 +1119,8 @@ exports[`TeachingBubble renders TeachingBubbleContent with small headline correc
         ms-TeachingBubble-bodycontent
         {
           padding-bottom: 20px;
-          padding-left: 20px;
-          padding-right: 20px;
+          padding-left: 24px;
+          padding-right: 24px;
           padding-top: 20px;
         }
   >
