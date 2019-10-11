@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ITheme } from 'office-ui-fabric-react/lib/Styling';
+import { ITheme, IPalette, ISemanticColors } from 'office-ui-fabric-react/lib/Styling';
 import { Stack } from 'office-ui-fabric-react';
 import { mergeStyles } from '@uifabric/merge-styles';
 import { SemanticSlotsDetailsList } from './SemanticSlotsDetailsList';
@@ -26,8 +26,22 @@ const semanticPaletteColorBox = mergeStyles({
   flexShrink: 0
 });
 
+type IPaletteSlots = {
+  [key: string]: string;
+};
+
+type ISemanticSlots = {
+  [key: string]: string;
+};
+
+type IMapping = {
+  [key: string]: string;
+};
+
+type ISlotNames = string[];
+
 export const SemanticSlots: React.StatelessComponent<ISemanticSlotsProps> = (props: ISemanticSlotsProps) => {
-  let slotNames: string[] = [];
+  let slotNames: ISlotNames = [];
   let noneSlots: JSX.Element[] = [];
   let neutralSlots: JSX.Element[] = [];
   let softSlots: JSX.Element[] = [];
@@ -44,8 +58,8 @@ export const SemanticSlots: React.StatelessComponent<ISemanticSlotsProps> = (pro
     );
   };
 
-  const trimPaletteSlots = (paletteSlots: {}): {} => {
-    let trimmedPaletteSlots = {};
+  const trimPaletteSlots = (paletteSlots: IPalette): IPaletteSlots => {
+    let trimmedPaletteSlots: IPaletteSlots = {};
     for (let palette in paletteSlots) {
       if (
         palette.startsWith('theme') ||
@@ -55,7 +69,7 @@ export const SemanticSlots: React.StatelessComponent<ISemanticSlotsProps> = (pro
         palette === 'redDark' ||
         palette === 'accent'
       ) {
-        (trimmedPaletteSlots as any)[palette] = (paletteSlots as any)[palette];
+        trimmedPaletteSlots[palette] = (paletteSlots as any)[palette];
       }
     }
     return trimmedPaletteSlots;
@@ -79,21 +93,21 @@ export const SemanticSlots: React.StatelessComponent<ISemanticSlotsProps> = (pro
     );
   };
 
-  const trimSemanticSlotsOrNames = (semanticSlots: {} | string[]): {} | string[] => {
+  const trimSemanticSlotsOrNames = (semanticSlots: ISemanticColors | string[]): ISemanticSlots | string[] => {
     if (semanticSlots instanceof Array) {
       let trimmedSemanticSlotNames = [];
       for (let i = 0; i < semanticSlots.length; i++) {
-        let slotName = (semanticSlots as any)[i];
+        let slotName = semanticSlots[i];
         if (isASemanticColor(slotName)) {
           trimmedSemanticSlotNames.push(slotName);
         }
       }
       return trimmedSemanticSlotNames;
     } else {
-      let trimmedSemanticSlots = {};
+      let trimmedSemanticSlots: ISemanticSlots = {};
       for (let semanticColor in semanticSlots) {
         if (isASemanticColor(semanticColor)) {
-          (trimmedSemanticSlots as any)[semanticColor] = (semanticSlots as any)[semanticColor];
+          trimmedSemanticSlots[semanticColor] = (semanticSlots as any)[semanticColor];
         }
       }
       return trimmedSemanticSlots;
@@ -102,14 +116,15 @@ export const SemanticSlots: React.StatelessComponent<ISemanticSlotsProps> = (pro
 
   const fillVariantSlotsList = (variantType: VariantThemeType): JSX.Element[] => {
     let currThemeVariant: ITheme;
+    let noneVariant = getVariant(props.theme, VariantThemeType.None);
     if (props.theme) {
       currThemeVariant = getVariant(props.theme, variantType);
       const currVariantSemanticSlots = currThemeVariant.semanticColors;
       // "trimming" to get rid of the seamantic color slots & palette slots we don't use for theme designer app
       const trimmedSemanticSlots = trimSemanticSlotsOrNames(currVariantSemanticSlots);
-      const currVariantPaletteSlots = currThemeVariant.palette;
+      const currVariantPaletteSlots = noneVariant.palette; // palette slot values should be based off the default variant
       const trimmedPaletteSlots = trimPaletteSlots(currVariantPaletteSlots);
-      const mapping = {};
+      const mapping: IMapping = {};
       // Iterate through the list of semantic colors
       // for each semantic color, check if it's hex color string is in the list of palette colors
       // if it is, add it to the mapping
@@ -117,10 +132,10 @@ export const SemanticSlots: React.StatelessComponent<ISemanticSlotsProps> = (pro
         if (semanticColor) {
           const paletteColorHexStr = (trimmedSemanticSlots as any)[semanticColor];
           for (let palette in trimmedPaletteSlots) {
-            if ((trimmedPaletteSlots as any)[palette] === paletteColorHexStr) {
-              (mapping as any)[semanticColor] = palette;
+            if (trimmedPaletteSlots[palette] === paletteColorHexStr) {
+              mapping[semanticColor] = palette;
             } else if (paletteColorHexStr === 'transparent') {
-              (mapping as any)[semanticColor] = 'transparent';
+              mapping[semanticColor] = 'transparent';
             }
           }
         }
@@ -128,7 +143,7 @@ export const SemanticSlots: React.StatelessComponent<ISemanticSlotsProps> = (pro
       const tempJSXList: JSX.Element[] = [];
       for (let i = 0; i < slotNames.length; i++) {
         let slot = slotNames[i];
-        let currSlotJSX = semanticSlotWidget((currVariantSemanticSlots as any)[slot], (mapping as any)[slot]);
+        let currSlotJSX = semanticSlotWidget((currVariantSemanticSlots as any)[slot], mapping[slot]);
         tempJSXList.push(currSlotJSX);
       }
       return tempJSXList;
@@ -138,7 +153,7 @@ export const SemanticSlots: React.StatelessComponent<ISemanticSlotsProps> = (pro
   };
 
   let semanticSlotsNone = props.theme.semanticColors;
-  (slotNames as any) = trimSemanticSlotsOrNames(Object.keys(semanticSlotsNone));
+  slotNames = trimSemanticSlotsOrNames(Object.keys(semanticSlotsNone)) as ISlotNames;
   noneSlots = fillVariantSlotsList(VariantThemeType.None);
   neutralSlots = fillVariantSlotsList(VariantThemeType.Neutral);
   softSlots = fillVariantSlotsList(VariantThemeType.Soft);
