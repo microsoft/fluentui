@@ -1,0 +1,9 @@
+{
+  "type": "patch",
+  "comment": "SpinButton: Fixing minWidth and having it come from const to be consistent.",
+  "packageName": "office-ui-fabric-react",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "commit": "e02e44d4313b45a7666346f12b7654db136ede13",
+  "date": "2019-10-11T00:28:29.652Z",
+  "file": "E:\\office-ui-fabric-react\\change\\office-ui-fabric-react-2019-10-10-17-28-29-spinButtonMinWidth.json"
+}
