@@ -62,7 +62,7 @@ exports[`Card Item renders correctly 1`] = `
 </div>
 `;
 
-exports[`Card Item renders correctly when filling up the margins while being the first item in a Compact Card 1`] = `
+exports[`Card Item renders correctly when filling up the margins while being the first item in a Horizontal Card 1`] = `
 <div
   className=
       ms-Stack
@@ -236,7 +236,7 @@ exports[`Card Item renders correctly when filling up the margins while being the
 </div>
 `;
 
-exports[`Card Item renders correctly when filling up the margins while being the last item in a Compact Card 1`] = `
+exports[`Card Item renders correctly when filling up the margins while being the last item in a Horizontal Card 1`] = `
 <div
   className=
       ms-Stack
@@ -410,7 +410,7 @@ exports[`Card Item renders correctly when filling up the margins while being the
 </div>
 `;
 
-exports[`Card Item renders correctly when filling up the margins while being the middle item in a Compact Card 1`] = `
+exports[`Card Item renders correctly when filling up the margins while being the middle item in a Horizontal Card 1`] = `
 <div
   className=
       ms-Stack
@@ -634,7 +634,7 @@ exports[`Card Item renders correctly when filling up the margins while being the
 </div>
 `;
 
-exports[`Card Item renders correctly when filling up the margins while being the only item in a Compact Card 1`] = `
+exports[`Card Item renders correctly when filling up the margins while being the only item in a Horizontal Card 1`] = `
 <div
   className=
       ms-Stack
