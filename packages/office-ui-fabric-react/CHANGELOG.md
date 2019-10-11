@@ -1,7 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 10 Oct 2019 03:54:03 GMT and should not be manually modified.
+This log was last generated on Fri, 11 Oct 2019 12:22:30 GMT and should not be manually modified.
 
+## 6.208.1
+Fri, 11 Oct 2019 12:22:30 GMT
+
+### Patches
+
+- SplitButton: Fixed high contrast borders (v-mare@microsoft.com)
 ## 6.208.0
 Thu, 10 Oct 2019 03:54:03 GMT
 

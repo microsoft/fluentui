@@ -2,6 +2,20 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Fri, 11 Oct 2019 12:22:30 GMT",
+      "tag": "office-ui-fabric-react_v6.208.1",
+      "version": "6.208.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "SplitButton: Fixed high contrast borders",
+            "author": "v-mare@microsoft.com",
+            "commit": "3e9f68c3815f3aba578f4ca4af3b1a707ff2d14a"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 10 Oct 2019 03:54:03 GMT",
       "tag": "office-ui-fabric-react_v6.208.0",
       "version": "6.208.0",
