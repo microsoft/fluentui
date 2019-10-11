@@ -1,7 +1,14 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 10 Oct 2019 12:32:08 GMT and should not be manually modified.
+This log was last generated on Fri, 11 Oct 2019 12:31:31 GMT and should not be manually modified.
 
+## 7.48.1
+Fri, 11 Oct 2019 12:31:31 GMT
+
+### Patches
+
+- TeachingBubble: body content should resize better when container is wide. Added wide example with just text to demonstrate this. (aneeshak@microsoft.com)
+- Apply className on DetailsHeaderBase. (email not defined)
 ## 7.48.0
 Thu, 10 Oct 2019 12:32:08 GMT
 

@@ -1,9 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Apply className on DetailsHeaderBase.",
-  "packageName": "office-ui-fabric-react",
-  "email": "email not defined",
-  "commit": "04c37b7ff8f2117dc9046a5e87bd8313ce219d93",
-  "date": "2019-10-10T17:29:40.360Z",
-  "file": "/Users/kevinnove/Documents/workspace/office-ui-fabric-react-fork/change/office-ui-fabric-react-2019-10-10-13-29-40-apply-className-on-DetailsHeaderBase.json"
-}
