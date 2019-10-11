@@ -96,7 +96,7 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
             margin-left: 0px;
             margin-right: 0px;
             margin-top: 0px;
-            min-width: 72px;
+            min-width: 61px;
             outline: 0px;
             overflow: hidden;
             padding-bottom: 0;
@@ -516,7 +516,7 @@ exports[`SpinButton renders SpinButton correctly with values that the user passe
             margin-left: 0px;
             margin-right: 0px;
             margin-top: 0px;
-            min-width: 72px;
+            min-width: 61px;
             outline: 0px;
             overflow: hidden;
             padding-bottom: 0;
