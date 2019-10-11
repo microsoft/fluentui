@@ -4066,6 +4066,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
           onFocus={[Function]}
           onKeyDown={[Function]}
           onKeyUp={[Function]}
+          onMouseDown={[Function]}
           role="listbox"
           tabIndex={0}
         >

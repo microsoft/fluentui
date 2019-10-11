@@ -956,6 +956,9 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
 // @public (undocumented)
 export const DetailsRowCheck: React.FunctionComponent<IDetailsRowCheckProps>;
 
+// @public
+export const DetailsRowFields: React.FunctionComponent<IDetailsRowFieldsProps>;
+
 // @public (undocumented)
 export const DetailsRowGlobalClassNames: {
     root: string;
@@ -1509,6 +1512,7 @@ export interface IActivityItemStyles {
 
 // @public (undocumented)
 export interface IAnnouncedProps extends React.Props<AnnouncedBase>, React.HTMLAttributes<HTMLDivElement> {
+    'aria-live'?: 'off' | 'polite' | 'assertive';
     message?: string;
     styles?: IStyleFunctionOrObject<{}, IAnnouncedStyles>;
 }

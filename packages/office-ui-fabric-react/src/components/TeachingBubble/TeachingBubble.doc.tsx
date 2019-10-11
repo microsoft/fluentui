@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { TeachingBubbleBasicExample } from './examples/TeachingBubble.Basic.Example';
-
+import { TeachingBubbleWideExample } from './examples/TeachingBubble.Wide.Example';
 import { IDocPageProps } from '../../common/DocPage.types';
 import { TeachingBubbleCondensedExample } from './examples/TeachingBubble.Condensed.Example';
 import { TeachingBubbleIllustrationExample } from './examples/TeachingBubble.Illustration.Example';
@@ -9,6 +9,7 @@ import { TeachingBubbleSmallHeadlineExample } from './examples/TeachingBubble.Sm
 import { TeachingBubbleMultiStepExample } from './examples/TeachingBubble.MultiStep.Example';
 
 const TeachingBubbleBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TeachingBubble/examples/TeachingBubble.Basic.Example.tsx') as string;
+const TeachingBubbleWideExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TeachingBubble/examples/TeachingBubble.Wide.Example.tsx') as string;
 const TeachingBubbleCondensedExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TeachingBubble/examples/TeachingBubble.Condensed.Example.tsx') as string;
 const TeachingBubbleIllustrationExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TeachingBubble/examples/TeachingBubble.Illustration.Example.tsx') as string;
 const TeachingBubbleWideIllustrationExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TeachingBubble/examples/TeachingBubble.WideIllustration.Example.tsx') as string;
@@ -27,6 +28,11 @@ export const TeachingBubblePageProps: IDocPageProps = {
       view: <TeachingBubbleBasicExample />
     },
     {
+      title: 'TeachingBubble Wide',
+      code: TeachingBubbleWideExampleCode,
+      view: <TeachingBubbleWideExample />
+    },
+    {
       title: 'TeachingBubble Condensed',
       code: TeachingBubbleCondensedExampleCode,
       view: <TeachingBubbleCondensedExample />
@@ -37,7 +43,7 @@ export const TeachingBubblePageProps: IDocPageProps = {
       view: <TeachingBubbleIllustrationExample />
     },
     {
-      title: 'TeachingBubble wide with Illustration',
+      title: 'TeachingBubble Wide with Illustration',
       code: TeachingBubbleWideIllustrationExampleCode,
       view: <TeachingBubbleWideIllustrationExample />
     },

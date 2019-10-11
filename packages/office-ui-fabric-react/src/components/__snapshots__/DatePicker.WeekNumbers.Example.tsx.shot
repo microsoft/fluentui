@@ -339,6 +339,7 @@ exports[`Component Examples renders DatePicker.WeekNumbers.Example.tsx correctly
       onFocus={[Function]}
       onKeyDown={[Function]}
       onKeyUp={[Function]}
+      onMouseDown={[Function]}
       role="listbox"
       tabIndex={0}
     >

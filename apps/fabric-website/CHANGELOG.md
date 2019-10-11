@@ -1,7 +1,13 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Thu, 03 Oct 2019 23:14:46 GMT and should not be manually modified.
+This log was last generated on Thu, 10 Oct 2019 12:32:08 GMT and should not be manually modified.
 
+## 7.5.5
+Thu, 10 Oct 2019 12:32:08 GMT
+
+### Patches
+
+- added header examples and updated alt descriptions for BottomSheet (willdo@microsoft.com)
 ## 7.5.4
 Thu, 03 Oct 2019 23:14:46 GMT
 

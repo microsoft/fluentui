@@ -1,7 +1,26 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 09 Oct 2019 12:34:23 GMT and should not be manually modified.
+This log was last generated on Thu, 10 Oct 2019 12:32:08 GMT and should not be manually modified.
 
+## 7.48.0
+Thu, 10 Oct 2019 12:32:08 GMT
+
+### Minor changes
+
+- Export DetailsRowFields (KevinTCoughlin@users.noreply.github.com)
+### Patches
+
+- Fixed dropdown to not select first option automatically unless it's selected using keyboard navigation per aria (xgao@microsoft.com)
+- Announced: explicitly show aria-live property in Announced types (naethell@microsoft.com)
+## 7.47.0
+Wed, 09 Oct 2019 22:25:09 GMT
+
+### Minor changes
+
+- ResponsiveMode: defaulting to large to avoid breaking changes for scenarios assuming it would be available on first render. (dzearing@microsoft.com)
+### Patches
+
+- Dropdown: when `openOnKeyboardFocus` prop is set to true, the Dropdown now does not close the options callout immediately. (xgao@microsoft.com)
 ## 7.46.0
 Wed, 09 Oct 2019 12:34:23 GMT
 

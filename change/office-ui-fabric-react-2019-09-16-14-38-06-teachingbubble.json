@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "TeachingBubble: body content should resize better when container is wide. Added wide example with just text to demonstrate this.",
+  "packageName": "office-ui-fabric-react",
+  "email": "aneeshak@microsoft.com",
+  "commit": "820debe496e604fedf9d42716fc4bfa375d6a4eb",
+  "date": "2019-09-16T21:38:06.537Z"
+}

@@ -1,9 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Dropdown: when `openOnKeyboardFocus` prop is set to true, the Dropdown now does not close the options callout immediately.",
-  "packageName": "office-ui-fabric-react",
-  "email": "xgao@microsoft.com",
-  "commit": "575aeee692cd0f947e453ec6aa6ccebf10b25622",
-  "date": "2019-10-08T21:49:11.601Z",
-  "file": "/Users/xugao/Projects/office-ui-fabric-react/change/office-ui-fabric-react-2019-10-08-14-49-11-xgao-bug-fix-1.json"
-}

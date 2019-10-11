@@ -111,10 +111,7 @@ export const getStyles = (props: ITeachingBubbleStyleProps): ITeachingBubbleStyl
     bodyContent: [
       classNames.bodyContent,
       {
-        padding: 24
-      },
-      isWide && {
-        maxWidth: 302
+        padding: 20
       }
     ],
     closeButton: [
@@ -150,7 +147,7 @@ export const getStyles = (props: ITeachingBubbleStyleProps): ITeachingBubbleStyl
       classNames.footer,
       {
         display: 'flex',
-        justifyContent: 'flex-end',
+        flex: 'auto',
         alignItems: 'center',
         color: palette.white,
         selectors: {
@@ -229,7 +226,6 @@ export const getStyles = (props: ITeachingBubbleStyleProps): ITeachingBubbleStyl
         backgroundColor: palette.themePrimary,
         borderColor: palette.white,
         whiteSpace: 'nowrap',
-        marginRight: '10px',
         selectors: {
           // TODO: global class name usage should be converted to a button styles function once Button supports JS styling
           [`.${classNames.buttonLabel}`]: [
