@@ -36,6 +36,8 @@ export const SemanticSlots: React.StatelessComponent<ISemanticSlotsProps> = (pro
   slotNames = [
     // DEFAULTS - 13
     'bodyBackground', // white
+    'bodyBackgroundHovered', // neutralLighter
+    'bodyBackgroundChecked', // neutralLight,
     'bodyStandoutBackground', // neutralLighterAlt
     'bodyFrameBackground', // white
     'bodyFrameDivider', // neturalLight
@@ -90,6 +92,9 @@ export const SemanticSlots: React.StatelessComponent<ISemanticSlotsProps> = (pro
     'inputBackgroundCheckedHovered', // themeDarkAlt
     'inputPlaceholderBackgroundChecked', // themeLighter
     'inputForegroundChecked', // white
+    'inputIcon', // themePrimary
+    'inputIconHovered', // themeDark
+    'inputIconDisabled', // neutralTertiary
     'inputFocusBorderAlt', // themePrimary
     'smallInputBorder', // neutralSecondary
     'inputText', // neutralPrimary
@@ -120,6 +125,8 @@ export const SemanticSlots: React.StatelessComponent<ISemanticSlotsProps> = (pro
 
   const noneSemanticColorsToPaletteValuesMapping = {
     bodyBackground: 'white',
+    bodyBackgroundHovered: 'neutralLighter',
+    bodyBackgroundChecked: 'neutralLight',
     bodyStandoutBackground: 'neutralLighterAlt',
     bodyFrameBackground: 'white',
     bodyFrameDivider: 'neutralLight',
@@ -168,6 +175,9 @@ export const SemanticSlots: React.StatelessComponent<ISemanticSlotsProps> = (pro
     inputBackgroundCheckedHovered: 'themeDarkAlt',
     inputPlaceholderBackgroundChecked: 'themeLighter',
     inputForegroundChecked: 'white',
+    inputIcon: 'themePrimary',
+    inputIconHovered: 'themeDark',
+    inputIconDisabled: 'neutralTertiary',
     inputFocusBorderAlt: 'themePrimary',
     smallInputBorder: 'neutralSecondary',
     inputText: 'neutralPrimary',
@@ -206,6 +216,8 @@ export const SemanticSlots: React.StatelessComponent<ISemanticSlotsProps> = (pro
 
   const neutralSemanticColorsToPaletteValuesMapping = {
     bodyBackground: 'neturalLighter',
+    bodyBackgroundHovered: 'neutralLighter',
+    bodyBackgroundChecked: 'neutralLight',
     bodyStandoutBackground: 'neutralLight',
     bodyFrameBackground: props.theme ? (!props.theme.isInverted ? 'neutralLight' : 'neutralLighter') : 'N/A',
     bodyFrameDivider: props.theme ? (!props.theme.isInverted ? 'neutralLight' : 'neutralQuaternaryAlt') : 'N/A',
@@ -254,6 +266,9 @@ export const SemanticSlots: React.StatelessComponent<ISemanticSlotsProps> = (pro
     inputBackgroundCheckedHovered: 'N/A',
     inputPlaceholderBackgroundChecked: 'N/A',
     inputForegroundChecked: 'N/A',
+    inputIcon: 'themePrimary',
+    inputIconHovered: 'themeDark',
+    inputIconDisabled: 'neutralTertiary',
     inputFocusBorderAlt: 'themePrimary',
     smallInputBorder: 'N/A',
     inputText: 'neutralPrimary',
@@ -330,6 +345,9 @@ export const SemanticSlots: React.StatelessComponent<ISemanticSlotsProps> = (pro
     inputBackgroundCheckedHovered: 'themeDarkAlt',
     inputPlaceholderBackgroundChecked: 'themeLighter',
     inputForegroundChecked: 'themeLighter',
+    inputIcon: 'themePrimary',
+    inputIconHovered: 'themeDark',
+    inputIconDisabled: 'neutralTertiary',
     inputFocusBorderAlt: 'themePrimary',
     smallInputBorder: 'N/A',
     inputText: 'neutralPrimary',
@@ -358,6 +376,8 @@ export const SemanticSlots: React.StatelessComponent<ISemanticSlotsProps> = (pro
 
   const strongSemanticColorsToPaletteValuesMapping = {
     bodyBackground: 'themePrimary',
+    bodyBackgroundHovered: 'neutralLighter',
+    bodyBackgroundChecked: 'neutralLight',
     bodyStandoutBackground: 'themeDarkAlt',
     bodyFrameBackground: props.theme ? (!props.theme.isInverted ? 'themeDarkAlt' : 'themePrimary') : 'N/A',
     bodyFrameDivider: props.theme ? (!props.theme.isInverted ? 'themeDarkAlt' : 'themeTertiary') : 'N/A',
@@ -406,6 +426,9 @@ export const SemanticSlots: React.StatelessComponent<ISemanticSlotsProps> = (pro
     inputBackgroundCheckedHovered: 'themePrimary',
     inputPlaceholderBackgroundChecked: 'neutralQuaternary',
     inputForegroundChecked: 'themeDark',
+    inputIcon: 'themePrimary',
+    inputIconHovered: 'themeDark',
+    inputIconDisabled: 'neutralTertiary',
     inputFocusBorderAlt: 'themeTertiary',
     smallInputBorder: 'N/A',
     inputText: 'neutralPrimary',
