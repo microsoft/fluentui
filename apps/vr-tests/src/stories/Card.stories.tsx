@@ -100,7 +100,7 @@ const actionButtonStyles: IButtonStyles = {
     fontWeight: FontWeights.semibold
   }
 };
-const footerCompactCardSectionStyles: ICardSectionStyles = {
+const footerHorizontalCardSectionStyles: ICardSectionStyles = {
   root: {
     borderLeft: '1px solid #F3F2F1'
   }
@@ -164,7 +164,7 @@ const addEventButtonTokens: IButtonTokens = {
   textSize: 12,
   textWeight: FontWeights.regular
 };
-const footerCompactCardSectionTokens: ICardSectionTokens = { padding: '0px 0px 0px 12px' };
+const footerHorizontalCardSectionTokens: ICardSectionTokens = { padding: '0px 0px 0px 12px' };
 const cardSectionTokens: ICardSectionTokens = {
   childrenGap: 6,
   padding: 6
@@ -280,27 +280,27 @@ storiesOf('Card', module)
       </Card>
     </Fabric>
   ))
-  .addStory('Compact Card - Basic - Non hoverable', () => (
+  .addStory('Horizontal Card - Basic - Non hoverable', () => (
     <Fabric>
-      <Card compact>
+      <Card horizontal>
         <Card.Item>
-          <Text>Basic compact card</Text>
+          <Text>Basic horizontal card</Text>
         </Card.Item>
       </Card>
     </Fabric>
   ))
-  .addStory('Compact Card - Basic - Hoverable', () => (
+  .addStory('Horizontal Card - Basic - Hoverable', () => (
     <Fabric>
-      <Card compact onClick={cardClicked}>
+      <Card horizontal onClick={cardClicked}>
         <Card.Item>
-          <Text>Basic compact card</Text>
+          <Text>Basic horizontal card</Text>
         </Card.Item>
       </Card>
     </Fabric>
   ))
-  .addStory('Compact Card - Example with contents', () => (
+  .addStory('Horizontal Card - Example with contents', () => (
     <Fabric>
-      <Card compact onClick={cardClicked} tokens={cardTokens}>
+      <Card horizontal onClick={cardClicked} tokens={cardTokens}>
         <Card.Item fill>
           <Image src="https://placehold.it/180x135" alt="Placeholder image." />
         </Card.Item>
@@ -316,8 +316,8 @@ storiesOf('Card', module)
           </Text>
         </Card.Section>
         <Card.Section
-          styles={footerCompactCardSectionStyles}
-          tokens={footerCompactCardSectionTokens}
+          styles={footerHorizontalCardSectionStyles}
+          tokens={footerHorizontalCardSectionTokens}
         >
           <Icon iconName="RedEye" styles={iconStyles} />
           <Icon iconName="SingleBookmark" styles={iconStyles} />

@@ -15,7 +15,7 @@ export const CardView: ICardComponent['view'] = props => {
     root: Stack
   });
 
-  const { children, styles, tokens, compact, ...rest } = props;
+  const { children, styles, tokens, horizontal, ...rest } = props;
 
   const nativeProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(rest, htmlElementProperties);
 
@@ -48,7 +48,7 @@ export const CardView: ICardComponent['view'] = props => {
         let margin: number | string = 0;
 
         /* If childrenMargin has been specified and the fill property is not present, make the appropriate calculations to get the resolved
-         * margin for this specific child depending on the type of Card (vertical vs compact) and the child position in the card (first
+         * margin for this specific child depending on the type of Card (vertical vs horizontal) and the child position in the card (first
          * child, in-between child or last child). */
         if (childrenMargin && !fill) {
           const firstMargin: number = index === 0 ? childrenMargin : 0;
@@ -57,7 +57,7 @@ export const CardView: ICardComponent['view'] = props => {
           const verticalMargin: string = `${firstMargin}px ${childrenMargin}px ${lastMargin}px`;
           const horizontalMargin: string = `${childrenMargin}px ${lastMargin}px ${childrenMargin}px ${firstMargin}px`;
 
-          margin = compact ? horizontalMargin : verticalMargin;
+          margin = horizontal ? horizontalMargin : verticalMargin;
         }
 
         /* Resolve tokens, sending childrenGap only if the child type is CardSection as CardItem doesn't have a childrenGap token in its
@@ -85,11 +85,11 @@ export const CardView: ICardComponent['view'] = props => {
   return (
     <Slots.root
       {...nativeProps}
-      horizontal={compact}
+      horizontal={horizontal}
       tokens={tokens as IStackComponent['tokens']}
       verticalFill
       verticalAlign="start"
-      horizontalAlign={compact ? 'start' : 'stretch'}
+      horizontalAlign={horizontal ? 'start' : 'stretch'}
     >
       {cardChildren}
     </Slots.root>

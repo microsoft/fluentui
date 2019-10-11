@@ -1,0 +1,9 @@
+{
+  "type": "minor",
+  "comment": "Card: Renamed compact prop to horizontal and updated examples and tests accordingly.",
+  "packageName": "@uifabric/react-cards",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "commit": "456aebbf657d34609e85800e3d5a8223d454e872",
+  "date": "2019-10-10T21:37:04.526Z",
+  "file": "D:\\office-ui-fabric-react\\change\\@uifabric-react-cards-2019-10-10-14-37-04-cardHorizontal.json"
+}
