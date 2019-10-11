@@ -6,6 +6,8 @@ export interface IFabricProps extends React.HTMLAttributes<HTMLDivElement> {
   componentRef?: IRefObject<{}>;
   theme?: ITheme;
   styles?: IStyleFunctionOrObject<IFabricStyleProps, IFabricStyles>;
+  applyTheme?: boolean;
+  applyThemeToBody?: boolean;
 }
 
 export interface IFabricStyleProps extends IFabricProps {
