@@ -12,7 +12,9 @@ import {
   customizable,
   calculatePrecision,
   precisionRound,
-  mergeAriaAttributeValues
+  mergeAriaAttributeValues,
+  getNativeProps,
+  divProperties
 } from '../../Utilities';
 import { ISpinButton, ISpinButtonProps } from './SpinButton.types';
 import { Position } from '../../utilities/positioning';
@@ -165,6 +167,8 @@ export class SpinButton extends React.Component<ISpinButtonProps, ISpinButtonSta
       ? this.props.getClassNames(theme!, disabled, isFocused, keyboardSpinDirection, labelPosition, className)
       : getClassNames(getStyles(theme!, customStyles), disabled, isFocused, keyboardSpinDirection, labelPosition, className);
 
+    const nativeProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties, ['onBlur', 'onFocus']);
+
     return (
       <div className={classNames.root}>
         {labelPosition !== Position.bottom && (iconProps || label) && (
@@ -180,6 +184,7 @@ export class SpinButton extends React.Component<ISpinButtonProps, ISpinButtonSta
         <KeytipData keytipProps={keytipProps} disabled={disabled}>
           {(keytipAttributes: any): JSX.Element => (
             <div
+              {...nativeProps}
               className={classNames.spinButtonWrapper}
               title={title && title}
               aria-label={ariaLabel && ariaLabel}
