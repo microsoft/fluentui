@@ -1,0 +1,9 @@
+{
+  "type": "patch",
+  "comment": "Panel: hide close button for controlled example since it doesn't work",
+  "packageName": "office-ui-fabric-react",
+  "email": "elcraig@microsoft.com",
+  "commit": "e2fd56e9add58c50ea37ad03c557488b393901b0",
+  "date": "2019-10-14T17:32:08.681Z",
+  "file": "/Users/elizabeth/git/fabric-react4/change/office-ui-fabric-react-2019-10-14-10-32-08-panel-close.json"
+}
