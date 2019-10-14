@@ -6,6 +6,92 @@ const flamegrill = require('flamegrill');
 const scenarioNames = require('../src/scenarioNames');
 const { argv } = require('@uifabric/build').just;
 
+// Flamegrill Types
+/**
+ * @typedef {{
+ *   scenario: string;
+ *   baseline?: string;
+ * }} Scenario
+ *
+ * @typedef {{
+ *   [scenarioName: string]: Scenario;
+ * }} Scenarios
+ *
+ * @typedef {{
+ *   outDir?: string;
+ *   tempDir?: string;
+ * }} ScenarioConfig
+ *
+ * @typedef {{
+ *   Timestamp: number;
+ *   Documents: number;
+ *   Frames: number;
+ *   JSEventListeners: number;
+ *   Nodes: number;
+ *   LayoutCount: number;
+ *   RecalcStyleCount: number;
+ *   LayoutDuration: number;
+ *   RecalcStyleDuration: number;
+ *   ScriptDuration: number;
+ *   TaskDuration: number;
+ *   JSHeapUsedSize: number;
+ *   JSHeapTotalSize: number;
+ * }} Metrics
+ *
+ * @typedef {{
+ *   logFile: string;
+ *   metrics: Metrics;
+ *   baseline?: {
+ *     logFile: string;
+ *     metrics: Metrics;
+ *   }
+ * }} ScenarioProfile
+ *
+ * @typedef {{
+ *   dataFile: string;
+ *   flamegraphFile: string;
+ * }} ProcessedOutput
+ *
+ * @typedef {{
+ *   errorFile: string;
+ * }} ProcessedError
+ *
+ * @typedef {{
+ *   output?: ProcessedOutput;
+ *   error?: ProcessedError;
+ *   baseline?: {
+ *     output?: ProcessedOutput;
+ *     error?: ProcessedError;
+ *   }
+ * }} ProcessedScenario
+ *
+ * @typedef {{
+ *   numTicks: number;
+ * }} Analysis
+ *
+ * @typedef {{
+ *   summary: string;
+ *   isRegression: boolean;
+ *   regressionFile?: string;
+ * }} RegressionAnalysis
+ *
+ * @typedef {{
+ *   numTicks: number;
+ *   baseline?: Analysis;
+ *   regression?: RegressionAnalysis;
+ * }} ScenarioAnalysis
+ *
+ * @typedef {{
+ *   profile: ScenarioProfile;
+ *   processed: ProcessedScenario;
+ *   analysis?: ScenarioAnalysis;
+ * }} CookResult
+ *
+ * @typedef {{
+ *   [scenarioName: string]: CookResult;
+ * }} CookResults
+ */
+
 // A high number of iterations are needed to get visualization of lower level calls that are infrequently hit by ticks.
 // Wiki: https://github.com/OfficeDev/office-ui-fabric-react/wiki/Perf-Testing
 const iterationsDefault = 5000;
@@ -131,40 +217,43 @@ module.exports = async function getPerfRegressions() {
 
   const scenarioList = scenariosArg.length > 0 ? scenariosArg : scenariosAvailable;
 
-  const scenarios = [];
-  scenarioList.forEach(scenario => {
-    if (!scenariosAvailable.includes(scenario)) {
-      throw new Error(`Invalid scenario: ${scenario}.`);
+  /** @type {Scenarios} */
+  const scenarios = {};
+  scenarioList.forEach(scenarioName => {
+    if (!scenariosAvailable.includes(scenarioName)) {
+      throw new Error(`Invalid scenario: ${scenarioName}.`);
     }
-    scenarios.push({
-      name: scenario,
-      reference: `${urlForMaster}?scenario=${scenario}&iterations=${iterations}`,
-      scenario: `${urlForDeploy}?scenario=${scenario}&iterations=${iterations}`
-    });
+    // These lines can be used to check for consistency.
+    // Array.from({ length: 20 }, (entry, index) => {
+    scenarios[scenarioName] = {
+      // scenarios[scenarioName + index] = {
+      baseline: `${urlForMaster}?scenario=${scenarioName}&iterations=${iterations}`,
+      scenario: `${urlForDeploy}?scenario=${scenarioName}&iterations=${iterations}`
+    };
   });
+  // });
 
   console.log(`\nRunning ${iterations} iterations for each of these scenarios: ${scenarioList}\n`);
 
-  if (!fs.existsSync(tempDir)) {
-    console.log(`Making temp directory ${tempDir}...`);
-    fs.mkdirSync(tempDir);
+  if (fs.existsSync(tempDir)) {
+    const tempContents = fs.readdirSync(tempDir);
+
+    if (tempContents.length > 0) {
+      console.log(`Unexpected files already present in ${tempDir}`);
+      tempContents.forEach(logFile => {
+        const logFilePath = path.join(tempDir, logFile);
+        console.log(`Deleting ${logFilePath}`);
+        fs.unlinkSync(logFilePath);
+      });
+    }
   }
 
-  const logfileContents = fs.readdirSync(tempDir);
-
-  if (logfileContents.length > 0) {
-    console.log(`Unexpected files already present in ${tempDir}`);
-    logfileContents.forEach(logFile => {
-      const logFilePath = path.join(tempDir, logFile);
-      console.log(`Deleting ${logFilePath}`);
-      fs.unlinkSync(logFilePath);
-    });
-  }
-
+  /** @type {ScenarioConfig} */
   const scenarioConfig = { outDir, tempDir };
+  /** @type {CookResults} */
   const scenarioResults = await flamegrill.cook(scenarios, scenarioConfig);
 
-  const comment = createTestSummary(scenarioResults);
+  const comment = createReport(scenarioResults);
 
   // TODO: determine status according to perf numbers
   const status = 'success';
@@ -181,34 +270,66 @@ module.exports = async function getPerfRegressions() {
 
 /**
  * Create test summary based on test results.
+ *
+ * @param {CookResults} testResults
+ * @returns {string}
  */
-function createTestSummary(testResults) {
-  testResults.forEach(testResult => {
-    testResult.numTicksReference = getTicks(testResult.outfileReference);
-    testResult.numTicks = getTicks(testResult.outfile);
-  });
+function createReport(testResults) {
+  const report = '### [Component Perf Analysis](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Perf-Testing)\n'
 
-  const result = `Component Perf Analysis:
+    // Show only significant changes by default.
+    .concat(createScenarioTable(testResults, false))
+
+    // Show all results in a collapsible table.
+    .concat('<details><summary>All results</summary><p>')
+    .concat(createScenarioTable(testResults, true))
+    .concat('</p></details>');
+
+  return report;
+}
+
+/**
+ * Create a table of scenario results.
+ *
+ * @param {CookResults} testResults
+ * @param {boolean} showAll Show only significant results by default.
+ * @returns {string}
+ */
+function createScenarioTable(testResults, showAll) {
+  const resultsToDisplay = Object.keys(testResults).filter(
+    key =>
+      showAll || (testResults[key].analysis && testResults[key].analysis.regression && testResults[key].analysis.regression.isRegression)
+  );
+
+  if (resultsToDisplay.length === 0) {
+    return '<p>No significant results to display.</p>';
+  }
+
+  const result = `
   <table>
   <tr>
     <th>Scenario</th>
-    <th>Master Samples *</th>
-    <th>PR Samples *</th>
+    <th>
+      <a href="https://github.com/OfficeDev/office-ui-fabric-react/wiki/Perf-Testing#why-are-results-listed-in-ticks-instead-of-time-units">Master Ticks</a>
+    </th>
+    <th>
+      <a href="https://github.com/OfficeDev/office-ui-fabric-react/wiki/Perf-Testing#why-are-results-listed-in-ticks-instead-of-time-units">PR Ticks</a>
+    </th>
+    <th>Status</th>
   </tr>`.concat(
-    testResults
-      .map(
-        testResult =>
-          `<tr>
-            <td>${scenarioNames[testResult.name] || testResult.name}</td>
-            <td><a href="${urlForDeployPath}/${path.basename(testResult.outfileReference)}">${testResult.numTicksReference}</a></td>
-            <td><a href="${urlForDeployPath}/${path.basename(testResult.outfile)}">${testResult.numTicks}</a></td>
-           </tr>`
-      )
+    resultsToDisplay
+      .map(key => {
+        const testResult = testResults[key];
+
+        return `<tr>
+            <td>${scenarioNames[key] || key}</td>
+            ${getCell(testResult, true)}
+            ${getCell(testResult, false)}
+            ${getRegression(testResult)}
+           </tr>`;
+      })
       .join('\n')
       .concat(`</table>`)
-      .concat("* Sample counts can vary by up to 30% and shouldn't be used solely for determining regression.  ")
-      .concat('For more information please see the ')
-      .concat('<a href="https://github.com/OfficeDev/office-ui-fabric-react/wiki/Perf-Testing">Perf Testing wiki</a>.')
   );
 
   console.log('result: ' + result);
@@ -217,20 +338,46 @@ function createTestSummary(testResults) {
 }
 
 /**
- * Get ticks from flamegraph file.
+ * Helper that renders an output cell based on a test result.
  *
- * @param {*} resultsFile
+ * @param {CookResult} testResult
+ * @param {boolean} getBaseline
+ * @returns {string}
  */
-function getTicks(resultsFile) {
-  const numTicks = fs
-    .readFileSync(resultsFile, 'utf8')
-    .toString()
-    .match(/numTicks\s?\=\s?([0-9]+)/);
+function getCell(testResult, getBaseline) {
+  let flamegraphFile = testResult.processed.output && testResult.processed.output.flamegraphFile;
+  let errorFile = testResult.processed.error && testResult.processed.error.errorFile;
+  let numTicks = testResult.analysis && testResult.analysis.numTicks;
 
-  if (numTicks && numTicks[1]) {
-    return numTicks[1];
-  } else {
-    console.log('Could not read numTicks from ' + resultsFile);
-    return 'n/a';
+  if (getBaseline) {
+    const processedBaseline = testResult.processed.baseline;
+    flamegraphFile = processedBaseline && processedBaseline.output && processedBaseline.output.flamegraphFile;
+    errorFile = processedBaseline && processedBaseline.error && processedBaseline.error.errorFile;
+    numTicks = testResult.analysis && testResult.analysis.baseline && testResult.analysis.baseline.numTicks;
   }
+
+  const cell = errorFile
+    ? `<a href="${urlForDeployPath}/${path.basename(errorFile)}">err</a>`
+    : flamegraphFile
+    ? `<a href="${urlForDeployPath}/${path.basename(flamegraphFile)}">${numTicks}</a>`
+    : `n/a`;
+
+  return `<td>${cell}</td>`;
+}
+
+/**
+ * Helper that renders an output cell based on a test result.
+ *
+ * @param {CookResult} testResult
+ * @returns {string}
+ */
+function getRegression(testResult) {
+  const cell =
+    testResult.analysis && testResult.analysis.regression && testResult.analysis.regression.isRegression
+      ? testResult.analysis.regression.regressionFile
+        ? `<a href="${urlForDeployPath}/${path.basename(testResult.analysis.regression.regressionFile)}">Possible regression</a>`
+        : ''
+      : '';
+
+  return `<td>${cell}</td>`;
 }

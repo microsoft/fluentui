@@ -18,7 +18,7 @@ export const PivotIconCountExample: React.FunctionComponent = () => {
         <PivotItem itemCount={23} itemIcon="Recent">
           <Label styles={labelStyles}>Pivot #2</Label>
         </PivotItem>
-        <PivotItem itemIcon="Globe">
+        <PivotItem headerText="Placeholder" itemIcon="Globe">
           <Label styles={labelStyles}>Pivot #3</Label>
         </PivotItem>
         <PivotItem headerText="Shared with me" itemIcon="Ringer" itemCount={1}>

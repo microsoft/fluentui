@@ -123,7 +123,6 @@ exports[`Checkbox renders Checkbox correctly 1`] = `
               color: Window;
             }
         data-icon-name="CheckMark"
-        role="presentation"
       >
         
       </i>

@@ -23,7 +23,7 @@ exports[`DetailsHeader can render 1`] = `
         line-height: 42px;
         min-width: 100%;
         padding-bottom: 1px;
-        padding-top: 1px;
+        padding-top: 16px;
         position: relative;
         user-select: none;
         vertical-align: top;
@@ -188,27 +188,41 @@ exports[`DetailsHeader can render 1`] = `
                 right: 1px;
                 top: 1px;
               }
-              .ms-Check-checkHost:hover &, .ms-Check-checkHost:focus &, &:hover, &:focus {
+              .ms-Check-checkHost:hover & {
+                opacity: 1;
+              }
+              .ms-Check-checkHost:focus & {
+                opacity: 1;
+              }
+              &:hover {
+                opacity: 1;
+              }
+              &:focus {
                 opacity: 1;
               }
         >
           <i
             aria-hidden={true}
             className=
+                ms-Icon
                 ms-Check-circle
+                {
+                  display: inline-block;
+                }
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #605e5c;
-                  display: inline-block;
                   font-family: "FabricMDL2Icons";
-                  font-size: 18px;
                   font-style: normal;
                   font-weight: normal;
+                  speak: none;
+                }
+                {
+                  color: #605e5c;
+                  font-size: 18px;
                   height: 18px;
                   left: 0px;
                   position: absolute;
-                  speak: none;
                   text-align: center;
                   top: 0px;
                   vertical-align: middle;
@@ -225,21 +239,26 @@ exports[`DetailsHeader can render 1`] = `
           <i
             aria-hidden={true}
             className=
+                ms-Icon
                 ms-Check-check
+                {
+                  display: inline-block;
+                }
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #605e5c;
-                  display: inline-block;
                   font-family: "FabricMDL2Icons";
-                  font-size: 16px;
                   font-style: normal;
                   font-weight: normal;
+                  speak: none;
+                }
+                {
+                  color: #605e5c;
+                  font-size: 16px;
                   height: 18px;
                   left: .5px;
                   opacity: 0;
                   position: absolute;
-                  speak: none;
                   text-align: center;
                   top: 0px;
                   vertical-align: middle;
@@ -585,19 +604,23 @@ exports[`DetailsHeader can render 1`] = `
         <i
           aria-hidden={true}
           className=
-
+              ms-Icon
+              {
+                display: inline-block;
+              }
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                color: #605e5c;
-                display: inline-block;
                 font-family: "FabricMDL2Icons";
                 font-style: normal;
                 font-weight: normal;
+                speak: none;
+              }
+              {
+                color: #605e5c;
                 opacity: 1;
                 padding-left: 4px;
                 position: relative;
-                speak: none;
                 top: 1px;
               }
           data-icon-name="SortUp"
@@ -799,18 +822,23 @@ exports[`DetailsHeader can render 1`] = `
         <i
           aria-hidden={true}
           className=
+              ms-Icon
               ms-DetailsHeader-filterChevron
+              {
+                display: inline-block;
+              }
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                color: #a19f9d;
-                display: inline-block;
                 font-family: "FabricMDL2Icons";
-                font-size: 12px;
                 font-style: normal;
                 font-weight: normal;
-                padding-left: 6px;
                 speak: none;
+              }
+              {
+                color: #a19f9d;
+                font-size: 12px;
+                padding-left: 6px;
                 vertical-align: middle;
               }
           data-icon-name="ChevronDown"
@@ -903,7 +931,7 @@ exports[`DetailsHeader can render a hidden select all checkbox in single selecti
         line-height: 42px;
         min-width: 100%;
         padding-bottom: 1px;
-        padding-top: 1px;
+        padding-top: 16px;
         position: relative;
         user-select: none;
         vertical-align: top;
@@ -1366,19 +1394,23 @@ exports[`DetailsHeader can render a hidden select all checkbox in single selecti
         <i
           aria-hidden={true}
           className=
-
+              ms-Icon
+              {
+                display: inline-block;
+              }
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                color: #605e5c;
-                display: inline-block;
                 font-family: "FabricMDL2Icons";
                 font-style: normal;
                 font-weight: normal;
+                speak: none;
+              }
+              {
+                color: #605e5c;
                 opacity: 1;
                 padding-left: 4px;
                 position: relative;
-                speak: none;
                 top: 1px;
               }
           data-icon-name="SortUp"
@@ -1580,18 +1612,23 @@ exports[`DetailsHeader can render a hidden select all checkbox in single selecti
         <i
           aria-hidden={true}
           className=
+              ms-Icon
               ms-DetailsHeader-filterChevron
+              {
+                display: inline-block;
+              }
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                color: #a19f9d;
-                display: inline-block;
                 font-family: "FabricMDL2Icons";
-                font-size: 12px;
                 font-style: normal;
                 font-weight: normal;
-                padding-left: 6px;
                 speak: none;
+              }
+              {
+                color: #a19f9d;
+                font-size: 12px;
+                padding-left: 6px;
                 vertical-align: middle;
               }
           data-icon-name="ChevronDown"
@@ -1684,7 +1721,7 @@ exports[`DetailsHeader renders accessible labels 1`] = `
         line-height: 42px;
         min-width: 100%;
         padding-bottom: 1px;
-        padding-top: 1px;
+        padding-top: 16px;
         position: relative;
         user-select: none;
         vertical-align: top;
@@ -1849,27 +1886,41 @@ exports[`DetailsHeader renders accessible labels 1`] = `
                 right: 1px;
                 top: 1px;
               }
-              .ms-Check-checkHost:hover &, .ms-Check-checkHost:focus &, &:hover, &:focus {
+              .ms-Check-checkHost:hover & {
+                opacity: 1;
+              }
+              .ms-Check-checkHost:focus & {
+                opacity: 1;
+              }
+              &:hover {
+                opacity: 1;
+              }
+              &:focus {
                 opacity: 1;
               }
         >
           <i
             aria-hidden={true}
             className=
+                ms-Icon
                 ms-Check-circle
+                {
+                  display: inline-block;
+                }
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #605e5c;
-                  display: inline-block;
                   font-family: "FabricMDL2Icons";
-                  font-size: 18px;
                   font-style: normal;
                   font-weight: normal;
+                  speak: none;
+                }
+                {
+                  color: #605e5c;
+                  font-size: 18px;
                   height: 18px;
                   left: 0px;
                   position: absolute;
-                  speak: none;
                   text-align: center;
                   top: 0px;
                   vertical-align: middle;
@@ -1886,21 +1937,26 @@ exports[`DetailsHeader renders accessible labels 1`] = `
           <i
             aria-hidden={true}
             className=
+                ms-Icon
                 ms-Check-check
+                {
+                  display: inline-block;
+                }
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #605e5c;
-                  display: inline-block;
                   font-family: "FabricMDL2Icons";
-                  font-size: 16px;
                   font-style: normal;
                   font-weight: normal;
+                  speak: none;
+                }
+                {
+                  color: #605e5c;
+                  font-size: 16px;
                   height: 18px;
                   left: .5px;
                   opacity: 0;
                   position: absolute;
-                  speak: none;
                   text-align: center;
                   top: 0px;
                   vertical-align: middle;
@@ -2247,19 +2303,23 @@ exports[`DetailsHeader renders accessible labels 1`] = `
         <i
           aria-hidden={true}
           className=
-
+              ms-Icon
+              {
+                display: inline-block;
+              }
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                color: #605e5c;
-                display: inline-block;
                 font-family: "FabricMDL2Icons";
                 font-style: normal;
                 font-weight: normal;
+                speak: none;
+              }
+              {
+                color: #605e5c;
                 opacity: 1;
                 padding-left: 4px;
                 position: relative;
-                speak: none;
                 top: 1px;
               }
           data-icon-name="SortUp"
@@ -2486,18 +2546,23 @@ exports[`DetailsHeader renders accessible labels 1`] = `
         <i
           aria-hidden={true}
           className=
+              ms-Icon
               ms-DetailsColumn-nearIcon
+              {
+                display: inline-block;
+              }
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                color: #605e5c;
-                display: inline-block;
                 font-family: "FabricMDL2Icons";
                 font-style: normal;
                 font-weight: normal;
+                speak: none;
+              }
+              {
+                color: #605e5c;
                 opacity: 1;
                 padding-left: 8px;
-                speak: none;
               }
           data-icon-name="Filter"
           role="presentation"
@@ -2507,18 +2572,23 @@ exports[`DetailsHeader renders accessible labels 1`] = `
         <i
           aria-hidden={true}
           className=
+              ms-Icon
               ms-DetailsColumn-nearIcon
+              {
+                display: inline-block;
+              }
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                color: #605e5c;
-                display: inline-block;
-                font-family: "FabricMDL2Icons-6";
+                font-family: "FabricMDL2Icons-7";
                 font-style: normal;
                 font-weight: normal;
+                speak: none;
+              }
+              {
+                color: #605e5c;
                 opacity: 1;
                 padding-left: 8px;
-                speak: none;
               }
           data-icon-name="GroupedDescending"
           role="presentation"
@@ -2528,18 +2598,23 @@ exports[`DetailsHeader renders accessible labels 1`] = `
         <i
           aria-hidden={true}
           className=
+              ms-Icon
               ms-DetailsHeader-filterChevron
+              {
+                display: inline-block;
+              }
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                color: #a19f9d;
-                display: inline-block;
                 font-family: "FabricMDL2Icons";
-                font-size: 12px;
                 font-style: normal;
                 font-weight: normal;
-                padding-left: 6px;
                 speak: none;
+              }
+              {
+                color: #a19f9d;
+                font-size: 12px;
+                padding-left: 6px;
                 vertical-align: middle;
               }
           data-icon-name="ChevronDown"

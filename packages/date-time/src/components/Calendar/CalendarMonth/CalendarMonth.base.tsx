@@ -96,7 +96,8 @@ export class CalendarMonthBase extends BaseComponent<ICalendarMonthProps, ICalen
       highlightCurrentMonth,
       highlightSelectedMonth,
       onHeaderSelect,
-      animationDirection
+      animationDirection,
+      yearPickerHidden
     } = this.props;
 
     // using "!" to mark as non-null since we have a default value if it is undefined, but typescript doesn't recognize it as non-null
@@ -111,7 +112,7 @@ export class CalendarMonthBase extends BaseComponent<ICalendarMonthProps, ICalen
     const classNames = getClassNames(styles, {
       theme: theme!,
       className: className,
-      hasHeaderClickCallback: !!onHeaderSelect,
+      hasHeaderClickCallback: !!onHeaderSelect || !yearPickerHidden,
       highlightCurrent: highlightCurrentMonth,
       highlightSelected: highlightSelectedMonth,
       animateBackwards: this.state.animateBackwards,

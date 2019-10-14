@@ -42,30 +42,20 @@ export const getStyles = (props: ICheckboxStyleProps): ICheckboxStyles => {
   const indeterminateDotStyles: IStyle = [
     {
       content: '""',
-      width: 0,
-      height: 0,
       borderRadius: effects.roundedCorner2,
       position: 'absolute',
-      left: 10,
-      right: 0,
-      transitionProperty: 'border-width, border, border-color',
-      transitionDuration: MS_CHECKBOX_TRANSITION_DURATION,
-      transitionTimingFunction: MS_CHECKBOX_TRANSITION_TIMING,
-      boxSizing: 'border-box'
-    },
-    indeterminate && {
       width: 10,
       height: 10,
-      borderStyle: 'solid',
-      borderColor: checkboxBorderIndeterminateColor,
-      borderWidth: 5,
+      top: 4,
       left: 4,
-      top: 4
-    },
-    indeterminate &&
-      disabled && {
-        borderColor: checkboxBorderColorDisabled
-      }
+      boxSizing: 'border-box',
+      borderWidth: 5,
+      borderStyle: 'solid',
+      borderColor: disabled ? checkboxBorderColorDisabled : checkboxBorderIndeterminateColor,
+      transitionProperty: 'border-width, border, border-color',
+      transitionDuration: MS_CHECKBOX_TRANSITION_DURATION,
+      transitionTimingFunction: MS_CHECKBOX_TRANSITION_TIMING
+    }
   ];
 
   return {

@@ -1,11 +1,19 @@
+// Temporary import file to experiment with next version of foundation.
+import { IComponent } from '@uifabric/foundation/lib/next/IComponent';
 import { IFontWeight, IKeytipProps } from 'office-ui-fabric-react';
-import { IComponent, IComponentStyles, IHTMLElementSlot, ISlotProp, ISlottableProps, IStyleableComponentProps } from '../../../Foundation';
+import { IComponentStyles, IHTMLElementSlot, ISlotProp, ISlottableProps, IStyleableComponentProps } from '../../../Foundation';
 import { IBaseProps } from '../../../Utilities';
 
 /**
  * {@docCategory Actionable}
  */
-export type IActionableComponent = IComponent<IActionableProps, IActionableTokens, IActionableStyles, IActionableViewProps>;
+export type IActionableComponent = IComponent<
+  IActionableProps,
+  IActionableTokens,
+  IActionableStyles,
+  IActionableViewProps,
+  IActionableSlots
+>;
 
 // These types are redundant with IActionableComponent but are needed until TS function return widening issue is resolved:
 // https://github.com/Microsoft/TypeScript/issues/241

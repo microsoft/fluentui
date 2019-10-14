@@ -86,6 +86,7 @@ export interface IBasePickerProps<T> extends React.Props<any> {
 
   /**
    * A callback for when the user put focus on the picker
+   * @deprecated Use `inputProps.onFocus` instead
    */
   onFocus?: React.FocusEventHandler<HTMLInputElement | BaseAutoFill>;
 

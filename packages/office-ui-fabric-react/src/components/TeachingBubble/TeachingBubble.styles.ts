@@ -107,9 +107,6 @@ export const getStyles = (props: ITeachingBubbleStyleProps): ITeachingBubbleStyl
       classNames.bodyContent,
       {
         padding: 20
-      },
-      isWide && {
-        maxWidth: 302
       }
     ],
     closeButton: [
@@ -144,6 +141,7 @@ export const getStyles = (props: ITeachingBubbleStyleProps): ITeachingBubbleStyl
       classNames.footer,
       {
         display: 'flex',
+        justifyContent: 'flex-end',
         alignItems: 'center',
         color: palette.white,
         selectors: {

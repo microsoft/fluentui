@@ -1,12 +1,10 @@
-# [Office UI Fabric React](http://dev.office.com/fabric)
+# [Office UI Fabric React](https://dev.microsoft.com/fabric)
 
 **The React-based front-end framework for building experiences for Office and Office 365.**
 
-**Fabric 7** Summary, breaking changes, and more details available in [the wiki](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Fabric-7).
+**Fabric 7**: Summary, breaking changes, and more details available in [the wiki](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Fabric-7).
 
-[![npm version](https://badge.fury.io/js/office-ui-fabric-react.svg)](https://badge.fury.io/js/office-ui-fabric-react)
-
-[![Build Status](https://uifabric.visualstudio.com/fabricpublic/_apis/build/status/office-ui-fabric-react%20-%20PR?branchName=master)](https://uifabric.visualstudio.com/fabricpublic/_build/latest?definitionId=84&branchName=master)
+[![npm version](https://badge.fury.io/js/office-ui-fabric-react.svg)](https://badge.fury.io/js/office-ui-fabric-react) [![Build Status](https://uifabric.visualstudio.com/fabricpublic/_apis/build/status/office-ui-fabric-react%20-%20PR?branchName=master)](https://uifabric.visualstudio.com/fabricpublic/_build/latest?definitionId=84&branchName=master)
 
 Fabric React is a collection of robust React-based components designed to make it simple for you to create consistent web experiences using the Office Design Language.
 
@@ -23,6 +21,8 @@ Please see the [wiki](https://github.com/OfficeDev/office-ui-fabric-react/wiki).
 ## Contents
 
 - [Using Fabric React](#using-fabric-react)
+  - [Starter apps](#starter-apps)
+  - [Integrating in your project](#integrating-in-your-project)
   - [Version policy](#version-policy)
   - [Browser support](#browser-support)
   - [Right-to-left support](#right-to-left-support)
@@ -37,7 +37,26 @@ Please see the [wiki](https://github.com/OfficeDev/office-ui-fabric-react/wiki).
 
 ## Using Fabric React
 
-[Here is a step-by-step tutorial](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Sample-App) on how to build a simple React app with office-ui-fabric-react components.
+### Starter apps
+
+To create a simple starter app using Fabric components, [install the latest LTS node.js](https://nodejs.org), then run:
+
+```
+npm init uifabric
+```
+
+It'll prompt you for a project name. If you choose to create a project called `my-app`, you can start working on the project like this:
+
+```
+cd my-app
+npm start
+```
+
+This scaffold uses the [`just`](https://github.com/microsoft/just) build library. It is very flexible and requires no "eject" script to allow for customization on its configurations.
+
+If you prefer to use `create-react-app`, [follow these instructions](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Getting-Started-with-UI-Fabric#create-react-app).
+
+### Integrating in your project
 
 How to integrate components into your project depends heavily on your setup. The recommended setup is to use a bundler such as [Webpack](https://webpack.js.org/) which can resolve NPM package imports in your code and bundle only the specific things you import.
 

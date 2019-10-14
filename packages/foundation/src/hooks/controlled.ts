@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import * as React from 'react';
 
 export interface IControlledStateOptions<TProps, TProp extends keyof TProps, TDefaultProp extends keyof TProps> {
   defaultPropValue?: TProps[TProp];
@@ -29,7 +29,7 @@ export function useControlledState<TProps, TProp extends keyof TProps, TDefaultP
     }
   }
 
-  const [state, setState] = useState(defaultValue);
+  const [state, setState] = React.useState(defaultValue);
 
   if (props[propName] !== undefined) {
     return [props[propName], setState];

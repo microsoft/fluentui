@@ -97,7 +97,7 @@ exports[`Component Examples renders SpinButton.CustomStyled.Example.tsx correctl
               margin-left: 0px;
               margin-right: 0px;
               margin-top: 0px;
-              min-width: 72px;
+              min-width: 61px;
               outline: 0px;
               overflow: hidden;
               padding-bottom: 0;
@@ -231,7 +231,7 @@ exports[`Component Examples renders SpinButton.CustomStyled.Example.tsx correctl
           tabIndex={-1}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -241,27 +241,33 @@ exports[`Component Examples renders SpinButton.CustomStyled.Example.tsx correctl
                   height: 100%;
                   justify-content: center;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <i
               aria-hidden={true}
               className=
+                  ms-Icon
                   ms-Button-icon
+                  {
+                    display: inline-block;
+                  }
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
-                    display: inline-block;
-                    flex-shrink: 0;
                     font-family: "FabricMDL2Icons-2";
-                    font-size: 8px;
                     font-style: normal;
                     font-weight: normal;
+                    speak: none;
+                  }
+                  {
+                    flex-shrink: 0;
+                    font-size: 8px;
                     height: 16px;
                     line-height: 16px;
                     margin-bottom: 0px;
                     margin-left: 0px;
                     margin-right: 0px;
                     margin-top: 0px;
-                    speak: none;
                     text-align: center;
                     vertical-align: middle;
                   }
@@ -270,7 +276,7 @@ exports[`Component Examples renders SpinButton.CustomStyled.Example.tsx correctl
             >
               
             </i>
-          </div>
+          </span>
         </button>
         <button
           aria-label="Decrease value by 1"
@@ -364,7 +370,7 @@ exports[`Component Examples renders SpinButton.CustomStyled.Example.tsx correctl
           tabIndex={-1}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -374,27 +380,33 @@ exports[`Component Examples renders SpinButton.CustomStyled.Example.tsx correctl
                   height: 100%;
                   justify-content: center;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <i
               aria-hidden={true}
               className=
+                  ms-Icon
                   ms-Button-icon
+                  {
+                    display: inline-block;
+                  }
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
-                    display: inline-block;
-                    flex-shrink: 0;
-                    font-family: "FabricMDL2Icons-2";
-                    font-size: 8px;
+                    font-family: "FabricMDL2Icons-3";
                     font-style: normal;
                     font-weight: normal;
+                    speak: none;
+                  }
+                  {
+                    flex-shrink: 0;
+                    font-size: 8px;
                     height: 16px;
                     line-height: 16px;
                     margin-bottom: 0px;
                     margin-left: 0px;
                     margin-right: 0px;
                     margin-top: 0px;
-                    speak: none;
                     text-align: center;
                     vertical-align: middle;
                   }
@@ -403,7 +415,7 @@ exports[`Component Examples renders SpinButton.CustomStyled.Example.tsx correctl
             >
               
             </i>
-          </div>
+          </span>
         </button>
       </span>
     </div>

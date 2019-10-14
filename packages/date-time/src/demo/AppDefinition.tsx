@@ -36,11 +36,11 @@ export const AppDefinition: IAppDefinition = {
     },
     {
       name: 'Fabric',
-      url: 'http://dev.office.com/fabric'
+      url: 'https://dev.microsoft.com/fabric'
     },
     {
-      name: 'Github',
-      url: 'http://www.github.com/officedev'
+      name: 'GitHub',
+      url: 'https://github.com/OfficeDev/office-ui-fabric-react'
     }
   ]
 };

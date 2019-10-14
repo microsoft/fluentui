@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Facepile, IFacepileProps, OverflowButtonType } from 'office-ui-fabric-react/lib/Facepile';
-import { facepilePersonas } from './FacepileExampleData';
+import { facepilePersonas } from '@uifabric/example-data';
 
 export interface IFacepileAddFaceExampleState {
   numberOfFaces: number;

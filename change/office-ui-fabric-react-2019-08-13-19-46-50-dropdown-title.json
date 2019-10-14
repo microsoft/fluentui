@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Dropdown: allow setting empty string as item title",
-  "packageName": "office-ui-fabric-react",
-  "email": "elcraig@microsoft.com",
-  "commit": "98b721dd072deb4ffedf5ea0fc85e42a62e4998e",
-  "date": "2019-08-14T02:46:50.263Z"
-}

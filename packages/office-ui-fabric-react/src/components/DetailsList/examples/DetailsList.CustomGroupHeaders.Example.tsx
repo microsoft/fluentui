@@ -1,11 +1,10 @@
 import * as React from 'react';
 import { Link } from 'office-ui-fabric-react/lib/Link';
 import { DetailsHeader, DetailsList, IDetailsHeaderProps, IGroup, IGroupDividerProps } from 'office-ui-fabric-react/lib/DetailsList';
-import { createListItems, createGroups, IExampleItem } from 'office-ui-fabric-react/lib/utilities/exampleData';
+import { createListItems, createGroups, IExampleItem } from '@uifabric/example-data';
 import { getTheme, mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
-import { DEFAULT_ROW_HEIGHTS } from 'office-ui-fabric-react/lib/components/DetailsList/DetailsRow.styles';
 
-const { rowHeight: ROW_HEIGHT } = DEFAULT_ROW_HEIGHTS;
+const ROW_HEIGHT: number = 42; // from DEFAULT_ROW_HEIGHTS in DetailsRow.styles.ts
 const GROUP_HEADER_AND_FOOTER_SPACING: number = 8;
 const GROUP_HEADER_AND_FOOTER_BORDER_WIDTH: number = 1;
 const GROUP_HEADER_HEIGHT: number = 95;

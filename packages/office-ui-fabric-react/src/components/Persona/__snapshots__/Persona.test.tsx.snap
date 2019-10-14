@@ -273,7 +273,6 @@ exports[`Persona renders Persona correctly with UnknownPersona coin 1`] = `
                 speak: none;
               }
           data-icon-name="Help"
-          role="presentation"
         >
           
         </i>
@@ -843,7 +842,6 @@ exports[`Persona renders Persona correctly with no props 1`] = `
                 speak: none;
               }
           data-icon-name="Contact"
-          role="presentation"
         >
           
         </i>
@@ -1087,7 +1085,6 @@ exports[`Persona renders Persona which calls onRenderCoin callback without image
                 color: Window;
               }
           data-icon-name=""
-          role="presentation"
         />
       </div>
     </div>
@@ -1276,7 +1273,6 @@ exports[`Persona renders Persona which calls onRenderPersonaCoin callback with c
           speak: none;
         }
     data-icon-name="Dictionary"
-    role="presentation"
   >
     
   </i>
@@ -1598,7 +1594,6 @@ exports[`Persona renders correctly with onRender callback 1`] = `
                 color: Window;
               }
           data-icon-name=""
-          role="presentation"
         />
       </div>
     </div>

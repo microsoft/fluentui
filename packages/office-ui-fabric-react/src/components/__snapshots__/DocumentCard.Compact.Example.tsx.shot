@@ -23,6 +23,8 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
       }
 >
   <div
+    aria-label="Document Card with document preview. Revenue stream proposal fiscal year 2016 version 2.
+          Created by Roko Kolar a few minutes ago"
     className=
         ms-DocumentCard
         ms-DocumentCard--actionable
@@ -360,6 +362,7 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
     </div>
   </div>
   <div
+    aria-label="Document Card with folder or site activity. 4 files were uploaded. Created by Annie Lindqvist a few minutes ago"
     className=
         ms-DocumentCard
         ms-DocumentCard--actionable
@@ -528,7 +531,15 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
                   @media screen and (-ms-high-contrast: active){& {
                     border-bottom: none;
                   }
-                  &:active, &:hover, &:active:hover {
+                  &:active {
+                    color: #004578;
+                    text-decoration: underline;
+                  }
+                  &:hover {
+                    color: #004578;
+                    text-decoration: underline;
+                  }
+                  &:active:hover {
                     color: #004578;
                     text-decoration: underline;
                   }
@@ -604,7 +615,15 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
                   @media screen and (-ms-high-contrast: active){& {
                     border-bottom: none;
                   }
-                  &:active, &:hover, &:active:hover {
+                  &:active {
+                    color: #004578;
+                    text-decoration: underline;
+                  }
+                  &:hover {
+                    color: #004578;
+                    text-decoration: underline;
+                  }
+                  &:active:hover {
                     color: #004578;
                     text-decoration: underline;
                   }
@@ -680,7 +699,15 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
                   @media screen and (-ms-high-contrast: active){& {
                     border-bottom: none;
                   }
-                  &:active, &:hover, &:active:hover {
+                  &:active {
+                    color: #004578;
+                    text-decoration: underline;
+                  }
+                  &:hover {
+                    color: #004578;
+                    text-decoration: underline;
+                  }
+                  &:active:hover {
                     color: #004578;
                     text-decoration: underline;
                   }
@@ -919,6 +946,7 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
     </div>
   </div>
   <div
+    aria-label="Document Card with icon. View and share files. Created by Aaron Reid a few minutes ago"
     className=
         ms-DocumentCard
         ms-DocumentCard--actionable
@@ -1017,14 +1045,13 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
                 -webkit-font-smoothing: antialiased;
                 color: #ffffff;
                 display: inline-block;
-                font-family: "FabricMDL2Icons-1";
+                font-family: "FabricMDL2Icons-2";
                 font-size: 42px;
                 font-style: normal;
                 font-weight: normal;
                 speak: none;
               }
           data-icon-name="OpenFile"
-          role="presentation"
         >
           
         </i>
@@ -1240,6 +1267,8 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
     </div>
   </div>
   <div
+    aria-label="Document Card with email conversation. Conversation about takeaways from annual SharePoint conference.
+          Sent by Christian Bergqvist a few minutes ago"
     className=
         ms-DocumentCard
         ms-DocumentCard--actionable
@@ -1346,7 +1375,6 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
                 speak: none;
               }
           data-icon-name="OutlookLogo"
-          role="presentation"
         >
           
         </i>

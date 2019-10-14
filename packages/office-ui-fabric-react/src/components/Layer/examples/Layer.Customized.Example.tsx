@@ -1,4 +1,4 @@
-import { Customizer, getId } from '@uifabric/utilities';
+import { Customizer, getId } from 'office-ui-fabric-react/lib/Utilities';
 import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
 import { LayerHost } from 'office-ui-fabric-react/lib/Layer';
 import { Panel } from 'office-ui-fabric-react/lib/Panel';

@@ -1037,7 +1037,6 @@ exports[`Component Examples renders Shimmer.LoadData.Example.tsx correctly 1`] =
                       speak: none;
                     }
                 data-icon-name="Contact"
-                role="presentation"
               >
                 
               </i>
@@ -1088,7 +1087,6 @@ exports[`Component Examples renders Shimmer.LoadData.Example.tsx correctly 1`] =
                       color: Window;
                     }
                 data-icon-name="SkypeClock"
-                role="presentation"
               >
                 
               </i>

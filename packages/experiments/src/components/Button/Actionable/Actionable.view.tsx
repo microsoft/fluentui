@@ -1,22 +1,21 @@
 /** @jsx withSlots */
 import { KeytipData } from 'office-ui-fabric-react';
-import { withSlots, getSlots } from '../../../Foundation';
+import { withSlots } from '../../../Foundation';
 import { getNativeProps, anchorProperties, buttonProperties } from '../../../Utilities';
 
-import { IActionableProps, IActionableRootElements, IActionableSlots, IActionableViewProps } from './Actionable.types';
-import { IButtonComponent } from '../Button.types';
+import { IActionableComponent, IActionableViewProps } from './Actionable.types';
 
-export const ActionableView: IButtonComponent['view'] = props => {
+export const ActionableSlots: IActionableComponent['slots'] = props => ({
+  root: !!props.href ? 'a' : 'button'
+});
+
+export const ActionableView: IActionableComponent['view'] = (props, slots) => {
   const { children, disabled, onClick, allowDisabledFocus, ariaLabel, keytipProps, buttonRef, ...rest } = props;
 
-  const { slotType, htmlType, propertiesType } = _deriveRootType(props);
+  const { htmlType, propertiesType } = _deriveRootType(props);
 
   // TODO: 'href' is anchor property... consider getNativeProps by root type
   const buttonProps = { ...getNativeProps(rest, propertiesType) };
-
-  const Slots = getSlots<IActionableProps, IActionableSlots>(props, {
-    root: slotType
-  });
 
   const _onClick = (ev: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement | HTMLDivElement>) => {
     if (!disabled && onClick) {
@@ -29,7 +28,7 @@ export const ActionableView: IButtonComponent['view'] = props => {
   };
 
   const Button = (keytipAttributes?: any): JSX.Element => (
-    <Slots.root
+    <slots.root
       type={htmlType}
       role="button"
       onClick={_onClick}
@@ -42,7 +41,7 @@ export const ActionableView: IButtonComponent['view'] = props => {
       ref={buttonRef}
     >
       {children}
-    </Slots.root>
+    </slots.root>
   );
 
   return keytipProps ? (
@@ -55,13 +54,10 @@ export const ActionableView: IButtonComponent['view'] = props => {
 };
 
 interface IActionableRootType {
-  slotType: IActionableRootElements;
   htmlType: 'link' | 'button';
   propertiesType: string[];
 }
 
 function _deriveRootType(props: IActionableViewProps): IActionableRootType {
-  return !!props.href
-    ? { slotType: 'a', htmlType: 'link', propertiesType: anchorProperties }
-    : { slotType: 'button', htmlType: 'button', propertiesType: buttonProperties };
+  return !!props.href ? { htmlType: 'link', propertiesType: anchorProperties } : { htmlType: 'button', propertiesType: buttonProperties };
 }

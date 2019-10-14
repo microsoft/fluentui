@@ -69,7 +69,7 @@ exports[`DetailsList renders List correctly 1`] = `
                 line-height: 42px;
                 min-width: 100%;
                 padding-bottom: 1px;
-                padding-top: 1px;
+                padding-top: 16px;
                 position: relative;
                 user-select: none;
                 vertical-align: top;
@@ -234,27 +234,41 @@ exports[`DetailsList renders List correctly 1`] = `
                         right: 1px;
                         top: 1px;
                       }
-                      .ms-Check-checkHost:hover &, .ms-Check-checkHost:focus &, &:hover, &:focus {
+                      .ms-Check-checkHost:hover & {
+                        opacity: 1;
+                      }
+                      .ms-Check-checkHost:focus & {
+                        opacity: 1;
+                      }
+                      &:hover {
+                        opacity: 1;
+                      }
+                      &:focus {
                         opacity: 1;
                       }
                 >
                   <i
                     aria-hidden={true}
                     className=
+                        ms-Icon
                         ms-Check-circle
+                        {
+                          display: inline-block;
+                        }
                         {
                           -moz-osx-font-smoothing: grayscale;
                           -webkit-font-smoothing: antialiased;
-                          color: #605e5c;
-                          display: inline-block;
                           font-family: "FabricMDL2Icons";
-                          font-size: 18px;
                           font-style: normal;
                           font-weight: normal;
+                          speak: none;
+                        }
+                        {
+                          color: #605e5c;
+                          font-size: 18px;
                           height: 18px;
                           left: 0px;
                           position: absolute;
-                          speak: none;
                           text-align: center;
                           top: 0px;
                           vertical-align: middle;
@@ -271,21 +285,26 @@ exports[`DetailsList renders List correctly 1`] = `
                   <i
                     aria-hidden={true}
                     className=
+                        ms-Icon
                         ms-Check-check
+                        {
+                          display: inline-block;
+                        }
                         {
                           -moz-osx-font-smoothing: grayscale;
                           -webkit-font-smoothing: antialiased;
-                          color: #605e5c;
-                          display: inline-block;
                           font-family: "FabricMDL2Icons";
-                          font-size: 16px;
                           font-style: normal;
                           font-weight: normal;
+                          speak: none;
+                        }
+                        {
+                          color: #605e5c;
+                          font-size: 16px;
                           height: 18px;
                           left: .5px;
                           opacity: 0;
                           position: absolute;
-                          speak: none;
                           text-align: center;
                           top: 0px;
                           vertical-align: middle;
@@ -657,7 +676,7 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                 line-height: 42px;
                 min-width: 100%;
                 padding-bottom: 1px;
-                padding-top: 1px;
+                padding-top: 16px;
                 position: relative;
                 user-select: none;
                 vertical-align: top;
@@ -822,27 +841,41 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                         right: 1px;
                         top: 1px;
                       }
-                      .ms-Check-checkHost:hover &, .ms-Check-checkHost:focus &, &:hover, &:focus {
+                      .ms-Check-checkHost:hover & {
+                        opacity: 1;
+                      }
+                      .ms-Check-checkHost:focus & {
+                        opacity: 1;
+                      }
+                      &:hover {
+                        opacity: 1;
+                      }
+                      &:focus {
                         opacity: 1;
                       }
                 >
                   <i
                     aria-hidden={true}
                     className=
+                        ms-Icon
                         ms-Check-circle
+                        {
+                          display: inline-block;
+                        }
                         {
                           -moz-osx-font-smoothing: grayscale;
                           -webkit-font-smoothing: antialiased;
-                          color: #605e5c;
-                          display: inline-block;
                           font-family: "FabricMDL2Icons";
-                          font-size: 18px;
                           font-style: normal;
                           font-weight: normal;
+                          speak: none;
+                        }
+                        {
+                          color: #605e5c;
+                          font-size: 18px;
                           height: 18px;
                           left: 0px;
                           position: absolute;
-                          speak: none;
                           text-align: center;
                           top: 0px;
                           vertical-align: middle;
@@ -859,21 +892,26 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                   <i
                     aria-hidden={true}
                     className=
+                        ms-Icon
                         ms-Check-check
+                        {
+                          display: inline-block;
+                        }
                         {
                           -moz-osx-font-smoothing: grayscale;
                           -webkit-font-smoothing: antialiased;
-                          color: #605e5c;
-                          display: inline-block;
                           font-family: "FabricMDL2Icons";
-                          font-size: 16px;
                           font-style: normal;
                           font-weight: normal;
+                          speak: none;
+                        }
+                        {
+                          color: #605e5c;
+                          font-size: 16px;
                           height: 18px;
                           left: .5px;
                           opacity: 0;
                           position: absolute;
-                          speak: none;
                           text-align: center;
                           top: 0px;
                           vertical-align: middle;
@@ -1841,7 +1879,7 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
                 line-height: 42px;
                 min-width: 100%;
                 padding-bottom: 1px;
-                padding-top: 1px;
+                padding-top: 16px;
                 position: relative;
                 user-select: none;
                 vertical-align: top;
@@ -2006,27 +2044,41 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
                         right: 1px;
                         top: 1px;
                       }
-                      .ms-Check-checkHost:hover &, .ms-Check-checkHost:focus &, &:hover, &:focus {
+                      .ms-Check-checkHost:hover & {
+                        opacity: 1;
+                      }
+                      .ms-Check-checkHost:focus & {
+                        opacity: 1;
+                      }
+                      &:hover {
+                        opacity: 1;
+                      }
+                      &:focus {
                         opacity: 1;
                       }
                 >
                   <i
                     aria-hidden={true}
                     className=
+                        ms-Icon
                         ms-Check-circle
+                        {
+                          display: inline-block;
+                        }
                         {
                           -moz-osx-font-smoothing: grayscale;
                           -webkit-font-smoothing: antialiased;
-                          color: #605e5c;
-                          display: inline-block;
                           font-family: "FabricMDL2Icons";
-                          font-size: 18px;
                           font-style: normal;
                           font-weight: normal;
+                          speak: none;
+                        }
+                        {
+                          color: #605e5c;
+                          font-size: 18px;
                           height: 18px;
                           left: 0px;
                           position: absolute;
-                          speak: none;
                           text-align: center;
                           top: 0px;
                           vertical-align: middle;
@@ -2043,21 +2095,26 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
                   <i
                     aria-hidden={true}
                     className=
+                        ms-Icon
                         ms-Check-check
+                        {
+                          display: inline-block;
+                        }
                         {
                           -moz-osx-font-smoothing: grayscale;
                           -webkit-font-smoothing: antialiased;
-                          color: #605e5c;
-                          display: inline-block;
                           font-family: "FabricMDL2Icons";
-                          font-size: 16px;
                           font-style: normal;
                           font-weight: normal;
+                          speak: none;
+                        }
+                        {
+                          color: #605e5c;
+                          font-size: 16px;
                           height: 18px;
                           left: .5px;
                           opacity: 0;
                           position: absolute;
-                          speak: none;
                           text-align: center;
                           top: 0px;
                           vertical-align: middle;
@@ -2430,7 +2487,7 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
                 line-height: 42px;
                 min-width: 100%;
                 padding-bottom: 1px;
-                padding-top: 1px;
+                padding-top: 16px;
                 position: relative;
                 user-select: none;
                 vertical-align: top;
@@ -2595,27 +2652,41 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
                         right: 1px;
                         top: 1px;
                       }
-                      .ms-Check-checkHost:hover &, .ms-Check-checkHost:focus &, &:hover, &:focus {
+                      .ms-Check-checkHost:hover & {
+                        opacity: 1;
+                      }
+                      .ms-Check-checkHost:focus & {
+                        opacity: 1;
+                      }
+                      &:hover {
+                        opacity: 1;
+                      }
+                      &:focus {
                         opacity: 1;
                       }
                 >
                   <i
                     aria-hidden={true}
                     className=
+                        ms-Icon
                         ms-Check-circle
+                        {
+                          display: inline-block;
+                        }
                         {
                           -moz-osx-font-smoothing: grayscale;
                           -webkit-font-smoothing: antialiased;
-                          color: #605e5c;
-                          display: inline-block;
                           font-family: "FabricMDL2Icons";
-                          font-size: 18px;
                           font-style: normal;
                           font-weight: normal;
+                          speak: none;
+                        }
+                        {
+                          color: #605e5c;
+                          font-size: 18px;
                           height: 18px;
                           left: 0px;
                           position: absolute;
-                          speak: none;
                           text-align: center;
                           top: 0px;
                           vertical-align: middle;
@@ -2632,21 +2703,26 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
                   <i
                     aria-hidden={true}
                     className=
+                        ms-Icon
                         ms-Check-check
+                        {
+                          display: inline-block;
+                        }
                         {
                           -moz-osx-font-smoothing: grayscale;
                           -webkit-font-smoothing: antialiased;
-                          color: #605e5c;
-                          display: inline-block;
                           font-family: "FabricMDL2Icons";
-                          font-size: 16px;
                           font-style: normal;
                           font-weight: normal;
+                          speak: none;
+                        }
+                        {
+                          color: #605e5c;
+                          font-size: 16px;
                           height: 18px;
                           left: .5px;
                           opacity: 0;
                           position: absolute;
-                          speak: none;
                           text-align: center;
                           top: 0px;
                           vertical-align: middle;
@@ -3398,7 +3474,7 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                 line-height: 42px;
                 min-width: 100%;
                 padding-bottom: 1px;
-                padding-top: 1px;
+                padding-top: 16px;
                 position: relative;
                 user-select: none;
                 vertical-align: top;
@@ -3563,27 +3639,41 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                         right: 1px;
                         top: 1px;
                       }
-                      .ms-Check-checkHost:hover &, .ms-Check-checkHost:focus &, &:hover, &:focus {
+                      .ms-Check-checkHost:hover & {
+                        opacity: 1;
+                      }
+                      .ms-Check-checkHost:focus & {
+                        opacity: 1;
+                      }
+                      &:hover {
+                        opacity: 1;
+                      }
+                      &:focus {
                         opacity: 1;
                       }
                 >
                   <i
                     aria-hidden={true}
                     className=
+                        ms-Icon
                         ms-Check-circle
+                        {
+                          display: inline-block;
+                        }
                         {
                           -moz-osx-font-smoothing: grayscale;
                           -webkit-font-smoothing: antialiased;
-                          color: #605e5c;
-                          display: inline-block;
                           font-family: "FabricMDL2Icons";
-                          font-size: 18px;
                           font-style: normal;
                           font-weight: normal;
+                          speak: none;
+                        }
+                        {
+                          color: #605e5c;
+                          font-size: 18px;
                           height: 18px;
                           left: 0px;
                           position: absolute;
-                          speak: none;
                           text-align: center;
                           top: 0px;
                           vertical-align: middle;
@@ -3600,21 +3690,26 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                   <i
                     aria-hidden={true}
                     className=
+                        ms-Icon
                         ms-Check-check
+                        {
+                          display: inline-block;
+                        }
                         {
                           -moz-osx-font-smoothing: grayscale;
                           -webkit-font-smoothing: antialiased;
-                          color: #605e5c;
-                          display: inline-block;
                           font-family: "FabricMDL2Icons";
-                          font-size: 16px;
                           font-style: normal;
                           font-weight: normal;
+                          speak: none;
+                        }
+                        {
+                          color: #605e5c;
+                          font-size: 16px;
                           height: 18px;
                           left: .5px;
                           opacity: 0;
                           position: absolute;
-                          speak: none;
                           text-align: center;
                           top: 0px;
                           vertical-align: middle;
@@ -4596,7 +4691,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                 line-height: 42px;
                 min-width: 100%;
                 padding-bottom: 1px;
-                padding-top: 1px;
+                padding-top: 16px;
                 position: relative;
                 user-select: none;
                 vertical-align: top;
@@ -4677,15 +4772,20 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
             <i
               aria-hidden={true}
               className=
+                  ms-Icon
                   ms-DetailsHeader-collapseButton
+                  {
+                    display: inline-block;
+                  }
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
-                    display: inline-block;
-                    font-family: "FabricMDL2Icons-2";
+                    font-family: "FabricMDL2Icons-3";
                     font-style: normal;
                     font-weight: normal;
                     speak: none;
+                  }
+                  {
                     transform-origin: 50% 50%;
                     transform: rotate(90deg);
                     transition: transform .1s linear;
@@ -5069,7 +5169,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                       speak: none;
                                     }
                                 data-icon-name="Tag"
-                                role="presentation"
                               >
                                 
                               </i>
@@ -5130,7 +5229,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                       -moz-osx-font-smoothing: grayscale;
                                       -webkit-font-smoothing: antialiased;
                                       display: inline-block;
-                                      font-family: "FabricMDL2Icons-2";
+                                      font-family: "FabricMDL2Icons-3";
                                       font-style: normal;
                                       font-weight: normal;
                                       speak: none;
@@ -5139,7 +5238,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                       transition: transform .1s linear;
                                     }
                                 data-icon-name="ChevronRightMed"
-                                role="presentation"
                               >
                                 
                               </i>
@@ -5682,7 +5780,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                       speak: none;
                                     }
                                 data-icon-name="Tag"
-                                role="presentation"
                               >
                                 
                               </i>
@@ -5743,7 +5840,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                       -moz-osx-font-smoothing: grayscale;
                                       -webkit-font-smoothing: antialiased;
                                       display: inline-block;
-                                      font-family: "FabricMDL2Icons-2";
+                                      font-family: "FabricMDL2Icons-3";
                                       font-style: normal;
                                       font-weight: normal;
                                       speak: none;
@@ -5752,7 +5849,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                       transition: transform .1s linear;
                                     }
                                 data-icon-name="ChevronRightMed"
-                                role="presentation"
                               >
                                 
                               </i>

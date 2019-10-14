@@ -46,6 +46,30 @@ export const getStyles = (props: IColorPickerStyleProps): IColorPickerStyles => 
         width: '25%'
       }
     ],
+    colorSquare: [
+      'ms-ColorPicker-colorSquare',
+      {
+        width: 48,
+        height: 48,
+        margin: '0 0 0 8px',
+        border: '1px solid #c8c6c4'
+      }
+    ],
+    flexContainer: [
+      {
+        display: 'flex'
+      }
+    ],
+    flexSlider: [
+      {
+        flexGrow: '1'
+      }
+    ],
+    flexPreviewBox: [
+      {
+        flexGrow: '0'
+      }
+    ],
     input: [
       'ms-ColorPicker-input',
       {

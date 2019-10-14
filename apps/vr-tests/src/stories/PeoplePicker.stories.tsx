@@ -12,7 +12,7 @@ import {
   PersonaPresence
 } from 'office-ui-fabric-react';
 
-import { TestImages } from '../common/TestImages';
+import { TestImages } from '@uifabric/example-data';
 
 const overflowPersona: IPersonaProps & { key: string | number } = {
   key: 2,

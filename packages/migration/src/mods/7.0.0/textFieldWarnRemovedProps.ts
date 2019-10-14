@@ -1,6 +1,8 @@
 import ts from 'typescript';
-import { IMigrationOptions, migration, ModResult } from '../../migration';
+import { IMigrationOptions, migration } from '../../migration';
 import { mod } from 'riceburn';
+import { ModResult } from 'riceburn/lib/interfaces';
+import { getWarningNote } from '../../util/getMessages';
 
 const tagName = 'TextField';
 const onChanged = 'onChanged';
@@ -8,7 +10,7 @@ const onBeforeChange = 'onBeforeChange';
 const iconClass = 'iconClass';
 
 export default migration(
-  'TextField: warn onChanged, onBeforeChange, and iconClass props removed',
+  getWarningNote('TextField onChanged, onBeforeChange, and iconClass props were removed'),
   (opts: IMigrationOptions): ModResult[] => {
     return mod('**/*.tsx', opts).asTypescript((node, modder) => {
       if (

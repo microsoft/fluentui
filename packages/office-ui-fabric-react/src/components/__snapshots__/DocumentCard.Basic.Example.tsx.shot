@@ -2,6 +2,7 @@
 
 exports[`Component Examples renders DocumentCard.Basic.Example.tsx correctly 1`] = `
 <div
+  aria-label="Default Document Card with large file name. Created by Annie Lindqvist a few minutes ago."
   className=
       ms-DocumentCard
       ms-DocumentCard--actionable

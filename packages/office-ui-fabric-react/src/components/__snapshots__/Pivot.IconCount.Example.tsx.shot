@@ -169,7 +169,7 @@ exports[`Component Examples renders Pivot.IconCount.Example.tsx correctly 1`] = 
           role="tab"
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -179,6 +179,7 @@ exports[`Component Examples renders Pivot.IconCount.Example.tsx correctly 1`] = 
                   height: 100%;
                   justify-content: flex-start;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <span
               className=
@@ -212,7 +213,6 @@ exports[`Component Examples renders Pivot.IconCount.Example.tsx correctly 1`] = 
                         speak: none;
                       }
                   data-icon-name="Emoji2"
-                  role="presentation"
                 >
                   
                 </i>
@@ -241,7 +241,7 @@ exports[`Component Examples renders Pivot.IconCount.Example.tsx correctly 1`] = 
                 )
               </span>
             </span>
-          </div>
+          </span>
         </button>
         <button
           aria-selected={false}
@@ -361,7 +361,7 @@ exports[`Component Examples renders Pivot.IconCount.Example.tsx correctly 1`] = 
           role="tab"
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -371,6 +371,7 @@ exports[`Component Examples renders Pivot.IconCount.Example.tsx correctly 1`] = 
                   height: 100%;
                   justify-content: flex-start;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <span
               className=
@@ -404,7 +405,6 @@ exports[`Component Examples renders Pivot.IconCount.Example.tsx correctly 1`] = 
                         speak: none;
                       }
                   data-icon-name="Recent"
-                  role="presentation"
                 >
                   
                 </i>
@@ -422,7 +422,7 @@ exports[`Component Examples renders Pivot.IconCount.Example.tsx correctly 1`] = 
                 )
               </span>
             </span>
-          </div>
+          </span>
         </button>
         <button
           aria-selected={false}
@@ -530,9 +530,10 @@ exports[`Component Examples renders Pivot.IconCount.Example.tsx correctly 1`] = 
               .ms-Fabric--isFocusVisible &:focus {
                 outline: 1px solid #605e5c;
               }
-          data-content=" xx"
+          data-content="Placeholder xx"
           data-is-focusable={true}
           id="Pivot0-Tab2"
+          name="Placeholder"
           onClick={[Function]}
           onKeyDown={[Function]}
           onKeyPress={[Function]}
@@ -542,7 +543,7 @@ exports[`Component Examples renders Pivot.IconCount.Example.tsx correctly 1`] = 
           role="tab"
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -552,6 +553,7 @@ exports[`Component Examples renders Pivot.IconCount.Example.tsx correctly 1`] = 
                   height: 100%;
                   justify-content: flex-start;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <span
               className=
@@ -585,13 +587,23 @@ exports[`Component Examples renders Pivot.IconCount.Example.tsx correctly 1`] = 
                         speak: none;
                       }
                   data-icon-name="Globe"
-                  role="presentation"
                 >
                   
                 </i>
               </span>
+              <span
+                className=
+                    ms-Pivot-text
+                    {
+                      display: inline-block;
+                      vertical-align: top;
+                    }
+              >
+                 
+                Placeholder
+              </span>
             </span>
-          </div>
+          </span>
         </button>
         <button
           aria-selected={false}
@@ -712,7 +724,7 @@ exports[`Component Examples renders Pivot.IconCount.Example.tsx correctly 1`] = 
           role="tab"
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -722,6 +734,7 @@ exports[`Component Examples renders Pivot.IconCount.Example.tsx correctly 1`] = 
                   height: 100%;
                   justify-content: flex-start;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <span
               className=
@@ -749,13 +762,12 @@ exports[`Component Examples renders Pivot.IconCount.Example.tsx correctly 1`] = 
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
                         display: inline-block;
-                        font-family: "FabricMDL2Icons-3";
+                        font-family: "FabricMDL2Icons-4";
                         font-style: normal;
                         font-weight: normal;
                         speak: none;
                       }
                   data-icon-name="Ringer"
-                  role="presentation"
                 >
                   
                 </i>
@@ -784,7 +796,7 @@ exports[`Component Examples renders Pivot.IconCount.Example.tsx correctly 1`] = 
                 )
               </span>
             </span>
-          </div>
+          </span>
         </button>
         <button
           aria-selected={false}
@@ -905,7 +917,7 @@ exports[`Component Examples renders Pivot.IconCount.Example.tsx correctly 1`] = 
           role="tab"
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -915,6 +927,7 @@ exports[`Component Examples renders Pivot.IconCount.Example.tsx correctly 1`] = 
                   height: 100%;
                   justify-content: flex-start;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <span>
               <span
@@ -949,7 +962,6 @@ exports[`Component Examples renders Pivot.IconCount.Example.tsx correctly 1`] = 
                           speak: none;
                         }
                     data-icon-name="Globe"
-                    role="presentation"
                   >
                     
                   </i>
@@ -992,7 +1004,6 @@ exports[`Component Examples renders Pivot.IconCount.Example.tsx correctly 1`] = 
                       speak: none;
                     }
                 data-icon-name="Airplane"
-                role="presentation"
                 style={
                   Object {
                     "color": "red",
@@ -1002,7 +1013,7 @@ exports[`Component Examples renders Pivot.IconCount.Example.tsx correctly 1`] = 
                 
               </i>
             </span>
-          </div>
+          </span>
         </button>
       </div>
     </div>

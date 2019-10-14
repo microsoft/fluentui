@@ -1,6 +1,44 @@
 # Change Log - @uifabric/merge-styles
 
-This log was last generated on Tue, 13 Aug 2019 12:31:12 GMT and should not be manually modified.
+This log was last generated on Thu, 26 Sep 2019 12:32:32 GMT and should not be manually modified.
+
+## 7.7.0
+Thu, 26 Sep 2019 12:32:32 GMT
+
+### Minor changes
+
+- mergeStyles and mergeStyleSets have a companion method which accepts options for setting RTL (jdh@microsoft.com)
+## 7.6.0
+Fri, 20 Sep 2019 12:34:28 GMT
+
+### Minor changes
+
+- Adding `concatStyleSetsWithProps` to help resolve stylesets that are functional, resolving with props. (dzearing@microsoft.com)
+## 7.5.2
+Thu, 12 Sep 2019 12:34:15 GMT
+
+### Patches
+
+- Build the kebabRules map instead of shipping it (mark@thedutchies.com)
+## 7.5.1
+Wed, 04 Sep 2019 04:09:58 GMT
+
+### Patches
+
+- fix version file (kchau@microsoft.com)
+## 7.5.0
+Mon, 26 Aug 2019 12:30:49 GMT
+
+### Minor changes
+
+- merge-styles: Collapsing comma delimited selectors to make styles easy to define for multiple matches. (dzearing@hotmail.com)
+## 7.4.1
+Fri, 23 Aug 2019 12:35:28 GMT
+
+### Patches
+
+- Update npmignores, delete unused jest setup files (elcraig@microsoft.com)
+- Fix up readme and package.json descriptions (elcraig@microsoft.com)
 
 ## 7.4.0
 Tue, 13 Aug 2019 12:31:12 GMT
@@ -242,7 +280,7 @@ Mon, 08 Oct 2018 12:24:15 GMT
 
 ### Patches
 
-- Moving tslint/prettier dependencies 
+- Moving tslint/prettier dependencies
 
 ## 6.9.3
 Mon, 01 Oct 2018 12:27:24 GMT

@@ -168,7 +168,7 @@ export class Tile extends React.Component<ITileProps, ITileState> {
 
     const { isSelected = false, isModal = false } = this.state;
 
-    const isSelectable = !!selection && selectionIndex > -1;
+    const { isSelectable = !!selection && selectionIndex > -1 } = this.props;
     const isInvokable = (!!href || !!onClick || !!invokeSelection) && !isModal;
     const ariaLabelWithSelectState = isSelected && ariaLabelSelected ? `${ariaLabel}, ${ariaLabelSelected}` : ariaLabel;
     const content = (

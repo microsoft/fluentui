@@ -17,7 +17,8 @@ const GlobalClassNames = {
   size48: 'ms-Persona--size48',
   size56: 'ms-Persona--size56',
   size72: 'ms-Persona--size72',
-  size100: 'ms-Persona--size100'
+  size100: 'ms-Persona--size100',
+  size120: 'ms-Persona--size120'
 };
 
 export const getStyles = (props: IPersonaCoinStyleProps): IPersonaCoinStyles => {
@@ -50,6 +51,7 @@ export const getStyles = (props: IPersonaCoinStyleProps): IPersonaCoinStyles => 
       size.isSize56 && classNames.size56,
       size.isSize72 && classNames.size72,
       size.isSize100 && classNames.size100,
+      size.isSize120 && classNames.size120,
       className
     ],
 

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Async } from 'office-ui-fabric-react/lib/Utilities';
-import { createListItems, IExampleItem } from 'office-ui-fabric-react/lib/utilities/exampleData';
+import { createListItems, IExampleItem } from '@uifabric/example-data';
 import { IColumn, buildColumns, SelectionMode, Toggle } from 'office-ui-fabric-react/lib/index';
 import { ShimmeredDetailsList } from 'office-ui-fabric-react/lib/ShimmeredDetailsList';
 

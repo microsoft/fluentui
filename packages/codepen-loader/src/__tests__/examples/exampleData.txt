@@ -1,8 +1,0 @@
-import * as React from 'react';
-import { createListItems, IExampleItem } from 'office-ui-fabric-react/lib/utilities/exampleData';
-
-export const FakeExampleDataExample = () => {
-  return (
-    <div>hi</div>
-  );
-};

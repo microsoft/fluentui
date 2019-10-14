@@ -129,3 +129,6 @@ rush.json
 
 # package manifest
 /package-manifest.json
+
+# Copied monaco-editor files
+/packages/monaco-editor/esm

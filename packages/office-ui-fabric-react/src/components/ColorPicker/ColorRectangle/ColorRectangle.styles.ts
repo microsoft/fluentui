@@ -2,7 +2,7 @@ import { IColorRectangleStyleProps, IColorRectangleStyles } from './ColorRectang
 import { HighContrastSelector } from '../../../Styling';
 
 export const getStyles = (props: IColorRectangleStyleProps): IColorRectangleStyles => {
-  const { className, theme } = props;
+  const { className, theme, minSize } = props;
   const { palette, effects } = theme;
 
   return {
@@ -13,6 +13,8 @@ export const getStyles = (props: IColorRectangleStyleProps): IColorRectangleStyl
         marginBottom: 8,
         border: `1px solid ${palette.neutralLighter}`,
         borderRadius: effects.roundedCorner2,
+        minWidth: minSize,
+        minHeight: minSize,
         selectors: {
           [HighContrastSelector]: {
             MsHighContrastAdjust: 'none'

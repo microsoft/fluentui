@@ -7,31 +7,26 @@ import {
   Customizer,
   classNamesFunction,
   css,
-  isIE11,
   CustomizerContext,
   warn,
-  getWindow
+  ICustomizations,
+  memoizeFunction
 } from 'office-ui-fabric-react/lib/Utilities';
 import { ISchemeNames, IProcessedStyleSet } from 'office-ui-fabric-react/lib/Styling';
 import { IStackComponent, Stack } from 'office-ui-fabric-react/lib/Stack';
 import { AppCustomizationsContext, IAppCustomizations, IExampleCardCustomizations } from '../../utilities/customizations';
-import { CodepenComponent } from '../CodepenComponent/CodepenComponent';
+import { CodepenComponent, CONTENT_ID } from '../CodepenComponent/CodepenComponent';
 import { IExampleCardProps, IExampleCardStyleProps, IExampleCardStyles } from './ExampleCard.types';
 import { getStyles } from './ExampleCard.styles';
-import { CodeSnippet } from '../CodeSnippet/index';
-import { ITextModel, ITranspiledOutput } from '@uifabric/tsx-editor';
-import { EditorPreview } from '@uifabric/tsx-editor/lib/components/EditorPreview';
-import { transformExample } from '@uifabric/tsx-editor/lib/transpiler/exampleTransform';
-import * as tsxEditorModule from '@uifabric/tsx-editor';
-import { getSetting } from '../../index2';
-import { Spinner, SpinnerSize } from 'office-ui-fabric-react';
+import { EditorWrapper, SUPPORTED_PACKAGES, IMonacoTextModel, transformExample } from '@uifabric/tsx-editor';
 
 export interface IExampleCardState {
   /** only used if props.isCodeVisible and props.onToggleEditor are undefined */
-  isCodeVisible?: boolean;
+  isCodeVisible: boolean;
   schemeIndex: number;
   themeIndex: number;
-  error?: string;
+  /** State of the code as of the last time the code viewer was opened or closed. */
+  latestCode: string;
 }
 
 const getClassNames = classNamesFunction<IExampleCardStyleProps, IExampleCardStyles>();
@@ -48,32 +43,29 @@ const regionStyles: IStackComponent['styles'] = (props, theme) => ({
 });
 
 export class ExampleCardBase extends React.Component<IExampleCardProps, IExampleCardState> {
+  private _monacoModelRef: React.MutableRefObject<IMonacoTextModel | undefined> = { current: undefined };
+  /**
+   * Transformed version of the initial `props.code` for editing and/or export to codepen,
+   * if the code is "valid" for transform purposes.
+   */
+  private _transformedInitialCode: string | undefined;
+
   private _themeCustomizations: IExampleCardCustomizations[] | undefined;
   private _themeOptions: IDropdownOption[];
   private _classNames: IProcessedStyleSet<IExampleCardStyles>;
-  private readonly canRenderLiveEditor: boolean;
-  private editorModule: typeof tsxEditorModule;
+  private _activeCustomizations: ICustomizations | undefined;
 
   constructor(props: IExampleCardProps) {
     super(props);
+    const { code = '' } = this.props;
     this.state = {
       isCodeVisible: false,
       schemeIndex: 0,
-      themeIndex: 0
+      themeIndex: 0,
+      latestCode: code
     };
-    const win = getWindow();
-    this.canRenderLiveEditor =
-      !!(win && (win as any).MonacoEnvironment) && // tslint:disable-line:no-any
-      getSetting('useEditor') === '1' &&
-      !isIE11() &&
-      transformExample(props.code!, 'placeholder').error === undefined;
 
-    if (this.canRenderLiveEditor) {
-      import('office-ui-fabric-react').then(Fabric => {
-        // tslint:disable-next-line: no-any
-        (window as any).Fabric = Fabric;
-      });
-    }
+    this._transformedInitialCode = this._transformCode(code);
 
     if (props.isCodeVisible !== undefined && props.onToggleEditor === undefined && process.env.NODE_ENV !== 'production') {
       warn('ExampleCard: the onToggleEditor prop is required if isCodeVisible is set. Otherwise the show/hide code button will not work.');
@@ -81,15 +73,23 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
   }
 
   public render(): JSX.Element {
-    const { title, code, children, styles, isRightAligned = false, isScrollable = true, codepenJS, theme } = this.props;
-    const { schemeIndex, themeIndex } = this.state;
-    const { isCodeVisible = this.state.isCodeVisible } = this.props;
+    const {
+      title,
+      children,
+      styles,
+      isRightAligned = false,
+      isScrollable = true,
+      codepenJS,
+      theme,
+      isCodeVisible = this.state.isCodeVisible
+    } = this.props;
+    const { themeIndex, schemeIndex, latestCode } = this.state;
 
     return (
       <AppCustomizationsContext.Consumer>
         {(context: IAppCustomizations) => {
           const { exampleCardCustomizations, hideSchemes } = context;
-          const activeCustomizations =
+          this._activeCustomizations =
             exampleCardCustomizations && exampleCardCustomizations[themeIndex] && exampleCardCustomizations[themeIndex].customizations;
           if (exampleCardCustomizations !== this._themeCustomizations) {
             this._themeCustomizations = exampleCardCustomizations;
@@ -105,22 +105,18 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
           const { subComponentStyles } = classNames;
           const { codeButtons: codeButtonStyles } = subComponentStyles;
 
-          const exampleCardContent =
-            this.props.isCodeVisible && this.canRenderLiveEditor ? (
-              <EditorPreview error={this.state.error} className={classNames.example} id={this.props.title.replace(' ', '')} />
-            ) : (
-              <div className={classNames.example} data-is-scrollable={isScrollable}>
-                {children}
-              </div>
-            );
+          const ExamplePreview = this._getPreviewComponent(this._activeCustomizations, schemeIndex);
 
-          const exampleCard = (
+          return (
             <div className={css(classNames.root, isCodeVisible && 'is-codeVisible')}>
               <div className={classNames.header}>
                 <span className={classNames.title}>{title}</span>
                 <div className={classNames.toggleButtons}>
-                  {codepenJS && (
-                    <CodepenComponent jsContent={codepenJS} styles={{ subComponentStyles: { button: subComponentStyles.codeButtons } }} />
+                  {(codepenJS || this._transformedInitialCode) && (
+                    <CodepenComponent
+                      jsContent={this._getCodepenContent}
+                      styles={{ subComponentStyles: { button: subComponentStyles.codeButtons } }}
+                    />
                   )}
 
                   {exampleCardCustomizations && (
@@ -141,7 +137,7 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
                     />
                   )}
 
-                  {code && (
+                  {latestCode && (
                     <CommandButton
                       iconProps={{ iconName: 'Embed' }}
                       onClick={this._onToggleCodeClick}
@@ -154,43 +150,24 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
                   )}
                 </div>
               </div>
-              {isCodeVisible && (
-                <div className={classNames.code}>
-                  {this.canRenderLiveEditor ? (
-                    this.editorModule ? (
-                      <this.editorModule.Editor
-                        code={code!}
-                        onChange={this._editorOnChange}
-                        width={'auto'}
-                        height={500}
-                        language="typescript"
-                      />
-                    ) : (
-                      <Stack horizontalAlign="center" verticalAlign="center" styles={{ root: { height: 500 } }}>
-                        <Spinner size={SpinnerSize.large} label="Loading editor..." />
-                      </Stack>
-                    )
-                  ) : (
-                    <CodeSnippet language="tsx">{code}</CodeSnippet>
-                  )}
-                </div>
-              )}
-              {activeCustomizations ? (
-                <CustomizerContext.Provider value={{ customizations: { settings: {}, scopedSettings: {} } }}>
-                  <Customizer {...activeCustomizations}>
-                    <ThemeProvider scheme={_schemes[schemeIndex]}>
-                      <Stack styles={regionStyles}>{exampleCardContent}</Stack>
-                    </ThemeProvider>
-                  </Customizer>
-                </CustomizerContext.Provider>
+              {isCodeVisible ? (
+                <EditorWrapper
+                  code={latestCode}
+                  supportedPackages={SUPPORTED_PACKAGES}
+                  editorClassName={classNames.code}
+                  editorAriaLabel={`Editor for the example "${title}". The example will be updated as you type.`}
+                  modelRef={this._monacoModelRef}
+                  previewAs={(ExamplePreview as any) as React.FunctionComponent<{}>} // tslint:disable-line:no-any
+                >
+                  {children}
+                </EditorWrapper>
               ) : (
-                exampleCardContent
+                <ExamplePreview>{children}</ExamplePreview>
               )}
 
               {this._getDosAndDonts()}
             </div>
           );
-          return exampleCard;
         }}
       </AppCustomizationsContext.Consumer>
     );
@@ -214,20 +191,33 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
     }
   }
 
-  private _editorOnChange = (editor: ITextModel) => {
-    this.editorModule.transpile(editor).then((output: ITranspiledOutput) => {
-      if (output.outputString !== undefined) {
-        const evalCodeError = this.editorModule.evalCode(output.outputString, this.props.title.replace(' ', ''));
-        this.setState({
-          error: evalCodeError
-        });
-      } else {
-        this.setState({
-          error: output.error
-        });
-      }
-    });
-  };
+  // tslint:disable-next-line:member-ordering
+  private _getPreviewComponent = memoizeFunction(
+    (activeCustomizations: ICustomizations | undefined, schemeIndex: number): React.FunctionComponent => {
+      // Generate a component which renders the children with the current
+      return props => {
+        const { children } = props;
+        const content = (
+          <div className={this._classNames.example} data-is-scrollable={true}>
+            {children}
+          </div>
+        );
+
+        if (activeCustomizations) {
+          return (
+            <CustomizerContext.Provider value={{ customizations: { settings: {}, scopedSettings: {} } }}>
+              <Customizer {...activeCustomizations}>
+                <ThemeProvider scheme={_schemes[schemeIndex]}>
+                  <Stack styles={regionStyles}>{content}</Stack>
+                </ThemeProvider>
+              </Customizer>
+            </CustomizerContext.Provider>
+          );
+        }
+        return content;
+      };
+    }
+  );
 
   private _onSchemeChange = (ev: React.MouseEvent<HTMLDivElement>, value: IDropdownOption) => {
     this.setState({ schemeIndex: value.key as number });
@@ -237,28 +227,51 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
     this.setState({ themeIndex: value.key as number });
   };
 
+  private _transformCode(code: string): string | undefined {
+    return transformExample({
+      tsCode: code,
+      id: CONTENT_ID,
+      supportedPackages: SUPPORTED_PACKAGES
+    }).output;
+  }
+
+  private _getCodepenContent = (): string => {
+    // Use a client-side transform if possible, or fall back to codepen JS.
+    if (this._transformedInitialCode) {
+      // The initial code was transformable, which means it could have been edited. Try transforming
+      // the latest version, or fall back to the initial version if the transform fails.
+      const monacoModel = this._monacoModelRef.current;
+      const latestCode = monacoModel ? monacoModel.getValue() : this.state.latestCode;
+      return this._transformCode(latestCode) || this._transformedInitialCode;
+    }
+    return this.props.codepenJS || '';
+  };
+
   private _onToggleCodeClick = () => {
-    if (this.canRenderLiveEditor && !this.editorModule) {
-      // This delay imports the module since React.lazy was breaking the code splitting
-      // ForceUpdate is needed to avoid a run-time error since it could be undefined
-      require.ensure(['@uifabric/tsx-editor'], require => {
-        this.editorModule = require('@uifabric/tsx-editor');
-        this.forceUpdate();
+    const { isCodeVisible, onToggleEditor, title } = this.props;
+    let wasCodeVisible: boolean;
+    if (isCodeVisible !== undefined && onToggleEditor !== undefined) {
+      // Editor visibility is controlled
+      wasCodeVisible = isCodeVisible;
+      onToggleEditor(wasCodeVisible ? '' : title);
+    } else {
+      // Editor visibility is uncontrolled
+      wasCodeVisible = !!this.state.isCodeVisible;
+      this.setState({
+        isCodeVisible: !wasCodeVisible
       });
     }
-    if (this.props.isCodeVisible !== undefined && this.props.onToggleEditor !== undefined) {
-      if (this.props.isCodeVisible) {
-        this.props.onToggleEditor('');
-      } else {
-        this.props.onToggleEditor(this.props.title);
-      }
-    } else {
+
+    // In either case, if we're about to hide the code and it was being edited, grab the latest code
+    // before closing so we can restore it when the editor is re-opened.
+    if (wasCodeVisible && this._monacoModelRef.current) {
       this.setState({
-        isCodeVisible: !this.state.isCodeVisible
+        latestCode: this._monacoModelRef.current.getValue()
       });
     }
   };
 }
+
 export const ExampleCard: React.StatelessComponent<IExampleCardProps> = styled<
   IExampleCardProps,
   IExampleCardStyleProps,

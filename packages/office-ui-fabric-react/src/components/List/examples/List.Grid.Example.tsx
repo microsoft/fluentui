@@ -2,10 +2,11 @@ import * as React from 'react';
 import { FocusZone } from 'office-ui-fabric-react/lib/FocusZone';
 import { List } from 'office-ui-fabric-react/lib/List';
 import { IRectangle } from 'office-ui-fabric-react/lib/Utilities';
-import { ITheme, getTheme, mergeStyleSets } from '@uifabric/styling';
+import { ITheme, getTheme, mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
+import { createListItems, IExampleItem } from '@uifabric/example-data';
 
 export interface IListGridExampleProps {
-  items: any[];
+  items?: IExampleItem[];
 }
 
 interface IListGridExampleClassObject {
@@ -81,13 +82,19 @@ export class ListGridExample extends React.Component<IListGridExampleProps> {
   private _columnCount: number;
   private _columnWidth: number;
   private _rowHeight: number;
+  private _items: IExampleItem[];
+
+  constructor(props: IListGridExampleProps) {
+    super(props);
+    this._items = props.items || createListItems(5000);
+  }
 
   public render(): JSX.Element {
     return (
       <FocusZone>
         <List
           className={classNames.listGridExample}
-          items={this.props.items}
+          items={this._items}
           getItemCountForPage={this._getItemCountForPage}
           getPageHeight={this._getPageHeight}
           renderedWindowsAhead={4}

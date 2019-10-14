@@ -155,7 +155,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
                 color: Window;
               }
           data-icon-name="CheckMark"
-          role="presentation"
         >
           
         </i>

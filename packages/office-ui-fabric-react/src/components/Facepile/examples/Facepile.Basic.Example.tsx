@@ -4,7 +4,7 @@ import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
 import { Facepile, IFacepilePersona, IFacepileProps } from 'office-ui-fabric-react/lib/Facepile';
 import { PersonaSize } from 'office-ui-fabric-react/lib/Persona';
 import { Slider } from 'office-ui-fabric-react/lib/Slider';
-import { facepilePersonas } from './FacepileExampleData';
+import { facepilePersonas } from '@uifabric/example-data';
 import './Facepile.Examples.scss';
 
 export interface IFacepileBasicExampleState {

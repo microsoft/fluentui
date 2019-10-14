@@ -88,7 +88,8 @@ export class BreadcrumbBase extends BaseComponent<IBreadcrumbProps, any> {
       dividerAs: DividerType = Icon as React.ReactType<IDividerAsProps>,
       onRenderItem = this._onRenderItem,
       overflowAriaLabel,
-      overflowIndex
+      overflowIndex,
+      onRenderOverflowIcon
     } = data.props;
     const { renderedOverflowItems, renderedItems } = data;
 
@@ -114,17 +115,20 @@ export class BreadcrumbBase extends BaseComponent<IBreadcrumbProps, any> {
     ));
 
     if (hasOverflowItems) {
+      const iconProps = !onRenderOverflowIcon ? { iconName: 'More' } : {};
+      const onRenderMenuIcon = onRenderOverflowIcon ? onRenderOverflowIcon : nullFunction;
+
       itemElements.splice(
         overflowIndex!,
         0,
         <li className={this._classNames.overflow} key={OVERFLOW_KEY}>
           <IconButton
             className={this._classNames.overflowButton}
-            iconProps={{ iconName: 'More' }}
+            iconProps={iconProps}
             role="button"
             aria-haspopup="true"
             ariaLabel={overflowAriaLabel}
-            onRenderMenuIcon={nullFunction}
+            onRenderMenuIcon={onRenderMenuIcon}
             menuProps={{
               items: contextualItems,
               directionalHint: DirectionalHint.bottomLeftEdge
@@ -153,10 +157,19 @@ export class BreadcrumbBase extends BaseComponent<IBreadcrumbProps, any> {
   };
 
   private _onRenderItem = (item: IBreadcrumbItem) => {
+    const Tag = item.as ? item.as : 'span';
+    const breadcrumbItem = (): JSX.Element => (
+      <Tag className={this._classNames.item}>
+        <TooltipHost content={item.text} overflowMode={TooltipOverflowMode.Parent} {...this.props.tooltipHostProps}>
+          {item.text}
+        </TooltipHost>
+      </Tag>
+    );
+
     if (item.onClick || item.href) {
       return (
         <Link
-          as={'a'}
+          as={item.as ? item.as : 'a'}
           className={this._classNames.itemLink}
           href={item.href}
           aria-current={item.isCurrentItem ? 'page' : undefined}
@@ -168,13 +181,7 @@ export class BreadcrumbBase extends BaseComponent<IBreadcrumbProps, any> {
         </Link>
       );
     } else {
-      return (
-        <span className={this._classNames.item}>
-          <TooltipHost content={item.text} overflowMode={TooltipOverflowMode.Parent} {...this.props.tooltipHostProps}>
-            {item.text}
-          </TooltipHost>
-        </span>
-      );
+      return breadcrumbItem();
     }
   };
 

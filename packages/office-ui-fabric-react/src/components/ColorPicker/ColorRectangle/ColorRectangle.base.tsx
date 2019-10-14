@@ -60,14 +60,15 @@ export class ColorRectangleBase extends React.Component<IColorRectangleProps, IC
 
     const classNames = getClassNames(styles!, {
       theme: theme!,
-      className
+      className,
+      minSize
     });
 
     return (
       <div
         ref={this._root}
         className={classNames.root}
-        style={{ minWidth: minSize, minHeight: minSize, backgroundColor: getFullColorString(color) }}
+        style={{ backgroundColor: getFullColorString(color) }}
         onMouseDown={this._onMouseDown}
       >
         <div className={classNames.light} />

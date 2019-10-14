@@ -44,7 +44,7 @@ export class RatingBasicExample extends React.Component<
           onChange={this._onLargeStarChange}
           onFocus={this._onFocus}
           onBlur={this._onBlur}
-          ariaLabelFormat={'{0} of {1} stars selected'}
+          ariaLabelFormat={'Select {0} of {1} stars'}
         />
         Small Stars
         <Rating
@@ -55,7 +55,7 @@ export class RatingBasicExample extends React.Component<
           getAriaLabel={this._getRatingComponentAriaLabel}
           onFocus={this._onFocus}
           onBlur={this._onBlur}
-          ariaLabelFormat={'{0} of {1} stars selected'}
+          ariaLabelFormat={'Select {0} of {1} stars'}
         />
         10 Small Stars
         <Rating
@@ -66,7 +66,7 @@ export class RatingBasicExample extends React.Component<
           getAriaLabel={this._getRatingComponentAriaLabel}
           onFocus={this._onFocus}
           onBlur={this._onBlur}
-          ariaLabelFormat={'{0} of {1} stars selected'}
+          ariaLabelFormat={'Select {0} of {1} stars'}
         />
         Disabled:
         <Rating
@@ -76,7 +76,7 @@ export class RatingBasicExample extends React.Component<
           disabled={true}
           onFocus={this._onFocus}
           onBlur={this._onBlur}
-          ariaLabelFormat={'{0} of {1} stars selected'}
+          ariaLabelFormat={'Select {0} of {1} stars'}
         />
         Half star in readOnly mode:
         <Rating
@@ -85,7 +85,7 @@ export class RatingBasicExample extends React.Component<
           rating={2.5}
           getAriaLabel={this._getRatingComponentAriaLabel}
           readOnly={true}
-          ariaLabelFormat={'{0} of {1} stars selected'}
+          ariaLabelFormat={'Select {0} of {1} stars'}
         />
         Custom icons:
         <Rating
@@ -96,7 +96,7 @@ export class RatingBasicExample extends React.Component<
           onFocus={this._onFocus}
           onBlur={this._onBlur}
           getAriaLabel={this._getRatingComponentAriaLabel}
-          ariaLabelFormat={'{0} of {1} stars selected'}
+          ariaLabelFormat={'Select {0} of {1} stars'}
           icon="StarburstSolid"
           unselectedIcon="Starburst"
         />
@@ -109,7 +109,7 @@ export class RatingBasicExample extends React.Component<
           getAriaLabel={this._getRatingComponentAriaLabel}
           onFocus={this._onFocus}
           onBlur={this._onBlur}
-          ariaLabelFormat={'{0} of {1} stars selected'}
+          ariaLabelFormat={'Select {0} of {1} stars'}
           theme={this._customTheme}
         />
       </div>

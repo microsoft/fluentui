@@ -11,7 +11,6 @@ export class TooltipCustomExample extends React.Component<any, any> {
   public render(): JSX.Element {
     return (
       <TooltipHost
-        calloutProps={{ gapSpace: 20 }}
         tooltipProps={{
           onRenderContent: () => {
             return (
@@ -27,8 +26,9 @@ export class TooltipCustomExample extends React.Component<any, any> {
         delay={TooltipDelay.zero}
         id={this._hostId}
         directionalHint={DirectionalHint.bottomCenter}
+        styles={{ root: { display: 'inline-block' } }}
       >
-        <DefaultButton aria-labelledby={this._hostId} text="Hover Over Me" />
+        <DefaultButton aria-describedby={this._hostId} text="Hover Over Me" />
       </TooltipHost>
     );
   }

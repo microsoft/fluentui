@@ -13,9 +13,7 @@ import {
   ValidationState
 } from 'office-ui-fabric-react/lib/Pickers';
 import { PrimaryButton, DefaultButton } from 'office-ui-fabric-react/lib/Button';
-import { Promise } from 'es6-promise';
-// Helper imports to generate data for this particular examples. Not exported by any package.
-import { people, mru } from './PeoplePickerExampleData';
+import { people, mru } from '@uifabric/example-data';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 
 export interface IPeoplePickerExampleState {

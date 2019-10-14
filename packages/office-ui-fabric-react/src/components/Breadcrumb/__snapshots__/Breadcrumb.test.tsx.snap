@@ -146,7 +146,6 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 1 1`] = `
                       font-size: 8px;
                     }
                 data-icon-name="ChevronRight"
-                role="presentation"
               >
                 
               </i>
@@ -235,7 +234,6 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 1 1`] = `
                       font-size: 8px;
                     }
                 data-icon-name="ChevronRight"
-                role="presentation"
               >
                 
               </i>
@@ -324,7 +322,6 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 1 1`] = `
                       font-size: 8px;
                     }
                 data-icon-name="ChevronRight"
-                role="presentation"
               >
                 
               </i>
@@ -474,6 +471,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 2 1`] = `
                 className=
                     ms-Button
                     ms-Button--icon
+                    ms-Button--hasMenu
                     ms-Breadcrumb-overflowButton
                     {
                       -moz-osx-font-smoothing: grayscale;
@@ -502,7 +500,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 2 1`] = `
                       user-select: none;
                       vertical-align: top;
                       white-space: nowrap;
-                      width: 32px;
+                      width: auto;
                     }
                     &::-moz-focus-inner {
                       border: 0;
@@ -535,6 +533,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 2 1`] = `
                       background-color: #f3f2f1;
                       color: #323130;
                       cursor: pointer;
+                      text-decoration: none;
                     }
                     @media screen and (-ms-high-contrast: active){&:hover {
                       border-color: Highlight;
@@ -543,12 +542,11 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 2 1`] = `
                     &:active {
                       background-color: #edebe9;
                       color: #323130;
+                      text-decoration: none;
                     }
                     &:active:hover {
                       background-color: #edebe9;
                       color: #323130;
-                    }
-                    &:active, &:hover, &:active:hover {
                       text-decoration: none;
                     }
                     @media only screen and (min-width: 0px) and (max-width: 479px){& {
@@ -570,7 +568,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 2 1`] = `
                 role="button"
                 type="button"
               >
-                <div
+                <span
                   className=
                       ms-Button-flexContainer
                       {
@@ -580,27 +578,33 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 2 1`] = `
                         height: 100%;
                         justify-content: center;
                       }
+                  data-automationid="splitbuttonprimary"
                 >
                   <i
                     aria-hidden={true}
                     className=
+                        ms-Icon
                         ms-Button-icon
+                        {
+                          display: inline-block;
+                        }
                         {
                           -moz-osx-font-smoothing: grayscale;
                           -webkit-font-smoothing: antialiased;
-                          display: inline-block;
-                          flex-shrink: 0;
                           font-family: "FabricMDL2Icons";
-                          font-size: 16px;
                           font-style: normal;
                           font-weight: normal;
+                          speak: none;
+                        }
+                        {
+                          flex-shrink: 0;
+                          font-size: 16px;
                           height: 16px;
                           line-height: 16px;
                           margin-bottom: 0;
                           margin-left: 4px;
                           margin-right: 4px;
                           margin-top: 0;
-                          speak: none;
                           text-align: center;
                           vertical-align: middle;
                         }
@@ -609,7 +613,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 2 1`] = `
                   >
                     
                   </i>
-                </div>
+                </span>
               </button>
               <i
                 aria-hidden={true}
@@ -637,7 +641,6 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 2 1`] = `
                       font-size: 8px;
                     }
                 data-icon-name="ChevronRight"
-                role="presentation"
               >
                 
               </i>
@@ -726,7 +729,6 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 2 1`] = `
                       font-size: 8px;
                     }
                 data-icon-name="ChevronRight"
-                role="presentation"
               >
                 
               </i>
@@ -1259,7 +1261,6 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 4 1`] = `
                       font-size: 8px;
                     }
                 data-icon-name="ChevronRight"
-                role="presentation"
               >
                 
               </i>
@@ -1280,6 +1281,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 4 1`] = `
                 className=
                     ms-Button
                     ms-Button--icon
+                    ms-Button--hasMenu
                     ms-Breadcrumb-overflowButton
                     {
                       -moz-osx-font-smoothing: grayscale;
@@ -1308,7 +1310,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 4 1`] = `
                       user-select: none;
                       vertical-align: top;
                       white-space: nowrap;
-                      width: 32px;
+                      width: auto;
                     }
                     &::-moz-focus-inner {
                       border: 0;
@@ -1341,6 +1343,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 4 1`] = `
                       background-color: #f3f2f1;
                       color: #323130;
                       cursor: pointer;
+                      text-decoration: none;
                     }
                     @media screen and (-ms-high-contrast: active){&:hover {
                       border-color: Highlight;
@@ -1349,12 +1352,11 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 4 1`] = `
                     &:active {
                       background-color: #edebe9;
                       color: #323130;
+                      text-decoration: none;
                     }
                     &:active:hover {
                       background-color: #edebe9;
                       color: #323130;
-                    }
-                    &:active, &:hover, &:active:hover {
                       text-decoration: none;
                     }
                     @media only screen and (min-width: 0px) and (max-width: 479px){& {
@@ -1376,7 +1378,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 4 1`] = `
                 role="button"
                 type="button"
               >
-                <div
+                <span
                   className=
                       ms-Button-flexContainer
                       {
@@ -1386,27 +1388,33 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 4 1`] = `
                         height: 100%;
                         justify-content: center;
                       }
+                  data-automationid="splitbuttonprimary"
                 >
                   <i
                     aria-hidden={true}
                     className=
+                        ms-Icon
                         ms-Button-icon
+                        {
+                          display: inline-block;
+                        }
                         {
                           -moz-osx-font-smoothing: grayscale;
                           -webkit-font-smoothing: antialiased;
-                          display: inline-block;
-                          flex-shrink: 0;
                           font-family: "FabricMDL2Icons";
-                          font-size: 16px;
                           font-style: normal;
                           font-weight: normal;
+                          speak: none;
+                        }
+                        {
+                          flex-shrink: 0;
+                          font-size: 16px;
                           height: 16px;
                           line-height: 16px;
                           margin-bottom: 0;
                           margin-left: 4px;
                           margin-right: 4px;
                           margin-top: 0;
-                          speak: none;
                           text-align: center;
                           vertical-align: middle;
                         }
@@ -1415,7 +1423,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 4 1`] = `
                   >
                     
                   </i>
-                </div>
+                </span>
               </button>
               <i
                 aria-hidden={true}
@@ -1443,7 +1451,6 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 4 1`] = `
                       font-size: 8px;
                     }
                 data-icon-name="ChevronRight"
-                role="presentation"
               >
                 
               </i>
@@ -1661,7 +1668,6 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 5 1`] = `
                       font-size: 8px;
                     }
                 data-icon-name="ChevronRight"
-                role="presentation"
               >
                 
               </i>
@@ -1682,6 +1688,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 5 1`] = `
                 className=
                     ms-Button
                     ms-Button--icon
+                    ms-Button--hasMenu
                     ms-Breadcrumb-overflowButton
                     {
                       -moz-osx-font-smoothing: grayscale;
@@ -1710,7 +1717,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 5 1`] = `
                       user-select: none;
                       vertical-align: top;
                       white-space: nowrap;
-                      width: 32px;
+                      width: auto;
                     }
                     &::-moz-focus-inner {
                       border: 0;
@@ -1743,6 +1750,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 5 1`] = `
                       background-color: #f3f2f1;
                       color: #323130;
                       cursor: pointer;
+                      text-decoration: none;
                     }
                     @media screen and (-ms-high-contrast: active){&:hover {
                       border-color: Highlight;
@@ -1751,12 +1759,11 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 5 1`] = `
                     &:active {
                       background-color: #edebe9;
                       color: #323130;
+                      text-decoration: none;
                     }
                     &:active:hover {
                       background-color: #edebe9;
                       color: #323130;
-                    }
-                    &:active, &:hover, &:active:hover {
                       text-decoration: none;
                     }
                     @media only screen and (min-width: 0px) and (max-width: 479px){& {
@@ -1778,7 +1785,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 5 1`] = `
                 role="button"
                 type="button"
               >
-                <div
+                <span
                   className=
                       ms-Button-flexContainer
                       {
@@ -1788,27 +1795,33 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 5 1`] = `
                         height: 100%;
                         justify-content: center;
                       }
+                  data-automationid="splitbuttonprimary"
                 >
                   <i
                     aria-hidden={true}
                     className=
+                        ms-Icon
                         ms-Button-icon
+                        {
+                          display: inline-block;
+                        }
                         {
                           -moz-osx-font-smoothing: grayscale;
                           -webkit-font-smoothing: antialiased;
-                          display: inline-block;
-                          flex-shrink: 0;
                           font-family: "FabricMDL2Icons";
-                          font-size: 16px;
                           font-style: normal;
                           font-weight: normal;
+                          speak: none;
+                        }
+                        {
+                          flex-shrink: 0;
+                          font-size: 16px;
                           height: 16px;
                           line-height: 16px;
                           margin-bottom: 0;
                           margin-left: 4px;
                           margin-right: 4px;
                           margin-top: 0;
-                          speak: none;
                           text-align: center;
                           vertical-align: middle;
                         }
@@ -1817,7 +1830,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 5 1`] = `
                   >
                     
                   </i>
-                </div>
+                </span>
               </button>
             </li>
           </ol>
@@ -1906,6 +1919,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 6 1`] = `
                 className=
                     ms-Button
                     ms-Button--icon
+                    ms-Button--hasMenu
                     ms-Breadcrumb-overflowButton
                     {
                       -moz-osx-font-smoothing: grayscale;
@@ -1934,7 +1948,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 6 1`] = `
                       user-select: none;
                       vertical-align: top;
                       white-space: nowrap;
-                      width: 32px;
+                      width: auto;
                     }
                     &::-moz-focus-inner {
                       border: 0;
@@ -1967,6 +1981,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 6 1`] = `
                       background-color: #f3f2f1;
                       color: #323130;
                       cursor: pointer;
+                      text-decoration: none;
                     }
                     @media screen and (-ms-high-contrast: active){&:hover {
                       border-color: Highlight;
@@ -1975,12 +1990,11 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 6 1`] = `
                     &:active {
                       background-color: #edebe9;
                       color: #323130;
+                      text-decoration: none;
                     }
                     &:active:hover {
                       background-color: #edebe9;
                       color: #323130;
-                    }
-                    &:active, &:hover, &:active:hover {
                       text-decoration: none;
                     }
                     @media only screen and (min-width: 0px) and (max-width: 479px){& {
@@ -2002,7 +2016,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 6 1`] = `
                 role="button"
                 type="button"
               >
-                <div
+                <span
                   className=
                       ms-Button-flexContainer
                       {
@@ -2012,27 +2026,33 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 6 1`] = `
                         height: 100%;
                         justify-content: center;
                       }
+                  data-automationid="splitbuttonprimary"
                 >
                   <i
                     aria-hidden={true}
                     className=
+                        ms-Icon
                         ms-Button-icon
+                        {
+                          display: inline-block;
+                        }
                         {
                           -moz-osx-font-smoothing: grayscale;
                           -webkit-font-smoothing: antialiased;
-                          display: inline-block;
-                          flex-shrink: 0;
                           font-family: "FabricMDL2Icons";
-                          font-size: 16px;
                           font-style: normal;
                           font-weight: normal;
+                          speak: none;
+                        }
+                        {
+                          flex-shrink: 0;
+                          font-size: 16px;
                           height: 16px;
                           line-height: 16px;
                           margin-bottom: 0;
                           margin-left: 4px;
                           margin-right: 4px;
                           margin-top: 0;
-                          speak: none;
                           text-align: center;
                           vertical-align: middle;
                         }
@@ -2041,8 +2061,399 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 6 1`] = `
                   >
                     
                   </i>
-                </div>
+                </span>
               </button>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Breadcrumb basic rendering renders breadcumb correctly 7 1`] = `
+<div>
+  <div
+    style={
+      Object {
+        "position": "relative",
+      }
+    }
+  >
+    <div
+      data-automation-id="visibleContent"
+      style={
+        Object {
+          "position": "fixed",
+          "visibility": "hidden",
+        }
+      }
+    >
+      <div
+        className=
+            ms-Breadcrumb
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
+              margin-bottom: 1px;
+              margin-left: 0;
+              margin-right: 0;
+              margin-top: 11px;
+            }
+        role="navigation"
+      >
+        <div
+          className=
+              ms-FocusZone
+              &:focus {
+                outline: none;
+              }
+          data-focuszone-id="FocusZone32"
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onMouseDownCapture={[Function]}
+        >
+          <ol
+            className=
+                ms-Breadcrumb-list
+                {
+                  align-items: stretch;
+                  display: flex;
+                  margin-bottom: 0px;
+                  margin-left: 0px;
+                  margin-right: 0px;
+                  margin-top: 0px;
+                  padding-bottom: 0px;
+                  padding-left: 0px;
+                  padding-right: 0px;
+                  padding-top: 0px;
+                  white-space: nowrap;
+                }
+          >
+            <li
+              className=
+                  ms-Breadcrumb-overflow
+                  {
+                    align-items: center;
+                    display: flex;
+                    position: relative;
+                  }
+            >
+              <button
+                aria-expanded={false}
+                aria-haspopup={true}
+                aria-owns={null}
+                className=
+                    ms-Button
+                    ms-Button--icon
+                    ms-Button--hasMenu
+                    ms-Breadcrumb-overflowButton
+                    {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      background-color: transparent;
+                      border-radius: 2px;
+                      border: none;
+                      box-sizing: border-box;
+                      color: #605e5c;
+                      cursor: pointer;
+                      display: inline-block;
+                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                      font-size: 16px;
+                      font-weight: 400;
+                      height: 100%;
+                      outline: transparent;
+                      overflow: hidden;
+                      padding-bottom: 0;
+                      padding-left: 4px;
+                      padding-right: 4px;
+                      padding-top: 0;
+                      position: relative;
+                      text-align: center;
+                      text-decoration: none;
+                      text-overflow: ellipsis;
+                      user-select: none;
+                      vertical-align: top;
+                      white-space: nowrap;
+                      width: auto;
+                    }
+                    &::-moz-focus-inner {
+                      border: 0;
+                    }
+                    .ms-Fabric--isFocusVisible &:focus:after {
+                      border: 1px solid #ffffff;
+                      bottom: 1px;
+                      content: "";
+                      left: 1px;
+                      outline: 1px solid #605e5c;
+                      position: absolute;
+                      right: 1px;
+                      top: 1px;
+                      z-index: 1;
+                    }
+                    @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      border: none;
+                      bottom: -2px;
+                      left: -2px;
+                      outline-color: ButtonText;
+                      right: -2px;
+                      top: -2px;
+                    }
+                    &:active > * {
+                      left: 0px;
+                      position: relative;
+                      top: 0px;
+                    }
+                    &:hover {
+                      background-color: #f3f2f1;
+                      color: #323130;
+                      cursor: pointer;
+                      text-decoration: none;
+                    }
+                    @media screen and (-ms-high-contrast: active){&:hover {
+                      border-color: Highlight;
+                      color: Highlight;
+                    }
+                    &:active {
+                      background-color: #edebe9;
+                      color: #323130;
+                      text-decoration: none;
+                    }
+                    &:active:hover {
+                      background-color: #edebe9;
+                      color: #323130;
+                      text-decoration: none;
+                    }
+                    @media only screen and (min-width: 0px) and (max-width: 479px){& {
+                      padding-bottom: 4px;
+                      padding-left: 6px;
+                      padding-right: 6px;
+                      padding-top: 4px;
+                    }
+                    @media only screen and (min-width: 480px) and (max-width: 639px){& {
+                      font-size: 16px;
+                    }
+                data-is-focusable={true}
+                onClick={[Function]}
+                onKeyDown={[Function]}
+                onKeyPress={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseUp={[Function]}
+                role="button"
+                type="button"
+              >
+                <span
+                  className=
+                      ms-Button-flexContainer
+                      {
+                        align-items: center;
+                        display: flex;
+                        flex-wrap: nowrap;
+                        height: 100%;
+                        justify-content: center;
+                      }
+                  data-automationid="splitbuttonprimary"
+                >
+                  <i
+                    aria-hidden={true}
+                    className=
+
+                        {
+                          -moz-osx-font-smoothing: grayscale;
+                          -webkit-font-smoothing: antialiased;
+                          display: inline-block;
+                          font-family: "FabricMDL2Icons";
+                          font-style: normal;
+                          font-weight: normal;
+                          speak: none;
+                        }
+                    data-icon-name="ChevronDown"
+                  >
+                    
+                  </i>
+                </span>
+              </button>
+              <i
+                aria-hidden={true}
+                className=
+                    ms-Breadcrumb-chevron
+                    {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      color: #605e5c;
+                      display: inline-block;
+                      font-family: "FabricMDL2Icons";
+                      font-size: 12px;
+                      font-style: normal;
+                      font-weight: normal;
+                      speak: none;
+                    }
+                    @media screen and (-ms-high-contrast: active){& {
+                      -ms-high-contrast-adjust: none;
+                      color: WindowText;
+                    }
+                    @media only screen and (min-width: 480px) and (max-width: 639px){& {
+                      font-size: 8px;
+                    }
+                    @media only screen and (min-width: 0px) and (max-width: 479px){& {
+                      font-size: 8px;
+                    }
+                data-icon-name="ChevronRight"
+              >
+                
+              </i>
+            </li>
+            <li
+              className=
+                  ms-Breadcrumb-listItem
+                  {
+                    align-items: center;
+                    display: flex;
+                    list-style-type: none;
+                    margin-bottom: 0;
+                    margin-left: 0;
+                    margin-right: 0;
+                    margin-top: 0;
+                    padding-bottom: 0;
+                    padding-left: 0;
+                    padding-right: 0;
+                    padding-top: 0;
+                    position: relative;
+                  }
+                  &:last-child .ms-Breadcrumb-itemLink {
+                    color: #323130;
+                    font-weight: 600;
+                  }
+                  &:last-child .ms-Breadcrumb-item {
+                    color: #323130;
+                    font-weight: 600;
+                  }
+            >
+              <span
+                className=
+                    ms-Breadcrumb-item
+                    {
+                      color: #605e5c;
+                      font-size: 18px;
+                      font-weight: 400;
+                      line-height: 36px;
+                      padding-bottom: 0;
+                      padding-left: 8px;
+                      padding-right: 8px;
+                      padding-top: 0;
+                    }
+                    &:hover {
+                      cursor: default;
+                    }
+              >
+                <div
+                  className=
+                      ms-TooltipHost
+                      {
+                        display: inline;
+                      }
+                  onBlurCapture={[Function]}
+                  onFocusCapture={[Function]}
+                  onKeyDown={[Function]}
+                  onMouseEnter={[Function]}
+                  onMouseLeave={[Function]}
+                >
+                  TestText3
+                </div>
+              </span>
+              <i
+                aria-hidden={true}
+                className=
+                    ms-Breadcrumb-chevron
+                    {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      color: #605e5c;
+                      display: inline-block;
+                      font-family: "FabricMDL2Icons";
+                      font-size: 12px;
+                      font-style: normal;
+                      font-weight: normal;
+                      speak: none;
+                    }
+                    @media screen and (-ms-high-contrast: active){& {
+                      -ms-high-contrast-adjust: none;
+                      color: WindowText;
+                    }
+                    @media only screen and (min-width: 480px) and (max-width: 639px){& {
+                      font-size: 8px;
+                    }
+                    @media only screen and (min-width: 0px) and (max-width: 479px){& {
+                      font-size: 8px;
+                    }
+                data-icon-name="ChevronRight"
+              >
+                
+              </i>
+            </li>
+            <li
+              className=
+                  ms-Breadcrumb-listItem
+                  {
+                    align-items: center;
+                    display: flex;
+                    list-style-type: none;
+                    margin-bottom: 0;
+                    margin-left: 0;
+                    margin-right: 0;
+                    margin-top: 0;
+                    padding-bottom: 0;
+                    padding-left: 0;
+                    padding-right: 0;
+                    padding-top: 0;
+                    position: relative;
+                  }
+                  &:last-child .ms-Breadcrumb-itemLink {
+                    color: #323130;
+                    font-weight: 600;
+                  }
+                  &:last-child .ms-Breadcrumb-item {
+                    color: #323130;
+                    font-weight: 600;
+                  }
+            >
+              <span
+                className=
+                    ms-Breadcrumb-item
+                    {
+                      color: #605e5c;
+                      font-size: 18px;
+                      font-weight: 400;
+                      line-height: 36px;
+                      padding-bottom: 0;
+                      padding-left: 8px;
+                      padding-right: 8px;
+                      padding-top: 0;
+                    }
+                    &:hover {
+                      cursor: default;
+                    }
+              >
+                <div
+                  className=
+                      ms-TooltipHost
+                      {
+                        display: inline;
+                      }
+                  onBlurCapture={[Function]}
+                  onFocusCapture={[Function]}
+                  onKeyDown={[Function]}
+                  onMouseEnter={[Function]}
+                  onMouseLeave={[Function]}
+                >
+                  TestText4
+                </div>
+              </span>
             </li>
           </ol>
         </div>

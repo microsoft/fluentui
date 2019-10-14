@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { App } from './App';
-import { FluentCustomizations } from '@uifabric/fluent-theme';
-import { Customizer, mergeStyles } from 'office-ui-fabric-react';
+import { mergeStyles, initializeIcons, Fabric } from 'office-ui-fabric-react';
+
+initializeIcons();
 
 // Inject some global styles
 mergeStyles({
@@ -16,8 +17,8 @@ mergeStyles({
 });
 
 ReactDOM.render(
-  <Customizer {...FluentCustomizations}>
+  <Fabric>
     <App />
-  </Customizer>,
+  </Fabric>,
   document.getElementById('content')
 );

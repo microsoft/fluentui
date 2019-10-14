@@ -1,7 +1,6 @@
 /* tslint:disable:jsx-wrap-multiline */
 import * as React from 'react';
-import { Icon } from 'office-ui-fabric-react/lib/Icon';
-import './IconExample.scss';
+import { FontIcon } from 'office-ui-fabric-react/lib/Icon';
 import { mergeStyles, registerIcons } from 'office-ui-fabric-react/lib/Styling';
 
 /**
@@ -62,24 +61,33 @@ registerIcons({
   }
 });
 
-const BorderBlindsIcon = (props: { col1?: string; col2?: string; col3?: string }) => {
-  const { col1 = 'red', col2 = 'green', col3 = 'blue' } = props;
+const iconClass = mergeStyles({
+  fontSize: 50,
+  height: 50,
+  width: 50,
+  margin: '0 25px'
+});
 
+const BorderBlindsIcon: React.FunctionComponent<{ color1?: string; color2?: string; color3?: string }> = props => {
+  const { color1 = 'red', color2 = 'green', color3 = 'blue' } = props;
+
+  // FontIcon is an optimized variant of standard Icon.
+  // You could also use the standard Icon here.
   return (
-    <Icon
+    <FontIcon
       iconName="borderblinds-svg"
-      className={mergeStyles('ms-IconExample', {
+      className={mergeStyles(iconClass, {
         width: 50,
         height: 50,
         selectors: {
           '.borderblinds-part1': {
-            fill: col1
+            fill: color1
           },
           '.borderblinds-part2': {
-            fill: col2
+            fill: color2
           },
           '.borderblinds-part3': {
-            fill: col3
+            fill: color3
           }
         }
       })}
@@ -87,24 +95,24 @@ const BorderBlindsIcon = (props: { col1?: string; col2?: string; col3?: string }
   );
 };
 
-export class IconSvgExample extends React.Component<any, any> {
-  public render(): JSX.Element {
-    return (
-      <div>
-        <Icon iconName="onedrive-svg" className="ms-IconExample" />
-        <Icon
-          iconName="yammer-svg"
-          className={mergeStyles('ms-IconExample', {
-            fill: 'red',
-            selectors: {
-              '.thing': {
-                fill: 'green'
-              }
+export const IconSvgExample: React.FunctionComponent = () => {
+  // FontIcon is an optimized variant of standard Icon.
+  // You could also use the standard Icon here.
+  return (
+    <div>
+      <FontIcon iconName="onedrive-svg" className={iconClass} />
+      <FontIcon
+        iconName="yammer-svg"
+        className={mergeStyles(iconClass, {
+          fill: 'red',
+          selectors: {
+            '.thing': {
+              fill: 'green'
             }
-          })}
-        />
-        <BorderBlindsIcon col3="pink" />
-      </div>
-    );
-  }
-}
+          }
+        })}
+      />
+      <BorderBlindsIcon color3="pink" />
+    </div>
+  );
+};
