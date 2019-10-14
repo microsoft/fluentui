@@ -26,7 +26,7 @@ const StackView: IStackComponent['view'] = props => {
         return null;
       }
 
-      if (child.type === StackItemType) {
+      if (_isStackItem(child)) {
         const defaultItemProps: IStackItemProps = {
           shrink: !disableShrink
         };
@@ -58,6 +58,18 @@ const StackView: IStackComponent['view'] = props => {
 
   return <Slots.root {...nativeProps}>{stackChildren}</Slots.root>;
 };
+
+function _isStackItem(item: React.ReactNode): item is StackItem {
+  // In theory, we should be able to just check item.type === StackItemType.
+  // However, under certain unclear circumstances, the object identity is different despite the
+  // function body being the same.
+  return (
+    !!item &&
+    typeof item === 'object' &&
+    !!(item as React.ReactElement).type &&
+    (item as React.ReactElement).type.toString() === StackItemType.toString()
+  );
+}
 
 const StackStatics = {
   Item: StackItem

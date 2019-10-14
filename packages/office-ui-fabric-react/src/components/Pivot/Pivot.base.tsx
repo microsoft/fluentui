@@ -218,9 +218,9 @@ export class PivotBase extends BaseComponent<IPivotProps, IPivotState> {
       keyToTabIdMapping: {}
     };
 
-    React.Children.map(React.Children.toArray(props.children), (child: any, index: number) => {
-      if (typeof child === 'object' && child.type === PivotItemType) {
-        const pivotItem = child as PivotItem;
+    React.Children.map(React.Children.toArray(props.children), (child: React.ReactChild, index: number) => {
+      if (_isPivotItem(child)) {
+        const pivotItem = child;
         const { linkText, ...pivotItemProps } = pivotItem.props;
         const itemKey = pivotItem.props.itemKey || index.toString();
 
@@ -290,10 +290,10 @@ export class PivotBase extends BaseComponent<IPivotProps, IPivotState> {
       const index = linkCollection.keyToIndexMapping[itemKey];
 
       // React.Element<any> cannot directly convert to PivotItem.
-      const item = React.Children.toArray(this.props.children)[index] as any;
+      const item = React.Children.toArray(this.props.children)[index];
 
-      if (typeof item === 'object' && item.type === PivotItemType) {
-        this.props.onLinkClick(item as PivotItem, ev);
+      if (_isPivotItem(item)) {
+        this.props.onLinkClick(item, ev);
       }
     }
   }
@@ -309,4 +309,16 @@ export class PivotBase extends BaseComponent<IPivotProps, IPivotState> {
       rootIsTabs
     });
   }
+}
+
+function _isPivotItem(item: React.ReactNode): item is PivotItem {
+  // In theory, we should be able to just check item.type === PivotItemType.
+  // However, under certain unclear circumstances, the object identity is different despite the
+  // function body being the same.
+  return (
+    !!item &&
+    typeof item === 'object' &&
+    !!(item as React.ReactElement).type &&
+    (item as React.ReactElement).type.toString() === PivotItemType.toString()
+  );
 }
