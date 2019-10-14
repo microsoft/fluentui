@@ -33,6 +33,12 @@ export const getStyles = (props: ICommandBarStyleProps): ICommandBarStyles => {
         display: 'flex',
         alignItems: 'stretch'
       }
+    ],
+    commandBarItems: [
+      'ms-CommandBarItem-link',
+      {
+        height: '100%'
+      }
     ]
   };
 };

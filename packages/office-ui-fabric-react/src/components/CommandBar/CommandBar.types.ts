@@ -176,4 +176,5 @@ export interface ICommandBarStyles {
   root?: IStyle;
   primarySet?: IStyle;
   secondarySet?: IStyle;
+  commandBarItems?: IStyle;
 }

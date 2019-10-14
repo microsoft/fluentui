@@ -138,8 +138,8 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
       allowDisabledFocus: true,
       role: 'menuitem',
       ...item,
-      styles: { root: { height: '100%' }, label: { whiteSpace: 'nowrap' }, ...item.buttonStyles },
-      className: css('ms-CommandBarItem-link', item.className),
+      styles: { label: { whiteSpace: 'nowrap' }, ...item.buttonStyles },
+      className: css(this._classNames.commandBarItems, item.className),
       text: !item.iconOnly ? itemText : undefined,
       menuProps: item.subMenuProps,
       onClick: this._onButtonClick(item)

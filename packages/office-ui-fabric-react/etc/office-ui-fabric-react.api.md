@@ -2864,6 +2864,8 @@ export interface ICommandBarStyleProps {
 // @public (undocumented)
 export interface ICommandBarStyles {
     // (undocumented)
+    commandBarItems?: IStyle;
+    // (undocumented)
     primarySet?: IStyle;
     // (undocumented)
     root?: IStyle;
