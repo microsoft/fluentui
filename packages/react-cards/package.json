@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/react-cards",
-  "version": "0.108.2",
+  "version": "0.109.0",
   "description": "Card container components to help build experiences with the use of Fabric.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -55,7 +55,7 @@
     "@uifabric/styling": "^7.7.2",
     "@uifabric/theme-samples": "^7.0.5",
     "@uifabric/utilities": "^7.5.0",
-    "office-ui-fabric-react": "^7.48.1",
+    "office-ui-fabric-react": "^7.49.0",
     "tslib": "^1.7.1"
   },
   "peerDependencies": {

@@ -1,7 +1,16 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 11 Oct 2019 12:31:31 GMT and should not be manually modified.
+This log was last generated on Mon, 14 Oct 2019 12:30:37 GMT and should not be manually modified.
 
+## 7.49.0
+Mon, 14 Oct 2019 12:30:37 GMT
+
+### Minor changes
+
+- Tooltip: Creating aria placeholder for accessibility scenarios with Tooltips with a render delay. (Humberto.Morimoto@microsoft.com)
+### Patches
+
+- SpinButton: Fixing minWidth and having it come from const to be consistent. (Humberto.Morimoto@microsoft.com)
 ## 7.48.1
 Fri, 11 Oct 2019 12:31:31 GMT
 
