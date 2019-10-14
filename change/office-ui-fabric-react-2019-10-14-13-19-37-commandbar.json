@@ -1,0 +1,9 @@
+{
+  "type": "patch",
+  "comment": "CommandBar: update examples and docs",
+  "packageName": "office-ui-fabric-react",
+  "email": "elcraig@microsoft.com",
+  "commit": "d3ebf42f7d2f1dc4d24a867ef1acca2eb2460b1e",
+  "date": "2019-10-14T20:19:37.869Z",
+  "file": "/Users/elizabeth/git/fabric-react3/change/office-ui-fabric-react-2019-10-14-13-19-37-commandbar.json"
+}
