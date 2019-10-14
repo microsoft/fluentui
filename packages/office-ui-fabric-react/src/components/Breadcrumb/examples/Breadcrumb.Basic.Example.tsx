@@ -20,23 +20,39 @@ const items: IBreadcrumbItem[] = [
   { text: 'This is non-clickable folder 4', key: 'f4' },
   { text: 'This is folder 5', key: 'f5', onClick: _onBreadcrumbItemClicked, isCurrentItem: true }
 ];
-const itemsWithHeadings: IBreadcrumbItem[] = [
+const itemsWithHref: IBreadcrumbItem[] = [
+  // Normally each breadcrumb would have a unique href, but to make the navigation less disruptive
+  // in the example, it uses the breadcrumb page as the href for all the items
+  { text: 'Files', key: 'Files', href: '#/controls/web/breadcrumb' },
+  { text: 'This is folder 1', key: 'f1', href: '#/controls/web/breadcrumb' },
+  { text: 'This is folder 2 with a long name', key: 'f2', href: '#/controls/web/breadcrumb' },
+  { text: 'This is folder 3 long', key: 'f3', href: '#/controls/web/breadcrumb' },
+  { text: 'This is non-clickable folder 4', key: 'f4' },
+  { text: 'This is folder 5', key: 'f5', href: '#/controls/web/breadcrumb', isCurrentItem: true }
+];
+const itemsWithHeading: IBreadcrumbItem[] = [
   { text: 'Files', key: 'Files', onClick: _onBreadcrumbItemClicked },
   { text: 'This is folder 1', key: 'd1', onClick: _onBreadcrumbItemClicked },
+  // Generally, only the last item should ever be a heading.
+  // It would typically be h1 or h2, but we're using h4 here to better fit the structure of the page.
   { text: 'This is folder 2', key: 'd2', isCurrentItem: true, as: 'h4' }
 ];
 
 export const BreadcrumbBasicExample: React.FunctionComponent = () => {
   return (
     <div>
-      <Label styles={labelStyles}>With no maxDisplayedItems</Label>
-      <Breadcrumb items={items} ariaLabel="Breadcrumb with no maxDisplayedItems" overflowAriaLabel="More links" />
-
-      <Label styles={labelStyles}>With maxDisplayedItems set to 3</Label>
+      <Label styles={labelStyles}>With no maxDisplayedItems, and items rendered as buttons</Label>
       <Breadcrumb
         items={items}
+        ariaLabel="Breadcrumb with no maxDisplayedItems, and items rendered as buttons"
+        overflowAriaLabel="More links"
+      />
+
+      <Label styles={labelStyles}>With maxDisplayedItems set to 3, and items rendered as links</Label>
+      <Breadcrumb
+        items={itemsWithHref}
         maxDisplayedItems={3}
-        ariaLabel="Breadcrumb with maxDisplayedItems set to 3"
+        ariaLabel="Breadcrumb with maxDisplayedItems set to 3, and items rendered as links"
         overflowAriaLabel="More links"
       />
 
@@ -50,11 +66,11 @@ export const BreadcrumbBasicExample: React.FunctionComponent = () => {
       />
 
       <Label styles={labelStyles}>With last item rendered as heading</Label>
-      <Breadcrumb items={itemsWithHeadings} ariaLabel="With last item rendered as heading" overflowAriaLabel="More links" />
+      <Breadcrumb items={itemsWithHeading} ariaLabel="With last item rendered as heading" overflowAriaLabel="More links" />
 
       <Label styles={labelStyles}>With custom rendered divider and overflow icon</Label>
       <Breadcrumb
-        items={itemsWithHeadings}
+        items={itemsWithHeading}
         maxDisplayedItems={3}
         ariaLabel="With custom rendered divider and overflow icon"
         dividerAs={_getCustomDivider}
