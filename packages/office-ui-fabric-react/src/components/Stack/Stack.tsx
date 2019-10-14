@@ -61,8 +61,8 @@ const StackView: IStackComponent['view'] = props => {
 
 function _isStackItem(item: React.ReactNode): item is StackItem {
   // In theory, we should be able to just check item.type === StackItemType.
-  // However, under certain unclear circumstances, the object identity is different despite the
-  // function body being the same.
+  // However, under certain unclear circumstances (see https://github.com/OfficeDev/office-ui-fabric-react/issues/10785),
+  // the object identity is different despite the function body being the same.
   return (
     !!item &&
     typeof item === 'object' &&
