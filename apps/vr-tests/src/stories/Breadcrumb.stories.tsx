@@ -80,9 +80,9 @@ storiesOf('Breadcrumb', module)
     <Screener
       steps={new Screener.Steps()
         .hover('.ms-Breadcrumb-list li:nth-child(2)')
-        .snapshot('non-actionable hover', { cropTo: '.testWrapper' })
-        .hover('.ms-Breadcrumb-list li:nth-child(3)')
         .snapshot('actionable hover', { cropTo: '.testWrapper' })
+        .hover('.ms-Breadcrumb-list li:nth-child(3)')
+        .snapshot('non-actionable hover', { cropTo: '.testWrapper' })
         .hover('.ms-Breadcrumb-overflowButton')
         .click('.ms-Breadcrumb-overflowButton') // opening the dropdown
         .hover('.ms-Breadcrumb-overflowButton') // moving the mouse a bit to let dropdown open.
