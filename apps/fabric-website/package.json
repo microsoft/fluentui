@@ -52,11 +52,11 @@
     "@uifabric/file-type-icons": "^7.1.1",
     "@uifabric/fluent-theme": "^7.1.4",
     "@uifabric/icons": "^7.3.0",
-    "@uifabric/react-cards": "^0.108.2",
+    "@uifabric/react-cards": "^0.109.0",
     "@uifabric/set-version": "^7.0.2",
     "@uifabric/theme-samples": "^7.0.5",
     "json-loader": "^0.5.7",
-    "office-ui-fabric-react": "^7.48.1",
+    "office-ui-fabric-react": "^7.49.0",
     "tslib": "^1.7.1",
     "whatwg-fetch": "2.0.4"
   }

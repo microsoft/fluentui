@@ -2,6 +2,27 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Mon, 14 Oct 2019 12:30:37 GMT",
+      "tag": "office-ui-fabric-react_v7.49.0",
+      "version": "7.49.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Tooltip: Creating aria placeholder for accessibility scenarios with Tooltips with a render delay.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "41295984b0c8c979c5e5b25eb3f333a672212622"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "SpinButton: Fixing minWidth and having it come from const to be consistent.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "e02e44d4313b45a7666346f12b7654db136ede13"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 11 Oct 2019 12:31:31 GMT",
       "tag": "office-ui-fabric-react_v7.48.1",
       "version": "7.48.1",
