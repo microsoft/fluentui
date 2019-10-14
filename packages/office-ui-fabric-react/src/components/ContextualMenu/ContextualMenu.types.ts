@@ -29,7 +29,6 @@ export enum ContextualMenuItemType {
 export interface IContextualMenu {}
 
 /**
- * React.Props is deprecated and we're removing it in 6.0. Usage of 'any' should go away with it.
  * {@docCategory ContextualMenu}
  */
 export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, IWithResponsiveModeState {
@@ -45,32 +44,31 @@ export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, IWith
   styles?: IStyleFunctionOrObject<IContextualMenuStyleProps, IContextualMenuStyles>;
 
   /**
-   * Theme provided by High-Order Component.
+   * Theme provided by higher-order component.
    */
   theme?: ITheme;
 
   /**
-   * Additional css class to apply to the ContextualMenu
-   * @defaultvalue undefined
+   * Additional CSS class to apply to the ContextualMenu.
    */
   className?: string;
 
   /**
    * The target that the ContextualMenu should try to position itself based on.
-   * It can be either an Element a querySelector string of a valid Element
-   * or a MouseEvent. If MouseEvent is given then the origin point of the event will be used.
+   * It can be either an element, a query selector string resolving to a valid element,
+   * or a MouseEvent. If a MouseEvent is given, the origin point of the event will be used.
    */
   target?: Target;
 
   /**
-   * How the element should be positioned
+   * How the menu should be positioned
    * @defaultvalue DirectionalHint.bottomAutoEdge
    */
   directionalHint?: DirectionalHint;
 
   /**
-   * How the element should be positioned in RTL layouts.
-   * If not specified, a mirror of `directionalHint` will be used instead
+   * How the menu should be positioned in RTL layouts.
+   * If not specified, a mirror of `directionalHint` will be used.
    */
   directionalHintForRTL?: DirectionalHint;
 
@@ -99,7 +97,7 @@ export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, IWith
   useTargetAsMinWidth?: boolean;
 
   /**
-   * The bounding rectangle (or callback that returns a rectangle) for which  the contextual menu can appear in.
+   * The bounding rectangle (or callback that returns a rectangle) which the contextual menu can appear in.
    */
   bounds?: IRectangle | ((target?: Target, targetWindow?: Window) => IRectangle | undefined);
 
@@ -109,11 +107,10 @@ export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, IWith
   isBeakVisible?: boolean;
 
   /**
-   * If true the position returned will have the menu element cover the target.
-   * If false then it will position next to the target;
+   * If true, the menu will be positioned to cover the target.
+   * If false, it will be positioned next to the target.
    * @defaultvalue false
    */
-
   coverTarget?: boolean;
 
   /**
@@ -123,14 +120,13 @@ export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, IWith
   alignTargetEdge?: boolean;
 
   /**
-   * Collection of menu items.
+   * Menu items to display.
    * @defaultvalue []
    */
   items: IContextualMenuItem[];
 
   /**
-   * Aria Labelled by labelElementId
-   * @defaultvalue null
+   * Used as `aria-labelledby` for the the menu element inside the callout.
    */
   labelElementId?: string;
 
@@ -142,37 +138,35 @@ export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, IWith
 
   /**
    * Whether to focus on the contextual menu container (as opposed to the first menu item).
-   * @defaultvalue null
    */
   shouldFocusOnContainer?: boolean;
 
   /**
-   * Callback when the ContextualMenu tries to close. If dismissAll is true then all
+   * Callback when the ContextualMenu tries to close. If `dismissAll` is true then all
    * submenus will be dismissed.
    */
   onDismiss?: (ev?: any, dismissAll?: boolean) => void;
 
   /**
-   * Click handler which is invoked if onClick is not passed for individual contextual
+   * Click handler which is invoked if `onClick` is not passed for individual contextual
    * menu item.
-   * Returning true will dismiss the menu even if ev.preventDefault() was called.
+   * Returning true will dismiss the menu even if `ev.preventDefault()` was called.
    */
   onItemClick?: (ev?: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>, item?: IContextualMenuItem) => boolean | void;
 
   /**
-   * Whether this menu is a submenu of another menu or not.
+   * Whether this menu is a submenu of another menu.
    */
   isSubMenu?: boolean;
 
   /**
-   * DOM id to tag the ContextualMenu with, for reference.
-   * Should be used for 'aria-owns' and other such uses, rather than direct reference for programmatic purposes.
+   * ID for the ContextualMenu's root element (inside the callout).
+   * Should be used for `aria-owns` and other such uses, rather than direct reference for programmatic purposes.
    */
   id?: string;
 
   /**
-   * Aria label for accessibility for the ContextualMenu.
-   * If none specified no aria label will be applied to the ContextualMenu.
+   * Accessible label for the ContextualMenu's root element (inside the callout).
    */
   ariaLabel?: string;
 
@@ -190,17 +184,17 @@ export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, IWith
   directionalHintFixed?: boolean;
 
   /**
-   * Callback for when the contextualmenu has been opened.
+   * Callback for when the menu has been opened.
    */
   onMenuOpened?: (contextualMenu?: IContextualMenuProps) => void;
 
   /**
-   * Callback for when the contextualmenu is being closed (removing from the DOM)
+   * Callback for when the menu is being closed (removing from the DOM).
    */
   onMenuDismissed?: (contextualMenu?: IContextualMenuProps) => void;
 
   /**
-   * Pass in custom callout props
+   * Additional custom props for the Callout.
    */
   calloutProps?: ICalloutProps;
 
@@ -210,14 +204,12 @@ export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, IWith
   title?: string;
 
   /**
-   * Method to provide the classnames to style the contextual menu. Default value is the getMenuClassnames func
-   * defined in ContextualMenu.classnames.
-   * Deprecated, use `styles` prop of `IContextualMenuProps` to leverage mergeStyles API.
-   * @deprecated Use `styles` prop of `IContextualMenuProps` to leverage mergeStyles API.
+   * Method to provide the classnames to style the contextual menu.
+   * @deprecated Use `styles` instead to leverage mergeStyles API.
    */
   getMenuClassNames?: (theme: ITheme, className?: string) => IContextualMenuClassNames;
 
-  /** Method to call when trying to render a submenu. */
+  /** Custom render function for a submenu. */
   onRenderSubMenu?: IRenderFunction<IContextualMenuProps>;
 
   /**
@@ -240,12 +232,12 @@ export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, IWith
    * Props to pass down to the FocusZone.
    * NOTE: the default FocusZoneDirection will be used unless a direction
    * is specified in the focusZoneProps (even if other focusZoneProps are defined)
-   * @defaultvalue \{direction: FocusZoneDirection.vertical\}
+   * @defaultvalue \{ direction: FocusZoneDirection.vertical \}
    */
   focusZoneProps?: IFocusZoneProps;
 
   /**
-   * If specified, renders the ContextualMenu in a hidden state.
+   * If true, renders the ContextualMenu in a hidden state.
    * Use this flag, rather than rendering a ContextualMenu conditionally based on visibility,
    * to improve rendering performance when it becomes visible.
    * Note: When ContextualMenu is hidden its content will not be rendered. It will only render
@@ -255,18 +247,17 @@ export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, IWith
   hidden?: boolean;
 
   /**
-   * If true, the component will be updated even when hidden=true.
+   * If true, the component will be updated even when `hidden=true`.
    * Note that this would consume resources to update even though
    * nothing is being shown to the user.
    * This might be helpful though if your updates are small and you want the
-   * contextual menu to be revealed fast to the user when hidden is set to false.
+   * contextual menu to be revealed fast to the user when `hidden` is set to false.
    */
   shouldUpdateWhenHidden?: boolean;
 
   /**
-   * If true, the contextual menu will not be updated until
-   * focus enters the menu via other means. This will only result
-   * in different behavior when shouldFocusOnMount = false
+   * If true, the contextual menu will not be updated until focus enters the menu via other means.
+   * This will only result in different behavior when `shouldFocusOnMount = false`.
    * @defaultvalue null
    */
   delayUpdateFocusOnHover?: boolean;
@@ -309,7 +300,7 @@ export interface IContextualMenuItem {
   itemType?: ContextualMenuItemType;
 
   /**
-   * Props that go to the IconComponent
+   * Props for the Icon.
    */
   iconProps?: IIconProps;
 
@@ -319,7 +310,7 @@ export interface IContextualMenuItem {
   onRenderIcon?: IRenderFunction<IContextualMenuItemProps>;
 
   /**
-   * Props that go to the IconComponent used for the chevron.
+   * Props for the Icon used for the chevron.
    */
   submenuIconProps?: IIconProps;
 
@@ -336,7 +327,7 @@ export interface IContextualMenuItem {
   primaryDisabled?: boolean;
 
   /**
-   * [TODO] Not Yet Implemented
+   * @deprecated Not used
    */
   shortCut?: string;
 
@@ -364,23 +355,24 @@ export interface IContextualMenuItem {
   data?: any;
 
   /**
-   * Callback issued when the menu item is invoked. If ev.preventDefault() is called in onClick, click will not close menu.
-   * Returning true will dismiss the menu even if ev.preventDefault() was called.
+   * Callback for when the menu item is invoked. If `ev.preventDefault()` is called in `onClick`,
+   * the click will not close the menu.
+   * Returning true will dismiss the menu even if `ev.preventDefault()` was called.
    */
   onClick?: (ev?: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>, item?: IContextualMenuItem) => boolean | void;
 
   /**
-   * An optional URL to navigate to upon selection
+   * Navigate to this URL when the menu item is clicked.
    */
   href?: string;
 
   /**
-   * An optional target when using href
+   * Target window when using `href`.
    */
   target?: string;
 
   /**
-   * An optional rel when using href. If target is _blank rel is defaulted to a value to prevent clickjacking.
+   * Link relation setting when using `href`. If `target` is `_blank`, `rel` is defaulted to a value to prevent clickjacking.
    */
   rel?: string;
 
@@ -395,7 +387,6 @@ export interface IContextualMenuItem {
 
   /**
    * Method to provide the classnames to style the individual items inside a menu.
-   * Deprecated, use `styles` prop of `IContextualMenuItemProps` to leverage mergeStyles API.
    * @deprecated Use `styles` prop of `IContextualMenuItemProps` to leverage mergeStyles API.
    */
   getItemClassNames?: (
@@ -419,27 +410,24 @@ export interface IContextualMenuItem {
 
   /**
    * Method to provide the classnames to style the Vertical Divider of a split button inside a menu.
-   * Default value is the getVerticalDividerClassnames func defined in ContextualMenu.classnames
+   * Default value is the `getSplitButtonVerticalDividerClassNames` func defined in `ContextualMenu.classnames.ts`.
    * @defaultvalue getSplitButtonVerticalDividerClassNames
    */
   getSplitButtonVerticalDividerClassNames?: (theme: ITheme) => IVerticalDividerClassNames;
 
   /**
-   *  Properties to apply to render this item as a section.
-   *  This prop is mutually exclusive with subMenuProps.
+   * Properties to apply to render this item as a section.
+   * This prop is mutually exclusive with `subMenuProps`.
    */
   sectionProps?: IContextualMenuSection;
 
   /**
-   * Additional css class to apply to the menu item
-   * @defaultvalue undefined
+   * Additional CSS class to apply to the menu item.
    */
   className?: string;
 
   /**
    * Additional styles to apply to the menu item
-   * Deprecated, use `styles` instead.
-   * @defaultvalue undefined
    * @deprecated in favor of the `styles` prop to leverage mergeStyles API.
    */
   style?: React.CSSProperties;
@@ -462,25 +450,23 @@ export interface IContextualMenuItem {
    *
    * The function receives a function that can be called to dismiss the menu as a second argument.
    *  This can be used to make sure that a custom menu item click dismisses the menu.
-   * @defaultvalue undefined
    */
   onRender?: (item: any, dismissMenu: (ev?: any, dismissAll?: boolean) => void) => React.ReactNode;
 
   /**
-   * A function to be executed onMouseDown. This is executed before an onClick event and can
+   * A function to be executed on mouse down. This is executed before an `onClick` event and can
    * be used to interrupt native on click events as well. The click event should still handle
    * the commands. This should only be used in special cases when react and non-react are mixed.
    */
   onMouseDown?: (item: IContextualMenuItem, event: React.MouseEvent<HTMLElement>) => void;
 
   /**
-   * Optional override for the role attribute on the menu button. If one is not provided, it will
-   * have a value of menuitem or menuitemcheckbox.
+   * Optional override for the menu button's role. Defaults to `menuitem` or `menuitemcheckbox`.
    */
   role?: string;
 
   /**
-   * When rendering a custom component that is passed in, the component might also be a list of
+   * When rendering a custom menu component that is passed in, the component might also be a list of
    * elements. We want to keep track of the correct index our menu is using based off of
    * the length of the custom list. It is up to the user to increment the count for their list.
    */
@@ -504,14 +490,12 @@ export interface IContextualMenuItem {
 
   /**
    * Text description for the menu item to display
-   * Deprecated, use `text` instead.
    * @deprecated Use `text` instead.
    */
   name?: string;
 }
 
 /**
- * React.Props is deprecated and we're removing it in 6.0. Usage of 'any' should go away with it.
  * {@docCategory ContextualMenu}
  */
 export interface IContextualMenuSection extends React.ClassAttributes<any> {
@@ -580,14 +564,8 @@ export interface IMenuItemStyles extends IButtonStyles {
  * {@docCategory ContextualMenu}
  */
 export interface IContextualMenuStyleProps {
-  /**
-   * Theme provided by High-Order Component.
-   */
   theme: ITheme;
 
-  /**
-   * Accept custom classNames
-   */
   className?: string;
 
   // Insert ContextualMenu style props below
@@ -632,9 +610,9 @@ export interface IContextualMenuStyles {
  * {@docCategory ContextualMenu}
  */
 export interface IContextualMenuSubComponentStyles {
-  /** Refers to the callout that hosts the ContextualMenu options */
+  /** Styles for the callout that hosts the ContextualMenu options. */
   callout: IStyleFunctionOrObject<ICalloutContentStyleProps, any>;
 
-  /** Refers to the item in the list */
+  /** Styles for each menu item. */
   menuItem: IStyleFunctionOrObject<IContextualMenuItemStyleProps, any>;
 }

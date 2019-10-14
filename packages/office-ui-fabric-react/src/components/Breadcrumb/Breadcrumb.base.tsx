@@ -1,15 +1,22 @@
 import * as React from 'react';
-import { BaseComponent, getRTL, classNamesFunction, getNativeProps, htmlElementProperties } from '../../Utilities';
+import { initializeComponentRef, getRTL, classNamesFunction, getNativeProps, htmlElementProperties } from '../../Utilities';
 import { IProcessedStyleSet } from '../../Styling';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { Link } from '../../Link';
 import { Icon } from '../../Icon';
 import { IconButton } from '../../Button';
-import { IBreadcrumbProps, IBreadcrumbItem, IDividerAsProps, IBreadcrumbData } from './Breadcrumb.types';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { ResizeGroup } from '../../ResizeGroup';
 import { TooltipHost, TooltipOverflowMode } from '../../Tooltip';
-import { IBreadcrumbStyleProps, IBreadcrumbStyles } from './Breadcrumb.types';
+import { IContextualMenuItem, IContextualMenuItemProps } from '../../ContextualMenu';
+import {
+  IBreadcrumbProps,
+  IBreadcrumbItem,
+  IDividerAsProps,
+  IBreadcrumbData,
+  IBreadcrumbStyleProps,
+  IBreadcrumbStyles
+} from './Breadcrumb.types';
 
 /** @deprecated Use IBreadcrumbData */
 export type IBreadCrumbData = IBreadcrumbData;
@@ -19,10 +26,25 @@ const getClassNames = classNamesFunction<IBreadcrumbStyleProps, IBreadcrumbStyle
 const OVERFLOW_KEY = 'overflow';
 const nullFunction = (): null => null;
 
+const nonActionableItemProps: Partial<IContextualMenuItemProps> = {
+  styles: props => {
+    const { theme } = props;
+    return {
+      root: {
+        selectors: {
+          '&.is-disabled': {
+            color: theme.semanticColors.bodyText
+          }
+        }
+      }
+    };
+  }
+};
+
 /**
  * {@docCategory Breadcrumb}
  */
-export class BreadcrumbBase extends BaseComponent<IBreadcrumbProps, any> {
+export class BreadcrumbBase extends React.Component<IBreadcrumbProps, any> {
   public static defaultProps: IBreadcrumbProps = {
     items: [],
     maxDisplayedItems: 999,
@@ -35,6 +57,7 @@ export class BreadcrumbBase extends BaseComponent<IBreadcrumbProps, any> {
   constructor(props: IBreadcrumbProps) {
     super(props);
 
+    initializeComponentRef(this);
     this._validateProps(props);
   }
 
@@ -93,12 +116,19 @@ export class BreadcrumbBase extends BaseComponent<IBreadcrumbProps, any> {
     } = data.props;
     const { renderedOverflowItems, renderedItems } = data;
 
-    const contextualItems = renderedOverflowItems.map((item, index) => ({
-      name: item.text,
-      key: item.key,
-      onClick: item.onClick ? this._onBreadcrumbClicked.bind(this, item) : null,
-      href: item.href
-    }));
+    const contextualItems = renderedOverflowItems.map(
+      (item): IContextualMenuItem => {
+        const isActionable = !!(item.onClick || item.href);
+        return {
+          name: item.text,
+          key: item.key,
+          onClick: item.onClick ? this._onBreadcrumbClicked.bind(this, item) : null,
+          href: item.href,
+          disabled: !isActionable,
+          itemProps: isActionable ? undefined : nonActionableItemProps
+        };
+      }
+    );
 
     // Find index of last rendered item so the divider icon
     // knows not to render on that item
@@ -157,19 +187,10 @@ export class BreadcrumbBase extends BaseComponent<IBreadcrumbProps, any> {
   };
 
   private _onRenderItem = (item: IBreadcrumbItem) => {
-    const Tag = item.as ? item.as : 'span';
-    const breadcrumbItem = (): JSX.Element => (
-      <Tag className={this._classNames.item}>
-        <TooltipHost content={item.text} overflowMode={TooltipOverflowMode.Parent} {...this.props.tooltipHostProps}>
-          {item.text}
-        </TooltipHost>
-      </Tag>
-    );
-
     if (item.onClick || item.href) {
       return (
         <Link
-          as={item.as ? item.as : 'a'}
+          as={item.as}
           className={this._classNames.itemLink}
           href={item.href}
           aria-current={item.isCurrentItem ? 'page' : undefined}
@@ -181,7 +202,14 @@ export class BreadcrumbBase extends BaseComponent<IBreadcrumbProps, any> {
         </Link>
       );
     } else {
-      return breadcrumbItem();
+      const Tag = item.as || 'span';
+      return (
+        <Tag className={this._classNames.item}>
+          <TooltipHost content={item.text} overflowMode={TooltipOverflowMode.Parent} {...this.props.tooltipHostProps}>
+            {item.text}
+          </TooltipHost>
+        </Tag>
+      );
     }
   };
 
