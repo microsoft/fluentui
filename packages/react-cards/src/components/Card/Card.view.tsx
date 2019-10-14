@@ -10,6 +10,9 @@ import { ICardItemProps } from './CardItem/CardItem.types';
 import { CardSection } from './CardSection/CardSection';
 import { ICardSectionProps } from './CardSection/CardSection.types';
 
+const CardItemType = (<CardItem /> as React.ReactElement<ICardItemProps>).type;
+const CardSectionType = (<CardSection /> as React.ReactElement<ICardSectionProps>).type;
+
 export const CardView: ICardComponent['view'] = props => {
   const Slots = getSlots<ICardProps, ICardSlots>(props, {
     root: Stack
@@ -18,9 +21,6 @@ export const CardView: ICardComponent['view'] = props => {
   const { children, styles, tokens, horizontal, ...rest } = props;
 
   const nativeProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(rest, htmlElementProperties);
-
-  const CardItemType = (<CardItem /> as React.ReactElement<ICardItemProps>).type;
-  const CardSectionType = (<CardSection /> as React.ReactElement<ICardSectionProps>).type;
 
   // Get childrenGap and childrenMargin token values.
   const childrenGap = tokens && (tokens as ICardTokens).childrenGap;
@@ -37,7 +37,9 @@ export const CardView: ICardComponent['view'] = props => {
       }
 
       // Ensure that we're dealing with CardItems and CardSections and throw a warning otherwise.
-      if (child.type === CardItemType || child.type === CardSectionType) {
+      const isItem = _isCardItem(child);
+      const isSection = _isCardSection(child);
+      if (isItem || isSection) {
         // Only compute and clone if childrenGap and/or childrenMargin were provided.
         if (!childrenGap && !childrenMargin) {
           return child;
@@ -65,7 +67,7 @@ export const CardView: ICardComponent['view'] = props => {
          * provided to the Card. */
         const resolvedTokens = {
           margin,
-          childrenGap: child.type === CardSectionType ? childrenGap : undefined,
+          childrenGap: isSection ? childrenGap : undefined,
           ...childTokens
         };
 
@@ -95,3 +97,18 @@ export const CardView: ICardComponent['view'] = props => {
     </Slots.root>
   );
 };
+
+function _isReactElement(item: React.ReactNode): item is React.ReactElement {
+  return !!item && typeof item === 'object' && !!(item as React.ReactElement).type;
+}
+
+function _isCardItem(item: React.ReactNode): item is typeof CardItem {
+  // In theory, we should be able to just check item.type === CardItemType.
+  // However, under certain unclear circumstances (see https://github.com/OfficeDev/office-ui-fabric-react/issues/10785),
+  // the object identity is different despite the function body being the same.
+  return _isReactElement(item) && item.type.toString() === CardItemType.toString();
+}
+
+function _isCardSection(item: React.ReactNode): item is typeof CardSection {
+  return _isReactElement(item) && item.type.toString() === CardSectionType.toString();
+}

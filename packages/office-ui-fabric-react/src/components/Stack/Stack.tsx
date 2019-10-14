@@ -59,7 +59,7 @@ const StackView: IStackComponent['view'] = props => {
   return <Slots.root {...nativeProps}>{stackChildren}</Slots.root>;
 };
 
-function _isStackItem(item: React.ReactNode): item is StackItem {
+function _isStackItem(item: React.ReactNode): item is typeof StackItem {
   // In theory, we should be able to just check item.type === StackItemType.
   // However, under certain unclear circumstances (see https://github.com/OfficeDev/office-ui-fabric-react/issues/10785),
   // the object identity is different despite the function body being the same.
