@@ -32,17 +32,17 @@ export interface ICommandBarProps extends React.HTMLAttributes<HTMLDivElement> {
   componentRef?: IRefObject<ICommandBar>;
 
   /**
-   * Items to render. ICommandBarItemProps extends IContextualMenuItem.
+   * Items to render. ICommandBarItemProps extends {@link IContextualMenuItem}.
    */
   items: ICommandBarItemProps[];
 
   /**
-   * Items to render on the right side (or left, in RTL). ICommandBarItemProps extends IContextualMenuItem.
+   * Items to render on the right side (or left, in RTL). ICommandBarItemProps extends {@link IContextualMenuItem}.
    */
   farItems?: ICommandBarItemProps[];
 
   /**
-   * Default items to have in the overflow menu. ICommandBarItemProps extends IContextualMenuItem.
+   * Default items to have in the overflow menu. ICommandBarItemProps extends {@link IContextualMenuItem}.
    */
   overflowItems?: ICommandBarItemProps[];
 
@@ -122,7 +122,7 @@ export interface ICommandBarProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 /**
- * ICommandBarItemProps extends IContextualMenuItem and adds a few CommandBar-specific props.
+ * ICommandBarItemProps extends {@link IContextualMenuItem} and adds a few CommandBar-specific props.
  * {@docCategory CommandBar}
  */
 export interface ICommandBarItemProps extends IContextualMenuItem {
