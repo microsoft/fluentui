@@ -509,8 +509,8 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       primaryDisabled,
       menuProps,
       toggle,
-      primaryActionButtonProps,
-      role
+      role,
+      primaryActionButtonProps
     } = this.props;
     let { keytipProps } = this.props;
     const { menuHidden } = this.state;
