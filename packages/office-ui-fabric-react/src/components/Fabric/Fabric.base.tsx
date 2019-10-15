@@ -30,23 +30,13 @@ export class FabricBase extends React.Component<
     const divProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties);
 
     let fabricComponent;
-    if (this.props.applyTheme) {
-      // apply theme only to the div
-      fabricComponent = (
-        <div
-          {...divProps}
-          style={{ backgroundColor: this.props.theme!.semanticColors.bodyBackground }}
-          className={classNames.root}
-          ref={this._rootElement}
-        />
-      );
-    } else if (this.props.applyThemeToBody) {
+    // apply theme to just the div only if applyTheme is true, otherwise do not apply theme at all
+    fabricComponent = (
+      <div {...divProps} className={this.props.applyTheme ? classNames.rootThemed : classNames.root} ref={this._rootElement} />
+    );
+    if (this.props.applyThemeToBody) {
       // apply theme to the body of the whole page
-      document.body.style.backgroundColor = this.props.theme!.semanticColors.bodyBackground;
-      fabricComponent = <div {...divProps} className={classNames.root} ref={this._rootElement} />;
-    } else {
-      // do not apply theme
-      fabricComponent = <div {...divProps} className={classNames.root} ref={this._rootElement} />;
+      document.body.classList.add('ms-Fabric-body-themed');
     }
     return fabricComponent;
   }

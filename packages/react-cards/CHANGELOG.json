@@ -2,6 +2,20 @@
   "name": "@uifabric/react-cards",
   "entries": [
     {
+      "date": "Mon, 14 Oct 2019 12:30:37 GMT",
+      "tag": "@uifabric/react-cards_v0.109.0",
+      "version": "0.109.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Card: Renamed compact prop to horizontal and updated examples and tests accordingly.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "456aebbf657d34609e85800e3d5a8223d454e872"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 03 Oct 2019 23:14:46 GMT",
       "tag": "@uifabric/react-cards_v0.108.2",
       "version": "0.108.2",

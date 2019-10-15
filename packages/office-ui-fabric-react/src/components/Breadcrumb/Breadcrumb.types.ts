@@ -4,6 +4,7 @@ import { IRefObject, IRenderFunction, IComponentAs, IStyleFunctionOrObject } fro
 import { ITheme, IStyle } from '../../Styling';
 import { IFocusZoneProps } from '../../FocusZone';
 import { ITooltipHostProps } from '../../Tooltip';
+import { IButtonProps } from '../Button/Button.types';
 
 /**
  * {@docCategory Breadcrumb}
@@ -49,6 +50,10 @@ export interface IBreadcrumbProps extends React.HTMLAttributes<HTMLElement> {
    */
   dividerAs?: IComponentAs<IDividerAsProps>;
 
+  /**
+   * Render a custom overflow icon in place of the default icon `...`
+   */
+  onRenderOverflowIcon?: IRenderFunction<IButtonProps>;
   /**
    * The maximum number of breadcrumbs to display before coalescing.
    * If not specified, all breadcrumbs will be rendered.
@@ -119,7 +124,7 @@ export interface IBreadcrumbItem {
   href?: string;
 
   /**
-   * If this breadcrumb item is the item the user is currently on, if set to true, aria-current="page" will be applied to this
+   * If this breadcrumb item is the item the user is currently on, if set to true, aria-current='page' will be applied to this
    * breadcrumb link
    */
   isCurrentItem?: boolean;
