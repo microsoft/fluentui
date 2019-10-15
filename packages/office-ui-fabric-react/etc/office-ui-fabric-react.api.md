@@ -444,7 +444,7 @@ export enum BaseSlots {
 export const Breadcrumb: React.StatelessComponent<IBreadcrumbProps>;
 
 // @public (undocumented)
-export class BreadcrumbBase extends BaseComponent<IBreadcrumbProps, any> {
+export class BreadcrumbBase extends React.Component<IBreadcrumbProps, any> {
     constructor(props: IBreadcrumbProps);
     // (undocumented)
     static defaultProps: IBreadcrumbProps;
@@ -1813,7 +1813,7 @@ export interface IBreadcrumbData {
 
 // @public (undocumented)
 export interface IBreadcrumbItem {
-    as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+    as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'a';
     href?: string;
     isCurrentItem?: boolean;
     key: string;
@@ -2930,6 +2930,7 @@ export interface IContextualMenuItem {
     role?: string;
     secondaryText?: string;
     sectionProps?: IContextualMenuSection;
+    // @deprecated (undocumented)
     shortCut?: string;
     split?: boolean;
     // @deprecated
@@ -3007,7 +3008,7 @@ export interface IContextualMenuListProps {
 
 // Warning: (ae-forgotten-export) The symbol "IWithResponsiveModeState" needs to be exported by the entry point index.d.ts
 // 
-// @public
+// @public (undocumented)
 export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, IWithResponsiveModeState {
     alignTargetEdge?: boolean;
     ariaLabel?: string;
@@ -3060,7 +3061,7 @@ export interface IContextualMenuRenderItem {
     openSubMenu: () => void;
 }
 
-// @public
+// @public (undocumented)
 export interface IContextualMenuSection extends React.ClassAttributes<any> {
     bottomDivider?: boolean;
     items: IContextualMenuItem[];
@@ -3093,7 +3094,9 @@ export interface IContextualMenuState {
 
 // @public (undocumented)
 export interface IContextualMenuStyleProps {
+    // (undocumented)
     className?: string;
+    // (undocumented)
     theme: ITheme;
 }
 

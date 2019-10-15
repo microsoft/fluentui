@@ -2,6 +2,20 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "date": "Tue, 15 Oct 2019 12:32:28 GMT",
+      "tag": "@uifabric/fabric-website_v7.5.6",
+      "version": "7.5.6",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Hide UHF flightPicker element that causes accessibility issues",
+            "author": "elcraig@microsoft.com",
+            "commit": "65758fcc9ae1837a6059731219d0c33989b6bb78"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 10 Oct 2019 12:32:08 GMT",
       "tag": "@uifabric/fabric-website_v7.5.5",
       "version": "7.5.5",
