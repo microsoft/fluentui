@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Fabric renders correctly 1`] = `
+exports[`Fabric renders a Fabric component correctly 1`] = `
 <div
   className=
       ms-Fabric
