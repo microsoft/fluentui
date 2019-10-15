@@ -1,0 +1,9 @@
+{
+  "type": "patch",
+  "comment": "CommandBar: Replacing inline styles with definition in styles file.",
+  "packageName": "office-ui-fabric-react",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "commit": "efea4467f1d655475468885648231f6b550f32c7",
+  "date": "2019-10-14T23:17:03.522Z",
+  "file": "D:\\office-ui-fabric-react\\change\\office-ui-fabric-react-2019-10-14-16-17-03-commandBarIconOnlyStyles.json"
+}
