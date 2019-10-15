@@ -148,7 +148,7 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
       styles: {
         ...item.buttonStyles,
         root: item.buttonStyles ? mergeStyles(rootStyles, item.buttonStyles.root) : rootStyles,
-        label: item.buttonStyles ? mergeStyles(labelStyles, item.buttonStyles.root) : labelStyles
+        label: item.buttonStyles ? mergeStyles(labelStyles, item.buttonStyles.label) : labelStyles
       },
       className: css('ms-CommandBarItem-link', item.className),
       text: !item.iconOnly ? itemText : undefined,
