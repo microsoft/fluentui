@@ -956,6 +956,9 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
 // @public (undocumented)
 export const DetailsRowCheck: React.FunctionComponent<IDetailsRowCheckProps>;
 
+// @public
+export const DetailsRowFields: React.FunctionComponent<IDetailsRowFieldsProps>;
+
 // @public (undocumented)
 export const DetailsRowGlobalClassNames: {
     root: string;
@@ -1509,6 +1512,7 @@ export interface IActivityItemStyles {
 
 // @public (undocumented)
 export interface IAnnouncedProps extends React.Props<AnnouncedBase>, React.HTMLAttributes<HTMLDivElement> {
+    'aria-live'?: 'off' | 'polite' | 'assertive';
     message?: string;
     styles?: IStyleFunctionOrObject<{}, IAnnouncedStyles>;
 }
@@ -1568,7 +1572,7 @@ export interface IBaseButtonProps extends IButtonProps {
 // @public (undocumented)
 export interface IBaseButtonState {
     // (undocumented)
-    menuProps?: IContextualMenuProps | null;
+    menuHidden: boolean;
 }
 
 // @public (undocumented)
@@ -1826,6 +1830,7 @@ export interface IBreadcrumbProps extends React.HTMLAttributes<HTMLElement> {
     maxDisplayedItems?: number;
     onReduceData?: (data: IBreadcrumbData) => IBreadcrumbData | undefined;
     onRenderItem?: IRenderFunction<IBreadcrumbItem>;
+    onRenderOverflowIcon?: IRenderFunction<IButtonProps>;
     overflowAriaLabel?: string;
     overflowIndex?: number;
     // (undocumented)
@@ -1911,6 +1916,8 @@ export interface IButtonProps extends React.AllHTMLAttributes<HTMLAnchorElement 
     primary?: boolean;
     primaryActionButtonProps?: IButtonProps;
     primaryDisabled?: boolean;
+    // @deprecated
+    renderPersistedMenuHiddenOnMount?: boolean;
     // @deprecated
     rootProps?: React.ButtonHTMLAttributes<HTMLButtonElement> | React.AnchorHTMLAttributes<HTMLAnchorElement>;
     secondaryText?: string;
@@ -4368,6 +4375,7 @@ export interface IDropdownStyles {
 // @public (undocumented)
 export interface IDropdownSubComponentStyles {
     label: IStyleFunctionOrObject<ILabelStyleProps, any>;
+    multiSelectItem: IStyleFunctionOrObject<ICheckboxStyleProps, any>;
     panel: IStyleFunctionOrObject<IPanelStyleProps, any>;
 }
 
@@ -5179,7 +5187,8 @@ export interface ILayer {
 
 // @public (undocumented)
 export type ILayerBaseState = {
-    hasMounted: boolean;
+    hostId?: string;
+    layerElement?: HTMLElement;
 };
 
 // @public (undocumented)
@@ -5190,6 +5199,7 @@ export interface ILayerProps extends React.HTMLAttributes<HTMLDivElement | Layer
     hostId?: string;
     insertFirst?: boolean;
     onLayerDidMount?: () => void;
+    // @deprecated
     onLayerMounted?: () => void;
     onLayerWillUnmount?: () => void;
     styles?: IStyleFunctionOrObject<ILayerStyleProps, ILayerStyles>;
@@ -5555,7 +5565,9 @@ export interface INavLink {
     [propertyName: string]: any;
     ariaLabel?: string;
     automationId?: string;
+    collapseAriaLabel?: string;
     disabled?: boolean;
+    expandAriaLabel?: string;
     forceAnchor?: boolean;
     icon?: string;
     // @deprecated
@@ -5574,7 +5586,9 @@ export interface INavLink {
 // @public (undocumented)
 export interface INavLinkGroup {
     automationId?: string;
+    collapseAriaLabel?: string;
     collapseByDefault?: boolean;
+    expandAriaLabel?: string;
     links: INavLink[];
     name?: string;
     onHeaderClick?: (ev?: React.MouseEvent<HTMLElement>, isCollapsing?: boolean) => void;
@@ -5585,6 +5599,7 @@ export interface INavProps {
     ariaLabel?: string;
     className?: string;
     componentRef?: IRefObject<INav>;
+    // @deprecated
     expandButtonAriaLabel?: string;
     groups: INavLinkGroup[] | null;
     initialSelectedKey?: string;
@@ -7729,6 +7744,8 @@ export interface ITooltipHostProps extends React.HTMLAttributes<HTMLDivElement |
 // @public (undocumented)
 export interface ITooltipHostState {
     // (undocumented)
+    isAriaPlaceholderRendered: boolean;
+    // (undocumented)
     isTooltipVisible: boolean;
 }
 
@@ -7891,11 +7908,7 @@ export class LayerBase extends React.Component<ILayerProps, ILayerBaseState> {
     static defaultProps: ILayerProps;
     // (undocumented)
     render(): React.ReactNode;
-    // (undocumented)
-    UNSAFE_componentWillMount(): void;
-    // (undocumented)
-    UNSAFE_componentWillUpdate(): void;
-}
+    }
 
 // Warning: (ae-forgotten-export) The symbol "ILayerHostProps" needs to be exported by the entry point index.d.ts
 // 
@@ -8557,6 +8570,8 @@ export enum ResponsiveMode {
     medium = 1,
     // (undocumented)
     small = 0,
+    // (undocumented)
+    unknown = 999,
     // (undocumented)
     xLarge = 3,
     // (undocumented)

@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "DetailsList: Narrator should announce SelectAll Checkbox as a toggle selection for all items",
-  "packageName": "office-ui-fabric-react",
-  "email": "aneeshak@microsoft.com",
-  "commit": "24028884d7f00767de402aa6cb9e2dc9874c8f21",
-  "date": "2019-09-25T20:40:00.190Z"
-}

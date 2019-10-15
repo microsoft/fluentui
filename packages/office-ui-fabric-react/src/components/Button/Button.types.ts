@@ -290,6 +290,24 @@ export interface IButtonProps
   persistMenu?: boolean;
 
   /**
+   * If true, the persisted menu is rendered hidden when the button
+   * initially mounts. Non-persisted menus will
+   * not be in the component tree unless they are being shown
+   *
+   * Note: This increases the time the button will take to mount, but
+   * can improve perceived menu open perf. when the user opens the menu.
+   *
+   * @defaultvalue undefined, equivalent to false
+   *
+   * @deprecated There is known bug in Edge when this prop is true where scrollbars
+   * overlap with the content when a menu is first rendered hidden.
+   * See: https://github.com/OfficeDev/office-ui-fabric-react/issues/9034
+   * Please do not start using this. If you are already using this,
+   * please make sure that you are doing so only in non-Edge browsers
+   */
+  renderPersistedMenuHiddenOnMount?: boolean;
+
+  /**
    * Experimental prop that get passed into the menuButton that's rendered as part of
    * split button. Anything passed in will likely need to have accompanying
    * style changes.

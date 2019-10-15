@@ -4,7 +4,7 @@ exports[`ContextualMenu ContextualMenu snapshot ContextualMenu should be present
 <button
   aria-expanded={false}
   aria-haspopup={true}
-  aria-owns="id__94-menu"
+  aria-owns={null}
   className=
       ms-Button
       ms-Button--default

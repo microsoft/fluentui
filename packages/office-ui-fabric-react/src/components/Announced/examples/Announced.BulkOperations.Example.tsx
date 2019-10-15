@@ -119,7 +119,7 @@ export class AnnouncedBulkOperationsExample extends React.Component<{}, IAnnounc
   private _renderAnnounced(): JSX.Element | undefined {
     const { numberOfItems } = this.state;
     if (numberOfItems > 0) {
-      return <Announced message={`${numberOfItems} item${numberOfItems === 1 ? '' : 's'} moved`} />;
+      return <Announced message={`${numberOfItems} item${numberOfItems === 1 ? '' : 's'} moved`} aria-live={'assertive'} />;
     }
   }
 

@@ -331,9 +331,6 @@ exports[`Component Examples renders DatePicker.WeekNumbers.Example.tsx correctly
           &:active .ms-Dropdown-title--hasError {
             border-color: #a4262c;
           }
-          &:focus .ms-Dropdown-title--hasError {
-            border-color: #a4262c;
-          }
       data-is-focusable={true}
       id="Dropdown5"
       onBlur={[Function]}
@@ -342,6 +339,7 @@ exports[`Component Examples renders DatePicker.WeekNumbers.Example.tsx correctly
       onFocus={[Function]}
       onKeyDown={[Function]}
       onKeyUp={[Function]}
+      onMouseDown={[Function]}
       role="listbox"
       tabIndex={0}
     >

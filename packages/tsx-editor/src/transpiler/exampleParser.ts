@@ -93,6 +93,7 @@ export function tryParseExample(example: string, supportedPackages: IBasicPackag
 
 /** @internal */
 export function _tryParseExample(example: string, supportedPackages: string[]): IExampleInfo | string {
+  // Use .source because IE 11 doesn't support creating a regex from a regex
   const possibleComponents = example.match(new RegExp(COMPONENT_NAME_REGEX.source, 'gm'));
   const imports = _getImports(example);
 
@@ -147,6 +148,7 @@ export function _tryParseExample(example: string, supportedPackages: string[]): 
 
 /** @internal */
 export function _getImports(example: string): IImport[] {
+  // Use .source because IE 11 doesn't support creating a regex from a regex
   const imports = example.match(new RegExp(IMPORT_REGEX.source, 'gm'));
   if (!imports) {
     return [];

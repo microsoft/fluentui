@@ -9,7 +9,8 @@ import {
   css,
   CustomizerContext,
   warn,
-  ICustomizations
+  ICustomizations,
+  memoizeFunction
 } from 'office-ui-fabric-react/lib/Utilities';
 import { ISchemeNames, IProcessedStyleSet } from 'office-ui-fabric-react/lib/Styling';
 import { IStackComponent, Stack } from 'office-ui-fabric-react/lib/Stack';
@@ -17,14 +18,7 @@ import { AppCustomizationsContext, IAppCustomizations, IExampleCardCustomization
 import { CodepenComponent, CONTENT_ID } from '../CodepenComponent/CodepenComponent';
 import { IExampleCardProps, IExampleCardStyleProps, IExampleCardStyles } from './ExampleCard.types';
 import { getStyles } from './ExampleCard.styles';
-import {
-  EditorWrapper,
-  SUPPORTED_PACKAGES,
-  IEditorPreviewProps,
-  IMonacoTextModel,
-  transformExample
-} from '@uifabric/tsx-editor/lib/index-min';
-// DO NOT import anything from the root of tsx-editor, to avoid pulling Monaco into the main bundle!
+import { EditorWrapper, SUPPORTED_PACKAGES, IMonacoTextModel, transformExample } from '@uifabric/tsx-editor';
 
 export interface IExampleCardState {
   /** only used if props.isCodeVisible and props.onToggleEditor are undefined */
@@ -89,7 +83,7 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
       theme,
       isCodeVisible = this.state.isCodeVisible
     } = this.props;
-    const { themeIndex, latestCode } = this.state;
+    const { themeIndex, schemeIndex, latestCode } = this.state;
 
     return (
       <AppCustomizationsContext.Consumer>
@@ -111,7 +105,9 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
           const { subComponentStyles } = classNames;
           const { codeButtons: codeButtonStyles } = subComponentStyles;
 
-          const exampleCard = (
+          const ExamplePreview = this._getPreviewComponent(this._activeCustomizations, schemeIndex);
+
+          return (
             <div className={css(classNames.root, isCodeVisible && 'is-codeVisible')}>
               <div className={classNames.header}>
                 <span className={classNames.title}>{title}</span>
@@ -154,24 +150,24 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
                   )}
                 </div>
               </div>
-              <EditorWrapper
-                code={latestCode}
-                supportedPackages={SUPPORTED_PACKAGES}
-                isCodeVisible={isCodeVisible}
-                editorClassName={classNames.code}
-                height={500}
-                width="auto"
-                previewClassName={classNames.example}
-                onRenderPreview={this._onRenderPreview}
-                modelRef={this._monacoModelRef}
-              >
-                {children}
-              </EditorWrapper>
+              {isCodeVisible ? (
+                <EditorWrapper
+                  code={latestCode}
+                  supportedPackages={SUPPORTED_PACKAGES}
+                  editorClassName={classNames.code}
+                  editorAriaLabel={`Editor for the example "${title}". The example will be updated as you type.`}
+                  modelRef={this._monacoModelRef}
+                  previewAs={(ExamplePreview as any) as React.FunctionComponent<{}>} // tslint:disable-line:no-any
+                >
+                  {children}
+                </EditorWrapper>
+              ) : (
+                <ExamplePreview>{children}</ExamplePreview>
+              )}
 
               {this._getDosAndDonts()}
             </div>
           );
-          return exampleCard;
         }}
       </AppCustomizationsContext.Consumer>
     );
@@ -195,21 +191,33 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
     }
   }
 
-  private _onRenderPreview = (previewProps: IEditorPreviewProps, defaultRender: (props: IEditorPreviewProps) => React.ReactNode) => {
-    const content = defaultRender({ ...previewProps, isScrollable: true });
-    if (this._activeCustomizations) {
-      return (
-        <CustomizerContext.Provider value={{ customizations: { settings: {}, scopedSettings: {} } }}>
-          <Customizer {...this._activeCustomizations}>
-            <ThemeProvider scheme={_schemes[this.state.schemeIndex]}>
-              <Stack styles={regionStyles}>{content}</Stack>
-            </ThemeProvider>
-          </Customizer>
-        </CustomizerContext.Provider>
-      );
+  // tslint:disable-next-line:member-ordering
+  private _getPreviewComponent = memoizeFunction(
+    (activeCustomizations: ICustomizations | undefined, schemeIndex: number): React.FunctionComponent => {
+      // Generate a component which renders the children with the current
+      return props => {
+        const { children } = props;
+        const content = (
+          <div className={this._classNames.example} data-is-scrollable={true}>
+            {children}
+          </div>
+        );
+
+        if (activeCustomizations) {
+          return (
+            <CustomizerContext.Provider value={{ customizations: { settings: {}, scopedSettings: {} } }}>
+              <Customizer {...activeCustomizations}>
+                <ThemeProvider scheme={_schemes[schemeIndex]}>
+                  <Stack styles={regionStyles}>{content}</Stack>
+                </ThemeProvider>
+              </Customizer>
+            </CustomizerContext.Provider>
+          );
+        }
+        return content;
+      };
     }
-    return content;
-  };
+  );
 
   private _onSchemeChange = (ev: React.MouseEvent<HTMLDivElement>, value: IDropdownOption) => {
     this.setState({ schemeIndex: value.key as number });
@@ -263,6 +271,7 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
     }
   };
 }
+
 export const ExampleCard: React.StatelessComponent<IExampleCardProps> = styled<
   IExampleCardProps,
   IExampleCardStyleProps,

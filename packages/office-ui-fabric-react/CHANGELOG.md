@@ -1,7 +1,141 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 26 Sep 2019 12:32:32 GMT and should not be manually modified.
+This log was last generated on Mon, 14 Oct 2019 12:30:37 GMT and should not be manually modified.
 
+## 7.49.0
+Mon, 14 Oct 2019 12:30:37 GMT
+
+### Minor changes
+
+- Tooltip: Creating aria placeholder for accessibility scenarios with Tooltips with a render delay. (Humberto.Morimoto@microsoft.com)
+### Patches
+
+- SpinButton: Fixing minWidth and having it come from const to be consistent. (Humberto.Morimoto@microsoft.com)
+## 7.48.1
+Fri, 11 Oct 2019 12:31:31 GMT
+
+### Patches
+
+- TeachingBubble: body content should resize better when container is wide. Added wide example with just text to demonstrate this. (aneeshak@microsoft.com)
+- Apply className on DetailsHeaderBase. (email not defined)
+## 7.48.0
+Thu, 10 Oct 2019 12:32:08 GMT
+
+### Minor changes
+
+- Export DetailsRowFields (KevinTCoughlin@users.noreply.github.com)
+### Patches
+
+- Fixed dropdown to not select first option automatically unless it's selected using keyboard navigation per aria (xgao@microsoft.com)
+- Announced: explicitly show aria-live property in Announced types (naethell@microsoft.com)
+## 7.47.0
+Wed, 09 Oct 2019 22:25:09 GMT
+
+### Minor changes
+
+- ResponsiveMode: defaulting to large to avoid breaking changes for scenarios assuming it would be available on first render. (dzearing@microsoft.com)
+### Patches
+
+- Dropdown: when `openOnKeyboardFocus` prop is set to true, the Dropdown now does not close the options callout immediately. (xgao@microsoft.com)
+## 7.46.0
+Wed, 09 Oct 2019 12:34:23 GMT
+
+### Minor changes
+
+- Breadcrumb: Allow setting a custom overflow icon. (madomi@microsoft.com)
+- Announced: default aria live to polite (naethell@microsoft.com)
+### Patches
+
+- DetailsList: ariaLabel for select all checkbox should be dependent on selection mode (aneeshak@microsoft.com)
+- Changing order of arguments passed to getClassNames. Until now it was inconsistent with type defined in Button.types.ts (kushaly@microsoft.com)
+## 7.45.1
+Tue, 08 Oct 2019 12:31:37 GMT
+
+### Patches
+
+- ComboBox: Making error messages accessible to screen readers. (Humberto.Morimoto@microsoft.com)
+## 7.45.0
+Mon, 07 Oct 2019 23:42:31 GMT
+
+### Minor changes
+
+- Adding a new prop renderPersistedMenuHiddenOnMount (kushaly@microsoft.com)
+- Callout and Card: Fix anchors for both (joschect@microsoft.com)
+### Patches
+
+- Callout & Tooltip: Making background color themable. (Humberto.Morimoto@microsoft.com)
+## 7.44.0
+Mon, 07 Oct 2019 12:33:45 GMT
+
+### Minor changes
+
+- Reverting dependency on ReactDOM findDOMNode in utilities to avoid bundle problems in partners. (dzearing@microsoft.com)
+### Patches
+
+- fixed minor a11y bugs, revamped example page (mgodbolt@microsoft.com)
+## 7.43.2
+Fri, 04 Oct 2019 22:19:48 GMT
+
+### Patches
+
+- ContextualMenu: Removing deprecated check for getMenuClassNames that was stopping callout subComponentStyles from being applied. (Humberto.Morimoto@microsoft.com)
+## 7.43.1
+Thu, 03 Oct 2019 23:14:46 GMT
+
+### Patches
+
+- Fixes broken publish (odbuild@microsoft.com)
+## 7.43.0
+Thu, 03 Oct 2019 01:14:35 GMT
+
+### Minor changes
+
+- Callout: Addressing regression when target is an event. (dzearing@microsoft.com)
+### Patches
+
+- Dropdown: adjust option styling for IE11 (naethell@microsoft.com)
+- Dropdown: Making multiselect options clickable outside of the options label while still within Dropdown's boundaries. (Humberto.Morimoto@microsoft.com)
+## 7.42.0
+Wed, 02 Oct 2019 12:31:15 GMT
+
+### Minor changes
+
+- Nav: improve ARIA labels for group headings. (jdh@microsoft.com)
+### Patches
+
+- Prevent suggestion autocomplete without selection (anhw@microsoft.com)
+- DocumentCard: Adding aria-label descriptions to all examples. (Humberto.Morimoto@microsoft.com)
+- Teachingbubble Example: Fix illustration example (joschect@microsoft.com)
+- Fixing the rendering of boolean values in Lists (nicul@microsoft.com)
+## 7.41.0
+Tue, 01 Oct 2019 12:33:48 GMT
+
+### Minor changes
+
+- Layer: now works better when rendering from a child window. (dzearing@microsoft.com)
+### Patches
+
+- Refactoring BaseButton with respect to how it processes menuProps (kushaly@microsoft.com)
+- Rating: Align read-only functionality with ARIA standards. (jagore@microsoft.com)
+## 7.40.0
+Mon, 30 Sep 2019 12:35:16 GMT
+
+### Minor changes
+
+- dateMath change to include extra parameter when calculating date range (jolore@microsoft.com)
+### Patches
+
+- Dropdown: There is now a visible focus border on Dropdowns in the error state. (cliff.koh@microsoft.com)
+## 7.39.2
+Fri, 27 Sep 2019 12:33:04 GMT
+
+### Patches
+
+- SwatchColorPicker: Updates web fluent styles per toolkit (v-mare@microsoft.com)
+- revert icon button back to fixed width (mgodbolt@microsoft.com)
+- Dropdown: Narrator should announce options before, during, and after expanding/collapsing. (aneeshak@microsoft.com)
+- DetailsList: Narrator should announce SelectAll Checkbox as a toggle selection for all items (aneeshak@microsoft.com)
+- TextField: Multiline textfields are now correctly associated with their labels with `aria-labelledby`. (aneeshak@microsoft.com)
 ## 7.39.1
 Thu, 26 Sep 2019 12:32:32 GMT
 

@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { hiddenContentStyle } from '../../Styling';
 import {
   initializeComponentRef,
   Async,
@@ -16,6 +17,7 @@ import { Tooltip } from './Tooltip';
 import { TooltipDelay } from './Tooltip.types';
 
 export interface ITooltipHostState {
+  isAriaPlaceholderRendered: boolean;
   isTooltipVisible: boolean;
 }
 
@@ -43,6 +45,7 @@ export class TooltipHostBase extends React.Component<ITooltipHostProps, ITooltip
     initializeComponentRef(this);
 
     this.state = {
+      isAriaPlaceholderRendered: false,
       isTooltipVisible: false
     };
 
@@ -70,7 +73,7 @@ export class TooltipHostBase extends React.Component<ITooltipHostProps, ITooltip
       className
     });
 
-    const { isTooltipVisible } = this.state;
+    const { isAriaPlaceholderRendered, isTooltipVisible } = this.state;
     const tooltipId = id || getId('tooltip');
     const isContentPresent = !!(content || (tooltipProps && tooltipProps.onRenderContent && tooltipProps.onRenderContent()));
     const showTooltip = isTooltipVisible && isContentPresent;
@@ -106,6 +109,11 @@ export class TooltipHostBase extends React.Component<ITooltipHostProps, ITooltip
             {...getNativeProps(this.props, divProperties)}
             {...tooltipProps}
           />
+        )}
+        {isAriaPlaceholderRendered && (
+          <div id={tooltipId} style={hiddenContentStyle as React.CSSProperties}>
+            {content}
+          </div>
         )}
       </div>
     );
@@ -174,6 +182,7 @@ export class TooltipHostBase extends React.Component<ITooltipHostProps, ITooltip
     this._clearOpenTimer();
 
     if (delay !== TooltipDelay.zero) {
+      this.setState({ isAriaPlaceholderRendered: true });
       const delayTime = this._getDelayTime(delay!); // non-null assertion because we set it in `defaultProps`
 
       this._openTimerId = this._async.setTimeout(() => {
@@ -225,7 +234,10 @@ export class TooltipHostBase extends React.Component<ITooltipHostProps, ITooltip
 
   private _toggleTooltip = (isTooltipVisible: boolean): void => {
     if (this.state.isTooltipVisible !== isTooltipVisible) {
-      this.setState({ isTooltipVisible }, () => this.props.onTooltipToggle && this.props.onTooltipToggle(this.state.isTooltipVisible));
+      this.setState(
+        { isAriaPlaceholderRendered: false, isTooltipVisible },
+        () => this.props.onTooltipToggle && this.props.onTooltipToggle(this.state.isTooltipVisible)
+      );
     }
   };
 

@@ -754,9 +754,6 @@ exports[`Component Examples renders Stack.Horizontal.WrapAdvanced.Example.tsx co
               &:active .ms-Dropdown-title--hasError {
                 border-color: #a4262c;
               }
-              &:focus .ms-Dropdown-title--hasError {
-                border-color: #a4262c;
-              }
           data-is-focusable={true}
           id="Dropdown2"
           onBlur={[Function]}
@@ -765,6 +762,7 @@ exports[`Component Examples renders Stack.Horizontal.WrapAdvanced.Example.tsx co
           onFocus={[Function]}
           onKeyDown={[Function]}
           onKeyUp={[Function]}
+          onMouseDown={[Function]}
           role="listbox"
           tabIndex={0}
         >
@@ -983,9 +981,6 @@ exports[`Component Examples renders Stack.Horizontal.WrapAdvanced.Example.tsx co
               &:active .ms-Dropdown-title--hasError {
                 border-color: #a4262c;
               }
-              &:focus .ms-Dropdown-title--hasError {
-                border-color: #a4262c;
-              }
           data-is-focusable={true}
           id="Dropdown3"
           onBlur={[Function]}
@@ -994,6 +989,7 @@ exports[`Component Examples renders Stack.Horizontal.WrapAdvanced.Example.tsx co
           onFocus={[Function]}
           onKeyDown={[Function]}
           onKeyUp={[Function]}
+          onMouseDown={[Function]}
           role="listbox"
           tabIndex={0}
         >
@@ -1212,9 +1208,6 @@ exports[`Component Examples renders Stack.Horizontal.WrapAdvanced.Example.tsx co
               &:active .ms-Dropdown-title--hasError {
                 border-color: #a4262c;
               }
-              &:focus .ms-Dropdown-title--hasError {
-                border-color: #a4262c;
-              }
           data-is-focusable={true}
           id="Dropdown4"
           onBlur={[Function]}
@@ -1223,6 +1216,7 @@ exports[`Component Examples renders Stack.Horizontal.WrapAdvanced.Example.tsx co
           onFocus={[Function]}
           onKeyDown={[Function]}
           onKeyUp={[Function]}
+          onMouseDown={[Function]}
           role="listbox"
           tabIndex={0}
         >

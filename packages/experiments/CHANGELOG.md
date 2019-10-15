@@ -1,7 +1,25 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Mon, 23 Sep 2019 12:33:15 GMT and should not be manually modified.
+This log was last generated on Tue, 08 Oct 2019 12:31:37 GMT and should not be manually modified.
 
+## 7.18.3
+Tue, 08 Oct 2019 12:31:37 GMT
+
+### Patches
+
+- Updating snapshots. (Humberto.Morimoto@microsoft.com)
+## 7.18.2
+Thu, 03 Oct 2019 23:14:46 GMT
+
+### Patches
+
+- Fixes publish issue from beachball (odbuild@microsoft.com)
+## 7.18.0
+Fri, 27 Sep 2019 12:33:04 GMT
+
+### Minor changes
+
+- Golden Folder grid view CSS cleanup for Fabric Master (caperez@microsoft.com)
 ## 7.17.1
 Mon, 23 Sep 2019 12:33:15 GMT
 

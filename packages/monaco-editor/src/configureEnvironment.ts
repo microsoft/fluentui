@@ -36,7 +36,8 @@ export function getMonacoConfig(): IMonacoConfig | undefined {
     (globalObj.MonacoEnvironment && globalObj.appPath && globalObj.jsSuffix
       ? {
           baseUrl: globalObj.appPath,
-          useMinified: globalObj.jsSuffix === '.min.js'
+          useMinified: globalObj.jsSuffix === '.min.js',
+          crossDomain: globalObj.location.hostname.indexOf('microsoft.com') !== -1
         }
       : undefined)
   );

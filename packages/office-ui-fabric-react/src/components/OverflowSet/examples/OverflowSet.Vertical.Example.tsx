@@ -66,7 +66,7 @@ export class OverflowSetVerticalExample extends React.PureComponent {
   private _onRenderOverflowButton = (overflowItems: any[] | undefined): JSX.Element => {
     return (
       <CommandBarButton
-        role="menu"
+        role="menuitem"
         title="More items"
         styles={{ root: { padding: '10px' }, menuIcon: { fontSize: '16px' } }}
         menuIconProps={{ iconName: 'More' }}

@@ -145,9 +145,6 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
           &:active .ms-Dropdown-title--hasError {
             border-color: #a4262c;
           }
-          &:focus .ms-Dropdown-title--hasError {
-            border-color: #a4262c;
-          }
       data-is-focusable={true}
       id="Dropdown0"
       onBlur={[Function]}
@@ -155,6 +152,7 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
       onFocus={[Function]}
       onKeyDown={[Function]}
       onKeyUp={[Function]}
+      onMouseDown={[Function]}
       role="listbox"
       tabIndex={0}
     >
@@ -342,9 +340,6 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
           &:active .ms-Dropdown-title--hasError {
             border-color: #a4262c;
           }
-          &:focus .ms-Dropdown-title--hasError {
-            border-color: #a4262c;
-          }
       data-is-focusable={false}
       id="Dropdown1"
       onBlur={[Function]}
@@ -352,6 +347,7 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
       onFocus={[Function]}
       onKeyDown={[Function]}
       onKeyUp={[Function]}
+      onMouseDown={[Function]}
       tabIndex={-1}
     >
       <span
@@ -558,9 +554,6 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
           &:active .ms-Dropdown-title--hasError {
             border-color: #a4262c;
           }
-          &:focus .ms-Dropdown-title--hasError {
-            border-color: #a4262c;
-          }
       data-is-focusable={true}
       id="Dropdown2"
       onBlur={[Function]}
@@ -568,6 +561,7 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
       onFocus={[Function]}
       onKeyDown={[Function]}
       onKeyUp={[Function]}
+      onMouseDown={[Function]}
       tabIndex={0}
     >
       <span

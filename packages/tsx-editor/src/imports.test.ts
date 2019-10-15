@@ -9,7 +9,7 @@ describe('monaco imports', () => {
 
   it('test can detect monaco imports', () => {
     try {
-      require('./index');
+      require('./Editor');
     } catch (ex) {
       // Test passes!
       return;
@@ -21,16 +21,16 @@ describe('monaco imports', () => {
 
   it('does not import monaco in certain basic files', () => {
     try {
-      require('./index-min');
+      require('./index');
     } catch (ex) {
       throw new Error(`
-Error importing index-min in test! This probably means that either:
+Error importing index.ts in test! This probably means that either:
 
 1. You added a reference to a new package
     => Solution: add mapping for package in jest.config.js
 
 2. You added a root import of @uifabric/monaco-editor in a file which shouldn't reference Monaco.
-    => Solution: If you need types from Monaco in a file referenced by index-min, import from:
+    => Solution: If you need types from Monaco in a file referenced by index.ts, import from:
           @uifabric/monaco-editor/esm/vs/editor/editor.api
        For imports besides types, please restructure your code.
 

@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "revert icon button back to fixed width",
-  "packageName": "office-ui-fabric-react",
-  "email": "mgodbolt@microsoft.com",
-  "commit": "855b171137d267e4dac8d1e06a9e0de152553640",
-  "date": "2019-09-24T16:57:32.539Z"
-}

@@ -19,12 +19,7 @@ export class CalendarPage extends React.Component<{}, {}> {
         exampleCards={
           <div>
             <ExampleCard title="Inline Calendar" code={CalendarInlineExampleCode}>
-              <CalendarInlineExample
-                isMonthPickerVisible={false}
-                dateRangeType={DateRangeType.Day}
-                autoNavigateOnSelection={false}
-                showGoToToday={true}
-              />
+              <CalendarInlineExample isMonthPickerVisible={false} dateRangeType={DateRangeType.Day} showGoToToday={true} />
             </ExampleCard>
             <ExampleCard title="Inline Calendar with overlayed month picker when header is clicked" code={CalendarInlineExampleCode}>
               <CalendarInlineExample
@@ -32,14 +27,12 @@ export class CalendarPage extends React.Component<{}, {}> {
                 highlightCurrentMonth={false}
                 highlightSelectedMonth={true}
                 dateRangeType={DateRangeType.Day}
-                autoNavigateOnSelection={false}
                 showGoToToday={false}
               />
             </ExampleCard>
             <ExampleCard title="Inline Calendar with month picker" code={CalendarInlineExampleCode}>
               <CalendarInlineExample
                 dateRangeType={DateRangeType.Day}
-                autoNavigateOnSelection={false}
                 highlightCurrentMonth={false}
                 highlightSelectedMonth={true}
                 showGoToToday={true}
@@ -48,7 +41,6 @@ export class CalendarPage extends React.Component<{}, {}> {
             <ExampleCard title="Inline Calendar with week selection" code={CalendarInlineExampleCode}>
               <CalendarInlineExample
                 dateRangeType={DateRangeType.Week}
-                autoNavigateOnSelection={true}
                 highlightCurrentMonth={false}
                 highlightSelectedMonth={true}
                 showGoToToday={true}
@@ -58,7 +50,6 @@ export class CalendarPage extends React.Component<{}, {}> {
             <ExampleCard title="Inline Calendar with month selection" code={CalendarInlineExampleCode}>
               <CalendarInlineExample
                 dateRangeType={DateRangeType.Month}
-                autoNavigateOnSelection={true}
                 highlightCurrentMonth={false}
                 highlightSelectedMonth={true}
                 showGoToToday={true}
@@ -69,7 +60,6 @@ export class CalendarPage extends React.Component<{}, {}> {
               <CalendarInlineExample
                 isMonthPickerVisible={false}
                 dateRangeType={DateRangeType.Day}
-                autoNavigateOnSelection={false}
                 showGoToToday={true}
                 showWeekNumbers={true}
               />
@@ -78,7 +68,6 @@ export class CalendarPage extends React.Component<{}, {}> {
               <CalendarInlineExample
                 isMonthPickerVisible={false}
                 dateRangeType={DateRangeType.Day}
-                autoNavigateOnSelection={false}
                 showGoToToday={true}
                 showSixWeeksByDefault={true}
               />
@@ -86,7 +75,6 @@ export class CalendarPage extends React.Component<{}, {}> {
             <ExampleCard title="Inline Calendar with month picker and no day picker" code={CalendarInlineExampleCode}>
               <CalendarInlineExample
                 dateRangeType={DateRangeType.Month}
-                autoNavigateOnSelection={false}
                 showGoToToday={true}
                 highlightCurrentMonth={false}
                 highlightSelectedMonth={true}
@@ -99,7 +87,6 @@ export class CalendarPage extends React.Component<{}, {}> {
             >
               <CalendarInlineExample
                 dateRangeType={DateRangeType.Day}
-                autoNavigateOnSelection={true}
                 highlightCurrentMonth={false}
                 highlightSelectedMonth={true}
                 showGoToToday={false}
@@ -115,11 +102,23 @@ export class CalendarPage extends React.Component<{}, {}> {
               <CalendarInlineExample
                 dateRangeType={DateRangeType.WorkWeek}
                 firstDayOfWeek={DayOfWeek.Monday}
-                autoNavigateOnSelection={true}
                 highlightCurrentMonth={false}
                 highlightSelectedMonth={true}
                 showGoToToday={true}
                 workWeekDays={[DayOfWeek.Tuesday, DayOfWeek.Saturday, DayOfWeek.Wednesday, DayOfWeek.Friday]}
+              />
+            </ExampleCard>
+            <ExampleCard
+              title="Calendar with multiday view using dateRangeType === DateRangeType.Day and daysToSelectInDayView = 4"
+              code={CalendarInlineExampleCode}
+            >
+              <CalendarInlineExample
+                dateRangeType={DateRangeType.Day}
+                highlightCurrentMonth={false}
+                highlightSelectedMonth={true}
+                showGoToToday={true}
+                calendarDayProps={{ daysToSelectInDayView: 4 }}
+                showDaysToSelectInDayViewDropdown={true}
               />
             </ExampleCard>
             <ExampleCard title="Calendar launched from a button" code={CalendarButtonExampleCode}>

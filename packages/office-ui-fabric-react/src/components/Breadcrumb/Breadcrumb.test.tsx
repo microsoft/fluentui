@@ -2,6 +2,7 @@ import * as React from 'react';
 import { mount } from 'enzyme';
 import * as renderer from 'react-test-renderer';
 import { Breadcrumb, IBreadcrumbItem } from './index';
+import { Icon } from '../Icon/Icon';
 
 describe('Breadcrumb', () => {
   it('renders empty breadcrumb', () => {
@@ -21,6 +22,8 @@ describe('Breadcrumb', () => {
     ];
 
     const divider = () => <span>*</span>;
+
+    const overflowIcon = () => <Icon iconName={'ChevronDown'} />;
 
     it('renders breadcumb correctly 1', () => {
       const component = renderer.create(<Breadcrumb items={items} />);
@@ -64,6 +67,14 @@ describe('Breadcrumb', () => {
     it('renders breadcumb correctly 6', () => {
       // With maxDisplayedItems and overflowIndex as 0
       const component = renderer.create(<Breadcrumb items={items} maxDisplayedItems={0} overflowIndex={0} />);
+
+      const tree = component.toJSON();
+      expect(tree).toMatchSnapshot();
+    });
+
+    it('renders breadcumb correctly 7', () => {
+      // With custom overflow icon
+      const component = renderer.create(<Breadcrumb items={items} maxDisplayedItems={2} onRenderOverflowIcon={overflowIcon} />);
 
       const tree = component.toJSON();
       expect(tree).toMatchSnapshot();

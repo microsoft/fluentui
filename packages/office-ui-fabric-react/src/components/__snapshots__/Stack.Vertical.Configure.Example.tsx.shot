@@ -1829,9 +1829,6 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     &:active .ms-Dropdown-title--hasError {
                       border-color: #a4262c;
                     }
-                    &:focus .ms-Dropdown-title--hasError {
-                      border-color: #a4262c;
-                    }
                 data-is-focusable={true}
                 id="Dropdown8"
                 onBlur={[Function]}
@@ -1840,6 +1837,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 onKeyUp={[Function]}
+                onMouseDown={[Function]}
                 role="listbox"
                 tabIndex={0}
               >
@@ -2058,9 +2056,6 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     &:active .ms-Dropdown-title--hasError {
                       border-color: #a4262c;
                     }
-                    &:focus .ms-Dropdown-title--hasError {
-                      border-color: #a4262c;
-                    }
                 data-is-focusable={true}
                 id="Dropdown9"
                 onBlur={[Function]}
@@ -2069,6 +2064,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 onKeyUp={[Function]}
+                onMouseDown={[Function]}
                 role="listbox"
                 tabIndex={0}
               >
