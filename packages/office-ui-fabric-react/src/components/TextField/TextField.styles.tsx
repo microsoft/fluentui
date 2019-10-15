@@ -210,8 +210,7 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
           ':hover': {
             selectors: {
               ':after': {
-                //borderColor: semanticColors.inputBorderHovered
-                borderColor: 'red'
+                borderColor: semanticColors.inputBorderHovered
               },
               [HighContrastSelector]: {
                 selectors: {
@@ -224,7 +223,6 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
           }
         }
       },
-
       !underlined && {
         selectors: {
           ':after': {
@@ -252,33 +250,24 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
           }
         }
       },
-      // !focused &&
-      //   !disabled && {
-      //     selectors: {
-      //       ':hover': {
-      //         ':after': {
-      //           borderColor: semanticColors.inputBorderHovered
-      //         }
-      //       }
-      //     }
-      //   },
-      // Focus was here
       focused && {
         selectors: {
           ':after': {
             borderColor: semanticColors.inputFocusBorderAlt,
             borderWidth: '2px'
           },
+          ':hover': {
+            selectors: {
+              ':after': {
+                borderColor: semanticColors.inputFocusBorderAlt,
+                borderWidth: '2px'
+              }
+            }
+          },
           [HighContrastSelector]: {
             borderWidth: 2,
             borderColor: 'Highlight'
           }
-          // ':hover': {
-          //   ':after': {
-          //     borderColor: semanticColors.inputFocusBorderAlt,
-          //     borderWidth: '2px'
-          //   }
-          // }
         }
       },
       disabled && {
@@ -298,10 +287,6 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
       underlined &&
         focused && {
           selectors: {
-            ':after': {
-              borderWidth: '2px',
-              borderColor: 'green'
-            },
             [HighContrastSelector]: {
               height: 31 // -1px to prevent jumpiness in HC with the increased border-width to 2px
             }
