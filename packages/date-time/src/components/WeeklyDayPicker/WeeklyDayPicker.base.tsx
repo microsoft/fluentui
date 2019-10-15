@@ -79,13 +79,17 @@ export class WeeklyDayPickerBase extends BaseComponent<IWeeklyDayPickerProps, IW
   private _focusOnUpdate: boolean;
   private _initialTouchX: number | undefined;
 
-  public static getDerivedStateFromProps(props: IWeeklyDayPickerProps, state: IWeeklyDayPickerState): IWeeklyDayPickerState {
-    const currentDate = props.initialDate && !isNaN(props.initialDate.getTime()) ? props.initialDate : props.today || new Date();
-    const showFullMonth = !!props.showFullMonth;
+  public static getDerivedStateFromProps(
+    nextProps: Readonly<IWeeklyDayPickerProps>,
+    prevState: Readonly<IWeeklyDayPickerState>
+  ): Partial<IWeeklyDayPickerState> | null {
+    const currentDate =
+      nextProps.initialDate && !isNaN(nextProps.initialDate.getTime()) ? nextProps.initialDate : nextProps.today || new Date();
+    const showFullMonth = !!nextProps.showFullMonth;
     const newAnimationDirection =
-      showFullMonth !== state.previousShowFullMonth ? AnimationDirection.Vertical : AnimationDirection.Horizontal;
+      showFullMonth !== prevState.previousShowFullMonth ? AnimationDirection.Vertical : AnimationDirection.Horizontal;
 
-    if (!compareDates(currentDate, state.selectedDate)) {
+    if (!compareDates(currentDate, prevState.selectedDate)) {
       return {
         selectedDate: currentDate,
         navigatedDate: currentDate,
@@ -96,7 +100,7 @@ export class WeeklyDayPickerBase extends BaseComponent<IWeeklyDayPickerProps, IW
 
     return {
       selectedDate: currentDate,
-      navigatedDate: state.navigatedDate,
+      navigatedDate: prevState.navigatedDate,
       previousShowFullMonth: showFullMonth,
       animationDirection: newAnimationDirection
     };

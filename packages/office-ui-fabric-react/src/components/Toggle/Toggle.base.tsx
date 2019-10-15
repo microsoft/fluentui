@@ -14,14 +14,16 @@ export class ToggleBase extends BaseComponent<IToggleProps, IToggleState> implem
   private _id: string;
   private _toggleButton = React.createRef<HTMLButtonElement>();
 
-  public static getDerivedStateFromProps(props: IToggleProps, state: IToggleState): IToggleState {
-    if (props.checked === undefined) {
-      return state;
+  public static getDerivedStateFromProps(
+    nextProps: Readonly<IToggleProps>,
+    prevState: Readonly<IToggleState>
+  ): Partial<IToggleState> | null {
+    if (nextProps.checked === undefined) {
+      return null;
     }
 
     return {
-      ...state,
-      checked: !!props.checked
+      checked: !!nextProps.checked
     };
   }
 
