@@ -16,16 +16,16 @@ export class AnnouncedBase extends React.Component<IAnnouncedProps> {
   private _classNames: IProcessedStyleSet<IAnnouncedStyles>;
 
   public render(): JSX.Element {
-    const { message, styles } = this.props;
+    const { message, styles, as: Root = 'div' } = this.props;
 
     this._classNames = getClassNames(styles);
 
     return (
-      <div role="status" {...getNativeProps(this.props, divProperties)}>
+      <Root role="status" {...getNativeProps(this.props, divProperties)}>
         <DelayedRender>
           <div className={this._classNames.screenReaderText}>{message}</div>
         </DelayedRender>
-      </div>
+      </Root>
     );
   }
 }
