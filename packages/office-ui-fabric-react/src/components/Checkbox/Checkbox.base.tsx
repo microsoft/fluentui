@@ -109,7 +109,7 @@ export class CheckboxBase extends React.Component<ICheckboxProps, ICheckboxState
               type="checkbox"
               {...inputProps}
               data-ktp-execute-target={keytipAttributes['data-ktp-execute-target']}
-              {...isChecked !== undefined && { checked: isChecked }}
+              checked={isChecked}
               disabled={disabled}
               className={this._classNames.input}
               ref={this._checkBox}
