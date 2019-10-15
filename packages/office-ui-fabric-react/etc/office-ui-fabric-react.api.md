@@ -894,8 +894,6 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
     // (undocumented)
     componentWillUnmount(): void;
     // (undocumented)
-    componentWillUpdate(): void;
-    // (undocumented)
     static defaultProps: {
         layoutMode: DetailsListLayoutMode;
         selectionMode: SelectionMode;
@@ -3492,6 +3490,7 @@ export interface IDetailsListState {
     lastSelectionMode?: SelectionMode;
     // (undocumented)
     lastWidth?: number;
+    version: {};
 }
 
 // @public (undocumented)
@@ -5324,6 +5323,7 @@ export interface IListProps<T = any> extends React.HTMLAttributes<List<T> | HTML
     role?: string;
     startIndex?: number;
     usePageCache?: boolean;
+    version?: {};
 }
 
 // @public (undocumented)
