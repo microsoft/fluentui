@@ -335,6 +335,7 @@ exports[`ComboBox Renders correctly 1`] = `
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 12px;
           font-weight: 400;
+          margin-top: 5px;
         }
     id="ComboBox0-error"
     role="region"
@@ -682,6 +683,7 @@ exports[`ComboBox renders with a Keytip correctly 1`] = `
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 12px;
           font-weight: 400;
+          margin-top: 5px;
         }
     id="ComboBox4-error"
     role="region"
