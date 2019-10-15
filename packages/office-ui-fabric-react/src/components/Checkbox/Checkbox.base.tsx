@@ -28,15 +28,15 @@ export class CheckboxBase extends React.Component<ICheckboxProps, ICheckboxState
   private _id: string;
   private _classNames: { [key in keyof ICheckboxStyles]: string };
 
-  public static getDerivedStateFromProps(nextProps: ICheckboxProps, prevState: ICheckboxState): ICheckboxState | null {
-    const state: Partial<ICheckboxState> = {};
+  public static getDerivedStateFromProps(nextProps: Readonly<ICheckboxProps>, prevState: Readonly<ICheckboxState>): ICheckboxState | null {
+    const stateUpdate: Partial<ICheckboxState> = {};
     if (nextProps.indeterminate !== undefined) {
-      prevState.isIndeterminate = !!nextProps.indeterminate;
+      stateUpdate.isIndeterminate = !!nextProps.indeterminate;
     }
     if (nextProps.checked !== undefined) {
-      prevState.isChecked = !!nextProps.checked;
+      stateUpdate.isChecked = !!nextProps.checked;
     }
-    return Object.keys(state).length ? state : null;
+    return Object.keys(stateUpdate).length ? stateUpdate : null;
   }
 
   /**
