@@ -158,7 +158,7 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
 
     const { isSelected = false, isModal = false } = this.state;
 
-    const isSelectable = !!selection && selectionIndex > -1;
+    const { isSelectable = !!selection && selectionIndex > -1 } = this.props;
     const isInvokable = (!!href || !!onClick || !!invokeSelection) && !isModal;
     const ariaLabelWithSelectState = isSelected && ariaLabelSelected ? `${ariaLabel}, ${ariaLabelSelected}` : ariaLabel;
     const content = (
@@ -170,22 +170,22 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
         ) : null}
         {background
           ? this._onRenderBackground({
-              background: background,
-              hideBackground
-            })
+            background: background,
+            hideBackground
+          })
           : null}
         {foreground
           ? this._onRenderForeground({
-              foreground: foreground,
-              hideForeground
-            })
+            foreground: foreground,
+            hideForeground
+          })
           : null}
         {itemName || itemActivity
           ? this._onRenderNameplate({
-              name: itemName,
-              activity: itemActivity,
-              onlyOnHover: !!nameplateOnlyOnHover
-            })
+            name: itemName,
+            activity: itemActivity,
+            onlyOnHover: !!nameplateOnlyOnHover
+          })
           : null}
       </>
     );
@@ -229,7 +229,7 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
         data-is-focusable={true}
         data-is-sub-focuszone={true}
         data-disable-click-on-enter={true}
-        data-selection-index={selectionIndex > -1 ? selectionIndex : undefined}
+        data-selection-index={isInvokable && selectionIndex > -1 ? selectionIndex : undefined}
       >
         {link}
         {descriptionAriaLabel ? (
@@ -239,8 +239,8 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
         ) : null}
         {isSelectable
           ? this._onRenderCheck({
-              isSelected: isSelected
-            })
+            isSelected: isSelected
+          })
           : null}
       </div>
     );
@@ -275,7 +275,6 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
     hideForeground: boolean;
   }): JSX.Element | null {
     const finalForeground = typeof foreground === 'function' ? foreground(getTileLayoutFromProps(this.props)) : foreground;
-
     return finalForeground ? (
       <span key="foreground" role="presentation" className={css('ms-Tile-aboveNameplate', TileStyles.aboveNameplate)}>
         <span role="presentation" className={css('ms-Tile-content', TileStyles.content)}>
