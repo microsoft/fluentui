@@ -1,5 +1,5 @@
 {
-  "type": "minor",
+  "type": "patch",
   "comment": "CommandBar: Replacing inline styles with definition in styles file.",
   "packageName": "office-ui-fabric-react",
   "email": "Humberto.Morimoto@microsoft.com",
