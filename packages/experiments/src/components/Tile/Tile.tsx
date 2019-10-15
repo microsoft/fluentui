@@ -316,7 +316,6 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
     );
   }
 
-
   private _onRenderCheck({ isSelected }: { isSelected: boolean }): JSX.Element {
     const { toggleSelectionAriaLabel } = this.props;
 
