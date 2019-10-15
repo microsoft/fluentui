@@ -1,0 +1,9 @@
+{
+  "type": "patch",
+  "comment": "Fix getDerivedStateFromProps signatures",
+  "packageName": "@uifabric/date-time",
+  "email": "elcraig@microsoft.com",
+  "commit": "437c49f055744dc64f13e6ef8c71f5f2d5110d0a",
+  "date": "2019-10-15T22:20:21.450Z",
+  "file": "/Users/elizabeth/git/fabric-react3/change/@uifabric-date-time-2019-10-15-15-20-25-derivedstate.json"
+}
