@@ -34,7 +34,7 @@ export const SemanticSlots: React.StatelessComponent<ISemanticSlotsProps> = (pro
   let strongSlots: JSX.Element[] = [];
 
   slotNames = [
-    // DEFAULTS - 13
+    // DEFAULTS - 16
     'bodyBackground', // white
     'bodyBackgroundHovered', // neutralLighter
     'bodyBackgroundChecked', // neutralLight,
@@ -84,7 +84,7 @@ export const SemanticSlots: React.StatelessComponent<ISemanticSlotsProps> = (pro
 
     'accentButtonBackground', // accent
     'accentButtonText', // white
-    // INPUTS - 14
+    // INPUTS - 19
     'inputBorder', // neutralSecondaryAlt
     'inputBorderHovered', // neutralPrimary
     'inputBackground', // white
