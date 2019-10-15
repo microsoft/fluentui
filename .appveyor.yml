@@ -1,0 +1,27 @@
+environment:
+  nodejs_version: "8"
+  APPVEYOR: TRUE
+  
+# Install scripts. (runs after repo cloning)
+install:
+  # Get the latest stable version of Node.js or io.js
+  - ps: Install-Product node $env:nodejs_version
+  # install modules
+  - npm install
+
+# Configure project artifacts.
+artifacts:
+  - path: apps\test-bundle-button\dist\test-bundle-button-sizedata.json
+    name: SizeAuditor
+    type: json
+
+# Post-install test scripts.
+test_script:
+  # Output useful info for debugging.
+  - node --version
+  - npm --version
+  # run tests
+  - npm test
+  
+# Don't actually build.
+build: off

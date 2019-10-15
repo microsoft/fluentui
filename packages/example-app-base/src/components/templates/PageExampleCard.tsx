@@ -1,18 +1,7 @@
-import {
-  BaseComponent,
-  IBaseProps,
-  IClassNames,
-  autobind,
-  customizable
-} from 'office-ui-fabric-react/lib/Utilities';
-import {
-  ITheme,
-  IStyle,
-  mergeStyleSets,
-  getFocusStyle
-} from 'office-ui-fabric-react/lib/Styling';
+import { BaseComponent, IBaseProps, autobind, customizable } from 'office-ui-fabric-react/lib/Utilities';
+import { ITheme, IStyle, mergeStyleSets, getFocusStyle, IProcessedStyleSet } from 'office-ui-fabric-react/lib/Styling';
 import * as React from 'react';
-import { TypeScriptSnippet } from './TypeScriptSnippet';
+import { CodeSnippet } from '../CodeSnippet/index';
 import { PageHeader } from './PageHeader';
 
 export interface IPageExampleCardStyles {
@@ -38,8 +27,7 @@ export interface IPageExampleCardState {
 }
 
 const getDefaultStyles = (props: IPageExampleCardStyleProps): IPageExampleCardStyles => ({
-  root: {
-  },
+  root: {},
 
   header: {
     display: 'flex',
@@ -66,7 +54,7 @@ const getDefaultStyles = (props: IPageExampleCardStyleProps): IPageExampleCardSt
       outline: 'transparent',
       selectors: {
         ':hover': {
-          background: props.theme.palette.neutralLight,
+          background: props.theme.palette.neutralLight
         }
       }
     }
@@ -77,7 +65,8 @@ const getSubHeaderStyles = () => ({
   root: { flexGrow: 1 }
 });
 
-@customizable('PageExampleCard', ['theme'])
+/** @deprecated */
+@customizable('PageExampleCard', ['theme', 'styles'])
 export class PageExampleCard extends BaseComponent<IPageExampleCardProps, IPageExampleCardState> {
   constructor(props: IPageExampleCardProps) {
     super(props);
@@ -91,22 +80,18 @@ export class PageExampleCard extends BaseComponent<IPageExampleCardProps, IPageE
     const { children, theme, code, title } = this.props;
     const { expanded } = this.state;
     const styleProps: IPageExampleCardStyleProps = { theme: theme! };
-    const classNames: IClassNames<IPageExampleCardStyles> = mergeStyleSets(
-      getDefaultStyles(styleProps)
-    );
+    const classNames: IProcessedStyleSet<IPageExampleCardStyles> = mergeStyleSets(getDefaultStyles(styleProps));
 
     return (
-      <div className={ classNames.root }>
-        <div className={ classNames.header }>
-          <PageHeader getStyles={ getSubHeaderStyles }>{ title }</PageHeader>
-          <button onClick={ this._onToggleCode } className={ classNames.showCodeButton }>
-            { expanded ? 'Hide code' : 'Show code' }
+      <div className={classNames.root}>
+        <div className={classNames.header}>
+          <PageHeader styles={getSubHeaderStyles}>{title}</PageHeader>
+          <button onClick={this._onToggleCode} className={classNames.showCodeButton}>
+            {expanded ? 'Hide code' : 'Show code'}
           </button>
         </div>
-        { expanded && (
-          <TypeScriptSnippet>{ code }</TypeScriptSnippet>
-        ) }
-        { children }
+        {expanded && <CodeSnippet language="tsx">{code}</CodeSnippet>}
+        {children}
       </div>
     );
   }

@@ -17,6 +17,7 @@ export const DefaultPalette: IPalette = {
   neutralPrimary: '#333333',
   neutralPrimaryAlt: '#3c3c3c',
   neutralSecondary: '#666666',
+  neutralSecondaryAlt: '#767676',
   neutralTertiary: '#a6a6a6',
   neutralTertiaryAlt: '#c8c8c8',
   neutralQuaternary: '#d0d0d0',
@@ -27,6 +28,7 @@ export const DefaultPalette: IPalette = {
   accent: '#0078d4',
   white: '#ffffff',
   whiteTranslucent40: 'rgba(255,255,255,.4)',
+  yellowDark: '#d29200',
   yellow: '#ffb900',
   yellowLight: '#fff100',
   orange: '#d83b01',
@@ -49,5 +51,5 @@ export const DefaultPalette: IPalette = {
   tealLight: '#00b294',
   greenDark: '#004b1c',
   green: '#107c10',
-  greenLight: '#bad80a',
+  greenLight: '#bad80a'
 };

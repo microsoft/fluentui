@@ -1,4 +1,3 @@
-
 @import '~office-ui-fabric-react/src/common/common';
 
 .signalField {
@@ -20,6 +19,6 @@
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
-  text-align: left;
+  @include text-align(left);
   flex: 1 1 auto;
 }

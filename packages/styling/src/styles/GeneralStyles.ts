@@ -12,5 +12,5 @@ export const normalize: IRawStyle = {
 export const noWrap: IRawStyle = {
   overflow: 'hidden',
   textOverflow: 'ellipsis',
-  whiteSpace: 'nowrap',
+  whiteSpace: 'nowrap'
 };

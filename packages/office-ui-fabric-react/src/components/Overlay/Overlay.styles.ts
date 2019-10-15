@@ -3,26 +3,20 @@ import { HighContrastSelector, getGlobalClassNames } from '../../Styling';
 
 const GlobalClassNames = {
   root: 'ms-Overlay',
-  rootDark: 'ms-Overlay--dark',
+  rootDark: 'ms-Overlay--dark'
 };
 
-export const getStyles = (
-  props: IOverlayStyleProps
-): IOverlayStyles => {
-  const {
-    className,
-    theme,
-    isNone,
-    isDark,
-  } = props;
+export const getStyles = (props: IOverlayStyleProps): IOverlayStyles => {
+  const { className, theme, isNone, isDark } = props;
 
   const { palette } = theme;
 
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
-  return ({
+  return {
     root: [
       classNames.root,
+      theme.fonts.medium,
       {
         backgroundColor: palette.whiteTranslucent40,
         top: 0,
@@ -34,22 +28,23 @@ export const getStyles = (
         selectors: {
           [HighContrastSelector]: {
             border: '1px solid WindowText',
+            opacity: 0
           }
         }
       },
 
       isNone && {
-        visibility: 'hidden',
+        visibility: 'hidden'
       },
 
       isDark && [
         classNames.rootDark,
         {
-          backgroundColor: palette.blackTranslucent40,
+          backgroundColor: palette.blackTranslucent40
         }
       ],
 
       className
-    ],
-  });
+    ]
+  };
 };

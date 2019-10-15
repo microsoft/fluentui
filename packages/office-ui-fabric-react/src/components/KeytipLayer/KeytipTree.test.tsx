@@ -1,11 +1,7 @@
 import { IKeytipProps } from '../../Keytip';
 import { KeytipTree } from './KeytipTree';
 import { IKeytipTreeNode } from './IKeytipTreeNode';
-import {
-  KTP_SEPARATOR,
-  KTP_FULL_PREFIX,
-  KTP_LAYER_ID
-} from '../../utilities/keytips/KeytipConstants';
+import { KTP_SEPARATOR, KTP_FULL_PREFIX, KTP_LAYER_ID } from '../../utilities/keytips/KeytipConstants';
 
 let keytipTree = new KeytipTree();
 
@@ -88,7 +84,6 @@ function createKeytipProps(keySequences: string[]): IKeytipProps {
 }
 
 describe('KeytipTree', () => {
-
   beforeEach(() => {
     // Reset tree
     keytipTree = new KeytipTree();
@@ -195,6 +190,20 @@ describe('KeytipTree', () => {
       const nodeB = keytipTree.getNode(keytipIdB)!;
       expect(nodeB.disabled).toEqual(true);
       expect(nodeB.hasDynamicChildren).toEqual(true);
+    });
+
+    it('correctly updates node when keytip sequence changes', () => {
+      keytipTree.addNode(keytipPropsC, uniqueIdC);
+      keytipTree.addNode(keytipPropsB, uniqueIdB);
+      const updatedKeytipId = KTP_FULL_PREFIX + 'c' + KTP_SEPARATOR + 'g';
+      const updatedKeytipSequence = ['c', 'g'];
+      const updatedKeytipProps = createKeytipProps(updatedKeytipSequence);
+      keytipTree.updateNode(updatedKeytipProps, uniqueIdB);
+      const updatedNode = keytipTree.getNode(updatedKeytipId)!;
+      const updatedNodeParent = keytipTree.getNode(keytipIdC)!;
+      expect(updatedNode.id).toEqual(updatedKeytipId);
+      expect(updatedNode.keySequences).toEqual(updatedKeytipSequence);
+      expect(updatedNodeParent.children).toContain(updatedNode.id);
     });
   });
 

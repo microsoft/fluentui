@@ -53,7 +53,7 @@ const SCALE_UP100: string = keyframes({
 
 const SCALE_DOWN98: string = keyframes({
   from: { transform: 'scale3d(1,1,1)' },
-  to: { transform: 'scale3d(.98,.98,1)' },
+  to: { transform: 'scale3d(.98,.98,1)' }
 });
 
 const SCALE_DOWN100: string = keyframes({
@@ -140,11 +140,7 @@ export const AnimationStyles: IAnimationStyles = {
   // expandCollapse 100/200/400, delay 100/200
 };
 
-function _createAnimation(
-  animationName: string,
-  animationDuration: string,
-  animationTimingFunction: string
-): IRawStyle {
+function _createAnimation(animationName: string, animationDuration: string, animationTimingFunction: string): IRawStyle {
   return {
     animationName,
     animationDuration,

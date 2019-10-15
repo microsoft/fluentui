@@ -71,28 +71,42 @@ export function standardStyles(theme: ITheme): IButtonStyles {
             }
           }
         }
-      },
+      }
     },
 
     splitButtonMenuButtonDisabled: {
       backgroundColor: theme.palette.neutralLighter,
       selectors: {
         ':hover': {
-          backgroundColor: theme.palette.neutralLighter,
+          backgroundColor: theme.palette.neutralLighter
         }
       }
     },
 
     splitButtonDivider: {
+      backgroundColor: theme.palette.neutralTertiaryAlt,
+      position: 'absolute',
+      width: 1,
+      right: 31,
+      top: 8,
+      bottom: 8,
+      selectors: {
+        [HighContrastSelector]: {
+          backgroundColor: 'WindowText'
+        }
+      }
+    },
+
+    splitButtonDividerDisabled: {
       backgroundColor: theme.palette.neutralTertiaryAlt
     },
 
     splitButtonMenuButtonChecked: {
-      backgroundColor: theme.palette.themePrimary,
+      backgroundColor: theme.palette.themePrimary
     },
 
     splitButtonMenuButtonExpanded: {
-      backgroundColor: theme.palette.neutralLight,
+      backgroundColor: theme.palette.neutralLight
     },
 
     splitButtonMenuIcon: {
@@ -101,7 +115,7 @@ export function standardStyles(theme: ITheme): IButtonStyles {
 
     splitButtonMenuIconDisabled: {
       color: theme.palette.neutralTertiary
-    },
+    }
   };
 }
 
@@ -149,7 +163,7 @@ export function primaryStyles(theme: ITheme): IButtonStyles {
 
     rootChecked: {
       backgroundColor: theme.palette.themeDark,
-      color: theme.palette.white,
+      color: theme.palette.white
     },
 
     rootCheckedHovered: {
@@ -164,7 +178,7 @@ export function primaryStyles(theme: ITheme): IButtonStyles {
           borderColor: 'GrayText',
           backgroundColor: 'Window'
         }
-      },
+      }
     },
 
     // Split button styles
@@ -177,13 +191,30 @@ export function primaryStyles(theme: ITheme): IButtonStyles {
     },
 
     splitButtonDivider: {
-      backgroundColor: theme.palette.themeLighter
+      backgroundColor: theme.palette.white,
+      position: 'absolute',
+      width: 1,
+      right: 31,
+      top: 8,
+      bottom: 8,
+      selectors: {
+        [HighContrastSelector]: {
+          backgroundColor: 'Window'
+        }
+      }
+    },
+
+    splitButtonDividerDisabled: {
+      backgroundColor: theme.palette.neutralTertiaryAlt
     },
 
     splitButtonMenuButton: {
       backgroundColor: theme.palette.themePrimary,
       color: theme.palette.white,
       selectors: {
+        [HighContrastSelector]: {
+          backgroundColor: 'WindowText'
+        },
         ':hover': {
           backgroundColor: theme.palette.themeDark,
           selectors: {
@@ -192,24 +223,24 @@ export function primaryStyles(theme: ITheme): IButtonStyles {
             }
           }
         }
-      },
+      }
     },
 
     splitButtonMenuButtonDisabled: {
       backgroundColor: theme.palette.neutralLighter,
       selectors: {
         ':hover': {
-          backgroundColor: theme.palette.neutralLighter,
+          backgroundColor: theme.palette.neutralLighter
         }
       }
     },
 
     splitButtonMenuButtonChecked: {
-      backgroundColor: theme.palette.themeDark,
+      backgroundColor: theme.palette.themeDark
     },
 
     splitButtonMenuButtonExpanded: {
-      backgroundColor: theme.palette.themeDark,
+      backgroundColor: theme.palette.themeDark
     },
 
     splitButtonMenuIcon: {

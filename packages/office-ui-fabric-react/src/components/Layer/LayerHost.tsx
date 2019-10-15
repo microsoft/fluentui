@@ -1,28 +1,22 @@
 import * as React from 'react';
-import {
-  BaseComponent,
-  css
-} from '../../Utilities';
-import { LayerBase } from './Layer.base';
+import { css } from '../../Utilities';
 import { ILayerHostProps } from './LayerHost.types';
+import { notifyHostChanged } from './Layer.notification';
 
-export class LayerHost extends BaseComponent<ILayerHostProps, {}> {
-
+export class LayerHost extends React.Component<ILayerHostProps> {
   public shouldComponentUpdate() {
     return false;
   }
 
   public componentDidMount(): void {
-    LayerBase.notifyHostChanged(this.props.id!);
+    notifyHostChanged(this.props.id!);
   }
 
   public componentWillUnmount(): void {
-    LayerBase.notifyHostChanged(this.props.id!);
+    notifyHostChanged(this.props.id!);
   }
 
   public render(): JSX.Element {
-    return (
-      <div { ...this.props } className={ css('ms-LayerHost', this.props.className) } />
-    );
+    return <div {...this.props} className={css('ms-LayerHost', this.props.className)} />;
   }
 }

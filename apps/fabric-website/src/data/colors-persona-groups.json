@@ -1,0 +1,98 @@
+[
+  {
+    "name": "Red20",
+    "hex": "#a4262c",
+    "code": {
+      "core": "$ms-color-sharedRed20",
+      "react": "SharedColors.red20"
+    }
+  },
+  {
+    "name": "Orange20",
+    "hex": "#ca5010",
+    "code": {
+      "core": "$ms-color-sharedOrange20",
+      "react": "SharedColors.orange20"
+    }
+  },
+  {
+    "name": "Yellow20",
+    "hex": "#986f0B",
+    "code": {
+      "core": "$ms-color-sharedYellow20",
+      "react": "SharedColors.yellow20"
+    }
+  },
+  {
+    "name": "Green10",
+    "hex": "#498205",
+    "code": {
+      "core": "$ms-color-sharedGreen10",
+      "react": "SharedColors.green10"
+    }
+  },
+  {
+    "name": "Cyan20",
+    "hex": "#038387",
+    "code": {
+      "core": "$ms-color-sharedCyan20",
+      "react": "SharedColors.cyan20"
+    }
+  },
+  {
+    "name": "CyanBlue10",
+    "hex": "#0078d4",
+    "code": {
+      "core": "$ms-color-sharedCyanBlue10",
+      "react": "SharedColors.cyanBlue10"
+    }
+  },
+  {
+    "name": "CyanBlue20",
+    "hex": "#004e8c",
+    "code": {
+      "core": "$ms-color-sharedCyanBlue20",
+      "react": "SharedColors.cyanBlue20"
+    }
+  },
+  {
+    "name": "Blue10",
+    "hex": "#4f6bed",
+    "code": {
+      "core": "$ms-color-sharedBlue10",
+      "react": "SharedColors.blue10"
+    }
+  },
+  {
+    "name": "BlueMagenta20",
+    "hex": "#8764b8",
+    "code": {
+      "core": "$ms-color-sharedBlueMagenta20",
+      "react": "SharedColors.blueMagenta20"
+    }
+  },
+  {
+    "name": "Magenta20",
+    "hex": "#881798",
+    "code": {
+      "core": "$ms-color-sharedMagenta20",
+      "react": "SharedColors.magenta20"
+    }
+  },
+  {
+    "name": "Gray20",
+    "hex": "#69797e",
+    "code": {
+      "core": "$ms-color-sharedGray20",
+      "react": "SharedColors.gray20"
+    }
+  },
+  {
+    "name": "Gray30",
+    "hex": "#7a7574",
+    "code": {
+      "core": "$ms-color-sharedGray30",
+      "react": "SharedColors.gray30"
+    }
+  }
+]

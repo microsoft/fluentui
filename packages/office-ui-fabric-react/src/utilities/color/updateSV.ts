@@ -1,0 +1,27 @@
+import { IColor } from './interfaces';
+import { hsv2rgb } from './hsv2rgb';
+import { rgb2hex } from './rgb2hex';
+import { _rgbaOrHexString } from './_rgbaOrHexString';
+
+/**
+ * Gets a color with the same hue as `color` and other components updated to match the given
+ * saturation and value.
+ *
+ * Does not modify the original `color` and does not supply a default alpha value.
+ */
+export function updateSV(color: IColor, s: number, v: number): IColor {
+  const { r, g, b } = hsv2rgb(color.h, s, v);
+  const hex = rgb2hex(r, g, b);
+
+  return {
+    a: color.a,
+    b: b,
+    g: g,
+    h: color.h,
+    hex: hex,
+    r: r,
+    s: s,
+    str: _rgbaOrHexString(r, g, b, color.a, hex),
+    v: v
+  };
+}

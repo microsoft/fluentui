@@ -4,7 +4,7 @@ import { IFabricStyleProps, IFabricStyles } from './Fabric.types';
 const inheritFont = { fontFamily: 'inherit' };
 
 const GlobalClassNames = {
-  root: 'ms-Fabric',
+  root: 'ms-Fabric'
 };
 
 export interface IFabricClassNames {
@@ -12,29 +12,21 @@ export interface IFabricClassNames {
 }
 
 export const getStyles = (props: IFabricStyleProps): IFabricStyles => {
-  const {
-    theme,
-    className,
-    isFocusVisible
-  } = props;
+  const { theme, className, isFocusVisible } = props;
 
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
   return {
     root: [
       classNames.root,
-      isFocusVisible && 'is-focusVisible',
+      isFocusVisible && 'is-focusVisible ms-Fabric--isFocusVisible',
       theme.fonts.medium,
       {
         color: theme.palette.neutralPrimary,
         selectors: {
           '& button': inheritFont,
           '& input': inheritFont,
-          '& textarea': inheritFont,
-          ':global(button)': {
-            overflow: 'visible',
-            margin: 0
-          }
+          '& textarea': inheritFont
         }
       },
       className

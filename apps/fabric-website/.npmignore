@@ -10,3 +10,4 @@ jsconfig.json
 webpack.config.js
 typings
 
+!src/**/docs/**/*.md

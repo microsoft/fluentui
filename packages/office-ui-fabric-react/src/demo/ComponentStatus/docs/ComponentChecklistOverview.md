@@ -1,1 +1,0 @@
-Badges are used to track a component's status regarding different criteria. They reflect if a component is localizable, accessible and reliable.

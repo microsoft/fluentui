@@ -1,16 +1,20 @@
 import * as React from 'react';
 import { IStyle, ITheme } from '../../Styling';
-import { IStyleFunctionOrObject } from '../../Utilities';
+import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 
-export interface IOverlay {
+/**
+ * {@docCategory Overlay}
+ */
+export interface IOverlay {}
 
-}
-
+/**
+ * {@docCategory Overlay}
+ */
 export interface IOverlayProps extends React.HTMLAttributes<HTMLElement> {
   /**
    * Gets the component ref.
    */
-  componentRef?: (component: IOverlayProps | null) => void;
+  componentRef?: IRefObject<IOverlay>;
 
   /**
    * Call to provide customized styling that will layer on top of the variant rules
@@ -37,6 +41,9 @@ export interface IOverlayProps extends React.HTMLAttributes<HTMLElement> {
   onClick?: () => void;
 }
 
+/**
+ * {@docCategory Overlay}
+ */
 export interface IOverlayStyleProps {
   /**
    * Accept theme prop.
@@ -59,6 +66,9 @@ export interface IOverlayStyleProps {
   isDark?: boolean;
 }
 
+/**
+ * {@docCategory Overlay}
+ */
 export interface IOverlayStyles {
   /**
    * Style for the root element.

@@ -2,11 +2,11 @@ jest.mock('../../utilities/contextualMenu');
 
 import * as React from 'react';
 import { shallow, ShallowWrapper } from 'enzyme';
-import { ContextualMenuItem } from './ContextualMenuItem';
+import { ContextualMenuItemBase } from './ContextualMenuItem.base';
 import { IContextualMenuItemProps } from './ContextualMenuItem.types';
 import { IContextualMenuItem } from './ContextualMenu.types';
 import { IMenuItemClassNames } from './ContextualMenu.classNames';
-import { hasSubmenu } from '../../utilities/contextualMenu';
+import { hasSubmenu } from '../../utilities/contextualMenu/index';
 
 describe('ContextMenuItemChildren', () => {
   describe('when a checkmark icon', () => {
@@ -21,12 +21,12 @@ describe('ContextMenuItemChildren', () => {
       onCheckmarkClick = jest.fn();
 
       wrapper = shallow(
-        <ContextualMenuItem
-          item={ menuItem }
-          classNames={ menuClassNames }
-          index={ 1 }
-          hasIcons={ undefined }
-          onCheckmarkClick={ onCheckmarkClick }
+        <ContextualMenuItemBase
+          item={menuItem}
+          classNames={menuClassNames}
+          index={1}
+          hasIcons={undefined}
+          onCheckmarkClick={onCheckmarkClick}
         />
       );
     });
@@ -58,14 +58,7 @@ describe('ContextMenuItemChildren', () => {
         menuItem = { key: '123', iconProps: { iconName: 'itemIcon' }, name: 'menuItem' };
         menuClassNames = getMenuItemClassNames();
 
-        wrapper = shallow(
-          <ContextualMenuItem
-            item={ menuItem }
-            classNames={ menuClassNames }
-            index={ 1 }
-            hasIcons={ true }
-          />
-        );
+        wrapper = shallow(<ContextualMenuItemBase item={menuItem} classNames={menuClassNames} index={1} hasIcons={true} />);
       });
 
       it('renders the icon', () => {
@@ -82,14 +75,7 @@ describe('ContextMenuItemChildren', () => {
         menuItem = { key: '123', iconProps: {} };
         menuClassNames = getMenuItemClassNames();
 
-        wrapper = shallow(
-          <ContextualMenuItem
-            item={ menuItem }
-            classNames={ menuClassNames }
-            index={ 1 }
-            hasIcons={ true }
-          />
-        );
+        wrapper = shallow(<ContextualMenuItemBase item={menuItem} classNames={menuClassNames} index={1} hasIcons={true} />);
       });
 
       it('renders the icon with iconName', () => {
@@ -108,14 +94,7 @@ describe('ContextMenuItemChildren', () => {
       menuItem = { key: '123', iconProps: {}, submenuIconProps: {} };
       menuClassNames = getMenuItemClassNames();
 
-      wrapper = shallow(
-        <ContextualMenuItem
-          item={ menuItem }
-          classNames={ menuClassNames }
-          index={ 1 }
-          hasIcons={ true }
-        />
-      );
+      wrapper = shallow(<ContextualMenuItemBase item={menuItem} classNames={menuClassNames} index={1} hasIcons={true} />);
     });
 
     it('renders the menu icon', () => {
@@ -138,6 +117,6 @@ function getMenuItemClassNames(): IMenuItemClassNames {
     splitContainer: 'splitContainer',
     splitPrimary: 'splitPrimary',
     splitMenu: 'splitMenu',
-    linkContentMenu: 'linkContentMenu',
+    linkContentMenu: 'linkContentMenu'
   };
 }

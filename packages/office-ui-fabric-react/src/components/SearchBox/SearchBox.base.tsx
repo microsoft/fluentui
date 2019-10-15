@@ -1,13 +1,6 @@
 import * as React from 'react';
 import { ISearchBoxProps, ISearchBoxStyleProps, ISearchBoxStyles } from './SearchBox.types';
-import {
-  BaseComponent,
-  getId,
-  KeyCodes,
-  customizable,
-  classNamesFunction,
-  createRef
-} from '../../Utilities';
+import { BaseComponent, getId, KeyCodes, classNamesFunction, getNativeProps, inputProperties } from '../../Utilities';
 
 import { IconButton } from '../../Button';
 import { Icon } from '../../Icon';
@@ -20,22 +13,22 @@ export interface ISearchBoxState {
   id?: string;
 }
 
-@customizable('SearchBox', ['theme'])
 export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxState> {
-  public static defaultProps: ISearchBoxProps = {
-    disableAnimation: false
+  public static defaultProps: Pick<ISearchBoxProps, 'disableAnimation' | 'clearButtonProps'> = {
+    disableAnimation: false,
+    clearButtonProps: { ariaLabel: 'Clear text' }
   };
 
-  private _rootElement = createRef<HTMLDivElement>();
-  private _inputElement = createRef<HTMLInputElement>();
+  private _rootElement = React.createRef<HTMLDivElement>();
+  private _inputElement = React.createRef<HTMLInputElement>();
   private _latestValue: string;
 
   public constructor(props: ISearchBoxProps) {
     super(props);
 
     this._warnDeprecations({
-      'labelText': 'placeholder',
-      'defaultValue': 'value'
+      labelText: 'placeholder',
+      defaultValue: 'value'
     });
 
     this._latestValue = props.value || '';
@@ -50,8 +43,10 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
   public componentWillReceiveProps(newProps: ISearchBoxProps): void {
     if (newProps.value !== undefined) {
       this._latestValue = newProps.value;
+      // If the user passes in null, substitute an empty string
+      // (passing null is not allowed per typings, but users might do it anyway)
       this.setState({
-        value: newProps.value
+        value: newProps.value || ''
       });
     }
   }
@@ -67,7 +62,8 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
       labelText,
       theme,
       clearButtonProps,
-      disableAnimation
+      disableAnimation,
+      iconProps
     } = this.props;
     const { value, hasFocus, id } = this.state;
     const placeholderValue = labelText === undefined ? placeholder : labelText;
@@ -82,43 +78,36 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
       disableAnimation
     });
 
+    const nativeProps = getNativeProps(this.props, inputProperties, ['id', 'className', 'placeholder', 'onFocus', 'onBlur', 'value']);
+
     return (
-      <div
-        ref={ this._rootElement }
-        className={ classNames.root }
-        onFocusCapture={ this._onFocusCapture }
-      >
-        <div
-          className={ classNames.iconContainer }
-          onClick={ this._onClickFocus }
-        >
-          <Icon
-            className={ classNames.icon }
-            iconName='Search'
-          />
+      <div ref={this._rootElement} className={classNames.root} onFocusCapture={this._onFocusCapture}>
+        <div className={classNames.iconContainer} onClick={this._onClickFocus} aria-hidden={true}>
+          <Icon iconName="Search" {...iconProps} className={classNames.icon} />
         </div>
         <input
-          id={ id }
-          className={ classNames.field }
-          placeholder={ placeholderValue }
-          onChange={ this._onInputChange }
-          onInput={ this._onInputChange }
-          onKeyDown={ this._onKeyDown }
-          value={ value }
-          disabled={ this.props.disabled }
-          aria-label={ ariaLabel ? ariaLabel : placeholder }
-          ref={ this._inputElement }
+          {...nativeProps}
+          id={id}
+          className={classNames.field}
+          placeholder={placeholderValue}
+          onChange={this._onInputChange}
+          onInput={this._onInputChange}
+          onKeyDown={this._onKeyDown}
+          value={value}
+          disabled={disabled}
+          aria-label={ariaLabel ? ariaLabel : placeholder}
+          ref={this._inputElement}
         />
-        { value!.length > 0 &&
-          <div className={ classNames.clearButton }>
+        {value!.length > 0 && (
+          <div className={classNames.clearButton}>
             <IconButton
-              styles={ { root: { height: 'auto' }, icon: { fontSize: '12px' } } }
-              iconProps={ { iconName: 'Clear' } }
-              { ...clearButtonProps }
-              onClick={ this._onClearClick }
+              styles={{ root: { height: 'auto' }, icon: { fontSize: '12px' } }}
+              iconProps={{ iconName: 'Clear' }}
+              {...clearButtonProps}
+              onClick={this._onClearClick}
             />
           </div>
-        }
+        )}
       </div>
     );
   }
@@ -155,24 +144,24 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
   }
 
   private _onClickFocus = () => {
-    const inputElement = this._inputElement.value;
+    const inputElement = this._inputElement.current;
     if (inputElement) {
       this.focus();
       inputElement.selectionStart = inputElement.selectionEnd = 0;
     }
-  }
+  };
 
   private _onFocusCapture = (ev: React.FocusEvent<HTMLElement>) => {
     this.setState({
       hasFocus: true
     });
 
-    this._events.on(this._rootElement.current, 'blur', this._onBlur, true);
+    this._events.on(ev.currentTarget, 'blur', this._onBlur, true);
 
     if (this.props.onFocus) {
       this.props.onFocus(ev as React.FocusEvent<HTMLInputElement>);
     }
-  }
+  };
 
   private _onClearClick = (ev: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>) => {
     const { clearButtonProps } = this.props;
@@ -184,12 +173,10 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
     if (!ev.defaultPrevented) {
       this._onClear(ev);
     }
-  }
+  };
 
   private _onKeyDown = (ev: React.KeyboardEvent<HTMLInputElement>) => {
-
     switch (ev.which) {
-
       case KeyCodes.escape:
         this.props.onEscape && this.props.onEscape(ev);
         if (!ev.defaultPrevented) {
@@ -198,10 +185,12 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
         break;
 
       case KeyCodes.enter:
-        if (this.props.onSearch && this.state.value!.length > 0) {
+        if (this.props.onSearch) {
           this.props.onSearch(this.state.value);
+          break;
         }
-        break;
+        // if we don't handle the enter press then we shouldn't prevent default
+        return;
 
       default:
         this.props.onKeyDown && this.props.onKeyDown(ev);
@@ -214,7 +203,7 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
     // or preventDefault was called in case of default keyDown handler
     ev.preventDefault();
     ev.stopPropagation();
-  }
+  };
 
   private _onBlur = (ev: React.FocusEvent<HTMLInputElement>): void => {
     this._events.off(this._rootElement.current, 'blur');
@@ -225,7 +214,7 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
     if (this.props.onBlur) {
       this.props.onBlur(ev);
     }
-  }
+  };
 
   private _onInputChange = (ev: React.ChangeEvent<HTMLInputElement>) => {
     const value = ev.target.value;
@@ -237,7 +226,7 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
 
     this.setState({ value });
     this._callOnChange(value);
-  }
+  };
 
   private _callOnChange(newValue: string): void {
     const { onChange, onChanged } = this.props;

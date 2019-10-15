@@ -13,21 +13,19 @@ export interface ISimple {
 }
 
 const basicItemRenderer = (props: ISelectedItemProps<ISimple>) => {
-  return <div key={ props.key }> { props.name } </div>;
+  return <div key={props.key}> {props.name} </div>;
 };
 
 export type TypedBaseSelectedItemsList = BaseSelectedItemsList<ISimple, IBaseSelectedItemsListProps<ISimple>>;
 
 describe('SelectedItemsList', () => {
   describe('BaseSelectedItemsList', () => {
-    const BaseSelectedItemsListWithType = BaseSelectedItemsList as new (props: IBaseSelectedItemsListProps<ISimple>)
-      => BaseSelectedItemsList<ISimple, IBaseSelectedItemsListProps<ISimple>>;
+    const BaseSelectedItemsListWithType = BaseSelectedItemsList as new (
+      props: IBaseSelectedItemsListProps<ISimple>
+    ) => BaseSelectedItemsList<ISimple, IBaseSelectedItemsListProps<ISimple>>;
 
     it('renders BaseSelectedItemsList correctly', () => {
-      const component = renderer.create(
-        <BaseSelectedItemsListWithType
-        />
-      );
+      const component = renderer.create(<BaseSelectedItemsListWithType />);
       const tree = component.toJSON();
       expect(tree).toMatchSnapshot();
     });
@@ -42,9 +40,9 @@ describe('SelectedItemsList', () => {
 
       const itemsList: TypedBaseSelectedItemsList = ReactDOM.render(
         <BaseSelectedItemsListWithType
-          onRenderItem={ basicItemRenderer }
-          selectedItems={ [{ key: '1', name: 'a' }, { key: '2', name: 'b' }] }
-          onChange={ onChange }
+          onRenderItem={basicItemRenderer}
+          selectedItems={[{ key: '1', name: 'a' }, { key: '2', name: 'b' }]}
+          onChange={onChange}
         />,
         root
       ) as TypedBaseSelectedItemsList;
@@ -56,9 +54,7 @@ describe('SelectedItemsList', () => {
     it('can add items', () => {
       const root = document.createElement('div');
       const itemsList: TypedBaseSelectedItemsList = ReactDOM.render(
-        <BaseSelectedItemsListWithType
-          onRenderItem={ basicItemRenderer }
-        />,
+        <BaseSelectedItemsListWithType onRenderItem={basicItemRenderer} />,
         root
       ) as TypedBaseSelectedItemsList;
 

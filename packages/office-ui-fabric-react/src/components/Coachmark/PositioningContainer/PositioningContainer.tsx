@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { IPositioningContainerTypes } from './PositioningContainer.types';
+import { IPositioningContainerProps } from './PositioningContainer.types';
 import { getClassNames } from './PositioningContainer.styles';
-import { Layer } from 'office-ui-fabric-react/lib/Layer';
+import { Layer } from '../../../Layer';
 
 // Utilites/Helpers
-import { DirectionalHint } from 'office-ui-fabric-react/lib/common/DirectionalHint';
+import { DirectionalHint } from '../../../common/DirectionalHint';
 import {
   BaseComponent,
   IPoint,
@@ -14,18 +14,10 @@ import {
   elementContains,
   focusFirstChild,
   getWindow,
-  getDocument,
-  createRef
+  getDocument
 } from '../../../Utilities';
 
-import {
-  IPositionProps,
-  getMaxHeight,
-  positionElement,
-  IPositionedData,
-  RectangleEdge,
-  IPosition
-} from 'office-ui-fabric-react/lib/utilities/positioning';
+import { getMaxHeight, positionElement, IPositionedData, IPositionProps, IPosition, RectangleEdge } from '../../../utilities/positioning';
 
 import { AnimationClassNames, mergeStyles } from '../../../Styling';
 
@@ -35,7 +27,7 @@ const OFF_SCREEN_STYLE = { opacity: 0 };
 // properly we need to set the border.
 // The value is abitrary.
 const BORDER_WIDTH = 1;
-const SLIDE_ANIMATIONS: { [key: number]: string; } = {
+const SLIDE_ANIMATIONS: { [key: number]: string } = {
   [RectangleEdge.top]: 'slideUpIn20',
   [RectangleEdge.bottom]: 'slideDownIn20',
   [RectangleEdge.left]: 'slideLeftIn20',
@@ -55,11 +47,9 @@ export interface IPositioningContainerState {
   heightOffset?: number;
 }
 
-export class PositioningContainer
-  extends BaseComponent<IPositioningContainerTypes, IPositioningContainerState>
+export class PositioningContainer extends BaseComponent<IPositioningContainerProps, IPositioningContainerState>
   implements PositioningContainer {
-
-  public static defaultProps: IPositioningContainerTypes = {
+  public static defaultProps: IPositioningContainerProps = {
     preventDismissOnScroll: false,
     offsetFromTarget: 0,
     minPagePadding: 8,
@@ -71,10 +61,10 @@ export class PositioningContainer
   /**
    * The primary positioned div.
    */
-  private _positionedHost = createRef<HTMLDivElement>();
+  private _positionedHost = React.createRef<HTMLDivElement>();
 
   // @TODO rename to reflect the name of this class
-  private _contentHost = createRef<HTMLDivElement>();
+  private _contentHost = React.createRef<HTMLDivElement>();
 
   /**
    * Stores an instance of Window, used to check
@@ -97,7 +87,7 @@ export class PositioningContainer
   private _target: HTMLElement | MouseEvent | IPoint | null;
   private _setHeightOffsetTimer: number;
 
-  constructor(props: IPositioningContainerTypes) {
+  constructor(props: IPositioningContainerProps) {
     super(props);
     this._didSetInitialFocus = false;
     this.state = {
@@ -120,13 +110,13 @@ export class PositioningContainer
     this._updateAsyncPosition();
   }
 
-  public componentWillUpdate(newProps: IPositioningContainerTypes): void {
+  public componentWillUpdate(newProps: IPositioningContainerProps): void {
     // If the target element changed, find the new one. If we are tracking
     // target with class name, always find element because we do not know if
     // fabric has rendered a new element and disposed the old element.
     const newTarget = this._getTarget(newProps);
     const oldTarget = this._getTarget();
-    if (newTarget !== oldTarget || typeof (newTarget) === 'string' || newTarget instanceof String) {
+    if (newTarget !== oldTarget || typeof newTarget === 'string' || newTarget instanceof String) {
       this._maxHeight = undefined;
       this._setTargetWindowAndElement(newTarget!);
     }
@@ -146,64 +136,63 @@ export class PositioningContainer
       return null;
     }
 
-    const {
-      className,
-      positioningContainerWidth,
-      positioningContainerMaxHeight,
-      children } = this.props;
+    const { className, positioningContainerWidth, positioningContainerMaxHeight, children } = this.props;
     const { positions } = this.state;
 
     const styles = getClassNames();
 
-    const directionalClassName = (positions && positions.targetEdge)
-      ? (AnimationClassNames as any)[SLIDE_ANIMATIONS[positions.targetEdge]]
-      : '';
+    const directionalClassName =
+      positions && positions.targetEdge ? (AnimationClassNames as any)[SLIDE_ANIMATIONS[positions.targetEdge]] : '';
 
     const getContentMaxHeight: number = this._getMaxHeight() + this.state.heightOffset!;
-    const contentMaxHeight: number = positioningContainerMaxHeight!
-      && (positioningContainerMaxHeight! > getContentMaxHeight) ? getContentMaxHeight : positioningContainerMaxHeight!;
+    const contentMaxHeight: number =
+      positioningContainerMaxHeight! && positioningContainerMaxHeight! > getContentMaxHeight
+        ? getContentMaxHeight
+        : positioningContainerMaxHeight!;
     const content = (
-      <div
-        ref={ this._positionedHost }
-        className={ css('ms-PositioningContainer', styles.container) }
-      >
+      <div ref={this._positionedHost} className={css('ms-PositioningContainer', styles.container)}>
         <div
-          className={
-            mergeStyles(
-              'ms-PositioningContainer-layerHost',
-              styles.root,
-              className,
-              directionalClassName,
-              !!positioningContainerWidth && { width: positioningContainerWidth }
-            ) }
+          className={mergeStyles(
+            'ms-PositioningContainer-layerHost',
+            styles.root,
+            className,
+            directionalClassName,
+            !!positioningContainerWidth && { width: positioningContainerWidth }
+          )}
           // tslint:disable-next-line:jsx-ban-props
-          style={ positions ? positions.elementPosition : OFF_SCREEN_STYLE }
-          tabIndex={ -1 } // Safari and Firefox on Mac OS requires this to back-stop click events so focus remains in the Callout.
+          style={positions ? positions.elementPosition : OFF_SCREEN_STYLE}
+          tabIndex={-1} // Safari and Firefox on Mac OS requires this to back-stop click events so focus remains in the Callout.
           // See https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#Clicking_and_focus
-          ref={ this._contentHost }
+          ref={this._contentHost}
         >
-          { children }
-          { // @TODO apply to the content container
+          {children}
+          {
+            // @TODO apply to the content container
             contentMaxHeight
           }
         </div>
       </div>
     );
 
-    return this.props.doNotLayer ? content : (
-      <Layer>
-        { content }
-      </Layer>
-    );
+    return this.props.doNotLayer ? content : <Layer>{content}</Layer>;
   }
 
+  /**
+   * Deprecated, use `onResize` instead.
+   * @deprecated Use `onResize` instead.
+   */
   public dismiss = (ev?: Event | React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>): void => {
-    const { onDismiss } = this.props;
+    this.onResize(ev);
+  };
 
+  public onResize = (ev?: Event | React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>): void => {
+    const { onDismiss } = this.props;
     if (onDismiss) {
       onDismiss(ev);
+    } else {
+      this._updateAsyncPosition();
     }
-  }
+  };
 
   protected _dismissOnScroll(ev: Event): void {
     const { preventDismissOnScroll } = this.props;
@@ -218,11 +207,12 @@ export class PositioningContainer
 
     if (
       (!this._target && clickedOutsideCallout) ||
-      ev.target !== this._targetWindow &&
-      clickedOutsideCallout &&
-      ((this._target as MouseEvent).stopPropagation ||
-        (!this._target || (target !== this._target && !elementContains(this._target as HTMLElement, target))))) {
-      this.dismiss(ev);
+      (ev.target !== this._targetWindow &&
+        clickedOutsideCallout &&
+        ((this._target as MouseEvent).stopPropagation ||
+          (!this._target || (target !== this._target && !elementContains(this._target as HTMLElement, target)))))
+    ) {
+      this.onResize(ev);
     }
   }
 
@@ -231,7 +221,7 @@ export class PositioningContainer
       this._didSetInitialFocus = true;
       focusFirstChild(this._contentHost.current);
     }
-  }
+  };
 
   protected _onComponentDidMount = (): void => {
     // This is added so the positioningContainer will dismiss when the window is scrolled
@@ -239,8 +229,8 @@ export class PositioningContainer
     // to be required to avoid React firing an async focus event in IE from
     // the target changing focus quickly prior to rendering the positioningContainer.
     this._async.setTimeout(() => {
-      this._events.on(this._targetWindow, 'scroll', this._dismissOnScroll, true);
-      this._events.on(this._targetWindow, 'resize', this.dismiss, true);
+      this._events.on(this._targetWindow, 'scroll', this._async.throttle(this._dismissOnScroll, 10), true);
+      this._events.on(this._targetWindow, 'resize', this._async.throttle(this.onResize, 10), true);
       this._events.on(this._targetWindow.document.body, 'focus', this._dismissOnLostFocus, true);
       this._events.on(this._targetWindow.document.body, 'click', this._dismissOnLostFocus, true);
     }, 0);
@@ -251,7 +241,7 @@ export class PositioningContainer
 
     this._updateAsyncPosition();
     this._setHeightOffsetEveryFrame();
-  }
+  };
 
   private _updateAsyncPosition(): void {
     this._async.requestAnimationFrame(() => this._updatePosition());
@@ -259,10 +249,7 @@ export class PositioningContainer
 
   private _updatePosition(): void {
     const { positions } = this.state;
-    const {
-      offsetFromTarget,
-      onPositioned
-    } = this.props;
+    const { offsetFromTarget, onPositioned } = this.props;
 
     const hostElement = this._positionedHost.current;
     const positioningContainerElement = this._contentHost.current;
@@ -272,25 +259,38 @@ export class PositioningContainer
       currentProps = assign(currentProps, this.props);
       currentProps!.bounds = this._getBounds();
       currentProps!.target = this._target!;
-      currentProps!.gapSpace = offsetFromTarget;
-      const newPositions: IPositionedData = positionElement(currentProps!, hostElement, positioningContainerElement);
-
-      // Set the new position only when the positions are not exists or one of the new positioningContainer positions are different.
-      // The position should not change if the position is within 2 decimal places.
-      if ((!positions && newPositions) ||
-        (positions && newPositions && !this._arePositionsEqual(positions, newPositions)
-          && this._positionAttempts < 5)) {
-        // We should not reposition the positioningContainer more than a few times, if it is then the content is likely resizing
-        // and we should stop trying to reposition to prevent a stack overflow.
-        this._positionAttempts++;
-        this.setState({
-          positions: newPositions
-        });
-      } else {
-        this._positionAttempts = 0;
-        if (onPositioned) {
-          onPositioned();
+      if (document.body.contains(currentProps!.target as Node)) {
+        currentProps!.gapSpace = offsetFromTarget;
+        const newPositions: IPositionedData = positionElement(currentProps!, hostElement, positioningContainerElement);
+        // Set the new position only when the positions are not exists or one of the new positioningContainer positions are different.
+        // The position should not change if the position is within 2 decimal places.
+        if (
+          (!positions && newPositions) ||
+          (positions && newPositions && !this._arePositionsEqual(positions, newPositions) && this._positionAttempts < 5)
+        ) {
+          // We should not reposition the positioningContainer more than a few times, if it is then the content is likely resizing
+          // and we should stop trying to reposition to prevent a stack overflow.
+          this._positionAttempts++;
+          this.setState(
+            {
+              positions: newPositions
+            },
+            () => {
+              if (onPositioned) {
+                onPositioned(newPositions);
+              }
+            }
+          );
+        } else {
+          this._positionAttempts = 0;
+          if (onPositioned) {
+            onPositioned(newPositions);
+          }
         }
+      } else if (positions !== undefined) {
+        this.setState({
+          positions: undefined
+        });
       }
     }
   }
@@ -319,11 +319,7 @@ export class PositioningContainer
    * without going out of the specified bounds
    */
   private _getMaxHeight(): number {
-    const {
-      directionalHintFixed,
-      offsetFromTarget,
-      directionalHint
-    } = this.props;
+    const { directionalHintFixed, offsetFromTarget, directionalHint } = this.props;
 
     if (!this._maxHeight) {
       if (directionalHintFixed && this._target) {
@@ -358,16 +354,18 @@ export class PositioningContainer
   }
 
   private _setTargetWindowAndElement(target: HTMLElement | string | MouseEvent | IPoint | null): void {
+    const currentElement = this._positionedHost.current;
+
     if (target) {
       if (typeof target === 'string') {
         const currentDoc: Document = getDocument()!;
-        this._target = currentDoc ? currentDoc.querySelector(target) as HTMLElement : null;
-        this._targetWindow = getWindow()!;
+        this._target = currentDoc ? (currentDoc.querySelector(target) as HTMLElement) : null;
+        this._targetWindow = getWindow(currentElement)!;
       } else if ((target as MouseEvent).stopPropagation) {
         this._targetWindow = getWindow((target as MouseEvent).toElement as HTMLElement)!;
         this._target = target;
       } else if ((target as IPoint).x !== undefined && (target as IPoint).y !== undefined) {
-        this._targetWindow = getWindow()!;
+        this._targetWindow = getWindow(currentElement)!;
         this._target = target;
       } else {
         const targetElement: HTMLElement = target as HTMLElement;
@@ -375,7 +373,7 @@ export class PositioningContainer
         this._target = target;
       }
     } else {
-      this._targetWindow = getWindow()!;
+      this._targetWindow = getWindow(currentElement)!;
     }
   }
 
@@ -407,7 +405,7 @@ export class PositioningContainer
     }
   }
 
-  private _getTarget(props: IPositioningContainerTypes = this.props): HTMLElement | string | MouseEvent | IPoint | null {
+  private _getTarget(props: IPositioningContainerProps = this.props): HTMLElement | string | MouseEvent | IPoint | null {
     const { target } = props;
     return target!;
   }

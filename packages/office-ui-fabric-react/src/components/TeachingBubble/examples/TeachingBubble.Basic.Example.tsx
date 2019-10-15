@@ -14,9 +14,10 @@ export class TeachingBubbleBasicExample extends React.Component<{}, ITeachingBub
     super(props);
 
     this._onDismiss = this._onDismiss.bind(this);
+    this._onShow = this._onShow.bind(this);
 
     this.state = {
-      isTeachingBubbleVisible: false,
+      isTeachingBubbleVisible: false
     };
   }
 
@@ -31,33 +32,40 @@ export class TeachingBubbleBasicExample extends React.Component<{}, ITeachingBub
     };
 
     return (
-      <div className='ms-TeachingBubbleExample'>
-        <span className='ms-TeachingBubbleBasicExample-buttonArea' ref={ (menuButton) => this._menuButtonElement = menuButton! }>
+      <div className="ms-TeachingBubbleExample">
+        <span className="ms-TeachingBubbleBasicExample-buttonArea" ref={menuButton => (this._menuButtonElement = menuButton!)}>
           <DefaultButton
-            onClick={ this._onDismiss }
-            text={ isTeachingBubbleVisible ? 'Hide TeachingBubble' : 'Show TeachingBubble' }
+            onClick={isTeachingBubbleVisible ? this._onDismiss : this._onShow}
+            text={isTeachingBubbleVisible ? 'Hide TeachingBubble' : 'Show TeachingBubble'}
           />
         </span>
-        { isTeachingBubbleVisible ? (
+        {isTeachingBubbleVisible ? (
           <div>
             <TeachingBubble
-              targetElement={ this._menuButtonElement }
-              primaryButtonProps={ examplePrimaryButton }
-              secondaryButtonProps={ exampleSecondaryButtonProps }
-              onDismiss={ this._onDismiss }
-              headline='Discover what’s trending around you'
+              target={this._menuButtonElement}
+              primaryButtonProps={examplePrimaryButton}
+              secondaryButtonProps={exampleSecondaryButtonProps}
+              onDismiss={this._onDismiss}
+              footerContent="1 of 2"
+              headline="Discover what’s trending around you"
             >
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, nulla, ipsum? Molestiae quis aliquam magni harum non?
             </TeachingBubble>
           </div>
-        ) : (null) }
+        ) : null}
       </div>
     );
   }
 
   private _onDismiss(ev: any): void {
     this.setState({
-      isTeachingBubbleVisible: !this.state.isTeachingBubbleVisible
+      isTeachingBubbleVisible: false
+    });
+  }
+
+  private _onShow(ev: any): void {
+    this.setState({
+      isTeachingBubbleVisible: true
     });
   }
 }

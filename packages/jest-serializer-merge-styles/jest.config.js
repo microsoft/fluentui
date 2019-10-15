@@ -1,3 +1,8 @@
-let { createConfig } = require('../../scripts/tasks/jest-resources');
+const path = require('path');
+const { createConfig } = require('../../scripts/jest/jest-resources');
 
-module.exports = createConfig();
+const config = createConfig({
+  snapshotSerializers: [path.resolve(__dirname)]
+});
+
+module.exports = config;

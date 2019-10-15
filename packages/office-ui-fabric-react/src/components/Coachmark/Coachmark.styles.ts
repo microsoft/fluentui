@@ -1,108 +1,9 @@
-import {
-  IStyle,
-  keyframes,
-  PulsingBeaconAnimationStyles,
-  ITheme,
-  getTheme
-} from '../../Styling';
+import { keyframes, PulsingBeaconAnimationStyles } from '../../Styling';
+import { ICoachmarkStyleProps, ICoachmarkStyles } from './Coachmark.types';
+import { getRTL } from '../../Utilities';
 
-export interface ICoachmarkStyleProps {
-  /**
-   * Is the Coachmark collapsed
-   */
-  collapsed: boolean;
-
-  /**
-   * Is the beacon currently animating.
-   */
-  isBeaconAnimating: boolean;
-
-  /**
-   * Is the component taking measurements
-   */
-  isMeasuring: boolean;
-
-  /**
-   * The height measured before the component has been mounted
-   * in pixels
-   */
-  entityHostHeight?: string;
-
-  /**
-   * The width measured in pixels
-   */
-  entityHostWidth?: string;
-
-  /**
-   * Width of the coachmark
-   */
-  width?: string;
-
-  /**
-   * Height of the coachmark
-   */
-  height?: string;
-
-  /**
-   * Color
-   */
-  color?: string;
-
-  /**
-   * Beacon color one
-   */
-  beaconColorOne?: string;
-
-  /**
-   * Beacon color two
-   */
-  beaconColorTwo?: string;
-}
-
-export interface ICoachmarkStyles {
-  /**
-  * Style for the root element in the default enabled/unchecked state.
-  */
-  root?: IStyle;
-
-  /**
-   * The pulsing beacon that animates when the coachmark
-   * is collapsed.
-   */
-  pulsingBeacon?: IStyle;
-
-  /**
-   * The layer, or div, that the translate animation will be applied to.
-   */
-  translateAnimationContainer?: IStyle;
-
-  /**
-   * The layer the Scale animation will be applied to.
-   */
-  scaleAnimationLayer?: IStyle;
-
-  /**
-   * The layer the Rotate animation will be applied to.
-   */
-  rotateAnimationLayer?: IStyle;
-
-  /**
-   * The layer that content/components/elments will be hosted in.
-   */
-  entityHost?: IStyle;
-
-  /**
-   * The inner layer that components will be hosted in
-   * and primary purpose is scaling the layer down while the
-   * Coachmark collapsed.
-   */
-  entityInnerHost: IStyle;
-
-  /**
-   * The styles applied when the coachmark has collapsed.
-   */
-  collapsed?: IStyle;
-}
+export const COACHMARK_WIDTH = 32;
+export const COACHMARK_HEIGHT = 32;
 
 export const translateOne: string = keyframes({
   '0%': {
@@ -218,41 +119,62 @@ export const rotateOne: string = keyframes({
   }
 });
 
-export function getStyles(props: ICoachmarkStyleProps, theme: ITheme = getTheme(),
-): ICoachmarkStyles {
+export function getStyles(props: ICoachmarkStyleProps): ICoachmarkStyles {
+  const {
+    theme,
+    className,
+    color,
+    beaconColorOne,
+    beaconColorTwo,
+    delayBeforeCoachmarkAnimation,
+    isCollapsed,
+    isBeaconAnimating,
+    isMeasuring,
+    isMeasured,
+    entityHostHeight,
+    entityHostWidth,
+    transformOrigin
+  } = props;
+
+  if (!theme) {
+    throw new Error('theme is undefined or null in base Dropdown getStyles function.');
+  }
+
   const animationInnerDimension = '35px';
   const animationOuterDimension = '150px';
   const animationBorderWidth = '10px';
 
   const ContinuousPulse: string = PulsingBeaconAnimationStyles.continuousPulseAnimationDouble(
-    props.beaconColorOne ? props.beaconColorOne : theme.palette.themePrimary,
-    props.beaconColorTwo ? props.beaconColorTwo : theme.palette.themeTertiary,
+    beaconColorOne ? beaconColorOne : theme.palette.themePrimary,
+    beaconColorTwo ? beaconColorTwo : theme.palette.themeTertiary,
     animationInnerDimension,
     animationOuterDimension,
     animationBorderWidth
   );
 
-  const ContinuousPulseAnimation = PulsingBeaconAnimationStyles.createDefaultAnimation(ContinuousPulse);
+  const ContinuousPulseAnimation = PulsingBeaconAnimationStyles.createDefaultAnimation(ContinuousPulse, delayBeforeCoachmarkAnimation);
 
   return {
     root: [
+      theme.fonts.medium,
       {
         position: 'relative'
-      }
+      },
+      className
     ],
     pulsingBeacon: [
       {
         position: 'absolute',
         top: '50%',
         left: '50%',
-        transform: 'translate(-50%, -50%)',
+        transform: getRTL() ? 'translate(50%, -50%)' : 'translate(-50%, -50%)',
         width: '0px',
         height: '0px',
         borderRadius: '225px',
         borderStyle: 'solid',
         opacity: '0'
       },
-      (props.collapsed && props.isBeaconAnimating) && ContinuousPulseAnimation
+      isCollapsed && isBeaconAnimating && ContinuousPulseAnimation
     ],
     // Translate Animation Layer
     translateAnimationContainer: [
@@ -260,7 +182,7 @@ export function getStyles(props: ICoachmarkStyleProps, theme: ITheme = getTheme(
         width: '100%',
         height: '100%'
       },
-      props.collapsed && {
+      isCollapsed && {
         animationDuration: '14s',
         animationTimingFunction: 'linear',
         animationDirection: 'normal',
@@ -270,7 +192,7 @@ export function getStyles(props: ICoachmarkStyleProps, theme: ITheme = getTheme(
         animationName: translateOne,
         transition: 'opacity 0.5s ease-in-out'
       },
-      (!props.collapsed) && {
+      !isCollapsed && {
         opacity: '1'
       }
     ],
@@ -280,7 +202,7 @@ export function getStyles(props: ICoachmarkStyleProps, theme: ITheme = getTheme(
         width: '100%',
         height: '100%'
       },
-      props.collapsed && {
+      isCollapsed && {
         animationDuration: '14s',
         animationTimingFunction: 'linear',
         animationDirection: 'normal',
@@ -294,10 +216,9 @@ export function getStyles(props: ICoachmarkStyleProps, theme: ITheme = getTheme(
     rotateAnimationLayer: [
       {
         width: '100%',
-        height: '100%',
-        opacity: '0.8'
+        height: '100%'
       },
-      props.collapsed && {
+      isCollapsed && {
         animationDuration: '14s',
         animationTimingFunction: 'linear',
         animationDirection: 'normal',
@@ -306,7 +227,7 @@ export function getStyles(props: ICoachmarkStyleProps, theme: ITheme = getTheme(
         animationFillMode: 'forwards',
         animationName: rotateOne
       },
-      !props.collapsed && {
+      !isCollapsed && {
         opacity: '1'
       }
     ],
@@ -316,37 +237,49 @@ export function getStyles(props: ICoachmarkStyleProps, theme: ITheme = getTheme(
         position: 'relative',
         outline: 'none',
         overflow: 'hidden',
-        backgroundColor: props.color,
-        borderRadius: props.width,
+        backgroundColor: color,
+        borderRadius: COACHMARK_WIDTH,
         transition: 'border-radius 250ms, width 500ms, height 500ms cubic-bezier(0.5, 0, 0, 1)',
         visibility: 'hidden'
       },
-      !props.isMeasuring && {
-        width: props.width,
-        height: props.height,
+      !isMeasuring && {
+        width: COACHMARK_WIDTH,
+        height: COACHMARK_HEIGHT,
         visibility: 'visible'
       },
-      !props.collapsed && {
+      !isCollapsed && {
         borderRadius: '1px',
         opacity: '1',
-        width: props.entityHostWidth,
-        height: props.entityHostHeight
+        width: entityHostWidth,
+        height: entityHostHeight
       }
     ],
     entityInnerHost: [
       {
         transition: 'transform 500ms cubic-bezier(0.5, 0, 0, 1)',
-        transformOrigin: 'top left',
+        transformOrigin: transformOrigin,
         transform: 'scale(0)'
       },
-      (!props.collapsed) && {
-        width: props.entityHostWidth,
-        height: props.entityHostHeight,
+      !isCollapsed && {
+        width: entityHostWidth,
+        height: entityHostHeight,
         transform: 'scale(1)'
       },
-      (!props.isMeasuring) && {
-        visibility: 'visible',
+      !isMeasuring && {
+        visibility: 'visible'
       }
-    ]
+    ],
+    childrenContainer: [
+      {
+        display: isMeasured && isCollapsed ? 'none' : 'block'
+      }
+    ],
+    ariaContainer: {
+      position: 'fixed',
+      opacity: 0,
+      height: 0,
+      width: 0,
+      pointerEvents: 'none'
+    }
   };
 }

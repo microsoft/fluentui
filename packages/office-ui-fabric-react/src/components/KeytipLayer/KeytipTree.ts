@@ -34,7 +34,6 @@ export class KeytipTree {
    * @param persisted - T/F if this keytip should be marked as persisted
    */
   public addNode(keytipProps: IKeytipProps, uniqueID: string, persisted?: boolean): void {
-    const { keySequences, hasDynamicChildren, overflowSetSequence, hasMenu, onExecute, onReturn, disabled } = keytipProps;
     const fullSequence = this._getFullSequence(keytipProps);
     const nodeID = sequencesToID(fullSequence);
 
@@ -44,8 +43,7 @@ export class KeytipTree {
     const parentID = this._getParentID(fullSequence);
 
     // Create node and add to map
-    const node = this._createNode(nodeID, keySequences, parentID, [], hasDynamicChildren, overflowSetSequence, hasMenu,
-      onExecute, onReturn, disabled, persisted);
+    const node = this._createNode(nodeID, parentID, [], keytipProps, persisted);
     this.nodeMap[uniqueID] = node;
 
     // Try to add self to parents children, if they exist
@@ -70,7 +68,13 @@ export class KeytipTree {
     // Parent ID is the root if there aren't any more sequences
     const parentID = this._getParentID(fullSequence);
     const node = this.nodeMap[uniqueID];
+    const parent = this.getNode(parentID);
     if (node) {
+      // If the ID of the node has changed, update node's parent's array of children with new ID
+      if (parent && node.id !== nodeID) {
+        const index = parent.children.indexOf(node.id);
+        index >= 0 && (parent.children[index] = nodeID);
+      }
       // Update values
       node.id = nodeID;
       node.keySequences = keytipProps.keySequences;
@@ -115,8 +119,8 @@ export class KeytipTree {
    * will match persisted nodes
    *
    * @param keySequence - string to match
-   * @param currentKeytip - The keytip who's children will try to match
-   * @returns {IKeytipTreeNode | undefined} The node that exactly matched the keySequence, or undefined if none matched
+   * @param currentKeytip - The keytip whose children will try to match
+   * @returns The node that exactly matched the keySequence, or undefined if none matched
    */
   public getExactMatchedNode(keySequence: string, currentKeytip: IKeytipTreeNode): IKeytipTreeNode | undefined {
     const possibleNodes = this.getNodes(currentKeytip.children);
@@ -130,8 +134,8 @@ export class KeytipTree {
    * disabled nodes but will match persisted nodes
    *
    * @param keySequence - string to partially match
-   * @param currentKeytip - The keytip who's children will try to partially match
-   * @returns {IKeytipTreeNode[]} List of tree nodes that partially match the given sequence
+   * @param currentKeytip - The keytip whose children will try to partially match
+   * @returns List of tree nodes that partially match the given sequence
    */
   public getPartiallyMatchedNodes(keySequence: string, currentKeytip: IKeytipTreeNode): IKeytipTreeNode[] {
     // Get children that are persisted
@@ -146,7 +150,7 @@ export class KeytipTree {
    * If no node is given, will use the 'currentKeytip'
    *
    * @param node - Node to get the children for
-   * @returns {string[]} List of node IDs that are the children of the node
+   * @returns List of node IDs that are the children of the node
    */
   public getChildren(node?: IKeytipTreeNode): string[] {
     if (!node) {
@@ -167,8 +171,8 @@ export class KeytipTree {
   /**
    * Gets all nodes from their IDs
    *
-   * @param ids List of keytip IDs
-   * @returns {IKeytipTreeNode[]} Array of nodes that match the given IDs, can be empty
+   * @param ids - List of keytip IDs
+   * @returns Array of nodes that match the given IDs, can be empty
    */
   public getNodes(ids: string[]): IKeytipTreeNode[] {
     return Object.keys(this.nodeMap).reduce((nodes: IKeytipTreeNode[], key: string): IKeytipTreeNode[] => {
@@ -183,20 +187,23 @@ export class KeytipTree {
    * Gets a single node from its ID
    *
    * @param id - ID of the node to get
-   * @returns {IKeytipTreeNode | undefined} Node with the given ID, if found
+   * @returns Node with the given ID, if found
    */
   public getNode(id: string): IKeytipTreeNode | undefined {
     const nodeMapValues = values<IKeytipTreeNode>(this.nodeMap);
-    return find(nodeMapValues, (node: IKeytipTreeNode): boolean => {
-      return node.id === id;
-    });
+    return find(
+      nodeMapValues,
+      (node: IKeytipTreeNode): boolean => {
+        return node.id === id;
+      }
+    );
   }
 
   /**
    * Tests if the currentKeytip in this.keytipTree is the parent of 'keytipProps'
    *
    * @param keytipProps - Keytip to test the parent for
-   * @returns {boolean} T/F if the currentKeytip is this keytipProps' parent
+   * @returns T/F if the currentKeytip is this keytipProps' parent
    */
   public isCurrentKeytipParent(keytipProps: IKeytipProps): boolean {
     if (this.currentKeytip) {
@@ -238,18 +245,8 @@ export class KeytipTree {
     return fullSequence[fullSequence.length - 1];
   }
 
-  private _createNode(
-    id: string,
-    keySequences: string[],
-    parentId: string,
-    children: string[],
-    hasDynamicChildren?: boolean,
-    overflowSetSequence?: string[],
-    hasMenu?: boolean,
-    onExecute?: (el: HTMLElement) => void,
-    onReturn?: (el: HTMLElement) => void,
-    disabled?: boolean,
-    persisted?: boolean): IKeytipTreeNode {
+  private _createNode(id: string, parentId: string, children: string[], keytipProps: IKeytipProps, persisted?: boolean): IKeytipTreeNode {
+    const { keySequences, hasDynamicChildren, overflowSetSequence, hasMenu, onExecute, onReturn, disabled } = keytipProps;
     const node = {
       id,
       keySequences,

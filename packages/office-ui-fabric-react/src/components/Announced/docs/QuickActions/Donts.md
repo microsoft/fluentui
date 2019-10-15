@@ -1,0 +1,1 @@
+- Announce status during progress unless the time has gone over a specified threshold.

@@ -3,22 +3,14 @@ import { KeytipManager } from '../../utilities/keytips/KeytipManager';
 import { mount, ReactWrapper } from 'enzyme';
 import { KeytipLayerBase } from './KeytipLayer.base';
 import { IKeytipProps } from '../../Keytip';
-import {
-  createRef,
-  find,
-  EventGroup,
-} from '../../Utilities';
+import { find } from '../../Utilities';
 import { KeytipTree } from './KeytipTree';
-import {
-  KTP_FULL_PREFIX,
-  KTP_SEPARATOR,
-  KeytipEvents
-} from '../../utilities/keytips/KeytipConstants';
+import { KTP_FULL_PREFIX, KTP_SEPARATOR } from '../../utilities/keytips/KeytipConstants';
 import { KeytipTransitionModifier } from '../../utilities/keytips/IKeytipTransitionKey';
 
 describe('KeytipLayer', () => {
   const ktpMgr = KeytipManager.getInstance();
-  const layerRef = createRef<KeytipLayerBase>();
+  const layerRef = React.createRef<KeytipLayerBase>();
   let ktpLayer: ReactWrapper;
   let ktpTree: KeytipTree;
 
@@ -65,7 +57,7 @@ describe('KeytipLayer', () => {
   };
 
   function delay(millisecond: number): Promise<void> {
-    return new Promise<void>((resolve) => setTimeout(resolve, millisecond));
+    return new Promise<void>(resolve => setTimeout(resolve, millisecond));
   }
 
   function getKeytip(keytips: IKeytipProps[], content: string): IKeytipProps | undefined {
@@ -85,11 +77,7 @@ describe('KeytipLayer', () => {
     ktpMgr.keytips = [{ keytip: keytipB, uniqueID: '1' }, { keytip: keytipG, uniqueID: '2' }];
 
     // Create layer
-    ktpLayer = mount(
-      <KeytipLayerBase
-        content='Alt Windows'
-      />
-    );
+    ktpLayer = mount(<KeytipLayerBase content="Alt Windows" />);
 
     const layerKeytips = ktpLayer.state('keytips');
     expect(layerKeytips).toHaveLength(2);
@@ -110,12 +98,7 @@ describe('KeytipLayer', () => {
 
       // Create layer
       ktpLayer = mount(
-        <KeytipLayerBase
-          componentRef={ layerRef }
-          content='Alt Windows'
-          onEnterKeytipMode={ onEnter }
-          onExitKeytipMode={ onExit }
-        />
+        <KeytipLayerBase componentRef={layerRef} content="Alt Windows" onEnterKeytipMode={onEnter} onExitKeytipMode={onExit} />
       );
     });
 
@@ -124,7 +107,7 @@ describe('KeytipLayer', () => {
       ktpMgr.enterKeytipMode();
       expect(ktpLayer.state('inKeytipMode')).toEqual(true);
       expect(onEnter).toBeCalled();
-      ktpTree = layerRef.value!.getKeytipTree();
+      ktpTree = layerRef.current!.getKeytipTree();
 
       // 4 nodes + the root
       expect(Object.keys(ktpTree.nodeMap)).toHaveLength(5);
@@ -145,12 +128,12 @@ describe('KeytipLayer', () => {
       ktpMgr.exitKeytipMode();
       expect(ktpLayer.state('inKeytipMode')).toEqual(false);
       expect(onExit).toBeCalled();
-      ktpTree = layerRef.value!.getKeytipTree();
+      ktpTree = layerRef.current!.getKeytipTree();
 
       visibleKeytips = ktpLayer.state('visibleKeytips');
       expect(visibleKeytips).toHaveLength(0);
 
-      expect(layerRef.value!.getCurrentSequence()).toEqual('');
+      expect(layerRef.current!.getCurrentSequence()).toEqual('');
       expect(ktpTree.currentKeytip).toBeUndefined();
     });
 
@@ -184,14 +167,9 @@ describe('KeytipLayer', () => {
 
           // Create layer
           ktpLayer = mount(
-            <KeytipLayerBase
-              componentRef={ layerRef }
-              content='Alt Windows'
-              onEnterKeytipMode={ onEnter }
-              onExitKeytipMode={ onExit }
-            />
+            <KeytipLayerBase componentRef={layerRef} content="Alt Windows" onEnterKeytipMode={onEnter} onExitKeytipMode={onExit} />
           );
-          layerValue = layerRef.value!;
+          layerValue = layerRef.current!;
           ktpTree = layerValue.getKeytipTree();
         });
 
@@ -236,10 +214,10 @@ describe('KeytipLayer', () => {
         // Create layer
         ktpLayer = mount(
           <KeytipLayerBase
-            content='Alt Windows'
-            componentRef={ layerRef }
-            keytipStartSequences={ [{ key: 'Meta' }] }
-            onEnterKeytipMode={ onEnter }
+            content="Alt Windows"
+            componentRef={layerRef}
+            keytipStartSequences={[{ key: 'Meta' }]}
+            onEnterKeytipMode={onEnter}
           />
         );
         layerValue.processTransitionInput({ key: 'Meta' });
@@ -261,14 +239,9 @@ describe('KeytipLayer', () => {
 
         // Create layer
         ktpLayer = mount(
-          <KeytipLayerBase
-            componentRef={ layerRef }
-            content='Alt Windows'
-            onEnterKeytipMode={ onEnter }
-            onExitKeytipMode={ onExit }
-          />
+          <KeytipLayerBase componentRef={layerRef} content="Alt Windows" onEnterKeytipMode={onEnter} onExitKeytipMode={onExit} />
         );
-        layerValue = layerRef.value!;
+        layerValue = layerRef.current!;
         ktpTree = layerValue.getKeytipTree();
       });
 
@@ -335,15 +308,10 @@ describe('KeytipLayer', () => {
         { keytip: keytipC, uniqueID: uniqueIdC },
         { keytip: keytipD, uniqueID: uniqueIdD },
         { keytip: keytipE1, uniqueID: uniqueIdE1 },
-        { keytip: keytipE2, uniqueID: uniqueIdE2 },
+        { keytip: keytipE2, uniqueID: uniqueIdE2 }
       ];
-      ktpLayer = mount(
-        <KeytipLayerBase
-          componentRef={ layerRef }
-          content='Alt Windows'
-        />
-      );
-      layerRef.value!.showKeytips([keytipIdB, keytipIdC]);
+      ktpLayer = mount(<KeytipLayerBase componentRef={layerRef} content="Alt Windows" />);
+      layerRef.current!.showKeytips([keytipIdB, keytipIdC]);
       const visibleKeytips: IKeytipProps[] = ktpLayer.state('visibleKeytips');
       expect(visibleKeytips).toHaveLength(2);
       expect(getKeytip(visibleKeytips, 'B')).toBeDefined();
@@ -356,20 +324,16 @@ describe('KeytipLayer', () => {
           keytip: {
             ...keytipB,
             overflowSetSequence: ['x']
-          }, uniqueID: uniqueIdB
+          },
+          uniqueID: uniqueIdB
         },
         { keytip: keytipC, uniqueID: uniqueIdC },
         { keytip: keytipD, uniqueID: uniqueIdD },
         { keytip: keytipE1, uniqueID: uniqueIdE1 },
-        { keytip: keytipE2, uniqueID: uniqueIdE2 },
+        { keytip: keytipE2, uniqueID: uniqueIdE2 }
       ];
-      ktpLayer = mount(
-        <KeytipLayerBase
-          componentRef={ layerRef }
-          content='Alt Windows'
-        />
-      );
-      layerRef.value!.showKeytips(['ktp-x-b']);
+      ktpLayer = mount(<KeytipLayerBase componentRef={layerRef} content="Alt Windows" />);
+      layerRef.current!.showKeytips(['ktp-x-b']);
       const visibleKeytips: IKeytipProps[] = ktpLayer.state('visibleKeytips');
       expect(visibleKeytips).toHaveLength(1);
       expect(getKeytip(visibleKeytips, 'B')).toBeDefined();
@@ -389,26 +353,18 @@ describe('KeytipLayer', () => {
       ktpMgr.persistedKeytips = [{ keytip: keytipG, uniqueID: uniqueIdG }];
 
       // Create layer
-      ktpLayer = mount(
-        <KeytipLayerBase
-          componentRef={ layerRef }
-          content='Alt Windows'
-        />
-      );
-      ktpTree = layerRef.value!.getKeytipTree();
+      ktpLayer = mount(<KeytipLayerBase componentRef={layerRef} content="Alt Windows" />);
+      ktpTree = layerRef.current!.getKeytipTree();
     });
 
     it('keytipAdded event delay-shows a keytip if the current keytip is its parent', () => {
       ktpTree.currentKeytip = ktpTree.getNode(keytipIdB);
       // Add a child under B
-      EventGroup.raise(ktpMgr, KeytipEvents.KEYTIP_ADDED, {
-        keytip: {
-          content: 'X',
-          keySequences: ['b', 'x']
-        },
-        uniqueID: 'my-unique-id'
+      ktpMgr.register({
+        content: 'X',
+        keySequences: ['b', 'x']
       });
-      delay(750).then(() => {
+      return delay(750).then(() => {
         const visibleKeytips: IKeytipProps[] = ktpLayer.state('visibleKeytips');
         expect(visibleKeytips).toHaveLength(1);
         expect(getKeytip(visibleKeytips, 'X')).toBeDefined();

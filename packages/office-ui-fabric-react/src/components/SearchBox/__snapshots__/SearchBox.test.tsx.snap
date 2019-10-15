@@ -8,6 +8,7 @@ exports[`SearchBox renders SearchBox correctly 1`] = `
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
         align-items: stretch;
+        background-color: #ffffff;
         border: 1px solid #a6a6a6;
         box-shadow: none;
         box-sizing: border-box;
@@ -43,6 +44,7 @@ exports[`SearchBox renders SearchBox correctly 1`] = `
   onFocusCapture={[Function]}
 >
   <div
+    aria-hidden={true}
     className=
         ms-SearchBox-iconContainer
         {
@@ -81,11 +83,10 @@ exports[`SearchBox renders SearchBox correctly 1`] = `
     </i>
   </div>
   <input
-    aria-label={undefined}
     className=
         ms-SearchBox-field
         {
-          background-color: #ffffff;
+          background-color: transparent;
           border: none;
           box-shadow: none;
           box-sizing: border-box;
@@ -98,6 +99,7 @@ exports[`SearchBox renders SearchBox correctly 1`] = `
           margin-left: 0px;
           margin-right: 0px;
           margin-top: 0px;
+          min-width: 0px;
           outline: none;
           overflow: hidden;
           padding-bottom: 0.5px;
@@ -106,22 +108,25 @@ exports[`SearchBox renders SearchBox correctly 1`] = `
           padding-top: 0px;
           text-overflow: ellipsis;
         }
-        &::-ms-clear {
-          display: none;
-        }
         &::placeholder {
           color: #666666;
           opacity: 1;
         }
         &:-ms-input-placeholder {
           color: #666666;
+          opacity: 1;
         }
-    disabled={undefined}
+        &::-ms-input-placeholder {
+          color: #666666;
+          opacity: 1;
+        }
+        &::-ms-clear {
+          display: none;
+        }
     id="SearchBox0"
     onChange={[Function]}
     onInput={[Function]}
     onKeyDown={[Function]}
-    placeholder={undefined}
     value=""
   />
 </div>
@@ -135,6 +140,7 @@ exports[`SearchBox renders SearchBox without animation correctly 1`] = `
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
         align-items: stretch;
+        background-color: #ffffff;
         border: 1px solid #a6a6a6;
         box-shadow: none;
         box-sizing: border-box;
@@ -170,6 +176,7 @@ exports[`SearchBox renders SearchBox without animation correctly 1`] = `
   onFocusCapture={[Function]}
 >
   <div
+    aria-hidden={true}
     className=
         ms-SearchBox-iconContainer
         {
@@ -206,11 +213,10 @@ exports[`SearchBox renders SearchBox without animation correctly 1`] = `
     </i>
   </div>
   <input
-    aria-label={undefined}
     className=
         ms-SearchBox-field
         {
-          background-color: #ffffff;
+          background-color: transparent;
           border: none;
           box-shadow: none;
           box-sizing: border-box;
@@ -223,6 +229,7 @@ exports[`SearchBox renders SearchBox without animation correctly 1`] = `
           margin-left: 0px;
           margin-right: 0px;
           margin-top: 0px;
+          min-width: 0px;
           outline: none;
           overflow: hidden;
           padding-bottom: 0.5px;
@@ -231,22 +238,25 @@ exports[`SearchBox renders SearchBox without animation correctly 1`] = `
           padding-top: 0px;
           text-overflow: ellipsis;
         }
-        &::-ms-clear {
-          display: none;
-        }
         &::placeholder {
           color: #666666;
           opacity: 1;
         }
         &:-ms-input-placeholder {
           color: #666666;
+          opacity: 1;
         }
-    disabled={undefined}
+        &::-ms-input-placeholder {
+          color: #666666;
+          opacity: 1;
+        }
+        &::-ms-clear {
+          display: none;
+        }
     id="SearchBox5"
     onChange={[Function]}
     onInput={[Function]}
     onKeyDown={[Function]}
-    placeholder={undefined}
     value=""
   />
 </div>

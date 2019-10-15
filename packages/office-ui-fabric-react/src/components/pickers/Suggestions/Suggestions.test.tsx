@@ -1,9 +1,10 @@
-
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 
+import { styled } from '../../../Utilities';
 import { Suggestions } from './Suggestions';
-import { ISuggestionModel } from './SuggestionsController';
+import { getStyles as suggestionsStyles } from './Suggestions.styles';
+import { ISuggestionModel, ISuggestionsProps, ISuggestionsStyleProps, ISuggestionsStyles } from './Suggestions.types';
 
 const suggestions = [
   'black',
@@ -20,7 +21,8 @@ const suggestions = [
   'rose',
   'violet',
   'white',
-  'yellow'];
+  'yellow'
+];
 
 function generateSimpleSuggestions(selectedIndex: number = 0) {
   return suggestions.map<ISuggestionModel<ISimple>>((value, index) => {
@@ -32,11 +34,10 @@ function generateSimpleSuggestions(selectedIndex: number = 0) {
       selected: index === selectedIndex
     };
   });
-
 }
 
 const basicSuggestionRenderer = (props: ISimple) => {
-  return <div> { props.name } </div>;
+  return <div> {props.name} </div>;
 };
 
 export interface ISimple {
@@ -49,15 +50,9 @@ function mockOnClick() {
 }
 
 describe('Suggestions', () => {
-
   it('renders a list properly', () => {
-
     const component = renderer.create(
-      <Suggestions
-        onRenderSuggestion={ basicSuggestionRenderer }
-        onSuggestionClick={ mockOnClick }
-        suggestions={ generateSimpleSuggestions() }
-      />
+      <Suggestions onRenderSuggestion={basicSuggestionRenderer} onSuggestionClick={mockOnClick} suggestions={generateSimpleSuggestions()} />
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
@@ -65,22 +60,33 @@ describe('Suggestions', () => {
 
   it('scrolls to selected index properly', () => {
     const component = renderer.create(
-      <Suggestions
-        onRenderSuggestion={ basicSuggestionRenderer }
-        onSuggestionClick={ mockOnClick }
-        suggestions={ generateSimpleSuggestions() }
-      />
+      <Suggestions onRenderSuggestion={basicSuggestionRenderer} onSuggestionClick={mockOnClick} suggestions={generateSimpleSuggestions()} />
     );
 
     component.update(
       <Suggestions
-        onRenderSuggestion={ basicSuggestionRenderer }
-        onSuggestionClick={ mockOnClick }
-        suggestions={ generateSimpleSuggestions(8) }
+        onRenderSuggestion={basicSuggestionRenderer}
+        onSuggestionClick={mockOnClick}
+        suggestions={generateSimpleSuggestions(8)}
       />
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
+  it('renders a list properly with CSS-in-JS styles', () => {
+    const StyledSuggestions = styled<ISuggestionsProps<ISimple>, ISuggestionsStyleProps, ISuggestionsStyles>(
+      Suggestions,
+      suggestionsStyles
+    );
+    const component = renderer.create(
+      <StyledSuggestions
+        onRenderSuggestion={basicSuggestionRenderer}
+        onSuggestionClick={mockOnClick}
+        suggestions={generateSimpleSuggestions()}
+      />
+    );
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
 });

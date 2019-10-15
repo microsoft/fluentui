@@ -1,6 +1,221 @@
 # Change Log - @uifabric/file-type-icons
 
-This log was last generated on Fri, 04 May 2018 15:58:39 GMT and should not be manually modified.
+This log was last generated on Tue, 15 Oct 2019 12:23:45 GMT and should not be manually modified.
+
+## 6.7.1
+Tue, 15 Oct 2019 12:23:45 GMT
+
+### Patches
+
+- Calendar, Contact, Fluid, PowerBI Data Source (caperez@microsoft.com)
+## 6.7.0
+Wed, 25 Sep 2019 12:22:00 GMT
+
+### Minor changes
+
+- Golden Folder grid view CSS cleanup and update to filetype salt to bust thru CDN cache (caperez@microsoft.com)
+## 6.6.0
+Thu, 12 Sep 2019 12:22:18 GMT
+
+### Minor changes
+
+- Adding .b extension to Office file type (caperez@microsoft.com)
+## 6.5.5
+Wed, 04 Sep 2019 12:24:13 GMT
+
+### Patches
+
+- reset version files to correct version (kchau@microsoft.com)
+## 6.5.4
+Fri, 26 Jul 2019 12:22:12 GMT
+
+### Patches
+
+- Cherry-picked adding in 'multiple.png' from Fabric 7 in order to use icon du
+
+## 6.5.3
+Mon, 22 Jul 2019 12:21:49 GMT
+
+### Patches
+
+- Adding @types/react and @types/react-dom to package.json that have peer dependencies on react and react-dom (backport of #9798).
+
+## 6.5.2
+Wed, 12 Jun 2019 22:15:55 GMT
+
+### Patches
+
+- Package bump to resolve conflicts.
+
+## 6.5.1
+Tue, 11 Jun 2019 12:21:35 GMT
+
+### Patches
+
+- adding missing filetype mappings to support LPC and other partners
+
+## 6.5.0
+Wed, 05 Jun 2019 12:22:30 GMT
+
+### Minor changes
+
+- added new extensions to icon groups to support LPC and Outlook mobile
+
+## 6.4.10
+Thu, 16 May 2019 05:28:50 GMT
+
+### Patches
+
+- Update README with note about how to use the new Fluent file type icons
+
+## 6.4.9
+Tue, 14 May 2019 07:50:30 GMT
+
+### Patches
+
+- Update Fabric assets link
+
+## 6.4.8
+Sat, 27 Apr 2019 00:04:47 GMT
+
+### Patches
+
+- removing duplicate entries in FileTypeIconMap.ts
+
+## 6.4.7
+Fri, 26 Apr 2019 12:35:24 GMT
+
+### Patches
+
+- reverting the json payload back inside the ts file due to downstream issues
+
+## 6.4.6
+Thu, 18 Apr 2019 12:31:50 GMT
+
+### Patches
+
+- fix mapping for OneNote notebook filetype icon
+- updating getFileTypeIconProps to make reference to correct sharepoint… 
+
+## 6.4.5
+Wed, 10 Apr 2019 12:33:17 GMT
+
+### Patches
+
+- decoupled the icon mapping from ts in file-type-icons so that it can be use in an upcoming cocoapod for fabric-cdn icons
+
+## 6.4.4
+Tue, 02 Apr 2019 00:38:14 GMT
+
+### Patches
+
+- Use ^ ranges instead of >=
+
+## 6.4.3
+Tue, 12 Mar 2019 12:31:43 GMT
+
+### Patches
+
+- fix mapping for OneNote notebook filetype icon
+- updating getFileTypeIconProps to make reference to correct sharepoint… 
+
+## 6.4.2
+Fri, 01 Mar 2019 13:33:08 GMT
+
+### Patches
+
+- fix mapping for OneNote notebook filetype icon
+
+## 6.4.1
+Thu, 06 Dec 2018 13:34:21 GMT
+
+### Patches
+
+- Recognize additional file extensions
+
+## 6.4.0
+Thu, 29 Nov 2018 19:34:12 GMT
+
+### Minor changes
+
+- Updated filetype icon mappings to include missing files (figma, powerpoint slide, etc) and entries for new supported non-file items (sp news, sway)
+
+## 6.2.0
+Mon, 15 Oct 2018 12:29:12 GMT
+
+### Minor changes
+
+- Fixing enum to avoid const enum.
+
+## 6.1.3
+Mon, 08 Oct 2018 12:24:15 GMT
+
+### Patches
+
+- Moving tslint/prettier dependencies 
+
+## 6.1.2
+Fri, 21 Sep 2018 14:25:46 GMT
+
+### Patches
+
+- Adding a version stamp file
+
+## 6.1.1
+Tue, 18 Sep 2018 12:26:03 GMT
+
+### Patches
+
+- Make lib import consistent for filetypeicons
+
+## 6.1.0
+Wed, 22 Aug 2018 05:10:19 GMT
+
+### Minor changes
+
+- Add FileIconTypeInput alongside FileIconType const enum
+
+## 6.0.2
+Tue, 14 Aug 2018 10:27:33 GMT
+
+### Patches
+
+- disabling codepen task
+
+## 6.0.1
+Tue, 03 Jul 2018 10:23:19 GMT
+
+### Patches
+
+- Bump variants and file-type-icons packages to restore amd build output
+
+## 6.0.0
+Mon, 15 Jun 2018 00:44:30 GMT
+
+### Breaking changes
+
+- Major bump to 6.0.0 for consistency.
+
+## 0.7.2
+Tue, 05 Jun 2018 00:44:30 GMT
+
+### Patches
+
+- Added Prettier
+
+## 0.7.1
+Mon, 04 Jun 2018 10:16:13 GMT
+
+### Patches
+
+- Updating react typings.
+
+## 0.7.0
+Wed, 30 May 2018 20:28:33 GMT
+
+### Minor changes
+
+- Minimum React version is now 16.3.2.
 
 ## 0.6.2
 Fri, 04 May 2018 15:58:39 GMT

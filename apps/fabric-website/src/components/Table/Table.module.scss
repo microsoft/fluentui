@@ -1,4 +1,5 @@
 @import '../../styles/variables';
+@import '~office-ui-fabric-react/src/common/common';
 
 .table {
   color: $ms-color-neutralPrimary;
@@ -15,7 +16,7 @@
     th {
       font-weight: $ms-font-weight-semibold;
       color: $ms-color-neutralSecondary;
-      @include ms-text-align(left);
+      @include text-align(left);
     }
   }
 
@@ -23,11 +24,7 @@
     font-size: $ms-font-size-m;
 
     td {
-      line-height:  normal;
-
-      &.animCell {
-        width: 260px;
-      }
+      line-height: normal;
 
       &:first-child {
         width: 1%;
@@ -41,7 +38,8 @@
     border-bottom: 1px solid $ms-color-neutralTertiaryAlt;
   }
 
-  th, td {
+  th,
+  td {
     padding: 8px;
     vertical-align: top;
   }

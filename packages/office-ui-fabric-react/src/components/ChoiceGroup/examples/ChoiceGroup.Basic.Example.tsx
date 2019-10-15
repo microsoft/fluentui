@@ -21,8 +21,9 @@ export class ChoiceGroupBasicExample extends React.Component<{}, IChoiceGroupBas
     return (
       <div>
         <ChoiceGroup
-          defaultSelectedKey='B'
-          options={ [
+          className="defaultChoiceGroup"
+          defaultSelectedKey="B"
+          options={[
             {
               key: 'A',
               text: 'Option A',
@@ -30,7 +31,7 @@ export class ChoiceGroupBasicExample extends React.Component<{}, IChoiceGroupBas
             } as IChoiceGroupOption,
             {
               key: 'B',
-              text: 'Option B',
+              text: 'Option B'
             },
             {
               key: 'C',
@@ -42,10 +43,10 @@ export class ChoiceGroupBasicExample extends React.Component<{}, IChoiceGroupBas
               text: 'Option D',
               disabled: true
             }
-          ] }
-          onChange={ this._onChange }
-          label='Pick one'
-          required={ true }
+          ]}
+          onChange={this._onChange}
+          label="Pick one"
+          required={true}
         />
       </div>
     );
@@ -53,5 +54,5 @@ export class ChoiceGroupBasicExample extends React.Component<{}, IChoiceGroupBas
 
   private _onChange = (ev: React.FormEvent<HTMLInputElement>, option: any): void => {
     console.dir(option);
-  }
+  };
 }

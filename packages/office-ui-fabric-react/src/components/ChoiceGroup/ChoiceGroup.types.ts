@@ -1,18 +1,34 @@
 import * as React from 'react';
+
 import { IIconProps } from '../../Icon';
-import { IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
-import { ITheme, IStyle } from '../../Styling';
+import { IStyle, ITheme } from '../../Styling';
+import { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
+import { IChoiceGroupOptionStyleProps, IChoiceGroupOptionStyles } from './ChoiceGroupOption/ChoiceGroupOption.types';
 
+/**
+ * {@docCategory ChoiceGroup}
+ */
 export interface IChoiceGroup {
+  /**
+   * Gets the current checked option.
+   */
+  checkedOption: IChoiceGroupOption | undefined;
 
+  /**
+   * Sets focus to the choiceGroup.
+   */
+  focus: () => void;
 }
 
+/**
+ * {@docCategory ChoiceGroup}
+ */
 export interface IChoiceGroupProps extends React.InputHTMLAttributes<HTMLElement | HTMLInputElement> {
   /**
    * Optional callback to access the IChoiceGroup interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: IChoiceGroup | null) => void;
+  componentRef?: IRefObject<IChoiceGroup>;
 
   /**
    * The options for the choice group.
@@ -41,8 +57,8 @@ export interface IChoiceGroupProps extends React.InputHTMLAttributes<HTMLElement
   label?: string;
 
   /**
-   * Deprecated and will be removed by 07/17/2017 Use 'onChange' instead.
-   * @deprecated
+   * Deprecated and will be removed by 07/17/2017. Use `onChange` instead.
+   * @deprecated Use `onChange` instead.
    */
   onChanged?: (option: IChoiceGroupOption, evt?: React.FormEvent<HTMLElement | HTMLInputElement>) => void;
 
@@ -55,8 +71,16 @@ export interface IChoiceGroupProps extends React.InputHTMLAttributes<HTMLElement
    * Call to provide customized styling that will layer on top of the variant rules.
    */
   styles?: IStyleFunctionOrObject<IChoiceGroupStyleProps, IChoiceGroupStyles>;
+
+  /**
+   * Aria labelled by prop for the ChoiceGroup itself
+   */
+  ariaLabelledBy?: string;
 }
 
+/**
+ * {@docCategory ChoiceGroup}
+ */
 export interface IChoiceGroupOption extends React.HTMLAttributes<HTMLElement | HTMLInputElement> {
   /**
    * A required key to uniquely identify the option.
@@ -74,7 +98,7 @@ export interface IChoiceGroupOption extends React.HTMLAttributes<HTMLElement | H
   onRenderField?: IRenderFunction<IChoiceGroupOption>;
 
   /**
-   * Optional override of option render
+   * Optional override of label render
    */
   onRenderLabel?: (option: IChoiceGroupOption) => JSX.Element;
 
@@ -100,9 +124,9 @@ export interface IChoiceGroupOption extends React.HTMLAttributes<HTMLElement | H
 
   /**
    * The width and height of the image in px for choice field.
-   * @default { width: 32, height: 32 }
+   * @defaultvalue \{ width: 32, height: 32 \}
    */
-  imageSize?: { width: number, height: number };
+  imageSize?: { width: number; height: number };
 
   /**
    * Whether or not the option is disabled.
@@ -125,14 +149,30 @@ export interface IChoiceGroupOption extends React.HTMLAttributes<HTMLElement | H
    * Should be used for 'aria-owns' and other such uses, rather than direct reference for programmatic purposes.
    */
   labelId?: string;
+
+  /**
+   * The aria label of the ChoiceGroupOption for the benefit of screen readers.
+   */
+  ariaLabel?: string;
+
+  /**
+   * Call to provide customized styling that will layer on top of the variant rules.
+   */
+  styles?: IStyleFunctionOrObject<IChoiceGroupOptionStyleProps, IChoiceGroupOptionStyles>;
 }
 
+/**
+ * {@docCategory ChoiceGroup}
+ */
 export interface IChoiceGroupStyleProps {
   theme: ITheme;
   className?: string;
   optionsContainIconOrImage?: boolean;
 }
 
+/**
+ * {@docCategory ChoiceGroup}
+ */
 export interface IChoiceGroupStyles {
   applicationRole?: IStyle;
   root?: IStyle;

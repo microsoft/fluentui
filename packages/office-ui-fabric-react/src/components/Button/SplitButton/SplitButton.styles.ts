@@ -1,35 +1,54 @@
 import { IButtonStyles } from '../Button.types';
-import {
-  ITheme,
-  concatStyleSets,
-  getFocusStyle
-} from '../../../Styling';
+import { HighContrastSelector, ITheme, concatStyleSets, getFocusStyle, IStyle } from '../../../Styling';
 import { memoizeFunction } from '../../../Utilities';
 
-export const getStyles = memoizeFunction((
-  theme: ITheme,
-  customStyles?: IButtonStyles
-): IButtonStyles => {
-  const buttonHighContrastFocus = {
-    left: -2,
-    top: -2,
-    bottom: -2,
-    right: -2,
-    border: 'none'
-  };
+export const getStyles = memoizeFunction(
+  (theme: ITheme, customStyles?: IButtonStyles): IButtonStyles => {
+    const buttonHighContrastFocus = {
+      left: -2,
+      top: -2,
+      bottom: -2,
+      right: -2,
+      border: 'none'
+    };
 
-  const splitButtonStyles: IButtonStyles = {
-    splitButtonContainer: [
-      getFocusStyle(theme, 0, 'relative', buttonHighContrastFocus),
-      {
-        display: 'inline-flex'
+    const splitButtonDivider: IStyle = {
+      position: 'absolute',
+      width: 1,
+      right: 31,
+      top: 8,
+      bottom: 8
+    };
+
+    const splitButtonDividerDisabled: IStyle = {
+      position: 'absolute',
+      width: 1,
+      right: 31,
+      top: 8,
+      bottom: 8,
+      selectors: {
+        [HighContrastSelector]: {
+          backgroundColor: 'GrayText'
+        }
       }
-    ],
-    splitButtonContainerFocused: {
-      outline: 'none!important',
-    },
-    splitButtonMenuButton:
-      {
+    };
+
+    const splitButtonStyles: IButtonStyles = {
+      splitButtonContainer: [
+        getFocusStyle(theme, { highContrastStyle: buttonHighContrastFocus }),
+        {
+          display: 'inline-flex',
+          selectors: {
+            '.ms-Button--default, .ms-Button--primary': {
+              borderRight: 'none'
+            }
+          }
+        }
+      ],
+      splitButtonContainerFocused: {
+        outline: 'none!important'
+      },
+      splitButtonMenuButton: {
         padding: 6,
         height: 'auto',
         boxSizing: 'border-box',
@@ -43,39 +62,48 @@ export const getStyles = memoizeFunction((
         cursor: 'pointer',
         verticalAlign: 'top',
         width: 32,
-        marginLeft: -1
+        marginLeft: -1,
+        marginTop: 0,
+        marginRight: 0,
+        marginBottom: 0,
+        selectors: {
+          [HighContrastSelector]: {
+            border: `1px solid white`,
+            borderLeft: 'none'
+          }
+        }
       },
 
-    splitButtonDivider: {
-      position: 'absolute',
-      width: 1,
-      right: 31,
-      top: 8,
-      bottom: 8
-    },
-
-    splitButtonMenuButtonDisabled: {
-      pointerEvents: 'none',
-      selectors: {
-        ':hover': {
-          cursor: 'default'
+      splitButtonDivider: splitButtonDivider,
+      splitButtonDividerDisabled: splitButtonDividerDisabled,
+      splitButtonMenuButtonDisabled: {
+        pointerEvents: 'none',
+        selectors: {
+          ':hover': {
+            cursor: 'default'
+          },
+          [HighContrastSelector]: {
+            border: `1px solid GrayText`,
+            color: 'GrayText',
+            backgroundColor: 'Window'
+          }
         }
+      },
+
+      splitButtonFlexContainer: {
+        display: 'flex',
+        height: '100%',
+        flexWrap: 'nowrap',
+        justifyContent: 'center',
+        alignItems: 'center'
+      },
+
+      splitButtonContainerDisabled: {
+        outline: 'none',
+        border: 'none'
       }
-    },
+    };
 
-    splitButtonFlexContainer: {
-      display: 'flex',
-      height: '100%',
-      flexWrap: 'nowrap',
-      justifyContent: 'center',
-      alignItems: 'center'
-    },
-
-    splitButtonContainerDisabled: {
-      outline: 'none',
-      border: 'none'
-    }
-  };
-
-  return concatStyleSets(splitButtonStyles, customStyles)!;
-});
+    return concatStyleSets(splitButtonStyles, customStyles)!;
+  }
+);

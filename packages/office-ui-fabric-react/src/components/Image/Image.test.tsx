@@ -1,8 +1,7 @@
+import { mount } from 'enzyme';
 import * as React from 'react';
 import * as ReactTestUtils from 'react-dom/test-utils';
 import * as renderer from 'react-test-renderer';
-import { mount } from 'enzyme';
-
 import { Image } from './Image';
 import { ImageBase } from './Image.base';
 import { ImageFit } from './Image.types';
@@ -19,35 +18,28 @@ describe('Image', () => {
   });
 
   it('renders Image correctly', () => {
-    const component = renderer.create(<Image src={ testImage1x1 } />);
+    const component = renderer.create(<Image src={testImage1x1} />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
-  it('renders an image', (done) => {
+  it('renders an image', done => {
     const component = ReactTestUtils.renderIntoDocument(
       <ImageBase
-        src={ testImage1x1 }
+        src={testImage1x1}
         // tslint:disable-next-line:jsx-no-lambda
-        onLoad={ () => done() }
+        onLoad={() => done()}
       />
     );
 
     const image = ReactTestUtils.findRenderedDOMComponentWithTag(component as any, 'img');
     ReactTestUtils.Simulate.load(image);
-
   });
 
   it('can cover a portrait (tall) frame with a square image', () => {
     const component = mount(
       <div>
-        <Image
-          src={ testImage1x1 }
-          width={ 1 }
-          height={ 3 }
-          imageFit={ ImageFit.cover }
-          className='is-portraitFrame'
-        />
+        <Image src={testImage1x1} width={1} height={3} imageFit={ImageFit.cover} className="is-portraitFrame" />
       </div>
     );
 
@@ -58,14 +50,7 @@ describe('Image', () => {
   it('can cover a landscape (wide) frame with a square image', () => {
     const component = mount(
       <div>
-        <Image
-          src={ testImage1x1 }
-          width={ 3 }
-          height={ 1 }
-          imageFit={ ImageFit.cover }
-          className='is-landscapeFrame'
-
-        />
+        <Image src={testImage1x1} width={3} height={1} imageFit={ImageFit.cover} className="is-landscapeFrame" />
       </div>
     );
     component.find('img').simulate('load');
@@ -74,14 +59,10 @@ describe('Image', () => {
 
   it('can cover a landscape (wide) parent element with a square image', () => {
     const component = mount(
-      <div style={ { width: '10px', height: '20px' } }>
-        <Image
-          className='is-frameMaximizedPortrait'
-          imageFit={ ImageFit.cover }
-          maximizeFrame
-          src={ testImage1x1 }
-        />
-      </div>);
+      <div style={{ width: '10px', height: '20px' }}>
+        <Image className="is-frameMaximizedPortrait" imageFit={ImageFit.cover} maximizeFrame src={testImage1x1} />
+      </div>
+    );
 
     // Manually set client height and width since there is no DOM
     Object.defineProperty(HTMLDivElement.prototype, 'clientHeight', { get: () => 10, configurable: true });
@@ -93,13 +74,8 @@ describe('Image', () => {
 
   it('can cover a portrait (tall) parent element with a square image', () => {
     const component = mount(
-      <div style={ { width: '10px', height: '20px' } }>
-        <Image
-          src={ testImage1x1 }
-          imageFit={ ImageFit.cover }
-          className='is-frameMaximizedLandscape'
-          maximizeFrame
-        />
+      <div style={{ width: '10px', height: '20px' }}>
+        <Image src={testImage1x1} imageFit={ImageFit.cover} className="is-frameMaximizedLandscape" maximizeFrame />
       </div>
     );
 
@@ -111,12 +87,22 @@ describe('Image', () => {
     expect(component.update().find('.ms-Image-image--landscape')).toHaveLength(1);
   });
 
-  it('allows onError events to be attached', (done) => {
+  it('renders ImageFit.centerContain correctly', () => {
+    const component = renderer.create(<Image src={testImage1x1} imageFit={ImageFit.centerContain} width={50} height={100} />);
+    expect(component.toJSON()).toMatchSnapshot();
+  });
+
+  it('renders ImageFit.centerCover correctly', () => {
+    const component = renderer.create(<Image src={testImage1x1} imageFit={ImageFit.centerCover} width={50} height={100} />);
+    expect(component.toJSON()).toMatchSnapshot();
+  });
+
+  it('allows onError events to be attached', done => {
     const component = ReactTestUtils.renderIntoDocument(
       <ImageBase
-        src={ brokenImage }
+        src={brokenImage}
         // tslint:disable-next-line:jsx-no-lambda
-        onError={ () => done() }
+        onError={() => done()}
       />
     );
 

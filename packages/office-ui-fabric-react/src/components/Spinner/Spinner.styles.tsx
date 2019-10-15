@@ -1,32 +1,53 @@
 import { ISpinnerStyleProps, ISpinnerStyles, SpinnerSize } from './Spinner.types';
-import { hiddenContentStyle, keyframes, HighContrastSelector } from '../../Styling';
+import { hiddenContentStyle, keyframes, HighContrastSelector, getGlobalClassNames } from '../../Styling';
+
+const GlobalClassNames = {
+  root: 'ms-Spinner',
+  circle: 'ms-Spinner-circle',
+  label: 'ms-Spinner-label'
+};
 
 const spinAnimation: string = keyframes({
   '0%': {
-    transform: 'rotateZ(0deg)'
+    transform: 'rotate(0deg)'
   },
   '100%': {
-    transform: 'rotateZ(360deg)'
+    transform: 'rotate(360deg)'
   }
 });
 
 export const getStyles = (props: ISpinnerStyleProps): ISpinnerStyles => {
-  const { theme, size, className } = props;
+  const { theme, size, className, labelPosition } = props;
+
   const { palette } = theme;
+
+  const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
   return {
     root: [
-      'ms-Spinner',
+      classNames.root,
+      {
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center'
+      },
+      labelPosition === 'top' && {
+        flexDirection: 'column-reverse'
+      },
+      labelPosition === 'right' && {
+        flexDirection: 'row'
+      },
+      labelPosition === 'left' && {
+        flexDirection: 'row-reverse'
+      },
       className
     ],
     circle: [
-      'ms-Spinner-circle',
+      classNames.circle,
       {
-        margin: 'auto',
         boxSizing: 'border-box',
         borderRadius: '50%',
-        width: '100%',
-        height: '100%',
         border: '1.5px solid ' + palette.themeLight,
         borderTopColor: palette.themePrimary,
         animationName: spinAnimation,
@@ -37,7 +58,7 @@ export const getStyles = (props: ISpinnerStyleProps): ISpinnerStyles => {
           [HighContrastSelector]: {
             borderTopColor: 'Highlight'
           }
-        },
+        }
       },
       size === SpinnerSize.xSmall && [
         'ms-Spinner--xSmall',
@@ -69,11 +90,20 @@ export const getStyles = (props: ISpinnerStyleProps): ISpinnerStyles => {
       ]
     ],
     label: [
-      'ms-Spinner-label',
+      classNames.label,
       {
         color: palette.themePrimary,
-        marginTop: 10,
+        margin: '10px 0 0',
         textAlign: 'center'
+      },
+      labelPosition === 'top' && {
+        margin: '0 0 10px'
+      },
+      labelPosition === 'right' && {
+        margin: '0 0 0 10px'
+      },
+      labelPosition === 'left' && {
+        margin: '0 10px 0 0'
       }
     ],
     screenReaderText: hiddenContentStyle

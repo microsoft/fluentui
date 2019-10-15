@@ -1,13 +1,6 @@
 import * as React from 'react';
-import {
-  BaseComponent,
-  IClassNames,
-  classNamesFunction,
-  css,
-  customizable,
-  format,
-  getId
-} from '../../Utilities';
+import { BaseComponent, classNamesFunction, css, format, getId, divProperties, getNativeProps } from '../../Utilities';
+import { IProcessedStyleSet } from '../../Styling';
 import { Icon } from '../../Icon';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { IRatingProps, RatingSize, IRatingStyleProps, IRatingStyles } from './Rating.types';
@@ -18,34 +11,26 @@ interface IRatingStarProps extends React.AllHTMLAttributes<HTMLElement> {
   fillPercentage: number;
   disabled: boolean;
   readOnly: boolean;
-  classNames: IClassNames<IRatingStyles>;
+  classNames: IProcessedStyleSet<IRatingStyles>;
+  icon?: string;
 }
 
 export interface IRatingState {
   rating: number | null | undefined;
 }
 
-const RatingStar = (props: IRatingStarProps, ) => (
-  <div
-    className={ props.classNames.ratingStar }
-    key={ props.id }
-  >
-    <Icon
-      className={ props.classNames.ratingStarBack }
-      iconName='FavoriteStarFill'
-    />
-    {
-      !props.disabled &&
-      <Icon
-        className={ props.classNames.ratingStarFront }
-        iconName='FavoriteStarFill'
-        style={ { width: props.fillPercentage + '%' } }
-      />
-    }
-  </div >
-);
+const RatingStar = (props: IRatingStarProps) => {
+  const icon = props.icon || 'FavoriteStarFill';
+  return (
+    <div className={props.classNames.ratingStar} key={props.id}>
+      <Icon className={props.classNames.ratingStarBack} iconName={icon} />
+      {!props.disabled && (
+        <Icon className={props.classNames.ratingStarFront} iconName={icon} style={{ width: props.fillPercentage + '%' }} />
+      )}
+    </div>
+  );
+};
 
-@customizable('Rating', ['theme', 'getStyles'])
 export class RatingBase extends BaseComponent<IRatingProps, IRatingState> {
   public static defaultProps: IRatingProps = {
     min: 1,
@@ -54,10 +39,14 @@ export class RatingBase extends BaseComponent<IRatingProps, IRatingState> {
   private _id: string;
   private _min: number;
   private _labelId: string;
-  private _classNames: { [key in keyof IRatingStyles]: string };
+  private _classNames: IProcessedStyleSet<IRatingStyles>;
 
   constructor(props: IRatingProps) {
     super(props);
+
+    this._warnDeprecations({
+      onChanged: 'onChange'
+    });
 
     this._id = getId('Rating');
     this._min = this.props.allowZeroStars ? 0 : 1;
@@ -91,9 +80,11 @@ export class RatingBase extends BaseComponent<IRatingProps, IRatingState> {
       rating,
       readOnly,
       size,
-      theme
+      theme,
+      icon = 'FavoriteStarFill',
+      unselectedIcon = 'FavoriteStar'
     } = this.props;
-
+    const divProps = getNativeProps(this.props, divProperties);
     this._classNames = getClassNames(styles!, {
       disabled,
       readOnly,
@@ -102,32 +93,34 @@ export class RatingBase extends BaseComponent<IRatingProps, IRatingState> {
 
     for (let i = this._min as number; i <= (max as number); i++) {
       if (i !== 0) {
+        const fillPercentage = this._getFillingPercentage(i);
         const ratingStarProps: IRatingStarProps = {
-          fillPercentage: this._getFillingPercentage(i),
+          fillPercentage,
           disabled: disabled ? true : false,
           readOnly: readOnly ? true : false,
-          classNames: this._classNames
+          classNames: this._classNames,
+          icon: fillPercentage > 0 ? icon : unselectedIcon
         };
 
         starIds.push(this._getStarId(i - 1));
 
         stars.push(
           <button
-            className={ css(this._classNames.ratingButton, {
+            className={css(this._classNames.ratingButton, {
               [this._classNames.ratingStarIsLarge]: size === RatingSize.Large,
               [this._classNames.ratingStarIsSmall]: size !== RatingSize.Large
-            }) }
-            id={ starIds[i - 1] }
-            key={ i }
-            { ...((i === Math.ceil(this.state.rating as number)) ? { 'data-is-current': true } : {}) }
-            onFocus={ this._onFocus.bind(this, i) }
-            onClick={ this._onFocus.bind(this, i) } // For Safari & Firefox on OSX
-            disabled={ disabled || readOnly ? true : false }
-            role='presentation'
-            type='button'
+            })}
+            id={starIds[i - 1]}
+            key={i}
+            {...(i === Math.ceil(this.state.rating as number) ? { 'data-is-current': true } : {})}
+            onFocus={this._onFocus.bind(this, i)}
+            onClick={this._onFocus.bind(this, i)} // For Safari & Firefox on OSX
+            disabled={disabled || readOnly ? true : false}
+            role="presentation"
+            type="button"
           >
-            { this._getLabel(i) }
-            <RatingStar key={ i + 'rating' }  { ...ratingStarProps } />
+            {this._getLabel(i)}
+            <RatingStar key={i + 'rating'} {...ratingStarProps} />
           </button>
         );
       }
@@ -135,24 +128,25 @@ export class RatingBase extends BaseComponent<IRatingProps, IRatingState> {
 
     return (
       <div
-        className={ css('ms-Rating-star', this._classNames.root, {
+        className={css('ms-Rating-star', this._classNames.root, {
           [this._classNames.rootIsLarge]: size === RatingSize.Large,
           [this._classNames.rootIsSmall]: size !== RatingSize.Large
-        }) }
-        aria-label={ getAriaLabel ? getAriaLabel(this.state.rating ? this.state.rating : 0, this.props.max as number) : '' }
-        id={ id }
+        })}
+        aria-label={getAriaLabel ? getAriaLabel(this.state.rating ? this.state.rating : 0, this.props.max as number) : ''}
+        id={id}
+        {...divProps}
       >
         <FocusZone
-          direction={ FocusZoneDirection.horizontal }
-          tabIndex={ readOnly ? 0 : -1 }
-          className={ css(this._classNames.ratingFocusZone, {
+          direction={FocusZoneDirection.horizontal}
+          tabIndex={readOnly ? 0 : -1}
+          className={css(this._classNames.ratingFocusZone, {
             [this._classNames.rootIsLarge]: size === RatingSize.Large,
             [this._classNames.rootIsSmall]: size !== RatingSize.Large
-          }) }
-          data-is-focusable={ readOnly ? true : false }
-          defaultActiveElement={ rating ? starIds[rating - 1] && '#' + starIds[rating - 1] : undefined }
+          })}
+          data-is-focusable={readOnly ? true : false}
+          defaultActiveElement={rating ? starIds[rating - 1] && '#' + starIds[rating - 1] : undefined}
         >
-          { stars }
+          {stars}
         </FocusZone>
       </div>
     );
@@ -168,7 +162,12 @@ export class RatingBase extends BaseComponent<IRatingProps, IRatingState> {
         rating: value
       } as IRatingState);
 
-      const { onChanged } = this.props;
+      const { onChange, onChanged } = this.props;
+
+      if (onChange) {
+        onChange(ev, value);
+      }
+
       if (onChanged) {
         onChanged(value);
       }
@@ -179,12 +178,9 @@ export class RatingBase extends BaseComponent<IRatingProps, IRatingState> {
     const text = this.props.ariaLabelFormat || '';
 
     return (
-      <span
-        id={ `${this._labelId}-${rating}` }
-        className={ this._classNames.labelText }
-      >
-        { format(text, rating, this.props.max) }
-      </span >
+      <span id={`${this._labelId}-${rating}`} className={this._classNames.labelText}>
+        {format(text, rating, this.props.max)}
+      </span>
     );
   }
 
@@ -205,13 +201,13 @@ export class RatingBase extends BaseComponent<IRatingProps, IRatingState> {
   }
 
   private _getFillingPercentage(starPosition: number): number {
-    const ceilValue = Math.ceil((this.state.rating as number));
+    const ceilValue = Math.ceil(this.state.rating as number);
     let fillPercentage = 100;
 
     if (starPosition === this.state.rating) {
       fillPercentage = 100;
     } else if (starPosition === ceilValue) {
-      fillPercentage = 100 * (this.state.rating as number % 1);
+      fillPercentage = 100 * ((this.state.rating as number) % 1);
     } else if (starPosition > ceilValue) {
       fillPercentage = 0;
     }

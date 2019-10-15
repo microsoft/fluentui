@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { IPickerItemProps, ISuggestionModel, ValidationState } from '../../Pickers';
 import { Selection } from '../../Selection';
+import { IRefObject } from '../../Utilities';
 
 export interface IBaseSelectedItemsList<T> {
   /** Gets the current value of the input. */
@@ -16,8 +17,8 @@ export interface ISelectedItemProps<T> extends IPickerItemProps<T> {
 // Type T is the type of the item that is displayed
 // For example, if the picker is displaying persona's than type T could either be of Persona or Ipersona props
 // tslint:disable-next-line:no-any
-export interface IBaseSelectedItemsListProps<T> extends React.Props<any> {
-  componentRef?: (component?: IBaseSelectedItemsList<T> | null) => void;
+export interface IBaseSelectedItemsListProps<T> extends React.ClassAttributes<any> {
+  componentRef?: IRefObject<IBaseSelectedItemsList<T>>;
 
   /**
    * The selection
@@ -40,10 +41,6 @@ export interface IBaseSelectedItemsListProps<T> extends React.Props<any> {
    */
   onChange?: (items?: T[]) => void;
   /**
-   * ClassName for the picker.
-   */
-  className?: string;
-  /**
    * Function that specifies how arbitrary text entered into the well is handled.
    */
   createGenericItem?: (input: string, ValidationState: ValidationState) => ISuggestionModel<T>;
@@ -58,13 +55,23 @@ export interface IBaseSelectedItemsListProps<T> extends React.Props<any> {
   selectedItems?: T[];
 
   /**
-  * Aria label for the 'X' button in the selected item component.
-  * @default ''
-  */
+   * Aria label for the 'X' button in the selected item component.
+   * @defaultvalue ''
+   */
   removeButtonAriaLabel?: string;
-
   /**
-   * A callback when and item is deleted
+   * A callback when an item is deleted
+   * @deprecated Use `onItemsDeleted` instead.
    */
   onItemDeleted?: (deletedItem: T) => void;
+
+  /**
+   * A callback when and item or items are deleted
+   */
+  onItemsDeleted?: (deletedItems: T[]) => void;
+
+  /**
+   * A callback on whether this item can be deleted
+   */
+  canRemoveItem?: (item: T) => boolean;
 }

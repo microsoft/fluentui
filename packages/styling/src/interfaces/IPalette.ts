@@ -1,5 +1,6 @@
 /**
  * UI Fabric color palette.
+ * {@docCategory IPalette}
  */
 export interface IPalette {
   /**
@@ -78,6 +79,11 @@ export interface IPalette {
   neutralSecondary: string;
 
   /**
+   * Color code for neutralSecondaryAlt.
+   */
+  neutralSecondaryAlt: string;
+
+  /**
    * Color code for neutralTertiary.
    */
   neutralTertiary: string;
@@ -127,6 +133,11 @@ export interface IPalette {
    * Color code for whiteTranslucent40
    */
   whiteTranslucent40: string;
+
+  /**
+   * Color code for yellowDark.
+   */
+  yellowDark: string;
 
   /**
    * Color code for yellow.

@@ -1,6 +1,117 @@
 # Change Log - @uifabric/icons
 
-This log was last generated on Wed, 16 May 2018 00:05:17 GMT and should not be manually modified.
+This log was last generated on Wed, 04 Sep 2019 12:24:13 GMT and should not be manually modified.
+
+## 6.5.5
+Wed, 04 Sep 2019 12:24:13 GMT
+
+### Patches
+
+- reset version files to correct version (kchau@microsoft.com)
+## 6.5.4
+Mon, 22 Jul 2019 12:21:49 GMT
+
+### Patches
+
+- Adding @types/react and @types/react-dom to package.json that have peer dependencies on react and react-dom (backport of #9798).
+
+## 6.5.3
+Wed, 12 Jun 2019 22:15:55 GMT
+
+### Patches
+
+- Package bump to resolve conflicts.
+
+## 6.5.2
+Tue, 14 May 2019 07:50:30 GMT
+
+### Patches
+
+- Update Fabric assets link
+
+## 6.5.1
+Tue, 02 Apr 2019 00:38:15 GMT
+
+### Patches
+
+- Use ^ ranges instead of >=
+
+## 6.5.0
+Fri, 15 Mar 2019 12:34:07 GMT
+
+### Minor changes
+
+- Add new icons
+
+## 6.4.0
+Mon, 18 Feb 2019 13:38:30 GMT
+
+### Minor changes
+
+- Deprecate iconNames due to const enum usage.
+
+## 6.3.0
+Tue, 20 Nov 2018 20:12:42 GMT
+
+### Minor changes
+
+- Icons: Add new font files that were missed from the most recent update.
+
+## 6.2.0
+Tue, 20 Nov 2018 13:32:17 GMT
+
+### Minor changes
+
+- Icons: Added many new icons from the Fabric icons tool (aka.ms/fabric-icons)
+
+## 6.1.2
+Mon, 08 Oct 2018 12:24:15 GMT
+
+### Patches
+
+- Moving tslint/prettier dependencies 
+
+## 6.1.1
+Fri, 21 Sep 2018 14:25:46 GMT
+
+### Patches
+
+- Adding a version stamp file
+
+## 6.1.0
+Wed, 22 Aug 2018 05:10:19 GMT
+
+### Minor changes
+
+- Add IconNamesInput alongside IconNames const enum
+
+## 6.0.3
+Tue, 14 Aug 2018 10:27:33 GMT
+
+### Patches
+
+- disabling codepen task
+
+## 6.0.2
+Wed, 27 Jun 2018 23:59:19 GMT
+
+### Patches
+
+- Republish to address issue #5353
+
+## 6.0.1
+Tue, 05 Jun 2018 00:44:30 GMT
+
+### Patches
+
+- Added Prettier
+
+## 6.0.0
+Wed, 30 May 2018 20:28:33 GMT
+
+### Breaking changes
+
+- Minimum React version is now 16.3.2.
 
 ## 5.8.0
 Wed, 16 May 2018 00:05:17 GMT

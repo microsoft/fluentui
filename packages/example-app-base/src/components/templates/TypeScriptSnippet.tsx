@@ -1,21 +1,20 @@
 import * as React from 'react';
 import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 
-// tslint:disable-next-line:no-any
-declare const require: (location: string) => any;
+// tslint:disable no-any
+const SyntaxHighlighter = require<any>('react-syntax-highlighter/dist/esm/light').default;
+const ts = require<any>('react-syntax-highlighter/dist/esm/languages/hljs/typescript').default;
+const style = require<any>('react-syntax-highlighter/dist/styles/hljs/vs2015').default;
+// tslint:enable no-any
 
-const { default: SyntaxHighlighter, registerLanguage } = require('react-syntax-highlighter/light');
-const { default: ts } = require('react-syntax-highlighter/languages/hljs/typescript');
-const { default: style } = require('react-syntax-highlighter/styles/hljs/vs2015');
-
-registerLanguage('typescript', ts);
+SyntaxHighlighter.registerLanguage('typescript', ts);
 
 export const rootClass = mergeStyles({
   overflowY: 'auto',
   maxHeight: '400px',
   display: 'flex',
   selectors: {
-    'code': {
+    code: {
       fontFamily: 'Monaco, Menlo, Consolas, "Droid Sans Mono", "Inconsolata", "Courier New", monospace',
       lineHeight: '1.6'
     }
@@ -29,21 +28,21 @@ export const lineNumberStyle = {
   display: 'block',
   borderRight: '1px solid #666',
   paddingRight: 4,
-  lineHeight: 'inherit',
+  lineHeight: 'inherit'
 };
 
+/** @deprecated Use `CodeSnippet` */
 export class TypeScriptSnippet extends React.Component {
-
   public render(): JSX.Element {
     return (
       <SyntaxHighlighter
-        showLineNumbers={ true }
-        lineNumberStyle={ lineNumberStyle }
-        language='typescript'
-        className={ rootClass }
-        style={ style } // tslint:disable-line
+        showLineNumbers={true}
+        lineNumberStyle={lineNumberStyle}
+        language="typescript"
+        className={rootClass}
+        style={style} // tslint:disable-line
       >
-        { this.props.children }
+        {this.props.children}
       </SyntaxHighlighter>
     );
   }

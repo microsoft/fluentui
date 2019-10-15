@@ -1,55 +1,93 @@
 import * as React from 'react';
-import { css } from '../../Utilities';
-import { Check } from '../../Check';
-import * as DetailsRowCheckStyles from './DetailsRowCheck.scss';
-import * as CheckStylesModule from '../Check/Check.scss';
+import { IDetailsRowCheckProps, IDetailsCheckboxProps, IDetailsRowCheckStyleProps, IDetailsRowCheckStyles } from './DetailsRowCheck.types';
+import { css, styled, classNamesFunction } from '../../Utilities';
+import { Check, getCheck } from '../../Check';
+import { ICheckStyleProps, ICheckStyles } from '../Check/Check.types';
+import { getStyles as getCheckStyles } from '../Check/Check.styles';
+import { getStyles } from './DetailsRowCheck.styles';
 
-// tslint:disable:no-any
-const CheckStyles: any = CheckStylesModule;
-// tslint:enable:no-any
+const getCheckClassNames = classNamesFunction<ICheckStyleProps, ICheckStyles>({
+  disableCaching: true
+});
+const getClassNames = classNamesFunction<IDetailsRowCheckStyleProps, IDetailsRowCheckStyles>({
+  disableCaching: true
+});
 
-export interface IDetailsRowCheckProps extends React.HTMLAttributes<HTMLElement> {
-  isHeader?: boolean;
-  selected?: boolean;
-  /**
-   * Deprecated at v.65.1 and will be removed by v 1.0. Use 'selected' instead.
-   * @deprecated
-   */
-  isSelected?: boolean;
-  anySelected?: boolean;
-  canSelect: boolean;
-}
-
-export const DetailsRowCheck = (props: IDetailsRowCheckProps) => {
+const DetailsRowCheckBase: React.StatelessComponent<IDetailsRowCheckProps> = props => {
   const {
+    isVisible = false,
     canSelect = false,
     isSelected = false,
     anySelected = false,
     selected = false,
     isHeader = false,
     className,
+    checkClassName,
+    styles,
+    theme,
+    compact,
+    onRenderDetailsCheckbox,
+    useFastIcons, // must be removed from buttonProps
     ...buttonProps
   } = props;
+  const defaultCheckboxRender = useFastIcons ? _fastDefaultCheckboxRender : _defaultCheckboxRender;
+  const onRenderCheckbox = onRenderDetailsCheckbox || defaultCheckboxRender;
 
-  const isPressed = props.isSelected || props.selected;
+  const isPressed = isSelected || selected;
 
-  return (
+  const checkStyles = useFastIcons ? undefined : getCheckStyles({ theme: theme! });
+
+  const checkClassNames = useFastIcons
+    ? undefined
+    : getCheckClassNames(checkStyles, {
+        theme: theme!
+      });
+
+  const classNames = getClassNames(styles, {
+    theme: theme!,
+    canSelect,
+    selected: isPressed,
+    anySelected,
+    className,
+    isHeader,
+    isVisible,
+    compact,
+    useGlobalCheckHostClass: useFastIcons
+  });
+
+  const detailsCheckboxProps: IDetailsCheckboxProps = {
+    checked: isPressed,
+    theme
+  };
+
+  return canSelect ? (
     <div
-      { ...buttonProps }
-      role='checkbox'
-      className={
-        css(className, 'ms-DetailsRow-check', DetailsRowCheckStyles.check, CheckStyles.checkHost, {
-          [`ms-DetailsRow-check--isDisabled ${DetailsRowCheckStyles.isDisabled}`]: !props.canSelect,
-          [`ms-DetailsRow-check--isHeader ${DetailsRowCheckStyles.isHeader}`]: props.isHeader
-        })
-      }
-      aria-checked={ isPressed }
-      data-selection-toggle={ true }
-      data-automationid='DetailsRowCheck'
+      {...buttonProps}
+      role="checkbox"
+      className={css(classNames.root, classNames.check, checkClassNames && checkClassNames.checkHost)}
+      aria-checked={isPressed}
+      data-selection-toggle={true}
+      data-automationid="DetailsRowCheck"
     >
-      <Check
-        checked={ isPressed }
-      />
+      {onRenderCheckbox(detailsCheckboxProps, defaultCheckboxRender)}
     </div>
+  ) : (
+    <div {...buttonProps} className={css(classNames.root, classNames.check)} />
   );
 };
+
+function _defaultCheckboxRender(checkboxProps: IDetailsCheckboxProps) {
+  return <Check checked={checkboxProps.checked} />;
+}
+
+function _fastDefaultCheckboxRender(checkboxProps: IDetailsCheckboxProps) {
+  return getCheck(checkboxProps.theme, checkboxProps.checked);
+}
+
+export const DetailsRowCheck = styled<IDetailsRowCheckProps, IDetailsRowCheckStyleProps, IDetailsRowCheckStyles>(
+  DetailsRowCheckBase,
+  getStyles,
+  undefined,
+  { scope: 'DetailsRowCheck' },
+  true
+);

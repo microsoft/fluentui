@@ -10,6 +10,11 @@ export interface ISelectableOption {
   text: string;
 
   /**
+   * Title attribute (built in tooltip) for a given option.
+   */
+  title?: string;
+
+  /**
    * Text to render for this option
    */
   itemType?: SelectableOptionMenuItemType;
@@ -32,6 +37,17 @@ export interface ISelectableOption {
    * @defaultvalue false
    */
   disabled?: boolean;
+
+  /**
+   * Defines whether the option is hidden or not.
+   * @defaultvalue false
+   */
+  hidden?: boolean;
+
+  /**
+   * Data available to custom onRender functions.
+   */
+  data?: any;
 }
 
 export enum SelectableOptionMenuItemType {

@@ -1,13 +1,14 @@
+import * as React from 'react';
 import { styled } from '../../Utilities';
-import {
-  IOverlayProps,
-  IOverlayStyleProps,
-  IOverlayStyles
-} from './Overlay.types';
+import { IOverlayProps, IOverlayStyleProps, IOverlayStyles } from './Overlay.types';
 import { OverlayBase } from './Overlay.base';
 import { getStyles } from './Overlay.styles';
 
-export const Overlay = styled<IOverlayProps, IOverlayStyleProps, IOverlayStyles>(
+export const Overlay: React.StatelessComponent<IOverlayProps> = styled<IOverlayProps, IOverlayStyleProps, IOverlayStyles>(
   OverlayBase,
-  getStyles
+  getStyles,
+  undefined,
+  {
+    scope: 'Overlay'
+  }
 );

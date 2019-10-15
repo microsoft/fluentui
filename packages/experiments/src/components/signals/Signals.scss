@@ -1,4 +1,3 @@
-
 @import '~office-ui-fabric-react/src/common/common';
 
 /*
@@ -168,4 +167,16 @@ i.emailed {
 
 .liveEdit {
   display: none; // Not implemented.
+}
+
+.bookmarkOutline {
+  color: $ms-color-neutralSecondary;
+}
+
+.bookmarkFilled {
+  color: $ms-color-neutralSecondary;
+}
+
+.needsRepublishing {
+  color: $ms-color-yellowDark;
 }

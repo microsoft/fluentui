@@ -1,11 +1,11 @@
-import {
-  styled
-} from '../../Utilities';
+import * as React from 'react';
+import { styled } from '../../Utilities';
 import { ColorPickerGridCellBase } from './ColorPickerGridCell.base';
-import { IColorPickerGridCellProps } from './ColorPickerGridCell.types';
+import { IColorPickerGridCellProps, IColorPickerGridCellStyleProps, IColorPickerGridCellStyles } from './ColorPickerGridCell.types';
 import { getStyles } from './ColorPickerGridCell.styles';
 
-export const ColorPickerGridCell: (props: IColorPickerGridCellProps) => JSX.Element = styled(
-  ColorPickerGridCellBase,
-  getStyles
-);
+export const ColorPickerGridCell: React.StatelessComponent<IColorPickerGridCellProps> = styled<
+  IColorPickerGridCellProps,
+  IColorPickerGridCellStyleProps,
+  IColorPickerGridCellStyles
+>(ColorPickerGridCellBase, getStyles, undefined, { scope: 'ColorPickerGridCell' });

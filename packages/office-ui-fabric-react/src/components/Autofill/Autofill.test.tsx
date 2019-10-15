@@ -12,12 +12,8 @@ describe('Autofill', () => {
   const baseNode = document.createElement('div');
   document.body.appendChild(baseNode);
   beforeEach(() => {
-
     const component = ReactDOM.render(
-      <Autofill
-        ref={ (c: Autofill | null) => (c && (autoFill = c)) }
-        suggestedDisplayValue='hello'
-      />,
+      <Autofill ref={(c: Autofill | null) => c && (autoFill = c)} suggestedDisplayValue="hello" />,
       baseNode
     );
     autoFillInput = ReactDOM.findDOMNode(component as React.ReactInstance) as HTMLInputElement;
@@ -31,23 +27,16 @@ describe('Autofill', () => {
     };
 
     ReactDOM.render(
-      <Autofill
-        ref={ (c: Autofill | null) => (c && (autoFill = c)) }
-        onInputValueChange={ onInputValueChange }
-        suggestedDisplayValue='hello'
-      />,
+      <Autofill ref={(c: Autofill | null) => c && (autoFill = c)} onInputValueChange={onInputValueChange} suggestedDisplayValue="hello" />,
       baseNode
     );
     autoFillInput.value = 'hel';
     ReactTestUtils.Simulate.input(autoFillInput);
     ReactDOM.render(
-      <Autofill
-        ref={ (c: Autofill | null) => (c && (autoFill = c)) }
-        onInputValueChange={ onInputValueChange }
-        suggestedDisplayValue='hello'
-      />, baseNode);
+      <Autofill ref={(c: Autofill | null) => c && (autoFill = c)} onInputValueChange={onInputValueChange} suggestedDisplayValue="hello" />,
+      baseNode
+    );
     expect(autoFill.inputElement && autoFill.inputElement.value).toBe('hello');
-
   });
 
   it('does not autofill if suggestedDisplayValue does not match input', (done: (error?: Error) => void) => {
@@ -61,11 +50,7 @@ describe('Autofill', () => {
     autoFillInput.value = 'hep';
     ReactTestUtils.Simulate.input(autoFillInput);
     ReactDOM.render(
-      <Autofill
-        ref={ (c: Autofill | null) => (c && (autoFill = c)) }
-        onInputValueChange={ onInputValueChange }
-        suggestedDisplayValue='hello'
-      />,
+      <Autofill ref={(c: Autofill | null) => c && (autoFill = c)} onInputValueChange={onInputValueChange} suggestedDisplayValue="hello" />,
       baseNode
     );
     ReactTestUtils.Simulate.input(autoFillInput);
@@ -75,13 +60,7 @@ describe('Autofill', () => {
     autoFillInput.value = 'hel';
     ReactTestUtils.Simulate.input(autoFillInput);
 
-    ReactDOM.render(
-      <Autofill
-        ref={ (c: Autofill | null) => (c && (autoFill = c)) }
-        suggestedDisplayValue='hello'
-      />,
-      baseNode
-    );
+    ReactDOM.render(<Autofill ref={(c: Autofill | null) => c && (autoFill = c)} suggestedDisplayValue="hello" />, baseNode);
 
     ReactTestUtils.Simulate.keyDown(autoFillInput, { keyCode: KeyCodes.left, which: KeyCodes.left });
 
@@ -99,13 +78,7 @@ describe('Autofill', () => {
     autoFillInput.value = 'hel';
     ReactTestUtils.Simulate.input(autoFillInput);
 
-    ReactDOM.render(
-      <Autofill
-        ref={ (c: Autofill | null) => (c && (autoFill = c)) }
-        suggestedDisplayValue='hello'
-      />,
-      baseNode
-    );
+    ReactDOM.render(<Autofill ref={(c: Autofill | null) => c && (autoFill = c)} suggestedDisplayValue="hello" />, baseNode);
 
     expect(autoFill.value).toBe('hel');
     expect(autoFill.inputElement && autoFill.inputElement.value).toBe('hel');
@@ -118,13 +91,7 @@ describe('Autofill', () => {
     autoFillInput.value = 'hel';
     ReactTestUtils.Simulate.input(autoFillInput);
 
-    ReactDOM.render(
-      <Autofill
-        ref={ (c: Autofill | null) => (c && (autoFill = c)) }
-        suggestedDisplayValue='hello'
-      />,
-      baseNode
-    );
+    ReactDOM.render(<Autofill ref={(c: Autofill | null) => c && (autoFill = c)} suggestedDisplayValue="hello" />, baseNode);
 
     expect(autoFill.value).toBe('hel');
     expect(autoFill.inputElement && autoFill.inputElement.value).toBe('hello');

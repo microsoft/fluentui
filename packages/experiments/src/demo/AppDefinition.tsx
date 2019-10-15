@@ -1,15 +1,26 @@
 // tslint:disable:no-any
-import * as React from 'react';
-import { App as AppBase, IAppDefinition, IAppProps } from '@uifabric/example-app-base';
+import { IAppDefinition } from '@uifabric/example-app-base';
+import { AppCustomizations } from './customizations';
 
 export const AppDefinition: IAppDefinition = {
   appTitle: 'Fabric - React',
-
-  testPages: [
-  ],
+  customizations: AppCustomizations,
+  testPages: [],
   examplePages: [
     {
       links: [
+        {
+          component: require<any>('../components/Button/ButtonPage').ButtonPage,
+          key: 'Button',
+          name: 'Button',
+          url: '#/examples/button'
+        },
+        {
+          component: require<any>('../components/CollapsibleSection/CollapsibleSectionPage').CollapsibleSectionPage,
+          key: 'CollapsibleSection',
+          name: 'CollapsibleSection',
+          url: '#/examples/collapsiblesection'
+        },
         {
           component: require<any>('../components/Chiclet/ChicletPage').ChicletPage,
           key: 'Chiclet',
@@ -21,12 +32,6 @@ export const AppDefinition: IAppDefinition = {
           key: 'FolderCover',
           name: 'FolderCover',
           url: '#/examples/foldercover'
-        },
-        {
-          component: require<any>('../components/Form/FormPage').FormPage,
-          key: 'Form',
-          name: 'Form',
-          url: '#/examples/form'
         },
         {
           component: require<any>('../components/FileTypeIcon/FileTypeIconPage').FileTypeIconPage,
@@ -41,10 +46,46 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/layoutgroup'
         },
         {
+          component: require<any>('../components/MicroFeedback/MicroFeedbackPage').MicroFeedbackPage,
+          key: 'MicroFeedback',
+          name: 'MicroFeedback',
+          url: '#/examples/microfeedback'
+        },
+        {
+          component: require<any>('../components/Pagination/PaginationPage').PaginationPage,
+          key: 'Pagination',
+          name: 'Pagination',
+          url: '#/examples/pagination'
+        },
+        {
+          component: require<any>('../components/PersonaCoin/PersonaCoinPage').PersonaCoinPage,
+          key: 'PersonaCoin',
+          name: 'PersonaCoin',
+          url: '#/examples/personacoin'
+        },
+        {
+          component: require<any>('../components/Persona/PersonaPage').PersonaPage,
+          key: 'Persona',
+          name: 'Persona',
+          url: '#/examples/persona'
+        },
+        {
           component: require<any>('../components/signals/SignalsPage').SignalsPage,
           key: 'Signals',
           name: 'Signals',
           url: '#/examples/signals'
+        },
+        {
+          component: require<any>('../components/Sidebar/SidebarPage').SidebarPage,
+          key: 'Sidebar',
+          name: 'Sidebar',
+          url: '#/examples/sidebar'
+        },
+        {
+          component: require<any>('../slots/SlotsPage').SlotsPage,
+          key: 'Slots',
+          name: 'Slots',
+          url: '#/examples/slots'
         },
         {
           component: require<any>('../components/Tile/TilePage').TilePage,
@@ -57,6 +98,12 @@ export const AppDefinition: IAppDefinition = {
           key: 'TilesList',
           name: 'TilesList',
           url: '#/examples/tileslist'
+        },
+        {
+          component: require<any>('../components/Toggle/TogglePage').TogglePage,
+          key: 'Toggle',
+          name: 'Toggle',
+          url: '#/examples/toggle'
         },
         {
           component: require<any>('../components/Shimmer/ShimmerPage').ShimmerPage,
@@ -77,16 +124,16 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/staticlist'
         },
         {
-          component: require<any>('../components/Nav/NavPage').NavPage,
-          key: 'Nav',
-          name: 'Nav',
-          url: '#/examples/nav'
+          component: require<any>('../components/fluent/examplePages/FluentThemePage').FluentThemePage,
+          key: 'FluentColorTheme',
+          name: 'Fluent Color Theme',
+          url: '#/examples/fluent-color-theme'
         },
         {
-          component: require<any>('../components/fluent/theme/FluentThemePage').FluentThemePage,
-          key: 'FluentTheme',
-          name: 'Fluent Theme',
-          url: '#/examples/fluenttheme'
+          component: require<any>('../theming/ThemingPage').ThemingPage,
+          key: 'ThemingPage',
+          name: 'Theming',
+          url: '#/examples/theming'
         }
       ]
     }
@@ -105,7 +152,4 @@ export const AppDefinition: IAppDefinition = {
       url: 'http://www.github.com/officedev'
     }
   ]
-
 };
-
-export const App = (props: IAppProps) => <AppBase appDefinition={ AppDefinition } { ...props } />;

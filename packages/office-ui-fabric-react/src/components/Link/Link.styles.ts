@@ -1,12 +1,5 @@
-import {
-  getFocusStyle,
-  getGlobalClassNames,
-  HighContrastSelector
-} from '../../Styling';
-import {
-  ILinkStyleProps,
-  ILinkStyles
-} from './Link.types';
+import { getGlobalClassNames, HighContrastSelector, HighContrastSelectorWhite, HighContrastSelectorBlack } from '../../Styling';
+import { ILinkStyleProps, ILinkStyles } from './Link.types';
 
 const GlobalClassNames = {
   root: 'ms-Link'
@@ -21,9 +14,30 @@ export const getStyles = (props: ILinkStyleProps): ILinkStyles => {
   return {
     root: [
       classNames.root,
-      getFocusStyle(theme),
+      theme.fonts.medium,
       {
         color: semanticColors.link,
+        outline: 'none',
+        fontSize: 'inherit',
+        fontWeight: 'inherit',
+        selectors: {
+          '.ms-Fabric--isFocusVisible &:focus': {
+            // Can't use getFocusStyle because it doesn't support wrapping links
+            // https://github.com/OfficeDev/office-ui-fabric-react/issues/4883#issuecomment-406743543
+            // A box-shadow allows the focus rect to wrap links that span multiple lines
+            // and helps the focus rect avoid getting clipped.
+            boxShadow: `0 0 0 1px ${theme.palette.neutralSecondary} inset`,
+            selectors: {
+              [HighContrastSelector]: {
+                outline: '1px solid WindowText'
+              }
+            }
+          },
+          [HighContrastSelector]: {
+            // For IE high contrast mode
+            borderBottom: 'none'
+          }
+        }
       },
       isButton && {
         background: 'none',
@@ -31,13 +45,21 @@ export const getStyles = (props: ILinkStyleProps): ILinkStyles => {
         border: 'none',
         cursor: 'pointer',
         display: 'inline',
-        fontSize: 'inherit',
         margin: 0,
         overflow: 'inherit',
         padding: 0,
         textAlign: 'left',
         textOverflow: 'inherit',
-        userSelect: 'text'
+        userSelect: 'text',
+        borderBottom: '1px solid transparent', // For Firefox high contrast mode
+        selectors: {
+          [HighContrastSelectorBlack]: {
+            color: '#FFFF00'
+          },
+          [HighContrastSelectorWhite]: {
+            color: '#00009F'
+          }
+        }
       },
       !isButton && {
         textDecoration: 'none'
@@ -54,7 +76,7 @@ export const getStyles = (props: ILinkStyleProps): ILinkStyles => {
               pointerEvents: 'none'
             }
           }
-        },
+        }
       ],
       !isDisabled && {
         selectors: {

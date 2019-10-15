@@ -1,5 +1,5 @@
 import { KeyCodes } from './KeyCodes';
-import { getDocument } from './dom';
+import { getDocument } from './dom/getDocument';
 import { getItem, setItem } from './sessionStorage';
 import { setRTL as mergeStylesSetRTL } from '@uifabric/merge-styles';
 
@@ -22,7 +22,7 @@ export function getRTL(): boolean {
 
     let doc = getDocument();
     if (_isRTL === undefined && doc) {
-      _isRTL = doc.documentElement.getAttribute('dir') === 'rtl';
+      _isRTL = ((doc.body && doc.body.getAttribute('dir')) || doc.documentElement.getAttribute('dir')) === 'rtl';
       mergeStylesSetRTL(_isRTL);
     }
   }

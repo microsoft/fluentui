@@ -13,7 +13,7 @@
   margin: 0;
   padding: 0px;
   position: relative;
-  @include ms-text-align(left);
+  @include text-align(left);
   width: 100%;
   font-size: 12px;
   &:hover {
@@ -76,4 +76,8 @@
   @include high-contrast {
     color: WindowText;
   }
+}
+
+.screenReaderOnly {
+  @include ms-screenReaderOnly;
 }

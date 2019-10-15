@@ -7,7 +7,7 @@ import {
   FontSizes,
   FontWeights,
   ZIndexes,
-  getGlobalClassNames,
+  getGlobalClassNames
 } from '../../Styling';
 
 const GlobalClassNames = {
@@ -20,12 +20,12 @@ const GlobalClassNames = {
   navItem: 'ms-Nav-navItem',
   navItems: 'ms-Nav-navItems',
   group: 'ms-Nav-group',
-  groupContent: 'ms-Nav-groupContent',
+  groupContent: 'ms-Nav-groupContent'
 };
 
 export const buttonStyles: IButtonStyles = {
   textContainer: {
-    overflow: 'hidden',
+    overflow: 'hidden'
   },
   label: {
     whiteSpace: 'nowrap',
@@ -35,9 +35,7 @@ export const buttonStyles: IButtonStyles = {
   }
 };
 
-export const getStyles = (
-  props: INavStyleProps
-): INavStyles => {
+export const getStyles = (props: INavStyleProps): INavStyles => {
   const {
     className,
     theme,
@@ -46,6 +44,7 @@ export const getStyles = (
     isGroup,
     isLink,
     isSelected,
+    isDisabled,
     isButtonEntry,
     navHeight = 36,
     position,
@@ -58,10 +57,11 @@ export const getStyles = (
 
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
-  return ({
+  return {
     root: [
       classNames.root,
       className,
+      theme.fonts.medium,
       {
         overflowY: 'auto',
         userSelect: 'none',
@@ -80,6 +80,7 @@ export const getStyles = (
         margin: '0 4px',
         overflow: 'hidden',
         verticalAlign: 'middle',
+        textAlign: 'left',
         textOverflow: 'ellipsis'
       }
     ],
@@ -89,10 +90,14 @@ export const getStyles = (
         display: 'block',
         position: 'relative',
         color: semanticColors.bodyText,
-        backgroundColor: semanticColors.bodyBackground,
+        backgroundColor: semanticColors.bodyBackground
       },
       isExpanded && 'is-expanded',
-      isSelected && 'is-selected'
+      isSelected && 'is-selected',
+      isDisabled && 'is-disabled',
+      isDisabled && {
+        color: semanticColors.disabledText
+      }
     ],
     link: [
       classNames.link,
@@ -110,12 +115,15 @@ export const getStyles = (
         overflow: 'hidden',
         paddingLeft: leftPadding,
         paddingRight: rightPadding,
-        selectors: {
-          '.ms-Nav-compositeLink:hover &': {
-            backgroundColor: palette.neutralLighterAlt,
-            color: semanticColors.bodyText
-          },
-        },
+        color: semanticColors.bodyText,
+        selectors: !isDisabled
+          ? {
+              '.ms-Nav-compositeLink:hover &': {
+                backgroundColor: palette.neutralLighterAlt,
+                color: semanticColors.bodyText
+              }
+            }
+          : {}
       },
       isSelected && {
         color: palette.themePrimary,
@@ -128,9 +136,13 @@ export const getStyles = (
             top: 0,
             right: 0,
             bottom: 0,
-            left: 0
+            left: 0,
+            pointerEvents: 'none'
           }
         }
+      },
+      isDisabled && {
+        color: semanticColors.disabledText
       },
       isButtonEntry && {
         color: palette.themePrimary
@@ -165,7 +177,7 @@ export const getStyles = (
           '$compositeLink:hover &': {
             color: semanticColors.bodyText,
             backgroundColor: palette.neutralLighterAlt
-          },
+          }
         }
       },
       isGroup && [
@@ -200,7 +212,8 @@ export const getStyles = (
             top: 0,
             right: 0,
             bottom: 0,
-            left: 0
+            left: 0,
+            pointerEvents: 'none'
           }
         }
       }
@@ -213,7 +226,7 @@ export const getStyles = (
         height: `${navHeight}px`,
         lineHeight: `${navHeight}px`,
         fontSize: '12px',
-        transition: 'transform .1s linear',
+        transition: 'transform .1s linear'
       },
       isExpanded && {
         transform: 'rotate(-180deg)'
@@ -235,10 +248,7 @@ export const getStyles = (
         padding: 0
       }
     ],
-    group: [
-      classNames.group,
-      isExpanded && 'is-expanded'
-    ],
+    group: [classNames.group, isExpanded && 'is-expanded'],
     groupContent: [
       classNames.groupContent,
       {
@@ -250,5 +260,5 @@ export const getStyles = (
         display: 'block'
       }
     ]
-  });
+  };
 };

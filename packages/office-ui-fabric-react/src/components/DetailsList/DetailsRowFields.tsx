@@ -1,97 +1,109 @@
 import * as React from 'react';
 import { IColumn } from './DetailsList.types';
-import { BaseComponent, css } from '../../Utilities';
-import * as stylesImport from './DetailsRow.scss';
-const styles: any = stylesImport;
+import { css } from '../../Utilities';
+import { IDetailsRowFieldsProps } from './DetailsRowFields.types';
+import { DEFAULT_CELL_STYLE_PROPS } from './DetailsRow.styles';
 
-const INNER_PADDING = 16; // Account for padding around the cell.
-const ISPADDED_WIDTH = 24;
+const getCellText = (item: any, column: IColumn): string => {
+  let value = item && column && column.fieldName ? item[column.fieldName] : '';
 
-export interface IDetailsRowFieldsProps {
-  componentRef?: () => void;
-  item: any;
-  itemIndex: number;
-  columnStartIndex: number;
-  columns: IColumn[];
-  compact?: boolean;
-  onRenderItemColumn?: (item?: any, index?: number, column?: IColumn) => any;
-  shimmer?: boolean;
-}
+  if (value === null || value === undefined) {
+    value = '';
+  }
 
-export interface IDetailsRowFieldsState {
-  cellContent: React.ReactNode[];
-}
+  return value;
+};
 
-export class DetailsRowFields extends BaseComponent<IDetailsRowFieldsProps, IDetailsRowFieldsState> {
+/**
+ * Component for rendering a row's cells in a `DetailsList`.
+ *
+ * {@docCategory DetailsList}
+ */
+export class DetailsRowFields extends React.PureComponent<IDetailsRowFieldsProps> {
+  private _cellValueKeys: {
+    [columnKey: string]: string | undefined;
+  };
+
   constructor(props: IDetailsRowFieldsProps) {
     super(props);
 
-    this.state = this._getState(props);
-  }
-
-  public componentWillReceiveProps(newProps: IDetailsRowFieldsProps): void {
-    this.setState(this._getState(newProps));
+    this._cellValueKeys = {};
   }
 
   public render(): JSX.Element {
-    const { columns, columnStartIndex, shimmer } = this.props;
-    const { cellContent } = this.state;
+    const {
+      columns,
+      columnStartIndex,
+      shimmer,
+      rowClassNames,
+      cellStyleProps = DEFAULT_CELL_STYLE_PROPS,
+      item,
+      itemIndex,
+      onRenderItemColumn,
+      getCellValueKey,
+      cellsByColumn,
+      enableUpdateAnimations
+    } = this.props;
+
+    const cellValueKeys = this._cellValueKeys;
 
     return (
-      <div
-        className={ css('ms-DetailsRow-fields', styles.fields) }
-        data-automationid='DetailsRowFields'
-        role='presentation'
-      >
-        { columns.map((column, columnIndex) => (
-          <div
-            key={ columnIndex }
-            role={ column.isRowHeader ? 'rowheader' : 'gridcell' }
-            aria-colindex={ columnIndex + columnStartIndex }
-            className={ css('ms-DetailsRow-cell', styles.cell, column.className,
-              column.isMultiline && 'is-multiline',
-              column.isRowHeader && styles.isRowHeader,
-              column.isPadded && styles.isPadded,
-              column.isMultiline && styles.isMultiline,
-              (column.isIconOnly && shimmer) && styles.shimmerIconPlaceholder,
-              shimmer && styles.shimmer
-            ) }
-            style={ { width: column.calculatedWidth! + INNER_PADDING + (column.isPadded ? ISPADDED_WIDTH : 0) } }
-            data-automationid='DetailsRowCell'
-            data-automation-key={ column.key }
-          >
-            { cellContent[columnIndex] }
-          </div>
-        )) }
+      <div className={rowClassNames.fields} data-automationid="DetailsRowFields" role="presentation">
+        {columns.map((column, columnIndex) => {
+          const width: string | number =
+            typeof column.calculatedWidth === 'undefined'
+              ? 'auto'
+              : column.calculatedWidth +
+              cellStyleProps.cellLeftPadding +
+              cellStyleProps.cellRightPadding +
+              (column.isPadded ? cellStyleProps.cellExtraRightPadding : 0);
+
+          const { onRender = onRenderItemColumn, getValueKey = getCellValueKey } = column;
+          const cellContentsRender =
+            cellsByColumn && column.key in cellsByColumn
+              ? cellsByColumn[column.key]
+              : onRender && !shimmer
+                ? onRender(item, itemIndex, column)
+                : getCellText(item, column);
+
+          const previousValueKey = cellValueKeys[column.key];
+
+          const cellValueKey = enableUpdateAnimations && getValueKey ? getValueKey(item, itemIndex, column) : undefined;
+
+          let showAnimation = false;
+
+          if (cellValueKey !== undefined && previousValueKey !== undefined && cellValueKey !== previousValueKey) {
+            showAnimation = true;
+          }
+
+          cellValueKeys[column.key] = cellValueKey;
+
+          // generate a key that auto-dirties when content changes, to force the container to re-render, to trigger animation
+          const key = `${column.key}${cellValueKey !== undefined ? `-${cellValueKey}` : ''}`;
+          return (
+            <div
+              key={key}
+              role={column.isRowHeader ? 'rowheader' : 'gridcell'}
+              aria-colindex={columnIndex + columnStartIndex + 1}
+              className={css(
+                column.className,
+                column.isMultiline && rowClassNames.isMultiline,
+                column.isRowHeader && rowClassNames.isRowHeader,
+                column.isIconOnly && shimmer && rowClassNames.shimmerIconPlaceholder,
+                shimmer && rowClassNames.shimmer,
+                rowClassNames.cell,
+                column.isPadded ? rowClassNames.cellPadded : rowClassNames.cellUnpadded,
+                showAnimation && rowClassNames.cellAnimation
+              )}
+              style={{ width }}
+              data-automationid="DetailsRowCell"
+              data-automation-key={column.key}
+            >
+              {cellContentsRender}
+            </div>
+          );
+        })}
       </div>
     );
-  }
-
-  private _getState(props: IDetailsRowFieldsProps): IDetailsRowFieldsState {
-    const { item, itemIndex, onRenderItemColumn, shimmer } = props;
-
-    return {
-      cellContent: props.columns.map((column) => {
-        let cellContent;
-
-        try {
-          const render = column.onRender || onRenderItemColumn;
-
-          cellContent = render && !shimmer ? render(item, itemIndex, column) : this._getCellText(item, column);
-        } catch (e) { /* no-op */ }
-
-        return cellContent;
-      })
-    };
-  }
-
-  private _getCellText(item: any, column: IColumn): void {
-    let value = (item && column && column.fieldName) ? item[column.fieldName] : '';
-
-    if (value === null || value === undefined) {
-      value = '';
-    }
-
-    return value;
   }
 }

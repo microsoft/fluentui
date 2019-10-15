@@ -15,11 +15,11 @@ export const getStyles = (props: IChoiceGroupStyleProps): IChoiceGroupStyles => 
     applicationRole: className,
     root: [
       classNames.root,
+      theme.fonts.medium,
       {
         display: 'block'
       }
     ],
-    label: className,
     flexContainer: [
       classNames.flexContainer,
       optionsContainIconOrImage && {

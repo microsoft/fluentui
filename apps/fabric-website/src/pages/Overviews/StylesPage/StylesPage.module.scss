@@ -1,0 +1,66 @@
+@import '../../../styles/variables';
+
+.cardWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  @include ms-margin-right(-$App-padding-sm);
+}
+
+.card,
+.fullWidthCard {
+  width: 100%;
+  @include ms-margin-right($App-padding-sm);
+}
+
+.card {
+  padding: 0;
+  box-shadow: none;
+}
+
+.cardLink {
+  display: block;
+  width: 100%;
+  height: 100%;
+  @include ms-depth-4;
+  @include ms-border-radius(2px);
+  transition: all $ms-motion-duration-3 $ms-motion-timing-standard;
+
+  &:hover,
+  &:active {
+    text-decoration: none !important;
+    @include ms-depth-16;
+  }
+}
+
+.cardContent {
+  padding: $App-padding-sm;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column-reverse;
+}
+
+.cardTitle {
+  margin: 0;
+  text-align: center;
+}
+
+.cardIcon {
+  margin-bottom: 16px;
+  width: 32px;
+  height: 32px;
+  font-size: 32px;
+}
+
+@media screen and (min-width: $ms-screen-min-md) {
+  .card {
+    width: calc(#{percentage(1/2)} - #{$App-padding-sm});
+  }
+}
+
+@media screen and (min-width: $uhf-screen-min-lg) {
+  .card {
+    width: calc(#{percentage(1/3)} - #{$App-padding-sm});
+  }
+}

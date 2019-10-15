@@ -1,0 +1,371 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+$PageSubHeadMargin: 20px;
+$PageParagraphMargin: 1.2em;
+$usageListPadding: 24px;
+
+.Page {
+  position: relative;
+}
+
+.sectionWrapper {
+  max-width: $content-width + ($App-padding-sm * 2);
+
+  // UHF overrides
+  a:global(.ms-Link) {
+    color: $linkColor;
+    &:link {
+      color: $linkColor;
+    }
+    &:active,
+    &:hover,
+    &:active:hover {
+      color: $linkHoveredColor;
+    }
+  }
+}
+
+.section {
+  background: $ms-color-white;
+  padding: $App-padding-sm;
+  margin-bottom: $App-padding-sm;
+  @include ms-border-radius(2px);
+  @include ms-depth-4;
+  position: relative;
+  opacity: 0;
+  transform: translate3d(0, 48px, 0);
+  transition: transform $ms-motion-duration-3 $ms-motion-timing-decelerate, opacity $ms-motion-duration-3 $ms-motion-timing-decelerate 0.05s;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  ul.uListFlex {
+    display: flex;
+    flex-wrap: wrap;
+    @include ms-padding-left(0);
+    @include ms-margin-right(-$App-padding-sm);
+    margin-bottom: -12px;
+
+    li {
+      list-style: none;
+      @include ms-margin-right($App-padding-sm);
+      margin-bottom: 12px;
+    }
+
+    > .uThird {
+      flex-basis: calc(33% - #{$App-padding-sm});
+    }
+  }
+
+  // Style markdown table wrappers.
+  :global(.ms-mdTable-wrapper) {
+    width: 100%;
+    overflow-x: auto;
+    margin-bottom: 20px;
+
+    // Layer backgrounds so tables that scroll have shadows when the content overflows.
+    background: linear-gradient(to right, $ms-color-white, rgba($ms-color-white, 0)) left / 48px 100% local,
+      linear-gradient(to left, $ms-color-white, rgba($ms-color-white, 0)) right / 48px 100% local,
+      linear-gradient(to right, $ms-color-neutralLight, rgba($ms-color-neutralLight, 0)) left / 12px 100% scroll,
+      linear-gradient(to left, $ms-color-neutralLight, rgba($ms-color-neutralLight, 0)) right / 12px 100% scroll;
+    background-repeat: no-repeat;
+  }
+
+  :global(.ms-mdImage img) {
+    max-width: 100%;
+    margin: 8px 0;
+  }
+}
+
+.isMountedOffset {
+  .section {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.content {
+  p,
+  ol,
+  ul {
+    @include ms-fontSize-16;
+  }
+
+  p,
+  pre {
+    margin-top: 0;
+    margin-bottom: $PageParagraphMargin;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  ol,
+  ul {
+    @include ms-padding-left(20px);
+  }
+
+  ul {
+    li {
+      list-style: disc;
+
+      ul {
+        padding-top: 8px;
+
+        li {
+          list-style-type: circle;
+        }
+      }
+    }
+  }
+
+  li {
+    margin-bottom: 8px;
+  }
+
+  hr {
+    border: 0;
+    height: 1px;
+    background: $ms-color-gray100;
+    margin: $PageParagraphMargin 0;
+  }
+}
+
+.edit {
+  opacity: 0;
+  transition: opacity 0.2s ease;
+
+  &:hover,
+  &:focus,
+  &:focus-within {
+    opacity: 1;
+  }
+
+  a:global(.ms-Button) {
+    height: 20px;
+  }
+}
+
+.subSection {
+  margin-bottom: 36px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.sectionHeader {
+  margin-bottom: $PageSubHeadMargin;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &:hover {
+    .edit {
+      opacity: 1;
+    }
+  }
+}
+
+.subHeading,
+.smallSubHeading {
+  @include ms-fontColor-gray160;
+  @include ms-fontWeight-semibold;
+  line-height: 1;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.subHeading {
+  @include ms-fontSize-24;
+}
+
+.smallSubHeading {
+  @include ms-fontSize-20;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.sideRailWrapper {
+  margin-top: $App-padding-md;
+  margin-bottom: $App-padding-md;
+}
+
+// Disable scrollable area at smaller screen sizes.
+.sideRailScrollbarsView {
+  position: relative !important; // scrollbars sets position via style prop.
+}
+
+@media only screen and (min-width: 1360px) {
+  .main {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .sectionWrapper {
+    flex: 1 auto;
+    max-width: $content-width + ($App-padding-sm * 2);
+    padding-bottom: $contentPaddingBottom;
+  }
+
+  .showSideRail {
+    max-width: calc(100% - #{$SideRail-width});
+  }
+
+  .sideRailWrapper {
+    margin-top: 0;
+    margin-bottom: 0;
+    @include ms-padding-left($SideRail-padding-left);
+    width: $SideRail-width;
+  }
+
+  .sideRailScrollbarsView {
+    position: absolute !important;
+    overflow: scroll !important;
+  }
+
+  @supports (position: sticky) {
+    .sideRailWrapper {
+      position: sticky;
+      top: $App-padding-lg;
+      max-height: calc(100vh - #{$App-padding-lg});
+    }
+  }
+}
+
+// Global styles intended to target classes defined in markdown files.
+:global {
+  ul.md-list--flex {
+    display: flex;
+    flex-wrap: wrap;
+    @include ms-padding-left(0);
+    @include ms-margin-right(-$App-padding-sm);
+    margin-bottom: -12px;
+
+    li {
+      list-style: none;
+      @include ms-margin-right($App-padding-sm);
+      margin-bottom: 12px;
+    }
+
+    > .mdut--full {
+      flex-basis: 100%;
+      @include ms-margin-right(0);
+    }
+
+    > .mdut--half {
+      flex-basis: calc(50% - #{$App-padding-sm});
+    }
+  }
+}
+
+.feedbackSection {
+  .feedbackList ul {
+    margin-bottom: 10px;
+    @include ms-padding-left(0);
+
+    > *:first-child {
+      @include ms-padding-left(0);
+
+      &:before {
+        @include ms-left(0);
+      }
+    }
+  }
+}
+
+.contentWithoutHeader {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  p {
+    &:first-child {
+      padding-right: 40px;
+    }
+  }
+}
+
+.editSection {
+  position: absolute;
+  top: $App-padding-sm;
+  right: $App-padding-sm;
+
+  &:hover {
+    .edit {
+      opacity: 1;
+    }
+  }
+}
+
+.doSection,
+.dontSection {
+  width: 100%;
+  box-sizing: border-box;
+  display: inline-block;
+  vertical-align: top;
+  margin-bottom: 20px;
+}
+
+.doList,
+.dontList {
+  ul {
+    @include ms-padding-left($usageListPadding);
+
+    > li {
+      font-size: 14px;
+      list-style: none !important;
+      margin-bottom: 20px;
+      position: relative;
+
+      &:before {
+        content: '';
+        font-family: FabricMDL2Icons;
+        display: block;
+        position: absolute;
+        top: 1px;
+        @include ms-left(-$usageListPadding);
+      }
+
+      ul li {
+        font-size: 14px;
+        list-style: circle;
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+.doList {
+  ul > li:before {
+    content: '\E8FB'; // 'Accept' fabric icon
+    color: $ms-color-green;
+  }
+}
+
+.dontList {
+  ul > li:before {
+    content: '\E711'; // 'Cancel' fabric icon
+    color: $ms-color-red;
+  }
+}
+
+@media screen and (min-width: $uhf-screen-min-mobile) {
+  .doSection,
+  .dontSection {
+    margin-bottom: -10px; // Trim last list item
+    width: calc(50% - (#{$App-padding-sm} / 2));
+
+    &:first-child {
+      @include ms-margin-right($App-padding-sm);
+    }
+  }
+}

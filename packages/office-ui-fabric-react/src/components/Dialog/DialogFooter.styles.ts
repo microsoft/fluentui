@@ -4,20 +4,15 @@ import { getGlobalClassNames } from '../../Styling';
 const GlobalClassNames = {
   actions: 'ms-Dialog-actions',
   action: 'ms-Dialog-action',
-  actionsRight: 'ms-Dialog-actionsRight',
+  actionsRight: 'ms-Dialog-actionsRight'
 };
 
-export const getStyles = (
-  props: IDialogFooterStyleProps
-): IDialogFooterStyles => {
-  const {
-    className,
-    theme,
-  } = props;
+export const getStyles = (props: IDialogFooterStyleProps): IDialogFooterStyles => {
+  const { className, theme } = props;
 
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
-  return ({
+  return {
     actions: [
       classNames.actions,
       {
@@ -30,16 +25,14 @@ export const getStyles = (
 
         selectors: {
           '.ms-Button': {
-            lineHeight: 'normal',
+            lineHeight: 'normal'
           }
         }
       },
       className
     ],
 
-    action: [
-      classNames.action,
-    ],
+    action: [classNames.action],
 
     actionsRight: [
       classNames.actionsRight,
@@ -49,11 +42,11 @@ export const getStyles = (
         fontSize: '0',
 
         selectors: {
-          '$action': {
-            margin: '0 4px',
+          $action: {
+            margin: '0 4px'
           }
         }
       }
     ]
-  });
+  };
 };

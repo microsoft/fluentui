@@ -1,3 +1,5 @@
+import * as React from 'react';
+import * as renderer from 'react-test-renderer';
 import { print, test } from './index';
 import { Stylesheet, InjectionMode, mergeStyles, keyframes } from '@uifabric/merge-styles';
 
@@ -16,7 +18,6 @@ describe('test', () => {
     expect(test('a b css-0')).toEqual(true);
     expect(test('a b')).toEqual(false);
   });
-
 });
 
 describe('print', () => {
@@ -25,37 +26,29 @@ describe('print', () => {
   });
 
   it('can format, sort, and indent the class names', () => {
-
-    const classNames = mergeStyles(
-      'ms-GlobalClassName',
-      {
-        color: 'white',
-        background: 'red',
-        selectors: {
-          ':hover': {
-            background: 'green'
-          }
+    const classNames = mergeStyles('ms-GlobalClassName', {
+      color: 'white',
+      background: 'red',
+      selectors: {
+        ':hover': {
+          background: 'green'
         }
       }
-    );
+    });
 
-    expect(
-      print(
-        classNames,
-        () => '',
-        indent
-      )
-    ).toEqual([
-      '',
-      indent('ms-GlobalClassName'),
-      indent('{'),
-      indent('  background: red;'),
-      indent('  color: white;'),
-      indent('}'),
-      indent('&:hover {'),
-      indent('  background: green;'),
-      indent('}'),
-    ].join('\n'));
+    expect(print(classNames, () => '', indent)).toEqual(
+      [
+        '',
+        indent('ms-GlobalClassName'),
+        indent('{'),
+        indent('  background: red;'),
+        indent('  color: white;'),
+        indent('}'),
+        indent('&:hover {'),
+        indent('  background: green;'),
+        indent('}')
+      ].join('\n')
+    );
   });
 
   it('can expand animation class names', () => {
@@ -71,24 +64,27 @@ describe('print', () => {
       animationName: `${fadeInClassName},${leftInClassName}`
     });
 
-    expect(
-      print(
-        className,
-        () => '',
-        indent
-      )
-    ).toEqual([
-      '',
-      '',
-      indent('{'),
-      indent(
-        '  ' +
-        'animation-name: ' +
-        'keyframes from{opacity:0;}to{opacity:1;} ' +
-        'keyframes from{left:-100px;}to{left:0px;};'
-      ),
-      indent('}'),
-    ].join('\n'));
+    expect(print(className, () => '', indent)).toEqual(
+      [
+        '',
+        '',
+        indent('{'),
+        indent('  ' + 'animation-name: ' + 'keyframes from{opacity:0;}to{opacity:1;} ' + 'keyframes from{left:-100px;}to{left:0px;};'),
+        indent('}')
+      ].join('\n')
+    );
   });
 
+  it('can be used in snapshots', () => {
+    const fadeInAnimationName = keyframes({
+      from: { opacity: 0, color: 'red' },
+      to: { opacity: 1, color: 'green' }
+    });
+    const fadeInClassName = mergeStyles({
+      animationName: fadeInAnimationName,
+      animationDelay: '500ms'
+    });
+
+    expect(renderer.create(<div className={fadeInClassName} />).toJSON()).toMatchSnapshot();
+  });
 });

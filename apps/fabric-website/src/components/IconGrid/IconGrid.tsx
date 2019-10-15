@@ -7,7 +7,7 @@ export interface IIconGridProps {
   /**
    * An array of icons.
    */
-  icons: any[];
+  icons: Array<{ name: string }>;
 }
 
 export interface IIconGridState {
@@ -18,12 +18,19 @@ export interface IIconGridState {
 }
 
 export class IconGrid extends React.Component<IIconGridProps, IIconGridState> {
+  private _iconRefs: { [iconName: string]: React.RefObject<HTMLElement> };
+
   constructor(props: IIconGridProps) {
     super(props);
 
     this.state = {
       searchQuery: ''
     };
+
+    this._iconRefs = {};
+    for (const icon of props.icons) {
+      this._iconRefs[icon.name] = React.createRef();
+    }
   }
 
   public render(): JSX.Element {
@@ -32,26 +39,29 @@ export class IconGrid extends React.Component<IIconGridProps, IIconGridState> {
 
     return (
       <div>
-        <SearchBox placeholder='Search icons' value={ searchQuery } onChange={ this._onSearchQueryChanged.bind(this) } className={ styles.searchBox } />
-        <ul className={ styles.grid }>
-          { icons
+        <SearchBox
+          placeholder="Search icons"
+          value={searchQuery}
+          onChange={this._onSearchQueryChanged.bind(this)}
+          className={styles.searchBox}
+        />
+        <ul className={styles.grid}>
+          {icons
             .filter(icon => icon.name.toLowerCase().indexOf(searchQuery.toLowerCase()) !== -1)
             .map((icon, iconIndex) => {
-              let iconJsxElement = <i ref={ (`${icon.name}`) } className={ `ms-Icon ms-Icon--${icon.name}` } title={ `${icon.name}` } aria-hidden='true' />;
-              let iconRefElement = this.refs[icon.name] as HTMLElement;
-
-              if (iconRefElement && iconRefElement.offsetWidth > 80) {
-                iconJsxElement = <i ref={ (`${icon.name}`) } className={ `ms-Icon ms-Icon--${icon.name} hoverIcon` } title={ `${icon.name}` } aria-hidden='true' />;
+              let iconClassName = `ms-Icon ms-Icon--${icon.name}`;
+              const iconRef = this._iconRefs[icon.name];
+              if (iconRef.current && iconRef.current.offsetWidth > 80) {
+                iconClassName += ' hoverIcon';
               }
 
               return (
-                < li key={ iconIndex } aria-label={ icon.name + ' icon' } >
-                  { iconJsxElement }
-                  <span>{ icon.name }</span>
+                <li key={iconIndex} aria-label={icon.name + ' icon'}>
+                  <i ref={iconRef} className={iconClassName} title={icon.name} aria-hidden="true" />
+                  <span>{icon.name}</span>
                 </li>
               );
-            })
-          }
+            })}
         </ul>
       </div>
     );
@@ -59,7 +69,7 @@ export class IconGrid extends React.Component<IIconGridProps, IIconGridState> {
 
   private _onSearchQueryChanged(newValue): void {
     this.setState({
-      'searchQuery': newValue
+      searchQuery: newValue
     });
   }
 }

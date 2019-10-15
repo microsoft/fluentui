@@ -4,6 +4,7 @@
 .demoBlock {
   background-color: $ms-color-neutralTertiary;
   color: $ms-color-white;
+  font-weight: $ms-font-weight-semibold;
   height: 40px;
   line-height: 40px;
   margin-bottom: 16px;
@@ -15,4 +16,3 @@
     border: 1px solid WindowText;
   }
 }
-

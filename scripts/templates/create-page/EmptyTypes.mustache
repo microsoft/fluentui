@@ -1,0 +1,29 @@
+import { ITheme, IStyle, IStyleFunctionOrObject } from 'office-ui-fabric-react';
+import { IPageProps } from '@uifabric/example-app-base/lib/index2';
+import { Platforms } from '../../../interfaces/Platforms'
+
+export interface I{{pageName}}PageProps extends IPageProps<Platforms> {
+  /**
+   * Theme (provided through customization.)
+   */
+  theme?: ITheme;
+
+  /**
+   * Call to provide customized styling that will layer on top of the variant rules.
+   */
+  styles?: IStyleFunctionOrObject<I{{pageName}}PageStyleProps, I{{pageName}}PageStyles>;
+
+  /**
+   * Additional CSS class(es) to apply to the PieChart.
+   */
+  className?: string;
+}
+
+export interface I{{pageName}}PageStyleProps extends Pick<I{{pageName}}PageProps, 'theme' | 'className'> {
+  // Define other style props here.
+}
+
+export interface I{{pageName}}PageStyles {
+  root: IStyle;
+  // Define other classNames here.
+}

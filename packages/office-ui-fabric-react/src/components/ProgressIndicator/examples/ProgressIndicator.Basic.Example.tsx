@@ -1,7 +1,5 @@
 import * as React from 'react';
-import {
-  ProgressIndicator
-} from 'office-ui-fabric-react/lib/ProgressIndicator';
+import { ProgressIndicator } from 'office-ui-fabric-react/lib/ProgressIndicator';
 import { Async } from 'office-ui-fabric-react/lib/Utilities';
 
 export interface IProgressIndicatorBasicExampleState {
@@ -9,11 +7,10 @@ export interface IProgressIndicatorBasicExampleState {
 }
 
 const INTERVAL_DELAY = 100;
-const INTERVAL_INCREMENT = .01;
+const INTERVAL_INCREMENT = 0.01;
 const RESTART_WAIT_TIME = 2000;
 
 export class ProgressIndicatorBasicExample extends React.Component<{}, IProgressIndicatorBasicExampleState> {
-
   private _interval: number;
   private _async: Async;
 
@@ -39,13 +36,7 @@ export class ProgressIndicatorBasicExample extends React.Component<{}, IProgress
   public render(): JSX.Element {
     const { percentComplete } = this.state;
 
-    return (
-      <ProgressIndicator
-        label='Example title'
-        description='Example description'
-        percentComplete={ percentComplete }
-      />
-    );
+    return <ProgressIndicator label="Example title" description="Example description" percentComplete={percentComplete} />;
   }
 
   private _startProgressDemo(): void {

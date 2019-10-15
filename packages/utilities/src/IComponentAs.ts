@@ -1,7 +1,17 @@
+import * as React from 'react';
+
+/**
+ * Properties used by render function interface for providing overrideable render callbacks.
+ *
+ * @public
+ * {@docCategory IComponentAsProps}
+ */
+export type IComponentAsProps<T> = T & { defaultRender?: React.ComponentType<T> };
+
 /**
  * Render function interface for providing overrideable render callbacks.
  *
  * @public
+ * {@docCategory IComponentAs}
  */
-// export type IComponentAs<P> = string | ((props?: P) => JSX.Element);
-export type IComponentAs<T> = React.StatelessComponent<T> | React.ComponentClass<T>;
+export type IComponentAs<T> = React.ComponentType<IComponentAsProps<T>>;

@@ -6,8 +6,7 @@
  */
 
 const path = require('path');
-const PACKAGE_NAME = require('./package.json').name;
-const resources = require('../../scripts/tasks/webpack-resources');
+const resources = require('../../scripts/webpack/webpack-resources');
 const WriteFilePlugin = require('write-file-webpack-plugin');
 const HOST_NAME = require('os').hostname();
 const version = require('./package.json').version;
@@ -18,26 +17,29 @@ const devServer = {
   host: HOST_NAME,
   disableHostCheck: true,
   port: 4324
-}
+};
 
 module.exports = resources.createServeConfig({
   entry: './src/root.tsx',
   output: {
     filename: entryPointFilename + '.js',
     path: path.join(__dirname, 'dist'),
-    publicPath: 'http://'+ HOST_NAME +':' + devServer.port + '/dist/',
+    publicPath: 'http://' + HOST_NAME + ':' + devServer.port + '/dist/',
     chunkFilename: `${entryPointFilename}-${version}-[name]${minFileNamePart}.js`
   },
 
   devServer: devServer,
 
   externals: {
-    'react': 'React',
+    react: 'React',
     'react-dom': 'ReactDOM'
   },
 
   resolve: {
     alias: {
+      '@uifabric/fabric-website/src': path.join(__dirname, 'src'),
+      '@uifabric/fabric-website/lib': path.join(__dirname, 'lib'),
+      'office-ui-fabric-react$': path.join(__dirname, 'node_modules/office-ui-fabric-react/lib'),
       'office-ui-fabric-react/src': path.join(__dirname, 'node_modules/office-ui-fabric-react/src'),
       'office-ui-fabric-react/lib': path.join(__dirname, 'node_modules/office-ui-fabric-react/lib'),
       'Props.ts.js': 'Props',
@@ -45,8 +47,5 @@ module.exports = resources.createServeConfig({
     }
   },
 
-  plugins: [
-    new WriteFilePlugin()
-  ]
-
+  plugins: [new WriteFilePlugin()]
 });

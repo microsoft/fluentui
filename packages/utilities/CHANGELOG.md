@@ -1,6 +1,631 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Wed, 23 May 2018 16:14:26 GMT and should not be manually modified.
+This log was last generated on Mon, 07 Oct 2019 12:24:52 GMT and should not be manually modified.
+
+## 6.45.0
+Mon, 07 Oct 2019 12:24:52 GMT
+
+### Minor changes
+
+- Reverting dependency on ReactDOM findDOMNode in getWindow and getDocument helpers to avoid bundle problems for partners. (dzearing@microsoft.com)
+## 6.44.0
+Thu, 03 Oct 2019 02:23:13 GMT
+
+### Minor changes
+
+- Async methods can now take a React component as the target being passed to `getWindow`. (dzearing@microsoft.com)
+## 6.43.0
+Wed, 02 Oct 2019 04:37:41 GMT
+
+### Minor changes
+
+- Async helpers now take in a target element which will be used to find the window object. (dzearing@microsoft.com)
+## 6.42.0
+Fri, 20 Sep 2019 23:15:56 GMT
+
+### Minor changes
+
+- Customizations: add suppressUpdates() (phkuo@microsoft.com)
+## 6.41.7
+Wed, 04 Sep 2019 12:24:13 GMT
+
+### Patches
+
+- reset version files to correct version (kchau@microsoft.com)
+## 6.41.6
+Mon, 22 Jul 2019 12:21:49 GMT
+
+### Patches
+
+- Adding @types/react and @types/react-dom to package.json that have peer dependencies on react and react-dom (backport of #9798).
+
+## 6.41.5
+Thu, 11 Jul 2019 12:23:15 GMT
+
+### Patches
+
+- Utilities: Update implementation for raising a click event to support IE
+
+## 6.41.4
+Fri, 28 Jun 2019 12:22:28 GMT
+
+### Patches
+
+- Add placeholder as TextArea property
+
+## 6.41.3
+Fri, 21 Jun 2019 03:41:09 GMT
+
+### Patches
+
+- Adding a null check in the case a stylesheet instance is not avaiable or old.
+
+## 6.41.2
+Fri, 14 Jun 2019 03:04:18 GMT
+
+### Patches
+
+- The `getClassNames` function now returns memoized classnames, resulting in improved performance in high repeat scenarios (like lists rendering checks.) Reintroduction of #8761.
+
+## 6.41.1
+Wed, 12 Jun 2019 22:15:55 GMT
+
+### Patches
+
+- Package bump to resolve conflicts.
+
+## 6.41.0
+Tue, 11 Jun 2019 12:21:35 GMT
+
+### Minor changes
+
+- Updating `getNativeAttributes` element allow lists to be more refined, reducing unexpected attributes from being injected on primative elements. For example, `min` and `max` were being allowed to be injected for `div` elements. Now they are only injected for `input` elements.
+
+### Patches
+
+- Setting the styles props only when either of defaultProps or componentProps have it defined
+- upgrade to api-extractor 7.1.6
+
+## 6.40.1
+Thu, 06 Jun 2019 12:22:24 GMT
+
+### Patches
+
+- Fix ./index import from selection
+
+## 6.40.0
+Wed, 05 Jun 2019 12:22:30 GMT
+
+### Minor changes
+
+- Migrate Selection to Utilities
+
+## 6.39.3
+Wed, 29 May 2019 12:21:24 GMT
+
+### Patches
+
+- Revert styled and classNameFunctions perf improvements temporarily.
+
+## 6.39.2
+Fri, 24 May 2019 14:51:14 GMT
+
+### Patches
+
+- remove usage of process
+
+## 6.39.1
+Fri, 24 May 2019 12:21:33 GMT
+
+### Patches
+
+- Fix wrapped styled regression caused by nested style arrays.
+- Mutually exclusive warnings are not displayed if value of the prop is undefined
+
+## 6.39.0
+Wed, 22 May 2019 12:21:34 GMT
+
+### Minor changes
+
+- The `getClassNames` function now returns memoized classnames, resulting in improved performance in high repeat scenarios (like lists rendering checks.)
+
+## 6.38.3
+Tue, 14 May 2019 07:50:30 GMT
+
+### Patches
+
+- Update Fabric assets link
+
+## 6.38.2
+Tue, 14 May 2019 01:56:43 GMT
+
+### Patches
+
+- Removed a few more `typeof window` references to avoid memory leaks with IE11.
+
+## 6.38.1
+Thu, 02 May 2019 12:36:35 GMT
+
+### Patches
+
+- a new line is added to the end of the api-extractor.json file
+
+## 6.38.0
+Wed, 01 May 2019 12:34:24 GMT
+
+### Minor changes
+
+- Export Omit from utilities
+
+## 6.37.1
+Tue, 30 Apr 2019 12:31:36 GMT
+
+### Patches
+
+- Adds pointer events to baseElementProperties
+
+## 6.37.0
+Sat, 27 Apr 2019 00:04:47 GMT
+
+### Minor changes
+
+- The `styled` helper can now take in a pure flag to create pure components. Note that in a future release we'd like to match the `styled` contracts of other libraries which can take in a View and an options property bag, but for now to make this non-breaking we'll add another argument.
+
+## 6.36.0
+Fri, 26 Apr 2019 12:35:24 GMT
+
+### Minor changes
+
+- Make isFocusVisible toggleable by user.
+
+## 6.35.7
+Tue, 23 Apr 2019 12:32:00 GMT
+
+### Patches
+
+- Removing closure from `styled` helper to improve performance.
+
+## 6.35.6
+Fri, 19 Apr 2019 12:33:02 GMT
+
+### Patches
+
+- Removing closure from `styled` helper to improve performance.
+
+## 6.35.5
+Thu, 11 Apr 2019 12:37:10 GMT
+
+### Patches
+
+- Documentation: add @docCategory inline tags
+
+## 6.35.4
+Mon, 08 Apr 2019 12:37:15 GMT
+
+### Patches
+
+- Customizer modified to avoid BaseComponent.
+
+## 6.35.3
+Tue, 02 Apr 2019 00:38:15 GMT
+
+### Patches
+
+- Use ^ ranges instead of >=
+
+## 6.35.2
+Wed, 27 Mar 2019 12:34:02 GMT
+
+### Patches
+
+- update API file
+- update api file generated by api-extractor 7
+
+## 6.35.1
+Fri, 15 Mar 2019 12:34:07 GMT
+
+### Patches
+
+- Remove some unused variables and types from Customizer
+- Use typeof check on process before checking process.env.NODE_ENV
+
+## 6.35.0
+Tue, 12 Mar 2019 12:31:43 GMT
+
+### Minor changes
+
+- Focus utilities: Fix tabbable element issue and add optional argument.
+
+## 6.34.0
+Wed, 06 Mar 2019 13:27:18 GMT
+
+### Minor changes
+
+- Utilities for managing componentRef initialization added.
+
+## 6.33.0
+Tue, 05 Mar 2019 17:33:41 GMT
+
+### Minor changes
+
+- Modify return type of styled (function to React.StatelessComponent)
+
+## 6.32.1
+Tue, 05 Mar 2019 04:25:07 GMT
+
+### Patches
+
+- Utilities: removing redundant export for `setVirtualParent`.
+
+## 6.32.0
+Mon, 04 Mar 2019 13:29:58 GMT
+
+### Minor changes
+
+- Utilities: Adding setVirtualParent export.
+
+## 6.31.0
+Fri, 01 Mar 2019 19:40:21 GMT
+
+### Minor changes
+
+- Reinstroducing dom/warn top level imports.
+
+## 6.30.0
+Fri, 01 Mar 2019 13:33:08 GMT
+
+### Minor changes
+
+- A number of files containing many exports have been split into smaller units for finer debuggability in bundle size implications. Some unneeded dependencies on EventGroup have been removed.
+
+## 6.29.4
+Tue, 26 Feb 2019 22:45:29 GMT
+
+### Patches
+
+- ARIA: mergeAriaAttributeValues should produce space-delimited output by default
+
+## 6.29.3
+Fri, 22 Feb 2019 13:31:09 GMT
+
+### Patches
+
+- mergeAriaAttributeValues: Trim output string
+- Add check for tabIndex in isElementTabbable if role=button
+
+## 6.29.2
+Wed, 20 Feb 2019 13:30:29 GMT
+
+### Patches
+
+- getRTL: Check for existence of body element before reading attributes.
+
+## 6.29.1
+Thu, 14 Feb 2019 13:34:55 GMT
+
+### Patches
+
+- Add fallback for reading direction attribute from body element.
+
+## 6.29.0
+Thu, 31 Jan 2019 20:10:48 GMT
+
+### Minor changes
+
+- Adding helper functions to get and restore focus elements based on index paths.
+
+## 6.28.1
+Fri, 25 Jan 2019 13:38:07 GMT
+
+### Patches
+
+- Updating 'customizable.tsx' to evaluate style functions.
+
+## 6.28.0
+Fri, 11 Jan 2019 05:00:46 GMT
+
+### Minor changes
+
+- Scroll: use scrollableParent in _preventOverscrolling, allow EventGroup.on to take event options
+
+## 6.27.2
+Tue, 08 Jan 2019 13:34:49 GMT
+
+### Patches
+
+- Deprecate utility using legacy context
+- BaseComponent: when updating componentRef, handle case where current or previous props are not given
+
+## 6.27.1
+Mon, 17 Dec 2018 13:36:58 GMT
+
+### Patches
+
+- BaseComponent: Remove componentWillReceiveProps usage
+
+## 6.27.0
+Thu, 15 Nov 2018 13:36:22 GMT
+
+### Minor changes
+
+- DevExp: get rid of const enum so the library is compatible with Typescript's isolatedModule compilation mode
+- Styled: now reacts to loadTheme changes even when not wrapped in a Customizer.
+
+## 6.26.0
+Wed, 14 Nov 2018 13:34:01 GMT
+
+### Minor changes
+
+- Add osDetector utility
+
+## 6.25.0
+Wed, 31 Oct 2018 12:32:41 GMT
+
+### Minor changes
+
+- Customizer: Add optional context transform prop.
+
+## 6.24.0
+Fri, 26 Oct 2018 12:32:35 GMT
+
+### Minor changes
+
+- Add api-extractor.json
+
+## 6.23.1
+Thu, 18 Oct 2018 20:22:36 GMT
+
+### Patches
+
+- Update api-extractor.json
+
+## 6.23.0
+Mon, 15 Oct 2018 12:29:12 GMT
+
+### Minor changes
+
+- Adding `asAsync` HOC wrapper to abstract async loading for components.
+
+## 6.22.0
+Wed, 10 Oct 2018 12:29:05 GMT
+
+### Minor changes
+
+- Add utilities.api.ts, update files to fix api-extractor errors
+
+## 6.21.2
+Mon, 08 Oct 2018 12:24:15 GMT
+
+### Patches
+
+- Moving tslint/prettier dependencies 
+
+## 6.21.1
+Wed, 26 Sep 2018 12:27:23 GMT
+
+### Patches
+
+- Memoize: Do not use cached result when function instances are distinct.
+
+## 6.21.0
+Fri, 21 Sep 2018 14:25:46 GMT
+
+### Minor changes
+
+- Expose Customizer's mergeCustomizations as new helper function.
+
+### Patches
+
+- Adding a version stamp file
+- Add IComponentAsProps
+
+## 6.20.0
+Thu, 20 Sep 2018 12:25:33 GMT
+
+### Minor changes
+
+- add optional defaultRender to IComponentAs
+
+## 6.19.1
+Thu, 13 Sep 2018 17:38:04 GMT
+
+### Patches
+
+- allow stateless components to use customizable
+
+## 6.19.0
+Fri, 07 Sep 2018 22:04:50 GMT
+
+### Minor changes
+
+- Customizer: moving to use React 16 context.
+
+## 6.18.0
+Fri, 07 Sep 2018 16:29:48 GMT
+
+### Minor changes
+
+- Add helpers for setting and detecting portals
+
+## 6.17.2
+Wed, 05 Sep 2018 10:29:25 GMT
+
+### Patches
+
+- Scroll: add flex-grow: 1 to scrollable content elements
+- Scroll: remove inline styles from scrollable content elements
+
+## 6.17.1
+Thu, 30 Aug 2018 10:32:49 GMT
+
+### Patches
+
+- Replace comment reference to old ms-Fabric is-focusVisible with ms-Fabric--isFocusVisible
+
+## 6.17.0
+Tue, 28 Aug 2018 10:23:58 GMT
+
+### Minor changes
+
+- Add mobileDetector to detect iOS devices
+
+## 6.16.0
+Fri, 24 Aug 2018 17:02:14 GMT
+
+### Minor changes
+
+- Reverting Customizer React 16 context change.
+
+## 6.15.1
+Fri, 24 Aug 2018 10:26:08 GMT
+
+### Patches
+
+- Fix @types/prop-types being inconsistently restrictive.
+
+## 6.15.0
+Thu, 23 Aug 2018 10:28:17 GMT
+
+### Minor changes
+
+- Customizer: moving to use React 16 context.
+- Scroll: allow scrolling within a target element
+
+### Patches
+
+- Scroll: disable ios body scrolling in disableBodyScroll
+
+## 6.14.1
+Tue, 14 Aug 2018 10:27:33 GMT
+
+### Patches
+
+- disabling codepen task
+
+## 6.14.0
+Mon, 13 Aug 2018 03:43:25 GMT
+
+### Minor changes
+
+- Customizer should allow for nesting. Right now, `settings` provided have the reverse precendence expected; the outer-most Customizer wins over an inner one. This is completely backwards. Fixing to be correct.
+
+## 6.13.0
+Fri, 10 Aug 2018 10:26:09 GMT
+
+### Minor changes
+
+- Customizable: add optional flag to allow customizer styles to be merged with component styles prop rather than overriding component styles
+- Adding merge helper for deep merging.
+
+## 6.12.1
+Fri, 27 Jul 2018 10:25:39 GMT
+
+### Patches
+
+- prop-types version 
+
+## 6.12.0
+Mon, 23 Jul 2018 10:28:08 GMT
+
+### Minor changes
+
+- Addressing bad imports.
+
+## 6.11.0
+Wed, 18 Jul 2018 10:25:50 GMT
+
+### Minor changes
+
+- Tighten typings of APIs around merge-styles to be more correct
+
+## 6.10.0
+Tue, 17 Jul 2018 10:28:40 GMT
+
+### Minor changes
+
+- Removing most `@customizable` decorator usage. This change should reduce extra React dom elements from being created. Also updating `componentRef` resolution to support `React.createRef()` usage.
+
+## 6.9.0
+Fri, 13 Jul 2018 21:32:37 GMT
+
+### Minor changes
+
+- Reverting the TypeScript bump, to un
+
+## 6.7.1
+Wed, 20 Jun 2018 10:25:55 GMT
+
+### Patches
+
+- Prettier fixes
+
+## 6.7.0
+Tue, 19 Jun 2018 10:26:26 GMT
+
+### Minor changes
+
+- All `styled` props should be a style function which returns partial styles, or just a partial styles object. (Previously it was a "complete" styles object, which was not intended.)
+
+### Patches
+
+- Handling `stylesheet.onReset` undefined scenarios better.
+
+## 6.6.0
+Thu, 14 Jun 2018 20:52:57 GMT
+
+### Minor changes
+
+- Updating `styled` to pick up customizations without using the `customizable` decorator on the base component.
+
+### Patches
+
+- Minor JSDoc improvements.
+
+## 6.2.0
+Thu, 07 Jun 2018 16:35:34 GMT
+
+### Minor changes
+
+- Added getFirstTabbable, Updated getNextElement to take tabbable param like getPreviousElement.
+- Minor changes to improve server side rendering.
+
+### Patches
+
+- Code format changes
+
+## 6.0.5
+Tue, 05 Jun 2018 00:44:30 GMT
+
+### Patches
+
+- Added Prettier
+
+## 6.0.4
+Mon, 04 Jun 2018 10:16:13 GMT
+
+### Patches
+
+- Updating react typings.
+
+## 6.0.3
+Fri, 01 Jun 2018 10:18:43 GMT
+
+### Patches
+
+- Add utility function to help merge ARIA attributes.
+
+## 6.0.2
+Wed, 30 May 2018 22:05:04 GMT
+
+*Version update only*
+
+## 6.0.1
+Wed, 30 May 2018 20:28:33 GMT
+
+### Patches
+
+- Minimum React version is now 16.3.2.
+- Added `resetIds` api for adding predictability in jest tests.
 
 ## 5.33.0
 Wed, 23 May 2018 16:14:26 GMT

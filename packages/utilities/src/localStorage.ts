@@ -1,3 +1,5 @@
+import { getWindow } from './dom/getWindow';
+
 /**
  * Fetches an item from local storage without throwing an exception
  * @param key The key of the item to fetch from local storage
@@ -5,7 +7,8 @@
 export function getItem(key: string): string | null {
   let result = null;
   try {
-    result = window.localStorage.getItem(key);
+    const win = getWindow();
+    result = win ? win.localStorage.getItem(key) : null;
   } catch (e) {
     /* Eat the exception */
   }
@@ -19,7 +22,9 @@ export function getItem(key: string): string | null {
  */
 export function setItem(key: string, data: string): void {
   try {
-    window.localStorage.setItem(key, data);
+    const win = getWindow();
+
+    win && win.localStorage.setItem(key, data);
   } catch (e) {
     /* Eat the exception */
   }

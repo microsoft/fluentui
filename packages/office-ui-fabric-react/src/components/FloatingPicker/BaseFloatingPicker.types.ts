@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { ISuggestionModel } from '../../Pickers';
-import { IPersonaProps } from '../../Persona';
-import { ISuggestionsHeaderFooterProps } from './Suggestions/Suggestions.types';
+import { ISuggestionsControlProps } from './Suggestions/Suggestions.types';
 import { SuggestionsStore } from './Suggestions/SuggestionsStore';
+import { IRefObject } from '../../Utilities';
 
 export interface IBaseFloatingPicker {
   /** Whether the suggestions are shown */
@@ -15,7 +15,7 @@ export interface IBaseFloatingPicker {
   hidePicker: () => void;
 
   /** Shows the picker
-   * @param updateValue optional param to indicate whether to update the query string
+   * @param updateValue - Optional param to indicate whether to update the query string
    */
   showPicker: (updateValue?: boolean) => void;
 
@@ -31,8 +31,8 @@ export interface IBaseFloatingPicker {
 // and searched for by the people picker. For example, if the picker is
 // displaying persona's than type T could either be of Persona or Ipersona props
 // tslint:disable-next-line:no-any
-export interface IBaseFloatingPickerProps<T> extends React.Props<any> {
-  componentRef?: (component?: IBaseFloatingPicker | null) => void;
+export interface IBaseFloatingPickerProps<T> extends React.ClassAttributes<any> {
+  componentRef?: IRefObject<IBaseFloatingPicker>;
 
   /**
    * The suggestions store
@@ -40,9 +40,9 @@ export interface IBaseFloatingPickerProps<T> extends React.Props<any> {
   suggestionsStore: SuggestionsStore<T>;
 
   /**
-   * The suggestions to show on zero query
+   * The suggestions to show on zero query, return null if using as a controlled component
    */
-  onZeroQuerySuggestion?: (selectedItems?: T[]) => T[] | PromiseLike<T[]>;
+  onZeroQuerySuggestion?: (selectedItems?: T[]) => T[] | PromiseLike<T[]> | null;
 
   /**
    * The input element to listen on events
@@ -58,6 +58,7 @@ export interface IBaseFloatingPickerProps<T> extends React.Props<any> {
    * A callback for what should happen when a person types text into the input.
    * Returns the already selected items so the resolver can filter them out.
    * If used in conjunction with resolveDelay this will ony kick off after the delay throttle.
+   * Return null if using as a controlled component
    */
   onResolveSuggestions: (filter: string, selectedItems?: T[]) => T[] | PromiseLike<T[]> | null;
 
@@ -67,7 +68,7 @@ export interface IBaseFloatingPickerProps<T> extends React.Props<any> {
   onInputChanged?: (filter: string) => void;
 
   /**
-   * The delay time in ms before resolving suggestions, which is kicked off when input has been cahnged.
+   * The delay time in ms before resolving suggestions, which is kicked off when input has been changed.
    * e.g. If a second input change happens within the resolveDelay time, the timer will start over.
    * Only until after the timer completes will onResolveSuggestions be called.
    */
@@ -87,9 +88,9 @@ export interface IBaseFloatingPickerProps<T> extends React.Props<any> {
    */
   pickerSuggestionsProps?: IBaseFloatingPickerSuggestionProps;
   /**
-   * A callback for when a persona is removed from the suggestion list
+   * A callback for when an item is removed from the suggestion list
    */
-  onRemoveSuggestion?: (item: IPersonaProps) => void;
+  onRemoveSuggestion?: (item: T) => void;
   /**
    * A function used to validate if raw text entered into the well can be added
    */
@@ -102,10 +103,7 @@ export interface IBaseFloatingPickerProps<T> extends React.Props<any> {
   /**
    * Function that specifies how arbitrary text entered into the well is handled.
    */
-  createGenericItem?: (
-    input: string,
-    isValid: boolean
-  ) => ISuggestionModel<T>;
+  createGenericItem?: (input: string, isValid: boolean) => ISuggestionModel<T>;
 
   /**
    * The callback that should be called to see if the force resolve command should be shown
@@ -137,20 +135,17 @@ export interface IBaseFloatingPickerProps<T> extends React.Props<any> {
    * The callback that should be called when the suggestions are hiden
    */
   onSuggestionsHidden?: () => void;
+
+  /**
+   * If using as a controlled component, the items to show in the suggestion list
+   */
+  suggestionItems?: T[];
 }
 
-export interface IBaseFloatingPickerSuggestionProps {
-  /**
-   * Whether or not the first selectable item in the suggestions list should be selected
-   */
-  shouldSelectFirstItem?: () => boolean;
-
-  /**
- * The header items props
+/**
+ * Props which are passed on to the inner Suggestions component
  */
-  headerItemsProps?: ISuggestionsHeaderFooterProps[];
-  /**
-   * The footer items props
-   */
-  footerItemsProps?: ISuggestionsHeaderFooterProps[];
-}
+export type IBaseFloatingPickerSuggestionProps = Pick<
+  ISuggestionsControlProps<any>,
+  'shouldSelectFirstItem' | 'headerItemsProps' | 'footerItemsProps' | 'showRemoveButtons'
+>;

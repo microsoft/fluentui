@@ -1,4 +1,3 @@
-
 @import '~office-ui-fabric-react/src/common/common';
 
 .signal {
@@ -11,6 +10,10 @@
   .dark &,
   .dark.selected {
     color: $ms-color-white;
+  }
+
+  .isFluent & {
+    color: $ms-color-yellowDark;
   }
 
   &:first-child {

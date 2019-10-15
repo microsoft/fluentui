@@ -1,8 +1,6 @@
 import { FontSizes, FontWeights, HighContrastSelector, IStyle, IPalette, getGlobalClassNames } from '../../../Styling';
-import {
-  IChoiceGroupOptionStyleProps,
-  IChoiceGroupOptionStyles
-} from './ChoiceGroupOption.types';
+import { IsFocusVisibleClassName } from '../../../Utilities';
+import { IChoiceGroupOptionStyleProps, IChoiceGroupOptionStyles } from './ChoiceGroupOption.types';
 
 const GlobalClassNames = {
   root: 'ms-ChoiceField',
@@ -12,7 +10,8 @@ const GlobalClassNames = {
   innerField: 'ms-ChoiceField-innerField',
   imageWrapper: 'ms-ChoiceField-imageWrapper',
   iconWrapper: 'ms-ChoiceField-iconWrapper',
-  labelWrapper: 'ms-ChoiceField-labelWrapper'
+  labelWrapper: 'ms-ChoiceField-labelWrapper',
+  checked: 'is-checked'
 };
 
 const labelWrapperLineHeight = 15;
@@ -28,7 +27,7 @@ function getChoiceGroupFocusStyle(palette: Partial<IPalette>, hasIconOrImage?: b
     'is-inFocus',
     {
       selectors: {
-        '.ms-Fabric.is-focusVisible &': {
+        [`.${IsFocusVisibleClassName} &`]: {
           position: 'relative',
           outline: 'transparent',
           selectors: {
@@ -53,8 +52,8 @@ function getChoiceGroupFocusStyle(palette: Partial<IPalette>, hasIconOrImage?: b
             }
           }
         }
-      },
-    },
+      }
+    }
   ];
 }
 
@@ -89,22 +88,14 @@ function getImageWrapperStyle(isSelectedImageWrapper: boolean, className?: strin
 }
 
 export const getStyles = (props: IChoiceGroupOptionStyleProps): IChoiceGroupOptionStyles => {
-  const {
-    theme,
-    hasIcon,
-    hasImage,
-    checked,
-    disabled,
-    imageIsLarge,
-    focused
-  } = props;
+  const { theme, hasIcon, hasImage, checked, disabled, imageIsLarge, focused } = props;
   const { palette, semanticColors } = theme;
 
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
   const fieldHoverOrFocusProperties = {
     selectors: {
-      '.ms-Label': {
+      '.ms-ChoiceFieldLabel': {
         color: semanticColors.bodyTextChecked
       },
       ':before': {
@@ -141,7 +132,7 @@ export const getStyles = (props: IChoiceGroupOptionStyleProps): IChoiceGroupOpti
       transitionProperty: 'border-color',
       transitionDuration: choiceFieldTransitionDuration,
       transitionTimingFunction: choiceFieldTransitionTiming,
-      borderRadius: '50%',
+      borderRadius: '50%'
     },
     disabled && {
       backgroundColor: checked ? semanticColors.bodyBackground : semanticColors.disabledText,
@@ -155,7 +146,7 @@ export const getStyles = (props: IChoiceGroupOptionStyleProps): IChoiceGroupOpti
     checked && {
       borderWidth: 1,
       borderStyle: 'solid',
-      borderColor: semanticColors.inputBackgroundChecked,
+      borderColor: disabled ? semanticColors.disabledText : semanticColors.inputBackgroundChecked,
       selectors: {
         [HighContrastSelector]: {
           borderColor: 'Highlight'
@@ -166,7 +157,7 @@ export const getStyles = (props: IChoiceGroupOptionStyleProps): IChoiceGroupOpti
       top: radioButtonSpacing,
       right: radioButtonSpacing,
       left: 'auto', // To reset the value of 'left' to its default value, so that 'right' works
-      opacity: !disabled && checked ? 1 : 0,
+      opacity: !disabled && checked ? 1 : 0
     }
   ];
 
@@ -187,7 +178,7 @@ export const getStyles = (props: IChoiceGroupOptionStyleProps): IChoiceGroupOpti
     checked && {
       borderWidth: 5,
       borderStyle: 'solid',
-      borderColor: semanticColors.inputBackgroundChecked,
+      borderColor: disabled ? semanticColors.disabledText : semanticColors.inputBackgroundChecked,
       left: 5,
       top: 5,
       width: 10,
@@ -198,16 +189,18 @@ export const getStyles = (props: IChoiceGroupOptionStyleProps): IChoiceGroupOpti
         }
       }
     },
-    checked && (hasIcon || hasImage) && {
-      top: radioButtonSpacing + radioButtonInnerSize,
-      right: radioButtonSpacing + radioButtonInnerSize,
-      left: 'auto' // To reset the value of 'left' to its default value, so that 'right' works
-    }
+    checked &&
+      (hasIcon || hasImage) && {
+        top: radioButtonSpacing + radioButtonInnerSize,
+        right: radioButtonSpacing + radioButtonInnerSize,
+        left: 'auto' // To reset the value of 'left' to its default value, so that 'right' works
+      }
   ];
 
   return {
     root: [
       classNames.root,
+      theme.fonts.medium,
       {
         display: 'flex',
         alignItems: 'center',
@@ -220,13 +213,20 @@ export const getStyles = (props: IChoiceGroupOptionStyleProps): IChoiceGroupOpti
         position: 'relative',
         marginTop: 8,
         selectors: {
-          '.ms-Label': {
+          '.ms-ChoiceFieldLabel': {
             fontSize: FontSizes.medium,
-            padding: '0 0 0 26px',
             display: 'inline-block'
           }
         }
       },
+      !hasIcon &&
+        !hasImage && {
+          selectors: {
+            '.ms-ChoiceFieldLabel': {
+              paddingLeft: '26px'
+            }
+          }
+        },
       hasImage && 'ms-ChoiceField--image',
       hasIcon && 'ms-ChoiceField--icon',
       (hasIcon || hasImage) && {
@@ -236,24 +236,17 @@ export const getStyles = (props: IChoiceGroupOptionStyleProps): IChoiceGroupOpti
         paddingLeft: 0,
         backgroundColor: palette.neutralLighter,
         height: '100%'
-      },
+      }
     ],
-    choiceFieldWrapper: [
-      classNames.choiceFieldWrapper,
-      focused && getChoiceGroupFocusStyle(palette, hasIcon || hasImage)
-    ],
+    choiceFieldWrapper: [classNames.choiceFieldWrapper, focused && getChoiceGroupFocusStyle(palette, hasIcon || hasImage)],
     // The hidden input
     input: [
       classNames.input,
       {
         position: 'absolute',
         opacity: 0,
-        top: 8,
-      },
-      (hasIcon || hasImage) && {
         top: 0,
         right: 0,
-        opacity: 0,
         width: '100%',
         height: '100%',
         margin: 0
@@ -261,6 +254,7 @@ export const getStyles = (props: IChoiceGroupOptionStyleProps): IChoiceGroupOpti
     ],
     field: [
       classNames.field,
+      checked && classNames.checked,
       {
         display: 'inline-block',
         cursor: 'pointer',
@@ -295,21 +289,22 @@ export const getStyles = (props: IChoiceGroupOptionStyleProps): IChoiceGroupOpti
         justifyContent: 'center',
         alignItems: 'center',
         display: 'flex',
-        flexDirection: 'column',
+        flexDirection: 'column'
       },
       checked && {
         borderColor: palette.themePrimary
       },
-      (hasIcon || hasImage) && !disabled && {
-        selectors: {
-          ':hover': enabledFieldWithImageHoverOrFocusProperties,
-          ':focus': enabledFieldWithImageHoverOrFocusProperties
-        }
-      },
+      (hasIcon || hasImage) &&
+        !disabled && {
+          selectors: {
+            ':hover': enabledFieldWithImageHoverOrFocusProperties,
+            ':focus': enabledFieldWithImageHoverOrFocusProperties
+          }
+        },
       disabled && {
         cursor: 'default',
         selectors: {
-          '.ms-Label': {
+          '.ms-ChoiceFieldLabel': {
             color: semanticColors.disabledBodyText
           },
           [HighContrastSelector]: {
@@ -326,19 +321,21 @@ export const getStyles = (props: IChoiceGroupOptionStyleProps): IChoiceGroupOpti
         paddingLeft: 30,
         paddingRight: 30
       },
-      (hasIcon || hasImage) && imageIsLarge && {
-        paddingLeft: 24,
-        paddingRight: 24
-      },
-      (hasIcon || hasImage) && disabled && {
-        opacity: 0.25,
-        selectors: {
-          [HighContrastSelector]: {
-            color: 'GrayText',
-            opacity: 1
+      (hasIcon || hasImage) &&
+        imageIsLarge && {
+          paddingLeft: 24,
+          paddingRight: 24
+        },
+      (hasIcon || hasImage) &&
+        disabled && {
+          opacity: 0.25,
+          selectors: {
+            [HighContrastSelector]: {
+              color: 'GrayText',
+              opacity: 1
+            }
           }
         }
-      }
     ],
     imageWrapper: getImageWrapperStyle(false, classNames.imageWrapper, checked),
     selectedImageWrapper: getImageWrapperStyle(true, classNames.imageWrapper, checked),
@@ -362,12 +359,7 @@ export const getStyles = (props: IChoiceGroupOptionStyleProps): IChoiceGroupOpti
         whiteSpace: 'pre-wrap',
         textOverflow: 'ellipsis',
         fontSize: FontSizes.medium,
-        fontWeight: FontWeights.regular,
-        selectors: {
-          '.ms-Label': {
-            padding: 0
-          }
-        }
+        fontWeight: FontWeights.regular
       }
     ]
   };

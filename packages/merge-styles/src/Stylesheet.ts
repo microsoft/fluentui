@@ -1,24 +1,32 @@
 import { IStyle } from './IStyle';
-/**
- * Injection mode for the stylesheet.
- *
- * @public
- */
-export const enum InjectionMode {
+
+export const InjectionMode = {
   /**
    * Avoids style injection, use getRules() to read the styles.
    */
-  none = 0,
+  none: 0 as 0,
 
   /**
    * Inserts rules using the insertRule api.
    */
-  insertNode = 1,
+  insertNode: 1 as 1,
 
   /**
    * Appends rules using appendChild.
    */
-  appendChild = 2
+  appendChild: 2 as 2
+};
+
+export type InjectionMode = typeof InjectionMode[keyof typeof InjectionMode];
+
+/**
+ * CSP settings for the stylesheet
+ */
+export interface ICSPSettings {
+  /**
+   * Nonce to inject into script tag
+   */
+  nonce?: string;
 }
 
 /**
@@ -31,14 +39,40 @@ export interface IStyleSheetConfig {
    * Injection mode for how rules are inserted.
    */
   injectionMode?: InjectionMode;
+
   /**
-   * Falls back to "css".
+   * Default 'displayName' to use for a className.
+   * @defaultvalue 'css'
    */
   defaultPrefix?: string;
+
+  /**
+   * Default 'namespace' to attach before the className.
+   */
+  namespace?: string;
+
+  /**
+   * CSP settings
+   */
+  cspSettings?: ICSPSettings;
+
+  /**
+   * Callback executed when a rule is inserted.
+   */
   onInsertRule?: (rule: string) => void;
 }
 
 const STYLESHEET_SETTING = '__stylesheet__';
+
+// tslint:disable-next-line:no-any
+let _global: { [key: string]: any } = {};
+
+// Grab window.
+try {
+  _global = window;
+} catch {
+  /* leave as blank object */
+}
 
 let _stylesheet: Stylesheet;
 
@@ -53,27 +87,28 @@ export class Stylesheet {
   private _lastStyleElement?: HTMLStyleElement;
   private _styleElement?: HTMLStyleElement;
   private _rules: string[] = [];
+  private _preservedRules: string[] = [];
   private _config: IStyleSheetConfig;
   private _rulesToInsert: string[] = [];
   private _counter = 0;
   private _keyToClassName: { [key: string]: string } = {};
+  private _onResetCallbacks: (() => void)[] = [];
 
   // tslint:disable-next-line:no-any
-  private _classNameToArgs: { [key: string]: { args: any, rules: string[] } } = {};
+  private _classNameToArgs: { [key: string]: { args: any; rules: string[] } } = {};
 
   /**
    * Gets the singleton instance.
    */
   public static getInstance(): Stylesheet {
     // tslint:disable-next-line:no-any
-    const win: any = typeof window !== 'undefined' ? window : {};
-    _stylesheet = win[STYLESHEET_SETTING] as Stylesheet;
+    _stylesheet = _global[STYLESHEET_SETTING] as Stylesheet;
 
-    if (!_stylesheet) {
+    if (!_stylesheet || (_stylesheet._lastStyleElement && _stylesheet._lastStyleElement.ownerDocument !== document)) {
       // tslint:disable-next-line:no-string-literal
-      const fabricConfig = (win && win['FabricConfig']) || {};
+      const fabricConfig = (_global && _global['FabricConfig']) || {};
 
-      _stylesheet = win[STYLESHEET_SETTING] = new Stylesheet(fabricConfig.mergeStyles);
+      _stylesheet = _global[STYLESHEET_SETTING] = new Stylesheet(fabricConfig.mergeStyles);
     }
 
     return _stylesheet;
@@ -83,6 +118,8 @@ export class Stylesheet {
     this._config = {
       injectionMode: InjectionMode.insertNode,
       defaultPrefix: 'css',
+      namespace: undefined,
+      cspSettings: undefined,
       ...config
     };
   }
@@ -98,26 +135,31 @@ export class Stylesheet {
   }
 
   /**
+   * Configures a reset callback.
+   *
+   * @param callback - A callback which will be called when the Stylesheet is reset.
+   */
+  public onReset(callback: () => void): void {
+    this._onResetCallbacks.push(callback);
+  }
+
+  /**
    * Generates a unique classname.
    *
    * @param displayName - Optional value to use as a prefix.
    */
   public getClassName(displayName?: string): string {
+    const { namespace } = this._config;
     const prefix = displayName || this._config.defaultPrefix;
 
-    return `${prefix}-${this._counter++}`;
+    return `${namespace ? namespace + '-' : ''}${prefix}-${this._counter++}`;
   }
 
   /**
    * Used internally to cache information about a class which was
    * registered with the stylesheet.
    */
-  public cacheClassName(
-    className: string,
-    key: string,
-    args: IStyle[],
-    rules: string[]
-  ): void {
+  public cacheClassName(className: string, key: string, args: IStyle[], rules: string[]): void {
     this._keyToClassName[key] = className;
     this._classNameToArgs[className] = {
       args,
@@ -140,27 +182,30 @@ export class Stylesheet {
   public argsFromClassName(className: string): IStyle[] | undefined {
     const entry = this._classNameToArgs[className];
 
-    return (entry && entry.args);
+    return entry && entry.args;
   }
 
   /**
- * Gets the arguments associated with a given classname which was
- * previously registered using cacheClassName.
- */
+   * Gets the arguments associated with a given classname which was
+   * previously registered using cacheClassName.
+   */
   public insertedRulesFromClassName(className: string): string[] | undefined {
     const entry = this._classNameToArgs[className];
 
-    return (entry && entry.rules);
+    return entry && entry.rules;
   }
 
   /**
    * Inserts a css rule into the stylesheet.
+   * @param preserve - Preserves the rule beyond a reset boundary.
    */
-  public insertRule(
-    rule: string
-  ): void {
+  public insertRule(rule: string, preserve?: boolean): void {
     const { injectionMode } = this._config;
     const element = injectionMode !== InjectionMode.none ? this._getStyleElement() : undefined;
+
+    if (preserve) {
+      this._preservedRules.push(rule);
+    }
 
     if (element) {
       switch (this._config.injectionMode) {
@@ -193,8 +238,8 @@ export class Stylesheet {
    * Gets all rules registered with the stylesheet; only valid when
    * using InsertionMode.none.
    */
-  public getRules(): string {
-    return (this._rules.join('') || '') + (this._rulesToInsert.join('') || '');
+  public getRules(includePreservedRules?: boolean): string {
+    return (includePreservedRules ? this._preservedRules.join('') : '') + this._rules.join('') + this._rulesToInsert.join('');
   }
 
   /**
@@ -207,6 +252,8 @@ export class Stylesheet {
     this._counter = 0;
     this._classNameToArgs = {};
     this._keyToClassName = {};
+
+    this._onResetCallbacks.forEach((callback: () => void) => callback());
   }
 
   // Forces the regeneration of incoming styles without totally resetting the stylesheet.
@@ -232,14 +279,19 @@ export class Stylesheet {
     styleElement.setAttribute('data-merge-styles', 'true');
     styleElement.type = 'text/css';
 
+    const { cspSettings } = this._config;
+    if (cspSettings) {
+      if (cspSettings.nonce) {
+        styleElement.setAttribute('nonce', cspSettings.nonce);
+      }
+    }
     if (this._lastStyleElement && this._lastStyleElement.nextElementSibling) {
-      document.head.insertBefore(styleElement, this._lastStyleElement.nextElementSibling);
+      document.head!.insertBefore(styleElement, this._lastStyleElement.nextElementSibling);
     } else {
-      document.head.appendChild(styleElement);
+      document.head!.appendChild(styleElement);
     }
     this._lastStyleElement = styleElement;
 
     return styleElement;
   }
-
 }

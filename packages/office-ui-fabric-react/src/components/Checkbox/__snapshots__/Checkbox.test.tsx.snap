@@ -1,92 +1,74 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Checkbox renders Checkbox correctly 1`] = `
-<button
-  aria-checked={false}
-  aria-describedby="descriptionID"
-  aria-disabled={undefined}
-  aria-label={undefined}
-  aria-labelledby={undefined}
-  aria-posinset={undefined}
-  aria-setsize={undefined}
+<div
   className=
       ms-Checkbox
       is-enabled
       {
-        -moz-osx-font-smoothing: grayscale;
-        -webkit-font-smoothing: antialiased;
-        background: none;
-        border: none;
-        cursor: pointer;
-        display: block;
-        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-        font-size: 14px;
-        font-weight: 400;
-        margin-bottom: 0;
-        margin-left: 0;
-        margin-right: 0;
-        margin-top: 0;
-        outline: none;
-        padding-bottom: 0;
-        padding-left: 0;
-        padding-right: 0;
-        padding-top: 0;
+        display: flex;
         position: relative;
       }
-      &::-moz-focus-inner {
-        border: 0;
-      }
-      .ms-Fabric--isFocusVisible &:focus:after {
-        border: 1px solid #ffffff;
-        bottom: -2px;
-        content: "";
-        left: -2px;
-        outline: 1px solid #666666;
-        position: absolute;
-        right: -2px;
-        top: -2px;
-        z-index: 1;
-      }
-      &:hover .ms-Checkbox-checkbox {
-        border-color: #212121;
-      }
-      &:focus .ms-Checkbox-checkbox {
-        border-color: #212121;
-      }
-      &:hover .ms-Checkbox-checkmark {
-        color: #a6a6a6;
-        opacity: 1;
-      }
-      &:hover .ms-Checkbox-text {
-        color: #333333;
-      }
-      &:focus .ms-Checkbox-text {
-        color: #333333;
-      }
-  data-ktp-execute-target={undefined}
-  disabled={undefined}
-  id="checkbox-0"
-  name={undefined}
-  onBlur={[Function]}
-  onClick={[Function]}
-  onFocus={[Function]}
-  role="checkbox"
-  type="button"
 >
+  <input
+    aria-label="Standard checkbox"
+    className=
+
+        {
+          background: none;
+          opacity: 0;
+          position: absolute;
+        }
+        .ms-Fabric--isFocusVisible &:focus + label {
+          outline-offset: 2px;
+          outline: 1px solid #666666;
+        }
+        @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label {
+          outline: 1px solid ActiveBorder;
+        }
+    id="checkbox-0"
+    onBlur={[Function]}
+    onChange={[Function]}
+    onFocus={[Function]}
+    type="checkbox"
+  />
   <label
     className=
         ms-Checkbox-label
         {
-          align-items: center;
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          align-items: flex-start;
           cursor: pointer;
-          display: inline-flex;
-          margin-bottom: 0;
-          margin-left: -4px;
-          margin-right: -4px;
-          margin-top: 0;
+          display: flex;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
           position: relative;
           text-align: left;
           user-select: none;
+        }
+        &:hover .ms-Checkbox-checkbox {
+          border-color: #333333;
+        }
+        @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
+          border-color: Highlight;
+        }
+        &:focus .ms-Checkbox-checkbox {
+          border-color: #333333;
+        }
+        &:hover .ms-Checkbox-checkmark {
+          color: #a6a6a6;
+          opacity: 1;
+        }
+        @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkmark {
+          color: Highlight;
+        }
+        &:hover .ms-Checkbox-text {
+          color: #333333;
+        }
+        &:focus .ms-Checkbox-text {
+          color: #333333;
         }
     htmlFor="checkbox-0"
   >
@@ -103,17 +85,13 @@ exports[`Checkbox renders Checkbox correctly 1`] = `
             flex-shrink: 0;
             height: 20px;
             justify-content: center;
-            margin-bottom: 0;
-            margin-left: 4px;
             margin-right: 4px;
-            margin-top: 0;
             overflow: hidden;
             transition-duration: 200ms;
             transition-property: background, border, border-color;
             transition-timing-function: cubic-bezier(.4, 0, .23, 1);
             width: 20px;
           }
-      data-ktp-target={undefined}
     >
       <i
         aria-hidden={true}
@@ -141,19 +119,18 @@ exports[`Checkbox renders Checkbox correctly 1`] = `
       </i>
     </div>
     <span
+      aria-hidden="true"
       className=
           ms-Checkbox-text
           {
             color: #333333;
             font-size: 14px;
-            margin-bottom: 0;
+            line-height: 20px;
             margin-left: 4px;
-            margin-right: 4px;
-            margin-top: 0;
           }
     >
       Standard checkbox
     </span>
   </label>
-</button>
+</div>
 `;

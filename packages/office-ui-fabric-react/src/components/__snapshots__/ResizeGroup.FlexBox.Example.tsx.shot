@@ -1,0 +1,208 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component Examples renders ResizeGroup.FlexBox.Example.tsx correctly 1`] = `
+<div>
+  <div
+    style={
+      Object {
+        "position": "relative",
+      }
+    }
+  >
+    <div
+      data-automation-id="visibleContent"
+      style={
+        Object {
+          "position": "fixed",
+          "visibility": "hidden",
+        }
+      }
+    >
+      <div
+        className=
+
+            {
+              display: flex;
+              justify-content: space-between;
+              white-space: nowrap;
+            }
+      >
+        <div>
+          <div
+            className=
+
+                {
+                  background-color: orange;
+                  display: inline-block;
+                  font-size: 20px;
+                  height: 50px;
+                  line-height: 50px;
+                  margin-left: 10px;
+                  margin-right: 10px;
+                  text-align: center;
+                  width: 50px;
+                }
+          >
+            1
+          </div>
+          <div
+            className=
+
+                {
+                  background-color: orange;
+                  display: inline-block;
+                  font-size: 20px;
+                  height: 50px;
+                  line-height: 50px;
+                  margin-left: 10px;
+                  margin-right: 10px;
+                  text-align: center;
+                  width: 50px;
+                }
+          >
+            2
+          </div>
+          <div
+            className=
+
+                {
+                  background-color: orange;
+                  display: inline-block;
+                  font-size: 20px;
+                  height: 50px;
+                  line-height: 50px;
+                  margin-left: 10px;
+                  margin-right: 10px;
+                  text-align: center;
+                  width: 50px;
+                }
+          >
+            3
+          </div>
+          <div
+            className=
+
+                {
+                  background-color: orange;
+                  display: inline-block;
+                  font-size: 20px;
+                  height: 50px;
+                  line-height: 50px;
+                  margin-left: 10px;
+                  margin-right: 10px;
+                  text-align: center;
+                  width: 50px;
+                }
+          >
+            4
+          </div>
+          <div
+            className=
+
+                {
+                  background-color: orange;
+                  display: inline-block;
+                  font-size: 20px;
+                  height: 50px;
+                  line-height: 50px;
+                  margin-left: 10px;
+                  margin-right: 10px;
+                  text-align: center;
+                  width: 50px;
+                }
+          >
+            5
+          </div>
+        </div>
+        <div>
+          <div
+            className=
+
+                {
+                  background-color: green;
+                  display: inline-block;
+                  font-size: 20px;
+                  height: 50px;
+                  line-height: 50px;
+                  margin-left: 10px;
+                  margin-right: 10px;
+                  text-align: center;
+                  width: 50px;
+                }
+          >
+            1
+          </div>
+          <div
+            className=
+
+                {
+                  background-color: green;
+                  display: inline-block;
+                  font-size: 20px;
+                  height: 50px;
+                  line-height: 50px;
+                  margin-left: 10px;
+                  margin-right: 10px;
+                  text-align: center;
+                  width: 50px;
+                }
+          >
+            2
+          </div>
+          <div
+            className=
+
+                {
+                  background-color: green;
+                  display: inline-block;
+                  font-size: 20px;
+                  height: 50px;
+                  line-height: 50px;
+                  margin-left: 10px;
+                  margin-right: 10px;
+                  text-align: center;
+                  width: 50px;
+                }
+          >
+            3
+          </div>
+          <div
+            className=
+
+                {
+                  background-color: green;
+                  display: inline-block;
+                  font-size: 20px;
+                  height: 50px;
+                  line-height: 50px;
+                  margin-left: 10px;
+                  margin-right: 10px;
+                  text-align: center;
+                  width: 50px;
+                }
+          >
+            4
+          </div>
+          <div
+            className=
+
+                {
+                  background-color: green;
+                  display: inline-block;
+                  font-size: 20px;
+                  height: 50px;
+                  line-height: 50px;
+                  margin-left: 10px;
+                  margin-right: 10px;
+                  text-align: center;
+                  width: 50px;
+                }
+          >
+            5
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

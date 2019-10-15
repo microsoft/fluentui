@@ -4,7 +4,7 @@ export const items = [
     name: 'New',
     cacheKey: 'myCacheKey',
     iconProps: {
-      iconName: 'Add',
+      iconName: 'Add'
     },
     ariaLabel: 'New. Use left and right arrow keys to navigate',
     ['data-automation-id']: 'newItemMenu',
@@ -14,7 +14,7 @@ export const items = [
           key: 'emailMessage',
           name: 'Email message',
           iconProps: {
-            iconName: 'Mail',
+            iconName: 'Mail'
           },
           ['data-automation-id']: 'newEmailButton'
         },
@@ -23,25 +23,26 @@ export const items = [
           name: 'Calendar event',
           iconProps: {
             iconName: 'Calendar'
-          },
+          }
         }
-      ],
-    },
+      ]
+    }
   },
   {
     key: 'upload',
     name: 'Upload',
     iconProps: {
-      iconName: 'Upload',
+      iconName: 'Upload'
     },
     href: 'https://dev.office.com/fabric',
-    ['data-automation-id']: 'uploadButton'
+    'data-automation-id': 'uploadButton',
+    target: '_blank'
   },
   {
     key: 'share',
     name: 'Share',
     iconProps: {
-      iconName: 'Share',
+      iconName: 'Share'
     },
     onClick: () => console.log('Share')
   },
@@ -49,7 +50,7 @@ export const items = [
     key: 'download',
     name: 'Download',
     iconProps: {
-      iconName: 'Download',
+      iconName: 'Download'
     },
     onClick: () => console.log('Download')
   }
@@ -61,21 +62,21 @@ export const overflowItems = [
     name: 'Move to...',
     iconProps: {
       iconName: 'MoveToFolder'
-    },
+    }
   },
   {
     key: 'copy',
     name: 'Copy to...',
     iconProps: {
       iconName: 'Copy'
-    },
+    }
   },
   {
     key: 'rename',
     name: 'Rename...',
     iconProps: {
       iconName: 'Edit'
-    },
+    }
   }
 ];
 
@@ -83,16 +84,18 @@ export const farItems = [
   {
     key: 'sort',
     name: 'Sort',
+    ariaLabel: 'Sort',
     iconProps: {
-      iconName: 'SortLines',
+      iconName: 'SortLines'
     },
     onClick: () => console.log('Sort')
   },
   {
     key: 'tile',
     name: 'Grid view',
+    ariaLabel: 'Grid view',
     iconProps: {
-      iconName: 'Tiles',
+      iconName: 'Tiles'
     },
     iconOnly: true,
     onClick: () => console.log('Tiles')
@@ -100,8 +103,9 @@ export const farItems = [
   {
     key: 'info',
     name: 'Info',
+    ariaLabel: 'Info',
     iconProps: {
-      iconName: 'Info',
+      iconName: 'Info'
     },
     iconOnly: true,
     onClick: () => console.log('Info')

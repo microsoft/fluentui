@@ -1,8 +1,12 @@
 import * as React from 'react';
 import { IStyle, ITheme } from '../../Styling';
-import { IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
+import { IRefObject, IRenderFunction, IStyleFunctionOrObject, IComponentAs } from '../../Utilities';
 import { IIconProps } from '../Icon/Icon.types';
+import { IButtonProps } from '../../Button';
 
+/**
+ * {@docCategory Nav}
+ */
 export interface INav {
   /**
    * The meta 'key' property of the currently selected NavItem of the Nav. Can return
@@ -13,12 +17,15 @@ export interface INav {
   selectedKey: string | undefined;
 }
 
+/**
+ * {@docCategory Nav}
+ */
 export interface INavProps {
   /**
    * Optional callback to access the INav interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: INav | null) => void;
+  componentRef?: IRefObject<INav>;
 
   /**
    * Call to provide customized styling that will layer on top of the variant rules
@@ -40,6 +47,18 @@ export interface INavProps {
    * A collection of link groups to display in the navigation bar
    */
   groups: INavLinkGroup[] | null;
+
+  /**
+   * Used to customize how content inside the group header is rendered
+   * @defaultvalue Default group header rendering
+   */
+  onRenderGroupHeader?: IRenderFunction<INavLinkGroup>;
+
+  /**
+   * Render a custom link in place of the normal one.
+   * This replaces the entire button rather than simply button content
+   */
+  linkAs?: IComponentAs<IButtonProps>;
 
   /**
    * Used to customize how content inside the link tag is rendered
@@ -78,23 +97,32 @@ export interface INavProps {
   ariaLabel?: string;
 
   /**
-   * (Optional) The nav container aria label.
+   * (Optional) The nav container aria label. The link name is prepended to this label.
+   * If not provided, the aria label will default to the link name.
    */
   expandButtonAriaLabel?: string;
 
   /**
-   * Deprecated at v0.68.1 and will be removed at >= V1.0.0.
-   * @deprecated
+   * Deprecated at v0.68.1 and will be removed at \>= v1.0.0.
+   * @deprecated Removed at v1.0.0.
    **/
   expandedStateText?: string;
 
   /**
-   * Deprecated at v0.68.1 and will be removed at >= V1.0.0.
-   * @deprecated
+   * Deprecated at v0.68.1 and will be removed at \>= v1.0.0.
+   * @deprecated Removed at v1.0.0.
    **/
   collapsedStateText?: string;
+
+  /**
+   * (Optional) The nav link selected state aria label.
+   */
+  selectedAriaLabel?: string;
 }
 
+/**
+ * {@docCategory Nav}
+ */
 export interface INavLinkGroup {
   /**
    * Text to render as the header of a group
@@ -122,6 +150,9 @@ export interface INavLinkGroup {
   onHeaderClick?: (ev?: React.MouseEvent<HTMLElement>, isCollapsing?: boolean) => void;
 }
 
+/**
+ * {@docCategory Nav}
+ */
 export interface INavLink {
   /**
    * Text to render for this link
@@ -134,7 +165,8 @@ export interface INavLink {
   url: string;
 
   /**
-   * Meta info for the link server, if negative, client side added node.
+   * Unique, stable key for the link, used when rendering the list of links and for tracking
+   * the currently selected link.
    */
   key?: string;
 
@@ -150,30 +182,30 @@ export interface INavLink {
   onClick?: (ev?: React.MouseEvent<HTMLElement>, item?: INavLink) => void;
 
   /**
-   * button icon name if applied
+   * Name of an icon to render next to the link button.
    */
   icon?: string;
 
   /**
-   * Deprecated. Use iconProps.className instead.
-   * @deprecated
+   * Deprecated. Use `iconProps.className` instead.
+   * @deprecated Use `iconProps.className` instead.
    */
   iconClassName?: string;
 
   /**
-   * button icon props if applied
+   * Props for an icon to render next to the link button.
    */
   iconProps?: IIconProps;
 
   /**
-   * Deprecated at v0.68.1 and will be removed at >= v1.0.0.
-   * @deprecated
+   * Deprecated at v0.68.1 and will be removed at \>= v1.0.0.
+   * @deprecated Removed at v1.0.0.
    */
   engagementName?: string;
 
   /**
-   * Deprecated at v0.68.1 and will be removed at >= v1.0.0.
-   * @deprecated
+   * Deprecated at v0.68.1 and will be removed at \>= v1.0.0.
+   * @deprecated Removed at v1.0.0.
    */
   altText?: string;
 
@@ -193,7 +225,7 @@ export interface INavLink {
   ariaLabel?: string;
 
   /**
-   * title for tooltip or description
+   * Text for title tooltip and ARIA description.
    */
   title?: string;
 
@@ -203,8 +235,12 @@ export interface INavLink {
   target?: string;
 
   /**
-   * Point to the parent node key.  This is used in EditNav when move node from sublink to
-   *   parent link vs vers.
+   * Whether or not the link is disabled.
+   */
+  disabled?: boolean;
+
+  /**
+   * @deprecated Not used in the Nav control or anywhere else in office-ui-fabric-react.
    */
   parentId?: string;
 
@@ -221,6 +257,9 @@ export interface INavLink {
   [propertyName: string]: any;
 }
 
+/**
+ * {@docCategory Nav}
+ */
 export interface INavStyleProps {
   /**
    * Accept theme prop.
@@ -241,6 +280,11 @@ export interface INavStyleProps {
    * is element a link boolean
    */
   isLink?: boolean;
+
+  /**
+   * is element disabled
+   */
+  isDisabled?: boolean;
 
   /**
    * is element a group boolean
@@ -294,6 +338,9 @@ export interface INavStyleProps {
   groups: INavLinkGroup[] | null;
 }
 
+/**
+ * {@docCategory Nav}
+ */
 export interface INavStyles {
   /**
    * Style set for the root element.
@@ -306,9 +353,9 @@ export interface INavStyles {
   linkText: IStyle;
 
   /**
-  * Style set for the link element extending the
-  * root style set for ActionButton component.
-  */
+   * Style set for the link element extending the
+   * root style set for ActionButton component.
+   */
   link: IStyle;
 
   /**

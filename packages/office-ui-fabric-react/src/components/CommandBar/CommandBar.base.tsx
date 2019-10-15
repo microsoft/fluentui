@@ -1,26 +1,11 @@
 import * as React from 'react';
 
-import {
-  BaseComponent,
-  css,
-  customizable,
-  nullRender
-} from '../../Utilities';
-import {
-  ICommandBar,
-  ICommandBarItemProps,
-  ICommandBarProps,
-  ICommandBarStyleProps,
-  ICommandBarStyles
-} from './CommandBar.types';
+import { BaseComponent, css, nullRender } from '../../Utilities';
+import { ICommandBar, ICommandBarItemProps, ICommandBarProps, ICommandBarStyleProps, ICommandBarStyles } from './CommandBar.types';
 import { IOverflowSet, OverflowSet } from '../../OverflowSet';
 import { IResizeGroup, ResizeGroup } from '../../ResizeGroup';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
-import {
-  classNamesFunction,
-  createRef
-} from '../../Utilities';
-
+import { classNamesFunction } from '../../Utilities';
 import { CommandBarButton, IButtonProps } from '../../Button';
 import { TooltipHost } from '../../Tooltip';
 
@@ -49,16 +34,14 @@ export interface ICommandBarData {
   cacheKey: string;
 }
 
-@customizable('CommandBar', ['theme'])
 export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implements ICommandBar {
   public static defaultProps: ICommandBarProps = {
     items: [],
     overflowItems: []
   };
 
-  private _setSize: number;
-  private _overflowSet = createRef<IOverflowSet>();
-  private _resizeGroup = createRef<IResizeGroup>();
+  private _overflowSet = React.createRef<IOverflowSet>();
+  private _resizeGroup = React.createRef<IResizeGroup>();
   private _classNames: { [key in keyof ICommandBarStyles]: string };
 
   public render(): JSX.Element {
@@ -69,8 +52,9 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
       farItems,
       styles,
       theme,
+      dataDidRender,
       onReduceData = this._onReduceData,
-      onGrowData = this._onGrowData,
+      onGrowData = this._onGrowData
     } = this.props;
 
     const commandBarData: ICommandBarData = {
@@ -78,20 +62,20 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
       overflowItems: [...overflowItems!],
       minimumOverflowItems: [...overflowItems!].length, // for tracking
       farItems,
-      cacheKey: '',
+      cacheKey: ''
     };
 
-    this._setAriaPosinset(commandBarData);
-    this._classNames = getClassNames(styles!, { theme: theme!, className });
+    this._classNames = getClassNames(styles!, { theme: theme! });
 
     return (
       <ResizeGroup
-        componentRef={ this._resizeGroup }
-        className={ className }
-        data={ commandBarData }
-        onReduceData={ onReduceData }
-        onGrowData={ onGrowData }
-        onRenderData={ this._onRenderData }
+        componentRef={this._resizeGroup}
+        className={className}
+        data={commandBarData}
+        onReduceData={onReduceData}
+        onGrowData={onGrowData}
+        onRenderData={this._onRenderData}
+        dataDidRender={dataDidRender}
       />
     );
   }
@@ -106,64 +90,43 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
     this._resizeGroup.current && this._resizeGroup.current.remeasure();
   }
 
-  private _setAriaPosinset(data: ICommandBarData): ICommandBarData {
-    this._setSize = data.primaryItems.length + (data.overflowItems.length > 0 ? 1 : 0);
-
-    data.primaryItems = data.primaryItems.map((item, i, array) => {
-      item['aria-posinset'] = i + 1;
-      item['aria-setsize'] = this._setSize;
-      return item;
-    });
-
-    if (data.farItems) {
-      data.farItems = data.farItems.map((item, i, array) => {
-        item['aria-posinset'] = i + 1;
-        item['aria-setsize'] = array.length;
-        return item;
-      });
-    }
-
-    return data;
-  }
-
   private _onRenderData = (data: ICommandBarData): JSX.Element => {
     return (
       <FocusZone
-        className={ css(this._classNames.root) }
-        direction={ FocusZoneDirection.horizontal }
-        role={ 'menubar' }
-        aria-label={ this.props.ariaLabel }
+        className={css(this._classNames.root)}
+        direction={FocusZoneDirection.horizontal}
+        role={'menubar'}
+        aria-label={this.props.ariaLabel}
       >
-
-        {/*Primary Items*/ }
+        {/*Primary Items*/}
         <OverflowSet
-          componentRef={ this._resolveRef('_overflowSet') }
-          className={ css(this._classNames.primarySet) }
-          doNotContainWithinFocusZone={ true }
-          role={ 'presentation' }
-          items={ data.primaryItems }
-          overflowItems={ data.overflowItems.length ? data.overflowItems : undefined }
-          onRenderItem={ this._onRenderItem }
-          onRenderOverflowButton={ this._onRenderOverflowButton }
+          componentRef={this._resolveRef('_overflowSet')}
+          className={css(this._classNames.primarySet)}
+          doNotContainWithinFocusZone={true}
+          role={'presentation'}
+          items={data.primaryItems}
+          overflowItems={data.overflowItems.length ? data.overflowItems : undefined}
+          onRenderItem={this._onRenderItem}
+          onRenderOverflowButton={this._onRenderOverflowButton}
         />
 
-        {/*Secondary Items*/ }
-        { data.farItems && <OverflowSet
-          className={ css(this._classNames.secondarySet) }
-          doNotContainWithinFocusZone={ true }
-          role={ 'presentation' }
-          items={ data.farItems }
-          onRenderItem={ this._onRenderItem }
-          onRenderOverflowButton={ nullRender }
-        /> }
+        {/*Secondary Items*/}
+        {data.farItems && (
+          <OverflowSet
+            className={css(this._classNames.secondarySet)}
+            doNotContainWithinFocusZone={true}
+            role={'presentation'}
+            items={data.farItems}
+            onRenderItem={this._onRenderItem}
+            onRenderOverflowButton={nullRender}
+          />
+        )}
       </FocusZone>
     );
-  }
+  };
 
   private _onRenderItem = (item: ICommandBarItemProps): JSX.Element | React.ReactNode => {
-    const {
-      buttonAs: CommandButtonType = CommandBarButton
-    } = this.props;
+    const CommandButtonType = this.props.buttonAs || item.commandBarButtonAs || CommandBarButton;
 
     const itemText = item.text || item.name;
 
@@ -173,22 +136,37 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
       return item.onRender(item, () => undefined);
     }
     const commandButtonProps: ICommandBarItemProps = {
+      allowDisabledFocus: true,
+      role: 'menuitem',
       ...item,
-      styles: { root: { height: '100%' }, ...item.buttonStyles },
+      styles: { root: { height: '100%' }, label: { whiteSpace: 'nowrap' }, ...item.buttonStyles },
       className: css('ms-CommandBarItem-link', item.className),
-      text: !item.iconOnly ? itemText : '',
+      text: !item.iconOnly ? itemText : undefined,
       menuProps: item.subMenuProps,
+      onClick: this._onButtonClick(item)
     };
 
     if (item.iconOnly && itemText !== undefined) {
       return (
-        <TooltipHost content={ itemText } >
-          <CommandButtonType { ...commandButtonProps as IButtonProps } />
+        <TooltipHost content={itemText} {...item.tooltipHostProps}>
+          <CommandButtonType {...commandButtonProps as IButtonProps} defaultRender={CommandBarButton} />
         </TooltipHost>
       );
     }
 
-    return <CommandButtonType { ...commandButtonProps as IButtonProps } />;
+    return <CommandButtonType {...commandButtonProps as IButtonProps} defaultRender={CommandBarButton} />;
+  };
+
+  private _onButtonClick(item: ICommandBarItemProps): (ev: React.MouseEvent<HTMLButtonElement>) => void {
+    return ev => {
+      // inactive is deprecated. remove check in 7.0
+      if (item.inactive) {
+        return;
+      }
+      if (item.onClick) {
+        item.onClick(ev, item);
+      }
+    };
   }
 
   private _onRenderOverflowButton = (overflowItems: ICommandBarItemProps[]): JSX.Element => {
@@ -197,16 +175,21 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
       overflowButtonProps = {} // assure that props is not empty
     } = this.props;
 
+    const combinedOverflowItems: ICommandBarItemProps[] = [
+      ...(overflowButtonProps.menuProps ? overflowButtonProps.menuProps.items : []),
+      ...overflowItems
+    ];
+
     const overflowProps: IButtonProps = {
       ...overflowButtonProps,
       styles: { menuIcon: { fontSize: '17px' }, ...overflowButtonProps.styles },
       className: css('ms-CommandBar-overflowButton', overflowButtonProps.className),
-      menuProps: { items: overflowItems, ...overflowButtonProps.menuProps },
+      menuProps: { ...overflowButtonProps.menuProps, items: combinedOverflowItems },
       menuIconProps: { iconName: 'More', ...overflowButtonProps.menuIconProps }
     };
 
-    return <OverflowButtonType aria-posinset={ this._setSize } aria-setsize={ this._setSize } { ...overflowProps as IButtonProps } />;
-  }
+    return <OverflowButtonType {...overflowProps as IButtonProps} />;
+  };
 
   private _computeCacheKey(data: ICommandBarData): string {
     const { primaryItems, farItems = [], overflowItems } = data;
@@ -235,19 +218,19 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
       overflowItems = [movedItem, ...overflowItems];
       primaryItems = shiftOnReduce ? primaryItems.slice(1) : primaryItems.slice(0, -1);
 
-      const newData = this._setAriaPosinset({ ...data, primaryItems, overflowItems });
-
+      const newData = { ...data, primaryItems, overflowItems };
       cacheKey = this._computeCacheKey(newData);
 
       if (onDataReduced) {
         onDataReduced(movedItem);
       }
 
-      return { ...newData, cacheKey };
+      newData.cacheKey = cacheKey;
+      return newData;
     }
 
     return undefined;
-  }
+  };
 
   private _onGrowData = (data: ICommandBarData): ICommandBarData | undefined => {
     const { shiftOnReduce, onDataGrown } = this.props;
@@ -263,16 +246,17 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
       // if shiftOnReduce, movedItem goes first, otherwise, last.
       primaryItems = shiftOnReduce ? [movedItem, ...primaryItems] : [...primaryItems, movedItem];
 
-      const newData = this._setAriaPosinset({ ...data, primaryItems, overflowItems });
+      const newData = { ...data, primaryItems, overflowItems };
       cacheKey = this._computeCacheKey(newData);
 
       if (onDataGrown) {
         onDataGrown(movedItem);
       }
 
-      return { ...newData, cacheKey };
+      newData.cacheKey = cacheKey;
+      return newData;
     }
 
     return undefined;
-  }
+  };
 }

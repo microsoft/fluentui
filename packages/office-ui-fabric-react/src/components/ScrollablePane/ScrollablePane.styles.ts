@@ -1,37 +1,22 @@
 import { IScrollablePaneStyleProps, IScrollablePaneStyles } from './ScrollablePane.types';
-import {
-  HighContrastSelector,
-  IStyle,
-  ZIndexes,
-  getGlobalClassNames,
-} from '../../Styling';
+import { HighContrastSelector, IStyle, getGlobalClassNames } from '../../Styling';
 
 const GlobalClassNames = {
   root: 'ms-ScrollablePane',
   contentContainer: 'ms-ScrollablePane--contentContainer'
 };
 
-export const getStyles = (
-  props: IScrollablePaneStyleProps
-): IScrollablePaneStyles => {
-  const {
-    className,
-    theme,
-  } = props;
+export const getStyles = (props: IScrollablePaneStyleProps): IScrollablePaneStyles => {
+  const { className, theme } = props;
 
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
   const AboveAndBelowStyles: IStyle = {
     position: 'absolute',
-    pointerEvents: 'auto',
-    width: '100%',
-    zIndex: ZIndexes.ScrollablePane,
-    overflowY: 'hidden',
-    overflowX: 'auto'
+    pointerEvents: 'auto'
   };
 
   const positioningStyle: IStyle = {
-    zIndex: ZIndexes.ScrollablePane,
     position: 'absolute',
     top: 0,
     right: 0,
@@ -40,16 +25,12 @@ export const getStyles = (
     WebkitOverflowScrolling: 'touch'
   };
 
-  return ({
-    root: [
-      classNames.root,
-      positioningStyle,
-      className
-    ],
+  return {
+    root: [classNames.root, theme.fonts.medium, positioningStyle, className],
     contentContainer: [
       classNames.contentContainer,
       {
-        overflowY: 'auto'
+        overflowY: props.scrollbarVisibility === 'always' ? 'scroll' : 'auto'
       },
       positioningStyle
     ],
@@ -79,7 +60,10 @@ export const getStyles = (
       {
         bottom: 0
       },
-      AboveAndBelowStyles
+      AboveAndBelowStyles,
+      {
+        width: '100%'
+      }
     ]
-  });
+  };
 };

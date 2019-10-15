@@ -1,9 +1,6 @@
+import { AnimationClassNames, getGlobalClassNames, IStyle } from '../../Styling';
 import { IImageStyleProps, IImageStyles } from './Image.types';
-import {
-  AnimationClassNames,
-  IStyle,
-  getGlobalClassNames,
-} from '../../Styling';
+import { getWindow } from '../../Utilities';
 
 const GlobalClassNames = {
   root: 'ms-Image',
@@ -12,14 +9,14 @@ const GlobalClassNames = {
   imageCenter: 'ms-Image-image--center',
   imageContain: 'ms-Image-image--contain',
   imageCover: 'ms-Image-image--cover',
+  imageCenterContain: 'ms-Image-image--centerContain',
+  imageCenterCover: 'ms-Image-image--centerCover',
   imageNone: 'ms-Image-image--none',
   imageLandscape: 'ms-Image-image--landscape',
-  imagePortrait: 'ms-Image-image--portrait',
+  imagePortrait: 'ms-Image-image--portrait'
 };
 
-export const getStyles = (
-  props: IImageStyleProps
-): IImageStyles => {
+export const getStyles = (props: IImageStyleProps): IImageStyles => {
   const {
     className,
     width,
@@ -32,6 +29,8 @@ export const getStyles = (
     isCenter,
     isContain,
     isCover,
+    isCenterContain,
+    isCenterCover,
     isNone,
     isError,
     isNotImageFit,
@@ -47,9 +46,16 @@ export const getStyles = (
     transform: 'translate(-50%,-50%)' // @todo test RTL renders transform: translate(50%,-50%);
   };
 
-  return ({
+  // Cut the mustard using msMaxTouchPoints to detect IE11 which does not support CSS object-fit
+  const window: Window | undefined = getWindow();
+  const supportsObjectFit: boolean = window !== undefined && window.navigator.msMaxTouchPoints === undefined;
+  const fallbackObjectFitStyles =
+    (isContain && isLandscape) || (isCover && !isLandscape) ? { width: '100%', height: 'auto' } : { width: 'auto', height: '100%' };
+
+  return {
     root: [
       classNames.root,
+      theme.fonts.medium,
       {
         overflow: 'hidden'
       },
@@ -60,8 +66,9 @@ export const getStyles = (
           width: '100%'
         }
       ],
-      (isCenter || isContain || isCover) && {
-        position: 'relative',
+      isLoaded && shouldFadeIn && !shouldStartVisible && AnimationClassNames.fadeIn400,
+      (isCenter || isContain || isCover || isCenterContain || isCenterCover) && {
+        position: 'relative'
       },
       className
     ],
@@ -77,31 +84,44 @@ export const getStyles = (
           opacity: 1
         }
       ],
-      isCenter && [
-        classNames.imageCenter,
-        ImageFitStyles
-      ],
+      isCenter && [classNames.imageCenter, ImageFitStyles],
       isContain && [
         classNames.imageContain,
-        isLandscape && {
+        supportsObjectFit && {
           width: '100%',
-          height: 'auto'
+          height: '100%',
+          objectFit: 'contain'
         },
-        !isLandscape && {
-          width: 'auto',
-          height: '100%'
-        },
+        !supportsObjectFit && fallbackObjectFitStyles,
         ImageFitStyles
       ],
       isCover && [
         classNames.imageCover,
+        supportsObjectFit && {
+          width: '100%',
+          height: '100%',
+          objectFit: 'cover'
+        },
+        !supportsObjectFit && fallbackObjectFitStyles,
+        ImageFitStyles
+      ],
+      isCenterContain && [
+        classNames.imageCenterContain,
         isLandscape && {
-          width: 'auto',
-          height: '100%'
+          maxWidth: '100%'
         },
         !isLandscape && {
-          width: '100%',
-          height: 'auto'
+          maxHeight: '100%'
+        },
+        ImageFitStyles
+      ],
+      isCenterCover && [
+        classNames.imageCenterCover,
+        isLandscape && {
+          maxHeight: '100%'
+        },
+        !isLandscape && {
+          maxWidth: '100%'
         },
         ImageFitStyles
       ],
@@ -113,25 +133,27 @@ export const getStyles = (
         }
       ],
       isNotImageFit && [
-        !!width && !height && {
-          height: 'auto',
-          width: '100%'
-        },
-        !width && !!height && {
-          height: '100%',
-          width: 'auto'
-        },
-        !!width && !!height && {
-          height: '100%',
-          width: '100%'
-        }
+        !!width &&
+          !height && {
+            height: 'auto',
+            width: '100%'
+          },
+        !width &&
+          !!height && {
+            height: '100%',
+            width: 'auto'
+          },
+        !!width &&
+          !!height && {
+            height: '100%',
+            width: '100%'
+          }
       ],
-      isLoaded && shouldFadeIn && !shouldStartVisible && AnimationClassNames.fadeIn400,
       isLandscape && classNames.imageLandscape,
       !isLandscape && classNames.imagePortrait,
       !isLoaded && 'is-notLoaded',
       shouldFadeIn && 'is-fadeIn',
       isError && 'is-error'
     ]
-  });
+  };
 };

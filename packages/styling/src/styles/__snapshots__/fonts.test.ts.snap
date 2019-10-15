@@ -65,6 +65,13 @@ Object {
     "fontSize": "21px",
     "fontWeight": 100,
   },
+  "xLargePlus": Object {
+    "MozOsxFontSmoothing": "grayscale",
+    "WebkitFontSmoothing": "antialiased",
+    "fontFamily": "'Segoe UI Web (Arabic)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif",
+    "fontSize": "21px",
+    "fontWeight": 100,
+  },
   "xSmall": Object {
     "MozOsxFontSmoothing": "grayscale",
     "WebkitFontSmoothing": "antialiased",
@@ -73,6 +80,13 @@ Object {
     "fontWeight": 400,
   },
   "xxLarge": Object {
+    "MozOsxFontSmoothing": "grayscale",
+    "WebkitFontSmoothing": "antialiased",
+    "fontFamily": "'Segoe UI Web (Arabic)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif",
+    "fontSize": "28px",
+    "fontWeight": 100,
+  },
+  "xxLargePlus": Object {
     "MozOsxFontSmoothing": "grayscale",
     "WebkitFontSmoothing": "antialiased",
     "fontFamily": "'Segoe UI Web (Arabic)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif",
@@ -147,6 +161,13 @@ Object {
     "fontSize": "21px",
     "fontWeight": 100,
   },
+  "xLargePlus": Object {
+    "MozOsxFontSmoothing": "grayscale",
+    "WebkitFontSmoothing": "antialiased",
+    "fontFamily": "'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif",
+    "fontSize": "21px",
+    "fontWeight": 100,
+  },
   "xSmall": Object {
     "MozOsxFontSmoothing": "grayscale",
     "WebkitFontSmoothing": "antialiased",
@@ -155,6 +176,13 @@ Object {
     "fontWeight": 400,
   },
   "xxLarge": Object {
+    "MozOsxFontSmoothing": "grayscale",
+    "WebkitFontSmoothing": "antialiased",
+    "fontFamily": "'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif",
+    "fontSize": "28px",
+    "fontWeight": 100,
+  },
+  "xxLargePlus": Object {
     "MozOsxFontSmoothing": "grayscale",
     "WebkitFontSmoothing": "antialiased",
     "fontFamily": "'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif",
@@ -229,6 +257,13 @@ Object {
     "fontSize": "21px",
     "fontWeight": 100,
   },
+  "xLargePlus": Object {
+    "MozOsxFontSmoothing": "grayscale",
+    "WebkitFontSmoothing": "antialiased",
+    "fontFamily": "'Yu Gothic UI', 'Meiryo UI', Meiryo, 'MS Pgothic', Osaka, 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif",
+    "fontSize": "21px",
+    "fontWeight": 100,
+  },
   "xSmall": Object {
     "MozOsxFontSmoothing": "grayscale",
     "WebkitFontSmoothing": "antialiased",
@@ -237,6 +272,13 @@ Object {
     "fontWeight": 400,
   },
   "xxLarge": Object {
+    "MozOsxFontSmoothing": "grayscale",
+    "WebkitFontSmoothing": "antialiased",
+    "fontFamily": "'Yu Gothic UI', 'Meiryo UI', Meiryo, 'MS Pgothic', Osaka, 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif",
+    "fontSize": "28px",
+    "fontWeight": 100,
+  },
+  "xxLargePlus": Object {
     "MozOsxFontSmoothing": "grayscale",
     "WebkitFontSmoothing": "antialiased",
     "fontFamily": "'Yu Gothic UI', 'Meiryo UI', Meiryo, 'MS Pgothic', Osaka, 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif",

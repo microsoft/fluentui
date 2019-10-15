@@ -1,4 +1,4 @@
-import { getWindow } from './dom';
+import { getWindow } from './dom/getWindow';
 import { isDirectionalKeyCode } from './keyboard';
 
 export const IsFocusVisibleClassName = 'ms-Fabric--isFocusVisible';
@@ -8,17 +8,17 @@ export const IsFocusVisibleClassName = 'ms-Fabric--isFocusVisible';
  *
  * 1. Subscribes keydown and mousedown events. (It will only do it once per window,
  *    so it's safe to call this method multiple times.)
- * 2. When the user presses directional keyboard keys, adds the 'is-focusVisible' classname
+ * 2. When the user presses directional keyboard keys, adds the 'ms-Fabric--isFocusVisible' classname
  *    to the document body.
  * 3. When the user clicks a mouse button, we remove the classname if it exists.
  *
  * This logic allows components on the page to conditionally render focus treatments only
  * if the global classname exists, which simplifies logic overall.
  *
- * @param window
+ * @param window - the window used to add the event listeners
  */
 export function initializeFocusRects(window?: Window): void {
-  const win = (window || getWindow()) as (Window & { __hasInitializeFocusRects__: boolean });
+  const win = (window || getWindow()) as Window & { __hasInitializeFocusRects__: boolean };
 
   if (win && !win.__hasInitializeFocusRects__) {
     win.__hasInitializeFocusRects__ = true;

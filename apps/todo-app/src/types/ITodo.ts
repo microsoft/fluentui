@@ -3,7 +3,6 @@ import { ITodoItem, IDataProvider } from './index';
  * Props for Todo component.
  */
 export interface ITodoProps {
-
   /**
    * The dataProvider contains data storage and operations.
    */

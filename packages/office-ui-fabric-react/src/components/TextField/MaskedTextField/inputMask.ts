@@ -10,7 +10,7 @@ export interface IMaskValue {
 
 export const DEFAULT_MASK_FORMAT_CHARS: { [key: string]: RegExp } = {
   '9': /[0-9]/,
-  'a': /[a-zA-Z]/,
+  a: /[a-zA-Z]/,
   '*': /[a-zA-Z0-9]/
 };
 
@@ -28,9 +28,7 @@ export const DEFAULT_MASK_FORMAT_CHARS: { [key: string]: RegExp } = {
  * @param mask The string use to define the format of the displayed maskedValue.
  * @param formatChars An object defining how certain characters in the mask should accept input.
  */
-export function parseMask(
-  mask: string | undefined,
-  formatChars: { [key: string]: RegExp } = DEFAULT_MASK_FORMAT_CHARS): IMaskValue[] {
+export function parseMask(mask: string | undefined, formatChars: { [key: string]: RegExp } = DEFAULT_MASK_FORMAT_CHARS): IMaskValue[] {
   if (!mask) {
     return [];
   }
@@ -117,8 +115,7 @@ export function getMaskDisplay(mask: string | undefined, maskCharData: IMaskValu
     }
 
     // Insert the character into the maskdisplay at its corresponding index
-    maskDisplay = maskDisplay.slice(0, charData.displayIndex) + nextChar +
-      maskDisplay.slice(charData.displayIndex + 1);
+    maskDisplay = maskDisplay.slice(0, charData.displayIndex) + nextChar + maskDisplay.slice(charData.displayIndex + 1);
   }
 
   // Cut off all mask characters after the last filled format value
@@ -220,11 +217,14 @@ export function clearPrev(maskCharData: IMaskValue[], selectionStart: number): I
  * @return The displayIndex of the next format character
  */
 export function insertString(maskCharData: IMaskValue[], selectionStart: number, newString: string): number {
-  let stringIndex = 0,
-    nextIndex = 0;
+  let stringIndex = 0;
+  let nextIndex = 0;
+  let isStringInserted = false;
+
   // Iterate through _maskCharData finding values with a displayIndex after the specified range start
   for (let i = 0; i < maskCharData.length && stringIndex < newString.length; i++) {
     if (maskCharData[i].displayIndex >= selectionStart) {
+      isStringInserted = true;
       nextIndex = maskCharData[i].displayIndex;
       // Find the next character in the newString that matches the format
       while (stringIndex < newString.length) {
@@ -243,5 +243,6 @@ export function insertString(maskCharData: IMaskValue[], selectionStart: number,
       }
     }
   }
-  return nextIndex;
+
+  return isStringInserted ? nextIndex : selectionStart;
 }

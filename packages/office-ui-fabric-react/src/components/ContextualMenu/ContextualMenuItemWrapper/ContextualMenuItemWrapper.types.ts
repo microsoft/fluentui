@@ -1,13 +1,15 @@
-import { IContextualMenuItem, IContextualMenuItemProps } from '../../ContextualMenu';
+import * as React from 'react';
+import { IContextualMenuItem, IContextualMenuItemProps } from '../../../ContextualMenu';
 import { IMenuItemClassNames } from '../ContextualMenu.classNames';
 import { ContextualMenuItemWrapper } from './ContextualMenuItemWrapper';
+import { IRefObject } from '../../../Utilities';
 
-export interface IContextualMenuItemWrapperProps extends React.Props<IContextualMenuItem> {
+export interface IContextualMenuItemWrapperProps extends React.ClassAttributes<IContextualMenuItem> {
   /**
    * Optional callback to access the ContextualMenuSplitButton interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: ContextualMenuItemWrapper | null) => void;
+  componentRef?: IRefObject<ContextualMenuItemWrapper>;
 
   /**
    * The IContextualMenuItem that is used to render the item in the menu.
@@ -46,7 +48,7 @@ export interface IContextualMenuItemWrapperProps extends React.Props<IContextual
 
   /**
    * Method to override the render of the individual menu items.
-   * @default ContextualMenuItem
+   * @defaultvalue ContextualMenuItem
    */
   contextualMenuItemAs?: React.ComponentClass<IContextualMenuItemProps> | React.StatelessComponent<IContextualMenuItemProps>;
 
@@ -83,7 +85,11 @@ export interface IContextualMenuItemWrapperProps extends React.Props<IContextual
   /**
    * Callback for when the click event on the icon button which also takes in a specific HTMLElement that will be focused.
    */
-  onItemClickBase?: (item: IContextualMenuItem, ev: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>, target: HTMLElement) => void;
+  onItemClickBase?: (
+    item: IContextualMenuItem,
+    ev: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>,
+    target: HTMLElement
+  ) => void;
 
   /**
    * Callback for keyboard events on the wrapper.

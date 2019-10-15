@@ -3,6 +3,8 @@ import { Autofill } from '../../Autofill';
 import { IInputProps } from '../../Pickers';
 import { IBaseFloatingPickerProps } from '../../FloatingPicker';
 import { IBaseSelectedItemsListProps } from '../../SelectedItemsList';
+import { IRefObject } from '../../Utilities';
+import { IFocusZoneProps } from '../../FocusZone';
 
 export interface IBaseExtendedPicker<T> {
   /** Forces the picker to resolve */
@@ -17,7 +19,10 @@ export interface IBaseExtendedPicker<T> {
 // and searched for by the people picker. For example, if the picker is
 // displaying persona's than type T could either be of Persona or Ipersona props
 export interface IBaseExtendedPickerProps<T> {
-  componentRef?: (component?: IBaseExtendedPicker<T> | null) => void;
+  /**
+   * Ref of the component
+   */
+  componentRef?: IRefObject<IBaseExtendedPicker<T>>;
 
   /**
    * Header/title element for the picker
@@ -57,12 +62,12 @@ export interface IBaseExtendedPickerProps<T> {
   /**
    * Function that specifies how the floating picker will appear.
    */
-  onRenderFloatingPicker: (props: IBaseFloatingPickerProps<T>) => JSX.Element;
+  onRenderFloatingPicker: React.ComponentType<IBaseFloatingPickerProps<T>>;
 
   /**
    * Function that specifies how the floating picker will appear.
    */
-  onRenderSelectedItems: (props: IBaseSelectedItemsListProps<T>) => JSX.Element;
+  onRenderSelectedItems: React.ComponentType<IBaseSelectedItemsListProps<T>>;
 
   /**
    * Floating picker properties
@@ -76,30 +81,55 @@ export interface IBaseExtendedPickerProps<T> {
 
   /**
    * Autofill input native props
-   * @default undefined
+   * @defaultvalue undefined
    */
   inputProps?: IInputProps;
 
   /**
    * Flag for disabling the picker.
-   * @default false
+   * @defaultvalue false
    */
   disabled?: boolean;
 
   /**
    * Restrict the amount of selectable items.
-   * @default undefined
+   * @defaultvalue undefined
    */
   itemLimit?: number;
 
   /**
-   * A callback to process a selection after the user selects something from the picker.
+   * A callback to process a selection after the user selects a suggestion from the picker.
+   * The returned item will be added to the selected items list
    */
   onItemSelected?: (selectedItem?: T) => T | PromiseLike<T>;
 
   /**
-   * Deprecated at 5.96.0. Use defaultSelectedItems or selectedItems in selectedItemsListProps instead.
-   * @deprecated
+   * A callback on when an item was added to the selected item list
+   */
+  onItemAdded?: (addedItem: T) => void;
+
+  /**
+   * A callback on when an item or items were removed from the selected item list
+   */
+  onItemsRemoved?: (removedItems: T[]) => void;
+
+  /**
+   * If using as a controlled component use selectedItems here instead of the SelectedItemsList
    */
   selectedItems?: T[];
+
+  /**
+   * If using as a controlled component use suggestionItems here instead of FloatingPicker
+   */
+  suggestionItems?: T[];
+
+  /**
+   * Focus zone props
+   */
+  focusZoneProps?: IFocusZoneProps;
+
+  /**
+   * Current rendered query string that's corealte to current rendered result
+   **/
+  currentRenderedQueryString?: string;
 }

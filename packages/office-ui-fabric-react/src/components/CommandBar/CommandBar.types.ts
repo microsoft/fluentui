@@ -1,11 +1,14 @@
-
 import * as React from 'react';
-import { IContextualMenuItem, IContextualMenuProps } from '../../ContextualMenu';
+import { IContextualMenuItem } from '../../ContextualMenu';
 import { IButtonStyles, IButtonProps } from '../../Button';
 import { ICommandBarData } from './CommandBar.base';
 import { IStyle, ITheme } from '../../Styling';
-import { IStyleFunctionOrObject, IComponentAs } from '../../Utilities';
+import { IRefObject, IStyleFunctionOrObject, IComponentAs } from '../../Utilities';
+import { ITooltipHostProps } from '../../Tooltip';
 
+/**
+ * {@docCategory CommandBar}
+ */
 export interface ICommandBar {
   /**
    * Sets focus to the active command in the list.
@@ -18,58 +21,57 @@ export interface ICommandBar {
   remeasure(): void;
 }
 
+/**
+ * {@docCategory CommandBar}
+ */
 export interface ICommandBarProps extends React.HTMLAttributes<HTMLDivElement> {
   /**
    * Optional callback to access the ICommandBar interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: ICommandBar | null) => void;
+  componentRef?: IRefObject<ICommandBar>;
 
   /**
-   * Items to render
+   * Items to render. ICommandBarItemProps extend IContextualMenuItem
    */
   items: ICommandBarItemProps[];
 
   /**
- * Items to render on the right side (or left, in RTL).
- */
+   * Items to render on the right side (or left, in RTL). ICommandBarItemProps extend IContextualMenuItem
+   */
   farItems?: ICommandBarItemProps[];
 
   /**
-   * Default items to have in the overflow menu
+   * Default items to have in the overflow menu. ICommandBarItemProps extend IContextualMenuItem
    */
   overflowItems?: ICommandBarItemProps[];
 
   /**
-   * Props to be passed to overflow button
+   * Props to be passed to overflow button.
+   * If menuProps are passed through this prop, any items provided will be prepended to the top of the existing menu.
    */
   overflowButtonProps?: IButtonProps;
 
   /**
-  * Custom button to be used as oveflow button
-  */
+   * Custom button to be used as oveflow button
+   */
   overflowButtonAs?: IComponentAs<IButtonProps>;
 
   /**
-  * Menu props to be passed to overflow elipsis
-  */
-  overflowMenuProps?: Partial<IContextualMenuProps>;
-
-  /**
-  * Custom button to be used as near and far items
-  */
+   * Custom button to be used as near and far items
+   */
   buttonAs?: IComponentAs<IButtonProps>;
 
   /**
-  * When true, items will be 'shifted' off the front of the array when reduced, and unshifted during grow
-  */
+   * When true, items will be 'shifted' off the front of the array when reduced, and unshifted during grow
+   */
   shiftOnReduce?: Boolean;
 
   /**
    * Custom function to reduce data if items do not fit in given space. Return `undefined`
    * if no more steps can be taken to avoid infinate loop.
    */
-  onReduceData?: (data: ICommandBarData) => ICommandBarData;
+  onReduceData?: (data: ICommandBarData) => ICommandBarData | undefined;
 
   /**
    * Custom function to grow data if items are too small for the given space.
@@ -88,6 +90,14 @@ export interface ICommandBarProps extends React.HTMLAttributes<HTMLDivElement> {
   onDataGrown?: (movedItem: ICommandBarItemProps) => void;
 
   /**
+   * Function to be called every time data is rendered. It provides the data that was actually rendered.
+   * A use case would be adding telemetry when a particular control is shown in an overflow well or
+   * dropped as a result of onReduceData or to count the number of renders that an implementation of
+   * onReduceData triggers.
+   */
+  dataDidRender?: (renderedData: any) => void;
+
+  /**
    * Additional css class to apply to the command bar
    * @defaultvalue undefined
    */
@@ -102,8 +112,8 @@ export interface ICommandBarProps extends React.HTMLAttributes<HTMLDivElement> {
   ariaLabel?: string;
 
   /**
-  * Call to provide customized styling that will layer on top of the variant rules
-  */
+   * Call to provide customized styling that will layer on top of the variant rules
+   */
   styles?: IStyleFunctionOrObject<ICommandBarStyleProps, ICommandBarStyles>;
 
   /**
@@ -112,13 +122,21 @@ export interface ICommandBarProps extends React.HTMLAttributes<HTMLDivElement> {
   theme?: ITheme;
 }
 
+/**
+ * ICommandBarItemProps extends IContextualMenuItem and adds a few CommandBar specific props
+ * {@docCategory CommandBar}
+ */
 export interface ICommandBarItemProps extends IContextualMenuItem {
-
   /**
    * Remove text when button is not in the overflow
    * @defaultvalue false
    */
   iconOnly?: boolean;
+
+  /**
+   * Props to pass into tooltip during iconOnly
+   */
+  tooltipHostProps?: ITooltipHostProps;
 
   /**
    * Custom styles for individual button
@@ -136,13 +154,24 @@ export interface ICommandBarItemProps extends IContextualMenuItem {
    */
   renderedInOverflow?: boolean;
 
+  /**
+   * Method to override the render of the individual command bar button. Note, is not used when rendered in overflow
+   * @defaultvalue CommandBarButton
+   */
+  commandBarButtonAs?: IComponentAs<ICommandBarItemProps>;
 }
 
+/**
+ * {@docCategory CommandBar}
+ */
 export interface ICommandBarStyleProps {
   theme: ITheme;
   className?: string;
 }
 
+/**
+ * {@docCategory CommandBar}
+ */
 export interface ICommandBarStyles {
   root?: IStyle;
   primarySet?: IStyle;

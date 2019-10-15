@@ -1,8 +1,11 @@
 import * as React from 'react';
 import { ScrollablePaneBase } from './ScrollablePane.base';
 import { IStyle, ITheme } from '../../Styling';
-import { IStyleFunctionOrObject } from '../../Utilities';
+import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 
+/**
+ * {@docCategory ScrollablePane}
+ */
 export interface IScrollablePane {
   /** Triggers a layout update for the pane. */
   forceLayoutUpdate(): void;
@@ -10,13 +13,16 @@ export interface IScrollablePane {
   getScrollPosition(): number;
 }
 
+/**
+ * {@docCategory ScrollablePane}
+ */
 export interface IScrollablePaneProps extends React.HTMLAttributes<HTMLElement | ScrollablePaneBase> {
   // export interface IScrollablePaneProps extends React.Props<ScrollablePaneBase> {
   /**
    * Optional callback to access the IScrollablePane interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: IScrollablePane | null) => void;
+  componentRef?: IRefObject<IScrollablePane>;
 
   /**
    * Call to provide customized styling that will layer on top of the variant rules
@@ -38,8 +44,13 @@ export interface IScrollablePaneProps extends React.HTMLAttributes<HTMLElement |
    * Sets the initial scroll position of the ScrollablePane
    */
   initialScrollPosition?: number;
+
+  scrollbarVisibility?: ScrollbarVisibility;
 }
 
+/**
+ * {@docCategory ScrollablePane}
+ */
 export interface IScrollablePaneStyleProps {
   /**
    * Accept theme prop.
@@ -51,10 +62,14 @@ export interface IScrollablePaneStyleProps {
    */
   className?: string;
 
-  // Insert ScrollablePane style props below
+  scrollbarVisibility?: IScrollablePaneProps['scrollbarVisibility'];
 
+  // Insert ScrollablePane style props below
 }
 
+/**
+ * {@docCategory ScrollablePane}
+ */
 export interface IScrollablePaneStyles {
   /**
    * Style set for the root element.
@@ -65,7 +80,7 @@ export interface IScrollablePaneStyles {
    */
   stickyAbove: IStyle;
   /**
-   * Style set for the stickyAbove element.
+   * Style set for the stickyBelow element.
    */
   stickyBelow: IStyle;
   /**
@@ -77,3 +92,16 @@ export interface IScrollablePaneStyles {
    */
   contentContainer: IStyle;
 }
+
+/**
+ * {@docCategory ScrollablePane}
+ */
+export const ScrollbarVisibility = {
+  auto: 'auto' as 'auto',
+  always: 'always' as 'always'
+};
+
+/**
+ * {@docCategory ScrollablePane}
+ */
+export type ScrollbarVisibility = typeof ScrollbarVisibility[keyof typeof ScrollbarVisibility];

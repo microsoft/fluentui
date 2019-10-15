@@ -1,13 +1,19 @@
 import * as React from 'react';
-import { OverflowSet } from './OverflowSet';
-import { IRenderFunction } from '../../Utilities';
+
 import { IFocusZoneProps } from '../../FocusZone';
 import { IKeytipProps } from '../../Keytip';
+import { IStyle } from '../../Styling';
+import { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
+import { OverflowSetBase } from './OverflowSet.base';
 
+/**
+ * {@docCategory OverflowSet}
+ */
 export interface IOverflowSet {
   /**
    * Sets focus to the first tabbable item in the zone.
-   * @param {boolean} forceIntoFirstElement If true, focus will be forced into the first element, even if focus is already in the focus zone.
+   * @param forceIntoFirstElement - If true, focus will be forced into the first element, even if
+   * focus is already in the focus zone.
    * @returns True if focus could be set to an active element, false if no operation was taken.
    */
   focus(forceIntoFirstElement?: boolean): boolean;
@@ -16,17 +22,20 @@ export interface IOverflowSet {
    * Sets focus to a specific child element within the zone. This can be used in conjunction with
    * onBeforeFocus to created delayed focus scenarios (like animate the scroll position to the correct
    * location and then focus.)
-   * @param {HTMLElement} childElement The child element within the zone to focus.
+   * @param childElement - The child element within the zone to focus.
    * @returns True if focus could be set to an active element, false if no operation was taken.
    */
   focusElement(childElement?: HTMLElement): boolean;
 }
 
-export interface IOverflowSetProps extends React.Props<OverflowSet> {
+/**
+ * {@docCategory OverflowSet}
+ */
+export interface IOverflowSetProps extends React.ClassAttributes<OverflowSetBase> {
   /**
    * Gets the component ref.
    */
-  componentRef?: (ref?: IOverflowSet | null) => void;
+  componentRef?: IRefObject<IOverflowSet>;
 
   /**
    * Class name
@@ -35,29 +44,29 @@ export interface IOverflowSetProps extends React.Props<OverflowSet> {
 
   /**
    * An array of items to be rendered by your onRenderItem function in the primary content area
-  */
+   */
   items?: IOverflowSetItemProps[];
 
   /**
    * Change item layout direction to vertical/stacked.
-   * @default false
-  */
+   * @defaultvalue false
+   */
   vertical?: boolean;
 
   /**
    * An array of items to be passed to overflow contextual menu
-  */
+   */
   overflowItems?: IOverflowSetItemProps[];
 
   /**
    * Method to call when trying to render an item.
-  */
+   */
   onRenderItem: (item: IOverflowSetItemProps) => any;
 
   /**
    * Rendering method for overflow button and contextual menu. The argument to the function is
    * the overflowItems passed in as props to this function.
-  */
+   */
   onRenderOverflowButton: IRenderFunction<any[]>;
 
   /**
@@ -77,7 +86,7 @@ export interface IOverflowSetProps extends React.Props<OverflowSet> {
 
   /**
    * The role for the OverflowSet.
-   * @default 'menubar'
+   * @defaultvalue 'menubar'
    */
   role?: string;
 
@@ -92,8 +101,34 @@ export interface IOverflowSetProps extends React.Props<OverflowSet> {
    * This is only used if your overflow set has keytips.
    */
   itemSubMenuProvider?: (item: IOverflowSetItemProps) => any[] | undefined;
+
+  /**
+   * Call to provide customized styling that will layer on top of the variant rules.
+   */
+  styles?: IStyleFunctionOrObject<IOverflowSetProps, IOverflowSetStyles>;
 }
 
+/**
+ * {@docCategory OverflowSet}
+ */
+export interface IOverflowSetStyles {
+  /** The style that is layered onto the root element of OverflowSet. */
+  root?: IStyle;
+  /** The style that is layered onto each individual item in the overflow set. */
+  item?: IStyle;
+  /** The style that is layered onto the overflow button for the overflow set. */
+  overflowButton?: IStyle;
+}
+
+/**
+ * The props needed to construct styles. This represents the simplified set of immutable things which control the class names.
+ * {@docCategory OverflowSet}
+ */
+export type IOverflowSetStyleProps = Pick<IOverflowSetProps, 'vertical' | 'className'>;
+
+/**
+ * {@docCategory OverflowSet}
+ */
 export interface IOverflowSetItemProps {
   /**
    * Unique id to identify the item.

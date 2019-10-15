@@ -3,16 +3,20 @@ import { IStyle } from '../../Styling';
 import { IRenderFunction } from '../../Utilities';
 import { IPersonaSharedProps } from '../../Persona';
 
-// Please keep alphabetized
+/**
+ * {@docCategory ActivityItem}
+ */
 export interface IActivityItemProps extends React.AllHTMLAttributes<HTMLElement> {
   /**
-   * An element describing the activity that took place. If no activityDescription, activityDescriptionText, or onRenderActivityDescription are included, no description of the activity is shown.
+   * An element describing the activity that took place. If no activityDescription, activityDescriptionText, or
+   * onRenderActivityDescription are included, no description of the activity is shown.
    */
   activityDescription?: React.ReactNode[] | React.ReactNode;
 
   /**
-   * Text describing the activity that occurred and naming the people involved in it. Deprecated, use activityDescription instead.
-   * @deprecated
+   * Text describing the activity that occurred and naming the people involved in it.
+   * Deprecated, use `activityDescription` instead.
+   * @deprecated Use `activityDescription` instead.
    */
   activityDescriptionText?: string;
 
@@ -27,20 +31,17 @@ export interface IActivityItemProps extends React.AllHTMLAttributes<HTMLElement>
   activityPersonas?: Array<IPersonaSharedProps>;
 
   /**
-   * An element containing the text of comments or @mention messages. If no comments, commentText, or onRenderComments are included, no comments are shown.
+   * An element containing the text of comments or \@mention messages.
+   * If no comments, commentText, or onRenderComments are included, no comments are shown.
    */
   comments?: React.ReactNode[] | React.ReactNode;
 
   /**
-   * Text of comments or @mention messages. Deprecated, use comments instead.
-   * @deprecated
+   * Text of comments or \@mention messages.
+   * Deprecated, use `comments` instead.
+   * @deprecated Use `comments` instead.
    */
   commentText?: string;
-
-  /**
-   * Gets ref to component interface.
-   */
-  componentRef?: () => void;
 
   /**
    * Indicated if the compact styling should be used.
@@ -90,11 +91,14 @@ export interface IActivityItemProps extends React.AllHTMLAttributes<HTMLElement>
   /**
    * Enables/Disables the beacon that radiates
    * from the center of the center of the activity icon. Signals an activity has started.
-   * @default false
+   * @defaultvalue false
    */
   animateBeaconSignal?: boolean;
 }
 
+/**
+ * {@docCategory ActivityItem}
+ */
 export interface IActivityItemStyles {
   /**
    * Styles applied to the root activity item container.

@@ -1,39 +1,20 @@
 import * as React from 'react';
-import * as ReactTestUtils from 'react-dom/test-utils';
 import * as renderer from 'react-test-renderer';
 import { mount } from 'enzyme';
-import {
-  KeyCodes
-} from '../../../Utilities';
+import { KeyCodes } from '../../../Utilities';
+import { mockEvent } from '../../../common/testUtilities';
 
 import { MaskedTextField } from './MaskedTextField';
 
 describe('MaskedTextField', () => {
-  function mockEvent(targetValue: string = ''): ReactTestUtils.SyntheticEventData {
-    const target: EventTarget = { value: targetValue } as HTMLInputElement;
-    const event: ReactTestUtils.SyntheticEventData = { target };
-
-    return event;
-  }
-
   it('renders TextField correctly', () => {
-    const component = renderer.create(
-      <MaskedTextField
-        label='With input mask'
-        mask='m\ask: (999) 999 - 9999'
-      />
-    );
+    const component = renderer.create(<MaskedTextField label="With input mask" mask="m\ask: (999) 999 - 9999" />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it('Moves caret on focus', () => {
-    const component = mount(
-      <MaskedTextField
-        label='With input mask'
-        mask='m\ask: (999) 999 - 9999'
-      />
-    );
+    const component = mount(<MaskedTextField label="With input mask" mask="m\ask: (999) 999 - 9999" />);
 
     const input = component.find('input');
     input.simulate('focus');
@@ -41,12 +22,7 @@ describe('MaskedTextField', () => {
   });
 
   it('can change single character', () => {
-    const component = mount(
-      <MaskedTextField
-        label='With input mask'
-        mask='m\ask: (999) 999 - 9999'
-      />
-    );
+    const component = mount(<MaskedTextField label="With input mask" mask="m\ask: (999) 999 - 9999" />);
 
     const input = component.find('input'),
       inputDOM = input.getDOMNode() as HTMLInputElement;
@@ -66,12 +42,7 @@ describe('MaskedTextField', () => {
   });
 
   it('can replace single character', () => {
-    const component = mount(
-      <MaskedTextField
-        label='With input mask'
-        mask='m\ask: (999) 999 - 9999'
-      />
-    );
+    const component = mount(<MaskedTextField label="With input mask" mask="m\ask: (999) 999 - 9999" />);
 
     const input = component.find('input'),
       inputDOM = input.getDOMNode() as HTMLInputElement;
@@ -91,12 +62,7 @@ describe('MaskedTextField', () => {
   });
 
   it('should ignore incorrect format characters', () => {
-    const component = mount(
-      <MaskedTextField
-        label='With input mask'
-        mask='m\ask: (999) 999 - 9999'
-      />
-    );
+    const component = mount(<MaskedTextField label="With input mask" mask="m\ask: (999) 999 - 9999" />);
 
     const input = component.find('input'),
       inputDOM = input.getDOMNode() as HTMLInputElement;
@@ -116,13 +82,7 @@ describe('MaskedTextField', () => {
   });
 
   it('should backspace', () => {
-    const component = mount(
-      <MaskedTextField
-        label='With input mask'
-        mask='m\ask: (999) 999 - 9999'
-        value='123-456-7890'
-      />
-    );
+    const component = mount(<MaskedTextField label="With input mask" mask="m\ask: (999) 999 - 9999" value="123-456-7890" />);
 
     const input = component.find('input'),
       inputDOM = input.getDOMNode() as HTMLInputElement;
@@ -136,13 +96,7 @@ describe('MaskedTextField', () => {
   });
 
   it('should delete', () => {
-    const component = mount(
-      <MaskedTextField
-        label='With input mask'
-        mask='m\ask: (999) 999 - 9999'
-        value='123-456-7890'
-      />
-    );
+    const component = mount(<MaskedTextField label="With input mask" mask="m\ask: (999) 999 - 9999" value="123-456-7890" />);
 
     const input = component.find('input'),
       inputDOM = input.getDOMNode() as HTMLInputElement;
@@ -156,13 +110,7 @@ describe('MaskedTextField', () => {
   });
 
   it('should ctrl backspace', () => {
-    const component = mount(
-      <MaskedTextField
-        label='With input mask'
-        mask='m\ask: (999) 999 - 9999'
-        value='123-456-7890'
-      />
-    );
+    const component = mount(<MaskedTextField label="With input mask" mask="m\ask: (999) 999 - 9999" value="123-456-7890" />);
 
     const input = component.find('input'),
       inputDOM = input.getDOMNode() as HTMLInputElement;
@@ -177,13 +125,7 @@ describe('MaskedTextField', () => {
   });
 
   it('should ctrl delete', () => {
-    const component = mount(
-      <MaskedTextField
-        label='With input mask'
-        mask='m\ask: (999) 999 - 9999'
-        value='123-456-7890'
-      />
-    );
+    const component = mount(<MaskedTextField label="With input mask" mask="m\ask: (999) 999 - 9999" value="123-456-7890" />);
 
     const input = component.find('input'),
       inputDOM = input.getDOMNode() as HTMLInputElement;
@@ -197,13 +139,7 @@ describe('MaskedTextField', () => {
   });
 
   it('should backspace and delete selections', () => {
-    const component = mount(
-      <MaskedTextField
-        label='With input mask'
-        mask='m\ask: (999) 999 - 9999'
-        value='123-456-7890'
-      />
-    );
+    const component = mount(<MaskedTextField label="With input mask" mask="m\ask: (999) 999 - 9999" value="123-456-7890" />);
 
     const input = component.find('input'),
       inputDOM = input.getDOMNode() as HTMLInputElement;
@@ -225,13 +161,7 @@ describe('MaskedTextField', () => {
   });
 
   it('should paste characters', () => {
-    const component = mount(
-      <MaskedTextField
-        label='With input mask'
-        mask='m\ask: (999) 999 - 9999'
-        value='123-456-7890'
-      />
-    );
+    const component = mount(<MaskedTextField label="With input mask" mask="m\ask: (999) 999 - 9999" value="123-456-7890" />);
 
     const input = component.find('input'),
       inputDOM = input.getDOMNode() as HTMLInputElement;
@@ -257,13 +187,7 @@ describe('MaskedTextField', () => {
   });
 
   it('should paste over selected characters', () => {
-    const component = mount(
-      <MaskedTextField
-        label='With input mask'
-        mask='m\ask: (999) 999 - 9999'
-        value='123-456-7890'
-      />
-    );
+    const component = mount(<MaskedTextField label="With input mask" mask="m\ask: (999) 999 - 9999" value="123-456-7890" />);
 
     const input = component.find('input'),
       inputDOM = input.getDOMNode() as HTMLInputElement;
@@ -283,13 +207,7 @@ describe('MaskedTextField', () => {
   });
 
   it('should replace selected text a char added', () => {
-    const component = mount(
-      <MaskedTextField
-        label='With input mask'
-        mask='m\ask: (999) 999 - 9999'
-        value='123-456-7890'
-      />
-    );
+    const component = mount(<MaskedTextField label="With input mask" mask="m\ask: (999) 999 - 9999" value="123-456-7890" />);
 
     const input = component.find('input'),
       inputDOM = input.getDOMNode() as HTMLInputElement;
@@ -311,11 +229,14 @@ describe('MaskedTextField', () => {
   });
 
   it('should ignore overflowed characters', () => {
+    let onChangeValue;
     const component = mount(
       <MaskedTextField
-        label='With input mask'
-        mask='m\ask: (999) 999 - 9999'
-        value='123-456-7890'
+        // tslint:disable-next-line jsx-no-lambda
+        onChange={(ev, newValue) => (onChangeValue = newValue)}
+        label="With input mask"
+        mask="m\ask: (999) 999 - 9999"
+        value="123-456-7890"
       />
     );
 
@@ -328,6 +249,20 @@ describe('MaskedTextField', () => {
     input.simulate('keyDown', { keyCode: KeyCodes.one });
     inputDOM.setSelectionRange(23, 23);
     input.simulate('change', mockEvent('mask: (123) 456 - 78901'));
+    expect(inputDOM.value).toEqual('mask: (123) 456 - 7890');
+    expect(onChangeValue).toEqual('mask: (123) 456 - 7890');
+  });
+
+  it('should update the value when controlled', () => {
+    const value = '';
+    const component = mount(<MaskedTextField label="With input mask" mask="m\ask: (999) 999 - 9999" value={value} />);
+
+    const input = component.find('input');
+    const inputDOM = input.getDOMNode() as HTMLInputElement;
+
+    expect(inputDOM.value).toEqual('mask: (___) ___ - ____');
+
+    component.setProps({ value: '1234567890' });
     expect(inputDOM.value).toEqual('mask: (123) 456 - 7890');
   });
 });

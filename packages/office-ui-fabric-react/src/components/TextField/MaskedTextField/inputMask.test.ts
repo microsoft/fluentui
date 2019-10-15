@@ -22,7 +22,7 @@ const values: IMaskValue[] = [
   { value: undefined, format: /[0-9]/, displayIndex: 31 },
   { value: undefined, format: /[0-9]/, displayIndex: 32 },
   { value: undefined, format: /[0-9]/, displayIndex: 33 },
-  { value: undefined, format: /[0-9]/, displayIndex: 34 },
+  { value: undefined, format: /[0-9]/, displayIndex: 34 }
 ];
 
 function resetValues(charData: IMaskValue[], maxIndex: number = Infinity): void {
@@ -63,7 +63,7 @@ describe('inputMask', () => {
     expect(result).toEqual('Phone number mask: (');
   });
 
-  it('generated displayedMask doesn\'t render escape codes', () => {
+  it("generated displayedMask doesn't render escape codes", () => {
     const maskString = 'Esc\\aped Ch\\ar\\acters: (999) 999 - 9999';
     const maskValues = parseMask(maskString);
 
@@ -156,5 +156,17 @@ describe('inputMask', () => {
     expect(values[6].value).toEqual('9');
     expect(values[7].value).toEqual('8');
     expect(result).toEqual(33);
+  });
+
+  it('insertString will keep index at the end even if the value is entered passed the end', () => {
+    const maskedValues = [
+      { value: '1', format: /[0-9]/, displayIndex: 0 },
+      { value: '2', format: /[0-9]/, displayIndex: 1 },
+      { value: '3', format: /[0-9]/, displayIndex: 2 }
+    ];
+
+    const result = insertString(maskedValues, 3, '1');
+
+    expect(result).toEqual(3);
   });
 });

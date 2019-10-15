@@ -3,7 +3,7 @@
 - Provide concise helper text that specifies what content is expected to be entered.
 - Provide all appropriate states for the control (static, hover, focus, engaged, unavailable, error).
 - When part of a form, provide clear designations for which fields are required vs. optional.
-- Provide all appropriate methods for submitting provided data (onEnter or a dedicated ‘Submit’ button).
+- Provide all appropriate methods for submitting provided data (e.g. dedicated ‘Submit’ button).
 - Provide all appropriate methods of clearing provided data (‘X’ or something similar).
 - Allow for selection, copy and paste of field data.
 - Whenever possible, format TextField relative to the expected entry (4-digit PIN, 10-digit phone number (3 separate fields), etc).

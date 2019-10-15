@@ -1,15 +1,16 @@
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
-import {
-  ITheme,
-  IStyle,
-} from '../../Styling';
-import { IComponentAs, IStyleFunctionOrObject } from '../../Utilities';
+import { ITheme, IStyle } from '../../Styling';
+import { IRefObject, IComponentAs, IStyleFunctionOrObject } from '../../Utilities';
 
-export interface ILabel {
+/**
+ * {@docCategory Label}
+ */
+export interface ILabel {}
 
-}
-
+/**
+ * {@docCategory Label}
+ */
 export interface ILabelProps extends React.LabelHTMLAttributes<HTMLLabelElement> {
   /**
    * Render the root element as another type.
@@ -20,7 +21,7 @@ export interface ILabelProps extends React.LabelHTMLAttributes<HTMLLabelElement>
    * Optional callback to access the ILabel interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: ILabel | null) => void;
+  componentRef?: IRefObject<ILabel>;
 
   /**
    * Whether the associated form field is required or not
@@ -44,6 +45,9 @@ export interface ILabelProps extends React.LabelHTMLAttributes<HTMLLabelElement>
   styles?: IStyleFunctionOrObject<ILabelStyleProps, ILabelStyles>;
 }
 
+/**
+ * {@docCategory Label}
+ */
 export interface ILabelStyles {
   /**
    * Styles for the root element.
@@ -51,6 +55,9 @@ export interface ILabelStyles {
   root: IStyle;
 }
 
+/**
+ * {@docCategory Label}
+ */
 export interface ILabelStyleProps {
   /**
    *

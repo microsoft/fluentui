@@ -58,17 +58,20 @@ export function createArray<T>(size: number, getItem: (index: number) => T): T[]
  * @public
  * @param items - The array to convert
  * @param columnCount - The number of columns for the resulting matrix
- * @returns {any[][]} - A matrix of items
+ * @returns A matrix of items
  */
 export function toMatrix<T>(items: T[], columnCount: number): T[][] {
-  return items.reduce((rows: T[][], currentValue: T, index: number) => {
-    if (index % columnCount === 0) {
-      rows.push([currentValue]);
-    } else {
-      rows[rows.length - 1].push(currentValue);
-    }
-    return rows;
-  }, [] as T[][]);
+  return items.reduce(
+    (rows: T[][], currentValue: T, index: number) => {
+      if (index % columnCount === 0) {
+        rows.push([currentValue]);
+      } else {
+        rows[rows.length - 1].push(currentValue);
+      }
+      return rows;
+    },
+    [] as T[][]
+  );
 }
 
 /**
@@ -119,7 +122,7 @@ export function flatten<T>(array: (T | T[])[]): T[] {
  *
  * @param array1 - First array to compare
  * @param array2 - Second array to compare
- * @returns {boolean} True if the arrays are the same length and have the same values in the same positions, false otherwise.
+ * @returns True if the arrays are the same length and have the same values in the same positions, false otherwise.
  */
 export function arraysEqual<T>(array1: T[], array2: T[]): boolean {
   if (array1.length !== array2.length) {

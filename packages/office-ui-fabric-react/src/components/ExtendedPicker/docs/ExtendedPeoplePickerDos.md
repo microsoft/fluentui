@@ -1,0 +1,3 @@
+- Use the ExtendedPeoplePicker to quickly search for a few people
+- Use the ExtendedPeoplePicker to manage a group of people
+- Use defaultSelectedItems when some people have already been selected

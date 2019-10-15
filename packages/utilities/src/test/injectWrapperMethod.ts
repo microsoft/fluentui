@@ -15,7 +15,7 @@ export function injectWrapperMethod(wrapper: ReactWrapper<{}, {}>, methodName: s
   }
 
   // tslint:disable-next-line:no-any
-  (wrapper.instance() as any)[methodName] = function (prevProps: any): void {
+  (wrapper.instance() as any)[methodName] = function(prevProps: any): void {
     fn();
     originalMethod.call(this, prevProps);
   };

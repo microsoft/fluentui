@@ -1,11 +1,17 @@
-import { autobind } from '../../../Utilities';
-import { ISuggestionModel } from '../../../Pickers';
+import { ISuggestionModel, ITag } from '../../../Pickers';
+import { IPersonaProps } from '../../../Persona';
+
+export type SuggestionsStoreOptions<T> = {
+  getAriaLabel?: (item: T) => string;
+};
 
 export class SuggestionsStore<T> {
   public suggestions: ISuggestionModel<T>[];
+  private getAriaLabel?: (item: T) => string;
 
-  constructor() {
+  constructor(options?: SuggestionsStoreOptions<T>) {
     this.suggestions = [];
+    this.getAriaLabel = options && options.getAriaLabel;
   }
 
   public updateSuggestions(newSuggestions: T[]): void {
@@ -29,31 +35,26 @@ export class SuggestionsStore<T> {
   }
 
   public convertSuggestionsToSuggestionItems(suggestions: Array<ISuggestionModel<T> | T>): ISuggestionModel<T>[] {
-    return Array.isArray(suggestions)
-      ? suggestions.map(this._ensureSuggestionModel)
-      : [];
+    return Array.isArray(suggestions) ? suggestions.map(this._ensureSuggestionModel) : [];
   }
 
-  @autobind
-  private _isSuggestionModel(
-    value: ISuggestionModel<T> | T
-    ): value is ISuggestionModel<T> {
+  private _isSuggestionModel = (value: ISuggestionModel<T> | T): value is ISuggestionModel<T> => {
     return (<ISuggestionModel<T>>value).item !== undefined;
-  }
+  };
 
-  @autobind
-  private _ensureSuggestionModel(
-    suggestion: ISuggestionModel<T> | T
-    ): ISuggestionModel<T> {
+  private _ensureSuggestionModel = (suggestion: ISuggestionModel<T> | T): ISuggestionModel<T> => {
     if (this._isSuggestionModel(suggestion)) {
-      return suggestion as ISuggestionModel<T>;
+      return suggestion;
     } else {
       return {
         item: suggestion,
         selected: false,
-        // tslint:disable-next-line:no-any
-        ariaLabel: (<any>suggestion).name || (<any>suggestion).primaryText
-      } as ISuggestionModel<T>;
+        ariaLabel:
+          this.getAriaLabel !== undefined
+            ? this.getAriaLabel(suggestion)
+            : // tslint:disable-next-line:no-any
+              ((suggestion as any) as ITag).name || (<IPersonaProps>suggestion).primaryText
+      };
     }
-  }
+  };
 }

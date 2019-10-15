@@ -1,12 +1,5 @@
 import { IKeytipProps } from '../../Keytip';
-import {
-  arraysEqual,
-  replaceElement,
-  findIndex,
-  find,
-  EventGroup,
-  getId
-} from '../../Utilities';
+import { arraysEqual, replaceElement, findIndex, find, EventGroup, getId } from '../../Utilities';
 import { KeytipEvents } from '../../utilities/keytips/KeytipConstants';
 
 export interface IUniqueKeytip {

@@ -1,6 +1,6 @@
 import { EventGroup } from './EventGroup';
 import { findScrollableParent } from './scroll';
-import { getRect } from './dom';
+import { getRect } from './dom/getRect';
 import { IRectangle } from './IRectangle';
 
 declare function setTimeout(cb: Function, delay: number): number;
@@ -16,6 +16,7 @@ const MAX_SCROLL_VELOCITY = 15;
  * Once you don't want autoscroll any more, just dispose the helper and it will unhook events.
  *
  * @public
+ * {@docCategory AutoScroll}
  */
 export class AutoScroll {
   private _events: EventGroup;
@@ -32,7 +33,7 @@ export class AutoScroll {
     this._scrollRect = getRect(this._scrollableParent);
 
     // tslint:disable-next-line:no-any
-    if (this._scrollableParent === window as any) {
+    if (this._scrollableParent === (window as any)) {
       this._scrollableParent = document.body;
     }
 
@@ -65,16 +66,13 @@ export class AutoScroll {
     let scrollRectTop = this._scrollRect.top;
     let scrollClientBottom = scrollRectTop + this._scrollRect.height - SCROLL_GUTTER_HEIGHT;
 
-    if (clientY < (scrollRectTop + SCROLL_GUTTER_HEIGHT)) {
+    if (clientY < scrollRectTop + SCROLL_GUTTER_HEIGHT) {
       this._scrollVelocity = Math.max(
         -MAX_SCROLL_VELOCITY,
-        -MAX_SCROLL_VELOCITY * ((SCROLL_GUTTER_HEIGHT - (clientY - scrollRectTop)) / SCROLL_GUTTER_HEIGHT
-        ));
+        -MAX_SCROLL_VELOCITY * ((SCROLL_GUTTER_HEIGHT - (clientY - scrollRectTop)) / SCROLL_GUTTER_HEIGHT)
+      );
     } else if (clientY > scrollClientBottom) {
-      this._scrollVelocity = Math.min(
-        MAX_SCROLL_VELOCITY,
-        MAX_SCROLL_VELOCITY * ((clientY - scrollClientBottom) / SCROLL_GUTTER_HEIGHT
-        ));
+      this._scrollVelocity = Math.min(MAX_SCROLL_VELOCITY, MAX_SCROLL_VELOCITY * ((clientY - scrollClientBottom) / SCROLL_GUTTER_HEIGHT));
     } else {
       this._scrollVelocity = 0;
     }

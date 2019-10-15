@@ -7,5 +7,5 @@ import { serializeRuleEntries } from './styleToClassName';
  * @public
  */
 export function fontFace(font: IFontFace): void {
-  Stylesheet.getInstance().insertRule(`@font-face{${serializeRuleEntries(font as {})}}`);
+  Stylesheet.getInstance().insertRule(`@font-face{${serializeRuleEntries(font as {})}}`, true);
 }

@@ -1,8 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ComboBox Renders ComboBox correctly 1`] = `
+exports[`ComboBox Renders correctly 1`] = `
 <div
-  autoComplete="on"
   className="ms-ComboBox-container "
 >
   <div
@@ -40,9 +39,6 @@ exports[`ComboBox Renders ComboBox correctly 1`] = `
           display: inline-block;
           margin-bottom: 8px;
         }
-        & input::-ms-clear {
-          display: none;
-        }
         &.is-open {
           border-color: #0078d4;
         }
@@ -61,7 +57,19 @@ exports[`ComboBox Renders ComboBox correctly 1`] = `
           top: -2px;
         }
         &:hover {
-          border-color: #212121;
+          border-color: #333333;
+        }
+        &:hover .ms-ComboBox-Input {
+          color: #212121;
+        }
+        &:hover .ms-ComboBox-Input::placeholder {
+          color: #333333;
+        }
+        &:hover .ms-ComboBox-Input:-ms-input-placeholder {
+          color: #333333;
+        }
+        &:hover .ms-ComboBox-Input::-ms-input-placeholder {
+          color: #333333;
         }
         @media screen and (-ms-high-contrast: active){&:hover {
           -ms-high-contrast-adjust: none;
@@ -103,26 +111,20 @@ exports[`ComboBox Renders ComboBox correctly 1`] = `
           right: -2px;
           top: -2px;
         }
-    data-ktp-target={undefined}
     id="ComboBox0wrapper"
   >
     <input
-      aria-activedescendant={undefined}
       aria-autocomplete="both"
-      aria-describedby="ComboBox0-option"
-      aria-disabled={undefined}
       aria-expanded={false}
-      aria-label={undefined}
-      aria-labelledby={undefined}
-      aria-owns="ComboBox0-list"
-      aria-readonly="true"
       autoCapitalize="off"
       autoComplete="off"
       className=
           ms-ComboBox-Input
           {
+            background-color: #ffffff;
             border-style: none;
             box-sizing: border-box;
+            color: #333333;
             font: inherit;
             height: 28px;
             outline: none;
@@ -133,8 +135,19 @@ exports[`ComboBox Renders ComboBox correctly 1`] = `
             text-overflow: ellipsis;
             width: 100%;
           }
+          &::placeholder {
+            color: #666666;
+          }
+          &:-ms-input-placeholder {
+            color: #666666;
+          }
+          &::-ms-input-placeholder {
+            color: #666666;
+          }
+          &::-ms-clear {
+            display: none;
+          }
       data-is-interactable={true}
-      data-ktp-execute-target={undefined}
       data-lpignore={true}
       id="ComboBox0-input"
       onBlur={[Function]}
@@ -150,17 +163,11 @@ exports[`ComboBox Renders ComboBox correctly 1`] = `
       readOnly={true}
       role="combobox"
       spellCheck={false}
-      title={undefined}
       type="text"
       value="testValue"
     />
     <button
-      aria-describedby={null}
       aria-hidden={true}
-      aria-label={undefined}
-      aria-labelledby={null}
-      aria-pressed={false}
-      checked={false}
       className=
           ms-Button
           ms-Button--icon
@@ -170,7 +177,7 @@ exports[`ComboBox Renders ComboBox correctly 1`] = `
             -webkit-font-smoothing: antialiased;
             background-color: transparent;
             border-radius: 0px;
-            border: 1px solid transparent;
+            border: none;
             box-sizing: border-box;
             color: #666666;
             cursor: default;
@@ -180,6 +187,10 @@ exports[`ComboBox Renders ComboBox correctly 1`] = `
             font-weight: 400;
             height: 32px;
             line-height: 30px;
+            margin-bottom: 0px;
+            margin-left: 0px;
+            margin-right: 0px;
+            margin-top: 0px;
             outline: transparent;
             padding-bottom: 0;
             padding-left: 4px;
@@ -216,6 +227,11 @@ exports[`ComboBox Renders ComboBox correctly 1`] = `
             right: -2px;
             top: -2px;
           }
+          &:active > * {
+            left: 0px;
+            position: relative;
+            top: 0px;
+          }
           @media screen and (-ms-high-contrast: active){& {
             -ms-high-contrast-adjust: none;
             background-color: ButtonFace;
@@ -236,8 +252,13 @@ exports[`ComboBox Renders ComboBox correctly 1`] = `
             color: #212121;
           }
       data-is-focusable={false}
-      disabled={undefined}
+      onBlur={[Function]}
       onClick={[Function]}
+      onKeyDown={[Function]}
+      onKeyPress={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseUp={[Function]}
       role="presentation"
       tabIndex={-1}
       type="button"
@@ -287,9 +308,8 @@ exports[`ComboBox Renders ComboBox correctly 1`] = `
 </div>
 `;
 
-exports[`ComboBox renders a ComboBox with a Keytip correctly 1`] = `
+exports[`ComboBox renders with a Keytip correctly 1`] = `
 <div
-  autoComplete="on"
   className="ms-ComboBox-container "
 >
   <div
@@ -327,9 +347,6 @@ exports[`ComboBox renders a ComboBox with a Keytip correctly 1`] = `
           display: inline-block;
           margin-bottom: 8px;
         }
-        & input::-ms-clear {
-          display: none;
-        }
         &.is-open {
           border-color: #0078d4;
         }
@@ -348,7 +365,19 @@ exports[`ComboBox renders a ComboBox with a Keytip correctly 1`] = `
           top: -2px;
         }
         &:hover {
-          border-color: #212121;
+          border-color: #333333;
+        }
+        &:hover .ms-ComboBox-Input {
+          color: #212121;
+        }
+        &:hover .ms-ComboBox-Input::placeholder {
+          color: #333333;
+        }
+        &:hover .ms-ComboBox-Input:-ms-input-placeholder {
+          color: #333333;
+        }
+        &:hover .ms-ComboBox-Input::-ms-input-placeholder {
+          color: #333333;
         }
         @media screen and (-ms-high-contrast: active){&:hover {
           -ms-high-contrast-adjust: none;
@@ -394,22 +423,18 @@ exports[`ComboBox renders a ComboBox with a Keytip correctly 1`] = `
     id="ComboBox4wrapper"
   >
     <input
-      aria-activedescendant={undefined}
       aria-autocomplete="both"
-      aria-describedby="ComboBox4-option ktp-layer-id ktp-a"
-      aria-disabled={undefined}
+      aria-describedby="ktp-layer-id ktp-a"
       aria-expanded={false}
-      aria-label={undefined}
-      aria-labelledby={undefined}
-      aria-owns="ComboBox4-list"
-      aria-readonly="true"
       autoCapitalize="off"
       autoComplete="off"
       className=
           ms-ComboBox-Input
           {
+            background-color: #ffffff;
             border-style: none;
             box-sizing: border-box;
+            color: #333333;
             font: inherit;
             height: 28px;
             outline: none;
@@ -419,6 +444,18 @@ exports[`ComboBox renders a ComboBox with a Keytip correctly 1`] = `
             padding-top: 0;
             text-overflow: ellipsis;
             width: 100%;
+          }
+          &::placeholder {
+            color: #666666;
+          }
+          &:-ms-input-placeholder {
+            color: #666666;
+          }
+          &::-ms-input-placeholder {
+            color: #666666;
+          }
+          &::-ms-clear {
+            display: none;
           }
       data-is-interactable={true}
       data-ktp-execute-target="ktp-a"
@@ -437,17 +474,11 @@ exports[`ComboBox renders a ComboBox with a Keytip correctly 1`] = `
       readOnly={true}
       role="combobox"
       spellCheck={false}
-      title={undefined}
       type="text"
       value=""
     />
     <button
-      aria-describedby={null}
       aria-hidden={true}
-      aria-label={undefined}
-      aria-labelledby={null}
-      aria-pressed={false}
-      checked={false}
       className=
           ms-Button
           ms-Button--icon
@@ -457,7 +488,7 @@ exports[`ComboBox renders a ComboBox with a Keytip correctly 1`] = `
             -webkit-font-smoothing: antialiased;
             background-color: transparent;
             border-radius: 0px;
-            border: 1px solid transparent;
+            border: none;
             box-sizing: border-box;
             color: #666666;
             cursor: default;
@@ -467,6 +498,10 @@ exports[`ComboBox renders a ComboBox with a Keytip correctly 1`] = `
             font-weight: 400;
             height: 32px;
             line-height: 30px;
+            margin-bottom: 0px;
+            margin-left: 0px;
+            margin-right: 0px;
+            margin-top: 0px;
             outline: transparent;
             padding-bottom: 0;
             padding-left: 4px;
@@ -503,6 +538,11 @@ exports[`ComboBox renders a ComboBox with a Keytip correctly 1`] = `
             right: -2px;
             top: -2px;
           }
+          &:active > * {
+            left: 0px;
+            position: relative;
+            top: 0px;
+          }
           @media screen and (-ms-high-contrast: active){& {
             -ms-high-contrast-adjust: none;
             background-color: ButtonFace;
@@ -523,8 +563,13 @@ exports[`ComboBox renders a ComboBox with a Keytip correctly 1`] = `
             color: #212121;
           }
       data-is-focusable={false}
-      disabled={undefined}
+      onBlur={[Function]}
       onClick={[Function]}
+      onKeyDown={[Function]}
+      onKeyPress={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseUp={[Function]}
       role="presentation"
       tabIndex={-1}
       type="button"

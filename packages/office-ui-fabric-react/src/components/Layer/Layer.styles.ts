@@ -4,23 +4,18 @@ import { ZIndexes, getGlobalClassNames } from '../../Styling';
 const GlobalClassNames = {
   root: 'ms-Layer',
   rootNoHost: 'ms-Layer--fixed',
-  content: 'ms-Layer-content',
+  content: 'ms-Layer-content'
 };
 
-export const getStyles = (
-  props: ILayerStyleProps
-): ILayerStyles => {
-  const {
-    className,
-    isNotHost,
-    theme
-  } = props;
+export const getStyles = (props: ILayerStyleProps): ILayerStyles => {
+  const { className, isNotHost, theme } = props;
 
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
-  return ({
+  return {
     root: [
       classNames.root,
+      theme.fonts.medium,
       isNotHost && [
         classNames.rootNoHost,
         {
@@ -28,8 +23,8 @@ export const getStyles = (
           zIndex: ZIndexes.Layer,
           top: 0,
           left: 0,
-          width: '100vw',
-          height: '100vh',
+          bottom: 0,
+          right: 0,
           visibility: 'hidden'
         }
       ],
@@ -41,5 +36,5 @@ export const getStyles = (
         visibility: 'visible'
       }
     ]
-  });
+  };
 };

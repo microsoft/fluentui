@@ -1,6 +1,98 @@
 # Change Log - @uifabric/jest-serializer-merge-styles
 
-This log was last generated on Mon, 21 May 2018 10:29:16 GMT and should not be manually modified.
+This log was last generated on Wed, 04 Sep 2019 12:24:13 GMT and should not be manually modified.
+
+## 6.0.13
+Wed, 04 Sep 2019 12:24:13 GMT
+
+### Patches
+
+- reset version files to correct version (kchau@microsoft.com)
+## 6.0.12
+Mon, 22 Jul 2019 12:21:49 GMT
+
+### Patches
+
+- Adding @types/react and @types/react-dom to package.json that have peer dependencies on react and react-dom (backport of #9798).
+
+## 6.0.11
+Wed, 12 Jun 2019 22:15:55 GMT
+
+### Patches
+
+- Package bump to resolve conflicts.
+
+## 6.0.9
+Tue, 14 May 2019 07:50:30 GMT
+
+### Patches
+
+- Update Fabric assets link
+
+## 6.0.8
+Tue, 02 Apr 2019 00:38:15 GMT
+
+### Patches
+
+- Use ^ ranges instead of >=
+
+## 6.0.7
+Tue, 15 Jan 2019 13:36:45 GMT
+
+### Patches
+
+- Keyframes no longer cause merge-styles jest serialization to throw an exception.
+
+## 6.0.6
+Mon, 08 Oct 2018 12:24:15 GMT
+
+### Patches
+
+- Moving tslint/prettier dependencies 
+
+## 6.0.5
+Fri, 21 Sep 2018 14:25:46 GMT
+
+### Patches
+
+- Adding a version stamp file
+
+## 6.0.4
+Tue, 14 Aug 2018 10:27:33 GMT
+
+### Patches
+
+- disabling codepen task
+
+## 6.0.3
+Thu, 14 Jun 2018 20:52:57 GMT
+
+### Patches
+
+- Fix broken documentation links
+
+## 6.0.0
+Tue, 05 Jun 2018 00:44:30 GMT
+
+### Breaking changes
+
+- Major bump to 6.0 to be in line with rest of OUFR v6 packages.
+
+### Patches
+
+- Added Prettier
+
+## 5.2.3
+Mon, 04 Jun 2018 10:16:13 GMT
+
+### Patches
+
+- Updating react typings.
+
+## 5.2.2
+Wed, 30 May 2018 22:05:03 GMT
+
+*Version update only*
 
 ## 5.2.1
 Mon, 21 May 2018 10:29:16 GMT

@@ -1,14 +1,18 @@
 import * as React from 'react';
 import { IStyle, ITheme } from '../../Styling';
-import { IComponentAs, IStyleFunctionOrObject } from '../../Utilities';
+import { IRefObject, IComponentAs, IStyleFunctionOrObject } from '../../Utilities';
 import { IKeytipProps } from '../../Keytip';
 
+/**
+ * {@docCategory Toggle}
+ */
 export interface IToggle {
   focus: () => void;
 }
 
 /**
  * Toggle component props.
+ * {@docCategory Toggle}
  */
 export interface IToggleProps extends React.HTMLAttributes<HTMLElement> {
   /**
@@ -20,40 +24,47 @@ export interface IToggleProps extends React.HTMLAttributes<HTMLElement> {
    * Optional callback to access the IToggle interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: IToggle | null) => void;
+  componentRef?: IRefObject<IToggle>;
 
   /**
    * A label for the toggle.
    */
-  label?: string;
+  label?: string | JSX.Element;
 
   /**
    * Text to display when toggle is ON.
+   * Caution: when not providing on/off text user may get confused in differentiating the on/off states of the toggle.
    */
   onText?: string;
 
   /**
    * Text to display when toggle is OFF.
+   * Caution: when not providing on/off text user may get confused in differentiating the on/off states of the toggle.
    */
   offText?: string;
 
   /**
-   * Text for screen-reader to announce when toggle is ON.
+   * Text for screen-reader to announce as the name of the toggle.
+   */
+  ariaLabel?: string;
+
+  /**
+   * @deprecated Use `ariaLabel` for name, and let the metadata convey state
    */
   onAriaLabel?: string;
 
   /**
-   * Text for screen-reader to announce when toggle is OFF.
+   * @deprecated Use `ariaLabel` for name, and let the metadata convey state
    */
   offAriaLabel?: string;
 
   /**
-   * Checked state of the toggle. If you are maintaining state yourself, use this property. Otherwise refer to 'defaultChecked'.
+   * Checked state of the toggle. If you are maintaining state yourself, use this property. Otherwise refer to `defaultChecked`.
    */
   checked?: boolean;
 
   /**
-   * Initial state of the toggle. If you want the toggle to maintain its own state, use this. Otherwise refer to 'checked'.
+   * Initial state of the toggle. If you want the toggle to maintain its own state, use this. Otherwise refer to `checked`.
    */
   defaultChecked?: boolean;
 
@@ -63,7 +74,19 @@ export interface IToggleProps extends React.HTMLAttributes<HTMLElement> {
   disabled?: boolean;
 
   /**
-   * onchange callback.
+   * Whether the label (not the onText/offText) should be positioned inline with the toggle control.
+   * Left (right in RTL) side when on/off text provided VS right (left in RTL) side when no on/off text.
+   * Caution: when not providing on/off text user may get confused in differentiating the on/off states of the toggle.
+   */
+  inlineLabel?: boolean;
+
+  /**
+   * Callback issued when the value changes.
+   */
+  onChange?: (event: React.MouseEvent<HTMLElement>, checked?: boolean) => void;
+
+  /**
+   * @deprecated Use `onChange` instead.
    */
   onChanged?: (checked: boolean) => void;
 
@@ -85,6 +108,7 @@ export interface IToggleProps extends React.HTMLAttributes<HTMLElement> {
 
 /**
  * Properties required to build the styles for the Toggle component.
+ * {@docCategory Toggle}
  */
 export interface IToggleStyleProps {
   /**
@@ -106,10 +130,21 @@ export interface IToggleStyleProps {
    * Component is checked.
    */
   checked?: boolean;
+
+  /**
+   * Whether label should be positioned inline with the toggle.
+   */
+  inlineLabel?: boolean;
+
+  /**
+   * Whether the user did not specify a on/off text. Influencing only when inlineLabel is used.
+   */
+  onOffMissing?: boolean;
 }
 
 /**
  * Styles for the Toggle component.
+ * {@docCategory Toggle}
  */
 export interface IToggleStyles {
   /** Root element. */

@@ -1,12 +1,7 @@
-import {
-  fontFace,
-  IFontWeight
-} from '@uifabric/merge-styles';
-import {
-  IFontStyles
-} from '../interfaces/index';
+import { fontFace, IFontWeight } from '@uifabric/merge-styles';
+import { IFontStyles } from '../interfaces/index';
 import { createFontStyles, FontWeights, LocalizedFontFamilies, LocalizedFontNames } from './fonts';
-import { getLanguage } from '@uifabric/utilities';
+import { getLanguage, getWindow } from '@uifabric/utilities';
 import { IFabricConfig } from '../interfaces/IFabricConfig';
 
 // Default urls.
@@ -15,22 +10,14 @@ const DefaultBaseUrl = 'https://static2.sharepointonline.com/files/fabric/assets
 // Standard font styling.
 export const DefaultFontStyles: IFontStyles = createFontStyles(getLanguage());
 
-function _registerFontFace(
-  fontFamily: string,
-  url: string,
-  fontWeight?: IFontWeight,
-  localFontName?: string
-): void {
+function _registerFontFace(fontFamily: string, url: string, fontWeight?: IFontWeight, localFontName?: string): void {
   fontFamily = `'${fontFamily}'`;
 
   const localFontSrc = localFontName !== undefined ? `local('${localFontName}'),` : '';
 
   fontFace({
     fontFamily,
-    src:
-      localFontSrc +
-      `url('${url}.woff2') format('woff2'),` +
-      `url('${url}.woff') format('woff')`,
+    src: localFontSrc + `url('${url}.woff2') format('woff2'),` + `url('${url}.woff') format('woff')`,
     fontWeight,
     fontStyle: 'normal'
   });
@@ -80,12 +67,12 @@ export function registerDefaultFontFaces(baseUrl: string): void {
  * Reads the fontBaseUrl from window.FabricConfig.fontBaseUrl or falls back to a default.
  */
 function _getFontBaseUrl(): string {
-  let win = typeof window !== 'undefined' ? window : undefined;
+  let win = getWindow();
 
   // tslint:disable-next-line:no-string-literal no-any
   let fabricConfig: IFabricConfig = win ? win['FabricConfig'] : undefined;
 
-  return (fabricConfig && fabricConfig.fontBaseUrl !== undefined) ? fabricConfig.fontBaseUrl : DefaultBaseUrl;
+  return fabricConfig && fabricConfig.fontBaseUrl !== undefined ? fabricConfig.fontBaseUrl : DefaultBaseUrl;
 }
 
 /**

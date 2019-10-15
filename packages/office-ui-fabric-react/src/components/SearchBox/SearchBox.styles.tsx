@@ -1,13 +1,16 @@
-import {
-  HighContrastSelector,
-  AnimationVariables,
-  normalize
-} from '../../Styling';
+import { HighContrastSelector, AnimationVariables, normalize, IStyle } from '../../Styling';
 import { ISearchBoxStyleProps, ISearchBoxStyles } from './SearchBox.types';
+import { getPlaceholderStyles } from '@uifabric/styling';
 
 export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
   const { theme, underlined, disabled, hasFocus, className, hasInput, disableAnimation } = props;
   const { palette, fonts, semanticColors } = theme;
+
+  // placeholder style constants
+  const placeholderStyles: IStyle = {
+    color: semanticColors.inputPlaceholderText,
+    opacity: 1
+  };
 
   return {
     root: [
@@ -16,6 +19,7 @@ export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
       normalize,
       {
         color: palette.neutralPrimary,
+        backgroundColor: semanticColors.inputBackground,
         display: 'flex',
         flexDirection: 'row',
         flexWrap: 'nowrap',
@@ -47,7 +51,7 @@ export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
           borderColor: palette.themePrimary,
           selectors: {
             ':hover': {
-              borderColor: palette.themePrimary,
+              borderColor: palette.themePrimary
             },
             [HighContrastSelector]: {
               borderColor: 'Highlight'
@@ -72,9 +76,10 @@ export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
           padding: '1px 0 1px 8px'
         }
       ],
-      underlined && disabled && {
-        backgroundColor: 'transparent'
-      },
+      underlined &&
+        disabled && {
+          backgroundColor: 'transparent'
+        },
       hasInput && 'can-clear',
       className
     ],
@@ -104,7 +109,7 @@ export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
     icon: [
       'ms-SearchBox-icon',
       {
-        opacity: 1,
+        opacity: 1
       },
       hasFocus && {
         opacity: 0
@@ -129,15 +134,19 @@ export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
     field: [
       'ms-SearchBox-field',
       normalize,
+      getPlaceholderStyles(placeholderStyles),
       {
+        backgroundColor: 'transparent',
         border: 'none',
         outline: 'none',
         fontWeight: 'inherit',
         fontFamily: 'inherit',
         fontSize: 'inherit',
         color: palette.neutralPrimary,
-        backgroundColor: semanticColors.inputBackground,
         flex: '1 1 0px',
+        // The default implicit value of 'auto' prevents the input from shrinking. Setting min-width to
+        // 0px allows the input element to shrink to fit the container.
+        minWidth: '0px',
         overflow: 'hidden',
         textOverflow: 'ellipsis',
         // This padding forces the text placement to round up.
@@ -146,13 +155,6 @@ export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
         selectors: {
           '::-ms-clear': {
             display: 'none'
-          },
-          '::placeholder': {
-            color: semanticColors.inputPlaceholderText,
-            opacity: 1
-          },
-          ':-ms-input-placeholder': {
-            color: semanticColors.inputPlaceholderText
           }
         }
       },

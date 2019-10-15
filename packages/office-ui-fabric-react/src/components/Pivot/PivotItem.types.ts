@@ -1,16 +1,19 @@
 import * as React from 'react';
-import { IRenderFunction } from '../../Utilities';
+import { IRefObject, IRenderFunction } from '../../Utilities';
 import { IKeytipProps } from '../../Keytip';
 
+/**
+ * {@docCategory Pivot}
+ */
 export interface IPivotItemProps extends React.HTMLAttributes<HTMLDivElement> {
   /**
    * Gets the component ref.
    */
-  componentRef?: () => void;
+  componentRef?: IRefObject<{}>;
 
   /**
-   * The text displayed of each pivot link - renaming to 'headerText'.
-   * @deprecated
+   * The text displayed of each pivot link - renaming to `headerText`.
+   * @deprecated Use `headerText` instead.
    */
   linkText?: string;
 
@@ -39,11 +42,11 @@ export interface IPivotItemProps extends React.HTMLAttributes<HTMLDivElement> {
   ariaLabel?: string;
 
   /**
-   * An optional item count that gets displayed just after the linkText(itemCount)
+   * Defines an optional item count displayed in parentheses just after the `linkText`.
    *
-   * Example: completed(4)
+   * Examples: completed (4), Unread (99+)
    */
-  itemCount?: number;
+  itemCount?: number | string;
 
   /**
    * An optional icon to show next to the pivot link.

@@ -2,32 +2,44 @@
 const mustache = require('mustache');
 const argv = require('yargs').argv;
 const newComponentName = argv.name;
+const stateless = argv.stateless;
 const fs = require('fs');
 
+// Template Sequences
+const statefulSequence = ['GlobalIndex', 'Styles', 'Test', 'Index', 'View', 'ViewTest', 'Types', 'Component', 'State', 'StateTest'];
+const statelessSequence = ['GlobalIndex', 'Styles', 'Test', 'Index', 'View', 'ViewTest', 'TypesStateless', 'ComponentStateless'];
+
 // Paths/File Names
-const rootComponentFolderPath = './packages/experiments/src';
-const componentFolderPath = rootComponentFolderPath + '/components/' + newComponentName;
-const componentPropsFileName = newComponentName + '.types.ts';
-const componentFileName = newComponentName + '.tsx';
-const componentFileClassNamesName = newComponentName + '.styles.ts';
-const globalIndexFileName = newComponentName + '.ts';
-const templateFolderPath = './scripts/templates';
-const indexFileName = 'index.ts';
+const rootComponentFolderPath = './packages/experiments/src/';
+const componentFolderPath = rootComponentFolderPath + 'components/' + newComponentName + '/';
+const componentPathNamePrefix = rootComponentFolderPath + 'components/' + newComponentName + '/' + newComponentName;
+
+let templateFolderPath = './scripts/templates/create-component';
+
+const outputFiles = {
+  Component: componentPathNamePrefix + '.ts',
+  ComponentStateless: componentPathNamePrefix + '.ts',
+  GlobalIndex: rootComponentFolderPath + newComponentName + '.ts',
+  Index: componentFolderPath + 'index.ts',
+  State: componentPathNamePrefix + '.state.ts',
+  StateTest: componentPathNamePrefix + '.state.test.tsx',
+  Styles: componentPathNamePrefix + '.styles.ts',
+  Test: componentPathNamePrefix + '.test.tsx',
+  Types: componentPathNamePrefix + '.types.ts',
+  TypesStateless: componentPathNamePrefix + '.types.ts',
+  View: componentPathNamePrefix + '.view.tsx',
+  ViewTest: componentPathNamePrefix + '.view.test.tsx'
+};
 
 // Error strings
 const errorCreatingComponentDir = 'Error creating component directory';
-const errorOpenMustacheTemplateForProps = 'Unable to open mustache template for props';
-const errorUnableToWritePropsFile = 'Unable to write props file';
-const errorUnableToOpenTemplate = 'Unable to open mustache template for component';
-const errorUnableToWriteComponentFile = 'Unable to write component file';
-const errorUnableToWriteComponentClassFile = 'Unable to write component class name file';
-const errorUnableToOpenClassNamesTemplate = 'Unable to open component class files template';
-const errorComponentName = 'Please pass in the component name using --name ExcitingNewComponentName';
-const errorUnableToWriteComponentIndexFile = 'Unable to write component class index file';
-const errorUnableToOpenIndexTemplate = "Unable to open the component index template"
+const errorComponentName = 'Please pass in the component name using --name';
 
-//Success strings
-const successComponentCreated = 'New component ' + newComponentName + ' succesfully created';
+const errorUnableToOpenTemplate = templateFile => `Unable to open mustache template ${templateFile} for component`;
+const errorUnableToWriteFile = step => `Unable to write ${step} file`;
+
+// Success strings
+const successComponentCreated = 'New component ' + newComponentName + ' successfully created';
 
 function handleError(error, errorPrependMessage) {
   if (error) {
@@ -38,23 +50,38 @@ function handleError(error, errorPrependMessage) {
   }
 }
 
-function createComponentFiles(mustacheTemplateName, fileName, createFileError, openMustacheTemplateError, cb, customPath) {
+function createComponentFiles(sequence, stepIndex) {
+  if (stepIndex >= sequence.length) {
+    // Success! The component has been created.
+    console.log(successComponentCreated);
+    return;
+  }
+  const step = sequence[stepIndex];
+  const mustacheTemplateName = `Empty${step}.mustache`;
+
+  console.log('Creating ' + outputFiles[step] + '...');
+
   fs.readFile(templateFolderPath + '/' + mustacheTemplateName, 'utf8', (error, data) => {
-    readFileCallback(error, data, fileName, cb, openMustacheTemplateError, createFileError, customPath);
+    readFileCallback(
+      error,
+      data,
+      outputFiles[step],
+      () => createComponentFiles(sequence, stepIndex + 1),
+      errorUnableToOpenTemplate(mustacheTemplateName),
+      errorUnableToWriteFile(step)
+    );
   });
 }
 
-function readFileCallback(error, data, fileName, cb, openMustacheTemplateError, createFileError, customPath) {
+function readFileCallback(error, data, filePath, cb, openMustacheTemplateError, createFileError) {
   if (!handleError(error, openMustacheTemplateError)) {
     return;
   }
-  let path = componentFolderPath + '/' + fileName;
-  if (customPath) {
-    path = customPath + '/' + fileName;
-  }
 
   const fileData = mustache.render(data, { componentName: newComponentName });
-  fs.writeFile(path, fileData, (error) => { writeFileCallback(error, createFileError, cb); });
+  fs.writeFile(filePath, fileData, error => {
+    writeFileCallback(error, createFileError, cb);
+  });
 }
 
 function writeFileCallback(error, createFileError, cb) {
@@ -67,75 +94,23 @@ function writeFileCallback(error, createFileError, cb) {
   }
 }
 
-function makeComponentDirectory(error) {
+function makeComponent(error) {
   if (!handleError(error, errorCreatingComponentDir)) {
     return;
   }
-  createPropsFile();
-}
 
-function createPropsFile() {
-  // Create props file
-  createComponentFiles(
-    'EmptyProps.mustache',
-    componentPropsFileName,
-    errorUnableToWritePropsFile,
-    errorOpenMustacheTemplateForProps,
-    createComponentFile // Create component file
-  );
-}
-
-function createComponentFile() {
-  // Create component file
-  createComponentFiles(
-    'EmptyComponent.mustache',
-    componentFileName,
-    errorUnableToWriteComponentFile,
-    errorUnableToOpenTemplate,
-    createClassNamesFile // Create class names file
-  );
-}
-
-function createClassNamesFile() {
-  // Create class names file
-  createComponentFiles(
-    'EmptyClassNames.mustache',
-    componentFileClassNamesName,
-    errorUnableToWriteComponentClassFile,
-    errorUnableToOpenClassNamesTemplate,
-    createLocalIndexFile // Create local index file
-  );
-}
-
-function createLocalIndexFile() {
-  // Create local index import file
-  createComponentFiles(
-    'EmptyComponentIndex.mustache',
-    indexFileName,
-    errorUnableToWriteComponentIndexFile,
-    errorUnableToOpenIndexTemplate,
-    createGlobalIndexFile // Create global index file
-  );
-}
-
-function createGlobalIndexFile() {
-  // Create global index import file
-  createComponentFiles(
-    'EmptyGlobalComponentIndex.mustache',
-    globalIndexFileName,
-    errorUnableToWriteComponentIndexFile,
-    errorUnableToOpenIndexTemplate,
-    null,
-    rootComponentFolderPath
-  );
-
-  // Success! The component has been created.
-  console.log(successComponentCreated);
+  if (stateless) {
+    console.log('Creating stateless component...');
+    createComponentFiles(statelessSequence, 0);
+  } else {
+    console.log('Creating stateful component... (if you want a stateless component, use --stateless arg)');
+    createComponentFiles(statefulSequence, 0);
+  }
 }
 
 if (newComponentName) {
   // Create new folder in packages/src/office-ui-fabric-react
-  fs.mkdir(componentFolderPath, makeComponentDirectory);
+  fs.mkdir(componentFolderPath, makeComponent);
 } else {
   console.error(errorComponentName);
 }

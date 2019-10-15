@@ -1,43 +1,21 @@
 import * as React from 'react';
-import {
-  BaseComponent,
-  classNamesFunction,
-  customizable,
-} from '../../Utilities';
-import {
-  ICheckProps,
-  ICheckStyleProps,
-  ICheckStyles
-} from './Check.types';
-import { Icon } from '../../Icon';
-import { getStyles } from './Check.styles';
+import { ICheckProps } from './Check.types';
+import { Icon, FontIcon } from '../../Icon';
+import { classNamesFunction } from '../../Utilities';
+import { ICheckStyleProps, ICheckStyles } from './Check.types';
 
 const getClassNames = classNamesFunction<ICheckStyleProps, ICheckStyles>();
 
-@customizable('Check', ['theme'])
-export class CheckBase extends BaseComponent<ICheckProps, {}> {
-  public static defaultProps: ICheckProps = {
-    checked: false
-  };
+export const CheckBase: React.StatelessComponent<ICheckProps> = props => {
+  const { checked = false, className, theme, styles, useFastIcons } = props;
 
-  public shouldComponentUpdate(newProps: ICheckProps): boolean {
-    return this.props.checked !== newProps.checked;
-  }
+  const classNames = getClassNames(styles!, { theme: theme!, className, checked, useGlobalCheckHostClass: useFastIcons });
+  const IconComponent = useFastIcons ? FontIcon : Icon;
 
-  public render(): JSX.Element {
-    const {
-      checked,
-      className,
-      theme
-    } = this.props;
-
-    const classNames = getClassNames(getStyles!, { theme: theme!, className, checked });
-
-    return (
-      <div className={ classNames.root } >
-        <Icon iconName='CircleRing' className={ classNames.circle } />
-        <Icon iconName='StatusCircleCheckmark' className={ classNames.check } />
-      </div>
-    );
-  }
-}
+  return (
+    <div className={classNames.root}>
+      <IconComponent iconName="CircleRing" className={classNames.circle} />
+      <IconComponent iconName="StatusCircleCheckmark" className={classNames.check} />
+    </div>
+  );
+};

@@ -1,3 +1,5 @@
-In a computer's graphical user interface ( GUI ), an icon is an image that represents an application, a capability, or some other concept or specific entity with meaning for the user. An icon is usually selectable but can also be a nonselectable image such as a company's logo.
+In a user interface, an icon is an image that represents an application, a capability, or some other concept or specific entity with meaning for the user. An icon is usually selectable but can also be a nonselectable image, such as a company's logo.
 
-For a list of Icons, visit our <a href='https://developer.microsoft.com/en-us/fabric#/styles/icons'>Icon documentation</a>.
+For a list of icons, visit our [icon documentation](#/styles/web/icons).
+
+Note that icons are not bundled by default and typically must be loaded by calling `initializeIcons` from the `@uifabric/icons` package at the root of your application. See the [icon documentation](#/styles/web/icons#fabric-react) for more details.

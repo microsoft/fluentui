@@ -1,3 +1,5 @@
+// @deprecated Will be removed in version 7
+
 @import './semanticColorVariables';
 
 @mixin focus-border($padding: 0, $color: $focusedBorderColor) {
@@ -28,12 +30,5 @@
 
     // Add focus border with $color
     border: 1px solid $color;
-  }
-}
-
-// When focus is set using the keyboard, apply an outline.
-@mixin focus-outline {
-  :global(.ms-Fabric--isFocusVisible) &:focus {
-    outline: 1px solid $focusedBorderColor;
   }
 }

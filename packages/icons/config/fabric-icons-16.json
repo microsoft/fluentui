@@ -1,0 +1,81 @@
+{
+  "fontName": "fabric-icons-16",
+  "fontFamilyName": "FabricMDL2Icons-16",
+  "excludeGlyphs": false,
+  "excludeThirdPartyIcons": true,
+  "chunkSubsets": true,
+  "hashFontFileName": true,
+  "subsetChunkSettings": {
+    "maxSubsetSize": 100
+  },
+  "glyphs": [
+    {
+      "name": "DuplicateRow",
+      "unicode": "F82A"
+    },
+    {
+      "name": "RemoveFromTrash",
+      "unicode": "F82B"
+    },
+    {
+      "name": "MailOptions",
+      "unicode": "F82C"
+    },
+    {
+      "name": "Childof",
+      "unicode": "F82D"
+    },
+    {
+      "name": "Footer",
+      "unicode": "F82E"
+    },
+    {
+      "name": "Header",
+      "unicode": "F82F"
+    },
+    {
+      "name": "BarChartVerticalFill",
+      "unicode": "F830"
+    },
+    {
+      "name": "StackedColumnChart2Fill",
+      "unicode": "F831"
+    },
+    {
+      "name": "PlainText",
+      "unicode": "F834"
+    },
+    {
+      "name": "AccessibiltyChecker",
+      "unicode": "F835"
+    },
+    {
+      "name": "DatabaseSync",
+      "unicode": "F842"
+    },
+    {
+      "name": "TabOneColumn",
+      "unicode": "F849"
+    },
+    {
+      "name": "TabTwoColumn",
+      "unicode": "F84A"
+    },
+    {
+      "name": "TabThreeColumn",
+      "unicode": "F84B"
+    },
+    {
+      "name": "DecreaseIndentLegacy",
+      "unicode": "E290"
+    },
+    {
+      "name": "IncreaseIndentLegacy",
+      "unicode": "E291"
+    },
+    {
+      "name": "SizeLegacy",
+      "unicode": "E2B2"
+    }
+  ]
+}

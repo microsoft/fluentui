@@ -2,8 +2,11 @@
 
 exports[`TooltipHost renders correctly 1`] = `
 <div
-  aria-describedby={undefined}
-  className="ms-TooltipHost"
+  className=
+      ms-TooltipHost
+      {
+        display: inline;
+      }
   onBlurCapture={[Function]}
   onFocusCapture={[Function]}
   onMouseEnter={[Function]}

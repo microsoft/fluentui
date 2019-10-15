@@ -30,6 +30,7 @@ export interface IDelayedRenderState {
  * if necessary.
  *
  * @public
+ * {@docCategory DelayedRender}
  */
 export class DelayedRender extends React.Component<IDelayedRenderProps, IDelayedRenderState> {
   public static defaultProps = {

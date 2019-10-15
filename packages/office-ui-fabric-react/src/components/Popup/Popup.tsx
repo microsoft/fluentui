@@ -1,13 +1,5 @@
 import * as React from 'react';
-import {
-  BaseComponent,
-  KeyCodes,
-  divProperties,
-  doesElementContainFocus,
-  getDocument,
-  getNativeProps,
-  createRef
-} from '../../Utilities';
+import { Async, KeyCodes, divProperties, doesElementContainFocus, getDocument, getNativeProps, on } from '../../Utilities';
 import { IPopupProps } from './Popup.types';
 
 export interface IPopupState {
@@ -17,19 +9,20 @@ export interface IPopupState {
 /**
  * This adds accessibility to Dialog and Panel controls
  */
-export class Popup extends BaseComponent<IPopupProps, IPopupState> {
-
+export class Popup extends React.Component<IPopupProps, IPopupState> {
   public static defaultProps: IPopupProps = {
     shouldRestoreFocus: true
   };
 
-  public _root = createRef<HTMLDivElement>();
-
+  public _root = React.createRef<HTMLDivElement>();
+  private _disposables: (() => void)[] = [];
   private _originalFocusedElement: HTMLElement;
   private _containsFocus: boolean;
+  private _async: Async;
 
   public constructor(props: IPopupProps) {
     super(props);
+    this._async = new Async(this);
     this.state = { needsVerticalScrollBar: false };
   }
 
@@ -38,15 +31,11 @@ export class Popup extends BaseComponent<IPopupProps, IPopupState> {
   }
 
   public componentDidMount(): void {
-    if (!this._root.current) {
-      return;
-    }
-
-    this._events.on(this._root.current, 'focus', this._onFocus, true);
-    this._events.on(this._root.current, 'blur', this._onBlur, true);
-
-    if (doesElementContainFocus(this._root.current)) {
-      this._containsFocus = true;
+    if (this._root.current) {
+      this._disposables.push(on(this._root.current, 'focus', this._onFocus, true), on(this._root.current, 'blur', this._onBlur, true));
+      if (doesElementContainFocus(this._root.current)) {
+        this._containsFocus = true;
+      }
     }
 
     this._updateScrollBarAsync();
@@ -54,14 +43,17 @@ export class Popup extends BaseComponent<IPopupProps, IPopupState> {
 
   public componentDidUpdate() {
     this._updateScrollBarAsync();
+    this._async.dispose();
   }
 
   public componentWillUnmount(): void {
+    this._disposables.forEach((dispose: () => void) => dispose());
     if (
       this.props.shouldRestoreFocus &&
       this._originalFocusedElement &&
       this._containsFocus &&
-      this._originalFocusedElement as any !== window) {
+      (this._originalFocusedElement as any) !== window
+    ) {
       // This slight delay is required so that we can unwind the stack, let react try to mess with focus, and then
       // apply the correct focus. Without the setTimeout, we end up focusing the correct thing, and then React wants
       // to reset the focus back to the thing it thinks should have been focused.
@@ -76,17 +68,17 @@ export class Popup extends BaseComponent<IPopupProps, IPopupState> {
 
     return (
       <div
-        ref={ this._root }
-        { ...getNativeProps(this.props, divProperties) }
-        className={ className }
-        role={ role }
-        aria-label={ ariaLabel }
-        aria-labelledby={ ariaLabelledBy }
-        aria-describedby={ ariaDescribedBy }
-        onKeyDown={ this._onKeyDown }
-        style={ { overflowY: this.state.needsVerticalScrollBar ? 'scroll' : 'auto', ...style } }
+        ref={this._root}
+        {...getNativeProps(this.props, divProperties)}
+        className={className}
+        role={role}
+        aria-label={ariaLabel}
+        aria-labelledby={ariaLabelledBy}
+        aria-describedby={ariaDescribedBy}
+        onKeyDown={this._onKeyDown}
+        style={{ overflowY: this.state.needsVerticalScrollBar ? 'scroll' : undefined, outline: 'none', ...style }}
       >
-        { this.props.children }
+        {this.props.children}
       </div>
     );
   }
@@ -94,7 +86,6 @@ export class Popup extends BaseComponent<IPopupProps, IPopupState> {
   private _onKeyDown = (ev: React.KeyboardEvent<HTMLElement>): void => {
     switch (ev.which) {
       case KeyCodes.escape:
-
         if (this.props.onDismiss) {
           this.props.onDismiss(ev);
 
@@ -104,7 +95,7 @@ export class Popup extends BaseComponent<IPopupProps, IPopupState> {
 
         break;
     }
-  }
+  };
 
   private _updateScrollBarAsync(): void {
     this._async.requestAnimationFrame(() => {
@@ -113,6 +104,11 @@ export class Popup extends BaseComponent<IPopupProps, IPopupState> {
   }
 
   private _getScrollBar(): void {
+    // If overflowY is overriden, don't waste time calculating whether the scrollbar is necessary.
+    if (this.props.style && this.props.style.overflowY) {
+      return;
+    }
+
     let needsVerticalScrollBar = false;
     if (this._root && this._root.current && this._root.current.firstElementChild) {
       // ClientHeight returns the client height of an element rounded to an
@@ -127,7 +123,7 @@ export class Popup extends BaseComponent<IPopupProps, IPopupState> {
       const rootHeight = this._root.current.clientHeight;
       const firstChildHeight = this._root.current.firstElementChild.clientHeight;
       if (rootHeight > 0 && firstChildHeight > rootHeight) {
-        needsVerticalScrollBar = (firstChildHeight - rootHeight) > 1;
+        needsVerticalScrollBar = firstChildHeight - rootHeight > 1;
       }
     }
     if (this.state.needsVerticalScrollBar !== needsVerticalScrollBar) {
@@ -137,13 +133,13 @@ export class Popup extends BaseComponent<IPopupProps, IPopupState> {
     }
   }
 
-  private _onFocus(): void {
+  private _onFocus = (): void => {
     this._containsFocus = true;
-  }
+  };
 
-  private _onBlur(ev: React.FocusEvent<HTMLElement>): void {
-    if (this._root.value && this._root.value.contains(ev.relatedTarget as HTMLElement)) {
+  private _onBlur = (ev: FocusEvent): void => {
+    if (this._root.current && this._root.current.contains(ev.relatedTarget as HTMLElement)) {
       this._containsFocus = false;
     }
-  }
+  };
 }

@@ -1,11 +1,12 @@
 import * as React from 'react';
 import { IStyle, ITheme } from '../../Styling';
-import { IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
+import { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
 import { IIconProps } from '../Icon/Icon.types';
 import { IKeytipProps } from '../../Keytip';
 
 /**
  * Checkbox class interface.
+ * {@docCategory Checkbox}
  */
 export interface ICheckbox {
   /** Gets the current checked state. */
@@ -17,13 +18,14 @@ export interface ICheckbox {
 
 /**
  * Checkbox properties.
+ * {@docCategory Checkbox}
  */
 export interface ICheckboxProps extends React.ButtonHTMLAttributes<HTMLElement | HTMLInputElement> {
   /**
    * Optional callback to access the ICheckbox interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: ICheckbox | null) => void;
+  componentRef?: IRefObject<ICheckbox>;
 
   /**
    * Additional class name to provide on the root element, in addition to the ms-Checkbox class.
@@ -67,7 +69,7 @@ export interface ICheckboxProps extends React.ButtonHTMLAttributes<HTMLElement |
 
   /**
    * Allows you to set the checkbox to be at the before (start) or after (end) the label.
-   * @default 'start'
+   * @defaultvalue 'start'
    */
   boxSide?: 'start' | 'end';
 
@@ -122,19 +124,32 @@ export interface ICheckboxProps extends React.ButtonHTMLAttributes<HTMLElement |
   keytipProps?: IKeytipProps;
 }
 
+/**
+ * {@docCategory Checkbox}
+ */
 export interface ICheckboxStyleProps {
   theme: ITheme;
   className?: string;
   disabled?: boolean;
   checked?: boolean;
   reversed?: boolean;
+  isUsingCustomLabelRender: boolean;
 }
 
+/**
+ * {@docCategory Checkbox}
+ */
 export interface ICheckboxStyles {
   /**
    * Style for the root element (a button) of the checkbox component in the default enabled/unchecked state.
    */
   root?: IStyle;
+
+  /**
+   * INTERNAL: This is mostly an internal implementation detail which you should avoid styling.
+   * This refers to the <input type="checkbox"> element that is typically hidden and not rendered on screen.
+   */
+  input?: IStyle;
 
   /**
    * Style for the label part (contains the customized checkbox + text) when enabled.
