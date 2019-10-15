@@ -1,9 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Hide UHF flightPicker element that causes accessibility issues",
-  "packageName": "@uifabric/fabric-website",
-  "email": "elcraig@microsoft.com",
-  "commit": "65758fcc9ae1837a6059731219d0c33989b6bb78",
-  "date": "2019-10-09T23:18:10.116Z",
-  "file": "/Users/elizabeth/git/fabric-react3/change/@uifabric-fabric-website-2019-10-09-16-18-10-flighttools.json"
-}

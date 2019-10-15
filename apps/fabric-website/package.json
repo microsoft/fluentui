@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/fabric-website",
-  "version": "7.5.5",
+  "version": "7.5.6",
   "description": "The official website for the UI Fabric project.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -49,14 +49,14 @@
     "@uifabric/example-app-base": "^7.8.4",
     "@uifabric/experiments": "^7.18.3",
     "@uifabric/fabric-website-resources": "^7.3.2",
-    "@uifabric/file-type-icons": "^7.1.1",
+    "@uifabric/file-type-icons": "^7.1.2",
     "@uifabric/fluent-theme": "^7.1.4",
     "@uifabric/icons": "^7.3.0",
     "@uifabric/react-cards": "^0.109.0",
     "@uifabric/set-version": "^7.0.2",
     "@uifabric/theme-samples": "^7.0.5",
     "json-loader": "^0.5.7",
-    "office-ui-fabric-react": "^7.49.0",
+    "office-ui-fabric-react": "^7.50.0",
     "tslib": "^1.7.1",
     "whatwg-fetch": "2.0.4"
   }

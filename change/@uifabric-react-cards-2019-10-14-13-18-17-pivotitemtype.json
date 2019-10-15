@@ -1,0 +1,9 @@
+{
+  "type": "patch",
+  "comment": "Relax child item type checks",
+  "packageName": "@uifabric/react-cards",
+  "email": "elcraig@microsoft.com",
+  "commit": "51b4d8ade92c0f9935553ad7c84ebdc25807b7d1",
+  "date": "2019-10-14T20:18:16.991Z",
+  "file": "/Users/elizabeth/git/fabric-react4/change/@uifabric-react-cards-2019-10-14-13-18-17-pivotitemtype.json"
+}
