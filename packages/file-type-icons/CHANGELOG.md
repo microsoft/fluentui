@@ -1,7 +1,13 @@
 # Change Log - @uifabric/file-type-icons
 
-This log was last generated on Wed, 25 Sep 2019 12:22:00 GMT and should not be manually modified.
+This log was last generated on Tue, 15 Oct 2019 12:23:45 GMT and should not be manually modified.
 
+## 6.7.1
+Tue, 15 Oct 2019 12:23:45 GMT
+
+### Patches
+
+- Calendar, Contact, Fluid, PowerBI Data Source (caperez@microsoft.com)
 ## 6.7.0
 Wed, 25 Sep 2019 12:22:00 GMT
 
