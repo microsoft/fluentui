@@ -1,9 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Textfield: Fix disabled text color",
-  "packageName": "office-ui-fabric-react",
-  "email": "joschect@microsoft.com",
-  "commit": "ee17db1f2873200e79e75e8a1aae3f074b1f8480",
-  "date": "2019-10-14T22:13:25.128Z",
-  "file": "/Users/joschect-m1/Git/otherfabs/change/office-ui-fabric-react-2019-10-14-15-13-25-temp.json"
-}

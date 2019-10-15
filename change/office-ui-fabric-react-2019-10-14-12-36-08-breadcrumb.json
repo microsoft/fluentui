@@ -1,9 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Breadcrumb: fix accessibility and styling issues",
-  "packageName": "office-ui-fabric-react",
-  "email": "elcraig@microsoft.com",
-  "commit": "7794b431160d816468f248b016e0b7346ffa7bc9",
-  "date": "2019-10-14T19:36:08.850Z",
-  "file": "/Users/elizabeth/git/fabric-react10/change/office-ui-fabric-react-2019-10-14-12-36-08-breadcrumb.json"
-}

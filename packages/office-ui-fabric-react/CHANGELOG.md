@@ -1,7 +1,16 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 14 Oct 2019 12:30:37 GMT and should not be manually modified.
+This log was last generated on Tue, 15 Oct 2019 12:32:28 GMT and should not be manually modified.
 
+## 7.50.0
+Tue, 15 Oct 2019 12:32:28 GMT
+
+### Minor changes
+
+- Breadcrumb: fix accessibility and styling issues (elcraig@microsoft.com)
+### Patches
+
+- Textfield: Fix disabled text color (joschect@microsoft.com)
 ## 7.49.0
 Mon, 14 Oct 2019 12:30:37 GMT
 
