@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Adding prop on BaseButton to allow user to specify custom props on SplitButton's primary action button.",
-  "packageName": "office-ui-fabric-react",
-  "email": "pagaur@microsoft.com",
-  "commit": "56706417eb5510ac5128b1ec690da302d3bb2f45",
-  "date": "2019-08-02T00:35:32.295Z"
-}
