@@ -8,7 +8,7 @@ export class CommandBarSplitDisabledExample extends React.Component<{}, {}> {
       <div>
         <CommandBar
           items={this.getItems()}
-          overflowItems={this.getOverlflowItems()}
+          overflowItems={this.getOverflowItems()}
           overflowButtonProps={{ ariaLabel: 'More commands' }}
           farItems={this.getFarItems()}
           ariaLabel={'Use left and right arrow keys to navigate between commands'}
@@ -23,7 +23,7 @@ export class CommandBarSplitDisabledExample extends React.Component<{}, {}> {
       {
         key: 'newItem',
         name: 'New',
-        cacheKey: 'myCacheKey', // changing this key will invalidate this items cache
+        cacheKey: 'myCacheKey', // changing this key will invalidate this item's cache
         iconProps: {
           iconName: 'Add'
         },
@@ -92,7 +92,7 @@ export class CommandBarSplitDisabledExample extends React.Component<{}, {}> {
     ];
   };
 
-  private getOverlflowItems = () => {
+  private getOverflowItems = () => {
     return [
       {
         key: 'move',

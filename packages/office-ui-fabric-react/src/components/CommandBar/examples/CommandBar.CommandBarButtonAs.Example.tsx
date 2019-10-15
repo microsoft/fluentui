@@ -83,7 +83,7 @@ class IndividualCommandBarButtonAsExample extends React.Component<IIndividualCom
           }
         }}
         items={this._getItems()}
-        overflowItems={this.getOverlflowItems()}
+        overflowItems={this.getOverflowItems()}
         farItems={this.getFarItems()}
         ariaLabel={'Use left and right arrow keys to navigate between commands'}
       />
@@ -101,7 +101,7 @@ class IndividualCommandBarButtonAsExample extends React.Component<IIndividualCom
       {
         key: 'newItem',
         name: 'New',
-        cacheKey: 'myCacheKey', // changing this key will invalidate this items cache
+        cacheKey: 'myCacheKey', // changing this key will invalidate this item's cache
         iconProps: {
           iconName: 'Add'
         },
@@ -155,7 +155,7 @@ class IndividualCommandBarButtonAsExample extends React.Component<IIndividualCom
     ];
   };
 
-  private getOverlflowItems = () => {
+  private getOverflowItems = () => {
     return [
       {
         key: 'move',
