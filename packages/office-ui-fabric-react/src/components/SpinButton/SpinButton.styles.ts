@@ -173,8 +173,19 @@ export const getStyles = memoizeFunction(
         boxSizing: 'border-box',
         height: DEFAULT_HEIGHT,
         minWidth: 86,
-        border: `1px solid ${SpinButtonRootBorderColor}`,
-        borderRadius: effects.roundedCorner2
+        selectors: {
+          ':after': {
+            pointerEvents: 'none',
+            content: "''",
+            position: 'absolute',
+            left: 0,
+            top: 0,
+            bottom: 0,
+            right: 0,
+            border: `1px solid ${SpinButtonRootBorderColor}`,
+            borderRadius: effects.roundedCorner2
+          }
+        }
       },
       spinButtonWrapperTopBottom: {
         width: '100%'
