@@ -22,7 +22,8 @@ import {
   IPositionProps,
   getMaxHeight,
   IPosition,
-  RectangleEdge
+  RectangleEdge,
+  positionCard
 } from '../../utilities/positioning';
 import { Popup } from '../../Popup';
 import { classNamesFunction } from '../../Utilities';
@@ -290,7 +291,7 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
   protected _setInitialFocus = (): void => {
     if (this.props.setInitialFocus && !this._didSetInitialFocus && this.state.positions && this._calloutElement.current) {
       this._didSetInitialFocus = true;
-      this._async.requestAnimationFrame(() => focusFirstChild(this._calloutElement.current!), this._target as Element);
+      this._async.requestAnimationFrame(() => focusFirstChild(this._calloutElement.current!), this._calloutElement.current);
     }
   };
 
@@ -349,7 +350,7 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
   }
 
   private _updateAsyncPosition(): void {
-    this._async.requestAnimationFrame(() => this._updatePosition(), this._target as HTMLElement);
+    this._async.requestAnimationFrame(() => this._updatePosition(), this._calloutElement.current);
   }
 
   private _getBeakPosition(): React.CSSProperties {
@@ -383,7 +384,11 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
       currentProps = assign(currentProps, this.props);
       currentProps!.bounds = this._getBounds();
       currentProps!.target = this._target!;
-      const newPositions: ICalloutPositionedInfo = positionCallout(currentProps!, hostElement, calloutElement, positions);
+      // If there is a finalHeight given then we assume that the user knows and will handle
+      // additional positioning adjustments so we should call positionCard
+      const newPositions: ICalloutPositionedInfo = this.props.finalHeight
+        ? positionCard(currentProps!, hostElement, calloutElement, positions)
+        : positionCallout(currentProps!, hostElement, calloutElement, positions);
 
       // Set the new position only when the positions are not exists or one of the new callout positions are different.
       // The position should not change if the position is within 2 decimal places.
@@ -487,11 +492,13 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
   }
 
   private _setTargetWindowAndElement(target: Target): void {
+    const currentElement = this._calloutElement.current;
+
     if (target) {
       if (typeof target === 'string') {
-        const currentDoc: Document = getDocument(this)!;
+        const currentDoc: Document = getDocument(currentElement)!;
         this._target = currentDoc ? (currentDoc.querySelector(target) as Element) : null;
-        this._targetWindow = getWindow(this)!;
+        this._targetWindow = getWindow(currentElement)!;
       } else if ((target as MouseEvent).stopPropagation) {
         this._targetWindow = getWindow((target as MouseEvent).toElement as HTMLElement)!;
         this._target = target as MouseEvent;
@@ -504,40 +511,37 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
         this._targetWindow = getWindow(this._target)!;
         // HTMLImgElements can have x and y values. The check for it being a point must go last.
       } else {
-        this._targetWindow = getWindow(this)!;
+        this._targetWindow = getWindow(currentElement)!;
         this._target = target as IPoint;
       }
     } else {
-      this._targetWindow = getWindow(this)!;
+      this._targetWindow = getWindow(currentElement)!;
     }
   }
 
   private _setHeightOffsetEveryFrame(): void {
     if (this._calloutElement.current && this.props.finalHeight) {
-      this._setHeightOffsetTimer = this._async.requestAnimationFrame(
-        () => {
-          const calloutMainElem = this._calloutElement.current && (this._calloutElement.current.lastChild as HTMLElement);
+      this._setHeightOffsetTimer = this._async.requestAnimationFrame(() => {
+        const calloutMainElem = this._calloutElement.current && (this._calloutElement.current.lastChild as HTMLElement);
 
-          if (!calloutMainElem) {
-            return;
-          }
+        if (!calloutMainElem) {
+          return;
+        }
 
-          const cardScrollHeight: number = calloutMainElem.scrollHeight;
-          const cardCurrHeight: number = calloutMainElem.offsetHeight;
-          const scrollDiff: number = cardScrollHeight - cardCurrHeight;
+        const cardScrollHeight: number = calloutMainElem.scrollHeight;
+        const cardCurrHeight: number = calloutMainElem.offsetHeight;
+        const scrollDiff: number = cardScrollHeight - cardCurrHeight;
 
-          this.setState({
-            heightOffset: this.state.heightOffset! + scrollDiff
-          });
+        this.setState({
+          heightOffset: this.state.heightOffset! + scrollDiff
+        });
 
-          if (calloutMainElem.offsetHeight < this.props.finalHeight!) {
-            this._setHeightOffsetEveryFrame();
-          } else {
-            this._async.cancelAnimationFrame(this._setHeightOffsetTimer, this._target as Element);
-          }
-        },
-        this._target as Element
-      );
+        if (calloutMainElem.offsetHeight < this.props.finalHeight!) {
+          this._setHeightOffsetEveryFrame();
+        } else {
+          this._async.cancelAnimationFrame(this._setHeightOffsetTimer, this._calloutElement.current);
+        }
+      }, this._calloutElement.current);
     }
   }
 

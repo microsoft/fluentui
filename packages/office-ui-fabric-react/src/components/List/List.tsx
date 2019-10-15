@@ -980,7 +980,7 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
     // The first time the list gets rendered we need to calculate the rectangle. The width of the list is
     // used to calculate the width of the list items.
     const visibleTop = Math.max(0, -surfaceRect.top);
-    const win = getWindow(this);
+    const win = getWindow(this._root.current);
     const visibleRect = {
       top: visibleTop,
       left: surfaceRect.left,

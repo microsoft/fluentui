@@ -2,7 +2,8 @@ import { ITooltipHostStyleProps, ITooltipHostStyles } from './TooltipHost.types'
 import { getGlobalClassNames } from '../../Styling';
 
 const GlobalClassNames = {
-  root: 'ms-TooltipHost'
+  root: 'ms-TooltipHost',
+  ariaPlaceholder: 'ms-TooltipHost-aria-placeholder'
 };
 
 export const getStyles = (props: ITooltipHostStyleProps): ITooltipHostStyles => {

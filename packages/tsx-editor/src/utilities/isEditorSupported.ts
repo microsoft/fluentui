@@ -11,8 +11,8 @@ export function isEditorSupported(code: string, supportedPackages: IBasicPackage
     !!win &&
     // Required environment config available
     !!getMonacoConfig() &&
-    // Opt-in query param or session storage is set
-    getSetting('useEditor') === '1' &&
+    // Opt-out query param or session storage is not set
+    getSetting('useEditor') !== '0' &&
     // Not IE 11
     !isIE11() &&
     // Web worker available

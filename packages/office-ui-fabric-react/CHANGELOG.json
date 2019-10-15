@@ -2,6 +2,303 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Tue, 15 Oct 2019 12:32:28 GMT",
+      "tag": "office-ui-fabric-react_v7.50.0",
+      "version": "7.50.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Breadcrumb: fix accessibility and styling issues",
+            "author": "elcraig@microsoft.com",
+            "commit": "7794b431160d816468f248b016e0b7346ffa7bc9"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Textfield: Fix disabled text color",
+            "author": "joschect@microsoft.com",
+            "commit": "ee17db1f2873200e79e75e8a1aae3f074b1f8480"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 14 Oct 2019 12:30:37 GMT",
+      "tag": "office-ui-fabric-react_v7.49.0",
+      "version": "7.49.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Tooltip: Creating aria placeholder for accessibility scenarios with Tooltips with a render delay.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "41295984b0c8c979c5e5b25eb3f333a672212622"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "SpinButton: Fixing minWidth and having it come from const to be consistent.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "e02e44d4313b45a7666346f12b7654db136ede13"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 11 Oct 2019 12:31:31 GMT",
+      "tag": "office-ui-fabric-react_v7.48.1",
+      "version": "7.48.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "TeachingBubble: body content should resize better when container is wide. Added wide example with just text to demonstrate this.",
+            "author": "aneeshak@microsoft.com",
+            "commit": "820debe496e604fedf9d42716fc4bfa375d6a4eb"
+          },
+          {
+            "comment": "Apply className on DetailsHeaderBase.",
+            "author": "email not defined",
+            "commit": "04c37b7ff8f2117dc9046a5e87bd8313ce219d93"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 10 Oct 2019 12:32:08 GMT",
+      "tag": "office-ui-fabric-react_v7.48.0",
+      "version": "7.48.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fixed dropdown to not select first option automatically unless it's selected using keyboard navigation per aria",
+            "author": "xgao@microsoft.com",
+            "commit": "43f40feb7596224a82cecf98f48121567c883783"
+          },
+          {
+            "comment": "Announced: explicitly show aria-live property in Announced types",
+            "author": "naethell@microsoft.com",
+            "commit": "f387bd52fabef7244663acb5b0bb5d87518f21d1"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Export DetailsRowFields",
+            "author": "KevinTCoughlin@users.noreply.github.com",
+            "commit": "bd56a5d2336484622be395eaa0e7c50c7ee91166"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 09 Oct 2019 22:25:09 GMT",
+      "tag": "office-ui-fabric-react_v7.47.0",
+      "version": "7.47.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Dropdown: when `openOnKeyboardFocus` prop is set to true, the Dropdown now does not close the options callout immediately.",
+            "author": "xgao@microsoft.com",
+            "commit": "575aeee692cd0f947e453ec6aa6ccebf10b25622"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "ResponsiveMode: defaulting to large to avoid breaking changes for scenarios assuming it would be available on first render.",
+            "author": "dzearing@microsoft.com",
+            "commit": "b129b4bb7ba3bb6cef8989ff5fb4dd7977e67c6c"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 09 Oct 2019 12:34:23 GMT",
+      "tag": "office-ui-fabric-react_v7.46.0",
+      "version": "7.46.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Breadcrumb: Allow setting a custom overflow icon.",
+            "author": "madomi@microsoft.com",
+            "commit": "f5164fd724812ef0b1877445b0ac825debf96504"
+          },
+          {
+            "comment": "Announced: default aria live to polite",
+            "author": "naethell@microsoft.com",
+            "commit": "10d61e3f27ff20c0da970f53dddae52f7dfa9b72"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "DetailsList: ariaLabel for select all checkbox should be dependent on selection mode",
+            "author": "aneeshak@microsoft.com",
+            "commit": "37df5d69b6b259ee236eee68be1c926d733478b7"
+          },
+          {
+            "comment": "Changing order of arguments passed to getClassNames. Until now it was inconsistent with type defined in Button.types.ts",
+            "author": "kushaly@microsoft.com",
+            "commit": "93ba0469f7268622bd3d2e4068c6aa4689b3bd19"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 08 Oct 2019 12:31:37 GMT",
+      "tag": "office-ui-fabric-react_v7.45.1",
+      "version": "7.45.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "ComboBox: Making error messages accessible to screen readers.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "fb4674198f21545c70ee18e61ddbd3dcb61ad115"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 07 Oct 2019 23:42:31 GMT",
+      "tag": "office-ui-fabric-react_v7.45.0",
+      "version": "7.45.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Adding a new prop renderPersistedMenuHiddenOnMount",
+            "author": "kushaly@microsoft.com",
+            "commit": "bbb6467fe349e611f5b7414f28ee2053adf0f342"
+          },
+          {
+            "comment": "Callout and Card: Fix anchors for both",
+            "author": "joschect@microsoft.com",
+            "commit": "cbc935cf6a0e1d4fb1b7e980b347074dce817745"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Callout & Tooltip: Making background color themable.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "6aa84713cd454fdab87851df68bc9af845eec00d"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 07 Oct 2019 12:33:45 GMT",
+      "tag": "office-ui-fabric-react_v7.44.0",
+      "version": "7.44.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fixed minor a11y bugs, revamped example page",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "8af1c39a5f3dc74707add30e8aee498e1422aa7e"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Reverting dependency on ReactDOM findDOMNode in utilities to avoid bundle problems in partners.",
+            "author": "dzearing@microsoft.com",
+            "commit": "60e9282babcde13e7ad810d99113a1399e13d479"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 04 Oct 2019 22:19:48 GMT",
+      "tag": "office-ui-fabric-react_v7.43.2",
+      "version": "7.43.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "ContextualMenu: Removing deprecated check for getMenuClassNames that was stopping callout subComponentStyles from being applied.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "74b2f0f973bcb377b56dd337f578d7d07388eb83"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 03 Oct 2019 23:14:46 GMT",
+      "tag": "office-ui-fabric-react_v7.43.1",
+      "version": "7.43.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fixes broken publish",
+            "author": "odbuild@microsoft.com",
+            "commit": "e72c1748e076cfea80c9ca8f7e0210a328d790ba"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 03 Oct 2019 01:14:35 GMT",
+      "tag": "office-ui-fabric-react_v7.43.0",
+      "version": "7.43.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Dropdown: adjust option styling for IE11",
+            "author": "naethell@microsoft.com",
+            "commit": "f6ca241142ee54cd2f32ad993382e55f9ecf141c"
+          },
+          {
+            "comment": "Dropdown: Making multiselect options clickable outside of the options label while still within Dropdown's boundaries.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "0bc0285686046f72721eae5c6730b3717473cc1a"
+          }
+        ],
+        "none": [
+          {
+            "comment": "overflow set consistent menuitem and added a11y in overview",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "123bdabb2df6bfba6a13df1119b930a766aa2863"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Callout: Addressing regression when target is an event.",
+            "author": "dzearing@microsoft.com",
+            "commit": "930e9059016e06f0b7ad6b44ac7a62e094600f59"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 02 Oct 2019 12:31:15 GMT",
+      "tag": "office-ui-fabric-react_v7.42.0",
+      "version": "7.42.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Nav: improve ARIA labels for group headings.",
+            "author": "jdh@microsoft.com",
+            "commit": "9d540be0defe78c97bbb81b1472050cceafd9e93"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Prevent suggestion autocomplete without selection",
+            "author": "anhw@microsoft.com",
+            "commit": "87c6dca185d61a8ed15782090e5b2f7a30fe7fc4"
+          },
+          {
+            "comment": "DocumentCard: Adding aria-label descriptions to all examples.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "425ce7d7d7d148b1bc7ddc063b0880ed5553f5dd"
+          },
+          {
+            "comment": "Teachingbubble Example: Fix illustration example",
+            "author": "joschect@microsoft.com",
+            "commit": "3c86870146ce3ac8707ecf57b671116a4a8c36e9"
+          },
+          {
+            "comment": "Fixing the rendering of boolean values in Lists",
+            "author": "nicul@microsoft.com",
+            "commit": "3cdd0cde16afc66813b6388879c9ddab89677800"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 01 Oct 2019 12:33:48 GMT",
       "tag": "office-ui-fabric-react_v7.41.0",
       "version": "7.41.0",

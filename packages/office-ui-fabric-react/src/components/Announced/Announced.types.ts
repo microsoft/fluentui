@@ -14,6 +14,12 @@ export interface IAnnouncedProps extends React.Props<AnnouncedBase>, React.HTMLA
    * The status message provided as screen reader output
    */
   message?: string;
+
+  /**
+   * Priority with which the screen reader should treat updates to this region
+   * @default 'polite'
+   */
+  'aria-live'?: 'off' | 'polite' | 'assertive';
 }
 
 /**

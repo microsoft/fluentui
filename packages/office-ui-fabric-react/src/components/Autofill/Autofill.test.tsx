@@ -32,6 +32,20 @@ describe('Autofill', () => {
     expect(autofill.inputElement!.value).toBe('hello');
   });
 
+  it('correctly autofills with composable languages', () => {
+    let updatedText: string | undefined;
+    const onInputValueChange = (text: string | undefined): void => {
+      updatedText = text;
+    };
+
+    component = mount(<Autofill componentRef={autofillRef} onInputValueChange={onInputValueChange} suggestedDisplayValue="こんにちは" />);
+
+    ReactTestUtils.Simulate.input(autofill.inputElement!, mockEvent('こん'));
+    expect(updatedText).toBe('こん');
+    expect(autofill.value).toBe('こん');
+    expect(autofill.inputElement!.value).toBe('こんにちは');
+  });
+
   it('does not autofill if suggestedDisplayValue does not match input', () => {
     let updatedText: string | undefined;
     const onInputValueChange = (text: string | undefined): void => {

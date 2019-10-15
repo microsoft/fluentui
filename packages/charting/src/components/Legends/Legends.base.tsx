@@ -6,7 +6,7 @@ import { classNamesFunction, find } from 'office-ui-fabric-react/lib/Utilities';
 import { ResizeGroup } from 'office-ui-fabric-react/lib/ResizeGroup';
 import { IProcessedStyleSet } from 'office-ui-fabric-react/lib/Styling';
 import { OverflowSet, IOverflowSetItemProps } from 'office-ui-fabric-react/lib/OverflowSet';
-import { ILegend, ILegendsProps, ILegendsStyles, ILegendStyleProps, ILegendOverflowData } from './Legends.types';
+import { ILegend, ILegendsProps, LegendShape, ILegendsStyles, ILegendStyleProps, ILegendOverflowData } from './Legends.types';
 
 const getClassNames = classNamesFunction<ILegendStyleProps, ILegendsStyles>();
 
@@ -18,6 +18,7 @@ interface ILegendItem {
   hoverAction: VoidFunction;
   onMouseOutAction: VoidFunction;
   color: string;
+  shape?: LegendShape;
   key: number;
 }
 
@@ -66,6 +67,7 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
         hoverAction: legend.hoverAction!,
         onMouseOutAction: legend.onMouseOutAction!,
         color: legend.color,
+        shape: legend.shape,
         key: index
       };
       dataItems.push(legendItem);
@@ -204,6 +206,7 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
     const legend: ILegend = {
       title: data.title,
       color: data.color,
+      shape: data.shape,
       action: data.action,
       hoverAction: data.hoverAction,
       onMouseOutAction: data.onMouseOutAction
@@ -238,11 +241,19 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
         onBlur={onMouseOut}
         data-is-focusable={true}
       >
-        <div className={classNames.rect} />
+        <div className={this._getShapeClass(classNames, legend)} />
         <div className={classNames.text}>{legend.title}</div>
       </div>
     );
   };
+
+  private _getShapeClass(classNames: IProcessedStyleSet<ILegendsStyles>, legend: ILegend): string {
+    if (legend.shape === 'triangle') {
+      return classNames.triangle;
+    }
+
+    return classNames.rect;
+  }
 
   private _getColor(title: string, color: string): string {
     const { theme } = this.props;

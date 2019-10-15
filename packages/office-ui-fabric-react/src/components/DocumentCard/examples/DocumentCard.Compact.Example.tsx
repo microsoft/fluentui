@@ -107,7 +107,12 @@ export class DocumentCardCompactExample extends React.PureComponent {
     return (
       <Stack tokens={stackTokens}>
         {/* Document preview */}
-        <DocumentCard type={DocumentCardType.compact} onClickHref="http://bing.com">
+        <DocumentCard
+          aria-label="Document Card with document preview. Revenue stream proposal fiscal year 2016 version 2.
+          Created by Roko Kolar a few minutes ago"
+          type={DocumentCardType.compact}
+          onClickHref="http://bing.com"
+        >
           <DocumentCardPreview previewImages={[previewProps.previewImages[0]]} />
           <DocumentCardDetails>
             <DocumentCardTitle title="Revenue stream proposal fiscal year 2016 version02.pptx" shouldTruncate={true} />
@@ -115,7 +120,11 @@ export class DocumentCardCompactExample extends React.PureComponent {
           </DocumentCardDetails>
         </DocumentCard>
         {/* Folder or site activity */}
-        <DocumentCard type={DocumentCardType.compact} onClickHref="http://bing.com">
+        <DocumentCard
+          aria-label="Document Card with folder or site activity. 4 files were uploaded. Created by Annie Lindqvist a few minutes ago"
+          type={DocumentCardType.compact}
+          onClickHref="http://bing.com"
+        >
           <DocumentCardPreview {...previewProps} />
           <DocumentCardDetails>
             <DocumentCardTitle title="4 files were uploaded" shouldTruncate={true} />
@@ -123,7 +132,11 @@ export class DocumentCardCompactExample extends React.PureComponent {
           </DocumentCardDetails>
         </DocumentCard>
         {/* Card with icon */}
-        <DocumentCard type={DocumentCardType.compact} onClickHref="http://bing.com">
+        <DocumentCard
+          aria-label="Document Card with icon. View and share files. Created by Aaron Reid a few minutes ago"
+          type={DocumentCardType.compact}
+          onClickHref="http://bing.com"
+        >
           <DocumentCardPreview {...previewPropsUsingIcon} />
           <DocumentCardDetails>
             <DocumentCardTitle title="View and share files" shouldTruncate={true} />
@@ -131,7 +144,12 @@ export class DocumentCardCompactExample extends React.PureComponent {
           </DocumentCardDetails>
         </DocumentCard>
         {/* Email conversation */}
-        <DocumentCard type={DocumentCardType.compact} onClickHref="http://bing.com">
+        <DocumentCard
+          aria-label="Document Card with email conversation. Conversation about takeaways from annual SharePoint conference.
+          Sent by Christian Bergqvist a few minutes ago"
+          type={DocumentCardType.compact}
+          onClickHref="http://bing.com"
+        >
           <DocumentCardPreview {...previewOutlookUsingIcon} />
           <DocumentCardDetails>
             <DocumentCardTitle title="Conversation about takeaways from annual SharePoint conference" shouldTruncate={true} />

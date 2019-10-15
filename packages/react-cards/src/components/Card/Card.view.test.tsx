@@ -14,8 +14,8 @@ describe('CardView', () => {
     expect(tree).toMatchSnapshot();
   });
 
-  it('renders a Compact Card without contents correctly', () => {
-    const tree = renderer.create(<CardView compact />).toJSON();
+  it('renders a Horizontal Card without contents correctly', () => {
+    const tree = renderer.create(<CardView horizontal />).toJSON();
     expect(tree).toMatchSnapshot();
   });
 
@@ -32,10 +32,10 @@ describe('CardView', () => {
     expect(tree).toMatchSnapshot();
   });
 
-  it('renders a Compact Card with contents correctly', () => {
+  it('renders a Horizontal Card with contents correctly', () => {
     const tree = renderer
       .create(
-        <CardView compact>
+        <CardView horizontal>
           <CardItem>This is some content 1</CardItem>
           <CardItem>This is some content 2</CardItem>
           <CardItem>This is some content 3</CardItem>
@@ -56,10 +56,10 @@ describe('CardView', () => {
     expect(tree).toMatchSnapshot();
   });
 
-  it('renders a Compact Card with an onClick function specified correctly', () => {
+  it('renders a Horizontal Card with an onClick function specified correctly', () => {
     const tree = renderer
       .create(
-        <CardView compact onClick={alertClicked}>
+        <CardView horizontal onClick={alertClicked}>
           <CardItem>This is some content 1</CardItem>
         </CardView>
       )

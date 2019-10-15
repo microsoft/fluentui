@@ -6,6 +6,7 @@ import { memoizeFunction } from '../../Utilities';
 const ARROW_BUTTON_WIDTH = 23;
 const ARROW_BUTTON_ICON_SIZE = 8;
 const DEFAULT_HEIGHT = 32;
+const DEFAULT_MIN_WIDTH = 86;
 const LABEL_MARGIN = 10;
 
 const _getDisabledStyles = memoizeFunction(
@@ -136,7 +137,7 @@ export const getStyles = memoizeFunction(
         outline: 'none',
         fontSize: fonts.medium.fontSize,
         width: '100%',
-        minWidth: 86
+        minWidth: DEFAULT_MIN_WIDTH
       },
       labelWrapper: {
         display: 'inline-flex'
@@ -173,7 +174,7 @@ export const getStyles = memoizeFunction(
         position: 'relative',
         boxSizing: 'border-box',
         height: DEFAULT_HEIGHT,
-        minWidth: 86,
+        minWidth: DEFAULT_MIN_WIDTH,
         selectors: {
           ':after': {
             pointerEvents: 'none',
@@ -225,7 +226,7 @@ export const getStyles = memoizeFunction(
         padding: '0 8px',
         outline: 0,
         display: 'block',
-        minWidth: 72,
+        minWidth: DEFAULT_MIN_WIDTH - ARROW_BUTTON_WIDTH - 2,
         whiteSpace: 'nowrap',
         textOverflow: 'ellipsis',
         overflow: 'hidden',
