@@ -71,10 +71,6 @@ exports[`Component Examples renders ComboBox.CustomStyled.Example.tsx correctly 
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
             background-color: #b4a0ff;
-            border-color: #8a8886;
-            border-radius: 2px;
-            border-style: solid;
-            border-width: 1px;
             box-shadow: none;
             box-sizing: border-box;
             color: #323130;
@@ -100,6 +96,19 @@ exports[`Component Examples renders ComboBox.CustomStyled.Example.tsx correctly 
             display: inline-block;
             margin-bottom: 8px;
           }
+          &:after {
+            border-color: #8a8886;
+            border-radius: 2px;
+            border-style: solid;
+            border-width: 1px;
+            bottom: 0px;
+            content: '';
+            left: 0px;
+            pointer-events: none;
+            position: absolute;
+            right: 0px;
+            top: 0px;
+          }
           &.is-open {
             border-color: #8a8886;
           }
@@ -117,9 +126,6 @@ exports[`Component Examples renders ComboBox.CustomStyled.Example.tsx correctly 
             right: -2px;
             top: -2px;
           }
-          &:hover {
-            border-color: #323130;
-          }
           &:hover .ms-ComboBox-Input {
             color: #201f1e;
           }
@@ -132,17 +138,20 @@ exports[`Component Examples renders ComboBox.CustomStyled.Example.tsx correctly 
           &:hover .ms-ComboBox-Input::-ms-input-placeholder {
             color: #201f1e;
           }
+          &:hover:after {
+            border-color: #323130;
+          }
           @media screen and (-ms-high-contrast: active){&:hover {
             -ms-high-contrast-adjust: none;
             background-color: Window;
-            border-color: Highlight;
             color: HighlightText;
           }
-          &:active {
+          @media screen and (-ms-high-contrast: active){&:hover:after {
+            border-color: Highlight;
+          }
+          &:active:after {
             border-color: #0078d4;
             border-width: 2px;
-            left: -1px;
-            top: -1px;
           }
           @media screen and (-ms-high-contrast: active){&:active {
             -ms-high-contrast-adjust: none;
@@ -158,11 +167,9 @@ exports[`Component Examples renders ComboBox.CustomStyled.Example.tsx correctly 
             right: -2px;
             top: -2px;
           }
-          &:focus {
+          &:focus:after {
             border-color: #0078d4;
             border-width: 2px;
-            left: -1px;
-            top: -1px;
           }
           &:focus .ms-ComboBox-Input {
             color: #201f1e;
@@ -265,10 +272,8 @@ exports[`Component Examples renders ComboBox.CustomStyled.Example.tsx correctly 
               padding-right: 4px;
               padding-top: 0;
               position: absolute;
-              right: -1px;
               text-align: center;
               text-decoration: none;
-              top: -1px;
               user-select: none;
               vertical-align: top;
               width: 32px;
@@ -419,10 +424,6 @@ exports[`Component Examples renders ComboBox.CustomStyled.Example.tsx correctly 
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
             background-color: #ffffff;
-            border-color: #8a8886;
-            border-radius: 2px;
-            border-style: solid;
-            border-width: 1px;
             box-shadow: none;
             box-sizing: border-box;
             color: #323130;
@@ -448,6 +449,19 @@ exports[`Component Examples renders ComboBox.CustomStyled.Example.tsx correctly 
             display: inline-block;
             margin-bottom: 8px;
           }
+          &:after {
+            border-color: #8a8886;
+            border-radius: 2px;
+            border-style: solid;
+            border-width: 1px;
+            bottom: 0px;
+            content: '';
+            left: 0px;
+            pointer-events: none;
+            position: absolute;
+            right: 0px;
+            top: 0px;
+          }
           &.is-open {
             border-color: #8a8886;
           }
@@ -465,9 +479,6 @@ exports[`Component Examples renders ComboBox.CustomStyled.Example.tsx correctly 
             right: -2px;
             top: -2px;
           }
-          &:hover {
-            border-color: #323130;
-          }
           &:hover .ms-ComboBox-Input {
             color: #201f1e;
           }
@@ -480,17 +491,20 @@ exports[`Component Examples renders ComboBox.CustomStyled.Example.tsx correctly 
           &:hover .ms-ComboBox-Input::-ms-input-placeholder {
             color: #201f1e;
           }
+          &:hover:after {
+            border-color: #323130;
+          }
           @media screen and (-ms-high-contrast: active){&:hover {
             -ms-high-contrast-adjust: none;
             background-color: Window;
-            border-color: Highlight;
             color: HighlightText;
           }
-          &:active {
+          @media screen and (-ms-high-contrast: active){&:hover:after {
+            border-color: Highlight;
+          }
+          &:active:after {
             border-color: #0078d4;
             border-width: 2px;
-            left: -1px;
-            top: -1px;
           }
           @media screen and (-ms-high-contrast: active){&:active {
             -ms-high-contrast-adjust: none;
@@ -506,11 +520,9 @@ exports[`Component Examples renders ComboBox.CustomStyled.Example.tsx correctly 
             right: -2px;
             top: -2px;
           }
-          &:focus {
+          &:focus:after {
             border-color: #0078d4;
             border-width: 2px;
-            left: -1px;
-            top: -1px;
           }
           &:focus .ms-ComboBox-Input {
             color: #201f1e;
@@ -613,10 +625,8 @@ exports[`Component Examples renders ComboBox.CustomStyled.Example.tsx correctly 
               padding-right: 4px;
               padding-top: 0;
               position: absolute;
-              right: -1px;
               text-align: center;
               text-decoration: none;
-              top: -1px;
               user-select: none;
               vertical-align: top;
               width: 32px;
