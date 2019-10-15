@@ -1,15 +1,13 @@
 import * as React from 'react';
 
-import { IImageProps } from 'office-ui-fabric-react/lib/Image';
 import { DefaultButton, IButtonProps } from 'office-ui-fabric-react/lib/Button';
 import { TeachingBubble } from 'office-ui-fabric-react/lib/TeachingBubble';
-import { DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
 
-export interface ITeachingBubbleWideIllustrationExampleState {
+export interface ITeachingBubbleMultiStepExampleState {
   isTeachingBubbleVisible?: boolean;
 }
 
-export class TeachingBubbleWideIllustrationExample extends React.Component<{}, ITeachingBubbleWideIllustrationExampleState> {
+export class TeachingBubbleMultiStepExample extends React.Component<{}, ITeachingBubbleMultiStepExampleState> {
   private _menuButtonElement: HTMLElement;
 
   constructor(props: {}) {
@@ -25,18 +23,17 @@ export class TeachingBubbleWideIllustrationExample extends React.Component<{}, I
 
   public render(): JSX.Element {
     const { isTeachingBubbleVisible } = this.state;
-    const exampleImageProps: IImageProps = { src: 'http://placehold.it/154x220', alt: 'Example placeholder image' };
-    const examplePrimaryButton: IButtonProps = {
-      children: 'Try it out'
-    };
     const exampleSecondaryButtonProps: IButtonProps = {
-      children: 'Maybe later',
+      children: 'Previous',
       onClick: this._onDismiss
+    };
+    const examplePrimaryButton: IButtonProps = {
+      children: 'Next'
     };
 
     return (
       <div className="ms-TeachingBubbleExample">
-        <span className="ms-TeachingBubbleBasicExample-buttonArea" ref={menuButton => (this._menuButtonElement = menuButton!)}>
+        <span className="ms-TeachingBubbleMultiStepExample-buttonArea" ref={menuButton => (this._menuButtonElement = menuButton!)}>
           <DefaultButton
             onClick={isTeachingBubbleVisible ? this._onDismiss : this._onShow}
             text={isTeachingBubbleVisible ? 'Hide TeachingBubble' : 'Show TeachingBubble'}
@@ -45,16 +42,11 @@ export class TeachingBubbleWideIllustrationExample extends React.Component<{}, I
         {isTeachingBubbleVisible ? (
           <div>
             <TeachingBubble
-              illustrationImage={exampleImageProps}
-              calloutProps={{ directionalHint: DirectionalHint.bottomCenter }}
-              isWide={true}
-              hasSmallHeadline={true}
-              hasCloseIcon={true}
-              closeButtonAriaLabel="Close"
               target={this._menuButtonElement}
-              primaryButtonProps={examplePrimaryButton}
               secondaryButtonProps={exampleSecondaryButtonProps}
+              primaryButtonProps={examplePrimaryButton}
               onDismiss={this._onDismiss}
+              footerContent="2 of 3"
               headline="Discover what’s trending around you"
             >
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, nulla, ipsum? Molestiae quis aliquam magni harum non?
