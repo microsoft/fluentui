@@ -1,0 +1,9 @@
+{
+  "type": "minor",
+  "comment": "Announced: add `as` prop and root styles",
+  "packageName": "office-ui-fabric-react",
+  "email": "elcraig@microsoft.com",
+  "commit": "2e4ea58e204193827ff747b0c661e1ac0701577f",
+  "date": "2019-10-15T00:36:33.041Z",
+  "file": "/Users/elizabeth/git/fabric-react4/change/office-ui-fabric-react-2019-10-14-17-36-33-announced.json"
+}

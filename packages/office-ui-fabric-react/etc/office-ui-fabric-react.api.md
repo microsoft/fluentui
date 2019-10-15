@@ -1513,12 +1513,17 @@ export interface IActivityItemStyles {
 // @public (undocumented)
 export interface IAnnouncedProps extends React.Props<AnnouncedBase>, React.HTMLAttributes<HTMLDivElement> {
     'aria-live'?: 'off' | 'polite' | 'assertive';
+    as?: React.ElementType;
     message?: string;
     styles?: IStyleFunctionOrObject<{}, IAnnouncedStyles>;
 }
 
 // @public (undocumented)
+export type IAnnouncedStyleProps = Pick<IAnnouncedProps, 'className'>;
+
+// @public (undocumented)
 export interface IAnnouncedStyles {
+    root: IStyle;
     screenReaderText: IStyle;
 }
 
