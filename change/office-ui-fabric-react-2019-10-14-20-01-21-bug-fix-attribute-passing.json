@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "pass native props for SpinButton",
+  "comment": "Allow data attribute passing for SpinButton",
   "packageName": "office-ui-fabric-react",
   "email": "xgao@microsoft.com",
   "commit": "6f96ceaaa0fae594e57e6dea6f2b03f531439bcf",
