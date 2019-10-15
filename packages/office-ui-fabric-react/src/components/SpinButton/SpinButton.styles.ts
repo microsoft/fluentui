@@ -170,6 +170,7 @@ export const getStyles = memoizeFunction(
       labelDisabled: {},
       spinButtonWrapper: {
         display: 'flex',
+        position: 'relative',
         boxSizing: 'border-box',
         height: DEFAULT_HEIGHT,
         minWidth: 86,
@@ -191,17 +192,21 @@ export const getStyles = memoizeFunction(
         width: '100%'
       },
       spinButtonWrapperHovered: {
-        borderColor: SpinButtonRootBorderColorHovered,
         selectors: {
+          ':after': {
+            borderColor: SpinButtonRootBorderColorHovered
+          },
           [HighContrastSelector]: {
             borderColor: 'Highlight'
           }
         }
       },
       spinButtonWrapperFocused: {
-        borderColor: SpinButtonRootBorderColorFocused,
-        borderWidth: '2px',
         selectors: {
+          ':after': {
+            borderColor: SpinButtonRootBorderColorFocused,
+            borderWidth: '2px'
+          },
           [HighContrastSelector]: {
             borderColor: 'Highlight'
           }
