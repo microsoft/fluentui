@@ -2,6 +2,27 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Tue, 15 Oct 2019 12:32:28 GMT",
+      "tag": "office-ui-fabric-react_v7.50.0",
+      "version": "7.50.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Breadcrumb: fix accessibility and styling issues",
+            "author": "elcraig@microsoft.com",
+            "commit": "7794b431160d816468f248b016e0b7346ffa7bc9"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Textfield: Fix disabled text color",
+            "author": "joschect@microsoft.com",
+            "commit": "ee17db1f2873200e79e75e8a1aae3f074b1f8480"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 14 Oct 2019 12:30:37 GMT",
       "tag": "office-ui-fabric-react_v7.49.0",
       "version": "7.49.0",

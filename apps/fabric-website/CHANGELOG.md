@@ -1,7 +1,13 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Thu, 10 Oct 2019 12:32:08 GMT and should not be manually modified.
+This log was last generated on Tue, 15 Oct 2019 12:32:28 GMT and should not be manually modified.
 
+## 7.5.6
+Tue, 15 Oct 2019 12:32:28 GMT
+
+### Patches
+
+- Hide UHF flightPicker element that causes accessibility issues (elcraig@microsoft.com)
 ## 7.5.5
 Thu, 10 Oct 2019 12:32:08 GMT
 
