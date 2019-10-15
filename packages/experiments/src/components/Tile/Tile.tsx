@@ -170,22 +170,22 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
         ) : null}
         {background
           ? this._onRenderBackground({
-              background: background,
-              hideBackground
-            })
+            background: background,
+            hideBackground
+          })
           : null}
         {foreground
           ? this._onRenderForeground({
-              foreground: foreground,
-              hideForeground
-            })
+            foreground: foreground,
+            hideForeground
+          })
           : null}
         {itemName || itemActivity
           ? this._onRenderNameplate({
-              name: itemName,
-              activity: itemActivity,
-              onlyOnHover: !!nameplateOnlyOnHover
-            })
+            name: itemName,
+            activity: itemActivity,
+            onlyOnHover: !!nameplateOnlyOnHover
+          })
           : null}
       </>
     );
@@ -224,12 +224,12 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
           [`ms-Tile--uninvokable ${TileStyles.uninvokable}`]: !isInvokable,
           [`ms-Tile--isDisabled ${TileStyles.disabled}`]: !isSelectable && !isInvokable,
           [`ms-Tile--showCheck ${TileStyles.showCheck}`]: isModal,
-        [`ms-Tile--isFluentStyling ${TileStyles.isFluentStyling}`]: isFluentStyling
-        }) }
-        data-is-focusable={ true }
-        data-is-sub-focuszone={ true }
-        data-disable-click-on-enter={ true }
-        data-selection-index={ isInvokable && selectionIndex > -1 ? true : undefined }
+          [`ms-Tile--isFluentStyling ${TileStyles.isFluentStyling}`]: isFluentStyling
+        })}
+        data-is-focusable={true}
+        data-is-sub-focuszone={true}
+        data-disable-click-on-enter={true}
+        data-selection-index={isInvokable && selectionIndex > -1 ? selectionIndex : undefined}
       >
         {link}
         {descriptionAriaLabel ? (
@@ -239,8 +239,8 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
         ) : null}
         {isSelectable
           ? this._onRenderCheck({
-              isSelected: isSelected
-            })
+            isSelected: isSelected
+          })
           : null}
       </div>
     );
