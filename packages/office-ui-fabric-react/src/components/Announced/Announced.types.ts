@@ -32,6 +32,11 @@ export interface IAnnouncedProps extends React.Props<AnnouncedBase>, React.HTMLA
 /**
  * {@docCategory Announced}
  */
+export type IAnnouncedStyleProps = Pick<IAnnouncedProps, 'className'>;
+
+/**
+ * {@docCategory Announced}
+ */
 export interface IAnnouncedStyles {
   /**
    * Style override for the root element.
