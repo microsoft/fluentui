@@ -1,7 +1,13 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Wed, 25 Sep 2019 12:22:00 GMT and should not be manually modified.
+This log was last generated on Wed, 16 Oct 2019 12:23:27 GMT and should not be manually modified.
 
+## 6.83.1
+Wed, 16 Oct 2019 12:23:27 GMT
+
+### Patches
+
+- added isSelectable prop for Tile.types; unshow checkbox if item is not selectable (huaxi@microsoft.com)
 ## 6.83.0
 Wed, 25 Sep 2019 12:22:00 GMT
 

@@ -2,6 +2,20 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "date": "Wed, 16 Oct 2019 12:23:27 GMT",
+      "tag": "@uifabric/experiments_v6.83.1",
+      "version": "6.83.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "added isSelectable prop for Tile.types; unshow checkbox if item is not selectable",
+            "author": "huaxi@microsoft.com",
+            "commit": "b5240a289ee31211cd039980f97064645630ff2c"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 25 Sep 2019 12:22:00 GMT",
       "tag": "@uifabric/experiments_v6.83.0",
       "version": "6.83.0",
