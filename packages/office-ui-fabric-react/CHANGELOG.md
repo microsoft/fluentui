@@ -1,7 +1,21 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 15 Oct 2019 12:32:28 GMT and should not be manually modified.
+This log was last generated on Wed, 16 Oct 2019 12:33:21 GMT and should not be manually modified.
 
+## 7.51.0
+Wed, 16 Oct 2019 12:33:21 GMT
+
+### Minor changes
+
+- Announced: add `as` prop and root styles (elcraig@microsoft.com)
+- Allowing role to be overridden on SplitButton (pagaur@microsoft.com)
+- ComboBox and Dropdown: Passing correct onDismiss prop in onRenderContainer. (Humberto.Morimoto@microsoft.com)
+### Patches
+
+- Checkbox: improve checked state handling (elcraig@microsoft.com)
+- TeachingBubble udpates: added separate multi-step example to reflect current design toolkit and updated basic teachingbubble example (marygans@microsoft.com)
+- Pivot and Stack: relax child item type checks (elcraig@microsoft.com)
+- CommandBar: Replacing inline styles with definition in styles file. (Humberto.Morimoto@microsoft.com)
 ## 7.50.0
 Tue, 15 Oct 2019 12:32:28 GMT
 

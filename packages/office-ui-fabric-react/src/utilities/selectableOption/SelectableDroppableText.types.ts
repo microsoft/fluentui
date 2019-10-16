@@ -74,6 +74,11 @@ export interface ISelectableDroppableTextProps<TComponent, TListenerElement> ext
   onRenderOption?: IRenderFunction<ISelectableOption>;
 
   /**
+   * Callback that is issued when the options callout is dismissed
+   */
+  onDismiss?: () => void;
+
+  /**
    * Whether or not the ISelectableDroppableText is disabled.
    */
   disabled?: boolean;

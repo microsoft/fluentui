@@ -302,7 +302,7 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
             </div>
           )}
         </KeytipData>
-        {isOpen && onRenderContainer(props, this._onRenderContainer)}
+        {isOpen && onRenderContainer({ ...props, onDismiss: this._onDismiss }, this._onRenderContainer)}
         {hasErrorMessage && (
           <div id={id + '-errorMessage'} className={this._classNames.errorMessage}>
             {errorMessage}

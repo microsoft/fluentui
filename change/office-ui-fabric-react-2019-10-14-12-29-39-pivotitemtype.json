@@ -1,9 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Pivot and Stack: relax child item type checks",
-  "packageName": "office-ui-fabric-react",
-  "email": "elcraig@microsoft.com",
-  "commit": "26f3de051f8a1355f820e0ccccb589674a67ed1e",
-  "date": "2019-10-14T19:29:39.278Z",
-  "file": "/Users/elizabeth/git/fabric-react4/change/office-ui-fabric-react-2019-10-14-12-29-39-pivotitemtype.json"
-}

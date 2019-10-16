@@ -138,7 +138,7 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                 onFocusCapture={[Function]}
                 onKeyDown={[Function]}
                 onTouchStart={[Function]}
-                role="button"
+                role="menuitem"
                 tabIndex={0}
               >
                 <span
@@ -523,7 +523,7 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                 onFocusCapture={[Function]}
                 onKeyDown={[Function]}
                 onTouchStart={[Function]}
-                role="button"
+                role="menuitem"
                 tabIndex={0}
               >
                 <span

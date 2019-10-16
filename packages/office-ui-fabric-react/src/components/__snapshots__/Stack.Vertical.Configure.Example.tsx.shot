@@ -395,6 +395,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
             <input
               aria-checked="false"
               aria-label="Shadow around items"
+              checked={false}
               className=
 
                   {
@@ -537,6 +538,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
             <input
               aria-checked="false"
               aria-label="Prevent item overflow"
+              checked={false}
               className=
 
                   {
@@ -679,6 +681,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
             <input
               aria-checked="false"
               aria-label="Shrink items"
+              checked={false}
               className=
 
                   {
@@ -820,6 +823,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
             <input
               aria-checked="false"
               aria-label="Wrap items"
+              checked={false}
               className=
 
                   {
@@ -1232,6 +1236,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
           <input
             aria-checked="true"
             aria-label="Automatic height (based on items)"
+            checked={true}
             className=
 
                 {
@@ -1246,7 +1251,6 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                 @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
                   outline: 1px solid ActiveBorder;
                 }
-            defaultChecked={true}
             id="checkbox-6"
             onBlur={[Function]}
             onChange={[Function]}
@@ -2190,6 +2194,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
               <input
                 aria-checked="false"
                 aria-label="Hide empty children"
+                checked={false}
                 className=
 
                     {
