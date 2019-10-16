@@ -80,7 +80,7 @@ export class LayerBase extends React.Component<ILayerProps, ILayerBaseState> {
   private _createLayerElement = () => {
     const { hostId } = this.props;
 
-    const doc = getDocument(this);
+    const doc = getDocument(this._rootRef.current);
     const host = this._getHost();
 
     if (!doc || !host) {
@@ -146,7 +146,7 @@ export class LayerBase extends React.Component<ILayerProps, ILayerBaseState> {
 
   private _getHost(): Node | undefined {
     const { hostId } = this.props;
-    const doc = getDocument(this);
+    const doc = getDocument(this._rootRef.current);
     if (!doc) {
       return undefined;
     }

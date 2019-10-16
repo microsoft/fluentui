@@ -21,4 +21,4 @@ task('ts:esm', ts.esm);
 task('ts:commonjs', ts.commonjs);
 task('ts', parallel('ts:esm', 'ts:commonjs'));
 
-task('build', series('clean', 'copy', parallel('transform-css', 'ts'))).cached();
+task('build', series('clean', 'copy', 'transform-css', 'ts')).cached();

@@ -142,11 +142,13 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
       onColumnContextMenu,
       onRenderColumnHeaderTooltip = this._onRenderColumnHeaderTooltip,
       styles,
+      selectionMode,
       theme,
       onRenderDetailsCheckbox,
       groupNestingDepth,
       useFastIcons,
-      checkboxVisibility
+      checkboxVisibility,
+      className
     } = this.props;
     const { isAllSelected, columnResizeDetails, isSizing, isAllCollapsed } = this.state;
     const showCheckbox = selectAllVisibility !== SelectAllVisibility.none;
@@ -166,7 +168,8 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
       isResizingColumn: !!columnResizeDetails && isSizing,
       isSizing,
       isAllCollapsed,
-      isCheckboxHidden
+      isCheckboxHidden,
+      className
     });
 
     const classNames = this._classNames;
@@ -204,7 +207,7 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
                     children: (
                       <DetailsRowCheck
                         id={`${this._id}-check`}
-                        aria-label={ariaLabelForSelectAllCheckbox}
+                        aria-label={selectionMode === SelectionMode.multiple ? ariaLabelForSelectAllCheckbox : ariaLabelForSelectionColumn}
                         aria-describedby={
                           !isCheckboxHidden
                             ? ariaLabelForSelectAllCheckbox && !this.props.onRenderColumnHeaderTooltip

@@ -9,6 +9,7 @@ import { classNamesFunction } from '../../Utilities';
 import { CommandBarButton, IButtonProps } from '../../Button';
 import { TooltipHost } from '../../Tooltip';
 import { IComponentAs } from '@uifabric/utilities';
+import { mergeStyles, IStyle } from '@uifabric/styling';
 
 const getClassNames = classNamesFunction<ICommandBarStyleProps, ICommandBarStyles>();
 
@@ -134,11 +135,21 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
     }
 
     const itemText = item.text || item.name;
+    const rootStyles: IStyle = {
+      height: '100%'
+    };
+    const labelStyles: IStyle = {
+      whiteSpace: 'nowrap'
+    };
     const commandButtonProps: ICommandBarItemProps = {
       allowDisabledFocus: true,
       role: 'menuitem',
       ...item,
-      styles: { root: { height: '100%' }, label: { whiteSpace: 'nowrap' }, ...item.buttonStyles },
+      styles: {
+        ...item.buttonStyles,
+        root: item.buttonStyles ? mergeStyles(rootStyles, item.buttonStyles.root) : rootStyles,
+        label: item.buttonStyles ? mergeStyles(labelStyles, item.buttonStyles.label) : labelStyles
+      },
       className: css('ms-CommandBarItem-link', item.className),
       text: !item.iconOnly ? itemText : undefined,
       menuProps: item.subMenuProps,

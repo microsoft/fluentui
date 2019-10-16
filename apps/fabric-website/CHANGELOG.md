@@ -1,7 +1,32 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Mon, 30 Sep 2019 12:35:16 GMT and should not be manually modified.
+This log was last generated on Tue, 15 Oct 2019 12:32:28 GMT and should not be manually modified.
 
+## 7.5.6
+Tue, 15 Oct 2019 12:32:28 GMT
+
+### Patches
+
+- Hide UHF flightPicker element that causes accessibility issues (elcraig@microsoft.com)
+## 7.5.5
+Thu, 10 Oct 2019 12:32:08 GMT
+
+### Patches
+
+- added header examples and updated alt descriptions for BottomSheet (willdo@microsoft.com)
+## 7.5.4
+Thu, 03 Oct 2019 23:14:46 GMT
+
+### Patches
+
+- Fixes publish issue from beachball (odbuild@microsoft.com)
+## 7.5.2
+Thu, 03 Oct 2019 01:14:35 GMT
+
+### Patches
+
+- Bundle React even in serve mode for more representative testing environment (elcraig@microsoft.com)
+- Adding iOS NavBar to website docs. (emlynam@microsoft.com)
 ## 7.5.1
 Mon, 30 Sep 2019 12:35:16 GMT
 

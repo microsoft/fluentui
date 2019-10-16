@@ -1,7 +1,43 @@
 # Change Log - @uifabric/tsx-editor
 
-This log was last generated on Wed, 25 Sep 2019 12:34:56 GMT and should not be manually modified.
+This log was last generated on Thu, 10 Oct 2019 12:32:08 GMT and should not be manually modified.
 
+## 0.10.2
+Thu, 10 Oct 2019 12:32:08 GMT
+
+### Patches
+
+- Editor should include re-exported types (elcraig@microsoft.com)
+## 0.10.1
+Wed, 09 Oct 2019 12:34:23 GMT
+
+### Patches
+
+- Fix examples with fragments and refine diagnostic options (elcraig@microsoft.com)
+## 0.10.0
+Mon, 07 Oct 2019 23:42:31 GMT
+
+### Minor changes
+
+- Enable editor by default (elcraig@microsoft.com)
+## 0.9.0
+Fri, 04 Oct 2019 22:19:48 GMT
+
+### Minor changes
+
+- Improve bundle structure, and add error boundary around example so errors don't crash the page (elcraig@microsoft.com)
+## 0.8.1
+Thu, 03 Oct 2019 23:14:46 GMT
+
+### Patches
+
+- Fix broken publish with a bump (odbuild@microsoft.com)
+## 0.8.0
+Thu, 03 Oct 2019 01:14:35 GMT
+
+### Minor changes
+
+-   Return component rather than rendering, and add a11y props to editor (elcraig@microsoft.com)
 ## 0.7.2
 Wed, 25 Sep 2019 12:34:56 GMT
 

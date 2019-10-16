@@ -765,6 +765,7 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
           onFocus={[Function]}
           onKeyDown={[Function]}
           onKeyUp={[Function]}
+          onMouseDown={[Function]}
           role="listbox"
           tabIndex={0}
         >
@@ -994,6 +995,7 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
           onFocus={[Function]}
           onKeyDown={[Function]}
           onKeyUp={[Function]}
+          onMouseDown={[Function]}
           role="listbox"
           tabIndex={0}
         >
@@ -1223,6 +1225,7 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
           onFocus={[Function]}
           onKeyDown={[Function]}
           onKeyUp={[Function]}
+          onMouseDown={[Function]}
           role="listbox"
           tabIndex={0}
         >

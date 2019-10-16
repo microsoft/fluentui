@@ -70,9 +70,15 @@ export const controlsPagesIos: INavPage[] = [
   },
   {
     title: 'Commands, Menus & Navs',
-    url: '#/controls/ios/pivot',
+    url: '#/controls/ios/navigationbar',
     isCategory: true,
     pages: [
+      {
+        title: 'Navigation Bar',
+        url: '#/controls/ios/navigationbar',
+        component: () => <LoadingComponent title="NavBar" />,
+        getComponent: cb => require.ensure([], require => cb(require<any>('../../../pages/Controls/NavBarPage/NavBarPage').NavBarPage))
+      },
       {
         title: 'Pivot',
         url: '#/controls/ios/pivot',
