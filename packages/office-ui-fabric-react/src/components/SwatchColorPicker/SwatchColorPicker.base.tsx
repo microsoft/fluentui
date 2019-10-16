@@ -12,6 +12,7 @@ import { ISwatchColorPickerProps, ISwatchColorPickerStyleProps, ISwatchColorPick
 import { Grid } from '../../utilities/grid/Grid';
 import { IColorCellProps } from './ColorPickerGridCell.types';
 import { ColorPickerGridCell } from './ColorPickerGridCell';
+import { memoizeFunction } from '@uifabric/utilities';
 
 export interface ISwatchColorPickerState {
   selectedIndex?: number;
@@ -34,6 +35,13 @@ export class SwatchColorPickerBase extends React.Component<ISwatchColorPickerPro
   private isNavigationIdle: boolean;
   private readonly navigationIdleDelay: number = 250 /* ms */;
   private async: Async;
+
+  // Add an index to each color cells. Memoizes this so that color cells do not re-render on every update.
+  private _getItemsWithIndex = memoizeFunction((items: IColorCellProps[]) => {
+    return items.map((item, index) => {
+      return { ...item, index: index };
+    });
+  });
 
   constructor(props: ISwatchColorPickerProps) {
     super(props);
@@ -108,9 +116,7 @@ export class SwatchColorPickerBase extends React.Component<ISwatchColorPickerPro
     return (
       <Grid
         {...this.props}
-        items={colorCells.map((item, index) => {
-          return { ...item, index: index };
-        })}
+        items={this._getItemsWithIndex(colorCells)}
         columnCount={columnCount}
         onRenderItem={this._renderOption}
         positionInSet={positionInSet && positionInSet}

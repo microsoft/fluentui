@@ -60,10 +60,13 @@ export interface IPageProps<TPlatforms extends string = string> {
   /** Knobs that applies to all the examples. */
   exampleKnobs?: React.ReactNode;
 
-  /** (7) JSON to populate the API reference tables. Mutually exclusive with `propertiesTableSources`. */
+  /** (7) The accessibility guidelines as Markdown string. */
+  accessibility?: string;
+
+  /** (8) JSON to populate the API reference tables. Mutually exclusive with `propertiesTableSources`. */
   jsonDocs?: IPageJson;
 
-  /** (7) Properties table(s) as Markdown string. Mutually exclusive with `jsonDocs`. */
+  /** (8) Properties table(s) as Markdown string. Mutually exclusive with `jsonDocs`. */
   propertiesTablesSources?: string[];
 
   /**

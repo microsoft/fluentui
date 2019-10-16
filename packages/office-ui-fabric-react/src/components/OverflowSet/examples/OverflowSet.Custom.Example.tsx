@@ -1,19 +1,24 @@
 import * as React from 'react';
-import { CommandBarButton, IButtonStyles } from 'office-ui-fabric-react/lib/Button';
-import { SearchBox } from 'office-ui-fabric-react/lib/SearchBox';
-import { IOverflowSetItemProps, OverflowSet } from 'office-ui-fabric-react/lib/OverflowSet';
+import { CommandBarButton, IButtonStyles, IOverflowSetItemProps, OverflowSet, Checkbox } from 'office-ui-fabric-react';
 
 const noOp = () => undefined;
+
+const checkboxStyles = {
+  root: {
+    marginRight: 5
+  }
+};
 
 export class OverflowSetCustomExample extends React.PureComponent {
   public render(): JSX.Element {
     return (
       <OverflowSet
+        aria-label="Custom Example"
         items={[
           {
-            key: 'search',
+            key: 'checkbox',
             onRender: () => {
-              return <SearchBox placeholder="Search" styles={{ root: { marginBottom: 0, width: 200 } }} />;
+              return <Checkbox role="menuitem" label="A Checkbox" styles={checkboxStyles} />;
             }
           },
           {
@@ -52,27 +57,6 @@ export class OverflowSetCustomExample extends React.PureComponent {
         ]}
         overflowItems={[
           {
-            key: 'newItem',
-            name: 'Add',
-            icon: 'Add',
-            ariaLabel: 'New. Use left and right arrow keys to navigate',
-            onClick: noOp,
-            subMenuProps: {
-              items: [
-                {
-                  key: 'emailMessage',
-                  name: 'Email message',
-                  icon: 'Mail'
-                },
-                {
-                  key: 'calendarEvent',
-                  name: 'Calendar event',
-                  icon: 'Calendar'
-                }
-              ]
-            }
-          },
-          {
             key: 'move',
             name: 'Move to...',
             icon: 'MoveToFolder',
@@ -108,7 +92,7 @@ export class OverflowSetCustomExample extends React.PureComponent {
     if (item.onRender) {
       return item.onRender(item);
     }
-    return <CommandBarButton iconProps={{ iconName: item.icon }} menuProps={item.subMenuProps} text={item.name} />;
+    return <CommandBarButton role="menuitem" iconProps={{ iconName: item.icon }} menuProps={item.subMenuProps} text={item.name} />;
   };
 
   private _onRenderOverflowButton = (overflowItems: any[] | undefined): JSX.Element => {
@@ -120,6 +104,14 @@ export class OverflowSetCustomExample extends React.PureComponent {
         height: 'auto'
       }
     };
-    return <CommandBarButton styles={buttonStyles} menuIconProps={{ iconName: 'More' }} menuProps={{ items: overflowItems! }} />;
+    return (
+      <CommandBarButton
+        ariaLabel="More items"
+        role="menuitem"
+        styles={buttonStyles}
+        menuIconProps={{ iconName: 'More' }}
+        menuProps={{ items: overflowItems! }}
+      />
+    );
   };
 }

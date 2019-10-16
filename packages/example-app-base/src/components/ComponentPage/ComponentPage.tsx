@@ -66,6 +66,7 @@ export class ComponentPageBase extends React.PureComponent<IComponentPageProps> 
             {this._getOverview()}
             {this._getBestPractices()}
             {this._getVariants()}
+            {this._getAccessibility()}
             {this._getPropertiesTable()}
             {this._getFeedback()}
             {otherSections && otherSections.map(section => this._getSection(section))}
@@ -231,6 +232,19 @@ export class ComponentPageBase extends React.PureComponent<IComponentPageProps> 
         editUrl: this._getURL('Overview', editOverviewUrl),
         wrapperClass: this._styles.overviewSection,
         titleClass: this._styles.overviewHeading
+      });
+    }
+
+    return undefined;
+  }
+
+  private _getAccessibility(): JSX.Element | undefined {
+    const { accessibility, editOverviewUrl } = this.props;
+    if (accessibility) {
+      return this._getSection({
+        title: 'Accessibility',
+        section: accessibility,
+        editUrl: this._getURL('Accessibility', editOverviewUrl)
       });
     }
 

@@ -120,7 +120,13 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
       isSomeGroupExpanded: props.groupProps && !props.groupProps.isAllGroupsCollapsed
     };
 
-    this._selection = props.selection || new Selection({ onSelectionChanged: undefined, getKey: props.getKey });
+    this._selection =
+      props.selection ||
+      new Selection({
+        onSelectionChanged: undefined,
+        getKey: props.getKey,
+        selectionMode: props.selectionMode
+      });
 
     if (!this.props.disableSelectionZone) {
       this._selection.setItems(props.items as IObjectWithKey[], false);

@@ -167,7 +167,7 @@ export class SpinButton extends React.Component<ISpinButtonProps, ISpinButtonSta
 
     return (
       <div className={classNames.root}>
-        {labelPosition !== Position.bottom && (
+        {labelPosition !== Position.bottom && (iconProps || label) && (
           <div className={classNames.labelWrapper}>
             {iconProps && <Icon {...iconProps} className={classNames.icon} aria-hidden="true" />}
             {label && (
@@ -246,7 +246,7 @@ export class SpinButton extends React.Component<ISpinButtonProps, ISpinButtonSta
             </div>
           )}
         </KeytipData>
-        {labelPosition === Position.bottom && (
+        {labelPosition === Position.bottom && (iconProps || label) && (
           <div className={classNames.labelWrapper}>
             {iconProps && <Icon iconName={iconProps.iconName} className={classNames.icon} aria-hidden="true" />}
             {label && (

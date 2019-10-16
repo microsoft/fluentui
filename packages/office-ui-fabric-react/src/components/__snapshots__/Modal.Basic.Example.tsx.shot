@@ -125,7 +125,6 @@ exports[`Component Examples renders Modal.Basic.Example.tsx correctly 1`] = `
                 color: Window;
               }
           data-icon-name="CheckMark"
-          role="presentation"
         >
           
         </i>

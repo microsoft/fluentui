@@ -6,7 +6,7 @@ import { mergeStyles, FontWeights } from 'office-ui-fabric-react/lib/Styling';
 
 const SAMPLE_URL = 'https://contoso.sharepoint.com';
 
-export class FooterComponent extends React.Component<IFooterComponent, {}> {
+class FooterComponent extends React.Component<IFooterComponent, {}> {
   public render(): JSX.Element {
     const { buttonProps, activities } = this.props;
 

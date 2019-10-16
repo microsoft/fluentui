@@ -8,6 +8,7 @@ exports[`Component Examples renders Button.ContextualMenu.Example.tsx correctly 
   className=
       ms-Button
       ms-Button--default
+      ms-Button--hasMenu
       {
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;

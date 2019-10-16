@@ -17,7 +17,7 @@ export class TooltipBasicExample extends React.Component<any, any> {
           calloutProps={{ gapSpace: 0 }}
           styles={{ root: { display: 'inline-block' } }}
         >
-          <DefaultButton aria-labelledby={this._hostId}>Hover Over Me</DefaultButton>
+          <DefaultButton aria-describedby={this._hostId}>Hover Over Me</DefaultButton>
         </TooltipHost>
       </div>
     );

@@ -94,6 +94,21 @@ describe('DatePicker', () => {
     datePicker.unmount();
   });
 
+  it('should call custom onChange when allowTextInput is true', () => {
+    const onChange = jest.fn();
+    const datePicker = mount(<DatePickerBase allowTextInput={true} textField={{ onChange: onChange }} />);
+    const textField = datePicker.find('input');
+
+    expect(textField).toBeDefined();
+
+    textField.simulate('change', { target: { value: 'Jan 1 2020' } }).simulate('blur');
+    textField.simulate('change', { target: { value: '' } }).simulate('blur');
+
+    expect(onChange).toHaveBeenCalledTimes(2);
+
+    datePicker.unmount();
+  });
+
   // @todo: usage of document.querySelector is incorrectly testing DOM mounted by previous tests and needs to be fixed.
   it.skip('should call onSelectDate only once when allowTextInput is true and popup is used to select the value', () => {
     const onSelectDate = jest.fn();

@@ -67,7 +67,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                             speak: none;
                           }
                       data-icon-name="Up"
-                      role="presentation"
                     >
                       
                     </i>
@@ -96,7 +95,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                             speak: none;
                           }
                       data-icon-name="Down"
-                      role="presentation"
                     >
                       
                     </i>
@@ -1128,7 +1126,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                             speak: none;
                           }
                       data-icon-name="Up"
-                      role="presentation"
                     >
                       
                     </i>
@@ -1155,7 +1152,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                             speak: none;
                           }
                       data-icon-name="Down"
-                      role="presentation"
                     >
                       
                     </i>

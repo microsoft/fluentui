@@ -19,7 +19,7 @@ export const getStyles = (props: IFabricStyleProps): IFabricStyles => {
   return {
     root: [
       classNames.root,
-      isFocusVisible && 'is-focusVisible',
+      isFocusVisible && 'is-focusVisible ms-Fabric--isFocusVisible',
       theme.fonts.medium,
       {
         color: theme.palette.neutralPrimary,

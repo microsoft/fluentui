@@ -190,7 +190,6 @@ exports[`DatePicker renders default DatePicker correctly 1`] = `
                 }
             data-icon-name="Calendar"
             onClick={[Function]}
-            role="presentation"
           />
         </div>
       </div>

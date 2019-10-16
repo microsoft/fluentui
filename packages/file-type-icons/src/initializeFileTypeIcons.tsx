@@ -5,14 +5,14 @@ import { FileTypeIconMap } from './FileTypeIconMap';
 const PNG_SUFFIX = '_png';
 const SVG_SUFFIX = '_svg';
 
-const DEFAULT_BASE_URL = 'https://spoprod-a.akamaihd.net/files/fabric/assets/item-types-fluent/';
+const DEFAULT_BASE_URL = 'https://spoprod-a.akamaihd.net/files/fabric/assets/item-types/';
 const ICON_SIZES: number[] = [16, 20, 32, 40, 48, 64, 96];
 
 // Due to CDN cache, images updated in place may take up to a year to appear for some users
 // (though most users will see them within a week). To force immediate refresh, append a
 // unique string to the end of the URL. The CDN uses the URL as the cache key, so passing a
 // new URL will cause the CDN to create a new cache key.
-const REFRESH_STRING = '?refresh1';
+const REFRESH_STRING = '?v5';
 
 export function initializeFileTypeIcons(baseUrl: string = DEFAULT_BASE_URL, options?: Partial<IIconOptions>): void {
   ICON_SIZES.forEach((size: number) => {

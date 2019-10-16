@@ -87,6 +87,8 @@ export const getStyles = (props: IPersonaPresenceStyleProps): IPersonaPresenceSt
 
       size.isSize100 && makeSizeStyle(personaPresenceSize.size28),
 
+      size.isSize120 && makeSizeStyle(personaPresenceSize.size32),
+
       presence.isAvailable && {
         backgroundColor: presenceColorAvailable,
 
@@ -208,6 +210,11 @@ export const getStyles = (props: IPersonaPresenceStyleProps): IPersonaPresenceSt
       size.isSize100 && {
         fontSize: fonts.medium.fontSize,
         lineHeight: personaPresenceSize.size28
+      },
+
+      size.isSize120 && {
+        fontSize: fonts.medium.fontSize,
+        lineHeight: personaPresenceSize.size32
       },
 
       presence.isAway && {

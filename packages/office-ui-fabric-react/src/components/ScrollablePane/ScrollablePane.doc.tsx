@@ -9,10 +9,6 @@ const ScrollablePaneDefaultExampleCode = require('!raw-loader!office-ui-fabric-r
 const ScrollablePaneDetailsListExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ScrollablePane/examples/ScrollablePane.DetailsList.Example.tsx') as string;
 const ScrollablePaneStickyOptimizedDetailsListCode = require('!raw-loader!office-ui-fabric-react/src/components/ScrollablePane/examples/ScrollablePane.Sticky.Optimized.DetailsList.Example.tsx') as string;
 
-const ScrollablePaneDefaultExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/ScrollablePane/examples/ScrollablePane.Default.Example.tsx') as string;
-const ScrollablePaneDetailsListExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/ScrollablePane/examples/ScrollablePane.DetailsList.Example.tsx') as string;
-const ScrollablePaneStickyOptimizedDetailsListCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/ScrollablePane/examples/ScrollablePane.Sticky.Optimized.DetailsList.Example.tsx') as string;
-
 export const ScrollablePanePageProps: IDocPageProps = {
   title: 'ScrollablePane',
   componentName: 'ScrollablePane',
@@ -22,21 +18,18 @@ export const ScrollablePanePageProps: IDocPageProps = {
     {
       title: 'Default',
       code: ScrollablePaneDefaultExampleCode,
-      codepenJS: ScrollablePaneDefaultExampleCodepen,
       view: <ScrollablePaneDefaultExample />,
       isScrollable: false
     },
     {
       title: 'DetailsList Locked Header',
       code: ScrollablePaneDetailsListExampleCode,
-      codepenJS: ScrollablePaneDetailsListExampleCodepen,
       view: <ScrollablePaneDetailsListExample />,
       isScrollable: false
     },
     {
       title: 'Details List Locked Header & Footer (Optimized for Performance)',
       code: ScrollablePaneStickyOptimizedDetailsListCode,
-      codepenJS: ScrollablePaneStickyOptimizedDetailsListCodepen,
       view: <ScrollablePaneStickyOptimizedDetailsList />,
       isScrollable: false
     }

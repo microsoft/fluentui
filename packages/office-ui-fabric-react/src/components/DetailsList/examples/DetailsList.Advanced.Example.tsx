@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Link } from 'office-ui-fabric-react/lib/Link';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import { CommandBar } from 'office-ui-fabric-react/lib/CommandBar';
+import { Announced } from 'office-ui-fabric-react/lib/Announced';
 import { IContextualMenuProps, IContextualMenuItem, DirectionalHint, ContextualMenu } from 'office-ui-fabric-react/lib/ContextualMenu';
 import {
   CheckboxVisibility,
@@ -71,6 +72,7 @@ export interface IDetailsListAdvancedExampleState {
   selectionMode?: SelectionMode;
   sortedColumnKey?: string;
   selectionCount: number;
+  announcedMessage?: string;
 }
 
 export class DetailsListAdvancedExample extends React.Component<{}, IDetailsListAdvancedExampleState> {
@@ -121,7 +123,8 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
       isLazyLoaded,
       items,
       layoutMode,
-      selectionMode
+      selectionMode,
+      announcedMessage
     } = this.state;
 
     const isGrouped = groups && groups.length > 0;
@@ -155,6 +158,8 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
         />
 
         {isGrouped ? <TextField label="Group item limit" onChange={this._onItemLimitChanged} /> : null}
+
+        {announcedMessage ? <Announced message={announcedMessage} /> : undefined}
 
         <DetailsList
           setKey="items"
@@ -542,6 +547,7 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
 
     this.setState({
       items: sortedItems,
+      announcedMessage: `${columnKey} is sorted ${isSortedDescending ? 'descending' : 'ascending'}`,
       groups: undefined,
       columns: this._buildColumns(
         sortedItems,

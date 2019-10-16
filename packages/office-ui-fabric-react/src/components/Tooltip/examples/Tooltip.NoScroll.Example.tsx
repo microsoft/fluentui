@@ -14,7 +14,7 @@ export class TooltipNoScrollExample extends BaseComponent<{}> {
         tooltipProps={{ style: { overflowY: 'auto' } }}
         styles={{ root: { display: 'inline-block' } }}
       >
-        <DefaultButton aria-labelledby={this.tooltipId}>Tooltip without scroll</DefaultButton>
+        <DefaultButton aria-describedby={this.tooltipId}>Tooltip without scroll</DefaultButton>
       </TooltipHost>
     );
   }

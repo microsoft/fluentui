@@ -5,8 +5,9 @@ import { Customizations, CustomizerContext, ICustomizerContext } from '@uifabric
 import { createFactory, getSlots } from '../slots';
 import { assign } from '../utilities';
 import { ICustomizationProps, IStyleableComponentProps, IStylesFunctionOrObject, IToken, ITokenFunction } from '../IComponent';
-import { IComponentOptions } from './IComponent';
-import { IDefaultSlotProps, ISlotCreator, ValidProps, ISlottableProps } from '../ISlots';
+import { IComponentOptions, IPartialSlotComponent, IRecompositionComponentOptions, ISlotComponent } from './IComponent';
+import { IDefaultSlotProps, ValidProps, ISlottableProps, ISlotCreator, ISlotDefinition } from '../ISlots';
+import { IFoundationComponent } from './ISlots';
 
 interface IClassNamesMapNode {
   className?: string;
@@ -42,13 +43,92 @@ export function composed<
   TComponentSlots = {},
   TStatics = {}
 >(
-  options: IComponentOptions<TComponentProps, TTokens, TStyleSet, TViewProps, TComponentSlots, TStatics> = {}
-): React.FunctionComponent<TComponentProps> & TStatics {
+  options: IComponentOptions<TComponentProps, TTokens, TStyleSet, TViewProps, TComponentSlots, TStatics>
+): IFoundationComponent<TComponentProps, TTokens, TStyleSet, TViewProps, TComponentSlots, TStatics> & TStatics;
+
+/**
+ * Recomposes a functional component based on a base component and the following set of options: styles, theme, view, and state.
+ * Imposes a separation of concern and centralizes styling processing to increase ease of use and robustness
+ * in how components use and apply styling and theming.
+ *
+ * Automatically merges and applies themes and styles with theme / styleprops having the highest priority.
+ * State component, if provided, is passed in props for processing. Props from state / user are automatically processed
+ * and styled before finally being passed to view.
+ *
+ * State components should contain all stateful behavior and should not generate any JSX, but rather simply call the view prop.
+ * Views should simply be stateless pure functions that receive all props needed for rendering their output.
+ * State component is optional. If state is not provided, created component is essentially a functional stateless component.
+ *
+ * @param baseComponent - base component to recompose
+ * @param options - component Component recomposition options. See IComponentOptions for more detail.
+ */
+export function composed<
+  TComponentProps extends ValidProps & ISlottableProps<TComponentSlots>,
+  TTokens,
+  TStyleSet extends IStyleSet<TStyleSet>,
+  TViewProps extends TComponentProps = TComponentProps,
+  TComponentSlots = {},
+  TStatics = {}
+>(
+  baseComponent: React.FunctionComponent,
+  options: IRecompositionComponentOptions<TComponentProps, TTokens, TStyleSet, TViewProps, TComponentSlots, TStatics>
+): IFoundationComponent<TComponentProps, TTokens, TStyleSet, TViewProps, TComponentSlots, TStatics> & TStatics;
+
+/**
+ * Assembles a higher order component based on a set of options or recomposes a functional component based on a base component
+ * and the a set of options. This set of options is comprised by: styles, theme, view, and state.
+ *
+ * Imposes a separation of concern and centralizes styling processing to increase ease of use and robustness
+ * in how components use and apply styling and theming.
+ *
+ * Automatically merges and applies themes and styles with theme / styleprops having the highest priority.
+ * State component, if provided, is passed in props for processing. Props from state / user are automatically processed
+ * and styled before finally being passed to view.
+ *
+ * State components should contain all stateful behavior and should not generate any JSX, but rather simply call the view prop.
+ * Views should simply be stateless pure functions that receive all props needed for rendering their output.
+ * State component is optional. If state is not provided, created component is essentially a functional stateless component.
+ *
+ * @param baseComponentOrOptions - base component to recompose or component Component options to compose an HOC.
+ * See IComponentOptions for more detail.
+ * @param recompositionOptions - component Component recomposition options. See IComponentOptions for more detail.
+ */
+export function composed<
+  TComponentProps extends ValidProps & ISlottableProps<TComponentSlots>,
+  TTokens,
+  TStyleSet extends IStyleSet<TStyleSet>,
+  TViewProps extends TComponentProps = TComponentProps,
+  TComponentSlots = {},
+  TStatics = {}
+>(
+  baseComponentOrOptions:
+    | IFoundationComponent<TComponentProps, TTokens, TStyleSet, TViewProps, TComponentSlots, TStatics>
+    | IComponentOptions<TComponentProps, TTokens, TStyleSet, TViewProps, TComponentSlots, TStatics> = {},
+  recompositionOptions?: IRecompositionComponentOptions<TComponentProps, TTokens, TStyleSet, TViewProps, TComponentSlots, TStatics>
+): IFoundationComponent<TComponentProps, TTokens, TStyleSet, TViewProps, TComponentSlots, TStatics> & TStatics {
+  // Check if we are composing or recomposing.
+  let options: IComponentOptions<TComponentProps, TTokens, TStyleSet, TViewProps, TComponentSlots, TStatics>;
+  if (typeof baseComponentOrOptions === 'function' && baseComponentOrOptions.__options) {
+    const baseComponentOptions = baseComponentOrOptions.__options;
+    const recompositionSlots = recompositionOptions ? recompositionOptions.slots : undefined;
+
+    options = {
+      ...baseComponentOptions,
+      ...recompositionOptions,
+      slots: props => ({
+        ...resolveSlots(baseComponentOptions.slots, props),
+        ...resolveSlots(recompositionSlots, props)
+      })
+    };
+  } else {
+    options = baseComponentOrOptions;
+  }
+
   const { factoryOptions = {}, view } = options;
   const { defaultProp } = factoryOptions;
 
-  const result: React.FunctionComponent<TComponentProps> = (
-    componentProps: TViewProps & IStyleableComponentProps<TViewProps, TTokens, TStyleSet>
+  const result: IFoundationComponent<TComponentProps, TTokens, TStyleSet, TViewProps, TComponentSlots, TStatics> = (
+    componentProps: TViewProps & IStyleableComponentProps<TViewProps, TTokens, TStyleSet> & { children?: React.ReactNode }
   ) => {
     const settings: ICustomizationProps<TViewProps, TTokens, TStyleSet> = _getCustomizations(
       options.displayName,
@@ -163,10 +243,26 @@ export function composed<
     (result as ISlotCreator<TComponentProps, any>).create = createFactory(result, { defaultProp });
   }
 
+  result.__options = options;
+
   assign(result, options.statics);
 
   // Later versions of TypeSript should allow us to merge objects in a type safe way and avoid this cast.
-  return result as React.FunctionComponent<TComponentProps> & TStatics;
+  return result as IFoundationComponent<TComponentProps, TTokens, TStyleSet, TViewProps, TComponentSlots, TStatics> & TStatics;
+}
+
+/**
+ * Resolve the passed slots as a function or an object.
+ *
+ * @param slots - Slots that need to be resolved as a function or an object.
+ * @param data - Data to pass to resolve if the first argument was a function.
+ */
+export function resolveSlots<TComponentProps extends ISlottableProps<TComponentSlots>, TComponentSlots>(
+  slots: IPartialSlotComponent<TComponentProps, TComponentSlots> | ISlotComponent<TComponentProps, TComponentSlots> | undefined,
+  data: TComponentProps
+): ISlotDefinition<Required<TComponentSlots>> {
+  const resolvedSlots = slots ? (typeof slots === 'function' ? slots(data) : slots) : {};
+  return resolvedSlots as ISlotDefinition<Required<TComponentSlots>>;
 }
 
 /**

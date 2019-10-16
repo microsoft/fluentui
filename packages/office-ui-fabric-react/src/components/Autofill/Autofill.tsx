@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { IAutofillProps, IAutofill } from './Autofill.types';
-import { BaseComponent, KeyCodes, getNativeProps, inputProperties } from '../../Utilities';
+import { BaseComponent, KeyCodes, getNativeProps, inputProperties, isIE11 } from '../../Utilities';
 
 export interface IAutofillState {
   displayValue?: string;
@@ -20,6 +20,7 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
   private _inputElement = React.createRef<HTMLInputElement>();
   private _autoFillEnabled = true;
   private _value: string;
+  private _isComposing: boolean = false;
 
   constructor(props: IAutofillProps) {
     super(props);
@@ -124,6 +125,7 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
         autoCapitalize={'off'}
         autoComplete={'off'}
         onCompositionStart={this._onCompositionStart}
+        onCompositionUpdate={this._onCompositionUpdate}
         onCompositionEnd={this._onCompositionEnd}
         // TODO (Fabric 8?) - switch to calling only onChange. See notes in TextField._onInputChange.
         onChange={this._onChanged}
@@ -149,7 +151,17 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
   // Some examples of this are mobile text input and langauges like Japanese or Arabic.
   // Find out more at https://developer.mozilla.org/en-US/docs/Web/Events/compositionstart
   private _onCompositionStart = (ev: React.CompositionEvent<HTMLInputElement>) => {
+    this._isComposing = true;
     this._autoFillEnabled = false;
+  };
+
+  // Composition events are used when the character/text requires several keystrokes to be completed.
+  // Some examples of this are mobile text input and languages like Japanese or Arabic.
+  // Find out more at https://developer.mozilla.org/en-US/docs/Web/Events/compositionstart
+  private _onCompositionUpdate = () => {
+    if (isIE11()) {
+      this._updateValue(this._getCurrentInputValue());
+    }
   };
 
   // Composition events are used when the character/text requires several keystrokes to be completed.
@@ -158,15 +170,11 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
   private _onCompositionEnd = (ev: React.CompositionEvent<HTMLInputElement>) => {
     const inputValue = this._getCurrentInputValue();
     this._tryEnableAutofill(inputValue, this.value, false, true);
-    // Korean characters typing issue has been addressed in React 16.5
-    // TODO: revert back below lines when we upgrade to React 16.5
-    // Find out at https://github.com/facebook/react/pull/12563/commits/06524c6c542c571705c0fd7df61ac48f3d5ce244
-    const isKorean = (ev.nativeEvent as any).locale === 'ko';
+    this._isComposing = false;
     // Due to timing, this needs to be async, otherwise no text will be selected.
     this._async.setTimeout(() => {
-      // Call getCurrentInputValue here again since there can be a race condition where this value has changed during the async call
-      const updatedInputValue = isKorean ? this.value : this._getCurrentInputValue();
-      this._updateValue(updatedInputValue);
+      // Call getCurrentInputValue here again since there can be a race condition where this value has changed during the async cal
+      this._updateValue(this._getCurrentInputValue());
     }, 0);
   };
 
@@ -209,9 +217,14 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
   private _onInputChanged = (ev: React.FormEvent<HTMLElement>) => {
     const value: string = this._getCurrentInputValue(ev);
 
-    // Right now typing does not have isComposing, once that has been fixed any should be removed.
-    this._tryEnableAutofill(value, this._value, (ev.nativeEvent as any).isComposing);
-    this._updateValue(value);
+    if (!this._isComposing) {
+      this._tryEnableAutofill(value, this._value, (ev.nativeEvent as any).isComposing);
+    }
+
+    // If it is not IE11 and currently composing, update the value
+    if (!(isIE11() && this._isComposing)) {
+      this._updateValue(value);
+    }
   };
 
   private _onChanged = (): void => {

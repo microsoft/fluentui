@@ -1,7 +1,25 @@
 # Change Log - @uifabric/icons
 
-This log was last generated on Wed, 04 Sep 2019 04:09:58 GMT and should not be manually modified.
+This log was last generated on Mon, 23 Sep 2019 12:33:15 GMT and should not be manually modified.
 
+## 7.3.0
+Mon, 23 Sep 2019 12:33:15 GMT
+
+### Minor changes
+
+- Updates icons to v3.50, adding new icons and visual changes to some existing ones. (pejahn@microsoft.com)
+## 7.2.1
+Thu, 12 Sep 2019 12:34:15 GMT
+
+### Patches
+
+- Enable api-extractor for OUFR deps (elcraig@microsoft.com)
+## 7.2.0
+Wed, 04 Sep 2019 12:32:15 GMT
+
+### Minor changes
+
+- Update Fabric icons to v3.46, adding many new icons. (pejahn@microsoft.com)
 ## 7.1.3
 Wed, 04 Sep 2019 04:09:58 GMT
 

@@ -185,6 +185,19 @@ storiesOf('Persona', module)
     { rtl: true }
   )
   .addStory(
+    'size120',
+    () => (
+      <div>
+        <Persona
+          {...examplePersona}
+          size={PersonaSize.size120}
+          presence={PersonaPresence.blocked}
+        />
+      </div>
+    ),
+    { rtl: true }
+  )
+  .addStory(
     'Initials',
     () => (
       <Persona

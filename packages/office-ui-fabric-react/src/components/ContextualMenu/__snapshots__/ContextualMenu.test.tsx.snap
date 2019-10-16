@@ -4,10 +4,11 @@ exports[`ContextualMenu ContextualMenu snapshot ContextualMenu should be present
 <button
   aria-expanded={false}
   aria-haspopup={true}
-  aria-owns="id__94-menu"
+  aria-owns={null}
   className=
       ms-Button
       ms-Button--default
+      ms-Button--hasMenu
       {
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
@@ -467,7 +468,6 @@ exports[`ContextualMenu ContextualMenu snapshot ContextualMenu should be present
                                   font-size: 16px;
                                 }
                             data-icon-name="ChevronRight"
-                            role="presentation"
                           >
                             
                           </i>

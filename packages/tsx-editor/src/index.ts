@@ -1,5 +1,7 @@
+// This file exports only things which don't import Monaco aside from its types.
+// So it should be safe to import from a bundle size impact perspective and hopefully should
+// work with Jest (because it only references the .d.ts file, which Jest understands).
 export * from './components/index';
+export * from './interfaces/index';
 export * from './transpiler/index';
-
-// Intentionally not exporting the utilities, since those really ought to live in example-app-base
-// and are exported from there
+export * from './utilities/index';

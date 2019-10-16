@@ -92,7 +92,8 @@ export function getStyles(props: IBasePickerStyleProps): IBasePickerStyles {
         outline: 'none',
         padding: '0 6px 0',
         alignSelf: 'flex-end',
-        borderRadius: effects.roundedCorner2
+        borderRadius: effects.roundedCorner2,
+        backgroundColor: 'transparent'
       },
       inputClassName
     ],

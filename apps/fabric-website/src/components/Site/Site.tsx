@@ -151,9 +151,9 @@ export class Site<TPlatforms extends string = string> extends React.Component<IS
         {this._renderMessageBar()}
         <div className={css(styles.siteWrapper, isContentFullBleed && styles.fullWidth)}>
           {this._renderPageNav()}
-          <main className={styles.siteContent} data-is-scrollable="true" data-app-content-div="true" role="main">
+          <div className={styles.siteContent} data-is-scrollable="true" data-app-content-div="true" role="main">
             {childrenWithPlatform}
-          </main>
+          </div>
         </div>
         {this._renderPlatformBar()}
       </div>

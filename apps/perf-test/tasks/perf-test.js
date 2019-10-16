@@ -9,30 +9,87 @@ const { argv } = require('@uifabric/build').just;
 // Flamegrill Types
 /**
  * @typedef {{
+ *   scenario: string;
+ *   baseline?: string;
+ * }} Scenario
+ *
+ * @typedef {{
+ *   [scenarioName: string]: Scenario;
+ * }} Scenarios
+ *
+ * @typedef {{
  *   outDir?: string;
  *   tempDir?: string;
  * }} ScenarioConfig
  *
  * @typedef {{
- *   dataFile?: string;
- *   errorFile?: string;
- *   flamegraphFile?: string;
- *   regressionFile?: string;
- * }} OutputFiles
+ *   Timestamp: number;
+ *   Documents: number;
+ *   Frames: number;
+ *   JSEventListeners: number;
+ *   Nodes: number;
+ *   LayoutCount: number;
+ *   RecalcStyleCount: number;
+ *   LayoutDuration: number;
+ *   RecalcStyleDuration: number;
+ *   ScriptDuration: number;
+ *   TaskDuration: number;
+ *   JSHeapUsedSize: number;
+ *   JSHeapTotalSize: number;
+ * }} Metrics
  *
  * @typedef {{
- *   numTicks?: number;
- *   files?: OutputFiles;
- *   isRegression?: boolean;
- *   reference?: {
- *     files?: OutputFiles;
- *     numTicks?: number;
+ *   logFile: string;
+ *   metrics: Metrics;
+ *   baseline?: {
+ *     logFile: string;
+ *     metrics: Metrics;
  *   }
+ * }} ScenarioProfile
+ *
+ * @typedef {{
+ *   dataFile: string;
+ *   flamegraphFile: string;
+ * }} ProcessedOutput
+ *
+ * @typedef {{
+ *   errorFile: string;
+ * }} ProcessedError
+ *
+ * @typedef {{
+ *   output?: ProcessedOutput;
+ *   error?: ProcessedError;
+ *   baseline?: {
+ *     output?: ProcessedOutput;
+ *     error?: ProcessedError;
+ *   }
+ * }} ProcessedScenario
+ *
+ * @typedef {{
+ *   numTicks: number;
  * }} Analysis
  *
  * @typedef {{
- *   [key: string]: Analysis;
- * }} Analyses
+ *   summary: string;
+ *   isRegression: boolean;
+ *   regressionFile?: string;
+ * }} RegressionAnalysis
+ *
+ * @typedef {{
+ *   numTicks: number;
+ *   baseline?: Analysis;
+ *   regression?: RegressionAnalysis;
+ * }} ScenarioAnalysis
+ *
+ * @typedef {{
+ *   profile: ScenarioProfile;
+ *   processed: ProcessedScenario;
+ *   analysis?: ScenarioAnalysis;
+ * }} CookResult
+ *
+ * @typedef {{
+ *   [scenarioName: string]: CookResult;
+ * }} CookResults
  */
 
 // A high number of iterations are needed to get visualization of lower level calls that are infrequently hit by ticks.
@@ -160,43 +217,40 @@ module.exports = async function getPerfRegressions() {
 
   const scenarioList = scenariosArg.length > 0 ? scenariosArg : scenariosAvailable;
 
-  const scenarios = [];
-  scenarioList.forEach(scenario => {
-    if (!scenariosAvailable.includes(scenario)) {
-      throw new Error(`Invalid scenario: ${scenario}.`);
+  /** @type {Scenarios} */
+  const scenarios = {};
+  scenarioList.forEach(scenarioName => {
+    if (!scenariosAvailable.includes(scenarioName)) {
+      throw new Error(`Invalid scenario: ${scenarioName}.`);
     }
     // These lines can be used to check for consistency.
     // Array.from({ length: 20 }, (entry, index) => {
-    scenarios.push({
-      // name: scenario + index,
-      name: scenario,
-      reference: `${urlForMaster}?scenario=${scenario}&iterations=${iterations}`,
-      scenario: `${urlForDeploy}?scenario=${scenario}&iterations=${iterations}`
-    });
-    // });
+    scenarios[scenarioName] = {
+      // scenarios[scenarioName + index] = {
+      baseline: `${urlForMaster}?scenario=${scenarioName}&iterations=${iterations}`,
+      scenario: `${urlForDeploy}?scenario=${scenarioName}&iterations=${iterations}`
+    };
   });
+  // });
 
   console.log(`\nRunning ${iterations} iterations for each of these scenarios: ${scenarioList}\n`);
 
-  if (!fs.existsSync(tempDir)) {
-    console.log(`Making temp directory ${tempDir}...`);
-    fs.mkdirSync(tempDir);
-  }
+  if (fs.existsSync(tempDir)) {
+    const tempContents = fs.readdirSync(tempDir);
 
-  const tempContents = fs.readdirSync(tempDir);
-
-  if (tempContents.length > 0) {
-    console.log(`Unexpected files already present in ${tempDir}`);
-    tempContents.forEach(logFile => {
-      const logFilePath = path.join(tempDir, logFile);
-      console.log(`Deleting ${logFilePath}`);
-      fs.unlinkSync(logFilePath);
-    });
+    if (tempContents.length > 0) {
+      console.log(`Unexpected files already present in ${tempDir}`);
+      tempContents.forEach(logFile => {
+        const logFilePath = path.join(tempDir, logFile);
+        console.log(`Deleting ${logFilePath}`);
+        fs.unlinkSync(logFilePath);
+      });
+    }
   }
 
   /** @type {ScenarioConfig} */
   const scenarioConfig = { outDir, tempDir };
-  /** @type {Analyses} */
+  /** @type {CookResults} */
   const scenarioResults = await flamegrill.cook(scenarios, scenarioConfig);
 
   const comment = createReport(scenarioResults);
@@ -217,7 +271,7 @@ module.exports = async function getPerfRegressions() {
 /**
  * Create test summary based on test results.
  *
- * @param {Analyses} testResults
+ * @param {CookResults} testResults
  * @returns {string}
  */
 function createReport(testResults) {
@@ -237,12 +291,15 @@ function createReport(testResults) {
 /**
  * Create a table of scenario results.
  *
- * @param {Analyses} testResults
+ * @param {CookResults} testResults
  * @param {boolean} showAll Show only significant results by default.
  * @returns {string}
  */
 function createScenarioTable(testResults, showAll) {
-  const resultsToDisplay = Object.keys(testResults).filter(key => showAll || testResults[key].isRegression);
+  const resultsToDisplay = Object.keys(testResults).filter(
+    key =>
+      showAll || (testResults[key].analysis && testResults[key].analysis.regression && testResults[key].analysis.regression.isRegression)
+  );
 
   if (resultsToDisplay.length === 0) {
     return '<p>No significant results to display.</p>';
@@ -266,8 +323,8 @@ function createScenarioTable(testResults, showAll) {
 
         return `<tr>
             <td>${scenarioNames[key] || key}</td>
-            ${getCell(testResult.reference)}
-            ${getCell(testResult)}
+            ${getCell(testResult, true)}
+            ${getCell(testResult, false)}
             ${getRegression(testResult)}
            </tr>`;
       })
@@ -283,14 +340,26 @@ function createScenarioTable(testResults, showAll) {
 /**
  * Helper that renders an output cell based on a test result.
  *
- * @param {Analysis} testResult
+ * @param {CookResult} testResult
+ * @param {boolean} getBaseline
  * @returns {string}
  */
-function getCell(testResult) {
-  const cell = testResult.files
-    ? testResult.files.errorFile
-      ? `<a href="${urlForDeployPath}/${path.basename(testResult.files.errorFile)}">err</a>`
-      : `<a href="${urlForDeployPath}/${path.basename(testResult.files.flamegraphFile)}">${testResult.numTicks}</a>`
+function getCell(testResult, getBaseline) {
+  let flamegraphFile = testResult.processed.output && testResult.processed.output.flamegraphFile;
+  let errorFile = testResult.processed.error && testResult.processed.error.errorFile;
+  let numTicks = testResult.analysis && testResult.analysis.numTicks;
+
+  if (getBaseline) {
+    const processedBaseline = testResult.processed.baseline;
+    flamegraphFile = processedBaseline && processedBaseline.output && processedBaseline.output.flamegraphFile;
+    errorFile = processedBaseline && processedBaseline.error && processedBaseline.error.errorFile;
+    numTicks = testResult.analysis && testResult.analysis.baseline && testResult.analysis.baseline.numTicks;
+  }
+
+  const cell = errorFile
+    ? `<a href="${urlForDeployPath}/${path.basename(errorFile)}">err</a>`
+    : flamegraphFile
+    ? `<a href="${urlForDeployPath}/${path.basename(flamegraphFile)}">${numTicks}</a>`
     : `n/a`;
 
   return `<td>${cell}</td>`;
@@ -299,15 +368,16 @@ function getCell(testResult) {
 /**
  * Helper that renders an output cell based on a test result.
  *
- * @param {Analysis} testResult
+ * @param {CookResult} testResult
  * @returns {string}
  */
 function getRegression(testResult) {
-  const cell = testResult.isRegression
-    ? testResult.files.regressionFile
-      ? `<a href="${urlForDeployPath}/${path.basename(testResult.files.regressionFile)}">Possible regression</a>`
-      : ''
-    : '';
+  const cell =
+    testResult.analysis && testResult.analysis.regression && testResult.analysis.regression.isRegression
+      ? testResult.analysis.regression.regressionFile
+        ? `<a href="${urlForDeployPath}/${path.basename(testResult.analysis.regression.regressionFile)}">Possible regression</a>`
+        : ''
+      : '';
 
   return `<td>${cell}</td>`;
 }

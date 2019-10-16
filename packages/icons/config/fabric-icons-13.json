@@ -10,6 +10,70 @@
   },
   "glyphs": [
     {
+      "name": "RectangularClipping",
+      "unicode": "F407"
+    },
+    {
+      "name": "TeamsLogo16",
+      "unicode": "F40A"
+    },
+    {
+      "name": "TeamsLogoFill16",
+      "unicode": "F40B"
+    },
+    {
+      "name": "Spacer",
+      "unicode": "F40D"
+    },
+    {
+      "name": "SkypeLogo16",
+      "unicode": "F40E"
+    },
+    {
+      "name": "SkypeForBusinessLogo16",
+      "unicode": "F40F"
+    },
+    {
+      "name": "SkypeForBusinessLogoFill16",
+      "unicode": "F410"
+    },
+    {
+      "name": "FilterSolid",
+      "unicode": "F412"
+    },
+    {
+      "name": "MailUndelivered",
+      "unicode": "F415"
+    },
+    {
+      "name": "MailTentative",
+      "unicode": "F416"
+    },
+    {
+      "name": "MailTentativeMirrored",
+      "unicode": "F417"
+    },
+    {
+      "name": "MailReminder",
+      "unicode": "F418"
+    },
+    {
+      "name": "ReceiptUndelivered",
+      "unicode": "F419"
+    },
+    {
+      "name": "ReceiptTentative",
+      "unicode": "F41A"
+    },
+    {
+      "name": "ReceiptTentativeMirrored",
+      "unicode": "F41B"
+    },
+    {
+      "name": "Inbox",
+      "unicode": "F41C"
+    },
+    {
       "name": "IRMReply",
       "unicode": "F41D"
     },
@@ -344,70 +408,6 @@
     {
       "name": "ToDoLogoInverse",
       "unicode": "F4BC"
-    },
-    {
-      "name": "Snooze",
-      "unicode": "F4BD"
-    },
-    {
-      "name": "WaffleOffice365",
-      "unicode": "F4E0"
-    },
-    {
-      "name": "ImageSearch",
-      "unicode": "F4E8"
-    },
-    {
-      "name": "NewsSearch",
-      "unicode": "F4E9"
-    },
-    {
-      "name": "VideoSearch",
-      "unicode": "F4EA"
-    },
-    {
-      "name": "R",
-      "unicode": "F4EB"
-    },
-    {
-      "name": "FontColorA",
-      "unicode": "F4EC"
-    },
-    {
-      "name": "FontColorSwatch",
-      "unicode": "F4ED"
-    },
-    {
-      "name": "LightWeight",
-      "unicode": "F4EE"
-    },
-    {
-      "name": "NormalWeight",
-      "unicode": "F4EF"
-    },
-    {
-      "name": "SemiboldWeight",
-      "unicode": "F4F0"
-    },
-    {
-      "name": "GroupObject",
-      "unicode": "F4F1"
-    },
-    {
-      "name": "UngroupObject",
-      "unicode": "F4F2"
-    },
-    {
-      "name": "AlignHorizontalLeft",
-      "unicode": "F4F3"
-    },
-    {
-      "name": "AlignHorizontalCenter",
-      "unicode": "F4F4"
-    },
-    {
-      "name": "AlignHorizontalRight",
-      "unicode": "F4F5"
     }
   ]
 }

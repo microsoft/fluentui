@@ -88,6 +88,8 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
 
   /**
    * Custom renderer for the label.
+   * If you don't call defaultRender, ensure that you give your custom-rendered label an id and that
+   * you set the textfield's aria-labelledby prop to that id.
    */
   onRenderLabel?: IRenderFunction<ITextFieldProps>;
 

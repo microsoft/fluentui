@@ -2,6 +2,8 @@
 
 exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 1`] = `
 <div
+  aria-label="Document Card with multiple items, commands and views. Marketing documents. 6 files were uploaded.
+        Created by Annie Lindqvist in February 23, 2016. 432 views."
   className=
       ms-DocumentCard
       ms-DocumentCard--actionable
@@ -625,7 +627,6 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
               font-size: 14px;
               font-weight: 400;
               height: 32px;
-              min-width: 32px;
               outline: transparent;
               padding-bottom: 0;
               padding-left: 4px;
@@ -636,6 +637,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
               text-decoration: none;
               user-select: none;
               vertical-align: top;
+              width: 32px;
             }
             &::-moz-focus-inner {
               border: 0;
@@ -771,7 +773,6 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
               font-size: 14px;
               font-weight: 400;
               height: 32px;
-              min-width: 32px;
               outline: transparent;
               padding-bottom: 0;
               padding-left: 4px;
@@ -782,6 +783,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
               text-decoration: none;
               user-select: none;
               vertical-align: top;
+              width: 32px;
             }
             &::-moz-focus-inner {
               border: 0;
@@ -917,7 +919,6 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
               font-size: 14px;
               font-weight: 400;
               height: 32px;
-              min-width: 32px;
               outline: transparent;
               padding-bottom: 0;
               padding-left: 4px;
@@ -928,6 +929,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
               text-decoration: none;
               user-select: none;
               vertical-align: top;
+              width: 32px;
             }
             &::-moz-focus-inner {
               border: 0;
@@ -1050,7 +1052,6 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
               vertical-align: top;
             }
         data-icon-name="View"
-        role="presentation"
       >
         
       </i>

@@ -30,7 +30,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
             // prettier-ignore
             { text: enDash + ' Fabric React', url: 'fabric-react' },
             { text: enDash + ' Fabric Core', url: 'fabric-core' },
-            { text: enDash + ' Fabric Icons tool', url: 'fabric-ions-tool' }
+            { text: enDash + ' Fabric Icons tool', url: 'fabric-icons-tool' }
           ]
         },
 

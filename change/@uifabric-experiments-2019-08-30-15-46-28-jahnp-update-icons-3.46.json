@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Add change file for new icons snapshots",
-  "packageName": "@uifabric/experiments",
-  "email": "pejahn@microsoft.com",
-  "commit": "44e972ea7ac581303bbc4cc931ae89bac7c719d1",
-  "date": "2019-08-30T22:46:28.940Z"
-}

@@ -23,6 +23,7 @@ export class PanelCustomLeftExample extends React.Component<
           isOpen={this.state.showPanel}
           onDismiss={this._closePanel}
           type={PanelType.customNear}
+          closeButtonAriaLabel="Close"
           customWidth="888px"
           headerText="Custom Left Panel with custom 888px width"
         >

@@ -46,6 +46,7 @@ exports[`Button renders a Button inside a CommandBar correctly 1`] = `
         role="menubar"
       >
         <div
+          aria-orientation="horizontal"
           className=
               ms-OverflowSet
               ms-CommandBar-primaryCommand
@@ -2216,7 +2217,6 @@ exports[`Button renders a primary Button with custom content and icon right-alig
           speak: none;
         }
     data-icon-name="Upload"
-    role="presentation"
   >
     
   </i>

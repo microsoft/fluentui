@@ -157,6 +157,8 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
       <FloatingPicker
         componentRef={this.floatingPicker}
         onChange={this._onSuggestionSelected}
+        onSuggestionsHidden={this._onSuggestionsShownOrHidden}
+        onSuggestionsShown={this._onSuggestionsShownOrHidden}
         inputElement={this.input.current ? this.input.current.inputElement : undefined}
         selectedItems={this.items}
         suggestionItems={this.props.suggestionItems ? this.props.suggestionItems : undefined}
@@ -281,6 +283,19 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
 
   protected _onSelectedItemsChanged = (): void => {
     this.focus();
+  };
+
+  /**
+   * The floating picker is the source of truth for if the menu has been opened or not.
+   *
+   * Because this isn't tracked inside the state of this component, we need to
+   * force an update here to keep the rendered output that depends on the picker being open
+   * in sync with the state
+   *
+   * Called when the suggestions is shown or closed
+   */
+  private _onSuggestionsShownOrHidden = () => {
+    this.forceUpdate();
   };
 
   private _addProcessedItem(newItem: T) {

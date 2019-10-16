@@ -4,9 +4,9 @@
  *
  * @param ariaAttributes - ARIA attributes to merge
  */
-export function mergeAriaAttributeValues(...ariaAttributes: (string | undefined)[]): string | undefined {
+export function mergeAriaAttributeValues(...ariaAttributes: (string | undefined | false)[]): string | undefined {
   const mergedAttribute = ariaAttributes
-    .filter((arg: string | undefined) => arg !== undefined && arg !== null)
+    .filter((arg: string | undefined | false) => arg)
     .join(' ')
     .trim();
   return mergedAttribute === '' ? undefined : mergedAttribute;

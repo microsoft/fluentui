@@ -28,7 +28,7 @@ export class TooltipCustomExample extends React.Component<any, any> {
         directionalHint={DirectionalHint.bottomCenter}
         styles={{ root: { display: 'inline-block' } }}
       >
-        <DefaultButton aria-labelledby={this._hostId} text="Hover Over Me" />
+        <DefaultButton aria-describedby={this._hostId} text="Hover Over Me" />
       </TooltipHost>
     );
   }

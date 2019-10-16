@@ -102,19 +102,34 @@ export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPi
     return (
       <div className={classNames.root}>
         <div className={classNames.panel}>
-          <ColorRectangle color={color} onChange={this._onSVChanged} />
-          <ColorSlider className="is-hue" minValue={0} maxValue={MAX_COLOR_HUE} value={color.h} onChange={this._onHChanged} />
-          {!props.alphaSliderHidden && (
-            <ColorSlider
-              className="is-alpha"
-              isAlpha
-              overlayStyle={{ background: `linear-gradient(to right, transparent 0, #${color.hex} 100%)` }}
-              minValue={0}
-              maxValue={MAX_COLOR_ALPHA}
-              value={color.a}
-              onChange={this._onAChanged}
-            />
-          )}
+          <ColorRectangle color={color} onChange={this._onSVChanged} className={classNames.colorRectangle} />
+          <div className={classNames.flexContainer}>
+            <div className={classNames.flexSlider}>
+              <ColorSlider className="is-hue" minValue={0} maxValue={MAX_COLOR_HUE} value={color.h} onChange={this._onHChanged} />
+              {!props.alphaSliderHidden && (
+                <ColorSlider
+                  className="is-alpha"
+                  isAlpha
+                  overlayStyle={{ background: `linear-gradient(to right, transparent 0, #${color.hex} 100%)` }}
+                  minValue={0}
+                  maxValue={MAX_COLOR_ALPHA}
+                  value={color.a}
+                  onChange={this._onAChanged}
+                />
+              )}
+            </div>
+            {props.showPreview && (
+              <div className={classNames.flexPreviewBox}>
+                <div
+                  className={classNames.colorSquare + ' is-preview'}
+                  style={{
+                    backgroundColor: color.str
+                  }}
+                />
+              </div>
+            )}
+          </div>
+
           <table className={classNames.table} cellPadding="0" cellSpacing="0">
             <thead>
               <tr className={classNames.tableHeader}>

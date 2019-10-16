@@ -6,13 +6,10 @@ import { SeparatorIconExample } from './examples/Separator.Icon.Example';
 import { IDocPageProps } from '../../common/DocPage.types';
 
 const SeparatorBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Separator/examples/Separator.Basic.Example.tsx') as string;
-const SeparatorBasicExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/Separator/examples/Separator.Basic.Example.tsx') as string;
 
 const SeparatorThemingExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Separator/examples/Separator.Theming.Example.tsx') as string;
-const SeparatorThemingExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/Separator/examples/Separator.Theming.Example.tsx') as string;
 
 const SeparatorIconExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Separator/examples/Separator.Icon.Example.tsx') as string;
-const SeparatorIconExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/Separator/examples/Separator.Icon.Example.tsx') as string;
 
 export const SeparatorPageProps: IDocPageProps = {
   title: 'Separator',
@@ -22,20 +19,17 @@ export const SeparatorPageProps: IDocPageProps = {
     {
       title: 'Basic Separator with Text',
       code: SeparatorBasicExampleCode,
-      view: <SeparatorBasicExample />,
-      codepenJS: SeparatorBasicExampleCodepen
+      view: <SeparatorBasicExample />
     },
     {
       title: 'Basic Themed Separator with Text',
       code: SeparatorThemingExampleCode,
-      view: <SeparatorThemingExample />,
-      codepenJS: SeparatorThemingExampleCodepen
+      view: <SeparatorThemingExample />
     },
     {
       title: 'Separator With Icon',
       code: SeparatorIconExampleCode,
-      view: <SeparatorIconExample />,
-      codepenJS: SeparatorIconExampleCodepen
+      view: <SeparatorIconExample />
     }
   ],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Separator/docs/SeparatorOverview.md'),

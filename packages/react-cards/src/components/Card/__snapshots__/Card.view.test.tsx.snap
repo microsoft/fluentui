@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`CardView renders a Compact Card with an onClick function specified correctly 1`] = `
+exports[`CardView renders a Horizontal Card with an onClick function specified correctly 1`] = `
 <div
   className=
       ms-Stack
@@ -49,7 +49,7 @@ exports[`CardView renders a Compact Card with an onClick function specified corr
 </div>
 `;
 
-exports[`CardView renders a Compact Card with contents correctly 1`] = `
+exports[`CardView renders a Horizontal Card with contents correctly 1`] = `
 <div
   className=
       ms-Stack
@@ -139,7 +139,7 @@ exports[`CardView renders a Compact Card with contents correctly 1`] = `
 </div>
 `;
 
-exports[`CardView renders a Compact Card without contents correctly 1`] = `
+exports[`CardView renders a Horizontal Card without contents correctly 1`] = `
 <div
   className=
       ms-Stack

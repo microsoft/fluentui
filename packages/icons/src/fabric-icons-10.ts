@@ -22,10 +22,26 @@ export function initializeIcons(
     },
     fontFace: {
       fontFamily: `"FabricMDL2Icons-10"`,
-      src: `url('${baseUrl}fabric-icons-10-d2cf4b02.woff') format('woff')`
+      src: `url('${baseUrl}fabric-icons-10-c4ded8e4.woff') format('woff')`
     },
     icons: {
+      'ViewListGroup': '\uF248',
+      'ViewListTree': '\uF249',
+      'TriggerAuto': '\uF24A',
+      'TriggerUser': '\uF24B',
+      'PivotChart': '\uF24C',
+      'StackedBarChart': '\uF24D',
+      'StackedLineChart': '\uF24E',
+      'BuildQueue': '\uF24F',
+      'BuildQueueNew': '\uF250',
+      'UserFollowed': '\uF25C',
+      'ContactLink': '\uF25F',
+      'Stack': '\uF26F',
+      'Bullseye': '\uF272',
+      'VennDiagram': '\uF273',
+      'FiveTileGrid': '\uF274',
       'FocalPoint': '\uF277',
+      'Insert': '\uF278',
       'RingerRemove': '\uF279',
       'TeamsLogoInverse': '\uF27A',
       'TeamsLogo': '\uF27B',
@@ -108,23 +124,7 @@ export function initializeIcons(
       'LocationOutline': '\uF2D0',
       'POISolid': '\uF2D1',
       'CalculatorNotEqualTo': '\uF2D2',
-      'BoxSubtractSolid': '\uF2D3',
-      'BoxAdditionSolid': '\uF2D4',
-      'BoxMultiplySolid': '\uF2D5',
-      'BoxPlaySolid': '\uF2D6',
-      'BoxCheckmarkSolid': '\uF2D7',
-      'CirclePauseSolid': '\uF2D8',
-      'CirclePause': '\uF2D9',
-      'MSNVideosSolid': '\uF2DA',
-      'CircleStopSolid': '\uF2DB',
-      'CircleStop': '\uF2DC',
-      'NavigateBack': '\uF2DD',
-      'NavigateBackMirrored': '\uF2DE',
-      'NavigateForward': '\uF2DF',
-      'NavigateForwardMirrored': '\uF2E0',
-      'UnknownSolid': '\uF2E1',
-      'UnknownMirroredSolid': '\uF2E2',
-      'CircleAddition': '\uF2E3'
+      'BoxSubtractSolid': '\uF2D3'
     }
   };
 

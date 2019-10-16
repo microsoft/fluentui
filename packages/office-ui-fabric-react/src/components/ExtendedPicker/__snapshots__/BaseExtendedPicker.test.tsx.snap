@@ -44,6 +44,7 @@ exports[`Pickers BasePicker renders BaseExtendedPicker correctly with no items 1
           onClick={[Function]}
           onCompositionEnd={[Function]}
           onCompositionStart={[Function]}
+          onCompositionUpdate={[Function]}
           onFocus={[Function]}
           onInput={[Function]}
           onKeyDown={[Function]}
@@ -112,6 +113,7 @@ exports[`Pickers BasePicker renders BaseExtendedPicker correctly with selected a
           onClick={[Function]}
           onCompositionEnd={[Function]}
           onCompositionStart={[Function]}
+          onCompositionUpdate={[Function]}
           onFocus={[Function]}
           onInput={[Function]}
           onKeyDown={[Function]}

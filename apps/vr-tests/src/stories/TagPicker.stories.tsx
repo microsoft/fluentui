@@ -36,8 +36,9 @@ storiesOf('TagPicker', module)
       steps={new Screener.Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .click('.ms-BasePicker-input')
+        .snapshot('Open Suggestion Menu', { cropTo: '.testWrapper' })
         .hover('.ms-Suggestions-item')
-        .snapshot('suggestions')
+        .snapshot('Suggestion Menu Item Hover', { cropTo: '.testWrapper' })
         .end()}
     >
       {story()}
@@ -54,6 +55,45 @@ storiesOf('TagPicker', module)
       }}
       itemLimit={2}
     />
+  ))
+  .addStory(
+    'Selected',
+    () => (
+      <Fabric>
+        <TagPicker
+          defaultSelectedItems={[testTags[4]]}
+          onResolveSuggestions={getList}
+          onEmptyInputFocus={getList}
+          getTextFromItem={getTextFromItem}
+          pickerSuggestionsProps={{
+            suggestionsHeaderText: 'Suggested Tags',
+            noResultsFoundText: 'No Color Tags Found'
+          }}
+          itemLimit={2}
+        />
+      </Fabric>
+    ),
+    { rtl: true }
+  );
+
+storiesOf('TagItem', module)
+  .addDecorator(FabricDecorator)
+  .addDecorator(story => (
+    <Screener
+      steps={new Screener.Steps()
+        .snapshot('default', { cropTo: '.testWrapper' })
+        .hover('.ms-TagItem')
+        .snapshot('Tag Item Hover', { cropTo: '.testWrapper' })
+        .hover('.ms-TagItem-close')
+        .snapshot('Tag Item Clear Button Hover', { cropTo: '.testWrapper' })
+        .click('.ms-TagItem')
+        .snapshot('Tag Item Select', { cropTo: '.testWrapper' })
+        .hover('.ms-TagItem-close')
+        .snapshot('Tag Item Clear Button Selected Hover', { cropTo: '.testWrapper' })
+        .end()}
+    >
+      {story()}
+    </Screener>
   ))
   .addStory(
     'Selected',

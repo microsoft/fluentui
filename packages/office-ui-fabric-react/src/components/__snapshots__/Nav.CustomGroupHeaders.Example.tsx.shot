@@ -13,6 +13,7 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
   onMouseDownCapture={[Function]}
 >
   <nav
+    aria-label="Nav example with custom group headers"
     className=
         ms-Nav
         {
