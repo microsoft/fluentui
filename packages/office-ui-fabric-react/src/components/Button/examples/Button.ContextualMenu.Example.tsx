@@ -11,7 +11,7 @@ const menuProps: IContextualMenuProps = {
   // For example: disable dismiss if shift key is held down while dismissing
   onDismiss: ev => {
     if (ev.shiftKey) {
-      ev.preventDafult();
+      ev.preventDefault();
     }
   },
   items: [
