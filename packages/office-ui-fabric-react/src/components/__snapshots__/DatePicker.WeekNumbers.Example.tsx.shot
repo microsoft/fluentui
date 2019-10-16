@@ -239,7 +239,6 @@ exports[`Component Examples renders DatePicker.WeekNumbers.Example.tsx correctly
             padding-top: 5px;
             word-wrap: break-word;
           }
-      htmlFor="Dropdown5"
       id="Dropdown5-label"
     >
       Select the first day of the week
@@ -247,6 +246,7 @@ exports[`Component Examples renders DatePicker.WeekNumbers.Example.tsx correctly
     <div
       aria-describedby="Dropdown5-option"
       aria-expanded="false"
+      aria-haspopup="listbox"
       aria-labelledby="Dropdown5-label"
       className=
           ms-Dropdown
@@ -340,17 +340,11 @@ exports[`Component Examples renders DatePicker.WeekNumbers.Example.tsx correctly
       onKeyDown={[Function]}
       onKeyUp={[Function]}
       onMouseDown={[Function]}
-      role="listbox"
+      role="button"
       tabIndex={0}
     >
       <span
-        aria-atomic={true}
         aria-invalid={false}
-        aria-label="Monday"
-        aria-live="polite"
-        aria-posinset={2}
-        aria-selected={true}
-        aria-setsize={7}
         className=
             ms-Dropdown-title
             {
@@ -378,10 +372,10 @@ exports[`Component Examples renders DatePicker.WeekNumbers.Example.tsx correctly
               text-overflow: ellipsis;
               white-space: nowrap;
             }
-        id="Dropdown5-option"
-        role="option"
       >
-        <span>
+        <span
+          id="Dropdown5-option"
+        >
           Monday
         </span>
       </span>
