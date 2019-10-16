@@ -4318,7 +4318,6 @@ export interface IDropdownProps extends ISelectableDroppableTextProps<IDropdown,
     onChange?: (event: React.FormEvent<HTMLDivElement>, option?: IDropdownOption, index?: number) => void;
     // @deprecated (undocumented)
     onChanged?: (option: IDropdownOption, index?: number) => void;
-    onDismiss?: () => void;
     onRenderCaretDown?: IRenderFunction<IDropdownProps>;
     onRenderLabel?: IRenderFunction<IDropdownProps>;
     // @deprecated
@@ -6561,6 +6560,7 @@ export interface ISelectableDroppableTextProps<TComponent, TListenerElement> ext
     errorMessage?: string;
     id?: string;
     label?: string;
+    onDismiss?: () => void;
     onRenderContainer?: IRenderFunction<ISelectableDroppableTextProps<TComponent, TListenerElement>>;
     onRenderItem?: IRenderFunction<ISelectableOption>;
     onRenderList?: IRenderFunction<ISelectableDroppableTextProps<TComponent, TListenerElement>>;
