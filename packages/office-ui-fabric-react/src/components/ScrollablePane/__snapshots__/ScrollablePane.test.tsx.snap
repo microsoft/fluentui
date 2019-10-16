@@ -37,7 +37,7 @@ exports[`ScrollablePane renders correctly 1`] = `
     className=
 
         {
-          pointer-events: none;
+          pointer-events: auto;
           position: absolute;
           top: 0px;
         }
@@ -58,7 +58,7 @@ exports[`ScrollablePane renders correctly 1`] = `
 
         {
           bottom: 0px;
-          pointer-events: none;
+          pointer-events: auto;
           position: absolute;
         }
         @media screen and (-ms-high-contrast: active){& {
@@ -78,7 +78,7 @@ exports[`ScrollablePane renders correctly 1`] = `
 
           {
             bottom: 0px;
-            pointer-events: none;
+            pointer-events: auto;
             position: absolute;
             width: 100%;
           }

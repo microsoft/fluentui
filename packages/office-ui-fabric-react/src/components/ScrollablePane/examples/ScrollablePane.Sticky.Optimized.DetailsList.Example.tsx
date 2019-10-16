@@ -107,8 +107,8 @@ export class ScrollablePaneStickyOptimizedDetailsList extends React.Component<{}
         key: 'column' + i,
         name: 'Test ' + i,
         fieldName: 'test' + i,
-        minWidth: 100,
-        maxWidth: 200,
+        minWidth: 400,
+        maxWidth: 600,
         isResizable: true
       });
     }
@@ -120,15 +120,10 @@ export class ScrollablePaneStickyOptimizedDetailsList extends React.Component<{}
 
   public render(): JSX.Element {
     const { items } = this.state;
-    const stickyBackgroundColor = getTheme().palette.white;
+    const stickyBackgroundColor = getTheme().palette.red;
     return (
       <div className={classNames.wrapper}>
-        <ScrollablePane
-          scrollbarVisibility={ScrollbarVisibility.always}
-          stickyHeaderContainerBehavior={'onScroll'}
-          stickyFooterContainerBehavior={'always'}
-          experimentalLayoutImprovements={true}
-        >
+        <ScrollablePane scrollbarVisibility={ScrollbarVisibility.always} experimentalLayoutImprovements={true}>
           <Sticky stickyPosition={StickyPositionType.Header} order={1} stickyBackgroundColor={stickyBackgroundColor}>
             <TextField className={classNames.filter} label="Filter by name:" onChange={this._onFilterChange} />
           </Sticky>

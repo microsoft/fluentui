@@ -3,7 +3,6 @@ import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 import { IStyle, ITheme } from '../../Styling';
 import { ScrollablePaneBase } from './ScrollablePane.base';
 import { Sticky } from '../Sticky/Sticky';
-import { StickyPositionType } from '../Sticky/Sticky.types';
 
 /**
  * {@docCategory ScrollablePane}
@@ -11,10 +10,8 @@ import { StickyPositionType } from '../Sticky/Sticky.types';
 export interface IScrollablePane {
   /** Triggers a layout update for the pane. */
   forceLayoutUpdate(): void;
-  /** Gets the current vertical scroll position of the scrollable pane */
+  /** Gets the current scroll position of the scrollable pane */
   getScrollPosition(): number;
-  /** Gets the current horizontal scroll position of the scrollable pane */
-  getHorizontalScrollPosition(): number;
 }
 
 /**
@@ -49,29 +46,28 @@ export interface IScrollablePaneProps extends React.HTMLAttributes<HTMLElement |
    */
   initialScrollPosition?: number;
 
-  /**
-   * Determines the visibility of vertical and horizontal scrollbars.
-   * If set to ScrollbarVisibility.always, scrollbars are visible always, independent of content overflow.
-   */
   scrollbarVisibility?: ScrollbarVisibility;
 
   /**
-   * If true, it optimizes the performance, but may affect component behavior to some extent in few scenarios
-   * where stickyClassName prop is used for Sticky component(s).
+   * If true, it optimizes the performance, but may affect component behavior.
    * It is suggested to test the component so that it works as per the desired behavior.
-   * Set it to true only if ScrollablePane has Sticky component(s).
+   * Set it to true only if ScrollablePane has Sticky component(s) &
+   * for no Sticky component, prop 'stickyPosition' is 'StickyPositionType.Both'.
+   *
+   * It assumes:
+   * 1. 'OnScroll' sticky behavior for all Sticky components, props
+   * 'stickyPosition' is 'StickyPositionType.Header',
+   * 2. 'Always' sticky behavior for all Sticky components, prop
+   * 'stickyPosition' is 'StickyPositionType.Footer'.
+   *
+   * 'onScroll' : Sticky component(s) will become sticky or non-sticky based on scrolling.
+   * The calculation which determine if a Sticky component is sticky or non-sticky,
+   * are done after user interaction (scrolling) and don't affect page load time.
+   *
+   * 'Always': Sticky component(s) will always be sticky independent of scrolling.
+   *  There are no calculations done as the component(s) would always be sticky.
    */
   experimentalLayoutImprovements?: boolean;
-
-  /**
-   * Determines the behavior of Sticky component(s) having stickyPosition StickyPosition.Header
-   */
-  stickyHeaderContainerBehavior?: IStickyContainerBehaviorType;
-
-  /**
-   * Determines the behavior of Sticky component(s) having stickyPosition StickyPosition.Footer
-   */
-  stickyFooterContainerBehavior?: IStickyContainerBehaviorType;
 }
 
 /**
@@ -90,6 +86,7 @@ export interface IScrollablePaneStyleProps {
 
   scrollbarVisibility?: IScrollablePaneProps['scrollbarVisibility'];
 
+  experimentalLayoutImprovements?: boolean;
   // Insert ScrollablePane style props below
 }
 
@@ -120,30 +117,6 @@ export interface IScrollablePaneStyles {
 }
 
 /**
- * 'default': Sticky component(s) will become sticky or non-sticky whenever it is expected.
- *  If there is a large page having a Sticky component for which stickyPosition is 'StickyPosition.Footer'
- *  and this Sticky component is not in viewable area of the device screen,
- *  the 'default' behavior will make sure this component is displayed at it's sticky position, i.e.,
- *  at the bottom of the viewable area of the device screen, without requiring manual scroll.
- *
- *
- * 'onScroll' : Sticky component(s) will become sticky or non-sticky based on scrolling.
- *  The calculation which determine if a Sticky component is sticky or non-sticky,
- *  are done after user interaction (scrolling) and don't affect page load time.
- *  It is most suitable for stickyHeaderContainerBehavior.
- *
- *
- * 'always': Sticky component(s) will always be sticky independent of scrolling.
- *  There are no calculations done as the component(s) would always be sticky.
- *  It is most suitable if stickyPosition is:
- *   1. 'StickyPosition.Header' (i.e, for stickyHeaderContainerBehavior) and
- *       there is no non-sticky content above the Sticky component
- *   2. 'StickyPosition.Footer' (i.e, for stickyFooterContainerBehavior) and
- *       there is no non-sticky content below the Sticky component.
- */
-export type IStickyContainerBehaviorType = 'default' | 'onScroll' | 'always';
-
-/**
  * {@docCategory ScrollablePane}
  */
 export const ScrollbarVisibility = {
@@ -166,13 +139,9 @@ export interface IScrollablePaneContext {
     sortSticky: (sticky: Sticky, sortAgain?: boolean) => void;
     notifySubscribers: (sort?: boolean) => void;
     syncScrollSticky: (sticky: Sticky) => void;
-    usePlaceholderForSticky: () => boolean;
+    optimizePerformance: () => boolean;
+    userInteractionStatus: () => boolean;
     getHorizontalScrollPosition: () => number;
-    verifyStickyContainerBehavior: (
-      stickyContainerPosition: StickyPositionType,
-      stickyContainerBehavior: IStickyContainerBehaviorType
-    ) => boolean;
-    getUserInteractionStatus: () => boolean;
   };
 }
 

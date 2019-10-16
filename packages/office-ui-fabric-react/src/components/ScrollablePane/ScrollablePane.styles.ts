@@ -7,13 +7,13 @@ const GlobalClassNames = {
 };
 
 export const getStyles = (props: IScrollablePaneStyleProps): IScrollablePaneStyles => {
-  const { className, theme } = props;
+  const { className, theme, experimentalLayoutImprovements } = props;
 
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
   const AboveAndBelowStyles: IStyle = {
     position: 'absolute',
-    pointerEvents: 'none'
+    pointerEvents: experimentalLayoutImprovements ? 'none' : 'auto'
   };
 
   const positioningStyle: IStyle = {
@@ -25,13 +25,15 @@ export const getStyles = (props: IScrollablePaneStyleProps): IScrollablePaneStyl
     WebkitOverflowScrolling: 'touch'
   };
 
+  const _scrollbarVisibility = experimentalLayoutImprovements || props.scrollbarVisibility === 'always' ? 'scroll' : 'auto';
+
   return {
     root: [classNames.root, theme.fonts.medium, positioningStyle, className],
     contentContainer: [
       classNames.contentContainer,
       {
-        overflowY: props.scrollbarVisibility === 'always' ? 'scroll' : 'auto',
-        overflowX: props.scrollbarVisibility === 'always' ? 'scroll' : 'auto'
+        overflowY: _scrollbarVisibility,
+        overflowX: _scrollbarVisibility
       },
       positioningStyle
     ],

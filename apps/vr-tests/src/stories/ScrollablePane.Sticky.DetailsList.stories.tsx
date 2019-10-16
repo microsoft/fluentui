@@ -259,13 +259,7 @@ const getElement = "document.getElementsByClassName('ms-ScrollablePane--contentC
 const cropTo = { cropTo: '.testWrapper' };
 const scrollablePaneProps: IScrollablePaneProps = {
   scrollbarVisibility: ScrollbarVisibility.always,
-  stickyFooterContainerBehavior: 'always',
-  stickyHeaderContainerBehavior: 'onScroll',
   experimentalLayoutImprovements: true
-};
-const scrollablePaneProps1: IScrollablePaneProps = {
-  ...scrollablePaneProps,
-  stickyHeaderContainerBehavior: 'always'
 };
 
 storiesOf('ScrollablePane-Sticky Details List', module)
@@ -336,12 +330,5 @@ storiesOf('ScrollablePane-Sticky Details List', module)
       itemCount={200}
       numberOfColumns={6}
       scrollablePaneProps={scrollablePaneProps}
-    />
-  ))
-  .addStory('ScrollablePane Details List with sticky header & footer (3)', () => (
-    <ScrollablePaneDetailsListExample
-      itemCount={200}
-      numberOfColumns={6}
-      scrollablePaneProps={scrollablePaneProps1}
     />
   ));
