@@ -394,6 +394,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
             <input
               aria-checked="false"
               aria-label="Shadow around items"
+              checked={false}
               className=
 
                   {
@@ -535,6 +536,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
             <input
               aria-checked="false"
               aria-label="Prevent item overflow"
+              checked={false}
               className=
 
                   {
@@ -736,6 +738,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
             <input
               aria-checked="false"
               aria-label="Wrap items"
+              checked={false}
               className=
 
                   {
@@ -877,6 +880,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
             <input
               aria-checked="false"
               aria-label="Shrink items"
+              checked={false}
               className=
 
                   {
@@ -3478,6 +3482,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
         <input
           aria-checked="false"
           aria-label="Hide empty children"
+          checked={false}
           className=
 
               {
