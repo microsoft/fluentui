@@ -74,6 +74,11 @@ export interface ISelectableDroppableTextProps<TComponent, TListenerElement> ext
   onRenderOption?: IRenderFunction<ISelectableOption>;
 
   /**
+   * Callback that is issued when the options callout is dismissed
+   */
+  onDismiss?: () => void;
+
+  /**
    * Whether or not the ISelectableDroppableText is disabled.
    */
   disabled?: boolean;
@@ -104,7 +109,7 @@ export interface ISelectableDroppableTextProps<TComponent, TListenerElement> ext
   placeholder?: string;
 
   /**
-   * Whether or not the combobox should expand on keyboard focus
+   * Whether or not the ComboBox/Dropdown should expand on keyboard focus.
    * @defaultvalue false
    */
   openOnKeyboardFocus?: boolean;

@@ -2,6 +2,191 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Wed, 16 Oct 2019 12:33:21 GMT",
+      "tag": "office-ui-fabric-react_v7.51.0",
+      "version": "7.51.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Checkbox: improve checked state handling",
+            "author": "elcraig@microsoft.com",
+            "commit": "d8582a229cef86cdf1dd8172737cbc91b6c6565a"
+          },
+          {
+            "comment": "TeachingBubble udpates: added separate multi-step example to reflect current design toolkit and updated basic teachingbubble example",
+            "author": "marygans@microsoft.com",
+            "commit": "41692fc1044ed8b5fc7bf5fda428a10a454d81f4"
+          },
+          {
+            "comment": "Pivot and Stack: relax child item type checks",
+            "author": "elcraig@microsoft.com",
+            "commit": "26f3de051f8a1355f820e0ccccb589674a67ed1e"
+          },
+          {
+            "comment": "CommandBar: Replacing inline styles with definition in styles file.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "efea4467f1d655475468885648231f6b550f32c7"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Announced: add `as` prop and root styles",
+            "author": "elcraig@microsoft.com",
+            "commit": "2e4ea58e204193827ff747b0c661e1ac0701577f"
+          },
+          {
+            "comment": "Allowing role to be overridden on SplitButton",
+            "author": "pagaur@microsoft.com",
+            "commit": "11bce07f1660d9c056edf85ae24a8bccf1adafc1"
+          },
+          {
+            "comment": "ComboBox and Dropdown: Passing correct onDismiss prop in onRenderContainer.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "a721b7679188cf72e56d4de72491eaa15af0e360"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 15 Oct 2019 12:32:28 GMT",
+      "tag": "office-ui-fabric-react_v7.50.0",
+      "version": "7.50.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Breadcrumb: fix accessibility and styling issues",
+            "author": "elcraig@microsoft.com",
+            "commit": "7794b431160d816468f248b016e0b7346ffa7bc9"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Textfield: Fix disabled text color",
+            "author": "joschect@microsoft.com",
+            "commit": "ee17db1f2873200e79e75e8a1aae3f074b1f8480"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 14 Oct 2019 12:30:37 GMT",
+      "tag": "office-ui-fabric-react_v7.49.0",
+      "version": "7.49.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Tooltip: Creating aria placeholder for accessibility scenarios with Tooltips with a render delay.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "41295984b0c8c979c5e5b25eb3f333a672212622"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "SpinButton: Fixing minWidth and having it come from const to be consistent.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "e02e44d4313b45a7666346f12b7654db136ede13"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 11 Oct 2019 12:31:31 GMT",
+      "tag": "office-ui-fabric-react_v7.48.1",
+      "version": "7.48.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "TeachingBubble: body content should resize better when container is wide. Added wide example with just text to demonstrate this.",
+            "author": "aneeshak@microsoft.com",
+            "commit": "820debe496e604fedf9d42716fc4bfa375d6a4eb"
+          },
+          {
+            "comment": "Apply className on DetailsHeaderBase.",
+            "author": "email not defined",
+            "commit": "04c37b7ff8f2117dc9046a5e87bd8313ce219d93"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 10 Oct 2019 12:32:08 GMT",
+      "tag": "office-ui-fabric-react_v7.48.0",
+      "version": "7.48.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fixed dropdown to not select first option automatically unless it's selected using keyboard navigation per aria",
+            "author": "xgao@microsoft.com",
+            "commit": "43f40feb7596224a82cecf98f48121567c883783"
+          },
+          {
+            "comment": "Announced: explicitly show aria-live property in Announced types",
+            "author": "naethell@microsoft.com",
+            "commit": "f387bd52fabef7244663acb5b0bb5d87518f21d1"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Export DetailsRowFields",
+            "author": "KevinTCoughlin@users.noreply.github.com",
+            "commit": "bd56a5d2336484622be395eaa0e7c50c7ee91166"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 09 Oct 2019 22:25:09 GMT",
+      "tag": "office-ui-fabric-react_v7.47.0",
+      "version": "7.47.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Dropdown: when `openOnKeyboardFocus` prop is set to true, the Dropdown now does not close the options callout immediately.",
+            "author": "xgao@microsoft.com",
+            "commit": "575aeee692cd0f947e453ec6aa6ccebf10b25622"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "ResponsiveMode: defaulting to large to avoid breaking changes for scenarios assuming it would be available on first render.",
+            "author": "dzearing@microsoft.com",
+            "commit": "b129b4bb7ba3bb6cef8989ff5fb4dd7977e67c6c"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 09 Oct 2019 12:34:23 GMT",
+      "tag": "office-ui-fabric-react_v7.46.0",
+      "version": "7.46.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Breadcrumb: Allow setting a custom overflow icon.",
+            "author": "madomi@microsoft.com",
+            "commit": "f5164fd724812ef0b1877445b0ac825debf96504"
+          },
+          {
+            "comment": "Announced: default aria live to polite",
+            "author": "naethell@microsoft.com",
+            "commit": "10d61e3f27ff20c0da970f53dddae52f7dfa9b72"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "DetailsList: ariaLabel for select all checkbox should be dependent on selection mode",
+            "author": "aneeshak@microsoft.com",
+            "commit": "37df5d69b6b259ee236eee68be1c926d733478b7"
+          },
+          {
+            "comment": "Changing order of arguments passed to getClassNames. Until now it was inconsistent with type defined in Button.types.ts",
+            "author": "kushaly@microsoft.com",
+            "commit": "93ba0469f7268622bd3d2e4068c6aa4689b3bd19"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 08 Oct 2019 12:31:37 GMT",
       "tag": "office-ui-fabric-react_v7.45.1",
       "version": "7.45.1",

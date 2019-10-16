@@ -430,13 +430,14 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
           )}
         </KeytipData>
         {(persistMenu || isOpen) &&
-          (onRenderContainer as any)(
+          onRenderContainer(
             {
               ...this.props,
               onRenderList,
               onRenderItem,
               onRenderOption,
-              options: this.state.currentOptions.map((item, index) => ({ ...item, index: index }))
+              options: this.state.currentOptions.map((item, index) => ({ ...item, index: index })),
+              onDismiss: this._onDismiss
             },
             this._onRenderContainer
           )}

@@ -203,7 +203,9 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
               }
             : undefined
       };
-      legendDataItems.push(legend);
+      if (!point.placeHolder) {
+        legendDataItems.push(legend);
+      }
       if (index > 0) {
         prevPosition += value;
       }
