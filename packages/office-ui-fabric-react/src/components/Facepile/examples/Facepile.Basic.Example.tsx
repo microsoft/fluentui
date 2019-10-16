@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
 import { Facepile, IFacepilePersona, IFacepileProps } from 'office-ui-fabric-react/lib/Facepile';
-import { PersonaSize } from 'office-ui-fabric-react/lib/Persona';
+import { PersonaSize, PersonaPresence } from 'office-ui-fabric-react/lib/Persona';
 import { Slider } from 'office-ui-fabric-react/lib/Slider';
 import { facepilePersonas } from '@uifabric/example-data';
 import './Facepile.Examples.scss';
@@ -11,6 +11,7 @@ export interface IFacepileBasicExampleState {
   numberOfFaces: any;
   imagesFadeIn: boolean;
   personaSize: PersonaSize;
+  personaPresence: PersonaPresence;
 }
 
 export class FacepileBasicExample extends React.Component<{}, IFacepileBasicExampleState> {
@@ -20,7 +21,8 @@ export class FacepileBasicExample extends React.Component<{}, IFacepileBasicExam
     this.state = {
       numberOfFaces: 3,
       imagesFadeIn: true,
-      personaSize: PersonaSize.size32
+      personaSize: PersonaSize.size32,
+      personaPresence: PersonaPresence.none
     };
   }
 
@@ -32,7 +34,8 @@ export class FacepileBasicExample extends React.Component<{}, IFacepileBasicExam
       overflowPersonas: facepilePersonas.slice(numberOfFaces),
       getPersonaProps: (persona: IFacepilePersona) => {
         return {
-          imageShouldFadeIn: this.state.imagesFadeIn
+          imageShouldFadeIn: this.state.imagesFadeIn,
+          presence: this.state.personaPresence
         };
       },
       ariaDescription: 'To move through the items use left and right arrow keys.'
@@ -62,6 +65,20 @@ export class FacepileBasicExample extends React.Component<{}, IFacepileBasicExam
               { key: PersonaSize.size40, text: PersonaSize[PersonaSize.size40] }
             ]}
             onChange={this._onChangePersonaSize}
+          />
+          <Dropdown
+            label="Persona Presence:"
+            selectedKey={this.state.personaPresence}
+            options={[
+              { key: PersonaPresence.none, text: PersonaPresence[PersonaPresence.none] },
+              { key: PersonaPresence.away, text: PersonaPresence[PersonaPresence.away] },
+              { key: PersonaPresence.blocked, text: PersonaPresence[PersonaPresence.blocked] },
+              { key: PersonaPresence.busy, text: PersonaPresence[PersonaPresence.busy] },
+              { key: PersonaPresence.dnd, text: PersonaPresence[PersonaPresence.dnd] },
+              { key: PersonaPresence.offline, text: PersonaPresence[PersonaPresence.offline] },
+              { key: PersonaPresence.online, text: PersonaPresence[PersonaPresence.online] }
+            ]}
+            onChange={this._onChangePersonaPresence}
           />
           <Checkbox
             styles={{ root: { margin: '10px 0' } }}
@@ -96,6 +113,15 @@ export class FacepileBasicExample extends React.Component<{}, IFacepileBasicExam
     this.setState(
       (prevState: IFacepileBasicExampleState): IFacepileBasicExampleState => {
         prevState.personaSize = value.key as PersonaSize;
+        return prevState;
+      }
+    );
+  };
+
+  private _onChangePersonaPresence = (event: React.FormEvent<HTMLDivElement>, value: IDropdownOption): void => {
+    this.setState(
+      (prevState: IFacepileBasicExampleState): IFacepileBasicExampleState => {
+        prevState.personaPresence = value.key as PersonaPresence;
         return prevState;
       }
     );
