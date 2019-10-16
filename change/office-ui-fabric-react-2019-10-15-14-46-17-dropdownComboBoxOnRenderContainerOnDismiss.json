@@ -1,9 +1,0 @@
-{
-  "type": "minor",
-  "comment": "ComboBox and Dropdown: Passing correct onDismiss prop in onRenderContainer.",
-  "packageName": "office-ui-fabric-react",
-  "email": "Humberto.Morimoto@microsoft.com",
-  "commit": "a721b7679188cf72e56d4de72491eaa15af0e360",
-  "date": "2019-10-15T21:46:17.046Z",
-  "file": "D:\\office-ui-fabric-react\\change\\office-ui-fabric-react-2019-10-15-14-46-17-dropdownComboBoxOnRenderContainerOnDismiss.json"
-}

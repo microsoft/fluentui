@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Checkbox: improve checked state handling",
-  "packageName": "office-ui-fabric-react",
-  "email": "elcraig@microsoft.com",
-  "commit": "d8582a229cef86cdf1dd8172737cbc91b6c6565a",
-  "date": "2019-09-27T03:43:50.600Z"
-}

@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Allowing role to be overridden on SplitButton",
-  "packageName": "office-ui-fabric-react",
-  "email": "pagaur@microsoft.com",
-  "commit": "11bce07f1660d9c056edf85ae24a8bccf1adafc1",
-  "date": "2019-10-15T19:10:07.738Z"
-}
