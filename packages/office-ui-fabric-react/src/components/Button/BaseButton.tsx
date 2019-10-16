@@ -448,7 +448,6 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   };
 
   private _onRenderMenu = (menuProps: IContextualMenuProps): JSX.Element => {
-    const { onDismiss = this._dismissMenu } = menuProps;
     const { persistMenu } = this.props;
     const { menuHidden } = this.state;
     const MenuType = this.props.menuAs || (ContextualMenu as React.ReactType<IContextualMenuProps>);
@@ -470,9 +469,20 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
         hidden={persistMenu ? menuHidden : undefined}
         className={css('ms-BaseButton-menuhost', menuProps.className)}
         target={this._isSplitButton ? this._splitButtonContainer.current : this._buttonElement.current}
-        onDismiss={onDismiss}
+        onDismiss={this._onDismissMenu}
       />
     );
+  };
+
+  private _onDismissMenu = (ev: any): void => {
+    const { menuProps } = this.props;
+
+    if (menuProps && menuProps.onDismiss) {
+      menuProps.onDismiss(ev);
+    }
+    if (!ev.defaultPrevented) {
+      this._dismissMenu();
+    }
   };
 
   private _dismissMenu = (): void => {

@@ -8,6 +8,12 @@ export interface IButtonExampleProps {
 }
 
 const menuProps: IContextualMenuProps = {
+  // disable dismiss if shift key is held down while dismissing
+  onDismiss: ev => {
+    if (ev.shiftKey) {
+      ev.preventDafult();
+    }
+  },
   items: [
     {
       key: 'emailMessage',
