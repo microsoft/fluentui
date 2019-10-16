@@ -967,7 +967,11 @@ export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BaseP
             className={classNames.text}
             aria-owns={suggestionsAvailable || undefined}
             aria-expanded={!!this.state.suggestionsVisible}
-            aria-haspopup="true"
+            // Dialog is an acceptable child of a combobox according to the aria specs: https://www.w3.org/TR/wai-aria-practices/#combobox
+            // Currently accessibility insights will flag this as not a valid child because the AXE rules are out of a date.
+            // A bug tracking this can be found:
+            // https://github.com/dequelabs/axe-core/issues/1009
+            aria-haspopup={suggestionsAvailable && this.suggestionStore.suggestions.length > 0 ? 'listbox' : 'dialog'}
             role="combobox"
           >
             <Autofill
