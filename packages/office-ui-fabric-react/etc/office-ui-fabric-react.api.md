@@ -527,7 +527,7 @@ export class CheckboxBase extends React.Component<ICheckboxProps, ICheckboxState
     // (undocumented)
     focus(): void;
     // (undocumented)
-    static getDerivedStateFromProps(props: ICheckboxProps, state: ICheckboxState): ICheckboxState | null;
+    static getDerivedStateFromProps(nextProps: Readonly<ICheckboxProps>, prevState: Readonly<ICheckboxState>): ICheckboxState | null;
     // (undocumented)
     readonly indeterminate: boolean;
     render(): JSX.Element;
@@ -1513,12 +1513,17 @@ export interface IActivityItemStyles {
 // @public (undocumented)
 export interface IAnnouncedProps extends React.Props<AnnouncedBase>, React.HTMLAttributes<HTMLDivElement> {
     'aria-live'?: 'off' | 'polite' | 'assertive';
+    as?: React.ElementType;
     message?: string;
     styles?: IStyleFunctionOrObject<{}, IAnnouncedStyles>;
 }
 
 // @public (undocumented)
+export type IAnnouncedStyleProps = Pick<IAnnouncedProps, 'className'>;
+
+// @public (undocumented)
 export interface IAnnouncedStyles {
+    root: IStyle;
     screenReaderText: IStyle;
 }
 
@@ -2180,7 +2185,7 @@ export interface ICheckboxProps extends React.ButtonHTMLAttributes<HTMLElement |
 
 // @public (undocumented)
 export interface ICheckboxState {
-    isChecked?: boolean | undefined;
+    isChecked?: boolean;
     // (undocumented)
     isIndeterminate?: boolean;
 }
@@ -4313,7 +4318,6 @@ export interface IDropdownProps extends ISelectableDroppableTextProps<IDropdown,
     onChange?: (event: React.FormEvent<HTMLDivElement>, option?: IDropdownOption, index?: number) => void;
     // @deprecated (undocumented)
     onChanged?: (option: IDropdownOption, index?: number) => void;
-    onDismiss?: () => void;
     onRenderCaretDown?: IRenderFunction<IDropdownProps>;
     onRenderLabel?: IRenderFunction<IDropdownProps>;
     // @deprecated
@@ -6556,6 +6560,7 @@ export interface ISelectableDroppableTextProps<TComponent, TListenerElement> ext
     errorMessage?: string;
     id?: string;
     label?: string;
+    onDismiss?: () => void;
     onRenderContainer?: IRenderFunction<ISelectableDroppableTextProps<TComponent, TListenerElement>>;
     onRenderItem?: IRenderFunction<ISelectableOption>;
     onRenderList?: IRenderFunction<ISelectableDroppableTextProps<TComponent, TListenerElement>>;

@@ -509,6 +509,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       primaryDisabled,
       menuProps,
       toggle,
+      role,
       primaryActionButtonProps
     } = this.props;
     let { keytipProps } = this.props;
@@ -541,7 +542,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       <div
         {...containerProps}
         data-ktp-target={keytipAttributes ? keytipAttributes['data-ktp-target'] : undefined}
-        role={'button'}
+        role={role ? role : 'button'}
         aria-disabled={disabled}
         aria-haspopup={true}
         aria-expanded={!menuHidden}

@@ -53,11 +53,6 @@ export interface IDropdownProps extends ISelectableDroppableTextProps<IDropdown,
   onChanged?: (option: IDropdownOption, index?: number) => void;
 
   /**
-   * Callback issues when the options callout is dismissed
-   */
-  onDismiss?: () => void;
-
-  /**
    * Custom render function for the label.
    */
   onRenderLabel?: IRenderFunction<IDropdownProps>;
