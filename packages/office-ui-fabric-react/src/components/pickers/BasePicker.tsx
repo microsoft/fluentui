@@ -963,7 +963,13 @@ export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BaseP
       <div ref={this.root} onBlur={this.onBlur}>
         <div className={classNames.root} onKeyDown={this.onKeyDown}>
           {this.getSuggestionsAlert(classNames.screenReaderText)}
-          <div className={classNames.text}>
+          <div
+            className={classNames.text}
+            aria-owns={suggestionsAvailable || undefined}
+            aria-expanded={!!this.state.suggestionsVisible}
+            aria-haspopup="true"
+            role="combobox"
+          >
             <Autofill
               {...inputProps as any}
               className={classNames.input}
@@ -974,14 +980,11 @@ export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BaseP
               onInputValueChange={this.onInputChange}
               suggestedDisplayValue={suggestedDisplayValue}
               aria-activedescendant={this.getActiveDescendant()}
-              aria-expanded={!!this.state.suggestionsVisible}
-              aria-haspopup="true"
               autoCapitalize="off"
               autoComplete="off"
-              role="combobox"
+              role="textbox"
               disabled={disabled}
               aria-controls={`${suggestionsAvailable} ${selectedSuggestionAlertId}` || undefined}
-              aria-owns={suggestionsAvailable || undefined}
               onInputChange={this.props.onInputChange}
             />
           </div>
