@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "Pickers: bring pickers in line with w3 1.1 specs",
+  "comment": "Pickers: Bring pickers in line with W3 ARIA 1.1 specs.",
   "packageName": "office-ui-fabric-react",
   "email": "joschect@microsoft.com",
   "commit": "dde4a290e354fba58675bd4ab7d0cccdb10e856f",
