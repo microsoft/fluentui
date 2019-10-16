@@ -1737,7 +1737,6 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       padding-top: 5px;
                       word-wrap: break-word;
                     }
-                htmlFor="Dropdown8"
                 id="Dropdown8-label"
               >
                 Vertical alignment:
@@ -1745,6 +1744,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
               <div
                 aria-describedby="Dropdown8-option"
                 aria-expanded="false"
+                aria-haspopup="listbox"
                 aria-labelledby="Dropdown8-label"
                 className=
                     ms-Dropdown
@@ -1838,17 +1838,11 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                 onKeyDown={[Function]}
                 onKeyUp={[Function]}
                 onMouseDown={[Function]}
-                role="listbox"
+                role="button"
                 tabIndex={0}
               >
                 <span
-                  aria-atomic={true}
                   aria-invalid={false}
-                  aria-label="Top"
-                  aria-live="polite"
-                  aria-posinset={1}
-                  aria-selected={true}
-                  aria-setsize={6}
                   className=
                       ms-Dropdown-title
                       {
@@ -1876,10 +1870,10 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                         text-overflow: ellipsis;
                         white-space: nowrap;
                       }
-                  id="Dropdown8-option"
-                  role="option"
                 >
-                  <span>
+                  <span
+                    id="Dropdown8-option"
+                  >
                     Top
                   </span>
                 </span>
@@ -1964,7 +1958,6 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       padding-top: 5px;
                       word-wrap: break-word;
                     }
-                htmlFor="Dropdown9"
                 id="Dropdown9-label"
               >
                 Horizontal alignment:
@@ -1972,6 +1965,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
               <div
                 aria-describedby="Dropdown9-option"
                 aria-expanded="false"
+                aria-haspopup="listbox"
                 aria-labelledby="Dropdown9-label"
                 className=
                     ms-Dropdown
@@ -2065,17 +2059,11 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                 onKeyDown={[Function]}
                 onKeyUp={[Function]}
                 onMouseDown={[Function]}
-                role="listbox"
+                role="button"
                 tabIndex={0}
               >
                 <span
-                  aria-atomic={true}
                   aria-invalid={false}
-                  aria-label="Left"
-                  aria-live="polite"
-                  aria-posinset={1}
-                  aria-selected={true}
-                  aria-setsize={3}
                   className=
                       ms-Dropdown-title
                       {
@@ -2103,10 +2091,10 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                         text-overflow: ellipsis;
                         white-space: nowrap;
                       }
-                  id="Dropdown9-option"
-                  role="option"
                 >
-                  <span>
+                  <span
+                    id="Dropdown9-option"
+                  >
                     Left
                   </span>
                 </span>

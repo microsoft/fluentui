@@ -31,7 +31,6 @@ exports[`Component Examples renders Dropdown.ControlledMulti.Example.tsx correct
           padding-top: 5px;
           word-wrap: break-word;
         }
-    htmlFor="Dropdown0"
     id="Dropdown0-label"
   >
     Multi-select controlled example
@@ -39,6 +38,7 @@ exports[`Component Examples renders Dropdown.ControlledMulti.Example.tsx correct
   <div
     aria-describedby="Dropdown0-option"
     aria-expanded="false"
+    aria-haspopup="listbox"
     aria-labelledby="Dropdown0-label"
     className=
         ms-Dropdown
@@ -133,13 +133,11 @@ exports[`Component Examples renders Dropdown.ControlledMulti.Example.tsx correct
     onKeyDown={[Function]}
     onKeyUp={[Function]}
     onMouseDown={[Function]}
+    role="button"
     tabIndex={0}
   >
     <span
-      aria-atomic={true}
       aria-invalid={false}
-      aria-label="Select options"
-      aria-live="polite"
       className=
           ms-Dropdown-title
           ms-Dropdown-titleIsPlaceHolder
@@ -169,9 +167,10 @@ exports[`Component Examples renders Dropdown.ControlledMulti.Example.tsx correct
             text-overflow: ellipsis;
             white-space: nowrap;
           }
-      id="Dropdown0-option"
     >
-      <span>
+      <span
+        id="Dropdown0-option"
+      >
         Select options
       </span>
     </span>
