@@ -93,11 +93,6 @@ export interface IDropdownProps extends ISelectableDroppableTextProps<IDropdown,
   responsiveMode?: ResponsiveMode;
 
   /**
-   * Optional mode indicates if multi-choice selections is allowed.  Default to false
-   */
-  multiSelect?: boolean;
-
-  /**
    * Keys that will be initially used to set selected items. This prop is used for `multiSelect`
    * scenarios. In other cases, `defaultSelectedKey` should be used.
    */
