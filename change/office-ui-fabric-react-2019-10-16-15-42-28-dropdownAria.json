@@ -1,9 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Dropdown: Bringing accessibility up to standards.",
-  "packageName": "office-ui-fabric-react",
-  "email": "Humberto.Morimoto@microsoft.com",
-  "commit": "88a72f4cc019dff63d645d2544468e5341ebe34b",
-  "date": "2019-10-16T22:42:28.907Z",
-  "file": "D:\\office-ui-fabric-react\\change\\office-ui-fabric-react-2019-10-16-15-42-28-dropdownAria.json"
-}
