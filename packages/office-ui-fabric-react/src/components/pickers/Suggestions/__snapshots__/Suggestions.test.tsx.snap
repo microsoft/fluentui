@@ -6,6 +6,9 @@ exports[`Suggestions renders a list properly 1`] = `
 >
   <div
     aria-live="polite"
+    className=
+
+
     role="status"
   />
   <div
@@ -2041,6 +2044,9 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
 >
   <div
     aria-live="polite"
+    className=
+
+
     role="status"
   />
   <div
@@ -4078,6 +4084,9 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
 >
   <div
     aria-live="polite"
+    className=
+
+
     role="status"
   />
   <div
