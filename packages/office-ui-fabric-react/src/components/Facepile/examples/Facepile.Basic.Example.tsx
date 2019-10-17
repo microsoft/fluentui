@@ -112,8 +112,8 @@ export class FacepileBasicExample extends React.Component<{}, IFacepileBasicExam
       4: PersonaPresence.offline
     };
 
-    let str = personaName.charCodeAt(1).toString();
-    let newStr = str.slice(str.length - 1);
+    const str = personaName.charCodeAt(1).toString();
+    const newStr = str.slice(str.length - 1);
     return presences[Math.floor(newStr / 2)];
   };
 }
