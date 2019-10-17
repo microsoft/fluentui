@@ -83,11 +83,13 @@ export class ColorSliderBase extends React.Component<IColorSliderProps, IColorSl
         aria-label={ariaLabel}
         data-is-focusable={true}
       >
-        <div
-          className={classNames.sliderOverlay}
-          // this isn't included in getStyles because it may change frequently
-          style={overlayStyle || { background: `linear-gradient(to right, transparent 0, #${overlayColor || 'fff'} 100%)` }}
-        />
+        {!!(overlayStyle || overlayColor) && (
+          <div
+            className={classNames.sliderOverlay}
+            // this isn't included in getStyles because it may change frequently
+            style={overlayStyle || { background: `linear-gradient(to right, transparent 0, #${overlayColor} 100%)` }}
+          />
+        )}
         <div className={classNames.sliderThumb} style={{ left: currentPercentage + '%' }} />
       </div>
     );
