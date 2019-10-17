@@ -1,0 +1,9 @@
+{
+  "type": "minor",
+  "comment": "Revert \"Dropdown: Bringing accessibility up to W3 ARIA standards (#10873)\"",
+  "packageName": "office-ui-fabric-react",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "commit": "03817bac7350085fb9f5b59b2050fb8c66023be2",
+  "date": "2019-10-17T21:47:47.337Z",
+  "file": "E:\\office-ui-fabric-react\\change\\office-ui-fabric-react-2019-10-17-14-47-47-revert-10873-dropdownAria.json"
+}
