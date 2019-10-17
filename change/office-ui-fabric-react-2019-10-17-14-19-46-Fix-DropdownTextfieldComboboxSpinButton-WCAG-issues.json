@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "copied over fixes from a previous PR # 10439",
+  "packageName": "office-ui-fabric-react",
+  "email": "betrue@microsoft.com",
+  "commit": "a5cab25f7b6fdb52cbace5b10cef873c0090b50f",
+  "date": "2019-10-17T21:19:45.988Z"
+}
