@@ -439,7 +439,7 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
     if (!this._placeholder) {
       return null;
     }
-    return <span id={this._optionId}>{this._placeholder}</span>;
+    return <>{this._placeholder}</>;
   };
 
   /** Render Callout or Panel container and pass in list */
