@@ -1,7 +1,16 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 16 Oct 2019 12:33:21 GMT and should not be manually modified.
+This log was last generated on Thu, 17 Oct 2019 12:33:02 GMT and should not be manually modified.
 
+## 7.52.0
+Thu, 17 Oct 2019 12:33:02 GMT
+
+### Minor changes
+
+- Dropdown: Bringing accessibility up to standards. (Humberto.Morimoto@microsoft.com)
+### Patches
+
+- Button: Fixed logic where onDismiss was replacing internal dismiss function. (mgodbolt@microsoft.com)
 ## 7.51.0
 Wed, 16 Oct 2019 12:33:21 GMT
 

@@ -2,6 +2,27 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Thu, 17 Oct 2019 12:33:02 GMT",
+      "tag": "office-ui-fabric-react_v7.52.0",
+      "version": "7.52.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Button: Fixed logic where onDismiss was replacing internal dismiss function.",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "30666b87b44be54905478906cb6d76f08d5bb9e2"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Dropdown: Bringing accessibility up to standards.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "88a72f4cc019dff63d645d2544468e5341ebe34b"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 16 Oct 2019 12:33:21 GMT",
       "tag": "office-ui-fabric-react_v7.51.0",
       "version": "7.51.0",
