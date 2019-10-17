@@ -95,8 +95,8 @@ exports[`TeachingBubble renders TeachingBubble correctly 1`] = `
                 ms-TeachingBubble-bodycontent
                 {
                   padding-bottom: 20px;
-                  padding-left: 20px;
-                  padding-right: 20px;
+                  padding-left: 24px;
+                  padding-right: 24px;
                   padding-top: 20px;
                 }
           >
@@ -113,7 +113,7 @@ exports[`TeachingBubble renders TeachingBubble correctly 1`] = `
                     {
                       color: #ffffff;
                       font-size: 14px;
-                      font-weight: 300;
+                      font-weight: 400;
                       margin-bottom: 0px;
                       margin-left: 0px;
                       margin-right: 0px;
@@ -155,8 +155,8 @@ exports[`TeachingBubble renders TeachingBubbleContent correctly 1`] = `
         ms-TeachingBubble-bodycontent
         {
           padding-bottom: 20px;
-          padding-left: 20px;
-          padding-right: 20px;
+          padding-left: 24px;
+          padding-right: 24px;
           padding-top: 20px;
         }
   >
@@ -198,7 +198,7 @@ exports[`TeachingBubble renders TeachingBubbleContent correctly 1`] = `
             {
               color: #ffffff;
               font-size: 14px;
-              font-weight: 300;
+              font-weight: 400;
               margin-bottom: 0px;
               margin-left: 0px;
               margin-right: 0px;
@@ -236,8 +236,8 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
         ms-TeachingBubble-bodycontent
         {
           padding-bottom: 20px;
-          padding-left: 20px;
-          padding-right: 20px;
+          padding-left: 24px;
+          padding-right: 24px;
           padding-top: 20px;
         }
   >
@@ -279,7 +279,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
             {
               color: #ffffff;
               font-size: 14px;
-              font-weight: 300;
+              font-weight: 400;
               margin-bottom: 0px;
               margin-left: 0px;
               margin-right: 0px;
@@ -291,429 +291,481 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
     </div>
     <div
       className=
+          ms-Stack
           ms-TeachingBubble-footer
           {
             align-items: center;
+            box-sizing: border-box;
             color: #ffffff;
             display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            flex: auto;
+            height: auto;
             justify-content: flex-end;
+            width: auto;
+          }
+          & > * {
+            text-overflow: ellipsis;
+          }
+          & > *:not(:first-child) {
+            margin-left: 0px;
+          }
+          & > *:not(.ms-StackItem) {
+            flex-shrink: 1;
           }
           & .ms-Button:not(:first-child) {
-            margin-left: 16px;
+            margin-left: 10px;
           }
     >
-      <button
+      <div
         className=
-            ms-Button
-            ms-Button--primary
-            ms-TeachingBubble-primaryButton
-            primary-className
+            ms-StackItem
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
-              background-color: #ffffff;
-              border-color: #ffffff;
-              border-radius: 2px;
-              border: none;
-              box-sizing: border-box;
-              color: #0078d4;
-              cursor: pointer;
-              display: inline-block;
+              align-self: center;
+              flex-shrink: 1;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
               font-weight: 400;
-              height: 32px;
-              min-width: 80px;
-              outline: transparent;
-              padding-bottom: 0;
-              padding-left: 16px;
-              padding-right: 16px;
-              padding-top: 0;
-              position: relative;
-              text-align: center;
-              text-decoration: none;
-              user-select: none;
-              vertical-align: top;
-              white-space: nowrap;
+              height: auto;
+              width: auto;
             }
-            &::-moz-focus-inner {
-              border: 0;
-            }
-            .ms-Fabric--isFocusVisible &:focus:after {
-              border: none;
-              bottom: 2px;
-              content: "";
-              left: 2px;
-              outline-color: #ffffff;
-              outline: 1px solid #605e5c;
-              position: absolute;
-              right: 2px;
-              top: 2px;
-              z-index: 1;
-            }
-            @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-              border: none;
-              bottom: -2px;
-              left: -2px;
-              outline-color: ButtonText;
-              right: -2px;
-              top: -2px;
-            }
-            &:active > * {
-              left: 0px;
-              position: relative;
-              top: 0px;
-            }
-            @media screen and (-ms-high-contrast: active){& {
-              -ms-high-contrast-adjust: none;
-              background-color: WindowText;
-              color: Window;
-            }
-            &:hover {
-              background-color: #deecf9;
-              border-color: #deecf9;
-              color: #0078d4;
-            }
-            @media screen and (-ms-high-contrast: active){&:hover {
-              background-color: Highlight;
-              color: Window;
-            }
-            &:focus {
-              background-color: #deecf9;
-              border-color: #ffffff;
-            }
-            &:active {
-              background-color: #ffffff;
-              border-color: #ffffff;
-              color: #0078d4;
-            }
-            @media screen and (-ms-high-contrast: active){&:active {
-              -ms-high-contrast-adjust: none;
-              background-color: WindowText;
-              color: Window;
-            }
-            & .ms-Button-label {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 14px;
-              font-weight: 400;
-            }
-        data-is-focusable={true}
-        onClick={[Function]}
-        onKeyDown={[Function]}
-        onKeyPress={[Function]}
-        onKeyUp={[Function]}
-        onMouseDown={[Function]}
-        onMouseUp={[Function]}
-        type="button"
       >
-        <span
-          className=
-              ms-Button-flexContainer
-              {
-                align-items: center;
-                display: flex;
-                flex-wrap: nowrap;
-                height: 100%;
-                justify-content: center;
-              }
-          data-automationid="splitbuttonprimary"
-        >
-          <span
-            className=
-                ms-Button-textContainer
-                {
-                  display: block;
-                  flex-grow: 1;
-                }
-          >
-            <span
-              className=
-                  ms-Button-label
-                  {
-                    display: block;
-                    font-weight: 600;
-                    line-height: 100%;
-                    margin-bottom: 0;
-                    margin-left: 4px;
-                    margin-right: 4px;
-                    margin-top: 0;
-                  }
-              id="id__0"
-            >
-              Test Primary Button
-            </span>
-          </span>
-        </span>
-      </button>
-      <button
+        <span />
+      </div>
+      <div
         className=
-            ms-Button
-            ms-Button--default
-            ms-TeachingBubble-secondaryButton
-            secondary-className
+            ms-StackItem
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
-              background-color: #0078d4;
-              border-color: #ffffff;
-              border-radius: 2px;
-              border: 1px solid #8a8886;
-              box-sizing: border-box;
-              color: #323130;
-              cursor: pointer;
-              display: inline-block;
+              flex-shrink: 1;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
               font-weight: 400;
-              height: 32px;
-              min-width: 80px;
-              outline: transparent;
-              padding-bottom: 0;
-              padding-left: 16px;
-              padding-right: 16px;
-              padding-top: 0;
-              position: relative;
-              text-align: center;
-              text-decoration: none;
-              user-select: none;
-              vertical-align: top;
-              white-space: nowrap;
+              height: auto;
+              width: auto;
             }
-            &::-moz-focus-inner {
-              border: 0;
-            }
-            .ms-Fabric--isFocusVisible &:focus:after {
-              border: 1px solid transparent;
-              bottom: 2px;
-              content: "";
-              left: 2px;
-              outline: 1px solid #605e5c;
-              position: absolute;
-              right: 2px;
-              top: 2px;
-              z-index: 1;
-            }
-            @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-              border: none;
-              bottom: -2px;
-              left: -2px;
-              outline-color: ButtonText;
-              right: -2px;
-              top: -2px;
-            }
-            &:active > * {
-              left: 0px;
-              position: relative;
-              top: 0px;
-            }
-            &:hover {
-              background-color: #106ebe;
-              border-color: #ffffff;
-              color: #201f1e;
-            }
-            @media screen and (-ms-high-contrast: active){&:hover {
-              border-color: Highlight;
-              color: Highlight;
-            }
-            &:focus {
-              background-color: #106ebe;
-              border-color: #ffffff;
-            }
-            &:active {
-              background-color: #0078d4;
-              border-color: #ffffff;
-              color: #201f1e;
-            }
-            & .ms-Button-label {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              color: #ffffff;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 14px;
-              font-weight: 400;
-            }
-        data-is-focusable={true}
-        onClick={[Function]}
-        onKeyDown={[Function]}
-        onKeyPress={[Function]}
-        onKeyUp={[Function]}
-        onMouseDown={[Function]}
-        onMouseUp={[Function]}
-        type="button"
       >
-        <span
+        <button
           className=
-              ms-Button-flexContainer
+              ms-Button
+              ms-Button--default
+              ms-TeachingBubble-secondaryButton
+              secondary-className
               {
-                align-items: center;
-                display: flex;
-                flex-wrap: nowrap;
-                height: 100%;
-                justify-content: center;
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                background-color: #0078d4;
+                border-color: #ffffff;
+                border-radius: 2px;
+                border: 1px solid #8a8886;
+                box-sizing: border-box;
+                color: #323130;
+                cursor: pointer;
+                display: inline-block;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
+                height: 32px;
+                min-width: 80px;
+                outline: transparent;
+                padding-bottom: 0;
+                padding-left: 16px;
+                padding-right: 16px;
+                padding-top: 0;
+                position: relative;
+                text-align: center;
+                text-decoration: none;
+                user-select: none;
+                vertical-align: top;
+                white-space: nowrap;
               }
-          data-automationid="splitbuttonprimary"
+              &::-moz-focus-inner {
+                border: 0;
+              }
+              .ms-Fabric--isFocusVisible &:focus:after {
+                border: 1px solid transparent;
+                bottom: 2px;
+                content: "";
+                left: 2px;
+                outline: 1px solid #605e5c;
+                position: absolute;
+                right: 2px;
+                top: 2px;
+                z-index: 1;
+              }
+              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                border: none;
+                bottom: -2px;
+                left: -2px;
+                outline-color: ButtonText;
+                right: -2px;
+                top: -2px;
+              }
+              &:active > * {
+                left: 0px;
+                position: relative;
+                top: 0px;
+              }
+              &:hover {
+                background-color: #106ebe;
+                border-color: #ffffff;
+                color: #201f1e;
+              }
+              @media screen and (-ms-high-contrast: active){&:hover {
+                border-color: Highlight;
+                color: Highlight;
+              }
+              &:focus {
+                background-color: #106ebe;
+                border-color: #ffffff;
+              }
+              &:active {
+                background-color: #0078d4;
+                border-color: #ffffff;
+                color: #201f1e;
+              }
+              & .ms-Button-label {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                color: #ffffff;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
+              }
+          data-is-focusable={true}
+          onClick={[Function]}
+          onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
+          type="button"
         >
           <span
             className=
-                ms-Button-textContainer
+                ms-Button-flexContainer
                 {
-                  display: block;
-                  flex-grow: 1;
+                  align-items: center;
+                  display: flex;
+                  flex-wrap: nowrap;
+                  height: 100%;
+                  justify-content: center;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <span
               className=
-                  ms-Button-label
+                  ms-Button-textContainer
                   {
                     display: block;
-                    font-weight: 600;
-                    line-height: 100%;
-                    margin-bottom: 0;
-                    margin-left: 4px;
-                    margin-right: 4px;
-                    margin-top: 0;
+                    flex-grow: 1;
                   }
-              id="id__3"
             >
-              Test Secondary Button
+              <span
+                className=
+                    ms-Button-label
+                    {
+                      display: block;
+                      font-weight: 600;
+                      line-height: 100%;
+                      margin-bottom: 0;
+                      margin-left: 4px;
+                      margin-right: 4px;
+                      margin-top: 0;
+                    }
+                id="id__1"
+              >
+                Test Secondary Button
+              </span>
             </span>
           </span>
-        </span>
-      </button>
+        </button>
+        <button
+          className=
+              ms-Button
+              ms-Button--primary
+              ms-TeachingBubble-primaryButton
+              primary-className
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                background-color: #ffffff;
+                border-color: #ffffff;
+                border-radius: 2px;
+                border: none;
+                box-sizing: border-box;
+                color: #0078d4;
+                cursor: pointer;
+                display: inline-block;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
+                height: 32px;
+                min-width: 80px;
+                outline: transparent;
+                padding-bottom: 0;
+                padding-left: 16px;
+                padding-right: 16px;
+                padding-top: 0;
+                position: relative;
+                text-align: center;
+                text-decoration: none;
+                user-select: none;
+                vertical-align: top;
+                white-space: nowrap;
+              }
+              &::-moz-focus-inner {
+                border: 0;
+              }
+              .ms-Fabric--isFocusVisible &:focus:after {
+                border: none;
+                bottom: 2px;
+                content: "";
+                left: 2px;
+                outline-color: #ffffff;
+                outline: 1px solid #605e5c;
+                position: absolute;
+                right: 2px;
+                top: 2px;
+                z-index: 1;
+              }
+              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                border: none;
+                bottom: -2px;
+                left: -2px;
+                outline-color: ButtonText;
+                right: -2px;
+                top: -2px;
+              }
+              &:active > * {
+                left: 0px;
+                position: relative;
+                top: 0px;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                -ms-high-contrast-adjust: none;
+                background-color: WindowText;
+                color: Window;
+              }
+              &:hover {
+                background-color: #deecf9;
+                border-color: #deecf9;
+                color: #0078d4;
+              }
+              @media screen and (-ms-high-contrast: active){&:hover {
+                background-color: Highlight;
+                color: Window;
+              }
+              &:focus {
+                background-color: #deecf9;
+                border-color: #ffffff;
+              }
+              &:active {
+                background-color: #ffffff;
+                border-color: #ffffff;
+                color: #0078d4;
+              }
+              @media screen and (-ms-high-contrast: active){&:active {
+                -ms-high-contrast-adjust: none;
+                background-color: WindowText;
+                color: Window;
+              }
+              & .ms-Button-label {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
+              }
+          data-is-focusable={true}
+          onClick={[Function]}
+          onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
+          type="button"
+        >
+          <span
+            className=
+                ms-Button-flexContainer
+                {
+                  align-items: center;
+                  display: flex;
+                  flex-wrap: nowrap;
+                  height: 100%;
+                  justify-content: center;
+                }
+            data-automationid="splitbuttonprimary"
+          >
+            <span
+              className=
+                  ms-Button-textContainer
+                  {
+                    display: block;
+                    flex-grow: 1;
+                  }
+            >
+              <span
+                className=
+                    ms-Button-label
+                    {
+                      display: block;
+                      font-weight: 600;
+                      line-height: 100%;
+                      margin-bottom: 0;
+                      margin-left: 4px;
+                      margin-right: 4px;
+                      margin-top: 0;
+                    }
+                id="id__4"
+              >
+                Test Primary Button
+              </span>
+            </span>
+          </span>
+        </button>
+      </div>
     </div>
-  </div>
-  <button
-    className=
-        ms-Button
-        ms-Button--icon
-        ms-TeachingBubble-closebutton
-        {
-          -moz-osx-font-smoothing: grayscale;
-          -webkit-font-smoothing: antialiased;
-          background-color: transparent;
-          border-radius: 0px;
-          border: none;
-          box-sizing: border-box;
-          color: #ffffff;
-          cursor: pointer;
-          display: inline-block;
-          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-          font-size: 12px;
-          font-weight: 400;
-          height: 32px;
-          outline: transparent;
-          padding-bottom: 0;
-          padding-left: 4px;
-          padding-right: 4px;
-          padding-top: 0;
-          position: absolute;
-          right: 0px;
-          text-align: center;
-          text-decoration: none;
-          top: 0px;
-          user-select: none;
-          vertical-align: top;
-          width: 32px;
-        }
-        &::-moz-focus-inner {
-          border: 0;
-        }
-        .ms-Fabric--isFocusVisible &:focus:after {
-          border: 1px solid transparent;
-          bottom: 2px;
-          content: "";
-          left: 2px;
-          outline: 1px solid #605e5c;
-          position: absolute;
-          right: 2px;
-          top: 2px;
-          z-index: 1;
-        }
-        @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-          border: none;
-          bottom: -2px;
-          left: -2px;
-          outline-color: ButtonText;
-          right: -2px;
-          top: -2px;
-        }
-        &:active > * {
-          left: 0px;
-          position: relative;
-          top: 0px;
-        }
-        &:hover {
-          background-color: #f3f2f1;
-          background: #106ebe;
-          color: #ffffff;
-        }
-        @media screen and (-ms-high-contrast: active){&:hover {
-          border-color: Highlight;
-          color: Highlight;
-        }
-        &:active {
-          background-color: #edebe9;
-          background: #005a9e;
-          color: #ffffff;
-        }
-    data-is-focusable={true}
-    onClick={[Function]}
-    onKeyDown={[Function]}
-    onKeyPress={[Function]}
-    onKeyUp={[Function]}
-    onMouseDown={[Function]}
-    onMouseUp={[Function]}
-    type="button"
-  >
-    <span
+    <button
       className=
-          ms-Button-flexContainer
+          ms-Button
+          ms-Button--icon
+          ms-TeachingBubble-closebutton
           {
-            align-items: center;
-            display: flex;
-            flex-wrap: nowrap;
-            height: 100%;
-            justify-content: center;
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            background-color: transparent;
+            border-radius: 0px;
+            border: none;
+            box-sizing: border-box;
+            color: #ffffff;
+            cursor: pointer;
+            display: inline-block;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 12px;
+            font-weight: 400;
+            height: 32px;
+            margin-bottom: 0;
+            margin-left: 0;
+            margin-right: 15px;
+            margin-top: 15px;
+            outline: transparent;
+            padding-bottom: 0;
+            padding-left: 4px;
+            padding-right: 4px;
+            padding-top: 0;
+            position: absolute;
+            right: 0px;
+            text-align: center;
+            text-decoration: none;
+            top: 0px;
+            user-select: none;
+            vertical-align: top;
+            width: 32px;
           }
-      data-automationid="splitbuttonprimary"
+          &::-moz-focus-inner {
+            border: 0;
+          }
+          .ms-Fabric--isFocusVisible &:focus:after {
+            border: 1px solid transparent;
+            bottom: 2px;
+            content: "";
+            left: 2px;
+            outline: 1px solid #605e5c;
+            position: absolute;
+            right: 2px;
+            top: 2px;
+            z-index: 1;
+          }
+          @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+            border: none;
+            bottom: -2px;
+            left: -2px;
+            outline-color: ButtonText;
+            right: -2px;
+            top: -2px;
+          }
+          &:active > * {
+            left: 0px;
+            position: relative;
+            top: 0px;
+          }
+          &:hover {
+            background-color: #f3f2f1;
+            background: #106ebe;
+            color: #ffffff;
+          }
+          @media screen and (-ms-high-contrast: active){&:hover {
+            border-color: Highlight;
+            color: Highlight;
+          }
+          &:active {
+            background-color: #edebe9;
+            background: #005a9e;
+            color: #ffffff;
+          }
+      data-is-focusable={true}
+      onClick={[Function]}
+      onKeyDown={[Function]}
+      onKeyPress={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseUp={[Function]}
+      type="button"
     >
-      <i
-        aria-hidden={true}
+      <span
         className=
-            ms-Icon
-            ms-Button-icon
+            ms-Button-flexContainer
             {
-              display: inline-block;
+              align-items: center;
+              display: flex;
+              flex-wrap: nowrap;
+              height: 100%;
+              justify-content: center;
             }
-            {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              font-family: "FabricMDL2Icons";
-              font-style: normal;
-              font-weight: normal;
-              speak: none;
-            }
-            {
-              flex-shrink: 0;
-              font-size: 16px;
-              height: 16px;
-              line-height: 16px;
-              margin-bottom: 0;
-              margin-left: 4px;
-              margin-right: 4px;
-              margin-top: 0;
-              text-align: center;
-              vertical-align: middle;
-            }
-        data-icon-name="Cancel"
-        role="presentation"
+        data-automationid="splitbuttonprimary"
       >
-        
-      </i>
-    </span>
-  </button>
+        <i
+          aria-hidden={true}
+          className=
+              ms-Icon
+              ms-Button-icon
+              {
+                display: inline-block;
+              }
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                font-family: "FabricMDL2Icons";
+                font-style: normal;
+                font-weight: normal;
+                speak: none;
+              }
+              {
+                flex-shrink: 0;
+                font-size: 16px;
+                height: 16px;
+                line-height: 16px;
+                margin-bottom: 0;
+                margin-left: 4px;
+                margin-right: 4px;
+                margin-top: 0;
+                text-align: center;
+                vertical-align: middle;
+              }
+          data-icon-name="Cancel"
+          role="presentation"
+        >
+          
+        </i>
+      </span>
+    </button>
+  </div>
 </div>
 `;
 
@@ -741,8 +793,8 @@ exports[`TeachingBubble renders TeachingBubbleContent with condensed headline co
         ms-TeachingBubble-bodycontent
         {
           padding-bottom: 20px;
-          padding-left: 20px;
-          padding-right: 20px;
+          padding-left: 24px;
+          padding-right: 24px;
           padding-top: 20px;
         }
   >
@@ -756,7 +808,8 @@ exports[`TeachingBubble renders TeachingBubbleContent with condensed headline co
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
             font-weight: 600;
-            margin-right: 10px;
+            margin-bottom: 14px;
+            margin-right: 24px;
           }
     >
       <p
@@ -788,7 +841,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with condensed headline co
             {
               color: #ffffff;
               font-size: 14px;
-              font-weight: 300;
+              font-weight: 400;
               margin-bottom: 0px;
               margin-left: 0px;
               margin-right: 0px;
@@ -826,8 +879,8 @@ exports[`TeachingBubble renders TeachingBubbleContent with custom footer text 1`
         ms-TeachingBubble-bodycontent
         {
           padding-bottom: 20px;
-          padding-left: 20px;
-          padding-right: 20px;
+          padding-left: 24px;
+          padding-right: 24px;
           padding-top: 20px;
         }
   >
@@ -844,7 +897,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with custom footer text 1`
             {
               color: #ffffff;
               font-size: 14px;
-              font-weight: 300;
+              font-weight: 400;
               margin-bottom: 0px;
               margin-left: 0px;
               margin-right: 0px;
@@ -856,20 +909,66 @@ exports[`TeachingBubble renders TeachingBubbleContent with custom footer text 1`
     </div>
     <div
       className=
+          ms-Stack
           ms-TeachingBubble-footer
           {
             align-items: center;
+            box-sizing: border-box;
             color: #ffffff;
             display: flex;
-            justify-content: flex-end;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            flex: auto;
+            height: auto;
+            justify-content: space-between;
+            width: auto;
+          }
+          & > * {
+            text-overflow: ellipsis;
+          }
+          & > *:not(:first-child) {
+            margin-left: 0px;
+          }
+          & > *:not(.ms-StackItem) {
+            flex-shrink: 1;
           }
           & .ms-Button:not(:first-child) {
-            margin-left: 16px;
+            margin-left: 10px;
           }
     >
-      <span>
-        1 of 2
-      </span>
+      <div
+        className=
+            ms-StackItem
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              align-self: center;
+              flex-shrink: 1;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
+              height: auto;
+              width: auto;
+            }
+      >
+        <span>
+          1 of 2
+        </span>
+      </div>
+      <div
+        className=
+            ms-StackItem
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              flex-shrink: 1;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
+              height: auto;
+              width: auto;
+            }
+      />
     </div>
   </div>
 </div>
@@ -939,8 +1038,8 @@ exports[`TeachingBubble renders TeachingBubbleContent with image correctly 1`] =
         ms-TeachingBubble-bodycontent
         {
           padding-bottom: 20px;
-          padding-left: 20px;
-          padding-right: 20px;
+          padding-left: 24px;
+          padding-right: 24px;
           padding-top: 20px;
         }
   >
@@ -982,7 +1081,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with image correctly 1`] =
             {
               color: #ffffff;
               font-size: 14px;
-              font-weight: 300;
+              font-weight: 400;
               margin-bottom: 0px;
               margin-left: 0px;
               margin-right: 0px;
@@ -1020,8 +1119,8 @@ exports[`TeachingBubble renders TeachingBubbleContent with small headline correc
         ms-TeachingBubble-bodycontent
         {
           padding-bottom: 20px;
-          padding-left: 20px;
-          padding-right: 20px;
+          padding-left: 24px;
+          padding-right: 24px;
           padding-top: 20px;
         }
   >
@@ -1035,7 +1134,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with small headline correc
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
             font-weight: 600;
-            margin-right: 10px;
+            margin-right: 24px;
           }
           &:not(:last-child) {
             margin-bottom: 14px;
@@ -1070,7 +1169,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with small headline correc
             {
               color: #ffffff;
               font-size: 14px;
-              font-weight: 300;
+              font-weight: 400;
               margin-bottom: 0px;
               margin-left: 0px;
               margin-right: 0px;

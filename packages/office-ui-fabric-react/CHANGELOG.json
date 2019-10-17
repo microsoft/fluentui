@@ -2,6 +2,94 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Thu, 17 Oct 2019 12:33:02 GMT",
+      "tag": "office-ui-fabric-react_v7.52.0",
+      "version": "7.52.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Button: Fixed logic where onDismiss was replacing internal dismiss function.",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "30666b87b44be54905478906cb6d76f08d5bb9e2"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Dropdown: Bringing accessibility up to standards.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "88a72f4cc019dff63d645d2544468e5341ebe34b"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 16 Oct 2019 12:33:21 GMT",
+      "tag": "office-ui-fabric-react_v7.51.0",
+      "version": "7.51.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Checkbox: improve checked state handling",
+            "author": "elcraig@microsoft.com",
+            "commit": "d8582a229cef86cdf1dd8172737cbc91b6c6565a"
+          },
+          {
+            "comment": "TeachingBubble udpates: added separate multi-step example to reflect current design toolkit and updated basic teachingbubble example",
+            "author": "marygans@microsoft.com",
+            "commit": "41692fc1044ed8b5fc7bf5fda428a10a454d81f4"
+          },
+          {
+            "comment": "Pivot and Stack: relax child item type checks",
+            "author": "elcraig@microsoft.com",
+            "commit": "26f3de051f8a1355f820e0ccccb589674a67ed1e"
+          },
+          {
+            "comment": "CommandBar: Replacing inline styles with definition in styles file.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "efea4467f1d655475468885648231f6b550f32c7"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Announced: add `as` prop and root styles",
+            "author": "elcraig@microsoft.com",
+            "commit": "2e4ea58e204193827ff747b0c661e1ac0701577f"
+          },
+          {
+            "comment": "Allowing role to be overridden on SplitButton",
+            "author": "pagaur@microsoft.com",
+            "commit": "11bce07f1660d9c056edf85ae24a8bccf1adafc1"
+          },
+          {
+            "comment": "ComboBox and Dropdown: Passing correct onDismiss prop in onRenderContainer.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "a721b7679188cf72e56d4de72491eaa15af0e360"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 15 Oct 2019 12:32:28 GMT",
+      "tag": "office-ui-fabric-react_v7.50.0",
+      "version": "7.50.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Breadcrumb: fix accessibility and styling issues",
+            "author": "elcraig@microsoft.com",
+            "commit": "7794b431160d816468f248b016e0b7346ffa7bc9"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Textfield: Fix disabled text color",
+            "author": "joschect@microsoft.com",
+            "commit": "ee17db1f2873200e79e75e8a1aae3f074b1f8480"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 14 Oct 2019 12:30:37 GMT",
       "tag": "office-ui-fabric-react_v7.49.0",
       "version": "7.49.0",

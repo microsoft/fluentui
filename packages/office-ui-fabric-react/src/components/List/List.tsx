@@ -348,6 +348,10 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
       return true;
     }
 
+    if (newProps.version !== this.props.version) {
+      return true;
+    }
+
     if (newProps.items === this.props.items && oldPages!.length === newPages!.length) {
       for (let i = 0; i < oldPages!.length; i++) {
         const oldPage = oldPages![i];
@@ -596,17 +600,22 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
     this._notifyPageChanges(oldListPages, newListState.pages!);
 
     this.setState(newListState, () => {
+      // Multiple updates may have been queued, so the callback will reflect all of them.
+      // Re-fetch the current props and states to avoid using a stale props or state captured in the closure.
+      const finalProps = this.props;
+      const finalState = this.state;
+
       // If we weren't provided with the page height, measure the pages
-      if (!props.getPageHeight) {
+      if (!finalProps.getPageHeight) {
         // If measured version is invalid since we've updated the DOM
-        const heightsChanged = this._updatePageMeasurements(newListState.pages!);
+        const heightsChanged = this._updatePageMeasurements(finalState.pages!);
 
         // On first render, we should re-measure so that we don't get a visual glitch.
         if (heightsChanged) {
           this._materializedRect = null;
           if (!this._hasCompletedFirstRender) {
             this._hasCompletedFirstRender = true;
-            this._updatePages(props);
+            this._updatePages(finalProps);
           } else {
             this._onAsyncScroll();
           }
@@ -620,8 +629,8 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
       }
 
       // Notify the caller that rendering the new pages has completed
-      if (props.onPagesUpdated) {
-        props.onPagesUpdated(this.state.pages as IPage<T>[]);
+      if (finalProps.onPagesUpdated) {
+        finalProps.onPagesUpdated(finalState.pages as IPage<T>[]);
       }
     });
   }

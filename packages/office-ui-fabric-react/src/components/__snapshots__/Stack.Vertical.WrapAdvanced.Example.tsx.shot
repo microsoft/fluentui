@@ -662,7 +662,6 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
                 padding-top: 5px;
                 word-wrap: break-word;
               }
-          htmlFor="Dropdown2"
           id="Dropdown2-label"
         >
           Horizontal alignment:
@@ -670,6 +669,7 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
         <div
           aria-describedby="Dropdown2-option"
           aria-expanded="false"
+          aria-haspopup="listbox"
           aria-labelledby="Dropdown2-label"
           className=
               ms-Dropdown
@@ -763,17 +763,11 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
           onKeyDown={[Function]}
           onKeyUp={[Function]}
           onMouseDown={[Function]}
-          role="listbox"
+          role="button"
           tabIndex={0}
         >
           <span
-            aria-atomic={true}
             aria-invalid={false}
-            aria-label="Left"
-            aria-live="polite"
-            aria-posinset={1}
-            aria-selected={true}
-            aria-setsize={3}
             className=
                 ms-Dropdown-title
                 {
@@ -801,10 +795,10 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
                   text-overflow: ellipsis;
                   white-space: nowrap;
                 }
-            id="Dropdown2-option"
-            role="option"
           >
-            <span>
+            <span
+              id="Dropdown2-option"
+            >
               Left
             </span>
           </span>
@@ -889,7 +883,6 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
                 padding-top: 5px;
                 word-wrap: break-word;
               }
-          htmlFor="Dropdown3"
           id="Dropdown3-label"
         >
           Vertical alignment:
@@ -897,6 +890,7 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
         <div
           aria-describedby="Dropdown3-option"
           aria-expanded="false"
+          aria-haspopup="listbox"
           aria-labelledby="Dropdown3-label"
           className=
               ms-Dropdown
@@ -990,17 +984,11 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
           onKeyDown={[Function]}
           onKeyUp={[Function]}
           onMouseDown={[Function]}
-          role="listbox"
+          role="button"
           tabIndex={0}
         >
           <span
-            aria-atomic={true}
             aria-invalid={false}
-            aria-label="Top"
-            aria-live="polite"
-            aria-posinset={1}
-            aria-selected={true}
-            aria-setsize={6}
             className=
                 ms-Dropdown-title
                 {
@@ -1028,10 +1016,10 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
                   text-overflow: ellipsis;
                   white-space: nowrap;
                 }
-            id="Dropdown3-option"
-            role="option"
           >
-            <span>
+            <span
+              id="Dropdown3-option"
+            >
               Top
             </span>
           </span>
@@ -1116,7 +1104,6 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
                 padding-top: 5px;
                 word-wrap: break-word;
               }
-          htmlFor="Dropdown4"
           id="Dropdown4-label"
         >
           Overflow:
@@ -1124,6 +1111,7 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
         <div
           aria-describedby="Dropdown4-option"
           aria-expanded="false"
+          aria-haspopup="listbox"
           aria-labelledby="Dropdown4-label"
           className=
               ms-Dropdown
@@ -1217,17 +1205,11 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
           onKeyDown={[Function]}
           onKeyUp={[Function]}
           onMouseDown={[Function]}
-          role="listbox"
+          role="button"
           tabIndex={0}
         >
           <span
-            aria-atomic={true}
             aria-invalid={false}
-            aria-label="Visible"
-            aria-live="polite"
-            aria-posinset={1}
-            aria-selected={true}
-            aria-setsize={3}
             className=
                 ms-Dropdown-title
                 {
@@ -1255,10 +1237,10 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
                   text-overflow: ellipsis;
                   white-space: nowrap;
                 }
-            id="Dropdown4-option"
-            role="option"
           >
-            <span>
+            <span
+              id="Dropdown4-option"
+            >
               Visible
             </span>
           </span>
