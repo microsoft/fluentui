@@ -5,7 +5,7 @@ const chalk = require('chalk');
 spawnSync('git', ['config', 'core.hooksPath', '.githooks']);
 
 console.log(`${chalk.green(
-  'All dependencies are installed! This repo does not automatically run builds when installing dependencies anymore.'
+  'All dependencies are installed! This repo no longer builds automatically after installing dependencies.'
 )}
 
 For innerloop development, run these commands:
