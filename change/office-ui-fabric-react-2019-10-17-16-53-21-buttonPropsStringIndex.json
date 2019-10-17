@@ -1,0 +1,9 @@
+{
+  "type": "patch",
+  "comment": "Adding string index signature to IButtonProps",
+  "packageName": "office-ui-fabric-react",
+  "email": "brandth@microsoft.com",
+  "commit": "2223d173132671f4b73887f07eed8106c1434f85",
+  "date": "2019-10-17T23:53:21.868Z",
+  "file": "C:\\repos\\office-ui-fabric-react\\change\\office-ui-fabric-react-2019-10-17-16-53-21-buttonPropsStringIndex.json"
+}
