@@ -49,12 +49,6 @@ export interface ISelectableDroppableTextProps<TComponent, TListenerElement> ext
   selectedKey?: string | number | string[] | number[] | null;
 
   /**
-   * Optional prop that indicates if multi-choice selections are allowed or not.
-   * @defaultvalue false
-   */
-  multiSelect?: boolean;
-
-  /**
    * Collection of options for this ISelectableDroppableText
    */
   options?: any;
