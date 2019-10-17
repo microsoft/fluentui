@@ -302,8 +302,10 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
             borderColor: semanticColors.errorText
           },
           '&:focus, &:hover': {
-            ':after': {
-              borderColor: semanticColors.errorText
+            selectors: {
+              ':after': {
+                borderColor: semanticColors.errorText
+              }
             }
           }
         }
