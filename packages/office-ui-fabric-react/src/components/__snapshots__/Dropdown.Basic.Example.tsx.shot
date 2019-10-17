@@ -153,11 +153,14 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
       onKeyDown={[Function]}
       onKeyUp={[Function]}
       onMouseDown={[Function]}
-      role="button"
+      role="listbox"
       tabIndex={0}
     >
       <span
+        aria-atomic={true}
         aria-invalid={false}
+        aria-live="polite"
+        aria-setsize={7}
         className=
             ms-Dropdown-title
             ms-Dropdown-titleIsPlaceHolder
@@ -187,12 +190,10 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
               text-overflow: ellipsis;
               white-space: nowrap;
             }
+        id="Dropdown0-option"
+        role="option"
       >
-        <span
-          id="Dropdown0-option"
-        >
-          Select an option
-        </span>
+        Select an option
       </span>
       <span
         className=
@@ -344,11 +345,12 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
       onKeyDown={[Function]}
       onKeyUp={[Function]}
       onMouseDown={[Function]}
-      role="button"
       tabIndex={-1}
     >
       <span
+        aria-atomic={true}
         aria-invalid={false}
+        aria-live="polite"
         className=
             ms-Dropdown-title
             {
@@ -382,12 +384,9 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
               border: 1px solid GrayText;
               color: GrayText;
             }
+        id="Dropdown1-option"
       >
-        <span
-          id="Dropdown1-option"
-        >
-          Broccoli
-        </span>
+        Broccoli
       </span>
       <span
         className=
@@ -557,11 +556,12 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
       onKeyDown={[Function]}
       onKeyUp={[Function]}
       onMouseDown={[Function]}
-      role="button"
       tabIndex={0}
     >
       <span
+        aria-atomic={true}
         aria-invalid={false}
+        aria-live="polite"
         className=
             ms-Dropdown-title
             {
@@ -589,12 +589,9 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
               text-overflow: ellipsis;
               white-space: nowrap;
             }
+        id="Dropdown2-option"
       >
-        <span
-          id="Dropdown2-option"
-        >
-          Apple, Banana, Grape
-        </span>
+        Apple, Banana, Grape
       </span>
       <span
         className=

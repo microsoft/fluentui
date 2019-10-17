@@ -270,16 +270,13 @@ describe('Dropdown', () => {
 
       // in enzyme, when we call the programatic focus(), it does not trigger the onFocus callback of the div being focused.
       // Utilize JSDOM instead.
-      ReactDOM.render(
-        <Dropdown componentRef={dropdown} id="myDropdown" label="testgroup" tabIndex={-1} options={DEFAULT_OPTIONS} />,
-        container
-      );
+      ReactDOM.render(<Dropdown componentRef={dropdown} label="testgroup" tabIndex={-1} options={DEFAULT_OPTIONS} />, container);
 
       dropdown.current!.focus(false);
 
       const titleElement = container.querySelector('.ms-Dropdown-title') as HTMLElement;
       // for some reason, JSDOM does not return innerText of 1 so we have to use innerHTML instead.
-      expect(titleElement.innerHTML).toEqual('<span id="myDropdown-option">1</span>');
+      expect(titleElement.innerHTML).toEqual('1');
     });
 
     it('calling programatic focus() with `true` opens up the Dropdown and focuses/selects on first selectable option`', () => {
@@ -658,14 +655,14 @@ describe('Dropdown', () => {
 
     it('defaultSelectedKey value is respected if Dropdown options change for single-select Dropdown.', () => {
       wrapper = mount(<DropdownWithChangingProps multi={false} />);
-      const dropdownOptionText = wrapper.getDOMNode().querySelector('.ms-Dropdown-title>span') as HTMLSpanElement;
+      const dropdownOptionText = wrapper.getDOMNode().querySelector('.ms-Dropdown-title') as HTMLSpanElement;
 
       expect(dropdownOptionText.innerHTML).toBe('Option b');
     });
 
     it('defaultSelectedKeys value is respected if Dropdown options change for multi-select Dropdown.', () => {
       wrapper = mount(<DropdownWithChangingProps multi={true} />);
-      const dropdownOptionText = wrapper.getDOMNode().querySelector('.ms-Dropdown-title>span') as HTMLSpanElement;
+      const dropdownOptionText = wrapper.getDOMNode().querySelector('.ms-Dropdown-title') as HTMLSpanElement;
 
       expect(dropdownOptionText.innerHTML).toBe('Option b, Option d');
     });

@@ -325,11 +325,14 @@ exports[`Component Examples renders Dropdown.Error.Example.tsx correctly 1`] = `
       onKeyDown={[Function]}
       onKeyUp={[Function]}
       onMouseDown={[Function]}
-      role="button"
+      role="listbox"
       tabIndex={0}
     >
       <span
+        aria-atomic={true}
         aria-invalid={false}
+        aria-live="polite"
+        aria-setsize={5}
         className=
             ms-Dropdown-title
             ms-Dropdown-titleIsPlaceHolder
@@ -359,12 +362,10 @@ exports[`Component Examples renders Dropdown.Error.Example.tsx correctly 1`] = `
               text-overflow: ellipsis;
               white-space: nowrap;
             }
+        id="Dropdown1-option"
+        role="option"
       >
-        <span
-          id="Dropdown1-option"
-        >
-          Select an option
-        </span>
+        Select an option
       </span>
       <span
         className=
