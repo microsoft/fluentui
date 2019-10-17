@@ -288,11 +288,8 @@ exports[`TextField snapshots renders multiline correctly with errorMessage 1`] =
             position: relative;
             text-align: left;
           }
-          &:hover {
-            : after;
-          }
           &:hover:after {
-            border-color: #323130;
+            border-color: #a4262c;
           }
           @media screen and (-ms-high-contrast: active){&:hover:after {
             border-color: Highlight;
@@ -300,8 +297,8 @@ exports[`TextField snapshots renders multiline correctly with errorMessage 1`] =
           &:after {
             border-color: #a4262c;
           }
-          &:focus {
-            : after;
+          &:focus:after {
+            border-color: #a4262c;
           }
     >
       <div
@@ -556,11 +553,8 @@ exports[`TextField snapshots renders multiline correctly with props affecting st
             position: relative;
             text-align: left;
           }
-          &:hover {
-            : after;
-          }
           &:hover:after {
-            border-color: #323130;
+            border-color: #a4262c;
           }
           @media screen and (-ms-high-contrast: active){&:hover:after {
             border-color: Highlight;
@@ -568,8 +562,8 @@ exports[`TextField snapshots renders multiline correctly with props affecting st
           &:after {
             border-color: #a4262c;
           }
-          &:focus {
-            : after;
+          &:focus:after {
+            border-color: #a4262c;
           }
     >
       <div
@@ -1384,11 +1378,8 @@ exports[`TextField snapshots should resepect user component and subcomponent sty
             position: relative;
             text-align: left;
           }
-          &:hover {
-            : after;
-          }
           &:hover:after {
-            border-color: #323130;
+            border-color: #a4262c;
           }
           @media screen and (-ms-high-contrast: active){&:hover:after {
             border-color: Highlight;
@@ -1396,8 +1387,8 @@ exports[`TextField snapshots should resepect user component and subcomponent sty
           &:after {
             border-color: #a4262c;
           }
-          &:focus {
-            : after;
+          &:focus:after {
+            border-color: #a4262c;
           }
     >
       <div
