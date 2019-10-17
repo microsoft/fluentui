@@ -7,7 +7,7 @@ import { Icon, IIconStyles, Image, Stack, IStackTokens, Text, ITextStyles } from
 const alertClicked = (): void => {
   alert('Clicked');
 };
-export class CardCompactExample extends React.Component<{}, {}> {
+export class CardHorizontalExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
     const siteTextStyles: ITextStyles = {
       root: {
@@ -46,13 +46,13 @@ export class CardCompactExample extends React.Component<{}, {}> {
 
     return (
       <Stack tokens={sectionStackTokens}>
-        <Card compact tokens={cardTokens}>
+        <Card horizontal tokens={cardTokens}>
           <Card.Item>
-            <Text>Basic compact card</Text>
+            <Text>Basic horizontal card</Text>
           </Card.Item>
         </Card>
 
-        <Card compact onClick={alertClicked} tokens={cardTokens}>
+        <Card horizontal onClick={alertClicked} tokens={cardTokens}>
           <Card.Item fill>
             <Image src="https://placehold.it/180x135" alt="Placeholder image." />
           </Card.Item>

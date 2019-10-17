@@ -94,16 +94,17 @@ function _useCompilerOptions(compilerOptions: ICompilerOptions | undefined): voi
   React.useEffect(() => {
     const oldCompilerOptions = typescriptDefaults.getCompilerOptions();
     typescriptDefaults.setCompilerOptions({
+      // The compiler options used here generally should *not* be strict, to make quick edits easier
       experimentalDecorators: true,
       preserveConstEnums: true,
+      // implicit global `this` usage is almost always a bug
+      noImplicitThis: true,
       // Mix in provided options
       ...compilerOptions,
       // These options are essential to making the transform/eval and types code work (no overriding)
-      noEmitOnError: true,
       allowNonTsExtensions: true,
       target: typescript.ScriptTarget.ES2015,
       jsx: typescript.JsxEmit.React,
-      jsxFactory: 'React.createElement',
       module: typescript.ModuleKind.ESNext,
       baseUrl: filePrefix,
       // This is updated after types are loaded, so preserve the old setting

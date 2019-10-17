@@ -1,7 +1,19 @@
 # Change Log - @uifabric/react-cards
 
-This log was last generated on Thu, 03 Oct 2019 23:14:46 GMT and should not be manually modified.
+This log was last generated on Wed, 16 Oct 2019 12:33:21 GMT and should not be manually modified.
 
+## 0.109.1
+Wed, 16 Oct 2019 12:33:21 GMT
+
+### Patches
+
+- Relax child item type checks (elcraig@microsoft.com)
+## 0.109.0
+Mon, 14 Oct 2019 12:30:37 GMT
+
+### Minor changes
+
+- Card: Renamed compact prop to horizontal and updated examples and tests accordingly. (Humberto.Morimoto@microsoft.com)
 ## 0.108.2
 Thu, 03 Oct 2019 23:14:46 GMT
 

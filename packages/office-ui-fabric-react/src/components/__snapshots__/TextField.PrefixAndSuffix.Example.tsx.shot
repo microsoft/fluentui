@@ -365,7 +365,7 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  background-color: transparent;
+                  background-color: #f3f2f1;
                   background: none;
                   border-color: transparent;
                   border-radius: 0px;

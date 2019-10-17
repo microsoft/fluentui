@@ -21,7 +21,7 @@ const baseTokens: ICardComponent['tokens'] = (props, theme) => {
   };
 };
 
-const compactTokens: ICardComponent['tokens'] = {
+const horizontalTokens: ICardComponent['tokens'] = {
   height: 'auto',
   minWidth: '300px',
   maxWidth: '500px'
@@ -39,7 +39,7 @@ const clickableTokens: ICardComponent['tokens'] = (props, theme) => {
 
 export const CardTokens: ICardComponent['tokens'] = (props, theme): ICardTokenReturnType => [
   baseTokens,
-  props.compact && compactTokens,
+  props.horizontal && horizontalTokens,
   props.onClick && clickableTokens
 ];
 

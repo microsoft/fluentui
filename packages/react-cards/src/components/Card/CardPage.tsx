@@ -4,8 +4,8 @@ import { ExampleCard, IComponentDemoPageProps, ComponentPage, Markdown, Properti
 import { CardVerticalExample } from './examples/Card.Vertical.Example';
 const CardVerticalExampleCode = require('!raw-loader!@uifabric/react-cards/src/components/Card/examples/Card.Vertical.Example.tsx') as string;
 
-import { CardCompactExample } from './examples/Card.Compact.Example';
-const CardCompactExampleCode = require('!raw-loader!@uifabric/react-cards/src/components/Card/examples/Card.Compact.Example.tsx') as string;
+import { CardHorizontalExample } from './examples/Card.Horizontal.Example';
+const CardHorizontalExampleCode = require('!raw-loader!@uifabric/react-cards/src/components/Card/examples/Card.Horizontal.Example.tsx') as string;
 
 import { CardConfigureExample } from './examples/Card.Configure.Example';
 const CardConfigureExampleCode = require('!raw-loader!@uifabric/react-cards/src/components/Card/examples/Card.Configure.Example.tsx') as string;
@@ -21,8 +21,8 @@ export class CardPage extends React.Component<IComponentDemoPageProps, {}> {
             <ExampleCard title="Vertical Card" code={CardVerticalExampleCode}>
               <CardVerticalExample />
             </ExampleCard>
-            <ExampleCard title="Compact Card" code={CardCompactExampleCode}>
-              <CardCompactExample />
+            <ExampleCard title="Horizontal Card" code={CardHorizontalExampleCode}>
+              <CardHorizontalExample />
             </ExampleCard>
             <ExampleCard title="Configure Properties" code={CardConfigureExampleCode}>
               <CardConfigureExample />

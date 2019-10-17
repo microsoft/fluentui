@@ -53,11 +53,6 @@ export interface IDropdownProps extends ISelectableDroppableTextProps<IDropdown,
   onChanged?: (option: IDropdownOption, index?: number) => void;
 
   /**
-   * Callback issues when the options callout is dismissed
-   */
-  onDismiss?: () => void;
-
-  /**
    * Custom render function for the label.
    */
   onRenderLabel?: IRenderFunction<IDropdownProps>;
@@ -96,11 +91,6 @@ export interface IDropdownProps extends ISelectableDroppableTextProps<IDropdown,
    * options always getting rendered in a Panel.
    */
   responsiveMode?: ResponsiveMode;
-
-  /**
-   * Optional mode indicates if multi-choice selections is allowed.  Default to false
-   */
-  multiSelect?: boolean;
 
   /**
    * Keys that will be initially used to set selected items. This prop is used for `multiSelect`

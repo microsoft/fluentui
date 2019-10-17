@@ -331,7 +331,7 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
         },
       disabled && [
         {
-          backgroundColor: 'transparent',
+          backgroundColor: semanticColors.disabledBackground,
           borderColor: 'transparent',
           color: semanticColors.disabledText
         },
