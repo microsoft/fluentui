@@ -94,7 +94,7 @@ export const SemanticSlots: React.StatelessComponent<ISemanticSlotsProps> = (pro
     );
   };
 
-  const trimSemanticSlotsOrNames = (semanticSlots: ISemanticColors | string[]): ISemanticSlots | string[] => {
+  const trimSemanticSlotsOrNames = <T extends unknown>(semanticSlots: T) => {
     if (semanticSlots instanceof Array) {
       let trimmedSemanticSlotNames = [];
       for (let i = 0; i < semanticSlots.length; i++) {
