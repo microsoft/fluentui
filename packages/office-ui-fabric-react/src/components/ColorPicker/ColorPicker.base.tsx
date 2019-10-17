@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { classNamesFunction, initializeComponentRef } from '../../Utilities';
+import { classNamesFunction, initializeComponentRef, warnMutuallyExclusive, memoizeFunction } from '../../Utilities';
 import { IColorPickerProps, IColorPickerStyleProps, IColorPickerStyles, IColorPicker } from './ColorPicker.types';
 import { TextField } from '../../TextField';
 import { ColorRectangle } from './ColorRectangle/ColorRectangle';
@@ -27,7 +27,8 @@ import { correctHex } from '../../utilities/color/correctHex';
 type IRGBHex = Pick<IColor, 'r' | 'g' | 'b' | 'a' | 'hex'>;
 
 export interface IColorPickerState {
-  color: IColor;
+  /** Current color if the color picker is an uncontrolled component (`props.color` not provided) */
+  uncontrolledColor: IColor;
   editingColor?: {
     component: keyof IRGBHex;
     value: string;
@@ -60,8 +61,12 @@ export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPi
 
     initializeComponentRef(this);
 
+    warnMutuallyExclusive('ColorPicker', props, {
+      color: 'defaultColor'
+    });
+
     this.state = {
-      color: _getColorFromProps(props) || getColorFromString('#ffffff')!
+      uncontrolledColor: _toColorObj(props.defaultColor) || getColorFromString('#fff')!
     };
 
     this._textChangeHandlers = {} as any;
@@ -78,21 +83,14 @@ export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPi
   }
 
   public get color(): IColor {
-    return this.state.color;
-  }
-
-  // tslint:disable-next-line function-name
-  public UNSAFE_componentWillReceiveProps(newProps: IColorPickerProps): void {
-    const color = _getColorFromProps(newProps);
-    if (color) {
-      this._updateColor(undefined, color);
-    }
+    // props.color ALWAYS overrides state.uncontrolledColor if provided
+    return _getColor(this.props.color, this.state.uncontrolledColor);
   }
 
   public render(): JSX.Element {
     const props = this.props;
     const { theme, className, styles } = props;
-    const { color } = this.state;
+    const color = this.color;
 
     const classNames = getClassNames(styles!, {
       theme: theme!,
@@ -168,7 +166,8 @@ export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPi
   }
 
   private _getDisplayValue(component: keyof IColor): string {
-    const { color, editingColor } = this.state;
+    const color = this.color;
+    const { editingColor } = this.state;
     if (editingColor && editingColor.component === component) {
       return editingColor.value;
     }
@@ -185,15 +184,15 @@ export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPi
   };
 
   private _onHChanged = (ev: React.MouseEvent<HTMLElement>, h: number): void => {
-    this._updateColor(ev, updateH(this.state.color, h));
+    this._updateColor(ev, updateH(this.color, h));
   };
 
   private _onAChanged = (ev: React.MouseEvent<HTMLElement>, a: number): void => {
-    this._updateColor(ev, updateA(this.state.color, Math.round(a)));
+    this._updateColor(ev, updateA(this.color, Math.round(a)));
   };
 
   private _onTextChange(component: keyof IRGBHex, event: React.FormEvent<HTMLInputElement>, newValue?: string): void {
-    const color = this.state.color;
+    const color = this.color;
     const isHex = component === 'hex';
     const isAlpha = component === 'a';
     newValue = (newValue || '').substr(0, isHex ? MAX_HEX_LENGTH : MAX_RGBA_LENGTH);
@@ -245,7 +244,8 @@ export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPi
   }
 
   private _onBlur = (event: React.FocusEvent<HTMLInputElement>) => {
-    const { color, editingColor } = this.state;
+    const color = this.color;
+    const { editingColor } = this.state;
     if (!editingColor) {
       return;
     }
@@ -287,11 +287,16 @@ export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPi
       return;
     }
 
-    const { color, editingColor } = this.state;
+    const color = this.color;
+    const { editingColor } = this.state;
     const isDifferentColor = newColor.h !== color.h || newColor.str !== color.str;
 
     if (isDifferentColor || editingColor) {
-      this.setState({ color: newColor, editingColor: undefined }, () => {
+      const stateUpdate: Partial<IColorPickerState> = { editingColor: undefined };
+      if (this.props.color === undefined) {
+        stateUpdate.uncontrolledColor = newColor;
+      }
+      this.setState(stateUpdate as IColorPickerState, () => {
         if (ev && this.props.onChange) {
           this.props.onChange(ev, newColor);
         }
@@ -300,7 +305,13 @@ export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPi
   }
 }
 
-function _getColorFromProps(props: IColorPickerProps): IColor | undefined {
-  const { color } = props;
+function _toColorObj(color?: IColor | string): IColor | undefined {
   return typeof color === 'string' ? getColorFromString(color) : color;
 }
+
+const _getColor = memoizeFunction(
+  (propsColor: IColor | string | undefined, stateColor: IColor): IColor => {
+    // props.color ALWAYS overrides state.uncontrolledColor if provided
+    return _toColorObj(propsColor) || stateColor;
+  }
+);

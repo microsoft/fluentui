@@ -1,7 +1,14 @@
 import * as React from 'react';
-import { classNamesFunction, EventGroup, initializeComponentRef } from '../../../Utilities';
+import {
+  classNamesFunction,
+  EventGroup,
+  initializeComponentRef,
+  warnMutuallyExclusive,
+  warnConditionallyRequiredProps
+} from '../../../Utilities';
 import { IColor } from '../../../utilities/color/interfaces';
 import { MAX_COLOR_SATURATION, MAX_COLOR_VALUE } from '../../../utilities/color/consts';
+import { getColorFromString } from '../../../utilities/color/getColorFromString';
 import { getFullColorString } from '../../../utilities/color/getFullColorString';
 import { updateSV } from '../../../utilities/color/updateSV';
 import { clamp } from '../../../utilities/color/clamp';
@@ -10,8 +17,11 @@ import { IColorRectangleProps, IColorRectangleStyleProps, IColorRectangleStyles,
 const getClassNames = classNamesFunction<IColorRectangleStyleProps, IColorRectangleStyles>();
 
 export interface IColorRectangleState {
-  color: IColor;
+  /** Current color if the rectangle is an uncontrolled component (`props.color` not provided) */
+  uncontrolledColor: IColor;
 }
+
+const componentName = 'ColorRectangle';
 
 /**
  * {@docCategory ColorPicker}
@@ -30,24 +40,19 @@ export class ColorRectangleBase extends React.Component<IColorRectangleProps, IC
     initializeComponentRef(this);
     this._events = new EventGroup(this);
 
-    const { color } = this.props;
+    warnMutuallyExclusive(componentName, props, {
+      color: 'defaultColor'
+    });
+    warnConditionallyRequiredProps(componentName, props, ['onChange'], 'color', props.color !== undefined);
 
     this.state = {
-      color: color
+      uncontrolledColor: props.defaultColor || getColorFromString('#fff')!
     };
   }
 
   public get color(): IColor {
-    return this.state.color;
-  }
-
-  // tslint:disable-next-line function-name
-  public UNSAFE_componentWillReceiveProps(newProps: IColorRectangleProps): void {
-    const { color } = newProps;
-
-    this.setState({
-      color: color
-    });
+    // props.color ALWAYS overrides state.uncontrolledColor if provided
+    return this.props.color || this.state.uncontrolledColor;
   }
 
   public componentWillUnmount() {
@@ -56,7 +61,7 @@ export class ColorRectangleBase extends React.Component<IColorRectangleProps, IC
 
   public render(): JSX.Element {
     const { minSize, theme, className, styles } = this.props;
-    const { color } = this.state;
+    const color = this.color;
 
     const classNames = getClassNames(styles!, {
       theme: theme!,
@@ -75,7 +80,7 @@ export class ColorRectangleBase extends React.Component<IColorRectangleProps, IC
         <div className={classNames.dark} />
         <div
           className={classNames.thumb}
-          style={{ left: color!.s + '%', top: MAX_COLOR_VALUE - color!.v + '%', backgroundColor: color!.str }}
+          style={{ left: `${color.s}%`, top: `${MAX_COLOR_VALUE - color.v}%`, backgroundColor: color.str }}
         />
       </div>
     );
@@ -89,7 +94,7 @@ export class ColorRectangleBase extends React.Component<IColorRectangleProps, IC
   };
 
   private _onMouseMove = (ev: React.MouseEvent<HTMLElement>): void => {
-    const { color, onChange } = this.props;
+    const { onChange } = this.props;
 
     if (!this._root.current) {
       return;
@@ -103,11 +108,12 @@ export class ColorRectangleBase extends React.Component<IColorRectangleProps, IC
       return;
     }
 
-    const newColor = _getNewColor(ev, color, this._root.current);
+    const newColor = _getNewColor(ev, this.color, this._root.current);
     if (newColor) {
-      this.setState({
-        color: newColor
-      });
+      if (this.props.color === undefined) {
+        // Only update state if a color is not provided in props
+        this.setState({ uncontrolledColor: newColor });
+      }
 
       if (onChange) {
         onChange(ev, newColor);

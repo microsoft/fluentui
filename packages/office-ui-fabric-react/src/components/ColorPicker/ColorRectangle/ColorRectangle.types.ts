@@ -7,7 +7,7 @@ import { IColor } from '../../../utilities/color/interfaces';
  * {@docCategory ColorPicker}
  */
 export interface IColorRectangle {
-  /** Currently selected color. */
+  /** Gets the currently selected color. */
   color: IColor;
 }
 
@@ -21,12 +21,20 @@ export interface IColorRectangleProps {
   componentRef?: IRefObject<IColorRectangle>;
 
   /**
-   * Current color of the rectangle.
+   * Currently selected color. Only provide this if the rectangle is a controlled component where you
+   * are maintaining its current state; otherwise, use the `defaultColor` property.
    */
-  color: IColor;
+  color?: IColor;
+
+  /**
+   * Default value of the rectangle. Only provide this if the rectangle is an uncontrolled component;
+   * otherwise, use the `color` property. Updates to this property will be ignored.
+   */
+  defaultColor?: IColor;
 
   /**
    * Minimum width and height.
+   * @defaultvalue 220
    */
   minSize?: number;
 

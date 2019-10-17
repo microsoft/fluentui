@@ -1,21 +1,29 @@
 import * as React from 'react';
-import { classNamesFunction, initializeComponentRef, EventGroup } from '../../../Utilities';
-import { IColorSliderProps, IColorSliderStyleProps, IColorSliderStyles } from './ColorSlider.types';
+import {
+  classNamesFunction,
+  initializeComponentRef,
+  EventGroup,
+  warnMutuallyExclusive,
+  warnConditionallyRequiredProps
+} from '../../../Utilities';
+import { IColorSlider, IColorSliderProps, IColorSliderStyleProps, IColorSliderStyles } from './ColorSlider.types';
 
 const getClassNames = classNamesFunction<IColorSliderStyleProps, IColorSliderStyles>();
 
 export interface IColorSliderState {
-  currentValue?: number;
+  /** Current value if the slider is an uncontrolled component (`props.value` not provided) */
+  uncontrolledValue: number;
 }
+
+const componentName = 'ColorSlider';
 
 /**
  * {@docCategory ColorPicker}
  */
-export class ColorSliderBase extends React.Component<IColorSliderProps, IColorSliderState> {
-  public static defaultProps = {
+export class ColorSliderBase extends React.Component<IColorSliderProps, IColorSliderState> implements IColorSlider {
+  public static defaultProps: Partial<IColorSliderProps> = {
     minValue: 0,
     maxValue: 100,
-    thumbColor: 'inherit',
     value: 0
   };
 
@@ -28,18 +36,21 @@ export class ColorSliderBase extends React.Component<IColorSliderProps, IColorSl
     initializeComponentRef(this);
     this._events = new EventGroup(this);
 
-    const { value } = this.props;
+    warnMutuallyExclusive(componentName, props, {
+      value: 'defaultValue'
+    });
+
+    warnConditionallyRequiredProps(componentName, props, ['onChange'], 'value', props.value !== undefined);
 
     this.state = {
-      currentValue: value
+      uncontrolledValue: props.defaultValue || 0
     };
   }
 
-  // tslint:disable-next-line function-name
-  public UNSAFE_componentWillReceiveProps(newProps: IColorSliderProps): void {
-    if (newProps && newProps.value) {
-      this.setState({ currentValue: newProps.value });
-    }
+  public get value(): number {
+    // props.value ALWAYS overrides state.uncontrolledValue if provided
+    const { value = this.state.uncontrolledValue } = this.props;
+    return value;
   }
 
   public componentWillUnmount() {
@@ -48,7 +59,7 @@ export class ColorSliderBase extends React.Component<IColorSliderProps, IColorSl
 
   public render(): JSX.Element {
     const { isAlpha, minValue, maxValue, overlayStyle, theme, className, styles } = this.props;
-    const { currentValue } = this.state;
+    const currentValue = this.value;
 
     const classNames = getClassNames(styles!, {
       theme: theme!,
@@ -97,9 +108,10 @@ export class ColorSliderBase extends React.Component<IColorSliderProps, IColorSl
     const currentPercentage = (ev.clientX - rectSize.left) / rectSize.width;
     const newValue = Math.min(maxValue!, Math.max(minValue!, currentPercentage * maxValue!));
 
-    this.setState({
-      currentValue: newValue
-    });
+    if (this.props.value === undefined) {
+      // Only update state if a value is not provided in props
+      this.setState({ uncontrolledValue: newValue });
+    }
 
     if (onChange) {
       onChange(ev, newValue);

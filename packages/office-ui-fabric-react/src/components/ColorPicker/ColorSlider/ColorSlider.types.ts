@@ -5,7 +5,10 @@ import { IRefObject, IStyleFunctionOrObject } from '../../../Utilities';
 /**
  * {@docCategory ColorPicker}
  */
-export interface IColorSlider {}
+export interface IColorSlider {
+  /** Gets the current value of the color slider. */
+  value: number;
+}
 
 /**
  * {@docCategory ColorPicker}
@@ -27,9 +30,23 @@ export interface IColorSliderProps {
   maxValue?: number;
 
   /**
-   * Current value of the slider.
+   * Current value of the slider. Only provide this if the slider is a controlled component where you
+   * are maintaining its current state; otherwise, use the `defaultValue` property.
    */
   value?: number;
+
+  /**
+   * Default value of the slider. Only provide this if the slider is an uncontrolled component;
+   * otherwise, use the `value` property. Updates to this property will be ignored.
+   */
+  defaultValue?: number;
+
+  /**
+   * If true, the slider represents an alpha slider and will display a gray checkered pattern
+   * in the background. Otherwise, the slider represents a hue slider.
+   * @defaultvalue false
+   */
+  isAlpha?: boolean;
 
   /**
    * CSS-compatible string for the color of the thumb element.
@@ -45,12 +62,6 @@ export interface IColorSliderProps {
    * Callback issued when the value changes.
    */
   onChange?: (event: React.MouseEvent<HTMLElement>, newValue?: number) => void;
-
-  /**
-   * If true, the slider represents an alpha slider.
-   * Otherwise, the slider represents a hue slider.
-   */
-  isAlpha?: boolean;
 
   /**
    * Additional CSS class(es) to apply to the ColorSlider.

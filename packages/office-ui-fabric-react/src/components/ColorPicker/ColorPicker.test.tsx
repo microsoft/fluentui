@@ -55,15 +55,28 @@ describe('ColorPicker', () => {
   });
 
   it('renders correctly', () => {
-    const component = renderer.create(<ColorPicker color="#abcdef" />);
+    const component = renderer.create(<ColorPicker defaultColor="#abcdef" />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
+  });
+
+  it('defaults to white if no color provided', () => {
+    wrapper = mount(<ColorPicker componentRef={colorPickerRef} />);
+
+    expect(colorPicker!.color.hex).toEqual('ffffff');
   });
 
   it('uses provided color string', () => {
     wrapper = mount(<ColorPicker color="#abcdef" onChange={noOp} componentRef={colorPickerRef} />);
 
     expect(colorPicker!.color.hex).toEqual('abcdef');
+  });
+
+  it('uses provided color object', () => {
+    const color = getColorFromString('#abcdef');
+    wrapper = mount(<ColorPicker color={color} onChange={noOp} componentRef={colorPickerRef} />);
+
+    expect(colorPicker!.color).toEqual(color);
   });
 
   it('uses provided color object', () => {
@@ -90,6 +103,32 @@ describe('ColorPicker', () => {
     expect(onChange).toHaveBeenCalledTimes(0);
   });
 
+  it('uses provided defaultColor string', () => {
+    wrapper = mount(<ColorPicker defaultColor="#abcdef" componentRef={colorPickerRef} />);
+
+    expect(colorPicker!.color.hex).toEqual('abcdef');
+  });
+
+  it('uses provided defaultColor object', () => {
+    const color = getColorFromString('#abcdef');
+    wrapper = mount(<ColorPicker defaultColor={color} componentRef={colorPickerRef} />);
+
+    expect(colorPicker!.color).toEqual(color);
+  });
+
+  it('defaults to white if color is invalid', () => {
+    wrapper = mount(<ColorPicker defaultColor="foo" componentRef={colorPickerRef} />);
+
+    expect(colorPicker!.color.hex).toEqual('ffffff');
+  });
+
+  it('ignores defaultColor prop change', () => {
+    wrapper = mount(<ColorPicker defaultColor="#abcdef" componentRef={colorPickerRef} />);
+
+    wrapper.setProps({ defaultColor: '#AEAEAE' });
+    expect(colorPicker!.color.hex).toEqual('abcdef');
+  });
+
   it('ignores invalid updates to color prop', () => {
     wrapper = mount(<ColorPicker color="#abcdef" onChange={onChange} componentRef={colorPickerRef} />);
 
@@ -99,7 +138,7 @@ describe('ColorPicker', () => {
   });
 
   it('hides alpha control slider', () => {
-    wrapper = mount(<ColorPicker color="#FFFFFF" alphaSliderHidden={true} />);
+    wrapper = mount(<ColorPicker defaultColor="#FFFFFF" alphaSliderHidden={true} />);
 
     const alphaSlider = wrapper.find('.is-alpha');
     const tableHeaders = wrapper.find('thead td');
@@ -130,7 +169,7 @@ describe('ColorPicker', () => {
   });
 
   it('renders default RGBA/Hex strings', () => {
-    wrapper = mount(<ColorPicker color="#FFFFFF" />);
+    wrapper = mount(<ColorPicker defaultColor="#FFFFFF" />);
 
     const tableHeaders = wrapper.find('thead td');
     const textHeaders = [
@@ -151,7 +190,7 @@ describe('ColorPicker', () => {
 
     wrapper = mount(
       <ColorPicker
-        color="#FFFFFF"
+        defaultColor="#FFFFFF"
         hexLabel={textHeaders[0]}
         redLabel={textHeaders[1]}
         greenLabel={textHeaders[2]}
@@ -172,7 +211,7 @@ describe('ColorPicker', () => {
     const inputClassName = 'input-tab-test';
     wrapper = mount(
       <ColorPicker
-        color={`#${colorStringValue}`}
+        defaultColor={`#${colorStringValue}`}
         onChange={colorChangeSpy}
         componentRef={colorPickerRef}
         styles={{ input: inputClassName }}
@@ -195,6 +234,8 @@ describe('ColorPicker', () => {
     });
   });
 
+  // TODO: This is actually wrong if color is provided--updates should be applied temporarily,
+  // then reverted on blur (in favor of a new value provided in props after onChange)
   it('allows updating text fields', () => {
     wrapper = mount(<ColorPicker onChange={onChange} color="#000000" componentRef={colorPickerRef} />);
 

@@ -20,10 +20,30 @@ export interface IColorPickerProps {
    */
   componentRef?: IRefObject<IColorPicker>;
 
+  // TODO: comment below was written pre-7--update if this is not the new behavior
+
   /**
    * Object or CSS-compatible string to describe the color.
+   *
+   * In Fabric 6, this component behaves as a hybrid of controlled and uncontrolled: when the user
+   * makes a change, the displayed color also updates (like uncontrolled behavior), but any time props
+   * are updated, the color from props will override the current color (like controlled behavior).
+   * In v7, setting this property will give controlled behavior only: to register the user's changes,
+   * the component consumer must provide an `onChange` handler and manually update the props.
+   * To get uncontrolled behavior, use `defaultColor` (this already works as expected).
    */
-  color: IColor | string;
+  color?: IColor | string;
+  // TODO: update behavior, and update documentation to say:
+  // Object or CSS-compatible string to describe the current color. Only provide this if the
+  // color picker is a controlled component; otherwise, use the `defaultColor` property.
+  // You must also provide `onChange` if using this property.
+
+  /**
+   * Object or CSS-compatible string to describe the initial color. Only provide this if the
+   * color picker is an uncontrolled component; otherwise, use the `color` property.
+   * Updates to this property will be ignored.
+   */
+  defaultColor?: IColor | string;
 
   /**
    * Callback for when the user changes the color.
