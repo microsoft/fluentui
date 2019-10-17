@@ -171,26 +171,43 @@ export const getStyles = memoizeFunction(
       labelDisabled: {},
       spinButtonWrapper: {
         display: 'flex',
+        position: 'relative',
         boxSizing: 'border-box',
         height: DEFAULT_HEIGHT,
         minWidth: DEFAULT_MIN_WIDTH,
-        border: `1px solid ${SpinButtonRootBorderColor}`,
-        borderRadius: effects.roundedCorner2
+        selectors: {
+          ':after': {
+            pointerEvents: 'none',
+            content: "''",
+            position: 'absolute',
+            left: 0,
+            top: 0,
+            bottom: 0,
+            right: 0,
+            border: `1px solid ${SpinButtonRootBorderColor}`,
+            borderRadius: effects.roundedCorner2
+          }
+        }
       },
       spinButtonWrapperTopBottom: {
         width: '100%'
       },
       spinButtonWrapperHovered: {
-        borderColor: SpinButtonRootBorderColorHovered,
         selectors: {
+          ':after': {
+            borderColor: SpinButtonRootBorderColorHovered
+          },
           [HighContrastSelector]: {
             borderColor: 'Highlight'
           }
         }
       },
       spinButtonWrapperFocused: {
-        borderColor: SpinButtonRootBorderColorFocused,
         selectors: {
+          ':after': {
+            borderColor: SpinButtonRootBorderColorFocused,
+            borderWidth: '2px'
+          },
           [HighContrastSelector]: {
             borderColor: 'Highlight'
           }
