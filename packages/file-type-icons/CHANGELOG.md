@@ -1,7 +1,13 @@
 # Change Log - @uifabric/file-type-icons
 
-This log was last generated on Fri, 27 Sep 2019 12:33:04 GMT and should not be manually modified.
+This log was last generated on Tue, 15 Oct 2019 12:32:28 GMT and should not be manually modified.
 
+## 7.1.2
+Tue, 15 Oct 2019 12:32:28 GMT
+
+### Patches
+
+- Fabric 7 mappings for filetypeicon cal/contact/fluid/pbids (caperez@microsoft.com)
 ## 7.1.1
 Fri, 27 Sep 2019 12:33:04 GMT
 

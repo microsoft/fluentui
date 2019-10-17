@@ -1,9 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fabric 7 mappings for filetypeicon cal/contact/fluid/pbids",
-  "packageName": "@uifabric/file-type-icons",
-  "email": "caperez@microsoft.com",
-  "commit": "5fbf1010f9b753c9eac17f5565efddcd998a4116",
-  "date": "2019-10-08T23:10:05.409Z",
-  "file": "C:\\Users\\caperez\\Repositories\\office-ui-fabric-react\\change\\@uifabric-file-type-icons-2019-10-08-16-10-05-caperez-oct_filetypeicon_mappings_fabric7.json"
-}

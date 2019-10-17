@@ -183,7 +183,6 @@ exports[`Component Examples renders ContextualMenu.Directional.Example.tsx corre
               padding-top: 5px;
               word-wrap: break-word;
             }
-        htmlFor="Dropdown1"
         id="Dropdown1-label"
       >
         Directional hint
@@ -191,6 +190,7 @@ exports[`Component Examples renders ContextualMenu.Directional.Example.tsx corre
       <div
         aria-describedby="Dropdown1-option"
         aria-expanded="false"
+        aria-haspopup="listbox"
         aria-labelledby="Dropdown1-label"
         className=
             ms-Dropdown
@@ -284,17 +284,11 @@ exports[`Component Examples renders ContextualMenu.Directional.Example.tsx corre
         onKeyDown={[Function]}
         onKeyUp={[Function]}
         onMouseDown={[Function]}
-        role="listbox"
+        role="button"
         tabIndex={0}
       >
         <span
-          aria-atomic={true}
           aria-invalid={false}
-          aria-label="Bottom Left Edge"
-          aria-live="polite"
-          aria-posinset={5}
-          aria-selected={true}
-          aria-setsize={14}
           className=
               ms-Dropdown-title
               {
@@ -322,10 +316,10 @@ exports[`Component Examples renders ContextualMenu.Directional.Example.tsx corre
                 text-overflow: ellipsis;
                 white-space: nowrap;
               }
-          id="Dropdown1-option"
-          role="option"
         >
-          <span>
+          <span
+            id="Dropdown1-option"
+          >
             Bottom Left Edge
           </span>
         </span>

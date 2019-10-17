@@ -49,6 +49,12 @@ export interface ISelectableDroppableTextProps<TComponent, TListenerElement> ext
   selectedKey?: string | number | string[] | number[] | null;
 
   /**
+   * Optional prop that indicates if multi-choice selections are allowed or not.
+   * @defaultvalue false
+   */
+  multiSelect?: boolean;
+
+  /**
    * Collection of options for this ISelectableDroppableText
    */
   options?: any;
@@ -72,6 +78,11 @@ export interface ISelectableDroppableTextProps<TComponent, TListenerElement> ext
    * Optional custom renderer for the ISelectableDroppableText option content
    */
   onRenderOption?: IRenderFunction<ISelectableOption>;
+
+  /**
+   * Callback that is issued when the options callout is dismissed
+   */
+  onDismiss?: () => void;
 
   /**
    * Whether or not the ISelectableDroppableText is disabled.

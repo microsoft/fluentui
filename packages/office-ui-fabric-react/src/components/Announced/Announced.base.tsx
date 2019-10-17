@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { DelayedRender, classNamesFunction, getNativeProps, divProperties } from '../../Utilities';
-import { IProcessedStyleSet } from '../../Styling';
 import { IAnnouncedProps, IAnnouncedStyles } from './Announced.types';
 
 const getClassNames = classNamesFunction<{}, IAnnouncedStyles>();
@@ -13,19 +12,17 @@ export class AnnouncedBase extends React.Component<IAnnouncedProps> {
     'aria-live': 'polite'
   };
 
-  private _classNames: IProcessedStyleSet<IAnnouncedStyles>;
-
   public render(): JSX.Element {
-    const { message, styles } = this.props;
+    const { message, styles, as: Root = 'div', className } = this.props;
 
-    this._classNames = getClassNames(styles);
+    const classNames = getClassNames(styles, { className });
 
     return (
-      <div role="status" {...getNativeProps(this.props, divProperties)}>
+      <Root role="status" className={classNames.root} {...getNativeProps(this.props, divProperties, ['className'])}>
         <DelayedRender>
-          <div className={this._classNames.screenReaderText}>{message}</div>
+          <div className={classNames.screenReaderText}>{message}</div>
         </DelayedRender>
-      </div>
+      </Root>
     );
   }
 }

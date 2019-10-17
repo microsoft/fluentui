@@ -2,6 +2,20 @@
   "name": "@uifabric/react-cards",
   "entries": [
     {
+      "date": "Wed, 16 Oct 2019 12:33:21 GMT",
+      "tag": "@uifabric/react-cards_v0.109.1",
+      "version": "0.109.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Relax child item type checks",
+            "author": "elcraig@microsoft.com",
+            "commit": "51b4d8ade92c0f9935553ad7c84ebdc25807b7d1"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 14 Oct 2019 12:30:37 GMT",
       "tag": "@uifabric/react-cards_v0.109.0",
       "version": "0.109.0",
