@@ -70,8 +70,6 @@ exports[`Component Examples renders SpinButton.BasicDisabled.Example.tsx correct
           {
             background-color: #f3f2f1;
             border-color: transparent;
-            border-radius: 2px;
-            border: 1px solid #8a8886;
             box-sizing: border-box;
             color: #a19f9d;
             cursor: default;
@@ -79,6 +77,18 @@ exports[`Component Examples renders SpinButton.BasicDisabled.Example.tsx correct
             height: 32px;
             min-width: 86px;
             pointer-events: none;
+            position: relative;
+          }
+          &:after {
+            border-radius: 2px;
+            border: 1px solid #8a8886;
+            bottom: 0px;
+            content: '';
+            left: 0px;
+            pointer-events: none;
+            position: absolute;
+            right: 0px;
+            top: 0px;
           }
           @media screen and (-ms-high-contrast: active){& {
             color: GrayText;
