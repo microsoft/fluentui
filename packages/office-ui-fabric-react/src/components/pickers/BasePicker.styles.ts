@@ -29,7 +29,6 @@ export function getStyles(props: IBasePickerStyleProps): IBasePickerStyles {
     root: [classNames.root, className],
     text: [
       classNames.text,
-      fonts.medium,
       {
         display: 'flex',
         position: 'relative',
@@ -39,8 +38,7 @@ export function getStyles(props: IBasePickerStyleProps): IBasePickerStyles {
         minWidth: 180,
         minHeight: 30,
         border: `1px solid ${inputBorder}`,
-        borderRadius: effects.roundedCorner2,
-        color: semanticColors.inputText
+        borderRadius: effects.roundedCorner2
       },
       !isFocused &&
         !disabled && {
@@ -87,6 +85,7 @@ export function getStyles(props: IBasePickerStyleProps): IBasePickerStyles {
     ],
     input: [
       classNames.input,
+      fonts.medium,
       {
         height: 30,
         border: 'none',
