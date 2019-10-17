@@ -41,7 +41,7 @@ export const getStyles = (props: IColorRectangleStyleProps): IColorRectangleStyl
         bottom: 0,
         // Intentionally DO NOT flip the color picker in RTL: its orientation is not very meaningful,
         // and getting all the math and styles flipped correctly is tricky
-        background: 'linear-gradient(to right, white 0%, transparent 100%) @noflip'
+        background: 'linear-gradient(to right, white 0%, transparent 100%) /*@noflip*/'
       }
     ],
     dark: [

@@ -62,7 +62,7 @@ exports[`ColorRectangle renders correctly 1`] = `
     className=
         ms-ColorPicker-light
         {
-          background: linear-gradient(to right, white 0%, transparent 100%) @noflip;
+          background: linear-gradient(to right, white 0%, transparent 100%) /*@noflip*/;
           bottom: 0px;
           left: 0px;
           position: absolute;
