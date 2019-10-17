@@ -68,9 +68,10 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
   private _sizePosCache: DropdownSizePosCache = new DropdownSizePosCache();
   private _classNames: IProcessedStyleSet<IDropdownStyles>;
   private _requestAnimationFrame = safeRequestAnimationFrame(this);
-
   /** Flag for when we get the first mouseMove */
   private _gotMouseMove: boolean;
+  /** Flag for tracking whether focus is triggered by click (alternatively triggered by keyboard nav) */
+  private _isFocusedByClick: boolean;
 
   constructor(props: IDropdownProps) {
     super(props);
@@ -281,6 +282,7 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
               onKeyUp={this._onDropdownKeyUp}
               onClick={this._onDropdownClick}
               onFocus={this._onFocus}
+              onMouseDown={this._onDropdownMouseDown}
             >
               <span
                 id={optionId}
@@ -1028,29 +1030,35 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
     const { isOpen } = this.state;
     const disabled = this._isDisabled();
 
-    if (!disabled) {
+    if (!disabled && !this._shouldOpenOnFocus()) {
       this.setState({
         isOpen: !isOpen
       });
     }
+
+    this._isFocusedByClick = false; // reset
+  };
+
+  private _onDropdownMouseDown = (): void => {
+    this._isFocusedByClick = true;
   };
 
   private _onFocus = (ev: React.FocusEvent<HTMLDivElement>): void => {
-    const { isOpen, selectedIndices, hasFocus } = this.state;
-    const { multiSelect, openOnKeyboardFocus } = this.props;
+    const { isOpen, selectedIndices } = this.state;
+    const { multiSelect } = this.props;
 
     const disabled = this._isDisabled();
 
     if (!disabled) {
-      if (!isOpen && selectedIndices.length === 0 && !multiSelect) {
-        // Per aria
+      if (!this._isFocusedByClick && !isOpen && selectedIndices.length === 0 && !multiSelect) {
+        // Per aria: https://www.w3.org/TR/wai-aria-practices-1.1/#listbox_kbd_interaction
         this._moveIndex(ev, 1, 0, -1);
       }
       if (this.props.onFocus) {
         this.props.onFocus(ev);
       }
       const state: Pick<IDropdownState, 'hasFocus'> | Pick<IDropdownState, 'hasFocus' | 'isOpen'> = { hasFocus: true };
-      if (openOnKeyboardFocus && !hasFocus) {
+      if (this._shouldOpenOnFocus()) {
         (state as Pick<IDropdownState, 'hasFocus' | 'isOpen'>).isOpen = true;
       }
       this.setState(state);
@@ -1072,4 +1080,14 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
 
     return disabled;
   };
+
+  /**
+   * Returns true if dropdown should set to open on focus.
+   * Otherwise, isOpen state should be toggled on click
+   */
+  private _shouldOpenOnFocus(): boolean {
+    const { hasFocus } = this.state;
+    const { openOnKeyboardFocus } = this.props;
+    return !this._isFocusedByClick && openOnKeyboardFocus === true && !hasFocus;
+  }
 }
