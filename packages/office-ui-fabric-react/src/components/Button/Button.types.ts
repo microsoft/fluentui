@@ -330,6 +330,11 @@ export interface IButtonProps
    * Optional props to be applied only to the primary action button of SplitButton and not to the overall SplitButton container
    */
   primaryActionButtonProps?: IButtonProps;
+
+  /**
+   * (Optional) Any additional properties to apply to the rendered button.
+   */
+  [propertyName: string]: any;
 }
 
 /**
