@@ -252,7 +252,6 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
               ref={this._dropDown}
               id={id}
               tabIndex={disabled ? -1 : 0}
-              role="button"
               aria-haspopup="listbox"
               aria-expanded={isOpen ? 'true' : 'false'}
               aria-label={ariaLabel}
@@ -271,7 +270,7 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
               onMouseDown={this._onDropdownMouseDown}
               onFocus={this._onFocus}
             >
-              <span className={this._classNames.title} aria-invalid={hasErrorMessage}>
+              <span id={this._optionId} className={this._classNames.title} aria-live="polite" aria-atomic aria-invalid={hasErrorMessage}>
                 {// If option is selected render title, otherwise render the placeholder text
                 selectedOptions.length
                   ? onRenderTitle(selectedOptions, this._onRenderTitle)
@@ -432,7 +431,7 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
     const { multiSelectDelimiter = ', ' } = this.props;
 
     const displayTxt = items.map(i => i.text).join(multiSelectDelimiter);
-    return <span id={this._optionId}>{displayTxt}</span>;
+    return <>{displayTxt}</>;
   };
 
   /** Render placeholder text in dropdown input */
