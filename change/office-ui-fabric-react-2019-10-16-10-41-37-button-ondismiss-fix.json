@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Button: Fixed logic where onDismiss was replacing internal dismiss function.",
+  "packageName": "office-ui-fabric-react",
+  "email": "mgodbolt@microsoft.com",
+  "commit": "30666b87b44be54905478906cb6d76f08d5bb9e2",
+  "date": "2019-10-16T17:41:37.908Z"
+}
