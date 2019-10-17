@@ -300,8 +300,8 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
   private _getAlertText = () => {
     const { isLoading, isSearching, suggestions, suggestionsAvailableAlertText, noResultsFoundText } = this.props;
     if (!isLoading && !isSearching) {
-      if (suggestions.length > 0 && suggestionsAvailableAlertText) {
-        return suggestionsAvailableAlertText;
+      if (suggestions.length > 0) {
+        return suggestionsAvailableAlertText || '';
       }
       if (noResultsFoundText) {
         return noResultsFoundText;
