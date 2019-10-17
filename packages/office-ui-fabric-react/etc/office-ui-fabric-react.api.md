@@ -918,8 +918,6 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
     scrollToIndex(index: number, measureItem?: (itemIndex: number) => number, scrollToMode?: ScrollToMode): void;
     // (undocumented)
     UNSAFE_componentWillReceiveProps(newProps: IDetailsListProps): void;
-    // (undocumented)
-    UNSAFE_componentWillUpdate(): void;
 }
 
 // @public (undocumented)
@@ -3525,6 +3523,7 @@ export interface IDetailsListState {
     lastSelectionMode?: SelectionMode;
     // (undocumented)
     lastWidth?: number;
+    version: {};
 }
 
 // @public (undocumented)
@@ -5333,6 +5332,7 @@ export interface IListProps<T = any> extends React.HTMLAttributes<List<T> | HTML
     role?: string;
     startIndex?: number;
     usePageCache?: boolean;
+    version?: {};
 }
 
 // @public (undocumented)
