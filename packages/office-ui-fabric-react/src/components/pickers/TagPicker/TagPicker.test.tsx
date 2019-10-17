@@ -35,7 +35,7 @@ describe('TagPicker', () => {
     resetIds();
   });
 
-  it('renders basic picker correctly', () => {
+  it('renders correctly', () => {
     const component = renderer.create(<TagPicker onResolveSuggestions={onResolveSuggestions} />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
