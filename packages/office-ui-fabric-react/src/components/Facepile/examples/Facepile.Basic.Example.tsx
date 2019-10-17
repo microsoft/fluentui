@@ -11,7 +11,6 @@ export interface IFacepileBasicExampleState {
   numberOfFaces: any;
   imagesFadeIn: boolean;
   personaSize: PersonaSize;
-  personaPresence: PersonaPresence;
 }
 
 export class FacepileBasicExample extends React.Component<{}, IFacepileBasicExampleState> {
@@ -21,13 +20,13 @@ export class FacepileBasicExample extends React.Component<{}, IFacepileBasicExam
     this.state = {
       numberOfFaces: 3,
       imagesFadeIn: true,
-      personaSize: PersonaSize.size32,
-      personaPresence: PersonaPresence.none
+      personaSize: PersonaSize.size32
     };
   }
 
   public render(): JSX.Element {
     const { numberOfFaces, personaSize } = this.state;
+
     const facepileProps: IFacepileProps = {
       personaSize: personaSize,
       personas: facepilePersonas.slice(0, numberOfFaces),
@@ -35,7 +34,7 @@ export class FacepileBasicExample extends React.Component<{}, IFacepileBasicExam
       getPersonaProps: (persona: IFacepilePersona) => {
         return {
           imageShouldFadeIn: this.state.imagesFadeIn,
-          presence: this.state.personaPresence
+          presence: this._personaPresence(persona.personaName)
         };
       },
       ariaDescription: 'To move through the items use left and right arrow keys.'
@@ -65,20 +64,6 @@ export class FacepileBasicExample extends React.Component<{}, IFacepileBasicExam
               { key: PersonaSize.size40, text: PersonaSize[PersonaSize.size40] }
             ]}
             onChange={this._onChangePersonaSize}
-          />
-          <Dropdown
-            label="Persona Presence:"
-            selectedKey={this.state.personaPresence}
-            options={[
-              { key: PersonaPresence.none, text: PersonaPresence[PersonaPresence.none] },
-              { key: PersonaPresence.away, text: PersonaPresence[PersonaPresence.away] },
-              { key: PersonaPresence.blocked, text: PersonaPresence[PersonaPresence.blocked] },
-              { key: PersonaPresence.busy, text: PersonaPresence[PersonaPresence.busy] },
-              { key: PersonaPresence.dnd, text: PersonaPresence[PersonaPresence.dnd] },
-              { key: PersonaPresence.offline, text: PersonaPresence[PersonaPresence.offline] },
-              { key: PersonaPresence.online, text: PersonaPresence[PersonaPresence.online] }
-            ]}
-            onChange={this._onChangePersonaPresence}
           />
           <Checkbox
             styles={{ root: { margin: '10px 0' } }}
@@ -118,12 +103,17 @@ export class FacepileBasicExample extends React.Component<{}, IFacepileBasicExam
     );
   };
 
-  private _onChangePersonaPresence = (event: React.FormEvent<HTMLDivElement>, value: IDropdownOption): void => {
-    this.setState(
-      (prevState: IFacepileBasicExampleState): IFacepileBasicExampleState => {
-        prevState.personaPresence = value.key as PersonaPresence;
-        return prevState;
-      }
-    );
+  private _personaPresence = (personaName: any): any => {
+    const presences: any = {
+      0: PersonaPresence.away,
+      1: PersonaPresence.busy,
+      2: PersonaPresence.online,
+      3: PersonaPresence.offline,
+      4: PersonaPresence.offline
+    };
+
+    let str = personaName.charCodeAt(1).toString();
+    let newStr = str.slice(str.length - 1);
+    return presences[Math.floor(newStr / 2)];
   };
 }
