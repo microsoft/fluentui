@@ -7733,6 +7733,7 @@ export interface ITooltipHost {
 // @public
 export interface ITooltipHostProps extends React.HTMLAttributes<HTMLDivElement | TooltipHostBase> {
     calloutProps?: ICalloutProps;
+    className?: string;
     closeDelay?: number;
     componentRef?: IRefObject<ITooltipHost>;
     content?: string | JSX.Element | JSX.Element[];
@@ -7740,6 +7741,7 @@ export interface ITooltipHostProps extends React.HTMLAttributes<HTMLDivElement |
     directionalHint?: DirectionalHint;
     directionalHintForRTL?: DirectionalHint;
     hostClassName?: string;
+    id?: string;
     onTooltipToggle?(isTooltipVisible: boolean): void;
     overflowMode?: TooltipOverflowMode;
     setAriaDescribedBy?: boolean;
@@ -7758,7 +7760,9 @@ export interface ITooltipHostState {
 
 // @public (undocumented)
 export interface ITooltipHostStyleProps {
+    // (undocumented)
     className?: string;
+    // (undocumented)
     theme: ITheme;
 }
 
@@ -7767,7 +7771,7 @@ export interface ITooltipHostStyles {
     root: IStyle;
 }
 
-// @public
+// @public (undocumented)
 export interface ITooltipProps extends React.HTMLAttributes<HTMLDivElement | TooltipBase> {
     calloutProps?: ICalloutProps;
     componentRef?: IRefObject<ITooltip>;
@@ -7785,11 +7789,13 @@ export interface ITooltipProps extends React.HTMLAttributes<HTMLDivElement | Too
 // @public (undocumented)
 export interface ITooltipStyleProps {
     beakWidth?: number;
+    // (undocumented)
     className?: string;
     // @deprecated
     delay?: TooltipDelay;
     gapSpace?: number;
     maxWidth?: string;
+    // (undocumented)
     theme: ITheme;
 }
 
@@ -9366,9 +9372,7 @@ export class TooltipBase extends React.Component<ITooltipProps, any> {
 
 // @public (undocumented)
 export enum TooltipDelay {
-    // (undocumented)
     long = 2,
-    // (undocumented)
     medium = 1,
     // (undocumented)
     zero = 0
