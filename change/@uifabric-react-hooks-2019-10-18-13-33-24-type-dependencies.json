@@ -1,0 +1,9 @@
+{
+  "type": "patch",
+  "comment": "Remove @types packages from peerDependencies",
+  "packageName": "@uifabric/react-hooks",
+  "email": "tmichon@microsoft.com",
+  "commit": "6ce5d6155c6e8004d2bfbf443c1ff7c2878e697f",
+  "date": "2019-10-18T20:33:21.802Z",
+  "file": "D:\\Src\\Git\\OfficeDev\\office-ui-fabric-react-1\\change\\@uifabric-react-hooks-2019-10-18-13-33-24-type-dependencies.json"
+}
