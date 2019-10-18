@@ -3130,11 +3130,16 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
           onKeyDown={[Function]}
           onKeyUp={[Function]}
           onMouseDown={[Function]}
-          role="button"
+          role="listbox"
           tabIndex={0}
         >
           <span
+            aria-atomic={true}
             aria-invalid={false}
+            aria-live="polite"
+            aria-posinset={1}
+            aria-selected={true}
+            aria-setsize={6}
             className=
                 ms-Dropdown-title
                 {
@@ -3162,12 +3167,10 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                   text-overflow: ellipsis;
                   white-space: nowrap;
                 }
+            id="Dropdown12-option"
+            role="option"
           >
-            <span
-              id="Dropdown12-option"
-            >
-              Left
-            </span>
+            Left
           </span>
           <span
             className=
@@ -3353,11 +3356,16 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
           onKeyDown={[Function]}
           onKeyUp={[Function]}
           onMouseDown={[Function]}
-          role="button"
+          role="listbox"
           tabIndex={0}
         >
           <span
+            aria-atomic={true}
             aria-invalid={false}
+            aria-live="polite"
+            aria-posinset={1}
+            aria-selected={true}
+            aria-setsize={3}
             className=
                 ms-Dropdown-title
                 {
@@ -3385,12 +3393,10 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                   text-overflow: ellipsis;
                   white-space: nowrap;
                 }
+            id="Dropdown13-option"
+            role="option"
           >
-            <span
-              id="Dropdown13-option"
-            >
-              Top
-            </span>
+            Top
           </span>
           <span
             className=

@@ -2,6 +2,37 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Fri, 18 Oct 2019 12:31:12 GMT",
+      "tag": "office-ui-fabric-react_v7.53.0",
+      "version": "7.53.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Allow data attribute passing for SpinButton",
+            "author": "xgao@microsoft.com",
+            "commit": "6f96ceaaa0fae594e57e6dea6f2b03f531439bcf"
+          },
+          {
+            "comment": "Dropdown: fix a few of the aria regressions",
+            "author": "joschect@microsoft.com",
+            "commit": "9ceb9de23818f1f7e1a918954accce168e2547c4"
+          },
+          {
+            "comment": "Get rid of DetailsList example snapshot churn",
+            "author": "elcraig@microsoft.com",
+            "commit": "56290ba7e48a4aab330b6fe65321936d7aa6f99e"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Fix virtualization state tracking in List and DetailsList",
+            "author": "tmichon@microsoft.com",
+            "commit": "09a835928992fa37838f347cec2d16f97d4fe037"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 17 Oct 2019 12:33:02 GMT",
       "tag": "office-ui-fabric-react_v7.52.0",
       "version": "7.52.0",

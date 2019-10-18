@@ -104,11 +104,12 @@ exports[`Dropdown multi-select Renders multiselect Dropdown correctly 1`] = `
     onKeyDown={[Function]}
     onKeyUp={[Function]}
     onMouseDown={[Function]}
-    role="button"
     tabIndex={0}
   >
     <span
+      aria-atomic={true}
       aria-invalid={false}
+      aria-live="polite"
       className=
           ms-Dropdown-title
           ms-Dropdown-titleIsPlaceHolder
@@ -138,6 +139,7 @@ exports[`Dropdown multi-select Renders multiselect Dropdown correctly 1`] = `
             text-overflow: ellipsis;
             white-space: nowrap;
           }
+      id="Dropdown0-option"
     />
     <span
       className=
@@ -280,11 +282,14 @@ exports[`Dropdown single-select Renders single-select Dropdown correctly 1`] = `
     onKeyDown={[Function]}
     onKeyUp={[Function]}
     onMouseDown={[Function]}
-    role="button"
+    role="listbox"
     tabIndex={0}
   >
     <span
+      aria-atomic={true}
       aria-invalid={false}
+      aria-live="polite"
+      aria-setsize={6}
       className=
           ms-Dropdown-title
           ms-Dropdown-titleIsPlaceHolder
@@ -314,6 +319,8 @@ exports[`Dropdown single-select Renders single-select Dropdown correctly 1`] = `
             text-overflow: ellipsis;
             white-space: nowrap;
           }
+      id="Dropdown0-option"
+      role="option"
     />
     <span
       className=

@@ -1,7 +1,18 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 17 Oct 2019 12:33:02 GMT and should not be manually modified.
+This log was last generated on Fri, 18 Oct 2019 12:31:12 GMT and should not be manually modified.
 
+## 7.53.0
+Fri, 18 Oct 2019 12:31:12 GMT
+
+### Minor changes
+
+- Fix virtualization state tracking in List and DetailsList (tmichon@microsoft.com)
+### Patches
+
+- Allow data attribute passing for SpinButton (xgao@microsoft.com)
+- Dropdown: fix a few of the aria regressions (joschect@microsoft.com)
+- Get rid of DetailsList example snapshot churn (elcraig@microsoft.com)
 ## 7.52.0
 Thu, 17 Oct 2019 12:33:02 GMT
 
