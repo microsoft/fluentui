@@ -1,0 +1,9 @@
+{
+  "type": "minor",
+  "comment": "Add `-ms-overflow-style` as a valid CSS property",
+  "packageName": "@uifabric/merge-styles",
+  "email": "unindented@gmail.com",
+  "commit": "ac7b27aafaa526b44c11d8a2885517a3751ce528",
+  "date": "2019-10-17T23:21:48.970Z",
+  "file": "/Users/dania/Code/office-ui-fabric-react/change/@uifabric-merge-styles-2019-10-17-16-21-48-ms-overflow-style.json"
+}
