@@ -1,0 +1,9 @@
+{
+  "type": "patch",
+  "comment": "Allow data attribute passing for SpinButton",
+  "packageName": "office-ui-fabric-react",
+  "email": "xgao@microsoft.com",
+  "commit": "6f96ceaaa0fae594e57e6dea6f2b03f531439bcf",
+  "date": "2019-10-15T03:01:21.461Z",
+  "file": "/Users/xugao/Projects/office-ui-fabric-react/change/office-ui-fabric-react-2019-10-14-20-01-21-bug-fix-attribute-passing.json"
+}

@@ -6925,7 +6925,7 @@ export interface ISpinButton {
 }
 
 // @public (undocumented)
-export interface ISpinButtonProps {
+export interface ISpinButtonProps extends React.HTMLAttributes<HTMLDivElement> {
     ariaDescribedBy?: string;
     ariaLabel?: string;
     ariaPositionInSet?: number;
