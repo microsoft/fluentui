@@ -52,8 +52,12 @@ export const styles = (props: IDatePickerStyleProps): IDatePickerStyles => {
     callout: [classNames.callout, { boxShadow: effects.elevation8 }],
     icon: [
       DatePickerEvent,
-      !label && [classNames.withoutLabel, { top: '7px' }],
-      label && [classNames.withLabel, { bottom: '5px' }],
+      {
+        padding: '5px',
+        right: '4px'
+      },
+      !label && [classNames.withoutLabel, { paddingTop: '7px' }],
+      label && [classNames.withLabel, { paddingBottom: '5px' }],
       !disabled && [
         classNames.disabled,
         {
