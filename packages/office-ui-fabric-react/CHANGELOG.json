@@ -2,6 +2,27 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Fri, 18 Oct 2019 12:23:09 GMT",
+      "tag": "office-ui-fabric-react_v6.209.0",
+      "version": "6.209.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fixed dropdown to not select first option automatically unless it's selected using keyboard navigation per aria",
+            "author": "xgao@microsoft.com",
+            "commit": "43f40feb7596224a82cecf98f48121567c883783"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Fix virtualization state tracking in List and DetailsList",
+            "author": "tmichon@microsoft.com",
+            "commit": "ffa7f1bf8aa120daa22b48a468a6c71e37c9672a"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 11 Oct 2019 12:22:30 GMT",
       "tag": "office-ui-fabric-react_v6.208.1",
       "version": "6.208.1",

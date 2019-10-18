@@ -1,7 +1,16 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 11 Oct 2019 12:22:30 GMT and should not be manually modified.
+This log was last generated on Fri, 18 Oct 2019 12:23:09 GMT and should not be manually modified.
 
+## 6.209.0
+Fri, 18 Oct 2019 12:23:09 GMT
+
+### Minor changes
+
+- Fix virtualization state tracking in List and DetailsList (tmichon@microsoft.com)
+### Patches
+
+- Fixed dropdown to not select first option automatically unless it's selected using keyboard navigation per aria (xgao@microsoft.com)
 ## 6.208.1
 Fri, 11 Oct 2019 12:22:30 GMT
 

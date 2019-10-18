@@ -55,7 +55,7 @@
     "@uifabric/styling": "^6.50.7",
     "@uifabric/theme-samples": "^0.1.10",
     "@uifabric/utilities": "^6.45.0",
-    "office-ui-fabric-react": "^6.208.1",
+    "office-ui-fabric-react": "^6.209.0",
     "tslib": "^1.7.1"
   },
   "peerDependencies": {
