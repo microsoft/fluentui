@@ -662,7 +662,6 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
                 padding-top: 5px;
                 word-wrap: break-word;
               }
-          htmlFor="Dropdown2"
           id="Dropdown2-label"
         >
           Horizontal alignment:
@@ -670,6 +669,7 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
         <div
           aria-describedby="Dropdown2-option"
           aria-expanded="false"
+          aria-haspopup="listbox"
           aria-labelledby="Dropdown2-label"
           className=
               ms-Dropdown
@@ -769,7 +769,6 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
           <span
             aria-atomic={true}
             aria-invalid={false}
-            aria-label="Left"
             aria-live="polite"
             aria-posinset={1}
             aria-selected={true}
@@ -804,9 +803,7 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
             id="Dropdown2-option"
             role="option"
           >
-            <span>
-              Left
-            </span>
+            Left
           </span>
           <span
             className=
@@ -889,7 +886,6 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
                 padding-top: 5px;
                 word-wrap: break-word;
               }
-          htmlFor="Dropdown3"
           id="Dropdown3-label"
         >
           Vertical alignment:
@@ -897,6 +893,7 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
         <div
           aria-describedby="Dropdown3-option"
           aria-expanded="false"
+          aria-haspopup="listbox"
           aria-labelledby="Dropdown3-label"
           className=
               ms-Dropdown
@@ -996,7 +993,6 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
           <span
             aria-atomic={true}
             aria-invalid={false}
-            aria-label="Top"
             aria-live="polite"
             aria-posinset={1}
             aria-selected={true}
@@ -1031,9 +1027,7 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
             id="Dropdown3-option"
             role="option"
           >
-            <span>
-              Top
-            </span>
+            Top
           </span>
           <span
             className=
@@ -1116,7 +1110,6 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
                 padding-top: 5px;
                 word-wrap: break-word;
               }
-          htmlFor="Dropdown4"
           id="Dropdown4-label"
         >
           Overflow:
@@ -1124,6 +1117,7 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
         <div
           aria-describedby="Dropdown4-option"
           aria-expanded="false"
+          aria-haspopup="listbox"
           aria-labelledby="Dropdown4-label"
           className=
               ms-Dropdown
@@ -1223,7 +1217,6 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
           <span
             aria-atomic={true}
             aria-invalid={false}
-            aria-label="Visible"
             aria-live="polite"
             aria-posinset={1}
             aria-selected={true}
@@ -1258,9 +1251,7 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
             id="Dropdown4-option"
             role="option"
           >
-            <span>
-              Visible
-            </span>
+            Visible
           </span>
           <span
             className=

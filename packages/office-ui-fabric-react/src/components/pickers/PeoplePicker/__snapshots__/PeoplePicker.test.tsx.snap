@@ -9,6 +9,8 @@ exports[`PeoplePicker renders correctly 1`] = `
   onKeyDown={[Function]}
 >
   <div
+    aria-expanded={false}
+    aria-haspopup="dialog"
     className=
         ms-FocusZone
         &:focus {
@@ -18,6 +20,7 @@ exports[`PeoplePicker renders correctly 1`] = `
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
+    role="combobox"
   >
     <div
       className="ms-SelectionZone"
@@ -52,8 +55,6 @@ exports[`PeoplePicker renders correctly 1`] = `
         <input
           aria-autocomplete="both"
           aria-controls=" "
-          aria-expanded={false}
-          aria-haspopup="true"
           autoCapitalize="off"
           autoComplete="off"
           className=
@@ -81,7 +82,7 @@ exports[`PeoplePicker renders correctly 1`] = `
           onFocus={[Function]}
           onInput={[Function]}
           onKeyDown={[Function]}
-          role="combobox"
+          role="textbox"
           spellCheck={false}
           value=""
         />
@@ -100,6 +101,8 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
   onKeyDown={[Function]}
 >
   <div
+    aria-expanded={false}
+    aria-haspopup="dialog"
     className=
         ms-FocusZone
         &:focus {
@@ -109,6 +112,7 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
+    role="combobox"
   >
     <div
       className="ms-SelectionZone"
@@ -606,8 +610,6 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
           aria-autocomplete="both"
           aria-controls=" "
           aria-describedby="selected-items-id__0"
-          aria-expanded={false}
-          aria-haspopup="true"
           autoCapitalize="off"
           autoComplete="off"
           className=
@@ -635,7 +637,7 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
           onFocus={[Function]}
           onInput={[Function]}
           onKeyDown={[Function]}
-          role="combobox"
+          role="textbox"
           spellCheck={false}
           value=""
         />

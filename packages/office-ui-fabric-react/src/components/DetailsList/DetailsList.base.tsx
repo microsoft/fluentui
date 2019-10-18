@@ -54,6 +54,10 @@ export interface IDetailsListState {
   isSizing?: boolean;
   isDropping?: boolean;
   isSomeGroupExpanded?: boolean;
+  /**
+   * A unique object used to force-update the List when it changes.
+   */
+  version: {};
 }
 
 const MIN_COLUMN_WIDTH = 100; // this is the global min width
@@ -86,7 +90,6 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
   private _activeRows: { [key: string]: DetailsRowBase };
   private _dragDropHelper: DragDropHelper | undefined;
   private _initialFocusedIndex: number | undefined;
-  private _pendingForceUpdate: boolean;
 
   private _columnOverrides: {
     [key: string]: IColumn;
@@ -117,7 +120,8 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
       isSizing: false,
       isDropping: false,
       isCollapsed: props.groupProps && props.groupProps.isAllGroupsCollapsed,
-      isSomeGroupExpanded: props.groupProps && !props.groupProps.isAllGroupsCollapsed
+      isSomeGroupExpanded: props.groupProps && !props.groupProps.isAllGroupsCollapsed,
+      version: {}
     };
 
     this._selection =
@@ -285,14 +289,9 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
     }
 
     if (shouldForceUpdates) {
-      this._pendingForceUpdate = true;
-    }
-  }
-
-  // tslint:disable-next-line function-name
-  public UNSAFE_componentWillUpdate(): void {
-    if (this._pendingForceUpdate) {
-      this._forceListUpdates();
+      this.setState({
+        version: {}
+      });
     }
   }
 
@@ -344,6 +343,7 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
       renderedWindowsAhead: isSizing ? 0 : DEFAULT_RENDERED_WINDOWS_AHEAD,
       renderedWindowsBehind: isSizing ? 0 : DEFAULT_RENDERED_WINDOWS_BEHIND,
       getKey,
+      version: this.state.version,
       ...listProps
     };
     let selectAllVisibility = SelectAllVisibility.none; // for SelectionMode.none
@@ -719,8 +719,6 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
   };
 
   private _forceListUpdates(): void {
-    this._pendingForceUpdate = false;
-
     if (this._groupedList.current) {
       this._groupedList.current.forceUpdate();
     }
@@ -898,7 +896,10 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
     this._rememberCalculatedWidth(resizingColumn, newCalculatedWidth);
 
     this._adjustColumns(this.props, true, resizingColumnIndex);
-    this._forceListUpdates();
+
+    this.setState({
+      version: {}
+    });
   };
 
   private _rememberCalculatedWidth(column: IColumn, newCalculatedWidth: number): void {

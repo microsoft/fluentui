@@ -395,6 +395,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
             <input
               aria-checked="false"
               aria-label="Shadow around items"
+              checked={false}
               className=
 
                   {
@@ -537,6 +538,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
             <input
               aria-checked="false"
               aria-label="Prevent item overflow"
+              checked={false}
               className=
 
                   {
@@ -679,6 +681,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
             <input
               aria-checked="false"
               aria-label="Shrink items"
+              checked={false}
               className=
 
                   {
@@ -820,6 +823,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
             <input
               aria-checked="false"
               aria-label="Wrap items"
+              checked={false}
               className=
 
                   {
@@ -1232,6 +1236,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
           <input
             aria-checked="true"
             aria-label="Automatic height (based on items)"
+            checked={true}
             className=
 
                 {
@@ -1246,7 +1251,6 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                 @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
                   outline: 1px solid ActiveBorder;
                 }
-            defaultChecked={true}
             id="checkbox-6"
             onBlur={[Function]}
             onChange={[Function]}
@@ -1733,7 +1737,6 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       padding-top: 5px;
                       word-wrap: break-word;
                     }
-                htmlFor="Dropdown8"
                 id="Dropdown8-label"
               >
                 Vertical alignment:
@@ -1741,6 +1744,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
               <div
                 aria-describedby="Dropdown8-option"
                 aria-expanded="false"
+                aria-haspopup="listbox"
                 aria-labelledby="Dropdown8-label"
                 className=
                     ms-Dropdown
@@ -1840,7 +1844,6 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                 <span
                   aria-atomic={true}
                   aria-invalid={false}
-                  aria-label="Top"
                   aria-live="polite"
                   aria-posinset={1}
                   aria-selected={true}
@@ -1875,9 +1878,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                   id="Dropdown8-option"
                   role="option"
                 >
-                  <span>
-                    Top
-                  </span>
+                  Top
                 </span>
                 <span
                   className=
@@ -1960,7 +1961,6 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       padding-top: 5px;
                       word-wrap: break-word;
                     }
-                htmlFor="Dropdown9"
                 id="Dropdown9-label"
               >
                 Horizontal alignment:
@@ -1968,6 +1968,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
               <div
                 aria-describedby="Dropdown9-option"
                 aria-expanded="false"
+                aria-haspopup="listbox"
                 aria-labelledby="Dropdown9-label"
                 className=
                     ms-Dropdown
@@ -2067,7 +2068,6 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                 <span
                   aria-atomic={true}
                   aria-invalid={false}
-                  aria-label="Left"
                   aria-live="polite"
                   aria-posinset={1}
                   aria-selected={true}
@@ -2102,9 +2102,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                   id="Dropdown9-option"
                   role="option"
                 >
-                  <span>
-                    Left
-                  </span>
+                  Left
                 </span>
                 <span
                   className=
@@ -2190,6 +2188,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
               <input
                 aria-checked="false"
                 aria-label="Hide empty children"
+                checked={false}
                 className=
 
                     {

@@ -250,6 +250,14 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
           componentRef={this.focusZone}
           direction={FocusZoneDirection.bidirectional}
           isInnerZoneKeystroke={this._isFocusZoneInnerKeystroke}
+          role={'combobox'}
+          aria-expanded={!!this.state.suggestionsVisible}
+          aria-owns={suggestionsAvailable || undefined}
+          // Dialog is an acceptable child of a combobox according to the aria specs: https://www.w3.org/TR/wai-aria-practices/#combobox
+          // Currently accessibility insights will flag this as not a valid child because the AXE rules are out of a date.
+          // A bug tracking this can be found:
+          // https://github.com/dequelabs/axe-core/issues/1009
+          aria-haspopup={suggestionsAvailable && this.suggestionStore.suggestions.length > 0 ? 'listbox' : 'dialog'}
         >
           {this.getSuggestionsAlert(classNames.screenReaderText)}
           <SelectionZone selection={this.selection} selectionMode={SelectionMode.multiple}>
@@ -270,16 +278,13 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
                   onBlur={this.onInputBlur}
                   onInputValueChange={this.onInputChange}
                   suggestedDisplayValue={suggestedDisplayValue}
-                  aria-activedescendant={this.getActiveDescendant()}
-                  aria-expanded={!!this.state.suggestionsVisible}
-                  aria-haspopup="true"
                   aria-describedby={items.length > 0 ? this._ariaMap.selectedItems : undefined}
+                  aria-controls={`${suggestionsAvailable} ${selectedSuggestionAlertId}` || undefined}
+                  aria-activedescendant={this.getActiveDescendant()}
                   autoCapitalize="off"
                   autoComplete="off"
-                  role={'combobox'}
+                  role={'textbox'}
                   disabled={disabled}
-                  aria-controls={`${suggestionsAvailable} ${selectedSuggestionAlertId}` || undefined}
-                  aria-owns={suggestionsAvailable || undefined}
                   aria-autocomplete={'both'}
                   onInputChange={this.props.onInputChange}
                 />
@@ -958,7 +963,17 @@ export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BaseP
       <div ref={this.root} onBlur={this.onBlur}>
         <div className={classNames.root} onKeyDown={this.onKeyDown}>
           {this.getSuggestionsAlert(classNames.screenReaderText)}
-          <div className={classNames.text}>
+          <div
+            className={classNames.text}
+            aria-owns={suggestionsAvailable || undefined}
+            aria-expanded={!!this.state.suggestionsVisible}
+            // Dialog is an acceptable child of a combobox according to the aria specs: https://www.w3.org/TR/wai-aria-practices/#combobox
+            // Currently accessibility insights will flag this as not a valid child because the AXE rules are out of a date.
+            // A bug tracking this can be found:
+            // https://github.com/dequelabs/axe-core/issues/1009
+            aria-haspopup={suggestionsAvailable && this.suggestionStore.suggestions.length > 0 ? 'listbox' : 'dialog'}
+            role="combobox"
+          >
             <Autofill
               {...inputProps as any}
               className={classNames.input}
@@ -969,14 +984,11 @@ export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BaseP
               onInputValueChange={this.onInputChange}
               suggestedDisplayValue={suggestedDisplayValue}
               aria-activedescendant={this.getActiveDescendant()}
-              aria-expanded={!!this.state.suggestionsVisible}
-              aria-haspopup="true"
               autoCapitalize="off"
               autoComplete="off"
-              role="combobox"
+              role="textbox"
               disabled={disabled}
               aria-controls={`${suggestionsAvailable} ${selectedSuggestionAlertId}` || undefined}
-              aria-owns={suggestionsAvailable || undefined}
               onInputChange={this.props.onInputChange}
             />
           </div>

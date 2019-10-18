@@ -527,7 +527,7 @@ export class CheckboxBase extends React.Component<ICheckboxProps, ICheckboxState
     // (undocumented)
     focus(): void;
     // (undocumented)
-    static getDerivedStateFromProps(props: ICheckboxProps, state: ICheckboxState): ICheckboxState | null;
+    static getDerivedStateFromProps(nextProps: Readonly<ICheckboxProps>, prevState: Readonly<ICheckboxState>): ICheckboxState | null;
     // (undocumented)
     readonly indeterminate: boolean;
     render(): JSX.Element;
@@ -918,8 +918,6 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
     scrollToIndex(index: number, measureItem?: (itemIndex: number) => number, scrollToMode?: ScrollToMode): void;
     // (undocumented)
     UNSAFE_componentWillReceiveProps(newProps: IDetailsListProps): void;
-    // (undocumented)
-    UNSAFE_componentWillUpdate(): void;
 }
 
 // @public (undocumented)
@@ -1515,12 +1513,17 @@ export interface IActivityItemStyles {
 // @public (undocumented)
 export interface IAnnouncedProps extends React.Props<AnnouncedBase>, React.HTMLAttributes<HTMLDivElement> {
     'aria-live'?: 'off' | 'polite' | 'assertive';
+    as?: React.ElementType;
     message?: string;
     styles?: IStyleFunctionOrObject<{}, IAnnouncedStyles>;
 }
 
 // @public (undocumented)
+export type IAnnouncedStyleProps = Pick<IAnnouncedProps, 'className'>;
+
+// @public (undocumented)
 export interface IAnnouncedStyles {
+    root: IStyle;
     screenReaderText: IStyle;
 }
 
@@ -2182,7 +2185,7 @@ export interface ICheckboxProps extends React.ButtonHTMLAttributes<HTMLElement |
 
 // @public (undocumented)
 export interface ICheckboxState {
-    isChecked?: boolean | undefined;
+    isChecked?: boolean;
     // (undocumented)
     isIndeterminate?: boolean;
 }
@@ -2755,7 +2758,6 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox,
     iconButtonProps?: IButtonProps;
     isButtonAriaHidden?: boolean;
     keytipProps?: IKeytipProps;
-    multiSelect?: boolean;
     onChange?: (event: React.FormEvent<IComboBox>, option?: IComboBoxOption, index?: number, value?: string) => void;
     onItemClick?: (event: React.FormEvent<IComboBox>, option?: IComboBoxOption, index?: number) => void;
     onMenuDismiss?: () => void;
@@ -3523,6 +3525,7 @@ export interface IDetailsListState {
     lastSelectionMode?: SelectionMode;
     // (undocumented)
     lastWidth?: number;
+    version: {};
 }
 
 // @public (undocumented)
@@ -4309,13 +4312,11 @@ export interface IDropdownProps extends ISelectableDroppableTextProps<IDropdown,
     // @deprecated
     isDisabled?: boolean;
     keytipProps?: IKeytipProps;
-    multiSelect?: boolean;
     multiSelectDelimiter?: string;
     notifyOnReselect?: boolean;
     onChange?: (event: React.FormEvent<HTMLDivElement>, option?: IDropdownOption, index?: number) => void;
     // @deprecated (undocumented)
     onChanged?: (option: IDropdownOption, index?: number) => void;
-    onDismiss?: () => void;
     onRenderCaretDown?: IRenderFunction<IDropdownProps>;
     onRenderLabel?: IRenderFunction<IDropdownProps>;
     // @deprecated
@@ -5333,6 +5334,7 @@ export interface IListProps<T = any> extends React.HTMLAttributes<List<T> | HTML
     role?: string;
     startIndex?: number;
     usePageCache?: boolean;
+    version?: {};
 }
 
 // @public (undocumented)
@@ -6558,6 +6560,8 @@ export interface ISelectableDroppableTextProps<TComponent, TListenerElement> ext
     errorMessage?: string;
     id?: string;
     label?: string;
+    multiSelect?: boolean;
+    onDismiss?: () => void;
     onRenderContainer?: IRenderFunction<ISelectableDroppableTextProps<TComponent, TListenerElement>>;
     onRenderItem?: IRenderFunction<ISelectableOption>;
     onRenderList?: IRenderFunction<ISelectableDroppableTextProps<TComponent, TListenerElement>>;
@@ -6923,7 +6927,7 @@ export interface ISpinButton {
 }
 
 // @public (undocumented)
-export interface ISpinButtonProps {
+export interface ISpinButtonProps extends React.HTMLAttributes<HTMLDivElement> {
     ariaDescribedBy?: string;
     ariaLabel?: string;
     ariaPositionInSet?: number;

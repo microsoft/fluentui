@@ -60,6 +60,7 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
     <input
       aria-checked="true"
       aria-label="Is marquee enabled"
+      checked={true}
       className=
 
           {
@@ -74,7 +75,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
             outline: 1px solid ActiveBorder;
           }
-      defaultChecked={true}
       id="checkbox-0"
       onBlur={[Function]}
       onChange={[Function]}
