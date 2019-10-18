@@ -231,11 +231,16 @@ exports[`Component Examples renders PeoplePicker.Types.Example.tsx correctly 1`]
         onKeyDown={[Function]}
         onKeyUp={[Function]}
         onMouseDown={[Function]}
-        role="button"
+        role="listbox"
         tabIndex={0}
       >
         <span
+          aria-atomic={true}
           aria-invalid={false}
+          aria-live="polite"
+          aria-posinset={1}
+          aria-selected={true}
+          aria-setsize={7}
           className=
               ms-Dropdown-title
               {
@@ -263,12 +268,10 @@ exports[`Component Examples renders PeoplePicker.Types.Example.tsx correctly 1`]
                 text-overflow: ellipsis;
                 white-space: nowrap;
               }
+          id="Dropdown2-option"
+          role="option"
         >
-          <span
-            id="Dropdown2-option"
-          >
-            Normal
-          </span>
+          Normal
         </span>
         <span
           className=

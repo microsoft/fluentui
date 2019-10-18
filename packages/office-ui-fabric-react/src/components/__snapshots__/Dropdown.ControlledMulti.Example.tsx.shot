@@ -133,11 +133,12 @@ exports[`Component Examples renders Dropdown.ControlledMulti.Example.tsx correct
     onKeyDown={[Function]}
     onKeyUp={[Function]}
     onMouseDown={[Function]}
-    role="button"
     tabIndex={0}
   >
     <span
+      aria-atomic={true}
       aria-invalid={false}
+      aria-live="polite"
       className=
           ms-Dropdown-title
           ms-Dropdown-titleIsPlaceHolder
@@ -167,12 +168,9 @@ exports[`Component Examples renders Dropdown.ControlledMulti.Example.tsx correct
             text-overflow: ellipsis;
             white-space: nowrap;
           }
+      id="Dropdown0-option"
     >
-      <span
-        id="Dropdown0-option"
-      >
-        Select options
-      </span>
+      Select options
     </span>
     <span
       className=

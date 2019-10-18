@@ -140,11 +140,16 @@ exports[`Component Examples renders Coachmark.Basic.Example.tsx correctly 1`] = 
         onKeyDown={[Function]}
         onKeyUp={[Function]}
         onMouseDown={[Function]}
-        role="button"
+        role="listbox"
         tabIndex={0}
       >
         <span
+          aria-atomic={true}
           aria-invalid={false}
+          aria-live="polite"
+          aria-posinset={8}
+          aria-selected={true}
+          aria-setsize={14}
           className=
               ms-Dropdown-title
               {
@@ -172,12 +177,10 @@ exports[`Component Examples renders Coachmark.Basic.Example.tsx correctly 1`] = 
                 text-overflow: ellipsis;
                 white-space: nowrap;
               }
+          id="Dropdown0-option"
+          role="option"
         >
-          <span
-            id="Dropdown0-option"
-          >
-            Bottom Auto Edge
-          </span>
+          Bottom Auto Edge
         </span>
         <span
           className=

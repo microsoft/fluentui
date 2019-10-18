@@ -1838,11 +1838,16 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                 onKeyDown={[Function]}
                 onKeyUp={[Function]}
                 onMouseDown={[Function]}
-                role="button"
+                role="listbox"
                 tabIndex={0}
               >
                 <span
+                  aria-atomic={true}
                   aria-invalid={false}
+                  aria-live="polite"
+                  aria-posinset={1}
+                  aria-selected={true}
+                  aria-setsize={6}
                   className=
                       ms-Dropdown-title
                       {
@@ -1870,12 +1875,10 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                         text-overflow: ellipsis;
                         white-space: nowrap;
                       }
+                  id="Dropdown8-option"
+                  role="option"
                 >
-                  <span
-                    id="Dropdown8-option"
-                  >
-                    Top
-                  </span>
+                  Top
                 </span>
                 <span
                   className=
@@ -2059,11 +2062,16 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                 onKeyDown={[Function]}
                 onKeyUp={[Function]}
                 onMouseDown={[Function]}
-                role="button"
+                role="listbox"
                 tabIndex={0}
               >
                 <span
+                  aria-atomic={true}
                   aria-invalid={false}
+                  aria-live="polite"
+                  aria-posinset={1}
+                  aria-selected={true}
+                  aria-setsize={3}
                   className=
                       ms-Dropdown-title
                       {
@@ -2091,12 +2099,10 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                         text-overflow: ellipsis;
                         white-space: nowrap;
                       }
+                  id="Dropdown9-option"
+                  role="option"
                 >
-                  <span
-                    id="Dropdown9-option"
-                  >
-                    Left
-                  </span>
+                  Left
                 </span>
                 <span
                   className=

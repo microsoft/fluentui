@@ -763,11 +763,16 @@ exports[`Component Examples renders Stack.Horizontal.WrapAdvanced.Example.tsx co
           onKeyDown={[Function]}
           onKeyUp={[Function]}
           onMouseDown={[Function]}
-          role="button"
+          role="listbox"
           tabIndex={0}
         >
           <span
+            aria-atomic={true}
             aria-invalid={false}
+            aria-live="polite"
+            aria-posinset={1}
+            aria-selected={true}
+            aria-setsize={6}
             className=
                 ms-Dropdown-title
                 {
@@ -795,12 +800,10 @@ exports[`Component Examples renders Stack.Horizontal.WrapAdvanced.Example.tsx co
                   text-overflow: ellipsis;
                   white-space: nowrap;
                 }
+            id="Dropdown2-option"
+            role="option"
           >
-            <span
-              id="Dropdown2-option"
-            >
-              Left
-            </span>
+            Left
           </span>
           <span
             className=
@@ -984,11 +987,16 @@ exports[`Component Examples renders Stack.Horizontal.WrapAdvanced.Example.tsx co
           onKeyDown={[Function]}
           onKeyUp={[Function]}
           onMouseDown={[Function]}
-          role="button"
+          role="listbox"
           tabIndex={0}
         >
           <span
+            aria-atomic={true}
             aria-invalid={false}
+            aria-live="polite"
+            aria-posinset={1}
+            aria-selected={true}
+            aria-setsize={3}
             className=
                 ms-Dropdown-title
                 {
@@ -1016,12 +1024,10 @@ exports[`Component Examples renders Stack.Horizontal.WrapAdvanced.Example.tsx co
                   text-overflow: ellipsis;
                   white-space: nowrap;
                 }
+            id="Dropdown3-option"
+            role="option"
           >
-            <span
-              id="Dropdown3-option"
-            >
-              Top
-            </span>
+            Top
           </span>
           <span
             className=
@@ -1205,11 +1211,16 @@ exports[`Component Examples renders Stack.Horizontal.WrapAdvanced.Example.tsx co
           onKeyDown={[Function]}
           onKeyUp={[Function]}
           onMouseDown={[Function]}
-          role="button"
+          role="listbox"
           tabIndex={0}
         >
           <span
+            aria-atomic={true}
             aria-invalid={false}
+            aria-live="polite"
+            aria-posinset={1}
+            aria-selected={true}
+            aria-setsize={3}
             className=
                 ms-Dropdown-title
                 {
@@ -1237,12 +1248,10 @@ exports[`Component Examples renders Stack.Horizontal.WrapAdvanced.Example.tsx co
                   text-overflow: ellipsis;
                   white-space: nowrap;
                 }
+            id="Dropdown4-option"
+            role="option"
           >
-            <span
-              id="Dropdown4-option"
-            >
-              Visible
-            </span>
+            Visible
           </span>
           <span
             className=
