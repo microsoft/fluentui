@@ -38,7 +38,7 @@ export class FacepileBasicExample extends React.Component<{}, IFacepileBasicExam
       getPersonaProps: (persona: IFacepilePersona) => {
         return {
           imageShouldFadeIn: this.state.imagesFadeIn,
-          presence: this._personaPresence(persona.personaName)
+          presence: this._personaPresence(persona.personaName!)
         };
       },
       ariaDescription: 'To move through the items use left and right arrow keys.'
@@ -107,7 +107,7 @@ export class FacepileBasicExample extends React.Component<{}, IFacepileBasicExam
     );
   };
 
-  private _personaPresence = (personaName: any): any => {
+  private _personaPresence = (personaName: string): PersonaPresence => {
     const presences: any = [
       PersonaPresence.away,
       PersonaPresence.busy,
