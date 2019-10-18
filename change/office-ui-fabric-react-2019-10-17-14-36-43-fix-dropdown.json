@@ -1,9 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Dropdown: fix a few of the aria regressions",
-  "packageName": "office-ui-fabric-react",
-  "email": "joschect@microsoft.com",
-  "commit": "9ceb9de23818f1f7e1a918954accce168e2547c4",
-  "date": "2019-10-17T21:36:43.379Z",
-  "file": "C:\\Users\\Joschect\\Git\\oufr\\change\\office-ui-fabric-react-2019-10-17-14-36-43-fix-dropdown.json"
-}
