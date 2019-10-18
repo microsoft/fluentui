@@ -1370,10 +1370,6 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
             background-color: #ffffff;
-            border-color: #8a8886;
-            border-radius: 2px;
-            border-style: solid;
-            border-width: 1px;
             box-shadow: none;
             box-sizing: border-box;
             color: #323130;
@@ -1399,6 +1395,19 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
             display: inline-block;
             margin-bottom: 8px;
           }
+          &:after {
+            border-color: #8a8886;
+            border-radius: 2px;
+            border-style: solid;
+            border-width: 1px;
+            bottom: 0px;
+            content: '';
+            left: 0px;
+            pointer-events: none;
+            position: absolute;
+            right: 0px;
+            top: 0px;
+          }
           &.is-open {
             border-color: #8a8886;
           }
@@ -1416,9 +1425,6 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
             right: -2px;
             top: -2px;
           }
-          &:hover {
-            border-color: #323130;
-          }
           &:hover .ms-ComboBox-Input {
             color: #201f1e;
           }
@@ -1431,14 +1437,20 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
           &:hover .ms-ComboBox-Input::-ms-input-placeholder {
             color: #201f1e;
           }
+          &:hover:after {
+            border-color: #323130;
+          }
           @media screen and (-ms-high-contrast: active){&:hover {
             -ms-high-contrast-adjust: none;
             background-color: Window;
-            border-color: Highlight;
             color: HighlightText;
           }
-          &:active {
+          @media screen and (-ms-high-contrast: active){&:hover:after {
+            border-color: Highlight;
+          }
+          &:active:after {
             border-color: #0078d4;
+            border-width: 2px;
           }
           @media screen and (-ms-high-contrast: active){&:active {
             -ms-high-contrast-adjust: none;
@@ -1454,8 +1466,9 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
             right: -2px;
             top: -2px;
           }
-          &:focus {
+          &:focus:after {
             border-color: #0078d4;
+            border-width: 2px;
           }
           &:focus .ms-ComboBox-Input {
             color: #201f1e;
@@ -1557,10 +1570,8 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
               padding-right: 4px;
               padding-top: 0;
               position: absolute;
-              right: -1px;
               text-align: center;
               text-decoration: none;
-              top: -1px;
               user-select: none;
               vertical-align: top;
               width: 32px;
@@ -1683,6 +1694,7 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 12px;
             font-weight: 400;
+            margin-top: 5px;
           }
       id="ComboBox6-error"
       role="region"
