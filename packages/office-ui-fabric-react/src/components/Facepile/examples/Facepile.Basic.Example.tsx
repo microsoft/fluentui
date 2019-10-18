@@ -24,6 +24,10 @@ export class FacepileBasicExample extends React.Component<{}, IFacepileBasicExam
     };
   }
 
+  /**
+   * Note: The implementation of presence below is simply for demonstration purposes.
+   * Typically, the persona presence should be included when generating each facepile persona.
+   */
   public render(): JSX.Element {
     const { numberOfFaces, personaSize } = this.state;
 
@@ -104,16 +108,14 @@ export class FacepileBasicExample extends React.Component<{}, IFacepileBasicExam
   };
 
   private _personaPresence = (personaName: any): any => {
-    const presences: any = {
-      0: PersonaPresence.away,
-      1: PersonaPresence.busy,
-      2: PersonaPresence.online,
-      3: PersonaPresence.offline,
-      4: PersonaPresence.offline
-    };
+    const presences: any = [
+      PersonaPresence.away,
+      PersonaPresence.busy,
+      PersonaPresence.online,
+      PersonaPresence.offline,
+      PersonaPresence.offline
+    ];
 
-    const str = personaName.charCodeAt(1).toString();
-    const newStr = str.slice(str.length - 1);
-    return presences[Math.floor(newStr / 2)];
+    return presences[personaName.charCodeAt(1) % 5];
   };
 }
