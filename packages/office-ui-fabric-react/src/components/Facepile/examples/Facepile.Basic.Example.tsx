@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
 import { Facepile, IFacepilePersona, IFacepileProps } from 'office-ui-fabric-react/lib/Facepile';
-import { PersonaSize } from 'office-ui-fabric-react/lib/Persona';
+import { PersonaSize, PersonaPresence } from 'office-ui-fabric-react/lib/Persona';
 import { Slider } from 'office-ui-fabric-react/lib/Slider';
 import { facepilePersonas } from '@uifabric/example-data';
 import './Facepile.Examples.scss';
@@ -24,15 +24,21 @@ export class FacepileBasicExample extends React.Component<{}, IFacepileBasicExam
     };
   }
 
+  /**
+   * Note: The implementation of presence below is simply for demonstration purposes.
+   * Typically, the persona presence should be included when generating each facepile persona.
+   */
   public render(): JSX.Element {
     const { numberOfFaces, personaSize } = this.state;
+
     const facepileProps: IFacepileProps = {
       personaSize: personaSize,
       personas: facepilePersonas.slice(0, numberOfFaces),
       overflowPersonas: facepilePersonas.slice(numberOfFaces),
       getPersonaProps: (persona: IFacepilePersona) => {
         return {
-          imageShouldFadeIn: this.state.imagesFadeIn
+          imageShouldFadeIn: this.state.imagesFadeIn,
+          presence: this._personaPresence(persona.personaName!)
         };
       },
       ariaDescription: 'To move through the items use left and right arrow keys.'
@@ -99,5 +105,17 @@ export class FacepileBasicExample extends React.Component<{}, IFacepileBasicExam
         return prevState;
       }
     );
+  };
+
+  private _personaPresence = (personaName: string): PersonaPresence => {
+    const presences: any = [
+      PersonaPresence.away,
+      PersonaPresence.busy,
+      PersonaPresence.online,
+      PersonaPresence.offline,
+      PersonaPresence.offline
+    ];
+
+    return presences[personaName.charCodeAt(1) % 5];
   };
 }
