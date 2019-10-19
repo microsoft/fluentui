@@ -1,0 +1,9 @@
+{
+  "type": "minor",
+  "comment": "Callout and Card: Fix anchors for both",
+  "packageName": "office-ui-fabric-react",
+  "email": "joschect@microsoft.com",
+  "commit": "cbc935cf6a0e1d4fb1b7e980b347074dce817745",
+  "date": "2019-10-07T20:54:11.146Z",
+  "file": "/Users/joschect-m1/Git/office-ui-fabric-react/change/office-ui-fabric-react-2019-10-07-13-54-11-fix-anchor-positions.json"
+}
