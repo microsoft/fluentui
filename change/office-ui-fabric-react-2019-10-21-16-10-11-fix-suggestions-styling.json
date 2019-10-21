@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "\\",
+  "comment": "Suggestions: Fix problem where search for more button wouldn't highlight correctly",
   "packageName": "office-ui-fabric-react",
   "email": "joschect@microsoft.com",
   "commit": "22a4a1b769dbb2e02286fa38250c56ef22771314",
