@@ -39,6 +39,7 @@ storiesOf('TagPicker', module)
         .snapshot('Open Suggestion Menu', { cropTo: '.testWrapper' })
         .hover('.ms-Suggestions-item')
         .snapshot('Suggestion Menu Item Hover', { cropTo: '.testWrapper' })
+        .keys('.ms-BasePicker-input', Screener.Keys.upArrow)
         .end()}
     >
       {story()}
@@ -51,7 +52,8 @@ storiesOf('TagPicker', module)
       getTextFromItem={getTextFromItem}
       pickerSuggestionsProps={{
         suggestionsHeaderText: 'Suggested Tags',
-        noResultsFoundText: 'No Color Tags Found'
+        noResultsFoundText: 'No Color Tags Found',
+        searchForMoreText: 'Get more Results'
       }}
       itemLimit={2}
     />
