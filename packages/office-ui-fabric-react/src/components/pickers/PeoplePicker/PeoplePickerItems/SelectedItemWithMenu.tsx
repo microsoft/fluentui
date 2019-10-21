@@ -62,7 +62,7 @@ export class SelectedItemWithMenu extends BaseComponent<IPeoplePickerItemWithMen
     this.setState({ contextualMenuVisible: true });
   };
 
-  private _onCloseContextualMenu = (ev: Event) => {
+  private _onCloseContextualMenu = (ev: React.MouseEvent | React.KeyboardEvent) => {
     this.setState({ contextualMenuVisible: false });
   };
 }
