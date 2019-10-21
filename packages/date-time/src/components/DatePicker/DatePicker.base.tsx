@@ -370,13 +370,11 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
   };
 
   private _onTextFieldClick = (ev: React.MouseEvent<HTMLElement>): void => {
-    if (!this.props.disableAutoFocus) {
-      if (!this.state.isDatePickerShown && !this.props.disabled) {
-        this._showDatePickerPopup();
-      } else if (this.props.allowTextInput) {
-        this._dismissDatePickerPopup();
-      }
-    } else if (this.props.allowTextInput) {
+    if (!this.props.disableAutoFocus && !this.state.isDatePickerShown && !this.props.disabled) {
+      this._showDatePickerPopup();
+      return;
+    }
+    if (this.props.allowTextInput) {
       this._dismissDatePickerPopup();
     }
   };
