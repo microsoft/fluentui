@@ -34,7 +34,7 @@ export const SemanticSlots: React.StatelessComponent<ISemanticSlotsProps> = (pro
   let strongSlots: JSX.Element[] = [];
 
   slotNames = [
-    // DEFAULTS - 16
+    // DEFAULTS - 18
     'bodyBackground', // white
     'bodyBackgroundHovered', // neutralLighter
     'bodyBackgroundChecked', // neutralLight,
@@ -46,6 +46,8 @@ export const SemanticSlots: React.StatelessComponent<ISemanticSlotsProps> = (pro
     'bodySubtext', // neutralSecondary
     'bodyDivider', // neutralLight
     'disabledBodyText', // neutralTertiary
+    'disabledBodySubtext', // neutralTertiaryAlt
+    'disabledSubtext', // neutralTertiaryAlt
     'disabledBorder', // neutralTertiaryAlt
     'focusBorder', // neutralSecondary
     'variantBorder', // neutralLight
@@ -84,7 +86,7 @@ export const SemanticSlots: React.StatelessComponent<ISemanticSlotsProps> = (pro
 
     'accentButtonBackground', // accent
     'accentButtonText', // white
-    // INPUTS - 19
+    // INPUTS - 17
     'inputBorder', // neutralSecondaryAlt
     'inputBorderHovered', // neutralPrimary
     'inputBackground', // white
@@ -102,8 +104,6 @@ export const SemanticSlots: React.StatelessComponent<ISemanticSlotsProps> = (pro
     'inputPlaceholderText', // neutralSecondary
     'disabledBackground', // neutralLighter
     'disabledText', // neutralTertiary
-    'disabledSubText', // neutralQuaternary
-    'disabledBodySubtext', // neutralTertiaryAlt
     // LISTS - 7
     'listBackground', // white
     'listText', // neutralPrimary
@@ -185,7 +185,7 @@ export const SemanticSlots: React.StatelessComponent<ISemanticSlotsProps> = (pro
     inputPlaceholderText: 'neutralSecondary',
     disabledBackground: 'neutralLighter',
     disabledText: 'neutralTertiary',
-    disabledSubtext: 'neutralQuaternary',
+    disabledSubtext: 'neutralTertiaryAlt',
     disabledBorder: 'neutralTertiaryAlt',
     listBackground: 'white',
     listText: 'neutralPrimary',
@@ -216,8 +216,8 @@ export const SemanticSlots: React.StatelessComponent<ISemanticSlotsProps> = (pro
 
   const neutralSemanticColorsToPaletteValuesMapping = {
     bodyBackground: 'neturalLighter',
-    bodyBackgroundHovered: 'neutralLighter',
-    bodyBackgroundChecked: 'neutralLight',
+    bodyBackgroundHovered: 'neutralLight',
+    bodyBackgroundChecked: 'neutralQuaternaryAlt',
     bodyStandoutBackground: 'neutralLight',
     bodyFrameBackground: props.theme ? (!props.theme.isInverted ? 'neutralLight' : 'neutralLighter') : 'N/A',
     bodyFrameDivider: props.theme ? (!props.theme.isInverted ? 'neutralLight' : 'neutralQuaternaryAlt') : 'N/A',
@@ -226,6 +226,7 @@ export const SemanticSlots: React.StatelessComponent<ISemanticSlotsProps> = (pro
     bodySubtext: 'neutralSecondary',
     bodyDivider: 'neutralQuaternaryAlt',
     disabledBodyText: 'neturalTertiary',
+    disabledSubtext: 'neutralTertiaryAlt',
     focusBorder: 'neutralSecondary',
     variantBorder: 'neutralLight',
     variantBorderHovered: 'neutralTertiary',
@@ -297,6 +298,8 @@ export const SemanticSlots: React.StatelessComponent<ISemanticSlotsProps> = (pro
 
   const softSemanticColorsToPaletteValuesMapping = {
     bodyBackground: props.theme ? (!props.theme.isInverted ? 'themeLighterAlt' : 'themeLight') : 'N/A',
+    bodyBackgroundHovered: 'themeLighter',
+    bodyBackgroundChecked: 'themeLight',
     bodyStandoutBackground: props.theme ? (!props.theme.isInverted ? 'themeLighter' : 'themeTertiary') : 'N/A',
     bodyFrameBackground: props.theme ? (!props.theme.isInverted ? 'themeLighter' : 'themeLight') : 'N/A',
     bodyFrameDivider: props.theme ? (!props.theme.isInverted ? 'themeLighter' : 'neutralQuaternary') : 'N/A',
@@ -356,6 +359,7 @@ export const SemanticSlots: React.StatelessComponent<ISemanticSlotsProps> = (pro
     disabledBackground: 'neutralLight',
     disabledText: 'neutralTertiary',
     disabledBodySubtext: 'neutralTertiaryAlt',
+    disabledSubtext: 'neutralTertiaryAlt',
     disabledBorder: 'N/A',
     listBackground: 'N/A',
     listText: 'N/A',
@@ -376,8 +380,8 @@ export const SemanticSlots: React.StatelessComponent<ISemanticSlotsProps> = (pro
 
   const strongSemanticColorsToPaletteValuesMapping = {
     bodyBackground: 'themePrimary',
-    bodyBackgroundHovered: 'neutralLighter',
-    bodyBackgroundChecked: 'neutralLight',
+    bodyBackgroundHovered: 'themeDarkAlt',
+    bodyBackgroundChecked: 'themeDark',
     bodyStandoutBackground: 'themeDarkAlt',
     bodyFrameBackground: props.theme ? (!props.theme.isInverted ? 'themeDarkAlt' : 'themePrimary') : 'N/A',
     bodyFrameDivider: props.theme ? (!props.theme.isInverted ? 'themeDarkAlt' : 'themeTertiary') : 'N/A',
@@ -437,6 +441,7 @@ export const SemanticSlots: React.StatelessComponent<ISemanticSlotsProps> = (pro
     disabledBackground: 'themeDarkAlt',
     disabledText: 'themeTertiary',
     disabledBodySubtext: 'neutralTertiaryAlt',
+    disabledSubtext: 'themeTertiary',
     disabledBorder: 'N/A',
     listBackground: 'N/A',
     listText: 'N/A',

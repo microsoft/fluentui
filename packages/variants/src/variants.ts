@@ -82,6 +82,8 @@ export function getNeutralVariant(theme: IPartialTheme): ITheme {
 
   const partialSemantic: Partial<ISemanticColors> = {
     bodyBackground: p.neutralLighter,
+    bodyBackgroundHovered: p.neutralLight,
+    bodyBackgroundChecked: p.neutralQuaternaryAlt,
     bodyStandoutBackground: p.neutralLight,
     bodyFrameBackground: !fullTheme.isInverted ? p.neutralLight : p.neutralLighter,
     bodyFrameDivider: !fullTheme.isInverted ? p.neutralLight : p.neutralQuaternaryAlt,
@@ -101,6 +103,7 @@ export function getNeutralVariant(theme: IPartialTheme): ITheme {
     disabledText: p.neutralTertiary,
     disabledBodyText: p.neutralTertiary,
     disabledBodySubtext: p.neutralTertiaryAlt,
+    disabledSubtext: p.neutralTertiaryAlt,
 
     inputBorder: p.neutralTertiary,
     inputBorderHovered: p.neutralPrimary,
@@ -187,6 +190,8 @@ export function getSoftVariant(theme: IPartialTheme): ITheme {
 
   const partialSemantic: Partial<ISemanticColors> = {
     bodyBackground: !fullTheme.isInverted ? p.themeLighterAlt : p.themeLight,
+    bodyBackgroundHovered: p.themeLighter,
+    bodyBackgroundChecked: p.themeLight,
     bodyStandoutBackground: !fullTheme.isInverted ? p.themeLighter : p.themeTertiary,
     bodyFrameBackground: !fullTheme.isInverted ? p.themeLighter : p.themeLight,
     bodyFrameDivider: !fullTheme.isInverted ? p.themeLighter : p.neutralQuaternary,
@@ -216,6 +221,7 @@ export function getSoftVariant(theme: IPartialTheme): ITheme {
     disabledText: p.neutralTertiary,
     disabledBodyText: p.neutralTertiary,
     disabledBodySubtext: p.neutralTertiaryAlt,
+    disabledSubtext: p.neutralTertiaryAlt,
 
     buttonBackground: p.neutralQuaternaryAlt,
     buttonBackgroundHovered: p.neutralQuaternary,
@@ -299,6 +305,8 @@ export function getStrongVariant(theme: IPartialTheme): ITheme {
 
   const partialSemantic: Partial<ISemanticColors> = {
     bodyBackground: p.themePrimary,
+    bodyBackgroundHovered: p.themeDarkAlt,
+    bodyBackgroundChecked: p.themeDark,
     bodyStandoutBackground: p.themeDarkAlt,
     bodyFrameBackground: !fullTheme.isInverted ? p.themeDarkAlt : p.themePrimary,
     bodyFrameDivider: !fullTheme.isInverted ? p.themeDarkAlt : p.themeTertiary,
@@ -328,6 +336,7 @@ export function getStrongVariant(theme: IPartialTheme): ITheme {
     disabledText: p.themeTertiary,
     disabledBodyText: p.neutralQuaternary,
     disabledBodySubtext: p.neutralTertiaryAlt,
+    disabledSubtext: p.themeTertiary,
 
     buttonBackground: p.themePrimary,
     buttonBackgroundHovered: p.themeDarkAlt,
