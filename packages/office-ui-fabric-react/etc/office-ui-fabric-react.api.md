@@ -918,8 +918,6 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
     scrollToIndex(index: number, measureItem?: (itemIndex: number) => number, scrollToMode?: ScrollToMode): void;
     // (undocumented)
     UNSAFE_componentWillReceiveProps(newProps: IDetailsListProps): void;
-    // (undocumented)
-    UNSAFE_componentWillUpdate(): void;
 }
 
 // @public (undocumented)
@@ -2758,7 +2756,6 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox,
     iconButtonProps?: IButtonProps;
     isButtonAriaHidden?: boolean;
     keytipProps?: IKeytipProps;
-    multiSelect?: boolean;
     onChange?: (event: React.FormEvent<IComboBox>, option?: IComboBoxOption, index?: number, value?: string) => void;
     onItemClick?: (event: React.FormEvent<IComboBox>, option?: IComboBoxOption, index?: number) => void;
     onMenuDismiss?: () => void;
@@ -3039,7 +3036,7 @@ export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, IWith
     isSubMenu?: boolean;
     items: IContextualMenuItem[];
     labelElementId?: string;
-    onDismiss?: (ev?: any, dismissAll?: boolean) => void;
+    onDismiss?: (ev?: React.MouseEvent | React.KeyboardEvent, dismissAll?: boolean) => void;
     onItemClick?: (ev?: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>, item?: IContextualMenuItem) => boolean | void;
     onMenuDismissed?: (contextualMenu?: IContextualMenuProps) => void;
     onMenuOpened?: (contextualMenu?: IContextualMenuProps) => void;
@@ -3526,6 +3523,7 @@ export interface IDetailsListState {
     lastSelectionMode?: SelectionMode;
     // (undocumented)
     lastWidth?: number;
+    version: {};
 }
 
 // @public (undocumented)
@@ -4312,7 +4310,6 @@ export interface IDropdownProps extends ISelectableDroppableTextProps<IDropdown,
     // @deprecated
     isDisabled?: boolean;
     keytipProps?: IKeytipProps;
-    multiSelect?: boolean;
     multiSelectDelimiter?: string;
     notifyOnReselect?: boolean;
     onChange?: (event: React.FormEvent<HTMLDivElement>, option?: IDropdownOption, index?: number) => void;
@@ -5343,6 +5340,7 @@ export interface IListProps<T = any> extends React.HTMLAttributes<List<T> | HTML
     role?: string;
     startIndex?: number;
     usePageCache?: boolean;
+    version?: {};
 }
 
 // @public (undocumented)
@@ -6568,6 +6566,7 @@ export interface ISelectableDroppableTextProps<TComponent, TListenerElement> ext
     errorMessage?: string;
     id?: string;
     label?: string;
+    multiSelect?: boolean;
     onDismiss?: () => void;
     onRenderContainer?: IRenderFunction<ISelectableDroppableTextProps<TComponent, TListenerElement>>;
     onRenderItem?: IRenderFunction<ISelectableOption>;
@@ -6934,7 +6933,7 @@ export interface ISpinButton {
 }
 
 // @public (undocumented)
-export interface ISpinButtonProps {
+export interface ISpinButtonProps extends React.HTMLAttributes<HTMLDivElement> {
     ariaDescribedBy?: string;
     ariaLabel?: string;
     ariaPositionInSet?: number;

@@ -2,6 +2,20 @@
   "name": "@uifabric/merge-styles",
   "entries": [
     {
+      "date": "Mon, 21 Oct 2019 12:33:23 GMT",
+      "tag": "@uifabric/merge-styles_v7.8.0",
+      "version": "7.8.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add `-ms-overflow-style` as a valid CSS property",
+            "author": "unindented@gmail.com",
+            "commit": "ac7b27aafaa526b44c11d8a2885517a3751ce528"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 26 Sep 2019 12:32:32 GMT",
       "tag": "@uifabric/merge-styles_v7.7.0",
       "version": "7.7.0",

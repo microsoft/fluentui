@@ -179,6 +179,11 @@ export interface IListProps<T = any> extends React.HTMLAttributes<List<T> | HTML
    * Override this to control how cells are rendered within a page.
    */
   onRenderPage?: (pageProps: IPageProps<T>, defaultRender?: IRenderFunction<IPageProps<T>>) => React.ReactNode;
+
+  /**
+   * An object which can be passed in as a fresh instance to 'force update' the list.
+   */
+  version?: {};
 }
 
 /**

@@ -490,6 +490,7 @@ exports[`SpinButton renders SpinButton correctly with values that the user passe
         @media screen and (-ms-high-contrast: active){&:hover {
           border-color: Highlight;
         }
+    data-test="test"
   >
     <input
       aria-disabled={false}

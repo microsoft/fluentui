@@ -1,7 +1,35 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 16 Oct 2019 12:33:21 GMT and should not be manually modified.
+This log was last generated on Mon, 21 Oct 2019 12:33:23 GMT and should not be manually modified.
 
+## 7.53.1
+Mon, 21 Oct 2019 12:33:23 GMT
+
+### Patches
+
+- Facepile: Added presence example (v-mare@microsoft.com)
+- Pickers: Bring pickers in line with W3 ARIA 1.1 specs. (joschect@microsoft.com)
+- Fix typo (norton.wong@genedata.com)
+## 7.53.0
+Fri, 18 Oct 2019 12:31:12 GMT
+
+### Minor changes
+
+- Fix virtualization state tracking in List and DetailsList (tmichon@microsoft.com)
+### Patches
+
+- Allow data attribute passing for SpinButton (xgao@microsoft.com)
+- Dropdown: fix a few of the aria regressions (joschect@microsoft.com)
+- Get rid of DetailsList example snapshot churn (elcraig@microsoft.com)
+## 7.52.0
+Thu, 17 Oct 2019 12:33:02 GMT
+
+### Minor changes
+
+- Dropdown: Bringing accessibility up to standards. (Humberto.Morimoto@microsoft.com)
+### Patches
+
+- Button: Fixed logic where onDismiss was replacing internal dismiss function. (mgodbolt@microsoft.com)
 ## 7.51.0
 Wed, 16 Oct 2019 12:33:21 GMT
 

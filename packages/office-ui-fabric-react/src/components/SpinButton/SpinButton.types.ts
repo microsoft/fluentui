@@ -28,7 +28,7 @@ export interface ISpinButton {
 /**
  * {@docCategory SpinButton}
  */
-export interface ISpinButtonProps {
+export interface ISpinButtonProps extends React.HTMLAttributes<HTMLDivElement> {
   /**
    * Gets the component ref.
    */

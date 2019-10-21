@@ -2,6 +2,82 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Mon, 21 Oct 2019 12:33:23 GMT",
+      "tag": "office-ui-fabric-react_v7.53.1",
+      "version": "7.53.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Facepile: Added presence example",
+            "author": "v-mare@microsoft.com",
+            "commit": "7e5936206eadaafdd2e544e39b520efa0e919823"
+          },
+          {
+            "comment": "Pickers: Bring pickers in line with W3 ARIA 1.1 specs.",
+            "author": "joschect@microsoft.com",
+            "commit": "dde4a290e354fba58675bd4ab7d0cccdb10e856f"
+          },
+          {
+            "comment": "Fix typo",
+            "author": "norton.wong@genedata.com",
+            "commit": "69283802d65e27ac269cf3bb545d997872a693db"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 18 Oct 2019 12:31:12 GMT",
+      "tag": "office-ui-fabric-react_v7.53.0",
+      "version": "7.53.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Allow data attribute passing for SpinButton",
+            "author": "xgao@microsoft.com",
+            "commit": "6f96ceaaa0fae594e57e6dea6f2b03f531439bcf"
+          },
+          {
+            "comment": "Dropdown: fix a few of the aria regressions",
+            "author": "joschect@microsoft.com",
+            "commit": "9ceb9de23818f1f7e1a918954accce168e2547c4"
+          },
+          {
+            "comment": "Get rid of DetailsList example snapshot churn",
+            "author": "elcraig@microsoft.com",
+            "commit": "56290ba7e48a4aab330b6fe65321936d7aa6f99e"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Fix virtualization state tracking in List and DetailsList",
+            "author": "tmichon@microsoft.com",
+            "commit": "09a835928992fa37838f347cec2d16f97d4fe037"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 17 Oct 2019 12:33:02 GMT",
+      "tag": "office-ui-fabric-react_v7.52.0",
+      "version": "7.52.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Button: Fixed logic where onDismiss was replacing internal dismiss function.",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "30666b87b44be54905478906cb6d76f08d5bb9e2"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Dropdown: Bringing accessibility up to standards.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "88a72f4cc019dff63d645d2544468e5341ebe34b"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 16 Oct 2019 12:33:21 GMT",
       "tag": "office-ui-fabric-react_v7.51.0",
       "version": "7.51.0",
