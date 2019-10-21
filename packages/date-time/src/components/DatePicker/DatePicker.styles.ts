@@ -14,13 +14,14 @@ export const styles = (props: IDatePickerStyleProps): IDatePickerStyles => {
   const { palette, semanticColors } = theme;
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
-  const DatePickerEvent: IStyle = {
+  const DatePickerIcon: IStyle = {
     color: palette.neutralSecondary,
     fontSize: FontSizes.icon,
     lineHeight: '18px',
     pointerEvents: 'none',
     position: 'absolute',
-    right: '9px'
+    right: '4px',
+    padding: '5px'
   };
 
   return {
@@ -51,11 +52,7 @@ export const styles = (props: IDatePickerStyleProps): IDatePickerStyles => {
     ],
     callout: [classNames.callout],
     icon: [
-      DatePickerEvent,
-      {
-        padding: '5px',
-        right: '4px'
-      },
+      DatePickerIcon,
       !label && [classNames.withoutLabel, { paddingTop: '7px' }],
       label && [classNames.withLabel, { paddingBottom: '5px' }],
       !disabled && [
