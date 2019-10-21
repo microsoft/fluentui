@@ -1,7 +1,8 @@
 import * as React from 'react';
-import { getNativeProps, on, divProperties, classNamesFunction, getWindow, isDirectionalKeyCode } from '../../Utilities';
+import { getNativeProps, on, divProperties, classNamesFunction, getWindow, getDocument, isDirectionalKeyCode } from '../../Utilities';
 import { getStyles } from './Fabric.styles';
 import { IFabricProps, IFabricStyleProps, IFabricStyles } from './Fabric.types';
+import { IProcessedStyleSet } from '@uifabric/merge-styles';
 
 const getClassNames = classNamesFunction<IFabricStyleProps, IFabricStyles>();
 
@@ -20,13 +21,8 @@ export class FabricBase extends React.Component<
   }
 
   public render() {
-    const { className } = this.props;
+    const classNames = this.getClassNamesHelper();
 
-    const classNames = getClassNames(getStyles, {
-      theme: this.props.theme!,
-      className,
-      isFocusVisible: this.state.isFocusVisible
-    });
     const divProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties);
 
     let fabricComponent;
@@ -34,10 +30,6 @@ export class FabricBase extends React.Component<
     fabricComponent = (
       <div {...divProps} className={this.props.applyTheme ? classNames.rootThemed : classNames.root} ref={this._rootElement} />
     );
-    if (this.props.applyThemeToBody) {
-      // apply theme to the body of the whole page
-      document.body.classList.add('ms-Fabric-body-themed');
-    }
     return fabricComponent;
   }
 
@@ -47,10 +39,32 @@ export class FabricBase extends React.Component<
     if (win) {
       this._disposables.push(on(win, 'mousedown', this._onMouseDown, true), on(win, 'keydown', this._onKeyDown, true));
     }
+
+    const classNames = this.getClassNamesHelper();
+    if (this.props.applyThemeToBody) {
+      const currentDoc: Document = getDocument(this._rootElement.current)!;
+      currentDoc.body.classList.add(classNames.bodyThemed);
+    }
   }
 
   public componentWillUnmount(): void {
     this._disposables.forEach((dispose: () => void) => dispose());
+
+    const classNames = this.getClassNamesHelper();
+    if (this.props.applyThemeToBody) {
+      const currentDoc: Document = getDocument(this._rootElement.current)!;
+      currentDoc.body.classList.remove(classNames.bodyThemed);
+    }
+  }
+
+  private getClassNamesHelper(): IProcessedStyleSet<IFabricStyles> {
+    const { className } = this.props;
+    const classNames = getClassNames(getStyles, {
+      theme: this.props.theme!,
+      className,
+      isFocusVisible: this.state.isFocusVisible
+    });
+    return classNames;
   }
 
   private _onMouseDown = (ev: MouseEvent): void => {
