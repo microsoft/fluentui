@@ -2,6 +2,30 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Mon, 21 Oct 2019 12:33:23 GMT",
+      "tag": "office-ui-fabric-react_v7.53.1",
+      "version": "7.53.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Facepile: Added presence example",
+            "author": "v-mare@microsoft.com",
+            "commit": "7e5936206eadaafdd2e544e39b520efa0e919823"
+          },
+          {
+            "comment": "Pickers: Bring pickers in line with W3 ARIA 1.1 specs.",
+            "author": "joschect@microsoft.com",
+            "commit": "dde4a290e354fba58675bd4ab7d0cccdb10e856f"
+          },
+          {
+            "comment": "Fix typo",
+            "author": "norton.wong@genedata.com",
+            "commit": "69283802d65e27ac269cf3bb545d997872a693db"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 18 Oct 2019 12:31:12 GMT",
       "tag": "office-ui-fabric-react_v7.53.0",
       "version": "7.53.0",

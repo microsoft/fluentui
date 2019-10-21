@@ -1,7 +1,15 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 18 Oct 2019 12:31:12 GMT and should not be manually modified.
+This log was last generated on Mon, 21 Oct 2019 12:33:23 GMT and should not be manually modified.
 
+## 7.53.1
+Mon, 21 Oct 2019 12:33:23 GMT
+
+### Patches
+
+- Facepile: Added presence example (v-mare@microsoft.com)
+- Pickers: Bring pickers in line with W3 ARIA 1.1 specs. (joschect@microsoft.com)
+- Fix typo (norton.wong@genedata.com)
 ## 7.53.0
 Fri, 18 Oct 2019 12:31:12 GMT
 
