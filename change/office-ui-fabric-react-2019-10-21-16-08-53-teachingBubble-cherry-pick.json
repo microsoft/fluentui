@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "TeachingBubble updates: added separate multi-step example to reflect current design toolkit and updated basic teachingbubble example",
+  "packageName": "office-ui-fabric-react",
+  "email": "marygans@microsoft.com",
+  "commit": "32e3e58cc917937374989827eb44eaf968a5f05f",
+  "date": "2019-10-21T23:08:52.989Z"
+}
