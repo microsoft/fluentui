@@ -21,6 +21,7 @@ import { LabelStyles } from './styles/Label.styles';
 import { LinkStyles } from './styles/Link.styles';
 import { MessageBarStyles } from './styles/MessageBar.styles';
 import { MessageBarButtonStyles } from './styles/MessageBarButton.styles';
+import { NavStyles } from './styles/Nav.styles';
 import { PanelStyles } from './styles/Panel.styles';
 import { PersonaStyles, PersonaCoinStyles } from './styles/Persona.styles';
 import { PivotStyles } from './styles/Pivot.styles';
@@ -120,6 +121,9 @@ export const MDL2Styles = {
   },
   MessageBarButton: {
     styles: MessageBarButtonStyles
+  },
+  Nav: {
+    styles: NavStyles
   },
   Panel: {
     styles: PanelStyles

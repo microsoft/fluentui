@@ -63,10 +63,6 @@ export class FocusTrapZoneNestedExample extends React.Component<{}, IFocusTrapZo
 
     return (
       <div>
-        <DefaultButton onClick={this._randomize} styles={{ root: { marginBottom: 10 } }}>
-          Randomize
-        </DefaultButton>
-
         <FocusTrapComponent zoneNumber={1} isActive={!!activeStates[1]} setIsActive={this._setIsActive}>
           <FocusTrapComponent zoneNumber={2} isActive={!!activeStates[2]} setIsActive={this._setIsActive}>
             <FocusTrapComponent zoneNumber={3} isActive={!!activeStates[3]} setIsActive={this._setIsActive} />
@@ -81,19 +77,5 @@ export class FocusTrapZoneNestedExample extends React.Component<{}, IFocusTrapZo
   private _setIsActive = (zoneNumber: number, isActive: boolean): void => {
     const { activeStates } = this.state;
     this.setState({ activeStates: { ...activeStates, [zoneNumber]: isActive } });
-  };
-
-  // This randomize example is exposing a quirk in focus stack behavior.
-  // For the randomize example, components render from the bottom up with all of the new "activeStates" simultaneously set.
-  // The most recently active item in the focusStack ends up being the highest parent, which is the reverse order focus
-  // trap zones would normally be put on the focusStack. That means children aren't capturing focus as one would normally
-  // expect when toggling the FTZ's individually. This would also be an issue if anyone ever rendered multiple nested and enabled
-  //  FocusTrapZones simultaneously.
-  private _randomize = (): void => {
-    const activeStates: IFocusTrapZoneNestedExampleState['activeStates'] = {};
-    [1, 2, 3, 4, 5].forEach(zoneNumber => {
-      activeStates[zoneNumber] = Math.random() >= 0.5;
-    });
-    this.setState({ activeStates });
   };
 }

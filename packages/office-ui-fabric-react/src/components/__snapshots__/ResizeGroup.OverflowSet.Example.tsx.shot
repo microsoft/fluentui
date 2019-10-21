@@ -25,6 +25,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
         }
       >
         <div
+          aria-orientation="horizontal"
           className=
               ms-FocusZone
               ms-OverflowSet
@@ -142,7 +143,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
               onMouseUp={[Function]}
               type="button"
             >
-              <div
+              <span
                 className=
                     ms-Button-flexContainer
                     {
@@ -152,28 +153,34 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                       height: 100%;
                       justify-content: center;
                     }
+                data-automationid="splitbuttonprimary"
               >
                 <i
                   aria-hidden={true}
                   className=
+                      ms-Icon
                       ms-Button-icon
+                      {
+                        display: inline-block;
+                      }
                       {
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
-                        color: #0078d4;
-                        display: inline-block;
-                        flex-shrink: 0;
                         font-family: "FabricMDL2Icons";
-                        font-size: 16px;
                         font-style: normal;
                         font-weight: normal;
+                        speak: none;
+                      }
+                      {
+                        color: #0078d4;
+                        flex-shrink: 0;
+                        font-size: 16px;
                         height: 16px;
                         line-height: 16px;
                         margin-bottom: 0;
                         margin-left: 4px;
                         margin-right: 4px;
                         margin-top: 0;
-                        speak: none;
                         text-align: center;
                         vertical-align: middle;
                       }
@@ -182,17 +189,19 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                 >
                   
                 </i>
-                <div
+                <span
                   className=
                       ms-Button-textContainer
                       {
+                        display: block;
                         flex-grow: 1;
                       }
                 >
-                  <div
+                  <span
                     className=
                         ms-Button-label
                         {
+                          display: block;
                           font-weight: normal;
                           line-height: 100%;
                           margin-bottom: 0;
@@ -203,9 +212,9 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                     id="id__1"
                   >
                     Item 0
-                  </div>
-                </div>
-              </div>
+                  </span>
+                </span>
+              </span>
             </button>
           </div>
           <div
@@ -307,7 +316,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
               onMouseUp={[Function]}
               type="button"
             >
-              <div
+              <span
                 className=
                     ms-Button-flexContainer
                     {
@@ -317,28 +326,34 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                       height: 100%;
                       justify-content: center;
                     }
+                data-automationid="splitbuttonprimary"
               >
                 <i
                   aria-hidden={true}
                   className=
+                      ms-Icon
                       ms-Button-icon
+                      {
+                        display: inline-block;
+                      }
                       {
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
-                        color: #0078d4;
-                        display: inline-block;
-                        flex-shrink: 0;
                         font-family: "FabricMDL2Icons";
-                        font-size: 16px;
                         font-style: normal;
                         font-weight: normal;
+                        speak: none;
+                      }
+                      {
+                        color: #0078d4;
+                        flex-shrink: 0;
+                        font-size: 16px;
                         height: 16px;
                         line-height: 16px;
                         margin-bottom: 0;
                         margin-left: 4px;
                         margin-right: 4px;
                         margin-top: 0;
-                        speak: none;
                         text-align: center;
                         vertical-align: middle;
                       }
@@ -347,17 +362,19 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                 >
                   
                 </i>
-                <div
+                <span
                   className=
                       ms-Button-textContainer
                       {
+                        display: block;
                         flex-grow: 1;
                       }
                 >
-                  <div
+                  <span
                     className=
                         ms-Button-label
                         {
+                          display: block;
                           font-weight: normal;
                           line-height: 100%;
                           margin-bottom: 0;
@@ -368,9 +385,9 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                     id="id__4"
                   >
                     Item 1
-                  </div>
-                </div>
-              </div>
+                  </span>
+                </span>
+              </span>
             </button>
           </div>
           <div
@@ -472,7 +489,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
               onMouseUp={[Function]}
               type="button"
             >
-              <div
+              <span
                 className=
                     ms-Button-flexContainer
                     {
@@ -482,28 +499,34 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                       height: 100%;
                       justify-content: center;
                     }
+                data-automationid="splitbuttonprimary"
               >
                 <i
                   aria-hidden={true}
                   className=
+                      ms-Icon
                       ms-Button-icon
+                      {
+                        display: inline-block;
+                      }
                       {
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
-                        color: #0078d4;
-                        display: inline-block;
-                        flex-shrink: 0;
                         font-family: "FabricMDL2Icons";
-                        font-size: 16px;
                         font-style: normal;
                         font-weight: normal;
+                        speak: none;
+                      }
+                      {
+                        color: #0078d4;
+                        flex-shrink: 0;
+                        font-size: 16px;
                         height: 16px;
                         line-height: 16px;
                         margin-bottom: 0;
                         margin-left: 4px;
                         margin-right: 4px;
                         margin-top: 0;
-                        speak: none;
                         text-align: center;
                         vertical-align: middle;
                       }
@@ -512,17 +535,19 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                 >
                   
                 </i>
-                <div
+                <span
                   className=
                       ms-Button-textContainer
                       {
+                        display: block;
                         flex-grow: 1;
                       }
                 >
-                  <div
+                  <span
                     className=
                         ms-Button-label
                         {
+                          display: block;
                           font-weight: normal;
                           line-height: 100%;
                           margin-bottom: 0;
@@ -533,9 +558,9 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                     id="id__7"
                   >
                     Item 2
-                  </div>
-                </div>
-              </div>
+                  </span>
+                </span>
+              </span>
             </button>
           </div>
           <div
@@ -637,7 +662,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
               onMouseUp={[Function]}
               type="button"
             >
-              <div
+              <span
                 className=
                     ms-Button-flexContainer
                     {
@@ -647,28 +672,34 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                       height: 100%;
                       justify-content: center;
                     }
+                data-automationid="splitbuttonprimary"
               >
                 <i
                   aria-hidden={true}
                   className=
+                      ms-Icon
                       ms-Button-icon
+                      {
+                        display: inline-block;
+                      }
                       {
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
-                        color: #0078d4;
-                        display: inline-block;
-                        flex-shrink: 0;
                         font-family: "FabricMDL2Icons";
-                        font-size: 16px;
                         font-style: normal;
                         font-weight: normal;
+                        speak: none;
+                      }
+                      {
+                        color: #0078d4;
+                        flex-shrink: 0;
+                        font-size: 16px;
                         height: 16px;
                         line-height: 16px;
                         margin-bottom: 0;
                         margin-left: 4px;
                         margin-right: 4px;
                         margin-top: 0;
-                        speak: none;
                         text-align: center;
                         vertical-align: middle;
                       }
@@ -677,17 +708,19 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                 >
                   
                 </i>
-                <div
+                <span
                   className=
                       ms-Button-textContainer
                       {
+                        display: block;
                         flex-grow: 1;
                       }
                 >
-                  <div
+                  <span
                     className=
                         ms-Button-label
                         {
+                          display: block;
                           font-weight: normal;
                           line-height: 100%;
                           margin-bottom: 0;
@@ -698,9 +731,9 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                     id="id__10"
                   >
                     Item 3
-                  </div>
-                </div>
-              </div>
+                  </span>
+                </span>
+              </span>
             </button>
           </div>
           <div
@@ -802,7 +835,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
               onMouseUp={[Function]}
               type="button"
             >
-              <div
+              <span
                 className=
                     ms-Button-flexContainer
                     {
@@ -812,28 +845,34 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                       height: 100%;
                       justify-content: center;
                     }
+                data-automationid="splitbuttonprimary"
               >
                 <i
                   aria-hidden={true}
                   className=
+                      ms-Icon
                       ms-Button-icon
+                      {
+                        display: inline-block;
+                      }
                       {
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
-                        color: #0078d4;
-                        display: inline-block;
-                        flex-shrink: 0;
                         font-family: "FabricMDL2Icons";
-                        font-size: 16px;
                         font-style: normal;
                         font-weight: normal;
+                        speak: none;
+                      }
+                      {
+                        color: #0078d4;
+                        flex-shrink: 0;
+                        font-size: 16px;
                         height: 16px;
                         line-height: 16px;
                         margin-bottom: 0;
                         margin-left: 4px;
                         margin-right: 4px;
                         margin-top: 0;
-                        speak: none;
                         text-align: center;
                         vertical-align: middle;
                       }
@@ -842,17 +881,19 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                 >
                   
                 </i>
-                <div
+                <span
                   className=
                       ms-Button-textContainer
                       {
+                        display: block;
                         flex-grow: 1;
                       }
                 >
-                  <div
+                  <span
                     className=
                         ms-Button-label
                         {
+                          display: block;
                           font-weight: normal;
                           line-height: 100%;
                           margin-bottom: 0;
@@ -863,9 +904,9 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                     id="id__13"
                   >
                     Item 4
-                  </div>
-                </div>
-              </div>
+                  </span>
+                </span>
+              </span>
             </button>
           </div>
           <div
@@ -967,7 +1008,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
               onMouseUp={[Function]}
               type="button"
             >
-              <div
+              <span
                 className=
                     ms-Button-flexContainer
                     {
@@ -977,28 +1018,34 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                       height: 100%;
                       justify-content: center;
                     }
+                data-automationid="splitbuttonprimary"
               >
                 <i
                   aria-hidden={true}
                   className=
+                      ms-Icon
                       ms-Button-icon
+                      {
+                        display: inline-block;
+                      }
                       {
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
-                        color: #0078d4;
-                        display: inline-block;
-                        flex-shrink: 0;
                         font-family: "FabricMDL2Icons";
-                        font-size: 16px;
                         font-style: normal;
                         font-weight: normal;
+                        speak: none;
+                      }
+                      {
+                        color: #0078d4;
+                        flex-shrink: 0;
+                        font-size: 16px;
                         height: 16px;
                         line-height: 16px;
                         margin-bottom: 0;
                         margin-left: 4px;
                         margin-right: 4px;
                         margin-top: 0;
-                        speak: none;
                         text-align: center;
                         vertical-align: middle;
                       }
@@ -1007,17 +1054,19 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                 >
                   
                 </i>
-                <div
+                <span
                   className=
                       ms-Button-textContainer
                       {
+                        display: block;
                         flex-grow: 1;
                       }
                 >
-                  <div
+                  <span
                     className=
                         ms-Button-label
                         {
+                          display: block;
                           font-weight: normal;
                           line-height: 100%;
                           margin-bottom: 0;
@@ -1028,9 +1077,9 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                     id="id__16"
                   >
                     Item 5
-                  </div>
-                </div>
-              </div>
+                  </span>
+                </span>
+              </span>
             </button>
           </div>
           <div
@@ -1132,7 +1181,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
               onMouseUp={[Function]}
               type="button"
             >
-              <div
+              <span
                 className=
                     ms-Button-flexContainer
                     {
@@ -1142,28 +1191,34 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                       height: 100%;
                       justify-content: center;
                     }
+                data-automationid="splitbuttonprimary"
               >
                 <i
                   aria-hidden={true}
                   className=
+                      ms-Icon
                       ms-Button-icon
+                      {
+                        display: inline-block;
+                      }
                       {
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
-                        color: #0078d4;
-                        display: inline-block;
-                        flex-shrink: 0;
                         font-family: "FabricMDL2Icons";
-                        font-size: 16px;
                         font-style: normal;
                         font-weight: normal;
+                        speak: none;
+                      }
+                      {
+                        color: #0078d4;
+                        flex-shrink: 0;
+                        font-size: 16px;
                         height: 16px;
                         line-height: 16px;
                         margin-bottom: 0;
                         margin-left: 4px;
                         margin-right: 4px;
                         margin-top: 0;
-                        speak: none;
                         text-align: center;
                         vertical-align: middle;
                       }
@@ -1172,17 +1227,19 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                 >
                   
                 </i>
-                <div
+                <span
                   className=
                       ms-Button-textContainer
                       {
+                        display: block;
                         flex-grow: 1;
                       }
                 >
-                  <div
+                  <span
                     className=
                         ms-Button-label
                         {
+                          display: block;
                           font-weight: normal;
                           line-height: 100%;
                           margin-bottom: 0;
@@ -1193,9 +1250,9 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                     id="id__19"
                   >
                     Item 6
-                  </div>
-                </div>
-              </div>
+                  </span>
+                </span>
+              </span>
             </button>
           </div>
           <div
@@ -1297,7 +1354,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
               onMouseUp={[Function]}
               type="button"
             >
-              <div
+              <span
                 className=
                     ms-Button-flexContainer
                     {
@@ -1307,28 +1364,34 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                       height: 100%;
                       justify-content: center;
                     }
+                data-automationid="splitbuttonprimary"
               >
                 <i
                   aria-hidden={true}
                   className=
+                      ms-Icon
                       ms-Button-icon
+                      {
+                        display: inline-block;
+                      }
                       {
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
-                        color: #0078d4;
-                        display: inline-block;
-                        flex-shrink: 0;
                         font-family: "FabricMDL2Icons";
-                        font-size: 16px;
                         font-style: normal;
                         font-weight: normal;
+                        speak: none;
+                      }
+                      {
+                        color: #0078d4;
+                        flex-shrink: 0;
+                        font-size: 16px;
                         height: 16px;
                         line-height: 16px;
                         margin-bottom: 0;
                         margin-left: 4px;
                         margin-right: 4px;
                         margin-top: 0;
-                        speak: none;
                         text-align: center;
                         vertical-align: middle;
                       }
@@ -1337,17 +1400,19 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                 >
                   
                 </i>
-                <div
+                <span
                   className=
                       ms-Button-textContainer
                       {
+                        display: block;
                         flex-grow: 1;
                       }
                 >
-                  <div
+                  <span
                     className=
                         ms-Button-label
                         {
+                          display: block;
                           font-weight: normal;
                           line-height: 100%;
                           margin-bottom: 0;
@@ -1358,9 +1423,9 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                     id="id__22"
                   >
                     Item 7
-                  </div>
-                </div>
-              </div>
+                  </span>
+                </span>
+              </span>
             </button>
           </div>
           <div
@@ -1462,7 +1527,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
               onMouseUp={[Function]}
               type="button"
             >
-              <div
+              <span
                 className=
                     ms-Button-flexContainer
                     {
@@ -1472,28 +1537,34 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                       height: 100%;
                       justify-content: center;
                     }
+                data-automationid="splitbuttonprimary"
               >
                 <i
                   aria-hidden={true}
                   className=
+                      ms-Icon
                       ms-Button-icon
+                      {
+                        display: inline-block;
+                      }
                       {
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
-                        color: #0078d4;
-                        display: inline-block;
-                        flex-shrink: 0;
                         font-family: "FabricMDL2Icons";
-                        font-size: 16px;
                         font-style: normal;
                         font-weight: normal;
+                        speak: none;
+                      }
+                      {
+                        color: #0078d4;
+                        flex-shrink: 0;
+                        font-size: 16px;
                         height: 16px;
                         line-height: 16px;
                         margin-bottom: 0;
                         margin-left: 4px;
                         margin-right: 4px;
                         margin-top: 0;
-                        speak: none;
                         text-align: center;
                         vertical-align: middle;
                       }
@@ -1502,17 +1573,19 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                 >
                   
                 </i>
-                <div
+                <span
                   className=
                       ms-Button-textContainer
                       {
+                        display: block;
                         flex-grow: 1;
                       }
                 >
-                  <div
+                  <span
                     className=
                         ms-Button-label
                         {
+                          display: block;
                           font-weight: normal;
                           line-height: 100%;
                           margin-bottom: 0;
@@ -1523,9 +1596,9 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                     id="id__25"
                   >
                     Item 8
-                  </div>
-                </div>
-              </div>
+                  </span>
+                </span>
+              </span>
             </button>
           </div>
           <div
@@ -1627,7 +1700,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
               onMouseUp={[Function]}
               type="button"
             >
-              <div
+              <span
                 className=
                     ms-Button-flexContainer
                     {
@@ -1637,28 +1710,34 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                       height: 100%;
                       justify-content: center;
                     }
+                data-automationid="splitbuttonprimary"
               >
                 <i
                   aria-hidden={true}
                   className=
+                      ms-Icon
                       ms-Button-icon
+                      {
+                        display: inline-block;
+                      }
                       {
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
-                        color: #0078d4;
-                        display: inline-block;
-                        flex-shrink: 0;
                         font-family: "FabricMDL2Icons";
-                        font-size: 16px;
                         font-style: normal;
                         font-weight: normal;
+                        speak: none;
+                      }
+                      {
+                        color: #0078d4;
+                        flex-shrink: 0;
+                        font-size: 16px;
                         height: 16px;
                         line-height: 16px;
                         margin-bottom: 0;
                         margin-left: 4px;
                         margin-right: 4px;
                         margin-top: 0;
-                        speak: none;
                         text-align: center;
                         vertical-align: middle;
                       }
@@ -1667,17 +1746,19 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                 >
                   
                 </i>
-                <div
+                <span
                   className=
                       ms-Button-textContainer
                       {
+                        display: block;
                         flex-grow: 1;
                       }
                 >
-                  <div
+                  <span
                     className=
                         ms-Button-label
                         {
+                          display: block;
                           font-weight: normal;
                           line-height: 100%;
                           margin-bottom: 0;
@@ -1688,9 +1769,9 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                     id="id__28"
                   >
                     Item 9
-                  </div>
-                </div>
-              </div>
+                  </span>
+                </span>
+              </span>
             </button>
           </div>
           <div
@@ -1792,7 +1873,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
               onMouseUp={[Function]}
               type="button"
             >
-              <div
+              <span
                 className=
                     ms-Button-flexContainer
                     {
@@ -1802,28 +1883,34 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                       height: 100%;
                       justify-content: center;
                     }
+                data-automationid="splitbuttonprimary"
               >
                 <i
                   aria-hidden={true}
                   className=
+                      ms-Icon
                       ms-Button-icon
+                      {
+                        display: inline-block;
+                      }
                       {
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
-                        color: #0078d4;
-                        display: inline-block;
-                        flex-shrink: 0;
                         font-family: "FabricMDL2Icons";
-                        font-size: 16px;
                         font-style: normal;
                         font-weight: normal;
+                        speak: none;
+                      }
+                      {
+                        color: #0078d4;
+                        flex-shrink: 0;
+                        font-size: 16px;
                         height: 16px;
                         line-height: 16px;
                         margin-bottom: 0;
                         margin-left: 4px;
                         margin-right: 4px;
                         margin-top: 0;
-                        speak: none;
                         text-align: center;
                         vertical-align: middle;
                       }
@@ -1832,17 +1919,19 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                 >
                   
                 </i>
-                <div
+                <span
                   className=
                       ms-Button-textContainer
                       {
+                        display: block;
                         flex-grow: 1;
                       }
                 >
-                  <div
+                  <span
                     className=
                         ms-Button-label
                         {
+                          display: block;
                           font-weight: normal;
                           line-height: 100%;
                           margin-bottom: 0;
@@ -1853,9 +1942,9 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                     id="id__31"
                   >
                     Item 10
-                  </div>
-                </div>
-              </div>
+                  </span>
+                </span>
+              </span>
             </button>
           </div>
           <div
@@ -1957,7 +2046,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
               onMouseUp={[Function]}
               type="button"
             >
-              <div
+              <span
                 className=
                     ms-Button-flexContainer
                     {
@@ -1967,28 +2056,34 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                       height: 100%;
                       justify-content: center;
                     }
+                data-automationid="splitbuttonprimary"
               >
                 <i
                   aria-hidden={true}
                   className=
+                      ms-Icon
                       ms-Button-icon
+                      {
+                        display: inline-block;
+                      }
                       {
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
-                        color: #0078d4;
-                        display: inline-block;
-                        flex-shrink: 0;
                         font-family: "FabricMDL2Icons";
-                        font-size: 16px;
                         font-style: normal;
                         font-weight: normal;
+                        speak: none;
+                      }
+                      {
+                        color: #0078d4;
+                        flex-shrink: 0;
+                        font-size: 16px;
                         height: 16px;
                         line-height: 16px;
                         margin-bottom: 0;
                         margin-left: 4px;
                         margin-right: 4px;
                         margin-top: 0;
-                        speak: none;
                         text-align: center;
                         vertical-align: middle;
                       }
@@ -1997,17 +2092,19 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                 >
                   
                 </i>
-                <div
+                <span
                   className=
                       ms-Button-textContainer
                       {
+                        display: block;
                         flex-grow: 1;
                       }
                 >
-                  <div
+                  <span
                     className=
                         ms-Button-label
                         {
+                          display: block;
                           font-weight: normal;
                           line-height: 100%;
                           margin-bottom: 0;
@@ -2018,9 +2115,9 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                     id="id__34"
                   >
                     Item 11
-                  </div>
-                </div>
-              </div>
+                  </span>
+                </span>
+              </span>
             </button>
           </div>
           <div
@@ -2122,7 +2219,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
               onMouseUp={[Function]}
               type="button"
             >
-              <div
+              <span
                 className=
                     ms-Button-flexContainer
                     {
@@ -2132,28 +2229,34 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                       height: 100%;
                       justify-content: center;
                     }
+                data-automationid="splitbuttonprimary"
               >
                 <i
                   aria-hidden={true}
                   className=
+                      ms-Icon
                       ms-Button-icon
+                      {
+                        display: inline-block;
+                      }
                       {
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
-                        color: #0078d4;
-                        display: inline-block;
-                        flex-shrink: 0;
                         font-family: "FabricMDL2Icons";
-                        font-size: 16px;
                         font-style: normal;
                         font-weight: normal;
+                        speak: none;
+                      }
+                      {
+                        color: #0078d4;
+                        flex-shrink: 0;
+                        font-size: 16px;
                         height: 16px;
                         line-height: 16px;
                         margin-bottom: 0;
                         margin-left: 4px;
                         margin-right: 4px;
                         margin-top: 0;
-                        speak: none;
                         text-align: center;
                         vertical-align: middle;
                       }
@@ -2162,17 +2265,19 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                 >
                   
                 </i>
-                <div
+                <span
                   className=
                       ms-Button-textContainer
                       {
+                        display: block;
                         flex-grow: 1;
                       }
                 >
-                  <div
+                  <span
                     className=
                         ms-Button-label
                         {
+                          display: block;
                           font-weight: normal;
                           line-height: 100%;
                           margin-bottom: 0;
@@ -2183,9 +2288,9 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                     id="id__37"
                   >
                     Item 12
-                  </div>
-                </div>
-              </div>
+                  </span>
+                </span>
+              </span>
             </button>
           </div>
           <div
@@ -2287,7 +2392,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
               onMouseUp={[Function]}
               type="button"
             >
-              <div
+              <span
                 className=
                     ms-Button-flexContainer
                     {
@@ -2297,28 +2402,34 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                       height: 100%;
                       justify-content: center;
                     }
+                data-automationid="splitbuttonprimary"
               >
                 <i
                   aria-hidden={true}
                   className=
+                      ms-Icon
                       ms-Button-icon
+                      {
+                        display: inline-block;
+                      }
                       {
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
-                        color: #0078d4;
-                        display: inline-block;
-                        flex-shrink: 0;
                         font-family: "FabricMDL2Icons";
-                        font-size: 16px;
                         font-style: normal;
                         font-weight: normal;
+                        speak: none;
+                      }
+                      {
+                        color: #0078d4;
+                        flex-shrink: 0;
+                        font-size: 16px;
                         height: 16px;
                         line-height: 16px;
                         margin-bottom: 0;
                         margin-left: 4px;
                         margin-right: 4px;
                         margin-top: 0;
-                        speak: none;
                         text-align: center;
                         vertical-align: middle;
                       }
@@ -2327,17 +2438,19 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                 >
                   
                 </i>
-                <div
+                <span
                   className=
                       ms-Button-textContainer
                       {
+                        display: block;
                         flex-grow: 1;
                       }
                 >
-                  <div
+                  <span
                     className=
                         ms-Button-label
                         {
+                          display: block;
                           font-weight: normal;
                           line-height: 100%;
                           margin-bottom: 0;
@@ -2348,9 +2461,9 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                     id="id__40"
                   >
                     Item 13
-                  </div>
-                </div>
-              </div>
+                  </span>
+                </span>
+              </span>
             </button>
           </div>
           <div
@@ -2452,7 +2565,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
               onMouseUp={[Function]}
               type="button"
             >
-              <div
+              <span
                 className=
                     ms-Button-flexContainer
                     {
@@ -2462,28 +2575,34 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                       height: 100%;
                       justify-content: center;
                     }
+                data-automationid="splitbuttonprimary"
               >
                 <i
                   aria-hidden={true}
                   className=
+                      ms-Icon
                       ms-Button-icon
+                      {
+                        display: inline-block;
+                      }
                       {
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
-                        color: #0078d4;
-                        display: inline-block;
-                        flex-shrink: 0;
                         font-family: "FabricMDL2Icons";
-                        font-size: 16px;
                         font-style: normal;
                         font-weight: normal;
+                        speak: none;
+                      }
+                      {
+                        color: #0078d4;
+                        flex-shrink: 0;
+                        font-size: 16px;
                         height: 16px;
                         line-height: 16px;
                         margin-bottom: 0;
                         margin-left: 4px;
                         margin-right: 4px;
                         margin-top: 0;
-                        speak: none;
                         text-align: center;
                         vertical-align: middle;
                       }
@@ -2492,17 +2611,19 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                 >
                   
                 </i>
-                <div
+                <span
                   className=
                       ms-Button-textContainer
                       {
+                        display: block;
                         flex-grow: 1;
                       }
                 >
-                  <div
+                  <span
                     className=
                         ms-Button-label
                         {
+                          display: block;
                           font-weight: normal;
                           line-height: 100%;
                           margin-bottom: 0;
@@ -2513,9 +2634,9 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                     id="id__43"
                   >
                     Item 14
-                  </div>
-                </div>
-              </div>
+                  </span>
+                </span>
+              </span>
             </button>
           </div>
           <div
@@ -2617,7 +2738,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
               onMouseUp={[Function]}
               type="button"
             >
-              <div
+              <span
                 className=
                     ms-Button-flexContainer
                     {
@@ -2627,28 +2748,34 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                       height: 100%;
                       justify-content: center;
                     }
+                data-automationid="splitbuttonprimary"
               >
                 <i
                   aria-hidden={true}
                   className=
+                      ms-Icon
                       ms-Button-icon
+                      {
+                        display: inline-block;
+                      }
                       {
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
-                        color: #0078d4;
-                        display: inline-block;
-                        flex-shrink: 0;
                         font-family: "FabricMDL2Icons";
-                        font-size: 16px;
                         font-style: normal;
                         font-weight: normal;
+                        speak: none;
+                      }
+                      {
+                        color: #0078d4;
+                        flex-shrink: 0;
+                        font-size: 16px;
                         height: 16px;
                         line-height: 16px;
                         margin-bottom: 0;
                         margin-left: 4px;
                         margin-right: 4px;
                         margin-top: 0;
-                        speak: none;
                         text-align: center;
                         vertical-align: middle;
                       }
@@ -2657,17 +2784,19 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                 >
                   
                 </i>
-                <div
+                <span
                   className=
                       ms-Button-textContainer
                       {
+                        display: block;
                         flex-grow: 1;
                       }
                 >
-                  <div
+                  <span
                     className=
                         ms-Button-label
                         {
+                          display: block;
                           font-weight: normal;
                           line-height: 100%;
                           margin-bottom: 0;
@@ -2678,9 +2807,9 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                     id="id__46"
                   >
                     Item 15
-                  </div>
-                </div>
-              </div>
+                  </span>
+                </span>
+              </span>
             </button>
           </div>
           <div
@@ -2782,7 +2911,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
               onMouseUp={[Function]}
               type="button"
             >
-              <div
+              <span
                 className=
                     ms-Button-flexContainer
                     {
@@ -2792,28 +2921,34 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                       height: 100%;
                       justify-content: center;
                     }
+                data-automationid="splitbuttonprimary"
               >
                 <i
                   aria-hidden={true}
                   className=
+                      ms-Icon
                       ms-Button-icon
+                      {
+                        display: inline-block;
+                      }
                       {
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
-                        color: #0078d4;
-                        display: inline-block;
-                        flex-shrink: 0;
                         font-family: "FabricMDL2Icons";
-                        font-size: 16px;
                         font-style: normal;
                         font-weight: normal;
+                        speak: none;
+                      }
+                      {
+                        color: #0078d4;
+                        flex-shrink: 0;
+                        font-size: 16px;
                         height: 16px;
                         line-height: 16px;
                         margin-bottom: 0;
                         margin-left: 4px;
                         margin-right: 4px;
                         margin-top: 0;
-                        speak: none;
                         text-align: center;
                         vertical-align: middle;
                       }
@@ -2822,17 +2957,19 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                 >
                   
                 </i>
-                <div
+                <span
                   className=
                       ms-Button-textContainer
                       {
+                        display: block;
                         flex-grow: 1;
                       }
                 >
-                  <div
+                  <span
                     className=
                         ms-Button-label
                         {
+                          display: block;
                           font-weight: normal;
                           line-height: 100%;
                           margin-bottom: 0;
@@ -2843,9 +2980,9 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                     id="id__49"
                   >
                     Item 16
-                  </div>
-                </div>
-              </div>
+                  </span>
+                </span>
+              </span>
             </button>
           </div>
           <div
@@ -2947,7 +3084,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
               onMouseUp={[Function]}
               type="button"
             >
-              <div
+              <span
                 className=
                     ms-Button-flexContainer
                     {
@@ -2957,28 +3094,34 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                       height: 100%;
                       justify-content: center;
                     }
+                data-automationid="splitbuttonprimary"
               >
                 <i
                   aria-hidden={true}
                   className=
+                      ms-Icon
                       ms-Button-icon
+                      {
+                        display: inline-block;
+                      }
                       {
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
-                        color: #0078d4;
-                        display: inline-block;
-                        flex-shrink: 0;
                         font-family: "FabricMDL2Icons";
-                        font-size: 16px;
                         font-style: normal;
                         font-weight: normal;
+                        speak: none;
+                      }
+                      {
+                        color: #0078d4;
+                        flex-shrink: 0;
+                        font-size: 16px;
                         height: 16px;
                         line-height: 16px;
                         margin-bottom: 0;
                         margin-left: 4px;
                         margin-right: 4px;
                         margin-top: 0;
-                        speak: none;
                         text-align: center;
                         vertical-align: middle;
                       }
@@ -2987,17 +3130,19 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                 >
                   
                 </i>
-                <div
+                <span
                   className=
                       ms-Button-textContainer
                       {
+                        display: block;
                         flex-grow: 1;
                       }
                 >
-                  <div
+                  <span
                     className=
                         ms-Button-label
                         {
+                          display: block;
                           font-weight: normal;
                           line-height: 100%;
                           margin-bottom: 0;
@@ -3008,9 +3153,9 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                     id="id__52"
                   >
                     Item 17
-                  </div>
-                </div>
-              </div>
+                  </span>
+                </span>
+              </span>
             </button>
           </div>
           <div
@@ -3112,7 +3257,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
               onMouseUp={[Function]}
               type="button"
             >
-              <div
+              <span
                 className=
                     ms-Button-flexContainer
                     {
@@ -3122,28 +3267,34 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                       height: 100%;
                       justify-content: center;
                     }
+                data-automationid="splitbuttonprimary"
               >
                 <i
                   aria-hidden={true}
                   className=
+                      ms-Icon
                       ms-Button-icon
+                      {
+                        display: inline-block;
+                      }
                       {
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
-                        color: #0078d4;
-                        display: inline-block;
-                        flex-shrink: 0;
                         font-family: "FabricMDL2Icons";
-                        font-size: 16px;
                         font-style: normal;
                         font-weight: normal;
+                        speak: none;
+                      }
+                      {
+                        color: #0078d4;
+                        flex-shrink: 0;
+                        font-size: 16px;
                         height: 16px;
                         line-height: 16px;
                         margin-bottom: 0;
                         margin-left: 4px;
                         margin-right: 4px;
                         margin-top: 0;
-                        speak: none;
                         text-align: center;
                         vertical-align: middle;
                       }
@@ -3152,17 +3303,19 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                 >
                   
                 </i>
-                <div
+                <span
                   className=
                       ms-Button-textContainer
                       {
+                        display: block;
                         flex-grow: 1;
                       }
                 >
-                  <div
+                  <span
                     className=
                         ms-Button-label
                         {
+                          display: block;
                           font-weight: normal;
                           line-height: 100%;
                           margin-bottom: 0;
@@ -3173,9 +3326,9 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                     id="id__55"
                   >
                     Item 18
-                  </div>
-                </div>
-              </div>
+                  </span>
+                </span>
+              </span>
             </button>
           </div>
           <div
@@ -3277,7 +3430,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
               onMouseUp={[Function]}
               type="button"
             >
-              <div
+              <span
                 className=
                     ms-Button-flexContainer
                     {
@@ -3287,28 +3440,34 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                       height: 100%;
                       justify-content: center;
                     }
+                data-automationid="splitbuttonprimary"
               >
                 <i
                   aria-hidden={true}
                   className=
+                      ms-Icon
                       ms-Button-icon
+                      {
+                        display: inline-block;
+                      }
                       {
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
-                        color: #0078d4;
-                        display: inline-block;
-                        flex-shrink: 0;
                         font-family: "FabricMDL2Icons";
-                        font-size: 16px;
                         font-style: normal;
                         font-weight: normal;
+                        speak: none;
+                      }
+                      {
+                        color: #0078d4;
+                        flex-shrink: 0;
+                        font-size: 16px;
                         height: 16px;
                         line-height: 16px;
                         margin-bottom: 0;
                         margin-left: 4px;
                         margin-right: 4px;
                         margin-top: 0;
-                        speak: none;
                         text-align: center;
                         vertical-align: middle;
                       }
@@ -3317,17 +3476,19 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                 >
                   
                 </i>
-                <div
+                <span
                   className=
                       ms-Button-textContainer
                       {
+                        display: block;
                         flex-grow: 1;
                       }
                 >
-                  <div
+                  <span
                     className=
                         ms-Button-label
                         {
+                          display: block;
                           font-weight: normal;
                           line-height: 100%;
                           margin-bottom: 0;
@@ -3338,9 +3499,9 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                     id="id__58"
                   >
                     Item 19
-                  </div>
-                </div>
-              </div>
+                  </span>
+                </span>
+              </span>
             </button>
           </div>
         </div>
@@ -3380,6 +3541,8 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
           }
     >
       <input
+        aria-checked="false"
+        aria-label="Enable caching"
         checked={false}
         className=
 
@@ -3442,6 +3605,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                 justify-content: center;
                 margin-right: 4px;
                 overflow: hidden;
+                position: relative;
                 transition-duration: 200ms;
                 transition-property: background, border, border-color;
                 transition-timing-function: cubic-bezier(.4, 0, .23, 1);
@@ -3468,12 +3632,12 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   color: Window;
                 }
             data-icon-name="CheckMark"
-            role="presentation"
           >
             
           </i>
         </div>
         <span
+          aria-hidden="true"
           className=
               ms-Checkbox-text
               {
@@ -3519,6 +3683,8 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
           }
     >
       <input
+        aria-checked="false"
+        aria-label="Set onGrowData"
         checked={false}
         className=
 
@@ -3581,6 +3747,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                 justify-content: center;
                 margin-right: 4px;
                 overflow: hidden;
+                position: relative;
                 transition-duration: 200ms;
                 transition-property: background, border, border-color;
                 transition-timing-function: cubic-bezier(.4, 0, .23, 1);
@@ -3607,12 +3774,12 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   color: Window;
                 }
             data-icon-name="CheckMark"
-            role="presentation"
           >
             
           </i>
         </div>
         <span
+          aria-hidden="true"
           className=
               ms-Checkbox-text
               {
@@ -3658,6 +3825,8 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
           }
     >
       <input
+        aria-checked="false"
+        aria-label="Buttons checked"
         checked={false}
         className=
 
@@ -3720,6 +3889,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                 justify-content: center;
                 margin-right: 4px;
                 overflow: hidden;
+                position: relative;
                 transition-duration: 200ms;
                 transition-property: background, border, border-color;
                 transition-timing-function: cubic-bezier(.4, 0, .23, 1);
@@ -3746,12 +3916,12 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   color: Window;
                 }
             data-icon-name="CheckMark"
-            role="presentation"
           >
             
           </i>
         </div>
         <span
+          aria-hidden="true"
           className=
               ms-Checkbox-text
               {
@@ -3796,7 +3966,6 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                 padding-top: 5px;
                 word-wrap: break-word;
               }
-          htmlFor="Dropdown64"
           id="Dropdown64-label"
         >
           Number of items to render
@@ -3804,6 +3973,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
         <div
           aria-describedby="Dropdown64-option"
           aria-expanded="false"
+          aria-haspopup="listbox"
           aria-labelledby="Dropdown64-label"
           className=
               ms-Dropdown
@@ -3888,9 +4058,6 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
               &:active .ms-Dropdown-title--hasError {
                 border-color: #a4262c;
               }
-              &:focus .ms-Dropdown-title--hasError {
-                border-color: #a4262c;
-              }
           data-is-focusable={true}
           id="Dropdown64"
           onBlur={[Function]}
@@ -3899,13 +4066,14 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
           onFocus={[Function]}
           onKeyDown={[Function]}
           onKeyUp={[Function]}
+          onMouseDown={[Function]}
           role="listbox"
           tabIndex={0}
         >
           <span
             aria-atomic={true}
-            aria-label="20"
-            aria-live="off"
+            aria-invalid={false}
+            aria-live="polite"
             aria-posinset={1}
             aria-selected={true}
             aria-setsize={7}
@@ -3939,9 +4107,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
             id="Dropdown64-option"
             role="option"
           >
-            <span>
-              20
-            </span>
+            20
           </span>
           <span
             className=
@@ -3972,7 +4138,6 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                     speak: none;
                   }
               data-icon-name="ChevronDown"
-              role="presentation"
             >
               
             </i>

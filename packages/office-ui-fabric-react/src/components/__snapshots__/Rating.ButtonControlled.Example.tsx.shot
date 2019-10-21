@@ -24,6 +24,7 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
   >
     <div
       aria-label="Rating value is 0 of 5"
+      aria-readonly={true}
       className=
           ms-FocusZone
           ms-Rating-focuszone
@@ -58,7 +59,6 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
       onFocus={[Function]}
       onKeyDown={[Function]}
       onMouseDownCapture={[Function]}
-      role="presentation"
       tabIndex={0}
     >
       <button
@@ -133,7 +133,7 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
               }
           id="RatingLabel1-1"
         >
-          1 of 5 stars selected
+          Select 1 of 5 stars
         </span>
         <div
           className=
@@ -160,7 +160,6 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
                   width: 100%;
                 }
             data-icon-name="FavoriteStar"
-            role="presentation"
           >
             
           </i>
@@ -189,7 +188,6 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
                   color: Highlight;
                 }
             data-icon-name="FavoriteStar"
-            role="presentation"
             style={
               Object {
                 "width": "0%",
@@ -272,7 +270,7 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
               }
           id="RatingLabel1-2"
         >
-          2 of 5 stars selected
+          Select 2 of 5 stars
         </span>
         <div
           className=
@@ -299,7 +297,6 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
                   width: 100%;
                 }
             data-icon-name="FavoriteStar"
-            role="presentation"
           >
             
           </i>
@@ -328,7 +325,6 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
                   color: Highlight;
                 }
             data-icon-name="FavoriteStar"
-            role="presentation"
             style={
               Object {
                 "width": "0%",
@@ -411,7 +407,7 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
               }
           id="RatingLabel1-3"
         >
-          3 of 5 stars selected
+          Select 3 of 5 stars
         </span>
         <div
           className=
@@ -438,7 +434,6 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
                   width: 100%;
                 }
             data-icon-name="FavoriteStar"
-            role="presentation"
           >
             
           </i>
@@ -467,7 +462,6 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
                   color: Highlight;
                 }
             data-icon-name="FavoriteStar"
-            role="presentation"
             style={
               Object {
                 "width": "0%",
@@ -550,7 +544,7 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
               }
           id="RatingLabel1-4"
         >
-          4 of 5 stars selected
+          Select 4 of 5 stars
         </span>
         <div
           className=
@@ -577,7 +571,6 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
                   width: 100%;
                 }
             data-icon-name="FavoriteStar"
-            role="presentation"
           >
             
           </i>
@@ -606,7 +599,6 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
                   color: Highlight;
                 }
             data-icon-name="FavoriteStar"
-            role="presentation"
             style={
               Object {
                 "width": "0%",
@@ -689,7 +681,7 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
               }
           id="RatingLabel1-5"
         >
-          5 of 5 stars selected
+          Select 5 of 5 stars
         </span>
         <div
           className=
@@ -716,7 +708,6 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
                   width: 100%;
                 }
             data-icon-name="FavoriteStar"
-            role="presentation"
           >
             
           </i>
@@ -745,7 +736,6 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
                   color: Highlight;
                 }
             data-icon-name="FavoriteStar"
-            role="presentation"
             style={
               Object {
                 "width": "0%",
@@ -792,12 +782,12 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
           border: 0;
         }
         .ms-Fabric--isFocusVisible &:focus:after {
-          border-color: #ffffff;
-          border: 1px solid transparent;
+          border: none;
           bottom: 2px;
           content: "";
           left: 2px;
-          outline: none;
+          outline-color: #ffffff;
+          outline: 1px solid #605e5c;
           position: absolute;
           right: 2px;
           top: 2px;
@@ -847,7 +837,7 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
     onMouseUp={[Function]}
     type="button"
   >
-    <div
+    <span
       className=
           ms-Button-flexContainer
           {
@@ -857,18 +847,21 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
             height: 100%;
             justify-content: center;
           }
+      data-automationid="splitbuttonprimary"
     >
-      <div
+      <span
         className=
             ms-Button-textContainer
             {
+              display: block;
               flex-grow: 1;
             }
       >
-        <div
+        <span
           className=
               ms-Button-label
               {
+                display: block;
                 font-weight: 600;
                 line-height: 100%;
                 margin-bottom: 0;
@@ -879,9 +872,9 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
           id="id__3"
         >
           Click to change rating to 5
-        </div>
-      </div>
-    </div>
+        </span>
+      </span>
+    </span>
   </button>
 </div>
 `;

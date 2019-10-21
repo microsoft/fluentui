@@ -35,6 +35,13 @@ export interface ICheckProps {
    * Additional css class to apply to the Check
    */
   className?: string;
+
+  /**
+   * Whether to use fast icon components. The icons can't be targeted by customization but are
+   * still customizable via class names.
+   * @defaultvalue true
+   */
+  useFastIcons?: boolean;
 }
 
 /**
@@ -78,7 +85,7 @@ export interface ICheckStyles {
   /**
    * Check host style
    * @deprecated Not used directly within the component. Instead, use `CheckGlobalClassNames.checkHost` from
-   * `Check.styles.ts` to get a style to apply to the parent element of the Check.
+   * `Check.styles.ts` to get the static class name to apply to the parent element of the Check.
    */
   checkHost: IStyle;
 }

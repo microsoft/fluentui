@@ -85,7 +85,6 @@ exports[`Component Examples renders ChoiceGroup.Image.Example.tsx correctly 1`] 
               }
               & .ms-ChoiceFieldLabel {
                 display: inline-block;
-                font-size: 14px;
               }
         >
           <div
@@ -343,7 +342,10 @@ exports[`Component Examples renders ChoiceGroup.Image.Example.tsx correctly 1`] 
                 className=
                     ms-ChoiceField-labelWrapper
                     {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
                       display: block;
+                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                       font-size: 14px;
                       font-weight: 400;
                       height: 30px;
@@ -396,7 +398,6 @@ exports[`Component Examples renders ChoiceGroup.Image.Example.tsx correctly 1`] 
               }
               & .ms-ChoiceFieldLabel {
                 display: inline-block;
-                font-size: 14px;
               }
         >
           <div
@@ -636,7 +637,10 @@ exports[`Component Examples renders ChoiceGroup.Image.Example.tsx correctly 1`] 
                 className=
                     ms-ChoiceField-labelWrapper
                     {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
                       display: block;
+                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                       font-size: 14px;
                       font-weight: 400;
                       height: 30px;

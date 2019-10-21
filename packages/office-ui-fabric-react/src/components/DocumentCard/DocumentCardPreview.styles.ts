@@ -1,4 +1,4 @@
-import { getGlobalClassNames, FontSizes } from '../../Styling';
+import { getGlobalClassNames } from '../../Styling';
 import { IDocumentCardPreviewStyleProps, IDocumentCardPreviewStyles } from './DocumentCardPreview.types';
 
 export const DocumentCardPreviewGlobalClassNames = {
@@ -9,13 +9,14 @@ export const DocumentCardPreviewGlobalClassNames = {
 
 export const getStyles = (props: IDocumentCardPreviewStyleProps): IDocumentCardPreviewStyles => {
   const { theme, className, isFileList } = props;
-  const { palette } = theme;
+  const { palette, fonts } = theme;
 
   const classNames = getGlobalClassNames(DocumentCardPreviewGlobalClassNames, theme);
 
   return {
     root: [
       classNames.root,
+      fonts.small,
       {
         borderBottom: `1px solid ${palette.neutralLight}`,
         position: 'relative',
@@ -57,7 +58,6 @@ export const getStyles = (props: IDocumentCardPreviewStyleProps): IDocumentCardP
           whiteSpace: 'nowrap'
         },
         a: {
-          fontSize: FontSizes.small,
           textDecoration: 'none',
           color: palette.neutralDark,
           selectors: {
@@ -75,8 +75,7 @@ export const getStyles = (props: IDocumentCardPreviewStyleProps): IDocumentCardP
     },
     fileListOverflowText: {
       padding: '0px 16px 8px 16px',
-      display: 'block',
-      fontSize: FontSizes.small
+      display: 'block'
     }
   };
 };

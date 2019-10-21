@@ -1,13 +1,12 @@
-import { FontSizes, IRawStyle, ITheme, concatStyleSets, HighContrastSelector } from '../../Styling';
-
+import { IRawStyle, ITheme, concatStyleSets, HighContrastSelector, IconFontSizes } from '../../Styling';
 import { IButtonStyles } from '../../Button';
 import { ISpinButtonStyles } from './SpinButton.types';
 import { memoizeFunction } from '../../Utilities';
-import { IconFontSizes } from '../../Styling';
 
 const ARROW_BUTTON_WIDTH = 23;
 const ARROW_BUTTON_ICON_SIZE = 8;
 const DEFAULT_HEIGHT = 32;
+const DEFAULT_MIN_WIDTH = 86;
 const LABEL_MARGIN = 10;
 
 const _getDisabledStyles = memoizeFunction(
@@ -121,7 +120,7 @@ export const getArrowButtonStyles = memoizeFunction(
 
 export const getStyles = memoizeFunction(
   (theme: ITheme, customStyles?: Partial<ISpinButtonStyles>): ISpinButtonStyles => {
-    const { palette, semanticColors, effects } = theme;
+    const { palette, semanticColors, effects, fonts } = theme;
 
     const SpinButtonRootBorderColor = semanticColors.inputBorder;
     const SpinButtonRootBorderColorHovered = semanticColors.inputBorderHovered;
@@ -136,9 +135,9 @@ export const getStyles = memoizeFunction(
     const defaultStyles: ISpinButtonStyles = {
       root: {
         outline: 'none',
-        fontSize: FontSizes.medium,
+        fontSize: fonts.medium.fontSize,
         width: '100%',
-        minWidth: 86
+        minWidth: DEFAULT_MIN_WIDTH
       },
       labelWrapper: {
         display: 'inline-flex'
@@ -155,12 +154,8 @@ export const getStyles = memoizeFunction(
         float: 'right',
         marginLeft: LABEL_MARGIN
       },
-      labelWrapperTop: {
-        marginBottom: LABEL_MARGIN
-      },
-      labelWrapperBottom: {
-        marginTop: LABEL_MARGIN
-      },
+      labelWrapperTop: {},
+      labelWrapperBottom: {},
       icon: {
         padding: '0 5px',
         fontSize: IconFontSizes.large
@@ -170,7 +165,6 @@ export const getStyles = memoizeFunction(
       },
       label: {
         pointerEvents: 'none',
-        padding: 0,
         // centering the label with the icon by forcing the exact same height as the icon.
         lineHeight: IconFontSizes.large
       },
@@ -179,7 +173,7 @@ export const getStyles = memoizeFunction(
         display: 'flex',
         boxSizing: 'border-box',
         height: DEFAULT_HEIGHT,
-        minWidth: 86,
+        minWidth: DEFAULT_MIN_WIDTH,
         border: `1px solid ${SpinButtonRootBorderColor}`,
         borderRadius: effects.roundedCorner2
       },
@@ -209,13 +203,13 @@ export const getStyles = memoizeFunction(
         borderStyle: 'none',
         flex: 1,
         margin: 0,
-        fontSize: FontSizes.medium,
+        fontSize: fonts.medium.fontSize,
         color: SpinButtonInputTextColor,
         height: '100%',
         padding: '0 8px',
         outline: 0,
         display: 'block',
-        minWidth: 72,
+        minWidth: DEFAULT_MIN_WIDTH - ARROW_BUTTON_WIDTH - 2,
         whiteSpace: 'nowrap',
         textOverflow: 'ellipsis',
         overflow: 'hidden',

@@ -1,4 +1,4 @@
-# [@uifabric/test-utilities](http://dev.microsoft.com/fabric)
+# @uifabric/test-utilities
 
 Provides a set of common test utilities for testing code within the UI Fabric repo.
 

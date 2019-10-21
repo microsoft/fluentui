@@ -20,6 +20,7 @@ export class PanelCustomExample extends React.Component<{}, IPanelCustomExampleS
           onDismiss={this._hidePanel}
           type={PanelType.custom}
           customWidth="888px"
+          closeButtonAriaLabel="Close"
           headerText="Custom Panel with custom 888px width"
         >
           <span>Content goes here.</span>

@@ -16,7 +16,7 @@ exports[`Chiclet renders Medium chiclet with title, icon, onClick, and url 1`] =
         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
         font-size: 14px;
         font-weight: 400;
-        height: 126px;
+        height: 112px;
         margin-bottom: 0px;
         margin-left: 0px;
         margin-right: 0px;
@@ -28,7 +28,7 @@ exports[`Chiclet renders Medium chiclet with title, icon, onClick, and url 1`] =
         padding-top: 0px;
         position: relative;
         user-select: none;
-        width: 600px;
+        width: 576px;
       }
       &:hover {
         cursor: pointer;
@@ -44,46 +44,21 @@ exports[`Chiclet renders Medium chiclet with title, icon, onClick, and url 1`] =
           align-items: center;
           background-color: #ffffff;
           display: flex;
-          height: 126px;
+          height: 112px;
           justify-content: center;
-          width: 198px;
+          width: 33.33333333333333%;
         }
   >
-    <div
+    <img
       className=
-          ms-Image
+
           {
-            -moz-osx-font-smoothing: grayscale;
-            -webkit-font-smoothing: antialiased;
-            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-            font-size: 14px;
-            font-weight: 400;
+            height: 100%;
+            max-width: 100%;
+            object-fit: contain;
             overflow: hidden;
           }
-      style={
-        Object {
-          "height": "122px",
-          "width": "198px",
-        }
-      }
-    >
-      <img
-        className=
-            ms-Image-image
-            ms-Image-image--portrait
-            is-notLoaded
-            is-fadeIn
-            {
-              display: block;
-              height: 100%;
-              opacity: 0;
-              width: 100%;
-            }
-        onError={[Function]}
-        onLoad={[Function]}
-        role="presentation"
-      />
-    </div>
+    />
   </div>
   <div
     className=
@@ -93,7 +68,7 @@ exports[`Chiclet renders Medium chiclet with title, icon, onClick, and url 1`] =
           height: 100%;
           overflow: hidden;
           position: relative;
-          width: 400px;
+          width: 66.66666666666666%;
           word-wrap: break-word;
         }
   >
@@ -105,17 +80,16 @@ exports[`Chiclet renders Medium chiclet with title, icon, onClick, and url 1`] =
             font-size: 16px;
             font-stretch: normal;
             font-style: normal;
-            font-weight: normal;
-            height: 37px;
+            font-weight: 600;
             letter-spacing: normal;
             line-height: 1.25;
+            max-height: 37px;
             overflow: hidden;
-            padding-bottom: 5px;
-            padding-left: 11px;
-            padding-right: 26px;
-            padding-top: 9px;
+            padding-bottom: 4px;
+            padding-left: 16px;
+            padding-right: 16px;
+            padding-top: 16px;
             text-align: left;
-            width: 363px;
             word-wrap: break-word;
           }
     >
@@ -125,23 +99,20 @@ exports[`Chiclet renders Medium chiclet with title, icon, onClick, and url 1`] =
       className=
 
           {
-            color: #797671;
+            align-items: center;
+            color: #605e5c;
+            display: flex;
             font-size: 12px;
-            font-stretch: normal;
-            font-style: normal;
-            font-weight: normal;
-            height: 16px;
-            letter-spacing: normal;
+            font-weight: 600;
             line-height: 1.33;
             overflow: hidden;
-            padding-bottom: 17px;
-            padding-left: 11px;
+            padding-bottom: 0px;
+            padding-left: 16px;
             padding-right: 16px;
             padding-top: 0px;
             text-align: left;
             text-overflow: ellipsis;
             white-space: nowrap;
-            width: 248px;
           }
     >
       contoso.sharepoint.com
@@ -191,46 +162,22 @@ exports[`Chiclet renders Xsmall Chiclet with the correct icon from a file extens
         {
           align-items: center;
           display: flex;
-          height: 60px;
+          height: 64px;
           justify-content: center;
+          margin-bottom: 4px;
           width: 59px;
         }
   >
-    <div
+    <img
       className=
-          ms-Image
+
           {
-            -moz-osx-font-smoothing: grayscale;
-            -webkit-font-smoothing: antialiased;
-            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-            font-size: 14px;
-            font-weight: 400;
+            height: 100%;
+            max-width: 100%;
+            object-fit: contain;
             overflow: hidden;
           }
-      style={
-        Object {
-          "height": "59px",
-          "width": "60px",
-        }
-      }
-    >
-      <img
-        className=
-            ms-Image-image
-            ms-Image-image--portrait
-            is-notLoaded
-            is-fadeIn
-            {
-              display: block;
-              height: 100%;
-              opacity: 0;
-              width: 100%;
-            }
-        onError={[Function]}
-        onLoad={[Function]}
-        role="presentation"
-      />
-    </div>
+    />
   </div>
   <div
     className=
@@ -249,6 +196,7 @@ exports[`Chiclet renders Xsmall Chiclet with the correct icon from a file extens
           {
             color: #323130;
             font-size: 14px;
+            font-weight: 600;
             height: 35px;
             letter-spacing: normal;
             line-height: 1.25;
@@ -264,9 +212,12 @@ exports[`Chiclet renders Xsmall Chiclet with the correct icon from a file extens
       className=
 
           {
+            color: #605e5c;
             font-size: 12px;
+            font-weight: 600;
             height: 15px;
             overflow: hidden;
+            padding-bottom: 1px;
             text-overflow: ellipsis;
             white-space: nowrap;
             width: 170px;
@@ -319,46 +270,22 @@ exports[`Chiclet renders Xsmall chiclet with a title, icon, onClick, and url 1`]
         {
           align-items: center;
           display: flex;
-          height: 60px;
+          height: 64px;
           justify-content: center;
+          margin-bottom: 4px;
           width: 59px;
         }
   >
-    <div
+    <img
       className=
-          ms-Image
+
           {
-            -moz-osx-font-smoothing: grayscale;
-            -webkit-font-smoothing: antialiased;
-            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-            font-size: 14px;
-            font-weight: 400;
+            height: 100%;
+            max-width: 100%;
+            object-fit: contain;
             overflow: hidden;
           }
-      style={
-        Object {
-          "height": "59px",
-          "width": "60px",
-        }
-      }
-    >
-      <img
-        className=
-            ms-Image-image
-            ms-Image-image--portrait
-            is-notLoaded
-            is-fadeIn
-            {
-              display: block;
-              height: 100%;
-              opacity: 0;
-              width: 100%;
-            }
-        onError={[Function]}
-        onLoad={[Function]}
-        role="presentation"
-      />
-    </div>
+    />
   </div>
   <div
     className=
@@ -377,6 +304,7 @@ exports[`Chiclet renders Xsmall chiclet with a title, icon, onClick, and url 1`]
           {
             color: #323130;
             font-size: 14px;
+            font-weight: 600;
             height: 35px;
             letter-spacing: normal;
             line-height: 1.25;
@@ -392,9 +320,12 @@ exports[`Chiclet renders Xsmall chiclet with a title, icon, onClick, and url 1`]
       className=
 
           {
+            color: #605e5c;
             font-size: 12px;
+            font-weight: 600;
             height: 15px;
             overflow: hidden;
+            padding-bottom: 1px;
             text-overflow: ellipsis;
             white-space: nowrap;
             width: 170px;
@@ -447,47 +378,23 @@ exports[`Chiclet renders Xsmall chiclet with title, preview, onClick, and url 1`
         {
           align-items: center;
           display: flex;
-          height: 60px;
+          height: 64px;
           justify-content: center;
+          margin-bottom: 4px;
           width: 59px;
         }
   >
-    <div
+    <img
       className=
-          ms-Image
+
           {
-            -moz-osx-font-smoothing: grayscale;
-            -webkit-font-smoothing: antialiased;
-            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-            font-size: 14px;
-            font-weight: 400;
+            height: 100%;
+            max-width: 100%;
+            object-fit: contain;
             overflow: hidden;
           }
-      style={
-        Object {
-          "height": "59px",
-          "width": "60px",
-        }
-      }
-    >
-      <img
-        className=
-            ms-Image-image
-            ms-Image-image--portrait
-            is-notLoaded
-            is-fadeIn
-            {
-              display: block;
-              height: 100%;
-              opacity: 0;
-              width: 100%;
-            }
-        onError={[Function]}
-        onLoad={[Function]}
-        role="presentation"
-        src="https://imaging.nikon.com/lineup/dslr/df/img/sample/img_01.jpg"
-      />
-    </div>
+      src="https://imaging.nikon.com/lineup/dslr/df/img/sample/img_01.jpg"
+    />
   </div>
   <div
     className=
@@ -506,6 +413,7 @@ exports[`Chiclet renders Xsmall chiclet with title, preview, onClick, and url 1`
           {
             color: #323130;
             font-size: 14px;
+            font-weight: 600;
             height: 35px;
             letter-spacing: normal;
             line-height: 1.25;
@@ -521,9 +429,12 @@ exports[`Chiclet renders Xsmall chiclet with title, preview, onClick, and url 1`
       className=
 
           {
+            color: #605e5c;
             font-size: 12px;
+            font-weight: 600;
             height: 15px;
             overflow: hidden;
+            padding-bottom: 1px;
             text-overflow: ellipsis;
             white-space: nowrap;
             width: 170px;
@@ -551,7 +462,7 @@ exports[`Chiclet should set className on preview 1`] = `
         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
         font-size: 14px;
         font-weight: 400;
-        height: 126px;
+        height: 112px;
         margin-bottom: 0px;
         margin-left: 0px;
         margin-right: 0px;
@@ -563,7 +474,7 @@ exports[`Chiclet should set className on preview 1`] = `
         padding-top: 0px;
         position: relative;
         user-select: none;
-        width: 600px;
+        width: 576px;
       }
       &:hover {
         cursor: pointer;
@@ -579,16 +490,16 @@ exports[`Chiclet should set className on preview 1`] = `
           align-items: center;
           background-color: #ffffff;
           display: flex;
-          height: 126px;
+          height: 112px;
           justify-content: center;
-          width: 198px;
+          width: 33.33333333333333%;
         }
   >
     <img
       className=
           ms-ChicletCard-preview-custom
           {
-            height: 126px;
+            height: 112px;
             object-fit: contain;
             width: 100%;
           }
@@ -603,7 +514,7 @@ exports[`Chiclet should set className on preview 1`] = `
           height: 100%;
           overflow: hidden;
           position: relative;
-          width: 400px;
+          width: 66.66666666666666%;
           word-wrap: break-word;
         }
   >
@@ -615,17 +526,16 @@ exports[`Chiclet should set className on preview 1`] = `
             font-size: 16px;
             font-stretch: normal;
             font-style: normal;
-            font-weight: normal;
-            height: 37px;
+            font-weight: 600;
             letter-spacing: normal;
             line-height: 1.25;
+            max-height: 37px;
             overflow: hidden;
-            padding-bottom: 5px;
-            padding-left: 11px;
-            padding-right: 26px;
-            padding-top: 9px;
+            padding-bottom: 4px;
+            padding-left: 16px;
+            padding-right: 16px;
+            padding-top: 16px;
             text-align: left;
-            width: 363px;
             word-wrap: break-word;
           }
     >
@@ -635,23 +545,20 @@ exports[`Chiclet should set className on preview 1`] = `
       className=
 
           {
-            color: #797671;
+            align-items: center;
+            color: #605e5c;
+            display: flex;
             font-size: 12px;
-            font-stretch: normal;
-            font-style: normal;
-            font-weight: normal;
-            height: 16px;
-            letter-spacing: normal;
+            font-weight: 600;
             line-height: 1.33;
             overflow: hidden;
-            padding-bottom: 17px;
-            padding-left: 11px;
+            padding-bottom: 0px;
+            padding-left: 16px;
             padding-right: 16px;
             padding-top: 0px;
             text-align: left;
             text-overflow: ellipsis;
             white-space: nowrap;
-            width: 248px;
           }
     >
       contoso.sharepoint.com

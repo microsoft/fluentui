@@ -44,6 +44,9 @@ export interface ICalendarMonthState {
 }
 
 export class CalendarMonth extends BaseComponent<ICalendarMonthProps, ICalendarMonthState> {
+  /**
+   * @deprecated unused, prefer 'ref' and 'componentRef' of ICalendarMonthProps.
+   */
   public refs: {
     [key: string]: React.ReactInstance;
     navigatedMonth: HTMLElement;
@@ -51,6 +54,7 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, ICalendarM
 
   private _selectMonthCallbacks: (() => void)[];
   private _calendarYearRef: CalendarYear;
+  private _navigatedMonthRef: React.RefObject<HTMLButtonElement> = React.createRef<HTMLButtonElement>();
   private _focusOnUpdate: boolean;
 
   public constructor(props: ICalendarMonthProps) {
@@ -143,10 +147,10 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, ICalendarM
               {dateTimeFormatter.formatYear(navigatedDate)}
             </div>
           ) : (
-              <div className={css('ms-DatePicker-currentYear js-showYearPicker', styles.currentYear)}>
-                {dateTimeFormatter.formatYear(navigatedDate)}
-              </div>
-            )}
+            <div className={css('ms-DatePicker-currentYear js-showYearPicker', styles.currentYear)}>
+              {dateTimeFormatter.formatYear(navigatedDate)}
+            </div>
+          )}
           <div className={css('ms-DatePicker-yearComponents', styles.yearComponents)}>
             <div className={css('ms-DatePicker-navContainer', styles.navContainer)}>
               <button
@@ -219,7 +223,7 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, ICalendarM
                         aria-label={dateTimeFormatter.formatMonthYear(indexedMonth, strings)}
                         aria-selected={isCurrentMonth || isNavigatedMonth}
                         data-is-focusable={isInBounds ? true : undefined}
-                        ref={isNavigatedMonth ? 'navigatedMonth' : undefined}
+                        ref={isNavigatedMonth ? this._navigatedMonthRef : undefined}
                         type="button"
                       >
                         {month}
@@ -238,9 +242,9 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, ICalendarM
   public focus() {
     if (this._calendarYearRef) {
       this._calendarYearRef.focus();
-    } else if (this.refs.navigatedMonth) {
-      this.refs.navigatedMonth.tabIndex = 0;
-      this.refs.navigatedMonth.focus();
+    } else if (this._navigatedMonthRef.current) {
+      this._navigatedMonthRef.current.tabIndex = 0;
+      this._navigatedMonthRef.current.focus();
     }
   }
 

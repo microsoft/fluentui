@@ -1,43 +1,18 @@
 import * as React from 'react';
-import { css, classNamesFunction, IButtonProps, IStyle, PrimaryButton } from 'office-ui-fabric-react';
+import { PrimaryButton } from 'office-ui-fabric-react';
 
-type IButtonBasicExampleStyleProps = {};
-
-interface IButtonBasicExampleStyles {
-  example?: IStyle;
+export interface IButtonExampleProps {
+  // These are set based on the toggles shown above the examples (not needed in real code)
+  disabled?: boolean;
+  checked?: boolean;
 }
 
-const exampleStyles: IButtonBasicExampleStyles = {
-  example: [
-    'ms-BasicButtonsExample',
-    {
-      selectors: {
-        '.ms-Button': {
-          margin: '10px 0'
-        }
-      }
-    }
-  ]
+export const ButtonScreenReaderExample: React.FunctionComponent<IButtonExampleProps> = props => {
+  const { disabled, checked } = props;
+
+  return (
+    <PrimaryButton ariaDescription="Detailed description used for screen reader." disabled={disabled} checked={checked}>
+      Button with Aria Description
+    </PrimaryButton>
+  );
 };
-
-const getClassNames = classNamesFunction<IButtonBasicExampleStyleProps, IButtonBasicExampleStyles>();
-const classNames = getClassNames(exampleStyles, {});
-
-export class ButtonScreenReaderExample extends React.Component<IButtonProps, {}> {
-  public render(): JSX.Element {
-    const { disabled, checked } = this.props;
-
-    return (
-      <div className={css(classNames.example)}>
-        <PrimaryButton
-          data-automation-id="test"
-          disabled={disabled}
-          checked={checked}
-          ariaDescription="This is aria description used for screen reader."
-        >
-          Aria Description
-        </PrimaryButton>
-      </div>
-    );
-  }
-}

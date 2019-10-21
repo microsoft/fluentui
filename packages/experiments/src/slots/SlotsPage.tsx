@@ -7,6 +7,7 @@ import { SlotsRootExample } from './examples/Slots.Root.Example';
 import { SlotsIconExample } from './examples/Slots.Icon.Example';
 import { SlotsContentExample } from './examples/Slots.Content.Example';
 import { SlotsStyledExample } from './examples/Slots.Styled.Example';
+import { SlotsRecompositionExample } from './examples/Slots.Recomposition.Example';
 
 const SlotsExampleCode = require('!raw-loader!@uifabric/experiments/src/slots/examples/Slots.Example.tsx') as string;
 const SlotsAsyncExampleCode = require('!raw-loader!@uifabric/experiments/src/slots/examples/Slots.Async.Example.tsx') as string;
@@ -14,6 +15,7 @@ const SlotsRootExampleCode = require('!raw-loader!@uifabric/experiments/src/slot
 const SlotsIconExampleCode = require('!raw-loader!@uifabric/experiments/src/slots/examples/Slots.Icon.Example.tsx') as string;
 const SlotsContentExampleCode = require('!raw-loader!@uifabric/experiments/src/slots/examples/Slots.Content.Example.tsx') as string;
 const SlotsStyledExampleCode = require('!raw-loader!@uifabric/experiments/src/slots/examples/Slots.Styled.Example.tsx') as string;
+const SlotsRecompositionExampleCode = require('!raw-loader!@uifabric/experiments/src/slots/examples/Slots.Recomposition.Example.tsx') as string;
 
 export class SlotsPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
@@ -45,6 +47,9 @@ export class SlotsPage extends React.Component<IComponentDemoPageProps, {}> {
             </ExampleCard>
             <ExampleCard title="Button Styled" code={SlotsStyledExampleCode}>
               <SlotsStyledExample />
+            </ExampleCard>
+            <ExampleCard title="Recomposition Examples" code={SlotsRecompositionExampleCode}>
+              <SlotsRecompositionExample />
             </ExampleCard>
           </div>
         }

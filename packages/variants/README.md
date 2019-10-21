@@ -1,4 +1,4 @@
-# [variants](http://dev.office.com/fabric)
+# [variants](https://dev.microsoft.com/fabric)
 
 Variants are [themes](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Theming) generated from an existing theme, as opposed to [from raw colors](https://developer.microsoft.com/en-us/fabric#/styles/themegenerator). A variant will share the same colors as the original theme it was generated from, but will use those colors differently. For example, the background color and text color might be swapped. Variants can be used to highlight or de-emphasize portions of the page.
 

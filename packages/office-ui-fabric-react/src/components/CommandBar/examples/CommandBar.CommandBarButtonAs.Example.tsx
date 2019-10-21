@@ -7,7 +7,7 @@ import { BaseComponent, IComponentAsProps, IComponentAs } from 'office-ui-fabric
 import { TeachingBubbleContent } from 'office-ui-fabric-react/lib/TeachingBubble';
 import { CommandBarButton, IButtonProps } from 'office-ui-fabric-react/lib/Button';
 
-export interface IIndividualCommandBarButtonAsExampleProps {
+interface IIndividualCommandBarButtonAsExampleProps {
   onDismissCoachmark: () => void;
 
   isCoachmarkVisible: boolean;
@@ -68,7 +68,7 @@ class CoachmarkCommandBarButton extends BaseComponent<ICoachmarkCommandBarButton
   }
 }
 
-export class IndividualCommandBarButtonAsExample extends React.Component<IIndividualCommandBarButtonAsExampleProps> {
+class IndividualCommandBarButtonAsExample extends React.Component<IIndividualCommandBarButtonAsExampleProps> {
   public render(): JSX.Element {
     return (
       <CommandBar
@@ -83,7 +83,7 @@ export class IndividualCommandBarButtonAsExample extends React.Component<IIndivi
           }
         }}
         items={this._getItems()}
-        overflowItems={this.getOverlflowItems()}
+        overflowItems={this.getOverflowItems()}
         farItems={this.getFarItems()}
         ariaLabel={'Use left and right arrow keys to navigate between commands'}
       />
@@ -101,7 +101,7 @@ export class IndividualCommandBarButtonAsExample extends React.Component<IIndivi
       {
         key: 'newItem',
         name: 'New',
-        cacheKey: 'myCacheKey', // changing this key will invalidate this items cache
+        cacheKey: 'myCacheKey', // changing this key will invalidate this item's cache
         iconProps: {
           iconName: 'Add'
         },
@@ -155,7 +155,7 @@ export class IndividualCommandBarButtonAsExample extends React.Component<IIndivi
     ];
   };
 
-  private getOverlflowItems = () => {
+  private getOverflowItems = () => {
     return [
       {
         key: 'move',

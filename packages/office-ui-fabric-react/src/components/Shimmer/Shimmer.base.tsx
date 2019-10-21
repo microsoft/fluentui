@@ -41,9 +41,9 @@ export class ShimmerBase extends React.Component<IShimmerProps, IShimmerState> {
   public componentDidUpdate(prevProps: IShimmerProps): void {
     const { isDataLoaded } = this.props;
 
-    this._async.clearTimeout(this._lastTimeoutId);
-
     if (isDataLoaded !== prevProps.isDataLoaded) {
+      this._async.clearTimeout(this._lastTimeoutId);
+
       // Removing the shimmerWrapper div from the DOM only after the fade out animation completed.
       if (isDataLoaded) {
         this._lastTimeoutId = this._async.setTimeout(() => {

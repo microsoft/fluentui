@@ -47,6 +47,8 @@ exports[`Component Examples renders Announced.SearchResults.Example.tsx correctl
     onKeyDown={[Function]}
   >
     <div
+      aria-expanded={false}
+      aria-haspopup="dialog"
       className=
           ms-FocusZone
           &:focus {
@@ -56,7 +58,7 @@ exports[`Component Examples renders Announced.SearchResults.Example.tsx correctl
       onFocus={[Function]}
       onKeyDown={[Function]}
       onMouseDownCapture={[Function]}
-      role="presentation"
+      role="combobox"
     >
       <div
         className="ms-SelectionZone"
@@ -91,8 +93,6 @@ exports[`Component Examples renders Announced.SearchResults.Example.tsx correctl
           <input
             aria-autocomplete="both"
             aria-controls=" "
-            aria-expanded={false}
-            aria-haspopup="true"
             aria-label="Tag Picker"
             autoCapitalize="off"
             autoComplete="off"
@@ -100,6 +100,7 @@ exports[`Component Examples renders Announced.SearchResults.Example.tsx correctl
                 ms-BasePicker-input
                 {
                   align-self: flex-end;
+                  background-color: transparent;
                   border-radius: 2px;
                   border: none;
                   flex-grow: 1;
@@ -116,10 +117,11 @@ exports[`Component Examples renders Announced.SearchResults.Example.tsx correctl
             onClick={[Function]}
             onCompositionEnd={[Function]}
             onCompositionStart={[Function]}
+            onCompositionUpdate={[Function]}
             onFocus={[Function]}
             onInput={[Function]}
             onKeyDown={[Function]}
-            role="combobox"
+            role="textbox"
             spellCheck={false}
             value=""
           />

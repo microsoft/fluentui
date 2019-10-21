@@ -12,6 +12,7 @@ export interface IExamplesSectionProps extends IPageSectionPropsWithSectionName 
 
 export const ExamplesSection: React.StatelessComponent<IExamplesSectionProps> = props => {
   const { className, examples, exampleKnobs, sectionName, readableSectionName, style, id } = props;
+  const [activeEditorTitle, setActiveEditorTitle] = React.useState('');
 
   return (
     <div className={className} style={style}>
@@ -27,7 +28,13 @@ export const ExamplesSection: React.StatelessComponent<IExamplesSectionProps> = 
             const { view, ...exampleProps } = example;
             return (
               <div key={example.title + '-key'} className={styles.subSection}>
-                <ExampleCard {...exampleProps}>{view}</ExampleCard>
+                <ExampleCard
+                  {...exampleProps}
+                  onToggleEditor={setActiveEditorTitle}
+                  isCodeVisible={exampleProps.title === activeEditorTitle}
+                >
+                  {view}
+                </ExampleCard>
               </div>
             );
           })}

@@ -1,6 +1,97 @@
 # Change Log - @uifabric/date-time
 
-This log was last generated on Mon, 22 Jul 2019 12:28:42 GMT and should not be manually modified.
+This log was last generated on Thu, 03 Oct 2019 23:14:46 GMT and should not be manually modified.
+
+## 7.5.2
+Thu, 03 Oct 2019 23:14:46 GMT
+
+### Patches
+
+- Fixes publish issue from beachball (odbuild@microsoft.com)
+## 7.5.0
+Mon, 30 Sep 2019 12:35:16 GMT
+
+### Minor changes
+
+- undefined (jolore@microsoft.com)
+- initial commit of multi-day day view implementation. Lots of style updates to allow the hover states to work- previously hover states were always static, but now the classes have to update dynamically as the mouse moves over days (jolore@microsoft.com)
+## 7.4.8
+Wed, 25 Sep 2019 12:34:56 GMT
+
+### Patches
+
+- fixing focus outline in IE11. The outline in IE11 does not show if it overflows the div it's in unless we explicitly set overflow: visible on the div (other browsers have this as the default). (jolore@microsoft.com)
+## 7.4.7
+Tue, 24 Sep 2019 12:35:43 GMT
+
+### Patches
+
+- Remove codepen-loader usage (elcraig@microsoft.com)
+## 7.4.6
+Mon, 23 Sep 2019 12:33:15 GMT
+
+### Patches
+
+- Icon Accessibility updates: update aria-hidden to pull aria-labelledBy from root and imageProps and removed role presentation - should not apply when a label is provided. (marygans@microsoft.com)
+## 7.4.5
+Mon, 16 Sep 2019 12:34:47 GMT
+
+### Patches
+
+- DatePicker: call custom text field onChange handler if it exists in default onChange handler (naethell@microsoft.com)
+## 7.4.4
+Wed, 04 Sep 2019 04:09:58 GMT
+
+### Patches
+
+- fix version file (kchau@microsoft.com)
+## 7.4.3
+Thu, 29 Aug 2019 12:30:00 GMT
+
+### Patches
+
+- small bug fixes. Fix overflow issue in firefox, fix mouse hover issue in all, fix perf issue in month view rendering of Calendar (jolore@microsoft.com)
+## 7.4.2
+Mon, 26 Aug 2019 12:30:49 GMT
+
+### Patches
+
+- Updating snapshots. (dzearing@hotmail.com)
+## 7.4.1
+Fri, 23 Aug 2019 12:35:28 GMT
+
+### Patches
+
+- Update npmignores, delete unused jest setup files (elcraig@microsoft.com)
+- Fix up readme and package.json descriptions (elcraig@microsoft.com)
+
+## 7.4.0
+Thu, 15 Aug 2019 12:30:43 GMT
+
+### Minor changes
+
+- Rename deprecated React lifecycle functions to prevent development mode warnings in React 16.9. (jagore@microsoft.com)
+
+## 7.3.0
+Thu, 08 Aug 2019 12:32:41 GMT
+
+### Minor changes
+
+- Moves aria-label to same element as role=combobox on the datepicker as required by the aria docs (susunda@microsoft.com)
+
+## 7.2.1
+Tue, 06 Aug 2019 12:32:07 GMT
+
+### Patches
+
+- fixing broken IE11 by removing findIndex call, fixing the weeklydaypicker not rerendering when passed new initial date (jolore@microsoft.com)
+
+## 7.2.0
+Fri, 02 Aug 2019 12:33:29 GMT
+
+### Minor changes
+
+- finishing up the slide animation to apply to calendar and month and year pickers, and allow consumer to specify direction (jolore@microsoft.com)
 
 ## 7.1.7
 Mon, 22 Jul 2019 12:28:42 GMT
@@ -8,7 +99,7 @@ Mon, 22 Jul 2019 12:28:42 GMT
 ### Patches
 
 - fixing issue where buttons don't hide if they have focus, adding touch for navigation (jolore@microsoft.com)
-,- Improve how to get the min query string (elcraig@microsoft.com)
+- Improve how to get the min query string (elcraig@microsoft.com)
 
 ## 7.1.6
 Wed, 17 Jul 2019 18:58:57 GMT

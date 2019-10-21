@@ -17,6 +17,12 @@ export class LineChartMultipleExample extends React.Component<{}, {}> {
     return <div>{this._styledExample()}</div>;
   }
 
+  private _onLegendClickHandler = (selectedLegend: string | null): void => {
+    if (selectedLegend !== null) {
+      console.log(`Selected legend - ${selectedLegend}`);
+    }
+  };
+
   private _styledExample(): JSX.Element {
     const points: ILineChartPoints[] = [
       {
@@ -34,12 +40,13 @@ export class LineChartMultipleExample extends React.Component<{}, {}> {
           { x: new Date('2018/06/01'), y: 45 }
         ],
         legend: 'First',
-        color: DefaultPalette.blue
+        color: DefaultPalette.blue,
+        onLegendClick: this._onLegendClickHandler
       },
       {
         data: [
           { x: new Date('2018/01/01'), y: 10 },
-          { x: new Date('2018/0/07'), y: 18 },
+          { x: new Date('2018/01/07'), y: 18 },
           { x: new Date('2018/01/15'), y: 24 },
           { x: new Date('2018/02/01'), y: 25 },
           { x: new Date('2018/03/10'), y: 15 },
@@ -51,7 +58,8 @@ export class LineChartMultipleExample extends React.Component<{}, {}> {
           { x: new Date('2018/06/01'), y: 45 }
         ],
         legend: 'Second',
-        color: DefaultPalette.green
+        color: DefaultPalette.green,
+        onLegendClick: this._onLegendClickHandler
       },
       {
         data: [
@@ -68,7 +76,8 @@ export class LineChartMultipleExample extends React.Component<{}, {}> {
           { x: new Date('2018/06/01'), y: 45 }
         ],
         legend: 'Third',
-        color: DefaultPalette.red
+        color: DefaultPalette.red,
+        onLegendClick: this._onLegendClickHandler
       }
     ];
 

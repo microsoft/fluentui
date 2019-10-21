@@ -1,10 +1,11 @@
 import * as React from 'react';
-import { Nav, INavLinkGroup } from '../index';
+import { Nav, INavLinkGroup } from 'office-ui-fabric-react/lib/Nav';
 
-export const NavCustomGroupHeadersExample: React.StatelessComponent = () => {
+export const NavCustomGroupHeadersExample: React.FunctionComponent = () => {
   return (
     <Nav
       onRenderGroupHeader={_onRenderGroupHeader}
+      ariaLabel="Nav example with custom group headers"
       groups={[
         {
           name: 'Pages',

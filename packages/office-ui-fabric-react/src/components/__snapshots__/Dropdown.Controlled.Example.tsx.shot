@@ -31,7 +31,6 @@ exports[`Component Examples renders Dropdown.Controlled.Example.tsx correctly 1`
           padding-top: 5px;
           word-wrap: break-word;
         }
-    htmlFor="Dropdown0"
     id="Dropdown0-label"
   >
     Controlled example
@@ -39,6 +38,7 @@ exports[`Component Examples renders Dropdown.Controlled.Example.tsx correctly 1`
   <div
     aria-describedby="Dropdown0-option"
     aria-expanded="false"
+    aria-haspopup="listbox"
     aria-labelledby="Dropdown0-label"
     className=
         ms-Dropdown
@@ -124,9 +124,6 @@ exports[`Component Examples renders Dropdown.Controlled.Example.tsx correctly 1`
         &:active .ms-Dropdown-title--hasError {
           border-color: #a4262c;
         }
-        &:focus .ms-Dropdown-title--hasError {
-          border-color: #a4262c;
-        }
     data-is-focusable={true}
     id="Dropdown0"
     onBlur={[Function]}
@@ -135,13 +132,14 @@ exports[`Component Examples renders Dropdown.Controlled.Example.tsx correctly 1`
     onFocus={[Function]}
     onKeyDown={[Function]}
     onKeyUp={[Function]}
+    onMouseDown={[Function]}
     role="listbox"
     tabIndex={0}
   >
     <span
       aria-atomic={true}
-      aria-label="Select an option"
-      aria-live="off"
+      aria-invalid={false}
+      aria-live="polite"
       aria-setsize={7}
       className=
           ms-Dropdown-title
@@ -175,9 +173,7 @@ exports[`Component Examples renders Dropdown.Controlled.Example.tsx correctly 1`
       id="Dropdown0-option"
       role="option"
     >
-      <span>
-        Select an option
-      </span>
+      Select an option
     </span>
     <span
       className=
@@ -208,7 +204,6 @@ exports[`Component Examples renders Dropdown.Controlled.Example.tsx correctly 1`
               speak: none;
             }
         data-icon-name="ChevronDown"
-        role="presentation"
       >
         
       </i>

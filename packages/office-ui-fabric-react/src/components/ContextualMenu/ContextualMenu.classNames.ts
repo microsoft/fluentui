@@ -75,7 +75,8 @@ const GlobalClassNames = {
   checkmarkIcon: 'ms-ContextualMenu-checkmarkIcon',
   subMenuIcon: 'ms-ContextualMenu-submenuIcon',
   label: 'ms-ContextualMenu-itemText',
-  secondaryText: 'ms-ContextualMenu-secondaryText'
+  secondaryText: 'ms-ContextualMenu-secondaryText',
+  splitMenu: 'ms-ContextualMenu-splitMenu'
 };
 
 /**
@@ -141,7 +142,7 @@ export const getItemClassNames = memoizeFunction(
             {
               selectors: {
                 ':hover': styles.rootHovered,
-                ':hover ~ $splitMenu': styles.rootHovered, // when hovering over the splitPrimary also affect the splitMenu
+                [`:hover ~ .${classNames.splitMenu}`]: styles.rootHovered, // when hovering over the splitPrimary also affect the splitMenu
                 ':active': styles.rootPressed,
                 [`.${IsFocusVisibleClassName} &:focus, .${IsFocusVisibleClassName} &:focus:hover`]: styles.rootFocused,
                 [`.${IsFocusVisibleClassName} &:hover`]: { background: 'inherit;' }
@@ -150,6 +151,7 @@ export const getItemClassNames = memoizeFunction(
           ]
       ],
       splitMenu: [
+        classNames.splitMenu,
         styles.root,
         {
           flexBasis: '0',

@@ -52,7 +52,6 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
             padding-top: 5px;
             word-wrap: break-word;
           }
-      htmlFor="Dropdown0"
       id="Dropdown0-label"
     >
       Basic uncontrolled example
@@ -60,6 +59,7 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
     <div
       aria-describedby="Dropdown0-option"
       aria-expanded="false"
+      aria-haspopup="listbox"
       aria-labelledby="Dropdown0-label"
       className=
           ms-Dropdown
@@ -145,9 +145,6 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
           &:active .ms-Dropdown-title--hasError {
             border-color: #a4262c;
           }
-          &:focus .ms-Dropdown-title--hasError {
-            border-color: #a4262c;
-          }
       data-is-focusable={true}
       id="Dropdown0"
       onBlur={[Function]}
@@ -155,13 +152,14 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
       onFocus={[Function]}
       onKeyDown={[Function]}
       onKeyUp={[Function]}
+      onMouseDown={[Function]}
       role="listbox"
       tabIndex={0}
     >
       <span
         aria-atomic={true}
-        aria-label="Select an option"
-        aria-live="off"
+        aria-invalid={false}
+        aria-live="polite"
         aria-setsize={7}
         className=
             ms-Dropdown-title
@@ -195,9 +193,7 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
         id="Dropdown0-option"
         role="option"
       >
-        <span>
-          Select an option
-        </span>
+        Select an option
       </span>
       <span
         className=
@@ -228,7 +224,6 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
                 speak: none;
               }
           data-icon-name="ChevronDown"
-          role="presentation"
         >
           
         </i>
@@ -268,7 +263,6 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
           @media screen and (-ms-high-contrast: active){& {
             color: GrayText;
           }
-      htmlFor="Dropdown1"
       id="Dropdown1-label"
     >
       Disabled example with defaultSelectedKey
@@ -277,6 +271,7 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
       aria-describedby="Dropdown1-option"
       aria-disabled={true}
       aria-expanded="false"
+      aria-haspopup="listbox"
       aria-labelledby="Dropdown1-label"
       className=
           ms-Dropdown
@@ -342,9 +337,6 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
           &:active .ms-Dropdown-title--hasError {
             border-color: #a4262c;
           }
-          &:focus .ms-Dropdown-title--hasError {
-            border-color: #a4262c;
-          }
       data-is-focusable={false}
       id="Dropdown1"
       onBlur={[Function]}
@@ -352,12 +344,13 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
       onFocus={[Function]}
       onKeyDown={[Function]}
       onKeyUp={[Function]}
+      onMouseDown={[Function]}
       tabIndex={-1}
     >
       <span
         aria-atomic={true}
-        aria-label="Broccoli"
-        aria-live="off"
+        aria-invalid={false}
+        aria-live="polite"
         className=
             ms-Dropdown-title
             {
@@ -393,9 +386,7 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
             }
         id="Dropdown1-option"
       >
-        <span>
-          Broccoli
-        </span>
+        Broccoli
       </span>
       <span
         className=
@@ -428,7 +419,6 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
                 color: GrayText;
               }
           data-icon-name="ChevronDown"
-          role="presentation"
         >
           
         </i>
@@ -465,7 +455,6 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
             padding-top: 5px;
             word-wrap: break-word;
           }
-      htmlFor="Dropdown2"
       id="Dropdown2-label"
     >
       Multi-select uncontrolled example
@@ -473,6 +462,7 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
     <div
       aria-describedby="Dropdown2-option"
       aria-expanded="false"
+      aria-haspopup="listbox"
       aria-labelledby="Dropdown2-label"
       className=
           ms-Dropdown
@@ -558,9 +548,6 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
           &:active .ms-Dropdown-title--hasError {
             border-color: #a4262c;
           }
-          &:focus .ms-Dropdown-title--hasError {
-            border-color: #a4262c;
-          }
       data-is-focusable={true}
       id="Dropdown2"
       onBlur={[Function]}
@@ -568,12 +555,13 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
       onFocus={[Function]}
       onKeyDown={[Function]}
       onKeyUp={[Function]}
+      onMouseDown={[Function]}
       tabIndex={0}
     >
       <span
         aria-atomic={true}
-        aria-label="Apple"
-        aria-live="off"
+        aria-invalid={false}
+        aria-live="polite"
         className=
             ms-Dropdown-title
             {
@@ -603,9 +591,7 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
             }
         id="Dropdown2-option"
       >
-        <span>
-          Apple, Banana, Grape
-        </span>
+        Apple, Banana, Grape
       </span>
       <span
         className=
@@ -636,7 +622,6 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
                 speak: none;
               }
           data-icon-name="ChevronDown"
-          role="presentation"
         >
           
         </i>

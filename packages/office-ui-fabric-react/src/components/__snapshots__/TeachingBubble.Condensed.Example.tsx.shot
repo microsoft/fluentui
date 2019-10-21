@@ -86,7 +86,7 @@ exports[`Component Examples renders TeachingBubble.Condensed.Example.tsx correct
       onMouseUp={[Function]}
       type="button"
     >
-      <div
+      <span
         className=
             ms-Button-flexContainer
             {
@@ -96,18 +96,21 @@ exports[`Component Examples renders TeachingBubble.Condensed.Example.tsx correct
               height: 100%;
               justify-content: center;
             }
+        data-automationid="splitbuttonprimary"
       >
-        <div
+        <span
           className=
               ms-Button-textContainer
               {
+                display: block;
                 flex-grow: 1;
               }
         >
-          <div
+          <span
             className=
                 ms-Button-label
                 {
+                  display: block;
                   font-weight: 600;
                   line-height: 100%;
                   margin-bottom: 0;
@@ -118,9 +121,9 @@ exports[`Component Examples renders TeachingBubble.Condensed.Example.tsx correct
             id="id__0"
           >
             Show TeachingBubble
-          </div>
-        </div>
-      </div>
+          </span>
+        </span>
+      </span>
     </button>
   </span>
 </div>

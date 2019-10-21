@@ -36,6 +36,22 @@ describe('CalloutContentBase', () => {
     // Showing content should trigger a render update.
     callout.setProps({ target: targetElement2, hidden: false });
     expect(renderMock).toHaveBeenCalled();
+    renderMock.mockClear();
+
+    callout.setProps({
+      target: targetElement2,
+      hidden: true
+    });
+
+    // Updating content should trigger a render update.
+    // even when hidden when shouldUpdateWhenHidden is true.
+    callout.setProps({
+      target: targetElement1,
+      hidden: true,
+      shouldUpdateWhenHidden: true
+    });
+    expect(renderMock).toHaveBeenCalled();
+    renderMock.mockClear();
   });
 
   it('Ensure callout content does not update when props are shallow equal', () => {

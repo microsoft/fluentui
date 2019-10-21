@@ -9,6 +9,9 @@ import { IKeytipProps } from '../../Keytip';
  * {@docCategory Checkbox}
  */
 export interface ICheckbox {
+  /** Gets the current indeterminate state. */
+  indeterminate: boolean;
+
   /** Gets the current checked state. */
   checked: boolean;
 
@@ -122,6 +125,23 @@ export interface ICheckboxProps extends React.ButtonHTMLAttributes<HTMLElement |
    * Optional keytip for this checkbox
    */
   keytipProps?: IKeytipProps;
+
+  /**
+   * Optional controlled indeterminate visual state for checkbox. Setting indeterminate state takes visual precedence
+   * over checked or defaultChecked props given but does not affect checked state.
+   * This should not be a toggleable state. On load the checkbox will receive indeterminate visual state
+   * and after the first user click it should be removed by your supplied onChange callback
+   * function exposing the true state of the checkbox.
+   */
+  indeterminate?: boolean;
+
+  /**
+   * Optional uncontrolled indeterminate visual state for checkbox. Setting indeterminate state takes visual precedence
+   * over checked or defaultChecked props given but does not affect checked state.
+   * This is not a toggleable state. On load the checkbox will receive indeterminate visual state
+   * and after the user's first click it will be removed exposing the true state of the checkbox.
+   */
+  defaultIndeterminate?: boolean;
 }
 
 /**
@@ -133,6 +153,7 @@ export interface ICheckboxStyleProps {
   disabled?: boolean;
   checked?: boolean;
   reversed?: boolean;
+  indeterminate?: boolean;
   isUsingCustomLabelRender: boolean;
 }
 

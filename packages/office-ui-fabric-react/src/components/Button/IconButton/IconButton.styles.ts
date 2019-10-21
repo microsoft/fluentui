@@ -30,6 +30,10 @@ export const getStyles = memoizeFunction(
         }
       },
 
+      rootHasMenu: {
+        width: 'auto'
+      },
+
       rootPressed: {
         color: palette.themeDark,
         backgroundColor: palette.neutralLight

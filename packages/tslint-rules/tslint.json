@@ -180,6 +180,11 @@
       }
     ],
     "use-named-parameter": true,
+    "ban": [
+      true,
+      { "name": ["describe", "only"], "message": "describe.only should only be used during test development" },
+      { "name": ["it", "only"], "message": "it.only should only be used during test development" }
+    ],
     "react-a11y-tabindex-no-positive": true
   }
 }

@@ -95,6 +95,11 @@ export interface IPersonaSharedProps extends React.HTMLAttributes<PersonaBase | 
   presence?: PersonaPresence;
 
   /**
+   * Presence title to be shown as a tooltip on hover over the presence icon.
+   */
+  presenceTitle?: string;
+
+  /**
    * This flag can be used to signal the persona is out of office.
    * This will change the way the presence icon looks for statuses that support dual-presence.
    */
@@ -447,7 +452,12 @@ export enum PersonaSize {
   /**
    * Renders a 100px `PersonaCoin`.
    */
-  size100 = 15
+  size100 = 15,
+
+  /**
+   * Renders a 120px `PersonaCoin`.
+   */
+  size120 = 18
 }
 
 /**

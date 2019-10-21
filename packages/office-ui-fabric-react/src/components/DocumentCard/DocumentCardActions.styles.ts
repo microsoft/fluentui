@@ -1,4 +1,4 @@
-import { getGlobalClassNames, FontSizes } from '../../Styling';
+import { getGlobalClassNames } from '../../Styling';
 import { IDocumentCardActionsStyleProps, IDocumentCardActionsStyles } from './DocumentCardActions.types';
 
 const ACTION_SIZE = 34;
@@ -13,7 +13,7 @@ const GlobalClassNames = {
 
 export const getStyles = (props: IDocumentCardActionsStyleProps): IDocumentCardActionsStyles => {
   const { className, theme } = props;
-  const { palette } = theme;
+  const { palette, fonts } = theme;
 
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
@@ -37,7 +37,7 @@ export const getStyles = (props: IDocumentCardActionsStyleProps): IDocumentCardA
 
         selectors: {
           '.ms-Button': {
-            fontSize: '16px',
+            fontSize: fonts.mediumPlus.fontSize,
             height: ACTION_SIZE,
             width: ACTION_SIZE
           },
@@ -57,7 +57,7 @@ export const getStyles = (props: IDocumentCardActionsStyleProps): IDocumentCardA
     ],
     viewsIcon: {
       marginRight: '8px',
-      fontSize: FontSizes.medium,
+      fontSize: fonts.medium.fontSize,
       verticalAlign: 'top'
     }
   };

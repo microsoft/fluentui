@@ -86,7 +86,8 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
     this._preventFocusOpeningPicker = false;
   }
 
-  public componentWillReceiveProps(nextProps: IDatePickerProps): void {
+  // tslint:disable-next-line function-name
+  public UNSAFE_componentWillReceiveProps(nextProps: IDatePickerProps): void {
     const { formatDate, value } = nextProps;
 
     if (
@@ -169,15 +170,11 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
 
     return (
       <div {...nativeProps} className={classNames.root}>
-        <div
-          ref={this._datePickerDiv}
-          role="combobox"
-          aria-expanded={isDatePickerShown}
-          aria-haspopup="true"
-          aria-owns={isDatePickerShown ? calloutId : undefined}
-        >
+        <div ref={this._datePickerDiv} aria-haspopup="true" aria-owns={isDatePickerShown ? calloutId : undefined}>
           <TextField
+            role="combobox"
             label={label}
+            aria-expanded={isDatePickerShown}
             ariaLabel={ariaLabel}
             aria-controls={isDatePickerShown ? calloutId : undefined}
             required={isRequired}
@@ -329,7 +326,9 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
   };
 
   private _onTextFieldChanged = (ev: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, newValue: string): void => {
-    if (this.props.allowTextInput) {
+    const { allowTextInput, textField } = this.props;
+
+    if (allowTextInput) {
       if (this.state.isDatePickerShown) {
         this._dismissDatePickerPopup();
       }
@@ -340,6 +339,10 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
         errorMessage: isRequired && !value ? strings!.isRequiredErrorMessage || ' ' : undefined,
         formattedDate: newValue
       });
+    }
+
+    if (textField && textField.onChange) {
+      textField.onChange(ev, newValue);
     }
   };
 

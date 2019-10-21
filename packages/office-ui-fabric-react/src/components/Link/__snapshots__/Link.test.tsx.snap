@@ -23,7 +23,15 @@ exports[`Link renders Link correctly 1`] = `
       @media screen and (-ms-high-contrast: active){& {
         border-bottom: none;
       }
-      &:active, &:hover, &:active:hover {
+      &:active {
+        color: #004578;
+        text-decoration: underline;
+      }
+      &:hover {
+        color: #004578;
+        text-decoration: underline;
+      }
+      &:active:hover {
         color: #004578;
         text-decoration: underline;
       }
@@ -84,7 +92,15 @@ exports[`Link renders Link with "as=div" a div element 1`] = `
       @media screen and (-ms-high-contrast: black-on-white){& {
         color: #00009F;
       }
-      &:active, &:hover, &:active:hover {
+      &:active {
+        color: #004578;
+        text-decoration: underline;
+      }
+      &:hover {
+        color: #004578;
+        text-decoration: underline;
+      }
+      &:active:hover {
         color: #004578;
         text-decoration: underline;
       }
@@ -121,7 +137,15 @@ exports[`Link renders Link with a custom class name 1`] = `
       @media screen and (-ms-high-contrast: active){& {
         border-bottom: none;
       }
-      &:active, &:hover, &:active:hover {
+      &:active {
+        color: #004578;
+        text-decoration: underline;
+      }
+      &:hover {
+        color: #004578;
+        text-decoration: underline;
+      }
+      &:active:hover {
         color: #004578;
         text-decoration: underline;
       }
@@ -181,7 +205,15 @@ exports[`Link renders Link with no href as a button 1`] = `
       @media screen and (-ms-high-contrast: black-on-white){& {
         color: #00009F;
       }
-      &:active, &:hover, &:active:hover {
+      &:active {
+        color: #004578;
+        text-decoration: underline;
+      }
+      &:hover {
+        color: #004578;
+        text-decoration: underline;
+      }
+      &:active:hover {
         color: #004578;
         text-decoration: underline;
       }
@@ -221,7 +253,10 @@ exports[`Link renders disabled Link correctly 1`] = `
       @media screen and (-ms-high-contrast: active){& {
         border-bottom: none;
       }
-      &:link, &:visited {
+      &:link {
+        pointer-events: none;
+      }
+      &:visited {
         pointer-events: none;
       }
   onClick={[Function]}
@@ -278,7 +313,10 @@ exports[`Link renders disabled Link with no href as a button correctly 1`] = `
       @media screen and (-ms-high-contrast: black-on-white){& {
         color: #00009F;
       }
-      &:link, &:visited {
+      &:link {
+        pointer-events: none;
+      }
+      &:visited {
         pointer-events: none;
       }
   disabled={true}
@@ -337,7 +375,15 @@ exports[`Link supports non button/anchor html attributes when "as=" is used 1`] 
       @media screen and (-ms-high-contrast: black-on-white){& {
         color: #00009F;
       }
-      &:active, &:hover, &:active:hover {
+      &:active {
+        color: #004578;
+        text-decoration: underline;
+      }
+      &:hover {
+        color: #004578;
+        text-decoration: underline;
+      }
+      &:active:hover {
         color: #004578;
         text-decoration: underline;
       }

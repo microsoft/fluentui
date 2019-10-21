@@ -1,8 +1,8 @@
 # @uifabric/react-cards
 
-**Card components for [Office UI Fabric React](http://dev.microsoft.com/fabric)**
+**Card components for [Office UI Fabric React](https://dev.microsoft.com/fabric)**
 
-##### What are Card components?
+## What are Card components?
 
 A `Card` is a surface to display content and actions about a single topic. It acts as a container for actionable information like text, images and icons.
 

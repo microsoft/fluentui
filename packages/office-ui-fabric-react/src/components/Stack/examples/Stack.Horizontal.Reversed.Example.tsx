@@ -35,55 +35,53 @@ const clickableStackTokens: IStackTokens = {
   padding: 10
 };
 
-export class HorizontalStackReversedExample extends React.Component<{}, {}> {
-  public render(): JSX.Element {
-    return (
-      <Stack tokens={containerStackTokens}>
-        <span>Default horizontal stack</span>
-        <Stack horizontal reversed disableShrink styles={stackStyles}>
-          <span>Item One</span>
-          <span>Item Two</span>
-          <span>Item Three</span>
-        </Stack>
-
-        <span>Horizontal gap between items</span>
-        <Stack horizontal reversed disableShrink styles={stackStyles} tokens={horizontalGapStackTokens}>
-          <span>Item One</span>
-          <span>Item Two</span>
-          <span>Item Three</span>
-        </Stack>
-
-        <span>Item alignments</span>
-        <Stack horizontal reversed disableShrink styles={itemAlignmentsStackStyles} tokens={itemAlignmentsStackTokens}>
-          <Stack.Item align="auto" styles={stackItemStyles}>
-            <span>Auto-aligned item</span>
-          </Stack.Item>
-          <Stack.Item align="stretch" styles={stackItemStyles}>
-            <span>Stretch-aligned item</span>
-          </Stack.Item>
-          <Stack.Item align="baseline" styles={stackItemStyles}>
-            <span>Baseline-aligned item</span>
-          </Stack.Item>
-          <Stack.Item align="start" styles={stackItemStyles}>
-            <span>Start-aligned item</span>
-          </Stack.Item>
-          <Stack.Item align="center" styles={stackItemStyles}>
-            <span>Center-aligned item</span>
-          </Stack.Item>
-          <Stack.Item align="end" styles={stackItemStyles}>
-            <span>End-aligned item</span>
-          </Stack.Item>
-        </Stack>
-
-        <span>Clickable stack</span>
-        <Stack horizontal onClick={this._onClick} styles={stackStyles} tokens={clickableStackTokens}>
-          <span>Click inside this box</span>
-        </Stack>
+export const HorizontalStackReversedExample: React.FunctionComponent = () => {
+  return (
+    <Stack tokens={containerStackTokens}>
+      <span>Default horizontal stack</span>
+      <Stack horizontal reversed disableShrink styles={stackStyles}>
+        <span>Item One</span>
+        <span>Item Two</span>
+        <span>Item Three</span>
       </Stack>
-    );
-  }
 
-  private _onClick = (): void => {
-    alert('Clicked Stack');
-  };
+      <span>Horizontal gap between items</span>
+      <Stack horizontal reversed disableShrink styles={stackStyles} tokens={horizontalGapStackTokens}>
+        <span>Item One</span>
+        <span>Item Two</span>
+        <span>Item Three</span>
+      </Stack>
+
+      <span>Item alignments</span>
+      <Stack horizontal reversed disableShrink styles={itemAlignmentsStackStyles} tokens={itemAlignmentsStackTokens}>
+        <Stack.Item align="auto" styles={stackItemStyles}>
+          <span>Auto-aligned item</span>
+        </Stack.Item>
+        <Stack.Item align="stretch" styles={stackItemStyles}>
+          <span>Stretch-aligned item</span>
+        </Stack.Item>
+        <Stack.Item align="baseline" styles={stackItemStyles}>
+          <span>Baseline-aligned item</span>
+        </Stack.Item>
+        <Stack.Item align="start" styles={stackItemStyles}>
+          <span>Start-aligned item</span>
+        </Stack.Item>
+        <Stack.Item align="center" styles={stackItemStyles}>
+          <span>Center-aligned item</span>
+        </Stack.Item>
+        <Stack.Item align="end" styles={stackItemStyles}>
+          <span>End-aligned item</span>
+        </Stack.Item>
+      </Stack>
+
+      <span>Clickable stack</span>
+      <Stack horizontal onClick={_onClick} styles={stackStyles} tokens={clickableStackTokens}>
+        <span>Click inside this box</span>
+      </Stack>
+    </Stack>
+  );
+};
+
+function _onClick() {
+  alert('Clicked Stack');
 }

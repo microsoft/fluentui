@@ -142,7 +142,7 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
   };
 
   public shouldComponentUpdate(newProps: IContextualMenuProps, newState: IContextualMenuState): boolean {
-    if (this.props.hidden && newProps.hidden) {
+    if (!newProps.shouldUpdateWhenHidden && this.props.hidden && newProps.hidden) {
       // Do not update when hidden.
       return false;
     }
@@ -150,13 +150,15 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
     return !shallowCompare(this.props, newProps) || !shallowCompare(this.state, newState);
   }
 
-  public componentWillUpdate(newProps: IContextualMenuProps): void {
+  // tslint:disable-next-line function-name
+  public UNSAFE_componentWillUpdate(newProps: IContextualMenuProps): void {
     if (newProps.target !== this.props.target) {
       const newTarget = newProps.target;
       this._setTargetWindowAndElement(newTarget!);
     }
-    if (newProps.hidden !== this.props.hidden) {
-      if (newProps.hidden) {
+
+    if (this._isHidden(newProps) !== this._isHidden(this.props)) {
+      if (this._isHidden(newProps)) {
         this._onMenuClosed();
       } else {
         this._onMenuOpened();
@@ -173,7 +175,8 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
   }
 
   // Invoked once, both on the client and server, immediately before the initial rendering occurs.
-  public componentWillMount() {
+  // tslint:disable-next-line function-name
+  public UNSAFE_componentWillMount() {
     const target = this.props.target;
     this._setTargetWindowAndElement(target!);
     if (!this.props.hidden) {
@@ -295,10 +298,9 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
         }
       }
 
-      const calloutStyles =
-        !getMenuClassNames && this._classNames.subComponentStyles
-          ? (this._classNames.subComponentStyles.callout as IStyleFunctionOrObject<ICalloutContentStyleProps, ICalloutContentStyles>)
-          : undefined;
+      const calloutStyles = this._classNames.subComponentStyles
+        ? (this._classNames.subComponentStyles.callout as IStyleFunctionOrObject<ICalloutContentStyleProps, ICalloutContentStyles>)
+        : undefined;
 
       return (
         <Callout
@@ -359,6 +361,15 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
     } else {
       return null;
     }
+  }
+
+  /**
+   * Return whether the contextual menu is hidden.
+   * Undefined value for hidden is equivalent to hidden being false.
+   * @param props - Props for the component
+   */
+  private _isHidden(props: IContextualMenuProps) {
+    return !!props.hidden;
   }
 
   private _onMenuOpened() {
@@ -1175,16 +1186,18 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
   };
 
   private _setTargetWindowAndElement(target: Target): void {
+    const currentElement = this._host;
+
     if (target) {
       if (typeof target === 'string') {
-        const currentDoc: Document = getDocument()!;
+        const currentDoc: Document = getDocument(currentElement)!;
         this._target = currentDoc ? (currentDoc.querySelector(target) as Element) : null;
-        this._targetWindow = getWindow()!;
+        this._targetWindow = getWindow(currentElement)!;
       } else if ((target as MouseEvent).stopPropagation) {
         this._targetWindow = getWindow((target as MouseEvent).toElement as HTMLElement)!;
         this._target = target as MouseEvent;
       } else if ((target as IPoint).x !== undefined && (target as IPoint).y !== undefined) {
-        this._targetWindow = getWindow()!;
+        this._targetWindow = getWindow(currentElement)!;
         this._target = target as IPoint;
       } else if ((target as React.RefObject<Element>).current !== undefined) {
         this._target = (target as React.RefObject<Element>).current;
@@ -1195,7 +1208,7 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
         this._target = target as Element;
       }
     } else {
-      this._targetWindow = getWindow()!;
+      this._targetWindow = getWindow(currentElement)!;
     }
   }
 

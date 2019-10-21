@@ -1,16 +1,17 @@
 import * as React from 'react';
 import {
-  initializeComponentRef,
   Async,
+  EventGroup,
   IRectangle,
+  IRenderFunction,
   css,
+  divProperties,
   findIndex,
   findScrollableParent,
-  getParent,
-  divProperties,
   getNativeProps,
-  IRenderFunction,
-  EventGroup
+  getParent,
+  getWindow,
+  initializeComponentRef
 } from '../../Utilities';
 import { IList, IListProps, IPage, IPageProps, ScrollToMode } from './List.types';
 
@@ -319,7 +320,8 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
     this._events.dispose();
   }
 
-  public componentWillReceiveProps(newProps: IListProps<T>): void {
+  // tslint:disable-next-line function-name
+  public UNSAFE_componentWillReceiveProps(newProps: IListProps<T>): void {
     if (
       newProps.items !== this.props.items ||
       newProps.renderCount !== this.props.renderCount ||
@@ -343,6 +345,10 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
 
     // Update if the page stops scrolling
     if (!newState.isScrolling && this.state.isScrolling) {
+      return true;
+    }
+
+    if (newProps.version !== this.props.version) {
       return true;
     }
 
@@ -594,17 +600,22 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
     this._notifyPageChanges(oldListPages, newListState.pages!);
 
     this.setState(newListState, () => {
+      // Multiple updates may have been queued, so the callback will reflect all of them.
+      // Re-fetch the current props and states to avoid using a stale props or state captured in the closure.
+      const finalProps = this.props;
+      const finalState = this.state;
+
       // If we weren't provided with the page height, measure the pages
-      if (!props.getPageHeight) {
+      if (!finalProps.getPageHeight) {
         // If measured version is invalid since we've updated the DOM
-        const heightsChanged = this._updatePageMeasurements(newListState.pages!);
+        const heightsChanged = this._updatePageMeasurements(finalState.pages!);
 
         // On first render, we should re-measure so that we don't get a visual glitch.
         if (heightsChanged) {
           this._materializedRect = null;
           if (!this._hasCompletedFirstRender) {
             this._hasCompletedFirstRender = true;
-            this._updatePages(props);
+            this._updatePages(finalProps);
           } else {
             this._onAsyncScroll();
           }
@@ -618,8 +629,8 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
       }
 
       // Notify the caller that rendering the new pages has completed
-      if (props.onPagesUpdated) {
-        props.onPagesUpdated(this.state.pages as IPage<T>[]);
+      if (finalProps.onPagesUpdated) {
+        finalProps.onPagesUpdated(finalState.pages as IPage<T>[]);
       }
     });
   }
@@ -978,13 +989,14 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
     // The first time the list gets rendered we need to calculate the rectangle. The width of the list is
     // used to calculate the width of the list items.
     const visibleTop = Math.max(0, -surfaceRect.top);
+    const win = getWindow(this._root.current);
     const visibleRect = {
       top: visibleTop,
       left: surfaceRect.left,
-      bottom: visibleTop + window.innerHeight,
+      bottom: visibleTop + win!.innerHeight,
       right: surfaceRect.right,
       width: surfaceRect.width,
-      height: window.innerHeight
+      height: win!.innerHeight
     };
 
     // The required/allowed rects are adjusted versions of the visible rect.

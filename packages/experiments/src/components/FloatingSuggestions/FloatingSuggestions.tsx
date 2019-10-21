@@ -113,7 +113,8 @@ export class FloatingSuggestions<TItem> extends BaseComponent<IFloatingSuggestio
     this.isComponentMounted = false;
   }
 
-  public componentWillReceiveProps(newProps: IFloatingSuggestionsProps<TItem>): void {
+  // tslint:disable-next-line function-name
+  public UNSAFE_componentWillReceiveProps(newProps: IFloatingSuggestionsProps<TItem>): void {
     if (newProps.suggestionItems) {
       this.updateSuggestions(newProps.suggestionItems);
     }

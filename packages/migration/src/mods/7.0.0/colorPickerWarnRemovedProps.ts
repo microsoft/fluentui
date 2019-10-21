@@ -1,6 +1,8 @@
 import ts from 'typescript';
-import { IMigrationOptions, migration, ModResult } from '../../migration';
+import { IMigrationOptions, migration } from '../../migration';
 import { mod } from 'riceburn';
+import { ModResult } from 'riceburn/lib/interfaces';
+import { getWarningNote } from '../../util/getMessages';
 
 const onChangedPropsByComponent: { [component: string]: string } = {
   ColorPicker: 'onColorChanged',
@@ -9,7 +11,7 @@ const onChangedPropsByComponent: { [component: string]: string } = {
 };
 
 export default migration(
-  'warn ColorPicker-related onChanged props removed',
+  getWarningNote('ColorPicker onChanged prop was removed'),
   (opts: IMigrationOptions): ModResult[] => {
     return mod('**/*.tsx', opts).asTypescript((node, modder) => {
       let tagName: string;

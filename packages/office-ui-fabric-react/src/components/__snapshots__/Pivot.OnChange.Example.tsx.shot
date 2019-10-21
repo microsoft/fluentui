@@ -13,7 +13,6 @@ exports[`Component Examples renders Pivot.OnChange.Example.tsx correctly 1`] = `
       onFocus={[Function]}
       onKeyDown={[Function]}
       onMouseDownCapture={[Function]}
-      role="presentation"
     >
       <div
         className=
@@ -181,7 +180,7 @@ exports[`Component Examples renders Pivot.OnChange.Example.tsx correctly 1`] = `
           role="tab"
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -191,12 +190,19 @@ exports[`Component Examples renders Pivot.OnChange.Example.tsx correctly 1`] = `
                   height: 100%;
                   justify-content: flex-start;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <span
               className=
                   ms-Pivot-linkContent
                   {
                     flex: 0 1 100%;
+                  }
+                  & > *  {
+                    margin-left: 4px;
+                  }
+                  & > *:first-child {
+                    margin-left: 0px;
                   }
             >
               <span
@@ -211,7 +217,7 @@ exports[`Component Examples renders Pivot.OnChange.Example.tsx correctly 1`] = `
                 Foo
               </span>
             </span>
-          </div>
+          </span>
         </button>
         <button
           aria-selected={false}
@@ -275,8 +281,8 @@ exports[`Component Examples renders Pivot.OnChange.Example.tsx correctly 1`] = `
                 top: 0px;
               }
               &:hover {
-                background-color: #f3f2f1;
-                color: #201f1e;
+                background-color: #0078d4;
+                color: #ffffff;
                 cursor: pointer;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
@@ -287,12 +293,13 @@ exports[`Component Examples renders Pivot.OnChange.Example.tsx correctly 1`] = `
                 color: #0078d4;
               }
               &:focus {
+                color: #000000;
                 outline-offset: -1px;
                 outline: none;
               }
               &:active {
-                background-color: #edebe9;
-                color: #201f1e;
+                background-color: #0078d4;
+                color: #ffffff;
               }
               &:active .ms-Button-icon {
                 color: #004578;
@@ -324,13 +331,6 @@ exports[`Component Examples renders Pivot.OnChange.Example.tsx correctly 1`] = `
                 background: transparent;
                 height: auto;
                 transition: none;
-              }
-              &:hover, &:focus {
-                color: #000000;
-              }
-              &:active, &:hover {
-                background-color: #0078d4;
-                color: #ffffff;
               }
           data-content="Bar"
           data-is-focusable={true}
@@ -345,7 +345,7 @@ exports[`Component Examples renders Pivot.OnChange.Example.tsx correctly 1`] = `
           role="tab"
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -355,12 +355,19 @@ exports[`Component Examples renders Pivot.OnChange.Example.tsx correctly 1`] = `
                   height: 100%;
                   justify-content: flex-start;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <span
               className=
                   ms-Pivot-linkContent
                   {
                     flex: 0 1 100%;
+                  }
+                  & > *  {
+                    margin-left: 4px;
+                  }
+                  & > *:first-child {
+                    margin-left: 0px;
                   }
             >
               <span
@@ -375,7 +382,7 @@ exports[`Component Examples renders Pivot.OnChange.Example.tsx correctly 1`] = `
                 Bar
               </span>
             </span>
-          </div>
+          </span>
         </button>
         <button
           aria-selected={false}
@@ -439,8 +446,8 @@ exports[`Component Examples renders Pivot.OnChange.Example.tsx correctly 1`] = `
                 top: 0px;
               }
               &:hover {
-                background-color: #f3f2f1;
-                color: #201f1e;
+                background-color: #0078d4;
+                color: #ffffff;
                 cursor: pointer;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
@@ -451,12 +458,13 @@ exports[`Component Examples renders Pivot.OnChange.Example.tsx correctly 1`] = `
                 color: #0078d4;
               }
               &:focus {
+                color: #000000;
                 outline-offset: -1px;
                 outline: none;
               }
               &:active {
-                background-color: #edebe9;
-                color: #201f1e;
+                background-color: #0078d4;
+                color: #ffffff;
               }
               &:active .ms-Button-icon {
                 color: #004578;
@@ -488,13 +496,6 @@ exports[`Component Examples renders Pivot.OnChange.Example.tsx correctly 1`] = `
                 background: transparent;
                 height: auto;
                 transition: none;
-              }
-              &:hover, &:focus {
-                color: #000000;
-              }
-              &:active, &:hover {
-                background-color: #0078d4;
-                color: #ffffff;
               }
           data-content="Bas"
           data-is-focusable={true}
@@ -509,7 +510,7 @@ exports[`Component Examples renders Pivot.OnChange.Example.tsx correctly 1`] = `
           role="tab"
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -519,12 +520,19 @@ exports[`Component Examples renders Pivot.OnChange.Example.tsx correctly 1`] = `
                   height: 100%;
                   justify-content: flex-start;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <span
               className=
                   ms-Pivot-linkContent
                   {
                     flex: 0 1 100%;
+                  }
+                  & > *  {
+                    margin-left: 4px;
+                  }
+                  & > *:first-child {
+                    margin-left: 0px;
                   }
             >
               <span
@@ -539,7 +547,7 @@ exports[`Component Examples renders Pivot.OnChange.Example.tsx correctly 1`] = `
                 Bas
               </span>
             </span>
-          </div>
+          </span>
         </button>
         <button
           aria-selected={false}
@@ -603,8 +611,8 @@ exports[`Component Examples renders Pivot.OnChange.Example.tsx correctly 1`] = `
                 top: 0px;
               }
               &:hover {
-                background-color: #f3f2f1;
-                color: #201f1e;
+                background-color: #0078d4;
+                color: #ffffff;
                 cursor: pointer;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
@@ -615,12 +623,13 @@ exports[`Component Examples renders Pivot.OnChange.Example.tsx correctly 1`] = `
                 color: #0078d4;
               }
               &:focus {
+                color: #000000;
                 outline-offset: -1px;
                 outline: none;
               }
               &:active {
-                background-color: #edebe9;
-                color: #201f1e;
+                background-color: #0078d4;
+                color: #ffffff;
               }
               &:active .ms-Button-icon {
                 color: #004578;
@@ -653,13 +662,6 @@ exports[`Component Examples renders Pivot.OnChange.Example.tsx correctly 1`] = `
                 height: auto;
                 transition: none;
               }
-              &:hover, &:focus {
-                color: #000000;
-              }
-              &:active, &:hover {
-                background-color: #0078d4;
-                color: #ffffff;
-              }
           data-content="Biz"
           data-is-focusable={true}
           id="Pivot0-Tab3"
@@ -673,7 +675,7 @@ exports[`Component Examples renders Pivot.OnChange.Example.tsx correctly 1`] = `
           role="tab"
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -683,12 +685,19 @@ exports[`Component Examples renders Pivot.OnChange.Example.tsx correctly 1`] = `
                   height: 100%;
                   justify-content: flex-start;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <span
               className=
                   ms-Pivot-linkContent
                   {
                     flex: 0 1 100%;
+                  }
+                  & > *  {
+                    margin-left: 4px;
+                  }
+                  & > *:first-child {
+                    margin-left: 0px;
                   }
             >
               <span
@@ -703,7 +712,7 @@ exports[`Component Examples renders Pivot.OnChange.Example.tsx correctly 1`] = `
                 Biz
               </span>
             </span>
-          </div>
+          </span>
         </button>
       </div>
     </div>

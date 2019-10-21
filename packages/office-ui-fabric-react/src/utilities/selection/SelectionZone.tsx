@@ -10,7 +10,6 @@ import {
   isElementTabbable
 } from '../../Utilities';
 import { ISelection, SelectionMode, IObjectWithKey } from './interfaces';
-export { ISelection, SelectionMode, IObjectWithKey };
 
 // Selection definitions:
 //

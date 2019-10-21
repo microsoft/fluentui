@@ -64,6 +64,11 @@ export interface IColorRectangleStyleProps {
    * Additional CSS class(es) to apply to the ColorRectangle.
    */
   className?: string;
+
+  /**
+   * Minimum width and height.
+   */
+  minSize?: number;
 }
 
 /**

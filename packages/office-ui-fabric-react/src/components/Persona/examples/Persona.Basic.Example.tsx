@@ -3,7 +3,7 @@ import { IPersonaSharedProps, Persona, PersonaSize, PersonaPresence } from 'offi
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import { Label } from 'office-ui-fabric-react/lib/Label';
 import { Stack } from 'office-ui-fabric-react/lib/Stack';
-import { TestImages } from '../../../common/TestImages';
+import { TestImages } from '@uifabric/example-data';
 
 export const PersonaBasicExample: React.FunctionComponent = () => {
   const [renderDetails, updateRenderDetails] = React.useState(true);
@@ -47,6 +47,9 @@ export const PersonaBasicExample: React.FunctionComponent = () => {
 
       <Label>Size 100 Persona</Label>
       <Persona {...examplePersona} size={PersonaSize.size100} presence={PersonaPresence.blocked} hidePersonaDetails={!renderDetails} />
+
+      <Label>Size 120 Persona</Label>
+      <Persona {...examplePersona} size={PersonaSize.size120} presence={PersonaPresence.away} hidePersonaDetails={!renderDetails} />
     </Stack>
   );
 };

@@ -1,6 +1,58 @@
 # Change Log - @uifabric/react-cards
 
-This log was last generated on Mon, 22 Jul 2019 12:28:42 GMT and should not be manually modified.
+This log was last generated on Wed, 16 Oct 2019 12:33:21 GMT and should not be manually modified.
+
+## 0.109.1
+Wed, 16 Oct 2019 12:33:21 GMT
+
+### Patches
+
+- Relax child item type checks (elcraig@microsoft.com)
+## 0.109.0
+Mon, 14 Oct 2019 12:30:37 GMT
+
+### Minor changes
+
+- Card: Renamed compact prop to horizontal and updated examples and tests accordingly. (Humberto.Morimoto@microsoft.com)
+## 0.108.2
+Thu, 03 Oct 2019 23:14:46 GMT
+
+### Patches
+
+- Fixes broken publish (odbuild@microsoft.com)
+## 0.108.1
+Wed, 04 Sep 2019 04:09:58 GMT
+
+### Patches
+
+- fix version file (kchau@microsoft.com)
+## 0.108.0
+Tue, 27 Aug 2019 12:33:51 GMT
+
+### Minor changes
+
+- Card: fixing vertical and horizontal alignment to start rather than space-between. (dzearing@hotmail.com)
+## 0.107.9
+Fri, 23 Aug 2019 12:35:28 GMT
+
+### Patches
+
+- Update npmignores, delete unused jest setup files (elcraig@microsoft.com)
+- Fix up readme and package.json descriptions (elcraig@microsoft.com)
+
+## 0.107.8
+Thu, 22 Aug 2019 12:34:59 GMT
+
+### Patches
+
+- Disabling 'export to codepen' functionality in Card examples. (Humberto.Morimoto@microsoft.com)
+
+## 0.107.7
+Thu, 15 Aug 2019 12:30:43 GMT
+
+### Patches
+
+- Card: Showing examples on demo page and website. (Humberto.Morimoto@microsoft.com)
 
 ## 0.107.6
 Mon, 22 Jul 2019 12:28:42 GMT
@@ -8,7 +60,7 @@ Mon, 22 Jul 2019 12:28:42 GMT
 ### Patches
 
 - Card: Importing from office-ui-fabric-react directly instead of from office-ui-fabric-react/lib/... (Humberto.Morimoto@microsoft.com)
-,- Improve how to get the min query string (elcraig@microsoft.com)
+- Improve how to get the min query string (elcraig@microsoft.com)
 
 ## 0.107.5
 Wed, 17 Jul 2019 18:58:57 GMT

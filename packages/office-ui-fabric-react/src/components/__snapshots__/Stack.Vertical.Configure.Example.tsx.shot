@@ -170,68 +170,53 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     top: 1px;
                     z-index: 1;
                   }
-                  &:active $activeSection {
+                  &:active .ms-Slider-active {
+                    background-color: #005a9e;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:active .ms-Slider-active {
+                    background-color: Highlight;
+                  }
+                  &:hover .ms-Slider-active {
                     background-color: #0078d4;
                   }
-                  @media screen and (-ms-high-contrast: active){&:active $activeSection {
+                  @media screen and (-ms-high-contrast: active){&:hover .ms-Slider-active {
                     background-color: Highlight;
                   }
-                  &:hover $activeSection {
-                    background-color: #0078d4;
+                  &:active .ms-Slider-inactive {
+                    background-color: #deecf9;
                   }
-                  @media screen and (-ms-high-contrast: active){&:hover $activeSection {
+                  @media screen and (-ms-high-contrast: active){&:active .ms-Slider-inactive {
+                    border-color: Highlight;
+                  }
+                  &:hover .ms-Slider-inactive {
+                    background-color: #deecf9;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:hover .ms-Slider-inactive {
+                    border-color: Highlight;
+                  }
+                  &:active .ms-Slider-thumb {
+                    border: 2px solid #005a9e;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:active .ms-Slider-thumb {
+                    border-color: Highlight;
+                  }
+                  &:hover .ms-Slider-thumb {
+                    border: 2px solid #005a9e;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:hover .ms-Slider-thumb {
+                    border-color: Highlight;
+                  }
+                  &:active .ms-Slider-zeroTick {
+                    background-color: #deecf9;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:active .ms-Slider-zeroTick {
                     background-color: Highlight;
                   }
-                  &:active $inactiveSection {
-                    background-color: #c7e0f4;
+                  &:hover .ms-Slider-zeroTick {
+                    background-color: #deecf9;
                   }
-                  @media screen and (-ms-high-contrast: active){&:active $inactiveSection {
-                    border-color: Highlight;
-                  }
-                  &:hover $inactiveSection {
-                    background-color: #c7e0f4;
-                  }
-                  @media screen and (-ms-high-contrast: active){&:hover $inactiveSection {
-                    border-color: Highlight;
-                  }
-                  &:active $thumb {
-                    border: 2px solid #0078d4;
-                  }
-                  @media screen and (-ms-high-contrast: active){&:active $thumb {
-                    border-color: Highlight;
-                  }
-                  &:hover $thumb {
-                    border: 2px solid #0078d4;
-                  }
-                  @media screen and (-ms-high-contrast: active){&:hover $thumb {
-                    border-color: Highlight;
-                  }
-                  &:active $zeroTick {
-                    background-color: #c7e0f4;
-                  }
-                  @media screen and (-ms-high-contrast: active){&:active $zeroTick {
+                  @media screen and (-ms-high-contrast: active){&:hover .ms-Slider-zeroTick {
                     background-color: Highlight;
-                  }
-                  &:hover $zeroTick {
-                    background-color: #c7e0f4;
-                  }
-                  @media screen and (-ms-high-contrast: active){&:hover $zeroTick {
-                    background-color: Highlight;
-                  }
-                  & $thumb {
-                    background: #ffffff;
-                    border-color: #605e5c;
-                    border-radius: 10px;
-                    border-style: solid;
-                    border-width: 2px;
-                    box-sizing: border-box;
-                    display: block;
-                    height: 16px;
-                    position: absolute;
-                    top: -6px;
-                    transform: translateX(-50%);
-                    transition: left 0.367s cubic-bezier(.1,.9,.2,1);
-                    width: 16px;
                   }
               data-is-focusable={true}
               id="Slider0"
@@ -249,17 +234,25 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       position: relative;
                       width: 100%;
                     }
-                    & $lineContainer {
-                      border-radius: 4px;
-                      box-sizing: border-box;
-                      height: 4px;
-                      width: 100%;
-                    }
               >
                 <span
                   className=
                       ms-Slider-thumb
-
+                      {
+                        background: #ffffff;
+                        border-color: #605e5c;
+                        border-radius: 10px;
+                        border-style: solid;
+                        border-width: 2px;
+                        box-sizing: border-box;
+                        display: block;
+                        height: 16px;
+                        position: absolute;
+                        top: -6px;
+                        transform: translateX(-50%);
+                        transition: left 0.367s cubic-bezier(.1,.9,.2,1);
+                        width: 16px;
+                      }
                   style={
                     Object {
                       "left": "44.44444444444444%",
@@ -269,7 +262,12 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                 <span
                   className=
                       ms-Slider-active
-
+                      {
+                        border-radius: 4px;
+                        box-sizing: border-box;
+                        height: 4px;
+                        width: 100%;
+                      }
                       {
                         background: #605e5c;
                         transition: width 0.367s cubic-bezier(.1,.9,.2,1);
@@ -286,7 +284,12 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                 <span
                   className=
                       ms-Slider-inactive
-
+                      {
+                        border-radius: 4px;
+                        box-sizing: border-box;
+                        height: 4px;
+                        width: 100%;
+                      }
                       {
                         background: #c8c6c4;
                         transition: width 0.367s cubic-bezier(.1,.9,.2,1);
@@ -390,6 +393,9 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                 }
           >
             <input
+              aria-checked="false"
+              aria-label="Shadow around items"
+              checked={false}
               className=
 
                   {
@@ -451,6 +457,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       justify-content: center;
                       margin-right: 4px;
                       overflow: hidden;
+                      position: relative;
                       transition-duration: 200ms;
                       transition-property: background, border, border-color;
                       transition-timing-function: cubic-bezier(.4, 0, .23, 1);
@@ -477,12 +484,12 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                         color: Window;
                       }
                   data-icon-name="CheckMark"
-                  role="presentation"
                 >
                   
                 </i>
               </div>
               <span
+                aria-hidden="true"
                 className=
                     ms-Checkbox-text
                     {
@@ -529,6 +536,9 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                 }
           >
             <input
+              aria-checked="false"
+              aria-label="Prevent item overflow"
+              checked={false}
               className=
 
                   {
@@ -590,6 +600,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       justify-content: center;
                       margin-right: 4px;
                       overflow: hidden;
+                      position: relative;
                       transition-duration: 200ms;
                       transition-property: background, border, border-color;
                       transition-timing-function: cubic-bezier(.4, 0, .23, 1);
@@ -616,12 +627,12 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                         color: Window;
                       }
                   data-icon-name="CheckMark"
-                  role="presentation"
                 >
                   
                 </i>
               </div>
               <span
+                aria-hidden="true"
                 className=
                     ms-Checkbox-text
                     {
@@ -668,6 +679,9 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                 }
           >
             <input
+              aria-checked="false"
+              aria-label="Shrink items"
+              checked={false}
               className=
 
                   {
@@ -729,6 +743,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       justify-content: center;
                       margin-right: 4px;
                       overflow: hidden;
+                      position: relative;
                       transition-duration: 200ms;
                       transition-property: background, border, border-color;
                       transition-timing-function: cubic-bezier(.4, 0, .23, 1);
@@ -755,12 +770,12 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                         color: Window;
                       }
                   data-icon-name="CheckMark"
-                  role="presentation"
                 >
                   
                 </i>
               </div>
               <span
+                aria-hidden="true"
                 className=
                     ms-Checkbox-text
                     {
@@ -806,6 +821,9 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                 }
           >
             <input
+              aria-checked="false"
+              aria-label="Wrap items"
+              checked={false}
               className=
 
                   {
@@ -867,6 +885,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       justify-content: center;
                       margin-right: 4px;
                       overflow: hidden;
+                      position: relative;
                       transition-duration: 200ms;
                       transition-property: background, border, border-color;
                       transition-timing-function: cubic-bezier(.4, 0, .23, 1);
@@ -893,12 +912,12 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                         color: Window;
                       }
                   data-icon-name="CheckMark"
-                  role="presentation"
                 >
                   
                 </i>
               </div>
               <span
+                aria-hidden="true"
                 className=
                     ms-Checkbox-text
                     {
@@ -1045,24 +1064,6 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     top: 1px;
                     z-index: 1;
                   }
-                  & $thumb {
-                    background: #ffffff;
-                    border-color: #c8c6c4;
-                    border-radius: 10px;
-                    border-style: solid;
-                    border-width: 2px;
-                    box-sizing: border-box;
-                    display: block;
-                    height: 16px;
-                    position: absolute;
-                    top: -6px;
-                    transform: translateX(-50%);
-                    transition: left 0.367s cubic-bezier(.1,.9,.2,1);
-                    width: 16px;
-                  }
-                  @media screen and (-ms-high-contrast: active){& $thumb {
-                    border-color: GrayText;
-                  }
               data-is-focusable={false}
               id="Slider5"
               role="slider"
@@ -1075,17 +1076,28 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       position: relative;
                       width: 100%;
                     }
-                    & $lineContainer {
-                      border-radius: 4px;
-                      box-sizing: border-box;
-                      height: 4px;
-                      width: 100%;
-                    }
               >
                 <span
                   className=
                       ms-Slider-thumb
-
+                      {
+                        background: #ffffff;
+                        border-color: #c8c6c4;
+                        border-radius: 10px;
+                        border-style: solid;
+                        border-width: 2px;
+                        box-sizing: border-box;
+                        display: block;
+                        height: 16px;
+                        position: absolute;
+                        top: -6px;
+                        transform: translateX(-50%);
+                        transition: left 0.367s cubic-bezier(.1,.9,.2,1);
+                        width: 16px;
+                      }
+                      @media screen and (-ms-high-contrast: active){& {
+                        border-color: GrayText;
+                      }
                   style={
                     Object {
                       "left": "49.87468671679198%",
@@ -1095,7 +1107,12 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                 <span
                   className=
                       ms-Slider-active
-
+                      {
+                        border-radius: 4px;
+                        box-sizing: border-box;
+                        height: 4px;
+                        width: 100%;
+                      }
                       {
                         background: #a19f9d;
                         transition: width 0.367s cubic-bezier(.1,.9,.2,1);
@@ -1113,9 +1130,14 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                 <span
                   className=
                       ms-Slider-inactive
-
                       {
-                        background: #edebe9;
+                        border-radius: 4px;
+                        box-sizing: border-box;
+                        height: 4px;
+                        width: 100%;
+                      }
+                      {
+                        background: #f3f2f1;
                         transition: width 0.367s cubic-bezier(.1,.9,.2,1);
                       }
                       @media screen and (-ms-high-contrast: active){& {
@@ -1184,6 +1206,10 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                 background: #005a9e;
                 border-color: #005a9e;
               }
+              & .ms-Checkbox-checkbox {
+                background: #0078d4;
+                border-color: #0078d4;
+              }
               @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
                 background: Window;
                 border-color: Highlight;
@@ -1208,6 +1234,9 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
               }
         >
           <input
+            aria-checked="true"
+            aria-label="Automatic height (based on items)"
+            checked={true}
             className=
 
                 {
@@ -1222,7 +1251,6 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                 @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
                   outline: 1px solid ActiveBorder;
                 }
-            defaultChecked={true}
             id="checkbox-6"
             onBlur={[Function]}
             onChange={[Function]}
@@ -1272,6 +1300,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     justify-content: center;
                     margin-right: 4px;
                     overflow: hidden;
+                    position: relative;
                     transition-duration: 200ms;
                     transition-property: background, border, border-color;
                     transition-timing-function: cubic-bezier(.4, 0, .23, 1);
@@ -1302,12 +1331,12 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       color: Window;
                     }
                 data-icon-name="CheckMark"
-                role="presentation"
               >
                 
               </i>
             </div>
             <span
+              aria-hidden="true"
               className=
                   ms-Checkbox-text
                   {
@@ -1472,68 +1501,53 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     top: 1px;
                     z-index: 1;
                   }
-                  &:active $activeSection {
+                  &:active .ms-Slider-active {
+                    background-color: #005a9e;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:active .ms-Slider-active {
+                    background-color: Highlight;
+                  }
+                  &:hover .ms-Slider-active {
                     background-color: #0078d4;
                   }
-                  @media screen and (-ms-high-contrast: active){&:active $activeSection {
+                  @media screen and (-ms-high-contrast: active){&:hover .ms-Slider-active {
                     background-color: Highlight;
                   }
-                  &:hover $activeSection {
-                    background-color: #0078d4;
+                  &:active .ms-Slider-inactive {
+                    background-color: #deecf9;
                   }
-                  @media screen and (-ms-high-contrast: active){&:hover $activeSection {
+                  @media screen and (-ms-high-contrast: active){&:active .ms-Slider-inactive {
+                    border-color: Highlight;
+                  }
+                  &:hover .ms-Slider-inactive {
+                    background-color: #deecf9;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:hover .ms-Slider-inactive {
+                    border-color: Highlight;
+                  }
+                  &:active .ms-Slider-thumb {
+                    border: 2px solid #005a9e;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:active .ms-Slider-thumb {
+                    border-color: Highlight;
+                  }
+                  &:hover .ms-Slider-thumb {
+                    border: 2px solid #005a9e;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:hover .ms-Slider-thumb {
+                    border-color: Highlight;
+                  }
+                  &:active .ms-Slider-zeroTick {
+                    background-color: #deecf9;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:active .ms-Slider-zeroTick {
                     background-color: Highlight;
                   }
-                  &:active $inactiveSection {
-                    background-color: #c7e0f4;
+                  &:hover .ms-Slider-zeroTick {
+                    background-color: #deecf9;
                   }
-                  @media screen and (-ms-high-contrast: active){&:active $inactiveSection {
-                    border-color: Highlight;
-                  }
-                  &:hover $inactiveSection {
-                    background-color: #c7e0f4;
-                  }
-                  @media screen and (-ms-high-contrast: active){&:hover $inactiveSection {
-                    border-color: Highlight;
-                  }
-                  &:active $thumb {
-                    border: 2px solid #0078d4;
-                  }
-                  @media screen and (-ms-high-contrast: active){&:active $thumb {
-                    border-color: Highlight;
-                  }
-                  &:hover $thumb {
-                    border: 2px solid #0078d4;
-                  }
-                  @media screen and (-ms-high-contrast: active){&:hover $thumb {
-                    border-color: Highlight;
-                  }
-                  &:active $zeroTick {
-                    background-color: #c7e0f4;
-                  }
-                  @media screen and (-ms-high-contrast: active){&:active $zeroTick {
+                  @media screen and (-ms-high-contrast: active){&:hover .ms-Slider-zeroTick {
                     background-color: Highlight;
-                  }
-                  &:hover $zeroTick {
-                    background-color: #c7e0f4;
-                  }
-                  @media screen and (-ms-high-contrast: active){&:hover $zeroTick {
-                    background-color: Highlight;
-                  }
-                  & $thumb {
-                    background: #ffffff;
-                    border-color: #605e5c;
-                    border-radius: 10px;
-                    border-style: solid;
-                    border-width: 2px;
-                    box-sizing: border-box;
-                    display: block;
-                    height: 16px;
-                    position: absolute;
-                    top: -6px;
-                    transform: translateX(-50%);
-                    transition: left 0.367s cubic-bezier(.1,.9,.2,1);
-                    width: 16px;
                   }
               data-is-focusable={true}
               id="Slider7"
@@ -1551,17 +1565,25 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       position: relative;
                       width: 100%;
                     }
-                    & $lineContainer {
-                      border-radius: 4px;
-                      box-sizing: border-box;
-                      height: 4px;
-                      width: 100%;
-                    }
               >
                 <span
                   className=
                       ms-Slider-thumb
-
+                      {
+                        background: #ffffff;
+                        border-color: #605e5c;
+                        border-radius: 10px;
+                        border-style: solid;
+                        border-width: 2px;
+                        box-sizing: border-box;
+                        display: block;
+                        height: 16px;
+                        position: absolute;
+                        top: -6px;
+                        transform: translateX(-50%);
+                        transition: left 0.367s cubic-bezier(.1,.9,.2,1);
+                        width: 16px;
+                      }
                   style={
                     Object {
                       "left": "0%",
@@ -1571,7 +1593,12 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                 <span
                   className=
                       ms-Slider-active
-
+                      {
+                        border-radius: 4px;
+                        box-sizing: border-box;
+                        height: 4px;
+                        width: 100%;
+                      }
                       {
                         background: #605e5c;
                         transition: width 0.367s cubic-bezier(.1,.9,.2,1);
@@ -1588,7 +1615,12 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                 <span
                   className=
                       ms-Slider-inactive
-
+                      {
+                        border-radius: 4px;
+                        box-sizing: border-box;
+                        height: 4px;
+                        width: 100%;
+                      }
                       {
                         background: #c8c6c4;
                         transition: width 0.367s cubic-bezier(.1,.9,.2,1);
@@ -1705,7 +1737,6 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       padding-top: 5px;
                       word-wrap: break-word;
                     }
-                htmlFor="Dropdown8"
                 id="Dropdown8-label"
               >
                 Vertical alignment:
@@ -1713,6 +1744,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
               <div
                 aria-describedby="Dropdown8-option"
                 aria-expanded="false"
+                aria-haspopup="listbox"
                 aria-labelledby="Dropdown8-label"
                 className=
                     ms-Dropdown
@@ -1797,9 +1829,6 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     &:active .ms-Dropdown-title--hasError {
                       border-color: #a4262c;
                     }
-                    &:focus .ms-Dropdown-title--hasError {
-                      border-color: #a4262c;
-                    }
                 data-is-focusable={true}
                 id="Dropdown8"
                 onBlur={[Function]}
@@ -1808,13 +1837,14 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 onKeyUp={[Function]}
+                onMouseDown={[Function]}
                 role="listbox"
                 tabIndex={0}
               >
                 <span
                   aria-atomic={true}
-                  aria-label="Top"
-                  aria-live="off"
+                  aria-invalid={false}
+                  aria-live="polite"
                   aria-posinset={1}
                   aria-selected={true}
                   aria-setsize={6}
@@ -1848,9 +1878,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                   id="Dropdown8-option"
                   role="option"
                 >
-                  <span>
-                    Top
-                  </span>
+                  Top
                 </span>
                 <span
                   className=
@@ -1881,7 +1909,6 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                           speak: none;
                         }
                     data-icon-name="ChevronDown"
-                    role="presentation"
                   >
                     
                   </i>
@@ -1934,7 +1961,6 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       padding-top: 5px;
                       word-wrap: break-word;
                     }
-                htmlFor="Dropdown9"
                 id="Dropdown9-label"
               >
                 Horizontal alignment:
@@ -1942,6 +1968,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
               <div
                 aria-describedby="Dropdown9-option"
                 aria-expanded="false"
+                aria-haspopup="listbox"
                 aria-labelledby="Dropdown9-label"
                 className=
                     ms-Dropdown
@@ -2026,9 +2053,6 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     &:active .ms-Dropdown-title--hasError {
                       border-color: #a4262c;
                     }
-                    &:focus .ms-Dropdown-title--hasError {
-                      border-color: #a4262c;
-                    }
                 data-is-focusable={true}
                 id="Dropdown9"
                 onBlur={[Function]}
@@ -2037,13 +2061,14 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 onKeyUp={[Function]}
+                onMouseDown={[Function]}
                 role="listbox"
                 tabIndex={0}
               >
                 <span
                   aria-atomic={true}
-                  aria-label="Left"
-                  aria-live="off"
+                  aria-invalid={false}
+                  aria-live="polite"
                   aria-posinset={1}
                   aria-selected={true}
                   aria-setsize={3}
@@ -2077,9 +2102,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                   id="Dropdown9-option"
                   role="option"
                 >
-                  <span>
-                    Left
-                  </span>
+                  Left
                 </span>
                 <span
                   className=
@@ -2110,7 +2133,6 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                           speak: none;
                         }
                     data-icon-name="ChevronDown"
-                    role="presentation"
                   >
                     
                   </i>
@@ -2164,6 +2186,9 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                   }
             >
               <input
+                aria-checked="false"
+                aria-label="Hide empty children"
+                checked={false}
                 className=
 
                     {
@@ -2225,6 +2250,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                         justify-content: center;
                         margin-right: 4px;
                         overflow: hidden;
+                        position: relative;
                         transition-duration: 200ms;
                         transition-property: background, border, border-color;
                         transition-timing-function: cubic-bezier(.4, 0, .23, 1);
@@ -2251,12 +2277,12 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                           color: Window;
                         }
                     data-icon-name="CheckMark"
-                    role="presentation"
                   >
                     
                   </i>
                 </div>
                 <span
+                  aria-hidden="true"
                   className=
                       ms-Checkbox-text
                       {
@@ -2404,7 +2430,13 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                           text-overflow: ellipsis;
                           width: 100%;
                         }
-                        &:active, &:focus, &:hover {
+                        &:active {
+                          outline: 0px;
+                        }
+                        &:focus {
+                          outline: 0px;
+                        }
+                        &:hover {
                           outline: 0px;
                         }
                         &::-ms-clear {
@@ -2579,68 +2611,53 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     top: 1px;
                     z-index: 1;
                   }
-                  &:active $activeSection {
+                  &:active .ms-Slider-active {
+                    background-color: #005a9e;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:active .ms-Slider-active {
+                    background-color: Highlight;
+                  }
+                  &:hover .ms-Slider-active {
                     background-color: #0078d4;
                   }
-                  @media screen and (-ms-high-contrast: active){&:active $activeSection {
+                  @media screen and (-ms-high-contrast: active){&:hover .ms-Slider-active {
                     background-color: Highlight;
                   }
-                  &:hover $activeSection {
-                    background-color: #0078d4;
+                  &:active .ms-Slider-inactive {
+                    background-color: #deecf9;
                   }
-                  @media screen and (-ms-high-contrast: active){&:hover $activeSection {
+                  @media screen and (-ms-high-contrast: active){&:active .ms-Slider-inactive {
+                    border-color: Highlight;
+                  }
+                  &:hover .ms-Slider-inactive {
+                    background-color: #deecf9;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:hover .ms-Slider-inactive {
+                    border-color: Highlight;
+                  }
+                  &:active .ms-Slider-thumb {
+                    border: 2px solid #005a9e;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:active .ms-Slider-thumb {
+                    border-color: Highlight;
+                  }
+                  &:hover .ms-Slider-thumb {
+                    border: 2px solid #005a9e;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:hover .ms-Slider-thumb {
+                    border-color: Highlight;
+                  }
+                  &:active .ms-Slider-zeroTick {
+                    background-color: #deecf9;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:active .ms-Slider-zeroTick {
                     background-color: Highlight;
                   }
-                  &:active $inactiveSection {
-                    background-color: #c7e0f4;
+                  &:hover .ms-Slider-zeroTick {
+                    background-color: #deecf9;
                   }
-                  @media screen and (-ms-high-contrast: active){&:active $inactiveSection {
-                    border-color: Highlight;
-                  }
-                  &:hover $inactiveSection {
-                    background-color: #c7e0f4;
-                  }
-                  @media screen and (-ms-high-contrast: active){&:hover $inactiveSection {
-                    border-color: Highlight;
-                  }
-                  &:active $thumb {
-                    border: 2px solid #0078d4;
-                  }
-                  @media screen and (-ms-high-contrast: active){&:active $thumb {
-                    border-color: Highlight;
-                  }
-                  &:hover $thumb {
-                    border: 2px solid #0078d4;
-                  }
-                  @media screen and (-ms-high-contrast: active){&:hover $thumb {
-                    border-color: Highlight;
-                  }
-                  &:active $zeroTick {
-                    background-color: #c7e0f4;
-                  }
-                  @media screen and (-ms-high-contrast: active){&:active $zeroTick {
+                  @media screen and (-ms-high-contrast: active){&:hover .ms-Slider-zeroTick {
                     background-color: Highlight;
-                  }
-                  &:hover $zeroTick {
-                    background-color: #c7e0f4;
-                  }
-                  @media screen and (-ms-high-contrast: active){&:hover $zeroTick {
-                    background-color: Highlight;
-                  }
-                  & $thumb {
-                    background: #ffffff;
-                    border-color: #605e5c;
-                    border-radius: 10px;
-                    border-style: solid;
-                    border-width: 2px;
-                    box-sizing: border-box;
-                    display: block;
-                    height: 16px;
-                    position: absolute;
-                    top: -6px;
-                    transform: translateX(-50%);
-                    transition: left 0.367s cubic-bezier(.1,.9,.2,1);
-                    width: 16px;
                   }
               data-is-focusable={true}
               id="Slider14"
@@ -2658,17 +2675,25 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       position: relative;
                       width: 100%;
                     }
-                    & $lineContainer {
-                      border-radius: 4px;
-                      box-sizing: border-box;
-                      height: 4px;
-                      width: 100%;
-                    }
               >
                 <span
                   className=
                       ms-Slider-thumb
-
+                      {
+                        background: #ffffff;
+                        border-color: #605e5c;
+                        border-radius: 10px;
+                        border-style: solid;
+                        border-width: 2px;
+                        box-sizing: border-box;
+                        display: block;
+                        height: 16px;
+                        position: absolute;
+                        top: -6px;
+                        transform: translateX(-50%);
+                        transition: left 0.367s cubic-bezier(.1,.9,.2,1);
+                        width: 16px;
+                      }
                   style={
                     Object {
                       "left": "0%",
@@ -2678,7 +2703,12 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                 <span
                   className=
                       ms-Slider-active
-
+                      {
+                        border-radius: 4px;
+                        box-sizing: border-box;
+                        height: 4px;
+                        width: 100%;
+                      }
                       {
                         background: #605e5c;
                         transition: width 0.367s cubic-bezier(.1,.9,.2,1);
@@ -2695,7 +2725,12 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                 <span
                   className=
                       ms-Slider-inactive
-
+                      {
+                        border-radius: 4px;
+                        box-sizing: border-box;
+                        height: 4px;
+                        width: 100%;
+                      }
                       {
                         background: #c8c6c4;
                         transition: width 0.367s cubic-bezier(.1,.9,.2,1);
@@ -2836,68 +2871,53 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     top: 1px;
                     z-index: 1;
                   }
-                  &:active $activeSection {
+                  &:active .ms-Slider-active {
+                    background-color: #005a9e;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:active .ms-Slider-active {
+                    background-color: Highlight;
+                  }
+                  &:hover .ms-Slider-active {
                     background-color: #0078d4;
                   }
-                  @media screen and (-ms-high-contrast: active){&:active $activeSection {
+                  @media screen and (-ms-high-contrast: active){&:hover .ms-Slider-active {
                     background-color: Highlight;
                   }
-                  &:hover $activeSection {
-                    background-color: #0078d4;
+                  &:active .ms-Slider-inactive {
+                    background-color: #deecf9;
                   }
-                  @media screen and (-ms-high-contrast: active){&:hover $activeSection {
+                  @media screen and (-ms-high-contrast: active){&:active .ms-Slider-inactive {
+                    border-color: Highlight;
+                  }
+                  &:hover .ms-Slider-inactive {
+                    background-color: #deecf9;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:hover .ms-Slider-inactive {
+                    border-color: Highlight;
+                  }
+                  &:active .ms-Slider-thumb {
+                    border: 2px solid #005a9e;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:active .ms-Slider-thumb {
+                    border-color: Highlight;
+                  }
+                  &:hover .ms-Slider-thumb {
+                    border: 2px solid #005a9e;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:hover .ms-Slider-thumb {
+                    border-color: Highlight;
+                  }
+                  &:active .ms-Slider-zeroTick {
+                    background-color: #deecf9;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:active .ms-Slider-zeroTick {
                     background-color: Highlight;
                   }
-                  &:active $inactiveSection {
-                    background-color: #c7e0f4;
+                  &:hover .ms-Slider-zeroTick {
+                    background-color: #deecf9;
                   }
-                  @media screen and (-ms-high-contrast: active){&:active $inactiveSection {
-                    border-color: Highlight;
-                  }
-                  &:hover $inactiveSection {
-                    background-color: #c7e0f4;
-                  }
-                  @media screen and (-ms-high-contrast: active){&:hover $inactiveSection {
-                    border-color: Highlight;
-                  }
-                  &:active $thumb {
-                    border: 2px solid #0078d4;
-                  }
-                  @media screen and (-ms-high-contrast: active){&:active $thumb {
-                    border-color: Highlight;
-                  }
-                  &:hover $thumb {
-                    border: 2px solid #0078d4;
-                  }
-                  @media screen and (-ms-high-contrast: active){&:hover $thumb {
-                    border-color: Highlight;
-                  }
-                  &:active $zeroTick {
-                    background-color: #c7e0f4;
-                  }
-                  @media screen and (-ms-high-contrast: active){&:active $zeroTick {
+                  @media screen and (-ms-high-contrast: active){&:hover .ms-Slider-zeroTick {
                     background-color: Highlight;
-                  }
-                  &:hover $zeroTick {
-                    background-color: #c7e0f4;
-                  }
-                  @media screen and (-ms-high-contrast: active){&:hover $zeroTick {
-                    background-color: Highlight;
-                  }
-                  & $thumb {
-                    background: #ffffff;
-                    border-color: #605e5c;
-                    border-radius: 10px;
-                    border-style: solid;
-                    border-width: 2px;
-                    box-sizing: border-box;
-                    display: block;
-                    height: 16px;
-                    position: absolute;
-                    top: -6px;
-                    transform: translateX(-50%);
-                    transition: left 0.367s cubic-bezier(.1,.9,.2,1);
-                    width: 16px;
                   }
               data-is-focusable={true}
               id="Slider15"
@@ -2915,17 +2935,25 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       position: relative;
                       width: 100%;
                     }
-                    & $lineContainer {
-                      border-radius: 4px;
-                      box-sizing: border-box;
-                      height: 4px;
-                      width: 100%;
-                    }
               >
                 <span
                   className=
                       ms-Slider-thumb
-
+                      {
+                        background: #ffffff;
+                        border-color: #605e5c;
+                        border-radius: 10px;
+                        border-style: solid;
+                        border-width: 2px;
+                        box-sizing: border-box;
+                        display: block;
+                        height: 16px;
+                        position: absolute;
+                        top: -6px;
+                        transform: translateX(-50%);
+                        transition: left 0.367s cubic-bezier(.1,.9,.2,1);
+                        width: 16px;
+                      }
                   style={
                     Object {
                       "left": "0%",
@@ -2935,7 +2963,12 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                 <span
                   className=
                       ms-Slider-active
-
+                      {
+                        border-radius: 4px;
+                        box-sizing: border-box;
+                        height: 4px;
+                        width: 100%;
+                      }
                       {
                         background: #605e5c;
                         transition: width 0.367s cubic-bezier(.1,.9,.2,1);
@@ -2952,7 +2985,12 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                 <span
                   className=
                       ms-Slider-inactive
-
+                      {
+                        border-radius: 4px;
+                        box-sizing: border-box;
+                        height: 4px;
+                        width: 100%;
+                      }
                       {
                         background: #c8c6c4;
                         transition: width 0.367s cubic-bezier(.1,.9,.2,1);
@@ -3131,68 +3169,53 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     top: 1px;
                     z-index: 1;
                   }
-                  &:active $activeSection {
+                  &:active .ms-Slider-active {
+                    background-color: #005a9e;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:active .ms-Slider-active {
+                    background-color: Highlight;
+                  }
+                  &:hover .ms-Slider-active {
                     background-color: #0078d4;
                   }
-                  @media screen and (-ms-high-contrast: active){&:active $activeSection {
+                  @media screen and (-ms-high-contrast: active){&:hover .ms-Slider-active {
                     background-color: Highlight;
                   }
-                  &:hover $activeSection {
-                    background-color: #0078d4;
+                  &:active .ms-Slider-inactive {
+                    background-color: #deecf9;
                   }
-                  @media screen and (-ms-high-contrast: active){&:hover $activeSection {
+                  @media screen and (-ms-high-contrast: active){&:active .ms-Slider-inactive {
+                    border-color: Highlight;
+                  }
+                  &:hover .ms-Slider-inactive {
+                    background-color: #deecf9;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:hover .ms-Slider-inactive {
+                    border-color: Highlight;
+                  }
+                  &:active .ms-Slider-thumb {
+                    border: 2px solid #005a9e;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:active .ms-Slider-thumb {
+                    border-color: Highlight;
+                  }
+                  &:hover .ms-Slider-thumb {
+                    border: 2px solid #005a9e;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:hover .ms-Slider-thumb {
+                    border-color: Highlight;
+                  }
+                  &:active .ms-Slider-zeroTick {
+                    background-color: #deecf9;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:active .ms-Slider-zeroTick {
                     background-color: Highlight;
                   }
-                  &:active $inactiveSection {
-                    background-color: #c7e0f4;
+                  &:hover .ms-Slider-zeroTick {
+                    background-color: #deecf9;
                   }
-                  @media screen and (-ms-high-contrast: active){&:active $inactiveSection {
-                    border-color: Highlight;
-                  }
-                  &:hover $inactiveSection {
-                    background-color: #c7e0f4;
-                  }
-                  @media screen and (-ms-high-contrast: active){&:hover $inactiveSection {
-                    border-color: Highlight;
-                  }
-                  &:active $thumb {
-                    border: 2px solid #0078d4;
-                  }
-                  @media screen and (-ms-high-contrast: active){&:active $thumb {
-                    border-color: Highlight;
-                  }
-                  &:hover $thumb {
-                    border: 2px solid #0078d4;
-                  }
-                  @media screen and (-ms-high-contrast: active){&:hover $thumb {
-                    border-color: Highlight;
-                  }
-                  &:active $zeroTick {
-                    background-color: #c7e0f4;
-                  }
-                  @media screen and (-ms-high-contrast: active){&:active $zeroTick {
+                  @media screen and (-ms-high-contrast: active){&:hover .ms-Slider-zeroTick {
                     background-color: Highlight;
-                  }
-                  &:hover $zeroTick {
-                    background-color: #c7e0f4;
-                  }
-                  @media screen and (-ms-high-contrast: active){&:hover $zeroTick {
-                    background-color: Highlight;
-                  }
-                  & $thumb {
-                    background: #ffffff;
-                    border-color: #605e5c;
-                    border-radius: 10px;
-                    border-style: solid;
-                    border-width: 2px;
-                    box-sizing: border-box;
-                    display: block;
-                    height: 16px;
-                    position: absolute;
-                    top: -6px;
-                    transform: translateX(-50%);
-                    transition: left 0.367s cubic-bezier(.1,.9,.2,1);
-                    width: 16px;
                   }
               data-is-focusable={true}
               id="Slider16"
@@ -3210,17 +3233,25 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       position: relative;
                       width: 100%;
                     }
-                    & $lineContainer {
-                      border-radius: 4px;
-                      box-sizing: border-box;
-                      height: 4px;
-                      width: 100%;
-                    }
               >
                 <span
                   className=
                       ms-Slider-thumb
-
+                      {
+                        background: #ffffff;
+                        border-color: #605e5c;
+                        border-radius: 10px;
+                        border-style: solid;
+                        border-width: 2px;
+                        box-sizing: border-box;
+                        display: block;
+                        height: 16px;
+                        position: absolute;
+                        top: -6px;
+                        transform: translateX(-50%);
+                        transition: left 0.367s cubic-bezier(.1,.9,.2,1);
+                        width: 16px;
+                      }
                   style={
                     Object {
                       "left": "0%",
@@ -3230,7 +3261,12 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                 <span
                   className=
                       ms-Slider-active
-
+                      {
+                        border-radius: 4px;
+                        box-sizing: border-box;
+                        height: 4px;
+                        width: 100%;
+                      }
                       {
                         background: #605e5c;
                         transition: width 0.367s cubic-bezier(.1,.9,.2,1);
@@ -3247,7 +3283,12 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                 <span
                   className=
                       ms-Slider-inactive
-
+                      {
+                        border-radius: 4px;
+                        box-sizing: border-box;
+                        height: 4px;
+                        width: 100%;
+                      }
                       {
                         background: #c8c6c4;
                         transition: width 0.367s cubic-bezier(.1,.9,.2,1);
@@ -3388,68 +3429,53 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     top: 1px;
                     z-index: 1;
                   }
-                  &:active $activeSection {
+                  &:active .ms-Slider-active {
+                    background-color: #005a9e;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:active .ms-Slider-active {
+                    background-color: Highlight;
+                  }
+                  &:hover .ms-Slider-active {
                     background-color: #0078d4;
                   }
-                  @media screen and (-ms-high-contrast: active){&:active $activeSection {
+                  @media screen and (-ms-high-contrast: active){&:hover .ms-Slider-active {
                     background-color: Highlight;
                   }
-                  &:hover $activeSection {
-                    background-color: #0078d4;
+                  &:active .ms-Slider-inactive {
+                    background-color: #deecf9;
                   }
-                  @media screen and (-ms-high-contrast: active){&:hover $activeSection {
+                  @media screen and (-ms-high-contrast: active){&:active .ms-Slider-inactive {
+                    border-color: Highlight;
+                  }
+                  &:hover .ms-Slider-inactive {
+                    background-color: #deecf9;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:hover .ms-Slider-inactive {
+                    border-color: Highlight;
+                  }
+                  &:active .ms-Slider-thumb {
+                    border: 2px solid #005a9e;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:active .ms-Slider-thumb {
+                    border-color: Highlight;
+                  }
+                  &:hover .ms-Slider-thumb {
+                    border: 2px solid #005a9e;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:hover .ms-Slider-thumb {
+                    border-color: Highlight;
+                  }
+                  &:active .ms-Slider-zeroTick {
+                    background-color: #deecf9;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:active .ms-Slider-zeroTick {
                     background-color: Highlight;
                   }
-                  &:active $inactiveSection {
-                    background-color: #c7e0f4;
+                  &:hover .ms-Slider-zeroTick {
+                    background-color: #deecf9;
                   }
-                  @media screen and (-ms-high-contrast: active){&:active $inactiveSection {
-                    border-color: Highlight;
-                  }
-                  &:hover $inactiveSection {
-                    background-color: #c7e0f4;
-                  }
-                  @media screen and (-ms-high-contrast: active){&:hover $inactiveSection {
-                    border-color: Highlight;
-                  }
-                  &:active $thumb {
-                    border: 2px solid #0078d4;
-                  }
-                  @media screen and (-ms-high-contrast: active){&:active $thumb {
-                    border-color: Highlight;
-                  }
-                  &:hover $thumb {
-                    border: 2px solid #0078d4;
-                  }
-                  @media screen and (-ms-high-contrast: active){&:hover $thumb {
-                    border-color: Highlight;
-                  }
-                  &:active $zeroTick {
-                    background-color: #c7e0f4;
-                  }
-                  @media screen and (-ms-high-contrast: active){&:active $zeroTick {
+                  @media screen and (-ms-high-contrast: active){&:hover .ms-Slider-zeroTick {
                     background-color: Highlight;
-                  }
-                  &:hover $zeroTick {
-                    background-color: #c7e0f4;
-                  }
-                  @media screen and (-ms-high-contrast: active){&:hover $zeroTick {
-                    background-color: Highlight;
-                  }
-                  & $thumb {
-                    background: #ffffff;
-                    border-color: #605e5c;
-                    border-radius: 10px;
-                    border-style: solid;
-                    border-width: 2px;
-                    box-sizing: border-box;
-                    display: block;
-                    height: 16px;
-                    position: absolute;
-                    top: -6px;
-                    transform: translateX(-50%);
-                    transition: left 0.367s cubic-bezier(.1,.9,.2,1);
-                    width: 16px;
                   }
               data-is-focusable={true}
               id="Slider17"
@@ -3467,17 +3493,25 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       position: relative;
                       width: 100%;
                     }
-                    & $lineContainer {
-                      border-radius: 4px;
-                      box-sizing: border-box;
-                      height: 4px;
-                      width: 100%;
-                    }
               >
                 <span
                   className=
                       ms-Slider-thumb
-
+                      {
+                        background: #ffffff;
+                        border-color: #605e5c;
+                        border-radius: 10px;
+                        border-style: solid;
+                        border-width: 2px;
+                        box-sizing: border-box;
+                        display: block;
+                        height: 16px;
+                        position: absolute;
+                        top: -6px;
+                        transform: translateX(-50%);
+                        transition: left 0.367s cubic-bezier(.1,.9,.2,1);
+                        width: 16px;
+                      }
                   style={
                     Object {
                       "left": "0%",
@@ -3487,7 +3521,12 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                 <span
                   className=
                       ms-Slider-active
-
+                      {
+                        border-radius: 4px;
+                        box-sizing: border-box;
+                        height: 4px;
+                        width: 100%;
+                      }
                       {
                         background: #605e5c;
                         transition: width 0.367s cubic-bezier(.1,.9,.2,1);
@@ -3504,7 +3543,12 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                 <span
                   className=
                       ms-Slider-inactive
-
+                      {
+                        border-radius: 4px;
+                        box-sizing: border-box;
+                        height: 4px;
+                        width: 100%;
+                      }
                       {
                         background: #c8c6c4;
                         transition: width 0.367s cubic-bezier(.1,.9,.2,1);

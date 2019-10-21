@@ -1,12 +1,14 @@
 import ts from 'typescript';
-import { IMigrationOptions, migration, ModResult } from '../../migration';
+import { IMigrationOptions, migration } from '../../migration';
 import { mod } from 'riceburn';
+import { ModResult } from 'riceburn/lib/interfaces';
+import { getWarningNote } from '../../util/getMessages';
 
 const tagName = 'SearchBox';
 const propName = 'onChange';
 
 export default migration(
-  'warn SearchBox.onChange args changed',
+  getWarningNote('SearchBox onChange callback signature changed'),
   (opts: IMigrationOptions): ModResult[] => {
     return mod('**/*.tsx', opts).asTypescript((node, modder) => {
       if (

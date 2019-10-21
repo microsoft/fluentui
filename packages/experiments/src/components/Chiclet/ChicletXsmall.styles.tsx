@@ -1,4 +1,4 @@
-import { normalize, getGlobalClassNames } from '../../Styling';
+import { normalize, getGlobalClassNames, FontWeights } from '../../Styling';
 import { IChicletCardStyleProps, IChicletCardStyles } from './ChicletCard.types';
 
 const GlobalClassNames = {
@@ -57,8 +57,11 @@ export const getStyles = (styleProps: IChicletCardStyleProps): IChicletCardStyle
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        height: 60,
+        height: 64,
         width: 59
+      },
+      !footerProvided && {
+        marginBottom: 4
       }
     ],
     info: [
@@ -81,6 +84,9 @@ export const getStyles = (styleProps: IChicletCardStyleProps): IChicletCardStyle
         // @todo: change values for height and width according to redline
         width: 170,
         height: 15,
+        fontWeight: FontWeights.semibold,
+        color: palette.neutralSecondary,
+        paddingBottom: 1,
         overflow: 'hidden',
         whiteSpace: 'nowrap',
         textOverflow: 'ellipsis'
@@ -90,9 +96,10 @@ export const getStyles = (styleProps: IChicletCardStyleProps): IChicletCardStyle
       classNames.title,
       {
         fontSize: theme.fonts.medium.fontSize,
-        color: palette.neutralPrimary,
         letterSpacing: 'normal',
         textAlign: 'left',
+        fontWeight: FontWeights.semibold,
+        color: palette.neutralPrimary,
         width: 170,
         height: 35, // Two lines of text, making sure the third line is hidden
         lineHeight: '1.25',

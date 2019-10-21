@@ -1,6 +1,6 @@
 # @uifabric/lists
 
-**List components for [Office UI Fabric React](http://dev.microsoft.com/fabric)**
+**List components for [Office UI Fabric React](https://dev.microsoft.com/fabric)**
 
 ## Overview
 

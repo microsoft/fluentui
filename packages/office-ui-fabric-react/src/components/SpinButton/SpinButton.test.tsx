@@ -1,4 +1,3 @@
-import { Promise } from 'es6-promise';
 import * as React from 'react';
 import * as ReactTestUtils from 'react-dom/test-utils';
 import * as renderer from 'react-test-renderer';
@@ -10,6 +9,12 @@ import { mockEvent, renderIntoDocument } from '../../common/testUtilities';
 describe('SpinButton', () => {
   beforeEach(() => {
     resetIds();
+  });
+
+  afterEach(() => {
+    if ((setTimeout as any).mock) {
+      jest.useRealTimers();
+    }
   });
 
   it('renders SpinButton correctly', () => {
@@ -31,7 +36,7 @@ describe('SpinButton', () => {
   });
 
   it('renders SpinButton correctly with values that the user passes in', () => {
-    const component = renderer.create(<SpinButton label="label" value={'0'} ariaValueNow={0} ariaValueText={'0 pt'} />);
+    const component = renderer.create(<SpinButton label="label" value={'0'} ariaValueNow={0} ariaValueText={'0 pt'} data-test="test" />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
@@ -520,14 +525,12 @@ describe('SpinButton', () => {
   });
 
   it('should stop spinning if text field is focused while actively spinning', () => {
+    jest.useFakeTimers();
+
     const exampleLabelValue = 'SpinButton';
     const exampleMinValue = 2;
     const exampleMaxValue = 22;
     const exampleDefaultValue = '12';
-
-    function delay(millisecond: number): Promise<string> {
-      return new Promise<string>(resolve => setTimeout(resolve, millisecond));
-    }
 
     const renderedDOM: HTMLElement = renderIntoDocument(
       <SpinButton label={exampleLabelValue} min={exampleMinValue} max={exampleMaxValue} defaultValue={exampleDefaultValue} />
@@ -537,15 +540,21 @@ describe('SpinButton', () => {
     const inputDOM: HTMLInputElement = renderedDOM.getElementsByTagName('input')[0];
     const buttonDOM: Element = renderedDOM.getElementsByClassName('ms-UpButton')[0];
 
-    expect(buttonDOM.tagName).toEqual('BUTTON');
+    expect(buttonDOM).toBeTruthy();
 
+    // start spinning
     ReactTestUtils.Simulate.mouseDown(buttonDOM, {
       type: 'mousedown',
       clientX: 0,
       clientY: 0
     });
+    // spin again
+    jest.runOnlyPendingTimers();
+    // spin again
+    jest.runOnlyPendingTimers();
 
-    delay(500).then(() => ReactTestUtils.Simulate.focus(inputDOM));
+    ReactTestUtils.Simulate.focus(inputDOM);
+    jest.runAllTimers();
 
     const currentValue = inputDOM.value;
     expect(currentValue).not.toEqual('2');

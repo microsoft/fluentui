@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { createComponent } from '@uifabric/foundation';
 import { CardView } from './Card.view';
 import { CardStyles as styles, CardTokens as tokens } from './Card.styles';

@@ -1,4 +1,4 @@
-import { getGlobalClassNames, FontSizes, IStyle, hiddenContentStyle } from '../../../Styling';
+import { getGlobalClassNames, IStyle, hiddenContentStyle } from '../../../Styling';
 import { ISuggestionsStyleProps, ISuggestionsStyles } from './Suggestions.types';
 
 const GlobalClassNames = {
@@ -16,7 +16,7 @@ const GlobalClassNames = {
 export function getStyles(props: ISuggestionsStyleProps): ISuggestionsStyles {
   const { className, suggestionsClassName, theme, forceResolveButtonSelected, searchForMoreButtonSelected } = props;
 
-  const { palette } = theme;
+  const { palette, fonts } = theme;
 
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
@@ -32,7 +32,7 @@ export function getStyles(props: ISuggestionsStyleProps): ISuggestionsStyles {
     height: 40,
     textAlign: 'left',
     width: '100%',
-    fontSize: FontSizes.small,
+    fontSize: fonts.small.fontSize,
     selectors: {
       ':hover': {
         backgroundColor: palette.neutralLight,
@@ -42,7 +42,7 @@ export function getStyles(props: ISuggestionsStyleProps): ISuggestionsStyles {
         backgroundColor: palette.themeLight
       },
       '.ms-Button-icon': {
-        fontSize: FontSizes.icon,
+        fontSize: fonts.mediumPlus.fontSize,
         width: 25
       },
       '.ms-Button-label': {
@@ -76,7 +76,7 @@ export function getStyles(props: ISuggestionsStyleProps): ISuggestionsStyles {
       classNames.title,
       {
         padding: '0 12px',
-        fontSize: FontSizes.small,
+        fontSize: fonts.small.fontSize,
         color: palette.themePrimary,
         lineHeight: 40,
         borderBottom: `1px solid ${palette.neutralLight}`
@@ -97,7 +97,7 @@ export function getStyles(props: ISuggestionsStyleProps): ISuggestionsStyles {
       {
         textAlign: 'center',
         color: palette.neutralSecondary,
-        fontSize: FontSizes.small,
+        fontSize: fonts.small.fontSize,
         lineHeight: 30
       }
     ],
@@ -112,7 +112,7 @@ export function getStyles(props: ISuggestionsStyleProps): ISuggestionsStyles {
             textAlign: 'left',
             whiteSpace: 'nowrap',
             lineHeight: 20,
-            fontSize: FontSizes.small
+            fontSize: fonts.small.fontSize
           }
         ],
         circle: {

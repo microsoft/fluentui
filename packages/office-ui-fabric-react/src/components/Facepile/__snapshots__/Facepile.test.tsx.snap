@@ -371,7 +371,7 @@ exports[`Facepile renders Facepile correctly 1`] = `
           title="Alex Lundberg"
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -381,6 +381,7 @@ exports[`Facepile renders Facepile correctly 1`] = `
                   height: 100%;
                   justify-content: center;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <div
               className=
@@ -435,7 +436,7 @@ exports[`Facepile renders Facepile correctly 1`] = `
                 </div>
               </div>
             </div>
-          </div>
+          </span>
         </button>
       </li>
     </ul>

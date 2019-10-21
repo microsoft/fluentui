@@ -7,6 +7,8 @@ exports[`BasePicker renders correctly 1`] = `
   onKeyDown={[Function]}
 >
   <div
+    aria-expanded={false}
+    aria-haspopup="dialog"
     className=
         ms-FocusZone
         &:focus {
@@ -16,7 +18,7 @@ exports[`BasePicker renders correctly 1`] = `
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
-    role="presentation"
+    role="combobox"
   >
     <div
       className="ms-SelectionZone"
@@ -36,8 +38,6 @@ exports[`BasePicker renders correctly 1`] = `
         <input
           aria-autocomplete="both"
           aria-controls=" "
-          aria-expanded={false}
-          aria-haspopup="true"
           autoCapitalize="off"
           autoComplete="off"
           className="ms-BasePicker-input"
@@ -47,10 +47,11 @@ exports[`BasePicker renders correctly 1`] = `
           onClick={[Function]}
           onCompositionEnd={[Function]}
           onCompositionStart={[Function]}
+          onCompositionUpdate={[Function]}
           onFocus={[Function]}
           onInput={[Function]}
           onKeyDown={[Function]}
-          role="combobox"
+          role="textbox"
           spellCheck={false}
           value=""
         />
@@ -67,6 +68,8 @@ exports[`BasePicker renders with inputProps supply classnames correctly 1`] = `
   onKeyDown={[Function]}
 >
   <div
+    aria-expanded={false}
+    aria-haspopup="dialog"
     className=
         ms-FocusZone
         &:focus {
@@ -76,7 +79,7 @@ exports[`BasePicker renders with inputProps supply classnames correctly 1`] = `
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
-    role="presentation"
+    role="combobox"
   >
     <div
       className="ms-SelectionZone"
@@ -96,8 +99,6 @@ exports[`BasePicker renders with inputProps supply classnames correctly 1`] = `
         <input
           aria-autocomplete="both"
           aria-controls=" "
-          aria-expanded={false}
-          aria-haspopup="true"
           autoCapitalize="off"
           autoComplete="off"
           className="ms-BasePicker-input testclass "
@@ -108,11 +109,12 @@ exports[`BasePicker renders with inputProps supply classnames correctly 1`] = `
           onClick={[Function]}
           onCompositionEnd={[Function]}
           onCompositionStart={[Function]}
+          onCompositionUpdate={[Function]}
           onFocus={[Function]}
           onInput={[Function]}
           onKeyDown={[Function]}
           placeholder="Bitte einen Benutzer angeben..."
-          role="combobox"
+          role="textbox"
           spellCheck={false}
           value=""
         />

@@ -1,0 +1,29 @@
+{
+  "name": "@uifabric/example-data",
+  "version": "7.0.1",
+  "description": "Data generators for Office UI Fabric React examples.",
+  "main": "lib-commonjs/index.js",
+  "module": "lib/index.js",
+  "typings": "lib/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/OfficeDev/office-ui-fabric-react"
+  },
+  "license": "MIT",
+  "scripts": {
+    "build": "just-scripts build",
+    "clean": "just-scripts clean",
+    "code-style": "just-scripts code-style",
+    "update-api": "just-scripts update-api",
+    "just": "just-scripts"
+  },
+  "devDependencies": {
+    "@types/webpack-env": "1.13.9",
+    "@uifabric/build": "^7.0.0",
+    "@uifabric/prettier-rules": "^7.0.4",
+    "@uifabric/tslint-rules": "^7.0.5"
+  },
+  "dependencies": {
+    "tslib": "^1.7.1"
+  }
+}

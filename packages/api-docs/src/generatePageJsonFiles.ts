@@ -1,7 +1,7 @@
 import * as path from 'path';
 import { generateJson } from './PageJsonGenerator';
 
-// Generate JSON for office-ui-fabric-react, styling, utilities, and merge-styles
+// Generate JSON for office-ui-fabric-react, react-cards, styling, utilities, and merge-styles
 export function generatePageJsonFiles(): void {
   generateJson([
     {
@@ -88,6 +88,12 @@ export function generatePageJsonFiles(): void {
         'Toggle',
         'Tooltip'
       ],
+      kind: 'Components'
+    },
+    {
+      apiJsonPaths: [path.resolve(__dirname, '../../../packages/react-cards/dist/react-cards.api.json')],
+      pageJsonFolderPath: path.resolve(__dirname, '../lib/pages/react-cards'),
+      pageNames: ['Card'],
       kind: 'Components'
     }
   ]);

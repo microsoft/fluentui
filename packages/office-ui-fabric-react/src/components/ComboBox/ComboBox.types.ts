@@ -203,11 +203,6 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox,
   dropdownMaxWidth?: number;
 
   /**
-   * Optional mode indicates if multi-choice selections is allowed.  Default to false
-   */
-  multiSelect?: boolean;
-
-  /**
    * Sets the 'aria-hidden' attribute on the ComboBox's button element instructing screen readers how to handle the element.
    * This element is hidden by default because all functionality is handled by the input element and the arrow button is
    * only meant to be decorative.
@@ -228,7 +223,7 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox,
   /**
    * Menu will not be created or destroyed when opened or closed, instead it
    * will be hidden. This will improve perf of the menu opening but could potentially
-   * impact overall perf by having more elemnts in the dom. Should only be used
+   * impact overall perf by having more elements in the dom. Should only be used
    * when perf is important.
    * Note: This may increase the amount of time it takes for the comboBox itself to mount.
    */

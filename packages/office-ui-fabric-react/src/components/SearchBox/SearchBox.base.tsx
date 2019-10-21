@@ -53,7 +53,8 @@ export class SearchBoxBase extends React.Component<ISearchBoxProps, ISearchBoxSt
     };
   }
 
-  public componentWillReceiveProps(newProps: ISearchBoxProps): void {
+  // tslint:disable-next-line function-name
+  public UNSAFE_componentWillReceiveProps(newProps: ISearchBoxProps): void {
     if (newProps.value !== undefined) {
       this._latestValue = newProps.value;
       // If the user passes in null, substitute an empty string
@@ -64,7 +65,8 @@ export class SearchBoxBase extends React.Component<ISearchBoxProps, ISearchBoxSt
     }
   }
 
-  public componentWillMount() {
+  // tslint:disable-next-line function-name
+  public UNSAFE_componentWillMount() {
     if (this._events) {
       this._events.dispose();
     }
@@ -107,7 +109,7 @@ export class SearchBoxBase extends React.Component<ISearchBoxProps, ISearchBoxSt
     ]);
 
     return (
-      <div ref={this._rootElement} className={classNames.root} onFocusCapture={this._onFocusCapture}>
+      <div role="search" ref={this._rootElement} className={classNames.root} onFocusCapture={this._onFocusCapture}>
         <div className={classNames.iconContainer} onClick={this._onClickFocus} aria-hidden={true}>
           <Icon iconName="Search" {...iconProps} className={classNames.icon} />
         </div>
@@ -121,6 +123,7 @@ export class SearchBoxBase extends React.Component<ISearchBoxProps, ISearchBoxSt
           onKeyDown={this._onKeyDown}
           value={value}
           disabled={disabled}
+          role="searchbox"
           aria-label={ariaLabel ? ariaLabel : placeholder}
           ref={this._inputElement}
         />

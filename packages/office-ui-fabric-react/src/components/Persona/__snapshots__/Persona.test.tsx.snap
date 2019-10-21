@@ -31,9 +31,6 @@ exports[`Persona renders Persona children correctly 1`] = `
       & .contextualHost {
         display: none;
       }
-      &:hover $primaryText {
-        color: #201f1e;
-      }
 >
   <div
     className=
@@ -114,6 +111,9 @@ exports[`Persona renders Persona children correctly 1`] = `
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
+          }
+          &:hover {
+            color: #201f1e;
           }
       dir="auto"
     >
@@ -211,9 +211,6 @@ exports[`Persona renders Persona correctly with UnknownPersona coin 1`] = `
       & .contextualHost {
         display: none;
       }
-      &:hover $primaryText {
-        color: #201f1e;
-      }
 >
   <div
     className=
@@ -276,7 +273,6 @@ exports[`Persona renders Persona correctly with UnknownPersona coin 1`] = `
                 speak: none;
               }
           data-icon-name="Help"
-          role="presentation"
         >
           
         </i>
@@ -309,6 +305,9 @@ exports[`Persona renders Persona correctly with UnknownPersona coin 1`] = `
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
+          }
+          &:hover {
+            color: #201f1e;
           }
       dir="auto"
     >
@@ -402,9 +401,6 @@ exports[`Persona renders Persona correctly with image 1`] = `
       }
       & .contextualHost {
         display: none;
-      }
-      &:hover $primaryText {
-        color: #201f1e;
       }
 >
   <div
@@ -511,6 +507,9 @@ exports[`Persona renders Persona correctly with image 1`] = `
             text-overflow: ellipsis;
             white-space: nowrap;
           }
+          &:hover {
+            color: #201f1e;
+          }
       dir="auto"
     >
       <div
@@ -604,9 +603,6 @@ exports[`Persona renders Persona correctly with initials 1`] = `
       & .contextualHost {
         display: none;
       }
-      &:hover $primaryText {
-        color: #201f1e;
-      }
 >
   <div
     className=
@@ -687,6 +683,9 @@ exports[`Persona renders Persona correctly with initials 1`] = `
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
+          }
+          &:hover {
+            color: #201f1e;
           }
       dir="auto"
     >
@@ -781,9 +780,6 @@ exports[`Persona renders Persona correctly with no props 1`] = `
       & .contextualHost {
         display: none;
       }
-      &:hover $primaryText {
-        color: #201f1e;
-      }
 >
   <div
     className=
@@ -846,7 +842,6 @@ exports[`Persona renders Persona correctly with no props 1`] = `
                 speak: none;
               }
           data-icon-name="Contact"
-          role="presentation"
         >
           
         </i>
@@ -879,6 +874,9 @@ exports[`Persona renders Persona correctly with no props 1`] = `
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
+          }
+          &:hover {
+            color: #201f1e;
           }
       dir="auto"
     />
@@ -958,9 +956,6 @@ exports[`Persona renders Persona which calls onRenderCoin callback without image
       }
       & .contextualHost {
         display: none;
-      }
-      &:hover $primaryText {
-        color: #201f1e;
       }
 >
   <div
@@ -1090,7 +1085,6 @@ exports[`Persona renders Persona which calls onRenderCoin callback without image
                 color: Window;
               }
           data-icon-name=""
-          role="presentation"
         />
       </div>
     </div>
@@ -1121,6 +1115,9 @@ exports[`Persona renders Persona which calls onRenderCoin callback without image
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
+          }
+          &:hover {
+            color: #201f1e;
           }
       dir="auto"
     >
@@ -1261,9 +1258,6 @@ exports[`Persona renders Persona which calls onRenderPersonaCoin callback with c
       & .contextualHost {
         display: none;
       }
-      &:hover $primaryText {
-        color: #201f1e;
-      }
 >
   <i
     aria-hidden={true}
@@ -1279,7 +1273,6 @@ exports[`Persona renders Persona which calls onRenderPersonaCoin callback with c
           speak: none;
         }
     data-icon-name="Dictionary"
-    role="presentation"
   >
     
   </i>
@@ -1309,6 +1302,9 @@ exports[`Persona renders Persona which calls onRenderPersonaCoin callback with c
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
+          }
+          &:hover {
+            color: #201f1e;
           }
       dir="auto"
     >
@@ -1448,9 +1444,6 @@ exports[`Persona renders correctly with onRender callback 1`] = `
       }
       & .contextualHost {
         display: none;
-      }
-      &:hover $primaryText {
-        color: #201f1e;
       }
 >
   <div
@@ -1601,7 +1594,6 @@ exports[`Persona renders correctly with onRender callback 1`] = `
                 color: Window;
               }
           data-icon-name=""
-          role="presentation"
         />
       </div>
     </div>
@@ -1632,6 +1624,9 @@ exports[`Persona renders correctly with onRender callback 1`] = `
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
+          }
+          &:hover {
+            color: #201f1e;
           }
       dir="auto"
     >

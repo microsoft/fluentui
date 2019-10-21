@@ -274,5 +274,82 @@ describe('Pickers', () => {
         })
       ]);
     });
+
+    describe('aria-owns', () => {
+      it('does not render an aria-owns when the floating picker has not been opened', () => {
+        const root = document.createElement('div');
+        document.body.appendChild(root);
+
+        const pickerRef = React.createRef<TypedBaseExtendedPicker>();
+
+        ReactDOM.render(
+          <BaseExtendedPickerWithType
+            ref={pickerRef}
+            floatingPickerProps={floatingPickerProps}
+            selectedItemsListProps={selectedItemsListProps}
+            onRenderSelectedItems={basicRenderSelectedItemsList}
+            onRenderFloatingPicker={basicRenderFloatingPicker}
+          />,
+          root
+        );
+
+        expect(document.querySelector('[aria-owns="suggestion-list"]')).not.toBeTruthy();
+        expect(document.querySelector('#suggestion-list')).not.toBeTruthy();
+
+        ReactDOM.unmountComponentAtNode(root);
+      });
+
+      it('renders an aria-owns when the floating picker is open', () => {
+        const root = document.createElement('div');
+        document.body.appendChild(root);
+
+        const pickerRef = React.createRef<TypedBaseExtendedPicker>();
+
+        ReactDOM.render(
+          <BaseExtendedPickerWithType
+            ref={pickerRef}
+            floatingPickerProps={floatingPickerProps}
+            selectedItemsListProps={selectedItemsListProps}
+            onRenderSelectedItems={basicRenderSelectedItemsList}
+            onRenderFloatingPicker={basicRenderFloatingPicker}
+          />,
+          root
+        );
+
+        pickerRef.current!.floatingPicker.current!.showPicker();
+
+        expect(document.querySelector('[aria-owns="suggestion-list"]')).toBeTruthy();
+        expect(document.querySelector('#suggestion-list')).toBeTruthy();
+
+        ReactDOM.unmountComponentAtNode(root);
+      });
+
+      it('does not render an aria-owns when the floating picker has been opened and closed', () => {
+        const root = document.createElement('div');
+        document.body.appendChild(root);
+
+        const pickerRef = React.createRef<TypedBaseExtendedPicker>();
+
+        ReactDOM.render(
+          <BaseExtendedPickerWithType
+            ref={pickerRef}
+            floatingPickerProps={floatingPickerProps}
+            selectedItemsListProps={selectedItemsListProps}
+            onRenderSelectedItems={basicRenderSelectedItemsList}
+            onRenderFloatingPicker={basicRenderFloatingPicker}
+          />,
+          root
+        );
+
+        pickerRef.current!.floatingPicker.current!.showPicker();
+
+        pickerRef.current!.floatingPicker.current!.hidePicker();
+
+        expect(document.querySelector('[aria-owns="suggestion-list"]')).not.toBeTruthy();
+        expect(document.querySelector('#suggestion-list')).not.toBeTruthy();
+
+        ReactDOM.unmountComponentAtNode(root);
+      });
+    });
   });
 });

@@ -12,7 +12,9 @@ import {
   customizable,
   calculatePrecision,
   precisionRound,
-  mergeAriaAttributeValues
+  mergeAriaAttributeValues,
+  getNativeProps,
+  divProperties
 } from '../../Utilities';
 import { ISpinButton, ISpinButtonProps } from './SpinButton.types';
 import { Position } from '../../utilities/positioning';
@@ -114,7 +116,8 @@ export class SpinButton extends React.Component<ISpinButtonProps, ISpinButtonSta
   /**
    * Invoked when a component is receiving new props. This method is not called for the initial render.
    */
-  public componentWillReceiveProps(newProps: ISpinButtonProps): void {
+  // tslint:disable-next-line function-name
+  public UNSAFE_componentWillReceiveProps(newProps: ISpinButtonProps): void {
     this._lastValidValue = this.state.value;
     let value: string = newProps.value ? newProps.value : String(newProps.min);
     if (newProps.defaultValue) {
@@ -141,7 +144,6 @@ export class SpinButton extends React.Component<ISpinButtonProps, ISpinButtonSta
       incrementButtonAriaLabel,
       decrementButtonIcon,
       decrementButtonAriaLabel,
-      title,
       ariaLabel,
       ariaDescribedBy,
       styles: customStyles,
@@ -164,9 +166,11 @@ export class SpinButton extends React.Component<ISpinButtonProps, ISpinButtonSta
       ? this.props.getClassNames(theme!, disabled, isFocused, keyboardSpinDirection, labelPosition, className)
       : getClassNames(getStyles(theme!, customStyles), disabled, isFocused, keyboardSpinDirection, labelPosition, className);
 
+    const nativeProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties, ['onBlur', 'onFocus', 'className']);
+
     return (
       <div className={classNames.root}>
-        {labelPosition !== Position.bottom && (
+        {labelPosition !== Position.bottom && (iconProps || label) && (
           <div className={classNames.labelWrapper}>
             {iconProps && <Icon {...iconProps} className={classNames.icon} aria-hidden="true" />}
             {label && (
@@ -179,8 +183,8 @@ export class SpinButton extends React.Component<ISpinButtonProps, ISpinButtonSta
         <KeytipData keytipProps={keytipProps} disabled={disabled}>
           {(keytipAttributes: any): JSX.Element => (
             <div
+              {...nativeProps}
               className={classNames.spinButtonWrapper}
-              title={title && title}
               aria-label={ariaLabel && ariaLabel}
               aria-posinset={ariaPositionInSet}
               aria-setsize={ariaSetSize}
@@ -245,7 +249,7 @@ export class SpinButton extends React.Component<ISpinButtonProps, ISpinButtonSta
             </div>
           )}
         </KeytipData>
-        {labelPosition === Position.bottom && (
+        {labelPosition === Position.bottom && (iconProps || label) && (
           <div className={classNames.labelWrapper}>
             {iconProps && <Icon iconName={iconProps.iconName} className={classNames.icon} aria-hidden="true" />}
             {label && (
@@ -361,11 +365,13 @@ export class SpinButton extends React.Component<ISpinButtonProps, ISpinButtonSta
 
   private _onChange(): void {
     /**
-     * A noop input change handler.
-     * https://github.com/facebook/react/issues/7027.
-     * Using the native onInput handler fixes the issue but onChange
-     * still need to be wired to avoid React console errors
-     * TODO: Check if issue is resolved when React 16 is available.
+     * A noop input change handler. Using onInput instead of onChange was meant to address an issue
+     * which apparently has been resolved in React 16 (https://github.com/facebook/react/issues/7027).
+     * The no-op onChange handler was still needed because React gives console errors if an input
+     * doesn't have onChange.
+     *
+     * TODO (Fabric 8?) - switch to just calling onChange (this is a breaking change for any tests,
+     * ours or 3rd-party, which simulate entering text in a SpinButton)
      */
   }
 

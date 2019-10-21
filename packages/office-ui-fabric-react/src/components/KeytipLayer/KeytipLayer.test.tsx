@@ -56,10 +56,6 @@ describe('KeytipLayer', () => {
     keySequences: ['g']
   };
 
-  function delay(millisecond: number): Promise<void> {
-    return new Promise<void>(resolve => setTimeout(resolve, millisecond));
-  }
-
   function getKeytip(keytips: IKeytipProps[], content: string): IKeytipProps | undefined {
     return find(keytips, (keytip: IKeytipProps) => {
       return keytip.content === content;
@@ -342,6 +338,8 @@ describe('KeytipLayer', () => {
 
   describe('event listeners', () => {
     beforeEach(() => {
+      jest.useFakeTimers();
+
       // Add keytips to the manager
       ktpMgr.keytips = [
         { keytip: keytipB, uniqueID: uniqueIdB },
@@ -357,6 +355,10 @@ describe('KeytipLayer', () => {
       ktpTree = layerRef.current!.getKeytipTree();
     });
 
+    afterEach(() => {
+      jest.useRealTimers();
+    });
+
     it('keytipAdded event delay-shows a keytip if the current keytip is its parent', () => {
       ktpTree.currentKeytip = ktpTree.getNode(keytipIdB);
       // Add a child under B
@@ -364,11 +366,11 @@ describe('KeytipLayer', () => {
         content: 'X',
         keySequences: ['b', 'x']
       });
-      return delay(750).then(() => {
-        const visibleKeytips: IKeytipProps[] = ktpLayer.state('visibleKeytips');
-        expect(visibleKeytips).toHaveLength(1);
-        expect(getKeytip(visibleKeytips, 'X')).toBeDefined();
-      });
+      jest.runAllTimers();
+
+      const visibleKeytips: IKeytipProps[] = ktpLayer.state('visibleKeytips');
+      expect(visibleKeytips).toHaveLength(1);
+      expect(getKeytip(visibleKeytips, 'X')).toBeDefined();
     });
   });
 });

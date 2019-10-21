@@ -16,13 +16,14 @@ import { initializeIcons as i13 } from './fabric-icons-13';
 import { initializeIcons as i14 } from './fabric-icons-14';
 import { initializeIcons as i15 } from './fabric-icons-15';
 import { initializeIcons as i16 } from './fabric-icons-16';
+import { initializeIcons as i17 } from './fabric-icons-17';
 
 import { IIconOptions } from '@uifabric/styling';
 import { registerIconAliases } from './iconAliases';
 const DEFAULT_BASE_URL = 'https://spoprod-a.akamaihd.net/files/fabric/assets/icons/';
 
 export function initializeIcons(baseUrl: string = DEFAULT_BASE_URL, options?: IIconOptions): void {
-  [i, i0, i1, i2, i3, i4, i5, i6, i7, i8, i9, i10, i11, i12, i13, i14, i15, i16].forEach(
+  [i, i0, i1, i2, i3, i4, i5, i6, i7, i8, i9, i10, i11, i12, i13, i14, i15, i16, i17].forEach(
     (initialize: (url: string, options?: IIconOptions) => void) => initialize(baseUrl, options)
   );
 

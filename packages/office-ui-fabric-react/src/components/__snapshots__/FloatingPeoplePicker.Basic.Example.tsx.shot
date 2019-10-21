@@ -42,15 +42,16 @@ exports[`Component Examples renders FloatingPeoplePicker.Basic.Example.tsx corre
             border: 1px solid WindowText;
           }
           &:hover {
-            border-color: #201f1e;
+            border-color: #323130;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
             border-color: Highlight;
           }
-          &:hover $iconContainer {
+          &:hover .ms-SearchBox-iconContainer {
             color: #005a9e;
           }
       onFocusCapture={[Function]}
+      role="search"
     >
       <div
         aria-hidden={true}
@@ -86,7 +87,6 @@ exports[`Component Examples renders FloatingPeoplePicker.Basic.Example.tsx corre
                 transition: opacity 0.167s 0s;
               }
           data-icon-name="Search"
-          role="presentation"
         >
           
         </i>
@@ -138,6 +138,7 @@ exports[`Component Examples renders FloatingPeoplePicker.Basic.Example.tsx corre
         onInput={[Function]}
         onKeyDown={[Function]}
         placeholder="Search for person"
+        role="searchbox"
         value=""
       />
     </div>

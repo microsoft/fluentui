@@ -23,6 +23,8 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
       }
 >
   <div
+    aria-label="Document Card with document preview. Revenue stream proposal fiscal year 2016 version 2.
+          Created by Roko Kolar a few minutes ago"
     className=
         ms-DocumentCard
         ms-DocumentCard--actionable
@@ -84,8 +86,13 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
       className=
           ms-DocumentCardPreview
           {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
             background-color: #faf9f8;
             border-bottom: 1px solid #edebe9;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 12px;
+            font-weight: 400;
             overflow: hidden;
             position: relative;
           }
@@ -355,6 +362,7 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
     </div>
   </div>
   <div
+    aria-label="Document Card with folder or site activity. 4 files were uploaded. Created by Annie Lindqvist a few minutes ago"
     className=
         ms-DocumentCard
         ms-DocumentCard--actionable
@@ -416,8 +424,13 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
       className=
           ms-DocumentCardPreview
           {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
             background-color: #ffffff;
             border-bottom: 1px solid #edebe9;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 12px;
+            font-weight: 400;
             overflow: hidden;
             position: relative;
           }
@@ -449,7 +462,6 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
               }
               & a {
                 color: #201f1e;
-                font-size: 12px;
                 text-decoration: none;
               }
               & a:hover {
@@ -519,7 +531,15 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
                   @media screen and (-ms-high-contrast: active){& {
                     border-bottom: none;
                   }
-                  &:active, &:hover, &:active:hover {
+                  &:active {
+                    color: #004578;
+                    text-decoration: underline;
+                  }
+                  &:hover {
+                    color: #004578;
+                    text-decoration: underline;
+                  }
+                  &:active:hover {
                     color: #004578;
                     text-decoration: underline;
                   }
@@ -595,7 +615,15 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
                   @media screen and (-ms-high-contrast: active){& {
                     border-bottom: none;
                   }
-                  &:active, &:hover, &:active:hover {
+                  &:active {
+                    color: #004578;
+                    text-decoration: underline;
+                  }
+                  &:hover {
+                    color: #004578;
+                    text-decoration: underline;
+                  }
+                  &:active:hover {
                     color: #004578;
                     text-decoration: underline;
                   }
@@ -671,7 +699,15 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
                   @media screen and (-ms-high-contrast: active){& {
                     border-bottom: none;
                   }
-                  &:active, &:hover, &:active:hover {
+                  &:active {
+                    color: #004578;
+                    text-decoration: underline;
+                  }
+                  &:hover {
+                    color: #004578;
+                    text-decoration: underline;
+                  }
+                  &:active:hover {
                     color: #004578;
                     text-decoration: underline;
                   }
@@ -690,7 +726,6 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
 
               {
                 display: block;
-                font-size: 12px;
                 padding-bottom: 8px;
                 padding-left: 16px;
                 padding-right: 16px;
@@ -911,6 +946,7 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
     </div>
   </div>
   <div
+    aria-label="Document Card with icon. View and share files. Created by Aaron Reid a few minutes ago"
     className=
         ms-DocumentCard
         ms-DocumentCard--actionable
@@ -972,8 +1008,13 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
       className=
           ms-DocumentCardPreview
           {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
             background-color: #faf9f8;
             border-bottom: 1px solid #edebe9;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 12px;
+            font-weight: 400;
             overflow: hidden;
             position: relative;
           }
@@ -1004,14 +1045,13 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
                 -webkit-font-smoothing: antialiased;
                 color: #ffffff;
                 display: inline-block;
-                font-family: "FabricMDL2Icons-1";
+                font-family: "FabricMDL2Icons-2";
                 font-size: 42px;
                 font-style: normal;
                 font-weight: normal;
                 speak: none;
               }
           data-icon-name="OpenFile"
-          role="presentation"
         >
           
         </i>
@@ -1227,6 +1267,8 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
     </div>
   </div>
   <div
+    aria-label="Document Card with email conversation. Conversation about takeaways from annual SharePoint conference.
+          Sent by Christian Bergqvist a few minutes ago"
     className=
         ms-DocumentCard
         ms-DocumentCard--actionable
@@ -1288,8 +1330,13 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
       className=
           ms-DocumentCardPreview
           {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
             background-color: #faf9f8;
             border-bottom: 1px solid #edebe9;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 12px;
+            font-weight: 400;
             overflow: hidden;
             position: relative;
           }
@@ -1328,7 +1375,6 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
                 speak: none;
               }
           data-icon-name="OutlookLogo"
-          role="presentation"
         >
           
         </i>

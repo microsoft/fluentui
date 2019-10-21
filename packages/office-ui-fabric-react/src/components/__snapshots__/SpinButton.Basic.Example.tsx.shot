@@ -37,7 +37,7 @@ exports[`Component Examples renders SpinButton.Basic.Example.tsx correctly 1`] =
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
               display: inline-block;
-              font-family: "FabricMDL2Icons-16";
+              font-family: "FabricMDL2Icons-17";
               font-size: 20px;
               font-style: normal;
               font-weight: normal;
@@ -48,7 +48,6 @@ exports[`Component Examples renders SpinButton.Basic.Example.tsx correctly 1`] =
               speak: none;
             }
         data-icon-name="IncreaseIndentLegacy"
-        role="presentation"
       >
         
       </i>
@@ -71,10 +70,10 @@ exports[`Component Examples renders SpinButton.Basic.Example.tsx correctly 1`] =
               margin-right: 0px;
               margin-top: 0px;
               overflow-wrap: break-word;
-              padding-bottom: 0px;
-              padding-left: 0px;
-              padding-right: 0px;
-              padding-top: 0px;
+              padding-bottom: 5px;
+              padding-left: 0;
+              padding-right: 0;
+              padding-top: 5px;
               pointer-events: none;
               word-wrap: break-word;
             }
@@ -126,7 +125,7 @@ exports[`Component Examples renders SpinButton.Basic.Example.tsx correctly 1`] =
               margin-left: 0px;
               margin-right: 0px;
               margin-top: 0px;
-              min-width: 72px;
+              min-width: 61px;
               outline: 0px;
               overflow: hidden;
               padding-bottom: 0;
@@ -260,7 +259,7 @@ exports[`Component Examples renders SpinButton.Basic.Example.tsx correctly 1`] =
           tabIndex={-1}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -270,27 +269,33 @@ exports[`Component Examples renders SpinButton.Basic.Example.tsx correctly 1`] =
                   height: 100%;
                   justify-content: center;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <i
               aria-hidden={true}
               className=
+                  ms-Icon
                   ms-Button-icon
+                  {
+                    display: inline-block;
+                  }
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
-                    display: inline-block;
-                    flex-shrink: 0;
                     font-family: "FabricMDL2Icons-2";
-                    font-size: 8px;
                     font-style: normal;
                     font-weight: normal;
+                    speak: none;
+                  }
+                  {
+                    flex-shrink: 0;
+                    font-size: 8px;
                     height: 16px;
                     line-height: 16px;
                     margin-bottom: 0px;
                     margin-left: 0px;
                     margin-right: 0px;
                     margin-top: 0px;
-                    speak: none;
                     text-align: center;
                     vertical-align: middle;
                   }
@@ -299,7 +304,7 @@ exports[`Component Examples renders SpinButton.Basic.Example.tsx correctly 1`] =
             >
               
             </i>
-          </div>
+          </span>
         </button>
         <button
           aria-label="Decrease value by 1"
@@ -393,7 +398,7 @@ exports[`Component Examples renders SpinButton.Basic.Example.tsx correctly 1`] =
           tabIndex={-1}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -403,27 +408,33 @@ exports[`Component Examples renders SpinButton.Basic.Example.tsx correctly 1`] =
                   height: 100%;
                   justify-content: center;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <i
               aria-hidden={true}
               className=
+                  ms-Icon
                   ms-Button-icon
+                  {
+                    display: inline-block;
+                  }
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
-                    display: inline-block;
-                    flex-shrink: 0;
-                    font-family: "FabricMDL2Icons-2";
-                    font-size: 8px;
+                    font-family: "FabricMDL2Icons-3";
                     font-style: normal;
                     font-weight: normal;
+                    speak: none;
+                  }
+                  {
+                    flex-shrink: 0;
+                    font-size: 8px;
                     height: 16px;
                     line-height: 16px;
                     margin-bottom: 0px;
                     margin-left: 0px;
                     margin-right: 0px;
                     margin-top: 0px;
-                    speak: none;
                     text-align: center;
                     vertical-align: middle;
                   }
@@ -432,7 +443,7 @@ exports[`Component Examples renders SpinButton.Basic.Example.tsx correctly 1`] =
             >
               
             </i>
-          </div>
+          </span>
         </button>
       </span>
     </div>
@@ -477,10 +488,10 @@ exports[`Component Examples renders SpinButton.Basic.Example.tsx correctly 1`] =
               margin-right: 0px;
               margin-top: 0px;
               overflow-wrap: break-word;
-              padding-bottom: 0px;
-              padding-left: 0px;
-              padding-right: 0px;
-              padding-top: 0px;
+              padding-bottom: 5px;
+              padding-left: 0;
+              padding-right: 0;
+              padding-top: 5px;
               pointer-events: none;
               word-wrap: break-word;
             }
@@ -532,7 +543,7 @@ exports[`Component Examples renders SpinButton.Basic.Example.tsx correctly 1`] =
               margin-left: 0px;
               margin-right: 0px;
               margin-top: 0px;
-              min-width: 72px;
+              min-width: 61px;
               outline: 0px;
               overflow: hidden;
               padding-bottom: 0;
@@ -666,7 +677,7 @@ exports[`Component Examples renders SpinButton.Basic.Example.tsx correctly 1`] =
           tabIndex={-1}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -676,27 +687,33 @@ exports[`Component Examples renders SpinButton.Basic.Example.tsx correctly 1`] =
                   height: 100%;
                   justify-content: center;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <i
               aria-hidden={true}
               className=
+                  ms-Icon
                   ms-Button-icon
+                  {
+                    display: inline-block;
+                  }
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
-                    display: inline-block;
-                    flex-shrink: 0;
                     font-family: "FabricMDL2Icons-2";
-                    font-size: 8px;
                     font-style: normal;
                     font-weight: normal;
+                    speak: none;
+                  }
+                  {
+                    flex-shrink: 0;
+                    font-size: 8px;
                     height: 16px;
                     line-height: 16px;
                     margin-bottom: 0px;
                     margin-left: 0px;
                     margin-right: 0px;
                     margin-top: 0px;
-                    speak: none;
                     text-align: center;
                     vertical-align: middle;
                   }
@@ -705,7 +722,7 @@ exports[`Component Examples renders SpinButton.Basic.Example.tsx correctly 1`] =
             >
               
             </i>
-          </div>
+          </span>
         </button>
         <button
           aria-label="Decrease value by 0.1"
@@ -799,7 +816,7 @@ exports[`Component Examples renders SpinButton.Basic.Example.tsx correctly 1`] =
           tabIndex={-1}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -809,27 +826,33 @@ exports[`Component Examples renders SpinButton.Basic.Example.tsx correctly 1`] =
                   height: 100%;
                   justify-content: center;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <i
               aria-hidden={true}
               className=
+                  ms-Icon
                   ms-Button-icon
+                  {
+                    display: inline-block;
+                  }
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
-                    display: inline-block;
-                    flex-shrink: 0;
-                    font-family: "FabricMDL2Icons-2";
-                    font-size: 8px;
+                    font-family: "FabricMDL2Icons-3";
                     font-style: normal;
                     font-weight: normal;
+                    speak: none;
+                  }
+                  {
+                    flex-shrink: 0;
+                    font-size: 8px;
                     height: 16px;
                     line-height: 16px;
                     margin-bottom: 0px;
                     margin-left: 0px;
                     margin-right: 0px;
                     margin-top: 0px;
-                    speak: none;
                     text-align: center;
                     vertical-align: middle;
                   }
@@ -838,7 +861,7 @@ exports[`Component Examples renders SpinButton.Basic.Example.tsx correctly 1`] =
             >
               
             </i>
-          </div>
+          </span>
         </button>
       </span>
     </div>

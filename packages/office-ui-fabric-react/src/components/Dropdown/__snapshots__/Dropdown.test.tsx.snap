@@ -9,6 +9,7 @@ exports[`Dropdown multi-select Renders multiselect Dropdown correctly 1`] = `
   <div
     aria-describedby="Dropdown0-option"
     aria-expanded="false"
+    aria-haspopup="listbox"
     className=
         ms-Dropdown
         {
@@ -92,9 +93,6 @@ exports[`Dropdown multi-select Renders multiselect Dropdown correctly 1`] = `
         &:active .ms-Dropdown-title--hasError {
           border-color: #a4262c;
         }
-        &:focus .ms-Dropdown-title--hasError {
-          border-color: #a4262c;
-        }
     data-is-focusable={true}
     id="Dropdown0"
     onBlur={[Function]}
@@ -102,11 +100,13 @@ exports[`Dropdown multi-select Renders multiselect Dropdown correctly 1`] = `
     onFocus={[Function]}
     onKeyDown={[Function]}
     onKeyUp={[Function]}
+    onMouseDown={[Function]}
     tabIndex={0}
   >
     <span
       aria-atomic={true}
-      aria-live="off"
+      aria-invalid={false}
+      aria-live="polite"
       className=
           ms-Dropdown-title
           ms-Dropdown-titleIsPlaceHolder
@@ -167,7 +167,6 @@ exports[`Dropdown multi-select Renders multiselect Dropdown correctly 1`] = `
               speak: none;
             }
         data-icon-name="ChevronDown"
-        role="presentation"
       >
         
       </i>
@@ -185,6 +184,7 @@ exports[`Dropdown single-select Renders single-select Dropdown correctly 1`] = `
   <div
     aria-describedby="Dropdown0-option"
     aria-expanded="false"
+    aria-haspopup="listbox"
     className=
         ms-Dropdown
         {
@@ -268,9 +268,6 @@ exports[`Dropdown single-select Renders single-select Dropdown correctly 1`] = `
         &:active .ms-Dropdown-title--hasError {
           border-color: #a4262c;
         }
-        &:focus .ms-Dropdown-title--hasError {
-          border-color: #a4262c;
-        }
     data-is-focusable={true}
     id="Dropdown0"
     onBlur={[Function]}
@@ -278,12 +275,14 @@ exports[`Dropdown single-select Renders single-select Dropdown correctly 1`] = `
     onFocus={[Function]}
     onKeyDown={[Function]}
     onKeyUp={[Function]}
+    onMouseDown={[Function]}
     role="listbox"
     tabIndex={0}
   >
     <span
       aria-atomic={true}
-      aria-live="off"
+      aria-invalid={false}
+      aria-live="polite"
       aria-setsize={6}
       className=
           ms-Dropdown-title
@@ -346,7 +345,6 @@ exports[`Dropdown single-select Renders single-select Dropdown correctly 1`] = `
               speak: none;
             }
         data-icon-name="ChevronDown"
-        role="presentation"
       >
         
       </i>

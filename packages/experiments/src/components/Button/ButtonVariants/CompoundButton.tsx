@@ -1,5 +1,8 @@
 import * as React from 'react';
-import { createComponent, IComponent, IComponentStyles, IStylesFunction, ITokenFunction } from '@uifabric/foundation';
+// Temporary import file to experiment with next version of foundation.
+import { composed } from '@uifabric/foundation/lib/next/composed';
+import { IComponent } from '@uifabric/foundation/lib/next/IComponent';
+import { IComponentStyles, IStylesFunction, ITokenFunction } from '@uifabric/foundation';
 import { Text, ITextStyles } from 'office-ui-fabric-react';
 import { parseGap } from 'office-ui-fabric-react/lib/components/Stack/StackUtils';
 import { HighContrastSelector } from '../../../Styling';
@@ -14,7 +17,7 @@ import {
   IButtonTokens,
   IButtonViewProps
 } from '../Button.types';
-import { ButtonView } from '../Button.view';
+import { ButtonSlots, ButtonView } from '../Button.view';
 
 export interface ICompoundButtonProps extends IButtonProps {
   secondaryText?: string;
@@ -28,7 +31,13 @@ export interface ICompountButtonTokens extends IButtonTokens {
   secondaryColorPressed?: string;
 }
 
-export type ICompoundButtonComponent = IComponent<ICompoundButtonProps, ICompountButtonTokens, IButtonStyles, ICompoundButtonViewProps>;
+export type ICompoundButtonComponent = IComponent<
+  ICompoundButtonProps,
+  ICompountButtonTokens,
+  IButtonStyles,
+  ICompoundButtonViewProps,
+  IButtonSlots
+>;
 
 const baseTokens: ICompoundButtonComponent['tokens'] = (props, theme) => {
   const { palette } = theme;
@@ -169,21 +178,28 @@ const secondaryTextStyles: ITextStyles = {
   }
 };
 
-const CompoundButtonView: ICompoundButtonComponent['view'] = props => {
-  const { secondaryText, ...rest } = props;
+const CompoundButtonView: ICompoundButtonComponent['view'] = (props, slots) => {
+  const { children, secondaryText, ...rest } = props;
 
-  return (
-    <ButtonView {...rest}>
-      <Text variant="small" styles={secondaryTextStyles}>
-        {secondaryText}
-      </Text>
-    </ButtonView>
+  const secondaryTextChild = (
+    <Text variant="small" styles={secondaryTextStyles}>
+      {secondaryText}
+    </Text>
   );
+
+  const compoundButtonProps = {
+    ...rest,
+    children: [secondaryTextChild, children]
+  };
+
+  return ButtonView(compoundButtonProps, slots);
 };
 
-export const CompoundButton: React.StatelessComponent<ICompoundButtonProps> = createComponent(CompoundButtonView, {
+export const CompoundButton: React.StatelessComponent<ICompoundButtonProps> = composed({
   displayName: 'CompoundButton',
+  slots: ButtonSlots,
   state,
   styles: CompoundButtonStyles,
-  tokens: CompoundButtonTokens
+  tokens: CompoundButtonTokens,
+  view: CompoundButtonView
 });

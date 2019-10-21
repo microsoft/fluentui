@@ -80,7 +80,6 @@ exports[`Component Examples renders Dropdown.Required.Example.tsx correctly 1`] 
               content: ' *';
               padding-right: 12px;
             }
-        htmlFor="Dropdown0"
         id="Dropdown0-label"
       >
         Required dropdown example
@@ -88,6 +87,7 @@ exports[`Component Examples renders Dropdown.Required.Example.tsx correctly 1`] 
       <div
         aria-describedby="Dropdown0-option"
         aria-expanded="false"
+        aria-haspopup="listbox"
         aria-labelledby="Dropdown0-label"
         aria-required={true}
         className=
@@ -175,9 +175,6 @@ exports[`Component Examples renders Dropdown.Required.Example.tsx correctly 1`] 
             &:active .ms-Dropdown-title--hasError {
               border-color: #a4262c;
             }
-            &:focus .ms-Dropdown-title--hasError {
-              border-color: #a4262c;
-            }
         data-is-focusable={true}
         id="Dropdown0"
         onBlur={[Function]}
@@ -185,13 +182,14 @@ exports[`Component Examples renders Dropdown.Required.Example.tsx correctly 1`] 
         onFocus={[Function]}
         onKeyDown={[Function]}
         onKeyUp={[Function]}
+        onMouseDown={[Function]}
         role="listbox"
         tabIndex={0}
       >
         <span
           aria-atomic={true}
-          aria-label="Select an option"
-          aria-live="off"
+          aria-invalid={false}
+          aria-live="polite"
           aria-setsize={5}
           className=
               ms-Dropdown-title
@@ -225,9 +223,7 @@ exports[`Component Examples renders Dropdown.Required.Example.tsx correctly 1`] 
           id="Dropdown0-option"
           role="option"
         >
-          <span>
-            Select an option
-          </span>
+          Select an option
         </span>
         <span
           className=
@@ -258,7 +254,6 @@ exports[`Component Examples renders Dropdown.Required.Example.tsx correctly 1`] 
                   speak: none;
                 }
             data-icon-name="ChevronDown"
-            role="presentation"
           >
             
           </i>
@@ -299,12 +294,12 @@ exports[`Component Examples renders Dropdown.Required.Example.tsx correctly 1`] 
             border: 0;
           }
           .ms-Fabric--isFocusVisible &:focus:after {
-            border-color: #ffffff;
-            border: 1px solid transparent;
+            border: none;
             bottom: 2px;
             content: "";
             left: 2px;
-            outline: none;
+            outline-color: #ffffff;
+            outline: 1px solid #605e5c;
             position: absolute;
             right: 2px;
             top: 2px;
@@ -354,7 +349,7 @@ exports[`Component Examples renders Dropdown.Required.Example.tsx correctly 1`] 
       onMouseUp={[Function]}
       type="button"
     >
-      <div
+      <span
         className=
             ms-Button-flexContainer
             {
@@ -364,18 +359,21 @@ exports[`Component Examples renders Dropdown.Required.Example.tsx correctly 1`] 
               height: 100%;
               justify-content: center;
             }
+        data-automationid="splitbuttonprimary"
       >
-        <div
+        <span
           className=
               ms-Button-textContainer
               {
+                display: block;
                 flex-grow: 1;
               }
         >
-          <div
+          <span
             className=
                 ms-Button-label
                 {
+                  display: block;
                   font-weight: 600;
                   line-height: 100%;
                   margin-bottom: 0;
@@ -386,9 +384,9 @@ exports[`Component Examples renders Dropdown.Required.Example.tsx correctly 1`] 
             id="id__1"
           >
             Set focus
-          </div>
-        </div>
-      </div>
+          </span>
+        </span>
+      </span>
     </button>
   </div>
   <div
@@ -399,6 +397,7 @@ exports[`Component Examples renders Dropdown.Required.Example.tsx correctly 1`] 
     <div
       aria-describedby="Dropdown4-option"
       aria-expanded="false"
+      aria-haspopup="listbox"
       aria-required={true}
       className=
           ms-Dropdown
@@ -485,9 +484,6 @@ exports[`Component Examples renders Dropdown.Required.Example.tsx correctly 1`] 
           &:active .ms-Dropdown-title--hasError {
             border-color: #a4262c;
           }
-          &:focus .ms-Dropdown-title--hasError {
-            border-color: #a4262c;
-          }
           &:after {
             color: #a4262c;
             content: '*';
@@ -505,13 +501,14 @@ exports[`Component Examples renders Dropdown.Required.Example.tsx correctly 1`] 
       onFocus={[Function]}
       onKeyDown={[Function]}
       onKeyUp={[Function]}
+      onMouseDown={[Function]}
       role="listbox"
       tabIndex={0}
     >
       <span
         aria-atomic={true}
-        aria-label="Required with no label"
-        aria-live="off"
+        aria-invalid={false}
+        aria-live="polite"
         aria-setsize={5}
         className=
             ms-Dropdown-title
@@ -545,9 +542,7 @@ exports[`Component Examples renders Dropdown.Required.Example.tsx correctly 1`] 
         id="Dropdown4-option"
         role="option"
       >
-        <span>
-          Required with no label
-        </span>
+        Required with no label
       </span>
       <span
         className=
@@ -578,7 +573,6 @@ exports[`Component Examples renders Dropdown.Required.Example.tsx correctly 1`] 
                 speak: none;
               }
           data-icon-name="ChevronDown"
-          role="presentation"
         >
           
         </i>

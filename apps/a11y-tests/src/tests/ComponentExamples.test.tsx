@@ -44,12 +44,7 @@ function getControlAndPageName(exampleFilePath: string): [string, string] {
 
 const excludedExampleFiles: string[] = ['Keytips.Basic.Example', 'List.Basic.Example', 'Picker.CustomResult.Example'];
 
-/* tslint:disable-next-line:no-any */
-declare const global: any;
-
 describe('a11y test', () => {
-  const RealDate = Date;
-  const constantDate = new Date(Date.UTC(2017, 0, 6, 4, 41, 20));
   const browserPromise = puppeteer.launch({
     userDataDir: path.resolve(os.tmpdir(), 'oufr-a11y-test-profile')
   });
@@ -59,26 +54,6 @@ describe('a11y test', () => {
     ReactDOM.createPortal = jest.fn(element => {
       return element;
     });
-
-    // Ensure test output is consistent across machine locale and time zone config.
-    const mockToLocaleString = () => {
-      return constantDate.toUTCString();
-    };
-
-    global.Date.prototype.toLocaleString = mockToLocaleString;
-    global.Date.prototype.toLocaleTimeString = mockToLocaleString;
-    global.Date.prototype.toLocaleDateString = mockToLocaleString;
-
-    // Prevent random and time elements from failing repeated tests.
-    global.Date = class {
-      public static now() {
-        return new RealDate(constantDate);
-      }
-
-      constructor() {
-        return new RealDate(constantDate);
-      }
-    };
 
     jest.spyOn(Math, 'random').mockImplementation(() => {
       return 0;

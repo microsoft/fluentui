@@ -2,7 +2,6 @@ import { IDetailsRowStyleProps, IDetailsRowStyles, ICellStyleProps } from './Det
 import {
   AnimationClassNames,
   AnimationStyles,
-  FontSizes,
   HighContrastSelector,
   IStyle,
   getFocusStyle,
@@ -11,12 +10,13 @@ import {
 } from '../../Styling';
 import { IsFocusVisibleClassName } from '../../Utilities';
 
-const GlobalClassNames = {
+export const DetailsRowGlobalClassNames = {
   root: 'ms-DetailsRow',
   compact: 'ms-DetailsList--Compact', // TODO: in Fabric 7.0 lowercase the 'Compact' for consistency across other components.
   cell: 'ms-DetailsRow-cell',
   cellAnimation: 'ms-DetailsRow-cellAnimation',
   cellCheck: 'ms-DetailsRow-cellCheck',
+  check: 'ms-DetailsRow-check',
   cellMeasurer: 'ms-DetailsRow-cellMeasurer',
   listCellFirstChild: 'ms-List-cell:first-child',
   isContentUnselectable: 'is-contentUnselectable',
@@ -61,10 +61,11 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
     enableUpdateAnimations
   } = props;
 
-  const { neutralPrimary, white, neutralSecondary, neutralLighter, neutralLight, neutralDark, neutralQuaternaryAlt } = theme.palette;
+  const { palette, fonts } = theme;
+  const { neutralPrimary, white, neutralSecondary, neutralLighter, neutralLight, neutralDark, neutralQuaternaryAlt } = palette;
   const { focusBorder } = theme.semanticColors;
 
-  const classNames = getGlobalClassNames(GlobalClassNames, theme);
+  const classNames = getGlobalClassNames(DetailsRowGlobalClassNames, theme);
 
   const colors = {
     // Default
@@ -299,11 +300,11 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
             }
           },
 
-          '&:hover $check': {
+          [`&:hover .${classNames.check}`]: {
             opacity: 1
           },
 
-          [`.${IsFocusVisibleClassName} &:focus $check`]: {
+          [`.${IsFocusVisibleClassName} &:focus .${classNames.check}`]: {
             opacity: 1
           }
         }
@@ -313,13 +314,15 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
       compact && rootCompactStyles,
       className
     ],
+
     cellUnpadded: {
       paddingRight: `${cellStyleProps.cellRightPadding}px`
     },
+
     cellPadded: {
       paddingRight: `${cellStyleProps.cellExtraRightPadding + cellStyleProps.cellRightPadding}px`,
       selectors: {
-        '&.$checkCell': {
+        [`&.${classNames.cellCheck}`]: {
           paddingRight: 0
         }
       }
@@ -367,7 +370,7 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
       classNames.isRowHeader,
       {
         color: colors.defaultHeaderText,
-        fontSize: FontSizes.medium
+        fontSize: fonts.medium.fontSize
       },
       isSelected && {
         color: colors.selectedHeaderText,
@@ -387,6 +390,6 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
         textOverflow: 'clip'
       }
     ],
-    check: []
+    check: [classNames.check]
   };
 };

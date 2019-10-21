@@ -54,6 +54,10 @@ export interface IDetailsListState {
   isSizing?: boolean;
   isDropping?: boolean;
   isSomeGroupExpanded?: boolean;
+  /**
+   * A unique object used to force-update the List when it changes.
+   */
+  version: {};
 }
 
 const MIN_COLUMN_WIDTH = 100; // this is the global min width
@@ -69,7 +73,8 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
     constrainMode: ConstrainMode.horizontalConstrained,
     checkboxVisibility: CheckboxVisibility.onHover,
     isHeaderVisible: true,
-    compact: false
+    compact: false,
+    useFastIcons: true
   };
 
   // References
@@ -85,7 +90,6 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
   private _activeRows: { [key: string]: DetailsRowBase };
   private _dragDropHelper: DragDropHelper | undefined;
   private _initialFocusedIndex: number | undefined;
-  private _pendingForceUpdate: boolean;
 
   private _columnOverrides: {
     [key: string]: IColumn;
@@ -116,10 +120,17 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
       isSizing: false,
       isDropping: false,
       isCollapsed: props.groupProps && props.groupProps.isAllGroupsCollapsed,
-      isSomeGroupExpanded: props.groupProps && !props.groupProps.isAllGroupsCollapsed
+      isSomeGroupExpanded: props.groupProps && !props.groupProps.isAllGroupsCollapsed,
+      version: {}
     };
 
-    this._selection = props.selection || new Selection({ onSelectionChanged: undefined, getKey: props.getKey });
+    this._selection =
+      props.selection ||
+      new Selection({
+        onSelectionChanged: undefined,
+        getKey: props.getKey,
+        selectionMode: props.selectionMode
+      });
 
     if (!this.props.disableSelectionZone) {
       this._selection.setItems(props.items as IObjectWithKey[], false);
@@ -210,7 +221,8 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
     }
   }
 
-  public componentWillReceiveProps(newProps: IDetailsListProps): void {
+  // tslint:disable-next-line function-name
+  public UNSAFE_componentWillReceiveProps(newProps: IDetailsListProps): void {
     const {
       checkboxVisibility,
       items,
@@ -277,13 +289,9 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
     }
 
     if (shouldForceUpdates) {
-      this._pendingForceUpdate = true;
-    }
-  }
-
-  public componentWillUpdate(): void {
-    if (this._pendingForceUpdate) {
-      this._forceListUpdates();
+      this.setState({
+        version: {}
+      });
     }
   }
 
@@ -325,7 +333,8 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
       styles,
       theme,
       cellStyleProps = DEFAULT_CELL_STYLE_PROPS,
-      onRenderCheckbox
+      onRenderCheckbox,
+      useFastIcons
     } = this.props;
     const { adjustedColumns, isCollapsed, isSizing, isSomeGroupExpanded } = this.state;
     const { _selection: selection, _dragDropHelper: dragDropHelper } = this;
@@ -334,6 +343,7 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
       renderedWindowsAhead: isSizing ? 0 : DEFAULT_RENDERED_WINDOWS_AHEAD,
       renderedWindowsBehind: isSizing ? 0 : DEFAULT_RENDERED_WINDOWS_BEHIND,
       getKey,
+      version: this.state.version,
       ...listProps
     };
     let selectAllVisibility = SelectAllVisibility.none; // for SelectionMode.none
@@ -447,7 +457,8 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
                   checkboxVisibility,
                   indentWidth,
                   onRenderDetailsCheckbox: onRenderCheckbox,
-                  rowWidth: this._sumColumnWidths(this.state.adjustedColumns)
+                  rowWidth: this._sumColumnWidths(this.state.adjustedColumns),
+                  useFastIcons
                 },
                 this._onRenderDetailsHeader
               )}
@@ -540,7 +551,8 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
       indentWidth,
       cellStyleProps = DEFAULT_CELL_STYLE_PROPS,
       onRenderCheckbox,
-      enableUpdateAnimations
+      enableUpdateAnimations,
+      useFastIcons
     } = this.props;
     const collapseAllVisibility = groupProps && groupProps.collapseAllVisibility;
     const selection = this._selection;
@@ -574,7 +586,8 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
       cellStyleProps: cellStyleProps,
       onRenderDetailsCheckbox: onRenderCheckbox,
       enableUpdateAnimations,
-      rowWidth: this._sumColumnWidths(columns)
+      rowWidth: this._sumColumnWidths(columns),
+      useFastIcons
     };
 
     if (!item) {
@@ -706,8 +719,6 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
   };
 
   private _forceListUpdates(): void {
-    this._pendingForceUpdate = false;
-
     if (this._groupedList.current) {
       this._groupedList.current.forceUpdate();
     }
@@ -885,7 +896,10 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
     this._rememberCalculatedWidth(resizingColumn, newCalculatedWidth);
 
     this._adjustColumns(this.props, true, resizingColumnIndex);
-    this._forceListUpdates();
+
+    this.setState({
+      version: {}
+    });
   };
 
   private _rememberCalculatedWidth(column: IColumn, newCalculatedWidth: number): void {
