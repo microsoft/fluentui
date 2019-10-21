@@ -1,9 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Pickers: Bring pickers in line with W3 ARIA 1.1 specs.",
-  "packageName": "office-ui-fabric-react",
-  "email": "joschect@microsoft.com",
-  "commit": "dde4a290e354fba58675bd4ab7d0cccdb10e856f",
-  "date": "2019-10-16T22:24:36.002Z",
-  "file": "C:\\Users\\Joschect\\Git\\office-ui-fabric-react\\change\\office-ui-fabric-react-2019-10-16-15-24-36-pickers-accessibilityfixes.json"
-}
