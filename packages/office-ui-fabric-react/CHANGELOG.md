@@ -1,7 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 18 Oct 2019 12:23:09 GMT and should not be manually modified.
+This log was last generated on Mon, 21 Oct 2019 12:23:36 GMT and should not be manually modified.
 
+## 6.210.0
+Mon, 21 Oct 2019 12:23:36 GMT
+
+### Minor changes
+
+- Callout and Card: Fix anchors for both (joschect@microsoft.com)
 ## 6.209.0
 Fri, 18 Oct 2019 12:23:09 GMT
 

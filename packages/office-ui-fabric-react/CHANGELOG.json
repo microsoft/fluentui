@@ -2,6 +2,20 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Mon, 21 Oct 2019 12:23:36 GMT",
+      "tag": "office-ui-fabric-react_v6.210.0",
+      "version": "6.210.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Callout and Card: Fix anchors for both",
+            "author": "joschect@microsoft.com",
+            "commit": "cbc935cf6a0e1d4fb1b7e980b347074dce817745"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 18 Oct 2019 12:23:09 GMT",
       "tag": "office-ui-fabric-react_v6.209.0",
       "version": "6.209.0",
