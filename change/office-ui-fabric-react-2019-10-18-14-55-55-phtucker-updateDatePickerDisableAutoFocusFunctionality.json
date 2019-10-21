@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "Do not expand data picker on TextField click when disableAutoFocus is true and allowTextInput is true.",
+  "comment": "Do not expand date picker on TextField click when disableAutoFocus is true and allowTextInput is true.",
   "packageName": "office-ui-fabric-react",
   "email": "phtucker@microsoft.com",
   "commit": "5a715f5fd66c852bd0d26dff62ee8924c5924d1b",
