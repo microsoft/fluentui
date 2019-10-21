@@ -4,6 +4,7 @@ import { ITeachingBubbleProps, ITeachingBubbleStyleProps, ITeachingBubbleStyles 
 import { ITeachingBubbleState } from './TeachingBubble.base';
 import { PrimaryButton, DefaultButton, IconButton } from '../../Button';
 import { Image, ImageFit } from '../../Image';
+import { Stack } from 'office-ui-fabric-react';
 
 const getClassNames = classNamesFunction<ITeachingBubbleStyleProps, ITeachingBubbleStyles>();
 
@@ -113,11 +114,13 @@ export class TeachingBubbleContentBase extends BaseComponent<ITeachingBubbleProp
 
     if (primaryButtonProps || secondaryButtonProps || customFooterContent) {
       footerContent = (
-        <div className={classNames.footer}>
-          {primaryButtonProps && <PrimaryButton {...primaryButtonProps} className={classNames.primaryButton} />}
-          {secondaryButtonProps && <DefaultButton {...secondaryButtonProps} className={classNames.secondaryButton} />}
-          {customFooterContent && <span>{customFooterContent}</span>}
-        </div>
+        <Stack className={classNames.footer} horizontal horizontalAlign={customFooterContent ? 'space-between' : 'end'}>
+          <Stack.Item align="center">{<span>{customFooterContent}</span>}</Stack.Item>
+          <Stack.Item>
+            {secondaryButtonProps && <DefaultButton {...secondaryButtonProps} className={classNames.secondaryButton} />}
+            {primaryButtonProps && <PrimaryButton {...primaryButtonProps} className={classNames.primaryButton} />}
+          </Stack.Item>
+        </Stack>
       );
     }
 
@@ -148,8 +151,8 @@ export class TeachingBubbleContentBase extends BaseComponent<ITeachingBubbleProp
           {headerContent}
           {bodyContent}
           {footerContent}
+          {closeButton}
         </div>
-        {closeButton}
       </div>
     );
   }

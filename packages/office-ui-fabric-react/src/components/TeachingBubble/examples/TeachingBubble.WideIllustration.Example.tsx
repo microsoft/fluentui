@@ -1,15 +1,18 @@
-import * as React from 'react';
+import * as React from "react";
 
-import { IImageProps } from 'office-ui-fabric-react/lib/Image';
-import { DefaultButton, IButtonProps } from 'office-ui-fabric-react/lib/Button';
-import { TeachingBubble } from 'office-ui-fabric-react/lib/TeachingBubble';
-import { DirectionalHint } from 'office-ui-fabric-react/lib/common/DirectionalHint';
+import { IImageProps } from "office-ui-fabric-react/lib/Image";
+import { DefaultButton, IButtonProps } from "office-ui-fabric-react/lib/Button";
+import { TeachingBubble } from "office-ui-fabric-react/lib/TeachingBubble";
+import { DirectionalHint } from "office-ui-fabric-react/lib/common/DirectionalHint";
 
 export interface ITeachingBubbleWideIllustrationExampleState {
   isTeachingBubbleVisible?: boolean;
 }
 
-export class TeachingBubbleWideIllustrationExample extends React.Component<{}, ITeachingBubbleWideIllustrationExampleState> {
+export class TeachingBubbleWideIllustrationExample extends React.Component<
+  {},
+  ITeachingBubbleWideIllustrationExampleState
+> {
   private _menuButtonElement: HTMLElement;
 
   constructor(props: {}) {
@@ -25,21 +28,31 @@ export class TeachingBubbleWideIllustrationExample extends React.Component<{}, I
 
   public render(): JSX.Element {
     const { isTeachingBubbleVisible } = this.state;
-    const exampleImageProps: IImageProps = { src: 'http://placehold.it/154x140' };
+    const exampleImageProps: IImageProps = {
+      src: "http://placehold.it/154x220",
+      alt: "Example placeholder image"
+    };
     const examplePrimaryButton: IButtonProps = {
-      children: 'Try it out'
+      children: "Try it out"
     };
     const exampleSecondaryButtonProps: IButtonProps = {
-      children: 'Maybe later',
+      children: "Maybe later",
       onClick: this._onDismiss
     };
 
     return (
       <div className="ms-TeachingBubbleExample">
-        <span className="ms-TeachingBubbleBasicExample-buttonArea" ref={menuButton => (this._menuButtonElement = menuButton!)}>
+        <span
+          className="ms-TeachingBubbleBasicExample-buttonArea"
+          ref={menuButton => (this._menuButtonElement = menuButton!)}
+        >
           <DefaultButton
             onClick={isTeachingBubbleVisible ? this._onDismiss : this._onShow}
-            text={isTeachingBubbleVisible ? 'Hide TeachingBubble' : 'Show TeachingBubble'}
+            text={
+              isTeachingBubbleVisible
+                ? "Hide TeachingBubble"
+                : "Show TeachingBubble"
+            }
           />
         </span>
         {isTeachingBubbleVisible ? (
@@ -56,7 +69,8 @@ export class TeachingBubbleWideIllustrationExample extends React.Component<{}, I
               onDismiss={this._onDismiss}
               headline="Discover what’s trending around you"
             >
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, nulla, ipsum? Molestiae quis aliquam magni harum non?
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere,
+              nulla, ipsum? Molestiae quis aliquam magni harum non?
             </TeachingBubble>
           </div>
         ) : null}

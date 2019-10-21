@@ -1,12 +1,13 @@
 import * as React from 'react';
+
 import { DefaultButton, IButtonProps } from 'office-ui-fabric-react/lib/Button';
 import { TeachingBubble } from 'office-ui-fabric-react/lib/TeachingBubble';
 
-export interface ITeachingBubbleSmallHeadlineExampleState {
+export interface ITeachingBubbleMultiStepExampleState {
   isTeachingBubbleVisible?: boolean;
 }
 
-export class TeachingBubbleSmallHeadlineExample extends React.Component<{}, ITeachingBubbleSmallHeadlineExampleState> {
+export class TeachingBubbleMultiStepExample extends React.Component<{}, ITeachingBubbleMultiStepExampleState> {
   private _menuButtonElement: HTMLElement;
 
   constructor(props: {}) {
@@ -22,14 +23,17 @@ export class TeachingBubbleSmallHeadlineExample extends React.Component<{}, ITea
 
   public render(): JSX.Element {
     const { isTeachingBubbleVisible } = this.state;
-    const examplePrimaryButton: IButtonProps = {
-      children: 'Try it out',
+    const exampleSecondaryButtonProps: IButtonProps = {
+      children: 'Previous',
       onClick: this._onDismiss
+    };
+    const examplePrimaryButton: IButtonProps = {
+      children: 'Next'
     };
 
     return (
       <div className="ms-TeachingBubbleExample">
-        <span className="ms-TeachingBubbleBasicExample-buttonArea" ref={menuButton => (this._menuButtonElement = menuButton!)}>
+        <span className="ms-TeachingBubbleMultiStepExample-buttonArea" ref={menuButton => (this._menuButtonElement = menuButton!)}>
           <DefaultButton
             onClick={isTeachingBubbleVisible ? this._onDismiss : this._onShow}
             text={isTeachingBubbleVisible ? 'Hide TeachingBubble' : 'Show TeachingBubble'}
@@ -39,10 +43,10 @@ export class TeachingBubbleSmallHeadlineExample extends React.Component<{}, ITea
           <div>
             <TeachingBubble
               target={this._menuButtonElement}
-              hasSmallHeadline={true}
-              onDismiss={this._onDismiss}
-              hasCloseIcon={true}
+              secondaryButtonProps={exampleSecondaryButtonProps}
               primaryButtonProps={examplePrimaryButton}
+              onDismiss={this._onDismiss}
+              footerContent="2 of 3"
               headline="Discover what’s trending around you"
             >
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, nulla, ipsum? Molestiae quis aliquam magni harum non?
