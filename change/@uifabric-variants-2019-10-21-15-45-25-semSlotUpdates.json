@@ -1,6 +1,6 @@
 {
   "type": "none",
-  "comment": "Adding missing slot variant",
+  "comment": "Adding missing slot variants",
   "packageName": "@uifabric/variants",
   "email": "marygans@microsoft.com",
   "commit": "231c1905011ef3e7bc60143c4fb047aa5063bef4",
