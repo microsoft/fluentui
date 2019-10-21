@@ -21,7 +21,7 @@ export class FabricBase extends React.Component<
   }
 
   public render() {
-    const classNames = this.getClassNamesHelper();
+    const classNames = this._getClassNamesHelper();
 
     const divProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties);
 
@@ -40,7 +40,7 @@ export class FabricBase extends React.Component<
       this._disposables.push(on(win, 'mousedown', this._onMouseDown, true), on(win, 'keydown', this._onKeyDown, true));
     }
 
-    const classNames = this.getClassNamesHelper();
+    const classNames = this._getClassNamesHelper();
     if (this.props.applyThemeToBody) {
       const currentDoc: Document = getDocument(this._rootElement.current)!;
       currentDoc.body.classList.add(classNames.bodyThemed);
@@ -50,14 +50,14 @@ export class FabricBase extends React.Component<
   public componentWillUnmount(): void {
     this._disposables.forEach((dispose: () => void) => dispose());
 
-    const classNames = this.getClassNamesHelper();
+    const classNames = this._getClassNamesHelper();
     if (this.props.applyThemeToBody) {
       const currentDoc: Document = getDocument(this._rootElement.current)!;
       currentDoc.body.classList.remove(classNames.bodyThemed);
     }
   }
 
-  private getClassNamesHelper(): IProcessedStyleSet<IFabricStyles> {
+  private _getClassNamesHelper(): IProcessedStyleSet<IFabricStyles> {
     const { className } = this.props;
     const classNames = getClassNames(getStyles, {
       theme: this.props.theme!,

@@ -56,7 +56,6 @@ export const getStyles = (props: IFabricStyleProps): IFabricStyles => {
       className
     ],
     bodyThemed: [
-      classNames.bodyThemed,
       {
         backgroundColor: theme.semanticColors.bodyBackground
       }

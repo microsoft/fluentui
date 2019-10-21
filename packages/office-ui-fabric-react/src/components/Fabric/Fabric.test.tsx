@@ -14,4 +14,10 @@ describe('Fabric', () => {
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
+
+  it('renders a Fabric component with applyThemeToBody correctly', () => {
+    const component = renderer.create(<Fabric applyThemeToBody>test</Fabric>);
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
 });
