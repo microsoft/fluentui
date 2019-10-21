@@ -85,7 +85,7 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
 
   const fieldPrefixSuffix: IStyle = {
     background: semanticColors.disabledBackground, // Suffix/Prefix are not editable so the disabled slot perfectly fits.
-    color: !disabled ? semanticColors.inputPlaceholderText : semanticColors.disabledText,
+    color: !disabled ? semanticColors.inputPlaceholderText : semanticColors.disabledBodyText,
     display: 'flex',
     alignItems: 'center',
     padding: '0 10px',
@@ -104,7 +104,7 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
   ];
 
   const disabledPlaceholderStyles: IStyle = {
-    color: semanticColors.disabledText
+    color: semanticColors.disabledBodyText
   };
 
   return {
@@ -333,7 +333,7 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
         {
           backgroundColor: semanticColors.disabledBackground,
           borderColor: 'transparent',
-          color: semanticColors.disabledText
+          color: semanticColors.disabledBodyText
         },
         getPlaceholderStyles(disabledPlaceholderStyles)
       ],
@@ -376,7 +376,7 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
         lineHeight: 18
       },
       disabled && {
-        color: semanticColors.disabledText
+        color: semanticColors.disabledBodyText
       }
     ],
     description: [
