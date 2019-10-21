@@ -376,10 +376,8 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
     if (!this.props.disableAutoFocus) {
       if (!this.state.isDatePickerShown && !this.props.disabled) {
         this._showDatePickerPopup();
-      } else {
-        if (this.props.allowTextInput) {
-          this._dismissDatePickerPopup();
-        }
+      } else if (this.props.allowTextInput) {
+        this._dismissDatePickerPopup();
       }
     } else if (this.props.allowTextInput) {
       this._dismissDatePickerPopup();
@@ -390,10 +388,8 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
     ev.stopPropagation();
     if (!this.state.isDatePickerShown && !this.props.disabled) {
       this._showDatePickerPopup();
-    } else {
-      if (this.props.allowTextInput) {
-        this._dismissDatePickerPopup();
-      }
+    } else if (this.props.allowTextInput) {
+      this._dismissDatePickerPopup();
     }
   };
 
