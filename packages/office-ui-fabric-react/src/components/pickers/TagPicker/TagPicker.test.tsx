@@ -43,6 +43,14 @@ describe('TagPicker', () => {
     expect(tree).toMatchSnapshot();
   });
 
+  it('renders picker with selected item correctly', () => {
+    const component = renderer.create(
+      <TagPicker onResolveSuggestions={onResolveSuggestions} selectedItems={[{ key: 'test', name: 'text' }]} />
+    );
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
   it('can search for and select tags', () => {
     const root = document.createElement('div');
     document.body.appendChild(root);

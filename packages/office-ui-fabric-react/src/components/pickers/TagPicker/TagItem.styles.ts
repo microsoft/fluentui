@@ -15,13 +15,14 @@ const TAG_HEIGHT = 26;
 export function getStyles(props: ITagItemStyleProps): ITagItemStyles {
   const { className, theme, selected, disabled } = props;
 
-  const { palette, effects } = theme;
+  const { palette, effects, fonts, semanticColors } = theme;
 
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
   return {
     root: [
       classNames.root,
+      fonts.medium,
       getFocusStyle(theme),
       {
         boxSizing: 'content-box',
@@ -36,6 +37,7 @@ export function getStyles(props: ITagItemStyleProps): ITagItemStyles {
         maxWidth: 300,
         minWidth: 0, // needed to prevent long tags from overflowing container
         borderRadius: effects.roundedCorner2,
+        color: semanticColors.inputText,
         background: !selected || disabled ? palette.neutralLighter : palette.themePrimary,
         selectors: {
           ':hover': [

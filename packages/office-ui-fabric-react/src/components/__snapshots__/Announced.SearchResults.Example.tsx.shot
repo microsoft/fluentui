@@ -99,11 +99,17 @@ exports[`Component Examples renders Announced.SearchResults.Example.tsx correctl
             className=
                 ms-BasePicker-input
                 {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
                   align-self: flex-end;
                   background-color: transparent;
                   border-radius: 2px;
                   border: none;
+                  color: #323130;
                   flex-grow: 1;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
                   height: 30px;
                   outline: none;
                   padding-bottom: 0;
