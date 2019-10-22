@@ -288,9 +288,6 @@ exports[`Component Examples renders ChoiceGroup.Icon.Example.tsx correctly 1`] =
               >
                 Day
               </span>
-              <div
-                className="ms-ChoiceFieldDescription"
-              />
             </div>
           </label>
         </div>
@@ -508,9 +505,6 @@ exports[`Component Examples renders ChoiceGroup.Icon.Example.tsx correctly 1`] =
               >
                 Week
               </span>
-              <div
-                className="ms-ChoiceFieldDescription"
-              />
             </div>
           </label>
         </div>
@@ -724,9 +718,6 @@ exports[`Component Examples renders ChoiceGroup.Icon.Example.tsx correctly 1`] =
               >
                 Month
               </span>
-              <div
-                className="ms-ChoiceFieldDescription"
-              />
             </div>
           </label>
         </div>

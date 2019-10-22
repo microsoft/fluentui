@@ -229,9 +229,6 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 >
                   Default
                 </span>
-                <div
-                  className="ms-ChoiceFieldDescription"
-                />
               </label>
             </div>
           </div>
@@ -375,9 +372,6 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 >
                   Error MessageBar
                 </span>
-                <div
-                  className="ms-ChoiceFieldDescription"
-                />
               </label>
             </div>
           </div>
@@ -521,9 +515,6 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 >
                   Blocked MessageBar
                 </span>
-                <div
-                  className="ms-ChoiceFieldDescription"
-                />
               </label>
             </div>
           </div>
@@ -667,9 +658,6 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 >
                   SevereWarning MessageBar
                 </span>
-                <div
-                  className="ms-ChoiceFieldDescription"
-                />
               </label>
             </div>
           </div>
@@ -813,9 +801,6 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 >
                   Success MessageBar
                 </span>
-                <div
-                  className="ms-ChoiceFieldDescription"
-                />
               </label>
             </div>
           </div>
@@ -959,9 +944,6 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 >
                   Warning MessageBar - single line
                 </span>
-                <div
-                  className="ms-ChoiceFieldDescription"
-                />
               </label>
             </div>
           </div>
@@ -1105,9 +1087,6 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 >
                   Warning MessageBar - multiline
                 </span>
-                <div
-                  className="ms-ChoiceFieldDescription"
-                />
               </label>
             </div>
           </div>
@@ -1251,9 +1230,6 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 >
                   Show All
                 </span>
-                <div
-                  className="ms-ChoiceFieldDescription"
-                />
               </label>
             </div>
           </div>

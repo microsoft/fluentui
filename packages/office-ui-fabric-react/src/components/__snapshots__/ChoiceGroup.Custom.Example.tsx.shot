@@ -202,9 +202,6 @@ exports[`Component Examples renders ChoiceGroup.Custom.Example.tsx correctly 1`]
               >
                 Mark displayed items as read after
               </span>
-              <div
-                className="ms-ChoiceFieldDescription"
-              />
             </label>
             <div
               className=
@@ -514,9 +511,6 @@ exports[`Component Examples renders ChoiceGroup.Custom.Example.tsx correctly 1`]
             >
               Option B
             </span>
-            <div
-              className="ms-ChoiceFieldDescription"
-            />
           </label>
         </div>
       </div>
@@ -641,9 +635,6 @@ exports[`Component Examples renders ChoiceGroup.Custom.Example.tsx correctly 1`]
             >
               Option C
             </span>
-            <div
-              className="ms-ChoiceFieldDescription"
-            />
           </label>
         </div>
       </div>
@@ -787,9 +778,6 @@ exports[`Component Examples renders ChoiceGroup.Custom.Example.tsx correctly 1`]
             >
               Option D
             </span>
-            <div
-              className="ms-ChoiceFieldDescription"
-            />
           </label>
         </div>
       </div>

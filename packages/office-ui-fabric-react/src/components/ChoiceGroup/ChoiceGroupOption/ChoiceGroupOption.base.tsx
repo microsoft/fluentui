@@ -128,7 +128,7 @@ export class ChoiceGroupOptionBase extends React.Component<IChoiceGroupOptionPro
         <span id={props.labelId} className="ms-ChoiceFieldLabel">
           {props.text}
         </span>
-        <div className="ms-ChoiceFieldDescription">{props.description}</div>
+        {props.description && <div className="ms-ChoiceFieldDescription">{props.description}</div>}
       </>
     );
   };

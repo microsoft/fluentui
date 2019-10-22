@@ -199,9 +199,6 @@ exports[`Component Examples renders ChoiceGroup.Basic.Example.tsx correctly 1`] 
             >
               Option A
             </span>
-            <div
-              className="ms-ChoiceFieldDescription"
-            />
           </label>
         </div>
       </div>
@@ -346,9 +343,6 @@ exports[`Component Examples renders ChoiceGroup.Basic.Example.tsx correctly 1`] 
             >
               Option B
             </span>
-            <div
-              className="ms-ChoiceFieldDescription"
-            />
           </label>
         </div>
       </div>
@@ -474,9 +468,6 @@ exports[`Component Examples renders ChoiceGroup.Basic.Example.tsx correctly 1`] 
             >
               Option C
             </span>
-            <div
-              className="ms-ChoiceFieldDescription"
-            />
           </label>
         </div>
       </div>
