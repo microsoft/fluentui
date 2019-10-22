@@ -22,7 +22,7 @@ const _items: ICommandBarItemProps[] = [
   {
     key: 'newItem',
     text: 'New',
-    cacheKey: 'myCacheKey', // changing this key will invalidate this items cache
+    cacheKey: 'myCacheKey', // changing this key will invalidate this item's cache
     iconProps: { iconName: 'Add' },
     subMenuProps: {
       items: [

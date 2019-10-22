@@ -1,0 +1,9 @@
+{
+  "type": "minor",
+  "comment": "ContextualMenu: Tightening types of onDismiss callback.",
+  "packageName": "office-ui-fabric-react",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "commit": "422c0c5b31a2348c3a8f1c94eca91d6a6a776ccd",
+  "date": "2019-10-17T20:13:10.248Z",
+  "file": "D:\\office-ui-fabric-react\\change\\office-ui-fabric-react-2019-10-17-13-13-10-buttonMenuEvents.json"
+}

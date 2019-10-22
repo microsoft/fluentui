@@ -34,6 +34,7 @@ export function getStyles(props: ITagItemStyleProps): ITagItemStyles {
         display: 'flex',
         flexWrap: 'nowrap',
         maxWidth: 300,
+        minWidth: 0, // needed to prevent long tags from overflowing container
         borderRadius: effects.roundedCorner2,
         background: !selected || disabled ? palette.neutralLighter : palette.themePrimary,
         selectors: {

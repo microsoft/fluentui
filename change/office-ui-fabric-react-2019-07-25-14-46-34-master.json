@@ -1,0 +1,8 @@
+{
+  "comment": "consume suggestionsAvailableAlertText prop to floating picker, so that the screen readers can announce the apperance of suggestions when the prop is set.",
+  "type": "patch",
+  "packageName": "office-ui-fabric-react",
+  "email": "email not defined",
+  "commit": "98295b29d8f60465f38c8ec2ccc10c554f3dca78",
+  "date": "2019-07-25T21:46:34.091Z"
+}

@@ -284,11 +284,16 @@ exports[`Component Examples renders ContextualMenu.Directional.Example.tsx corre
         onKeyDown={[Function]}
         onKeyUp={[Function]}
         onMouseDown={[Function]}
-        role="button"
+        role="listbox"
         tabIndex={0}
       >
         <span
+          aria-atomic={true}
           aria-invalid={false}
+          aria-live="polite"
+          aria-posinset={5}
+          aria-selected={true}
+          aria-setsize={14}
           className=
               ms-Dropdown-title
               {
@@ -316,12 +321,10 @@ exports[`Component Examples renders ContextualMenu.Directional.Example.tsx corre
                 text-overflow: ellipsis;
                 white-space: nowrap;
               }
+          id="Dropdown1-option"
+          role="option"
         >
-          <span
-            id="Dropdown1-option"
-          >
-            Bottom Left Edge
-          </span>
+          Bottom Left Edge
         </span>
         <span
           className=

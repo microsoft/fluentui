@@ -205,6 +205,7 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
       theme,
       panelProps,
       calloutProps,
+      multiSelect,
       onRenderTitle = this._onRenderTitle,
       onRenderContainer = this._onRenderContainer,
       onRenderCaretDown = this._onRenderCaretDown,
@@ -224,7 +225,17 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
       : isOpen && selectedIndices.length === 1 && selectedIndices[0] >= 0
       ? this._listId + selectedIndices[0]
       : undefined;
-
+    const ariaAttrs =
+      multiSelect || disabled
+        ? {}
+        : // single select
+          {
+            role: 'listbox',
+            childRole: 'option',
+            ariaSetSize: this._sizePosCache.optionSetSize,
+            ariaPosInSet: this._sizePosCache.positionInSet(selectedIndices[0]),
+            ariaSelected: selectedIndices[0] === undefined ? undefined : true
+          };
     this._classNames = getClassNames(propStyles, {
       theme,
       className,
@@ -252,12 +263,16 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
               ref={this._dropDown}
               id={id}
               tabIndex={disabled ? -1 : 0}
-              role="button"
+              role={ariaAttrs.role}
               aria-haspopup="listbox"
               aria-expanded={isOpen ? 'true' : 'false'}
               aria-label={ariaLabel}
               aria-labelledby={label && !ariaLabel ? this._labelId : undefined}
-              aria-describedby={mergeAriaAttributeValues(this._optionId, keytipAttributes['aria-describedby'])}
+              aria-describedby={mergeAriaAttributeValues(
+                this._optionId,
+                keytipAttributes['aria-describedby'],
+                hasErrorMessage ? this._id + '-errorMessage' : undefined
+              )}
               aria-activedescendant={ariaActiveDescendant}
               aria-required={required}
               aria-disabled={disabled}
@@ -271,7 +286,17 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
               onMouseDown={this._onDropdownMouseDown}
               onFocus={this._onFocus}
             >
-              <span className={this._classNames.title} aria-invalid={hasErrorMessage}>
+              <span
+                id={this._optionId}
+                className={this._classNames.title}
+                aria-live="polite"
+                aria-atomic={true}
+                aria-invalid={hasErrorMessage}
+                role={ariaAttrs.childRole}
+                aria-setsize={ariaAttrs.ariaSetSize}
+                aria-posinset={ariaAttrs.ariaPosInSet}
+                aria-selected={ariaAttrs.ariaSelected}
+              >
                 {// If option is selected render title, otherwise render the placeholder text
                 selectedOptions.length
                   ? onRenderTitle(selectedOptions, this._onRenderTitle)
@@ -432,7 +457,7 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
     const { multiSelectDelimiter = ', ' } = this.props;
 
     const displayTxt = items.map(i => i.text).join(multiSelectDelimiter);
-    return <span id={this._optionId}>{displayTxt}</span>;
+    return <>{displayTxt}</>;
   };
 
   /** Render placeholder text in dropdown input */
@@ -440,7 +465,7 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
     if (!this._placeholder) {
       return null;
     }
-    return <span id={this._optionId}>{this._placeholder}</span>;
+    return <>{this._placeholder}</>;
   };
 
   /** Render Callout or Panel container and pass in list */
