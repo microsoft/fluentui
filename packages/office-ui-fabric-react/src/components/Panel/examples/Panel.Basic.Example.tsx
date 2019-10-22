@@ -3,9 +3,7 @@ import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { Panel } from 'office-ui-fabric-react/lib/Panel';
 import { useConstCallback } from '@uifabric/react-hooks';
 
-const explanation = "This panel is non-modal: even when it's open, it allows interacting with content outside the panel.";
-
-export const PanelNonModalExample: React.FunctionComponent = () => {
+export const PanelBasicExample: React.FunctionComponent = () => {
   const [isOpen, setIsOpen] = React.useState(false);
 
   const openPanel = useConstCallback(() => setIsOpen(true));
@@ -13,19 +11,15 @@ export const PanelNonModalExample: React.FunctionComponent = () => {
 
   return (
     <div>
-      {explanation}
-      <br />
-      <br />
       <DefaultButton text="Open panel" onClick={openPanel} />
       <Panel
-        headerText="Non-modal panel"
-        // this prop makes the panel non-modal
-        isBlocking={false}
+        headerText="Sample panel"
         isOpen={isOpen}
         onDismiss={dismissPanel}
+        // You MUST provide this prop! Otherwise screen readers will just say "button" with no label.
         closeButtonAriaLabel="Close"
       >
-        <span>{explanation}</span>
+        <span>Content goes here.</span>
       </Panel>
     </div>
   );
