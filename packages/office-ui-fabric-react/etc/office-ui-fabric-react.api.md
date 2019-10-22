@@ -2254,6 +2254,7 @@ export interface IChoiceGroupOption extends React.InputHTMLAttributes<HTMLElemen
     ariaLabel?: string;
     // @deprecated
     checked?: boolean;
+    description?: string;
     disabled?: boolean;
     iconProps?: IIconProps;
     id?: string;
