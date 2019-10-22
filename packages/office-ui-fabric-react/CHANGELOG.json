@@ -2,6 +2,42 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Tue, 22 Oct 2019 12:32:05 GMT",
+      "tag": "office-ui-fabric-react_v7.54.0",
+      "version": "7.54.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "consume suggestionsAvailableAlertText prop to floating picker, so that the screen readers can announce the apperance of suggestions when the prop is set.",
+            "author": "email not defined",
+            "commit": "98295b29d8f60465f38c8ec2ccc10c554f3dca78"
+          },
+          {
+            "comment": "Fix getDerivedStateFromProps signatures",
+            "author": "elcraig@microsoft.com",
+            "commit": "437c49f055744dc64f13e6ef8c71f5f2d5110d0a"
+          },
+          {
+            "comment": "TagPicker: prevent long items from overflowing narrow container",
+            "author": "elcraig@microsoft.com",
+            "commit": "3d330f77a317b5cbbfed105c270b7b4b942fa667"
+          },
+          {
+            "comment": "TagPicker: Close button high contrast color fix",
+            "author": "joschect@microsoft.com",
+            "commit": "6204b561520761c77204f26d331cbfb6c6ae3e2d"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "ContextualMenu: Tightening types of onDismiss callback.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "422c0c5b31a2348c3a8f1c94eca91d6a6a776ccd"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 21 Oct 2019 12:33:23 GMT",
       "tag": "office-ui-fabric-react_v7.53.1",
       "version": "7.53.1",
