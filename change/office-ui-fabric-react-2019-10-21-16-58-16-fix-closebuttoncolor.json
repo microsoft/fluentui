@@ -1,0 +1,9 @@
+{
+  "type": "patch",
+  "comment": "TagPicker: Close button high contrast color fix",
+  "packageName": "office-ui-fabric-react",
+  "email": "joschect@microsoft.com",
+  "commit": "6204b561520761c77204f26d331cbfb6c6ae3e2d",
+  "date": "2019-10-21T23:58:16.404Z",
+  "file": "C:\\Users\\Joschect\\Git\\office-ui-fabric-react\\change\\office-ui-fabric-react-2019-10-21-16-58-16-fix-closebuttoncolor.json"
+}

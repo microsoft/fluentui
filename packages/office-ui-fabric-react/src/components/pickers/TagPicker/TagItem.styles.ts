@@ -117,9 +117,6 @@ export function getStyles(props: ITagItemStyleProps): ITagItemStyles {
           ':hover': {
             color: palette.white,
             background: palette.themeDark
-          },
-          [HighContrastSelector]: {
-            color: 'HighlightText'
           }
         }
       },
