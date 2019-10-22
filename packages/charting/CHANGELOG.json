@@ -2,6 +2,20 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "date": "Tue, 22 Oct 2019 12:32:05 GMT",
+      "tag": "@uifabric/charting_v0.137.1",
+      "version": "0.137.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix getDerivedStateFromProps signatures",
+            "author": "elcraig@microsoft.com",
+            "commit": "437c49f055744dc64f13e6ef8c71f5f2d5110d0a"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 09 Oct 2019 22:25:09 GMT",
       "tag": "@uifabric/charting_v0.137.0",
       "version": "0.137.0",

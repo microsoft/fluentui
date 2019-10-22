@@ -1,7 +1,19 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 21 Oct 2019 12:33:23 GMT and should not be manually modified.
+This log was last generated on Tue, 22 Oct 2019 12:32:05 GMT and should not be manually modified.
 
+## 7.54.0
+Tue, 22 Oct 2019 12:32:05 GMT
+
+### Minor changes
+
+- ContextualMenu: Tightening types of onDismiss callback. (Humberto.Morimoto@microsoft.com)
+### Patches
+
+- consume suggestionsAvailableAlertText prop to floating picker, so that the screen readers can announce the apperance of suggestions when the prop is set. (email not defined)
+- Fix getDerivedStateFromProps signatures (elcraig@microsoft.com)
+- TagPicker: prevent long items from overflowing narrow container (elcraig@microsoft.com)
+- TagPicker: Close button high contrast color fix (joschect@microsoft.com)
 ## 7.53.1
 Mon, 21 Oct 2019 12:33:23 GMT
 

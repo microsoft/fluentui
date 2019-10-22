@@ -21,7 +21,6 @@ export function getStyles(props: ISuggestionsStyleProps): ISuggestionsStyles {
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
   const actionButtonStyles: IStyle = {
-    background: 'none',
     backgroundColor: 'transparent',
     border: 0,
     cursor: 'pointer',
