@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "let keyup event to propagate",
+  "comment": "ComboBox: Allow Space KeyUp event to propagate",
   "packageName": "office-ui-fabric-react",
   "email": "xgao@microsoft.com",
   "commit": "31043b5ba01a88858e161416914df0c2a3365d32",
