@@ -95,6 +95,11 @@ export interface IChoiceGroupOption extends React.InputHTMLAttributes<HTMLElemen
   text: string;
 
   /**
+   * The description string for the option.
+   */
+  description?: string;
+
+  /**
    * Optional override of option render
    */
   onRenderField?: IRenderFunction<IChoiceGroupOption>;

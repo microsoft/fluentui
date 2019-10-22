@@ -249,6 +249,10 @@ export const getStyles = (props: IChoiceGroupOptionStyleProps): IChoiceGroupOpti
         selectors: {
           '.ms-ChoiceFieldLabel': {
             display: 'inline-block'
+          },
+          '.ms-ChoiceFieldDescription': {
+            padding: '5px 0 0 26px',
+            color: semanticColors.disabledBodyText
           }
         }
       },

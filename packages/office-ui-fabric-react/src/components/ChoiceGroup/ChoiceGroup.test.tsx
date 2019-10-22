@@ -44,6 +44,14 @@ describe('ChoiceGroup', () => {
     expect(tree).toMatchSnapshot();
   });
 
+  it('renders ChoiceGroup with description correctly', () => {
+    const options: IChoiceGroupOption[] = merge([], TEST_OPTIONS);
+    options[2].description =  'Description for 3';
+    const component = renderer.create(<ChoiceGroup className="testClassName" options={options} required />);
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
   it('does not use className prop from parent on label', () => {
     choiceGroup = mount(<ChoiceGroup className="testClassName" label="test label" options={TEST_OPTIONS} required />);
     const label = choiceGroup.getDOMNode().querySelector('label');

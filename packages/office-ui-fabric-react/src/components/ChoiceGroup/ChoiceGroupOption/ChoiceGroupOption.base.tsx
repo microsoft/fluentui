@@ -124,9 +124,12 @@ export class ChoiceGroupOptionBase extends React.Component<IChoiceGroupOptionPro
 
   private _onRenderLabel = (props: IChoiceGroupOptionProps): JSX.Element => {
     return (
-      <span id={props.labelId} className="ms-ChoiceFieldLabel">
-        {props.text}
-      </span>
+      <>
+        <span id={props.labelId} className="ms-ChoiceFieldLabel">
+          {props.text}
+        </span>
+        <div className="ms-ChoiceFieldDescription">{props.description}</div>
+      </>
     );
   };
 }

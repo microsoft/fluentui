@@ -24,6 +24,13 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
           display: inline-block;
           padding-left: 26px;
         }
+        & .ms-ChoiceFieldDescription {
+          color: #a19f9d;
+          padding-bottom: 0;
+          padding-left: 26px;
+          padding-right: 0;
+          padding-top: 5px;
+        }
   >
     <div
       className=
@@ -130,6 +137,9 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
         >
           Option A
         </span>
+        <div
+          className="ms-ChoiceFieldDescription"
+        />
       </label>
     </div>
   </div>
@@ -154,6 +164,13 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
         & .ms-ChoiceFieldLabel {
           display: inline-block;
           padding-left: 26px;
+        }
+        & .ms-ChoiceFieldDescription {
+          color: #a19f9d;
+          padding-bottom: 0;
+          padding-left: 26px;
+          padding-right: 0;
+          padding-top: 5px;
         }
   >
     <div
@@ -282,6 +299,9 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
         >
           Option B
         </span>
+        <div
+          className="ms-ChoiceFieldDescription"
+        />
       </label>
     </div>
   </div>
@@ -306,6 +326,13 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
         & .ms-ChoiceFieldLabel {
           display: inline-block;
           padding-left: 26px;
+        }
+        & .ms-ChoiceFieldDescription {
+          color: #a19f9d;
+          padding-bottom: 0;
+          padding-left: 26px;
+          padding-right: 0;
+          padding-top: 5px;
         }
   >
     <div
@@ -435,6 +462,9 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
         >
           Option C
         </span>
+        <div
+          className="ms-ChoiceFieldDescription"
+        />
       </label>
     </div>
   </div>
@@ -459,6 +489,13 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
         & .ms-ChoiceFieldLabel {
           display: inline-block;
           padding-left: 26px;
+        }
+        & .ms-ChoiceFieldDescription {
+          color: #a19f9d;
+          padding-bottom: 0;
+          padding-left: 26px;
+          padding-right: 0;
+          padding-top: 5px;
         }
   >
     <div
@@ -547,6 +584,9 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
         >
           Option D
         </span>
+        <div
+          className="ms-ChoiceFieldDescription"
+        />
       </label>
     </div>
   </div>
@@ -571,6 +611,13 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
         & .ms-ChoiceFieldLabel {
           display: inline-block;
           padding-left: 26px;
+        }
+        & .ms-ChoiceFieldDescription {
+          color: #a19f9d;
+          padding-bottom: 0;
+          padding-left: 26px;
+          padding-right: 0;
+          padding-top: 5px;
         }
   >
     <div
@@ -670,6 +717,9 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
         >
           Option E
         </span>
+        <div
+          className="ms-ChoiceFieldDescription"
+        />
       </label>
     </div>
   </div>
@@ -700,6 +750,13 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
         }
         & .ms-ChoiceFieldLabel {
           display: inline-block;
+        }
+        & .ms-ChoiceFieldDescription {
+          color: #a19f9d;
+          padding-bottom: 0;
+          padding-left: 26px;
+          padding-right: 0;
+          padding-top: 5px;
         }
   >
     <div
@@ -874,6 +931,9 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
           >
             Option F
           </span>
+          <div
+            className="ms-ChoiceFieldDescription"
+          />
         </div>
       </label>
     </div>
@@ -905,6 +965,13 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
         }
         & .ms-ChoiceFieldLabel {
           display: inline-block;
+        }
+        & .ms-ChoiceFieldDescription {
+          color: #a19f9d;
+          padding-bottom: 0;
+          padding-left: 26px;
+          padding-right: 0;
+          padding-top: 5px;
         }
   >
     <div
@@ -1100,6 +1167,9 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
           >
             Option G
           </span>
+          <div
+            className="ms-ChoiceFieldDescription"
+          />
         </div>
       </label>
     </div>
@@ -1131,6 +1201,13 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
         }
         & .ms-ChoiceFieldLabel {
           display: inline-block;
+        }
+        & .ms-ChoiceFieldDescription {
+          color: #a19f9d;
+          padding-bottom: 0;
+          padding-left: 26px;
+          padding-right: 0;
+          padding-top: 5px;
         }
   >
     <div
@@ -1324,6 +1401,9 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
           >
             Option H
           </span>
+          <div
+            className="ms-ChoiceFieldDescription"
+          />
         </div>
       </label>
     </div>
@@ -1355,6 +1435,13 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
         }
         & .ms-ChoiceFieldLabel {
           display: inline-block;
+        }
+        & .ms-ChoiceFieldDescription {
+          color: #a19f9d;
+          padding-bottom: 0;
+          padding-left: 26px;
+          padding-right: 0;
+          padding-top: 5px;
         }
   >
     <div
@@ -1525,6 +1612,9 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
           >
             Option I
           </span>
+          <div
+            className="ms-ChoiceFieldDescription"
+          />
         </div>
       </label>
     </div>

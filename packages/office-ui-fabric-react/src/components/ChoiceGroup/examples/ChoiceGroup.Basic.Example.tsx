@@ -22,7 +22,8 @@ export const ChoiceGroupBasicExample: React.FunctionComponent = () => {
         },
         {
           key: 'D',
-          text: 'Option D'
+          text: 'Option D',
+          description: 'This is a description for option D.'
         }
       ]}
       onChange={_onChange}
