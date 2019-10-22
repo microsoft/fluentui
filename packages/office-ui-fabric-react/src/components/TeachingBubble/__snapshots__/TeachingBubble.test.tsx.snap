@@ -95,8 +95,8 @@ exports[`TeachingBubble renders TeachingBubble correctly 1`] = `
                 ms-TeachingBubble-bodycontent
                 {
                   padding-bottom: 20px;
-                  padding-left: 24px;
-                  padding-right: 24px;
+                  padding-left: 20px;
+                  padding-right: 20px;
                   padding-top: 20px;
                 }
           >
@@ -113,7 +113,7 @@ exports[`TeachingBubble renders TeachingBubble correctly 1`] = `
                     {
                       color: #ffffff;
                       font-size: 14px;
-                      font-weight: 400;
+                      font-weight: 300;
                       margin-bottom: 0px;
                       margin-left: 0px;
                       margin-right: 0px;
@@ -156,8 +156,8 @@ exports[`TeachingBubble renders TeachingBubbleContent correctly 1`] = `
         ms-TeachingBubble-bodycontent
         {
           padding-bottom: 20px;
-          padding-left: 24px;
-          padding-right: 24px;
+          padding-left: 20px;
+          padding-right: 20px;
           padding-top: 20px;
         }
   >
@@ -201,7 +201,7 @@ exports[`TeachingBubble renders TeachingBubbleContent correctly 1`] = `
             {
               color: #ffffff;
               font-size: 14px;
-              font-weight: 400;
+              font-weight: 300;
               margin-bottom: 0px;
               margin-left: 0px;
               margin-right: 0px;
@@ -240,8 +240,8 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
         ms-TeachingBubble-bodycontent
         {
           padding-bottom: 20px;
-          padding-left: 24px;
-          padding-right: 24px;
+          padding-left: 20px;
+          padding-right: 20px;
           padding-top: 20px;
         }
   >
@@ -285,7 +285,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
             {
               color: #ffffff;
               font-size: 14px;
-              font-weight: 400;
+              font-weight: 300;
               margin-bottom: 0px;
               margin-left: 0px;
               margin-right: 0px;
@@ -297,70 +297,129 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
     </div>
     <div
       className=
-          ms-Stack
           ms-TeachingBubble-footer
           {
             align-items: center;
-            box-sizing: border-box;
             color: #ffffff;
             display: flex;
-            flex-direction: row;
-            flex-wrap: nowrap;
-            flex: auto;
-            height: auto;
-            justify-content: flex-end;
-            width: auto;
-          }
-          & > * {
-            text-overflow: ellipsis;
           }
           & > *:not(:first-child) {
-            margin-left: 0px;
-          }
-          & > *:not(.ms-StackItem) {
-            flex-shrink: 1;
-          }
-          & .ms-Button:not(:first-child) {
-            margin-left: 10px;
+            margin-left: 20px;
           }
     >
-      <div
+      <button
         className=
-            ms-StackItem
+            ms-Button
+            ms-Button--primary
+            ms-TeachingBubble-primaryButton
+            primary-className
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
-              align-self: center;
-              flex-shrink: 1;
+              background-color: #ffffff;
+              border-color: #ffffff;
+              border-radius: 0px;
+              border: 1px solid transparent;
+              box-sizing: border-box;
+              color: #ffffff;
+              cursor: pointer;
+              display: inline-block;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
               font-weight: 400;
-              height: auto;
-              width: auto;
+              height: 32px;
+              margin-bottom: 0px;
+              margin-left: 0px;
+              margin-right: 0px;
+              margin-top: 0px;
+              min-width: 80px;
+              outline: transparent;
+              padding-bottom: 0;
+              padding-left: 16px;
+              padding-right: 16px;
+              padding-top: 0;
+              position: relative;
+              text-align: center;
+              text-decoration: none;
+              user-select: none;
+              vertical-align: top;
+              white-space: nowrap;
             }
-      >
-        <span />
-      </div>
-      <div
-        className=
-            ms-StackItem
-            {
+            &::-moz-focus-inner {
+              border: 0;
+            }
+            .ms-Fabric--isFocusVisible &:focus:after {
+              border: 1px solid #ffffff;
+              bottom: 0px;
+              content: "";
+              left: 0px;
+              outline: 1px solid #666666;
+              position: absolute;
+              right: 0px;
+              top: 0px;
+              z-index: 1;
+            }
+            @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+              border: none;
+              bottom: -2px;
+              left: -2px;
+              outline-color: ButtonText;
+              right: -2px;
+              top: -2px;
+            }
+            &:active > * {
+              left: 0px;
+              position: relative;
+              top: 0px;
+            }
+            @media screen and (-ms-high-contrast: active){& {
+              -ms-high-contrast-adjust: none;
+              background-color: WindowText;
+              color: Window;
+            }
+            &:hover {
+              background-color: #deecf9;
+              border-color: #deecf9;
+              color: #ffffff;
+            }
+            @media screen and (-ms-high-contrast: active){&:hover {
+              background-color: Highlight;
+              color: Window;
+            }
+            &:focus {
+              background-color: #deecf9;
+              border-color: #ffffff;
+            }
+            &:active {
+              background-color: #ffffff;
+              border-color: #ffffff;
+              color: #ffffff;
+            }
+            @media screen and (-ms-high-contrast: active){&:active {
+              -ms-high-contrast-adjust: none;
+              background-color: WindowText;
+              color: Window;
+            }
+            & .ms-Button-label {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
-              flex-shrink: 1;
+              color: #0078d4;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
               font-weight: 400;
-              height: auto;
-              width: auto;
             }
+        data-is-focusable={true}
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        onKeyPress={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseUp={[Function]}
+        type="button"
       >
-        <button
+        <div
           className=
-              ms-Button
-              ms-Button--default
-              ms-TeachingBubble-secondaryButton
-              secondary-className
+              ms-Button-flexContainer
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -456,21 +515,18 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
         >
           <div
             className=
-                ms-Button-flexContainer
+                ms-Button-textContainer
                 {
-                  align-items: center;
-                  display: flex;
-                  flex-wrap: nowrap;
-                  height: 100%;
-                  justify-content: center;
+                  flex-grow: 1;
                 }
           >
             <div
               className=
-                  ms-Button-textContainer
+                  ms-Button-label
                   {
                     flex-grow: 1;
                   }
+              id="id__0"
             >
               <div
                 className=
@@ -492,10 +548,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
         </button>
         <button
           className=
-              ms-Button
-              ms-Button--primary
-              ms-TeachingBubble-primaryButton
-              primary-className
+              ms-Button-flexContainer
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -591,32 +644,21 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
                 font-size: 14px;
                 font-weight: 400;
               }
-          data-is-focusable={true}
-          onClick={[Function]}
-          onKeyDown={[Function]}
-          onKeyPress={[Function]}
-          onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseUp={[Function]}
-          type="button"
         >
           <div
             className=
-                ms-Button-flexContainer
+                ms-Button-textContainer
                 {
-                  align-items: center;
-                  display: flex;
-                  flex-wrap: nowrap;
-                  height: 100%;
-                  justify-content: center;
+                  flex-grow: 1;
                 }
           >
             <div
               className=
-                  ms-Button-textContainer
+                  ms-Button-label
                   {
                     flex-grow: 1;
                   }
+              id="id__3"
             >
               <div
                 className=
@@ -638,11 +680,94 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
         </button>
       </div>
     </div>
-    <button
+  </div>
+  <button
+    className=
+        ms-Button
+        ms-Button--icon
+        ms-TeachingBubble-closebutton
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          background-color: transparent;
+          border-radius: 0px;
+          border: none;
+          box-sizing: border-box;
+          color: #ffffff;
+          cursor: pointer;
+          display: inline-block;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 12px;
+          font-weight: 400;
+          height: 32px;
+          margin-bottom: 0px;
+          margin-left: 0px;
+          margin-right: 0px;
+          margin-top: 0px;
+          outline: transparent;
+          padding-bottom: 0;
+          padding-left: 4px;
+          padding-right: 4px;
+          padding-top: 0;
+          position: absolute;
+          right: 0px;
+          text-align: center;
+          text-decoration: none;
+          top: 0px;
+          user-select: none;
+          vertical-align: top;
+          width: 32px;
+        }
+        &::-moz-focus-inner {
+          border: 0;
+        }
+        .ms-Fabric--isFocusVisible &:focus:after {
+          border: 1px solid #ffffff;
+          bottom: 0px;
+          content: "";
+          left: 0px;
+          outline: 1px solid #666666;
+          position: absolute;
+          right: 0px;
+          top: 0px;
+          z-index: 1;
+        }
+        @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+          border: none;
+          bottom: -2px;
+          left: -2px;
+          outline-color: ButtonText;
+          right: -2px;
+          top: -2px;
+        }
+        &:active > * {
+          left: 0px;
+          position: relative;
+          top: 0px;
+        }
+        &:hover {
+          background: transparent;
+          color: #212121;
+        }
+        @media screen and (-ms-high-contrast: active){&:hover {
+          border-color: Highlight;
+          color: Highlight;
+        }
+        &:active {
+          color: #0078d4;
+        }
+    data-is-focusable={true}
+    onClick={[Function]}
+    onKeyDown={[Function]}
+    onKeyPress={[Function]}
+    onKeyUp={[Function]}
+    onMouseDown={[Function]}
+    onMouseUp={[Function]}
+    type="button"
+  >
+    <div
       className=
-          ms-Button
-          ms-Button--icon
-          ms-TeachingBubble-closebutton
+          ms-Button-flexContainer
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
@@ -713,24 +838,28 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
           &:active {
             color: #0078d4;
           }
-      data-is-focusable={true}
-      onClick={[Function]}
-      onKeyDown={[Function]}
-      onKeyPress={[Function]}
-      onKeyUp={[Function]}
-      onMouseDown={[Function]}
-      onMouseUp={[Function]}
-      type="button"
     >
       <div
         className=
-            ms-Button-flexContainer
+            ms-Button-icon
             {
-              align-items: center;
-              display: flex;
-              flex-wrap: nowrap;
-              height: 100%;
-              justify-content: center;
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              display: inline-block;
+              flex-shrink: 0;
+              font-family: "FabricMDL2Icons";
+              font-size: 16px;
+              font-style: normal;
+              font-weight: normal;
+              height: 16px;
+              line-height: 16px;
+              margin-bottom: 0;
+              margin-left: 4px;
+              margin-right: 4px;
+              margin-top: 0;
+              speak: none;
+              text-align: center;
+              vertical-align: middle;
             }
       >
         <i
@@ -792,8 +921,8 @@ exports[`TeachingBubble renders TeachingBubbleContent with condensed headline co
         ms-TeachingBubble-bodycontent
         {
           padding-bottom: 20px;
-          padding-left: 24px;
-          padding-right: 24px;
+          padding-left: 20px;
+          padding-right: 20px;
           padding-top: 20px;
         }
   >
@@ -807,8 +936,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with condensed headline co
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
             font-weight: 600;
-            margin-bottom: 14px;
-            margin-right: 24px;
+            margin-right: 10px;
           }
     >
       <p
@@ -838,7 +966,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with condensed headline co
             {
               color: #ffffff;
               font-size: 14px;
-              font-weight: 400;
+              font-weight: 300;
               margin-bottom: 0px;
               margin-left: 0px;
               margin-right: 0px;
@@ -877,8 +1005,8 @@ exports[`TeachingBubble renders TeachingBubbleContent with custom footer text 1`
         ms-TeachingBubble-bodycontent
         {
           padding-bottom: 20px;
-          padding-left: 24px;
-          padding-right: 24px;
+          padding-left: 20px;
+          padding-right: 20px;
           padding-top: 20px;
         }
   >
@@ -895,7 +1023,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with custom footer text 1`
             {
               color: #ffffff;
               font-size: 14px;
-              font-weight: 400;
+              font-weight: 300;
               margin-bottom: 0px;
               margin-left: 0px;
               margin-right: 0px;
@@ -907,66 +1035,19 @@ exports[`TeachingBubble renders TeachingBubbleContent with custom footer text 1`
     </div>
     <div
       className=
-          ms-Stack
           ms-TeachingBubble-footer
           {
             align-items: center;
-            box-sizing: border-box;
             color: #ffffff;
             display: flex;
-            flex-direction: row;
-            flex-wrap: nowrap;
-            flex: auto;
-            height: auto;
-            justify-content: space-between;
-            width: auto;
-          }
-          & > * {
-            text-overflow: ellipsis;
           }
           & > *:not(:first-child) {
-            margin-left: 0px;
-          }
-          & > *:not(.ms-StackItem) {
-            flex-shrink: 1;
-          }
-          & .ms-Button:not(:first-child) {
-            margin-left: 10px;
+            margin-left: 20px;
           }
     >
-      <div
-        className=
-            ms-StackItem
-            {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              align-self: center;
-              flex-shrink: 1;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 14px;
-              font-weight: 400;
-              height: auto;
-              width: auto;
-            }
-      >
-        <span>
-          1 of 2
-        </span>
-      </div>
-      <div
-        className=
-            ms-StackItem
-            {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              flex-shrink: 1;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 14px;
-              font-weight: 400;
-              height: auto;
-              width: auto;
-            }
-      />
+      <span>
+        1 of 2
+      </span>
     </div>
   </div>
 </div>
@@ -1037,8 +1118,8 @@ exports[`TeachingBubble renders TeachingBubbleContent with image correctly 1`] =
         ms-TeachingBubble-bodycontent
         {
           padding-bottom: 20px;
-          padding-left: 24px;
-          padding-right: 24px;
+          padding-left: 20px;
+          padding-right: 20px;
           padding-top: 20px;
         }
   >
@@ -1082,7 +1163,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with image correctly 1`] =
             {
               color: #ffffff;
               font-size: 14px;
-              font-weight: 400;
+              font-weight: 300;
               margin-bottom: 0px;
               margin-left: 0px;
               margin-right: 0px;
@@ -1121,8 +1202,8 @@ exports[`TeachingBubble renders TeachingBubbleContent with small headline correc
         ms-TeachingBubble-bodycontent
         {
           padding-bottom: 20px;
-          padding-left: 24px;
-          padding-right: 24px;
+          padding-left: 20px;
+          padding-right: 20px;
           padding-top: 20px;
         }
   >
@@ -1136,7 +1217,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with small headline correc
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
             font-weight: 600;
-            margin-right: 24px;
+            margin-right: 10px;
           }
           &:not(:last-child) {
             margin-bottom: 14px;
@@ -1169,7 +1250,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with small headline correc
             {
               color: #ffffff;
               font-size: 14px;
-              font-weight: 400;
+              font-weight: 300;
               margin-bottom: 0px;
               margin-left: 0px;
               margin-right: 0px;
