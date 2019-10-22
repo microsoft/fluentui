@@ -1,0 +1,9 @@
+{
+  "type": "minor",
+  "comment": "description added to choice group",
+  "packageName": "office-ui-fabric-react",
+  "email": "malin.milford@skatteetaten.no",
+  "commit": "f90dcbc4716315bce63618685a0eb2dbd3fcc186",
+  "date": "2019-10-22T12:53:14.704Z",
+  "file": "/home/k25262/git/office-ui-fabric-react/change/office-ui-fabric-react-2019-10-22-14-53-14-10920-Multiple-lines-description-in-ChoiceGroup.json"
+}
