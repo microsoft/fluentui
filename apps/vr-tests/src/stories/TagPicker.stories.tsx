@@ -2,7 +2,7 @@
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecorator } from '../utilities';
+import { FabricDecorator, FabricDecoratorFixedWidth } from '../utilities';
 import { TagPicker, Fabric, ITag } from 'office-ui-fabric-react';
 
 const testTags: ITag[] = [
@@ -75,6 +75,28 @@ storiesOf('TagPicker', module)
     ),
     { rtl: true }
   );
+
+storiesOf('TagPicker', module)
+  .addDecorator(FabricDecoratorFixedWidth)
+  .addDecorator(story => (
+    <Screener steps={new Screener.Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>
+      {story()}
+    </Screener>
+  ))
+  .addStory('With long tag', () => (
+    // This example MUST be inside a narrow container which forces the tag to overflow
+    <Fabric style={{ width: 180 }}>
+      <TagPicker
+        onResolveSuggestions={getList}
+        defaultSelectedItems={[
+          {
+            key: 'test',
+            name: 'Very very long tag (this part should be truncated)'
+          }
+        ]}
+      />
+    </Fabric>
+  ));
 
 storiesOf('TagItem', module)
   .addDecorator(FabricDecorator)

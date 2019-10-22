@@ -36,7 +36,9 @@ describe('TagPicker', () => {
   });
 
   it('renders correctly', () => {
-    const component = renderer.create(<TagPicker onResolveSuggestions={onResolveSuggestions} />);
+    const component = renderer.create(
+      <TagPicker onResolveSuggestions={onResolveSuggestions} defaultSelectedItems={onResolveSuggestions('black')} />
+    );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
@@ -106,6 +108,7 @@ describe('TagPicker', () => {
 
     ReactDOM.unmountComponentAtNode(root);
   });
+
   it('fires change events correctly for controlled components', done => {
     const root = document.createElement('div');
     document.body.appendChild(root);
