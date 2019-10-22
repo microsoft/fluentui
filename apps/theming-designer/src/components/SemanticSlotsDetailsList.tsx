@@ -30,10 +30,10 @@ interface ISemanticSlotsDetailsList {
 export const SemanticSlotsDetailsList: React.StatelessComponent<ISemanticSlotsDetailsListProps> = (
   props: ISemanticSlotsDetailsListProps
 ) => {
-  let countDefaults = 17;
+  let countDefaults = 18;
   let countLinks = 4;
   let countButtons = 25;
-  let countInputs = 18;
+  let countInputs = 17;
   let countLists = 7;
   let countMenus = 8;
 
