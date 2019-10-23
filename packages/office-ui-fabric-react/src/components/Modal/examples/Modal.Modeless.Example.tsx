@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Modal, IDragOptions } from 'office-ui-fabric-react/lib/Modal';
-import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
+import { DefaultButton, IconButton } from 'office-ui-fabric-react/lib/Button';
 import { getId } from 'office-ui-fabric-react/lib/Utilities';
 import * as styles from './Modal.Example.scss';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
@@ -43,9 +43,16 @@ export class ModalModelessExample extends React.Component<{}, IModalModelessExam
         >
           <div className={styles.header}>
             <span id={this._titleId}>Lorem Ipsum</span>
+            <div className={styles.closeButtonContainer}>
+              <IconButton
+                className={styles.close}
+                iconProps={{ iconName: 'Cancel' }}
+                ariaLabel="Close popup modal"
+                onClick={this._closeModal as any}
+              />
+            </div>
           </div>
           <div id={this._subtitleId} className={styles.body}>
-            <DefaultButton onClick={this._closeModal} text="Close" />
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas lorem nulla, malesuada ut sagittis sit amet, vulputate in
               leo. Maecenas vulputate congue sapien eu tincidunt. Etiam eu sem turpis. Fusce tempor sagittis nunc, ut interdum ipsum

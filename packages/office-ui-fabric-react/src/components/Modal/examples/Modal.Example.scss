@@ -1,15 +1,12 @@
 @import '../../../common/common';
 
 .container {
-  height: 80vh;
-  width: 80vw;
   display: flex;
   flex-flow: column nowrap;
   align-items: stretch;
 }
 
 .stickyContainer {
-  width: 80vw;
   display: flex;
   flex-flow: column nowrap;
   align-items: stretch;
@@ -17,14 +14,25 @@
 
 .header {
   flex: 1 1 auto;
-  background: $ms-color-themePrimary;
-  color: #fff;
+  border-top: 4px solid $ms-color-themePrimary;
+  color: $ms-color-neutralPrimary;
   display: flex;
   align-items: center;
-  @include ms-font-xxl;
+  @include ms-fontSize-20;
   @include ms-fontWeight-semibold;
-  padding: 0 28px;
+  padding: 8px 28px;
   min-height: 40px;
+}
+
+.close {
+  color: $ms-color-neutralPrimary;
+  &:hover {
+    color: $ms-color-neutralDark;
+  }
+}
+.closeButtonContainer {
+  padding-top: 6px;
+  margin-left: auto;
 }
 
 .body {

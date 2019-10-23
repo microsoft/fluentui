@@ -1,5 +1,6 @@
 import { IModalStyleProps, IModalStyles } from './Modal.types';
 import { AnimationVariables, getGlobalClassNames, ZIndexes } from '../../Styling';
+import { ScreenWidthMinLarge } from 'office-ui-fabric-react/lib/Styling';
 
 export const animationDuration = AnimationVariables.durationValue2;
 
@@ -67,9 +68,18 @@ export const getStyles = (props: IModalStyleProps): IModalStyles => {
         position: 'relative',
         textAlign: 'left',
         outline: '3px solid transparent',
-        maxHeight: '100%',
+        maxHeight: 'calc(100% - 32px)',
+        maxWidth: 'calc(100% - 32px)',
+        minHeight: '176px',
+        minWidth: '288px',
         overflowY: 'auto',
-        zIndex: isModeless ? ZIndexes.Layer : undefined
+        zIndex: isModeless ? ZIndexes.Layer : undefined,
+        selectors: {
+          [`@media screen and (min-width: ${ScreenWidthMinLarge}px)`]: {
+            maxHeight: 'calc(100% - 80px)',
+            maxWidth: 'calc(100% - 80px)'
+          }
+        }
       },
       topOffsetFixed &&
         hasBeenOpened && {
