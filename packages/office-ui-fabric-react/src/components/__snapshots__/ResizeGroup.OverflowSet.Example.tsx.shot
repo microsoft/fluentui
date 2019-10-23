@@ -3966,7 +3966,6 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                 padding-top: 5px;
                 word-wrap: break-word;
               }
-          htmlFor="Dropdown64"
           id="Dropdown64-label"
         >
           Number of items to render
@@ -3974,6 +3973,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
         <div
           aria-describedby="Dropdown64-option"
           aria-expanded="false"
+          aria-haspopup="listbox"
           aria-labelledby="Dropdown64-label"
           className=
               ms-Dropdown
@@ -4066,13 +4066,13 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
           onFocus={[Function]}
           onKeyDown={[Function]}
           onKeyUp={[Function]}
+          onMouseDown={[Function]}
           role="listbox"
           tabIndex={0}
         >
           <span
             aria-atomic={true}
             aria-invalid={false}
-            aria-label="20"
             aria-live="polite"
             aria-posinset={1}
             aria-selected={true}
@@ -4107,9 +4107,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
             id="Dropdown64-option"
             role="option"
           >
-            <span>
-              20
-            </span>
+            20
           </span>
           <span
             className=

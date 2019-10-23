@@ -99,7 +99,7 @@ Dialog/ @JasonGore
 DocumentCard/ @yiminwu
 Dropdown/ @joschect
 Fabric/ @dzearing
-FacePile/ @markionium @mtennoe
+Facepile/ @markionium @mtennoe
 FolderCover/ @ThomasMichon
 FocusTrapZone/ @JasonGore
 FocusZone/ @JasonGore
@@ -168,7 +168,7 @@ DetailsList/docs/ @KevinTCoughlin
 DocumentCard/docs/ @yiminwu
 # Dropdown/docs/
 # Fabric/docs/
-# FacePile/docs/
+# Facepile/docs/
 # FocusTrapZone/docs/
 # FocusZone/docs/
 GroupedList/docs/  @aditima @KevinTCoughlin

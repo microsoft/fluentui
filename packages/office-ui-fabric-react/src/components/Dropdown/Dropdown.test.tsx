@@ -38,6 +38,8 @@ describe('Dropdown', () => {
       wrapper.unmount();
       wrapper = undefined;
     }
+
+    document.body.innerHTML = '';
   });
 
   describe('single-select', () => {
@@ -274,7 +276,7 @@ describe('Dropdown', () => {
 
       const titleElement = container.querySelector('.ms-Dropdown-title') as HTMLElement;
       // for some reason, JSDOM does not return innerText of 1 so we have to use innerHTML instead.
-      expect(titleElement.innerHTML).toEqual('<span>1</span>');
+      expect(titleElement.innerHTML).toEqual('1');
     });
 
     it('calling programatic focus() with `true` opens up the Dropdown and focuses/selects on first selectable option`', () => {
@@ -341,6 +343,16 @@ describe('Dropdown', () => {
       wrapper = mount(<Dropdown openOnKeyboardFocus label="testgroup" options={DEFAULT_OPTIONS} />);
 
       wrapper.find('.ms-Dropdown').simulate('focus');
+
+      const secondItemElement = document.querySelector('.ms-Dropdown-item[data-index="2"]') as HTMLElement;
+      expect(secondItemElement).toBeTruthy();
+    });
+
+    it('opens on click if openOnKeyboardFocus is true', () => {
+      wrapper = mount(<Dropdown openOnKeyboardFocus label="testgroup" options={DEFAULT_OPTIONS} />);
+
+      wrapper.find('.ms-Dropdown').simulate('mousedown');
+      wrapper.find('.ms-Dropdown').simulate('click');
 
       const secondItemElement = document.querySelector('.ms-Dropdown-item[data-index="2"]') as HTMLElement;
       expect(secondItemElement).toBeTruthy();
@@ -643,14 +655,14 @@ describe('Dropdown', () => {
 
     it('defaultSelectedKey value is respected if Dropdown options change for single-select Dropdown.', () => {
       wrapper = mount(<DropdownWithChangingProps multi={false} />);
-      const dropdownOptionText = wrapper.getDOMNode().querySelector('.ms-Dropdown-title>span') as HTMLSpanElement;
+      const dropdownOptionText = wrapper.getDOMNode().querySelector('.ms-Dropdown-title') as HTMLSpanElement;
 
       expect(dropdownOptionText.innerHTML).toBe('Option b');
     });
 
     it('defaultSelectedKeys value is respected if Dropdown options change for multi-select Dropdown.', () => {
       wrapper = mount(<DropdownWithChangingProps multi={true} />);
-      const dropdownOptionText = wrapper.getDOMNode().querySelector('.ms-Dropdown-title>span') as HTMLSpanElement;
+      const dropdownOptionText = wrapper.getDOMNode().querySelector('.ms-Dropdown-title') as HTMLSpanElement;
 
       expect(dropdownOptionText.innerHTML).toBe('Option b, Option d');
     });

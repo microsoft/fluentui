@@ -911,8 +911,8 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                                             ms-TeachingBubble-bodycontent
                                             {
                                               padding-bottom: 20px;
-                                              padding-left: 20px;
-                                              padding-right: 20px;
+                                              padding-left: 24px;
+                                              padding-right: 24px;
                                               padding-top: 20px;
                                             }
                                       >
@@ -955,7 +955,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                                                 {
                                                   color: #ffffff;
                                                   font-size: 14px;
-                                                  font-weight: 300;
+                                                  font-weight: 400;
                                                   margin-bottom: 0px;
                                                   margin-left: 0px;
                                                   margin-right: 0px;
@@ -966,139 +966,143 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                                             Welcome to the land of Coachmarks!
                                           </p>
                                         </div>
-                                      </div>
-                                      <button
-                                        aria-label="Close"
-                                        className=
-                                            ms-Button
-                                            ms-Button--icon
-                                            ms-TeachingBubble-closebutton
-                                            {
-                                              -moz-osx-font-smoothing: grayscale;
-                                              -webkit-font-smoothing: antialiased;
-                                              background-color: transparent;
-                                              border-radius: 0px;
-                                              border: none;
-                                              box-sizing: border-box;
-                                              color: #ffffff;
-                                              cursor: pointer;
-                                              display: inline-block;
-                                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                                              font-size: 12px;
-                                              font-weight: 400;
-                                              height: 32px;
-                                              outline: transparent;
-                                              padding-bottom: 0;
-                                              padding-left: 4px;
-                                              padding-right: 4px;
-                                              padding-top: 0;
-                                              position: absolute;
-                                              right: 0px;
-                                              text-align: center;
-                                              text-decoration: none;
-                                              top: 0px;
-                                              user-select: none;
-                                              vertical-align: top;
-                                              width: 32px;
-                                            }
-                                            &::-moz-focus-inner {
-                                              border: 0;
-                                            }
-                                            .ms-Fabric--isFocusVisible &:focus:after {
-                                              border: 1px solid transparent;
-                                              bottom: 2px;
-                                              content: "";
-                                              left: 2px;
-                                              outline: 1px solid #605e5c;
-                                              position: absolute;
-                                              right: 2px;
-                                              top: 2px;
-                                              z-index: 1;
-                                            }
-                                            @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                                              border: none;
-                                              bottom: -2px;
-                                              left: -2px;
-                                              outline-color: ButtonText;
-                                              right: -2px;
-                                              top: -2px;
-                                            }
-                                            &:active > * {
-                                              left: 0px;
-                                              position: relative;
-                                              top: 0px;
-                                            }
-                                            &:hover {
-                                              background-color: #f3f2f1;
-                                              background: #106ebe;
-                                              color: #ffffff;
-                                            }
-                                            @media screen and (-ms-high-contrast: active){&:hover {
-                                              border-color: Highlight;
-                                              color: Highlight;
-                                            }
-                                            &:active {
-                                              background-color: #edebe9;
-                                              background: #005a9e;
-                                              color: #ffffff;
-                                            }
-                                        data-is-focusable={true}
-                                        onClick={[Function]}
-                                        onKeyDown={[Function]}
-                                        onKeyPress={[Function]}
-                                        onKeyUp={[Function]}
-                                        onMouseDown={[Function]}
-                                        onMouseUp={[Function]}
-                                        title="Close"
-                                        type="button"
-                                      >
-                                        <span
+                                        <button
+                                          aria-label="Close"
                                           className=
-                                              ms-Button-flexContainer
+                                              ms-Button
+                                              ms-Button--icon
+                                              ms-TeachingBubble-closebutton
                                               {
-                                                align-items: center;
-                                                display: flex;
-                                                flex-wrap: nowrap;
-                                                height: 100%;
-                                                justify-content: center;
+                                                -moz-osx-font-smoothing: grayscale;
+                                                -webkit-font-smoothing: antialiased;
+                                                background-color: transparent;
+                                                border-radius: 0px;
+                                                border: none;
+                                                box-sizing: border-box;
+                                                color: #ffffff;
+                                                cursor: pointer;
+                                                display: inline-block;
+                                                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                                                font-size: 12px;
+                                                font-weight: 400;
+                                                height: 32px;
+                                                margin-bottom: 0;
+                                                margin-left: 0;
+                                                margin-right: 15px;
+                                                margin-top: 15px;
+                                                outline: transparent;
+                                                padding-bottom: 0;
+                                                padding-left: 4px;
+                                                padding-right: 4px;
+                                                padding-top: 0;
+                                                position: absolute;
+                                                right: 0px;
+                                                text-align: center;
+                                                text-decoration: none;
+                                                top: 0px;
+                                                user-select: none;
+                                                vertical-align: top;
+                                                width: 32px;
                                               }
-                                          data-automationid="splitbuttonprimary"
+                                              &::-moz-focus-inner {
+                                                border: 0;
+                                              }
+                                              .ms-Fabric--isFocusVisible &:focus:after {
+                                                border: 1px solid transparent;
+                                                bottom: 2px;
+                                                content: "";
+                                                left: 2px;
+                                                outline: 1px solid #605e5c;
+                                                position: absolute;
+                                                right: 2px;
+                                                top: 2px;
+                                                z-index: 1;
+                                              }
+                                              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                                                border: none;
+                                                bottom: -2px;
+                                                left: -2px;
+                                                outline-color: ButtonText;
+                                                right: -2px;
+                                                top: -2px;
+                                              }
+                                              &:active > * {
+                                                left: 0px;
+                                                position: relative;
+                                                top: 0px;
+                                              }
+                                              &:hover {
+                                                background-color: #f3f2f1;
+                                                background: #106ebe;
+                                                color: #ffffff;
+                                              }
+                                              @media screen and (-ms-high-contrast: active){&:hover {
+                                                border-color: Highlight;
+                                                color: Highlight;
+                                              }
+                                              &:active {
+                                                background-color: #edebe9;
+                                                background: #005a9e;
+                                                color: #ffffff;
+                                              }
+                                          data-is-focusable={true}
+                                          onClick={[Function]}
+                                          onKeyDown={[Function]}
+                                          onKeyPress={[Function]}
+                                          onKeyUp={[Function]}
+                                          onMouseDown={[Function]}
+                                          onMouseUp={[Function]}
+                                          title="Close"
+                                          type="button"
                                         >
-                                          <i
-                                            aria-hidden={true}
+                                          <span
                                             className=
-                                                ms-Icon
-                                                ms-Button-icon
+                                                ms-Button-flexContainer
                                                 {
-                                                  display: inline-block;
+                                                  align-items: center;
+                                                  display: flex;
+                                                  flex-wrap: nowrap;
+                                                  height: 100%;
+                                                  justify-content: center;
                                                 }
-                                                {
-                                                  -moz-osx-font-smoothing: grayscale;
-                                                  -webkit-font-smoothing: antialiased;
-                                                  font-family: "FabricMDL2Icons";
-                                                  font-style: normal;
-                                                  font-weight: normal;
-                                                  speak: none;
-                                                }
-                                                {
-                                                  flex-shrink: 0;
-                                                  font-size: 16px;
-                                                  height: 16px;
-                                                  line-height: 16px;
-                                                  margin-bottom: 0;
-                                                  margin-left: 4px;
-                                                  margin-right: 4px;
-                                                  margin-top: 0;
-                                                  text-align: center;
-                                                  vertical-align: middle;
-                                                }
-                                            data-icon-name="Cancel"
-                                            role="presentation"
+                                            data-automationid="splitbuttonprimary"
                                           >
-                                            
-                                          </i>
-                                        </span>
-                                      </button>
+                                            <i
+                                              aria-hidden={true}
+                                              className=
+                                                  ms-Icon
+                                                  ms-Button-icon
+                                                  {
+                                                    display: inline-block;
+                                                  }
+                                                  {
+                                                    -moz-osx-font-smoothing: grayscale;
+                                                    -webkit-font-smoothing: antialiased;
+                                                    font-family: "FabricMDL2Icons";
+                                                    font-style: normal;
+                                                    font-weight: normal;
+                                                    speak: none;
+                                                  }
+                                                  {
+                                                    flex-shrink: 0;
+                                                    font-size: 16px;
+                                                    height: 16px;
+                                                    line-height: 16px;
+                                                    margin-bottom: 0;
+                                                    margin-left: 4px;
+                                                    margin-right: 4px;
+                                                    margin-top: 0;
+                                                    text-align: center;
+                                                    vertical-align: middle;
+                                                  }
+                                              data-icon-name="Cancel"
+                                              role="presentation"
+                                            >
+                                              
+                                            </i>
+                                          </span>
+                                        </button>
+                                      </div>
                                     </div>
                                   </div>
                                 </div>

@@ -80,15 +80,15 @@ exports[`Component Examples renders Dropdown.Required.Example.tsx correctly 1`] 
               content: ' *';
               padding-right: 12px;
             }
-        htmlFor="Dropdown3"
-        id="Dropdown3-label"
+        id="Dropdown0-label"
       >
         Required dropdown example
       </label>
       <div
-        aria-describedby="Dropdown3-option"
+        aria-describedby="Dropdown0-option"
         aria-expanded="false"
-        aria-labelledby="Dropdown3-label"
+        aria-haspopup="listbox"
+        aria-labelledby="Dropdown0-label"
         aria-required={true}
         className=
             ms-Dropdown
@@ -176,19 +176,19 @@ exports[`Component Examples renders Dropdown.Required.Example.tsx correctly 1`] 
               border-color: #a4262c;
             }
         data-is-focusable={true}
-        id="Dropdown3"
+        id="Dropdown0"
         onBlur={[Function]}
         onClick={[Function]}
         onFocus={[Function]}
         onKeyDown={[Function]}
         onKeyUp={[Function]}
+        onMouseDown={[Function]}
         role="listbox"
         tabIndex={0}
       >
         <span
           aria-atomic={true}
           aria-invalid={false}
-          aria-label="Select an option"
           aria-live="polite"
           aria-setsize={5}
           className=
@@ -220,12 +220,10 @@ exports[`Component Examples renders Dropdown.Required.Example.tsx correctly 1`] 
                 text-overflow: ellipsis;
                 white-space: nowrap;
               }
-          id="Dropdown3-option"
+          id="Dropdown0-option"
           role="option"
         >
-          <span>
-            Select an option
-          </span>
+          Select an option
         </span>
         <span
           className=
@@ -383,7 +381,7 @@ exports[`Component Examples renders Dropdown.Required.Example.tsx correctly 1`] 
                   margin-right: 4px;
                   margin-top: 0;
                 }
-            id="id__0"
+            id="id__1"
           >
             Set focus
           </span>
@@ -399,6 +397,7 @@ exports[`Component Examples renders Dropdown.Required.Example.tsx correctly 1`] 
     <div
       aria-describedby="Dropdown4-option"
       aria-expanded="false"
+      aria-haspopup="listbox"
       aria-required={true}
       className=
           ms-Dropdown
@@ -502,13 +501,13 @@ exports[`Component Examples renders Dropdown.Required.Example.tsx correctly 1`] 
       onFocus={[Function]}
       onKeyDown={[Function]}
       onKeyUp={[Function]}
+      onMouseDown={[Function]}
       role="listbox"
       tabIndex={0}
     >
       <span
         aria-atomic={true}
         aria-invalid={false}
-        aria-label="Required with no label"
         aria-live="polite"
         aria-setsize={5}
         className=
@@ -543,9 +542,7 @@ exports[`Component Examples renders Dropdown.Required.Example.tsx correctly 1`] 
         id="Dropdown4-option"
         role="option"
       >
-        <span>
-          Required with no label
-        </span>
+        Required with no label
       </span>
       <span
         className=

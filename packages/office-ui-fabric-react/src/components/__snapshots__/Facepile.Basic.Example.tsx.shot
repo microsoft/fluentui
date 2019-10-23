@@ -182,6 +182,29 @@ exports[`Component Examples renders Facepile.Basic.Example.tsx correctly 1`] = `
                     src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/persona-female.png"
                   />
                 </div>
+                <div
+                  className=
+                      ms-Persona-presence
+                      {
+                        -ms-high-contrast-adjust: none;
+                        background-clip: content-box;
+                        background-color: #FFAA44;
+                        border-radius: 50%;
+                        border: 2px solid #ffffff;
+                        bottom: -2px;
+                        box-sizing: content-box;
+                        height: 8px;
+                        position: absolute;
+                        right: -2px;
+                        text-align: center;
+                        top: auto;
+                        width: 8px;
+                      }
+                      @media screen and (-ms-high-contrast: active){& {
+                        background-color: WindowText;
+                        border-color: Window;
+                      }
+                />
               </div>
             </div>
           </div>
@@ -305,6 +328,29 @@ exports[`Component Examples renders Facepile.Basic.Example.tsx correctly 1`] = `
                     src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/persona-female.png"
                   />
                 </div>
+                <div
+                  className=
+                      ms-Persona-presence
+                      {
+                        -ms-high-contrast-adjust: none;
+                        background-clip: content-box;
+                        background-color: #6BB700;
+                        border-radius: 50%;
+                        border: 2px solid #ffffff;
+                        bottom: -2px;
+                        box-sizing: content-box;
+                        height: 8px;
+                        position: absolute;
+                        right: -2px;
+                        text-align: center;
+                        top: auto;
+                        width: 8px;
+                      }
+                      @media screen and (-ms-high-contrast: active){& {
+                        background-color: Highlight;
+                        border-color: Window;
+                      }
+                />
               </div>
             </div>
           </div>
@@ -459,6 +505,47 @@ exports[`Component Examples renders Facepile.Basic.Example.tsx correctly 1`] = `
                       AL
                     </span>
                   </div>
+                  <div
+                    className=
+                        ms-Persona-presence
+                        {
+                          -ms-high-contrast-adjust: none;
+                          background-clip: content-box;
+                          background-color: #ffffff;
+                          border-radius: 50%;
+                          border: 2px solid #ffffff;
+                          bottom: -2px;
+                          box-sizing: content-box;
+                          height: 8px;
+                          position: absolute;
+                          right: -2px;
+                          text-align: center;
+                          top: auto;
+                          width: 8px;
+                        }
+                        @media screen and (-ms-high-contrast: active){& {
+                          background-color: WindowText;
+                          border-color: Window;
+                        }
+                        &:before {
+                          border-radius: 50%;
+                          border: 1px solid #8A8886;
+                          box-sizing: border-box;
+                          content: "";
+                          height: 100%;
+                          left: 0px;
+                          position: absolute;
+                          top: 0px;
+                          width: 100%;
+                        }
+                        @media screen and (-ms-high-contrast: active){&:before {
+                          border-color: Window;
+                          height: calc(100% - 2px);
+                          left: 1px;
+                          top: 1px;
+                          width: calc(100% - 2px);
+                        }
+                  />
                 </div>
               </div>
             </span>
@@ -760,15 +847,15 @@ exports[`Component Examples renders Facepile.Basic.Example.tsx correctly 1`] = `
               padding-top: 5px;
               word-wrap: break-word;
             }
-        htmlFor="Dropdown6"
-        id="Dropdown6-label"
+        id="Dropdown5-label"
       >
         Persona Size:
       </label>
       <div
-        aria-describedby="Dropdown6-option"
+        aria-describedby="Dropdown5-option"
         aria-expanded="false"
-        aria-labelledby="Dropdown6-label"
+        aria-haspopup="listbox"
+        aria-labelledby="Dropdown5-label"
         className=
             ms-Dropdown
             {
@@ -853,20 +940,20 @@ exports[`Component Examples renders Facepile.Basic.Example.tsx correctly 1`] = `
               border-color: #a4262c;
             }
         data-is-focusable={true}
-        id="Dropdown6"
+        id="Dropdown5"
         onBlur={[Function]}
         onChange={[Function]}
         onClick={[Function]}
         onFocus={[Function]}
         onKeyDown={[Function]}
         onKeyUp={[Function]}
+        onMouseDown={[Function]}
         role="listbox"
         tabIndex={0}
       >
         <span
           aria-atomic={true}
           aria-invalid={false}
-          aria-label="size32"
           aria-live="polite"
           aria-posinset={4}
           aria-selected={true}
@@ -898,12 +985,10 @@ exports[`Component Examples renders Facepile.Basic.Example.tsx correctly 1`] = `
                 text-overflow: ellipsis;
                 white-space: nowrap;
               }
-          id="Dropdown6-option"
+          id="Dropdown5-option"
           role="option"
         >
-          <span>
-            size32
-          </span>
+          size32
         </span>
         <span
           className=
@@ -1006,7 +1091,7 @@ exports[`Component Examples renders Facepile.Basic.Example.tsx correctly 1`] = `
             @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
               outline: 1px solid ActiveBorder;
             }
-        id="checkbox-5"
+        id="checkbox-6"
         onBlur={[Function]}
         onChange={[Function]}
         onFocus={[Function]}
@@ -1037,7 +1122,7 @@ exports[`Component Examples renders Facepile.Basic.Example.tsx correctly 1`] = `
               right: 0px;
               top: 0px;
             }
-        htmlFor="checkbox-5"
+        htmlFor="checkbox-6"
       >
         <div
           className=

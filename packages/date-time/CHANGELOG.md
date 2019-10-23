@@ -1,7 +1,13 @@
 # Change Log - @uifabric/date-time
 
-This log was last generated on Thu, 03 Oct 2019 23:14:46 GMT and should not be manually modified.
+This log was last generated on Tue, 22 Oct 2019 12:32:05 GMT and should not be manually modified.
 
+## 7.5.3
+Tue, 22 Oct 2019 12:32:05 GMT
+
+### Patches
+
+- Fix getDerivedStateFromProps signatures (elcraig@microsoft.com)
 ## 7.5.2
 Thu, 03 Oct 2019 23:14:46 GMT
 

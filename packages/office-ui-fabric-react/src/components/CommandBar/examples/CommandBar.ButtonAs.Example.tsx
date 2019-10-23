@@ -49,7 +49,7 @@ export class CommandBarButtonAsExample extends React.Component<{}, {}> {
       {
         key: 'newItem',
         name: 'New',
-        cacheKey: 'myCacheKey', // changing this key will invalidate this items cache
+        cacheKey: 'myCacheKey', // changing this key will invalidate this item's cache
         iconProps: {
           iconName: 'Add'
         },

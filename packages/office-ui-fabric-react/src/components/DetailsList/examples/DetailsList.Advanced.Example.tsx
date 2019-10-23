@@ -19,34 +19,38 @@ import {
 } from 'office-ui-fabric-react/lib/DetailsList';
 import { createListItems, isGroupable, IExampleItem } from '@uifabric/example-data';
 import { memoizeFunction } from 'office-ui-fabric-react/lib/Utilities';
-import { getTheme, mergeStyles, mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
+import { getTheme, mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
 
 const theme = getTheme();
+const headerDividerClass = 'DetailsListAdvancedExample-divider';
 const classNames = mergeStyleSets({
   headerDivider: {
     display: 'inline-block',
     height: '100%'
   },
-  headerDividerBar: {
-    display: 'none',
-    background: theme.palette.themePrimary,
-    position: 'absolute',
-    top: 16,
-    bottom: 0,
-    width: '1px',
-    zIndex: 5
-  },
+  headerDividerBar: [
+    {
+      display: 'none',
+      background: theme.palette.themePrimary,
+      position: 'absolute',
+      top: 16,
+      bottom: 0,
+      width: '1px',
+      zIndex: 5
+    },
+    headerDividerClass
+  ],
   linkField: {
     display: 'block',
     overflow: 'hidden',
     textOverflow: 'ellipsis',
     maxWidth: '100%'
-  }
-});
-const rootClass = mergeStyles({
-  selectors: {
-    [`.${classNames.headerDivider}:hover + .${classNames.headerDividerBar}`]: {
-      display: 'inline'
+  },
+  root: {
+    selectors: {
+      [`.${headerDividerClass}:hover + .${headerDividerClass}`]: {
+        display: 'inline'
+      }
     }
   }
 });
@@ -142,7 +146,7 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
     };
 
     return (
-      <div className={rootClass}>
+      <div className={classNames.root}>
         <CommandBar
           styles={{ root: { marginBottom: '40px' } }}
           items={this._getCommandItems(

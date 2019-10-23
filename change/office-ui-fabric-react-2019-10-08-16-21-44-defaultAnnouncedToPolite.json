@@ -1,9 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Announced: default aria live to polite",
-  "packageName": "office-ui-fabric-react",
-  "email": "naethell@microsoft.com",
-  "commit": "10d61e3f27ff20c0da970f53dddae52f7dfa9b72",
-  "date": "2019-10-08T23:21:44.223Z",
-  "file": "C:\\Users\\naethell\\office-ui-fabric-react\\change\\office-ui-fabric-react-2019-10-08-16-21-44-defaultAnnouncedToPolite.json"
-}
