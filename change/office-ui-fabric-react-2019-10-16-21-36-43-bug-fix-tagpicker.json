@@ -1,9 +1,0 @@
-{
-  "type": "patch",
-  "comment": "TagPicker: make tag item and input text to respect theme color and have correct font",
-  "packageName": "office-ui-fabric-react",
-  "email": "xgao@microsoft.com",
-  "commit": "5612231e960d701aecf968601e1d252dc09338d2",
-  "date": "2019-10-17T04:36:43.329Z",
-  "file": "/Users/xugao/Projects/office-ui-fabric-react/change/office-ui-fabric-react-2019-10-16-21-36-43-bug-fix-tagpicker.json"
-}
