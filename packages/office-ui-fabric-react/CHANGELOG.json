@@ -2,6 +2,35 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Wed, 23 Oct 2019 12:32:05 GMT",
+      "tag": "office-ui-fabric-react_v7.54.1",
+      "version": "7.54.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Dropdown: Added note to documentation page calling out Dropdown's behavior of rendering in a panel in very small viewports.",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "18fd8a4129f4e61e4574a4478609517cf396f7c7"
+          },
+          {
+            "comment": "TagPicker: make tag item and input text to respect theme color and have correct font",
+            "author": "xgao@microsoft.com",
+            "commit": "5612231e960d701aecf968601e1d252dc09338d2"
+          },
+          {
+            "comment": "Suggestions: Fix problem where search for more button wouldn't highlight correctly",
+            "author": "joschect@microsoft.com",
+            "commit": "22a4a1b769dbb2e02286fa38250c56ef22771314"
+          },
+          {
+            "comment": "TagPicker: Update snapshots",
+            "author": "jdh@microsoft.com",
+            "commit": "ed7594ba53b27d3ff04ee26995e7f7961fcdd260"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 22 Oct 2019 12:32:05 GMT",
       "tag": "office-ui-fabric-react_v7.54.0",
       "version": "7.54.0",

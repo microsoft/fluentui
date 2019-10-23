@@ -1,9 +1,0 @@
-{
-  "type": "patch",
-  "comment": "TagPicker: Update snapshots",
-  "packageName": "office-ui-fabric-react",
-  "email": "jdh@microsoft.com",
-  "commit": "ed7594ba53b27d3ff04ee26995e7f7961fcdd260",
-  "date": "2019-10-22T20:20:23.981Z",
-  "file": "/home/jdh/projects/office-ui-fabric-react/change/office-ui-fabric-react-2019-10-22-13-20-23-master.json"
-}
