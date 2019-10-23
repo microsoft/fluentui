@@ -184,6 +184,7 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
       styles,
       cellsByColumn,
       groupNestingDepth,
+      dataIsFocusable = true,
       useFastIcons = true
     } = this.props;
     const { columnMeasureInfo, isDropping } = this.state;
@@ -260,7 +261,7 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
         aria-label={ariaLabel}
         aria-describedby={ariaDescribedBy}
         className={this._classNames.root}
-        data-is-focusable={this.props.dataIsFocusable ? this.props.dataIsFocusable : true}
+        data-is-focusable={dataIsFocusable}
         data-selection-index={itemIndex}
         data-item-index={itemIndex}
         aria-rowindex={itemIndex + 1}
