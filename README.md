@@ -20,20 +20,20 @@ Please see the [wiki](https://github.com/OfficeDev/office-ui-fabric-react/wiki).
 
 ## Contents
 
-- [Using Fabric React](#using-fabric-react)
-  - [Starter apps](#starter-apps)
-  - [Integrating in your project](#integrating-in-your-project)
-  - [Version policy](#version-policy)
-  - [Browser support](#browser-support)
-  - [Right-to-left support](#right-to-left-support)
-  - [Server-side rendering](#server-side-rendering)
-  - [Advanced usage](#advanced-usage)
-- [Contribute to Fabric React](#contribute-to-fabric-react)
-- [Building the repo](#building-the-repo)
-  - [Testing](#testing)
-  - [Advanced building tips](#advanced-building-tips)
-- [Licenses](#licenses)
-- [Changelog](#changelog)
+* [Using Fabric React](#using-fabric-react)
+  * [Starter apps](#starter-apps)
+  * [Integrating in your project](#integrating-in-your-project)
+  * [Version policy](#version-policy)
+  * [Browser support](#browser-support)
+  * [Right-to-left support](#right-to-left-support)
+  * [Server-side rendering](#server-side-rendering)
+  * [Advanced usage](#advanced-usage)
+  * [Contribute to Fabric React](#contribute-to-fabric-react)
+* [Building the repo](#building-the-repo)
+  * [Testing](#testing)
+  * [Advanced building tips](#advanced-building-tips)
+* [Licenses](#licenses)
+* [Changelog](#changelog)
 
 ## Using Fabric React
 
