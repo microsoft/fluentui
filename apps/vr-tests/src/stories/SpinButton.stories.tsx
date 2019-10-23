@@ -2,7 +2,7 @@
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecoratorFixedWidth, FabricDecoratorFullWidth } from '../utilities';
+import { FabricDecoratorFixedWidth, FabricDecorator } from '../utilities';
 import {
   Fabric,
   SpinButton,
@@ -21,9 +21,6 @@ const props: ISpinButtonProps = {
   step: 1
 };
 const styles: Partial<ISpinButtonStyles> = { root: { width: 300 } };
-const inlineStyles: Partial<ISpinButtonStyles> = {
-  root: { width: 115, display: 'inline-block' }
-};
 const textFieldStyles: Partial<ITextFieldStyles> = {
   root: { width: 250, display: 'inline-block' }
 };
@@ -70,8 +67,8 @@ storiesOf('SpinButton', module)
   );
 
 // The stories for label placement are separate since they don't need to include hover/click states
-storiesOf('SpinButton - Label Placement', module)
-  .addDecorator(FabricDecoratorFullWidth)
+storiesOf('SpinButton', module)
+  .addDecorator(FabricDecorator)
   .addDecorator(story => (
     <Screener steps={new Screener.Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>
       {story()}
@@ -97,19 +94,37 @@ storiesOf('SpinButton - Label Placement', module)
   )
   .addStory('Label on top', () => (
     <Fabric>
-      <SpinButton {...props} styles={inlineStyles} labelPosition={Position.top} />
-      <TextField label="Should vertically align with SpinButton" styles={textFieldStyles} />
+      <SpinButton
+        {...props}
+        styles={{ root: { width: 120, display: 'inline-block' } }}
+        labelPosition={Position.top}
+      />
+      {/* DO NOT delete this TextField! It's here to verify that the SpinButton's field and label
+        vertically align with other form components (this positioning can get messed up since
+        SpinButton's optional icon is 1px larger than the label line height). */}
+      <TextField
+        label="Should vertically align with SpinButton"
+        placeholder="(verify field and label alignment)"
+        styles={textFieldStyles}
+      />
     </Fabric>
   ))
   .addStory('Label on top with icon', () => (
     <Fabric>
       <SpinButton
         {...props}
-        styles={inlineStyles}
+        styles={{ root: { width: 150, display: 'inline-block' } }}
         labelPosition={Position.top}
         iconProps={iconProps}
       />
-      <TextField label="Should vertically align with SpinButton" styles={textFieldStyles} />
+      {/* DO NOT delete this TextField! It's here to verify that the SpinButton's field and label
+        vertically align with other form components (this positioning can get messed up since
+        SpinButton's optional icon is 1px larger than the label line height). */}
+      <TextField
+        label="Should vertically align with SpinButton"
+        placeholder="(verify field and label alignment)"
+        styles={textFieldStyles}
+      />
     </Fabric>
   ))
   .addStory('Label on bottom', () => (
