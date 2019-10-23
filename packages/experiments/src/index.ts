@@ -14,6 +14,7 @@ export * from './Signals';
 export * from './Slider';
 export * from './SplitButton';
 export * from './StaticList';
+export * from './TeachingBanner';
 export * from './Text';
 export * from './Tile';
 export * from './TilesList';

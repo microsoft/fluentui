@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TeachingBannerView renders status view prop correctly 1`] = `
+<div
+  className=""
+>
+  <div
+    className=""
+  />
+</div>
+`;

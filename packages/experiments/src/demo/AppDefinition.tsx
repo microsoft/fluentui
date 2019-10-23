@@ -94,6 +94,12 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/slots'
         },
         {
+          component: require<any>('../components/TeachingBanner/TeachingBannerPage').TeachingBannerPage,
+          key: 'TeachingBanner',
+          name: 'TeachingBanner',
+          url: '#/examples/teachingbanner'
+        },
+        {
           component: require<any>('../components/Tile/TilePage').TilePage,
           key: 'Tile',
           name: 'Tile',

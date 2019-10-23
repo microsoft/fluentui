@@ -1,0 +1,119 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TeachingBanner matches children prop snapshot 1`] = `
+<div
+  className=
+      ms-TeachingBanner
+      {
+        align-items: center;
+        background: #0078d4;
+        border-radius: 2px;
+        box-sizing: border-box;
+        color: #ffffff;
+        display: flex;
+        min-height: 40px;
+        padding-left: 14px;
+        padding-right: 14px;
+        position: relative;
+        width: 100%;
+      }
+>
+  <div
+    className=
+        ms-TeachingBanner-content
+        {
+          align-items: center;
+          display: flex;
+          flex-wrap: nowrap;
+          flex: 1;
+          overflow-x: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+        &>*:not(.ms-TeachingBanner-icon):not(.ms-TeachingBanner-heading) {
+          overflow-x: hidden;
+          text-overflow: ellipsis;
+        }
+  >
+    Text
+  </div>
+</div>
+`;
+
+exports[`TeachingBanner renders children prop correctly 1`] = `
+<div
+  className=
+      ms-TeachingBanner
+      {
+        align-items: center;
+        background: #0078d4;
+        border-radius: 2px;
+        box-sizing: border-box;
+        color: #ffffff;
+        display: flex;
+        min-height: 40px;
+        padding-left: 14px;
+        padding-right: 14px;
+        position: relative;
+        width: 100%;
+      }
+>
+  <div
+    className=
+        ms-TeachingBanner-content
+        {
+          align-items: center;
+          display: flex;
+          flex-wrap: nowrap;
+          flex: 1;
+          overflow-x: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+        &>*:not(.ms-TeachingBanner-icon):not(.ms-TeachingBanner-heading) {
+          overflow-x: hidden;
+          text-overflow: ellipsis;
+        }
+  >
+    Text
+  </div>
+</div>
+`;
+
+exports[`TeachingBanner renders correctly with no props 1`] = `
+<div
+  className=
+      ms-TeachingBanner
+      {
+        align-items: center;
+        background: #0078d4;
+        border-radius: 2px;
+        box-sizing: border-box;
+        color: #ffffff;
+        display: flex;
+        min-height: 40px;
+        padding-left: 14px;
+        padding-right: 14px;
+        position: relative;
+        width: 100%;
+      }
+>
+  <div
+    className=
+        ms-TeachingBanner-content
+        {
+          align-items: center;
+          display: flex;
+          flex-wrap: nowrap;
+          flex: 1;
+          overflow-x: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+        &>*:not(.ms-TeachingBanner-icon):not(.ms-TeachingBanner-heading) {
+          overflow-x: hidden;
+          text-overflow: ellipsis;
+        }
+  />
+</div>
+`;
