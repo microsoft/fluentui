@@ -21,7 +21,6 @@ exports[`Facepile renders Facepile correctly 1`] = `
         }
   >
     <ul
-      aria-label="Facepile persona list"
       className=
           ms-Facepile-members
           {

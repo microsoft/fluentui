@@ -208,7 +208,6 @@ exports[`Component Examples renders Facepile.AddFace.Example.tsx correctly 1`] =
       </span>
     </button>
     <ul
-      aria-label="Facepile persona list"
       className=
           ms-Facepile-members
           {
