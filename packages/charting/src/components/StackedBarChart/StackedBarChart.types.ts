@@ -79,6 +79,11 @@ export interface IStackedBarChartProps {
    * If this value is set to true the denominator will not be shown for the ratio above the chart
    */
   hideDenominator?: boolean;
+
+  /**
+   * Enable the legends to wrap lines if there is not enough space to show all legends on a single line
+   */
+  enabledLegendsWrapLines?: boolean;
 }
 
 export interface IStackedBarChartStyleProps {
@@ -141,11 +146,6 @@ export interface IStackedBarChartStyleProps {
    * the ratio position for the target triangle
    */
   targetRatio?: number;
-
-  /**
-   * Enable the legends to wrap lines if there is not enough space to show all legends on a single line
-   */
-  enabledLegendsWrapLines?: boolean;
 }
 
 export interface IStackedBarChartStyles {

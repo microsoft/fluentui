@@ -83,7 +83,7 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
     return result;
   }
 
-  private _onRenderData = (data: IOverflowSetItemProps): JSX.Element => {
+  private _onRenderData = (data: IOverflowSetItemProps | ILegendOverflowData): JSX.Element => {
     return (
       <OverflowSet
         items={data.primary}
