@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Enabled wrap lines for legends",
+  "packageName": "@uifabric/charting",
+  "email": "dajiang@microsoft.com",
+  "commit": "4dfa746477cfd7660c56018e1987fdccd8d16b69",
+  "date": "2019-10-23T13:37:39.516Z"
+}
