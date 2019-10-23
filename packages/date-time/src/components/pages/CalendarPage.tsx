@@ -96,6 +96,19 @@ export class CalendarPage extends React.Component<{}, {}> {
               />
             </ExampleCard>
             <ExampleCard
+              title="Calendar with selectableDays = [Monday, Tuesday, Wednesday, Thursday, Friday] provided, first day of week = Sunday"
+              code={CalendarInlineExampleCode}
+            >
+              <CalendarInlineExample
+                dateRangeType={DateRangeType.WorkWeek}
+                firstDayOfWeek={DayOfWeek.Sunday}
+                highlightCurrentMonth={false}
+                highlightSelectedMonth={true}
+                showGoToToday={true}
+                workWeekDays={[DayOfWeek.Monday, DayOfWeek.Tuesday, DayOfWeek.Wednesday, DayOfWeek.Thursday, DayOfWeek.Friday]}
+              />
+            </ExampleCard>
+            <ExampleCard
               title="Calendar with selectableDays = [Tuesday, Wednesday, Friday, Saturday] provided, first day of week = Monday"
               code={CalendarInlineExampleCode}
             >
