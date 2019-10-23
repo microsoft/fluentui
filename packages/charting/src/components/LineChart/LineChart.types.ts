@@ -59,6 +59,11 @@ export interface ILineChartProps {
    * this prop takes its parent as a HTML element to define the width and height of the line chart
    */
   parentRef?: HTMLElement | null;
+
+  /**
+   * Enable the legends to wrap lines if there is not enough space to show all legends on a single line
+   */
+  enabledLegendsWrapLines?: boolean;
 }
 
 export interface ILineChartStyleProps {

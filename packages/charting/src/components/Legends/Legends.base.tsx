@@ -48,12 +48,16 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
     const dataToRender = this._generateData();
     return (
       <div className={this._classNames.root}>
-        <ResizeGroup
-          data={dataToRender}
-          onReduceData={this._onReduceData}
-          onRenderData={this._onRenderData}
-          onGrowData={this._onGrowData}
-        />
+        {this.props.enabledWrapLines ? (
+          this._onRenderData(dataToRender)
+        ) : (
+          <ResizeGroup
+            data={dataToRender}
+            onReduceData={this._onReduceData}
+            onRenderData={this._onRenderData}
+            onGrowData={this._onGrowData}
+          />
+        )}
       </div>
     );
   }
@@ -88,7 +92,11 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
         onRenderOverflowButton={this._renderOverflowItems}
         styles={{
           root: {
-            justifyContent: this.props.centerLegends ? 'center' : 'unset'
+            justifyContent: this.props.centerLegends ? 'center' : 'unset',
+            flexWrap: 'wrap'
+          },
+          item: {
+            marginBottom: '16px'
           }
         }}
       />
