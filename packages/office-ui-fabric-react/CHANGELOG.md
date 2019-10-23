@@ -1,7 +1,16 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 22 Oct 2019 12:32:05 GMT and should not be manually modified.
+This log was last generated on Wed, 23 Oct 2019 12:32:05 GMT and should not be manually modified.
 
+## 7.54.1
+Wed, 23 Oct 2019 12:32:05 GMT
+
+### Patches
+
+- Dropdown: Added note to documentation page calling out Dropdown's behavior of rendering in a panel in very small viewports. (mgodbolt@microsoft.com)
+- TagPicker: make tag item and input text to respect theme color and have correct font (xgao@microsoft.com)
+- Suggestions: Fix problem where search for more button wouldn't highlight correctly (joschect@microsoft.com)
+- TagPicker: Update snapshots (jdh@microsoft.com)
 ## 7.54.0
 Tue, 22 Oct 2019 12:32:05 GMT
 

@@ -23,7 +23,8 @@ import {
   shouldWrapFocus,
   warnDeprecations,
   portalContainsElement,
-  IPoint
+  IPoint,
+  getWindow
 } from '../../Utilities';
 import { mergeStyles } from '@uifabric/merge-styles';
 
@@ -61,6 +62,9 @@ const _allInstances: {
   [key: string]: FocusZone;
 } = {};
 const _outerZones: Set<FocusZone> = new Set();
+
+// Track the 1 global keydown listener we hook to window.
+let _disposeGlobalKeyDownListener: () => void | undefined;
 
 const ALLOWED_INPUT_TYPES = ['text', 'number', 'password', 'email', 'tel', 'url', 'search'];
 
@@ -135,8 +139,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
     _allInstances[this._id] = this;
 
     if (root) {
-      const windowElement = root.ownerDocument!.defaultView!;
-
+      const windowElement = getWindow(root);
       let parentElement = getParent(root, ALLOW_VIRTUAL_ELEMENTS);
 
       while (parentElement && parentElement !== this._getDocument().body && parentElement.nodeType === 1) {
@@ -152,7 +155,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
       }
 
       if (windowElement && _outerZones.size === 1) {
-        this._disposables.push(on(windowElement, 'keydown', this._onKeyDownCapture, true));
+        _disposeGlobalKeyDownListener = on(windowElement, 'keydown', this._onKeyDownCapture, true);
       }
       this._disposables.push(on(root, 'blur', this._onBlur, true));
 
@@ -195,6 +198,11 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
 
     // Dispose all events.
     this._disposables.forEach(d => d());
+
+    // If this is the last outer zone, remove the keydown listener.
+    if (_outerZones.size === 0 && _disposeGlobalKeyDownListener) {
+      _disposeGlobalKeyDownListener();
+    }
   }
 
   public render() {

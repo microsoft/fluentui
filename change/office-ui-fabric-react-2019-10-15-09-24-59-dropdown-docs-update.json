@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Dropdown: Added note to documentation page calling out Dropdown's behavior of rendering in a panel in very small viewports.",
-  "packageName": "office-ui-fabric-react",
-  "email": "mgodbolt@microsoft.com",
-  "commit": "18fd8a4129f4e61e4574a4478609517cf396f7c7",
-  "date": "2019-10-15T16:24:59.925Z"
-}

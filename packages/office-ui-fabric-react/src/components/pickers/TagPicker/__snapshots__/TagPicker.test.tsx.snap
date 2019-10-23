@@ -67,13 +67,19 @@ exports[`TagPicker renders correctly 1`] = `
             className=
                 ms-TagItem
                 {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
                   background: #f3f2f1;
                   border-radius: 2px;
                   box-sizing: content-box;
+                  color: #323130;
                   cursor: default;
                   display: flex;
                   flex-shrink: 1;
                   flex-wrap: nowrap;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
                   height: 26px;
                   line-height: 26px;
                   margin-bottom: 2px;
@@ -292,7 +298,7 @@ exports[`TagPicker renders correctly 1`] = `
           onFocus={[Function]}
           onInput={[Function]}
           onKeyDown={[Function]}
-          role="combobox"
+          role="textbox"
           spellCheck={false}
           value=""
         />
@@ -311,6 +317,8 @@ exports[`TagPicker renders picker with selected item correctly 1`] = `
   onKeyDown={[Function]}
 >
   <div
+    aria-expanded={false}
+    aria-haspopup="dialog"
     className=
         ms-FocusZone
         &:focus {
@@ -320,6 +328,7 @@ exports[`TagPicker renders picker with selected item correctly 1`] = `
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
+    role="combobox"
   >
     <div
       className="ms-SelectionZone"
@@ -386,6 +395,7 @@ exports[`TagPicker renders picker with selected item correctly 1`] = `
                   margin-right: 2px;
                   margin-top: 2px;
                   max-width: 300px;
+                  min-width: 0px;
                   outline: transparent;
                   position: relative;
                   user-select: none;
@@ -563,8 +573,6 @@ exports[`TagPicker renders picker with selected item correctly 1`] = `
           aria-autocomplete="both"
           aria-controls=" "
           aria-describedby="selected-items-id__0"
-          aria-expanded={false}
-          aria-haspopup="true"
           autoCapitalize="off"
           autoComplete="off"
           className=
