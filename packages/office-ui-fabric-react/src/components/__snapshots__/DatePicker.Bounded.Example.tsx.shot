@@ -198,11 +198,14 @@ Fri, 06 Jan 2017 04:41:20 GMT-Fri, 06 Jan 2017 04:41:20 GMT
                     font-style: normal;
                     font-weight: normal;
                     line-height: 18px;
+                    padding-bottom: 5px;
+                    padding-left: 5px;
+                    padding-right: 5px;
+                    padding-top: 7px;
                     pointer-events: initial;
                     position: absolute;
-                    right: 9px;
+                    right: 4px;
                     speak: none;
-                    top: 7px;
                   }
               data-icon-name="Calendar"
               onClick={[Function]}
