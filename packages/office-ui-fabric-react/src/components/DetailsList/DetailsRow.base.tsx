@@ -261,6 +261,7 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
 
     return (
       <FocusZone
+        data-is-focusable={true}
         {...getNativeProps(this.props, divProperties)}
         {...(typeof isDraggable === 'boolean'
           ? {
@@ -275,7 +276,6 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
         aria-label={ariaLabel}
         aria-describedby={ariaDescribedBy}
         className={this._classNames.root}
-        data-is-focusable={true}
         data-selection-index={itemIndex}
         data-item-index={itemIndex}
         aria-rowindex={itemIndex + 1}
