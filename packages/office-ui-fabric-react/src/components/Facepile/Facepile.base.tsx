@@ -35,8 +35,8 @@ export class FacepileBase extends BaseComponent<IFacepileProps, {}> {
   }
 
   public render(): JSX.Element {
-    let { overflowButtonProps, ariaLabel } = this.props;
-    const { chevronButtonProps, maxDisplayablePersonas, personas, overflowPersonas, showAddButton } = this.props;
+    let { overflowButtonProps } = this.props;
+    const { chevronButtonProps, maxDisplayablePersonas, personas, overflowPersonas, showAddButton, ariaLabel } = this.props;
 
     const { _classNames } = this;
 
