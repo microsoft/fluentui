@@ -2,6 +2,20 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "date": "Thu, 24 Oct 2019 12:31:42 GMT",
+      "tag": "@uifabric/charting_v0.137.2",
+      "version": "0.137.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Change gapSpace to 10 to resolve line chart flickering issue",
+            "author": "v-ragor@microsoft.com",
+            "commit": "39f7975985f9789b2baf9460c5d86c79186a93fc"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 22 Oct 2019 12:32:05 GMT",
       "tag": "@uifabric/charting_v0.137.1",
       "version": "0.137.1",

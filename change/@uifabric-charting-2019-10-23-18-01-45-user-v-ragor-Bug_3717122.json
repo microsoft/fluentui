@@ -1,9 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Change gapSpace to 10 to resolve line chart flickering issue",
-  "packageName": "@uifabric/charting",
-  "email": "v-ragor@microsoft.com",
-  "commit": "39f7975985f9789b2baf9460c5d86c79186a93fc",
-  "date": "2019-10-23T12:31:45.867Z",
-  "file": "C:\\PAPCODE\\office-ui-fabric-react\\change\\@uifabric-charting-2019-10-23-18-01-45-user-v-ragor-Bug_3717122.json"
-}

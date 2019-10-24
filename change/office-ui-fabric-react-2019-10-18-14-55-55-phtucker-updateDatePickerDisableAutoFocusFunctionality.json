@@ -1,9 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Do not expand date picker on TextField click when disableAutoFocus is true and allowTextInput is true.",
-  "packageName": "office-ui-fabric-react",
-  "email": "phtucker@microsoft.com",
-  "commit": "5a715f5fd66c852bd0d26dff62ee8924c5924d1b",
-  "date": "2019-10-18T18:55:55.318Z",
-  "file": "E:\\GitHub\\OfficeDev-office-ui-fabric-react\\change\\office-ui-fabric-react-2019-10-18-14-55-55-phtucker-updateDatePickerDisableAutoFocusFunctionality.json"
-}

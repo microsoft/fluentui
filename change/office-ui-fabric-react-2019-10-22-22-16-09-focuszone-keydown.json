@@ -1,9 +1,0 @@
-{
-  "type": "patch",
-  "comment": "FocusZone: unhooking capture keydown handler at the right time to avoid a race condition.",
-  "packageName": "office-ui-fabric-react",
-  "email": "dzearing@hotmail.com",
-  "commit": "01728e3082bf41ea216f9f25a745c202a7489372",
-  "date": "2019-10-23T05:16:09.514Z",
-  "file": "C:\\fabric\\branch3\\change\\office-ui-fabric-react-2019-10-22-22-16-09-focuszone-keydown.json"
-}

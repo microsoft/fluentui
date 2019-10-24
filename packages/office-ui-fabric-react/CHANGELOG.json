@@ -2,6 +2,37 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Thu, 24 Oct 2019 12:31:42 GMT",
+      "tag": "office-ui-fabric-react_v7.55.0",
+      "version": "7.55.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Do not expand date picker on TextField click when disableAutoFocus is true and allowTextInput is true.",
+            "author": "phtucker@microsoft.com",
+            "commit": "5a715f5fd66c852bd0d26dff62ee8924c5924d1b"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "FocusZone: unhooking capture keydown handler at the right time to avoid a race condition.",
+            "author": "dzearing@hotmail.com",
+            "commit": "01728e3082bf41ea216f9f25a745c202a7489372"
+          },
+          {
+            "comment": "Make DetailsRow data-is-focusable configurable",
+            "author": "KevinTCoughlin@users.noreply.github.com",
+            "commit": "6d0e302acf49b223fc1af8f9233098eefec7fc12"
+          },
+          {
+            "comment": "Adds aria label to basebutton on the outer div",
+            "author": "kchau@microsoft.com",
+            "commit": "4fffd6c0bd1828a8b4c153b19ef2e22a2b95fcf3"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 23 Oct 2019 12:32:05 GMT",
       "tag": "office-ui-fabric-react_v7.54.1",
       "version": "7.54.1",

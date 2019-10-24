@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Adds aria label to basebutton on the outer div",
-  "packageName": "office-ui-fabric-react",
-  "email": "kchau@microsoft.com",
-  "commit": "4fffd6c0bd1828a8b4c153b19ef2e22a2b95fcf3",
-  "date": "2019-10-23T20:51:25.327Z"
-}
