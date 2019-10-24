@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Facepile: added ARIA label so ARIA input fields should have an accessible name addressing issue #10877",
+  "packageName": "office-ui-fabric-react",
+  "email": "marygans@microsoft.com",
+  "commit": "8898f9dbbbda6da34fe73555431766d23293b730",
+  "date": "2019-10-22T23:52:31.122Z"
+}
