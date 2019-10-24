@@ -1742,10 +1742,9 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                 Vertical alignment:
               </label>
               <div
-                aria-describedby="Dropdown8-option"
                 aria-expanded="false"
                 aria-haspopup="listbox"
-                aria-labelledby="Dropdown8-label"
+                aria-labelledby="Dropdown8-label Dropdown8-option"
                 className=
                     ms-Dropdown
                     {
@@ -1966,10 +1965,9 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                 Horizontal alignment:
               </label>
               <div
-                aria-describedby="Dropdown9-option"
                 aria-expanded="false"
                 aria-haspopup="listbox"
-                aria-labelledby="Dropdown9-label"
+                aria-labelledby="Dropdown9-label Dropdown9-option"
                 className=
                     ms-Dropdown
                     {

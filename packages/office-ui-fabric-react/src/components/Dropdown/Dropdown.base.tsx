@@ -267,9 +267,8 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
               aria-haspopup="listbox"
               aria-expanded={isOpen ? 'true' : 'false'}
               aria-label={ariaLabel}
-              aria-labelledby={label && !ariaLabel ? this._labelId : undefined}
+              aria-labelledby={label && !ariaLabel ? mergeAriaAttributeValues(this._labelId, this._optionId) : undefined}
               aria-describedby={mergeAriaAttributeValues(
-                this._optionId,
                 keytipAttributes['aria-describedby'],
                 hasErrorMessage ? this._id + '-errorMessage' : undefined
               )}

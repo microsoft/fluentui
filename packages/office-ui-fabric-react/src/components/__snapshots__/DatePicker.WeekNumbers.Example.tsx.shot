@@ -247,10 +247,9 @@ exports[`Component Examples renders DatePicker.WeekNumbers.Example.tsx correctly
       Select the first day of the week
     </label>
     <div
-      aria-describedby="Dropdown5-option"
       aria-expanded="false"
       aria-haspopup="listbox"
-      aria-labelledby="Dropdown5-label"
+      aria-labelledby="Dropdown5-label Dropdown5-option"
       className=
           ms-Dropdown
           {

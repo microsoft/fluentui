@@ -229,10 +229,9 @@ exports[`Component Examples renders Dropdown.Error.Example.tsx correctly 1`] = `
       Dropdown with error message
     </label>
     <div
-      aria-describedby="Dropdown1-option"
       aria-expanded="false"
       aria-haspopup="listbox"
-      aria-labelledby="Dropdown1-label"
+      aria-labelledby="Dropdown1-label Dropdown1-option"
       className=
           ms-Dropdown
           {

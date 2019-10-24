@@ -853,10 +853,9 @@ exports[`Component Examples renders Facepile.Basic.Example.tsx correctly 1`] = `
         Persona Size:
       </label>
       <div
-        aria-describedby="Dropdown5-option"
         aria-expanded="false"
         aria-haspopup="listbox"
-        aria-labelledby="Dropdown5-label"
+        aria-labelledby="Dropdown5-label Dropdown5-option"
         className=
             ms-Dropdown
             {
