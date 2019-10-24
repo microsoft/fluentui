@@ -1,9 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Make DetailsRow data-is-focusable configurable",
-  "packageName": "office-ui-fabric-react",
-  "email": "KevinTCoughlin@users.noreply.github.com",
-  "commit": "6d0e302acf49b223fc1af8f9233098eefec7fc12",
-  "date": "2019-10-23T18:58:07.996Z",
-  "file": "C:\\Users\\keco\\Work\\office-ui-fabric-react\\change\\office-ui-fabric-react-2019-10-23-11-58-08-keco-detailsrow-focusable-config.json"
-}

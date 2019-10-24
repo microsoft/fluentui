@@ -1,7 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 21 Oct 2019 12:23:36 GMT and should not be manually modified.
+This log was last generated on Thu, 24 Oct 2019 12:24:31 GMT and should not be manually modified.
 
+## 6.210.1
+Thu, 24 Oct 2019 12:24:31 GMT
+
+### Patches
+
+- Make DetailsRow data-is-focusable configurable (KevinTCoughlin@users.noreply.github.com)
 ## 6.210.0
 Mon, 21 Oct 2019 12:23:36 GMT
 
