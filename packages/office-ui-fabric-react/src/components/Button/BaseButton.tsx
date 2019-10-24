@@ -474,7 +474,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     );
   };
 
-  private _onDismissMenu = (ev: React.MouseEvent | React.KeyboardEvent): void => {
+  private _onDismissMenu: IContextualMenuProps['onDismiss'] = (ev): void => {
     const { menuProps } = this.props;
 
     if (menuProps && menuProps.onDismiss) {
