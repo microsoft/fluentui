@@ -7674,6 +7674,7 @@ export interface IToggle {
 // @public
 export interface IToggleProps extends React.HTMLAttributes<HTMLElement> {
     ariaLabel?: string;
+    ariaRoleCheckbox?: boolean;
     as?: IComponentAs<React.HTMLAttributes<HTMLElement>>;
     checked?: boolean;
     componentRef?: IRefObject<IToggle>;
