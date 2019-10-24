@@ -1,4 +1,4 @@
-ChoiceGroup buttons (commonly referred to as radio buttons) let users select a single option from two or more choices.
+Radio buttons (code name: `ChoiceGroup`) let people select a single option from two or more choices.
 
 [Sketch toolkit]()
 

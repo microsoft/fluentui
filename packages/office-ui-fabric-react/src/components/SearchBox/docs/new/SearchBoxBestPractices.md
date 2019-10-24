@@ -10,15 +10,15 @@
 
 ### Content
 
-- Use placeholder text in the SearchBox to describe what people can search for. For example, "Search," "Search files," or "Search site."
-- After people select the SearchBox, but before they’ve entered text, use hint text to communicate search scope. For examples, "Try searching for a PDF," "Search - contacts list," or "Type to find \<content type\>."
-- Provide autocomplete suggestions to help people search quickly. These suggestions can be from past searches or autocompletions of a person’s text input.
+- Use placeholder text in the SearchBox to describe what people can search for. For example, "Search", "Search files", or "Search site".
+- After people select the SearchBox, but before they've entered text, use hint text to communicate search scope. For examples, "Try searching for a PDF", "Search - contacts list", or "Type to find \<content type\>".
+- Provide autocomplete suggestions to help people search quickly. These suggestions can be from past searches or autocompletions of a person's text input.
 - Provide autocomplete suggestions where there are strong matches to a person's search that they may want to see immediately.
-- Although search entry points tend to be similarly visualized, they can provide access to results that range from broad to narrow. By effectively communicating the scope of a search, you can ensure that people’s expectations are met by the capabilities of the search you’re performing, which will reduce the possibility of - frustration. The search entry point should be juxtaposed with the content being searched.
+- Although search entry points tend to be similarly visualized, they can provide access to results that range from broad to narrow. By effectively communicating the scope of a search, you can ensure that people's expectations are met by the capabilities of the search you're performing, which will reduce the possibility of - frustration. The search entry point should be juxtaposed with the content being searched.
 
 Some common search scopes includes:
 
 - **Global**: Search across multiple sources of cloud and local content. Varied results include URLs, documents, media, actions, apps, and more.
 - **Web**: Search a web index. Results include pages, entities, and answers.
 - **My stuff**: Search across devices, cloud, social graphs, and more. Results are varied but are constrained by the connection to user accounts.
-- Use a SearchBox without a parent container when it’s not restricted to a certain width to accommodate other content. This search box will span the entire width of the space it's in.
+- Use a SearchBox without a parent container when it's not restricted to a certain width to accommodate other content. This search box will span the entire width of the space it's in.
