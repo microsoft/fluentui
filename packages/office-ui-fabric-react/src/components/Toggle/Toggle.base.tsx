@@ -99,8 +99,7 @@ export class ToggleBase extends BaseComponent<IToggleProps, IToggleState> implem
       }
     }
 
-    // ARIA 1.1 definition; "checkbox" in ARIA 1.0
-    const ariaRole = this.props.ariaRoleCheckbox ? 'checkbox' : 'switch';
+    const ariaRole = this.props.role ? this.props.role : 'switch';
 
     return (
       <RootType className={classNames.root} hidden={(toggleNativeProps as any).hidden}>

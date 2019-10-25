@@ -29,7 +29,7 @@ export const ToggleBasicExample: React.FunctionComponent = () => {
         onText="On"
         offText="Off"
         onChange={_onChange}
-        ariaRoleCheckbox={true}
+        role="checkbox"
       />
     </Stack>
   );

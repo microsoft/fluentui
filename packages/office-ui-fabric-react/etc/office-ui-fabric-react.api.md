@@ -7674,7 +7674,6 @@ export interface IToggle {
 // @public
 export interface IToggleProps extends React.HTMLAttributes<HTMLElement> {
     ariaLabel?: string;
-    ariaRoleCheckbox?: boolean;
     as?: IComponentAs<React.HTMLAttributes<HTMLElement>>;
     checked?: boolean;
     componentRef?: IRefObject<IToggle>;
@@ -7692,6 +7691,7 @@ export interface IToggleProps extends React.HTMLAttributes<HTMLElement> {
     // @deprecated (undocumented)
     onChanged?: (checked: boolean) => void;
     onText?: string;
+    role?: "checkbox" | "switch";
     styles?: IStyleFunctionOrObject<IToggleStyleProps, IToggleStyles>;
     theme?: ITheme;
 }
