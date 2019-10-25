@@ -36,10 +36,9 @@ exports[`Component Examples renders Dropdown.Controlled.Example.tsx correctly 1`
     Controlled example
   </label>
   <div
-    aria-describedby="Dropdown0-option"
     aria-expanded="false"
     aria-haspopup="listbox"
-    aria-labelledby="Dropdown0-label"
+    aria-labelledby="Dropdown0-label Dropdown0-option"
     className=
         ms-Dropdown
         {

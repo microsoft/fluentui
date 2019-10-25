@@ -57,7 +57,6 @@ exports[`Component Examples renders Dropdown.Custom.Example.tsx correctly 1`] = 
       Custom example
     </label>
     <div
-      aria-describedby="Dropdown0-option"
       aria-expanded="false"
       aria-haspopup="listbox"
       aria-label="Custom dropdown example"
@@ -421,7 +420,6 @@ exports[`Component Examples renders Dropdown.Custom.Example.tsx correctly 1`] = 
       </button>
     </div>
     <div
-      aria-describedby="Dropdown1-option"
       aria-expanded="false"
       aria-haspopup="listbox"
       aria-label="Custom dropdown label example"
