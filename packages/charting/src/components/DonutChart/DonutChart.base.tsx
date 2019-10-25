@@ -120,10 +120,16 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
             </div>
           </Callout>
         ) : null}
-        <div className={this._classNames.legendContainer}>{legendBars}</div>
+        <div className={this._classNames.legendContainer} onMouseDown={this._onLegendsMouseDown}>
+          {legendBars}
+        </div>
       </div>
     );
   }
+
+  private _onLegendsMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
+    e.stopPropagation();
+  };
 
   private _setViewBox(node: SVGElement | null): void {
     if (node === null) {

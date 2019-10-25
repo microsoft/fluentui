@@ -132,7 +132,9 @@ export class LineChartBase extends React.Component<
           />
           <g>{lines}</g>
         </svg>
-        <div className={this._classNames.legendContainer}>{legendBars}</div>
+        <div className={this._classNames.legendContainer} onMouseDown={this._onLegendsMouseDown}>
+          {legendBars}
+        </div>
         {this.state.isCalloutVisible ? (
           <Callout target={this.state.refSelected} isBeakVisible={false} gapSpace={10} directionalHint={DirectionalHint.topAutoEdge}>
             <div className={this._classNames.calloutContentRoot}>
@@ -144,6 +146,10 @@ export class LineChartBase extends React.Component<
       </div>
     );
   }
+
+  private _onLegendsMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
+    e.stopPropagation();
+  };
 
   private _fitParentContainer(): void {
     const { containerWidth, containerHeight } = this.state;

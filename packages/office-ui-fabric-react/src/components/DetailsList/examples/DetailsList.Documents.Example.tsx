@@ -3,7 +3,15 @@ import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
 import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
 import { Announced } from 'office-ui-fabric-react/lib/Announced';
-import { DetailsList, DetailsListLayoutMode, Selection, SelectionMode, IColumn } from 'office-ui-fabric-react/lib/DetailsList';
+import {
+  DetailsList,
+  DetailsListLayoutMode,
+  Selection,
+  SelectionMode,
+  IColumn,
+  IDetailsRowProps,
+  DetailsRow
+} from 'office-ui-fabric-react/lib/DetailsList';
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
 import { mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
 
@@ -221,6 +229,7 @@ export class DetailsListDocumentsExample extends React.Component<{}, IDetailsLis
               ariaLabelForSelectionColumn="Toggle selection"
               ariaLabelForSelectAllCheckbox="Toggle selection for all items"
               checkButtonAriaLabel="Row checkbox"
+              onRenderRow={this._onRenderRow}
             />
           </MarqueeSelection>
         ) : (
@@ -234,6 +243,7 @@ export class DetailsListDocumentsExample extends React.Component<{}, IDetailsLis
             layoutMode={DetailsListLayoutMode.justified}
             isHeaderVisible={true}
             onItemInvoked={this._onItemInvoked}
+            onRenderRow={this._onRenderRow}
           />
         )}
       </Fabric>
@@ -245,6 +255,10 @@ export class DetailsListDocumentsExample extends React.Component<{}, IDetailsLis
       this._selection.setAllSelected(false);
     }
   }
+
+  private _onRenderRow = (props: IDetailsRowProps) => {
+    return <DetailsRow {...props} data-is-focusable={false} />;
+  };
 
   private _getKey(item: any, index?: number): string {
     return item.key;

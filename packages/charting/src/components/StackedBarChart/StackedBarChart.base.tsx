@@ -145,10 +145,18 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
             </Callout>
           ) : null}
         </svg>
-        {showLegend && <div className={this._classNames.legendContainer}>{bars[1]}</div>}
+        {showLegend && (
+          <div className={this._classNames.legendContainer} onMouseDown={this._onLegendsMouseDown}>
+            {bars[1]}
+          </div>
+        )}
       </div>
     );
   }
+
+  private _onLegendsMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
+    e.stopPropagation();
+  };
 
   private _adjustProps(): void {
     const { theme, className, styles, width, barHeight } = this.props;

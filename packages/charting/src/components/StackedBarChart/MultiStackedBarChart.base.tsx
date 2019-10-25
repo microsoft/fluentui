@@ -80,7 +80,11 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
     return (
       <div className={this._classNames.root}>
         {bars}
-        {!hideLegend && <div className={this._classNames.legendContainer}>{legends}</div>}
+        {!hideLegend && (
+          <div className={this._classNames.legendContainer} onMouseDown={this._onLegendsMouseDown}>
+            {legends}
+          </div>
+        )}
         {isCalloutVisible ? (
           <Callout
             gapSpace={5}
@@ -98,6 +102,10 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
       </div>
     );
   }
+
+  private _onLegendsMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
+    e.stopPropagation();
+  };
 
   private _createBarsAndLegends(
     data: IChartProps,
