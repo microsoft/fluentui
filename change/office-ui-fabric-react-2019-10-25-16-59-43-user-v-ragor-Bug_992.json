@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Prevent event propagation to perform otherthan current click event",
+  "packageName": "office-ui-fabric-react",
+  "email": "v-ragor@microsoft.com",
+  "commit": "59d69619f91fb119c23c9653743b2ff8757876b0",
+  "date": "2019-10-25T11:29:43.596Z"
+}
