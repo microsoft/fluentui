@@ -20,8 +20,7 @@
   align-items: center;
   @include ms-fontSize-20;
   @include ms-fontWeight-semibold;
-  padding: 8px 28px;
-  min-height: 40px;
+  padding: 12px 12px 14px 24px;
 }
 
 .close {
@@ -31,12 +30,22 @@
   }
 }
 .closeButtonContainer {
-  padding-top: 6px;
+  padding-top: 4px;
+  padding-right: 2px;
   margin-left: auto;
 }
 
 .body {
   flex: 4 4 auto;
-  padding: 5px 28px;
+  padding: 0 24px 24px 24px;
   overflow-y: hidden;
+  p {
+    margin: 14px 0;
+  }
+  p:first-child {
+    margin-top: 0;
+  }
+  p:last-child {
+    margin-bottom: 0;
+  }
 }
