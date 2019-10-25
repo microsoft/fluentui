@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { IDocPageProps } from '../../common/DocPage.types';
 import { PanelBasicExample } from './examples/Panel.Basic.Example';
+import { PanelConfirmDismissExample } from './examples/Panel.ConfirmDismiss.Example';
 import { PanelControlledExample } from './examples/Panel.Controlled.Example';
 import { PanelFooterExample } from './examples/Panel.Footer.Example';
 import { PanelNavigationExample } from './examples/Panel.Navigation.Example';
@@ -13,6 +14,7 @@ import { PanelSizesExample } from './examples/Panel.Sizes.Example';
 
 const PanelBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Panel/examples/Panel.Basic.Example.tsx') as string;
 const PanelSizesExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Panel/examples/Panel.Sizes.Example.tsx') as string;
+const PanelConfirmDismissExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Panel/examples/Panel.ConfirmDismiss.Example.tsx') as string;
 const PanelControlledExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Panel/examples/Panel.Controlled.Example.tsx') as string;
 const PanelHiddenOnDismissExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Panel/examples/Panel.HiddenOnDismiss.Example.tsx') as string;
 const PanelLightDismissExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Panel/examples/Panel.LightDismiss.Example.tsx') as string;
@@ -38,6 +40,11 @@ export const PanelPageProps: IDocPageProps = {
       view: <PanelSizesExample />
     },
     {
+      title: 'Panel - Footer',
+      code: PanelFooterExampleCode,
+      view: <PanelFooterExample />
+    },
+    {
       title: 'Light dismiss',
       code: PanelLightDismissExampleCode,
       view: <PanelLightDismissExample />
@@ -53,7 +60,12 @@ export const PanelPageProps: IDocPageProps = {
       view: <PanelControlledExample />
     },
     {
-      title: 'Custom close behavior',
+      title: 'Confirm dismiss',
+      code: PanelConfirmDismissExampleCode,
+      view: <PanelConfirmDismissExample />
+    },
+    {
+      title: 'Confirm light dismiss',
       code: PanelLightDismissCustomExampleCode,
       view: <PanelLightDismissCustomExample />
     },
@@ -61,11 +73,6 @@ export const PanelPageProps: IDocPageProps = {
       title: 'Non-modal',
       code: PanelNonModalExampleCode,
       view: <PanelNonModalExample />
-    },
-    {
-      title: 'Panel - Footer',
-      code: PanelFooterExampleCode,
-      view: <PanelFooterExample />
     },
     {
       title: 'Panel - Custom navigation',
