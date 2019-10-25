@@ -71,7 +71,12 @@ const headerStyle = (
   hasSmallHeadline?: boolean
 ): IStyle[] => {
   if (hasCondensedHeadline) {
-    return [classNames.headerIsCondensed];
+    return [
+      classNames.headerIsCondensed,
+      {
+        marginBottom: 14
+      }
+    ];
   }
 
   if (hasSmallHeadline) {
@@ -129,10 +134,7 @@ export const getStyles = (props: ITeachingBubbleStyleProps): ITeachingBubbleStyl
     bodyContent: [
       classNames.bodyContent,
       {
-        padding: '20px'
-      },
-      isWide && {
-        maxWidth: '302px'
+        padding: '20px 24px 20px 24px'
       }
     ],
     closeButton: [
@@ -141,6 +143,8 @@ export const getStyles = (props: ITeachingBubbleStyleProps): ITeachingBubbleStyl
         position: 'absolute',
         right: 0,
         top: 0,
+        margin: '15px 15px 0 0',
+        borderRadius: 0,
         color: palette.white,
         fontSize: FontSizes.small,
         selectors: {
@@ -161,11 +165,13 @@ export const getStyles = (props: ITeachingBubbleStyleProps): ITeachingBubbleStyl
       classNames.footer,
       {
         display: 'flex',
+        flex: 'auto',
         alignItems: 'center',
         color: palette.white,
         selectors: {
-          '> *:not(:first-child)': {
-            marginLeft: '20px'
+          // TODO: global class name usage should be converted to a button styles function once Button supports JS styling
+          [`.${classNames.button}:not(:first-child)`]: {
+            marginLeft: 10
           }
         }
       }
@@ -176,7 +182,7 @@ export const getStyles = (props: ITeachingBubbleStyleProps): ITeachingBubbleStyl
       (hasCondensedHeadline || hasSmallHeadline) && [
         DefaultFontStyles.medium,
         {
-          marginRight: '10px',
+          marginRight: 24,
           fontWeight: FontWeights.semibold
         }
       ]
@@ -200,8 +206,7 @@ export const getStyles = (props: ITeachingBubbleStyleProps): ITeachingBubbleStyl
       isWide && {
         display: 'flex',
         alignItems: 'center',
-        paddingLeft: '20px',
-        maxWidth: '154px'
+        maxWidth: 154
       }
     ],
     primaryButton: [
@@ -266,7 +271,7 @@ export const getStyles = (props: ITeachingBubbleStyleProps): ITeachingBubbleStyl
         margin: 0,
         fontSize: FontSizes.medium,
         color: palette.white,
-        fontWeight: FontWeights.semilight
+        fontWeight: FontWeights.regular
       }
     ],
     subComponentStyles: {
