@@ -106,7 +106,7 @@ export interface IToggleProps extends React.HTMLAttributes<HTMLElement> {
   keytipProps?: IKeytipProps;
 
   /**
-   * (Optional) Specify whether to use the "switch".role (ARIA 1.1) or the checkbox role (ARIA 1.0).
+   * (Optional) Specify whether to use the "switch" role (ARIA 1.1) or the checkbox role (ARIA 1.0).
    * If unspecified, defaults to "switch".
    */
   role?: 'checkbox' | 'switch';
