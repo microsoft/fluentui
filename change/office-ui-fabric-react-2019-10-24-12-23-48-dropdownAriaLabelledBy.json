@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Dropdown: Moving announcement of selected options from aria-describedby to aria-labelledby.",
-  "packageName": "office-ui-fabric-react",
-  "email": "Humberto.Morimoto@microsoft.com",
-  "commit": "c31b256c602c05d4e5d21cbdaa9536c208f00e42",
-  "date": "2019-10-24T19:23:48.783Z"
-}

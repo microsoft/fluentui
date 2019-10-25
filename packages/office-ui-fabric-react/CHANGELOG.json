@@ -2,6 +2,30 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Fri, 25 Oct 2019 12:31:49 GMT",
+      "tag": "office-ui-fabric-react_v7.55.1",
+      "version": "7.55.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Facepile: added ARIA label so ARIA input fields should have an accessible name addressing issue #10877",
+            "author": "marygans@microsoft.com",
+            "commit": "8898f9dbbbda6da34fe73555431766d23293b730"
+          },
+          {
+            "comment": "Dropdown: Moving announcement of selected options from aria-describedby to aria-labelledby.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "c31b256c602c05d4e5d21cbdaa9536c208f00e42"
+          },
+          {
+            "comment": "Fix button _onDismissMenu to accept undefined event params",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "51f2b1fc7bcf17f000ff2354eae82ca640c838e2"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 24 Oct 2019 12:31:42 GMT",
       "tag": "office-ui-fabric-react_v7.55.0",
       "version": "7.55.0",
