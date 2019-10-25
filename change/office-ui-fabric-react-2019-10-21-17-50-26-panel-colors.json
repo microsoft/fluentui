@@ -1,0 +1,9 @@
+{
+  "type": "patch",
+  "comment": "Panel: Use semantic colors",
+  "packageName": "office-ui-fabric-react",
+  "email": "elcraig@microsoft.com",
+  "commit": "9ab7a866e2e330c0c9e6c04288db4ca663c07b8a",
+  "date": "2019-10-22T00:50:25.993Z",
+  "file": "/Users/elizabeth/git/fabric-react/change/office-ui-fabric-react-2019-10-21-17-50-26-panel-colors.json"
+}
