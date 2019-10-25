@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Fix button _onDismissMenu to accept undefined event params",
+  "packageName": "office-ui-fabric-react",
+  "email": "mgodbolt@microsoft.com",
+  "commit": "51f2b1fc7bcf17f000ff2354eae82ca640c838e2",
+  "date": "2019-10-24T21:34:38.173Z"
+}
