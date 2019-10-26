@@ -142,8 +142,8 @@ function _loadTypes(supportedPackages: IPackageGroup[]): Promise<void> {
   promises.push(
     // @ts-ignore: this import is handled by webpack
     import('!raw-loader!@types/react/index.d.ts') // prettier-ignore
-      .then((result: { default: string }) => {
-        typescriptDefaults.addExtraLib(result.default, `${typesPrefix}/react/index.d.ts`);
+      .then((result: string | { default: string }) => {
+        typescriptDefaults.addExtraLib(typeof result === 'string' ? result : result.default, `${typesPrefix}/react/index.d.ts`);
       })
   );
 

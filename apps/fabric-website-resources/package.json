@@ -71,6 +71,7 @@
     "@uifabric/set-version": "^7.0.2",
     "@uifabric/styling": "^7.7.2",
     "@uifabric/theme-samples": "^7.0.5",
+    "@uifabric/tsx-editor": "^0.10.2",
     "@uifabric/utilities": "^7.5.0",
     "@uifabric/variants": "^7.0.5",
     "expect-puppeteer": "4.1.0",
