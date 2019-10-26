@@ -74,7 +74,7 @@ export function configureEnvironment(config?: IMonacoConfig): void {
         // https://github.com/microsoft/monaco-editor/blob/master/docs/integrate-amd-cross.md
         // Plot twist! The approach of manually building a data URI suggested by those docs
         // didn't work in Edge, but this blob approach seems to work everywhere.
-        // https://benohead.com/cross-domain-cross-browser-web-workers/)
+        // https://benohead.com/cross-domain-cross-browser-web-workers/
         const blob = new Blob([`importScripts("${path}")`], { type: 'application/javascript' });
         return URL.createObjectURL(blob);
       }
