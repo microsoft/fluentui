@@ -84,9 +84,16 @@ export const controlsPagesAndroid: INavPage[] = [
   },
   {
     title: 'Commands, Menus & Navs',
-    url: '#/controls/android/topappbar',
+    url: '#/controls/android/popupmenu',
     isCategory: true,
     pages: [
+      {
+        title: 'Popup Menu',
+        url: '#/controls/android/popupmenu',
+        component: () => <LoadingComponent title="PopupMenu" />,
+        getComponent: cb =>
+          require.ensure([], require => cb(require<any>('../../../pages/Controls/PopupMenuPage/PopupMenuPage').PopupMenuPage))
+      },
       {
         title: 'Top App Bar',
         url: '#/controls/android/topappbar',
@@ -139,13 +146,6 @@ export const controlsPagesAndroid: INavPage[] = [
         url: '#/controls/android/drawer',
         component: () => <LoadingComponent title="Drawer" />,
         getComponent: cb => require.ensure([], require => cb(require<any>('../../../pages/Controls/DrawerPage/DrawerPage').DrawerPage))
-      },
-      {
-        title: 'PopupMenu',
-        url: '#/controls/android/popupmenu',
-        component: () => <LoadingComponent title="PopupMenu" />,
-        getComponent: cb =>
-          require.ensure([], require => cb(require<any>('../../../pages/Controls/PopupMenuPage/PopupMenuPage').PopupMenuPage))
       },
       {
         title: 'Tooltip',
