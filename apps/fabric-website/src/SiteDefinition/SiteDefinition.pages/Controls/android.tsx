@@ -83,6 +83,19 @@ export const controlsPagesAndroid: INavPage[] = [
     ]
   },
   {
+    title: 'Commands, Menus & Navs',
+    url: '#/controls/android/topappbar',
+    isCategory: true,
+    pages: [
+      {
+        title: 'Top App Bar',
+        url: '#/controls/android/topappbar',
+        component: () => <LoadingComponent title="NavBar" />,
+        getComponent: cb => require.ensure([], require => cb(require<any>('../../../pages/Controls/NavBarPage/NavBarPage').NavBarPage))
+      }
+    ]
+  },
+  {
     title: 'Notification & Engagement',
     url: '#/controls/android/snackbar',
     isCategory: true,
