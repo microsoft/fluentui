@@ -1,7 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 28 Oct 2019 12:31:48 GMT and should not be manually modified.
+This log was last generated on Mon, 28 Oct 2019 22:25:45 GMT and should not be manually modified.
 
+## 7.55.3
+Mon, 28 Oct 2019 22:25:45 GMT
+
+### Patches
+
+-  Added role to the selection list for BasePickerListBelow control so screen readers will read off "n" of "m" when arrowing through the list. (malind@microsoft.com)
 ## 7.55.2
 Mon, 28 Oct 2019 12:31:48 GMT
 

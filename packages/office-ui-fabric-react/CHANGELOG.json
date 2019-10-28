@@ -2,6 +2,20 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Mon, 28 Oct 2019 22:25:45 GMT",
+      "tag": "office-ui-fabric-react_v7.55.3",
+      "version": "7.55.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": " Added role to the selection list for BasePickerListBelow control so screen readers will read off \"n\" of \"m\" when arrowing through the list.",
+            "author": "malind@microsoft.com",
+            "commit": "adfbe74c57a96e8b75b16c0ee11397ab06a3fd5f"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 28 Oct 2019 12:31:48 GMT",
       "tag": "office-ui-fabric-react_v7.55.2",
       "version": "7.55.2",
