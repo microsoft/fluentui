@@ -26,10 +26,7 @@ export class FabricBase extends React.Component<
     const divProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties);
 
     let fabricComponent;
-    // apply theme to just the div only if applyTheme is true, otherwise do not apply theme at all
-    fabricComponent = (
-      <div {...divProps} className={this.props.applyTheme ? classNames.rootThemed : classNames.root} ref={this._rootElement} />
-    );
+    fabricComponent = <div {...divProps} className={classNames.root} ref={this._rootElement} />;
     return fabricComponent;
   }
 

@@ -4493,8 +4493,6 @@ export interface IFabricStyles {
     bodyThemed: IStyle;
     // (undocumented)
     root: IStyle;
-    // (undocumented)
-    rootThemed: IStyle;
 }
 
 // @public (undocumented)

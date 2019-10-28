@@ -17,6 +17,5 @@ export interface IFabricStyleProps extends IFabricProps {
 
 export interface IFabricStyles {
   root: IStyle;
-  rootThemed: IStyle;
   bodyThemed: IStyle;
 }
