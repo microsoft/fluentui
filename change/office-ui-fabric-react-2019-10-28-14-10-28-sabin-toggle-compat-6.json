@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Make Fabric 6 Toggle Aria 1.0 compatible (ported from 7.0)",
+  "packageName": "office-ui-fabric-react",
+  "email": "satimals@microsoft.com",
+  "commit": "76a74c17ca52804354b348edc584df6f3ebc7463",
+  "date": "2019-10-28T21:10:28.777Z"
+}
