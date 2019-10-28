@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "removing circular IPoint import",
-  "packageName": "office-ui-fabric-react",
-  "email": "mehanig@gmail.com",
-  "commit": "262fa433b51065deadc15aaf850e5cfb9670066c",
-  "date": "2019-10-26T00:45:08.922Z"
-}

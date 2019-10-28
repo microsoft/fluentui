@@ -1,7 +1,14 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 25 Oct 2019 12:31:49 GMT and should not be manually modified.
+This log was last generated on Mon, 28 Oct 2019 12:31:48 GMT and should not be manually modified.
 
+## 7.55.2
+Mon, 28 Oct 2019 12:31:48 GMT
+
+### Patches
+
+- Panel: Use semantic colors (elcraig@microsoft.com)
+- removing circular IPoint import (mehanig@gmail.com)
 ## 7.55.1
 Fri, 25 Oct 2019 12:31:49 GMT
 
