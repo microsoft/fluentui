@@ -1,5 +1,4 @@
 import { DirectionalHint } from '../../common/DirectionalHint';
-import { IPoint } from './positioning.types';
 import { IRectangle } from '../../Utilities';
 
 export enum RectangleEdge {
