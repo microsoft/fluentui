@@ -1,7 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 24 Oct 2019 12:24:31 GMT and should not be manually modified.
+This log was last generated on Mon, 28 Oct 2019 12:24:06 GMT and should not be manually modified.
 
+## 6.210.2
+Mon, 28 Oct 2019 12:24:06 GMT
+
+### Patches
+
+- TeachingBubble updates: added separate multi-step example to reflect current design toolkit and updated basic teachingbubble example (marygans@microsoft.com)
 ## 6.210.1
 Thu, 24 Oct 2019 12:24:31 GMT
 

@@ -2,6 +2,20 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Mon, 28 Oct 2019 12:24:06 GMT",
+      "tag": "office-ui-fabric-react_v6.210.2",
+      "version": "6.210.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "TeachingBubble updates: added separate multi-step example to reflect current design toolkit and updated basic teachingbubble example",
+            "author": "marygans@microsoft.com",
+            "commit": "32e3e58cc917937374989827eb44eaf968a5f05f"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 24 Oct 2019 12:24:31 GMT",
       "tag": "office-ui-fabric-react_v6.210.1",
       "version": "6.210.1",
