@@ -41,7 +41,8 @@
     "react-dom": "16.8.6",
     "react-highlight": "0.10.0",
     "write-file-webpack-plugin": "^4.1.0",
-    "@uifabric/build": "^7.0.0"
+    "@uifabric/build": "^7.0.0",
+    "@uifabric/tsx-editor": "^0.10.2"
   },
   "dependencies": {
     "@microsoft/load-themed-styles": "^1.7.13",

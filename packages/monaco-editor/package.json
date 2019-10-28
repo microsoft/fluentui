@@ -15,11 +15,11 @@
     "just": "just-scripts"
   },
   "devDependencies": {
+    "monaco-editor": "0.18.1",
     "@uifabric/build": "^7.0.0"
   },
   "dependencies": {
     "@microsoft/load-themed-styles": "^1.7.13",
-    "monaco-editor": "0.17.1",
     "tslib": "^1.7.1"
   },
   "optionalPeerDependencies": {

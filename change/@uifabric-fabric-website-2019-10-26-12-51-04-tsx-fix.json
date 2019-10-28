@@ -1,0 +1,8 @@
+{
+  "type": "none",
+  "comment": "Add missing tsx-editor dev dep",
+  "packageName": "@uifabric/fabric-website",
+  "email": "elcraig@microsoft.com",
+  "commit": "da81d25a70517a242b31f2b25ee8b07975b6e539",
+  "date": "2019-10-26T19:41:23.322Z"
+}

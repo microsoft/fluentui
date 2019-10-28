@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Pick up new Monaco version and try a different cross-domain worker loading method",
+  "packageName": "@uifabric/monaco-editor",
+  "email": "elcraig@microsoft.com",
+  "commit": "da81d25a70517a242b31f2b25ee8b07975b6e539",
+  "date": "2019-10-26T19:41:34.548Z"
+}
