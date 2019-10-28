@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Remove re-export of @uifabric/example-data from office-ui-fabric-react",
+  "packageName": "office-ui-fabric-react",
+  "email": "KevinTCoughlin@users.noreply.github.com",
+  "commit": "d275d58e69a4a1d6d4a2d2a8691c488fa3e97954",
+  "date": "2019-10-28T21:20:36.224Z"
+}
