@@ -41,7 +41,8 @@ export class FacepileBasicExample extends React.Component<{}, IFacepileBasicExam
           presence: this._personaPresence(persona.personaName!)
         };
       },
-      ariaDescription: 'To move through the items use left and right arrow keys.'
+      ariaDescription: 'To move through the items use left and right arrow keys.',
+      ariaLabel: 'Example list of Facepile personas'
     };
 
     return (

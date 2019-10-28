@@ -4517,6 +4517,7 @@ export interface IFacepilePersona extends React.ButtonHTMLAttributes<HTMLButtonE
 export interface IFacepileProps extends React.ClassAttributes<FacepileBase> {
     addButtonProps?: IButtonProps;
     ariaDescription?: string;
+    ariaLabel?: string;
     // @deprecated
     chevronButtonProps?: IButtonProps;
     className?: string;
@@ -9354,7 +9355,7 @@ export class ToggleBase extends BaseComponent<IToggleProps, IToggleState> implem
     // (undocumented)
     focus(): void;
     // (undocumented)
-    static getDerivedStateFromProps(props: IToggleProps, state: IToggleState): IToggleState;
+    static getDerivedStateFromProps(nextProps: Readonly<IToggleProps>, prevState: Readonly<IToggleState>): Partial<IToggleState> | null;
     // (undocumented)
     render(): JSX.Element;
     }

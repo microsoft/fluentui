@@ -3752,10 +3752,10 @@ bcrypt-pbkdf@^1.0.0:
   dependencies:
     tweetnacl "^0.14.3"
 
-beachball@^1.14.1:
-  version "1.14.1"
-  resolved "https://registry.npmjs.org/beachball/-/beachball-1.14.1.tgz#91683f5c98d87778548b66458480e99fcdff1226"
-  integrity sha512-MKPaTaBeycAyDXailj1On0Lxsi6AKnVnNdrcBIj++Lpfy2xRnjACuP1CX+Yvw4qf6+FRPmbgVbj/xyU+GZbXXA==
+beachball@^1.14.2:
+  version "1.14.2"
+  resolved "https://registry.npmjs.org/beachball/-/beachball-1.14.2.tgz#aab2a947a8f607962b91f8ec0ed3c9a9891a3cf7"
+  integrity sha512-/NfY72bBBcykAuZ7o14OzPEhygJgfDpZqIdZWxH3nISnO1xSwnZlGosrUixsQjgcuibQ1q9sLDmP5VO/06XtSA==
   dependencies:
     fs-extra "^8.0.1"
     git-url-parse "^11.1.2"
@@ -10214,10 +10214,10 @@ moment@2.x.x, moment@^2.22.1:
   resolved "https://registry.yarnpkg.com/moment/-/moment-2.24.0.tgz#0d055d53f5052aa653c9f6eb68bb5d12bf5c2b5b"
   integrity sha512-bV7f+6l2QigeBBZSM/6yTNq4P2fNpSWj/0e7jQcy87A8e7o2nAfP/34/2ky5Vw4B9S446EtIhodAzkFCcR4dQg==
 
-monaco-editor@0.17.1:
-  version "0.17.1"
-  resolved "https://registry.yarnpkg.com/monaco-editor/-/monaco-editor-0.17.1.tgz#8fbe96ca54bfa75262706e044f8f780e904aa45c"
-  integrity sha512-JAc0mtW7NeO+0SwPRcdkfDbWLgkqL9WfP1NbpP9wNASsW6oWqgZqNIWt4teymGjZIXTElx3dnQmUYHmVrJ7HxA==
+monaco-editor@0.18.1:
+  version "0.18.1"
+  resolved "https://registry.yarnpkg.com/monaco-editor/-/monaco-editor-0.18.1.tgz#ced7c305a23109875feeaf395a504b91f6358cfc"
+  integrity sha512-fmL+RFZ2Hrezy+X/5ZczQW51LUmvzfcqOurnkCIRFTyjdVjzR7JvENzI6+VKBJzJdPh6EYL4RoWl92b2Hrk9fw==
 
 moo@^0.4.3:
   version "0.4.3"

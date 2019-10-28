@@ -7,7 +7,6 @@ exports[`Dropdown multi-select Renders multiselect Dropdown correctly 1`] = `
 
 >
   <div
-    aria-describedby="Dropdown0-option"
     aria-expanded="false"
     aria-haspopup="listbox"
     className=
@@ -182,7 +181,6 @@ exports[`Dropdown single-select Renders single-select Dropdown correctly 1`] = `
 
 >
   <div
-    aria-describedby="Dropdown0-option"
     aria-expanded="false"
     aria-haspopup="listbox"
     className=

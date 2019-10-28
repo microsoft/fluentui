@@ -3971,10 +3971,9 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
           Number of items to render
         </label>
         <div
-          aria-describedby="Dropdown64-option"
           aria-expanded="false"
           aria-haspopup="listbox"
-          aria-labelledby="Dropdown64-label"
+          aria-labelledby="Dropdown64-label Dropdown64-option"
           className=
               ms-Dropdown
               {

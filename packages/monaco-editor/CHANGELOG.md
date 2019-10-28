@@ -1,7 +1,13 @@
 # Change Log - @uifabric/monaco-editor
 
-This log was last generated on Fri, 04 Oct 2019 22:19:48 GMT and should not be manually modified.
+This log was last generated on Mon, 28 Oct 2019 22:25:45 GMT and should not be manually modified.
 
+## 0.4.0
+Mon, 28 Oct 2019 22:25:45 GMT
+
+### Minor changes
+
+- Pick up new Monaco version and try a different cross-domain worker loading method (elcraig@microsoft.com)
 ## 0.3.0
 Fri, 04 Oct 2019 22:19:48 GMT
 
