@@ -58,13 +58,13 @@ export interface IApiBaseItem {
   deprecated?: boolean;
 }
 
-export interface IApiEnumProperty extends IApiBaseItem {
-  value: string;
-}
-
 export interface IApiInterfaceProperty extends IApiBaseItem {
   typeTokens: ILinkToken[];
-  defaultValue: string;
+  defaultValue?: string;
+}
+
+export interface IApiEnumProperty extends IApiBaseItem {
+  value: string;
 }
 
 /** Class method */

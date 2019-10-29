@@ -38,6 +38,20 @@ const rootClass = mergeStyles({
   }
 });
 const theme = getTheme();
+const rowStyles: Partial<IDetailsRowStyles> = {
+  root: {
+    color: theme.semanticColors.bodyText,
+    selectors: {
+      ':hover': {
+        background: 'none',
+        color: theme.semanticColors.bodyText
+      }
+    }
+  },
+  isMultiline: {
+    wordBreak: 'break-word'
+  }
+};
 
 // When the text is passed to the function using this regex, it has had newline characters removed,
 // so the regex will match backtick sequences that span multiple lines.
@@ -107,22 +121,20 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
         .map((prop: IApiEnumProperty) => ({ ...prop, key: prop.name }));
 
       this._isEnum = true;
-    } else if (renderAs === PropertyType.class || props.renderAsClass) {
+    } else {
       this._properties = (properties as IApiInterfaceProperty[])
         .sort((a: IApiInterfaceProperty, b: IApiInterfaceProperty) => (a.name < b.name ? -1 : a.name > b.name ? 1 : 0))
         .map((prop: IApiInterfaceProperty) => ({ ...prop, key: prop.name }));
 
-      this._methods = methods!
-        .sort((a: IMethod, b: IMethod) => (a.name < b.name || a.name === 'constructor' ? -1 : a.name > b.name ? 1 : 0))
-        .map((prop: IMethod) => ({ ...prop, key: prop.name }));
-
-      this._isClass = true;
-    } else {
-      this._properties = (props.properties as IApiInterfaceProperty[])
-        .sort((a: IApiInterfaceProperty, b: IApiInterfaceProperty) => (a.name < b.name ? -1 : a.name > b.name ? 1 : 0))
-        .map((prop: IApiInterfaceProperty) => ({ ...prop, key: prop.name }));
-
+      this._isClass = !!(renderAs === PropertyType.class || props.renderAsClass);
       this._isTypeAlias = !!(renderAs === PropertyType.typeAlias || props.renderAsTypeAlias);
+
+      if (this._isClass) {
+        // Ensure the constructor is first
+        this._methods = methods!
+          .sort((a: IMethod, b: IMethod) => (a.name < b.name || a.name === 'constructor' ? -1 : a.name > b.name ? 1 : 0))
+          .map((prop: IMethod) => ({ ...prop, key: prop.name }));
+      }
     }
 
     this._baseUrl = getCurrentUrl();
@@ -252,7 +264,7 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
           {(description || (extendsTokens && extendsTokens.length > 0)) && (
             <Stack tokens={{ childrenGap: XSMALL_GAP_SIZE }}>
               {description && <Markdown>{description}</Markdown>}
-              {this._renderExtends()}
+              {extendsTokens && this._parseILinkTokens(true, extendsTokens)}
             </Stack>
           )}
         </Stack>
@@ -336,12 +348,6 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
     );
   }
 
-  private _renderExtends(): JSX.Element | undefined {
-    const { extendsTokens } = this.props;
-
-    return this._parseILinkTokens(true, extendsTokens);
-  }
-
   private _renderTitle(): JSX.Element | undefined {
     const { title, name } = this.props;
 
@@ -355,21 +361,6 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
   }
 
   private _onRenderRow = (props: IDetailsRowProps, defaultRender?: IRenderFunction<IDetailsRowProps>): JSX.Element => {
-    const rowStyles: Partial<IDetailsRowStyles> = {
-      root: {
-        color: theme.semanticColors.bodyText,
-        selectors: {
-          ':hover': {
-            background: 'none',
-            color: theme.semanticColors.bodyText
-          }
-        }
-      },
-      isMultiline: {
-        wordBreak: 'break-word'
-      }
-    };
-
     return <DetailsRow {...props} styles={rowStyles} />;
   };
 
@@ -456,7 +447,7 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
  */
 function _extractCodeBlocks(text: string): React.ReactNode[] {
   // Unescape some characters
-  text = text.replace(/\\([@<>])/g, '$1');
+  text = text.replace(/\\([@<>{}])/g, '$1');
 
   let regexResult: RegExpExecArray | null;
   const codeBlocks: { index: number; text: string }[] = [];

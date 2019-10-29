@@ -25,10 +25,11 @@ export class ApiReferencesTableSet extends React.Component<IApiReferencesTableSe
   constructor(props: IApiReferencesTableSetProps) {
     super(props);
 
-    this._tableProps = this._generateTableProps();
     this.state = {
       showSeeMore: false
     };
+
+    this._tableProps = this._generateTableProps();
   }
 
   public render(): JSX.Element {
@@ -142,11 +143,19 @@ export class ApiReferencesTableSet extends React.Component<IApiReferencesTableSe
       for (const table of jsonDocs.tables) {
         switch (table.kind) {
           case 'enum': {
-            results.push(this._generateEnumProperty(table));
+            results.push(
+              _generateTableProps(table, {
+                renderAs: PropertyType.enum,
+                properties: table.members as IEnumTableRowJson[]
+              })
+            );
             break;
           }
           case 'interface': {
-            const interfaceProperty = this._generateInterfaceProperty(table);
+            const interfaceProperty = _generateTableProps(table, {
+              renderAs: PropertyType.interface,
+              properties: table.members
+            });
 
             // to ensure that I{componentName}Props comes first
             if (propsName === table.name) {
@@ -158,17 +167,16 @@ export class ApiReferencesTableSet extends React.Component<IApiReferencesTableSe
             break;
           }
           case 'class': {
-            const result = this._generateClassProperty(table);
-            // special case for ordering
-            if (jsonDocs.name === 'Pickers' && table.name === 'BasePicker') {
-              results.unshift(result);
-            } else {
-              results.push(result);
-            }
+            results.push(this._generateClassProperty(table));
             break;
           }
           case 'typeAlias': {
-            results.push(this._generateTypeAliasProperty(table));
+            results.push(
+              _generateTableProps(table, {
+                renderAs: PropertyType.typeAlias,
+                properties: []
+              })
+            );
             break;
           }
         }
@@ -176,33 +184,6 @@ export class ApiReferencesTableSet extends React.Component<IApiReferencesTableSe
     }
 
     return results;
-  }
-
-  private _generateEnumProperty(table: ITableJson): IApiReferencesTableProps {
-    return generateTableProps(table, {
-      renderAs: PropertyType.enum,
-      properties: table.members as IEnumTableRowJson[]
-    });
-  }
-
-  private _generateTypeAliasProperty(table: ITableJson): IApiReferencesTableProps {
-    return generateTableProps(table, {
-      renderAs: PropertyType.typeAlias,
-      properties: []
-    });
-  }
-
-  private _generateInterfaceProperty(table: ITableJson): IApiReferencesTableProps {
-    const interfaceMembers: IApiInterfaceProperty[] = (table.members as ITableRowJson[]).map(member =>
-      // each member within the interface
-      ({ defaultValue: '', ...member })
-    );
-
-    // the interface
-    return generateTableProps(table, {
-      renderAs: PropertyType.interface,
-      properties: interfaceMembers
-    });
   }
 
   private _generateClassProperty(table: ITableJson): IApiReferencesTableProps {
@@ -215,12 +196,12 @@ export class ApiReferencesTableSet extends React.Component<IApiReferencesTableSe
       if (member.kind === 'Method') {
         classMethods.push(member);
       } else {
-        classMembers.push({ defaultValue: '', ...member });
+        classMembers.push(member);
       }
     });
 
     // the class
-    return generateTableProps(table, {
+    return _generateTableProps(table, {
       renderAs: PropertyType.class,
       properties: classMembers,
       methods: classMethods
@@ -228,7 +209,7 @@ export class ApiReferencesTableSet extends React.Component<IApiReferencesTableSe
   }
 }
 
-function generateTableProps(
+function _generateTableProps(
   table: ITableJson,
   extraInfo: Required<Pick<IApiReferencesTableProps, 'properties' | 'renderAs'>> & Partial<IApiReferencesTableProps>
 ): IApiReferencesTableProps {

@@ -39,7 +39,7 @@ import { FileSystem, JsonFile } from '@microsoft/node-core-library';
 import {
   IPageJson,
   ITableJson,
-  ITokenJson,
+  ILinkToken,
   ITableRowJson,
   IEnumTableRowJson,
   IReferencesList,
@@ -210,10 +210,8 @@ function renderLinkTag(apiModel: ApiModel, apiItem: ApiItem, link: DocLinkTag): 
 }
 
 /**
- * Generate an ITableJson with properties that are common across multiple item types:
- * the name, description, deprecated message, and optionally extends tokens.
- * Additional properties specific to the type of item can be added to the returned object.
- * (Works for interfaces, classes, enums, and type aliases.)
+ * Generate an ITableJson for any top-level API item (interface, class, enum, type alias)
+ * with the name, description, deprecated message, and optionally extends tokens pre-filled.
  */
 function getTableJson(
   collectedData: CollectedData,
@@ -251,12 +249,17 @@ function getTableJson(
 }
 
 /**
- * Generate an ITableRowJson with properties that are common across multiple item types:
- * the name, description, deprecated message, and default value.
- * Additional properties specific to the type of item can be added to the returned object.
- * (Used for all class and interface properties/methods, but not enum members.)
+ * Generate an ITableRowJson for a class/interface/enum member with the name, description,
+ * deprecated message, default value, and (optionally) type tokens pre-filled.
+ * @param typeTokens - Optional list of tokens which includes the item type info.
+ * @param typeTokenRange - Specific location of the item type within `typeTokens`.
  */
-function getTableRowJson(apiModel: ApiModel, apiItem: ApiDeclaredItem & { name?: string }): ITableRowJson {
+function getTableRowJson(
+  collectedData: CollectedData,
+  apiItem: ApiDeclaredItem & { name?: string },
+  typeTokens?: readonly ExcerptToken[],
+  typeTokenRange?: Readonly<IExcerptTokenRange>
+): ITableRowJson {
   const { tsdocComment } = apiItem;
   const tableRowJson: ITableRowJson = {
     name: apiItem.name || '',
@@ -271,13 +274,17 @@ function getTableRowJson(apiModel: ApiModel, apiItem: ApiDeclaredItem & { name?:
       getBlockTagByName('@defaultvalue', tsdocComment) ||
       getBlockTagByName('@default', tsdocComment);
     if (defaultValue) {
-      tableRowJson.defaultValue = renderNodes(apiModel, apiItem, defaultValue);
+      tableRowJson.defaultValue = renderNodes(collectedData.apiModel, apiItem, defaultValue);
     }
 
     if (tsdocComment.deprecatedBlock) {
       tableRowJson.deprecated = true;
-      tableRowJson.deprecatedMessage = renderNodes(apiModel, apiItem, tsdocComment.deprecatedBlock.content);
+      tableRowJson.deprecatedMessage = renderNodes(collectedData.apiModel, apiItem, tsdocComment.deprecatedBlock.content);
     }
+  }
+
+  if (typeTokens && typeTokenRange) {
+    tableRowJson.typeTokens = getTokenHyperlinks(collectedData, typeTokens, typeTokenRange);
   }
 
   return tableRowJson;
@@ -297,10 +304,9 @@ function createInterfacePageJson(collectedData: CollectedData, interfaceItem: Ap
     switch (member.kind) {
       case ApiItemKind.PropertySignature: {
         const apiPropertySignature: ApiPropertySignature = member as ApiPropertySignature;
-        const tableRowJson: ITableRowJson = getTableRowJson(collectedData.apiModel, apiPropertySignature);
-
-        tableRowJson.typeTokens = getTokenHyperlinks(
+        const tableRowJson: ITableRowJson = getTableRowJson(
           collectedData,
+          apiPropertySignature,
           apiPropertySignature.excerptTokens,
           apiPropertySignature.propertyTypeExcerpt.tokenRange
         );
@@ -311,7 +317,7 @@ function createInterfacePageJson(collectedData: CollectedData, interfaceItem: Ap
 
       case ApiItemKind.MethodSignature: {
         const apiMethodSignature: ApiMethodSignature = member as ApiMethodSignature;
-        const tableRowJson: ITableRowJson = getTableRowJson(collectedData.apiModel, apiMethodSignature);
+        const tableRowJson: ITableRowJson = getTableRowJson(collectedData, apiMethodSignature);
 
         tableRowJson.typeTokens = getTokenHyperlinks(
           collectedData,
@@ -347,7 +353,7 @@ function createEnumPageJson(collectedData: CollectedData, enumItem: ApiEnum): IT
       case ApiItemKind.EnumMember: {
         const apiEnumMember: ApiEnumMember = member as ApiEnumMember;
 
-        const { name, description, deprecated, deprecatedMessage } = getTableRowJson(collectedData.apiModel, apiEnumMember);
+        const { name, description, deprecated, deprecatedMessage } = getTableRowJson(collectedData, apiEnumMember);
         const tableRowJson: IEnumTableRowJson = {
           name,
           description,
@@ -379,20 +385,18 @@ function createClassPageJson(collectedData: CollectedData, classItem: ApiClass):
   const tableJson: ITableJson = getTableJson(collectedData, classItem, 'class', classItem.extendsType);
   const classTableRowJson = tableJson.members as ITableRowJson[];
 
-  // if (classItem.extendsType) {
-  //   tableJson.extendsTokens = getTokensInRange(classItem.extendsType.excerpt.tokens, classItem.extendsType.excerpt.tokenRange).map(
-  //     (token: ExcerptToken) => ({ text: token.text })
-  //   );
-  // }
-
   for (const member of classItem.members) {
     switch (member.kind) {
       case ApiItemKind.Property: {
         const apiProperty: ApiProperty = member as ApiProperty;
-        const tableRowJson: ITableRowJson = getTableRowJson(collectedData.apiModel, apiProperty);
+        const tableRowJson: ITableRowJson = getTableRowJson(
+          collectedData,
+          apiProperty,
+          apiProperty.excerptTokens,
+          apiProperty.propertyTypeExcerpt.tokenRange
+        );
 
         tableRowJson.kind = 'Property';
-        tableRowJson.typeTokens = getTokenHyperlinks(collectedData, apiProperty.excerptTokens, apiProperty.propertyTypeExcerpt.tokenRange);
 
         classTableRowJson.push(tableRowJson);
         break;
@@ -401,10 +405,14 @@ function createClassPageJson(collectedData: CollectedData, classItem: ApiClass):
       case ApiItemKind.Constructor:
       case ApiItemKind.Method: {
         const apiMethod = member as (ApiMethod | ApiConstructor);
-        const tableRowJson: ITableRowJson = getTableRowJson(collectedData.apiModel, apiMethod);
+        const tableRowJson: ITableRowJson = getTableRowJson(
+          collectedData,
+          apiMethod,
+          apiMethod.excerptTokens,
+          apiMethod.excerpt.tokenRange
+        );
 
         tableRowJson.kind = 'Method';
-        tableRowJson.typeTokens = getTokenHyperlinks(collectedData, apiMethod.excerptTokens, apiMethod.excerpt.tokenRange);
 
         if (member.kind === ApiItemKind.Constructor) {
           // The constructor is similar to a method, but we have to manually add the name.
@@ -443,7 +451,7 @@ function getTokenHyperlinks(
   collectedData: CollectedData,
   excerptTokens: ReadonlyArray<ExcerptToken>,
   excerptTokenRange: Readonly<IExcerptTokenRange>
-): ITokenJson[] {
+): ILinkToken[] {
   return getTokensInRange(excerptTokens, excerptTokenRange).map((token: ExcerptToken) => {
     const apiPage = collectedData.apiToPage.get(token.text);
     if (apiPage) {
