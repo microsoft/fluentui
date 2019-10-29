@@ -1,7 +1,19 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Wed, 09 Oct 2019 22:25:09 GMT and should not be manually modified.
+This log was last generated on Thu, 24 Oct 2019 12:31:42 GMT and should not be manually modified.
 
+## 0.137.2
+Thu, 24 Oct 2019 12:31:42 GMT
+
+### Patches
+
+- Change gapSpace to 10 to resolve line chart flickering issue (v-ragor@microsoft.com)
+## 0.137.1
+Tue, 22 Oct 2019 12:32:05 GMT
+
+### Patches
+
+- Fix getDerivedStateFromProps signatures (elcraig@microsoft.com)
 ## 0.137.0
 Wed, 09 Oct 2019 22:25:09 GMT
 

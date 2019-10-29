@@ -188,10 +188,9 @@ exports[`Component Examples renders ContextualMenu.Directional.Example.tsx corre
         Directional hint
       </label>
       <div
-        aria-describedby="Dropdown1-option"
         aria-expanded="false"
         aria-haspopup="listbox"
-        aria-labelledby="Dropdown1-label"
+        aria-labelledby="Dropdown1-label Dropdown1-option"
         className=
             ms-Dropdown
             {

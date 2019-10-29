@@ -141,9 +141,11 @@ function _loadTypes(supportedPackages: IPackageGroup[]): Promise<void> {
   // React must be loaded first
   promises.push(
     // @ts-ignore: this import is handled by webpack
-    import('!raw-loader!@types/react/index.d.ts') // prettier-ignore
-      .then((result: { default: string }) => {
-        typescriptDefaults.addExtraLib(result.default, `${typesPrefix}/react/index.d.ts`);
+    import('!raw-loader!@types/react/index.d.ts')
+      // raw-loader 0.x exports a single string, and later versions export a default.
+      // The package.json specifies 0.x, but handle either just in case.
+      .then((result: string | { default: string }) => {
+        typescriptDefaults.addExtraLib(typeof result === 'string' ? result : result.default, `${typesPrefix}/react/index.d.ts`);
       })
   );
 

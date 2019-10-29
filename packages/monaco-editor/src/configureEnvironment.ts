@@ -4,8 +4,8 @@ export interface IMonacoConfig {
   /** Whether to use minified versions of the files (`.min.js`) */
   useMinified?: boolean;
   /**
-   * Whether to use a configuration variant which works when this script lives
-   * on a different domain than the core Monaco scripts
+   * Whether to use a configuration variant which works when the worker script lives on a
+   * different domain than the website host (like a CDN).
    */
   crossDomain?: boolean;
 }
@@ -28,7 +28,7 @@ const labelMap: { [key: string]: string } = {
   json: 'json'
 };
 
-export function getMonacoConfig(): IMonacoConfig | undefined {
+function getMonacoConfig(): IMonacoConfig | undefined {
   return (
     globalObj.MonacoConfig ||
     // TODO: remove once fabric-website homepage.htm is updated
@@ -69,13 +69,23 @@ export function configureEnvironment(config?: IMonacoConfig): void {
 
       if (crossDomain) {
         // This is needed for cases where the JS files will be on a different domain (the CDN)
-        // instead of the domain the HTML is running on. Web workers (used by Monaco) can't be
-        // loaded by script residing on a different domain, so we use this proxy script on the
-        // main domain to load the worker script. (Also do this with localhost/devhost for testing.)
+        // instead of the domain the HTML is running on. Web worker scripts can't be directly
+        // loaded from a different domain, so we use this proxy. More info:
         // https://github.com/microsoft/monaco-editor/blob/master/docs/integrate-amd-cross.md
-        return 'data:text/javascript;charset=utf-8,' + encodeURIComponent(`importScripts("${path}");`);
+        // Plot twist! The approach of manually building a data URI suggested by those docs
+        // didn't work in Edge, but this blob approach seems to work everywhere.
+        // https://benohead.com/cross-domain-cross-browser-web-workers/
+        const blob = new Blob([`importScripts("${path}")`], { type: 'application/javascript' });
+        return URL.createObjectURL(blob);
       }
       return path;
     }
   };
+}
+
+/**
+ * Returns true if either MonacoEnvironment or MonacoConfig is set.
+ */
+export function isConfigAvailable(): boolean {
+  return !!(globalObj.MonacoConfig || globalObj.MonacoEnvironment);
 }

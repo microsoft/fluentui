@@ -20,9 +20,23 @@ function addMonacoWebpackConfig(config, includeAllLanguages) {
     throw new Error('config passed to addMonacoConfig must be an object, not an array or function.');
   }
 
-  const { entry, output, resolve } = config;
+  const { entry, output, externals, resolve } = config;
   if (!entry || typeof entry !== 'object') {
     throw new Error(`config.entry passed to addMonacoWebpackConfig must be an object. Got: ${JSON.stringify(entry)}`);
+  }
+
+  // As of monaco-editor@0.18.1, typescriptServices.js includes a direct require for this package,
+  // which breaks webpack. Use an external to get rid of it (this works since the require is
+  // wrapped in a try/catch). Will be fixed once this merges and is published.
+  // https://github.com/microsoft/monaco-typescript/pull/49
+  /** @type {webpack.ExternalsElement[]} */
+  const newExternals = [{ '@microsoft/typescript-etw': 'FakeModule' }];
+  if (externals) {
+    if (Array.isArray(externals)) {
+      newExternals.push(...externals);
+    } else {
+      newExternals.push(externals);
+    }
   }
 
   // Somewhat based on https://github.com/microsoft/monaco-editor/blob/master/docs/integrate-esm.md
@@ -40,6 +54,7 @@ function addMonacoWebpackConfig(config, includeAllLanguages) {
           }
         : {})
     },
+    externals: newExternals,
     output: {
       ...output,
       globalObject: 'self' // required for monaco--see https://github.com/webpack/webpack/issues/6642

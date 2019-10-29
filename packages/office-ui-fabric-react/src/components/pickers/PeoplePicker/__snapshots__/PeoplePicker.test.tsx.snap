@@ -9,6 +9,8 @@ exports[`PeoplePicker renders correctly 1`] = `
   onKeyDown={[Function]}
 >
   <div
+    aria-expanded={false}
+    aria-haspopup="dialog"
     className=
         ms-FocusZone
         &:focus {
@@ -18,6 +20,7 @@ exports[`PeoplePicker renders correctly 1`] = `
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
+    role="combobox"
   >
     <div
       className="ms-SelectionZone"
@@ -52,18 +55,22 @@ exports[`PeoplePicker renders correctly 1`] = `
         <input
           aria-autocomplete="both"
           aria-controls=" "
-          aria-expanded={false}
-          aria-haspopup="true"
           autoCapitalize="off"
           autoComplete="off"
           className=
               ms-BasePicker-input
               {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
                 align-self: flex-end;
                 background-color: transparent;
                 border-radius: 2px;
                 border: none;
+                color: #323130;
                 flex-grow: 1;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
                 height: 30px;
                 outline: none;
                 padding-bottom: 0;
@@ -81,7 +88,7 @@ exports[`PeoplePicker renders correctly 1`] = `
           onFocus={[Function]}
           onInput={[Function]}
           onKeyDown={[Function]}
-          role="combobox"
+          role="textbox"
           spellCheck={false}
           value=""
         />
@@ -100,6 +107,8 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
   onKeyDown={[Function]}
 >
   <div
+    aria-expanded={false}
+    aria-haspopup="dialog"
     className=
         ms-FocusZone
         &:focus {
@@ -109,6 +118,7 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
+    role="combobox"
   >
     <div
       className="ms-SelectionZone"
@@ -606,18 +616,22 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
           aria-autocomplete="both"
           aria-controls=" "
           aria-describedby="selected-items-id__0"
-          aria-expanded={false}
-          aria-haspopup="true"
           autoCapitalize="off"
           autoComplete="off"
           className=
               ms-BasePicker-input
               {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
                 align-self: flex-end;
                 background-color: transparent;
                 border-radius: 2px;
                 border: none;
+                color: #323130;
                 flex-grow: 1;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
                 height: 30px;
                 outline: none;
                 padding-bottom: 0;
@@ -635,7 +649,7 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
           onFocus={[Function]}
           onInput={[Function]}
           onKeyDown={[Function]}
-          role="combobox"
+          role="textbox"
           spellCheck={false}
           value=""
         />

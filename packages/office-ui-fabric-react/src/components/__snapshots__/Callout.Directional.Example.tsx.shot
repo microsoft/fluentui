@@ -727,10 +727,9 @@ exports[`Component Examples renders Callout.Directional.Example.tsx correctly 1`
         Directional hint
       </label>
       <div
-        aria-describedby="Dropdown3-option"
         aria-expanded="false"
         aria-haspopup="listbox"
-        aria-labelledby="Dropdown3-label"
+        aria-labelledby="Dropdown3-label Dropdown3-option"
         className=
             ms-Dropdown
             {

@@ -21,7 +21,7 @@
     "@uifabric/prettier-rules": "^7.0.4",
     "async": "^2.6.1",
     "autoprefixer": "^7.1.5",
-    "beachball": "^1.14.1",
+    "beachball": "^1.14.2",
     "chalk": "^2.1.0",
     "css-loader": "^0.28.7",
     "find-free-port": "~2.0.0",

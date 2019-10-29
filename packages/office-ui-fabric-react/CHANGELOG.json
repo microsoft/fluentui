@@ -2,6 +2,183 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Mon, 28 Oct 2019 22:25:45 GMT",
+      "tag": "office-ui-fabric-react_v7.55.3",
+      "version": "7.55.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": " Added role to the selection list for BasePickerListBelow control so screen readers will read off \"n\" of \"m\" when arrowing through the list.",
+            "author": "malind@microsoft.com",
+            "commit": "adfbe74c57a96e8b75b16c0ee11397ab06a3fd5f"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 28 Oct 2019 12:31:48 GMT",
+      "tag": "office-ui-fabric-react_v7.55.2",
+      "version": "7.55.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Panel: Use semantic colors",
+            "author": "elcraig@microsoft.com",
+            "commit": "9ab7a866e2e330c0c9e6c04288db4ca663c07b8a"
+          },
+          {
+            "comment": "removing circular IPoint import",
+            "author": "mehanig@gmail.com",
+            "commit": "262fa433b51065deadc15aaf850e5cfb9670066c"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 25 Oct 2019 12:31:49 GMT",
+      "tag": "office-ui-fabric-react_v7.55.1",
+      "version": "7.55.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Facepile: added ARIA label so ARIA input fields should have an accessible name addressing issue #10877",
+            "author": "marygans@microsoft.com",
+            "commit": "8898f9dbbbda6da34fe73555431766d23293b730"
+          },
+          {
+            "comment": "Dropdown: Moving announcement of selected options from aria-describedby to aria-labelledby.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "c31b256c602c05d4e5d21cbdaa9536c208f00e42"
+          },
+          {
+            "comment": "Fix button _onDismissMenu to accept undefined event params",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "51f2b1fc7bcf17f000ff2354eae82ca640c838e2"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 24 Oct 2019 12:31:42 GMT",
+      "tag": "office-ui-fabric-react_v7.55.0",
+      "version": "7.55.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Do not expand date picker on TextField click when disableAutoFocus is true and allowTextInput is true.",
+            "author": "phtucker@microsoft.com",
+            "commit": "5a715f5fd66c852bd0d26dff62ee8924c5924d1b"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "FocusZone: unhooking capture keydown handler at the right time to avoid a race condition.",
+            "author": "dzearing@hotmail.com",
+            "commit": "01728e3082bf41ea216f9f25a745c202a7489372"
+          },
+          {
+            "comment": "Make DetailsRow data-is-focusable configurable",
+            "author": "KevinTCoughlin@users.noreply.github.com",
+            "commit": "6d0e302acf49b223fc1af8f9233098eefec7fc12"
+          },
+          {
+            "comment": "Adds aria label to basebutton on the outer div",
+            "author": "kchau@microsoft.com",
+            "commit": "4fffd6c0bd1828a8b4c153b19ef2e22a2b95fcf3"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 23 Oct 2019 12:32:05 GMT",
+      "tag": "office-ui-fabric-react_v7.54.1",
+      "version": "7.54.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Dropdown: Added note to documentation page calling out Dropdown's behavior of rendering in a panel in very small viewports.",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "18fd8a4129f4e61e4574a4478609517cf396f7c7"
+          },
+          {
+            "comment": "TagPicker: make tag item and input text to respect theme color and have correct font",
+            "author": "xgao@microsoft.com",
+            "commit": "5612231e960d701aecf968601e1d252dc09338d2"
+          },
+          {
+            "comment": "Suggestions: Fix problem where search for more button wouldn't highlight correctly",
+            "author": "joschect@microsoft.com",
+            "commit": "22a4a1b769dbb2e02286fa38250c56ef22771314"
+          },
+          {
+            "comment": "TagPicker: Update snapshots",
+            "author": "jdh@microsoft.com",
+            "commit": "ed7594ba53b27d3ff04ee26995e7f7961fcdd260"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 22 Oct 2019 12:32:05 GMT",
+      "tag": "office-ui-fabric-react_v7.54.0",
+      "version": "7.54.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "consume suggestionsAvailableAlertText prop to floating picker, so that the screen readers can announce the apperance of suggestions when the prop is set.",
+            "author": "email not defined",
+            "commit": "98295b29d8f60465f38c8ec2ccc10c554f3dca78"
+          },
+          {
+            "comment": "Fix getDerivedStateFromProps signatures",
+            "author": "elcraig@microsoft.com",
+            "commit": "437c49f055744dc64f13e6ef8c71f5f2d5110d0a"
+          },
+          {
+            "comment": "TagPicker: prevent long items from overflowing narrow container",
+            "author": "elcraig@microsoft.com",
+            "commit": "3d330f77a317b5cbbfed105c270b7b4b942fa667"
+          },
+          {
+            "comment": "TagPicker: Close button high contrast color fix",
+            "author": "joschect@microsoft.com",
+            "commit": "6204b561520761c77204f26d331cbfb6c6ae3e2d"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "ContextualMenu: Tightening types of onDismiss callback.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "422c0c5b31a2348c3a8f1c94eca91d6a6a776ccd"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 21 Oct 2019 12:33:23 GMT",
+      "tag": "office-ui-fabric-react_v7.53.1",
+      "version": "7.53.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Facepile: Added presence example",
+            "author": "v-mare@microsoft.com",
+            "commit": "7e5936206eadaafdd2e544e39b520efa0e919823"
+          },
+          {
+            "comment": "Pickers: Bring pickers in line with W3 ARIA 1.1 specs.",
+            "author": "joschect@microsoft.com",
+            "commit": "dde4a290e354fba58675bd4ab7d0cccdb10e856f"
+          },
+          {
+            "comment": "Fix typo",
+            "author": "norton.wong@genedata.com",
+            "commit": "69283802d65e27ac269cf3bb545d997872a693db"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 18 Oct 2019 12:31:12 GMT",
       "tag": "office-ui-fabric-react_v7.53.0",
       "version": "7.53.0",

@@ -50,7 +50,7 @@ export class SelectedItemWithContextMenu extends BaseComponent<ISelectedItemWith
     }
   };
 
-  private _onCloseContextualMenu = (ev: Event): void => {
+  private _onCloseContextualMenu = (ev: React.MouseEvent | React.KeyboardEvent): void => {
     this.setState({ contextualMenuVisible: false });
   };
 }

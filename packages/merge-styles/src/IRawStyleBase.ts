@@ -283,6 +283,11 @@ export interface IRawStyleBase extends IRawFontStyle {
   MsHighContrastAdjust?: ICSSRule | string;
 
   /**
+   * (Ms specific) scrollbar behavior adjust rule.
+   */
+  MsOverflowStyle?: 'auto' | 'none' | 'scrollbar' | '-ms-autohiding-scrollbar';
+
+  /**
    * (Moz specific) font smoothing directive.
    */
   MozOsxFontSmoothing?: 'none' | 'antialiased' | 'grayscale' | 'subpixel-antialiased';
