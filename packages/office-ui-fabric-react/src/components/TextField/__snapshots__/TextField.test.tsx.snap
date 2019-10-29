@@ -289,7 +289,7 @@ exports[`TextField snapshots renders multiline correctly with errorMessage 1`] =
             text-align: left;
           }
           &:hover:after {
-            border-color: #a4262c;
+            border-color: #323130;
           }
           @media screen and (-ms-high-contrast: active){&:hover:after {
             border-color: Highlight;
@@ -298,6 +298,9 @@ exports[`TextField snapshots renders multiline correctly with errorMessage 1`] =
             border-color: #a4262c;
           }
           &:focus:after {
+            border-color: #a4262c;
+          }
+          &::after {
             border-color: #a4262c;
           }
     >
@@ -554,7 +557,7 @@ exports[`TextField snapshots renders multiline correctly with props affecting st
             text-align: left;
           }
           &:hover:after {
-            border-color: #a4262c;
+            border-color: #323130;
           }
           @media screen and (-ms-high-contrast: active){&:hover:after {
             border-color: Highlight;
@@ -563,6 +566,9 @@ exports[`TextField snapshots renders multiline correctly with props affecting st
             border-color: #a4262c;
           }
           &:focus:after {
+            border-color: #a4262c;
+          }
+          &::after {
             border-color: #a4262c;
           }
     >
@@ -1379,7 +1385,7 @@ exports[`TextField snapshots should resepect user component and subcomponent sty
             text-align: left;
           }
           &:hover:after {
-            border-color: #a4262c;
+            border-color: #323130;
           }
           @media screen and (-ms-high-contrast: active){&:hover:after {
             border-color: Highlight;
@@ -1388,6 +1394,9 @@ exports[`TextField snapshots should resepect user component and subcomponent sty
             border-color: #a4262c;
           }
           &:focus:after {
+            border-color: #a4262c;
+          }
+          &::after {
             border-color: #a4262c;
           }
     >
