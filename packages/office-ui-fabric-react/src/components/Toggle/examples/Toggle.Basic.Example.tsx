@@ -116,6 +116,16 @@ export class ToggleBasicExample extends React.Component {
           onFocus={() => console.log('onFocus called')}
           onBlur={() => console.log('onBlur called')}
         />
+        <Toggle
+          defaultChecked={true}
+          label="Enabled and checked (ARIA 1.0 compatible)"
+          onText="On"
+          offText="Off"
+          onFocus={() => console.log('onFocus called')}
+          onBlur={() => console.log('onBlur called')}
+          onChange={this._onChange}
+          role="checkbox"
+        />
       </div>
     );
   }
