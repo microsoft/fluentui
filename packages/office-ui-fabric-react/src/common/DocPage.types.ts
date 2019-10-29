@@ -120,7 +120,7 @@ export interface ITableRowJson {
 /**
  * Enum table row
  */
-export type IEnumTableRowJson = Required<Pick<ITableRowJson, 'name' | 'description'>> & {
+export type IEnumTableRowJson = Omit<ITableRowJson, 'kind' | 'typeTokens' | 'defaultValue'> & {
   value: string;
 };
 
@@ -133,6 +133,8 @@ export interface ITableJson {
   extendsTokens: ILinkToken[];
   description: string;
   members: ITableRowJson[] | IEnumTableRowJson[];
+  deprecated?: boolean;
+  deprecatedMessage?: string;
 }
 
 /**

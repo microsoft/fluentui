@@ -9,7 +9,9 @@ import {
   DocParagraph,
   DocNode,
   DocNodeTransforms,
-  DocNodeContainer
+  DocLinkTag,
+  DocNodeContainer,
+  DocCodeSpan
 } from '@microsoft/tsdoc';
 import {
   ApiClass,
@@ -28,7 +30,10 @@ import {
   ApiPropertySignature,
   ApiTypeAlias,
   ExcerptToken,
-  IExcerptTokenRange
+  IExcerptTokenRange,
+  ApiDeclaredItem,
+  ApiConstructor,
+  HeritageType
 } from '@microsoft/api-extractor-model';
 import { FileSystem, JsonFile } from '@microsoft/node-core-library';
 import {
@@ -63,6 +68,7 @@ class CollectedData {
    */
   public pageDataByPageName: Map<string, PageData> = new Map<string, PageData>();
   public apiToPage: Map<string, IPage> = new Map<string, IPage>();
+  public apiModel: ApiModel = new ApiModel();
 }
 
 /**
@@ -90,13 +96,11 @@ export function generateJson(options: IPageJsonOptions[]): void {
     for (const apiJsonPath of option.apiJsonPaths) {
       console.log('Loading ' + apiJsonPath);
 
-      const apiModel: ApiModel = new ApiModel();
-      // NOTE: later you can load other packages into the model and process them together
-      const apiPackage: ApiPackage = apiModel.loadPackage(apiJsonPath);
+      const apiPackage: ApiPackage = collectedData.apiModel.loadPackage(apiJsonPath);
 
       console.log('Successfully loaded ' + apiJsonPath);
 
-      const apiEntryPoint: ApiEntryPoint = apiPackage.entryPoints[0]; // assume there is only one entry point
+      const apiEntryPoint: ApiEntryPoint = apiPackage.entryPoints.slice(-1)[0];
 
       collectPageData(collectedData, apiEntryPoint, option.kind);
     }
@@ -134,7 +138,7 @@ function createPageJsonFiles(collectedData: CollectedData, options: IPageJsonOpt
             break;
           }
           case ApiItemKind.Enum: {
-            pageJson.tables.push(createEnumPageJson(apiItem as ApiEnum));
+            pageJson.tables.push(createEnumPageJson(collectedData, apiItem as ApiEnum));
             break;
           }
           case ApiItemKind.Class: {
@@ -157,21 +161,29 @@ function createPageJsonFiles(collectedData: CollectedData, options: IPageJsonOpt
   });
 }
 
-function renderDefaultValue(section: DocNodeContainer): string {
-  return section.nodes.map(extractText).join('');
+function renderNodes(apiModel: ApiModel, apiItem: ApiItem, section: DocNodeContainer): string {
+  return section.nodes
+    .map((node: DocNode) => renderNode(apiModel, apiItem, node))
+    .join('')
+    .trim();
 }
 
 /**
  * Extracts text from a doc node
  *
+ * @param apiModel - Model containing all API info
+ * @param apiItem - API item the node came from
  * @param node - Node from which to extract text
  */
-function extractText(node: DocNode): string {
+function renderNode(apiModel: ApiModel, apiItem: ApiItem, node: DocNode): string {
   switch (node.kind) {
     case 'Paragraph':
       const transformedParagraph: DocParagraph = DocNodeTransforms.trimSpacesInParagraph(node as DocParagraph);
-      return renderDefaultValue(transformedParagraph);
+      return renderNodes(apiModel, apiItem, transformedParagraph);
+    case 'LinkTag':
+      return renderLinkTag(apiModel, apiItem, node as DocLinkTag);
     case 'CodeSpan':
+      return '`' + (node as DocCodeSpan).code + '`';
     case 'PlainText':
       return (node as DocPlainText).text;
     case 'SoftBreak':
@@ -182,56 +194,110 @@ function extractText(node: DocNode): string {
 }
 
 /**
+ * Render a link into text. For now we just extract the text or the code item name
+ * (rather than returning an actual link).
+ */
+function renderLinkTag(apiModel: ApiModel, apiItem: ApiItem, link: DocLinkTag): string {
+  if (link.linkText) {
+    return link.linkText;
+  } else if (link.codeDestination) {
+    const result = apiModel.resolveDeclarationReference(link.codeDestination, apiItem);
+    if (result.resolvedApiItem) {
+      return result.resolvedApiItem.getScopedNameWithinPackage();
+    }
+  }
+  return '';
+}
+
+/**
+ * Generate an ITableJson with properties that are common across multiple item types:
+ * the name, description, deprecated message, and optionally extends tokens.
+ * Additional properties specific to the type of item can be added to the returned object.
+ * (Works for interfaces, classes, enums, and type aliases.)
+ */
+function getTableJson(
+  collectedData: CollectedData,
+  apiItem: ApiDeclaredItem,
+  kind: ITableJson['kind'],
+  extendsTypes?: HeritageType | readonly HeritageType[]
+): ITableJson {
+  const { tsdocComment } = apiItem;
+  const tableJson: ITableJson = {
+    kind,
+    name: apiItem.displayName,
+    extendsTokens: [],
+    members: [],
+    deprecated: false,
+    description: tsdocComment ? renderDocNodeWithoutInlineTag(tsdocComment.summarySection) : ''
+  };
+
+  if (extendsTypes) {
+    const extendsArr: readonly HeritageType[] = Array.isArray(extendsTypes) ? extendsTypes : [extendsTypes];
+    for (const extendsType of extendsArr) {
+      if (tableJson.extendsTokens.length) {
+        // if there are multiple extends types, we should separate them with a comma
+        tableJson.extendsTokens.push({ text: ', ' });
+      }
+      tableJson.extendsTokens.push(...getTokenHyperlinks(collectedData, extendsType.excerpt.tokens, extendsType.excerpt.tokenRange));
+    }
+  }
+
+  if (tsdocComment && tsdocComment.deprecatedBlock) {
+    tableJson.deprecated = true;
+    tableJson.deprecatedMessage = renderNodes(collectedData.apiModel, apiItem, tsdocComment.deprecatedBlock.content);
+  }
+
+  return tableJson;
+}
+
+/**
+ * Generate an ITableRowJson with properties that are common across multiple item types:
+ * the name, description, deprecated message, and default value.
+ * Additional properties specific to the type of item can be added to the returned object.
+ * (Used for all class and interface properties/methods, but not enum members.)
+ */
+function getTableRowJson(apiModel: ApiModel, apiItem: ApiDeclaredItem & { name?: string }): ITableRowJson {
+  const { tsdocComment } = apiItem;
+  const tableRowJson: ITableRowJson = {
+    name: apiItem.name || '',
+    typeTokens: [],
+    description: tsdocComment ? renderDocNodeWithoutInlineTag(tsdocComment.summarySection) : '',
+    deprecated: false
+  };
+
+  if (tsdocComment) {
+    const defaultValue =
+      getBlockTagByName('@defaultValue', tsdocComment) ||
+      getBlockTagByName('@defaultvalue', tsdocComment) ||
+      getBlockTagByName('@default', tsdocComment);
+    if (defaultValue) {
+      tableRowJson.defaultValue = renderNodes(apiModel, apiItem, defaultValue);
+    }
+
+    if (tsdocComment.deprecatedBlock) {
+      tableRowJson.deprecated = true;
+      tableRowJson.deprecatedMessage = renderNodes(apiModel, apiItem, tsdocComment.deprecatedBlock.content);
+    }
+  }
+
+  return tableRowJson;
+}
+
+/**
  * Creates the interface page json object
  *
  * @param collectedData - Collected data to use for linking
  * @param interfaceItem - Interface item to search
  */
 function createInterfacePageJson(collectedData: CollectedData, interfaceItem: ApiInterface): ITableJson {
-  const interfaceTableRowJson: ITableRowJson[] = [];
+  const tableJson: ITableJson = getTableJson(collectedData, interfaceItem, 'interface', interfaceItem.extendsTypes);
+  const interfaceTableRowJson = tableJson.members as ITableRowJson[];
 
-  const tableJson: ITableJson = {
-    kind: 'interface',
-    name: interfaceItem.displayName,
-    extendsTokens: [],
-    description: '',
-    members: interfaceTableRowJson
-  };
-
-  if (interfaceItem.tsdocComment) {
-    tableJson.description += renderDocNodeWithoutInlineTag(interfaceItem.tsdocComment.summarySection);
-  }
-
-  let numOfExtendsType = 0;
-  for (const extendsType of interfaceItem.extendsTypes) {
-    // if there are multiple extends types, we should separate them with a comma
-    if (numOfExtendsType > 0) {
-      tableJson.extendsTokens.push({ text: ', ' });
-    }
-
-    tableJson.extendsTokens = getTokenHyperlinks(collectedData, extendsType.excerpt.tokens, extendsType.excerpt.tokenRange);
-
-    numOfExtendsType++;
-  }
   for (const member of interfaceItem.members) {
     switch (member.kind) {
       case ApiItemKind.PropertySignature: {
         const apiPropertySignature: ApiPropertySignature = member as ApiPropertySignature;
-        const tableRowJson: ITableRowJson = {
-          name: apiPropertySignature.name,
-          typeTokens: [],
-          description: '',
-          deprecated: false
-        };
-
-        if (apiPropertySignature.tsdocComment) {
-          const defaultValue =
-            getBlockTagByName('@defaultValue', apiPropertySignature.tsdocComment) ||
-            getBlockTagByName('@defaultvalue', apiPropertySignature.tsdocComment) ||
-            getBlockTagByName('@default', apiPropertySignature.tsdocComment);
-
-          tableRowJson.defaultValue = defaultValue ? renderDefaultValue(defaultValue) : '';
-        }
+        const tableRowJson: ITableRowJson = getTableRowJson(collectedData.apiModel, apiPropertySignature);
 
         tableRowJson.typeTokens = getTokenHyperlinks(
           collectedData,
@@ -239,24 +305,13 @@ function createInterfacePageJson(collectedData: CollectedData, interfaceItem: Ap
           apiPropertySignature.propertyTypeExcerpt.tokenRange
         );
 
-        if (apiPropertySignature.tsdocComment) {
-          if (apiPropertySignature.tsdocComment.deprecatedBlock) {
-            tableRowJson.deprecated = true;
-          }
-
-          tableRowJson.description += renderDocNodeWithoutInlineTag(apiPropertySignature.tsdocComment.summarySection);
-        }
         interfaceTableRowJson.push(tableRowJson);
         break;
       }
+
       case ApiItemKind.MethodSignature: {
         const apiMethodSignature: ApiMethodSignature = member as ApiMethodSignature;
-        const tableRowJson: ITableRowJson = {
-          name: apiMethodSignature.name,
-          typeTokens: [],
-          description: '',
-          deprecated: false
-        };
+        const tableRowJson: ITableRowJson = getTableRowJson(collectedData.apiModel, apiMethodSignature);
 
         tableRowJson.typeTokens = getTokenHyperlinks(
           collectedData,
@@ -264,16 +319,10 @@ function createInterfacePageJson(collectedData: CollectedData, interfaceItem: Ap
           apiMethodSignature.excerpt.tokenRange
         );
 
-        if (apiMethodSignature.tsdocComment) {
-          if (apiMethodSignature.tsdocComment.deprecatedBlock) {
-            tableRowJson.deprecated = true;
-          }
-
-          tableRowJson.description += renderDocNodeWithoutInlineTag(apiMethodSignature.tsdocComment.summarySection);
-        }
         interfaceTableRowJson.push(tableRowJson);
         break;
       }
+
       case ApiItemKind.Function: {
         break;
       }
@@ -283,56 +332,39 @@ function createInterfacePageJson(collectedData: CollectedData, interfaceItem: Ap
     }
   }
 
-  tableJson.members = interfaceTableRowJson;
-
   return tableJson;
 }
 
 /**
  * Creates an enum table json object
- *
- * @param enumItem - Enum item to search
  */
-function createEnumPageJson(enumItem: ApiEnum): ITableJson {
-  const enumTableRowJson: IEnumTableRowJson[] = [];
-
-  const tableJson: ITableJson = {
-    kind: 'enum',
-    name: enumItem.displayName,
-    extendsTokens: [],
-    description: '',
-    members: enumTableRowJson
-  };
-
-  if (enumItem.tsdocComment) {
-    tableJson.description += renderDocNodeWithoutInlineTag(enumItem.tsdocComment.summarySection);
-  }
+function createEnumPageJson(collectedData: CollectedData, enumItem: ApiEnum): ITableJson {
+  const tableJson: ITableJson = getTableJson(collectedData, enumItem, 'enum');
+  const enumTableRowJson = tableJson.members as IEnumTableRowJson[];
 
   for (const member of enumItem.members) {
     switch (member.kind) {
       case ApiItemKind.EnumMember: {
         const apiEnumMember: ApiEnumMember = member as ApiEnumMember;
-        const tableRowJson: IEnumTableRowJson = {
-          name: apiEnumMember.name,
-          description: '',
-          value: '0'
-        };
 
-        const tokenRange = apiEnumMember.excerpt.tokenRange;
-        for (let i: number = tokenRange.startIndex; i < tokenRange.endIndex; ++i) {
-          const token: ExcerptToken = apiEnumMember.excerptTokens[i];
-          tableRowJson.value = token.text;
+        const { name, description, deprecated, deprecatedMessage } = getTableRowJson(collectedData.apiModel, apiEnumMember);
+        const tableRowJson: IEnumTableRowJson = {
+          name,
+          description,
+          deprecated,
+          value: getTokensInRange(apiEnumMember.excerptTokens, apiEnumMember.excerpt.tokenRange)
+            .map((token: ExcerptToken) => token.text)
+            .join('')
+        };
+        if (deprecatedMessage) {
+          tableRowJson.deprecatedMessage = deprecatedMessage; // avoid undefined members error
         }
-        if (apiEnumMember.tsdocComment) {
-          tableRowJson.description += renderDocNodeWithoutInlineTag(apiEnumMember.tsdocComment.summarySection);
-        }
+
         enumTableRowJson.push(tableRowJson);
         break;
       }
     }
   }
-
-  tableJson.members = enumTableRowJson;
 
   return tableJson;
 }
@@ -344,90 +376,60 @@ function createEnumPageJson(enumItem: ApiEnum): ITableJson {
  * @param classItem - Class item to search
  */
 function createClassPageJson(collectedData: CollectedData, classItem: ApiClass): ITableJson {
-  const classTableRowJson: ITableRowJson[] = [];
+  const tableJson: ITableJson = getTableJson(collectedData, classItem, 'class', classItem.extendsType);
+  const classTableRowJson = tableJson.members as ITableRowJson[];
 
-  const tableJson: ITableJson = {
-    kind: 'class',
-    name: classItem.displayName,
-    extendsTokens: [],
-    description: '',
-    members: classTableRowJson
-  };
-
-  if (classItem.tsdocComment) {
-    tableJson.description += renderDocNodeWithoutInlineTag(classItem.tsdocComment.summarySection);
-  }
-
-  if (classItem.extendsType) {
-    const tokenRange = classItem.extendsType.excerpt.tokenRange;
-    for (let i: number = tokenRange.startIndex; i < tokenRange.endIndex; ++i) {
-      const token: ExcerptToken = classItem.extendsType.excerpt.tokens[i];
-      tableJson.extendsTokens.push({ text: token.text });
-    }
-  }
+  // if (classItem.extendsType) {
+  //   tableJson.extendsTokens = getTokensInRange(classItem.extendsType.excerpt.tokens, classItem.extendsType.excerpt.tokenRange).map(
+  //     (token: ExcerptToken) => ({ text: token.text })
+  //   );
+  // }
 
   for (const member of classItem.members) {
     switch (member.kind) {
       case ApiItemKind.Property: {
         const apiProperty: ApiProperty = member as ApiProperty;
-        const tableRowJson: ITableRowJson = {
-          name: apiProperty.name,
-          typeTokens: [],
-          description: '',
-          deprecated: false,
-          kind: 'Property'
-        };
+        const tableRowJson: ITableRowJson = getTableRowJson(collectedData.apiModel, apiProperty);
 
-        if (classItem.tsdocComment) {
-          const defaultValue =
-            getBlockTagByName('@defaultValue', classItem.tsdocComment) ||
-            getBlockTagByName('@defaultvalue', classItem.tsdocComment) ||
-            getBlockTagByName('@default', classItem.tsdocComment);
-
-          tableRowJson.defaultValue = defaultValue ? renderDefaultValue(defaultValue) : '';
-        }
-
+        tableRowJson.kind = 'Property';
         tableRowJson.typeTokens = getTokenHyperlinks(collectedData, apiProperty.excerptTokens, apiProperty.propertyTypeExcerpt.tokenRange);
 
-        if (apiProperty.tsdocComment) {
-          if (apiProperty.tsdocComment.deprecatedBlock) {
-            tableRowJson.deprecated = true;
-          }
-
-          tableRowJson.description += renderDocNodeWithoutInlineTag(apiProperty.tsdocComment.summarySection);
-        }
         classTableRowJson.push(tableRowJson);
         break;
       }
-      case ApiItemKind.Method: {
-        const apiMethod: ApiMethod = member as ApiMethod;
-        const tableRowJson: ITableRowJson = {
-          name: apiMethod.name,
-          typeTokens: [],
-          description: '',
-          deprecated: false,
-          kind: 'Method'
-        };
 
+      case ApiItemKind.Constructor:
+      case ApiItemKind.Method: {
+        const apiMethod = member as (ApiMethod | ApiConstructor);
+        const tableRowJson: ITableRowJson = getTableRowJson(collectedData.apiModel, apiMethod);
+
+        tableRowJson.kind = 'Method';
         tableRowJson.typeTokens = getTokenHyperlinks(collectedData, apiMethod.excerptTokens, apiMethod.excerpt.tokenRange);
 
-        if (apiMethod.tsdocComment) {
-          if (apiMethod.tsdocComment.deprecatedBlock) {
-            tableRowJson.deprecated = true;
-          }
-
-          tableRowJson.description += renderDocNodeWithoutInlineTag(apiMethod.tsdocComment.summarySection);
+        if (member.kind === ApiItemKind.Constructor) {
+          // The constructor is similar to a method, but we have to manually add the name.
+          tableRowJson.name = 'constructor';
+          classTableRowJson.unshift(tableRowJson);
+        } else {
+          classTableRowJson.push(tableRowJson);
         }
-        classTableRowJson.push(tableRowJson);
-        break;
-      }
-      case ApiItemKind.Constructor: {
         break;
       }
     }
   }
 
-  tableJson.members = classTableRowJson;
+  return tableJson;
+}
+
+/**
+ * Creates a type alias json object
+ * @param collectedData - Collected data to use for linking
+ * @param typeAliasItem - Type alias item to search
+ */
+function createTypeAliasPageJson(collectedData: CollectedData, typeAliasItem: ApiTypeAlias): ITableJson {
+  const tableJson: ITableJson = getTableJson(collectedData, typeAliasItem, 'typeAlias');
+
+  tableJson.extendsTokens = getTokenHyperlinks(collectedData, typeAliasItem.excerptTokens, typeAliasItem.excerpt.tokenRange);
 
   return tableJson;
 }
@@ -442,41 +444,14 @@ function getTokenHyperlinks(
   excerptTokens: ReadonlyArray<ExcerptToken>,
   excerptTokenRange: Readonly<IExcerptTokenRange>
 ): ITokenJson[] {
-  const typeTokens: ITokenJson[] = [];
-
-  for (let i: number = excerptTokenRange.startIndex; i < excerptTokenRange.endIndex; ++i) {
-    const token: ExcerptToken = excerptTokens[i];
+  return getTokensInRange(excerptTokens, excerptTokenRange).map((token: ExcerptToken) => {
     const apiPage = collectedData.apiToPage.get(token.text);
-    if (apiPage !== undefined) {
-      typeTokens.push({ text: token.text, hyperlinkedPage: apiPage.pageName, pageKind: apiPage.kind });
+    if (apiPage) {
+      return { text: token.text, hyperlinkedPage: apiPage.pageName, pageKind: apiPage.kind };
     } else {
-      typeTokens.push({ text: token.text });
+      return { text: token.text };
     }
-  }
-  return typeTokens;
-}
-
-/**
- * Creates a type alias json object
- * @param collectedData - Collected data to use for linking
- * @param typeAliasItem - Type alias item to search
- */
-function createTypeAliasPageJson(collectedData: CollectedData, typeAliasItem: ApiTypeAlias): ITableJson {
-  const tableJson: ITableJson = {
-    kind: 'typeAlias',
-    name: typeAliasItem.displayName,
-    extendsTokens: [],
-    description: '',
-    members: []
-  };
-
-  if (typeAliasItem.tsdocComment) {
-    tableJson.description += renderDocNodeWithoutInlineTag(typeAliasItem.tsdocComment.summarySection);
-  }
-
-  tableJson.extendsTokens = getTokenHyperlinks(collectedData, typeAliasItem.excerptTokens, typeAliasItem.excerpt.tokenRange);
-
-  return tableJson;
+  });
 }
 
 /**
@@ -506,10 +481,8 @@ function renderDocNodeWithoutInlineTag(docSection?: DocSection): string {
  * @param docComment - Doc comment to search
  */
 function findInlineTagByName(tagName: string, docComment: DocComment): DocInlineTag | undefined {
-  if (docComment instanceof DocInlineTag) {
-    if (docComment.tagName === tagName) {
-      return docComment;
-    }
+  if (docComment instanceof DocInlineTag && docComment.tagName === tagName) {
+    return docComment;
   }
   for (const childNode of docComment.getChildNodes()) {
     const result: DocInlineTag | undefined = findInlineTagByName(tagName, childNode as DocComment);
@@ -534,6 +507,13 @@ function getBlockTagByName(tagName: string, docComment: DocComment): DocSection 
   return undefined;
 }
 
+function getTokensInRange(
+  excerptTokens: ReadonlyArray<ExcerptToken>,
+  excerptTokenRange: Readonly<IExcerptTokenRange>
+): ReadonlyArray<ExcerptToken> {
+  return excerptTokens.slice(excerptTokenRange.startIndex, excerptTokenRange.endIndex);
+}
+
 /**
  * Loads api items into the page data object.
  *
@@ -547,7 +527,7 @@ function collectPageData(collectedData: CollectedData, apiItem: ApiItem, kind: P
       case ApiItemKind.Enum:
       case ApiItemKind.Class:
       case ApiItemKind.TypeAlias: {
-        console.log('Analyzing ' + apiItem.displayName);
+        // console.log('Analyzing ' + apiItem.displayName);
 
         if (apiItem.tsdocComment !== undefined) {
           const docCategoryTag: DocInlineTag | undefined = findInlineTagByName('@docCategory', apiItem.tsdocComment);

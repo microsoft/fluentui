@@ -19,7 +19,6 @@ export function generatePageJsonFiles(): void {
       pageJsonFolderPath: path.resolve(__dirname, '../lib/pages/office-ui-fabric-react'),
       pageNames: [
         'ActivityItem',
-        'Autofill',
         'Announced',
         'Breadcrumb',
         'Button',
@@ -97,4 +96,9 @@ export function generatePageJsonFiles(): void {
       kind: 'Components'
     }
   ]);
+}
+
+// For running in debugger
+if (require.main === module) {
+  generatePageJsonFiles();
 }

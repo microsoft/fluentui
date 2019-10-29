@@ -38,11 +38,9 @@ export interface ITableRowJson {
   deprecatedMessage?: string;
 }
 
-export interface IEnumTableRowJson {
-  name: string;
-  description: string;
+export type IEnumTableRowJson = Omit<ITableRowJson, 'kind' | 'typeTokens' | 'defaultValue'> & {
   value: string;
-}
+};
 
 export interface ITableJson {
   kind: 'interface' | 'enum' | 'class' | 'typeAlias';
@@ -50,6 +48,8 @@ export interface ITableJson {
   description: string;
   extendsTokens: ITokenJson[];
   members: ITableRowJson[] | IEnumTableRowJson[];
+  deprecated: boolean;
+  deprecatedMessage?: string;
 }
 
 export interface IPageJson {
