@@ -391,8 +391,12 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
       disabled && [
         {
           backgroundColor: semanticColors.disabledBackground,
-          borderColor: 'transparent',
-          color: semanticColors.disabledText
+          color: semanticColors.disabledText,
+          selectors: {
+            ':after': {
+              borderColor: semanticColors.disabledBackground
+            }
+          }
         },
         getPlaceholderStyles(disabledPlaceholderStyles)
       ],

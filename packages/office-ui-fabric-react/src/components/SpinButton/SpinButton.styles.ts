@@ -18,11 +18,13 @@ const _getDisabledStyles = memoizeFunction(
 
     return {
       backgroundColor: SpinButtonBackgroundColorDisabled,
-      borderColor: 'transparent',
       pointerEvents: 'none',
       cursor: 'default',
       color: SpinButtonTextColorDisabled,
       selectors: {
+        ':after': {
+          borderColor: SpinButtonBackgroundColorDisabled
+        },
         [HighContrastSelector]: {
           color: 'GrayText'
         }
