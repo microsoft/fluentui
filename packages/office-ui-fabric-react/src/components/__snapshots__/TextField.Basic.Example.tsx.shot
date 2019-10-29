@@ -332,7 +332,6 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
                   -webkit-font-smoothing: antialiased;
                   background-color: #f3f2f1;
                   background: none;
-                  border-color: transparent;
                   border-radius: 0px;
                   border: none;
                   box-shadow: none;
@@ -392,6 +391,9 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
                   font-size: 14px;
                   font-weight: 400;
                   opacity: 1;
+                }
+                &:after {
+                  border-color: #f3f2f1;
                 }
             disabled={true}
             id="TextField3"
@@ -1803,7 +1805,6 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
                   -webkit-font-smoothing: antialiased;
                   background-color: #f3f2f1;
                   background: none;
-                  border-color: transparent;
                   border-radius: 0px;
                   border: none;
                   box-shadow: none;
@@ -1863,6 +1864,9 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
                   font-size: 14px;
                   font-weight: 400;
                   opacity: 1;
+                }
+                &:after {
+                  border-color: #f3f2f1;
                 }
             disabled={true}
             id="TextField27"

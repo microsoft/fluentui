@@ -301,7 +301,7 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
           ':after': {
             borderColor: semanticColors.errorText
           },
-          '&:focus, &:hover': {
+          '&:focus, &:': {
             selectors: {
               ':after': {
                 borderColor: semanticColors.errorText
