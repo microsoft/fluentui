@@ -4,6 +4,6 @@ The `PeoplePicker` control handles keyboard input, field expanding and collapsin
 
 <!-- prettier-ignore-start -->
 | People Picker Without and With Text Entered | |
-| - | - |
+| --- | --- |
 | <img src="https://static2.sharepointonline.com/files/fabric/fabric-website/images/controls/android/persona/peoplepickerview.png" alt="Example of a People Picker in Android" style="width: 75%;" /> | <img src="https://static2.sharepointonline.com/files/fabric/fabric-website/images/controls/android/persona/people-picker-text-entered.png" alt="Example of a People Picker with text entered in Android" style="width: 75%;" /> |
 <!-- prettier-ignore-end -->

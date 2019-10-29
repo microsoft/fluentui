@@ -8,6 +8,6 @@ Persona controls are also available as a performant list view. The `PersonaListV
 
 <!-- prettier-ignore-start -->
 | PersonaView | PersonaListView |
-| - | - |
+| --- | --- |
 | <img src="https://static2.sharepointonline.com/files/fabric/fabric-website/images/controls/android/persona/persona-view.png" alt="Example of Persona Views in Various Sizes on Android" style="width: 75%;" /> | <img src="https://static2.sharepointonline.com/files/fabric/fabric-website/images/controls/android/persona/personalistview.png" alt="Example of a Person List View on Android" style="width: 75%;" /> |
 <!-- prettier-ignore-end -->

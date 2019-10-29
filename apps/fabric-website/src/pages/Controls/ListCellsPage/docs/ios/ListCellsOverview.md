@@ -2,6 +2,6 @@ When displaying fundamental content types like files or people, it's important t
 
 <!-- prettier-ignore-start -->
 | Single, Double, and Triple Line Cells | Other Cell Variants |
-| - | - |
+| --- | --- |
 | <img src="https://static2.sharepointonline.com/files/fabric/fabric-website/images/controls/ios/listcells/demo-table-view-cells.png" alt="Examples of Various List Cells" style="width: 60%;" /> | <img src="https://static2.sharepointonline.com/files/fabric/fabric-website/images/controls/ios/listcells/other-cells.png" alt="Examples of Various List Cells" style="width: 100%;" /> |
 <!-- prettier-ignore-end -->

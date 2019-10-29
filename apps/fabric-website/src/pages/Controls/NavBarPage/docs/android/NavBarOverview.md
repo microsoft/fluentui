@@ -2,6 +2,6 @@
 
 <!-- prettier-ignore-start -->
 | Top App Bar with `Avatar` | Top App Bar with active `Searchbar` |
-| - | - |
+| --- | --- |
 | <img src="https://static2.sharepointonline.com/files/fabric/fabric-website/images/controls/android/navigation/app-bar-layout-avatar.png" alt="Date Picker in Android" style="width: 75%;" /> | <img src="https://static2.sharepointonline.com/files/fabric/fabric-website/images/controls/android/navigation/app-bar-layout-search-active.png" alt="Time Picker in Android" style="width: 75%;" /> |
 <!-- prettier-ignore-end -->
