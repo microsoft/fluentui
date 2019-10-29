@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Add AppBar to mobile docs for Android.",
-  "packageName": "@uifabric/fabric-website",
-  "email": "emlynam@microsoft.com",
-  "commit": "8596df20f8945ad3382066b7d90c662d4ce84665",
-  "date": "2019-10-28T18:14:14.491Z"
-}

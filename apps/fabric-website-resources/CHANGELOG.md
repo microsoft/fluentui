@@ -1,7 +1,13 @@
 # Change Log - @uifabric/fabric-website-resources
 
-This log was last generated on Thu, 03 Oct 2019 23:14:46 GMT and should not be manually modified.
+This log was last generated on Mon, 28 Oct 2019 22:25:45 GMT and should not be manually modified.
 
+## 7.4.0
+Mon, 28 Oct 2019 22:25:45 GMT
+
+### Minor changes
+
+- Enable live editor and update bundling (elcraig@microsoft.com)
 ## 7.3.2
 Thu, 03 Oct 2019 23:14:46 GMT
 
