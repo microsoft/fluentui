@@ -91,22 +91,19 @@ export const styles = (props: ICalendarDayGridStyleProps): ICalendarDayGridStyle
       cursor: 'pointer',
       selectors: {
         ['&.' + classNames.hoverStyle]: {
-          backgroundColor: palette.neutralLight
+          backgroundColor: palette.neutralLighter
         },
         ['&.' + classNames.pressedStyle]: {
-          backgroundColor: palette.themeLight,
-          fontWeight: FontWeights.semibold
+          backgroundColor: palette.neutralLight
         }
       }
     },
     daySelected: [
       dateRangeType !== DateRangeType.Month && {
-        backgroundColor: palette.themeLight + '!important',
-        fontWeight: (FontWeights.semibold + '!important') as 'initial',
+        backgroundColor: palette.neutralLight + '!important',
         selectors: {
           ['&:hover, &.' + classNames.hoverStyle + ', &.' + classNames.pressedStyle]: {
-            backgroundColor: palette.themeLight + '!important',
-            fontWeight: FontWeights.semibold as 'initial'
+            backgroundColor: palette.neutralLight + '!important'
           }
         }
       }
@@ -156,6 +153,7 @@ export const styles = (props: ICalendarDayGridStyleProps): ICalendarDayGridStyle
     ],
     dayIsToday: {
       backgroundColor: palette.themePrimary + '!important',
+      borderRadius: '100%',
       color: palette.white + '!important',
       fontWeight: (FontWeights.semibold + '!important') as 'initial'
     },
