@@ -2,6 +2,27 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Tue, 29 Oct 2019 12:36:28 GMT",
+      "tag": "office-ui-fabric-react_v7.56.0",
+      "version": "7.56.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "CommandBarButton: Fix height issue when commandbar buttons iconOnly props set to true",
+            "author": "v-mare@microsoft.com",
+            "commit": "5718afe4c879cf9e241a4e30e79b89b738f99ec8"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Remove re-export of @uifabric/example-data from office-ui-fabric-react",
+            "author": "KevinTCoughlin@users.noreply.github.com",
+            "commit": "d275d58e69a4a1d6d4a2d2a8691c488fa3e97954"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 28 Oct 2019 22:25:45 GMT",
       "tag": "office-ui-fabric-react_v7.55.3",
       "version": "7.55.3",

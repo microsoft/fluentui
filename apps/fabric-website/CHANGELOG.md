@@ -1,7 +1,13 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Tue, 15 Oct 2019 12:32:28 GMT and should not be manually modified.
+This log was last generated on Tue, 29 Oct 2019 12:36:28 GMT and should not be manually modified.
 
+## 7.5.7
+Tue, 29 Oct 2019 12:36:28 GMT
+
+### Patches
+
+- Add AppBar to mobile docs for Android. (emlynam@microsoft.com)
 ## 7.5.6
 Tue, 15 Oct 2019 12:32:28 GMT
 

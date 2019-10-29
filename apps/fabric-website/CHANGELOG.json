@@ -2,6 +2,20 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "date": "Tue, 29 Oct 2019 12:36:28 GMT",
+      "tag": "@uifabric/fabric-website_v7.5.7",
+      "version": "7.5.7",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add AppBar to mobile docs for Android.",
+            "author": "emlynam@microsoft.com",
+            "commit": "8596df20f8945ad3382066b7d90c662d4ce84665"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 28 Oct 2019 22:25:45 GMT",
       "tag": "@uifabric/fabric-website_v7.5.6",
       "version": "7.5.6",
