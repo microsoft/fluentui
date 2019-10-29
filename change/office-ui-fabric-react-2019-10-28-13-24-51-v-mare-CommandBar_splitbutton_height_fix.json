@@ -1,9 +1,0 @@
-{
-  "type": "patch",
-  "comment": "CommandBarButton: Fix height issue when commandbar buttons iconOnly props set to true",
-  "packageName": "office-ui-fabric-react",
-  "email": "v-mare@microsoft.com",
-  "commit": "5718afe4c879cf9e241a4e30e79b89b738f99ec8",
-  "date": "2019-10-28T20:24:51.735Z",
-  "file": "/Users/maxrediker/Fabric_UI/office-ui-fabric-react/change/office-ui-fabric-react-2019-10-28-13-24-51-v-mare-CommandBar_splitbutton_height_fix.json"
-}
