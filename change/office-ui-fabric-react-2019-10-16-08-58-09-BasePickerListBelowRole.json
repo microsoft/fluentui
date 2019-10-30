@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": " Added role to the selection list for BasePickerListBelow control so screen readers will read off \"n\" of \"m\" when arrowing through the list.",
-  "packageName": "office-ui-fabric-react",
-  "email": "malind@microsoft.com",
-  "commit": "adfbe74c57a96e8b75b16c0ee11397ab06a3fd5f",
-  "date": "2019-10-16T15:58:09.775Z"
-}

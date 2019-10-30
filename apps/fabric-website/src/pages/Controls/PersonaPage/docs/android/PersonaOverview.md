@@ -6,6 +6,8 @@ Beside a profile picture, Persona controls can include text elements. The user's
 
 Persona controls are also available as a performant list view. The `PersonaListView` controls are perfect for listing many people. Examples of this may be an Address Book or a People Picker auto-complete experience.
 
-| PersonaView                                                                                                                                                                                                    | PersonaListView                                                                                                                                                                                       |
-| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+<!-- prettier-ignore-start -->
+| PersonaView | PersonaListView |
+| --- | --- |
 | <img src="https://static2.sharepointonline.com/files/fabric/fabric-website/images/controls/android/persona/persona-view.png" alt="Example of Persona Views in Various Sizes on Android" style="width: 75%;" /> | <img src="https://static2.sharepointonline.com/files/fabric/fabric-website/images/controls/android/persona/personalistview.png" alt="Example of a Person List View on Android" style="width: 75%;" /> |
+<!-- prettier-ignore-end -->
