@@ -4,7 +4,7 @@
   "version": "7.0.0",
   "private": true,
   "scripts": {
-    "build": "just-scripts build",
+    "build": "backfill -- just-scripts build",
     "just": "just-scripts",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",

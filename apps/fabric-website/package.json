@@ -11,7 +11,7 @@
     "url": "https://github.com/OfficeDev/office-ui-fabric-react"
   },
   "scripts": {
-    "build": "just-scripts build",
+    "build": "backfill -- just-scripts build",
     "create-internal-flight-config": "just-scripts create-internal-flight-config",
     "create-public-flight-config": "just-scripts create-public-flight-config",
     "just": "just-scripts",

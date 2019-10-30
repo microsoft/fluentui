@@ -4,7 +4,7 @@
   "private": true,
   "description": "App for test that use real browser.",
   "scripts": {
-    "build": "just-scripts build",
+    "build": "backfill -- just-scripts build",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
     "jest-dom": "just-scripts ",

@@ -27,6 +27,9 @@ steps:
   - script: |
       npm run buildci
     displayName: build ci
+    env:
+      BACKFILL_CACHE_PROVIDER: 'azure-blob'
+      BACKFILL_CACHE_PROVIDER_OPTIONS: '{"connectionString":"$(BackfillConnectionString)","container":"oufr-cache"}'
 
   - task: AzureUpload@1
     displayName: Upload PR deploy site

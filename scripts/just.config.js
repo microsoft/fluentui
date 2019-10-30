@@ -76,7 +76,7 @@ module.exports = function preset() {
   task('update-api', series('clean', 'copy', 'sass', 'ts', 'update-api-extractor'));
   task('dev', series('clean', 'copy', 'sass', 'webpack-dev-server'));
 
-  task('build:node-lib', series('clean', 'copy', series(condition('validate', () => !argv().min), 'ts:commonjs-only'))).cached();
+  task('build:node-lib', series('clean', 'copy', series(condition('validate', () => !argv().min), 'ts:commonjs-only')));
 
   task(
     'build',
@@ -89,9 +89,9 @@ module.exports = function preset() {
         series('ts', parallel(condition('webpack', () => !argv().min), condition('lint-imports', () => !argv().min)))
       )
     )
-  ).cached();
+  );
 
-  task('no-op', () => {}).cached();
+  task('no-op', () => {});
 };
 
 module.exports.basic = basicPreset;

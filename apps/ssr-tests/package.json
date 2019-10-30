@@ -4,7 +4,7 @@
   "description": "Server-side rendering tests for office-ui-fabric-react.",
   "private": true,
   "scripts": {
-    "build": "just-scripts build",
+    "build": "backfill -- just-scripts build",
     "code-style": "node -v",
     "clean": "",
     "just": "just-scripts"

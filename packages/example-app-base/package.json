@@ -11,7 +11,7 @@
   },
   "license": "MIT",
   "scripts": {
-    "build": "just-scripts build",
+    "build": "backfill -- just-scripts build",
     "just": "just-scripts",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",

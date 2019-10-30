@@ -10,9 +10,9 @@
   },
   "license": "MIT",
   "scripts": {
-    "build": "just-scripts build",
-    "clean": "just-scripts clean",
-    "just": "just-scripts"
+    "build": "backfill -- just-scripts build",
+    "clean": "backfill -- just-scripts clean",
+    "just": "backfill -- just-scripts"
   },
   "devDependencies": {
     "monaco-editor": "0.18.1",

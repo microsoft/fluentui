@@ -4,7 +4,8 @@
   "private": true,
   "main": "./index.js",
   "bin": {
-    "just-scripts": "./just-scripts.js"
+    "just-scripts": "./just-scripts.js",
+    "backfill": "./backfill.js"
   },
   "scripts": {
     "build": "node ./just-scripts.js no-op",
@@ -21,6 +22,7 @@
     "@uifabric/prettier-rules": "^7.0.4",
     "async": "^2.6.1",
     "autoprefixer": "^7.1.5",
+    "backfill": "^2.0.4",
     "beachball": "^1.14.2",
     "chalk": "^2.1.0",
     "css-loader": "^0.28.7",
