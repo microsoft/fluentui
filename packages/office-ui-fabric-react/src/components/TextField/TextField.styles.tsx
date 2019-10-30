@@ -271,12 +271,20 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
         }
       },
       disabled && {
-        backgroundColor: semanticColors.disabledBackground,
+        //backgroundColor: semanticColors.disabledBackground,
         selectors: {
           ':after': {
             borderColor: semanticColors.disabledBackground
+          },
+          ':hover': {
+            selectors: {
+              ':after': {
+                borderColor: semanticColors.disabledBackground
+              }
+            }
           }
         },
+
         cursor: 'default'
       },
       underlined && {
