@@ -257,7 +257,7 @@ export interface ISpinButtonStyles {
   root: IStyle;
 
   /**
-   * Style for the label wrapper element of the component
+   * Style for the label wrapper element of the component.
    * The label wrapper contains the icon and the label.
    */
   labelWrapper: IStyle;
