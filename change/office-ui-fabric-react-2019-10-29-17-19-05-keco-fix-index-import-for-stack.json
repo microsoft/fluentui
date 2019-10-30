@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Refactor Stack import to be relative not OUFR root",
-  "packageName": "office-ui-fabric-react",
-  "email": "KevinTCoughlin@users.noreply.github.com",
-  "commit": "071f5c27e1947d6a01c9fb7cbf30b6b5f46fa560",
-  "date": "2019-10-30T00:19:05.029Z"
-}

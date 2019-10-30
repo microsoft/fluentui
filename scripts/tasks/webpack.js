@@ -4,7 +4,9 @@ const { webpackTask, argv, logger } = require('just-scripts');
 const path = require('path');
 const fs = require('fs');
 
-exports.webpack = webpackTask();
+exports.webpack = webpackTask({
+  nodeArgs: ['--max-old-space-size=4096']
+});
 exports.webpackDevServer = async function() {
   const fp = require('find-free-port');
   const webpackConfigFilePath = argv().webpackConfig || 'webpack.serve.config.js';

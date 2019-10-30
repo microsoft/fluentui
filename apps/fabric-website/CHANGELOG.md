@@ -1,7 +1,13 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Tue, 29 Oct 2019 12:36:28 GMT and should not be manually modified.
+This log was last generated on Wed, 30 Oct 2019 19:36:52 GMT and should not be manually modified.
 
+## 7.5.8
+Wed, 30 Oct 2019 19:36:52 GMT
+
+### Patches
+
+- Prettier ignore ranges for markdown tables. (emlynam@microsoft.com)
 ## 7.5.7
 Tue, 29 Oct 2019 12:36:28 GMT
 

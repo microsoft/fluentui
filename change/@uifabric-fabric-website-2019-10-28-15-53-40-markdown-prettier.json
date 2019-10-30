@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Prettier ignore ranges for markdown tables.",
-  "packageName": "@uifabric/fabric-website",
-  "email": "emlynam@microsoft.com",
-  "commit": "a765f01cab3581f37315ba57b96a2219bdf2f204",
-  "date": "2019-10-28T22:53:40.685Z"
-}

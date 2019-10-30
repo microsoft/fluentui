@@ -2,6 +2,35 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Wed, 30 Oct 2019 19:36:52 GMT",
+      "tag": "office-ui-fabric-react_v7.56.1",
+      "version": "7.56.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "ComboBox: Allow Space KeyUp event to propagate",
+            "author": "xgao@microsoft.com",
+            "commit": "31043b5ba01a88858e161416914df0c2a3365d32"
+          },
+          {
+            "comment": "SpinButton: fix vertical alignment relative to other fields",
+            "author": "elcraig@microsoft.com",
+            "commit": "f3921dc1771bc6b0c9dec6460798030bc2ef2231"
+          },
+          {
+            "comment": "Option to use checkbox role in Toggle component",
+            "author": "satimals@microsoft.com",
+            "commit": "db4a33a8a686d180db5f64e7417b0ea279d9fdd7"
+          },
+          {
+            "comment": "Refactor Stack import to be relative not OUFR root",
+            "author": "KevinTCoughlin@users.noreply.github.com",
+            "commit": "071f5c27e1947d6a01c9fb7cbf30b6b5f46fa560"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 29 Oct 2019 12:36:28 GMT",
       "tag": "office-ui-fabric-react_v7.56.0",
       "version": "7.56.0",

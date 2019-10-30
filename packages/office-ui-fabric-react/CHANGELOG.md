@@ -1,7 +1,16 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 29 Oct 2019 12:36:28 GMT and should not be manually modified.
+This log was last generated on Wed, 30 Oct 2019 19:36:52 GMT and should not be manually modified.
 
+## 7.56.1
+Wed, 30 Oct 2019 19:36:52 GMT
+
+### Patches
+
+- ComboBox: Allow Space KeyUp event to propagate (xgao@microsoft.com)
+- SpinButton: fix vertical alignment relative to other fields (elcraig@microsoft.com)
+- Option to use checkbox role in Toggle component (satimals@microsoft.com)
+- Refactor Stack import to be relative not OUFR root (KevinTCoughlin@users.noreply.github.com)
 ## 7.56.0
 Tue, 29 Oct 2019 12:36:28 GMT
 
