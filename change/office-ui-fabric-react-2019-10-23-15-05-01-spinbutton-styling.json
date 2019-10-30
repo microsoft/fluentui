@@ -1,9 +1,0 @@
-{
-  "type": "patch",
-  "comment": "SpinButton: fix vertical alignment relative to other fields",
-  "packageName": "office-ui-fabric-react",
-  "email": "elcraig@microsoft.com",
-  "commit": "f3921dc1771bc6b0c9dec6460798030bc2ef2231",
-  "date": "2019-10-23T22:05:01.798Z",
-  "file": "/Users/elizabeth/git/fabric-react8/change/office-ui-fabric-react-2019-10-23-15-05-01-spinbutton-styling.json"
-}

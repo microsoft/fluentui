@@ -2,6 +2,20 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "date": "Wed, 30 Oct 2019 19:36:52 GMT",
+      "tag": "@uifabric/fabric-website_v7.5.8",
+      "version": "7.5.8",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Prettier ignore ranges for markdown tables.",
+            "author": "emlynam@microsoft.com",
+            "commit": "a765f01cab3581f37315ba57b96a2219bdf2f204"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 29 Oct 2019 12:36:28 GMT",
       "tag": "@uifabric/fabric-website_v7.5.7",
       "version": "7.5.7",
