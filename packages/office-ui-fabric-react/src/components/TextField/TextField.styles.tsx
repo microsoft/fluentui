@@ -271,7 +271,6 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
         }
       },
       disabled && {
-        //backgroundColor: semanticColors.disabledBackground,
         selectors: {
           ':after': {
             borderColor: semanticColors.disabledBackground
