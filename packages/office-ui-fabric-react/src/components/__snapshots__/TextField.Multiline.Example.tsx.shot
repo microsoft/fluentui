@@ -292,7 +292,6 @@ exports[`Component Examples renders TextField.Multiline.Example.tsx correctly 1`
               ms-TextField-fieldGroup
               {
                 align-items: stretch;
-                background-color: #f3f2f1;
                 background: #ffffff;
                 box-shadow: none;
                 box-sizing: border-box;
@@ -312,7 +311,7 @@ exports[`Component Examples renders TextField.Multiline.Example.tsx correctly 1`
                 position: relative;
               }
               &:hover:after {
-                border-color: #323130;
+                border-color: #f3f2f1;
               }
               @media screen and (-ms-high-contrast: active){&:hover:after {
                 border-color: Highlight;

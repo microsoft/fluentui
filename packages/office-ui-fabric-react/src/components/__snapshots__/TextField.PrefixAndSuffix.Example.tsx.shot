@@ -313,7 +313,6 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
               ms-TextField-fieldGroup
               {
                 align-items: stretch;
-                background-color: #f3f2f1;
                 background: #ffffff;
                 box-shadow: none;
                 box-sizing: border-box;
@@ -332,7 +331,7 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
                 position: relative;
               }
               &:hover:after {
-                border-color: #323130;
+                border-color: #f3f2f1;
               }
               @media screen and (-ms-high-contrast: active){&:hover:after {
                 border-color: Highlight;
