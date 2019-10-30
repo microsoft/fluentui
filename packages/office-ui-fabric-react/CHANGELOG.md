@@ -1,7 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 28 Oct 2019 12:24:06 GMT and should not be manually modified.
+This log was last generated on Wed, 30 Oct 2019 12:23:19 GMT and should not be manually modified.
 
+## 6.210.3
+Wed, 30 Oct 2019 12:23:19 GMT
+
+### Patches
+
+- Make Fabric 6 Toggle Aria 1.0 compatible (ported from 7.0) (satimals@microsoft.com)
 ## 6.210.2
 Mon, 28 Oct 2019 12:24:06 GMT
 

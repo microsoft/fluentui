@@ -2,6 +2,20 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Wed, 30 Oct 2019 12:23:19 GMT",
+      "tag": "office-ui-fabric-react_v6.210.3",
+      "version": "6.210.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Make Fabric 6 Toggle Aria 1.0 compatible (ported from 7.0)",
+            "author": "satimals@microsoft.com",
+            "commit": "76a74c17ca52804354b348edc584df6f3ebc7463"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 28 Oct 2019 12:24:06 GMT",
       "tag": "office-ui-fabric-react_v6.210.2",
       "version": "6.210.2",
