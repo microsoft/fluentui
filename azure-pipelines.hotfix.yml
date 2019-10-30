@@ -1,0 +1,52 @@
+pr: none
+
+trigger: none
+
+steps:
+  - task: NodeTool@0
+    displayName: 'Use Node 10.x'
+    inputs:
+      versionSpec: 10.x
+
+  - scripts: |
+      node -e "if(''$(targetNpmVersion)'' === '''') throw new Error(''targetNpmVersion is not specified'');"
+    displayName: 'Checking for targetNpmVersion variable'
+
+  - scripts: |
+      npm install semver
+      node -e "let semver = require(''semver'');if(semver.valid(''$(targetNpmVersion)'') === null){ throw new Error(''Invalid version specified''); }"
+    displayName: 'Check targetNpmVersion is valid semver'
+
+  - script: |
+      yarn
+    displayName: yarn
+
+  - scripts: |
+      npm version $(targetNpmVersion)
+    workingDir: 'packages/office-ui-fabric-react'
+    displayName: 'Manually set fabric version'
+
+  - scripts: |
+      yarn generate-version-files
+    displayName: 'Generate Version Files'
+
+  - script: |
+      yarn build --production
+    displayName: yarn build (Create production build)
+
+  - scripts: |
+      npm pack
+    displayName: 'Create tarball'
+    inputs:
+      workingDir: 'packages/office-ui-fabric-react'
+
+  - task: nkdagility.variablehydration.variabledehydration-task.variabledehydration@0
+    displayName: 'deHydrate Build Variables '
+    inputs:
+      prefixes: target
+
+  - task: PublishBuildArtifacts@1
+    displayName: 'Publish Artifact: oufr'
+    inputs:
+      PathtoPublish: 'packages/office-ui-fabric-react/office-ui-fabric-react-$(targetNpmVersion).tgz'
+      ArtifactName: oufr
