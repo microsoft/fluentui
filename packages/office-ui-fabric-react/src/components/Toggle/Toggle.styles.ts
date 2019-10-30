@@ -61,7 +61,7 @@ export const getStyles = (props: IToggleStyleProps): IToggleStyles => {
           order: 1,
           marginLeft: 16
         },
-      inlineLabel && { overflow: 'hidden' }
+      inlineLabel && { wordBreak: 'break-all' }
     ],
 
     container: [
