@@ -2,6 +2,9 @@ pr: none
 
 trigger: none
 
+pool:
+  vmImage: 'Ubuntu 16.04'
+
 steps:
   - task: NodeTool@0
     displayName: 'Use Node 10.x'
