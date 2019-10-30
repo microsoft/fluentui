@@ -23,7 +23,7 @@ steps:
 
   - script: |
       npm version $(targetNpmVersion)
-    workingDir: 'packages/office-ui-fabric-react'
+    workingDirectory: 'packages/office-ui-fabric-react'
     displayName: 'Manually set fabric version'
 
   - script: |
@@ -37,8 +37,7 @@ steps:
   - script: |
       npm pack
     displayName: 'Create tarball'
-    inputs:
-      workingDir: 'packages/office-ui-fabric-react'
+    workingDirectory: 'packages/office-ui-fabric-react'
 
   - task: nkdagility.variablehydration.variabledehydration-task.variabledehydration@0
     displayName: 'deHydrate Build Variables '
