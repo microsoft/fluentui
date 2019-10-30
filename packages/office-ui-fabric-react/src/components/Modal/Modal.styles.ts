@@ -73,13 +73,7 @@ export const getStyles = (props: IModalStyleProps): IModalStyles => {
         minHeight: '176px',
         minWidth: '288px',
         overflowY: 'auto',
-        zIndex: isModeless ? ZIndexes.Layer : undefined,
-        selectors: {
-          [`@media screen and (min-width: ${ScreenWidthMinLarge}px)`]: {
-            maxHeight: 'calc(100% - 80px)',
-            maxWidth: 'calc(100% - 80px)'
-          }
-        }
+        zIndex: isModeless ? ZIndexes.Layer : undefined
       },
       topOffsetFixed &&
         hasBeenOpened && {
