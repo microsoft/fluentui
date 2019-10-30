@@ -3496,6 +3496,9 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
             right: 0px;
             top: 0px;
           }
+          &:hover:after {
+            border-color: #a4262c;
+          }
           & .ms-Label {
             display: inline-block;
             margin-bottom: 8px;
@@ -3517,14 +3520,20 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
             right: -2px;
             top: -2px;
           }
-          &:hover:after {
-            border-color: #a4262c;
+          &:hover:hover:after {
+            border-color: #323130;
           }
           &:active:after {
             border-color: #a4262c;
           }
+          &:active:hover:after {
+            border-color: #323130;
+          }
           &:focus:after {
             border-color: #a4262c;
+          }
+          &:focus:hover:after {
+            border-color: #323130;
           }
       id="ComboBox19wrapper"
     >
