@@ -34,8 +34,8 @@ steps:
     displayName: 'Generate Version Files'
 
   - script: |
-      yarn build --production
-    displayName: yarn build (Create production build)
+      yarn buildto office-ui-fabric-react --production
+    displayName: yarn build to OUFR (Create production build)
 
   - script: |
       npm pack
