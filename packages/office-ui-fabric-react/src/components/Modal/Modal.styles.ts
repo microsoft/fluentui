@@ -1,6 +1,5 @@
 import { IModalStyleProps, IModalStyles } from './Modal.types';
 import { AnimationVariables, getGlobalClassNames, ZIndexes } from '../../Styling';
-import { ScreenWidthMinLarge } from 'office-ui-fabric-react/lib/Styling';
 
 export const animationDuration = AnimationVariables.durationValue2;
 
