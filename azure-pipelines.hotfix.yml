@@ -12,12 +12,12 @@ steps:
       versionSpec: 10.x
 
   - script: |
-      node -e "if(''$(targetNpmVersion)'' === '''') throw new Error(''targetNpmVersion is not specified'');"
+      node -e "if('$(targetNpmVersion)' === '') throw new Error('targetNpmVersion is not specified');"
     displayName: 'Checking for targetNpmVersion variable'
 
   - script: |
       npm install semver
-      node -e "let semver = require(''semver'');if(semver.valid(''$(targetNpmVersion)'') === null){ throw new Error(''Invalid version specified''); }"
+      node -e "let semver = require('semver');if(semver.valid('$(targetNpmVersion)') === null){ throw new Error('Invalid version specified'); }"
     displayName: 'Check targetNpmVersion is valid semver'
 
   - script: |
