@@ -328,7 +328,7 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
       !hasLabel &&
         required && {
           selectors: {
-            ':after': {
+            ':before': {
               content: `'*'`,
               color: semanticColors.errorText,
               position: 'absolute',

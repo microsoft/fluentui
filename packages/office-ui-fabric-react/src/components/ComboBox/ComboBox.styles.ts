@@ -358,6 +358,13 @@ export const getStyles = memoizeFunction(
         selectors: {
           ':after': {
             borderColor: root.erroredColor
+          },
+          ':hover': {
+            selectors: {
+              ':after': {
+                borderColor: semanticColors.inputBorderHovered
+              }
+            }
           }
         }
       },
