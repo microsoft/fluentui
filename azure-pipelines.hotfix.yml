@@ -8,11 +8,11 @@ steps:
     inputs:
       versionSpec: 10.x
 
-  - scripts: |
+  - script: |
       node -e "if(''$(targetNpmVersion)'' === '''') throw new Error(''targetNpmVersion is not specified'');"
     displayName: 'Checking for targetNpmVersion variable'
 
-  - scripts: |
+  - script: |
       npm install semver
       node -e "let semver = require(''semver'');if(semver.valid(''$(targetNpmVersion)'') === null){ throw new Error(''Invalid version specified''); }"
     displayName: 'Check targetNpmVersion is valid semver'
@@ -21,12 +21,12 @@ steps:
       yarn
     displayName: yarn
 
-  - scripts: |
+  - script: |
       npm version $(targetNpmVersion)
     workingDir: 'packages/office-ui-fabric-react'
     displayName: 'Manually set fabric version'
 
-  - scripts: |
+  - script: |
       yarn generate-version-files
     displayName: 'Generate Version Files'
 
@@ -34,7 +34,7 @@ steps:
       yarn build --production
     displayName: yarn build (Create production build)
 
-  - scripts: |
+  - script: |
       npm pack
     displayName: 'Create tarball'
     inputs:
