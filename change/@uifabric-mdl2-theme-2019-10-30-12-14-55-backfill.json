@@ -1,0 +1,8 @@
+{
+  "type": "none",
+  "comment": "adding backfill for build caching",
+  "packageName": "@uifabric/mdl2-theme",
+  "email": "kchau@microsoft.com",
+  "commit": "ed4d12d974592cd62f5681803fd3a22186b695e8",
+  "date": "2019-10-30T19:14:39.989Z"
+}
