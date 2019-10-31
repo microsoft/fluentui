@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Combobox: Fixed issue where hidden options are shown when arrowing through combobox option list",
+  "packageName": "office-ui-fabric-react",
+  "email": "v-mare@microsoft.com",
+  "commit": "f2f8fc5b251c053fb2d9d1f212ec81e7e427840b",
+  "date": "2019-10-31T19:25:57.970Z"
+}
