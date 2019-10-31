@@ -4,7 +4,7 @@ import { Dialog, DialogFooter, DialogType } from 'office-ui-fabric-react/lib/Dia
 import { Panel } from 'office-ui-fabric-react/lib/Panel';
 import { useConstCallback } from '@uifabric/react-hooks';
 
-const explanation = 'If this panel is closed using light dismiss (clicking outside the panel), a confirmation dialog will appear.';
+const explanation = 'When this panel is closed, a confirmation dialog will appear.';
 const dialogContentProps = {
   type: DialogType.normal,
   title: 'Are you sure you want to close the panel?'
@@ -14,13 +14,19 @@ const dialogModalProps = {
   styles: { main: { maxWidth: 450 } }
 };
 
-export const PanelLightDismissCustomExample: React.FunctionComponent = () => {
+export const PanelConfirmDismissExample: React.FunctionComponent = () => {
   const [isPanelOpen, setIsPanelOpen] = React.useState(false);
   const [isDialogVisible, setIsDialogVisible] = React.useState(false);
 
   const openPanel = useConstCallback(() => setIsPanelOpen(true));
-  const dismissPanel = useConstCallback(() => setIsPanelOpen(false));
-  const showDialog = useConstCallback(() => setIsDialogVisible(true));
+  const onDismiss = useConstCallback((ev?: React.SyntheticEvent) => {
+    if (ev) {
+      // Instead of closing the panel immediately, cancel that action and show a dialog
+      ev.preventDefault();
+      setIsDialogVisible(true);
+    }
+  });
+
   const hideDialog = useConstCallback(() => setIsDialogVisible(false));
   const hideDialogAndPanel = useConstCallback(() => {
     setIsPanelOpen(false);
@@ -33,16 +39,7 @@ export const PanelLightDismissCustomExample: React.FunctionComponent = () => {
       <br />
       <br />
       <DefaultButton text="Open panel" onClick={openPanel} />
-      <Panel
-        isOpen={isPanelOpen}
-        isLightDismiss={true}
-        // Use this prop to do special handling *only* for light dismiss.
-        // If you provide this, the normal onDismiss won't be called for light dismiss.
-        onLightDismissClick={showDialog}
-        onDismiss={dismissPanel}
-        headerText="Panel with custom light dismiss behavior"
-        closeButtonAriaLabel="Close"
-      >
+      <Panel headerText="Panel with custom close behavior" isOpen={isPanelOpen} onDismiss={onDismiss} closeButtonAriaLabel="Close">
         <span>{explanation}</span>
       </Panel>
       <Dialog hidden={!isDialogVisible} onDismiss={hideDialog} dialogContentProps={dialogContentProps} modalProps={dialogModalProps}>
