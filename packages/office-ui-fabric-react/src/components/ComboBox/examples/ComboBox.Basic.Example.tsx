@@ -13,7 +13,7 @@ import {
 const INITIAL_OPTIONS: IComboBoxOption[] = [
   { key: 'Header1', text: 'First heading', itemType: SelectableOptionMenuItemType.Header },
   { key: 'A', text: 'Option A' },
-  { key: 'B', text: 'Option B' },
+  { key: 'B', text: 'Option B', hidden: true },
   { key: 'C', text: 'Option C' },
   { key: 'D', text: 'Option D' },
   { key: 'divider', text: '-', itemType: SelectableOptionMenuItemType.Divider },
