@@ -816,13 +816,6 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
     const option: IComboBoxOption = currentOptions[newIndex];
 
-    // attempt to skip headers and dividers
-    // if (
-    //   (option.itemType === SelectableOptionMenuItemType.Header ||
-    //     option.itemType === SelectableOptionMenuItemType.Divider ||
-    //     option.hidden === true,
-    //   option.disabled === true)
-    // ) {
     if (
       option.itemType === SelectableOptionMenuItemType.Header ||
       option.itemType === SelectableOptionMenuItemType.Divider ||
