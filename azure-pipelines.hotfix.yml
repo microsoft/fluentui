@@ -30,10 +30,6 @@ steps:
     displayName: 'Manually set fabric version'
 
   - script: |
-      yarn generate-version-files
-    displayName: 'Generate Version Files'
-
-  - script: |
       yarn buildto office-ui-fabric-react --production
     displayName: yarn build to OUFR (Create production build)
 
