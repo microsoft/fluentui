@@ -34,7 +34,7 @@
     "jest-environment-jsdom": "24.0.0",
     "jju": "^1.4.0",
     "json-loader": "^0.5.7",
-    "just-scripts": "~0.29.0",
+    "just-scripts": "~0.34.0",
     "mustache": "^2.3.0",
     "ngrok": "^3.0.1",
     "node-sass": "^4.5.3",
