@@ -42,11 +42,6 @@ steps:
     displayName: 'Create tarball'
     workingDirectory: 'packages/office-ui-fabric-react'
 
-  - task: nkdagility.variablehydration.variabledehydration-task.variabledehydration@0
-    displayName: 'deHydrate Build Variables '
-    inputs:
-      prefixes: target
-
   - task: PublishBuildArtifacts@1
     displayName: 'Publish Artifact: oufr'
     inputs:
