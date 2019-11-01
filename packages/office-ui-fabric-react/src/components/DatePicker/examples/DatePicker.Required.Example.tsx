@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { DatePicker, DayOfWeek, IDatePickerStrings } from 'office-ui-fabric-react/lib/DatePicker';
-import './DatePicker.Examples.scss';
+import { css, classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
+import { datePickerExampleStyles, IDatePickerExampleStyles } from './DatePicker.Examples.Styles';
 
 const DayPickerStrings: IDatePickerStrings = {
   months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
@@ -27,6 +28,9 @@ export interface IDatePickerRequiredExampleState {
   firstDayOfWeek?: DayOfWeek;
 }
 
+const getClassNames = classNamesFunction<{}, IDatePickerExampleStyles>();
+const classnames = getClassNames(datePickerExampleStyles, {});
+
 export class DatePickerRequiredExample extends React.Component<{}, IDatePickerRequiredExampleState> {
   constructor(props: {}) {
     super(props);
@@ -43,6 +47,7 @@ export class DatePickerRequiredExample extends React.Component<{}, IDatePickerRe
       <div className="docs-DatePickerExample">
         <p>Validation will happen when Date Picker loses focus.</p>
         <DatePicker
+          className={css(classnames.msDatePicker)}
           label="Date required (with label)"
           isRequired={true}
           firstDayOfWeek={firstDayOfWeek}
@@ -51,6 +56,7 @@ export class DatePickerRequiredExample extends React.Component<{}, IDatePickerRe
           ariaLabel="Select a date"
         />
         <DatePicker
+          className={css(classnames.msDatePicker)}
           isRequired={true}
           firstDayOfWeek={firstDayOfWeek}
           strings={DayPickerStrings}
