@@ -1,8 +1,9 @@
 import * as React from 'react';
 import { Modal, IDragOptions } from 'office-ui-fabric-react/lib/Modal';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
-import { getId } from 'office-ui-fabric-react/lib/Utilities';
-import * as styles from './Modal.Example.scss';
+import { css, classNamesFunction, getId } from 'office-ui-fabric-react/lib/Utilities';
+// import * as styles from './Modal.Example.scss';
+import { modalExampleStyle, IModalExampleStyles } from './Modal.Example.Styles';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import { ContextualMenu } from 'office-ui-fabric-react/lib/ContextualMenu';
 
@@ -10,6 +11,9 @@ export interface IModalBasicExampleState {
   showModal: boolean;
   isDraggable: boolean;
 }
+
+const getClassNames = classNamesFunction<{}, IModalExampleStyles>();
+const classnames = getClassNames(modalExampleStyle, {});
 
 export class ModalBasicExample extends React.Component<{}, IModalBasicExampleState> {
   public state: IModalBasicExampleState = {
@@ -37,13 +41,13 @@ export class ModalBasicExample extends React.Component<{}, IModalBasicExampleSta
           isOpen={this.state.showModal}
           onDismiss={this._closeModal}
           isBlocking={false}
-          containerClassName={styles.container}
+          containerClassName={classnames.msModalContainer}
           dragOptions={this.state.isDraggable ? this._dragOptions : undefined}
         >
-          <div className={styles.header}>
+          <div className={classnames.msModalHeader}>
             <span id={this._titleId}>Lorem Ipsum</span>
           </div>
-          <div id={this._subtitleId} className={styles.body}>
+          <div id={this._subtitleId} className={classnames.msModalBody}>
             <DefaultButton onClick={this._closeModal} text="Close" />
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas lorem nulla, malesuada ut sagittis sit amet, vulputate in
