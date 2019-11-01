@@ -1,7 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 30 Oct 2019 19:36:52 GMT and should not be manually modified.
+This log was last generated on Fri, 01 Nov 2019 01:02:38 GMT and should not be manually modified.
 
+## 7.56.2
+Fri, 01 Nov 2019 01:02:38 GMT
+
+### Patches
+
+- Panel: improve examples (elcraig@microsoft.com)
 ## 7.56.1
 Wed, 30 Oct 2019 19:36:52 GMT
 
