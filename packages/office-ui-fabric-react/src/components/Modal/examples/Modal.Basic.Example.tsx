@@ -40,13 +40,13 @@ export class ModalBasicExample extends React.Component<{}, IModalBasicExampleSta
           isOpen={this.state.showModal}
           onDismiss={this._closeModal}
           isBlocking={false}
-          containerClassName={classnames.msModalContainer}
+          containerClassName={css(classnames.msModalContainer)}
           dragOptions={this.state.isDraggable ? this._dragOptions : undefined}
         >
-          <div className={classnames.msModalHeader}>
+          <div className={css(classnames.msModalHeader)}>
             <span id={this._titleId}>Lorem Ipsum</span>
           </div>
-          <div id={this._subtitleId} className={classnames.msModalBody}>
+          <div id={this._subtitleId} className={css(classnames.msModalBody)}>
             <DefaultButton onClick={this._closeModal} text="Close" />
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas lorem nulla, malesuada ut sagittis sit amet, vulputate in
