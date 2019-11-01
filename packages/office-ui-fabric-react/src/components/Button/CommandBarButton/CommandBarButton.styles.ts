@@ -121,6 +121,7 @@ export const getStyles = memoizeFunction(
 
       // Split button styles
       splitButtonContainer: {
+        height: '100%',
         selectors: {
           [HighContrastSelector]: {
             border: 'none'

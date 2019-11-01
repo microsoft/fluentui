@@ -1851,18 +1851,14 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         // and allow the event to propagate
         if (!allowFreeform && autoComplete === 'off') {
           this._setOpenStateAndFocusOnClose(!isOpen, !!isOpen);
-          return;
         }
-        break;
+        return;
       default:
         if (shouldHandleKey && isOpen) {
           this._setOpenStateAndFocusOnClose(!isOpen, true /* focusInputAfterClose */);
         }
         return;
     }
-
-    ev.stopPropagation();
-    ev.preventDefault();
   };
 
   private _onOptionMouseEnter(index: number): void {

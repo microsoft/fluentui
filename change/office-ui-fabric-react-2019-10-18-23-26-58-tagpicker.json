@@ -1,9 +1,0 @@
-{
-  "type": "patch",
-  "comment": "TagPicker: prevent long items from overflowing narrow container",
-  "packageName": "office-ui-fabric-react",
-  "email": "elcraig@microsoft.com",
-  "commit": "3d330f77a317b5cbbfed105c270b7b4b942fa667",
-  "date": "2019-10-19T06:26:58.893Z",
-  "file": "/Users/elizabeth/git/fabric-react/change/office-ui-fabric-react-2019-10-18-23-26-58-tagpicker.json"
-}

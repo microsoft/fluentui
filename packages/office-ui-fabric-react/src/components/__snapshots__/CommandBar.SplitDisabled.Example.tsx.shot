@@ -72,10 +72,12 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
               <div
                 aria-expanded={false}
                 aria-haspopup={true}
+                aria-label="New"
                 className=
 
                     {
                       display: inline-flex;
+                      height: 100%;
                       outline: transparent;
                       position: relative;
                     }
@@ -469,6 +471,7 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                     {
                       border: none;
                       display: inline-flex;
+                      height: 100%;
                       outline: none;
                       position: relative;
                     }

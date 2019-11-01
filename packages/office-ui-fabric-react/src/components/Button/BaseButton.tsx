@@ -474,13 +474,13 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     );
   };
 
-  private _onDismissMenu = (ev: React.MouseEvent | React.KeyboardEvent): void => {
+  private _onDismissMenu: IContextualMenuProps['onDismiss'] = ev => {
     const { menuProps } = this.props;
 
     if (menuProps && menuProps.onDismiss) {
       menuProps.onDismiss(ev);
     }
-    if (!ev.defaultPrevented) {
+    if (!ev || !ev.defaultPrevented) {
       this._dismissMenu();
     }
   };
@@ -541,7 +541,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       keytipProps = this._getMemoizedMenuButtonKeytipProps(keytipProps);
     }
 
-    const containerProps = getNativeProps<React.HTMLAttributes<HTMLSpanElement>>(buttonProps, [], ['disabled', 'aria-label']);
+    const containerProps = getNativeProps<React.HTMLAttributes<HTMLSpanElement>>(buttonProps, [], ['disabled']);
 
     // Add additional props to apply on primary action button
     if (primaryActionButtonProps) {

@@ -79,3 +79,5 @@ If you need types from `monaco-typescript`, import as follows:
 ```js
 import { TypeScriptWorker } from '@uifabric/monaco-editor/monaco-typescript.d';
 ```
+
+Note that you may run into conflicts with these types if you're on a different TypeScript version than the one the typings were generated against.
