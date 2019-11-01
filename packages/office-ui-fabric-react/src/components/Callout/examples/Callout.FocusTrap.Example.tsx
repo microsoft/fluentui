@@ -21,7 +21,7 @@ export class CalloutFocusTrapExample extends React.Component<{}, ICalloutFocusTr
 
     return (
       <div className="ms-CalloutExample">
-        <div className="ms-CalloutBasicExample-buttonArea" ref={menuButton => (this._menuButtonElement = menuButton)}>
+        <div className={css(classNames.msCalloutBasicExamplebButtonArea)} ref={menuButton => (this._menuButtonElement = menuButton)}>
           <DefaultButton onClick={this._onDismiss} text={isCalloutVisible ? 'Hide callout' : 'Show callout'} />
         </div>
         {isCalloutVisible ? (
@@ -29,20 +29,20 @@ export class CalloutFocusTrapExample extends React.Component<{}, ICalloutFocusTr
             <FocusTrapCallout
               role="alertdialog"
               ariaLabelledBy={this._titleId}
-              className="ms-CalloutExample-callout"
+              className={css(classNames.msCalloutExampleCallout)}
               gapSpace={0}
               target={this._menuButtonElement}
               onDismiss={this._onDismiss}
               setInitialFocus={true}
             >
-              <div className="ms-CalloutExample-header">
-                <p className="ms-CalloutExample-title" id={this._titleId}>
+              <div className={css(classNames.msCalloutExampleHeader)}>
+                <p className={css(classNames.msCalloutExampleTitle)} id={this._titleId}>
                   Callout title here
                 </p>
               </div>
-              <div className="ms-CalloutExample-inner">
+              <div className={css(classNames.msCalloutExampleInner)}>
                 <div className="ms-CalloutExample-content">
-                  <p className="ms-CalloutExample-subText">
+                  <p className={css(classNames.msCalloutExampleSubText)}>
                     Message body is optional. If help documentation is available, consider adding a link to learn more at the bottom.
                   </p>
                 </div>
