@@ -3031,10 +3031,9 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
           Horizontal alignment:
         </label>
         <div
-          aria-describedby="Dropdown12-option"
           aria-expanded="false"
           aria-haspopup="listbox"
-          aria-labelledby="Dropdown12-label"
+          aria-labelledby="Dropdown12-label Dropdown12-option"
           className=
               ms-Dropdown
               {
@@ -3127,11 +3126,16 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
           onKeyDown={[Function]}
           onKeyUp={[Function]}
           onMouseDown={[Function]}
-          role="button"
+          role="listbox"
           tabIndex={0}
         >
           <span
+            aria-atomic={true}
             aria-invalid={false}
+            aria-live="polite"
+            aria-posinset={1}
+            aria-selected={true}
+            aria-setsize={6}
             className=
                 ms-Dropdown-title
                 {
@@ -3159,12 +3163,10 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                   text-overflow: ellipsis;
                   white-space: nowrap;
                 }
+            id="Dropdown12-option"
+            role="option"
           >
-            <span
-              id="Dropdown12-option"
-            >
-              Left
-            </span>
+            Left
           </span>
           <span
             className=
@@ -3251,10 +3253,9 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
           Vertical alignment:
         </label>
         <div
-          aria-describedby="Dropdown13-option"
           aria-expanded="false"
           aria-haspopup="listbox"
-          aria-labelledby="Dropdown13-label"
+          aria-labelledby="Dropdown13-label Dropdown13-option"
           className=
               ms-Dropdown
               {
@@ -3347,11 +3348,16 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
           onKeyDown={[Function]}
           onKeyUp={[Function]}
           onMouseDown={[Function]}
-          role="button"
+          role="listbox"
           tabIndex={0}
         >
           <span
+            aria-atomic={true}
             aria-invalid={false}
+            aria-live="polite"
+            aria-posinset={1}
+            aria-selected={true}
+            aria-setsize={3}
             className=
                 ms-Dropdown-title
                 {
@@ -3379,12 +3385,10 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                   text-overflow: ellipsis;
                   white-space: nowrap;
                 }
+            id="Dropdown13-option"
+            role="option"
           >
-            <span
-              id="Dropdown13-option"
-            >
-              Top
-            </span>
+            Top
           </span>
           <span
             className=

@@ -4,6 +4,7 @@ import { BaseComponent, KeyCodes, classNamesFunction, IStyleFunctionOrObject, cs
 import { IProcessedStyleSet } from '../../../Styling';
 import { CommandButton, IButton } from '../../../Button';
 import { Spinner, ISpinnerStyleProps, ISpinnerStyles } from '../../../Spinner';
+import { Announced } from '../../../Announced';
 import { ISuggestionsProps, SuggestionActionType, ISuggestionsStyleProps, ISuggestionsStyles } from './Suggestions.types';
 import { SuggestionsItem } from './SuggestionsItem';
 import { getStyles as suggestionsItemStyles } from './SuggestionsItem.styles';
@@ -76,11 +77,11 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
       resultsFooterFull,
       resultsFooter,
       isResultsFooterVisible = true,
-      suggestionsAvailableAlertText,
       suggestionsHeaderText,
       suggestionsClassName,
       theme,
-      styles
+      styles,
+      suggestionsListId
     } = this.props;
 
     // TODO
@@ -126,11 +127,7 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
       : { className: css('ms-Suggestions-spinner', legacyStyles.suggestionsSpinner) };
 
     const noResults = () => {
-      return noResultsFoundText ? (
-        <div role="alert" className={this._classNames.noSuggestions}>
-          {noResultsFoundText}
-        </div>
-      ) : null;
+      return noResultsFoundText ? <div className={this._classNames.noSuggestions}>{noResultsFoundText}</div> : null;
     };
 
     // MostRecently Used text should supercede the header text if it's there and available.
@@ -145,9 +142,13 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
     }
 
     const hasNoSuggestions = (!suggestions || !suggestions.length) && !isLoading;
+    const divProps: React.HtmlHTMLAttributes<HTMLDivElement> =
+      hasNoSuggestions || isLoading ? { role: 'dialog', id: suggestionsListId } : {};
 
     return (
-      <div className={this._classNames.root}>
+      <div className={this._classNames.root} {...divProps}>
+        <Announced message={this._getAlertText()} aria-live="polite" />
+
         {headerText ? <div className={this._classNames.title}>{headerText}</div> : null}
         {forceResolveText && this._shouldShowForceResolve() && (
           <CommandButton
@@ -174,13 +175,6 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
         {footerTitle && !moreSuggestionsAvailable && !isMostRecentlyUsedVisible && !isSearching ? (
           <div className={this._classNames.title}>{footerTitle(this.props)}</div>
         ) : null}
-        {
-          <span role="alert" aria-live="polite" className={this._classNames.suggestionsAvailable}>
-            {!isLoading && !isSearching && suggestions && suggestions.length > 0 && suggestionsAvailableAlertText
-              ? suggestionsAvailableAlertText
-              : null}
-          </span>
-        }
       </div>
     );
   }
@@ -302,6 +296,19 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
       this._selectedElement.current.scrollIntoView(false);
     }
   }
+
+  private _getAlertText = () => {
+    const { isLoading, isSearching, suggestions, suggestionsAvailableAlertText, noResultsFoundText } = this.props;
+    if (!isLoading && !isSearching) {
+      if (suggestions.length > 0) {
+        return suggestionsAvailableAlertText || '';
+      }
+      if (noResultsFoundText) {
+        return noResultsFoundText;
+      }
+    }
+    return '';
+  };
 
   private _renderSuggestions(): JSX.Element | null {
     const {

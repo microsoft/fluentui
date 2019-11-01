@@ -17,14 +17,17 @@ export interface ICalendarDayState {
 export class CalendarDayBase extends BaseComponent<ICalendarDayProps, ICalendarDayState> {
   private _dayGrid = React.createRef<ICalendarDayGrid>();
 
-  public static getDerivedStateFromProps(props: ICalendarDayProps, state: ICalendarDayState): ICalendarDayState {
-    const { dateTimeFormatter, strings } = props;
+  public static getDerivedStateFromProps(
+    nextProps: Readonly<ICalendarDayProps>,
+    prevState: Readonly<ICalendarDayState>
+  ): Partial<ICalendarDayState> | null {
+    const { dateTimeFormatter, strings } = nextProps;
 
-    const previousDate = state && state.previousNavigatedDate;
-    const nextDate = props.navigatedDate;
+    const previousDate = prevState && prevState.previousNavigatedDate;
+    const nextDate = nextProps.navigatedDate;
     if (!previousDate) {
       return {
-        previousNavigatedDate: props.navigatedDate
+        previousNavigatedDate: nextProps.navigatedDate
       };
     }
 
@@ -32,18 +35,18 @@ export class CalendarDayBase extends BaseComponent<ICalendarDayProps, ICalendarD
       if (previousDate < nextDate) {
         return {
           animateBackwards: false,
-          previousNavigatedDate: props.navigatedDate
+          previousNavigatedDate: nextProps.navigatedDate
         };
       } else if (previousDate > nextDate) {
         return {
           animateBackwards: true,
-          previousNavigatedDate: props.navigatedDate
+          previousNavigatedDate: nextProps.navigatedDate
         };
       }
     }
 
     return {
-      previousNavigatedDate: props.navigatedDate
+      previousNavigatedDate: nextProps.navigatedDate
     };
   }
 

@@ -6,8 +6,6 @@
 
 import { BaseComponent } from '@uifabric/utilities';
 import { EventGroup } from '@uifabric/utilities';
-import { groupOne } from '@uifabric/example-data';
-import { groupTwo } from '@uifabric/example-data';
 import { IBaseProps } from '@uifabric/utilities';
 import { IComponent } from '@uifabric/foundation';
 import { IComponentAs } from '@uifabric/utilities';
@@ -34,9 +32,7 @@ import { IStyleFunctionOrObject } from '@uifabric/utilities';
 import { IStyleSet } from '@uifabric/styling';
 import { ITheme } from '@uifabric/styling';
 import { KeyCodes } from '@uifabric/utilities';
-import { mru } from '@uifabric/example-data';
 import { Omit } from '@uifabric/utilities';
-import { people } from '@uifabric/example-data';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import { Selection } from '@uifabric/utilities';
@@ -1406,15 +1402,11 @@ export const GroupFooter: React.StatelessComponent<IGroupFooterProps>;
 // @public (undocumented)
 export const GroupHeader: React.StatelessComponent<IGroupHeaderProps>;
 
-export { groupOne }
-
 // @public (undocumented)
 export const GroupShowAll: React.StatelessComponent<IGroupShowAllProps>;
 
 // @public (undocumented)
 export const GroupSpacer: React.FunctionComponent<IGroupSpacerProps>;
-
-export { groupTwo }
 
 // @public
 export const HEX_REGEX: RegExp;
@@ -3036,7 +3028,7 @@ export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, IWith
     isSubMenu?: boolean;
     items: IContextualMenuItem[];
     labelElementId?: string;
-    onDismiss?: (ev?: any, dismissAll?: boolean) => void;
+    onDismiss?: (ev?: React.MouseEvent | React.KeyboardEvent, dismissAll?: boolean) => void;
     onItemClick?: (ev?: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>, item?: IContextualMenuItem) => boolean | void;
     onMenuDismissed?: (contextualMenu?: IContextualMenuProps) => void;
     onMenuOpened?: (contextualMenu?: IContextualMenuProps) => void;
@@ -4511,6 +4503,7 @@ export interface IFacepilePersona extends React.ButtonHTMLAttributes<HTMLButtonE
 export interface IFacepileProps extends React.ClassAttributes<FacepileBase> {
     addButtonProps?: IButtonProps;
     ariaDescription?: string;
+    ariaLabel?: string;
     // @deprecated
     chevronButtonProps?: IButtonProps;
     className?: string;
@@ -6925,7 +6918,7 @@ export interface ISpinButton {
 }
 
 // @public (undocumented)
-export interface ISpinButtonProps {
+export interface ISpinButtonProps extends React.HTMLAttributes<HTMLDivElement> {
     ariaDescribedBy?: string;
     ariaLabel?: string;
     ariaPositionInSet?: number;
@@ -7690,6 +7683,7 @@ export interface IToggleProps extends React.HTMLAttributes<HTMLElement> {
     // @deprecated (undocumented)
     onChanged?: (checked: boolean) => void;
     onText?: string;
+    role?: 'checkbox' | 'switch';
     styles?: IStyleFunctionOrObject<IToggleStyleProps, IToggleStyles>;
     theme?: ITheme;
 }
@@ -8116,8 +8110,6 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
     UNSAFE_componentWillReceiveProps(newProps: IModalProps): void;
 }
 
-export { mru }
-
 // @public (undocumented)
 export const Nav: React.StatelessComponent<INavProps>;
 
@@ -8218,8 +8210,6 @@ export enum PanelType {
     smallFixedNear = 2,
     smallFluid = 0
 }
-
-export { people }
 
 // @public (undocumented)
 export const PeoplePickerItem: React.FunctionComponent<IPeoplePickerItemSelectedProps>;
@@ -9354,7 +9344,7 @@ export class ToggleBase extends BaseComponent<IToggleProps, IToggleState> implem
     // (undocumented)
     focus(): void;
     // (undocumented)
-    static getDerivedStateFromProps(props: IToggleProps, state: IToggleState): IToggleState;
+    static getDerivedStateFromProps(nextProps: Readonly<IToggleProps>, prevState: Readonly<IToggleState>): Partial<IToggleState> | null;
     // (undocumented)
     render(): JSX.Element;
     }

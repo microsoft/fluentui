@@ -41,9 +41,12 @@ export class CalendarMonthBase extends BaseComponent<ICalendarMonthProps, ICalen
   private _calendarYearRef = React.createRef<ICalendarYear>();
   private _focusOnUpdate: boolean;
 
-  public static getDerivedStateFromProps(props: ICalendarMonthProps, state: ICalendarMonthState): ICalendarMonthState {
-    const previousYear = state.previousNavigatedDate ? state.previousNavigatedDate.getFullYear() : undefined;
-    const nextYear = props.navigatedDate.getFullYear();
+  public static getDerivedStateFromProps(
+    nextProps: Readonly<ICalendarMonthProps>,
+    prevState: Readonly<ICalendarMonthState>
+  ): Partial<ICalendarMonthState> | null {
+    const previousYear = prevState.previousNavigatedDate ? prevState.previousNavigatedDate.getFullYear() : undefined;
+    const nextYear = nextProps.navigatedDate.getFullYear();
     if (!previousYear) {
       return {};
     }
@@ -51,12 +54,12 @@ export class CalendarMonthBase extends BaseComponent<ICalendarMonthProps, ICalen
     if (previousYear < nextYear) {
       return {
         animateBackwards: false,
-        previousNavigatedDate: props.navigatedDate
+        previousNavigatedDate: nextProps.navigatedDate
       };
     } else if (previousYear > nextYear) {
       return {
         animateBackwards: true,
-        previousNavigatedDate: props.navigatedDate
+        previousNavigatedDate: nextProps.navigatedDate
       };
     }
 

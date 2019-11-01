@@ -1,7 +1,13 @@
 # Change Log - @uifabric/merge-styles
 
-This log was last generated on Thu, 26 Sep 2019 12:32:32 GMT and should not be manually modified.
+This log was last generated on Mon, 21 Oct 2019 12:33:23 GMT and should not be manually modified.
 
+## 7.8.0
+Mon, 21 Oct 2019 12:33:23 GMT
+
+### Minor changes
+
+- Add `-ms-overflow-style` as a valid CSS property (unindented@gmail.com)
 ## 7.7.0
 Thu, 26 Sep 2019 12:32:32 GMT
 

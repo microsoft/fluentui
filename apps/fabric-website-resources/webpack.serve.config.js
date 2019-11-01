@@ -1,19 +1,22 @@
-const getResolveAlias = require('../../scripts/webpack/getResolveAlias');
-const resources = require('../../scripts/webpack/webpack-resources');
+const getResolveAlias = require('@uifabric/build/webpack/getResolveAlias');
+const resources = require('@uifabric/build/webpack/webpack-resources');
+const { addMonacoWebpackConfig } = require('@uifabric/tsx-editor/scripts/addMonacoWebpackConfig');
 
-module.exports = resources.createServeConfig({
-  entry: './src/index.tsx',
+const BUNDLE_NAME = 'demo-app';
 
-  output: {
-    filename: 'demo-app.js'
-  },
+module.exports = resources.createServeConfig(
+  addMonacoWebpackConfig({
+    entry: {
+      [BUNDLE_NAME]: './src/index.tsx'
+    },
 
-  externals: {
-    react: 'React',
-    'react-dom': 'ReactDOM'
-  },
+    externals: {
+      react: 'React',
+      'react-dom': 'ReactDOM'
+    },
 
-  resolve: {
-    alias: getResolveAlias()
-  }
-});
+    resolve: {
+      alias: getResolveAlias()
+    }
+  })
+);

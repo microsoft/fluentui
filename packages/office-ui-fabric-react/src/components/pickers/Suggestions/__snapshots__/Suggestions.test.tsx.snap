@@ -5,6 +5,13 @@ exports[`Suggestions renders a list properly 1`] = `
   className="ms-Suggestions"
 >
   <div
+    aria-live="polite"
+    className=
+
+
+    role="status"
+  />
+  <div
     className="ms-Suggestions-container"
     role="listbox"
   >
@@ -2024,11 +2031,6 @@ exports[`Suggestions renders a list properly 1`] = `
       </div>
     </div>
   </div>
-  <span
-    aria-live="polite"
-    className="ms-Suggestions-suggestionsAvailable"
-    role="alert"
-  />
 </div>
 `;
 
@@ -2040,6 +2042,13 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
         min-width: 260px;
       }
 >
+  <div
+    aria-live="polite"
+    className=
+
+
+    role="status"
+  />
   <div
     className=
         ms-Suggestions-container
@@ -4066,27 +4075,6 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
       </div>
     </div>
   </div>
-  <span
-    aria-live="polite"
-    className=
-        ms-Suggestions-suggestionsAvailable
-        {
-          border: 0px;
-          height: 1px;
-          margin-bottom: -1px;
-          margin-left: -1px;
-          margin-right: -1px;
-          margin-top: -1px;
-          overflow: hidden;
-          padding-bottom: 0px;
-          padding-left: 0px;
-          padding-right: 0px;
-          padding-top: 0px;
-          position: absolute;
-          width: 1px;
-        }
-    role="alert"
-  />
 </div>
 `;
 
@@ -4094,6 +4082,13 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
 <div
   className="ms-Suggestions"
 >
+  <div
+    aria-live="polite"
+    className=
+
+
+    role="status"
+  />
   <div
     className="ms-Suggestions-container"
     role="listbox"
@@ -6114,10 +6109,5 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
       </div>
     </div>
   </div>
-  <span
-    aria-live="polite"
-    className="ms-Suggestions-suggestionsAvailable"
-    role="alert"
-  />
 </div>
 `;

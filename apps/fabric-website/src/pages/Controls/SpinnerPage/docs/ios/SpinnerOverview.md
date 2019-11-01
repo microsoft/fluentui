@@ -6,6 +6,8 @@ Use a standalone spinner when you need a progress indicator on an existing surfa
 
 For actions that happen "between views", you can use the progress indicator that lives in its own overlay, the `MSHUD`:
 
-| Activity Indicator                                                                                                                                                                                                        | HUD                                                                                                                                                                                                                           |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+<!-- prettier-ignore-start -->
+| Activity Indicator | HUD |
+| --- | --- |
 | <img src="https://static2.sharepointonline.com/files/fabric/fabric-website/images/controls/ios/progressindicator/activity-indicator.png" alt="Activity indicator control in varying sizes on iOS." style="width: 75%;" /> | <img src="https://static2.sharepointonline.com/files/fabric/fabric-website/images/controls/ios/progressindicator/progressindicator.png" alt="Progress indicator control in a floating overlay on iOS." style="width: 75%;" /> |
+<!-- prettier-ignore-end -->

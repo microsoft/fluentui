@@ -2,7 +2,7 @@
 
 exports[`example transform can return component 1`] = `
 Object {
-  "output": "(function() {
+  "output": "(function(React) {
 const { Label, Fabric, initializeIcons } = window.Fabric;
 
 // Initialize icons in case this example uses them
@@ -18,13 +18,13 @@ const LabelBasicExample = () => {
 
 const LabelBasicExampleWrapper = () => React.createElement(Fabric, null, React.createElement(LabelBasicExample, null));
 return LabelBasicExampleWrapper;
-})()",
+})",
 }
 `;
 
 exports[`example transform can return component with transpiled example 1`] = `
 Object {
-  "output": "(function() {
+  "output": "(function(React) {
 const { Label, Fabric, initializeIcons } = window.Fabric;
 
 // Initialize icons in case this example uses them
@@ -37,7 +37,7 @@ var LabelBasicExample = function () {
 
 const LabelBasicExampleWrapper = () => React.createElement(Fabric, null, React.createElement(LabelBasicExample, null));
 return LabelBasicExampleWrapper;
-})()",
+})",
 }
 `;
 

@@ -183,10 +183,13 @@ exports[`DatePicker renders default DatePicker correctly 1`] = `
                   display: inline-block;
                   font-size: 16px;
                   line-height: 18px;
+                  padding-bottom: 5px;
+                  padding-left: 5px;
+                  padding-right: 5px;
+                  padding-top: 7px;
                   pointer-events: initial;
                   position: absolute;
-                  right: 9px;
-                  top: 7px;
+                  right: 4px;
                 }
             data-icon-name="Calendar"
             onClick={[Function]}
