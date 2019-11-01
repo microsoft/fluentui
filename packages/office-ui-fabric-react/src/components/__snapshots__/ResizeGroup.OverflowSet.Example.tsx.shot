@@ -3347,7 +3347,13 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
       </div>
     </div>
   </div>
-  <div>
+  <div
+    className=
+
+        {
+          padding-top: 20px;
+        }
+  >
     <div
       className=
           ms-Checkbox
@@ -3765,7 +3771,13 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
         </span>
       </label>
     </div>
-    <div>
+    <div
+      className=
+
+          {
+            width: 180px;
+          }
+    >
       <div
         className=
             ms-Dropdown-container
