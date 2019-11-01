@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Removed SCSS from ChoiceGroup Examples. Added Codepen support for ChoiceGroup. Added ChoiceGroup.Custom.Examples.Style for Custom Example",
+      "type": "patch"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "pandasa123@gmail.com"
+}
