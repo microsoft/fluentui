@@ -1,4 +1,3 @@
-// import { classNamesFunction } from 'office-ui-fabric-react';
 import { FontSizes, FontWeights, DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 import { IStyle } from '@uifabric/styling';
 
