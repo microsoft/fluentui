@@ -390,7 +390,7 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
         },
       hasIcon && {
         paddingRight: 24,
-        paddingBottom: 9
+        paddingBottom: 8
       },
       multiline &&
         hasIcon && {
@@ -440,7 +440,7 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
       {
         pointerEvents: 'none',
         position: 'absolute',
-        bottom: 5,
+        bottom: 7,
         right: 8,
         top: 'auto',
         fontSize: IconFontSizes.medium,
