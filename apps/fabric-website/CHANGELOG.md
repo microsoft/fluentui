@@ -1,7 +1,13 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Wed, 30 Oct 2019 19:36:52 GMT and should not be manually modified.
+This log was last generated on Fri, 01 Nov 2019 12:25:57 GMT and should not be manually modified.
 
+## 7.6.0
+Fri, 01 Nov 2019 12:25:57 GMT
+
+### Minor changes
+
+- Adds the SharePoint Figma toolkit to the Resources page of the website (pejahn@microsoft.com)
 ## 7.5.8
 Wed, 30 Oct 2019 19:36:52 GMT
 

@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Adds the SharePoint Figma toolkit to the Resources page of the website",
-  "packageName": "@uifabric/fabric-website",
-  "email": "pejahn@microsoft.com",
-  "commit": "d2839f8cc09e37329c56e30399b5c046c9002f80",
-  "date": "2019-10-31T18:45:25.981Z"
-}
