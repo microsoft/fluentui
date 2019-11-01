@@ -114,7 +114,12 @@ exports[`Component Examples renders ChoiceGroup.Custom.Example.tsx correctly 1`]
               type="radio"
             />
             <div
-              className=""
+              className=
+
+                  {
+                    align-items: baseline;
+                    display: flex;
+                  }
             >
               <label
                 className=
@@ -202,7 +207,10 @@ exports[`Component Examples renders ChoiceGroup.Custom.Example.tsx correctly 1`]
               <div
                 className=
                     ms-Dropdown-container
-
+                    {
+                      margin-bottom: 0px;
+                      margin-left: 5px;
+                    }
               >
                 <div
                   aria-describedby="Dropdown2-option"
