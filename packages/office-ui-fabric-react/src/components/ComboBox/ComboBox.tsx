@@ -819,8 +819,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     if (
       option.itemType === SelectableOptionMenuItemType.Header ||
       option.itemType === SelectableOptionMenuItemType.Divider ||
-      option.hidden === true ||
-      option.disabled === true
+      option.hidden === true
     ) {
       // Should we continue looking for an index to select?
       if (
