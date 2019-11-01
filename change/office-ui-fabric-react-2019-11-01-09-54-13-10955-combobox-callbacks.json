@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "ComboBox: onPendingValueChanged callback before onChange",
+  "packageName": "office-ui-fabric-react",
+  "email": "jdh@microsoft.com",
+  "commit": "cb7a98c85dbbff98050d92c3edb6b03530a50782",
+  "date": "2019-11-01T16:54:13.919Z"
+}
