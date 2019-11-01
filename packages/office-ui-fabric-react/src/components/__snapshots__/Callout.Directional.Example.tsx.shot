@@ -5,7 +5,12 @@ exports[`Component Examples renders Callout.Directional.Example.tsx correctly 1`
   className="ms-CalloutExample"
 >
   <div
-    className="ms-CalloutExample-configArea"
+    className=
+
+        {
+          display: inline-block;
+          min-width: 300px;
+        }
   >
     <div
       className=
@@ -67,7 +72,7 @@ exports[`Component Examples renders Callout.Directional.Example.tsx correctly 1`
             @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
               outline: 1px solid ActiveBorder;
             }
-        id="checkbox-0"
+        id="checkbox-1"
         onBlur={[Function]}
         onChange={[Function]}
         onFocus={[Function]}
@@ -98,7 +103,7 @@ exports[`Component Examples renders Callout.Directional.Example.tsx correctly 1`
               right: 0px;
               top: 0px;
             }
-        htmlFor="checkbox-0"
+        htmlFor="checkbox-1"
       >
         <div
           className=
@@ -203,7 +208,7 @@ exports[`Component Examples renders Callout.Directional.Example.tsx correctly 1`
               padding-top: 0px;
               word-wrap: break-word;
             }
-        htmlFor="Slider1"
+        htmlFor="Slider2"
       >
         Gap Space
       </label>
@@ -320,7 +325,7 @@ exports[`Component Examples renders Callout.Directional.Example.tsx correctly 1`
                 width: 16px;
               }
           data-is-focusable={true}
-          id="Slider1"
+          id="Slider2"
           onKeyDown={[Function]}
           onMouseDown={[Function]}
           onTouchStart={[Function]}
@@ -460,7 +465,7 @@ exports[`Component Examples renders Callout.Directional.Example.tsx correctly 1`
               padding-top: 0px;
               word-wrap: break-word;
             }
-        htmlFor="Slider2"
+        htmlFor="Slider3"
       >
         Beak Width
       </label>
@@ -577,7 +582,7 @@ exports[`Component Examples renders Callout.Directional.Example.tsx correctly 1`
                 width: 16px;
               }
           data-is-focusable={true}
-          id="Slider2"
+          id="Slider3"
           onKeyDown={[Function]}
           onMouseDown={[Function]}
           onTouchStart={[Function]}
@@ -709,15 +714,15 @@ exports[`Component Examples renders Callout.Directional.Example.tsx correctly 1`
               padding-top: 5px;
               word-wrap: break-word;
             }
-        htmlFor="Dropdown3"
-        id="Dropdown3-label"
+        htmlFor="Dropdown4"
+        id="Dropdown4-label"
       >
         Directional hint
       </label>
       <div
-        aria-describedby="Dropdown3-option"
+        aria-describedby="Dropdown4-option"
         aria-expanded="false"
-        aria-labelledby="Dropdown3-label"
+        aria-labelledby="Dropdown4-label"
         className=
             ms-Dropdown
             {
@@ -805,7 +810,7 @@ exports[`Component Examples renders Callout.Directional.Example.tsx correctly 1`
               border-color: #a4262c;
             }
         data-is-focusable={true}
-        id="Dropdown3"
+        id="Dropdown4"
         onBlur={[Function]}
         onChange={[Function]}
         onClick={[Function]}
@@ -849,7 +854,7 @@ exports[`Component Examples renders Callout.Directional.Example.tsx correctly 1`
                 text-overflow: ellipsis;
                 white-space: nowrap;
               }
-          id="Dropdown3-option"
+          id="Dropdown4-option"
           role="option"
         >
           <span>
@@ -894,13 +899,24 @@ exports[`Component Examples renders Callout.Directional.Example.tsx correctly 1`
     </div>
   </div>
   <div
-    className="ms-CalloutExample-buttonArea"
+    className=
+
+        {
+          display: inline-block;
+          height: 32px;
+          margin-bottom: 0;
+          margin-left: 100px;
+          margin-right: 100px;
+          margin-top: 0;
+          min-width: 130px;
+          text-align: center;
+          vertical-align: top;
+        }
   >
     <button
       className=
           ms-Button
           ms-Button--default
-          calloutExampleButton
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
@@ -926,6 +942,7 @@ exports[`Component Examples renders Callout.Directional.Example.tsx correctly 1`
             text-decoration: none;
             user-select: none;
             vertical-align: top;
+            width: 100%;
           }
           &::-moz-focus-inner {
             border: 0;
@@ -1004,7 +1021,7 @@ exports[`Component Examples renders Callout.Directional.Example.tsx correctly 1`
                   margin-right: 4px;
                   margin-top: 0;
                 }
-            id="id__4"
+            id="id__5"
           >
             Show callout
           </div>

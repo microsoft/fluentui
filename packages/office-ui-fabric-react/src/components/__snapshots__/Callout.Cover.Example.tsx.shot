@@ -5,7 +5,12 @@ exports[`Component Examples renders Callout.Cover.Example.tsx correctly 1`] = `
   className="ms-CalloutExample"
 >
   <div
-    className="ms-CalloutExample-configArea"
+    className=
+
+        {
+          display: inline-block;
+          min-width: 300px;
+        }
   >
     <div
       className=
@@ -37,15 +42,15 @@ exports[`Component Examples renders Callout.Cover.Example.tsx correctly 1`] = `
               padding-top: 5px;
               word-wrap: break-word;
             }
-        htmlFor="Dropdown0"
-        id="Dropdown0-label"
+        htmlFor="Dropdown1"
+        id="Dropdown1-label"
       >
         Directional hint
       </label>
       <div
-        aria-describedby="Dropdown0-option"
+        aria-describedby="Dropdown1-option"
         aria-expanded="false"
-        aria-labelledby="Dropdown0-label"
+        aria-labelledby="Dropdown1-label"
         className=
             ms-Dropdown
             {
@@ -133,7 +138,7 @@ exports[`Component Examples renders Callout.Cover.Example.tsx correctly 1`] = `
               border-color: #a4262c;
             }
         data-is-focusable={true}
-        id="Dropdown0"
+        id="Dropdown1"
         onBlur={[Function]}
         onChange={[Function]}
         onClick={[Function]}
@@ -177,7 +182,7 @@ exports[`Component Examples renders Callout.Cover.Example.tsx correctly 1`] = `
                 text-overflow: ellipsis;
                 white-space: nowrap;
               }
-          id="Dropdown0-option"
+          id="Dropdown1-option"
           role="option"
         >
           <span>
@@ -222,7 +227,18 @@ exports[`Component Examples renders Callout.Cover.Example.tsx correctly 1`] = `
     </div>
   </div>
   <div
-    className="ms-CalloutCoverExample-buttonArea"
+    className=
+
+        {
+          display: inline-block;
+          margin-bottom: 0;
+          margin-left: 100px;
+          margin-right: 100px;
+          margin-top: 0;
+          min-width: 130px;
+          text-align: center;
+          vertical-align: top;
+        }
   >
     <button
       className=
@@ -331,7 +347,7 @@ exports[`Component Examples renders Callout.Cover.Example.tsx correctly 1`] = `
                   margin-right: 4px;
                   margin-top: 0;
                 }
-            id="id__1"
+            id="id__2"
           >
             Show callout
           </div>
