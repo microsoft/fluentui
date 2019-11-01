@@ -199,7 +199,7 @@ export function _getNewColor(ev: React.MouseEvent, prevColor: IColor, root: HTML
 
   return updateSV(
     prevColor,
-    clamp(sPercentage * MAX_COLOR_SATURATION, MAX_COLOR_SATURATION),
-    clamp(MAX_COLOR_VALUE - vPercentage * MAX_COLOR_VALUE, MAX_COLOR_VALUE)
+    clamp(Math.round(sPercentage * MAX_COLOR_SATURATION), MAX_COLOR_SATURATION),
+    clamp(Math.round(MAX_COLOR_VALUE - vPercentage * MAX_COLOR_VALUE), MAX_COLOR_VALUE)
   );
 }

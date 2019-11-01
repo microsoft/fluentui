@@ -145,7 +145,7 @@ export class ColorSliderBase extends React.Component<IColorSliderProps, IColorSl
     const rectSize = this._root.current.getBoundingClientRect();
 
     const currentPercentage = (ev.clientX - rectSize.left) / rectSize.width;
-    const newValue = Math.min(maxValue!, Math.max(minValue!, currentPercentage * maxValue!));
+    const newValue = clamp(Math.round(currentPercentage * maxValue!), maxValue!, minValue!);
 
     this._updateValue(ev, newValue);
   };
