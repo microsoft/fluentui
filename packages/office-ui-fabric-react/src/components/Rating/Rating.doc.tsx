@@ -7,6 +7,7 @@ import { RatingButtonControlledExample } from './examples/Rating.ButtonControlle
 const RatingBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Rating/examples/Rating.Basic.Example.tsx') as string;
 const RatingBasicExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/Rating/examples/Rating.Basic.Example.tsx') as string;
 const RatingButtonControlledExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Rating/examples/Rating.ButtonControlled.Example.tsx') as string;
+const RatingButtonControlledExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/Rating/examples/Rating.ButtonControlled.Example.tsx') as string;
 
 export const RatingPageProps: IDocPageProps = {
   title: 'Rating',
@@ -22,6 +23,7 @@ export const RatingPageProps: IDocPageProps = {
     {
       title: 'Button Controlled Rating',
       code: RatingButtonControlledExampleCode,
+      codepenJS: RatingButtonControlledExampleCodepen,
       view: <RatingButtonControlledExample />
     }
   ],
