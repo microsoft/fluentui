@@ -2,7 +2,6 @@ import * as React from 'react';
 import { Modal, IDragOptions } from 'office-ui-fabric-react/lib/Modal';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { css, classNamesFunction, getId } from 'office-ui-fabric-react/lib/Utilities';
-// import * as styles from './Modal.Example.scss';
 import { modalExampleStyle, IModalExampleStyles } from './Modal.Example.Styles';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import { ContextualMenu } from 'office-ui-fabric-react/lib/ContextualMenu';
