@@ -1,13 +1,29 @@
 import * as React from 'react';
+<<<<<<< HEAD:packages/office-ui-fabric-react/src/components/Callout/examples/Callout.FocusTrap.Example.tsx
 import { DefaultButton, FocusTrapCallout, Stack, getId, FocusZone, PrimaryButton } from 'office-ui-fabric-react';
 import './CalloutExample.scss';
+=======
+import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
+import { Callout } from 'office-ui-fabric-react/lib/Callout';
+import { CommandBar, ICommandBarItemProps } from 'office-ui-fabric-react/lib/CommandBar';
+import { getId, classNamesFunction, css } from 'office-ui-fabric-react/lib/Utilities';
+import { calloutExampleStyle, ICalloutExampleStyle } from './Callout.Examples.Styles';
+>>>>>>> Updated Nested Example as well:packages/office-ui-fabric-react/src/components/Callout/examples/Callout.Nested.Example.tsx
 
 export interface ICalloutFocusTrapExampleState {
   isCalloutVisible: boolean;
 }
 
+<<<<<<< HEAD:packages/office-ui-fabric-react/src/components/Callout/examples/Callout.FocusTrap.Example.tsx
 export class CalloutFocusTrapExample extends React.Component<{}, ICalloutFocusTrapExampleState> {
   public state: ICalloutFocusTrapExampleState = {
+=======
+const getClassNames = classNamesFunction<{}, ICalloutExampleStyle>();
+const classNames = getClassNames(calloutExampleStyle, {});
+
+export class CalloutNestedExample extends React.Component<ICalloutNestedExampleProps, ICalloutNestedExampleState> {
+  public state: ICalloutNestedExampleState = {
+>>>>>>> Updated Nested Example as well:packages/office-ui-fabric-react/src/components/Callout/examples/Callout.Nested.Example.tsx
     isCalloutVisible: false
   };
 
