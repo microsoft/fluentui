@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { DatePicker, DayOfWeek, IDatePickerStrings } from 'office-ui-fabric-react/lib/DatePicker';
-import './DatePicker.Examples.scss';
+import { css, classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
+import { datePickerExampleStyles, IDatePickerExampleStyles } from './DatePicker.Examples.Styles';
 
 const DayPickerStrings: IDatePickerStrings = {
   months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
@@ -29,6 +30,9 @@ export interface IDatePickerInputExampleState {
   value?: Date | null;
 }
 
+const getClassNames = classNamesFunction<{}, IDatePickerExampleStyles>();
+const classnames = getClassNames(datePickerExampleStyles, {});
+
 export class DatePickerInputExample extends React.Component<{}, IDatePickerInputExampleState> {
   constructor(props: {}) {
     super(props);
@@ -49,6 +53,7 @@ export class DatePickerInputExample extends React.Component<{}, IDatePickerInput
           again will dismiss the DatePicker and allow text input.
         </p>
         <DatePicker
+          className={css(classnames.msDatePicker)}
           label="Start date"
           isRequired={false}
           allowTextInput={true}
