@@ -12,7 +12,9 @@ const ChoiceGroupBasicExampleCodepen = require('!@uifabric/codepen-loader!office
 const ChoiceGroupLabelExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ChoiceGroup/examples/ChoiceGroup.Label.Example.tsx') as string;
 const ChoiceGroupLabelExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/ChoiceGroup/examples/ChoiceGroup.Label.Example.tsx') as string;
 const ChoiceGroupCustomExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ChoiceGroup/examples/ChoiceGroup.Custom.Example.tsx') as string;
+const ChoiceGroupCustomExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/ChoiceGroup/examples/ChoiceGroup.Custom.Example.tsx') as string;
 const ChoiceGroupImageExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ChoiceGroup/examples/ChoiceGroup.Image.Example.tsx') as string;
+const ChoiceGroupImageExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/ChoiceGroup/examples/ChoiceGroup.Image.Example.tsx') as string;
 const ChoiceGroupIconExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ChoiceGroup/examples/ChoiceGroup.Icon.Example.tsx') as string;
 const ChoiceGroupIconExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/ChoiceGroup/examples/ChoiceGroup.Icon.Example.tsx') as string;
 
@@ -37,11 +39,13 @@ export const ChoiceGroupPageProps: IDocPageProps = {
     {
       title: 'ChoiceGroup with dropdown',
       code: ChoiceGroupCustomExampleCode,
+      codepenJS: ChoiceGroupCustomExampleCodepen,
       view: <ChoiceGroupCustomExample />
     },
     {
       title: 'ChoiceGroups with images',
       code: ChoiceGroupImageExampleCode,
+      codepenJS: ChoiceGroupImageExampleCodepen,
       view: <ChoiceGroupImageExample />
     },
     {
