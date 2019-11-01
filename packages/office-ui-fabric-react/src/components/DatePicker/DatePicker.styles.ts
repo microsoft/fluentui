@@ -10,7 +10,7 @@ const GlobalClassNames = {
 };
 
 export const styles = (props: IDatePickerStyleProps): IDatePickerStyles => {
-  const { className, theme, disabled, isDatePickerShown } = props;
+  const { className, theme, disabled, label, isDatePickerShown } = props;
   const { palette, semanticColors, effects, fonts } = theme;
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
@@ -53,7 +53,8 @@ export const styles = (props: IDatePickerStyleProps): IDatePickerStyles => {
     callout: [classNames.callout, { boxShadow: effects.elevation8 }],
     icon: [
       DatePickerIcon,
-      { paddingTop: '7px' },
+      !label && [classNames.withoutLabel, { paddingTop: '7px' }],
+      label && [classNames.withLabel, { paddingTop: '8px' }],
       !disabled && [
         classNames.disabled,
         {

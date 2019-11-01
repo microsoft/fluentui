@@ -194,6 +194,7 @@ Fri, 06 Jan 2017 04:41:20 GMT-Fri, 06 Jan 2017 04:41:20 GMT
             <i
               aria-hidden={true}
               className=
+                  ms-DatePicker-event--without-label
                   msDatePickerDisabled
                   {
                     -moz-osx-font-smoothing: grayscale;
