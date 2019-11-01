@@ -4,7 +4,8 @@ import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
 import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import { Slider } from 'office-ui-fabric-react/lib/Slider';
-import './CalloutExample.scss';
+import { getId, classNamesFunction, css } from 'office-ui-fabric-react/lib/Utilities';
+import { calloutExampleStyle, ICalloutExampleStyle } from './Callout.Examples.Styles';
 
 export interface ICalloutDirectionalExampleState {
   isCalloutVisible?: boolean;
@@ -31,8 +32,14 @@ const DIRECTION_OPTIONS = [
   { key: DirectionalHint.rightBottomEdge, text: 'Right Bottom Edge' }
 ];
 
+const getClassNames = classNamesFunction<{}, ICalloutExampleStyle>();
+const classNames = getClassNames(calloutExampleStyle, {});
+
 export class CalloutDirectionalExample extends React.Component<{}, ICalloutDirectionalExampleState> {
   private _menuButtonElement: HTMLElement | null;
+  // Use getId() to ensure that the callout title ID is unique on the page.
+  // (It's also okay to use a plain string without getId() and manually ensure its uniqueness.)
+  private _titleId: string = getId('callout-label');
 
   public constructor(props: {}) {
     super(props);
@@ -50,7 +57,7 @@ export class CalloutDirectionalExample extends React.Component<{}, ICalloutDirec
     //  Large beak will disable some position to avoid beak over the callout edge.
     return (
       <div className="ms-CalloutExample">
-        <div className="ms-CalloutExample-configArea">
+        <div className={css(classNames.msCalloutExampleConfigArea)}>
           <Checkbox styles={{ root: { margin: '10px 0' } }} label="Show beak" checked={isBeakVisible} onChange={this._onShowBeakChange} />
           <Slider max={30} label="Gap Space" min={0} defaultValue={0} onChange={this._onGapSlider} />
           {isBeakVisible && <Slider max={50} label="Beak Width" min={10} defaultValue={16} onChange={this._onBeakWidthSlider} />}
@@ -61,29 +68,32 @@ export class CalloutDirectionalExample extends React.Component<{}, ICalloutDirec
             onChange={this._onDirectionalChanged}
           />
         </div>
-        <div className="ms-CalloutExample-buttonArea" ref={menuButton => (this._menuButtonElement = menuButton)}>
+        <div className={css(classNames.msCalloutExampleButtonArea)} ref={menuButton => (this._menuButtonElement = menuButton)}>
           <DefaultButton
-            className={'calloutExampleButton'}
+            className={css(classNames.msCalloutExampleButton)}
             onClick={this._onShowMenuClicked}
             text={isCalloutVisible ? 'Hide callout' : 'Show callout'}
           />
         </div>
         {isCalloutVisible ? (
           <Callout
-            className="ms-CalloutExample-callout"
+            className={css(classNames.msCalloutExampleCallout)}
             gapSpace={gapSpace}
             target={this._menuButtonElement}
             isBeakVisible={isBeakVisible}
             beakWidth={beakWidth}
             onDismiss={this._onCalloutDismiss}
             directionalHint={directionalHint}
+            ariaLabelledBy={this._titleId}
           >
-            <div className="ms-CalloutExample-header">
-              <p className="ms-CalloutExample-title">All of your favorite people</p>
+            <div className={css(classNames.msCalloutExampleHeader)}>
+              <p className={css(classNames.msCalloutExampleTitle)} id={this._titleId}>
+                All of your favorite people
+              </p>
             </div>
-            <div className="ms-CalloutExample-inner">
+            <div className={css(classNames.msCalloutExampleInner)}>
               <div className="ms-CalloutExample-content">
-                <p className="ms-CalloutExample-subText">
+                <p className={css(classNames.msCalloutExampleSubText)}>
                   Message body is optional. If help documentation is available, consider adding a link to learn more at the bottom.
                 </p>
               </div>
