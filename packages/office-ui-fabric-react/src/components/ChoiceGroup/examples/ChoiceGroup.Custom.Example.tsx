@@ -1,10 +1,12 @@
 import * as React from 'react';
 import { ChoiceGroup } from 'office-ui-fabric-react/lib/ChoiceGroup';
-import { css } from 'office-ui-fabric-react/lib/Utilities';
+import { css, classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { Dropdown } from 'office-ui-fabric-react/lib/Dropdown';
 
-import * as stylesImport from './ChoiceGroup.Custom.Example.scss';
-const styles: any = stylesImport;
+import { choiceGroupCustomExampleStyle, IChoiceGroupCustomExampleStyles } from './ChoiceGroup.Custom.Example.Styles';
+
+const getClassNames = classNamesFunction<{}, IChoiceGroupCustomExampleStyles>();
+const styles = getClassNames(choiceGroupCustomExampleStyle, {});
 
 export class ChoiceGroupCustomExample extends React.Component {
   public render() {
