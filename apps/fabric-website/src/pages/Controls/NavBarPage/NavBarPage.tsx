@@ -8,14 +8,7 @@ const baseUrl = 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master
 
 export const NavBarPage: React.StatelessComponent<IControlsPageProps> = props => {
   const { platform } = props;
-  return (
-    <ControlsAreaPage
-      {...props}
-      title="Navigation Bar"
-      {...NavBarPageProps[platform]}
-      otherSections={_otherSections(platform) as IPageSectionProps[]}
-    />
-  );
+  return <ControlsAreaPage {...props} {...NavBarPageProps[platform]} otherSections={_otherSections(platform) as IPageSectionProps[]} />;
 };
 
 function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
@@ -26,6 +19,14 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
           sectionName: 'Implementation',
           editUrl: baseUrl + 'docs/ios/NavBarImplementation.md',
           content: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/NavBarPage/docs/ios/NavBarImplementation.md') as string
+        }
+      ];
+    case 'android':
+      return [
+        {
+          sectionName: 'Implementation',
+          editUrl: baseUrl + 'docs/android/NavBarImplementation.md',
+          content: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/NavBarPage/docs/android/NavBarImplementation.md') as string
         }
       ];
   }

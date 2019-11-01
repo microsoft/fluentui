@@ -1,0 +1,45 @@
+pr: none
+
+trigger: none
+
+pool:
+  vmImage: 'Ubuntu 16.04'
+
+steps:
+  - task: NodeTool@0
+    displayName: 'Use Node 10.x'
+    inputs:
+      versionSpec: 10.x
+
+  - script: |
+      node -e "if('$(targetNpmVersion)' === '') throw new Error('targetNpmVersion is not specified');"
+    displayName: 'Checking for targetNpmVersion variable'
+
+  - script: |
+      npm install semver
+      node -e "let semver = require('semver');if(semver.valid('$(targetNpmVersion)') === null){ throw new Error('Invalid version specified'); }"
+    displayName: 'Check targetNpmVersion is valid semver'
+
+  - script: |
+      yarn
+    displayName: yarn
+
+  - script: |
+      npm version $(targetNpmVersion)
+    workingDirectory: 'packages/office-ui-fabric-react'
+    displayName: 'Manually set fabric version'
+
+  - script: |
+      yarn buildto office-ui-fabric-react --production
+    displayName: yarn build to OUFR (Create production build)
+
+  - script: |
+      npm pack
+    displayName: 'Create tarball'
+    workingDirectory: 'packages/office-ui-fabric-react'
+
+  - task: PublishBuildArtifacts@1
+    displayName: 'Publish Artifact: oufr'
+    inputs:
+      PathtoPublish: 'packages/office-ui-fabric-react/office-ui-fabric-react-$(targetNpmVersion).tgz'
+      ArtifactName: oufr

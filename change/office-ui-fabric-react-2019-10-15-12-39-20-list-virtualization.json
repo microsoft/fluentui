@@ -1,9 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Fix virtualization state tracking in List and DetailsList",
-  "packageName": "office-ui-fabric-react",
-  "email": "tmichon@microsoft.com",
-  "commit": "09a835928992fa37838f347cec2d16f97d4fe037",
-  "date": "2019-10-15T19:39:20.931Z",
-  "file": "D:\\Src\\Git\\OfficeDev\\office-ui-fabric-react-1\\change\\office-ui-fabric-react-2019-10-15-12-39-20-list-virtualization.json"
-}

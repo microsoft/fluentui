@@ -1,9 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Get rid of DetailsList example snapshot churn",
-  "packageName": "office-ui-fabric-react",
-  "email": "elcraig@microsoft.com",
-  "commit": "56290ba7e48a4aab330b6fe65321936d7aa6f99e",
-  "date": "2019-10-18T00:10:25.128Z",
-  "file": "/Users/elizabeth/git/fabric-react3/change/office-ui-fabric-react-2019-10-17-17-10-25-details-snapshots.json"
-}

@@ -1,5 +1,5 @@
 import { getWindow, isIE11 } from 'office-ui-fabric-react/lib/Utilities';
-import { getMonacoConfig } from '@uifabric/monaco-editor/lib/configureEnvironment';
+import { isConfigAvailable } from '@uifabric/monaco-editor/lib/configureEnvironment';
 import { isExampleValid } from '../transpiler/exampleParser';
 import { getSetting } from './settings';
 import { IBasicPackageGroup } from '../interfaces/packageGroup';
@@ -10,7 +10,7 @@ export function isEditorSupported(code: string, supportedPackages: IBasicPackage
     // Not server-side rendering
     !!win &&
     // Required environment config available
-    !!getMonacoConfig() &&
+    !!isConfigAvailable() &&
     // Opt-out query param or session storage is not set
     getSetting('useEditor') !== '0' &&
     // Not IE 11

@@ -265,6 +265,7 @@ export interface IRawStyleBase extends IRawFontStyle {
     mixBlendMode?: ICSSRule | IMixBlendModes;
     MozOsxFontSmoothing?: 'none' | 'antialiased' | 'grayscale' | 'subpixel-antialiased';
     MsHighContrastAdjust?: ICSSRule | string;
+    MsOverflowStyle?: 'auto' | 'none' | 'scrollbar' | '-ms-autohiding-scrollbar';
     objectFit?: ICSSRule | 'cover' | 'contain' | 'fill' | 'none';
     opacity?: ICSSRule | number | string;
     order?: ICSSRule | number;
