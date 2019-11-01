@@ -1,0 +1,19 @@
+{
+  "name": "@uifabric/react-hooks",
+  "entries": [
+    {
+      "date": "Mon, 16 Sep 2019 12:34:47 GMT",
+      "tag": "@uifabric/react-hooks_v7.0.1",
+      "version": "7.0.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add hooks package",
+            "author": "elcraig@microsoft.com",
+            "commit": "c7a6e4ebaa063a7516e1ffb53ee1c12166df9258"
+          }
+        ]
+      }
+    }
+  ]
+}

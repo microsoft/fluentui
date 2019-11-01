@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { createListItems, IExampleItem } from 'office-ui-fabric-react/lib/utilities/exampleData';
+import { createListItems, IExampleItem } from '@uifabric/example-data';
 import { Link } from 'office-ui-fabric-react/lib/Link';
 import { Image, ImageFit } from 'office-ui-fabric-react/lib/Image';
 import { DetailsList, buildColumns, IColumn } from 'office-ui-fabric-react/lib/DetailsList';
@@ -35,6 +35,7 @@ export class DetailsListCustomColumnsExample extends React.Component<{}, IDetail
         onColumnHeaderContextMenu={this._onColumnHeaderContextMenu}
         ariaLabelForSelectionColumn="Toggle selection"
         ariaLabelForSelectAllCheckbox="Toggle selection for all items"
+        checkButtonAriaLabel="Row checkbox"
       />
     );
   }

@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { Stack } from '../Stack';
-import { IStackStyles, IStackTokens } from '../Stack.types';
+import { Stack, IStackStyles, IStackTokens } from 'office-ui-fabric-react/lib/Stack';
 import { mergeStyles, DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 
 // Styles definition
@@ -51,77 +50,75 @@ const themedExtraLargeStackTokens: IStackTokens = {
   padding: 'l2'
 };
 
-export class VerticalStackSpacingExample extends React.Component<{}, {}> {
-  public render(): JSX.Element {
-    return (
-      <Stack tokens={sectionStackTokens}>
-        <Stack horizontal disableShrink tokens={headingStackTokens}>
-          <Stack>
-            <span>Numerical spacing</span>
-            <Stack styles={stackStyles} tokens={numericalSpacingStackTokens}>
-              <span className={stackItemStyles}>1</span>
-              <span className={stackItemStyles}>2</span>
-              <span className={stackItemStyles}>3</span>
-            </Stack>
-          </Stack>
-
-          <Stack>
-            <span>Custom spacing</span>
-            <Stack styles={stackStyles} tokens={customSpacingStackTokens}>
-              <span className={stackItemStyles}>1</span>
-              <span className={stackItemStyles}>2</span>
-              <span className={stackItemStyles}>3</span>
-            </Stack>
+export const VerticalStackSpacingExample: React.FunctionComponent = () => {
+  return (
+    <Stack tokens={sectionStackTokens}>
+      <Stack horizontal disableShrink tokens={headingStackTokens}>
+        <Stack>
+          <span>Numerical spacing</span>
+          <Stack styles={stackStyles} tokens={numericalSpacingStackTokens}>
+            <span className={stackItemStyles}>1</span>
+            <span className={stackItemStyles}>2</span>
+            <span className={stackItemStyles}>3</span>
           </Stack>
         </Stack>
 
-        <Stack horizontal disableShrink horizontalAlign="space-between">
-          <Stack>
-            <span>Themed spacing (extra small)</span>
-            <Stack styles={stackStyles} tokens={themedExtraSmallStackTokens}>
-              <span className={stackItemStyles}>1</span>
-              <span className={stackItemStyles}>2</span>
-              <span className={stackItemStyles}>3</span>
-            </Stack>
-          </Stack>
-
-          <Stack>
-            <span>Themed spacing (small)</span>
-            <Stack styles={stackStyles} tokens={themedSmallStackTokens}>
-              <span className={stackItemStyles}>1</span>
-              <span className={stackItemStyles}>2</span>
-              <span className={stackItemStyles}>3</span>
-            </Stack>
-          </Stack>
-
-          <Stack>
-            <span>Themed spacing (medium)</span>
-            <Stack styles={stackStyles} tokens={themedMediumStackTokens}>
-              <span className={stackItemStyles}>1</span>
-              <span className={stackItemStyles}>2</span>
-              <span className={stackItemStyles}>3</span>
-            </Stack>
-          </Stack>
-
-          <Stack>
-            <span>Themed spacing (large)</span>
-            <Stack styles={stackStyles} tokens={themedLargeStackTokens}>
-              <span className={stackItemStyles}>1</span>
-              <span className={stackItemStyles}>2</span>
-              <span className={stackItemStyles}>3</span>
-            </Stack>
-          </Stack>
-
-          <Stack>
-            <span>Themed spacing (extra large)</span>
-            <Stack styles={stackStyles} tokens={themedExtraLargeStackTokens}>
-              <span className={stackItemStyles}>1</span>
-              <span className={stackItemStyles}>2</span>
-              <span className={stackItemStyles}>3</span>
-            </Stack>
+        <Stack>
+          <span>Custom spacing</span>
+          <Stack styles={stackStyles} tokens={customSpacingStackTokens}>
+            <span className={stackItemStyles}>1</span>
+            <span className={stackItemStyles}>2</span>
+            <span className={stackItemStyles}>3</span>
           </Stack>
         </Stack>
       </Stack>
-    );
-  }
-}
+
+      <Stack horizontal disableShrink horizontalAlign="space-between">
+        <Stack>
+          <span>Themed spacing (extra small)</span>
+          <Stack styles={stackStyles} tokens={themedExtraSmallStackTokens}>
+            <span className={stackItemStyles}>1</span>
+            <span className={stackItemStyles}>2</span>
+            <span className={stackItemStyles}>3</span>
+          </Stack>
+        </Stack>
+
+        <Stack>
+          <span>Themed spacing (small)</span>
+          <Stack styles={stackStyles} tokens={themedSmallStackTokens}>
+            <span className={stackItemStyles}>1</span>
+            <span className={stackItemStyles}>2</span>
+            <span className={stackItemStyles}>3</span>
+          </Stack>
+        </Stack>
+
+        <Stack>
+          <span>Themed spacing (medium)</span>
+          <Stack styles={stackStyles} tokens={themedMediumStackTokens}>
+            <span className={stackItemStyles}>1</span>
+            <span className={stackItemStyles}>2</span>
+            <span className={stackItemStyles}>3</span>
+          </Stack>
+        </Stack>
+
+        <Stack>
+          <span>Themed spacing (large)</span>
+          <Stack styles={stackStyles} tokens={themedLargeStackTokens}>
+            <span className={stackItemStyles}>1</span>
+            <span className={stackItemStyles}>2</span>
+            <span className={stackItemStyles}>3</span>
+          </Stack>
+        </Stack>
+
+        <Stack>
+          <span>Themed spacing (extra large)</span>
+          <Stack styles={stackStyles} tokens={themedExtraLargeStackTokens}>
+            <span className={stackItemStyles}>1</span>
+            <span className={stackItemStyles}>2</span>
+            <span className={stackItemStyles}>3</span>
+          </Stack>
+        </Stack>
+      </Stack>
+    </Stack>
+  );
+};

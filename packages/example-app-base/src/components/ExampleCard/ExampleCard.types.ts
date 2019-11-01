@@ -19,7 +19,11 @@ export interface IExampleCardProps {
   donts?: JSX.Element;
   /** Whether the example is scrollable */
   isScrollable?: boolean;
-  /** JS string used in the example card's "Export to CodePen" button */
+  /**
+   * JS string used for the example card's "Export to CodePen" button.
+   * @deprecated Determining if export to codepen is supported and transforming the example
+   * are now handled automatically at runtime.
+   */
   codepenJS?: string;
 
   /** Theme provided by higher-order component. */
@@ -27,6 +31,12 @@ export interface IExampleCardProps {
 
   /** Optional override styles */
   styles?: IStyleFunctionOrObject<IExampleCardStyleProps, IExampleCardStyles>;
+
+  /** On click handler to ensure only one code editor instance is shown at once */
+  onToggleEditor?: (card: string) => void;
+
+  /** Whether code example is visible */
+  isCodeVisible?: boolean;
 }
 
 export type IExampleCardStyleProps = Pick<IExampleCardProps, 'isRightAligned' | 'isScrollable' | 'theme'> & {

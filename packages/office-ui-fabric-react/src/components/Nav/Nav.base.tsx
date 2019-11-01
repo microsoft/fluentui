@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { ActionButton } from '../../Button';
 import { buttonStyles } from './Nav.styles';
-import { classNamesFunction, divProperties, getNativeProps, getWindow } from '../../Utilities';
-import { FocusZone, FocusZoneDirection } from '../../FocusZone';
+import { classNamesFunction, divProperties, getNativeProps, getWindow, initializeComponentRef } from '../../Utilities';
+import { FocusZone, FocusZoneDirection, IFocusZone } from '../../FocusZone';
 import { Icon } from '../../Icon';
 import { INav, INavLink, INavLinkGroup, INavProps, INavStyleProps, INavStyles } from './Nav.types';
 
@@ -33,9 +33,10 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
     groups: null
   };
 
+  private _focusZone = React.createRef<IFocusZone>();
   constructor(props: INavProps) {
     super(props);
-
+    initializeComponentRef(this);
     this.state = {
       isGroupCollapsed: {},
       isLinkExpandStateChanged: false,
@@ -55,7 +56,7 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
     const classNames = getClassNames(styles!, { theme: theme!, className, isOnTop, groups });
 
     return (
-      <FocusZone direction={FocusZoneDirection.vertical}>
+      <FocusZone direction={FocusZoneDirection.vertical} componentRef={this._focusZone}>
         <nav role="navigation" className={classNames.root} aria-label={this.props.ariaLabel}>
           {groupElements}
         </nav>
@@ -67,6 +68,19 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
     return this.state.selectedKey;
   }
 
+  /**
+   * Sets focus to the first tabbable item in the zone.
+   * @param forceIntoFirstElement - If true, focus will be forced into the first element, even
+   * if focus is already in the focus zone.
+   * @returns True if focus could be set to an active element, false if no operation was taken.
+   */
+  public focus(forceIntoFirstElement: boolean = false): boolean {
+    if (this._focusZone && this._focusZone.current) {
+      return this._focusZone.current.focus(forceIntoFirstElement);
+    }
+    return false;
+  }
+
   private _onRenderLink = (link: INavLink): JSX.Element => {
     const { styles, groups, theme } = this.props;
     const classNames = getClassNames(styles!, { theme: theme!, groups });
@@ -74,11 +88,12 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
   };
 
   private _renderNavLink(link: INavLink, linkIndex: number, nestingLevel: number): JSX.Element {
-    const { styles, groups, theme, onRenderLink = this._onRenderLink, linkAs: LinkAs = ActionButton } = this.props;
+    const { styles, groups, theme, onRenderLink = this._onRenderLink, linkAs: LinkAs = ActionButton, selectedAriaLabel } = this.props;
     const isLinkWithIcon = link.icon || link.iconProps;
+    const isSelectedLink = this._isLinkSelected(link);
     const classNames = getClassNames(styles!, {
       theme: theme!,
-      isSelected: this._isLinkSelected(link),
+      isSelected: isSelectedLink,
       isDisabled: link.disabled,
       isButtonEntry: link.onClick && !link.forceAnchor,
       leftPadding: _indentationSize * nestingLevel + _baseIndent + (isLinkWithIcon ? 0 : 24),
@@ -87,19 +102,28 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
 
     // Prevent hijacking of the parent window if link.target is defined
     const rel = link.url && link.target && !isRelativeUrl(link.url) ? 'noopener noreferrer' : undefined;
+    const selectedStateAriaLabel = isSelectedLink && selectedAriaLabel ? selectedAriaLabel : undefined;
 
     return (
       <LinkAs
         className={classNames.link}
         styles={buttonStyles}
-        href={link.url || (link.forceAnchor ? 'javascript:' : undefined)}
+        href={link.url || (link.forceAnchor ? '#' : undefined)}
         iconProps={link.iconProps || { iconName: link.icon }}
         onClick={link.onClick ? this._onNavButtonLinkClicked.bind(this, link) : this._onNavAnchorLinkClicked.bind(this, link)}
         title={link.title || link.name}
         target={link.target}
         rel={rel}
         disabled={link.disabled}
-        aria-label={link.ariaLabel}
+        aria-label={
+          link.ariaLabel && selectedStateAriaLabel
+            ? `${link.ariaLabel} ${selectedStateAriaLabel}`
+            : selectedStateAriaLabel
+            ? selectedStateAriaLabel
+            : link.ariaLabel
+            ? link.ariaLabel
+            : undefined
+        }
       >
         {onRenderLink(link, this._onRenderLink)}
       </LinkAs>
@@ -119,7 +143,15 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
       groups
     });
 
-    const finalExpandBtnAriaLabel = expandButtonAriaLabel ? `${link.name} ${expandButtonAriaLabel}` : link.name;
+    let finalExpandBtnAriaLabel = '';
+    if (link.links && link.links.length > 0) {
+      if (link.collapseAriaLabel || link.expandAriaLabel) {
+        finalExpandBtnAriaLabel = link.isExpanded ? link.collapseAriaLabel! : link.expandAriaLabel!;
+      } else {
+        // TODO remove when `expandButtonAriaLabel` is removed. This is not an ideal concatenation for localization.
+        finalExpandBtnAriaLabel = expandButtonAriaLabel ? `${link.name} ${expandButtonAriaLabel}` : link.name;
+      }
+    }
 
     return (
       <div {...divProps} key={link.key || linkIndex} className={classNames.compositeLink}>
@@ -194,12 +226,15 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
       groups
     });
 
+    const isExpanded = this._isGroupExpanded(group);
+    const label = (isExpanded ? group.collapseAriaLabel : group.expandAriaLabel) || expandButtonAriaLabel;
+
     return (
       <button
         className={classNames.chevronButton}
         onClick={this._onGroupHeaderClicked.bind(this, group)}
-        aria-label={expandButtonAriaLabel}
-        aria-expanded={this._isGroupExpanded(group)}
+        aria-label={label}
+        aria-expanded={isExpanded}
       >
         <Icon className={classNames.chevronIcon} iconName="ChevronDown" />
         {group.name}
@@ -234,7 +269,16 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
     ev.stopPropagation();
   }
 
+  private _preventBounce(link: INavLink, ev: React.MouseEvent<HTMLElement>): void {
+    if (!link.url && link.forceAnchor) {
+      ev.preventDefault();
+    }
+  }
+
   private _onNavAnchorLinkClicked(link: INavLink, ev: React.MouseEvent<HTMLElement>): void {
+    // If the href is "#" we should call preventDefault to prevent scrolling to the top of the page
+    this._preventBounce(link, ev);
+
     if (this.props.onLinkClick) {
       this.props.onLinkClick(ev, link);
     }
@@ -246,6 +290,9 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
   }
 
   private _onNavButtonLinkClicked(link: INavLink, ev: React.MouseEvent<HTMLElement>): void {
+    // If the href is "#" we should call preventDefault to prevent scrolling to the top of the page
+    this._preventBounce(link, ev);
+
     if (link.onClick) {
       link.onClick(ev, link);
     }

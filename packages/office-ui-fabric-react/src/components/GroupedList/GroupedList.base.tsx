@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, classNamesFunction, IClassNames } from '../../Utilities';
+import { initializeComponentRef, classNamesFunction, IClassNames, initializeFocusRects } from '../../Utilities';
 import { IGroupedList, IGroupedListProps, IGroup, IGroupedListStyleProps, IGroupedListStyles } from './GroupedList.types';
 import { GroupedListSection } from './GroupedListSection';
 import { List, ScrollToMode, IListProps } from '../../List';
@@ -18,7 +18,7 @@ export interface IGroupedListState {
   groups?: IGroup[];
 }
 
-export class GroupedListBase extends BaseComponent<IGroupedListProps, IGroupedListState> implements IGroupedList {
+export class GroupedListBase extends React.Component<IGroupedListProps, IGroupedListState> implements IGroupedList {
   public static defaultProps = {
     selectionMode: SelectionMode.multiple,
     isHeaderVisible: true,
@@ -39,6 +39,9 @@ export class GroupedListBase extends BaseComponent<IGroupedListProps, IGroupedLi
   constructor(props: IGroupedListProps) {
     super(props);
 
+    initializeComponentRef(this);
+    initializeFocusRects();
+
     this._isSomeGroupExpanded = this._computeIsSomeGroupExpanded(props.groups);
 
     this.state = {
@@ -57,7 +60,8 @@ export class GroupedListBase extends BaseComponent<IGroupedListProps, IGroupedLi
     return this._list.current!.getStartItemIndexInView() || 0;
   }
 
-  public componentWillReceiveProps(newProps: IGroupedListProps): void {
+  // tslint:disable-next-line function-name
+  public UNSAFE_componentWillReceiveProps(newProps: IGroupedListProps): void {
     const { groups, selectionMode, compact } = this.props;
     let shouldForceUpdates = false;
 

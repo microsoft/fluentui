@@ -1,9 +1,11 @@
 import { mod } from 'riceburn';
 import ts from 'typescript';
-import { migration, IMigrationOptions, ModResult } from '../../migration';
+import { migration, IMigrationOptions } from '../../migration';
+import { ModResult } from 'riceburn/lib/interfaces';
+import { getModificationNote } from '../../util/getMessages';
 
 export default migration(
-  'rename componentWillReceiveProps with UNSAFE_componentWillReceiveProps',
+  getModificationNote('Rename deprecated React lifecycle methods with adding UNSAFE prefix'),
   (opts: IMigrationOptions): ModResult[] => {
     return mod('**/*.ts?(x)', opts).asTypescript((node, modder) => {
       const replacements = {

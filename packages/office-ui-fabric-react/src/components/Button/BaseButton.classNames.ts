@@ -16,6 +16,7 @@ export interface IButtonClassNames {
 
 export const ButtonGlobalClassNames = {
   msButton: 'ms-Button',
+  msButtonHasMenu: 'ms-Button--hasMenu',
   msButtonIcon: 'ms-Button-icon',
   msButtonMenuIcon: 'ms-Button-menuIcon',
   msButtonLabel: 'ms-Button-label',
@@ -34,6 +35,7 @@ export const getBaseButtonClassNames = memoizeFunction(
     iconClassName: string | undefined,
     menuIconClassName: string | undefined,
     disabled: boolean,
+    hasMenu: boolean,
     checked: boolean,
     expanded: boolean,
     isSplit: boolean | undefined
@@ -59,6 +61,7 @@ export const getBaseButtonClassNames = memoizeFunction(
             }
           }
         ],
+        hasMenu && [ButtonGlobalClassNames.msButtonHasMenu, styles.rootHasMenu],
         disabled && ['is-disabled', styles.rootDisabled],
         !disabled &&
           !isExpanded &&

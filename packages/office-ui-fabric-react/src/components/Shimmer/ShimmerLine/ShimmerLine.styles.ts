@@ -12,14 +12,14 @@ const GlobalClassNames = {
 export function getStyles(props: IShimmerLineStyleProps): IShimmerLineStyles {
   const { height, borderStyle, theme } = props;
 
-  const { palette } = theme;
+  const { semanticColors } = theme;
   const globalClassNames = getGlobalClassNames(GlobalClassNames, theme);
 
   const borderStyles: IRawStyle = !!borderStyle ? borderStyle : {};
 
   const sharedCornerStyles: IRawStyle = {
     position: 'absolute',
-    fill: palette.white
+    fill: semanticColors.bodyBackground
   };
 
   return {
@@ -32,7 +32,8 @@ export function getStyles(props: IShimmerLineStyleProps): IShimmerLineStyles {
         position: 'relative',
         borderTopStyle: 'solid',
         borderBottomStyle: 'solid',
-        borderColor: palette.white,
+        borderColor: semanticColors.bodyBackground,
+        borderWidth: 0,
         selectors: {
           [HighContrastSelector]: {
             borderColor: 'Window',

@@ -1,6 +1,6 @@
 const { preset, just } = require('@uifabric/build');
-const { task } = just;
+const { task, series } = just;
 
 preset();
 
-task('build', 'build:node-lib');
+task('build', series('ts', 'jest')).cached();

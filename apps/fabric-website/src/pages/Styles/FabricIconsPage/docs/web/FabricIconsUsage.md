@@ -2,7 +2,7 @@ You can use Fabric's icons in a few ways, depending on if you're using Fabric Re
 
 ### Fabric React
 
-If you're using Fabric React, note that icons are not included in your bundle by default. To make the icons available, you'll need to initialize them by calling `initializeIcons` from the `@uifabric/icons` package. This is usually done at the root of your app.
+If you're using Fabric React, note that icons are not included in your bundle by default. To make the icons available, you'll need to initialize them by calling `initializeIcons` from the `@uifabric/icons` package. This is usually done at the root of your app:
 
 ```ts
 import { initializeIcons } from '@uifabric/icons';

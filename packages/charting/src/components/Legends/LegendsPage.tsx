@@ -2,11 +2,11 @@ import * as React from 'react';
 
 import { ComponentPage, ExampleCard, IComponentDemoPageProps, PropertiesTableSet } from '@uifabric/example-app-base';
 
-import { LegendOverflowExample } from './examples/LegendsOverflowExample';
-import { LegendBasicExample } from './examples/LegendsBasicExample';
+import { LegendOverflowExample } from './examples/Legends.Overflow.Example';
+import { LegendBasicExample } from './examples/Legends.Basic.Example';
 
-const LegendsOverflowExampleCode = require('!raw-loader!@uifabric/charting/src/components/Legends/examples/LegendsOverflowExample.tsx') as string;
-const LegendsBasicExampleCode = require('!raw-loader!@uifabric/charting/src/components/Legends/examples/LegendsBasicExample.tsx') as string;
+const LegendsOverflowExampleCode = require('!raw-loader!@uifabric/charting/src/components/Legends/examples/Legends.Overflow.Example.tsx') as string;
+const LegendsBasicExampleCode = require('!raw-loader!@uifabric/charting/src/components/Legends/examples/Legends.Basic.Example.tsx') as string;
 
 export class LegendsPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {

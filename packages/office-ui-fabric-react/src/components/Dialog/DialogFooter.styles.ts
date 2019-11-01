@@ -32,20 +32,19 @@ export const getStyles = (props: IDialogFooterStyleProps): IDialogFooterStyles =
       className
     ],
 
-    action: [classNames.action],
+    action: [
+      classNames.action,
+      {
+        margin: '0 4px'
+      }
+    ],
 
     actionsRight: [
       classNames.actionsRight,
       {
         textAlign: 'right',
         marginRight: '-4px',
-        fontSize: '0',
-
-        selectors: {
-          $action: {
-            margin: '0 4px'
-          }
-        }
+        fontSize: '0'
       }
     ]
   };

@@ -10,6 +10,110 @@
   },
   "glyphs": [
     {
+      "name": "PageLink",
+      "unicode": "E302"
+    },
+    {
+      "name": "CommentSolid",
+      "unicode": "E30E"
+    },
+    {
+      "name": "ChangeEntitlements",
+      "unicode": "E310"
+    },
+    {
+      "name": "Installation",
+      "unicode": "E311"
+    },
+    {
+      "name": "WebAppBuilderModule",
+      "unicode": "E313"
+    },
+    {
+      "name": "WebAppBuilderFragment",
+      "unicode": "E314"
+    },
+    {
+      "name": "WebAppBuilderSlot",
+      "unicode": "E315"
+    },
+    {
+      "name": "BullseyeTargetEdit",
+      "unicode": "E319"
+    },
+    {
+      "name": "WebAppBuilderFragmentCreate",
+      "unicode": "E31B"
+    },
+    {
+      "name": "PageData",
+      "unicode": "E31C"
+    },
+    {
+      "name": "PageHeaderEdit",
+      "unicode": "E31D"
+    },
+    {
+      "name": "ProductList",
+      "unicode": "E31E"
+    },
+    {
+      "name": "UnpublishContent",
+      "unicode": "E31F"
+    },
+    {
+      "name": "DependencyAdd",
+      "unicode": "E344"
+    },
+    {
+      "name": "DependencyRemove",
+      "unicode": "E345"
+    },
+    {
+      "name": "EntitlementPolicy",
+      "unicode": "E346"
+    },
+    {
+      "name": "EntitlementRedemption",
+      "unicode": "E347"
+    },
+    {
+      "name": "SchoolDataSyncLogo",
+      "unicode": "E34C"
+    },
+    {
+      "name": "PinSolid12",
+      "unicode": "E352"
+    },
+    {
+      "name": "PinSolidOff12",
+      "unicode": "E353"
+    },
+    {
+      "name": "AddLink",
+      "unicode": "E35E"
+    },
+    {
+      "name": "SharepointAppIcon16",
+      "unicode": "E365"
+    },
+    {
+      "name": "DataflowsLink",
+      "unicode": "E366"
+    },
+    {
+      "name": "TimePicker",
+      "unicode": "E367"
+    },
+    {
+      "name": "UserWarning",
+      "unicode": "E368"
+    },
+    {
+      "name": "ComplianceAudit",
+      "unicode": "E369"
+    },
+    {
       "name": "InternetSharing",
       "unicode": "E704"
     },
@@ -190,6 +294,10 @@
       "unicode": "E74E"
     },
     {
+      "name": "ReturnKey",
+      "unicode": "E751"
+    },
+    {
       "name": "Cloud",
       "unicode": "E753"
     },
@@ -250,6 +358,10 @@
       "unicode": "E769"
     },
     {
+      "name": "InkingTool",
+      "unicode": "E76D"
+    },
+    {
       "name": "Emoji2",
       "unicode": "E76E"
     },
@@ -294,120 +406,8 @@
       "unicode": "E77C"
     },
     {
-      "name": "Paste",
-      "unicode": "E77F"
-    },
-    {
-      "name": "WindowsLogo",
-      "unicode": "E782"
-    },
-    {
-      "name": "Error",
-      "unicode": "E783"
-    },
-    {
-      "name": "GripperBarVertical",
-      "unicode": "E784"
-    },
-    {
-      "name": "Unlock",
-      "unicode": "E785"
-    },
-    {
-      "name": "Slideshow",
-      "unicode": "E786"
-    },
-    {
-      "name": "AutoEnhanceOn",
-      "unicode": "E78D"
-    },
-    {
-      "name": "AutoEnhanceOff",
-      "unicode": "E78E"
-    },
-    {
-      "name": "Color",
-      "unicode": "E790"
-    },
-    {
-      "name": "SaveAs",
-      "unicode": "E792"
-    },
-    {
-      "name": "Light",
-      "unicode": "E793"
-    },
-    {
-      "name": "Filters",
-      "unicode": "E795"
-    },
-    {
-      "name": "AspectRatio",
-      "unicode": "E799"
-    },
-    {
-      "name": "Contrast",
-      "unicode": "E7A1"
-    },
-    {
-      "name": "Redo",
-      "unicode": "E7A6"
-    },
-    {
-      "name": "Crop",
-      "unicode": "E7A8"
-    },
-    {
-      "name": "PhotoCollection",
-      "unicode": "E7AA"
-    },
-    {
-      "name": "Album",
-      "unicode": "E7AB"
-    },
-    {
-      "name": "Rotate",
-      "unicode": "E7AD"
-    },
-    {
-      "name": "PanoIndicator",
-      "unicode": "E7B0"
-    },
-    {
-      "name": "Translate",
-      "unicode": "E7B2"
-    },
-    {
-      "name": "RedEye",
-      "unicode": "E7B3"
-    },
-    {
-      "name": "ThumbnailView",
-      "unicode": "E7B6"
-    },
-    {
-      "name": "Package",
-      "unicode": "E7B8"
-    },
-    {
-      "name": "Telemarketer",
-      "unicode": "E7B9"
-    },
-    {
-      "name": "Warning",
-      "unicode": "E7BA"
-    },
-    {
-      "name": "Financial",
-      "unicode": "E7BB"
-    },
-    {
-      "name": "Education",
-      "unicode": "E7BE"
-    },
-    {
-      "name": "ShoppingCart",
-      "unicode": "E7BF"
+      "name": "IncomingCall",
+      "unicode": "E77E"
     }
   ]
 }

@@ -1,13 +1,26 @@
 /** @jsx withSlots */
 import { ContextualMenu, Text } from 'office-ui-fabric-react';
-import { withSlots, getSlots } from '../../../Foundation';
-import { Icon } from '../../../utilities/factoryComponents';
+import { withSlots } from '../../../Foundation';
+import { FontIcon } from '../../../utilities/factoryComponents';
 
 import { Button } from '../Button';
 import { MenuButton } from '../MenuButton/MenuButton';
-import { ISplitButtonComponent, ISplitButtonProps, ISplitButtonSlots, ISplitButtonTokens } from './SplitButton.types';
+import { ISplitButtonComponent, ISplitButtonTokens } from './SplitButton.types';
 
-export const SplitButtonView: ISplitButtonComponent['view'] = props => {
+export const SplitButtonSlots: ISplitButtonComponent['slots'] = props => ({
+  root: 'span',
+  button: Button,
+  menuButton: MenuButton,
+  icon: FontIcon,
+  content: Text,
+  menuArea: 'span',
+  menu: ContextualMenu,
+  menuIcon: FontIcon,
+  splitDividerContainer: 'span',
+  splitDivider: 'span'
+});
+
+export const SplitButtonView: ISplitButtonComponent['view'] = (props, slots) => {
   const {
     styles,
     tokens,
@@ -34,18 +47,6 @@ export const SplitButtonView: ISplitButtonComponent['view'] = props => {
     ...rest
   } = props;
 
-  const Slots = getSlots<ISplitButtonProps, ISplitButtonSlots>(props, {
-    root: 'span',
-    button: Button,
-    menuButton: MenuButton,
-    icon: Icon,
-    content: Text,
-    menu: ContextualMenu,
-    menuIcon: Icon,
-    splitDividerContainer: 'span',
-    splitDivider: 'span'
-  });
-
   const menuButtonAriaLabel = secondaryAriaLabel ? secondaryAriaLabel : ariaLabel ? ariaLabel : (content as string);
 
   const { contentPadding, contentPaddingFocused, secondaryPadding, ...splitButtonTokens } = tokens as ISplitButtonTokens;
@@ -59,14 +60,29 @@ export const SplitButtonView: ISplitButtonComponent['view'] = props => {
     color,
     colorHovered,
     colorPressed,
+    highContrastBackgroundColor,
+    highContrastBackgroundColorHovered,
+    highContrastBackgroundColorPressed,
+    highContrastBorderColor,
+    highContrastBorderColorHovered,
+    highContrastBorderColorPressed,
+    highContrastColor,
+    highContrastColorHovered,
+    highContrastColorPressed,
+    highContrastIconColor,
+    highContrastIconColorHovered,
+    highContrastIconColorPressed,
+    iconColor,
+    iconColorHovered,
+    iconColorPressed,
     ...nonColoredButtonTokens
   } = splitButtonTokens;
   const buttonTokens = primaryActionDisabled ? { contentPadding, contentPaddingFocused, ...nonColoredButtonTokens } : tokens;
   const menuButtonTokens = { contentPadding: secondaryPadding, ...splitButtonTokens };
 
   return (
-    <Slots.root>
-      <Slots.button
+    <slots.root>
+      <slots.button
         primary={primary}
         disabled={primaryActionDisabled || disabled}
         allowDisabledFocus={allowDisabledFocus}
@@ -79,13 +95,13 @@ export const SplitButtonView: ISplitButtonComponent['view'] = props => {
         {...rest}
       >
         {children}
-      </Slots.button>
+      </slots.button>
 
-      <Slots.splitDividerContainer>
-        <Slots.splitDivider />
-      </Slots.splitDividerContainer>
+      <slots.splitDividerContainer>
+        <slots.splitDivider />
+      </slots.splitDividerContainer>
 
-      <Slots.menuButton
+      <slots.menuButton
         primary={primary}
         disabled={disabled}
         defaultExpanded={defaultExpanded}
@@ -100,6 +116,6 @@ export const SplitButtonView: ISplitButtonComponent['view'] = props => {
         onMenuDismiss={onMenuDismiss}
         tokens={menuButtonTokens}
       />
-    </Slots.root>
+    </slots.root>
   );
 };

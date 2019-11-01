@@ -1,58 +1,37 @@
 import * as React from 'react';
 import { ChoiceGroup, IChoiceGroupOption } from 'office-ui-fabric-react/lib/ChoiceGroup';
 
-/**
- * Interface for ChoiceGroupBasicExample state.
- */
-export interface IChoiceGroupBasicExampleState {
-  imageKey: string;
-}
+export const ChoiceGroupBasicExample: React.FunctionComponent = () => {
+  return (
+    <ChoiceGroup
+      className="defaultChoiceGroup"
+      defaultSelectedKey="B"
+      options={[
+        {
+          key: 'A',
+          text: 'Option A'
+        },
+        {
+          key: 'B',
+          text: 'Option B'
+        },
+        {
+          key: 'C',
+          text: 'Option C',
+          disabled: true
+        },
+        {
+          key: 'D',
+          text: 'Option D'
+        }
+      ]}
+      onChange={_onChange}
+      label="Pick one"
+      required={true}
+    />
+  );
+};
 
-export class ChoiceGroupBasicExample extends React.Component<{}, IChoiceGroupBasicExampleState> {
-  constructor(props: {}) {
-    super(props);
-
-    this.state = {
-      imageKey: ''
-    };
-  }
-
-  public render() {
-    return (
-      <div>
-        <ChoiceGroup
-          className="defaultChoiceGroup"
-          defaultSelectedKey="B"
-          options={[
-            {
-              key: 'A',
-              text: 'Option A',
-              'data-automation-id': 'auto1'
-            } as IChoiceGroupOption,
-            {
-              key: 'B',
-              text: 'Option B'
-            },
-            {
-              key: 'C',
-              text: 'Option C',
-              disabled: true
-            },
-            {
-              key: 'D',
-              text: 'Option D',
-              disabled: true
-            }
-          ]}
-          onChange={this._onChange}
-          label="Pick one"
-          required={true}
-        />
-      </div>
-    );
-  }
-
-  private _onChange = (ev: React.FormEvent<HTMLInputElement>, option: any): void => {
-    console.dir(option);
-  };
+function _onChange(ev: React.FormEvent<HTMLInputElement>, option: IChoiceGroupOption): void {
+  console.dir(option);
 }

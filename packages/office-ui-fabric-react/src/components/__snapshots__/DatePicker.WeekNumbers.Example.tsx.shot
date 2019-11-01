@@ -26,9 +26,7 @@ exports[`Component Examples renders DatePicker.WeekNumbers.Example.tsx correctly
         }
   >
     <div
-      aria-expanded={false}
       aria-haspopup="true"
-      role="combobox"
     >
       <div
         className=
@@ -95,6 +93,7 @@ exports[`Component Examples renders DatePicker.WeekNumbers.Example.tsx correctly
                 }
           >
             <input
+              aria-expanded={false}
               aria-invalid={false}
               aria-label="Select a date"
               className=
@@ -125,7 +124,13 @@ exports[`Component Examples renders DatePicker.WeekNumbers.Example.tsx correctly
                     text-overflow: ellipsis;
                     width: 100%;
                   }
-                  &:active, &:focus, &:hover {
+                  &:active {
+                    outline: 0px;
+                  }
+                  &:focus {
+                    outline: 0px;
+                  }
+                  &:hover {
                     outline: 0px;
                   }
                   &::-ms-clear {
@@ -168,6 +173,7 @@ exports[`Component Examples renders DatePicker.WeekNumbers.Example.tsx correctly
               placeholder="Select a date..."
               readOnly={true}
               required={false}
+              role="combobox"
               type="text"
               value=""
             />
@@ -187,15 +193,17 @@ exports[`Component Examples renders DatePicker.WeekNumbers.Example.tsx correctly
                     font-style: normal;
                     font-weight: normal;
                     line-height: 18px;
+                    padding-bottom: 5px;
+                    padding-left: 5px;
+                    padding-right: 5px;
+                    padding-top: 7px;
                     pointer-events: initial;
                     position: absolute;
-                    right: 9px;
+                    right: 4px;
                     speak: none;
-                    top: 7px;
                   }
               data-icon-name="Calendar"
               onClick={[Function]}
-              role="presentation"
             >
               
             </i>
@@ -234,15 +242,14 @@ exports[`Component Examples renders DatePicker.WeekNumbers.Example.tsx correctly
             padding-top: 5px;
             word-wrap: break-word;
           }
-      htmlFor="Dropdown5"
       id="Dropdown5-label"
     >
       Select the first day of the week
     </label>
     <div
-      aria-describedby="Dropdown5-option"
       aria-expanded="false"
-      aria-labelledby="Dropdown5-label"
+      aria-haspopup="listbox"
+      aria-labelledby="Dropdown5-label Dropdown5-option"
       className=
           ms-Dropdown
           {
@@ -326,9 +333,6 @@ exports[`Component Examples renders DatePicker.WeekNumbers.Example.tsx correctly
           &:active .ms-Dropdown-title--hasError {
             border-color: #a4262c;
           }
-          &:focus .ms-Dropdown-title--hasError {
-            border-color: #a4262c;
-          }
       data-is-focusable={true}
       id="Dropdown5"
       onBlur={[Function]}
@@ -337,13 +341,14 @@ exports[`Component Examples renders DatePicker.WeekNumbers.Example.tsx correctly
       onFocus={[Function]}
       onKeyDown={[Function]}
       onKeyUp={[Function]}
+      onMouseDown={[Function]}
       role="listbox"
       tabIndex={0}
     >
       <span
         aria-atomic={true}
-        aria-label="Monday"
-        aria-live="off"
+        aria-invalid={false}
+        aria-live="polite"
         aria-posinset={2}
         aria-selected={true}
         aria-setsize={7}
@@ -377,9 +382,7 @@ exports[`Component Examples renders DatePicker.WeekNumbers.Example.tsx correctly
         id="Dropdown5-option"
         role="option"
       >
-        <span>
-          Monday
-        </span>
+        Monday
       </span>
       <span
         className=
@@ -410,7 +413,6 @@ exports[`Component Examples renders DatePicker.WeekNumbers.Example.tsx correctly
                 speak: none;
               }
           data-icon-name="ChevronDown"
-          role="presentation"
         >
           
         </i>

@@ -10,6 +10,154 @@
   },
   "glyphs": [
     {
+      "name": "ChevronDownSmall",
+      "unicode": "E96E"
+    },
+    {
+      "name": "ChevronLeftSmall",
+      "unicode": "E96F"
+    },
+    {
+      "name": "ChevronRightSmall",
+      "unicode": "E970"
+    },
+    {
+      "name": "ChevronUpMed",
+      "unicode": "E971"
+    },
+    {
+      "name": "ChevronDownMed",
+      "unicode": "E972"
+    },
+    {
+      "name": "ChevronLeftMed",
+      "unicode": "E973"
+    },
+    {
+      "name": "ChevronRightMed",
+      "unicode": "E974"
+    },
+    {
+      "name": "Devices2",
+      "unicode": "E975"
+    },
+    {
+      "name": "PC1",
+      "unicode": "E977"
+    },
+    {
+      "name": "PresenceChickletVideo",
+      "unicode": "E979"
+    },
+    {
+      "name": "Reply",
+      "unicode": "E97A"
+    },
+    {
+      "name": "HalfAlpha",
+      "unicode": "E97E"
+    },
+    {
+      "name": "ConstructionCone",
+      "unicode": "E98F"
+    },
+    {
+      "name": "DoubleChevronLeftMed",
+      "unicode": "E991"
+    },
+    {
+      "name": "Volume0",
+      "unicode": "E992"
+    },
+    {
+      "name": "Volume1",
+      "unicode": "E993"
+    },
+    {
+      "name": "Volume2",
+      "unicode": "E994"
+    },
+    {
+      "name": "Volume3",
+      "unicode": "E995"
+    },
+    {
+      "name": "Chart",
+      "unicode": "E999"
+    },
+    {
+      "name": "Robot",
+      "unicode": "E99A"
+    },
+    {
+      "name": "Manufacturing",
+      "unicode": "E99C"
+    },
+    {
+      "name": "LockSolid",
+      "unicode": "E9A2"
+    },
+    {
+      "name": "FitPage",
+      "unicode": "E9A6"
+    },
+    {
+      "name": "FitWidth",
+      "unicode": "E9A7"
+    },
+    {
+      "name": "BidiLtr",
+      "unicode": "E9AA"
+    },
+    {
+      "name": "BidiRtl",
+      "unicode": "E9AB"
+    },
+    {
+      "name": "RightDoubleQuote",
+      "unicode": "E9B1"
+    },
+    {
+      "name": "Sunny",
+      "unicode": "E9BD"
+    },
+    {
+      "name": "CloudWeather",
+      "unicode": "E9BE"
+    },
+    {
+      "name": "Cloudy",
+      "unicode": "E9BF"
+    },
+    {
+      "name": "PartlyCloudyDay",
+      "unicode": "E9C0"
+    },
+    {
+      "name": "PartlyCloudyNight",
+      "unicode": "E9C1"
+    },
+    {
+      "name": "ClearNight",
+      "unicode": "E9C2"
+    },
+    {
+      "name": "RainShowersDay",
+      "unicode": "E9C3"
+    },
+    {
+      "name": "Rain",
+      "unicode": "E9C4"
+    },
+    {
+      "name": "Thunderstorms",
+      "unicode": "E9C6"
+    },
+    {
+      "name": "RainSnow",
+      "unicode": "E9C7"
+    },
+    {
       "name": "Snow",
       "unicode": "E9C8"
     },
@@ -242,6 +390,10 @@
       "unicode": "EA47"
     },
     {
+      "name": "ClearSelectionMirrored",
+      "unicode": "EA48"
+    },
+    {
       "name": "ClosePaneMirrored",
       "unicode": "EA49"
     },
@@ -256,158 +408,6 @@
     {
       "name": "GoMirrored",
       "unicode": "EA4F"
-    },
-    {
-      "name": "HelpMirrored",
-      "unicode": "EA51"
-    },
-    {
-      "name": "ImportMirrored",
-      "unicode": "EA52"
-    },
-    {
-      "name": "ImportAllMirrored",
-      "unicode": "EA53"
-    },
-    {
-      "name": "ListMirrored",
-      "unicode": "EA55"
-    },
-    {
-      "name": "MailForwardMirrored",
-      "unicode": "EA56"
-    },
-    {
-      "name": "MailReplyMirrored",
-      "unicode": "EA57"
-    },
-    {
-      "name": "MailReplyAllMirrored",
-      "unicode": "EA58"
-    },
-    {
-      "name": "MiniContractMirrored",
-      "unicode": "EA59"
-    },
-    {
-      "name": "MiniExpandMirrored",
-      "unicode": "EA5A"
-    },
-    {
-      "name": "OpenPaneMirrored",
-      "unicode": "EA5B"
-    },
-    {
-      "name": "ParkingLocationMirrored",
-      "unicode": "EA5E"
-    },
-    {
-      "name": "SendMirrored",
-      "unicode": "EA63"
-    },
-    {
-      "name": "ShowResultsMirrored",
-      "unicode": "EA65"
-    },
-    {
-      "name": "ThumbnailViewMirrored",
-      "unicode": "EA67"
-    },
-    {
-      "name": "Media",
-      "unicode": "EA69"
-    },
-    {
-      "name": "Devices3",
-      "unicode": "EA6C"
-    },
-    {
-      "name": "Focus",
-      "unicode": "EA6F"
-    },
-    {
-      "name": "VideoLightOff",
-      "unicode": "EA74"
-    },
-    {
-      "name": "Lightbulb",
-      "unicode": "EA80"
-    },
-    {
-      "name": "StatusTriangle",
-      "unicode": "EA82"
-    },
-    {
-      "name": "VolumeDisabled",
-      "unicode": "EA85"
-    },
-    {
-      "name": "Puzzle",
-      "unicode": "EA86"
-    },
-    {
-      "name": "EmojiNeutral",
-      "unicode": "EA87"
-    },
-    {
-      "name": "EmojiDisappointed",
-      "unicode": "EA88"
-    },
-    {
-      "name": "HomeSolid",
-      "unicode": "EA8A"
-    },
-    {
-      "name": "Ringer",
-      "unicode": "EA8F"
-    },
-    {
-      "name": "PDF",
-      "unicode": "EA90"
-    },
-    {
-      "name": "HeartBroken",
-      "unicode": "EA92"
-    },
-    {
-      "name": "StoreLogo16",
-      "unicode": "EA96"
-    },
-    {
-      "name": "MultiSelectMirrored",
-      "unicode": "EA98"
-    },
-    {
-      "name": "Broom",
-      "unicode": "EA99"
-    },
-    {
-      "name": "Cocktails",
-      "unicode": "EA9D"
-    },
-    {
-      "name": "Wines",
-      "unicode": "EABF"
-    },
-    {
-      "name": "Articles",
-      "unicode": "EAC1"
-    },
-    {
-      "name": "Cycling",
-      "unicode": "EAC7"
-    },
-    {
-      "name": "DietPlanNotebook",
-      "unicode": "EAC8"
-    },
-    {
-      "name": "Pill",
-      "unicode": "EACB"
-    },
-    {
-      "name": "ExerciseTracker",
-      "unicode": "EACC"
     }
   ]
 }

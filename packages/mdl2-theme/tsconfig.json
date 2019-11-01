@@ -13,8 +13,10 @@
     "forceConsistentCasingInFileNames": true,
     "strictNullChecks": true,
     "noImplicitAny": true,
+    "skipLibCheck": true,
     "moduleResolution": "node",
     "preserveConstEnums": true,
+    "skipLibCheck": true,
     "lib": ["es5", "dom"],
     "paths": {
       "@uifabric/mdl2-theme/lib/*": ["./src/*"],

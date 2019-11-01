@@ -28,8 +28,14 @@ export interface IPersonaSharedProps extends React.HTMLAttributes<PersonaBase | 
 
   /**
    * Optional custom renderer for the coin
+   * @deprecated Use `onRenderPersonaCoin` for custom rendering instead
    */
   onRenderCoin?: IRenderFunction<IPersonaSharedProps>;
+
+  /**
+   * Optional custom renderer for the coin
+   */
+  onRenderPersonaCoin?: IRenderFunction<IPersonaSharedProps>;
 
   /**
    * If true, adds the css class 'is-fadeIn' to the image.
@@ -87,6 +93,11 @@ export interface IPersonaSharedProps extends React.HTMLAttributes<PersonaBase | 
    * @defaultvalue PersonaPresence.none
    */
   presence?: PersonaPresence;
+
+  /**
+   * Presence title to be shown as a tooltip on hover over the presence icon.
+   */
+  presenceTitle?: string;
 
   /**
    * This flag can be used to signal the persona is out of office.
@@ -441,7 +452,12 @@ export enum PersonaSize {
   /**
    * Renders a 100px `PersonaCoin`.
    */
-  size100 = 15
+  size100 = 15,
+
+  /**
+   * Renders a 120px `PersonaCoin`.
+   */
+  size120 = 18
 }
 
 /**

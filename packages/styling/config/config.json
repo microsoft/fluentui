@@ -1,5 +1,4 @@
 {
-  "$schema": "node_modules/@microsoft/sp-build-web/lib/schemas/config.schema.json",
   "entries": [
     {
       "entry": "./lib/index.js",

@@ -1,4 +1,4 @@
-import { FontSizes, FontWeights, HighContrastSelector, IStyle, getGlobalClassNames } from '../../../Styling';
+import { HighContrastSelector, IStyle, getGlobalClassNames } from '../../../Styling';
 import { IsFocusVisibleClassName } from '../../../Utilities';
 import { IChoiceGroupOptionStyleProps, IChoiceGroupOptionStyles } from './ChoiceGroupOption.types';
 
@@ -88,8 +88,8 @@ function getImageWrapperStyle(isSelectedImageWrapper: boolean, className?: strin
 }
 
 export const getStyles = (props: IChoiceGroupOptionStyleProps): IChoiceGroupOptionStyles => {
-  const { theme, hasIcon, hasImage, checked, disabled, imageIsLarge, focused } = props;
-  const { palette, semanticColors } = theme;
+  const { theme, hasIcon, hasImage, checked, disabled, imageIsLarge, focused, imageSize } = props;
+  const { palette, semanticColors, fonts } = theme;
 
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
@@ -242,15 +242,12 @@ export const getStyles = (props: IChoiceGroupOptionStyleProps): IChoiceGroupOpti
         alignItems: 'center',
         boxSizing: 'border-box',
         color: semanticColors.bodyText,
-        fontSize: FontSizes.medium,
-        fontWeight: FontWeights.regular,
         minHeight: 26,
         border: 'none',
         position: 'relative',
         marginTop: 8,
         selectors: {
           '.ms-ChoiceFieldLabel': {
-            fontSize: FontSizes.medium,
             display: 'inline-block'
           }
         }
@@ -286,7 +283,8 @@ export const getStyles = (props: IChoiceGroupOptionStyleProps): IChoiceGroupOpti
         width: '100%',
         height: '100%',
         margin: 0
-      }
+      },
+      disabled && 'is-disabled'
     ],
     field: [
       classNames.field,
@@ -355,6 +353,10 @@ export const getStyles = (props: IChoiceGroupOptionStyleProps): IChoiceGroupOpti
     ],
     innerField: [
       classNames.innerField,
+      hasImage && {
+        height: imageSize!.height, // using non-null assertion because we have a default in `ChoiceGroupOptionBase` class.
+        width: imageSize!.width
+      },
       (hasIcon || hasImage) && {
         position: 'relative',
         display: 'inline-block',
@@ -389,17 +391,17 @@ export const getStyles = (props: IChoiceGroupOptionStyleProps): IChoiceGroupOpti
     ],
     labelWrapper: [
       classNames.labelWrapper,
+      fonts.medium,
       (hasIcon || hasImage) && {
         display: 'block',
         position: 'relative',
         margin: '4px 8px',
         height: labelWrapperLineHeight * 2,
         lineHeight: labelWrapperLineHeight,
+        maxWidth: imageSize!.width * 2, // using non-null assertion because we have a default in `ChoiceGroupOptionBase` class.
         overflow: 'hidden',
         whiteSpace: 'pre-wrap',
-        textOverflow: 'ellipsis',
-        fontSize: FontSizes.medium,
-        fontWeight: FontWeights.regular
+        textOverflow: 'ellipsis'
       }
     ]
   };

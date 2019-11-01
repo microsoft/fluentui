@@ -10,6 +10,178 @@
   },
   "glyphs": [
     {
+      "name": "SwayLogoInverse",
+      "unicode": "ED29"
+    },
+    {
+      "name": "OutOfOffice",
+      "unicode": "ED34"
+    },
+    {
+      "name": "Trophy",
+      "unicode": "ED3F"
+    },
+    {
+      "name": "ReopenPages",
+      "unicode": "ED50"
+    },
+    {
+      "name": "EmojiTabSymbols",
+      "unicode": "ED58"
+    },
+    {
+      "name": "AADLogo",
+      "unicode": "ED68"
+    },
+    {
+      "name": "AccessLogo",
+      "unicode": "ED69"
+    },
+    {
+      "name": "AdminALogoInverse32",
+      "unicode": "ED6A"
+    },
+    {
+      "name": "AdminCLogoInverse32",
+      "unicode": "ED6B"
+    },
+    {
+      "name": "AdminDLogoInverse32",
+      "unicode": "ED6C"
+    },
+    {
+      "name": "AdminELogoInverse32",
+      "unicode": "ED6D"
+    },
+    {
+      "name": "AdminLLogoInverse32",
+      "unicode": "ED6E"
+    },
+    {
+      "name": "AdminMLogoInverse32",
+      "unicode": "ED6F"
+    },
+    {
+      "name": "AdminOLogoInverse32",
+      "unicode": "ED70"
+    },
+    {
+      "name": "AdminPLogoInverse32",
+      "unicode": "ED71"
+    },
+    {
+      "name": "AdminSLogoInverse32",
+      "unicode": "ED72"
+    },
+    {
+      "name": "AdminYLogoInverse32",
+      "unicode": "ED73"
+    },
+    {
+      "name": "DelveLogoInverse",
+      "unicode": "ED76"
+    },
+    {
+      "name": "ExchangeLogoInverse",
+      "unicode": "ED78"
+    },
+    {
+      "name": "LyncLogo",
+      "unicode": "ED79"
+    },
+    {
+      "name": "OfficeVideoLogoInverse",
+      "unicode": "ED7A"
+    },
+    {
+      "name": "SocialListeningLogo",
+      "unicode": "ED7C"
+    },
+    {
+      "name": "VisioLogoInverse",
+      "unicode": "ED7D"
+    },
+    {
+      "name": "Balloons",
+      "unicode": "ED7E"
+    },
+    {
+      "name": "Cat",
+      "unicode": "ED7F"
+    },
+    {
+      "name": "MailAlert",
+      "unicode": "ED80"
+    },
+    {
+      "name": "MailCheck",
+      "unicode": "ED81"
+    },
+    {
+      "name": "MailLowImportance",
+      "unicode": "ED82"
+    },
+    {
+      "name": "MailPause",
+      "unicode": "ED83"
+    },
+    {
+      "name": "MailRepeat",
+      "unicode": "ED84"
+    },
+    {
+      "name": "SecurityGroup",
+      "unicode": "ED85"
+    },
+    {
+      "name": "Table",
+      "unicode": "ED86"
+    },
+    {
+      "name": "VoicemailForward",
+      "unicode": "ED87"
+    },
+    {
+      "name": "VoicemailReply",
+      "unicode": "ED88"
+    },
+    {
+      "name": "Waffle",
+      "unicode": "ED89"
+    },
+    {
+      "name": "RemoveEvent",
+      "unicode": "ED8A"
+    },
+    {
+      "name": "EventInfo",
+      "unicode": "ED8B"
+    },
+    {
+      "name": "ForwardEvent",
+      "unicode": "ED8C"
+    },
+    {
+      "name": "WipePhone",
+      "unicode": "ED8D"
+    },
+    {
+      "name": "AddOnlineMeeting",
+      "unicode": "ED8E"
+    },
+    {
+      "name": "JoinOnlineMeeting",
+      "unicode": "ED8F"
+    },
+    {
+      "name": "RemoveLink",
+      "unicode": "ED90"
+    },
+    {
+      "name": "PeopleBlock",
+      "unicode": "ED91"
+    },
+    {
       "name": "PeopleRepeat",
       "unicode": "ED92"
     },
@@ -236,178 +408,6 @@
     {
       "name": "ExportMirrored",
       "unicode": "EDE2"
-    },
-    {
-      "name": "SingleBookmark",
-      "unicode": "EDFF"
-    },
-    {
-      "name": "SingleBookmarkSolid",
-      "unicode": "EE00"
-    },
-    {
-      "name": "DoubleChevronDown",
-      "unicode": "EE04"
-    },
-    {
-      "name": "FollowUser",
-      "unicode": "EE05"
-    },
-    {
-      "name": "ReplyAll",
-      "unicode": "EE0A"
-    },
-    {
-      "name": "WorkforceManagement",
-      "unicode": "EE0F"
-    },
-    {
-      "name": "RecruitmentManagement",
-      "unicode": "EE12"
-    },
-    {
-      "name": "Questionnaire",
-      "unicode": "EE19"
-    },
-    {
-      "name": "ManagerSelfService",
-      "unicode": "EE23"
-    },
-    {
-      "name": "ProductRelease",
-      "unicode": "EE2E"
-    },
-    {
-      "name": "ReplyMirrored",
-      "unicode": "EE35"
-    },
-    {
-      "name": "ReplyAllMirrored",
-      "unicode": "EE36"
-    },
-    {
-      "name": "Medal",
-      "unicode": "EE38"
-    },
-    {
-      "name": "AddGroup",
-      "unicode": "EE3D"
-    },
-    {
-      "name": "QuestionnaireMirrored",
-      "unicode": "EE4B"
-    },
-    {
-      "name": "TemporaryUser",
-      "unicode": "EE58"
-    },
-    {
-      "name": "CaretSolid16",
-      "unicode": "EE62"
-    },
-    {
-      "name": "GroupedDescending",
-      "unicode": "EE66"
-    },
-    {
-      "name": "GroupedAscending",
-      "unicode": "EE67"
-    },
-    {
-      "name": "AwayStatus",
-      "unicode": "EE6A"
-    },
-    {
-      "name": "MyMoviesTV",
-      "unicode": "EE6C"
-    },
-    {
-      "name": "GenericScan",
-      "unicode": "EE6F"
-    },
-    {
-      "name": "AustralianRules",
-      "unicode": "EE70"
-    },
-    {
-      "name": "WifiEthernet",
-      "unicode": "EE77"
-    },
-    {
-      "name": "TrackersMirrored",
-      "unicode": "EE92"
-    },
-    {
-      "name": "DateTimeMirrored",
-      "unicode": "EE93"
-    },
-    {
-      "name": "StopSolid",
-      "unicode": "EE95"
-    },
-    {
-      "name": "DoubleChevronUp12",
-      "unicode": "EE96"
-    },
-    {
-      "name": "DoubleChevronDown12",
-      "unicode": "EE97"
-    },
-    {
-      "name": "DoubleChevronLeft12",
-      "unicode": "EE98"
-    },
-    {
-      "name": "DoubleChevronRight12",
-      "unicode": "EE99"
-    },
-    {
-      "name": "CalendarAgenda",
-      "unicode": "EE9A"
-    },
-    {
-      "name": "AddEvent",
-      "unicode": "EEB5"
-    },
-    {
-      "name": "AssetLibrary",
-      "unicode": "EEB6"
-    },
-    {
-      "name": "DataConnectionLibrary",
-      "unicode": "EEB7"
-    },
-    {
-      "name": "DocLibrary",
-      "unicode": "EEB8"
-    },
-    {
-      "name": "FormLibrary",
-      "unicode": "EEB9"
-    },
-    {
-      "name": "FormLibraryMirrored",
-      "unicode": "EEBA"
-    },
-    {
-      "name": "ReportLibrary",
-      "unicode": "EEBB"
-    },
-    {
-      "name": "ReportLibraryMirrored",
-      "unicode": "EEBC"
-    },
-    {
-      "name": "ContactCard",
-      "unicode": "EEBD"
-    },
-    {
-      "name": "CustomList",
-      "unicode": "EEBE"
-    },
-    {
-      "name": "CustomListMirrored",
-      "unicode": "EEBF"
     }
   ]
 }

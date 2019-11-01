@@ -10,6 +10,166 @@
   },
   "glyphs": [
     {
+      "name": "Certificate",
+      "unicode": "EB95"
+    },
+    {
+      "name": "FastForward",
+      "unicode": "EB9D"
+    },
+    {
+      "name": "Rewind",
+      "unicode": "EB9E"
+    },
+    {
+      "name": "Photo2",
+      "unicode": "EB9F"
+    },
+    {
+      "name": "OpenSource",
+      "unicode": "EBC2"
+    },
+    {
+      "name": "Movers",
+      "unicode": "EBCD"
+    },
+    {
+      "name": "CloudDownload",
+      "unicode": "EBD3"
+    },
+    {
+      "name": "Family",
+      "unicode": "EBDA"
+    },
+    {
+      "name": "WindDirection",
+      "unicode": "EBE6"
+    },
+    {
+      "name": "Bug",
+      "unicode": "EBE8"
+    },
+    {
+      "name": "SiteScan",
+      "unicode": "EBEC"
+    },
+    {
+      "name": "BrowserScreenShot",
+      "unicode": "EBED"
+    },
+    {
+      "name": "F12DevTools",
+      "unicode": "EBEE"
+    },
+    {
+      "name": "CSS",
+      "unicode": "EBEF"
+    },
+    {
+      "name": "JS",
+      "unicode": "EBF0"
+    },
+    {
+      "name": "DeliveryTruck",
+      "unicode": "EBF4"
+    },
+    {
+      "name": "ReminderPerson",
+      "unicode": "EBF7"
+    },
+    {
+      "name": "ReminderGroup",
+      "unicode": "EBF8"
+    },
+    {
+      "name": "ReminderTime",
+      "unicode": "EBF9"
+    },
+    {
+      "name": "TabletMode",
+      "unicode": "EBFC"
+    },
+    {
+      "name": "Umbrella",
+      "unicode": "EC04"
+    },
+    {
+      "name": "NetworkTower",
+      "unicode": "EC05"
+    },
+    {
+      "name": "CityNext",
+      "unicode": "EC06"
+    },
+    {
+      "name": "CityNext2",
+      "unicode": "EC07"
+    },
+    {
+      "name": "Section",
+      "unicode": "EC0C"
+    },
+    {
+      "name": "OneNoteLogoInverse",
+      "unicode": "EC0D"
+    },
+    {
+      "name": "ToggleFilled",
+      "unicode": "EC11"
+    },
+    {
+      "name": "ToggleBorder",
+      "unicode": "EC12"
+    },
+    {
+      "name": "SliderThumb",
+      "unicode": "EC13"
+    },
+    {
+      "name": "ToggleThumb",
+      "unicode": "EC14"
+    },
+    {
+      "name": "Documentation",
+      "unicode": "EC17"
+    },
+    {
+      "name": "Badge",
+      "unicode": "EC1B"
+    },
+    {
+      "name": "Giftbox",
+      "unicode": "EC1F"
+    },
+    {
+      "name": "VisualStudioLogo",
+      "unicode": "EC22"
+    },
+    {
+      "name": "HomeGroup",
+      "unicode": "EC26"
+    },
+    {
+      "name": "ExcelLogoInverse",
+      "unicode": "EC28"
+    },
+    {
+      "name": "WordLogoInverse",
+      "unicode": "EC29"
+    },
+    {
+      "name": "PowerPointLogoInverse",
+      "unicode": "EC2A"
+    },
+    {
+      "name": "Cafe",
+      "unicode": "EC32"
+    },
+    {
+      "name": "SpeedHigh",
+      "unicode": "EC4A"
+    },
+    {
       "name": "Commitments",
       "unicode": "EC4D"
     },
@@ -24,6 +184,10 @@
     {
       "name": "MicOff",
       "unicode": "EC54"
+    },
+    {
+      "name": "PlaybackRate1x",
+      "unicode": "EC57"
     },
     {
       "name": "EdgeLogo",
@@ -134,6 +298,10 @@
       "unicode": "ECAC"
     },
     {
+      "name": "Calories",
+      "unicode": "ECAD"
+    },
+    {
       "name": "POI",
       "unicode": "ECAF"
     },
@@ -172,6 +340,10 @@
     {
       "name": "FangBody",
       "unicode": "ECEB"
+    },
+    {
+      "name": "Toolbox",
+      "unicode": "ECED"
     },
     {
       "name": "PageHeader",
@@ -236,178 +408,6 @@
     {
       "name": "CalendarMirrored",
       "unicode": "ED28"
-    },
-    {
-      "name": "SwayLogoInverse",
-      "unicode": "ED29"
-    },
-    {
-      "name": "OutOfOffice",
-      "unicode": "ED34"
-    },
-    {
-      "name": "Trophy",
-      "unicode": "ED3F"
-    },
-    {
-      "name": "ReopenPages",
-      "unicode": "ED50"
-    },
-    {
-      "name": "EmojiTabSymbols",
-      "unicode": "ED58"
-    },
-    {
-      "name": "AADLogo",
-      "unicode": "ED68"
-    },
-    {
-      "name": "AccessLogo",
-      "unicode": "ED69"
-    },
-    {
-      "name": "AdminALogoInverse32",
-      "unicode": "ED6A"
-    },
-    {
-      "name": "AdminCLogoInverse32",
-      "unicode": "ED6B"
-    },
-    {
-      "name": "AdminDLogoInverse32",
-      "unicode": "ED6C"
-    },
-    {
-      "name": "AdminELogoInverse32",
-      "unicode": "ED6D"
-    },
-    {
-      "name": "AdminLLogoInverse32",
-      "unicode": "ED6E"
-    },
-    {
-      "name": "AdminMLogoInverse32",
-      "unicode": "ED6F"
-    },
-    {
-      "name": "AdminOLogoInverse32",
-      "unicode": "ED70"
-    },
-    {
-      "name": "AdminPLogoInverse32",
-      "unicode": "ED71"
-    },
-    {
-      "name": "AdminSLogoInverse32",
-      "unicode": "ED72"
-    },
-    {
-      "name": "AdminYLogoInverse32",
-      "unicode": "ED73"
-    },
-    {
-      "name": "DelveLogoInverse",
-      "unicode": "ED76"
-    },
-    {
-      "name": "ExchangeLogoInverse",
-      "unicode": "ED78"
-    },
-    {
-      "name": "LyncLogo",
-      "unicode": "ED79"
-    },
-    {
-      "name": "OfficeVideoLogoInverse",
-      "unicode": "ED7A"
-    },
-    {
-      "name": "SocialListeningLogo",
-      "unicode": "ED7C"
-    },
-    {
-      "name": "VisioLogoInverse",
-      "unicode": "ED7D"
-    },
-    {
-      "name": "Balloons",
-      "unicode": "ED7E"
-    },
-    {
-      "name": "Cat",
-      "unicode": "ED7F"
-    },
-    {
-      "name": "MailAlert",
-      "unicode": "ED80"
-    },
-    {
-      "name": "MailCheck",
-      "unicode": "ED81"
-    },
-    {
-      "name": "MailLowImportance",
-      "unicode": "ED82"
-    },
-    {
-      "name": "MailPause",
-      "unicode": "ED83"
-    },
-    {
-      "name": "MailRepeat",
-      "unicode": "ED84"
-    },
-    {
-      "name": "SecurityGroup",
-      "unicode": "ED85"
-    },
-    {
-      "name": "Table",
-      "unicode": "ED86"
-    },
-    {
-      "name": "VoicemailForward",
-      "unicode": "ED87"
-    },
-    {
-      "name": "VoicemailReply",
-      "unicode": "ED88"
-    },
-    {
-      "name": "Waffle",
-      "unicode": "ED89"
-    },
-    {
-      "name": "RemoveEvent",
-      "unicode": "ED8A"
-    },
-    {
-      "name": "EventInfo",
-      "unicode": "ED8B"
-    },
-    {
-      "name": "ForwardEvent",
-      "unicode": "ED8C"
-    },
-    {
-      "name": "WipePhone",
-      "unicode": "ED8D"
-    },
-    {
-      "name": "AddOnlineMeeting",
-      "unicode": "ED8E"
-    },
-    {
-      "name": "JoinOnlineMeeting",
-      "unicode": "ED8F"
-    },
-    {
-      "name": "RemoveLink",
-      "unicode": "ED90"
-    },
-    {
-      "name": "PeopleBlock",
-      "unicode": "ED91"
     }
   ]
 }

@@ -1,5 +1,13 @@
 import * as React from 'react';
-import { Icon as FabricIcon, Label as FabricLabel, IIconProps, ILabelProps, IPersonaPresenceProps } from 'office-ui-fabric-react';
+import {
+  FontIcon as FabricFontIcon,
+  Icon as FabricIcon,
+  Label as FabricLabel,
+  IFontIconProps,
+  IIconProps,
+  ILabelProps,
+  IPersonaPresenceProps
+} from 'office-ui-fabric-react';
 // PersonaPresence is not exported by OUFR, so we have to import it directly.
 import { PersonaPresence as FabricPersonaPresence } from 'office-ui-fabric-react/lib/PersonaPresence';
 import { createFactory, ISlottableComponentType, ISlotFactory } from '../Foundation';
@@ -18,6 +26,11 @@ import { createFactory, ISlottableComponentType, ISlotFactory } from '../Foundat
 
 // These wrappers will temporarily add a layer to the hierarchy (identified with displayName) until their functionality
 // can be absorbed into their respective OUFR components.
+export const FontIcon: ISlottableComponentType<IFontIconProps, string> = props => (props.iconName ? <FabricFontIcon {...props} /> : null);
+FontIcon.displayName = 'FontIcon';
+const fontIconFactory: ISlotFactory<IFontIconProps, string> = createFactory(FontIcon, { defaultProp: 'iconName' });
+FontIcon.create = fontIconFactory;
+
 export const Icon: ISlottableComponentType<IIconProps, string> = props => (props.iconName ? <FabricIcon {...props} /> : null);
 Icon.displayName = 'Icon';
 const iconFactory: ISlotFactory<IIconProps, string> = createFactory(Icon, { defaultProp: 'iconName' });

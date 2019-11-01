@@ -8,7 +8,7 @@ const jju = require('jju');
  * Read and parse the given config file.
  *
  * @param {string} file Full path to or name of the config file. If no file exists at the location
- * as given, `file` is assumed to be a config file name (such as rush.json) and the method will run
+ * as given, `file` is assumed to be a config file name and the method will run
  * `findConfig(file)` to find the full path.
  * @returns {any} Parsed config file contents
  */
@@ -19,26 +19,4 @@ function readConfig(file) {
   }
 }
 
-/**
- * Incomplete types for parts of rush.json
- *
- * @typedef {{
- *   packageName: string;
- *   projectFolder: string;
- *   versionPolicyName?: string;
- *   shouldPublish?: boolean;
- * }} RushProject
- *
- * @typedef {{
- *   projects: RushProject[];
- * }} RushJson
- */
-
-/**
- * @returns {RushJson}
- */
-function readRushJson() {
-  return readConfig('rush.json');
-}
-
-module.exports = { readConfig, readRushJson };
+module.exports = { readConfig };

@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { IBaseProps } from '@uifabric/utilities';
 import { IStackSlot, IStackTokens } from 'office-ui-fabric-react';
 import { IComponent, IComponentStyles, IStyleableComponentProps } from '@uifabric/foundation';
@@ -36,16 +37,19 @@ export interface ICardSlots {
   root?: IStackSlot;
 }
 
+/**
+ * {@docCategory Card}
+ */
 export interface ICardProps
   extends ICardSlots,
     IStyleableComponentProps<ICardProps, ICardTokens, ICardStyles>,
     IBaseProps<ICard>,
     React.AllHTMLAttributes<HTMLElement> {
   /**
-   * Defines whether to render a regular or a compact Card.
+   * Defines whether to render a vertical or a horizontal Card.
    * @defaultvalue false
    */
-  compact?: boolean;
+  horizontal?: boolean;
 
   /**
    * Defines a callback that is called when the Card is clicked.

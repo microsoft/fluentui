@@ -83,6 +83,26 @@ export const controlsPagesAndroid: INavPage[] = [
     ]
   },
   {
+    title: 'Commands, Menus & Navs',
+    url: '#/controls/android/popupmenu',
+    isCategory: true,
+    pages: [
+      {
+        title: 'Popup Menu',
+        url: '#/controls/android/popupmenu',
+        component: () => <LoadingComponent title="PopupMenu" />,
+        getComponent: cb =>
+          require.ensure([], require => cb(require<any>('../../../pages/Controls/PopupMenuPage/PopupMenuPage').PopupMenuPage))
+      },
+      {
+        title: 'Top App Bar',
+        url: '#/controls/android/topappbar',
+        component: () => <LoadingComponent title="NavBar" />,
+        getComponent: cb => require.ensure([], require => cb(require<any>('../../../pages/Controls/NavBarPage/NavBarPage').NavBarPage))
+      }
+    ]
+  },
+  {
     title: 'Notification & Engagement',
     url: '#/controls/android/snackbar',
     isCategory: true,
@@ -111,9 +131,16 @@ export const controlsPagesAndroid: INavPage[] = [
   },
   {
     title: 'Surfaces',
-    url: '#/controls/android/drawer',
+    url: '#/controls/android/bottomsheet',
     isCategory: true,
     pages: [
+      {
+        title: 'BottomSheet',
+        url: '#/controls/android/bottomsheet',
+        component: () => <LoadingComponent title="BottomSheet" />,
+        getComponent: cb =>
+          require.ensure([], require => cb(require<any>('../../../pages/Controls/BottomSheetPage/BottomSheetPage').BottomSheetPage))
+      },
       {
         title: 'Drawer',
         url: '#/controls/android/drawer',

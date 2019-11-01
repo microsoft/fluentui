@@ -115,6 +115,10 @@ export const MenuButtonStyles: IMenuButtonComponent['styles'] = (props, theme, t
       },
       className
     ],
+    menuArea: {
+      height: 'auto',
+      width: 'auto'
+    },
     menuIcon: {
       fontSize: tokens.menuIconSize,
       paddingTop: '5px'

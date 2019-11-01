@@ -43,6 +43,8 @@ exports[`Component Examples renders ContextualMenu.Directional.Example.tsx corre
           }
     >
       <input
+        aria-checked="false"
+        aria-label="Show beak"
         checked={false}
         className=
 
@@ -105,6 +107,7 @@ exports[`Component Examples renders ContextualMenu.Directional.Example.tsx corre
                 justify-content: center;
                 margin-right: 4px;
                 overflow: hidden;
+                position: relative;
                 transition-duration: 200ms;
                 transition-property: background, border, border-color;
                 transition-timing-function: cubic-bezier(.4, 0, .23, 1);
@@ -131,12 +134,12 @@ exports[`Component Examples renders ContextualMenu.Directional.Example.tsx corre
                   color: Window;
                 }
             data-icon-name="CheckMark"
-            role="presentation"
           >
             
           </i>
         </div>
         <span
+          aria-hidden="true"
           className=
               ms-Checkbox-text
               {
@@ -180,15 +183,14 @@ exports[`Component Examples renders ContextualMenu.Directional.Example.tsx corre
               padding-top: 5px;
               word-wrap: break-word;
             }
-        htmlFor="Dropdown1"
         id="Dropdown1-label"
       >
         Directional hint
       </label>
       <div
-        aria-describedby="Dropdown1-option"
         aria-expanded="false"
-        aria-labelledby="Dropdown1-label"
+        aria-haspopup="listbox"
+        aria-labelledby="Dropdown1-label Dropdown1-option"
         className=
             ms-Dropdown
             {
@@ -272,9 +274,6 @@ exports[`Component Examples renders ContextualMenu.Directional.Example.tsx corre
             &:active .ms-Dropdown-title--hasError {
               border-color: #a4262c;
             }
-            &:focus .ms-Dropdown-title--hasError {
-              border-color: #a4262c;
-            }
         data-is-focusable={true}
         id="Dropdown1"
         onBlur={[Function]}
@@ -283,13 +282,14 @@ exports[`Component Examples renders ContextualMenu.Directional.Example.tsx corre
         onFocus={[Function]}
         onKeyDown={[Function]}
         onKeyUp={[Function]}
+        onMouseDown={[Function]}
         role="listbox"
         tabIndex={0}
       >
         <span
           aria-atomic={true}
-          aria-label="Bottom Left Edge"
-          aria-live="off"
+          aria-invalid={false}
+          aria-live="polite"
           aria-posinset={5}
           aria-selected={true}
           aria-setsize={14}
@@ -323,9 +323,7 @@ exports[`Component Examples renders ContextualMenu.Directional.Example.tsx corre
           id="Dropdown1-option"
           role="option"
         >
-          <span>
-            Bottom Left Edge
-          </span>
+          Bottom Left Edge
         </span>
         <span
           className=
@@ -356,7 +354,6 @@ exports[`Component Examples renders ContextualMenu.Directional.Example.tsx corre
                   speak: none;
                 }
             data-icon-name="ChevronDown"
-            role="presentation"
           >
             
           </i>
@@ -374,6 +371,7 @@ exports[`Component Examples renders ContextualMenu.Directional.Example.tsx corre
       className=
           ms-Button
           ms-Button--default
+          ms-Button--hasMenu
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
@@ -448,7 +446,7 @@ exports[`Component Examples renders ContextualMenu.Directional.Example.tsx corre
       onMouseUp={[Function]}
       type="button"
     >
-      <div
+      <span
         className=
             ms-Button-flexContainer
             {
@@ -458,18 +456,21 @@ exports[`Component Examples renders ContextualMenu.Directional.Example.tsx corre
               height: 100%;
               justify-content: center;
             }
+        data-automationid="splitbuttonprimary"
       >
-        <div
+        <span
           className=
               ms-Button-textContainer
               {
+                display: block;
                 flex-grow: 1;
               }
         >
-          <div
+          <span
             className=
                 ms-Button-label
                 {
+                  display: block;
                   font-weight: 600;
                   line-height: 100%;
                   margin-bottom: 0;
@@ -480,28 +481,33 @@ exports[`Component Examples renders ContextualMenu.Directional.Example.tsx corre
             id="id__2"
           >
             Show context menu
-          </div>
-        </div>
+          </span>
+        </span>
         <i
           aria-hidden={true}
           className=
+              ms-Icon
               ms-Button-menuIcon
+              {
+                display: inline-block;
+              }
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                display: inline-block;
-                flex-shrink: 0;
                 font-family: "FabricMDL2Icons";
-                font-size: 12px;
                 font-style: normal;
                 font-weight: normal;
+                speak: none;
+              }
+              {
+                flex-shrink: 0;
+                font-size: 12px;
                 height: 16px;
                 line-height: 16px;
                 margin-bottom: 0;
                 margin-left: 4px;
                 margin-right: 4px;
                 margin-top: 0;
-                speak: none;
                 text-align: center;
                 vertical-align: middle;
               }
@@ -510,7 +516,7 @@ exports[`Component Examples renders ContextualMenu.Directional.Example.tsx corre
         >
           
         </i>
-      </div>
+      </span>
     </button>
   </div>
 </div>

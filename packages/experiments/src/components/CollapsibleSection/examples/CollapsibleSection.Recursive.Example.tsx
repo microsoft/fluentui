@@ -2,7 +2,7 @@ import * as React from 'react';
 import { FocusZone, Text } from 'office-ui-fabric-react';
 import { CollapsibleSection } from '@uifabric/experiments/lib/CollapsibleSection';
 
-import { lorem } from '@uifabric/example-app-base';
+import { lorem } from '@uifabric/example-data';
 
 export interface IFileItem {
   name: string;

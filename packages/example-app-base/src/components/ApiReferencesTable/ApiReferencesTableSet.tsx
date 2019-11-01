@@ -33,7 +33,7 @@ export class ApiReferencesTableSet extends React.Component<IApiReferencesTableSe
   public render(): JSX.Element {
     const { className } = this.props;
     return (
-      <Stack gap={LARGE_GAP_SIZE} className={className}>
+      <Stack tokens={{ childrenGap: LARGE_GAP_SIZE }} className={className}>
         {this._renderFirst()}
         {this._renderEach()}
       </Stack>
@@ -81,7 +81,7 @@ export class ApiReferencesTableSet extends React.Component<IApiReferencesTableSe
 
     if (this.state.properties.length > 1) {
       return (
-        <Stack gap={MEDIUM_GAP_SIZE}>
+        <Stack tokens={{ childrenGap: MEDIUM_GAP_SIZE }}>
           <ActionButton
             iconProps={{ iconName: this.state.showSeeMore ? 'SkypeCircleMinus' : 'CirclePlus' }}
             onClick={this._onClickSeeMore}
@@ -91,7 +91,7 @@ export class ApiReferencesTableSet extends React.Component<IApiReferencesTableSe
             See More
           </ActionButton>
           {this.state.showSeeMore && (
-            <Stack gap={LARGE_GAP_SIZE}>
+            <Stack tokens={{ childrenGap: LARGE_GAP_SIZE }}>
               {this.state.properties.map((item: IApiProperty, index: number) =>
                 index !== 0 ? this._renderReferencesTable(item) : undefined
               )}

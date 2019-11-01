@@ -91,19 +91,20 @@ export const getStyles = (props: ISpinnerStyleProps): ISpinnerStyles => {
     ],
     label: [
       classNames.label,
+      theme.fonts.small,
       {
         color: palette.themePrimary,
-        margin: '10px 0 0',
+        margin: '8px 0 0',
         textAlign: 'center'
       },
       labelPosition === 'top' && {
-        margin: '0 0 10px'
+        margin: '0 0 8px'
       },
       labelPosition === 'right' && {
-        margin: '0 0 0 10px'
+        margin: '0 0 0 8px'
       },
       labelPosition === 'left' && {
-        margin: '0 10px 0 0'
+        margin: '0 8px 0 0'
       }
     ],
     screenReaderText: hiddenContentStyle

@@ -65,7 +65,7 @@ export const getStyles = (props: IContextualMenuStyleProps): IContextualMenuStyl
     title: [
       classNames.title,
       {
-        fontSize: '16px',
+        fontSize: fonts.mediumPlus.fontSize,
         paddingRight: '14px',
         paddingLeft: '14px',
         paddingBottom: '5px',

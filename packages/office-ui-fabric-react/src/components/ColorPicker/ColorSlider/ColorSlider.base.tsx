@@ -35,7 +35,8 @@ export class ColorSliderBase extends React.Component<IColorSliderProps, IColorSl
     };
   }
 
-  public componentWillReceiveProps(newProps: IColorSliderProps): void {
+  // tslint:disable-next-line function-name
+  public UNSAFE_componentWillReceiveProps(newProps: IColorSliderProps): void {
     if (newProps && newProps.value) {
       this.setState({ currentValue: newProps.value });
     }

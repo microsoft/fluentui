@@ -271,7 +271,7 @@ const data: IFullDocumentCardProps[] = [
   }
 ];
 
-export const SuggestedBigItem: (documentProps: IFullDocumentCardProps, itemProps: ISuggestionItemProps<any>) => JSX.Element = (
+const SuggestedBigItem: (documentProps: IFullDocumentCardProps, itemProps: ISuggestionItemProps<any>) => JSX.Element = (
   documentProps: IFullDocumentCardProps,
   itemProps: ISuggestionItemProps<any>
 ) => {
@@ -286,7 +286,7 @@ export const SuggestedBigItem: (documentProps: IFullDocumentCardProps, itemProps
   );
 };
 
-export const SelectedDocumentItem: (documentProps: IPickerItemProps<IFullDocumentCardProps>) => JSX.Element = (
+const SelectedDocumentItem: (documentProps: IPickerItemProps<IFullDocumentCardProps>) => JSX.Element = (
   documentProps: IPickerItemProps<IFullDocumentCardProps>
 ) => {
   const { documentActionsProps, documentPreviewProps, documentActivityProps, documentTitleProps } = documentProps.item;
@@ -315,7 +315,8 @@ export const SelectedDocumentItem: (documentProps: IPickerItemProps<IFullDocumen
   );
 };
 
-export class DocumentPicker extends BasePickerListBelow<IFullDocumentCardProps, IDocumentPickerProps> {}
+class DocumentPicker extends BasePickerListBelow<IFullDocumentCardProps, IDocumentPickerProps> {}
+
 export class PickerCustomResultExample extends React.Component<{}, IPeoplePickerExampleState> {
   constructor(props: {}) {
     super(props);
@@ -346,7 +347,8 @@ export class PickerCustomResultExample extends React.Component<{}, IPeoplePicker
           disabled={this.state.isPickerDisabled}
           inputProps={{
             onFocus: () => console.log('onFocus called'),
-            onBlur: () => console.log('onBlur called')
+            onBlur: () => console.log('onBlur called'),
+            'aria-label': 'Document Picker'
           }}
         />
       </div>

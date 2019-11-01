@@ -1,14 +1,6 @@
-import { setRTL, rtlifyRules } from './rtlifyRules';
+import { rtlifyRules } from './rtlifyRules';
 
 describe('rtlifyRules', () => {
-  beforeAll(() => {
-    setRTL(true);
-  });
-
-  afterAll(() => {
-    setRTL(false);
-  });
-
   it('can auto flip or avoid autoflipping with noflip', () => {
     [
       [['left', '42'], ['right', '42']],
@@ -37,7 +29,7 @@ describe('rtlifyRules', () => {
       [['box-shadow', '42px 0 red'], ['box-shadow', '-42px 0 red']],
       [['box-shadow', '-42px 0 red'], ['box-shadow', '42px 0 red']]
     ].forEach((test: string[][]) => {
-      rtlifyRules(test[0], 0);
+      rtlifyRules({ rtl: true }, test[0], 0);
       expect(test[0]).toEqual(test[1]);
     });
   });
@@ -45,16 +37,16 @@ describe('rtlifyRules', () => {
   it('does not flip an unflippable cursor', () => {
     const rules = ['cursor', 'hand'];
 
-    rtlifyRules(rules, 0);
+    rtlifyRules({ rtl: true }, rules, 0);
 
     expect(rules).toEqual(['cursor', 'hand']);
   });
 
   it('does not crash when name or value are not strings', () => {
     // tslint:disable:no-any
-    rtlifyRules(['left', null] as any, 0);
-    rtlifyRules(['left', {}] as any, 0);
-    rtlifyRules([null, 'abc'] as any, 0);
+    rtlifyRules({ rtl: true }, ['left', null] as any, 0);
+    rtlifyRules({ rtl: true }, ['left', {}] as any, 0);
+    rtlifyRules({ rtl: true }, [null, 'abc'] as any, 0);
     // tslint:enable:no-any
   });
 });

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { AccessibilityDetailsList } from './AccessibilityDetailsList';
-import { BaseSlots, FabricSlots, IThemeRules, Text, ITextProps } from 'office-ui-fabric-react';
-import { getContrastRatio, isDark } from 'office-ui-fabric-react/lib/utilities/color/shades';
+import { FabricSlots, IThemeRules } from 'office-ui-fabric-react';
+import { getContrastRatio } from 'office-ui-fabric-react/lib/utilities/color/shades';
 import { IColor } from 'office-ui-fabric-react/lib/utilities/color/interfaces';
 import { MainPanelInnerContent } from '../shared/MainPanelStyles';
 import { ITheme } from 'office-ui-fabric-react/lib/Styling';

@@ -55,15 +55,6 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
               />
             </>
           )
-        },
-        {
-          sectionName: 'Implementation',
-          editUrl: `${baseUrl}/web/ColorsImplementation.md`,
-          content: (
-            <Markdown>
-              {require('!raw-loader!@uifabric/fabric-website/src/pages/Styles/Colors/docs/web/ColorsImplementation.md') as string}
-            </Markdown>
-          )
         }
       ];
 

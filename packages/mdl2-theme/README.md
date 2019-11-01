@@ -1,6 +1,6 @@
-# [Office UI Fabric React MDL2Theme](http://dev.microsoft.com/fabric)
+# @uifabric/mdl2-theme
 
-##### MDL2 Theme package for Office UI Fabric React
+**MDL2 Theme package for [Office UI Fabric React](https://dev.microsoft.com/fabric)**
 
 This package contains MDL2 coloring, theming and styling for use with Fabric components.
 

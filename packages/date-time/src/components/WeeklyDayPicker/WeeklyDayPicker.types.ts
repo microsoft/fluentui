@@ -1,5 +1,11 @@
 import { IBaseProps, IRefObject, IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
-import { ICalendarStrings, DayOfWeek, ICalendarFormatDateCallbacks, ICalendarIconStrings } from '../Calendar/Calendar.types';
+import {
+  ICalendarStrings,
+  DayOfWeek,
+  ICalendarFormatDateCallbacks,
+  ICalendarIconStrings,
+  AnimationDirection
+} from '../Calendar/Calendar.types';
 import { IStyle, ITheme } from '@uifabric/styling';
 import { ICalendarDayGridStyleProps, ICalendarDayGridStyles } from '../CalendarDayGrid/CalendarDayGrid.types';
 
@@ -87,6 +93,24 @@ export interface IWeeklyDayPickerProps extends IBaseProps<IWeeklyDayPicker> {
    * If set the Calendar will not allow selection of dates in this array.
    */
   restrictedDates?: Date[];
+
+  /**
+   * The cardinal directions for animation to occur during transitions, either horizontal or veritcal
+   */
+  animationDirection?: AnimationDirection;
+
+  /**
+   * Whether to show as a month picker. If false, shows only one week
+   * @defaultvalue false
+   */
+  showFullMonth?: boolean;
+
+  /**
+   * How many weeks to show if showFullMonth=true. If not provided, will show enough weeks to display the current
+   * month, between 4 and 6 depending
+   * @defaultvalue undefined
+   */
+  weeksToShow?: number;
 }
 
 export interface IWeeklyDayPickerStrings extends ICalendarStrings {

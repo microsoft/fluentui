@@ -25,7 +25,7 @@ exports[`Component Examples renders Shimmer.CustomElements.Example.tsx correctly
       & textarea {
         font-family: inherit;
       }
-      & > * {
+      & > .ms-Shimmer-container {
         margin-bottom: 10px;
         margin-left: 0;
         margin-right: 0;
@@ -138,6 +138,7 @@ exports[`Component Examples renders Shimmer.CustomElements.Example.tsx correctly
                   border-color: #ffffff;
                   border-top-style: solid;
                   border-top-width: 0px;
+                  border-width: 0px;
                   box-sizing: content-box;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
@@ -284,6 +285,7 @@ exports[`Component Examples renders Shimmer.CustomElements.Example.tsx correctly
                   border-color: #ffffff;
                   border-top-style: solid;
                   border-top-width: 5px;
+                  border-width: 0px;
                   box-sizing: content-box;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
@@ -380,6 +382,7 @@ exports[`Component Examples renders Shimmer.CustomElements.Example.tsx correctly
                   border-color: #ffffff;
                   border-top-style: solid;
                   border-top-width: 5px;
+                  border-width: 0px;
                   box-sizing: content-box;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
@@ -695,6 +698,7 @@ exports[`Component Examples renders Shimmer.CustomElements.Example.tsx correctly
                   border-color: #ffffff;
                   border-top-style: solid;
                   border-top-width: 5px;
+                  border-width: 0px;
                   box-sizing: content-box;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
@@ -820,6 +824,7 @@ exports[`Component Examples renders Shimmer.CustomElements.Example.tsx correctly
                   border-color: #ffffff;
                   border-top-style: solid;
                   border-top-width: 5px;
+                  border-width: 0px;
                   box-sizing: content-box;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
@@ -1014,6 +1019,7 @@ exports[`Component Examples renders Shimmer.CustomElements.Example.tsx correctly
                   border-color: #ffffff;
                   border-top-style: solid;
                   border-top-width: 0px;
+                  border-width: 0px;
                   box-sizing: content-box;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
@@ -1261,6 +1267,7 @@ exports[`Component Examples renders Shimmer.CustomElements.Example.tsx correctly
                     border-color: #ffffff;
                     border-top-style: solid;
                     border-top-width: 5px;
+                    border-width: 0px;
                     box-sizing: content-box;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
@@ -1386,6 +1393,7 @@ exports[`Component Examples renders Shimmer.CustomElements.Example.tsx correctly
                     border-color: #ffffff;
                     border-top-style: solid;
                     border-top-width: 5px;
+                    border-width: 0px;
                     box-sizing: content-box;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
@@ -1503,6 +1511,7 @@ exports[`Component Examples renders Shimmer.CustomElements.Example.tsx correctly
                     border-color: #ffffff;
                     border-top-style: solid;
                     border-top-width: 10px;
+                    border-width: 0px;
                     box-sizing: content-box;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
@@ -1628,6 +1637,7 @@ exports[`Component Examples renders Shimmer.CustomElements.Example.tsx correctly
                     border-color: #ffffff;
                     border-top-style: solid;
                     border-top-width: 10px;
+                    border-width: 0px;
                     box-sizing: content-box;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
@@ -1753,6 +1763,7 @@ exports[`Component Examples renders Shimmer.CustomElements.Example.tsx correctly
                     border-color: #ffffff;
                     border-top-style: solid;
                     border-top-width: 10px;
+                    border-width: 0px;
                     box-sizing: content-box;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;

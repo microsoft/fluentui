@@ -15,6 +15,8 @@ export namespace LocalizedFontNames {
   export const Vietnamese = 'Segoe UI Web (Vietnamese)';
   export const WestEuropean = 'Segoe UI Web (West European)';
   export const Selawik = 'Selawik Web';
+  export const Armenian = 'Segoe UI Web (Armenian)';
+  export const Georgian = 'Segoe UI Web (Georgian)';
 }
 
 // Font families with fallbacks, for the general regions.
@@ -33,6 +35,8 @@ export namespace LocalizedFontFamilies {
   export const Thai = `'Leelawadee UI Web', 'Kmer UI'`;
   export const Vietnamese = `'${LocalizedFontNames.Vietnamese}'`;
   export const WestEuropean = `'${LocalizedFontNames.WestEuropean}'`;
+  export const Armenian = `'${LocalizedFontNames.Armenian}'`;
+  export const Georgian = `'${LocalizedFontNames.Georgian}'`;
 }
 
 // By default, we favor system fonts for the default.
@@ -64,7 +68,9 @@ const LanguageToFontMap = {
   uk: LocalizedFontFamilies.Cyrillic,
   vi: LocalizedFontFamilies.Vietnamese,
   'zh-hans': LocalizedFontFamilies.ChineseSimplified,
-  'zh-hant': LocalizedFontFamilies.ChineseTraditional
+  'zh-hant': LocalizedFontFamilies.ChineseTraditional,
+  hy: LocalizedFontFamilies.Armenian,
+  ka: LocalizedFontFamilies.Georgian
 };
 
 // Standard font sizes.

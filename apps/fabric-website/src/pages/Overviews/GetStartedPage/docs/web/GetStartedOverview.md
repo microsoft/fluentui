@@ -11,4 +11,4 @@ Fabric Core is an [open-source](https://github.com/OfficeDev/office-ui-fabric-co
 
 <h3 class="for-designers">For Designers</h3>
 
-UI Fabric also provides resources to help you [use our design language in your site](#use-our-design-language).
+UI Fabric also provides resources to help you [use our design language in your site](#use-our-design-language-in-your-site).

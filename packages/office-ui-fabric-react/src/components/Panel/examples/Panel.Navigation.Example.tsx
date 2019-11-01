@@ -1,117 +1,48 @@
 import * as React from 'react';
-import { DefaultButton, IconButton } from 'office-ui-fabric-react/lib/Button';
-import { Panel, PanelType, IPanelProps } from 'office-ui-fabric-react/lib/Panel';
+import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
+import { Panel, IPanelProps } from 'office-ui-fabric-react/lib/Panel';
 import { IRenderFunction } from 'office-ui-fabric-react/lib/Utilities';
-import { getTheme, IconFontSizes } from 'office-ui-fabric-react/lib/Styling';
 import { SearchBox } from 'office-ui-fabric-react/lib/SearchBox';
+import { useConstCallback } from '@uifabric/react-hooks';
 
-export class PanelNavigationExample extends React.Component<
-  {},
-  {
-    showPanel: boolean;
-  }
-> {
-  constructor(props: {}) {
-    super(props);
-    this.state = { showPanel: false };
-  }
+const explanation =
+  'This panel has custom content in the navigation region (the part at the top which normally ' +
+  'contains the close button). If the custom content replaces the close button, be sure to provide ' +
+  'some other obvious way for users to close the panel.';
+const searchboxStyles = { root: { margin: '5px', height: 'auto', width: '100%' } };
 
-  public render(): JSX.Element {
-    return (
-      <div>
-        <DefaultButton secondaryText="Opens the Sample Panel" onClick={this._onShowPanel} text="Open Panel" />
-        <Panel
-          isOpen={this.state.showPanel}
-          type={PanelType.smallFixedFar}
-          onDismiss={this._onClosePanel}
-          isFooterAtBottom={true}
-          headerText="Panel with custom navigation content"
-          closeButtonAriaLabel="Close"
-          onRenderNavigationContent={this._onRenderNavigationContent}
-        >
-          <span>Content goes here.</span>
-        </Panel>
-      </div>
-    );
-  }
+export const PanelNavigationExample: React.FunctionComponent = () => {
+  const [isOpen, setIsOpen] = React.useState(false);
 
-  private _onClosePanel = () => {
-    this.setState({ showPanel: false });
-  };
+  const openPanel = useConstCallback(() => setIsOpen(true));
+  const dismissPanel = useConstCallback(() => setIsOpen(false));
 
-  private _onRenderNavigationContent = (props: IPanelProps, defaultRender: IRenderFunction<IPanelProps>): JSX.Element => {
-    const theme = getTheme();
+  const onRenderNavigationContent: IRenderFunction<IPanelProps> = useConstCallback((props, defaultRender) => (
+    <>
+      <SearchBox placeholder="Search here..." styles={searchboxStyles} ariaLabel="Sample search box. Does not actually search anything." />
+      {// This custom navigation still renders the close button (defaultRender).
+      // If you don't use defaultRender, be sure to provide some other way to close the panel.
+      defaultRender!(props)}
+    </>
+  ));
 
-    return (
-      <React.Fragment>
-        <SearchBox
-          placeholder="Search here..."
-          styles={{
-            root: {
-              margin: '5px',
-              height: 'auto',
-              width: '100%'
-            }
-          }}
-        />
-        <IconButton
-          styles={{
-            root: {
-              height: 'auto',
-              width: '44px',
-              color: theme.palette.neutralSecondary,
-              fontSize: IconFontSizes.large
-            },
-            menuIcon: {
-              display: 'none'
-            },
-            rootHovered: {
-              color: theme.palette.neutralPrimary
-            }
-          }}
-          menuProps={{
-            items: [
-              {
-                key: 'home',
-                text: 'Home',
-                iconProps: {
-                  iconName: 'Home'
-                }
-              },
-              {
-                key: 'refresh',
-                text: 'Refresh',
-                iconProps: {
-                  iconName: 'Refresh'
-                }
-              },
-              {
-                key: 'back',
-                text: 'Back',
-                iconProps: {
-                  iconName: 'Back'
-                }
-              },
-              {
-                key: 'forward',
-                text: 'Forward',
-                iconProps: {
-                  iconName: 'Forward'
-                }
-              }
-            ]
-          }}
-          data-is-visible={true}
-          iconProps={{
-            iconName: 'MoreVertical'
-          }}
-        />
-        {defaultRender(props)}
-      </React.Fragment>
-    );
-  };
-
-  private _onShowPanel = () => {
-    this.setState({ showPanel: true });
-  };
-}
+  return (
+    <div>
+      {explanation}
+      <br />
+      <br />
+      <DefaultButton text="Open panel" onClick={openPanel} />
+      <Panel
+        headerText="Panel with custom navigation content"
+        onRenderNavigationContent={onRenderNavigationContent}
+        isOpen={isOpen}
+        onDismiss={dismissPanel}
+        closeButtonAriaLabel="Close"
+      >
+        <div>
+          <p>{explanation}</p>
+        </div>
+      </Panel>
+    </div>
+  );
+};

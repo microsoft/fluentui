@@ -10,7 +10,8 @@ export enum FileIconType {
   folder = 2,
   genericFile = 3,
   listItem = 4,
-  sharedFolder = 5
+  sharedFolder = 5,
+  multiple = 6
 }
 
-export type FileIconTypeInput = 1 | 2 | 3 | 4 | 5;
+export type FileIconTypeInput = 1 | 2 | 3 | 4 | 5 | 6;

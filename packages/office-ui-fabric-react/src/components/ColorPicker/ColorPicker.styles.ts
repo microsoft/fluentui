@@ -32,8 +32,8 @@ export const getStyles = (props: IColorPickerStyleProps): IColorPickerStyles => 
       }
     ],
     tableHeader: [
+      theme.fonts.small,
       {
-        ...theme.fonts.small,
         selectors: {
           td: {
             paddingBottom: 4
@@ -44,6 +44,30 @@ export const getStyles = (props: IColorPickerStyleProps): IColorPickerStyles => 
     tableHexCell: [
       {
         width: '25%'
+      }
+    ],
+    colorSquare: [
+      'ms-ColorPicker-colorSquare',
+      {
+        width: 48,
+        height: 48,
+        margin: '0 0 0 8px',
+        border: '1px solid #c8c6c4'
+      }
+    ],
+    flexContainer: [
+      {
+        display: 'flex'
+      }
+    ],
+    flexSlider: [
+      {
+        flexGrow: '1'
+      }
+    ],
+    flexPreviewBox: [
+      {
+        flexGrow: '0'
       }
     ],
     input: [

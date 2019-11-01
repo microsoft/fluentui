@@ -22,7 +22,7 @@ import {
   NeedsRepublishingSignal
 } from '@uifabric/experiments';
 import { Checkbox, ChoiceGroup, IChoiceGroupOption, css } from 'office-ui-fabric-react';
-import { lorem } from '@uifabric/example-app-base';
+import { lorem } from '@uifabric/example-data';
 import * as SignalStylesModule from '../Signal.scss';
 import * as SignalsExampleStylesModule from './Signals.Example.scss';
 

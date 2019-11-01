@@ -64,7 +64,6 @@ export class ButtonPage extends React.Component<IComponentDemoPageProps, {}> {
           <PropertiesTableSet
             sources={[
               require<string>('!raw-loader!@uifabric/experiments/src/components/Button/Button.types.tsx'),
-              require<string>('!raw-loader!@uifabric/experiments/src/components/Button/ButtonVariants.types.ts'),
               require<string>('!raw-loader!@uifabric/experiments/src/components/Button/MenuButton/MenuButton.types.tsx'),
               require<string>('!raw-loader!@uifabric/experiments/src/components/Button/SplitButton/SplitButton.types.tsx')
             ]}

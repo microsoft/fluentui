@@ -97,7 +97,8 @@ export class PositioningContainer extends BaseComponent<IPositioningContainerPro
     this._positionAttempts = 0;
   }
 
-  public componentWillMount(): void {
+  // tslint:disable-next-line function-name
+  public UNSAFE_componentWillMount(): void {
     this._setTargetWindowAndElement(this._getTarget());
   }
 
@@ -110,7 +111,8 @@ export class PositioningContainer extends BaseComponent<IPositioningContainerPro
     this._updateAsyncPosition();
   }
 
-  public componentWillUpdate(newProps: IPositioningContainerProps): void {
+  // tslint:disable-next-line function-name
+  public UNSAFE_componentWillUpdate(newProps: IPositioningContainerProps): void {
     // If the target element changed, find the new one. If we are tracking
     // target with class name, always find element because we do not know if
     // fabric has rendered a new element and disposed the old element.
@@ -354,16 +356,18 @@ export class PositioningContainer extends BaseComponent<IPositioningContainerPro
   }
 
   private _setTargetWindowAndElement(target: HTMLElement | string | MouseEvent | IPoint | null): void {
+    const currentElement = this._positionedHost.current;
+
     if (target) {
       if (typeof target === 'string') {
         const currentDoc: Document = getDocument()!;
         this._target = currentDoc ? (currentDoc.querySelector(target) as HTMLElement) : null;
-        this._targetWindow = getWindow()!;
+        this._targetWindow = getWindow(currentElement)!;
       } else if ((target as MouseEvent).stopPropagation) {
         this._targetWindow = getWindow((target as MouseEvent).toElement as HTMLElement)!;
         this._target = target;
       } else if ((target as IPoint).x !== undefined && (target as IPoint).y !== undefined) {
-        this._targetWindow = getWindow()!;
+        this._targetWindow = getWindow(currentElement)!;
         this._target = target;
       } else {
         const targetElement: HTMLElement = target as HTMLElement;
@@ -371,7 +375,7 @@ export class PositioningContainer extends BaseComponent<IPositioningContainerPro
         this._target = target;
       }
     } else {
-      this._targetWindow = getWindow()!;
+      this._targetWindow = getWindow(currentElement)!;
     }
   }
 

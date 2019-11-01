@@ -2,7 +2,8 @@ import * as React from 'react';
 import { ISuggestionModel } from 'office-ui-fabric-react/lib/Pickers';
 import { ISuggestionsControlProps } from './Suggestions/Suggestions.types';
 import { SuggestionsStore } from './Suggestions/SuggestionsStore';
-import { IRefObject } from 'office-ui-fabric-react/lib/Utilities';
+import { IBaseProps } from 'office-ui-fabric-react/lib/Utilities';
+
 import { ISuggestionsCoreProps } from './Suggestions/Suggestions.types';
 
 export interface IFloatingSuggestions<TItem> {
@@ -25,14 +26,18 @@ export interface IFloatingSuggestions<TItem> {
 
   /** Gets the input text */
   inputText: string;
+
+  /** Gets the current selected index in the suggestions box*/
+  currentSelectedSuggestionIndex: number;
+
+  /** Forces the current selection to resolve, if it is valid */
+  forceResolveSuggestion: () => void;
 }
 
 // Type T is the type of the item that is displayed
 // and searched for by the people picker. For example, if the picker is
 // displaying persona's than type T could either be of Persona or Ipersona props
-export interface IFloatingSuggestionsProps<T> extends React.ClassAttributes<any> {
-  componentRef?: IRefObject<IFloatingSuggestions<T>>;
-
+export interface IFloatingSuggestionsProps<T> extends IBaseProps<IFloatingSuggestions<T>> {
   /**
    * The suggestions store
    */
@@ -75,7 +80,7 @@ export interface IFloatingSuggestionsProps<T> extends React.ClassAttributes<any>
   /**
    * A callback for when a suggestion is clicked
    */
-  onChange?: (item: T) => void;
+  onSuggestionSelected?: (item: T) => void;
 
   /**
    * ClassName for the picker.

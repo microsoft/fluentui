@@ -37,6 +37,7 @@ export class TeachingBubbleCondensedExample extends React.Component<{}, ITeachin
               hasCondensedHeadline={true}
               onDismiss={this._onDismiss}
               hasCloseIcon={true}
+              closeButtonAriaLabel="Close"
               headline="Discover what’s trending around you"
             >
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, nulla, ipsum? Molestiae quis aliquam magni harum non?

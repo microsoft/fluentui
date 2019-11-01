@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { Nav } from '../index';
+import { Nav } from 'office-ui-fabric-react/lib/Nav';
 
-export const NavNestedExample: React.StatelessComponent = () => {
+export const NavNestedExample: React.FunctionComponent = () => {
   return (
     <Nav
-      expandButtonAriaLabel="Expand or collapse"
+      ariaLabel="Nav example with nested links"
       groups={[
         {
           links: [
@@ -12,6 +12,8 @@ export const NavNestedExample: React.StatelessComponent = () => {
               name: 'Parent link 1',
               url: 'http://example.com',
               target: '_blank',
+              expandAriaLabel: 'Expand Parent link 1',
+              collapseAriaLabel: 'Collapse Parent link 1',
               links: [
                 {
                   name: 'Child link 1',
@@ -22,6 +24,8 @@ export const NavNestedExample: React.StatelessComponent = () => {
                   name: 'Child link 2',
                   url: 'http://example.com',
                   target: '_blank',
+                  expandAriaLabel: 'Expand Child link 2',
+                  collapseAriaLabel: 'Collapse Child link 2',
                   links: [
                     {
                       name: '3rd level link 1',
@@ -46,6 +50,8 @@ export const NavNestedExample: React.StatelessComponent = () => {
               name: 'Parent link 2',
               url: 'http://example.com',
               target: '_blank',
+              expandAriaLabel: 'Expand Parent link 2',
+              collapseAriaLabel: 'Collapse Parent link 2',
               links: [
                 {
                   name: 'Child link 4',

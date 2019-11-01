@@ -28,7 +28,7 @@ export class RatingButtonControlledExample extends React.Component<
           readOnly={true}
           allowZeroStars={true}
           getAriaLabel={this._getRatingComponentAriaLabel}
-          ariaLabelFormat={'{0} of {1} stars selected'}
+          ariaLabelFormat={'Select {0} of {1} stars'}
         />
         <PrimaryButton
           text={'Click to change rating to ' + (maxrating - this.state.rating)}

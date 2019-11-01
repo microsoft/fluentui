@@ -1,6 +1,59 @@
 # Change Log - @uifabric/file-type-icons
 
-This log was last generated on Fri, 14 Jun 2019 12:26:30 GMT and should not be manually modified.
+This log was last generated on Tue, 15 Oct 2019 12:32:28 GMT and should not be manually modified.
+
+## 7.1.2
+Tue, 15 Oct 2019 12:32:28 GMT
+
+### Patches
+
+- Fabric 7 mappings for filetypeicon cal/contact/fluid/pbids (caperez@microsoft.com)
+## 7.1.1
+Fri, 27 Sep 2019 12:33:04 GMT
+
+### Patches
+
+- Golden Folder grid view css cleanup for Fabric Master, rev filetype version param string (caperez@microsoft.com)
+## 7.1.0
+Thu, 12 Sep 2019 12:34:15 GMT
+
+### Minor changes
+
+- updating office file type to include .b (caperez@microsoft.com)
+## 7.0.8
+Wed, 04 Sep 2019 04:09:58 GMT
+
+### Patches
+
+- fix version file (kchau@microsoft.com)
+## 7.0.7
+Fri, 23 Aug 2019 12:35:28 GMT
+
+### Patches
+
+- Update npmignores, delete unused jest setup files (elcraig@microsoft.com)
+- Fix up readme and package.json descriptions (elcraig@microsoft.com)
+
+## 7.0.6
+Tue, 23 Jul 2019 16:33:51 GMT
+
+### Patches
+
+- Added multiple.png to FileIconType enum (t-shfozd@microsoft.com)
+
+## 7.0.5
+Wed, 17 Jul 2019 18:58:57 GMT
+
+### Patches
+
+- Adding @types/react and @types/react-dom to package.json that have peer dependencies on react and react-dom. (makotom@microsoft.com)
+
+## 7.0.4
+Mon, 01 Jul 2019 18:51:42 GMT
+
+### Patches
+
+- adds react-app-polyfill
 
 ## 7.0.3
 Fri, 14 Jun 2019 12:26:30 GMT
@@ -27,7 +80,7 @@ Wed, 12 Jun 2019 00:42:26 GMT
 
 - Update and dedupe React deps.
 - fix mapping for OneNote notebook filetype icon
-- updating getFileTypeIconProps to make reference to correct sharepoint… 
+- updating getFileTypeIconProps to make reference to correct sharepoint…
 
 ## 6.5.1
 Tue, 11 Jun 2019 12:21:35 GMT
@@ -77,7 +130,7 @@ Thu, 18 Apr 2019 12:31:50 GMT
 ### Patches
 
 - fix mapping for OneNote notebook filetype icon
-- updating getFileTypeIconProps to make reference to correct sharepoint… 
+- updating getFileTypeIconProps to make reference to correct sharepoint…
 
 ## 6.4.5
 Wed, 10 Apr 2019 12:33:17 GMT
@@ -99,7 +152,7 @@ Tue, 12 Mar 2019 12:31:43 GMT
 ### Patches
 
 - fix mapping for OneNote notebook filetype icon
-- updating getFileTypeIconProps to make reference to correct sharepoint… 
+- updating getFileTypeIconProps to make reference to correct sharepoint…
 
 ## 6.4.2
 Fri, 01 Mar 2019 13:33:08 GMT
@@ -134,7 +187,7 @@ Mon, 08 Oct 2018 12:24:15 GMT
 
 ### Patches
 
-- Moving tslint/prettier dependencies 
+- Moving tslint/prettier dependencies
 
 ## 6.1.2
 Fri, 21 Sep 2018 14:25:46 GMT

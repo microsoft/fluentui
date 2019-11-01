@@ -54,6 +54,17 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
               }
             </Markdown>
           )
+        },
+        {
+          sectionName: 'Customization',
+          editUrl: `${baseUrl}/web/TypographyCustomization.md`,
+          content: (
+            <Markdown>
+              {
+                require('!raw-loader!@uifabric/fabric-website/src/pages/Styles/TypographyPage/docs/web/TypographyCustomization.md') as string
+              }
+            </Markdown>
+          )
         }
       ];
   }

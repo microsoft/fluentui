@@ -5,6 +5,7 @@ import { IDetailsRowProps } from './DetailsRow.types';
 import { IDetailsListProps, IColumn, CheckboxVisibility } from './DetailsList.types';
 import { SelectionMode, Selection } from '../../utilities/selection/index';
 import { DetailsRow } from './DetailsRow';
+import { getTheme } from '../../Styling';
 
 const _columns: IColumn[] = [
   {
@@ -118,6 +119,6 @@ describe('DetailsRow', () => {
       />
     );
 
-    expect(onRenderCheckboxMock).toHaveBeenCalledWith({ checked: false }, expect.any(Function));
+    expect(onRenderCheckboxMock).toHaveBeenCalledWith({ checked: false, theme: getTheme() }, expect.any(Function));
   });
 });

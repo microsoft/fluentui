@@ -55,7 +55,7 @@ Array [
           padding-right: 20px;
           padding-top: 20px;
         }
-        & > :first-child {
+        & > .ms-Shimmer-container {
           flex-grow: 1;
         }
   >
@@ -228,6 +228,7 @@ Array [
                   border-color: #0078D4;
                   border-top-style: solid;
                   border-top-width: 4px;
+                  border-width: 0px;
                   box-sizing: content-box;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
@@ -353,6 +354,7 @@ Array [
                   border-color: #0078D4;
                   border-top-style: solid;
                   border-top-width: 4px;
+                  border-width: 0px;
                   box-sizing: content-box;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
@@ -478,6 +480,7 @@ Array [
                   border-color: #0078D4;
                   border-top-style: solid;
                   border-top-width: 4px;
+                  border-width: 0px;
                   box-sizing: content-box;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
@@ -603,6 +606,7 @@ Array [
                   border-color: #0078D4;
                   border-top-style: solid;
                   border-top-width: 4px;
+                  border-width: 0px;
                   box-sizing: content-box;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
@@ -923,6 +927,7 @@ Array [
                     border-color: #0078D4;
                     border-top-style: solid;
                     border-top-width: 10px;
+                    border-width: 0px;
                     box-sizing: content-box;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
@@ -1019,6 +1024,7 @@ Array [
                     border-color: #0078D4;
                     border-top-style: solid;
                     border-top-width: 6px;
+                    border-width: 0px;
                     box-sizing: content-box;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
@@ -1363,6 +1369,7 @@ Array [
                     border-color: #0078D4;
                     border-top-style: solid;
                     border-top-width: 10px;
+                    border-width: 0px;
                     box-sizing: content-box;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
@@ -1459,6 +1466,7 @@ Array [
                     border-color: #0078D4;
                     border-top-style: solid;
                     border-top-width: 6px;
+                    border-width: 0px;
                     box-sizing: content-box;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
@@ -1591,7 +1599,7 @@ Array [
   <div
     className=
 
-        & > * {
+        & > .ms-Shimmer-container {
           margin-bottom: 10px;
           margin-left: 0;
           margin-right: 0;

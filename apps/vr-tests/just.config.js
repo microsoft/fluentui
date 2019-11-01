@@ -3,4 +3,4 @@ const { task } = just;
 
 preset();
 
-task('build', 'build:node-lib');
+task('build', 'build:node-lib').cached();

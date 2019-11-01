@@ -2,7 +2,7 @@ import * as React from 'react';
 import { ITilesListProps, ITilesGridItem, ITilesGridSegment, TilesGridMode, ITileSize } from './TilesList.types';
 import { List, IPageProps, ScrollToMode } from 'office-ui-fabric-react/lib/List';
 import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react/lib/FocusZone';
-import { css, IRenderFunction, IRectangle } from 'office-ui-fabric-react/lib/Utilities';
+import { css, IRenderFunction, IRectangle, initializeFocusRects } from 'office-ui-fabric-react/lib/Utilities';
 import * as TilesListStylesModule from './TilesList.scss';
 import { Shimmer } from 'office-ui-fabric-react/lib/Shimmer';
 
@@ -90,9 +90,12 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
     this.state = {
       cells: this._getCells(props.items)
     };
+
+    initializeFocusRects();
   }
 
-  public componentWillReceiveProps(nextProps: ITilesListProps<TItem>): void {
+  // tslint:disable-next-line function-name
+  public UNSAFE_componentWillReceiveProps(nextProps: ITilesListProps<TItem>): void {
     if (nextProps.items !== this.props.items) {
       this.setState({
         cells: this._getCells(nextProps.items)
@@ -100,7 +103,8 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
     }
   }
 
-  public componentWillUpdate(nextProps: ITilesListProps<TItem>, nextState: ITilesListState<TItem>): void {
+  // tslint:disable-next-line function-name
+  public UNSAFE_componentWillUpdate(nextProps: ITilesListProps<TItem>, nextState: ITilesListState<TItem>): void {
     if (nextState.cells !== this.state.cells) {
       this._pageSpecificationCache = undefined;
     }

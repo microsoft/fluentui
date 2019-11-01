@@ -14,3 +14,5 @@ export * from './removeAnchorLink';
 export * from './SiteDefinition.types';
 export * from './string';
 export * from './windowWidth';
+export { getQueryParam } from '@uifabric/tsx-editor/lib/utilities/getQueryParam';
+export { getSetting } from '@uifabric/tsx-editor/lib/utilities/settings';

@@ -21,8 +21,8 @@ export const getClassNames = memoizeFunction(
 
       splitButtonContainer: mergeStyles(
         styles.splitButtonContainer,
-        checked &&
-          !disabled && [
+        !disabled &&
+          checked && [
             styles.splitButtonContainerChecked,
             {
               selectors: {

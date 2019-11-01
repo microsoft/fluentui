@@ -3,14 +3,14 @@ const path = require('path');
 const fs = require('fs');
 const execSync = require('../exec-sync');
 const exec = require('../exec');
-const { readRushJson } = require('../read-config');
 
 const prettierConfig = 'prettier.config.js';
 const prettierIgnore = '.prettierignore';
 const repoRoot = path.resolve(__dirname, '..', '..');
 const prettierRulesConfig = path.join(repoRoot, 'packages', 'prettier-rules', prettierConfig);
 const prettierIgnorePath = path.join(repoRoot, prettierIgnore);
-const prettierBin = path.join(__dirname, '..', 'node_modules', 'prettier', 'bin-prettier.js');
+const prettierBin = require.resolve('prettier/bin-prettier.js');
+const getAllPackageInfo = require('../monorepo/getAllPackageInfo');
 /** Array of absolute project paths with prettier configs */
 let projectsWithPrettierConfig;
 
@@ -22,11 +22,12 @@ function init() {
   }
 
   projectsWithPrettierConfig = [];
-  const rushJson = readRushJson();
-  if (rushJson) {
+  const projects = getAllPackageInfo();
+  if (projects) {
     // Check the root of each project for a custom prettier config, and save the project paths that have one
-    for (const project of rushJson.projects) {
-      const packagePath = path.resolve(repoRoot, project.projectFolder);
+    for (const project of Object.keys(projects)) {
+      const info = projects[project];
+      const packagePath = path.resolve(repoRoot, info.packagePath);
       if (fs.existsSync(path.join(packagePath, prettierConfig))) {
         projectsWithPrettierConfig.push(packagePath);
       }

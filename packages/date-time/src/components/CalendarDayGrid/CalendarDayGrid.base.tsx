@@ -1,5 +1,16 @@
 import * as React from 'react';
-import { BaseComponent, KeyCodes, css, getId, getRTL, getRTLSafeKeyCode, format, classNamesFunction, find } from '@uifabric/utilities';
+import {
+  BaseComponent,
+  KeyCodes,
+  css,
+  getId,
+  getRTL,
+  getRTLSafeKeyCode,
+  format,
+  classNamesFunction,
+  find,
+  findIndex
+} from '@uifabric/utilities';
 import { FocusZone } from 'office-ui-fabric-react/lib/FocusZone';
 import {
   addDays,
@@ -35,12 +46,21 @@ export interface IDayInfo {
 
 export interface ICalendarDayGridState {
   activeDescendantId?: string;
+
+  /**
+   * Weeks is a 2D array. Weeks[0] contains the last week of the prior range,
+   * Weeks[weeks.length - 1] contains first week of next range. These are for transition states.
+   *
+   * Weeks[1... weeks.length - 2] contains the actual visible data
+   */
   weeks?: IDayInfo[][];
+  animateBackwards?: boolean;
 }
 
 export class CalendarDayGridBase extends BaseComponent<ICalendarDayGridProps, ICalendarDayGridState> {
   private navigatedDay: HTMLElement | null;
   private days: { [key: string]: HTMLElement | null } = {};
+  private classNames: IProcessedStyleSet<ICalendarDayGridStyles>;
 
   public constructor(props: ICalendarDayGridProps) {
     super(props);
@@ -53,26 +73,56 @@ export class CalendarDayGridBase extends BaseComponent<ICalendarDayGridProps, IC
     this._onClose = this._onClose.bind(this);
   }
 
-  public componentWillReceiveProps(nextProps: ICalendarDayGridProps): void {
+  // tslint:disable-next-line function-name
+  public UNSAFE_componentWillReceiveProps(nextProps: ICalendarDayGridProps): void {
+    const weeks = this._getWeeks(nextProps);
+    let isBackwards = undefined;
+
+    if (this.state.weeks) {
+      const previousDate = this.state.weeks[0][0].originalDate;
+      const nextDate = weeks[0][0].originalDate;
+      if (previousDate < nextDate) {
+        isBackwards = false;
+      } else if (previousDate > nextDate) {
+        isBackwards = true;
+      }
+    }
+
     this.setState({
-      weeks: this._getWeeks(nextProps)
+      weeks: weeks,
+      animateBackwards: isBackwards
     });
   }
 
   public render(): JSX.Element {
-    const { activeDescendantId, weeks } = this.state;
-    const { styles, theme, className, dateRangeType, showWeekNumbers, labelledBy, lightenDaysOutsideNavigatedMonth } = this.props;
+    const { activeDescendantId, weeks, animateBackwards } = this.state;
+    const {
+      styles,
+      theme,
+      className,
+      dateRangeType,
+      showWeekNumbers,
+      labelledBy,
+      lightenDaysOutsideNavigatedMonth,
+      animationDirection
+    } = this.props;
 
-    const classNames = getClassNames(styles, {
+    this.classNames = getClassNames(styles, {
       theme: theme!,
       className: className,
       dateRangeType: dateRangeType,
       showWeekNumbers: showWeekNumbers,
-      lightenDaysOutsideNavigatedMonth: lightenDaysOutsideNavigatedMonth === undefined ? true : lightenDaysOutsideNavigatedMonth
+      lightenDaysOutsideNavigatedMonth: lightenDaysOutsideNavigatedMonth === undefined ? true : lightenDaysOutsideNavigatedMonth,
+      animationDirection: animationDirection,
+      animateBackwards: animateBackwards
     });
+    const classNames = this.classNames;
+
+    // When the month is highlighted get the corner dates so that styles can be added to them
+    const weekCorners: IWeekCorners = this._getWeekCornerStyles(classNames, weeks!);
 
     return (
-      <FocusZone>
+      <FocusZone className={classNames.wrapper}>
         <table
           className={classNames.table}
           aria-readonly="true"
@@ -83,7 +133,19 @@ export class CalendarDayGridBase extends BaseComponent<ICalendarDayGridProps, IC
         >
           <tbody>
             {this.renderMonthHeaderRow(classNames)}
-            {weeks!.map((week: IDayInfo[], weekIndex: number) => this.renderWeekRow(classNames, week, weekIndex))}
+            {this.renderRow(classNames, weeks![0], -1, weekCorners, classNames.firstTransitionWeek, 'presentation', true /*aria-hidden*/)}
+            {weeks!
+              .slice(1, weeks!.length - 1)
+              .map((week: IDayInfo[], weekIndex: number) => this.renderRow(classNames, week, weekIndex, weekCorners, classNames.weekRow))}
+            {this.renderRow(
+              classNames,
+              weeks![weeks!.length - 1],
+              -2,
+              weekCorners,
+              classNames.lastTransitionWeek,
+              'presentation',
+              true /*aria-hidden*/
+            )}
           </tbody>
         </table>
       </FocusZone>
@@ -98,27 +160,47 @@ export class CalendarDayGridBase extends BaseComponent<ICalendarDayGridProps, IC
   }
 
   private renderMonthHeaderRow = (classNames: IProcessedStyleSet<ICalendarDayGridStyles>): JSX.Element => {
-    const { showWeekNumbers, strings, firstDayOfWeek, allFocusable } = this.props;
+    const { showWeekNumbers, strings, firstDayOfWeek, allFocusable, weeksToShow } = this.props;
+    const { weeks } = this.state;
+    const dayLabels = strings.shortDays.slice();
+    const firstOfMonthIndex = findIndex(weeks![1], (day: IDayInfo) => day.originalDate.getDate() === 1);
+    if (weeksToShow === 1 && firstOfMonthIndex >= 0) {
+      // if we only show one week, replace the header with short month name
+      dayLabels[firstOfMonthIndex] = strings.shortMonths[weeks![1][firstOfMonthIndex].originalDate.getMonth()];
+    }
+
     return (
       <tr>
         {showWeekNumbers && <th className={classNames.dayCell} />}
-        {strings.shortDays.map((val: string, index: number) => (
-          <th
-            className={classNames.dayCell}
-            scope="col"
-            key={index}
-            title={strings.days[(index + firstDayOfWeek) % DAYS_IN_WEEK]}
-            aria-label={strings.days[(index + firstDayOfWeek) % DAYS_IN_WEEK]}
-            data-is-focusable={allFocusable ? true : undefined}
-          >
-            {strings.shortDays[(index + firstDayOfWeek) % DAYS_IN_WEEK]}
-          </th>
-        ))}
+        {dayLabels.map((val: string, index: number) => {
+          const i = (index + firstDayOfWeek) % DAYS_IN_WEEK;
+          const label = index === firstOfMonthIndex ? strings.days[i] + ' ' + dayLabels[i] : strings.days[i];
+          return (
+            <th
+              className={css(classNames.dayCell, classNames.weekDayLabelCell)}
+              scope="col"
+              key={dayLabels[i] + ' ' + index}
+              title={label}
+              aria-label={label}
+              data-is-focusable={allFocusable ? true : undefined}
+            >
+              {dayLabels[i]}
+            </th>
+          );
+        })}
       </tr>
     );
   };
 
-  private renderWeekRow = (classNames: IProcessedStyleSet<ICalendarDayGridStyles>, week: IDayInfo[], weekIndex: number): JSX.Element => {
+  private renderRow = (
+    classNames: IProcessedStyleSet<ICalendarDayGridStyles>,
+    week: IDayInfo[],
+    weekIndex: number,
+    weekCorners?: IWeekCorners,
+    rowClassName?: string,
+    ariaRole?: string,
+    ariaHidden?: boolean
+  ): JSX.Element => {
     const { showWeekNumbers, firstDayOfWeek, firstWeekOfYear, navigatedDate, strings } = this.props;
     const { weeks } = this.state;
     const weekNumbers = showWeekNumbers ? getWeekNumbersInMonth(weeks!.length, firstDayOfWeek, firstWeekOfYear, navigatedDate) : null;
@@ -126,13 +208,13 @@ export class CalendarDayGridBase extends BaseComponent<ICalendarDayGridProps, IC
     const titleString = weekNumbers ? strings.weekNumberFormatString && format(strings.weekNumberFormatString, weekNumbers[weekIndex]) : '';
 
     return (
-      <tr key={weekNumbers ? weekNumbers[weekIndex] : weekIndex}>
+      <tr role={ariaRole} className={rowClassName} key={weekIndex + '_' + week[0].key}>
         {showWeekNumbers && weekNumbers && (
           <th className={classNames.weekNumberCell} key={weekIndex} title={titleString} aria-label={titleString} scope="row">
             <span>{weekNumbers[weekIndex]}</span>
           </th>
         )}
-        {week.map((day: IDayInfo, dayIndex: number) => this.renderDayCells(classNames, day, dayIndex, weekIndex))}
+        {week.map((day: IDayInfo, dayIndex: number) => this.renderDayCells(classNames, day, dayIndex, weekIndex, weekCorners, ariaHidden))}
       </tr>
     );
   };
@@ -141,43 +223,44 @@ export class CalendarDayGridBase extends BaseComponent<ICalendarDayGridProps, IC
     classNames: IProcessedStyleSet<ICalendarDayGridStyles>,
     day: IDayInfo,
     dayIndex: number,
-    weekIndex: number
+    weekIndex: number,
+    weekCorners?: IWeekCorners,
+    ariaHidden?: boolean
   ): JSX.Element => {
     const { navigatedDate, dateTimeFormatter, allFocusable, strings } = this.props;
-    const { activeDescendantId, weeks } = this.state;
+    const { activeDescendantId } = this.state;
     const isNavigatedDate = compareDates(navigatedDate, day.originalDate);
-
-    // When the month is highlighted get the corner dates so that styles can be added to them
-    const weekCorners: IWeekCorners = this._getWeekCornerStyles(classNames, weeks!);
 
     return (
       <td
         key={day.key}
         className={css(
           classNames.dayCell,
-          this._getHighlightedCornerStyle(weekCorners, dayIndex, weekIndex),
+          weekCorners && this._getHighlightedCornerStyle(weekCorners, dayIndex, weekIndex),
           day.isSelected && classNames.daySelected,
           !day.isInBounds && classNames.dayOutsideBounds,
           !day.isInMonth && classNames.dayOutsideNavigatedMonth
         )}
         ref={(element: HTMLTableCellElement) => this._setDayCellRef(element, day, isNavigatedDate)}
-        onClick={day.isInBounds ? day.onSelected : undefined}
-        onMouseOver={this.onMouseOverDay(day)}
-        onMouseDown={this.onMouseDownDay(day)}
-        onMouseUp={this.onMouseUpDay(day)}
-        onMouseOut={this.onMouseOutDay(day)}
+        aria-hidden={ariaHidden}
+        onClick={day.isInBounds && !ariaHidden ? day.onSelected : undefined}
+        onMouseOver={!ariaHidden ? this.onMouseOverDay(day) : undefined}
+        onMouseDown={!ariaHidden ? this.onMouseDownDay(day) : undefined}
+        onMouseUp={!ariaHidden ? this.onMouseUpDay(day) : undefined}
+        onMouseOut={!ariaHidden ? this.onMouseOutDay(day) : undefined}
       >
         <button
           key={day.key + 'button'}
+          aria-hidden={ariaHidden}
           className={css(classNames.dayButton, day.isToday && classNames.dayIsToday)}
-          onKeyDown={this._onDayKeyDown(day.originalDate, weekIndex, dayIndex)}
+          onKeyDown={!ariaHidden ? this._onDayKeyDown(day.originalDate, weekIndex, dayIndex) : undefined}
           aria-label={dateTimeFormatter.formatMonthDayYear(day.originalDate, strings)}
           id={isNavigatedDate ? activeDescendantId : undefined}
           aria-selected={day.isInBounds ? day.isSelected : undefined}
-          data-is-focusable={allFocusable || (day.isInBounds ? true : undefined)}
+          data-is-focusable={!ariaHidden && (allFocusable || (day.isInBounds ? true : undefined))}
           ref={(element: HTMLButtonElement) => this._setDayRef(element, day, isNavigatedDate)}
           disabled={!allFocusable && !day.isInBounds}
-          aria-disabled={!day.isInBounds}
+          aria-disabled={!ariaHidden && !day.isInBounds}
           type="button"
           role="gridcell" // create grid structure
           aria-readonly={true} // prevent grid from being "editable"
@@ -232,7 +315,7 @@ export class CalendarDayGridBase extends BaseComponent<ICalendarDayGridProps, IC
     const isInCurrentView =
       this.state.weeks &&
       nextDate &&
-      this.state.weeks.some((week: IDayInfo[]) => {
+      this.state.weeks.slice(1, this.state.weeks.length - 1).some((week: IDayInfo[]) => {
         return week.some((day: IDayInfo) => {
           return compareDates(day.originalDate, nextDate!);
         });
@@ -281,12 +364,20 @@ export class CalendarDayGridBase extends BaseComponent<ICalendarDayGridProps, IC
   };
 
   private _onSelectDate = (selectedDate: Date): void => {
-    const { onSelectDate, onNavigateDate, dateRangeType, firstDayOfWeek, minDate, maxDate, workWeekDays } = this.props;
+    const {
+      onSelectDate,
+      onNavigateDate,
+      dateRangeType,
+      firstDayOfWeek,
+      minDate,
+      maxDate,
+      workWeekDays,
+      daysToSelectInDayView
+    } = this.props;
 
-    let dateRange = getDateRangeArray(selectedDate, dateRangeType, firstDayOfWeek, workWeekDays);
-    if (dateRangeType !== DateRangeType.Day) {
-      dateRange = this._getBoundedDateRange(dateRange, minDate, maxDate);
-    }
+    let dateRange = getDateRangeArray(selectedDate, dateRangeType, firstDayOfWeek, workWeekDays, daysToSelectInDayView);
+    dateRange = this._getBoundedDateRange(dateRange, minDate, maxDate);
+
     dateRange = dateRange.filter((d: Date) => {
       return !this._getIsRestrictedDate(d);
     });
@@ -311,12 +402,23 @@ export class CalendarDayGridBase extends BaseComponent<ICalendarDayGridProps, IC
    * of every day in the grid. Convenient for helping with conversions between day refs and Date objects during callbacks.
    */
   private _getWeeks(propsToUse: ICalendarDayGridProps): IDayInfo[][] {
-    const { navigatedDate, selectedDate, dateRangeType, firstDayOfWeek, today, minDate, maxDate, weeksToShow, workWeekDays } = propsToUse;
+    const {
+      navigatedDate,
+      selectedDate,
+      dateRangeType,
+      firstDayOfWeek,
+      today,
+      minDate,
+      maxDate,
+      weeksToShow,
+      workWeekDays,
+      daysToSelectInDayView
+    } = propsToUse;
 
     let date;
     if (weeksToShow && weeksToShow <= 4) {
       // if showing less than a full month, just use date == navigatedDate
-      date = new Date(navigatedDate.toDateString());
+      date = new Date(navigatedDate.toString());
     } else {
       date = new Date(navigatedDate.getFullYear(), navigatedDate.getMonth(), 1);
     }
@@ -328,15 +430,31 @@ export class CalendarDayGridBase extends BaseComponent<ICalendarDayGridProps, IC
       date.setDate(date.getDate() - 1);
     }
 
+    // add the transition week as last week of previous range
+    date = addDays(date, -DAYS_IN_WEEK);
+
     // a flag to indicate whether all days of the week are outside the month
     let isAllDaysOfWeekOutOfMonth = false;
 
-    // in work week view we want to select the whole week
-    const selectedDateRangeType = dateRangeType === DateRangeType.WorkWeek ? DateRangeType.Week : dateRangeType;
-    let selectedDates = getDateRangeArray(selectedDate, selectedDateRangeType, firstDayOfWeek, workWeekDays);
-    if (dateRangeType !== DateRangeType.Day) {
-      selectedDates = this._getBoundedDateRange(selectedDates, minDate, maxDate);
+    // in work week view if the days aren't contiguous we use week view instead
+    let selectedDateRangeType = dateRangeType;
+    if (workWeekDays && dateRangeType === DateRangeType.WorkWeek) {
+      const sortedWWDays = workWeekDays.sort();
+      let isContiguous = true;
+      for (let i = 1; i < sortedWWDays.length; i++) {
+        if (sortedWWDays[i] !== sortedWWDays[i - 1] + 1) {
+          isContiguous = false;
+          break;
+        }
+      }
+
+      if (!isContiguous) {
+        selectedDateRangeType = DateRangeType.Week;
+      }
     }
+
+    let selectedDates = getDateRangeArray(selectedDate, selectedDateRangeType, firstDayOfWeek, workWeekDays, daysToSelectInDayView);
+    selectedDates = this._getBoundedDateRange(selectedDates, minDate, maxDate);
 
     let shouldGetWeeks = true;
 
@@ -368,10 +486,10 @@ export class CalendarDayGridBase extends BaseComponent<ICalendarDayGridProps, IC
       }
 
       // We append the condition of the loop depending upon the showSixWeeksByDefault prop.
-      shouldGetWeeks = weeksToShow ? weekIndex < weeksToShow : !isAllDaysOfWeekOutOfMonth;
-      if (shouldGetWeeks) {
-        weeks.push(week);
-      }
+      shouldGetWeeks = weeksToShow ? weekIndex < weeksToShow + 1 : !isAllDaysOfWeekOutOfMonth || weekIndex === 0;
+
+      // we don't check shouldGetWeeks before pushing because we want to add one extra week for transition state
+      weeks.push(week);
     }
 
     return weeks;
@@ -420,7 +538,7 @@ export class CalendarDayGridBase extends BaseComponent<ICalendarDayGridProps, IC
    *
    */
 
-  private _getWeekCornerStyles(classNames: IProcessedStyleSet<ICalendarDayGridStyles>, weeks: IDayInfo[][]): IWeekCorners {
+  private _getWeekCornerStyles(classNames: IProcessedStyleSet<ICalendarDayGridStyles>, initialWeeks: IDayInfo[][]): IWeekCorners {
     const weekCornersStyled: { [key: string]: string } = {};
     /* need to handle setting all of the corners on arbitrarily shaped blobs
           __
@@ -436,42 +554,48 @@ export class CalendarDayGridBase extends BaseComponent<ICalendarDayGridProps, IC
       F needs top right rounding
     */
 
+    // cut off the animation transition weeks
+    const weeks = initialWeeks.slice(1, initialWeeks.length - 1);
+
     // if there's an item above, lose both top corners. Item below, lose both bottom corners, etc.
     weeks.forEach((week: IDayInfo[], weekIndex: number) => {
       week.forEach((day: IDayInfo, dayIndex: number) => {
         const above =
           weeks[weekIndex - 1] &&
           weeks[weekIndex - 1][dayIndex] &&
-          this.isInSameHoverRange(weeks[weekIndex - 1][dayIndex].originalDate, weeks[weekIndex][dayIndex].originalDate);
+          this.isInSameHoverRange(
+            weeks[weekIndex - 1][dayIndex].originalDate,
+            day.originalDate,
+            weeks[weekIndex - 1][dayIndex].isSelected,
+            day.isSelected
+          );
         const below =
           weeks[weekIndex + 1] &&
           weeks[weekIndex + 1][dayIndex] &&
-          this.isInSameHoverRange(weeks[weekIndex + 1][dayIndex].originalDate, weeks[weekIndex][dayIndex].originalDate);
+          this.isInSameHoverRange(
+            weeks[weekIndex + 1][dayIndex].originalDate,
+            day.originalDate,
+            weeks[weekIndex + 1][dayIndex].isSelected,
+            day.isSelected
+          );
         const left =
           weeks[weekIndex][dayIndex - 1] &&
-          this.isInSameHoverRange(weeks[weekIndex][dayIndex - 1].originalDate, weeks[weekIndex][dayIndex].originalDate);
+          this.isInSameHoverRange(
+            weeks[weekIndex][dayIndex - 1].originalDate,
+            day.originalDate,
+            weeks[weekIndex][dayIndex - 1].isSelected,
+            day.isSelected
+          );
         const right =
           weeks[weekIndex][dayIndex + 1] &&
-          this.isInSameHoverRange(weeks[weekIndex][dayIndex + 1].originalDate, weeks[weekIndex][dayIndex].originalDate);
+          this.isInSameHoverRange(
+            weeks[weekIndex][dayIndex + 1].originalDate,
+            day.originalDate,
+            weeks[weekIndex][dayIndex + 1].isSelected,
+            day.isSelected
+          );
 
-        const roundedTopLeft = !above && !left;
-        const roundedTopRight = !above && !right;
-        const roundedBottomLeft = !below && !left;
-        const roundedBottomRight = !below && !right;
-
-        let style = '';
-        if (roundedTopLeft) {
-          style = getRTL() ? style.concat(classNames.topRightCornerDate + ' ') : style.concat(classNames.topLeftCornerDate + ' ');
-        }
-        if (roundedTopRight) {
-          style = getRTL() ? style.concat(classNames.topLeftCornerDate + ' ') : style.concat(classNames.topRightCornerDate + ' ');
-        }
-        if (roundedBottomLeft) {
-          style = getRTL() ? style.concat(classNames.bottomRightCornerDate + ' ') : style.concat(classNames.bottomLeftCornerDate + ' ');
-        }
-        if (roundedBottomRight) {
-          style = getRTL() ? style.concat(classNames.bottomLeftCornerDate + ' ') : style.concat(classNames.bottomRightCornerDate + ' ');
-        }
+        const style = this._calculateRoundedStyles(classNames, above, below, left, right);
 
         weekCornersStyled[weekIndex + '_' + dayIndex] = style;
       });
@@ -480,14 +604,53 @@ export class CalendarDayGridBase extends BaseComponent<ICalendarDayGridProps, IC
     return weekCornersStyled;
   }
 
-  private isInSameHoverRange = (date1: Date, date2: Date): boolean => {
+  private _calculateRoundedStyles(
+    classNames: IProcessedStyleSet<ICalendarDayGridStyles>,
+    above: boolean,
+    below: boolean,
+    left: boolean,
+    right: boolean
+  ): string {
+    let style = '';
+    const roundedTopLeft = !above && !left;
+    const roundedTopRight = !above && !right;
+    const roundedBottomLeft = !below && !left;
+    const roundedBottomRight = !below && !right;
+
+    if (roundedTopLeft) {
+      style = getRTL() ? style.concat(classNames.topRightCornerDate + ' ') : style.concat(classNames.topLeftCornerDate + ' ');
+    }
+    if (roundedTopRight) {
+      style = getRTL() ? style.concat(classNames.topLeftCornerDate + ' ') : style.concat(classNames.topRightCornerDate + ' ');
+    }
+    if (roundedBottomLeft) {
+      style = getRTL() ? style.concat(classNames.bottomRightCornerDate + ' ') : style.concat(classNames.bottomLeftCornerDate + ' ');
+    }
+    if (roundedBottomRight) {
+      style = getRTL() ? style.concat(classNames.bottomLeftCornerDate + ' ') : style.concat(classNames.bottomRightCornerDate + ' ');
+    }
+
+    return style;
+  }
+
+  private isInSameHoverRange = (date1: Date, date2: Date, date1Selected: boolean, date2Selected: boolean): boolean => {
     const { dateRangeType, firstDayOfWeek, workWeekDays } = this.props;
 
     // The hover state looks weird with non-contiguous days in work week view. In work week, show week hover state
     const dateRangeHoverType = dateRangeType === DateRangeType.WorkWeek ? DateRangeType.Week : dateRangeType;
 
+    // we do not pass daysToSelectInDayView because we handle setting those styles dyanamically in onMouseOver
     const dateRange = getDateRangeArray(date1, dateRangeHoverType, firstDayOfWeek, workWeekDays);
 
+    if (date1Selected !== date2Selected) {
+      // if one is selected and the other is not, they can't be in the same range
+      return false;
+    } else if (date1Selected && date2Selected) {
+      // if they're both selected at the same time they must be in the same range
+      return true;
+    }
+
+    // otherwise, both must be unselected, so check the dateRange
     return dateRange.filter((date: Date) => date.getTime() === date2.getTime()).length > 0;
   };
 
@@ -504,16 +667,16 @@ export class CalendarDayGridBase extends BaseComponent<ICalendarDayGridProps, IC
    *
    */
 
-  private getRefsInRangeOfDay = (day: IDayInfo) => {
+  private getDayInfosInRangeOfDay = (day: IDayInfo): IDayInfo[] => {
     const { weeks } = this.state;
-    const { dateRangeType, firstDayOfWeek, workWeekDays } = this.props;
+    const { dateRangeType, firstDayOfWeek, workWeekDays, daysToSelectInDayView } = this.props;
 
     // The hover state looks weird with non-contiguous days in work week view. In work week, show week hover state
     const dateRangeHoverType = dateRangeType === DateRangeType.WorkWeek ? DateRangeType.Week : dateRangeType;
 
     // gets all the dates for the given date range type that are in the same date range as the given day
-    const dateRange = getDateRangeArray(day.originalDate, dateRangeHoverType, firstDayOfWeek, workWeekDays).map((date: Date) =>
-      date.getTime()
+    const dateRange = getDateRangeArray(day.originalDate, dateRangeHoverType, firstDayOfWeek, workWeekDays, daysToSelectInDayView).map(
+      (date: Date) => date.getTime()
     );
 
     // gets all the day refs for the given dates
@@ -521,6 +684,10 @@ export class CalendarDayGridBase extends BaseComponent<ICalendarDayGridProps, IC
       return accumulatedValue.concat(currentWeek.filter((weekDay: IDayInfo) => dateRange.indexOf(weekDay.originalDate.getTime()) !== -1));
     }, []);
 
+    return dayInfosInRange;
+  };
+
+  private getRefsFromDayInfos = (dayInfosInRange: IDayInfo[]): (HTMLElement | null)[] => {
     let dayRefs: (HTMLElement | null)[] = [];
     if (this.days) {
       dayRefs = dayInfosInRange.map((dayInfo: IDayInfo) => this.days[dayInfo.key]);
@@ -531,11 +698,31 @@ export class CalendarDayGridBase extends BaseComponent<ICalendarDayGridProps, IC
 
   private onMouseOverDay = (day: IDayInfo) => {
     return (ev: React.MouseEvent<HTMLElement>) => {
-      const dayRefs = this.getRefsInRangeOfDay(day);
+      const dayInfos = this.getDayInfosInRangeOfDay(day);
+      const dayRefs = this.getRefsFromDayInfos(dayInfos);
 
-      dayRefs.forEach((dayRef: HTMLElement) => {
+      dayRefs.forEach((dayRef: HTMLElement, index: number) => {
         if (dayRef) {
           dayRef.classList.add('ms-CalendarDay-hoverStyle');
+          if (
+            !dayInfos[index].isSelected &&
+            this.props.dateRangeType === DateRangeType.Day &&
+            this.props.daysToSelectInDayView &&
+            this.props.daysToSelectInDayView > 1
+          ) {
+            // remove the static classes first to overwrite them
+            dayRef.classList.remove(
+              this.classNames.bottomLeftCornerDate!,
+              this.classNames.bottomRightCornerDate!,
+              this.classNames.topLeftCornerDate!,
+              this.classNames.topRightCornerDate!
+            );
+
+            const classNames = this._calculateRoundedStyles(this.classNames, false, false, index > 0, index < dayRefs.length - 1).trim();
+            if (classNames) {
+              dayRef.classList.add(...classNames.split(' '));
+            }
+          }
         }
       });
     };
@@ -543,7 +730,8 @@ export class CalendarDayGridBase extends BaseComponent<ICalendarDayGridProps, IC
 
   private onMouseDownDay = (day: IDayInfo) => {
     return (ev: React.MouseEvent<HTMLElement>) => {
-      const dayRefs = this.getRefsInRangeOfDay(day);
+      const dayInfos = this.getDayInfosInRangeOfDay(day);
+      const dayRefs = this.getRefsFromDayInfos(dayInfos);
 
       dayRefs.forEach((dayRef: HTMLElement) => {
         if (dayRef) {
@@ -555,7 +743,8 @@ export class CalendarDayGridBase extends BaseComponent<ICalendarDayGridProps, IC
 
   private onMouseUpDay = (day: IDayInfo) => {
     return (ev: React.MouseEvent<HTMLElement>) => {
-      const dayRefs = this.getRefsInRangeOfDay(day);
+      const dayInfos = this.getDayInfosInRangeOfDay(day);
+      const dayRefs = this.getRefsFromDayInfos(dayInfos);
 
       dayRefs.forEach((dayRef: HTMLElement) => {
         if (dayRef) {
@@ -567,12 +756,24 @@ export class CalendarDayGridBase extends BaseComponent<ICalendarDayGridProps, IC
 
   private onMouseOutDay = (day: IDayInfo) => {
     return (ev: React.MouseEvent<HTMLElement>) => {
-      const dayRefs = this.getRefsInRangeOfDay(day);
+      const dayInfos = this.getDayInfosInRangeOfDay(day);
+      const dayRefs = this.getRefsFromDayInfos(dayInfos);
 
-      dayRefs.forEach((dayRef: HTMLElement) => {
+      dayRefs.forEach((dayRef: HTMLElement, index: number) => {
         if (dayRef) {
           dayRef.classList.remove('ms-CalendarDay-hoverStyle');
           dayRef.classList.remove('ms-CalendarDay-pressedStyle');
+          if (
+            !dayInfos[index].isSelected &&
+            this.props.dateRangeType === DateRangeType.Day &&
+            this.props.daysToSelectInDayView &&
+            this.props.daysToSelectInDayView > 1
+          ) {
+            const classNames = this._calculateRoundedStyles(this.classNames, false, false, index > 0, index < dayRefs.length - 1).trim();
+            if (classNames) {
+              dayRef.classList.remove(...classNames.split(' '));
+            }
+          }
         }
       });
     };

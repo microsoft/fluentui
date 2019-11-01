@@ -10,19 +10,18 @@ import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
 
 const getClassNames = classNamesFunction<IDonutChartStyleProps, IDonutChartStyles>();
 
-export class DonutChartBase extends React.Component<
-  IDonutChartProps,
-  {
-    showHover: boolean;
-    value: string | undefined;
-    legend: string | undefined;
-    _width: number | undefined;
-    _height: number | undefined;
-    activeLegend: string;
-    color: string | undefined;
-    isLegendSelected: boolean;
-  }
-> {
+interface IDonutChartState {
+  showHover?: boolean;
+  value?: string | undefined;
+  legend?: string | undefined;
+  _width?: number | undefined;
+  _height?: number | undefined;
+  activeLegend?: string;
+  color?: string | undefined;
+  isLegendSelected?: boolean;
+}
+
+export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChartState> {
   public static defaultProps: Partial<IDonutChartProps> = {
     innerRadius: 0
   };
@@ -32,6 +31,18 @@ export class DonutChartBase extends React.Component<
   private _uniqText: string;
   // tslint:disable:no-any
   private _currentHoverElement: any;
+
+  public static getDerivedStateFromProps(
+    nextProps: Readonly<IDonutChartProps>,
+    prevState: Readonly<IDonutChartState>
+  ): Partial<IDonutChartState> | null {
+    if (nextProps.height && nextProps.height !== prevState._height && nextProps.width !== prevState._width) {
+      const reducedHeight = nextProps.height / 5;
+      return { _width: nextProps.width, _height: nextProps.height - reducedHeight };
+    }
+    return null;
+  }
+
   constructor(props: IDonutChartProps) {
     super(props);
     this.state = {
@@ -53,9 +64,13 @@ export class DonutChartBase extends React.Component<
         .substring(7);
   }
   public componentDidMount(): void {
+    /* 80% Height to the Chart
+       20% Height to the Legends
+    */
+    const reducedHeight = this._rootElem!.offsetHeight / 5;
     this.setState({
       _width: this._rootElem!.offsetWidth,
-      _height: this._rootElem!.offsetHeight
+      _height: this._rootElem!.offsetHeight - reducedHeight
     });
   }
   public render(): JSX.Element {

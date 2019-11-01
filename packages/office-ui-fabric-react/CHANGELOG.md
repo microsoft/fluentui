@@ -1,6 +1,888 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 26 Jun 2019 21:48:30 GMT and should not be manually modified.
+This log was last generated on Fri, 01 Nov 2019 01:02:38 GMT and should not be manually modified.
+
+## 7.56.2
+Fri, 01 Nov 2019 01:02:38 GMT
+
+### Patches
+
+- Panel: improve examples (elcraig@microsoft.com)
+## 7.56.1
+Wed, 30 Oct 2019 19:36:52 GMT
+
+### Patches
+
+- ComboBox: Allow Space KeyUp event to propagate (xgao@microsoft.com)
+- SpinButton: fix vertical alignment relative to other fields (elcraig@microsoft.com)
+- Option to use checkbox role in Toggle component (satimals@microsoft.com)
+- Refactor Stack import to be relative not OUFR root (KevinTCoughlin@users.noreply.github.com)
+## 7.56.0
+Tue, 29 Oct 2019 12:36:28 GMT
+
+### Minor changes
+
+- Remove re-export of @uifabric/example-data from office-ui-fabric-react (KevinTCoughlin@users.noreply.github.com)
+### Patches
+
+- CommandBarButton: Fix height issue when commandbar buttons iconOnly props set to true (v-mare@microsoft.com)
+## 7.55.3
+Mon, 28 Oct 2019 22:25:45 GMT
+
+### Patches
+
+-  Added role to the selection list for BasePickerListBelow control so screen readers will read off "n" of "m" when arrowing through the list. (malind@microsoft.com)
+## 7.55.2
+Mon, 28 Oct 2019 12:31:48 GMT
+
+### Patches
+
+- Panel: Use semantic colors (elcraig@microsoft.com)
+- removing circular IPoint import (mehanig@gmail.com)
+## 7.55.1
+Fri, 25 Oct 2019 12:31:49 GMT
+
+### Patches
+
+- Facepile: added ARIA label so ARIA input fields should have an accessible name addressing issue #10877 (marygans@microsoft.com)
+- Dropdown: Moving announcement of selected options from aria-describedby to aria-labelledby. (Humberto.Morimoto@microsoft.com)
+- Fix button _onDismissMenu to accept undefined event params (mgodbolt@microsoft.com)
+## 7.55.0
+Thu, 24 Oct 2019 12:31:42 GMT
+
+### Minor changes
+
+- Do not expand date picker on TextField click when disableAutoFocus is true and allowTextInput is true. (phtucker@microsoft.com)
+### Patches
+
+- FocusZone: unhooking capture keydown handler at the right time to avoid a race condition. (dzearing@hotmail.com)
+- Make DetailsRow data-is-focusable configurable (KevinTCoughlin@users.noreply.github.com)
+- Adds aria label to basebutton on the outer div (kchau@microsoft.com)
+## 7.54.1
+Wed, 23 Oct 2019 12:32:05 GMT
+
+### Patches
+
+- Dropdown: Added note to documentation page calling out Dropdown's behavior of rendering in a panel in very small viewports. (mgodbolt@microsoft.com)
+- TagPicker: make tag item and input text to respect theme color and have correct font (xgao@microsoft.com)
+- Suggestions: Fix problem where search for more button wouldn't highlight correctly (joschect@microsoft.com)
+- TagPicker: Update snapshots (jdh@microsoft.com)
+## 7.54.0
+Tue, 22 Oct 2019 12:32:05 GMT
+
+### Minor changes
+
+- ContextualMenu: Tightening types of onDismiss callback. (Humberto.Morimoto@microsoft.com)
+### Patches
+
+- consume suggestionsAvailableAlertText prop to floating picker, so that the screen readers can announce the apperance of suggestions when the prop is set. (email not defined)
+- Fix getDerivedStateFromProps signatures (elcraig@microsoft.com)
+- TagPicker: prevent long items from overflowing narrow container (elcraig@microsoft.com)
+- TagPicker: Close button high contrast color fix (joschect@microsoft.com)
+## 7.53.1
+Mon, 21 Oct 2019 12:33:23 GMT
+
+### Patches
+
+- Facepile: Added presence example (v-mare@microsoft.com)
+- Pickers: Bring pickers in line with W3 ARIA 1.1 specs. (joschect@microsoft.com)
+- Fix typo (norton.wong@genedata.com)
+## 7.53.0
+Fri, 18 Oct 2019 12:31:12 GMT
+
+### Minor changes
+
+- Fix virtualization state tracking in List and DetailsList (tmichon@microsoft.com)
+### Patches
+
+- Allow data attribute passing for SpinButton (xgao@microsoft.com)
+- Dropdown: fix a few of the aria regressions (joschect@microsoft.com)
+- Get rid of DetailsList example snapshot churn (elcraig@microsoft.com)
+## 7.52.0
+Thu, 17 Oct 2019 12:33:02 GMT
+
+### Minor changes
+
+- Dropdown: Bringing accessibility up to standards. (Humberto.Morimoto@microsoft.com)
+### Patches
+
+- Button: Fixed logic where onDismiss was replacing internal dismiss function. (mgodbolt@microsoft.com)
+## 7.51.0
+Wed, 16 Oct 2019 12:33:21 GMT
+
+### Minor changes
+
+- Announced: add `as` prop and root styles (elcraig@microsoft.com)
+- Allowing role to be overridden on SplitButton (pagaur@microsoft.com)
+- ComboBox and Dropdown: Passing correct onDismiss prop in onRenderContainer. (Humberto.Morimoto@microsoft.com)
+### Patches
+
+- Checkbox: improve checked state handling (elcraig@microsoft.com)
+- TeachingBubble udpates: added separate multi-step example to reflect current design toolkit and updated basic teachingbubble example (marygans@microsoft.com)
+- Pivot and Stack: relax child item type checks (elcraig@microsoft.com)
+- CommandBar: Replacing inline styles with definition in styles file. (Humberto.Morimoto@microsoft.com)
+## 7.50.0
+Tue, 15 Oct 2019 12:32:28 GMT
+
+### Minor changes
+
+- Breadcrumb: fix accessibility and styling issues (elcraig@microsoft.com)
+### Patches
+
+- Textfield: Fix disabled text color (joschect@microsoft.com)
+## 7.49.0
+Mon, 14 Oct 2019 12:30:37 GMT
+
+### Minor changes
+
+- Tooltip: Creating aria placeholder for accessibility scenarios with Tooltips with a render delay. (Humberto.Morimoto@microsoft.com)
+### Patches
+
+- SpinButton: Fixing minWidth and having it come from const to be consistent. (Humberto.Morimoto@microsoft.com)
+## 7.48.1
+Fri, 11 Oct 2019 12:31:31 GMT
+
+### Patches
+
+- TeachingBubble: body content should resize better when container is wide. Added wide example with just text to demonstrate this. (aneeshak@microsoft.com)
+- Apply className on DetailsHeaderBase. (email not defined)
+## 7.48.0
+Thu, 10 Oct 2019 12:32:08 GMT
+
+### Minor changes
+
+- Export DetailsRowFields (KevinTCoughlin@users.noreply.github.com)
+### Patches
+
+- Fixed dropdown to not select first option automatically unless it's selected using keyboard navigation per aria (xgao@microsoft.com)
+- Announced: explicitly show aria-live property in Announced types (naethell@microsoft.com)
+## 7.47.0
+Wed, 09 Oct 2019 22:25:09 GMT
+
+### Minor changes
+
+- ResponsiveMode: defaulting to large to avoid breaking changes for scenarios assuming it would be available on first render. (dzearing@microsoft.com)
+### Patches
+
+- Dropdown: when `openOnKeyboardFocus` prop is set to true, the Dropdown now does not close the options callout immediately. (xgao@microsoft.com)
+## 7.46.0
+Wed, 09 Oct 2019 12:34:23 GMT
+
+### Minor changes
+
+- Breadcrumb: Allow setting a custom overflow icon. (madomi@microsoft.com)
+- Announced: default aria live to polite (naethell@microsoft.com)
+### Patches
+
+- DetailsList: ariaLabel for select all checkbox should be dependent on selection mode (aneeshak@microsoft.com)
+- Changing order of arguments passed to getClassNames. Until now it was inconsistent with type defined in Button.types.ts (kushaly@microsoft.com)
+## 7.45.1
+Tue, 08 Oct 2019 12:31:37 GMT
+
+### Patches
+
+- ComboBox: Making error messages accessible to screen readers. (Humberto.Morimoto@microsoft.com)
+## 7.45.0
+Mon, 07 Oct 2019 23:42:31 GMT
+
+### Minor changes
+
+- Adding a new prop renderPersistedMenuHiddenOnMount (kushaly@microsoft.com)
+- Callout and Card: Fix anchors for both (joschect@microsoft.com)
+### Patches
+
+- Callout & Tooltip: Making background color themable. (Humberto.Morimoto@microsoft.com)
+## 7.44.0
+Mon, 07 Oct 2019 12:33:45 GMT
+
+### Minor changes
+
+- Reverting dependency on ReactDOM findDOMNode in utilities to avoid bundle problems in partners. (dzearing@microsoft.com)
+### Patches
+
+- fixed minor a11y bugs, revamped example page (mgodbolt@microsoft.com)
+## 7.43.2
+Fri, 04 Oct 2019 22:19:48 GMT
+
+### Patches
+
+- ContextualMenu: Removing deprecated check for getMenuClassNames that was stopping callout subComponentStyles from being applied. (Humberto.Morimoto@microsoft.com)
+## 7.43.1
+Thu, 03 Oct 2019 23:14:46 GMT
+
+### Patches
+
+- Fixes broken publish (odbuild@microsoft.com)
+## 7.43.0
+Thu, 03 Oct 2019 01:14:35 GMT
+
+### Minor changes
+
+- Callout: Addressing regression when target is an event. (dzearing@microsoft.com)
+### Patches
+
+- Dropdown: adjust option styling for IE11 (naethell@microsoft.com)
+- Dropdown: Making multiselect options clickable outside of the options label while still within Dropdown's boundaries. (Humberto.Morimoto@microsoft.com)
+## 7.42.0
+Wed, 02 Oct 2019 12:31:15 GMT
+
+### Minor changes
+
+- Nav: improve ARIA labels for group headings. (jdh@microsoft.com)
+### Patches
+
+- Prevent suggestion autocomplete without selection (anhw@microsoft.com)
+- DocumentCard: Adding aria-label descriptions to all examples. (Humberto.Morimoto@microsoft.com)
+- Teachingbubble Example: Fix illustration example (joschect@microsoft.com)
+- Fixing the rendering of boolean values in Lists (nicul@microsoft.com)
+## 7.41.0
+Tue, 01 Oct 2019 12:33:48 GMT
+
+### Minor changes
+
+- Layer: now works better when rendering from a child window. (dzearing@microsoft.com)
+### Patches
+
+- Refactoring BaseButton with respect to how it processes menuProps (kushaly@microsoft.com)
+- Rating: Align read-only functionality with ARIA standards. (jagore@microsoft.com)
+## 7.40.0
+Mon, 30 Sep 2019 12:35:16 GMT
+
+### Minor changes
+
+- dateMath change to include extra parameter when calculating date range (jolore@microsoft.com)
+### Patches
+
+- Dropdown: There is now a visible focus border on Dropdowns in the error state. (cliff.koh@microsoft.com)
+## 7.39.2
+Fri, 27 Sep 2019 12:33:04 GMT
+
+### Patches
+
+- SwatchColorPicker: Updates web fluent styles per toolkit (v-mare@microsoft.com)
+- revert icon button back to fixed width (mgodbolt@microsoft.com)
+- Dropdown: Narrator should announce options before, during, and after expanding/collapsing. (aneeshak@microsoft.com)
+- DetailsList: Narrator should announce SelectAll Checkbox as a toggle selection for all items (aneeshak@microsoft.com)
+- TextField: Multiline textfields are now correctly associated with their labels with `aria-labelledby`. (aneeshak@microsoft.com)
+## 7.39.1
+Thu, 26 Sep 2019 12:32:32 GMT
+
+### Patches
+
+- simplified examples and fix a11y issues (mgodbolt@microsoft.com)
+- Dropdown: Error messages in Dropdown are now linked to the Dropdown (from a programmatic accessibility POV). (cliff.koh@microsoft.com)
+## 7.39.0
+Wed, 25 Sep 2019 12:34:56 GMT
+
+### Minor changes
+
+- Adding a prop shouldUpdateWhenHidden to decide whether to udpate hidden callouts and contextual menus (kushaly@microsoft.com)
+- Fix return type of onGrowData() in CommandBar. (1721514+gordianschuda@users.noreply.github.com)
+### Patches
+
+- DetailsList: initialize selection object mode with selectionMode prop if it is defined (naethell@microsoft.com)
+- fixing focus outline in IE11. The outline in IE11 does not show if it overflows the div it's in unless we explicitly set overflow: visible on the div (other browsers have this as the default). (jolore@microsoft.com)
+- Coachmark Accessibility: adding HighContrastSelector to coachmark (marygans@microsoft.com)
+- updated callout example with better, accessible example (mgodbolt@microsoft.com)
+- Pivot: Fix accessibility of example. (jdh@microsoft.com)
+- Use correct type in docs for 'collapseAllVisibility' in 'GroupedList' (thomas.gassmann@hotmail.com)
+- Pivot: Improve accessibility of examples. (jdh@microsoft.com)
+## 7.38.0
+Tue, 24 Sep 2019 12:35:43 GMT
+
+### Minor changes
+
+- Changing ColorPicker to use a selectedId instead of selectedIndex in its state. (kushaly@microsoft.com)
+### Patches
+
+- Dialog: Updated styles to match toolkit. (v-mare@microsoft.com)
+- Added a title in the custom SplitButton example (kchau@microsoft.com)
+- TeachingBubble: alt tags for example images. (jdh@microsoft.com)
+- Remove codepen-loader usage (elcraig@microsoft.com)
+## 7.37.1
+Mon, 23 Sep 2019 12:33:15 GMT
+
+### Patches
+
+- Icon Accessibility: update aria-hidden to pull aria-labelledBy from root and imageProps and removed role presentation - should not apply when a label is provided.  (marygans@microsoft.com)
+- Update icons to v3.50. May change subset font files for some components. (pejahn@microsoft.com)
+- FocusTrapZone example: Remove Randomize function. (jagore@microsoft.com)
+- Positioning: Fix issue where anchor edge would flip even if previous positions calculated (joschect@microsoft.com)
+- fix typo in ComboBox and Button docs (thomas.gassmann@hotmail.com)
+- Stack doesn't need to set overflow=hidden when grow=true to restrict size of flexbox children. Users are having to override this with overflow=visible to prevent clipping inner children (email not defined)
+## 7.37.0
+Fri, 20 Sep 2019 12:34:28 GMT
+
+### Minor changes
+
+- Breadcrumb: Added ability to make current item a heading. (v-mare@microsoft.com)
+### Patches
+
+- Update Panel examples to improve accessibility. (jdh@microsoft.com)
+- Fixes various a11y issues in docs and controls (mgodbolt@microsoft.com)
+- TeachingBubble: Specify heading role for header. (jdh@microsoft.com)
+- ContextualMenu: Update the bounds prop to allow for the same functionality that the Callout has (jspurlin@microsoft.com)
+- Listen to composition events only for IE11 (amyngu@microsoft.com)
+## 7.36.0
+Thu, 19 Sep 2019 13:05:24 GMT
+
+### Minor changes
+
+- TagPicker: Updated styles to match toolkit. Added more screener tests. Added read only state. (v-mare@microsoft.com)
+- Apply CheckboxVisiblity to header as well in DetailsList (thomas.gassmann@hotmail.com)
+### Patches
+
+- ComboBox: fix for issue resetting suggestedDisplayValue after clearing the content of a comboBox (marygans@microsoft.com)
+- keep aria-label in sync with FloatingPicker open state in BaseExtendedPicker (mhuan13@gmail.com)
+- SplitButton: Updated high contrast styling (v-mare@microsoft.com)
+- Rating: Fixed duplicates ID on stars with fractional values. (v-mare@microsoft.com)
+- Coachmark: Fixed pulse beacon RTL animation direction issue. (v-mare@microsoft.com)
+- add landmark and widget role to searchbox (mgodbolt@microsoft.com)
+## 7.35.0
+Wed, 18 Sep 2019 12:32:55 GMT
+
+### Minor changes
+
+- Listen to onCompositionUpdate instead of onInput for IME composition (amyngu@microsoft.com)
+- BasePicker: deprecate onFocus (naethell@microsoft.com)
+### Patches
+
+- Contextual Menu calls onMenuOpened when hidden is changed from undefined to false. (kushaly@microsoft.com)
+## 7.34.0
+Mon, 16 Sep 2019 12:34:47 GMT
+
+### Minor changes
+
+- update to use icon prop instead of string (chiechan@microsoft.com)
+### Patches
+
+- Use new hooks in some examples (elcraig@microsoft.com)
+- DatePicker: call custom text field onChange handler if it exists in default onChange handler (naethell@microsoft.com)
+## 7.33.0
+Fri, 13 Sep 2019 12:34:39 GMT
+
+### Minor changes
+
+- CalendarMonth: Prefer createRef over string ref (KevinTCoughlin@users.noreply.github.com)
+- Callout: add the ability for bounds to take a callback (jspurlin@microsoft.com)
+### Patches
+
+- give tooltip hoverable area an index lower than the content (mgodbolt@microsoft.com)
+- Add .is-disabled to ChoiceGroupOption when disabled (KevinTCoughlin@users.noreply.github.com)
+- TextField: remove invalid aria-labelledby (naethell@microsoft.com)
+- DetailsList: add Announced to examples with sortable columns (naethell@microsoft.com)
+- Tooltip: Changed examples from aria-labelledby to aria-describedby to follow a11y spec. (v-mare@microsoft.com)
+## 7.32.0
+Thu, 12 Sep 2019 12:34:15 GMT
+
+### Minor changes
+
+- Persona: Adding size120 to the PersonaSize enum, updating API. (eddrost@microsoft.com)
+### Patches
+
+- Only render SpinButton label container if label or icon is present (KevinTCoughlin@users.noreply.github.com)
+- Fix examples to only export a single component (elcraig@microsoft.com)
+- Combobox: Fix issue where it would mutate props (joschect@microsoft.com)
+- Pickers: make background color of input transparent so it doesn't clip border (joschect@microsoft.com)
+- GroupedList: Fixed selected prop value not being set.  (v-mare@microsoft.com)
+## 7.31.3
+Wed, 11 Sep 2019 12:35:47 GMT
+
+### Patches
+
+- Combobox: ensure that state doesn't mutate in controlled scenario (joschect@microsoft.com)
+## 7.31.2
+Mon, 09 Sep 2019 21:43:18 GMT
+
+### Patches
+
+- Update Nav.base.tsx (michael.david.lauria@gmail.com)
+## 7.31.1
+Fri, 06 Sep 2019 12:34:51 GMT
+
+### Patches
+
+- Nav: Added aria-labels to Nav examples per issue request (v-mare@microsoft.com)
+## 7.31.0
+Thu, 05 Sep 2019 12:34:51 GMT
+
+### Minor changes
+
+- Adding Preview pan to the color picker component, increasing the width and height of the color rectangle and css changes (navkuma@microsoft.com)
+### Patches
+
+- give tooltip hoverable area an index lower than the content (mgodbolt@microsoft.com)
+## 7.30.0
+Wed, 04 Sep 2019 12:32:15 GMT
+
+### Minor changes
+
+- Update snapshots (pejahn@microsoft.com)
+### Patches
+
+- Dropdown: Fix bug where it was not programatically possible to focus on Dropdown with `tabIndex=-1`.  (cliff.koh@microsoft.com)
+- Checkbox: Added initializeFocusRects to fix focus issue. (v-mare@microsoft.com)
+## 7.29.2
+Wed, 04 Sep 2019 04:09:58 GMT
+
+### Patches
+
+- DetailsList: Fix function mutations with onClick and onContextMenuClick in DetailsColumn (KevinTCoughlin@users.noreply.github.com)
+- fix version file (kchau@microsoft.com)
+## 7.29.1
+Wed, 04 Sep 2019 00:37:31 GMT
+
+### Patches
+
+- Button: Fixing SplitButton outline when focused. (humbertomakotomorimoto@gmail.com)
+## 7.29.0
+Mon, 02 Sep 2019 12:33:56 GMT
+
+### Minor changes
+
+- Add FocusZone direction domOrder (sohuts@microsoft.com)
+### Patches
+
+- Nav Component isOnTop property set can set focus to the Nav focusZone (inateeg@microsoft.com)
+## 7.28.3
+Fri, 30 Aug 2019 12:30:57 GMT
+
+### Patches
+
+- Fix imports in examples and deprecate old example data (elcraig@microsoft.com)
+- Dialog: Changed demo copy to match real OWA text (v-mare@microsoft.com)
+## 7.28.2
+Thu, 29 Aug 2019 12:30:00 GMT
+
+### Patches
+
+- ColorRectangle styling fixes (elcraig@microsoft.com)
+- Fix override handling for CommandBarButton (tmichon@microsoft.com)
+## 7.28.1
+Tue, 27 Aug 2019 12:33:51 GMT
+
+### Patches
+
+- Link, Stack, and Toggle example updates (elcraig@microsoft.com)
+- Remove some relative imports from examples (elcraig@microsoft.com)
+## 7.28.0
+Mon, 26 Aug 2019 12:30:49 GMT
+
+### Minor changes
+
+- Button: change divs to be spans so its w3 compliant (joschect@microsoft.com)
+### Patches
+
+- Memoizing styling in createComponent for components that have their default styling determined entirely by tokens. (Humberto.Morimoto@microsoft.com)
+- Refactor Checkbox styles to reduce size. (v-mare@microsoft.com)
+- Update positioning logic to nudge item when none of the positions fit (53619942+srishtis27@users.noreply.github.com)
+- New drop hint icon for drag-drop and corresponding padding space on top (svaibhav@microsoft.com)
+- Updating snapshots due to merge-styles selector split changes. (dzearing@hotmail.com)
+## 7.27.1
+Fri, 23 Aug 2019 12:35:28 GMT
+
+### Patches
+
+- MessageBar: Fix high contrast mode issue where you cannot tell which buttons you have focus on. (cliff.koh@microsoft.com)
+- fixing the icons to have minWidth instead of hard coded width (kchau@microsoft.com)
+- Update npmignores, delete unused jest setup files (elcraig@microsoft.com)
+- make sure to skip aria-describedby for onRenderDescription is nullRender (kchau@microsoft.com)
+- Fix up readme and package.json descriptions (elcraig@microsoft.com)
+
+## 7.27.0
+Thu, 22 Aug 2019 12:34:59 GMT
+
+### Minor changes
+
+- Button: Using FontIcon and ImageIcon instead of Icon in both oufr and experiments Button. (Humberto.Morimoto@microsoft.com)
+- right align the action buttons per new design (kchau@microsoft.com)
+
+### Patches
+
+- Autofill: fix issue where autofill wouldn't handle delete correctly (joschect@microsoft.com)
+- making sure we get rid of javascript: urls in nav (kchau@microsoft.com)
+- Panel Example: Fix function typing (joschect@microsoft.com)
+
+## 7.26.0
+Wed, 21 Aug 2019 12:34:09 GMT
+
+### Minor changes
+
+- Add presenceTitle prop (gogoe@microsoft.com)
+
+### Patches
+
+- Combobox: Updates styles to latest design specs. (v-mare@microsoft.com)
+- Simplify Button examples (elcraig@microsoft.com)
+- Use getDocument instead document in FocusZone and FocusTrapZone (sohuts@microsoft.com)
+- Fix TextField onChange bug (elcraig@microsoft.com)
+- Fix empty text box when a color component being zero (reli@microsoft.com)
+- add space functionality to split button with tests (chiechan@microsoft.com)
+
+## 7.25.1
+Tue, 20 Aug 2019 12:31:26 GMT
+
+### Patches
+
+- Nav: update to latest redlines (phkuo@microsoft.com)
+- Tooltip: Fix examples to pass correct root display styling. (email not defined)
+
+## 7.25.0
+Thu, 15 Aug 2019 12:30:43 GMT
+
+### Minor changes
+
+- Adding prop on BaseButton to allow user to specify custom props on SplitButton's primary action button. (pagaur@microsoft.com)
+- Rename deprecated React lifecycle functions to prevent development mode warnings in React 16.9. (jagore@microsoft.com)
+- Add fast Icon variants and useFastIcons option in DetailsList (elcraig@microsoft.com)
+
+### Patches
+
+- FocusZone: Remove role=presentation (elcraig@microsoft.com)
+- Moving the drag-drop caret icon on top of column divider to make if compatible with Sticky header (svaibhav@microsoft.com)
+- Slider: update active pressed state color for slider border and thumb to match design toolkit spec. Updated palette references to sematic colors. (marygans@microsoft.com)
+- TextField: fix onChange issue and async tests (elcraig@microsoft.com)
+- Dropdown: allow setting empty string as item title (elcraig@microsoft.com)
+- ActivityItem, Nav, and Pivot example updates (elcraig@microsoft.com)
+- MessageBarButton: Remove the fixed width added in #8779. (jagore@microsoft.com)
+
+## 7.24.0
+Wed, 14 Aug 2019 12:30:13 GMT
+
+### Minor changes
+
+- ChoiceGroup: fix focusing on options and general cleanup (elcraig@microsoft.com)
+
+### Patches
+
+- Searchbox: Updates styles to latest design specs and added semantic slots usage. (v-mare@microsoft.com)
+
+## 7.23.0
+Tue, 13 Aug 2019 12:31:12 GMT
+
+### Minor changes
+
+- Checkbox: added indeterminate state (v-mare@microsoft.com)
+
+### Patches
+
+- Updating snpashots and styles which use $ syntax. (dzearing@microsoft.com)
+- Changing breadcrumb items to links (camontei@microsoft.com)
+- Pivot: pivot content (icon, text, count) should be consistently aligned via styling. (dzearing@microsoft.com)
+
+## 7.22.2
+Mon, 12 Aug 2019 12:30:25 GMT
+
+### Patches
+
+- Allow callout to reposition after position prop is passed in (joschect@microsoft.com)
+
+## 7.22.1
+Fri, 09 Aug 2019 12:31:50 GMT
+
+### Patches
+
+- Spinbutton: removed additional top and bottom margin styling overriding Label's styling and causes alignment inconsistencies with textbox, combobox, etc. (marygans@microsoft.com)
+
+## 7.22.0
+Thu, 08 Aug 2019 12:32:41 GMT
+
+### Minor changes
+
+- DetailsList: Assign button role to group toggle element if aria-label provided. (t-mashia@microsoft.com)
+- Update SASS variables using script (phkuo@microsoft.com)
+
+### Patches
+
+- Moved role, aria-label, and aria-expanded to the same element as per aria requirements (susunda@microsoft.com)
+- DetailsRow should only re-render if a prop is detected to have changed. (megreid115@gmail.com)
+
+## 7.21.0
+Wed, 07 Aug 2019 12:32:28 GMT
+
+### Minor changes
+
+- Updating styles to not use $ syntax. (dzearing@microsoft.com)
+- Initial implementation of clickable legends (atgupta@microsoft.com)
+
+### Patches
+
+- Add customization section to Themes page (naethell@microsoft.com)
+- Checkbox: Fix for an accessibility bug where checkbox labels were read at two different locations in Narrator's scan mode (kisiebel@microsoft.com)
+- moving the async clearTimeout call inside the if check to prevent accidentally clearing the timeout unless we're going to be making a new one (jolore@microsoft.com)
+
+## 7.20.1
+Tue, 06 Aug 2019 12:32:07 GMT
+
+### Patches
+
+- Replace the usage of `FontSizes` variable with font styles pulled from the theme object and minor cleanup. (vibraga@microsoft.com)
+
+## 7.20.0
+Mon, 05 Aug 2019 12:33:41 GMT
+
+### Minor changes
+
+- Slider: Add new prop to snap while moving. (t-snroy@microsoft.com)
+
+## 7.19.1
+Fri, 02 Aug 2019 12:33:29 GMT
+
+### Patches
+
+- Persona: Fix styles issue caused by unnecessary nesting (cliff.koh@microsoft.com)
+- Remove extra export of SelectionMode (jdh@microsoft.com)
+
+## 7.19.0
+Wed, 31 Jul 2019 12:26:17 GMT
+
+### Minor changes
+
+- Commandbar: Expose dataDidRender method (joschect@microsoft.com)
+
+### Patches
+
+- [BaseExtendedPicker] Only add aria-owns tag when the picker is expanded (andrescb@microsoft.com)
+- Tooltip: Fixing hidden hover area overlapping with Tooltip targets. (Humberto.Morimoto@microsoft.com)
+- Perf Test: Integrate Flamegrill (jagore@microsoft.com)
+
+## 7.18.1
+Tue, 30 Jul 2019 12:28:32 GMT
+
+### Patches
+
+- TeachingBubble: Fix primary button high contrast styling issues. (Humberto.Morimoto@microsoft.com)
+- Dropdown: Panel now dismisses in small widths (bhdev@outlook.com)
+- Separate the anchor for the card from card's hover target ('xingwa@microsoft.com')
+
+## 7.18.0
+Mon, 29 Jul 2019 12:26:00 GMT
+
+### Minor changes
+
+- Shimmer: refactor out the BaseComponent and deprecated React lifecycle methods. (vibraga@microsoft.com)
+
+### Patches
+
+- Fix cell animations so they only trigger on cell key changes (tmichon@microsoft.com)
+- Panel: fix shrinking of the footer and make header not shrink. (vibraga@microsoft.com)
+- Pivot: align pivot link text in relation to the whole pivot tab. (vibraga@microsoft.com)
+
+## 7.17.0
+Fri, 26 Jul 2019 12:28:52 GMT
+
+### Minor changes
+
+- ShimmeredDetailsList: enables additional logic to be executed before rendering the default shimmer row. (vibraga@microsoft.com)
+- removing BaseComponent from SpinButton (aneeshak@microsoft.com)
+
+### Patches
+
+- Added aria label to demo page for custom picker (susunda@microsoft.com)
+
+## 7.16.0
+Thu, 25 Jul 2019 12:27:19 GMT
+
+### Minor changes
+
+- ChoiceGroup: updating IChoiceOption to accept input attributes (dzearing@microsoft.com)
+
+## 7.15.0
+Wed, 24 Jul 2019 12:27:56 GMT
+
+### Minor changes
+
+- split calendarMonth into three rows (Qianqian.Li@microsoft.com)
+
+### Patches
+
+- Facepile: Fix narrator not announcing coauthor position (tabrumle@microsoft.com)
+
+## 7.14.1
+Tue, 23 Jul 2019 16:33:51 GMT
+
+### Patches
+
+- Tooltip: Updates box-shadow to match fluent web toolkit (v-mare@microsoft.com)
+- Rating: fix aria-label in `readOnly` mode and when use half stars. (vibraga@microsoft.com)
+- Spinner: Updating label font size and position in respect to spinner to match fluent toolkit (v-mare@microsoft.com)
+- ColorPicker: Updates margin bottom of the color rectangle to match web fluent toolkit. (v-mare@microsoft.com)
+- Multiselect ComboBox options should respect disabled setting (elcraig@microsoft.com)
+- making mousemove event bind to capture phase to work inside Layers and Callouts (jolore@microsoft.com)
+
+## 7.14.0
+Mon, 22 Jul 2019 21:37:45 GMT
+
+### Minor changes
+
+- support to add custom attributes on SpinButton and ComboBox components (pagaur@microsoft.com)
+- Details____ general cleanup (elcraig@microsoft.com)
+
+## 7.13.0
+Mon, 22 Jul 2019 12:28:42 GMT
+
+### Minor changes
+
+- Refactor out BaseComponent from List components (706967+KevinTCoughlin@users.noreply.github.com)
+- Nav: Add ability for screen reader to read selected state. (Humberto.Morimoto@microsoft.com)
+- DetailsList: Remove unnecessary BaseComponent and class component usage (elcraig@microsoft.com)
+
+### Patches
+
+- Panel: remove window.innerHeight from styles (kakje@microsoft.com)
+- fix the layer example so the panel dismisses properly (joschect@microsoft.com)
+- DetailsList and Check styling optimizations (elcraig@microsoft.com)
+
+## 7.12.0
+Fri, 19 Jul 2019 12:25:58 GMT
+
+### Minor changes
+
+- Tooltip: render tooltip only after the delay and make sure if provided `closeDelay` is bigger than `delay` not to flash the Tooltip. (vibraga@microsoft.com)
+
+## 7.11.1
+Thu, 18 Jul 2019 12:27:48 GMT
+
+### Patches
+
+- Panel: Making padding not change with screen width to match toolkit. (Humberto.Morimoto@microsoft.com)
+
+## 7.11.0
+Wed, 17 Jul 2019 18:58:57 GMT
+
+### Minor changes
+
+- Add new ways for callers to control the behavior of the combo box. (reedpa@microsoft.com)
+- ChoiceGroupOption: move the inline styles into getStyles function to allow override. (vibraga@microsoft.com)
+
+### Patches
+
+- prevent header and footer in panel from shrinking (nidurak@microsoft.com)
+- Adding @types/react and @types/react-dom to package.json that have peer dependencies on react and react-dom. (makotom@microsoft.com)
+- Rating: ensure rating gets updated even when it has value of 0. (vibraga@microsoft.com)
+- GroupedList: Using level to determine nestingDepth when it is given. (Humberto.Morimoto@microsoft.com)
+- DropDown: Adding null check in onPositioned call. (Humberto.Morimoto@microsoft.com)
+
+## 7.10.0
+Sat, 13 Jul 2019 22:20:41 GMT
+
+### Minor changes
+
+- Dialog: Deprecating componentRef prop. (Humberto.Morimoto@microsoft.com)
+- Tooltip: Rendering hidden hoverable area to allow for interaction with Tooltips. (Humberto.Morimoto@microsoft.com)
+
+### Patches
+
+- Panel: remove window.innerHeight from styles (kakje@microsoft.com)
+
+## 7.9.0
+Fri, 12 Jul 2019 12:29:52 GMT
+
+### Minor changes
+
+- GroupedList: Refactor out BaseComponent in favor of React.Component and React.FunctionComponent (706967+KevinTCoughlin@users.noreply.github.com)
+- Dropdown: adds an `onRenderLabel` custom renderer prop. (vibraga@microsoft.com)
+
+### Patches
+
+- Update to progressBar indicator description label font size to match design toolkti spec. (marygans@microsoft.com)
+
+## 7.8.2
+Thu, 11 Jul 2019 12:29:51 GMT
+
+### Patches
+
+- Pivot: updating white hover background color(#9595) (marygans@microsoft.com)
+- Pass disabled state to labels in ChoiceGroup, Dropdown, Slider and SpinButton. (vibraga@microsoft.com)
+- Tooltip: Fixing 'persist on scroll' issues. (humbertomakotomorimoto@gmail.com)
+- DetailsRow: pass aria-label attribute to each row's checkbox. (vibraga@microsoft.com)
+- Only clear selection in MarqueeSelection when starting a new marquee (tmichon@microsoft.com)
+- Utilities: reuse an exisiting clamp function. (vibraga@microsoft.com)
+
+## 7.8.1
+Wed, 10 Jul 2019 12:28:00 GMT
+
+### Patches
+
+- Dropdown: set aria-hidden to true on the ChevronDown icon so that it is not picked up by the screen reader (natalie.ethell@microsoft.com)
+- Button: Fixing CompoundButton and SplitButton high contrast mode styling. (humbertomakotomorimoto@gmail.com)
+- FocusTrapZone: Updating overview description to indicate restriction of website interaction. (Humberto.Morimoto@microsoft.com)
+- Nav: fixes focus border in High Contrast mode. (vibraga@microsoft.com)
+- Pickers: replace empty string with undefined. (vibraga@microsoft.com)
+
+## 7.8.0
+Tue, 09 Jul 2019 17:34:38 GMT
+
+### Minor changes
+
+- Panel: Adding Overlay props. (Humberto.Morimoto@microsoft.com)
+- Modal: Adding overlayProps as a prop. (Humberto.Morimoto@microsoft.com)
+- Adding tooltipHostProps as a prop to the Breadcrumb component. (Heather.HoaglundBiron@microsoft.com)
+- "FocusZone: Add setFocusAlignment public method to Force horizontal alignment in the context of vertical arrowing to use specific point as the reference, rather than a center based on the last horizontal motion." (nasabek@microsoft.com)
+- User should use onRenderPersonaCoin for custom rendering. When this is set, this custom rendering will be used. (22574161+gingeroun@users.noreply.github.com)
+
+## 7.7.2
+Mon, 08 Jul 2019 12:27:04 GMT
+
+### Patches
+
+- Fix mock Date class (rezha@microsoft.com)
+
+## 7.7.1
+Thu, 04 Jul 2019 12:29:39 GMT
+
+### Patches
+
+- SearchBox: allow passing in id for input (elcraig@microsoft.com)
+- Breadcrumb: Adding overflowAriaLabel to examples. (Humberto.Morimoto@microsoft.com)
+- Button: Updating example to make it less confusing to screen readers. (Humberto.Morimoto@microsoft.com)
+
+## 7.7.0
+Wed, 03 Jul 2019 12:30:55 GMT
+
+### Minor changes
+
+- SplitButton: add in props to control splitbutton menu button (joschect@microsoft.com)
+- Callout: add support for RefObject as target (joschect@microsoft.com)
+
+### Patches
+
+- Revert "BaseFloatingItem: fix tests + remove redundant state  (#9500)" (miclo@microsoft.com)
+- Announced: fix QuickActions example to reset Announced message (naethell@microsoft.com)
+- update snapshots and update extended picker tests (joschect@microsoft.com)
+
+## 7.6.3
+Mon, 01 Jul 2019 18:51:43 GMT
+
+### Patches
+
+- Prettier change
+- adds react-app-polyfill
+- Fix tests for BasePicker + remove redundant state
+
+## 7.6.2
+Fri, 28 Jun 2019 12:27:34 GMT
+
+### Patches
+
+- Replaced SCSS in favour of CSS in JS in List Basic Example
+- Added interfaces for List Ghosting Example
+- GroupedList: Fix "Show All" not rendering all items in a group
+- Removed scss usage from List example.
+- GroupedList: Updated header text color on hover and updated snapshots.
+- Layer: remove the usage of viewport width and height to fix layout issues on mobile browsers
+- Removed used Rating SCSS file
+
+## 7.6.1
+Thu, 27 Jun 2019 18:25:04 GMT
+
+### Patches
+
+- Prettier changes.
+- Avoid marking DetailsRow as non-draggable unless backed by DragDropEvents
+- Addressing a variety of problems related to style recalculations.
+- Panel: Overflowing header text should word break and wrap by default
+- Add placeholder as TextArea property, allows placeholder in multiline TextField
 
 ## 7.6.0
 Wed, 26 Jun 2019 21:48:30 GMT
@@ -67,8 +949,8 @@ Tue, 18 Jun 2019 19:00:04 GMT
 
 ### Patches
 
-- Facepile: Introducing OnRenderPersona and OnRenderPersonaCoin to override default implementation of Persona and PersonaCoin. 
-- Tooltip: reverts commit 210fbabee 
+- Facepile: Introducing OnRenderPersona and OnRenderPersonaCoin to override default implementation of Persona and PersonaCoin.
+- Tooltip: reverts commit 210fbabee
 
 ## 7.4.0
 Tue, 18 Jun 2019 12:26:19 GMT
@@ -79,7 +961,7 @@ Tue, 18 Jun 2019 12:26:19 GMT
 
 ### Patches
 
-- Prevent the callout from being dismissed when the mouse is pressed inside, but then moved outside (while keeping pressed) and released. 
+- Prevent the callout from being dismissed when the mouse is pressed inside, but then moved outside (while keeping pressed) and released.
 - Only run KeytipManager update when relevant keytip props have changed in KeytipData.
 
 ## 7.3.0
@@ -941,7 +1823,7 @@ Thu, 07 Mar 2019 13:32:47 GMT
 ### Patches
 
 - Remove console log in Tooltip absolute position example
-- Pivot - remove deprecated lifecycle method, and deterministically render selected PivotItem. Will change behavior of Pivot instances that specified `selectedKey` but use in an uncontrolled fashion. 
+- Pivot - remove deprecated lifecycle method, and deterministically render selected PivotItem. Will change behavior of Pivot instances that specified `selectedKey` but use in an uncontrolled fashion.
 - Suggestions: set className on Suggestion header/footer
 - SwatchColorPicker: updates the styles so that they align to the toolkit specs.
 
@@ -1289,7 +2171,7 @@ Tue, 29 Jan 2019 13:35:55 GMT
 
 ### Patches
 
-- width is not required for sticky placeholder as it won't affect horizontal scrolling. For a detailsGroupedList, if horizontal scrollbar is present when detailsHeader is in non-sticky state, it should be there even when detailsHeader becomes sticky. 
+- width is not required for sticky placeholder as it won't affect horizontal scrolling. For a detailsGroupedList, if horizontal scrollbar is present when detailsHeader is in non-sticky state, it should be there even when detailsHeader becomes sticky.
 - Panel: add flex-grow: 1 to contentInner
 
 ## 6.130.0
@@ -1317,7 +2199,7 @@ Fri, 25 Jan 2019 13:38:07 GMT
 - Panel: Add aria-hidden attribute to prevent narrator from reading when transitioning to a closed state
 - Added screener tests to Breadcrumb component to prevent regression
 - position anchor currently by default uses either the given alignment edge or uses the positive flanking edge, without regard to whether the positive or negative edge has more room. This change uses the bounds to determine which side has more room and flips the anchor around, to solve issues with dynamically resizing callouts not having enough room to grow if they default to a top-anchor
-- Fix the regression in DocumentCard role by commit 5b8befe. It should always use props.role if it is defined. 
+- Fix the regression in DocumentCard role by commit 5b8befe. It should always use props.role if it is defined.
 
 ## 6.129.3
 Thu, 24 Jan 2019 13:36:17 GMT
@@ -2724,7 +3606,7 @@ Tue, 14 Aug 2018 10:27:33 GMT
 
 ### Patches
 
-- autogenerate codepenable examples for fabric examples tagged with @codepen 
+- autogenerate codepenable examples for fabric examples tagged with @codepen
 - DetailsList: in single select mode maintain role and index, and remove onclick
 
 ## 6.49.1
@@ -2764,7 +3646,7 @@ Fri, 10 Aug 2018 10:26:09 GMT
 ### Patches
 
 - ColorPicker: Update color rectangle when hue value changes
-- autogenerate codepenable examples for fabric examples tagged with @codepen 
+- autogenerate codepenable examples for fabric examples tagged with @codepen
 - ComboBox cannot clear value when allowFreeForm enabled. Should trigger onChanged when value is cleared
 - Update components using customizer (including Button variations) to concatenate customizer and component style sets
 - Added optional feedback section for component pages
@@ -2797,7 +3679,7 @@ Wed, 08 Aug 2018 10:25:08 GMT
 - Fix a class of bad imports that breaks AMD.
 - Fixes a bug in drag and drop detaillist column not showing a gripper
 - Dropdown: use item text for title if title is not provided
-- Button should not have any html tag as children. In IE the inner html, would not render. 
+- Button should not have any html tag as children. In IE the inner html, would not render.
 - Panel: Don't force focus in trap if isHiddenOnDismiss is set and panel is closed
 
 ## 6.47.0
@@ -2994,7 +3876,7 @@ Tue, 17 Jul 2018 10:28:40 GMT
 
 ### Minor changes
 
-- ExtendedBasePicker: Expose selectedItems, Remove persona suggestion padding in FloatingPicker 
+- ExtendedBasePicker: Expose selectedItems, Remove persona suggestion padding in FloatingPicker
 - Removing most `@customizable` decorator usage. This change should reduce extra React dom elements from being created. Also updating `componentRef` resolution to support `React.createRef()` usage.
 
 ### Patches
@@ -3096,7 +3978,7 @@ Mon, 09 Jul 2018 18:08:32 GMT
 
 ### Patches
 
-- Don't select date by default when clicking on a month 
+- Don't select date by default when clicking on a month
 - FacePile now uses semantic list tags.
 
 ## 6.27.0
@@ -3768,7 +4650,7 @@ Fri, 04 May 2018 15:58:39 GMT
 - Positioning: Fix cover positioning so it returns the correct edge to handle menu shrinkage
 - Fix TooltipHost mutation of calloutProps.
 - SpinButton: Remove browser autocomplete
-- Using the proper preview text to set the aria label on combobox options. I previously had this change, but I accidentally reverted it during a merge. 
+- Using the proper preview text to set the aria label on combobox options. I previously had this change, but I accidentally reverted it during a merge.
 
 ## 5.95.0
 Wed, 02 May 2018 23:55:40 GMT
@@ -3991,7 +4873,7 @@ Mon, 16 Apr 2018 10:23:26 GMT
 - Add new component page prop for editing on GitHub.
 - SpinButton: Make sure up/down Arrow do not leave the spinButton
 - Handling the scenario where embedded text is passed in as the option's text. In This case, the ariaLabel prop will be displayed in the input and used for autocomplete matching. The value rendered in the menu will not change.
-- Wrapping combobox options in an internal component which only performs an update if the props have changed. We are currently updating every option on every mouse or keyboard event. This gives awful performance in comboboxes with many elements. 
+- Wrapping combobox options in an internal component which only performs an update if the props have changed. We are currently updating every option on every mouse or keyboard event. This gives awful performance in comboboxes with many elements.
 - Adds tests for DocumentCardTitle title truncation
 - Add focus method to Pivot.
 - FocusZone: redoing the "reset alignment on mouse down" change in a less intrusive manner, with test coverage.
@@ -4267,7 +5149,7 @@ Thu, 15 Mar 2018 02:42:27 GMT
 
 ### Patches
 
-- Targeted the aria-labelledby on ChoiceGroup's input field to the span tag inside the span tag inside label ( option.labelId ) instead of thelabel itself ( option.id ). 
+- Targeted the aria-labelledby on ChoiceGroup's input field to the span tag inside the span tag inside label ( option.labelId ) instead of thelabel itself ( option.id ).
 
 ## 5.64.1
 Wed, 14 Mar 2018 10:28:26 GMT
@@ -4431,7 +5313,7 @@ Wed, 28 Feb 2018 11:15:45 GMT
 ### Minor changes
 
 - Convert Dialog to mergeStyles, part 1 - file structure
-- Dialog: Converting to mergeStyles part 1.2 - sub component file structure. 
+- Dialog: Converting to mergeStyles part 1.2 - sub component file structure.
 - Prepare Persona for conversion to merge-styles
 
 ### Patches
@@ -4467,7 +5349,7 @@ Sat, 24 Feb 2018 05:10:13 GMT
 
 - Fix SplitButton rendering issue in ContextualMenu
 - ComboBox: Added property to set ComboBox's button's data-is-focusable attribute.
-- ContextualMenu: Import ContextualMenuUtility/index directly instead of folder. 
+- ContextualMenu: Import ContextualMenuUtility/index directly instead of folder.
 - [Focus] Enable focus forceIntoFirstElement parameter
 - [DetailsList] Fixed test by mocking visiblity
 - [ContextualMenu] Disabled buttons are focusable
@@ -4527,7 +5409,7 @@ Wed, 21 Feb 2018 11:12:11 GMT
 ### Patches
 
 - Enable jsx-key tslint rule
-- Only apply 'pointer-events: none' to disabled Link components if there is an href 
+- Only apply 'pointer-events: none' to disabled Link components if there is an href
 - Dialog: default modal props now respective (Modal rendered with light background.)
 - Buttons: moving className lower in the merge list so that it has more precedence than default rules.
 - Rating: Adding `type=button` to Rating buttons.
@@ -4580,7 +5462,7 @@ Wed, 14 Feb 2018 22:10:50 GMT
 - Fabric: Adds button overflow visible global style so that ie11 renders like edge/chrome/firefox
 - DatePicker: Fixing pointer when datepicker doesn't have a label
 - ComboBox: Add getClassNAmes prop to allow complete customization of the component
-- CalloutContent: Remove calloutWidth from calloutMain 
+- CalloutContent: Remove calloutWidth from calloutMain
 - SpinButton: Add getClassNAmes prop to allow complete customization of the component
 - Fix aria-owns in contextual menu items, and add appropriate aria properties to CommandBar items.
 
@@ -4806,7 +5688,7 @@ Fri, 19 Jan 2018 11:14:03 GMT
 ### Patches
 
 - added smallInputBorder semantic slots and updated checkbox, choicegroup, and toggle to use it.
-- Add classNames and style the hidden input inside the ChoiceGroup image and icon variants so the Narrator highlights it correctly. 
+- Add classNames and style the hidden input inside the ChoiceGroup image and icon variants so the Narrator highlights it correctly.
 - Datepicker: Fix so calendar doesn't open when clicking icon when DatePicker is disabled
 - Persona: Fix a bug where space would be taken even though there was no secondary text
 - Changes in Week Number Computation logic for FirstFourDayWeek setting to fix issue 3119
@@ -5271,7 +6153,7 @@ Sun, 05 Nov 2017 23:27:32 GMT
 
 ### Minor changes
 
-- Allow optional minimum and maximum date boundaries on Calendar component. 
+- Allow optional minimum and maximum date boundaries on Calendar component.
 
 ### Patches
 
@@ -5318,7 +6200,7 @@ Thu, 02 Nov 2017 18:20:18 GMT
 - Facepile style debugging, includes new FacepileButton
 - Menus: Update so they have one notion of focus (from both hover and keyboard)
 - Split Button in Menu: add vertical divider component and hook to customize splitbutton in menu div classname
-- Persona: Changed PersonaSize names from descriptive to numerical. 
+- Persona: Changed PersonaSize names from descriptive to numerical.
 - TextField/DatePicker: The required astrisk is now more correctly positioned.
 
 ## 5.17.1
@@ -5504,7 +6386,7 @@ Thu, 12 Oct 2017 10:20:49 GMT
 
 ### Minor changes
 
-- Dropdown: add onDismiss callback. Example multi select dropdown with filters, we want to apply filters after user has dismissed the dropdown. 
+- Dropdown: add onDismiss callback. Example multi select dropdown with filters, we want to apply filters after user has dismissed the dropdown.
 - OverflowSet: Add FocusZoneProps and the ability to set the role
 - Callout: Added optional button at the bottom of the callout container
 - ComboBox: added selectedIndex prop and inputFieldText prop for more control over comboBox behavior
@@ -5521,7 +6403,7 @@ Wed, 11 Oct 2017 10:11:04 GMT
 
 ### Minor changes
 
-- ComboBox: Adding props to control height and width of Callout 
+- ComboBox: Adding props to control height and width of Callout
 - "Move getItemClassnNames forontextualMenuProps to IContextualMenuItem"
 - Make Modal's FocusTrapZone controllable
 
@@ -5633,7 +6515,7 @@ Fri, 29 Sep 2017 10:20:24 GMT
 - DetailsList: Allow resizing columns wider than maxWidth in justified layout
 - ContextualMenu: Make sure to check items within a menu section for the 'canCheck' property
 - Updating mergeStyleSets usage in various components to adhere to correct typing.
-- Split out and cleaned up TextField examples to better reflect the toolkit. 
+- Split out and cleaned up TextField examples to better reflect the toolkit.
 - DatePicker: call correct callback when previous year button is clicked
 
 ## 5.1.0
@@ -6082,7 +6964,7 @@ Fri, 11 Aug 2017 19:38:35 GMT
 - FocusZone: adjusting initialization logic to remove a potential memory leak in server rendered scenarios.
 - ComboBox: Update example to work correctly now that StrictNullChecks have been put in place
 - Nav: update isGroupCollapsed for new groups
-- Change dropdown's role from "combobox" to "menu" 
+- Change dropdown's role from "combobox" to "menu"
 - Changed DatePicker role to be more accurate for screen readers
 - Selection: Fix broken selection state in example.
 
@@ -6100,7 +6982,7 @@ Tue, 08 Aug 2017 15:28:32 GMT
 
 - BaseButton: Added screenReaderText styles to base button
 - BaseButton: Remove the IconButton dependency that was introduced with SplitButton.
-- Added role alert to "no results" view 
+- Added role alert to "no results" view
 
 ## 4.30.1
 Mon, 07 Aug 2017 10:22:46 GMT
@@ -6252,7 +7134,7 @@ Fri, 21 Jul 2017 10:21:45 GMT
 
 ### Patches
 
-- Do not redundantly set aria-label on command bar items. 
+- Do not redundantly set aria-label on command bar items.
 - More strict null check fixes in office-ui-fabric-react
 - Textfield: Fixed regression in disabled styles
 - ResizeGroup: Use scrollWidth instead of clientWidth for measuring hidden div
@@ -6419,7 +7301,7 @@ Fri, 30 Jun 2017 19:44:26 GMT
 ### Patches
 
 - Breadcrumb: Use flexbox for layout to better support multiple font sizes
-- MessageBar: Fixed padding regressions with multiline and no actions 
+- MessageBar: Fixed padding regressions with multiline and no actions
 
 ## 4.13.1
 Fri, 30 Jun 2017 10:23:15 GMT
@@ -6473,7 +7355,7 @@ Tue, 27 Jun 2017 01:26:31 GMT
 
 ### Minor changes
 
-- Commandbar: fix synchronous reflow 
+- Commandbar: fix synchronous reflow
 - Enhancing the calendar component to allow for turning off the day picker and highlighting the "today" month in the month picker. This will match the behavior of the Timestrip component in today's JSMVVM OWA Calendar.
 
 ### Patches
@@ -6719,7 +7601,7 @@ Tue, 30 May 2017 03:27:20 GMT
 
 ### Patches
 
-- DetailsList: initialFocusedIndex is considered on already mounted rows 
+- DetailsList: initialFocusedIndex is considered on already mounted rows
 - SelectionZone: Update behavior to fix using up/down arrows to navigate between groups in a GroupedList.
 - Introduce prop-types instead of React.PropTypes
 - List: improved measure logic and fix nested list scroll problem
@@ -7038,7 +7920,7 @@ Wed, 19 Apr 2017 03:17:40 GMT
 ### Patches
 
 - DatePicker: Improve screen-reader accessibility.
-- Regression Test: Contextual Menu 
+- Regression Test: Contextual Menu
 - fix nit for Suggestion.tsx
 
 ## 2.19.0
@@ -7202,7 +8084,7 @@ Wed, 29 Mar 2017 18:15:29 GMT
 
 - FocusZone: Adding support for default browser behavior when pressing alt + a key.
 - Chaning scss imports to use typescript `import` instead of `require` so that lib-amd build actually imports via AMD require and not commonjs require.
-- PeoplePicker: Adding changes for multiple selection onChange 
+- PeoplePicker: Adding changes for multiple selection onChange
 
 ## 2.10.1
 Wed, 29 Mar 2017 15:10:15 GMT
@@ -7315,7 +8197,7 @@ Thu, 16 Mar 2017 03:05:54 GMT
 ### Minor changes
 
 - DocumentCard: Add aria role and keyboard handling
-- Panel: Added sticky footer section and broke each panel region into seperate onRender fucntion. 
+- Panel: Added sticky footer section and broke each panel region into seperate onRender fucntion.
 
 ### Patches
 
@@ -7391,7 +8273,7 @@ Thu, 09 Mar 2017 06:11:07 GMT
 
 ### Breaking changes
 
-- IMPORTANT: 
+- IMPORTANT:
 
 This pull request converts ALL components over to use module css. What does this mean?
 
@@ -7409,7 +8291,7 @@ Problems that still exist:
 4. The bundles themselves have a lot of duplicate css. Because we generate rtl rules and theme tokens at build time rather than at runtime, we must download extra code, which bulks up the download size.
 5. Fabric core rules, which we implicitly rely on, are a hard thing to chase. If your page depends on core 6, and you're also using react components, you will find bugs. We'd like to eliminate this dependency so that it is reliable and contractual to use components. If you use a `ContextualMenu`, it should animate without depending on fabric-core css to be loaded.
 
-We are planning to address these and evaluating library options. Issue being tracked here: #983 
+We are planning to address these and evaluating library options. Issue being tracked here: #983
 
 
 ### Minor changes
@@ -7824,7 +8706,7 @@ Thu, 12 Jan 2017 04:06:30 GMT
 - DetailsList: when adding new items in a grouped DetailsList scenario, the group is no longer recreated.
 - Dialog: Removing deprecated rootProps usage for the close button.
 - Persona: Set an explicit height for the image area and image.
-- Persona now has a default way of generating initials and colors 
+- Persona now has a default way of generating initials and colors
 - Pivot: Fix a11y - duplicate tabIds, aria-controls linking
 - TextField: aria-describedby is only set when a description is available.
 
@@ -8089,7 +8971,7 @@ Mon, 05 Dec 2016 04:02:30 GMT
 
 ### Minor changes
 
-- Nav: adding support for `selectedKey`. 
+- Nav: adding support for `selectedKey`.
 
 ### Patches
 

@@ -92,7 +92,8 @@ export class MaskedTextField extends React.Component<ITextFieldProps, IMaskedTex
     };
   }
 
-  public componentWillReceiveProps(newProps: ITextFieldProps) {
+  // tslint:disable-next-line function-name
+  public UNSAFE_componentWillReceiveProps(newProps: ITextFieldProps) {
     if (newProps.mask !== this.props.mask || newProps.value !== this.props.value) {
       this._maskCharData = parseMask(newProps.mask, newProps.maskFormat);
       newProps.value !== undefined && this.setValue(newProps.value);

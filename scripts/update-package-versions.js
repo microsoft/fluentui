@@ -11,10 +11,10 @@
 const path = require('path');
 const process = require('process');
 const chalk = require('chalk').default;
-const { readRushJson, readConfig } = require('./read-config');
+const getAllPackageInfo = require('./monorepo/getAllPackageInfo');
 const writeConfig = require('./write-config');
 
-const rushJson = readRushJson();
+const allPackages = getAllPackageInfo();
 const newVersion = process.argv[2];
 const newDep = process.argv[3] || newVersion;
 
@@ -22,9 +22,9 @@ function help() {
   console.error('update-package-versions.js - usage:\n  node update-package-versions.js "6.0.0-alpha" ">=6.0.0-0 <7.0.0-0"');
 }
 
-if (!rushJson) {
+if (!allPackages) {
   help();
-  console.error('Could not find rush.json');
+  console.error('Could not find get all the packages');
   process.exit(1);
 }
 
@@ -34,17 +34,17 @@ if (!newVersion || !newDep) {
   process.exit(1);
 }
 
-for (const package of rushJson.projects) {
-  let packagePath = path.resolve(__dirname, '..', package.projectFolder, 'package.json');
-  let packageJson = readConfig(packagePath);
+for (const name of Object.keys(allPackages)) {
+  const info = allPackages[name];
+  const packageJson = info.packageJson;
 
-  console.log(`Updating ${chalk.magenta(package.packageName)} from ${chalk.grey(packageJson.version)} to ${chalk.green(newVersion)}.`);
+  console.log(`Updating ${chalk.magenta(name)} from ${chalk.grey(packageJson.version)} to ${chalk.green(newVersion)}.`);
 
   packageJson.version = newVersion;
 
   function updateDependencies(deps) {
     for (const dependency in deps) {
-      if (rushJson.projects.find(pkg => pkg.packageName === dependency)) {
+      if (Object.keys(allPackages).find(name => name === dependency)) {
         console.log(`  Updating deps ${dependency}`);
 
         deps[dependency] = newDep;
@@ -55,5 +55,5 @@ for (const package of rushJson.projects) {
   updateDependencies(packageJson.dependencies);
   updateDependencies(packageJson.devDependencies);
 
-  writeConfig(packagePath, packageJson);
+  writeConfig(info.packagePath, packageJson);
 }

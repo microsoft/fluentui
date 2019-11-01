@@ -1,14 +1,17 @@
 import * as React from 'react';
 import {
-  BaseComponent,
+  Async,
+  EventGroup,
   IRectangle,
+  IRenderFunction,
   css,
+  divProperties,
   findIndex,
   findScrollableParent,
-  getParent,
-  divProperties,
   getNativeProps,
-  IRenderFunction
+  getParent,
+  getWindow,
+  initializeComponentRef
 } from '../../Utilities';
 import { IList, IListProps, IPage, IPageProps, ScrollToMode } from './List.types';
 
@@ -79,7 +82,7 @@ const _measureScrollRect = _measurePageRect;
  * or forcing an update change cause pages to shrink/grow. When these operations occur, we increment a measureVersion
  * number, which we associate with cached measurements and use to determine if a remeasure should occur.
  */
-export class List<T = any> extends BaseComponent<IListProps<T>, IListState<T>> implements IList {
+export class List<T = any> extends React.Component<IListProps<T>, IListState<T>> implements IList {
   public static defaultProps = {
     startIndex: 0,
     onRenderCell: (item: any, index: number, containsFocus: boolean) => <>{(item && item.name) || ''}</>,
@@ -93,7 +96,8 @@ export class List<T = any> extends BaseComponent<IListProps<T>, IListState<T>> i
 
   private _root = React.createRef<HTMLDivElement>();
   private _surface = React.createRef<HTMLDivElement>();
-
+  private _async: Async;
+  private _events: EventGroup;
   private _estimatedPageHeight: number;
   private _totalEstimates: number;
   private _cachedPageHeights: {
@@ -132,11 +136,15 @@ export class List<T = any> extends BaseComponent<IListProps<T>, IListState<T>> i
   constructor(props: IListProps<T>) {
     super(props);
 
+    initializeComponentRef(this);
+
     this.state = {
       pages: [],
       isScrolling: false
     };
 
+    this._async = new Async(this);
+    this._events = new EventGroup(this);
     this._estimatedPageHeight = 0;
     this._totalEstimates = 0;
     this._requiredWindowsAhead = 0;
@@ -307,7 +315,13 @@ export class List<T = any> extends BaseComponent<IListProps<T>, IListState<T>> i
     }
   }
 
-  public componentWillReceiveProps(newProps: IListProps<T>): void {
+  public componentWillUnmount(): void {
+    this._async.dispose();
+    this._events.dispose();
+  }
+
+  // tslint:disable-next-line function-name
+  public UNSAFE_componentWillReceiveProps(newProps: IListProps<T>): void {
     if (
       newProps.items !== this.props.items ||
       newProps.renderCount !== this.props.renderCount ||
@@ -331,6 +345,10 @@ export class List<T = any> extends BaseComponent<IListProps<T>, IListState<T>> i
 
     // Update if the page stops scrolling
     if (!newState.isScrolling && this.state.isScrolling) {
+      return true;
+    }
+
+    if (newProps.version !== this.props.version) {
       return true;
     }
 
@@ -582,17 +600,22 @@ export class List<T = any> extends BaseComponent<IListProps<T>, IListState<T>> i
     this._notifyPageChanges(oldListPages, newListState.pages!);
 
     this.setState(newListState, () => {
+      // Multiple updates may have been queued, so the callback will reflect all of them.
+      // Re-fetch the current props and states to avoid using a stale props or state captured in the closure.
+      const finalProps = this.props;
+      const finalState = this.state;
+
       // If we weren't provided with the page height, measure the pages
-      if (!props.getPageHeight) {
+      if (!finalProps.getPageHeight) {
         // If measured version is invalid since we've updated the DOM
-        const heightsChanged = this._updatePageMeasurements(newListState.pages!);
+        const heightsChanged = this._updatePageMeasurements(finalState.pages!);
 
         // On first render, we should re-measure so that we don't get a visual glitch.
         if (heightsChanged) {
           this._materializedRect = null;
           if (!this._hasCompletedFirstRender) {
             this._hasCompletedFirstRender = true;
-            this._updatePages(props);
+            this._updatePages(finalProps);
           } else {
             this._onAsyncScroll();
           }
@@ -606,8 +629,8 @@ export class List<T = any> extends BaseComponent<IListProps<T>, IListState<T>> i
       }
 
       // Notify the caller that rendering the new pages has completed
-      if (props.onPagesUpdated) {
-        props.onPagesUpdated(this.state.pages as IPage<T>[]);
+      if (finalProps.onPagesUpdated) {
+        finalProps.onPagesUpdated(finalState.pages as IPage<T>[]);
       }
     });
   }
@@ -966,13 +989,14 @@ export class List<T = any> extends BaseComponent<IListProps<T>, IListState<T>> i
     // The first time the list gets rendered we need to calculate the rectangle. The width of the list is
     // used to calculate the width of the list items.
     const visibleTop = Math.max(0, -surfaceRect.top);
+    const win = getWindow(this._root.current);
     const visibleRect = {
       top: visibleTop,
       left: surfaceRect.left,
-      bottom: visibleTop + window.innerHeight,
+      bottom: visibleTop + win!.innerHeight,
       right: surfaceRect.right,
       width: surfaceRect.width,
-      height: window.innerHeight
+      height: win!.innerHeight
     };
 
     // The required/allowed rects are adjusted versions of the visible rect.

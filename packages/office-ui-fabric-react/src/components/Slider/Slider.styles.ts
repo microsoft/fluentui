@@ -22,24 +22,27 @@ const GlobalClassNames = {
 
 export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
   const { className, titleLabelClassName, theme, vertical, disabled, showTransitions, showValue } = props;
-  const { palette } = theme;
+  const { semanticColors } = theme;
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
-  // Tokens
-  const sliderInteractedActiveSectionColor = palette.themePrimary;
-  const sliderInteractedInactiveSectionColor = palette.themeLight;
-  const sliderRestActiveSectionColor = palette.neutralSecondary;
-  const sliderRestInactiveSectionColor = palette.neutralTertiaryAlt;
+  /** Tokens:
+   *   The word "active" in the token refers to the selected section of the slider
+   *   The word "inactive" in the token refers to the unselected section of the slider */
+  const pressedActiveSectionColor = semanticColors.inputBackgroundCheckedHovered;
+  const hoveredActiveSectionColor = semanticColors.inputBackgroundChecked;
+  const hoveredPressedinactiveSectionColor = semanticColors.inputPlaceholderBackgroundChecked;
+  const restActiveSectionColor = semanticColors.smallInputBorder;
+  const restInactiveSectionColor = semanticColors.disabledBorder;
 
-  const sliderDisabledActiveSectionColor = palette.neutralTertiary;
-  const sliderDisabledInactiveSectionColor = palette.neutralLight;
+  const disabledActiveSectionColor = semanticColors.disabledText;
+  const disabledInactiveSectionColor = semanticColors.disabledBackground;
 
-  const sliderThumbBackgroundColor = palette.white;
-  const sliderThumbBorderColor = palette.neutralSecondary;
-  const sliderThumbDisabledBorderColor = palette.neutralTertiaryAlt;
+  const thumbBackgroundColor = semanticColors.inputBackground;
+  const thumbBorderColor = semanticColors.smallInputBorder;
+  const thumbDisabledBorderColor = semanticColors.disabledBorder;
 
   const slideBoxActiveSectionStyles = !disabled && {
-    backgroundColor: sliderInteractedActiveSectionColor,
+    backgroundColor: pressedActiveSectionColor,
     selectors: {
       [HighContrastSelector]: {
         backgroundColor: 'Highlight'
@@ -48,7 +51,7 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
   };
 
   const slideBoxInactiveSectionStyles = !disabled && {
-    backgroundColor: sliderInteractedInactiveSectionColor,
+    backgroundColor: hoveredPressedinactiveSectionColor,
     selectors: {
       [HighContrastSelector]: {
         borderColor: 'Highlight'
@@ -56,8 +59,17 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
     }
   };
 
+  const slideHoverSectionStyles = !disabled && {
+    backgroundColor: hoveredActiveSectionColor,
+    selectors: {
+      [HighContrastSelector]: {
+        backgroundColor: 'Highlight'
+      }
+    }
+  };
+
   const slideBoxActiveThumbStyles = !disabled && {
-    border: `2px solid ${sliderInteractedActiveSectionColor}`,
+    border: `2px solid ${pressedActiveSectionColor}`,
     selectors: {
       [HighContrastSelector]: {
         borderColor: 'Highlight'
@@ -66,7 +78,7 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
   };
 
   const slideBoxActiveZeroTickStyles = !props.disabled && {
-    backgroundColor: theme.palette.themeLight,
+    backgroundColor: semanticColors.inputPlaceholderBackgroundChecked,
     selectors: {
       [HighContrastSelector]: {
         backgroundColor: 'Highlight'
@@ -121,49 +133,14 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
         display: 'flex',
         alignItems: 'center',
         selectors: {
-          ':active $activeSection': slideBoxActiveSectionStyles,
-          ':hover $activeSection': slideBoxActiveSectionStyles,
-          ':active $inactiveSection': slideBoxInactiveSectionStyles,
-          ':hover $inactiveSection': slideBoxInactiveSectionStyles,
-          ':active $thumb': slideBoxActiveThumbStyles,
-          ':hover $thumb': slideBoxActiveThumbStyles,
-          ':active $zeroTick': slideBoxActiveZeroTickStyles,
-          ':hover $zeroTick': slideBoxActiveZeroTickStyles,
-          $thumb: [
-            {
-              borderWidth: 2,
-              borderStyle: 'solid',
-              borderColor: sliderThumbBorderColor,
-              borderRadius: 10,
-              boxSizing: 'border-box',
-              background: sliderThumbBackgroundColor,
-              display: 'block',
-              width: 16,
-              height: 16,
-              position: 'absolute'
-            },
-            vertical
-              ? {
-                  left: -6,
-                  margin: '0 auto',
-                  transform: 'translateY(8px)'
-                }
-              : {
-                  top: -6,
-                  transform: getRTL() ? 'translateX(50%)' : 'translateX(-50%)'
-                },
-            showTransitions && {
-              transition: `left ${AnimationVariables.durationValue3} ${AnimationVariables.easeFunction1}`
-            },
-            disabled && {
-              borderColor: sliderThumbDisabledBorderColor,
-              selectors: {
-                [HighContrastSelector]: {
-                  borderColor: 'GrayText'
-                }
-              }
-            }
-          ]
+          [`:active .${classNames.activeSection}`]: slideBoxActiveSectionStyles,
+          [`:hover .${classNames.activeSection}`]: slideHoverSectionStyles,
+          [`:active .${classNames.inactiveSection}`]: slideBoxInactiveSectionStyles,
+          [`:hover .${classNames.inactiveSection}`]: slideBoxInactiveSectionStyles,
+          [`:active .${classNames.thumb}`]: slideBoxActiveThumbStyles,
+          [`:hover .${classNames.thumb}`]: slideBoxActiveThumbStyles,
+          [`:active .${classNames.zeroTick}`]: slideBoxActiveZeroTickStyles,
+          [`:hover .${classNames.zeroTick}`]: slideBoxActiveZeroTickStyles
         }
       },
       vertical
@@ -180,29 +157,47 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
       ...[showValue ? classNames.showValue : undefined],
       ...[showTransitions ? classNames.showTransitions : undefined]
     ],
-    thumb: [classNames.thumb],
+    thumb: [
+      classNames.thumb,
+      {
+        borderWidth: 2,
+        borderStyle: 'solid',
+        borderColor: thumbBorderColor,
+        borderRadius: 10,
+        boxSizing: 'border-box',
+        background: thumbBackgroundColor,
+        display: 'block',
+        width: 16,
+        height: 16,
+        position: 'absolute'
+      },
+      vertical
+        ? {
+            left: -6,
+            margin: '0 auto',
+            transform: 'translateY(8px)'
+          }
+        : {
+            top: -6,
+            transform: getRTL() ? 'translateX(50%)' : 'translateX(-50%)'
+          },
+      showTransitions && {
+        transition: `left ${AnimationVariables.durationValue3} ${AnimationVariables.easeFunction1}`
+      },
+      disabled && {
+        borderColor: thumbDisabledBorderColor,
+        selectors: {
+          [HighContrastSelector]: {
+            borderColor: 'GrayText'
+          }
+        }
+      }
+    ],
     line: [
       classNames.line,
       {
         display: 'flex',
-        position: 'relative',
-        selectors: {
-          $lineContainer: [
-            {
-              borderRadius: 4,
-              boxSizing: 'border-box'
-            },
-            vertical
-              ? {
-                  width: 4,
-                  height: '100%'
-                }
-              : {
-                  height: 4,
-                  width: '100%'
-                }
-          ]
-        }
+        position: 'relative'
       },
       vertical
         ? {
@@ -215,11 +210,25 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
             width: '100%'
           }
     ],
-    lineContainer: [{}],
+    lineContainer: [
+      {
+        borderRadius: 4,
+        boxSizing: 'border-box'
+      },
+      vertical
+        ? {
+            width: 4,
+            height: '100%'
+          }
+        : {
+            height: 4,
+            width: '100%'
+          }
+    ],
     activeSection: [
       classNames.activeSection,
       {
-        background: sliderRestActiveSectionColor,
+        background: restActiveSectionColor,
         selectors: {
           [HighContrastSelector]: {
             backgroundColor: 'WindowText'
@@ -230,7 +239,7 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
         transition: `width ${AnimationVariables.durationValue3} ${AnimationVariables.easeFunction1}`
       },
       disabled && {
-        background: sliderDisabledActiveSectionColor,
+        background: disabledActiveSectionColor,
         selectors: {
           [HighContrastSelector]: {
             backgroundColor: 'GrayText',
@@ -242,7 +251,7 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
     inactiveSection: [
       classNames.inactiveSection,
       {
-        background: sliderRestInactiveSectionColor,
+        background: restInactiveSectionColor,
         selectors: {
           [HighContrastSelector]: {
             border: '1px solid WindowText'
@@ -253,7 +262,7 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
         transition: `width ${AnimationVariables.durationValue3} ${AnimationVariables.easeFunction1}`
       },
       disabled && {
-        background: sliderDisabledInactiveSectionColor,
+        background: disabledInactiveSectionColor,
         selectors: {
           [HighContrastSelector]: {
             borderColor: 'GrayText'
@@ -265,7 +274,7 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
       classNames.zeroTick,
       {
         position: 'absolute',
-        background: theme.palette.neutralTertiaryAlt,
+        background: semanticColors.disabledBorder,
         selectors: {
           [HighContrastSelector]: {
             backgroundColor: 'WindowText'
@@ -273,7 +282,7 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
         }
       },
       props.disabled && {
-        background: theme.palette.neutralLight,
+        background: semanticColors.disabledBackground,
         selectors: {
           [HighContrastSelector]: {
             backgroundColor: 'GrayText'

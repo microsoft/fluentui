@@ -17,7 +17,6 @@ exports[`Component Examples renders ProgressIndicator.Indeterminate.Example.tsx 
         ms-ProgressIndicator-itemName
         {
           color: #323130;
-          font-size: 14px;
           line-height: 20px;
           overflow: hidden;
           padding-top: 4px;
@@ -83,7 +82,7 @@ exports[`Component Examples renders ProgressIndicator.Indeterminate.Example.tsx 
         ms-ProgressIndicator-itemDescription
         {
           color: #605e5c;
-          font-size: 10px;
+          font-size: 12px;
           line-height: 18px;
         }
   >

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
-import { lorem } from 'office-ui-fabric-react/lib/utilities/exampleData';
+import { lorem } from '@uifabric/example-data';
 import { Stack, IStackProps } from 'office-ui-fabric-react/lib/Stack';
 
 export interface ITextFieldMultilineExampleState {

@@ -1,0 +1,172 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component Examples renders HoverCard.EventListenerTarget.Example.tsx correctly 1`] = `
+<div
+  className=
+      ms-Fabric
+      {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        color: #323130;
+        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+      }
+      & button {
+        font-family: inherit;
+      }
+      & input {
+        font-family: inherit;
+      }
+      & textarea {
+        font-family: inherit;
+      }
+>
+  <p>
+    Using the target to tag hover card on the right side of Emoji icon, and using eventListenerTarget to launch the card only when hovering over the text field, hovering over the icon doesn't trigger card open.
+  </p>
+  <span>
+    <span
+      className=
+
+          {
+            padding-right: 200px;
+          }
+    >
+      Hover Zone
+    </span>
+    <button
+      className=
+          ms-Button
+          ms-Button--icon
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            background-color: transparent;
+            border-radius: 2px;
+            border: none;
+            box-sizing: border-box;
+            color: #0078d4;
+            cursor: pointer;
+            display: inline-block;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            height: 32px;
+            outline: transparent;
+            padding-bottom: 0;
+            padding-left: 4px;
+            padding-right: 4px;
+            padding-top: 0;
+            position: relative;
+            text-align: center;
+            text-decoration: none;
+            user-select: none;
+            vertical-align: top;
+            width: 32px;
+          }
+          &::-moz-focus-inner {
+            border: 0;
+          }
+          .ms-Fabric--isFocusVisible &:focus:after {
+            border: 1px solid transparent;
+            bottom: 2px;
+            content: "";
+            left: 2px;
+            outline: 1px solid #605e5c;
+            position: absolute;
+            right: 2px;
+            top: 2px;
+            z-index: 1;
+          }
+          @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+            border: none;
+            bottom: -2px;
+            left: -2px;
+            outline-color: ButtonText;
+            right: -2px;
+            top: -2px;
+          }
+          &:active > * {
+            left: 0px;
+            position: relative;
+            top: 0px;
+          }
+          &:hover {
+            background-color: #f3f2f1;
+            color: #106ebe;
+          }
+          @media screen and (-ms-high-contrast: active){&:hover {
+            border-color: Highlight;
+            color: Highlight;
+          }
+          &:active {
+            background-color: #edebe9;
+            color: #005a9e;
+          }
+      data-is-focusable={true}
+      onClick={[Function]}
+      onKeyDown={[Function]}
+      onKeyPress={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseUp={[Function]}
+      title="Emoji"
+      type="button"
+    >
+      <span
+        className=
+            ms-Button-flexContainer
+            {
+              align-items: center;
+              display: flex;
+              flex-wrap: nowrap;
+              height: 100%;
+              justify-content: center;
+            }
+        data-automationid="splitbuttonprimary"
+      >
+        <i
+          aria-hidden={true}
+          className=
+              ms-Icon
+              ms-Button-icon
+              {
+                display: inline-block;
+              }
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                font-family: "FabricMDL2Icons-0";
+                font-style: normal;
+                font-weight: normal;
+                speak: none;
+              }
+              {
+                flex-shrink: 0;
+                font-size: 16px;
+                height: 16px;
+                line-height: 16px;
+                margin-bottom: 0;
+                margin-left: 4px;
+                margin-right: 4px;
+                margin-top: 0;
+                text-align: center;
+                vertical-align: middle;
+              }
+          data-icon-name="Emoji2"
+          role="presentation"
+        >
+          
+        </i>
+      </span>
+    </button>
+    <div
+      className=
+          ms-HoverCard-host
+
+      data-is-focusable={true}
+    />
+  </span>
+</div>
+`;
