@@ -126,7 +126,7 @@ exports[`Component Examples renders DatePicker.WeekNumbers.Example.tsx correctly
                     margin-top: 0px;
                     min-width: 0px;
                     outline: 0px;
-                    padding-bottom: 0;
+                    padding-bottom: 9px;
                     padding-left: 8px;
                     padding-right: 24px;
                     padding-top: 0;
@@ -189,7 +189,6 @@ exports[`Component Examples renders DatePicker.WeekNumbers.Example.tsx correctly
             <i
               aria-hidden={true}
               className=
-                  ms-DatePicker-event--without-label
                   msDatePickerDisabled
                   {
                     -moz-osx-font-smoothing: grayscale;

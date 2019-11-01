@@ -389,7 +389,8 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
           overflow: 'hidden'
         },
       hasIcon && {
-        paddingRight: 24
+        paddingRight: 24,
+        paddingBottom: 9
       },
       multiline &&
         hasIcon && {
