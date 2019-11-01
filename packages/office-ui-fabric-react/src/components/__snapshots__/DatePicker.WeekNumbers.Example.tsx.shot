@@ -189,7 +189,6 @@ exports[`Component Examples renders DatePicker.WeekNumbers.Example.tsx correctly
             <i
               aria-hidden={true}
               className=
-                  ms-DatePicker-event--without-label
                   msDatePickerDisabled
                   {
                     -moz-osx-font-smoothing: grayscale;
