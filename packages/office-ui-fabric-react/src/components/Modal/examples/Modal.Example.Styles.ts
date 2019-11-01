@@ -3,6 +3,7 @@ import { IStyle } from '@uifabric/styling';
 
 interface IModalExampleStyles {
   msModalContainer: IStyle;
+  msStickyContainer: IStyle;
   msModalHeader: IStyle;
   msModalBody: IStyle;
 }
@@ -10,6 +11,12 @@ interface IModalExampleStyles {
 const modalExampleStyle: IModalExampleStyles = {
   msModalContainer: {
     height: '80vh',
+    width: '80vw',
+    display: 'flex',
+    flexFlow: 'column nowrap',
+    alignItems: 'stretch'
+  },
+  msStickyContainer: {
     width: '80vw',
     display: 'flex',
     flexFlow: 'column nowrap',
