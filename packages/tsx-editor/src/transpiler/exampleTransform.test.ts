@@ -65,12 +65,12 @@ describe('example transform', () => {
   });
 
   it('can return component', () => {
-    const result = transformFile('function.txt', { returnComponent: true });
+    const result = transformFile('function.txt', { returnFunction: true });
     expect(result.output).toBeTruthy();
     // no rendering
     expect(result.output).not.toContain('ReactDOM.render');
-    // starts with IIFE
-    expect(result.output!.startsWith('(function() {')).toBe(true);
+    // starts with function
+    expect(result.output!.startsWith('(function(React) {')).toBe(true);
     // retuns component
     expect(result.output).toContain('return LabelBasicExampleWrapper');
     // generates wrapper component
@@ -81,10 +81,10 @@ describe('example transform', () => {
   });
 
   it('can return component with transpiled example', () => {
-    const result = transformFile('function.txt', { useJs: true, returnComponent: true });
+    const result = transformFile('function.txt', { useJs: true, returnFunction: true });
     expect(result.output).toBeTruthy();
     expect(result.output).not.toContain('ReactDOM.render');
-    expect(result.output!.startsWith('(function() {')).toBe(true);
+    expect(result.output!.startsWith('(function(React) {')).toBe(true);
     expect(result.output).toContain('return LabelBasicExampleWrapper');
     expect(result.output).toContain('LabelBasicExampleWrapper');
     expect(result.output).not.toContain('<LabelBasicExampleWrapper');

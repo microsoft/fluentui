@@ -1,9 +1,13 @@
+import * as React from 'react';
 import { getWindow } from 'office-ui-fabric-react/lib/Utilities';
 import { tryParseExample, IMPORT_REGEX } from './exampleParser';
 import { _supportedPackageToGlobalMap } from './transpileHelpers';
 import { IBasicPackageGroup, ITransformedCode } from '../interfaces/index';
 // Don't reference anything importing Monaco in this file to avoid pulling Monaco into the
 // main bundle or breaking tests!
+
+/** Function signature wrapping the transformed code if `ITransformExampleParams.returnFunction` is true. */
+export type ExampleWrapperFunction = (react: typeof React) => React.ComponentType;
 
 export interface ITransformExampleParams {
   /**
@@ -19,13 +23,15 @@ export interface ITransformExampleParams {
   jsCode?: string;
 
   /**
-   * If true, the code will be transformed into an immediately invoked function expression which
-   * returns the component (rather than including a `ReactDOM.render(...)` line). If false, the code
-   * will not be wrapped in a function and will actually render the component.
+   * If false, the returned code will end with a `ReactDOM.render(...)` line and won't be wrapped
+   * in a function.
+   * If true, the returned code will be wrapped in a function of type `ExampleWrapperFunction`,
+   * which should be called with the correct local version of React (to avoid hook errors due to
+   * React mismatches in case there's a global React) and returns the component.
    */
-  returnComponent?: boolean;
+  returnFunction?: boolean;
 
-  /** ID for the component to be rendered into (required unless `returnComponent` is true) */
+  /** ID for the component to be rendered into (required unless `returnFunction` is true) */
   id?: string;
 
   /** Supported package groups (React is implicitly supported) */
@@ -42,7 +48,7 @@ const win = getWindow() as
  * Transform an example for rendering in a browser context (example page or codepen).
  */
 export function transformExample(params: ITransformExampleParams): ITransformedCode {
-  const { tsCode, jsCode, id = 'content', supportedPackages, returnComponent } = params;
+  const { tsCode, jsCode, id = 'content', supportedPackages, returnFunction } = params;
 
   // Imports or exports will be removed since they are not supported.
   const code = (jsCode || tsCode)
@@ -85,8 +91,8 @@ export function transformExample(params: ITransformExampleParams): ITransformedC
     // and initialize icons in case the example uses them.
     finalComponent = component + 'Wrapper';
 
-    // If immediately running the code, the component can't use JSX format
-    const wrapperCode = returnComponent
+    // If eval-ing the code, the component can't use JSX format
+    const wrapperCode = returnFunction
       ? `React.createElement(Fabric, null, React.createElement(${component}, null))`
       : `<Fabric><${component} /></Fabric>`;
     lines.push('', `const ${finalComponent} = () => ${wrapperCode};`);
@@ -107,11 +113,12 @@ export function transformExample(params: ITransformExampleParams): ITransformedC
     .map(globalName => `const { ${identifiersByGlobal[globalName].join(', ')} } = window.${globalName};`)
     .concat(lines);
 
-  if (returnComponent) {
-    // Wrap in IIFE
-    lines.unshift('(function() {');
+  if (returnFunction) {
+    // Wrap in function, with the right React instance as a parameter.
+    // Parentheses allow the function to remain unnamed.
+    lines.unshift('(function(React) {');
     lines.push(`return ${finalComponent};`);
-    lines.push('})()');
+    lines.push('})');
   } else {
     // Add render line
     lines.push(`ReactDOM.render(<${finalComponent} />, document.getElementById('${id}'))`);

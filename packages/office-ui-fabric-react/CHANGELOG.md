@@ -1,7 +1,50 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 25 Oct 2019 12:31:49 GMT and should not be manually modified.
+This log was last generated on Fri, 01 Nov 2019 12:25:57 GMT and should not be manually modified.
 
+## 7.56.3
+Fri, 01 Nov 2019 12:25:57 GMT
+
+### Patches
+
+- CommandBar: update examples and docs (elcraig@microsoft.com)
+## 7.56.2
+Fri, 01 Nov 2019 01:02:38 GMT
+
+### Patches
+
+- Panel: improve examples (elcraig@microsoft.com)
+## 7.56.1
+Wed, 30 Oct 2019 19:36:52 GMT
+
+### Patches
+
+- ComboBox: Allow Space KeyUp event to propagate (xgao@microsoft.com)
+- SpinButton: fix vertical alignment relative to other fields (elcraig@microsoft.com)
+- Option to use checkbox role in Toggle component (satimals@microsoft.com)
+- Refactor Stack import to be relative not OUFR root (KevinTCoughlin@users.noreply.github.com)
+## 7.56.0
+Tue, 29 Oct 2019 12:36:28 GMT
+
+### Minor changes
+
+- Remove re-export of @uifabric/example-data from office-ui-fabric-react (KevinTCoughlin@users.noreply.github.com)
+### Patches
+
+- CommandBarButton: Fix height issue when commandbar buttons iconOnly props set to true (v-mare@microsoft.com)
+## 7.55.3
+Mon, 28 Oct 2019 22:25:45 GMT
+
+### Patches
+
+-  Added role to the selection list for BasePickerListBelow control so screen readers will read off "n" of "m" when arrowing through the list. (malind@microsoft.com)
+## 7.55.2
+Mon, 28 Oct 2019 12:31:48 GMT
+
+### Patches
+
+- Panel: Use semantic colors (elcraig@microsoft.com)
+- removing circular IPoint import (mehanig@gmail.com)
 ## 7.55.1
 Fri, 25 Oct 2019 12:31:49 GMT
 

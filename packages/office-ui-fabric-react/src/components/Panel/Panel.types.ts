@@ -117,7 +117,7 @@ export interface IPanelProps extends React.HTMLAttributes<PanelBase> {
 
   /**
    * Type of the panel.
-   * @defaultvalue PanelType.smallFixedRight
+   * @defaultvalue PanelType.smallFixedFar
    */
   type?: PanelType;
 

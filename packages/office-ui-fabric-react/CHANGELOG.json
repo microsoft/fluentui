@@ -2,6 +2,117 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Fri, 01 Nov 2019 12:25:57 GMT",
+      "tag": "office-ui-fabric-react_v7.56.3",
+      "version": "7.56.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "CommandBar: update examples and docs",
+            "author": "elcraig@microsoft.com",
+            "commit": "d3ebf42f7d2f1dc4d24a867ef1acca2eb2460b1e"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 01 Nov 2019 01:02:38 GMT",
+      "tag": "office-ui-fabric-react_v7.56.2",
+      "version": "7.56.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Panel: improve examples",
+            "author": "elcraig@microsoft.com",
+            "commit": "e6575e62c8c206540654d313e4ea81f47a4007ac"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 30 Oct 2019 19:36:52 GMT",
+      "tag": "office-ui-fabric-react_v7.56.1",
+      "version": "7.56.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "ComboBox: Allow Space KeyUp event to propagate",
+            "author": "xgao@microsoft.com",
+            "commit": "31043b5ba01a88858e161416914df0c2a3365d32"
+          },
+          {
+            "comment": "SpinButton: fix vertical alignment relative to other fields",
+            "author": "elcraig@microsoft.com",
+            "commit": "f3921dc1771bc6b0c9dec6460798030bc2ef2231"
+          },
+          {
+            "comment": "Option to use checkbox role in Toggle component",
+            "author": "satimals@microsoft.com",
+            "commit": "db4a33a8a686d180db5f64e7417b0ea279d9fdd7"
+          },
+          {
+            "comment": "Refactor Stack import to be relative not OUFR root",
+            "author": "KevinTCoughlin@users.noreply.github.com",
+            "commit": "071f5c27e1947d6a01c9fb7cbf30b6b5f46fa560"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 29 Oct 2019 12:36:28 GMT",
+      "tag": "office-ui-fabric-react_v7.56.0",
+      "version": "7.56.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "CommandBarButton: Fix height issue when commandbar buttons iconOnly props set to true",
+            "author": "v-mare@microsoft.com",
+            "commit": "5718afe4c879cf9e241a4e30e79b89b738f99ec8"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Remove re-export of @uifabric/example-data from office-ui-fabric-react",
+            "author": "KevinTCoughlin@users.noreply.github.com",
+            "commit": "d275d58e69a4a1d6d4a2d2a8691c488fa3e97954"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 28 Oct 2019 22:25:45 GMT",
+      "tag": "office-ui-fabric-react_v7.55.3",
+      "version": "7.55.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": " Added role to the selection list for BasePickerListBelow control so screen readers will read off \"n\" of \"m\" when arrowing through the list.",
+            "author": "malind@microsoft.com",
+            "commit": "adfbe74c57a96e8b75b16c0ee11397ab06a3fd5f"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 28 Oct 2019 12:31:48 GMT",
+      "tag": "office-ui-fabric-react_v7.55.2",
+      "version": "7.55.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Panel: Use semantic colors",
+            "author": "elcraig@microsoft.com",
+            "commit": "9ab7a866e2e330c0c9e6c04288db4ca663c07b8a"
+          },
+          {
+            "comment": "removing circular IPoint import",
+            "author": "mehanig@gmail.com",
+            "commit": "262fa433b51065deadc15aaf850e5cfb9670066c"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 25 Oct 2019 12:31:49 GMT",
       "tag": "office-ui-fabric-react_v7.55.1",
       "version": "7.55.1",
