@@ -1002,6 +1002,7 @@ export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BaseP
             direction={FocusZoneDirection.bidirectional}
             isInnerZoneKeystroke={this._isFocusZoneInnerKeystroke}
             id={this._ariaMap.selectedItems}
+            role={'list'}
           >
             {this.renderItems()}
           </FocusZone>

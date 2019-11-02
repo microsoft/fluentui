@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Checkbox: Added title attribute to checkbox containing div",
+  "packageName": "office-ui-fabric-react",
+  "email": "v-mare@microsoft.com",
+  "commit": "bd4d40323db6ec631ad9f2f6ba60e60bb0d7a121",
+  "date": "2019-10-29T21:09:18.722Z"
+}

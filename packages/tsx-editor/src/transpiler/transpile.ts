@@ -1,3 +1,4 @@
+import * as React from 'react';
 import * as monaco from '@uifabric/monaco-editor';
 import { TypeScriptWorker, EmitOutput } from '@uifabric/monaco-editor/monaco-typescript.d';
 import { getWindow } from 'office-ui-fabric-react/lib/Utilities';
@@ -76,11 +77,15 @@ export function transpileAndEval(model: IMonacoTextModel, supportedPackages: IBa
         const transformedExample = transformExample({
           tsCode: exampleTs,
           jsCode: transpileOutput.output,
-          returnComponent: true,
+          returnFunction: true,
           supportedPackages
         });
         if (transformedExample.output) {
-          return { ...transformedExample, component: eval(transformedExample.output) };
+          return {
+            ...transformedExample,
+            // Pass in the right React in case there's a different global one on the page...
+            component: eval(transformedExample.output)(React)
+          };
         } else {
           return { error: transformedExample.error || 'Unknown error transforming example' };
         }

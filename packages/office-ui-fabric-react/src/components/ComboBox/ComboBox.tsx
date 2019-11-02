@@ -816,8 +816,11 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
     const option: IComboBoxOption = currentOptions[newIndex];
 
-    // attempt to skip headers and dividers
-    if (option.itemType === SelectableOptionMenuItemType.Header || option.itemType === SelectableOptionMenuItemType.Divider) {
+    if (
+      option.itemType === SelectableOptionMenuItemType.Header ||
+      option.itemType === SelectableOptionMenuItemType.Divider ||
+      option.hidden === true
+    ) {
       // Should we continue looking for an index to select?
       if (
         searchDirection !== SearchDirection.none &&
@@ -885,6 +888,11 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
       // Only setstate if combobox is uncontrolled.
       if (this.props.selectedKey || this.props.selectedKey === null) {
+        // If ComboBox value is changed, revert preview first
+        if (this._hasPendingValue && onPendingValueChanged) {
+          onPendingValueChanged();
+          this._hasPendingValue = false;
+        }
         if (onChange) {
           onChange(submitPendingValueEvent, option, index, undefined);
         }
@@ -1851,18 +1859,14 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         // and allow the event to propagate
         if (!allowFreeform && autoComplete === 'off') {
           this._setOpenStateAndFocusOnClose(!isOpen, !!isOpen);
-          return;
         }
-        break;
+        return;
       default:
         if (shouldHandleKey && isOpen) {
           this._setOpenStateAndFocusOnClose(!isOpen, true /* focusInputAfterClose */);
         }
         return;
     }
-
-    ev.stopPropagation();
-    ev.preventDefault();
   };
 
   private _onOptionMouseEnter(index: number): void {
