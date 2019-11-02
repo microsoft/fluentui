@@ -131,7 +131,7 @@ Fri, 06 Jan 2017 04:41:20 GMT-Fri, 06 Jan 2017 04:41:20 GMT
                     margin-top: 0px;
                     min-width: 0px;
                     outline: 0px;
-                    padding-bottom: 8px;
+                    padding-bottom: 0;
                     padding-left: 8px;
                     padding-right: 24px;
                     padding-top: 0;
