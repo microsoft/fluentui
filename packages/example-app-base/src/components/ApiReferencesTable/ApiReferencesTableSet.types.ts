@@ -1,5 +1,4 @@
-import { PropertyType } from '../../utilities/parser/index';
-import { IPageJson, ILinkToken } from 'office-ui-fabric-react/lib/common/DocPage.types';
+import { IPageJson, ILinkToken, ApiKind } from 'office-ui-fabric-react/lib/common/DocPage.types';
 
 /**
  * Props for the ApiReferencesTableSet
@@ -31,7 +30,7 @@ export interface IApiProperty {
   name: string;
   extendsTokens?: ILinkToken[];
   description?: string;
-  renderAs: PropertyType;
+  renderAs: ApiKind;
   properties: IApiInterfaceProperty[] | IApiEnumProperty[];
   methods?: IMethod[];
   deprecatedMessage?: string;

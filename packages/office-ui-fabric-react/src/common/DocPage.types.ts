@@ -131,11 +131,13 @@ export type IEnumTableRowJson = Omit<ITableRowJson, 'kind' | 'typeTokens' | 'def
   value: string;
 };
 
+export type ApiKind = 'interface' | 'enum' | 'class' | 'typeAlias';
+
 /**
  * Info for a table representing a top-level API item: interface, enum, class, or type alias.
  */
 export interface ITableJson {
-  kind: 'interface' | 'enum' | 'class' | 'typeAlias';
+  kind: ApiKind;
   name: string;
   /**
    * Any types the item extends, translated to an array of text elements and links to other types.

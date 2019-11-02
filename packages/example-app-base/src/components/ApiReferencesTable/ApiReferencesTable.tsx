@@ -18,7 +18,6 @@ import { ILinkToken } from 'office-ui-fabric-react/lib/common/DocPage.types';
 import { IApiInterfaceProperty, IApiEnumProperty, IMethod, IApiReferencesTableProps } from './ApiReferencesTableSet.types';
 import { Markdown } from '../Markdown/index';
 import { getCurrentUrl } from '../../utilities/getCurrentUrl';
-import { PropertyType } from '../../utilities/parser/index';
 import { codeFontFamily } from '../CodeSnippet/CodeSnippet.styles';
 
 // TODO: remove
@@ -52,10 +51,6 @@ const rowStyles: Partial<IDetailsRowStyles> = {
     wordBreak: 'break-word'
   }
 };
-
-// When the text is passed to the function using this regex, it has had newline characters removed,
-// so the regex will match backtick sequences that span multiple lines.
-const backticksRegex = new RegExp('`[^`]*`', 'g');
 
 const renderDeprecatedMessage = (deprecated?: boolean, deprecatedMessage?: string) => {
   deprecatedMessage = (deprecatedMessage || '').trim();
@@ -115,7 +110,7 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
 
     const { properties, methods, renderAs } = props;
 
-    if (renderAs === PropertyType.enum || props.renderAsEnum) {
+    if (renderAs === 'enum' || props.renderAsEnum) {
       this._properties = (properties as IApiEnumProperty[])
         .sort((a: IApiEnumProperty, b: IApiEnumProperty) => (a.value < b.value ? -1 : a.value > b.value ? 1 : 0))
         .map((prop: IApiEnumProperty) => ({ ...prop, key: prop.name }));
@@ -126,8 +121,8 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
         .sort((a: IApiInterfaceProperty, b: IApiInterfaceProperty) => (a.name < b.name ? -1 : a.name > b.name ? 1 : 0))
         .map((prop: IApiInterfaceProperty) => ({ ...prop, key: prop.name }));
 
-      this._isClass = !!(renderAs === PropertyType.class || props.renderAsClass);
-      this._isTypeAlias = !!(renderAs === PropertyType.typeAlias || props.renderAsTypeAlias);
+      this._isClass = !!(renderAs === 'class' || props.renderAsClass);
+      this._isTypeAlias = !!(renderAs === 'typeAlias' || props.renderAsTypeAlias);
 
       if (this._isClass) {
         // Ensure the constructor is first
@@ -447,41 +442,24 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
  */
 function _extractCodeBlocks(text: string): React.ReactNode[] {
   // Unescape some characters
-  text = text.replace(/\\([@<>{}])/g, '$1');
+  text = (text || '').replace(/\\([@<>{}])/g, '$1');
 
-  let regexResult: RegExpExecArray | null;
-  const codeBlocks: { index: number; text: string }[] = [];
-  while ((regexResult = backticksRegex.exec(text)) !== null) {
-    codeBlocks.push({
-      index: regexResult.index,
-      text: regexResult[0]
-    });
-  }
-  if (!codeBlocks.length) {
-    return [text];
-  }
-
-  const textElements: React.ReactNode[] = [];
-
-  let codeIndex = 0;
-  let textIndex = 0;
-  let key = 0;
-  while (textIndex < text.length && codeIndex < codeBlocks.length) {
-    const codeBlock = codeBlocks[codeIndex];
-    if (textIndex < codeBlock.index) {
-      const str = text.substring(textIndex, codeBlock.index);
-      textElements.push(str);
-      textIndex += str.length;
-    } else {
-      textElements.push(<code key={key}>{codeBlock.text.substring(1, codeBlock.text.length - 1)}</code>);
-      codeIndex++;
-      textIndex += codeBlock.text.length;
+  const result: React.ReactNode[] = [];
+  let index = 0;
+  let inCodeBlock = false;
+  while (index < text.length) {
+    let sectionEnd = text.indexOf('`', index);
+    if (sectionEnd === -1) {
+      sectionEnd = text.length;
     }
-    key++;
+    const sectionContent = text.substring(index, sectionEnd);
+    if (inCodeBlock) {
+      result.push(<code key={index}>{sectionContent}</code>);
+    } else {
+      result.push(sectionContent);
+    }
+    inCodeBlock = !inCodeBlock;
+    index = sectionEnd + 1;
   }
-  if (textIndex < text.length) {
-    textElements.push(text.substring(textIndex));
-  }
-
-  return textElements;
+  return result;
 }

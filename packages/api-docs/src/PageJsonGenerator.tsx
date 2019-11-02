@@ -36,17 +36,7 @@ import {
   HeritageType
 } from '@microsoft/api-extractor-model';
 import { FileSystem, JsonFile } from '@microsoft/node-core-library';
-import {
-  IPageJson,
-  ITableJson,
-  ILinkToken,
-  ITableRowJson,
-  IEnumTableRowJson,
-  IReferencesList,
-  PageKind,
-  IPage,
-  IPageJsonOptions
-} from './PageJsonGenerator.types';
+import { IPageJson, ITableJson, ILinkToken, ITableRowJson, IEnumTableRowJson, PageKind, IPageJsonOptions } from './PageJsonGenerator.types';
 
 /**
  * Api items associated with a page
@@ -66,8 +56,8 @@ class CollectedData {
   /**
    * Map of page name to PageData
    */
-  public pageDataByPageName: Map<string, PageData> = new Map<string, PageData>();
-  public apiToPage: Map<string, IPage> = new Map<string, IPage>();
+  public pagesByName: Map<string, PageData> = new Map<string, PageData>();
+  public pagesByApi: Map<string, PageData> = new Map<string, PageData>();
   public apiModel: ApiModel = new ApiModel();
 }
 
@@ -87,11 +77,6 @@ export function generateJson(options: IPageJsonOptions[]): void {
 
     console.log('Deleting contents of ' + option.pageJsonFolderPath);
     FileSystem.ensureEmptyFolder(option.pageJsonFolderPath);
-
-    // Store the data for each page in a map
-    for (const pageName of option.pageNames) {
-      collectedData.pageDataByPageName.set(pageName, new PageData(pageName, option.kind));
-    }
 
     for (const apiJsonPath of option.apiJsonPaths) {
       console.log('Loading ' + apiJsonPath);
@@ -121,14 +106,10 @@ export function generateJson(options: IPageJsonOptions[]): void {
 function createPageJsonFiles(collectedData: CollectedData, options: IPageJsonOptions): void {
   const kind = options.kind;
 
-  const referencesList: IReferencesList = { pages: [] };
-
-  collectedData.pageDataByPageName.forEach((value: PageData, pageName: string) => {
-    if (value.kind === kind) {
+  collectedData.pagesByName.forEach((pageData: PageData, pageName: string) => {
+    if (pageData.kind === kind) {
       const pageJsonPath: string = path.join(options.pageJsonFolderPath, pageName + '.page.json');
       console.log('Writing ' + pageJsonPath);
-
-      const pageData: PageData = collectedData.pageDataByPageName.get(pageName)!;
 
       const pageJson: IPageJson = { tables: [], name: pageName };
       for (const apiItem of pageData.apiItems) {
@@ -150,10 +131,6 @@ function createPageJsonFiles(collectedData: CollectedData, options: IPageJsonOpt
             break;
           }
         }
-      }
-
-      if (value.kind === 'References') {
-        referencesList.pages.push(value.pageName);
       }
 
       JsonFile.save(pageJson, pageJsonPath);
@@ -453,7 +430,7 @@ function getTokenHyperlinks(
   excerptTokenRange: Readonly<IExcerptTokenRange>
 ): ILinkToken[] {
   return getTokensInRange(excerptTokens, excerptTokenRange).map((token: ExcerptToken) => {
-    const apiPage = collectedData.apiToPage.get(token.text);
+    const apiPage = collectedData.pagesByApi.get(token.text);
     if (apiPage) {
       return { text: token.text, hyperlinkedPage: apiPage.pageName, pageKind: apiPage.kind };
     } else {
@@ -523,10 +500,7 @@ function getTokensInRange(
 }
 
 /**
- * Loads api items into the page data object.
- *
- * @param collectedData - Map of strings to PageData
- * @param apiItem - The apiItem to inspect
+ * Walk all the APIs and make an empty page data object for each page name (docCategory).
  */
 function collectPageData(collectedData: CollectedData, apiItem: ApiItem, kind: PageKind): void {
   if (apiItem instanceof ApiDocumentedItem) {
@@ -542,14 +516,14 @@ function collectPageData(collectedData: CollectedData, apiItem: ApiItem, kind: P
 
           if (docCategoryTag !== undefined) {
             const pageName: string = docCategoryTag.tagContent.trim();
-            let pageData: PageData | undefined = collectedData.pageDataByPageName.get(pageName);
+            let pageData: PageData | undefined = collectedData.pagesByName.get(pageName);
 
             if (pageData === undefined) {
-              collectedData.pageDataByPageName.set(pageName, new PageData(pageName, 'References'));
-              pageData = collectedData.pageDataByPageName.get(pageName);
-              collectedData.apiToPage.set(apiItem.displayName, { pageName, kind: 'References' });
+              pageData = new PageData(pageName, 'References');
+              collectedData.pagesByName.set(pageName, pageData);
+              collectedData.pagesByApi.set(apiItem.displayName, pageData);
             } else {
-              collectedData.apiToPage.set(apiItem.displayName, { pageName, kind: pageData.kind });
+              collectedData.pagesByApi.set(apiItem.displayName, pageData);
             }
 
             pageData!.apiItems.push(apiItem);

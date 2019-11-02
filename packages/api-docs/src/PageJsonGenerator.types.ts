@@ -10,14 +10,6 @@ export interface IPageJsonOptions {
 }
 
 /**
- * The name of the page and what kind of page it is
- */
-export interface IPage {
-  pageName: string;
-  kind: PageKind;
-}
-
-/**
  * Used to keep track of where an API reference page will live on the site.
  */
 export type PageKind = 'References' | 'Components';
@@ -83,8 +75,4 @@ export interface ITableJson {
 export interface IPageJson {
   tables: ITableJson[];
   name: string;
-}
-
-export interface IReferencesList {
-  pages: string[];
 }

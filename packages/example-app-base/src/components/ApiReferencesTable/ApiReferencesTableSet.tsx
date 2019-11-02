@@ -5,7 +5,6 @@ import { Text } from 'office-ui-fabric-react/lib/Text';
 import { ApiReferencesTable, MEDIUM_GAP_SIZE, LARGE_GAP_SIZE } from './ApiReferencesTable';
 import { IApiReferencesTableProps, IApiInterfaceProperty, IMethod, IApiReferencesTableSetProps } from './ApiReferencesTableSet.types';
 import { IEnumTableRowJson, ITableRowJson, ITableJson } from 'office-ui-fabric-react/lib/common/DocPage.types';
-import { PropertyType } from '../../utilities/parser/index';
 import { extractAnchorLink } from '../../utilities/extractAnchorLink';
 import { jumpToAnchor } from '../../utilities/index2';
 
@@ -145,7 +144,7 @@ export class ApiReferencesTableSet extends React.Component<IApiReferencesTableSe
           case 'enum': {
             results.push(
               _generateTableProps(table, {
-                renderAs: PropertyType.enum,
+                renderAs: 'enum',
                 properties: table.members as IEnumTableRowJson[]
               })
             );
@@ -153,7 +152,7 @@ export class ApiReferencesTableSet extends React.Component<IApiReferencesTableSe
           }
           case 'interface': {
             const interfaceProperty = _generateTableProps(table, {
-              renderAs: PropertyType.interface,
+              renderAs: 'interface',
               properties: table.members
             });
 
@@ -173,7 +172,7 @@ export class ApiReferencesTableSet extends React.Component<IApiReferencesTableSe
           case 'typeAlias': {
             results.push(
               _generateTableProps(table, {
-                renderAs: PropertyType.typeAlias,
+                renderAs: 'typeAlias',
                 properties: []
               })
             );
@@ -202,7 +201,7 @@ export class ApiReferencesTableSet extends React.Component<IApiReferencesTableSe
 
     // the class
     return _generateTableProps(table, {
-      renderAs: PropertyType.class,
+      renderAs: 'class',
       properties: classMembers,
       methods: classMethods
     });
