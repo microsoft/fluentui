@@ -599,17 +599,11 @@ export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPi
     // (undocumented)
     readonly color: IColor;
     // (undocumented)
-    static defaultProps: {
-        hexLabel: string;
-        redLabel: string;
-        greenLabel: string;
-        blueLabel: string;
-        alphaLabel: string;
-    };
+    componentDidUpdate(prevProps: Readonly<IColorPickerProps>, prevState: Readonly<IColorPickerState>): void;
+    // (undocumented)
+    static defaultProps: Partial<IColorPickerProps>;
     // (undocumented)
     render(): JSX.Element;
-    // (undocumented)
-    UNSAFE_componentWillReceiveProps(newProps: IColorPickerProps): void;
     }
 
 // @public (undocumented)
@@ -2527,17 +2521,23 @@ export interface IColorPickerGridCellStyles {
 
 // @public (undocumented)
 export interface IColorPickerProps {
+    // @deprecated
     alphaLabel?: string;
     alphaSliderHidden?: boolean;
+    // @deprecated
     blueLabel?: string;
     className?: string;
     color: IColor | string;
     componentRef?: IRefObject<IColorPicker>;
+    // @deprecated
     greenLabel?: string;
+    // @deprecated
     hexLabel?: string;
     onChange?: (ev: React.SyntheticEvent<HTMLElement>, color: IColor) => void;
+    // @deprecated
     redLabel?: string;
     showPreview?: boolean;
+    strings?: IColorPickerStrings;
     styles?: IStyleFunctionOrObject<IColorPickerStyleProps, IColorPickerStyles>;
     theme?: ITheme;
 }
@@ -2551,6 +2551,20 @@ export interface IColorPickerState {
         component: keyof IRGBHex;
         value: string;
     };
+}
+
+// @public (undocumented)
+export interface IColorPickerStrings {
+    alpha?: string;
+    blue?: string;
+    green?: string;
+    hex?: string;
+    hue?: string;
+    red?: string;
+    rootAriaLabelFormat?: string;
+    svAriaDescription?: string;
+    svAriaLabel?: string;
+    svAriaValueFormat?: string;
 }
 
 // @public (undocumented)
@@ -2581,11 +2595,14 @@ export interface IColorRectangle {
 
 // @public (undocumented)
 export interface IColorRectangleProps {
+    ariaDescription?: string;
+    ariaLabel?: string;
+    ariaValueFormat?: string;
     className?: string;
     color: IColor;
     componentRef?: IRefObject<IColorRectangle>;
     minSize?: number;
-    onChange?: (ev: React.MouseEvent<HTMLElement>, color: IColor) => void;
+    onChange?: (ev: React.MouseEvent | React.KeyboardEvent, color: IColor) => void;
     styles?: IStyleFunctionOrObject<IColorRectangleStyleProps, IColorRectangleStyles>;
     theme?: ITheme;
 }
@@ -2600,6 +2617,7 @@ export interface IColorRectangleStyleProps {
 // @public (undocumented)
 export interface IColorRectangleStyles {
     dark?: IStyle;
+    description?: IStyle;
     light?: IStyle;
     root?: IStyle;
     thumb?: IStyle;
@@ -2607,28 +2625,30 @@ export interface IColorRectangleStyles {
 
 // @public (undocumented)
 export interface IColorSlider {
+    value: number;
 }
 
 // @public (undocumented)
 export interface IColorSliderProps {
+    ariaLabel?: string;
     className?: string;
     componentRef?: IRefObject<IColorSlider>;
     isAlpha?: boolean;
     maxValue?: number;
     minValue?: number;
-    onChange?: (event: React.MouseEvent<HTMLElement>, newValue?: number) => void;
-    overlayStyle?: any;
+    onChange?: (event: React.MouseEvent | React.KeyboardEvent, newValue?: number) => void;
+    overlayColor?: string;
+    // @deprecated
+    overlayStyle?: React.CSSProperties;
     styles?: IStyleFunctionOrObject<IColorSliderStyleProps, IColorSliderStyles>;
     theme?: ITheme;
+    // @deprecated
     thumbColor?: string;
     value?: number;
 }
 
 // @public (undocumented)
-export interface IColorSliderStyleProps {
-    className?: string;
-    theme: ITheme;
-}
+export type IColorSliderStyleProps = Required<Pick<IColorSliderProps, 'theme'>> & Pick<IColorSliderProps, 'className' | 'isAlpha'>;
 
 // @public (undocumented)
 export interface IColorSliderStyles {
