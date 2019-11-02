@@ -519,7 +519,7 @@ function collectPageData(collectedData: CollectedData, apiItem: ApiItem, kind: P
             let pageData: PageData | undefined = collectedData.pagesByName.get(pageName);
 
             if (pageData === undefined) {
-              pageData = new PageData(pageName, 'References');
+              pageData = new PageData(pageName, kind);
               collectedData.pagesByName.set(pageName, pageData);
               collectedData.pagesByApi.set(apiItem.displayName, pageData);
             } else {
