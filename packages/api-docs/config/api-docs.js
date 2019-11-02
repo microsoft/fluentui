@@ -9,16 +9,16 @@ const apiDocs = require('../lib/index');
 module.exports = [
   {
     apiJsonPaths: [
-      path.resolve(__dirname, '../../../packages/styling/dist/styling.api.json'),
-      path.resolve(__dirname, '../../../packages/utilities/dist/utilities.api.json'),
-      path.resolve(__dirname, '../../../packages/merge-styles/dist/merge-styles.api.json')
+      path.resolve(__dirname, '../../packages/styling/dist/styling.api.json'),
+      path.resolve(__dirname, '../../packages/utilities/dist/utilities.api.json'),
+      path.resolve(__dirname, '../../packages/merge-styles/dist/merge-styles.api.json')
     ],
     pageJsonFolderPath: path.join(__dirname, '../lib/pages/references'),
     pageNames: [],
     kind: 'References'
   },
   {
-    apiJsonPaths: [path.resolve(__dirname, '../../../packages/office-ui-fabric-react/dist/office-ui-fabric-react.api.json')],
+    apiJsonPaths: [path.resolve(__dirname, '../../packages/office-ui-fabric-react/dist/office-ui-fabric-react.api.json')],
     pageJsonFolderPath: path.resolve(__dirname, '../lib/pages/office-ui-fabric-react'),
     pageNames: [
       'ActivityItem',
@@ -93,7 +93,7 @@ module.exports = [
     kind: 'Components'
   },
   {
-    apiJsonPaths: [path.resolve(__dirname, '../../../packages/react-cards/dist/react-cards.api.json')],
+    apiJsonPaths: [path.resolve(__dirname, '../../packages/react-cards/dist/react-cards.api.json')],
     pageJsonFolderPath: path.resolve(__dirname, '../lib/pages/react-cards'),
     pageNames: ['Card'],
     kind: 'Components'
