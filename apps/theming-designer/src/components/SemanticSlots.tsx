@@ -58,6 +58,9 @@ export const SemanticSlots: React.StatelessComponent<ISemanticSlotsProps> = (pro
     );
   };
 
+  // Filters the list of palette slots pulled from getVariant to only include the ones starting with 'theme'
+  // and 'neutral' or the 4 unique ones called 'black', 'white', 'redDark', and 'accent' because these are
+  // the only ones to be displayed on the theme designer site.
   const trimPaletteSlots = (paletteSlots: IPalette): IPaletteSlots => {
     let trimmedPaletteSlots: IPaletteSlots = {};
     for (let palette in paletteSlots) {
@@ -94,6 +97,9 @@ export const SemanticSlots: React.StatelessComponent<ISemanticSlotsProps> = (pro
     );
   };
 
+  // Filters the list of semantic slots pulled from getVariant to only ones with strings that are appropriate.
+  // The appropriate ones are in the method above 'isASemanticColor'. These are the only ones we selected to include
+  // on the theme designer site.
   const trimSemanticSlotsOrNames = <T extends unknown>(semanticSlots: T) => {
     if (semanticSlots instanceof Array) {
       let trimmedSemanticSlotNames = [];
@@ -116,9 +122,9 @@ export const SemanticSlots: React.StatelessComponent<ISemanticSlotsProps> = (pro
   };
 
   const fillVariantSlotsList = (variantType: VariantThemeType): JSX.Element[] => {
-    let currThemeVariant: ITheme;
-    let noneVariant = getVariant(props.theme, VariantThemeType.None);
     if (props.theme) {
+      let currThemeVariant: ITheme;
+      let noneVariant = getVariant(props.theme, VariantThemeType.None);
       currThemeVariant = getVariant(props.theme, variantType);
       const currVariantSemanticSlots = currThemeVariant.semanticColors;
       // "trimming" to get rid of the seamantic color slots & palette slots we don't use for theme designer app
