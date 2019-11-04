@@ -919,7 +919,7 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
 
     if (this.props.onKeyUp) {
       this.props.onKeyUp(ev);
-      if (ev.preventDefault) {
+      if (ev.defaultPrevented) {
         return;
       }
     }
