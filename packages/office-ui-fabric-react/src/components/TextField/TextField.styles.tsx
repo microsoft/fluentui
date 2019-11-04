@@ -433,7 +433,6 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
     icon: [
       multiline && {
         paddingRight: 24,
-        paddingBottom: 8,
         alignItems: 'flex-end'
       },
       {
