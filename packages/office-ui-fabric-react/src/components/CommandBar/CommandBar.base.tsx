@@ -136,8 +136,7 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
 
     const itemText = item.text || item.name;
     const rootStyles: IStyle = {
-      height: '100%',
-      display: item.hidden ? 'none' : 'inline-block'
+      height: '100%'
     };
     const labelStyles: IStyle = {
       whiteSpace: 'nowrap'

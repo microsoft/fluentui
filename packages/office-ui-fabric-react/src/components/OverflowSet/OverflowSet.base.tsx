@@ -144,16 +144,18 @@ export class OverflowSetBase extends BaseComponent<IOverflowSetProps, {}> implem
   }
 
   private _onRenderItems = (items: IOverflowSetItemProps[]): JSX.Element[] => {
-    return items.map((item, i) => {
-      const wrapperDivProps: React.HTMLProps<HTMLDivElement> = {
-        className: this._classNames.item
-      };
-      return (
-        <div key={item.key} {...wrapperDivProps}>
-          {this.props.onRenderItem(item)}
-        </div>
-      );
-    });
+    return items
+      .filter(item => item.hidden !== true)
+      .map((item, i) => {
+        const wrapperDivProps: React.HTMLProps<HTMLDivElement> = {
+          className: this._classNames.item
+        };
+        return (
+          <div key={item.key} {...wrapperDivProps}>
+            {this.props.onRenderItem(item)}
+          </div>
+        );
+      });
   };
 
   private _onRenderOverflowButtonWrapper = (items: any[]): JSX.Element => {
