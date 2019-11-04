@@ -2,6 +2,20 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "date": "Fri, 01 Nov 2019 12:25:57 GMT",
+      "tag": "@uifabric/fabric-website_v7.6.0",
+      "version": "7.6.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Adds the SharePoint Figma toolkit to the Resources page of the website",
+            "author": "pejahn@microsoft.com",
+            "commit": "d2839f8cc09e37329c56e30399b5c046c9002f80"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 30 Oct 2019 19:36:52 GMT",
       "tag": "@uifabric/fabric-website_v7.5.8",
       "version": "7.5.8",

@@ -1,6 +1,6 @@
 // @ts-check
 
-const { task, series, parallel, condition, option, argv, addResolvePath } = require('just-scripts');
+const { task, series, parallel, condition, option, argv, addResolvePath, resolveCwd } = require('just-scripts');
 
 const path = require('path');
 const fs = require('fs');
@@ -86,7 +86,13 @@ module.exports = function preset() {
       'sass',
       parallel(
         condition('validate', () => !argv().min),
-        series('ts', parallel(condition('webpack', () => !argv().min), condition('lint-imports', () => !argv().min)))
+        series(
+          'ts',
+          parallel(
+            condition('webpack', () => !argv().min && !!resolveCwd('webpack.config.js')),
+            condition('lint-imports', () => !argv().min)
+          )
+        )
       )
     )
   ).cached();

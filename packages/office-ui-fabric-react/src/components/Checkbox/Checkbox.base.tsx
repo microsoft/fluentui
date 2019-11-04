@@ -104,7 +104,7 @@ export class CheckboxBase extends React.Component<ICheckboxProps, ICheckboxState
     return (
       <KeytipData keytipProps={keytipProps} disabled={disabled}>
         {(keytipAttributes: any): JSX.Element => (
-          <div className={this._classNames.root}>
+          <div className={this._classNames.root} title={title}>
             <input
               type="checkbox"
               {...inputProps}

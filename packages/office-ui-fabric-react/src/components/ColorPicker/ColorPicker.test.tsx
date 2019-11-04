@@ -5,10 +5,12 @@ import * as ReactTestUtils from 'react-dom/test-utils';
 
 import { ColorPicker } from './ColorPicker';
 import { ColorPickerBase, IColorPickerState } from './ColorPicker.base';
-import { IColorPickerProps } from './ColorPicker.types';
+import { IColorPickerProps, IColorPickerStrings } from './ColorPicker.types';
 import { IColor } from '../../utilities/color/interfaces';
 import { getColorFromString } from '../../utilities/color/getColorFromString';
 import { mockEvent } from '../../common/testUtilities';
+import { ColorRectangleBase } from './ColorRectangle/ColorRectangle.base';
+import { ColorSliderBase } from './ColorSlider/ColorSlider.base';
 
 const noOp = () => undefined;
 
@@ -133,37 +135,66 @@ describe('ColorPicker', () => {
     wrapper = mount(<ColorPicker color="#FFFFFF" />);
 
     const tableHeaders = wrapper.find('thead td');
-    const textHeaders = [
-      ColorPickerBase.defaultProps.hexLabel,
-      ColorPickerBase.defaultProps.redLabel,
-      ColorPickerBase.defaultProps.greenLabel,
-      ColorPickerBase.defaultProps.blueLabel,
-      ColorPickerBase.defaultProps.alphaLabel
-    ];
+    const strings = ColorPickerBase.defaultProps.strings!;
+    const textHeaders = [strings.hex, strings.red, strings.green, strings.blue, strings.alpha];
 
     tableHeaders.forEach((node, index) => {
       expect(node.text()).toEqual(textHeaders[index]);
     });
+
+    // also check the corresponding aria labels
+    const inputs = wrapper.find('input');
+    inputs.forEach((node, index) => {
+      expect(node.prop('aria-label')).toEqual(textHeaders[index]);
+    });
   });
 
-  it('renders custom RGBA/Hex strings', () => {
-    const textHeaders = ['Custom Hex', 'Custom Red', 'Custom Green', 'Custom Blue', 'Custom Alpha'];
+  it('renders custom strings', () => {
+    const fields = ['Custom Hex', 'Custom Red', 'Custom Green', 'Custom Blue', 'Custom Alpha'];
+    const customAria: Partial<IColorPickerStrings> = {
+      svAriaLabel: 'custom rectangle',
+      svAriaDescription: 'custom rectangle description',
+      svAriaValueFormat: 'custom rectangle value', // missing placeholders but code doesn't check for that
+      hue: 'custom hue'
+    };
 
     wrapper = mount(
       <ColorPicker
         color="#FFFFFF"
-        hexLabel={textHeaders[0]}
-        redLabel={textHeaders[1]}
-        greenLabel={textHeaders[2]}
-        blueLabel={textHeaders[3]}
-        alphaLabel={textHeaders[4]}
+        // even using a mix of deprecated and new props should work
+        hexLabel={fields[0]}
+        strings={{ red: fields[1], green: fields[2], blue: fields[3], alpha: fields[4], ...customAria }}
       />
     );
 
     const tableHeaders = wrapper.find('thead td');
     tableHeaders.forEach((node, index) => {
-      expect(node.text()).toEqual(textHeaders[index]);
+      expect(node.text()).toEqual(fields[index]);
     });
+
+    // Check for the aria strings in the HTML of the corresponding components (simplest way
+    // to verify ColorPicker is passing custom values through correctly)
+    const rectangleHtml = wrapper.find(ColorRectangleBase).html();
+    expect(rectangleHtml).toContain(customAria.svAriaLabel);
+    expect(rectangleHtml).toContain(customAria.svAriaDescription);
+    expect(rectangleHtml).toContain(customAria.svAriaValueFormat);
+
+    const sliders = wrapper.find(ColorSliderBase);
+    expect(sliders.at(0).html()).toContain(customAria.hue);
+    expect(sliders.at(1).html()).toContain('Custom Alpha');
+  });
+
+  it('uses default aria label', () => {
+    wrapper = mount(<ColorPicker color="#abcdef" />);
+    expect(wrapper.getDOMNode().getAttribute('aria-label')).toBe('Color picker, # a b c d e f selected.');
+
+    wrapper.setProps({ color: 'rgba(255, 0, 0, 0.5)' });
+    expect(wrapper.getDOMNode().getAttribute('aria-label')).toBe('Color picker, R G B A 255 0 0 50% selected.');
+  });
+
+  it('can use custom aria label', () => {
+    wrapper = mount(<ColorPicker color="#abcdef" strings={{ rootAriaLabelFormat: 'custom color picker {0}' }} />);
+    expect(wrapper.getDOMNode().getAttribute('aria-label')).toBe('custom color picker # a b c d e f');
   });
 
   it('keeps color value when tabbing between Hex and RGBA text inputs', () => {
@@ -242,6 +273,21 @@ describe('ColorPicker', () => {
     validateChange({ calls: 2, prop: 'hex', value: '00ff00', input: hexInput });
     ReactTestUtils.Simulate.blur(hexInput);
     validateChange({ calls: 2, prop: 'str', value: '#00ff00' });
+  });
+
+  it('does not update if default prevented', () => {
+    let newColor: IColor | undefined;
+    const onChange1 = jest.fn((ev: React.SyntheticEvent, color: IColor) => {
+      newColor = color;
+      ev.preventDefault();
+    });
+    wrapper = mount(<ColorPicker onChange={onChange1} color="#000000" componentRef={colorPickerRef} />);
+
+    const redInput = wrapper.getDOMNode().querySelectorAll('.ms-ColorPicker-input input')[1] as HTMLInputElement;
+    ReactTestUtils.Simulate.input(redInput, mockEvent('255'));
+    expect(onChange1).toHaveBeenCalledTimes(1);
+    expect(newColor!.r).toBe(255);
+    expect(colorPicker!.color.r).toBe(0);
   });
 
   it('ignores non-numeric RGBA input', () => {
@@ -403,6 +449,20 @@ describe('ColorPicker', () => {
 
     ReactTestUtils.Simulate.blur(hexInput);
     validateChange({ calls: 1, prop: 'hex', value: 'aabbcc', input: hexInput });
+  });
+
+  it('handles hex value too long', () => {
+    wrapper = mount(<ColorPicker onChange={onChange} color="#000000" componentRef={colorPickerRef} />);
+
+    const hexInput = wrapper.getDOMNode().querySelector('.ms-ColorPicker-input input') as HTMLInputElement;
+
+    // input too long "pasted" => use substring
+    ReactTestUtils.Simulate.input(hexInput, mockEvent('1234567'));
+    validateChange({ calls: 1, prop: 'hex', value: '123456', input: hexInput });
+
+    // invalid new value too long "pasted" => ignore
+    ReactTestUtils.Simulate.input(hexInput, mockEvent('hello world'));
+    validateChange({ calls: 1, prop: 'hex', value: '123456', input: hexInput });
   });
 
   it('reverts to previous valid hex value on blur if input is too short', () => {
