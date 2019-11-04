@@ -122,7 +122,7 @@ exports[`DatePicker renders default DatePicker correctly 1`] = `
                   margin-top: 0px;
                   min-width: 0px;
                   outline: 0px;
-                  padding-bottom: 8px;
+                  padding-bottom: 0;
                   padding-left: 8px;
                   padding-right: 24px;
                   padding-top: 0;
