@@ -1,9 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Dropdown: error message should have role=alert",
-  "packageName": "office-ui-fabric-react",
-  "email": "jdh@microsoft.com",
-  "commit": "698a3db6767fdaab67d68152af093b3e5f7d21a2",
-  "date": "2019-10-22T18:35:07.685Z",
-  "file": "/Users/jdh/projects/office-ui-fabric-react/change/office-ui-fabric-react-2019-10-22-11-35-07-10931-dropdown-alert.json"
-}

@@ -1,7 +1,22 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 01 Nov 2019 12:25:57 GMT and should not be manually modified.
+This log was last generated on Mon, 04 Nov 2019 12:23:43 GMT and should not be manually modified.
 
+## 7.57.0
+Mon, 04 Nov 2019 12:23:43 GMT
+
+### Minor changes
+
+- ColorPicker: add keyboard support and aria labels (elcraig@microsoft.com)
+- ComboBox: onPendingValueChanged callback before onChange (jdh@microsoft.com)
+### Patches
+
+- All Components: Added new files and markdown content (v-mare@microsoft.com)
+- Dropdown: error message should have role=alert (jdh@microsoft.com)
+- Checkbox: Added title attribute to checkbox containing div (v-mare@microsoft.com)
+- Updating the default foreground values in theming algorithm to match new fluent values (email not defined)
+- Toggle: Force wrapping when width-constrained. (jdh@microsoft.com)
+- Combobox: Fixed issue where hidden options are shown when arrowing through combobox option list (v-mare@microsoft.com)
 ## 7.56.3
 Fri, 01 Nov 2019 12:25:57 GMT
 

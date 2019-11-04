@@ -1,9 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Updating the default foreground values in theming algorithm to match new fluent values",
-  "packageName": "office-ui-fabric-react",
-  "email": "email not defined",
-  "commit": "7632ce28126a364fd4a8e5aac3042bc6ac774871",
-  "date": "2019-10-29T22:37:16.976Z",
-  "file": "/Users/aneeshak/office-ui-fabric-react/change/office-ui-fabric-react-2019-10-29-15-37-16-update_themerules.json"
-}

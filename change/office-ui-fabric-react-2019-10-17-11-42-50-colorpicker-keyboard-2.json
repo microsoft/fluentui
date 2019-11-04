@@ -1,9 +1,0 @@
-{
-  "type": "minor",
-  "comment": "ColorPicker: add keyboard support and aria labels",
-  "packageName": "office-ui-fabric-react",
-  "email": "elcraig@microsoft.com",
-  "commit": "0725f89816abc8731f13e7225a44898540876c53",
-  "date": "2019-10-17T18:42:50.445Z",
-  "file": "/Users/elizabeth/git/fabric-react3/change/office-ui-fabric-react-2019-10-17-11-42-50-colorpicker-keyboard-2.json"
-}
