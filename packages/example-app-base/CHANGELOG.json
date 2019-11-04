@@ -2,6 +2,20 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "date": "Fri, 01 Nov 2019 01:02:38 GMT",
+      "tag": "@uifabric/example-app-base_v7.8.5",
+      "version": "7.8.5",
+      "comments": {
+        "patch": [
+          {
+            "comment": "API table: render enum descriptions as multi-line",
+            "author": "elcraig@microsoft.com",
+            "commit": "e6575e62c8c206540654d313e4ea81f47a4007ac"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 04 Oct 2019 22:19:48 GMT",
       "tag": "@uifabric/example-app-base_v7.8.4",
       "version": "7.8.4",

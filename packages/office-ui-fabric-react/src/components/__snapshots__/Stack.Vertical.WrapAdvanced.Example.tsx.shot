@@ -667,10 +667,9 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
           Horizontal alignment:
         </label>
         <div
-          aria-describedby="Dropdown2-option"
           aria-expanded="false"
           aria-haspopup="listbox"
-          aria-labelledby="Dropdown2-label"
+          aria-labelledby="Dropdown2-label Dropdown2-option"
           className=
               ms-Dropdown
               {
@@ -891,10 +890,9 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
           Vertical alignment:
         </label>
         <div
-          aria-describedby="Dropdown3-option"
           aria-expanded="false"
           aria-haspopup="listbox"
-          aria-labelledby="Dropdown3-label"
+          aria-labelledby="Dropdown3-label Dropdown3-option"
           className=
               ms-Dropdown
               {
@@ -1115,10 +1113,9 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
           Overflow:
         </label>
         <div
-          aria-describedby="Dropdown4-option"
           aria-expanded="false"
           aria-haspopup="listbox"
-          aria-labelledby="Dropdown4-label"
+          aria-labelledby="Dropdown4-label Dropdown4-option"
           className=
               ms-Dropdown
               {

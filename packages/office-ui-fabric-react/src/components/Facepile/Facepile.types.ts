@@ -56,6 +56,11 @@ export interface IFacepileProps extends React.ClassAttributes<FacepileBase> {
   /** ARIA label for persona list */
   ariaDescription?: string;
 
+  /**
+   * Defines the aria label that the screen readers use when focus goes on a list of personas.
+   */
+  ariaLabel?: string;
+
   /** Show add person button */
   showAddButton?: boolean;
 

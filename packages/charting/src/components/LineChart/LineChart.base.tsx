@@ -134,7 +134,7 @@ export class LineChartBase extends React.Component<
         </svg>
         <div className={this._classNames.legendContainer}>{legendBars}</div>
         {this.state.isCalloutVisible ? (
-          <Callout target={this.state.refSelected} isBeakVisible={false} gapSpace={5} directionalHint={DirectionalHint.topAutoEdge}>
+          <Callout target={this.state.refSelected} isBeakVisible={false} gapSpace={10} directionalHint={DirectionalHint.topAutoEdge}>
             <div className={this._classNames.calloutContentRoot}>
               <span className={this._classNames.calloutContentX}>{this.state.hoverXValue}</span>
               <span className={this._classNames.calloutContentY}>{this.state.hoverYValue}</span>

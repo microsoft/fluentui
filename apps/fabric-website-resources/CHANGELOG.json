@@ -2,6 +2,20 @@
   "name": "@uifabric/fabric-website-resources",
   "entries": [
     {
+      "date": "Mon, 28 Oct 2019 22:25:45 GMT",
+      "tag": "@uifabric/fabric-website-resources_v7.4.0",
+      "version": "7.4.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Enable live editor and update bundling",
+            "author": "elcraig@microsoft.com",
+            "commit": "da81d25a70517a242b31f2b25ee8b07975b6e539"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 03 Oct 2019 23:14:46 GMT",
       "tag": "@uifabric/fabric-website-resources_v7.3.2",
       "version": "7.3.2",

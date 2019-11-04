@@ -35,7 +35,10 @@ if (typesContext) {
       packageName === '@uifabric/example-data' ? exampleDataGroup : packageName === '@uifabric/react-hooks' ? hooksGroup : fabricGroup;
     packageGroup.packages.push({
       packageName,
-      loadTypes: () => typesContext!(dtsPath)
+      loadTypes: () =>
+        // raw-loader 0.x exports a single string, and later versions export a default.
+        // The package.json specifies 0.x, but handle either just in case.
+        typesContext!(dtsPath).then((result: string | { default: string }) => (typeof result === 'string' ? result : result.default))
     });
   });
 } else {

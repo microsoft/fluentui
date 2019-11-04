@@ -249,6 +249,7 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
         maxWidth: 400,
         isCollapsible: false,
         isResizable: true,
+        isMultiline: true,
         onRender: this.createRenderCellEnum('description')
       }
     ];
