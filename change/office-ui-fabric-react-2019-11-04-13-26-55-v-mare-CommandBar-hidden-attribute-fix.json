@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "CommandBar: Added ability to pass \"hidden:true\" on items objects in order to hide items ",
+  "packageName": "office-ui-fabric-react",
+  "email": "v-mare@microsoft.com",
+  "commit": "85a9eba3cd78c93b7b4682e8bf6fe9ce31c8e0d5",
+  "date": "2019-11-04T21:26:55.089Z"
+}
