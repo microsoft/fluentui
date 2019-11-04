@@ -109,6 +109,11 @@ export interface ILegendsProps {
    * This prop makes the legends component align itself to the center in the container it is sitting in
    */
   centerLegends?: boolean;
+
+  /**
+   * Enable the legends to wrap lines if there is not enough space to show all legends on a single line
+   */
+  enabledWrapLines?: boolean;
 }
 
 /**
