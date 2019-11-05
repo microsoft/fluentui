@@ -78,7 +78,6 @@
     @include ms-fontColor-white;
 
     @include high-contrast {
-      // The gradient doesn't behave well in high contrast, so get rid of it.
       color: window;
     }
   }
