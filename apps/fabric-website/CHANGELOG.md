@@ -1,7 +1,13 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Fri, 01 Nov 2019 12:25:57 GMT and should not be manually modified.
+This log was last generated on Tue, 05 Nov 2019 23:43:46 GMT and should not be manually modified.
 
+## 7.6.1
+Tue, 05 Nov 2019 23:43:46 GMT
+
+### Patches
+
+- fixing the production flag to be respected in the webpackCliTask world (kchau@microsoft.com)
 ## 7.6.0
 Fri, 01 Nov 2019 12:25:57 GMT
 

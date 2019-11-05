@@ -13,7 +13,7 @@
     "@uifabric/date-time": "^7.5.5",
     "@uifabric/experiments": "^7.18.3",
     "@uifabric/fabric-website-resources": "^7.4.0",
-    "@uifabric/fabric-website": "^7.6.0",
+    "@uifabric/fabric-website": "^7.6.1",
     "@uifabric/foundation-scenarios": "^0.102.6",
     "perf-test": "^7.0.0",
     "test-bundles": "^7.0.0",

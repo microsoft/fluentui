@@ -2,6 +2,20 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "date": "Tue, 05 Nov 2019 23:43:46 GMT",
+      "tag": "@uifabric/fabric-website_v7.6.1",
+      "version": "7.6.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fixing the production flag to be respected in the webpackCliTask world",
+            "author": "kchau@microsoft.com",
+            "commit": "e35c4367b6f6f87ebf2d9372136a15c6b9eb190b"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 01 Nov 2019 12:25:57 GMT",
       "tag": "@uifabric/fabric-website_v7.6.0",
       "version": "7.6.0",
