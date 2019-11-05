@@ -303,24 +303,27 @@ export const getStyles = memoizeFunction(
           whiteSpace: 'nowrap',
           textOverflow: 'ellipsis',
           boxSizing: 'border-box', // Border-box matches Dropdown and TextField
+          borderStyle: 'solid',
+          borderColor: root.borderColor,
+          borderRadius: effects.roundedCorner2,
           selectors: {
             '.ms-Label': {
               display: 'inline-block',
               marginBottom: '8px'
             },
-            ':after': {
-              pointerEvents: 'none',
-              content: "''",
-              position: 'absolute',
-              left: 0,
-              top: 0,
-              bottom: 0,
-              right: 0,
-              borderWidth: '1px',
-              borderStyle: 'solid',
-              borderColor: root.borderColor,
-              borderRadius: effects.roundedCorner2
-            },
+            // ':after': {
+            //   pointerEvents: 'none',
+            //   content: "''",
+            //   position: 'absolute',
+            //   left: 0,
+            //   top: 0,
+            //   bottom: 0,
+            //   right: 0,
+            //   borderWidth: '1px',
+            //   borderStyle: 'solid',
+            //   borderColor: root.borderColor,
+            //   borderRadius: effects.roundedCorner2
+            // },
             '&.is-open': {
               borderColor: root.borderColor,
               selectors: {
