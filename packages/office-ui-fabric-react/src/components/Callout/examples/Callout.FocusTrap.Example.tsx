@@ -3,7 +3,6 @@ import {
   DefaultButton,
   FocusTrapCallout,
   Stack,
-  getId,
   FocusZone,
   PrimaryButton,
   getTheme,
