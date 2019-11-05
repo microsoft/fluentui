@@ -2,6 +2,32 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Tue, 05 Nov 2019 12:24:16 GMT",
+      "tag": "office-ui-fabric-react_v6.210.4",
+      "version": "6.210.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Remove circular import for IPoint",
+            "author": "hacahill@microsoft.com",
+            "commit": "c5dacf7027d03e2721eb4bfc33497f55b47d504e"
+          },
+          {
+            "comment": "Propagate version through List and GroupedList",
+            "author": "tmichon@microsoft.com",
+            "commit": "cb1c1915fb899d13017fe9d8cb477781092f768c"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Delete TeachingBubble.MultiStep.Example.tsx.shot~d0a96bc9c... Teaching bubble: updated to match design toolkit  (#10660)",
+            "author": "KevinTCoughlin@users.noreply.github.com",
+            "commit": "1613c8ec646ab6390f18a8c26ce728e5d90bb7b5"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 30 Oct 2019 12:23:19 GMT",
       "tag": "office-ui-fabric-react_v6.210.3",
       "version": "6.210.3",

@@ -1,7 +1,14 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 30 Oct 2019 12:23:19 GMT and should not be manually modified.
+This log was last generated on Tue, 05 Nov 2019 12:24:16 GMT and should not be manually modified.
 
+## 6.210.4
+Tue, 05 Nov 2019 12:24:16 GMT
+
+### Patches
+
+- Remove circular import for IPoint (hacahill@microsoft.com)
+- Propagate version through List and GroupedList (tmichon@microsoft.com)
 ## 6.210.3
 Wed, 30 Oct 2019 12:23:19 GMT
 

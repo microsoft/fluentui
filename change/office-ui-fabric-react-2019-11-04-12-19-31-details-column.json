@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Propagate version through List and GroupedList",
-  "packageName": "office-ui-fabric-react",
-  "email": "tmichon@microsoft.com",
-  "commit": "cb1c1915fb899d13017fe9d8cb477781092f768c",
-  "date": "2019-11-04T20:19:31.025Z"
-}
