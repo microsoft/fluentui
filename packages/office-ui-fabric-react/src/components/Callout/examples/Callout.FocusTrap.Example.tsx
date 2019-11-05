@@ -66,9 +66,6 @@ export class CalloutFocusTrapExample extends React.Component<{}, ICalloutFocusTr
   };
 
   private _menuButtonElement: HTMLElement | null;
-  // Use getId() to ensure that the callout title ID is unique on the page.
-  // (It's also okay to use a plain string without getId() and manually ensure its uniqueness.)
-  private _titleId: string = getId('callout-label');
 
   public render(): JSX.Element {
     const { isCalloutVisible } = this.state;
@@ -82,7 +79,6 @@ export class CalloutFocusTrapExample extends React.Component<{}, ICalloutFocusTr
           <div>
             <FocusTrapCallout
               role="alertdialog"
-              ariaLabelledBy={this._titleId}
               className={styles.callout}
               gapSpace={0}
               target={this._menuButtonElement}
@@ -90,9 +86,7 @@ export class CalloutFocusTrapExample extends React.Component<{}, ICalloutFocusTr
               setInitialFocus={true}
             >
               <div className={styles.header}>
-                <p className={styles.title} id={this._titleId}>
-                  Callout title here
-                </p>
+                <p className={styles.title}>Callout title here</p>
               </div>
               <div className={styles.inner}>
                 <div className="ms-CalloutExample-content">
