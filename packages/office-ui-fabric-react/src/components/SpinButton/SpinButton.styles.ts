@@ -18,13 +18,13 @@ const _getDisabledStyles = memoizeFunction(
 
     return {
       backgroundColor: SpinButtonBackgroundColorDisabled,
+      borderColor: SpinButtonBackgroundColorDisabled,
       pointerEvents: 'none',
       cursor: 'default',
       color: SpinButtonTextColorDisabled,
       selectors: {
-        ':after': {
-          borderColor: SpinButtonBackgroundColorDisabled
-        },
+        // ':after': {
+        // },
         [HighContrastSelector]: {
           color: 'GrayText'
         }
@@ -211,12 +211,21 @@ export const getStyles = memoizeFunction(
       },
       spinButtonWrapperFocused: {
         selectors: {
-          ':after': {
-            borderColor: SpinButtonRootBorderColorFocused,
-            borderWidth: '2px'
-          },
           [HighContrastSelector]: {
             borderColor: 'Highlight'
+          },
+          ':after': {
+            // borderColor: SpinButtonRootBorderColorFocused,
+            // borderWidth: '2px'
+            pointerEvents: 'none',
+            content: "''",
+            position: 'absolute',
+            left: -1,
+            top: -1,
+            bottom: -1,
+            right: -1,
+            border: `2px solid ${SpinButtonRootBorderColorFocused}`,
+            borderRadius: effects.roundedCorner2
           }
         }
       },
