@@ -1,8 +1,7 @@
 import * as React from 'react';
 import { DatePicker, DayOfWeek, IDatePickerStrings } from 'office-ui-fabric-react/lib/DatePicker';
 import { addMonths, addYears } from 'office-ui-fabric-react/lib/utilities/dateMath/DateMath';
-import { css, classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
-import { datePickerExampleStyles, IDatePickerExampleStyles } from './DatePicker.Examples.Styles';
+import { mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
 
 const today: Date = new Date(Date.now());
 const minDate: Date = addMonths(today, -1);
@@ -34,8 +33,12 @@ const DayPickerStrings: IDatePickerStrings = {
   isOutOfBoundsErrorMessage: `Date must be between ${minDate.toLocaleDateString()}-${maxDate.toLocaleDateString()}`
 };
 
-const getClassNames = classNamesFunction<{}, IDatePickerExampleStyles>();
-const classnames = getClassNames(datePickerExampleStyles, {});
+const styles = mergeStyleSets({
+  msDatePicker: {
+    margin: '0 0 15px 0',
+    maxWidth: '300px'
+  }
+});
 
 export interface IDatePickerRequiredExampleState {
   firstDayOfWeek?: DayOfWeek;
@@ -57,7 +60,7 @@ export class DatePickerBoundedExample extends React.Component<{}, IDatePickerReq
       <div className="docs-DatePickerExample">
         <p>{description}</p>
         <DatePicker
-          className={css(classnames.msDatePicker)}
+          className={styles.msDatePicker}
           isRequired={false}
           firstDayOfWeek={firstDayOfWeek}
           strings={DayPickerStrings}
