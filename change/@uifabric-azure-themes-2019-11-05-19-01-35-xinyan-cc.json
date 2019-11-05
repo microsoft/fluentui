@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Correct the checked checkbox background in Azure light theme.",
+  "packageName": "@uifabric/azure-themes",
+  "email": "xinychen@microsoft.com",
+  "commit": "852fe1af1d081e45041183064a2fe0b51cec5659",
+  "date": "2019-11-05T11:01:35.825Z"
+}
