@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "remove unnecessary preventDefault in contextual menu which broke ability to preventDefault during onDismiss",
+  "packageName": "office-ui-fabric-react",
+  "email": "micahgodbolt@gmail.com",
+  "commit": "63cde726a39c9ce5bc10be55da0c97fb9633c1a3",
+  "date": "2019-11-05T19:40:36.743Z"
+}
