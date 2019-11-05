@@ -9,7 +9,7 @@ import {
   DefaultButton,
   Modal,
   IDragOptions
-} from 'office-ui-fabric-react/';
+} from 'office-ui-fabric-react';
 
 export interface IModalBasicExampleState {
   showModal: boolean;

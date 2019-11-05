@@ -8,7 +8,7 @@ import {
   DefaultButton,
   Checkbox,
   ContextualMenu
-} from 'office-ui-fabric-react/';
+} from 'office-ui-fabric-react';
 import { getId } from 'office-ui-fabric-react/lib/Utilities';
 
 export interface IModalModelessExampleState {
