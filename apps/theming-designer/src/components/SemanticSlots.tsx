@@ -102,8 +102,8 @@ export const SemanticSlots: React.StatelessComponent<ISemanticSlotsProps> = (pro
   /**
    * Filters the list of semantic slots pulled from getVariant to only ones with strings that are appropriate.
    * The appropriate ones are in the method above 'isASemanticColor'. These are the only ones we selected to include
-   * on the theme designer site. Input can be type ISemanticColors, which is a dictionary { string : string },
-   * when called from fillVariantSlotsList where it gets the theme object's semantic colors passed in. to or {} when it's called .
+   * on the theme designer site. Input can be type ISemanticColors, which is a dictionary mapping each slot to
+   * its 'hex color value { string : string } or a list of strings.
    */
   const trimSemanticSlotsOrNames = <T extends unknown>(semanticSlots: T) => {
     if (semanticSlots instanceof Array) {
@@ -132,7 +132,6 @@ export const SemanticSlots: React.StatelessComponent<ISemanticSlotsProps> = (pro
       let noneVariant = getVariant(props.theme, VariantThemeType.None);
       currThemeVariant = getVariant(props.theme, variantType);
       const currVariantSemanticSlots = currThemeVariant.semanticColors;
-      console.log(currVariantSemanticSlots);
       /* "trimming" to get rid of the seamantic color slots & palette slots we don't use for theme designer app */
       const trimmedSemanticSlots = trimSemanticSlotsOrNames(currVariantSemanticSlots);
       const currVariantPaletteSlots = noneVariant.palette; // palette slot values should be based off the default variant
@@ -168,7 +167,6 @@ export const SemanticSlots: React.StatelessComponent<ISemanticSlotsProps> = (pro
   };
 
   let semanticSlotsNone = props.theme.semanticColors;
-  console.log(Object.keys(semanticSlotsNone));
   slotNames = trimSemanticSlotsOrNames(Object.keys(semanticSlotsNone)) as ISlotNames;
   noneSlots = fillVariantSlotsList(VariantThemeType.None);
   neutralSlots = fillVariantSlotsList(VariantThemeType.Neutral);
