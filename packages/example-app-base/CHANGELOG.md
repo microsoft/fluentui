@@ -1,7 +1,13 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Fri, 04 Oct 2019 22:19:48 GMT and should not be manually modified.
+This log was last generated on Fri, 01 Nov 2019 01:02:38 GMT and should not be manually modified.
 
+## 7.8.5
+Fri, 01 Nov 2019 01:02:38 GMT
+
+### Patches
+
+- API table: render enum descriptions as multi-line (elcraig@microsoft.com)
 ## 7.8.4
 Fri, 04 Oct 2019 22:19:48 GMT
 

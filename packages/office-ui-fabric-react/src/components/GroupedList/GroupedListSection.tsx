@@ -188,13 +188,16 @@ export class GroupedListSection extends React.Component<IGroupedListSectionProps
       onShouldVirtualize,
       groupedListClassNames,
       groups,
-      compact
+      compact,
+      listProps = {}
     } = this.props;
     const { isSelected } = this.state;
     const renderCount = group && getGroupItemLimit ? getGroupItemLimit(group) : Infinity;
     const isShowAllVisible =
       group && !group.children && !group.isCollapsed && !group.isShowingAll && (group.count > renderCount || group.hasMoreData);
     const hasNestedGroups = group && group.children && group.children.length > 0;
+
+    const { version } = listProps;
 
     const dividerProps: IGroupDividerProps = {
       group,
@@ -231,6 +234,7 @@ export class GroupedListSection extends React.Component<IGroupedListSectionProps
             onRenderCell={this._renderSubGroup}
             getItemCountForPage={this._returnOne}
             onShouldVirtualize={onShouldVirtualize}
+            version={version}
             id={this._id}
           />
         ) : (

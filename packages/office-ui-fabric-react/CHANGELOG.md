@@ -1,7 +1,133 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 16 Oct 2019 12:33:21 GMT and should not be manually modified.
+This log was last generated on Mon, 04 Nov 2019 12:23:43 GMT and should not be manually modified.
 
+## 7.57.0
+Mon, 04 Nov 2019 12:23:43 GMT
+
+### Minor changes
+
+- ColorPicker: add keyboard support and aria labels (elcraig@microsoft.com)
+- ComboBox: onPendingValueChanged callback before onChange (jdh@microsoft.com)
+### Patches
+
+- All Components: Added new files and markdown content (v-mare@microsoft.com)
+- Dropdown: error message should have role=alert (jdh@microsoft.com)
+- Checkbox: Added title attribute to checkbox containing div (v-mare@microsoft.com)
+- Updating the default foreground values in theming algorithm to match new fluent values (email not defined)
+- Toggle: Force wrapping when width-constrained. (jdh@microsoft.com)
+- Combobox: Fixed issue where hidden options are shown when arrowing through combobox option list (v-mare@microsoft.com)
+## 7.56.3
+Fri, 01 Nov 2019 12:25:57 GMT
+
+### Patches
+
+- CommandBar: update examples and docs (elcraig@microsoft.com)
+## 7.56.2
+Fri, 01 Nov 2019 01:02:38 GMT
+
+### Patches
+
+- Panel: improve examples (elcraig@microsoft.com)
+## 7.56.1
+Wed, 30 Oct 2019 19:36:52 GMT
+
+### Patches
+
+- ComboBox: Allow Space KeyUp event to propagate (xgao@microsoft.com)
+- SpinButton: fix vertical alignment relative to other fields (elcraig@microsoft.com)
+- Option to use checkbox role in Toggle component (satimals@microsoft.com)
+- Refactor Stack import to be relative not OUFR root (KevinTCoughlin@users.noreply.github.com)
+## 7.56.0
+Tue, 29 Oct 2019 12:36:28 GMT
+
+### Minor changes
+
+- Remove re-export of @uifabric/example-data from office-ui-fabric-react (KevinTCoughlin@users.noreply.github.com)
+### Patches
+
+- CommandBarButton: Fix height issue when commandbar buttons iconOnly props set to true (v-mare@microsoft.com)
+## 7.55.3
+Mon, 28 Oct 2019 22:25:45 GMT
+
+### Patches
+
+-  Added role to the selection list for BasePickerListBelow control so screen readers will read off "n" of "m" when arrowing through the list. (malind@microsoft.com)
+## 7.55.2
+Mon, 28 Oct 2019 12:31:48 GMT
+
+### Patches
+
+- Panel: Use semantic colors (elcraig@microsoft.com)
+- removing circular IPoint import (mehanig@gmail.com)
+## 7.55.1
+Fri, 25 Oct 2019 12:31:49 GMT
+
+### Patches
+
+- Facepile: added ARIA label so ARIA input fields should have an accessible name addressing issue #10877 (marygans@microsoft.com)
+- Dropdown: Moving announcement of selected options from aria-describedby to aria-labelledby. (Humberto.Morimoto@microsoft.com)
+- Fix button _onDismissMenu to accept undefined event params (mgodbolt@microsoft.com)
+## 7.55.0
+Thu, 24 Oct 2019 12:31:42 GMT
+
+### Minor changes
+
+- Do not expand date picker on TextField click when disableAutoFocus is true and allowTextInput is true. (phtucker@microsoft.com)
+### Patches
+
+- FocusZone: unhooking capture keydown handler at the right time to avoid a race condition. (dzearing@hotmail.com)
+- Make DetailsRow data-is-focusable configurable (KevinTCoughlin@users.noreply.github.com)
+- Adds aria label to basebutton on the outer div (kchau@microsoft.com)
+## 7.54.1
+Wed, 23 Oct 2019 12:32:05 GMT
+
+### Patches
+
+- Dropdown: Added note to documentation page calling out Dropdown's behavior of rendering in a panel in very small viewports. (mgodbolt@microsoft.com)
+- TagPicker: make tag item and input text to respect theme color and have correct font (xgao@microsoft.com)
+- Suggestions: Fix problem where search for more button wouldn't highlight correctly (joschect@microsoft.com)
+- TagPicker: Update snapshots (jdh@microsoft.com)
+## 7.54.0
+Tue, 22 Oct 2019 12:32:05 GMT
+
+### Minor changes
+
+- ContextualMenu: Tightening types of onDismiss callback. (Humberto.Morimoto@microsoft.com)
+### Patches
+
+- consume suggestionsAvailableAlertText prop to floating picker, so that the screen readers can announce the apperance of suggestions when the prop is set. (email not defined)
+- Fix getDerivedStateFromProps signatures (elcraig@microsoft.com)
+- TagPicker: prevent long items from overflowing narrow container (elcraig@microsoft.com)
+- TagPicker: Close button high contrast color fix (joschect@microsoft.com)
+## 7.53.1
+Mon, 21 Oct 2019 12:33:23 GMT
+
+### Patches
+
+- Facepile: Added presence example (v-mare@microsoft.com)
+- Pickers: Bring pickers in line with W3 ARIA 1.1 specs. (joschect@microsoft.com)
+- Fix typo (norton.wong@genedata.com)
+## 7.53.0
+Fri, 18 Oct 2019 12:31:12 GMT
+
+### Minor changes
+
+- Fix virtualization state tracking in List and DetailsList (tmichon@microsoft.com)
+### Patches
+
+- Allow data attribute passing for SpinButton (xgao@microsoft.com)
+- Dropdown: fix a few of the aria regressions (joschect@microsoft.com)
+- Get rid of DetailsList example snapshot churn (elcraig@microsoft.com)
+## 7.52.0
+Thu, 17 Oct 2019 12:33:02 GMT
+
+### Minor changes
+
+- Dropdown: Bringing accessibility up to standards. (Humberto.Morimoto@microsoft.com)
+### Patches
+
+- Button: Fixed logic where onDismiss was replacing internal dismiss function. (mgodbolt@microsoft.com)
 ## 7.51.0
 Wed, 16 Oct 2019 12:33:21 GMT
 

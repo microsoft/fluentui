@@ -662,15 +662,14 @@ exports[`Component Examples renders Stack.Horizontal.WrapAdvanced.Example.tsx co
                 padding-top: 5px;
                 word-wrap: break-word;
               }
-          htmlFor="Dropdown2"
           id="Dropdown2-label"
         >
           Horizontal alignment:
         </label>
         <div
-          aria-describedby="Dropdown2-option"
           aria-expanded="false"
-          aria-labelledby="Dropdown2-label"
+          aria-haspopup="listbox"
+          aria-labelledby="Dropdown2-label Dropdown2-option"
           className=
               ms-Dropdown
               {
@@ -769,7 +768,6 @@ exports[`Component Examples renders Stack.Horizontal.WrapAdvanced.Example.tsx co
           <span
             aria-atomic={true}
             aria-invalid={false}
-            aria-label="Left"
             aria-live="polite"
             aria-posinset={1}
             aria-selected={true}
@@ -804,9 +802,7 @@ exports[`Component Examples renders Stack.Horizontal.WrapAdvanced.Example.tsx co
             id="Dropdown2-option"
             role="option"
           >
-            <span>
-              Left
-            </span>
+            Left
           </span>
           <span
             className=
@@ -889,15 +885,14 @@ exports[`Component Examples renders Stack.Horizontal.WrapAdvanced.Example.tsx co
                 padding-top: 5px;
                 word-wrap: break-word;
               }
-          htmlFor="Dropdown3"
           id="Dropdown3-label"
         >
           Vertical alignment:
         </label>
         <div
-          aria-describedby="Dropdown3-option"
           aria-expanded="false"
-          aria-labelledby="Dropdown3-label"
+          aria-haspopup="listbox"
+          aria-labelledby="Dropdown3-label Dropdown3-option"
           className=
               ms-Dropdown
               {
@@ -996,7 +991,6 @@ exports[`Component Examples renders Stack.Horizontal.WrapAdvanced.Example.tsx co
           <span
             aria-atomic={true}
             aria-invalid={false}
-            aria-label="Top"
             aria-live="polite"
             aria-posinset={1}
             aria-selected={true}
@@ -1031,9 +1025,7 @@ exports[`Component Examples renders Stack.Horizontal.WrapAdvanced.Example.tsx co
             id="Dropdown3-option"
             role="option"
           >
-            <span>
-              Top
-            </span>
+            Top
           </span>
           <span
             className=
@@ -1116,15 +1108,14 @@ exports[`Component Examples renders Stack.Horizontal.WrapAdvanced.Example.tsx co
                 padding-top: 5px;
                 word-wrap: break-word;
               }
-          htmlFor="Dropdown4"
           id="Dropdown4-label"
         >
           Overflow:
         </label>
         <div
-          aria-describedby="Dropdown4-option"
           aria-expanded="false"
-          aria-labelledby="Dropdown4-label"
+          aria-haspopup="listbox"
+          aria-labelledby="Dropdown4-label Dropdown4-option"
           className=
               ms-Dropdown
               {
@@ -1223,7 +1214,6 @@ exports[`Component Examples renders Stack.Horizontal.WrapAdvanced.Example.tsx co
           <span
             aria-atomic={true}
             aria-invalid={false}
-            aria-label="Visible"
             aria-live="polite"
             aria-posinset={1}
             aria-selected={true}
@@ -1258,9 +1248,7 @@ exports[`Component Examples renders Stack.Horizontal.WrapAdvanced.Example.tsx co
             id="Dropdown4-option"
             role="option"
           >
-            <span>
-              Visible
-            </span>
+            Visible
           </span>
           <span
             className=

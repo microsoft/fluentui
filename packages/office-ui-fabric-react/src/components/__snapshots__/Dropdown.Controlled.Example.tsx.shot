@@ -31,15 +31,14 @@ exports[`Component Examples renders Dropdown.Controlled.Example.tsx correctly 1`
           padding-top: 5px;
           word-wrap: break-word;
         }
-    htmlFor="Dropdown0"
     id="Dropdown0-label"
   >
     Controlled example
   </label>
   <div
-    aria-describedby="Dropdown0-option"
     aria-expanded="false"
-    aria-labelledby="Dropdown0-label"
+    aria-haspopup="listbox"
+    aria-labelledby="Dropdown0-label Dropdown0-option"
     className=
         ms-Dropdown
         {
@@ -139,7 +138,6 @@ exports[`Component Examples renders Dropdown.Controlled.Example.tsx correctly 1`
     <span
       aria-atomic={true}
       aria-invalid={false}
-      aria-label="Select an option"
       aria-live="polite"
       aria-setsize={7}
       className=
@@ -174,9 +172,7 @@ exports[`Component Examples renders Dropdown.Controlled.Example.tsx correctly 1`
       id="Dropdown0-option"
       role="option"
     >
-      <span>
-        Select an option
-      </span>
+      Select an option
     </span>
     <span
       className=

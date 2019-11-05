@@ -3026,15 +3026,14 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                 padding-top: 5px;
                 word-wrap: break-word;
               }
-          htmlFor="Dropdown12"
           id="Dropdown12-label"
         >
           Horizontal alignment:
         </label>
         <div
-          aria-describedby="Dropdown12-option"
           aria-expanded="false"
-          aria-labelledby="Dropdown12-label"
+          aria-haspopup="listbox"
+          aria-labelledby="Dropdown12-label Dropdown12-option"
           className=
               ms-Dropdown
               {
@@ -3133,7 +3132,6 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
           <span
             aria-atomic={true}
             aria-invalid={false}
-            aria-label="Left"
             aria-live="polite"
             aria-posinset={1}
             aria-selected={true}
@@ -3168,9 +3166,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
             id="Dropdown12-option"
             role="option"
           >
-            <span>
-              Left
-            </span>
+            Left
           </span>
           <span
             className=
@@ -3252,15 +3248,14 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                 padding-top: 5px;
                 word-wrap: break-word;
               }
-          htmlFor="Dropdown13"
           id="Dropdown13-label"
         >
           Vertical alignment:
         </label>
         <div
-          aria-describedby="Dropdown13-option"
           aria-expanded="false"
-          aria-labelledby="Dropdown13-label"
+          aria-haspopup="listbox"
+          aria-labelledby="Dropdown13-label Dropdown13-option"
           className=
               ms-Dropdown
               {
@@ -3359,7 +3354,6 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
           <span
             aria-atomic={true}
             aria-invalid={false}
-            aria-label="Top"
             aria-live="polite"
             aria-posinset={1}
             aria-selected={true}
@@ -3394,9 +3388,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
             id="Dropdown13-option"
             role="option"
           >
-            <span>
-              Top
-            </span>
+            Top
           </span>
           <span
             className=

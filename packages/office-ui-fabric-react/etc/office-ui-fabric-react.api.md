@@ -6,8 +6,6 @@
 
 import { BaseComponent } from '@uifabric/utilities';
 import { EventGroup } from '@uifabric/utilities';
-import { groupOne } from '@uifabric/example-data';
-import { groupTwo } from '@uifabric/example-data';
 import { IBaseProps } from '@uifabric/utilities';
 import { IComponent } from '@uifabric/foundation';
 import { IComponentAs } from '@uifabric/utilities';
@@ -34,9 +32,7 @@ import { IStyleFunctionOrObject } from '@uifabric/utilities';
 import { IStyleSet } from '@uifabric/styling';
 import { ITheme } from '@uifabric/styling';
 import { KeyCodes } from '@uifabric/utilities';
-import { mru } from '@uifabric/example-data';
 import { Omit } from '@uifabric/utilities';
-import { people } from '@uifabric/example-data';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import { Selection } from '@uifabric/utilities';
@@ -603,17 +599,11 @@ export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPi
     // (undocumented)
     readonly color: IColor;
     // (undocumented)
-    static defaultProps: {
-        hexLabel: string;
-        redLabel: string;
-        greenLabel: string;
-        blueLabel: string;
-        alphaLabel: string;
-    };
+    componentDidUpdate(prevProps: Readonly<IColorPickerProps>, prevState: Readonly<IColorPickerState>): void;
+    // (undocumented)
+    static defaultProps: Partial<IColorPickerProps>;
     // (undocumented)
     render(): JSX.Element;
-    // (undocumented)
-    UNSAFE_componentWillReceiveProps(newProps: IColorPickerProps): void;
     }
 
 // @public (undocumented)
@@ -918,8 +908,6 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
     scrollToIndex(index: number, measureItem?: (itemIndex: number) => number, scrollToMode?: ScrollToMode): void;
     // (undocumented)
     UNSAFE_componentWillReceiveProps(newProps: IDetailsListProps): void;
-    // (undocumented)
-    UNSAFE_componentWillUpdate(): void;
 }
 
 // @public (undocumented)
@@ -1408,15 +1396,11 @@ export const GroupFooter: React.StatelessComponent<IGroupFooterProps>;
 // @public (undocumented)
 export const GroupHeader: React.StatelessComponent<IGroupHeaderProps>;
 
-export { groupOne }
-
 // @public (undocumented)
 export const GroupShowAll: React.StatelessComponent<IGroupShowAllProps>;
 
 // @public (undocumented)
 export const GroupSpacer: React.FunctionComponent<IGroupSpacerProps>;
-
-export { groupTwo }
 
 // @public
 export const HEX_REGEX: RegExp;
@@ -2537,17 +2521,23 @@ export interface IColorPickerGridCellStyles {
 
 // @public (undocumented)
 export interface IColorPickerProps {
+    // @deprecated
     alphaLabel?: string;
     alphaSliderHidden?: boolean;
+    // @deprecated
     blueLabel?: string;
     className?: string;
     color: IColor | string;
     componentRef?: IRefObject<IColorPicker>;
+    // @deprecated
     greenLabel?: string;
+    // @deprecated
     hexLabel?: string;
     onChange?: (ev: React.SyntheticEvent<HTMLElement>, color: IColor) => void;
+    // @deprecated
     redLabel?: string;
     showPreview?: boolean;
+    strings?: IColorPickerStrings;
     styles?: IStyleFunctionOrObject<IColorPickerStyleProps, IColorPickerStyles>;
     theme?: ITheme;
 }
@@ -2561,6 +2551,20 @@ export interface IColorPickerState {
         component: keyof IRGBHex;
         value: string;
     };
+}
+
+// @public (undocumented)
+export interface IColorPickerStrings {
+    alpha?: string;
+    blue?: string;
+    green?: string;
+    hex?: string;
+    hue?: string;
+    red?: string;
+    rootAriaLabelFormat?: string;
+    svAriaDescription?: string;
+    svAriaLabel?: string;
+    svAriaValueFormat?: string;
 }
 
 // @public (undocumented)
@@ -2591,11 +2595,14 @@ export interface IColorRectangle {
 
 // @public (undocumented)
 export interface IColorRectangleProps {
+    ariaDescription?: string;
+    ariaLabel?: string;
+    ariaValueFormat?: string;
     className?: string;
     color: IColor;
     componentRef?: IRefObject<IColorRectangle>;
     minSize?: number;
-    onChange?: (ev: React.MouseEvent<HTMLElement>, color: IColor) => void;
+    onChange?: (ev: React.MouseEvent | React.KeyboardEvent, color: IColor) => void;
     styles?: IStyleFunctionOrObject<IColorRectangleStyleProps, IColorRectangleStyles>;
     theme?: ITheme;
 }
@@ -2610,6 +2617,7 @@ export interface IColorRectangleStyleProps {
 // @public (undocumented)
 export interface IColorRectangleStyles {
     dark?: IStyle;
+    description?: IStyle;
     light?: IStyle;
     root?: IStyle;
     thumb?: IStyle;
@@ -2617,28 +2625,30 @@ export interface IColorRectangleStyles {
 
 // @public (undocumented)
 export interface IColorSlider {
+    value: number;
 }
 
 // @public (undocumented)
 export interface IColorSliderProps {
+    ariaLabel?: string;
     className?: string;
     componentRef?: IRefObject<IColorSlider>;
     isAlpha?: boolean;
     maxValue?: number;
     minValue?: number;
-    onChange?: (event: React.MouseEvent<HTMLElement>, newValue?: number) => void;
-    overlayStyle?: any;
+    onChange?: (event: React.MouseEvent | React.KeyboardEvent, newValue?: number) => void;
+    overlayColor?: string;
+    // @deprecated
+    overlayStyle?: React.CSSProperties;
     styles?: IStyleFunctionOrObject<IColorSliderStyleProps, IColorSliderStyles>;
     theme?: ITheme;
+    // @deprecated
     thumbColor?: string;
     value?: number;
 }
 
 // @public (undocumented)
-export interface IColorSliderStyleProps {
-    className?: string;
-    theme: ITheme;
-}
+export type IColorSliderStyleProps = Required<Pick<IColorSliderProps, 'theme'>> & Pick<IColorSliderProps, 'className' | 'isAlpha'>;
 
 // @public (undocumented)
 export interface IColorSliderStyles {
@@ -2758,7 +2768,6 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox,
     iconButtonProps?: IButtonProps;
     isButtonAriaHidden?: boolean;
     keytipProps?: IKeytipProps;
-    multiSelect?: boolean;
     onChange?: (event: React.FormEvent<IComboBox>, option?: IComboBoxOption, index?: number, value?: string) => void;
     onItemClick?: (event: React.FormEvent<IComboBox>, option?: IComboBoxOption, index?: number) => void;
     onMenuDismiss?: () => void;
@@ -2853,7 +2862,7 @@ export interface ICommandBarProps extends React.HTMLAttributes<HTMLDivElement> {
     overflowButtonAs?: IComponentAs<IButtonProps>;
     overflowButtonProps?: IButtonProps;
     overflowItems?: ICommandBarItemProps[];
-    shiftOnReduce?: Boolean;
+    shiftOnReduce?: boolean;
     styles?: IStyleFunctionOrObject<ICommandBarStyleProps, ICommandBarStyles>;
     theme?: ITheme;
 }
@@ -3039,7 +3048,7 @@ export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, IWith
     isSubMenu?: boolean;
     items: IContextualMenuItem[];
     labelElementId?: string;
-    onDismiss?: (ev?: any, dismissAll?: boolean) => void;
+    onDismiss?: (ev?: React.MouseEvent | React.KeyboardEvent, dismissAll?: boolean) => void;
     onItemClick?: (ev?: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>, item?: IContextualMenuItem) => boolean | void;
     onMenuDismissed?: (contextualMenu?: IContextualMenuProps) => void;
     onMenuOpened?: (contextualMenu?: IContextualMenuProps) => void;
@@ -3526,6 +3535,7 @@ export interface IDetailsListState {
     lastSelectionMode?: SelectionMode;
     // (undocumented)
     lastWidth?: number;
+    version: {};
 }
 
 // @public (undocumented)
@@ -4312,7 +4322,6 @@ export interface IDropdownProps extends ISelectableDroppableTextProps<IDropdown,
     // @deprecated
     isDisabled?: boolean;
     keytipProps?: IKeytipProps;
-    multiSelect?: boolean;
     multiSelectDelimiter?: string;
     notifyOnReselect?: boolean;
     onChange?: (event: React.FormEvent<HTMLDivElement>, option?: IDropdownOption, index?: number) => void;
@@ -4514,6 +4523,7 @@ export interface IFacepilePersona extends React.ButtonHTMLAttributes<HTMLButtonE
 export interface IFacepileProps extends React.ClassAttributes<FacepileBase> {
     addButtonProps?: IButtonProps;
     ariaDescription?: string;
+    ariaLabel?: string;
     // @deprecated
     chevronButtonProps?: IButtonProps;
     className?: string;
@@ -5335,6 +5345,7 @@ export interface IListProps<T = any> extends React.HTMLAttributes<List<T> | HTML
     role?: string;
     startIndex?: number;
     usePageCache?: boolean;
+    version?: {};
 }
 
 // @public (undocumented)
@@ -6560,6 +6571,7 @@ export interface ISelectableDroppableTextProps<TComponent, TListenerElement> ext
     errorMessage?: string;
     id?: string;
     label?: string;
+    multiSelect?: boolean;
     onDismiss?: () => void;
     onRenderContainer?: IRenderFunction<ISelectableDroppableTextProps<TComponent, TListenerElement>>;
     onRenderItem?: IRenderFunction<ISelectableOption>;
@@ -6926,7 +6938,7 @@ export interface ISpinButton {
 }
 
 // @public (undocumented)
-export interface ISpinButtonProps {
+export interface ISpinButtonProps extends React.HTMLAttributes<HTMLDivElement> {
     ariaDescribedBy?: string;
     ariaLabel?: string;
     ariaPositionInSet?: number;
@@ -7691,6 +7703,7 @@ export interface IToggleProps extends React.HTMLAttributes<HTMLElement> {
     // @deprecated (undocumented)
     onChanged?: (checked: boolean) => void;
     onText?: string;
+    role?: 'checkbox' | 'switch';
     styles?: IStyleFunctionOrObject<IToggleStyleProps, IToggleStyles>;
     theme?: ITheme;
 }
@@ -8111,8 +8124,6 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
     UNSAFE_componentWillReceiveProps(newProps: IModalProps): void;
 }
 
-export { mru }
-
 // @public (undocumented)
 export const Nav: React.StatelessComponent<INavProps>;
 
@@ -8213,8 +8224,6 @@ export enum PanelType {
     smallFixedNear = 2,
     smallFluid = 0
 }
-
-export { people }
 
 // @public (undocumented)
 export const PeoplePickerItem: React.FunctionComponent<IPeoplePickerItemSelectedProps>;
@@ -9349,7 +9358,7 @@ export class ToggleBase extends BaseComponent<IToggleProps, IToggleState> implem
     // (undocumented)
     focus(): void;
     // (undocumented)
-    static getDerivedStateFromProps(props: IToggleProps, state: IToggleState): IToggleState;
+    static getDerivedStateFromProps(nextProps: Readonly<IToggleProps>, prevState: Readonly<IToggleState>): Partial<IToggleState> | null;
     // (undocumented)
     render(): JSX.Element;
     }

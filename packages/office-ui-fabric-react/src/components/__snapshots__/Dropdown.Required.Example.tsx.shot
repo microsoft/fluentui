@@ -80,15 +80,14 @@ exports[`Component Examples renders Dropdown.Required.Example.tsx correctly 1`] 
               content: ' *';
               padding-right: 12px;
             }
-        htmlFor="Dropdown0"
         id="Dropdown0-label"
       >
         Required dropdown example
       </label>
       <div
-        aria-describedby="Dropdown0-option"
         aria-expanded="false"
-        aria-labelledby="Dropdown0-label"
+        aria-haspopup="listbox"
+        aria-labelledby="Dropdown0-label Dropdown0-option"
         aria-required={true}
         className=
             ms-Dropdown
@@ -189,7 +188,6 @@ exports[`Component Examples renders Dropdown.Required.Example.tsx correctly 1`] 
         <span
           aria-atomic={true}
           aria-invalid={false}
-          aria-label="Select an option"
           aria-live="polite"
           aria-setsize={5}
           className=
@@ -224,9 +222,7 @@ exports[`Component Examples renders Dropdown.Required.Example.tsx correctly 1`] 
           id="Dropdown0-option"
           role="option"
         >
-          <span>
-            Select an option
-          </span>
+          Select an option
         </span>
         <span
           className=
@@ -398,8 +394,8 @@ exports[`Component Examples renders Dropdown.Required.Example.tsx correctly 1`] 
 
   >
     <div
-      aria-describedby="Dropdown4-option"
       aria-expanded="false"
+      aria-haspopup="listbox"
       aria-required={true}
       className=
           ms-Dropdown
@@ -510,7 +506,6 @@ exports[`Component Examples renders Dropdown.Required.Example.tsx correctly 1`] 
       <span
         aria-atomic={true}
         aria-invalid={false}
-        aria-label="Required with no label"
         aria-live="polite"
         aria-setsize={5}
         className=
@@ -545,9 +540,7 @@ exports[`Component Examples renders Dropdown.Required.Example.tsx correctly 1`] 
         id="Dropdown4-option"
         role="option"
       >
-        <span>
-          Required with no label
-        </span>
+        Required with no label
       </span>
       <span
         className=

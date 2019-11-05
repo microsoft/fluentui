@@ -97,7 +97,7 @@ export function themeRulesStandardCreator(): IThemeRules {
   // set default colors for the base colors
   slotRules[BaseSlots[BaseSlots.primaryColor]].color = getColorFromString('#0078d4');
   slotRules[BaseSlots[BaseSlots.backgroundColor]].color = getColorFromString('#fff');
-  slotRules[BaseSlots[BaseSlots.foregroundColor]].color = getColorFromString('#333');
+  slotRules[BaseSlots[BaseSlots.foregroundColor]].color = getColorFromString('#323130');
 
   // set default colors for shades (the slot rules were already created above and will be used if the base colors ever change)
   slotRules[BaseSlots[BaseSlots.primaryColor] + Shade[Shade.Shade1]].color = getColorFromString('#eff6fc');
@@ -110,13 +110,13 @@ export function themeRulesStandardCreator(): IThemeRules {
   slotRules[BaseSlots[BaseSlots.primaryColor] + Shade[Shade.Shade8]].color = getColorFromString('#004578');
 
   // set default colors for shades (the slot rules were already created above and will be used if the base colors ever change)
-  slotRules[BaseSlots[BaseSlots.foregroundColor] + Shade[Shade.Shade1]].color = getColorFromString('#eaeaea');
-  slotRules[BaseSlots[BaseSlots.foregroundColor] + Shade[Shade.Shade2]].color = getColorFromString('#c8c8c8');
-  slotRules[BaseSlots[BaseSlots.foregroundColor] + Shade[Shade.Shade3]].color = getColorFromString('#a6a6a6');
-  slotRules[BaseSlots[BaseSlots.foregroundColor] + Shade[Shade.Shade4]].color = getColorFromString('#767676');
-  slotRules[BaseSlots[BaseSlots.foregroundColor] + Shade[Shade.Shade5]].color = getColorFromString('#666666');
-  slotRules[BaseSlots[BaseSlots.foregroundColor] + Shade[Shade.Shade6]].color = getColorFromString('#3c3c3c');
-  slotRules[BaseSlots[BaseSlots.foregroundColor] + Shade[Shade.Shade7]].color = getColorFromString('#212121');
+  slotRules[BaseSlots[BaseSlots.foregroundColor] + Shade[Shade.Shade1]].color = getColorFromString('#edebe9');
+  slotRules[BaseSlots[BaseSlots.foregroundColor] + Shade[Shade.Shade2]].color = getColorFromString('#c8c6c4');
+  slotRules[BaseSlots[BaseSlots.foregroundColor] + Shade[Shade.Shade3]].color = getColorFromString('#a19f9d');
+  slotRules[BaseSlots[BaseSlots.foregroundColor] + Shade[Shade.Shade4]].color = getColorFromString('#8a8886');
+  slotRules[BaseSlots[BaseSlots.foregroundColor] + Shade[Shade.Shade5]].color = getColorFromString('#605e5c');
+  slotRules[BaseSlots[BaseSlots.foregroundColor] + Shade[Shade.Shade6]].color = getColorFromString('#3b3a39');
+  slotRules[BaseSlots[BaseSlots.foregroundColor] + Shade[Shade.Shade7]].color = getColorFromString('#201f1e');
   slotRules[BaseSlots[BaseSlots.foregroundColor] + Shade[Shade.Shade8]].color = getColorFromString('#000000');
 
   function _makeFabricSlotRule(slotName: string, inheritedBase: BaseSlots, inheritedShade: Shade, isBackgroundShade = false): void {

@@ -2,6 +2,47 @@
   "name": "@uifabric/date-time",
   "entries": [
     {
+      "date": "Wed, 30 Oct 2019 19:36:52 GMT",
+      "tag": "@uifabric/date-time_v7.5.5",
+      "version": "7.5.5",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fixed accessibility of today in date-time package",
+            "author": "betrue@microsoft.com",
+            "commit": "11e879f58c5599686bfb80ef79b91ac1549cb42e"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 24 Oct 2019 12:31:42 GMT",
+      "tag": "@uifabric/date-time_v7.5.4",
+      "version": "7.5.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "phtucker@microsoft.com",
+            "commit": "5a715f5fd66c852bd0d26dff62ee8924c5924d1b"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 22 Oct 2019 12:32:05 GMT",
+      "tag": "@uifabric/date-time_v7.5.3",
+      "version": "7.5.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix getDerivedStateFromProps signatures",
+            "author": "elcraig@microsoft.com",
+            "commit": "437c49f055744dc64f13e6ef8c71f5f2d5110d0a"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 03 Oct 2019 23:14:46 GMT",
       "tag": "@uifabric/date-time_v7.5.2",
       "version": "7.5.2",

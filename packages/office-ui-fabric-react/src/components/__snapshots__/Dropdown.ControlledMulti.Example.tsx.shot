@@ -31,15 +31,14 @@ exports[`Component Examples renders Dropdown.ControlledMulti.Example.tsx correct
           padding-top: 5px;
           word-wrap: break-word;
         }
-    htmlFor="Dropdown0"
     id="Dropdown0-label"
   >
     Multi-select controlled example
   </label>
   <div
-    aria-describedby="Dropdown0-option"
     aria-expanded="false"
-    aria-labelledby="Dropdown0-label"
+    aria-haspopup="listbox"
+    aria-labelledby="Dropdown0-label Dropdown0-option"
     className=
         ms-Dropdown
         {
@@ -138,7 +137,6 @@ exports[`Component Examples renders Dropdown.ControlledMulti.Example.tsx correct
     <span
       aria-atomic={true}
       aria-invalid={false}
-      aria-label="Select options"
       aria-live="polite"
       className=
           ms-Dropdown-title
@@ -171,9 +169,7 @@ exports[`Component Examples renders Dropdown.ControlledMulti.Example.tsx correct
           }
       id="Dropdown0-option"
     >
-      <span>
-        Select options
-      </span>
+      Select options
     </span>
     <span
       className=
