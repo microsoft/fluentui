@@ -1,18 +1,50 @@
 import * as React from 'react';
-import { Modal, IDragOptions } from 'office-ui-fabric-react/lib/Modal';
-import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
-import { css, classNamesFunction, getId } from 'office-ui-fabric-react/lib/Utilities';
-import { modalExampleStyle, IModalExampleStyles } from './Modal.Example.Styles';
-import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
-import { ContextualMenu } from 'office-ui-fabric-react/lib/ContextualMenu';
+import { getId } from 'office-ui-fabric-react/lib/Utilities';
+import {
+  getTheme,
+  mergeStyleSets,
+  FontWeights,
+  ContextualMenu,
+  Checkbox,
+  DefaultButton,
+  Modal,
+  IDragOptions
+} from 'office-ui-fabric-react/';
 
 export interface IModalBasicExampleState {
   showModal: boolean;
   isDraggable: boolean;
 }
 
-const getClassNames = classNamesFunction<{}, IModalExampleStyles>();
-const classnames = getClassNames(modalExampleStyle, {});
+// Themed styles for the example.
+const theme = getTheme();
+const styles = mergeStyleSets({
+  container: {
+    height: '80vh',
+    width: '80vw',
+    display: 'flex',
+    flexFlow: 'column nowrap',
+    alignItems: 'stretch'
+  },
+  header: [
+    theme.fonts.xLargePlus,
+    {
+      flex: '1 1 auto',
+      background: theme.palette.themePrimary,
+      color: theme.palette.white,
+      display: 'flex',
+      alignItems: 'center',
+      fontWeight: FontWeights.semibold,
+      padding: '0 28px',
+      minHeight: '40px'
+    }
+  ],
+  body: {
+    flex: '4 4 auto',
+    padding: '5px 28px',
+    overflowY: 'hidden'
+  }
+});
 
 export class ModalBasicExample extends React.Component<{}, IModalBasicExampleState> {
   public state: IModalBasicExampleState = {
@@ -40,13 +72,13 @@ export class ModalBasicExample extends React.Component<{}, IModalBasicExampleSta
           isOpen={this.state.showModal}
           onDismiss={this._closeModal}
           isBlocking={false}
-          containerClassName={css(classnames.msModalContainer)}
+          containerClassName={styles.container}
           dragOptions={this.state.isDraggable ? this._dragOptions : undefined}
         >
-          <div className={css(classnames.msModalHeader)}>
+          <div className={styles.header}>
             <span id={this._titleId}>Lorem Ipsum</span>
           </div>
-          <div id={this._subtitleId} className={css(classnames.msModalBody)}>
+          <div id={this._subtitleId} className={styles.body}>
             <DefaultButton onClick={this._closeModal} text="Close" />
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas lorem nulla, malesuada ut sagittis sit amet, vulputate in
