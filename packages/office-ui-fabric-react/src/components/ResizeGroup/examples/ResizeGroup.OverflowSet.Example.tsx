@@ -1,12 +1,27 @@
 import * as React from 'react';
-import { BaseComponent, classNamesFunction, css } from 'office-ui-fabric-react/lib/Utilities';
+import { BaseComponent } from 'office-ui-fabric-react/lib/Utilities';
 import { CommandBarButton } from 'office-ui-fabric-react/lib/Button';
 import { ResizeGroup } from 'office-ui-fabric-react/lib/ResizeGroup';
 import { OverflowSet } from 'office-ui-fabric-react/lib/OverflowSet';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import { IContextualMenuItem } from 'office-ui-fabric-react/lib/ContextualMenu';
 import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
-import { resizeGroupOverflowExampleStyle, IResizeGroupOverflowExampleStyle } from './ResizeGroup.OverflowSet.Example.Style';
+import { mergeStyleSets } from 'office-ui-fabric-react/';
+
+const styles = mergeStyleSets({
+  root: {
+    display: 'block'
+  },
+  resizeIsShort: {
+    width: '400px'
+  },
+  settingsGroup: {
+    paddingTop: '20px'
+  },
+  itemCountDropdown: {
+    width: '180px'
+  }
+});
 
 export interface IOverflowData {
   primary: IContextualMenuItem[];
@@ -54,9 +69,6 @@ function computeCacheKey(primaryControls: IContextualMenuItem[]): string {
   return primaryControls.reduce((acc, current) => acc + current.key, '');
 }
 
-const getClassNames = classNamesFunction<{}, IResizeGroupOverflowExampleStyle>();
-const classNames = getClassNames(resizeGroupOverflowExampleStyle, {});
-
 export class ResizeGroupOverflowSetExample extends BaseComponent<{}, IResizeGroupOverflowSetExampleState> {
   constructor(props: {}) {
     super(props);
@@ -73,7 +85,7 @@ export class ResizeGroupOverflowSetExample extends BaseComponent<{}, IResizeGrou
     const { numberOfItems, cachingEnabled, buttonsChecked, short, onGrowDataEnabled } = this.state;
     const dataToRender = generateData(numberOfItems, cachingEnabled, buttonsChecked);
     return (
-      <div className={short ? css(classNames.resizeIsShort) : 'notResized'}>
+      <div className={short ? styles.resizeIsShort : 'notResized'}>
         <ResizeGroup
           role="tabpanel"
           aria-label="Resize Group with an Overflow Set"
@@ -99,11 +111,11 @@ export class ResizeGroupOverflowSetExample extends BaseComponent<{}, IResizeGrou
             );
           }}
         />
-        <div className={css(classNames.settingsGroup)}>
+        <div className={styles.settingsGroup}>
           <Checkbox label="Enable caching" onChange={this._onCachingEnabledChanged} checked={cachingEnabled} />
           <Checkbox label="Set onGrowData" onChange={this._onGrowDataEnabledChanged} checked={onGrowDataEnabled} />
           <Checkbox label="Buttons checked" onChange={this._onButtonsCheckedChanged} checked={buttonsChecked} />
-          <div className={css(classNames.itemCountDropdown)}>
+          <div className={styles.itemCountDropdown}>
             <Dropdown
               label="Number of items to render"
               selectedKey={numberOfItems.toString()}
