@@ -1,8 +1,7 @@
 import * as React from 'react';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { DatePicker, DayOfWeek, IDatePickerStrings } from 'office-ui-fabric-react/lib/DatePicker';
-import { css, classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
-import { datePickerExampleStyles, IDatePickerExampleStyles } from './DatePicker.Examples.Styles';
+import { mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
 
 const DayPickerStrings: IDatePickerStrings = {
   months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
@@ -30,8 +29,12 @@ export interface IDatePickerFormatExampleState {
   value?: Date | null;
 }
 
-const getClassNames = classNamesFunction<{}, IDatePickerExampleStyles>();
-const classnames = getClassNames(datePickerExampleStyles, {});
+const styles = mergeStyleSets({
+  msDatePicker: {
+    margin: '0 0 15px 0',
+    maxWidth: '300px'
+  }
+});
 
 export class DatePickerFormatExample extends React.Component<{}, IDatePickerFormatExampleState> {
   public constructor(props: {}) {
@@ -54,7 +57,7 @@ export class DatePickerFormatExample extends React.Component<{}, IDatePickerForm
           dates as dd/MM/yy.
         </p>
         <DatePicker
-          className={css(classnames.msDatePicker)}
+          className={styles.msDatePicker}
           label="Start date"
           isRequired={false}
           allowTextInput={true}
