@@ -9,19 +9,12 @@ import { DatePickerFormatExample } from './examples/DatePicker.Format.Example';
 import { DatePickerBoundedExample } from './examples/DatePicker.Bounded.Example';
 
 const DatePickerBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DatePicker/examples/DatePicker.Basic.Example.tsx') as string;
-const DatePickerBasicExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/DatePicker/examples/DatePicker.Basic.Example.tsx') as string;
 const DatePickerDisabledExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DatePicker/examples/DatePicker.Disabled.Example.tsx') as string;
-const DatePickerDisabledExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/DatePicker/examples/DatePicker.Disabled.Example.tsx') as string;
 const DatePickerWeekNumbersExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DatePicker/examples/DatePicker.WeekNumbers.Example.tsx') as string;
-const DatePickerWeekNumbersExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/DatePicker/examples/DatePicker.WeekNumbers.Example.tsx') as string;
 const DatePickerRequiredExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DatePicker/examples/DatePicker.Required.Example.tsx') as string;
-const DatePickerRequiredExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/DatePicker/examples/DatePicker.Required.Example.tsx') as string;
 const DatePickerInputExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DatePicker/examples/DatePicker.Input.Example.tsx') as string;
-const DatePickerInputExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/DatePicker/examples/DatePicker.Input.Example.tsx') as string;
 const DatePickerFormatExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DatePicker/examples/DatePicker.Format.Example.tsx') as string;
-const DatePickerFormatExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/DatePicker/examples/DatePicker.Format.Example.tsx') as string;
 const DatePickerBoundedExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DatePicker/examples/DatePicker.Bounded.Example.tsx') as string;
-const DatePickerBoundedExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/DatePicker/examples/DatePicker.Bounded.Example.tsx') as string;
 
 export const DatePickerPageProps: IDocPageProps = {
   title: 'DatePicker',
@@ -31,43 +24,36 @@ export const DatePickerPageProps: IDocPageProps = {
     {
       title: 'Default DatePicker',
       code: DatePickerBasicExampleCode,
-      codepenJS: DatePickerBasicExampleCodepen,
       view: <DatePickerBasicExample />
     },
     {
       title: 'Disabled DatePicker',
       code: DatePickerDisabledExampleCode,
-      codepenJS: DatePickerDisabledExampleCodepen,
       view: <DatePickerDisabledExample />
     },
     {
       title: 'DatePicker with week numbers',
       code: DatePickerWeekNumbersExampleCode,
-      codepenJS: DatePickerWeekNumbersExampleCodepen,
       view: <DatePickerWeekNumbersExample />
     },
     {
       title: 'DatePicker with required field',
       code: DatePickerRequiredExampleCode,
-      codepenJS: DatePickerRequiredExampleCodepen,
       view: <DatePickerRequiredExample />
     },
     {
       title: 'DatePicker allows input date string',
       code: DatePickerInputExampleCode,
-      codepenJS: DatePickerInputExampleCodepen,
       view: <DatePickerInputExample />
     },
     {
       title: 'DatePicker allows dates to be formatted',
       code: DatePickerFormatExampleCode,
-      codepenJS: DatePickerFormatExampleCodepen,
       view: <DatePickerFormatExample />
     },
     {
       title: 'DatePicker with date boundary (minDate, maxDate)',
       code: DatePickerBoundedExampleCode,
-      codepenJS: DatePickerBoundedExampleCodepen,
       view: <DatePickerBoundedExample />
     }
   ],
