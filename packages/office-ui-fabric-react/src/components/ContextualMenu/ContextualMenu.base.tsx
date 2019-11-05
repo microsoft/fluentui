@@ -838,7 +838,6 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
 
     if (shouldHandleKey(ev)) {
       this._isFocusingPreviousElement = true;
-      ev.preventDefault();
       ev.stopPropagation();
       this.dismiss(ev, dismissAllMenus);
       handled = true;
