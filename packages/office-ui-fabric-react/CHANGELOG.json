@@ -2,6 +2,20 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Tue, 05 Nov 2019 12:25:16 GMT",
+      "tag": "office-ui-fabric-react_v7.57.1",
+      "version": "7.57.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Propagate version through List and GroupedList",
+            "author": "tmichon@microsoft.com",
+            "commit": "cb1c1915fb899d13017fe9d8cb477781092f768c"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 04 Nov 2019 12:23:43 GMT",
       "tag": "office-ui-fabric-react_v7.57.0",
       "version": "7.57.0",

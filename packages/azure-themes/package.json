@@ -29,7 +29,7 @@
   "dependencies": {
     "@uifabric/merge-styles": "^7.8.0",
     "@uifabric/set-version": "^7.0.2",
-    "office-ui-fabric-react": "^7.57.0",
+    "office-ui-fabric-react": "^7.57.1",
     "tslib": "^1.7.1"
   }
 }
