@@ -5,9 +5,7 @@ import { ModalModelessExample } from './examples/Modal.Modeless.Example';
 import { IDocPageProps } from '../../common/DocPage.types';
 
 const ModalBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Modal/examples/Modal.Basic.Example.tsx') as string;
-const ModalBasicExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/Modal/examples/Modal.Basic.Example.tsx') as string;
 const ModalModelessExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Modal/examples/Modal.Modeless.Example.tsx') as string;
-const ModalModelessExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/Modal/examples/Modal.Modeless.Example.tsx') as string;
 
 export const ModalPageProps: IDocPageProps = {
   title: 'Modal',
@@ -17,13 +15,11 @@ export const ModalPageProps: IDocPageProps = {
     {
       title: 'Modal',
       code: ModalBasicExampleCode,
-      codepenJS: ModalBasicExampleCodepen,
       view: <ModalBasicExample />
     },
     {
       title: 'Modeless Modal',
       code: ModalModelessExampleCode,
-      codepenJS: ModalModelessExampleCodepen,
       view: <ModalModelessExample />
     }
   ],
