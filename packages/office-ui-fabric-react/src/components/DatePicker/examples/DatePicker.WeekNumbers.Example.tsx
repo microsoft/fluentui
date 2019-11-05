@@ -1,8 +1,7 @@
 import * as React from 'react';
 import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
 import { DatePicker, DayOfWeek, IDatePickerStrings } from 'office-ui-fabric-react/lib/DatePicker';
-import { css, classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
-import { datePickerExampleStyles, IDatePickerExampleStyles } from './DatePicker.Examples.Styles';
+import { mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
 
 const DayPickerStrings: IDatePickerStrings = {
   months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
@@ -25,8 +24,16 @@ export interface IDatePickerBasicExampleState {
   firstDayOfWeek?: DayOfWeek;
 }
 
-const getClassNames = classNamesFunction<{}, IDatePickerExampleStyles>();
-const classnames = getClassNames(datePickerExampleStyles, {});
+const styles = mergeStyleSets({
+  msDatePicker: {
+    margin: '0 0 15px 0',
+    maxWidth: '300px'
+  },
+  msDropdown: {
+    margin: '0 0 15px 0',
+    maxWidth: '300px'
+  }
+});
 
 export class DatePickerWeekNumbersExample extends React.Component<{}, IDatePickerBasicExampleState> {
   constructor(props: {}) {
@@ -43,7 +50,7 @@ export class DatePickerWeekNumbersExample extends React.Component<{}, IDatePicke
     return (
       <div className="docs-DatePickerExample">
         <DatePicker
-          className={css(classnames.msDatePicker)}
+          className={styles.msDatePicker}
           firstDayOfWeek={firstDayOfWeek}
           strings={DayPickerStrings}
           showWeekNumbers={true}
@@ -53,7 +60,7 @@ export class DatePickerWeekNumbersExample extends React.Component<{}, IDatePicke
           ariaLabel="Select a date"
         />
         <Dropdown
-          className={css(classnames.msDropdown)}
+          className={styles.msDropdown}
           label="Select the first day of the week"
           options={[
             {
