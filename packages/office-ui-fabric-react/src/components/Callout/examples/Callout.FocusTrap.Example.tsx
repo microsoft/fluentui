@@ -10,7 +10,6 @@ import {
   mergeStyleSets,
   FontWeights
 } from 'office-ui-fabric-react';
-import './CalloutExample.scss';
 
 export interface ICalloutFocusTrapExampleState {
   isCalloutVisible: boolean;

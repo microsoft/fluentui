@@ -1,5 +1,4 @@
 import * as React from 'react';
-import './CalloutExample.scss';
 import {
   DefaultButton,
   Callout,
