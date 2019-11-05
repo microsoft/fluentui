@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "ContextualMenu: fix escape not dismissing menu",
+  "packageName": "office-ui-fabric-react",
+  "email": "joschect@microsoft.com",
+  "commit": "130e6c11b3ca4904278562c88aa9fc1aa55bd1d9",
+  "date": "2019-11-05T22:09:04.406Z"
+}
