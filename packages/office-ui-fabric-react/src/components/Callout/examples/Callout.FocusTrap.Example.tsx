@@ -1,10 +1,65 @@
 import * as React from 'react';
-import { DefaultButton, FocusTrapCallout, Stack, getId, FocusZone, PrimaryButton } from 'office-ui-fabric-react';
+import {
+  DefaultButton,
+  FocusTrapCallout,
+  Stack,
+  getId,
+  FocusZone,
+  PrimaryButton,
+  getTheme,
+  mergeStyleSets,
+  FontWeights
+} from 'office-ui-fabric-react';
 import './CalloutExample.scss';
 
 export interface ICalloutFocusTrapExampleState {
   isCalloutVisible: boolean;
 }
+
+// Themed styles for the example.
+const theme = getTheme();
+const styles = mergeStyleSets({
+  buttonArea: {
+    verticalAlign: 'top',
+    display: 'inline-block',
+    textAlign: 'center'
+  },
+  callout: {
+    maxWidth: 300
+  },
+  header: {
+    padding: '18px 24px 12px'
+  },
+  title: [
+    theme.fonts.xLarge,
+    {
+      margin: 0,
+      color: theme.palette.neutralPrimary,
+      fontWeight: FontWeights.semilight
+    }
+  ],
+  inner: {
+    height: '100%',
+    padding: '0 24px 20px'
+  },
+  actions: {
+    position: 'relative',
+    marginTop: 20,
+    width: '100%',
+    whiteSpace: 'nowrap'
+  },
+  buttons: {
+    padding: '0 24px 12px'
+  },
+  subtext: [
+    theme.fonts.small,
+    {
+      margin: 0,
+      color: theme.palette.neutralPrimary,
+      fontWeight: FontWeights.semilight
+    }
+  ]
+});
 
 export class CalloutFocusTrapExample extends React.Component<{}, ICalloutFocusTrapExampleState> {
   public state: ICalloutFocusTrapExampleState = {
@@ -21,7 +76,7 @@ export class CalloutFocusTrapExample extends React.Component<{}, ICalloutFocusTr
 
     return (
       <div className="ms-CalloutExample">
-        <div className="ms-CalloutBasicExample-buttonArea" ref={menuButton => (this._menuButtonElement = menuButton)}>
+        <div className={styles.buttonArea} ref={menuButton => (this._menuButtonElement = menuButton)}>
           <DefaultButton onClick={this._onDismiss} text={isCalloutVisible ? 'Hide callout' : 'Show callout'} />
         </div>
         {isCalloutVisible ? (
@@ -29,26 +84,26 @@ export class CalloutFocusTrapExample extends React.Component<{}, ICalloutFocusTr
             <FocusTrapCallout
               role="alertdialog"
               ariaLabelledBy={this._titleId}
-              className="ms-CalloutExample-callout"
+              className={styles.callout}
               gapSpace={0}
               target={this._menuButtonElement}
               onDismiss={this._onDismiss}
               setInitialFocus={true}
             >
-              <div className="ms-CalloutExample-header">
-                <p className="ms-CalloutExample-title" id={this._titleId}>
+              <div className={styles.header}>
+                <p className={styles.title} id={this._titleId}>
                   Callout title here
                 </p>
               </div>
-              <div className="ms-CalloutExample-inner">
+              <div className={styles.inner}>
                 <div className="ms-CalloutExample-content">
-                  <p className="ms-CalloutExample-subText">
+                  <p className={styles.subtext}>
                     Message body is optional. If help documentation is available, consider adding a link to learn more at the bottom.
                   </p>
                 </div>
               </div>
               <FocusZone>
-                <Stack className="ms-CalloutExample-buttons" gap={8} horizontal>
+                <Stack className={styles.buttons} gap={8} horizontal>
                   <PrimaryButton onClick={this._onDismiss}>Agree</PrimaryButton>
                   <DefaultButton onClick={this._onDismiss}>Cancel</DefaultButton>
                 </Stack>
