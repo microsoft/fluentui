@@ -5,7 +5,12 @@ exports[`Component Examples renders Callout.Cover.Example.tsx correctly 1`] = `
   className="ms-CalloutExample"
 >
   <div
-    className="ms-CalloutExample-configArea"
+    className=
+
+        {
+          display: inline-block;
+          min-width: 300px;
+        }
   >
     <div
       className=
@@ -216,7 +221,13 @@ exports[`Component Examples renders Callout.Cover.Example.tsx correctly 1`] = `
     </div>
   </div>
   <div
-    className="ms-CalloutCoverExample-buttonArea"
+    className=
+
+        {
+          display: inline-block;
+          text-align: center;
+          vertical-align: top;
+        }
   >
     <button
       className=
