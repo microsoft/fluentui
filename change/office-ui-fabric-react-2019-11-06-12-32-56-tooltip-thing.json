@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "TooltipHost: Fix dismiss race condition.",
+  "packageName": "office-ui-fabric-react",
+  "email": "jdh@microsoft.com",
+  "commit": "269e54674d4c9a0574c03677e0c07485585ab817",
+  "date": "2019-11-06T20:32:56.406Z"
+}
