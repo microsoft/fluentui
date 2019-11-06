@@ -323,11 +323,7 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
         {
           backgroundColor: semanticColors.disabledBackground,
           color: semanticColors.disabledText,
-          selectors: {
-            ':after': {
-              borderColor: semanticColors.disabledBackground
-            }
-          }
+          borderColor: semanticColors.disabledBackground
         },
         getPlaceholderStyles(disabledPlaceholderStyles)
       ],
