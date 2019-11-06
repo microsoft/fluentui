@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Address BasePicker calls onResolveSuggestions callback when click.",
+  "packageName": "office-ui-fabric-react",
+  "email": "nif_tony@outlook.com",
+  "commit": "632dceadcbdc1cf387513137425699dc45780467",
+  "date": "2019-11-06T09:38:11.318Z"
+}
