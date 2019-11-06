@@ -5,13 +5,22 @@ import { Facepile, IFacepilePersona, IFacepileProps } from 'office-ui-fabric-rea
 import { PersonaSize, PersonaPresence } from 'office-ui-fabric-react/lib/Persona';
 import { Slider } from 'office-ui-fabric-react/lib/Slider';
 import { facepilePersonas } from '@uifabric/example-data';
-import './Facepile.Examples.scss';
+import { mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
 
 export interface IFacepileBasicExampleState {
   numberOfFaces: any;
   imagesFadeIn: boolean;
   personaSize: PersonaSize;
 }
+
+const styles = mergeStyleSets({
+  container: {
+    maxWidth: 300
+  },
+  control: {
+    paddingTop: 20
+  }
+});
 
 export class FacepileBasicExample extends React.Component<{}, IFacepileBasicExampleState> {
   constructor(props: {}) {
@@ -46,9 +55,9 @@ export class FacepileBasicExample extends React.Component<{}, IFacepileBasicExam
     };
 
     return (
-      <div className="ms-FacepileExample">
+      <div className={styles.container}>
         <Facepile {...facepileProps} />
-        <div className="control">
+        <div className={styles.control}>
           <Slider
             label="Number of Personas:"
             min={1}
