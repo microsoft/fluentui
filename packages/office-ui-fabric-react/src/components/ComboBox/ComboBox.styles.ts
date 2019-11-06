@@ -311,20 +311,14 @@ export const getStyles = memoizeFunction(
       ],
 
       rootHovered: {
+        borderColor: root.borderHoveredColor,
         selectors: {
           '.ms-ComboBox-Input': [{ color: semanticColors.inputTextHovered }, getPlaceholderStyles(placeholderStylesHovered)],
-          ':after': {
-            borderColor: root.borderHoveredColor
-          },
           [HighContrastSelector]: {
             color: 'HighlightText',
             backgroundColor: 'Window',
             MsHighContrastAdjust: 'none',
-            selectors: {
-              ':after': {
-                borderColor: 'Highlight'
-              }
-            }
+            borderColor: 'Highlight'
           }
         }
       },
