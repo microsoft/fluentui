@@ -109,6 +109,9 @@ exports[`Component Examples renders ComboBox.CustomStyled.Example.tsx correctly 
             border-color: Highlight;
             color: HighlightText;
           }
+          &:hover {
+            border-color: #323130;
+          }
           &:hover .ms-ComboBox-Input {
             color: #201f1e;
           }
@@ -121,16 +124,11 @@ exports[`Component Examples renders ComboBox.CustomStyled.Example.tsx correctly 
           &:hover .ms-ComboBox-Input::-ms-input-placeholder {
             color: #201f1e;
           }
-          &:hover:after {
-            border-color: #323130;
-          }
           @media screen and (-ms-high-contrast: active){&:hover {
             -ms-high-contrast-adjust: none;
             background-color: Window;
-            color: HighlightText;
-          }
-          @media screen and (-ms-high-contrast: active){&:hover:after {
             border-color: Highlight;
+            color: HighlightText;
           }
           &:active {
             border-color: #0078d4;
@@ -475,6 +473,9 @@ exports[`Component Examples renders ComboBox.CustomStyled.Example.tsx correctly 
             border-color: Highlight;
             color: HighlightText;
           }
+          &:hover {
+            border-color: #323130;
+          }
           &:hover .ms-ComboBox-Input {
             color: #201f1e;
           }
@@ -487,16 +488,11 @@ exports[`Component Examples renders ComboBox.CustomStyled.Example.tsx correctly 
           &:hover .ms-ComboBox-Input::-ms-input-placeholder {
             color: #201f1e;
           }
-          &:hover:after {
-            border-color: #323130;
-          }
           @media screen and (-ms-high-contrast: active){&:hover {
             -ms-high-contrast-adjust: none;
             background-color: Window;
-            color: HighlightText;
-          }
-          @media screen and (-ms-high-contrast: active){&:hover:after {
             border-color: Highlight;
+            color: HighlightText;
           }
           &:active {
             border-color: #0078d4;

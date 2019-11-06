@@ -108,6 +108,9 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
               border-color: Highlight;
               color: HighlightText;
             }
+            &:hover {
+              border-color: #323130;
+            }
             &:hover .ms-ComboBox-Input {
               color: #201f1e;
             }
@@ -120,16 +123,11 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
             &:hover .ms-ComboBox-Input::-ms-input-placeholder {
               color: #201f1e;
             }
-            &:hover:after {
-              border-color: #323130;
-            }
             @media screen and (-ms-high-contrast: active){&:hover {
               -ms-high-contrast-adjust: none;
               background-color: Window;
-              color: HighlightText;
-            }
-            @media screen and (-ms-high-contrast: active){&:hover:after {
               border-color: Highlight;
+              color: HighlightText;
             }
             &:active {
               border-color: #0078d4;
@@ -609,6 +607,9 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
             border-color: Highlight;
             color: HighlightText;
           }
+          &:hover {
+            border-color: #323130;
+          }
           &:hover .ms-ComboBox-Input {
             color: #201f1e;
           }
@@ -621,16 +622,11 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
           &:hover .ms-ComboBox-Input::-ms-input-placeholder {
             color: #201f1e;
           }
-          &:hover:after {
-            border-color: #323130;
-          }
           @media screen and (-ms-high-contrast: active){&:hover {
             -ms-high-contrast-adjust: none;
             background-color: Window;
-            color: HighlightText;
-          }
-          @media screen and (-ms-high-contrast: active){&:hover:after {
             border-color: Highlight;
+            color: HighlightText;
           }
           &:active {
             border-color: #0078d4;
@@ -975,6 +971,9 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
             border-color: Highlight;
             color: HighlightText;
           }
+          &:hover {
+            border-color: #323130;
+          }
           &:hover .ms-ComboBox-Input {
             color: #201f1e;
           }
@@ -987,16 +986,11 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
           &:hover .ms-ComboBox-Input::-ms-input-placeholder {
             color: #201f1e;
           }
-          &:hover:after {
-            border-color: #323130;
-          }
           @media screen and (-ms-high-contrast: active){&:hover {
             -ms-high-contrast-adjust: none;
             background-color: Window;
-            color: HighlightText;
-          }
-          @media screen and (-ms-high-contrast: active){&:hover:after {
             border-color: Highlight;
+            color: HighlightText;
           }
           &:active {
             border-color: #0078d4;
@@ -1342,6 +1336,9 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
             border-color: Highlight;
             color: HighlightText;
           }
+          &:hover {
+            border-color: #323130;
+          }
           &:hover .ms-ComboBox-Input {
             color: #201f1e;
           }
@@ -1354,16 +1351,11 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
           &:hover .ms-ComboBox-Input::-ms-input-placeholder {
             color: #201f1e;
           }
-          &:hover:after {
-            border-color: #323130;
-          }
           @media screen and (-ms-high-contrast: active){&:hover {
             -ms-high-contrast-adjust: none;
             background-color: Window;
-            color: HighlightText;
-          }
-          @media screen and (-ms-high-contrast: active){&:hover:after {
             border-color: Highlight;
+            color: HighlightText;
           }
           &:active {
             border-color: #0078d4;
@@ -3788,6 +3780,9 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
             border-color: Highlight;
             color: HighlightText;
           }
+          &:hover {
+            border-color: #323130;
+          }
           &:hover .ms-ComboBox-Input {
             color: #201f1e;
           }
@@ -3800,16 +3795,11 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
           &:hover .ms-ComboBox-Input::-ms-input-placeholder {
             color: #201f1e;
           }
-          &:hover:after {
-            border-color: #323130;
-          }
           @media screen and (-ms-high-contrast: active){&:hover {
             -ms-high-contrast-adjust: none;
             background-color: Window;
-            color: HighlightText;
-          }
-          @media screen and (-ms-high-contrast: active){&:hover:after {
             border-color: Highlight;
+            color: HighlightText;
           }
           &:active {
             border-color: #0078d4;
@@ -4121,7 +4111,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
             background-color: #f3f2f1;
-            border-color: #8a8886;
+            border-color: #f3f2f1;
             border-radius: 2px;
             border-style: solid;
             border-width: 1px;
@@ -4159,9 +4149,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
             border-color: Highlight;
             color: HighlightText;
           }
-          &:after {
-            border-color: #f3f2f1;
-          }
           @media screen and (-ms-high-contrast: active){& {
             border-color: GrayText;
             color: GrayText;
@@ -4179,6 +4166,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
             ms-ComboBox-Input
             {
               background-color: #f3f2f1;
+              border-color: #f3f2f1;
               border-style: none;
               box-sizing: border-box;
               color: #a19f9d;
@@ -4204,9 +4192,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
             }
             &::-ms-clear {
               display: none;
-            }
-            &:after {
-              border-color: #f3f2f1;
             }
             @media screen and (-ms-high-contrast: active){& {
               border-color: GrayText;
@@ -4307,9 +4292,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
             }
             &:focus {
               outline: 0px;
-            }
-            &:after {
-              border-color: #f3f2f1;
             }
         data-is-focusable={false}
         disabled={true}
