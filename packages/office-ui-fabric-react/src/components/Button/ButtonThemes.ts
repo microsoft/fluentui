@@ -3,7 +3,7 @@ import { ITheme, HighContrastSelector } from '../../Styling';
 import { IsFocusVisibleClassName } from '../../Utilities';
 
 export function standardStyles(theme: ITheme): IButtonStyles {
-  const { semanticColors: s, palette: p } = theme;
+  const { semanticColors: s } = theme;
 
   const buttonBackground = s.buttonBackground;
   const buttonBackgroundPressed = s.buttonBackgroundPressed;
@@ -59,83 +59,6 @@ export function standardStyles(theme: ITheme): IButtonStyles {
           backgroundColor: 'Window'
         }
       }
-    },
-
-    // Split button styles
-    splitButtonContainer: {
-      selectors: {
-        [HighContrastSelector]: {
-          border: 'none'
-        }
-      }
-    },
-
-    splitButtonMenuButton: {
-      color: p.white,
-      backgroundColor: 'transparent',
-      selectors: {
-        ':hover': {
-          backgroundColor: p.neutralLight,
-          selectors: {
-            [HighContrastSelector]: {
-              color: 'Highlight'
-            }
-          }
-        }
-      }
-    },
-
-    splitButtonMenuButtonDisabled: {
-      backgroundColor: s.buttonBackgroundDisabled,
-      selectors: {
-        ':hover': {
-          backgroundColor: s.buttonBackgroundDisabled
-        }
-      }
-    },
-
-    splitButtonDivider: {
-      backgroundColor: p.neutralTertiaryAlt,
-      position: 'absolute',
-      width: 1,
-      right: 31,
-      top: 8,
-      bottom: 8,
-      selectors: {
-        [HighContrastSelector]: {
-          backgroundColor: 'WindowText'
-        }
-      }
-    },
-
-    splitButtonDividerDisabled: {
-      backgroundColor: theme.palette.neutralTertiaryAlt
-    },
-
-    splitButtonMenuButtonChecked: {
-      backgroundColor: p.neutralQuaternaryAlt,
-      selectors: {
-        ':hover': {
-          backgroundColor: p.neutralQuaternaryAlt
-        }
-      }
-    },
-
-    splitButtonMenuButtonExpanded: {
-      backgroundColor: p.neutralQuaternaryAlt,
-      selectors: {
-        ':hover': {
-          backgroundColor: p.neutralQuaternaryAlt
-        }
-      }
-    },
-
-    splitButtonMenuIcon: {
-      color: s.buttonText
-    },
-
-    splitButtonMenuIconDisabled: {
-      color: s.buttonTextDisabled
     }
   };
 }
@@ -209,88 +132,6 @@ export function primaryStyles(theme: ITheme): IButtonStyles {
           color: 'GrayText',
           borderColor: 'GrayText',
           backgroundColor: 'Window'
-        }
-      }
-    },
-
-    // Split button styles
-    splitButtonContainer: {
-      selectors: {
-        [HighContrastSelector]: {
-          border: 'none'
-        }
-      }
-    },
-
-    splitButtonDivider: {
-      backgroundColor: p.neutralTertiaryAlt,
-      position: 'absolute',
-      width: 1,
-      right: 31,
-      top: 8,
-      bottom: 8,
-      selectors: {
-        [HighContrastSelector]: {
-          backgroundColor: 'Window'
-        }
-      }
-    },
-
-    splitButtonMenuButton: {
-      backgroundColor: s.primaryButtonBackground,
-      color: s.primaryButtonText,
-      selectors: {
-        [HighContrastSelector]: {
-          backgroundColor: 'WindowText'
-        },
-        ':hover': {
-          backgroundColor: s.primaryButtonBackgroundHovered,
-          selectors: {
-            [HighContrastSelector]: {
-              color: 'Highlight'
-            }
-          }
-        }
-      }
-    },
-
-    splitButtonMenuButtonDisabled: {
-      backgroundColor: s.primaryButtonBackgroundDisabled,
-      selectors: {
-        ':hover': {
-          backgroundColor: s.primaryButtonBackgroundDisabled
-        }
-      }
-    },
-
-    splitButtonMenuButtonChecked: {
-      backgroundColor: s.primaryButtonBackgroundPressed,
-      selectors: {
-        ':hover': {
-          backgroundColor: s.primaryButtonBackgroundPressed
-        }
-      }
-    },
-
-    splitButtonMenuButtonExpanded: {
-      backgroundColor: s.primaryButtonBackgroundPressed,
-      selectors: {
-        ':hover': {
-          backgroundColor: s.primaryButtonBackgroundPressed
-        }
-      }
-    },
-
-    splitButtonMenuIcon: {
-      color: s.primaryButtonText
-    },
-
-    splitButtonMenuIconDisabled: {
-      color: p.neutralTertiary,
-
-      selectors: {
-        [HighContrastSelector]: {
-          color: 'GrayText'
         }
       }
     }
