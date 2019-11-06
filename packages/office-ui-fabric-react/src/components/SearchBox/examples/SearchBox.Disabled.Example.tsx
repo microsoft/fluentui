@@ -1,18 +1,12 @@
 import * as React from 'react';
 import { SearchBox } from 'office-ui-fabric-react/lib/SearchBox';
-import { mergeStyleSets } from '@uifabric/styling';
-
-const styles = mergeStyleSets({
-  searchBox: {
-    margin: '0 0 10px 0'
-  }
-});
+import { Stack } from 'office-ui-fabric-react/lib/Stack';
 
 // tslint:disable:jsx-no-lambda
 export class SearchBoxDisabledExample extends React.Component<any, any> {
   public render(): JSX.Element {
     return (
-      <div className={styles.searchBox}>
+      <Stack tokens={{ childrenGap: 20 }}>
         <SearchBox
           placeholder="Search"
           onFocus={() => console.log('onFocus called')}
@@ -27,7 +21,7 @@ export class SearchBoxDisabledExample extends React.Component<any, any> {
           underlined={true}
           disabled
         />
-      </div>
+      </Stack>
     );
   }
 }
