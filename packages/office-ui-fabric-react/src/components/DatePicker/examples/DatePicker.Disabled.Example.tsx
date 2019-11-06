@@ -23,8 +23,8 @@ export interface IDatePickerDisabledExampleState {
   firstDayOfWeek?: DayOfWeek;
 }
 
-const styles = mergeStyleSets({
-  msDatePicker: {
+const controlClass = mergeStyleSets({
+  control: {
     margin: '0 0 15px 0',
     maxWidth: '300px'
   }
@@ -45,7 +45,7 @@ export class DatePickerDisabledExample extends React.Component<{}, IDatePickerDi
     return (
       <div className="docs-DatePickerExample">
         <DatePicker
-          className={styles.msDatePicker}
+          className={controlClass.control}
           firstDayOfWeek={firstDayOfWeek}
           strings={DayPickerStrings}
           placeholder="Select a date..."
@@ -54,7 +54,7 @@ export class DatePickerDisabledExample extends React.Component<{}, IDatePickerDi
         />
 
         <DatePicker
-          className={styles.msDatePicker}
+          className={controlClass.control}
           label="Disabled (with label)"
           firstDayOfWeek={firstDayOfWeek}
           strings={DayPickerStrings}

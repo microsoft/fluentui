@@ -19,12 +19,8 @@ const DayPickerStrings: IDatePickerStrings = {
   closeButtonAriaLabel: 'Close date picker'
 };
 
-const styles = mergeStyleSets({
-  msDatePicker: {
-    margin: '0 0 15px 0',
-    maxWidth: '300px'
-  },
-  msDropdown: {
+const controlClass = mergeStyleSets({
+  control: {
     margin: '0 0 15px 0',
     maxWidth: '300px'
   }
@@ -49,14 +45,14 @@ export class DatePickerBasicExample extends React.Component<{}, IDatePickerBasic
     return (
       <div className="docs-DatePickerExample">
         <DatePicker
-          className={styles.msDatePicker}
+          className={controlClass.control}
           firstDayOfWeek={firstDayOfWeek}
           strings={DayPickerStrings}
           placeholder="Select a date..."
           ariaLabel="Select a date"
         />
         <Dropdown
-          className={styles.msDropdown}
+          className={controlClass.control}
           label="Select the first day of the week"
           options={[
             {

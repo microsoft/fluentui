@@ -29,8 +29,8 @@ export interface IDatePickerFormatExampleState {
   value?: Date | null;
 }
 
-const styles = mergeStyleSets({
-  msDatePicker: {
+const controlClass = mergeStyleSets({
+  control: {
     margin: '0 0 15px 0',
     maxWidth: '300px'
   }
@@ -57,7 +57,7 @@ export class DatePickerFormatExample extends React.Component<{}, IDatePickerForm
           dates as dd/MM/yy.
         </p>
         <DatePicker
-          className={styles.msDatePicker}
+          className={controlClass.control}
           label="Start date"
           isRequired={false}
           allowTextInput={true}

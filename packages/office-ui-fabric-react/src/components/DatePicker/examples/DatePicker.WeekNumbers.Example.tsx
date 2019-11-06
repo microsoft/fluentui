@@ -24,12 +24,8 @@ export interface IDatePickerBasicExampleState {
   firstDayOfWeek?: DayOfWeek;
 }
 
-const styles = mergeStyleSets({
-  msDatePicker: {
-    margin: '0 0 15px 0',
-    maxWidth: '300px'
-  },
-  msDropdown: {
+const controlClass = mergeStyleSets({
+  control: {
     margin: '0 0 15px 0',
     maxWidth: '300px'
   }
@@ -50,7 +46,7 @@ export class DatePickerWeekNumbersExample extends React.Component<{}, IDatePicke
     return (
       <div className="docs-DatePickerExample">
         <DatePicker
-          className={styles.msDatePicker}
+          className={controlClass.control}
           firstDayOfWeek={firstDayOfWeek}
           strings={DayPickerStrings}
           showWeekNumbers={true}
@@ -60,7 +56,7 @@ export class DatePickerWeekNumbersExample extends React.Component<{}, IDatePicke
           ariaLabel="Select a date"
         />
         <Dropdown
-          className={styles.msDropdown}
+          className={controlClass.control}
           label="Select the first day of the week"
           options={[
             {

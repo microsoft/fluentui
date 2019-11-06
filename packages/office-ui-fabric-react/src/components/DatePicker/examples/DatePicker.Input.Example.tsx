@@ -29,8 +29,8 @@ export interface IDatePickerInputExampleState {
   value?: Date | null;
 }
 
-const styles = mergeStyleSets({
-  msDatePicker: {
+const controlClass = mergeStyleSets({
+  control: {
     margin: '0 0 15px 0',
     maxWidth: '300px'
   }
@@ -56,7 +56,7 @@ export class DatePickerInputExample extends React.Component<{}, IDatePickerInput
           again will dismiss the DatePicker and allow text input.
         </p>
         <DatePicker
-          className={styles.msDatePicker}
+          className={controlClass.control}
           label="Start date"
           isRequired={false}
           allowTextInput={true}

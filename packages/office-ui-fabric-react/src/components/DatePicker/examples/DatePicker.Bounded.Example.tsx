@@ -33,8 +33,8 @@ const DayPickerStrings: IDatePickerStrings = {
   isOutOfBoundsErrorMessage: `Date must be between ${minDate.toLocaleDateString()}-${maxDate.toLocaleDateString()}`
 };
 
-const styles = mergeStyleSets({
-  msDatePicker: {
+const controlClass = mergeStyleSets({
+  control: {
     margin: '0 0 15px 0',
     maxWidth: '300px'
   }
@@ -60,7 +60,7 @@ export class DatePickerBoundedExample extends React.Component<{}, IDatePickerReq
       <div className="docs-DatePickerExample">
         <p>{description}</p>
         <DatePicker
-          className={styles.msDatePicker}
+          className={controlClass.control}
           isRequired={false}
           firstDayOfWeek={firstDayOfWeek}
           strings={DayPickerStrings}
