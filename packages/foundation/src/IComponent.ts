@@ -9,7 +9,7 @@ import { IStyle, IStyleSet, ITheme } from '@uifabric/styling';
 
 /**
  * Helper interface for accessing user props children.
- * @deprecate Use React.PropsWithChildren.
+ * @deprecated Use React.PropsWithChildren.
  */
 export type IPropsWithChildren<TProps> = React.PropsWithChildren<TProps>;
 
