@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Remove unused API report files",
+  "packageName": "@uifabric/test-utilities",
+  "email": "elcraig@microsoft.com",
+  "commit": "72d997a17aed71179b609273010c7c826fd41507",
+  "date": "2019-11-06T23:36:55.396Z"
+}

@@ -1,0 +1,8 @@
+{
+  "type": "none",
+  "comment": "Fix API report newlines and trailing spaces",
+  "packageName": "@uifabric/utilities",
+  "email": "elcraig@microsoft.com",
+  "commit": "72d997a17aed71179b609273010c7c826fd41507",
+  "date": "2019-11-06T23:37:08.231Z"
+}
