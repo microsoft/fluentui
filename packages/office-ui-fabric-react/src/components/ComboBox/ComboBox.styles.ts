@@ -303,6 +303,7 @@ export const getStyles = memoizeFunction(
           whiteSpace: 'nowrap',
           textOverflow: 'ellipsis',
           boxSizing: 'border-box', // Border-box matches Dropdown and TextField
+          borderWidth: '1px',
           borderStyle: 'solid',
           borderColor: root.borderColor,
           borderRadius: effects.roundedCorner2,
@@ -408,6 +409,7 @@ export const getStyles = memoizeFunction(
             borderColor: semanticColors.inputBorderHovered
           }
         }
+
         // ':hover': {
         //   selectors: {
         //     ':after': {
