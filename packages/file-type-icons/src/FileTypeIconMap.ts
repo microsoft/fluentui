@@ -36,7 +36,6 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
       'wv'
     ]
   },
-  channelfolder: {},
   calendar: {
     extensions: ['ical', 'icalendar', 'ics', 'ifb', 'vcs']
   },
@@ -249,7 +248,7 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
   contact: {
     extensions: ['vcf']
   },
-  css: {}, // we dont have the icon yet, but i believe we want it, snapping to 'code' for now
+  /*  css: {},  not broken out yet, snapping to 'code' for now */
   csv: {
     extensions: ['csv']
   },
