@@ -2,7 +2,7 @@ import { IButtonStyles } from '../Button.types';
 import { ITheme, concatStyleSets, FontWeights, HighContrastSelector } from '../../../Styling';
 import { memoizeFunction } from '../../../Utilities';
 import { getStyles as getBaseButtonStyles } from '../BaseButton.styles';
-import { getStyles as getSplitButtonStyles } from '../SplitButton/SplitButton.styles';
+import { getPrimarySplitStyles, getStandardSplitStyles } from '../SplitButton/SplitButton.styles';
 import { primaryStyles, standardStyles } from '../ButtonThemes';
 
 export const getStyles = memoizeFunction(
@@ -10,7 +10,6 @@ export const getStyles = memoizeFunction(
     const { fonts, palette } = theme;
 
     const baseButtonStyles: IButtonStyles = getBaseButtonStyles(theme);
-    const splitButtonStyles: IButtonStyles = getSplitButtonStyles(theme);
     const compoundButtonStyles: IButtonStyles = {
       root: {
         maxWidth: '280px',
@@ -135,7 +134,7 @@ export const getStyles = memoizeFunction(
       compoundButtonStyles,
       primary ? primaryStyles(theme) : standardStyles(theme),
       primary ? primaryCompoundTheme : standardCompoundTheme,
-      splitButtonStyles,
+      primary ? getPrimarySplitStyles(theme) : getStandardSplitStyles(theme),
       customStyles
     )!;
   }
