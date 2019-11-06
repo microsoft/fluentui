@@ -2,6 +2,20 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "date": "Wed, 06 Nov 2019 12:34:07 GMT",
+      "tag": "@uifabric/example-app-base_v7.9.0",
+      "version": "7.9.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Update API doc generation to handle deprecated messages",
+            "author": "elcraig@microsoft.com",
+            "commit": "3922bd804a64f9b2c25ff7c1bc7df911b898e69d"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 01 Nov 2019 01:02:38 GMT",
       "tag": "@uifabric/example-app-base_v7.8.5",
       "version": "7.8.5",

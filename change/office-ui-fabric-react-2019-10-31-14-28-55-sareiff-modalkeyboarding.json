@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Fix modal keyboarding issue with respect to moving the modal",
+  "packageName": "office-ui-fabric-react",
+  "email": "sareiff@microsoft.com",
+  "commit": "dab659b13acfc6d3deefc3ece2d243a4b9650f7c",
+  "date": "2019-10-31T21:28:55.046Z"
+}
