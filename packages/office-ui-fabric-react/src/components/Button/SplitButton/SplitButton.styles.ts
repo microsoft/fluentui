@@ -101,7 +101,7 @@ const splitButtonMenuButton: IStyle = {
   height: 'auto',
   boxSizing: 'border-box',
   borderRadius: 0,
-  borderLeft: 'none',
+  // borderLeft: 'none', add this here make border come back
   outline: 'transparent',
   userSelect: 'none',
   display: 'inline-block',
@@ -136,11 +136,6 @@ const splitButtonMenuButtonDisabled: IStyle = {
           backgroundColor: 'Window'
         }
       }
-    },
-    [HighContrastSelector]: {
-      border: `1px solid GrayText`,
-      color: 'GrayText',
-      backgroundColor: 'Window'
     }
   }
 };
@@ -183,6 +178,7 @@ export const getStandardSplitStyles = memoizeFunction(
         borderTopRightRadius: effects.roundedCorner2,
         borderBottomRightRadius: effects.roundedCorner2,
         border: `1px solid ${p.neutralSecondaryAlt}`,
+        borderLeft: 'none',
         selectors: {
           ':hover': {
             backgroundColor: p.neutralLight,
@@ -236,6 +232,12 @@ export const getStandardSplitStyles = memoizeFunction(
         selectors: {
           ':hover': {
             backgroundColor: s.buttonBackgroundDisabled
+          },
+          [HighContrastSelector]: {
+            border: `1px solid GrayText`,
+            borderLeft: 'none',
+            color: 'GrayText',
+            backgroundColor: 'Window'
           }
         }
       },
