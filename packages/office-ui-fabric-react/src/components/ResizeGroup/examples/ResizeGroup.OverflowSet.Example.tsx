@@ -6,9 +6,22 @@ import { OverflowSet } from 'office-ui-fabric-react/lib/OverflowSet';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import { IContextualMenuItem } from 'office-ui-fabric-react/lib/ContextualMenu';
 import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
+import { mergeStyleSets } from 'office-ui-fabric-react';
 
-import * as stylesImport from './ResizeGroup.Example.scss';
-const styles: any = stylesImport;
+const styles = mergeStyleSets({
+  root: {
+    display: 'block'
+  },
+  resizeIsShort: {
+    width: '400px'
+  },
+  settingsGroup: {
+    paddingTop: '20px'
+  },
+  itemCountDropdown: {
+    width: '180px'
+  }
+});
 
 export interface IOverflowData {
   primary: IContextualMenuItem[];
