@@ -215,16 +215,10 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
 
       focused && !underlined && getFocusBorder(!hasErrorMessage ? semanticColors.inputFocusBorderAlt : semanticColors.errorText),
       disabled && {
+        borderColor: semanticColors.disabledBackground,
         selectors: {
-          ':after': {
-            borderColor: semanticColors.disabledBackground
-          },
           ':hover': {
-            selectors: {
-              ':after': {
-                borderColor: semanticColors.disabledBackground
-              }
-            }
+            borderColor: semanticColors.disabledBackground
           }
         },
 
