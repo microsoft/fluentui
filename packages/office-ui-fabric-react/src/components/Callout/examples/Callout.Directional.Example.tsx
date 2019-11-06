@@ -88,12 +88,6 @@ const styles = mergeStyleSets({
       color: theme.palette.neutralPrimary,
       fontWeight: FontWeights.semilight
     }
-  ],
-  link: [
-    theme.fonts.medium,
-    {
-      color: theme.palette.neutralPrimary
-    }
   ]
 });
 
