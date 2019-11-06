@@ -72,12 +72,6 @@ const styles = mergeStyleSets({
     height: '100%',
     padding: '0 24px 20px'
   },
-  actions: {
-    position: 'relative',
-    marginTop: 20,
-    width: '100%',
-    whiteSpace: 'nowrap'
-  },
   subtext: [
     theme.fonts.small,
     {
