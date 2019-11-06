@@ -78,21 +78,12 @@ const styles = mergeStyleSets({
     width: '100%',
     whiteSpace: 'nowrap'
   },
-  buttons: {
-    padding: '0 24px 12px'
-  },
   subtext: [
     theme.fonts.small,
     {
       margin: 0,
       color: theme.palette.neutralPrimary,
       fontWeight: FontWeights.semilight
-    }
-  ],
-  link: [
-    theme.fonts.medium,
-    {
-      color: theme.palette.neutralPrimary
     }
   ]
 });
