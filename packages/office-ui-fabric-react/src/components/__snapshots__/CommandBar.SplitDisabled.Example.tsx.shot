@@ -115,6 +115,7 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                     @media screen and (-ms-high-contrast: active){& .ms-Button--primary {
                       -ms-high-contrast-adjust: none;
                       background-color: WindowText;
+                      border: none;
                       color: Window;
                     }
                     & .ms-Button--primary + .ms-Button {
@@ -447,8 +448,16 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
 
                         {
                           background-color: #c8c6c4;
+                          bottom: 8px;
                           margin-bottom: 4px;
                           margin-top: 4px;
+                          position: absolute;
+                          right: 31px;
+                          top: 8px;
+                          width: 1px;
+                        }
+                        @media screen and (-ms-high-contrast: active){& {
+                          background-color: WindowText;
                         }
                   />
                 </span>
@@ -509,6 +518,7 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                     @media screen and (-ms-high-contrast: active){& .ms-Button--primary {
                       -ms-high-contrast-adjust: none;
                       background-color: WindowText;
+                      border: none;
                       color: Window;
                     }
                     & .ms-Button--primary + .ms-Button {
@@ -734,7 +744,6 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                         &:hover {
                           background-color: #f3f2f1;
                           color: #201f1e;
-                          cursor: default;
                         }
                         @media screen and (-ms-high-contrast: active){&:hover {
                           color: Highlight;
@@ -748,13 +757,9 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                         &:active .ms-Button-icon {
                           color: #323130;
                         }
-                        @media screen and (-ms-high-contrast: active){& .ms-Button--primary {
-                          background-color: Window;
-                          border-color: GrayText;
-                          color: GrayText;
-                        }
                         @media screen and (-ms-high-contrast: active){& {
                           background-color: Window;
+                          border-left: none;
                           border: 1px solid GrayText;
                           color: GrayText;
                         }

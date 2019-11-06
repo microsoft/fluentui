@@ -75,6 +75,7 @@ exports[`Component Examples renders Button.CustomSplit.Example.tsx correctly 1`]
         @media screen and (-ms-high-contrast: active){& .ms-Button--primary {
           -ms-high-contrast-adjust: none;
           background-color: WindowText;
+          border: none;
           color: Window;
         }
         & .ms-Button--primary + .ms-Button {
@@ -252,6 +253,7 @@ exports[`Component Examples renders Button.CustomSplit.Example.tsx correctly 1`]
               border-top-right-radius: 2px;
               border: none;
               box-sizing: border-box;
+              color: #ffffff;
               cursor: pointer;
               display: inline-block;
               height: auto;
@@ -269,6 +271,12 @@ exports[`Component Examples renders Button.CustomSplit.Example.tsx correctly 1`]
               user-select: none;
               vertical-align: top;
               width: 28px;
+            }
+            &:hover {
+              background-color: #edebe9;
+            }
+            @media screen and (-ms-high-contrast: active){&:hover {
+              color: Highlight;
             }
         data-is-focusable={false}
         onClick={[Function]}
@@ -311,6 +319,7 @@ exports[`Component Examples renders Button.CustomSplit.Example.tsx correctly 1`]
                   speak: none;
                 }
                 {
+                  color: #323130;
                   flex-shrink: 0;
                   font-size: 7px;
                   height: 16px;
@@ -346,8 +355,16 @@ exports[`Component Examples renders Button.CustomSplit.Example.tsx correctly 1`]
         className=
 
             {
+              background-color: #c8c6c4;
               border-left: 1px solid #c8c8c8;
+              bottom: 8px;
+              position: absolute;
               right: 26px;
+              top: 8px;
+              width: 1px;
+            }
+            @media screen and (-ms-high-contrast: active){& {
+              background-color: WindowText;
             }
       />
     </span>
