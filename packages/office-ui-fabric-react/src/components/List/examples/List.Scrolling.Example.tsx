@@ -14,33 +14,27 @@ const styles = mergeStyleSets({
   container: {
     overflow: 'auto',
     maxHeight: 500,
-    marginTop: 20
-  },
-  itemContentOdd: [
-    theme.fonts.medium,
-    normalize,
-    {
-      position: 'relative',
-      display: 'block',
-      borderLeft: '3px solid ' + theme.palette.themePrimary,
-      paddingLeft: 27,
-      height: 50,
-      lineHeight: 50,
-      background: theme.palette.neutralLighter
+    marginTop: 20,
+    selectors: {
+      '.ms-List-cell:nth-child(odd)': {
+        height: 50,
+        lineHeight: 50,
+        background: theme.palette.neutralLighter
+      },
+      '.ms-List-cell:nth-child(even)': {
+        height: 25,
+        lineHeight: 25
+      }
     }
-  ],
-
-  itemContentEven: [
+  },
+  itemContent: [
     theme.fonts.medium,
     normalize,
-    ,
     {
       position: 'relative',
       display: 'block',
       borderLeft: '3px solid ' + theme.palette.themePrimary,
-      paddingLeft: 27,
-      height: 25,
-      lineHeight: 25
+      paddingLeft: 27
     }
   ],
   selected: {
@@ -162,7 +156,7 @@ export class ListScrollingExample extends React.Component<IListScrollingExampleP
   private _onRenderCell = (item: IExampleItem, index: number): JSX.Element => {
     return (
       <div data-is-focusable={true}>
-        <div className={index % 2 === 0 ? styles.itemContentEven : styles.itemContentOdd}>
+        <div className={styles.itemContent}>
           {index} &nbsp; {item.name}
         </div>
       </div>
