@@ -84,7 +84,7 @@ export interface IProcessedSlotProps {
     className?: string;
 }
 
-// @public
+// @public @deprecated
 export type IPropsWithChildren<TProps> = React.PropsWithChildren<TProps>;
 
 // @public
