@@ -371,6 +371,7 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
                   -webkit-font-smoothing: antialiased;
                   background-color: #f3f2f1;
                   background: none;
+                  border-color: #f3f2f1;
                   border-radius: 0px;
                   border: none;
                   box-shadow: none;
@@ -430,9 +431,6 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
                   font-size: 14px;
                   font-weight: 400;
                   opacity: 1;
-                }
-                &:after {
-                  border-color: #f3f2f1;
                 }
             disabled={true}
             id="TextField3"
