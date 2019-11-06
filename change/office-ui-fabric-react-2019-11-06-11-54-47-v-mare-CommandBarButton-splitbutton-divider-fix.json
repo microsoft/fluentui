@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "SplitButton: Fixed divider styles. Refactored styles incorporating splitbutton styles from ButtonThemes.ts ",
+  "packageName": "office-ui-fabric-react",
+  "email": "v-mare@microsoft.com",
+  "commit": "8dd841dcfd8ef911f3e32cb68dacab3d14772e77",
+  "date": "2019-11-06T19:54:47.448Z"
+}
