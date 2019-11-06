@@ -19,6 +19,16 @@ const styles = mergeStyleSets({
   },
   control: {
     paddingTop: 20
+  },
+  slider: {
+    margin: '10px 0 10px 0'
+  },
+  checkbox: {
+    paddingTop: 15
+  },
+  dropdown: {
+    paddingTop: 0,
+    margin: '10px 0 10px 0'
   }
 });
 
@@ -60,6 +70,7 @@ export class FacepileBasicExample extends React.Component<{}, IFacepileBasicExam
         <div className={styles.control}>
           <Slider
             label="Number of Personas:"
+            className={styles.slider}
             min={1}
             max={5}
             step={1}
@@ -70,6 +81,7 @@ export class FacepileBasicExample extends React.Component<{}, IFacepileBasicExam
           <Dropdown
             label="Persona Size:"
             selectedKey={this.state.personaSize}
+            className={styles.dropdown}
             options={[
               { key: PersonaSize.size16, text: PersonaSize[PersonaSize.size16] },
               { key: PersonaSize.size24, text: PersonaSize[PersonaSize.size24] },
@@ -80,6 +92,7 @@ export class FacepileBasicExample extends React.Component<{}, IFacepileBasicExam
             onChange={this._onChangePersonaSize}
           />
           <Checkbox
+            className={styles.checkbox}
             styles={{ root: { margin: '10px 0' } }}
             label="Fade In"
             checked={this.state.imagesFadeIn}

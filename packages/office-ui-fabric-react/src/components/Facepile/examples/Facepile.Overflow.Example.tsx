@@ -11,6 +11,13 @@ const styles = mergeStyleSets({
   },
   control: {
     paddingTop: 20
+  },
+  slider: {
+    margin: '10px 0 10px 0'
+  },
+  dropdown: {
+    paddingTop: 0,
+    margin: '10px 0 10px 0'
   }
 });
 
@@ -52,6 +59,7 @@ export class FacepileOverflowExample extends React.Component<{}, IFacepileOverfl
         <div className={styles.control}>
           <Slider
             label="Number of Personas:"
+            className={styles.slider}
             min={1}
             max={5}
             step={1}
@@ -61,6 +69,7 @@ export class FacepileOverflowExample extends React.Component<{}, IFacepileOverfl
           />
           <Dropdown
             label="Overflow Button Type:"
+            className={styles.dropdown}
             selectedKey={this.state.overflowButtonType}
             options={[
               { key: OverflowButtonType.none, text: OverflowButtonType[OverflowButtonType.none] },
