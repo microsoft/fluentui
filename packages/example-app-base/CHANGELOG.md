@@ -1,7 +1,13 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Fri, 01 Nov 2019 01:02:38 GMT and should not be manually modified.
+This log was last generated on Wed, 06 Nov 2019 12:34:07 GMT and should not be manually modified.
 
+## 7.9.0
+Wed, 06 Nov 2019 12:34:07 GMT
+
+### Minor changes
+
+- Update API doc generation to handle deprecated messages (elcraig@microsoft.com)
 ## 7.8.5
 Fri, 01 Nov 2019 01:02:38 GMT
 

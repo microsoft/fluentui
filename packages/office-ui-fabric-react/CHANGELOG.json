@@ -2,6 +2,32 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Wed, 06 Nov 2019 12:34:07 GMT",
+      "tag": "office-ui-fabric-react_v7.58.0",
+      "version": "7.58.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Update API doc generation to handle deprecated messages",
+            "author": "elcraig@microsoft.com",
+            "commit": "3922bd804a64f9b2c25ff7c1bc7df911b898e69d"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "ContextualMenu: fix escape not dismissing menu",
+            "author": "joschect@microsoft.com",
+            "commit": "130e6c11b3ca4904278562c88aa9fc1aa55bd1d9"
+          },
+          {
+            "comment": "Removed SCSS file",
+            "author": "pandasa123@gmail.com",
+            "commit": "9db0fd7ec693dfe1a9747d30540fcd5f4f317d14"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 05 Nov 2019 23:43:46 GMT",
       "tag": "office-ui-fabric-react_v7.57.2",
       "version": "7.57.2",

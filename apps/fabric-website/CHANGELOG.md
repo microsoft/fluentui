@@ -1,7 +1,13 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Tue, 05 Nov 2019 23:43:46 GMT and should not be manually modified.
+This log was last generated on Wed, 06 Nov 2019 12:34:07 GMT and should not be manually modified.
 
+## 7.7.0
+Wed, 06 Nov 2019 12:34:07 GMT
+
+### Minor changes
+
+- website: Fixes for high contrast (jdh@microsoft.com)
 ## 7.6.1
 Tue, 05 Nov 2019 23:43:46 GMT
 

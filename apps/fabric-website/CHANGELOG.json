@@ -2,6 +2,20 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "date": "Wed, 06 Nov 2019 12:34:07 GMT",
+      "tag": "@uifabric/fabric-website_v7.7.0",
+      "version": "7.7.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "website: Fixes for high contrast",
+            "author": "jdh@microsoft.com",
+            "commit": "f5cf5ae4c2059ca823a4b0a560aa56592ea0b132"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 05 Nov 2019 23:43:46 GMT",
       "tag": "@uifabric/fabric-website_v7.6.1",
       "version": "7.6.1",

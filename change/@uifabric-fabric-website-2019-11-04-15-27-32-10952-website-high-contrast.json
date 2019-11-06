@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "website: Fixes for high contrast",
-  "packageName": "@uifabric/fabric-website",
-  "email": "jdh@microsoft.com",
-  "commit": "f5cf5ae4c2059ca823a4b0a560aa56592ea0b132",
-  "date": "2019-11-04T23:27:32.221Z"
-}

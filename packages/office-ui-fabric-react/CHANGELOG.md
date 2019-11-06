@@ -1,7 +1,17 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 05 Nov 2019 23:43:46 GMT and should not be manually modified.
+This log was last generated on Wed, 06 Nov 2019 12:34:07 GMT and should not be manually modified.
 
+## 7.58.0
+Wed, 06 Nov 2019 12:34:07 GMT
+
+### Minor changes
+
+- Update API doc generation to handle deprecated messages (elcraig@microsoft.com)
+### Patches
+
+- ContextualMenu: fix escape not dismissing menu (joschect@microsoft.com)
+- Removed SCSS file (pandasa123@gmail.com)
 ## 7.57.2
 Tue, 05 Nov 2019 23:43:46 GMT
 
