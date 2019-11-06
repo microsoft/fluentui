@@ -8,7 +8,7 @@ import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { classNamesFunction } from '../../Utilities';
 import { CommandBarButton, IButtonProps } from '../../Button';
 import { TooltipHost } from '../../Tooltip';
-import { IComponentAs } from '@uifabric/utilities';
+import { IComponentAs, getNativeProps, divProperties } from '@uifabric/utilities';
 import { mergeStyles, IStyle } from '@uifabric/styling';
 
 const getClassNames = classNamesFunction<ICommandBarStyleProps, ICommandBarStyles>();
@@ -48,7 +48,6 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
 
   public render(): JSX.Element {
     const {
-      className,
       items,
       overflowItems,
       farItems,
@@ -69,10 +68,14 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
 
     this._classNames = getClassNames(styles!, { theme: theme! });
 
+    // ResizeGroup will render these attributes to the root <div>.
+    // TODO We may need to elevate classNames from <FocusZone> into <ResizeGroup> ?
+    const nativeProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties);
+
     return (
       <ResizeGroup
+        {...nativeProps}
         componentRef={this._resizeGroup}
-        className={className}
         data={commandBarData}
         onReduceData={onReduceData}
         onGrowData={onGrowData}
