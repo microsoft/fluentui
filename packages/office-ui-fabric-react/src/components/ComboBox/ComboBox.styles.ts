@@ -24,6 +24,7 @@ const getDisabledStyles = memoizeFunction(
 
     return {
       backgroundColor: semanticColors.disabledBackground,
+      borderColor: semanticColors.disabledBackground,
       color: semanticColors.disabledText,
       cursor: 'default',
       selectors: {
