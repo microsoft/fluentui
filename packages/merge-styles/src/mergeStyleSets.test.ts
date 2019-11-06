@@ -95,68 +95,6 @@ describe('mergeStyleSets', () => {
     expect(_stylesheet.getRules()).toBe('');
   });
 
-  it('can expand child selectors', () => {
-    const result = mergeStyleSets({
-      a: {
-        selectors: {
-          ':hover $b': {
-            background: 'green'
-          },
-          ':focus $c-foo': {
-            background: 'red'
-          },
-          ':active .d': {
-            background: 'pink'
-          }
-        }
-      },
-      b: {
-        background: 'blue'
-      },
-      'c-foo': {}
-    });
-
-    expect(result).toEqual({
-      a: 'a-0',
-      b: 'b-1',
-      'c-foo': 'c-foo-2',
-      subComponentStyles: {}
-    });
-
-    expect(_stylesheet.getRules()).toEqual(
-      '.a-0:hover .b-1{background:green;}' +
-        '.a-0:focus .c-foo-2{background:red;}' +
-        '.a-0:active .d{background:pink;}' +
-        '.b-1{background:blue;}'
-    );
-  });
-
-  it('can expand child selectors with static class names', () => {
-    const styles = mergeStyleSets({
-      root: [
-        'a',
-        {
-          selectors: {
-            '&:hover $child': { background: 'red' }
-          }
-        }
-      ],
-      child: [
-        'd',
-        {
-          background: 'green'
-        }
-      ]
-    });
-
-    expect(styles).toEqual({
-      root: 'a root-0',
-      child: 'd child-1',
-      subComponentStyles: {}
-    });
-    expect(_stylesheet.getRules()).toEqual('.root-0:hover .child-1{background:red;}' + '.child-1{background:green;}');
-  });
-
   it('can merge class names', () => {
     expect(mergeStyleSets({ root: ['a', 'b', { background: 'red' }] })).toEqual({
       root: 'a b root-0',
@@ -290,15 +228,6 @@ describe('mergeStyleSets', () => {
 
         // this test primarily
         SubComponent({ styles: classNames.subComponentStyles.button });
-
-        // this test primarily tests that the lines above do not result in a Typescript error.
-        expect.assertions(0);
-      });
-
-      it('IStyleSet/IProcessedStyleSet should work with legacy sub components that only take IStyleFunctions', () => {
-        const classNames = mergeStyleSets<IStylesWithStyleObjectAsSubCommponent>(getStyles2());
-
-        LegacySubComponent({ styles: classNames.subComponentStyles.button({ isCollapsed: false }) });
 
         // this test primarily tests that the lines above do not result in a Typescript error.
         expect.assertions(0);

@@ -1,99 +1,116 @@
 import * as React from 'react';
 
-import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-dom/test-utils';
 
-import { KeyCodes } from '../../Utilities';
-import { Autofill } from './Autofill';
+import { IRefObject, KeyCodes } from '../../Utilities';
+import { Autofill, IAutofillState, IAutofill, IAutofillProps } from './index';
+import { ReactWrapper, mount } from 'enzyme';
+import { mockEvent } from 'office-ui-fabric-react/lib/common/testUtilities';
 
 describe('Autofill', () => {
-  let autoFill: Autofill;
-  let autoFillInput: HTMLInputElement;
-  const baseNode = document.createElement('div');
-  document.body.appendChild(baseNode);
-  beforeEach(() => {
-    const component = ReactDOM.render(
-      <Autofill ref={(c: Autofill | null) => c && (autoFill = c)} suggestedDisplayValue="hello" />,
-      baseNode
-    );
-    autoFillInput = ReactDOM.findDOMNode(component as React.ReactInstance) as HTMLInputElement;
+  let autofill: Autofill;
+  const autofillRef: IRefObject<IAutofill> = (ref: IAutofill | null) => {
+    autofill = ref as Autofill;
+  };
+  let component: ReactWrapper<IAutofillProps, IAutofillState, Autofill>;
+
+  afterEach(() => {
+    component.unmount();
   });
 
-  it('correctly autofills', (done: (error?: Error) => void) => {
+  it('correctly autofills', () => {
+    let updatedText: string | undefined;
     const onInputValueChange = (text: string | undefined): void => {
-      expect(text).toBe('hel');
-      expect(autoFill.value).toBe('hel');
-      done();
+      updatedText = text;
     };
 
-    ReactDOM.render(
-      <Autofill ref={(c: Autofill | null) => c && (autoFill = c)} onInputValueChange={onInputValueChange} suggestedDisplayValue="hello" />,
-      baseNode
-    );
-    autoFillInput.value = 'hel';
-    ReactTestUtils.Simulate.input(autoFillInput);
-    ReactDOM.render(
-      <Autofill ref={(c: Autofill | null) => c && (autoFill = c)} onInputValueChange={onInputValueChange} suggestedDisplayValue="hello" />,
-      baseNode
-    );
-    expect(autoFill.inputElement && autoFill.inputElement.value).toBe('hello');
+    component = mount(<Autofill componentRef={autofillRef} onInputValueChange={onInputValueChange} suggestedDisplayValue="hello" />);
+
+    ReactTestUtils.Simulate.input(autofill.inputElement!, mockEvent('hel'));
+    expect(updatedText).toBe('hel');
+    expect(autofill.value).toBe('hel');
+    expect(autofill.inputElement!.value).toBe('hello');
   });
 
-  it('does not autofill if suggestedDisplayValue does not match input', (done: (error?: Error) => void) => {
+  it('correctly autofills with composable languages', () => {
+    let updatedText: string | undefined;
     const onInputValueChange = (text: string | undefined): void => {
-      expect(text).toBe('hep');
-      expect(autoFill.value).toBe('hep');
-      expect(autoFill.inputElement && autoFill.inputElement.value).toBe('hep');
-      done();
+      updatedText = text;
     };
 
-    autoFillInput.value = 'hep';
-    ReactTestUtils.Simulate.input(autoFillInput);
-    ReactDOM.render(
-      <Autofill ref={(c: Autofill | null) => c && (autoFill = c)} onInputValueChange={onInputValueChange} suggestedDisplayValue="hello" />,
-      baseNode
-    );
-    ReactTestUtils.Simulate.input(autoFillInput);
+    component = mount(<Autofill componentRef={autofillRef} onInputValueChange={onInputValueChange} suggestedDisplayValue="こんにちは" />);
+
+    ReactTestUtils.Simulate.input(autofill.inputElement!, mockEvent('こん'));
+    expect(updatedText).toBe('こん');
+    expect(autofill.value).toBe('こん');
+    expect(autofill.inputElement!.value).toBe('こんにちは');
   });
 
-  it('does not autofill if left or right arrow has been pressed', () => {
-    autoFillInput.value = 'hel';
-    ReactTestUtils.Simulate.input(autoFillInput);
+  it('does not autofill if suggestedDisplayValue does not match input', () => {
+    let updatedText: string | undefined;
+    const onInputValueChange = (text: string | undefined): void => {
+      updatedText = text;
+    };
 
-    ReactDOM.render(<Autofill ref={(c: Autofill | null) => c && (autoFill = c)} suggestedDisplayValue="hello" />, baseNode);
+    component = mount(<Autofill componentRef={autofillRef} onInputValueChange={onInputValueChange} suggestedDisplayValue="hello" />);
+    ReactTestUtils.Simulate.input(autofill.inputElement!, mockEvent('hep'));
 
-    ReactTestUtils.Simulate.keyDown(autoFillInput, { keyCode: KeyCodes.left, which: KeyCodes.left });
-
-    // Because reacttestutils doesn't allow you to enter text normally we need to reset the autofillinput value to hel.
-    // If we don't the change event will cause the current input value, 'hello', to be set.
-    autoFillInput.value = 'hel';
-
-    ReactTestUtils.Simulate.input(autoFillInput);
-
-    expect(autoFill.value).toBe('hel');
-    expect(autoFill.inputElement && autoFill.inputElement.value).toBe('hel');
+    expect(updatedText).toBe('hep');
+    expect(autofill.value).toBe('hep');
+    expect(autofill.inputElement!.value).toBe('hep');
   });
 
-  it('will autofill if keyCode up or down is pressed', () => {
-    autoFillInput.value = 'hel';
-    ReactTestUtils.Simulate.input(autoFillInput);
+  it('autofills if left arrow is pressed', () => {
+    component = mount(<Autofill componentRef={autofillRef} suggestedDisplayValue="hello" />);
 
-    ReactDOM.render(<Autofill ref={(c: Autofill | null) => c && (autoFill = c)} suggestedDisplayValue="hello" />, baseNode);
+    ReactTestUtils.Simulate.input(autofill.inputElement!, mockEvent('hel'));
+    expect(autofill.value).toBe('hel');
+    expect(autofill.inputElement!.value).toBe('hello');
 
-    expect(autoFill.value).toBe('hel');
-    expect(autoFill.inputElement && autoFill.inputElement.value).toBe('hel');
+    ReactTestUtils.Simulate.keyDown(autofill.inputElement!, { keyCode: KeyCodes.left, which: KeyCodes.left });
+    expect(autofill.value).toBe('hello');
+    expect(autofill.inputElement!.value).toBe('hello');
+  });
 
-    ReactTestUtils.Simulate.keyDown(autoFillInput, { keyCode: KeyCodes.left, which: KeyCodes.left });
+  it('autofills if right arrow is pressed', () => {
+    component = mount(<Autofill componentRef={autofillRef} suggestedDisplayValue="hello" />);
 
-    autoFillInput.value = 'hel';
+    ReactTestUtils.Simulate.input(autofill.inputElement!, mockEvent('hel'));
+    expect(autofill.value).toBe('hel');
+    expect(autofill.inputElement!.value).toBe('hello');
 
-    ReactTestUtils.Simulate.keyDown(autoFillInput, { keyCode: KeyCodes.up, which: KeyCodes.up });
-    autoFillInput.value = 'hel';
-    ReactTestUtils.Simulate.input(autoFillInput);
+    ReactTestUtils.Simulate.keyDown(autofill.inputElement!, { keyCode: KeyCodes.right, which: KeyCodes.right });
+    expect(autofill.value).toBe('hello');
+    expect(autofill.inputElement!.value).toBe('hello');
+  });
 
-    ReactDOM.render(<Autofill ref={(c: Autofill | null) => c && (autoFill = c)} suggestedDisplayValue="hello" />, baseNode);
+  it('does not autofill if up or down is pressed', () => {
+    component = mount(<Autofill componentRef={autofillRef} suggestedDisplayValue="hello" />);
 
-    expect(autoFill.value).toBe('hel');
-    expect(autoFill.inputElement && autoFill.inputElement.value).toBe('hello');
+    ReactTestUtils.Simulate.input(autofill.inputElement!, mockEvent('hel'));
+    expect(autofill.value).toBe('hel');
+    expect(autofill.inputElement!.value).toBe('hello');
+
+    ReactTestUtils.Simulate.keyDown(autofill.inputElement!, { keyCode: KeyCodes.up, which: KeyCodes.up });
+    expect(autofill.value).toBe('hel');
+    expect(autofill.inputElement!.value).toBe('hello');
+
+    ReactTestUtils.Simulate.keyDown(autofill.inputElement!, { keyCode: KeyCodes.down, which: KeyCodes.down });
+    expect(autofill.value).toBe('hel');
+    expect(autofill.inputElement!.value).toBe('hello');
+  });
+
+  it('value changes when updateValueInWillReceiveProps is passed in', () => {
+    const propsString = 'Updated';
+    const receivePropsUpdater = () => {
+      return propsString;
+    };
+    component = mount(<Autofill componentRef={autofillRef} suggestedDisplayValue="" updateValueInWillReceiveProps={receivePropsUpdater} />);
+
+    ReactTestUtils.Simulate.input(autofill.inputElement!, mockEvent('hel'));
+    component.setProps({ suggestedDisplayValue: 'hello' });
+
+    expect(autofill.value).toBe('Updated');
+    expect(autofill.inputElement!.value).toBe('Updated');
   });
 });

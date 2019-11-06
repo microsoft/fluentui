@@ -27,7 +27,6 @@ export * from './Facepile';
 export * from './FloatingPicker';
 export * from './FocusTrapZone';
 export * from './FocusZone';
-export * from './Foundation';
 export * from './Grid';
 export * from './GroupedList';
 export * from './HoverCard';

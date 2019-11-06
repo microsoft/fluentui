@@ -11,7 +11,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
           align-items: center;
           border: none;
           box-sizing: border-box;
-          color: #333333;
+          color: #323130;
           display: flex;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
@@ -22,7 +22,6 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
         }
         & .ms-ChoiceFieldLabel {
           display: inline-block;
-          font-size: 14px;
           padding-left: 26px;
         }
   >
@@ -64,20 +63,38 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
               vertical-align: top;
             }
             &:hover .ms-ChoiceFieldLabel {
-              color: #000000;
+              color: #201f1e;
             }
             &:hover:before {
-              border-color: #333333;
+              border-color: #323130;
+            }
+            &:hover:after {
+              background-color: #605e5c;
+              content: "";
+              height: 10px;
+              left: 5px;
+              top: 5px;
+              transition-property: background-color;
+              width: 10px;
             }
             &:focus .ms-ChoiceFieldLabel {
-              color: #000000;
+              color: #201f1e;
             }
             &:focus:before {
-              border-color: #333333;
+              border-color: #323130;
+            }
+            &:focus:after {
+              background-color: #605e5c;
+              content: "";
+              height: 10px;
+              left: 5px;
+              top: 5px;
+              transition-property: background-color;
+              width: 10px;
             }
             &:before {
               background-color: #ffffff;
-              border-color: #666666;
+              border-color: #323130;
               border-radius: 50%;
               border-style: solid;
               border-width: 1px;
@@ -125,7 +142,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
           align-items: center;
           border: none;
           box-sizing: border-box;
-          color: #333333;
+          color: #323130;
           display: flex;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
@@ -136,7 +153,6 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
         }
         & .ms-ChoiceFieldLabel {
           display: inline-block;
-          font-size: 14px;
           padding-left: 26px;
         }
   >
@@ -152,7 +168,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
             border: 0px;
           }
           .ms-Fabric--isFocusVisible &:after {
-            border: 1px solid #333333;
+            border: 1px solid #605e5c;
             bottom: -2px;
             content: "";
             left: -2px;
@@ -199,20 +215,38 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
               vertical-align: top;
             }
             &:hover .ms-ChoiceFieldLabel {
-              color: #000000;
+              color: #201f1e;
             }
             &:hover:before {
-              border-color: #333333;
+              border-color: #323130;
+            }
+            &:hover:after {
+              background-color: #605e5c;
+              content: "";
+              height: 10px;
+              left: 5px;
+              top: 5px;
+              transition-property: background-color;
+              width: 10px;
             }
             &:focus .ms-ChoiceFieldLabel {
-              color: #000000;
+              color: #201f1e;
             }
             &:focus:before {
-              border-color: #333333;
+              border-color: #323130;
+            }
+            &:focus:after {
+              background-color: #605e5c;
+              content: "";
+              height: 10px;
+              left: 5px;
+              top: 5px;
+              transition-property: background-color;
+              width: 10px;
             }
             &:before {
               background-color: #ffffff;
-              border-color: #666666;
+              border-color: #323130;
               border-radius: 50%;
               border-style: solid;
               border-width: 1px;
@@ -260,7 +294,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
           align-items: center;
           border: none;
           box-sizing: border-box;
-          color: #333333;
+          color: #323130;
           display: flex;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
@@ -271,7 +305,6 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
         }
         & .ms-ChoiceFieldLabel {
           display: inline-block;
-          font-size: 14px;
           padding-left: 26px;
         }
   >
@@ -287,7 +320,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
             border: 0px;
           }
           .ms-Fabric--isFocusVisible &:after {
-            border: 1px solid #333333;
+            border: 1px solid #605e5c;
             bottom: -2px;
             content: "";
             left: -2px;
@@ -337,16 +370,22 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
               vertical-align: top;
             }
             &:hover .ms-ChoiceFieldLabel {
-              color: #000000;
+              color: #201f1e;
             }
             &:hover:before {
-              border-color: #106ebe;
+              border-color: #005a9e;
+            }
+            &:hover:after {
+              border-color: #005a9e;
             }
             &:focus .ms-ChoiceFieldLabel {
-              color: #000000;
+              color: #201f1e;
             }
             &:focus:before {
-              border-color: #106ebe;
+              border-color: #005a9e;
+            }
+            &:focus:after {
+              border-color: #005a9e;
             }
             &:before {
               background-color: #ffffff;
@@ -408,7 +447,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
           align-items: center;
           border: none;
           box-sizing: border-box;
-          color: #333333;
+          color: #323130;
           display: flex;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
@@ -419,7 +458,6 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
         }
         & .ms-ChoiceFieldLabel {
           display: inline-block;
-          font-size: 14px;
           padding-left: 26px;
         }
   >
@@ -431,6 +469,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
       <input
         className=
             ms-ChoiceField-input
+            is-disabled
             {
               height: 100%;
               margin-bottom: 0px;
@@ -462,8 +501,8 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
               vertical-align: top;
             }
             &:before {
-              background-color: #a6a6a6;
-              border-color: #a6a6a6;
+              background-color: #ffffff;
+              border-color: #c8c6c4;
               border-radius: 50%;
               border-style: solid;
               border-width: 1px;
@@ -497,7 +536,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
               width: 0px;
             }
             & .ms-ChoiceFieldLabel {
-              color: #a6a6a6;
+              color: #a19f9d;
             }
             @media screen and (-ms-high-contrast: active){& {
               color: GrayText;
@@ -520,7 +559,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
           align-items: center;
           border: none;
           box-sizing: border-box;
-          color: #333333;
+          color: #323130;
           display: flex;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
@@ -531,7 +570,6 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
         }
         & .ms-ChoiceFieldLabel {
           display: inline-block;
-          font-size: 14px;
           padding-left: 26px;
         }
   >
@@ -544,6 +582,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
         checked={true}
         className=
             ms-ChoiceField-input
+            is-disabled
             {
               height: 100%;
               margin-bottom: 0px;
@@ -567,7 +606,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
             ms-ChoiceField-field
             is-checked
             {
-              border-color: #0078d4;
+              border-color: #f3f2f1;
               cursor: default;
               display: inline-block;
               margin-top: 0px;
@@ -578,7 +617,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
             }
             &:before {
               background-color: #ffffff;
-              border-color: #a6a6a6;
+              border-color: #c8c6c4;
               border-radius: 50%;
               border-style: solid;
               border-width: 1px;
@@ -600,7 +639,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
               color: GrayText;
             }
             &:after {
-              border-color: #a6a6a6;
+              border-color: #c8c6c4;
               border-radius: 50%;
               border-style: solid;
               border-width: 5px;
@@ -620,7 +659,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
               border-color: Highlight;
             }
             & .ms-ChoiceFieldLabel {
-              color: #a6a6a6;
+              color: #a19f9d;
             }
             @media screen and (-ms-high-contrast: active){& {
               color: GrayText;
@@ -642,10 +681,10 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
           align-items: center;
-          background-color: #f4f4f4;
+          background-color: #f3f2f1;
           border: none;
           box-sizing: border-box;
-          color: #333333;
+          color: #323130;
           display: inline-flex;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 0px;
@@ -661,7 +700,6 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
         }
         & .ms-ChoiceFieldLabel {
           display: inline-block;
-          font-size: 14px;
         }
   >
     <div
@@ -695,7 +733,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
             ms-ChoiceField--icon
             {
               align-items: center;
-              border: 2px solid transparent;
+              border: 1px solid transparent;
               box-sizing: content-box;
               cursor: pointer;
               display: flex;
@@ -716,28 +754,28 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
               vertical-align: top;
             }
             &:hover {
-              border-color: #c8c8c8;
+              border-color: #323130;
             }
             &:hover .ms-ChoiceFieldLabel {
-              color: #000000;
+              color: #201f1e;
             }
             &:hover:before {
-              border-color: #333333;
+              border-color: #323130;
               opacity: 1;
             }
             &:focus {
-              border-color: #c8c8c8;
+              border-color: #323130;
             }
             &:focus .ms-ChoiceFieldLabel {
-              color: #000000;
+              color: #201f1e;
             }
             &:focus:before {
-              border-color: #333333;
+              border-color: #323130;
               opacity: 1;
             }
             &:before {
               background-color: #ffffff;
-              border-color: #666666;
+              border-color: #323130;
               border-radius: 50%;
               border-style: solid;
               border-width: 1px;
@@ -803,7 +841,6 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
                     speak: none;
                   }
               data-icon-name="Calendar"
-              role="presentation"
             >
               
             </i>
@@ -813,7 +850,10 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
           className=
               ms-ChoiceField-labelWrapper
               {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
                 display: block;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
                 height: 30px;
@@ -822,16 +862,12 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
                 margin-left: 8px;
                 margin-right: 8px;
                 margin-top: 4px;
+                max-width: 64px;
                 overflow: hidden;
                 position: relative;
                 text-overflow: ellipsis;
                 white-space: pre-wrap;
               }
-          style={
-            Object {
-              "maxWidth": 64,
-            }
-          }
         >
           <span
             className="ms-ChoiceFieldLabel"
@@ -850,10 +886,10 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
           align-items: center;
-          background-color: #f4f4f4;
+          background-color: #f3f2f1;
           border: none;
           box-sizing: border-box;
-          color: #333333;
+          color: #323130;
           display: inline-flex;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 0px;
@@ -869,7 +905,6 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
         }
         & .ms-ChoiceFieldLabel {
           display: inline-block;
-          font-size: 14px;
         }
   >
     <div
@@ -884,7 +919,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
             border: 0px;
           }
           .ms-Fabric--isFocusVisible &:after {
-            border: 1px solid #666666;
+            border: 1px solid #605e5c;
             bottom: -2px;
             content: "";
             left: -2px;
@@ -924,7 +959,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
             ms-ChoiceField--icon
             {
               align-items: center;
-              border: 2px solid transparent;
+              border: 1px solid transparent;
               box-sizing: content-box;
               cursor: pointer;
               display: flex;
@@ -945,28 +980,28 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
               vertical-align: top;
             }
             &:hover {
-              border-color: #c8c8c8;
+              border-color: #323130;
             }
             &:hover .ms-ChoiceFieldLabel {
-              color: #000000;
+              color: #201f1e;
             }
             &:hover:before {
-              border-color: #333333;
+              border-color: #323130;
               opacity: 1;
             }
             &:focus {
-              border-color: #c8c8c8;
+              border-color: #323130;
             }
             &:focus .ms-ChoiceFieldLabel {
-              color: #000000;
+              color: #201f1e;
             }
             &:focus:before {
-              border-color: #333333;
+              border-color: #323130;
               opacity: 1;
             }
             &:before {
               background-color: #ffffff;
-              border-color: #666666;
+              border-color: #323130;
               border-radius: 50%;
               border-style: solid;
               border-width: 1px;
@@ -1026,13 +1061,12 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
                     display: inline-block;
-                    font-family: "FabricMDL2Icons-1";
+                    font-family: "FabricMDL2Icons-2";
                     font-style: normal;
                     font-weight: normal;
                     speak: none;
                   }
               data-icon-name="CalendarWeek"
-              role="presentation"
             >
               
             </i>
@@ -1042,7 +1076,10 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
           className=
               ms-ChoiceField-labelWrapper
               {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
                 display: block;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
                 height: 30px;
@@ -1051,16 +1088,12 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
                 margin-left: 8px;
                 margin-right: 8px;
                 margin-top: 4px;
+                max-width: 64px;
                 overflow: hidden;
                 position: relative;
                 text-overflow: ellipsis;
                 white-space: pre-wrap;
               }
-          style={
-            Object {
-              "maxWidth": 64,
-            }
-          }
         >
           <span
             className="ms-ChoiceFieldLabel"
@@ -1079,10 +1112,10 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
           align-items: center;
-          background-color: #f4f4f4;
+          background-color: #f3f2f1;
           border: none;
           box-sizing: border-box;
-          color: #333333;
+          color: #323130;
           display: inline-flex;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 0px;
@@ -1098,7 +1131,6 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
         }
         & .ms-ChoiceFieldLabel {
           display: inline-block;
-          font-size: 14px;
         }
   >
     <div
@@ -1135,7 +1167,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
             {
               align-items: center;
               border-color: #0078d4;
-              border: 2px solid transparent;
+              border: 1px solid transparent;
               box-sizing: content-box;
               cursor: pointer;
               display: flex;
@@ -1159,21 +1191,27 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
               border-color: #005a9e;
             }
             &:hover .ms-ChoiceFieldLabel {
-              color: #000000;
+              color: #201f1e;
             }
             &:hover:before {
               border-color: #005a9e;
               opacity: 1;
             }
+            &:hover:after {
+              border-color: #005a9e;
+            }
             &:focus {
               border-color: #005a9e;
             }
             &:focus .ms-ChoiceFieldLabel {
-              color: #000000;
+              color: #201f1e;
             }
             &:focus:before {
               border-color: #005a9e;
               opacity: 1;
+            }
+            &:focus:after {
+              border-color: #005a9e;
             }
             &:before {
               background-color: #ffffff;
@@ -1247,13 +1285,12 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
                     display: inline-block;
-                    font-family: "FabricMDL2Icons-1";
+                    font-family: "FabricMDL2Icons-2";
                     font-style: normal;
                     font-weight: normal;
                     speak: none;
                   }
               data-icon-name="CalendarDay"
-              role="presentation"
             >
               
             </i>
@@ -1263,7 +1300,10 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
           className=
               ms-ChoiceField-labelWrapper
               {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
                 display: block;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
                 height: 30px;
@@ -1272,16 +1312,12 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
                 margin-left: 8px;
                 margin-right: 8px;
                 margin-top: 4px;
+                max-width: 64px;
                 overflow: hidden;
                 position: relative;
                 text-overflow: ellipsis;
                 white-space: pre-wrap;
               }
-          style={
-            Object {
-              "maxWidth": 64,
-            }
-          }
         >
           <span
             className="ms-ChoiceFieldLabel"
@@ -1300,10 +1336,10 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
           align-items: center;
-          background-color: #f4f4f4;
+          background-color: #f3f2f1;
           border: none;
           box-sizing: border-box;
-          color: #333333;
+          color: #323130;
           display: inline-flex;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 0px;
@@ -1319,7 +1355,6 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
         }
         & .ms-ChoiceFieldLabel {
           display: inline-block;
-          font-size: 14px;
         }
   >
     <div
@@ -1330,6 +1365,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
       <input
         className=
             ms-ChoiceField-input
+            is-disabled
             {
               height: 100%;
               margin-bottom: 0px;
@@ -1354,7 +1390,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
             ms-ChoiceField--icon
             {
               align-items: center;
-              border: 2px solid transparent;
+              border: 1px solid transparent;
               box-sizing: content-box;
               cursor: default;
               display: flex;
@@ -1375,8 +1411,8 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
               vertical-align: top;
             }
             &:before {
-              background-color: #a6a6a6;
-              border-color: #a6a6a6;
+              background-color: #ffffff;
+              border-color: #c8c6c4;
               border-radius: 50%;
               border-style: solid;
               border-width: 1px;
@@ -1412,7 +1448,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
               width: 0px;
             }
             & .ms-ChoiceFieldLabel {
-              color: #a6a6a6;
+              color: #a19f9d;
             }
             @media screen and (-ms-high-contrast: active){& {
               color: GrayText;
@@ -1450,13 +1486,12 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
                     display: inline-block;
-                    font-family: "FabricMDL2Icons-1";
+                    font-family: "FabricMDL2Icons-2";
                     font-style: normal;
                     font-weight: normal;
                     speak: none;
                   }
               data-icon-name="CalendarWeek"
-              role="presentation"
             >
               
             </i>
@@ -1466,7 +1501,10 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
           className=
               ms-ChoiceField-labelWrapper
               {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
                 display: block;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
                 height: 30px;
@@ -1475,16 +1513,12 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
                 margin-left: 8px;
                 margin-right: 8px;
                 margin-top: 4px;
+                max-width: 64px;
                 overflow: hidden;
                 position: relative;
                 text-overflow: ellipsis;
                 white-space: pre-wrap;
               }
-          style={
-            Object {
-              "maxWidth": 64,
-            }
-          }
         >
           <span
             className="ms-ChoiceFieldLabel"

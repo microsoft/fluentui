@@ -8,7 +8,7 @@ const baseUrl = 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master
 
 export const SnackbarPage: React.StatelessComponent<IControlsPageProps> = props => {
   const { platform } = props;
-  return <ControlsAreaPage {...props} {...SnackbarPageProps[platform]} otherSections={_otherSections(platform)} />;
+  return <ControlsAreaPage {...props} {...SnackbarPageProps[platform]} otherSections={_otherSections(platform) as IPageSectionProps[]} />;
 };
 
 function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {

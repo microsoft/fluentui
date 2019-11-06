@@ -72,7 +72,7 @@ export const getStyles = (props: IMarkdownTableStyleProps): IMarkdownTableStyles
       classNames.thead,
       {
         selectors: {
-          $tr: {
+          [`.${classNames.tr}`]: {
             borderColor: palette.neutralPrimary
           }
         }
@@ -83,7 +83,7 @@ export const getStyles = (props: IMarkdownTableStyleProps): IMarkdownTableStyles
       classNames.tbody,
       {
         selectors: {
-          '$tr:last-of-type': {
+          [`.${classNames.tr}:last-of-type`]: {
             borderBottom: 'none'
           }
         }

@@ -6,7 +6,7 @@ import { mergeStyles } from '../MergeStyles';
  * @param styles - Map of unprocessed styles.
  * @returns Map of property name to class name.
  */
-export function buildClassMap<T>(styles: T): { [key in keyof T]?: string } {
+export function buildClassMap<T extends Object>(styles: T): { [key in keyof T]?: string } {
   let classes: { [key in keyof T]?: string } = {};
 
   for (let styleName in styles) {

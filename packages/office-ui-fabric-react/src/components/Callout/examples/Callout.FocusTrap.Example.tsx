@@ -1,19 +1,12 @@
 import * as React from 'react';
-import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
-import { FocusTrapCallout } from 'office-ui-fabric-react/lib/Callout';
-import { CommandBar, ICommandBarItemProps } from 'office-ui-fabric-react/lib/CommandBar';
-import { getId } from 'office-ui-fabric-react/lib/Utilities';
+import { DefaultButton, FocusTrapCallout, Stack, getId, FocusZone, PrimaryButton } from 'office-ui-fabric-react';
 import './CalloutExample.scss';
-
-export interface ICalloutFocusTrapExampleProps {
-  items: ICommandBarItemProps[];
-}
 
 export interface ICalloutFocusTrapExampleState {
   isCalloutVisible: boolean;
 }
 
-export class CalloutFocusTrapExample extends React.Component<ICalloutFocusTrapExampleProps, ICalloutFocusTrapExampleState> {
+export class CalloutFocusTrapExample extends React.Component<{}, ICalloutFocusTrapExampleState> {
   public state: ICalloutFocusTrapExampleState = {
     isCalloutVisible: false
   };
@@ -54,7 +47,12 @@ export class CalloutFocusTrapExample extends React.Component<ICalloutFocusTrapEx
                   </p>
                 </div>
               </div>
-              <CommandBar items={this.props.items} />
+              <FocusZone>
+                <Stack className="ms-CalloutExample-buttons" gap={8} horizontal>
+                  <PrimaryButton onClick={this._onDismiss}>Agree</PrimaryButton>
+                  <DefaultButton onClick={this._onDismiss}>Cancel</DefaultButton>
+                </Stack>
+              </FocusZone>
             </FocusTrapCallout>
           </div>
         ) : null}

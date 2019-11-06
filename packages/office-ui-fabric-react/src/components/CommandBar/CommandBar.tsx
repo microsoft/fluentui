@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { styled } from '../../Utilities';
 import { ICommandBarProps, ICommandBarStyleProps, ICommandBarStyles } from './CommandBar.types';
 import { CommandBarBase } from './CommandBar.base';

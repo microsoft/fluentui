@@ -13,25 +13,15 @@ const GlobalClassNames = {
 };
 
 export const styles: IStackComponent['styles'] = (props, theme, tokens): IStackStylesReturnType => {
-  const {
-    verticalFill,
-    maxWidth,
-    maxHeight,
-    horizontal,
-    reversed,
-    gap,
-    grow,
-    wrap,
-    padding,
-    horizontalAlign,
-    verticalAlign,
-    disableShrink,
-    className
-  } = props;
+  const { verticalFill, horizontal, reversed, gap, grow, wrap, horizontalAlign, verticalAlign, disableShrink, className } = props;
 
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
   const childrenGap = tokens && tokens.childrenGap ? tokens.childrenGap : gap;
+  const maxHeight = tokens && tokens.maxHeight ? tokens.maxHeight : props.maxHeight;
+  const maxWidth = tokens && tokens.maxWidth ? tokens.maxWidth : props.maxWidth;
+  const padding = tokens && tokens.padding ? tokens.padding : props.padding;
+
   const { rowGap, columnGap } = parseGap(childrenGap, theme);
 
   const horizontalMargin = `${-0.5 * columnGap.value}${columnGap.unit}`;
@@ -168,8 +158,7 @@ export const styles: IStackComponent['styles'] = (props, theme, tokens): IStackS
         }
       },
       grow && {
-        flexGrow: grow === true ? 1 : grow,
-        overflow: 'hidden'
+        flexGrow: grow === true ? 1 : grow
       },
       horizontalAlign && {
         [horizontal ? 'justifyContent' : 'alignItems']: nameMap[horizontalAlign] || horizontalAlign

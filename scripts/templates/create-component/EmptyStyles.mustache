@@ -18,11 +18,17 @@ const warningTokens: I{{componentName}}Component['tokens'] = {
   textColor: 'red'
 };
 
+/**
+* {@docCategory {{componentName}}}
+*/
 export const {{componentName}}Tokens: I{{componentName}}Component['tokens'] = (props, theme): I{{componentName}}TokenReturnType => [
   baseTokens,
   props.warning && warningTokens
 ];
 
+/**
+* {@docCategory {{componentName}}}
+*/
 export const {{componentName}}Styles: I{{componentName}}Component['styles'] = (props, theme, tokens): I{{componentName}}StylesReturnType => {
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 

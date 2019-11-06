@@ -10,6 +10,130 @@
   },
   "glyphs": [
     {
+      "name": "Paste",
+      "unicode": "E77F"
+    },
+    {
+      "name": "WindowsLogo",
+      "unicode": "E782"
+    },
+    {
+      "name": "Error",
+      "unicode": "E783"
+    },
+    {
+      "name": "GripperBarVertical",
+      "unicode": "E784"
+    },
+    {
+      "name": "Unlock",
+      "unicode": "E785"
+    },
+    {
+      "name": "Slideshow",
+      "unicode": "E786"
+    },
+    {
+      "name": "Trim",
+      "unicode": "E78A"
+    },
+    {
+      "name": "AutoEnhanceOn",
+      "unicode": "E78D"
+    },
+    {
+      "name": "AutoEnhanceOff",
+      "unicode": "E78E"
+    },
+    {
+      "name": "Color",
+      "unicode": "E790"
+    },
+    {
+      "name": "SaveAs",
+      "unicode": "E792"
+    },
+    {
+      "name": "Light",
+      "unicode": "E793"
+    },
+    {
+      "name": "Filters",
+      "unicode": "E795"
+    },
+    {
+      "name": "AspectRatio",
+      "unicode": "E799"
+    },
+    {
+      "name": "Contrast",
+      "unicode": "E7A1"
+    },
+    {
+      "name": "Redo",
+      "unicode": "E7A6"
+    },
+    {
+      "name": "Crop",
+      "unicode": "E7A8"
+    },
+    {
+      "name": "PhotoCollection",
+      "unicode": "E7AA"
+    },
+    {
+      "name": "Album",
+      "unicode": "E7AB"
+    },
+    {
+      "name": "Rotate",
+      "unicode": "E7AD"
+    },
+    {
+      "name": "PanoIndicator",
+      "unicode": "E7B0"
+    },
+    {
+      "name": "Translate",
+      "unicode": "E7B2"
+    },
+    {
+      "name": "RedEye",
+      "unicode": "E7B3"
+    },
+    {
+      "name": "ViewOriginal",
+      "unicode": "E7B4"
+    },
+    {
+      "name": "ThumbnailView",
+      "unicode": "E7B6"
+    },
+    {
+      "name": "Package",
+      "unicode": "E7B8"
+    },
+    {
+      "name": "Telemarketer",
+      "unicode": "E7B9"
+    },
+    {
+      "name": "Warning",
+      "unicode": "E7BA"
+    },
+    {
+      "name": "Financial",
+      "unicode": "E7BB"
+    },
+    {
+      "name": "Education",
+      "unicode": "E7BE"
+    },
+    {
+      "name": "ShoppingCart",
+      "unicode": "E7BF"
+    },
+    {
       "name": "Train",
       "unicode": "E7C0"
     },
@@ -60,6 +184,10 @@
     {
       "name": "Game",
       "unicode": "E7FC"
+    },
+    {
+      "name": "HorizontalTabKey",
+      "unicode": "E7FD"
     },
     {
       "name": "UnstackSelected",
@@ -186,6 +314,10 @@
       "unicode": "E845"
     },
     {
+      "name": "USB",
+      "unicode": "E88E"
+    },
+    {
       "name": "Previous",
       "unicode": "E892"
     },
@@ -276,138 +408,6 @@
     {
       "name": "Import",
       "unicode": "E8B5"
-    },
-    {
-      "name": "Picture",
-      "unicode": "E8B9"
-    },
-    {
-      "name": "ChromeClose",
-      "unicode": "E8BB"
-    },
-    {
-      "name": "ShowResults",
-      "unicode": "E8BC"
-    },
-    {
-      "name": "Message",
-      "unicode": "E8BD"
-    },
-    {
-      "name": "CalendarDay",
-      "unicode": "E8BF"
-    },
-    {
-      "name": "CalendarWeek",
-      "unicode": "E8C0"
-    },
-    {
-      "name": "MailReplyAll",
-      "unicode": "E8C2"
-    },
-    {
-      "name": "Read",
-      "unicode": "E8C3"
-    },
-    {
-      "name": "Cut",
-      "unicode": "E8C6"
-    },
-    {
-      "name": "PaymentCard",
-      "unicode": "E8C7"
-    },
-    {
-      "name": "Copy",
-      "unicode": "E8C8"
-    },
-    {
-      "name": "Important",
-      "unicode": "E8C9"
-    },
-    {
-      "name": "MailReply",
-      "unicode": "E8CA"
-    },
-    {
-      "name": "GotoToday",
-      "unicode": "E8D1"
-    },
-    {
-      "name": "Font",
-      "unicode": "E8D2"
-    },
-    {
-      "name": "FontColor",
-      "unicode": "E8D3"
-    },
-    {
-      "name": "FolderFill",
-      "unicode": "E8D5"
-    },
-    {
-      "name": "Permissions",
-      "unicode": "E8D7"
-    },
-    {
-      "name": "DisableUpdates",
-      "unicode": "E8D8"
-    },
-    {
-      "name": "Unfavorite",
-      "unicode": "E8D9"
-    },
-    {
-      "name": "Italic",
-      "unicode": "E8DB"
-    },
-    {
-      "name": "Underline",
-      "unicode": "E8DC"
-    },
-    {
-      "name": "Bold",
-      "unicode": "E8DD"
-    },
-    {
-      "name": "MoveToFolder",
-      "unicode": "E8DE"
-    },
-    {
-      "name": "Dislike",
-      "unicode": "E8E0"
-    },
-    {
-      "name": "Like",
-      "unicode": "E8E1"
-    },
-    {
-      "name": "AlignCenter",
-      "unicode": "E8E3"
-    },
-    {
-      "name": "OpenFile",
-      "unicode": "E8E5"
-    },
-    {
-      "name": "FontDecrease",
-      "unicode": "E8E7"
-    },
-    {
-      "name": "FontIncrease",
-      "unicode": "E8E8"
-    },
-    {
-      "name": "FontSize",
-      "unicode": "E8E9"
-    },
-    {
-      "name": "CellPhone",
-      "unicode": "E8EA"
-    },
-    {
-      "name": "RepeatAll",
-      "unicode": "E8EE"
     }
   ]
 }

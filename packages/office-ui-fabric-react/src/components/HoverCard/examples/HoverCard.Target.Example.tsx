@@ -1,10 +1,9 @@
 import * as React from 'react';
-import { HoverCard, IExpandingCardProps } from 'office-ui-fabric-react/lib/HoverCard';
+import { HoverCard, IExpandingCardProps, DirectionalHint } from 'office-ui-fabric-react/lib/HoverCard';
 import { DetailsList, buildColumns, IColumn } from 'office-ui-fabric-react/lib/DetailsList';
-import { DirectionalHint } from 'office-ui-fabric-react/lib/common/DirectionalHint';
 import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
-import { createListItems, IExampleItem } from 'office-ui-fabric-react/lib/utilities/exampleData';
-import { KeyCodes } from '@uifabric/utilities';
+import { createListItems, IExampleItem } from '@uifabric/example-data';
+import { KeyCodes } from 'office-ui-fabric-react/lib/Utilities';
 import { mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
 
 const classNames = mergeStyleSets({
@@ -33,26 +32,32 @@ interface IHoverCardFieldProps {
 }
 
 interface IHoverCardFieldState {
-  contentRendered?: HTMLDivElement;
+  contentRendered?: boolean;
 }
 
 class HoverCardField extends React.Component<IHoverCardFieldProps, IHoverCardFieldState> {
+  private targetElementRef: React.RefObject<HTMLDivElement> = React.createRef<HTMLDivElement>();
+
   constructor(props: IHoverCardFieldProps) {
     super(props);
 
     this.state = {
-      contentRendered: undefined
+      contentRendered: false
     };
+  }
+
+  public componentDidMount() {
+    this.setState({ contentRendered: true });
   }
 
   public render() {
     return (
-      <div ref={(c: HTMLDivElement) => !this.state.contentRendered && this.setState({ contentRendered: c })} data-is-focusable={true}>
+      <div ref={this.targetElementRef} data-is-focusable={true}>
         {this.props.content}
         {this.state.contentRendered && (
           <HoverCard
             expandingCardProps={this.props.expandingCardProps}
-            target={this.state.contentRendered}
+            target={this.targetElementRef.current}
             cardDismissDelay={300}
             onCardVisible={this._log('onCardVisible')}
             onCardHide={this._log('onCardHide')}

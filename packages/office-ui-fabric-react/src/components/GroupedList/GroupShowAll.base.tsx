@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { BaseComponent, classNamesFunction } from '../../Utilities';
+import { useCallback } from 'react';
+import { classNamesFunction } from '../../Utilities';
 import { Link } from '../../Link';
 import { IGroupShowAllProps } from './GroupShowAll.types';
 import { IGroupShowAllStyleProps, IGroupShowAllStyles } from './GroupShowAll.types';
@@ -7,30 +8,28 @@ import { GroupSpacer } from './GroupSpacer';
 
 const getClassNames = classNamesFunction<IGroupShowAllStyleProps, IGroupShowAllStyles>();
 
-export class GroupShowAllBase extends BaseComponent<IGroupShowAllProps, {}> {
-  public static defaultProps: IGroupShowAllProps = {
-    showAllLinkText: 'Show All'
-  };
+export const GroupShowAllBase: React.FunctionComponent<IGroupShowAllProps> = props => {
+  const { group, groupLevel, showAllLinkText = 'Show All', styles, theme, onToggleSummarize } = props;
+  const classNames = getClassNames(styles, { theme: theme! });
 
-  public render(): JSX.Element | null {
-    const { group, groupLevel, showAllLinkText, styles, theme } = this.props;
-    const classNames = getClassNames(styles, { theme: theme! });
+  const memoizedOnClick = useCallback(
+    (ev: React.MouseEvent<HTMLElement>) => {
+      onToggleSummarize!(group!);
 
-    if (group) {
-      return (
-        <div className={classNames.root}>
-          <GroupSpacer count={groupLevel!} />
-          <Link onClick={this._onSummarizeClick}>{showAllLinkText}</Link>
-        </div>
-      );
-    }
-    return null;
+      ev.stopPropagation();
+      ev.preventDefault();
+    },
+    [onToggleSummarize, group]
+  );
+
+  if (group) {
+    return (
+      <div className={classNames.root}>
+        <GroupSpacer count={groupLevel!} />
+        <Link onClick={memoizedOnClick}>{showAllLinkText}</Link>
+      </div>
+    );
   }
 
-  private _onSummarizeClick = (ev: React.MouseEvent<HTMLElement>): void => {
-    this.props.onToggleSummarize!(this.props.group!);
-
-    ev.stopPropagation();
-    ev.preventDefault();
-  };
-}
+  return null;
+};

@@ -7,6 +7,14 @@ Get started with React and learn how to build your first projects.
   <li class="mdut--full">[Fabric React tutorial](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Getting-Started-with-UI-Fabric)</li>
 </ul>
 
+### Documentation
+
+In addition to the API documentation and control examples found in the [Controls section](#/controls/web) of this website, you can find a full collection of API references on the docs.microsoft.com portal.
+
+<ul class="md-list--flex">
+  <li class="mdut--full">[API reference on docs.microsoft.com](https://docs.microsoft.com/en-us/javascript/api/office-ui-fabric-react?branch=live&view=office-ui-fabric-react-latest)</li>
+</ul>
+
 ### Release notes and demos
 
 View Fabric React's versioned release notes and component demos.

@@ -1,12 +1,13 @@
 import * as React from 'react';
-import { Checkbox } from 'office-ui-fabric-react';
+import { Toggle, IToggleStyles } from 'office-ui-fabric-react/lib/Toggle';
 import { ControlsAreaPage, IControlsPageProps } from '../ControlsAreaPage';
 import { ButtonPageProps } from './ButtonPage.doc';
-import * as exampleStylesImport from 'office-ui-fabric-react/lib/common/_exampleStyles.scss';
 import { Platforms } from '../../../interfaces/Platforms';
 import { IPageSectionProps } from '@uifabric/example-app-base/lib/index2';
 
-const exampleStyles: any = exampleStylesImport;
+const toggleStyles: Partial<IToggleStyles> = {
+  root: { margin: '10px 0' }
+};
 const baseUrl = 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/apps/fabric-website/src/pages/Controls/ButtonPage/';
 
 export class ButtonPage extends React.Component<
@@ -28,18 +29,8 @@ export class ButtonPage extends React.Component<
     const { areButtonsDisabled, areButtonsChecked } = this.state;
     return (
       <>
-        <Checkbox
-          className={exampleStyles.exampleCheckbox}
-          label="Disable buttons"
-          checked={areButtonsDisabled}
-          onChange={this._onDisabledChanged}
-        />
-        <Checkbox
-          className={exampleStyles.exampleCheckbox}
-          label="Mark as checked"
-          checked={areButtonsChecked}
-          onChange={this._onToggledChanged}
-        />
+        <Toggle styles={toggleStyles} label="Disable buttons" inlineLabel checked={areButtonsDisabled} onChange={this._onDisabledChanged} />
+        <Toggle styles={toggleStyles} label="Mark as checked" inlineLabel checked={areButtonsChecked} onChange={this._onToggledChanged} />
       </>
     );
   }
@@ -53,7 +44,7 @@ export class ButtonPage extends React.Component<
         title="Button"
         {...buttonPageProps[this.props.platform]}
         exampleKnobs={this.renderKnobs()}
-        otherSections={this._otherSections(this.props.platform)}
+        otherSections={this._otherSections(this.props.platform) as IPageSectionProps[]}
       />
     );
   }

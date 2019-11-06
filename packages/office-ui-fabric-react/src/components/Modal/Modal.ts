@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { styled } from '../../Utilities';
 import { IModalProps, IModalStyleProps, IModalStyles } from './Modal.types';
 import { ModalBase } from './Modal.base';

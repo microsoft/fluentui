@@ -86,6 +86,9 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
   /** The items to render. */
   items: any[];
 
+  /** Set this to true to indicate that the items being displayed is placeholder data. */
+  isPlaceholderData?: boolean;
+
   /** Optional properties to pass through to the list components being rendered. */
   listProps?: IListProps;
 
@@ -186,18 +189,16 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
    */
   onRenderItemColumn?: (item?: any, index?: number, column?: IColumn) => React.ReactNode;
 
+  /**
+   * If provided, will be the "default" item column cell value return. column getValueKey can override getCellValue.
+   */
+  getCellValueKey?: (item?: any, index?: number, column?: IColumn) => string;
+
   /** Map of callback functions related to row drag and drop functionality. */
   dragDropEvents?: IDragDropEvents;
 
   /** Callback for what to render when the item is missing. */
   onRenderMissingItem?: (index?: number, rowProps?: IDetailsRowProps) => React.ReactNode;
-
-  /**
-   * If set to true and we provide an empty array, it will render 10 lines of whatever provided in onRenderMissingItem.
-   * @defaultvalue false
-   * @deprecated Use `ShimmeredDetailsList` pass-through component instead which supports this prop. Will be removed in Fabric 7.0
-   */
-  enableShimmer?: boolean;
 
   /**
    * An override to render the details header.
@@ -237,7 +238,10 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
   /** Optional callback to get the aria-describedby IDs (space separated strings) of the elements that describe the item. */
   getRowAriaDescribedBy?: (item: any) => string;
 
-  /** Optional callback to get the item key, to be used in the selection and on render. */
+  /**
+   * Optional callback to get the item key, to be used in the selection and on render.
+   * Must be provided if sorting or filtering is enabled.
+   */
   getKey?: (item: any, index?: number) => string;
 
   /** A text summary of the table set via aria-label. */
@@ -312,6 +316,18 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
    * Whether or not to disable the built-in SelectionZone, so the host component can provide its own.
    */
   disableSelectionZone?: boolean;
+
+  /**
+   * Whether to animate updates
+   */
+  enableUpdateAnimations?: boolean;
+
+  /**
+   * Whether to use fast icon and check components. The icons can't be targeted by customization
+   * but are still customizable via class names.
+   * @defaultvalue true
+   */
+  useFastIcons?: boolean;
 }
 
 /**
@@ -419,6 +435,11 @@ export interface IColumn {
    * If provided uses this method to render custom cell content, rather than the default text rendering.
    */
   onRender?: (item?: any, index?: number, column?: IColumn) => any;
+
+  /**
+   * If set, parent getCellValueKey will return this value.
+   */
+  getValueKey?: (item?: any, index?: number, column?: IColumn) => string;
 
   /**
    * If provider, can be used to render a custom column header divider

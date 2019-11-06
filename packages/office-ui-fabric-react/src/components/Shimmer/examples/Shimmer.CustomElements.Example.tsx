@@ -6,7 +6,7 @@ import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 const wrapperClass = mergeStyles({
   padding: 2,
   selectors: {
-    '& > *': {
+    '& > .ms-Shimmer-container': {
       margin: '10px 0'
     }
   }

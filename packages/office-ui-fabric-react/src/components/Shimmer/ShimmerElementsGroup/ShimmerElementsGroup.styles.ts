@@ -17,7 +17,8 @@ export function getStyles(props: IShimmerElementsGroupStyleProps): IShimmerEleme
       {
         display: 'flex',
         alignItems: 'center',
-        flexWrap: flexWrap ? 'wrap' : 'nowrap'
+        flexWrap: flexWrap ? 'wrap' : 'nowrap',
+        position: 'relative'
       }
     ]
   };

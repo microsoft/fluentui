@@ -17,11 +17,7 @@ import { Persona, PersonaSize } from 'office-ui-fabric-react/lib/Persona';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import { IBasePickerProps, BasePickerListBelow, IPickerItemProps, ISuggestionItemProps } from 'office-ui-fabric-react/lib/Pickers';
 import { IButtonProps } from 'office-ui-fabric-react/lib/Button';
-// Helper imports to generate data for this particular examples. Not exported by any package.
-import { TestImages } from '../../../common/TestImages';
-
-import * as exampleStylesImport from '../../../common/_exampleStyles.scss';
-const exampleStyles: any = exampleStylesImport;
+import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 
 export interface IPeoplePickerExampleState {
   contextualMenuVisible?: boolean;
@@ -38,6 +34,19 @@ export interface IFullDocumentCardProps {
 }
 
 export interface IDocumentPickerProps extends IBasePickerProps<IFullDocumentCardProps> {}
+
+const rootClass = mergeStyles({
+  maxWidth: 500
+});
+
+const baseProductionCdnUrl = 'https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/';
+const TestImages = {
+  documentPreview: baseProductionCdnUrl + 'document-preview.png',
+  documentPreviewTwo: baseProductionCdnUrl + 'document-preview2.png',
+  documentPreviewThree: baseProductionCdnUrl + 'document-preview3.png',
+  iconPpt: baseProductionCdnUrl + 'icon-ppt.png',
+  personaFemale: baseProductionCdnUrl + 'persona-female.png'
+};
 
 const data: IFullDocumentCardProps[] = [
   {
@@ -262,7 +271,7 @@ const data: IFullDocumentCardProps[] = [
   }
 ];
 
-export const SuggestedBigItem: (documentProps: IFullDocumentCardProps, itemProps: ISuggestionItemProps<any>) => JSX.Element = (
+const SuggestedBigItem: (documentProps: IFullDocumentCardProps, itemProps: ISuggestionItemProps<any>) => JSX.Element = (
   documentProps: IFullDocumentCardProps,
   itemProps: ISuggestionItemProps<any>
 ) => {
@@ -277,7 +286,7 @@ export const SuggestedBigItem: (documentProps: IFullDocumentCardProps, itemProps
   );
 };
 
-export const SelectedDocumentItem: (documentProps: IPickerItemProps<IFullDocumentCardProps>) => JSX.Element = (
+const SelectedDocumentItem: (documentProps: IPickerItemProps<IFullDocumentCardProps>) => JSX.Element = (
   documentProps: IPickerItemProps<IFullDocumentCardProps>
 ) => {
   const { documentActionsProps, documentPreviewProps, documentActivityProps, documentTitleProps } = documentProps.item;
@@ -306,7 +315,8 @@ export const SelectedDocumentItem: (documentProps: IPickerItemProps<IFullDocumen
   );
 };
 
-export class DocumentPicker extends BasePickerListBelow<IFullDocumentCardProps, IDocumentPickerProps> {}
+class DocumentPicker extends BasePickerListBelow<IFullDocumentCardProps, IDocumentPickerProps> {}
+
 export class PickerCustomResultExample extends React.Component<{}, IPeoplePickerExampleState> {
   constructor(props: {}) {
     super(props);
@@ -318,9 +328,9 @@ export class PickerCustomResultExample extends React.Component<{}, IPeoplePicker
 
   public render(): JSX.Element {
     return (
-      <div>
+      <div className={rootClass}>
         <Checkbox
-          className={exampleStyles.exampleCheckbox}
+          styles={{ root: { margin: '10px 0' } }}
           label="Disable Document Picker"
           checked={this.state.isPickerDisabled}
           onChange={this._onDisabledButtonClick}
@@ -332,13 +342,13 @@ export class PickerCustomResultExample extends React.Component<{}, IPeoplePicker
           getTextFromItem={this._getTextFromItem}
           pickerSuggestionsProps={{
             suggestionsHeaderText: 'Suggested Documents',
-            noResultsFoundText: 'No Documents Found',
-            suggestionsItemClassName: 'ms-DocumentPicker-bigSuggestion'
+            noResultsFoundText: 'No Documents Found'
           }}
           disabled={this.state.isPickerDisabled}
           inputProps={{
             onFocus: () => console.log('onFocus called'),
-            onBlur: () => console.log('onBlur called')
+            onBlur: () => console.log('onBlur called'),
+            'aria-label': 'Document Picker'
           }}
         />
       </div>

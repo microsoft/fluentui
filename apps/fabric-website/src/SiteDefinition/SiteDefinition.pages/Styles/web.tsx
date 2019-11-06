@@ -20,7 +20,8 @@ export const stylesPagesWeb: INavPage[] = [
         url: '#/styles/web/colors',
         isHiddenFromMainNav: true,
         component: () => <LoadingComponent title="Products" />,
-        getComponent: cb => require.ensure([], require => cb(require<any>('../../../pages/Styles/Colors/ProductsPage').ColorsProductsPage))
+        getComponent: cb =>
+          require.ensure([], require => cb(require<any>('../../../pages/Styles/ThemeSlotsPage/ThemeSlotsPage').ThemeSlotsPage))
       },
       {
         title: 'Products',
@@ -58,6 +59,13 @@ export const stylesPagesWeb: INavPage[] = [
         component: () => <LoadingComponent title="Messaging" />,
         getComponent: cb =>
           require.ensure([], require => cb(require<any>('../../../pages/Styles/Colors/MessagingPage').ColorsMessagingPage))
+      },
+      {
+        title: 'Theme Slots',
+        url: '#/styles/web/colors/theme-slots',
+        component: () => <LoadingComponent title="Theme Slots" />,
+        getComponent: cb =>
+          require.ensure([], require => cb(require<any>('../../../pages/Styles/ThemeSlotsPage/ThemeSlotsPage').ThemeSlotsPage))
       }
     ]
   },
@@ -98,6 +106,13 @@ export const stylesPagesWeb: INavPage[] = [
           require.ensure([], require =>
             cb(require<any>('../../../pages/Styles/OfficeBrandIconsPage/OfficeBrandIconsPage').OfficeBrandIconsPage)
           )
+      },
+      {
+        title: 'File Type Icons',
+        url: '#/styles/web/file-type-icons',
+        component: () => <LoadingComponent title="File Type Icons" />,
+        getComponent: cb =>
+          require.ensure([], require => cb(require<any>('../../../pages/Styles/FileTypeIconsPage/FileTypeIconsPage').FileTypeIconsPage))
       }
     ]
   },
@@ -128,11 +143,10 @@ export const stylesPagesWeb: INavPage[] = [
       require.ensure([], require => cb(require<any>('../../../pages/Styles/LocalizationPage/LocalizationPage').LocalizationPage))
   },
   {
-    title: 'Fluent Theme',
-    url: '#/styles/web/fluent-theme',
-    component: () => <LoadingComponent title="Fluent Theme" />,
-    getComponent: cb =>
-      require.ensure([], require => cb(require<any>('../../../pages/Styles/FluentThemePage/FluentThemePage').FluentThemePage))
+    title: 'Fabric 7 Updates',
+    url: '#/styles/web/fabric-7',
+    component: () => <LoadingComponent title="Fabric 7 Updates" />,
+    getComponent: cb => require.ensure([], require => cb(require<any>('../../../pages/Styles/Fabric7Page/Fabric7Page').Fabric7Page))
   },
   {
     title: 'Theme Designer',

@@ -56,7 +56,7 @@ exports[`Component Examples renders Separator.Theming.Example.tsx correctly 1`] 
           text-align: center;
         }
         &:before {
-          background-color: #f4f4f4;
+          background-color: #f3f2f1;
           bottom: 0;
           content: "";
           display: block;
@@ -73,7 +73,7 @@ exports[`Component Examples renders Separator.Theming.Example.tsx correctly 1`] 
 
           {
             background: #ffffff;
-            color: #333333;
+            color: #323130;
             display: inline-block;
             padding-bottom: 0;
             padding-left: 12px;

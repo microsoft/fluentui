@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { DatePickerBasicExample } from './examples/DatePicker.Basic.Example';
 import { DatePickerDisabledExample } from './examples/DatePicker.Disabled.Example';
-import { IDocPageProps } from '../../common/DocPage.types';
+import { IDocPageProps } from 'office-ui-fabric-react/lib/common/DocPage.types';
 import { DatePickerWeekNumbersExample } from './examples/DatePicker.WeekNumbers.Example';
 import { DatePickerRequiredExample } from './examples/DatePicker.Required.Example';
 import { DatePickerInputExample } from './examples/DatePicker.Input.Example';
@@ -10,7 +10,6 @@ import { DatePickerBoundedExample } from './examples/DatePicker.Bounded.Example'
 
 const DatePickerBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DatePicker/examples/DatePicker.Basic.Example.tsx') as string;
 const DatePickerDisabledExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DatePicker/examples/DatePicker.Disabled.Example.tsx') as string;
-const DatePickerBasicExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/DatePicker/examples/DatePicker.Basic.Example.tsx') as string;
 const DatePickerWeekNumbersExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DatePicker/examples/DatePicker.WeekNumbers.Example.tsx') as string;
 const DatePickerRequiredExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DatePicker/examples/DatePicker.Required.Example.tsx') as string;
 const DatePickerInputExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DatePicker/examples/DatePicker.Input.Example.tsx') as string;
@@ -25,8 +24,7 @@ export const DatePickerPageProps: IDocPageProps = {
     {
       title: 'Default DatePicker',
       code: DatePickerBasicExampleCode,
-      view: <DatePickerBasicExample />,
-      codepenJS: DatePickerBasicExampleCodepen
+      view: <DatePickerBasicExample />
     },
     {
       title: 'Disabled DatePicker',

@@ -1,9 +1,10 @@
 import { IPersonaStyleProps, IPersonaStyles, PersonaPresence, PersonaSize } from './Persona.types';
-import { FontSizes, FontWeights, IStyle, normalize, noWrap, getGlobalClassNames } from '../../Styling';
+import { FontWeights, IStyle, normalize, noWrap, getGlobalClassNames } from '../../Styling';
 import { personaSize, presenceBoolean, sizeBoolean } from './PersonaConsts';
 
 const GlobalClassNames = {
   root: 'ms-Persona',
+  size8: 'ms-Persona--size8',
   size10: 'ms-Persona--size10',
   size16: 'ms-Persona--size16',
   size24: 'ms-Persona--size24',
@@ -11,8 +12,10 @@ const GlobalClassNames = {
   size32: 'ms-Persona--size32',
   size40: 'ms-Persona--size40',
   size48: 'ms-Persona--size48',
+  size56: 'ms-Persona--size56',
   size72: 'ms-Persona--size72',
   size100: 'ms-Persona--size100',
+  size120: 'ms-Persona--size120',
   available: 'ms-Persona--online',
   away: 'ms-Persona--away',
   blocked: 'ms-Persona--blocked',
@@ -30,7 +33,7 @@ const GlobalClassNames = {
 export const getStyles = (props: IPersonaStyleProps): IPersonaStyles => {
   const { className, showSecondaryText, theme } = props;
 
-  const { palette } = theme;
+  const { palette, fonts } = theme;
 
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
@@ -42,7 +45,7 @@ export const getStyles = (props: IPersonaStyleProps): IPersonaStyles => {
   const sharedTextStyles: IStyle = {
     color: palette.neutralSecondary,
     fontWeight: FontWeights.regular,
-    fontSize: FontSizes.small
+    fontSize: fonts.small.fontSize
   };
 
   return {
@@ -52,8 +55,6 @@ export const getStyles = (props: IPersonaStyleProps): IPersonaStyles => {
       normalize,
       {
         color: palette.neutralPrimary,
-        fontSize: FontSizes.medium,
-        fontWeight: FontWeights.regular,
         position: 'relative',
         height: personaSize.size48,
         minWidth: personaSize.size48,
@@ -63,18 +64,19 @@ export const getStyles = (props: IPersonaStyleProps): IPersonaStyles => {
         selectors: {
           '.contextualHost': {
             display: 'none'
-          },
-
-          ':hover': {
-            selectors: {
-              $primaryText: {
-                color: palette.neutralDark
-              }
-            }
           }
         }
       },
 
+      size.isSize8 && [
+        classNames.size8,
+        {
+          height: personaSize.size8,
+          minWidth: personaSize.size8
+        }
+      ],
+
+      // TODO: Deprecated size and needs to be removed in a future major release.
       size.isSize10 && [
         classNames.size10,
         {
@@ -83,6 +85,7 @@ export const getStyles = (props: IPersonaStyleProps): IPersonaStyles => {
         }
       ],
 
+      // TODO: Deprecated size and needs to be removed in a future major release.
       size.isSize16 && [
         classNames.size16,
         {
@@ -104,6 +107,7 @@ export const getStyles = (props: IPersonaStyleProps): IPersonaStyles => {
           height: '36px'
         },
 
+      // TODO: Deprecated size and needs to be removed in a future major release.
       size.isSize28 && [
         classNames.size28,
         {
@@ -135,6 +139,14 @@ export const getStyles = (props: IPersonaStyleProps): IPersonaStyles => {
 
       size.isSize48 && classNames.size48,
 
+      size.isSize56 && [
+        classNames.size56,
+        {
+          height: personaSize.size56,
+          minWidth: personaSize.size56
+        }
+      ],
+
       size.isSize72 && [
         classNames.size72,
         {
@@ -148,6 +160,14 @@ export const getStyles = (props: IPersonaStyleProps): IPersonaStyles => {
         {
           height: personaSize.size100,
           minWidth: personaSize.size100
+        }
+      ],
+
+      size.isSize120 && [
+        classNames.size120,
+        {
+          height: personaSize.size120,
+          minWidth: personaSize.size120
         }
       ],
 
@@ -175,11 +195,15 @@ export const getStyles = (props: IPersonaStyleProps): IPersonaStyles => {
         justifyContent: 'space-around'
       },
 
-      size.isSize10 && {
-        paddingLeft: '17px'
+      (size.isSize8 || size.isSize10) && {
+        paddingLeft: 17 // increased padding because we don't render a coin at this size
       },
 
-      (size.isSize24 || size.isSize28) && {
+      (size.isSize24 || size.isSize28 || size.isSize32) && {
+        padding: '0 8px'
+      },
+
+      (size.isSize40 || size.isSize48) && {
         padding: '0 12px'
       }
     ],
@@ -190,7 +214,12 @@ export const getStyles = (props: IPersonaStyleProps): IPersonaStyles => {
       {
         color: palette.neutralPrimary,
         fontWeight: FontWeights.regular,
-        fontSize: FontSizes.large
+        fontSize: fonts.medium.fontSize,
+        selectors: {
+          ':hover': {
+            color: palette.neutralDark
+          }
+        }
       },
 
       showSecondaryText && {
@@ -199,32 +228,28 @@ export const getStyles = (props: IPersonaStyleProps): IPersonaStyles => {
         overflowX: 'hidden'
       },
 
-      size.isSize10 && {
-        fontSize: FontSizes.small,
-        lineHeight: personaSize.size10
-      },
-
-      (size.isSize16 || size.isSize24 || size.isSize28 || size.isSize32 || size.isSize40) && {
-        fontSize: FontSizes.medium
+      (size.isSize8 || size.isSize10) && {
+        fontSize: fonts.small.fontSize,
+        lineHeight: personaSize.size8
       },
 
       size.isSize16 && {
         lineHeight: personaSize.size28
       },
 
-      (size.isSize24 || size.isSize28 || size.isSize32 || size.isSize40) &&
+      (size.isSize24 || size.isSize28 || size.isSize32 || size.isSize40 || size.isSize48) &&
         showSecondaryText && {
-          height: '18px'
+          height: 18
         },
 
-      size.isSize72 && {
-        fontSize: FontSizes.xLarge
+      (size.isSize56 || size.isSize72 || size.isSize100 || size.isSize120) && {
+        fontSize: fonts.xLarge.fontSize
       },
 
-      size.isSize100 && {
-        fontSize: FontSizes.xLarge,
-        fontWeight: FontWeights.semilight
-      }
+      (size.isSize56 || size.isSize72 || size.isSize100 || size.isSize120) &&
+        showSecondaryText && {
+          height: 22
+        }
     ],
 
     secondaryText: [
@@ -232,17 +257,8 @@ export const getStyles = (props: IPersonaStyleProps): IPersonaStyles => {
       noWrap,
       sharedTextStyles,
 
-      (size.isSize10 || size.isSize16 || size.isSize24 || size.isSize28 || size.isSize32) && {
+      (size.isSize8 || size.isSize10 || size.isSize16 || size.isSize24 || size.isSize28 || size.isSize32) && {
         display: 'none'
-      },
-
-      size.isSize24 &&
-        showSecondaryText && {
-          height: '18px'
-        },
-
-      (size.isSize72 || size.isSize100) && {
-        fontSize: FontSizes.medium
       },
 
       showSecondaryText && {
@@ -250,7 +266,21 @@ export const getStyles = (props: IPersonaStyleProps): IPersonaStyles => {
         height: showSecondaryTextDefaultHeight,
         lineHeight: showSecondaryTextDefaultHeight,
         overflowX: 'hidden'
-      }
+      },
+
+      size.isSize24 &&
+        showSecondaryText && {
+          height: 18
+        },
+
+      (size.isSize56 || size.isSize72 || size.isSize100 || size.isSize120) && {
+        fontSize: fonts.medium.fontSize
+      },
+
+      (size.isSize56 || size.isSize72 || size.isSize100 || size.isSize120) &&
+        showSecondaryText && {
+          height: 18
+        }
     ],
 
     tertiaryText: [
@@ -258,10 +288,11 @@ export const getStyles = (props: IPersonaStyleProps): IPersonaStyles => {
       noWrap,
       sharedTextStyles,
       {
-        display: 'none'
+        display: 'none',
+        fontSize: fonts.medium.fontSize
       },
 
-      (size.isSize72 || size.isSize100) && {
+      (size.isSize72 || size.isSize100 || size.isSize120) && {
         display: 'block'
       }
     ],
@@ -271,10 +302,11 @@ export const getStyles = (props: IPersonaStyleProps): IPersonaStyles => {
       noWrap,
       sharedTextStyles,
       {
-        display: 'none'
+        display: 'none',
+        fontSize: fonts.medium.fontSize
       },
 
-      size.isSize100 && {
+      (size.isSize100 || size.isSize120) && {
         display: 'block'
       }
     ],

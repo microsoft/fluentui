@@ -45,6 +45,7 @@ export class DetailsListNavigatingFocusExample extends React.Component<{}, IDeta
         initialFocusedIndex={this.state.initialFocusedIndex}
         ariaLabelForSelectionColumn="Toggle selection"
         ariaLabelForSelectAllCheckbox="Toggle selection for all items"
+        checkButtonAriaLabel="Row checkbox"
       />
     );
   }

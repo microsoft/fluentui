@@ -7,7 +7,7 @@ const maskFormat: { [key: string]: RegExp } = {
 
 export const TextFieldMaskedExample: React.StatelessComponent = () => {
   return (
-    <Stack maxWidth={300}>
+    <Stack tokens={{ maxWidth: 300 }}>
       <p>The mask has been modified here to allow "_"</p>
       <MaskedTextField label="With input mask" mask="m\ask: ****" maskFormat={maskFormat} maskChar="?" />
     </Stack>

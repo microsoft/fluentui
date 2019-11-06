@@ -7,7 +7,7 @@ import { mockEvent } from '../../../common/testUtilities';
 import { MaskedTextField } from './MaskedTextField';
 
 describe('MaskedTextField', () => {
-  it('renders TextField correctly', () => {
+  it('renders correctly', () => {
     const component = renderer.create(<MaskedTextField label="With input mask" mask="m\ask: (999) 999 - 9999" />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
@@ -253,7 +253,7 @@ describe('MaskedTextField', () => {
     expect(onChangeValue).toEqual('mask: (123) 456 - 7890');
   });
 
-  it('should update the value when controlled', () => {
+  it('should update the value when props update', () => {
     const value = '';
     const component = mount(<MaskedTextField label="With input mask" mask="m\ask: (999) 999 - 9999" value={value} />);
 

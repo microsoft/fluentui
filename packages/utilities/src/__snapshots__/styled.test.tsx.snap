@@ -114,3 +114,28 @@ exports[`styled renders base styles (background red) 1`] = `
       }
 />
 `;
+
+exports[`styled respects styles arg 1`] = `
+<div>
+  <div
+    className=
+
+        {
+          background-color: red;
+        }
+  >
+    Panel1
+  </div>
+  <div
+    className=
+
+        {
+          background-color: green;
+        }
+  >
+    Panel2
+  </div>
+</div>
+`;
+
+exports[`styled respects styles type 1`] = `null`;

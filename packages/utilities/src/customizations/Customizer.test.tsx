@@ -1,5 +1,4 @@
 import * as React from 'react';
-import * as ReactDOM from 'react-dom/server';
 import { customizable } from './customizable';
 import { Customizer } from './Customizer';
 import { Customizations } from './Customizations';
@@ -202,6 +201,44 @@ describe('Customizer', () => {
       </Customizer>,
       wrapper => {
         expect(wrapper.html()).toEqual('<div>field1field2</div>');
+      }
+    );
+  });
+
+  it('can suppress updates', () => {
+    Customizations.applySettings({ field: 'globalName' });
+
+    safeMount(
+      <Customizer settings={{ nonMatch: 'customName' }}>
+        <Bar />
+      </Customizer>,
+      wrapper => {
+        // verify base state
+        expect(wrapper.html()).toEqual('<div>globalName</div>');
+
+        // verify it doesn't update during suppressUpdates(), and it works through errors, and it updates after
+        Customizations.applyBatchedUpdates(() => {
+          Customizations.applySettings({ field: 'notGlobalName' });
+          // it should not update inside
+          expect(wrapper.html()).toEqual('<div>globalName</div>');
+          throw new Error();
+        });
+        // afterwards it should have updated
+        expect(wrapper.html()).toEqual('<div>notGlobalName</div>');
+
+        // verify it doesn't update during suppressUpdates(), and it works through errors, and it can suppress final update
+        Customizations.applyBatchedUpdates(() => {
+          Customizations.applySettings({ field: 'notUpdated' });
+          // it should not update inside
+          expect(wrapper.html()).toEqual('<div>notGlobalName</div>');
+          throw new Error();
+        }, true);
+        // afterwards, it should still be on the old value
+        expect(wrapper.html()).toEqual('<div>notGlobalName</div>');
+
+        // verify it updates after suppressUpdates()
+        Customizations.applySettings({ field2: 'lastGlobalName' });
+        expect(wrapper.html()).toEqual('<div>notUpdatedlastGlobalName</div>');
       }
     );
   });

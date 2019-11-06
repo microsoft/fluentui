@@ -1,0 +1,1037 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Card Section renders correctly 1`] = `
+<div
+  className=
+      ms-Stack
+      ms-Card
+      {
+        align-items: stretch;
+        border-radius: 2px;
+        box-shadow: 0 1.6px 3.6px 0 rgba(0, 0, 0, 0.132), 0 0.3px 0.9px 0 rgba(0, 0, 0, 0.108);
+        box-sizing: border-box;
+        cursor: default;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        height: inherit;
+        justify-content: flex-start;
+        max-width: 286px;
+        min-width: 212px;
+        transition: box-shadow 0.5s ease;
+        width: auto;
+      }
+      & > * {
+        text-overflow: ellipsis;
+      }
+      & > *:not(:first-child) {
+        margin-top: 12px;
+      }
+      & > *:not(.ms-StackItem) {
+        flex-shrink: 1;
+      }
+      @media screen and (-ms-high-contrast: active){& {
+        box-shadow: 0 1.6px 3.6px 0 Highlight, 0 0.3px 0.9px 0 Highlight;
+      }
+>
+  <div
+    className=
+        ms-Stack
+        ms-CardSection
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          box-sizing: border-box;
+          display: flex;
+          flex-direction: column;
+          flex-wrap: nowrap;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 18px;
+          font-weight: 400;
+          height: auto;
+          margin-bottom: 0px;
+          margin-left: 0px;
+          margin-right: 0px;
+          margin-top: 0px;
+          padding-bottom: 0px;
+          padding-left: 0px;
+          padding-right: 0px;
+          padding-top: 0px;
+          width: auto;
+        }
+        & > * {
+          text-overflow: ellipsis;
+        }
+        & > *:not(:first-child) {
+          margin-top: 12px;
+        }
+        & > *:not(.ms-StackItem) {
+          flex-shrink: 1;
+        }
+  >
+    <div />
+  </div>
+</div>
+`;
+
+exports[`Card Section renders correctly when filling up the margins while being the first section in a Horizontal Card 1`] = `
+<div
+  className=
+      ms-Stack
+      ms-Card
+      {
+        align-items: flex-start;
+        border-radius: 2px;
+        box-shadow: 0 1.6px 3.6px 0 rgba(0, 0, 0, 0.132), 0 0.3px 0.9px 0 rgba(0, 0, 0, 0.108);
+        box-sizing: border-box;
+        cursor: default;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        height: auto;
+        justify-content: flex-start;
+        max-width: 500px;
+        min-width: 300px;
+        transition: box-shadow 0.5s ease;
+        width: auto;
+      }
+      & > * {
+        text-overflow: ellipsis;
+      }
+      & > *:not(:first-child) {
+        margin-left: 12px;
+      }
+      & > *:not(.ms-StackItem) {
+        flex-shrink: 1;
+      }
+      @media screen and (-ms-high-contrast: active){& {
+        box-shadow: 0 1.6px 3.6px 0 Highlight, 0 0.3px 0.9px 0 Highlight;
+      }
+>
+  <div
+    className=
+        ms-Stack
+        ms-CardSection
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          box-sizing: border-box;
+          display: flex;
+          flex-direction: column;
+          flex-wrap: nowrap;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 18px;
+          font-weight: 400;
+          height: auto;
+          margin-bottom: 0px;
+          margin-left: 0px;
+          margin-right: 0px;
+          margin-top: 0px;
+          padding-bottom: 0px;
+          padding-left: 0px;
+          padding-right: 0px;
+          padding-top: 0px;
+          width: auto;
+        }
+        & > * {
+          text-overflow: ellipsis;
+        }
+        & > *:not(:first-child) {
+          margin-top: 12px;
+        }
+        & > *:not(.ms-StackItem) {
+          flex-shrink: 1;
+        }
+  >
+    <div />
+  </div>
+  <div
+    className=
+        ms-Stack
+        ms-CardSection
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          box-sizing: border-box;
+          display: flex;
+          flex-direction: column;
+          flex-wrap: nowrap;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 18px;
+          font-weight: 400;
+          height: auto;
+          margin-bottom: 12px;
+          margin-left: 0px;
+          margin-right: 12px;
+          margin-top: 12px;
+          padding-bottom: 0px;
+          padding-left: 0px;
+          padding-right: 0px;
+          padding-top: 0px;
+          width: auto;
+        }
+        & > * {
+          text-overflow: ellipsis;
+        }
+        & > *:not(:first-child) {
+          margin-top: 12px;
+        }
+        & > *:not(.ms-StackItem) {
+          flex-shrink: 1;
+        }
+  >
+    <div />
+  </div>
+</div>
+`;
+
+exports[`Card Section renders correctly when filling up the margins while being the first section in a Vertical Card 1`] = `
+<div
+  className=
+      ms-Stack
+      ms-Card
+      {
+        align-items: stretch;
+        border-radius: 2px;
+        box-shadow: 0 1.6px 3.6px 0 rgba(0, 0, 0, 0.132), 0 0.3px 0.9px 0 rgba(0, 0, 0, 0.108);
+        box-sizing: border-box;
+        cursor: default;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        height: inherit;
+        justify-content: flex-start;
+        max-width: 286px;
+        min-width: 212px;
+        transition: box-shadow 0.5s ease;
+        width: auto;
+      }
+      & > * {
+        text-overflow: ellipsis;
+      }
+      & > *:not(:first-child) {
+        margin-top: 12px;
+      }
+      & > *:not(.ms-StackItem) {
+        flex-shrink: 1;
+      }
+      @media screen and (-ms-high-contrast: active){& {
+        box-shadow: 0 1.6px 3.6px 0 Highlight, 0 0.3px 0.9px 0 Highlight;
+      }
+>
+  <div
+    className=
+        ms-Stack
+        ms-CardSection
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          box-sizing: border-box;
+          display: flex;
+          flex-direction: column;
+          flex-wrap: nowrap;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 18px;
+          font-weight: 400;
+          height: auto;
+          margin-bottom: 0px;
+          margin-left: 0px;
+          margin-right: 0px;
+          margin-top: 0px;
+          padding-bottom: 0px;
+          padding-left: 0px;
+          padding-right: 0px;
+          padding-top: 0px;
+          width: auto;
+        }
+        & > * {
+          text-overflow: ellipsis;
+        }
+        & > *:not(:first-child) {
+          margin-top: 12px;
+        }
+        & > *:not(.ms-StackItem) {
+          flex-shrink: 1;
+        }
+  >
+    <div />
+  </div>
+  <div
+    className=
+        ms-Stack
+        ms-CardSection
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          box-sizing: border-box;
+          display: flex;
+          flex-direction: column;
+          flex-wrap: nowrap;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 18px;
+          font-weight: 400;
+          height: auto;
+          margin-bottom: 12px;
+          margin-left: 12px;
+          margin-right: 12px;
+          margin-top: 0px;
+          padding-bottom: 0px;
+          padding-left: 0px;
+          padding-right: 0px;
+          padding-top: 0px;
+          width: auto;
+        }
+        & > * {
+          text-overflow: ellipsis;
+        }
+        & > *:not(:first-child) {
+          margin-top: 12px;
+        }
+        & > *:not(.ms-StackItem) {
+          flex-shrink: 1;
+        }
+  >
+    <div />
+  </div>
+</div>
+`;
+
+exports[`Card Section renders correctly when filling up the margins while being the last section in a Horizontal Card 1`] = `
+<div
+  className=
+      ms-Stack
+      ms-Card
+      {
+        align-items: flex-start;
+        border-radius: 2px;
+        box-shadow: 0 1.6px 3.6px 0 rgba(0, 0, 0, 0.132), 0 0.3px 0.9px 0 rgba(0, 0, 0, 0.108);
+        box-sizing: border-box;
+        cursor: default;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        height: auto;
+        justify-content: flex-start;
+        max-width: 500px;
+        min-width: 300px;
+        transition: box-shadow 0.5s ease;
+        width: auto;
+      }
+      & > * {
+        text-overflow: ellipsis;
+      }
+      & > *:not(:first-child) {
+        margin-left: 12px;
+      }
+      & > *:not(.ms-StackItem) {
+        flex-shrink: 1;
+      }
+      @media screen and (-ms-high-contrast: active){& {
+        box-shadow: 0 1.6px 3.6px 0 Highlight, 0 0.3px 0.9px 0 Highlight;
+      }
+>
+  <div
+    className=
+        ms-Stack
+        ms-CardSection
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          box-sizing: border-box;
+          display: flex;
+          flex-direction: column;
+          flex-wrap: nowrap;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 18px;
+          font-weight: 400;
+          height: auto;
+          margin-bottom: 12px;
+          margin-left: 12px;
+          margin-right: 0px;
+          margin-top: 12px;
+          padding-bottom: 0px;
+          padding-left: 0px;
+          padding-right: 0px;
+          padding-top: 0px;
+          width: auto;
+        }
+        & > * {
+          text-overflow: ellipsis;
+        }
+        & > *:not(:first-child) {
+          margin-top: 12px;
+        }
+        & > *:not(.ms-StackItem) {
+          flex-shrink: 1;
+        }
+  >
+    <div />
+  </div>
+  <div
+    className=
+        ms-Stack
+        ms-CardSection
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          box-sizing: border-box;
+          display: flex;
+          flex-direction: column;
+          flex-wrap: nowrap;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 18px;
+          font-weight: 400;
+          height: auto;
+          margin-bottom: 0px;
+          margin-left: 0px;
+          margin-right: 0px;
+          margin-top: 0px;
+          padding-bottom: 0px;
+          padding-left: 0px;
+          padding-right: 0px;
+          padding-top: 0px;
+          width: auto;
+        }
+        & > * {
+          text-overflow: ellipsis;
+        }
+        & > *:not(:first-child) {
+          margin-top: 12px;
+        }
+        & > *:not(.ms-StackItem) {
+          flex-shrink: 1;
+        }
+  >
+    <div />
+  </div>
+</div>
+`;
+
+exports[`Card Section renders correctly when filling up the margins while being the last section in a Vertical Card 1`] = `
+<div
+  className=
+      ms-Stack
+      ms-Card
+      {
+        align-items: stretch;
+        border-radius: 2px;
+        box-shadow: 0 1.6px 3.6px 0 rgba(0, 0, 0, 0.132), 0 0.3px 0.9px 0 rgba(0, 0, 0, 0.108);
+        box-sizing: border-box;
+        cursor: default;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        height: inherit;
+        justify-content: flex-start;
+        max-width: 286px;
+        min-width: 212px;
+        transition: box-shadow 0.5s ease;
+        width: auto;
+      }
+      & > * {
+        text-overflow: ellipsis;
+      }
+      & > *:not(:first-child) {
+        margin-top: 12px;
+      }
+      & > *:not(.ms-StackItem) {
+        flex-shrink: 1;
+      }
+      @media screen and (-ms-high-contrast: active){& {
+        box-shadow: 0 1.6px 3.6px 0 Highlight, 0 0.3px 0.9px 0 Highlight;
+      }
+>
+  <div
+    className=
+        ms-Stack
+        ms-CardSection
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          box-sizing: border-box;
+          display: flex;
+          flex-direction: column;
+          flex-wrap: nowrap;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 18px;
+          font-weight: 400;
+          height: auto;
+          margin-bottom: 0px;
+          margin-left: 12px;
+          margin-right: 12px;
+          margin-top: 12px;
+          padding-bottom: 0px;
+          padding-left: 0px;
+          padding-right: 0px;
+          padding-top: 0px;
+          width: auto;
+        }
+        & > * {
+          text-overflow: ellipsis;
+        }
+        & > *:not(:first-child) {
+          margin-top: 12px;
+        }
+        & > *:not(.ms-StackItem) {
+          flex-shrink: 1;
+        }
+  >
+    <div />
+  </div>
+  <div
+    className=
+        ms-Stack
+        ms-CardSection
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          box-sizing: border-box;
+          display: flex;
+          flex-direction: column;
+          flex-wrap: nowrap;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 18px;
+          font-weight: 400;
+          height: auto;
+          margin-bottom: 0px;
+          margin-left: 0px;
+          margin-right: 0px;
+          margin-top: 0px;
+          padding-bottom: 0px;
+          padding-left: 0px;
+          padding-right: 0px;
+          padding-top: 0px;
+          width: auto;
+        }
+        & > * {
+          text-overflow: ellipsis;
+        }
+        & > *:not(:first-child) {
+          margin-top: 12px;
+        }
+        & > *:not(.ms-StackItem) {
+          flex-shrink: 1;
+        }
+  >
+    <div />
+  </div>
+</div>
+`;
+
+exports[`Card Section renders correctly when filling up the margins while being the middle section in a Horizontal Card 1`] = `
+<div
+  className=
+      ms-Stack
+      ms-Card
+      {
+        align-items: flex-start;
+        border-radius: 2px;
+        box-shadow: 0 1.6px 3.6px 0 rgba(0, 0, 0, 0.132), 0 0.3px 0.9px 0 rgba(0, 0, 0, 0.108);
+        box-sizing: border-box;
+        cursor: default;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        height: auto;
+        justify-content: flex-start;
+        max-width: 500px;
+        min-width: 300px;
+        transition: box-shadow 0.5s ease;
+        width: auto;
+      }
+      & > * {
+        text-overflow: ellipsis;
+      }
+      & > *:not(:first-child) {
+        margin-left: 12px;
+      }
+      & > *:not(.ms-StackItem) {
+        flex-shrink: 1;
+      }
+      @media screen and (-ms-high-contrast: active){& {
+        box-shadow: 0 1.6px 3.6px 0 Highlight, 0 0.3px 0.9px 0 Highlight;
+      }
+>
+  <div
+    className=
+        ms-Stack
+        ms-CardSection
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          box-sizing: border-box;
+          display: flex;
+          flex-direction: column;
+          flex-wrap: nowrap;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 18px;
+          font-weight: 400;
+          height: auto;
+          margin-bottom: 12px;
+          margin-left: 12px;
+          margin-right: 0px;
+          margin-top: 12px;
+          padding-bottom: 0px;
+          padding-left: 0px;
+          padding-right: 0px;
+          padding-top: 0px;
+          width: auto;
+        }
+        & > * {
+          text-overflow: ellipsis;
+        }
+        & > *:not(:first-child) {
+          margin-top: 12px;
+        }
+        & > *:not(.ms-StackItem) {
+          flex-shrink: 1;
+        }
+  >
+    <div />
+  </div>
+  <div
+    className=
+        ms-Stack
+        ms-CardSection
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          box-sizing: border-box;
+          display: flex;
+          flex-direction: column;
+          flex-wrap: nowrap;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 18px;
+          font-weight: 400;
+          height: auto;
+          margin-bottom: 0px;
+          margin-left: 0px;
+          margin-right: 0px;
+          margin-top: 0px;
+          padding-bottom: 0px;
+          padding-left: 0px;
+          padding-right: 0px;
+          padding-top: 0px;
+          width: auto;
+        }
+        & > * {
+          text-overflow: ellipsis;
+        }
+        & > *:not(:first-child) {
+          margin-top: 12px;
+        }
+        & > *:not(.ms-StackItem) {
+          flex-shrink: 1;
+        }
+  >
+    <div />
+  </div>
+  <div
+    className=
+        ms-Stack
+        ms-CardSection
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          box-sizing: border-box;
+          display: flex;
+          flex-direction: column;
+          flex-wrap: nowrap;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 18px;
+          font-weight: 400;
+          height: auto;
+          margin-bottom: 12px;
+          margin-left: 0px;
+          margin-right: 12px;
+          margin-top: 12px;
+          padding-bottom: 0px;
+          padding-left: 0px;
+          padding-right: 0px;
+          padding-top: 0px;
+          width: auto;
+        }
+        & > * {
+          text-overflow: ellipsis;
+        }
+        & > *:not(:first-child) {
+          margin-top: 12px;
+        }
+        & > *:not(.ms-StackItem) {
+          flex-shrink: 1;
+        }
+  >
+    <div />
+  </div>
+</div>
+`;
+
+exports[`Card Section renders correctly when filling up the margins while being the middle section in a Vertical Card 1`] = `
+<div
+  className=
+      ms-Stack
+      ms-Card
+      {
+        align-items: stretch;
+        border-radius: 2px;
+        box-shadow: 0 1.6px 3.6px 0 rgba(0, 0, 0, 0.132), 0 0.3px 0.9px 0 rgba(0, 0, 0, 0.108);
+        box-sizing: border-box;
+        cursor: default;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        height: inherit;
+        justify-content: flex-start;
+        max-width: 286px;
+        min-width: 212px;
+        transition: box-shadow 0.5s ease;
+        width: auto;
+      }
+      & > * {
+        text-overflow: ellipsis;
+      }
+      & > *:not(:first-child) {
+        margin-top: 12px;
+      }
+      & > *:not(.ms-StackItem) {
+        flex-shrink: 1;
+      }
+      @media screen and (-ms-high-contrast: active){& {
+        box-shadow: 0 1.6px 3.6px 0 Highlight, 0 0.3px 0.9px 0 Highlight;
+      }
+>
+  <div
+    className=
+        ms-Stack
+        ms-CardSection
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          box-sizing: border-box;
+          display: flex;
+          flex-direction: column;
+          flex-wrap: nowrap;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 18px;
+          font-weight: 400;
+          height: auto;
+          margin-bottom: 0px;
+          margin-left: 12px;
+          margin-right: 12px;
+          margin-top: 12px;
+          padding-bottom: 0px;
+          padding-left: 0px;
+          padding-right: 0px;
+          padding-top: 0px;
+          width: auto;
+        }
+        & > * {
+          text-overflow: ellipsis;
+        }
+        & > *:not(:first-child) {
+          margin-top: 12px;
+        }
+        & > *:not(.ms-StackItem) {
+          flex-shrink: 1;
+        }
+  >
+    <div />
+  </div>
+  <div
+    className=
+        ms-Stack
+        ms-CardSection
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          box-sizing: border-box;
+          display: flex;
+          flex-direction: column;
+          flex-wrap: nowrap;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 18px;
+          font-weight: 400;
+          height: auto;
+          margin-bottom: 0px;
+          margin-left: 0px;
+          margin-right: 0px;
+          margin-top: 0px;
+          padding-bottom: 0px;
+          padding-left: 0px;
+          padding-right: 0px;
+          padding-top: 0px;
+          width: auto;
+        }
+        & > * {
+          text-overflow: ellipsis;
+        }
+        & > *:not(:first-child) {
+          margin-top: 12px;
+        }
+        & > *:not(.ms-StackItem) {
+          flex-shrink: 1;
+        }
+  >
+    <div />
+  </div>
+  <div
+    className=
+        ms-Stack
+        ms-CardSection
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          box-sizing: border-box;
+          display: flex;
+          flex-direction: column;
+          flex-wrap: nowrap;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 18px;
+          font-weight: 400;
+          height: auto;
+          margin-bottom: 12px;
+          margin-left: 12px;
+          margin-right: 12px;
+          margin-top: 0px;
+          padding-bottom: 0px;
+          padding-left: 0px;
+          padding-right: 0px;
+          padding-top: 0px;
+          width: auto;
+        }
+        & > * {
+          text-overflow: ellipsis;
+        }
+        & > *:not(:first-child) {
+          margin-top: 12px;
+        }
+        & > *:not(.ms-StackItem) {
+          flex-shrink: 1;
+        }
+  >
+    <div />
+  </div>
+</div>
+`;
+
+exports[`Card Section renders correctly when filling up the margins while being the only section in a Horizontal Card 1`] = `
+<div
+  className=
+      ms-Stack
+      ms-Card
+      {
+        align-items: flex-start;
+        border-radius: 2px;
+        box-shadow: 0 1.6px 3.6px 0 rgba(0, 0, 0, 0.132), 0 0.3px 0.9px 0 rgba(0, 0, 0, 0.108);
+        box-sizing: border-box;
+        cursor: default;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        height: auto;
+        justify-content: flex-start;
+        max-width: 500px;
+        min-width: 300px;
+        transition: box-shadow 0.5s ease;
+        width: auto;
+      }
+      & > * {
+        text-overflow: ellipsis;
+      }
+      & > *:not(:first-child) {
+        margin-left: 12px;
+      }
+      & > *:not(.ms-StackItem) {
+        flex-shrink: 1;
+      }
+      @media screen and (-ms-high-contrast: active){& {
+        box-shadow: 0 1.6px 3.6px 0 Highlight, 0 0.3px 0.9px 0 Highlight;
+      }
+>
+  <div
+    className=
+        ms-Stack
+        ms-CardSection
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          box-sizing: border-box;
+          display: flex;
+          flex-direction: column;
+          flex-wrap: nowrap;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 18px;
+          font-weight: 400;
+          height: auto;
+          margin-bottom: 0px;
+          margin-left: 0px;
+          margin-right: 0px;
+          margin-top: 0px;
+          padding-bottom: 0px;
+          padding-left: 0px;
+          padding-right: 0px;
+          padding-top: 0px;
+          width: auto;
+        }
+        & > * {
+          text-overflow: ellipsis;
+        }
+        & > *:not(:first-child) {
+          margin-top: 12px;
+        }
+        & > *:not(.ms-StackItem) {
+          flex-shrink: 1;
+        }
+  >
+    <div />
+  </div>
+</div>
+`;
+
+exports[`Card Section renders correctly when filling up the margins while being the only section in a Vertical Card 1`] = `
+<div
+  className=
+      ms-Stack
+      ms-Card
+      {
+        align-items: stretch;
+        border-radius: 2px;
+        box-shadow: 0 1.6px 3.6px 0 rgba(0, 0, 0, 0.132), 0 0.3px 0.9px 0 rgba(0, 0, 0, 0.108);
+        box-sizing: border-box;
+        cursor: default;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        height: inherit;
+        justify-content: flex-start;
+        max-width: 286px;
+        min-width: 212px;
+        transition: box-shadow 0.5s ease;
+        width: auto;
+      }
+      & > * {
+        text-overflow: ellipsis;
+      }
+      & > *:not(:first-child) {
+        margin-top: 12px;
+      }
+      & > *:not(.ms-StackItem) {
+        flex-shrink: 1;
+      }
+      @media screen and (-ms-high-contrast: active){& {
+        box-shadow: 0 1.6px 3.6px 0 Highlight, 0 0.3px 0.9px 0 Highlight;
+      }
+>
+  <div
+    className=
+        ms-Stack
+        ms-CardSection
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          box-sizing: border-box;
+          display: flex;
+          flex-direction: column;
+          flex-wrap: nowrap;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 18px;
+          font-weight: 400;
+          height: auto;
+          margin-bottom: 0px;
+          margin-left: 0px;
+          margin-right: 0px;
+          margin-top: 0px;
+          padding-bottom: 0px;
+          padding-left: 0px;
+          padding-right: 0px;
+          padding-top: 0px;
+          width: auto;
+        }
+        & > * {
+          text-overflow: ellipsis;
+        }
+        & > *:not(:first-child) {
+          margin-top: 12px;
+        }
+        & > *:not(.ms-StackItem) {
+          flex-shrink: 1;
+        }
+  >
+    <div />
+  </div>
+</div>
+`;
+
+exports[`Card Section renders correctly when having tokens passed to it 1`] = `
+<div
+  className=
+      ms-Stack
+      ms-Card
+      {
+        align-items: stretch;
+        border-radius: 2px;
+        box-shadow: 0 1.6px 3.6px 0 rgba(0, 0, 0, 0.132), 0 0.3px 0.9px 0 rgba(0, 0, 0, 0.108);
+        box-sizing: border-box;
+        cursor: default;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        height: inherit;
+        justify-content: flex-start;
+        max-width: 286px;
+        min-width: 212px;
+        transition: box-shadow 0.5s ease;
+        width: auto;
+      }
+      & > * {
+        text-overflow: ellipsis;
+      }
+      & > *:not(:first-child) {
+        margin-top: 12px;
+      }
+      & > *:not(.ms-StackItem) {
+        flex-shrink: 1;
+      }
+      @media screen and (-ms-high-contrast: active){& {
+        box-shadow: 0 1.6px 3.6px 0 Highlight, 0 0.3px 0.9px 0 Highlight;
+      }
+>
+  <div
+    className=
+        ms-Stack
+        ms-CardSection
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          box-sizing: border-box;
+          display: flex;
+          flex-direction: column;
+          flex-wrap: nowrap;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 18px;
+          font-weight: 400;
+          height: auto;
+          margin-bottom: 12px;
+          margin-left: 8px;
+          margin-right: 8px;
+          margin-top: 12px;
+          padding-bottom: 0px;
+          padding-left: 0px;
+          padding-right: 0px;
+          padding-top: 0px;
+          width: auto;
+        }
+        & > * {
+          text-overflow: ellipsis;
+        }
+        & > *:not(:first-child) {
+          margin-top: 12px;
+        }
+        & > *:not(.ms-StackItem) {
+          flex-shrink: 1;
+        }
+  >
+    <div />
+  </div>
+</div>
+`;

@@ -10,7 +10,7 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
           -webkit-font-smoothing: antialiased;
           align-items: flex-start;
           box-sizing: border-box;
-          color: #666666;
+          color: #605e5c;
           display: flex;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 12px;
@@ -53,7 +53,6 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
                 font-size: 14px;
                 font-weight: 400;
               }
-          size={11}
         >
           <div
             className=
@@ -170,7 +169,7 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
                 user-select: text;
               }
               .ms-Fabric--isFocusVisible &:focus {
-                box-shadow: 0 0 0 1px #666666 inset;
+                box-shadow: 0 0 0 1px #605e5c inset;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
                 outline: 1px solid WindowText;
@@ -184,10 +183,16 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
               @media screen and (-ms-high-contrast: black-on-white){& {
                 color: #00009F;
               }
-              &:active, &:hover, &:active:hover {
+              &:active {
                 color: #004578;
+                text-decoration: underline;
               }
-              @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
+              &:hover {
+                color: #004578;
+                text-decoration: underline;
+              }
+              &:active:hover {
+                color: #004578;
                 text-decoration: underline;
               }
               &:focus {
@@ -215,7 +220,7 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
         className=
             ms-ActivityItem-commentText
             {
-              color: #333333;
+              color: #323130;
             }
       >
         Hello, this is the text of my basic comment!
@@ -226,7 +231,7 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
-              color: #666666;
+              color: #605e5c;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
               font-weight: 400;
@@ -244,7 +249,7 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
           -webkit-font-smoothing: antialiased;
           align-items: flex-start;
           box-sizing: border-box;
-          color: #666666;
+          color: #605e5c;
           display: flex;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 12px;
@@ -290,7 +295,6 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
               &:first-child {
                 align-self: flex-end;
               }
-          size={8}
         >
           <div
             className=
@@ -308,11 +312,11 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
               className=
                   ms-Persona-initials
                   {
-                    background-color: #B91D47;
+                    background-color: #E3008C;
                     border-radius: 50%;
                     color: #ffffff;
-                    font-size: 11px;
-                    font-weight: 400;
+                    font-size: 10px;
+                    font-weight: 600;
                     height: 16px;
                     line-height: 16px;
                   }
@@ -322,6 +326,9 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
                     border: 1px solid WindowText;
                     box-sizing: border-box;
                     color: WindowText;
+                  }
+                  & i {
+                    font-weight: 600;
                   }
             >
               <span>
@@ -346,7 +353,6 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
               &:first-child {
                 align-self: flex-end;
               }
-          size={8}
         >
           <div
             className=
@@ -463,7 +469,7 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
                 user-select: text;
               }
               .ms-Fabric--isFocusVisible &:focus {
-                box-shadow: 0 0 0 1px #666666 inset;
+                box-shadow: 0 0 0 1px #605e5c inset;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
                 outline: 1px solid WindowText;
@@ -477,10 +483,16 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
               @media screen and (-ms-high-contrast: black-on-white){& {
                 color: #00009F;
               }
-              &:active, &:hover, &:active:hover {
+              &:active {
                 color: #004578;
+                text-decoration: underline;
               }
-              @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
+              &:hover {
+                color: #004578;
+                text-decoration: underline;
+              }
+              &:active:hover {
+                color: #004578;
                 text-decoration: underline;
               }
               &:focus {
@@ -525,7 +537,7 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
                 user-select: text;
               }
               .ms-Fabric--isFocusVisible &:focus {
-                box-shadow: 0 0 0 1px #666666 inset;
+                box-shadow: 0 0 0 1px #605e5c inset;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
                 outline: 1px solid WindowText;
@@ -539,10 +551,16 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
               @media screen and (-ms-high-contrast: black-on-white){& {
                 color: #00009F;
               }
-              &:active, &:hover, &:active:hover {
+              &:active {
                 color: #004578;
+                text-decoration: underline;
               }
-              @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
+              &:hover {
+                color: #004578;
+                text-decoration: underline;
+              }
+              &:active:hover {
+                color: #004578;
                 text-decoration: underline;
               }
               &:focus {
@@ -587,7 +605,7 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
                 user-select: text;
               }
               .ms-Fabric--isFocusVisible &:focus {
-                box-shadow: 0 0 0 1px #666666 inset;
+                box-shadow: 0 0 0 1px #605e5c inset;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
                 outline: 1px solid WindowText;
@@ -601,10 +619,16 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
               @media screen and (-ms-high-contrast: black-on-white){& {
                 color: #00009F;
               }
-              &:active, &:hover, &:active:hover {
+              &:active {
                 color: #004578;
+                text-decoration: underline;
               }
-              @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
+              &:hover {
+                color: #004578;
+                text-decoration: underline;
+              }
+              &:active:hover {
+                color: #004578;
                 text-decoration: underline;
               }
               &:focus {
@@ -622,7 +646,7 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
-              color: #666666;
+              color: #605e5c;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
               font-weight: 400;
@@ -640,7 +664,7 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
           -webkit-font-smoothing: antialiased;
           align-items: flex-start;
           box-sizing: border-box;
-          color: #666666;
+          color: #605e5c;
           display: flex;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 12px;
@@ -683,7 +707,6 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
                 font-size: 14px;
                 font-weight: 400;
               }
-          size={8}
         >
           <div
             className=
@@ -701,11 +724,11 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
               className=
                   ms-Persona-initials
                   {
-                    background-color: #00A300;
+                    background-color: #5C2E91;
                     border-radius: 50%;
                     color: #ffffff;
-                    font-size: 11px;
-                    font-weight: 400;
+                    font-size: 10px;
+                    font-weight: 600;
                     height: 16px;
                     line-height: 16px;
                   }
@@ -715,6 +738,9 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
                     border: 1px solid WindowText;
                     box-sizing: border-box;
                     color: WindowText;
+                  }
+                  & i {
+                    font-weight: 600;
                   }
             >
               <span>
@@ -736,7 +762,6 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
                 font-size: 14px;
                 font-weight: 400;
               }
-          size={8}
         >
           <div
             className=
@@ -816,7 +841,6 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
                 font-size: 14px;
                 font-weight: 400;
               }
-          size={8}
         >
           <div
             className=
@@ -933,7 +957,7 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
                 user-select: text;
               }
               .ms-Fabric--isFocusVisible &:focus {
-                box-shadow: 0 0 0 1px #666666 inset;
+                box-shadow: 0 0 0 1px #605e5c inset;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
                 outline: 1px solid WindowText;
@@ -947,10 +971,16 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
               @media screen and (-ms-high-contrast: black-on-white){& {
                 color: #00009F;
               }
-              &:active, &:hover, &:active:hover {
+              &:active {
                 color: #004578;
+                text-decoration: underline;
               }
-              @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
+              &:hover {
+                color: #004578;
+                text-decoration: underline;
+              }
+              &:active:hover {
+                color: #004578;
                 text-decoration: underline;
               }
               &:focus {
@@ -995,7 +1025,7 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
                 user-select: text;
               }
               .ms-Fabric--isFocusVisible &:focus {
-                box-shadow: 0 0 0 1px #666666 inset;
+                box-shadow: 0 0 0 1px #605e5c inset;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
                 outline: 1px solid WindowText;
@@ -1009,10 +1039,16 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
               @media screen and (-ms-high-contrast: black-on-white){& {
                 color: #00009F;
               }
-              &:active, &:hover, &:active:hover {
+              &:active {
                 color: #004578;
+                text-decoration: underline;
               }
-              @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
+              &:hover {
+                color: #004578;
+                text-decoration: underline;
+              }
+              &:active:hover {
+                color: #004578;
                 text-decoration: underline;
               }
               &:focus {
@@ -1033,7 +1069,7 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
-              color: #666666;
+              color: #605e5c;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
               font-weight: 400;
@@ -1051,7 +1087,7 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
           -webkit-font-smoothing: antialiased;
           align-items: flex-start;
           box-sizing: border-box;
-          color: #666666;
+          color: #605e5c;
           display: flex;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 12px;
@@ -1094,7 +1130,6 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
                 font-size: 14px;
                 font-weight: 400;
               }
-          size={8}
         >
           <div
             className=
@@ -1112,11 +1147,11 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
               className=
                   ms-Persona-initials
                   {
-                    background-color: #1E7145;
+                    background-color: #4F6BED;
                     border-radius: 50%;
                     color: #ffffff;
-                    font-size: 11px;
-                    font-weight: 400;
+                    font-size: 10px;
+                    font-weight: 600;
                     height: 16px;
                     line-height: 16px;
                   }
@@ -1126,6 +1161,9 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
                     border: 1px solid WindowText;
                     box-sizing: border-box;
                     color: WindowText;
+                  }
+                  & i {
+                    font-weight: 600;
                   }
             >
               <span>
@@ -1147,7 +1185,6 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
                 font-size: 14px;
                 font-weight: 400;
               }
-          size={8}
         >
           <div
             className=
@@ -1227,7 +1264,6 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
                 font-size: 14px;
                 font-weight: 400;
               }
-          size={8}
         >
           <div
             className=
@@ -1245,11 +1281,11 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
               className=
                   ms-Persona-initials
                   {
-                    background-color: #00A300;
+                    background-color: #038387;
                     border-radius: 50%;
                     color: #ffffff;
-                    font-size: 11px;
-                    font-weight: 400;
+                    font-size: 10px;
+                    font-weight: 600;
                     height: 16px;
                     line-height: 16px;
                   }
@@ -1259,6 +1295,9 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
                     border: 1px solid WindowText;
                     box-sizing: border-box;
                     color: WindowText;
+                  }
+                  & i {
+                    font-weight: 600;
                   }
             >
               <span>
@@ -1280,7 +1319,6 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
                 font-size: 14px;
                 font-weight: 400;
               }
-          size={8}
         >
           <div
             className=
@@ -1397,7 +1435,7 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
                 user-select: text;
               }
               .ms-Fabric--isFocusVisible &:focus {
-                box-shadow: 0 0 0 1px #666666 inset;
+                box-shadow: 0 0 0 1px #605e5c inset;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
                 outline: 1px solid WindowText;
@@ -1411,10 +1449,16 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
               @media screen and (-ms-high-contrast: black-on-white){& {
                 color: #00009F;
               }
-              &:active, &:hover, &:active:hover {
+              &:active {
                 color: #004578;
+                text-decoration: underline;
               }
-              @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
+              &:hover {
+                color: #004578;
+                text-decoration: underline;
+              }
+              &:active:hover {
+                color: #004578;
                 text-decoration: underline;
               }
               &:focus {
@@ -1459,7 +1503,7 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
                 user-select: text;
               }
               .ms-Fabric--isFocusVisible &:focus {
-                box-shadow: 0 0 0 1px #666666 inset;
+                box-shadow: 0 0 0 1px #605e5c inset;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
                 outline: 1px solid WindowText;
@@ -1473,10 +1517,16 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
               @media screen and (-ms-high-contrast: black-on-white){& {
                 color: #00009F;
               }
-              &:active, &:hover, &:active:hover {
+              &:active {
                 color: #004578;
+                text-decoration: underline;
               }
-              @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
+              &:hover {
+                color: #004578;
+                text-decoration: underline;
+              }
+              &:active:hover {
+                color: #004578;
                 text-decoration: underline;
               }
               &:focus {
@@ -1497,7 +1547,7 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
-              color: #666666;
+              color: #605e5c;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
               font-weight: 400;

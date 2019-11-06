@@ -15,7 +15,7 @@ export const CollapsibleSectionTitleView: ICollapsibleSectionTitleComponent['vie
     text: Text
   });
 
-  const buttonProps = getNativeProps(props, buttonProperties);
+  const buttonProps = getNativeProps<React.HTMLAttributes<HTMLButtonElement>>(props, buttonProperties);
 
   return (
     <Slots.root {...buttonProps} ref={props.focusElementRef}>

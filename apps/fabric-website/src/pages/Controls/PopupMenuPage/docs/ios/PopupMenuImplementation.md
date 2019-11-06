@@ -2,8 +2,10 @@
 
 `MSPopupMenuController`
 
-### Library
+### Source code
 
-[UI Fabric iOS](https://github.com/OfficeDev/ui-fabric-ios)
+[MSPopupMenuController](https://github.com/OfficeDev/ui-fabric-ios/blob/master/OfficeUIFabric/Popup%20Menu/MSPopupMenuController.swift)
 
-[Sample Code](https://github.com/OfficeDev/ui-fabric-ios/blob/master/OfficeUIFabric.Demo/OfficeUIFabric.Demo/Demos/MSPopupMenuDemoController.swift)
+### Sample code
+
+[MSPopupMenuController demo](https://github.com/OfficeDev/ui-fabric-ios/blob/master/OfficeUIFabric.Demo/OfficeUIFabric.Demo/Demos/MSPopupMenuDemoController.swift)

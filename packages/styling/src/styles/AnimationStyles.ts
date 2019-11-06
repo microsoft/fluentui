@@ -17,7 +17,7 @@ const FADE_IN: string = keyframes({
 
 const FADE_OUT: string = keyframes({
   from: { opacity: 1 },
-  to: { opacity: 0 }
+  to: { opacity: 0, visibility: 'hidden' }
 });
 
 const SLIDE_RIGHT_IN10: string = _createSlideInX(-10);

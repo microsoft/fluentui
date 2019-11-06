@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Async, KeyCodes, divProperties, doesElementContainFocus, getDocument, getNativeProps, on } from '../../Utilities';
+import { Async, KeyCodes, divProperties, doesElementContainFocus, getDocument, getNativeProps, on, getWindow } from '../../Utilities';
 import { IPopupProps } from './Popup.types';
 
 export interface IPopupState {
@@ -26,13 +26,18 @@ export class Popup extends React.Component<IPopupProps, IPopupState> {
     this.state = { needsVerticalScrollBar: false };
   }
 
-  public componentWillMount(): void {
+  // tslint:disable-next-line function-name
+  public UNSAFE_componentWillMount(): void {
     this._originalFocusedElement = getDocument()!.activeElement as HTMLElement;
   }
 
   public componentDidMount(): void {
     if (this._root.current) {
       this._disposables.push(on(this._root.current, 'focus', this._onFocus, true), on(this._root.current, 'blur', this._onBlur, true));
+      const currentWindow = getWindow(this._root.current);
+      if (currentWindow) {
+        this._disposables.push(on(currentWindow, 'keydown', this._onKeyDown as any));
+      }
       if (doesElementContainFocus(this._root.current)) {
         this._containsFocus = true;
       }

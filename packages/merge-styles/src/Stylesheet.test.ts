@@ -11,7 +11,7 @@ describe('Stylesheet', () => {
   });
 
   it('supports overriding the default prefix', () => {
-    const className = styleToClassName({ background: 'red' });
+    const className = styleToClassName({}, { background: 'red' });
 
     expect(className).toEqual('myCss-0');
     expect(_stylesheet.getRules()).toEqual('.myCss-0{background:red;}');

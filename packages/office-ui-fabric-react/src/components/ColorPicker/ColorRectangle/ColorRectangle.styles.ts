@@ -1,18 +1,31 @@
 import { IColorRectangleStyleProps, IColorRectangleStyles } from './ColorRectangle.types';
 import { HighContrastSelector } from '../../../Styling';
+import { IsFocusVisibleClassName } from '../../../Utilities';
+import { hiddenContentStyle } from '@uifabric/styling';
 
 export const getStyles = (props: IColorRectangleStyleProps): IColorRectangleStyles => {
-  const { className } = props;
+  const { className, theme, minSize } = props;
+  const { palette, effects } = theme;
 
   return {
     root: [
       'ms-ColorPicker-colorRect',
       {
         position: 'relative',
-        marginBottom: 10,
+        marginBottom: 8,
+        border: `1px solid ${palette.neutralLighter}`,
+        borderRadius: effects.roundedCorner2,
+        minWidth: minSize,
+        minHeight: minSize,
+        outline: 'none',
+
         selectors: {
           [HighContrastSelector]: {
             MsHighContrastAdjust: 'none'
+          },
+
+          [`.${IsFocusVisibleClassName} &:focus`]: {
+            outline: `1px solid ${palette.neutralSecondary}`
           }
         }
       },
@@ -26,7 +39,9 @@ export const getStyles = (props: IColorRectangleStyleProps): IColorRectangleStyl
         right: 0,
         top: 0,
         bottom: 0,
-        background: 'linear-gradient(to right, white 0%, transparent 100%)'
+        // Intentionally DO NOT flip the color picker in RTL: its orientation is not very meaningful,
+        // and getting all the math and styles flipped correctly is tricky
+        background: 'linear-gradient(to right, white 0%, transparent 100%) /*@noflip*/'
       }
     ],
     dark: [
@@ -47,11 +62,25 @@ export const getStyles = (props: IColorRectangleStyleProps): IColorRectangleStyl
         width: 20,
         height: 20,
         background: 'white',
-        border: '1px solid rgba(255,255,255,.8)',
+        border: `1px solid ${palette.neutralSecondaryAlt}`,
         borderRadius: '50%',
-        boxShadow: '0 0 15px -5px black',
-        transform: 'translate(-50%, -50%)'
+        boxShadow: effects.elevation8,
+        transform: 'translate(-50%, -50%)',
+        selectors: {
+          ':before': {
+            position: 'absolute',
+            left: 0,
+            right: 0,
+            top: 0,
+            bottom: 0,
+            border: `2px solid ${palette.white}`,
+            borderRadius: '50%',
+            boxSizing: 'border-box',
+            content: '""'
+          }
+        }
       }
-    ]
+    ],
+    description: hiddenContentStyle
   };
 };

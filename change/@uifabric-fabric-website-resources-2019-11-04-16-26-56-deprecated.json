@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Remove some unused things",
+  "packageName": "@uifabric/fabric-website-resources",
+  "email": "elcraig@microsoft.com",
+  "commit": "c675349de84aea56489c6617fb3911a237082ea1",
+  "date": "2019-11-05T00:26:56.209Z"
+}

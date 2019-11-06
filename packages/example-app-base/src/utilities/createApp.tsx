@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { App, IAppDefinition, IAppLink } from '../components/App/index';
-import { Router, Route } from 'office-ui-fabric-react/lib/utilities/router/index';
+import { Router, Route } from './router/index';
 import { setBaseUrl } from 'office-ui-fabric-react/lib/Utilities';
 import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
 
@@ -107,11 +107,11 @@ function _getDefinition(groups: ExampleGroup[]): IAppDefinition {
       },
       {
         name: 'Fabric',
-        url: 'http://dev.office.com/fabric'
+        url: 'https://dev.microsoft.com/fabric'
       },
       {
-        name: 'Github',
-        url: 'http://www.github.com/officedev'
+        name: 'GitHub',
+        url: 'https://github.com/OfficeDev/office-ui-fabric-react'
       }
     ]
   };

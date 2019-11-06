@@ -23,11 +23,11 @@ exports[`ToggleView renders toggle correctly 1`] = `
           -webkit-font-smoothing: antialiased;
           box-shadow: none;
           box-sizing: border-box;
-          color: #333333;
+          color: #323130;
           display: block;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
-          font-weight: 400;
+          font-weight: 600;
           margin-bottom: 0px;
           margin-left: 0px;
           margin-right: 0px;
@@ -58,7 +58,7 @@ exports[`ToggleView renders toggle correctly 1`] = `
           {
             align-items: center;
             background: #ffffff;
-            border-color: #666666;
+            border-color: #605e5c;
             border-radius: 1em;
             border-style: solid;
             border-width: 1px;
@@ -84,14 +84,14 @@ exports[`ToggleView renders toggle correctly 1`] = `
             bottom: -2px;
             content: "";
             left: -2px;
-            outline: 1px solid #666666;
+            outline: 1px solid #605e5c;
             position: absolute;
             right: -2px;
             top: -2px;
             z-index: 1;
           }
           &:hover {
-            border-color: #333333;
+            border-color: #323130;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
             border-color: Highlight;
@@ -100,7 +100,6 @@ exports[`ToggleView renders toggle correctly 1`] = `
             border-color: Highlight;
           }
       data-is-focusable={true}
-      onChange={[Function]}
       onClick={[Function]}
       role="switch"
       type="button"
@@ -109,7 +108,7 @@ exports[`ToggleView renders toggle correctly 1`] = `
         className=
             ms-Toggle-thumb
             {
-              background-color: #333333;
+              background-color: #323130;
               border-color: transparent;
               border-radius: .5em;
               border-style: solid;

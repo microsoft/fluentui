@@ -6,6 +6,7 @@ import { IButtonProps, IButtonStyles } from 'office-ui-fabric-react/lib/Button';
 import { IContextualMenuItem } from 'office-ui-fabric-react/lib/ContextualMenu';
 import { IStyle, ITheme } from 'office-ui-fabric-react/lib/Styling';
 import { IComponentAs } from 'office-ui-fabric-react/lib/Utilities';
+import { IRefObject } from 'office-ui-fabric-react/lib/Utilities';
 import { SidebarColors } from './Sidebar.styles';
 
 export interface ISidebar {
@@ -34,7 +35,7 @@ export interface ISidebarProps extends React.HTMLAttributes<HTMLDivElement> {
    * the public methods and properties of the component.
    * @type {(component: ISidebar | null) => void}
    */
-  componentRef?: (component: ISidebar | null) => void;
+  componentRef?: IRefObject<ISidebar>;
 
   /**
    * Whether the Sidebar is collapsible or not. If it is, a collapsible button

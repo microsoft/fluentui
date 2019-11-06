@@ -1,8 +1,8 @@
-import * as React from 'react';
 import * as PropTypes from 'prop-types';
+import * as React from 'react';
 import { BaseComponent } from '../../Utilities';
+import { IScrollablePaneContext, ScrollablePaneContext } from '../ScrollablePane/ScrollablePane.types';
 import { IStickyProps, StickyPositionType } from './Sticky.types';
-import { IScrollablePaneContext } from '../ScrollablePane/ScrollablePane.base';
 
 export interface IStickyState {
   isStickyTop: boolean;
@@ -20,11 +20,7 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
     isScrollSynced: true
   };
 
-  public static contextTypes: IStickyContext = {
-    scrollablePane: PropTypes.object
-  };
-
-  public context: IScrollablePaneContext;
+  public static contextType = ScrollablePaneContext;
 
   private _root = React.createRef<HTMLDivElement>();
   private _stickyContentTop = React.createRef<HTMLDivElement>();
@@ -80,7 +76,7 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
   };
 
   public componentDidMount(): void {
-    const { scrollablePane } = this.context;
+    const { scrollablePane } = this._getContext();
 
     if (!scrollablePane) {
       return;
@@ -91,7 +87,7 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
   }
 
   public componentWillUnmount(): void {
-    const { scrollablePane } = this.context;
+    const { scrollablePane } = this._getContext();
 
     if (!scrollablePane) {
       return;
@@ -102,7 +98,7 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
   }
 
   public componentDidUpdate(prevProps: IStickyProps, prevState: IStickyState): void {
-    const { scrollablePane } = this.context;
+    const { scrollablePane } = this._getContext();
 
     if (!scrollablePane) {
       return;
@@ -193,6 +189,8 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
     const distanceFromTop = this._getNonStickyDistanceFromTop(container);
     this.setState({ distanceFromTop: distanceFromTop });
   }
+
+  private _getContext = (): IScrollablePaneContext => this.context;
 
   private _getContentStyles(isSticky: boolean): React.CSSProperties {
     return {

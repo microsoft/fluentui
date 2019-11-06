@@ -1,13 +1,6 @@
 import * as React from 'react';
-import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
-import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
-import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
-import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
-import { Slider } from 'office-ui-fabric-react/lib/Slider';
+import { DefaultButton, Callout, DirectionalHint, Dropdown, IDropdownOption, Checkbox, Slider } from 'office-ui-fabric-react';
 import './CalloutExample.scss';
-
-import * as exampleStylesImport from '../../../common/_exampleStyles.scss';
-const exampleStyles: any = exampleStylesImport;
 
 export interface ICalloutDirectionalExampleState {
   isCalloutVisible?: boolean;
@@ -54,7 +47,7 @@ export class CalloutDirectionalExample extends React.Component<{}, ICalloutDirec
     return (
       <div className="ms-CalloutExample">
         <div className="ms-CalloutExample-configArea">
-          <Checkbox className={exampleStyles.exampleCheckbox} label="Show beak" checked={isBeakVisible} onChange={this._onShowBeakChange} />
+          <Checkbox styles={{ root: { margin: '10px 0' } }} label="Show beak" checked={isBeakVisible} onChange={this._onShowBeakChange} />
           <Slider max={30} label="Gap Space" min={0} defaultValue={0} onChange={this._onGapSlider} />
           {isBeakVisible && <Slider max={50} label="Beak Width" min={10} defaultValue={16} onChange={this._onBeakWidthSlider} />}
           <Dropdown
@@ -80,6 +73,7 @@ export class CalloutDirectionalExample extends React.Component<{}, ICalloutDirec
             beakWidth={beakWidth}
             onDismiss={this._onCalloutDismiss}
             directionalHint={directionalHint}
+            setInitialFocus={true}
           >
             <div className="ms-CalloutExample-header">
               <p className="ms-CalloutExample-title">All of your favorite people</p>

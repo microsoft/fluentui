@@ -1,53 +1,51 @@
 import * as React from 'react';
-import { ColorPicker, Toggle, getColorFromString, IColor } from 'office-ui-fabric-react/lib/index';
-import { mergeStyleSets, HighContrastSelector } from 'office-ui-fabric-react/lib/Styling';
-import { updateA } from 'office-ui-fabric-react/lib/utilities/color/updateA';
+import { ColorPicker, Toggle, getColorFromString, IColor, IColorPickerStyles, updateA } from 'office-ui-fabric-react/lib/index';
+import { mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
 
 const classNames = mergeStyleSets({
-  wrapper: {
-    display: 'flex'
-  },
-  column2: {
-    marginLeft: 10
-  },
-  colorSquare: {
-    width: 100,
-    height: 100,
-    margin: '16px 0',
-    border: '1px solid #c8c6c4',
-    selectors: {
-      [HighContrastSelector]: {
-        MsHighContrastAdjust: 'none'
-      }
-    }
-  }
+  wrapper: { display: 'flex' },
+  column2: { marginLeft: 10 }
 });
+
+const colorPickerStyles: Partial<IColorPickerStyles> = {
+  panel: { padding: 12 },
+  root: {
+    maxWidth: 352,
+    minWidth: 352
+  },
+  colorRectangle: { height: 268 }
+};
 
 export interface IBasicColorPickerExampleState {
   color: IColor;
   alphaSliderHidden: boolean;
+  showPreview: boolean;
 }
 
 export class ColorPickerBasicExample extends React.Component<{}, IBasicColorPickerExampleState> {
   public state: IBasicColorPickerExampleState = {
     color: getColorFromString('#ffffff')!,
-    alphaSliderHidden: false
+    alphaSliderHidden: false,
+    showPreview: true
   };
 
   public render(): JSX.Element {
-    const { color, alphaSliderHidden } = this.state;
+    const { color, alphaSliderHidden, showPreview: showPreview } = this.state;
     return (
       <div className={classNames.wrapper}>
-        <ColorPicker color={color} onChange={this._updateColor} alphaSliderHidden={alphaSliderHidden} />
+        <ColorPicker
+          color={color}
+          onChange={this._updateColor}
+          alphaSliderHidden={alphaSliderHidden}
+          showPreview={showPreview}
+          styles={colorPickerStyles}
+          // The ColorPicker provides default English strings.
+          // If your app is localized, you MUST provide the `strings` prop with localized strings.
+        />
 
         <div className={classNames.column2}>
-          <div
-            className={classNames.colorSquare}
-            style={{
-              backgroundColor: color.str
-            }}
-          />
           <Toggle label="Hide alpha slider" onChange={this._onHideAlphaClick} checked={alphaSliderHidden} />
+          <Toggle label="Show Preview Box" onChange={this._onShowPreviewBoxClick} checked={showPreview} />
         </div>
       </div>
     );
@@ -64,5 +62,9 @@ export class ColorPickerBasicExample extends React.Component<{}, IBasicColorPick
       color = updateA(this.state.color, 100);
     }
     this.setState({ alphaSliderHidden: !!checked, color });
+  };
+
+  private _onShowPreviewBoxClick = (ev: React.MouseEvent<HTMLElement>, checked?: boolean) => {
+    this.setState({ showPreview: !!checked });
   };
 }

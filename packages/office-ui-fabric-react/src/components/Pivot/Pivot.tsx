@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { styled } from '../../Utilities';
 import { IPivotProps, IPivotStyleProps, IPivotStyles } from './Pivot.types';
 import { PivotBase } from './Pivot.base';

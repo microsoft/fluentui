@@ -10,6 +10,294 @@
   },
   "glyphs": [
     {
+      "name": "Snooze",
+      "unicode": "F4BD"
+    },
+    {
+      "name": "WaffleOffice365",
+      "unicode": "F4E0"
+    },
+    {
+      "name": "ImageSearch",
+      "unicode": "F4E8"
+    },
+    {
+      "name": "NewsSearch",
+      "unicode": "F4E9"
+    },
+    {
+      "name": "VideoSearch",
+      "unicode": "F4EA"
+    },
+    {
+      "name": "R",
+      "unicode": "F4EB"
+    },
+    {
+      "name": "FontColorA",
+      "unicode": "F4EC"
+    },
+    {
+      "name": "FontColorSwatch",
+      "unicode": "F4ED"
+    },
+    {
+      "name": "LightWeight",
+      "unicode": "F4EE"
+    },
+    {
+      "name": "NormalWeight",
+      "unicode": "F4EF"
+    },
+    {
+      "name": "SemiboldWeight",
+      "unicode": "F4F0"
+    },
+    {
+      "name": "GroupObject",
+      "unicode": "F4F1"
+    },
+    {
+      "name": "UngroupObject",
+      "unicode": "F4F2"
+    },
+    {
+      "name": "AlignHorizontalLeft",
+      "unicode": "F4F3"
+    },
+    {
+      "name": "AlignHorizontalCenter",
+      "unicode": "F4F4"
+    },
+    {
+      "name": "AlignHorizontalRight",
+      "unicode": "F4F5"
+    },
+    {
+      "name": "AlignVerticalTop",
+      "unicode": "F4F6"
+    },
+    {
+      "name": "AlignVerticalCenter",
+      "unicode": "F4F7"
+    },
+    {
+      "name": "AlignVerticalBottom",
+      "unicode": "F4F8"
+    },
+    {
+      "name": "HorizontalDistributeCenter",
+      "unicode": "F4F9"
+    },
+    {
+      "name": "VerticalDistributeCenter",
+      "unicode": "F4FA"
+    },
+    {
+      "name": "Ellipse",
+      "unicode": "F4FB"
+    },
+    {
+      "name": "Line",
+      "unicode": "F4FC"
+    },
+    {
+      "name": "Octagon",
+      "unicode": "F4FD"
+    },
+    {
+      "name": "Hexagon",
+      "unicode": "F4FE"
+    },
+    {
+      "name": "Pentagon",
+      "unicode": "F4FF"
+    },
+    {
+      "name": "RightTriangle",
+      "unicode": "F500"
+    },
+    {
+      "name": "HalfCircle",
+      "unicode": "F501"
+    },
+    {
+      "name": "QuarterCircle",
+      "unicode": "F502"
+    },
+    {
+      "name": "ThreeQuarterCircle",
+      "unicode": "F503"
+    },
+    {
+      "name": "6PointStar",
+      "unicode": "F504"
+    },
+    {
+      "name": "12PointStar",
+      "unicode": "F505"
+    },
+    {
+      "name": "ArrangeBringToFront",
+      "unicode": "F506"
+    },
+    {
+      "name": "ArrangeSendToBack",
+      "unicode": "F507"
+    },
+    {
+      "name": "ArrangeSendBackward",
+      "unicode": "F508"
+    },
+    {
+      "name": "ArrangeBringForward",
+      "unicode": "F509"
+    },
+    {
+      "name": "BorderDash",
+      "unicode": "F50A"
+    },
+    {
+      "name": "BorderDot",
+      "unicode": "F50B"
+    },
+    {
+      "name": "LineStyle",
+      "unicode": "F50C"
+    },
+    {
+      "name": "LineThickness",
+      "unicode": "F50D"
+    },
+    {
+      "name": "WindowEdit",
+      "unicode": "F50E"
+    },
+    {
+      "name": "HintText",
+      "unicode": "F50F"
+    },
+    {
+      "name": "MediaAdd",
+      "unicode": "F510"
+    },
+    {
+      "name": "AnchorLock",
+      "unicode": "F511"
+    },
+    {
+      "name": "AutoHeight",
+      "unicode": "F512"
+    },
+    {
+      "name": "ChartSeries",
+      "unicode": "F513"
+    },
+    {
+      "name": "ChartXAngle",
+      "unicode": "F514"
+    },
+    {
+      "name": "ChartYAngle",
+      "unicode": "F515"
+    },
+    {
+      "name": "Combobox",
+      "unicode": "F516"
+    },
+    {
+      "name": "LineSpacing",
+      "unicode": "F517"
+    },
+    {
+      "name": "Padding",
+      "unicode": "F518"
+    },
+    {
+      "name": "PaddingTop",
+      "unicode": "F519"
+    },
+    {
+      "name": "PaddingBottom",
+      "unicode": "F51A"
+    },
+    {
+      "name": "PaddingLeft",
+      "unicode": "F51B"
+    },
+    {
+      "name": "PaddingRight",
+      "unicode": "F51C"
+    },
+    {
+      "name": "NavigationFlipper",
+      "unicode": "F51D"
+    },
+    {
+      "name": "AlignJustify",
+      "unicode": "F51E"
+    },
+    {
+      "name": "TextOverflow",
+      "unicode": "F51F"
+    },
+    {
+      "name": "VisualsFolder",
+      "unicode": "F520"
+    },
+    {
+      "name": "VisualsStore",
+      "unicode": "F521"
+    },
+    {
+      "name": "PictureCenter",
+      "unicode": "F522"
+    },
+    {
+      "name": "PictureFill",
+      "unicode": "F523"
+    },
+    {
+      "name": "PicturePosition",
+      "unicode": "F524"
+    },
+    {
+      "name": "PictureStretch",
+      "unicode": "F525"
+    },
+    {
+      "name": "PictureTile",
+      "unicode": "F526"
+    },
+    {
+      "name": "Slider",
+      "unicode": "F527"
+    },
+    {
+      "name": "SliderHandleSize",
+      "unicode": "F528"
+    },
+    {
+      "name": "DefaultRatio",
+      "unicode": "F529"
+    },
+    {
+      "name": "NumberSequence",
+      "unicode": "F52A"
+    },
+    {
+      "name": "GUID",
+      "unicode": "F52B"
+    },
+    {
+      "name": "ReportAdd",
+      "unicode": "F52C"
+    },
+    {
+      "name": "DashboardAdd",
+      "unicode": "F52D"
+    },
+    {
       "name": "MapPinSolid",
       "unicode": "F52E"
     },
@@ -82,6 +370,10 @@
       "unicode": "F549"
     },
     {
+      "name": "GreetingCard",
+      "unicode": "F54B"
+    },
+    {
       "name": "Flower",
       "unicode": "F54E"
     },
@@ -116,298 +408,6 @@
     {
       "name": "ContactCardSettingsMirrored",
       "unicode": "F557"
-    },
-    {
-      "name": "CalendarSettings",
-      "unicode": "F558"
-    },
-    {
-      "name": "CalendarSettingsMirrored",
-      "unicode": "F559"
-    },
-    {
-      "name": "HardDriveLock",
-      "unicode": "F55A"
-    },
-    {
-      "name": "HardDriveUnlock",
-      "unicode": "F55B"
-    },
-    {
-      "name": "AccountManagement",
-      "unicode": "F55C"
-    },
-    {
-      "name": "TransitionPop",
-      "unicode": "F5B2"
-    },
-    {
-      "name": "TransitionPush",
-      "unicode": "F5B3"
-    },
-    {
-      "name": "TransitionEffect",
-      "unicode": "F5B4"
-    },
-    {
-      "name": "LookupEntities",
-      "unicode": "F5B5"
-    },
-    {
-      "name": "ExploreData",
-      "unicode": "F5B6"
-    },
-    {
-      "name": "AddBookmark",
-      "unicode": "F5B7"
-    },
-    {
-      "name": "SearchBookmark",
-      "unicode": "F5B8"
-    },
-    {
-      "name": "DrillThrough",
-      "unicode": "F5B9"
-    },
-    {
-      "name": "MasterDatabase",
-      "unicode": "F5BA"
-    },
-    {
-      "name": "CertifiedDatabase",
-      "unicode": "F5BB"
-    },
-    {
-      "name": "MaximumValue",
-      "unicode": "F5BC"
-    },
-    {
-      "name": "MinimumValue",
-      "unicode": "F5BD"
-    },
-    {
-      "name": "VisualStudioIDELogo32",
-      "unicode": "F5D0"
-    },
-    {
-      "name": "PasteAsText",
-      "unicode": "F5D5"
-    },
-    {
-      "name": "PasteAsCode",
-      "unicode": "F5D6"
-    },
-    {
-      "name": "BrowserTab",
-      "unicode": "F5D7"
-    },
-    {
-      "name": "BrowserTabScreenshot",
-      "unicode": "F5D8"
-    },
-    {
-      "name": "DesktopScreenshot",
-      "unicode": "F5D9"
-    },
-    {
-      "name": "FileYML",
-      "unicode": "F5DA"
-    },
-    {
-      "name": "ClipboardSolid",
-      "unicode": "F5DC"
-    },
-    {
-      "name": "FabricUserFolder",
-      "unicode": "F5E5"
-    },
-    {
-      "name": "FabricNetworkFolder",
-      "unicode": "F5E6"
-    },
-    {
-      "name": "AnalyticsView",
-      "unicode": "F5F1"
-    },
-    {
-      "name": "Video360Generic",
-      "unicode": "F609"
-    },
-    {
-      "name": "Leave",
-      "unicode": "F627"
-    },
-    {
-      "name": "Trending12",
-      "unicode": "F62D"
-    },
-    {
-      "name": "Blocked12",
-      "unicode": "F62E"
-    },
-    {
-      "name": "Warning12",
-      "unicode": "F62F"
-    },
-    {
-      "name": "CheckedOutByOther12",
-      "unicode": "F630"
-    },
-    {
-      "name": "CheckedOutByYou12",
-      "unicode": "F631"
-    },
-    {
-      "name": "CircleShapeSolid",
-      "unicode": "F63C"
-    },
-    {
-      "name": "SquareShapeSolid",
-      "unicode": "F63D"
-    },
-    {
-      "name": "TriangleShapeSolid",
-      "unicode": "F63E"
-    },
-    {
-      "name": "DropShapeSolid",
-      "unicode": "F63F"
-    },
-    {
-      "name": "RectangleShapeSolid",
-      "unicode": "F640"
-    },
-    {
-      "name": "ZoomToFit",
-      "unicode": "F649"
-    },
-    {
-      "name": "InsertColumnsLeft",
-      "unicode": "F64A"
-    },
-    {
-      "name": "InsertColumnsRight",
-      "unicode": "F64B"
-    },
-    {
-      "name": "InsertRowsAbove",
-      "unicode": "F64C"
-    },
-    {
-      "name": "InsertRowsBelow",
-      "unicode": "F64D"
-    },
-    {
-      "name": "DeleteColumns",
-      "unicode": "F64E"
-    },
-    {
-      "name": "DeleteRows",
-      "unicode": "F64F"
-    },
-    {
-      "name": "DeleteRowsMirrored",
-      "unicode": "F650"
-    },
-    {
-      "name": "DeleteTable",
-      "unicode": "F651"
-    },
-    {
-      "name": "VersionControlPush",
-      "unicode": "F664"
-    },
-    {
-      "name": "StackedColumnChart2",
-      "unicode": "F666"
-    },
-    {
-      "name": "TripleColumnWide",
-      "unicode": "F66E"
-    },
-    {
-      "name": "QuadColumn",
-      "unicode": "F66F"
-    },
-    {
-      "name": "WhiteBoardApp16",
-      "unicode": "F673"
-    },
-    {
-      "name": "WhiteBoardApp32",
-      "unicode": "F674"
-    },
-    {
-      "name": "InsertSignatureLine",
-      "unicode": "F677"
-    },
-    {
-      "name": "ArrangeByFrom",
-      "unicode": "F678"
-    },
-    {
-      "name": "Phishing",
-      "unicode": "F679"
-    },
-    {
-      "name": "CreateMailRule",
-      "unicode": "F67A"
-    },
-    {
-      "name": "PublishCourse",
-      "unicode": "F699"
-    },
-    {
-      "name": "DictionaryRemove",
-      "unicode": "F69A"
-    },
-    {
-      "name": "UserRemove",
-      "unicode": "F69B"
-    },
-    {
-      "name": "UserEvent",
-      "unicode": "F69C"
-    },
-    {
-      "name": "Encryption",
-      "unicode": "F69D"
-    },
-    {
-      "name": "D365TalentLearn",
-      "unicode": "F6BB"
-    },
-    {
-      "name": "D365TalentInsight",
-      "unicode": "F6BC"
-    },
-    {
-      "name": "D365TalentHRCore",
-      "unicode": "F6BD"
-    },
-    {
-      "name": "BacklogList",
-      "unicode": "F6BF"
-    },
-    {
-      "name": "ButtonControl",
-      "unicode": "F6C0"
-    },
-    {
-      "name": "TableGroup",
-      "unicode": "F6D9"
-    },
-    {
-      "name": "MountainClimbing",
-      "unicode": "F6DB"
-    },
-    {
-      "name": "TagUnknown",
-      "unicode": "F6DF"
-    },
-    {
-      "name": "TagUnknownMirror",
-      "unicode": "F6E0"
     }
   ]
 }

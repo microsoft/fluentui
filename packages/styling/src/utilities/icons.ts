@@ -109,7 +109,7 @@ export function registerIcons(iconSubset: IIconSubset, options?: Partial<IIconOp
         _iconSettings[normalizedIconName] = {
           code,
           subset
-        };
+        } as IIconRecord;
       }
     }
   }

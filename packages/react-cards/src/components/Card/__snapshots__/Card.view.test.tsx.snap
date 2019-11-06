@@ -1,17 +1,321 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`CardView renders correctly 1`] = `
+exports[`CardView renders a Horizontal Card with an onClick function specified correctly 1`] = `
 <div
   className=
       ms-Stack
       {
-        align-items: space-between;
+        align-items: flex-start;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        height: 100%;
+        justify-content: flex-start;
+        width: auto;
+      }
+      & > * {
+        text-overflow: ellipsis;
+      }
+      & > *:not(:first-child) {
+        margin-left: 0px;
+      }
+      & > *:not(.ms-StackItem) {
+        flex-shrink: 1;
+      }
+  onClick={[Function]}
+>
+  <div
+    className=
+        ms-StackItem
+        ms-CardItem
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          flex-shrink: 0;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 18px;
+          font-weight: 400;
+          height: auto;
+          padding-bottom: 0px;
+          padding-left: 0px;
+          padding-right: 0px;
+          padding-top: 0px;
+          width: auto;
+        }
+  >
+    This is some content 1
+  </div>
+</div>
+`;
+
+exports[`CardView renders a Horizontal Card with contents correctly 1`] = `
+<div
+  className=
+      ms-Stack
+      {
+        align-items: flex-start;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        height: 100%;
+        justify-content: flex-start;
+        width: auto;
+      }
+      & > * {
+        text-overflow: ellipsis;
+      }
+      & > *:not(:first-child) {
+        margin-left: 0px;
+      }
+      & > *:not(.ms-StackItem) {
+        flex-shrink: 1;
+      }
+>
+  <div
+    className=
+        ms-StackItem
+        ms-CardItem
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          flex-shrink: 0;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 18px;
+          font-weight: 400;
+          height: auto;
+          padding-bottom: 0px;
+          padding-left: 0px;
+          padding-right: 0px;
+          padding-top: 0px;
+          width: auto;
+        }
+  >
+    This is some content 1
+  </div>
+  <div
+    className=
+        ms-StackItem
+        ms-CardItem
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          flex-shrink: 0;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 18px;
+          font-weight: 400;
+          height: auto;
+          padding-bottom: 0px;
+          padding-left: 0px;
+          padding-right: 0px;
+          padding-top: 0px;
+          width: auto;
+        }
+  >
+    This is some content 2
+  </div>
+  <div
+    className=
+        ms-StackItem
+        ms-CardItem
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          flex-shrink: 0;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 18px;
+          font-weight: 400;
+          height: auto;
+          padding-bottom: 0px;
+          padding-left: 0px;
+          padding-right: 0px;
+          padding-top: 0px;
+          width: auto;
+        }
+  >
+    This is some content 3
+  </div>
+</div>
+`;
+
+exports[`CardView renders a Horizontal Card without contents correctly 1`] = `
+<div
+  className=
+      ms-Stack
+      {
+        align-items: flex-start;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        height: 100%;
+        justify-content: flex-start;
+        width: auto;
+      }
+      & > * {
+        text-overflow: ellipsis;
+      }
+      & > *:not(:first-child) {
+        margin-left: 0px;
+      }
+      & > *:not(.ms-StackItem) {
+        flex-shrink: 1;
+      }
+/>
+`;
+
+exports[`CardView renders a Vertical Card with an onClick function specified correctly 1`] = `
+<div
+  className=
+      ms-Stack
+      {
+        align-items: stretch;
         box-sizing: border-box;
         display: flex;
         flex-direction: column;
         flex-wrap: nowrap;
         height: 100%;
-        justify-content: space-between;
+        justify-content: flex-start;
+        width: auto;
+      }
+      & > * {
+        text-overflow: ellipsis;
+      }
+      & > *:not(:first-child) {
+        margin-top: 0px;
+      }
+      & > *:not(.ms-StackItem) {
+        flex-shrink: 1;
+      }
+  onClick={[Function]}
+>
+  <div
+    className=
+        ms-StackItem
+        ms-CardItem
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          flex-shrink: 0;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 18px;
+          font-weight: 400;
+          height: auto;
+          padding-bottom: 0px;
+          padding-left: 0px;
+          padding-right: 0px;
+          padding-top: 0px;
+          width: auto;
+        }
+  >
+    This is some content 1
+  </div>
+</div>
+`;
+
+exports[`CardView renders a Vertical Card with contents correctly 1`] = `
+<div
+  className=
+      ms-Stack
+      {
+        align-items: stretch;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        height: 100%;
+        justify-content: flex-start;
+        width: auto;
+      }
+      & > * {
+        text-overflow: ellipsis;
+      }
+      & > *:not(:first-child) {
+        margin-top: 0px;
+      }
+      & > *:not(.ms-StackItem) {
+        flex-shrink: 1;
+      }
+>
+  <div
+    className=
+        ms-StackItem
+        ms-CardItem
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          flex-shrink: 0;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 18px;
+          font-weight: 400;
+          height: auto;
+          padding-bottom: 0px;
+          padding-left: 0px;
+          padding-right: 0px;
+          padding-top: 0px;
+          width: auto;
+        }
+  >
+    This is some content 1
+  </div>
+  <div
+    className=
+        ms-StackItem
+        ms-CardItem
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          flex-shrink: 0;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 18px;
+          font-weight: 400;
+          height: auto;
+          padding-bottom: 0px;
+          padding-left: 0px;
+          padding-right: 0px;
+          padding-top: 0px;
+          width: auto;
+        }
+  >
+    This is some content 2
+  </div>
+  <div
+    className=
+        ms-StackItem
+        ms-CardItem
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          flex-shrink: 0;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 18px;
+          font-weight: 400;
+          height: auto;
+          padding-bottom: 0px;
+          padding-left: 0px;
+          padding-right: 0px;
+          padding-top: 0px;
+          width: auto;
+        }
+  >
+    This is some content 3
+  </div>
+</div>
+`;
+
+exports[`CardView renders a Vertical Card without contents correctly 1`] = `
+<div
+  className=
+      ms-Stack
+      {
+        align-items: stretch;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        height: 100%;
+        justify-content: flex-start;
         width: auto;
       }
       & > * {

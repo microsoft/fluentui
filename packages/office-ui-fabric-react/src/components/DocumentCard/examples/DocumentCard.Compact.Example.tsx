@@ -9,9 +9,9 @@ import {
   DocumentCardType,
   IDocumentCardActivityPerson
 } from 'office-ui-fabric-react/lib/DocumentCard';
-import { Stack } from 'office-ui-fabric-react/lib/Stack';
+import { Stack, IStackTokens } from 'office-ui-fabric-react/lib/Stack';
 import { getTheme } from 'office-ui-fabric-react/lib/Styling';
-import { TestImages } from '../../../common/TestImages';
+import { TestImages } from '@uifabric/example-data';
 
 const people: IDocumentCardActivityPerson[] = [
   { name: 'Annie Lindqvist', profileImageSrc: TestImages.personaFemale },
@@ -69,14 +69,16 @@ export class DocumentCardCompactExample extends React.PureComponent {
     };
 
     const theme = getTheme();
+    const { palette, fonts } = theme;
+
     const previewPropsUsingIcon: IDocumentCardPreviewProps = {
       previewImages: [
         {
-          previewIconProps: { iconName: 'OpenFile', styles: { root: { fontSize: 42, color: theme.palette.white } } },
+          previewIconProps: { iconName: 'OpenFile', styles: { root: { fontSize: fonts.superLarge.fontSize, color: palette.white } } },
           width: 144
         }
       ],
-      styles: { previewIcon: { backgroundColor: theme.palette.themePrimary } }
+      styles: { previewIcon: { backgroundColor: palette.themePrimary } }
     };
 
     const previewOutlookUsingIcon: IDocumentCardPreviewProps = {
@@ -86,9 +88,9 @@ export class DocumentCardCompactExample extends React.PureComponent {
             iconName: 'OutlookLogo',
             styles: {
               root: {
-                fontSize: 42,
+                fontSize: fonts.superLarge.fontSize,
                 color: '#0078d7',
-                backgroundColor: theme.palette.neutralLighterAlt
+                backgroundColor: palette.neutralLighterAlt
               }
             }
           },
@@ -96,14 +98,21 @@ export class DocumentCardCompactExample extends React.PureComponent {
         }
       ],
       styles: {
-        previewIcon: { backgroundColor: theme.palette.neutralLighterAlt }
+        previewIcon: { backgroundColor: palette.neutralLighterAlt }
       }
     };
 
+    const stackTokens: IStackTokens = { childrenGap: 20 };
+
     return (
-      <Stack gap={20}>
+      <Stack tokens={stackTokens}>
         {/* Document preview */}
-        <DocumentCard type={DocumentCardType.compact} onClickHref="http://bing.com">
+        <DocumentCard
+          aria-label="Document Card with document preview. Revenue stream proposal fiscal year 2016 version 2.
+          Created by Roko Kolar a few minutes ago"
+          type={DocumentCardType.compact}
+          onClickHref="http://bing.com"
+        >
           <DocumentCardPreview previewImages={[previewProps.previewImages[0]]} />
           <DocumentCardDetails>
             <DocumentCardTitle title="Revenue stream proposal fiscal year 2016 version02.pptx" shouldTruncate={true} />
@@ -111,7 +120,11 @@ export class DocumentCardCompactExample extends React.PureComponent {
           </DocumentCardDetails>
         </DocumentCard>
         {/* Folder or site activity */}
-        <DocumentCard type={DocumentCardType.compact} onClickHref="http://bing.com">
+        <DocumentCard
+          aria-label="Document Card with folder or site activity. 4 files were uploaded. Created by Annie Lindqvist a few minutes ago"
+          type={DocumentCardType.compact}
+          onClickHref="http://bing.com"
+        >
           <DocumentCardPreview {...previewProps} />
           <DocumentCardDetails>
             <DocumentCardTitle title="4 files were uploaded" shouldTruncate={true} />
@@ -119,7 +132,11 @@ export class DocumentCardCompactExample extends React.PureComponent {
           </DocumentCardDetails>
         </DocumentCard>
         {/* Card with icon */}
-        <DocumentCard type={DocumentCardType.compact} onClickHref="http://bing.com">
+        <DocumentCard
+          aria-label="Document Card with icon. View and share files. Created by Aaron Reid a few minutes ago"
+          type={DocumentCardType.compact}
+          onClickHref="http://bing.com"
+        >
           <DocumentCardPreview {...previewPropsUsingIcon} />
           <DocumentCardDetails>
             <DocumentCardTitle title="View and share files" shouldTruncate={true} />
@@ -127,7 +144,12 @@ export class DocumentCardCompactExample extends React.PureComponent {
           </DocumentCardDetails>
         </DocumentCard>
         {/* Email conversation */}
-        <DocumentCard type={DocumentCardType.compact} onClickHref="http://bing.com">
+        <DocumentCard
+          aria-label="Document Card with email conversation. Conversation about takeaways from annual SharePoint conference.
+          Sent by Christian Bergqvist a few minutes ago"
+          type={DocumentCardType.compact}
+          onClickHref="http://bing.com"
+        >
           <DocumentCardPreview {...previewOutlookUsingIcon} />
           <DocumentCardDetails>
             <DocumentCardTitle title="Conversation about takeaways from annual SharePoint conference" shouldTruncate={true} />

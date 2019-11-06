@@ -6,7 +6,6 @@ import { mount } from 'enzyme';
 
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { TooltipBase } from './Tooltip.base';
-import { TooltipDelay } from './Tooltip.types';
 import { ICalloutProps } from '../../Callout';
 
 const defaultCalloutProps: ICalloutProps = {
@@ -38,7 +37,6 @@ describe('Tooltip', () => {
   it('uses default documented properties', () => {
     const component = mount(<TooltipBase />);
 
-    expect(component.prop('delay')).toEqual(TooltipDelay.medium);
     expect(component.prop('directionalHint')).toEqual(DirectionalHint.topCenter);
     expect(component.prop('maxWidth')).toEqual('364px');
     expect(component.prop('calloutProps')).toEqual(defaultCalloutProps);
@@ -52,17 +50,16 @@ describe('Tooltip', () => {
       setInitialFocus: false,
       doNotLayer: true
     };
-    const content = 'test content';
+
     const directionalHint = DirectionalHint.bottomLeftEdge;
     const directionalHintForRTL = DirectionalHint.topRightEdge;
-    const targetElement = ReactTestUtils.renderIntoDocument(<div />) as HTMLElement;
-
+    const targetElement = (ReactTestUtils.renderIntoDocument(<div />) as unknown) as HTMLElement;
     let onRenderCalled = false;
 
     const component = mount(
       <TooltipBase
         calloutProps={calloutProps}
-        content={content}
+        tabIndex={-1}
         directionalHint={directionalHint}
         directionalHintForRTL={directionalHintForRTL}
         onRenderContent={() => {
@@ -81,7 +78,7 @@ describe('Tooltip', () => {
       expect(callout.prop(key)).toEqual(calloutProps[key]);
     });
 
-    expect(callout.prop('content')).toEqual(content);
+    expect(callout.prop('tabIndex')).toEqual(-1);
     expect(callout.prop('directionalHint')).toEqual(directionalHint);
     expect(callout.prop('directionalHintForRTL')).toEqual(directionalHintForRTL);
     expect(callout.prop('target')).toEqual(targetElement);

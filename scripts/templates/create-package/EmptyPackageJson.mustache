@@ -2,6 +2,7 @@
   "name": "{{{packageNpmName}}}",
   "version": "0.1.0",
   "description": "Experimental React components for building experiences for Office 365.",
+  "private": true,
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "typings": "lib/index.d.ts",
@@ -14,13 +15,13 @@
   },
   "license": "MIT",
   "scripts": {
-    "build": "npx just-scripts build",
-    "clean": "npx just-scripts clean",
-    "code-style": "npx just-scripts code-style",
-    "start": "npx just-scripts dev",
-    "start-test": "npx just-scripts jest-watch",
-    "update-snapshots": "npx just-scripts jest -u",
-    "just": "npx just-scripts",
+    "build": "just-scripts build",
+    "clean": "just-scripts clean",
+    "code-style": "just-scripts code-style",
+    "start": "just-scripts dev",
+    "start-test": "just-scripts jest-watch",
+    "update-snapshots": "just-scripts jest -u",
+    "just": "just-scripts"
   },
   "devDependencies": {
     "@types/enzyme": "{{{typesEnzyme}}}",
@@ -31,6 +32,7 @@
     "@types/react-dom": "{{{typesReactDom}}}",
     "@types/react-test-renderer": "{{{typesReactTestRenderer}}}",
     "@types/webpack-env": "{{{typesWebpackEnv}}}",
+    "@uifabric/build": "{{{uifabricBuild}}}",
     "@uifabric/example-app-base": "{{{uifabricExampleAppBase}}}",
     "@uifabric/jest-serializer-merge-styles": "{{{uifabricJestSerializerMergeStyles}}}",
     "@uifabric/prettier-rules": "{{{uifabricPrettierRules}}}",
@@ -39,6 +41,7 @@
     "enzyme-adapter-react-16": "{{{enzymeAdapterReact16}}}",
     "es6-weak-map": "{{{es6WeakMap}}}",
     "react": "{{{react}}}",
+    "react-app-polyfill": "{{{reactAppPolyfill}}}",
     "react-dom": "{{{reactDom}}}",
     "react-test-renderer": "{{{reactTestRenderer}}}"
   },
@@ -49,7 +52,9 @@
     "tslib": "{{{tslib}}}"
   },
   "peerDependencies": {
-    "react": "{{{react}}}",
-    "react-dom": "{{{reactDom}}}"
+    "@types/react": "{{{typesReactPeerDep}}}",
+    "@types/react-dom": "{{{typesReactDomPeerDep}}}",
+    "react": "{{{reactPeerDep}}}",
+    "react-dom": "{{{reactDomPeerDep}}}"
   }
 }

@@ -24,9 +24,7 @@ function renderTestHtml(element: React.ReactElement<any>): string {
 }
 
 /* tslint:disable-next-line:no-any */
-export async function getSarifReport(element: React.ReactElement<any>): Promise<SarifLog> {
-  const browser = await puppeteer.launch();
-
+export async function getSarifReport(browser: puppeteer.Browser, element: React.ReactElement<any>): Promise<SarifLog> {
   const page = await browser.newPage();
   const testHtml = renderTestHtml(element);
   await page.setContent(testHtml);
@@ -35,7 +33,6 @@ export async function getSarifReport(element: React.ReactElement<any>): Promise<
   const sarifReport = convertAxeToSarif(axeReport);
 
   await page.close();
-  await browser.close();
 
   return sarifReport;
 }

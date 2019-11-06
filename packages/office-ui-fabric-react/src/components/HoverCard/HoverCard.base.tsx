@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { BaseComponent, divProperties, getNativeProps, getId, KeyCodes, getDocument, createRef, classNamesFunction } from '../../Utilities';
+import { BaseComponent, divProperties, getNativeProps, getId, KeyCodes, getDocument, classNamesFunction } from '../../Utilities';
 import { IHoverCardProps, IHoverCardStyles, IHoverCardStyleProps, OpenCardMode, HoverCardType, IHoverCard } from './HoverCard.types';
 import { ExpandingCard } from './ExpandingCard';
 import { ExpandingCardMode, IExpandingCardProps } from './ExpandingCard.types';
@@ -27,7 +27,7 @@ export class HoverCardBase extends BaseComponent<IHoverCardProps, IHoverCardStat
   };
 
   // The wrapping div that gets the hover events
-  private _hoverCard = createRef<HTMLDivElement>();
+  private _hoverCard = React.createRef<HTMLDivElement>();
   private _dismissTimerId: number;
   private _openTimerId: number;
   private _currentMouseTarget: EventTarget | null;
@@ -120,11 +120,11 @@ export class HoverCardBase extends BaseComponent<IHoverCardProps, IHoverCardStat
 
     // Common props for both card types.
     const commonCardProps = {
-      ...getNativeProps(this.props, divProperties),
+      ...getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties),
       id: hoverCardId,
       trapFocus: !!trapFocus,
       firstFocus: setInitialFocus || openMode === OpenCardMode.hotKey,
-      targetElement: this._getTargetElement(),
+      targetElement: this._getTargetElement(this.props.target),
       onEnter: this._cardOpen,
       onLeave: this._childDismissEvent
     };
@@ -146,9 +146,7 @@ export class HoverCardBase extends BaseComponent<IHoverCardProps, IHoverCardStat
     );
   }
 
-  private _getTargetElement(): HTMLElement | undefined {
-    const { target } = this.props;
-
+  private _getTargetElement(target?: HTMLElement | string | null): HTMLElement | undefined {
     switch (typeof target) {
       case 'string':
         return getDocument()!.querySelector(target as string) as HTMLElement;
@@ -251,23 +249,27 @@ export class HoverCardBase extends BaseComponent<IHoverCardProps, IHoverCardStat
   };
 
   private _setEventListeners = (): void => {
-    const { trapFocus, instantOpenOnClick } = this.props;
-    const target = this._getTargetElement();
+    const { trapFocus, instantOpenOnClick, eventListenerTarget } = this.props;
+    const target = eventListenerTarget ? this._getTargetElement(eventListenerTarget) : this._getTargetElement(this.props.target);
     const nativeEventDismiss = this._nativeDismissEvent;
 
-    this._events.on(target, 'mouseenter', this._cardOpen);
-    this._events.on(target, 'mouseleave', nativeEventDismiss);
-    if (trapFocus) {
-      this._events.on(target, 'keydown', this._cardOpen);
-    } else {
-      this._events.on(target, 'focus', this._cardOpen);
-      this._events.on(target, 'blur', nativeEventDismiss);
-    }
-    if (instantOpenOnClick) {
-      this._events.on(target, 'click', this._instantOpenAsExpanded);
-    } else {
-      this._events.on(target, 'mousedown', nativeEventDismiss);
-      this._events.on(target, 'keydown', nativeEventDismiss);
+    // target can be undefined if ref isn't available, only assign
+    // events when defined to avoid throwing exception.
+    if (target) {
+      this._events.on(target, 'mouseenter', this._cardOpen);
+      this._events.on(target, 'mouseleave', nativeEventDismiss);
+      if (trapFocus) {
+        this._events.on(target, 'keydown', this._cardOpen);
+      } else {
+        this._events.on(target, 'focus', this._cardOpen);
+        this._events.on(target, 'blur', nativeEventDismiss);
+      }
+      if (instantOpenOnClick) {
+        this._events.on(target, 'click', this._instantOpenAsExpanded);
+      } else {
+        this._events.on(target, 'mousedown', nativeEventDismiss);
+        this._events.on(target, 'keydown', nativeEventDismiss);
+      }
     }
   };
 }

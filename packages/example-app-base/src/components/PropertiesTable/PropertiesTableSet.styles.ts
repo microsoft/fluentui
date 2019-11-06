@@ -13,6 +13,6 @@ export const getStyles: IStyleFunction<IPropertiesTableSetStyleProps, IPropertie
       },
       'PropertiesTable'
     ],
-    tableHeader: theme.fonts.xLarge
+    tableHeader: theme.fonts.mediumPlus
   };
 };

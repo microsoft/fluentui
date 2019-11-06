@@ -1,6 +1,8 @@
 import { IGroupHeaderStyleProps, IGroupHeaderStyles } from './GroupHeader.types';
-import { getGlobalClassNames, getFocusStyle, FontSizes, IStyle, AnimationVariables, FontWeights, IconFontSizes } from '../../Styling';
-import { DEFAULT_ROW_HEIGHTS, DEFAULT_CELL_STYLE_PROPS } from '../DetailsList/DetailsRow.styles';
+import { getGlobalClassNames, getFocusStyle, IStyle, AnimationVariables, FontWeights, IconFontSizes } from '../../Styling';
+import { IsFocusVisibleClassName } from '../../Utilities';
+import { DEFAULT_CELL_STYLE_PROPS } from '../DetailsList/DetailsRow.styles';
+import { CHECK_CELL_WIDTH } from '../DetailsList/DetailsRowCheck.styles';
 // For every group level there is a GroupSpacer added. Importing this const to have the source value in one place.
 import { SPACER_WIDTH as EXPAND_BUTTON_WIDTH } from './GroupSpacer';
 
@@ -24,13 +26,15 @@ const beziers = {
   easeInBack: 'cubic-bezier(0.600, -0.280, 0.735, 0.045)'
 };
 
+const DEFAULT_GROUP_HEADER_HEIGHT = 48;
+const COMPACT_GROUP_HEADER_HEIGHT = 40;
+
 export const getStyles = (props: IGroupHeaderStyleProps): IGroupHeaderStyles => {
   const { theme, className, selected, isCollapsed, compact } = props;
-  const { rowHeight, compactRowHeight } = DEFAULT_ROW_HEIGHTS;
   const { cellLeftPadding } = DEFAULT_CELL_STYLE_PROPS; // padding from the source to align GroupHeader title with DetailsRow's first cell.
-  const finalRowHeight = compact ? compactRowHeight : rowHeight;
+  const finalRowHeight = compact ? COMPACT_GROUP_HEADER_HEIGHT : DEFAULT_GROUP_HEADER_HEIGHT;
 
-  const { semanticColors, palette } = theme;
+  const { semanticColors, palette, fonts } = theme;
 
   const classNames = getGlobalClassNames(GlobalClassNames, theme!);
 
@@ -56,17 +60,18 @@ export const getStyles = (props: IGroupHeaderStyleProps): IGroupHeaderStyles => 
         userSelect: 'none',
         selectors: {
           ':hover': {
-            background: semanticColors.listItemBackgroundHovered
+            background: semanticColors.listItemBackgroundHovered,
+            color: semanticColors.actionLinkHovered
           },
-          ':hover $check': {
+          [`&:hover .${classNames.check}`]: {
             opacity: 1
           },
-          ':focus $check': {
+          [`.${IsFocusVisibleClassName} &:focus .${classNames.check}`]: {
             opacity: 1
           },
           [`:global(.${classNames.group}.${classNames.isDropping})`]: {
             selectors: {
-              '> $root $dropIcon': {
+              [`& > .${classNames.root} .${classNames.dropIcon}`]: {
                 transition: `transform ${AnimationVariables.durationValue4} ${beziers.easeOutCirc} opacity ${
                   AnimationVariables.durationValue1
                 } ${beziers.easeOutSine}`,
@@ -75,7 +80,7 @@ export const getStyles = (props: IGroupHeaderStyleProps): IGroupHeaderStyles => 
                 transform: `rotate(0.2deg) scale(1);` // rotation prevents jittery motion in IE
               },
 
-              $check: {
+              [`.${classNames.check}`]: {
                 opacity: 0
               }
             }
@@ -90,7 +95,7 @@ export const getStyles = (props: IGroupHeaderStyleProps): IGroupHeaderStyles => 
             ':hover': {
               background: semanticColors.listItemBackgroundCheckedHovered
             },
-            $check: {
+            [`${classNames.check}`]: {
               opacity: 1
             }
           }
@@ -125,10 +130,10 @@ export const getStyles = (props: IGroupHeaderStyleProps): IGroupHeaderStyles => 
         paddingTop: 1,
         marginTop: -1,
         opacity: 0,
-        width: '40px',
+        width: CHECK_CELL_WIDTH,
         height: finalRowHeight,
         selectors: {
-          ':focus': {
+          [`.${IsFocusVisibleClassName} &:focus`]: {
             opacity: 1
           }
         }
@@ -141,7 +146,7 @@ export const getStyles = (props: IGroupHeaderStyleProps): IGroupHeaderStyles => 
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        fontSize: compact ? FontSizes.mediumPlus : 18, // we don't have 18px in our Fabric type ramps.
+        fontSize: fonts.small.fontSize,
         width: EXPAND_BUTTON_WIDTH,
         height: finalRowHeight,
         color: selected ? palette.neutralPrimary : palette.neutralSecondary,
@@ -175,8 +180,8 @@ export const getStyles = (props: IGroupHeaderStyleProps): IGroupHeaderStyles => 
       classNames.title,
       {
         paddingLeft: cellLeftPadding,
-        fontSize: compact ? FontSizes.large : FontSizes.xLarge,
-        fontWeight: FontWeights.semilight,
+        fontSize: compact ? fonts.medium.fontSize : fonts.mediumPlus.fontSize,
+        fontWeight: isCollapsed ? FontWeights.regular : FontWeights.semibold,
         cursor: 'pointer',
         outline: 0,
         whiteSpace: 'nowrap',

@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { ITilesListProps, ITilesGridItem, ITilesGridSegment, TilesGridMode, ITileSize } from './TilesList.types';
-import { List, IPageProps } from 'office-ui-fabric-react/lib/List';
+import { List, IPageProps, ScrollToMode } from 'office-ui-fabric-react/lib/List';
 import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react/lib/FocusZone';
-import { css, IRenderFunction, IRectangle } from 'office-ui-fabric-react/lib/Utilities';
+import { css, IRenderFunction, IRectangle, initializeFocusRects } from 'office-ui-fabric-react/lib/Utilities';
 import * as TilesListStylesModule from './TilesList.scss';
 import { Shimmer } from 'office-ui-fabric-react/lib/Shimmer';
 
@@ -38,6 +38,7 @@ export interface ITileCell<TItem> {
   aspectRatio: number;
   grid: ITileGrid;
   isPlaceholder?: boolean;
+  desiredHeight?: number;
   onRender(content: TItem, finalSize: { width: number; height: number }): React.ReactNode;
 }
 
@@ -78,17 +79,23 @@ interface IPageSpecificationCache<TItem> {
  */
 export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, ITilesListState<TItem>> {
   private _pageSpecificationCache: IPageSpecificationCache<TItem> | undefined;
+  private listRef: React.RefObject<List>;
 
   // tslint:disable-next-line:no-any
   constructor(props: ITilesListProps<TItem>, context: any) {
     super(props, context);
 
+    this.listRef = React.createRef();
+
     this.state = {
       cells: this._getCells(props.items)
     };
+
+    initializeFocusRects();
   }
 
-  public componentWillReceiveProps(nextProps: ITilesListProps<TItem>): void {
+  // tslint:disable-next-line function-name
+  public UNSAFE_componentWillReceiveProps(nextProps: ITilesListProps<TItem>): void {
     if (nextProps.items !== this.props.items) {
       this.setState({
         cells: this._getCells(nextProps.items)
@@ -96,7 +103,8 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
     }
   }
 
-  public componentWillUpdate(nextProps: ITilesListProps<TItem>, nextState: ITilesListState<TItem>): void {
+  // tslint:disable-next-line function-name
+  public UNSAFE_componentWillUpdate(nextProps: ITilesListProps<TItem>, nextState: ITilesListState<TItem>): void {
     if (nextState.cells !== this.state.cells) {
       this._pageSpecificationCache = undefined;
     }
@@ -122,9 +130,43 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
           role={role ? 'presentation' : undefined}
           getPageSpecification={this._getPageSpecification}
           onRenderPage={this._onRenderPage}
+          ref={this.listRef}
+          usePageCache={true}
+          {...this.props.listProps}
         />
       </FocusZone>
     );
+  }
+
+  public scrollToIndex(index: number, mode: ScrollToMode = ScrollToMode.auto): void {
+    if (this.listRef && this.listRef.current) {
+      if (this.state.cells[index].grid.mode === TilesGridMode.none) {
+        // if we are using grid mode none, we reliably know the height of the cell,
+        // so we can implement the measureItem callback.
+        this.listRef.current.scrollToIndex(
+          index,
+          (itemIndex: number) => {
+            const cell = this.state.cells[index];
+            if (cell && cell.desiredHeight !== undefined) {
+              return cell.desiredHeight;
+            }
+            return 0;
+          },
+          mode
+        );
+      } else {
+        // otherwise, we do not implement the measure item callback,
+        // then the List will just scroll to the nearest page
+        this.listRef.current.scrollToIndex(index, undefined, mode);
+      }
+    }
+  }
+
+  public getTotalListHeight(): number {
+    if (this.listRef && this.listRef.current && this.listRef.current.getTotalListHeight) {
+      return this.listRef.current.getTotalListHeight();
+    }
+    return 0; // Stub
   }
 
   private _onRenderCell(item: ITileCell<TItem>, finalSize: ITileSize): JSX.Element {
@@ -350,8 +392,9 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
     }
 
     const { cells } = this.state;
+    const { cellsPerPage = CELLS_PER_PAGE } = this.props;
 
-    const endIndex = Math.min(cells.length, startIndex + CELLS_PER_PAGE);
+    const endIndex = Math.min(cells.length, startIndex + cellsPerPage);
 
     let rowWidth = 0;
     let rowStart = 0;
@@ -605,7 +648,8 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
             onRender: gridItem.onRender,
             grid: grid,
             key: gridItem.key,
-            isPlaceholder: gridItem.isPlaceholder
+            isPlaceholder: gridItem.isPlaceholder,
+            desiredHeight: desiredSize ? desiredSize.height : undefined
           });
         }
       } else {

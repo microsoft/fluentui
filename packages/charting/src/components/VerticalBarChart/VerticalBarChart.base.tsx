@@ -103,7 +103,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
     const yMax = d3Max(this._points, (point: IDataPoint) => point.y)!;
     const yAxisScale = d3ScaleLinear()
       .domain([0, yMax])
-      .range([this._height, 0]);
+      .range([this._height, 10]);
     const yAxis = d3AxisLeft(yAxisScale).ticks(this._yAxisTickCount);
     return yAxis;
   }
@@ -117,7 +117,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       .range([0, this._width - this._barWidth]);
     const yBarScale = d3ScaleLinear()
       .domain([0, yMax])
-      .range([0, this._height]);
+      .range([0, this._height - 10]);
 
     const colorScale = this._createColors(yMax);
 

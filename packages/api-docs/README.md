@@ -1,3 +1,3 @@
-# [@uifabric/api-docs](http://dev.microsoft.com/fabric)
+# @uifabric/api-docs
 
-Provides a set of page.json files to populate API references for the UI Fabric website.
+Provides a set of page.json files to populate API references for the [UI Fabric website](https://dev.microsoft.com/fabric).

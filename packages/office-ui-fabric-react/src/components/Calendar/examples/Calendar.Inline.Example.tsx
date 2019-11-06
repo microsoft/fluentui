@@ -1,8 +1,7 @@
 import * as React from 'react';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { addDays, getDateRangeArray } from 'office-ui-fabric-react/lib/utilities/dateMath/DateMath';
-import { Calendar, DayOfWeek } from 'office-ui-fabric-react/lib/Calendar';
-import { DateRangeType } from 'office-ui-fabric-react/lib/Calendar';
+import { Calendar, DayOfWeek, DateRangeType } from 'office-ui-fabric-react/lib/Calendar';
 
 const DayPickerStrings = {
   months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],

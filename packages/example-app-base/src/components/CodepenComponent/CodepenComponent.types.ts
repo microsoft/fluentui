@@ -4,14 +4,10 @@ import { ITheme } from 'office-ui-fabric-react/lib/Styling';
 
 export interface ICodepenProps {
   /** JS string to be passed into Codepen */
-  jsContent: string;
+  jsContent: string | (() => string);
+
   /** Optional button type */
   buttonAs?: IComponentAs<IButtonProps>;
-  /**
-   * Custom class name for the button.
-   * @deprecated Use `styles`
-   */
-  buttonClassName?: string;
 
   /** Theme provided by higher-order component. */
   theme?: ITheme;

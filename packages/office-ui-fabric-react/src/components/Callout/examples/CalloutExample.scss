@@ -2,7 +2,7 @@
 
 :global {
   .ms-CalloutExample-callout {
-      max-width: 300px;
+    max-width: 300px;
   }
 
   .ms-CalloutExample-configArea {
@@ -50,6 +50,10 @@
   .ms-CalloutExample-inner {
     height: 100%;
     padding: 0 24px 20px;
+  }
+
+  .ms-CalloutExample-buttons {
+    padding: 0 24px 12px;
   }
 
   .ms-CalloutExample-header {

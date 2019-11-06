@@ -1,13 +1,16 @@
 import { {{componentName}}View } from './{{componentName}}.view';
 import { {{componentName}}Styles, {{componentName}}Tokens } from './{{componentName}}.styles';
-import { {{componentName}}State } from './{{componentName}}.state';
+import { use{{componentName}}State } from './{{componentName}}.state';
 import { I{{componentName}}Props } from './{{componentName}}.types';
 import { createComponent } from '../../Foundation';
 
+/**
+* {@docCategory {{componentName}}}
+*/
 export const {{componentName}}: React.StatelessComponent<I{{componentName}}Props> = createComponent({
   displayName: '{{componentName}}',
   view: {{componentName}}View,
-  state: {{componentName}}State,
+  state: use{{componentName}}State,
   styles: {{componentName}}Styles,
   tokens: {{componentName}}Tokens
 });

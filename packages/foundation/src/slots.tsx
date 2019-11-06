@@ -9,17 +9,14 @@ import {
   ISlots,
   ISlotDefinition,
   ISlotFactory,
-  ISlotProps,
-  ISlotPropValue,
-  ISlotRenderer,
+  ISlotProp,
+  ISlottableProps,
+  ISlotOptions,
   IDefaultSlotProps,
-  IProcessedSlotProps
+  IProcessedSlotProps,
+  ValidProps,
+  ValidShorthand
 } from './ISlots';
-
-// TODO: Is getting only div props for 'root' slots is pretty limiting? Or is it exactly as it needs to be?
-//        Another example is getting Toggle state for `label` slot render functions. Should it get Toggle props instead?
-//        Needs more usage to rationalize the best approach. If we want component props, component props are passed
-//        as each slot as rendered and aren't available when getSlots is called. This would substantially change this approach.
 
 /**
  * This function is required for any module that uses slots.
@@ -35,11 +32,11 @@ import {
  */
 // Can't use typeof on React.createElement since it's overloaded. Approximate createElement's signature for now and widen as needed.
 export function withSlots<P>(
-  type: ISlot<P> | React.SFC<P> | string,
+  type: ISlot<P> | React.FunctionComponent<P> | string,
   props?: React.Attributes & P | null,
   // tslint:disable-next-line:missing-optional-annotation
   ...children: React.ReactNode[]
-): React.ReactElement<P> | JSX.Element | null {
+): ReturnType<React.FunctionComponent<P>> {
   const slotType = type as ISlot<P>;
   if (slotType.isSlot) {
     // TODO: There is something weird going on here with children embedded in props vs. rest args.
@@ -71,41 +68,39 @@ export function withSlots<P>(
 
 /**
  * This function creates factories that render ouput depending on the user ISlotProp props passed in.
- * @param ComponentType - Base component to render when not overridden by user props.
+ * @param DefaultComponent - Base component to render when not overridden by user props.
  * @param options - Factory options, including defaultProp value for shorthand prop mapping.
  * @returns ISlotFactory function used for rendering slots.
  */
-export function createFactory<TProps>(
-  ComponentType: React.ComponentType<TProps>,
+export function createFactory<TProps extends ValidProps, TShorthandProp extends ValidShorthand = never>(
+  DefaultComponent: React.ComponentType<TProps>,
   options: IFactoryOptions<TProps> = {}
-): ISlotFactory<TProps> {
+): ISlotFactory<TProps, TShorthandProp> {
   const { defaultProp = 'children' } = options;
 
-  const result: ISlotFactory<TProps> = (componentProps, userProps, defaultStyles) => {
+  const result: ISlotFactory<TProps, TShorthandProp> = (componentProps, userProps, userSlotOptions, defaultStyles) => {
     // If they passed in raw JSX, just return that.
     if (React.isValidElement(userProps)) {
       return userProps;
     }
 
-    // If we're rendering a function, let the user resolve how to render given the original component and final args.
-    if (typeof userProps === 'function') {
-      const render: ISlotRenderer<TProps> = (slotRenderFunction, renderProps) => {
-        // TODO: _translateShorthand is returning TProps, so why is the finalProps cast required?
-        // TS isn't respecting the difference between props arg type and return type and instead treating both as ISlotPropValue.
-        let finalRenderProps = _translateShorthand(defaultProp, renderProps) as TProps;
-        finalRenderProps = _constructFinalProps(defaultStyles, componentProps, finalRenderProps);
+    const flattenedUserProps: TProps | undefined = _translateShorthand(defaultProp as string, userProps);
+    const finalProps = _constructFinalProps(defaultStyles, componentProps, flattenedUserProps);
 
-        return slotRenderFunction(ComponentType, finalRenderProps);
-      };
-      return userProps(render);
+    if (userSlotOptions) {
+      if (userSlotOptions.component) {
+        // TODO: Remove cast if possible. This cast is needed because TS errors on the intrinsic portion of ReactType.
+        // return <userSlotOptions.component {...finalProps} />;
+        const UserComponent = userSlotOptions.component as React.ComponentType<TProps>;
+        return <UserComponent {...finalProps} />;
+      }
+
+      if (userSlotOptions.render) {
+        return userSlotOptions.render(finalProps, DefaultComponent);
+      }
     }
 
-    userProps = _translateShorthand(defaultProp, userProps);
-    // TODO: _translateShorthand is returning TProps, so why is the finalProps cast required?
-    // TS isn't respecting the difference between props arg type and return type and instead treating both as ISlotPropValue.
-    const finalProps = _constructFinalProps(defaultStyles, componentProps, userProps) as TProps;
-
-    return <ComponentType {...finalProps} />;
+    return <DefaultComponent {...finalProps} />;
   };
 
   return result;
@@ -122,31 +117,34 @@ const defaultFactory = memoizeFunction(type => createFactory(type));
  * @param slots - Slot definition object defining the default slot component for each slot.
  * @returns A set of created slots that components can render in JSX.
  */
-export function getSlots<TProps extends TSlots, TSlots extends ISlotProps<TProps, TSlots>>(
-  userProps: TProps,
-  slots: ISlotDefinition<Required<TSlots>>
-): ISlots<Required<TSlots>> {
-  const result: ISlots<Required<TSlots>> = {} as ISlots<Required<TSlots>>;
+export function getSlots<TComponentProps extends ISlottableProps<TComponentSlots>, TComponentSlots>(
+  userProps: TComponentProps,
+  slots: ISlotDefinition<Required<TComponentSlots>>
+): ISlots<Required<TComponentSlots>> {
+  const result: ISlots<Required<TComponentSlots>> = {} as ISlots<Required<TComponentSlots>>;
 
   // userProps already has default props mixed in by createComponent. Recast here to gain typing for this function.
-  const mixedProps = userProps as TProps & IDefaultSlotProps<TSlots>;
+  const mixedProps = userProps as TComponentProps & IDefaultSlotProps<TComponentSlots>;
 
   for (const name in slots) {
     if (slots.hasOwnProperty(name)) {
       // This closure method requires the use of withSlots to prevent unnecessary rerenders. This is because React detects
       //  each closure as a different component (since it is a new instance) from the previous one and then forces a rerender of the entire
       //  slot subtree. For now, the only way to avoid this is to use withSlots, which bypasses the call to React.createElement.
-      const slot: ISlot<keyof TSlots> = (componentProps, ...args: any[]) => {
+      const slot: ISlots<Required<TComponentSlots>>[keyof TComponentSlots] = (componentProps, ...args: any[]) => {
         if (args.length > 0) {
           // If React.createElement is being incorrectly used with slots, there will be additional arguments.
           // We can detect these additional arguments and error on their presence.
           throw new Error('Any module using getSlots must use withSlots. Please see withSlots javadoc for more info.');
         }
-        return _renderSlot(
+        // TODO: having TS infer types here seems to cause infinite loop. use explicit types or casting to preserve typing if possible.
+        // TODO: this should be a lookup on TProps property instead of being TProps directly, which is probably causing the infinite loop
+        return _renderSlot<any, any, any>(
           slots[name],
           // TODO: this cast to any is hiding a relationship issue between the first two args
           componentProps as any,
           mixedProps[name],
+          mixedProps.slots && mixedProps.slots[name],
           // _defaultStyles should always be present, but a check for existence is added to make view tests easier to use.
           mixedProps._defaultStyles && mixedProps._defaultStyles[name]
         );
@@ -160,15 +158,25 @@ export function getSlots<TProps extends TSlots, TSlots extends ISlotProps<TProps
 }
 
 /**
- * Helper function that constructs a props object when given shorthand props.
+ * Helper function that translates shorthand as needed.
+ * @param defaultProp
+ * @param slotProps
  */
-function _translateShorthand<TProps>(defaultProp: string, props: ISlotPropValue<TProps>): TProps {
-  if (typeof props === 'string' || typeof props === 'number' || typeof props === 'boolean') {
-    props = {
-      [defaultProp]: props as any
+function _translateShorthand<TProps extends ValidProps, TShorthandProp extends ValidShorthand>(
+  defaultProp: string,
+  slotProps: ISlotProp<TProps, TShorthandProp>
+): TProps | undefined {
+  let transformedProps: TProps | undefined;
+
+  if (typeof slotProps === 'string' || typeof slotProps === 'number' || typeof slotProps === 'boolean') {
+    transformedProps = {
+      [defaultProp]: slotProps as any
     } as TProps;
+  } else {
+    transformedProps = slotProps as TProps;
   }
-  return props;
+
+  return transformedProps;
 }
 
 /**
@@ -195,15 +203,26 @@ function _constructFinalProps<TProps extends IProcessedSlotProps>(defaultStyles:
  * @param componentProps The properties passed into slot from within the component.
  * @param userProps The user properties passed in from outside of the component.
  */
-function _renderSlot<TComponent extends ISlottableReactType<TProps>, TProps, TSlots>(
-  ComponentType: TComponent,
-  componentProps: TProps,
-  userProps: TProps,
+function _renderSlot<
+  TSlotComponent extends ISlottableReactType<TSlotProps, TSlotShorthand>,
+  TSlotProps extends ValidProps,
+  TSlotShorthand extends ValidShorthand
+>(
+  ComponentType: TSlotComponent,
+  componentProps: TSlotProps,
+  userProps: ISlotProp<TSlotProps, TSlotShorthand>,
+  slotOptions: ISlotOptions<TSlotProps> | undefined,
   defaultStyles: IStyle
-): JSX.Element {
+): ReturnType<React.FunctionComponent> {
   if (ComponentType.create !== undefined) {
-    return ComponentType.create(componentProps, userProps, defaultStyles);
+    return ComponentType.create(componentProps, userProps, slotOptions, defaultStyles);
   } else {
-    return defaultFactory(ComponentType)(componentProps, userProps, defaultStyles);
+    // TODO: need to resolve typing / generic issues passing through memoizeFunction. for now, cast to 'unknown'
+    return ((defaultFactory(ComponentType) as unknown) as ISlotFactory<TSlotProps, TSlotShorthand>)(
+      componentProps,
+      userProps,
+      slotOptions,
+      defaultStyles
+    );
   }
 }

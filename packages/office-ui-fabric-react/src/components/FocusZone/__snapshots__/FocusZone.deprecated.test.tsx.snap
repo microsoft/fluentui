@@ -13,6 +13,5 @@ exports[`FocusZone renders FocusZone correctly with ariaDescribedby and ariaLabe
   onFocus={[Function]}
   onKeyDown={[Function]}
   onMouseDownCapture={[Function]}
-  role="presentation"
 />
 `;

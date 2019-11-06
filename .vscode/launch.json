@@ -8,13 +8,15 @@
       "program": "${workspaceRoot}/scripts/debug-test.js",
       "cwd": "${fileDirname}",
       "stopOnEntry": false,
-      "args": ["-i"],
+      "args": ["-i", "--watch"],
       "runtimeExecutable": null,
       "runtimeArgs": ["--nolazy", "--debug"],
       "env": {
         "NODE_ENV": "development"
       },
-      "sourceMaps": true
+      "sourceMaps": true,
+      "outputCapture": "std",
+      "console": "integratedTerminal"
     },
     {
       "name": "Debug current open test",
@@ -23,14 +25,15 @@
       "program": "${workspaceRoot}/scripts/debug-test.js",
       "cwd": "${fileDirname}",
       "stopOnEntry": false,
-      "args": ["-i", "--testPathPattern=${fileBasenameNoExtension}"],
+      "args": ["-i", "--testPathPattern=\\b${fileBasenameNoExtension}", "--watch"],
       "runtimeExecutable": null,
       "runtimeArgs": ["--nolazy", "--debug"],
       "env": {
         "NODE_ENV": "development"
       },
       "sourceMaps": true,
-      "outputCapture": "std"
+      "outputCapture": "std",
+      "console": "integratedTerminal"
     },
     {
       "name": "Run server",
@@ -96,7 +99,7 @@
       "request": "launch",
       // scripts/start.js generates this script path and launches a subprocess (which is harder
       // to debug), so in the launch configuration we start the script directly instead.
-      "program": "${workspaceRoot}/scripts/node_modules/webpack-dev-server/bin/webpack-dev-server.js",
+      "program": "${workspaceRoot}/node_modules/webpack-dev-server/bin/webpack-dev-server.js",
       "stopOnEntry": true,
       "cwd": "${workspaceRoot}/apps/fabric-website",
       "runtimeExecutable": null,
@@ -152,6 +155,24 @@
       "sourceMaps": true
     },
     {
+      "name": "Debug update release notes",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceRoot}/scripts/updateReleaseNotes/index.js",
+      "cwd": "${workspaceRoot}",
+      "stopOnEntry": false,
+      // For local testing, generate a personal access token (https://github.com/settings/tokens)
+      // and replace "your token here" with the token. DO NOT COMMIT YOUR TOKEN!
+      "args": ["--token", "your token here", "--patch", "--age", "20"],
+      "runtimeExecutable": null,
+      "runtimeArgs": ["--nolazy", "--debug"],
+      "env": {
+        "NODE_ENV": "development"
+      },
+      "sourceMaps": true,
+      "console": "integratedTerminal"
+    },
+    {
       "name": "Debug page json generator",
       "type": "node",
       "request": "launch",
@@ -163,7 +184,8 @@
       "env": {
         "NODE_ENV": "development"
       },
-      "sourceMaps": true
+      "sourceMaps": true,
+      "console": "integratedTerminal"
     }
   ]
 }

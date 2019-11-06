@@ -17,6 +17,7 @@ import {
   updateA,
   correctRGB,
   correctHSV,
+  correctHex,
   clamp,
   IColor
 } from './colors';
@@ -302,6 +303,23 @@ describe('color utilities', () => {
   describe('correctHSV', () => {
     it('works', () => {
       expect(correctHSV({ h: 400, s: -1, v: 30 })).toEqual({ h: 359, s: 0, v: 30 });
+    });
+  });
+
+  describe('correctHex', () => {
+    it('works', () => {
+      expect(correctHex('1234567')).toBe('123456');
+      expect(correctHex('123456')).toBe('123456');
+      expect(correctHex('1234')).toBe('123');
+      expect(correctHex('123')).toBe('123');
+      expect(correctHex('12')).toBe('ffffff');
+      expect(correctHex('')).toBe('ffffff');
+      expect(correctHex(undefined as any)).toBe('ffffff');
+
+      // documenting: it does NOT check the input for valid characters
+      expect(correctHex('hello world')).toBe('hello ');
+      // or handle hex values starting with #
+      expect(correctHex('#123456')).toBe('#12345');
     });
   });
 });

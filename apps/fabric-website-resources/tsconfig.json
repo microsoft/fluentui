@@ -18,7 +18,7 @@
     "noImplicitThis": true,
     "skipLibCheck": true,
     "lib": ["es5", "dom"],
-    "types": ["jest", "webpack-env"]
+    "types": ["jest", "webpack-env", "puppeteer", "es6-promise"]
   },
   "include": ["src"]
 }

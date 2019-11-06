@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { styled } from '../../Utilities';
 import { SwatchColorPickerBase } from './SwatchColorPicker.base';
 import { ISwatchColorPickerProps, ISwatchColorPickerStyles, ISwatchColorPickerStyleProps } from './SwatchColorPicker.types';

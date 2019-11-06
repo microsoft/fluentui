@@ -1,5 +1,6 @@
 export { AnimationStyles, AnimationVariables } from './AnimationStyles';
 export { DefaultPalette } from './DefaultPalette';
+export { DefaultEffects } from './DefaultEffects';
 export { DefaultFontStyles, registerDefaultFontFaces } from './DefaultFontStyles';
 export { FontSizes, FontWeights, IconFontSizes, createFontStyles } from './fonts';
 export * from './getFocusStyle';
@@ -11,4 +12,5 @@ export { ThemeSettingName, getTheme, loadTheme, createTheme, registerOnThemeChan
 export * from './CommonStyles';
 export * from './GeneralStyles';
 export * from './getFadedOverflowStyle';
+export * from './getPlaceholderStyles';
 export * from './zIndexes';

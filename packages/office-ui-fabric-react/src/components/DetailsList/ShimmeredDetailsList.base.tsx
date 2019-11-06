@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { BaseComponent, classNamesFunction } from '../../Utilities';
+import { classNamesFunction, css } from '../../Utilities';
 import { IProcessedStyleSet } from '../../Styling';
 import { SelectionMode } from '../../utilities/selection/interfaces';
 import { DetailsList } from './DetailsList';
@@ -17,7 +17,7 @@ const SHIMMER_INITIAL_ITEMS = 10;
 const DEFAULT_SHIMMER_HEIGHT = 7;
 const SHIMMER_LINE_VS_CELL_WIDTH_RATIO = 0.95;
 
-export class ShimmeredDetailsListBase extends BaseComponent<IShimmeredDetailsListProps, {}> {
+export class ShimmeredDetailsListBase extends React.Component<IShimmeredDetailsListProps, {}> {
   private _shimmerItems: null[];
   private _classNames: IProcessedStyleSet<IShimmeredDetailsListStyles>;
 
@@ -38,30 +38,33 @@ export class ShimmeredDetailsListBase extends BaseComponent<IShimmeredDetailsLis
       shimmerLines,
       styles,
       theme,
+      ariaLabelForGrid,
+      ariaLabelForShimmer,
       ...restProps
     } = this.props;
 
     const listClassName = listProps && listProps.className;
 
     this._classNames = getClassNames(styles, {
-      theme: theme!,
-      className: listClassName,
-      enableShimmer
+      theme: theme!
     });
 
     const newListProps = {
       ...listProps,
-      // Adds to the optional listProp className a fading out overlay className only when shimmer enabled.
-      className: enableShimmer && !removeFadingOverlay ? this._classNames.root : listClassName
+      // Adds to the optional listProp className a fading out overlay className only when `enableShimmer` toggled on
+      // and the overlay is not disabled by `removeFadingOverlay` prop.
+      className: enableShimmer && !removeFadingOverlay ? css(this._classNames.root, listClassName) : listClassName
     };
 
     return (
       <DetailsList
         {...restProps}
+        styles={detailsListStyles}
         items={enableShimmer ? this._shimmerItems : items}
+        isPlaceholderData={enableShimmer}
+        ariaLabelForGrid={(enableShimmer && ariaLabelForShimmer) || ariaLabelForGrid}
         onRenderMissingItem={this._onRenderShimmerPlaceholder}
         listProps={newListProps}
-        styles={detailsListStyles}
       />
     );
   }
@@ -70,7 +73,7 @@ export class ShimmeredDetailsListBase extends BaseComponent<IShimmeredDetailsLis
     const { onRenderCustomPlaceholder } = this.props;
 
     const placeholderElements: React.ReactNode = onRenderCustomPlaceholder
-      ? onRenderCustomPlaceholder(rowProps)
+      ? onRenderCustomPlaceholder(rowProps, index, this._renderDefaultShimmerPlaceholder)
       : this._renderDefaultShimmerPlaceholder(rowProps);
 
     return <Shimmer customElementsGroup={placeholderElements} />;

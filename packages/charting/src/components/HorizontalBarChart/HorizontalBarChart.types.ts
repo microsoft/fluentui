@@ -95,6 +95,11 @@ export interface IHorizontalBarChartStyles {
   chartTitle: IStyle;
 
   /**
+   * Style for the bars.
+   */
+  barWrapper: IStyle;
+
+  /**
    * Style for the chart data text.
    */
   chartDataText: IStyle;

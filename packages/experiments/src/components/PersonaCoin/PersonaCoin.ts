@@ -1,12 +1,11 @@
-import { PersonaCoinView } from './PersonaCoin.view';
+import { createComponent } from '../../Foundation';
+import { usePersonaCoinState } from './PersonaCoin.state';
 import { PersonaCoinStyles } from './PersonaCoin.styles';
 import { IPersonaCoinProps } from './PersonaCoin.types';
-import { createComponent } from '../../Foundation';
-import { PersonaCoinState } from './PersonaCoin.state';
+import { PersonaCoinView } from './PersonaCoin.view';
 
-export const PersonaCoin: React.StatelessComponent<IPersonaCoinProps> = createComponent({
+export const PersonaCoin: React.StatelessComponent<IPersonaCoinProps> = createComponent(PersonaCoinView, {
   displayName: 'PersonaCoin',
-  view: PersonaCoinView,
   styles: PersonaCoinStyles,
-  state: PersonaCoinState
+  state: usePersonaCoinState
 });

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, classNamesFunction, IClassNames } from '../../Utilities';
+import { initializeComponentRef, classNamesFunction, IClassNames, initializeFocusRects } from '../../Utilities';
 import { IGroupedList, IGroupedListProps, IGroup, IGroupedListStyleProps, IGroupedListStyles } from './GroupedList.types';
 import { GroupedListSection } from './GroupedListSection';
 import { List, ScrollToMode, IListProps } from '../../List';
@@ -18,7 +18,7 @@ export interface IGroupedListState {
   groups?: IGroup[];
 }
 
-export class GroupedListBase extends BaseComponent<IGroupedListProps, IGroupedListState> implements IGroupedList {
+export class GroupedListBase extends React.Component<IGroupedListProps, IGroupedListState> implements IGroupedList {
   public static defaultProps = {
     selectionMode: SelectionMode.multiple,
     isHeaderVisible: true,
@@ -39,6 +39,9 @@ export class GroupedListBase extends BaseComponent<IGroupedListProps, IGroupedLi
   constructor(props: IGroupedListProps) {
     super(props);
 
+    initializeComponentRef(this);
+    initializeFocusRects();
+
     this._isSomeGroupExpanded = this._computeIsSomeGroupExpanded(props.groups);
 
     this.state = {
@@ -57,7 +60,8 @@ export class GroupedListBase extends BaseComponent<IGroupedListProps, IGroupedLi
     return this._list.current!.getStartItemIndexInView() || 0;
   }
 
-  public componentWillReceiveProps(newProps: IGroupedListProps): void {
+  // tslint:disable-next-line function-name
+  public UNSAFE_componentWillReceiveProps(newProps: IGroupedListProps): void {
     const { groups, selectionMode, compact } = this.props;
     let shouldForceUpdates = false;
 
@@ -84,13 +88,15 @@ export class GroupedListBase extends BaseComponent<IGroupedListProps, IGroupedLi
   }
 
   public render(): JSX.Element {
-    const { className, usePageCache, onShouldVirtualize, theme, styles, compact } = this.props;
+    const { className, usePageCache, onShouldVirtualize, theme, styles, compact, listProps = {} } = this.props;
     const { groups } = this.state;
     this._classNames = getClassNames(styles, {
       theme: theme!,
       className,
       compact: compact
     });
+
+    const { version } = listProps;
 
     return (
       <div className={this._classNames.root} data-automationid="GroupedList" data-is-scrollable="false" role="presentation">
@@ -107,6 +113,7 @@ export class GroupedListBase extends BaseComponent<IGroupedListProps, IGroupedLi
             getPageSpecification={this._getPageSpecification}
             usePageCache={usePageCache}
             onShouldVirtualize={onShouldVirtualize}
+            version={version}
           />
         )}
       </div>

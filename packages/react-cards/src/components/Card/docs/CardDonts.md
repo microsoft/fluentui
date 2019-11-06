@@ -1,0 +1,1 @@
+- Don’t pass any children of type other than CardItem or CardSection to the Card component.

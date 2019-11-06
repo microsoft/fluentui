@@ -36,7 +36,7 @@ export class FacepileBase extends BaseComponent<IFacepileProps, {}> {
 
   public render(): JSX.Element {
     let { overflowButtonProps } = this.props;
-    const { chevronButtonProps, maxDisplayablePersonas, personas, overflowPersonas, showAddButton } = this.props;
+    const { chevronButtonProps, maxDisplayablePersonas, personas, overflowPersonas, showAddButton, ariaLabel } = this.props;
 
     const { _classNames } = this;
 
@@ -58,7 +58,7 @@ export class FacepileBase extends BaseComponent<IFacepileProps, {}> {
         {this.onRenderAriaDescription()}
         <div className={_classNames.itemContainer}>
           {showAddButton ? this._getAddNewElement() : null}
-          <ul className={_classNames.members} role="listbox">
+          <ul className={_classNames.members} role="listbox" aria-label={ariaLabel}>
             {this._onRenderVisiblePersonas(personasPrimary, personasOverflow.length === 0 && personas.length === 1)}
           </ul>
           {overflowButtonProps ? this._getOverflowElement(personasOverflow) : null}
@@ -84,10 +84,18 @@ export class FacepileBase extends BaseComponent<IFacepileProps, {}> {
   }
 
   private _onRenderVisiblePersonas(personas: IFacepilePersona[], singlePersona: boolean): JSX.Element[] {
+    const { onRenderPersona = this._getPersonaControl, onRenderPersonaCoin = this._getPersonaCoinControl } = this.props;
     return personas.map((persona: IFacepilePersona, index: number) => {
-      const personaControl: JSX.Element = singlePersona ? this._getPersonaControl(persona) : this._getPersonaCoinControl(persona);
+      const personaControl: JSX.Element | null = singlePersona
+        ? onRenderPersona(persona, this._getPersonaControl)
+        : onRenderPersonaCoin(persona, this._getPersonaCoinControl);
       return (
-        <li role="option" key={`${singlePersona ? 'persona' : 'personaCoin'}-${index}`} className={this._classNames.member}>
+        <li
+          role="option"
+          key={`${singlePersona ? 'persona' : 'personaCoin'}-${index}`}
+          className={this._classNames.member}
+          aria-label={persona['aria-label'] || persona.personaName}
+        >
           {persona.onClick
             ? this._getElementWithOnClickEvent(personaControl, persona, index)
             : this._getElementWithoutOnClickEvent(personaControl, persona, index)}
@@ -96,7 +104,7 @@ export class FacepileBase extends BaseComponent<IFacepileProps, {}> {
     });
   }
 
-  private _getPersonaControl(persona: IFacepilePersona): JSX.Element {
+  private _getPersonaControl = (persona: IFacepilePersona): JSX.Element | null => {
     const { getPersonaProps, personaSize } = this.props;
     const personaStyles: Partial<IPersonaStyles> = {
       details: {
@@ -116,9 +124,9 @@ export class FacepileBase extends BaseComponent<IFacepileProps, {}> {
         styles={personaStyles}
       />
     );
-  }
+  };
 
-  private _getPersonaCoinControl(persona: IFacepilePersona): JSX.Element {
+  private _getPersonaCoinControl = (persona: IFacepilePersona): JSX.Element | null => {
     const { getPersonaProps, personaSize } = this.props;
     return (
       <PersonaCoin
@@ -131,9 +139,9 @@ export class FacepileBase extends BaseComponent<IFacepileProps, {}> {
         {...(getPersonaProps ? getPersonaProps(persona) : null)}
       />
     );
-  }
+  };
 
-  private _getElementWithOnClickEvent(personaControl: JSX.Element, persona: IFacepilePersona, index: number): JSX.Element {
+  private _getElementWithOnClickEvent(personaControl: JSX.Element | null, persona: IFacepilePersona, index: number): JSX.Element {
     const { keytipProps } = persona;
     return (
       <FacepileButton
@@ -147,7 +155,7 @@ export class FacepileBase extends BaseComponent<IFacepileProps, {}> {
     );
   }
 
-  private _getElementWithoutOnClickEvent(personaControl: JSX.Element, persona: IFacepilePersona, index: number): JSX.Element {
+  private _getElementWithoutOnClickEvent(personaControl: JSX.Element | null, persona: IFacepilePersona, index: number): JSX.Element {
     return (
       <div {...getNativeProps(persona, buttonProperties)} {...this._getElementProps(persona, index)}>
         {personaControl}
@@ -164,7 +172,7 @@ export class FacepileBase extends BaseComponent<IFacepileProps, {}> {
     return {
       key: (!!persona.imageUrl ? 'i' : '') + index,
       'data-is-focusable': true,
-      role: 'option',
+      'aria-hidden': true,
       className: _classNames.itemButton,
       title: persona.personaName,
       onMouseMove: this._onPersonaMouseMove.bind(this, persona),

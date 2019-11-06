@@ -7,6 +7,8 @@ import { primaryStyles, standardStyles } from '../ButtonThemes';
 
 export const getStyles = memoizeFunction(
   (theme: ITheme, customStyles?: IButtonStyles, primary?: boolean): IButtonStyles => {
+    const { fonts, palette } = theme;
+
     const baseButtonStyles: IButtonStyles = getBaseButtonStyles(theme);
     const splitButtonStyles: IButtonStyles = getSplitButtonStyles(theme);
     const compoundButtonStyles: IButtonStyles = {
@@ -14,7 +16,7 @@ export const getStyles = memoizeFunction(
         maxWidth: '280px',
         minHeight: '72px',
         height: 'auto',
-        padding: '20px'
+        padding: '16px 12px'
       },
 
       flexContainer: {
@@ -43,7 +45,7 @@ export const getStyles = memoizeFunction(
         fontWeight: FontWeights.semibold
       },
       description: [
-        theme.fonts.small,
+        fonts.small,
         {
           lineHeight: '100%'
         }
@@ -52,11 +54,11 @@ export const getStyles = memoizeFunction(
 
     const standardCompoundTheme: IButtonStyles = {
       description: {
-        color: theme.palette.neutralSecondary
+        color: palette.neutralSecondary
       },
 
       descriptionHovered: {
-        color: theme.palette.neutralDark
+        color: palette.neutralDark
       },
 
       descriptionPressed: {
@@ -74,7 +76,29 @@ export const getStyles = memoizeFunction(
 
     const primaryCompoundTheme: IButtonStyles = {
       description: {
-        color: theme.palette.white,
+        color: palette.white,
+        selectors: {
+          [HighContrastSelector]: {
+            backgroundColor: 'WindowText',
+            color: 'Window',
+            MsHighContrastAdjust: 'none'
+          }
+        }
+      },
+
+      descriptionHovered: {
+        color: palette.white,
+        selectors: {
+          [HighContrastSelector]: {
+            backgroundColor: 'Highlight',
+            color: 'Window'
+          }
+        }
+      },
+
+      descriptionPressed: {
+        color: 'inherit',
+
         selectors: {
           [HighContrastSelector]: {
             color: 'Window',
@@ -84,23 +108,16 @@ export const getStyles = memoizeFunction(
         }
       },
 
-      descriptionHovered: {
-        color: theme.palette.white,
+      descriptionChecked: {
+        color: 'inherit',
+
         selectors: {
           [HighContrastSelector]: {
             color: 'Window',
-            backgroundColor: 'Highlight',
+            backgroundColor: 'WindowText',
             MsHighContrastAdjust: 'none'
           }
         }
-      },
-
-      descriptionPressed: {
-        color: 'inherit'
-      },
-
-      descriptionChecked: {
-        color: 'inherit'
       },
 
       descriptionDisabled: {

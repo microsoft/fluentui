@@ -9,10 +9,10 @@ export class StaticList<TItem extends IObjectWithKey> extends React.Component<IS
   public render(): JSX.Element {
     const { className, items, onRenderItem, listTagName: ListTag = 'ul' } = this.props;
 
-    return (
-      <ListTag className={css(stylesImport.root, className)}>
-        {items.map((item: TItem, index: number) => onRenderItem(item, index))}
-      </ListTag>
+    return React.createElement(
+      ListTag,
+      { className: css(stylesImport.root, className) },
+      items.map((item: TItem, index: number) => onRenderItem(item, index))
     );
   }
 }

@@ -52,7 +52,7 @@ export class DraggableZone extends React.Component<IDraggableZoneProps, IDraggab
   }
 
   public render() {
-    const child = React.Children.only(this.props.children);
+    const child: any = React.Children.only(this.props.children);
     const { props } = child;
     const { position } = this.props;
     const { position: statePosition, isDragging } = this.state;
@@ -78,7 +78,7 @@ export class DraggableZone extends React.Component<IDraggableZoneProps, IDraggab
   }
 
   private _onMouseDown = (event: MouseTouchEvent<HTMLElement>) => {
-    const onMouseDown = React.Children.only(this.props.children).props.onMouseDown;
+    const onMouseDown = (React.Children.only(this.props.children) as any).props.onMouseDown;
     if (onMouseDown) {
       onMouseDown(event);
     }
@@ -88,7 +88,7 @@ export class DraggableZone extends React.Component<IDraggableZoneProps, IDraggab
   };
 
   private _onMouseUp = (event: MouseTouchEvent<HTMLElement>) => {
-    const onMouseUp = React.Children.only(this.props.children).props.onMouseUp;
+    const onMouseUp = (React.Children.only(this.props.children) as any).props.onMouseUp;
     if (onMouseUp) {
       onMouseUp(event);
     }
@@ -98,7 +98,7 @@ export class DraggableZone extends React.Component<IDraggableZoneProps, IDraggab
   };
 
   private _onTouchStart = (event: MouseTouchEvent<HTMLElement>) => {
-    const onTouchStart = React.Children.only(this.props.children).props.onTouchStart;
+    const onTouchStart = (React.Children.only(this.props.children) as any).props.onTouchStart;
     if (onTouchStart) {
       onTouchStart(event);
     }
@@ -108,7 +108,7 @@ export class DraggableZone extends React.Component<IDraggableZoneProps, IDraggab
   };
 
   private _onTouchEnd = (event: MouseTouchEvent<HTMLElement>) => {
-    const onTouchEnd = React.Children.only(this.props.children).props.onTouchEnd;
+    const onTouchEnd = (React.Children.only(this.props.children) as any).props.onTouchEnd;
     if (onTouchEnd) {
       onTouchEnd(event);
     }
@@ -263,7 +263,7 @@ export class DraggableZone extends React.Component<IDraggableZoneProps, IDraggab
     }
 
     /* tslint:disable-next-line:no-string-literal */
-    const matchesSelectorFn: Function = element.matches || element.webkitMatchesSelector || element['msMatchesSelector'] /* for IE */;
+    const matchesSelectorFn: Function = element.matches || element.webkitMatchesSelector || (element as any).msMatchesSelector /* for IE */;
 
     if (!matchesSelectorFn) {
       return false;

@@ -2,7 +2,7 @@ import * as React from 'react';
 import { IFacepileProps, Facepile, OverflowButtonType } from 'office-ui-fabric-react/lib/Facepile';
 import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
 import { Slider } from 'office-ui-fabric-react/lib/Slider';
-import { facepilePersonas } from './FacepileExampleData';
+import { facepilePersonas } from '@uifabric/example-data';
 import './Facepile.Examples.scss';
 
 const facepileProps: IFacepileProps = {
@@ -13,7 +13,8 @@ const facepileProps: IFacepileProps = {
     ariaLabel: 'More users',
     onClick: (ev: React.MouseEvent<HTMLButtonElement>) => alert('overflow icon clicked')
   },
-  ariaDescription: 'To move through the items use left and right arrow keys.'
+  ariaDescription: 'To move through the items use left and right arrow keys.',
+  ariaLabel: 'Example list of Facepile personas'
 };
 
 export interface IFacepileOverflowExampleState {

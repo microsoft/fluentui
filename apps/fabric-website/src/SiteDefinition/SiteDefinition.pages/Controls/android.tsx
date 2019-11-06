@@ -68,10 +68,37 @@ export const controlsPagesAndroid: INavPage[] = [
         getComponent: cb => require.ensure([], require => cb(require<any>('../../../pages/Controls/ChipPage/ChipPage').ChipPage))
       },
       {
+        title: 'List Cells',
+        url: '#/controls/android/listcells',
+        component: () => <LoadingComponent title="List Cells" />,
+        getComponent: cb =>
+          require.ensure([], require => cb(require<any>('../../../pages/Controls/ListCellsPage/ListCellsPage').ListCellsPage))
+      },
+      {
         title: 'Persona',
         url: '#/controls/android/persona',
         component: () => <LoadingComponent title="Persona" />,
         getComponent: cb => require.ensure([], require => cb(require<any>('../../../pages/Controls/PersonaPage/PersonaPage').PersonaPage))
+      }
+    ]
+  },
+  {
+    title: 'Commands, Menus & Navs',
+    url: '#/controls/android/popupmenu',
+    isCategory: true,
+    pages: [
+      {
+        title: 'Popup Menu',
+        url: '#/controls/android/popupmenu',
+        component: () => <LoadingComponent title="PopupMenu" />,
+        getComponent: cb =>
+          require.ensure([], require => cb(require<any>('../../../pages/Controls/PopupMenuPage/PopupMenuPage').PopupMenuPage))
+      },
+      {
+        title: 'Top App Bar',
+        url: '#/controls/android/topappbar',
+        component: () => <LoadingComponent title="NavBar" />,
+        getComponent: cb => require.ensure([], require => cb(require<any>('../../../pages/Controls/NavBarPage/NavBarPage').NavBarPage))
       }
     ]
   },
@@ -90,10 +117,36 @@ export const controlsPagesAndroid: INavPage[] = [
     ]
   },
   {
-    title: 'Surfaces',
-    url: '#/controls/android/drawer',
+    title: 'Progress',
+    url: '#/controls/android/spinner',
     isCategory: true,
     pages: [
+      {
+        title: 'Spinner',
+        url: '#/controls/android/spinner',
+        component: () => <LoadingComponent title="Spinner" />,
+        getComponent: cb => require.ensure([], require => cb(require<any>('../../../pages/Controls/SpinnerPage/SpinnerPage').SpinnerPage))
+      }
+    ]
+  },
+  {
+    title: 'Surfaces',
+    url: '#/controls/android/bottomsheet',
+    isCategory: true,
+    pages: [
+      {
+        title: 'BottomSheet',
+        url: '#/controls/android/bottomsheet',
+        component: () => <LoadingComponent title="BottomSheet" />,
+        getComponent: cb =>
+          require.ensure([], require => cb(require<any>('../../../pages/Controls/BottomSheetPage/BottomSheetPage').BottomSheetPage))
+      },
+      {
+        title: 'Drawer',
+        url: '#/controls/android/drawer',
+        component: () => <LoadingComponent title="Drawer" />,
+        getComponent: cb => require.ensure([], require => cb(require<any>('../../../pages/Controls/DrawerPage/DrawerPage').DrawerPage))
+      },
       {
         title: 'Tooltip',
         url: '#/controls/android/tooltip',

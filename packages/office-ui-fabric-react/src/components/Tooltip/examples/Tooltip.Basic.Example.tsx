@@ -11,8 +11,13 @@ export class TooltipBasicExample extends React.Component<any, any> {
   public render(): JSX.Element {
     return (
       <div>
-        <TooltipHost content="This is the tooltip" id={this._hostId} calloutProps={{ gapSpace: 0 }}>
-          <DefaultButton aria-labelledby={this._hostId}>Hover Over Me</DefaultButton>
+        <TooltipHost
+          content="This is the tooltip"
+          id={this._hostId}
+          calloutProps={{ gapSpace: 0 }}
+          styles={{ root: { display: 'inline-block' } }}
+        >
+          <DefaultButton aria-describedby={this._hostId}>Hover Over Me</DefaultButton>
         </TooltipHost>
       </div>
     );

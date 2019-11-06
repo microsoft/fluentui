@@ -1,14 +1,12 @@
 import * as React from 'react';
-import { ExampleCard, ComponentPage, PropertiesTableSet, PageMarkdown } from '@uifabric/example-app-base';
+import { ExampleCard, ComponentPage, PropertiesTableSet, Markdown } from '@uifabric/example-app-base';
 import { DateRangeType, DayOfWeek } from '../Calendar/Calendar.types';
 import { CalendarButtonExample } from '../Calendar/examples/Calendar.Button.Example';
 import { CalendarInlineExample } from '../Calendar/examples/Calendar.Inline.Example';
 import { addMonths, addYears, addDays } from 'office-ui-fabric-react/lib/utilities/dateMath/DateMath';
 
 const CalendarButtonExampleCode = require('!raw-loader!@uifabric/date-time/src/components/Calendar/examples/Calendar.Button.Example.tsx') as string;
-const CalendarButtonExampleCodepen = require('!@uifabric/codepen-loader!@uifabric/date-time/src/components/Calendar/examples/Calendar.Button.Example.tsx') as string;
 const CalendarInlineExampleCode = require('!raw-loader!@uifabric/date-time/src/components/Calendar/examples/Calendar.Inline.Example.tsx') as string;
-const CalendarInlineExampleCodepen = require('!@uifabric/codepen-loader!@uifabric/date-time/src/components/Calendar/examples/Calendar.Inline.Example.tsx') as string;
 
 const today = new Date(Date.now());
 
@@ -20,13 +18,8 @@ export class CalendarPage extends React.Component<{}, {}> {
         componentName="Calendar"
         exampleCards={
           <div>
-            <ExampleCard title="Inline Calendar" code={CalendarInlineExampleCode} codepenJS={CalendarInlineExampleCodepen}>
-              <CalendarInlineExample
-                isMonthPickerVisible={false}
-                dateRangeType={DateRangeType.Day}
-                autoNavigateOnSelection={false}
-                showGoToToday={true}
-              />
+            <ExampleCard title="Inline Calendar" code={CalendarInlineExampleCode}>
+              <CalendarInlineExample isMonthPickerVisible={false} dateRangeType={DateRangeType.Day} showGoToToday={true} />
             </ExampleCard>
             <ExampleCard title="Inline Calendar with overlayed month picker when header is clicked" code={CalendarInlineExampleCode}>
               <CalendarInlineExample
@@ -34,14 +27,12 @@ export class CalendarPage extends React.Component<{}, {}> {
                 highlightCurrentMonth={false}
                 highlightSelectedMonth={true}
                 dateRangeType={DateRangeType.Day}
-                autoNavigateOnSelection={false}
                 showGoToToday={false}
               />
             </ExampleCard>
             <ExampleCard title="Inline Calendar with month picker" code={CalendarInlineExampleCode}>
               <CalendarInlineExample
                 dateRangeType={DateRangeType.Day}
-                autoNavigateOnSelection={false}
                 highlightCurrentMonth={false}
                 highlightSelectedMonth={true}
                 showGoToToday={true}
@@ -50,7 +41,6 @@ export class CalendarPage extends React.Component<{}, {}> {
             <ExampleCard title="Inline Calendar with week selection" code={CalendarInlineExampleCode}>
               <CalendarInlineExample
                 dateRangeType={DateRangeType.Week}
-                autoNavigateOnSelection={true}
                 highlightCurrentMonth={false}
                 highlightSelectedMonth={true}
                 showGoToToday={true}
@@ -60,7 +50,6 @@ export class CalendarPage extends React.Component<{}, {}> {
             <ExampleCard title="Inline Calendar with month selection" code={CalendarInlineExampleCode}>
               <CalendarInlineExample
                 dateRangeType={DateRangeType.Month}
-                autoNavigateOnSelection={true}
                 highlightCurrentMonth={false}
                 highlightSelectedMonth={true}
                 showGoToToday={true}
@@ -71,7 +60,6 @@ export class CalendarPage extends React.Component<{}, {}> {
               <CalendarInlineExample
                 isMonthPickerVisible={false}
                 dateRangeType={DateRangeType.Day}
-                autoNavigateOnSelection={false}
                 showGoToToday={true}
                 showWeekNumbers={true}
               />
@@ -80,7 +68,6 @@ export class CalendarPage extends React.Component<{}, {}> {
               <CalendarInlineExample
                 isMonthPickerVisible={false}
                 dateRangeType={DateRangeType.Day}
-                autoNavigateOnSelection={false}
                 showGoToToday={true}
                 showSixWeeksByDefault={true}
               />
@@ -88,7 +75,6 @@ export class CalendarPage extends React.Component<{}, {}> {
             <ExampleCard title="Inline Calendar with month picker and no day picker" code={CalendarInlineExampleCode}>
               <CalendarInlineExample
                 dateRangeType={DateRangeType.Month}
-                autoNavigateOnSelection={false}
                 showGoToToday={true}
                 highlightCurrentMonth={false}
                 highlightSelectedMonth={true}
@@ -101,7 +87,6 @@ export class CalendarPage extends React.Component<{}, {}> {
             >
               <CalendarInlineExample
                 dateRangeType={DateRangeType.Day}
-                autoNavigateOnSelection={true}
                 highlightCurrentMonth={false}
                 highlightSelectedMonth={true}
                 showGoToToday={false}
@@ -117,14 +102,26 @@ export class CalendarPage extends React.Component<{}, {}> {
               <CalendarInlineExample
                 dateRangeType={DateRangeType.WorkWeek}
                 firstDayOfWeek={DayOfWeek.Monday}
-                autoNavigateOnSelection={true}
                 highlightCurrentMonth={false}
                 highlightSelectedMonth={true}
                 showGoToToday={true}
                 workWeekDays={[DayOfWeek.Tuesday, DayOfWeek.Saturday, DayOfWeek.Wednesday, DayOfWeek.Friday]}
               />
             </ExampleCard>
-            <ExampleCard title="Calendar launched from a button" code={CalendarButtonExampleCode} codepenJS={CalendarButtonExampleCodepen}>
+            <ExampleCard
+              title="Calendar with multiday view using dateRangeType === DateRangeType.Day and daysToSelectInDayView = 4"
+              code={CalendarInlineExampleCode}
+            >
+              <CalendarInlineExample
+                dateRangeType={DateRangeType.Day}
+                highlightCurrentMonth={false}
+                highlightSelectedMonth={true}
+                showGoToToday={true}
+                calendarDayProps={{ daysToSelectInDayView: 4 }}
+                showDaysToSelectInDayViewDropdown={true}
+              />
+            </ExampleCard>
+            <ExampleCard title="Calendar launched from a button" code={CalendarButtonExampleCode}>
               <CalendarButtonExample highlightCurrentMonth={true} />
             </ExampleCard>
             <ExampleCard title="Month picker launched from a button" code={CalendarButtonExampleCode}>
@@ -160,15 +157,12 @@ export class CalendarPage extends React.Component<{}, {}> {
         propertiesTables={
           <PropertiesTableSet sources={[require<string>('!raw-loader!@uifabric/date-time/src/components/Calendar/Calendar.types.ts')]} />
         }
-        // tslint:disable:deprecation
         overview={
-          <PageMarkdown>{require<string>('!raw-loader!@uifabric/date-time/src/components/Calendar/docs/CalendarOverview.md')}</PageMarkdown>
+          <Markdown>{require<string>('!raw-loader!@uifabric/date-time/src/components/Calendar/docs/CalendarOverview.md')}</Markdown>
         }
         bestPractices={<div />}
-        dos={<PageMarkdown>{require<string>('!raw-loader!@uifabric/date-time/src/components/Calendar/docs/CalendarDos.md')}</PageMarkdown>}
-        donts={
-          <PageMarkdown>{require<string>('!raw-loader!@uifabric/date-time/src/components/Calendar/docs/CalendarDonts.md')}</PageMarkdown>
-        }
+        dos={<Markdown>{require<string>('!raw-loader!@uifabric/date-time/src/components/Calendar/docs/CalendarDos.md')}</Markdown>}
+        donts={<Markdown>{require<string>('!raw-loader!@uifabric/date-time/src/components/Calendar/docs/CalendarDonts.md')}</Markdown>}
       />
     );
   }

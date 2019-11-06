@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { styled } from '../../Utilities';
 import { ChoiceGroupBase } from './ChoiceGroup.base';
 import { IChoiceGroupProps, IChoiceGroupStyles, IChoiceGroupStyleProps } from './ChoiceGroup.types';

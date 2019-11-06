@@ -2,6 +2,7 @@ import * as React from 'react';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
 import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
+import { Announced } from 'office-ui-fabric-react/lib/Announced';
 import { DetailsList, DetailsListLayoutMode, Selection, SelectionMode, IColumn } from 'office-ui-fabric-react/lib/DetailsList';
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
 import { mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
@@ -55,9 +56,11 @@ export interface IDetailsListDocumentsExampleState {
   selectionDetails: string;
   isModalSelection: boolean;
   isCompactMode: boolean;
+  announcedMessage?: string;
 }
 
 export interface IDocument {
+  key: string;
   name: string;
   value: string;
   iconName: string;
@@ -169,12 +172,13 @@ export class DetailsListDocumentsExample extends React.Component<{}, IDetailsLis
       columns: columns,
       selectionDetails: this._getSelectionDetails(),
       isModalSelection: false,
-      isCompactMode: false
+      isCompactMode: false,
+      announcedMessage: undefined
     };
   }
 
   public render() {
-    const { columns, isCompactMode, items, selectionDetails, isModalSelection } = this.state;
+    const { columns, isCompactMode, items, selectionDetails, isModalSelection, announcedMessage } = this.state;
 
     return (
       <Fabric>
@@ -198,23 +202,40 @@ export class DetailsListDocumentsExample extends React.Component<{}, IDetailsLis
           <TextField label="Filter by name:" onChange={this._onChangeText} styles={controlStyles} />
         </div>
         <div className={classNames.selectionDetails}>{selectionDetails}</div>
-        <MarqueeSelection selection={this._selection}>
+        {announcedMessage ? <Announced message={announcedMessage} /> : undefined}
+        {isModalSelection ? (
+          <MarqueeSelection selection={this._selection}>
+            <DetailsList
+              items={items}
+              compact={isCompactMode}
+              columns={columns}
+              selectionMode={SelectionMode.multiple}
+              getKey={this._getKey}
+              setKey="multiple"
+              layoutMode={DetailsListLayoutMode.justified}
+              isHeaderVisible={true}
+              selection={this._selection}
+              selectionPreservedOnEmptyClick={true}
+              onItemInvoked={this._onItemInvoked}
+              enterModalSelectionOnTouch={true}
+              ariaLabelForSelectionColumn="Toggle selection"
+              ariaLabelForSelectAllCheckbox="Toggle selection for all items"
+              checkButtonAriaLabel="Row checkbox"
+            />
+          </MarqueeSelection>
+        ) : (
           <DetailsList
             items={items}
             compact={isCompactMode}
             columns={columns}
-            selectionMode={isModalSelection ? SelectionMode.multiple : SelectionMode.none}
-            setKey="set"
+            selectionMode={SelectionMode.none}
+            getKey={this._getKey}
+            setKey="none"
             layoutMode={DetailsListLayoutMode.justified}
             isHeaderVisible={true}
-            selection={this._selection}
-            selectionPreservedOnEmptyClick={true}
             onItemInvoked={this._onItemInvoked}
-            enterModalSelectionOnTouch={true}
-            ariaLabelForSelectionColumn="Toggle selection"
-            ariaLabelForSelectAllCheckbox="Toggle selection for all items"
           />
-        </MarqueeSelection>
+        )}
       </Fabric>
     );
   }
@@ -223,6 +244,10 @@ export class DetailsListDocumentsExample extends React.Component<{}, IDetailsLis
     if (previousState.isModalSelection !== this.state.isModalSelection && !this.state.isModalSelection) {
       this._selection.setAllSelected(false);
     }
+  }
+
+  private _getKey(item: any, index?: number): string {
+    return item.key;
   }
 
   private _onChangeCompactMode = (ev: React.MouseEvent<HTMLElement>, checked: boolean): void => {
@@ -264,6 +289,9 @@ export class DetailsListDocumentsExample extends React.Component<{}, IDetailsLis
       if (newCol === currColumn) {
         currColumn.isSortedDescending = !currColumn.isSortedDescending;
         currColumn.isSorted = true;
+        this.setState({
+          announcedMessage: `${currColumn.name} is sorted ${currColumn.isSortedDescending ? 'descending' : 'ascending'}`
+        });
       } else {
         newCol.isSorted = false;
         newCol.isSortedDescending = true;
@@ -296,6 +324,7 @@ function _generateDocuments() {
       .map((name: string) => name.charAt(0).toUpperCase() + name.slice(1))
       .join(' ');
     items.push({
+      key: i.toString(),
       name: fileName,
       value: fileName,
       iconName: randomFileType.url,

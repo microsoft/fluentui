@@ -171,17 +171,17 @@ jobs:
           $compatibleTsVersions = "";
           $compatMapArray = Get-Content $env:BUILD_STAGINGDIRECTORY/compatMapDrop/compatMap.txt;
           foreach($line in $compatMapArray) {
-            if($i -match 0) {
-              $releaseVersion = $line;
-            } else {
-              if($i -match 1) {
-                $compatibleTsVersions += $line;
-              } else {
-                $compatibleTsVersions += ", ";
-                $compatibleTsVersions += $line;
-              }
-            }
-            $i++;
+          if($i -match 0) {
+          $releaseVersion = $line;
+          } else {
+          if($i -match 1) {
+          $compatibleTsVersions += $line;
+          } else {
+          $compatibleTsVersions += ", ";
+          $compatibleTsVersions += $line;
+          }
+          }
+          $i++;
           }
           Write-Host $releaseVersion;
           Write-Host $compatibleTsVersions;

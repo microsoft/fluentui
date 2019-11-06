@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { styled } from '../../Utilities';
 import { IPersonaProps, IPersonaStyleProps, IPersonaStyles } from './Persona.types';
 import { PersonaBase } from './Persona.base';

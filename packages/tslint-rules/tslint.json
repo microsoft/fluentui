@@ -154,8 +154,7 @@
     "no-unnecessary-semicolons": true,
     "no-unused-expression": false,
     "no-unused-variable": false, // defer to typescript's no unused local instead
-    "no-use-before-declare": true,
-    "no-with-statement": true,
+    "no-with-statement": false,
     "no-var-keyword": true,
     "object-literal-sort-keys": false,
     "one-line": [
@@ -181,6 +180,11 @@
       }
     ],
     "use-named-parameter": true,
+    "ban": [
+      true,
+      { "name": ["describe", "only"], "message": "describe.only should only be used during test development" },
+      { "name": ["it", "only"], "message": "it.only should only be used during test development" }
+    ],
     "react-a11y-tabindex-no-positive": true
   }
 }

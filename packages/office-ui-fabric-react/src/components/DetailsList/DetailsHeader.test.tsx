@@ -6,6 +6,7 @@ import { Selection, SelectionMode } from '../../utilities/selection/index';
 import { EventGroup } from '../../Utilities';
 import { mount } from 'enzyme';
 import * as renderer from 'react-test-renderer';
+import { getTheme } from '../../Styling';
 
 const _items: {}[] = [];
 const _selection = new Selection();
@@ -214,14 +215,12 @@ const columns1: IColumn[] = [
 ];
 
 const _columnReorderProps = {
-  frozenColumnCountFromStart: 1,
-  handleColumnReorder: this._dummyFunction
+  frozenColumnCountFromStart: 1
 };
 
 const _columnReorderProps2 = {
   frozenColumnCountFromStart: 1,
-  frozenColumnCountFromEnd: 1,
-  handleColumnReorder: this._dummyFunction
+  frozenColumnCountFromEnd: 1
 };
 
 _selection.setItems(_items);
@@ -737,6 +736,6 @@ describe('DetailsHeader', () => {
     );
 
     expect(onRenderCheckboxMock).toHaveBeenCalledTimes(1);
-    expect(onRenderCheckboxMock.mock.calls[0][0]).toEqual({ checked: false });
+    expect(onRenderCheckboxMock.mock.calls[0][0]).toEqual({ checked: false, theme: getTheme() });
   });
 });

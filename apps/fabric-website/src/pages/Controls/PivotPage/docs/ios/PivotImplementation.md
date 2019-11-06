@@ -2,8 +2,10 @@
 
 `MSSegmentedControl`
 
-### Library
+### Source code
 
-[UI Fabric iOS](https://github.com/OfficeDev/ui-fabric-ios)
+[MSSegmentedControl](https://github.com/OfficeDev/ui-fabric-ios/blob/master/OfficeUIFabric/Controls/MSSegmentedControl.swift)
 
-[Sample Code](https://github.com/OfficeDev/ui-fabric-ios/blob/master/OfficeUIFabric.Demo/OfficeUIFabric.Demo/Demos/MSSegmentedControlDemoController.swift)
+### Sample code
+
+[MSSegmentedControl demo](https://github.com/OfficeDev/ui-fabric-ios/blob/master/OfficeUIFabric.Demo/OfficeUIFabric.Demo/Demos/MSSegmentedControlDemoController.swift)

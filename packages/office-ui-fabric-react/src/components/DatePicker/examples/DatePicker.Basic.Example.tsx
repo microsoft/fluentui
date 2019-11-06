@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
-import { DatePicker, DayOfWeek, IDatePickerStrings } from 'office-ui-fabric-react/lib/DatePicker';
+import { DatePicker, DayOfWeek, IDatePickerStrings } from 'office-ui-fabric-react';
 import './DatePicker.Examples.scss';
 
 const DayPickerStrings: IDatePickerStrings = {

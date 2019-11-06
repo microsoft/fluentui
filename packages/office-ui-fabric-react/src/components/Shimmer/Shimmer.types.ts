@@ -177,8 +177,11 @@ export interface IShimmerStyles {
   /** Refers to the root wrapper element. */
   root?: IStyle;
 
-  /** Refers to wrapper element of the shimmer animation only. */
+  /** Refers to wrapper element of the shimmer only. */
   shimmerWrapper?: IStyle;
+
+  /** Refers to gradient element of the shimmer animation only. */
+  shimmerGradient?: IStyle;
 
   /** Refers to wrapper element of the children only. */
   dataWrapper?: IStyle;

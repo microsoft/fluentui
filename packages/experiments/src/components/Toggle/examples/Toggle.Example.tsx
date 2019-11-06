@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Toggle } from '@uifabric/experiments';
-import { Label, Spinner } from 'office-ui-fabric-react';
+import { Toggle, IToggle } from '@uifabric/experiments';
+import { DefaultButton, Label, Spinner } from 'office-ui-fabric-react';
 
 export interface IToggleExampleState {
   checked: boolean;
@@ -8,6 +8,8 @@ export interface IToggleExampleState {
 
 // tslint:disable:jsx-no-lambda
 export class ToggleExample extends React.Component<{}, IToggleExampleState> {
+  private _toggle = React.createRef<IToggle>();
+
   constructor(props: {}) {
     super(props);
     this.state = { checked: true };
@@ -28,8 +30,20 @@ export class ToggleExample extends React.Component<{}, IToggleExampleState> {
           defaultChecked={true}
           label="Custom On/Off render functions"
           onChange={this._onCustomRenderChange}
-          text={render => render((TextType, props) => <Label {...props}>{checked ? <Spinner /> : 'Spinner Off'}</Label>)}
+          slots={{
+            text: {
+              render: props => <Label {...props}>{checked ? <Spinner /> : 'Spinner Off'}</Label>
+            }
+          }}
         />
+        <Toggle checked={checked} label="Controlled by Toggle above" onText="Checked" offText="Unchecked" />
+        <DefaultButton
+          text="Focus Toggle"
+          onClick={() => {
+            this._toggle.current && this._toggle.current.focus();
+          }}
+        />
+        <Toggle componentRef={this._toggle} onText="On" offText="Off" label="Focused Toggle" />
       </div>
     );
   }

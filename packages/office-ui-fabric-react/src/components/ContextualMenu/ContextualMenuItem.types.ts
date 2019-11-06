@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { IContextualMenuItem } from './ContextualMenu.types';
 import { IMenuItemClassNames } from './ContextualMenu.classNames';
 import { IStyle, ITheme } from '../../Styling';
@@ -73,7 +74,7 @@ export interface IContextualMenuItemProps extends React.HTMLAttributes<IContextu
   /**
    * Click handler for the checkmark
    */
-  onCheckmarkClick?: ((item: IContextualMenuItem, ev: React.MouseEvent<HTMLElement>) => void);
+  onCheckmarkClick?: (item: IContextualMenuItem, ev: React.MouseEvent<HTMLElement>) => void;
 
   /**
    * This prop will get set by ContextualMenu and can be called to open this item's subMenu, if present.

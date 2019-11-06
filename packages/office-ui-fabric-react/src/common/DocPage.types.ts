@@ -1,49 +1,5 @@
-/** @deprecated No longer used */
-export interface IComponentStatusProps {
-  /**
-   * Components should be fully usable with the keyboard. For this badge to pass, all of the functionalities of
-   * a component needs to be accessible via the keyboard.
-   */
-  keyboardAccessibilitySupport: ChecklistStatus;
-
-  /**
-   * Components should be appropriately marked with ARIA attributes so users with assistive technologies can
-   * interact with them. For this badge to pass, a component needs to be marked with ARIA attributes to describe
-   * its behavior for assistive technologies (e.g., screen readers). A component can use ARIA roles, states
-   * and properties to inform users of its behavior.
-   */
-  markupSupport: ChecklistStatus;
-
-  /**
-   * Components should display correctly in high contrast mode. For this badge to pass, set your operating
-   * system to use high contrast and then ensure that the components render correctly.
-   */
-  highContrastSupport: ChecklistStatus;
-
-  /**
-   * For localization, components should display correctly in right to left layouts. For this badge to pass,
-   * ensure RTL (right-to-left) layouts render properly in the sample website by enabling it in the settings
-   * (located in the top right corner for LTR layout).
-   */
-  rtlSupport: ChecklistStatus;
-
-  /**
-   * To avoid regressions, make sure components are throughly unit-tested. For this badge to be marked "good",
-   * write unit tests that cover all edge cases and scenarios.
-   */
-  testCoverage: ChecklistStatus;
-}
-
-export enum ChecklistStatus {
-  unknown = 'Unknown',
-  notApplicable = 'Not applicable',
-  pass = 'Pass',
-  fail = 'Fail',
-  none = 'Missing tests',
-  poor = 'Poor',
-  fair = 'Fair',
-  good = 'Good'
-}
+import { IStyleFunctionOrObject, Omit } from '../Utilities';
+import { ITheme, IStyle } from '../Styling';
 
 export interface IExample {
   /** Title of the example */
@@ -59,6 +15,9 @@ export interface IExample {
 
   /** JS String for codepen of the example */
   codepenJS?: string;
+
+  /** Custom styles. Partial version of `IExampleCardProps['styles']`. */
+  styles?: IStyleFunctionOrObject<{ theme?: ITheme }, { root: IStyle }>;
 }
 
 export interface IDocPageProps {
@@ -71,35 +30,20 @@ export interface IDocPageProps {
   /** URL of the checked in component, should be somewhere on github.com */
   componentUrl: string;
 
-  /**
-   * Status of the component; e.g. keyboard accessible
-   * @deprecated No longer used
-   */
-  componentStatus?: IComponentStatusProps;
-
   /** Knobs that applies to all the examples */
   exampleKnobs?: JSX.Element;
 
   /** Array of examples, displayed in the order defined */
   examples?: IExample[];
 
-  /** @deprecated */
-  implementationExamples?: {
-    /** Title of the example */
-    title: string;
-
-    /** Raw source code of the example */
-    code: string;
-
-    /** Working example of the example */
-    view: JSX.Element;
-  }[];
-
   /** Properties table(s) as markdown string */
   propertiesTablesSources?: string[];
 
   /** Overview of the component as markdown string */
   overview?: string;
+
+  /** Accessibility of the component as markdown string */
+  accessibility?: string;
 
   /** DO's blurb as markdown string */
   dos?: string;
@@ -147,12 +91,13 @@ export interface IDocPageProps {
 }
 
 /**
- * Used to keep track of where the page will live on the site
+ * Used to keep track of where an API reference page will live on the site.
  */
 export type PageKind = 'References' | 'Components';
 
 /**
- * Excerpt token that is part of a type or extends block and may have a hyperlink
+ * Text excerpt token that is part of a type definition or extends block and may have a link
+ * to another doc page. For API reference tables.
  */
 export interface ILinkToken {
   text: string;
@@ -161,34 +106,48 @@ export interface ILinkToken {
 }
 
 /**
- * Generic table row
+ * Generic row for API reference tables.
+ * It can represent a member (property or method) of an interface or class.
  */
 export interface ITableRowJson {
   name: string;
+  kind?: 'Method' | 'Property';
+  /**
+   * The row's type translated to an array of text elements and links to other types.
+   * For example, `Readonly<IFoo>` would translate to:
+   * `[{ text: 'Readonly<' }, { text: 'IFoo', hyperlinkedPage: '(page name)', pageKind: '(kind)' }, { text: '>' }]`
+   */
   typeTokens: ILinkToken[];
   defaultValue?: string;
   description: string;
   deprecated: boolean;
   deprecatedMessage?: string;
-  kind?: 'Method' | 'Property';
 }
 
 /**
- * Enum table row
+ * Enum member row for API reference tables.
  */
-export type IEnumTableRowJson = Required<Pick<ITableRowJson, 'name' | 'description'>> & {
+export type IEnumTableRowJson = Omit<ITableRowJson, 'kind' | 'typeTokens' | 'defaultValue'> & {
   value: string;
 };
 
+export type ApiKind = 'interface' | 'enum' | 'class' | 'typeAlias';
+
 /**
- * Api table
+ * Info for a table representing a top-level API item: interface, enum, class, or type alias.
  */
 export interface ITableJson {
-  kind: 'interface' | 'enum' | 'class' | 'typeAlias';
+  kind: ApiKind;
   name: string;
+  /**
+   * Any types the item extends, translated to an array of text elements and links to other types.
+   * For classes and interfaces only.
+   */
   extendsTokens: ILinkToken[];
   description: string;
   members: ITableRowJson[] | IEnumTableRowJson[];
+  deprecated?: boolean;
+  deprecatedMessage?: string;
 }
 
 /**

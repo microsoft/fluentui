@@ -16,11 +16,12 @@ export const getStyles = memoizeFunction(
         height: '32px',
         backgroundColor: 'transparent',
         border: 'none',
-        color: semanticColors.actionLink
+        color: semanticColors.link
       },
 
       rootHovered: {
-        color: semanticColors.actionLinkHovered,
+        color: palette.themeDarkAlt,
+        backgroundColor: palette.neutralLighter,
         selectors: {
           [HighContrastSelector]: {
             borderColor: 'Highlight',
@@ -29,24 +30,32 @@ export const getStyles = memoizeFunction(
         }
       },
 
+      rootHasMenu: {
+        width: 'auto'
+      },
+
       rootPressed: {
-        color: palette.themePrimary
+        color: palette.themeDark,
+        backgroundColor: palette.neutralLight
       },
 
       rootExpanded: {
-        color: palette.themePrimary
+        color: palette.themeDark,
+        backgroundColor: palette.neutralLight
       },
 
       rootChecked: {
-        backgroundColor: semanticColors.buttonBackgroundChecked
+        color: palette.themeDark,
+        backgroundColor: palette.neutralLight
       },
 
       rootCheckedHovered: {
-        backgroundColor: semanticColors.buttonBackgroundHovered
+        color: palette.themeDark,
+        backgroundColor: palette.neutralQuaternaryAlt
       },
 
       rootDisabled: {
-        color: semanticColors.disabledText
+        color: palette.neutralTertiaryAlt
       }
     };
 

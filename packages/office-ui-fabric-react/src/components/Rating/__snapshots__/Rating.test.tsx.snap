@@ -1,8 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Rating Renders Rating correctly 1`] = `
+exports[`Rating renders correctly. 1`] = `
 <div
-  aria-label=""
   className=
       ms-Rating-star
       ms-RatingStar-root
@@ -15,7 +14,7 @@ exports[`Rating Renders Rating correctly 1`] = `
         font-weight: 400;
       }
       &:hover .ms-RatingStar-back {
-        color: #000000;
+        color: #323130;
       }
       @media screen and (-ms-high-contrast: active){&:hover .ms-RatingStar-back {
         color: Highlight;
@@ -35,17 +34,30 @@ exports[`Rating Renders Rating correctly 1`] = `
         }
         {
           display: inline-block;
+          outline: transparent;
+          position: relative;
+        }
+        &::-moz-focus-inner {
+          border: 0;
+        }
+        .ms-Fabric--isFocusVisible &:focus:after {
+          border: 1px solid #ffffff;
+          bottom: 1px;
+          content: "";
+          left: 1px;
+          outline: 1px solid #605e5c;
+          position: absolute;
+          right: 1px;
+          top: 1px;
+          z-index: 1;
         }
         {
           height: 32px;
         }
     data-focuszone-id="FocusZone2"
-    data-is-focusable={false}
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
-    role="presentation"
-    tabIndex={-1}
   >
     <button
       className=
@@ -75,7 +87,7 @@ exports[`Rating Renders Rating correctly 1`] = `
             bottom: 1px;
             content: "";
             left: 1px;
-            outline: 1px solid #666666;
+            outline: 1px solid #605e5c;
             position: absolute;
             right: 1px;
             top: 1px;
@@ -88,13 +100,13 @@ exports[`Rating Renders Rating correctly 1`] = `
             cursor: default;
           }
           &:hover ~ .ms-Rating-button .ms-RatingStar-back {
-            color: #a6a6a6;
+            color: #605e5c;
           }
           @media screen and (-ms-high-contrast: active){&:hover ~ .ms-Rating-button .ms-RatingStar-back {
             color: WindowText;
           }
           &:hover ~ .ms-Rating-button .ms-RatingStar-front {
-            color: #a6a6a6;
+            color: #605e5c;
           }
           @media screen and (-ms-high-contrast: active){&:hover ~ .ms-Rating-button .ms-RatingStar-front {
             color: WindowText;
@@ -156,7 +168,7 @@ exports[`Rating Renders Rating correctly 1`] = `
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                color: #a6a6a6;
+                color: #605e5c;
                 display: inline-block;
                 font-family: "FabricMDL2Icons";
                 font-style: normal;
@@ -165,7 +177,6 @@ exports[`Rating Renders Rating correctly 1`] = `
                 width: 100%;
               }
           data-icon-name="FavoriteStarFill"
-          role="presentation"
         >
           
         </i>
@@ -176,7 +187,7 @@ exports[`Rating Renders Rating correctly 1`] = `
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                color: #000000;
+                color: #323130;
                 display: inline-block;
                 font-family: "FabricMDL2Icons";
                 font-style: normal;
@@ -194,7 +205,6 @@ exports[`Rating Renders Rating correctly 1`] = `
                 color: Highlight;
               }
           data-icon-name="FavoriteStarFill"
-          role="presentation"
           style={
             Object {
               "width": "100%",
@@ -233,7 +243,7 @@ exports[`Rating Renders Rating correctly 1`] = `
             bottom: 1px;
             content: "";
             left: 1px;
-            outline: 1px solid #666666;
+            outline: 1px solid #605e5c;
             position: absolute;
             right: 1px;
             top: 1px;
@@ -246,13 +256,13 @@ exports[`Rating Renders Rating correctly 1`] = `
             cursor: default;
           }
           &:hover ~ .ms-Rating-button .ms-RatingStar-back {
-            color: #a6a6a6;
+            color: #605e5c;
           }
           @media screen and (-ms-high-contrast: active){&:hover ~ .ms-Rating-button .ms-RatingStar-back {
             color: WindowText;
           }
           &:hover ~ .ms-Rating-button .ms-RatingStar-front {
-            color: #a6a6a6;
+            color: #605e5c;
           }
           @media screen and (-ms-high-contrast: active){&:hover ~ .ms-Rating-button .ms-RatingStar-front {
             color: WindowText;
@@ -313,7 +323,7 @@ exports[`Rating Renders Rating correctly 1`] = `
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                color: #a6a6a6;
+                color: #605e5c;
                 display: inline-block;
                 font-family: "FabricMDL2Icons";
                 font-style: normal;
@@ -322,7 +332,6 @@ exports[`Rating Renders Rating correctly 1`] = `
                 width: 100%;
               }
           data-icon-name="FavoriteStar"
-          role="presentation"
         >
           
         </i>
@@ -333,7 +342,7 @@ exports[`Rating Renders Rating correctly 1`] = `
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                color: #000000;
+                color: #323130;
                 display: inline-block;
                 font-family: "FabricMDL2Icons";
                 font-style: normal;
@@ -351,7 +360,6 @@ exports[`Rating Renders Rating correctly 1`] = `
                 color: Highlight;
               }
           data-icon-name="FavoriteStar"
-          role="presentation"
           style={
             Object {
               "width": "0%",
@@ -390,7 +398,7 @@ exports[`Rating Renders Rating correctly 1`] = `
             bottom: 1px;
             content: "";
             left: 1px;
-            outline: 1px solid #666666;
+            outline: 1px solid #605e5c;
             position: absolute;
             right: 1px;
             top: 1px;
@@ -403,13 +411,13 @@ exports[`Rating Renders Rating correctly 1`] = `
             cursor: default;
           }
           &:hover ~ .ms-Rating-button .ms-RatingStar-back {
-            color: #a6a6a6;
+            color: #605e5c;
           }
           @media screen and (-ms-high-contrast: active){&:hover ~ .ms-Rating-button .ms-RatingStar-back {
             color: WindowText;
           }
           &:hover ~ .ms-Rating-button .ms-RatingStar-front {
-            color: #a6a6a6;
+            color: #605e5c;
           }
           @media screen and (-ms-high-contrast: active){&:hover ~ .ms-Rating-button .ms-RatingStar-front {
             color: WindowText;
@@ -470,7 +478,7 @@ exports[`Rating Renders Rating correctly 1`] = `
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                color: #a6a6a6;
+                color: #605e5c;
                 display: inline-block;
                 font-family: "FabricMDL2Icons";
                 font-style: normal;
@@ -479,7 +487,6 @@ exports[`Rating Renders Rating correctly 1`] = `
                 width: 100%;
               }
           data-icon-name="FavoriteStar"
-          role="presentation"
         >
           
         </i>
@@ -490,7 +497,7 @@ exports[`Rating Renders Rating correctly 1`] = `
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                color: #000000;
+                color: #323130;
                 display: inline-block;
                 font-family: "FabricMDL2Icons";
                 font-style: normal;
@@ -508,7 +515,6 @@ exports[`Rating Renders Rating correctly 1`] = `
                 color: Highlight;
               }
           data-icon-name="FavoriteStar"
-          role="presentation"
           style={
             Object {
               "width": "0%",
@@ -547,7 +553,7 @@ exports[`Rating Renders Rating correctly 1`] = `
             bottom: 1px;
             content: "";
             left: 1px;
-            outline: 1px solid #666666;
+            outline: 1px solid #605e5c;
             position: absolute;
             right: 1px;
             top: 1px;
@@ -560,13 +566,13 @@ exports[`Rating Renders Rating correctly 1`] = `
             cursor: default;
           }
           &:hover ~ .ms-Rating-button .ms-RatingStar-back {
-            color: #a6a6a6;
+            color: #605e5c;
           }
           @media screen and (-ms-high-contrast: active){&:hover ~ .ms-Rating-button .ms-RatingStar-back {
             color: WindowText;
           }
           &:hover ~ .ms-Rating-button .ms-RatingStar-front {
-            color: #a6a6a6;
+            color: #605e5c;
           }
           @media screen and (-ms-high-contrast: active){&:hover ~ .ms-Rating-button .ms-RatingStar-front {
             color: WindowText;
@@ -627,7 +633,7 @@ exports[`Rating Renders Rating correctly 1`] = `
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                color: #a6a6a6;
+                color: #605e5c;
                 display: inline-block;
                 font-family: "FabricMDL2Icons";
                 font-style: normal;
@@ -636,7 +642,6 @@ exports[`Rating Renders Rating correctly 1`] = `
                 width: 100%;
               }
           data-icon-name="FavoriteStar"
-          role="presentation"
         >
           
         </i>
@@ -647,7 +652,7 @@ exports[`Rating Renders Rating correctly 1`] = `
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                color: #000000;
+                color: #323130;
                 display: inline-block;
                 font-family: "FabricMDL2Icons";
                 font-style: normal;
@@ -665,7 +670,6 @@ exports[`Rating Renders Rating correctly 1`] = `
                 color: Highlight;
               }
           data-icon-name="FavoriteStar"
-          role="presentation"
           style={
             Object {
               "width": "0%",
@@ -704,7 +708,7 @@ exports[`Rating Renders Rating correctly 1`] = `
             bottom: 1px;
             content: "";
             left: 1px;
-            outline: 1px solid #666666;
+            outline: 1px solid #605e5c;
             position: absolute;
             right: 1px;
             top: 1px;
@@ -717,13 +721,13 @@ exports[`Rating Renders Rating correctly 1`] = `
             cursor: default;
           }
           &:hover ~ .ms-Rating-button .ms-RatingStar-back {
-            color: #a6a6a6;
+            color: #605e5c;
           }
           @media screen and (-ms-high-contrast: active){&:hover ~ .ms-Rating-button .ms-RatingStar-back {
             color: WindowText;
           }
           &:hover ~ .ms-Rating-button .ms-RatingStar-front {
-            color: #a6a6a6;
+            color: #605e5c;
           }
           @media screen and (-ms-high-contrast: active){&:hover ~ .ms-Rating-button .ms-RatingStar-front {
             color: WindowText;
@@ -784,7 +788,7 @@ exports[`Rating Renders Rating correctly 1`] = `
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                color: #a6a6a6;
+                color: #605e5c;
                 display: inline-block;
                 font-family: "FabricMDL2Icons";
                 font-style: normal;
@@ -793,7 +797,6 @@ exports[`Rating Renders Rating correctly 1`] = `
                 width: 100%;
               }
           data-icon-name="FavoriteStar"
-          role="presentation"
         >
           
         </i>
@@ -804,7 +807,7 @@ exports[`Rating Renders Rating correctly 1`] = `
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                color: #000000;
+                color: #323130;
                 display: inline-block;
                 font-family: "FabricMDL2Icons";
                 font-style: normal;
@@ -822,7 +825,6 @@ exports[`Rating Renders Rating correctly 1`] = `
                 color: Highlight;
               }
           data-icon-name="FavoriteStar"
-          role="presentation"
           style={
             Object {
               "width": "0%",

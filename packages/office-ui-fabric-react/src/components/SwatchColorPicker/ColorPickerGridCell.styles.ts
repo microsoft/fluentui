@@ -1,5 +1,5 @@
 import { IsFocusVisibleClassName } from '../../Utilities';
-import { HighContrastSelector } from '../../Styling';
+import { HighContrastSelector, getFocusStyle } from '../../Styling';
 import { IColorPickerGridCellStyleProps, IColorPickerGridCellStyles } from './ColorPickerGridCell.types';
 
 // Size breakpoint when the default border width changes from 2px to 4px.
@@ -9,9 +9,23 @@ const SMALL_BORDER = 2;
 const DIVIDING_PADDING = 2;
 const DEFAULT_CELL_SIZE = 20;
 
+const cellHighContrastFocus = {
+  left: -2,
+  top: -2,
+  bottom: -2,
+  right: -2,
+  border: 'none',
+  outlineColor: 'ButtonText'
+};
+
 export const getStyles = (props: IColorPickerGridCellStyleProps): IColorPickerGridCellStyles => {
   const { theme, disabled, selected, circle, isWhite, height = DEFAULT_CELL_SIZE, width = DEFAULT_CELL_SIZE, borderWidth } = props;
-  const { semanticColors } = theme;
+  const { semanticColors, palette } = theme;
+
+  const buttonBorderHovered = palette.neutralLighter;
+  const buttonBorderChecked = palette.neutralLight;
+  const buttonBorderCheckedHovered = palette.neutralSecondary;
+  const buttonBorderIsWhite = palette.neutralTertiary;
 
   // If user provided a value, use it. If not, then we decide depending on the 24px size breakpoint.
   const calculatedBorderWidth = borderWidth ? borderWidth : width < CELL_BORDER_BREAKPOINT ? SMALL_BORDER : LARGE_BORDER;
@@ -19,6 +33,7 @@ export const getStyles = (props: IColorPickerGridCellStyleProps): IColorPickerGr
   return {
     // this is a button that wraps the color
     colorCell: [
+      getFocusStyle(theme, -1, 'relative', cellHighContrastFocus),
       {
         backgroundColor: semanticColors.bodyBackground,
         padding: 0,
@@ -27,6 +42,7 @@ export const getStyles = (props: IColorPickerGridCellStyleProps): IColorPickerGr
         display: 'inline-block',
         cursor: 'pointer',
         userSelect: 'none',
+        borderRadius: 0,
         border: 'none',
         height: height,
         width: width
@@ -61,14 +77,26 @@ export const getStyles = (props: IColorPickerGridCellStyleProps): IColorPickerGr
       },
       selected && {
         padding: DIVIDING_PADDING,
-        border: `${calculatedBorderWidth}px solid ${theme.palette.neutralTertiaryAlt}`
+        border: `${calculatedBorderWidth}px solid ${buttonBorderChecked}`,
+        selectors: {
+          ['&:hover::before']: {
+            content: '""',
+            height: height,
+            width: width,
+            position: 'absolute',
+            top: -calculatedBorderWidth,
+            left: -calculatedBorderWidth,
+            borderRadius: circle ? '50%' : 'default',
+            boxShadow: `inset 0 0 0 1px ${buttonBorderCheckedHovered}`
+          }
+        }
       },
       !selected && {
         selectors: {
           ['&:hover, &:active, &:focus']: {
             backgroundColor: semanticColors.bodyBackground, // overwrite white's override
             padding: DIVIDING_PADDING,
-            border: `${calculatedBorderWidth}px solid ${theme.palette.neutralLight}`
+            border: `${calculatedBorderWidth}px solid ${buttonBorderHovered}`
           },
           ['&:focus']: {
             borderColor: semanticColors.bodyBackground,
@@ -90,7 +118,7 @@ export const getStyles = (props: IColorPickerGridCellStyleProps): IColorPickerGr
       isWhite &&
         !selected && {
           // fake a border for white
-          backgroundColor: semanticColors.bodyDivider,
+          backgroundColor: buttonBorderIsWhite,
           padding: 1
         }
     ],

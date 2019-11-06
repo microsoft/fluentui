@@ -1,17 +1,11 @@
 import { ICalendarDayStyleProps, ICalendarDayStyles } from './CalendarDay.types';
-import { normalize, FontSizes, FontWeights, getFocusStyle, getGlobalClassNames } from '@uifabric/styling';
-import { DateRangeType } from 'office-ui-fabric-react/lib/utilities/dateValues/DateValues';
-
-const GlobalClassNames = {
-  hoverStyle: 'ms-CalendarDay-hoverStyle',
-  pressedStyle: 'ms-CalendarDay-pressedStyle'
-};
+import { normalize, FontSizes, FontWeights, getFocusStyle, AnimationStyles, IRawStyle } from '@uifabric/styling';
 
 export const styles = (props: ICalendarDayStyleProps): ICalendarDayStyles => {
-  const { className, theme, headerIsClickable, dateRangeType, showWeekNumbers } = props;
+  const { className, theme, headerIsClickable, showWeekNumbers, animateBackwards } = props;
   const { palette } = theme;
 
-  const classNames = getGlobalClassNames(GlobalClassNames, theme);
+  const headerAnimationStyle: IRawStyle = animateBackwards !== undefined ? AnimationStyles.fadeIn200 : {};
 
   const disabledStyle = {
     selectors: {
@@ -43,8 +37,9 @@ export const styles = (props: ICalendarDayStyleProps): ICalendarDayStyles => {
       width: '100%'
     },
     monthAndYear: [
-      getFocusStyle(theme, { inset: -1 }),
+      getFocusStyle(theme, { inset: 1 }),
       {
+        ...headerAnimationStyle,
         alignItems: 'center',
         fontSize: FontSizes.medium,
         color: palette.neutralPrimary,
@@ -58,7 +53,7 @@ export const styles = (props: ICalendarDayStyleProps): ICalendarDayStyles => {
         lineHeight: 28,
         overflow: 'hidden',
         whiteSpace: 'nowrap',
-        textAlign: 'start',
+        textAlign: 'left',
         textOverflow: 'ellipsis'
       },
       headerIsClickable && {
@@ -69,20 +64,6 @@ export const styles = (props: ICalendarDayStyleProps): ICalendarDayStyles => {
             color: palette.black
           }
         }
-      }
-    ],
-    table: [
-      {
-        textAlign: 'center',
-        borderCollapse: 'collapse',
-        borderSpacing: '0',
-        tableLayout: 'fixed',
-        fontSize: 'inherit',
-        marginTop: 4,
-        width: 197
-      },
-      showWeekNumbers && {
-        width: 226
       }
     ],
     monthComponents: {
@@ -104,6 +85,7 @@ export const styles = (props: ICalendarDayStyleProps): ICalendarDayStyles => {
         backgroundColor: 'transparent',
         border: 'none',
         padding: 0,
+        overflow: 'visible', // explicitly specify for IE11
         selectors: {
           '&:hover': {
             color: palette.neutralDark,
@@ -114,91 +96,6 @@ export const styles = (props: ICalendarDayStyleProps): ICalendarDayStyles => {
         }
       }
     ],
-    dayCell: {
-      margin: 0,
-      padding: 0,
-      width: 28,
-      height: 28,
-      fontSize: FontSizes.small,
-      fontWeight: FontWeights.regular,
-      color: palette.neutralPrimary,
-      cursor: 'pointer',
-      selectors: {
-        ['&.' + classNames.hoverStyle]: {
-          backgroundColor: palette.neutralLight
-        },
-        ['&.' + classNames.pressedStyle]: {
-          backgroundColor: palette.themeLight,
-          fontWeight: FontWeights.semibold
-        }
-      }
-    },
-    daySelected: [
-      dateRangeType !== DateRangeType.Month && {
-        backgroundColor: palette.themeLight,
-        fontWeight: FontWeights.semibold,
-        selectors: {
-          ['&:hover, &.' + classNames.hoverStyle + ', &.' + classNames.pressedStyle]: {
-            backgroundColor: palette.themeLight,
-            fontWeight: FontWeights.semibold
-          }
-        }
-      }
-    ],
-    weekNumberCell: {
-      margin: 0,
-      padding: 0,
-      borderRight: '1px solid',
-      borderColor: palette.neutralLight,
-      boxSizing: 'border-box',
-      width: 28,
-      height: 28,
-      fontWeight: FontWeights.regular,
-      fontSize: FontSizes.small
-    },
-    disabledStyle: disabledStyle,
-    dayOutsideBounds: disabledStyle,
-    dayOutsideNavigatedMonth: {
-      color: palette.neutralSecondary,
-      fontWeight: FontWeights.regular
-    },
-    dayButton: [
-      getFocusStyle(theme, { inset: -2 }),
-      {
-        width: 24,
-        height: 24,
-        lineHeight: 24,
-        fontSize: FontSizes.small,
-        fontWeight: 'inherit',
-        borderRadius: 2,
-        border: 'none',
-        padding: 0,
-        backgroundColor: 'transparent',
-        cursor: 'pointer',
-        selectors: {
-          span: {
-            height: 'inherit',
-            lineHeight: 'inherit'
-          }
-        }
-      }
-    ],
-    dayIsToday: {
-      backgroundColor: palette.themePrimary,
-      color: palette.white,
-      fontWeight: FontWeights.semibold
-    },
-    topRightCornerDate: {
-      borderTopRightRadius: '2px'
-    },
-    topLeftCornerDate: {
-      borderTopLeftRadius: '2px'
-    },
-    bottomRightCornerDate: {
-      borderBottomRightRadius: '2px'
-    },
-    bottomLeftCornerDate: {
-      borderBottomLeftRadius: '2px'
-    }
+    disabledStyle: disabledStyle
   };
 };

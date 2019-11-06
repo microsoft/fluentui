@@ -14,6 +14,19 @@ export class ToggleBase extends BaseComponent<IToggleProps, IToggleState> implem
   private _id: string;
   private _toggleButton = React.createRef<HTMLButtonElement>();
 
+  public static getDerivedStateFromProps(
+    nextProps: Readonly<IToggleProps>,
+    prevState: Readonly<IToggleState>
+  ): Partial<IToggleState> | null {
+    if (nextProps.checked === undefined) {
+      return null;
+    }
+
+    return {
+      checked: !!nextProps.checked
+    };
+  }
+
   constructor(props: IToggleProps) {
     super(props);
 
@@ -38,14 +51,6 @@ export class ToggleBase extends BaseComponent<IToggleProps, IToggleState> implem
    */
   public get checked(): boolean {
     return this.state.checked;
-  }
-
-  public componentWillReceiveProps(newProps: IToggleProps): void {
-    if (newProps.checked !== undefined) {
-      this.setState({
-        checked: !!newProps.checked // convert null to false
-      });
-    }
   }
 
   public render(): JSX.Element {
@@ -94,6 +99,8 @@ export class ToggleBase extends BaseComponent<IToggleProps, IToggleState> implem
       }
     }
 
+    const ariaRole = this.props.role ? this.props.role : 'switch';
+
     return (
       <RootType className={classNames.root} hidden={(toggleNativeProps as any).hidden}>
         {label && (
@@ -112,7 +119,7 @@ export class ToggleBase extends BaseComponent<IToggleProps, IToggleState> implem
                 disabled={disabled}
                 id={this._id}
                 type="button"
-                role="switch" // ARIA 1.1 definition; "checkbox" in ARIA 1.0
+                role={ariaRole}
                 ref={this._toggleButton}
                 aria-disabled={disabled}
                 aria-checked={checked}

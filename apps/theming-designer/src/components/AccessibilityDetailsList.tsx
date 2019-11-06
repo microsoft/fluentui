@@ -22,6 +22,7 @@ interface IAccessibilityDetailsList {
   key: string;
   contrastRatio: String;
   slotPair: String;
+  colorPair: String;
 }
 
 export const AccessibilityDetailsList: React.StatelessComponent<IAccessibilityDetailsListProps> = (
@@ -38,15 +39,8 @@ export const AccessibilityDetailsList: React.StatelessComponent<IAccessibilityDe
   const onRenderRow = (detailsRowProps: IDetailsRowProps | undefined): JSX.Element => {
     // Set each row's background and text color to what's specified by its respective slot rule
     if (detailsRowProps && newTheme) {
-      const currentSlotPair = detailsRowProps!.item.slotPair;
-      const pairSplit = currentSlotPair.split(' on ');
-      const currForegroundColor = pairSplit[0];
-      const currBackgroundColor = pairSplit[1];
-
       const rowStyles: Partial<IDetailsRowStyles> = {
         root: {
-          backgroundColor: (newTheme!.palette as any)[currBackgroundColor],
-          color: (newTheme!.palette as any)[currForegroundColor],
           selectors: {
             ':hover': {
               background: 'transparent'
@@ -84,7 +78,8 @@ export const AccessibilityDetailsList: React.StatelessComponent<IAccessibilityDe
     items.push({
       key: i.toString(),
       contrastRatio: allContrastRatioPairs[i].contrastRatioValue,
-      slotPair: allContrastRatioPairs[i].contrastRatioPair
+      slotPair: allContrastRatioPairs[i].contrastRatioPair,
+      colorPair: allContrastRatioPairs[i].colorPair
     });
   }
 
@@ -100,6 +95,7 @@ export const AccessibilityDetailsList: React.StatelessComponent<IAccessibilityDe
 
   columns = [
     { key: 'contrastRatio', name: 'Contrast ratio: AA', fieldName: 'contrastRatio', minWidth: 100, maxWidth: 200, isResizable: true },
+    { key: 'colorPair', name: 'Color pair', fieldName: 'colorPair', minWidth: 100, maxWidth: 200 },
     { key: 'slotPair', name: 'Slot pair', fieldName: 'slotPair', minWidth: 100, maxWidth: 200 }
   ];
 
@@ -113,6 +109,7 @@ export const AccessibilityDetailsList: React.StatelessComponent<IAccessibilityDe
         ariaLabelForSelectAllCheckbox="Toggle selection for all items"
         ariaLabelForSelectionColumn="Toggle selection"
         selectionMode={SelectionMode.none}
+        disableSelectionZone={true}
         onRenderRow={onRenderRow}
         groupProps={{
           showEmptyGroups: true

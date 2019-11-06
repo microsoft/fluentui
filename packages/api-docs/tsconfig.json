@@ -13,6 +13,8 @@
     "forceConsistentCasingInFileNames": true,
     "strictNullChecks": true,
     "noImplicitAny": true,
+    "noImplicitThis": true,
+    "skipLibCheck": true,
     "moduleResolution": "node",
     "preserveConstEnums": true,
     "lib": ["es2017"],

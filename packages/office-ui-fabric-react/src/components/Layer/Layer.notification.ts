@@ -1,4 +1,4 @@
-const _layersByHostId: { [hostId: string]: React.Component[] } = {};
+const _layersByHostId: { [hostId: string]: (() => void)[] } = {};
 
 let _defaultHostSelector: string | undefined;
 
@@ -7,12 +7,12 @@ let _defaultHostSelector: string | undefined;
  * @param hostId Id of the layer host
  * @param layer Layer instance
  */
-export function registerLayer(hostId: string, layer: React.Component) {
+export function registerLayer(hostId: string, callback: () => void) {
   if (!_layersByHostId[hostId]) {
     _layersByHostId[hostId] = [];
   }
 
-  _layersByHostId[hostId].push(layer);
+  _layersByHostId[hostId].push(callback);
 }
 
 /**
@@ -20,9 +20,9 @@ export function registerLayer(hostId: string, layer: React.Component) {
  * @param hostId Id of the layer host
  * @param layer Layer instance
  */
-export function unregisterLayer(hostId: string, layer: React.Component) {
+export function unregisterLayer(hostId: string, callback: () => void) {
   if (_layersByHostId[hostId]) {
-    const idx = _layersByHostId[hostId].indexOf(layer);
+    const idx = _layersByHostId[hostId].indexOf(callback);
     if (idx >= 0) {
       _layersByHostId[hostId].splice(idx, 1);
       if (_layersByHostId[hostId].length === 0) {
@@ -38,7 +38,7 @@ export function unregisterLayer(hostId: string, layer: React.Component) {
  */
 export function notifyHostChanged(id: string) {
   if (_layersByHostId[id]) {
-    _layersByHostId[id].forEach(layer => layer.forceUpdate());
+    _layersByHostId[id].forEach(callback => callback());
   }
 }
 

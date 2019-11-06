@@ -55,7 +55,7 @@ storiesOf('TextField', module)
       <TextField
         label="Green styled prefix"
         prefix="https://"
-        value="example.com"
+        defaultValue="example.com"
         styles={{ prefix: { color: 'green' } }}
         disabled
       />
@@ -66,7 +66,7 @@ storiesOf('TextField', module)
   )
   .addStory(
     'Prefix with Value, Disabled',
-    () => <TextField label="Prefix" prefix="https://" value="example.com" disabled />,
+    () => <TextField label="Prefix" prefix="https://" defaultValue="example.com" disabled />,
     {
       rtl: true
     }

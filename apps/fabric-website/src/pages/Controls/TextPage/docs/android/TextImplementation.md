@@ -18,10 +18,12 @@
 
 `TextAppearance.UIFabric.Caption`
 
-### Library
+### Source code
 
-[UI Fabric Android](https://github.com/OfficeDev/ui-fabric-android)
+[TextAppearance styles](https://github.com/OfficeDev/ui-fabric-android/blob/master/OfficeUIFabric/src/main/res/values/styles_font.xml)
 
-[Sample Code in Activity](https://github.com/OfficeDev/ui-fabric-android/blob/master/OfficeUIFabric.Demo/src/main/java/com/microsoft/officeuifabricdemo/demos/TypographyActivity.kt)
+### Sample code
 
-[Sample Code in Layout](https://github.com/OfficeDev/ui-fabric-android/blob/master/OfficeUIFabric.Demo/src/main/res/layout/activity_typography.xml)
+[TextAppearance in demo activity](https://github.com/OfficeDev/ui-fabric-android/blob/master/OfficeUIFabric.Demo/src/main/java/com/microsoft/officeuifabricdemo/demos/TypographyActivity.kt)
+
+[TextAppearance in XML](https://github.com/OfficeDev/ui-fabric-android/blob/master/OfficeUIFabric.Demo/src/main/res/layout/activity_typography.xml)

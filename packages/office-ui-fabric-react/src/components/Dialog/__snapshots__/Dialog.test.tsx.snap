@@ -25,18 +25,25 @@ exports[`Dialog renders Dialog correctly 1`] = `
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
-            color: #333333;
+            color: #323130;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-            font-size: 21px;
-            font-weight: 100;
+            font-size: 20px;
+            font-weight: 600;
+            line-height: normal;
             margin-bottom: 0;
             margin-left: 0;
             margin-right: 0;
             margin-top: 0;
             padding-bottom: 20px;
-            padding-left: 28px;
-            padding-right: 36px;
-            padding-top: 20px;
+            padding-left: 24px;
+            padding-right: 46px;
+            padding-top: 16px;
+          }
+          @media (min-width: 320px) and (max-width: 479px){& {
+            padding-bottom: 16px;
+            padding-left: 16px;
+            padding-right: 46px;
+            padding-top: 16px;
           }
       role="heading"
     />
@@ -49,8 +56,8 @@ exports[`Dialog renders Dialog correctly 1`] = `
             flex-wrap: nowrap;
             padding-bottom: 0;
             padding-left: 0;
-            padding-right: 12px;
-            padding-top: 12px;
+            padding-right: 15px;
+            padding-top: 15px;
             position: absolute;
             right: 0;
             top: 0;
@@ -58,15 +65,34 @@ exports[`Dialog renders Dialog correctly 1`] = `
           & > * {
             flex: 0 0 auto;
           }
+          & .ms-Dialog-button {
+            color: #323130;
+          }
+          & .ms-Dialog-button:hover {
+            border-radius: 2px;
+            color: #201f1e;
+          }
+          @media (min-width: 320px) and (max-width: 479px){& {
+            padding-bottom: 0;
+            padding-left: 0;
+            padding-right: 8px;
+            padding-top: 15px;
+          }
     />
   </div>
   <div
     className=
         ms-Dialog-inner
         {
-          padding-bottom: 20px;
-          padding-left: 28px;
-          padding-right: 28px;
+          padding-bottom: 24px;
+          padding-left: 24px;
+          padding-right: 24px;
+          padding-top: 0;
+        }
+        @media (min-width: 320px) and (max-width: 479px){& {
+          padding-bottom: 16px;
+          padding-left: 16px;
+          padding-right: 16px;
           padding-top: 0;
         }
   >
@@ -76,12 +102,6 @@ exports[`Dialog renders Dialog correctly 1`] = `
           {
             position: relative;
             width: 100%;
-          }
-          & .ms-Button.ms-Button--compount {
-            margin-bottom: 20px;
-          }
-          &:last-child {
-            margin-bottom: 0;
           }
     />
   </div>
@@ -113,18 +133,25 @@ exports[`Dialog renders Dialog with a jsx title 1`] = `
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
-            color: #333333;
+            color: #323130;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-            font-size: 21px;
-            font-weight: 100;
+            font-size: 20px;
+            font-weight: 600;
+            line-height: normal;
             margin-bottom: 0;
             margin-left: 0;
             margin-right: 0;
             margin-top: 0;
             padding-bottom: 20px;
-            padding-left: 28px;
-            padding-right: 36px;
-            padding-top: 20px;
+            padding-left: 24px;
+            padding-right: 46px;
+            padding-top: 16px;
+          }
+          @media (min-width: 320px) and (max-width: 479px){& {
+            padding-bottom: 16px;
+            padding-left: 16px;
+            padding-right: 46px;
+            padding-top: 16px;
           }
       role="heading"
     >
@@ -146,8 +173,8 @@ exports[`Dialog renders Dialog with a jsx title 1`] = `
             flex-wrap: nowrap;
             padding-bottom: 0;
             padding-left: 0;
-            padding-right: 12px;
-            padding-top: 12px;
+            padding-right: 15px;
+            padding-top: 15px;
             position: absolute;
             right: 0;
             top: 0;
@@ -155,15 +182,34 @@ exports[`Dialog renders Dialog with a jsx title 1`] = `
           & > * {
             flex: 0 0 auto;
           }
+          & .ms-Dialog-button {
+            color: #323130;
+          }
+          & .ms-Dialog-button:hover {
+            border-radius: 2px;
+            color: #201f1e;
+          }
+          @media (min-width: 320px) and (max-width: 479px){& {
+            padding-bottom: 0;
+            padding-left: 0;
+            padding-right: 8px;
+            padding-top: 15px;
+          }
     />
   </div>
   <div
     className=
         ms-Dialog-inner
         {
-          padding-bottom: 20px;
-          padding-left: 28px;
-          padding-right: 28px;
+          padding-bottom: 24px;
+          padding-left: 24px;
+          padding-right: 24px;
+          padding-top: 0;
+        }
+        @media (min-width: 320px) and (max-width: 479px){& {
+          padding-bottom: 16px;
+          padding-left: 16px;
+          padding-right: 16px;
           padding-top: 0;
         }
   >
@@ -173,12 +219,6 @@ exports[`Dialog renders Dialog with a jsx title 1`] = `
           {
             position: relative;
             width: 100%;
-          }
-          & .ms-Button.ms-Button--compount {
-            margin-bottom: 20px;
-          }
-          &:last-child {
-            margin-bottom: 0;
           }
     />
   </div>

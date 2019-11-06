@@ -1,6 +1,5 @@
 {
   "copyTo": {
-    "dist": ["./index.html"],
     "dist/sass": [
       "office-ui-fabric-core/dist/sass/**/*",
       "./src/common/_highContrast.scss",

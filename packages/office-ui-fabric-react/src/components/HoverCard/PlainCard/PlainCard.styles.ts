@@ -15,8 +15,6 @@ export function getStyles(props: IPlainCardStyleProps): IPlainCardStyles {
       classNames.root,
       {
         pointerEvents: 'auto',
-        boxShadow: '0 0 20px rgba(0, 0, 0, .2)',
-        border: 'none',
         selectors: {
           [HighContrastSelector]: {
             border: '1px solid WindowText'

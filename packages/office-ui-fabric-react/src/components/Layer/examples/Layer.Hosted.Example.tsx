@@ -1,10 +1,15 @@
+import * as React from 'react';
 import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
-import * as exampleStyles from 'office-ui-fabric-react/lib/common/_exampleStyles.scss';
 import { Layer, LayerHost } from 'office-ui-fabric-react/lib/Layer';
 import { AnimationClassNames, mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 import { getId, css } from 'office-ui-fabric-react/lib/Utilities';
-import * as React from 'react';
+import { IToggleStyles } from 'office-ui-fabric-react/lib/Toggle';
+import { IStyleSet } from 'office-ui-fabric-react/lib/Styling';
 import * as styles from './Layer.Example.scss';
+
+const toggleStyles: Partial<IStyleSet<IToggleStyles>> = {
+  root: { margin: '10px 0' }
+};
 
 const rootClass = mergeStyles({
   selectors: { p: { marginTop: 30 } }
@@ -43,7 +48,7 @@ export class LayerHostedExample extends React.Component<{}, ILayerHostedExampleS
         </p>
 
         <Toggle
-          className={exampleStyles.exampleCheckbox}
+          styles={toggleStyles}
           label={`Render the box below in a Layer and target it at hostId=${this._layerHostId}`}
           inlineLabel
           checked={showLayer}
@@ -63,7 +68,7 @@ export class LayerHostedExample extends React.Component<{}, ILayerHostedExampleS
         <p>If you do not specify a hostId, the hosted layer will default to being fixed to the page by default.</p>
 
         <Toggle
-          className={exampleStyles.exampleCheckbox}
+          styles={toggleStyles}
           label="Render the box below in a Layer without specifying a host, fixing it to the top of the page"
           inlineLabel
           checked={showLayerNoId}

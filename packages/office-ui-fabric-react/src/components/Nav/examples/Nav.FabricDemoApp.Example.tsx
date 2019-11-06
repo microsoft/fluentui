@@ -1,14 +1,16 @@
 import * as React from 'react';
 import { Nav } from 'office-ui-fabric-react/lib/Nav';
 
-export const NavFabricDemoAppExample: React.StatelessComponent = () => {
+export const NavFabricDemoAppExample: React.FunctionComponent = () => {
   return (
     <Nav
       styles={{ root: { width: 300 } }}
-      expandButtonAriaLabel="Expand or collapse"
+      ariaLabel="Nav example similiar to one found in this demo page"
       groups={[
         {
           name: 'Basic components',
+          expandAriaLabel: 'Expand Basic components section',
+          collapseAriaLabel: 'Collapse Basic components section',
           links: [
             {
               key: 'ActivityItem',
@@ -29,6 +31,8 @@ export const NavFabricDemoAppExample: React.StatelessComponent = () => {
         },
         {
           name: 'Extended components',
+          expandAriaLabel: 'Expand Extended components section',
+          collapseAriaLabel: 'Collapse Extended components section',
           links: [
             {
               key: 'ColorPicker',
@@ -49,6 +53,8 @@ export const NavFabricDemoAppExample: React.StatelessComponent = () => {
         },
         {
           name: 'Utilities',
+          expandAriaLabel: 'Expand Utilities section',
+          collapseAriaLabel: 'Collapse Utilities section',
           links: [
             {
               key: 'FocusTrapZone',

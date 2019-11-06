@@ -10,7 +10,7 @@ exports[`VerticalBarChart renders VerticalBarChart correctly 1`] = `
         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
         font-size: 14px;
         font-weight: 400;
-        width: 670px;
+        width: 690px;
       }
 >
   <svg
@@ -18,12 +18,12 @@ exports[`VerticalBarChart renders VerticalBarChart correctly 1`] = `
 
         {
           box-sizing: content-box;
-          height: 360px;
+          height: 400px;
           padding-bottom: 20px;
           padding-left: 20px;
           padding-right: 20px;
           padding-top: 20px;
-          width: 630px;
+          width: 650px;
         }
   >
     <g
@@ -37,7 +37,7 @@ exports[`VerticalBarChart renders VerticalBarChart correctly 1`] = `
       className=
 
           {
-            transform: translate(20px, 0px);
+            transform: translate(23px, 0px);
           }
     />
     <g
@@ -56,10 +56,10 @@ exports[`VerticalBarChart renders VerticalBarChart correctly 1`] = `
       />
       <rect
         fill="rgb(0, 32, 80)"
-        height={350}
+        height={340}
         width={15}
         x={585}
-        y={0}
+        y={10}
       />
     </g>
   </svg>

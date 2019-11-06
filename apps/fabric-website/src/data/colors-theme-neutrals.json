@@ -1,0 +1,128 @@
+[
+  {
+    "name": "black",
+    "hex": "#000000",
+    "code": {
+      "core": "$ms-color-black",
+      "react": "NeutralColors.black",
+      "themeSlot": "black"
+    }
+  },
+  {
+    "name": "neutralDark",
+    "hex": "#201f1e",
+    "code": {
+      "core": "$ms-color-neutralDark",
+      "react": "NeutralColors.gray190",
+      "themeSlot": "neutralDark"
+    }
+  },
+  {
+    "name": "neutralPrimary",
+    "hex": "#323130",
+    "code": {
+      "core": "$ms-color-neutralPrimary",
+      "react": "NeutralColors.gray160",
+      "themeSlot": "neutralPrimary"
+    }
+  },
+  {
+    "name": "neutralPrimaryAlt",
+    "hex": "#3b3a39",
+    "code": {
+      "core": "$ms-color-neutralPrimaryAlt",
+      "react": "NeutralColors.gray150",
+      "themeSlot": "neutralPrimaryAlt"
+    }
+  },
+  {
+    "name": "neutralSecondary",
+    "hex": "#605e5c",
+    "code": {
+      "core": "$ms-color-neutralSecondary",
+      "react": "NeutralColors.gray130",
+      "themeSlot": "neutralSecondary"
+    }
+  },
+  {
+    "name": "neutralSecondaryAlt",
+    "hex": "#8a8886",
+    "code": {
+      "core": "$ms-color-neutralSecondaryAlt",
+      "react": "NeutralColors.gray110",
+      "themeSlot": "neutralSecondaryAlt"
+    }
+  },
+  {
+    "name": "neutralTertiary",
+    "hex": "#a19f9d",
+    "code": {
+      "core": "$ms-color-neutralTertiary",
+      "react": "NeutralColors.gray90",
+      "themeSlot": "neutralTertiary"
+    }
+  },
+  {
+    "name": "neutralTertiaryAlt",
+    "hex": "#c8c6c4",
+    "code": {
+      "core": "$ms-color-neutralTertiaryAlt",
+      "react": "NeutralColors.gray60",
+      "themeSlot": "neutralTertiaryAlt"
+    }
+  },
+  {
+    "name": "neutralQuaternary",
+    "hex": "#d2d0ce",
+    "code": {
+      "core": "$ms-color-neutralQuaternary",
+      "react": "NeutralColors.gray50",
+      "themeSlot": "neutralQuaternary"
+    }
+  },
+  {
+    "name": "neutralQuaternaryAlt",
+    "hex": "#e1dfdd",
+    "code": {
+      "core": "$ms-color-neutralQuaternaryAlt",
+      "react": "NeutralColors.gray40",
+      "themeSlot": "neutralQuaternaryAlt"
+    }
+  },
+  {
+    "name": "neutralLight",
+    "hex": "#edebe9",
+    "code": {
+      "core": "$ms-color-neutralLight",
+      "react": "NeutralColors.gray30",
+      "themeSlot": "neutralLight"
+    }
+  },
+  {
+    "name": "neutralLighter",
+    "hex": "#f3f2f1",
+    "code": {
+      "core": "$ms-color-neutralLighter",
+      "react": "NeutralColors.gray20",
+      "themeSlot": "neutralLighter"
+    }
+  },
+  {
+    "name": "neutralLighterAlt",
+    "hex": "#faf9f8",
+    "code": {
+      "core": "$ms-color-neutralLighterAlt",
+      "react": "NeutralColors.gray10",
+      "themeSlot": "neutralLighterAlt"
+    }
+  },
+  {
+    "name": "white",
+    "hex": "#ffffff",
+    "code": {
+      "core": "$ms-color-white",
+      "react": "NeutralColors.white",
+      "themeSlot": "white"
+    }
+  }
+]

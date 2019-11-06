@@ -2,8 +2,10 @@
 
 `MSDrawerController`
 
-### Library
+### Source code
 
-[UI Fabric iOS](https://github.com/OfficeDev/ui-fabric-ios)
+[MSDrawerController](https://github.com/OfficeDev/ui-fabric-ios/blob/master/OfficeUIFabric/Drawer/MSDrawerController.swift)
 
-[Sample Code](https://github.com/OfficeDev/ui-fabric-ios/blob/master/OfficeUIFabric.Demo/OfficeUIFabric.Demo/Demos/MSDrawerDemoController.swift)
+### Sample code
+
+[MSDrawerController demo](https://github.com/OfficeDev/ui-fabric-ios/blob/master/OfficeUIFabric.Demo/OfficeUIFabric.Demo/Demos/MSDrawerDemoController.swift)

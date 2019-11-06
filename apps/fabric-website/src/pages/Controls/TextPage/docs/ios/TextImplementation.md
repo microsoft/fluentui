@@ -2,8 +2,10 @@
 
 `MSLabel`
 
-### Library
+### Source code
 
-[UI Fabric iOS](https://github.com/OfficeDev/ui-fabric-ios)
+[MSLabel](https://github.com/OfficeDev/ui-fabric-ios/blob/master/OfficeUIFabric/Controls/MSLabel.swift)
 
-[Sample Code](https://github.com/OfficeDev/ui-fabric-ios/blob/master/OfficeUIFabric.Demo/OfficeUIFabric.Demo/Demos/MSLabelDemoController.swift)
+### Sample code
+
+[MSLabel demo](https://github.com/OfficeDev/ui-fabric-ios/blob/master/OfficeUIFabric.Demo/OfficeUIFabric.Demo/Demos/MSLabelDemoController.swift)

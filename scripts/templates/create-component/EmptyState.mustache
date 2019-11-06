@@ -1,20 +1,34 @@
-import { I{{componentName}}Props, I{{componentName}}ViewProps } from './{{componentName}}.types';
-import { BaseState } from '../../utilities/BaseState';
+import { useCallback, useState } from 'react';
+import { I{{componentName}}Component, I{{componentName}}Props, I{{componentName}}ViewProps } from './{{componentName}}.types';
+import { useControlledState } from '../../Foundation';
 
-// Internal state will most likely include a subset of your ViewProps. This template just equates them to start with.
-export type I{{componentName}}State = I{{componentName}}ViewProps;
+/**
+* {@docCategory {{componentName}}}
+*/
+export const use{{componentName}}State: I{{componentName}}Component['state'] = (
+  props: Readonly<I{{componentName}}Props>
+): I{{componentName}}ViewProps => {
+  const [clicks, setClicks] = useState(0);
+  const [text] = useControlledState(props, 'text', {
+    defaultPropName: 'defaultText',
+    defaultPropValue: 'Click Me!'
+  });
 
-export class {{componentName}}State extends BaseState<I{{componentName}}Props, I{{componentName}}ViewProps, I{{componentName}}State > {
-  constructor(props: {{componentName}}State['props']) {
-    super(props, {
-      // Mark controlledProps to ensure that they get priority when provided as a component prop.
-      // For props not marked controlled, component state will get priority over component props.
-      controlledProps: ['text']
-    });
+  // useCallback memoizes functions based on its dependency list to avoid unnecessarily mutating callback references.
+  // It is important that any props and state used (like 'clicks' here) are also listed in the dependency array argument
+  // to ensure that callbacks change when their dependencies do.
+  const _onClick = useCallback(() => {
+    setClicks(clicks + 1);
+  },
+    [clicks]
+  );
 
-    this.state = {
-      text: props.defaultText || 'Default Text',
-      status: 'State Text'
-    };
-  }
-}
+  const viewProps: I{{componentName}}ViewProps = {
+    ...props,
+    text,
+    clicks,
+    onClick: _onClick
+  };
+
+  return viewProps;
+};

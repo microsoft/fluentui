@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { KeyCodes, createArray, getRTLSafeKeyCode } from 'office-ui-fabric-react/lib/Utilities';
+import { useConst } from '@uifabric/react-hooks';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { Link } from 'office-ui-fabric-react/lib/Link';
 import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react/lib/FocusZone';
@@ -26,7 +27,7 @@ const COLUMNS: IColumn[] = [
     onRender: item => <Link href={item.url}>{item.url}</Link>
   },
   {
-    key: 'link',
+    key: 'defaultButton',
     name: 'Link',
     fieldName: 'url',
     minWidth: 100,
@@ -34,35 +35,31 @@ const COLUMNS: IColumn[] = [
   }
 ];
 
-export class FocusZoneListExample extends React.PureComponent {
-  private _selection: Selection;
+export const FocusZoneListExample: React.FunctionComponent = () => {
+  //  Initialize the selection when the component is first rendered (same instance will be reused)
+  const selection = useConst(() => {
+    const sel = new Selection();
+    sel.setItems(ITEMS);
+    return sel;
+  });
 
-  constructor(props: {}) {
-    super(props);
+  return (
+    <FocusZone direction={FocusZoneDirection.vertical} isCircularNavigation={true} isInnerZoneKeystroke={_isInnerZoneKeystroke} role="grid">
+      {ITEMS.map((item, index) => (
+        <DetailsRow
+          key={item.name}
+          item={item}
+          itemIndex={index}
+          columns={COLUMNS}
+          selectionMode={SelectionMode.none}
+          selection={selection}
+          styles={{ root: { display: 'block', width: '100%' } }}
+        />
+      ))}
+    </FocusZone>
+  );
+};
 
-    this._selection = new Selection();
-    this._selection.setItems(ITEMS);
-  }
-
-  public render(): JSX.Element {
-    return (
-      <FocusZone direction={FocusZoneDirection.vertical} isCircularNavigation={true} isInnerZoneKeystroke={this._isInnerZoneKeystroke}>
-        {ITEMS.map((item, index) => (
-          <DetailsRow
-            key={item.name}
-            item={item}
-            itemIndex={index}
-            columns={COLUMNS}
-            selectionMode={SelectionMode.none}
-            selection={this._selection}
-            styles={{ root: { display: 'block', width: '100%' } }}
-          />
-        ))}
-      </FocusZone>
-    );
-  }
-
-  private _isInnerZoneKeystroke = (ev: React.KeyboardEvent<HTMLElement>): boolean => {
-    return ev.which === getRTLSafeKeyCode(KeyCodes.right);
-  };
+function _isInnerZoneKeystroke(ev: React.KeyboardEvent<HTMLElement>): boolean {
+  return ev.which === getRTLSafeKeyCode(KeyCodes.right);
 }

@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { IStyle, ITheme } from '../../../Styling';
 import { IRefObject, IStyleFunctionOrObject } from '../../../Utilities';
 import { ISuggestionModel } from './Suggestions.types';
@@ -24,7 +25,7 @@ export interface ISuggestionItemProps<T> {
   suggestionModel: ISuggestionModel<T>;
 
   /** Optional renderer to override the default one for each type of picker. */
-  RenderSuggestion: (item: T, suggestionItemProps?: ISuggestionItemProps<T>) => JSX.Element;
+  RenderSuggestion: (item: T, suggestionItemProps: ISuggestionItemProps<T>) => JSX.Element;
 
   /** Callback for when the user clicks on the suggestion. */
   onClick: (ev: React.MouseEvent<HTMLButtonElement>) => void;

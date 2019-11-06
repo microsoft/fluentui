@@ -1,8 +1,12 @@
+import * as React from 'react';
 import { styled } from '../../Utilities';
 import { MarqueeSelectionBase } from './MarqueeSelection.base';
 import { getStyles } from './MarqueeSelection.styles';
-import { IMarqueeSelectionProps } from './MarqueeSelection.types';
+import { IMarqueeSelectionProps, IMarqueeSelectionStyleProps, IMarqueeSelectionStyles } from './MarqueeSelection.types';
 
-export const MarqueeSelection: React.StatelessComponent<IMarqueeSelectionProps> = styled(MarqueeSelectionBase, getStyles, undefined, {
-  scope: 'MarqueeSelection'
-});
+export const MarqueeSelection: React.StatelessComponent<IMarqueeSelectionProps> =
+  // TODO: MarqueeSelectionBase defaultProps are not lining up with IMarqueeSelectionProps, so we have to be explicit with styled here.
+  // defaultProps.rootTagName doesn't appear to be used anywhere and defaultProps.rootProps is not in IMarqueeSelectionProps.
+  styled<IMarqueeSelectionProps, IMarqueeSelectionStyleProps, IMarqueeSelectionStyles>(MarqueeSelectionBase, getStyles, undefined, {
+    scope: 'MarqueeSelection'
+  });

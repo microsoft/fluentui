@@ -2,146 +2,8 @@
 
 exports[`Component Examples renders Link.Basic.Example.tsx correctly 1`] = `
 <div>
-  <span>
+  <p>
     When a link has an href, 
-  </span>
-  <a
-    className=
-        ms-Link
-        {
-          -moz-osx-font-smoothing: grayscale;
-          -webkit-font-smoothing: antialiased;
-          color: #0078d4;
-          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-          font-size: inherit;
-          font-weight: inherit;
-          outline: none;
-          text-decoration: none;
-        }
-        .ms-Fabric--isFocusVisible &:focus {
-          box-shadow: 0 0 0 1px #666666 inset;
-        }
-        @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
-          outline: 1px solid WindowText;
-        }
-        @media screen and (-ms-high-contrast: active){& {
-          border-bottom: none;
-        }
-        &:active, &:hover, &:active:hover {
-          color: #004578;
-        }
-        @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
-          text-decoration: underline;
-        }
-        &:focus {
-          color: #0078d4;
-        }
-    href="http://dev.office.com/fabric/components/link"
-    onClick={[Function]}
-  >
-    it renders as an anchor tag.
-  </a>
-  <span>
-     Without an href, 
-  </span>
-  <button
-    className=
-        ms-Link
-        {
-          -moz-osx-font-smoothing: grayscale;
-          -webkit-font-smoothing: antialiased;
-          background-color: transparent;
-          background: none;
-          border-bottom: 1px solid transparent;
-          border: none;
-          color: #0078d4;
-          cursor: pointer;
-          display: inline;
-          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-          font-size: inherit;
-          font-weight: inherit;
-          margin-bottom: 0px;
-          margin-left: 0px;
-          margin-right: 0px;
-          margin-top: 0px;
-          outline: none;
-          overflow: inherit;
-          padding-bottom: 0px;
-          padding-left: 0px;
-          padding-right: 0px;
-          padding-top: 0px;
-          text-align: left;
-          text-overflow: inherit;
-          user-select: text;
-        }
-        .ms-Fabric--isFocusVisible &:focus {
-          box-shadow: 0 0 0 1px #666666 inset;
-        }
-        @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
-          outline: 1px solid WindowText;
-        }
-        @media screen and (-ms-high-contrast: active){& {
-          border-bottom: none;
-        }
-        @media screen and (-ms-high-contrast: white-on-black){& {
-          color: #FFFF00;
-        }
-        @media screen and (-ms-high-contrast: black-on-white){& {
-          color: #00009F;
-        }
-        &:active, &:hover, &:active:hover {
-          color: #004578;
-        }
-        @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
-          text-decoration: underline;
-        }
-        &:focus {
-          color: #0078d4;
-        }
-    onClick={[Function]}
-    type="button"
-  >
-    the link is rendered as a button
-  </button>
-  .
-  <span>
-     You can also use the disabled attribute to create a 
-  </span>
-  <a
-    aria-disabled={true}
-    className=
-        ms-Link
-        is-disabled
-        {
-          -moz-osx-font-smoothing: grayscale;
-          -webkit-font-smoothing: antialiased;
-          color: #a6a6a6;
-          cursor: default;
-          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-          font-size: inherit;
-          font-weight: inherit;
-          outline: none;
-          text-decoration: none;
-        }
-        .ms-Fabric--isFocusVisible &:focus {
-          box-shadow: 0 0 0 1px #666666 inset;
-        }
-        @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
-          outline: 1px solid WindowText;
-        }
-        @media screen and (-ms-high-contrast: active){& {
-          border-bottom: none;
-        }
-        &:link, &:visited {
-          pointer-events: none;
-        }
-    onClick={[Function]}
-  >
-    disabled link.
-  </a>
-  <span>
-     
-    Example of a Link with 
     <a
       className=
           ms-Link
@@ -156,7 +18,7 @@ exports[`Component Examples renders Link.Basic.Example.tsx correctly 1`] = `
             text-decoration: none;
           }
           .ms-Fabric--isFocusVisible &:focus {
-            box-shadow: 0 0 0 1px #666666 inset;
+            box-shadow: 0 0 0 1px #605e5c inset;
           }
           @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
             outline: 1px solid WindowText;
@@ -164,10 +26,16 @@ exports[`Component Examples renders Link.Basic.Example.tsx correctly 1`] = `
           @media screen and (-ms-high-contrast: active){& {
             border-bottom: none;
           }
-          &:active, &:hover, &:active:hover {
+          &:active {
             color: #004578;
+            text-decoration: underline;
           }
-          @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
+          &:hover {
+            color: #004578;
+            text-decoration: underline;
+          }
+          &:active:hover {
+            color: #004578;
             text-decoration: underline;
           }
           &:focus {
@@ -176,11 +44,114 @@ exports[`Component Examples renders Link.Basic.Example.tsx correctly 1`] = `
       href="http://dev.office.com/fabric/components/link"
       onClick={[Function]}
     >
-      mixed link content that wraps.
+      it renders as an anchor tag.
     </a>
-  </span>
-  <br />
-  <br />
-  It's not recommended to use Links with imgs because Links are meant to render textual inline content. Buttons are inline-block or in the case of imgs, block. However, it is possible to create a linked image button by making a button with an unstyled variant and adding the img content and href source to that.
+     Without an href, 
+    <button
+      className=
+          ms-Link
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            background-color: transparent;
+            background: none;
+            border-bottom: 1px solid transparent;
+            border: none;
+            color: #0078d4;
+            cursor: pointer;
+            display: inline;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: inherit;
+            font-weight: inherit;
+            margin-bottom: 0px;
+            margin-left: 0px;
+            margin-right: 0px;
+            margin-top: 0px;
+            outline: none;
+            overflow: inherit;
+            padding-bottom: 0px;
+            padding-left: 0px;
+            padding-right: 0px;
+            padding-top: 0px;
+            text-align: left;
+            text-overflow: inherit;
+            user-select: text;
+          }
+          .ms-Fabric--isFocusVisible &:focus {
+            box-shadow: 0 0 0 1px #605e5c inset;
+          }
+          @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
+            outline: 1px solid WindowText;
+          }
+          @media screen and (-ms-high-contrast: active){& {
+            border-bottom: none;
+          }
+          @media screen and (-ms-high-contrast: white-on-black){& {
+            color: #FFFF00;
+          }
+          @media screen and (-ms-high-contrast: black-on-white){& {
+            color: #00009F;
+          }
+          &:active {
+            color: #004578;
+            text-decoration: underline;
+          }
+          &:hover {
+            color: #004578;
+            text-decoration: underline;
+          }
+          &:active:hover {
+            color: #004578;
+            text-decoration: underline;
+          }
+          &:focus {
+            color: #0078d4;
+          }
+      onClick={[Function]}
+      type="button"
+    >
+      the link is rendered as a button
+    </button>
+    . You can also use the disabled attribute to create a
+     
+    <a
+      aria-disabled={true}
+      className=
+          ms-Link
+          is-disabled
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            color: #a19f9d;
+            cursor: default;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: inherit;
+            font-weight: inherit;
+            outline: none;
+            text-decoration: none;
+          }
+          .ms-Fabric--isFocusVisible &:focus {
+            box-shadow: 0 0 0 1px #605e5c inset;
+          }
+          @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
+            outline: 1px solid WindowText;
+          }
+          @media screen and (-ms-high-contrast: active){& {
+            border-bottom: none;
+          }
+          &:link {
+            pointer-events: none;
+          }
+          &:visited {
+            pointer-events: none;
+          }
+      onClick={[Function]}
+    >
+      disabled link.
+    </a>
+  </p>
+  <p>
+    It's not recommended to use Links with imgs because Links are meant to render textual inline content. Buttons are inline-block or in the case of imgs, block. However, it is possible to create a linked image button by making a button with an unstyled variant and adding the img content and href source to that.
+  </p>
 </div>
 `;

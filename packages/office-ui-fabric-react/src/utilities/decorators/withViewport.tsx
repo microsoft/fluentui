@@ -69,7 +69,7 @@ export function withViewport<TProps extends { viewport?: IViewport }, TState>(
 
     public componentDidMount(): void {
       const { skipViewportMeasures } = this.props as IWithViewportProps;
-      const win = getWindow();
+      const win = getWindow(this._root.current);
 
       this._onAsyncResize = this._async.debounce(this._onAsyncResize, RESIZE_DELAY, {
         leading: false
@@ -93,7 +93,7 @@ export function withViewport<TProps extends { viewport?: IViewport }, TState>(
     public componentDidUpdate(newProps: TProps) {
       const { skipViewportMeasures: oldSkipViewportMeasures } = this.props as IWithViewportProps;
       const { skipViewportMeasures: newSkipViewportMeasures } = newProps as IWithViewportProps;
-      const win = getWindow();
+      const win = getWindow(this._root.current);
 
       if (oldSkipViewportMeasures !== newSkipViewportMeasures) {
         if (newSkipViewportMeasures) {
@@ -103,6 +103,10 @@ export function withViewport<TProps extends { viewport?: IViewport }, TState>(
           this._events.off(win, 'resize', this._onAsyncResize);
           this._registerResizeObserver();
         }
+      }
+
+      if (!!newSkipViewportMeasures) {
+        this._updateViewport();
       }
     }
 
@@ -116,12 +120,11 @@ export function withViewport<TProps extends { viewport?: IViewport }, TState>(
 
     public render(): JSX.Element {
       const { viewport } = this.state;
-      const { skipViewportMeasures } = this.props as IWithViewportProps;
-      const isViewportVisible = skipViewportMeasures || (viewport!.width > 0 && viewport!.height > 0);
+      const newViewport = viewport!.width > 0 && viewport!.height > 0 ? viewport : undefined;
 
       return (
         <div className="ms-Viewport" ref={this._root} style={{ minWidth: 1, minHeight: 1 }}>
-          {isViewportVisible && <ComposedComponent ref={this._updateComposedComponentRef} viewport={viewport} {...this.props as any} />}
+          <ComposedComponent ref={this._updateComposedComponentRef} viewport={newViewport} {...this.props as any} />
         </div>
       );
     }
@@ -135,13 +138,13 @@ export function withViewport<TProps extends { viewport?: IViewport }, TState>(
     }
 
     private _isResizeObserverAvailable(): boolean {
-      const win = getWindow();
+      const win = getWindow(this._root.current);
 
       return win && (win as any).ResizeObserver;
     }
 
     private _registerResizeObserver = () => {
-      const win = getWindow();
+      const win = getWindow(this._root.current);
 
       this._viewportResizeObserver = new (win as any).ResizeObserver(this._onAsyncResize);
       this._viewportResizeObserver.observe(this._root.current);

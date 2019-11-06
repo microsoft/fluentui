@@ -9,7 +9,7 @@ import {
 } from 'office-ui-fabric-react/lib/SelectedItemsList';
 import { Selection } from 'office-ui-fabric-react/lib/Selection';
 import { Stack } from 'office-ui-fabric-react/lib/Stack';
-import { people, groupOne, groupTwo } from '../../ExtendedPicker/examples/PeopleExampleData';
+import { people, groupOne, groupTwo } from '@uifabric/example-data';
 
 export interface ISelectedPeopleListBasicExampleState {
   nextPersonIndex: number;

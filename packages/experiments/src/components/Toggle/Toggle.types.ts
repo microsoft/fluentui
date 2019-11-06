@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IComponent, IComponentStyles, IHTMLElementSlot, IHTMLSlot, IStyleableComponentProps } from '../../Foundation';
+import { IComponent, IComponentStyles, IHTMLElementSlot, IHTMLSlot, ISlottableProps, IStyleableComponentProps } from '../../Foundation';
 import { IKeytipProps } from 'office-ui-fabric-react/lib/Keytip';
 import { IBaseProps, IComponentAs } from '../../Utilities';
 import { IRawStyleBase } from '@uifabric/merge-styles/lib/IRawStyleBase';
@@ -50,7 +50,7 @@ export interface IToggle {
 }
 
 export interface IToggleProps
-  extends IToggleSlots,
+  extends ISlottableProps<IToggleSlots>,
     IStyleableComponentProps<IToggleViewProps, IToggleTokens, IToggleStyles>,
     IBaseProps<IToggle> {
   /**

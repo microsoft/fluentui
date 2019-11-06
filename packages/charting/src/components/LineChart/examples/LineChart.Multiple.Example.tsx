@@ -17,58 +17,67 @@ export class LineChartMultipleExample extends React.Component<{}, {}> {
     return <div>{this._styledExample()}</div>;
   }
 
+  private _onLegendClickHandler = (selectedLegend: string | null): void => {
+    if (selectedLegend !== null) {
+      console.log(`Selected legend - ${selectedLegend}`);
+    }
+  };
+
   private _styledExample(): JSX.Element {
     const points: ILineChartPoints[] = [
       {
         data: [
-          { x: new Date('01-01-2018'), y: 10 },
-          { x: new Date('01-15-2018'), y: 18 },
-          { x: new Date('01-28-2018'), y: 24 },
-          { x: new Date('02-01-2018'), y: 25 },
-          { x: new Date('03-01-2018'), y: 15 },
-          { x: new Date('03-15-2018'), y: 30 },
-          { x: new Date('03-28-2018'), y: 18 },
-          { x: new Date('04-04-2018'), y: 32 },
-          { x: new Date('04-15-2018'), y: 29 },
-          { x: new Date('05-05-2018'), y: 43 },
-          { x: new Date('06-01-2018'), y: 45 }
+          { x: new Date('2018/01/01'), y: 10 },
+          { x: new Date('2018/01/15'), y: 18 },
+          { x: new Date('2018/01/28'), y: 24 },
+          { x: new Date('2018/02/01'), y: 25 },
+          { x: new Date('2018/03/01'), y: 15 },
+          { x: new Date('2018/03/15'), y: 30 },
+          { x: new Date('2018/03/28'), y: 18 },
+          { x: new Date('2018/04/04'), y: 32 },
+          { x: new Date('2018/04/15'), y: 29 },
+          { x: new Date('2018/05/05'), y: 43 },
+          { x: new Date('2018/06/01'), y: 45 }
         ],
         legend: 'First',
-        color: DefaultPalette.blue
+        color: DefaultPalette.blue,
+        onLegendClick: this._onLegendClickHandler
       },
       {
         data: [
-          { x: new Date('01-01-2018'), y: 10 },
-          { x: new Date('01-7-2018'), y: 18 },
-          { x: new Date('01-15-2018'), y: 24 },
-          { x: new Date('02-01-2018'), y: 25 },
-          { x: new Date('03-10-2018'), y: 15 },
-          { x: new Date('03-15-2018'), y: 30 },
-          { x: new Date('03-20-2018'), y: 18 },
-          { x: new Date('04-10-2018'), y: 32 },
-          { x: new Date('04-20-2018'), y: 29 },
-          { x: new Date('05-16-2018'), y: 43 },
-          { x: new Date('06-01-2018'), y: 45 }
+          { x: new Date('2018/01/01'), y: 10 },
+          { x: new Date('2018/01/07'), y: 18 },
+          { x: new Date('2018/01/15'), y: 24 },
+          { x: new Date('2018/02/01'), y: 25 },
+          { x: new Date('2018/03/10'), y: 15 },
+          { x: new Date('2018/03/15'), y: 30 },
+          { x: new Date('2018/03/20'), y: 18 },
+          { x: new Date('2018/04/10'), y: 32 },
+          { x: new Date('2018/04/20'), y: 29 },
+          { x: new Date('2018/05/16'), y: 43 },
+          { x: new Date('2018/06/01'), y: 45 }
         ],
         legend: 'Second',
-        color: DefaultPalette.green
+        color: DefaultPalette.green,
+        onLegendClick: this._onLegendClickHandler
       },
       {
         data: [
-          { x: new Date('01-06-2018'), y: 10 },
-          { x: new Date('01-18-2018'), y: 18 },
-          { x: new Date('01-25-2018'), y: 24 },
-          { x: new Date('02-10-2018'), y: 25 },
-          { x: new Date('03-03-2018'), y: 15 },
-          { x: new Date('03-07-2018'), y: 30 },
-          { x: new Date('03-15-2018'), y: 18 },
-          { x: new Date('04-10-2018'), y: 32 },
-          { x: new Date('04-17-2018'), y: 29 },
-          { x: new Date('05-10-2018'), y: 43 },
-          { x: new Date('06-01-2018'), y: 45 }
+          { x: new Date('2018/01/06'), y: 10 },
+          { x: new Date('2018/01/18'), y: 18 },
+          { x: new Date('2018/01/25'), y: 24 },
+          { x: new Date('2018/02/10'), y: 25 },
+          { x: new Date('2018/03/03'), y: 15 },
+          { x: new Date('2018/03/07'), y: 30 },
+          { x: new Date('2018/03/15'), y: 18 },
+          { x: new Date('2018/04/10'), y: 32 },
+          { x: new Date('2018/04/17'), y: 29 },
+          { x: new Date('2018/05/10'), y: 43 },
+          { x: new Date('2018/06/01'), y: 45 }
         ],
         legend: 'Third',
-        color: DefaultPalette.red
+        color: DefaultPalette.red,
+        onLegendClick: this._onLegendClickHandler
       }
     ];
 
@@ -90,7 +99,7 @@ export class LineChartMultipleExample extends React.Component<{}, {}> {
     ];
     return (
       <div className={mergeStyles(rootStyle)}>
-        <LineChart data={data} strokeWidth={4} tickFormat={timeFormat} tickValues={tickValues} />
+        <LineChart data={data} strokeWidth={4} tickFormat={timeFormat} tickValues={tickValues} enabledLegendsWrapLines={true} />
       </div>
     );
   }

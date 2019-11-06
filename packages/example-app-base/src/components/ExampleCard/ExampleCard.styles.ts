@@ -99,9 +99,8 @@ export const getStyles: IStyleFunction<IExampleCardStyleProps, IExampleCardStyle
     header: [
       {
         borderBottom: `1px solid ${theme.palette.neutralTertiary}`,
+        display: 'flex',
         overflow: 'hidden',
-        textOverflow: 'ellipsis',
-        whiteSpace: 'nowrap',
         position: 'relative'
       },
       isCodeVisible && {
@@ -110,17 +109,21 @@ export const getStyles: IStyleFunction<IExampleCardStyleProps, IExampleCardStyle
       globalClassNames.header
     ],
     title: [
-      theme.fonts.large,
+      theme.fonts.medium,
       {
-        marginBottom: 10,
-        display: 'inline-block'
+        display: 'inline-flex',
+        flexGrow: 1,
+        flexShrink: 1,
+        marginBottom: 10
       },
       globalClassNames.title
     ],
     toggleButtons: [
-      theme.fonts.large,
+      theme.fonts.medium,
       {
+        alignSelf: 'flex-end',
         display: 'flex',
+        flexShrink: 0,
         float: 'right'
       },
       globalClassNames.toggleButtons
@@ -143,7 +146,8 @@ export const getStyles: IStyleFunction<IExampleCardStyleProps, IExampleCardStyle
     code: [
       {
         backgroundColor: NeutralColors.gray20,
-        overflow: 'hidden',
+        border: '1px solid ' + NeutralColors.gray90,
+        borderTop: 0,
         selectors: {
           pre: [
             {
@@ -152,11 +156,7 @@ export const getStyles: IStyleFunction<IExampleCardStyleProps, IExampleCardStyle
               transition: `all ${AnimationVariables.durationValue3} ${AnimationVariables.easeFunction1}`
             },
             // Collapse code blocks by default
-            isCodeVisible ? { maxHeight: 480, minHeight: 120 } : { maxHeight: 0 },
-            isCodeVisible && {
-              border: '1px solid ' + NeutralColors.gray90,
-              borderTop: 0
-            }
+            isCodeVisible ? { maxHeight: 480, minHeight: 120 } : { maxHeight: 0 }
           ],
           code: {
             display: 'block',
@@ -183,7 +183,7 @@ export const getStyles: IStyleFunction<IExampleCardStyleProps, IExampleCardStyle
         display: 'inline-block',
         marginRight: 50,
         selectors: {
-          h4: [theme.fonts.large, { color: '#177d3e' }]
+          h4: [theme.fonts.medium, { color: '#177d3e' }]
         }
       },
       globalClassNames.dos
@@ -193,7 +193,7 @@ export const getStyles: IStyleFunction<IExampleCardStyleProps, IExampleCardStyle
         width: 'calc(50%)',
         display: 'inline-block',
         selectors: {
-          h4: [theme.fonts.large, { color: '#a61e22' }]
+          h4: [theme.fonts.medium, { color: '#a61e22' }]
         }
       },
       globalClassNames.donts

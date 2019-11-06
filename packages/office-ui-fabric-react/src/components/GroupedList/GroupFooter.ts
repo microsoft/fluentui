@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { styled } from '../../Utilities';
 import { getStyles } from './GroupFooter.styles';
 import { GroupFooterBase } from './GroupFooter.base';

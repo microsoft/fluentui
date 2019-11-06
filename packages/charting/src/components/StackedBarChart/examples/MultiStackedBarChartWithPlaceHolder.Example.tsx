@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { IChartDataPoint, MultiStackedBarChart, IChartProps } from '@uifabric/charting';
 
-export const MultiStackedBarChartWithPlaceholderExample: React.SFC<{}> = () => {
+export const MultiStackedBarChartWithPlaceholderExample: React.FunctionComponent<{}> = () => {
   const firstChartPoints: IChartDataPoint[] = [
     { legend: 'Malware', data: 40, color: '#00AE56' },
     { legend: 'Phishing', data: 23, color: '#662D91' },

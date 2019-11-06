@@ -101,11 +101,11 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                   -webkit-font-smoothing: antialiased;
                   box-shadow: none;
                   box-sizing: border-box;
-                  color: #333333;
+                  color: #323130;
                   display: block;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
-                  font-weight: 400;
+                  font-weight: 600;
                   margin-bottom: 0px;
                   margin-left: 0px;
                   margin-right: 0px;
@@ -164,74 +164,59 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     bottom: 1px;
                     content: "";
                     left: 1px;
-                    outline: 1px solid #666666;
+                    outline: 1px solid #605e5c;
                     position: absolute;
                     right: 1px;
                     top: 1px;
                     z-index: 1;
                   }
-                  &:active $activeSection {
+                  &:active .ms-Slider-active {
+                    background-color: #005a9e;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:active .ms-Slider-active {
+                    background-color: Highlight;
+                  }
+                  &:hover .ms-Slider-active {
                     background-color: #0078d4;
                   }
-                  @media screen and (-ms-high-contrast: active){&:active $activeSection {
+                  @media screen and (-ms-high-contrast: active){&:hover .ms-Slider-active {
                     background-color: Highlight;
                   }
-                  &:hover $activeSection {
-                    background-color: #0078d4;
+                  &:active .ms-Slider-inactive {
+                    background-color: #deecf9;
                   }
-                  @media screen and (-ms-high-contrast: active){&:hover $activeSection {
+                  @media screen and (-ms-high-contrast: active){&:active .ms-Slider-inactive {
+                    border-color: Highlight;
+                  }
+                  &:hover .ms-Slider-inactive {
+                    background-color: #deecf9;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:hover .ms-Slider-inactive {
+                    border-color: Highlight;
+                  }
+                  &:active .ms-Slider-thumb {
+                    border: 2px solid #005a9e;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:active .ms-Slider-thumb {
+                    border-color: Highlight;
+                  }
+                  &:hover .ms-Slider-thumb {
+                    border: 2px solid #005a9e;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:hover .ms-Slider-thumb {
+                    border-color: Highlight;
+                  }
+                  &:active .ms-Slider-zeroTick {
+                    background-color: #deecf9;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:active .ms-Slider-zeroTick {
                     background-color: Highlight;
                   }
-                  &:active $inactiveSection {
-                    background-color: #c7e0f4;
+                  &:hover .ms-Slider-zeroTick {
+                    background-color: #deecf9;
                   }
-                  @media screen and (-ms-high-contrast: active){&:active $inactiveSection {
-                    border-color: Highlight;
-                  }
-                  &:hover $inactiveSection {
-                    background-color: #c7e0f4;
-                  }
-                  @media screen and (-ms-high-contrast: active){&:hover $inactiveSection {
-                    border-color: Highlight;
-                  }
-                  &:active $thumb {
-                    border: 2px solid #0078d4;
-                  }
-                  @media screen and (-ms-high-contrast: active){&:active $thumb {
-                    border-color: Highlight;
-                  }
-                  &:hover $thumb {
-                    border: 2px solid #0078d4;
-                  }
-                  @media screen and (-ms-high-contrast: active){&:hover $thumb {
-                    border-color: Highlight;
-                  }
-                  &:active $zeroTick {
-                    background-color: #c7e0f4;
-                  }
-                  @media screen and (-ms-high-contrast: active){&:active $zeroTick {
+                  @media screen and (-ms-high-contrast: active){&:hover .ms-Slider-zeroTick {
                     background-color: Highlight;
-                  }
-                  &:hover $zeroTick {
-                    background-color: #c7e0f4;
-                  }
-                  @media screen and (-ms-high-contrast: active){&:hover $zeroTick {
-                    background-color: Highlight;
-                  }
-                  & $thumb {
-                    background: #ffffff;
-                    border-color: #666666;
-                    border-radius: 10px;
-                    border-style: solid;
-                    border-width: 2px;
-                    box-sizing: border-box;
-                    display: block;
-                    height: 16px;
-                    position: absolute;
-                    top: -6px;
-                    transform: translateX(-50%);
-                    transition: left 0.367s cubic-bezier(.1,.9,.2,1);
-                    width: 16px;
                   }
               data-is-focusable={true}
               id="Slider0"
@@ -249,17 +234,25 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       position: relative;
                       width: 100%;
                     }
-                    & $lineContainer {
-                      border-radius: 4px;
-                      box-sizing: border-box;
-                      height: 4px;
-                      width: 100%;
-                    }
               >
                 <span
                   className=
                       ms-Slider-thumb
-
+                      {
+                        background: #ffffff;
+                        border-color: #605e5c;
+                        border-radius: 10px;
+                        border-style: solid;
+                        border-width: 2px;
+                        box-sizing: border-box;
+                        display: block;
+                        height: 16px;
+                        position: absolute;
+                        top: -6px;
+                        transform: translateX(-50%);
+                        transition: left 0.367s cubic-bezier(.1,.9,.2,1);
+                        width: 16px;
+                      }
                   style={
                     Object {
                       "left": "44.44444444444444%",
@@ -269,9 +262,14 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                 <span
                   className=
                       ms-Slider-active
-
                       {
-                        background: #666666;
+                        border-radius: 4px;
+                        box-sizing: border-box;
+                        height: 4px;
+                        width: 100%;
+                      }
+                      {
+                        background: #605e5c;
                         transition: width 0.367s cubic-bezier(.1,.9,.2,1);
                       }
                       @media screen and (-ms-high-contrast: active){& {
@@ -286,9 +284,14 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                 <span
                   className=
                       ms-Slider-inactive
-
                       {
-                        background: #c8c8c8;
+                        border-radius: 4px;
+                        box-sizing: border-box;
+                        height: 4px;
+                        width: 100%;
+                      }
+                      {
+                        background: #c8c6c4;
                         transition: width 0.367s cubic-bezier(.1,.9,.2,1);
                       }
                       @media screen and (-ms-high-contrast: active){& {
@@ -311,12 +314,12 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     -webkit-font-smoothing: antialiased;
                     box-shadow: none;
                     box-sizing: border-box;
-                    color: #333333;
+                    color: #323130;
                     display: block;
                     flex-shrink: 1;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
-                    font-weight: 400;
+                    font-weight: 600;
                     line-height: 1;
                     margin-bottom: 0;
                     margin-left: 8px;
@@ -366,8 +369,33 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                   margin-right: 10px;
                   position: relative;
                 }
+                &:hover .ms-Checkbox-checkbox {
+                  border-color: #323130;
+                }
+                @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
+                  border-color: Highlight;
+                }
+                &:focus .ms-Checkbox-checkbox {
+                  border-color: #323130;
+                }
+                &:hover .ms-Checkbox-checkmark {
+                  color: #605e5c;
+                  opacity: 1;
+                }
+                @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkmark {
+                  color: Highlight;
+                }
+                &:hover .ms-Checkbox-text {
+                  color: #201f1e;
+                }
+                &:focus .ms-Checkbox-text {
+                  color: #201f1e;
+                }
           >
             <input
+              aria-checked="false"
+              aria-label="Shadow around items"
+              checked={false}
               className=
 
                   {
@@ -375,11 +403,11 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     opacity: 0;
                     position: absolute;
                   }
-                  .ms-Fabric--isFocusVisible &:focus + label {
+                  .ms-Fabric--isFocusVisible &:focus + label::before {
                     outline-offset: 2px;
-                    outline: 1px solid #666666;
+                    outline: 1px solid #605e5c;
                   }
-                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label {
+                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
                     outline: 1px solid ActiveBorder;
                   }
               id="checkbox-1"
@@ -404,27 +432,14 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     text-align: left;
                     user-select: none;
                   }
-                  &:hover .ms-Checkbox-checkbox {
-                    border-color: #333333;
-                  }
-                  @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
-                    border-color: Highlight;
-                  }
-                  &:focus .ms-Checkbox-checkbox {
-                    border-color: #333333;
-                  }
-                  &:hover .ms-Checkbox-checkmark {
-                    color: #a6a6a6;
-                    opacity: 1;
-                  }
-                  @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkmark {
-                    color: Highlight;
-                  }
-                  &:hover .ms-Checkbox-text {
-                    color: #333333;
-                  }
-                  &:focus .ms-Checkbox-text {
-                    color: #333333;
+                  &::before {
+                    bottom: 0px;
+                    content: "";
+                    left: 0px;
+                    pointer-events: none;
+                    position: absolute;
+                    right: 0px;
+                    top: 0px;
                   }
               htmlFor="checkbox-1"
             >
@@ -433,9 +448,8 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     ms-Checkbox-checkbox
                     {
                       align-items: center;
-                      border-color: #666666;
-                      border-style: solid;
-                      border-width: 1px;
+                      border-radius: 2px;
+                      border: 1px solid #323130;
                       box-sizing: border-box;
                       display: flex;
                       flex-shrink: 0;
@@ -443,6 +457,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       justify-content: center;
                       margin-right: 4px;
                       overflow: hidden;
+                      position: relative;
                       transition-duration: 200ms;
                       transition-property: background, border, border-color;
                       transition-timing-function: cubic-bezier(.4, 0, .23, 1);
@@ -469,16 +484,16 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                         color: Window;
                       }
                   data-icon-name="CheckMark"
-                  role="presentation"
                 >
                   
                 </i>
               </div>
               <span
+                aria-hidden="true"
                 className=
                     ms-Checkbox-text
                     {
-                      color: #333333;
+                      color: #323130;
                       font-size: 14px;
                       line-height: 20px;
                       margin-left: 4px;
@@ -497,8 +512,33 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                   margin-right: 10px;
                   position: relative;
                 }
+                &:hover .ms-Checkbox-checkbox {
+                  border-color: #323130;
+                }
+                @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
+                  border-color: Highlight;
+                }
+                &:focus .ms-Checkbox-checkbox {
+                  border-color: #323130;
+                }
+                &:hover .ms-Checkbox-checkmark {
+                  color: #605e5c;
+                  opacity: 1;
+                }
+                @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkmark {
+                  color: Highlight;
+                }
+                &:hover .ms-Checkbox-text {
+                  color: #201f1e;
+                }
+                &:focus .ms-Checkbox-text {
+                  color: #201f1e;
+                }
           >
             <input
+              aria-checked="false"
+              aria-label="Prevent item overflow"
+              checked={false}
               className=
 
                   {
@@ -506,11 +546,11 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     opacity: 0;
                     position: absolute;
                   }
-                  .ms-Fabric--isFocusVisible &:focus + label {
+                  .ms-Fabric--isFocusVisible &:focus + label::before {
                     outline-offset: 2px;
-                    outline: 1px solid #666666;
+                    outline: 1px solid #605e5c;
                   }
-                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label {
+                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
                     outline: 1px solid ActiveBorder;
                   }
               id="checkbox-2"
@@ -535,27 +575,14 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     text-align: left;
                     user-select: none;
                   }
-                  &:hover .ms-Checkbox-checkbox {
-                    border-color: #333333;
-                  }
-                  @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
-                    border-color: Highlight;
-                  }
-                  &:focus .ms-Checkbox-checkbox {
-                    border-color: #333333;
-                  }
-                  &:hover .ms-Checkbox-checkmark {
-                    color: #a6a6a6;
-                    opacity: 1;
-                  }
-                  @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkmark {
-                    color: Highlight;
-                  }
-                  &:hover .ms-Checkbox-text {
-                    color: #333333;
-                  }
-                  &:focus .ms-Checkbox-text {
-                    color: #333333;
+                  &::before {
+                    bottom: 0px;
+                    content: "";
+                    left: 0px;
+                    pointer-events: none;
+                    position: absolute;
+                    right: 0px;
+                    top: 0px;
                   }
               htmlFor="checkbox-2"
             >
@@ -564,9 +591,8 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     ms-Checkbox-checkbox
                     {
                       align-items: center;
-                      border-color: #666666;
-                      border-style: solid;
-                      border-width: 1px;
+                      border-radius: 2px;
+                      border: 1px solid #323130;
                       box-sizing: border-box;
                       display: flex;
                       flex-shrink: 0;
@@ -574,6 +600,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       justify-content: center;
                       margin-right: 4px;
                       overflow: hidden;
+                      position: relative;
                       transition-duration: 200ms;
                       transition-property: background, border, border-color;
                       transition-timing-function: cubic-bezier(.4, 0, .23, 1);
@@ -600,16 +627,16 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                         color: Window;
                       }
                   data-icon-name="CheckMark"
-                  role="presentation"
                 >
                   
                 </i>
               </div>
               <span
+                aria-hidden="true"
                 className=
                     ms-Checkbox-text
                     {
-                      color: #333333;
+                      color: #323130;
                       font-size: 14px;
                       line-height: 20px;
                       margin-left: 4px;
@@ -628,8 +655,33 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                   margin-right: 10px;
                   position: relative;
                 }
+                &:hover .ms-Checkbox-checkbox {
+                  border-color: #323130;
+                }
+                @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
+                  border-color: Highlight;
+                }
+                &:focus .ms-Checkbox-checkbox {
+                  border-color: #323130;
+                }
+                &:hover .ms-Checkbox-checkmark {
+                  color: #605e5c;
+                  opacity: 1;
+                }
+                @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkmark {
+                  color: Highlight;
+                }
+                &:hover .ms-Checkbox-text {
+                  color: #201f1e;
+                }
+                &:focus .ms-Checkbox-text {
+                  color: #201f1e;
+                }
           >
             <input
+              aria-checked="false"
+              aria-label="Shrink items"
+              checked={false}
               className=
 
                   {
@@ -637,11 +689,11 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     opacity: 0;
                     position: absolute;
                   }
-                  .ms-Fabric--isFocusVisible &:focus + label {
+                  .ms-Fabric--isFocusVisible &:focus + label::before {
                     outline-offset: 2px;
-                    outline: 1px solid #666666;
+                    outline: 1px solid #605e5c;
                   }
-                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label {
+                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
                     outline: 1px solid ActiveBorder;
                   }
               id="checkbox-3"
@@ -666,27 +718,14 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     text-align: left;
                     user-select: none;
                   }
-                  &:hover .ms-Checkbox-checkbox {
-                    border-color: #333333;
-                  }
-                  @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
-                    border-color: Highlight;
-                  }
-                  &:focus .ms-Checkbox-checkbox {
-                    border-color: #333333;
-                  }
-                  &:hover .ms-Checkbox-checkmark {
-                    color: #a6a6a6;
-                    opacity: 1;
-                  }
-                  @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkmark {
-                    color: Highlight;
-                  }
-                  &:hover .ms-Checkbox-text {
-                    color: #333333;
-                  }
-                  &:focus .ms-Checkbox-text {
-                    color: #333333;
+                  &::before {
+                    bottom: 0px;
+                    content: "";
+                    left: 0px;
+                    pointer-events: none;
+                    position: absolute;
+                    right: 0px;
+                    top: 0px;
                   }
               htmlFor="checkbox-3"
             >
@@ -695,9 +734,8 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     ms-Checkbox-checkbox
                     {
                       align-items: center;
-                      border-color: #666666;
-                      border-style: solid;
-                      border-width: 1px;
+                      border-radius: 2px;
+                      border: 1px solid #323130;
                       box-sizing: border-box;
                       display: flex;
                       flex-shrink: 0;
@@ -705,6 +743,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       justify-content: center;
                       margin-right: 4px;
                       overflow: hidden;
+                      position: relative;
                       transition-duration: 200ms;
                       transition-property: background, border, border-color;
                       transition-timing-function: cubic-bezier(.4, 0, .23, 1);
@@ -731,16 +770,16 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                         color: Window;
                       }
                   data-icon-name="CheckMark"
-                  role="presentation"
                 >
                   
                 </i>
               </div>
               <span
+                aria-hidden="true"
                 className=
                     ms-Checkbox-text
                     {
-                      color: #333333;
+                      color: #323130;
                       font-size: 14px;
                       line-height: 20px;
                       margin-left: 4px;
@@ -758,8 +797,33 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                   display: flex;
                   position: relative;
                 }
+                &:hover .ms-Checkbox-checkbox {
+                  border-color: #323130;
+                }
+                @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
+                  border-color: Highlight;
+                }
+                &:focus .ms-Checkbox-checkbox {
+                  border-color: #323130;
+                }
+                &:hover .ms-Checkbox-checkmark {
+                  color: #605e5c;
+                  opacity: 1;
+                }
+                @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkmark {
+                  color: Highlight;
+                }
+                &:hover .ms-Checkbox-text {
+                  color: #201f1e;
+                }
+                &:focus .ms-Checkbox-text {
+                  color: #201f1e;
+                }
           >
             <input
+              aria-checked="false"
+              aria-label="Wrap items"
+              checked={false}
               className=
 
                   {
@@ -767,11 +831,11 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     opacity: 0;
                     position: absolute;
                   }
-                  .ms-Fabric--isFocusVisible &:focus + label {
+                  .ms-Fabric--isFocusVisible &:focus + label::before {
                     outline-offset: 2px;
-                    outline: 1px solid #666666;
+                    outline: 1px solid #605e5c;
                   }
-                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label {
+                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
                     outline: 1px solid ActiveBorder;
                   }
               id="checkbox-4"
@@ -796,27 +860,14 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     text-align: left;
                     user-select: none;
                   }
-                  &:hover .ms-Checkbox-checkbox {
-                    border-color: #333333;
-                  }
-                  @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
-                    border-color: Highlight;
-                  }
-                  &:focus .ms-Checkbox-checkbox {
-                    border-color: #333333;
-                  }
-                  &:hover .ms-Checkbox-checkmark {
-                    color: #a6a6a6;
-                    opacity: 1;
-                  }
-                  @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkmark {
-                    color: Highlight;
-                  }
-                  &:hover .ms-Checkbox-text {
-                    color: #333333;
-                  }
-                  &:focus .ms-Checkbox-text {
-                    color: #333333;
+                  &::before {
+                    bottom: 0px;
+                    content: "";
+                    left: 0px;
+                    pointer-events: none;
+                    position: absolute;
+                    right: 0px;
+                    top: 0px;
                   }
               htmlFor="checkbox-4"
             >
@@ -825,9 +876,8 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     ms-Checkbox-checkbox
                     {
                       align-items: center;
-                      border-color: #666666;
-                      border-style: solid;
-                      border-width: 1px;
+                      border-radius: 2px;
+                      border: 1px solid #323130;
                       box-sizing: border-box;
                       display: flex;
                       flex-shrink: 0;
@@ -835,6 +885,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       justify-content: center;
                       margin-right: 4px;
                       overflow: hidden;
+                      position: relative;
                       transition-duration: 200ms;
                       transition-property: background, border, border-color;
                       transition-timing-function: cubic-bezier(.4, 0, .23, 1);
@@ -861,16 +912,16 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                         color: Window;
                       }
                   data-icon-name="CheckMark"
-                  role="presentation"
                 >
                   
                 </i>
               </div>
               <span
+                aria-hidden="true"
                 className=
                     ms-Checkbox-text
                     {
-                      color: #333333;
+                      color: #323130;
                       font-size: 14px;
                       line-height: 20px;
                       margin-left: 4px;
@@ -941,11 +992,11 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                   -webkit-font-smoothing: antialiased;
                   box-shadow: none;
                   box-sizing: border-box;
-                  color: #333333;
+                  color: #a19f9d;
                   display: block;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
-                  font-weight: 400;
+                  font-weight: 600;
                   margin-bottom: 0px;
                   margin-left: 0px;
                   margin-right: 0px;
@@ -956,6 +1007,9 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                   padding-right: 0px;
                   padding-top: 0px;
                   word-wrap: break-word;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  color: GrayText;
                 }
             htmlFor="Slider5"
           >
@@ -1004,29 +1058,11 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     bottom: 1px;
                     content: "";
                     left: 1px;
-                    outline: 1px solid #666666;
+                    outline: 1px solid #605e5c;
                     position: absolute;
                     right: 1px;
                     top: 1px;
                     z-index: 1;
-                  }
-                  & $thumb {
-                    background: #ffffff;
-                    border-color: #c8c8c8;
-                    border-radius: 10px;
-                    border-style: solid;
-                    border-width: 2px;
-                    box-sizing: border-box;
-                    display: block;
-                    height: 16px;
-                    position: absolute;
-                    top: -6px;
-                    transform: translateX(-50%);
-                    transition: left 0.367s cubic-bezier(.1,.9,.2,1);
-                    width: 16px;
-                  }
-                  @media screen and (-ms-high-contrast: active){& $thumb {
-                    border-color: GrayText;
                   }
               data-is-focusable={false}
               id="Slider5"
@@ -1040,17 +1076,28 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       position: relative;
                       width: 100%;
                     }
-                    & $lineContainer {
-                      border-radius: 4px;
-                      box-sizing: border-box;
-                      height: 4px;
-                      width: 100%;
-                    }
               >
                 <span
                   className=
                       ms-Slider-thumb
-
+                      {
+                        background: #ffffff;
+                        border-color: #c8c6c4;
+                        border-radius: 10px;
+                        border-style: solid;
+                        border-width: 2px;
+                        box-sizing: border-box;
+                        display: block;
+                        height: 16px;
+                        position: absolute;
+                        top: -6px;
+                        transform: translateX(-50%);
+                        transition: left 0.367s cubic-bezier(.1,.9,.2,1);
+                        width: 16px;
+                      }
+                      @media screen and (-ms-high-contrast: active){& {
+                        border-color: GrayText;
+                      }
                   style={
                     Object {
                       "left": "49.87468671679198%",
@@ -1060,9 +1107,14 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                 <span
                   className=
                       ms-Slider-active
-
                       {
-                        background: #c8c8c8;
+                        border-radius: 4px;
+                        box-sizing: border-box;
+                        height: 4px;
+                        width: 100%;
+                      }
+                      {
+                        background: #a19f9d;
                         transition: width 0.367s cubic-bezier(.1,.9,.2,1);
                       }
                       @media screen and (-ms-high-contrast: active){& {
@@ -1078,9 +1130,14 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                 <span
                   className=
                       ms-Slider-inactive
-
                       {
-                        background: #eaeaea;
+                        border-radius: 4px;
+                        box-sizing: border-box;
+                        height: 4px;
+                        width: 100%;
+                      }
+                      {
+                        background: #f3f2f1;
                         transition: width 0.367s cubic-bezier(.1,.9,.2,1);
                       }
                       @media screen and (-ms-high-contrast: active){& {
@@ -1104,12 +1161,12 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     -webkit-font-smoothing: antialiased;
                     box-shadow: none;
                     box-sizing: border-box;
-                    color: #333333;
+                    color: #a19f9d;
                     display: block;
                     flex-shrink: 1;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
-                    font-weight: 400;
+                    font-weight: 600;
                     line-height: 1;
                     margin-bottom: 0;
                     margin-left: 8px;
@@ -1123,6 +1180,9 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     white-space: nowrap;
                     width: 40px;
                     word-wrap: break-word;
+                  }
+                  @media screen and (-ms-high-contrast: active){& {
+                    color: GrayText;
                   }
             >
               200
@@ -1138,8 +1198,45 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                 display: flex;
                 position: relative;
               }
+              &:hover .ms-Checkbox-checkbox {
+                background: #005a9e;
+                border-color: #005a9e;
+              }
+              &:focus .ms-Checkbox-checkbox {
+                background: #005a9e;
+                border-color: #005a9e;
+              }
+              & .ms-Checkbox-checkbox {
+                background: #0078d4;
+                border-color: #0078d4;
+              }
+              @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
+                background: Window;
+                border-color: Highlight;
+              }
+              @media screen and (-ms-high-contrast: active){&:focus .ms-Checkbox-checkbox {
+                background: Highlight;
+              }
+              @media screen and (-ms-high-contrast: active){&:focus:hover .ms-Checkbox-checkbox {
+                background: Highlight;
+              }
+              @media screen and (-ms-high-contrast: active){&:focus:hover .ms-Checkbox-checkmark {
+                color: Window;
+              }
+              @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkmark {
+                color: Highlight;
+              }
+              &:hover .ms-Checkbox-text {
+                color: #201f1e;
+              }
+              &:focus .ms-Checkbox-text {
+                color: #201f1e;
+              }
         >
           <input
+            aria-checked="true"
+            aria-label="Automatic height (based on items)"
+            checked={true}
             className=
 
                 {
@@ -1147,14 +1244,13 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                   opacity: 0;
                   position: absolute;
                 }
-                .ms-Fabric--isFocusVisible &:focus + label {
+                .ms-Fabric--isFocusVisible &:focus + label::before {
                   outline-offset: 2px;
-                  outline: 1px solid #666666;
+                  outline: 1px solid #605e5c;
                 }
-                @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label {
+                @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
                   outline: 1px solid ActiveBorder;
                 }
-            defaultChecked={true}
             id="checkbox-6"
             onBlur={[Function]}
             onChange={[Function]}
@@ -1177,35 +1273,14 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                   text-align: left;
                   user-select: none;
                 }
-                &:hover .ms-Checkbox-checkbox {
-                  background: #106ebe;
-                  border-color: #106ebe;
-                }
-                &:focus .ms-Checkbox-checkbox {
-                  background: #106ebe;
-                  border-color: #106ebe;
-                }
-                @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
-                  background: Window;
-                  border-color: Highlight;
-                }
-                @media screen and (-ms-high-contrast: active){&:focus .ms-Checkbox-checkbox {
-                  background: Highlight;
-                }
-                @media screen and (-ms-high-contrast: active){&:focus:hover .ms-Checkbox-checkbox {
-                  background: Highlight;
-                }
-                @media screen and (-ms-high-contrast: active){&:focus:hover .ms-Checkbox-checkmark {
-                  color: Window;
-                }
-                @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkmark {
-                  color: Highlight;
-                }
-                &:hover .ms-Checkbox-text {
-                  color: #333333;
-                }
-                &:focus .ms-Checkbox-text {
-                  color: #333333;
+                &::before {
+                  bottom: 0px;
+                  content: "";
+                  left: 0px;
+                  pointer-events: none;
+                  position: absolute;
+                  right: 0px;
+                  top: 0px;
                 }
             htmlFor="checkbox-6"
           >
@@ -1216,8 +1291,8 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     align-items: center;
                     background: #0078d4;
                     border-color: #0078d4;
-                    border-style: solid;
-                    border-width: 1px;
+                    border-radius: 2px;
+                    border: 1px solid #323130;
                     box-sizing: border-box;
                     display: flex;
                     flex-shrink: 0;
@@ -1225,6 +1300,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     justify-content: center;
                     margin-right: 4px;
                     overflow: hidden;
+                    position: relative;
                     transition-duration: 200ms;
                     transition-property: background, border, border-color;
                     transition-timing-function: cubic-bezier(.4, 0, .23, 1);
@@ -1255,16 +1331,16 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       color: Window;
                     }
                 data-icon-name="CheckMark"
-                role="presentation"
               >
                 
               </i>
             </div>
             <span
+              aria-hidden="true"
               className=
                   ms-Checkbox-text
                   {
-                    color: #333333;
+                    color: #323130;
                     font-size: 14px;
                     line-height: 20px;
                     margin-left: 4px;
@@ -1356,11 +1432,11 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                   -webkit-font-smoothing: antialiased;
                   box-shadow: none;
                   box-sizing: border-box;
-                  color: #333333;
+                  color: #323130;
                   display: block;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
-                  font-weight: 400;
+                  font-weight: 600;
                   margin-bottom: 0px;
                   margin-left: 0px;
                   margin-right: 0px;
@@ -1419,74 +1495,59 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     bottom: 1px;
                     content: "";
                     left: 1px;
-                    outline: 1px solid #666666;
+                    outline: 1px solid #605e5c;
                     position: absolute;
                     right: 1px;
                     top: 1px;
                     z-index: 1;
                   }
-                  &:active $activeSection {
+                  &:active .ms-Slider-active {
+                    background-color: #005a9e;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:active .ms-Slider-active {
+                    background-color: Highlight;
+                  }
+                  &:hover .ms-Slider-active {
                     background-color: #0078d4;
                   }
-                  @media screen and (-ms-high-contrast: active){&:active $activeSection {
+                  @media screen and (-ms-high-contrast: active){&:hover .ms-Slider-active {
                     background-color: Highlight;
                   }
-                  &:hover $activeSection {
-                    background-color: #0078d4;
+                  &:active .ms-Slider-inactive {
+                    background-color: #deecf9;
                   }
-                  @media screen and (-ms-high-contrast: active){&:hover $activeSection {
+                  @media screen and (-ms-high-contrast: active){&:active .ms-Slider-inactive {
+                    border-color: Highlight;
+                  }
+                  &:hover .ms-Slider-inactive {
+                    background-color: #deecf9;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:hover .ms-Slider-inactive {
+                    border-color: Highlight;
+                  }
+                  &:active .ms-Slider-thumb {
+                    border: 2px solid #005a9e;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:active .ms-Slider-thumb {
+                    border-color: Highlight;
+                  }
+                  &:hover .ms-Slider-thumb {
+                    border: 2px solid #005a9e;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:hover .ms-Slider-thumb {
+                    border-color: Highlight;
+                  }
+                  &:active .ms-Slider-zeroTick {
+                    background-color: #deecf9;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:active .ms-Slider-zeroTick {
                     background-color: Highlight;
                   }
-                  &:active $inactiveSection {
-                    background-color: #c7e0f4;
+                  &:hover .ms-Slider-zeroTick {
+                    background-color: #deecf9;
                   }
-                  @media screen and (-ms-high-contrast: active){&:active $inactiveSection {
-                    border-color: Highlight;
-                  }
-                  &:hover $inactiveSection {
-                    background-color: #c7e0f4;
-                  }
-                  @media screen and (-ms-high-contrast: active){&:hover $inactiveSection {
-                    border-color: Highlight;
-                  }
-                  &:active $thumb {
-                    border: 2px solid #0078d4;
-                  }
-                  @media screen and (-ms-high-contrast: active){&:active $thumb {
-                    border-color: Highlight;
-                  }
-                  &:hover $thumb {
-                    border: 2px solid #0078d4;
-                  }
-                  @media screen and (-ms-high-contrast: active){&:hover $thumb {
-                    border-color: Highlight;
-                  }
-                  &:active $zeroTick {
-                    background-color: #c7e0f4;
-                  }
-                  @media screen and (-ms-high-contrast: active){&:active $zeroTick {
+                  @media screen and (-ms-high-contrast: active){&:hover .ms-Slider-zeroTick {
                     background-color: Highlight;
-                  }
-                  &:hover $zeroTick {
-                    background-color: #c7e0f4;
-                  }
-                  @media screen and (-ms-high-contrast: active){&:hover $zeroTick {
-                    background-color: Highlight;
-                  }
-                  & $thumb {
-                    background: #ffffff;
-                    border-color: #666666;
-                    border-radius: 10px;
-                    border-style: solid;
-                    border-width: 2px;
-                    box-sizing: border-box;
-                    display: block;
-                    height: 16px;
-                    position: absolute;
-                    top: -6px;
-                    transform: translateX(-50%);
-                    transition: left 0.367s cubic-bezier(.1,.9,.2,1);
-                    width: 16px;
                   }
               data-is-focusable={true}
               id="Slider7"
@@ -1504,17 +1565,25 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       position: relative;
                       width: 100%;
                     }
-                    & $lineContainer {
-                      border-radius: 4px;
-                      box-sizing: border-box;
-                      height: 4px;
-                      width: 100%;
-                    }
               >
                 <span
                   className=
                       ms-Slider-thumb
-
+                      {
+                        background: #ffffff;
+                        border-color: #605e5c;
+                        border-radius: 10px;
+                        border-style: solid;
+                        border-width: 2px;
+                        box-sizing: border-box;
+                        display: block;
+                        height: 16px;
+                        position: absolute;
+                        top: -6px;
+                        transform: translateX(-50%);
+                        transition: left 0.367s cubic-bezier(.1,.9,.2,1);
+                        width: 16px;
+                      }
                   style={
                     Object {
                       "left": "0%",
@@ -1524,9 +1593,14 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                 <span
                   className=
                       ms-Slider-active
-
                       {
-                        background: #666666;
+                        border-radius: 4px;
+                        box-sizing: border-box;
+                        height: 4px;
+                        width: 100%;
+                      }
+                      {
+                        background: #605e5c;
                         transition: width 0.367s cubic-bezier(.1,.9,.2,1);
                       }
                       @media screen and (-ms-high-contrast: active){& {
@@ -1541,9 +1615,14 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                 <span
                   className=
                       ms-Slider-inactive
-
                       {
-                        background: #c8c8c8;
+                        border-radius: 4px;
+                        box-sizing: border-box;
+                        height: 4px;
+                        width: 100%;
+                      }
+                      {
+                        background: #c8c6c4;
                         transition: width 0.367s cubic-bezier(.1,.9,.2,1);
                       }
                       @media screen and (-ms-high-contrast: active){& {
@@ -1566,12 +1645,12 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     -webkit-font-smoothing: antialiased;
                     box-shadow: none;
                     box-sizing: border-box;
-                    color: #333333;
+                    color: #323130;
                     display: block;
                     flex-shrink: 1;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
-                    font-weight: 400;
+                    font-weight: 600;
                     line-height: 1;
                     margin-bottom: 0;
                     margin-left: 8px;
@@ -1642,11 +1721,11 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       -webkit-font-smoothing: antialiased;
                       box-shadow: none;
                       box-sizing: border-box;
-                      color: #333333;
+                      color: #323130;
                       display: inline-block;
                       font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                       font-size: 14px;
-                      font-weight: 400;
+                      font-weight: 600;
                       margin-bottom: 0px;
                       margin-left: 0px;
                       margin-right: 0px;
@@ -1658,23 +1737,23 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       padding-top: 5px;
                       word-wrap: break-word;
                     }
-                htmlFor="Dropdown8"
                 id="Dropdown8-label"
               >
                 Vertical alignment:
               </label>
               <div
-                aria-describedby="Dropdown8-option"
                 aria-expanded="false"
-                aria-labelledby="Dropdown8-label"
+                aria-haspopup="listbox"
+                aria-labelledby="Dropdown8-label Dropdown8-option"
                 className=
                     ms-Dropdown
                     {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
+                      border-color: #605e5c;
                       box-shadow: none;
                       box-sizing: border-box;
-                      color: #333333;
+                      color: #323130;
                       font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                       font-size: 14px;
                       font-weight: 400;
@@ -1691,15 +1770,15 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       user-select: none;
                     }
                     &:hover .ms-Dropdown-title {
-                      border-color: #212121;
-                      color: #212121;
+                      border-color: #323130;
+                      color: #201f1e;
                     }
                     @media screen and (-ms-high-contrast: active){&:hover .ms-Dropdown-title {
                       border-color: Highlight;
                     }
                     &:focus .ms-Dropdown-title {
                       border-color: #0078d4;
-                      color: #212121;
+                      color: #201f1e;
                     }
                     @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-title {
                       background-color: Highlight;
@@ -1713,17 +1792,17 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       -ms-high-contrast-adjust: none;
                     }
                     &:active .ms-Dropdown-title {
-                      border-color: #005a9e;
-                      color: #212121;
+                      border-color: #0078d4;
+                      color: #201f1e;
                     }
                     @media screen and (-ms-high-contrast: active){&:active .ms-Dropdown-title {
                       border-color: Highlight;
                     }
                     &:hover .ms-Dropdown-caretDown {
-                      color: #212121;
+                      color: #323130;
                     }
                     &:focus .ms-Dropdown-caretDown {
-                      color: #212121;
+                      color: #323130;
                     }
                     @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-caretDown {
                       color: HighlightText;
@@ -1732,25 +1811,22 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       -ms-high-contrast-adjust: none;
                     }
                     &:active .ms-Dropdown-caretDown {
-                      color: #212121;
+                      color: #323130;
                     }
                     &:hover .ms-Dropdown-titleIsPlaceHolder {
-                      color: #666666;
+                      color: #323130;
                     }
                     &:focus .ms-Dropdown-titleIsPlaceHolder {
-                      color: #666666;
+                      color: #323130;
                     }
                     &:active .ms-Dropdown-titleIsPlaceHolder {
-                      color: #666666;
+                      color: #323130;
                     }
                     &:hover .ms-Dropdown-title--hasError {
-                      border-color: #a80000;
+                      border-color: #a4262c;
                     }
                     &:active .ms-Dropdown-title--hasError {
-                      border-color: #a80000;
-                    }
-                    &:focus .ms-Dropdown-title--hasError {
-                      border-color: #a80000;
+                      border-color: #a4262c;
                     }
                 data-is-focusable={true}
                 id="Dropdown8"
@@ -1760,14 +1836,14 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 onKeyUp={[Function]}
-                placeholder="Select Vertical Alignment"
+                onMouseDown={[Function]}
                 role="listbox"
                 tabIndex={0}
               >
                 <span
                   aria-atomic={true}
-                  aria-label="Top"
-                  aria-live="off"
+                  aria-invalid={false}
+                  aria-live="polite"
                   aria-posinset={1}
                   aria-selected={true}
                   aria-setsize={6}
@@ -1775,7 +1851,8 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       ms-Dropdown-title
                       {
                         background-color: #ffffff;
-                        border-color: #a6a6a6;
+                        border-color: #8a8886;
+                        border-radius: 2px;
                         border-style: solid;
                         border-width: 1px;
                         box-shadow: none;
@@ -1790,8 +1867,8 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                         margin-top: 0px;
                         overflow: hidden;
                         padding-bottom: 0;
-                        padding-left: 12px;
-                        padding-right: 32px;
+                        padding-left: 8px;
+                        padding-right: 28px;
                         padding-top: 0;
                         position: relative;
                         text-overflow: ellipsis;
@@ -1800,9 +1877,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                   id="Dropdown8-option"
                   role="option"
                 >
-                  <span>
-                    Top
-                  </span>
+                  Top
                 </span>
                 <span
                   className=
@@ -1812,7 +1887,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                         height: 32px;
                         line-height: 30px;
                         position: absolute;
-                        right: 12px;
+                        right: 8px;
                         top: 1px;
                       }
                 >
@@ -1823,7 +1898,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                         {
                           -moz-osx-font-smoothing: grayscale;
                           -webkit-font-smoothing: antialiased;
-                          color: #666666;
+                          color: #605e5c;
                           display: inline-block;
                           font-family: "FabricMDL2Icons";
                           font-size: 12px;
@@ -1833,7 +1908,6 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                           speak: none;
                         }
                     data-icon-name="ChevronDown"
-                    role="presentation"
                   >
                     
                   </i>
@@ -1870,11 +1944,11 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       -webkit-font-smoothing: antialiased;
                       box-shadow: none;
                       box-sizing: border-box;
-                      color: #333333;
+                      color: #323130;
                       display: inline-block;
                       font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                       font-size: 14px;
-                      font-weight: 400;
+                      font-weight: 600;
                       margin-bottom: 0px;
                       margin-left: 0px;
                       margin-right: 0px;
@@ -1886,23 +1960,23 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       padding-top: 5px;
                       word-wrap: break-word;
                     }
-                htmlFor="Dropdown9"
                 id="Dropdown9-label"
               >
                 Horizontal alignment:
               </label>
               <div
-                aria-describedby="Dropdown9-option"
                 aria-expanded="false"
-                aria-labelledby="Dropdown9-label"
+                aria-haspopup="listbox"
+                aria-labelledby="Dropdown9-label Dropdown9-option"
                 className=
                     ms-Dropdown
                     {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
+                      border-color: #605e5c;
                       box-shadow: none;
                       box-sizing: border-box;
-                      color: #333333;
+                      color: #323130;
                       font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                       font-size: 14px;
                       font-weight: 400;
@@ -1919,15 +1993,15 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       user-select: none;
                     }
                     &:hover .ms-Dropdown-title {
-                      border-color: #212121;
-                      color: #212121;
+                      border-color: #323130;
+                      color: #201f1e;
                     }
                     @media screen and (-ms-high-contrast: active){&:hover .ms-Dropdown-title {
                       border-color: Highlight;
                     }
                     &:focus .ms-Dropdown-title {
                       border-color: #0078d4;
-                      color: #212121;
+                      color: #201f1e;
                     }
                     @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-title {
                       background-color: Highlight;
@@ -1941,17 +2015,17 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       -ms-high-contrast-adjust: none;
                     }
                     &:active .ms-Dropdown-title {
-                      border-color: #005a9e;
-                      color: #212121;
+                      border-color: #0078d4;
+                      color: #201f1e;
                     }
                     @media screen and (-ms-high-contrast: active){&:active .ms-Dropdown-title {
                       border-color: Highlight;
                     }
                     &:hover .ms-Dropdown-caretDown {
-                      color: #212121;
+                      color: #323130;
                     }
                     &:focus .ms-Dropdown-caretDown {
-                      color: #212121;
+                      color: #323130;
                     }
                     @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-caretDown {
                       color: HighlightText;
@@ -1960,25 +2034,22 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       -ms-high-contrast-adjust: none;
                     }
                     &:active .ms-Dropdown-caretDown {
-                      color: #212121;
+                      color: #323130;
                     }
                     &:hover .ms-Dropdown-titleIsPlaceHolder {
-                      color: #666666;
+                      color: #323130;
                     }
                     &:focus .ms-Dropdown-titleIsPlaceHolder {
-                      color: #666666;
+                      color: #323130;
                     }
                     &:active .ms-Dropdown-titleIsPlaceHolder {
-                      color: #666666;
+                      color: #323130;
                     }
                     &:hover .ms-Dropdown-title--hasError {
-                      border-color: #a80000;
+                      border-color: #a4262c;
                     }
                     &:active .ms-Dropdown-title--hasError {
-                      border-color: #a80000;
-                    }
-                    &:focus .ms-Dropdown-title--hasError {
-                      border-color: #a80000;
+                      border-color: #a4262c;
                     }
                 data-is-focusable={true}
                 id="Dropdown9"
@@ -1988,14 +2059,14 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 onKeyUp={[Function]}
-                placeholder="Select Horizontal Alignment"
+                onMouseDown={[Function]}
                 role="listbox"
                 tabIndex={0}
               >
                 <span
                   aria-atomic={true}
-                  aria-label="Left"
-                  aria-live="off"
+                  aria-invalid={false}
+                  aria-live="polite"
                   aria-posinset={1}
                   aria-selected={true}
                   aria-setsize={3}
@@ -2003,7 +2074,8 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       ms-Dropdown-title
                       {
                         background-color: #ffffff;
-                        border-color: #a6a6a6;
+                        border-color: #8a8886;
+                        border-radius: 2px;
                         border-style: solid;
                         border-width: 1px;
                         box-shadow: none;
@@ -2018,8 +2090,8 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                         margin-top: 0px;
                         overflow: hidden;
                         padding-bottom: 0;
-                        padding-left: 12px;
-                        padding-right: 32px;
+                        padding-left: 8px;
+                        padding-right: 28px;
                         padding-top: 0;
                         position: relative;
                         text-overflow: ellipsis;
@@ -2028,9 +2100,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                   id="Dropdown9-option"
                   role="option"
                 >
-                  <span>
-                    Left
-                  </span>
+                  Left
                 </span>
                 <span
                   className=
@@ -2040,7 +2110,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                         height: 32px;
                         line-height: 30px;
                         position: absolute;
-                        right: 12px;
+                        right: 8px;
                         top: 1px;
                       }
                 >
@@ -2051,7 +2121,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                         {
                           -moz-osx-font-smoothing: grayscale;
                           -webkit-font-smoothing: antialiased;
-                          color: #666666;
+                          color: #605e5c;
                           display: inline-block;
                           font-family: "FabricMDL2Icons";
                           font-size: 12px;
@@ -2061,7 +2131,6 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                           speak: none;
                         }
                     data-icon-name="ChevronDown"
-                    role="presentation"
                   >
                     
                   </i>
@@ -2091,8 +2160,33 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     display: flex;
                     position: relative;
                   }
+                  &:hover .ms-Checkbox-checkbox {
+                    border-color: #323130;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
+                    border-color: Highlight;
+                  }
+                  &:focus .ms-Checkbox-checkbox {
+                    border-color: #323130;
+                  }
+                  &:hover .ms-Checkbox-checkmark {
+                    color: #605e5c;
+                    opacity: 1;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkmark {
+                    color: Highlight;
+                  }
+                  &:hover .ms-Checkbox-text {
+                    color: #201f1e;
+                  }
+                  &:focus .ms-Checkbox-text {
+                    color: #201f1e;
+                  }
             >
               <input
+                aria-checked="false"
+                aria-label="Hide empty children"
+                checked={false}
                 className=
 
                     {
@@ -2100,11 +2194,11 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       opacity: 0;
                       position: absolute;
                     }
-                    .ms-Fabric--isFocusVisible &:focus + label {
+                    .ms-Fabric--isFocusVisible &:focus + label::before {
                       outline-offset: 2px;
-                      outline: 1px solid #666666;
+                      outline: 1px solid #605e5c;
                     }
-                    @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label {
+                    @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
                       outline: 1px solid ActiveBorder;
                     }
                 id="checkbox-10"
@@ -2129,27 +2223,14 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       text-align: left;
                       user-select: none;
                     }
-                    &:hover .ms-Checkbox-checkbox {
-                      border-color: #333333;
-                    }
-                    @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
-                      border-color: Highlight;
-                    }
-                    &:focus .ms-Checkbox-checkbox {
-                      border-color: #333333;
-                    }
-                    &:hover .ms-Checkbox-checkmark {
-                      color: #a6a6a6;
-                      opacity: 1;
-                    }
-                    @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkmark {
-                      color: Highlight;
-                    }
-                    &:hover .ms-Checkbox-text {
-                      color: #333333;
-                    }
-                    &:focus .ms-Checkbox-text {
-                      color: #333333;
+                    &::before {
+                      bottom: 0px;
+                      content: "";
+                      left: 0px;
+                      pointer-events: none;
+                      position: absolute;
+                      right: 0px;
+                      top: 0px;
                     }
                 htmlFor="checkbox-10"
               >
@@ -2158,9 +2239,8 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       ms-Checkbox-checkbox
                       {
                         align-items: center;
-                        border-color: #666666;
-                        border-style: solid;
-                        border-width: 1px;
+                        border-radius: 2px;
+                        border: 1px solid #323130;
                         box-sizing: border-box;
                         display: flex;
                         flex-shrink: 0;
@@ -2168,6 +2248,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                         justify-content: center;
                         margin-right: 4px;
                         overflow: hidden;
+                        position: relative;
                         transition-duration: 200ms;
                         transition-property: background, border, border-color;
                         transition-timing-function: cubic-bezier(.4, 0, .23, 1);
@@ -2194,16 +2275,16 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                           color: Window;
                         }
                     data-icon-name="CheckMark"
-                    role="presentation"
                   >
                     
                   </i>
                 </div>
                 <span
+                  aria-hidden="true"
                   className=
                       ms-Checkbox-text
                       {
-                        color: #333333;
+                        color: #323130;
                         font-size: 14px;
                         line-height: 20px;
                         margin-left: 4px;
@@ -2264,11 +2345,11 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                         -webkit-font-smoothing: antialiased;
                         box-shadow: none;
                         box-sizing: border-box;
-                        color: #333333;
+                        color: #323130;
                         display: block;
                         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                         font-size: 14px;
-                        font-weight: 400;
+                        font-weight: 600;
                         margin-bottom: 0px;
                         margin-left: 0px;
                         margin-right: 0px;
@@ -2291,7 +2372,8 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       {
                         align-items: stretch;
                         background: #ffffff;
-                        border: 1px solid #a6a6a6;
+                        border-radius: 2px;
+                        border: 1px solid #8a8886;
                         box-shadow: none;
                         box-sizing: border-box;
                         cursor: text;
@@ -2309,7 +2391,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                         position: relative;
                       }
                       &:hover {
-                        border-color: #333333;
+                        border-color: #323130;
                       }
                       @media screen and (-ms-high-contrast: active){&:hover {
                         border-color: Highlight;
@@ -2329,7 +2411,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                           border: none;
                           box-shadow: none;
                           box-sizing: border-box;
-                          color: #333333;
+                          color: #323130;
                           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                           font-size: 14px;
                           font-weight: 400;
@@ -2340,24 +2422,49 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                           min-width: 0px;
                           outline: 0px;
                           padding-bottom: 0;
-                          padding-left: 12px;
-                          padding-right: 12px;
+                          padding-left: 8px;
+                          padding-right: 8px;
                           padding-top: 0;
                           text-overflow: ellipsis;
                           width: 100%;
                         }
-                        &:active, &:focus, &:hover {
+                        &:active {
+                          outline: 0px;
+                        }
+                        &:focus {
+                          outline: 0px;
+                        }
+                        &:hover {
                           outline: 0px;
                         }
                         &::-ms-clear {
                           display: none;
                         }
                         &::placeholder {
-                          color: #666666;
+                          -moz-osx-font-smoothing: grayscale;
+                          -webkit-font-smoothing: antialiased;
+                          color: #605e5c;
+                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                          font-size: 14px;
+                          font-weight: 400;
                           opacity: 1;
                         }
                         &:-ms-input-placeholder {
-                          color: #666666;
+                          -moz-osx-font-smoothing: grayscale;
+                          -webkit-font-smoothing: antialiased;
+                          color: #605e5c;
+                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                          font-size: 14px;
+                          font-weight: 400;
+                          opacity: 1;
+                        }
+                        &::-ms-input-placeholder {
+                          -moz-osx-font-smoothing: grayscale;
+                          -webkit-font-smoothing: antialiased;
+                          color: #605e5c;
+                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                          font-size: 14px;
+                          font-weight: 400;
                           opacity: 1;
                         }
                     id="TextField11"
@@ -2433,11 +2540,11 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                   -webkit-font-smoothing: antialiased;
                   box-shadow: none;
                   box-sizing: border-box;
-                  color: #333333;
+                  color: #323130;
                   display: block;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
-                  font-weight: 400;
+                  font-weight: 600;
                   margin-bottom: 0px;
                   margin-left: 0px;
                   margin-right: 0px;
@@ -2496,74 +2603,59 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     bottom: 1px;
                     content: "";
                     left: 1px;
-                    outline: 1px solid #666666;
+                    outline: 1px solid #605e5c;
                     position: absolute;
                     right: 1px;
                     top: 1px;
                     z-index: 1;
                   }
-                  &:active $activeSection {
+                  &:active .ms-Slider-active {
+                    background-color: #005a9e;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:active .ms-Slider-active {
+                    background-color: Highlight;
+                  }
+                  &:hover .ms-Slider-active {
                     background-color: #0078d4;
                   }
-                  @media screen and (-ms-high-contrast: active){&:active $activeSection {
+                  @media screen and (-ms-high-contrast: active){&:hover .ms-Slider-active {
                     background-color: Highlight;
                   }
-                  &:hover $activeSection {
-                    background-color: #0078d4;
+                  &:active .ms-Slider-inactive {
+                    background-color: #deecf9;
                   }
-                  @media screen and (-ms-high-contrast: active){&:hover $activeSection {
+                  @media screen and (-ms-high-contrast: active){&:active .ms-Slider-inactive {
+                    border-color: Highlight;
+                  }
+                  &:hover .ms-Slider-inactive {
+                    background-color: #deecf9;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:hover .ms-Slider-inactive {
+                    border-color: Highlight;
+                  }
+                  &:active .ms-Slider-thumb {
+                    border: 2px solid #005a9e;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:active .ms-Slider-thumb {
+                    border-color: Highlight;
+                  }
+                  &:hover .ms-Slider-thumb {
+                    border: 2px solid #005a9e;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:hover .ms-Slider-thumb {
+                    border-color: Highlight;
+                  }
+                  &:active .ms-Slider-zeroTick {
+                    background-color: #deecf9;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:active .ms-Slider-zeroTick {
                     background-color: Highlight;
                   }
-                  &:active $inactiveSection {
-                    background-color: #c7e0f4;
+                  &:hover .ms-Slider-zeroTick {
+                    background-color: #deecf9;
                   }
-                  @media screen and (-ms-high-contrast: active){&:active $inactiveSection {
-                    border-color: Highlight;
-                  }
-                  &:hover $inactiveSection {
-                    background-color: #c7e0f4;
-                  }
-                  @media screen and (-ms-high-contrast: active){&:hover $inactiveSection {
-                    border-color: Highlight;
-                  }
-                  &:active $thumb {
-                    border: 2px solid #0078d4;
-                  }
-                  @media screen and (-ms-high-contrast: active){&:active $thumb {
-                    border-color: Highlight;
-                  }
-                  &:hover $thumb {
-                    border: 2px solid #0078d4;
-                  }
-                  @media screen and (-ms-high-contrast: active){&:hover $thumb {
-                    border-color: Highlight;
-                  }
-                  &:active $zeroTick {
-                    background-color: #c7e0f4;
-                  }
-                  @media screen and (-ms-high-contrast: active){&:active $zeroTick {
+                  @media screen and (-ms-high-contrast: active){&:hover .ms-Slider-zeroTick {
                     background-color: Highlight;
-                  }
-                  &:hover $zeroTick {
-                    background-color: #c7e0f4;
-                  }
-                  @media screen and (-ms-high-contrast: active){&:hover $zeroTick {
-                    background-color: Highlight;
-                  }
-                  & $thumb {
-                    background: #ffffff;
-                    border-color: #666666;
-                    border-radius: 10px;
-                    border-style: solid;
-                    border-width: 2px;
-                    box-sizing: border-box;
-                    display: block;
-                    height: 16px;
-                    position: absolute;
-                    top: -6px;
-                    transform: translateX(-50%);
-                    transition: left 0.367s cubic-bezier(.1,.9,.2,1);
-                    width: 16px;
                   }
               data-is-focusable={true}
               id="Slider14"
@@ -2581,17 +2673,25 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       position: relative;
                       width: 100%;
                     }
-                    & $lineContainer {
-                      border-radius: 4px;
-                      box-sizing: border-box;
-                      height: 4px;
-                      width: 100%;
-                    }
               >
                 <span
                   className=
                       ms-Slider-thumb
-
+                      {
+                        background: #ffffff;
+                        border-color: #605e5c;
+                        border-radius: 10px;
+                        border-style: solid;
+                        border-width: 2px;
+                        box-sizing: border-box;
+                        display: block;
+                        height: 16px;
+                        position: absolute;
+                        top: -6px;
+                        transform: translateX(-50%);
+                        transition: left 0.367s cubic-bezier(.1,.9,.2,1);
+                        width: 16px;
+                      }
                   style={
                     Object {
                       "left": "0%",
@@ -2601,9 +2701,14 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                 <span
                   className=
                       ms-Slider-active
-
                       {
-                        background: #666666;
+                        border-radius: 4px;
+                        box-sizing: border-box;
+                        height: 4px;
+                        width: 100%;
+                      }
+                      {
+                        background: #605e5c;
                         transition: width 0.367s cubic-bezier(.1,.9,.2,1);
                       }
                       @media screen and (-ms-high-contrast: active){& {
@@ -2618,9 +2723,14 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                 <span
                   className=
                       ms-Slider-inactive
-
                       {
-                        background: #c8c8c8;
+                        border-radius: 4px;
+                        box-sizing: border-box;
+                        height: 4px;
+                        width: 100%;
+                      }
+                      {
+                        background: #c8c6c4;
                         transition: width 0.367s cubic-bezier(.1,.9,.2,1);
                       }
                       @media screen and (-ms-high-contrast: active){& {
@@ -2643,12 +2753,12 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     -webkit-font-smoothing: antialiased;
                     box-shadow: none;
                     box-sizing: border-box;
-                    color: #333333;
+                    color: #323130;
                     display: block;
                     flex-shrink: 1;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
-                    font-weight: 400;
+                    font-weight: 600;
                     line-height: 1;
                     margin-bottom: 0;
                     margin-left: 8px;
@@ -2690,11 +2800,11 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                   -webkit-font-smoothing: antialiased;
                   box-shadow: none;
                   box-sizing: border-box;
-                  color: #333333;
+                  color: #323130;
                   display: block;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
-                  font-weight: 400;
+                  font-weight: 600;
                   margin-bottom: 0px;
                   margin-left: 0px;
                   margin-right: 0px;
@@ -2753,74 +2863,59 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     bottom: 1px;
                     content: "";
                     left: 1px;
-                    outline: 1px solid #666666;
+                    outline: 1px solid #605e5c;
                     position: absolute;
                     right: 1px;
                     top: 1px;
                     z-index: 1;
                   }
-                  &:active $activeSection {
+                  &:active .ms-Slider-active {
+                    background-color: #005a9e;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:active .ms-Slider-active {
+                    background-color: Highlight;
+                  }
+                  &:hover .ms-Slider-active {
                     background-color: #0078d4;
                   }
-                  @media screen and (-ms-high-contrast: active){&:active $activeSection {
+                  @media screen and (-ms-high-contrast: active){&:hover .ms-Slider-active {
                     background-color: Highlight;
                   }
-                  &:hover $activeSection {
-                    background-color: #0078d4;
+                  &:active .ms-Slider-inactive {
+                    background-color: #deecf9;
                   }
-                  @media screen and (-ms-high-contrast: active){&:hover $activeSection {
+                  @media screen and (-ms-high-contrast: active){&:active .ms-Slider-inactive {
+                    border-color: Highlight;
+                  }
+                  &:hover .ms-Slider-inactive {
+                    background-color: #deecf9;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:hover .ms-Slider-inactive {
+                    border-color: Highlight;
+                  }
+                  &:active .ms-Slider-thumb {
+                    border: 2px solid #005a9e;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:active .ms-Slider-thumb {
+                    border-color: Highlight;
+                  }
+                  &:hover .ms-Slider-thumb {
+                    border: 2px solid #005a9e;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:hover .ms-Slider-thumb {
+                    border-color: Highlight;
+                  }
+                  &:active .ms-Slider-zeroTick {
+                    background-color: #deecf9;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:active .ms-Slider-zeroTick {
                     background-color: Highlight;
                   }
-                  &:active $inactiveSection {
-                    background-color: #c7e0f4;
+                  &:hover .ms-Slider-zeroTick {
+                    background-color: #deecf9;
                   }
-                  @media screen and (-ms-high-contrast: active){&:active $inactiveSection {
-                    border-color: Highlight;
-                  }
-                  &:hover $inactiveSection {
-                    background-color: #c7e0f4;
-                  }
-                  @media screen and (-ms-high-contrast: active){&:hover $inactiveSection {
-                    border-color: Highlight;
-                  }
-                  &:active $thumb {
-                    border: 2px solid #0078d4;
-                  }
-                  @media screen and (-ms-high-contrast: active){&:active $thumb {
-                    border-color: Highlight;
-                  }
-                  &:hover $thumb {
-                    border: 2px solid #0078d4;
-                  }
-                  @media screen and (-ms-high-contrast: active){&:hover $thumb {
-                    border-color: Highlight;
-                  }
-                  &:active $zeroTick {
-                    background-color: #c7e0f4;
-                  }
-                  @media screen and (-ms-high-contrast: active){&:active $zeroTick {
+                  @media screen and (-ms-high-contrast: active){&:hover .ms-Slider-zeroTick {
                     background-color: Highlight;
-                  }
-                  &:hover $zeroTick {
-                    background-color: #c7e0f4;
-                  }
-                  @media screen and (-ms-high-contrast: active){&:hover $zeroTick {
-                    background-color: Highlight;
-                  }
-                  & $thumb {
-                    background: #ffffff;
-                    border-color: #666666;
-                    border-radius: 10px;
-                    border-style: solid;
-                    border-width: 2px;
-                    box-sizing: border-box;
-                    display: block;
-                    height: 16px;
-                    position: absolute;
-                    top: -6px;
-                    transform: translateX(-50%);
-                    transition: left 0.367s cubic-bezier(.1,.9,.2,1);
-                    width: 16px;
                   }
               data-is-focusable={true}
               id="Slider15"
@@ -2838,17 +2933,25 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       position: relative;
                       width: 100%;
                     }
-                    & $lineContainer {
-                      border-radius: 4px;
-                      box-sizing: border-box;
-                      height: 4px;
-                      width: 100%;
-                    }
               >
                 <span
                   className=
                       ms-Slider-thumb
-
+                      {
+                        background: #ffffff;
+                        border-color: #605e5c;
+                        border-radius: 10px;
+                        border-style: solid;
+                        border-width: 2px;
+                        box-sizing: border-box;
+                        display: block;
+                        height: 16px;
+                        position: absolute;
+                        top: -6px;
+                        transform: translateX(-50%);
+                        transition: left 0.367s cubic-bezier(.1,.9,.2,1);
+                        width: 16px;
+                      }
                   style={
                     Object {
                       "left": "0%",
@@ -2858,9 +2961,14 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                 <span
                   className=
                       ms-Slider-active
-
                       {
-                        background: #666666;
+                        border-radius: 4px;
+                        box-sizing: border-box;
+                        height: 4px;
+                        width: 100%;
+                      }
+                      {
+                        background: #605e5c;
                         transition: width 0.367s cubic-bezier(.1,.9,.2,1);
                       }
                       @media screen and (-ms-high-contrast: active){& {
@@ -2875,9 +2983,14 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                 <span
                   className=
                       ms-Slider-inactive
-
                       {
-                        background: #c8c8c8;
+                        border-radius: 4px;
+                        box-sizing: border-box;
+                        height: 4px;
+                        width: 100%;
+                      }
+                      {
+                        background: #c8c6c4;
                         transition: width 0.367s cubic-bezier(.1,.9,.2,1);
                       }
                       @media screen and (-ms-high-contrast: active){& {
@@ -2900,12 +3013,12 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     -webkit-font-smoothing: antialiased;
                     box-shadow: none;
                     box-sizing: border-box;
-                    color: #333333;
+                    color: #323130;
                     display: block;
                     flex-shrink: 1;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
-                    font-weight: 400;
+                    font-weight: 600;
                     line-height: 1;
                     margin-bottom: 0;
                     margin-left: 8px;
@@ -2985,11 +3098,11 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                   -webkit-font-smoothing: antialiased;
                   box-shadow: none;
                   box-sizing: border-box;
-                  color: #333333;
+                  color: #323130;
                   display: block;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
-                  font-weight: 400;
+                  font-weight: 600;
                   margin-bottom: 0px;
                   margin-left: 0px;
                   margin-right: 0px;
@@ -3048,74 +3161,59 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     bottom: 1px;
                     content: "";
                     left: 1px;
-                    outline: 1px solid #666666;
+                    outline: 1px solid #605e5c;
                     position: absolute;
                     right: 1px;
                     top: 1px;
                     z-index: 1;
                   }
-                  &:active $activeSection {
+                  &:active .ms-Slider-active {
+                    background-color: #005a9e;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:active .ms-Slider-active {
+                    background-color: Highlight;
+                  }
+                  &:hover .ms-Slider-active {
                     background-color: #0078d4;
                   }
-                  @media screen and (-ms-high-contrast: active){&:active $activeSection {
+                  @media screen and (-ms-high-contrast: active){&:hover .ms-Slider-active {
                     background-color: Highlight;
                   }
-                  &:hover $activeSection {
-                    background-color: #0078d4;
+                  &:active .ms-Slider-inactive {
+                    background-color: #deecf9;
                   }
-                  @media screen and (-ms-high-contrast: active){&:hover $activeSection {
+                  @media screen and (-ms-high-contrast: active){&:active .ms-Slider-inactive {
+                    border-color: Highlight;
+                  }
+                  &:hover .ms-Slider-inactive {
+                    background-color: #deecf9;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:hover .ms-Slider-inactive {
+                    border-color: Highlight;
+                  }
+                  &:active .ms-Slider-thumb {
+                    border: 2px solid #005a9e;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:active .ms-Slider-thumb {
+                    border-color: Highlight;
+                  }
+                  &:hover .ms-Slider-thumb {
+                    border: 2px solid #005a9e;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:hover .ms-Slider-thumb {
+                    border-color: Highlight;
+                  }
+                  &:active .ms-Slider-zeroTick {
+                    background-color: #deecf9;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:active .ms-Slider-zeroTick {
                     background-color: Highlight;
                   }
-                  &:active $inactiveSection {
-                    background-color: #c7e0f4;
+                  &:hover .ms-Slider-zeroTick {
+                    background-color: #deecf9;
                   }
-                  @media screen and (-ms-high-contrast: active){&:active $inactiveSection {
-                    border-color: Highlight;
-                  }
-                  &:hover $inactiveSection {
-                    background-color: #c7e0f4;
-                  }
-                  @media screen and (-ms-high-contrast: active){&:hover $inactiveSection {
-                    border-color: Highlight;
-                  }
-                  &:active $thumb {
-                    border: 2px solid #0078d4;
-                  }
-                  @media screen and (-ms-high-contrast: active){&:active $thumb {
-                    border-color: Highlight;
-                  }
-                  &:hover $thumb {
-                    border: 2px solid #0078d4;
-                  }
-                  @media screen and (-ms-high-contrast: active){&:hover $thumb {
-                    border-color: Highlight;
-                  }
-                  &:active $zeroTick {
-                    background-color: #c7e0f4;
-                  }
-                  @media screen and (-ms-high-contrast: active){&:active $zeroTick {
+                  @media screen and (-ms-high-contrast: active){&:hover .ms-Slider-zeroTick {
                     background-color: Highlight;
-                  }
-                  &:hover $zeroTick {
-                    background-color: #c7e0f4;
-                  }
-                  @media screen and (-ms-high-contrast: active){&:hover $zeroTick {
-                    background-color: Highlight;
-                  }
-                  & $thumb {
-                    background: #ffffff;
-                    border-color: #666666;
-                    border-radius: 10px;
-                    border-style: solid;
-                    border-width: 2px;
-                    box-sizing: border-box;
-                    display: block;
-                    height: 16px;
-                    position: absolute;
-                    top: -6px;
-                    transform: translateX(-50%);
-                    transition: left 0.367s cubic-bezier(.1,.9,.2,1);
-                    width: 16px;
                   }
               data-is-focusable={true}
               id="Slider16"
@@ -3133,17 +3231,25 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       position: relative;
                       width: 100%;
                     }
-                    & $lineContainer {
-                      border-radius: 4px;
-                      box-sizing: border-box;
-                      height: 4px;
-                      width: 100%;
-                    }
               >
                 <span
                   className=
                       ms-Slider-thumb
-
+                      {
+                        background: #ffffff;
+                        border-color: #605e5c;
+                        border-radius: 10px;
+                        border-style: solid;
+                        border-width: 2px;
+                        box-sizing: border-box;
+                        display: block;
+                        height: 16px;
+                        position: absolute;
+                        top: -6px;
+                        transform: translateX(-50%);
+                        transition: left 0.367s cubic-bezier(.1,.9,.2,1);
+                        width: 16px;
+                      }
                   style={
                     Object {
                       "left": "0%",
@@ -3153,9 +3259,14 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                 <span
                   className=
                       ms-Slider-active
-
                       {
-                        background: #666666;
+                        border-radius: 4px;
+                        box-sizing: border-box;
+                        height: 4px;
+                        width: 100%;
+                      }
+                      {
+                        background: #605e5c;
                         transition: width 0.367s cubic-bezier(.1,.9,.2,1);
                       }
                       @media screen and (-ms-high-contrast: active){& {
@@ -3170,9 +3281,14 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                 <span
                   className=
                       ms-Slider-inactive
-
                       {
-                        background: #c8c8c8;
+                        border-radius: 4px;
+                        box-sizing: border-box;
+                        height: 4px;
+                        width: 100%;
+                      }
+                      {
+                        background: #c8c6c4;
                         transition: width 0.367s cubic-bezier(.1,.9,.2,1);
                       }
                       @media screen and (-ms-high-contrast: active){& {
@@ -3195,12 +3311,12 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     -webkit-font-smoothing: antialiased;
                     box-shadow: none;
                     box-sizing: border-box;
-                    color: #333333;
+                    color: #323130;
                     display: block;
                     flex-shrink: 1;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
-                    font-weight: 400;
+                    font-weight: 600;
                     line-height: 1;
                     margin-bottom: 0;
                     margin-left: 8px;
@@ -3242,11 +3358,11 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                   -webkit-font-smoothing: antialiased;
                   box-shadow: none;
                   box-sizing: border-box;
-                  color: #333333;
+                  color: #323130;
                   display: block;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
-                  font-weight: 400;
+                  font-weight: 600;
                   margin-bottom: 0px;
                   margin-left: 0px;
                   margin-right: 0px;
@@ -3305,74 +3421,59 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     bottom: 1px;
                     content: "";
                     left: 1px;
-                    outline: 1px solid #666666;
+                    outline: 1px solid #605e5c;
                     position: absolute;
                     right: 1px;
                     top: 1px;
                     z-index: 1;
                   }
-                  &:active $activeSection {
+                  &:active .ms-Slider-active {
+                    background-color: #005a9e;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:active .ms-Slider-active {
+                    background-color: Highlight;
+                  }
+                  &:hover .ms-Slider-active {
                     background-color: #0078d4;
                   }
-                  @media screen and (-ms-high-contrast: active){&:active $activeSection {
+                  @media screen and (-ms-high-contrast: active){&:hover .ms-Slider-active {
                     background-color: Highlight;
                   }
-                  &:hover $activeSection {
-                    background-color: #0078d4;
+                  &:active .ms-Slider-inactive {
+                    background-color: #deecf9;
                   }
-                  @media screen and (-ms-high-contrast: active){&:hover $activeSection {
+                  @media screen and (-ms-high-contrast: active){&:active .ms-Slider-inactive {
+                    border-color: Highlight;
+                  }
+                  &:hover .ms-Slider-inactive {
+                    background-color: #deecf9;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:hover .ms-Slider-inactive {
+                    border-color: Highlight;
+                  }
+                  &:active .ms-Slider-thumb {
+                    border: 2px solid #005a9e;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:active .ms-Slider-thumb {
+                    border-color: Highlight;
+                  }
+                  &:hover .ms-Slider-thumb {
+                    border: 2px solid #005a9e;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:hover .ms-Slider-thumb {
+                    border-color: Highlight;
+                  }
+                  &:active .ms-Slider-zeroTick {
+                    background-color: #deecf9;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:active .ms-Slider-zeroTick {
                     background-color: Highlight;
                   }
-                  &:active $inactiveSection {
-                    background-color: #c7e0f4;
+                  &:hover .ms-Slider-zeroTick {
+                    background-color: #deecf9;
                   }
-                  @media screen and (-ms-high-contrast: active){&:active $inactiveSection {
-                    border-color: Highlight;
-                  }
-                  &:hover $inactiveSection {
-                    background-color: #c7e0f4;
-                  }
-                  @media screen and (-ms-high-contrast: active){&:hover $inactiveSection {
-                    border-color: Highlight;
-                  }
-                  &:active $thumb {
-                    border: 2px solid #0078d4;
-                  }
-                  @media screen and (-ms-high-contrast: active){&:active $thumb {
-                    border-color: Highlight;
-                  }
-                  &:hover $thumb {
-                    border: 2px solid #0078d4;
-                  }
-                  @media screen and (-ms-high-contrast: active){&:hover $thumb {
-                    border-color: Highlight;
-                  }
-                  &:active $zeroTick {
-                    background-color: #c7e0f4;
-                  }
-                  @media screen and (-ms-high-contrast: active){&:active $zeroTick {
+                  @media screen and (-ms-high-contrast: active){&:hover .ms-Slider-zeroTick {
                     background-color: Highlight;
-                  }
-                  &:hover $zeroTick {
-                    background-color: #c7e0f4;
-                  }
-                  @media screen and (-ms-high-contrast: active){&:hover $zeroTick {
-                    background-color: Highlight;
-                  }
-                  & $thumb {
-                    background: #ffffff;
-                    border-color: #666666;
-                    border-radius: 10px;
-                    border-style: solid;
-                    border-width: 2px;
-                    box-sizing: border-box;
-                    display: block;
-                    height: 16px;
-                    position: absolute;
-                    top: -6px;
-                    transform: translateX(-50%);
-                    transition: left 0.367s cubic-bezier(.1,.9,.2,1);
-                    width: 16px;
                   }
               data-is-focusable={true}
               id="Slider17"
@@ -3390,17 +3491,25 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       position: relative;
                       width: 100%;
                     }
-                    & $lineContainer {
-                      border-radius: 4px;
-                      box-sizing: border-box;
-                      height: 4px;
-                      width: 100%;
-                    }
               >
                 <span
                   className=
                       ms-Slider-thumb
-
+                      {
+                        background: #ffffff;
+                        border-color: #605e5c;
+                        border-radius: 10px;
+                        border-style: solid;
+                        border-width: 2px;
+                        box-sizing: border-box;
+                        display: block;
+                        height: 16px;
+                        position: absolute;
+                        top: -6px;
+                        transform: translateX(-50%);
+                        transition: left 0.367s cubic-bezier(.1,.9,.2,1);
+                        width: 16px;
+                      }
                   style={
                     Object {
                       "left": "0%",
@@ -3410,9 +3519,14 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                 <span
                   className=
                       ms-Slider-active
-
                       {
-                        background: #666666;
+                        border-radius: 4px;
+                        box-sizing: border-box;
+                        height: 4px;
+                        width: 100%;
+                      }
+                      {
+                        background: #605e5c;
                         transition: width 0.367s cubic-bezier(.1,.9,.2,1);
                       }
                       @media screen and (-ms-high-contrast: active){& {
@@ -3427,9 +3541,14 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                 <span
                   className=
                       ms-Slider-inactive
-
                       {
-                        background: #c8c8c8;
+                        border-radius: 4px;
+                        box-sizing: border-box;
+                        height: 4px;
+                        width: 100%;
+                      }
+                      {
+                        background: #c8c6c4;
                         transition: width 0.367s cubic-bezier(.1,.9,.2,1);
                       }
                       @media screen and (-ms-high-contrast: active){& {
@@ -3452,12 +3571,12 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     -webkit-font-smoothing: antialiased;
                     box-shadow: none;
                     box-sizing: border-box;
-                    color: #333333;
+                    color: #323130;
                     display: block;
                     flex-shrink: 1;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
-                    font-weight: 400;
+                    font-weight: 600;
                     line-height: 1;
                     margin-bottom: 0;
                     margin-left: 8px;

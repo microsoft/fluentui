@@ -1,27 +1,32 @@
 {
   "name": "@uifabric/api-docs",
-  "version": "1.1.2",
-  "description": "A package that transforms .api.json files into page.json files",
-  "main": "lib-commonjs/index.js",
-  "typings": "lib/index.d.ts",
+  "version": "7.0.7",
+  "description": "A package that transforms api-extractor .api.json files into page.json files",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/OfficeDev/office-ui-fabric-react"
+  },
   "license": "MIT",
+  "main": "lib/index.js",
+  "typings": "lib/index.d.ts",
   "scripts": {
-    "build": "npx just-scripts build && node ./lib-commonjs/generatePageJsonFiles.js",
-    "just": "npx just-scripts",
-    "clean": "npx just-scripts clean"
+    "build": "just-scripts build",
+    "just": "just-scripts",
+    "clean": "just-scripts clean"
   },
   "devDependencies": {
-    "just-scripts": "~0.17.0",
     "@types/node": "^8.10.29",
-    "@uifabric/tslint-rules": ">=1.0.2 <2.0.0",
-    "@uifabric/styling": "^6.48.0",
-    "@uifabric/merge-styles": "^6.18.0",
-    "@uifabric/utilities": "^6.40.1",
-    "office-ui-fabric-react": "^6.189.2"
+    "@uifabric/build": "^7.0.0",
+    "@uifabric/merge-styles": "^7.8.0",
+    "@uifabric/react-cards": "^0.109.1",
+    "@uifabric/styling": "^7.7.2",
+    "@uifabric/tslint-rules": "^7.0.5",
+    "@uifabric/utilities": "^7.5.0",
+    "office-ui-fabric-react": "^7.57.2"
   },
   "dependencies": {
-    "@microsoft/tsdoc": "0.12.8",
-    "@microsoft/api-extractor-model": "7.0.27",
+    "@microsoft/tsdoc": "0.12.12",
+    "@microsoft/api-extractor-model": "7.3.2",
     "@microsoft/node-core-library": "~3.9.0"
   }
 }

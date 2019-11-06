@@ -2,22 +2,11 @@ const webpack = require('webpack');
 const WebpackDevServer = require('webpack-dev-server');
 const path = require('path');
 const fs = require('fs');
-const commandLineArgs = require('command-line-args');
+const yargs = require('yargs');
 
-const optionDefinitions = [
-  {
-    name: 'webpackConfig',
-    alias: 'w',
-    type: String
-  }
-];
+const options = yargs.option('webpackConfig', { alias: 'w', type: 'string' }).argv;
 
-const options = commandLineArgs(optionDefinitions);
-let webpackConfigFilePath = 'webpack.codepen.config.js';
-
-if (options && options.webpackConfig) {
-  webpackConfigFilePath = options.webpackConfig;
-}
+const webpackConfigFilePath = options.webpackConfig || 'webpack.codepen.config.js';
 
 const configPath = path.resolve(process.cwd(), webpackConfigFilePath);
 

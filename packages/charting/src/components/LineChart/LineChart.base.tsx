@@ -27,10 +27,12 @@ export class LineChartBase extends React.Component<
     // tslint:disable-next-line:no-any
     refSelected: any;
     hoveredLineColor: string;
+    selectedLegend: string;
   }
 > {
   private _points: ILineChartPoints[];
   private _classNames: IProcessedStyleSet<ILineChartStyles>;
+  private _reqID: number;
   private xAxisElement: SVGElement | null;
   private yAxisElement: SVGElement | null;
   // tslint:disable-next-line:no-any
@@ -54,7 +56,8 @@ export class LineChartBase extends React.Component<
       activeLegend: '',
       lineColor: '',
       refSelected: '',
-      hoveredLineColor: ''
+      hoveredLineColor: '',
+      selectedLegend: ''
     };
     this._points = this.props.data.lineChartData ? this.props.data.lineChartData : [];
     this._uniqLineText =
@@ -68,6 +71,10 @@ export class LineChartBase extends React.Component<
   public componentDidMount(): void {
     this._fitParentContainer();
     window.addEventListener('resize', this._fitParentContainer);
+  }
+
+  public componentWillUnmount(): void {
+    cancelAnimationFrame(this._reqID);
   }
 
   public render(): JSX.Element {
@@ -127,7 +134,7 @@ export class LineChartBase extends React.Component<
         </svg>
         <div className={this._classNames.legendContainer}>{legendBars}</div>
         {this.state.isCalloutVisible ? (
-          <Callout target={this.state.refSelected} isBeakVisible={false} gapSpace={5} directionalHint={DirectionalHint.topAutoEdge}>
+          <Callout target={this.state.refSelected} isBeakVisible={false} gapSpace={10} directionalHint={DirectionalHint.topAutoEdge}>
             <div className={this._classNames.calloutContentRoot}>
               <span className={this._classNames.calloutContentX}>{this.state.hoverXValue}</span>
               <span className={this._classNames.calloutContentY}>{this.state.hoverYValue}</span>
@@ -141,9 +148,10 @@ export class LineChartBase extends React.Component<
   private _fitParentContainer(): void {
     const { containerWidth, containerHeight } = this.state;
     if (this.props.parentRef) {
-      setTimeout(() => {
+      this._reqID = requestAnimationFrame(() => {
         const currentContainerWidth = this.props.parentRef!.getBoundingClientRect().width;
-        const currentContainerHeight = this.props.parentRef!.getBoundingClientRect().height;
+        const currentContainerHeight =
+          this.props.parentRef!.getBoundingClientRect().height > 26 ? this.props.parentRef!.getBoundingClientRect().height : 350;
         const shouldResize = containerWidth !== currentContainerWidth || containerHeight !== currentContainerHeight - 26;
         if (shouldResize) {
           this.setState({
@@ -151,11 +159,12 @@ export class LineChartBase extends React.Component<
             containerHeight: currentContainerHeight - 26
           });
         }
-      }, 100);
+      });
     } else {
-      setTimeout(() => {
+      this._reqID = requestAnimationFrame(() => {
         const currentContainerWidth = this.chartContainer.getBoundingClientRect().width;
-        const currentContainerHeight = this.chartContainer.getBoundingClientRect().height;
+        const currentContainerHeight =
+          this.chartContainer.getBoundingClientRect().height > 26 ? this.chartContainer.getBoundingClientRect().height : 350;
         const shouldResize = containerWidth !== currentContainerWidth || containerHeight !== currentContainerHeight - 26;
         if (shouldResize) {
           this.setState({
@@ -163,7 +172,7 @@ export class LineChartBase extends React.Component<
             containerHeight: currentContainerHeight - 26
           });
         }
-      }, 100);
+      });
     }
   }
 
@@ -175,11 +184,14 @@ export class LineChartBase extends React.Component<
         title: point.legend!,
         color: color,
         action: () => {
-          if (this.state.activeLegend !== point.legend || this.state.activeLegend === '') {
-            this.setState({ activeLegend: point.legend });
+          if (this.state.selectedLegend === point.legend) {
+            this.setState({ selectedLegend: '' });
+            this._handleLegendClick(point, null);
           } else {
-            this.setState({ activeLegend: point.legend });
+            this.setState({ selectedLegend: point.legend });
+            this._handleLegendClick(point, point.legend);
           }
+          this.setState({ activeLegend: point.legend });
         },
         onMouseOutAction: () => {
           this.setState({ activeLegend: '' });
@@ -190,7 +202,7 @@ export class LineChartBase extends React.Component<
       };
       return legend;
     });
-    const legends = <Legends legends={legendDataItems} />;
+    const legends = <Legends legends={legendDataItems} enabledWrapLines={this.props.enabledLegendsWrapLines} />;
     return legends;
   }
 
@@ -351,5 +363,11 @@ export class LineChartBase extends React.Component<
     this.setState({
       isCalloutVisible: false
     });
+  };
+
+  private _handleLegendClick = (point: ILineChartPoints, selectedLegend: string | null): void => {
+    if (point.onLegendClick) {
+      point.onLegendClick(selectedLegend);
+    }
   };
 }

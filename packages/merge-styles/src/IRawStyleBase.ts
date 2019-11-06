@@ -259,6 +259,12 @@ export interface IFontFace extends IRawFontStyle {
   unicodeRange?: ICSSRule | string;
 
   /**
+   * Determines how a font face is displayed based on whether and when it is downloaded
+   * and ready to use.
+   */
+  fontDisplay?: 'auto' | 'block' | 'swap' | 'fallback' | 'optional';
+
+  /**
    * Feature settings for the font.
    */
   fontFeatureSettings?: string;
@@ -275,6 +281,11 @@ export interface IRawStyleBase extends IRawFontStyle {
    * (Ms specific) constrast adjust rule.
    */
   MsHighContrastAdjust?: ICSSRule | string;
+
+  /**
+   * (Ms specific) scrollbar behavior adjust rule.
+   */
+  MsOverflowStyle?: 'auto' | 'none' | 'scrollbar' | '-ms-autohiding-scrollbar';
 
   /**
    * (Moz specific) font smoothing directive.
@@ -503,12 +514,12 @@ export interface IRawStyleBase extends IRawFontStyle {
   /**
    * Defines the shape of the border of the bottom-left corner.
    */
-  borderBottomLeftRadius?: ICSSRule | string;
+  borderBottomLeftRadius?: ICSSRule | ICSSPixelUnitRule;
 
   /**
    * Defines the shape of the border of the bottom-right corner.
    */
-  borderBottomRightRadius?: ICSSRule | string;
+  borderBottomRightRadius?: ICSSRule | ICSSPixelUnitRule;
 
   /**
    * Sets the line style of the bottom border of a box.
@@ -663,12 +674,12 @@ export interface IRawStyleBase extends IRawFontStyle {
   /**
    * Sets the rounding of the top-left corner of the element.
    */
-  borderTopLeftRadius?: ICSSRule | string;
+  borderTopLeftRadius?: ICSSRule | ICSSPixelUnitRule;
 
   /**
    * Sets the rounding of the top-right corner of the element.
    */
-  borderTopRightRadius?: ICSSRule | string;
+  borderTopRightRadius?: ICSSRule | ICSSPixelUnitRule;
 
   /**
    * Sets the style of an element's top border. To set all four borders, use the

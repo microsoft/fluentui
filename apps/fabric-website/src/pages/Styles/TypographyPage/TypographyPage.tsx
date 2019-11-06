@@ -13,7 +13,7 @@ const baseUrl = 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master
 
 export const TypographyPage: React.StatelessComponent<IStylesPageProps> = props => {
   const { platform } = props;
-  return <StylesAreaPage {...props} {...TypographyPageProps[platform]} otherSections={_otherSections(platform)} />;
+  return <StylesAreaPage {...props} {...TypographyPageProps[platform]} otherSections={_otherSections(platform) as IPageSectionProps[]} />;
 };
 
 function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
@@ -51,6 +51,17 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
             <Markdown>
               {
                 require('!raw-loader!@uifabric/fabric-website/src/pages/Styles/TypographyPage/docs/web/TypographyImplementation.md') as string
+              }
+            </Markdown>
+          )
+        },
+        {
+          sectionName: 'Customization',
+          editUrl: `${baseUrl}/web/TypographyCustomization.md`,
+          content: (
+            <Markdown>
+              {
+                require('!raw-loader!@uifabric/fabric-website/src/pages/Styles/TypographyPage/docs/web/TypographyCustomization.md') as string
               }
             </Markdown>
           )

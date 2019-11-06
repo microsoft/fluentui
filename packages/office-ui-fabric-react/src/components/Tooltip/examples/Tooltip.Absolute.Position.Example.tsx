@@ -26,7 +26,7 @@ export class TooltipAbsolutePositionExample extends React.Component<any, any> {
         >
           <DefaultButton
             id={this._buttonId}
-            aria-labelledby={this._hostId}
+            aria-describedby={this._hostId}
             style={{
               position: 'absolute',
               top: 50,

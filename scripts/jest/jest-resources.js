@@ -1,8 +1,10 @@
 const path = require('path');
 const merge = require('../tasks/merge');
 const resolve = require('resolve');
+const { resolveCwd } = require('just-scripts');
 
 module.exports = {
+  resolveMergeStylesSerializer: () => resolveCwd('@uifabric/jest-serializer-merge-styles'),
   createRawConfig: () => ({
     rootDir: 'lib',
     testRegex: '(/__tests__/.*|\\.(test|spec))\\.js$'
@@ -17,8 +19,10 @@ module.exports = {
         },
 
         transform: {
-          '.(ts|tsx)': resolve.sync('ts-jest/preprocessor.js')
+          '.(ts|tsx)': resolve.sync('ts-jest/dist')
         },
+
+        transformIgnorePatterns: ['/node_modules/', '/lib-commonjs/', '\\.js$'],
 
         reporters: [path.resolve(__dirname, './jest-reporter.js')],
 
@@ -31,7 +35,9 @@ module.exports = {
 
         globals: {
           'ts-jest': {
-            tsConfigFile: path.resolve(process.cwd(), 'tsconfig.json')
+            tsConfig: path.resolve(process.cwd(), 'tsconfig.json'),
+            packageJson: path.resolve(process.cwd(), 'package.json'),
+            diagnostics: false
           }
         },
 

@@ -15,7 +15,7 @@ export class Pie extends React.Component<IPieProps, {}> {
         return d.y;
       })
   };
-  private colors: scale.ScaleOrdinal<string | number, {}>;
+  private colors: scale.ScaleOrdinal<string | number, any>;
 
   constructor(props: IPieProps) {
     super(props);

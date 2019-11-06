@@ -60,7 +60,8 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
     this.forceUpdate();
   }
 
-  public componentWillReceiveProps(newProps: P): void {
+  // tslint:disable-next-line function-name
+  public UNSAFE_componentWillReceiveProps(newProps: P): void {
     if (newProps.floatingPickerProps) {
       this.floatingPickerProps = newProps.floatingPickerProps;
     }
@@ -100,6 +101,7 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
       this.floatingPicker.current && this.floatingPicker.current.currentSelectedSuggestionIndex !== -1
         ? 'sug-' + this.floatingPicker.current.currentSelectedSuggestionIndex
         : undefined;
+    const isExpanded = this.floatingPicker.current ? this.floatingPicker.current.isSuggestionsShown : false;
 
     return (
       <div
@@ -122,8 +124,8 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
                   onClick={this.onInputClick}
                   onInputValueChange={this.onInputChange}
                   aria-activedescendant={activeDescendant}
-                  aria-owns="suggestion-list"
-                  aria-expanded={this.floatingPicker.current ? this.floatingPicker.current.isSuggestionsShown : false}
+                  aria-owns={isExpanded ? 'suggestion-list' : undefined}
+                  aria-expanded={isExpanded}
                   aria-haspopup="true"
                   autoCapitalize="off"
                   autoComplete="off"
@@ -155,6 +157,8 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
       <FloatingPicker
         componentRef={this.floatingPicker}
         onChange={this._onSuggestionSelected}
+        onSuggestionsHidden={this._onSuggestionsShownOrHidden}
+        onSuggestionsShown={this._onSuggestionsShownOrHidden}
         inputElement={this.input.current ? this.input.current.inputElement : undefined}
         selectedItems={this.items}
         suggestionItems={this.props.suggestionItems ? this.props.suggestionItems : undefined}
@@ -279,6 +283,19 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
 
   protected _onSelectedItemsChanged = (): void => {
     this.focus();
+  };
+
+  /**
+   * The floating picker is the source of truth for if the menu has been opened or not.
+   *
+   * Because this isn't tracked inside the state of this component, we need to
+   * force an update here to keep the rendered output that depends on the picker being open
+   * in sync with the state
+   *
+   * Called when the suggestions is shown or closed
+   */
+  private _onSuggestionsShownOrHidden = () => {
+    this.forceUpdate();
   };
 
   private _addProcessedItem(newItem: T) {

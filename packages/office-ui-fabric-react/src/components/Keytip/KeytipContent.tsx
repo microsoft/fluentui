@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { styled } from '../../Utilities';
 import { IKeytipProps, IKeytipStyleProps, IKeytipStyles } from './Keytip.types';
 import { KeytipContentBase } from './KeytipContent.base';

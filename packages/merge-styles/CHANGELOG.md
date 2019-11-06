@@ -1,6 +1,121 @@
 # Change Log - @uifabric/merge-styles
 
-This log was last generated on Wed, 05 Jun 2019 12:22:30 GMT and should not be manually modified.
+This log was last generated on Mon, 21 Oct 2019 12:33:23 GMT and should not be manually modified.
+
+## 7.8.0
+Mon, 21 Oct 2019 12:33:23 GMT
+
+### Minor changes
+
+- Add `-ms-overflow-style` as a valid CSS property (unindented@gmail.com)
+## 7.7.0
+Thu, 26 Sep 2019 12:32:32 GMT
+
+### Minor changes
+
+- mergeStyles and mergeStyleSets have a companion method which accepts options for setting RTL (jdh@microsoft.com)
+## 7.6.0
+Fri, 20 Sep 2019 12:34:28 GMT
+
+### Minor changes
+
+- Adding `concatStyleSetsWithProps` to help resolve stylesets that are functional, resolving with props. (dzearing@microsoft.com)
+## 7.5.2
+Thu, 12 Sep 2019 12:34:15 GMT
+
+### Patches
+
+- Build the kebabRules map instead of shipping it (mark@thedutchies.com)
+## 7.5.1
+Wed, 04 Sep 2019 04:09:58 GMT
+
+### Patches
+
+- fix version file (kchau@microsoft.com)
+## 7.5.0
+Mon, 26 Aug 2019 12:30:49 GMT
+
+### Minor changes
+
+- merge-styles: Collapsing comma delimited selectors to make styles easy to define for multiple matches. (dzearing@hotmail.com)
+## 7.4.1
+Fri, 23 Aug 2019 12:35:28 GMT
+
+### Patches
+
+- Update npmignores, delete unused jest setup files (elcraig@microsoft.com)
+- Fix up readme and package.json descriptions (elcraig@microsoft.com)
+
+## 7.4.0
+Tue, 13 Aug 2019 12:31:12 GMT
+
+### Minor changes
+
+- Removing deprecated and buggy "$" reference feature, which has added perf overhead in all scenarios, replacing with simpler regex to replace ampersands in selectors with classnames. (dzearing@microsoft.com)
+
+## 7.3.0
+Wed, 07 Aug 2019 12:32:28 GMT
+
+### Minor changes
+
+- Updating styles to not use $ syntax. (dzearing@microsoft.com)
+
+## 7.2.0
+Wed, 17 Jul 2019 18:58:57 GMT
+
+### Minor changes
+
+- Changed initial default style injection to insert at the start of head by default, rather than at the end. This lets user specified stylesheets have preference by default, but also added support to insert styles in a specific part of the `HEAD` element. Just create a placeholder `<style data-merge-styles/>` element within the head, and styles will be injected after that placeholder. (vibraga@microsoft.com)
+
+### Patches
+
+- Adding @types/react and @types/react-dom to package.json that have peer dependencies on react and react-dom. (makotom@microsoft.com)
+
+## 7.1.1
+Mon, 01 Jul 2019 18:51:42 GMT
+
+### Patches
+
+- Re-use style nodes in IE11 to prevent unpredictable cascading
+
+## 7.1.0
+Thu, 27 Jun 2019 18:25:04 GMT
+
+### Minor changes
+
+- Add `fontDisplay` to `IFontFace`
+
+### Patches
+
+- Reducing runtime overhead on kebab parsing. Reducing some concatStyleSets overhead.
+
+## 7.0.2
+Fri, 14 Jun 2019 12:26:30 GMT
+
+### Patches
+
+- Fix missing assets in production build.
+
+## 7.0.1
+Thu, 13 Jun 2019 00:24:48 GMT
+
+### Patches
+
+- Initial release of Fabric 7
+
+## 6.19.0
+Wed, 12 Jun 2019 00:42:26 GMT
+
+### Minor changes
+
+- Changin borderBottomLeftRadius, borderBottomRightRadius, borderTopLeftRadius and borderTopRightRadius to be of type ICSSPixelUnitRule, like borderRadius, instead of type string.
+
+## 6.18.1
+Tue, 11 Jun 2019 12:21:35 GMT
+
+### Patches
+
+- upgrade to api-extractor 7.1.6
 
 ## 6.18.0
 Wed, 05 Jun 2019 12:22:30 GMT
@@ -171,7 +286,7 @@ Mon, 08 Oct 2018 12:24:15 GMT
 
 ### Patches
 
-- Moving tslint/prettier dependencies 
+- Moving tslint/prettier dependencies
 
 ## 6.9.3
 Mon, 01 Oct 2018 12:27:24 GMT

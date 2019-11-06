@@ -1,5 +1,5 @@
 import { IPersonaCoinStyleProps, IPersonaCoinStyles, PersonaSize } from '../Persona.types';
-import { HighContrastSelector, FontSizes, FontWeights, getGlobalClassNames } from '../../../Styling';
+import { HighContrastSelector, FontWeights, getGlobalClassNames } from '../../../Styling';
 import { sizeBoolean, sizeToPixels } from '../PersonaConsts';
 
 const GlobalClassNames = {
@@ -7,6 +7,7 @@ const GlobalClassNames = {
   imageArea: 'ms-Persona-imageArea',
   image: 'ms-Persona-image',
   initials: 'ms-Persona-initials',
+  size8: 'ms-Persona--size8',
   size10: 'ms-Persona--size10',
   size16: 'ms-Persona--size16',
   size24: 'ms-Persona--size24',
@@ -14,14 +15,16 @@ const GlobalClassNames = {
   size32: 'ms-Persona--size32',
   size40: 'ms-Persona--size40',
   size48: 'ms-Persona--size48',
+  size56: 'ms-Persona--size56',
   size72: 'ms-Persona--size72',
-  size100: 'ms-Persona--size100'
+  size100: 'ms-Persona--size100',
+  size120: 'ms-Persona--size120'
 };
 
 export const getStyles = (props: IPersonaCoinStyleProps): IPersonaCoinStyles => {
   const { className, theme, coinSize } = props;
 
-  const { palette } = theme;
+  const { palette, fonts } = theme;
 
   const size = sizeBoolean(props.size as PersonaSize);
 
@@ -36,7 +39,8 @@ export const getStyles = (props: IPersonaCoinStyleProps): IPersonaCoinStyles => 
   return {
     coin: [
       classNames.coin,
-      theme.fonts.medium,
+      fonts.medium,
+      size.isSize8 && classNames.size8,
       size.isSize10 && classNames.size10,
       size.isSize16 && classNames.size16,
       size.isSize24 && classNames.size24,
@@ -44,13 +48,15 @@ export const getStyles = (props: IPersonaCoinStyleProps): IPersonaCoinStyles => 
       size.isSize32 && classNames.size32,
       size.isSize40 && classNames.size40,
       size.isSize48 && classNames.size48,
+      size.isSize56 && classNames.size56,
       size.isSize72 && classNames.size72,
       size.isSize100 && classNames.size100,
+      size.isSize120 && classNames.size120,
       className
     ],
 
     size10WithoutPresenceIcon: {
-      fontSize: '10px',
+      fontSize: fonts.xSmall.fontSize,
       position: 'absolute',
       top: '5px',
       right: 'auto',
@@ -107,8 +113,8 @@ export const getStyles = (props: IPersonaCoinStyleProps): IPersonaCoinStyles => 
       {
         borderRadius: '50%',
         color: props.showUnknownPersonaCoin ? unknownPersonaFontColor : palette.white,
-        fontSize: FontSizes.large,
-        fontWeight: FontWeights.regular,
+        fontSize: fonts.large.fontSize,
+        fontWeight: FontWeights.semibold,
         lineHeight: dimension === 48 ? 46 : dimension, // copying the logic for the dimensions; defaulted to 46 for size48
         height: dimension,
 
@@ -119,6 +125,9 @@ export const getStyles = (props: IPersonaCoinStyleProps): IPersonaCoinStyles => 
             color: 'WindowText',
             boxSizing: 'border-box',
             backgroundColor: 'Window !important'
+          },
+          i: {
+            fontWeight: FontWeights.semibold
           }
         }
       },
@@ -128,21 +137,31 @@ export const getStyles = (props: IPersonaCoinStyleProps): IPersonaCoinStyles => 
       },
 
       dimension < 32 && {
-        fontSize: FontSizes.xSmall
+        fontSize: fonts.xSmall.fontSize
       },
 
       dimension >= 32 &&
-        dimension < 48 && {
-          fontSize: FontSizes.medium
+        dimension < 40 && {
+          fontSize: fonts.medium.fontSize
+        },
+
+      dimension >= 40 &&
+        dimension < 56 && {
+          fontSize: fonts.mediumPlus.fontSize
+        },
+
+      dimension >= 56 &&
+        dimension < 72 && {
+          fontSize: fonts.xLarge.fontSize
         },
 
       dimension >= 72 &&
         dimension < 100 && {
-          fontSize: FontSizes.xxLarge
+          fontSize: fonts.xxLarge.fontSize
         },
 
       dimension >= 100 && {
-        fontSize: FontSizes.superLarge
+        fontSize: fonts.superLarge.fontSize
       }
     ]
   };

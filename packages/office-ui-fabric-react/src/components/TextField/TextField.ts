@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { styled } from '../../Utilities';
 import { TextFieldBase } from './TextField.base';
 import { ITextFieldProps, ITextFieldStyles, ITextFieldStyleProps } from './TextField.types';

@@ -99,8 +99,13 @@ function _loadFonts(theme: ITheme): { [name: string]: string } {
   for (const fontName of Object.keys(theme.fonts)) {
     const font = theme.fonts[fontName];
     for (const propName of Object.keys(font)) {
-      const name = 'ms-font-' + fontName + '-' + propName;
-      lines[name] = `"[theme:${name}, default: ${font[propName]}]"`;
+      const name = fontName + propName.charAt(0).toUpperCase() + propName.slice(1);
+      let value = font[propName];
+      if (propName === 'fontSize' && typeof value === 'number') {
+        // if it's a number, convert it to px by default like our theming system does
+        value = value + 'px';
+      }
+      lines[name] = value;
     }
   }
   return lines;
@@ -177,6 +182,8 @@ function _expandFrom<TRetVal, TMapType>(propertyName: string | TRetVal | undefin
 function _makeSemanticColorsFromPalette(p: IPalette, isInverted: boolean, depComments: boolean): ISemanticColors {
   let toReturn: ISemanticColors = {
     bodyBackground: p.white,
+    bodyBackgroundHovered: p.neutralLighter,
+    bodyBackgroundChecked: p.neutralLight,
     bodyStandoutBackground: p.neutralLighterAlt,
     bodyFrameBackground: p.white,
     bodyFrameDivider: p.neutralLight,
@@ -187,9 +194,10 @@ function _makeSemanticColorsFromPalette(p: IPalette, isInverted: boolean, depCom
 
     disabledBackground: p.neutralLighter,
     disabledText: p.neutralTertiary,
-    disabledBodyText: p.neutralTertiary,
     disabledSubtext: p.neutralQuaternary,
+    disabledBodyText: p.neutralTertiary,
     disabledBodySubtext: p.neutralTertiaryAlt,
+    disabledBorder: p.neutralTertiaryAlt,
 
     focusBorder: p.neutralSecondary,
     variantBorder: p.neutralLight,
@@ -198,38 +206,43 @@ function _makeSemanticColorsFromPalette(p: IPalette, isInverted: boolean, depCom
 
     errorText: !isInverted ? p.redDark : '#ff5f5f',
     warningText: !isInverted ? '#333333' : '#ffffff',
-    errorBackground: !isInverted ? 'rgba(232, 17, 35, .2)' : 'rgba(232, 17, 35, .5)',
-    blockingBackground: !isInverted ? 'rgba(234, 67, 0, .2)' : 'rgba(234, 67, 0, .5)',
-    warningBackground: !isInverted ? 'rgba(255, 185, 0, .2)' : 'rgba(255, 251, 0, .6)',
+    successText: !isInverted ? '#107C10' : '#92c353',
+    errorBackground: !isInverted ? 'rgba(245, 135, 145, .2)' : 'rgba(232, 17, 35, .5)',
+    blockingBackground: !isInverted ? 'rgba(250, 65, 0, .2)' : 'rgba(234, 67, 0, .5)',
+    warningBackground: !isInverted ? 'rgba(255, 200, 10, .2)' : 'rgba(255, 251, 0, .6)',
     warningHighlight: !isInverted ? '#ffb900' : '#fff100',
-    successBackground: !isInverted ? 'rgba(186, 216, 10, .2)' : 'rgba(186, 216, 10, .4)',
+    successBackground: !isInverted ? 'rgba(95, 210, 85, .2)' : 'rgba(186, 216, 10, .4)',
 
-    inputBorder: p.neutralTertiary,
+    inputBorder: p.neutralSecondaryAlt,
     inputBorderHovered: p.neutralPrimary,
     inputBackground: p.white,
     inputBackgroundChecked: p.themePrimary,
-    inputBackgroundCheckedHovered: p.themeDarkAlt,
+    inputBackgroundCheckedHovered: p.themeDark,
+    inputPlaceholderBackgroundChecked: p.themeLighter,
     inputForegroundChecked: p.white,
+    inputIcon: p.themePrimary,
+    inputIconHovered: p.themeDark,
+    inputIconDisabled: p.neutralTertiary,
     inputFocusBorderAlt: p.themePrimary,
     smallInputBorder: p.neutralSecondary,
     inputText: p.neutralPrimary,
     inputTextHovered: p.neutralDark,
     inputPlaceholderText: p.neutralSecondary,
 
-    buttonBackground: p.neutralLighter,
+    buttonBackground: p.white,
     buttonBackgroundChecked: p.neutralTertiaryAlt,
-    buttonBackgroundHovered: p.neutralLight,
+    buttonBackgroundHovered: p.neutralLighter,
     buttonBackgroundCheckedHovered: p.neutralLight,
     buttonBackgroundPressed: p.neutralLight,
     buttonBackgroundDisabled: p.neutralLighter,
-    buttonBorder: 'transparent',
+    buttonBorder: p.neutralSecondaryAlt,
     buttonText: p.neutralPrimary,
     buttonTextHovered: p.neutralDark,
     buttonTextChecked: p.neutralDark,
     buttonTextCheckedHovered: p.black,
     buttonTextPressed: p.neutralDark,
     buttonTextDisabled: p.neutralTertiary,
-    buttonBorderDisabled: 'transparent',
+    buttonBorderDisabled: p.neutralLighter,
 
     primaryButtonBackground: p.themePrimary,
     primaryButtonBackgroundHovered: p.themeDarkAlt,

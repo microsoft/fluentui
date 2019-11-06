@@ -1,3 +1,5 @@
+import * as React from 'react';
+
 /**
  * Properties used by render function interface for providing overrideable render callbacks.
  *

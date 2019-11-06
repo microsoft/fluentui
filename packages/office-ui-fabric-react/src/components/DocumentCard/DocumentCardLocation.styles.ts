@@ -1,4 +1,4 @@
-import { getGlobalClassNames, FontSizes } from '../../Styling';
+import { getGlobalClassNames } from '../../Styling';
 import { IDocumentCardLocationStyleProps, IDocumentCardLocationStyles } from './DocumentCardLocation.types';
 
 export const DocumentCardLocationGlobalClassNames = {
@@ -7,15 +7,15 @@ export const DocumentCardLocationGlobalClassNames = {
 
 export const getStyles = (props: IDocumentCardLocationStyleProps): IDocumentCardLocationStyles => {
   const { theme, className } = props;
-  const { palette } = theme;
+  const { palette, fonts } = theme;
 
   const classNames = getGlobalClassNames(DocumentCardLocationGlobalClassNames, theme);
 
   return {
     root: [
       classNames.root,
+      fonts.small,
       {
-        fontSize: FontSizes.small,
         color: palette.neutralPrimary,
         display: 'block',
         padding: '8px 16px',

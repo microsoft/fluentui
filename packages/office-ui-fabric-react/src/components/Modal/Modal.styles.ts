@@ -26,14 +26,14 @@ export const getStyles = (props: IModalStyleProps): IModalStyles => {
     layerClassName,
     isDefaultDragHandle
   } = props;
-  const { palette } = theme;
+  const { palette, effects, fonts } = theme;
 
   const classNames = getGlobalClassNames(globalClassNames, theme);
 
   return {
     root: [
       classNames.root,
-      theme.fonts.medium,
+      fonts.medium,
       {
         backgroundColor: 'transparent',
         position: isModeless ? 'absolute' : 'fixed',
@@ -60,7 +60,8 @@ export const getStyles = (props: IModalStyleProps): IModalStyles => {
     main: [
       classNames.main,
       {
-        boxShadow: '0 0 5px 0 rgba(0, 0, 0, 0.4)',
+        boxShadow: effects.elevation64,
+        borderRadius: effects.roundedCorner2,
         backgroundColor: palette.white,
         boxSizing: 'border-box',
         position: 'relative',
@@ -110,7 +111,7 @@ export const getStyles = (props: IModalStyleProps): IModalStyles => {
       padding: '3px 0px'
     },
     keyboardMoveIcon: {
-      fontSize: '24px',
+      fontSize: fonts.xLargePlus.fontSize,
       width: '24px'
     }
   };

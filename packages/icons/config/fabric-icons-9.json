@@ -10,6 +10,266 @@
   },
   "glyphs": [
     {
+      "name": "AddFavoriteFill",
+      "unicode": "F0C9"
+    },
+    {
+      "name": "BufferTimeBefore",
+      "unicode": "F0CF"
+    },
+    {
+      "name": "BufferTimeAfter",
+      "unicode": "F0D0"
+    },
+    {
+      "name": "BufferTimeBoth",
+      "unicode": "F0D1"
+    },
+    {
+      "name": "PublishContent",
+      "unicode": "F0D4"
+    },
+    {
+      "name": "ClipboardList",
+      "unicode": "F0E3"
+    },
+    {
+      "name": "ClipboardListMirrored",
+      "unicode": "F0E4"
+    },
+    {
+      "name": "CannedChat",
+      "unicode": "F0F2"
+    },
+    {
+      "name": "SkypeForBusinessLogo",
+      "unicode": "F0FC"
+    },
+    {
+      "name": "TabCenter",
+      "unicode": "F100"
+    },
+    {
+      "name": "PageCheckedin",
+      "unicode": "F104"
+    },
+    {
+      "name": "PageList",
+      "unicode": "F106"
+    },
+    {
+      "name": "ReadOutLoud",
+      "unicode": "F112"
+    },
+    {
+      "name": "CaretBottomLeftSolid8",
+      "unicode": "F121"
+    },
+    {
+      "name": "CaretBottomRightSolid8",
+      "unicode": "F122"
+    },
+    {
+      "name": "FolderHorizontal",
+      "unicode": "F12B"
+    },
+    {
+      "name": "MicrosoftStaffhubLogo",
+      "unicode": "F130"
+    },
+    {
+      "name": "GiftboxOpen",
+      "unicode": "F133"
+    },
+    {
+      "name": "StatusCircleOuter",
+      "unicode": "F136"
+    },
+    {
+      "name": "StatusCircleInner",
+      "unicode": "F137"
+    },
+    {
+      "name": "StatusCircleRing",
+      "unicode": "F138"
+    },
+    {
+      "name": "StatusTriangleOuter",
+      "unicode": "F139"
+    },
+    {
+      "name": "StatusTriangleInner",
+      "unicode": "F13A"
+    },
+    {
+      "name": "StatusTriangleExclamation",
+      "unicode": "F13B"
+    },
+    {
+      "name": "StatusCircleExclamation",
+      "unicode": "F13C"
+    },
+    {
+      "name": "StatusCircleErrorX",
+      "unicode": "F13D"
+    },
+    {
+      "name": "StatusCircleInfo",
+      "unicode": "F13F"
+    },
+    {
+      "name": "StatusCircleBlock",
+      "unicode": "F140"
+    },
+    {
+      "name": "StatusCircleBlock2",
+      "unicode": "F141"
+    },
+    {
+      "name": "StatusCircleQuestionMark",
+      "unicode": "F142"
+    },
+    {
+      "name": "StatusCircleSync",
+      "unicode": "F143"
+    },
+    {
+      "name": "Toll",
+      "unicode": "F160"
+    },
+    {
+      "name": "ExploreContentSingle",
+      "unicode": "F164"
+    },
+    {
+      "name": "CollapseContent",
+      "unicode": "F165"
+    },
+    {
+      "name": "CollapseContentSingle",
+      "unicode": "F166"
+    },
+    {
+      "name": "InfoSolid",
+      "unicode": "F167"
+    },
+    {
+      "name": "GroupList",
+      "unicode": "F168"
+    },
+    {
+      "name": "ProgressRingDots",
+      "unicode": "F16A"
+    },
+    {
+      "name": "CaloriesAdd",
+      "unicode": "F172"
+    },
+    {
+      "name": "BranchFork",
+      "unicode": "F173"
+    },
+    {
+      "name": "MuteChat",
+      "unicode": "F17A"
+    },
+    {
+      "name": "AddHome",
+      "unicode": "F17B"
+    },
+    {
+      "name": "AddWork",
+      "unicode": "F17C"
+    },
+    {
+      "name": "MobileReport",
+      "unicode": "F18A"
+    },
+    {
+      "name": "ScaleVolume",
+      "unicode": "F18C"
+    },
+    {
+      "name": "HardDriveGroup",
+      "unicode": "F18F"
+    },
+    {
+      "name": "FastMode",
+      "unicode": "F19A"
+    },
+    {
+      "name": "ToggleLeft",
+      "unicode": "F19E"
+    },
+    {
+      "name": "ToggleRight",
+      "unicode": "F19F"
+    },
+    {
+      "name": "TriangleShape",
+      "unicode": "F1A7"
+    },
+    {
+      "name": "RectangleShape",
+      "unicode": "F1A9"
+    },
+    {
+      "name": "CubeShape",
+      "unicode": "F1AA"
+    },
+    {
+      "name": "Trophy2",
+      "unicode": "F1AE"
+    },
+    {
+      "name": "BucketColor",
+      "unicode": "F1B6"
+    },
+    {
+      "name": "BucketColorFill",
+      "unicode": "F1B7"
+    },
+    {
+      "name": "Taskboard",
+      "unicode": "F1C2"
+    },
+    {
+      "name": "SingleColumn",
+      "unicode": "F1D3"
+    },
+    {
+      "name": "DoubleColumn",
+      "unicode": "F1D4"
+    },
+    {
+      "name": "TripleColumn",
+      "unicode": "F1D5"
+    },
+    {
+      "name": "ColumnLeftTwoThirds",
+      "unicode": "F1D6"
+    },
+    {
+      "name": "ColumnRightTwoThirds",
+      "unicode": "F1D7"
+    },
+    {
+      "name": "AccessLogoFill",
+      "unicode": "F1DB"
+    },
+    {
+      "name": "AnalyticsLogo",
+      "unicode": "F1DE"
+    },
+    {
+      "name": "AnalyticsQuery",
+      "unicode": "F1DF"
+    },
+    {
+      "name": "NewAnalyticsQuery",
+      "unicode": "F1E0"
+    },
+    {
       "name": "AnalyticsReport",
       "unicode": "F1E1"
     },
@@ -148,266 +408,6 @@
     {
       "name": "ViewList",
       "unicode": "F247"
-    },
-    {
-      "name": "ViewListGroup",
-      "unicode": "F248"
-    },
-    {
-      "name": "ViewListTree",
-      "unicode": "F249"
-    },
-    {
-      "name": "TriggerAuto",
-      "unicode": "F24A"
-    },
-    {
-      "name": "TriggerUser",
-      "unicode": "F24B"
-    },
-    {
-      "name": "PivotChart",
-      "unicode": "F24C"
-    },
-    {
-      "name": "StackedBarChart",
-      "unicode": "F24D"
-    },
-    {
-      "name": "StackedLineChart",
-      "unicode": "F24E"
-    },
-    {
-      "name": "BuildQueue",
-      "unicode": "F24F"
-    },
-    {
-      "name": "BuildQueueNew",
-      "unicode": "F250"
-    },
-    {
-      "name": "UserFollowed",
-      "unicode": "F25C"
-    },
-    {
-      "name": "ContactLink",
-      "unicode": "F25F"
-    },
-    {
-      "name": "Stack",
-      "unicode": "F26F"
-    },
-    {
-      "name": "Bullseye",
-      "unicode": "F272"
-    },
-    {
-      "name": "VennDiagram",
-      "unicode": "F273"
-    },
-    {
-      "name": "FiveTileGrid",
-      "unicode": "F274"
-    },
-    {
-      "name": "FocalPoint",
-      "unicode": "F277"
-    },
-    {
-      "name": "RingerRemove",
-      "unicode": "F279"
-    },
-    {
-      "name": "TeamsLogoInverse",
-      "unicode": "F27A"
-    },
-    {
-      "name": "TeamsLogo",
-      "unicode": "F27B"
-    },
-    {
-      "name": "TeamsLogoFill",
-      "unicode": "F27C"
-    },
-    {
-      "name": "SkypeForBusinessLogoFill",
-      "unicode": "F27D"
-    },
-    {
-      "name": "SharepointLogo",
-      "unicode": "F27E"
-    },
-    {
-      "name": "SharepointLogoFill",
-      "unicode": "F27F"
-    },
-    {
-      "name": "DelveLogo",
-      "unicode": "F280"
-    },
-    {
-      "name": "DelveLogoFill",
-      "unicode": "F281"
-    },
-    {
-      "name": "OfficeVideoLogo",
-      "unicode": "F282"
-    },
-    {
-      "name": "OfficeVideoLogoFill",
-      "unicode": "F283"
-    },
-    {
-      "name": "ExchangeLogo",
-      "unicode": "F284"
-    },
-    {
-      "name": "ExchangeLogoFill",
-      "unicode": "F285"
-    },
-    {
-      "name": "DocumentApproval",
-      "unicode": "F28B"
-    },
-    {
-      "name": "CloneToDesktop",
-      "unicode": "F28C"
-    },
-    {
-      "name": "InstallToDrive",
-      "unicode": "F28D"
-    },
-    {
-      "name": "Blur",
-      "unicode": "F28E"
-    },
-    {
-      "name": "Build",
-      "unicode": "F28F"
-    },
-    {
-      "name": "ProcessMetaTask",
-      "unicode": "F290"
-    },
-    {
-      "name": "BranchFork2",
-      "unicode": "F291"
-    },
-    {
-      "name": "BranchLocked",
-      "unicode": "F292"
-    },
-    {
-      "name": "BranchCommit",
-      "unicode": "F293"
-    },
-    {
-      "name": "BranchCompare",
-      "unicode": "F294"
-    },
-    {
-      "name": "BranchMerge",
-      "unicode": "F295"
-    },
-    {
-      "name": "BranchPullRequest",
-      "unicode": "F296"
-    },
-    {
-      "name": "BranchSearch",
-      "unicode": "F297"
-    },
-    {
-      "name": "BranchShelveset",
-      "unicode": "F298"
-    },
-    {
-      "name": "RawSource",
-      "unicode": "F299"
-    },
-    {
-      "name": "MergeDuplicate",
-      "unicode": "F29A"
-    },
-    {
-      "name": "RowsGroup",
-      "unicode": "F29B"
-    },
-    {
-      "name": "RowsChild",
-      "unicode": "F29C"
-    },
-    {
-      "name": "Deploy",
-      "unicode": "F29D"
-    },
-    {
-      "name": "Redeploy",
-      "unicode": "F29E"
-    },
-    {
-      "name": "ServerEnviroment",
-      "unicode": "F29F"
-    },
-    {
-      "name": "VisioDiagram",
-      "unicode": "F2A0"
-    },
-    {
-      "name": "HighlightMappedShapes",
-      "unicode": "F2A1"
-    },
-    {
-      "name": "TextCallout",
-      "unicode": "F2A2"
-    },
-    {
-      "name": "IconSetsFlag",
-      "unicode": "F2A4"
-    },
-    {
-      "name": "VisioLogo",
-      "unicode": "F2A7"
-    },
-    {
-      "name": "VisioLogoFill",
-      "unicode": "F2A8"
-    },
-    {
-      "name": "VisioDocument",
-      "unicode": "F2A9"
-    },
-    {
-      "name": "TimelineProgress",
-      "unicode": "F2AA"
-    },
-    {
-      "name": "TimelineDelivery",
-      "unicode": "F2AB"
-    },
-    {
-      "name": "Backlog",
-      "unicode": "F2AC"
-    },
-    {
-      "name": "TeamFavorite",
-      "unicode": "F2AD"
-    },
-    {
-      "name": "TaskGroup",
-      "unicode": "F2AE"
-    },
-    {
-      "name": "TaskGroupMirrored",
-      "unicode": "F2AF"
-    },
-    {
-      "name": "ScopeTemplate",
-      "unicode": "F2B0"
-    },
-    {
-      "name": "AssessmentGroupTemplate",
-      "unicode": "F2B1"
     }
   ]
 }

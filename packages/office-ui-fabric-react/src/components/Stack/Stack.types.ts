@@ -1,4 +1,5 @@
-import { IComponentStyles, IHTMLSlot, ISlotProp, IComponent, IStyleableComponentProps } from '../../Foundation';
+import * as React from 'react';
+import { IComponentStyles, IHTMLSlot, ISlotProp, IComponent, IStyleableComponentProps, ISlottableProps } from '../../Foundation';
 
 /**
  * Defines a type made by the union of the different values that the align-items and justify-content flexbox
@@ -51,7 +52,7 @@ export interface IStackSlots {
  * {@docCategory Stack}
  */
 export interface IStackProps
-  extends IStackSlots,
+  extends ISlottableProps<IStackSlots>,
     IStyleableComponentProps<IStackProps, IStackTokens, IStackStyles>,
     React.HTMLAttributes<HTMLElement> {
   /**
@@ -105,21 +106,25 @@ export interface IStackProps
    * Defines the spacing between Stack children.
    * The property is specified as a value for 'row gap', followed optionally by a value for 'column gap'.
    * If 'column gap' is omitted, it's set to the same value as 'row gap'.
+   * @deprecated Use 'childrenGap' token instead.
    */
   gap?: number | string;
 
   /**
    * Defines the maximum width that the Stack can take.
+   * @deprecated Use 'maxWidth' token instead.
    */
   maxWidth?: number | string;
 
   /**
    * Defines the maximum height that the Stack can take.
+   * @deprecated Use 'maxHeight' token instead.
    */
   maxHeight?: number | string;
 
   /**
    * Defines the inner padding of the Stack.
+   * @deprecated Use 'padding' token instead.
    */
   padding?: number | string;
 
@@ -135,7 +140,27 @@ export interface IStackProps
  * {@docCategory Stack}
  */
 export interface IStackTokens {
+  /**
+   * Defines the spacing between Stack children.
+   * The property is specified as a value for 'row gap', followed optionally by a value for 'column gap'.
+   * If 'column gap' is omitted, it's set to the same value as 'row gap'.
+   */
   childrenGap?: number | string;
+
+  /**
+   * Defines a maximum height for the Stack.
+   */
+  maxHeight?: number | string;
+
+  /**
+   * Defines a maximum width for the Stack.
+   */
+  maxWidth?: number | string;
+
+  /**
+   * Defines the padding to be applied to the Stack contents relative to its border.
+   */
+  padding?: number | string;
 }
 
 /**

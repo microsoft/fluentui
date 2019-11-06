@@ -5,6 +5,13 @@ exports[`Suggestions renders a list properly 1`] = `
   className="ms-Suggestions"
 >
   <div
+    aria-live="polite"
+    className=
+
+
+    role="status"
+  />
+  <div
     className="ms-Suggestions-container"
     role="listbox"
   >
@@ -24,7 +31,7 @@ exports[`Suggestions renders a list properly 1`] = `
               width: 100%;
             }
             &:hover {
-              background: #f4f4f4;
+              background: #f3f2f1;
             }
             &:hover .ms-Suggestions-closeButton {
               display: block;
@@ -41,21 +48,17 @@ exports[`Suggestions renders a list properly 1`] = `
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
                 background-color: transparent;
-                background: #eaeaea;
-                border-radius: 0px;
+                background: #edebe9;
+                border-radius: 2px;
                 border: none;
                 box-sizing: border-box;
-                color: #333333;
+                color: #323130;
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
-                margin-bottom: 0px;
-                margin-left: 0px;
-                margin-right: 0px;
-                margin-top: 0px;
                 min-width: 0px;
                 outline: transparent;
                 overflow: hidden;
@@ -74,14 +77,14 @@ exports[`Suggestions renders a list properly 1`] = `
                 border: 0;
               }
               .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: 0px;
+                border: 1px solid transparent;
+                bottom: 2px;
                 content: "";
-                left: 0px;
-                outline: 1px solid #666666;
+                left: 2px;
+                outline: 1px solid #605e5c;
                 position: absolute;
-                right: 0px;
-                top: 0px;
+                right: 2px;
+                top: 2px;
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -98,8 +101,8 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 0px;
               }
               &:hover {
-                background: #c8c8c8;
-                color: #212121;
+                background: #c8c6c4;
+                color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
@@ -130,7 +133,7 @@ exports[`Suggestions renders a list properly 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -140,13 +143,14 @@ exports[`Suggestions renders a list properly 1`] = `
                   height: 100%;
                   justify-content: flex-start;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <div>
                
               black
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>
@@ -166,7 +170,7 @@ exports[`Suggestions renders a list properly 1`] = `
               width: 100%;
             }
             &:hover {
-              background: #f4f4f4;
+              background: #f3f2f1;
             }
             &:hover .ms-Suggestions-closeButton {
               display: block;
@@ -182,20 +186,16 @@ exports[`Suggestions renders a list properly 1`] = `
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
                 background-color: transparent;
-                border-radius: 0px;
+                border-radius: 2px;
                 border: none;
                 box-sizing: border-box;
-                color: #333333;
+                color: #323130;
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
-                margin-bottom: 0px;
-                margin-left: 0px;
-                margin-right: 0px;
-                margin-top: 0px;
                 min-width: 0px;
                 outline: transparent;
                 overflow: hidden;
@@ -214,14 +214,14 @@ exports[`Suggestions renders a list properly 1`] = `
                 border: 0;
               }
               .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: 0px;
+                border: 1px solid transparent;
+                bottom: 2px;
                 content: "";
-                left: 0px;
-                outline: 1px solid #666666;
+                left: 2px;
+                outline: 1px solid #605e5c;
                 position: absolute;
-                right: 0px;
-                top: 0px;
+                right: 2px;
+                top: 2px;
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -238,7 +238,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 0px;
               }
               &:hover {
-                color: #212121;
+                color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
@@ -267,7 +267,7 @@ exports[`Suggestions renders a list properly 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -277,13 +277,14 @@ exports[`Suggestions renders a list properly 1`] = `
                   height: 100%;
                   justify-content: flex-start;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <div>
                
               blue
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>
@@ -303,7 +304,7 @@ exports[`Suggestions renders a list properly 1`] = `
               width: 100%;
             }
             &:hover {
-              background: #f4f4f4;
+              background: #f3f2f1;
             }
             &:hover .ms-Suggestions-closeButton {
               display: block;
@@ -319,20 +320,16 @@ exports[`Suggestions renders a list properly 1`] = `
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
                 background-color: transparent;
-                border-radius: 0px;
+                border-radius: 2px;
                 border: none;
                 box-sizing: border-box;
-                color: #333333;
+                color: #323130;
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
-                margin-bottom: 0px;
-                margin-left: 0px;
-                margin-right: 0px;
-                margin-top: 0px;
                 min-width: 0px;
                 outline: transparent;
                 overflow: hidden;
@@ -351,14 +348,14 @@ exports[`Suggestions renders a list properly 1`] = `
                 border: 0;
               }
               .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: 0px;
+                border: 1px solid transparent;
+                bottom: 2px;
                 content: "";
-                left: 0px;
-                outline: 1px solid #666666;
+                left: 2px;
+                outline: 1px solid #605e5c;
                 position: absolute;
-                right: 0px;
-                top: 0px;
+                right: 2px;
+                top: 2px;
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -375,7 +372,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 0px;
               }
               &:hover {
-                color: #212121;
+                color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
@@ -404,7 +401,7 @@ exports[`Suggestions renders a list properly 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -414,13 +411,14 @@ exports[`Suggestions renders a list properly 1`] = `
                   height: 100%;
                   justify-content: flex-start;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <div>
                
               brown
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>
@@ -440,7 +438,7 @@ exports[`Suggestions renders a list properly 1`] = `
               width: 100%;
             }
             &:hover {
-              background: #f4f4f4;
+              background: #f3f2f1;
             }
             &:hover .ms-Suggestions-closeButton {
               display: block;
@@ -456,20 +454,16 @@ exports[`Suggestions renders a list properly 1`] = `
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
                 background-color: transparent;
-                border-radius: 0px;
+                border-radius: 2px;
                 border: none;
                 box-sizing: border-box;
-                color: #333333;
+                color: #323130;
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
-                margin-bottom: 0px;
-                margin-left: 0px;
-                margin-right: 0px;
-                margin-top: 0px;
                 min-width: 0px;
                 outline: transparent;
                 overflow: hidden;
@@ -488,14 +482,14 @@ exports[`Suggestions renders a list properly 1`] = `
                 border: 0;
               }
               .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: 0px;
+                border: 1px solid transparent;
+                bottom: 2px;
                 content: "";
-                left: 0px;
-                outline: 1px solid #666666;
+                left: 2px;
+                outline: 1px solid #605e5c;
                 position: absolute;
-                right: 0px;
-                top: 0px;
+                right: 2px;
+                top: 2px;
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -512,7 +506,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 0px;
               }
               &:hover {
-                color: #212121;
+                color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
@@ -541,7 +535,7 @@ exports[`Suggestions renders a list properly 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -551,13 +545,14 @@ exports[`Suggestions renders a list properly 1`] = `
                   height: 100%;
                   justify-content: flex-start;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <div>
                
               cyan
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>
@@ -577,7 +572,7 @@ exports[`Suggestions renders a list properly 1`] = `
               width: 100%;
             }
             &:hover {
-              background: #f4f4f4;
+              background: #f3f2f1;
             }
             &:hover .ms-Suggestions-closeButton {
               display: block;
@@ -593,20 +588,16 @@ exports[`Suggestions renders a list properly 1`] = `
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
                 background-color: transparent;
-                border-radius: 0px;
+                border-radius: 2px;
                 border: none;
                 box-sizing: border-box;
-                color: #333333;
+                color: #323130;
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
-                margin-bottom: 0px;
-                margin-left: 0px;
-                margin-right: 0px;
-                margin-top: 0px;
                 min-width: 0px;
                 outline: transparent;
                 overflow: hidden;
@@ -625,14 +616,14 @@ exports[`Suggestions renders a list properly 1`] = `
                 border: 0;
               }
               .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: 0px;
+                border: 1px solid transparent;
+                bottom: 2px;
                 content: "";
-                left: 0px;
-                outline: 1px solid #666666;
+                left: 2px;
+                outline: 1px solid #605e5c;
                 position: absolute;
-                right: 0px;
-                top: 0px;
+                right: 2px;
+                top: 2px;
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -649,7 +640,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 0px;
               }
               &:hover {
-                color: #212121;
+                color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
@@ -678,7 +669,7 @@ exports[`Suggestions renders a list properly 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -688,13 +679,14 @@ exports[`Suggestions renders a list properly 1`] = `
                   height: 100%;
                   justify-content: flex-start;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <div>
                
               green
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>
@@ -714,7 +706,7 @@ exports[`Suggestions renders a list properly 1`] = `
               width: 100%;
             }
             &:hover {
-              background: #f4f4f4;
+              background: #f3f2f1;
             }
             &:hover .ms-Suggestions-closeButton {
               display: block;
@@ -730,20 +722,16 @@ exports[`Suggestions renders a list properly 1`] = `
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
                 background-color: transparent;
-                border-radius: 0px;
+                border-radius: 2px;
                 border: none;
                 box-sizing: border-box;
-                color: #333333;
+                color: #323130;
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
-                margin-bottom: 0px;
-                margin-left: 0px;
-                margin-right: 0px;
-                margin-top: 0px;
                 min-width: 0px;
                 outline: transparent;
                 overflow: hidden;
@@ -762,14 +750,14 @@ exports[`Suggestions renders a list properly 1`] = `
                 border: 0;
               }
               .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: 0px;
+                border: 1px solid transparent;
+                bottom: 2px;
                 content: "";
-                left: 0px;
-                outline: 1px solid #666666;
+                left: 2px;
+                outline: 1px solid #605e5c;
                 position: absolute;
-                right: 0px;
-                top: 0px;
+                right: 2px;
+                top: 2px;
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -786,7 +774,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 0px;
               }
               &:hover {
-                color: #212121;
+                color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
@@ -815,7 +803,7 @@ exports[`Suggestions renders a list properly 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -825,13 +813,14 @@ exports[`Suggestions renders a list properly 1`] = `
                   height: 100%;
                   justify-content: flex-start;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <div>
                
               magenta
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>
@@ -851,7 +840,7 @@ exports[`Suggestions renders a list properly 1`] = `
               width: 100%;
             }
             &:hover {
-              background: #f4f4f4;
+              background: #f3f2f1;
             }
             &:hover .ms-Suggestions-closeButton {
               display: block;
@@ -867,20 +856,16 @@ exports[`Suggestions renders a list properly 1`] = `
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
                 background-color: transparent;
-                border-radius: 0px;
+                border-radius: 2px;
                 border: none;
                 box-sizing: border-box;
-                color: #333333;
+                color: #323130;
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
-                margin-bottom: 0px;
-                margin-left: 0px;
-                margin-right: 0px;
-                margin-top: 0px;
                 min-width: 0px;
                 outline: transparent;
                 overflow: hidden;
@@ -899,14 +884,14 @@ exports[`Suggestions renders a list properly 1`] = `
                 border: 0;
               }
               .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: 0px;
+                border: 1px solid transparent;
+                bottom: 2px;
                 content: "";
-                left: 0px;
-                outline: 1px solid #666666;
+                left: 2px;
+                outline: 1px solid #605e5c;
                 position: absolute;
-                right: 0px;
-                top: 0px;
+                right: 2px;
+                top: 2px;
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -923,7 +908,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 0px;
               }
               &:hover {
-                color: #212121;
+                color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
@@ -952,7 +937,7 @@ exports[`Suggestions renders a list properly 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -962,13 +947,14 @@ exports[`Suggestions renders a list properly 1`] = `
                   height: 100%;
                   justify-content: flex-start;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <div>
                
               mauve
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>
@@ -988,7 +974,7 @@ exports[`Suggestions renders a list properly 1`] = `
               width: 100%;
             }
             &:hover {
-              background: #f4f4f4;
+              background: #f3f2f1;
             }
             &:hover .ms-Suggestions-closeButton {
               display: block;
@@ -1004,20 +990,16 @@ exports[`Suggestions renders a list properly 1`] = `
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
                 background-color: transparent;
-                border-radius: 0px;
+                border-radius: 2px;
                 border: none;
                 box-sizing: border-box;
-                color: #333333;
+                color: #323130;
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
-                margin-bottom: 0px;
-                margin-left: 0px;
-                margin-right: 0px;
-                margin-top: 0px;
                 min-width: 0px;
                 outline: transparent;
                 overflow: hidden;
@@ -1036,14 +1018,14 @@ exports[`Suggestions renders a list properly 1`] = `
                 border: 0;
               }
               .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: 0px;
+                border: 1px solid transparent;
+                bottom: 2px;
                 content: "";
-                left: 0px;
-                outline: 1px solid #666666;
+                left: 2px;
+                outline: 1px solid #605e5c;
                 position: absolute;
-                right: 0px;
-                top: 0px;
+                right: 2px;
+                top: 2px;
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -1060,7 +1042,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 0px;
               }
               &:hover {
-                color: #212121;
+                color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
@@ -1089,7 +1071,7 @@ exports[`Suggestions renders a list properly 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -1099,13 +1081,14 @@ exports[`Suggestions renders a list properly 1`] = `
                   height: 100%;
                   justify-content: flex-start;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <div>
                
               orange
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>
@@ -1125,7 +1108,7 @@ exports[`Suggestions renders a list properly 1`] = `
               width: 100%;
             }
             &:hover {
-              background: #f4f4f4;
+              background: #f3f2f1;
             }
             &:hover .ms-Suggestions-closeButton {
               display: block;
@@ -1141,20 +1124,16 @@ exports[`Suggestions renders a list properly 1`] = `
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
                 background-color: transparent;
-                border-radius: 0px;
+                border-radius: 2px;
                 border: none;
                 box-sizing: border-box;
-                color: #333333;
+                color: #323130;
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
-                margin-bottom: 0px;
-                margin-left: 0px;
-                margin-right: 0px;
-                margin-top: 0px;
                 min-width: 0px;
                 outline: transparent;
                 overflow: hidden;
@@ -1173,14 +1152,14 @@ exports[`Suggestions renders a list properly 1`] = `
                 border: 0;
               }
               .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: 0px;
+                border: 1px solid transparent;
+                bottom: 2px;
                 content: "";
-                left: 0px;
-                outline: 1px solid #666666;
+                left: 2px;
+                outline: 1px solid #605e5c;
                 position: absolute;
-                right: 0px;
-                top: 0px;
+                right: 2px;
+                top: 2px;
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -1197,7 +1176,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 0px;
               }
               &:hover {
-                color: #212121;
+                color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
@@ -1226,7 +1205,7 @@ exports[`Suggestions renders a list properly 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -1236,13 +1215,14 @@ exports[`Suggestions renders a list properly 1`] = `
                   height: 100%;
                   justify-content: flex-start;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <div>
                
               pink
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>
@@ -1262,7 +1242,7 @@ exports[`Suggestions renders a list properly 1`] = `
               width: 100%;
             }
             &:hover {
-              background: #f4f4f4;
+              background: #f3f2f1;
             }
             &:hover .ms-Suggestions-closeButton {
               display: block;
@@ -1278,20 +1258,16 @@ exports[`Suggestions renders a list properly 1`] = `
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
                 background-color: transparent;
-                border-radius: 0px;
+                border-radius: 2px;
                 border: none;
                 box-sizing: border-box;
-                color: #333333;
+                color: #323130;
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
-                margin-bottom: 0px;
-                margin-left: 0px;
-                margin-right: 0px;
-                margin-top: 0px;
                 min-width: 0px;
                 outline: transparent;
                 overflow: hidden;
@@ -1310,14 +1286,14 @@ exports[`Suggestions renders a list properly 1`] = `
                 border: 0;
               }
               .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: 0px;
+                border: 1px solid transparent;
+                bottom: 2px;
                 content: "";
-                left: 0px;
-                outline: 1px solid #666666;
+                left: 2px;
+                outline: 1px solid #605e5c;
                 position: absolute;
-                right: 0px;
-                top: 0px;
+                right: 2px;
+                top: 2px;
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -1334,7 +1310,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 0px;
               }
               &:hover {
-                color: #212121;
+                color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
@@ -1363,7 +1339,7 @@ exports[`Suggestions renders a list properly 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -1373,13 +1349,14 @@ exports[`Suggestions renders a list properly 1`] = `
                   height: 100%;
                   justify-content: flex-start;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <div>
                
               purple
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>
@@ -1399,7 +1376,7 @@ exports[`Suggestions renders a list properly 1`] = `
               width: 100%;
             }
             &:hover {
-              background: #f4f4f4;
+              background: #f3f2f1;
             }
             &:hover .ms-Suggestions-closeButton {
               display: block;
@@ -1415,20 +1392,16 @@ exports[`Suggestions renders a list properly 1`] = `
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
                 background-color: transparent;
-                border-radius: 0px;
+                border-radius: 2px;
                 border: none;
                 box-sizing: border-box;
-                color: #333333;
+                color: #323130;
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
-                margin-bottom: 0px;
-                margin-left: 0px;
-                margin-right: 0px;
-                margin-top: 0px;
                 min-width: 0px;
                 outline: transparent;
                 overflow: hidden;
@@ -1447,14 +1420,14 @@ exports[`Suggestions renders a list properly 1`] = `
                 border: 0;
               }
               .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: 0px;
+                border: 1px solid transparent;
+                bottom: 2px;
                 content: "";
-                left: 0px;
-                outline: 1px solid #666666;
+                left: 2px;
+                outline: 1px solid #605e5c;
                 position: absolute;
-                right: 0px;
-                top: 0px;
+                right: 2px;
+                top: 2px;
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -1471,7 +1444,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 0px;
               }
               &:hover {
-                color: #212121;
+                color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
@@ -1500,7 +1473,7 @@ exports[`Suggestions renders a list properly 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -1510,13 +1483,14 @@ exports[`Suggestions renders a list properly 1`] = `
                   height: 100%;
                   justify-content: flex-start;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <div>
                
               red
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>
@@ -1536,7 +1510,7 @@ exports[`Suggestions renders a list properly 1`] = `
               width: 100%;
             }
             &:hover {
-              background: #f4f4f4;
+              background: #f3f2f1;
             }
             &:hover .ms-Suggestions-closeButton {
               display: block;
@@ -1552,20 +1526,16 @@ exports[`Suggestions renders a list properly 1`] = `
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
                 background-color: transparent;
-                border-radius: 0px;
+                border-radius: 2px;
                 border: none;
                 box-sizing: border-box;
-                color: #333333;
+                color: #323130;
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
-                margin-bottom: 0px;
-                margin-left: 0px;
-                margin-right: 0px;
-                margin-top: 0px;
                 min-width: 0px;
                 outline: transparent;
                 overflow: hidden;
@@ -1584,14 +1554,14 @@ exports[`Suggestions renders a list properly 1`] = `
                 border: 0;
               }
               .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: 0px;
+                border: 1px solid transparent;
+                bottom: 2px;
                 content: "";
-                left: 0px;
-                outline: 1px solid #666666;
+                left: 2px;
+                outline: 1px solid #605e5c;
                 position: absolute;
-                right: 0px;
-                top: 0px;
+                right: 2px;
+                top: 2px;
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -1608,7 +1578,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 0px;
               }
               &:hover {
-                color: #212121;
+                color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
@@ -1637,7 +1607,7 @@ exports[`Suggestions renders a list properly 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -1647,13 +1617,14 @@ exports[`Suggestions renders a list properly 1`] = `
                   height: 100%;
                   justify-content: flex-start;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <div>
                
               rose
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>
@@ -1673,7 +1644,7 @@ exports[`Suggestions renders a list properly 1`] = `
               width: 100%;
             }
             &:hover {
-              background: #f4f4f4;
+              background: #f3f2f1;
             }
             &:hover .ms-Suggestions-closeButton {
               display: block;
@@ -1689,20 +1660,16 @@ exports[`Suggestions renders a list properly 1`] = `
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
                 background-color: transparent;
-                border-radius: 0px;
+                border-radius: 2px;
                 border: none;
                 box-sizing: border-box;
-                color: #333333;
+                color: #323130;
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
-                margin-bottom: 0px;
-                margin-left: 0px;
-                margin-right: 0px;
-                margin-top: 0px;
                 min-width: 0px;
                 outline: transparent;
                 overflow: hidden;
@@ -1721,14 +1688,14 @@ exports[`Suggestions renders a list properly 1`] = `
                 border: 0;
               }
               .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: 0px;
+                border: 1px solid transparent;
+                bottom: 2px;
                 content: "";
-                left: 0px;
-                outline: 1px solid #666666;
+                left: 2px;
+                outline: 1px solid #605e5c;
                 position: absolute;
-                right: 0px;
-                top: 0px;
+                right: 2px;
+                top: 2px;
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -1745,7 +1712,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 0px;
               }
               &:hover {
-                color: #212121;
+                color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
@@ -1774,7 +1741,7 @@ exports[`Suggestions renders a list properly 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -1784,13 +1751,14 @@ exports[`Suggestions renders a list properly 1`] = `
                   height: 100%;
                   justify-content: flex-start;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <div>
                
               violet
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>
@@ -1810,7 +1778,7 @@ exports[`Suggestions renders a list properly 1`] = `
               width: 100%;
             }
             &:hover {
-              background: #f4f4f4;
+              background: #f3f2f1;
             }
             &:hover .ms-Suggestions-closeButton {
               display: block;
@@ -1826,20 +1794,16 @@ exports[`Suggestions renders a list properly 1`] = `
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
                 background-color: transparent;
-                border-radius: 0px;
+                border-radius: 2px;
                 border: none;
                 box-sizing: border-box;
-                color: #333333;
+                color: #323130;
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
-                margin-bottom: 0px;
-                margin-left: 0px;
-                margin-right: 0px;
-                margin-top: 0px;
                 min-width: 0px;
                 outline: transparent;
                 overflow: hidden;
@@ -1858,14 +1822,14 @@ exports[`Suggestions renders a list properly 1`] = `
                 border: 0;
               }
               .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: 0px;
+                border: 1px solid transparent;
+                bottom: 2px;
                 content: "";
-                left: 0px;
-                outline: 1px solid #666666;
+                left: 2px;
+                outline: 1px solid #605e5c;
                 position: absolute;
-                right: 0px;
-                top: 0px;
+                right: 2px;
+                top: 2px;
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -1882,7 +1846,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 0px;
               }
               &:hover {
-                color: #212121;
+                color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
@@ -1911,7 +1875,7 @@ exports[`Suggestions renders a list properly 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -1921,13 +1885,14 @@ exports[`Suggestions renders a list properly 1`] = `
                   height: 100%;
                   justify-content: flex-start;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <div>
                
               white
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>
@@ -1947,7 +1912,7 @@ exports[`Suggestions renders a list properly 1`] = `
               width: 100%;
             }
             &:hover {
-              background: #f4f4f4;
+              background: #f3f2f1;
             }
             &:hover .ms-Suggestions-closeButton {
               display: block;
@@ -1963,20 +1928,16 @@ exports[`Suggestions renders a list properly 1`] = `
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
                 background-color: transparent;
-                border-radius: 0px;
+                border-radius: 2px;
                 border: none;
                 box-sizing: border-box;
-                color: #333333;
+                color: #323130;
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
-                margin-bottom: 0px;
-                margin-left: 0px;
-                margin-right: 0px;
-                margin-top: 0px;
                 min-width: 0px;
                 outline: transparent;
                 overflow: hidden;
@@ -1995,14 +1956,14 @@ exports[`Suggestions renders a list properly 1`] = `
                 border: 0;
               }
               .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: 0px;
+                border: 1px solid transparent;
+                bottom: 2px;
                 content: "";
-                left: 0px;
-                outline: 1px solid #666666;
+                left: 2px;
+                outline: 1px solid #605e5c;
                 position: absolute;
-                right: 0px;
-                top: 0px;
+                right: 2px;
+                top: 2px;
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -2019,7 +1980,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 0px;
               }
               &:hover {
-                color: #212121;
+                color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
@@ -2048,7 +2009,7 @@ exports[`Suggestions renders a list properly 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -2058,22 +2019,18 @@ exports[`Suggestions renders a list properly 1`] = `
                   height: 100%;
                   justify-content: flex-start;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <div>
                
               yellow
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>
   </div>
-  <span
-    aria-live="polite"
-    className="ms-Suggestions-suggestionsAvailable"
-    role="alert"
-  />
 </div>
 `;
 
@@ -2086,10 +2043,16 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
       }
 >
   <div
+    aria-live="polite"
+    className=
+
+
+    role="status"
+  />
+  <div
     className=
         ms-Suggestions-container
         {
-          border-bottom: 1px solid #eaeaea;
           max-height: 300px;
           overflow-x: hidden;
           overflow-y: auto;
@@ -2112,7 +2075,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               width: 100%;
             }
             &:hover {
-              background: #f4f4f4;
+              background: #f3f2f1;
             }
             &:hover .ms-Suggestions-closeButton {
               display: block;
@@ -2129,21 +2092,17 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
                 background-color: transparent;
-                background: #eaeaea;
-                border-radius: 0px;
+                background: #edebe9;
+                border-radius: 2px;
                 border: none;
                 box-sizing: border-box;
-                color: #333333;
+                color: #323130;
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
-                margin-bottom: 0px;
-                margin-left: 0px;
-                margin-right: 0px;
-                margin-top: 0px;
                 min-width: 0px;
                 outline: transparent;
                 overflow: hidden;
@@ -2162,14 +2121,14 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 border: 0;
               }
               .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: 0px;
+                border: 1px solid transparent;
+                bottom: 2px;
                 content: "";
-                left: 0px;
-                outline: 1px solid #666666;
+                left: 2px;
+                outline: 1px solid #605e5c;
                 position: absolute;
-                right: 0px;
-                top: 0px;
+                right: 2px;
+                top: 2px;
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -2186,8 +2145,8 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 top: 0px;
               }
               &:hover {
-                background: #c8c8c8;
-                color: #212121;
+                background: #c8c6c4;
+                color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
@@ -2218,7 +2177,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -2228,13 +2187,14 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                   height: 100%;
                   justify-content: flex-start;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <div>
                
               black
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>
@@ -2254,7 +2214,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               width: 100%;
             }
             &:hover {
-              background: #f4f4f4;
+              background: #f3f2f1;
             }
             &:hover .ms-Suggestions-closeButton {
               display: block;
@@ -2270,20 +2230,16 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
                 background-color: transparent;
-                border-radius: 0px;
+                border-radius: 2px;
                 border: none;
                 box-sizing: border-box;
-                color: #333333;
+                color: #323130;
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
-                margin-bottom: 0px;
-                margin-left: 0px;
-                margin-right: 0px;
-                margin-top: 0px;
                 min-width: 0px;
                 outline: transparent;
                 overflow: hidden;
@@ -2302,14 +2258,14 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 border: 0;
               }
               .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: 0px;
+                border: 1px solid transparent;
+                bottom: 2px;
                 content: "";
-                left: 0px;
-                outline: 1px solid #666666;
+                left: 2px;
+                outline: 1px solid #605e5c;
                 position: absolute;
-                right: 0px;
-                top: 0px;
+                right: 2px;
+                top: 2px;
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -2326,7 +2282,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 top: 0px;
               }
               &:hover {
-                color: #212121;
+                color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
@@ -2355,7 +2311,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -2365,13 +2321,14 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                   height: 100%;
                   justify-content: flex-start;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <div>
                
               blue
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>
@@ -2391,7 +2348,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               width: 100%;
             }
             &:hover {
-              background: #f4f4f4;
+              background: #f3f2f1;
             }
             &:hover .ms-Suggestions-closeButton {
               display: block;
@@ -2407,20 +2364,16 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
                 background-color: transparent;
-                border-radius: 0px;
+                border-radius: 2px;
                 border: none;
                 box-sizing: border-box;
-                color: #333333;
+                color: #323130;
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
-                margin-bottom: 0px;
-                margin-left: 0px;
-                margin-right: 0px;
-                margin-top: 0px;
                 min-width: 0px;
                 outline: transparent;
                 overflow: hidden;
@@ -2439,14 +2392,14 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 border: 0;
               }
               .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: 0px;
+                border: 1px solid transparent;
+                bottom: 2px;
                 content: "";
-                left: 0px;
-                outline: 1px solid #666666;
+                left: 2px;
+                outline: 1px solid #605e5c;
                 position: absolute;
-                right: 0px;
-                top: 0px;
+                right: 2px;
+                top: 2px;
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -2463,7 +2416,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 top: 0px;
               }
               &:hover {
-                color: #212121;
+                color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
@@ -2492,7 +2445,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -2502,13 +2455,14 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                   height: 100%;
                   justify-content: flex-start;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <div>
                
               brown
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>
@@ -2528,7 +2482,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               width: 100%;
             }
             &:hover {
-              background: #f4f4f4;
+              background: #f3f2f1;
             }
             &:hover .ms-Suggestions-closeButton {
               display: block;
@@ -2544,20 +2498,16 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
                 background-color: transparent;
-                border-radius: 0px;
+                border-radius: 2px;
                 border: none;
                 box-sizing: border-box;
-                color: #333333;
+                color: #323130;
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
-                margin-bottom: 0px;
-                margin-left: 0px;
-                margin-right: 0px;
-                margin-top: 0px;
                 min-width: 0px;
                 outline: transparent;
                 overflow: hidden;
@@ -2576,14 +2526,14 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 border: 0;
               }
               .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: 0px;
+                border: 1px solid transparent;
+                bottom: 2px;
                 content: "";
-                left: 0px;
-                outline: 1px solid #666666;
+                left: 2px;
+                outline: 1px solid #605e5c;
                 position: absolute;
-                right: 0px;
-                top: 0px;
+                right: 2px;
+                top: 2px;
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -2600,7 +2550,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 top: 0px;
               }
               &:hover {
-                color: #212121;
+                color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
@@ -2629,7 +2579,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -2639,13 +2589,14 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                   height: 100%;
                   justify-content: flex-start;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <div>
                
               cyan
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>
@@ -2665,7 +2616,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               width: 100%;
             }
             &:hover {
-              background: #f4f4f4;
+              background: #f3f2f1;
             }
             &:hover .ms-Suggestions-closeButton {
               display: block;
@@ -2681,20 +2632,16 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
                 background-color: transparent;
-                border-radius: 0px;
+                border-radius: 2px;
                 border: none;
                 box-sizing: border-box;
-                color: #333333;
+                color: #323130;
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
-                margin-bottom: 0px;
-                margin-left: 0px;
-                margin-right: 0px;
-                margin-top: 0px;
                 min-width: 0px;
                 outline: transparent;
                 overflow: hidden;
@@ -2713,14 +2660,14 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 border: 0;
               }
               .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: 0px;
+                border: 1px solid transparent;
+                bottom: 2px;
                 content: "";
-                left: 0px;
-                outline: 1px solid #666666;
+                left: 2px;
+                outline: 1px solid #605e5c;
                 position: absolute;
-                right: 0px;
-                top: 0px;
+                right: 2px;
+                top: 2px;
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -2737,7 +2684,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 top: 0px;
               }
               &:hover {
-                color: #212121;
+                color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
@@ -2766,7 +2713,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -2776,13 +2723,14 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                   height: 100%;
                   justify-content: flex-start;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <div>
                
               green
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>
@@ -2802,7 +2750,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               width: 100%;
             }
             &:hover {
-              background: #f4f4f4;
+              background: #f3f2f1;
             }
             &:hover .ms-Suggestions-closeButton {
               display: block;
@@ -2818,20 +2766,16 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
                 background-color: transparent;
-                border-radius: 0px;
+                border-radius: 2px;
                 border: none;
                 box-sizing: border-box;
-                color: #333333;
+                color: #323130;
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
-                margin-bottom: 0px;
-                margin-left: 0px;
-                margin-right: 0px;
-                margin-top: 0px;
                 min-width: 0px;
                 outline: transparent;
                 overflow: hidden;
@@ -2850,14 +2794,14 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 border: 0;
               }
               .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: 0px;
+                border: 1px solid transparent;
+                bottom: 2px;
                 content: "";
-                left: 0px;
-                outline: 1px solid #666666;
+                left: 2px;
+                outline: 1px solid #605e5c;
                 position: absolute;
-                right: 0px;
-                top: 0px;
+                right: 2px;
+                top: 2px;
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -2874,7 +2818,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 top: 0px;
               }
               &:hover {
-                color: #212121;
+                color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
@@ -2903,7 +2847,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -2913,13 +2857,14 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                   height: 100%;
                   justify-content: flex-start;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <div>
                
               magenta
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>
@@ -2939,7 +2884,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               width: 100%;
             }
             &:hover {
-              background: #f4f4f4;
+              background: #f3f2f1;
             }
             &:hover .ms-Suggestions-closeButton {
               display: block;
@@ -2955,20 +2900,16 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
                 background-color: transparent;
-                border-radius: 0px;
+                border-radius: 2px;
                 border: none;
                 box-sizing: border-box;
-                color: #333333;
+                color: #323130;
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
-                margin-bottom: 0px;
-                margin-left: 0px;
-                margin-right: 0px;
-                margin-top: 0px;
                 min-width: 0px;
                 outline: transparent;
                 overflow: hidden;
@@ -2987,14 +2928,14 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 border: 0;
               }
               .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: 0px;
+                border: 1px solid transparent;
+                bottom: 2px;
                 content: "";
-                left: 0px;
-                outline: 1px solid #666666;
+                left: 2px;
+                outline: 1px solid #605e5c;
                 position: absolute;
-                right: 0px;
-                top: 0px;
+                right: 2px;
+                top: 2px;
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -3011,7 +2952,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 top: 0px;
               }
               &:hover {
-                color: #212121;
+                color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
@@ -3040,7 +2981,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -3050,13 +2991,14 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                   height: 100%;
                   justify-content: flex-start;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <div>
                
               mauve
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>
@@ -3076,7 +3018,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               width: 100%;
             }
             &:hover {
-              background: #f4f4f4;
+              background: #f3f2f1;
             }
             &:hover .ms-Suggestions-closeButton {
               display: block;
@@ -3092,20 +3034,16 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
                 background-color: transparent;
-                border-radius: 0px;
+                border-radius: 2px;
                 border: none;
                 box-sizing: border-box;
-                color: #333333;
+                color: #323130;
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
-                margin-bottom: 0px;
-                margin-left: 0px;
-                margin-right: 0px;
-                margin-top: 0px;
                 min-width: 0px;
                 outline: transparent;
                 overflow: hidden;
@@ -3124,14 +3062,14 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 border: 0;
               }
               .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: 0px;
+                border: 1px solid transparent;
+                bottom: 2px;
                 content: "";
-                left: 0px;
-                outline: 1px solid #666666;
+                left: 2px;
+                outline: 1px solid #605e5c;
                 position: absolute;
-                right: 0px;
-                top: 0px;
+                right: 2px;
+                top: 2px;
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -3148,7 +3086,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 top: 0px;
               }
               &:hover {
-                color: #212121;
+                color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
@@ -3177,7 +3115,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -3187,13 +3125,14 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                   height: 100%;
                   justify-content: flex-start;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <div>
                
               orange
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>
@@ -3213,7 +3152,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               width: 100%;
             }
             &:hover {
-              background: #f4f4f4;
+              background: #f3f2f1;
             }
             &:hover .ms-Suggestions-closeButton {
               display: block;
@@ -3229,20 +3168,16 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
                 background-color: transparent;
-                border-radius: 0px;
+                border-radius: 2px;
                 border: none;
                 box-sizing: border-box;
-                color: #333333;
+                color: #323130;
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
-                margin-bottom: 0px;
-                margin-left: 0px;
-                margin-right: 0px;
-                margin-top: 0px;
                 min-width: 0px;
                 outline: transparent;
                 overflow: hidden;
@@ -3261,14 +3196,14 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 border: 0;
               }
               .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: 0px;
+                border: 1px solid transparent;
+                bottom: 2px;
                 content: "";
-                left: 0px;
-                outline: 1px solid #666666;
+                left: 2px;
+                outline: 1px solid #605e5c;
                 position: absolute;
-                right: 0px;
-                top: 0px;
+                right: 2px;
+                top: 2px;
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -3285,7 +3220,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 top: 0px;
               }
               &:hover {
-                color: #212121;
+                color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
@@ -3314,7 +3249,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -3324,13 +3259,14 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                   height: 100%;
                   justify-content: flex-start;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <div>
                
               pink
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>
@@ -3350,7 +3286,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               width: 100%;
             }
             &:hover {
-              background: #f4f4f4;
+              background: #f3f2f1;
             }
             &:hover .ms-Suggestions-closeButton {
               display: block;
@@ -3366,20 +3302,16 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
                 background-color: transparent;
-                border-radius: 0px;
+                border-radius: 2px;
                 border: none;
                 box-sizing: border-box;
-                color: #333333;
+                color: #323130;
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
-                margin-bottom: 0px;
-                margin-left: 0px;
-                margin-right: 0px;
-                margin-top: 0px;
                 min-width: 0px;
                 outline: transparent;
                 overflow: hidden;
@@ -3398,14 +3330,14 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 border: 0;
               }
               .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: 0px;
+                border: 1px solid transparent;
+                bottom: 2px;
                 content: "";
-                left: 0px;
-                outline: 1px solid #666666;
+                left: 2px;
+                outline: 1px solid #605e5c;
                 position: absolute;
-                right: 0px;
-                top: 0px;
+                right: 2px;
+                top: 2px;
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -3422,7 +3354,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 top: 0px;
               }
               &:hover {
-                color: #212121;
+                color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
@@ -3451,7 +3383,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -3461,13 +3393,14 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                   height: 100%;
                   justify-content: flex-start;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <div>
                
               purple
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>
@@ -3487,7 +3420,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               width: 100%;
             }
             &:hover {
-              background: #f4f4f4;
+              background: #f3f2f1;
             }
             &:hover .ms-Suggestions-closeButton {
               display: block;
@@ -3503,20 +3436,16 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
                 background-color: transparent;
-                border-radius: 0px;
+                border-radius: 2px;
                 border: none;
                 box-sizing: border-box;
-                color: #333333;
+                color: #323130;
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
-                margin-bottom: 0px;
-                margin-left: 0px;
-                margin-right: 0px;
-                margin-top: 0px;
                 min-width: 0px;
                 outline: transparent;
                 overflow: hidden;
@@ -3535,14 +3464,14 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 border: 0;
               }
               .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: 0px;
+                border: 1px solid transparent;
+                bottom: 2px;
                 content: "";
-                left: 0px;
-                outline: 1px solid #666666;
+                left: 2px;
+                outline: 1px solid #605e5c;
                 position: absolute;
-                right: 0px;
-                top: 0px;
+                right: 2px;
+                top: 2px;
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -3559,7 +3488,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 top: 0px;
               }
               &:hover {
-                color: #212121;
+                color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
@@ -3588,7 +3517,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -3598,13 +3527,14 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                   height: 100%;
                   justify-content: flex-start;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <div>
                
               red
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>
@@ -3624,7 +3554,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               width: 100%;
             }
             &:hover {
-              background: #f4f4f4;
+              background: #f3f2f1;
             }
             &:hover .ms-Suggestions-closeButton {
               display: block;
@@ -3640,20 +3570,16 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
                 background-color: transparent;
-                border-radius: 0px;
+                border-radius: 2px;
                 border: none;
                 box-sizing: border-box;
-                color: #333333;
+                color: #323130;
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
-                margin-bottom: 0px;
-                margin-left: 0px;
-                margin-right: 0px;
-                margin-top: 0px;
                 min-width: 0px;
                 outline: transparent;
                 overflow: hidden;
@@ -3672,14 +3598,14 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 border: 0;
               }
               .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: 0px;
+                border: 1px solid transparent;
+                bottom: 2px;
                 content: "";
-                left: 0px;
-                outline: 1px solid #666666;
+                left: 2px;
+                outline: 1px solid #605e5c;
                 position: absolute;
-                right: 0px;
-                top: 0px;
+                right: 2px;
+                top: 2px;
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -3696,7 +3622,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 top: 0px;
               }
               &:hover {
-                color: #212121;
+                color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
@@ -3725,7 +3651,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -3735,13 +3661,14 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                   height: 100%;
                   justify-content: flex-start;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <div>
                
               rose
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>
@@ -3761,7 +3688,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               width: 100%;
             }
             &:hover {
-              background: #f4f4f4;
+              background: #f3f2f1;
             }
             &:hover .ms-Suggestions-closeButton {
               display: block;
@@ -3777,20 +3704,16 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
                 background-color: transparent;
-                border-radius: 0px;
+                border-radius: 2px;
                 border: none;
                 box-sizing: border-box;
-                color: #333333;
+                color: #323130;
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
-                margin-bottom: 0px;
-                margin-left: 0px;
-                margin-right: 0px;
-                margin-top: 0px;
                 min-width: 0px;
                 outline: transparent;
                 overflow: hidden;
@@ -3809,14 +3732,14 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 border: 0;
               }
               .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: 0px;
+                border: 1px solid transparent;
+                bottom: 2px;
                 content: "";
-                left: 0px;
-                outline: 1px solid #666666;
+                left: 2px;
+                outline: 1px solid #605e5c;
                 position: absolute;
-                right: 0px;
-                top: 0px;
+                right: 2px;
+                top: 2px;
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -3833,7 +3756,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 top: 0px;
               }
               &:hover {
-                color: #212121;
+                color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
@@ -3862,7 +3785,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -3872,13 +3795,14 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                   height: 100%;
                   justify-content: flex-start;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <div>
                
               violet
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>
@@ -3898,7 +3822,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               width: 100%;
             }
             &:hover {
-              background: #f4f4f4;
+              background: #f3f2f1;
             }
             &:hover .ms-Suggestions-closeButton {
               display: block;
@@ -3914,20 +3838,16 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
                 background-color: transparent;
-                border-radius: 0px;
+                border-radius: 2px;
                 border: none;
                 box-sizing: border-box;
-                color: #333333;
+                color: #323130;
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
-                margin-bottom: 0px;
-                margin-left: 0px;
-                margin-right: 0px;
-                margin-top: 0px;
                 min-width: 0px;
                 outline: transparent;
                 overflow: hidden;
@@ -3946,14 +3866,14 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 border: 0;
               }
               .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: 0px;
+                border: 1px solid transparent;
+                bottom: 2px;
                 content: "";
-                left: 0px;
-                outline: 1px solid #666666;
+                left: 2px;
+                outline: 1px solid #605e5c;
                 position: absolute;
-                right: 0px;
-                top: 0px;
+                right: 2px;
+                top: 2px;
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -3970,7 +3890,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 top: 0px;
               }
               &:hover {
-                color: #212121;
+                color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
@@ -3999,7 +3919,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -4009,13 +3929,14 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                   height: 100%;
                   justify-content: flex-start;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <div>
                
               white
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>
@@ -4035,7 +3956,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               width: 100%;
             }
             &:hover {
-              background: #f4f4f4;
+              background: #f3f2f1;
             }
             &:hover .ms-Suggestions-closeButton {
               display: block;
@@ -4051,20 +3972,16 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
                 background-color: transparent;
-                border-radius: 0px;
+                border-radius: 2px;
                 border: none;
                 box-sizing: border-box;
-                color: #333333;
+                color: #323130;
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
-                margin-bottom: 0px;
-                margin-left: 0px;
-                margin-right: 0px;
-                margin-top: 0px;
                 min-width: 0px;
                 outline: transparent;
                 overflow: hidden;
@@ -4083,14 +4000,14 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 border: 0;
               }
               .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: 0px;
+                border: 1px solid transparent;
+                bottom: 2px;
                 content: "";
-                left: 0px;
-                outline: 1px solid #666666;
+                left: 2px;
+                outline: 1px solid #605e5c;
                 position: absolute;
-                right: 0px;
-                top: 0px;
+                right: 2px;
+                top: 2px;
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -4107,7 +4024,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 top: 0px;
               }
               &:hover {
-                color: #212121;
+                color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
@@ -4136,7 +4053,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -4146,38 +4063,18 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                   height: 100%;
                   justify-content: flex-start;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <div>
                
               yellow
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>
   </div>
-  <span
-    aria-live="polite"
-    className=
-        ms-Suggestions-suggestionsAvailable
-        {
-          border: 0px;
-          height: 1px;
-          margin-bottom: -1px;
-          margin-left: -1px;
-          margin-right: -1px;
-          margin-top: -1px;
-          overflow: hidden;
-          padding-bottom: 0px;
-          padding-left: 0px;
-          padding-right: 0px;
-          padding-top: 0px;
-          position: absolute;
-          width: 1px;
-        }
-    role="alert"
-  />
 </div>
 `;
 
@@ -4185,6 +4082,13 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
 <div
   className="ms-Suggestions"
 >
+  <div
+    aria-live="polite"
+    className=
+
+
+    role="status"
+  />
   <div
     className="ms-Suggestions-container"
     role="listbox"
@@ -4205,7 +4109,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               width: 100%;
             }
             &:hover {
-              background: #f4f4f4;
+              background: #f3f2f1;
             }
             &:hover .ms-Suggestions-closeButton {
               display: block;
@@ -4221,20 +4125,16 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
                 background-color: transparent;
-                border-radius: 0px;
+                border-radius: 2px;
                 border: none;
                 box-sizing: border-box;
-                color: #333333;
+                color: #323130;
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
-                margin-bottom: 0px;
-                margin-left: 0px;
-                margin-right: 0px;
-                margin-top: 0px;
                 min-width: 0px;
                 outline: transparent;
                 overflow: hidden;
@@ -4253,14 +4153,14 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 border: 0;
               }
               .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: 0px;
+                border: 1px solid transparent;
+                bottom: 2px;
                 content: "";
-                left: 0px;
-                outline: 1px solid #666666;
+                left: 2px;
+                outline: 1px solid #605e5c;
                 position: absolute;
-                right: 0px;
-                top: 0px;
+                right: 2px;
+                top: 2px;
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -4277,7 +4177,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 0px;
               }
               &:hover {
-                color: #212121;
+                color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
@@ -4306,7 +4206,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -4316,13 +4216,14 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                   height: 100%;
                   justify-content: flex-start;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <div>
                
               black
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>
@@ -4342,7 +4243,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               width: 100%;
             }
             &:hover {
-              background: #f4f4f4;
+              background: #f3f2f1;
             }
             &:hover .ms-Suggestions-closeButton {
               display: block;
@@ -4358,20 +4259,16 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
                 background-color: transparent;
-                border-radius: 0px;
+                border-radius: 2px;
                 border: none;
                 box-sizing: border-box;
-                color: #333333;
+                color: #323130;
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
-                margin-bottom: 0px;
-                margin-left: 0px;
-                margin-right: 0px;
-                margin-top: 0px;
                 min-width: 0px;
                 outline: transparent;
                 overflow: hidden;
@@ -4390,14 +4287,14 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 border: 0;
               }
               .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: 0px;
+                border: 1px solid transparent;
+                bottom: 2px;
                 content: "";
-                left: 0px;
-                outline: 1px solid #666666;
+                left: 2px;
+                outline: 1px solid #605e5c;
                 position: absolute;
-                right: 0px;
-                top: 0px;
+                right: 2px;
+                top: 2px;
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -4414,7 +4311,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 0px;
               }
               &:hover {
-                color: #212121;
+                color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
@@ -4443,7 +4340,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -4453,13 +4350,14 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                   height: 100%;
                   justify-content: flex-start;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <div>
                
               blue
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>
@@ -4479,7 +4377,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               width: 100%;
             }
             &:hover {
-              background: #f4f4f4;
+              background: #f3f2f1;
             }
             &:hover .ms-Suggestions-closeButton {
               display: block;
@@ -4495,20 +4393,16 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
                 background-color: transparent;
-                border-radius: 0px;
+                border-radius: 2px;
                 border: none;
                 box-sizing: border-box;
-                color: #333333;
+                color: #323130;
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
-                margin-bottom: 0px;
-                margin-left: 0px;
-                margin-right: 0px;
-                margin-top: 0px;
                 min-width: 0px;
                 outline: transparent;
                 overflow: hidden;
@@ -4527,14 +4421,14 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 border: 0;
               }
               .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: 0px;
+                border: 1px solid transparent;
+                bottom: 2px;
                 content: "";
-                left: 0px;
-                outline: 1px solid #666666;
+                left: 2px;
+                outline: 1px solid #605e5c;
                 position: absolute;
-                right: 0px;
-                top: 0px;
+                right: 2px;
+                top: 2px;
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -4551,7 +4445,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 0px;
               }
               &:hover {
-                color: #212121;
+                color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
@@ -4580,7 +4474,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -4590,13 +4484,14 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                   height: 100%;
                   justify-content: flex-start;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <div>
                
               brown
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>
@@ -4616,7 +4511,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               width: 100%;
             }
             &:hover {
-              background: #f4f4f4;
+              background: #f3f2f1;
             }
             &:hover .ms-Suggestions-closeButton {
               display: block;
@@ -4632,20 +4527,16 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
                 background-color: transparent;
-                border-radius: 0px;
+                border-radius: 2px;
                 border: none;
                 box-sizing: border-box;
-                color: #333333;
+                color: #323130;
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
-                margin-bottom: 0px;
-                margin-left: 0px;
-                margin-right: 0px;
-                margin-top: 0px;
                 min-width: 0px;
                 outline: transparent;
                 overflow: hidden;
@@ -4664,14 +4555,14 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 border: 0;
               }
               .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: 0px;
+                border: 1px solid transparent;
+                bottom: 2px;
                 content: "";
-                left: 0px;
-                outline: 1px solid #666666;
+                left: 2px;
+                outline: 1px solid #605e5c;
                 position: absolute;
-                right: 0px;
-                top: 0px;
+                right: 2px;
+                top: 2px;
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -4688,7 +4579,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 0px;
               }
               &:hover {
-                color: #212121;
+                color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
@@ -4717,7 +4608,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -4727,13 +4618,14 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                   height: 100%;
                   justify-content: flex-start;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <div>
                
               cyan
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>
@@ -4753,7 +4645,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               width: 100%;
             }
             &:hover {
-              background: #f4f4f4;
+              background: #f3f2f1;
             }
             &:hover .ms-Suggestions-closeButton {
               display: block;
@@ -4769,20 +4661,16 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
                 background-color: transparent;
-                border-radius: 0px;
+                border-radius: 2px;
                 border: none;
                 box-sizing: border-box;
-                color: #333333;
+                color: #323130;
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
-                margin-bottom: 0px;
-                margin-left: 0px;
-                margin-right: 0px;
-                margin-top: 0px;
                 min-width: 0px;
                 outline: transparent;
                 overflow: hidden;
@@ -4801,14 +4689,14 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 border: 0;
               }
               .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: 0px;
+                border: 1px solid transparent;
+                bottom: 2px;
                 content: "";
-                left: 0px;
-                outline: 1px solid #666666;
+                left: 2px;
+                outline: 1px solid #605e5c;
                 position: absolute;
-                right: 0px;
-                top: 0px;
+                right: 2px;
+                top: 2px;
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -4825,7 +4713,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 0px;
               }
               &:hover {
-                color: #212121;
+                color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
@@ -4854,7 +4742,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -4864,13 +4752,14 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                   height: 100%;
                   justify-content: flex-start;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <div>
                
               green
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>
@@ -4890,7 +4779,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               width: 100%;
             }
             &:hover {
-              background: #f4f4f4;
+              background: #f3f2f1;
             }
             &:hover .ms-Suggestions-closeButton {
               display: block;
@@ -4906,20 +4795,16 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
                 background-color: transparent;
-                border-radius: 0px;
+                border-radius: 2px;
                 border: none;
                 box-sizing: border-box;
-                color: #333333;
+                color: #323130;
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
-                margin-bottom: 0px;
-                margin-left: 0px;
-                margin-right: 0px;
-                margin-top: 0px;
                 min-width: 0px;
                 outline: transparent;
                 overflow: hidden;
@@ -4938,14 +4823,14 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 border: 0;
               }
               .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: 0px;
+                border: 1px solid transparent;
+                bottom: 2px;
                 content: "";
-                left: 0px;
-                outline: 1px solid #666666;
+                left: 2px;
+                outline: 1px solid #605e5c;
                 position: absolute;
-                right: 0px;
-                top: 0px;
+                right: 2px;
+                top: 2px;
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -4962,7 +4847,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 0px;
               }
               &:hover {
-                color: #212121;
+                color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
@@ -4991,7 +4876,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -5001,13 +4886,14 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                   height: 100%;
                   justify-content: flex-start;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <div>
                
               magenta
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>
@@ -5027,7 +4913,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               width: 100%;
             }
             &:hover {
-              background: #f4f4f4;
+              background: #f3f2f1;
             }
             &:hover .ms-Suggestions-closeButton {
               display: block;
@@ -5043,20 +4929,16 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
                 background-color: transparent;
-                border-radius: 0px;
+                border-radius: 2px;
                 border: none;
                 box-sizing: border-box;
-                color: #333333;
+                color: #323130;
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
-                margin-bottom: 0px;
-                margin-left: 0px;
-                margin-right: 0px;
-                margin-top: 0px;
                 min-width: 0px;
                 outline: transparent;
                 overflow: hidden;
@@ -5075,14 +4957,14 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 border: 0;
               }
               .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: 0px;
+                border: 1px solid transparent;
+                bottom: 2px;
                 content: "";
-                left: 0px;
-                outline: 1px solid #666666;
+                left: 2px;
+                outline: 1px solid #605e5c;
                 position: absolute;
-                right: 0px;
-                top: 0px;
+                right: 2px;
+                top: 2px;
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -5099,7 +4981,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 0px;
               }
               &:hover {
-                color: #212121;
+                color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
@@ -5128,7 +5010,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -5138,13 +5020,14 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                   height: 100%;
                   justify-content: flex-start;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <div>
                
               mauve
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>
@@ -5164,7 +5047,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               width: 100%;
             }
             &:hover {
-              background: #f4f4f4;
+              background: #f3f2f1;
             }
             &:hover .ms-Suggestions-closeButton {
               display: block;
@@ -5180,20 +5063,16 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
                 background-color: transparent;
-                border-radius: 0px;
+                border-radius: 2px;
                 border: none;
                 box-sizing: border-box;
-                color: #333333;
+                color: #323130;
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
-                margin-bottom: 0px;
-                margin-left: 0px;
-                margin-right: 0px;
-                margin-top: 0px;
                 min-width: 0px;
                 outline: transparent;
                 overflow: hidden;
@@ -5212,14 +5091,14 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 border: 0;
               }
               .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: 0px;
+                border: 1px solid transparent;
+                bottom: 2px;
                 content: "";
-                left: 0px;
-                outline: 1px solid #666666;
+                left: 2px;
+                outline: 1px solid #605e5c;
                 position: absolute;
-                right: 0px;
-                top: 0px;
+                right: 2px;
+                top: 2px;
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -5236,7 +5115,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 0px;
               }
               &:hover {
-                color: #212121;
+                color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
@@ -5265,7 +5144,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -5275,13 +5154,14 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                   height: 100%;
                   justify-content: flex-start;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <div>
                
               orange
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>
@@ -5301,7 +5181,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               width: 100%;
             }
             &:hover {
-              background: #f4f4f4;
+              background: #f3f2f1;
             }
             &:hover .ms-Suggestions-closeButton {
               display: block;
@@ -5318,21 +5198,17 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
                 background-color: transparent;
-                background: #eaeaea;
-                border-radius: 0px;
+                background: #edebe9;
+                border-radius: 2px;
                 border: none;
                 box-sizing: border-box;
-                color: #333333;
+                color: #323130;
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
-                margin-bottom: 0px;
-                margin-left: 0px;
-                margin-right: 0px;
-                margin-top: 0px;
                 min-width: 0px;
                 outline: transparent;
                 overflow: hidden;
@@ -5351,14 +5227,14 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 border: 0;
               }
               .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: 0px;
+                border: 1px solid transparent;
+                bottom: 2px;
                 content: "";
-                left: 0px;
-                outline: 1px solid #666666;
+                left: 2px;
+                outline: 1px solid #605e5c;
                 position: absolute;
-                right: 0px;
-                top: 0px;
+                right: 2px;
+                top: 2px;
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -5375,8 +5251,8 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 0px;
               }
               &:hover {
-                background: #c8c8c8;
-                color: #212121;
+                background: #c8c6c4;
+                color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
@@ -5407,7 +5283,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -5417,13 +5293,14 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                   height: 100%;
                   justify-content: flex-start;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <div>
                
               pink
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>
@@ -5443,7 +5320,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               width: 100%;
             }
             &:hover {
-              background: #f4f4f4;
+              background: #f3f2f1;
             }
             &:hover .ms-Suggestions-closeButton {
               display: block;
@@ -5459,20 +5336,16 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
                 background-color: transparent;
-                border-radius: 0px;
+                border-radius: 2px;
                 border: none;
                 box-sizing: border-box;
-                color: #333333;
+                color: #323130;
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
-                margin-bottom: 0px;
-                margin-left: 0px;
-                margin-right: 0px;
-                margin-top: 0px;
                 min-width: 0px;
                 outline: transparent;
                 overflow: hidden;
@@ -5491,14 +5364,14 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 border: 0;
               }
               .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: 0px;
+                border: 1px solid transparent;
+                bottom: 2px;
                 content: "";
-                left: 0px;
-                outline: 1px solid #666666;
+                left: 2px;
+                outline: 1px solid #605e5c;
                 position: absolute;
-                right: 0px;
-                top: 0px;
+                right: 2px;
+                top: 2px;
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -5515,7 +5388,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 0px;
               }
               &:hover {
-                color: #212121;
+                color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
@@ -5544,7 +5417,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -5554,13 +5427,14 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                   height: 100%;
                   justify-content: flex-start;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <div>
                
               purple
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>
@@ -5580,7 +5454,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               width: 100%;
             }
             &:hover {
-              background: #f4f4f4;
+              background: #f3f2f1;
             }
             &:hover .ms-Suggestions-closeButton {
               display: block;
@@ -5596,20 +5470,16 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
                 background-color: transparent;
-                border-radius: 0px;
+                border-radius: 2px;
                 border: none;
                 box-sizing: border-box;
-                color: #333333;
+                color: #323130;
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
-                margin-bottom: 0px;
-                margin-left: 0px;
-                margin-right: 0px;
-                margin-top: 0px;
                 min-width: 0px;
                 outline: transparent;
                 overflow: hidden;
@@ -5628,14 +5498,14 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 border: 0;
               }
               .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: 0px;
+                border: 1px solid transparent;
+                bottom: 2px;
                 content: "";
-                left: 0px;
-                outline: 1px solid #666666;
+                left: 2px;
+                outline: 1px solid #605e5c;
                 position: absolute;
-                right: 0px;
-                top: 0px;
+                right: 2px;
+                top: 2px;
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -5652,7 +5522,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 0px;
               }
               &:hover {
-                color: #212121;
+                color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
@@ -5681,7 +5551,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -5691,13 +5561,14 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                   height: 100%;
                   justify-content: flex-start;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <div>
                
               red
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>
@@ -5717,7 +5588,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               width: 100%;
             }
             &:hover {
-              background: #f4f4f4;
+              background: #f3f2f1;
             }
             &:hover .ms-Suggestions-closeButton {
               display: block;
@@ -5733,20 +5604,16 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
                 background-color: transparent;
-                border-radius: 0px;
+                border-radius: 2px;
                 border: none;
                 box-sizing: border-box;
-                color: #333333;
+                color: #323130;
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
-                margin-bottom: 0px;
-                margin-left: 0px;
-                margin-right: 0px;
-                margin-top: 0px;
                 min-width: 0px;
                 outline: transparent;
                 overflow: hidden;
@@ -5765,14 +5632,14 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 border: 0;
               }
               .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: 0px;
+                border: 1px solid transparent;
+                bottom: 2px;
                 content: "";
-                left: 0px;
-                outline: 1px solid #666666;
+                left: 2px;
+                outline: 1px solid #605e5c;
                 position: absolute;
-                right: 0px;
-                top: 0px;
+                right: 2px;
+                top: 2px;
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -5789,7 +5656,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 0px;
               }
               &:hover {
-                color: #212121;
+                color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
@@ -5818,7 +5685,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -5828,13 +5695,14 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                   height: 100%;
                   justify-content: flex-start;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <div>
                
               rose
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>
@@ -5854,7 +5722,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               width: 100%;
             }
             &:hover {
-              background: #f4f4f4;
+              background: #f3f2f1;
             }
             &:hover .ms-Suggestions-closeButton {
               display: block;
@@ -5870,20 +5738,16 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
                 background-color: transparent;
-                border-radius: 0px;
+                border-radius: 2px;
                 border: none;
                 box-sizing: border-box;
-                color: #333333;
+                color: #323130;
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
-                margin-bottom: 0px;
-                margin-left: 0px;
-                margin-right: 0px;
-                margin-top: 0px;
                 min-width: 0px;
                 outline: transparent;
                 overflow: hidden;
@@ -5902,14 +5766,14 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 border: 0;
               }
               .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: 0px;
+                border: 1px solid transparent;
+                bottom: 2px;
                 content: "";
-                left: 0px;
-                outline: 1px solid #666666;
+                left: 2px;
+                outline: 1px solid #605e5c;
                 position: absolute;
-                right: 0px;
-                top: 0px;
+                right: 2px;
+                top: 2px;
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -5926,7 +5790,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 0px;
               }
               &:hover {
-                color: #212121;
+                color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
@@ -5955,7 +5819,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -5965,13 +5829,14 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                   height: 100%;
                   justify-content: flex-start;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <div>
                
               violet
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>
@@ -5991,7 +5856,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               width: 100%;
             }
             &:hover {
-              background: #f4f4f4;
+              background: #f3f2f1;
             }
             &:hover .ms-Suggestions-closeButton {
               display: block;
@@ -6007,20 +5872,16 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
                 background-color: transparent;
-                border-radius: 0px;
+                border-radius: 2px;
                 border: none;
                 box-sizing: border-box;
-                color: #333333;
+                color: #323130;
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
-                margin-bottom: 0px;
-                margin-left: 0px;
-                margin-right: 0px;
-                margin-top: 0px;
                 min-width: 0px;
                 outline: transparent;
                 overflow: hidden;
@@ -6039,14 +5900,14 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 border: 0;
               }
               .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: 0px;
+                border: 1px solid transparent;
+                bottom: 2px;
                 content: "";
-                left: 0px;
-                outline: 1px solid #666666;
+                left: 2px;
+                outline: 1px solid #605e5c;
                 position: absolute;
-                right: 0px;
-                top: 0px;
+                right: 2px;
+                top: 2px;
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -6063,7 +5924,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 0px;
               }
               &:hover {
-                color: #212121;
+                color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
@@ -6092,7 +5953,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -6102,13 +5963,14 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                   height: 100%;
                   justify-content: flex-start;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <div>
                
               white
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>
@@ -6128,7 +5990,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               width: 100%;
             }
             &:hover {
-              background: #f4f4f4;
+              background: #f3f2f1;
             }
             &:hover .ms-Suggestions-closeButton {
               display: block;
@@ -6144,20 +6006,16 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
                 background-color: transparent;
-                border-radius: 0px;
+                border-radius: 2px;
                 border: none;
                 box-sizing: border-box;
-                color: #333333;
+                color: #323130;
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
-                margin-bottom: 0px;
-                margin-left: 0px;
-                margin-right: 0px;
-                margin-top: 0px;
                 min-width: 0px;
                 outline: transparent;
                 overflow: hidden;
@@ -6176,14 +6034,14 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 border: 0;
               }
               .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: 0px;
+                border: 1px solid transparent;
+                bottom: 2px;
                 content: "";
-                left: 0px;
-                outline: 1px solid #666666;
+                left: 2px;
+                outline: 1px solid #605e5c;
                 position: absolute;
-                right: 0px;
-                top: 0px;
+                right: 2px;
+                top: 2px;
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -6200,7 +6058,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 0px;
               }
               &:hover {
-                color: #212121;
+                color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
@@ -6229,7 +6087,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -6239,21 +6097,17 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                   height: 100%;
                   justify-content: flex-start;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <div>
                
               yellow
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>
   </div>
-  <span
-    aria-live="polite"
-    className="ms-Suggestions-suggestionsAvailable"
-    role="alert"
-  />
 </div>
 `;

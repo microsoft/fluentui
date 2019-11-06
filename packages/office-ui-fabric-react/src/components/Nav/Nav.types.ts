@@ -2,7 +2,7 @@ import * as React from 'react';
 import { IStyle, ITheme } from '../../Styling';
 import { IRefObject, IRenderFunction, IStyleFunctionOrObject, IComponentAs } from '../../Utilities';
 import { IIconProps } from '../Icon/Icon.types';
-import { IButtonProps } from '../../Button';
+import { IButtonProps } from '../Button/Button.types';
 
 /**
  * {@docCategory Nav}
@@ -15,6 +15,13 @@ export interface INav {
    * all groups of the Nav must have populated key properties.
    */
   selectedKey: string | undefined;
+  /**
+   * Sets focus to the first tabbable item in the zone.
+   * @param forceIntoFirstElement - If true, focus will be forced into the first element, even
+   * if focus is already in the focus zone.
+   * @returns True if focus could be set to an active element, false if no operation was taken.
+   */
+  focus(forceIntoFirstElement?: boolean): boolean;
 }
 
 /**
@@ -99,20 +106,14 @@ export interface INavProps {
   /**
    * (Optional) The nav container aria label. The link name is prepended to this label.
    * If not provided, the aria label will default to the link name.
+   *
+   * @deprecated - Use expandAriaLabel and collapseAriaLabel on groups instead
    */
   expandButtonAriaLabel?: string;
-
   /**
-   * Deprecated at v0.68.1 and will be removed at \>= v1.0.0.
-   * @deprecated Removed at v1.0.0.
-   **/
-  expandedStateText?: string;
-
-  /**
-   * Deprecated at v0.68.1 and will be removed at \>= v1.0.0.
-   * @deprecated Removed at v1.0.0.
-   **/
-  collapsedStateText?: string;
+   * (Optional) The nav link selected state aria label.
+   */
+  selectedAriaLabel?: string;
 }
 
 /**
@@ -143,6 +144,16 @@ export interface INavLinkGroup {
    * Callback invoked when a group header is clicked
    */
   onHeaderClick?: (ev?: React.MouseEvent<HTMLElement>, isCollapsing?: boolean) => void;
+
+  /**
+   * ARIA label when group is collapsed and can be expanded.
+   */
+  expandAriaLabel?: string;
+
+  /**
+   * ARIA label when group is collapsed and can be expanded.
+   */
+  collapseAriaLabel?: string;
 }
 
 /**
@@ -193,18 +204,6 @@ export interface INavLink {
   iconProps?: IIconProps;
 
   /**
-   * Deprecated at v0.68.1 and will be removed at \>= v1.0.0.
-   * @deprecated Removed at v1.0.0.
-   */
-  engagementName?: string;
-
-  /**
-   * Deprecated at v0.68.1 and will be removed at \>= v1.0.0.
-   * @deprecated Removed at v1.0.0.
-   */
-  altText?: string;
-
-  /**
    * The name to use for functional automation tests
    */
   automationId?: string;
@@ -215,7 +214,7 @@ export interface INavLink {
   isExpanded?: boolean;
 
   /**
-   * Aria label for nav link
+   * Aria label for nav link. Ignored if `collapseAriaLabel` or `expandAriaLabel` is provided.
    */
   ariaLabel?: string;
 
@@ -235,16 +234,21 @@ export interface INavLink {
   disabled?: boolean;
 
   /**
-   * @deprecated Not used in the Nav control or anywhere else in office-ui-fabric-react.
-   */
-  parentId?: string;
-
-  /**
    * (Optional) By default, any link with onClick defined will render as a button.
    * Set this property to true to override that behavior. (Links without onClick defined
    * will render as anchors by default.)
    */
   forceAnchor?: boolean;
+
+  /**
+   * ARIA label when group is collapsed and can be expanded.
+   */
+  expandAriaLabel?: string;
+
+  /**
+   * ARIA label when group is collapsed and can be expanded.
+   */
+  collapseAriaLabel?: string;
 
   /**
    * (Optional) Any additional properties to apply to the rendered links.

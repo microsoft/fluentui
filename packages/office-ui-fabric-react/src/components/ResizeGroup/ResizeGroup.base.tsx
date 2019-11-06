@@ -1,6 +1,5 @@
 import * as React from 'react';
-import * as PropTypes from 'prop-types';
-import { BaseComponent, divProperties, getNativeProps, provideContext } from '../../Utilities';
+import { BaseComponent, divProperties, getNativeProps } from '../../Utilities';
 import { IResizeGroupProps, ResizeGroupDirection } from './ResizeGroup.types';
 
 const RESIZE_DELAY = 16;
@@ -295,14 +294,7 @@ export const getNextResizeGroupStateProvider = (measurementCache = getMeasuremen
 
 // Provides a context property that (if true) tells any child components that
 // they are only being used for measurement purposes and will not be visible.
-const MeasuredContext = provideContext(
-  {
-    isMeasured: PropTypes.bool
-  },
-  () => {
-    return { isMeasured: true };
-  }
-);
+export const MeasuredContext = React.createContext({ isMeasured: false });
 
 // Styles for the hidden div used for measurement
 const hiddenDivStyles: React.CSSProperties = { position: 'fixed', visibility: 'hidden' };
@@ -334,7 +326,7 @@ export class ResizeGroupBase extends BaseComponent<IResizeGroupProps, IResizeGro
   public render(): JSX.Element {
     const { className, onRenderData } = this.props;
     const { dataToMeasure, renderedData } = this.state;
-    const divProps = getNativeProps(this.props, divProperties, ['data']);
+    const divProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties, ['data']);
 
     const dataNeedsMeasuring = this._nextResizeGroupStateProvider.shouldRenderDataForMeasurement(dataToMeasure);
 
@@ -351,7 +343,7 @@ export class ResizeGroupBase extends BaseComponent<IResizeGroupProps, IResizeGro
         <div style={hiddenParentStyles}>
           {dataNeedsMeasuring && !isInitialMeasure && (
             <div style={hiddenDivStyles} ref={this._updateHiddenDiv}>
-              <MeasuredContext>{onRenderData(dataToMeasure)}</MeasuredContext>
+              <MeasuredContext.Provider value={{ isMeasured: true }}>{onRenderData(dataToMeasure)}</MeasuredContext.Provider>
             </div>
           )}
 
@@ -368,7 +360,8 @@ export class ResizeGroupBase extends BaseComponent<IResizeGroupProps, IResizeGro
     this._events.on(window, 'resize', this._async.debounce(this._onResize, RESIZE_DELAY, { leading: true }));
   }
 
-  public componentWillReceiveProps(nextProps: IResizeGroupProps): void {
+  // tslint:disable-next-line function-name
+  public UNSAFE_componentWillReceiveProps(nextProps: IResizeGroupProps): void {
     this.setState({
       dataToMeasure: { ...nextProps.data },
       resizeDirection: 'grow',

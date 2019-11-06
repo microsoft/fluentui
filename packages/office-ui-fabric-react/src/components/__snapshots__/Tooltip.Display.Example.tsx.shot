@@ -13,11 +13,12 @@ exports[`Component Examples renders Tooltip.Display.Example.tsx correctly 1`] = 
         }
     onBlurCapture={[Function]}
     onFocusCapture={[Function]}
+    onKeyDown={[Function]}
     onMouseEnter={[Function]}
     onMouseLeave={[Function]}
   >
     <button
-      aria-labelledby="tooltipHost10"
+      aria-describedby="tooltipHost10"
       style={
         Object {
           "fontSize": "2em",
@@ -36,11 +37,12 @@ exports[`Component Examples renders Tooltip.Display.Example.tsx correctly 1`] = 
         }
     onBlurCapture={[Function]}
     onFocusCapture={[Function]}
+    onKeyDown={[Function]}
     onMouseEnter={[Function]}
     onMouseLeave={[Function]}
   >
     <button
-      aria-labelledby="tooltipHost21"
+      aria-describedby="tooltipHost21"
       style={
         Object {
           "fontSize": "2em",

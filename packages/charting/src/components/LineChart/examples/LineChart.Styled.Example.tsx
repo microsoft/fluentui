@@ -21,12 +21,12 @@ export class LineChartStyledExample extends React.Component<{}, {}> {
     const points: ILineChartPoints[] = [
       {
         data: [
-          { x: new Date('01-06-2018'), y: 10 },
-          { x: new Date('01-16-2018'), y: 18 },
-          { x: new Date('01-20-2018'), y: 24 },
-          { x: new Date('01-24-2018'), y: 35 },
-          { x: new Date('01-26-2018'), y: 35 },
-          { x: new Date('01-29-2018'), y: 38 }
+          { x: new Date('2018/01/06'), y: 10 },
+          { x: new Date('2018/01/16'), y: 18 },
+          { x: new Date('2018/01/20'), y: 24 },
+          { x: new Date('2018/01/24'), y: 35 },
+          { x: new Date('2018/01/26'), y: 35 },
+          { x: new Date('2018/01/29'), y: 38 }
         ],
         legend: 'Week',
         color: DefaultPalette.blue

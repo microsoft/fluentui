@@ -4,7 +4,6 @@ import { css, createArray } from 'office-ui-fabric-react/lib/Utilities';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import { MarqueeSelection, Selection, IObjectWithKey } from 'office-ui-fabric-react/lib/MarqueeSelection';
 import * as styles from './MarqueeSelection.Basic.Example.scss';
-import * as exampleStyles from '../../../common/_exampleStyles.scss';
 
 interface IPhoto extends IObjectWithKey {
   url: string;
@@ -56,7 +55,7 @@ export class MarqueeSelectionBasicExample extends React.Component<{}, IMarqueeSe
   public render(): JSX.Element {
     return (
       <MarqueeSelection selection={this._selection} isEnabled={this.state.isMarqueeEnabled}>
-        <Checkbox className={exampleStyles.exampleCheckbox} label="Is marquee enabled" defaultChecked={true} onChange={this._onChange} />
+        <Checkbox styles={{ root: { margin: '10px 0' } }} label="Is marquee enabled" defaultChecked={true} onChange={this._onChange} />
         <p>Drag a rectangle around the items below to select them:</p>
         <ul className={styles.photoList}>
           {PHOTOS.map((photo, index) => (

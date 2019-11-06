@@ -1,0 +1,342 @@
+{
+  "name": "@uifabric/tsx-editor",
+  "entries": [
+    {
+      "date": "Mon, 28 Oct 2019 22:25:45 GMT",
+      "tag": "@uifabric/tsx-editor_v0.10.3",
+      "version": "0.10.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix some minor bugs",
+            "author": "elcraig@microsoft.com",
+            "commit": "da81d25a70517a242b31f2b25ee8b07975b6e539"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 10 Oct 2019 12:32:08 GMT",
+      "tag": "@uifabric/tsx-editor_v0.10.2",
+      "version": "0.10.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Editor should include re-exported types",
+            "author": "elcraig@microsoft.com",
+            "commit": "f5d6048b0856ddbe3e20083ada40a9d18588c6bf"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 09 Oct 2019 12:34:23 GMT",
+      "tag": "@uifabric/tsx-editor_v0.10.1",
+      "version": "0.10.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix examples with fragments and refine diagnostic options",
+            "author": "elcraig@microsoft.com",
+            "commit": "0ca82fbc0625a093136d5d1ea228466b58834497"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 07 Oct 2019 23:42:31 GMT",
+      "tag": "@uifabric/tsx-editor_v0.10.0",
+      "version": "0.10.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Enable editor by default",
+            "author": "elcraig@microsoft.com",
+            "commit": "6082711ea1018d7a2f13480ab20519ce4e37f261"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 04 Oct 2019 22:19:48 GMT",
+      "tag": "@uifabric/tsx-editor_v0.9.0",
+      "version": "0.9.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Improve bundle structure, and add error boundary around example so errors don't crash the page",
+            "author": "elcraig@microsoft.com",
+            "commit": "5769e0419f9162970898c424da471e8fb9c53ccf"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 03 Oct 2019 23:14:46 GMT",
+      "tag": "@uifabric/tsx-editor_v0.8.1",
+      "version": "0.8.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix broken publish with a bump",
+            "author": "odbuild@microsoft.com",
+            "commit": "146ad8142dff53be1245aa269a4b70720ac5cf7b"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 03 Oct 2019 01:14:35 GMT",
+      "tag": "@uifabric/tsx-editor_v0.8.0",
+      "version": "0.8.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "  Return component rather than rendering, and add a11y props to editor",
+            "author": "elcraig@microsoft.com",
+            "commit": "fe59f6fd3c26d9d1bf44bcc4ee44ed01c9816cf9"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 30 Sep 2019 12:35:16 GMT",
+      "tag": "@uifabric/tsx-editor_v0.7.2",
+      "version": "0.7.2",
+      "comments": {
+        "none": [
+          {
+            "comment": "Add comments about IE 11 regex fix",
+            "author": "elcraig@microsoft.com",
+            "commit": "d4b0254c3aa931b39801f2f71e33952fbc149480"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 25 Sep 2019 12:34:56 GMT",
+      "tag": "@uifabric/tsx-editor_v0.7.2",
+      "version": "0.7.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update regex for IE friendliness",
+            "author": "anhw@microsoft.com",
+            "commit": "cbbd1aaaf944920cc8101476b36838c23ae5d949"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 24 Sep 2019 12:35:43 GMT",
+      "tag": "@uifabric/tsx-editor_v0.7.1",
+      "version": "0.7.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Restructure index files and exports",
+            "author": "elcraig@microsoft.com",
+            "commit": "f9a483c37857c9bdba359a287b065ebe59dd361b"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 20 Sep 2019 12:34:28 GMT",
+      "tag": "@uifabric/tsx-editor_v0.7.0",
+      "version": "0.7.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add full typings support; refactor editor component into layers; improve example parsing",
+            "author": "elcraig@microsoft.com",
+            "commit": "d62bda1f875f495aa4324c308650cbe334139ed9"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Fix web worker check",
+            "author": "elcraig@microsoft.com",
+            "commit": "17f52a8e9ac4538477fb7d6b8e76129b4f7f4a29"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 19 Sep 2019 13:05:24 GMT",
+      "tag": "@uifabric/tsx-editor_v0.6.0",
+      "version": "0.6.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Use new way of consuming Monaco bundle",
+            "author": "elcraig@microsoft.com",
+            "commit": "90fbbbfd43f93dbe8d95c094f1cd988614ae39bd"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 18 Sep 2019 12:32:55 GMT",
+      "tag": "@uifabric/tsx-editor_v0.5.1",
+      "version": "0.5.1",
+      "comments": {
+        "none": [
+          {
+            "comment": "Fix newline issue in test",
+            "author": "elcraig@microsoft.com",
+            "commit": "36f3c57bf0d4403f4a2573cba56fe5759e7edc77"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 13 Sep 2019 12:34:39 GMT",
+      "tag": "@uifabric/tsx-editor_v0.5.1",
+      "version": "0.5.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "creates a wrapper monaco-editor package to be published to make it easy for consumers to consume without css-loader",
+            "author": "kchau@microsoft.com",
+            "commit": "d0d188ef9c664efedee503ea0b639d43bac43f92"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 12 Sep 2019 12:34:15 GMT",
+      "tag": "@uifabric/tsx-editor_v0.5.0",
+      "version": "0.5.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Show TS errors in detail, and assorted cleanup",
+            "author": "elcraig@microsoft.com",
+            "commit": "485574797c272506647b6fb98d4ae5989d8eb9f9"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 26 Aug 2019 12:30:49 GMT",
+      "tag": "@uifabric/tsx-editor_v0.4.0",
+      "version": "0.4.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Move most editor-related logic to EditorWrapper",
+            "author": "elcraig@microsoft.com",
+            "commit": "74689e9cf552e0d4a606deedeaa16e5cadb611ef"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 23 Aug 2019 12:35:28 GMT",
+      "tag": "@uifabric/tsx-editor_v0.3.1",
+      "version": "0.3.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update npmignores, delete unused jest setup files",
+            "author": "elcraig@microsoft.com",
+            "commit": "b12aaa280221562003af1e0f02aa5f3a5b008041"
+          },
+          {
+            "comment": "Disable noEmitOnError for now",
+            "author": "elcraig@microsoft.com",
+            "commit": "cd09d67cabaa8b44ad373f37397b58b9f08bd5da"
+          },
+          {
+            "comment": "Get rid of monaco-editor-webpack-plugin and fix demo app",
+            "author": "elcraig@microsoft.com",
+            "commit": "8404e0edc3591a74cda292aedd1e4bff58768e7c"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 12 Aug 2019 12:30:25 GMT",
+      "tag": "@uifabric/tsx-editor_v0.3.0",
+      "version": "0.3.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "adding support for example data and workaround for lookbehinds in regex",
+            "author": "esteban.230@hotmail.com",
+            "commit": "3a0a0f24e79ceb81380a3f61146db0d126101b2c"
+          },
+          {
+            "comment": "using fetch API to bring in fabric typings to editor",
+            "author": "nishikaza@berkeley.edu",
+            "commit": "3f8cf613cae2fcf9892fbd338869932c1fea450a"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 08 Aug 2019 12:32:41 GMT",
+      "tag": "@uifabric/tsx-editor_v0.2.0",
+      "version": "0.2.0",
+      "comments": {
+        "none": [
+          {
+            "comment": "add editor config helper",
+            "author": "elcraig@microsoft.com",
+            "commit": "b36b034d883fb1e85b9e3da13eb87f281b3262e3"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 06 Aug 2019 12:32:07 GMT",
+      "tag": "@uifabric/tsx-editor_v0.2.0",
+      "version": "0.2.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "updating editor model to work with HTML5",
+            "author": "nishikaza@berkeley.edu",
+            "commit": "0a35d9a1b95295a65cbbccbe34601d14091748d4"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Tsx-editor: Adding error bar",
+            "author": "esteban.230@hotmail.com",
+            "commit": "aec752dc11f9e83488fd46e96fa943a95a1500d3"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 05 Aug 2019 12:33:41 GMT",
+      "tag": "@uifabric/tsx-editor_v0.1.1",
+      "version": "0.1.1",
+      "comments": {
+        "none": [
+          {
+            "comment": "N/A",
+            "author": "nishikaza@berkeley.edu",
+            "commit": "884bc1d22b25f8e73d2dd6f332e54709e66ddc09"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 02 Aug 2019 12:33:29 GMT",
+      "tag": "@uifabric/tsx-editor_v0.1.1",
+      "version": "0.1.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Publish tsx-editor",
+            "author": "elcraig@microsoft.com",
+            "commit": "e3369223a335f8d0f71b5f18579a2d9704ad4cb0"
+          }
+        ]
+      }
+    }
+  ]
+}

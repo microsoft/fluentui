@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { styled } from '../../Utilities';
 import { IPanelProps, IPanelStyleProps, IPanelStyles } from './Panel.types';
 import { PanelBase } from './Panel.base';

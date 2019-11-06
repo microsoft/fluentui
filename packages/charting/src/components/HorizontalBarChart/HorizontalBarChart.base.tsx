@@ -86,6 +86,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
                     ref={(e: SVGGElement) => {
                       this._refCallback(e, points!.chartData![0].legend);
                     }}
+                    className={this._classNames.barWrapper}
                     onMouseOver={this._hoverOn.bind(
                       this,
                       points!.chartData![0].horizontalBarChartdata!.x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','),

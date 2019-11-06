@@ -1,5 +1,5 @@
 import { IDetailsColumnStyleProps, IDetailsColumnStyles } from './DetailsColumn.types';
-import { getFocusStyle, getGlobalClassNames, hiddenContentStyle, IStyle } from '../../Styling';
+import { getFocusStyle, getGlobalClassNames, hiddenContentStyle, IStyle, FontWeights } from '../../Styling';
 import { DEFAULT_CELL_STYLE_PROPS } from './DetailsRow.styles';
 import { getCellStyles } from './DetailsHeader.styles';
 
@@ -20,7 +20,8 @@ const GlobalClassNames = {
   cellTitle: 'ms-DetailsHeader-cellTitle',
   cellName: 'ms-DetailsHeader-cellName',
   filterChevron: 'ms-DetailsHeader-filterChevron',
-  gripperBarVerticalStyle: 'ms-DetailsColumn-gripperBar'
+  gripperBarVerticalStyle: 'ms-DetailsColumn-gripperBar',
+  nearIcon: 'ms-DetailsColumn-nearIcon'
 };
 
 export const getStyles = (props: IDetailsColumnStyleProps): IDetailsColumnStyles => {
@@ -38,7 +39,7 @@ export const getStyles = (props: IDetailsColumnStyleProps): IDetailsColumnStyles
     transitionDurationDrop
   } = props;
 
-  const { semanticColors, palette } = theme;
+  const { semanticColors, palette, fonts } = theme;
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
   const colors = {
@@ -55,22 +56,18 @@ export const getStyles = (props: IDetailsColumnStyleProps): IDetailsColumnStyles
     paddingLeft: 8
   };
 
-  const borderWhileDragging: IStyle = [
-    {
-      outline: `1px solid ${palette.themePrimary}`
-    }
-  ];
+  const borderWhileDragging: IStyle = {
+    outline: `1px solid ${palette.themePrimary}`
+  };
 
-  const borderAfterDragOrDrop: IStyle = [
-    {
-      outlineColor: 'transparent'
-    }
-  ];
+  const borderAfterDragOrDrop: IStyle = {
+    outlineColor: 'transparent'
+  };
 
   return {
     root: [
       getCellStyles(props),
-      theme.fonts.small,
+      fonts.small,
       isActionable && [
         classNames.isActionable,
         {
@@ -105,17 +102,15 @@ export const getStyles = (props: IDetailsColumnStyleProps): IDetailsColumnStyles
       headerClassName
     ],
 
-    gripperBarVerticalStyle: [
-      {
-        display: 'none',
-        position: 'absolute',
-        textAlign: 'left',
-        color: palette.neutralTertiary,
-        left: 1
-      }
-    ],
+    gripperBarVerticalStyle: {
+      display: 'none',
+      position: 'absolute',
+      textAlign: 'left',
+      color: palette.neutralTertiary,
+      left: 1
+    },
 
-    nearIcon: nearIconStyle,
+    nearIcon: [classNames.nearIcon, nearIconStyle],
 
     sortIcon: [
       nearIconStyle,
@@ -138,8 +133,9 @@ export const getStyles = (props: IDetailsColumnStyleProps): IDetailsColumnStyles
       classNames.filterChevron,
       {
         color: colors.dropdownChevronForegroundColor,
-        paddingLeft: 4,
-        verticalAlign: 'middle'
+        paddingLeft: 6,
+        verticalAlign: 'middle',
+        fontSize: fonts.small.fontSize
       }
     ],
 
@@ -169,35 +165,35 @@ export const getStyles = (props: IDetailsColumnStyleProps): IDetailsColumnStyles
       {
         flex: '0 1 auto',
         overflow: 'hidden',
-        textOverflow: 'ellipsis'
+        textOverflow: 'ellipsis',
+        fontWeight: FontWeights.semibold,
+        fontSize: fonts.medium.fontSize
       },
       isIconOnly && {
         selectors: {
-          $nearIcon: {
+          [`.${classNames.nearIcon}`]: {
             paddingLeft: 0
           }
         }
       }
     ],
 
-    cellTooltip: [
-      {
-        display: 'block',
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        bottom: 0,
-        right: 0
-      }
-    ],
+    cellTooltip: {
+      display: 'block',
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      bottom: 0,
+      right: 0
+    },
 
-    accessibleLabel: [hiddenContentStyle],
+    accessibleLabel: hiddenContentStyle,
 
     borderWhileDragging: borderWhileDragging,
 
     noBorderWhileDragging: [borderAfterDragOrDrop, { transition: `outline ${transitionDurationDrag}ms ease` }],
 
-    borderAfterDropping: [borderWhileDragging],
+    borderAfterDropping: borderWhileDragging,
 
     noBorderAfterDropping: [borderAfterDragOrDrop, { transition: `outline  ${transitionDurationDrop}ms ease` }]
   };

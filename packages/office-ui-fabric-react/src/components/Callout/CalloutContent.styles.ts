@@ -21,7 +21,8 @@ export const getStyles = (props: ICalloutContentStyleProps): ICalloutContentStyl
 
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
-  const { palette } = theme;
+  const { semanticColors, effects } = theme;
+
   return {
     container: [
       classNames.container,
@@ -35,10 +36,8 @@ export const getStyles = (props: ICalloutContentStyleProps): ICalloutContentStyl
       {
         position: 'absolute',
         boxSizing: 'border-box',
-        borderWidth: 1,
-        borderStyle: 'solid',
-        borderColor: palette.neutralLight,
-        boxShadow: '0 0 5px 0px rgba(0,0,0,0.4)',
+        borderRadius: effects.roundedCorner2,
+        boxShadow: effects.elevation16,
         selectors: {
           [HighContrastSelector]: {
             borderWidth: 1,
@@ -56,7 +55,7 @@ export const getStyles = (props: ICalloutContentStyleProps): ICalloutContentStyl
       classNames.beak,
       {
         position: 'absolute',
-        backgroundColor: palette.white,
+        backgroundColor: semanticColors.menuBackground,
         boxShadow: 'inherit',
         border: 'inherit',
         boxSizing: 'border-box',
@@ -75,16 +74,18 @@ export const getStyles = (props: ICalloutContentStyleProps): ICalloutContentStyl
         right: 0,
         bottom: 0,
         left: 0,
-        backgroundColor: palette.white
+        backgroundColor: semanticColors.menuBackground,
+        borderRadius: effects.roundedCorner2
       }
     ],
     calloutMain: [
       classNames.calloutMain,
       {
-        backgroundColor: palette.white,
+        backgroundColor: semanticColors.menuBackground,
         overflowX: 'hidden',
         overflowY: 'auto',
-        position: 'relative'
+        position: 'relative',
+        borderRadius: effects.roundedCorner2
       },
       overflowYHidden && {
         overflowY: 'hidden'

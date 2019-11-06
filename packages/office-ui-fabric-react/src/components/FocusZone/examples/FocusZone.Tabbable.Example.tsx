@@ -4,20 +4,16 @@ import { FocusZone, FocusZoneDirection, FocusZoneTabbableElements } from 'office
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import { Stack } from 'office-ui-fabric-react/lib/Stack';
 
-const alertClicked = (): void => {
-  alert('Clicked');
-};
-
 export const FocusZoneTabbableExample: React.StatelessComponent = () => {
   const tokens = { childrenGap: 20 };
   return (
     <Stack tokens={tokens} horizontalAlign="start">
       <FocusZone direction={FocusZoneDirection.horizontal} handleTabKey={FocusZoneTabbableElements.all} isCircularNavigation={true}>
-        <Stack tokens={tokens} horizontal>
+        <Stack tokens={tokens} horizontal verticalAlign="center">
           <span>Circular Tabbable FocusZone: </span>
           <DefaultButton>Button 1</DefaultButton>
           <DefaultButton>Button 2</DefaultButton>
-          <TextField value="FocusZone TextField" styles={{ root: { width: 200 } }} />
+          <TextField placeholder="FocusZone TextField" styles={{ root: { width: 200 } }} ariaLabel="FocusZone TextField" />
           <DefaultButton>Button 3</DefaultButton>
           <DefaultButton
             text="Create account"
@@ -42,14 +38,18 @@ export const FocusZoneTabbableExample: React.StatelessComponent = () => {
         </Stack>
       </FocusZone>
       <FocusZone direction={FocusZoneDirection.horizontal} handleTabKey={FocusZoneTabbableElements.inputOnly} isCircularNavigation={false}>
-        <Stack tokens={tokens} horizontal>
+        <Stack tokens={tokens} horizontal verticalAlign="center">
           <span>Input Only FocusZone: </span>
           <DefaultButton>Button 1</DefaultButton>
           <DefaultButton>Button 2</DefaultButton>
-          <TextField value="FocusZone TextField" styles={{ root: { width: 200 } }} />
+          <TextField placeholder="FocusZone TextField" styles={{ root: { width: 200 } }} ariaLabel="FocusZone TextField" />
           <DefaultButton>Button 3</DefaultButton>
         </Stack>
       </FocusZone>
     </Stack>
   );
 };
+
+function alertClicked(): void {
+  alert('Clicked');
+}

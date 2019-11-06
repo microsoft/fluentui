@@ -56,7 +56,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
   }
 
   public render(): JSX.Element {
-    const { barHeight, data, theme, hideRatio, styles, href, hideDenominator } = this.props;
+    const { barHeight, data, theme, hideRatio, hideLegend, styles, href, hideDenominator } = this.props;
     this._adjustProps();
     const { palette } = theme!;
     const legends = this._getLegendData(data!, hideRatio!, palette);
@@ -80,7 +80,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
     return (
       <div className={this._classNames.root}>
         {bars}
-        <div className={this._classNames.legendContainer}>{legends}</div>
+        {!hideLegend && <div className={this._classNames.legendContainer}>{legends}</div>}
         {isCalloutVisible ? (
           <Callout
             gapSpace={5}
@@ -227,6 +227,10 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
         if (hideNumber) {
           validChartData!.map((point: IChartDataPoint) => {
             const color: string = point.color ? point.color : defaultPalette[Math.floor(Math.random() * 4 + 1)];
+            const checkSimilarLegends = actions.filter((leg: ILegend) => leg.title === point.legend! && leg.color === color);
+            if (checkSimilarLegends!.length > 0) {
+              return;
+            }
             const legend: ILegend = {
               title: point.legend!,
               color: color,
@@ -246,6 +250,10 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
       } else {
         validChartData!.map((point: IChartDataPoint) => {
           const color: string = point.color ? point.color : defaultPalette[Math.floor(Math.random() * 4 + 1)];
+          const checkSimilarLegends = actions.filter((leg: ILegend) => leg.title === point.legend! && leg.color === color);
+          if (checkSimilarLegends!.length > 0) {
+            return;
+          }
           const legend: ILegend = {
             title: point.legend!,
             color: color,

@@ -1,4 +1,4 @@
-import { getGlobalClassNames, HighContrastSelector, HighContrastSelectorWhite, HighContrastSelectorBlack } from '../../Styling';
+import { getGlobalClassNames, HighContrastSelectorWhite, HighContrastSelectorBlack, HighContrastSelector } from '../../Styling';
 import { ILinkStyleProps, ILinkStyles } from './Link.types';
 
 const GlobalClassNames = {
@@ -9,6 +9,12 @@ export const getStyles = (props: ILinkStyleProps): ILinkStyles => {
   const { className, isButton, isDisabled, theme } = props;
   const { semanticColors } = theme;
 
+  // Tokens
+  const linkColor = semanticColors.link;
+  const linkInteractedColor = semanticColors.linkHovered;
+  const linkDisabledColor = semanticColors.disabledText;
+  const focusBorderColor = semanticColors.focusBorder;
+
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
   return {
@@ -16,7 +22,7 @@ export const getStyles = (props: ILinkStyleProps): ILinkStyles => {
       classNames.root,
       theme.fonts.medium,
       {
-        color: semanticColors.link,
+        color: linkColor,
         outline: 'none',
         fontSize: 'inherit',
         fontWeight: 'inherit',
@@ -26,7 +32,7 @@ export const getStyles = (props: ILinkStyleProps): ILinkStyles => {
             // https://github.com/OfficeDev/office-ui-fabric-react/issues/4883#issuecomment-406743543
             // A box-shadow allows the focus rect to wrap links that span multiple lines
             // and helps the focus rect avoid getting clipped.
-            boxShadow: `0 0 0 1px ${theme.palette.neutralSecondary} inset`,
+            boxShadow: `0 0 0 1px ${focusBorderColor} inset`,
             selectors: {
               [HighContrastSelector]: {
                 outline: '1px solid WindowText'
@@ -67,7 +73,7 @@ export const getStyles = (props: ILinkStyleProps): ILinkStyles => {
       isDisabled && [
         'is-disabled',
         {
-          color: semanticColors.disabledText,
+          color: linkDisabledColor,
           cursor: 'default'
         },
         {
@@ -81,15 +87,11 @@ export const getStyles = (props: ILinkStyleProps): ILinkStyles => {
       !isDisabled && {
         selectors: {
           '&:active, &:hover, &:active:hover': {
-            color: semanticColors.linkHovered,
-            selectors: {
-              [HighContrastSelector]: {
-                textDecoration: 'underline'
-              }
-            }
+            color: linkInteractedColor,
+            textDecoration: 'underline'
           },
           '&:focus': {
-            color: semanticColors.link
+            color: linkColor
           }
         }
       },

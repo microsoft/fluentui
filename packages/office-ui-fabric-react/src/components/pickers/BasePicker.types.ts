@@ -5,6 +5,7 @@ import { ISuggestionModel, ISuggestionsProps } from './Suggestions/Suggestions.t
 import { BaseAutoFill } from './AutoFill/BaseAutoFill';
 import { ICalloutProps } from '../../Callout';
 import { ITheme, IStyle } from '../../Styling';
+import { ISuggestionItemProps } from '../pickers/Suggestions/SuggestionsItem.types';
 
 /**
  * BasePicker component.
@@ -42,7 +43,7 @@ export interface IBasePickerProps<T> extends React.Props<any> {
   /**
    * Function that specifies how an individual suggestion item will appear.
    */
-  onRenderSuggestionsItem?: (props: T, itemProps: any) => JSX.Element;
+  onRenderSuggestionsItem?: (props: T, itemProps: ISuggestionItemProps<T>) => JSX.Element;
 
   /**
    * A callback for what should happen when a person types text into the input.
@@ -59,9 +60,19 @@ export interface IBasePickerProps<T> extends React.Props<any> {
   resolveDelay?: number;
 
   /**
-   * A callback for what should happen when a user clicks the input.
+   * A callback for what should happen when a user clicks within the input area.
+   * @deprecated Please use onEmptyResolveSuggestions instead, as the suggestions aren't about
+   * setting focus as they are about resolving suggestions when there is no input.
    */
   onEmptyInputFocus?: (selectedItems?: T[]) => T[] | PromiseLike<T[]>;
+
+  /**
+   * A callback for what should happen when suggestions are shown without
+   * input provided.
+   * Returns the already selected items so the resolver can filter them out.
+   * If used in conjunction with resolveDelay this will ony kick off after the delay throttle.
+   */
+  onEmptyResolveSuggestions?: (selectedItems?: T[]) => T[] | PromiseLike<T[]>;
 
   /**
    * Initial items that have already been selected and should appear in the people picker.
@@ -75,6 +86,7 @@ export interface IBasePickerProps<T> extends React.Props<any> {
 
   /**
    * A callback for when the user put focus on the picker
+   * @deprecated Use `inputProps.onFocus` instead
    */
   onFocus?: React.FocusEventHandler<HTMLInputElement | BaseAutoFill>;
 
