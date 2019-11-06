@@ -243,22 +243,12 @@ export const getStyles = memoizeFunction(
       color: 'HighlightText',
       borderColor: 'Highlight',
       backgroundColor: 'Window',
-      // borderWidth: '2px',
-      // MsHighContrastAdjust: 'none',
-      // paddingLeft: '11px',
-      // paddingTop: '0',
-      // paddingBottom: '0',
       MsHighContrastAdjust: 'none'
     };
 
     const getFocusBorder = (color: string): IStyle => ({
       borderColor: color,
       selectors: {
-        // '.ms-ComboBox-CaretDown-button': {
-        //   // Negative positioning to account for the 2px border
-        //   right: '-2px',
-        //   top: '-2px'
-        // }
         ':after': {
           pointerEvents: 'none',
           content: "''",
@@ -312,19 +302,6 @@ export const getStyles = memoizeFunction(
               display: 'inline-block',
               marginBottom: '8px'
             },
-            // ':after': {
-            //   pointerEvents: 'none',
-            //   content: "''",
-            //   position: 'absolute',
-            //   left: 0,
-            //   top: 0,
-            //   bottom: 0,
-            //   right: 0,
-            //   borderWidth: '1px',
-            //   borderStyle: 'solid',
-            //   borderColor: root.borderColor,
-            //   borderRadius: effects.roundedCorner2
-            // },
             '&.is-open': {
               borderColor: root.borderColor,
               selectors: {
@@ -354,15 +331,6 @@ export const getStyles = memoizeFunction(
         }
       },
 
-      // rootPressed: {
-      //   selectors: {
-      //     ':after': {
-      //       borderColor: root.borderPressedColor,
-      //       borderWidth: '2px'
-      //     },
-      //     [HighContrastSelector]: ComboBoxRootHighContrastFocused
-      //   }
-      // },
       rootPressed: [
         {
           position: 'relative',
@@ -373,18 +341,6 @@ export const getStyles = memoizeFunction(
         getFocusBorder(root.borderPressedColor)
       ],
 
-      // rootFocused: {
-      //   selectors: {
-      //     ':after': {
-      //       borderColor: root.borderFocusedColor,
-      //       borderWidth: '2px'
-      //     },
-      //     '.ms-ComboBox-Input': {
-      //       color: semanticColors.inputTextHovered
-      //     },
-      //     [HighContrastSelector]: ComboBoxRootHighContrastFocused
-      //   }
-      // },
       rootFocused: [
         {
           selectors: {
@@ -400,24 +356,12 @@ export const getStyles = memoizeFunction(
       rootDisabled: getDisabledStyles(theme),
 
       rootError: {
-        // selectors: {
-        //   ':after': {
         borderColor: root.erroredColor,
-        // },
         selectors: {
           ':hover': {
             borderColor: semanticColors.inputBorderHovered
           }
         }
-
-        // ':hover': {
-        //   selectors: {
-        //     ':after': {
-        //       borderColor: semanticColors.inputBorderHovered
-        //     }
-        //   }
-        // }
-        // }
       },
 
       rootDisallowFreeForm: {},
