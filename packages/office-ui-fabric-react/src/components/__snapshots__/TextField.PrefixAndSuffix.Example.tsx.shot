@@ -105,6 +105,8 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
               {
                 align-items: stretch;
                 background: #ffffff;
+                border-radius: 2px;
+                border: 1px solid #8a8886;
                 box-shadow: none;
                 box-sizing: border-box;
                 cursor: text;
@@ -121,22 +123,11 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
                 padding-top: 0px;
                 position: relative;
               }
-              &:hover:after {
+              &:hover {
                 border-color: #323130;
               }
-              @media screen and (-ms-high-contrast: active){&:hover:after {
+              @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
-              }
-              &:after {
-                border-radius: 2px;
-                border: 1px solid #8a8886;
-                bottom: 0px;
-                content: '';
-                left: 0px;
-                pointer-events: none;
-                position: absolute;
-                right: 0px;
-                top: 0px;
               }
         >
           <div
@@ -314,6 +305,8 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
               {
                 align-items: stretch;
                 background: #ffffff;
+                border-radius: 2px;
+                border: 1px solid #8a8886;
                 box-shadow: none;
                 box-sizing: border-box;
                 cursor: default;
@@ -330,23 +323,14 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
                 padding-top: 0px;
                 position: relative;
               }
-              &:hover:after {
-                border-color: #f3f2f1;
-              }
-              @media screen and (-ms-high-contrast: active){&:hover:after {
+              @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
               }
               &:after {
                 border-color: #f3f2f1;
-                border-radius: 2px;
-                border: 1px solid #8a8886;
-                bottom: 0px;
-                content: '';
-                left: 0px;
-                pointer-events: none;
-                position: absolute;
-                right: 0px;
-                top: 0px;
+              }
+              &:hover:after {
+                border-color: #f3f2f1;
               }
         >
           <div
@@ -546,6 +530,8 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
               {
                 align-items: stretch;
                 background: #ffffff;
+                border-radius: 2px;
+                border: 1px solid #8a8886;
                 box-shadow: none;
                 box-sizing: border-box;
                 cursor: text;
@@ -562,22 +548,11 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
                 padding-top: 0px;
                 position: relative;
               }
-              &:hover:after {
+              &:hover {
                 border-color: #323130;
               }
-              @media screen and (-ms-high-contrast: active){&:hover:after {
+              @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
-              }
-              &:after {
-                border-radius: 2px;
-                border: 1px solid #8a8886;
-                bottom: 0px;
-                content: '';
-                left: 0px;
-                pointer-events: none;
-                position: absolute;
-                right: 0px;
-                top: 0px;
               }
         >
           <input
@@ -751,6 +726,8 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
               {
                 align-items: stretch;
                 background: #ffffff;
+                border-radius: 2px;
+                border: 1px solid #8a8886;
                 box-shadow: none;
                 box-sizing: border-box;
                 cursor: text;
@@ -767,22 +744,11 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
                 padding-top: 0px;
                 position: relative;
               }
-              &:hover:after {
+              &:hover {
                 border-color: #323130;
               }
-              @media screen and (-ms-high-contrast: active){&:hover:after {
+              @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
-              }
-              &:after {
-                border-radius: 2px;
-                border: 1px solid #8a8886;
-                bottom: 0px;
-                content: '';
-                left: 0px;
-                pointer-events: none;
-                position: absolute;
-                right: 0px;
-                top: 0px;
               }
         >
           <div

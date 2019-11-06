@@ -276,6 +276,8 @@ exports[`Component Examples renders FocusTrapZone.Box.Click.Example.tsx correctl
               {
                 align-items: stretch;
                 background: #ffffff;
+                border-radius: 2px;
+                border: 1px solid #8a8886;
                 box-shadow: none;
                 box-sizing: border-box;
                 cursor: text;
@@ -292,22 +294,11 @@ exports[`Component Examples renders FocusTrapZone.Box.Click.Example.tsx correctl
                 padding-top: 0px;
                 position: relative;
               }
-              &:hover:after {
+              &:hover {
                 border-color: #323130;
               }
-              @media screen and (-ms-high-contrast: active){&:hover:after {
+              @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
-              }
-              &:after {
-                border-radius: 2px;
-                border: 1px solid #8a8886;
-                bottom: 0px;
-                content: '';
-                left: 0px;
-                pointer-events: none;
-                position: absolute;
-                right: 0px;
-                top: 0px;
               }
         >
           <input

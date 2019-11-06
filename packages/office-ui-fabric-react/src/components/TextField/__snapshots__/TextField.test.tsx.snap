@@ -64,6 +64,8 @@ exports[`TextField snapshots renders correctly 1`] = `
           {
             align-items: stretch;
             background: #ffffff;
+            border-radius: 2px;
+            border: 1px solid #8a8886;
             box-shadow: none;
             box-sizing: border-box;
             cursor: text;
@@ -80,22 +82,11 @@ exports[`TextField snapshots renders correctly 1`] = `
             padding-top: 0px;
             position: relative;
           }
-          &:hover:after {
+          &:hover {
             border-color: #323130;
           }
-          @media screen and (-ms-high-contrast: active){&:hover:after {
+          @media screen and (-ms-high-contrast: active){&:hover {
             border-color: Highlight;
-          }
-          &:after {
-            border-radius: 2px;
-            border: 1px solid #8a8886;
-            bottom: 0px;
-            content: '';
-            left: 0px;
-            pointer-events: none;
-            position: absolute;
-            right: 0px;
-            top: 0px;
           }
     >
       <input
@@ -210,26 +201,15 @@ exports[`TextField snapshots renders multiline correctly with errorMessage 1`] =
     className=
         ms-TextField-wrapper
         {
+          border-bottom: 1px solid #a4262c;
           display: flex;
-        }
-        &:after {
-          border-bottom-color: #8a8886;
-          border-bottom-style: solid;
-          border-width: 0px 0px 1px 0px;
-          bottom: 0px;
-          content: '';
-          left: 0px;
-          pointer-events: none;
-          position: absolute;
-          right: 0px;
-          top: 0px;
           width: 100%;
+        }
+        &:hover {
+          border-bottom-color: #a4262c;
         }
         @media screen and (-ms-high-contrast: active){&:hover {
           border-bottom-color: Highlight;
-        }
-        &:hover:after {
-          border-bottom-color: #a4262c;
         }
   >
     <label
@@ -269,6 +249,7 @@ exports[`TextField snapshots renders multiline correctly with errorMessage 1`] =
           {
             align-items: stretch;
             background: #ffffff;
+            border-radius: 2px;
             border: none;
             box-shadow: none;
             box-sizing: border-box;
@@ -288,20 +269,11 @@ exports[`TextField snapshots renders multiline correctly with errorMessage 1`] =
             position: relative;
             text-align: left;
           }
-          &:hover:after {
+          &:hover {
             border-color: #323130;
           }
-          @media screen and (-ms-high-contrast: active){&:hover:after {
+          @media screen and (-ms-high-contrast: active){&:hover {
             border-color: Highlight;
-          }
-          &:after {
-            border-color: #a4262c;
-          }
-          &:focus:after {
-            border-color: #a4262c;
-          }
-          &::after {
-            border-color: #a4262c;
           }
     >
       <div
@@ -478,26 +450,15 @@ exports[`TextField snapshots renders multiline correctly with props affecting st
     className=
         ms-TextField-wrapper
         {
+          border-bottom: 1px solid #a4262c;
           display: flex;
-        }
-        &:after {
-          border-bottom-color: #8a8886;
-          border-bottom-style: solid;
-          border-width: 0px 0px 1px 0px;
-          bottom: 0px;
-          content: '';
-          left: 0px;
-          pointer-events: none;
-          position: absolute;
-          right: 0px;
-          top: 0px;
           width: 100%;
+        }
+        &:hover {
+          border-bottom-color: #a4262c;
         }
         @media screen and (-ms-high-contrast: active){&:hover {
           border-bottom-color: Highlight;
-        }
-        &:hover:after {
-          border-bottom-color: #a4262c;
         }
   >
     <label
@@ -537,6 +498,7 @@ exports[`TextField snapshots renders multiline correctly with props affecting st
           {
             align-items: stretch;
             background: #ffffff;
+            border-radius: 2px;
             border: none;
             box-shadow: none;
             box-sizing: border-box;
@@ -556,20 +518,11 @@ exports[`TextField snapshots renders multiline correctly with props affecting st
             position: relative;
             text-align: left;
           }
-          &:hover:after {
+          &:hover {
             border-color: #323130;
           }
-          @media screen and (-ms-high-contrast: active){&:hover:after {
+          @media screen and (-ms-high-contrast: active){&:hover {
             border-color: Highlight;
-          }
-          &:after {
-            border-color: #a4262c;
-          }
-          &:focus:after {
-            border-color: #a4262c;
-          }
-          &::after {
-            border-color: #a4262c;
           }
     >
       <div
@@ -782,6 +735,8 @@ exports[`TextField snapshots renders multiline resizable correctly 1`] = `
           {
             align-items: stretch;
             background: #ffffff;
+            border-radius: 2px;
+            border: 1px solid #8a8886;
             box-shadow: none;
             box-sizing: border-box;
             cursor: text;
@@ -799,22 +754,11 @@ exports[`TextField snapshots renders multiline resizable correctly 1`] = `
             padding-top: 0px;
             position: relative;
           }
-          &:hover:after {
+          &:hover {
             border-color: #323130;
           }
-          @media screen and (-ms-high-contrast: active){&:hover:after {
+          @media screen and (-ms-high-contrast: active){&:hover {
             border-color: Highlight;
-          }
-          &:after {
-            border-radius: 2px;
-            border: 1px solid #8a8886;
-            bottom: 0px;
-            content: '';
-            left: 0px;
-            pointer-events: none;
-            position: absolute;
-            right: 0px;
-            top: 0px;
           }
     >
       <textarea
@@ -967,6 +911,8 @@ exports[`TextField snapshots renders multiline unresizable correctly 1`] = `
           {
             align-items: stretch;
             background: #ffffff;
+            border-radius: 2px;
+            border: 1px solid #8a8886;
             box-shadow: none;
             box-sizing: border-box;
             cursor: text;
@@ -984,22 +930,11 @@ exports[`TextField snapshots renders multiline unresizable correctly 1`] = `
             padding-top: 0px;
             position: relative;
           }
-          &:hover:after {
+          &:hover {
             border-color: #323130;
           }
-          @media screen and (-ms-high-contrast: active){&:hover:after {
+          @media screen and (-ms-high-contrast: active){&:hover {
             border-color: Highlight;
-          }
-          &:after {
-            border-radius: 2px;
-            border: 1px solid #8a8886;
-            bottom: 0px;
-            content: '';
-            left: 0px;
-            pointer-events: none;
-            position: absolute;
-            right: 0px;
-            top: 0px;
           }
     >
       <textarea
@@ -1154,6 +1089,8 @@ exports[`TextField snapshots renders multiline with placeholder correctly 1`] = 
           {
             align-items: stretch;
             background: #ffffff;
+            border-radius: 2px;
+            border: 1px solid #8a8886;
             box-shadow: none;
             box-sizing: border-box;
             cursor: text;
@@ -1171,22 +1108,11 @@ exports[`TextField snapshots renders multiline with placeholder correctly 1`] = 
             padding-top: 0px;
             position: relative;
           }
-          &:hover:after {
+          &:hover {
             border-color: #323130;
           }
-          @media screen and (-ms-high-contrast: active){&:hover:after {
+          @media screen and (-ms-high-contrast: active){&:hover {
             border-color: Highlight;
-          }
-          &:after {
-            border-radius: 2px;
-            border: 1px solid #8a8886;
-            bottom: 0px;
-            content: '';
-            left: 0px;
-            pointer-events: none;
-            position: absolute;
-            right: 0px;
-            top: 0px;
           }
     >
       <textarea
@@ -1305,26 +1231,15 @@ exports[`TextField snapshots should resepect user component and subcomponent sty
     className=
         ms-TextField-wrapper
         {
+          border-bottom: 1px solid #a4262c;
           display: flex;
-        }
-        &:after {
-          border-bottom-color: #8a8886;
-          border-bottom-style: solid;
-          border-width: 0px 0px 1px 0px;
-          bottom: 0px;
-          content: '';
-          left: 0px;
-          pointer-events: none;
-          position: absolute;
-          right: 0px;
-          top: 0px;
           width: 100%;
+        }
+        &:hover {
+          border-bottom-color: #a4262c;
         }
         @media screen and (-ms-high-contrast: active){&:hover {
           border-bottom-color: Highlight;
-        }
-        &:hover:after {
-          border-bottom-color: #a4262c;
         }
   >
     <label
@@ -1365,6 +1280,7 @@ exports[`TextField snapshots should resepect user component and subcomponent sty
           {
             align-items: stretch;
             background: #ffffff;
+            border-radius: 2px;
             border: none;
             box-shadow: none;
             box-sizing: border-box;
@@ -1384,20 +1300,11 @@ exports[`TextField snapshots should resepect user component and subcomponent sty
             position: relative;
             text-align: left;
           }
-          &:hover:after {
+          &:hover {
             border-color: #323130;
           }
-          @media screen and (-ms-high-contrast: active){&:hover:after {
+          @media screen and (-ms-high-contrast: active){&:hover {
             border-color: Highlight;
-          }
-          &:after {
-            border-color: #a4262c;
-          }
-          &:focus:after {
-            border-color: #a4262c;
-          }
-          &::after {
-            border-color: #a4262c;
           }
     >
       <div
