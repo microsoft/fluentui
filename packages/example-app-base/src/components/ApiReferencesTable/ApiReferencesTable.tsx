@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { IRenderFunction } from 'office-ui-fabric-react/lib/Utilities';
+import { mergeStyles, getTheme } from 'office-ui-fabric-react/lib/Styling';
 import {
   DetailsList,
   DetailsRow,
@@ -14,30 +15,14 @@ import { SelectionMode } from 'office-ui-fabric-react/lib/Selection';
 import { Stack } from 'office-ui-fabric-react/lib/Stack';
 import { Text } from 'office-ui-fabric-react/lib/Text';
 import { ILinkToken } from 'office-ui-fabric-react/lib/common/DocPage.types';
-import { IApiInterfaceProperty, IApiEnumProperty, IMethod } from './ApiReferencesTableSet.types';
+import { IApiInterfaceProperty, IApiEnumProperty, IMethod, IApiReferencesTableProps } from './ApiReferencesTableSet.types';
 import { Markdown } from '../Markdown/index';
 import { getCurrentUrl } from '../../utilities/getCurrentUrl';
+import { codeFontFamily } from '../CodeSnippet/CodeSnippet.styles';
 
-export interface IApiReferencesTableProps {
-  title?: string;
-  properties: IApiInterfaceProperty[] | IApiEnumProperty[];
-  methods?: IMethod[];
-  renderAsEnum?: boolean;
-  renderAsClass?: boolean;
-  renderAsTypeAlias?: boolean;
-  key?: string;
-  name?: string;
-  description?: string;
-  extendsTokens?: ILinkToken[];
-}
-
-export interface IApiReferencesTableState {
-  properties: IApiInterfaceProperty[] | IApiEnumProperty[];
-  methods?: IMethod[];
-  isEnum: boolean;
-  isClass: boolean;
-  isTypeAlias: boolean;
-}
+// TODO: remove
+export { IApiReferencesTableProps };
+export type IApiReferencesTableState = {};
 
 export const XSMALL_GAP_SIZE = 2.5;
 export const SMALL_GAP_SIZE = 8;
@@ -45,30 +30,62 @@ export const MEDIUM_GAP_SIZE = 16;
 export const LARGE_GAP_SIZE = 48;
 
 const DEPRECATED_COLOR = '#FFF1CC';
+const rootClass = mergeStyles({
+  selectors: {
+    // Switch code blocks to a nicer font family and smaller size (monospace fonts tend to be large)
+    code: { fontFamily: codeFontFamily, fontSize: '11px' }
+  }
+});
+const theme = getTheme();
+const rowStyles: Partial<IDetailsRowStyles> = {
+  root: {
+    color: theme.semanticColors.bodyText,
+    selectors: {
+      ':hover': {
+        background: 'none',
+        color: theme.semanticColors.bodyText
+      }
+    }
+  },
+  isMultiline: {
+    wordBreak: 'break-word'
+  }
+};
 
-const backticksRegex = new RegExp('`[^`]*`', 'g');
+const renderDeprecatedMessage = (deprecated?: boolean, deprecatedMessage?: string) => {
+  deprecatedMessage = (deprecatedMessage || '').trim();
+  if (deprecatedMessage) {
+    // Ensure the messsage is formatted as a sentence
+    deprecatedMessage = deprecatedMessage[0].toUpperCase() + deprecatedMessage.slice(1);
+    if (deprecatedMessage.slice(-1)[0] !== '.') {
+      deprecatedMessage += '.';
+    }
+  }
+  return deprecated ? (
+    <Text
+      block
+      variant="small"
+      styles={{
+        root: {
+          backgroundColor: DEPRECATED_COLOR,
+          padding: 10,
+          borderRadius: 2
+        }
+      }}
+    >
+      Warning: this API is now obsolete. {deprecatedMessage && _extractCodeBlocks(deprecatedMessage)}
+    </Text>
+  ) : (
+    undefined
+  );
+};
 
-const referencesTableCell = (text: string | JSX.Element[], deprecated: boolean) => {
+const referencesTableCell = (text: string, deprecated?: boolean, deprecatedMessage?: string) => {
   return (
     <>
-      {deprecated && (
-        <Text
-          block
-          variant="small"
-          styles={{
-            root: {
-              backgroundColor: DEPRECATED_COLOR,
-              padding: 10,
-              borderRadius: 2,
-              marginBottom: text ? '1em' : undefined
-            }
-          }}
-        >
-          Warning: this API is now obsolete.
-        </Text>
-      )}
-      <Text block variant="small">
-        {text}
+      {deprecated && renderDeprecatedMessage(deprecated, deprecatedMessage)}
+      <Text block variant="small" style={{ marginTop: deprecated ? '1em' : undefined }}>
+        {_extractCodeBlocks(text)}
       </Text>
     </>
   );
@@ -80,56 +97,44 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
   };
 
   private _baseUrl: string;
-  private _defaultColumns: IColumn[];
+  private _propertyColumns: IColumn[];
   private _methodColumns: IColumn[];
-  private _enumColumns: IColumn[];
+  private _properties: IApiInterfaceProperty[] | IApiEnumProperty[];
+  private _methods: IMethod[] | undefined;
+  private _isEnum: boolean = false;
+  private _isClass: boolean = false;
+  private _isTypeAlias: boolean = false;
 
   constructor(props: IApiReferencesTableProps) {
     super(props);
 
-    if (props.renderAsEnum) {
-      const properties = (props.properties as IApiEnumProperty[])
+    const { properties, methods, renderAs } = props;
+
+    if (renderAs === 'enum' || props.renderAsEnum) {
+      this._properties = (properties as IApiEnumProperty[])
         .sort((a: IApiEnumProperty, b: IApiEnumProperty) => (a.value < b.value ? -1 : a.value > b.value ? 1 : 0))
         .map((prop: IApiEnumProperty) => ({ ...prop, key: prop.name }));
 
-      this.state = {
-        properties,
-        isEnum: true,
-        isClass: false,
-        isTypeAlias: false
-      };
-    } else if (props.renderAsClass) {
-      const members = (props.properties as IApiInterfaceProperty[])
-        .sort((a: IApiInterfaceProperty, b: IApiInterfaceProperty) => (a.name < b.name ? -1 : a.name > b.name ? 1 : 0))
-        .map((prop: IApiInterfaceProperty) => ({ ...prop, key: prop.name }));
-
-      const methods = (props.methods as IMethod[])
-        .sort((a: IMethod, b: IMethod) => (a.name < b.name ? -1 : a.name > b.name ? 1 : 0))
-        .map((prop: IMethod) => ({ ...prop, key: prop.name }));
-
-      this.state = {
-        properties: members,
-        isEnum: false,
-        isClass: true,
-        isTypeAlias: false,
-        methods: methods
-      };
+      this._isEnum = true;
     } else {
-      const properties = (props.properties as IApiInterfaceProperty[])
+      this._properties = (properties as IApiInterfaceProperty[])
         .sort((a: IApiInterfaceProperty, b: IApiInterfaceProperty) => (a.name < b.name ? -1 : a.name > b.name ? 1 : 0))
         .map((prop: IApiInterfaceProperty) => ({ ...prop, key: prop.name }));
 
-      this.state = {
-        properties,
-        isEnum: !!props.renderAsEnum,
-        isClass: !!props.renderAsClass,
-        isTypeAlias: !!props.renderAsTypeAlias
-      };
+      this._isClass = !!(renderAs === 'class' || props.renderAsClass);
+      this._isTypeAlias = !!(renderAs === 'typeAlias' || props.renderAsTypeAlias);
+
+      if (this._isClass) {
+        // Ensure the constructor is first
+        this._methods = methods!
+          .sort((a: IMethod, b: IMethod) => (a.name < b.name || a.name === 'constructor' ? -1 : a.name > b.name ? 1 : 0))
+          .map((prop: IMethod) => ({ ...prop, key: prop.name }));
+      }
     }
 
     this._baseUrl = getCurrentUrl();
 
-    this._defaultColumns = [
+    this._propertyColumns = [
       {
         key: 'name',
         name: 'Name',
@@ -142,30 +147,46 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
         onRender: this.createRenderCellInterface('name'),
         columnActionsMode: ColumnActionsMode.disabled
       },
-      {
-        key: 'type',
-        name: 'Type',
-        fieldName: 'type',
-        minWidth: 130,
-        maxWidth: 150,
-        isCollapsible: false,
-        isResizable: true,
-        isMultiline: true,
-        onRender: this.createRenderCellType('typeTokens'),
-        columnActionsMode: ColumnActionsMode.disabled
-      },
-      {
-        key: 'defaultValue',
-        name: 'Default value',
-        fieldName: 'defaultValue',
-        minWidth: 130,
-        maxWidth: 150,
-        isCollapsible: false,
-        isResizable: true,
-        isMultiline: true,
-        onRender: this.createRenderCellInterface('defaultValue'),
-        columnActionsMode: ColumnActionsMode.disabled
-      },
+      ...(this._isEnum
+        ? [
+            {
+              key: 'value',
+              name: 'Value',
+              fieldName: 'value',
+              minWidth: 100,
+              maxWidth: 200,
+              isCollapsible: false,
+              isResizable: true,
+              onRender: this.createRenderCellEnum('value'),
+              columnActionsMode: ColumnActionsMode.disabled
+            }
+          ]
+        : [
+            {
+              key: 'type',
+              name: 'Type',
+              fieldName: 'type',
+              minWidth: 130,
+              maxWidth: 150,
+              isCollapsible: false,
+              isResizable: true,
+              isMultiline: true,
+              onRender: this.createRenderCellType(),
+              columnActionsMode: ColumnActionsMode.disabled
+            },
+            {
+              key: 'defaultValue',
+              name: 'Default value',
+              fieldName: 'defaultValue',
+              minWidth: 130,
+              maxWidth: 150,
+              isCollapsible: false,
+              isResizable: true,
+              isMultiline: true,
+              onRender: this.createRenderCellInterface('defaultValue'),
+              columnActionsMode: ColumnActionsMode.disabled
+            }
+          ]),
       {
         key: 'description',
         name: 'Description',
@@ -202,7 +223,7 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
         isCollapsible: false,
         isResizable: true,
         isMultiline: true,
-        onRender: this.createRenderCellSignature('typeTokens'),
+        onRender: this.createRenderCellType(),
         columnActionsMode: ColumnActionsMode.disabled
       },
       {
@@ -218,166 +239,100 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
         columnActionsMode: ColumnActionsMode.disabled
       }
     ];
-
-    this._enumColumns = [
-      {
-        key: 'name',
-        name: 'Name',
-        fieldName: 'name',
-        minWidth: 150,
-        maxWidth: 250,
-        isCollapsible: false,
-        isRowHeader: true,
-        isResizable: true,
-        onRender: this.createRenderCellEnum('name')
-      },
-      {
-        key: 'value',
-        name: 'Value',
-        fieldName: 'value',
-        minWidth: 100,
-        maxWidth: 200,
-        isCollapsible: false,
-        isResizable: true,
-        onRender: this.createRenderCellEnum('value')
-      },
-      {
-        key: 'description',
-        name: 'Description',
-        fieldName: 'description',
-        minWidth: 300,
-        maxWidth: 400,
-        isCollapsible: false,
-        isResizable: true,
-        isMultiline: true,
-        onRender: this.createRenderCellEnum('description')
-      }
-    ];
   }
 
   public render(): JSX.Element | null {
-    const { description, extendsTokens } = this.props;
-    const { properties, isEnum, isClass } = this.state;
+    const { extendsTokens, deprecated, deprecatedMessage } = this.props;
+    const hasProperties = this._properties.length > 0;
+    const hasMethods = this._methods && this._methods.length > 0;
+    const description =
+      (this.props.description || '').trim() ||
+      // If this is an empty table with no description, add something basic to make clear that
+      // the empty heading is intentional
+      (!this._isTypeAlias && !hasProperties && !hasMethods ? '(No properties)' : undefined);
 
     return (
-      <Stack tokens={{ childrenGap: MEDIUM_GAP_SIZE }}>
+      <Stack className={rootClass} tokens={{ childrenGap: MEDIUM_GAP_SIZE }}>
         <Stack tokens={{ childrenGap: SMALL_GAP_SIZE }}>
           {this._renderTitle()}
+          {renderDeprecatedMessage(deprecated, deprecatedMessage)}
           {(description || (extendsTokens && extendsTokens.length > 0)) && (
             <Stack tokens={{ childrenGap: XSMALL_GAP_SIZE }}>
-              {this._renderDescription()}
-              {this._renderExtends()}
+              {description && <Markdown>{description}</Markdown>}
+              {extendsTokens && this._parseILinkTokens(true, extendsTokens)}
             </Stack>
           )}
         </Stack>
-        {isClass
-          ? this._renderClass()
-          : properties.length >= 1 && (
-              <DetailsList
-                selectionMode={SelectionMode.none}
-                layoutMode={DetailsListLayoutMode.justified}
-                items={properties}
-                columns={isEnum ? this._enumColumns : this._defaultColumns}
-                onRenderRow={this._onRenderRow}
-                onShouldVirtualize={this._onShouldVirtualize}
-              />
-            )}
+        {this._isClass ? (
+          this._renderClass()
+        ) : hasProperties ? (
+          <DetailsList
+            selectionMode={SelectionMode.none}
+            layoutMode={DetailsListLayoutMode.justified}
+            items={this._properties}
+            columns={this._propertyColumns}
+            onRenderRow={this._onRenderRow}
+            onShouldVirtualize={this._onShouldVirtualize}
+          />
+        ) : (
+          undefined
+        )}
       </Stack>
     );
   }
 
-  private renderCell = (text: string, deprecated: boolean = false) => {
-    // When the text is passed to this function, it has had newline characters removed,
-    // so the regex will match backtick sequences that span multiple lines.
-    let regexResult: RegExpExecArray | null;
-    const codeBlocks: { index: number; text: string }[] = [];
-    while ((regexResult = backticksRegex.exec(text)) !== null) {
-      codeBlocks.push({
-        index: regexResult.index,
-        text: regexResult[0]
-      });
+  private renderCell = (
+    item: IApiInterfaceProperty | IApiEnumProperty | IMethod,
+    property: 'name' | 'description' | 'defaultValue' | 'value'
+  ) => {
+    let text = (item as any)[property] || ''; // tslint:disable-line:no-any
+    // Format property names and defaults as code for easier reading
+    if (property !== 'description' && text.indexOf('`') === -1) {
+      text = '`' + text + '`';
     }
 
-    if (codeBlocks.length === 0) {
-      return referencesTableCell(text, deprecated);
+    // For description only, render a message if the property is deprecated.
+    if (property === 'description') {
+      return referencesTableCell(text, item.deprecated, item.deprecatedMessage);
     }
-
-    const textElements = this._extractCodeBlocks(text, codeBlocks);
-
-    return referencesTableCell(textElements, deprecated);
+    return referencesTableCell(text);
   };
 
-  private renderCellType = (typeTokens: ILinkToken[]) => {
-    return this._parseILinkTokens(false, typeTokens);
-  };
-
-  private createRenderCellEnum = (propertyName: keyof IApiEnumProperty) => (item: IApiEnumProperty) => this.renderCell(item[propertyName]);
+  private createRenderCellEnum = (propertyName: 'name' | 'description' | 'value') => (item: IApiEnumProperty) =>
+    this.renderCell(item, propertyName);
 
   private createRenderCellInterface = (propertyName: 'name' | 'description' | 'defaultValue') => (item: IApiInterfaceProperty) =>
-    this.renderCell(item[propertyName], propertyName === 'description' && item.deprecated);
+    this.renderCell(item, propertyName);
 
-  private createRenderCellType = (propertyName: 'typeTokens') => (item: IApiInterfaceProperty) => this.renderCellType(item[propertyName]);
-
-  private createRenderCellSignature = (propertyName: 'typeTokens') => (item: IMethod) => this.renderCellType(item[propertyName]);
-
-  /**
-   * Loops through text and places code blocks in code elements
-   */
-  private _extractCodeBlocks(text: string, codeBlocks: { index: number; text: string }[]): JSX.Element[] {
-    const textElements: JSX.Element[] = [];
-
-    let codeIndex = 0;
-    let textIndex = 0;
-    let key = 0;
-    while (textIndex < text.length && codeIndex < codeBlocks.length) {
-      const codeBlock = codeBlocks[codeIndex];
-      if (textIndex < codeBlock.index) {
-        const str = text.substring(textIndex, codeBlock.index);
-        textElements.push(<span key={key}>{str}</span>);
-        textIndex += str.length;
-      } else {
-        textElements.push(<code key={key}>{codeBlock.text.substring(1, codeBlock.text.length - 1)}</code>);
-        codeIndex++;
-        textIndex += codeBlock.text.length;
-      }
-      key++;
-    }
-    if (textIndex < text.length) {
-      textElements.push(<span key={key}>{text.substring(textIndex, text.length)}</span>);
-    }
-
-    return textElements;
-  }
+  private createRenderCellType = () => (item: IApiInterfaceProperty | IMethod) => this._parseILinkTokens(false, item.typeTokens);
 
   private _onShouldVirtualize = (): boolean => {
     return false;
   };
 
   private _renderClass(): JSX.Element | undefined {
-    const { properties, methods } = this.state;
-
     return (
       <Stack tokens={{ childrenGap: MEDIUM_GAP_SIZE }}>
-        {properties && properties.length > 0 && (
+        {this._properties.length > 0 && (
           <Stack tokens={{ childrenGap: SMALL_GAP_SIZE }}>
             <Text variant={'medium'}>Members</Text>
             <DetailsList
               selectionMode={SelectionMode.none}
               layoutMode={DetailsListLayoutMode.justified}
-              items={properties}
-              columns={this._defaultColumns}
+              items={this._properties}
+              columns={this._propertyColumns}
               onRenderRow={this._onRenderRow}
               onShouldVirtualize={this._onShouldVirtualize}
             />
           </Stack>
         )}
-        {methods && methods.length > 0 && (
+        {this._methods && this._methods.length > 0 && (
           <Stack tokens={{ childrenGap: SMALL_GAP_SIZE }}>
             <Text variant={'medium'}>Methods</Text>
             <DetailsList
               selectionMode={SelectionMode.none}
               layoutMode={DetailsListLayoutMode.justified}
-              items={methods}
+              items={this._methods}
               columns={this._methodColumns}
               onRenderRow={this._onRenderRow}
               onShouldVirtualize={this._onShouldVirtualize}
@@ -386,18 +341,6 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
         )}
       </Stack>
     );
-  }
-
-  private _renderExtends(): JSX.Element | undefined {
-    const { extendsTokens } = this.props;
-
-    return this._parseILinkTokens(true, extendsTokens);
-  }
-
-  private _renderDescription(): JSX.Element | undefined {
-    const { description } = this.props;
-
-    return description ? <Markdown>{description}</Markdown> : undefined;
   }
 
   private _renderTitle(): JSX.Element | undefined {
@@ -413,43 +356,23 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
   }
 
   private _onRenderRow = (props: IDetailsRowProps, defaultRender?: IRenderFunction<IDetailsRowProps>): JSX.Element => {
-    const rowStyles: Partial<IDetailsRowStyles> = {
-      root: {
-        selectors: {
-          ':hover': {
-            background: 'none'
-          }
-        }
-      },
-      isMultiline: {
-        wordBreak: 'break-word'
-      }
-    };
-
     return <DetailsRow {...props} styles={rowStyles} />;
   };
 
   private _parseILinkTokens(extend: boolean, linkTokens?: ILinkToken[]): JSX.Element | undefined {
-    const { isTypeAlias } = this.state;
-
     if (linkTokens && linkTokens.length > 0) {
-      if (isTypeAlias) {
+      if (this._isTypeAlias) {
         return (
           <Text variant={'medium'}>
-            <code>{this._parseILinkTokensHelper(linkTokens, false)}</code>
+            <code>{this._parseILinkTokensHelper(linkTokens)}</code>
           </Text>
         );
       } else if (extend) {
-        return (
-          <Text variant={'small'}>
-            {'Extends '}
-            {this._parseILinkTokensHelper(linkTokens, true)}
-          </Text>
-        );
+        return <Text variant={'small'}>Extends {this._parseILinkTokensHelper(linkTokens)}</Text>;
       } else {
         return (
           <Text variant={'small'}>
-            <code>{this._parseILinkTokensHelper(linkTokens, false)}</code>
+            <code>{this._parseILinkTokensHelper(linkTokens)}</code>
           </Text>
         );
       }
@@ -458,7 +381,7 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
     return undefined;
   }
 
-  private _parseILinkTokensHelper = (linkTokens: ILinkToken[], extend: boolean): JSX.Element | undefined => {
+  private _parseILinkTokensHelper = (linkTokens: ILinkToken[]): JSX.Element | undefined => {
     return (
       <>
         {linkTokens.map((token: ILinkToken, index: number) => {
@@ -500,11 +423,11 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
 
             return (
               <Link href={href} key={token.text + index} target={newTab ? '_blank' : undefined}>
-                {extend ? token.text : <code>{token.text}</code>}
+                <code>{token.text}</code>
               </Link>
             );
           } else if (token.text) {
-            return extend ? token.text : <code key={token.text + index}>{token.text}</code>;
+            return <code key={token.text + index}>{token.text}</code>;
           } else {
             return undefined;
           }
@@ -512,4 +435,31 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
       </>
     );
   };
+}
+
+/**
+ * Loops through text and places code blocks in code elements
+ */
+function _extractCodeBlocks(text: string): React.ReactNode[] {
+  // Unescape some characters
+  text = (text || '').replace(/\\([@<>{}])/g, '$1');
+
+  const result: React.ReactNode[] = [];
+  let index = 0;
+  let inCodeBlock = false;
+  while (index < text.length) {
+    let sectionEnd = text.indexOf('`', index);
+    if (sectionEnd === -1) {
+      sectionEnd = text.length;
+    }
+    const sectionContent = text.substring(index, sectionEnd);
+    if (inCodeBlock) {
+      result.push(<code key={index}>{sectionContent}</code>);
+    } else {
+      result.push(sectionContent);
+    }
+    inCodeBlock = !inCodeBlock;
+    index = sectionEnd + 1;
+  }
+  return result;
 }

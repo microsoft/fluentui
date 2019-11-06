@@ -184,7 +184,8 @@
       "env": {
         "NODE_ENV": "development"
       },
-      "sourceMaps": true
+      "sourceMaps": true,
+      "console": "integratedTerminal"
     }
   ]
 }

@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Update API doc generation to handle deprecated messages",
+  "packageName": "@uifabric/example-app-base",
+  "email": "elcraig@microsoft.com",
+  "commit": "3922bd804a64f9b2c25ff7c1bc7df911b898e69d",
+  "date": "2019-10-29T00:07:43.200Z"
+}
