@@ -48,7 +48,6 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
 
   public render(): JSX.Element {
     const {
-      className,
       items,
       overflowItems,
       farItems,
@@ -71,18 +70,17 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
 
     // ResizeGroup will render these attributes to the root <div>.
     // TODO We may need to elevate classNames from <FocusZone> into <ResizeGroup> ?
-    const nativeProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties, ['data', 'className', 'styles']);
+    const nativeProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties);
 
     return (
       <ResizeGroup
+        {...nativeProps}
         componentRef={this._resizeGroup}
-        className={className}
         data={commandBarData}
         onReduceData={onReduceData}
         onGrowData={onGrowData}
         onRenderData={this._onRenderData}
         dataDidRender={dataDidRender}
-        {...nativeProps}
       />
     );
   }
