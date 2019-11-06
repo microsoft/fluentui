@@ -36,10 +36,7 @@ const styles = mergeStyleSets({
       borderLeft: '3px solid ' + theme.palette.themePrimary,
       paddingLeft: 27
     }
-  ],
-  selected: {
-    background: 'lightblue'
-  }
+  ]
 });
 
 export interface IListScrollingExampleProps {
