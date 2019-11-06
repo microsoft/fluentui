@@ -11,7 +11,10 @@ const styles = mergeStyleSets({
   buttonArea: {
     verticalAlign: 'top',
     display: 'inline-block',
-    textAlign: 'center'
+    textAlign: 'center',
+    margin: '0 100px',
+    minWidth: 130,
+    height: 32
   },
   callout: {
     maxWidth: 300
@@ -69,7 +72,7 @@ export class CalloutBasicExample extends React.Component<{}, ICalloutBasicExampl
     const { isCalloutVisible } = this.state;
 
     return (
-      <div>
+      <>
         <div className={styles.buttonArea} ref={this._menuButtonElement}>
           <DefaultButton onClick={this._onShowMenuClicked} text={isCalloutVisible ? 'Hide callout' : 'Show callout'} />
         </div>
@@ -90,11 +93,9 @@ export class CalloutBasicExample extends React.Component<{}, ICalloutBasicExampl
               </p>
             </div>
             <div className={styles.inner}>
-              <div className="ms-CalloutExample-content">
-                <p className={styles.subtext} id={this._descriptionId}>
-                  Message body is optional. If help documentation is available, consider adding a link to learn more at the bottom.
-                </p>
-              </div>
+              <p className={styles.subtext} id={this._descriptionId}>
+                Message body is optional. If help documentation is available, consider adding a link to learn more at the bottom.
+              </p>
               <div className={styles.actions}>
                 <Link className={styles.link} href="http://microsoft.com" target="_blank">
                   Go to microsoft
@@ -103,7 +104,7 @@ export class CalloutBasicExample extends React.Component<{}, ICalloutBasicExampl
             </div>
           </Callout>
         )}
-      </div>
+      </>
     );
   }
 

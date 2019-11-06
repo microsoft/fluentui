@@ -37,7 +37,10 @@ const styles = mergeStyleSets({
   buttonArea: {
     verticalAlign: 'top',
     display: 'inline-block',
-    textAlign: 'center'
+    textAlign: 'center',
+    margin: '0 100px',
+    minWidth: 130,
+    height: 32
   },
   configArea: {
     minWidth: '300px',
@@ -45,9 +48,6 @@ const styles = mergeStyleSets({
   },
   callout: {
     maxWidth: 300
-  },
-  calloutExampleButton: {
-    width: '100%'
   },
   header: {
     padding: '18px 24px 12px'
@@ -63,30 +63,7 @@ const styles = mergeStyleSets({
   inner: {
     height: '100%',
     padding: '0 24px 20px'
-  },
-  actions: {
-    position: 'relative',
-    marginTop: 20,
-    width: '100%',
-    whiteSpace: 'nowrap'
-  },
-  buttons: {
-    padding: '0 24px 12px'
-  },
-  subtext: [
-    theme.fonts.small,
-    {
-      margin: 0,
-      color: theme.palette.neutralPrimary,
-      fontWeight: FontWeights.semilight
-    }
-  ],
-  link: [
-    theme.fonts.medium,
-    {
-      color: theme.palette.neutralPrimary
-    }
-  ]
+  }
 });
 
 export class CalloutCoverExample extends React.Component<{}, ICalloutCoverExampleState> {
@@ -110,7 +87,7 @@ export class CalloutCoverExample extends React.Component<{}, ICalloutCoverExampl
     // ms-Callout-smallbeak is used in this directional example to reflect all the positions.
     // Large beak will disable some position to avoid beak over the callout edge.
     return (
-      <div className="ms-CalloutExample">
+      <>
         <div className={styles.configArea}>
           <Dropdown
             label="Directional hint"
@@ -137,13 +114,11 @@ export class CalloutCoverExample extends React.Component<{}, ICalloutCoverExampl
               <p className={styles.title}>I'm covering the target!</p>
             </div>
             <div className={styles.inner}>
-              <div className="ms-CalloutExample-content">
-                <DefaultButton onClick={this._onShowMenuClicked} text="Click to dismiss" />
-              </div>
+              <DefaultButton onClick={this._onShowMenuClicked} text="Click to dismiss" />
             </div>
           </Callout>
         ) : null}
-      </div>
+      </>
     );
   }
 

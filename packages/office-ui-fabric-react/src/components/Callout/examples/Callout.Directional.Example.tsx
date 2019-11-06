@@ -42,7 +42,10 @@ const styles = mergeStyleSets({
   buttonArea: {
     verticalAlign: 'top',
     display: 'inline-block',
-    textAlign: 'center'
+    textAlign: 'center',
+    margin: '0 100px',
+    minWidth: 130,
+    height: 32
   },
   configArea: {
     minWidth: '300px',
@@ -112,7 +115,7 @@ export class CalloutDirectionalExample extends React.Component<{}, ICalloutDirec
     //  ms-Callout-smallbeak is used in this directional example to reflect all the positions.
     //  Large beak will disable some position to avoid beak over the callout edge.
     return (
-      <div className="ms-CalloutExample">
+      <>
         <div className={styles.configArea}>
           <Checkbox styles={{ root: { margin: '10px 0' } }} label="Show beak" checked={isBeakVisible} onChange={this._onShowBeakChange} />
           <Slider max={30} label="Gap Space" min={0} defaultValue={0} onChange={this._onGapSlider} />
@@ -146,7 +149,7 @@ export class CalloutDirectionalExample extends React.Component<{}, ICalloutDirec
               <p className={styles.title}>All of your favorite people</p>
             </div>
             <div className={styles.inner}>
-              <div className="ms-CalloutExample-content">
+              <div>
                 <p className={styles.subtext}>
                   Message body is optional. If help documentation is available, consider adding a link to learn more at the bottom.
                 </p>
@@ -154,7 +157,7 @@ export class CalloutDirectionalExample extends React.Component<{}, ICalloutDirec
             </div>
           </Callout>
         ) : null}
-      </div>
+      </>
     );
   }
 

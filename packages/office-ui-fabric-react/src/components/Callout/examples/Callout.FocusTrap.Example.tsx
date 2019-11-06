@@ -20,7 +20,10 @@ const styles = mergeStyleSets({
   buttonArea: {
     verticalAlign: 'top',
     display: 'inline-block',
-    textAlign: 'center'
+    textAlign: 'center',
+    margin: '0 100px',
+    minWidth: 130,
+    height: 32
   },
   callout: {
     maxWidth: 300
@@ -70,7 +73,7 @@ export class CalloutFocusTrapExample extends React.Component<{}, ICalloutFocusTr
     const { isCalloutVisible } = this.state;
 
     return (
-      <div className="ms-CalloutExample">
+      <>
         <div className={styles.buttonArea} ref={menuButton => (this._menuButtonElement = menuButton)}>
           <DefaultButton onClick={this._onDismiss} text={isCalloutVisible ? 'Hide callout' : 'Show callout'} />
         </div>
@@ -88,7 +91,7 @@ export class CalloutFocusTrapExample extends React.Component<{}, ICalloutFocusTr
                 <p className={styles.title}>Callout title here</p>
               </div>
               <div className={styles.inner}>
-                <div className="ms-CalloutExample-content">
+                <div>
                   <p className={styles.subtext}>
                     Message body is optional. If help documentation is available, consider adding a link to learn more at the bottom.
                   </p>
@@ -103,7 +106,7 @@ export class CalloutFocusTrapExample extends React.Component<{}, ICalloutFocusTr
             </FocusTrapCallout>
           </div>
         ) : null}
-      </div>
+      </>
     );
   }
 
