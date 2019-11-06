@@ -277,6 +277,7 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
               {
                 align-items: stretch;
                 background: #ffffff;
+                border-color: #f3f2f1;
                 border-radius: 2px;
                 border: 1px solid #8a8886;
                 box-shadow: none;
@@ -295,14 +296,11 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
                 padding-top: 0px;
                 position: relative;
               }
+              &:hover {
+                border-color: #f3f2f1;
+              }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
-              }
-              &:after {
-                border-color: #f3f2f1;
-              }
-              &:hover:after {
-                border-color: #f3f2f1;
               }
         >
           <input
@@ -1680,6 +1678,7 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
               {
                 align-items: stretch;
                 background: #ffffff;
+                border-color: #f3f2f1;
                 border-radius: 2px;
                 border: 1px solid #8a8886;
                 box-shadow: none;
@@ -1698,14 +1697,11 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
                 padding-top: 0px;
                 position: relative;
               }
+              &:hover {
+                border-color: #f3f2f1;
+              }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
-              }
-              &:after {
-                border-color: #f3f2f1;
-              }
-              &:hover:after {
-                border-color: #f3f2f1;
               }
         >
           <input

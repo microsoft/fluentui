@@ -305,6 +305,7 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
               {
                 align-items: stretch;
                 background: #ffffff;
+                border-color: #f3f2f1;
                 border-radius: 2px;
                 border: 1px solid #8a8886;
                 box-shadow: none;
@@ -323,14 +324,11 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
                 padding-top: 0px;
                 position: relative;
               }
+              &:hover {
+                border-color: #f3f2f1;
+              }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
-              }
-              &:after {
-                border-color: #f3f2f1;
-              }
-              &:hover:after {
-                border-color: #f3f2f1;
               }
         >
           <div
