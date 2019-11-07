@@ -201,9 +201,7 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
         height: 'auto',
         display: 'flex'
       },
-      borderless && {
-        border: 'none'
-      },
+
       !focused &&
         !disabled && {
           selectors: {
@@ -224,6 +222,18 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
 
         cursor: 'default'
       },
+      borderless && {
+        border: 'none'
+      },
+      borderless &&
+        focused && {
+          border: 'none',
+          selectors: {
+            ':after': {
+              border: 'none'
+            }
+          }
+        },
       underlined && {
         flex: '1 1 0px',
         border: 'none',
