@@ -21,14 +21,14 @@ const styles = mergeStyleSets({
     paddingTop: 20
   },
   slider: {
-    margin: '10px 0 10px 0'
+    margin: '10px 0'
   },
   checkbox: {
     paddingTop: 15
   },
   dropdown: {
     paddingTop: 0,
-    margin: '10px 0 10px 0'
+    margin: '10px 0'
   }
 });
 
