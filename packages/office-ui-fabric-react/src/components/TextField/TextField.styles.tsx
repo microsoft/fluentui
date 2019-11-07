@@ -362,7 +362,7 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
       {
         pointerEvents: 'none',
         position: 'absolute',
-        bottom: 7,
+        bottom: 6,
         right: 8,
         top: 'auto',
         fontSize: IconFontSizes.medium,
