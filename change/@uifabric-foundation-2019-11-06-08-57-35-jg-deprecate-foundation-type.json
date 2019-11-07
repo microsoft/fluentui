@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Deprecate IPropsWithChildren type that is redundant with React.PropsWithChildren.",
-  "packageName": "@uifabric/foundation",
-  "email": "jagore@microsoft.com",
-  "commit": "94cd8074a7f306c79157de6c1910e9ee31608594",
-  "date": "2019-11-06T16:57:35.579Z"
-}

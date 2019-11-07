@@ -2,6 +2,37 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Thu, 07 Nov 2019 12:26:32 GMT",
+      "tag": "office-ui-fabric-react_v7.59.0",
+      "version": "7.59.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "TeachingBubble: Wrap contents in a FocusTrapZone to better support keyboard navigation.",
+            "author": "jdh@microsoft.com",
+            "commit": "0f58a30bfefe51982623152fb61b3363201a2f7d"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Fix modal keyboarding issue with respect to moving the modal",
+            "author": "sareiff@microsoft.com",
+            "commit": "dab659b13acfc6d3deefc3ece2d243a4b9650f7c"
+          },
+          {
+            "comment": "Pass through div props to the rendered root of CommandBar.",
+            "author": "xinychen@microsoft.com",
+            "commit": "9c93008c22fc9aa53aa08319560a0c856c631007"
+          },
+          {
+            "comment": "Address BasePicker calls onResolveSuggestions callback when click.",
+            "author": "nif_tony@outlook.com",
+            "commit": "632dceadcbdc1cf387513137425699dc45780467"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 06 Nov 2019 12:34:07 GMT",
       "tag": "office-ui-fabric-react_v7.58.0",
       "version": "7.58.0",
