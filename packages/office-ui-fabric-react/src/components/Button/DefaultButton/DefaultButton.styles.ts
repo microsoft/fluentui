@@ -2,7 +2,7 @@ import { IButtonStyles } from '../Button.types';
 import { ITheme, concatStyleSets, FontWeights } from '../../../Styling';
 import { memoizeFunction } from '../../../Utilities';
 import { getStyles as getBaseButtonStyles } from '../BaseButton.styles';
-import { getPrimarySplitStyles, getStandardSplitStyles } from '../SplitButton/SplitButton.styles';
+import { getPrimarySplitButtonStyles, getStandardSplitButtonStyles } from '../SplitButton/SplitButton.styles';
 
 import { primaryStyles, standardStyles } from '../ButtonThemes';
 
@@ -26,7 +26,7 @@ export const getStyles = memoizeFunction(
       baseButtonStyles,
       defaultButtonStyles,
       primary ? primaryStyles(theme) : standardStyles(theme),
-      primary ? getPrimarySplitStyles(theme) : getStandardSplitStyles(theme),
+      primary ? getPrimarySplitButtonStyles(theme) : getStandardSplitButtonStyles(theme),
       customStyles
     )!;
   }

@@ -160,7 +160,7 @@ const splitButtonContainerDisabled: IStyle = {
   }
 };
 
-export const getStandardSplitStyles = memoizeFunction(
+export const getStandardSplitButtonStyles = memoizeFunction(
   (theme: ITheme, customStyles?: IButtonStyles): IButtonStyles => {
     const { effects, palette: p, semanticColors: s } = theme;
 
@@ -258,7 +258,7 @@ export const getStandardSplitStyles = memoizeFunction(
   }
 );
 
-export const getPrimarySplitStyles = memoizeFunction(
+export const getPrimarySplitButtonStyles = memoizeFunction(
   (theme: ITheme, customStyles?: IButtonStyles): IButtonStyles => {
     const { effects, palette: p, semanticColors: s } = theme;
 
