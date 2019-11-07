@@ -59,7 +59,7 @@ exports[`Component Examples renders CommandBar.Basic.Example.tsx correctly 1`] =
                   flex-wrap: nowrap;
                   position: relative;
                 }
-            role="presentation"
+            role="menubar"
           >
             <div
               className=
@@ -974,7 +974,7 @@ exports[`Component Examples renders CommandBar.Basic.Example.tsx correctly 1`] =
                   flex-wrap: nowrap;
                   position: relative;
                 }
-            role="presentation"
+            role="menubar"
           >
             <div
               className=
