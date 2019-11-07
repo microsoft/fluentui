@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Removed SCSS for List Scrolling Example in favour of mergeStyleSets pattern",
+  "packageName": "office-ui-fabric-react",
+  "email": "pandasa123@gmail.com",
+  "commit": "b033486a1ffa3a24e0d2e98d5ea5ee7dc61e498f",
+  "date": "2019-11-06T20:07:38.288Z"
+}
