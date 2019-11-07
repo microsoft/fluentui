@@ -1,15 +1,50 @@
 import * as React from 'react';
-import { Modal, IDragOptions } from 'office-ui-fabric-react/lib/Modal';
-import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { getId } from 'office-ui-fabric-react/lib/Utilities';
-import * as styles from './Modal.Example.scss';
-import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
-import { ContextualMenu } from 'office-ui-fabric-react/lib/ContextualMenu';
+import {
+  getTheme,
+  mergeStyleSets,
+  FontWeights,
+  ContextualMenu,
+  Checkbox,
+  DefaultButton,
+  Modal,
+  IDragOptions
+} from 'office-ui-fabric-react';
 
 export interface IModalBasicExampleState {
   showModal: boolean;
   isDraggable: boolean;
 }
+
+// Themed styles for the example.
+const theme = getTheme();
+const styles = mergeStyleSets({
+  container: {
+    height: '80vh',
+    width: '80vw',
+    display: 'flex',
+    flexFlow: 'column nowrap',
+    alignItems: 'stretch'
+  },
+  header: [
+    theme.fonts.xLargePlus,
+    {
+      flex: '1 1 auto',
+      background: theme.palette.themePrimary,
+      color: theme.palette.white,
+      display: 'flex',
+      alignItems: 'center',
+      fontWeight: FontWeights.semibold,
+      padding: '0 28px',
+      minHeight: '40px'
+    }
+  ],
+  body: {
+    flex: '4 4 auto',
+    padding: '5px 28px',
+    overflowY: 'hidden'
+  }
+});
 
 export class ModalBasicExample extends React.Component<{}, IModalBasicExampleState> {
   public state: IModalBasicExampleState = {
