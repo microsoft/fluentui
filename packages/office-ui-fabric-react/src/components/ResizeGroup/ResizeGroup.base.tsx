@@ -4,6 +4,8 @@ import { IResizeGroupProps, ResizeGroupDirection } from './ResizeGroup.types';
 
 const RESIZE_DELAY = 16;
 
+type ResizeGroupDivKey = 'KeyOne' | 'KeyTwo';
+
 export interface IResizeGroupState {
   /**
    * Final data used to render proper sized component
@@ -29,6 +31,16 @@ export interface IResizeGroupState {
    * to find a transformation of the data that makes everything fit.
    */
   resizeDirection?: 'grow' | 'shrink';
+
+  /**
+   * When we get new props, we typically first create a measure div and in the next render put this data into the rendered div
+   * (See the render function below)
+   *
+   * When we do this, React unmounts the measured div and its children fully and remounts all of them in the rendered div.
+   * To avoid this, we flip the keys to "fool" React so that it updates the previously measure div to be the render div
+   * instead of remounting.
+   */
+  measureDivKey?: ResizeGroupDivKey;
 }
 
 /**
@@ -265,6 +277,13 @@ export const getNextResizeGroupStateProvider = (measurementCache = getMeasuremen
       }
     }
 
+    if (nextState.renderedData !== currentState.renderedData) {
+      nextState = {
+        ...nextState,
+        measureDivKey: currentState.measureDivKey === 'KeyOne' ? 'KeyTwo' : 'KeyOne'
+      };
+    }
+
     return nextState;
   }
 
@@ -281,7 +300,8 @@ export const getNextResizeGroupStateProvider = (measurementCache = getMeasuremen
     return {
       dataToMeasure: { ...data },
       resizeDirection: 'grow',
-      measureContainer: true
+      measureContainer: true,
+      measureDivKey: 'KeyOne'
     };
   }
 
@@ -299,6 +319,26 @@ export const MeasuredContext = React.createContext({ isMeasured: false });
 // Styles for the hidden div used for measurement
 const hiddenDivStyles: React.CSSProperties = { position: 'fixed', visibility: 'hidden' };
 const hiddenParentStyles: React.CSSProperties = { position: 'relative' };
+
+export class Identity1 extends React.PureComponent<{ cref?: any; style?: any }> {
+  public render(): JSX.Element {
+    return (
+      <div ref={this.props.cref} {...this.props}>
+        {this.props.children}
+      </div>
+    );
+  }
+}
+
+export class Identity2 extends React.PureComponent<{ cref?: any; style?: any }> {
+  public render(): JSX.Element {
+    return (
+      <div ref={this.props.cref} {...this.props}>
+        {this.props.children}
+      </div>
+    );
+  }
+}
 
 export class ResizeGroupBase extends BaseComponent<IResizeGroupProps, IResizeGroupState> {
   private _nextResizeGroupStateProvider = getNextResizeGroupStateProvider();
@@ -335,20 +375,27 @@ export class ResizeGroupBase extends BaseComponent<IResizeGroupProps, IResizeGro
     // We only ever render the final content to the user. All measurements are done in a hidden div.
     // For the initial render, we want this to be as fast as possible, so we need to make sure that we only mount one version of the
     // component for measurement and the final render. For renders that update what is on screen, we want to make sure that
-    // there are no jarring effects such as the screen flashing as we apply scaling steps for meassurement. In the update case,
+    // there are no jarring effects such as the screen flashing as we apply scaling steps for measurement. In the update case,
     // we mount a second version of the component just for measurement purposes and leave the rendered content untouched until we know the
     // next state sto show to the user.
     return (
       <div {...divProps} className={className} ref={this._root}>
         <div style={hiddenParentStyles}>
           {dataNeedsMeasuring && !isInitialMeasure && (
-            <div style={hiddenDivStyles} ref={this._updateHiddenDiv}>
+            <div key={this.state.measureDivKey} style={hiddenDivStyles} ref={this._updateHiddenDiv}>
               <MeasuredContext.Provider value={{ isMeasured: true }}>{onRenderData(dataToMeasure)}</MeasuredContext.Provider>
             </div>
           )}
 
-          <div ref={this._initialHiddenDiv} style={isInitialMeasure ? hiddenDivStyles : undefined} data-automation-id="visibleContent">
-            {isInitialMeasure ? onRenderData(dataToMeasure) : renderedData && onRenderData(renderedData)}
+          <div
+            key={this.state.measureDivKey === 'KeyOne' ? 'KeyTwo' : 'KeyOne'}
+            ref={this._initialHiddenDiv}
+            style={isInitialMeasure ? hiddenDivStyles : undefined}
+            data-automation-id="visibleContent"
+          >
+            <MeasuredContext.Provider value={{ isMeasured: false }}>
+              {isInitialMeasure ? onRenderData(dataToMeasure) : renderedData && onRenderData(renderedData)}
+            </MeasuredContext.Provider>
           </div>
         </div>
       </div>
