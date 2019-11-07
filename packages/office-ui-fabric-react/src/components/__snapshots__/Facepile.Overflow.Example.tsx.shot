@@ -2,7 +2,11 @@
 
 exports[`Component Examples renders Facepile.Overflow.Example.tsx correctly 1`] = `
 <div
-  className="ms-FacepileExample"
+  className=
+
+      {
+        max-width: 300px;
+      }
 >
   <div
     className=
@@ -667,7 +671,11 @@ exports[`Component Examples renders Facepile.Overflow.Example.tsx correctly 1`] 
     </div>
   </div>
   <div
-    className="control"
+    className=
+
+        {
+          padding-top: 20px;
+        }
   >
     <div
       className=
@@ -680,6 +688,10 @@ exports[`Component Examples renders Facepile.Overflow.Example.tsx correctly 1`] 
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
             font-weight: 400;
+            margin-bottom: 10px;
+            margin-left: 0;
+            margin-right: 0;
+            margin-top: 10px;
             user-select: none;
           }
     >
@@ -932,7 +944,13 @@ exports[`Component Examples renders Facepile.Overflow.Example.tsx correctly 1`] 
     <div
       className=
           ms-Dropdown-container
-
+          {
+            margin-bottom: 10px;
+            margin-left: 0;
+            margin-right: 0;
+            margin-top: 10px;
+            padding-top: 0px;
+          }
     >
       <label
         className=
