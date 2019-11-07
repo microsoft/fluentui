@@ -92,7 +92,7 @@ exports[`Component Examples renders SpinButton.BasicWithIconDisabled.Example.tsx
 
           {
             background-color: #f3f2f1;
-            border-color: transparent;
+            border-color: #f3f2f1;
             border-radius: 2px;
             border: 1px solid #8a8886;
             box-sizing: border-box;
@@ -102,6 +102,7 @@ exports[`Component Examples renders SpinButton.BasicWithIconDisabled.Example.tsx
             height: 32px;
             min-width: 86px;
             pointer-events: none;
+            position: relative;
           }
           @media screen and (-ms-high-contrast: active){& {
             color: GrayText;
@@ -118,7 +119,7 @@ exports[`Component Examples renders SpinButton.BasicWithIconDisabled.Example.tsx
             ms-spinButton-input
             {
               background-color: #f3f2f1;
-              border-color: transparent;
+              border-color: #f3f2f1;
               border-radius: 2px 0 0 2px;
               border-style: none;
               box-shadow: none;
@@ -166,7 +167,7 @@ exports[`Component Examples renders SpinButton.BasicWithIconDisabled.Example.tsx
 
             {
               background-color: #f3f2f1;
-              border-color: transparent;
+              border-color: #f3f2f1;
               color: #a19f9d;
               cursor: default;
               display: block;

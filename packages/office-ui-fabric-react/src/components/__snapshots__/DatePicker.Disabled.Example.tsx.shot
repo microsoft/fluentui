@@ -68,7 +68,6 @@ exports[`Component Examples renders DatePicker.Disabled.Example.tsx correctly 1`
                 ms-TextField-fieldGroup
                 {
                   align-items: stretch;
-                  background-color: #f3f2f1;
                   background: #ffffff;
                   border-color: #f3f2f1;
                   border-radius: 2px;
@@ -89,6 +88,9 @@ exports[`Component Examples renders DatePicker.Disabled.Example.tsx correctly 1`
                   padding-top: 0px;
                   position: relative;
                 }
+                &:hover {
+                  border-color: #f3f2f1;
+                }
                 @media screen and (-ms-high-contrast: active){&:hover {
                   border-color: Highlight;
                 }
@@ -104,7 +106,7 @@ exports[`Component Examples renders DatePicker.Disabled.Example.tsx correctly 1`
                     -webkit-font-smoothing: antialiased;
                     background-color: #f3f2f1;
                     background: none;
-                    border-color: transparent;
+                    border-color: #f3f2f1;
                     border-radius: 0px;
                     border: none;
                     box-shadow: none;
@@ -310,7 +312,6 @@ exports[`Component Examples renders DatePicker.Disabled.Example.tsx correctly 1`
                 ms-TextField-fieldGroup
                 {
                   align-items: stretch;
-                  background-color: #f3f2f1;
                   background: #ffffff;
                   border-color: #f3f2f1;
                   border-radius: 2px;
@@ -331,6 +332,9 @@ exports[`Component Examples renders DatePicker.Disabled.Example.tsx correctly 1`
                   padding-top: 0px;
                   position: relative;
                 }
+                &:hover {
+                  border-color: #f3f2f1;
+                }
                 @media screen and (-ms-high-contrast: active){&:hover {
                   border-color: Highlight;
                 }
@@ -347,7 +351,7 @@ exports[`Component Examples renders DatePicker.Disabled.Example.tsx correctly 1`
                     -webkit-font-smoothing: antialiased;
                     background-color: #f3f2f1;
                     background: none;
-                    border-color: transparent;
+                    border-color: #f3f2f1;
                     border-radius: 0px;
                     border: none;
                     box-shadow: none;
@@ -441,7 +445,7 @@ exports[`Component Examples renders DatePicker.Disabled.Example.tsx correctly 1`
                     padding-bottom: 5px;
                     padding-left: 5px;
                     padding-right: 5px;
-                    padding-top: 5px;
+                    padding-top: 7px;
                     pointer-events: none;
                     position: absolute;
                     right: 4px;
