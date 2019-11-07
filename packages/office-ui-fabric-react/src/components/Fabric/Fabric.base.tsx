@@ -58,14 +58,12 @@ export class FabricBase extends React.Component<
 
   private _getClassNamesHelper(): IProcessedStyleSet<IFabricStyles> {
     const { className } = this.props;
-    if (this.props.theme) {
-      const classNames = getClassNames(getStyles, {
-        theme: this.props.theme,
-        className,
-        isFocusVisible: this.state.isFocusVisible
-      });
-      return classNames;
-    }
+    const classNames = getClassNames(getStyles, {
+      theme: this.props.theme!,
+      className,
+      isFocusVisible: this.state.isFocusVisible
+    });
+    return classNames;
   }
 
   private _onMouseDown = (ev: MouseEvent): void => {
