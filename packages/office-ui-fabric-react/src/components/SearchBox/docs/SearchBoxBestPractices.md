@@ -2,10 +2,6 @@
 
 When the user has clicked into the SearchBox, but has not entered any text, there is an opportunity to display "hint text" within the input field, explaining what a user can do next. This could prompt a user to search for specific type content, or explain the scope of the search. Examples include "type to search", "try searching for \<x\>", "search for a place" or "type to search in \<x location\>".
 
-## Autocomplete suggestions
-
-As the user enters a query string, they are provided with a dropdown of autocomplete suggestions or disambiguation options. This will help them expedite the input process and formulate an effective query. Recent search history, trending searches, contextual search suggestions, hints and tips are all good candidates for autocomplete content. In general, autocomplete suggestions have the user's input highlighted in some way (generally bolded) to indicate why it's being displayed. As the user enters more keystrokes, the suggestions update continuously/in real time. To see autocomplete suggestions, the user does not need to hit enter (execute a full search), as it is a lightweight way to get quick suggestions or results. If there are mixed result types within the autocomplete suggestions, provide visual indicators or grouping to help organize the information, making it easier to parse.
-
 ## Full search
 
 If a user hits "enter" after entering input, a full search is executed. Full searches often go to another "results" page, or change/filter the content of the current page to show only applicable content. The results can appear in any form that best communicates the content.
