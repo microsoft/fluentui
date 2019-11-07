@@ -2,14 +2,14 @@ import { IButtonStyles } from '../Button.types';
 import { ITheme, concatStyleSets, getFocusStyle, HighContrastSelector } from '../../../Styling';
 import { memoizeFunction } from '../../../Utilities';
 import { getStyles as getBaseButtonStyles } from '../BaseButton.styles';
-import { getStandardSplitStyles } from '../SplitButton/SplitButton.styles';
+import { getStandardSplitButtonStyles } from '../SplitButton/SplitButton.styles';
 
 import { ButtonGlobalClassNames } from '../BaseButton.classNames';
 
 export const getStyles = memoizeFunction(
   (theme: ITheme, customStyles?: IButtonStyles, focusInset?: string, focusColor?: string): IButtonStyles => {
     const baseButtonStyles: IButtonStyles = getBaseButtonStyles(theme);
-    const baseSplitButtonStyles: IButtonStyles = getStandardSplitStyles(theme);
+    const baseSplitButtonStyles: IButtonStyles = getStandardSplitButtonStyles(theme);
 
     const { palette: p, semanticColors } = theme;
 
