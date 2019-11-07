@@ -108,7 +108,6 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
           componentRef={this._resolveRef('_overflowSet')}
           className={css(this._classNames.primarySet)}
           doNotContainWithinFocusZone={true}
-          role={'presentation'}
           items={data.primaryItems}
           overflowItems={data.overflowItems.length ? data.overflowItems : undefined}
           onRenderItem={this._onRenderItem}
@@ -120,7 +119,6 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
           <OverflowSet
             className={css(this._classNames.secondarySet)}
             doNotContainWithinFocusZone={true}
-            role={'presentation'}
             items={data.farItems}
             onRenderItem={this._onRenderItem}
             onRenderOverflowButton={nullRender}
