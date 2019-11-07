@@ -105,6 +105,16 @@ export interface IMicroFeedbackProps
   dislikeIconTitle?: string;
 
   /**
+   * Defines a localized string for the aria label of the Like icon for the benefit of screen readers.
+   */
+  likeIconAriaLabel?: string;
+
+  /**
+   * Defines a localized string for the aria label of the Dislike icon for the benefit of screen readers.
+   */
+  dislikeIconAriaLabel?: string;
+
+  /**
    * Defines an optional question that is asked if Like is selected.
    */
   likeQuestion?: IMicroFeedbackQuestion;
