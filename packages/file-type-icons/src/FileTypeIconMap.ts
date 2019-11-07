@@ -392,6 +392,7 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
   spreadsheet: {
     extensions: ['odc', 'ods', 'gsheet', 'numbers']
   },
+  stream: {},
   rtf: {
     extensions: ['epub', 'gdoc', 'odt', 'rtf', 'wri', 'pages']
   },
