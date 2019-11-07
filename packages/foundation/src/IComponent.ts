@@ -9,8 +9,9 @@ import { IStyle, IStyleSet, ITheme } from '@uifabric/styling';
 
 /**
  * Helper interface for accessing user props children.
+ * @deprecated Use React.PropsWithChildren.
  */
-export type IPropsWithChildren<TProps> = TProps & { children?: React.ReactNode };
+export type IPropsWithChildren<TProps> = React.PropsWithChildren<TProps>;
 
 /**
  * Helper type defining style sections, one for each component slot.
@@ -84,7 +85,7 @@ export type IStateComponentType<TComponentProps, TViewProps> = (props: Readonly<
 /**
  * Defines the contract for view components.
  */
-export type IViewComponent<TViewProps> = (props: IPropsWithChildren<TViewProps>) => ReturnType<React.FunctionComponent>;
+export type IViewComponent<TViewProps> = (props: React.PropsWithChildren<TViewProps>) => ReturnType<React.FunctionComponent>;
 
 /**
  * Component options used by foundation to tie elements together.

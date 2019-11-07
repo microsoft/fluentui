@@ -1,12 +1,13 @@
+import * as React from 'react';
 import { IStyleSet } from '@uifabric/styling';
-import { IComponentOptions as IOldComponentOptions, IPropsWithChildren } from '../IComponent';
+import { IComponentOptions as IOldComponentOptions } from '../IComponent';
 import { ISlots, ISlotDefinition, ISlottableProps } from '../ISlots';
 
 /**
  * Defines the contract for view components.
  */
 export type IViewComponent<TViewProps, TComponentSlots = {}> = (
-  props: IPropsWithChildren<TViewProps>,
+  props: React.PropsWithChildren<TViewProps>,
   slots: ISlots<Required<TComponentSlots>>
 ) => ReturnType<React.FunctionComponent>;
 
