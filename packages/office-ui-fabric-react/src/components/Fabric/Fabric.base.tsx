@@ -25,9 +25,7 @@ export class FabricBase extends React.Component<
 
     const divProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties);
 
-    let fabricComponent;
-    fabricComponent = <div {...divProps} className={classNames.root} ref={this._rootElement} />;
-    return fabricComponent;
+    return <div {...divProps} className={classNames.root} ref={this._rootElement} />;
   }
 
   public componentDidMount(): void {
@@ -39,8 +37,10 @@ export class FabricBase extends React.Component<
 
     const classNames = this._getClassNamesHelper();
     if (this.props.applyThemeToBody) {
-      const currentDoc: Document = getDocument(this._rootElement.current)!;
-      currentDoc.body.classList.add(classNames.bodyThemed);
+      const currentDoc = getDocument(this._rootElement.current);
+      if (currentDoc) {
+        currentDoc.body.classList.add(classNames.bodyThemed);
+      }
     }
   }
 
@@ -50,18 +50,22 @@ export class FabricBase extends React.Component<
     const classNames = this._getClassNamesHelper();
     if (this.props.applyThemeToBody) {
       const currentDoc: Document = getDocument(this._rootElement.current)!;
-      currentDoc.body.classList.remove(classNames.bodyThemed);
+      if (currentDoc) {
+        currentDoc.body.classList.remove(classNames.bodyThemed);
+      }
     }
   }
 
   private _getClassNamesHelper(): IProcessedStyleSet<IFabricStyles> {
     const { className } = this.props;
-    const classNames = getClassNames(getStyles, {
-      theme: this.props.theme!,
-      className,
-      isFocusVisible: this.state.isFocusVisible
-    });
-    return classNames;
+    if (this.props.theme) {
+      const classNames = getClassNames(getStyles, {
+        theme: this.props.theme,
+        className,
+        isFocusVisible: this.state.isFocusVisible
+      });
+      return classNames;
+    }
   }
 
   private _onMouseDown = (ev: MouseEvent): void => {
