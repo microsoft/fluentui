@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "SearchBox: Remove autocomplete documentation as feature is not supported.",
+  "packageName": "office-ui-fabric-react",
+  "email": "jagore@microsoft.com",
+  "commit": "34a45eb4d24c5740b62f7c3f8c9c162aaf44e5a8",
+  "date": "2019-11-07T21:19:08.393Z"
+}
