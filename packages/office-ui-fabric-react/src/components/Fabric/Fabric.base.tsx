@@ -48,11 +48,9 @@ export class FabricBase extends React.Component<
     this._disposables.forEach((dispose: () => void) => dispose());
 
     const classNames = this._getClassNamesHelper();
-    if (this.props.applyThemeToBody) {
-      const currentDoc: Document = getDocument(this._rootElement.current)!;
-      if (currentDoc) {
-        currentDoc.body.classList.remove(classNames.bodyThemed);
-      }
+    const currentDoc: Document = getDocument(this._rootElement.current)!;
+    if (currentDoc) {
+      currentDoc.body.classList.remove(classNames.bodyThemed);
     }
   }
 
