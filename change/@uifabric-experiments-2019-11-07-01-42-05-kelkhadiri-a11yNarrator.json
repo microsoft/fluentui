@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Added ariaLabel to microfeedback component",
-  "packageName": "@uifabric/experiments",
-  "email": "kamal.elkhadiri@microsoft.com",
-  "commit": "d3f7679023767a4cf05db9d2c8b68a28ef97542d",
-  "date": "2019-11-07T09:42:05.696Z"
-}
