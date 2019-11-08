@@ -15,6 +15,7 @@
     "clean": "just-scripts clean"
   },
   "devDependencies": {
+    "@types/fs-extra": "^8.0.1",
     "@types/node": "^8.10.29",
     "@uifabric/build": "^7.0.0",
     "@uifabric/merge-styles": "^7.8.0",
@@ -27,6 +28,6 @@
   "dependencies": {
     "@microsoft/tsdoc": "0.12.12",
     "@microsoft/api-extractor-model": "7.3.2",
-    "@microsoft/node-core-library": "~3.9.0"
+    "fs-extra": "^8.1.0"
   }
 }
