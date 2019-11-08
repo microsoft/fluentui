@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Removed SCSS dependency. Since we're doing this in JS, I don't think we'd need the :after selector but I'd love to be corrected just in case I'm wrong",
+  "packageName": "office-ui-fabric-react",
+  "email": "pandasa123@gmail.com",
+  "commit": "2ea26836d182dda8687c35212493abc5d892235c",
+  "date": "2019-11-06T22:46:45.433Z"
+}
