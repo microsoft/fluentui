@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Removed SCSS from Facepile Examples",
-  "packageName": "office-ui-fabric-react",
-  "email": "pandasa123@gmail.com",
-  "commit": "1cd144b88da0f6b9f9983fd615d5477fee41d957",
-  "date": "2019-11-06T20:32:41.813Z"
-}

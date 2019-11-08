@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Add px units to flexBasis styling by default. Remove existing styling usage where it had no effect before this PR.",
-  "packageName": "office-ui-fabric-react",
-  "email": "jagore@microsoft.com",
-  "commit": "f907d55f63a68d685743277f1f35188fbe6af62d",
-  "date": "2019-11-04T23:24:03.755Z"
-}

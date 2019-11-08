@@ -1,7 +1,19 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 07 Nov 2019 12:26:32 GMT and should not be manually modified.
+This log was last generated on Fri, 08 Nov 2019 12:30:07 GMT and should not be manually modified.
 
+## 7.59.1
+Fri, 08 Nov 2019 12:30:07 GMT
+
+### Patches
+
+- copied over fixes from a previous PR # 10439 (betrue@microsoft.com)
+- Add px units to flexBasis styling by default. Remove existing styling usage where it had no effect before this PR. (jagore@microsoft.com)
+- Removed SCSS file (pandasa123@gmail.com)
+- Removed SCSS file (pandasa123@gmail.com)
+- TooltipHost: Fix dismiss race condition. (jdh@microsoft.com)
+- Removed SCSS for List Scrolling Example in favour of mergeStyleSets pattern (pandasa123@gmail.com)
+- Removed SCSS from Facepile Examples (pandasa123@gmail.com)
 ## 7.59.0
 Thu, 07 Nov 2019 12:26:32 GMT
 

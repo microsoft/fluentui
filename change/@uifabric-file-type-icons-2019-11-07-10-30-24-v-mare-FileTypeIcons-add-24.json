@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Added size 24 to file type icons",
-  "packageName": "@uifabric/file-type-icons",
-  "email": "v-mare@microsoft.com",
-  "commit": "3da1a1bad7fabc19d95d927ed8b2501f894eeb74",
-  "date": "2019-11-07T18:30:24.083Z"
-}

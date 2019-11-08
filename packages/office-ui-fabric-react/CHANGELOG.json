@@ -2,6 +2,50 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Fri, 08 Nov 2019 12:30:07 GMT",
+      "tag": "office-ui-fabric-react_v7.59.1",
+      "version": "7.59.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "copied over fixes from a previous PR # 10439",
+            "author": "betrue@microsoft.com",
+            "commit": "a5cab25f7b6fdb52cbace5b10cef873c0090b50f"
+          },
+          {
+            "comment": "Add px units to flexBasis styling by default. Remove existing styling usage where it had no effect before this PR.",
+            "author": "jagore@microsoft.com",
+            "commit": "f907d55f63a68d685743277f1f35188fbe6af62d"
+          },
+          {
+            "comment": "Removed SCSS file",
+            "author": "pandasa123@gmail.com",
+            "commit": "cfa763068197eb049b27d7700480eb8680a7b89a"
+          },
+          {
+            "comment": "Removed SCSS file",
+            "author": "pandasa123@gmail.com",
+            "commit": "bbf6a23a86d5992fbf2500f91fb73aab57249a46"
+          },
+          {
+            "comment": "TooltipHost: Fix dismiss race condition.",
+            "author": "jdh@microsoft.com",
+            "commit": "269e54674d4c9a0574c03677e0c07485585ab817"
+          },
+          {
+            "comment": "Removed SCSS for List Scrolling Example in favour of mergeStyleSets pattern",
+            "author": "pandasa123@gmail.com",
+            "commit": "b033486a1ffa3a24e0d2e98d5ea5ee7dc61e498f"
+          },
+          {
+            "comment": "Removed SCSS from Facepile Examples",
+            "author": "pandasa123@gmail.com",
+            "commit": "1cd144b88da0f6b9f9983fd615d5477fee41d957"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 07 Nov 2019 12:26:32 GMT",
       "tag": "office-ui-fabric-react_v7.59.0",
       "version": "7.59.0",
