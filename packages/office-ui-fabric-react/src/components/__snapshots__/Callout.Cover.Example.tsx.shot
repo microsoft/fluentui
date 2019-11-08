@@ -1,11 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Component Examples renders Callout.Cover.Example.tsx correctly 1`] = `
-<div
-  className="ms-CalloutExample"
->
+Array [
   <div
-    className="ms-CalloutExample-configArea"
+    className=
+
+        {
+          display: inline-block;
+          min-width: 300px;
+        }
   >
     <div
       className=
@@ -217,9 +220,21 @@ exports[`Component Examples renders Callout.Cover.Example.tsx correctly 1`] = `
         </span>
       </div>
     </div>
-  </div>
+  </div>,
   <div
-    className="ms-CalloutCoverExample-buttonArea"
+    className=
+
+        {
+          display: inline-block;
+          height: 32px;
+          margin-bottom: 0;
+          margin-left: 100px;
+          margin-right: 100px;
+          margin-top: 0;
+          min-width: 130px;
+          text-align: center;
+          vertical-align: top;
+        }
   >
     <button
       className=
@@ -338,6 +353,6 @@ exports[`Component Examples renders Callout.Cover.Example.tsx correctly 1`] = `
         </span>
       </span>
     </button>
-  </div>
-</div>
+  </div>,
+]
 `;
