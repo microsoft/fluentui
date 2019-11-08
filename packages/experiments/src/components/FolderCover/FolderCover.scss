@@ -1,5 +1,7 @@
 @import '~office-ui-fabric-react/src/common/common';
 
+@import '~office-ui-fabric-react/src/common/ThemingSass.scss';
+
 $folder-accent: #bf5712;
 
 .root {
@@ -115,12 +117,12 @@ $folder-accent: #bf5712;
 
   &,
   &.isSmall {
-    font-size: $ms-font-size-16;
+    font-size: $ms-font-mediumPlusFontSize;
     margin-bottom: 1px;
   }
 
   .isLarge & {
-    font-size: $ms-font-size-16;
+    font-size: $ms-font-mediumPlusFontSize;
     margin-bottom: 4px;
     @include margin-right(7px);
   }
