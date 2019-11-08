@@ -1,9 +1,39 @@
 import * as React from 'react';
 import { ContextualMenu, ContextualMenuItemType, IContextualMenuItem } from 'office-ui-fabric-react/lib/ContextualMenu';
+import { useConstCallback } from '@uifabric/react-hooks';
 
 export interface IContextualMenuBasicExampleState {
   showContextualMenu?: boolean;
 }
+
+export const ContextualMenuBasicExample: React.FunctionComponent = () => {
+  const linkRef = React.useRef(null);
+  const [showContextualMenu, setShowContextualMenu] = React.useState(false);
+  const onShowContextualMenu = useConstCallback(() => setShowContextualMenu(true));
+  const onHideContextualMenu = useConstCallback(() => setShowContextualMenu(false));
+
+  return (
+    <div>
+      This example directly uses ContextualMenu to show how it can be attached to arbitrary elements. The remaining examples use
+      ContextualMenu through Fabric Button components.
+      <p>
+        <b>
+          <a ref={linkRef} onClick={onShowContextualMenu}>
+            Click for ContextualMenu
+          </a>
+        </b>
+      </p>
+      <ContextualMenu
+        items={menuItems}
+        hidden={!showContextualMenu}
+        target={linkRef}
+        onItemClick={onHideContextualMenu}
+        onDismiss={onHideContextualMenu}
+      />
+    </div>
+  );
+};
+
 const menuItems: IContextualMenuItem[] = [
   {
     key: 'newItem',
@@ -57,47 +87,3 @@ const menuItems: IContextualMenuItem[] = [
     onClick: () => console.error('Disabled item should not be clickable.')
   }
 ];
-
-export class ContextualMenuBasicExample extends React.Component<{}, IContextualMenuBasicExampleState> {
-  private contextualMenuTarget = React.createRef<HTMLAnchorElement>();
-
-  constructor(props: {}) {
-    super(props);
-    this.state = {
-      showContextualMenu: false
-    };
-  }
-
-  public render(): JSX.Element {
-    const { showContextualMenu } = this.state;
-
-    return (
-      <div>
-        This example directly uses ContextualMenu to show how it can be attached to arbitrary elements. The remaining examples use
-        ContextualMenu through Fabric Button components.
-        <p>
-          <b>
-            <a ref={this.contextualMenuTarget} onClick={this._onClickLink}>
-              Click for ContextualMenu
-            </a>
-          </b>
-        </p>
-        <ContextualMenu
-          items={menuItems}
-          hidden={!showContextualMenu}
-          target={this.contextualMenuTarget}
-          onItemClick={this._onDismiss}
-          onDismiss={this._onDismiss}
-        />
-      </div>
-    );
-  }
-
-  private _onClickLink = () => {
-    this.setState({ showContextualMenu: true });
-  };
-
-  private _onDismiss = () => {
-    this.setState({ showContextualMenu: false });
-  };
-}
