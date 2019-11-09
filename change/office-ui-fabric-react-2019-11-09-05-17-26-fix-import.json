@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "FloatingPicker: Addressing bad import, causing jest to fail when referenced.",
-  "packageName": "office-ui-fabric-react",
-  "email": "dzearing@hotmail.com",
-  "commit": "77ac7dbb04cd78767e87e40cd4da15c8cf35f254",
-  "date": "2019-11-09T13:17:26.847Z"
-}

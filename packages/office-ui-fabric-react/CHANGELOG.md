@@ -1,7 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Sat, 09 Nov 2019 06:41:37 GMT and should not be manually modified.
+This log was last generated on Sat, 09 Nov 2019 14:26:36 GMT and should not be manually modified.
 
+## 7.59.3
+Sat, 09 Nov 2019 14:26:36 GMT
+
+### Patches
+
+- FloatingPicker: Addressing bad import, causing jest to fail when referenced. (dzearing@hotmail.com)
 ## 7.59.2
 Sat, 09 Nov 2019 06:41:37 GMT
 

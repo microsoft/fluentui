@@ -2,6 +2,20 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Sat, 09 Nov 2019 14:26:36 GMT",
+      "tag": "office-ui-fabric-react_v7.59.3",
+      "version": "7.59.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "FloatingPicker: Addressing bad import, causing jest to fail when referenced.",
+            "author": "dzearing@hotmail.com",
+            "commit": "77ac7dbb04cd78767e87e40cd4da15c8cf35f254"
+          }
+        ]
+      }
+    },
+    {
       "date": "Sat, 09 Nov 2019 06:41:37 GMT",
       "tag": "office-ui-fabric-react_v7.59.2",
       "version": "7.59.2",
