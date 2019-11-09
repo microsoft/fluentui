@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, divProperties, getNativeProps } from '../../Utilities';
+import { BaseComponent, divProperties, getNativeProps, shallowCompare } from '../../Utilities';
 import { IResizeGroupProps, ResizeGroupDirection } from './ResizeGroup.types';
 
 const RESIZE_DELAY = 16;
@@ -16,6 +16,11 @@ export interface IResizeGroupState {
    * Data to render in a hidden div for measurement
    */
   dataToMeasure?: any;
+
+  /**
+   * Unscaled original data from previous props.
+   */
+  prevPropsData?: any;
 
   /**
    * Set to true when the content container might have new dimensions and should
@@ -334,6 +339,25 @@ export class ResizeGroupBase extends BaseComponent<IResizeGroupProps, IResizeGro
   // for the initial render.
   private _hasRenderedContent = false;
 
+  public static getDerivedStateFromProps(props: IResizeGroupProps, state: IResizeGroupState) {
+    if (state.prevPropsData && state.prevPropsData.cacheKey && props.data.cacheKey === state.prevPropsData.cacheKey) {
+      if (props.onBatchScaleData && props.data.zzScalingStepsCount && state.renderedData && state.renderedData.zzScalingStepsCount) {
+        return {
+          renderedData: props.onBatchScaleData({ ...props.data }, state.renderedData.zzScalingStepsCount),
+          measureContainer: true,
+          prevPropsData: props.data
+        };
+      }
+    }
+
+    return {
+      dataToMeasure: { ...props.data }, // this is done so that we can call onReduceData, onGrowData with freedom.
+      prevPropsData: props.data,
+      resizeDirection: 'grow',
+      measureContainer: true // Receiving new props means the parent might re-render and the root width/height might change
+    };
+  }
+
   constructor(props: IResizeGroupProps) {
     super(props);
     this.state = this._nextResizeGroupStateProvider.getInitialResizeGroupState(this.props.data);
@@ -341,6 +365,22 @@ export class ResizeGroupBase extends BaseComponent<IResizeGroupProps, IResizeGro
     this._warnDeprecations({
       styles: 'className'
     });
+  }
+
+  /**
+   * Normal shallow comparison of props and state except for one optimization.
+   * When the only change in both props and state is that the measureContainer part of the state
+   * changed from true to false, we do not need to re-render.
+   */
+  public shouldComponentUpdate(nextProps: IResizeGroupProps, nextState: IResizeGroupState) {
+    if (nextState.measureContainer === false) {
+      // If there is a state change just because of measureContainer going from true -> false and everything else
+      // is the same as before, we do not need to re-render
+      if (shallowCompare(this.props, nextProps) && shallowCompare({ ...this.state, measureContainer: false }, nextState)) {
+        return false;
+      }
+    }
+    return !shallowCompare(this.props, nextProps) || !shallowCompare(this.state, nextState);
   }
 
   public render(): JSX.Element {
@@ -385,15 +425,6 @@ export class ResizeGroupBase extends BaseComponent<IResizeGroupProps, IResizeGro
   public componentDidMount(): void {
     this._afterComponentRendered(this.props.direction);
     this._events.on(window, 'resize', this._async.debounce(this._onResize, RESIZE_DELAY, { leading: true }));
-  }
-
-  // tslint:disable-next-line function-name
-  public UNSAFE_componentWillReceiveProps(nextProps: IResizeGroupProps): void {
-    this.setState({
-      dataToMeasure: { ...nextProps.data },
-      resizeDirection: 'grow',
-      measureContainer: true // Receiving new props means the parent might rerender and the root width/height might change
-    });
   }
 
   public componentDidUpdate(prevProps: IResizeGroupProps) {
