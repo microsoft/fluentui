@@ -115,7 +115,8 @@ $folder-accent: #bf5712;
   @include margin-left(8px);
   @include margin-right(4px);
 
-  .isFluent & {
+  // Added :first-child to CSS selector because a rule from Signal.scss affecting the Icon will otherwise trample this color change.
+  .isFluent & :first-child {
     color: $folder-accent;
   }
 
