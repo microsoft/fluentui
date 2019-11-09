@@ -41,16 +41,6 @@ export interface IResizeGroupState {
    * instead of remounting.
    */
   measureDivKey?: ResizeGroupDivKey;
-
-  /**
-   * Integer which represents all the scaling steps applied for the data to render.
-   * If 0, data in props was rendered as is.
-   * If positive, we grew the data in props before we rendered it.
-   * If negative, we shrunk the data in props before we rendered it.
-   */
-  renderedDataScalingSteps?: number;
-
-  dataToMeasureScalingSteps?: number;
 }
 
 /**
@@ -119,7 +109,6 @@ export const getNextResizeGroupStateProvider = (measurementCache = getMeasuremen
    */
   function _shrinkContentsUntilTheyFit(
     data: any,
-    appliedScalingStepsCount: number,
     onReduceData: (prevData: any) => any,
     getElementToMeasureDimension: () => number
   ): IResizeGroupState {
@@ -170,7 +159,6 @@ export const getNextResizeGroupStateProvider = (measurementCache = getMeasuremen
    */
   function _growDataUntilItDoesNotFit(
     data: any,
-    appliedScalingStepsCount: number,
     onGrowData: (prevData: any) => any,
     getElementToMeasureDimension: () => number,
     onReduceData: (prevData: any) => any
@@ -228,7 +216,7 @@ export const getNextResizeGroupStateProvider = (measurementCache = getMeasuremen
       if (onGrowData) {
         nextState = {
           resizeDirection: 'grow',
-          dataToMeasure: renderedData
+          dataToMeasure: onGrowData(renderedData)
         };
       } else {
         nextState = {
@@ -279,12 +267,7 @@ export const getNextResizeGroupStateProvider = (measurementCache = getMeasuremen
       if (currentState.resizeDirection === 'grow' && props.onGrowData) {
         nextState = {
           ...nextState,
-          ..._growDataUntilItDoesNotFit(
-            currentState.dataToMeasure,
-            currentStaprops.onGrowData,
-            getElementToMeasureDimension,
-            props.onReduceData
-          )
+          ..._growDataUntilItDoesNotFit(currentState.dataToMeasure, props.onGrowData, getElementToMeasureDimension, props.onReduceData)
         };
       } else {
         nextState = {
@@ -316,8 +299,6 @@ export const getNextResizeGroupStateProvider = (measurementCache = getMeasuremen
   function getInitialResizeGroupState(data: any): IResizeGroupState {
     return {
       dataToMeasure: { ...data },
-      renderedDataScalingSteps: 0,
-      dataToMeasureScalingSteps: 0,
       resizeDirection: 'grow',
       measureContainer: true,
       measureDivKey: 'KeyOne'
