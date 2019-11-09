@@ -2,6 +2,35 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Sat, 09 Nov 2019 06:41:37 GMT",
+      "tag": "office-ui-fabric-react_v7.59.2",
+      "version": "7.59.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Removed SCSS",
+            "author": "pandasa123@gmail.com",
+            "commit": "4281ff7699c63a31dca0edcdf43b5e03054ee128"
+          },
+          {
+            "comment": "Removed SCSS",
+            "author": "pandasa123@gmail.com",
+            "commit": "f465f90053c0ee7f8fb532865cee7436d2980f8a"
+          },
+          {
+            "comment": "Removed SCSS dependency. Since we're doing this in JS, I don't think we'd need the :after selector but I'd love to be corrected just in case I'm wrong",
+            "author": "pandasa123@gmail.com",
+            "commit": "2ea26836d182dda8687c35212493abc5d892235c"
+          },
+          {
+            "comment": "Dropdown: fixed checks on preventDefault which should be defaultPrevented",
+            "author": "micahgodbolt@gmail.com",
+            "commit": "b170a4f753096850a28286f1ca3af8b91213c58f"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 08 Nov 2019 12:30:07 GMT",
       "tag": "office-ui-fabric-react_v7.59.1",
       "version": "7.59.1",

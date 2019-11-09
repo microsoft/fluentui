@@ -1,7 +1,16 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 08 Nov 2019 12:30:07 GMT and should not be manually modified.
+This log was last generated on Sat, 09 Nov 2019 06:41:37 GMT and should not be manually modified.
 
+## 7.59.2
+Sat, 09 Nov 2019 06:41:37 GMT
+
+### Patches
+
+- Removed SCSS (pandasa123@gmail.com)
+- Removed SCSS (pandasa123@gmail.com)
+- Removed SCSS dependency. Since we're doing this in JS, I don't think we'd need the :after selector but I'd love to be corrected just in case I'm wrong (pandasa123@gmail.com)
+- Dropdown: fixed checks on preventDefault which should be defaultPrevented (micahgodbolt@gmail.com)
 ## 7.59.1
 Fri, 08 Nov 2019 12:30:07 GMT
 
