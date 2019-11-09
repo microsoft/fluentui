@@ -88,9 +88,9 @@ export class HoverCardTargetExample extends React.Component<{}, {}> {
           the right arrow key.
         </p>
         <p>
-          When using the keyboard to navigate, open the card with the hotKey (as defined by the hotKey prop, which is defined as 'enter' in
-          the following example) and it will automatically focus the first focusable element in the card allowing further navigation inside
-          the card.
+          When using the keyboard to navigate, open the card with the hotKey and it will automatically focus the first focusable element in
+          the card allowing further navigation inside the card. The hotKey is defined by the hotKey prop and is defined as 'enter' in the
+          following example.
         </p>
         <DetailsList
           setKey="hoverSet"
