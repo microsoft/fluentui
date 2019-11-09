@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Dropdown: fixed checks on preventDefault which should be defaultPrevented",
+  "packageName": "office-ui-fabric-react",
+  "email": "micahgodbolt@gmail.com",
+  "commit": "b170a4f753096850a28286f1ca3af8b91213c58f",
+  "date": "2019-11-07T19:24:55.062Z"
+}
