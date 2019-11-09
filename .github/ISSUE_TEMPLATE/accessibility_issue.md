@@ -6,7 +6,7 @@ about: Have you identified an accessibility issue regarding a Fabric control?
 <!--
 Before submitting an accessibility issue please ensure the following are true:
 
-1. Search for duptes! Please make sure the issue is not already present in our issue tracker.
+1. Search for dupes! Please make sure the issue is not already present in our issue tracker.
 2. This issue is caused by a Fabric control.
 3. You can reproduce this bug in a CodePen.
 4. There is documentation or best practice that supports your expected behavior (review https://www.w3.org/TR/wai-aria-1.1/ for accessibility guidance.)
