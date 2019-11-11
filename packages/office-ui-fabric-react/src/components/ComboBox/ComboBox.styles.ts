@@ -101,6 +101,9 @@ export const getOptionStyles = memoizeFunction(
             },
             '&.ms-Button--command:hover:active': {
               backgroundColor: option.backgroundPressedColor
+            },
+            '.ms-Checkbox-label': {
+              width: '100%'
             }
           }
         }
