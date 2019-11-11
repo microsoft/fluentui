@@ -41,6 +41,11 @@ export interface IApiProperty {
  * Props for a table about a top-level API object such as a class, interface, enum, or type alias.
  */
 export interface IApiReferencesTableProps extends IApiProperty {
+  /** Resolve a token's page name and group to props for an actual link. */
+  // Could be added as an optional prop to ApiReferencesTableSet as well to let the tables work
+  // outside the Fabric website
+  tokenResolver: (token: Required<ILinkToken>) => { href: string; target?: string };
+
   /** @deprecated Use `renderAs` */
   renderAsEnum?: boolean;
   /** @deprecated Use `renderAs` */
@@ -60,6 +65,7 @@ export interface IApiBaseItem {
 export interface IApiInterfaceProperty extends IApiBaseItem {
   typeTokens: ILinkToken[];
   defaultValue?: string;
+  required?: boolean;
 }
 
 export interface IApiEnumProperty extends IApiBaseItem {

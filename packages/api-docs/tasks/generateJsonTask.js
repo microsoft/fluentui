@@ -7,7 +7,7 @@ function generateJsonTask() {
   if (fs.existsSync(configPath)) {
     const config = require(configPath);
     const generatePageJsonFiles = require('../lib/generatePageJsonFiles').generatePageJsonFiles;
-    generatePageJsonFiles(config);
+    generatePageJsonFiles({ min: process.argv.includes('--production'), ...config });
   } else {
     console.log('Skipping page JSON generation because config not found');
   }

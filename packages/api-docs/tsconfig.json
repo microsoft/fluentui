@@ -17,6 +17,7 @@
     "skipLibCheck": true,
     "moduleResolution": "node",
     "preserveConstEnums": true,
+    "downlevelIteration": true,
     "lib": ["es2017"],
     "types": [],
     "paths": {

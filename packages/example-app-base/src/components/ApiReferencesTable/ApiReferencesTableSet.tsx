@@ -2,17 +2,22 @@ import * as React from 'react';
 import { ActionButton, IButtonStyles } from 'office-ui-fabric-react/lib/Button';
 import { Stack } from 'office-ui-fabric-react/lib/Stack';
 import { Text } from 'office-ui-fabric-react/lib/Text';
-import { ApiReferencesTable, MEDIUM_GAP_SIZE, LARGE_GAP_SIZE } from './ApiReferencesTable';
+import { ApiReferencesTable, gapTokens } from './ApiReferencesTable';
 import { IApiReferencesTableProps, IApiInterfaceProperty, IMethod, IApiReferencesTableSetProps } from './ApiReferencesTableSet.types';
-import { IEnumTableRowJson, ITableRowJson, ITableJson } from 'office-ui-fabric-react/lib/common/DocPage.types';
+import { ITableRowJson, IPageJson, ILinkToken } from 'office-ui-fabric-react/lib/common/DocPage.types';
 import { extractAnchorLink } from '../../utilities/extractAnchorLink';
 import { jumpToAnchor } from '../../utilities/index2';
+import { getCurrentUrl } from '../../utilities/getCurrentUrl';
 
 export interface IApiReferencesTableSetState {
   showSeeMore: boolean;
 }
 
 const TITLE_LINE_HEIGHT = 31.5;
+const seeMoreButtonStyles: Partial<IButtonStyles> = {
+  root: { paddingLeft: '0px' },
+  textContainer: { paddingLeft: '4px' }
+};
 
 export class ApiReferencesTableSet extends React.Component<IApiReferencesTableSetProps, IApiReferencesTableSetState> {
   public static defaultProps: Partial<IApiReferencesTableSetProps> = {
@@ -24,17 +29,15 @@ export class ApiReferencesTableSet extends React.Component<IApiReferencesTableSe
   constructor(props: IApiReferencesTableSetProps) {
     super(props);
 
-    this.state = {
-      showSeeMore: false
-    };
+    this.state = { showSeeMore: false };
 
-    this._tableProps = this._generateTableProps();
+    this._tableProps = _generateTableProps(props.jsonDocs);
   }
 
   public render(): JSX.Element {
     const { className } = this.props;
     return (
-      <Stack tokens={{ childrenGap: LARGE_GAP_SIZE }} className={className}>
+      <Stack tokens={gapTokens.large} className={className}>
         {this._renderFirst()}
         {this._renderEach()}
       </Stack>
@@ -49,9 +52,7 @@ export class ApiReferencesTableSet extends React.Component<IApiReferencesTableSe
     if (anchor && !this.state.showSeeMore) {
       const section = this._tableProps.filter(x => x.name === anchor)[0];
       if (section) {
-        this.setState({
-          showSeeMore: true
-        });
+        this.setState({ showSeeMore: true });
       }
     }
   }
@@ -75,24 +76,19 @@ export class ApiReferencesTableSet extends React.Component<IApiReferencesTableSe
   }
 
   private _renderEach(): JSX.Element | undefined {
-    const seeMoreButtonStyles: Partial<IButtonStyles> = {
-      root: { paddingLeft: '0px' },
-      textContainer: { paddingLeft: '4px' }
-    };
-
     if (this._tableProps.length > 1) {
       return (
-        <Stack tokens={{ childrenGap: MEDIUM_GAP_SIZE }}>
+        <Stack tokens={gapTokens.medium}>
           <ActionButton
             iconProps={{ iconName: this.state.showSeeMore ? 'SkypeCircleMinus' : 'CirclePlus' }}
             onClick={this._onClickSeeMore}
             onRenderText={this._onRenderText}
             styles={seeMoreButtonStyles}
           >
-            See More
+            See more
           </ActionButton>
           {this.state.showSeeMore && (
-            <Stack tokens={{ childrenGap: LARGE_GAP_SIZE }}>
+            <Stack tokens={gapTokens.large}>
               {this._tableProps.map((item: IApiReferencesTableProps, index: number) =>
                 index !== 0 ? <ApiReferencesTable key={item.name} {...item} /> : undefined
               )}
@@ -114,9 +110,7 @@ export class ApiReferencesTableSet extends React.Component<IApiReferencesTableSe
       if (!showSeeMore) {
         const section = this._tableProps.filter(x => x.name === anchor)[0];
         if (section) {
-          this.setState({
-            showSeeMore: true
-          });
+          this.setState({ showSeeMore: true });
         }
       }
     }
@@ -131,95 +125,72 @@ export class ApiReferencesTableSet extends React.Component<IApiReferencesTableSe
       showSeeMore: !this.state.showSeeMore
     });
   };
-
-  private _generateTableProps(): Array<IApiReferencesTableProps> {
-    const results: Array<IApiReferencesTableProps> = [];
-
-    const { jsonDocs } = this.props;
-
-    if (jsonDocs) {
-      const propsName: string = `I${jsonDocs.name}Props`;
-      for (const table of jsonDocs.tables) {
-        switch (table.kind) {
-          case 'enum': {
-            results.push(
-              _generateTableProps(table, {
-                renderAs: 'enum',
-                properties: table.members as IEnumTableRowJson[]
-              })
-            );
-            break;
-          }
-          case 'interface': {
-            const interfaceProperty = _generateTableProps(table, {
-              renderAs: 'interface',
-              properties: table.members
-            });
-
-            // to ensure that I{componentName}Props comes first
-            if (propsName === table.name) {
-              results.unshift(interfaceProperty);
-            } else {
-              results.push(interfaceProperty);
-            }
-
-            break;
-          }
-          case 'class': {
-            results.push(this._generateClassProperty(table));
-            break;
-          }
-          case 'typeAlias': {
-            results.push(
-              _generateTableProps(table, {
-                renderAs: 'typeAlias',
-                properties: []
-              })
-            );
-            break;
-          }
-        }
-      }
-    }
-
-    return results;
-  }
-
-  private _generateClassProperty(table: ITableJson): IApiReferencesTableProps {
-    // class members are a mix of IApiInterfaceProperty and IMethod
-    const classMembers: IApiInterfaceProperty[] = [];
-    const classMethods: IMethod[] = [];
-
-    const members: ITableRowJson[] = table.members as ITableRowJson[];
-    members.forEach((member: ITableRowJson) => {
-      if (member.kind === 'Method') {
-        classMethods.push(member);
-      } else {
-        classMembers.push(member);
-      }
-    });
-
-    // the class
-    return _generateTableProps(table, {
-      renderAs: 'class',
-      properties: classMembers,
-      methods: classMethods
-    });
-  }
 }
 
-function _generateTableProps(
-  table: ITableJson,
-  extraInfo: Required<Pick<IApiReferencesTableProps, 'properties' | 'renderAs'>> & Partial<IApiReferencesTableProps>
-): IApiReferencesTableProps {
-  return {
-    title: table.kind && table.kind !== 'typeAlias' ? table.name + ' ' + table.kind : table.name,
-    name: table.name,
-    description: table.description,
-    extendsTokens: table.extendsTokens,
-    properties: [],
-    deprecated: table.deprecated,
-    deprecatedMessage: table.deprecatedMessage,
-    ...extraInfo
+function _generateTableProps(jsonDocs: IPageJson | undefined): IApiReferencesTableProps[] {
+  if (!jsonDocs) {
+    return [];
+  }
+
+  const tokenResolver = _getTokenResolver();
+
+  const propsName: string = `I${jsonDocs.name}Props`;
+  const results: IApiReferencesTableProps[] = [];
+
+  for (const table of jsonDocs.tables) {
+    const { kind, name } = table;
+
+    const tableProps: IApiReferencesTableProps = {
+      ...table,
+      title: kind !== 'typeAlias' ? name + ' ' + kind : name,
+      renderAs: kind,
+      properties: table.members || [],
+      tokenResolver: tokenResolver
+    };
+
+    if (kind === 'class') {
+      // class members are a mix of IApiInterfaceProperty and IMethod
+      const classMembers: IApiInterfaceProperty[] = (tableProps.properties = []);
+      const classMethods: IMethod[] = (tableProps.methods = []);
+
+      (tableProps.properties as ITableRowJson[]).forEach((member: ITableRowJson) => {
+        if (member.kind === 'method') {
+          classMethods.push(member);
+        } else {
+          classMembers.push(member);
+        }
+      });
+    }
+
+    // to ensure that I{componentName}Props comes first
+    if (kind === 'interface' && propsName === table.name) {
+      results.unshift(tableProps);
+    } else {
+      results.push(tableProps);
+    }
+  }
+
+  return results;
+}
+
+function _getTokenResolver(): IApiReferencesTableProps['tokenResolver'] {
+  // Get the area path to set correct href value on the links for the local site vs. the Fabric site.
+  // The "area path" for this purpose is typically /controls/web/ (website) or /examples/ (demo).
+  const currentRoute = getCurrentUrl().split('#')[1] || '';
+  // Remove the possible references/ part when matching
+  const areaPathMatch = currentRoute.match(/^(\/.+?\/)(references\/)?\w+$/);
+  const areaPath = (areaPathMatch && areaPathMatch[1]) || '/controls/web/';
+
+  return (token: Required<ILinkToken>) => {
+    // Currently the group is only relevant if it's references
+    const group = token.linkedPageGroup.toLowerCase() === 'references' ? '/references' : '';
+
+    const linkRoute = `${areaPath}${group}/${token.linkedPage.toLowerCase()}`;
+    const newTab = linkRoute !== currentRoute;
+
+    return {
+      href: `#${linkRoute}#${token.text}`,
+      target: newTab ? '_blank' : undefined
+    };
   };
 }
