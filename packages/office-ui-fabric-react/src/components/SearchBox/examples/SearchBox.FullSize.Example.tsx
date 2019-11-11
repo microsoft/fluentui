@@ -1,13 +1,12 @@
 import * as React from 'react';
 import { SearchBox } from 'office-ui-fabric-react/lib/SearchBox';
-import './SearchBox.Examples.scss';
+import { Stack } from 'office-ui-fabric-react/lib/Stack';
 
 // tslint:disable:jsx-no-lambda
-
 export class SearchBoxFullSizeExample extends React.Component<any, any> {
   public render(): JSX.Element {
     return (
-      <div className="ms-SearchBoxExample">
+      <Stack tokens={{ childrenGap: 20 }}>
         <SearchBox
           placeholder="Search"
           onSearch={newValue => console.log('value is ' + newValue)}
@@ -23,7 +22,7 @@ export class SearchBoxFullSizeExample extends React.Component<any, any> {
           onChange={() => console.log('onChange called')}
           disableAnimation
         />
-      </div>
+      </Stack>
     );
   }
 }

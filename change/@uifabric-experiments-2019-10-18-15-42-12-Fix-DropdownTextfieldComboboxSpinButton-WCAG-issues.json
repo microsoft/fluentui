@@ -1,9 +1,0 @@
-{
-  "type": "none",
-  "comment": "Update experiments snapshots",
-  "packageName": "@uifabric/experiments",
-  "email": "elcraig@microsoft.com",
-  "commit": "7d23dc83bf013fc5441e3ec81b3913d82099cb38",
-  "date": "2019-10-18T22:42:12.297Z",
-  "file": "/Users/elizabeth/git/fabric-react/change/@uifabric-experiments-2019-10-18-15-42-12-Fix-DropdownTextfieldComboboxSpinButton-WCAG-issues.json"
-}

@@ -2,6 +2,20 @@
   "name": "@uifabric/date-time",
   "entries": [
     {
+      "date": "Fri, 08 Nov 2019 12:30:07 GMT",
+      "tag": "@uifabric/date-time_v7.5.6",
+      "version": "7.5.6",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Change files",
+            "author": "betrue@microsoft.com",
+            "commit": "1cd1d65557c39786eef998001daa1548909dbd56"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 30 Oct 2019 19:36:52 GMT",
       "tag": "@uifabric/date-time_v7.5.5",
       "version": "7.5.5",

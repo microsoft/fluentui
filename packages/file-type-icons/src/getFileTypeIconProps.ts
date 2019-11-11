@@ -11,7 +11,7 @@ const LIST_ITEM = 'splist';
 const MULTIPLE_ITEMS = 'multiple';
 const DEFAULT_ICON_SIZE: FileTypeIconSize = 16;
 
-export type FileTypeIconSize = 16 | 20 | 32 | 40 | 48 | 64 | 96;
+export type FileTypeIconSize = 16 | 20 | 24 | 32 | 40 | 48 | 64 | 96;
 export type ImageFileType = 'svg' | 'png';
 
 export interface IFileTypeIconOptions {
