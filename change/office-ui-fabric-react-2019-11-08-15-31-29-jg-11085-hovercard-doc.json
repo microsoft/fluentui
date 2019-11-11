@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "HoverCard: Clarify hotKey in documentation.",
+  "packageName": "office-ui-fabric-react",
+  "email": "jagore@microsoft.com",
+  "commit": "38f1e3e18ab37521c246549d4c1b4bd57ef89c9a",
+  "date": "2019-11-08T23:31:29.317Z"
+}
