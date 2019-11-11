@@ -71,8 +71,7 @@ export const SemanticSlots: React.StatelessComponent<ISemanticSlotsProps> = (pro
         palette.startsWith('neutral') ||
         palette === 'black' ||
         palette === 'white' ||
-        palette === 'redDark' ||
-        palette === 'accent'
+        palette === 'redDark'
       ) {
         trimmedPaletteSlots[palette] = (paletteSlots as any)[palette];
       }
@@ -90,7 +89,6 @@ export const SemanticSlots: React.StatelessComponent<ISemanticSlotsProps> = (pro
       semanticString.startsWith('default') ||
       semanticString.includes('action') ||
       semanticString.includes('link') ||
-      semanticString.startsWith('accent') ||
       semanticString.startsWith('list') ||
       semanticString.startsWith('button') ||
       semanticString.startsWith('menu') ||
