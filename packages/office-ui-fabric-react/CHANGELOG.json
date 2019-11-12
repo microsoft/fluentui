@@ -2,6 +2,42 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Tue, 12 Nov 2019 12:32:39 GMT",
+      "tag": "office-ui-fabric-react_v7.60.0",
+      "version": "7.60.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix dropdown title and event",
+            "author": "achal.jain@microsoft.com",
+            "commit": "46b1fcd125c12dc2593d1bb2780f51c31dd0b190"
+          },
+          {
+            "comment": "Combobox: Augmented checkbox to handle clicks from blank space to the right of the label ",
+            "author": "v-mare@microsoft.com",
+            "commit": "9c7b6b365149355efc7cb2d37a20352578dcab86"
+          },
+          {
+            "comment": "ContextualMenu: Add example using ContextualMenu directly.",
+            "author": "jagore@microsoft.com",
+            "commit": "96c2c231cab6b175d5721dbbecbba766da2aab38"
+          },
+          {
+            "comment": "HoverCard: Clarify hotKey in documentation.",
+            "author": "jagore@microsoft.com",
+            "commit": "38f1e3e18ab37521c246549d4c1b4bd57ef89c9a"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Doc typing updates to support API doc refactor (should not impact consumers)",
+            "author": "elcraig@microsoft.com",
+            "commit": "32afa854a8d36c21859d44b312ea02b9261e0238"
+          }
+        ]
+      }
+    },
+    {
       "date": "Sat, 09 Nov 2019 14:26:36 GMT",
       "tag": "office-ui-fabric-react_v7.59.3",
       "version": "7.59.3",

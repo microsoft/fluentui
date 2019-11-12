@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "ContextualMenu: Add example using ContextualMenu directly.",
-  "packageName": "office-ui-fabric-react",
-  "email": "jagore@microsoft.com",
-  "commit": "96c2c231cab6b175d5721dbbecbba766da2aab38",
-  "date": "2019-11-08T01:05:33.195Z"
-}

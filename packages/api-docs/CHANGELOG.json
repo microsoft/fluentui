@@ -2,6 +2,20 @@
   "name": "@uifabric/api-docs",
   "entries": [
     {
+      "date": "Tue, 12 Nov 2019 12:32:39 GMT",
+      "tag": "@uifabric/api-docs_v7.1.1",
+      "version": "7.1.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Major refactoring of code: split between more files, change input shape, and simplify some logic",
+            "author": "elcraig@microsoft.com",
+            "commit": "32afa854a8d36c21859d44b312ea02b9261e0238"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 06 Nov 2019 12:34:07 GMT",
       "tag": "@uifabric/api-docs_v7.1.0",
       "version": "7.1.0",

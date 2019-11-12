@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Combobox: Augmented checkbox to handle clicks from blank space to the right of the label ",
-  "packageName": "office-ui-fabric-react",
-  "email": "v-mare@microsoft.com",
-  "commit": "9c7b6b365149355efc7cb2d37a20352578dcab86",
-  "date": "2019-11-01T23:46:46.399Z"
-}

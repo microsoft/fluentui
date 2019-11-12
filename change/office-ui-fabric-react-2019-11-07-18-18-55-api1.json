@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Doc typing updates to support API doc refactor (should not impact consumers)",
-  "packageName": "office-ui-fabric-react",
-  "email": "elcraig@microsoft.com",
-  "commit": "32afa854a8d36c21859d44b312ea02b9261e0238",
-  "date": "2019-11-08T02:18:55.286Z"
-}
