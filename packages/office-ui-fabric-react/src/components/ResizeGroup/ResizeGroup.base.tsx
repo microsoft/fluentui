@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { BaseComponent, divProperties, getNativeProps, shallowCompare } from '../../Utilities';
 import { IResizeGroupProps, ResizeGroupDirection } from './ResizeGroup.types';
+import { render } from 'enzyme';
 
 const RESIZE_DELAY = 16;
 
@@ -18,9 +19,9 @@ export interface IResizeGroupState {
   dataToMeasure?: any;
 
   /**
-   * Unscaled original data from previous props.
+   * Previous props to detect changes in props so that we can reset state.
    */
-  prevPropsData?: any;
+  prevProps: any;
 
   /**
    * Set to true when the content container might have new dimensions and should
@@ -116,7 +117,7 @@ export const getNextResizeGroupStateProvider = (measurementCache = getMeasuremen
     data: any,
     onReduceData: (prevData: any) => any,
     getElementToMeasureDimension: () => number
-  ): IResizeGroupState {
+  ): Partial<IResizeGroupState> {
     let dataToMeasure = data;
     let measuredDimension: number | undefined = _getMeasuredDimension(data, getElementToMeasureDimension);
 
@@ -167,7 +168,7 @@ export const getNextResizeGroupStateProvider = (measurementCache = getMeasuremen
     onGrowData: (prevData: any) => any,
     getElementToMeasureDimension: () => number,
     onReduceData: (prevData: any) => any
-  ): IResizeGroupState {
+  ): Partial<IResizeGroupState> {
     let dataToMeasure = data;
     let measuredDimension: number | undefined = _getMeasuredDimension(data, getElementToMeasureDimension);
 
@@ -215,8 +216,8 @@ export const getNextResizeGroupStateProvider = (measurementCache = getMeasuremen
     fullDimensionData: any,
     renderedData: any,
     onGrowData?: (prevData: any) => any
-  ): IResizeGroupState {
-    let nextState: IResizeGroupState;
+  ): Partial<IResizeGroupState> {
+    let nextState: Partial<IResizeGroupState>;
     if (newDimension > _containerDimension!) {
       if (onGrowData) {
         nextState = {
@@ -301,9 +302,10 @@ export const getNextResizeGroupStateProvider = (measurementCache = getMeasuremen
     return true;
   }
 
-  function getInitialResizeGroupState(data: any): IResizeGroupState {
+  function getInitialResizeGroupState(props: IResizeGroupProps): IResizeGroupState {
     return {
-      dataToMeasure: { ...data },
+      dataToMeasure: { ...props.data },
+      prevProps: props,
       resizeDirection: 'grow',
       measureContainer: true,
       measureDivKey: 'KeyOne'
@@ -340,27 +342,42 @@ export class ResizeGroupBase extends BaseComponent<IResizeGroupProps, IResizeGro
   private _hasRenderedContent = false;
 
   public static getDerivedStateFromProps(props: IResizeGroupProps, state: IResizeGroupState) {
-    if (state.prevPropsData && state.prevPropsData.cacheKey && props.data.cacheKey === state.prevPropsData.cacheKey) {
-      if (props.onBatchScaleData && props.data.zzScalingStepsCount && state.renderedData && state.renderedData.zzScalingStepsCount) {
-        return {
-          renderedData: props.onBatchScaleData({ ...props.data }, state.renderedData.zzScalingStepsCount),
-          measureContainer: true,
-          prevPropsData: props.data
-        };
+    if (state.prevProps !== props) {
+      const { data: prevData } = state.prevProps;
+      const { data, onBatchScaleData } = props;
+      const { renderedData } = state;
+
+      // Optimization
+      // If cache key is undefined and equal to previous original cache key
+      if (prevData.cacheKey && data.cacheKey === prevData.cacheKey) {
+        // If they have batch scaling ability, and data has scaling steps.
+        if (onBatchScaleData && data.zz__ScalingStepsCount && renderedData && renderedData.zz__ScalingStepsCount) {
+          const newData = onBatchScaleData({ ...data }, renderedData.zz__ScalingStepsCount);
+          // If new scaled data has same cacheKey as previously rendered data - this is not necessary, just to be safe.
+          if (newData.cacheKey === renderedData.cacheKey) {
+            return {
+              renderedData: newData,
+              measureContainer: true, // Receiving new props means the parent might re-render and the root width/height might change
+              prevProps: props
+            };
+          }
+        }
       }
+
+      return {
+        dataToMeasure: { ...data },
+        prevProps: props,
+        resizeDirection: 'grow',
+        measureContainer: true // Receiving new props means the parent might re-render and the root width/height might change
+      };
     }
 
-    return {
-      dataToMeasure: { ...props.data }, // this is done so that we can call onReduceData, onGrowData with freedom.
-      prevPropsData: props.data,
-      resizeDirection: 'grow',
-      measureContainer: true // Receiving new props means the parent might re-render and the root width/height might change
-    };
+    return null;
   }
 
   constructor(props: IResizeGroupProps) {
     super(props);
-    this.state = this._nextResizeGroupStateProvider.getInitialResizeGroupState(this.props.data);
+    this.state = this._nextResizeGroupStateProvider.getInitialResizeGroupState(this.props);
 
     this._warnDeprecations({
       styles: 'className'
