@@ -7,6 +7,7 @@ import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import { IContextualMenuItem } from 'office-ui-fabric-react/lib/ContextualMenu';
 import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
 import { mergeStyleSets } from 'office-ui-fabric-react';
+import { IOverflowSetItemProps } from '../../OverflowSet';
 
 const styles = mergeStyleSets({
   root: {
@@ -93,23 +94,7 @@ export class ResizeGroupOverflowSetExample extends BaseComponent<{}, IResizeGrou
           onReduceData={this._onReduceData}
           onGrowData={onGrowDataEnabled ? this._onGrowData : undefined}
           // tslint:disable-next-line:jsx-no-lambda
-          onRenderData={data => {
-            return (
-              <OverflowSet
-                items={data.primary}
-                overflowItems={data.overflow.length ? data.overflow : null}
-                onRenderItem={item => {
-                  return (
-                    <CommandBarButton text={item.name} iconProps={{ iconName: item.icon }} onClick={item.onClick} checked={item.checked} />
-                  );
-                }}
-                onRenderOverflowButton={overflowItems => {
-                  return <CommandBarButton menuProps={{ items: overflowItems! }} />;
-                }}
-                styles={{ root: { height: 40 } }}
-              />
-            );
-          }}
+          onRenderData={this.onRenderData}
         />
         <div className={styles.settingsGroup}>
           <Checkbox label="Enable caching" onChange={this._onCachingEnabledChanged} checked={cachingEnabled} />
@@ -180,5 +165,25 @@ export class ResizeGroupOverflowSetExample extends BaseComponent<{}, IResizeGrou
 
   private _onNumberOfItemsChanged = (event: React.FormEvent<HTMLDivElement>, option: IDropdownOption): void => {
     this.setState({ numberOfItems: parseInt(option.text, 10) });
+  };
+
+  private onRenderData = (data: any) => {
+    return (
+      <OverflowSet
+        items={data.primary}
+        overflowItems={data.overflow.length ? data.overflow : null}
+        onRenderItem={this.onRenderItem}
+        onRenderOverflowButton={this.onRenderOverflowButton}
+        styles={{ root: { height: 40 } }}
+      />
+    );
+  };
+
+  private onRenderItem = (item: IOverflowSetItemProps) => {
+    return <CommandBarButton text={item.name} iconProps={{ iconName: item.icon }} onClick={item.onClick} checked={item.checked} />;
+  };
+
+  private onRenderOverflowButton = (overflowItems: any[]) => {
+    return <CommandBarButton menuProps={{ items: overflowItems! }} />;
   };
 }
