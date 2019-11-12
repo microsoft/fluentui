@@ -345,7 +345,7 @@ export class ResizeGroupBase extends BaseComponent<IResizeGroupProps, IResizeGro
 
   public render(): JSX.Element {
     const { className, onRenderData } = this.props;
-    const { dataToMeasure, renderedData } = this.state;
+    const { dataToMeasure, renderedData, measureDivKey } = this.state;
     const divProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties, ['data']);
 
     const dataNeedsMeasuring = this._nextResizeGroupStateProvider.shouldRenderDataForMeasurement(dataToMeasure);
@@ -362,13 +362,13 @@ export class ResizeGroupBase extends BaseComponent<IResizeGroupProps, IResizeGro
       <div {...divProps} className={className} ref={this._root}>
         <div style={hiddenParentStyles}>
           {dataNeedsMeasuring && !isInitialMeasure && (
-            <div key={this.state.measureDivKey} style={hiddenDivStyles} ref={this._updateHiddenDiv}>
+            <div key={measureDivKey} style={hiddenDivStyles} ref={this._updateHiddenDiv}>
               <MeasuredContext.Provider value={{ isMeasured: true }}>{onRenderData(dataToMeasure)}</MeasuredContext.Provider>
             </div>
           )}
 
           <div
-            key={otherKey(this.state.measureDivKey)}
+            key={otherKey(measureDivKey)}
             ref={this._initialHiddenDiv}
             style={isInitialMeasure ? hiddenDivStyles : undefined}
             data-automation-id="visibleContent"
