@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "List: specify aria-posinset and aria-setsize",
+  "packageName": "office-ui-fabric-react",
+  "email": "jdh@microsoft.com",
+  "commit": "13b6d4a8408abf28a946a2f9cd599bb8853ae52e",
+  "date": "2019-11-12T02:00:51.387Z"
+}
