@@ -92,6 +92,20 @@ describe('List', () => {
       expect(firstRow.getDOMNode().getAttribute('role')).toEqual('listitem');
     });
 
+    it('sets aria-posinset for each item', done => {
+      const wrapper = mount(<List items={mockData(100)} />);
+      wrapper.setProps({ items: mockData(100), onPagesUpdated: (pages: IPage[]) => done() });
+      const firstRow = wrapper.find('.ms-List-cell').first();
+      expect(firstRow.getDOMNode().getAttribute('aria-posinset')).toEqual('1');
+    });
+
+    it('sets aria-setsize for each item', done => {
+      const wrapper = mount(<List items={mockData(100)} />);
+      wrapper.setProps({ items: mockData(100), onPagesUpdated: (pages: IPage[]) => done() });
+      const firstRow = wrapper.find('.ms-List-cell').first();
+      expect(firstRow.getDOMNode().getAttribute('aria-setsize')).toEqual('100');
+    });
+
     it('renders rows for a sparse array containing items that are primitive values', done => {
       const wrapper = mount(<List />);
 

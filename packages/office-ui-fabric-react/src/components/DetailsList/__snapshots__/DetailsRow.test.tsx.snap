@@ -779,6 +779,8 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                   style={Object {}}
                 >
                   <div
+                    aria-posinset={1}
+                    aria-setsize={5}
                     className="ms-List-cell"
                     data-automationid="ListCell"
                     data-list-index={0}
@@ -789,6 +791,8 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                     </div>
                   </div>
                   <div
+                    aria-posinset={2}
+                    aria-setsize={5}
                     className="ms-List-cell"
                     data-automationid="ListCell"
                     data-list-index={1}
@@ -799,6 +803,8 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                     </div>
                   </div>
                   <div
+                    aria-posinset={3}
+                    aria-setsize={5}
                     className="ms-List-cell"
                     data-automationid="ListCell"
                     data-list-index={2}
@@ -809,6 +815,8 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                     </div>
                   </div>
                   <div
+                    aria-posinset={4}
+                    aria-setsize={5}
                     className="ms-List-cell"
                     data-automationid="ListCell"
                     data-list-index={3}
@@ -819,6 +827,8 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                     </div>
                   </div>
                   <div
+                    aria-posinset={5}
+                    aria-setsize={5}
                     className="ms-List-cell"
                     data-automationid="ListCell"
                     data-list-index={4}
@@ -1618,6 +1628,8 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                   style={Object {}}
                 >
                   <div
+                    aria-posinset={1}
+                    aria-setsize={5}
                     className="ms-List-cell"
                     data-automationid="ListCell"
                     data-list-index={0}
@@ -1628,6 +1640,8 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                     </div>
                   </div>
                   <div
+                    aria-posinset={2}
+                    aria-setsize={5}
                     className="ms-List-cell"
                     data-automationid="ListCell"
                     data-list-index={1}
@@ -1638,6 +1652,8 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                     </div>
                   </div>
                   <div
+                    aria-posinset={3}
+                    aria-setsize={5}
                     className="ms-List-cell"
                     data-automationid="ListCell"
                     data-list-index={2}
@@ -1648,6 +1664,8 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                     </div>
                   </div>
                   <div
+                    aria-posinset={4}
+                    aria-setsize={5}
                     className="ms-List-cell"
                     data-automationid="ListCell"
                     data-list-index={3}
@@ -1658,6 +1676,8 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                     </div>
                   </div>
                   <div
+                    aria-posinset={5}
+                    aria-setsize={5}
                     className="ms-List-cell"
                     data-automationid="ListCell"
                     data-list-index={4}
@@ -2955,6 +2975,8 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                   style={Object {}}
                 >
                   <div
+                    aria-posinset={1}
+                    aria-setsize={5}
                     className="ms-List-cell"
                     data-automationid="ListCell"
                     data-list-index={0}
@@ -2965,6 +2987,8 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                     </div>
                   </div>
                   <div
+                    aria-posinset={2}
+                    aria-setsize={5}
                     className="ms-List-cell"
                     data-automationid="ListCell"
                     data-list-index={1}
@@ -2975,6 +2999,8 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                     </div>
                   </div>
                   <div
+                    aria-posinset={3}
+                    aria-setsize={5}
                     className="ms-List-cell"
                     data-automationid="ListCell"
                     data-list-index={2}
@@ -2985,6 +3011,8 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                     </div>
                   </div>
                   <div
+                    aria-posinset={4}
+                    aria-setsize={5}
                     className="ms-List-cell"
                     data-automationid="ListCell"
                     data-list-index={3}
@@ -2995,6 +3023,8 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                     </div>
                   </div>
                   <div
+                    aria-posinset={5}
+                    aria-setsize={5}
                     className="ms-List-cell"
                     data-automationid="ListCell"
                     data-list-index={4}
@@ -3794,6 +3824,8 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                   style={Object {}}
                 >
                   <div
+                    aria-posinset={1}
+                    aria-setsize={5}
                     className="ms-List-cell"
                     data-automationid="ListCell"
                     data-list-index={0}
@@ -3804,6 +3836,8 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                     </div>
                   </div>
                   <div
+                    aria-posinset={2}
+                    aria-setsize={5}
                     className="ms-List-cell"
                     data-automationid="ListCell"
                     data-list-index={1}
@@ -3814,6 +3848,8 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                     </div>
                   </div>
                   <div
+                    aria-posinset={3}
+                    aria-setsize={5}
                     className="ms-List-cell"
                     data-automationid="ListCell"
                     data-list-index={2}
@@ -3824,6 +3860,8 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                     </div>
                   </div>
                   <div
+                    aria-posinset={4}
+                    aria-setsize={5}
                     className="ms-List-cell"
                     data-automationid="ListCell"
                     data-list-index={3}
@@ -3834,6 +3872,8 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                     </div>
                   </div>
                   <div
+                    aria-posinset={5}
+                    aria-setsize={5}
                     className="ms-List-cell"
                     data-automationid="ListCell"
                     data-list-index={4}

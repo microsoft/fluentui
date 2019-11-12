@@ -567,30 +567,40 @@ exports[`DetailsList renders List correctly 1`] = `
                   style={Object {}}
                 >
                   <div
+                    aria-posinset={1}
+                    aria-setsize={5}
                     className="ms-List-cell"
                     data-automationid="ListCell"
                     data-list-index={0}
                     role="presentation"
                   />
                   <div
+                    aria-posinset={2}
+                    aria-setsize={5}
                     className="ms-List-cell"
                     data-automationid="ListCell"
                     data-list-index={1}
                     role="presentation"
                   />
                   <div
+                    aria-posinset={3}
+                    aria-setsize={5}
                     className="ms-List-cell"
                     data-automationid="ListCell"
                     data-list-index={2}
                     role="presentation"
                   />
                   <div
+                    aria-posinset={4}
+                    aria-setsize={5}
                     className="ms-List-cell"
                     data-automationid="ListCell"
                     data-list-index={3}
                     role="presentation"
                   />
                   <div
+                    aria-posinset={5}
+                    aria-setsize={5}
                     className="ms-List-cell"
                     data-automationid="ListCell"
                     data-list-index={4}
@@ -1769,30 +1779,40 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                   style={Object {}}
                 >
                   <div
+                    aria-posinset={1}
+                    aria-setsize={5}
                     className="ms-List-cell"
                     data-automationid="ListCell"
                     data-list-index={0}
                     role="presentation"
                   />
                   <div
+                    aria-posinset={2}
+                    aria-setsize={5}
                     className="ms-List-cell"
                     data-automationid="ListCell"
                     data-list-index={1}
                     role="presentation"
                   />
                   <div
+                    aria-posinset={3}
+                    aria-setsize={5}
                     className="ms-List-cell"
                     data-automationid="ListCell"
                     data-list-index={2}
                     role="presentation"
                   />
                   <div
+                    aria-posinset={4}
+                    aria-setsize={5}
                     className="ms-List-cell"
                     data-automationid="ListCell"
                     data-list-index={3}
                     role="presentation"
                   />
                   <div
+                    aria-posinset={5}
+                    aria-setsize={5}
                     className="ms-List-cell"
                     data-automationid="ListCell"
                     data-list-index={4}
@@ -2377,30 +2397,40 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
                   style={Object {}}
                 >
                   <div
+                    aria-posinset={1}
+                    aria-setsize={5}
                     className="ms-List-cell"
                     data-automationid="ListCell"
                     data-list-index={0}
                     role="presentation"
                   />
                   <div
+                    aria-posinset={2}
+                    aria-setsize={5}
                     className="ms-List-cell"
                     data-automationid="ListCell"
                     data-list-index={1}
                     role="presentation"
                   />
                   <div
+                    aria-posinset={3}
+                    aria-setsize={5}
                     className="ms-List-cell"
                     data-automationid="ListCell"
                     data-list-index={2}
                     role="presentation"
                   />
                   <div
+                    aria-posinset={4}
+                    aria-setsize={5}
                     className="ms-List-cell"
                     data-automationid="ListCell"
                     data-list-index={3}
                     role="presentation"
                   />
                   <div
+                    aria-posinset={5}
+                    aria-setsize={5}
                     className="ms-List-cell"
                     data-automationid="ListCell"
                     data-list-index={4}
@@ -3365,30 +3395,40 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
                   style={Object {}}
                 >
                   <div
+                    aria-posinset={1}
+                    aria-setsize={5}
                     className="ms-List-cell"
                     data-automationid="ListCell"
                     data-list-index={0}
                     role="presentation"
                   />
                   <div
+                    aria-posinset={2}
+                    aria-setsize={5}
                     className="ms-List-cell"
                     data-automationid="ListCell"
                     data-list-index={1}
                     role="presentation"
                   />
                   <div
+                    aria-posinset={3}
+                    aria-setsize={5}
                     className="ms-List-cell"
                     data-automationid="ListCell"
                     data-list-index={2}
                     role="presentation"
                   />
                   <div
+                    aria-posinset={4}
+                    aria-setsize={5}
                     className="ms-List-cell"
                     data-automationid="ListCell"
                     data-list-index={3}
                     role="presentation"
                   />
                   <div
+                    aria-posinset={5}
+                    aria-setsize={5}
                     className="ms-List-cell"
                     data-automationid="ListCell"
                     data-list-index={4}
@@ -4582,30 +4622,40 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                   style={Object {}}
                 >
                   <div
+                    aria-posinset={1}
+                    aria-setsize={5}
                     className="ms-List-cell"
                     data-automationid="ListCell"
                     data-list-index={0}
                     role="presentation"
                   />
                   <div
+                    aria-posinset={2}
+                    aria-setsize={5}
                     className="ms-List-cell"
                     data-automationid="ListCell"
                     data-list-index={1}
                     role="presentation"
                   />
                   <div
+                    aria-posinset={3}
+                    aria-setsize={5}
                     className="ms-List-cell"
                     data-automationid="ListCell"
                     data-list-index={2}
                     role="presentation"
                   />
                   <div
+                    aria-posinset={4}
+                    aria-setsize={5}
                     className="ms-List-cell"
                     data-automationid="ListCell"
                     data-list-index={3}
                     role="presentation"
                   />
                   <div
+                    aria-posinset={5}
+                    aria-setsize={5}
                     className="ms-List-cell"
                     data-automationid="ListCell"
                     data-list-index={4}
@@ -5056,6 +5106,8 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                     style={Object {}}
                   >
                     <div
+                      aria-posinset={1}
+                      aria-setsize={2}
                       className="ms-List-cell"
                       data-automationid="ListCell"
                       data-list-index={0}
@@ -5290,6 +5342,8 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                               style={Object {}}
                             >
                               <div
+                                aria-posinset={1}
+                                aria-setsize={5}
                                 className="ms-List-cell"
                                 data-automationid="ListCell"
                                 data-list-index={0}
@@ -5473,6 +5527,8 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                 </div>
                               </div>
                               <div
+                                aria-posinset={2}
+                                aria-setsize={5}
                                 className="ms-List-cell"
                                 data-automationid="ListCell"
                                 data-list-index={1}
@@ -5667,6 +5723,8 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                     style={Object {}}
                   >
                     <div
+                      aria-posinset={2}
+                      aria-setsize={2}
                       className="ms-List-cell"
                       data-automationid="ListCell"
                       data-list-index={1}
@@ -5901,6 +5959,8 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                               style={Object {}}
                             >
                               <div
+                                aria-posinset={3}
+                                aria-setsize={5}
                                 className="ms-List-cell"
                                 data-automationid="ListCell"
                                 data-list-index={2}
@@ -6084,6 +6144,8 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                 </div>
                               </div>
                               <div
+                                aria-posinset={4}
+                                aria-setsize={5}
                                 className="ms-List-cell"
                                 data-automationid="ListCell"
                                 data-list-index={3}
@@ -6267,6 +6329,8 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                 </div>
                               </div>
                               <div
+                                aria-posinset={5}
+                                aria-setsize={5}
                                 className="ms-List-cell"
                                 data-automationid="ListCell"
                                 data-list-index={4}

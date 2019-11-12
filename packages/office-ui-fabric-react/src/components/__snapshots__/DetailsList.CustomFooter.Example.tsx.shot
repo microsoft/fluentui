@@ -782,6 +782,8 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                   style={Object {}}
                 >
                   <div
+                    aria-posinset={1}
+                    aria-setsize={5}
                     className="ms-List-cell"
                     data-automationid="ListCell"
                     data-list-index={0}
@@ -1232,6 +1234,8 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                     </div>
                   </div>
                   <div
+                    aria-posinset={2}
+                    aria-setsize={5}
                     className="ms-List-cell"
                     data-automationid="ListCell"
                     data-list-index={1}
@@ -1682,6 +1686,8 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                     </div>
                   </div>
                   <div
+                    aria-posinset={3}
+                    aria-setsize={5}
                     className="ms-List-cell"
                     data-automationid="ListCell"
                     data-list-index={2}
@@ -2132,6 +2138,8 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                     </div>
                   </div>
                   <div
+                    aria-posinset={4}
+                    aria-setsize={5}
                     className="ms-List-cell"
                     data-automationid="ListCell"
                     data-list-index={3}
@@ -2582,6 +2590,8 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                     </div>
                   </div>
                   <div
+                    aria-posinset={5}
+                    aria-setsize={5}
                     className="ms-List-cell"
                     data-automationid="ListCell"
                     data-list-index={4}

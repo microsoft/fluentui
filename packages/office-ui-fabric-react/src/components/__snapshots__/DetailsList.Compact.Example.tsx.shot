@@ -992,6 +992,8 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                       style={Object {}}
                     >
                       <div
+                        aria-posinset={1}
+                        aria-setsize={200}
                         className="ms-List-cell"
                         data-automationid="ListCell"
                         data-list-index={0}
@@ -1443,6 +1445,8 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                         </div>
                       </div>
                       <div
+                        aria-posinset={2}
+                        aria-setsize={200}
                         className="ms-List-cell"
                         data-automationid="ListCell"
                         data-list-index={1}
@@ -1894,6 +1898,8 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                         </div>
                       </div>
                       <div
+                        aria-posinset={3}
+                        aria-setsize={200}
                         className="ms-List-cell"
                         data-automationid="ListCell"
                         data-list-index={2}
@@ -2345,6 +2351,8 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                         </div>
                       </div>
                       <div
+                        aria-posinset={4}
+                        aria-setsize={200}
                         className="ms-List-cell"
                         data-automationid="ListCell"
                         data-list-index={3}
@@ -2796,6 +2804,8 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                         </div>
                       </div>
                       <div
+                        aria-posinset={5}
+                        aria-setsize={200}
                         className="ms-List-cell"
                         data-automationid="ListCell"
                         data-list-index={4}
@@ -3247,6 +3257,8 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                         </div>
                       </div>
                       <div
+                        aria-posinset={6}
+                        aria-setsize={200}
                         className="ms-List-cell"
                         data-automationid="ListCell"
                         data-list-index={5}
@@ -3698,6 +3710,8 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                         </div>
                       </div>
                       <div
+                        aria-posinset={7}
+                        aria-setsize={200}
                         className="ms-List-cell"
                         data-automationid="ListCell"
                         data-list-index={6}
@@ -4149,6 +4163,8 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                         </div>
                       </div>
                       <div
+                        aria-posinset={8}
+                        aria-setsize={200}
                         className="ms-List-cell"
                         data-automationid="ListCell"
                         data-list-index={7}
@@ -4600,6 +4616,8 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                         </div>
                       </div>
                       <div
+                        aria-posinset={9}
+                        aria-setsize={200}
                         className="ms-List-cell"
                         data-automationid="ListCell"
                         data-list-index={8}
@@ -5051,6 +5069,8 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                         </div>
                       </div>
                       <div
+                        aria-posinset={10}
+                        aria-setsize={200}
                         className="ms-List-cell"
                         data-automationid="ListCell"
                         data-list-index={9}

@@ -473,7 +473,8 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
   }
 
   private _onRenderPage = (pageProps: IPageProps<T>, defaultRender?: IRenderFunction<IPageProps<T>>): any => {
-    const { onRenderCell, role } = this.props;
+    const { onRenderCell, role, items: allItems } = this.props;
+    const totalItemCount = allItems ? allItems.length : 0;
 
     const {
       page: { items = [], startIndex },
@@ -486,6 +487,7 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
 
     for (let i = 0; i < items.length; i++) {
       const index = startIndex + i;
+      const humanFriendlyIndex = index + 1;
       const item = items[i];
 
       let itemKey = this.props.getKey ? this.props.getKey(item, index) : item && (item as any).key;
@@ -495,7 +497,15 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
       }
 
       cells.push(
-        <div role={cellRole} className={'ms-List-cell'} key={itemKey} data-list-index={index} data-automationid="ListCell">
+        <div
+          role={cellRole}
+          aria-posinset={humanFriendlyIndex}
+          aria-setsize={totalItemCount}
+          className={'ms-List-cell'}
+          key={itemKey}
+          data-list-index={index}
+          data-automationid="ListCell"
+        >
           {onRenderCell && onRenderCell(item, index, this.state.isScrolling)}
         </div>
       );
