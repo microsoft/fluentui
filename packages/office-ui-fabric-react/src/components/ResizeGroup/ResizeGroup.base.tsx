@@ -40,7 +40,7 @@ export interface IResizeGroupState {
    * To avoid this, we flip the keys to "fool" React so that it updates the previously measure div to be the render div
    * instead of remounting.
    */
-  measureDivKey: ResizeGroupDivKey;
+  measureDivKey?: ResizeGroupDivKey;
 }
 
 /**
@@ -111,7 +111,7 @@ export const getNextResizeGroupStateProvider = (measurementCache = getMeasuremen
     data: any,
     onReduceData: (prevData: any) => any,
     getElementToMeasureDimension: () => number
-  ): Partial<IResizeGroupState> {
+  ): IResizeGroupState {
     let dataToMeasure = data;
     let measuredDimension: number | undefined = _getMeasuredDimension(data, getElementToMeasureDimension);
 
@@ -162,7 +162,7 @@ export const getNextResizeGroupStateProvider = (measurementCache = getMeasuremen
     onGrowData: (prevData: any) => any,
     getElementToMeasureDimension: () => number,
     onReduceData: (prevData: any) => any
-  ): Partial<IResizeGroupState> {
+  ): IResizeGroupState {
     let dataToMeasure = data;
     let measuredDimension: number | undefined = _getMeasuredDimension(data, getElementToMeasureDimension);
 
@@ -210,8 +210,8 @@ export const getNextResizeGroupStateProvider = (measurementCache = getMeasuremen
     fullDimensionData: any,
     renderedData: any,
     onGrowData?: (prevData: any) => any
-  ): Partial<IResizeGroupState> {
-    let nextState: Partial<IResizeGroupState>;
+  ): IResizeGroupState {
+    let nextState: IResizeGroupState;
     if (newDimension > _containerDimension!) {
       if (onGrowData) {
         nextState = {
@@ -357,7 +357,10 @@ export class ResizeGroupBase extends BaseComponent<IResizeGroupProps, IResizeGro
     // component for measurement and the final render. For renders that update what is on screen, we want to make sure that
     // there are no jarring effects such as the screen flashing as we apply scaling steps for measurement. In the update case,
     // we mount a second version of the component just for measurement purposes and leave the rendered content untouched until we know the
-    // next state sto show to the user.
+    // next state to show to the user.
+    // Once measurement is done, we flip the keys of the divs so that React is fooled into updating the measurement div with render styles
+    // saving one extra unmount and mount. To accomplish this, we also need to have a MeasuredContext.Provider for the render div as well
+    // to preserve React VDOM structure.
     return (
       <div {...divProps} className={className} ref={this._root}>
         <div style={hiddenParentStyles}>
@@ -452,6 +455,9 @@ export class ResizeGroupBase extends BaseComponent<IResizeGroupProps, IResizeGro
  * we are measuring and rendering in the same div.
  * @param key Key to switch
  */
-function otherKey(key: ResizeGroupDivKey) {
+function otherKey(key?: ResizeGroupDivKey) {
+  if (key === undefined) {
+    return undefined;
+  }
   return key === 'KeyOne' ? 'KeyTwo' : 'KeyOne';
 }
