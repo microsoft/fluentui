@@ -30,6 +30,9 @@ const DarkDefaultPalette: Partial<IPalette> = {
 const DarkTheme: ITheme = createTheme({
   palette: DarkDefaultPalette,
   semanticColors: {
+    primaryButtonText: DarkDefaultPalette.black,
+    primaryButtonTextHovered: DarkDefaultPalette.black,
+    primaryButtonTextPressed: DarkDefaultPalette.black,
     menuBackground: DarkDefaultPalette.neutralLighter,
     menuItemBackgroundHovered: DarkDefaultPalette.neutralLight,
     menuItemBackgroundPressed: DarkDefaultPalette.neutralQuaternaryAlt,
