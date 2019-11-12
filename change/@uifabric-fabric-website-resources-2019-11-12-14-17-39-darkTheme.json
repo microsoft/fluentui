@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Adding dark theme to fabric resources site. Updating sematic slot references in contextual menu and persona component",
+  "packageName": "@uifabric/fabric-website-resources",
+  "email": "marygans@microsoft.com",
+  "commit": "821cb36ba8cc48bee5cbc80608281050c558485f",
+  "date": "2019-11-12T22:16:00.719Z"
+}

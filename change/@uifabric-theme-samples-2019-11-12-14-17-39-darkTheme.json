@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Adding Dark theme",
+  "packageName": "@uifabric/theme-samples",
+  "email": "marygans@microsoft.com",
+  "commit": "821cb36ba8cc48bee5cbc80608281050c558485f",
+  "date": "2019-11-12T22:17:39.167Z"
+}
