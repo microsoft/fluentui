@@ -86,7 +86,8 @@ $Calendar-dayPicker-margin: 10px;
   display: inline-flex;
   flex-grow: 1;
   @include ms-font-m;
-  color: $ms-color-neutralDark;
+  font-weight: 600;
+  color: $ms-color-neutralPrimary;
   padding: 0 5px;
 }
 
@@ -413,7 +414,8 @@ $Calendar-dayPicker-margin: 10px;
   flex-grow: 1;
   padding: 0 5px;
   @include ms-font-m;
-  color: $ms-color-neutralDark;
+  font-weight: 600;
+  color: $ms-color-neutralPrimary;
   height: $Calendar-day;
   line-height: $Calendar-day;
   @include margin-left(5px);
