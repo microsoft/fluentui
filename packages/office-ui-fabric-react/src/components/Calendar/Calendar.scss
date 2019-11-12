@@ -768,7 +768,7 @@ $Calendar-dayPicker-margin: 10px;
   background-color: $ms-color-neutralLight;
   color: $ms-color-neutralDark;
   &.monthOption:hover {
-    background-color: $ms-color-neutralLighter;
+    background-color: $ms-color-neutralLight;
   }
   @include high-contrast {
     color: highlight;
