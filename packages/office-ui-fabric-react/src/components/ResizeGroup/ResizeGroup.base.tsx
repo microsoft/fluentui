@@ -33,14 +33,14 @@ export interface IResizeGroupState {
   resizeDirection?: 'grow' | 'shrink';
 
   /**
-   * When we get new props, we typically first create a measure div and in the next render put this data into the rendered div
+   * When we get new props, we typically first create a measure div and in the next render put this data into a new rendered div
    * (See the render function below)
    *
    * When we do this, React unmounts the measured div and its children fully and remounts all of them in the rendered div.
    * To avoid this, we flip the keys to "fool" React so that it updates the previously measure div to be the render div
    * instead of remounting.
    */
-  measureDivKey?: ResizeGroupDivKey;
+  measureDivKey: ResizeGroupDivKey;
 }
 
 /**
@@ -111,7 +111,7 @@ export const getNextResizeGroupStateProvider = (measurementCache = getMeasuremen
     data: any,
     onReduceData: (prevData: any) => any,
     getElementToMeasureDimension: () => number
-  ): IResizeGroupState {
+  ): Partial<IResizeGroupState> {
     let dataToMeasure = data;
     let measuredDimension: number | undefined = _getMeasuredDimension(data, getElementToMeasureDimension);
 
@@ -162,7 +162,7 @@ export const getNextResizeGroupStateProvider = (measurementCache = getMeasuremen
     onGrowData: (prevData: any) => any,
     getElementToMeasureDimension: () => number,
     onReduceData: (prevData: any) => any
-  ): IResizeGroupState {
+  ): Partial<IResizeGroupState> {
     let dataToMeasure = data;
     let measuredDimension: number | undefined = _getMeasuredDimension(data, getElementToMeasureDimension);
 
@@ -210,8 +210,8 @@ export const getNextResizeGroupStateProvider = (measurementCache = getMeasuremen
     fullDimensionData: any,
     renderedData: any,
     onGrowData?: (prevData: any) => any
-  ): IResizeGroupState {
-    let nextState: IResizeGroupState;
+  ): Partial<IResizeGroupState> {
+    let nextState: Partial<IResizeGroupState>;
     if (newDimension > _containerDimension!) {
       if (onGrowData) {
         nextState = {
@@ -280,7 +280,7 @@ export const getNextResizeGroupStateProvider = (measurementCache = getMeasuremen
     if (nextState.renderedData !== currentState.renderedData) {
       nextState = {
         ...nextState,
-        measureDivKey: currentState.measureDivKey === 'KeyOne' ? 'KeyTwo' : 'KeyOne'
+        measureDivKey: otherKey(currentState.measureDivKey)
       };
     }
 
@@ -368,7 +368,7 @@ export class ResizeGroupBase extends BaseComponent<IResizeGroupProps, IResizeGro
           )}
 
           <div
-            key={this.state.measureDivKey === 'KeyOne' ? 'KeyTwo' : 'KeyOne'}
+            key={otherKey(this.state.measureDivKey)}
             ref={this._initialHiddenDiv}
             style={isInitialMeasure ? hiddenDivStyles : undefined}
             data-automation-id="visibleContent"
@@ -445,4 +445,13 @@ export class ResizeGroupBase extends BaseComponent<IResizeGroupProps, IResizeGro
       this.setState({ measureContainer: true });
     }
   }
+}
+
+/**
+ * Helper function to switch the keys so that we can "fool" React into thinking
+ * we are measuring and rendering in the same div.
+ * @param key Key to switch
+ */
+function otherKey(key: ResizeGroupDivKey) {
+  return key === 'KeyOne' ? 'KeyTwo' : 'KeyOne';
 }
