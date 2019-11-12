@@ -6402,6 +6402,7 @@ export interface IResizeGroupProps extends React.HTMLAttributes<ResizeGroupBase 
 export interface IResizeGroupState {
     dataToMeasure?: any;
     measureContainer?: boolean;
+    measureDivKey?: ResizeGroupDivKey;
     renderedData?: any;
     resizeDirection?: 'grow' | 'shrink';
 }
@@ -8578,6 +8579,9 @@ export enum ResizeGroupDirection {
     // (undocumented)
     vertical = 1
 }
+
+// @public (undocumented)
+export type ResizeGroupDivKey = 'KeyOne' | 'KeyTwo';
 
 // @public (undocumented)
 export enum ResponsiveMode {

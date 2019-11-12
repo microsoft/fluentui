@@ -86,6 +86,31 @@ describe('ResizeGroup', () => {
       expect(getMeasuredElementWidthStub.callCount).toEqual(1);
     });
 
+    it('flips the measureDivKey when render data changes', () => {
+      const dataToMeasure = { foo: 'bar' };
+      const resizeGroupProps = getRequiredResizeGroupProps();
+      const resizeGroupState: IResizeGroupState = {
+        dataToMeasure,
+        resizeDirection: 'shrink',
+        renderedData: { foo2: 'bar2' },
+        measureDivKey: 'KeyOne'
+      };
+      const getNextResizeGroupState = getNextResizeGroupStateProvider().getNextState;
+      const getMeasuredElementWidthStub = sinon.stub();
+      getMeasuredElementWidthStub.returns(25);
+
+      const result = getNextResizeGroupState(resizeGroupProps, resizeGroupState, getMeasuredElementWidthStub, 50);
+
+      expect(result).toEqual({
+        renderedData: dataToMeasure,
+        measureContainer: false,
+        measureDivKey: 'KeyTwo',
+        dataToMeasure: undefined,
+        resizeDirection: undefined
+      });
+      expect(getMeasuredElementWidthStub.callCount).toEqual(1);
+    });
+
     it('calls onReduceData and sets the next measuredData when contents do not fit', () => {
       const dataToMeasure = { index: 5 };
       const resizeGroupProps = getRequiredResizeGroupProps();

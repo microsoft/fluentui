@@ -4,7 +4,7 @@ import { IResizeGroupProps, ResizeGroupDirection } from './ResizeGroup.types';
 
 const RESIZE_DELAY = 16;
 
-type ResizeGroupDivKey = 'KeyOne' | 'KeyTwo';
+export type ResizeGroupDivKey = 'KeyOne' | 'KeyTwo';
 
 export interface IResizeGroupState {
   /**
