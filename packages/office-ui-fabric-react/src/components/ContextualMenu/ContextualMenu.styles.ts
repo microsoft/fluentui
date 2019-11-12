@@ -23,7 +23,7 @@ export const getStyles = (props: IContextualMenuStyleProps): IContextualMenuStyl
       classNames.root,
       classNames.isopen,
       {
-        backgroundColor: semanticColors.bodyBackground,
+        backgroundColor: semanticColors.menuBackground,
         minWidth: '180px'
       },
       className
