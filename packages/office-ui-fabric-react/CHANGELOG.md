@@ -1,7 +1,19 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Sat, 09 Nov 2019 14:26:36 GMT and should not be manually modified.
+This log was last generated on Tue, 12 Nov 2019 12:32:39 GMT and should not be manually modified.
 
+## 7.60.0
+Tue, 12 Nov 2019 12:32:39 GMT
+
+### Minor changes
+
+- Doc typing updates to support API doc refactor (should not impact consumers) (elcraig@microsoft.com)
+### Patches
+
+- Fix dropdown title and event (achal.jain@microsoft.com)
+- Combobox: Augmented checkbox to handle clicks from blank space to the right of the label  (v-mare@microsoft.com)
+- ContextualMenu: Add example using ContextualMenu directly. (jagore@microsoft.com)
+- HoverCard: Clarify hotKey in documentation. (jagore@microsoft.com)
 ## 7.59.3
 Sat, 09 Nov 2019 14:26:36 GMT
 

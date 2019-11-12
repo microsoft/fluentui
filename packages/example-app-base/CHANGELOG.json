@@ -2,6 +2,20 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "date": "Tue, 12 Nov 2019 12:32:39 GMT",
+      "tag": "@uifabric/example-app-base_v7.10.0",
+      "version": "7.10.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "API doc table refactor",
+            "author": "elcraig@microsoft.com",
+            "commit": "32afa854a8d36c21859d44b312ea02b9261e0238"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 06 Nov 2019 12:34:07 GMT",
       "tag": "@uifabric/example-app-base_v7.9.0",
       "version": "7.9.0",

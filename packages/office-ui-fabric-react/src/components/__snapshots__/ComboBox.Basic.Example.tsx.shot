@@ -1854,6 +1854,9 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                         &.ms-Button--command:hover:active {
                           background-color: #edebe9;
                         }
+                        & .ms-Checkbox-label {
+                          width: 100%;
+                        }
                         &:hover {
                           background-color: #f3f2f1;
                           color: #201f1e;
@@ -2013,6 +2016,9 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                         &.ms-Button--command:hover:active {
                           background-color: #edebe9;
                         }
+                        & .ms-Checkbox-label {
+                          width: 100%;
+                        }
                         &:hover {
                           background-color: #f3f2f1;
                         }
@@ -2161,6 +2167,9 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                         }
                         &.ms-Button--command:hover:active {
                           background-color: #edebe9;
+                        }
+                        & .ms-Checkbox-label {
+                          width: 100%;
                         }
                         &:hover {
                           background-color: #f3f2f1;
@@ -2316,6 +2325,9 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                         }
                         &.ms-Button--command:hover:active {
                           background-color: #edebe9;
+                        }
+                        & .ms-Checkbox-label {
+                          width: 100%;
                         }
                         &:hover {
                           background-color: #f3f2f1;
@@ -2521,6 +2533,9 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                         &.ms-Button--command:hover:active {
                           background-color: #edebe9;
                         }
+                        & .ms-Checkbox-label {
+                          width: 100%;
+                        }
                         &:hover {
                           background-color: #f3f2f1;
                           color: #201f1e;
@@ -2680,6 +2695,9 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                         &.ms-Button--command:hover:active {
                           background-color: #edebe9;
                         }
+                        & .ms-Checkbox-label {
+                          width: 100%;
+                        }
                         &:hover {
                           outline: 0px;
                         }
@@ -2821,6 +2839,9 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                         }
                         &.ms-Button--command:hover:active {
                           background-color: #edebe9;
+                        }
+                        & .ms-Checkbox-label {
+                          width: 100%;
                         }
                         &:hover {
                           background-color: #f3f2f1;
@@ -2977,6 +2998,9 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                         &.ms-Button--command:hover:active {
                           background-color: #edebe9;
                         }
+                        & .ms-Checkbox-label {
+                          width: 100%;
+                        }
                         &:hover {
                           background-color: #f3f2f1;
                           color: #201f1e;
@@ -3132,6 +3156,9 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                         &.ms-Button--command:hover:active {
                           background-color: #edebe9;
                         }
+                        & .ms-Checkbox-label {
+                          width: 100%;
+                        }
                         &:hover {
                           background-color: #f3f2f1;
                           color: #201f1e;
@@ -3286,6 +3313,9 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                         }
                         &.ms-Button--command:hover:active {
                           background-color: #edebe9;
+                        }
+                        & .ms-Checkbox-label {
+                          width: 100%;
                         }
                         &:hover {
                           background-color: #f3f2f1;
