@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Avoid one extra mount when data's layout changes in Resize group",
+  "packageName": "office-ui-fabric-react",
+  "email": "kushaly@microsoft.com",
+  "commit": "99c630c84945c859284a2856a9a22fb5b72ffd36",
+  "date": "2019-11-12T00:11:35.637Z"
+}
