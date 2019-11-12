@@ -1406,15 +1406,7 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
             -ms-high-contrast-adjust: none;
             background-color: Window;
             border-color: Highlight;
-            border-width: 2px;
             color: HighlightText;
-            padding-bottom: 0;
-            padding-left: 11px;
-            padding-top: 0;
-          }
-          @media screen and (-ms-high-contrast: active){&.is-open .ms-ComboBox-CaretDown-button {
-            right: -2px;
-            top: -2px;
           }
           &:hover {
             border-color: #323130;
@@ -1439,20 +1431,27 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
           }
           &:active {
             border-color: #0078d4;
+            position: relative;
           }
           @media screen and (-ms-high-contrast: active){&:active {
             -ms-high-contrast-adjust: none;
             background-color: Window;
             border-color: Highlight;
-            border-width: 2px;
             color: HighlightText;
-            padding-bottom: 0;
-            padding-left: 11px;
-            padding-top: 0;
           }
-          @media screen and (-ms-high-contrast: active){&:active .ms-ComboBox-CaretDown-button {
-            right: -2px;
-            top: -2px;
+          &:active:after {
+            border-radius: 2px;
+            border: 2px solid #0078d4;
+            bottom: -1px;
+            content: '';
+            left: -1px;
+            pointer-events: none;
+            position: absolute;
+            right: -1px;
+            top: -1px;
+          }
+          @media screen and (-ms-high-contrast: active){&:active:after {
+            border-color: Highlight;
           }
           &:focus {
             border-color: #0078d4;
@@ -1464,15 +1463,21 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
             -ms-high-contrast-adjust: none;
             background-color: Window;
             border-color: Highlight;
-            border-width: 2px;
             color: HighlightText;
-            padding-bottom: 0;
-            padding-left: 11px;
-            padding-top: 0;
           }
-          @media screen and (-ms-high-contrast: active){&:focus .ms-ComboBox-CaretDown-button {
-            right: -2px;
-            top: -2px;
+          &:focus:after {
+            border-radius: 2px;
+            border: 2px solid #0078d4;
+            bottom: -1px;
+            content: '';
+            left: -1px;
+            pointer-events: none;
+            position: absolute;
+            right: -1px;
+            top: -1px;
+          }
+          @media screen and (-ms-high-contrast: active){&:focus:after {
+            border-color: Highlight;
           }
       id="ComboBox6wrapper"
     >
@@ -1557,10 +1562,8 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
               padding-right: 4px;
               padding-top: 0;
               position: absolute;
-              right: -1px;
               text-align: center;
               text-decoration: none;
-              top: -1px;
               user-select: none;
               vertical-align: top;
               width: 32px;
@@ -1683,6 +1686,7 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 12px;
             font-weight: 400;
+            margin-top: 5px;
           }
       id="ComboBox6-error"
       role="region"

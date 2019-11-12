@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Fix dropdown title and event",
+  "packageName": "office-ui-fabric-react",
+  "email": "achal.jain@microsoft.com",
+  "commit": "46b1fcd125c12dc2593d1bb2780f51c31dd0b190",
+  "date": "2019-11-01T23:14:16.868Z"
+}

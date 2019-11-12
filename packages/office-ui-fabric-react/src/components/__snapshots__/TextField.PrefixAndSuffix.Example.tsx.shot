@@ -304,7 +304,6 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
               ms-TextField-fieldGroup
               {
                 align-items: stretch;
-                background-color: #f3f2f1;
                 background: #ffffff;
                 border-color: #f3f2f1;
                 border-radius: 2px;
@@ -324,6 +323,9 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
                 padding-right: 0px;
                 padding-top: 0px;
                 position: relative;
+              }
+              &:hover {
+                border-color: #f3f2f1;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
@@ -367,7 +369,7 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
                   -webkit-font-smoothing: antialiased;
                   background-color: #f3f2f1;
                   background: none;
-                  border-color: transparent;
+                  border-color: #f3f2f1;
                   border-radius: 0px;
                   border: none;
                   box-shadow: none;

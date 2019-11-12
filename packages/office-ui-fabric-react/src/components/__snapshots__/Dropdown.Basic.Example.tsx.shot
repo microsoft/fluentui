@@ -94,7 +94,10 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
           }
           &:focus .ms-Dropdown-title {
             border-color: #0078d4;
+            border-width: 2px;
             color: #201f1e;
+            left: -1px;
+            top: -1px;
           }
           @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-title {
             background-color: Highlight;
@@ -305,6 +308,9 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
           }
           &:focus .ms-Dropdown-title {
             border-color: #0078d4;
+            border-width: 2px;
+            left: -1px;
+            top: -1px;
           }
           @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-title {
             background-color: Highlight;
@@ -495,7 +501,10 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
           }
           &:focus .ms-Dropdown-title {
             border-color: #0078d4;
+            border-width: 2px;
             color: #201f1e;
+            left: -1px;
+            top: -1px;
           }
           @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-title {
             background-color: Highlight;

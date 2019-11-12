@@ -82,7 +82,6 @@ export const getStyles = (props: ISelectedPersonaStyleProps): ISelectedPersonaSt
         flex: '0 0 auto',
         width: 33,
         height: 33,
-        flexBasis: 32,
         selectors: {
           ':hover': {
             backgroundColor: palette.themeLight

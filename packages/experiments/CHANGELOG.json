@@ -2,6 +2,27 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "date": "Fri, 08 Nov 2019 12:30:07 GMT",
+      "tag": "@uifabric/experiments_v7.18.4",
+      "version": "7.18.4",
+      "comments": {
+        "none": [
+          {
+            "comment": "Update experiments snapshots",
+            "author": "elcraig@microsoft.com",
+            "commit": "7d23dc83bf013fc5441e3ec81b3913d82099cb38"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Add px units to flexBasis styling by default. Remove existing styling usage where it had no effect before this PR.",
+            "author": "jagore@microsoft.com",
+            "commit": "f907d55f63a68d685743277f1f35188fbe6af62d"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 08 Oct 2019 12:31:37 GMT",
       "tag": "@uifabric/experiments_v7.18.3",
       "version": "7.18.3",

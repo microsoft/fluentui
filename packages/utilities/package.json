@@ -46,7 +46,7 @@
     "@uifabric/build": "^7.0.0"
   },
   "dependencies": {
-    "@uifabric/merge-styles": "^7.8.0",
+    "@uifabric/merge-styles": "^7.8.1",
     "@uifabric/set-version": "^7.0.2",
     "prop-types": "^15.5.10",
     "tslib": "^1.7.1"

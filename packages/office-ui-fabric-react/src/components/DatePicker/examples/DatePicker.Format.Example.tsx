@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { DatePicker, DayOfWeek, IDatePickerStrings } from 'office-ui-fabric-react/lib/DatePicker';
-import './DatePicker.Examples.scss';
+import { mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
 
 const DayPickerStrings: IDatePickerStrings = {
   months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
@@ -29,6 +29,13 @@ export interface IDatePickerFormatExampleState {
   value?: Date | null;
 }
 
+const controlClass = mergeStyleSets({
+  control: {
+    margin: '0 0 15px 0',
+    maxWidth: '300px'
+  }
+});
+
 export class DatePickerFormatExample extends React.Component<{}, IDatePickerFormatExampleState> {
   public constructor(props: {}) {
     super(props);
@@ -50,6 +57,7 @@ export class DatePickerFormatExample extends React.Component<{}, IDatePickerForm
           dates as dd/MM/yy.
         </p>
         <DatePicker
+          className={controlClass.control}
           label="Start date"
           isRequired={false}
           allowTextInput={true}

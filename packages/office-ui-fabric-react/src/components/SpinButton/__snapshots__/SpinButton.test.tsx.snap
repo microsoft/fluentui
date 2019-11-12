@@ -64,6 +64,7 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
           display: flex;
           height: 32px;
           min-width: 86px;
+          position: relative;
         }
         &:hover {
           border-color: #323130;
@@ -483,6 +484,7 @@ exports[`SpinButton renders SpinButton correctly with values that the user passe
           display: flex;
           height: 32px;
           min-width: 86px;
+          position: relative;
         }
         &:hover {
           border-color: #323130;

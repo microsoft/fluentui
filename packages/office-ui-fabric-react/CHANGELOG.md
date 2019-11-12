@@ -1,7 +1,45 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 06 Nov 2019 12:34:07 GMT and should not be manually modified.
+This log was last generated on Sat, 09 Nov 2019 14:26:36 GMT and should not be manually modified.
 
+## 7.59.3
+Sat, 09 Nov 2019 14:26:36 GMT
+
+### Patches
+
+- FloatingPicker: Addressing bad import, causing jest to fail when referenced. (dzearing@hotmail.com)
+## 7.59.2
+Sat, 09 Nov 2019 06:41:37 GMT
+
+### Patches
+
+- Removed SCSS (pandasa123@gmail.com)
+- Removed SCSS (pandasa123@gmail.com)
+- Removed SCSS dependency. Since we're doing this in JS, I don't think we'd need the :after selector but I'd love to be corrected just in case I'm wrong (pandasa123@gmail.com)
+- Dropdown: fixed checks on preventDefault which should be defaultPrevented (micahgodbolt@gmail.com)
+## 7.59.1
+Fri, 08 Nov 2019 12:30:07 GMT
+
+### Patches
+
+- copied over fixes from a previous PR # 10439 (betrue@microsoft.com)
+- Add px units to flexBasis styling by default. Remove existing styling usage where it had no effect before this PR. (jagore@microsoft.com)
+- Removed SCSS file (pandasa123@gmail.com)
+- Removed SCSS file (pandasa123@gmail.com)
+- TooltipHost: Fix dismiss race condition. (jdh@microsoft.com)
+- Removed SCSS for List Scrolling Example in favour of mergeStyleSets pattern (pandasa123@gmail.com)
+- Removed SCSS from Facepile Examples (pandasa123@gmail.com)
+## 7.59.0
+Thu, 07 Nov 2019 12:26:32 GMT
+
+### Minor changes
+
+- TeachingBubble: Wrap contents in a FocusTrapZone to better support keyboard navigation. (jdh@microsoft.com)
+### Patches
+
+- Fix modal keyboarding issue with respect to moving the modal (sareiff@microsoft.com)
+- Pass through div props to the rendered root of CommandBar. (xinychen@microsoft.com)
+- Address BasePicker calls onResolveSuggestions callback when click. (nif_tony@outlook.com)
 ## 7.58.0
 Wed, 06 Nov 2019 12:34:07 GMT
 

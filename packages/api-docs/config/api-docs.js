@@ -5,22 +5,19 @@
 const path = require('path');
 const apiDocs = require('../lib/index');
 
-/** @type {apiDocs.IPageJsonOptions[]} */
-module.exports = [
-  {
-    apiJsonPaths: [
-      path.resolve(__dirname, '../../styling/dist/styling.api.json'),
-      path.resolve(__dirname, '../../utilities/dist/utilities.api.json'),
-      path.resolve(__dirname, '../../merge-styles/dist/merge-styles.api.json')
-    ],
-    pageJsonFolderPath: path.join(__dirname, '../lib/pages/references'),
-    pageNames: [],
-    kind: 'References'
-  },
-  {
-    apiJsonPaths: [path.resolve(__dirname, '../../office-ui-fabric-react/dist/office-ui-fabric-react.api.json')],
-    pageJsonFolderPath: path.resolve(__dirname, '../lib/pages/office-ui-fabric-react'),
-    pageNames: [
+/** @type {apiDocs.IPageJsonOptions} */
+module.exports = {
+  apiJsonPaths: [
+    path.resolve(__dirname, '../../styling/dist/styling.api.json'),
+    path.resolve(__dirname, '../../utilities/dist/utilities.api.json'),
+    path.resolve(__dirname, '../../merge-styles/dist/merge-styles.api.json'),
+    path.resolve(__dirname, '../../office-ui-fabric-react/dist/office-ui-fabric-react.api.json'),
+    path.resolve(__dirname, '../../react-cards/dist/react-cards.api.json')
+  ],
+  outputRoot: path.resolve(__dirname, '../lib/pages'),
+  fallbackGroup: 'references',
+  pageGroups: {
+    'office-ui-fabric-react': [
       'ActivityItem',
       'Announced',
       'Breadcrumb',
@@ -90,12 +87,6 @@ module.exports = [
       'Toggle',
       'Tooltip'
     ],
-    kind: 'Components'
-  },
-  {
-    apiJsonPaths: [path.resolve(__dirname, '../../react-cards/dist/react-cards.api.json')],
-    pageJsonFolderPath: path.resolve(__dirname, '../lib/pages/react-cards'),
-    pageNames: ['Card'],
-    kind: 'Components'
+    'react-cards': ['Card']
   }
-];
+};

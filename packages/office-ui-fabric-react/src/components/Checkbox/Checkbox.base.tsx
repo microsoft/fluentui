@@ -194,10 +194,10 @@ export class CheckboxBase extends React.Component<ICheckboxProps, ICheckboxState
   };
 
   private _onRenderLabel = (props: ICheckboxProps): JSX.Element | null => {
-    const { label } = props;
+    const { label, title } = props;
 
     return label ? (
-      <span aria-hidden="true" className={this._classNames.text}>
+      <span aria-hidden="true" className={this._classNames.text} title={title}>
         {label}
       </span>
     ) : null;

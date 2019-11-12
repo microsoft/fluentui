@@ -229,6 +229,8 @@ export class TooltipHostBase extends React.Component<ITooltipHostProps, ITooltip
 
   // Hide Tooltip
   private _hideTooltip = (): void => {
+    this._clearOpenTimer();
+    this._clearDismissTimer();
     this._toggleTooltip(false);
   };
 
