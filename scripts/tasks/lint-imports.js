@@ -223,11 +223,14 @@ function lintImports() {
       pathIsRelative = true;
     } else if (packagesInfo[importPath] || packagesInfo[packageRootPath]) {
       // skip the full import of packages within the monorepo
+      // filters out file paths that contain "examples", ".doc.", "exampleData"
       const filterOut = /(examples)|(\.doc\.)|(exampleData)/gm;
       const isAcceptedPath = filePath.match(filterOut) === null;
       const isntAtPath = importPath[0] !== '@';
+      // checks if the import root directory is the same as the current working directory
+      const isSameDirectory = process.cwd().match(new RegExp(`(${packageRootPath})$`, 'gm'));
 
-      if (!isExample && isntAtPath && isAcceptedPath) {
+      if (!isExample && isntAtPath && isAcceptedPath && isSameDirectory) {
         _addError(importErrors.pathAbsolute, relativePath, importPath);
       }
       return;
@@ -320,7 +323,7 @@ function lintImports() {
   function reportFilePathErrors(importErrors) {
     /** @type {{ [k in keyof ImportErrors]: string }} */
     const errorMessages = {
-      pathAbsolute: 'files are using absolute imports. ' + 'Please update the following imports to use relative paths instead:',
+      pathAbsolute: 'files are using absolute imports. Please update the following imports to use relative paths instead:',
       pathNotFile:
         '{count} import path(s) do not reference physical files. This can break AMD imports. ' +
         'Please ensure the following imports reference physical files:',
