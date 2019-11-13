@@ -2775,6 +2775,7 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox,
     onMenuOpen?: () => void;
     onPendingValueChanged?: (option?: IComboBoxOption, index?: number, value?: string) => void;
     onRenderLowerContent?: IRenderFunction<IComboBoxProps>;
+    onRenderUpperContent?: IRenderFunction<IComboBoxProps>;
     onResolveOptions?: (options: IComboBoxOption[]) => IComboBoxOption[] | PromiseLike<IComboBoxOption[]>;
     onScrollToItem?: (itemIndex: number) => void;
     options: IComboBoxOption[];
