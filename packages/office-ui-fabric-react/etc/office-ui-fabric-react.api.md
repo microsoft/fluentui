@@ -1331,7 +1331,7 @@ export const getNextResizeGroupStateProvider: (measurementCache?: {
 }) => {
     getNextState: (props: IResizeGroupProps, currentState: IResizeGroupState, getElementToMeasureDimension: () => number, newContainerDimension?: number | undefined) => IResizeGroupState | undefined;
     shouldRenderDataForMeasurement: (dataToMeasure: any) => boolean;
-    getInitialResizeGroupState: (data: any) => IResizeGroupState;
+    getInitialResizeGroupState: (props: IResizeGroupProps) => IResizeGroupState;
 };
 
 // @public
@@ -6390,6 +6390,7 @@ export interface IResizeGroupProps extends React.HTMLAttributes<ResizeGroupBase 
     data: any;
     dataDidRender?: (renderedData: any) => void;
     direction?: ResizeGroupDirection;
+    onBatchScaleData?: (prevData: any, scalingStepsCount: number) => any;
     onGrowData?: (prevData: any) => any;
     onReduceData: (prevData: any) => any;
     onRenderData: (data: any) => JSX.Element;
@@ -6402,6 +6403,7 @@ export interface IResizeGroupProps extends React.HTMLAttributes<ResizeGroupBase 
 export interface IResizeGroupState {
     dataToMeasure?: any;
     measureContainer?: boolean;
+    prevProps?: IResizeGroupProps;
     renderedData?: any;
     resizeDirection?: 'grow' | 'shrink';
 }
@@ -8562,13 +8564,26 @@ export class ResizeGroupBase extends BaseComponent<IResizeGroupProps, IResizeGro
     // (undocumented)
     componentDidMount(): void;
     // (undocumented)
-    componentDidUpdate(prevProps: IResizeGroupProps): void;
+    componentDidUpdate(): void;
+    // (undocumented)
+    static getDerivedStateFromProps(props: IResizeGroupProps, state: IResizeGroupState): {
+        renderedData: any;
+        measureContainer: boolean;
+        prevProps: IResizeGroupProps;
+        dataToMeasure?: undefined;
+        resizeDirection?: undefined;
+    } | {
+        dataToMeasure: any;
+        prevProps: IResizeGroupProps;
+        resizeDirection: string;
+        measureContainer: boolean;
+        renderedData?: undefined;
+    } | null;
     // (undocumented)
     remeasure(): void;
     // (undocumented)
     render(): JSX.Element;
-    // (undocumented)
-    UNSAFE_componentWillReceiveProps(nextProps: IResizeGroupProps): void;
+    shouldComponentUpdate(nextProps: IResizeGroupProps, nextState: IResizeGroupState): boolean;
     }
 
 // @public (undocumented)

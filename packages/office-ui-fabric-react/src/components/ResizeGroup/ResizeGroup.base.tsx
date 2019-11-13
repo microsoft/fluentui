@@ -104,7 +104,7 @@ export const getNextResizeGroupStateProvider = (measurementCache = getMeasuremen
     data: any,
     onReduceData: (prevData: any) => any,
     getElementToMeasureDimension: () => number
-  ): Partial<IResizeGroupState> {
+  ): IResizeGroupState {
     let dataToMeasure = data;
     let measuredDimension: number | undefined = _getMeasuredDimension(data, getElementToMeasureDimension);
 
@@ -155,7 +155,7 @@ export const getNextResizeGroupStateProvider = (measurementCache = getMeasuremen
     onGrowData: (prevData: any) => any,
     getElementToMeasureDimension: () => number,
     onReduceData: (prevData: any) => any
-  ): Partial<IResizeGroupState> {
+  ): IResizeGroupState {
     let dataToMeasure = data;
     let measuredDimension: number | undefined = _getMeasuredDimension(data, getElementToMeasureDimension);
 
@@ -203,8 +203,8 @@ export const getNextResizeGroupStateProvider = (measurementCache = getMeasuremen
     fullDimensionData: any,
     renderedData: any,
     onGrowData?: (prevData: any) => any
-  ): Partial<IResizeGroupState> {
-    let nextState: Partial<IResizeGroupState>;
+  ): IResizeGroupState {
+    let nextState: IResizeGroupState;
     if (newDimension > _containerDimension!) {
       if (onGrowData) {
         nextState = {
@@ -329,8 +329,8 @@ export class ResizeGroupBase extends BaseComponent<IResizeGroupProps, IResizeGro
       // If cache key is defined and equal to cache key of previous props' data we can do an optimization
       if (prevData.cacheKey && data.cacheKey === prevData.cacheKey) {
         // If they have batch scaling ability, and data has scaling steps count.
-        if (onBatchScaleData && data.zz__ScalingStepsCount && renderedData && renderedData.zz__ScalingStepsCount) {
-          const newData = onBatchScaleData({ ...data }, renderedData.zz__ScalingStepsCount);
+        if (onBatchScaleData && data.__ScalingStepsCount && renderedData && renderedData.__ScalingStepsCount) {
+          const newData = onBatchScaleData({ ...data }, renderedData.__ScalingStepsCount);
           // If new scaled data has same cacheKey as previously rendered data, it can safely be re-rendered
           if (newData.cacheKey === renderedData.cacheKey) {
             return {

@@ -87,7 +87,7 @@ export interface IResizeGroupProps extends React.HTMLAttributes<ResizeGroupBase 
    * and want to batch all of them together instead of making multiple calls to onGrowData/onReduceData.
    *
    * To use this,
-   * 1. Your data must always contain a property called `zz__ScalingStepsCount` which we will
+   * 1. Your data must always contain a property called `__ScalingStepsCount` which we will
    *    use to determine how many scalingSteps to apply when we next batch scale data.
    * 2. Your data must also contain `cacheKey` for this prop to be used.
    *

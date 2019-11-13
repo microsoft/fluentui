@@ -562,7 +562,7 @@ describe('ResizeGroup', () => {
 
     const stateProvider = getNextResizeGroupStateProvider();
 
-    const initialState = stateProvider.getInitialResizeGroupState(props.data);
+    const initialState = stateProvider.getInitialResizeGroupState(props);
 
     const getElementToMeasureWidth = () => 100;
     const containerWidth = 75;
