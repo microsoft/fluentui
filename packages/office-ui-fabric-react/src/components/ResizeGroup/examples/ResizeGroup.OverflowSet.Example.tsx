@@ -2,12 +2,11 @@ import * as React from 'react';
 import { BaseComponent } from 'office-ui-fabric-react/lib/Utilities';
 import { CommandBarButton } from 'office-ui-fabric-react/lib/Button';
 import { ResizeGroup } from 'office-ui-fabric-react/lib/ResizeGroup';
-import { OverflowSet } from 'office-ui-fabric-react/lib/OverflowSet';
+import { OverflowSet, IOverflowSetItemProps } from 'office-ui-fabric-react/lib/OverflowSet';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import { IContextualMenuItem } from 'office-ui-fabric-react/lib/ContextualMenu';
 import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
 import { mergeStyleSets } from 'office-ui-fabric-react';
-import { IOverflowSetItemProps } from '../../OverflowSet';
 
 const styles = mergeStyleSets({
   root: {
