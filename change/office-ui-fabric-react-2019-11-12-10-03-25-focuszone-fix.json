@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "FocusZone: reset alignment when receiving focus.",
+  "packageName": "office-ui-fabric-react",
+  "email": "dzearing@hotmail.com",
+  "commit": "5de98a2f5a9dcb3ccd6834bd4fbf4257afab5173",
+  "date": "2019-11-12T18:03:25.895Z"
+}
