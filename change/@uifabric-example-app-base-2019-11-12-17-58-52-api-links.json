@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Fix API reference links",
+  "packageName": "@uifabric/example-app-base",
+  "email": "elcraig@microsoft.com",
+  "commit": "129ef2b9ffc8ace9bc479a314295deed7cd68d4f",
+  "date": "2019-11-13T01:58:52.302Z"
+}
