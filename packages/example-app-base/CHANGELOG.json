@@ -2,6 +2,25 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "date": "Wed, 13 Nov 2019 12:33:43 GMT",
+      "tag": "@uifabric/example-app-base_v7.10.1",
+      "version": "7.10.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "PlatformPicker: High Contrast support",
+            "author": "jdh@microsoft.com",
+            "commit": "64d918168ddc62de51799cb4f02f05b0d22df9b5"
+          },
+          {
+            "comment": "Fix API reference links",
+            "author": "elcraig@microsoft.com",
+            "commit": "129ef2b9ffc8ace9bc479a314295deed7cd68d4f"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 12 Nov 2019 12:32:39 GMT",
       "tag": "@uifabric/example-app-base_v7.10.0",
       "version": "7.10.0",
