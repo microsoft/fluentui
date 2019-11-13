@@ -37,7 +37,7 @@
     "just-scripts": "~0.34.0",
     "mustache": "^2.3.0",
     "ngrok": "^3.0.1",
-    "node-sass": "^4.5.3",
+    "node-sass": "^4.13.0",
     "p-queue": "^6.0.2",
     "postcss": "^6.0.9",
     "postcss-loader": "^2.0.9",

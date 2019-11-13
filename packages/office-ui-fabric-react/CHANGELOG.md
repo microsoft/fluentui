@@ -1,7 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 12 Nov 2019 12:32:39 GMT and should not be manually modified.
+This log was last generated on Wed, 13 Nov 2019 12:33:43 GMT and should not be manually modified.
 
+## 7.60.1
+Wed, 13 Nov 2019 12:33:43 GMT
+
+### Patches
+
+- SearchBox: Remove autocomplete documentation as feature is not supported. (jagore@microsoft.com)
 ## 7.60.0
 Tue, 12 Nov 2019 12:32:39 GMT
 

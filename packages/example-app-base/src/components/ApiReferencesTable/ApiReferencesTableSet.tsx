@@ -4,10 +4,10 @@ import { Stack } from 'office-ui-fabric-react/lib/Stack';
 import { Text } from 'office-ui-fabric-react/lib/Text';
 import { ApiReferencesTable, gapTokens } from './ApiReferencesTable';
 import { IApiReferencesTableProps, IApiInterfaceProperty, IMethod, IApiReferencesTableSetProps } from './ApiReferencesTableSet.types';
-import { ITableRowJson, IPageJson, ILinkToken } from 'office-ui-fabric-react/lib/common/DocPage.types';
+import { ITableRowJson, IPageJson } from 'office-ui-fabric-react/lib/common/DocPage.types';
 import { extractAnchorLink } from '../../utilities/extractAnchorLink';
 import { jumpToAnchor } from '../../utilities/index2';
-import { getCurrentUrl } from '../../utilities/getCurrentUrl';
+import { getTokenResolver } from './tokenResolver';
 
 export interface IApiReferencesTableSetState {
   showSeeMore: boolean;
@@ -132,7 +132,7 @@ function _generateTableProps(jsonDocs: IPageJson | undefined): IApiReferencesTab
     return [];
   }
 
-  const tokenResolver = _getTokenResolver();
+  const tokenResolver = getTokenResolver();
 
   const propsName: string = `I${jsonDocs.name}Props`;
   const results: IApiReferencesTableProps[] = [];
@@ -171,26 +171,4 @@ function _generateTableProps(jsonDocs: IPageJson | undefined): IApiReferencesTab
   }
 
   return results;
-}
-
-function _getTokenResolver(): IApiReferencesTableProps['tokenResolver'] {
-  // Get the area path to set correct href value on the links for the local site vs. the Fabric site.
-  // The "area path" for this purpose is typically /controls/web/ (website) or /examples/ (demo).
-  const currentRoute = getCurrentUrl().split('#')[1] || '';
-  // Remove the possible references/ part when matching
-  const areaPathMatch = currentRoute.match(/^(\/.+?\/)(references\/)?\w+$/);
-  const areaPath = (areaPathMatch && areaPathMatch[1]) || '/controls/web/';
-
-  return (token: Required<ILinkToken>) => {
-    // Currently the group is only relevant if it's references
-    const group = token.linkedPageGroup.toLowerCase() === 'references' ? '/references' : '';
-
-    const linkRoute = `${areaPath}${group}/${token.linkedPage.toLowerCase()}`;
-    const newTab = linkRoute !== currentRoute;
-
-    return {
-      href: `#${linkRoute}#${token.text}`,
-      target: newTab ? '_blank' : undefined
-    };
-  };
 }

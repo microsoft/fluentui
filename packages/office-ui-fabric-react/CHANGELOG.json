@@ -2,6 +2,20 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Wed, 13 Nov 2019 12:33:43 GMT",
+      "tag": "office-ui-fabric-react_v7.60.1",
+      "version": "7.60.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "SearchBox: Remove autocomplete documentation as feature is not supported.",
+            "author": "jagore@microsoft.com",
+            "commit": "34a45eb4d24c5740b62f7c3f8c9c162aaf44e5a8"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 12 Nov 2019 12:32:39 GMT",
       "tag": "office-ui-fabric-react_v7.60.0",
       "version": "7.60.0",

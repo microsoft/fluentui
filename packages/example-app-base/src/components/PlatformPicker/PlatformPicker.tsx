@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { css, DefaultButton, IButtonStyles, FocusZone, FontWeights } from 'office-ui-fabric-react';
+import { css, DefaultButton, IButtonStyles, FocusZone, FontWeights, HighContrastSelector } from 'office-ui-fabric-react';
 import { INavPage } from '../Nav/index';
 import { IPlatformPickerProps, IPlatform } from './PlatformPicker.types';
 import * as styles from './PlatformPicker.module.scss';
@@ -81,7 +81,14 @@ export class PlatformPicker<TPlatforms extends string = string> extends React.Pu
       selectors: {
         '&:not([disabled]), &:hover:not([disabled])': {
           background: color,
-          borderColor: color
+          borderColor: color,
+
+          selectors: {
+            [HighContrastSelector]: {
+              borderColor: 'Highlight',
+              background: 'Window'
+            }
+          }
         }
       }
     }
