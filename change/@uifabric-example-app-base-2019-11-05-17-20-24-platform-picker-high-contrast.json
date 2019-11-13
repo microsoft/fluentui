@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "PlatformPicker: High Contrast support",
+  "packageName": "@uifabric/example-app-base",
+  "email": "jdh@microsoft.com",
+  "commit": "64d918168ddc62de51799cb4f02f05b0d22df9b5",
+  "date": "2019-11-06T01:20:24.174Z"
+}
