@@ -89,9 +89,7 @@ export interface IResizeGroupProps extends React.HTMLAttributes<ResizeGroupBase 
    * To use this,
    * 1. Your data must always contain a property called `zz__ScalingStepsCount` which we will
    *    use to determine how many scalingSteps to apply when we next batch scale data.
-   * 2. The data you provide in props should always be in the most "grown" state. Otherwise, there will be bugs
-   *    with scaling.
-   * 3. Your data must also contain `cacheKey` for this prop to be used.
+   * 2. Your data must also contain `cacheKey` for this prop to be used.
    *
    * Correct usage of this prop will allow us to have optimized rendering. Because this will eliminate multiple calls
    * to onGrowData and onReduceData you can better memoize your data and also avoid redundant computations.

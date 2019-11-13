@@ -1,11 +1,8 @@
 import * as React from 'react';
 import { BaseComponent, divProperties, getNativeProps, shallowCompare } from '../../Utilities';
 import { IResizeGroupProps, ResizeGroupDirection } from './ResizeGroup.types';
-import { render } from 'enzyme';
 
 const RESIZE_DELAY = 16;
-
-type ResizeGroupDivKey = 'KeyOne' | 'KeyTwo';
 
 export interface IResizeGroupState {
   /**
@@ -21,7 +18,7 @@ export interface IResizeGroupState {
   /**
    * Previous props to detect changes in props so that we can reset state.
    */
-  prevProps: any;
+  prevProps?: IResizeGroupProps;
 
   /**
    * Set to true when the content container might have new dimensions and should
@@ -37,16 +34,6 @@ export interface IResizeGroupState {
    * to find a transformation of the data that makes everything fit.
    */
   resizeDirection?: 'grow' | 'shrink';
-
-  /**
-   * When we get new props, we typically first create a measure div and in the next render put this data into the rendered div
-   * (See the render function below)
-   *
-   * When we do this, React unmounts the measured div and its children fully and remounts all of them in the rendered div.
-   * To avoid this, we flip the keys to "fool" React so that it updates the previously measure div to be the render div
-   * instead of remounting.
-   */
-  measureDivKey?: ResizeGroupDivKey;
 }
 
 /**
@@ -283,13 +270,6 @@ export const getNextResizeGroupStateProvider = (measurementCache = getMeasuremen
       }
     }
 
-    if (nextState.renderedData !== currentState.renderedData) {
-      nextState = {
-        ...nextState,
-        measureDivKey: currentState.measureDivKey === 'KeyOne' ? 'KeyTwo' : 'KeyOne'
-      };
-    }
-
     return nextState;
   }
 
@@ -307,8 +287,7 @@ export const getNextResizeGroupStateProvider = (measurementCache = getMeasuremen
       dataToMeasure: { ...props.data },
       prevProps: props,
       resizeDirection: 'grow',
-      measureContainer: true,
-      measureDivKey: 'KeyOne'
+      measureContainer: true
     };
   }
 
@@ -343,17 +322,16 @@ export class ResizeGroupBase extends BaseComponent<IResizeGroupProps, IResizeGro
 
   public static getDerivedStateFromProps(props: IResizeGroupProps, state: IResizeGroupState) {
     if (state.prevProps !== props) {
-      const { data: prevData } = state.prevProps;
+      const { data: prevData } = state.prevProps!; // We set initial prevProps in getInitialState.
       const { data, onBatchScaleData } = props;
       const { renderedData } = state;
 
-      // Optimization
-      // If cache key is undefined and equal to previous original cache key
+      // If cache key is defined and equal to cache key of previous props' data we can do an optimization
       if (prevData.cacheKey && data.cacheKey === prevData.cacheKey) {
-        // If they have batch scaling ability, and data has scaling steps.
+        // If they have batch scaling ability, and data has scaling steps count.
         if (onBatchScaleData && data.zz__ScalingStepsCount && renderedData && renderedData.zz__ScalingStepsCount) {
           const newData = onBatchScaleData({ ...data }, renderedData.zz__ScalingStepsCount);
-          // If new scaled data has same cacheKey as previously rendered data - this is not necessary, just to be safe.
+          // If new scaled data has same cacheKey as previously rendered data, it can safely be re-rendered
           if (newData.cacheKey === renderedData.cacheKey) {
             return {
               renderedData: newData,
@@ -390,14 +368,15 @@ export class ResizeGroupBase extends BaseComponent<IResizeGroupProps, IResizeGro
    * changed from true to false, we do not need to re-render.
    */
   public shouldComponentUpdate(nextProps: IResizeGroupProps, nextState: IResizeGroupState) {
+    const propsCompare = shallowCompare(this.props, nextProps);
     if (nextState.measureContainer === false) {
       // If there is a state change just because of measureContainer going from true -> false and everything else
       // is the same as before, we do not need to re-render
-      if (shallowCompare(this.props, nextProps) && shallowCompare({ ...this.state, measureContainer: false }, nextState)) {
+      if (propsCompare && shallowCompare({ ...this.state, measureContainer: false }, nextState)) {
         return false;
       }
     }
-    return !shallowCompare(this.props, nextProps) || !shallowCompare(this.state, nextState);
+    return !propsCompare || !shallowCompare(this.state, nextState);
   }
 
   public render(): JSX.Element {
@@ -419,20 +398,13 @@ export class ResizeGroupBase extends BaseComponent<IResizeGroupProps, IResizeGro
       <div {...divProps} className={className} ref={this._root}>
         <div style={hiddenParentStyles}>
           {dataNeedsMeasuring && !isInitialMeasure && (
-            <div key={this.state.measureDivKey} style={hiddenDivStyles} ref={this._updateHiddenDiv}>
+            <div style={hiddenDivStyles} ref={this._updateHiddenDiv}>
               <MeasuredContext.Provider value={{ isMeasured: true }}>{onRenderData(dataToMeasure)}</MeasuredContext.Provider>
             </div>
           )}
 
-          <div
-            key={this.state.measureDivKey === 'KeyOne' ? 'KeyTwo' : 'KeyOne'}
-            ref={this._initialHiddenDiv}
-            style={isInitialMeasure ? hiddenDivStyles : undefined}
-            data-automation-id="visibleContent"
-          >
-            <MeasuredContext.Provider value={{ isMeasured: false }}>
-              {isInitialMeasure ? onRenderData(dataToMeasure) : renderedData && onRenderData(renderedData)}
-            </MeasuredContext.Provider>
+          <div ref={this._initialHiddenDiv} style={isInitialMeasure ? hiddenDivStyles : undefined} data-automation-id="visibleContent">
+            {isInitialMeasure ? onRenderData(dataToMeasure) : renderedData && onRenderData(renderedData)}
           </div>
         </div>
       </div>
@@ -444,7 +416,7 @@ export class ResizeGroupBase extends BaseComponent<IResizeGroupProps, IResizeGro
     this._events.on(window, 'resize', this._async.debounce(this._onResize, RESIZE_DELAY, { leading: true }));
   }
 
-  public componentDidUpdate(prevProps: IResizeGroupProps) {
+  public componentDidUpdate() {
     if (this.state.renderedData) {
       this._hasRenderedContent = true;
       if (this.props.dataDidRender) {
