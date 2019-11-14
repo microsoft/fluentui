@@ -30,12 +30,12 @@ interface ISemanticSlotsDetailsList {
 export const SemanticSlotsDetailsList: React.StatelessComponent<ISemanticSlotsDetailsListProps> = (
   props: ISemanticSlotsDetailsListProps
 ) => {
-  let countDefaults = 13;
-  let countLinks = 4;
-  let countButtons = 25;
-  let countInputs = 14;
-  let countLists = 7;
+  let countDefaults = 20;
+  let countInputs = 15;
+  let countButtons = 23;
   let countMenus = 8;
+  let countLists = 7;
+  let countLinks = 4;
 
   let items: ISemanticSlotsDetailsList[] = [];
   let groups: IGroup[] = [];
@@ -73,42 +73,42 @@ export const SemanticSlotsDetailsList: React.StatelessComponent<ISemanticSlotsDe
     { key: 'defaults', name: 'Defaults', startIndex: 0, count: countDefaults, isCollapsed: false },
 
     {
-      key: 'Links',
-      name: 'Links',
+      key: 'inputs',
+      name: 'Inputs',
       startIndex: countDefaults,
-      count: countLinks,
+      count: countInputs,
       isCollapsed: true
     },
 
     {
       key: 'button',
       name: 'Buttons',
-      startIndex: countLinks + countDefaults,
+      startIndex: countDefaults + countInputs,
       count: countButtons,
-      isCollapsed: true
-    },
-
-    {
-      key: 'inputs',
-      name: 'Inputs',
-      startIndex: countButtons + countLinks + countDefaults,
-      count: countInputs,
-      isCollapsed: true
-    },
-
-    {
-      key: 'lists',
-      name: 'Lists',
-      startIndex: countInputs + countButtons + countLinks + countDefaults,
-      count: countLists,
       isCollapsed: true
     },
 
     {
       key: 'menus',
       name: 'Menus',
-      startIndex: countLists + countInputs + countButtons + countLinks + countDefaults,
+      startIndex: countDefaults + countInputs + countButtons,
       count: countMenus,
+      isCollapsed: true
+    },
+
+    {
+      key: 'lists',
+      name: 'Lists',
+      startIndex: countDefaults + countInputs + countButtons + countMenus,
+      count: countLists,
+      isCollapsed: true
+    },
+
+    {
+      key: 'Links',
+      name: 'Links',
+      startIndex: countDefaults + countInputs + countButtons + countMenus + countLists,
+      count: countLinks,
       isCollapsed: true
     }
   ];

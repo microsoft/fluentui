@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "ComboBox: adding an onRenderUpperContent() flexpoint for combobox",
+  "packageName": "office-ui-fabric-react",
+  "email": "kchau@microsoft.com",
+  "commit": "773f576e485db4ae30476f37ae6bd21dd64ddbf2",
+  "date": "2019-11-13T17:07:53.742Z"
+}

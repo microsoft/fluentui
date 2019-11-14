@@ -502,7 +502,6 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
                     color: #323130;
                     cursor: pointer;
                     display: inline-block;
-                    flex-basis: 24;
                     flex: 0 0 auto;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;

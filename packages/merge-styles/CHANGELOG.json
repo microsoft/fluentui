@@ -2,6 +2,20 @@
   "name": "@uifabric/merge-styles",
   "entries": [
     {
+      "date": "Fri, 08 Nov 2019 12:30:07 GMT",
+      "tag": "@uifabric/merge-styles_v7.8.1",
+      "version": "7.8.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add px units to flexBasis styling by default. Remove existing styling usage where it had no effect before this PR.",
+            "author": "jagore@microsoft.com",
+            "commit": "f907d55f63a68d685743277f1f35188fbe6af62d"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 21 Oct 2019 12:33:23 GMT",
       "tag": "@uifabric/merge-styles_v7.8.0",
       "version": "7.8.0",

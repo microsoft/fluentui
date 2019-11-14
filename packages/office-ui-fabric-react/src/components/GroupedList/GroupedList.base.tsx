@@ -88,13 +88,15 @@ export class GroupedListBase extends React.Component<IGroupedListProps, IGrouped
   }
 
   public render(): JSX.Element {
-    const { className, usePageCache, onShouldVirtualize, theme, styles, compact } = this.props;
+    const { className, usePageCache, onShouldVirtualize, theme, styles, compact, listProps = {} } = this.props;
     const { groups } = this.state;
     this._classNames = getClassNames(styles, {
       theme: theme!,
       className,
       compact: compact
     });
+
+    const { version } = listProps;
 
     return (
       <div className={this._classNames.root} data-automationid="GroupedList" data-is-scrollable="false" role="presentation">
@@ -111,6 +113,7 @@ export class GroupedListBase extends React.Component<IGroupedListProps, IGrouped
             getPageSpecification={this._getPageSpecification}
             usePageCache={usePageCache}
             onShouldVirtualize={onShouldVirtualize}
+            version={version}
           />
         )}
       </div>

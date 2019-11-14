@@ -124,7 +124,6 @@ export function getStyles(props: IPeoplePickerItemSelectedStyleProps): IPeoplePi
         flex: '0 0 auto',
         width: REMOVE_BUTTON_SIZE,
         height: REMOVE_BUTTON_SIZE,
-        flexBasis: REMOVE_BUTTON_SIZE,
         selectors: {
           ':hover': {
             background: palette.neutralTertiaryAlt,

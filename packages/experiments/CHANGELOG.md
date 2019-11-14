@@ -1,7 +1,13 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Tue, 08 Oct 2019 12:31:37 GMT and should not be manually modified.
+This log was last generated on Fri, 08 Nov 2019 12:30:07 GMT and should not be manually modified.
 
+## 7.18.4
+Fri, 08 Nov 2019 12:30:07 GMT
+
+### Patches
+
+- Add px units to flexBasis styling by default. Remove existing styling usage where it had no effect before this PR. (jagore@microsoft.com)
 ## 7.18.3
 Tue, 08 Oct 2019 12:31:37 GMT
 

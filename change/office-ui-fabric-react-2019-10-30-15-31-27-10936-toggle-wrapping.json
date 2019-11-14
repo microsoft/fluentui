@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Toggle: Force wrapping when width-constrained.",
-  "packageName": "office-ui-fabric-react",
-  "email": "jdh@microsoft.com",
-  "commit": "d1cfc7adf4482961e703470b2283495b0d046b77",
-  "date": "2019-10-30T22:31:27.285Z"
-}

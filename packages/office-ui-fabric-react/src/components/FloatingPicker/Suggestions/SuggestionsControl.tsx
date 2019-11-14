@@ -10,7 +10,7 @@ import {
 } from './Suggestions.types';
 import { SuggestionsCore } from './SuggestionsCore';
 import * as stylesImport from './SuggestionsControl.scss';
-import { hiddenContentStyle, mergeStyles } from 'office-ui-fabric-react/lib/Styling';
+import { hiddenContentStyle, mergeStyles } from '../../../Styling';
 
 // tslint:disable-next-line:no-any
 const styles: any = stylesImport;

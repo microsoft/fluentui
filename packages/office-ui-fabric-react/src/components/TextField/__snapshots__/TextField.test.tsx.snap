@@ -201,9 +201,7 @@ exports[`TextField snapshots renders multiline correctly with errorMessage 1`] =
     className=
         ms-TextField-wrapper
         {
-          border-bottom-color: #a4262c;
-          border-bottom-style: solid;
-          border-bottom-width: 1px;
+          border-bottom: 1px solid #a4262c;
           display: flex;
           width: 100%;
         }
@@ -251,7 +249,6 @@ exports[`TextField snapshots renders multiline correctly with errorMessage 1`] =
           {
             align-items: stretch;
             background: #ffffff;
-            border-color: #a4262c;
             border-radius: 2px;
             border: none;
             box-shadow: none;
@@ -273,13 +270,10 @@ exports[`TextField snapshots renders multiline correctly with errorMessage 1`] =
             text-align: left;
           }
           &:hover {
-            border-color: #a4262c;
+            border-color: #323130;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
             border-color: Highlight;
-          }
-          &:focus {
-            border-color: #a4262c;
           }
     >
       <div
@@ -456,9 +450,7 @@ exports[`TextField snapshots renders multiline correctly with props affecting st
     className=
         ms-TextField-wrapper
         {
-          border-bottom-color: #a4262c;
-          border-bottom-style: solid;
-          border-bottom-width: 1px;
+          border-bottom: 1px solid #a4262c;
           display: flex;
           width: 100%;
         }
@@ -506,7 +498,6 @@ exports[`TextField snapshots renders multiline correctly with props affecting st
           {
             align-items: stretch;
             background: #ffffff;
-            border-color: #a4262c;
             border-radius: 2px;
             border: none;
             box-shadow: none;
@@ -528,13 +519,10 @@ exports[`TextField snapshots renders multiline correctly with props affecting st
             text-align: left;
           }
           &:hover {
-            border-color: #a4262c;
+            border-color: #323130;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
             border-color: Highlight;
-          }
-          &:focus {
-            border-color: #a4262c;
           }
     >
       <div
@@ -1243,9 +1231,7 @@ exports[`TextField snapshots should resepect user component and subcomponent sty
     className=
         ms-TextField-wrapper
         {
-          border-bottom-color: #a4262c;
-          border-bottom-style: solid;
-          border-bottom-width: 1px;
+          border-bottom: 1px solid #a4262c;
           display: flex;
           width: 100%;
         }
@@ -1294,7 +1280,6 @@ exports[`TextField snapshots should resepect user component and subcomponent sty
           {
             align-items: stretch;
             background: #ffffff;
-            border-color: #a4262c;
             border-radius: 2px;
             border: none;
             box-shadow: none;
@@ -1316,13 +1301,10 @@ exports[`TextField snapshots should resepect user component and subcomponent sty
             text-align: left;
           }
           &:hover {
-            border-color: #a4262c;
+            border-color: #323130;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
             border-color: Highlight;
-          }
-          &:focus {
-            border-color: #a4262c;
           }
     >
       <div
