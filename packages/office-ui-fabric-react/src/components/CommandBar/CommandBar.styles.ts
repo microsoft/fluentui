@@ -12,7 +12,7 @@ export const getStyles = (props: ICommandBarStyleProps): ICommandBarStyles => {
       'ms-CommandBar',
       {
         display: 'flex',
-        backgroundColor: semanticColors.menuBackground,
+        backgroundColor: semanticColors.bodyBackground,
         padding: '0 14px 0 24px',
         height: COMMAND_BAR_HEIGHT
       },

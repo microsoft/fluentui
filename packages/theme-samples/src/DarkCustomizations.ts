@@ -38,9 +38,7 @@ const DarkTheme: ITheme = createTheme({
     menuIcon: DarkDefaultPalette.themeDarkAlt,
     menuHeader: DarkDefaultPalette.themeDarkAlt,
     menuItemText: DarkDefaultPalette.neutralPrimary,
-    menuItemTextHovered: DarkDefaultPalette.neutralDark,
-    inputBorder: DarkDefaultPalette.neutralTertiary,
-    inputBackground: DarkDefaultPalette.neutralLight
+    menuItemTextHovered: DarkDefaultPalette.neutralDark
   }
 });
 
