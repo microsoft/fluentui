@@ -49,6 +49,7 @@ export class MarqueeSelectionBase extends BaseComponent<IMarqueeSelectionProps, 
   private _scrollableParent: HTMLElement;
   private _scrollableSurface: HTMLElement;
   private _scrollTop: number;
+  private _scrollLeft: number;
   private _isTouch: boolean;
 
   constructor(props: IMarqueeSelectionProps) {
@@ -149,6 +150,7 @@ export class MarqueeSelectionBase extends BaseComponent<IMarqueeSelectionProps, 
 
         this._autoScroll = new AutoScroll(this._root.current);
         this._scrollTop = this._scrollableSurface.scrollTop;
+        this._scrollLeft = this._scrollableSurface.scrollLeft;
         this._rootRect = this._root.current.getBoundingClientRect();
 
         this._onMouseMove(ev);
@@ -176,7 +178,7 @@ export class MarqueeSelectionBase extends BaseComponent<IMarqueeSelectionProps, 
 
   private _getRootRect(): IRectangle {
     return {
-      left: this._rootRect.left,
+      left: this._rootRect.left + (this._scrollLeft - this._scrollableSurface.scrollLeft),
       top: this._rootRect.top + (this._scrollTop - this._scrollableSurface.scrollTop),
       width: this._rootRect.width,
       height: this._rootRect.height
