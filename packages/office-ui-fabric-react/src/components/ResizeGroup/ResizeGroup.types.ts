@@ -91,8 +91,8 @@ export interface IResizeGroupProps extends React.HTMLAttributes<ResizeGroupBase 
    *    use to determine how many scalingSteps to apply when we next batch scale data.
    * 2. Your data must also contain `cacheKey` for this prop to be used.
    *
-   * Correct usage of this prop will allow us to have optimized rendering. Because this will eliminate multiple calls
-   * to onGrowData and onReduceData you can better memoize your data and also avoid redundant computations.
+   * Correct usage of this prop will allow us to have optimized rendering. Because this will reduce multiple calls
+   * to onGrowData and onReduceData in some cases you can better memoize your data and also avoid redundant computations.
    */
   onBatchScaleData?: (prevData: any, scalingStepsCount: number) => any;
 
