@@ -93,7 +93,7 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
   };
 
   const rootHoverFocusActiveSelectorNeutralPrimaryMixin: IStyle = {
-    color: palette.neutralPrimary
+    color: semanticColors.menuItemText
   };
 
   const borderColorError: IStyle = {
@@ -126,15 +126,15 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
     return {
       selectors: {
         '&:hover:focus': {
-          color: palette.neutralDark,
-          backgroundColor: !isSelected ? palette.neutralLighter : palette.neutralLight
+          color: semanticColors.menuItemTextHovered,
+          backgroundColor: !isSelected ? semanticColors.menuBackground : semanticColors.menuItemBackgroundHovered
         },
         '&:focus': {
-          backgroundColor: !isSelected ? 'transparent' : palette.neutralLight
+          backgroundColor: !isSelected ? 'transparent' : semanticColors.menuItemBackgroundHovered
         },
         '&:active': {
-          color: palette.neutralDark,
-          backgroundColor: !isSelected ? palette.neutralLighter : palette.neutralLight
+          color: semanticColors.menuItemTextHovered,
+          backgroundColor: !isSelected ? semanticColors.menuBackground : semanticColors.menuItemBackgroundHovered
         },
         [HighContrastSelector]: {
           borderColor: 'Window'
@@ -152,8 +152,8 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
   const dropdownItemSelected: IStyle = [
     ...dropdownItemStyle,
     {
-      backgroundColor: palette.neutralLight,
-      color: palette.neutralDark
+      backgroundColor: semanticColors.menuItemBackgroundPressed,
+      color: semanticColors.menuItemTextHovered
     },
     itemSelectors(true),
     highContrastItemAndTitleStateMixin
@@ -185,8 +185,8 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
       normalize,
       fonts.medium,
       {
-        color: palette.neutralPrimary,
-        borderColor: palette.neutralSecondary,
+        color: semanticColors.menuItemText,
+        borderColor: semanticColors.focusBorder,
         position: 'relative',
         outline: 0,
         userSelect: 'none',

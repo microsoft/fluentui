@@ -215,12 +215,12 @@ export const getStyles = memoizeFunction(
     const { semanticColors, fonts, effects } = theme;
 
     const root = {
-      textColor: semanticColors.bodyText,
+      textColor: semanticColors.inputText,
       borderColor: semanticColors.inputBorder,
       borderHoveredColor: semanticColors.inputBorderHovered,
       borderPressedColor: semanticColors.inputFocusBorderAlt,
       borderFocusedColor: semanticColors.inputFocusBorderAlt,
-      backgroundColor: semanticColors.bodyBackground,
+      backgroundColor: semanticColors.inputBackground,
       erroredColor: semanticColors.errorText
     };
 
