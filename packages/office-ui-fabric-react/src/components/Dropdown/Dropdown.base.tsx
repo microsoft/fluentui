@@ -626,7 +626,7 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
           onMouseMove: this._onItemMouseMove.bind(this, item)
         }}
         label={item.text}
-        title={item.title ? item.title : item.text}
+        title={title}
         onRenderLabel={this._onRenderItemLabel.bind(this, item)}
         className={itemClassName}
         role="option"
