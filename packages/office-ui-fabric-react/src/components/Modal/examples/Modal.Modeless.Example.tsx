@@ -7,7 +7,8 @@ import {
   IDragOptions,
   DefaultButton,
   Checkbox,
-  ContextualMenu
+  ContextualMenu,
+  IconButton
 } from 'office-ui-fabric-react';
 import { getId } from 'office-ui-fabric-react/lib/Utilities';
 
@@ -20,7 +21,6 @@ export interface IModalModelessExampleState {
 const theme = getTheme();
 const styles = mergeStyleSets({
   container: {
-    width: '80vw',
     display: 'flex',
     flexFlow: 'column nowrap',
     alignItems: 'stretch'
@@ -29,19 +29,44 @@ const styles = mergeStyleSets({
     theme.fonts.xLargePlus,
     {
       flex: '1 1 auto',
-      background: theme.palette.themePrimary,
-      color: theme.palette.white,
+      borderTop: `4px solid ${theme.palette.themePrimary}`,
+      color: theme.palette.neutralPrimary,
       display: 'flex',
       alignItems: 'center',
       fontWeight: FontWeights.semibold,
-      padding: '0 28px',
-      minHeight: '40px'
+      padding: '12px 12px 14px 24px',
+      selectors: {
+        '.close': {
+          color: theme.palette.neutralPrimary,
+          selectors: {
+            '&:hover': {
+              color: theme.palette.neutralDark
+            }
+          }
+        },
+        '.closeButtonContainer': {
+          paddingTop: '4px',
+          paddingRight: '2px',
+          marginLeft: 'auto'
+        }
+      }
     }
   ],
   body: {
     flex: '4 4 auto',
-    padding: '5px 28px',
-    overflowY: 'hidden'
+    padding: '0 24px 24px 24px',
+    overflowY: 'hidden',
+    selectors: {
+      p: {
+        margin: '14px 0'
+      },
+      'p:first-child': {
+        marginTop: 0
+      },
+      'p:last-child': {
+        marginBottom: 0
+      }
+    }
   }
 });
 
@@ -64,7 +89,13 @@ export class ModalModelessExample extends React.Component<{}, IModalModelessExam
     const { showModal, isDraggable } = this.state;
     return (
       <div>
-        <Checkbox label="Is draggable" onChange={this._toggleDraggable} checked={isDraggable} disabled={showModal} />
+        <Checkbox
+          styles={{ root: { marginBottom: '20px' } }}
+          label="Is draggable"
+          onChange={this._toggleDraggable}
+          checked={isDraggable}
+          disabled={showModal}
+        />
         <DefaultButton secondaryText="Opens the Sample Modal" onClick={this._showModal} text="Open Modal" />
         <Modal
           titleAriaId={this._titleId}
@@ -77,9 +108,9 @@ export class ModalModelessExample extends React.Component<{}, IModalModelessExam
         >
           <div className={styles.header}>
             <span id={this._titleId}>Lorem Ipsum</span>
-            <div className={styles.closeButtonContainer}>
+            <div className={'closeButtonContainer'}>
               <IconButton
-                className={styles.close}
+                className={'close'}
                 iconProps={{ iconName: 'Cancel' }}
                 ariaLabel="Close popup modal"
                 onClick={this._closeModal as any}
