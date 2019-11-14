@@ -27,7 +27,28 @@ export interface IOverflowData {
   primary: IContextualMenuItem[];
   overflow: IContextualMenuItem[];
   cacheKey?: string;
+  __scalingStepsCount?: number;
 }
+
+const PureOverflowSet = React.memo((data: any) => {
+  return (
+    <OverflowSet
+      items={data.primary}
+      overflowItems={data.overflow.length ? data.overflow : null}
+      onRenderItem={onRenderItem}
+      onRenderOverflowButton={onRenderOverflowButton}
+      styles={{ root: { height: 40 } }}
+    />
+  );
+});
+
+const onRenderItem = (item: IOverflowSetItemProps) => {
+  return <CommandBarButton text={item.name} iconProps={{ iconName: item.icon }} onClick={item.onClick} checked={item.checked} />;
+};
+
+const onRenderOverflowButton = (overflowItems: any[]) => {
+  return <CommandBarButton menuProps={{ items: overflowItems! }} />;
+};
 
 function generateData(count: number, cachingEnabled: boolean, checked: boolean): IOverflowData {
   const icons = ['Add', 'Share', 'Upload'];
@@ -47,7 +68,8 @@ function generateData(count: number, cachingEnabled: boolean, checked: boolean):
 
   let result: IOverflowData = {
     primary: dataItems,
-    overflow: [] as any[]
+    overflow: [] as any[],
+    __scalingStepsCount: 0
   };
 
   if (cachingEnabled) {
@@ -92,6 +114,7 @@ export class ResizeGroupOverflowSetExample extends BaseComponent<{}, IResizeGrou
           data={dataToRender}
           onReduceData={this._onReduceData}
           onGrowData={onGrowDataEnabled ? this._onGrowData : undefined}
+          onBatchScaleData={this._onBatchScaleData}
           // tslint:disable-next-line:jsx-no-lambda
           onRenderData={this.onRenderData}
         />
@@ -132,7 +155,7 @@ export class ResizeGroupOverflowSetExample extends BaseComponent<{}, IResizeGrou
     if (this.state.cachingEnabled) {
       cacheKey = computeCacheKey(primary);
     }
-    return { primary, overflow, cacheKey };
+    return { primary, overflow, cacheKey, __scalingStepsCount: overflow.length };
   };
 
   private _onGrowData = (currentData: any): any => {
@@ -147,7 +170,20 @@ export class ResizeGroupOverflowSetExample extends BaseComponent<{}, IResizeGrou
     if (this.state.cachingEnabled) {
       cacheKey = computeCacheKey(primary);
     }
-    return { primary, overflow, cacheKey };
+    return { primary, overflow, cacheKey, __scalingStepsCount: overflow.length };
+  };
+
+  private _onBatchScaleData = (currentData: any, scalingStepsCount: number) => {
+    const allButtons = [...currentData.primary, ...currentData.overflow];
+    const numOfButtons = allButtons.length;
+    const overflow = allButtons.slice(-scalingStepsCount);
+    const primary = allButtons.slice(0, numOfButtons - scalingStepsCount);
+
+    let cacheKey = undefined;
+    if (this.state.cachingEnabled) {
+      cacheKey = computeCacheKey(primary);
+    }
+    return { primary, overflow, cacheKey, __scalingStepsCount: overflow.length };
   };
 
   private _onCachingEnabledChanged = (_: React.FormEvent<HTMLElement | HTMLInputElement>, checked: boolean): void => {
@@ -167,22 +203,6 @@ export class ResizeGroupOverflowSetExample extends BaseComponent<{}, IResizeGrou
   };
 
   private onRenderData = (data: any) => {
-    return (
-      <OverflowSet
-        items={data.primary}
-        overflowItems={data.overflow.length ? data.overflow : null}
-        onRenderItem={this.onRenderItem}
-        onRenderOverflowButton={this.onRenderOverflowButton}
-        styles={{ root: { height: 40 } }}
-      />
-    );
-  };
-
-  private onRenderItem = (item: IOverflowSetItemProps) => {
-    return <CommandBarButton text={item.name} iconProps={{ iconName: item.icon }} onClick={item.onClick} checked={item.checked} />;
-  };
-
-  private onRenderOverflowButton = (overflowItems: any[]) => {
-    return <CommandBarButton menuProps={{ items: overflowItems! }} />;
+    return <PureOverflowSet {...data} />;
   };
 }

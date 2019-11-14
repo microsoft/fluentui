@@ -329,8 +329,8 @@ export class ResizeGroupBase extends BaseComponent<IResizeGroupProps, IResizeGro
       // If cache key is defined and equal to cache key of previous props' data we can do an optimization
       if (prevData.cacheKey && data.cacheKey === prevData.cacheKey) {
         // If they have batch scaling ability, and data has scaling steps count.
-        if (onBatchScaleData && data.__ScalingStepsCount && renderedData && renderedData.__ScalingStepsCount) {
-          const newData = onBatchScaleData({ ...data }, renderedData.__ScalingStepsCount);
+        if (onBatchScaleData && data.__scalingStepsCount !== undefined && renderedData && renderedData.__scalingStepsCount !== undefined) {
+          const newData = onBatchScaleData({ ...data }, renderedData.__scalingStepsCount);
           // If new scaled data has same cacheKey as previously rendered data, it can safely be re-rendered
           if (newData.cacheKey === renderedData.cacheKey) {
             return {
