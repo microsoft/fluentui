@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "DropDown: make dropdown option title prop to be assigned consistently for the multiselect case",
+  "packageName": "office-ui-fabric-react",
+  "email": "kchau@microsoft.com",
+  "commit": "745782f7e6e0238a70a63feff60658dd62da79c5",
+  "date": "2019-11-14T20:40:37.817Z"
+}
