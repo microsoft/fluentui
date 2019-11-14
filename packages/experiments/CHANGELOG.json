@@ -2,6 +2,20 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "date": "Thu, 14 Nov 2019 12:30:52 GMT",
+      "tag": "@uifabric/experiments_v7.18.5",
+      "version": "7.18.5",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Added ariaLabel to microfeedback component",
+            "author": "kamal.elkhadiri@microsoft.com",
+            "commit": "f581241276972030719132b6ec870e31b19faa48"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 08 Nov 2019 12:30:07 GMT",
       "tag": "@uifabric/experiments_v7.18.4",
       "version": "7.18.4",

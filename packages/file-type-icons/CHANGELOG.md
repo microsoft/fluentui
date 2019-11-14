@@ -1,7 +1,13 @@
 # Change Log - @uifabric/file-type-icons
 
-This log was last generated on Fri, 08 Nov 2019 12:30:07 GMT and should not be manually modified.
+This log was last generated on Thu, 14 Nov 2019 12:30:52 GMT and should not be manually modified.
 
+## 7.1.4
+Thu, 14 Nov 2019 12:30:52 GMT
+
+### Patches
+
+- adding a new icon size for file icons (kchau@microsoft.com)
 ## 7.1.3
 Fri, 08 Nov 2019 12:30:07 GMT
 
