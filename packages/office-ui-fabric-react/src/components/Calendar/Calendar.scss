@@ -259,15 +259,15 @@ $Calendar-dayPicker-margin: 10px;
 .dayHover,
 .dayHover:hover {
   cursor: pointer;
-  background: $ms-color-neutralLight;
+  background: $ms-color-neutralLighter;
   color: $ms-color-neutralDark;
 }
 
 .dayPress,
 .dayPress:hover {
   cursor: pointer;
-  background: $ms-color-neutralTertiaryAlt;
   color: $ms-color-neutralDark;
+  background-color: $ms-color-neutralLight;
   .dayIsToday {
     background: $ms-color-themePrimary;
     border-radius: 100%;
@@ -757,7 +757,7 @@ $Calendar-dayPicker-margin: 10px;
     }
   }
   &:active {
-    background-color: 'red'; //$ms-color-neutralTertiaryAlt;
+    background-color: $ms-color-neutralLight;
     @include high-contrast {
       color: highlight;
     }
