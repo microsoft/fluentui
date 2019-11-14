@@ -1,7 +1,13 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Fri, 08 Nov 2019 12:30:07 GMT and should not be manually modified.
+This log was last generated on Thu, 14 Nov 2019 12:30:52 GMT and should not be manually modified.
 
+## 7.18.5
+Thu, 14 Nov 2019 12:30:52 GMT
+
+### Patches
+
+- Added ariaLabel to microfeedback component (kamal.elkhadiri@microsoft.com)
 ## 7.18.4
 Fri, 08 Nov 2019 12:30:07 GMT
 

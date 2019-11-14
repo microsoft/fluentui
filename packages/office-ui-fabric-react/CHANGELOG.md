@@ -1,7 +1,17 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 13 Nov 2019 12:33:43 GMT and should not be manually modified.
+This log was last generated on Thu, 14 Nov 2019 12:30:52 GMT and should not be manually modified.
 
+## 7.61.0
+Thu, 14 Nov 2019 12:30:52 GMT
+
+### Minor changes
+
+- ComboBox: adding an onRenderUpperContent() flexpoint for combobox (kchau@microsoft.com)
+### Patches
+
+- FocusZone: reset alignment when receiving focus. (dzearing@hotmail.com)
+- lint-imports.js: Added errors for package absolute imports (v-mare@microsoft.com)
 ## 7.60.1
 Wed, 13 Nov 2019 12:33:43 GMT
 

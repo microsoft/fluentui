@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "lint-imports.js: Added errors for package absolute imports",
-  "packageName": "office-ui-fabric-react",
-  "email": "v-mare@microsoft.com",
-  "commit": "1959883c33b5294ea6e39294b6cf9078cb8be3a6",
-  "date": "2019-11-13T19:26:53.965Z"
-}
