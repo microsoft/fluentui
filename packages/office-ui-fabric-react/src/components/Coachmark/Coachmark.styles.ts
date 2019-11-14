@@ -1,6 +1,6 @@
 import { keyframes, PulsingBeaconAnimationStyles, HighContrastSelector } from '../../Styling';
 import { ICoachmarkStyleProps, ICoachmarkStyles } from './Coachmark.types';
-import { getRTL } from '../../Utilities';
+import { getRTL, IsFocusVisibleClassName } from '../../Utilities';
 
 export const COACHMARK_WIDTH = 32;
 export const COACHMARK_HEIGHT = 32;
@@ -245,6 +245,9 @@ export function getStyles(props: ICoachmarkStyleProps): ICoachmarkStyles {
           [HighContrastSelector]: {
             backgroundColor: 'Window',
             border: '2px solid WindowText'
+          },
+          [`.${IsFocusVisibleClassName} &:focus`]: {
+            outline: `1px solid ${theme.palette.themeTertiary}`
           }
         }
       },
