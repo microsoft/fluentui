@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Optmizing ResizeGroup when it gets new props which do not change the layout",
+  "packageName": "office-ui-fabric-react",
+  "email": "kushaly@microsoft.com",
+  "commit": "c6f818946d75d799b3a93f7747202bb124237fd6",
+  "date": "2019-11-14T00:28:50.060Z"
+}
