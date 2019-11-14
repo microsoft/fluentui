@@ -7,6 +7,7 @@
  * }} ImportErrorGroup
  *
  * @typedef {{
+ *   pathAbsolute: ImportErrorGroup;
  *   pathNotFile: ImportErrorGroup;
  *   pathRelative: ImportErrorGroup;
  *   pathDeep: ImportErrorGroup;
@@ -75,6 +76,7 @@ function lintImports() {
     const files = _getFiles(sourcePath, /\.(ts|tsx)$/i);
     /** @type {ImportErrors} */
     const importErrors = {
+      pathAbsolute: { count: 0, matches: {} },
       pathNotFile: { count: 0, matches: {} },
       pathRelative: { count: 0, matches: {} },
       pathDeep: { count: 0, matches: {} },
@@ -208,6 +210,8 @@ function lintImports() {
    */
   function _evaluateImport(filePath, importMatch, importErrors, isExample) {
     const importPath = importMatch[1];
+    const packageRootPath = importPath.split('/')[0];
+    const relativePath = path.relative(sourcePath, filePath);
     let fullImportPath;
     let pathIsRelative = false;
     let pathIsDeep = false;
@@ -217,8 +221,18 @@ function lintImports() {
       // import is a file path. is this a file?
       fullImportPath = _evaluateImportPath(path.dirname(filePath), importPath);
       pathIsRelative = true;
-    } else if (packagesInfo[importPath]) {
+    } else if (packagesInfo[importPath] || packagesInfo[packageRootPath]) {
       // skip the full import of packages within the monorepo
+      // filters out file paths that contain "examples", ".doc.", "exampleData"
+      const filterOut = /(examples)|(\.doc\.)|(exampleData)/gm;
+      const isAcceptedPath = filePath.match(filterOut) === null;
+      const isntAtPath = importPath[0] !== '@';
+      // checks if the import root directory is the same as the current working directory
+      const isSameDirectory = process.cwd().match(new RegExp(`(${packageRootPath})$`, 'gm'));
+
+      if (!isExample && isntAtPath && isAcceptedPath && isSameDirectory) {
+        _addError(importErrors.pathAbsolute, relativePath, importPath);
+      }
       return;
     } else {
       const pkgNameMatch = importPath.match(/^(@[\w-]+\/[\w-]+|[\w-]+)/);
@@ -246,8 +260,6 @@ function lintImports() {
       const allowedSegments = pkgName[0] === '@' ? 4 : 3;
       pathIsDeep = importPath.split(/\//g).length > allowedSegments;
     }
-
-    const relativePath = path.relative(sourcePath, filePath);
 
     if (!fullImportPath || fs.statSync(fullImportPath).isDirectory()) {
       _addError(importErrors.pathNotFile, relativePath, importPath);
@@ -311,6 +323,7 @@ function lintImports() {
   function reportFilePathErrors(importErrors) {
     /** @type {{ [k in keyof ImportErrors]: string }} */
     const errorMessages = {
+      pathAbsolute: 'files are using absolute imports. Please update the following imports to use relative paths instead:',
       pathNotFile:
         '{count} import path(s) do not reference physical files. This can break AMD imports. ' +
         'Please ensure the following imports reference physical files:',
@@ -352,3 +365,8 @@ function lintImports() {
 }
 
 module.exports = lintImports;
+
+// @ts-ignore
+if (require.main === module) {
+  lintImports();
+}

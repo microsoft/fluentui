@@ -65,6 +65,7 @@ exports[`Component Examples renders SpinButton.CustomStyled.Example.tsx correctl
             display: flex;
             height: 32px;
             min-width: 86px;
+            position: relative;
           }
           &:hover {
             border-color: #323130;

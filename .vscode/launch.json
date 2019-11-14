@@ -143,8 +143,8 @@
       "name": "Debug lint imports",
       "type": "node",
       "request": "launch",
-      "program": "${workspaceRoot}/scripts/lint-imports.js",
-      "cwd": "${workspaceRoot}/packages/charting/src",
+      "program": "${workspaceRoot}/scripts/tasks/lint-imports.js",
+      "cwd": "${workspaceRoot}/packages/office-ui-fabric-react",
       "stopOnEntry": false,
       "args": ["--name", "TestComponentName"],
       "runtimeExecutable": null,
@@ -176,7 +176,7 @@
       "name": "Debug page json generator",
       "type": "node",
       "request": "launch",
-      "program": "${workspaceRoot}/packages/api-docs/lib-commonjs/generatePageJsonFiles.js",
+      "program": "${workspaceRoot}/packages/api-docs/lib/generatePageJsonFiles.js",
       "cwd": "${workspaceRoot}/packages/api-docs",
       "stopOnEntry": false,
       "runtimeExecutable": null,
@@ -184,7 +184,8 @@
       "env": {
         "NODE_ENV": "development"
       },
-      "sourceMaps": true
+      "sourceMaps": true,
+      "console": "integratedTerminal"
     }
   ]
 }

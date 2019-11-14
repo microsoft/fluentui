@@ -3508,7 +3508,13 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
       </div>
     </div>
   </div>
-  <div>
+  <div
+    className=
+
+        {
+          padding-top: 20px;
+        }
+  >
     <div
       className=
           ms-Checkbox
@@ -3935,7 +3941,13 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
         </span>
       </label>
     </div>
-    <div>
+    <div
+      className=
+
+          {
+            width: 180px;
+          }
+    >
       <div
         className=
             ms-Dropdown-container
@@ -3971,10 +3983,9 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
           Number of items to render
         </label>
         <div
-          aria-describedby="Dropdown64-option"
           aria-expanded="false"
           aria-haspopup="listbox"
-          aria-labelledby="Dropdown64-label"
+          aria-labelledby="Dropdown64-label Dropdown64-option"
           className=
               ms-Dropdown
               {
@@ -4008,7 +4019,10 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
               }
               &:focus .ms-Dropdown-title {
                 border-color: #0078d4;
+                border-width: 2px;
                 color: #201f1e;
+                left: -1px;
+                top: -1px;
               }
               @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-title {
                 background-color: Highlight;

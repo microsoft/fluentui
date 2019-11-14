@@ -667,10 +667,9 @@ exports[`Component Examples renders Stack.Horizontal.WrapAdvanced.Example.tsx co
           Horizontal alignment:
         </label>
         <div
-          aria-describedby="Dropdown2-option"
           aria-expanded="false"
           aria-haspopup="listbox"
-          aria-labelledby="Dropdown2-label"
+          aria-labelledby="Dropdown2-label Dropdown2-option"
           className=
               ms-Dropdown
               {
@@ -704,7 +703,10 @@ exports[`Component Examples renders Stack.Horizontal.WrapAdvanced.Example.tsx co
               }
               &:focus .ms-Dropdown-title {
                 border-color: #0078d4;
+                border-width: 2px;
                 color: #201f1e;
+                left: -1px;
+                top: -1px;
               }
               @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-title {
                 background-color: Highlight;
@@ -891,10 +893,9 @@ exports[`Component Examples renders Stack.Horizontal.WrapAdvanced.Example.tsx co
           Vertical alignment:
         </label>
         <div
-          aria-describedby="Dropdown3-option"
           aria-expanded="false"
           aria-haspopup="listbox"
-          aria-labelledby="Dropdown3-label"
+          aria-labelledby="Dropdown3-label Dropdown3-option"
           className=
               ms-Dropdown
               {
@@ -928,7 +929,10 @@ exports[`Component Examples renders Stack.Horizontal.WrapAdvanced.Example.tsx co
               }
               &:focus .ms-Dropdown-title {
                 border-color: #0078d4;
+                border-width: 2px;
                 color: #201f1e;
+                left: -1px;
+                top: -1px;
               }
               @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-title {
                 background-color: Highlight;
@@ -1115,10 +1119,9 @@ exports[`Component Examples renders Stack.Horizontal.WrapAdvanced.Example.tsx co
           Overflow:
         </label>
         <div
-          aria-describedby="Dropdown4-option"
           aria-expanded="false"
           aria-haspopup="listbox"
-          aria-labelledby="Dropdown4-label"
+          aria-labelledby="Dropdown4-label Dropdown4-option"
           className=
               ms-Dropdown
               {
@@ -1152,7 +1155,10 @@ exports[`Component Examples renders Stack.Horizontal.WrapAdvanced.Example.tsx co
               }
               &:focus .ms-Dropdown-title {
                 border-color: #0078d4;
+                border-width: 2px;
                 color: #201f1e;
+                left: -1px;
+                top: -1px;
               }
               @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-title {
                 background-color: Highlight;

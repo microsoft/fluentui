@@ -1,7 +1,25 @@
 # Change Log - @uifabric/date-time
 
-This log was last generated on Tue, 22 Oct 2019 12:32:05 GMT and should not be manually modified.
+This log was last generated on Fri, 08 Nov 2019 12:30:07 GMT and should not be manually modified.
 
+## 7.5.6
+Fri, 08 Nov 2019 12:30:07 GMT
+
+### Patches
+
+- Change files (betrue@microsoft.com)
+## 7.5.5
+Wed, 30 Oct 2019 19:36:52 GMT
+
+### Patches
+
+- Fixed accessibility of today in date-time package (betrue@microsoft.com)
+## 7.5.4
+Thu, 24 Oct 2019 12:31:42 GMT
+
+### Patches
+
+- undefined (phtucker@microsoft.com)
 ## 7.5.3
 Tue, 22 Oct 2019 12:32:05 GMT
 

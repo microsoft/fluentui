@@ -18,7 +18,7 @@ const _getDisabledStyles = memoizeFunction(
 
     return {
       backgroundColor: SpinButtonBackgroundColorDisabled,
-      borderColor: 'transparent',
+      borderColor: SpinButtonBackgroundColorDisabled,
       pointerEvents: 'none',
       cursor: 'default',
       color: SpinButtonTextColorDisabled,
@@ -140,21 +140,26 @@ export const getStyles = memoizeFunction(
         minWidth: DEFAULT_MIN_WIDTH
       },
       labelWrapper: {
-        display: 'inline-flex'
+        display: 'inline-flex',
+        alignItems: 'center'
       },
       labelWrapperStart: {
         height: DEFAULT_HEIGHT,
-        alignItems: 'center',
         float: 'left',
         marginRight: LABEL_MARGIN
       },
       labelWrapperEnd: {
         height: DEFAULT_HEIGHT,
-        alignItems: 'center',
         float: 'right',
         marginLeft: LABEL_MARGIN
       },
-      labelWrapperTop: {},
+      labelWrapperTop: {
+        // Due to the lineHeight set on the label (below), the height of the wrapper (contains icon+label)
+        // ends up 1px taller than a standard label height, causing the vertical alignment to be off when
+        // the SpinButton is displayed with the label on top next to other form fields.
+        // Decrease the wrapper's effective height slightly to compensate.
+        marginBottom: -1
+      },
       labelWrapperBottom: {},
       icon: {
         padding: '0 5px',
@@ -171,6 +176,7 @@ export const getStyles = memoizeFunction(
       labelDisabled: {},
       spinButtonWrapper: {
         display: 'flex',
+        position: 'relative',
         boxSizing: 'border-box',
         height: DEFAULT_HEIGHT,
         minWidth: DEFAULT_MIN_WIDTH,
@@ -189,10 +195,20 @@ export const getStyles = memoizeFunction(
         }
       },
       spinButtonWrapperFocused: {
-        borderColor: SpinButtonRootBorderColorFocused,
         selectors: {
           [HighContrastSelector]: {
             borderColor: 'Highlight'
+          },
+          ':after': {
+            pointerEvents: 'none',
+            content: "''",
+            position: 'absolute',
+            left: -1,
+            top: -1,
+            bottom: -1,
+            right: -1,
+            border: `2px solid ${SpinButtonRootBorderColorFocused}`,
+            borderRadius: effects.roundedCorner2
           }
         }
       },

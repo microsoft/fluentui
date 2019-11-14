@@ -205,7 +205,6 @@ exports[`Component Examples renders ChoiceGroup.Custom.Example.tsx correctly 1`]
                   }
             >
               <div
-                aria-describedby="Dropdown2-option"
                 aria-disabled={true}
                 aria-expanded="false"
                 aria-haspopup="listbox"
@@ -243,6 +242,9 @@ exports[`Component Examples renders ChoiceGroup.Custom.Example.tsx correctly 1`]
                     }
                     &:focus .ms-Dropdown-title {
                       border-color: #0078d4;
+                      border-width: 2px;
+                      left: -1px;
+                      top: -1px;
                     }
                     @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-title {
                       background-color: Highlight;

@@ -325,7 +325,8 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
     if (
       newProps.items !== this.props.items ||
       newProps.renderCount !== this.props.renderCount ||
-      newProps.startIndex !== this.props.startIndex
+      newProps.startIndex !== this.props.startIndex ||
+      newProps.version !== this.props.version
     ) {
       // We have received new items so we want to make sure that initially we only render a single window to
       // fill the currently visible rect, and then later render additional windows.

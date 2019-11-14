@@ -2,6 +2,34 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "date": "Tue, 05 Nov 2019 12:25:16 GMT",
+      "tag": "@uifabric/charting_v0.138.0",
+      "version": "0.138.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Enabled wrap lines for legends",
+            "author": "dajiang@microsoft.com",
+            "commit": "4dfa746477cfd7660c56018e1987fdccd8d16b69"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 24 Oct 2019 12:31:42 GMT",
+      "tag": "@uifabric/charting_v0.137.2",
+      "version": "0.137.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Change gapSpace to 10 to resolve line chart flickering issue",
+            "author": "v-ragor@microsoft.com",
+            "commit": "39f7975985f9789b2baf9460c5d86c79186a93fc"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 22 Oct 2019 12:32:05 GMT",
       "tag": "@uifabric/charting_v0.137.1",
       "version": "0.137.1",
