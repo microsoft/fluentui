@@ -127,10 +127,22 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
       selectors: {
         '&:hover:focus': {
           color: palette.neutralDark,
-          backgroundColor: !isSelected ? palette.neutralLighter : palette.neutralLight
+          backgroundColor: !isSelected ? palette.neutralLighter : palette.neutralLight,
+          selectors: {
+            [HighContrastSelector]: {
+              backgroundColor: 'Highlight',
+              color: 'HighlightText'
+            }
+          }
         },
         '&:focus': {
-          backgroundColor: !isSelected ? 'transparent' : palette.neutralLight
+          backgroundColor: !isSelected ? 'transparent' : palette.neutralLight,
+          selectors: {
+            [HighContrastSelector]: {
+              backgroundColor: 'Highlight',
+              color: 'HighlightText'
+            }
+          }
         },
         '&:active': {
           color: palette.neutralDark,

@@ -110,7 +110,13 @@ export const getOptionStyles = memoizeFunction(
       ],
       rootHovered: {
         backgroundColor: option.backgroundHoveredColor,
-        color: option.textHoveredColor
+        color: option.textHoveredColor,
+        selectors: {
+          [HighContrastSelector]: {
+            backgroundColor: 'Highlight',
+            color: 'HighlightText'
+          }
+        }
       },
       rootFocused: {
         backgroundColor: option.backgroundHoveredColor
@@ -122,6 +128,14 @@ export const getOptionStyles = memoizeFunction(
           selectors: {
             ':hover': {
               backgroundColor: option.backgroundHoveredColor
+            },
+            [HighContrastSelector]: {
+              selectors: {
+                ':hover': {
+                  backgroundColor: 'Highlight',
+                  color: 'HighlightText'
+                }
+              }
             }
           }
         },
