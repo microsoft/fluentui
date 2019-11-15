@@ -1862,8 +1862,9 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           color: #201f1e;
                         }
                         @media screen and (-ms-high-contrast: active){&:hover {
+                          background-color: Highlight;
                           border-color: Highlight;
-                          color: Highlight;
+                          color: HighlightText;
                         }
                         &:hover .ms-Button-icon {
                           color: #0078d4;
@@ -2022,6 +2023,10 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                         &:hover {
                           background-color: #f3f2f1;
                         }
+                        @media screen and (-ms-high-contrast: active){&:hover {
+                          background-color: Highlight;
+                          color: HighlightText;
+                        }
                         .ms-Fabric--isFocusVisible &:after {
                           border: 1px solid #ffffff;
                           bottom: 0px;
@@ -2176,8 +2181,9 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           color: #201f1e;
                         }
                         @media screen and (-ms-high-contrast: active){&:hover {
+                          background-color: Highlight;
                           border-color: Highlight;
-                          color: Highlight;
+                          color: HighlightText;
                         }
                         &:hover .ms-Button-icon {
                           color: #0078d4;
@@ -2334,8 +2340,9 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           color: #201f1e;
                         }
                         @media screen and (-ms-high-contrast: active){&:hover {
+                          background-color: Highlight;
                           border-color: Highlight;
-                          color: Highlight;
+                          color: HighlightText;
                         }
                         &:hover .ms-Button-icon {
                           color: #0078d4;
@@ -2541,8 +2548,9 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           color: #201f1e;
                         }
                         @media screen and (-ms-high-contrast: active){&:hover {
+                          background-color: Highlight;
                           border-color: Highlight;
-                          color: Highlight;
+                          color: HighlightText;
                         }
                         &:hover .ms-Button-icon {
                           color: #0078d4;
@@ -2848,8 +2856,9 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           color: #201f1e;
                         }
                         @media screen and (-ms-high-contrast: active){&:hover {
+                          background-color: Highlight;
                           border-color: Highlight;
-                          color: Highlight;
+                          color: HighlightText;
                         }
                         &:hover .ms-Button-icon {
                           color: #0078d4;
@@ -3006,8 +3015,9 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           color: #201f1e;
                         }
                         @media screen and (-ms-high-contrast: active){&:hover {
+                          background-color: Highlight;
                           border-color: Highlight;
-                          color: Highlight;
+                          color: HighlightText;
                         }
                         &:hover .ms-Button-icon {
                           color: #0078d4;
@@ -3164,8 +3174,9 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           color: #201f1e;
                         }
                         @media screen and (-ms-high-contrast: active){&:hover {
+                          background-color: Highlight;
                           border-color: Highlight;
-                          color: Highlight;
+                          color: HighlightText;
                         }
                         &:hover .ms-Button-icon {
                           color: #0078d4;
@@ -3322,8 +3333,9 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           color: #201f1e;
                         }
                         @media screen and (-ms-high-contrast: active){&:hover {
+                          background-color: Highlight;
                           border-color: Highlight;
-                          color: Highlight;
+                          color: HighlightText;
                         }
                         &:hover .ms-Button-icon {
                           color: #0078d4;
