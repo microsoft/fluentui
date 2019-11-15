@@ -1,6 +1,7 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 import { Fabric } from './Fabric';
+import { mount } from 'enzyme';
 
 describe('Fabric', () => {
   it('renders a Fabric component correctly', () => {
@@ -16,8 +17,7 @@ describe('Fabric', () => {
   });
 
   it('renders a Fabric component with applyThemeToBody correctly', () => {
-    const component = renderer.create(<Fabric applyThemeToBody>test</Fabric>);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    const wrapper = mount(<Fabric applyThemeToBody>test</Fabric>);
+    expect(wrapper.getDOMNode().getElementsByClassName('bodyThemed')).toBeTruthy();
   });
 });
