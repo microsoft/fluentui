@@ -46,7 +46,7 @@ export interface ISuggestionsCoreProps<T> extends React.ClassAttributes<any> {
    */
   showRemoveButtons?: boolean;
   /**
-   * Indicates whether to loop around to the top or bottom of the the suggestions
+   * Indicates whether to loop around to the top or bottom of the suggestions
    * on calling nextSuggestion and previousSuggestion, respectively
    */
   shouldLoopSelection: boolean;

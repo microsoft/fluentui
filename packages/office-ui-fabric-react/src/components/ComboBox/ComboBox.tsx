@@ -1049,7 +1049,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       if (this._indexWithinBounds(currentOptions, currentPendingValueValidIndex)) {
         const pendingOptionText: string = this._getPreviewText(currentOptions[currentPendingValueValidIndex]).toLocaleLowerCase();
 
-        // By exact match, that means: our pending value is the same as the the pending option text OR
+        // By exact match, that means: our pending value is the same as the pending option text OR
         // the pending option starts with the pending value and we have an "autoComplete" selection
         // where the total length is equal to pending option length OR
         // the live value in the underlying input matches the pending option; update the state

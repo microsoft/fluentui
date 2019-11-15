@@ -2296,7 +2296,7 @@ Mon, 28 Jan 2019 13:35:27 GMT
 
 ### Minor changes
 
-- Coachmark: updates how the the theme is passed to `getStyles` function. Adds 2 new props: `theme` and `className`. Minor cleanup.
+- Coachmark: updates how the theme is passed to `getStyles` function. Adds 2 new props: `theme` and `className`. Minor cleanup.
 
 ### Patches
 

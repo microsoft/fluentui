@@ -6751,7 +6751,7 @@
         ],
         "minor": [
           {
-            "comment": "Coachmark: updates how the the theme is passed to `getStyles` function. Adds 2 new props: `theme` and `className`. Minor cleanup.",
+            "comment": "Coachmark: updates how the theme is passed to `getStyles` function. Adds 2 new props: `theme` and `className`. Minor cleanup.",
             "author": "Vitalie Braga <vitaliebraga@gmail.com>",
             "commit": "4835ddcba03c8204aae13f87c197e667b5dcaa3e"
           }
