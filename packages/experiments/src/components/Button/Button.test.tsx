@@ -88,12 +88,6 @@ describe('Button', () => {
     expect(tree).toMatchSnapshot();
   });
 
-  it('renders a Button inside a CommandBar correctly', () => {
-    const component = renderer.create(<CommandBar items={[{ key: '0', text: 'Button 1', iconProps: { iconName: 'Upload' } }]} />);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
-  });
-
   it('renders a default checked Button correctly', () => {
     const component = renderer.create(<Button checked content="Button" />);
     const tree = component.toJSON();
