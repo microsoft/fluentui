@@ -776,9 +776,6 @@ Array [
               border-color: Highlight;
               color: HighlightText;
             }
-            @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-title:hover {
-              color: HighlightText;
-            }
             @media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: black-on-white){&:focus .ms-Dropdown-title {
               -ms-high-contrast-adjust: none;
             }

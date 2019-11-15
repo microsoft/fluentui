@@ -3077,9 +3077,6 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                 border-color: Highlight;
                 color: HighlightText;
               }
-              @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-title:hover {
-                color: HighlightText;
-              }
               @media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: black-on-white){&:focus .ms-Dropdown-title {
                 -ms-high-contrast-adjust: none;
               }
@@ -3300,9 +3297,6 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
               @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-title {
                 background-color: Highlight;
                 border-color: Highlight;
-                color: HighlightText;
-              }
-              @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-title:hover {
                 color: HighlightText;
               }
               @media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: black-on-white){&:focus .ms-Dropdown-title {
