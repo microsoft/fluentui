@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 import { mount } from 'enzyme';
 
-import { CommandBar, Icon, Text } from 'office-ui-fabric-react';
+import { Icon, Text } from 'office-ui-fabric-react';
 import { Button } from './Button';
 import { IButton } from './Button.types';
 
