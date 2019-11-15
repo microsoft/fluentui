@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "PickerSuggestions: Fixed typings to include typed styles function",
+  "packageName": "office-ui-fabric-react",
+  "email": "mgodbolt@microsoft.com",
+  "commit": "a6e2ea7d73d0e9af2021bb90f983180c55495096",
+  "date": "2019-11-15T17:46:34.883Z"
+}
