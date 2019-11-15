@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Coachmark: A11y fixes - Added focus indicator to coachmark when activated",
+  "packageName": "office-ui-fabric-react",
+  "email": "marygans@microsoft.com",
+  "commit": "43f7f133a268b9f361532518692dd463b2b0fa58",
+  "date": "2019-11-14T18:47:37.892Z"
+}
