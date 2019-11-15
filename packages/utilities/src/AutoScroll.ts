@@ -23,7 +23,7 @@ export class AutoScroll {
   private _scrollableParent: HTMLElement | null;
   private _scrollRect: IRectangle | undefined;
   private _scrollVelocity: number;
-  private _scrollDirection: boolean;
+  private _isVerticalScroll: boolean;
   private _timeoutId: number;
 
   constructor(element: HTMLElement) {
@@ -89,12 +89,12 @@ export class AutoScroll {
       clientDirection = clientY;
       scrollRect = scrollRectTop;
       scrollClient = scrollClientBottom;
-      this._scrollDirection = true;
+      this._isVerticalScroll = true;
     } else {
       clientDirection = clientX;
       scrollRect = scrollRectLeft;
       scrollClient = scrollClientRight;
-      this._scrollDirection = false;
+      this._isVerticalScroll = false;
     }
 
     // calculate scroll velocity and direction
@@ -124,7 +124,7 @@ export class AutoScroll {
 
   private _incrementScroll(): void {
     if (this._scrollableParent) {
-      if (this._scrollDirection) {
+      if (this._isVerticalScroll) {
         this._scrollableParent.scrollTop += Math.round(this._scrollVelocity);
       } else {
         this._scrollableParent.scrollLeft += Math.round(this._scrollVelocity);
