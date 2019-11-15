@@ -2,6 +2,37 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Fri, 15 Nov 2019 12:31:09 GMT",
+      "tag": "office-ui-fabric-react_v7.61.1",
+      "version": "7.61.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "applied accessibility changes to main package",
+            "author": "betrue@microsoft.com",
+            "commit": "f5b743c07c1a15330a77d0e9ca236c307f1d4175"
+          },
+          {
+            "comment": "Picker: Updating disabled border color from transparent in order to match disabled background color.",
+            "author": "marygans@microsoft.com",
+            "commit": "07ed50417c879a19d30d6ca01b5ca0c93c36b85d"
+          },
+          {
+            "comment": "DropDown: make dropdown option title prop to be assigned consistently for the multiselect case",
+            "author": "kchau@microsoft.com",
+            "commit": "745782f7e6e0238a70a63feff60658dd62da79c5"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Dropdown: adding aria label in dropdown required example",
+            "author": "marygans@microsoft.com",
+            "commit": "6f8b1675b5e15382aa12c20e95a28703dd63089b"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 14 Nov 2019 12:30:52 GMT",
       "tag": "office-ui-fabric-react_v7.61.0",
       "version": "7.61.0",

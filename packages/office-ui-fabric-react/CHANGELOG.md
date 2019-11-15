@@ -1,7 +1,15 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 14 Nov 2019 12:30:52 GMT and should not be manually modified.
+This log was last generated on Fri, 15 Nov 2019 12:31:09 GMT and should not be manually modified.
 
+## 7.61.1
+Fri, 15 Nov 2019 12:31:09 GMT
+
+### Patches
+
+- applied accessibility changes to main package (betrue@microsoft.com)
+- Picker: Updating disabled border color from transparent in order to match disabled background color. (marygans@microsoft.com)
+- DropDown: make dropdown option title prop to be assigned consistently for the multiselect case (kchau@microsoft.com)
 ## 7.61.0
 Thu, 14 Nov 2019 12:30:52 GMT
 
