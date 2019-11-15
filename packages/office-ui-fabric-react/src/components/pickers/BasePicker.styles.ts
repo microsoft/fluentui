@@ -53,7 +53,7 @@ export function getStyles(props: IBasePickerStyleProps): IBasePickerStyles {
           borderColor: inputFocusBorderAlt
         },
       disabled && {
-        borderColor: 'transparent',
+        borderColor: disabledOverlayColor,
         selectors: {
           ':after': {
             content: '""',

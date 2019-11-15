@@ -1,9 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Theme Designer: pull semantic slots from primary source instead of have a secondary mapping.",
-  "packageName": "@uifabric/styling",
-  "email": "email not defined",
-  "commit": "60949d544928467d57dd16c2bdc275caad963624",
-  "date": "2019-10-17T22:03:00.307Z",
-  "file": "/Users/aneeshak/office-ui-fabric-react/change/@uifabric-styling-2019-10-17-15-03-00-td_semantic_slots.json"
-}
