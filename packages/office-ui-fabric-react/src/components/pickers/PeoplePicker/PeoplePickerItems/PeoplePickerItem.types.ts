@@ -3,7 +3,8 @@ import { IStyleFunctionOrObject } from '../../../../Utilities';
 import { IPersonaProps, IPersonaStyleProps, IPersonaCoinStyleProps } from '../../../../Persona';
 import { IPickerItemProps } from '../../PickerItem.types';
 import { IContextualMenuItem } from '../../../../ContextualMenu';
-import { ValidationState, IBasePickerSuggestionsProps } from '../../BasePicker.types';
+import { ValidationState } from '../../BasePicker.types';
+import { ISuggestionItemProps } from '../../Suggestions/SuggestionsItem.types';
 
 /**
  * Common props in between IPeoplePickerItemSelectedProps, IPeoplePickerItemWithMenuProps and IPeoplePickerItemSuggestionProps.
@@ -80,7 +81,7 @@ export interface IPeoplePickerItemSuggestionProps extends IPeoplePickerItemShare
   styles?: IStyleFunctionOrObject<IPeoplePickerItemSuggestionStyleProps, IPeoplePickerItemSuggestionStyles>;
 
   /** General common props for all PeoplePicker items suggestions. */
-  suggestionsProps?: IBasePickerSuggestionsProps;
+  suggestionsProps?: ISuggestionItemProps<IPersonaProps>;
 
   /**
    * Flag that controls whether each suggested PeoplePicker item (Persona) is rendered with or without secondary text for compact look.

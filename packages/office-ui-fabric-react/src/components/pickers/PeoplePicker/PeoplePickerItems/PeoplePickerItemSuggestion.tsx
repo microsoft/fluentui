@@ -16,7 +16,7 @@ export const PeoplePickerItemSuggestionBase = (props: IPeoplePickerItemSuggestio
 
   const classNames = getClassNames(styles, {
     theme: theme!,
-    className: (suggestionsProps && suggestionsProps.suggestionsItemClassName) || className
+    className: (suggestionsProps && suggestionsProps.className) || className
   });
 
   const personaStyles =

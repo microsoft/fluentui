@@ -2,13 +2,8 @@ import * as React from 'react';
 
 import { getRTL, getInitials, styled } from '../../../Utilities';
 import { BasePicker, BasePickerListBelow } from '../BasePicker';
-import {
-  IBasePickerProps,
-  IBasePickerSuggestionsProps,
-  ValidationState,
-  IBasePickerStyleProps,
-  IBasePickerStyles
-} from '../BasePicker.types';
+import { IBasePickerProps, ValidationState, IBasePickerStyleProps, IBasePickerStyles } from '../BasePicker.types';
+import { ISuggestionItemProps } from '../Suggestions/SuggestionsItem.types';
 import { PeoplePickerItem } from './PeoplePickerItems/PeoplePickerItem';
 import { IPersonaProps } from '../../../Persona';
 import { PeoplePickerItemSuggestion } from './PeoplePickerItems/PeoplePickerItemSuggestion';
@@ -39,7 +34,7 @@ export class NormalPeoplePickerBase extends BasePeoplePicker {
   /** Default props for NormalPeoplePicker. */
   public static defaultProps = {
     onRenderItem: (props: IPeoplePickerItemSelectedProps) => <PeoplePickerItem {...props} />,
-    onRenderSuggestionsItem: (personaProps: IPersonaProps, suggestionsProps?: IBasePickerSuggestionsProps) => (
+    onRenderSuggestionsItem: (personaProps: IPersonaProps, suggestionsProps?: ISuggestionItemProps<IPersonaProps>) => (
       <PeoplePickerItemSuggestion personaProps={personaProps} suggestionsProps={suggestionsProps} />
     ),
     createGenericItem: createGenericItem
@@ -54,7 +49,7 @@ export class CompactPeoplePickerBase extends BasePeoplePicker {
   /** Default props for CompactPeoplePicker. */
   public static defaultProps = {
     onRenderItem: (props: IPeoplePickerItemSelectedProps) => <PeoplePickerItem {...props} />,
-    onRenderSuggestionsItem: (personaProps: IPersonaProps, suggestionsProps?: IBasePickerSuggestionsProps) => (
+    onRenderSuggestionsItem: (personaProps: IPersonaProps, suggestionsProps?: ISuggestionItemProps<IPersonaProps>) => (
       <PeoplePickerItemSuggestion personaProps={personaProps} suggestionsProps={suggestionsProps} compact={true} />
     ),
     createGenericItem: createGenericItem
@@ -69,7 +64,7 @@ export class ListPeoplePickerBase extends MemberListPeoplePicker {
   /** Default props for ListPeoplePicker. */
   public static defaultProps = {
     onRenderItem: (props: IPeoplePickerItemSelectedProps) => <PeoplePickerItem {...props} />,
-    onRenderSuggestionsItem: (personaProps: IPersonaProps, suggestionsProps?: IBasePickerSuggestionsProps) => (
+    onRenderSuggestionsItem: (personaProps: IPersonaProps, suggestionsProps?: ISuggestionItemProps<IPersonaProps>) => (
       <PeoplePickerItemSuggestion personaProps={personaProps} suggestionsProps={suggestionsProps} />
     ),
     createGenericItem: createGenericItem
