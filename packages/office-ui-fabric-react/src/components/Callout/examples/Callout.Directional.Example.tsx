@@ -1,6 +1,16 @@
 import * as React from 'react';
-import { DefaultButton, Callout, DirectionalHint, Dropdown, IDropdownOption, Checkbox, Slider } from 'office-ui-fabric-react';
-import './CalloutExample.scss';
+import {
+  DefaultButton,
+  Callout,
+  DirectionalHint,
+  Dropdown,
+  IDropdownOption,
+  Checkbox,
+  Slider,
+  getTheme,
+  mergeStyleSets,
+  FontWeights
+} from 'office-ui-fabric-react';
 
 export interface ICalloutDirectionalExampleState {
   isCalloutVisible?: boolean;
@@ -27,6 +37,51 @@ const DIRECTION_OPTIONS = [
   { key: DirectionalHint.rightBottomEdge, text: 'Right Bottom Edge' }
 ];
 
+const theme = getTheme();
+const styles = mergeStyleSets({
+  buttonArea: {
+    verticalAlign: 'top',
+    display: 'inline-block',
+    textAlign: 'center',
+    margin: '0 100px',
+    minWidth: 130,
+    height: 32
+  },
+  configArea: {
+    minWidth: '300px',
+    display: 'inline-block'
+  },
+  callout: {
+    maxWidth: 300
+  },
+  calloutExampleButton: {
+    width: '100%'
+  },
+  header: {
+    padding: '18px 24px 12px'
+  },
+  title: [
+    theme.fonts.xLarge,
+    {
+      margin: 0,
+      color: theme.palette.neutralPrimary,
+      fontWeight: FontWeights.semilight
+    }
+  ],
+  inner: {
+    height: '100%',
+    padding: '0 24px 20px'
+  },
+  subtext: [
+    theme.fonts.small,
+    {
+      margin: 0,
+      color: theme.palette.neutralPrimary,
+      fontWeight: FontWeights.semilight
+    }
+  ]
+});
+
 export class CalloutDirectionalExample extends React.Component<{}, ICalloutDirectionalExampleState> {
   private _menuButtonElement: HTMLElement | null;
 
@@ -45,8 +100,8 @@ export class CalloutDirectionalExample extends React.Component<{}, ICalloutDirec
     //  ms-Callout-smallbeak is used in this directional example to reflect all the positions.
     //  Large beak will disable some position to avoid beak over the callout edge.
     return (
-      <div className="ms-CalloutExample">
-        <div className="ms-CalloutExample-configArea">
+      <>
+        <div className={styles.configArea}>
           <Checkbox styles={{ root: { margin: '10px 0' } }} label="Show beak" checked={isBeakVisible} onChange={this._onShowBeakChange} />
           <Slider max={30} label="Gap Space" min={0} defaultValue={0} onChange={this._onGapSlider} />
           {isBeakVisible && <Slider max={50} label="Beak Width" min={10} defaultValue={16} onChange={this._onBeakWidthSlider} />}
@@ -57,16 +112,16 @@ export class CalloutDirectionalExample extends React.Component<{}, ICalloutDirec
             onChange={this._onDirectionalChanged}
           />
         </div>
-        <div className="ms-CalloutExample-buttonArea" ref={menuButton => (this._menuButtonElement = menuButton)}>
+        <div className={styles.buttonArea} ref={menuButton => (this._menuButtonElement = menuButton)}>
           <DefaultButton
-            className={'calloutExampleButton'}
+            className={styles.calloutExampleButton}
             onClick={this._onShowMenuClicked}
             text={isCalloutVisible ? 'Hide callout' : 'Show callout'}
           />
         </div>
         {isCalloutVisible ? (
           <Callout
-            className="ms-CalloutExample-callout"
+            className={styles.callout}
             gapSpace={gapSpace}
             target={this._menuButtonElement}
             isBeakVisible={isBeakVisible}
@@ -75,19 +130,19 @@ export class CalloutDirectionalExample extends React.Component<{}, ICalloutDirec
             directionalHint={directionalHint}
             setInitialFocus={true}
           >
-            <div className="ms-CalloutExample-header">
-              <p className="ms-CalloutExample-title">All of your favorite people</p>
+            <div className={styles.header}>
+              <p className={styles.title}>All of your favorite people</p>
             </div>
-            <div className="ms-CalloutExample-inner">
-              <div className="ms-CalloutExample-content">
-                <p className="ms-CalloutExample-subText">
+            <div className={styles.inner}>
+              <div>
+                <p className={styles.subtext}>
                   Message body is optional. If help documentation is available, consider adding a link to learn more at the bottom.
                 </p>
               </div>
             </div>
           </Callout>
         ) : null}
-      </div>
+      </>
     );
   }
 

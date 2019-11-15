@@ -4,10 +4,6 @@ import { DetailsListBasicExample } from 'office-ui-fabric-react/lib/components/D
 import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 import { AppCustomizations } from './customizations/customizations';
 
-export interface IReferencesList {
-  pages: string[];
-}
-
 const propertiesTableMargins = mergeStyles({
   marginLeft: '40px',
   marginRight: '40px'

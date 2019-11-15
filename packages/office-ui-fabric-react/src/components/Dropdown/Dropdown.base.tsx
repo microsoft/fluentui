@@ -307,7 +307,7 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
         </KeytipData>
         {isOpen && onRenderContainer({ ...props, onDismiss: this._onDismiss }, this._onRenderContainer)}
         {hasErrorMessage && (
-          <div id={errorMessageId} className={this._classNames.errorMessage}>
+          <div role="alert" id={errorMessageId} className={this._classNames.errorMessage}>
             {errorMessage}
           </div>
         )}
@@ -919,7 +919,7 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
 
     if (this.props.onKeyUp) {
       this.props.onKeyUp(ev);
-      if (ev.preventDefault) {
+      if (ev.defaultPrevented) {
         return;
       }
     }
@@ -1029,7 +1029,7 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
   private _onDropdownClick = (ev: React.MouseEvent<HTMLDivElement>): void => {
     if (this.props.onClick) {
       this.props.onClick(ev);
-      if (ev.preventDefault) {
+      if (ev.defaultPrevented) {
         return;
       }
     }

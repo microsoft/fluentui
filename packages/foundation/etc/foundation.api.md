@@ -84,15 +84,13 @@ export interface IProcessedSlotProps {
     className?: string;
 }
 
-// @public
-export type IPropsWithChildren<TProps> = TProps & {
-    children?: React.ReactNode;
-};
+// @public @deprecated
+export type IPropsWithChildren<TProps> = React.PropsWithChildren<TProps>;
 
 // @public
 export interface ISlot<TProps> {
     // (undocumented)
-    (componentProps: IPropsWithChildren<TProps> | undefined | null): ReturnType<React.FunctionComponent>;
+    (componentProps: React.PropsWithChildren<TProps> | undefined | null): ReturnType<React.FunctionComponent>;
     // (undocumented)
     isSlot?: boolean;
 }
@@ -123,7 +121,7 @@ export interface ISlotOptions<TProps> {
 export type ISlotProp<TProps extends ValidProps, TShorthandProp extends ValidShorthand = never> = TShorthandProp | TProps;
 
 // @public
-export type ISlotRender<TProps> = (props: IPropsWithChildren<TProps>, defaultComponent: React.ComponentType<TProps>) => ReturnType<React.FunctionComponent<TProps>>;
+export type ISlotRender<TProps> = (props: React.PropsWithChildren<TProps>, defaultComponent: React.ComponentType<TProps>) => ReturnType<React.FunctionComponent<TProps>>;
 
 // @public
 export type ISlots<TSlots> = {
@@ -189,7 +187,7 @@ export type ITokenFunction<TViewProps, TTokens> = (props: TViewProps, theme: ITh
 export type ITokenFunctionOrObject<TViewProps, TTokens> = ITokenFunction<TViewProps, TTokens> | TTokens;
 
 // @public
-export type IViewComponent<TViewProps> = (props: IPropsWithChildren<TViewProps>) => ReturnType<React.FunctionComponent>;
+export type IViewComponent<TViewProps> = (props: React.PropsWithChildren<TViewProps>) => ReturnType<React.FunctionComponent>;
 
 export { legacyStyled }
 

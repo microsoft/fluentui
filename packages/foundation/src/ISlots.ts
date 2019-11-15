@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { IStyle } from '@uifabric/styling';
-import { IComponentStyles, IPropsWithChildren } from './IComponent';
+import { IComponentStyles } from './IComponent';
 
 /**
  * Signature of components that have component factories.
@@ -37,7 +37,7 @@ export type ISlotDefinition<TSlots> = { [slot in keyof TSlots]: React.ElementTyp
  * Created Slot structure used for rendering by components.
  */
 export interface ISlot<TProps> {
-  (componentProps: IPropsWithChildren<TProps> | undefined | null): ReturnType<React.FunctionComponent>;
+  (componentProps: React.PropsWithChildren<TProps> | undefined | null): ReturnType<React.FunctionComponent>;
   isSlot?: boolean;
 }
 
@@ -122,6 +122,6 @@ export interface ISlotOptions<TProps> {
  * Content rendering provided by component.
  */
 export type ISlotRender<TProps> = (
-  props: IPropsWithChildren<TProps>,
+  props: React.PropsWithChildren<TProps>,
   defaultComponent: React.ComponentType<TProps>
 ) => ReturnType<React.FunctionComponent<TProps>>;

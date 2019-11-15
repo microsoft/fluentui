@@ -448,8 +448,10 @@ export interface IContextualMenuItem {
    * For keyboard accessibility, the top-level rendered item should be a focusable element
    * (like an anchor or a button) or have the `data-is-focusable` property set to true.
    *
-   * The function receives a function that can be called to dismiss the menu as a second argument.
-   *  This can be used to make sure that a custom menu item click dismisses the menu.
+   * @param item - Item to render. Will typically be of type `IContextualMenuItem`.
+   * (When rendering a command bar item, will be `ICommandBarItemProps`.)
+   * @param dismissMenu - Function to dismiss the menu. Can be used to ensure that a custom menu
+   * item click dismisses the menu. (Will be undefined if rendering a command bar item.)
    */
   onRender?: (item: any, dismissMenu: (ev?: any, dismissAll?: boolean) => void) => React.ReactNode;
 

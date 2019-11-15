@@ -615,6 +615,12 @@ describe('Dropdown', () => {
 
       expect(dropdownRoot.attributes.getNamedItem('aria-labelledby')).not.toBeNull();
     });
+
+    it('sets role=error on included error message', () => {
+      wrapper = mount(<Dropdown label="Test label" options={[]} id="sample-dropdown" errorMessage="This is an example error." />);
+      const errorMessage = wrapper.getDOMNode().querySelector('#sample-dropdown-errorMessage') as HTMLElement;
+      expect(errorMessage.getAttribute('role')).toEqual('alert');
+    });
   });
 
   describe('with simulated async loaded options', () => {

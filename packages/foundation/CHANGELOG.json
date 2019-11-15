@@ -2,6 +2,20 @@
   "name": "@uifabric/foundation",
   "entries": [
     {
+      "date": "Thu, 07 Nov 2019 12:26:32 GMT",
+      "tag": "@uifabric/foundation_v7.5.0",
+      "version": "7.5.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Deprecate IPropsWithChildren type that is redundant with React.PropsWithChildren.",
+            "author": "jagore@microsoft.com",
+            "commit": "94cd8074a7f306c79157de6c1910e9ee31608594"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 03 Oct 2019 23:14:46 GMT",
       "tag": "@uifabric/foundation_v7.4.4",
       "version": "7.4.4",

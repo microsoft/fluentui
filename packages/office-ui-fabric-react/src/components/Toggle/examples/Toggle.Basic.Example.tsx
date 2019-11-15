@@ -22,6 +22,15 @@ export const ToggleBasicExample: React.FunctionComponent = () => {
       <Toggle label="With inline label and without onText and offText" inlineLabel onChange={_onChange} />
 
       <Toggle label="Disabled with inline label and without onText and offText" inlineLabel disabled />
+
+      <Toggle
+        label="Enabled and checked (ARIA 1.0 compatible)"
+        defaultChecked
+        onText="On"
+        offText="Off"
+        onChange={_onChange}
+        role="checkbox"
+      />
     </Stack>
   );
 };
