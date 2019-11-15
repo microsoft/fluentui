@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Combobox and Dropdown: Fixed high contrast hover styles",
+  "packageName": "office-ui-fabric-react",
+  "email": "mgodbolt@microsoft.com",
+  "commit": "9e548a6a90a33da5c1260124b2f06d8a7aa5539c",
+  "date": "2019-11-15T19:07:45.322Z"
+}
