@@ -1,15 +1,49 @@
 import * as React from 'react';
-import { Modal, IDragOptions } from 'office-ui-fabric-react/lib/Modal';
-import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
+import {
+  Modal,
+  getTheme,
+  mergeStyleSets,
+  FontWeights,
+  IDragOptions,
+  DefaultButton,
+  Checkbox,
+  ContextualMenu
+} from 'office-ui-fabric-react';
 import { getId } from 'office-ui-fabric-react/lib/Utilities';
-import * as styles from './Modal.Example.scss';
-import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
-import { ContextualMenu } from 'office-ui-fabric-react/lib/ContextualMenu';
 
 export interface IModalModelessExampleState {
   showModal: boolean;
   isDraggable: boolean;
 }
+
+// Themed styles for the example.
+const theme = getTheme();
+const styles = mergeStyleSets({
+  container: {
+    width: '80vw',
+    display: 'flex',
+    flexFlow: 'column nowrap',
+    alignItems: 'stretch'
+  },
+  header: [
+    theme.fonts.xLargePlus,
+    {
+      flex: '1 1 auto',
+      background: theme.palette.themePrimary,
+      color: theme.palette.white,
+      display: 'flex',
+      alignItems: 'center',
+      fontWeight: FontWeights.semibold,
+      padding: '0 28px',
+      minHeight: '40px'
+    }
+  ],
+  body: {
+    flex: '4 4 auto',
+    padding: '5px 28px',
+    overflowY: 'hidden'
+  }
+});
 
 export class ModalModelessExample extends React.Component<{}, IModalModelessExampleState> {
   public state: IModalModelessExampleState = {
@@ -38,7 +72,7 @@ export class ModalModelessExample extends React.Component<{}, IModalModelessExam
           isOpen={showModal}
           onDismiss={this._closeModal}
           isModeless={true}
-          containerClassName={styles.stickyContainer}
+          containerClassName={styles.container}
           dragOptions={isDraggable ? this._dragOptions : undefined}
         >
           <div className={styles.header}>

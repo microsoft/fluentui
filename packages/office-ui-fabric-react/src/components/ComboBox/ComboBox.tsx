@@ -1118,6 +1118,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       calloutProps,
       dropdownWidth,
       dropdownMaxWidth,
+      onRenderUpperContent = this._onRenderUpperContent,
       onRenderLowerContent = this._onRenderLowerContent,
       useComboBoxAsMenuWidth,
       persistMenu,
@@ -1148,6 +1149,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         hidden={persistMenu ? !isOpen : undefined}
         shouldRestoreFocus={shouldRestoreFocus}
       >
+        {onRenderUpperContent(this.props, this._onRenderUpperContent)}
         <div className={this._classNames.optionsContainerWrapper} ref={this._comboBoxMenu}>
           {(onRenderList as any)({ ...props }, this._onRenderList)}
         </div>
@@ -1198,6 +1200,11 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
   // Default _onRenderLowerContent function returns nothing
   private _onRenderLowerContent = (): null => {
+    return null;
+  };
+
+  // Default _onRenderUpperContent function returns nothing
+  private _onRenderUpperContent = (): null => {
     return null;
   };
 

@@ -2,6 +2,20 @@
   "name": "@uifabric/styling",
   "entries": [
     {
+      "date": "Thu, 14 Nov 2019 12:30:52 GMT",
+      "tag": "@uifabric/styling_v7.7.3",
+      "version": "7.7.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Theme Designer: pull semantic slots from primary source instead of have a secondary mapping.",
+            "author": "email not defined",
+            "commit": "60949d544928467d57dd16c2bdc275caad963624"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 26 Sep 2019 12:32:32 GMT",
       "tag": "@uifabric/styling_v7.7.2",
       "version": "7.7.2",

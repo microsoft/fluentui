@@ -12,6 +12,8 @@ export const MicroFeedbackView: IMicroFeedbackComponent['view'] = props => {
     sendFollowUpIndex,
     likeIconTitle,
     dislikeIconTitle,
+    likeIconAriaLabel,
+    dislikeIconAriaLabel,
     likeQuestion,
     dislikeQuestion,
     vote,
@@ -102,10 +104,15 @@ export const MicroFeedbackView: IMicroFeedbackComponent['view'] = props => {
       <Slots.iconContainer horizontal>
         {children}
         <div ref={likeRef}>
-          <IconButton menuIconProps={{ iconName: likeIcon }} title={likeIconTitle} onClick={likeVoteClick} />
+          <IconButton menuIconProps={{ iconName: likeIcon }} title={likeIconTitle} ariaLabel={likeIconAriaLabel} onClick={likeVoteClick} />
         </div>
         <div ref={dislikeRef}>
-          <IconButton menuIconProps={{ iconName: dislikeIcon }} title={dislikeIconTitle} onClick={dislikeVoteClick} />
+          <IconButton
+            menuIconProps={{ iconName: dislikeIcon }}
+            title={dislikeIconTitle}
+            ariaLabel={dislikeIconAriaLabel}
+            onClick={dislikeVoteClick}
+          />
         </div>
       </Slots.iconContainer>
       {likeQuestion && !hideLikeCallout && renderFollowup(likeQuestion, likeRef.current)}

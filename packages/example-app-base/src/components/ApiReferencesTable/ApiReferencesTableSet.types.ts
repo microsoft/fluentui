@@ -17,6 +17,13 @@ export interface IApiReferencesTableSetProps extends React.HTMLAttributes<HTMLEl
    * @defaultvalue true
    */
   jumpToAnchors?: boolean;
+
+  /**
+   * Resolve a token's page name and group to props for an actual link.
+   * The default implementation assumes the table is on the Fabric website or demo app; this prop
+   * allows customizing the table to work on other sites too.
+   */
+  tokenResolver?: TokenResolver;
 }
 
 /**
@@ -41,6 +48,13 @@ export interface IApiProperty {
  * Props for a table about a top-level API object such as a class, interface, enum, or type alias.
  */
 export interface IApiReferencesTableProps extends IApiProperty {
+  /**
+   * Resolve a token's page name and group to props for an actual link.
+   * The default implementation assumes the table is on the Fabric website or demo app; this prop
+   * allows customizing the table to work on other sites too.
+   */
+  tokenResolver: TokenResolver;
+
   /** @deprecated Use `renderAs` */
   renderAsEnum?: boolean;
   /** @deprecated Use `renderAs` */
@@ -48,6 +62,9 @@ export interface IApiReferencesTableProps extends IApiProperty {
   /** @deprecated Use `renderAs` */
   renderAsTypeAlias?: boolean;
 }
+
+/** Resolve a token's page name and group to props for an actual link. */
+export type TokenResolver = (token: Required<ILinkToken>) => { href: string; target?: string };
 
 /** Generic API item. Don't use directly. */
 export interface IApiBaseItem {
@@ -60,6 +77,7 @@ export interface IApiBaseItem {
 export interface IApiInterfaceProperty extends IApiBaseItem {
   typeTokens: ILinkToken[];
   defaultValue?: string;
+  required?: boolean;
 }
 
 export interface IApiEnumProperty extends IApiBaseItem {

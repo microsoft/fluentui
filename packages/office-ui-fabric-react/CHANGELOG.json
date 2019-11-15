@@ -2,6 +2,200 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Thu, 14 Nov 2019 12:30:52 GMT",
+      "tag": "office-ui-fabric-react_v7.61.0",
+      "version": "7.61.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "FocusZone: reset alignment when receiving focus.",
+            "author": "dzearing@hotmail.com",
+            "commit": "5de98a2f5a9dcb3ccd6834bd4fbf4257afab5173"
+          },
+          {
+            "comment": "lint-imports.js: Added errors for package absolute imports",
+            "author": "v-mare@microsoft.com",
+            "commit": "1959883c33b5294ea6e39294b6cf9078cb8be3a6"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "ComboBox: adding an onRenderUpperContent() flexpoint for combobox",
+            "author": "kchau@microsoft.com",
+            "commit": "773f576e485db4ae30476f37ae6bd21dd64ddbf2"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 13 Nov 2019 12:33:43 GMT",
+      "tag": "office-ui-fabric-react_v7.60.1",
+      "version": "7.60.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "SearchBox: Remove autocomplete documentation as feature is not supported.",
+            "author": "jagore@microsoft.com",
+            "commit": "34a45eb4d24c5740b62f7c3f8c9c162aaf44e5a8"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 12 Nov 2019 12:32:39 GMT",
+      "tag": "office-ui-fabric-react_v7.60.0",
+      "version": "7.60.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix dropdown title and event",
+            "author": "achal.jain@microsoft.com",
+            "commit": "46b1fcd125c12dc2593d1bb2780f51c31dd0b190"
+          },
+          {
+            "comment": "Combobox: Augmented checkbox to handle clicks from blank space to the right of the label ",
+            "author": "v-mare@microsoft.com",
+            "commit": "9c7b6b365149355efc7cb2d37a20352578dcab86"
+          },
+          {
+            "comment": "ContextualMenu: Add example using ContextualMenu directly.",
+            "author": "jagore@microsoft.com",
+            "commit": "96c2c231cab6b175d5721dbbecbba766da2aab38"
+          },
+          {
+            "comment": "HoverCard: Clarify hotKey in documentation.",
+            "author": "jagore@microsoft.com",
+            "commit": "38f1e3e18ab37521c246549d4c1b4bd57ef89c9a"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Doc typing updates to support API doc refactor (should not impact consumers)",
+            "author": "elcraig@microsoft.com",
+            "commit": "32afa854a8d36c21859d44b312ea02b9261e0238"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Sat, 09 Nov 2019 14:26:36 GMT",
+      "tag": "office-ui-fabric-react_v7.59.3",
+      "version": "7.59.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "FloatingPicker: Addressing bad import, causing jest to fail when referenced.",
+            "author": "dzearing@hotmail.com",
+            "commit": "77ac7dbb04cd78767e87e40cd4da15c8cf35f254"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Sat, 09 Nov 2019 06:41:37 GMT",
+      "tag": "office-ui-fabric-react_v7.59.2",
+      "version": "7.59.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Removed SCSS",
+            "author": "pandasa123@gmail.com",
+            "commit": "4281ff7699c63a31dca0edcdf43b5e03054ee128"
+          },
+          {
+            "comment": "Removed SCSS",
+            "author": "pandasa123@gmail.com",
+            "commit": "f465f90053c0ee7f8fb532865cee7436d2980f8a"
+          },
+          {
+            "comment": "Removed SCSS dependency. Since we're doing this in JS, I don't think we'd need the :after selector but I'd love to be corrected just in case I'm wrong",
+            "author": "pandasa123@gmail.com",
+            "commit": "2ea26836d182dda8687c35212493abc5d892235c"
+          },
+          {
+            "comment": "Dropdown: fixed checks on preventDefault which should be defaultPrevented",
+            "author": "micahgodbolt@gmail.com",
+            "commit": "b170a4f753096850a28286f1ca3af8b91213c58f"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 08 Nov 2019 12:30:07 GMT",
+      "tag": "office-ui-fabric-react_v7.59.1",
+      "version": "7.59.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "copied over fixes from a previous PR # 10439",
+            "author": "betrue@microsoft.com",
+            "commit": "a5cab25f7b6fdb52cbace5b10cef873c0090b50f"
+          },
+          {
+            "comment": "Add px units to flexBasis styling by default. Remove existing styling usage where it had no effect before this PR.",
+            "author": "jagore@microsoft.com",
+            "commit": "f907d55f63a68d685743277f1f35188fbe6af62d"
+          },
+          {
+            "comment": "Removed SCSS file",
+            "author": "pandasa123@gmail.com",
+            "commit": "cfa763068197eb049b27d7700480eb8680a7b89a"
+          },
+          {
+            "comment": "Removed SCSS file",
+            "author": "pandasa123@gmail.com",
+            "commit": "bbf6a23a86d5992fbf2500f91fb73aab57249a46"
+          },
+          {
+            "comment": "TooltipHost: Fix dismiss race condition.",
+            "author": "jdh@microsoft.com",
+            "commit": "269e54674d4c9a0574c03677e0c07485585ab817"
+          },
+          {
+            "comment": "Removed SCSS for List Scrolling Example in favour of mergeStyleSets pattern",
+            "author": "pandasa123@gmail.com",
+            "commit": "b033486a1ffa3a24e0d2e98d5ea5ee7dc61e498f"
+          },
+          {
+            "comment": "Removed SCSS from Facepile Examples",
+            "author": "pandasa123@gmail.com",
+            "commit": "1cd144b88da0f6b9f9983fd615d5477fee41d957"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 07 Nov 2019 12:26:32 GMT",
+      "tag": "office-ui-fabric-react_v7.59.0",
+      "version": "7.59.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "TeachingBubble: Wrap contents in a FocusTrapZone to better support keyboard navigation.",
+            "author": "jdh@microsoft.com",
+            "commit": "0f58a30bfefe51982623152fb61b3363201a2f7d"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Fix modal keyboarding issue with respect to moving the modal",
+            "author": "sareiff@microsoft.com",
+            "commit": "dab659b13acfc6d3deefc3ece2d243a4b9650f7c"
+          },
+          {
+            "comment": "Pass through div props to the rendered root of CommandBar.",
+            "author": "xinychen@microsoft.com",
+            "commit": "9c93008c22fc9aa53aa08319560a0c856c631007"
+          },
+          {
+            "comment": "Address BasePicker calls onResolveSuggestions callback when click.",
+            "author": "nif_tony@outlook.com",
+            "commit": "632dceadcbdc1cf387513137425699dc45780467"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 06 Nov 2019 12:34:07 GMT",
       "tag": "office-ui-fabric-react_v7.58.0",
       "version": "7.58.0",

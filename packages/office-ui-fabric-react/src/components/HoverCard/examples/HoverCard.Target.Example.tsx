@@ -84,11 +84,13 @@ export class HoverCardTargetExample extends React.Component<{}, {}> {
     return (
       <Fabric>
         <p>
-          Hover over the <i>key</i> cell of a row item to see the card or use the keyboard to navigate to it.
+          Hover over the <i>key</i> cell of a row item to see the card or use the keyboard to navigate to it by tabbing to a row and hitting
+          the right arrow key.
         </p>
         <p>
-          When using the keyboard to tab to it, open the card with the hotKey and it will automatically focus the first focusable element in
-          the card allowing further navigation inside the card.
+          When using the keyboard to navigate, open the card with the hotKey and it will automatically focus the first focusable element in
+          the card allowing further navigation inside the card. The hotKey is defined by the hotKey prop and is defined as 'enter' in the
+          following example.
         </p>
         <DetailsList
           setKey="hoverSet"

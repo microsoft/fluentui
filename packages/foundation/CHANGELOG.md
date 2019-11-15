@@ -1,7 +1,13 @@
 # Change Log - @uifabric/foundation
 
-This log was last generated on Thu, 03 Oct 2019 23:14:46 GMT and should not be manually modified.
+This log was last generated on Thu, 07 Nov 2019 12:26:32 GMT and should not be manually modified.
 
+## 7.5.0
+Thu, 07 Nov 2019 12:26:32 GMT
+
+### Minor changes
+
+- Deprecate IPropsWithChildren type that is redundant with React.PropsWithChildren. (jagore@microsoft.com)
 ## 7.4.4
 Thu, 03 Oct 2019 23:14:46 GMT
 

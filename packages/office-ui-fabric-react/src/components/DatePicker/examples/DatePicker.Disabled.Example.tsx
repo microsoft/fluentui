@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { DatePicker, DayOfWeek, IDatePickerStrings } from 'office-ui-fabric-react/lib/DatePicker';
-import './DatePicker.Examples.scss';
+import { mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
 
 const DayPickerStrings: IDatePickerStrings = {
   months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
@@ -23,6 +23,13 @@ export interface IDatePickerDisabledExampleState {
   firstDayOfWeek?: DayOfWeek;
 }
 
+const controlClass = mergeStyleSets({
+  control: {
+    margin: '0 0 15px 0',
+    maxWidth: '300px'
+  }
+});
+
 export class DatePickerDisabledExample extends React.Component<{}, IDatePickerDisabledExampleState> {
   public constructor(props: {}) {
     super(props);
@@ -38,6 +45,7 @@ export class DatePickerDisabledExample extends React.Component<{}, IDatePickerDi
     return (
       <div className="docs-DatePickerExample">
         <DatePicker
+          className={controlClass.control}
           firstDayOfWeek={firstDayOfWeek}
           strings={DayPickerStrings}
           placeholder="Select a date..."
@@ -46,6 +54,7 @@ export class DatePickerDisabledExample extends React.Component<{}, IDatePickerDi
         />
 
         <DatePicker
+          className={controlClass.control}
           label="Disabled (with label)"
           firstDayOfWeek={firstDayOfWeek}
           strings={DayPickerStrings}

@@ -626,7 +626,7 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
           onMouseMove: this._onItemMouseMove.bind(this, item)
         }}
         label={item.text}
-        title={item.title ? item.title : item.text}
+        title={title}
         onRenderLabel={this._onRenderItemLabel.bind(this, item)}
         className={itemClassName}
         role="option"
@@ -919,7 +919,7 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
 
     if (this.props.onKeyUp) {
       this.props.onKeyUp(ev);
-      if (ev.preventDefault) {
+      if (ev.defaultPrevented) {
         return;
       }
     }
@@ -1029,7 +1029,7 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
   private _onDropdownClick = (ev: React.MouseEvent<HTMLDivElement>): void => {
     if (this.props.onClick) {
       this.props.onClick(ev);
-      if (ev.preventDefault) {
+      if (ev.defaultPrevented) {
         return;
       }
     }

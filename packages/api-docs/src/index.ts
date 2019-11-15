@@ -1,3 +1,3 @@
-export * from './PageJsonGenerator.types';
+export * from './types';
 export { generatePageJsonFiles } from './generatePageJsonFiles';
-export { generateJson } from './PageJsonGenerator';
+export { generatePageJson } from './pageJson';

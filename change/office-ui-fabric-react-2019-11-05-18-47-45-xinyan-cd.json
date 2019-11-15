@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Pass through div props to the rendered root of CommandBar.",
-  "packageName": "office-ui-fabric-react",
-  "email": "xinychen@microsoft.com",
-  "commit": "9c93008c22fc9aa53aa08319560a0c856c631007",
-  "date": "2019-11-05T10:47:45.124Z"
-}

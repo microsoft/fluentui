@@ -101,8 +101,10 @@ export type PageKind = 'References' | 'Components';
  */
 export interface ILinkToken {
   text: string;
-  hyperlinkedPage?: string;
-  pageKind?: PageKind;
+  /** If this token is a link, name of the doc page it points to */
+  linkedPage?: string;
+  /** If this token is a link, group/category of the doc page it points to */
+  linkedPageGroup?: string;
 }
 
 /**
@@ -111,7 +113,7 @@ export interface ILinkToken {
  */
 export interface ITableRowJson {
   name: string;
-  kind?: 'Method' | 'Property';
+  kind?: 'method' | 'property';
   /**
    * The row's type translated to an array of text elements and links to other types.
    * For example, `Readonly<IFoo>` would translate to:
@@ -122,12 +124,13 @@ export interface ITableRowJson {
   description: string;
   deprecated: boolean;
   deprecatedMessage?: string;
+  required?: boolean;
 }
 
 /**
  * Enum member row for API reference tables.
  */
-export type IEnumTableRowJson = Omit<ITableRowJson, 'kind' | 'typeTokens' | 'defaultValue'> & {
+export type IEnumTableRowJson = Omit<ITableRowJson, 'kind' | 'typeTokens' | 'defaultValue' | 'required'> & {
   value: string;
 };
 
