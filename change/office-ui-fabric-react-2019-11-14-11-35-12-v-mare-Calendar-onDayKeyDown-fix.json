@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "CalendarDay: Fixed issue with onDayKeyDown re-opening callout",
+  "packageName": "office-ui-fabric-react",
+  "email": "v-mare@microsoft.com",
+  "commit": "7097d866fab772602a6d5b8e09c8da9a2df6ae21",
+  "date": "2019-11-14T19:35:12.129Z"
+}
