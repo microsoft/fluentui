@@ -230,6 +230,7 @@ export interface IBasePickerSuggestionsProps<T = any>
     | 'showRemoveButtons'
     | 'suggestionsAvailableAlertText'
     | 'suggestionsContainerAriaLabel'
+    | 'styles'
   > {}
 
 /**
