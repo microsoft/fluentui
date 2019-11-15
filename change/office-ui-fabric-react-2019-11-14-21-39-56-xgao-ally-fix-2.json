@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Combobox high contrast mode fixes for input box, caret down button, option hover styles",
+  "packageName": "office-ui-fabric-react",
+  "email": "xgao@microsoft.com",
+  "commit": "cf349f572a04294fda610ffcf4792ae4d958f4fd",
+  "date": "2019-11-15T05:39:56.364Z"
+}
