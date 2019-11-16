@@ -15,10 +15,8 @@ export interface IFabricClassNames {
 
 export const getStyles = (props: IFabricStyleProps): IFabricStyles => {
   const { theme, className, isFocusVisible, applyTheme } = props;
-
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
-
-  return {
+  let style = {
     root: [
       classNames.root,
       isFocusVisible && 'is-focusVisible ms-Fabric--isFocusVisible',
@@ -44,4 +42,5 @@ export const getStyles = (props: IFabricStyleProps): IFabricStyles => {
       }
     ]
   };
+  return style;
 };

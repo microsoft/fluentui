@@ -55,9 +55,11 @@ export class FabricBase extends React.Component<
   }
 
   private _getClassNamesHelper(): IProcessedStyleSet<IFabricStyles> {
-    const { className } = this.props;
+    const { className, theme, applyTheme, applyThemeToBody } = this.props;
     const classNames = getClassNames(getStyles, {
-      theme: this.props.theme!,
+      theme: theme!,
+      applyTheme: applyTheme,
+      applyThemeToBody: applyThemeToBody,
       className,
       isFocusVisible: this.state.isFocusVisible
     });
