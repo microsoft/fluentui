@@ -18,8 +18,8 @@ steps:
     displayName: yarn
 
   - script: |
-      yarn buildci
-    displayName: build ci
+      yarn build --min
+    displayName: build (no test or lint)
 
   - script: |
       yarn update-snapshots
