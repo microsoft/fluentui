@@ -1,7 +1,26 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Fri, 01 Nov 2019 01:02:38 GMT and should not be manually modified.
+This log was last generated on Wed, 13 Nov 2019 12:33:43 GMT and should not be manually modified.
 
+## 7.10.1
+Wed, 13 Nov 2019 12:33:43 GMT
+
+### Patches
+
+- PlatformPicker: High Contrast support (jdh@microsoft.com)
+- Fix API reference links (elcraig@microsoft.com)
+## 7.10.0
+Tue, 12 Nov 2019 12:32:39 GMT
+
+### Minor changes
+
+- API doc table refactor (elcraig@microsoft.com)
+## 7.9.0
+Wed, 06 Nov 2019 12:34:07 GMT
+
+### Minor changes
+
+- Update API doc generation to handle deprecated messages (elcraig@microsoft.com)
 ## 7.8.5
 Fri, 01 Nov 2019 01:02:38 GMT
 

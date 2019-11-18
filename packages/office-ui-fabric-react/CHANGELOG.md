@@ -1,7 +1,137 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 01 Nov 2019 01:02:38 GMT and should not be manually modified.
+This log was last generated on Mon, 18 Nov 2019 12:33:30 GMT and should not be manually modified.
 
+## 7.62.0
+Mon, 18 Nov 2019 12:33:30 GMT
+
+### Minor changes
+
+- MarqueeSelection: Add horizontal scrolling (v-mare@microsoft.com)
+### Patches
+
+- Nav: remove incorrect and unnecessary hover styles (phkuo@microsoft.com)
+- Coachmark: A11y fixes - Added focus indicator to coachmark when activated (marygans@microsoft.com)
+- CalendarDay: Fixed issue with onDayKeyDown re-opening callout (v-mare@microsoft.com)
+- Fix dropdown option style on keyboard navigation in high contrast mode (xgao@microsoft.com)
+- Combobox high contrast mode fixes for input box, caret down button, option hover styles (xgao@microsoft.com)
+## 7.61.1
+Fri, 15 Nov 2019 12:31:09 GMT
+
+### Patches
+
+- applied accessibility changes to main package (betrue@microsoft.com)
+- Picker: Updating disabled border color from transparent in order to match disabled background color. (marygans@microsoft.com)
+- DropDown: make dropdown option title prop to be assigned consistently for the multiselect case (kchau@microsoft.com)
+## 7.61.0
+Thu, 14 Nov 2019 12:30:52 GMT
+
+### Minor changes
+
+- ComboBox: adding an onRenderUpperContent() flexpoint for combobox (kchau@microsoft.com)
+### Patches
+
+- FocusZone: reset alignment when receiving focus. (dzearing@hotmail.com)
+- lint-imports.js: Added errors for package absolute imports (v-mare@microsoft.com)
+## 7.60.1
+Wed, 13 Nov 2019 12:33:43 GMT
+
+### Patches
+
+- SearchBox: Remove autocomplete documentation as feature is not supported. (jagore@microsoft.com)
+## 7.60.0
+Tue, 12 Nov 2019 12:32:39 GMT
+
+### Minor changes
+
+- Doc typing updates to support API doc refactor (should not impact consumers) (elcraig@microsoft.com)
+### Patches
+
+- Fix dropdown title and event (achal.jain@microsoft.com)
+- Combobox: Augmented checkbox to handle clicks from blank space to the right of the label  (v-mare@microsoft.com)
+- ContextualMenu: Add example using ContextualMenu directly. (jagore@microsoft.com)
+- HoverCard: Clarify hotKey in documentation. (jagore@microsoft.com)
+## 7.59.3
+Sat, 09 Nov 2019 14:26:36 GMT
+
+### Patches
+
+- FloatingPicker: Addressing bad import, causing jest to fail when referenced. (dzearing@hotmail.com)
+## 7.59.2
+Sat, 09 Nov 2019 06:41:37 GMT
+
+### Patches
+
+- Removed SCSS (pandasa123@gmail.com)
+- Removed SCSS (pandasa123@gmail.com)
+- Removed SCSS dependency. Since we're doing this in JS, I don't think we'd need the :after selector but I'd love to be corrected just in case I'm wrong (pandasa123@gmail.com)
+- Dropdown: fixed checks on preventDefault which should be defaultPrevented (micahgodbolt@gmail.com)
+## 7.59.1
+Fri, 08 Nov 2019 12:30:07 GMT
+
+### Patches
+
+- copied over fixes from a previous PR # 10439 (betrue@microsoft.com)
+- Add px units to flexBasis styling by default. Remove existing styling usage where it had no effect before this PR. (jagore@microsoft.com)
+- Removed SCSS file (pandasa123@gmail.com)
+- Removed SCSS file (pandasa123@gmail.com)
+- TooltipHost: Fix dismiss race condition. (jdh@microsoft.com)
+- Removed SCSS for List Scrolling Example in favour of mergeStyleSets pattern (pandasa123@gmail.com)
+- Removed SCSS from Facepile Examples (pandasa123@gmail.com)
+## 7.59.0
+Thu, 07 Nov 2019 12:26:32 GMT
+
+### Minor changes
+
+- TeachingBubble: Wrap contents in a FocusTrapZone to better support keyboard navigation. (jdh@microsoft.com)
+### Patches
+
+- Fix modal keyboarding issue with respect to moving the modal (sareiff@microsoft.com)
+- Pass through div props to the rendered root of CommandBar. (xinychen@microsoft.com)
+- Address BasePicker calls onResolveSuggestions callback when click. (nif_tony@outlook.com)
+## 7.58.0
+Wed, 06 Nov 2019 12:34:07 GMT
+
+### Minor changes
+
+- Update API doc generation to handle deprecated messages (elcraig@microsoft.com)
+### Patches
+
+- ContextualMenu: fix escape not dismissing menu (joschect@microsoft.com)
+- Removed SCSS file (pandasa123@gmail.com)
+## 7.57.2
+Tue, 05 Nov 2019 23:43:46 GMT
+
+### Patches
+
+- CommandBar: Update examples (jdh@microsoft.com)
+## 7.57.1
+Tue, 05 Nov 2019 12:25:16 GMT
+
+### Patches
+
+- Propagate version through List and GroupedList (tmichon@microsoft.com)
+## 7.57.0
+Mon, 04 Nov 2019 12:23:43 GMT
+
+### Minor changes
+
+- ColorPicker: add keyboard support and aria labels (elcraig@microsoft.com)
+- ComboBox: onPendingValueChanged callback before onChange (jdh@microsoft.com)
+### Patches
+
+- All Components: Added new files and markdown content (v-mare@microsoft.com)
+- Dropdown: error message should have role=alert (jdh@microsoft.com)
+- Checkbox: Added title attribute to checkbox containing div (v-mare@microsoft.com)
+- Updating the default foreground values in theming algorithm to match new fluent values (email not defined)
+- Toggle: Force wrapping when width-constrained. (jdh@microsoft.com)
+- Combobox: Fixed issue where hidden options are shown when arrowing through combobox option list (v-mare@microsoft.com)
+## 7.56.3
+Fri, 01 Nov 2019 12:25:57 GMT
+
+### Patches
+
+- CommandBar: update examples and docs (elcraig@microsoft.com)
 ## 7.56.2
 Fri, 01 Nov 2019 01:02:38 GMT
 
@@ -2179,7 +2309,7 @@ Mon, 28 Jan 2019 13:35:27 GMT
 
 ### Minor changes
 
-- Coachmark: updates how the the theme is passed to `getStyles` function. Adds 2 new props: `theme` and `className`. Minor cleanup.
+- Coachmark: updates how the theme is passed to `getStyles` function. Adds 2 new props: `theme` and `className`. Minor cleanup.
 
 ### Patches
 

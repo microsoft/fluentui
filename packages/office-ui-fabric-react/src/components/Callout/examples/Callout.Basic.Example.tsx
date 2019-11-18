@@ -11,7 +11,10 @@ const styles = mergeStyleSets({
   buttonArea: {
     verticalAlign: 'top',
     display: 'inline-block',
-    textAlign: 'center'
+    textAlign: 'center',
+    margin: '0 100px',
+    minWidth: 130,
+    height: 32
   },
   callout: {
     maxWidth: 300
@@ -37,6 +40,14 @@ const styles = mergeStyleSets({
     width: '100%',
     whiteSpace: 'nowrap'
   },
+  subtext: [
+    theme.fonts.small,
+    {
+      margin: 0,
+      color: theme.palette.neutralPrimary,
+      fontWeight: FontWeights.semilight
+    }
+  ],
   link: [
     theme.fonts.medium,
     {
@@ -61,13 +72,13 @@ export class CalloutBasicExample extends React.Component<{}, ICalloutBasicExampl
     const { isCalloutVisible } = this.state;
 
     return (
-      <div>
+      <>
         <div className={styles.buttonArea} ref={this._menuButtonElement}>
           <DefaultButton onClick={this._onShowMenuClicked} text={isCalloutVisible ? 'Hide callout' : 'Show callout'} />
         </div>
         {this.state.isCalloutVisible && (
           <Callout
-            className="ms-CalloutExample-callout"
+            className={styles.callout}
             ariaLabelledBy={this._labelId}
             ariaDescribedBy={this._descriptionId}
             role="alertdialog"
@@ -76,26 +87,24 @@ export class CalloutBasicExample extends React.Component<{}, ICalloutBasicExampl
             onDismiss={this._onCalloutDismiss}
             setInitialFocus={true}
           >
-            <div className="ms-CalloutExample-header">
-              <p className="ms-CalloutExample-title" id={this._labelId}>
+            <div className={styles.header}>
+              <p className={styles.title} id={this._labelId}>
                 All of your favorite people
               </p>
             </div>
-            <div className="ms-CalloutExample-inner">
-              <div className="ms-CalloutExample-content">
-                <p className="ms-CalloutExample-subText" id={this._descriptionId}>
-                  Message body is optional. If help documentation is available, consider adding a link to learn more at the bottom.
-                </p>
-              </div>
-              <div className="ms-CalloutExample-actions">
-                <Link className="ms-CalloutExample-link" href="http://microsoft.com" target="_blank">
+            <div className={styles.inner}>
+              <p className={styles.subtext} id={this._descriptionId}>
+                Message body is optional. If help documentation is available, consider adding a link to learn more at the bottom.
+              </p>
+              <div className={styles.actions}>
+                <Link className={styles.link} href="http://microsoft.com" target="_blank">
                   Go to microsoft
                 </Link>
               </div>
             </div>
           </Callout>
         )}
-      </div>
+      </>
     );
   }
 

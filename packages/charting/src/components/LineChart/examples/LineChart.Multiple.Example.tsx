@@ -99,7 +99,7 @@ export class LineChartMultipleExample extends React.Component<{}, {}> {
     ];
     return (
       <div className={mergeStyles(rootStyle)}>
-        <LineChart data={data} strokeWidth={4} tickFormat={timeFormat} tickValues={tickValues} />
+        <LineChart data={data} strokeWidth={4} tickFormat={timeFormat} tickValues={tickValues} enabledLegendsWrapLines={true} />
       </div>
     );
   }

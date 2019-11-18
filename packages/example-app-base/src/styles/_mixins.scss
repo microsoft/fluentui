@@ -34,3 +34,11 @@
     pointer-events: none;
   }
 }
+
+// High contrast mode mixins
+// @todo: Should be defined in common base
+@mixin high-contrast {
+  @media screen and (-ms-high-contrast: active) {
+    @content;
+  }
+}

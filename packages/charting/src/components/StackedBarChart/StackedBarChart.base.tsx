@@ -242,7 +242,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
     // add benchmark legends
     this._addLegend(legendDataItems, benchmarkData);
     this._addLegend(legendDataItems, targetData);
-    const legends = <Legends legends={legendDataItems} />;
+    const legends = <Legends legends={legendDataItems} enabledWrapLines={this.props.enabledLegendsWrapLines} />;
     return [
       total === 0 ? [this._generateEmptyBar(barHeight, barBackgroundColor ? barBackgroundColor : palette.neutralTertiary)] : bars,
       legends

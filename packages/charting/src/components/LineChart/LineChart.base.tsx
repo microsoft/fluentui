@@ -202,7 +202,7 @@ export class LineChartBase extends React.Component<
       };
       return legend;
     });
-    const legends = <Legends legends={legendDataItems} />;
+    const legends = <Legends legends={legendDataItems} enabledWrapLines={this.props.enabledLegendsWrapLines} />;
     return legends;
   }
 

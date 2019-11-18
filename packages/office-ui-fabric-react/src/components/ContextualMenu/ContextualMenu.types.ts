@@ -126,7 +126,7 @@ export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, IWith
   items: IContextualMenuItem[];
 
   /**
-   * Used as `aria-labelledby` for the the menu element inside the callout.
+   * Used as `aria-labelledby` for the menu element inside the callout.
    */
   labelElementId?: string;
 

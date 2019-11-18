@@ -102,7 +102,6 @@ const _overflowItems: ICommandBarItemProps[] = [
 ];
 
 const _farItems: ICommandBarItemProps[] = [
-  { key: 'sort', text: 'Sort', iconProps: { iconName: 'SortLines' }, onClick: () => console.log('Sort') },
   {
     key: 'tile',
     text: 'Grid view',

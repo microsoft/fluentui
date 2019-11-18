@@ -1,7 +1,13 @@
 # Change Log - @uifabric/azure-themes
 
-This log was last generated on Wed, 11 Sep 2019 12:35:47 GMT and should not be manually modified.
+This log was last generated on Thu, 07 Nov 2019 12:26:32 GMT and should not be manually modified.
 
+## 7.0.10
+Thu, 07 Nov 2019 12:26:32 GMT
+
+### Patches
+
+- Correct the checked checkbox background in Azure light theme. (xinychen@microsoft.com)
 ## 7.0.9
 Wed, 11 Sep 2019 12:35:47 GMT
 
