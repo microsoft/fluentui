@@ -1,0 +1,43 @@
+pr: none
+trigger: none
+
+pool:
+  vmImage: 'Ubuntu 16.04'
+
+steps:
+  - task: Checkout@1
+    persistCredentials: true
+
+  - task: NodeTool@0
+    inputs:
+      versionSpec: '10.x'
+    displayName: 'Install Node.js'
+
+  - script: |
+      yarn
+    displayName: yarn
+
+  - script: |
+      yarn buildci
+    displayName: build ci
+
+  - script: |
+      yarn update-snapshots
+    displayName: update snapshots
+
+  - script: |
+      git config --global user.email "fabrictactical@microsoft.com"
+      git config --global user.name "Fabric Tactical"
+    displayName: Set up git config user name and email
+
+  - script: |
+      if [ -n "$(git status --porcelain | grep .shot)" ]; then
+        git remote add target_remote $(remote)
+        git fetch target_remote
+        git checkout -t target_remote/$(branchName) target_branch
+        git add *.shot
+        git commit -m "updated snapshots"
+        yarn change -m "updated snapshots" --type patch
+        git push target_remote target_branch
+      fi
+    displayName: push changes back
