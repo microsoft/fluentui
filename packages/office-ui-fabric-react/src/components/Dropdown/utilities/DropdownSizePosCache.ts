@@ -21,7 +21,10 @@ export class DropdownSizePosCache {
     const displayOnlyOptionsCache = [];
     let size = 0;
     for (let i = 0; i < options.length; i++) {
-      if (options[i].itemType === DropdownMenuItemType.Divider || options[i].itemType === DropdownMenuItemType.Header) {
+      if (
+        (options[i].itemType === DropdownMenuItemType.Divider || options[i].itemType === DropdownMenuItemType.Header) &&
+        !options[i].hidden
+      ) {
         displayOnlyOptionsCache.push(i);
       } else {
         size++;
