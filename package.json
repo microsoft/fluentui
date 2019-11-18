@@ -31,7 +31,7 @@
     "checkchange": "beachball check --changehint \"Run 'yarn change' to generate a change file\"",
     "publish:beachball": "beachball publish",
     "update-api": "cd packages/office-ui-fabric-react && npm run update-api",
-    "update-snapshots": "cd packages/office-ui-fabric-react && npm run update-snapshots",
+    "update-snapshots": "lerna run update-snapshots --stream",
     "update-a11y": "cd apps/a11y-tests && npm run update-snapshots",
     "check-for-changed-files": "cd scripts && just-scripts check-for-modified-files",
     "prettier": "node scripts/prettier.js",
