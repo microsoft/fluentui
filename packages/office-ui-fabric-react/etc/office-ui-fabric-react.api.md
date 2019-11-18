@@ -5553,6 +5553,11 @@ export interface INav {
 }
 
 // @public (undocumented)
+export interface INavButtonProps extends IButtonProps {
+    link?: INavLink;
+}
+
+// @public (undocumented)
 export interface INavLink {
     [propertyName: string]: any;
     ariaLabel?: string;
@@ -5591,7 +5596,7 @@ export interface INavProps {
     groups: INavLinkGroup[] | null;
     initialSelectedKey?: string;
     isOnTop?: boolean;
-    linkAs?: IComponentAs<IButtonProps>;
+    linkAs?: IComponentAs<INavButtonProps>;
     onLinkClick?: (ev?: React.MouseEvent<HTMLElement>, item?: INavLink) => void;
     onLinkExpandClick?: (ev?: React.MouseEvent<HTMLElement>, item?: INavLink) => void;
     onRenderGroupHeader?: IRenderFunction<INavLinkGroup>;

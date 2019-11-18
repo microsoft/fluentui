@@ -124,6 +124,8 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
             ? link.ariaLabel
             : undefined
         }
+        link={link}
+        defaultRender={ActionButton}
       >
         {onRenderLink(link, this._onRenderLink)}
       </LinkAs>
