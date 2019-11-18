@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Dropdown: do not count hidden items",
+  "packageName": "office-ui-fabric-react",
+  "email": "kchau@microsoft.com",
+  "commit": "1da91c91746f450f876f7409bcb071d5a5dcdf43",
+  "date": "2019-11-18T21:41:15.381Z"
+}
