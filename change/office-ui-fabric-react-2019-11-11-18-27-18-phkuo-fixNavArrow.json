@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Nav: remove incorrect and unnecessary hover styles",
-  "packageName": "office-ui-fabric-react",
-  "email": "phkuo@microsoft.com",
-  "commit": "5cea006b8ea6068dc07c98a076275f1b132909e6",
-  "date": "2019-11-12T02:27:18.859Z"
-}

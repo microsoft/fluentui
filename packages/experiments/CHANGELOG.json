@@ -2,6 +2,27 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "date": "Mon, 18 Nov 2019 12:33:30 GMT",
+      "tag": "@uifabric/experiments_v7.18.6",
+      "version": "7.18.6",
+      "comments": {
+        "patch": [
+          {
+            "comment": "update test due to fix: Combobox high contrast mode fixes for input box, caret down button, option hover styles",
+            "author": "xgao@microsoft.com",
+            "commit": "7635ef9bada90c91800ba4e6b1e83ce98fe5e308"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Fix \"the the\" to \"the\"",
+            "author": "the.kinnikuman@gmail.com",
+            "commit": "fc378d1cf157c6022db9e2d2b9a4422e3872a824"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 14 Nov 2019 12:30:52 GMT",
       "tag": "@uifabric/experiments_v7.18.5",
       "version": "7.18.5",

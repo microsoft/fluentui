@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fix dropdown option style on keyboard navigation in high contrast mode",
-  "packageName": "office-ui-fabric-react",
-  "email": "xgao@microsoft.com",
-  "commit": "d19c19147da4b53c39dee655273bfdf7978e53d0",
-  "date": "2019-11-15T02:17:58.926Z"
-}

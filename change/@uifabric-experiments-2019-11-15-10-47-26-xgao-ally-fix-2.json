@@ -1,9 +1,0 @@
-{
-  "type": "patch",
-  "comment": "update test due to fix: Combobox high contrast mode fixes for input box, caret down button, option hover styles",
-  "packageName": "@uifabric/experiments",
-  "email": "xgao@microsoft.com",
-  "commit": "7635ef9bada90c91800ba4e6b1e83ce98fe5e308",
-  "date": "2019-11-15T18:47:26.347Z"
-}
-

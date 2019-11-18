@@ -2,6 +2,54 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Mon, 18 Nov 2019 12:33:30 GMT",
+      "tag": "office-ui-fabric-react_v7.62.0",
+      "version": "7.62.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Nav: remove incorrect and unnecessary hover styles",
+            "author": "phkuo@microsoft.com",
+            "commit": "5cea006b8ea6068dc07c98a076275f1b132909e6"
+          },
+          {
+            "comment": "Coachmark: A11y fixes - Added focus indicator to coachmark when activated",
+            "author": "marygans@microsoft.com",
+            "commit": "43f7f133a268b9f361532518692dd463b2b0fa58"
+          },
+          {
+            "comment": "CalendarDay: Fixed issue with onDayKeyDown re-opening callout",
+            "author": "v-mare@microsoft.com",
+            "commit": "7097d866fab772602a6d5b8e09c8da9a2df6ae21"
+          },
+          {
+            "comment": "Fix dropdown option style on keyboard navigation in high contrast mode",
+            "author": "xgao@microsoft.com",
+            "commit": "d19c19147da4b53c39dee655273bfdf7978e53d0"
+          },
+          {
+            "comment": "Combobox high contrast mode fixes for input box, caret down button, option hover styles",
+            "author": "xgao@microsoft.com",
+            "commit": "cf349f572a04294fda610ffcf4792ae4d958f4fd"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "MarqueeSelection: Add horizontal scrolling",
+            "author": "v-mare@microsoft.com",
+            "commit": "32bd9f52b12622a74b93f7f1ad032e0efeb1d27c"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Fix \"the the\" to \"the\"",
+            "author": "the.kinnikuman@gmail.com",
+            "commit": "fc378d1cf157c6022db9e2d2b9a4422e3872a824"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 15 Nov 2019 12:31:09 GMT",
       "tag": "office-ui-fabric-react_v7.61.1",
       "version": "7.61.1",
