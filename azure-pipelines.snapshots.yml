@@ -5,7 +5,7 @@ pool:
   vmImage: 'Ubuntu 16.04'
 
 steps:
-  - task: Checkout@1
+  - checkout: self
     persistCredentials: true
 
   - task: NodeTool@0
