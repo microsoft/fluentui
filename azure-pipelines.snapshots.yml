@@ -34,10 +34,10 @@ steps:
       if [ -n '$(git status --porcelain | grep -E "(\.snap|\.shot)")' ]; then
         git remote add target_remote $(remote)
         git fetch target_remote
-        git checkout -b -t target_remote/$(branchName) target_branch
+        git checkout -b -t target_remote/$(branch) target_branch
         git add *.shot *.snap
         git commit -m "updated snapshots"
         yarn change -m "updated snapshots" --type patch
-        git push target_remote target_branch
+        git push target_remote target_branch:$(branch)
       fi
     displayName: push changes back
