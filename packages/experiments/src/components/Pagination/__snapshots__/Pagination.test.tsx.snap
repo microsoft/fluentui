@@ -1417,11 +1417,25 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
           &:hover .ms-ComboBox-Input::placeholder {
             color: #201f1e;
           }
+          @media screen and (-ms-high-contrast: active){&:hover .ms-ComboBox-Input::placeholder {
+            color: GrayText;
+          }
           &:hover .ms-ComboBox-Input:-ms-input-placeholder {
             color: #201f1e;
           }
+          @media screen and (-ms-high-contrast: active){&:hover .ms-ComboBox-Input:-ms-input-placeholder {
+            color: GrayText;
+          }
           &:hover .ms-ComboBox-Input::-ms-input-placeholder {
             color: #201f1e;
+          }
+          @media screen and (-ms-high-contrast: active){&:hover .ms-ComboBox-Input::-ms-input-placeholder {
+            color: GrayText;
+          }
+          @media screen and (-ms-high-contrast: active){&:hover .ms-ComboBox-Input {
+            -ms-high-contrast-adjust: none;
+            background-color: Window;
+            color: WindowText;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
             -ms-high-contrast-adjust: none;
@@ -1458,6 +1472,11 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
           }
           &:focus .ms-ComboBox-Input {
             color: #201f1e;
+          }
+          @media screen and (-ms-high-contrast: active){&:focus .ms-ComboBox-Input {
+            -ms-high-contrast-adjust: none;
+            background-color: Window;
+            color: WindowText;
           }
           @media screen and (-ms-high-contrast: active){&:focus {
             -ms-high-contrast-adjust: none;
@@ -1506,14 +1525,28 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
             &::placeholder {
               color: #605e5c;
             }
+            @media screen and (-ms-high-contrast: active){&::placeholder {
+              color: GrayText;
+            }
             &:-ms-input-placeholder {
               color: #605e5c;
+            }
+            @media screen and (-ms-high-contrast: active){&:-ms-input-placeholder {
+              color: GrayText;
             }
             &::-ms-input-placeholder {
               color: #605e5c;
             }
+            @media screen and (-ms-high-contrast: active){&::-ms-input-placeholder {
+              color: GrayText;
+            }
             &::-ms-clear {
               display: none;
+            }
+            @media screen and (-ms-high-contrast: active){& {
+              -ms-high-contrast-adjust: none;
+              background-color: Window;
+              color: WindowText;
             }
         data-is-interactable={true}
         data-lpignore={true}
@@ -1607,12 +1640,20 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
               cursor: pointer;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
+              -ms-high-contrast-adjust: none;
+              background-color: Highlight;
               border-color: Highlight;
-              color: Highlight;
+              color: HighlightText;
             }
             &:active {
               background-color: #edebe9;
               color: #201f1e;
+            }
+            @media screen and (-ms-high-contrast: active){&:active {
+              -ms-high-contrast-adjust: none;
+              background-color: Highlight;
+              border-color: Highlight;
+              color: HighlightText;
             }
         data-is-focusable={false}
         onBlur={[Function]}
