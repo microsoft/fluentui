@@ -20,7 +20,7 @@ export class FabricBase extends React.Component<
   }
 
   public render() {
-    const classNames = this._getClassNamesHelper();
+    const classNames = this._getClassNames();
     const divProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties);
     return <div {...divProps} className={classNames.root} ref={this._rootElement} />;
   }
@@ -40,12 +40,11 @@ export class FabricBase extends React.Component<
     }
   }
 
-  private _getClassNamesHelper(): IProcessedStyleSet<IFabricStyles> {
-    const { className, theme, applyTheme, applyThemeToBody } = this.props;
+  private _getClassNames(): IProcessedStyleSet<IFabricStyles> {
+    const { className, theme, applyTheme } = this.props;
     const classNames = getClassNames(getStyles, {
       theme: theme!,
       applyTheme: applyTheme,
-      applyThemeToBody: applyThemeToBody,
       className,
       isFocusVisible: this.state.isFocusVisible
     });
@@ -54,7 +53,7 @@ export class FabricBase extends React.Component<
 
   private _addClassNameToBody = () => {
     if (this.props.applyThemeToBody) {
-      const classNames = this._getClassNamesHelper();
+      const classNames = this._getClassNames();
       const currentDoc = getDocument(this._rootElement.current);
       if (currentDoc) {
         currentDoc.body.classList.add(classNames.bodyThemed);

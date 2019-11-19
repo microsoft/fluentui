@@ -5,7 +5,7 @@ const inheritFont = { fontFamily: 'inherit' };
 
 const GlobalClassNames = {
   root: 'ms-Fabric',
-  bodyThemed: 'ms-Fabric-body-themed'
+  bodyThemed: 'ms-Fabric-bodyThemed'
 };
 
 export interface IFabricClassNames {
