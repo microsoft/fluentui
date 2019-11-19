@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fix the bug that x-axis for linechart does not display properly",
-  "packageName": "@uifabric/charting",
-  "email": "dajiang@microsoft.com",
-  "commit": "dbe454d44c1a8574397e9d27001da5659f1a9a04",
-  "date": "2019-11-15T13:37:39.516Z"
-}
