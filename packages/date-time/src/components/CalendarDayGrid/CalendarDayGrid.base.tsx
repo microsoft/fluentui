@@ -248,6 +248,7 @@ export class CalendarDayGridBase extends BaseComponent<ICalendarDayGridProps, IC
         onMouseDown={!ariaHidden ? this.onMouseDownDay(day) : undefined}
         onMouseUp={!ariaHidden ? this.onMouseUpDay(day) : undefined}
         onMouseOut={!ariaHidden ? this.onMouseOutDay(day) : undefined}
+        role="gridcell"
       >
         <button
           key={day.key + 'button'}
@@ -262,7 +263,7 @@ export class CalendarDayGridBase extends BaseComponent<ICalendarDayGridProps, IC
           disabled={!allFocusable && !day.isInBounds}
           aria-disabled={!ariaHidden && !day.isInBounds}
           type="button"
-          role="gridcell" // create grid structure
+          role="button" // create grid structure
           aria-readonly={true} // prevent grid from being "editable"
         >
           <span aria-hidden="true">{dateTimeFormatter.formatDay(day.originalDate)}</span>

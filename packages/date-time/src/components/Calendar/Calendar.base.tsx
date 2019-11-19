@@ -16,6 +16,7 @@ import { ICalendarMonth } from './CalendarMonth/CalendarMonth.types';
 import { css, BaseComponent, KeyCodes, classNamesFunction, focusAsync, format } from '@uifabric/utilities';
 import { IProcessedStyleSet } from '@uifabric/styling';
 import { DayPickerStrings } from './defaults';
+import { addDays, addMonths, addYears } from 'office-ui-fabric-react/lib/utilities/dateMath/DateMath';
 
 const getClassNames = classNamesFunction<ICalendarStyleProps, ICalendarStyles>();
 
@@ -365,6 +366,26 @@ export class CalendarBase extends BaseComponent<ICalendarProps, ICalendarState> 
         this._handleEscKey(ev);
         break;
 
+      case KeyCodes.pageUp:
+        if (ev.ctrlKey) {
+          // go to next year
+          this._navigateDayPickerDay(addYears(this.state.navigatedDayDate!, 1));
+        } else {
+          // go to next month
+          this._navigateDayPickerDay(addMonths(this.state.navigatedDayDate!, 1));
+        }
+        ev.preventDefault();
+        break;
+      case KeyCodes.pageDown:
+        if (ev.ctrlKey) {
+          // go to previous year
+          this._navigateDayPickerDay(addYears(this.state.navigatedDayDate!, -1));
+        } else {
+          // go to previous month
+          this._navigateDayPickerDay(addMonths(this.state.navigatedDayDate!, -1));
+        }
+        ev.preventDefault();
+        break;
       default:
         break;
     }
