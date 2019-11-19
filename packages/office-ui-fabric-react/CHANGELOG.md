@@ -1,7 +1,28 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 14 Nov 2019 12:30:52 GMT and should not be manually modified.
+This log was last generated on Mon, 18 Nov 2019 12:33:30 GMT and should not be manually modified.
 
+## 7.62.0
+Mon, 18 Nov 2019 12:33:30 GMT
+
+### Minor changes
+
+- MarqueeSelection: Add horizontal scrolling (v-mare@microsoft.com)
+### Patches
+
+- Nav: remove incorrect and unnecessary hover styles (phkuo@microsoft.com)
+- Coachmark: A11y fixes - Added focus indicator to coachmark when activated (marygans@microsoft.com)
+- CalendarDay: Fixed issue with onDayKeyDown re-opening callout (v-mare@microsoft.com)
+- Fix dropdown option style on keyboard navigation in high contrast mode (xgao@microsoft.com)
+- Combobox high contrast mode fixes for input box, caret down button, option hover styles (xgao@microsoft.com)
+## 7.61.1
+Fri, 15 Nov 2019 12:31:09 GMT
+
+### Patches
+
+- applied accessibility changes to main package (betrue@microsoft.com)
+- Picker: Updating disabled border color from transparent in order to match disabled background color. (marygans@microsoft.com)
+- DropDown: make dropdown option title prop to be assigned consistently for the multiselect case (kchau@microsoft.com)
 ## 7.61.0
 Thu, 14 Nov 2019 12:30:52 GMT
 
@@ -2288,7 +2309,7 @@ Mon, 28 Jan 2019 13:35:27 GMT
 
 ### Minor changes
 
-- Coachmark: updates how the the theme is passed to `getStyles` function. Adds 2 new props: `theme` and `className`. Minor cleanup.
+- Coachmark: updates how the theme is passed to `getStyles` function. Adds 2 new props: `theme` and `className`. Minor cleanup.
 
 ### Patches
 

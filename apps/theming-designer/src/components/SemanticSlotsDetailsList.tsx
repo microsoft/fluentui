@@ -30,12 +30,12 @@ interface ISemanticSlotsDetailsList {
 export const SemanticSlotsDetailsList: React.StatelessComponent<ISemanticSlotsDetailsListProps> = (
   props: ISemanticSlotsDetailsListProps
 ) => {
-  let countDefaults = 20;
-  let countInputs = 15;
-  let countButtons = 23;
-  let countMenus = 8;
-  let countLists = 7;
+  let countDefaults = 17;
   let countLinks = 4;
+  let countButtons = 23;
+  let countInputs = 18;
+  let countLists = 7;
+  let countMenus = 8;
 
   let items: ISemanticSlotsDetailsList[] = [];
   let groups: IGroup[] = [];
@@ -73,42 +73,42 @@ export const SemanticSlotsDetailsList: React.StatelessComponent<ISemanticSlotsDe
     { key: 'defaults', name: 'Defaults', startIndex: 0, count: countDefaults, isCollapsed: false },
 
     {
-      key: 'inputs',
-      name: 'Inputs',
+      key: 'Links',
+      name: 'Links',
       startIndex: countDefaults,
-      count: countInputs,
+      count: countLinks,
       isCollapsed: true
     },
 
     {
       key: 'button',
       name: 'Buttons',
-      startIndex: countDefaults + countInputs,
+      startIndex: countDefaults + countLinks,
       count: countButtons,
       isCollapsed: true
     },
 
     {
-      key: 'menus',
-      name: 'Menus',
-      startIndex: countDefaults + countInputs + countButtons,
-      count: countMenus,
+      key: 'inputs',
+      name: 'Inputs',
+      startIndex: countDefaults + countLinks + countButtons,
+      count: countInputs,
       isCollapsed: true
     },
 
     {
       key: 'lists',
       name: 'Lists',
-      startIndex: countDefaults + countInputs + countButtons + countMenus,
+      startIndex: countDefaults + countLinks + countButtons + countInputs,
       count: countLists,
       isCollapsed: true
     },
 
     {
-      key: 'Links',
-      name: 'Links',
-      startIndex: countDefaults + countInputs + countButtons + countMenus + countLists,
-      count: countLinks,
+      key: 'menus',
+      name: 'Menus',
+      startIndex: countDefaults + countLinks + countButtons + countInputs + countLists,
+      count: countMenus,
       isCollapsed: true
     }
   ];

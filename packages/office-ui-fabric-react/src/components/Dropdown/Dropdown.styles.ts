@@ -45,12 +45,7 @@ const highContrastItemAndTitleStateMixin: IRawStyle = {
     [HighContrastSelector]: {
       backgroundColor: 'Highlight',
       borderColor: 'Highlight',
-      color: 'HighlightText',
-      selectors: {
-        ':hover': {
-          color: 'HighlightText' // overrides the hover styling for buttons that are also selected
-        }
-      }
+      color: 'HighlightText'
     },
     ...highContrastAdjustMixin
   }
@@ -125,17 +120,26 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
   const itemSelectors = (isSelected: boolean = false) => {
     return {
       selectors: {
-        '&:hover:focus': {
-          color: palette.neutralDark,
-          backgroundColor: !isSelected ? palette.neutralLighter : palette.neutralLight
-        },
-        '&:focus': {
-          backgroundColor: !isSelected ? 'transparent' : palette.neutralLight
-        },
-        '&:active': {
-          color: palette.neutralDark,
-          backgroundColor: !isSelected ? palette.neutralLighter : palette.neutralLight
-        },
+        '&:hover:focus': [
+          {
+            color: palette.neutralDark,
+            backgroundColor: !isSelected ? palette.neutralLighter : palette.neutralLight
+          },
+          highContrastItemAndTitleStateMixin
+        ],
+        '&:focus': [
+          {
+            backgroundColor: !isSelected ? 'transparent' : palette.neutralLight
+          },
+          highContrastItemAndTitleStateMixin
+        ],
+        '&:active': [
+          {
+            color: palette.neutralDark,
+            backgroundColor: !isSelected ? palette.neutralLighter : palette.neutralLight
+          },
+          highContrastItemAndTitleStateMixin
+        ],
         [HighContrastSelector]: {
           borderColor: 'Window'
         },
