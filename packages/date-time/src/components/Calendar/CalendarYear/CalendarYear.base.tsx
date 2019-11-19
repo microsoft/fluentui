@@ -9,7 +9,7 @@ import {
   ICalendarYearStyleProps,
   ICalendarYearStyles
 } from './CalendarYear.types';
-import { BaseComponent, KeyCodes, getRTL, classNamesFunction, css } from 'office-ui-fabric-react/lib/Utilities';
+import { BaseComponent, KeyCodes, getRTL, classNamesFunction, css, format } from 'office-ui-fabric-react/lib/Utilities';
 import { FocusZone } from 'office-ui-fabric-react/lib/FocusZone';
 import { Icon } from 'office-ui-fabric-react/lib/Icon';
 import { ICalendarIconStrings } from '../Calendar.types';
@@ -344,11 +344,14 @@ class CalendarYearTitle extends React.Component<ICalendarYearHeaderProps, {}> {
 
     if (onHeaderSelect) {
       const rangeAriaLabel = (strings || DefaultCalendarYearStrings).rangeAriaLabel;
-      const ariaLabel = rangeAriaLabel
+      const headerAriaLabelFormatString = strings!.headerAriaLabelFormatString;
+      const currentDateRange = rangeAriaLabel
         ? typeof rangeAriaLabel === 'string'
           ? (rangeAriaLabel as string)
           : (rangeAriaLabel as ICalendarYearRangeToString)(this.props)
         : undefined;
+
+      const ariaLabel = headerAriaLabelFormatString ? format(headerAriaLabelFormatString, currentDateRange) : currentDateRange;
 
       return (
         <button

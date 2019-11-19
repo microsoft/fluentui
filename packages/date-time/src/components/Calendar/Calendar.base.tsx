@@ -13,26 +13,11 @@ import { CalendarDay } from './CalendarDay/CalendarDay';
 import { CalendarMonth } from './CalendarMonth/CalendarMonth';
 import { ICalendarDay } from './CalendarDay/CalendarDay.types';
 import { ICalendarMonth } from './CalendarMonth/CalendarMonth.types';
-import { css, BaseComponent, KeyCodes, classNamesFunction, focusAsync } from '@uifabric/utilities';
+import { css, BaseComponent, KeyCodes, classNamesFunction, focusAsync, format } from '@uifabric/utilities';
 import { IProcessedStyleSet } from '@uifabric/styling';
+import { DayPickerStrings } from './defaults';
 
 const getClassNames = classNamesFunction<ICalendarStyleProps, ICalendarStyles>();
-
-const DEFAULT_STRINGS = {
-  months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-  shortMonths: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-  days: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
-  shortDays: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
-  goToToday: 'Go to today',
-  prevMonthAriaLabel: 'Go to previous month',
-  nextMonthAriaLabel: 'Go to next month',
-  prevYearAriaLabel: 'Go to previous year',
-  nextYearAriaLabel: 'Go to next year',
-  prevYearRangeAriaLabel: 'Previous year range',
-  nextYearRangeAriaLabel: 'Next year range',
-  closeButtonAriaLabel: 'Close date picker',
-  weekNumberFormatString: 'Week number {0}'
-};
 
 const leftArrow = 'Up';
 const rightArrow = 'Down';
@@ -88,7 +73,7 @@ export class CalendarBase extends BaseComponent<ICalendarProps, ICalendarState> 
     firstDayOfWeek: DayOfWeek.Sunday,
     dateRangeType: DateRangeType.Day,
     showGoToToday: true,
-    strings: DEFAULT_STRINGS,
+    strings: DayPickerStrings,
     highlightCurrentMonth: false,
     highlightSelectedMonth: false,
     navigationIcons: defaultIconStrings,
@@ -163,7 +148,9 @@ export class CalendarBase extends BaseComponent<ICalendarProps, ICalendarState> 
       showWeekNumbers,
       theme,
       calendarDayProps,
-      calendarMonthProps
+      calendarMonthProps,
+      dateTimeFormatter,
+      today
     } = this.props;
     const { selectedDate, navigatedDayDate, navigatedMonthDate, isMonthPickerVisible, isDayPickerVisible } = this.state;
     const onHeaderSelect = showMonthPickerAsOverlay ? this._onHeaderSelect : undefined;
@@ -182,8 +169,22 @@ export class CalendarBase extends BaseComponent<ICalendarProps, ICalendarState> 
       showWeekNumbers: showWeekNumbers
     });
 
+    let todayDateString: string = '';
+    let selectedDateString: string = '';
+    if (dateTimeFormatter && strings!.todayDateFormatString) {
+      todayDateString = format(strings!.todayDateFormatString, dateTimeFormatter.formatMonthDayYear(today!, strings!));
+    }
+    if (dateTimeFormatter && strings!.selectedDateFormatString) {
+      selectedDateString = format(strings!.selectedDateFormatString, dateTimeFormatter.formatMonthDayYear(selectedDate!, strings!));
+    }
+    const rootAriaLabel = selectedDateString + ', ' + todayDateString;
+
     return (
-      <div className={css(rootClass, classes.root, className, 'ms-slideDownIn10')} onKeyDown={this._onDatePickerPopupKeyDown}>
+      <div
+        aria-label={rootAriaLabel}
+        className={css(rootClass, classes.root, className, 'ms-slideDownIn10')}
+        onKeyDown={this._onDatePickerPopupKeyDown}
+      >
         {isDayPickerVisible && (
           <CalendarDay
             selectedDate={selectedDate!}
