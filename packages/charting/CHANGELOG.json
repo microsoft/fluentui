@@ -2,6 +2,20 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "date": "Tue, 19 Nov 2019 12:29:10 GMT",
+      "tag": "@uifabric/charting_v0.138.1",
+      "version": "0.138.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix the bug that x-axis for linechart does not display properly",
+            "author": "dajiang@microsoft.com",
+            "commit": "dbe454d44c1a8574397e9d27001da5659f1a9a04"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 05 Nov 2019 12:25:16 GMT",
       "tag": "@uifabric/charting_v0.138.0",
       "version": "0.138.0",
