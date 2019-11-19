@@ -4502,6 +4502,7 @@ export interface IFacepilePersona extends React.ButtonHTMLAttributes<HTMLButtonE
 export interface IFacepileProps extends React.ClassAttributes<FacepileBase> {
     addButtonProps?: IButtonProps;
     ariaDescription?: string;
+    ariaLabel?: string;
     // @deprecated
     chevronButtonProps?: IButtonProps;
     className?: string;

@@ -36,7 +36,7 @@ export class FacepileBase extends BaseComponent<IFacepileProps, {}> {
 
   public render(): JSX.Element {
     let { overflowButtonProps } = this.props;
-    const { chevronButtonProps, maxDisplayablePersonas, personas, overflowPersonas, showAddButton } = this.props;
+    const { chevronButtonProps, maxDisplayablePersonas, personas, overflowPersonas, showAddButton, ariaLabel } = this.props;
 
     const { _classNames } = this;
 
@@ -58,7 +58,7 @@ export class FacepileBase extends BaseComponent<IFacepileProps, {}> {
         {this.onRenderAriaDescription()}
         <div className={_classNames.itemContainer}>
           {showAddButton ? this._getAddNewElement() : null}
-          <ul className={_classNames.members} role="listbox">
+          <ul className={_classNames.members} role="listbox" aria-label={ariaLabel}>
             {this._onRenderVisiblePersonas(personasPrimary, personasOverflow.length === 0 && personas.length === 1)}
           </ul>
           {overflowButtonProps ? this._getOverflowElement(personasOverflow) : null}
