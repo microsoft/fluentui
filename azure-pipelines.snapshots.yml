@@ -4,6 +4,9 @@ trigger: none
 pool:
   vmImage: 'Ubuntu 16.04'
 
+variables:
+  - group: 'Github and NPM secrets'
+
 steps:
   - checkout: self
     persistCredentials: true
@@ -31,13 +34,14 @@ steps:
     displayName: Set up git config user name and email
 
   - script: |
-      if [ -n "$(git status --porcelain | grep -E "(\.snap|\.shot)" ]; then
-        git remote add target_remote $(remote)
+      if [ -n '$(git status --porcelain | grep -E "(\.snap|\.shot)")' ]; then
+        noauthRemote=$(remote)
+        git remote add target_remote ${noauthRemote/\/github.com/\/$(githubUser):$(githubPAT)@github.com}
         git fetch target_remote
-        git checkout -b -t target_remote/$(branchName) target_branch
+        git checkout -t target_remote/$(branch) -b target_branch
         git add *.shot *.snap
         git commit -m "updated snapshots"
         yarn change -m "updated snapshots" --type patch
-        git push target_remote target_branch
+        git push target_remote target_branch:$(branch)
       fi
     displayName: push changes back
