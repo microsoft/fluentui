@@ -66,8 +66,7 @@ const iconButtonStyles = mergeStyleSets({
   },
   rootHovered: {
     color: theme.palette.neutralDark
-  },
-  rootSelected: {}
+  }
 });
 
 export class ModalBasicExample extends React.Component<{}, IModalBasicExampleState> {
