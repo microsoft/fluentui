@@ -13,17 +13,21 @@ steps:
       versionSpec: '10.x'
     displayName: 'Install Node.js'
 
-  - script: |
-      yarn
-    displayName: yarn
+  # - script: |
+  #     yarn
+  #   displayName: yarn
+
+  # - script: |
+  #     yarn build --min
+  #   displayName: build (no test or lint)
+
+  # - script: |
+  #     yarn update-snapshots
+  #   displayName: update snapshots
 
   - script: |
-      yarn build --min
-    displayName: build (no test or lint)
-
-  - script: |
-      yarn update-snapshots
-    displayName: update snapshots
+      echo hello > packages/office-ui-fabric-react/src/components/hello.tsx.shot
+    displayName: create test snapshot file
 
   - script: |
       git config --global user.email "fabrictactical@microsoft.com"
