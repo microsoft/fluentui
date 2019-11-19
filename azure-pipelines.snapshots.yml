@@ -31,7 +31,7 @@ steps:
     displayName: Set up git config user name and email
 
   - script: |
-      if [ -n "$(git status --porcelain | grep -E "(\.snap|\.shot)" ]; then
+      if [ -n '$(git status --porcelain | grep -E "(\.snap|\.shot)")' ]; then
         git remote add target_remote $(remote)
         git fetch target_remote
         git checkout -b -t target_remote/$(branchName) target_branch
