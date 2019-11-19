@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "updated snapshots",
+  "packageName": "@uifabric/tslint-rules",
+  "email": "fabrictactical@microsoft.com",
+  "commit": "d02c1770d47c90604b353ca60082ce314f097f88",
+  "date": "2019-11-19T23:07:13.506Z"
+}
