@@ -20,7 +20,7 @@ export interface IModalBasicExampleState {
 
 // Themed styles for the example.
 const theme = getTheme();
-const styles = mergeStyleSets({
+const modalStyles = mergeStyleSets({
   container: {
     display: 'flex',
     flexFlow: 'column nowrap',
@@ -36,22 +36,7 @@ const styles = mergeStyleSets({
       fontSize: FontSizes.xLarge,
       alignItems: 'center',
       fontWeight: FontWeights.semibold,
-      padding: '12px 12px 14px 24px',
-      selectors: {
-        '.close': {
-          color: theme.palette.neutralPrimary,
-          selectors: {
-            '&:hover': {
-              color: theme.palette.neutralDark
-            }
-          }
-        },
-        '.closeButtonContainer': {
-          paddingTop: '4px',
-          paddingRight: '2px',
-          marginLeft: 'auto'
-        }
-      }
+      padding: '12px 12px 14px 24px'
     }
   ],
   body: {
@@ -70,6 +55,19 @@ const styles = mergeStyleSets({
       }
     }
   }
+});
+
+const iconButtonStyles = mergeStyleSets({
+  root: {
+    color: theme.palette.neutralPrimary,
+    marginLeft: 'auto',
+    marginTop: '4px',
+    marginRight: '2px'
+  },
+  rootHovered: {
+    color: theme.palette.neutralDark
+  },
+  rootSelected: {}
 });
 
 export class ModalBasicExample extends React.Component<{}, IModalBasicExampleState> {
@@ -103,21 +101,19 @@ export class ModalBasicExample extends React.Component<{}, IModalBasicExampleSta
           isOpen={this.state.showModal}
           onDismiss={this._closeModal}
           isBlocking={false}
-          containerClassName={styles.container}
+          containerClassName={modalStyles.container}
           dragOptions={this.state.isDraggable ? this._dragOptions : undefined}
         >
-          <div className={styles.header}>
+          <div className={modalStyles.header}>
             <span id={this._titleId}>Lorem Ipsum</span>
-            <div className={'closeButtonContainer'}>
-              <IconButton
-                className={'close'}
-                iconProps={{ iconName: 'Cancel' }}
-                ariaLabel="Close popup modal"
-                onClick={this._closeModal as any}
-              />
-            </div>
+            <IconButton
+              styles={iconButtonStyles}
+              iconProps={{ iconName: 'Cancel' }}
+              ariaLabel="Close popup modal"
+              onClick={this._closeModal as any}
+            />
           </div>
-          <div id={this._subtitleId} className={styles.body}>
+          <div id={this._subtitleId} className={modalStyles.body}>
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas lorem nulla, malesuada ut sagittis sit amet, vulputate in
               leo. Maecenas vulputate congue sapien eu tincidunt. Etiam eu sem turpis. Fusce tempor sagittis nunc, ut interdum ipsum
