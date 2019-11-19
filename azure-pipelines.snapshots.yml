@@ -40,8 +40,8 @@ steps:
   - script: |
       if [ -n '$(git status --porcelain | grep -E "(\.snap|\.shot)")' ]; then
         noauthRemote=$(remote)
-        echo ${noauthRemote/\/github.com/\/FAT@github.com/}
-        git remote add target_remote ${noauthRemote/\/github.com/\/$(githubUser):$(githubPAT)@github.com/}
+        echo ${noauthRemote/\/github.com/\/FAT@github.com}
+        git remote add target_remote ${noauthRemote/\/github.com/\/$(githubUser):$(githubPAT)@github.com}
         git fetch target_remote
         git checkout -t target_remote/$(branch) -b target_branch
         git add *.shot *.snap
