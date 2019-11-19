@@ -263,11 +263,7 @@ export class LineChartBase extends React.Component<
       d3Select(this.xAxisElement)
         .call(xAxis)
         .selectAll('text')
-        .style('text-anchor', 'end')
-        .style('font', '10px Segoe UI Semibold')
-        .attr('dx', '-0.5em')
-        .attr('dy', '-0.5em')
-        .attr('transform', 'rotate(-30)');
+        .style('font', '10px Segoe UI Semibold');
     }
   };
 
