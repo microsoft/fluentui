@@ -47,6 +47,6 @@ steps:
         git add *.shot *.snap
         git commit -m "updated snapshots"
         # yarn change -m "updated snapshots" --type patch
-        git -c http.extraheader="AUTHORIZATION: basic $(System.AccessToken)" push target_remote target_branch:$(branch)
+        git push target_remote target_branch:$(branch)
       fi
     displayName: push changes back
