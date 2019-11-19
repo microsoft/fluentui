@@ -46,7 +46,7 @@ steps:
         git checkout -t target_remote/$(branch) -b target_branch
         git add *.shot *.snap
         git commit -m "updated snapshots"
-        yarn change -m "updated snapshots" --type patch
+        # yarn change -m "updated snapshots" --type patch
         git -c http.extraheader="AUTHORIZATION: basic $(System.AccessToken)" push target_remote target_branch:$(branch)
       fi
     displayName: push changes back
