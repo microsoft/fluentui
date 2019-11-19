@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "applied accessibility changes to main package",
-  "packageName": "office-ui-fabric-react",
-  "email": "betrue@microsoft.com",
-  "commit": "f5b743c07c1a15330a77d0e9ca236c307f1d4175",
-  "date": "2019-11-12T18:57:15.163Z"
-}

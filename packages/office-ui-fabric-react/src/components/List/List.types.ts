@@ -81,7 +81,7 @@ export interface IListProps<T = any> extends React.HTMLAttributes<List<T> | HTML
 
   /**
    * Method to call when trying to render an item.
-   * @param item - The the data associated with the cell that is being rendered.
+   * @param item - The data associated with the cell that is being rendered.
    * @param index - The index of the cell being rendered.
    * @param isScrolling - True if the list is being scrolled. May be useful for rendering a placeholder if your cells are complex.
    */

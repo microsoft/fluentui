@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Picker: Updating disabled border color from transparent in order to match disabled background color.",
-  "packageName": "office-ui-fabric-react",
-  "email": "marygans@microsoft.com",
-  "commit": "07ed50417c879a19d30d6ca01b5ca0c93c36b85d",
-  "date": "2019-11-14T16:58:05.085Z"
-}

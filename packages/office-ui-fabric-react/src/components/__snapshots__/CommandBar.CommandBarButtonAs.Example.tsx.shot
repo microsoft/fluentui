@@ -781,6 +781,9 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                                     background-color: Window;
                                     border: 2px solid WindowText;
                                   }
+                                  .ms-Fabric--isFocusVisible &:focus {
+                                    outline: 1px solid #71afe5;
+                                  }
                               data-is-focusable={true}
                               role="dialog"
                               tabIndex={-1}

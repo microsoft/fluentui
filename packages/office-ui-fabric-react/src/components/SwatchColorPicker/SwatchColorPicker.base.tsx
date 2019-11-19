@@ -242,7 +242,7 @@ export class SwatchColorPickerBase extends React.Component<ISwatchColorPickerPro
       return;
     }
 
-    // Get the the elements that math the given selector
+    // Get the elements that math the given selector
     const elements = document.querySelectorAll(parentSelector);
 
     // iterate over the elements return to make sure it is a parent of the target and focus it
