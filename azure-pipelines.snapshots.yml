@@ -4,6 +4,9 @@ trigger: none
 pool:
   vmImage: 'Ubuntu 16.04'
 
+variables:
+  - group: 'Github and NPM secrets'
+
 steps:
   - checkout: self
     persistCredentials: true
@@ -36,7 +39,8 @@ steps:
 
   - script: |
       if [ -n '$(git status --porcelain | grep -E "(\.snap|\.shot)")' ]; then
-        git remote add target_remote $(remote)
+        noauthRemote=$(remote)
+        git remote add target_remote ${noauthRemote/\/github.com/\/$(githubUser):$(githubPAT)@github.com/}
         git fetch target_remote
         git checkout -t target_remote/$(branch) -b target_branch
         git add *.shot *.snap
