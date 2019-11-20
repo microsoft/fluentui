@@ -200,21 +200,22 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
             { borderColor: !isOpen ? palette.neutralPrimary : palette.themePrimary },
             highContrastBorderState
           ],
-          ['&:focus .' + globalClassnames.title]: [
-            !disabled && rootHoverFocusActiveSelectorNeutralDarkMixin,
+          ['&:focus .' + globalClassnames.title]: [!disabled && rootHoverFocusActiveSelectorNeutralDarkMixin],
+
+          ['&:focus:after']: [
             {
-              //Ben added pseudo element BROKEN
-              ':after': {
-                pointerEvents: 'none',
-                content: "''",
-                position: 'absolute',
-                top: '0px',
-                left: '0px',
-                width: '100%',
-                height: '100%',
-                borderColor: 'red', //palette.themePrimary /* see https://github.com/OfficeDev/office-ui-fabric-react/pull/9182 for semantic color disc */,
-                borderWidth: '2px'
-              }
+              pointerEvents: 'none',
+              content: "''",
+              position: 'absolute',
+              boxSizing: 'border-box',
+              top: '0px',
+              left: '0px',
+              width: '100%',
+              height: '100%',
+              border: `2px solid ${
+                palette.themePrimary
+              }` /* see https://github.com/OfficeDev/office-ui-fabric-react/pull/9182 for semantic color disc */,
+              borderRadius: '2px'
             },
             highContrastItemAndTitleStateMixin
           ],
