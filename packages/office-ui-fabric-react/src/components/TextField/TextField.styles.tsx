@@ -156,7 +156,12 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
           width: '100%'
         },
         disabled && {
-          borderBottomColor: semanticColors.disabledBackground
+          borderBottomColor: semanticColors.disabledBackground,
+          selectors: {
+            [HighContrastSelector]: {
+              borderColor: 'GrayText'
+            }
+          }
         },
         !disabled && {
           selectors: {
@@ -185,16 +190,7 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
         display: 'flex',
         flexDirection: 'row',
         alignItems: 'stretch',
-        position: 'relative',
-        selectors: {
-          ':hover': {
-            selectors: {
-              [HighContrastSelector]: {
-                borderColor: 'Highlight'
-              }
-            }
-          }
-        }
+        position: 'relative'
       },
       multiline && {
         minHeight: '60px',
@@ -206,7 +202,12 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
         !disabled && {
           selectors: {
             ':hover': {
-              borderColor: semanticColors.inputBorderHovered
+              borderColor: semanticColors.inputBorderHovered,
+              selectors: {
+                [HighContrastSelector]: {
+                  borderColor: 'Highlight'
+                }
+              }
             }
           }
         },
@@ -215,8 +216,8 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
       disabled && {
         borderColor: semanticColors.disabledBackground,
         selectors: {
-          ':hover': {
-            borderColor: semanticColors.disabledBackground
+          [HighContrastSelector]: {
+            borderColor: 'GrayText'
           }
         },
 
