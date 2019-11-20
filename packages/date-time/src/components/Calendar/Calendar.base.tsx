@@ -299,9 +299,10 @@ export class CalendarBase extends BaseComponent<ICalendarProps, ICalendarState> 
   };
 
   private _onNavigateMonthDate = (date: Date, focusOnNavigatedDay: boolean): void => {
+    this._focusOnUpdate = focusOnNavigatedDay;
+
     if (!focusOnNavigatedDay) {
       this._navigateMonthPickerDay(date);
-      this._focusOnUpdate = focusOnNavigatedDay;
       return;
     }
 
