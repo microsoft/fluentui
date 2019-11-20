@@ -250,6 +250,7 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
     const labelStyles = this._classNames.subComponentStyles
       ? (this._classNames.subComponentStyles.label as IStyleFunctionOrObject<ILabelStyleProps, ILabelStyles>)
       : undefined;
+    const hasErrorMessage: boolean = !!errorMessage && errorMessage.length > 0;
 
     return (
       <div className={this._classNames.root}>
@@ -291,9 +292,11 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
                 role={ariaAttrs.childRole}
                 aria-live={!hasFocus || disabled || multiSelect || isOpen ? 'off' : 'assertive'}
                 aria-label={selectedOptions.length ? selectedOptions[0].text : this._placeholder}
+                aria-invalid={hasErrorMessage}
                 aria-setsize={ariaAttrs.ariaSetSize}
                 aria-posinset={ariaAttrs.ariaPosInSet}
                 aria-selected={ariaAttrs.ariaSelected}
+                aria-describedby={mergeAriaAttributeValues(hasErrorMessage && id + '-errorMessage')}
               >
                 {// If option is selected render title, otherwise render the placeholder text
                 selectedOptions.length
@@ -305,7 +308,11 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
           )}
         </KeytipData>
         {isOpen && onRenderContainer(props, this._onRenderContainer)}
-        {errorMessage && errorMessage.length > 0 && <div className={this._classNames.errorMessage}>{errorMessage}</div>}
+        {hasErrorMessage && (
+          <div id={id + '-errorMessage'} className={this._classNames.errorMessage}>
+            {errorMessage}
+          </div>
+        )}
       </div>
     );
   }

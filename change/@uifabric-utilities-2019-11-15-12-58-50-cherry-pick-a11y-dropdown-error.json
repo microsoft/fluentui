@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Cherry-pick commit from Fabric 7 to take: \"minor refinement to mergeAriaAttributeValues to correctly handle false, therefore allowing (`cond && \"something\")",
+  "packageName": "@uifabric/utilities",
+  "email": "raharri@microsoft.com",
+  "commit": "ff6ed33545b1fde443ecdfd9f070f31f18447d67",
+  "date": "2019-11-15T20:58:50.749Z"
+}
