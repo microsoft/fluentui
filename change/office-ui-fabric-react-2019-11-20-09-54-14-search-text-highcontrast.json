@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Updated searchbox and textfield disabled borders in high contrast",
+  "packageName": "office-ui-fabric-react",
+  "email": "mgodbolt@microsoft.com",
+  "commit": "1ce08491e0c1ab8191e75b35170d1a2e7d6c8ac5",
+  "date": "2019-11-20T17:54:14.708Z"
+}
