@@ -686,7 +686,7 @@ export const CompactPeoplePicker: React.FunctionComponent<IPeoplePickerProps>;
 export class CompactPeoplePickerBase extends BasePeoplePicker {
     static defaultProps: {
         onRenderItem: (props: IPeoplePickerItemSelectedProps) => JSX.Element;
-        onRenderSuggestionsItem: (personaProps: IPersonaProps, suggestionsProps?: IBasePickerSuggestionsProps<any> | undefined) => JSX.Element;
+        onRenderSuggestionsItem: (personaProps: IPersonaProps, suggestionsProps?: ISuggestionItemProps<IPersonaProps> | undefined) => JSX.Element;
         createGenericItem: typeof createGenericItem;
     };
 }
@@ -1745,7 +1745,7 @@ export interface IBasePickerStyles {
 }
 
 // @public
-export interface IBasePickerSuggestionsProps<T = any> extends Pick<ISuggestionsProps<T>, 'onRenderNoResultFound' | 'suggestionsHeaderText' | 'mostRecentlyUsedHeaderText' | 'noResultsFoundText' | 'className' | 'suggestionsClassName' | 'suggestionsItemClassName' | 'searchForMoreText' | 'forceResolveText' | 'loadingText' | 'searchingText' | 'resultsFooterFull' | 'resultsFooter' | 'resultsMaximumNumber' | 'showRemoveButtons' | 'suggestionsAvailableAlertText' | 'suggestionsContainerAriaLabel'> {
+export interface IBasePickerSuggestionsProps<T = any> extends Pick<ISuggestionsProps<T>, 'onRenderNoResultFound' | 'suggestionsHeaderText' | 'mostRecentlyUsedHeaderText' | 'noResultsFoundText' | 'className' | 'suggestionsClassName' | 'suggestionsItemClassName' | 'searchForMoreText' | 'forceResolveText' | 'loadingText' | 'searchingText' | 'resultsFooterFull' | 'resultsFooter' | 'resultsMaximumNumber' | 'showRemoveButtons' | 'suggestionsAvailableAlertText' | 'suggestionsContainerAriaLabel' | 'styles'> {
 }
 
 // @public (undocumented)
@@ -5932,7 +5932,7 @@ export interface IPeoplePickerItemSuggestionProps extends IPeoplePickerItemShare
     compact?: boolean;
     personaProps?: IPersonaProps;
     styles?: IStyleFunctionOrObject<IPeoplePickerItemSuggestionStyleProps, IPeoplePickerItemSuggestionStyles>;
-    suggestionsProps?: IBasePickerSuggestionsProps;
+    suggestionsProps?: ISuggestionItemProps<IPersonaProps>;
 }
 
 // @public
@@ -7311,7 +7311,7 @@ export interface ISuggestionsProps<T> extends React.Props<any> {
     searchingText?: string;
     showForceResolve?: () => boolean;
     showRemoveButtons?: boolean;
-    styles?: IStyleFunctionOrObject<any, any>;
+    styles?: IStyleFunctionOrObject<ISuggestionsStyleProps, ISuggestionsStyles>;
     suggestions: ISuggestionModel<T>[];
     suggestionsAvailableAlertText?: string;
     suggestionsClassName?: string;
@@ -7996,7 +7996,7 @@ export const ListPeoplePicker: React.FunctionComponent<IPeoplePickerProps>;
 export class ListPeoplePickerBase extends MemberListPeoplePicker {
     static defaultProps: {
         onRenderItem: (props: IPeoplePickerItemSelectedProps) => JSX.Element;
-        onRenderSuggestionsItem: (personaProps: IPersonaProps, suggestionsProps?: IBasePickerSuggestionsProps<any> | undefined) => JSX.Element;
+        onRenderSuggestionsItem: (personaProps: IPersonaProps, suggestionsProps?: ISuggestionItemProps<IPersonaProps> | undefined) => JSX.Element;
         createGenericItem: typeof createGenericItem;
     };
 }
@@ -8147,7 +8147,7 @@ export const NormalPeoplePicker: React.FunctionComponent<IPeoplePickerProps>;
 export class NormalPeoplePickerBase extends BasePeoplePicker {
     static defaultProps: {
         onRenderItem: (props: IPeoplePickerItemSelectedProps) => JSX.Element;
-        onRenderSuggestionsItem: (personaProps: IPersonaProps, suggestionsProps?: IBasePickerSuggestionsProps<any> | undefined) => JSX.Element;
+        onRenderSuggestionsItem: (personaProps: IPersonaProps, suggestionsProps?: ISuggestionItemProps<IPersonaProps> | undefined) => JSX.Element;
         createGenericItem: typeof createGenericItem;
     };
 }
