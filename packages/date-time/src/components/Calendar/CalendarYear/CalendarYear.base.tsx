@@ -355,7 +355,6 @@ class CalendarYearTitle extends React.Component<ICalendarYearHeaderProps, {}> {
 
       return (
         <button
-          key={fromYear}
           className={classNames.currentItemButton}
           onClick={this._onHeaderSelect}
           onKeyDown={this._onHeaderKeyDown}
@@ -363,7 +362,7 @@ class CalendarYearTitle extends React.Component<ICalendarYearHeaderProps, {}> {
           role="button"
           type="button"
           aria-atomic={true}
-          aria-live="polite"
+          aria-live="polite" // if this component rerenders when text changes, aria-live will not be announced, so make key consistent
         >
           {this._onRenderYear(fromYear)} - {this._onRenderYear(toYear)}
         </button>

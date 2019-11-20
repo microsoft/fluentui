@@ -374,6 +374,8 @@ export interface ICalendarStyles {
   goTodayButton: IStyle;
 
   monthPickerWrapper: IStyle;
+
+  liveRegion: IStyle;
 }
 
 export enum AnimationDirection {

@@ -178,14 +178,17 @@ export class CalendarBase extends BaseComponent<ICalendarProps, ICalendarState> 
     if (dateTimeFormatter && strings!.selectedDateFormatString) {
       selectedDateString = format(strings!.selectedDateFormatString, dateTimeFormatter.formatMonthDayYear(selectedDate!, strings!));
     }
-    const rootAriaLabel = selectedDateString + ', ' + todayDateString;
+    const selectionAndTodayString = selectedDateString + ', ' + todayDateString;
 
     return (
       <div
-        aria-label={rootAriaLabel}
+        aria-label={selectionAndTodayString}
         className={css(rootClass, classes.root, className, 'ms-slideDownIn10')}
         onKeyDown={this._onDatePickerPopupKeyDown}
       >
+        <div className={classes.liveRegion} aria-live="polite" aria-atomic="true">
+          <span>{selectedDateString}</span>
+        </div>
         {isDayPickerVisible && (
           <CalendarDay
             selectedDate={selectedDate!}
