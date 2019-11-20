@@ -771,7 +771,7 @@ export class CalendarDayGridBase extends BaseComponent<ICalendarDayGridProps, IC
    */
   private getDateRangeTypeToUse = (dateRangeType: DateRangeType, workWeekDays: DayOfWeek[] | undefined): DateRangeType => {
     if (workWeekDays && dateRangeType === DateRangeType.WorkWeek) {
-      const sortedWWDays = workWeekDays.sort();
+      const sortedWWDays = workWeekDays.slice().sort();
       let isContiguous = true;
       for (let i = 1; i < sortedWWDays.length; i++) {
         if (sortedWWDays[i] !== sortedWWDays[i - 1] + 1) {
@@ -780,7 +780,7 @@ export class CalendarDayGridBase extends BaseComponent<ICalendarDayGridProps, IC
         }
       }
 
-      if (!isContiguous) {
+      if (!isContiguous || workWeekDays.length === 0) {
         return DateRangeType.Week;
       }
     }
