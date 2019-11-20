@@ -51,7 +51,7 @@ export class FabricBase extends React.Component<
     return classNames;
   }
 
-  private _addClassNameToBody = () => {
+  private _addClassNameToBody(): void {
     if (this.props.applyThemeToBody) {
       const classNames = this._getClassNames();
       const currentDoc = getDocument(this._rootElement.current);
@@ -62,7 +62,7 @@ export class FabricBase extends React.Component<
         };
       }
     }
-  };
+  }
 
   private _onMouseDown = (ev: MouseEvent): void => {
     this.setState({ isFocusVisible: false });
