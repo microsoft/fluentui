@@ -680,7 +680,7 @@ export enum CheckboxVisibility {
  */
 export type IDetailsListStyleProps = Required<Pick<IDetailsListProps, 'theme'>> &
   Pick<IDetailsListProps, 'className'> & {
-    /** Whether the the list is horizontally constrained */
+    /** Whether the list is horizontally constrained */
     isHorizontalConstrained?: boolean;
 
     /** Whether the list is in compact mode */

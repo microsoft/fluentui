@@ -173,7 +173,6 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                     }
                     .ms-Nav-compositeLink:hover & {
                       background-color: #f3f2f1;
-                      color: #323130;
                     }
                 data-is-focusable={true}
                 href="http://msn.com"
@@ -326,7 +325,6 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                     }
                     .ms-Nav-compositeLink:hover & {
                       background-color: #f3f2f1;
-                      color: #323130;
                     }
                 data-is-focusable={true}
                 href="http://msn.com"
@@ -519,7 +517,6 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                     }
                     .ms-Nav-compositeLink:hover & {
                       background-color: #f3f2f1;
-                      color: #323130;
                     }
                 data-is-focusable={true}
                 href="http://msn.com"
@@ -672,7 +669,6 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                     }
                     .ms-Nav-compositeLink:hover & {
                       background-color: #f3f2f1;
-                      color: #323130;
                     }
                 data-is-focusable={true}
                 href="http://msn.com"

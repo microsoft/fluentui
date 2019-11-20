@@ -65,7 +65,7 @@ export interface INavProps {
    * Render a custom link in place of the normal one.
    * This replaces the entire button rather than simply button content
    */
-  linkAs?: IComponentAs<IButtonProps>;
+  linkAs?: IComponentAs<INavButtonProps>;
 
   /**
    * Used to customize how content inside the link tag is rendered
@@ -393,4 +393,14 @@ export interface INavStyles {
    * Style set for the group content div inside group.
    */
   groupContent: IStyle;
+}
+
+/**
+ * {@docCategory Nav}
+ */
+export interface INavButtonProps extends IButtonProps {
+  /**
+   * (Optional) Link to be rendered.
+   */
+  link?: INavLink;
 }

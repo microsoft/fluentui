@@ -120,8 +120,7 @@ export const getStyles = (props: INavStyleProps): INavStyles => {
       !isDisabled && {
         selectors: {
           '.ms-Nav-compositeLink:hover &': {
-            backgroundColor: semanticColors.bodyBackgroundHovered,
-            color: semanticColors.bodyText
+            backgroundColor: semanticColors.bodyBackgroundHovered
           }
         }
       },
@@ -168,15 +167,7 @@ export const getStyles = (props: INavStyleProps): INavStyles => {
         backgroundColor: 'transparent',
         selectors: {
           '&:visited': {
-            color: 'inherit'
-          },
-          '&:hover': {
-            color: semanticColors.bodyText,
-            backgroundColor: semanticColors.bodyBackgroundHovered
-          },
-          [`.${classNames.compositeLink}:hover &`]: {
-            color: semanticColors.bodyText,
-            backgroundColor: semanticColors.bodyBackgroundHovered
+            color: semanticColors.bodyText
           }
         }
       },

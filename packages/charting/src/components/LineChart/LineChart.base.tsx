@@ -41,6 +41,7 @@ export class LineChartBase extends React.Component<
   private _yAxisScale: any = '';
   private _uniqLineText: string;
   private chartContainer: HTMLDivElement;
+  private legendContainer: HTMLDivElement;
   // These margins are necessary for d3Scales to appear without cutting off
   private margins = { top: 20, right: 20, bottom: 35, left: 40 };
   constructor(props: ILineChartProps) {
@@ -132,7 +133,9 @@ export class LineChartBase extends React.Component<
           />
           <g>{lines}</g>
         </svg>
-        <div className={this._classNames.legendContainer}>{legendBars}</div>
+        <div ref={(e: HTMLDivElement) => (this.legendContainer = e)} className={this._classNames.legendContainer}>
+          {legendBars}
+        </div>
         {this.state.isCalloutVisible ? (
           <Callout target={this.state.refSelected} isBeakVisible={false} gapSpace={10} directionalHint={DirectionalHint.topAutoEdge}>
             <div className={this._classNames.calloutContentRoot}>
@@ -147,33 +150,26 @@ export class LineChartBase extends React.Component<
 
   private _fitParentContainer(): void {
     const { containerWidth, containerHeight } = this.state;
-    if (this.props.parentRef) {
-      this._reqID = requestAnimationFrame(() => {
-        const currentContainerWidth = this.props.parentRef!.getBoundingClientRect().width;
-        const currentContainerHeight =
-          this.props.parentRef!.getBoundingClientRect().height > 26 ? this.props.parentRef!.getBoundingClientRect().height : 350;
-        const shouldResize = containerWidth !== currentContainerWidth || containerHeight !== currentContainerHeight - 26;
-        if (shouldResize) {
-          this.setState({
-            containerWidth: currentContainerWidth,
-            containerHeight: currentContainerHeight - 26
-          });
-        }
-      });
-    } else {
-      this._reqID = requestAnimationFrame(() => {
-        const currentContainerWidth = this.chartContainer.getBoundingClientRect().width;
-        const currentContainerHeight =
-          this.chartContainer.getBoundingClientRect().height > 26 ? this.chartContainer.getBoundingClientRect().height : 350;
-        const shouldResize = containerWidth !== currentContainerWidth || containerHeight !== currentContainerHeight - 26;
-        if (shouldResize) {
-          this.setState({
-            containerWidth: currentContainerWidth,
-            containerHeight: currentContainerHeight - 26
-          });
-        }
-      });
-    }
+
+    this._reqID = requestAnimationFrame(() => {
+      const legendContainerComputedStyles = getComputedStyle(this.legendContainer);
+      const legendContainerHeight =
+        this.legendContainer.getBoundingClientRect().height +
+        parseFloat(legendContainerComputedStyles.marginTop || '0') +
+        parseFloat(legendContainerComputedStyles.marginBottom || '0');
+
+      const container = this.props.parentRef ? this.props.parentRef : this.chartContainer;
+      const currentContainerWidth = container.getBoundingClientRect().width;
+      const currentContainerHeight =
+        container.getBoundingClientRect().height > legendContainerHeight ? container.getBoundingClientRect().height : 350;
+      const shouldResize = containerWidth !== currentContainerWidth || containerHeight !== currentContainerHeight - legendContainerHeight;
+      if (shouldResize) {
+        this.setState({
+          containerWidth: currentContainerWidth,
+          containerHeight: currentContainerHeight - legendContainerHeight
+        });
+      }
+    });
   }
 
   private _createLegends(data: ILineChartPoints[]): JSX.Element {
@@ -267,11 +263,7 @@ export class LineChartBase extends React.Component<
       d3Select(this.xAxisElement)
         .call(xAxis)
         .selectAll('text')
-        .style('text-anchor', 'end')
-        .style('font', '10px Segoe UI Semibold')
-        .attr('dx', '-0.5em')
-        .attr('dy', '-0.5em')
-        .attr('transform', 'rotate(-30)');
+        .style('font', '10px Segoe UI Semibold');
     }
   };
 

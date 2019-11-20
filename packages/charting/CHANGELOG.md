@@ -1,7 +1,13 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Tue, 05 Nov 2019 12:25:16 GMT and should not be manually modified.
+This log was last generated on Tue, 19 Nov 2019 12:29:10 GMT and should not be manually modified.
 
+## 0.138.1
+Tue, 19 Nov 2019 12:29:10 GMT
+
+### Patches
+
+- Fix the bug that x-axis for linechart does not display properly (dajiang@microsoft.com)
 ## 0.138.0
 Tue, 05 Nov 2019 12:25:16 GMT
 
