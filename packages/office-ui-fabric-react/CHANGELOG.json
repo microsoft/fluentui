@@ -2,6 +2,27 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Wed, 20 Nov 2019 12:29:50 GMT",
+      "tag": "office-ui-fabric-react_v7.63.0",
+      "version": "7.63.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Dropdown: do not count hidden items",
+            "author": "kchau@microsoft.com",
+            "commit": "1da91c91746f450f876f7409bcb071d5a5dcdf43"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Add link to Nav props",
+            "author": "srperias@microsoft.com",
+            "commit": "0e9397251577c4a0faacafbd7b3b08fdfa13f407"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 18 Nov 2019 12:33:30 GMT",
       "tag": "office-ui-fabric-react_v7.62.0",
       "version": "7.62.0",

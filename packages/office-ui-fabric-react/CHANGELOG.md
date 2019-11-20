@@ -1,7 +1,16 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 18 Nov 2019 12:33:30 GMT and should not be manually modified.
+This log was last generated on Wed, 20 Nov 2019 12:29:50 GMT and should not be manually modified.
 
+## 7.63.0
+Wed, 20 Nov 2019 12:29:50 GMT
+
+### Minor changes
+
+- Add link to Nav props (srperias@microsoft.com)
+### Patches
+
+- Dropdown: do not count hidden items (kchau@microsoft.com)
 ## 7.62.0
 Mon, 18 Nov 2019 12:33:30 GMT
 
