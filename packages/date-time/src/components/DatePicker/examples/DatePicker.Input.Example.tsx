@@ -1,8 +1,7 @@
 import * as React from 'react';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
-import { DatePicker, DayOfWeek } from '@uifabric/date-time';
+import { DatePicker, DayOfWeek, defaultDayPickerStrings } from '@uifabric/date-time';
 import './DatePicker.Examples.scss';
-import { DayPickerStrings } from '../defaults';
 
 export interface IDatePickerInputExampleState {
   firstDayOfWeek?: DayOfWeek;
@@ -34,7 +33,7 @@ export class DatePickerInputExample extends React.Component<{}, IDatePickerInput
           allowTextInput={true}
           ariaLabel={desc}
           firstDayOfWeek={firstDayOfWeek}
-          strings={DayPickerStrings}
+          strings={defaultDayPickerStrings}
           value={value!}
           onSelectDate={this._onSelectDate}
         />

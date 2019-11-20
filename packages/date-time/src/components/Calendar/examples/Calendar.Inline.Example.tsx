@@ -1,8 +1,7 @@
 import * as React from 'react';
 import { DefaultButton, Dropdown, IDropdownOption } from 'office-ui-fabric-react';
 import { addDays, getDateRangeArray } from 'office-ui-fabric-react/lib/utilities/dateMath/DateMath';
-import { Calendar, ICalendarProps, DateRangeType, DayOfWeek } from '@uifabric/date-time';
-import { DayPickerStrings } from '../defaults';
+import { Calendar, ICalendarProps, DateRangeType, DayOfWeek, defaultDayPickerStrings } from '@uifabric/date-time';
 
 import * as styles from './Calendar.Example.scss';
 
@@ -82,7 +81,7 @@ export class CalendarInlineExample extends React.Component<ICalendarInlineExampl
           showGoToToday={this.props.showGoToToday}
           value={this.state.selectedDate!}
           firstDayOfWeek={this.props.firstDayOfWeek ? this.props.firstDayOfWeek : DayOfWeek.Sunday}
-          strings={DayPickerStrings}
+          strings={defaultDayPickerStrings}
           highlightCurrentMonth={this.props.highlightCurrentMonth}
           highlightSelectedMonth={this.props.highlightSelectedMonth}
           isDayPickerVisible={this.props.isDayPickerVisible}

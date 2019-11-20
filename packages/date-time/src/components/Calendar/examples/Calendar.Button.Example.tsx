@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { DefaultButton, FocusTrapZone, Callout, DirectionalHint } from 'office-ui-fabric-react';
-import { Calendar, DayOfWeek } from '@uifabric/date-time';
-import { DayPickerStrings } from '../defaults';
+import { Calendar, DayOfWeek, defaultDayPickerStrings } from '@uifabric/date-time';
 
 export interface ICalendarButtonExampleState {
   showCalendar: boolean;
@@ -69,7 +68,7 @@ export class CalendarButtonExample extends React.Component<ICalendarButtonExampl
                 isMonthPickerVisible={this.props.isMonthPickerVisible}
                 value={this.state.selectedDate!}
                 firstDayOfWeek={DayOfWeek.Sunday}
-                strings={DayPickerStrings}
+                strings={defaultDayPickerStrings}
                 isDayPickerVisible={this.props.isDayPickerVisible}
                 highlightCurrentMonth={this.props.highlightCurrentMonth}
                 highlightSelectedMonth={this.props.highlightSelectedMonth}

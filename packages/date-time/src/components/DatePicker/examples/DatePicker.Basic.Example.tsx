@@ -1,8 +1,7 @@
 import * as React from 'react';
 import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
-import { DatePicker, DayOfWeek } from '@uifabric/date-time';
+import { DatePicker, DayOfWeek, defaultDayPickerStrings } from '@uifabric/date-time';
 import './DatePicker.Examples.scss';
-import { DayPickerStrings } from '../defaults';
 
 export interface IDatePickerBasicExampleState {
   firstDayOfWeek?: DayOfWeek;
@@ -22,7 +21,12 @@ export class DatePickerBasicExample extends React.Component<{}, IDatePickerBasic
 
     return (
       <div className="docs-DatePickerExample">
-        <DatePicker firstDayOfWeek={firstDayOfWeek} strings={DayPickerStrings} placeholder="Select a date..." ariaLabel="Select a date" />
+        <DatePicker
+          firstDayOfWeek={firstDayOfWeek}
+          strings={defaultDayPickerStrings}
+          placeholder="Select a date..."
+          ariaLabel="Select a date"
+        />
         <Dropdown
           label="Select the first day of the week"
           options={[

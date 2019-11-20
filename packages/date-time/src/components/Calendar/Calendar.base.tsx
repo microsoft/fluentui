@@ -16,7 +16,7 @@ import { ICalendarMonth } from './CalendarMonth/CalendarMonth.types';
 import { css, BaseComponent, KeyCodes, classNamesFunction, focusAsync, format } from '@uifabric/utilities';
 import { IProcessedStyleSet } from '@uifabric/styling';
 import { DayPickerStrings } from './defaults';
-import { addDays, addMonths, addYears } from 'office-ui-fabric-react/lib/utilities/dateMath/DateMath';
+import { addMonths, addYears } from 'office-ui-fabric-react/lib/utilities/dateMath/DateMath';
 
 const getClassNames = classNamesFunction<ICalendarStyleProps, ICalendarStyles>();
 

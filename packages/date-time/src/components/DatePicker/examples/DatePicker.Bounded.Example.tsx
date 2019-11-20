@@ -1,8 +1,7 @@
 import * as React from 'react';
-import { DatePicker, DayOfWeek, IDatePickerStrings } from '@uifabric/date-time';
+import { DatePicker, DayOfWeek, IDatePickerStrings, defaultDayPickerStrings } from '@uifabric/date-time';
 import { addMonths, addYears } from 'office-ui-fabric-react/lib/utilities/dateMath/DateMath';
 import './DatePicker.Examples.scss';
-import { DayPickerStrings as defaultDayPickerStrings } from '../defaults';
 
 const today: Date = new Date(Date.now());
 const minDate: Date = addMonths(today, -1);

@@ -10,6 +10,7 @@ import { DayOfWeek } from 'office-ui-fabric-react/lib/utilities/dateValues/DateV
 import { FirstWeekOfYear } from 'office-ui-fabric-react/lib/utilities/dateValues/DateValues';
 import { IBaseProps } from '@uifabric/utilities';
 import { IBaseProps as IBaseProps_2 } from 'office-ui-fabric-react/lib/Utilities';
+import { ICalendarStrings as ICalendarStrings_2 } from '@uifabric/date-time';
 import { ICalloutProps } from 'office-ui-fabric-react/lib/Callout';
 import { IComponentAs } from '@uifabric/utilities';
 import { IRefObject } from '@uifabric/utilities';
@@ -54,6 +55,9 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
 export { DateRangeType }
 
 export { DayOfWeek }
+
+// @public (undocumented)
+export const defaultDayPickerStrings: ICalendarStrings_2;
 
 export { FirstWeekOfYear }
 
@@ -171,6 +175,7 @@ export interface ICalendarStrings {
     closeButtonAriaLabel?: string;
     days: string[];
     goToToday: string;
+    monthPickerHeaderAriaLabel?: string;
     months: string[];
     nextMonthAriaLabel?: string;
     nextYearAriaLabel?: string;
@@ -178,9 +183,12 @@ export interface ICalendarStrings {
     prevMonthAriaLabel?: string;
     prevYearAriaLabel?: string;
     prevYearRangeAriaLabel?: string;
+    selectedDateFormatString?: string;
     shortDays: string[];
     shortMonths: string[];
+    todayDateFormatString?: string;
     weekNumberFormatString?: string;
+    yearPickerHeaderAriaLabel?: string;
 }
 
 // @public (undocumented)
@@ -202,6 +210,8 @@ export interface ICalendarStyles {
     divider: IStyle;
     // (undocumented)
     goTodayButton: IStyle;
+    // (undocumented)
+    liveRegion: IStyle;
     // (undocumented)
     monthPickerWrapper: IStyle;
     root: IStyle;

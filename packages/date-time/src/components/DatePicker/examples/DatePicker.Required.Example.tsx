@@ -1,7 +1,6 @@
 import * as React from 'react';
-import { DatePicker, DayOfWeek } from '@uifabric/date-time';
+import { DatePicker, DayOfWeek, defaultDayPickerStrings } from '@uifabric/date-time';
 import './DatePicker.Examples.scss';
-import { DayPickerStrings } from '../defaults';
 
 export interface IDatePickerRequiredExampleState {
   firstDayOfWeek?: DayOfWeek;
@@ -26,14 +25,14 @@ export class DatePickerRequiredExample extends React.Component<{}, IDatePickerRe
           label="Date required (with label)"
           isRequired={true}
           firstDayOfWeek={firstDayOfWeek}
-          strings={DayPickerStrings}
+          strings={defaultDayPickerStrings}
           placeholder="Select a date..."
           ariaLabel="Select a date"
         />
         <DatePicker
           isRequired={true}
           firstDayOfWeek={firstDayOfWeek}
-          strings={DayPickerStrings}
+          strings={defaultDayPickerStrings}
           placeholder="Date required with no label..."
           ariaLabel="Select a date"
         />

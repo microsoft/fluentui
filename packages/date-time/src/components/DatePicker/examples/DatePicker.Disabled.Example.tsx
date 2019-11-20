@@ -1,7 +1,6 @@
 import * as React from 'react';
-import { DatePicker, DayOfWeek } from '@uifabric/date-time';
+import { DatePicker, DayOfWeek, defaultDayPickerStrings } from '@uifabric/date-time';
 import './DatePicker.Examples.scss';
-import { DayPickerStrings } from '../defaults';
 
 export interface IDatePickerDisabledExampleState {
   firstDayOfWeek?: DayOfWeek;
@@ -23,7 +22,7 @@ export class DatePickerDisabledExample extends React.Component<{}, IDatePickerDi
       <div className="docs-DatePickerExample">
         <DatePicker
           firstDayOfWeek={firstDayOfWeek}
-          strings={DayPickerStrings}
+          strings={defaultDayPickerStrings}
           placeholder="Select a date..."
           ariaLabel="Select a date"
           disabled={true}
@@ -32,7 +31,7 @@ export class DatePickerDisabledExample extends React.Component<{}, IDatePickerDi
         <DatePicker
           label="Disabled (with label)"
           firstDayOfWeek={firstDayOfWeek}
-          strings={DayPickerStrings}
+          strings={defaultDayPickerStrings}
           placeholder="Select a date..."
           ariaLabel="Select a date"
           disabled={true}
