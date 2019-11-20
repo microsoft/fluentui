@@ -37,7 +37,8 @@ export class FacepileBasicExample extends React.Component<{}, IFacepileBasicExam
           imageShouldFadeIn: this.state.imagesFadeIn
         };
       },
-      ariaDescription: 'To move through the items use left and right arrow keys.'
+      ariaDescription: 'To move through the items use left and right arrow keys.',
+      ariaLabel: 'Example list of Facepile personas'
     };
 
     return (
