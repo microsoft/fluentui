@@ -1,0 +1,9 @@
+{
+  "type": "patch",
+  "comment": "Modal: Updated styles to match toolkit.",
+  "packageName": "office-ui-fabric-react",
+  "email": "v-mare@microsoft.com",
+  "commit": "d96703199f553228e48ad3b953c2a91e387dba5d",
+  "date": "2019-10-23T22:53:21.427Z",
+  "file": "/Users/maxrediker/Fabric_UI/office-ui-fabric-react/change/office-ui-fabric-react-2019-10-23-15-53-21-v-mare-Modal-style-update.json"
+}
