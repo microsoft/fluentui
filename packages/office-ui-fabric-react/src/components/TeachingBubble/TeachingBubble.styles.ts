@@ -93,7 +93,7 @@ export const getStyles = (props: ITeachingBubbleStyleProps): ITeachingBubbleStyl
     theme
   } = props;
   const hasLargeHeadline: boolean = !hasCondensedHeadline && !hasSmallHeadline;
-  const { palette, fonts } = theme;
+  const { palette, semanticColors, fonts } = theme;
   const classNames = getGlobalClassNames(globalClassNames, theme);
 
   return {
@@ -132,6 +132,9 @@ export const getStyles = (props: ITeachingBubbleStyleProps): ITeachingBubbleStyl
           ':active': {
             background: palette.themeDark,
             color: palette.white
+          },
+          ':focus': {
+            border: `1px solid ${semanticColors.variantBorder}`
           }
         }
       }
