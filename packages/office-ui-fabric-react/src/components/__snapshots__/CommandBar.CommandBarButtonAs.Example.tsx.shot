@@ -1016,6 +1016,9 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                                                   border-color: Highlight;
                                                   color: Highlight;
                                                 }
+                                                &:focus {
+                                                  border: 1px solid #edebe9;
+                                                }
                                                 &:active {
                                                   background-color: #edebe9;
                                                   background: #005a9e;

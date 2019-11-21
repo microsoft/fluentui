@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "TeachingBubble: adding focus outline to close button for color contrast accessibility. Color contrast ratio should be more then 3:1.",
+  "packageName": "office-ui-fabric-react",
+  "email": "marygans@microsoft.com",
+  "commit": "e45699f1940ef2eea40dccc17f24b6fd3463589d",
+  "date": "2019-11-21T00:44:12.716Z"
+}
