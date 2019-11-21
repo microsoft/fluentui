@@ -2,6 +2,20 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "date": "Thu, 21 Nov 2019 12:23:13 GMT",
+      "tag": "@uifabric/utilities_v6.45.1",
+      "version": "6.45.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Cherry-pick commit from Fabric 7 to take: \"minor refinement to mergeAriaAttributeValues to correctly handle false, therefore allowing (`cond && \"something\")",
+            "author": "raharri@microsoft.com",
+            "commit": "ff6ed33545b1fde443ecdfd9f070f31f18447d67"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 07 Oct 2019 12:24:52 GMT",
       "tag": "@uifabric/utilities_v6.45.0",
       "version": "6.45.0",

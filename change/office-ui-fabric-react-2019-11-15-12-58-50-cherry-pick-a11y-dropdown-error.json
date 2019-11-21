@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Dropdown: Cherry-pick commit from Fabric 7 to take: Error messages in Dropdown are now linked to the Dropdown (from a programmatic accessibility POV).",
-  "packageName": "office-ui-fabric-react",
-  "email": "raharri@microsoft.com",
-  "commit": "ff6ed33545b1fde443ecdfd9f070f31f18447d67",
-  "date": "2019-11-15T20:57:24.497Z"
-}

@@ -1,7 +1,14 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 05 Nov 2019 12:24:16 GMT and should not be manually modified.
+This log was last generated on Thu, 21 Nov 2019 12:23:13 GMT and should not be manually modified.
 
+## 6.210.5
+Thu, 21 Nov 2019 12:23:13 GMT
+
+### Patches
+
+- Facepile: added ARIA label so ARIA input fields should have an accessible name addressing issue #10877 (marygans@microsoft.com)
+- Dropdown: Cherry-pick commit from Fabric 7 to take: Error messages in Dropdown are now linked to the Dropdown (from a programmatic accessibility POV). (raharri@microsoft.com)
 ## 6.210.4
 Tue, 05 Nov 2019 12:24:16 GMT
 

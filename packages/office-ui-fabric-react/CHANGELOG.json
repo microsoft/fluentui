@@ -2,6 +2,25 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Thu, 21 Nov 2019 12:23:13 GMT",
+      "tag": "office-ui-fabric-react_v6.210.5",
+      "version": "6.210.5",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Facepile: added ARIA label so ARIA input fields should have an accessible name addressing issue #10877",
+            "author": "marygans@microsoft.com",
+            "commit": "8898f9dbbbda6da34fe73555431766d23293b730"
+          },
+          {
+            "comment": "Dropdown: Cherry-pick commit from Fabric 7 to take: Error messages in Dropdown are now linked to the Dropdown (from a programmatic accessibility POV).",
+            "author": "raharri@microsoft.com",
+            "commit": "ff6ed33545b1fde443ecdfd9f070f31f18447d67"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 05 Nov 2019 12:24:16 GMT",
       "tag": "office-ui-fabric-react_v6.210.4",
       "version": "6.210.4",

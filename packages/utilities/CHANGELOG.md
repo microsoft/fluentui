@@ -1,7 +1,13 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Mon, 07 Oct 2019 12:24:52 GMT and should not be manually modified.
+This log was last generated on Thu, 21 Nov 2019 12:23:13 GMT and should not be manually modified.
 
+## 6.45.1
+Thu, 21 Nov 2019 12:23:13 GMT
+
+### Patches
+
+- Cherry-pick commit from Fabric 7 to take: "minor refinement to mergeAriaAttributeValues to correctly handle false, therefore allowing (`cond && "something") (raharri@microsoft.com)
 ## 6.45.0
 Mon, 07 Oct 2019 12:24:52 GMT
 
