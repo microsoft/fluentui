@@ -62,4 +62,16 @@ export interface IPivotItemProps extends React.HTMLAttributes<HTMLDivElement> {
    * Optional keytip for this PivotItem
    */
   keytipProps?: IKeytipProps;
+
+  /**
+   * A custom cache key to be used for this item. If `cacheKey` is changed, the cache will invalidate.
+   * Defaults to `key` value.
+   */
+  cacheKey?: string;
+
+  /**
+   * Context under which the item is being rendered.
+   * This value is mutated by the Pivot and is useful for adjusting the `onRender` function.
+   */
+  renderedInOverflow?: boolean;
 }

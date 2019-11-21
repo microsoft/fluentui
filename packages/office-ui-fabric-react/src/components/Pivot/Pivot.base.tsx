@@ -1,25 +1,44 @@
 import * as React from 'react';
-import { BaseComponent, KeyCodes, getId, getNativeProps, divProperties, classNamesFunction, warn } from '../../Utilities';
-import { CommandButton } from '../../Button';
-import { IPivotProps, IPivotStyleProps, IPivotStyles } from './Pivot.types';
+import { BaseComponent, KeyCodes, getId, getNativeProps, divProperties, classNamesFunction, warn, css } from '../../Utilities';
+import { CommandButton, CommandBarButton, IButtonProps } from '../../Button';
+import { IPivotProps, IPivotStyleProps, IPivotStyles, IPivot } from './Pivot.types';
 import { IPivotItemProps } from './PivotItem.types';
-import { FocusZone, FocusZoneDirection } from '../../FocusZone';
+import { FocusZoneDirection } from '../../FocusZone';
 import { PivotItem } from './PivotItem';
 import { PivotLinkFormat } from './Pivot.types';
 import { PivotLinkSize } from './Pivot.types';
 import { Icon } from '../../Icon';
+import { IOverflowSetItemProps, IOverflowSet } from '../OverflowSet/OverflowSet.types';
+import { OverflowSet } from '../OverflowSet';
+import { IResizeGroup } from '../ResizeGroup/ResizeGroup.types';
+import { ResizeGroup } from '../ResizeGroup';
+import { ICommandBarItemProps } from '../CommandBar/CommandBar.types';
 
 const getClassNames = classNamesFunction<IPivotStyleProps, IPivotStyles>();
+export interface IPivotData {
+  /**
+   * Items being rendered as tabs
+   */
+  items: IPivotItemProps[];
+  /**
+   * Items being rendered in the overflow
+   */
+  overflowItems: IOverflowSetItemProps[];
+  /**
+   * Unique string used to cache the width of the command bar
+   */
+  cacheKey: string;
+}
+
+interface IPivotInitialData {
+  items: IPivotItemProps[];
+  keyToIndexMapping: { [key: string]: number };
+  keyToTabIdMapping: { [key: string]: string };
+}
 
 export interface IPivotState {
   selectedKey: string | undefined;
 }
-
-type PivotLinkCollection = {
-  links: IPivotItemProps[];
-  keyToIndexMapping: { [key: string]: number };
-  keyToTabIdMapping: { [key: string]: string };
-};
 
 /**
  *  Usage:
@@ -36,13 +55,18 @@ type PivotLinkCollection = {
  *       </PivotItem>
  *     </Pivot>
  */
-export class PivotBase extends BaseComponent<IPivotProps, IPivotState> {
+export class PivotBase extends BaseComponent<IPivotProps, IPivotState> implements IPivot {
   private _pivotId: string;
-  private _focusZone = React.createRef<FocusZone>();
+  private _overflowSet = React.createRef<IOverflowSet>();
+  private _resizeGroup = React.createRef<IResizeGroup>();
   private _classNames: { [key in keyof IPivotStyles]: string };
+  private _links: IPivotItemProps[];
+  private _keyToIndexMapping: { [key: string]: number };
+  private _keyToTabIdMapping: { [key: string]: string };
 
   constructor(props: IPivotProps) {
     super(props);
+    this._links = [];
 
     this._warnDeprecations({
       initialSelectedKey: 'defaultSelectedKey',
@@ -50,7 +74,7 @@ export class PivotBase extends BaseComponent<IPivotProps, IPivotState> {
     });
 
     this._pivotId = getId('Pivot');
-    const links: IPivotItemProps[] = this._getPivotLinks(props).links;
+    const links = this._getPivotLinks(props).items;
 
     const { defaultSelectedKey = props.initialSelectedKey, defaultSelectedIndex = props.initialSelectedIndex } = props;
 
@@ -73,71 +97,106 @@ export class PivotBase extends BaseComponent<IPivotProps, IPivotState> {
    * Sets focus to the first pivot tab.
    */
   public focus(): void {
-    if (this._focusZone.current) {
-      this._focusZone.current.focus();
+    if (this._overflowSet.current) {
+      this._overflowSet.current.focus();
     }
   }
 
+  public remeasure(): void {
+    this._resizeGroup.current && this._resizeGroup.current.remeasure();
+  }
+
   public render(): JSX.Element {
-    const linkCollection = this._getPivotLinks(this.props);
-    const selectedKey = this._getSelectedKey(linkCollection);
+    const { dataDidRender, onReduceData = this._onReduceData, onGrowData = this._onGrowData } = this.props;
 
+    const pivotLinksData = this._getPivotLinks(this.props);
+
+    // Set the initial data
+    const pivotData: IPivotData = {
+      items: [...pivotLinksData.items],
+      overflowItems: [],
+      cacheKey: ''
+    };
+    this._keyToIndexMapping = pivotLinksData.keyToIndexMapping;
+    this._keyToTabIdMapping = pivotLinksData.keyToTabIdMapping;
+
+    const selectedKey = this._getSelectedKey();
     const divProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties);
-
     this._classNames = this._getClassNames(this.props);
 
     return (
       <div {...divProps}>
-        {this._renderPivotLinks(linkCollection, selectedKey)}
-        {selectedKey && this._renderPivotItem(linkCollection, selectedKey)}
+        <ResizeGroup
+          {...divProps} // should I do something different to support backwards comp?
+          componentRef={this._resizeGroup}
+          data={pivotData}
+          onReduceData={onReduceData}
+          onGrowData={onGrowData}
+          onRenderData={this._renderPivotLinks}
+          dataDidRender={dataDidRender}
+        />
+        {/* {this._renderPivotLinks(pivotLinks)} */}
+        {selectedKey && this._renderPivotItem(this._keyToIndexMapping, this._keyToTabIdMapping, selectedKey)}
       </div>
     );
   }
 
-  private _getSelectedKey(linkCollection: PivotLinkCollection) {
+  private _getSelectedKey = () => {
     const { selectedKey: propsSelectedKey } = this.props;
 
-    if (this._isKeyValid(linkCollection, propsSelectedKey) || propsSelectedKey === null) {
+    if (this._isKeyValid(this._keyToIndexMapping, propsSelectedKey) || propsSelectedKey === null) {
       return propsSelectedKey;
     }
 
     const { selectedKey: stateSelectedKey } = this.state;
-    if (this._isKeyValid(linkCollection, stateSelectedKey)) {
+    if (this._isKeyValid(this._keyToIndexMapping, stateSelectedKey)) {
       return stateSelectedKey;
     }
 
-    if (linkCollection.links.length) {
-      return linkCollection.links[0].itemKey;
+    if (this._links.length) {
+      return this._links[0].itemKey;
     }
 
     return undefined;
-  }
+  };
 
   /**
    * Renders the set of links to route between pivots
    */
-  private _renderPivotLinks(linkCollection: PivotLinkCollection, selectedKey: string | null | undefined): JSX.Element {
-    const items = linkCollection.links.map(l => this._renderPivotLink(linkCollection, l, selectedKey));
+  private _renderPivotLinks = (data: IPivotData): JSX.Element => {
+    // const selectedKey = this._getSelectedKey();
+    // const items = linkCollection.links.map(l => this._renderPivotLink(linkCollection, l, selectedKey));
 
     return (
-      <FocusZone componentRef={this._focusZone} direction={FocusZoneDirection.horizontal}>
-        <div className={this._classNames.root} role="tablist">
-          {items}
-        </div>
-      </FocusZone>
+      // <FocusZone componentRef={this._focusZone} direction={FocusZoneDirection.horizontal}>
+      <OverflowSet
+        componentRef={this._overflowSet}
+        className={css(this._classNames.root)}
+        focusZoneProps={{
+          direction: FocusZoneDirection.horizontal
+        }}
+        role={'presentation'}
+        // TODO: Is is fair to assume itemKey will always have a value??
+        items={data.items.map(x => {
+          return { ...x, key: x.itemKey || '' };
+        })}
+        overflowItems={data.overflowItems.length ? data.overflowItems : undefined}
+        onRenderItem={this._renderPivotLink}
+        onRenderOverflowButton={this._onRenderOverflowButton}
+      />
+      // <div className={this._classNames.root} role="tablist">
+      //   {items}
+      // </div>
+      // </FocusZone>
     );
-  }
+  };
 
-  private _renderPivotLink = (
-    linkCollection: PivotLinkCollection,
-    link: IPivotItemProps,
-    selectedKey: string | null | undefined
-  ): JSX.Element => {
+  private _renderPivotLink = (link: IPivotItemProps): JSX.Element => {
     const { itemKey, headerButtonProps } = link;
-    const tabId = linkCollection.keyToTabIdMapping[itemKey!];
+    const tabId = this._keyToTabIdMapping[itemKey!];
     const { onRenderItemLink } = link;
     let linkContent: JSX.Element | null;
-    const isSelected: boolean = selectedKey === itemKey;
+    const isSelected: boolean = this._getSelectedKey() === itemKey;
 
     if (onRenderItemLink) {
       linkContent = onRenderItemLink(link, this._renderLinkContent);
@@ -190,13 +249,17 @@ export class PivotBase extends BaseComponent<IPivotProps, IPivotState> {
   /**
    * Renders the current Pivot Item
    */
-  private _renderPivotItem(linkCollection: PivotLinkCollection, itemKey: string | undefined): JSX.Element | null {
+  private _renderPivotItem(
+    keyToIndexMapping: { [key: string]: number },
+    keyToTabIdMapping: { [key: string]: string },
+    itemKey: string | undefined
+  ): JSX.Element | null {
     if (this.props.headersOnly || !itemKey) {
       return null;
     }
 
-    const index = linkCollection.keyToIndexMapping[itemKey];
-    const selectedTabId = linkCollection.keyToTabIdMapping[itemKey];
+    const index = keyToIndexMapping[itemKey];
+    const selectedTabId = keyToTabIdMapping[itemKey];
 
     return (
       <div role="tabpanel" aria-labelledby={selectedTabId} className={this._classNames.itemContainer}>
@@ -209,12 +272,10 @@ export class PivotBase extends BaseComponent<IPivotProps, IPivotState> {
    * Gets the set of PivotLinks as array of IPivotItemProps
    * The set of Links is determined by child components of type PivotItem
    */
-  private _getPivotLinks(props: IPivotProps): PivotLinkCollection {
-    const result: PivotLinkCollection = {
-      links: [],
-      keyToIndexMapping: {},
-      keyToTabIdMapping: {}
-    };
+  private _getPivotLinks(props: IPivotProps): IPivotInitialData {
+    const result: IPivotItemProps[] = [];
+    const keyToIndexMapping: { [key: string]: number } = {};
+    const keyToTabIdMapping: { [key: string]: string } = {};
 
     React.Children.map(React.Children.toArray(props.children), (child: React.ReactChild, index: number) => {
       if (_isPivotItem(child)) {
@@ -222,20 +283,24 @@ export class PivotBase extends BaseComponent<IPivotProps, IPivotState> {
         const { linkText, ...pivotItemProps } = pivotItem.props;
         const itemKey = pivotItem.props.itemKey || index.toString();
 
-        result.links.push({
+        result.push({
           // Use linkText (deprecated) if headerText is not provided
           headerText: linkText,
           ...pivotItemProps,
           itemKey: itemKey
         });
-        result.keyToIndexMapping[itemKey] = index;
-        result.keyToTabIdMapping[itemKey] = this._getTabId(itemKey, index);
+        keyToIndexMapping[itemKey] = index;
+        keyToTabIdMapping[itemKey] = this._getTabId(itemKey, index);
       } else {
         warn('The children of a Pivot component must be of type PivotItem to be rendered.');
       }
     });
 
-    return result;
+    return {
+      items: result,
+      keyToIndexMapping: keyToIndexMapping,
+      keyToTabIdMapping: keyToTabIdMapping
+    };
   }
 
   /**
@@ -252,8 +317,8 @@ export class PivotBase extends BaseComponent<IPivotProps, IPivotState> {
   /**
    * whether the key exists in the pivot items.
    */
-  private _isKeyValid(linkCollection: PivotLinkCollection, itemKey: string | null | undefined): boolean {
-    return itemKey !== undefined && itemKey !== null && linkCollection.keyToIndexMapping[itemKey] !== undefined;
+  private _isKeyValid(keyToIndexMapping: { [key: string]: number }, itemKey: string | null | undefined): boolean {
+    return itemKey !== undefined && itemKey !== null && keyToIndexMapping[itemKey] !== undefined;
   }
 
   /**
@@ -282,10 +347,8 @@ export class PivotBase extends BaseComponent<IPivotProps, IPivotState> {
       selectedKey: itemKey
     });
 
-    const linkCollection = this._getPivotLinks(this.props);
-
-    if (this.props.onLinkClick && linkCollection.keyToIndexMapping[itemKey] >= 0) {
-      const index = linkCollection.keyToIndexMapping[itemKey];
+    if (this.props.onLinkClick && this._keyToIndexMapping[itemKey] >= 0) {
+      const index = this._keyToIndexMapping[itemKey];
 
       // React.Element<any> cannot directly convert to PivotItem.
       const item = React.Children.toArray(this.props.children)[index];
@@ -307,6 +370,95 @@ export class PivotBase extends BaseComponent<IPivotProps, IPivotState> {
       rootIsTabs
     });
   }
+
+  private _onRenderOverflowButton = (overflowItems: ICommandBarItemProps[]): JSX.Element => {
+    const {
+      overflowButtonAs: OverflowButtonType = CommandBarButton,
+      overflowButtonProps = {} // assure that props is not empty
+    } = this.props;
+
+    const combinedOverflowItems: ICommandBarItemProps[] = [
+      ...(overflowButtonProps.menuProps ? overflowButtonProps.menuProps.items : []),
+      ...overflowItems
+    ];
+
+    const overflowProps: IButtonProps = {
+      ...overflowButtonProps,
+      styles: { menuIcon: { fontSize: '17px' }, ...overflowButtonProps.styles },
+      className: css('ms-CommandBar-overflowButton', overflowButtonProps.className),
+      menuProps: { ...overflowButtonProps.menuProps, items: combinedOverflowItems },
+      menuIconProps: { iconName: 'More', ...overflowButtonProps.menuIconProps }
+    };
+
+    return <OverflowButtonType {...overflowProps as IButtonProps} />;
+  };
+
+  private _computeCacheKey(data: IPivotData): string {
+    const { items: primaryItems, overflowItems } = data;
+    const returnKey = (acc: string, current: IPivotItemProps): string => {
+      const { cacheKey = current.itemKey } = current;
+      return acc + cacheKey;
+    };
+
+    const primaryKey = primaryItems.reduce(returnKey, '');
+    const overflowKey = !!overflowItems.length ? 'overflow' : '';
+
+    return [primaryKey, overflowKey].join(' ');
+  }
+
+  private _onReduceData = (data: IPivotData): IPivotData | undefined => {
+    const { shiftOnReduce, onDataReduced } = this.props;
+    let { items: primaryItems, overflowItems, cacheKey } = data;
+
+    // Use first item if shiftOnReduce, otherwise use last item
+    const movedItem = primaryItems[shiftOnReduce ? 0 : primaryItems.length - 1];
+
+    if (movedItem !== undefined) {
+      movedItem.renderedInOverflow = true;
+
+      // TODO: Is is fair to assume itemKey will always have a value??
+      overflowItems = [{ ...movedItem, key: movedItem.itemKey || '' }, ...overflowItems];
+      primaryItems = shiftOnReduce ? primaryItems.slice(1) : primaryItems.slice(0, -1);
+      const newData: IPivotData = { ...data, items: primaryItems, overflowItems };
+      cacheKey = this._computeCacheKey(newData);
+
+      if (onDataReduced) {
+        onDataReduced(movedItem);
+      }
+
+      newData.cacheKey = cacheKey;
+      return newData;
+    }
+
+    return undefined;
+  };
+
+  private _onGrowData = (data: IPivotData): IPivotData | undefined => {
+    const { shiftOnReduce, onDataGrown } = this.props;
+    let { items: primaryItems, overflowItems, cacheKey } = data;
+    const movedItem = overflowItems[0];
+
+    // Make sure that moved item exists
+    if (movedItem !== undefined) {
+      movedItem.renderedInOverflow = false;
+
+      overflowItems = overflowItems.slice(1);
+      // if shiftOnReduce, movedItem goes first, otherwise, last.
+      primaryItems = shiftOnReduce ? [movedItem, ...primaryItems] : [...primaryItems, movedItem];
+
+      const newData = { ...data, primaryItems, overflowItems };
+      cacheKey = this._computeCacheKey(newData);
+
+      if (onDataGrown) {
+        onDataGrown(movedItem);
+      }
+
+      newData.cacheKey = cacheKey;
+      return newData;
+    }
+
+    return undefined;
+  };
 }
 
 function _isPivotItem(item: React.ReactNode): item is PivotItem {

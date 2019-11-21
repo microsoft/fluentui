@@ -1,8 +1,10 @@
 import * as React from 'react';
-import { PivotBase } from './Pivot.base';
+import { PivotBase, IPivotData } from './Pivot.base';
 import { IStyle, ITheme } from '../../Styling';
-import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
+import { IRefObject, IStyleFunctionOrObject, IComponentAs } from '../../Utilities';
 import { PivotItem } from './PivotItem';
+import { IButtonProps } from '../Button';
+import { IPivotItemProps } from './PivotItem.types';
 
 /**
  * {@docCategory Pivot}
@@ -12,6 +14,11 @@ export interface IPivot {
    * Sets focus to the first pivot tab.
    */
   focus(): void;
+
+  /**
+   * Remeasures the available space.
+   */
+  remeasure(): void;
 }
 
 /**
@@ -106,6 +113,53 @@ export interface IPivotProps extends React.ClassAttributes<PivotBase>, React.HTM
    * Useful if you're rendering content outside and need to connect aria-labelledby.
    */
   getTabId?: (itemKey: string, index: number) => string;
+
+  /**
+   * Props to be passed to overflow button.
+   * If `menuProps` are passed through this prop, any items provided will be prepended to any
+   * computed overflow items.
+   */
+  overflowButtonProps?: IButtonProps;
+
+  /**
+   * Custom component for the overflow button.
+   */
+  overflowButtonAs?: IComponentAs<IButtonProps>;
+
+  /**
+   * When true, items will be 'shifted' off the front of the array when reduced, and unshifted during grow.
+   */
+  shiftOnReduce?: boolean;
+
+  /**
+   * Custom function to reduce data if items do not fit in given space.
+   * Return `undefined` if no more steps can be taken to avoid infinate loop.
+   */
+  onReduceData?: (data: IPivotData) => IPivotData | undefined;
+
+  /**
+   * Custom function to grow data if items are too small for the given space.
+   * Return `undefined` if no more steps can be taken to avoid infinate loop.
+   */
+  onGrowData?: (data: IPivotData) => IPivotData | undefined;
+
+  /**
+   * Callback invoked when data has been reduced.
+   */
+  onDataReduced?: (movedItem: IPivotItemProps) => void;
+
+  /**
+   * Callback invoked when data has been grown.
+   */
+  onDataGrown?: (movedItem: IPivotItemProps) => void;
+
+  /**
+   * Function to be called every time data is rendered. It provides the data that was actually rendered.
+   * A use case would be adding telemetry when a particular control is shown in an overflow or dropped
+   * as a result of `onReduceData`, or to count the number of renders that an implementation of
+   * `onReduceData` triggers.
+   */
+  dataDidRender?: (renderedData: any) => void;
 }
 
 /**

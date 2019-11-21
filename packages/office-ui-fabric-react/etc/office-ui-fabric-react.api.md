@@ -6128,11 +6128,20 @@ export interface IPickerItemProps<T> extends React.AllHTMLAttributes<HTMLElement
 // @public (undocumented)
 export interface IPivot {
     focus(): void;
+    remeasure(): void;
+}
+
+// @public (undocumented)
+export interface IPivotData {
+    cacheKey: string;
+    items: IPivotItemProps[];
+    overflowItems: IOverflowSetItemProps[];
 }
 
 // @public (undocumented)
 export interface IPivotItemProps extends React.HTMLAttributes<HTMLDivElement> {
     ariaLabel?: string;
+    cacheKey?: string;
     componentRef?: IRefObject<{}>;
     headerButtonProps?: {
         [key: string]: string | number | boolean;
@@ -6145,12 +6154,14 @@ export interface IPivotItemProps extends React.HTMLAttributes<HTMLDivElement> {
     // @deprecated
     linkText?: string;
     onRenderItemLink?: IRenderFunction<IPivotItemProps>;
+    renderedInOverflow?: boolean;
 }
 
 // @public (undocumented)
 export interface IPivotProps extends React.ClassAttributes<PivotBase>, React.HTMLAttributes<HTMLDivElement> {
     className?: string;
     componentRef?: IRefObject<IPivot>;
+    dataDidRender?: (renderedData: any) => void;
     defaultSelectedIndex?: number;
     defaultSelectedKey?: string;
     getTabId?: (itemKey: string, index: number) => string;
@@ -6161,8 +6172,15 @@ export interface IPivotProps extends React.ClassAttributes<PivotBase>, React.HTM
     initialSelectedKey?: string;
     linkFormat?: PivotLinkFormat;
     linkSize?: PivotLinkSize;
+    onDataGrown?: (movedItem: IPivotItemProps) => void;
+    onDataReduced?: (movedItem: IPivotItemProps) => void;
+    onGrowData?: (data: IPivotData) => IPivotData | undefined;
     onLinkClick?: (item?: PivotItem, ev?: React.MouseEvent<HTMLElement>) => void;
+    onReduceData?: (data: IPivotData) => IPivotData | undefined;
+    overflowButtonAs?: IComponentAs<IButtonProps>;
+    overflowButtonProps?: IButtonProps;
     selectedKey?: string | null;
+    shiftOnReduce?: boolean;
     styles?: IStyleFunctionOrObject<IPivotStyleProps, IPivotStyles>;
     theme?: ITheme;
 }
@@ -8430,9 +8448,11 @@ export namespace personaSize {
 export const Pivot: React.StatelessComponent<IPivotProps>;
 
 // @public
-export class PivotBase extends BaseComponent<IPivotProps, IPivotState> {
+export class PivotBase extends BaseComponent<IPivotProps, IPivotState> implements IPivot {
     constructor(props: IPivotProps);
     focus(): void;
+    // (undocumented)
+    remeasure(): void;
     // (undocumented)
     render(): JSX.Element;
     }
