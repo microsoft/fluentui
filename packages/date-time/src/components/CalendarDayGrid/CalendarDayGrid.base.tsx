@@ -23,7 +23,7 @@ import {
 } from 'office-ui-fabric-react/lib/utilities/dateMath/DateMath';
 import { ICalendarDayGridProps, ICalendarDayGridStyleProps, ICalendarDayGridStyles } from './CalendarDayGrid.types';
 import { IProcessedStyleSet } from '@uifabric/styling';
-import { DateRangeType } from '../Calendar/Calendar.types';
+import { DateRangeType, DayOfWeek } from '../Calendar/Calendar.types';
 
 const DAYS_IN_WEEK = 7;
 
@@ -437,21 +437,7 @@ export class CalendarDayGridBase extends BaseComponent<ICalendarDayGridProps, IC
     let isAllDaysOfWeekOutOfMonth = false;
 
     // in work week view if the days aren't contiguous we use week view instead
-    let selectedDateRangeType = dateRangeType;
-    if (workWeekDays && dateRangeType === DateRangeType.WorkWeek) {
-      const sortedWWDays = workWeekDays.sort();
-      let isContiguous = true;
-      for (let i = 1; i < sortedWWDays.length; i++) {
-        if (sortedWWDays[i] !== sortedWWDays[i - 1] + 1) {
-          isContiguous = false;
-          break;
-        }
-      }
-
-      if (!isContiguous) {
-        selectedDateRangeType = DateRangeType.Week;
-      }
-    }
+    const selectedDateRangeType = this.getDateRangeTypeToUse(dateRangeType, workWeekDays);
 
     let selectedDates = getDateRangeArray(selectedDate, selectedDateRangeType, firstDayOfWeek, workWeekDays, daysToSelectInDayView);
     selectedDates = this._getBoundedDateRange(selectedDates, minDate, maxDate);
@@ -672,7 +658,7 @@ export class CalendarDayGridBase extends BaseComponent<ICalendarDayGridProps, IC
     const { dateRangeType, firstDayOfWeek, workWeekDays, daysToSelectInDayView } = this.props;
 
     // The hover state looks weird with non-contiguous days in work week view. In work week, show week hover state
-    const dateRangeHoverType = dateRangeType === DateRangeType.WorkWeek ? DateRangeType.Week : dateRangeType;
+    const dateRangeHoverType = this.getDateRangeTypeToUse(dateRangeType, workWeekDays);
 
     // gets all the dates for the given date range type that are in the same date range as the given day
     const dateRange = getDateRangeArray(day.originalDate, dateRangeHoverType, firstDayOfWeek, workWeekDays, daysToSelectInDayView).map(
@@ -777,5 +763,28 @@ export class CalendarDayGridBase extends BaseComponent<ICalendarDayGridProps, IC
         }
       });
     };
+  };
+
+  /**
+   * When given work week, if the days are non-contiguous, the hover states look really weird. So for non-contiguous work weeks,
+   * we'll just show week view instead
+   */
+  private getDateRangeTypeToUse = (dateRangeType: DateRangeType, workWeekDays: DayOfWeek[] | undefined): DateRangeType => {
+    if (workWeekDays && dateRangeType === DateRangeType.WorkWeek) {
+      const sortedWWDays = workWeekDays.slice().sort();
+      let isContiguous = true;
+      for (let i = 1; i < sortedWWDays.length; i++) {
+        if (sortedWWDays[i] !== sortedWWDays[i - 1] + 1) {
+          isContiguous = false;
+          break;
+        }
+      }
+
+      if (!isContiguous || workWeekDays.length === 0) {
+        return DateRangeType.Week;
+      }
+    }
+
+    return dateRangeType;
   };
 }

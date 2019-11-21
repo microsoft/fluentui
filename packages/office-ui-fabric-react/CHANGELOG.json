@@ -2,6 +2,27 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Thu, 21 Nov 2019 12:30:32 GMT",
+      "tag": "office-ui-fabric-react_v7.64.0",
+      "version": "7.64.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Fabric Component: add applyTheme and applyThemeToBody props.",
+            "author": "aneeshak@microsoft.com",
+            "commit": "887f4fdea84fd6380673a5a0489e3a1995a7d6a2"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Updated searchbox and textfield disabled borders in high contrast",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "1ce08491e0c1ab8191e75b35170d1a2e7d6c8ac5"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 20 Nov 2019 12:29:50 GMT",
       "tag": "office-ui-fabric-react_v7.63.0",
       "version": "7.63.0",

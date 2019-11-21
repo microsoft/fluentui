@@ -2,6 +2,20 @@
   "name": "@uifabric/date-time",
   "entries": [
     {
+      "date": "Thu, 21 Nov 2019 12:30:32 GMT",
+      "tag": "@uifabric/date-time_v7.5.7",
+      "version": "7.5.7",
+      "comments": {
+        "patch": [
+          {
+            "comment": "updating work week hover state to match the actual days that are going to be selected. The mouse over state still takes the whole week into account",
+            "author": "jolore@microsoft.com",
+            "commit": "81548bf2b1f2092d423578a5a7a8261317a46059"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 08 Nov 2019 12:30:07 GMT",
       "tag": "@uifabric/date-time_v7.5.6",
       "version": "7.5.6",
