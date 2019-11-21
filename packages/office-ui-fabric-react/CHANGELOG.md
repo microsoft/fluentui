@@ -1,7 +1,16 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 20 Nov 2019 12:29:50 GMT and should not be manually modified.
+This log was last generated on Thu, 21 Nov 2019 12:30:32 GMT and should not be manually modified.
 
+## 7.64.0
+Thu, 21 Nov 2019 12:30:32 GMT
+
+### Minor changes
+
+- Fabric Component: add applyTheme and applyThemeToBody props. (aneeshak@microsoft.com)
+### Patches
+
+- Updated searchbox and textfield disabled borders in high contrast (mgodbolt@microsoft.com)
 ## 7.63.0
 Wed, 20 Nov 2019 12:29:50 GMT
 
