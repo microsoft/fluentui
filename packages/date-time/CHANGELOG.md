@@ -1,7 +1,13 @@
 # Change Log - @uifabric/date-time
 
-This log was last generated on Fri, 08 Nov 2019 12:30:07 GMT and should not be manually modified.
+This log was last generated on Thu, 21 Nov 2019 12:30:32 GMT and should not be manually modified.
 
+## 7.5.7
+Thu, 21 Nov 2019 12:30:32 GMT
+
+### Patches
+
+- updating work week hover state to match the actual days that are going to be selected. The mouse over state still takes the whole week into account (jolore@microsoft.com)
 ## 7.5.6
 Fri, 08 Nov 2019 12:30:07 GMT
 

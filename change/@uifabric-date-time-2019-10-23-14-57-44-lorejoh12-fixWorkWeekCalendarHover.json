@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "updating work week hover state to match the actual days that are going to be selected. The mouse over state still takes the whole week into account",
-  "packageName": "@uifabric/date-time",
-  "email": "jolore@microsoft.com",
-  "commit": "81548bf2b1f2092d423578a5a7a8261317a46059",
-  "date": "2019-10-23T21:57:44.281Z"
-}
