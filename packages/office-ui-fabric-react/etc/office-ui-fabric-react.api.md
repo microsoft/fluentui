@@ -6135,7 +6135,7 @@ export interface IPivot {
 export interface IPivotData {
     cacheKey: string;
     items: IPivotItemProps[];
-    overflowItems: IOverflowSetItemProps[];
+    overflowItems: IContextualMenuItem[];
 }
 
 // @public (undocumented)

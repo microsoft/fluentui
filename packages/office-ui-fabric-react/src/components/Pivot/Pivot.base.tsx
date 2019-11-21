@@ -217,8 +217,8 @@ export class PivotBase extends BaseComponent<IPivotProps, IPivotState> implement
         id={tabId}
         key={itemKey}
         className={isSelected ? this._classNames.linkIsSelected : this._classNames.link}
-        onClick={this._onLinkClick.bind(this, itemKey)}
-        onKeyPress={this._onKeyPress.bind(this, itemKey)}
+        onClick={this._onLinkClick.bind(this, itemKey, true)}
+        onKeyPress={this._onKeyPress.bind(this, itemKey, true)}
         ariaLabel={link.ariaLabel}
         role="tab"
         aria-selected={isSelected}
@@ -325,18 +325,24 @@ export class PivotBase extends BaseComponent<IPivotProps, IPivotState> implement
 
   /**
    * Handles the onClick event on PivotLinks
+   * @param preventDefault in the case of the overflow set we don't want to prevent the default as that is what closes the menu
    */
-  private _onLinkClick(itemKey: string, ev: React.MouseEvent<HTMLElement>): void {
-    ev.preventDefault();
+  private _onLinkClick(itemKey: string, preventDefault: boolean, ev: React.MouseEvent<HTMLElement>): void {
+    if (preventDefault) {
+      ev.preventDefault();
+    }
     this._updateSelectedItem(itemKey, ev);
   }
 
   /**
    * Handle the onKeyPress eventon the PivotLinks
+   * @param preventDefault in the case of the overflow set we don't want to prevent the default as that is what closes the menu
    */
-  private _onKeyPress(itemKey: string, ev: React.KeyboardEvent<HTMLElement>): void {
+  private _onKeyPress(itemKey: string, preventDefault: boolean, ev: React.KeyboardEvent<HTMLElement>): void {
     if (ev.which === KeyCodes.enter) {
-      ev.preventDefault();
+      if (preventDefault) {
+        ev.preventDefault();
+      }
       this._updateSelectedItem(itemKey);
     }
   }
@@ -425,19 +431,19 @@ export class PivotBase extends BaseComponent<IPivotProps, IPivotState> implement
         itemType: ContextualMenuItemType.Normal, // mismatched types
         onMouseDown: undefined, // mismatched types
         text: movedItem.linkText || movedItem.headerText,
-        // TODO: Is is fair to assume itemKey will always have a value??
-        onClick: (ev?: React.MouseEvent<HTMLElement>): boolean => {
-          // if (ev && ev.keyCode) {
-          // | React.KeyboardEvent<HTMLElement>
-          // }
+        onClick: (ev?: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>): boolean => {
           console.log('Before');
-          this._onLinkClick(movedItem.itemKey || '', ev!);
+          // is keyboard event
+          if (ev && 'keyCode' in ev) {
+            this._onKeyPress(movedItem.itemKey || '', false, ev as React.KeyboardEvent<HTMLElement>);
+          } else {
+            this._onLinkClick(movedItem.itemKey || '', false, ev as React.MouseEvent<HTMLElement>);
+          }
           console.log('***Hit me');
           return true; // tell the menu to close
         }
       };
 
-      // TODO: Is is fair to assume itemKey will always have a value??
       overflowItems = [convertedItem, ...overflowItems];
       primaryItems = shiftOnReduce ? primaryItems.slice(1) : primaryItems.slice(0, -1);
       const newData: IPivotData = { ...data, items: primaryItems, overflowItems };
