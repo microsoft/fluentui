@@ -212,11 +212,8 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
               left: '0px',
               width: '100%',
               height: '100%',
-              border:
-                !disabled &&
-                `2px solid ${
-                  palette.themePrimary
-                }` /* see https://github.com/OfficeDev/office-ui-fabric-react/pull/9182 for semantic color disc */,
+              // see https://github.com/OfficeDev/office-ui-fabric-react/pull/9182 for semantic color disc
+              border: !disabled ? `2px solid ${palette.themePrimary}` : 'none',
               borderRadius: '2px'
             },
             highContrastItemAndTitleStateMixin
