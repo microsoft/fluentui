@@ -10,6 +10,7 @@ import {
   ContextualMenu,
   IconButton
 } from 'office-ui-fabric-react';
+import { FontSizes } from '@uifabric/styling';
 import { getId } from 'office-ui-fabric-react/lib/Utilities';
 
 export interface IModalModelessExampleState {
@@ -19,7 +20,7 @@ export interface IModalModelessExampleState {
 
 // Themed styles for the example.
 const theme = getTheme();
-const styles = mergeStyleSets({
+const contentStyles = mergeStyleSets({
   container: {
     display: 'flex',
     flexFlow: 'column nowrap',
@@ -32,24 +33,10 @@ const styles = mergeStyleSets({
       borderTop: `4px solid ${theme.palette.themePrimary}`,
       color: theme.palette.neutralPrimary,
       display: 'flex',
+      fontSize: FontSizes.xLarge,
       alignItems: 'center',
       fontWeight: FontWeights.semibold,
-      padding: '12px 12px 14px 24px',
-      selectors: {
-        '.close': {
-          color: theme.palette.neutralPrimary,
-          selectors: {
-            '&:hover': {
-              color: theme.palette.neutralDark
-            }
-          }
-        },
-        '.closeButtonContainer': {
-          paddingTop: '4px',
-          paddingRight: '2px',
-          marginLeft: 'auto'
-        }
-      }
+      padding: '12px 12px 14px 24px'
     }
   ],
   body: {
@@ -67,6 +54,18 @@ const styles = mergeStyleSets({
         marginBottom: 0
       }
     }
+  }
+});
+
+const iconButtonStyles = mergeStyleSets({
+  root: {
+    color: theme.palette.neutralPrimary,
+    marginLeft: 'auto',
+    marginTop: '4px',
+    marginRight: '2px'
+  },
+  rootHovered: {
+    color: theme.palette.neutralDark
   }
 });
 
@@ -103,21 +102,19 @@ export class ModalModelessExample extends React.Component<{}, IModalModelessExam
           isOpen={showModal}
           onDismiss={this._closeModal}
           isModeless={true}
-          containerClassName={styles.container}
+          containerClassName={contentStyles.container}
           dragOptions={isDraggable ? this._dragOptions : undefined}
         >
-          <div className={styles.header}>
+          <div className={contentStyles.header}>
             <span id={this._titleId}>Lorem Ipsum</span>
-            <div className={'closeButtonContainer'}>
-              <IconButton
-                className={'close'}
-                iconProps={{ iconName: 'Cancel' }}
-                ariaLabel="Close popup modal"
-                onClick={this._closeModal as any}
-              />
-            </div>
+            <IconButton
+              styles={iconButtonStyles}
+              iconProps={{ iconName: 'Cancel' }}
+              ariaLabel="Close popup modal"
+              onClick={this._closeModal as any}
+            />
           </div>
-          <div id={this._subtitleId} className={styles.body}>
+          <div id={this._subtitleId} className={contentStyles.body}>
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas lorem nulla, malesuada ut sagittis sit amet, vulputate in
               leo. Maecenas vulputate congue sapien eu tincidunt. Etiam eu sem turpis. Fusce tempor sagittis nunc, ut interdum ipsum

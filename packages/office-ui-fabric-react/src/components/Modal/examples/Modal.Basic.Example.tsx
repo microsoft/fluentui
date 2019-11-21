@@ -20,7 +20,7 @@ export interface IModalBasicExampleState {
 
 // Themed styles for the example.
 const theme = getTheme();
-const modalStyles = mergeStyleSets({
+const contentStyles = mergeStyleSets({
   container: {
     display: 'flex',
     flexFlow: 'column nowrap',
@@ -100,10 +100,10 @@ export class ModalBasicExample extends React.Component<{}, IModalBasicExampleSta
           isOpen={this.state.showModal}
           onDismiss={this._closeModal}
           isBlocking={false}
-          containerClassName={modalStyles.container}
+          containerClassName={contentStyles.container}
           dragOptions={this.state.isDraggable ? this._dragOptions : undefined}
         >
-          <div className={modalStyles.header}>
+          <div className={contentStyles.header}>
             <span id={this._titleId}>Lorem Ipsum</span>
             <IconButton
               styles={iconButtonStyles}
@@ -112,7 +112,7 @@ export class ModalBasicExample extends React.Component<{}, IModalBasicExampleSta
               onClick={this._closeModal as any}
             />
           </div>
-          <div id={this._subtitleId} className={modalStyles.body}>
+          <div id={this._subtitleId} className={contentStyles.body}>
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas lorem nulla, malesuada ut sagittis sit amet, vulputate in
               leo. Maecenas vulputate congue sapien eu tincidunt. Etiam eu sem turpis. Fusce tempor sagittis nunc, ut interdum ipsum
