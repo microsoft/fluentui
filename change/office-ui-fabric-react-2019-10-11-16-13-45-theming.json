@@ -1,0 +1,9 @@
+{
+  "type": "minor",
+  "comment": "Fabric Component: add applyTheme and applyThemeToBody props.",
+  "packageName": "office-ui-fabric-react",
+  "email": "aneeshak@microsoft.com",
+  "commit": "887f4fdea84fd6380673a5a0489e3a1995a7d6a2",
+  "date": "2019-10-11T23:13:45.004Z",
+  "file": "/Users/aneeshak/office-ui-fabric-react/change/office-ui-fabric-react-2019-10-11-16-13-45-theming.json"
+}
