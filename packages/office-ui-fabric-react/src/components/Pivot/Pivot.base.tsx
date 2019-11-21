@@ -8,11 +8,12 @@ import { PivotItem } from './PivotItem';
 import { PivotLinkFormat } from './Pivot.types';
 import { PivotLinkSize } from './Pivot.types';
 import { Icon } from '../../Icon';
-import { IOverflowSetItemProps, IOverflowSet } from '../OverflowSet/OverflowSet.types';
+import { IOverflowSet } from '../OverflowSet/OverflowSet.types';
 import { OverflowSet } from '../OverflowSet';
 import { IResizeGroup } from '../ResizeGroup/ResizeGroup.types';
 import { ResizeGroup } from '../ResizeGroup';
 import { ICommandBarItemProps } from '../CommandBar/CommandBar.types';
+import { IContextualMenuItem, ContextualMenuItemType } from '../ContextualMenu/ContextualMenu.types';
 
 const getClassNames = classNamesFunction<IPivotStyleProps, IPivotStyles>();
 export interface IPivotData {
@@ -23,7 +24,7 @@ export interface IPivotData {
   /**
    * Items being rendered in the overflow
    */
-  overflowItems: IOverflowSetItemProps[];
+  overflowItems: IContextualMenuItem[];
   /**
    * Unique string used to cache the width of the command bar
    */
@@ -66,7 +67,6 @@ export class PivotBase extends BaseComponent<IPivotProps, IPivotState> implement
 
   constructor(props: IPivotProps) {
     super(props);
-    this._links = [];
 
     this._warnDeprecations({
       initialSelectedKey: 'defaultSelectedKey',
@@ -88,6 +88,7 @@ export class PivotBase extends BaseComponent<IPivotProps, IPivotState> implement
       selectedKey = links[0].itemKey!;
     }
 
+    this._links = links;
     this.state = {
       selectedKey
     };
@@ -117,6 +118,7 @@ export class PivotBase extends BaseComponent<IPivotProps, IPivotState> implement
       overflowItems: [],
       cacheKey: ''
     };
+    this._links = pivotLinksData.items;
     this._keyToIndexMapping = pivotLinksData.keyToIndexMapping;
     this._keyToTabIdMapping = pivotLinksData.keyToTabIdMapping;
 
@@ -416,8 +418,27 @@ export class PivotBase extends BaseComponent<IPivotProps, IPivotState> implement
     if (movedItem !== undefined) {
       movedItem.renderedInOverflow = true;
 
+      const convertedItem: IContextualMenuItem = {
+        key: movedItem.itemKey || '',
+        ...movedItem,
+        componentRef: undefined, // mismatched types
+        itemType: ContextualMenuItemType.Normal, // mismatched types
+        onMouseDown: undefined, // mismatched types
+        text: movedItem.linkText || movedItem.headerText,
+        // TODO: Is is fair to assume itemKey will always have a value??
+        onClick: (ev?: React.MouseEvent<HTMLElement>): boolean => {
+          // if (ev && ev.keyCode) {
+          // | React.KeyboardEvent<HTMLElement>
+          // }
+          console.log('Before');
+          this._onLinkClick(movedItem.itemKey || '', ev!);
+          console.log('***Hit me');
+          return true; // tell the menu to close
+        }
+      };
+
       // TODO: Is is fair to assume itemKey will always have a value??
-      overflowItems = [{ ...movedItem, key: movedItem.itemKey || '' }, ...overflowItems];
+      overflowItems = [convertedItem, ...overflowItems];
       primaryItems = shiftOnReduce ? primaryItems.slice(1) : primaryItems.slice(0, -1);
       const newData: IPivotData = { ...data, items: primaryItems, overflowItems };
       cacheKey = this._computeCacheKey(newData);
@@ -438,19 +459,23 @@ export class PivotBase extends BaseComponent<IPivotProps, IPivotState> implement
     let { items: primaryItems, overflowItems, cacheKey } = data;
     const movedItem = overflowItems[0];
 
+    // Since we converted the tab into a buton, we need to grab the original properties
+    // Since we set an itemKey on every entry even if not provided(we use index) this should always resolve to a record
+    const originalItem = movedItem && movedItem.key ? this._links.find(x => x.itemKey === movedItem.key) : undefined;
+
     // Make sure that moved item exists
-    if (movedItem !== undefined) {
-      movedItem.renderedInOverflow = false;
+    if (originalItem !== undefined) {
+      originalItem.renderedInOverflow = false;
 
       overflowItems = overflowItems.slice(1);
       // if shiftOnReduce, movedItem goes first, otherwise, last.
-      primaryItems = shiftOnReduce ? [movedItem, ...primaryItems] : [...primaryItems, movedItem];
+      primaryItems = shiftOnReduce ? [originalItem, ...primaryItems] : [...primaryItems, originalItem];
 
-      const newData = { ...data, primaryItems, overflowItems };
+      const newData: IPivotData = { ...data, items: primaryItems, overflowItems };
       cacheKey = this._computeCacheKey(newData);
 
       if (onDataGrown) {
-        onDataGrown(movedItem);
+        onDataGrown(originalItem);
       }
 
       newData.cacheKey = cacheKey;

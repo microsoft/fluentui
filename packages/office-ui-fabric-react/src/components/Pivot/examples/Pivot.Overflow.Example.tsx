@@ -9,8 +9,15 @@ const labelStyles: Partial<IStyleSet<ILabelStyles>> = {
 
 export const PivotOverflowExample: React.FunctionComponent = () => {
   return (
-    <div style={{ width: 300 }}>
-      <Pivot>
+    <div style={{ width: '30%' }}>
+      <Pivot
+        styles={{
+          root: {
+            // Show where the edge of the pivot is at to indicate where it should be cutting off elements
+            border: '1px solid black'
+          }
+        }}
+      >
         <PivotItem
           headerText="My Files"
           headerButtonProps={{
