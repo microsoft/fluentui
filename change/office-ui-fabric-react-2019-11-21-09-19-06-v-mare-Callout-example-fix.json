@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Callout: Fixed bottom padding and button alignment to flex-end",
+  "packageName": "office-ui-fabric-react",
+  "email": "v-mare@microsoft.com",
+  "commit": "7c65d0eb9fd4b9f2389a3f5d0be66f7f437f3406",
+  "date": "2019-11-21T17:19:06.157Z"
+}
