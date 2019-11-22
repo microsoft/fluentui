@@ -23,7 +23,7 @@ export const ActivityItemBasicExample: React.FunctionComponent = () => {
             alert('A name was clicked.');
           }}
         >
-          Philippe Lampros
+          Changed
         </Link>,
         <span key={2}> commented</span>
       ],
