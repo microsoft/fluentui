@@ -127,7 +127,7 @@ exports[`Component Examples renders ActivityItem.Basic.Example.tsx correctly 1`]
           onClick={[Function]}
           type="button"
         >
-          Philippe Lampros
+          Changed
         </button>
         <span>
            commented
