@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Enabling pivots to move to overflow set based on available space",
+  "packageName": "office-ui-fabric-react",
+  "email": "msnyder@microsoft.com",
+  "commit": "58165b3f75cf267fa1bfddd679f4471c6850ecd7",
+  "date": "2019-11-22T22:30:15.528Z"
+}
