@@ -31,14 +31,18 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
   private _uniqText: string;
   // tslint:disable:no-any
   private _currentHoverElement: any;
-  public static getDerivedStateFromProps(nextProps: IDonutChartProps, prevState: IDonutChartState): IDonutChartState {
+
+  public static getDerivedStateFromProps(
+    nextProps: Readonly<IDonutChartProps>,
+    prevState: Readonly<IDonutChartState>
+  ): Partial<IDonutChartState> | null {
     if (nextProps.height && nextProps.height !== prevState._height && nextProps.width !== prevState._width) {
       const reducedHeight = nextProps.height / 5;
       return { _width: nextProps.width, _height: nextProps.height - reducedHeight };
-    } else {
-      return prevState;
     }
+    return null;
   }
+
   constructor(props: IDonutChartProps) {
     super(props);
     this.state = {

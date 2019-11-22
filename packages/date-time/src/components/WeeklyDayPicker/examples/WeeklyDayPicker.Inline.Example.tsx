@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { WeeklyDayPicker, DateRangeType, DayOfWeek, addDays } from '@uifabric/date-time';
+import { WeeklyDayPicker, IWeeklyDayPickerProps, DayOfWeek, addDays } from '@uifabric/date-time';
 
 import * as styles from './WeeklyDayPicker.Example.scss';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
@@ -24,23 +24,8 @@ export interface IWeeklyDayPickerInlineExampleState {
   selectedDate?: Date;
 }
 
-export interface IWeeklyDayPickerInlineExampleProps {
-  isMonthPickerVisible?: boolean;
-  dateRangeType: DateRangeType;
-  autoNavigateOnSelection: boolean;
-  showGoToToday: boolean;
+export interface IWeeklyDayPickerInlineExampleProps extends Omit<IWeeklyDayPickerProps, 'strings'> {
   showNavigateButtons?: boolean;
-  highlightCurrentMonth?: boolean;
-  highlightSelectedMonth?: boolean;
-  isDayPickerVisible?: boolean;
-  showMonthPickerAsOverlay?: boolean;
-  showWeekNumbers?: boolean;
-  minDate?: Date;
-  maxDate?: Date;
-  restrictedDates?: Date[];
-  showSixWeeksByDefault?: boolean;
-  workWeekDays?: DayOfWeek[];
-  firstDayOfWeek?: DayOfWeek;
 }
 
 export class WeeklyDayPickerInlineExample extends React.Component<IWeeklyDayPickerInlineExampleProps, IWeeklyDayPickerInlineExampleState> {

@@ -200,7 +200,6 @@ exports[`Panel renders Panel correctly 1`] = `
                       font-size: 20px;
                       font-weight: 400;
                       height: auto;
-                      min-width: 32px;
                       outline: transparent;
                       padding-bottom: 0;
                       padding-left: 4px;

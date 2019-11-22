@@ -8,16 +8,11 @@ import { FocusZoneTabbableExample } from './examples/FocusZone.Tabbable.Example'
 import { FocusZoneHorizontalMenuExample } from './examples/FocusZone.HorizontalMenu.Example';
 
 const FocusZonePhotosExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/FocusZone/examples/FocusZone.Photos.Example.tsx') as string;
-const FocusZonePhotosExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/FocusZone/examples/FocusZone.Photos.Example.tsx') as string;
 const FocusZoneListExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/FocusZone/examples/FocusZone.List.Example.tsx') as string;
-const FocusZoneListExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/FocusZone/examples/FocusZone.List.Example.tsx') as string;
 const FocusZoneDisabledExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/FocusZone/examples/FocusZone.Disabled.Example.tsx') as string;
-const FocusZoneDisabledExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/FocusZone/examples/FocusZone.Disabled.Example.tsx') as string;
 const FocusZoneTabbableCode = require('!raw-loader!office-ui-fabric-react/src/components/FocusZone/examples/FocusZone.Tabbable.Example.tsx') as string;
-const FocusZoneTabbableCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/FocusZone/examples/FocusZone.Tabbable.Example.tsx') as string;
 
 const FocusZoneHorizontalMenuExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/FocusZone/examples/FocusZone.HorizontalMenu.Example.tsx') as string;
-const FocusZoneHorizontalMenuExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/FocusZone/examples/FocusZone.HorizontalMenu.Example.tsx') as string;
 
 export const FocusZonePageProps: IDocPageProps = {
   title: 'FocusZone',
@@ -27,31 +22,26 @@ export const FocusZonePageProps: IDocPageProps = {
     {
       title: 'Non-uniform photos within bidirectional FocusZone',
       code: FocusZonePhotosExampleCode,
-      codepenJS: FocusZonePhotosExampleCodepen,
       view: <FocusZonePhotosExample />
     },
     {
       title: 'Nesting FocusZones in list rows',
       code: FocusZoneListExampleCode,
-      codepenJS: FocusZoneListExampleCodepen,
       view: <FocusZoneListExample />
     },
     {
       title: 'Disabled FocusZone',
       code: FocusZoneDisabledExampleCode,
-      codepenJS: FocusZoneDisabledExampleCodepen,
       view: <FocusZoneDisabledExample />
     },
     {
       title: 'Tabbable FocusZone',
       code: FocusZoneTabbableCode,
-      codepenJS: FocusZoneTabbableCodepen,
       view: <FocusZoneTabbableExample />
     },
     {
       title: 'Horizontal menu in FocusZone with all arrows key navigation',
       code: FocusZoneHorizontalMenuExampleCode,
-      codepenJS: FocusZoneHorizontalMenuExampleCodepen,
       view: <FocusZoneHorizontalMenuExample />
     }
   ],

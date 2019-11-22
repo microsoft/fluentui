@@ -1,11 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Component Examples renders Callout.Directional.Example.tsx correctly 1`] = `
-<div
-  className="ms-CalloutExample"
->
+Array [
   <div
-    className="ms-CalloutExample-configArea"
+    className=
+
+        {
+          display: inline-block;
+          min-width: 300px;
+        }
   >
     <div
       className=
@@ -153,7 +156,6 @@ exports[`Component Examples renders Callout.Directional.Example.tsx correctly 1`
                   color: Window;
                 }
             data-icon-name="CheckMark"
-            role="presentation"
           >
             
           </i>
@@ -723,15 +725,14 @@ exports[`Component Examples renders Callout.Directional.Example.tsx correctly 1`
               padding-top: 5px;
               word-wrap: break-word;
             }
-        htmlFor="Dropdown3"
         id="Dropdown3-label"
       >
         Directional hint
       </label>
       <div
-        aria-describedby="Dropdown3-option"
         aria-expanded="false"
-        aria-labelledby="Dropdown3-label"
+        aria-haspopup="listbox"
+        aria-labelledby="Dropdown3-label Dropdown3-option"
         className=
             ms-Dropdown
             {
@@ -765,14 +766,14 @@ exports[`Component Examples renders Callout.Directional.Example.tsx correctly 1`
             }
             &:focus .ms-Dropdown-title {
               border-color: #0078d4;
+              border-width: 2px;
               color: #201f1e;
+              left: -1px;
+              top: -1px;
             }
             @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-title {
               background-color: Highlight;
               border-color: Highlight;
-              color: HighlightText;
-            }
-            @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-title:hover {
               color: HighlightText;
             }
             @media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: black-on-white){&:focus .ms-Dropdown-title {
@@ -815,9 +816,6 @@ exports[`Component Examples renders Callout.Directional.Example.tsx correctly 1`
             &:active .ms-Dropdown-title--hasError {
               border-color: #a4262c;
             }
-            &:focus .ms-Dropdown-title--hasError {
-              border-color: #a4262c;
-            }
         data-is-focusable={true}
         id="Dropdown3"
         onBlur={[Function]}
@@ -826,13 +824,14 @@ exports[`Component Examples renders Callout.Directional.Example.tsx correctly 1`
         onFocus={[Function]}
         onKeyDown={[Function]}
         onKeyUp={[Function]}
+        onMouseDown={[Function]}
         role="listbox"
         tabIndex={0}
       >
         <span
           aria-atomic={true}
-          aria-label="Bottom Left Edge"
-          aria-live="off"
+          aria-invalid={false}
+          aria-live="polite"
           aria-posinset={5}
           aria-selected={true}
           aria-setsize={14}
@@ -866,9 +865,7 @@ exports[`Component Examples renders Callout.Directional.Example.tsx correctly 1`
           id="Dropdown3-option"
           role="option"
         >
-          <span>
-            Bottom Left Edge
-          </span>
+          Bottom Left Edge
         </span>
         <span
           className=
@@ -899,22 +896,32 @@ exports[`Component Examples renders Callout.Directional.Example.tsx correctly 1`
                   speak: none;
                 }
             data-icon-name="ChevronDown"
-            role="presentation"
           >
             
           </i>
         </span>
       </div>
     </div>
-  </div>
+  </div>,
   <div
-    className="ms-CalloutExample-buttonArea"
+    className=
+
+        {
+          display: inline-block;
+          height: 32px;
+          margin-bottom: 0;
+          margin-left: 100px;
+          margin-right: 100px;
+          margin-top: 0;
+          min-width: 130px;
+          text-align: center;
+          vertical-align: top;
+        }
   >
     <button
       className=
           ms-Button
           ms-Button--default
-          calloutExampleButton
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
@@ -940,6 +947,7 @@ exports[`Component Examples renders Callout.Directional.Example.tsx correctly 1`
             text-decoration: none;
             user-select: none;
             vertical-align: top;
+            width: 100%;
           }
           &::-moz-focus-inner {
             border: 0;
@@ -1028,6 +1036,6 @@ exports[`Component Examples renders Callout.Directional.Example.tsx correctly 1`
         </span>
       </span>
     </button>
-  </div>
-</div>
+  </div>,
+]
 `;

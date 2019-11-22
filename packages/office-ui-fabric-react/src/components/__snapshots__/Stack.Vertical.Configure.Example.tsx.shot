@@ -395,6 +395,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
             <input
               aria-checked="false"
               aria-label="Shadow around items"
+              checked={false}
               className=
 
                   {
@@ -483,7 +484,6 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                         color: Window;
                       }
                   data-icon-name="CheckMark"
-                  role="presentation"
                 >
                   
                 </i>
@@ -538,6 +538,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
             <input
               aria-checked="false"
               aria-label="Prevent item overflow"
+              checked={false}
               className=
 
                   {
@@ -626,7 +627,6 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                         color: Window;
                       }
                   data-icon-name="CheckMark"
-                  role="presentation"
                 >
                   
                 </i>
@@ -681,6 +681,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
             <input
               aria-checked="false"
               aria-label="Shrink items"
+              checked={false}
               className=
 
                   {
@@ -769,7 +770,6 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                         color: Window;
                       }
                   data-icon-name="CheckMark"
-                  role="presentation"
                 >
                   
                 </i>
@@ -823,6 +823,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
             <input
               aria-checked="false"
               aria-label="Wrap items"
+              checked={false}
               className=
 
                   {
@@ -911,7 +912,6 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                         color: Window;
                       }
                   data-icon-name="CheckMark"
-                  role="presentation"
                 >
                   
                 </i>
@@ -1236,6 +1236,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
           <input
             aria-checked="true"
             aria-label="Automatic height (based on items)"
+            checked={true}
             className=
 
                 {
@@ -1250,7 +1251,6 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                 @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
                   outline: 1px solid ActiveBorder;
                 }
-            defaultChecked={true}
             id="checkbox-6"
             onBlur={[Function]}
             onChange={[Function]}
@@ -1331,7 +1331,6 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       color: Window;
                     }
                 data-icon-name="CheckMark"
-                role="presentation"
               >
                 
               </i>
@@ -1738,15 +1737,14 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       padding-top: 5px;
                       word-wrap: break-word;
                     }
-                htmlFor="Dropdown8"
                 id="Dropdown8-label"
               >
                 Vertical alignment:
               </label>
               <div
-                aria-describedby="Dropdown8-option"
                 aria-expanded="false"
-                aria-labelledby="Dropdown8-label"
+                aria-haspopup="listbox"
+                aria-labelledby="Dropdown8-label Dropdown8-option"
                 className=
                     ms-Dropdown
                     {
@@ -1780,14 +1778,14 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     }
                     &:focus .ms-Dropdown-title {
                       border-color: #0078d4;
+                      border-width: 2px;
                       color: #201f1e;
+                      left: -1px;
+                      top: -1px;
                     }
                     @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-title {
                       background-color: Highlight;
                       border-color: Highlight;
-                      color: HighlightText;
-                    }
-                    @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-title:hover {
                       color: HighlightText;
                     }
                     @media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: black-on-white){&:focus .ms-Dropdown-title {
@@ -1830,9 +1828,6 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     &:active .ms-Dropdown-title--hasError {
                       border-color: #a4262c;
                     }
-                    &:focus .ms-Dropdown-title--hasError {
-                      border-color: #a4262c;
-                    }
                 data-is-focusable={true}
                 id="Dropdown8"
                 onBlur={[Function]}
@@ -1841,13 +1836,14 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 onKeyUp={[Function]}
+                onMouseDown={[Function]}
                 role="listbox"
                 tabIndex={0}
               >
                 <span
                   aria-atomic={true}
-                  aria-label="Top"
-                  aria-live="off"
+                  aria-invalid={false}
+                  aria-live="polite"
                   aria-posinset={1}
                   aria-selected={true}
                   aria-setsize={6}
@@ -1881,9 +1877,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                   id="Dropdown8-option"
                   role="option"
                 >
-                  <span>
-                    Top
-                  </span>
+                  Top
                 </span>
                 <span
                   className=
@@ -1914,7 +1908,6 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                           speak: none;
                         }
                     data-icon-name="ChevronDown"
-                    role="presentation"
                   >
                     
                   </i>
@@ -1967,15 +1960,14 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       padding-top: 5px;
                       word-wrap: break-word;
                     }
-                htmlFor="Dropdown9"
                 id="Dropdown9-label"
               >
                 Horizontal alignment:
               </label>
               <div
-                aria-describedby="Dropdown9-option"
                 aria-expanded="false"
-                aria-labelledby="Dropdown9-label"
+                aria-haspopup="listbox"
+                aria-labelledby="Dropdown9-label Dropdown9-option"
                 className=
                     ms-Dropdown
                     {
@@ -2009,14 +2001,14 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     }
                     &:focus .ms-Dropdown-title {
                       border-color: #0078d4;
+                      border-width: 2px;
                       color: #201f1e;
+                      left: -1px;
+                      top: -1px;
                     }
                     @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-title {
                       background-color: Highlight;
                       border-color: Highlight;
-                      color: HighlightText;
-                    }
-                    @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-title:hover {
                       color: HighlightText;
                     }
                     @media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: black-on-white){&:focus .ms-Dropdown-title {
@@ -2059,9 +2051,6 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     &:active .ms-Dropdown-title--hasError {
                       border-color: #a4262c;
                     }
-                    &:focus .ms-Dropdown-title--hasError {
-                      border-color: #a4262c;
-                    }
                 data-is-focusable={true}
                 id="Dropdown9"
                 onBlur={[Function]}
@@ -2070,13 +2059,14 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 onKeyUp={[Function]}
+                onMouseDown={[Function]}
                 role="listbox"
                 tabIndex={0}
               >
                 <span
                   aria-atomic={true}
-                  aria-label="Left"
-                  aria-live="off"
+                  aria-invalid={false}
+                  aria-live="polite"
                   aria-posinset={1}
                   aria-selected={true}
                   aria-setsize={3}
@@ -2110,9 +2100,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                   id="Dropdown9-option"
                   role="option"
                 >
-                  <span>
-                    Left
-                  </span>
+                  Left
                 </span>
                 <span
                   className=
@@ -2143,7 +2131,6 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                           speak: none;
                         }
                     data-icon-name="ChevronDown"
-                    role="presentation"
                   >
                     
                   </i>
@@ -2199,6 +2186,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
               <input
                 aria-checked="false"
                 aria-label="Hide empty children"
+                checked={false}
                 className=
 
                     {
@@ -2287,7 +2275,6 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                           color: Window;
                         }
                     data-icon-name="CheckMark"
-                    role="presentation"
                   >
                     
                   </i>

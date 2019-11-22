@@ -2,6 +2,137 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "date": "Wed, 13 Nov 2019 12:33:43 GMT",
+      "tag": "@uifabric/example-app-base_v7.10.1",
+      "version": "7.10.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "PlatformPicker: High Contrast support",
+            "author": "jdh@microsoft.com",
+            "commit": "64d918168ddc62de51799cb4f02f05b0d22df9b5"
+          },
+          {
+            "comment": "Fix API reference links",
+            "author": "elcraig@microsoft.com",
+            "commit": "129ef2b9ffc8ace9bc479a314295deed7cd68d4f"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 12 Nov 2019 12:32:39 GMT",
+      "tag": "@uifabric/example-app-base_v7.10.0",
+      "version": "7.10.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "API doc table refactor",
+            "author": "elcraig@microsoft.com",
+            "commit": "32afa854a8d36c21859d44b312ea02b9261e0238"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 06 Nov 2019 12:34:07 GMT",
+      "tag": "@uifabric/example-app-base_v7.9.0",
+      "version": "7.9.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Update API doc generation to handle deprecated messages",
+            "author": "elcraig@microsoft.com",
+            "commit": "3922bd804a64f9b2c25ff7c1bc7df911b898e69d"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 01 Nov 2019 01:02:38 GMT",
+      "tag": "@uifabric/example-app-base_v7.8.5",
+      "version": "7.8.5",
+      "comments": {
+        "patch": [
+          {
+            "comment": "API table: render enum descriptions as multi-line",
+            "author": "elcraig@microsoft.com",
+            "commit": "e6575e62c8c206540654d313e4ea81f47a4007ac"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 04 Oct 2019 22:19:48 GMT",
+      "tag": "@uifabric/example-app-base_v7.8.4",
+      "version": "7.8.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Use latest tsx-editor APIs",
+            "author": "elcraig@microsoft.com",
+            "commit": "5769e0419f9162970898c424da471e8fb9c53ccf"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 03 Oct 2019 23:14:46 GMT",
+      "tag": "@uifabric/example-app-base_v7.8.3",
+      "version": "7.8.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix a publish issue with example-app-base",
+            "author": "odbuild@microsoft.com",
+            "commit": "a1d4cf099c5a29a4ddfd635b6baab8de60485e1c"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 03 Oct 2019 01:14:35 GMT",
+      "tag": "@uifabric/example-app-base_v7.8.1",
+      "version": "7.8.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Editor: add accessibility props and improve preview rendering",
+            "author": "elcraig@microsoft.com",
+            "commit": "fe59f6fd3c26d9d1bf44bcc4ee44ed01c9816cf9"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 24 Sep 2019 12:35:43 GMT",
+      "tag": "@uifabric/example-app-base_v7.8.0",
+      "version": "7.8.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Export to codepen can use in-browser transform and latest edited code",
+            "author": "elcraig@microsoft.com",
+            "commit": "f9a483c37857c9bdba359a287b065ebe59dd361b"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 13 Sep 2019 12:34:39 GMT",
+      "tag": "@uifabric/example-app-base_v7.7.0",
+      "version": "7.7.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "add accessibility section and add content for modal",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "8bd0327d2378b7af36d3e1fecbba990aa3ac483b"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 04 Sep 2019 04:09:58 GMT",
       "tag": "@uifabric/example-app-base_v7.6.4",
       "version": "7.6.4",

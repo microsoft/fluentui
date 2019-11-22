@@ -46,17 +46,23 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
   private _scrollableContent: HTMLDivElement | null;
   private _animationCallback: number | null = null;
 
-  public static getDerivedStateFromProps(props: IPanelProps, state: IPanelState): IPanelState {
-    if (props.isOpen === undefined) {
-      return state;
+  public static getDerivedStateFromProps(nextProps: Readonly<IPanelProps>, prevState: Readonly<IPanelState>): Partial<IPanelState> | null {
+    if (nextProps.isOpen === undefined) {
+      return null; // no state update
     }
-    if (props.isOpen && (state.visibility === PanelVisibilityState.closed || state.visibility === PanelVisibilityState.animatingClosed)) {
-      return { ...state, visibility: PanelVisibilityState.animatingOpen };
+    if (
+      nextProps.isOpen &&
+      (prevState.visibility === PanelVisibilityState.closed || prevState.visibility === PanelVisibilityState.animatingClosed)
+    ) {
+      return { visibility: PanelVisibilityState.animatingOpen };
     }
-    if (!props.isOpen && (state.visibility === PanelVisibilityState.open || state.visibility === PanelVisibilityState.animatingOpen)) {
-      return { ...state, visibility: PanelVisibilityState.animatingClosed };
+    if (
+      !nextProps.isOpen &&
+      (prevState.visibility === PanelVisibilityState.open || prevState.visibility === PanelVisibilityState.animatingOpen)
+    ) {
+      return { visibility: PanelVisibilityState.animatingClosed };
     }
-    return state;
+    return null;
   }
 
   constructor(props: IPanelProps) {

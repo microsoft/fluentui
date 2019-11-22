@@ -56,7 +56,7 @@ export class OverflowSetBase extends BaseComponent<IOverflowSetProps, {}> implem
     }
 
     return (
-      <Tag {...uniqueComponentProps} className={this._classNames.root} role={role}>
+      <Tag aria-orientation={vertical ? 'vertical' : 'horizontal'} {...uniqueComponentProps} className={this._classNames.root} role={role}>
         {items && this._onRenderItems(items)}
         {overflowItems && overflowItems.length > 0 && this._onRenderOverflowButtonWrapper(overflowItems)}
       </Tag>

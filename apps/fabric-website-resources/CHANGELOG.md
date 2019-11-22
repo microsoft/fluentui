@@ -1,7 +1,31 @@
 # Change Log - @uifabric/fabric-website-resources
 
-This log was last generated on Wed, 04 Sep 2019 04:09:58 GMT and should not be manually modified.
+This log was last generated on Wed, 06 Nov 2019 12:34:07 GMT and should not be manually modified.
 
+## 7.4.1
+Wed, 06 Nov 2019 12:34:07 GMT
+
+### Patches
+
+- Remove some unused things (elcraig@microsoft.com)
+## 7.4.0
+Mon, 28 Oct 2019 22:25:45 GMT
+
+### Minor changes
+
+- Enable live editor and update bundling (elcraig@microsoft.com)
+## 7.3.2
+Thu, 03 Oct 2019 23:14:46 GMT
+
+### Patches
+
+- Fixes publish issue from beachball (odbuild@microsoft.com)
+## 7.3.0
+Fri, 13 Sep 2019 12:34:39 GMT
+
+### Minor changes
+
+- add accessibility section and add content for modal (mgodbolt@microsoft.com)
 ## 7.2.7
 Wed, 04 Sep 2019 04:09:58 GMT
 

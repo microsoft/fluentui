@@ -169,7 +169,6 @@ exports[`Nav renders Nav correctly 1`] = `
                     }
                     .ms-Nav-compositeLink:hover & {
                       background-color: #f3f2f1;
-                      color: #323130;
                     }
                 data-is-focusable={true}
                 onClick={[Function]}

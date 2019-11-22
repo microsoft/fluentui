@@ -2,6 +2,76 @@
   "name": "@uifabric/merge-styles",
   "entries": [
     {
+      "date": "Fri, 08 Nov 2019 12:30:07 GMT",
+      "tag": "@uifabric/merge-styles_v7.8.1",
+      "version": "7.8.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add px units to flexBasis styling by default. Remove existing styling usage where it had no effect before this PR.",
+            "author": "jagore@microsoft.com",
+            "commit": "f907d55f63a68d685743277f1f35188fbe6af62d"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 21 Oct 2019 12:33:23 GMT",
+      "tag": "@uifabric/merge-styles_v7.8.0",
+      "version": "7.8.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add `-ms-overflow-style` as a valid CSS property",
+            "author": "unindented@gmail.com",
+            "commit": "ac7b27aafaa526b44c11d8a2885517a3751ce528"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 26 Sep 2019 12:32:32 GMT",
+      "tag": "@uifabric/merge-styles_v7.7.0",
+      "version": "7.7.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "mergeStyles and mergeStyleSets have a companion method which accepts options for setting RTL",
+            "author": "jdh@microsoft.com",
+            "commit": "db3504b65c6363d9d840d58076a31abe8bade56a"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 20 Sep 2019 12:34:28 GMT",
+      "tag": "@uifabric/merge-styles_v7.6.0",
+      "version": "7.6.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Adding `concatStyleSetsWithProps` to help resolve stylesets that are functional, resolving with props.",
+            "author": "dzearing@microsoft.com",
+            "commit": "8065917a76a5e08b27721e34e13903adba3730f1"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 12 Sep 2019 12:34:15 GMT",
+      "tag": "@uifabric/merge-styles_v7.5.2",
+      "version": "7.5.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Build the kebabRules map instead of shipping it",
+            "author": "mark@thedutchies.com",
+            "commit": "6c2bb6b120a0fca24259bd21bd0a73989bbeff7a"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 04 Sep 2019 04:09:58 GMT",
       "tag": "@uifabric/merge-styles_v7.5.1",
       "version": "7.5.1",

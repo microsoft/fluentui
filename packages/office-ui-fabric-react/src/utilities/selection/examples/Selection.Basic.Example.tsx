@@ -44,7 +44,7 @@ export interface ISelectionBasicExampleState {
   canSelect: 'all' | 'vowels';
 }
 
-export interface ISelectionItemExampleProps {
+interface ISelectionItemExampleProps {
   item: IExampleItem;
   itemIndex?: number;
   selection?: ISelection;
@@ -54,7 +54,7 @@ export interface ISelectionItemExampleProps {
 /**
  * The SelectionItemExample controls and displays the selection state of a single item
  */
-export const SelectionItemExample: React.StatelessComponent<ISelectionItemExampleProps> = (props: ISelectionItemExampleProps) => {
+const SelectionItemExample: React.StatelessComponent<ISelectionItemExampleProps> = (props: ISelectionItemExampleProps) => {
   const { item, itemIndex, selection } = props;
   let isSelected = false;
 

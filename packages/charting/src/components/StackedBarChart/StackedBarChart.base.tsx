@@ -53,21 +53,50 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
 
   public render(): JSX.Element {
     this._adjustProps();
-    const { data, hideNumberDisplay, hideLegend, theme, styles, barBackgroundColor, href, ignoreFixStyle, hideDenominator } = this.props;
+    const {
+      data,
+      benchmarkData,
+      targetData,
+      hideNumberDisplay,
+      hideLegend,
+      theme,
+      styles,
+      barBackgroundColor,
+      href,
+      ignoreFixStyle,
+      hideDenominator
+    } = this.props;
     const { palette } = theme!;
     const barHeight = ignoreFixStyle || data!.chartData!.length > 2 ? this.props.barHeight : 8;
-    const bars = this._createBarsAndLegends(data!, barHeight!, palette, barBackgroundColor, href);
+    if (benchmarkData) {
+      // benchmark color is used to render color for benchmark triangle and benchmark legend
+      benchmarkData.color = benchmarkData.color || palette.neutralTertiary;
+    }
+    if (targetData) {
+      // target color is used to render color for target triangle and target legend
+      targetData.color = targetData.color || palette.neutralSecondary;
+    }
+    const bars = this._createBarsAndLegends(data!, barHeight!, palette, barBackgroundColor, href, benchmarkData, targetData);
     const showRatio = hideNumberDisplay === false && (!ignoreFixStyle && data!.chartData!.length === 2);
     const showNumber = hideNumberDisplay === false && (!ignoreFixStyle && data!.chartData!.length === 1);
-    let total = 0;
-    if (showRatio === true) {
-      total = data!.chartData!.reduce((acc: number, value: IChartDataPoint) => acc + (value.data ? value.data : 0), 0);
+    const total = data!.chartData!.reduce((acc: number, value: IChartDataPoint) => acc + (value.data ? value.data : 0), 0);
+    let benchmarkRatio = 0;
+    if (benchmarkData && total) {
+      benchmarkRatio = (benchmarkData.data! / total) * 100;
+    }
+    let targetRatio = 0;
+    if (targetData && total) {
+      targetRatio = (targetData.data! / total) * 100;
     }
     const showLegend = hideLegend === false && (ignoreFixStyle || data!.chartData!.length > 2);
     const { isCalloutVisible } = this.state;
     this._classNames = getClassNames(styles!, {
       legendColor: this.state.color,
-      theme: theme!
+      theme: theme!,
+      benchmarkColor: benchmarkData ? benchmarkData.color : '',
+      benchmarkRatio,
+      targetColor: targetData ? targetData.color : '',
+      targetRatio
     });
     return (
       <div className={this._classNames.root}>
@@ -93,7 +122,12 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
             </div>
           )}
         </div>
-
+        {(benchmarkData || targetData) && (
+          <div className={this._classNames.benchmarkContainer}>
+            {benchmarkData && <div className={this._classNames.benchmark} />}
+            {targetData && <div className={this._classNames.target} />}
+          </div>
+        )}
         <svg className={this._classNames.chart}>
           <g>{bars[0]}</g>
           {isCalloutVisible ? (
@@ -132,7 +166,9 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
     barHeight: number,
     palette: IPalette,
     barBackgroundColor?: string,
-    href?: string
+    href?: string,
+    benchmarkData?: IChartDataPoint,
+    targetData?: IChartDataPoint
   ): [JSX.Element[], JSX.Element] {
     const defaultPalette: string[] = [palette.blueLight, palette.blue, palette.blueMid, palette.red, palette.black];
     const legendDataItems: ILegend[] = [];
@@ -167,7 +203,9 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
               }
             : undefined
       };
-      legendDataItems.push(legend);
+      if (!point.placeHolder) {
+        legendDataItems.push(legend);
+      }
       if (index > 0) {
         prevPosition += value;
       }
@@ -201,11 +239,26 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
       );
     });
 
-    const legends = <Legends legends={legendDataItems} />;
+    // add benchmark legends
+    this._addLegend(legendDataItems, benchmarkData);
+    this._addLegend(legendDataItems, targetData);
+    const legends = <Legends legends={legendDataItems} enabledWrapLines={this.props.enabledLegendsWrapLines} />;
     return [
       total === 0 ? [this._generateEmptyBar(barHeight, barBackgroundColor ? barBackgroundColor : palette.neutralTertiary)] : bars,
       legends
     ];
+  }
+
+  private _addLegend(legendDataItems: ILegend[], data?: IChartDataPoint): void {
+    if (data) {
+      const legend: ILegend = {
+        title: data.legend!,
+        color: data.color!,
+        shape: 'triangle'
+      };
+
+      legendDataItems.push(legend);
+    }
   }
 
   private _generateEmptyBar(barHeight: number, color: string): JSX.Element {

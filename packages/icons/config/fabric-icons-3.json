@@ -10,6 +10,54 @@
   },
   "glyphs": [
     {
+      "name": "ChevronDownSmall",
+      "unicode": "E96E"
+    },
+    {
+      "name": "ChevronLeftSmall",
+      "unicode": "E96F"
+    },
+    {
+      "name": "ChevronRightSmall",
+      "unicode": "E970"
+    },
+    {
+      "name": "ChevronUpMed",
+      "unicode": "E971"
+    },
+    {
+      "name": "ChevronDownMed",
+      "unicode": "E972"
+    },
+    {
+      "name": "ChevronLeftMed",
+      "unicode": "E973"
+    },
+    {
+      "name": "ChevronRightMed",
+      "unicode": "E974"
+    },
+    {
+      "name": "Devices2",
+      "unicode": "E975"
+    },
+    {
+      "name": "PC1",
+      "unicode": "E977"
+    },
+    {
+      "name": "PresenceChickletVideo",
+      "unicode": "E979"
+    },
+    {
+      "name": "Reply",
+      "unicode": "E97A"
+    },
+    {
+      "name": "HalfAlpha",
+      "unicode": "E97E"
+    },
+    {
       "name": "ConstructionCone",
       "unicode": "E98F"
     },
@@ -360,54 +408,6 @@
     {
       "name": "GoMirrored",
       "unicode": "EA4F"
-    },
-    {
-      "name": "HelpMirrored",
-      "unicode": "EA51"
-    },
-    {
-      "name": "ImportMirrored",
-      "unicode": "EA52"
-    },
-    {
-      "name": "ImportAllMirrored",
-      "unicode": "EA53"
-    },
-    {
-      "name": "ListMirrored",
-      "unicode": "EA55"
-    },
-    {
-      "name": "MailForwardMirrored",
-      "unicode": "EA56"
-    },
-    {
-      "name": "MailReplyMirrored",
-      "unicode": "EA57"
-    },
-    {
-      "name": "MailReplyAllMirrored",
-      "unicode": "EA58"
-    },
-    {
-      "name": "MiniContractMirrored",
-      "unicode": "EA59"
-    },
-    {
-      "name": "MiniExpandMirrored",
-      "unicode": "EA5A"
-    },
-    {
-      "name": "OpenPaneMirrored",
-      "unicode": "EA5B"
-    },
-    {
-      "name": "ParkingLocationMirrored",
-      "unicode": "EA5E"
-    },
-    {
-      "name": "SendMirrored",
-      "unicode": "EA63"
     }
   ]
 }

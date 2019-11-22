@@ -323,7 +323,9 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
   };
 
   private _onTextFieldChanged = (ev: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, newValue: string): void => {
-    if (this.props.allowTextInput) {
+    const { allowTextInput, textField } = this.props;
+
+    if (allowTextInput) {
       if (this.state.isDatePickerShown) {
         this._dismissDatePickerPopup();
       }
@@ -334,6 +336,10 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
         errorMessage: isRequired && !value ? strings!.isRequiredErrorMessage || ' ' : undefined,
         formattedDate: newValue
       });
+    }
+
+    if (textField && textField.onChange) {
+      textField.onChange(ev, newValue);
     }
   };
 
@@ -364,20 +370,22 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
   };
 
   private _onTextFieldClick = (ev: React.MouseEvent<HTMLElement>): void => {
-    if (!this.state.isDatePickerShown && !this.props.disabled) {
+    if (!this.props.disableAutoFocus && !this.state.isDatePickerShown && !this.props.disabled) {
       this._showDatePickerPopup();
-    } else {
-      if (this.props.allowTextInput) {
-        this.setState({
-          isDatePickerShown: false
-        });
-      }
+      return;
+    }
+    if (this.props.allowTextInput) {
+      this._dismissDatePickerPopup();
     }
   };
 
   private _onIconClick = (ev: React.MouseEvent<HTMLElement>): void => {
     ev.stopPropagation();
-    this._onTextFieldClick(ev);
+    if (!this.state.isDatePickerShown && !this.props.disabled) {
+      this._showDatePickerPopup();
+    } else if (this.props.allowTextInput) {
+      this._dismissDatePickerPopup();
+    }
   };
 
   private _showDatePickerPopup(): void {

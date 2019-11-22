@@ -1,7 +1,98 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Wed, 04 Sep 2019 04:09:58 GMT and should not be manually modified.
+This log was last generated on Wed, 06 Nov 2019 12:34:07 GMT and should not be manually modified.
 
+## 7.7.0
+Wed, 06 Nov 2019 12:34:07 GMT
+
+### Minor changes
+
+- website: Fixes for high contrast (jdh@microsoft.com)
+## 7.6.1
+Tue, 05 Nov 2019 23:43:46 GMT
+
+### Patches
+
+- fixing the production flag to be respected in the webpackCliTask world (kchau@microsoft.com)
+## 7.6.0
+Fri, 01 Nov 2019 12:25:57 GMT
+
+### Minor changes
+
+- Adds the SharePoint Figma toolkit to the Resources page of the website (pejahn@microsoft.com)
+## 7.5.8
+Wed, 30 Oct 2019 19:36:52 GMT
+
+### Patches
+
+- Prettier ignore ranges for markdown tables. (emlynam@microsoft.com)
+## 7.5.7
+Tue, 29 Oct 2019 12:36:28 GMT
+
+### Patches
+
+- Add AppBar to mobile docs for Android. (emlynam@microsoft.com)
+## 7.5.6
+Tue, 15 Oct 2019 12:32:28 GMT
+
+### Patches
+
+- Hide UHF flightPicker element that causes accessibility issues (elcraig@microsoft.com)
+## 7.5.5
+Thu, 10 Oct 2019 12:32:08 GMT
+
+### Patches
+
+- added header examples and updated alt descriptions for BottomSheet (willdo@microsoft.com)
+## 7.5.4
+Thu, 03 Oct 2019 23:14:46 GMT
+
+### Patches
+
+- Fixes publish issue from beachball (odbuild@microsoft.com)
+## 7.5.2
+Thu, 03 Oct 2019 01:14:35 GMT
+
+### Patches
+
+- Bundle React even in serve mode for more representative testing environment (elcraig@microsoft.com)
+- Adding iOS NavBar to website docs. (emlynam@microsoft.com)
+## 7.5.1
+Mon, 30 Sep 2019 12:35:16 GMT
+
+### Patches
+
+- Don't load minified editor files (elcraig@microsoft.com)
+## 7.5.0
+Fri, 20 Sep 2019 12:34:28 GMT
+
+### Minor changes
+
+- Website: Split Brand icons page into Brand Icons and File Type Icons pages (marygans@microsoft.com)
+## 7.4.8
+Thu, 19 Sep 2019 13:05:24 GMT
+
+### Patches
+
+- Use new way of consuming Monaco bundle (elcraig@microsoft.com)
+## 7.4.7
+Thu, 12 Sep 2019 12:34:15 GMT
+
+### Patches
+
+- Update readme and fix minor IE compat issue (elcraig@microsoft.com)
+## 7.4.6
+Mon, 09 Sep 2019 21:43:18 GMT
+
+### Patches
+
+- updated docs for BottomSheet and Drawer (willdo@microsoft.com)
+## 7.4.5
+Fri, 06 Sep 2019 12:34:51 GMT
+
+### Patches
+
+- Hacked an examplecard msicon override for a specific DetailsList Drag and Drop page in fabric website (kchau@microsoft.com)
 ## 7.4.4
 Wed, 04 Sep 2019 04:09:58 GMT
 

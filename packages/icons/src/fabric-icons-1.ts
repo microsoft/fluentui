@@ -22,9 +22,19 @@ export function initializeIcons(
     },
     fontFace: {
       fontFamily: `"FabricMDL2Icons-1"`,
-      src: `url('${baseUrl}fabric-icons-1-fb793ec0.woff') format('woff')`
+      src: `url('${baseUrl}fabric-icons-1-4d521695.woff') format('woff')`
     },
     icons: {
+      'Paste': '\uE77F',
+      'WindowsLogo': '\uE782',
+      'Error': '\uE783',
+      'GripperBarVertical': '\uE784',
+      'Unlock': '\uE785',
+      'Slideshow': '\uE786',
+      'Trim': '\uE78A',
+      'AutoEnhanceOn': '\uE78D',
+      'AutoEnhanceOff': '\uE78E',
+      'Color': '\uE790',
       'SaveAs': '\uE792',
       'Light': '\uE793',
       'Filters': '\uE795',
@@ -59,6 +69,7 @@ export function initializeIcons(
       'TVMonitor': '\uE7F4',
       'Speakers': '\uE7F5',
       'Game': '\uE7FC',
+      'HorizontalTabKey': '\uE7FD',
       'UnstackSelected': '\uE7FE',
       'StackIndicator': '\uE7FF',
       'Nav2DMapView': '\uE800',
@@ -113,18 +124,7 @@ export function initializeIcons(
       'Remote': '\uE8AF',
       'SelectAll': '\uE8B3',
       'Orientation': '\uE8B4',
-      'Import': '\uE8B5',
-      'Picture': '\uE8B9',
-      'ChromeClose': '\uE8BB',
-      'ShowResults': '\uE8BC',
-      'Message': '\uE8BD',
-      'CalendarDay': '\uE8BF',
-      'CalendarWeek': '\uE8C0',
-      'MailReplyAll': '\uE8C2',
-      'Read': '\uE8C3',
-      'Cut': '\uE8C6',
-      'PaymentCard': '\uE8C7',
-      'Copy': '\uE8C8'
+      'Import': '\uE8B5'
     }
   };
 

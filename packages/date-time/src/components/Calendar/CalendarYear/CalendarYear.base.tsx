@@ -429,19 +429,23 @@ class CalendarYearHeader extends BaseComponent<ICalendarYearHeaderProps, {}> {
 export class CalendarYearBase extends BaseComponent<ICalendarYearProps, ICalendarYearState> implements ICalendarYear {
   private _gridRef: CalendarYearGrid;
 
-  public static getDerivedStateFromProps(props: ICalendarYearProps, state: ICalendarYearState): ICalendarYearState {
-    if (state && state.internalNavigate) {
+  public static getDerivedStateFromProps(
+    nextProps: Readonly<ICalendarYearProps>,
+    prevState: Readonly<ICalendarYearState>
+  ): Partial<ICalendarYearState> | null {
+    if (prevState && prevState.internalNavigate) {
       return {
-        ...state,
+        ...prevState,
         internalNavigate: false
       };
     }
 
-    const newState = CalendarYearBase._getState(props);
+    const newState = CalendarYearBase._getState(nextProps);
 
     return {
       ...newState,
-      animateBackwards: state && (state.animateBackwards !== undefined ? state.animateBackwards : state.fromYear > newState.fromYear)
+      animateBackwards:
+        prevState && (prevState.animateBackwards !== undefined ? prevState.animateBackwards : prevState.fromYear > newState.fromYear)
     };
   }
 

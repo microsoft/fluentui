@@ -16,7 +16,7 @@ export class Arc extends React.Component<IArcProps, IArcState> {
 
   public state: IArcState = {};
 
-  public static getDerivedStateFromProps(nextProps: Readonly<IArcProps>): null {
+  public static getDerivedStateFromProps(nextProps: Readonly<IArcProps>): Partial<IArcState> | null {
     _updateChart(nextProps);
     return null;
   }

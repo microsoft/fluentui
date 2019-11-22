@@ -319,10 +319,12 @@ export interface IWeeklyDayPickerProps extends IBaseProps_2<IWeeklyDayPicker> {
     onNavigateDate?: (date: Date) => void;
     onSelectDate?: (date: Date) => void;
     restrictedDates?: Date[];
+    showFullMonth?: boolean;
     strings: IWeeklyDayPickerStrings;
     styles?: IStyleFunctionOrObject_2<IWeeklyDayPickerStyleProps, IWeeklyDayPickerStyles>;
     theme?: ITheme;
     today?: Date;
+    weeksToShow?: number;
 }
 
 // @public (undocumented)

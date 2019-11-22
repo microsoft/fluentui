@@ -39,15 +39,8 @@ export const AccessibilityDetailsList: React.StatelessComponent<IAccessibilityDe
   const onRenderRow = (detailsRowProps: IDetailsRowProps | undefined): JSX.Element => {
     // Set each row's background and text color to what's specified by its respective slot rule
     if (detailsRowProps && newTheme) {
-      const currentSlotPair = detailsRowProps!.item.slotPair;
-      const pairSplit = currentSlotPair.split(' on ');
-      const currForegroundColor = pairSplit[0];
-      const currBackgroundColor = pairSplit[1];
-
       const rowStyles: Partial<IDetailsRowStyles> = {
         root: {
-          backgroundColor: (newTheme!.palette as any)[currBackgroundColor],
-          color: (newTheme!.palette as any)[currForegroundColor],
           selectors: {
             ':hover': {
               background: 'transparent'

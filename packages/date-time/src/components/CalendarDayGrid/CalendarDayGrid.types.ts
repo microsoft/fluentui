@@ -90,6 +90,13 @@ export interface ICalendarDayGridProps extends IBaseProps<ICalendarDayGrid> {
   dateRangeType: DateRangeType;
 
   /**
+   * The number of days to select while dateRangeType === DateRangeType.Day. Used in order to have multi-day
+   * views.
+   * @defaultValue 1
+   */
+  daysToSelectInDayView?: number;
+
+  /**
    * Value of today. If null, current time in client machine will be used.
    */
   today?: Date;
@@ -109,7 +116,7 @@ export interface ICalendarDayGridProps extends IBaseProps<ICalendarDayGrid> {
    * Props to apply to the <td> for the date. Can be used to apply custom styles for specific days, inject callback functions
    * on hover or focus, or disable specific days if required
    */
-  customDayCellProps?: (date: Date) => React.HTMLAttributes<HTMLElement> | React.ButtonHTMLAttributes<HTMLElement>;
+  customDayCellProps?: (date: Date) => React.ButtonHTMLAttributes<HTMLElement>;
 
   /**
    * How many weeks to show by default. If not provided, will show enough weeks to display the current

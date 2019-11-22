@@ -1,4 +1,4 @@
-import { IStyleFunctionOrObject } from '../Utilities';
+import { IStyleFunctionOrObject, Omit } from '../Utilities';
 import { ITheme, IStyle } from '../Styling';
 
 export interface IExample {
@@ -41,6 +41,9 @@ export interface IDocPageProps {
 
   /** Overview of the component as markdown string */
   overview?: string;
+
+  /** Accessibility of the component as markdown string */
+  accessibility?: string;
 
   /** DO's blurb as markdown string */
   dos?: string;
@@ -88,48 +91,66 @@ export interface IDocPageProps {
 }
 
 /**
- * Used to keep track of where the page will live on the site
+ * Used to keep track of where an API reference page will live on the site.
  */
 export type PageKind = 'References' | 'Components';
 
 /**
- * Excerpt token that is part of a type or extends block and may have a hyperlink
+ * Text excerpt token that is part of a type definition or extends block and may have a link
+ * to another doc page. For API reference tables.
  */
 export interface ILinkToken {
   text: string;
-  hyperlinkedPage?: string;
-  pageKind?: PageKind;
+  /** If this token is a link, name of the doc page it points to */
+  linkedPage?: string;
+  /** If this token is a link, group/category of the doc page it points to */
+  linkedPageGroup?: string;
 }
 
 /**
- * Generic table row
+ * Generic row for API reference tables.
+ * It can represent a member (property or method) of an interface or class.
  */
 export interface ITableRowJson {
   name: string;
+  kind?: 'method' | 'property';
+  /**
+   * The row's type translated to an array of text elements and links to other types.
+   * For example, `Readonly<IFoo>` would translate to:
+   * `[{ text: 'Readonly<' }, { text: 'IFoo', hyperlinkedPage: '(page name)', pageKind: '(kind)' }, { text: '>' }]`
+   */
   typeTokens: ILinkToken[];
   defaultValue?: string;
   description: string;
   deprecated: boolean;
   deprecatedMessage?: string;
-  kind?: 'Method' | 'Property';
+  required?: boolean;
 }
 
 /**
- * Enum table row
+ * Enum member row for API reference tables.
  */
-export type IEnumTableRowJson = Required<Pick<ITableRowJson, 'name' | 'description'>> & {
+export type IEnumTableRowJson = Omit<ITableRowJson, 'kind' | 'typeTokens' | 'defaultValue' | 'required'> & {
   value: string;
 };
 
+export type ApiKind = 'interface' | 'enum' | 'class' | 'typeAlias';
+
 /**
- * Api table
+ * Info for a table representing a top-level API item: interface, enum, class, or type alias.
  */
 export interface ITableJson {
-  kind: 'interface' | 'enum' | 'class' | 'typeAlias';
+  kind: ApiKind;
   name: string;
+  /**
+   * Any types the item extends, translated to an array of text elements and links to other types.
+   * For classes and interfaces only.
+   */
   extendsTokens: ILinkToken[];
   description: string;
   members: ITableRowJson[] | IEnumTableRowJson[];
+  deprecated?: boolean;
+  deprecatedMessage?: string;
 }
 
 /**

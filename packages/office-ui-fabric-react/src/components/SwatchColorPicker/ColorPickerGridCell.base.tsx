@@ -60,7 +60,7 @@ const getClassNames = classNamesFunction<IColorPickerGridCellStyleProps, IColorP
 
 class ColorCell extends GridCell<IColorCellProps, IGridCellProps<IColorCellProps>> {}
 
-export class ColorPickerGridCellBase extends React.Component<IColorPickerGridCellProps, {}> {
+export class ColorPickerGridCellBase extends React.PureComponent<IColorPickerGridCellProps, {}> {
   public static defaultProps = {
     circle: true,
     disabled: false,

@@ -452,7 +452,12 @@ export enum PersonaSize {
   /**
    * Renders a 100px `PersonaCoin`.
    */
-  size100 = 15
+  size100 = 15,
+
+  /**
+   * Renders a 120px `PersonaCoin`.
+   */
+  size120 = 18
 }
 
 /**

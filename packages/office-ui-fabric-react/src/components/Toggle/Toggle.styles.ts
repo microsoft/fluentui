@@ -60,7 +60,8 @@ export const getStyles = (props: IToggleStyleProps): IToggleStyles => {
         inlineLabel && {
           order: 1,
           marginLeft: 16
-        }
+        },
+      inlineLabel && { wordBreak: 'break-all' }
     ],
 
     container: [

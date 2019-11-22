@@ -170,7 +170,7 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                 <div
                   aria-checked={false}
                   aria-describedby="header0-checkTooltip"
-                  aria-label="Toggle selection"
+                  aria-label="Toggle selection for all items"
                   className=
                       ms-DetailsRow-check
                       ms-DetailsHeader-check

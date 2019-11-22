@@ -22,9 +22,22 @@ export function initializeIcons(
     },
     fontFace: {
       fontFamily: `"FabricMDL2Icons-7"`,
-      src: `url('${baseUrl}fabric-icons-7-0cef213c.woff') format('woff')`
+      src: `url('${baseUrl}fabric-icons-7-2b97bb99.woff') format('woff')`
     },
     icons: {
+      'SingleBookmark': '\uEDFF',
+      'SingleBookmarkSolid': '\uEE00',
+      'DoubleChevronDown': '\uEE04',
+      'FollowUser': '\uEE05',
+      'ReplyAll': '\uEE0A',
+      'WorkforceManagement': '\uEE0F',
+      'RecruitmentManagement': '\uEE12',
+      'Questionnaire': '\uEE19',
+      'ManagerSelfService': '\uEE23',
+      'ProductionFloorManagement': '\uEE29',
+      'ProductRelease': '\uEE2E',
+      'ProductVariant': '\uEE30',
+      'ReplyMirrored': '\uEE35',
       'ReplyAllMirrored': '\uEE36',
       'Medal': '\uEE38',
       'AddGroup': '\uEE3D',
@@ -111,20 +124,7 @@ export function initializeIcons(
       'Lifesaver': '\uEF62',
       'LifesaverLock': '\uEF63',
       'InboxCheck': '\uEF64',
-      'FolderSearch': '\uEF65',
-      'CollapseMenu': '\uEF66',
-      'ExpandMenu': '\uEF67',
-      'Boards': '\uEF68',
-      'SunAdd': '\uEF69',
-      'SunQuestionMark': '\uEF6A',
-      'LandscapeOrientation': '\uEF6B',
-      'DocumentSearch': '\uEF6C',
-      'PublicCalendar': '\uEF6D',
-      'PublicContactCard': '\uEF6E',
-      'PublicEmail': '\uEF6F',
-      'PublicFolder': '\uEF70',
-      'WordDocument': '\uEF71',
-      'PowerPointDocument': '\uEF72'
+      'FolderSearch': '\uEF65'
     }
   };
 

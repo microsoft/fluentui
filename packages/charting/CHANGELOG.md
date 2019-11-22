@@ -1,7 +1,55 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Wed, 04 Sep 2019 04:09:58 GMT and should not be manually modified.
+This log was last generated on Tue, 19 Nov 2019 12:29:10 GMT and should not be manually modified.
 
+## 0.138.1
+Tue, 19 Nov 2019 12:29:10 GMT
+
+### Patches
+
+- Fix the bug that x-axis for linechart does not display properly (dajiang@microsoft.com)
+## 0.138.0
+Tue, 05 Nov 2019 12:25:16 GMT
+
+### Minor changes
+
+- Enabled wrap lines for legends (dajiang@microsoft.com)
+## 0.137.2
+Thu, 24 Oct 2019 12:31:42 GMT
+
+### Patches
+
+- Change gapSpace to 10 to resolve line chart flickering issue (v-ragor@microsoft.com)
+## 0.137.1
+Tue, 22 Oct 2019 12:32:05 GMT
+
+### Patches
+
+- Fix getDerivedStateFromProps signatures (elcraig@microsoft.com)
+## 0.137.0
+Wed, 09 Oct 2019 22:25:09 GMT
+
+### Minor changes
+
+- Add placeholder mode to StackedBarChart (dajiang@microsoft.com)
+## 0.136.2
+Thu, 03 Oct 2019 23:14:46 GMT
+
+### Patches
+
+- Fixes publish issue from beachball (odbuild@microsoft.com)
+## 0.136.0
+Thu, 03 Oct 2019 01:14:35 GMT
+
+### Minor changes
+
+- Add benchmark triangle in stackedBarChart (dajiang@microsoft.com)
+## 0.135.0
+Wed, 11 Sep 2019 12:35:47 GMT
+
+### Minor changes
+
+- Expose hideLegend prop for stacked bar chart (v-ragor@microsoft.com)
 ## 0.134.4
 Wed, 04 Sep 2019 04:09:58 GMT
 

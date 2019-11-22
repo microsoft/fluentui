@@ -426,7 +426,7 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
     const textAreaProps = getNativeProps<React.TextareaHTMLAttributes<HTMLTextAreaElement>>(this.props, textAreaProperties, [
       'defaultValue'
     ]);
-
+    const ariaLabelledBy = this.props['aria-labelledby'] || (this.props.label ? this._labelId : undefined);
     return (
       <textarea
         id={this._id}
@@ -436,6 +436,7 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
         onInput={this._onInputChange}
         onChange={this._onInputChange}
         className={this._classNames.field}
+        aria-labelledby={ariaLabelledBy}
         aria-describedby={this._isDescriptionAvailable ? this._descriptionId : this.props['aria-describedby']}
         aria-invalid={!!this._errorMessage}
         aria-label={this.props.ariaLabel}

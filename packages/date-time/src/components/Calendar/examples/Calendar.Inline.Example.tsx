@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { DefaultButton } from 'office-ui-fabric-react';
+import { DefaultButton, Dropdown, IDropdownOption } from 'office-ui-fabric-react';
 import { addDays, getDateRangeArray } from 'office-ui-fabric-react/lib/utilities/dateMath/DateMath';
 import { Calendar, DateRangeType, DayOfWeek, ICalendarProps } from '@uifabric/date-time';
 
@@ -24,10 +24,12 @@ const DayPickerStrings = {
 export interface ICalendarInlineExampleState {
   selectedDate?: Date | null;
   selectedDateRange?: Date[] | null;
+  daysToSelectInDayView?: number;
 }
 
 export interface ICalendarInlineExampleProps extends ICalendarProps {
   showNavigateButtons?: boolean;
+  showDaysToSelectInDayViewDropdown?: boolean;
 }
 
 export class CalendarInlineExample extends React.Component<ICalendarInlineExampleProps, ICalendarInlineExampleState> {
@@ -36,7 +38,8 @@ export class CalendarInlineExample extends React.Component<ICalendarInlineExampl
 
     this.state = {
       selectedDate: null,
-      selectedDateRange: null
+      selectedDateRange: null,
+      daysToSelectInDayView: props.calendarDayProps ? props.calendarDayProps.daysToSelectInDayView : 1
     };
 
     this._onDismiss = this._onDismiss.bind(this);
@@ -86,12 +89,16 @@ export class CalendarInlineExample extends React.Component<ICalendarInlineExampl
           </div>
         )}
         <Calendar
+          {...this.props}
           onSelectDate={this._onSelectDate}
           onDismiss={this._onDismiss}
           value={this.state.selectedDate!}
           firstDayOfWeek={this.props.firstDayOfWeek ? this.props.firstDayOfWeek : DayOfWeek.Sunday}
           strings={DayPickerStrings}
-          {...this.props}
+          calendarDayProps={{
+            ...this.props.calendarDayProps,
+            daysToSelectInDayView: this.state.daysToSelectInDayView
+          }}
         />
         {this.props.showNavigateButtons && (
           <div>
@@ -99,9 +106,36 @@ export class CalendarInlineExample extends React.Component<ICalendarInlineExampl
             <DefaultButton className={styles.button} onClick={this._goNext} text="Next" />
           </div>
         )}
+        {this.props.showDaysToSelectInDayViewDropdown && (
+          <div>
+            <Dropdown
+              className={styles.dropdown}
+              selectedKey={this.state.daysToSelectInDayView && this.state.daysToSelectInDayView}
+              label="Choose days to select"
+              options={[
+                { key: 1, text: '1' },
+                { key: 2, text: '2' },
+                { key: 3, text: '3' },
+                { key: 4, text: '4' },
+                { key: 5, text: '5' },
+                { key: 6, text: '6' }
+              ]}
+              onChange={this._onDaysToSelectInDayViewDropdownChange}
+            />
+          </div>
+        )}
       </div>
     );
   }
+
+  private _onDaysToSelectInDayViewDropdownChange = (ev: React.FormEvent<HTMLElement>, option: IDropdownOption | undefined): void => {
+    this.setState((prevState: ICalendarInlineExampleState) => {
+      return {
+        ...prevState,
+        daysToSelectInDayView: option && (option.key as number)
+      };
+    });
+  };
 
   private _onDismiss(): void {
     this.setState((prevState: ICalendarInlineExampleState) => {

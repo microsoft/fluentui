@@ -96,22 +96,19 @@ export const styles = (props: ICalendarDayGridStyleProps): ICalendarDayGridStyle
       cursor: 'pointer',
       selectors: {
         ['&.' + classNames.hoverStyle]: {
-          backgroundColor: palette.neutralLight
+          backgroundColor: palette.neutralLighter
         },
         ['&.' + classNames.pressedStyle]: {
-          backgroundColor: palette.themeLight,
-          fontWeight: FontWeights.semibold
+          backgroundColor: palette.neutralLight
         }
       }
     },
     daySelected: [
       dateRangeType !== DateRangeType.Month && {
-        backgroundColor: palette.themeLight + '!important',
-        fontWeight: (FontWeights.semibold + '!important') as 'initial',
+        backgroundColor: palette.neutralLight + '!important',
         selectors: {
           ['&:hover, &.' + classNames.hoverStyle + ', &.' + classNames.pressedStyle]: {
-            backgroundColor: palette.themeLight + '!important',
-            fontWeight: FontWeights.semibold as 'initial'
+            backgroundColor: palette.neutralLight + '!important'
           }
         }
       }
@@ -123,6 +120,8 @@ export const styles = (props: ICalendarDayGridStyleProps): ICalendarDayGridStyle
       padding: 0,
       borderRight: '1px solid',
       borderColor: palette.neutralLight,
+      backgroundColor: palette.neutralLighterAlt,
+      color: palette.neutralSecondary,
       boxSizing: 'border-box',
       width: 28,
       height: 28,
@@ -148,6 +147,7 @@ export const styles = (props: ICalendarDayGridStyleProps): ICalendarDayGridStyle
         color: 'inherit',
         backgroundColor: 'transparent',
         cursor: 'pointer',
+        overflow: 'visible', // explicitly specify for IE11
         selectors: {
           span: {
             height: 'inherit',
@@ -158,6 +158,7 @@ export const styles = (props: ICalendarDayGridStyleProps): ICalendarDayGridStyle
     ],
     dayIsToday: {
       backgroundColor: palette.themePrimary + '!important',
+      borderRadius: '100%',
       color: palette.white + '!important',
       fontWeight: (FontWeights.semibold + '!important') as 'initial'
     },

@@ -67,7 +67,10 @@ export const getStyles = (props: IModalStyleProps): IModalStyles => {
         position: 'relative',
         textAlign: 'left',
         outline: '3px solid transparent',
-        maxHeight: '100%',
+        maxHeight: 'calc(100% - 32px)',
+        maxWidth: 'calc(100% - 32px)',
+        minHeight: '176px',
+        minWidth: '288px',
         overflowY: 'auto',
         zIndex: isModeless ? ZIndexes.Layer : undefined
       },

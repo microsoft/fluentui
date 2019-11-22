@@ -60,6 +60,7 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
     <input
       aria-checked="true"
       aria-label="Is marquee enabled"
+      checked={true}
       className=
 
           {
@@ -74,7 +75,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
             outline: 1px solid ActiveBorder;
           }
-      defaultChecked={true}
       id="checkbox-0"
       onBlur={[Function]}
       onChange={[Function]}
@@ -155,7 +155,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
                 color: Window;
               }
           data-icon-name="CheckMark"
-          role="presentation"
         >
           
         </i>
@@ -178,9 +177,44 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
   <p>
     Drag a rectangle around the items below to select them:
   </p>
-  <ul>
+  <ul
+    className=
+
+        {
+          border: 1px solid #a19f9d;
+          display: inline-block;
+          margin-bottom: 0px;
+          margin-left: 0px;
+          margin-right: 0px;
+          margin-top: 0px;
+          overflow: hidden;
+          padding-bottom: 10px;
+          padding-left: 10px;
+          padding-right: 10px;
+          padding-top: 10px;
+          user-select: none;
+        }
+  >
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={0}
       onClick={[Function]}
@@ -194,7 +228,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       0
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={1}
       onClick={[Function]}
@@ -208,7 +260,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       1
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={2}
       onClick={[Function]}
@@ -222,7 +292,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       2
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={3}
       onClick={[Function]}
@@ -236,7 +324,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       3
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={4}
       onClick={[Function]}
@@ -250,7 +356,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       4
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={5}
       onClick={[Function]}
@@ -264,7 +388,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       5
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={6}
       onClick={[Function]}
@@ -278,7 +420,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       6
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={7}
       onClick={[Function]}
@@ -292,7 +452,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       7
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={8}
       onClick={[Function]}
@@ -306,7 +484,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       8
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={9}
       onClick={[Function]}
@@ -320,7 +516,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       9
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={10}
       onClick={[Function]}
@@ -334,7 +548,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       10
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={11}
       onClick={[Function]}
@@ -348,7 +580,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       11
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={12}
       onClick={[Function]}
@@ -362,7 +612,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       12
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={13}
       onClick={[Function]}
@@ -376,7 +644,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       13
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={14}
       onClick={[Function]}
@@ -390,7 +676,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       14
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={15}
       onClick={[Function]}
@@ -404,7 +708,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       15
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={16}
       onClick={[Function]}
@@ -418,7 +740,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       16
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={17}
       onClick={[Function]}
@@ -432,7 +772,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       17
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={18}
       onClick={[Function]}
@@ -446,7 +804,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       18
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={19}
       onClick={[Function]}
@@ -460,7 +836,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       19
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={20}
       onClick={[Function]}
@@ -474,7 +868,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       20
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={21}
       onClick={[Function]}
@@ -488,7 +900,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       21
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={22}
       onClick={[Function]}
@@ -502,7 +932,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       22
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={23}
       onClick={[Function]}
@@ -516,7 +964,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       23
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={24}
       onClick={[Function]}
@@ -530,7 +996,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       24
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={25}
       onClick={[Function]}
@@ -544,7 +1028,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       25
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={26}
       onClick={[Function]}
@@ -558,7 +1060,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       26
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={27}
       onClick={[Function]}
@@ -572,7 +1092,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       27
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={28}
       onClick={[Function]}
@@ -586,7 +1124,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       28
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={29}
       onClick={[Function]}
@@ -600,7 +1156,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       29
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={30}
       onClick={[Function]}
@@ -614,7 +1188,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       30
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={31}
       onClick={[Function]}
@@ -628,7 +1220,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       31
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={32}
       onClick={[Function]}
@@ -642,7 +1252,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       32
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={33}
       onClick={[Function]}
@@ -656,7 +1284,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       33
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={34}
       onClick={[Function]}
@@ -670,7 +1316,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       34
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={35}
       onClick={[Function]}
@@ -684,7 +1348,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       35
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={36}
       onClick={[Function]}
@@ -698,7 +1380,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       36
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={37}
       onClick={[Function]}
@@ -712,7 +1412,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       37
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={38}
       onClick={[Function]}
@@ -726,7 +1444,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       38
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={39}
       onClick={[Function]}
@@ -740,7 +1476,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       39
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={40}
       onClick={[Function]}
@@ -754,7 +1508,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       40
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={41}
       onClick={[Function]}
@@ -768,7 +1540,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       41
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={42}
       onClick={[Function]}
@@ -782,7 +1572,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       42
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={43}
       onClick={[Function]}
@@ -796,7 +1604,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       43
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={44}
       onClick={[Function]}
@@ -810,7 +1636,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       44
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={45}
       onClick={[Function]}
@@ -824,7 +1668,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       45
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={46}
       onClick={[Function]}
@@ -838,7 +1700,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       46
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={47}
       onClick={[Function]}
@@ -852,7 +1732,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       47
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={48}
       onClick={[Function]}
@@ -866,7 +1764,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       48
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={49}
       onClick={[Function]}
@@ -880,7 +1796,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       49
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={50}
       onClick={[Function]}
@@ -894,7 +1828,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       50
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={51}
       onClick={[Function]}
@@ -908,7 +1860,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       51
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={52}
       onClick={[Function]}
@@ -922,7 +1892,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       52
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={53}
       onClick={[Function]}
@@ -936,7 +1924,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       53
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={54}
       onClick={[Function]}
@@ -950,7 +1956,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       54
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={55}
       onClick={[Function]}
@@ -964,7 +1988,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       55
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={56}
       onClick={[Function]}
@@ -978,7 +2020,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       56
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={57}
       onClick={[Function]}
@@ -992,7 +2052,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       57
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={58}
       onClick={[Function]}
@@ -1006,7 +2084,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       58
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={59}
       onClick={[Function]}
@@ -1020,7 +2116,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       59
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={60}
       onClick={[Function]}
@@ -1034,7 +2148,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       60
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={61}
       onClick={[Function]}
@@ -1048,7 +2180,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       61
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={62}
       onClick={[Function]}
@@ -1062,7 +2212,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       62
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={63}
       onClick={[Function]}
@@ -1076,7 +2244,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       63
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={64}
       onClick={[Function]}
@@ -1090,7 +2276,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       64
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={65}
       onClick={[Function]}
@@ -1104,7 +2308,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       65
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={66}
       onClick={[Function]}
@@ -1118,7 +2340,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       66
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={67}
       onClick={[Function]}
@@ -1132,7 +2372,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       67
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={68}
       onClick={[Function]}
@@ -1146,7 +2404,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       68
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={69}
       onClick={[Function]}
@@ -1160,7 +2436,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       69
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={70}
       onClick={[Function]}
@@ -1174,7 +2468,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       70
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={71}
       onClick={[Function]}
@@ -1188,7 +2500,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       71
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={72}
       onClick={[Function]}
@@ -1202,7 +2532,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       72
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={73}
       onClick={[Function]}
@@ -1216,7 +2564,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       73
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={74}
       onClick={[Function]}
@@ -1230,7 +2596,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       74
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={75}
       onClick={[Function]}
@@ -1244,7 +2628,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       75
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={76}
       onClick={[Function]}
@@ -1258,7 +2660,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       76
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={77}
       onClick={[Function]}
@@ -1272,7 +2692,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       77
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={78}
       onClick={[Function]}
@@ -1286,7 +2724,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       78
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={79}
       onClick={[Function]}
@@ -1300,7 +2756,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       79
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={80}
       onClick={[Function]}
@@ -1314,7 +2788,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       80
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={81}
       onClick={[Function]}
@@ -1328,7 +2820,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       81
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={82}
       onClick={[Function]}
@@ -1342,7 +2852,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       82
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={83}
       onClick={[Function]}
@@ -1356,7 +2884,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       83
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={84}
       onClick={[Function]}
@@ -1370,7 +2916,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       84
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={85}
       onClick={[Function]}
@@ -1384,7 +2948,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       85
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={86}
       onClick={[Function]}
@@ -1398,7 +2980,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       86
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={87}
       onClick={[Function]}
@@ -1412,7 +3012,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       87
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={88}
       onClick={[Function]}
@@ -1426,7 +3044,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       88
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={89}
       onClick={[Function]}
@@ -1440,7 +3076,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       89
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={90}
       onClick={[Function]}
@@ -1454,7 +3108,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       90
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={91}
       onClick={[Function]}
@@ -1468,7 +3140,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       91
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={92}
       onClick={[Function]}
@@ -1482,7 +3172,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       92
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={93}
       onClick={[Function]}
@@ -1496,7 +3204,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       93
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={94}
       onClick={[Function]}
@@ -1510,7 +3236,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       94
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={95}
       onClick={[Function]}
@@ -1524,7 +3268,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       95
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={96}
       onClick={[Function]}
@@ -1538,7 +3300,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       96
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={97}
       onClick={[Function]}
@@ -1552,7 +3332,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       97
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={98}
       onClick={[Function]}
@@ -1566,7 +3364,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       98
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={99}
       onClick={[Function]}
@@ -1580,7 +3396,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       99
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={100}
       onClick={[Function]}
@@ -1594,7 +3428,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       100
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={101}
       onClick={[Function]}
@@ -1608,7 +3460,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       101
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={102}
       onClick={[Function]}
@@ -1622,7 +3492,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       102
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={103}
       onClick={[Function]}
@@ -1636,7 +3524,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       103
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={104}
       onClick={[Function]}
@@ -1650,7 +3556,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       104
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={105}
       onClick={[Function]}
@@ -1664,7 +3588,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       105
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={106}
       onClick={[Function]}
@@ -1678,7 +3620,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       106
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={107}
       onClick={[Function]}
@@ -1692,7 +3652,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       107
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={108}
       onClick={[Function]}
@@ -1706,7 +3684,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       108
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={109}
       onClick={[Function]}
@@ -1720,7 +3716,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       109
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={110}
       onClick={[Function]}
@@ -1734,7 +3748,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       110
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={111}
       onClick={[Function]}
@@ -1748,7 +3780,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       111
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={112}
       onClick={[Function]}
@@ -1762,7 +3812,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       112
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={113}
       onClick={[Function]}
@@ -1776,7 +3844,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       113
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={114}
       onClick={[Function]}
@@ -1790,7 +3876,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       114
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={115}
       onClick={[Function]}
@@ -1804,7 +3908,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       115
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={116}
       onClick={[Function]}
@@ -1818,7 +3940,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       116
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={117}
       onClick={[Function]}
@@ -1832,7 +3972,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       117
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={118}
       onClick={[Function]}
@@ -1846,7 +4004,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       118
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={119}
       onClick={[Function]}
@@ -1860,7 +4036,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       119
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={120}
       onClick={[Function]}
@@ -1874,7 +4068,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       120
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={121}
       onClick={[Function]}
@@ -1888,7 +4100,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       121
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={122}
       onClick={[Function]}
@@ -1902,7 +4132,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       122
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={123}
       onClick={[Function]}
@@ -1916,7 +4164,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       123
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={124}
       onClick={[Function]}
@@ -1930,7 +4196,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       124
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={125}
       onClick={[Function]}
@@ -1944,7 +4228,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       125
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={126}
       onClick={[Function]}
@@ -1958,7 +4260,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       126
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={127}
       onClick={[Function]}
@@ -1972,7 +4292,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       127
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={128}
       onClick={[Function]}
@@ -1986,7 +4324,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       128
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={129}
       onClick={[Function]}
@@ -2000,7 +4356,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       129
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={130}
       onClick={[Function]}
@@ -2014,7 +4388,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       130
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={131}
       onClick={[Function]}
@@ -2028,7 +4420,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       131
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={132}
       onClick={[Function]}
@@ -2042,7 +4452,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       132
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={133}
       onClick={[Function]}
@@ -2056,7 +4484,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       133
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={134}
       onClick={[Function]}
@@ -2070,7 +4516,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       134
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={135}
       onClick={[Function]}
@@ -2084,7 +4548,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       135
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={136}
       onClick={[Function]}
@@ -2098,7 +4580,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       136
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={137}
       onClick={[Function]}
@@ -2112,7 +4612,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       137
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={138}
       onClick={[Function]}
@@ -2126,7 +4644,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       138
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={139}
       onClick={[Function]}
@@ -2140,7 +4676,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       139
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={140}
       onClick={[Function]}
@@ -2154,7 +4708,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       140
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={141}
       onClick={[Function]}
@@ -2168,7 +4740,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       141
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={142}
       onClick={[Function]}
@@ -2182,7 +4772,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       142
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={143}
       onClick={[Function]}
@@ -2196,7 +4804,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       143
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={144}
       onClick={[Function]}
@@ -2210,7 +4836,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       144
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={145}
       onClick={[Function]}
@@ -2224,7 +4868,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       145
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={146}
       onClick={[Function]}
@@ -2238,7 +4900,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       146
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={147}
       onClick={[Function]}
@@ -2252,7 +4932,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       147
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={148}
       onClick={[Function]}
@@ -2266,7 +4964,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       148
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={149}
       onClick={[Function]}
@@ -2280,7 +4996,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       149
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={150}
       onClick={[Function]}
@@ -2294,7 +5028,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       150
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={151}
       onClick={[Function]}
@@ -2308,7 +5060,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       151
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={152}
       onClick={[Function]}
@@ -2322,7 +5092,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       152
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={153}
       onClick={[Function]}
@@ -2336,7 +5124,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       153
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={154}
       onClick={[Function]}
@@ -2350,7 +5156,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       154
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={155}
       onClick={[Function]}
@@ -2364,7 +5188,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       155
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={156}
       onClick={[Function]}
@@ -2378,7 +5220,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       156
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={157}
       onClick={[Function]}
@@ -2392,7 +5252,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       157
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={158}
       onClick={[Function]}
@@ -2406,7 +5284,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       158
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={159}
       onClick={[Function]}
@@ -2420,7 +5316,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       159
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={160}
       onClick={[Function]}
@@ -2434,7 +5348,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       160
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={161}
       onClick={[Function]}
@@ -2448,7 +5380,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       161
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={162}
       onClick={[Function]}
@@ -2462,7 +5412,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       162
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={163}
       onClick={[Function]}
@@ -2476,7 +5444,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       163
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={164}
       onClick={[Function]}
@@ -2490,7 +5476,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       164
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={165}
       onClick={[Function]}
@@ -2504,7 +5508,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       165
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={166}
       onClick={[Function]}
@@ -2518,7 +5540,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       166
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={167}
       onClick={[Function]}
@@ -2532,7 +5572,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       167
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={168}
       onClick={[Function]}
@@ -2546,7 +5604,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       168
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={169}
       onClick={[Function]}
@@ -2560,7 +5636,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       169
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={170}
       onClick={[Function]}
@@ -2574,7 +5668,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       170
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={171}
       onClick={[Function]}
@@ -2588,7 +5700,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       171
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={172}
       onClick={[Function]}
@@ -2602,7 +5732,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       172
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={173}
       onClick={[Function]}
@@ -2616,7 +5764,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       173
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={174}
       onClick={[Function]}
@@ -2630,7 +5796,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       174
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={175}
       onClick={[Function]}
@@ -2644,7 +5828,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       175
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={176}
       onClick={[Function]}
@@ -2658,7 +5860,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       176
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={177}
       onClick={[Function]}
@@ -2672,7 +5892,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       177
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={178}
       onClick={[Function]}
@@ -2686,7 +5924,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       178
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={179}
       onClick={[Function]}
@@ -2700,7 +5956,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       179
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={180}
       onClick={[Function]}
@@ -2714,7 +5988,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       180
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={181}
       onClick={[Function]}
@@ -2728,7 +6020,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       181
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={182}
       onClick={[Function]}
@@ -2742,7 +6052,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       182
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={183}
       onClick={[Function]}
@@ -2756,7 +6084,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       183
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={184}
       onClick={[Function]}
@@ -2770,7 +6116,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       184
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={185}
       onClick={[Function]}
@@ -2784,7 +6148,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       185
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={186}
       onClick={[Function]}
@@ -2798,7 +6180,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       186
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={187}
       onClick={[Function]}
@@ -2812,7 +6212,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       187
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={188}
       onClick={[Function]}
@@ -2826,7 +6244,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       188
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={189}
       onClick={[Function]}
@@ -2840,7 +6276,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       189
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={190}
       onClick={[Function]}
@@ -2854,7 +6308,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       190
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={191}
       onClick={[Function]}
@@ -2868,7 +6340,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       191
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={192}
       onClick={[Function]}
@@ -2882,7 +6372,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       192
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={193}
       onClick={[Function]}
@@ -2896,7 +6404,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       193
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={194}
       onClick={[Function]}
@@ -2910,7 +6436,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       194
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={195}
       onClick={[Function]}
@@ -2924,7 +6468,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       195
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={196}
       onClick={[Function]}
@@ -2938,7 +6500,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       196
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={197}
       onClick={[Function]}
@@ -2952,7 +6532,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       197
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={198}
       onClick={[Function]}
@@ -2966,7 +6564,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       198
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={199}
       onClick={[Function]}
@@ -2980,7 +6596,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       199
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={200}
       onClick={[Function]}
@@ -2994,7 +6628,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       200
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={201}
       onClick={[Function]}
@@ -3008,7 +6660,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       201
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={202}
       onClick={[Function]}
@@ -3022,7 +6692,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       202
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={203}
       onClick={[Function]}
@@ -3036,7 +6724,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       203
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={204}
       onClick={[Function]}
@@ -3050,7 +6756,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       204
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={205}
       onClick={[Function]}
@@ -3064,7 +6788,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       205
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={206}
       onClick={[Function]}
@@ -3078,7 +6820,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       206
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={207}
       onClick={[Function]}
@@ -3092,7 +6852,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       207
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={208}
       onClick={[Function]}
@@ -3106,7 +6884,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       208
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={209}
       onClick={[Function]}
@@ -3120,7 +6916,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       209
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={210}
       onClick={[Function]}
@@ -3134,7 +6948,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       210
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={211}
       onClick={[Function]}
@@ -3148,7 +6980,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       211
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={212}
       onClick={[Function]}
@@ -3162,7 +7012,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       212
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={213}
       onClick={[Function]}
@@ -3176,7 +7044,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       213
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={214}
       onClick={[Function]}
@@ -3190,7 +7076,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       214
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={215}
       onClick={[Function]}
@@ -3204,7 +7108,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       215
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={216}
       onClick={[Function]}
@@ -3218,7 +7140,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       216
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={217}
       onClick={[Function]}
@@ -3232,7 +7172,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       217
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={218}
       onClick={[Function]}
@@ -3246,7 +7204,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       218
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={219}
       onClick={[Function]}
@@ -3260,7 +7236,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       219
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={220}
       onClick={[Function]}
@@ -3274,7 +7268,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       220
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={221}
       onClick={[Function]}
@@ -3288,7 +7300,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       221
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={222}
       onClick={[Function]}
@@ -3302,7 +7332,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       222
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={223}
       onClick={[Function]}
@@ -3316,7 +7364,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       223
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={224}
       onClick={[Function]}
@@ -3330,7 +7396,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       224
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={225}
       onClick={[Function]}
@@ -3344,7 +7428,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       225
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={226}
       onClick={[Function]}
@@ -3358,7 +7460,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       226
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={227}
       onClick={[Function]}
@@ -3372,7 +7492,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       227
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={228}
       onClick={[Function]}
@@ -3386,7 +7524,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       228
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={229}
       onClick={[Function]}
@@ -3400,7 +7556,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       229
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={230}
       onClick={[Function]}
@@ -3414,7 +7588,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       230
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={231}
       onClick={[Function]}
@@ -3428,7 +7620,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       231
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={232}
       onClick={[Function]}
@@ -3442,7 +7652,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       232
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={233}
       onClick={[Function]}
@@ -3456,7 +7684,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       233
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={234}
       onClick={[Function]}
@@ -3470,7 +7716,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       234
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={235}
       onClick={[Function]}
@@ -3484,7 +7748,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       235
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={236}
       onClick={[Function]}
@@ -3498,7 +7780,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       236
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={237}
       onClick={[Function]}
@@ -3512,7 +7812,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       237
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={238}
       onClick={[Function]}
@@ -3526,7 +7844,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       238
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={239}
       onClick={[Function]}
@@ -3540,7 +7876,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       239
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={240}
       onClick={[Function]}
@@ -3554,7 +7908,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       240
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={241}
       onClick={[Function]}
@@ -3568,7 +7940,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       241
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={242}
       onClick={[Function]}
@@ -3582,7 +7972,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       242
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={243}
       onClick={[Function]}
@@ -3596,7 +8004,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       243
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={244}
       onClick={[Function]}
@@ -3610,7 +8036,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       244
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={245}
       onClick={[Function]}
@@ -3624,7 +8068,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       245
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={246}
       onClick={[Function]}
@@ -3638,7 +8100,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       246
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={247}
       onClick={[Function]}
@@ -3652,7 +8132,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       247
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={248}
       onClick={[Function]}
@@ -3666,7 +8164,25 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       248
     </div>
     <div
-      className=""
+      className=
+
+          {
+            background: #f3f2f1;
+            box-sizing: border-box;
+            display: inline-block;
+            line-height: 100px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+          }
+          &.is-selected {
+            background: #deecf9;
+            border: 1px solid #0078d4;
+          }
       data-is-focusable={true}
       data-selection-index={249}
       onClick={[Function]}

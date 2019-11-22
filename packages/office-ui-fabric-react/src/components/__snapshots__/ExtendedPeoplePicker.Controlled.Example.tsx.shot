@@ -66,6 +66,7 @@ exports[`Component Examples renders ExtendedPeoplePicker.Controlled.Example.tsx 
             onClick={[Function]}
             onCompositionEnd={[Function]}
             onCompositionStart={[Function]}
+            onCompositionUpdate={[Function]}
             onFocus={[Function]}
             onInput={[Function]}
             onKeyDown={[Function]}
@@ -114,12 +115,12 @@ exports[`Component Examples renders ExtendedPeoplePicker.Controlled.Example.tsx 
           border: 0;
         }
         .ms-Fabric--isFocusVisible &:focus:after {
-          border-color: #ffffff;
-          border: 1px solid transparent;
+          border: none;
           bottom: 2px;
           content: "";
           left: 2px;
-          outline: none;
+          outline-color: #ffffff;
+          outline: 1px solid #605e5c;
           position: absolute;
           right: 2px;
           top: 2px;

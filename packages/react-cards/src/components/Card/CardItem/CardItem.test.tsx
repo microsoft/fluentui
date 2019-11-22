@@ -112,10 +112,10 @@ describe('Card Item', () => {
     expect(tree).toMatchSnapshot();
   });
 
-  it('renders correctly when filling up the margins while being the only item in a Compact Card', () => {
+  it('renders correctly when filling up the margins while being the only item in a Horizontal Card', () => {
     const tree = renderer
       .create(
-        <Card compact tokens={{ childrenMargin: 12 }}>
+        <Card horizontal tokens={{ childrenMargin: 12 }}>
           <Card.Item fill>
             <div />
           </Card.Item>
@@ -126,30 +126,10 @@ describe('Card Item', () => {
     expect(tree).toMatchSnapshot();
   });
 
-  it('renders correctly when filling up the margins while being the first item in a Compact Card', () => {
+  it('renders correctly when filling up the margins while being the first item in a Horizontal Card', () => {
     const tree = renderer
       .create(
-        <Card compact tokens={{ childrenMargin: 12 }}>
-          <Card.Item fill>
-            <div />
-          </Card.Item>
-          <Card.Item>
-            <div />
-          </Card.Item>
-        </Card>
-      )
-      .toJSON();
-
-    expect(tree).toMatchSnapshot();
-  });
-
-  it('renders correctly when filling up the margins while being the middle item in a Compact Card', () => {
-    const tree = renderer
-      .create(
-        <Card compact tokens={{ childrenMargin: 12 }}>
-          <Card.Item>
-            <div />
-          </Card.Item>
+        <Card horizontal tokens={{ childrenMargin: 12 }}>
           <Card.Item fill>
             <div />
           </Card.Item>
@@ -163,10 +143,30 @@ describe('Card Item', () => {
     expect(tree).toMatchSnapshot();
   });
 
-  it('renders correctly when filling up the margins while being the last item in a Compact Card', () => {
+  it('renders correctly when filling up the margins while being the middle item in a Horizontal Card', () => {
     const tree = renderer
       .create(
-        <Card compact tokens={{ childrenMargin: 12 }}>
+        <Card horizontal tokens={{ childrenMargin: 12 }}>
+          <Card.Item>
+            <div />
+          </Card.Item>
+          <Card.Item fill>
+            <div />
+          </Card.Item>
+          <Card.Item>
+            <div />
+          </Card.Item>
+        </Card>
+      )
+      .toJSON();
+
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('renders correctly when filling up the margins while being the last item in a Horizontal Card', () => {
+    const tree = renderer
+      .create(
+        <Card horizontal tokens={{ childrenMargin: 12 }}>
           <Card.Item>
             <div />
           </Card.Item>

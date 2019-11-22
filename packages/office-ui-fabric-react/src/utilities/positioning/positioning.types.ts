@@ -1,5 +1,4 @@
 import { DirectionalHint } from '../../common/DirectionalHint';
-import { IPoint } from './positioning.types';
 import { IRectangle } from '../../Utilities';
 
 export enum RectangleEdge {
@@ -44,7 +43,7 @@ export interface IPositionProps {
 
   /**
    * If true the positioning logic will prefer flipping edges over nudging the rectangle to fit within bounds,
-   * thus making sure the the element align perfectly with target.
+   * thus making sure the element align perfectly with target.
    */
   alignTargetEdge?: boolean;
 }

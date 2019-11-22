@@ -12,7 +12,9 @@ import {
   customizable,
   calculatePrecision,
   precisionRound,
-  mergeAriaAttributeValues
+  mergeAriaAttributeValues,
+  getNativeProps,
+  divProperties
 } from '../../Utilities';
 import { ISpinButton, ISpinButtonProps } from './SpinButton.types';
 import { Position } from '../../utilities/positioning';
@@ -142,7 +144,6 @@ export class SpinButton extends React.Component<ISpinButtonProps, ISpinButtonSta
       incrementButtonAriaLabel,
       decrementButtonIcon,
       decrementButtonAriaLabel,
-      title,
       ariaLabel,
       ariaDescribedBy,
       styles: customStyles,
@@ -165,9 +166,11 @@ export class SpinButton extends React.Component<ISpinButtonProps, ISpinButtonSta
       ? this.props.getClassNames(theme!, disabled, isFocused, keyboardSpinDirection, labelPosition, className)
       : getClassNames(getStyles(theme!, customStyles), disabled, isFocused, keyboardSpinDirection, labelPosition, className);
 
+    const nativeProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties, ['onBlur', 'onFocus', 'className']);
+
     return (
       <div className={classNames.root}>
-        {labelPosition !== Position.bottom && (
+        {labelPosition !== Position.bottom && (iconProps || label) && (
           <div className={classNames.labelWrapper}>
             {iconProps && <Icon {...iconProps} className={classNames.icon} aria-hidden="true" />}
             {label && (
@@ -180,8 +183,8 @@ export class SpinButton extends React.Component<ISpinButtonProps, ISpinButtonSta
         <KeytipData keytipProps={keytipProps} disabled={disabled}>
           {(keytipAttributes: any): JSX.Element => (
             <div
+              {...nativeProps}
               className={classNames.spinButtonWrapper}
-              title={title && title}
               aria-label={ariaLabel && ariaLabel}
               aria-posinset={ariaPositionInSet}
               aria-setsize={ariaSetSize}
@@ -246,7 +249,7 @@ export class SpinButton extends React.Component<ISpinButtonProps, ISpinButtonSta
             </div>
           )}
         </KeytipData>
-        {labelPosition === Position.bottom && (
+        {labelPosition === Position.bottom && (iconProps || label) && (
           <div className={classNames.labelWrapper}>
             {iconProps && <Icon iconName={iconProps.iconName} className={classNames.icon} aria-hidden="true" />}
             {label && (

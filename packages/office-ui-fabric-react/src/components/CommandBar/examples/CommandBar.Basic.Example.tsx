@@ -1,141 +1,88 @@
 import * as React from 'react';
+import { CommandBar, ICommandBarItemProps } from 'office-ui-fabric-react/lib/CommandBar';
+import { IButtonProps } from 'office-ui-fabric-react/lib/Button';
 
-import { CommandBar } from 'office-ui-fabric-react/lib/CommandBar';
+const overflowProps: IButtonProps = { ariaLabel: 'More commands' };
 
-export class CommandBarBasicExample extends React.Component<{}, {}> {
-  public render(): JSX.Element {
-    return (
-      <div>
-        <CommandBar
-          items={this.getItems()}
-          overflowItems={this.getOverlflowItems()}
-          overflowButtonProps={{ ariaLabel: 'More commands' }}
-          farItems={this.getFarItems()}
-          ariaLabel={'Use left and right arrow keys to navigate between commands'}
-        />
-      </div>
-    );
+export const CommandBarBasicExample: React.FunctionComponent = () => {
+  return (
+    <div>
+      <CommandBar
+        items={_items}
+        overflowItems={_overflowItems}
+        overflowButtonProps={overflowProps}
+        farItems={_farItems}
+        ariaLabel="Use left and right arrow keys to navigate between commands"
+      />
+    </div>
+  );
+};
+
+const _items: ICommandBarItemProps[] = [
+  {
+    key: 'newItem',
+    text: 'New',
+    cacheKey: 'myCacheKey', // changing this key will invalidate this item's cache
+    iconProps: { iconName: 'Add' },
+    subMenuProps: {
+      items: [
+        {
+          key: 'emailMessage',
+          text: 'Email message',
+          iconProps: { iconName: 'Mail' },
+          ['data-automation-id']: 'newEmailButton' // optional
+        },
+        {
+          key: 'calendarEvent',
+          text: 'Calendar event',
+          iconProps: { iconName: 'Calendar' }
+        }
+      ]
+    }
+  },
+  {
+    key: 'upload',
+    text: 'Upload',
+    iconProps: { iconName: 'Upload' },
+    href: 'https://dev.office.com/fabric'
+  },
+  {
+    key: 'share',
+    text: 'Share',
+    iconProps: { iconName: 'Share' },
+    onClick: () => console.log('Share')
+  },
+  {
+    key: 'download',
+    text: 'Download',
+    iconProps: { iconName: 'Download' },
+    onClick: () => console.log('Download')
   }
+];
 
-  // Data for CommandBar
-  private getItems = () => {
-    return [
-      {
-        key: 'newItem',
-        name: 'New',
-        cacheKey: 'myCacheKey', // changing this key will invalidate this items cache
-        iconProps: {
-          iconName: 'Add'
-        },
-        ariaLabel: 'New',
-        subMenuProps: {
-          items: [
-            {
-              key: 'emailMessage',
-              name: 'Email message',
-              iconProps: {
-                iconName: 'Mail'
-              },
-              ['data-automation-id']: 'newEmailButton'
-            },
-            {
-              key: 'calendarEvent',
-              name: 'Calendar event',
-              iconProps: {
-                iconName: 'Calendar'
-              }
-            }
-          ]
-        }
-      },
-      {
-        key: 'upload',
-        name: 'Upload',
-        iconProps: {
-          iconName: 'Upload'
-        },
-        href: 'https://dev.office.com/fabric',
-        ['data-automation-id']: 'uploadButton'
-      },
-      {
-        key: 'share',
-        name: 'Share',
-        iconProps: {
-          iconName: 'Share'
-        },
-        onClick: () => console.log('Share')
-      },
-      {
-        key: 'download',
-        name: 'Download',
-        iconProps: {
-          iconName: 'Download'
-        },
-        onClick: () => console.log('Download')
-      }
-    ];
-  };
+const _overflowItems: ICommandBarItemProps[] = [
+  { key: 'move', text: 'Move to...', onClick: () => console.log('Move to'), iconProps: { iconName: 'MoveToFolder' } },
+  { key: 'copy', text: 'Copy to...', onClick: () => console.log('Copy to'), iconProps: { iconName: 'Copy' } },
+  { key: 'rename', text: 'Rename...', onClick: () => console.log('Rename'), iconProps: { iconName: 'Edit' } }
+];
 
-  private getOverlflowItems = () => {
-    return [
-      {
-        key: 'move',
-        name: 'Move to...',
-        onClick: () => console.log('Move to'),
-        iconProps: {
-          iconName: 'MoveToFolder'
-        }
-      },
-      {
-        key: 'copy',
-        name: 'Copy to...',
-        onClick: () => console.log('Copy to'),
-        iconProps: {
-          iconName: 'Copy'
-        }
-      },
-      {
-        key: 'rename',
-        name: 'Rename...',
-        onClick: () => console.log('Rename'),
-        iconProps: {
-          iconName: 'Edit'
-        }
-      }
-    ];
-  };
-
-  private getFarItems = () => {
-    return [
-      {
-        key: 'sort',
-        name: 'Sort',
-        ariaLabel: 'Sort',
-        iconProps: {
-          iconName: 'SortLines'
-        },
-        onClick: () => console.log('Sort')
-      },
-      {
-        key: 'tile',
-        name: 'Grid view',
-        ariaLabel: 'Grid view',
-        iconProps: {
-          iconName: 'Tiles'
-        },
-        iconOnly: true,
-        onClick: () => console.log('Tiles')
-      },
-      {
-        key: 'info',
-        name: 'Info',
-        ariaLabel: 'Info',
-        iconProps: {
-          iconName: 'Info'
-        },
-        iconOnly: true,
-        onClick: () => console.log('Info')
-      }
-    ];
-  };
-}
+const _farItems: ICommandBarItemProps[] = [
+  {
+    key: 'tile',
+    text: 'Grid view',
+    // This needs an ariaLabel since it's icon-only
+    ariaLabel: 'Grid view',
+    iconOnly: true,
+    iconProps: { iconName: 'Tiles' },
+    onClick: () => console.log('Tiles')
+  },
+  {
+    key: 'info',
+    text: 'Info',
+    // This needs an ariaLabel since it's icon-only
+    ariaLabel: 'Info',
+    iconOnly: true,
+    iconProps: { iconName: 'Info' },
+    onClick: () => console.log('Info')
+  }
+];

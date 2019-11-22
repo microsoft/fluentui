@@ -22,9 +22,22 @@ export function initializeIcons(
     },
     fontFace: {
       fontFamily: `"FabricMDL2Icons-6"`,
-      src: `url('${baseUrl}fabric-icons-6-604c7ee7.woff') format('woff')`
+      src: `url('${baseUrl}fabric-icons-6-ef6fd590.woff') format('woff')`
     },
     icons: {
+      'SwayLogoInverse': '\uED29',
+      'OutOfOffice': '\uED34',
+      'Trophy': '\uED3F',
+      'ReopenPages': '\uED50',
+      'EmojiTabSymbols': '\uED58',
+      'AADLogo': '\uED68',
+      'AccessLogo': '\uED69',
+      'AdminALogoInverse32': '\uED6A',
+      'AdminCLogoInverse32': '\uED6B',
+      'AdminDLogoInverse32': '\uED6C',
+      'AdminELogoInverse32': '\uED6D',
+      'AdminLLogoInverse32': '\uED6E',
+      'AdminMLogoInverse32': '\uED6F',
       'AdminOLogoInverse32': '\uED70',
       'AdminPLogoInverse32': '\uED71',
       'AdminSLogoInverse32': '\uED72',
@@ -111,20 +124,7 @@ export function initializeIcons(
       'Subscript': '\uEDDF',
       'Strikethrough': '\uEDE0',
       'Export': '\uEDE1',
-      'ExportMirrored': '\uEDE2',
-      'SingleBookmark': '\uEDFF',
-      'SingleBookmarkSolid': '\uEE00',
-      'DoubleChevronDown': '\uEE04',
-      'FollowUser': '\uEE05',
-      'ReplyAll': '\uEE0A',
-      'WorkforceManagement': '\uEE0F',
-      'RecruitmentManagement': '\uEE12',
-      'Questionnaire': '\uEE19',
-      'ManagerSelfService': '\uEE23',
-      'ProductionFloorManagement': '\uEE29',
-      'ProductRelease': '\uEE2E',
-      'ProductVariant': '\uEE30',
-      'ReplyMirrored': '\uEE35'
+      'ExportMirrored': '\uEDE2'
     }
   };
 

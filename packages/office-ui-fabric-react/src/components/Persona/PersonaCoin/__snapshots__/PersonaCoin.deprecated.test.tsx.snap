@@ -62,7 +62,6 @@ exports[`PersonaCoin renders correctly 1`] = `
               speak: none;
             }
         data-icon-name="Contact"
-        role="presentation"
       >
         
       </i>
