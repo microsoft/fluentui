@@ -447,8 +447,14 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
 
                         {
                           background-color: #c8c6c4;
-                          margin-bottom: 4px;
-                          margin-top: 4px;
+                          bottom: 8px;
+                          position: absolute;
+                          right: 31px;
+                          top: 8px;
+                          width: 1px;
+                        }
+                        @media screen and (-ms-high-contrast: active){& {
+                          background-color: WindowText;
                         }
                   />
                 </span>
@@ -839,8 +845,6 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                         {
                           background-color: #c8c6c4;
                           bottom: 8px;
-                          margin-bottom: 4px;
-                          margin-top: 4px;
                           position: absolute;
                           right: 31px;
                           top: 8px;
