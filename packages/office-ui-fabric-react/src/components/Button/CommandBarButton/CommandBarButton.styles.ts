@@ -130,9 +130,7 @@ export const getStyles = memoizeFunction(
       },
 
       splitButtonDivider: {
-        backgroundColor: p.neutralTertiaryAlt,
-        marginTop: 4,
-        marginBottom: 4
+        backgroundColor: p.neutralTertiaryAlt
       },
 
       splitButtonMenuButton: {
