@@ -231,8 +231,6 @@ export class CalendarDayGridBase extends BaseComponent<ICalendarDayGridProps, IC
     const { activeDescendantId } = this.state;
     const isNavigatedDate = compareDates(navigatedDate, day.originalDate);
 
-    const customProps = this.props.customDayCellProps && this.props.customDayCellProps(day.originalDate);
-
     return (
       <td
         key={day.key}
@@ -243,14 +241,16 @@ export class CalendarDayGridBase extends BaseComponent<ICalendarDayGridProps, IC
           !day.isInBounds && classNames.dayOutsideBounds,
           !day.isInMonth && classNames.dayOutsideNavigatedMonth
         )}
-        ref={(element: HTMLTableCellElement) => this._setDayCellRef(element, day, isNavigatedDate)}
+        ref={(element: HTMLTableCellElement) => {
+          this.props.customDayCellRef && this.props.customDayCellRef(element, day.originalDate, classNames);
+          this._setDayCellRef(element, day, isNavigatedDate);
+        }}
         aria-hidden={ariaHidden}
         onClick={day.isInBounds && !ariaHidden ? day.onSelected : undefined}
         onMouseOver={!ariaHidden ? this.onMouseOverDay(day) : undefined}
         onMouseDown={!ariaHidden ? this.onMouseDownDay(day) : undefined}
         onMouseUp={!ariaHidden ? this.onMouseUpDay(day) : undefined}
         onMouseOut={!ariaHidden ? this.onMouseOutDay(day) : undefined}
-        {...customProps}
       >
         <button
           key={day.key + 'button'}
@@ -267,7 +267,6 @@ export class CalendarDayGridBase extends BaseComponent<ICalendarDayGridProps, IC
           type="button"
           role="gridcell" // create grid structure
           aria-readonly={true} // prevent grid from being "editable"
-          {...customProps!.disabled}
         >
           <span aria-hidden="true">{dateTimeFormatter.formatDay(day.originalDate)}</span>
         </button>

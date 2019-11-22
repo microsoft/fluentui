@@ -7,7 +7,7 @@ import {
   ICalendarFormatDateCallbacks,
   AnimationDirection
 } from '../Calendar/Calendar.types';
-import { IStyle, ITheme } from '@uifabric/styling';
+import { IStyle, ITheme, IProcessedStyleSet } from '@uifabric/styling';
 
 export interface ICalendarDayGrid {
   focus(): void;
@@ -113,10 +113,9 @@ export interface ICalendarDayGridProps extends IBaseProps<ICalendarDayGrid> {
   dateTimeFormatter: ICalendarFormatDateCallbacks;
 
   /**
-   * Props to apply to the <td> for the date. Can be used to apply custom styles for specific days, inject callback functions
-   * on hover or focus, or disable specific days if required
+   * Ref callback for individual days. Allows for customization of the styling, properties, or listeners of the specific day.
    */
-  customDayCellProps?: (date: Date) => React.ButtonHTMLAttributes<HTMLElement>;
+  customDayCellRef?: (element: HTMLElement, date: Date, classNames: IProcessedStyleSet<ICalendarDayGridStyles>) => void;
 
   /**
    * How many weeks to show by default. If not provided, will show enough weeks to display the current

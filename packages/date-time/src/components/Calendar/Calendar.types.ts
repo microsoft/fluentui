@@ -1,10 +1,10 @@
 import { DayOfWeek, FirstWeekOfYear, DateRangeType } from 'office-ui-fabric-react/lib/utilities/dateValues/DateValues';
 import { IRefObject, IBaseProps, IStyleFunctionOrObject } from '@uifabric/utilities';
 import { IStyle, ITheme } from '@uifabric/styling';
-import { ICalendarDayProps } from './CalendarDay/CalendarDay.types';
+import { ICalendarDayProps, ICalendarDayGridStyles } from './CalendarDay/CalendarDay.types';
 import { ICalendarMonthProps } from './CalendarMonth/CalendarMonth.types';
 
-export { DayOfWeek, DateRangeType, FirstWeekOfYear, ICalendarDayProps, ICalendarMonthProps };
+export { DayOfWeek, DateRangeType, FirstWeekOfYear, ICalendarDayProps, ICalendarDayGridStyles, ICalendarMonthProps };
 
 export interface ICalendar {
   /** Sets focus to the selected date. */
