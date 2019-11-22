@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "CommandBarButton: Fixed hidden CommandBarButton splitbuttonDivider",
+  "packageName": "office-ui-fabric-react",
+  "email": "v-mare@microsoft.com",
+  "commit": "0cae80c33eab4fb0ecbde1da925e740e85ddefe0",
+  "date": "2019-11-22T01:25:22.612Z"
+}

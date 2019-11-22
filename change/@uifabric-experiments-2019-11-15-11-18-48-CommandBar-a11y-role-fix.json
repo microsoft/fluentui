@@ -1,0 +1,8 @@
+{
+  "type": "none",
+  "comment": "Experimental button: removed unnecessary test that was causing flickers",
+  "packageName": "@uifabric/experiments",
+  "email": "mgodbolt@microsoft.com",
+  "commit": "2ddcf0242d9daab050f5446b93ae6f34a67a9668",
+  "date": "2019-11-15T19:18:48.805Z"
+}

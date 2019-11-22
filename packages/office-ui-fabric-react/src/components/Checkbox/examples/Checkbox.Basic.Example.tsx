@@ -15,7 +15,7 @@ export const CheckboxBasicExample: React.FunctionComponent = () => {
 
       <Checkbox label="Disabled checkbox" disabled />
 
-      <Checkbox label="Disabled checked checkbox" disabled defaultChecked />
+      <Checkbox label="Checked checkbox disabled, it is" disabled defaultChecked />
     </Stack>
   );
 };
