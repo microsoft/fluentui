@@ -12,6 +12,7 @@ import { IBaseProps } from '@uifabric/utilities';
 import { IBaseProps as IBaseProps_2 } from 'office-ui-fabric-react/lib/Utilities';
 import { ICalloutProps } from 'office-ui-fabric-react/lib/Callout';
 import { IComponentAs } from '@uifabric/utilities';
+import { IProcessedStyleSet } from '@uifabric/styling';
 import { IRefObject } from '@uifabric/utilities';
 import { IRefObject as IRefObject_2 } from 'office-ui-fabric-react/lib/Utilities';
 import { IStyle } from '@uifabric/styling';
@@ -60,6 +61,30 @@ export { FirstWeekOfYear }
 // @public (undocumented)
 export interface ICalendar {
     focus: () => void;
+}
+
+// @public (undocumented)
+export interface ICalendarDayGridStyles {
+    // (undocumented)
+    bottomLeftCornerDate?: IStyle;
+    // (undocumented)
+    bottomRightCornerDate?: IStyle;
+    dayButton?: IStyle;
+    dayCell?: IStyle;
+    dayIsToday?: IStyle;
+    dayOutsideBounds?: IStyle;
+    dayOutsideNavigatedMonth?: IStyle;
+    daySelected?: IStyle;
+    firstTransitionWeek?: IStyle;
+    lastTransitionWeek?: IStyle;
+    table?: IStyle;
+    // (undocumented)
+    topLeftCornerDate?: IStyle;
+    topRightCornerDate?: IStyle;
+    weekDayLabelCell?: IStyle;
+    weekNumberCell?: IStyle;
+    weekRow?: IStyle;
+    wrapper?: IStyle;
 }
 
 // Warning: (ae-forgotten-export) The symbol "ICalendarDay" needs to be exported by the entry point index.d.ts
@@ -341,8 +366,6 @@ export interface IWeeklyDayPickerStyleProps extends ICalendarDayGridStyleProps {
     theme: ITheme;
 }
 
-// Warning: (ae-forgotten-export) The symbol "ICalendarDayGridStyles" needs to be exported by the entry point index.d.ts
-// 
 // @public (undocumented)
 export interface IWeeklyDayPickerStyles extends Partial<ICalendarDayGridStyles> {
     disabledStyle: IStyle;
