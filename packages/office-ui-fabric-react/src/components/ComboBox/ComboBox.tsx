@@ -596,6 +596,10 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
           // the matched option's index
           index = currentPendingValueValidIndex;
           displayValues.push(this._normalizeToString(currentPendingValue));
+        } else if (!this.state.isOpen && currentPendingValue) {
+          displayValues.push(
+            this._indexWithinBounds(currentOptions, index) ? currentPendingValue : this._normalizeToString(suggestedDisplayValue)
+          );
         } else {
           displayValues.push(
             this._indexWithinBounds(currentOptions, index) ? currentOptions[index].text : this._normalizeToString(suggestedDisplayValue)
