@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Allow focus on CalendarMonth header.",
+  "packageName": "@uifabric/date-time",
+  "email": "phtucker@microsoft.com",
+  "commit": "eab10d89ac29a4ee1ec72358ba9237c2f0a09178",
+  "date": "2019-11-22T20:36:07.693Z"
+}
