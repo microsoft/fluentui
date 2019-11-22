@@ -126,7 +126,6 @@ export class CheckboxBase extends React.Component<ICheckboxProps, ICheckboxState
               aria-posinset={ariaPositionInSet}
               aria-setsize={ariaSetSize}
               aria-checked={isIndeterminate ? 'mixed' : isChecked ? 'true' : 'false'}
-              aria-hidden={false}
             />
             <label className={this._classNames.label} htmlFor={this._id}>
               <div className={this._classNames.checkbox} data-ktp-target={keytipAttributes['data-ktp-target']}>
