@@ -163,7 +163,7 @@ export class CalendarMonthBase extends BaseComponent<ICalendarMonthProps, ICalen
             onKeyDown={this._onButtonKeyDown(this._onHeaderSelect)}
             aria-label={dateFormatter.formatYear(navigatedDate)}
             data-is-focusable={!!onHeaderSelect}
-            tabIndex={!!onHeaderSelect ? 0 : -1} // prevent focus if there's no action for the button
+            tabIndex="0"
             type="button"
             aria-atomic={true}
             aria-live="polite"
