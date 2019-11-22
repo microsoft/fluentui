@@ -1,7 +1,16 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 21 Nov 2019 12:30:32 GMT and should not be manually modified.
+This log was last generated on Fri, 22 Nov 2019 16:57:54 GMT and should not be manually modified.
 
+## 7.64.1
+Fri, 22 Nov 2019 16:57:54 GMT
+
+### Patches
+
+- Modal: Updated styles to match toolkit. (v-mare@microsoft.com)
+- Removed SCSS from ResizeGroup. Added ResizeGroup.OverflowSet.Example.Style file. Added Codepen export support (pandasa123@gmail.com)
+- TeachingBubble: adding focus outline to close button for color contrast accessibility. Color contrast ratio should be more then 3:1. (marygans@microsoft.com)
+- Callout: Fixed bottom padding and button alignment to flex-end (v-mare@microsoft.com)
 ## 7.64.0
 Thu, 21 Nov 2019 12:30:32 GMT
 

@@ -2,6 +2,35 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Fri, 22 Nov 2019 16:57:54 GMT",
+      "tag": "office-ui-fabric-react_v7.64.1",
+      "version": "7.64.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Modal: Updated styles to match toolkit.",
+            "author": "v-mare@microsoft.com",
+            "commit": "d96703199f553228e48ad3b953c2a91e387dba5d"
+          },
+          {
+            "comment": "Removed SCSS from ResizeGroup. Added ResizeGroup.OverflowSet.Example.Style file. Added Codepen export support",
+            "author": "pandasa123@gmail.com",
+            "commit": ""
+          },
+          {
+            "comment": "TeachingBubble: adding focus outline to close button for color contrast accessibility. Color contrast ratio should be more then 3:1.",
+            "author": "marygans@microsoft.com",
+            "commit": "e45699f1940ef2eea40dccc17f24b6fd3463589d"
+          },
+          {
+            "comment": "Callout: Fixed bottom padding and button alignment to flex-end",
+            "author": "v-mare@microsoft.com",
+            "commit": "7c65d0eb9fd4b9f2389a3f5d0be66f7f437f3406"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 21 Nov 2019 12:30:32 GMT",
       "tag": "office-ui-fabric-react_v7.64.0",
       "version": "7.64.0",
