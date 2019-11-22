@@ -22,24 +22,6 @@ export const getStyles = memoizeFunction(
       bottom: 8
     };
 
-    const splitButtonDivider: IStyle = {
-      ...splitButtonDividerBaseStyles,
-      selectors: {
-        [HighContrastSelector]: {
-          backgroundColor: 'WindowText'
-        }
-      }
-    };
-
-    const splitButtonDividerDisabled: IStyle = {
-      ...splitButtonDividerBaseStyles,
-      selectors: {
-        [HighContrastSelector]: {
-          backgroundColor: 'GrayText'
-        }
-      }
-    };
-
     const splitButtonStyles: IButtonStyles = {
       splitButtonContainer: [
         getFocusStyle(theme, { highContrastStyle: buttonHighContrastFocus, inset: 2 }),
@@ -142,8 +124,22 @@ export const getStyles = memoizeFunction(
         marginRight: 0,
         marginBottom: 0
       },
-      splitButtonDivider: splitButtonDivider,
-      splitButtonDividerDisabled: splitButtonDividerDisabled,
+      splitButtonDivider: {
+        ...splitButtonDividerBaseStyles,
+        selectors: {
+          [HighContrastSelector]: {
+            backgroundColor: 'WindowText'
+          }
+        }
+      },
+      splitButtonDividerDisabled: {
+        ...splitButtonDividerBaseStyles,
+        selectors: {
+          [HighContrastSelector]: {
+            backgroundColor: 'GrayText'
+          }
+        }
+      },
       splitButtonMenuButtonDisabled: {
         pointerEvents: 'none',
         border: 'none',
