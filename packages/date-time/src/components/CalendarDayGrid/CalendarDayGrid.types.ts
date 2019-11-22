@@ -225,11 +225,6 @@ export interface ICalendarDayGridStyles {
   /**
    * The style to apply to the grid cells for days
    */
-  dayCellWrapper?: IStyle;
-
-  /**
-   * The style to apply to the grid cells for days
-   */
   dayCell?: IStyle;
 
   /**
