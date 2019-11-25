@@ -4485,7 +4485,11 @@ export interface IFabricProps extends React.HTMLAttributes<HTMLDivElement> {
     // (undocumented)
     applyThemeToBody?: boolean;
     // (undocumented)
+    as?: React.ReactType;
+    // (undocumented)
     componentRef?: IRefObject<{}>;
+    // (undocumented)
+    dir?: 'rtl' | 'ltr' | 'auto';
     // (undocumented)
     styles?: IStyleFunctionOrObject<IFabricStyleProps, IFabricStyles>;
     // (undocumented)
