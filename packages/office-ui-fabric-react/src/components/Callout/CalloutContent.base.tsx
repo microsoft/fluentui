@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ICalloutProps, ICalloutContentStyleProps, ICalloutContentStyles } from './Callout.types';
+import { ICalloutProps, ICalloutContentStyleProps, ICalloutContentStyles, Target } from './Callout.types';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import {
   Async,
@@ -22,7 +22,8 @@ import {
   IPositionProps,
   getMaxHeight,
   IPosition,
-  RectangleEdge
+  RectangleEdge,
+  positionCard
 } from '../../utilities/positioning';
 import { Popup } from '../../Popup';
 import { classNamesFunction } from '../../Utilities';
@@ -114,7 +115,7 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
   }
 
   public shouldComponentUpdate(newProps: ICalloutProps, newState: ICalloutState): boolean {
-    if (this.props.hidden && newProps.hidden) {
+    if (!newProps.shouldUpdateWhenHidden && this.props.hidden && newProps.hidden) {
       // Do not update when hidden.
       return false;
     }
@@ -122,7 +123,8 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
     return !shallowCompare(this.props, newProps) || !shallowCompare(this.state, newState);
   }
 
-  public componentWillMount() {
+  // tslint:disable-next-line function-name
+  public UNSAFE_componentWillMount() {
     this._setTargetWindowAndElement(this._getTarget());
   }
 
@@ -131,7 +133,8 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
     this._disposables.forEach((dispose: () => void) => dispose());
   }
 
-  public componentWillUpdate(newProps: ICalloutProps): void {
+  // tslint:disable-next-line function-name
+  public UNSAFE_componentWillUpdate(newProps: ICalloutProps): void {
     // If the target element changed, find the new one. If we are tracking target with class name, always find element because we
     // do not know if fabric has rendered a new element and disposed the old element.
     const newTarget = this._getTarget(newProps);
@@ -149,7 +152,7 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
     }
 
     // Ensure positioning is recalculated when we are about to show a persisted menu.
-    if (!newProps.hidden && newProps.hidden !== this.props.hidden) {
+    if (this._didPositionPropsChange(newProps, this.props)) {
       this._maxHeight = undefined;
       // Target might have been updated while hidden.
       this._setTargetWindowAndElement(newTarget);
@@ -191,7 +194,8 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
       hideOverflow = !!finalHeight,
       backgroundColor,
       calloutMaxHeight,
-      onScroll
+      onScroll,
+      shouldRestoreFocus = true
     } = this.props;
     target = this._getTarget();
     const { positions } = this.state;
@@ -241,7 +245,7 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
             className={this._classNames.calloutMain}
             onDismiss={this.dismiss}
             onScroll={onScroll}
-            shouldRestoreFocus={true}
+            shouldRestoreFocus={shouldRestoreFocus}
             style={overflowStyle}
             onMouseDown={this._mouseDownOnPopup}
             onMouseUp={this._mouseUpOnPopup}
@@ -287,7 +291,7 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
   protected _setInitialFocus = (): void => {
     if (this.props.setInitialFocus && !this._didSetInitialFocus && this.state.positions && this._calloutElement.current) {
       this._didSetInitialFocus = true;
-      this._async.requestAnimationFrame(() => focusFirstChild(this._calloutElement.current!));
+      this._async.requestAnimationFrame(() => focusFirstChild(this._calloutElement.current!), this._calloutElement.current);
     }
   };
 
@@ -332,8 +336,8 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
       this._disposables.push(
         on(this._targetWindow, 'scroll', this._dismissOnScroll, true),
         on(this._targetWindow, 'resize', this._dismissOnResize, true),
-        on(this._targetWindow.document.documentElement as any, 'focus', this._dismissOnLostFocus, true), // FABRIC7TODO remove any
-        on(this._targetWindow.document.documentElement as any, 'click', this._dismissOnLostFocus, true) // FABRIC7TODO remove any
+        on(this._targetWindow.document.documentElement, 'focus', this._dismissOnLostFocus, true),
+        on(this._targetWindow.document.documentElement, 'click', this._dismissOnLostFocus, true)
       );
       this._hasListeners = true;
     }, 0);
@@ -346,7 +350,7 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
   }
 
   private _updateAsyncPosition(): void {
-    this._async.requestAnimationFrame(() => this._updatePosition());
+    this._async.requestAnimationFrame(() => this._updatePosition(), this._calloutElement.current);
   }
 
   private _getBeakPosition(): React.CSSProperties {
@@ -380,7 +384,11 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
       currentProps = assign(currentProps, this.props);
       currentProps!.bounds = this._getBounds();
       currentProps!.target = this._target!;
-      const newPositions: ICalloutPositionedInfo = positionCallout(currentProps!, hostElement, calloutElement, positions);
+      // If there is a finalHeight given then we assume that the user knows and will handle
+      // additional positioning adjustments so we should call positionCard
+      const newPositions: ICalloutPositionedInfo = this.props.finalHeight
+        ? positionCard(currentProps!, hostElement, calloutElement, positions)
+        : positionCallout(currentProps!, hostElement, calloutElement, positions);
 
       // Set the new position only when the positions are not exists or one of the new callout positions are different.
       // The position should not change if the position is within 2 decimal places.
@@ -406,7 +414,8 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
 
   private _getBounds(): IRectangle {
     if (!this._bounds) {
-      let currentBounds = this.props.bounds;
+      const bounds = this.props.bounds;
+      let currentBounds = typeof bounds === 'function' ? bounds(this.props.target, this._targetWindow) : bounds;
 
       if (!currentBounds) {
         currentBounds = {
@@ -433,13 +442,22 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
         // Since the callout cannot measure it's border size it must be taken into account here. Otherwise it will
         // overlap with the target.
         const totalGap = gapSpace + beakWidth!;
-        this._async.requestAnimationFrame(() => {
-          if (this._target) {
-            this._maxHeight = getMaxHeight(this._target, this.props.directionalHint!, totalGap, this._getBounds(), this.props.coverTarget);
-            this._blockResetHeight = true;
-            this.forceUpdate();
-          }
-        });
+        this._async.requestAnimationFrame(
+          () => {
+            if (this._target) {
+              this._maxHeight = getMaxHeight(
+                this._target,
+                this.props.directionalHint!,
+                totalGap,
+                this._getBounds(),
+                this.props.coverTarget
+              );
+              this._blockResetHeight = true;
+              this.forceUpdate();
+            }
+          },
+          this._target as Element
+        );
       } else {
         this._maxHeight = this._getBounds().height!;
       }
@@ -473,26 +491,31 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
     return true;
   }
 
-  private _setTargetWindowAndElement(target: Element | string | MouseEvent | IPoint | null): void {
+  private _setTargetWindowAndElement(target: Target): void {
+    const currentElement = this._calloutElement.current;
+
     if (target) {
       if (typeof target === 'string') {
-        const currentDoc: Document = getDocument()!;
+        const currentDoc: Document = getDocument(currentElement)!;
         this._target = currentDoc ? (currentDoc.querySelector(target) as Element) : null;
-        this._targetWindow = getWindow()!;
+        this._targetWindow = getWindow(currentElement)!;
       } else if ((target as MouseEvent).stopPropagation) {
         this._targetWindow = getWindow((target as MouseEvent).toElement as HTMLElement)!;
-        this._target = target;
+        this._target = target as MouseEvent;
       } else if ((target as Element).getBoundingClientRect) {
         const targetElement: Element = target as Element;
         this._targetWindow = getWindow(targetElement)!;
-        this._target = target;
+        this._target = target as Element;
+      } else if ((target as React.RefObject<Element>).current !== undefined) {
+        this._target = (target as React.RefObject<Element>).current;
+        this._targetWindow = getWindow(this._target)!;
         // HTMLImgElements can have x and y values. The check for it being a point must go last.
       } else {
-        this._targetWindow = getWindow()!;
-        this._target = target;
+        this._targetWindow = getWindow(currentElement)!;
+        this._target = target as IPoint;
       }
     } else {
-      this._targetWindow = getWindow()!;
+      this._targetWindow = getWindow(currentElement)!;
     }
   }
 
@@ -516,13 +539,18 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
         if (calloutMainElem.offsetHeight < this.props.finalHeight!) {
           this._setHeightOffsetEveryFrame();
         } else {
-          this._async.cancelAnimationFrame(this._setHeightOffsetTimer);
+          this._async.cancelAnimationFrame(this._setHeightOffsetTimer, this._calloutElement.current);
         }
-      });
+      }, this._calloutElement.current);
     }
   }
 
-  private _getTarget(props: ICalloutProps = this.props): Element | string | MouseEvent | IPoint | null {
+  // Whether or not the current positions should be reset
+  private _didPositionPropsChange(newProps: ICalloutProps, oldProps: ICalloutProps): boolean {
+    return (!newProps.hidden && newProps.hidden !== oldProps.hidden) || newProps.directionalHint !== oldProps.directionalHint;
+  }
+
+  private _getTarget(props: ICalloutProps = this.props): Target {
     const { target } = props;
     return target!;
   }

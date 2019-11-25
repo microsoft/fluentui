@@ -41,10 +41,10 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
             margin-right: 0px;
             margin-top: 0px;
             overflow-wrap: break-word;
-            padding-bottom: 0px;
-            padding-left: 0px;
-            padding-right: 0px;
-            padding-top: 0px;
+            padding-bottom: 5px;
+            padding-left: 0;
+            padding-right: 0;
+            padding-top: 5px;
             pointer-events: none;
             word-wrap: break-word;
           }
@@ -64,6 +64,7 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
           display: flex;
           height: 32px;
           min-width: 86px;
+          position: relative;
         }
         &:hover {
           border-color: #323130;
@@ -96,7 +97,7 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
             margin-left: 0px;
             margin-right: 0px;
             margin-top: 0px;
-            min-width: 72px;
+            min-width: 61px;
             outline: 0px;
             overflow: hidden;
             padding-bottom: 0;
@@ -229,7 +230,7 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
         tabIndex={-1}
         type="button"
       >
-        <div
+        <span
           className=
               ms-Button-flexContainer
               {
@@ -239,27 +240,33 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
                 height: 100%;
                 justify-content: center;
               }
+          data-automationid="splitbuttonprimary"
         >
           <i
             aria-hidden={true}
             className=
+                ms-Icon
                 ms-Button-icon
+                {
+                  display: inline-block;
+                }
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  display: inline-block;
-                  flex-shrink: 0;
                   font-family: "FabricMDL2Icons-2";
-                  font-size: 8px;
                   font-style: normal;
                   font-weight: normal;
+                  speak: none;
+                }
+                {
+                  flex-shrink: 0;
+                  font-size: 8px;
                   height: 16px;
                   line-height: 16px;
                   margin-bottom: 0px;
                   margin-left: 0px;
                   margin-right: 0px;
                   margin-top: 0px;
-                  speak: none;
                   text-align: center;
                   vertical-align: middle;
                 }
@@ -268,7 +275,7 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
           >
             
           </i>
-        </div>
+        </span>
       </button>
       <button
         className=
@@ -361,7 +368,7 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
         tabIndex={-1}
         type="button"
       >
-        <div
+        <span
           className=
               ms-Button-flexContainer
               {
@@ -371,27 +378,33 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
                 height: 100%;
                 justify-content: center;
               }
+          data-automationid="splitbuttonprimary"
         >
           <i
             aria-hidden={true}
             className=
+                ms-Icon
                 ms-Button-icon
+                {
+                  display: inline-block;
+                }
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  display: inline-block;
-                  flex-shrink: 0;
-                  font-family: "FabricMDL2Icons-2";
-                  font-size: 8px;
+                  font-family: "FabricMDL2Icons-3";
                   font-style: normal;
                   font-weight: normal;
+                  speak: none;
+                }
+                {
+                  flex-shrink: 0;
+                  font-size: 8px;
                   height: 16px;
                   line-height: 16px;
                   margin-bottom: 0px;
                   margin-left: 0px;
                   margin-right: 0px;
                   margin-top: 0px;
-                  speak: none;
                   text-align: center;
                   vertical-align: middle;
                 }
@@ -400,7 +413,7 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
           >
             
           </i>
-        </div>
+        </span>
       </button>
     </span>
   </div>
@@ -448,10 +461,10 @@ exports[`SpinButton renders SpinButton correctly with values that the user passe
             margin-right: 0px;
             margin-top: 0px;
             overflow-wrap: break-word;
-            padding-bottom: 0px;
-            padding-left: 0px;
-            padding-right: 0px;
-            padding-top: 0px;
+            padding-bottom: 5px;
+            padding-left: 0;
+            padding-right: 0;
+            padding-top: 5px;
             pointer-events: none;
             word-wrap: break-word;
           }
@@ -471,6 +484,7 @@ exports[`SpinButton renders SpinButton correctly with values that the user passe
           display: flex;
           height: 32px;
           min-width: 86px;
+          position: relative;
         }
         &:hover {
           border-color: #323130;
@@ -478,6 +492,7 @@ exports[`SpinButton renders SpinButton correctly with values that the user passe
         @media screen and (-ms-high-contrast: active){&:hover {
           border-color: Highlight;
         }
+    data-test="test"
   >
     <input
       aria-disabled={false}
@@ -504,7 +519,7 @@ exports[`SpinButton renders SpinButton correctly with values that the user passe
             margin-left: 0px;
             margin-right: 0px;
             margin-top: 0px;
-            min-width: 72px;
+            min-width: 61px;
             outline: 0px;
             overflow: hidden;
             padding-bottom: 0;
@@ -637,7 +652,7 @@ exports[`SpinButton renders SpinButton correctly with values that the user passe
         tabIndex={-1}
         type="button"
       >
-        <div
+        <span
           className=
               ms-Button-flexContainer
               {
@@ -647,27 +662,33 @@ exports[`SpinButton renders SpinButton correctly with values that the user passe
                 height: 100%;
                 justify-content: center;
               }
+          data-automationid="splitbuttonprimary"
         >
           <i
             aria-hidden={true}
             className=
+                ms-Icon
                 ms-Button-icon
+                {
+                  display: inline-block;
+                }
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  display: inline-block;
-                  flex-shrink: 0;
                   font-family: "FabricMDL2Icons-2";
-                  font-size: 8px;
                   font-style: normal;
                   font-weight: normal;
+                  speak: none;
+                }
+                {
+                  flex-shrink: 0;
+                  font-size: 8px;
                   height: 16px;
                   line-height: 16px;
                   margin-bottom: 0px;
                   margin-left: 0px;
                   margin-right: 0px;
                   margin-top: 0px;
-                  speak: none;
                   text-align: center;
                   vertical-align: middle;
                 }
@@ -676,7 +697,7 @@ exports[`SpinButton renders SpinButton correctly with values that the user passe
           >
             
           </i>
-        </div>
+        </span>
       </button>
       <button
         className=
@@ -769,7 +790,7 @@ exports[`SpinButton renders SpinButton correctly with values that the user passe
         tabIndex={-1}
         type="button"
       >
-        <div
+        <span
           className=
               ms-Button-flexContainer
               {
@@ -779,27 +800,33 @@ exports[`SpinButton renders SpinButton correctly with values that the user passe
                 height: 100%;
                 justify-content: center;
               }
+          data-automationid="splitbuttonprimary"
         >
           <i
             aria-hidden={true}
             className=
+                ms-Icon
                 ms-Button-icon
+                {
+                  display: inline-block;
+                }
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  display: inline-block;
-                  flex-shrink: 0;
-                  font-family: "FabricMDL2Icons-2";
-                  font-size: 8px;
+                  font-family: "FabricMDL2Icons-3";
                   font-style: normal;
                   font-weight: normal;
+                  speak: none;
+                }
+                {
+                  flex-shrink: 0;
+                  font-size: 8px;
                   height: 16px;
                   line-height: 16px;
                   margin-bottom: 0px;
                   margin-left: 0px;
                   margin-right: 0px;
                   margin-top: 0px;
-                  speak: none;
                   text-align: center;
                   vertical-align: middle;
                 }
@@ -808,7 +835,7 @@ exports[`SpinButton renders SpinButton correctly with values that the user passe
           >
             
           </i>
-        </div>
+        </span>
       </button>
     </span>
   </div>

@@ -1,32 +1,27 @@
+import * as React from 'react';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { Panel } from 'office-ui-fabric-react/lib/Panel';
-import * as React from 'react';
+import { useConstCallback } from '@uifabric/react-hooks';
 
-export interface IPanelLightDismissExampleState {
-  showPanel: boolean;
-}
+const explanation =
+  'This panel uses "light dismiss" behavior: it can be closed by clicking or tapping ' +
+  'the area outside the panel (or using the close button as usual).';
 
-export class PanelLightDismissExample extends React.Component<{}, IPanelLightDismissExampleState> {
-  public state = {
-    showPanel: false
-  };
+export const PanelLightDismissExample: React.FunctionComponent = () => {
+  const [isOpen, setIsOpen] = React.useState(false);
 
-  public render() {
-    return (
-      <div>
-        <DefaultButton text="Open panel" onClick={this._showPanel} />
-        <Panel isOpen={this.state.showPanel} isLightDismiss={true} headerText="Light Dismiss Panel" onDismiss={this._hidePanel}>
-          <span>Light Dismiss usage is meant for the Contextual Menu on mobile sized breakpoints.</span>
-        </Panel>
-      </div>
-    );
-  }
+  const openPanel = useConstCallback(() => setIsOpen(true));
+  const dismissPanel = useConstCallback(() => setIsOpen(false));
 
-  private _showPanel = (): void => {
-    this.setState({ showPanel: true });
-  };
-
-  private _hidePanel = (): void => {
-    this.setState({ showPanel: false });
-  };
-}
+  return (
+    <div>
+      {explanation}
+      <br />
+      <br />
+      <DefaultButton text="Open panel" onClick={openPanel} />
+      <Panel isLightDismiss isOpen={isOpen} onDismiss={dismissPanel} closeButtonAriaLabel="Close" headerText="Light dismiss panel">
+        <span>{explanation}</span>
+      </Panel>
+    </div>
+  );
+};

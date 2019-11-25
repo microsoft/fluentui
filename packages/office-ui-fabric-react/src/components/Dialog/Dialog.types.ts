@@ -21,6 +21,7 @@ export interface IDialogProps extends React.ClassAttributes<DialogBase>, IWithRe
   /**
    * Optional callback to access the IDialog interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
+   * @deprecated Unused, returns no value
    */
   componentRef?: IRefObject<IDialog>;
 

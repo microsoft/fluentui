@@ -2,6 +2,282 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "date": "Tue, 19 Nov 2019 12:29:10 GMT",
+      "tag": "@uifabric/charting_v0.138.1",
+      "version": "0.138.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix the bug that x-axis for linechart does not display properly",
+            "author": "dajiang@microsoft.com",
+            "commit": "dbe454d44c1a8574397e9d27001da5659f1a9a04"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 05 Nov 2019 12:25:16 GMT",
+      "tag": "@uifabric/charting_v0.138.0",
+      "version": "0.138.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Enabled wrap lines for legends",
+            "author": "dajiang@microsoft.com",
+            "commit": "4dfa746477cfd7660c56018e1987fdccd8d16b69"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 24 Oct 2019 12:31:42 GMT",
+      "tag": "@uifabric/charting_v0.137.2",
+      "version": "0.137.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Change gapSpace to 10 to resolve line chart flickering issue",
+            "author": "v-ragor@microsoft.com",
+            "commit": "39f7975985f9789b2baf9460c5d86c79186a93fc"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 22 Oct 2019 12:32:05 GMT",
+      "tag": "@uifabric/charting_v0.137.1",
+      "version": "0.137.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix getDerivedStateFromProps signatures",
+            "author": "elcraig@microsoft.com",
+            "commit": "437c49f055744dc64f13e6ef8c71f5f2d5110d0a"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 09 Oct 2019 22:25:09 GMT",
+      "tag": "@uifabric/charting_v0.137.0",
+      "version": "0.137.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add placeholder mode to StackedBarChart",
+            "author": "dajiang@microsoft.com",
+            "commit": "842e7fc9eeec95d4d7e9e7cb25da6d6e610a3a66"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 03 Oct 2019 23:14:46 GMT",
+      "tag": "@uifabric/charting_v0.136.2",
+      "version": "0.136.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fixes publish issue from beachball",
+            "author": "odbuild@microsoft.com",
+            "commit": "c9aabad39c56bafd0d86f91831b12f945eff7483"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 03 Oct 2019 01:14:35 GMT",
+      "tag": "@uifabric/charting_v0.136.0",
+      "version": "0.136.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add benchmark triangle in stackedBarChart",
+            "author": "dajiang@microsoft.com",
+            "commit": "842e7fc9eeec95d4d7e9e7cb25da6d6e610a3a66"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 18 Sep 2019 12:32:55 GMT",
+      "tag": "@uifabric/charting_v0.135.0",
+      "version": "0.135.0",
+      "comments": {
+        "none": [
+          {
+            "comment": "Update readme of charting package",
+            "author": "chenwe@microsoft.com",
+            "commit": "88c6886d642ecda739961c2821554358ca88cb13"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 11 Sep 2019 12:35:47 GMT",
+      "tag": "@uifabric/charting_v0.135.0",
+      "version": "0.135.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Expose hideLegend prop for stacked bar chart",
+            "author": "v-ragor@microsoft.com",
+            "commit": "21d5f3be8e206956a48b9c15ea15e55c7ffe36c8"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 04 Sep 2019 04:09:58 GMT",
+      "tag": "@uifabric/charting_v0.134.4",
+      "version": "0.134.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fix version file",
+            "author": "kchau@microsoft.com",
+            "commit": "fbccfaf91bfe3c77d95c614ac2cb69b7c9e1dad1"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 27 Aug 2019 12:33:51 GMT",
+      "tag": "@uifabric/charting_v0.134.3",
+      "version": "0.134.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Remove relative imports from examples and fix incorrectly named example files",
+            "author": "elcraig@microsoft.com",
+            "commit": "9bfb3b5f1dbec3c8ef57558d3d47f5bdc2f9648c"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 23 Aug 2019 12:35:28 GMT",
+      "tag": "@uifabric/charting_v0.134.2",
+      "version": "0.134.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update npmignores, delete unused jest setup files",
+            "author": "elcraig@microsoft.com",
+            "commit": "b12aaa280221562003af1e0f02aa5f3a5b008041"
+          },
+          {
+            "comment": "Fix up readme and package.json descriptions",
+            "author": "elcraig@microsoft.com",
+            "commit": "b1aef500b4b86eb5643d9f7db4c06114b5d7cc71"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 13 Aug 2019 12:31:12 GMT",
+      "tag": "@uifabric/charting_v0.134.1",
+      "version": "0.134.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix donut chart transform when height and width props change",
+            "author": "v-ragor@microsoft.com",
+            "commit": "7c5619a4fdf31fdbb966a1e50c9cc12a2dcb0180"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 07 Aug 2019 12:32:28 GMT",
+      "tag": "@uifabric/charting_v0.134.0",
+      "version": "0.134.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Initial implementation of clickable legends",
+            "author": "atgupta@microsoft.com",
+            "commit": "98ff6951712d70a787f19dab3b48ab94ef7d107a"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 22 Jul 2019 12:28:42 GMT",
+      "tag": "@uifabric/charting_v0.133.5",
+      "version": "0.133.5",
+      "comments": {
+        "none": [
+          {
+            "comment": "moving to lerna",
+            "author": "kchau@microsoft.com",
+            "commit": "181d2d537ec5feaaed43f35412d6f2d8b523d690"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Improve how to get the min query string",
+            "author": "elcraig@microsoft.com",
+            "commit": "17b31ca8739504e1d4c7b7dcaa725091254d0eb5"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 17 Jul 2019 18:58:57 GMT",
+      "tag": "@uifabric/charting_v0.133.4",
+      "version": "0.133.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Adding @types/react and @types/react-dom to package.json that have peer dependencies on react and react-dom.",
+            "author": "makotom@microsoft.com",
+            "commit": "4fa2fef6380c18877fcf379648d4e52146d59812"
+          }
+        ],
+        "none": [
+          {
+            "comment": "get rid of npx",
+            "author": "kchau@microsoft.com",
+            "commit": "472993033369aa470e59197a534045c02c24e852"
+          },
+          {
+            "comment": "bumping versions to match what was published already",
+            "author": "kchau@microsoft.com",
+            "commit": "75e4ad16a2e6a54672e4929a9e003c7fd6f6ae52"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Sat, 13 Jul 2019 22:20:41 GMT",
+      "tag": "@uifabric/charting_v0.133.2",
+      "version": "0.133.2",
+      "comments": {
+        "none": [
+          {
+            "comment": "Use resolves for all package paths",
+            "author": "kchau@microsoft.com",
+            "commit": "f8887fbdac76e651b0161edf624014a33741cf86"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 10 Jul 2019 12:28:00 GMT",
+      "tag": "@uifabric/charting_v0.133.2",
+      "version": "0.133.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "FIx linechart issue when consumer didn't sent height and width for the chart",
+            "author": "v-ragor@microsoft.com",
+            "commit": "49b6b2bdee4a960b7890d0f54dba31685bf98fb9"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.133.1",
       "tag": "@uifabric/charting_v0.133.1",
       "date": "Mon, 01 Jul 2019 18:51:42 GMT",

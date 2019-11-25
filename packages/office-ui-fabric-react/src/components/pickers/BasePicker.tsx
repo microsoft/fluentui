@@ -108,7 +108,8 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     return this.state.items;
   }
 
-  public componentWillUpdate(newProps: P, newState: IBasePickerState): void {
+  // tslint:disable-next-line function-name
+  public UNSAFE_componentWillUpdate(newProps: P, newState: IBasePickerState): void {
     if (newState.items && newState.items !== this.state.items) {
       this.selection.setItems(newState.items);
     }
@@ -119,7 +120,8 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     this._onResolveSuggestions = this._async.debounce(this._onResolveSuggestions, this.props.resolveDelay);
   }
 
-  public componentWillReceiveProps(newProps: P): void {
+  // tslint:disable-next-line function-name
+  public UNSAFE_componentWillReceiveProps(newProps: P): void {
     const newItems = newProps.selectedItems;
 
     if (newItems) {
@@ -248,6 +250,14 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
           componentRef={this.focusZone}
           direction={FocusZoneDirection.bidirectional}
           isInnerZoneKeystroke={this._isFocusZoneInnerKeystroke}
+          role={'combobox'}
+          aria-expanded={!!this.state.suggestionsVisible}
+          aria-owns={suggestionsAvailable || undefined}
+          // Dialog is an acceptable child of a combobox according to the aria specs: https://www.w3.org/TR/wai-aria-practices/#combobox
+          // Currently accessibility insights will flag this as not a valid child because the AXE rules are out of a date.
+          // A bug tracking this can be found:
+          // https://github.com/dequelabs/axe-core/issues/1009
+          aria-haspopup={suggestionsAvailable && this.suggestionStore.suggestions.length > 0 ? 'listbox' : 'dialog'}
         >
           {this.getSuggestionsAlert(classNames.screenReaderText)}
           <SelectionZone selection={this.selection} selectionMode={SelectionMode.multiple}>
@@ -268,16 +278,13 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
                   onBlur={this.onInputBlur}
                   onInputValueChange={this.onInputChange}
                   suggestedDisplayValue={suggestedDisplayValue}
-                  aria-activedescendant={this.getActiveDescendant()}
-                  aria-expanded={!!this.state.suggestionsVisible}
-                  aria-haspopup="true"
                   aria-describedby={items.length > 0 ? this._ariaMap.selectedItems : undefined}
+                  aria-controls={`${suggestionsAvailable} ${selectedSuggestionAlertId}` || undefined}
+                  aria-activedescendant={this.getActiveDescendant()}
                   autoCapitalize="off"
                   autoComplete="off"
-                  role={'combobox'}
+                  role={'textbox'}
                   disabled={disabled}
-                  aria-controls={`${suggestionsAvailable} ${selectedSuggestionAlertId}` || undefined}
-                  aria-owns={suggestionsAvailable || undefined}
                   aria-autocomplete={'both'}
                   onInputChange={this.props.onInputChange}
                 />
@@ -564,10 +571,12 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
         ? this.props.onEmptyResolveSuggestions
         : this.props.onEmptyInputFocus;
 
-      if (input === '' && emptyResolveSuggestions) {
-        this.setState({ suggestionsVisible: true });
-        const suggestions = emptyResolveSuggestions!(this.state.items);
-        this.updateSuggestionsList(suggestions);
+      if (input === '') {
+        if (emptyResolveSuggestions) {
+          this.setState({ suggestionsVisible: true });
+          const suggestions = emptyResolveSuggestions!(this.state.items);
+          this.updateSuggestionsList(suggestions);
+        }
       } else {
         this._requestSuggestionsOnClick = true;
         this._onResolveSuggestions(input);
@@ -956,7 +965,17 @@ export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BaseP
       <div ref={this.root} onBlur={this.onBlur}>
         <div className={classNames.root} onKeyDown={this.onKeyDown}>
           {this.getSuggestionsAlert(classNames.screenReaderText)}
-          <div className={classNames.text}>
+          <div
+            className={classNames.text}
+            aria-owns={suggestionsAvailable || undefined}
+            aria-expanded={!!this.state.suggestionsVisible}
+            // Dialog is an acceptable child of a combobox according to the aria specs: https://www.w3.org/TR/wai-aria-practices/#combobox
+            // Currently accessibility insights will flag this as not a valid child because the AXE rules are out of a date.
+            // A bug tracking this can be found:
+            // https://github.com/dequelabs/axe-core/issues/1009
+            aria-haspopup={suggestionsAvailable && this.suggestionStore.suggestions.length > 0 ? 'listbox' : 'dialog'}
+            role="combobox"
+          >
             <Autofill
               {...inputProps as any}
               className={classNames.input}
@@ -967,14 +986,11 @@ export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BaseP
               onInputValueChange={this.onInputChange}
               suggestedDisplayValue={suggestedDisplayValue}
               aria-activedescendant={this.getActiveDescendant()}
-              aria-expanded={!!this.state.suggestionsVisible}
-              aria-haspopup="true"
               autoCapitalize="off"
               autoComplete="off"
-              role="combobox"
+              role="textbox"
               disabled={disabled}
               aria-controls={`${suggestionsAvailable} ${selectedSuggestionAlertId}` || undefined}
-              aria-owns={suggestionsAvailable || undefined}
               onInputChange={this.props.onInputChange}
             />
           </div>
@@ -988,6 +1004,7 @@ export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BaseP
             direction={FocusZoneDirection.bidirectional}
             isInnerZoneKeystroke={this._isFocusZoneInnerKeystroke}
             id={this._ariaMap.selectedItems}
+            role={'list'}
           >
             {this.renderItems()}
           </FocusZone>

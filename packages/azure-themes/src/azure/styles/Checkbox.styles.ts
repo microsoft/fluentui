@@ -46,12 +46,13 @@ export const CheckboxStyles = (props: ICheckboxStyleProps): Partial<ICheckboxSty
         },
         checked && {
           selectors: {
+            '.ms-Checkbox-label .ms-Checkbox-checkbox': {
+              background: semanticColors.bodyBackground
+            },
             ':hover .ms-Checkbox-label .ms-Checkbox-checkbox': {
-              background: semanticColors.bodyBackground,
               borderColor: extendedSemanticColors.controlOutlineHovered
             },
             ':focus .ms-Checkbox-label .ms-Checkbox-checkbox': {
-              background: semanticColors.bodyBackground,
               borderColor: extendedSemanticColors.focusBorder
             }
           }

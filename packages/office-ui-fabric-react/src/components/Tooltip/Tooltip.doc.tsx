@@ -11,7 +11,6 @@ import { TooltipAbsolutePositionExample } from './examples/Tooltip.Absolute.Posi
 
 const TooltipBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Tooltip/examples/Tooltip.Basic.Example.tsx') as string;
 const TooltipDisplayExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Tooltip/examples/Tooltip.Display.Example.tsx') as string;
-const TooltipBasicExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/Tooltip/examples/Tooltip.Basic.Example.tsx') as string;
 const TooltipCustomExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Tooltip/examples/Tooltip.Custom.Example.tsx') as string;
 const TooltipInteractiveExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Tooltip/examples/Tooltip.Interactive.Example.tsx') as string;
 const TooltipOverflowExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Tooltip/examples/Tooltip.Overflow.Example.tsx') as string;
@@ -26,8 +25,7 @@ export const TooltipPageProps: IDocPageProps = {
     {
       title: 'Default Tooltip',
       code: TooltipBasicExampleCode,
-      view: <TooltipBasicExample />,
-      codepenJS: TooltipBasicExampleCodepen
+      view: <TooltipBasicExample />
     },
     {
       title: 'Tooltip wrapping inline or inline-block elements',

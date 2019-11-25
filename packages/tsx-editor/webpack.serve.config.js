@@ -1,46 +1,41 @@
+// @ts-check
 const path = require('path');
-const resources = require('../../scripts/webpack/webpack-resources');
-const webpack = resources.webpack;
+const resources = require('@uifabric/build/webpack/webpack-resources');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
-const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin');
+const { addMonacoWebpackConfig } = require('@uifabric/monaco-editor/scripts/addMonacoWebpackConfig');
 
-const PACKAGE_NAME = require('./package.json').name;
+const BUNDLE_NAME = 'demo-app';
 
-module.exports = resources.createServeConfig({
-  module: {
-    rules: [
-      {
-        test: /\.css$/,
-        use: ['style-loader', 'css-loader']
+module.exports = resources.createServeConfig(
+  addMonacoWebpackConfig({
+    entry: {
+      [BUNDLE_NAME]: './src/demo/index.tsx'
+    },
+
+    output: {
+      chunkFilename: `${BUNDLE_NAME}-[name].js`
+    },
+
+    devServer: {
+      writeToDisk: true // for debugging
+    },
+
+    externals: {
+      react: 'React',
+      'react-dom': 'ReactDOM'
+    },
+
+    plugins: [/** @type {any} */ (new BundleAnalyzerPlugin())],
+
+    resolve: {
+      alias: {
+        '@uifabric/tsx-editor/src': path.join(__dirname, 'src'),
+        '@uifabric/tsx-editor/lib': path.join(__dirname, 'lib'),
+        '@uifabric/tsx-editor/dist': path.join(__dirname, 'dist'),
+        '@uifabric/tsx-editor': path.join(__dirname, 'lib'),
+        'Props.ts.js': 'Props',
+        'Example.tsx.js': 'Example'
       }
-    ]
-  },
-  entry: './src/demo/index.tsx',
-
-  output: {
-    filename: 'demo-app.js'
-  },
-
-  externals: {
-    react: 'React',
-    'react-dom': 'ReactDOM'
-  },
-
-  plugins: [
-    new MonacoWebpackPlugin({
-      // available options are documented at https://github.com/Microsoft/monaco-editor-webpack-plugin#options
-      languages: ['typescript']
-    }),
-    new BundleAnalyzerPlugin()
-  ],
-
-  resolve: {
-    alias: {
-      '@uifabric/tsx-editor/src': path.join(__dirname, 'src'),
-      '@uifabric/tsx-editor/lib': path.join(__dirname, 'lib'),
-      '@uifabric/tsx-editor': path.join(__dirname, 'lib'),
-      'Props.ts.js': 'Props',
-      'Example.tsx.js': 'Example'
     }
-  }
-});
+  })
+);

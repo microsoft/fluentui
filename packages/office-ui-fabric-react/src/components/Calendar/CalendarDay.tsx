@@ -90,7 +90,8 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
     this._onClose = this._onClose.bind(this);
   }
 
-  public componentWillReceiveProps(nextProps: ICalendarDayProps): void {
+  // tslint:disable-next-line function-name
+  public UNSAFE_componentWillReceiveProps(nextProps: ICalendarDayProps): void {
     this.setState({
       weeks: this._getWeeks(nextProps)
     });
@@ -498,6 +499,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
     return (ev: React.KeyboardEvent<HTMLElement>): void => {
       if (ev.which === KeyCodes.enter) {
         this._onSelectDate(originalDate, ev);
+        ev.preventDefault();
       } else {
         this._navigateMonthEdge(ev, originalDate, weekIndex, dayIndex);
       }

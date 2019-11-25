@@ -4,6 +4,7 @@
     "deprecation": false,
     "jsx-ban-props": false,
     "no-any": false,
-    "typedef": [false]
+    "typedef": [false],
+    "import-blacklist": [true, { "../../Styling": ["FontSizes"] }]
   }
 }

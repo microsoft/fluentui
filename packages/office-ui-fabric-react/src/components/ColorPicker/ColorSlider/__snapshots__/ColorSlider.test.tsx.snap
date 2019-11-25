@@ -1,0 +1,123 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ColorSlider renders alpha slider correctly 1`] = `
+<div
+  aria-label="Alpha"
+  aria-valuemax={100}
+  aria-valuemin={0}
+  aria-valuenow={30}
+  aria-valuetext="30"
+  className=
+      ms-ColorPicker-slider
+      {
+        background-image: url(data;
+        base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAJUlEQVQYV2N89erVfwY0ICYmxoguxjgUFKI7GsTH5m4M3w1ChQC1/Ca8i2n1WgAAAABJRU5ErkJggg==): ;
+        border-radius: 2px;
+        border: 1px solid #edebe9;
+        box-sizing: border-box;
+        height: 20px;
+        margin-bottom: 8px;
+        outline: none;
+        position: relative;
+      }
+      .ms-Fabric--isFocusVisible &:focus {
+        outline: 1px solid #605e5c;
+      }
+  data-is-focusable={true}
+  onKeyDown={[Function]}
+  onMouseDown={[Function]}
+  role="slider"
+  tabIndex={0}
+>
+  <div
+    className=
+        ms-ColorPicker-sliderOverlay
+        {
+          bottom: 0px;
+          content: ;
+          left: 0px;
+          position: absolute;
+          right: 0px;
+          top: 0px;
+        }
+    style={
+      Object {
+        "background": "linear-gradient(to right, transparent 0, ##ff0000 100%)",
+      }
+    }
+  />
+  <div
+    className=
+        ms-ColorPicker-thumb
+        is-slider
+        {
+          background: white;
+          border-radius: 50%;
+          border: 1px solid #8a8886;
+          box-shadow: 0 3.2px 7.2px 0 rgba(0, 0, 0, 0.132), 0 0.6px 1.8px 0 rgba(0, 0, 0, 0.108);
+          height: 20px;
+          position: absolute;
+          top: 50%;
+          transform: translate(-50%, -50%);
+          width: 20px;
+        }
+    style={
+      Object {
+        "left": "30%",
+      }
+    }
+  />
+</div>
+`;
+
+exports[`ColorSlider renders hue slider correctly 1`] = `
+<div
+  aria-label="Hue"
+  aria-valuemax={359}
+  aria-valuemin={0}
+  aria-valuenow={30}
+  aria-valuetext="30"
+  className=
+      ms-ColorPicker-slider
+      {
+        background: linear-gradient(to left,red 0,#f09 10%,#cd00ff 20%,#3200ff 30%,#06f 40%,#00fffd 50%,#0f6 60%,#35ff00 70%,#cdff00 80%,#f90 90%,red 100%);
+        border-radius: 2px;
+        border: 1px solid #edebe9;
+        box-sizing: border-box;
+        height: 20px;
+        margin-bottom: 8px;
+        outline: none;
+        position: relative;
+      }
+      .ms-Fabric--isFocusVisible &:focus {
+        outline: 1px solid #605e5c;
+      }
+  data-is-focusable={true}
+  onKeyDown={[Function]}
+  onMouseDown={[Function]}
+  role="slider"
+  tabIndex={0}
+>
+  <div
+    className=
+        ms-ColorPicker-thumb
+        is-slider
+        {
+          background: white;
+          border-radius: 50%;
+          border: 1px solid #8a8886;
+          box-shadow: 0 3.2px 7.2px 0 rgba(0, 0, 0, 0.132), 0 0.6px 1.8px 0 rgba(0, 0, 0, 0.108);
+          height: 20px;
+          position: absolute;
+          top: 50%;
+          transform: translate(-50%, -50%);
+          width: 20px;
+        }
+    style={
+      Object {
+        "left": "8.356545961002785%",
+      }
+    }
+  />
+</div>
+`;

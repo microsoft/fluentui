@@ -22,7 +22,6 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
         }
         & .ms-ChoiceFieldLabel {
           display: inline-block;
-          font-size: 14px;
           padding-left: 26px;
         }
   >
@@ -154,7 +153,6 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
         }
         & .ms-ChoiceFieldLabel {
           display: inline-block;
-          font-size: 14px;
           padding-left: 26px;
         }
   >
@@ -307,7 +305,6 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
         }
         & .ms-ChoiceFieldLabel {
           display: inline-block;
-          font-size: 14px;
           padding-left: 26px;
         }
   >
@@ -461,7 +458,6 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
         }
         & .ms-ChoiceFieldLabel {
           display: inline-block;
-          font-size: 14px;
           padding-left: 26px;
         }
   >
@@ -473,6 +469,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
       <input
         className=
             ms-ChoiceField-input
+            is-disabled
             {
               height: 100%;
               margin-bottom: 0px;
@@ -573,7 +570,6 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
         }
         & .ms-ChoiceFieldLabel {
           display: inline-block;
-          font-size: 14px;
           padding-left: 26px;
         }
   >
@@ -586,6 +582,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
         checked={true}
         className=
             ms-ChoiceField-input
+            is-disabled
             {
               height: 100%;
               margin-bottom: 0px;
@@ -703,7 +700,6 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
         }
         & .ms-ChoiceFieldLabel {
           display: inline-block;
-          font-size: 14px;
         }
   >
     <div
@@ -845,7 +841,6 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
                     speak: none;
                   }
               data-icon-name="Calendar"
-              role="presentation"
             >
               
             </i>
@@ -855,7 +850,10 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
           className=
               ms-ChoiceField-labelWrapper
               {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
                 display: block;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
                 height: 30px;
@@ -864,16 +862,12 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
                 margin-left: 8px;
                 margin-right: 8px;
                 margin-top: 4px;
+                max-width: 64px;
                 overflow: hidden;
                 position: relative;
                 text-overflow: ellipsis;
                 white-space: pre-wrap;
               }
-          style={
-            Object {
-              "maxWidth": 64,
-            }
-          }
         >
           <span
             className="ms-ChoiceFieldLabel"
@@ -911,7 +905,6 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
         }
         & .ms-ChoiceFieldLabel {
           display: inline-block;
-          font-size: 14px;
         }
   >
     <div
@@ -1068,13 +1061,12 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
                     display: inline-block;
-                    font-family: "FabricMDL2Icons-1";
+                    font-family: "FabricMDL2Icons-2";
                     font-style: normal;
                     font-weight: normal;
                     speak: none;
                   }
               data-icon-name="CalendarWeek"
-              role="presentation"
             >
               
             </i>
@@ -1084,7 +1076,10 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
           className=
               ms-ChoiceField-labelWrapper
               {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
                 display: block;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
                 height: 30px;
@@ -1093,16 +1088,12 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
                 margin-left: 8px;
                 margin-right: 8px;
                 margin-top: 4px;
+                max-width: 64px;
                 overflow: hidden;
                 position: relative;
                 text-overflow: ellipsis;
                 white-space: pre-wrap;
               }
-          style={
-            Object {
-              "maxWidth": 64,
-            }
-          }
         >
           <span
             className="ms-ChoiceFieldLabel"
@@ -1140,7 +1131,6 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
         }
         & .ms-ChoiceFieldLabel {
           display: inline-block;
-          font-size: 14px;
         }
   >
     <div
@@ -1295,13 +1285,12 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
                     display: inline-block;
-                    font-family: "FabricMDL2Icons-1";
+                    font-family: "FabricMDL2Icons-2";
                     font-style: normal;
                     font-weight: normal;
                     speak: none;
                   }
               data-icon-name="CalendarDay"
-              role="presentation"
             >
               
             </i>
@@ -1311,7 +1300,10 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
           className=
               ms-ChoiceField-labelWrapper
               {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
                 display: block;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
                 height: 30px;
@@ -1320,16 +1312,12 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
                 margin-left: 8px;
                 margin-right: 8px;
                 margin-top: 4px;
+                max-width: 64px;
                 overflow: hidden;
                 position: relative;
                 text-overflow: ellipsis;
                 white-space: pre-wrap;
               }
-          style={
-            Object {
-              "maxWidth": 64,
-            }
-          }
         >
           <span
             className="ms-ChoiceFieldLabel"
@@ -1367,7 +1355,6 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
         }
         & .ms-ChoiceFieldLabel {
           display: inline-block;
-          font-size: 14px;
         }
   >
     <div
@@ -1378,6 +1365,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
       <input
         className=
             ms-ChoiceField-input
+            is-disabled
             {
               height: 100%;
               margin-bottom: 0px;
@@ -1498,13 +1486,12 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
                     display: inline-block;
-                    font-family: "FabricMDL2Icons-1";
+                    font-family: "FabricMDL2Icons-2";
                     font-style: normal;
                     font-weight: normal;
                     speak: none;
                   }
               data-icon-name="CalendarWeek"
-              role="presentation"
             >
               
             </i>
@@ -1514,7 +1501,10 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
           className=
               ms-ChoiceField-labelWrapper
               {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
                 display: block;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
                 height: 30px;
@@ -1523,16 +1513,12 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
                 margin-left: 8px;
                 margin-right: 8px;
                 margin-top: 4px;
+                max-width: 64px;
                 overflow: hidden;
                 position: relative;
                 text-overflow: ellipsis;
                 white-space: pre-wrap;
               }
-          style={
-            Object {
-              "maxWidth": 64,
-            }
-          }
         >
           <span
             className="ms-ChoiceFieldLabel"

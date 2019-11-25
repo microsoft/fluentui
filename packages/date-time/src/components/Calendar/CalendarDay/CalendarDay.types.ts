@@ -3,6 +3,8 @@ import { ICalendarStrings, ICalendarIconStrings, ICalendarFormatDateCallbacks } 
 import { IStyle, ITheme } from '@uifabric/styling';
 import { ICalendarDayGridProps, ICalendarDayGridStyleProps, ICalendarDayGridStyles } from '../../CalendarDayGrid/CalendarDayGrid.types';
 
+export { ICalendarDayGridStyles };
+
 export interface ICalendarDay {
   focus(): void;
 }

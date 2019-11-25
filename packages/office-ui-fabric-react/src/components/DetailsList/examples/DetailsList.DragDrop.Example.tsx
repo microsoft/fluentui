@@ -1,9 +1,16 @@
 import * as React from 'react';
 import { Link } from 'office-ui-fabric-react/lib/Link';
-import { DetailsList, Selection, IColumn, buildColumns, IColumnReorderOptions } from 'office-ui-fabric-react/lib/DetailsList';
+import {
+  DetailsList,
+  Selection,
+  IColumn,
+  buildColumns,
+  IColumnReorderOptions,
+  IDragDropEvents,
+  IDragDropContext
+} from 'office-ui-fabric-react/lib/DetailsList';
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
-import { IDragDropEvents, IDragDropContext } from 'office-ui-fabric-react/lib/utilities/dragdrop/interfaces';
-import { createListItems, IExampleItem } from 'office-ui-fabric-react/lib/utilities/exampleData';
+import { createListItems, IExampleItem } from '@uifabric/example-data';
 import { TextField, ITextFieldStyles } from 'office-ui-fabric-react/lib/TextField';
 import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
 import { getTheme, mergeStyles } from 'office-ui-fabric-react/lib/Styling';
@@ -95,6 +102,7 @@ export class DetailsListDragDropExample extends React.Component<{}, IDetailsList
             columnReorderOptions={this.state.isColumnReorderEnabled ? this._getColumnReorderOptions() : undefined}
             ariaLabelForSelectionColumn="Toggle selection"
             ariaLabelForSelectAllCheckbox="Toggle selection for all items"
+            checkButtonAriaLabel="Row checkbox"
           />
         </MarqueeSelection>
       </div>

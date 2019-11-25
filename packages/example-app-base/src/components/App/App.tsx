@@ -29,6 +29,10 @@ export class AppBase extends React.Component<IAppProps, IAppState> {
     this._showOnlyExamples = showOnlyExamples();
   }
 
+  public componentDidMount() {
+    document.title = this.props.appDefinition.appTitle.replace(' - ', ' ') + ' Examples';
+  }
+
   public render(): JSX.Element {
     const { appDefinition, styles, responsiveMode = ResponsiveMode.xLarge, theme } = this.props;
     const { customizations } = appDefinition;

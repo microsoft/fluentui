@@ -10,6 +10,7 @@ export class RatingBasicExample extends React.Component<
     smallStarRating?: number;
     tenStarRating?: number;
     themedStarRating?: number;
+    customIconStarRating?: number;
   }
 > {
   private _customTheme: ITheme;
@@ -21,7 +22,8 @@ export class RatingBasicExample extends React.Component<
       largeStarRating: undefined,
       smallStarRating: 3,
       tenStarRating: undefined,
-      themedStarRating: undefined
+      themedStarRating: undefined,
+      customIconStarRating: 2.5
     };
 
     this._customTheme = createTheme(getTheme());
@@ -42,7 +44,7 @@ export class RatingBasicExample extends React.Component<
           onChange={this._onLargeStarChange}
           onFocus={this._onFocus}
           onBlur={this._onBlur}
-          ariaLabelFormat={'{0} of {1} stars selected'}
+          ariaLabelFormat={'Select {0} of {1} stars'}
         />
         Small Stars
         <Rating
@@ -53,7 +55,7 @@ export class RatingBasicExample extends React.Component<
           getAriaLabel={this._getRatingComponentAriaLabel}
           onFocus={this._onFocus}
           onBlur={this._onBlur}
-          ariaLabelFormat={'{0} of {1} stars selected'}
+          ariaLabelFormat={'Select {0} of {1} stars'}
         />
         10 Small Stars
         <Rating
@@ -64,7 +66,7 @@ export class RatingBasicExample extends React.Component<
           getAriaLabel={this._getRatingComponentAriaLabel}
           onFocus={this._onFocus}
           onBlur={this._onBlur}
-          ariaLabelFormat={'{0} of {1} stars selected'}
+          ariaLabelFormat={'Select {0} of {1} stars'}
         />
         Disabled:
         <Rating
@@ -74,7 +76,7 @@ export class RatingBasicExample extends React.Component<
           disabled={true}
           onFocus={this._onFocus}
           onBlur={this._onBlur}
-          ariaLabelFormat={'{0} of {1} stars selected'}
+          ariaLabelFormat={'Select {0} of {1} stars'}
         />
         Half star in readOnly mode:
         <Rating
@@ -83,16 +85,18 @@ export class RatingBasicExample extends React.Component<
           rating={2.5}
           getAriaLabel={this._getRatingComponentAriaLabel}
           readOnly={true}
-          ariaLabelFormat={'{0} of {1} stars selected'}
+          ariaLabelFormat={'Select {0} of {1} stars'}
         />
         Custom icons:
         <Rating
           min={1}
           max={5}
-          rating={2.5}
+          rating={this.state.customIconStarRating}
+          onChange={this._onCustomIconStarChange}
+          onFocus={this._onFocus}
+          onBlur={this._onBlur}
           getAriaLabel={this._getRatingComponentAriaLabel}
-          readOnly={true}
-          ariaLabelFormat={'{0} of {1} stars selected'}
+          ariaLabelFormat={'Select {0} of {1} stars'}
           icon="StarburstSolid"
           unselectedIcon="Starburst"
         />
@@ -105,7 +109,7 @@ export class RatingBasicExample extends React.Component<
           getAriaLabel={this._getRatingComponentAriaLabel}
           onFocus={this._onFocus}
           onBlur={this._onBlur}
-          ariaLabelFormat={'{0} of {1} stars selected'}
+          ariaLabelFormat={'Select {0} of {1} stars'}
           theme={this._customTheme}
         />
       </div>
@@ -134,6 +138,10 @@ export class RatingBasicExample extends React.Component<
 
   private _onThemedStarChange = (ev: React.FocusEvent<HTMLElement>, rating: number): void => {
     this.setState({ themedStarRating: rating });
+  };
+
+  private _onCustomIconStarChange = (ev: React.FocusEvent<HTMLElement>, rating: number): void => {
+    this.setState({ customIconStarRating: rating });
   };
 
   private _getRatingComponentAriaLabel(rating: number, maxRating: number): string {

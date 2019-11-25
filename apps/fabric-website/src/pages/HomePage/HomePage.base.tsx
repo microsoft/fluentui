@@ -48,21 +48,13 @@ const fabricUsageIcons = [
   { src: fabricUsageIconBaseUrl + 'teams_48x1.svg', title: 'Teams' }
 ];
 
-const fabricVersionOptions: IContextualMenuItem[] = [
-  {
-    key: '7',
-    text: 'Fabric 7',
-    checked: true
-  },
-  {
-    key: '6',
-    text: 'Fabric 6'
-  },
-  {
-    key: '5',
-    text: 'Fabric 5'
-  }
-];
+const CURRENT_VERSION = '7';
+const VERSIONS = ['7', '6', '5'];
+const fabricVersionOptions: IContextualMenuItem[] = VERSIONS.map(version => ({
+  key: version,
+  text: 'Fabric ' + version,
+  checked: version === CURRENT_VERSION
+}));
 
 interface IRenderLinkOptions {
   disabled?: boolean;
@@ -344,9 +336,9 @@ export class HomePageBase extends React.Component<IHomePageProps, IHomePageState
   };
 
   private _onVersionMenuClick = (event: any, item: IContextualMenuItem): void => {
-    if (item.key === '5') {
-      // Reload the page to switch to version 5
-      location.href = `${location.protocol}//${location.host}${location.pathname}?fabricVer=5`;
+    if (item.key !== CURRENT_VERSION) {
+      // Reload the page to switch versions
+      location.href = `${location.protocol}//${location.host}${location.pathname}?fabricVer=${item.key}`;
     }
   };
 }

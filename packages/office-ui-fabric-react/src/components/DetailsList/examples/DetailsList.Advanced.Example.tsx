@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Link } from 'office-ui-fabric-react/lib/Link';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import { CommandBar } from 'office-ui-fabric-react/lib/CommandBar';
+import { Announced } from 'office-ui-fabric-react/lib/Announced';
 import { IContextualMenuProps, IContextualMenuItem, DirectionalHint, ContextualMenu } from 'office-ui-fabric-react/lib/ContextualMenu';
 import {
   CheckboxVisibility,
@@ -13,39 +14,43 @@ import {
   IGroup,
   Selection,
   SelectionMode,
-  buildColumns
+  buildColumns,
+  IDetailsColumnProps
 } from 'office-ui-fabric-react/lib/DetailsList';
-import { createListItems, isGroupable, IExampleItem } from 'office-ui-fabric-react/lib/utilities/exampleData';
-import { IDetailsColumnProps } from 'office-ui-fabric-react/lib/components/DetailsList/DetailsColumn';
+import { createListItems, isGroupable, IExampleItem } from '@uifabric/example-data';
 import { memoizeFunction } from 'office-ui-fabric-react/lib/Utilities';
-import { getTheme, mergeStyles, mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
+import { getTheme, mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
 
 const theme = getTheme();
+const headerDividerClass = 'DetailsListAdvancedExample-divider';
 const classNames = mergeStyleSets({
   headerDivider: {
     display: 'inline-block',
     height: '100%'
   },
-  headerDividerBar: {
-    display: 'none',
-    background: theme.palette.themePrimary,
-    position: 'absolute',
-    top: 0,
-    bottom: 0,
-    width: '1px',
-    zIndex: 5
-  },
+  headerDividerBar: [
+    {
+      display: 'none',
+      background: theme.palette.themePrimary,
+      position: 'absolute',
+      top: 16,
+      bottom: 0,
+      width: '1px',
+      zIndex: 5
+    },
+    headerDividerClass
+  ],
   linkField: {
     display: 'block',
     overflow: 'hidden',
     textOverflow: 'ellipsis',
     maxWidth: '100%'
-  }
-});
-const rootClass = mergeStyles({
-  selectors: {
-    [`.${classNames.headerDivider}:hover + .${classNames.headerDividerBar}`]: {
-      display: 'inline'
+  },
+  root: {
+    selectors: {
+      [`.${headerDividerClass}:hover + .${headerDividerClass}`]: {
+        display: 'inline'
+      }
     }
   }
 });
@@ -71,6 +76,7 @@ export interface IDetailsListAdvancedExampleState {
   selectionMode?: SelectionMode;
   sortedColumnKey?: string;
   selectionCount: number;
+  announcedMessage?: string;
 }
 
 export class DetailsListAdvancedExample extends React.Component<{}, IDetailsListAdvancedExampleState> {
@@ -121,7 +127,8 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
       isLazyLoaded,
       items,
       layoutMode,
-      selectionMode
+      selectionMode,
+      announcedMessage
     } = this.state;
 
     const isGrouped = groups && groups.length > 0;
@@ -139,7 +146,7 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
     };
 
     return (
-      <div className={rootClass}>
+      <div className={classNames.root}>
         <CommandBar
           styles={{ root: { marginBottom: '40px' } }}
           items={this._getCommandItems(
@@ -155,6 +162,8 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
         />
 
         {isGrouped ? <TextField label="Group item limit" onChange={this._onItemLimitChanged} /> : null}
+
+        {announcedMessage ? <Announced message={announcedMessage} /> : undefined}
 
         <DetailsList
           setKey="items"
@@ -179,6 +188,7 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
           ariaLabelForListHeader="Column headers. Click to sort."
           ariaLabelForSelectAllCheckbox="Toggle selection for all items"
           ariaLabelForSelectionColumn="Toggle selection"
+          checkButtonAriaLabel="Row checkbox"
           onRenderMissingItem={this._onRenderMissingItem}
         />
 
@@ -541,6 +551,7 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
 
     this.setState({
       items: sortedItems,
+      announcedMessage: `${columnKey} is sorted ${isSortedDescending ? 'descending' : 'ascending'}`,
       groups: undefined,
       columns: this._buildColumns(
         sortedItems,

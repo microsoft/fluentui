@@ -66,6 +66,7 @@ export class ComponentPageBase extends React.PureComponent<IComponentPageProps> 
             {this._getOverview()}
             {this._getBestPractices()}
             {this._getVariants()}
+            {this._getAccessibility()}
             {this._getPropertiesTable()}
             {this._getFeedback()}
             {otherSections && otherSections.map(section => this._getSection(section))}
@@ -101,7 +102,7 @@ export class ComponentPageBase extends React.PureComponent<IComponentPageProps> 
     ].filter(section => !!section) as Array<{ title: string }>;
 
     return (
-      <Stack horizontal maxWidth="100%" wrap tokens={{ childrenGap: '5px 40px' }} className={classNames.navigation}>
+      <Stack horizontal wrap tokens={{ childrenGap: '5px 40px', maxWidth: '100%' }} className={classNames.navigation}>
         {sections.map(section => (
           <Link key={section.title} href={this._baseUrl + '#' + _idFromSectionTitle(section.title)} className={classNames.headerLink}>
             {section.title}
@@ -231,6 +232,19 @@ export class ComponentPageBase extends React.PureComponent<IComponentPageProps> 
         editUrl: this._getURL('Overview', editOverviewUrl),
         wrapperClass: this._styles.overviewSection,
         titleClass: this._styles.overviewHeading
+      });
+    }
+
+    return undefined;
+  }
+
+  private _getAccessibility(): JSX.Element | undefined {
+    const { accessibility, editOverviewUrl } = this.props;
+    if (accessibility) {
+      return this._getSection({
+        title: 'Accessibility',
+        section: accessibility,
+        editUrl: this._getURL('Accessibility', editOverviewUrl)
       });
     }
 

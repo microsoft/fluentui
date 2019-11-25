@@ -6,7 +6,7 @@ export const styles = (props: ICalendarStyleProps): ICalendarStyles => {
   const { palette } = theme;
 
   let totalWidth = isDayPickerVisible && isMonthPickerVisible ? 440 : 220;
-  if (showWeekNumbers) {
+  if (showWeekNumbers && isDayPickerVisible) {
     totalWidth += 30;
   }
 
@@ -48,6 +48,7 @@ export const styles = (props: ICalendarStyleProps): ICalendarStyles => {
         marginRight: 16,
         marginTop: 3,
         fontSize: FontSizes.small,
+        overflow: 'visible', // explicitly specify for IE11
         selectors: {
           '& div': {
             fontSize: FontSizes.small
@@ -66,6 +67,15 @@ export const styles = (props: ICalendarStyleProps): ICalendarStyles => {
           }
         }
       }
-    ]
+    ],
+    liveRegion: {
+      border: 0,
+      height: '1px',
+      margin: '-1px',
+      overflow: 'hidden',
+      padding: 0,
+      width: '1px',
+      position: 'absolute'
+    }
   };
 };

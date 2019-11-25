@@ -1,12 +1,12 @@
 # TSLint standard rules
 
-This project contains the baseline standard tslint rules for UI Fabric projects.
+This project contains the baseline standard TSLint rules for [Office UI Fabric React](https://dev.microsoft.com/fabric) projects.
 
 ## Using tslint-rules
 
 ### Install Dependencies
 
-This project extends the [tslint-microsoft-contrib](https://github.com/Microsoft/tslint-microsoft-contrib) rules and therefore `tslint-microsoft-contrib` needs to be installed along with its dependencies.
+This project extends the [tslint-microsoft-contrib](https://github.com/Microsoft/tslint-microsoft-contrib) and [tslint-react](https://github.com/palantir/tslint-react) rules, so these must be installed along with its dependencies.
 
 ```
 npm install --save-dev tslint tslint-react tslint-microsoft-contrib

@@ -79,20 +79,19 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
   };
 
   public hidePicker = (): void => {
-    if (this.props.onSuggestionsHidden && this.isSuggestionsShown) {
-      this.props.onSuggestionsHidden();
-    }
+    const wasShownBeforeUpdate = this.isSuggestionsShown;
 
     this.setState({
       suggestionsVisible: false
     });
+
+    if (this.props.onSuggestionsHidden && wasShownBeforeUpdate) {
+      this.props.onSuggestionsHidden();
+    }
   };
 
   public showPicker = (updateValue: boolean = false): void => {
-    if (this.props.onSuggestionsShown && !this.isSuggestionsShown) {
-      this.props.onSuggestionsShown();
-    }
-
+    const wasShownBeforeUpdate = this.isSuggestionsShown;
     this.setState({
       suggestionsVisible: true
     });
@@ -101,6 +100,10 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
     const value = this.props.inputElement ? this.props.inputElement.value : '';
     if (updateValue) {
       this.updateValue(value);
+    }
+
+    if (this.props.onSuggestionsShown && !wasShownBeforeUpdate) {
+      this.props.onSuggestionsShown();
     }
   };
 
@@ -120,7 +123,8 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
     this.isComponentMounted = false;
   }
 
-  public componentWillReceiveProps(newProps: IBaseFloatingPickerProps<T>): void {
+  // tslint:disable-next-line function-name
+  public UNSAFE_componentWillReceiveProps(newProps: IBaseFloatingPickerProps<T>): void {
     if (newProps.suggestionItems) {
       this.updateSuggestions(newProps.suggestionItems);
     }

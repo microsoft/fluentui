@@ -4,9 +4,16 @@ const fs = require('fs');
 const resolve = require('resolve');
 const merge = require('../tasks/merge');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
+const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
 
 const webpackVersion = require('webpack/package.json').version;
 console.log(`Webpack version: ${webpackVersion}`);
+
+const cssRule = {
+  test: /\.css$/,
+  include: /node_modules/,
+  use: ['style-loader', 'css-loader']
+};
 
 let isValidEnv = false;
 
@@ -61,21 +68,26 @@ function createEntryWithPolyfill(entry, config) {
 module.exports = {
   webpack,
 
+  /**
+   * @param packageName {string} - name of the package
+   * @param isProduction {boolean} - whether it's a production build
+   * @param customConfig {Partial<webpack.Configuration>} - partial custom webpack config, merged into each full config object
+   * @param [onlyProduction] {boolean} - whether to only generate the production config
+   * @param [excludeSourceMaps] {boolean} - whether to skip generating source maps
+   * @returns {webpack.Configuration[]} array of configs
+   */
   createConfig(packageName, isProduction, customConfig, onlyProduction, excludeSourceMaps) {
-    const resolveLoader = {
-      modules: [path.resolve(__dirname, '../node_modules'), path.resolve(process.cwd(), 'node_modules')]
-    };
-
     const module = {
       noParse: [/autoit.js/],
       rules: excludeSourceMaps
-        ? []
+        ? [cssRule]
         : [
             {
               test: /\.js$/,
               use: 'source-map-loader',
               enforce: 'pre'
-            }
+            },
+            cssRule
           ]
     };
 
@@ -92,7 +104,6 @@ module.exports = {
               path: path.resolve(process.cwd(), 'dist'),
               pathinfo: false
             },
-            resolveLoader,
             module,
             devtool,
             plugins: getPlugins(packageName, false)
@@ -112,7 +123,6 @@ module.exports = {
               path: path.resolve(process.cwd(), 'dist')
             },
 
-            resolveLoader,
             module,
             devtool: excludeSourceMaps ? undefined : devtool,
             plugins: getPlugins(packageName, true)
@@ -140,9 +150,6 @@ module.exports = {
 
         mode: 'development',
 
-        resolveLoader: {
-          modules: [path.resolve(__dirname, '../node_modules'), path.resolve(process.cwd(), 'node_modules')]
-        },
         resolve: {
           extensions: ['.ts', '.tsx', '.js']
         },
@@ -151,6 +158,7 @@ module.exports = {
 
         module: {
           rules: [
+            cssRule,
             {
               test: [/\.tsx?$/],
               use: {
@@ -198,17 +206,15 @@ module.exports = {
         plugins: [
           // TODO: will investigate why this doesn't work on mac
           // new WebpackNotifierPlugin(),
-          new ForkTsCheckerWebpackPlugin()
-          // This sends output to stderr for some reason, which makes rush build say
-          // "succeeded with warnings" when there were no real warnings
-          // ...(process.env.TF_BUILD ? [] : [new webpack.ProgressPlugin()])
+          ...(!process.env.TF_BUILD ? [new ForkTsCheckerWebpackPlugin()] : []),
+          ...(process.env.TF_BUILD ? [] : [new webpack.ProgressPlugin()]),
+          ...(!process.env.TF_BUILD && process.env.cached ? [new HardSourceWebpackPlugin()] : [])
         ]
       },
       customConfig
     );
 
     config.entry = createEntryWithPolyfill(config.entry, config);
-
     return config;
   }
 };

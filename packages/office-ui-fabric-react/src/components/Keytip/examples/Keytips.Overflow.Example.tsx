@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { keytipMap } from './KeytipSetup';
+import { keytipMap } from 'office-ui-fabric-react/lib/components/Keytip/examples/KeytipSetup';
 import { IOverflowSetItemProps, OverflowSet } from 'office-ui-fabric-react/lib/OverflowSet';
 import { CommandBarButton, DefaultButton } from 'office-ui-fabric-react/lib/Button';
 

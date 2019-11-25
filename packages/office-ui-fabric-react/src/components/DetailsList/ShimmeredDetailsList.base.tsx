@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { BaseComponent, classNamesFunction, css } from '../../Utilities';
+import { classNamesFunction, css } from '../../Utilities';
 import { IProcessedStyleSet } from '../../Styling';
 import { SelectionMode } from '../../utilities/selection/interfaces';
 import { DetailsList } from './DetailsList';
@@ -17,7 +17,7 @@ const SHIMMER_INITIAL_ITEMS = 10;
 const DEFAULT_SHIMMER_HEIGHT = 7;
 const SHIMMER_LINE_VS_CELL_WIDTH_RATIO = 0.95;
 
-export class ShimmeredDetailsListBase extends BaseComponent<IShimmeredDetailsListProps, {}> {
+export class ShimmeredDetailsListBase extends React.Component<IShimmeredDetailsListProps, {}> {
   private _shimmerItems: null[];
   private _classNames: IProcessedStyleSet<IShimmeredDetailsListStyles>;
 
@@ -73,7 +73,7 @@ export class ShimmeredDetailsListBase extends BaseComponent<IShimmeredDetailsLis
     const { onRenderCustomPlaceholder } = this.props;
 
     const placeholderElements: React.ReactNode = onRenderCustomPlaceholder
-      ? onRenderCustomPlaceholder(rowProps)
+      ? onRenderCustomPlaceholder(rowProps, index, this._renderDefaultShimmerPlaceholder)
       : this._renderDefaultShimmerPlaceholder(rowProps);
 
     return <Shimmer customElementsGroup={placeholderElements} />;

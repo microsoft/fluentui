@@ -70,9 +70,7 @@ exports[`Component Examples renders TextField.Borderless.Example.tsx correctly 1
         className=
             ms-TextField-wrapper
             {
-              border-bottom-color: #8a8886;
-              border-bottom-style: solid;
-              border-bottom-width: 1px;
+              border-bottom: 1px solid #8a8886;
               display: flex;
               width: 100%;
             }
@@ -179,7 +177,13 @@ exports[`Component Examples renders TextField.Borderless.Example.tsx correctly 1
                   text-overflow: ellipsis;
                   width: 100%;
                 }
-                &:active, &:focus, &:hover {
+                &:active {
+                  outline: 0px;
+                }
+                &:focus {
+                  outline: 0px;
+                }
+                &:hover {
                   outline: 0px;
                 }
                 &::-ms-clear {
@@ -252,10 +256,12 @@ exports[`Component Examples renders TextField.Borderless.Example.tsx correctly 1
             ms-TextField-wrapper
             {
               border-bottom-color: #f3f2f1;
-              border-bottom-style: solid;
-              border-bottom-width: 1px;
+              border-bottom: 1px solid #8a8886;
               display: flex;
               width: 100%;
+            }
+            @media screen and (-ms-high-contrast: active){& {
+              border-color: GrayText;
             }
       >
         <label
@@ -320,8 +326,8 @@ exports[`Component Examples renders TextField.Borderless.Example.tsx correctly 1
                 position: relative;
                 text-align: left;
               }
-              @media screen and (-ms-high-contrast: active){&:hover {
-                border-color: Highlight;
+              @media screen and (-ms-high-contrast: active){& {
+                border-color: GrayText;
               }
         >
           <input
@@ -332,9 +338,9 @@ exports[`Component Examples renders TextField.Borderless.Example.tsx correctly 1
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  background-color: transparent;
+                  background-color: #f3f2f1;
                   background: none;
-                  border-color: transparent;
+                  border-color: #f3f2f1;
                   border-radius: 0px;
                   border: none;
                   box-shadow: none;
@@ -357,7 +363,13 @@ exports[`Component Examples renders TextField.Borderless.Example.tsx correctly 1
                   text-overflow: ellipsis;
                   width: 100%;
                 }
-                &:active, &:focus, &:hover {
+                &:active {
+                  outline: 0px;
+                }
+                &:focus {
+                  outline: 0px;
+                }
+                &:hover {
                   outline: 0px;
                 }
                 &::-ms-clear {
@@ -430,9 +442,7 @@ exports[`Component Examples renders TextField.Borderless.Example.tsx correctly 1
         className=
             ms-TextField-wrapper
             {
-              border-bottom-color: #8a8886;
-              border-bottom-style: solid;
-              border-bottom-width: 1px;
+              border-bottom: 1px solid #8a8886;
               display: flex;
               width: 100%;
             }
@@ -544,7 +554,13 @@ exports[`Component Examples renders TextField.Borderless.Example.tsx correctly 1
                   text-overflow: ellipsis;
                   width: 100%;
                 }
-                &:active, &:focus, &:hover {
+                &:active {
+                  outline: 0px;
+                }
+                &:focus {
+                  outline: 0px;
+                }
+                &:hover {
                   outline: 0px;
                 }
                 &::-ms-clear {
@@ -731,7 +747,13 @@ exports[`Component Examples renders TextField.Borderless.Example.tsx correctly 1
                   text-overflow: ellipsis;
                   width: 100%;
                 }
-                &:active, &:focus, &:hover {
+                &:active {
+                  outline: 0px;
+                }
+                &:focus {
+                  outline: 0px;
+                }
+                &:hover {
                   outline: 0px;
                 }
                 &::-ms-clear {
@@ -868,6 +890,7 @@ exports[`Component Examples renders TextField.Borderless.Example.tsx correctly 1
         >
           <textarea
             aria-invalid={false}
+            aria-labelledby="TextFieldLabel14"
             className=
                 ms-TextField-field
                 {
@@ -900,7 +923,13 @@ exports[`Component Examples renders TextField.Borderless.Example.tsx correctly 1
                   text-overflow: ellipsis;
                   width: 100%;
                 }
-                &:active, &:focus, &:hover {
+                &:active {
+                  outline: 0px;
+                }
+                &:focus {
+                  outline: 0px;
+                }
+                &:hover {
                   outline: 0px;
                 }
                 &::-ms-clear {

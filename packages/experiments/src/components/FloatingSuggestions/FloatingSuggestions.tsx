@@ -113,7 +113,8 @@ export class FloatingSuggestions<TItem> extends BaseComponent<IFloatingSuggestio
     this.isComponentMounted = false;
   }
 
-  public componentWillReceiveProps(newProps: IFloatingSuggestionsProps<TItem>): void {
+  // tslint:disable-next-line function-name
+  public UNSAFE_componentWillReceiveProps(newProps: IFloatingSuggestionsProps<TItem>): void {
     if (newProps.suggestionItems) {
       this.updateSuggestions(newProps.suggestionItems);
     }
@@ -121,7 +122,7 @@ export class FloatingSuggestions<TItem> extends BaseComponent<IFloatingSuggestio
 
   public onCurrentlySelectedSuggestionChosen = (): void => {
     if (this.suggestionsControl.current && this.suggestionsControl.current.hasSuggestionSelected()) {
-      this._onChange(this.suggestionsControl.current.currentSuggestion!.item);
+      this._onSuggestionSelected(this.suggestionsControl.current.currentSuggestion!.item);
     }
   };
 
@@ -210,14 +211,14 @@ export class FloatingSuggestions<TItem> extends BaseComponent<IFloatingSuggestio
     ) : null;
   }
 
-  private _onChange(item: TItem): void {
-    if (this.props.onChange) {
-      this.props.onChange(item);
+  private _onSuggestionSelected(item: TItem): void {
+    if (this.props.onSuggestionSelected) {
+      this.props.onSuggestionSelected(item);
     }
   }
 
   private _onSuggestionClick = (ev: React.MouseEvent<HTMLElement>, item: TItem, index: number): void => {
-    this._onChange(item);
+    this._onSuggestionSelected(item);
     this._updateSuggestionsVisible(false /*shouldShow*/);
   };
 
@@ -318,7 +319,7 @@ export class FloatingSuggestions<TItem> extends BaseComponent<IFloatingSuggestio
 
       const itemToConvert: ISuggestionModel<TItem> = this.props.createForceResolvedItem(this.state.queryString);
       const convertedItems = this.suggestionStore.convertSuggestionsToSuggestionItems([itemToConvert]);
-      this._onChange(convertedItems[0].item);
+      this._onSuggestionSelected(convertedItems[0].item);
     }
   };
 

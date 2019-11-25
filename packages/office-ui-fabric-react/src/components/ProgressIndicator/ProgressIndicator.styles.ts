@@ -1,4 +1,4 @@
-import { FontSizes, FontWeights, HighContrastSelector, keyframes, noWrap, getGlobalClassNames, IRawStyle } from '../../Styling';
+import { HighContrastSelector, keyframes, noWrap, getGlobalClassNames, IRawStyle } from '../../Styling';
 import { getRTL } from '../../Utilities';
 import { IProgressIndicatorStyleProps, IProgressIndicatorStyles } from './ProgressIndicator.types';
 
@@ -32,7 +32,7 @@ export const getStyles = (props: IProgressIndicatorStyleProps): IProgressIndicat
   const isRTL = getRTL();
   const { className, indeterminate, theme, barHeight = 2 } = props;
 
-  const { palette, semanticColors } = theme;
+  const { palette, semanticColors, fonts } = theme;
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
   const marginBetweenText = 8;
@@ -40,21 +40,13 @@ export const getStyles = (props: IProgressIndicatorStyleProps): IProgressIndicat
   const progressTrackColor = palette.neutralLight;
 
   return {
-    root: [
-      classNames.root,
-      theme.fonts.medium,
-      {
-        fontWeight: FontWeights.regular
-      },
-      className
-    ],
+    root: [classNames.root, fonts.medium, className],
 
     itemName: [
       classNames.itemName,
       noWrap,
       {
         color: semanticColors.bodyText,
-        fontSize: FontSizes.medium,
         paddingTop: marginBetweenText / 2,
         lineHeight: textHeight + 2
       }
@@ -64,7 +56,7 @@ export const getStyles = (props: IProgressIndicatorStyleProps): IProgressIndicat
       classNames.itemDescription,
       {
         color: semanticColors.bodySubtext,
-        fontSize: FontSizes.xSmall,
+        fontSize: fonts.small.fontSize,
         lineHeight: textHeight
       }
     ],

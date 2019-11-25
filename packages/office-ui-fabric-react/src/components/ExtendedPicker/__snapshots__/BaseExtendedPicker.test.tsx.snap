@@ -1,0 +1,131 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pickers BasePicker renders BaseExtendedPicker correctly with no items 1`] = `
+<div
+  className="ms-BasePicker ms-BaseExtendedPicker"
+  onCopy={[Function]}
+  onKeyDown={[Function]}
+>
+  <div
+    className=
+        ms-FocusZone
+        &:focus {
+          outline: none;
+        }
+    data-focuszone-id="FocusZone0"
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onMouseDownCapture={[Function]}
+  >
+    <div
+      className="ms-SelectionZone"
+      onClick={[Function]}
+      onContextMenu={[Function]}
+      onDoubleClick={[Function]}
+      onFocusCapture={[Function]}
+      onKeyDown={[Function]}
+      onKeyDownCapture={[Function]}
+      onMouseDown={[Function]}
+      onMouseDownCapture={[Function]}
+      role="presentation"
+    >
+      <div
+        className="ms-BasePicker-text"
+        role="list"
+      >
+        <input
+          aria-expanded={false}
+          aria-haspopup="true"
+          autoCapitalize="off"
+          autoComplete="off"
+          className="ms-BasePicker-input"
+          data-lpignore={true}
+          onChange={[Function]}
+          onClick={[Function]}
+          onCompositionEnd={[Function]}
+          onCompositionStart={[Function]}
+          onCompositionUpdate={[Function]}
+          onFocus={[Function]}
+          onInput={[Function]}
+          onKeyDown={[Function]}
+          onPaste={[Function]}
+          role="combobox"
+          value=""
+        />
+      </div>
+    </div>
+  </div>
+  <div
+    className="ms-BasePicker ms-BaseFloatingPicker"
+  />
+</div>
+`;
+
+exports[`Pickers BasePicker renders BaseExtendedPicker correctly with selected and suggested items 1`] = `
+<div
+  className="ms-BasePicker ms-BaseExtendedPicker"
+  onCopy={[Function]}
+  onKeyDown={[Function]}
+>
+  <div
+    className=
+        ms-FocusZone
+        &:focus {
+          outline: none;
+        }
+    data-focuszone-id="FocusZone1"
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onMouseDownCapture={[Function]}
+  >
+    <div
+      className="ms-SelectionZone"
+      onClick={[Function]}
+      onContextMenu={[Function]}
+      onDoubleClick={[Function]}
+      onFocusCapture={[Function]}
+      onKeyDown={[Function]}
+      onKeyDownCapture={[Function]}
+      onMouseDown={[Function]}
+      onMouseDownCapture={[Function]}
+      role="presentation"
+    >
+      <div
+        className="ms-BasePicker-text"
+        role="list"
+      >
+        <div>
+           
+           
+        </div>
+        <div>
+           
+           
+        </div>
+        <input
+          aria-expanded={false}
+          aria-haspopup="true"
+          autoCapitalize="off"
+          autoComplete="off"
+          className="ms-BasePicker-input"
+          data-lpignore={true}
+          onChange={[Function]}
+          onClick={[Function]}
+          onCompositionEnd={[Function]}
+          onCompositionStart={[Function]}
+          onCompositionUpdate={[Function]}
+          onFocus={[Function]}
+          onInput={[Function]}
+          onKeyDown={[Function]}
+          onPaste={[Function]}
+          role="combobox"
+          value=""
+        />
+      </div>
+    </div>
+  </div>
+  <div
+    className="ms-BasePicker ms-BaseFloatingPicker"
+  />
+</div>
+`;

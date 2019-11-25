@@ -8,7 +8,8 @@ import {
   getDocument,
   IRectangle,
   KeyCodes,
-  shallowCompare
+  shallowCompare,
+  getRTL
 } from '../../Utilities';
 import { IPositionedData, RectangleEdge, getOppositeEdge } from '../../utilities/positioning';
 
@@ -299,7 +300,8 @@ export class CoachmarkBase extends BaseComponent<ICoachmarkProps, ICoachmarkStat
     );
   }
 
-  public componentWillReceiveProps(newProps: ICoachmarkProps): void {
+  // tslint:disable-next-line function-name
+  public UNSAFE_componentWillReceiveProps(newProps: ICoachmarkProps): void {
     if (this.props.isCollapsed && !newProps.isCollapsed) {
       // The coachmark is about to open
       this._openCoachmark();
@@ -520,10 +522,18 @@ export class CoachmarkBase extends BaseComponent<ICoachmarkProps, ICoachmarkStat
         }
 
         if (this._beakDirection === RectangleEdge.left) {
-          beakLeft = distanceAdjustment;
+          if (getRTL()) {
+            beakRight = distanceAdjustment;
+          } else {
+            beakLeft = distanceAdjustment;
+          }
           transformOriginX = 'left';
         } else {
-          beakRight = distanceAdjustment;
+          if (getRTL()) {
+            beakLeft = distanceAdjustment;
+          } else {
+            beakRight = distanceAdjustment;
+          }
           transformOriginX = 'right';
         }
         break;

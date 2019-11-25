@@ -52,7 +52,6 @@ exports[`Component Examples renders Breadcrumb.Static.Example.tsx correctly 1`] 
             onFocus={[Function]}
             onKeyDown={[Function]}
             onMouseDownCapture={[Function]}
-            role="presentation"
           >
             <ol
               className=
@@ -88,6 +87,7 @@ exports[`Component Examples renders Breadcrumb.Static.Example.tsx correctly 1`] 
                   className=
                       ms-Button
                       ms-Button--icon
+                      ms-Button--hasMenu
                       ms-Breadcrumb-overflowButton
                       {
                         -moz-osx-font-smoothing: grayscale;
@@ -116,7 +116,7 @@ exports[`Component Examples renders Breadcrumb.Static.Example.tsx correctly 1`] 
                         user-select: none;
                         vertical-align: top;
                         white-space: nowrap;
-                        width: 32px;
+                        width: auto;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -149,6 +149,7 @@ exports[`Component Examples renders Breadcrumb.Static.Example.tsx correctly 1`] 
                         background-color: #f3f2f1;
                         color: #323130;
                         cursor: pointer;
+                        text-decoration: none;
                       }
                       @media screen and (-ms-high-contrast: active){&:hover {
                         border-color: Highlight;
@@ -157,12 +158,11 @@ exports[`Component Examples renders Breadcrumb.Static.Example.tsx correctly 1`] 
                       &:active {
                         background-color: #edebe9;
                         color: #323130;
+                        text-decoration: none;
                       }
                       &:active:hover {
                         background-color: #edebe9;
                         color: #323130;
-                      }
-                      &:active, &:hover, &:active:hover {
                         text-decoration: none;
                       }
                       @media only screen and (min-width: 0px) and (max-width: 479px){& {
@@ -184,7 +184,7 @@ exports[`Component Examples renders Breadcrumb.Static.Example.tsx correctly 1`] 
                   role="button"
                   type="button"
                 >
-                  <div
+                  <span
                     className=
                         ms-Button-flexContainer
                         {
@@ -194,27 +194,33 @@ exports[`Component Examples renders Breadcrumb.Static.Example.tsx correctly 1`] 
                           height: 100%;
                           justify-content: center;
                         }
+                    data-automationid="splitbuttonprimary"
                   >
                     <i
                       aria-hidden={true}
                       className=
+                          ms-Icon
                           ms-Button-icon
+                          {
+                            display: inline-block;
+                          }
                           {
                             -moz-osx-font-smoothing: grayscale;
                             -webkit-font-smoothing: antialiased;
-                            display: inline-block;
-                            flex-shrink: 0;
                             font-family: "FabricMDL2Icons";
-                            font-size: 16px;
                             font-style: normal;
                             font-weight: normal;
+                            speak: none;
+                          }
+                          {
+                            flex-shrink: 0;
+                            font-size: 16px;
                             height: 16px;
                             line-height: 16px;
                             margin-bottom: 0;
                             margin-left: 4px;
                             margin-right: 4px;
                             margin-top: 0;
-                            speak: none;
                             text-align: center;
                             vertical-align: middle;
                           }
@@ -223,7 +229,7 @@ exports[`Component Examples renders Breadcrumb.Static.Example.tsx correctly 1`] 
                     >
                       
                     </i>
-                  </div>
+                  </span>
                 </button>
                 <i
                   aria-hidden={true}
@@ -251,7 +257,6 @@ exports[`Component Examples renders Breadcrumb.Static.Example.tsx correctly 1`] 
                         font-size: 8px;
                       }
                   data-icon-name="ChevronRight"
-                  role="presentation"
                 >
                   
                 </i>
@@ -332,8 +337,20 @@ exports[`Component Examples renders Breadcrumb.Static.Example.tsx correctly 1`] 
                       @media screen and (-ms-high-contrast: black-on-white){& {
                         color: #00009F;
                       }
-                      &:active, &:hover, &:active:hover {
-                        color: #004578;
+                      &:active {
+                        background-color: #edebe9;
+                        color: #323130;
+                        text-decoration: none;
+                      }
+                      &:hover {
+                        background-color: #f3f2f1;
+                        color: #323130;
+                        cursor: pointer;
+                        text-decoration: none;
+                      }
+                      &:active:hover {
+                        background-color: #edebe9;
+                        color: #323130;
                         text-decoration: none;
                       }
                       &:focus {
@@ -353,21 +370,8 @@ exports[`Component Examples renders Breadcrumb.Static.Example.tsx correctly 1`] 
                         top: 1px;
                         z-index: 1;
                       }
-                      &:hover {
-                        background-color: #f3f2f1;
-                        color: #323130;
-                        cursor: pointer;
-                      }
                       @media screen and (-ms-high-contrast: active){&:hover {
                         color: Highlight;
-                      }
-                      &:active {
-                        background-color: #edebe9;
-                        color: #323130;
-                      }
-                      &:active:hover {
-                        background-color: #edebe9;
-                        color: #323130;
                       }
                   onClick={[Function]}
                   type="button"
@@ -384,7 +388,7 @@ exports[`Component Examples renders Breadcrumb.Static.Example.tsx correctly 1`] 
                     onMouseEnter={[Function]}
                     onMouseLeave={[Function]}
                   >
-                    This is folder 3
+                    This is folder 3 long
                   </div>
                 </button>
                 <i
@@ -413,7 +417,6 @@ exports[`Component Examples renders Breadcrumb.Static.Example.tsx correctly 1`] 
                         font-size: 8px;
                       }
                   data-icon-name="ChevronRight"
-                  role="presentation"
                 >
                   
                 </i>
@@ -444,95 +447,22 @@ exports[`Component Examples renders Breadcrumb.Static.Example.tsx correctly 1`] 
                       font-weight: 600;
                     }
               >
-                <button
+                <span
                   className=
-                      ms-Link
-                      ms-Breadcrumb-itemLink
+                      ms-Breadcrumb-item
                       {
-                        -moz-osx-font-smoothing: grayscale;
-                        -webkit-font-smoothing: antialiased;
-                        background-color: transparent;
-                        background: none;
-                        border-bottom: 1px solid transparent;
-                        border: none;
                         color: #605e5c;
-                        cursor: pointer;
-                        display: inline;
-                        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                         font-size: 18px;
                         font-weight: 400;
                         line-height: 36px;
-                        margin-bottom: 0px;
-                        margin-left: 0px;
-                        margin-right: 0px;
-                        margin-top: 0px;
-                        outline: transparent;
-                        overflow: hidden;
                         padding-bottom: 0;
                         padding-left: 8px;
                         padding-right: 8px;
                         padding-top: 0;
-                        position: relative;
-                        text-align: left;
-                        text-overflow: ellipsis;
-                        user-select: text;
-                        white-space: nowrap;
-                      }
-                      .ms-Fabric--isFocusVisible &:focus {
-                        box-shadow: 0 0 0 1px #605e5c inset;
-                        outline: none;
-                      }
-                      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
-                        outline: 1px solid WindowText;
-                      }
-                      @media screen and (-ms-high-contrast: active){& {
-                        border-bottom: none;
-                      }
-                      @media screen and (-ms-high-contrast: white-on-black){& {
-                        color: #FFFF00;
-                      }
-                      @media screen and (-ms-high-contrast: black-on-white){& {
-                        color: #00009F;
-                      }
-                      &:active, &:hover, &:active:hover {
-                        color: #004578;
-                        text-decoration: none;
-                      }
-                      &:focus {
-                        color: #201f1e;
-                      }
-                      &::-moz-focus-inner {
-                        border: 0;
-                      }
-                      .ms-Fabric--isFocusVisible &:focus:after {
-                        border: 1px solid #ffffff;
-                        bottom: 1px;
-                        content: "";
-                        left: 1px;
-                        outline: 1px solid #605e5c;
-                        position: absolute;
-                        right: 1px;
-                        top: 1px;
-                        z-index: 1;
                       }
                       &:hover {
-                        background-color: #f3f2f1;
-                        color: #323130;
-                        cursor: pointer;
+                        cursor: default;
                       }
-                      @media screen and (-ms-high-contrast: active){&:hover {
-                        color: Highlight;
-                      }
-                      &:active {
-                        background-color: #edebe9;
-                        color: #323130;
-                      }
-                      &:active:hover {
-                        background-color: #edebe9;
-                        color: #323130;
-                      }
-                  onClick={[Function]}
-                  type="button"
                 >
                   <div
                     className=
@@ -546,9 +476,9 @@ exports[`Component Examples renders Breadcrumb.Static.Example.tsx correctly 1`] 
                     onMouseEnter={[Function]}
                     onMouseLeave={[Function]}
                   >
-                    This is folder 4
+                    This is non-clickable folder 4
                   </div>
-                </button>
+                </span>
                 <i
                   aria-hidden={true}
                   className=
@@ -575,7 +505,6 @@ exports[`Component Examples renders Breadcrumb.Static.Example.tsx correctly 1`] 
                         font-size: 8px;
                       }
                   data-icon-name="ChevronRight"
-                  role="presentation"
                 >
                   
                 </i>
@@ -657,8 +586,20 @@ exports[`Component Examples renders Breadcrumb.Static.Example.tsx correctly 1`] 
                       @media screen and (-ms-high-contrast: black-on-white){& {
                         color: #00009F;
                       }
-                      &:active, &:hover, &:active:hover {
-                        color: #004578;
+                      &:active {
+                        background-color: #edebe9;
+                        color: #323130;
+                        text-decoration: none;
+                      }
+                      &:hover {
+                        background-color: #f3f2f1;
+                        color: #323130;
+                        cursor: pointer;
+                        text-decoration: none;
+                      }
+                      &:active:hover {
+                        background-color: #edebe9;
+                        color: #323130;
                         text-decoration: none;
                       }
                       &:focus {
@@ -678,21 +619,8 @@ exports[`Component Examples renders Breadcrumb.Static.Example.tsx correctly 1`] 
                         top: 1px;
                         z-index: 1;
                       }
-                      &:hover {
-                        background-color: #f3f2f1;
-                        color: #323130;
-                        cursor: pointer;
-                      }
                       @media screen and (-ms-high-contrast: active){&:hover {
                         color: Highlight;
-                      }
-                      &:active {
-                        background-color: #edebe9;
-                        color: #323130;
-                      }
-                      &:active:hover {
-                        background-color: #edebe9;
-                        color: #323130;
                       }
                   onClick={[Function]}
                   type="button"

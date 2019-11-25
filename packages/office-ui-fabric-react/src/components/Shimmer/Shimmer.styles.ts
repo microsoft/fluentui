@@ -32,7 +32,7 @@ const shimmerAnimationRTL: string = keyframes({
 export function getStyles(props: IShimmerStyleProps): IShimmerStyles {
   const { isDataLoaded, className, theme, transitionAnimationInterval, shimmerColor, shimmerWaveColor } = props;
 
-  const { palette } = theme;
+  const { semanticColors } = theme;
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
   const isRTL = getRTL();
@@ -53,7 +53,7 @@ export function getStyles(props: IShimmerStyleProps): IShimmerStyles {
         position: 'relative',
         overflow: 'hidden',
         transform: 'translateZ(0)',
-        backgroundColor: shimmerColor || palette.neutralLighter,
+        backgroundColor: shimmerColor || semanticColors.disabledBackground,
         transition: `opacity ${transitionAnimationInterval}ms`,
         selectors: {
           '> *': {
@@ -88,12 +88,12 @@ export function getStyles(props: IShimmerStyleProps): IShimmerStyles {
         left: 0,
         width: '100%',
         height: '100%',
-        background: `${shimmerColor || palette.neutralLighter}
+        background: `${shimmerColor || semanticColors.disabledBackground}
                       linear-gradient(
                         to right,
-                        ${shimmerColor || palette.neutralLighter} 0%,
-                        ${shimmerWaveColor || palette.neutralLight} 50%,
-                        ${shimmerColor || palette.neutralLighter} 100%)
+                        ${shimmerColor || semanticColors.disabledBackground} 0%,
+                        ${shimmerWaveColor || semanticColors.bodyDivider} 50%,
+                        ${shimmerColor || semanticColors.disabledBackground} 100%)
                       0 0 / 90% 100%
                       no-repeat`,
         transform: `translateX(-${BACKGROUND_OFF_SCREEN_POSITION})`,

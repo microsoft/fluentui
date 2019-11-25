@@ -3,7 +3,7 @@ import { IButtonComponent, IButtonStylesReturnType, IButtonTokenReturnType } fro
 import { getFocusStyle, getGlobalClassNames, FontWeights, HighContrastSelector } from '../../Styling';
 import { IsFocusVisibleClassName } from '../../Utilities';
 
-const baseTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenReturnType => {
+export const baseTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenReturnType => {
   const { effects } = theme;
 
   return {
@@ -25,11 +25,11 @@ const baseTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenRetur
   };
 };
 
-const hrefTokens: IButtonComponent['tokens'] = {
+export const hrefTokens: IButtonComponent['tokens'] = {
   contentPadding: '8px 16px'
 };
 
-const circularTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenReturnType => {
+export const circularTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenReturnType => {
   const { semanticColors } = theme;
 
   return {
@@ -38,7 +38,7 @@ const circularTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenR
     borderRadius: '50%',
     borderStyleFocused: 'double',
     borderWidthFocused: 3,
-    contentPadding: '',
+    contentPadding: 0,
     contentPaddingFocused: 1,
     minHeight: 32,
     minWidth: 32,
@@ -46,7 +46,7 @@ const circularTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenR
   };
 };
 
-const enabledTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenReturnType => {
+export const enabledTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenReturnType => {
   const { semanticColors } = theme;
   return {
     backgroundColor: semanticColors.buttonBackground,
@@ -73,7 +73,7 @@ const enabledTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenRe
   };
 };
 
-const disabledTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenReturnType => {
+export const disabledTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenReturnType => {
   const { semanticColors } = theme;
   return {
     backgroundColor: semanticColors.buttonBackgroundDisabled,
@@ -108,7 +108,7 @@ const disabledTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenR
   };
 };
 
-const primaryEnabledTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenReturnType => {
+export const primaryEnabledTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenReturnType => {
   const { semanticColors } = theme;
   return {
     backgroundColor: semanticColors.primaryButtonBackground,
@@ -140,12 +140,12 @@ const primaryEnabledTokens: IButtonComponent['tokens'] = (props, theme): IButton
   };
 };
 
-const primaryCircularTokens: IButtonComponent['tokens'] = {
+export const primaryCircularTokens: IButtonComponent['tokens'] = {
   borderStyleFocused: 'solid',
   borderWidthFocused: 1
 };
 
-const checkedTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenReturnType => {
+export const checkedTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenReturnType => {
   const { semanticColors } = theme;
   return {
     backgroundColor: semanticColors.buttonBackgroundChecked,
@@ -162,7 +162,7 @@ const checkedTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenRe
   };
 };
 
-const primaryCheckedTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenReturnType => {
+export const primaryCheckedTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenReturnType => {
   const { semanticColors } = theme;
   return {
     backgroundColor: semanticColors.primaryButtonBackgroundPressed,

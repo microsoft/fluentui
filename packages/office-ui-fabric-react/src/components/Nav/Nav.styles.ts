@@ -1,14 +1,6 @@
 import { INavStyleProps, INavStyles } from './Nav.types';
 import { IButtonStyles } from '../../Button';
-import {
-  AnimationClassNames,
-  DefaultFontStyles,
-  getFocusStyle,
-  FontSizes,
-  FontWeights,
-  ZIndexes,
-  getGlobalClassNames
-} from '../../Styling';
+import { AnimationClassNames, getFocusStyle, ZIndexes, getGlobalClassNames, HighContrastSelector, FontWeights } from '../../Styling';
 
 const GlobalClassNames = {
   root: 'ms-Nav',
@@ -30,8 +22,7 @@ export const buttonStyles: IButtonStyles = {
   label: {
     whiteSpace: 'nowrap',
     textOverflow: 'ellipsis',
-    overflow: 'hidden',
-    lineHeight: '36px'
+    overflow: 'hidden'
   }
 };
 
@@ -46,14 +37,14 @@ export const getStyles = (props: INavStyleProps): INavStyles => {
     isSelected,
     isDisabled,
     isButtonEntry,
-    navHeight = 36,
+    navHeight = 44,
     position,
     leftPadding = 20,
     leftPaddingExpanded = 28,
     rightPadding = 20
   } = props;
 
-  const { palette, semanticColors } = theme;
+  const { palette, semanticColors, fonts } = theme;
 
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
@@ -61,7 +52,7 @@ export const getStyles = (props: INavStyleProps): INavStyles => {
     root: [
       classNames.root,
       className,
-      theme.fonts.medium,
+      fonts.medium,
       {
         overflowY: 'auto',
         userSelect: 'none',
@@ -89,8 +80,7 @@ export const getStyles = (props: INavStyleProps): INavStyles => {
       {
         display: 'block',
         position: 'relative',
-        color: semanticColors.bodyText,
-        backgroundColor: semanticColors.bodyBackground
+        color: semanticColors.bodyText
       },
       isExpanded && 'is-expanded',
       isSelected && 'is-selected',
@@ -105,7 +95,7 @@ export const getStyles = (props: INavStyleProps): INavStyles => {
       {
         display: 'block',
         position: 'relative',
-        height: `${navHeight}px`,
+        height: navHeight,
         width: '100%',
         lineHeight: `${navHeight}px`,
         textDecoration: 'none',
@@ -116,18 +106,28 @@ export const getStyles = (props: INavStyleProps): INavStyles => {
         paddingLeft: leftPadding,
         paddingRight: rightPadding,
         color: semanticColors.bodyText,
-        selectors: !isDisabled
-          ? {
-              '.ms-Nav-compositeLink:hover &': {
-                backgroundColor: palette.neutralLighterAlt,
-                color: semanticColors.bodyText
+        selectors: {
+          [HighContrastSelector]: {
+            borderColor: 'transparent',
+            selectors: {
+              ':focus': {
+                borderColor: 'WindowText'
               }
             }
-          : {}
+          }
+        }
+      },
+      !isDisabled && {
+        selectors: {
+          '.ms-Nav-compositeLink:hover &': {
+            backgroundColor: semanticColors.bodyBackgroundHovered
+          }
+        }
       },
       isSelected && {
-        color: palette.themePrimary,
-        backgroundColor: palette.neutralLighter,
+        color: semanticColors.bodyTextChecked,
+        fontWeight: FontWeights.semibold, // todo: get from theme
+        backgroundColor: semanticColors.bodyBackgroundChecked,
         selectors: {
           '&:after': {
             borderLeft: `2px solid ${palette.themePrimary}`,
@@ -151,10 +151,9 @@ export const getStyles = (props: INavStyleProps): INavStyles => {
     chevronButton: [
       classNames.chevronButton,
       getFocusStyle(theme),
+      fonts.small,
       {
         display: 'block',
-        fontWeight: FontWeights.regular,
-        fontSize: FontSizes.small,
         textAlign: 'left',
         lineHeight: `${navHeight}px`,
         margin: '5px 0',
@@ -168,39 +167,27 @@ export const getStyles = (props: INavStyleProps): INavStyles => {
         backgroundColor: 'transparent',
         selectors: {
           '&:visited': {
-            color: 'inherit'
-          },
-          '&:hover': {
-            color: semanticColors.bodyText,
-            backgroundColor: palette.neutralLighterAlt
-          },
-          '$compositeLink:hover &': {
-            color: semanticColors.bodyText,
-            backgroundColor: palette.neutralLighterAlt
+            color: semanticColors.bodyText
           }
         }
       },
-      isGroup && [
-        {
-          width: '100%',
-          height: `${navHeight}px`,
-          borderBottom: `1px solid ${semanticColors.bodyDivider}`
-        },
-        DefaultFontStyles.large
-      ],
-      isLink && [
-        {
-          display: 'block',
-          width: `${leftPaddingExpanded - 2}px`,
-          height: `${navHeight - 2}px`,
-          position: 'absolute',
-          top: '1px',
-          left: `${position}px`,
-          zIndex: ZIndexes.Nav,
-          padding: 0,
-          margin: 0
-        }
-      ],
+      isGroup && {
+        fontSize: fonts.large.fontSize,
+        width: '100%',
+        height: navHeight,
+        borderBottom: `1px solid ${semanticColors.bodyDivider}`
+      },
+      isLink && {
+        display: 'block',
+        width: leftPaddingExpanded - 2,
+        height: navHeight - 2,
+        position: 'absolute',
+        top: '1px',
+        left: `${position}px`,
+        zIndex: ZIndexes.Nav,
+        padding: 0,
+        margin: 0
+      },
       isSelected && {
         color: palette.themePrimary,
         backgroundColor: palette.neutralLighterAlt,
@@ -223,9 +210,9 @@ export const getStyles = (props: INavStyleProps): INavStyles => {
       {
         position: 'absolute',
         left: '8px',
-        height: `${navHeight}px`,
+        height: navHeight,
         lineHeight: `${navHeight}px`,
-        fontSize: '12px',
+        fontSize: fonts.small.fontSize,
         transition: 'transform .1s linear'
       },
       isExpanded && {
@@ -245,7 +232,8 @@ export const getStyles = (props: INavStyleProps): INavStyles => {
       classNames.navItems,
       {
         listStyleType: 'none',
-        padding: 0
+        padding: 0,
+        margin: 0 // remove default <UL> styles
       }
     ],
     group: [classNames.group, isExpanded && 'is-expanded'],

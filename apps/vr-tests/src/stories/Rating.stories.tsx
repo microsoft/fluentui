@@ -20,6 +20,5 @@ storiesOf('Rating', module)
   ))
   .addStory('Root', () => <Rating min={1} max={5} />)
   .addStory('Rated', () => <Rating min={1} max={5} rating={2} />, { rtl: true })
-  .addStory('Allow Zero', () => <Rating allowZeroStars={true} max={5} rating={0} />)
   .addStory('Large', () => <Rating min={1} max={5} size={RatingSize.Large} />)
   .addStory('Disabled', () => <Rating min={1} max={5} disabled />);

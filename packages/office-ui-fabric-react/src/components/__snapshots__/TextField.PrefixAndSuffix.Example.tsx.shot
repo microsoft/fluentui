@@ -189,7 +189,13 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
                   text-overflow: ellipsis;
                   width: 100%;
                 }
-                &:active, &:focus, &:hover {
+                &:active {
+                  outline: 0px;
+                }
+                &:focus {
+                  outline: 0px;
+                }
+                &:hover {
                   outline: 0px;
                 }
                 &::-ms-clear {
@@ -298,7 +304,6 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
               ms-TextField-fieldGroup
               {
                 align-items: stretch;
-                background-color: #f3f2f1;
                 background: #ffffff;
                 border-color: #f3f2f1;
                 border-radius: 2px;
@@ -319,8 +324,8 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
                 padding-top: 0px;
                 position: relative;
               }
-              @media screen and (-ms-high-contrast: active){&:hover {
-                border-color: Highlight;
+              @media screen and (-ms-high-contrast: active){& {
+                border-color: GrayText;
               }
         >
           <div
@@ -359,9 +364,9 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  background-color: transparent;
+                  background-color: #f3f2f1;
                   background: none;
-                  border-color: transparent;
+                  border-color: #f3f2f1;
                   border-radius: 0px;
                   border: none;
                   box-shadow: none;
@@ -383,7 +388,13 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
                   text-overflow: ellipsis;
                   width: 100%;
                 }
-                &:active, &:focus, &:hover {
+                &:active {
+                  outline: 0px;
+                }
+                &:focus {
+                  outline: 0px;
+                }
+                &:hover {
                   outline: 0px;
                 }
                 &::-ms-clear {
@@ -569,7 +580,13 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
                   text-overflow: ellipsis;
                   width: 100%;
                 }
-                &:active, &:focus, &:hover {
+                &:active {
+                  outline: 0px;
+                }
+                &:focus {
+                  outline: 0px;
+                }
+                &:hover {
                   outline: 0px;
                 }
                 &::-ms-clear {
@@ -786,7 +803,13 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
                   text-overflow: ellipsis;
                   width: 100%;
                 }
-                &:active, &:focus, &:hover {
+                &:active {
+                  outline: 0px;
+                }
+                &:focus {
+                  outline: 0px;
+                }
+                &:hover {
                   outline: 0px;
                 }
                 &::-ms-clear {

@@ -49,6 +49,7 @@ export class MarqueeSelectionBase extends BaseComponent<IMarqueeSelectionProps, 
   private _scrollableParent: HTMLElement;
   private _scrollableSurface: HTMLElement;
   private _scrollTop: number;
+  private _scrollLeft: number;
   private _isTouch: boolean;
 
   constructor(props: IMarqueeSelectionProps) {
@@ -139,20 +140,17 @@ export class MarqueeSelectionBase extends BaseComponent<IMarqueeSelectionProps, 
       return;
     }
 
-    if (!ev.shiftKey) {
-      this.props.selection.setAllSelected(false);
-    }
-
     if (!this._isTouch && isEnabled && !this._isDragStartInSelection(ev) && (!onShouldStartSelection || onShouldStartSelection(ev))) {
       if (this._scrollableSurface && ev.button === 0 && this._root.current) {
         this._selectedIndicies = {};
         this._preservedIndicies = undefined;
-        this._events.on(window, 'mousemove', this._onAsyncMouseMove);
+        this._events.on(window, 'mousemove', this._onAsyncMouseMove, true);
         this._events.on(this._scrollableParent, 'scroll', this._onAsyncMouseMove);
         this._events.on(window, 'click', this._onMouseUp, true);
 
         this._autoScroll = new AutoScroll(this._root.current);
         this._scrollTop = this._scrollableSurface.scrollTop;
+        this._scrollLeft = this._scrollableSurface.scrollLeft;
         this._rootRect = this._root.current.getBoundingClientRect();
 
         this._onMouseMove(ev);
@@ -180,7 +178,7 @@ export class MarqueeSelectionBase extends BaseComponent<IMarqueeSelectionProps, 
 
   private _getRootRect(): IRectangle {
     return {
-      left: this._rootRect.left,
+      left: this._rootRect.left + (this._scrollLeft - this._scrollableSurface.scrollLeft),
       top: this._rootRect.top + (this._scrollTop - this._scrollableSurface.scrollTop),
       width: this._rootRect.width,
       height: this._rootRect.height
@@ -218,6 +216,10 @@ export class MarqueeSelectionBase extends BaseComponent<IMarqueeSelectionProps, 
       if (this.state.dragRect || getDistanceBetweenPoints(this._dragOrigin, currentPoint) > MIN_DRAG_DISTANCE) {
         if (!this.state.dragRect) {
           const { selection } = this.props;
+
+          if (!ev.shiftKey) {
+            selection.setAllSelected(false);
+          }
 
           this._preservedIndicies = selection && selection.getSelectedIndices && selection.getSelectedIndices();
         }

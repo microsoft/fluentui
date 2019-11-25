@@ -87,6 +87,11 @@ export interface ILineChartPoints {
    * color for the legend in the chart
    */
   color: string;
+
+  /**
+   * Defines the function that is executed on clicking this legend
+   */
+  onLegendClick?: (selectedLegend: string | null) => void;
 }
 
 export interface IChartProps {

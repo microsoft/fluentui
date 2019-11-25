@@ -34,7 +34,7 @@ export const getStyles = (props: IGroupHeaderStyleProps): IGroupHeaderStyles => 
   const { cellLeftPadding } = DEFAULT_CELL_STYLE_PROPS; // padding from the source to align GroupHeader title with DetailsRow's first cell.
   const finalRowHeight = compact ? COMPACT_GROUP_HEADER_HEIGHT : DEFAULT_GROUP_HEADER_HEIGHT;
 
-  const { semanticColors, palette } = theme;
+  const { semanticColors, palette, fonts } = theme;
 
   const classNames = getGlobalClassNames(GlobalClassNames, theme!);
 
@@ -63,15 +63,15 @@ export const getStyles = (props: IGroupHeaderStyleProps): IGroupHeaderStyles => 
             background: semanticColors.listItemBackgroundHovered,
             color: semanticColors.actionLinkHovered
           },
-          ':hover $check': {
+          [`&:hover .${classNames.check}`]: {
             opacity: 1
           },
-          [`.${IsFocusVisibleClassName} &:focus $check`]: {
+          [`.${IsFocusVisibleClassName} &:focus .${classNames.check}`]: {
             opacity: 1
           },
           [`:global(.${classNames.group}.${classNames.isDropping})`]: {
             selectors: {
-              '> $root $dropIcon': {
+              [`& > .${classNames.root} .${classNames.dropIcon}`]: {
                 transition: `transform ${AnimationVariables.durationValue4} ${beziers.easeOutCirc} opacity ${
                   AnimationVariables.durationValue1
                 } ${beziers.easeOutSine}`,
@@ -80,7 +80,7 @@ export const getStyles = (props: IGroupHeaderStyleProps): IGroupHeaderStyles => 
                 transform: `rotate(0.2deg) scale(1);` // rotation prevents jittery motion in IE
               },
 
-              $check: {
+              [`.${classNames.check}`]: {
                 opacity: 0
               }
             }
@@ -95,7 +95,7 @@ export const getStyles = (props: IGroupHeaderStyleProps): IGroupHeaderStyles => 
             ':hover': {
               background: semanticColors.listItemBackgroundCheckedHovered
             },
-            $check: {
+            [`${classNames.check}`]: {
               opacity: 1
             }
           }
@@ -146,7 +146,7 @@ export const getStyles = (props: IGroupHeaderStyleProps): IGroupHeaderStyles => 
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        fontSize: 12, // TODO: after reconciling the fluent type ramp we need to change this to use theme values.
+        fontSize: fonts.small.fontSize,
         width: EXPAND_BUTTON_WIDTH,
         height: finalRowHeight,
         color: selected ? palette.neutralPrimary : palette.neutralSecondary,
@@ -180,7 +180,7 @@ export const getStyles = (props: IGroupHeaderStyleProps): IGroupHeaderStyles => 
       classNames.title,
       {
         paddingLeft: cellLeftPadding,
-        fontSize: compact ? 14 : 16, // TODO: after reconciling the fluent type ramp we need to change this to use theme values.
+        fontSize: compact ? fonts.medium.fontSize : fonts.mediumPlus.fontSize,
         fontWeight: isCollapsed ? FontWeights.regular : FontWeights.semibold,
         cursor: 'pointer',
         outline: 0,

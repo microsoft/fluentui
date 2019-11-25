@@ -72,15 +72,6 @@ export class ColorsProductsPage extends React.Component<IStylesPageProps, IColor
                 {activeAppDetails}
               </>
             )
-          },
-          {
-            sectionName: 'Implementation',
-            editUrl: `${baseUrl}/web/ColorsImplementation.md`,
-            content: (
-              <Markdown>
-                {require('!raw-loader!@uifabric/fabric-website/src/pages/Styles/Colors/docs/web/ColorsImplementation.md') as string}
-              </Markdown>
-            )
           }
         ];
 

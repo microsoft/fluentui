@@ -5,12 +5,11 @@ import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import { Image, ImageFit } from 'office-ui-fabric-react/lib/Image';
 import { Icon } from 'office-ui-fabric-react/lib/Icon';
 import { List } from 'office-ui-fabric-react/lib/List';
-import { ITheme, mergeStyleSets, getTheme, getFocusStyle, DefaultFontStyles, FontSizes } from '@uifabric/styling';
-
-export type IExampleItem = { name: string; thumbnail: string; description: string };
+import { ITheme, mergeStyleSets, getTheme, getFocusStyle } from 'office-ui-fabric-react/lib/Styling';
+import { createListItems, IExampleItem } from '@uifabric/example-data';
 
 export interface IListBasicExampleProps {
-  items: IExampleItem[];
+  items?: IExampleItem[];
 }
 
 export interface IListBasicExampleState {
@@ -28,6 +27,7 @@ interface IListBasicExampleClassObject {
 }
 
 const theme: ITheme = getTheme();
+const { palette, semanticColors, fonts } = theme;
 
 const classNames: IListBasicExampleClassObject = mergeStyleSets({
   itemCell: [
@@ -36,10 +36,10 @@ const classNames: IListBasicExampleClassObject = mergeStyleSets({
       minHeight: 54,
       padding: 10,
       boxSizing: 'border-box',
-      borderBottom: `1px solid ${theme.semanticColors.bodyDivider}`,
+      borderBottom: `1px solid ${semanticColors.bodyDivider}`,
       display: 'flex',
       selectors: {
-        '&:hover': { background: theme.palette.neutralLight }
+        '&:hover': { background: palette.neutralLight }
       }
     }
   ],
@@ -52,7 +52,7 @@ const classNames: IListBasicExampleClassObject = mergeStyleSets({
     flexGrow: 1
   },
   itemName: [
-    DefaultFontStyles.xLarge,
+    fonts.xLarge,
     {
       whiteSpace: 'nowrap',
       overflow: 'hidden',
@@ -60,34 +60,35 @@ const classNames: IListBasicExampleClassObject = mergeStyleSets({
     }
   ],
   itemIndex: {
-    fontSize: FontSizes.small,
-    color: theme.palette.neutralTertiary,
+    fontSize: fonts.small.fontSize,
+    color: palette.neutralTertiary,
     marginBottom: 10
   },
   chevron: {
     alignSelf: 'center',
     marginLeft: 10,
-    color: theme.palette.neutralTertiary,
-    fontSize: FontSizes.large,
+    color: palette.neutralTertiary,
+    fontSize: fonts.large.fontSize,
     flexShrink: 0
   }
 });
 
 export class ListBasicExample extends React.Component<IListBasicExampleProps, IListBasicExampleState> {
+  private _originalItems: IExampleItem[];
+
   constructor(props: IListBasicExampleProps) {
     super(props);
-    this._onFilterChanged = this._onFilterChanged.bind(this);
 
+    this._originalItems = props.items || createListItems(5000);
     this.state = {
       filterText: '',
-      items: props.items
+      items: this._originalItems
     };
   }
 
   public render(): JSX.Element {
-    const { items: originalItems } = this.props;
     const { items = [] } = this.state;
-    const resultCountText = items.length === originalItems.length ? '' : ` (${items.length} of ${originalItems.length} shown)`;
+    const resultCountText = items.length === this._originalItems.length ? '' : ` (${items.length} of ${this._originalItems.length} shown)`;
 
     return (
       <FocusZone direction={FocusZoneDirection.vertical}>
@@ -97,14 +98,12 @@ export class ListBasicExample extends React.Component<IListBasicExampleProps, IL
     );
   }
 
-  private _onFilterChanged(_: any, text: string): void {
-    const { items } = this.props;
-
+  private _onFilterChanged = (_: any, text: string): void => {
     this.setState({
       filterText: text,
-      items: text ? items.filter(item => item.name.toLowerCase().indexOf(text.toLowerCase()) >= 0) : items
+      items: text ? this._originalItems.filter(item => item.name.toLowerCase().indexOf(text.toLowerCase()) >= 0) : this._originalItems
     });
-  }
+  };
 
   private _onRenderCell(item: IExampleItem, index: number | undefined): JSX.Element {
     return (

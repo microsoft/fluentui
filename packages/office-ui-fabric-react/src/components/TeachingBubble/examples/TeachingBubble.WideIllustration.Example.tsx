@@ -3,7 +3,7 @@ import * as React from 'react';
 import { IImageProps } from 'office-ui-fabric-react/lib/Image';
 import { DefaultButton, IButtonProps } from 'office-ui-fabric-react/lib/Button';
 import { TeachingBubble } from 'office-ui-fabric-react/lib/TeachingBubble';
-import { DirectionalHint } from 'office-ui-fabric-react/lib/common/DirectionalHint';
+import { DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
 
 export interface ITeachingBubbleWideIllustrationExampleState {
   isTeachingBubbleVisible?: boolean;
@@ -25,7 +25,7 @@ export class TeachingBubbleWideIllustrationExample extends React.Component<{}, I
 
   public render(): JSX.Element {
     const { isTeachingBubbleVisible } = this.state;
-    const exampleImageProps: IImageProps = { src: 'http://placehold.it/154x140' };
+    const exampleImageProps: IImageProps = { src: 'http://placehold.it/154x220', alt: 'Example placeholder image' };
     const examplePrimaryButton: IButtonProps = {
       children: 'Try it out'
     };
@@ -50,6 +50,7 @@ export class TeachingBubbleWideIllustrationExample extends React.Component<{}, I
               isWide={true}
               hasSmallHeadline={true}
               hasCloseIcon={true}
+              closeButtonAriaLabel="Close"
               target={this._menuButtonElement}
               primaryButtonProps={examplePrimaryButton}
               secondaryButtonProps={exampleSecondaryButtonProps}

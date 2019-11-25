@@ -1,5 +1,11 @@
-const { taskPresets, task, series, parallel } = require('just-scripts');
+const {
+  preset,
+  just: { task, series }
+} = require('@uifabric/build');
+const generateJsonTask = require('./tasks/generateJsonTask');
 
-taskPresets.lib();
+preset();
 
-task('build', series('clean', 'ts:commonjs'));
+task('generate-json', generateJsonTask);
+
+task('build', series('clean', 'ts:commonjs-only', 'generate-json')).cached();

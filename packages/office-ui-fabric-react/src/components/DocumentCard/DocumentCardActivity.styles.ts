@@ -1,4 +1,4 @@
-import { getGlobalClassNames, FontSizes, FontWeights } from '../../Styling';
+import { getGlobalClassNames, FontWeights } from '../../Styling';
 import { IDocumentCardActivityStyleProps, IDocumentCardActivityStyles } from './DocumentCardActivity.types';
 
 const VERTICAL_PADDING = 8;
@@ -18,7 +18,7 @@ export const DocumentCardActivityGlobalClassNames = {
 
 export const getStyles = (props: IDocumentCardActivityStyleProps): IDocumentCardActivityStyles => {
   const { theme, className, multiplePeople } = props;
-  const { palette } = theme;
+  const { palette, fonts } = theme;
 
   const classNames = getGlobalClassNames(DocumentCardActivityGlobalClassNames, theme);
 
@@ -82,7 +82,7 @@ export const getStyles = (props: IDocumentCardActivityStyleProps): IDocumentCard
       classNames.name,
       {
         display: 'block',
-        fontSize: FontSizes.small,
+        fontSize: fonts.small.fontSize,
         lineHeight: '15px',
         height: '15px',
         overflow: 'hidden',
@@ -96,7 +96,7 @@ export const getStyles = (props: IDocumentCardActivityStyleProps): IDocumentCard
       classNames.activity,
       {
         display: 'block',
-        fontSize: FontSizes.small,
+        fontSize: fonts.small.fontSize,
         lineHeight: '15px',
         height: '15px',
         overflow: 'hidden',

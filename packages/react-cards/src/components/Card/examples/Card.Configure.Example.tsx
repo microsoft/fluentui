@@ -291,23 +291,21 @@ export class CardConfigureExample extends React.Component<{}, IExampleState> {
 
           {debugMode && (
             <Card root={{ verticalAlign: 'center' }} tokens={debugCardTokens}>
-              <DebugCardSection
-                height={
+              {DebugCardSection({
+                height:
                   (firstCardSectionHeight < 75 + 2 * resolvedGap ? 75 + 2 * resolvedGap : firstCardSectionHeight) -
-                  (filledSection === '1' ? cardChildrenMargin : 0)
-                }
-                text="Card Section"
-              />
-              <DebugCardSection height={cardChildrenGap} text="Gap" />
-              <DebugCardSection height={cardItemHeight + 2 * cardChildrenPadding + 4} text="Card Item" />
-              <DebugCardSection height={cardChildrenGap} text="Gap" />
-              <DebugCardSection
-                height={
+                  (filledSection === '1' ? cardChildrenMargin : 0),
+                text: 'Card Section'
+              })}
+              {DebugCardSection({ height: cardChildrenGap, text: 'Gap' })}
+              {DebugCardSection({ height: cardItemHeight + 2 * cardChildrenPadding + 4, text: 'Card Item' })}
+              {DebugCardSection({ height: cardChildrenGap, text: 'Gap' })}
+              {DebugCardSection({
+                height:
                   (secondCardSectionHeight < 75 + 2 * resolvedGap ? 75 + 2 * resolvedGap : secondCardSectionHeight) -
-                  (filledSection === '3' ? cardChildrenMargin : 0)
-                }
-                text="Card Section"
-              />
+                  (filledSection === '3' ? cardChildrenMargin : 0),
+                text: 'Card Section'
+              })}
             </Card>
           )}
         </Stack>

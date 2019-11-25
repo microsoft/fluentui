@@ -1,9 +1,12 @@
 import * as React from 'react';
 import { Chiclet, ChicletSize } from '@uifabric/experiments';
-import { Breadcrumb, getRTL, IBreadcrumbItem, Icon, TooltipHost, TooltipOverflowMode } from 'office-ui-fabric-react';
-import { mergeStyles } from '@uifabric/merge-styles/lib/mergeStyles';
+import { Breadcrumb, IBreadcrumbItem } from 'office-ui-fabric-react/lib/Breadcrumb';
+import { Icon } from 'office-ui-fabric-react/lib/Icon';
+import { TooltipHost, TooltipOverflowMode } from 'office-ui-fabric-react/lib/Tooltip';
+import { getRTL } from 'office-ui-fabric-react/lib/Utilities';
+import { mergeStyles, FontWeights } from 'office-ui-fabric-react/lib/Styling';
 
-const TEST_URL = 'http://fabricweb.z5.web.core.windows.net/pr-deploy-site/refs/heads/master/chiclet-test.html';
+const SAMPLE_URL = 'https://contoso.sharepoint.com';
 
 const chevronStyle = mergeStyles({
   fontSize: 8,
@@ -13,20 +16,16 @@ const chevronStyle = mergeStyles({
 
 const descriptionStyle = mergeStyles({
   fontSize: 12,
-  fontWeight: 'normal',
-  fontStyle: 'normal',
-  fontStretch: 'normal',
-  lineHeight: 1.33,
-  letterSpacing: 'normal',
+  fontWeight: FontWeights.semibold,
+  lineHeight: 14,
   textAlign: 'left',
   color: '#797671',
-  width: 248,
-  height: 16,
+  maxWidth: '100%',
   whiteSpace: 'nowrap',
   textOverflow: 'ellipsis'
 });
 
-export class ChicletBreadcrumbExample extends React.Component<{}, {}> {
+export class ChicletBreadcrumbExample extends React.Component {
   constructor(props: {}) {
     super(props);
   }
@@ -49,7 +48,7 @@ export class ChicletBreadcrumbExample extends React.Component<{}, {}> {
 
     return (
       <Chiclet
-        url={TEST_URL}
+        url={SAMPLE_URL}
         title="Quarterly Results.docx"
         image="https://static2.sharepointonline.com/files/fabric/assets/brand-icons/document/svg/docx_48x1.svg"
         size={ChicletSize.medium}
@@ -60,7 +59,7 @@ export class ChicletBreadcrumbExample extends React.Component<{}, {}> {
 
   private _onRenderItem(item: IBreadcrumbItem): JSX.Element {
     return (
-      <TooltipHost content={item.text} overflowMode={TooltipOverflowMode.Parent} className={descriptionStyle}>
+      <TooltipHost overflowMode={TooltipOverflowMode.Parent} className={descriptionStyle}>
         {item.text}
       </TooltipHost>
     );

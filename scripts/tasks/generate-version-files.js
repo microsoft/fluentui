@@ -1,51 +1,71 @@
 // @ts-check
 
-const { execSync } = require('child_process');
+const { spawnSync } = require('child_process');
 const path = require('path');
 const fs = require('fs');
 const glob = require('glob');
 
 const generateOnly = process.argv.indexOf('-g') > -1;
-const rushCmd = `"${process.execPath}" "${path.resolve(__dirname, '../../common/scripts/install-run-rush.js')}"`;
+const beachballBin = require.resolve('beachball/bin/beachball.js');
+const bumpCmd = [process.execPath, beachballBin, 'bump'];
+const findGitRoot = require('../monorepo/findGitRoot');
+const gitRoot = findGitRoot();
 
-function run(cmd) {
-  return execSync(cmd, { cwd: path.resolve(__dirname, '../..') }).toString();
-}
-
-module.exports = function generateVersionFiles() {
-  let modified = [];
-  let untracked = [];
-
-  if (!generateOnly) {
-    // Check that no uncommitted changes exist
-    let status = run('git status -s');
-    if (status) {
-      console.log('Repository needs to contain no changes for version generation to proceed.');
-      process.exit();
-    }
-
-    // Do a dry-run on all packages
-    run(`${rushCmd} publish -a`);
-    status = run('git status --porcelain=1');
-    status.split(/\n/g).forEach(line => {
-      if (line) {
-        const parts = line.trim().split(/\s/);
-
-        if (parts[0] === '??') {
-          // untracked files at this point would be things like CHANGELOG files for a brand new project
-          untracked.push(parts[1]);
-        } else {
-          // modified files include package.json, generated CHANGELOG files from rush publish dry run
-          modified.push('"' + parts[1] + '"');
-        }
-      }
-    });
+function run(args) {
+  const [cmd, ...restArgs] = args;
+  const runResult = spawnSync(cmd, restArgs, { cwd: gitRoot });
+  if (runResult.status === 0) {
+    return runResult.stdout.toString().trim();
   }
 
-  const packageJsons = glob.sync('+(packages|apps)/*/package.json');
+  return null;
+}
+
+function revertLocalChanges() {
+  const stash = `tmp_bump_${new Date().getTime()}`;
+  run(['git', 'stash', 'push', '-u', '-m', stash]);
+  const results = run(['git', 'stash', 'list']);
+  if (results) {
+    const lines = results.split(/\n/);
+    const foundLine = lines.find(line => line.includes(stash));
+
+    if (foundLine) {
+      const matched = foundLine.match(/^[^:]+/);
+      if (matched) {
+        run(['git', 'stash', 'drop', matched[0]]);
+        return true;
+      }
+    }
+  }
+
+  return false;
+}
+
+/**
+ * Generates version files by bumping
+ *
+ * 1. bumps the versions with `beachball bump`
+ * 2. gather version info
+ * 3. revert all local changes
+ * 4. write out the version files
+ *
+ * "generateOnly" mode takes existing versions and write them out to version files (do this when out of sync)
+ */
+module.exports = function generateVersionFiles() {
+  const gitRoot = findGitRoot();
+
+  if (!generateOnly) {
+    console.log('bumping');
+    // Do a dry-run on all packages
+    run(bumpCmd);
+  }
+
+  // 2. gather version info
+  const updatedVersionContents = {};
+  const packageJsons = glob.sync('+(packages|apps)/*/package.json', { cwd: gitRoot });
   packageJsons.forEach(packageJsonPath => {
-    const versionFile = path.join(path.dirname(packageJsonPath), 'src/version.ts');
-    const packageJson = JSON.parse(fs.readFileSync(packageJsonPath).toString());
+    const versionFile = path.join(gitRoot, path.dirname(packageJsonPath), 'src/version.ts');
+    const packageJson = JSON.parse(fs.readFileSync(path.join(gitRoot, packageJsonPath), 'utf-8'));
     const dependencies = packageJson.dependencies || {};
 
     if (
@@ -63,24 +83,24 @@ module.exports = function generateVersionFiles() {
     }
 
     if (shouldGenerate) {
-      console.log(`generating ${versionFile}`);
-
-      fs.writeFileSync(
-        versionFile,
-        `// ${packageJson.name}@${packageJson.version}
-  // Do not modify this file, the file is generated as part of publish. The checked in version is a placeholder only.
-  import { setVersion } from '@uifabric/set-version';
-  setVersion('${packageJson.name}', '${packageJson.version}');`
-      );
+      updatedVersionContents[versionFile] = `// ${packageJson.name}@${packageJson.version}
+// Do not modify this file, the file is generated as part of publish. The checked in version is a placeholder only.
+import { setVersion } from '@uifabric/set-version';
+setVersion('${packageJson.name}', '${packageJson.version}');`;
     }
   });
 
+  // 3. revert bump changes
   if (!generateOnly) {
-    // Undo the dry-run changes, preserve the version file changes
-    console.log(`remove untracked ${untracked.join(' ')}`);
-    untracked.forEach(f => fs.unlinkSync(f));
+    console.log('reverting');
+    revertLocalChanges();
+  }
 
-    console.log(`reset ${modified.join(' ')}`);
-    run(`git checkout ${modified.join(' ')}`);
+  // 4. write version files
+  if (updatedVersionContents) {
+    Object.keys(updatedVersionContents).forEach(versionFile => {
+      console.log(`writing to ${versionFile}`);
+      fs.writeFileSync(versionFile, updatedVersionContents[versionFile]);
+    });
   }
 };

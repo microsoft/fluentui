@@ -16,6 +16,7 @@ export const CheckStyles = (props: ICheckStyleProps): Partial<ICheckStyles> => {
   return {
     circle: [
       {
+        fontSize: 0,
         paddingTop: 1,
         paddingLeft: 1,
         color: semanticColors.listBackground,
@@ -26,6 +27,10 @@ export const CheckStyles = (props: ICheckStyleProps): Partial<ICheckStyles> => {
       }
     ],
     check: [
+      {
+        left: 2.5,
+        top: 1.5
+      },
       checked && {
         color: semanticColors.inputText
       },

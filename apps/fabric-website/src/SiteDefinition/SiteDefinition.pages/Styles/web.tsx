@@ -106,6 +106,13 @@ export const stylesPagesWeb: INavPage[] = [
           require.ensure([], require =>
             cb(require<any>('../../../pages/Styles/OfficeBrandIconsPage/OfficeBrandIconsPage').OfficeBrandIconsPage)
           )
+      },
+      {
+        title: 'File Type Icons',
+        url: '#/styles/web/file-type-icons',
+        component: () => <LoadingComponent title="File Type Icons" />,
+        getComponent: cb =>
+          require.ensure([], require => cb(require<any>('../../../pages/Styles/FileTypeIconsPage/FileTypeIconsPage').FileTypeIconsPage))
       }
     ]
   },

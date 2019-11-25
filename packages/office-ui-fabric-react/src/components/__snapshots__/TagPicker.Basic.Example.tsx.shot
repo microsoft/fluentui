@@ -44,6 +44,8 @@ exports[`Component Examples renders TagPicker.Basic.Example.tsx correctly 1`] = 
         }
   >
     <input
+      aria-checked="false"
+      aria-label="Disable Tag Picker"
       checked={false}
       className=
 
@@ -106,6 +108,7 @@ exports[`Component Examples renders TagPicker.Basic.Example.tsx correctly 1`] = 
               justify-content: center;
               margin-right: 4px;
               overflow: hidden;
+              position: relative;
               transition-duration: 200ms;
               transition-property: background, border, border-color;
               transition-timing-function: cubic-bezier(.4, 0, .23, 1);
@@ -132,12 +135,12 @@ exports[`Component Examples renders TagPicker.Basic.Example.tsx correctly 1`] = 
                 color: Window;
               }
           data-icon-name="CheckMark"
-          role="presentation"
         >
           
         </i>
       </div>
       <span
+        aria-hidden="true"
         className=
             ms-Checkbox-text
             {
@@ -160,6 +163,8 @@ exports[`Component Examples renders TagPicker.Basic.Example.tsx correctly 1`] = 
     onKeyDown={[Function]}
   >
     <div
+      aria-expanded={false}
+      aria-haspopup="dialog"
       className=
           ms-FocusZone
           &:focus {
@@ -169,7 +174,7 @@ exports[`Component Examples renders TagPicker.Basic.Example.tsx correctly 1`] = 
       onFocus={[Function]}
       onKeyDown={[Function]}
       onMouseDownCapture={[Function]}
-      role="presentation"
+      role="combobox"
     >
       <div
         className="ms-SelectionZone"
@@ -204,18 +209,23 @@ exports[`Component Examples renders TagPicker.Basic.Example.tsx correctly 1`] = 
           <input
             aria-autocomplete="both"
             aria-controls=" "
-            aria-expanded={false}
-            aria-haspopup="true"
             aria-label="Tag Picker"
             autoCapitalize="off"
             autoComplete="off"
             className=
                 ms-BasePicker-input
                 {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
                   align-self: flex-end;
+                  background-color: transparent;
                   border-radius: 2px;
                   border: none;
+                  color: #323130;
                   flex-grow: 1;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
                   height: 30px;
                   outline: none;
                   padding-bottom: 0;
@@ -230,10 +240,11 @@ exports[`Component Examples renders TagPicker.Basic.Example.tsx correctly 1`] = 
             onClick={[Function]}
             onCompositionEnd={[Function]}
             onCompositionStart={[Function]}
+            onCompositionUpdate={[Function]}
             onFocus={[Function]}
             onInput={[Function]}
             onKeyDown={[Function]}
-            role="combobox"
+            role="textbox"
             spellCheck={false}
             value=""
           />
@@ -251,6 +262,8 @@ exports[`Component Examples renders TagPicker.Basic.Example.tsx correctly 1`] = 
     onKeyDown={[Function]}
   >
     <div
+      aria-expanded={false}
+      aria-haspopup="dialog"
       className=
           ms-FocusZone
           &:focus {
@@ -260,7 +273,7 @@ exports[`Component Examples renders TagPicker.Basic.Example.tsx correctly 1`] = 
       onFocus={[Function]}
       onKeyDown={[Function]}
       onMouseDownCapture={[Function]}
-      role="presentation"
+      role="combobox"
     >
       <div
         className="ms-SelectionZone"
@@ -295,18 +308,23 @@ exports[`Component Examples renders TagPicker.Basic.Example.tsx correctly 1`] = 
           <input
             aria-autocomplete="both"
             aria-controls=" "
-            aria-expanded={false}
-            aria-haspopup="true"
             aria-label="Tag Picker"
             autoCapitalize="off"
             autoComplete="off"
             className=
                 ms-BasePicker-input
                 {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
                   align-self: flex-end;
+                  background-color: transparent;
                   border-radius: 2px;
                   border: none;
+                  color: #323130;
                   flex-grow: 1;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
                   height: 30px;
                   outline: none;
                   padding-bottom: 0;
@@ -321,10 +339,11 @@ exports[`Component Examples renders TagPicker.Basic.Example.tsx correctly 1`] = 
             onClick={[Function]}
             onCompositionEnd={[Function]}
             onCompositionStart={[Function]}
+            onCompositionUpdate={[Function]}
             onFocus={[Function]}
             onInput={[Function]}
             onKeyDown={[Function]}
-            role="combobox"
+            role="textbox"
             spellCheck={false}
             value=""
           />

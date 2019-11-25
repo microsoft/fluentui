@@ -1,6 +1,16 @@
 import { IButtonStyles } from './Button.types';
-import { ITheme, HighContrastSelector } from '../../Styling';
+import { ITheme, HighContrastSelector, IRawStyle } from '../../Styling';
 import { IsFocusVisibleClassName } from '../../Utilities';
+
+const splitButtonDividerBaseStyles = (): IRawStyle => {
+  return {
+    position: 'absolute',
+    width: 1,
+    right: 31,
+    top: 8,
+    bottom: 8
+  };
+};
 
 export function standardStyles(theme: ITheme): IButtonStyles {
   const { semanticColors: s, palette: p } = theme;
@@ -51,6 +61,16 @@ export function standardStyles(theme: ITheme): IButtonStyles {
       color: buttonTextCheckedHovered
     },
 
+    rootDisabled: {
+      selectors: {
+        [HighContrastSelector]: {
+          color: 'GrayText',
+          borderColor: 'GrayText',
+          backgroundColor: 'Window'
+        }
+      }
+    },
+
     // Split button styles
     splitButtonContainer: {
       selectors: {
@@ -85,7 +105,13 @@ export function standardStyles(theme: ITheme): IButtonStyles {
     },
 
     splitButtonDivider: {
-      backgroundColor: p.neutralTertiaryAlt
+      ...splitButtonDividerBaseStyles(),
+      backgroundColor: p.neutralTertiaryAlt,
+      selectors: {
+        [HighContrastSelector]: {
+          backgroundColor: 'WindowText'
+        }
+      }
     },
 
     splitButtonDividerDisabled: {
@@ -137,8 +163,8 @@ export function primaryStyles(theme: ITheme): IButtonStyles {
         [`.${IsFocusVisibleClassName} &:focus`]: {
           selectors: {
             ':after': {
-              outline: `none`,
-              borderColor: p.white
+              border: `none`,
+              outlineColor: p.white
             }
           }
         }
@@ -203,13 +229,22 @@ export function primaryStyles(theme: ITheme): IButtonStyles {
     },
 
     splitButtonDivider: {
-      backgroundColor: p.neutralTertiaryAlt
+      ...splitButtonDividerBaseStyles(),
+      backgroundColor: p.white,
+      selectors: {
+        [HighContrastSelector]: {
+          backgroundColor: 'Window'
+        }
+      }
     },
 
     splitButtonMenuButton: {
       backgroundColor: s.primaryButtonBackground,
       color: s.primaryButtonText,
       selectors: {
+        [HighContrastSelector]: {
+          backgroundColor: 'WindowText'
+        },
         ':hover': {
           backgroundColor: s.primaryButtonBackgroundHovered,
           selectors: {
@@ -253,7 +288,13 @@ export function primaryStyles(theme: ITheme): IButtonStyles {
     },
 
     splitButtonMenuIconDisabled: {
-      color: p.neutralTertiary
+      color: p.neutralTertiary,
+
+      selectors: {
+        [HighContrastSelector]: {
+          color: 'GrayText'
+        }
+      }
     }
   };
 }

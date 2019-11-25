@@ -4,7 +4,7 @@ import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { FabricDecorator } from '../utilities';
 import { Fabric, ScrollablePane, StickyPositionType, Sticky } from 'office-ui-fabric-react';
-import { lorem } from 'office-ui-fabric-react/lib/utilities/exampleData';
+import { lorem } from '@uifabric/example-data';
 
 const colors = ['#eaeaea', '#dadada', '#d0d0d0', '#c8c8c8', '#a6a6a6', '#c7e0f4'];
 

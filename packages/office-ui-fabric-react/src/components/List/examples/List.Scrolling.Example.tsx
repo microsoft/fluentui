@@ -1,17 +1,46 @@
 import * as React from 'react';
-import { css } from 'office-ui-fabric-react/lib/Utilities';
 import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react/lib/FocusZone';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
 import { List, ScrollToMode } from 'office-ui-fabric-react/lib/List';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
-import * as styles from './List.Scrolling.Example.scss';
+import { createListItems, IExampleItem } from '@uifabric/example-data';
+import { mergeStyleSets, getTheme, normalize } from 'office-ui-fabric-react/lib/Styling';
 
-export type IExampleItem = { name: string };
+const theme = getTheme();
+
+const styles = mergeStyleSets({
+  container: {
+    overflow: 'auto',
+    maxHeight: 500,
+    marginTop: 20,
+    selectors: {
+      '.ms-List-cell:nth-child(odd)': {
+        height: 50,
+        lineHeight: 50,
+        background: theme.palette.neutralLighter
+      },
+      '.ms-List-cell:nth-child(even)': {
+        height: 25,
+        lineHeight: 25
+      }
+    }
+  },
+  itemContent: [
+    theme.fonts.medium,
+    normalize,
+    {
+      position: 'relative',
+      display: 'block',
+      borderLeft: '3px solid ' + theme.palette.themePrimary,
+      paddingLeft: 27
+    }
+  ]
+});
 
 export interface IListScrollingExampleProps {
-  items: IExampleItem[];
+  items?: IExampleItem[];
 }
 
 export interface IListScrollingExampleState {
@@ -26,10 +55,12 @@ const numberOfItemsOnPage = 10;
 
 export class ListScrollingExample extends React.Component<IListScrollingExampleProps, IListScrollingExampleState> {
   private _list: List<IExampleItem>;
+  private _items: IExampleItem[];
 
   constructor(props: IListScrollingExampleProps) {
     super(props);
 
+    this._items = props.items || createListItems(5000);
     this.state = {
       selectedIndex: 0,
       scrollToMode: ScrollToMode.auto,
@@ -38,8 +69,6 @@ export class ListScrollingExample extends React.Component<IListScrollingExampleP
   }
 
   public render() {
-    const { items } = this.props;
-
     return (
       <FocusZone direction={FocusZoneDirection.vertical}>
         <div>
@@ -73,7 +102,7 @@ export class ListScrollingExample extends React.Component<IListScrollingExampleP
           />
         </div>
         <div className={styles.container} data-is-scrollable={true}>
-          <List ref={this._resolveList} items={items} getPageHeight={this._getPageHeight} onRenderCell={this._onRenderCell} />
+          <List ref={this._resolveList} items={this._items} getPageHeight={this._getPageHeight} onRenderCell={this._onRenderCell} />
         </div>
       </FocusZone>
     );
@@ -124,7 +153,7 @@ export class ListScrollingExample extends React.Component<IListScrollingExampleP
   private _onRenderCell = (item: IExampleItem, index: number): JSX.Element => {
     return (
       <div data-is-focusable={true}>
-        <div className={css(styles.itemContent, index % 2 === 0 ? styles.itemContentEven : styles.itemContentOdd)}>
+        <div className={styles.itemContent}>
           {index} &nbsp; {item.name}
         </div>
       </div>
@@ -138,7 +167,7 @@ export class ListScrollingExample extends React.Component<IListScrollingExampleP
   };
 
   private _scroll = (index: number, scrollToMode: ScrollToMode): void => {
-    const updatedSelectedIndex = Math.min(Math.max(index, 0), this.props.items.length - 1);
+    const updatedSelectedIndex = Math.min(Math.max(index, 0), this._items.length - 1);
 
     this.setState(
       {

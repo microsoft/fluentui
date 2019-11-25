@@ -2,7 +2,6 @@ import { IDropdownStyles, IDropdownStyleProps } from './Dropdown.types';
 import { IStyleFunction, IsFocusVisibleClassName } from '../../Utilities';
 import { RectangleEdge } from '../../utilities/positioning';
 import {
-  FontSizes,
   FontWeights,
   HighContrastSelector,
   IRawStyle,
@@ -46,12 +45,7 @@ const highContrastItemAndTitleStateMixin: IRawStyle = {
     [HighContrastSelector]: {
       backgroundColor: 'Highlight',
       borderColor: 'Highlight',
-      color: 'HighlightText',
-      selectors: {
-        ':hover': {
-          color: 'HighlightText' // overrides the hover styling for buttons that are also selected
-        }
-      }
+      color: 'HighlightText'
     },
     ...highContrastAdjustMixin
   }
@@ -87,7 +81,7 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
   }
 
   const globalClassnames = getGlobalClassNames(GlobalClassNames, theme);
-  const { palette, semanticColors, effects } = theme;
+  const { palette, semanticColors, effects, fonts } = theme;
 
   const rootHoverFocusActiveSelectorNeutralDarkMixin: IStyle = {
     color: semanticColors.menuItemTextHovered
@@ -113,7 +107,7 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
       width: '100%',
       minHeight: DROPDOWN_ITEM_HEIGHT,
       lineHeight: 20,
-      height: 'auto',
+      height: 0,
       position: 'relative',
       border: '1px solid transparent',
       borderRadius: 0,
@@ -126,17 +120,26 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
   const itemSelectors = (isSelected: boolean = false) => {
     return {
       selectors: {
-        '&:hover:focus': {
-          color: palette.neutralDark,
-          backgroundColor: !isSelected ? palette.neutralLighter : palette.neutralLight
-        },
-        '&:focus': {
-          backgroundColor: !isSelected ? 'transparent' : palette.neutralLight
-        },
-        '&:active': {
-          color: palette.neutralDark,
-          backgroundColor: !isSelected ? palette.neutralLighter : palette.neutralLight
-        },
+        '&:hover:focus': [
+          {
+            color: palette.neutralDark,
+            backgroundColor: !isSelected ? palette.neutralLighter : palette.neutralLight
+          },
+          highContrastItemAndTitleStateMixin
+        ],
+        '&:focus': [
+          {
+            backgroundColor: !isSelected ? 'transparent' : palette.neutralLight
+          },
+          highContrastItemAndTitleStateMixin
+        ],
+        '&:active': [
+          {
+            color: palette.neutralDark,
+            backgroundColor: !isSelected ? palette.neutralLighter : palette.neutralLight
+          },
+          highContrastItemAndTitleStateMixin
+        ],
         [HighContrastSelector]: {
           borderColor: 'Window'
         },
@@ -184,8 +187,8 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
     dropdown: [
       globalClassnames.dropdown,
       normalize,
+      fonts.medium,
       {
-        ...theme.fonts.medium,
         color: palette.neutralPrimary,
         borderColor: palette.neutralSecondary,
         position: 'relative',
@@ -201,7 +204,10 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
             !disabled && rootHoverFocusActiveSelectorNeutralDarkMixin,
             {
               borderColor:
-                palette.themePrimary /* see https://github.com/OfficeDev/office-ui-fabric-react/pull/9182 for semantic color disc */
+                palette.themePrimary /* see https://github.com/OfficeDev/office-ui-fabric-react/pull/9182 for semantic color disc */,
+              borderWidth: '2px',
+              top: '-1px',
+              left: '-1px'
             },
             highContrastItemAndTitleStateMixin
           ],
@@ -223,8 +229,7 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
           ['&:active .' + globalClassnames.titleIsPlaceHolder]: !disabled && rootHoverFocusActiveSelectorNeutralPrimaryMixin,
 
           ['&:hover .' + globalClassnames.titleHasError]: borderColorError,
-          ['&:active .' + globalClassnames.titleHasError]: borderColorError,
-          ['&:focus .' + globalClassnames.titleHasError]: borderColorError
+          ['&:active .' + globalClassnames.titleHasError]: borderColorError
         }
       },
       isOpen && 'is-open',
@@ -294,7 +299,7 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
     ],
     caretDown: [
       globalClassnames.caretDown,
-      { color: palette.neutralSecondary, fontSize: FontSizes.small, pointerEvents: 'none' },
+      { color: palette.neutralSecondary, fontSize: fonts.small.fontSize, pointerEvents: 'none' },
       disabled && { color: semanticColors.disabledText, selectors: { [HighContrastSelector]: { color: 'GrayText' } } }
     ],
     errorMessage: { color: semanticColors.errorText, ...theme.fonts.small, paddingTop: 5 },
@@ -333,7 +338,7 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
     dropdownItemHeader: [
       globalClassnames.dropdownItemHeader,
       {
-        ...theme.fonts.medium,
+        ...fonts.medium,
         fontWeight: FontWeights.semibold,
         color: semanticColors.menuHeader,
         background: 'none',
@@ -349,6 +354,16 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
     ],
     subComponentStyles: {
       label: { root: { display: 'inline-block' } },
+      multiSelectItem: {
+        root: {
+          padding: 0
+        },
+        label: {
+          alignSelf: 'stretch',
+          padding: '0 8px',
+          width: '100%'
+        }
+      },
       panel: {
         root: [panelClassName],
         main: {

@@ -79,7 +79,6 @@ exports[`Component Examples renders ChoiceGroup.Label.Example.tsx correctly 1`] 
               }
               & .ms-ChoiceFieldLabel {
                 display: inline-block;
-                font-size: 14px;
                 padding-left: 26px;
               }
         >
@@ -104,13 +103,11 @@ exports[`Component Examples renders ChoiceGroup.Label.Example.tsx correctly 1`] 
                     top: 0px;
                     width: 100%;
                   }
-              data-automation-id="auto1"
               id="ChoiceGroup1-A"
               name="ChoiceGroup1"
               onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}
-              required={true}
               type="radio"
             />
             <label
@@ -218,7 +215,6 @@ exports[`Component Examples renders ChoiceGroup.Label.Example.tsx correctly 1`] 
               }
               & .ms-ChoiceFieldLabel {
                 display: inline-block;
-                font-size: 14px;
                 padding-left: 26px;
               }
         >
@@ -248,7 +244,6 @@ exports[`Component Examples renders ChoiceGroup.Label.Example.tsx correctly 1`] 
               onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}
-              required={true}
               type="radio"
             />
             <label
@@ -356,7 +351,6 @@ exports[`Component Examples renders ChoiceGroup.Label.Example.tsx correctly 1`] 
               }
               & .ms-ChoiceFieldLabel {
                 display: inline-block;
-                font-size: 14px;
                 padding-left: 26px;
               }
         >
@@ -369,6 +363,7 @@ exports[`Component Examples renders ChoiceGroup.Label.Example.tsx correctly 1`] 
               checked={false}
               className=
                   ms-ChoiceField-input
+                  is-disabled
                   {
                     height: 100%;
                     margin-bottom: 0px;
@@ -387,7 +382,6 @@ exports[`Component Examples renders ChoiceGroup.Label.Example.tsx correctly 1`] 
               onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}
-              required={true}
               type="radio"
             />
             <label
@@ -474,7 +468,6 @@ exports[`Component Examples renders ChoiceGroup.Label.Example.tsx correctly 1`] 
               }
               & .ms-ChoiceFieldLabel {
                 display: inline-block;
-                font-size: 14px;
                 padding-left: 26px;
               }
         >
@@ -499,20 +492,18 @@ exports[`Component Examples renders ChoiceGroup.Label.Example.tsx correctly 1`] 
                     top: 0px;
                     width: 100%;
                   }
-              disabled={true}
               id="ChoiceGroup1-D"
               name="ChoiceGroup1"
               onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}
-              required={true}
               type="radio"
             />
             <label
               className=
                   ms-ChoiceField-field
                   {
-                    cursor: default;
+                    cursor: pointer;
                     display: inline-block;
                     margin-top: 0px;
                     min-height: 20px;
@@ -520,9 +511,39 @@ exports[`Component Examples renders ChoiceGroup.Label.Example.tsx correctly 1`] 
                     user-select: none;
                     vertical-align: top;
                   }
+                  &:hover .ms-ChoiceFieldLabel {
+                    color: #201f1e;
+                  }
+                  &:hover:before {
+                    border-color: #323130;
+                  }
+                  &:hover:after {
+                    background-color: #605e5c;
+                    content: "";
+                    height: 10px;
+                    left: 5px;
+                    top: 5px;
+                    transition-property: background-color;
+                    width: 10px;
+                  }
+                  &:focus .ms-ChoiceFieldLabel {
+                    color: #201f1e;
+                  }
+                  &:focus:before {
+                    border-color: #323130;
+                  }
+                  &:focus:after {
+                    background-color: #605e5c;
+                    content: "";
+                    height: 10px;
+                    left: 5px;
+                    top: 5px;
+                    transition-property: background-color;
+                    width: 10px;
+                  }
                   &:before {
                     background-color: #ffffff;
-                    border-color: #c8c6c4;
+                    border-color: #323130;
                     border-radius: 50%;
                     border-style: solid;
                     border-width: 1px;
@@ -539,9 +560,6 @@ exports[`Component Examples renders ChoiceGroup.Label.Example.tsx correctly 1`] 
                     transition-timing-function: cubic-bezier(.4, 0, .23, 1);
                     width: 20px;
                   }
-                  @media screen and (-ms-high-contrast: active){&:before {
-                    color: GrayText;
-                  }
                   &:after {
                     border-radius: 50%;
                     box-sizing: border-box;
@@ -554,12 +572,6 @@ exports[`Component Examples renders ChoiceGroup.Label.Example.tsx correctly 1`] 
                     transition-property: border-width;
                     transition-timing-function: cubic-bezier(.4, 0, .23, 1);
                     width: 0px;
-                  }
-                  & .ms-ChoiceFieldLabel {
-                    color: #a19f9d;
-                  }
-                  @media screen and (-ms-high-contrast: active){& {
-                    color: GrayText;
                   }
               htmlFor="ChoiceGroup1-D"
             >

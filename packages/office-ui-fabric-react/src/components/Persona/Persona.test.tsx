@@ -5,7 +5,8 @@ import { setRTL, IRenderFunction } from '../../Utilities';
 import { Persona } from './Persona';
 import { mount, ReactWrapper } from 'enzyme';
 import { getIcon } from '../../Styling';
-import { IPersonaSharedProps, IPersonaProps, PersonaPresence, PersonaSize } from '../../index';
+import { IPersonaSharedProps, IPersonaProps, IPersonaCoinProps, PersonaPresence, PersonaSize } from '../../index';
+import { Icon } from 'office-ui-fabric-react/lib/Icon';
 import { TestImages } from 'office-ui-fabric-react/lib/common/TestImages';
 
 const testImage1x1 = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAC0lEQVQImWP4DwQACfsD/eNV8pwAAAAASUVORK5CYII=';
@@ -31,6 +32,10 @@ export const wrapPersona = (
       defaultCoinRenderer(coinProps)
     );
   };
+};
+
+const customOnRenderPersonaFunction = (props: IPersonaCoinProps): JSX.Element | null => {
+  return <Icon iconName="Dictionary" />;
 };
 
 const examplePersona: IPersonaSharedProps = {
@@ -77,6 +82,12 @@ describe('Persona', () => {
     // removing imageUrl prop from example
     const { imageUrl, ...exampleWithoutImage } = examplePersona;
     const component = renderer.create(<Persona {...exampleWithoutImage} onRenderCoin={wrapPersona(exampleWithoutImage, true)} />);
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('renders Persona which calls onRenderPersonaCoin callback with custom render', () => {
+    const component = renderer.create(<Persona {...examplePersona} onRenderPersonaCoin={customOnRenderPersonaFunction} />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });

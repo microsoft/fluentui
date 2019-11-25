@@ -2,13 +2,23 @@ import { ITheme, IStyle } from 'office-ui-fabric-react/lib/Styling';
 import { IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
 
 export interface IStackedBarChart {}
-import { IChartProps } from './index';
+import { IChartProps, IChartDataPoint } from './index';
 
 export interface IStackedBarChartProps {
   /**
    * Data to render in the chart.
    */
   data?: IChartProps;
+
+  /**
+   * Benchmark Data to render in the chart.
+   */
+  benchmarkData?: IChartDataPoint;
+
+  /**
+   * Target Data to render in the chart.
+   */
+  targetData?: IChartDataPoint;
 
   /**
    * Width of the chart.
@@ -69,6 +79,11 @@ export interface IStackedBarChartProps {
    * If this value is set to true the denominator will not be shown for the ratio above the chart
    */
   hideDenominator?: boolean;
+
+  /**
+   * Enable the legends to wrap lines if there is not enough space to show all legends on a single line
+   */
+  enabledLegendsWrapLines?: boolean;
 }
 
 export interface IStackedBarChartStyleProps {
@@ -111,6 +126,26 @@ export interface IStackedBarChartStyleProps {
    * prop to check to decide cursor type
    */
   href?: string;
+
+  /**
+   * the color for the benchmark triangle
+   */
+  benchmarkColor?: string;
+
+  /**
+   * the ratio position for the benchmark triangle
+   */
+  benchmarkRatio?: number;
+
+  /**
+   * the color for the target triangle
+   */
+  targetColor?: string;
+
+  /**
+   * the ratio position for the target triangle
+   */
+  targetRatio?: number;
 }
 
 export interface IStackedBarChartStyles {
@@ -163,4 +198,19 @@ export interface IStackedBarChartStyles {
    * Style for the chart ratio denominator
    */
   ratioDenominator: IStyle;
+
+  /**
+   * Style for the benchmark container
+   */
+  benchmarkContainer: IStyle;
+
+  /**
+   * Style for the benchmark triangle
+   */
+  benchmark: IStyle;
+
+  /**
+   * Style for the target triangle
+   */
+  target: IStyle;
 }

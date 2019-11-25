@@ -17,6 +17,6 @@ export class StackedBarChartMultipleExample extends React.Component<{}, {}> {
       chartData: points
     };
 
-    return <StackedBarChart data={data} />;
+    return <StackedBarChart data={data} enabledLegendsWrapLines={true} />;
   }
 }

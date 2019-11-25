@@ -1,8 +1,14 @@
 import * as React from 'react';
-import './CalloutExample.scss';
-import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
-import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
-import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
+import {
+  DefaultButton,
+  Callout,
+  DirectionalHint,
+  Dropdown,
+  IDropdownOption,
+  getTheme,
+  mergeStyleSets,
+  FontWeights
+} from 'office-ui-fabric-react';
 
 export interface ICalloutCoverExampleState {
   isCalloutVisible?: boolean;
@@ -26,6 +32,40 @@ const DIRECTION_OPTIONS = [
   { key: DirectionalHint.rightBottomEdge, text: 'Right Bottom Edge' }
 ];
 
+const theme = getTheme();
+const styles = mergeStyleSets({
+  buttonArea: {
+    verticalAlign: 'top',
+    display: 'inline-block',
+    textAlign: 'center',
+    margin: '0 100px',
+    minWidth: 130,
+    height: 32
+  },
+  configArea: {
+    minWidth: '300px',
+    display: 'inline-block'
+  },
+  callout: {
+    maxWidth: 300
+  },
+  header: {
+    padding: '18px 24px 12px'
+  },
+  title: [
+    theme.fonts.xLarge,
+    {
+      margin: 0,
+      color: theme.palette.neutralPrimary,
+      fontWeight: FontWeights.semilight
+    }
+  ],
+  inner: {
+    height: '100%',
+    padding: '0 24px 20px'
+  }
+});
+
 export class CalloutCoverExample extends React.Component<{}, ICalloutCoverExampleState> {
   private _menuButtonElement: HTMLElement | null;
 
@@ -47,8 +87,8 @@ export class CalloutCoverExample extends React.Component<{}, ICalloutCoverExampl
     // ms-Callout-smallbeak is used in this directional example to reflect all the positions.
     // Large beak will disable some position to avoid beak over the callout edge.
     return (
-      <div className="ms-CalloutExample">
-        <div className="ms-CalloutExample-configArea">
+      <>
+        <div className={styles.configArea}>
           <Dropdown
             label="Directional hint"
             selectedKey={directionalHint!}
@@ -56,30 +96,29 @@ export class CalloutCoverExample extends React.Component<{}, ICalloutCoverExampl
             onChange={this._onDirectionalChanged}
           />
         </div>
-        <div className="ms-CalloutCoverExample-buttonArea" ref={menuButton => (this._menuButtonElement = menuButton)}>
+        <div className={styles.buttonArea} ref={menuButton => (this._menuButtonElement = menuButton)}>
           <DefaultButton text={isCalloutVisible ? 'Hide callout' : 'Show callout'} onClick={this._onShowMenuClicked} />
         </div>
         {isCalloutVisible ? (
           <Callout
-            className="ms-CalloutExample-callout"
+            className={styles.callout}
             onDismiss={this._onDismiss}
             target={this._menuButtonElement}
             directionalHint={directionalHint}
             coverTarget={true}
             isBeakVisible={false}
             gapSpace={0}
+            setInitialFocus={true}
           >
-            <div className="ms-CalloutExample-header">
-              <p className="ms-CalloutExample-title">I'm covering the target!</p>
+            <div className={styles.header}>
+              <p className={styles.title}>I'm covering the target!</p>
             </div>
-            <div className="ms-CalloutExample-inner">
-              <div className="ms-CalloutExample-content">
-                <DefaultButton onClick={this._onShowMenuClicked} text="Click to dismiss" />
-              </div>
+            <div className={styles.inner}>
+              <DefaultButton onClick={this._onShowMenuClicked} text="Click to dismiss" />
             </div>
           </Callout>
         ) : null}
-      </div>
+      </>
     );
   }
 

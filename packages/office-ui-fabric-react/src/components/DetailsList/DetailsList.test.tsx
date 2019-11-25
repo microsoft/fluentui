@@ -11,7 +11,8 @@ import { IDetailsColumnProps } from 'office-ui-fabric-react/lib/components/Detai
 import { IDetailsHeaderProps, DetailsHeader } from './DetailsHeader';
 import { EventGroup, IRenderFunction } from '../../Utilities';
 import { IDragDropEvents } from './../../utilities/dragdrop/index';
-import { SelectionMode, Selection } from '../../utilities/selection/index';
+import { SelectionMode, Selection, SelectionZone } from '../../utilities/selection/index';
+import { getTheme } from '../../Styling';
 
 // Populate mock data for testing
 function mockData(count: number, isColumn: boolean = false, customDivider: boolean = false): any {
@@ -312,6 +313,11 @@ describe('DetailsList', () => {
       );
     };
 
+    const getCellValueKey = (item: any, index: number, column: IColumn) => {
+      const valueKey = item && column && column.fieldName ? item[column.fieldName] : column.key + index;
+      return valueKey;
+    };
+
     jest.useFakeTimers();
 
     let component: any;
@@ -324,6 +330,7 @@ describe('DetailsList', () => {
         // tslint:disable-next-line:jsx-no-lambda
         onShouldVirtualize={() => false}
         onRenderItemColumn={onRenderColumn}
+        getCellValueKey={getCellValueKey}
       />
     );
 
@@ -447,6 +454,7 @@ describe('DetailsList', () => {
   it('invokes optional onRenderCheckbox callback to customize checkbox rendering when provided', () => {
     const onRenderCheckboxMock = jest.fn();
     const selection = new Selection();
+    const theme = getTheme();
     mount(
       <DetailsList
         items={mockData(2)}
@@ -461,11 +469,18 @@ describe('DetailsList', () => {
     );
 
     expect(onRenderCheckboxMock).toHaveBeenCalledTimes(3);
-    expect(onRenderCheckboxMock.mock.calls[2][0]).toEqual({ checked: false });
+    expect(onRenderCheckboxMock.mock.calls[2][0]).toEqual({ checked: false, theme });
 
     selection.setAllSelected(true);
 
     expect(onRenderCheckboxMock).toHaveBeenCalledTimes(6);
-    expect(onRenderCheckboxMock.mock.calls[5][0]).toEqual({ checked: true });
+    expect(onRenderCheckboxMock.mock.calls[5][0]).toEqual({ checked: true, theme });
+  });
+
+  it('initializes the selection mode object with the selectionMode prop', () => {
+    const component = mount(<DetailsList items={mockData(5)} columns={mockData(5, true)} selectionMode={SelectionMode.none} />);
+
+    const selectionZone = component.find(SelectionZone);
+    expect(selectionZone.props().selection.mode).toEqual(SelectionMode.none);
   });
 });

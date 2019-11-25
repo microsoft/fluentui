@@ -12,7 +12,6 @@
     "preserveConstEnums": true,
     "strict": true,
     "lib": ["es6", "dom"],
-    "typeRoots": ["node_modules/@types"],
     "types": ["jest", "webpack-env"],
     "skipLibCheck": true
   },

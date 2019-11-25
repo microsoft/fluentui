@@ -18,7 +18,7 @@ const customThemeForShimmer: ITheme = createTheme({
 const classNames = mergeStyleSets({
   wrapper: {
     selectors: {
-      '& > *': {
+      '& > .ms-Shimmer-container': {
         margin: '10px 0'
       }
     }
@@ -33,7 +33,7 @@ const classNames = mergeStyleSets({
     justifyContent: 'stretch',
     background: customThemeForShimmer.palette.white, // using the palette color to match the gaps and borders of the shimmer.
     selectors: {
-      '& > :first-child': {
+      '& > .ms-Shimmer-container': {
         flexGrow: 1
       }
     }

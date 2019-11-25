@@ -97,6 +97,7 @@ describe('TooltipHost', () => {
       <TooltipHost
         calloutProps={calloutProps}
         content={content}
+        delay={TooltipDelay.zero}
         onTooltipToggle={() => {
           onTooltipToggleCalled = true;
           return null;

@@ -1,0 +1,117 @@
+{
+  "name": "@uifabric/monaco-editor",
+  "entries": [
+    {
+      "date": "Mon, 28 Oct 2019 22:25:45 GMT",
+      "tag": "@uifabric/monaco-editor_v0.4.0",
+      "version": "0.4.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Pick up new Monaco version and try a different cross-domain worker loading method",
+            "author": "elcraig@microsoft.com",
+            "commit": "da81d25a70517a242b31f2b25ee8b07975b6e539"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 04 Oct 2019 22:19:48 GMT",
+      "tag": "@uifabric/monaco-editor_v0.3.0",
+      "version": "0.3.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Fix monaco bundle paths to use transformed CSS",
+            "author": "elcraig@microsoft.com",
+            "commit": "5769e0419f9162970898c424da471e8fb9c53ccf"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 03 Oct 2019 23:14:46 GMT",
+      "tag": "@uifabric/monaco-editor_v0.2.4",
+      "version": "0.2.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fixes broken publish",
+            "author": "odbuild@microsoft.com",
+            "commit": "be07b87e075674d117e7c92f0dc9a869075280c2"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 03 Oct 2019 01:14:35 GMT",
+      "tag": "@uifabric/monaco-editor_v0.2.3",
+      "version": "0.2.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Move monaco-editor to a non-dev dependency",
+            "author": "elcraig@microsoft.com",
+            "commit": "afe85bef18cbd324d8775f1878890f74d21cb3e9"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 30 Sep 2019 12:35:16 GMT",
+      "tag": "@uifabric/monaco-editor_v0.2.2",
+      "version": "0.2.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix inference of cross-domain setting",
+            "author": "elcraig@microsoft.com",
+            "commit": "d4b0254c3aa931b39801f2f71e33952fbc149480"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 24 Sep 2019 12:35:43 GMT",
+      "tag": "@uifabric/monaco-editor_v0.2.1",
+      "version": "0.2.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Build commonjs variant",
+            "author": "elcraig@microsoft.com",
+            "commit": "afb1540f91c059295b41cc63d33d0b7cd820b3af"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 19 Sep 2019 13:05:24 GMT",
+      "tag": "@uifabric/monaco-editor_v0.2.0",
+      "version": "0.2.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add readme and bundle helpers; update bundle structure",
+            "author": "elcraig@microsoft.com",
+            "commit": "90fbbbfd43f93dbe8d95c094f1cd988614ae39bd"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 13 Sep 2019 12:34:39 GMT",
+      "tag": "@uifabric/monaco-editor_v0.1.1",
+      "version": "0.1.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "creates a wrapper monaco-editor package to be published to make it easy for consumers to consume without css-loader",
+            "author": "kchau@microsoft.com",
+            "commit": "d0d188ef9c664efedee503ea0b639d43bac43f92"
+          }
+        ]
+      }
+    }
+  ]
+}

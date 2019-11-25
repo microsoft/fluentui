@@ -189,6 +189,11 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
    */
   onRenderItemColumn?: (item?: any, index?: number, column?: IColumn) => React.ReactNode;
 
+  /**
+   * If provided, will be the "default" item column cell value return. column getValueKey can override getCellValue.
+   */
+  getCellValueKey?: (item?: any, index?: number, column?: IColumn) => string;
+
   /** Map of callback functions related to row drag and drop functionality. */
   dragDropEvents?: IDragDropEvents;
 
@@ -311,6 +316,18 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
    * Whether or not to disable the built-in SelectionZone, so the host component can provide its own.
    */
   disableSelectionZone?: boolean;
+
+  /**
+   * Whether to animate updates
+   */
+  enableUpdateAnimations?: boolean;
+
+  /**
+   * Whether to use fast icon and check components. The icons can't be targeted by customization
+   * but are still customizable via class names.
+   * @defaultvalue true
+   */
+  useFastIcons?: boolean;
 }
 
 /**
@@ -418,6 +435,11 @@ export interface IColumn {
    * If provided uses this method to render custom cell content, rather than the default text rendering.
    */
   onRender?: (item?: any, index?: number, column?: IColumn) => any;
+
+  /**
+   * If set, parent getCellValueKey will return this value.
+   */
+  getValueKey?: (item?: any, index?: number, column?: IColumn) => string;
 
   /**
    * If provider, can be used to render a custom column header divider
@@ -658,7 +680,7 @@ export enum CheckboxVisibility {
  */
 export type IDetailsListStyleProps = Required<Pick<IDetailsListProps, 'theme'>> &
   Pick<IDetailsListProps, 'className'> & {
-    /** Whether the the list is horizontally constrained */
+    /** Whether the list is horizontally constrained */
     isHorizontalConstrained?: boolean;
 
     /** Whether the list is in compact mode */

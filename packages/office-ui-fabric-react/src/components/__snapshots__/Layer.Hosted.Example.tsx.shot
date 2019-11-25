@@ -48,6 +48,7 @@ exports[`Component Examples renders Layer.Hosted.Example.tsx correctly 1`] = `
             padding-left: 0;
             padding-right: 0;
             padding-top: 5px;
+            word-break: break-all;
             word-wrap: break-word;
           }
       htmlFor="Toggle1"
@@ -193,6 +194,7 @@ exports[`Component Examples renders Layer.Hosted.Example.tsx correctly 1`] = `
             padding-left: 0;
             padding-right: 0;
             padding-top: 5px;
+            word-break: break-all;
             word-wrap: break-word;
           }
       htmlFor="Toggle2"
@@ -344,6 +346,7 @@ exports[`Component Examples renders Layer.Hosted.Example.tsx correctly 1`] = `
             padding-left: 0;
             padding-right: 0;
             padding-top: 5px;
+            word-break: break-all;
             word-wrap: break-word;
           }
       htmlFor="Toggle3"

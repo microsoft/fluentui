@@ -52,9 +52,6 @@ exports[`Component Examples renders Persona.UnknownPersona.Example.tsx correctly
         & .contextualHost {
           display: none;
         }
-        &:hover $primaryText {
-          color: #201f1e;
-        }
   >
     <div
       className=
@@ -117,7 +114,6 @@ exports[`Component Examples renders Persona.UnknownPersona.Example.tsx correctly
                   speak: none;
                 }
             data-icon-name="Help"
-            role="presentation"
           >
             
           </i>
@@ -150,6 +146,9 @@ exports[`Component Examples renders Persona.UnknownPersona.Example.tsx correctly
               overflow: hidden;
               text-overflow: ellipsis;
               white-space: nowrap;
+            }
+            &:hover {
+              color: #201f1e;
             }
         dir="auto"
       >
@@ -256,9 +255,6 @@ exports[`Component Examples renders Persona.UnknownPersona.Example.tsx correctly
         & .contextualHost {
           display: none;
         }
-        &:hover $primaryText {
-          color: #201f1e;
-        }
   >
     <div
       className=
@@ -321,7 +317,6 @@ exports[`Component Examples renders Persona.UnknownPersona.Example.tsx correctly
                   speak: none;
                 }
             data-icon-name="Help"
-            role="presentation"
           >
             
           </i>
@@ -354,6 +349,9 @@ exports[`Component Examples renders Persona.UnknownPersona.Example.tsx correctly
               overflow: hidden;
               text-overflow: ellipsis;
               white-space: nowrap;
+            }
+            &:hover {
+              color: #201f1e;
             }
         dir="auto"
       >

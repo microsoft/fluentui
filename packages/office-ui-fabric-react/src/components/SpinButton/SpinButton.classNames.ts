@@ -27,7 +27,7 @@ export const getClassNames = memoizeFunction(
       root: mergeStyles(styles.root, className),
       labelWrapper: mergeStyles(styles.labelWrapper, _getStyleForLabelBasedOnPosition(labelPosition, styles)),
       icon: mergeStyles(styles.icon, disabled && styles.iconDisabled),
-      label: mergeStyles(styles.label, disabled && styles.labelDisabled),
+      label: mergeStyles(styles.label),
       spinButtonWrapper: mergeStyles(
         styles.spinButtonWrapper,
         _getStyleForRootBasedOnPosition(labelPosition, styles),

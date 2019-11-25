@@ -8,6 +8,7 @@ import { IRefObject, IRenderFunction } from '../../Utilities';
 import { IComboBoxClassNames } from './ComboBox.classNames';
 import { IKeytipProps } from '../../Keytip';
 import { IAutofillProps } from '../pickers/AutoFill/BaseAutoFill.types';
+import { IButtonProps } from '../Button/Button.types';
 
 /**
  * {@docCategory ComboBox}
@@ -95,6 +96,11 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox,
   onMenuDismissed?: () => void;
 
   /**
+   * Function that gets invoked before the menu gets dismissed
+   */
+  onMenuDismiss?: () => void;
+
+  /**
    * Callback issued when the options should be resolved, if they have been updated or
    * if they need to be passed in the first time
    */
@@ -177,6 +183,11 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox,
   scrollSelectedToTop?: boolean;
 
   /**
+   * Add additional content above the callout list.
+   */
+  onRenderUpperContent?: IRenderFunction<IComboBoxProps>;
+
+  /**
    * Add additional content below the callout list.
    */
   onRenderLowerContent?: IRenderFunction<IComboBoxProps>;
@@ -195,11 +206,6 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox,
    * Custom max width for dropdown
    */
   dropdownMaxWidth?: number;
-
-  /**
-   * Optional mode indicates if multi-choice selections is allowed.  Default to false
-   */
-  multiSelect?: boolean;
 
   /**
    * Sets the 'aria-hidden' attribute on the ComboBox's button element instructing screen readers how to handle the element.
@@ -222,11 +228,24 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox,
   /**
    * Menu will not be created or destroyed when opened or closed, instead it
    * will be hidden. This will improve perf of the menu opening but could potentially
-   * impact overall perf by having more elemnts in the dom. Should only be used
+   * impact overall perf by having more elements in the dom. Should only be used
    * when perf is important.
    * Note: This may increase the amount of time it takes for the comboBox itself to mount.
    */
   persistMenu?: boolean;
+
+  /**
+   * When specified, determines whether the callout (the menu which drops down) should
+   * restore the focus after being dismissed or not.  If false, then the menu will not try
+   * to set focus to whichever element had focus before the menu was opened.
+   * @defaultvalue true;
+   */
+  shouldRestoreFocus?: boolean;
+
+  /**
+   * Optional iconButton props on combo box
+   */
+  iconButtonProps?: IButtonProps;
 }
 
 /**

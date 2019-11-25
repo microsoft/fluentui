@@ -1,11 +1,12 @@
 import * as React from 'react';
 import { Chiclet, ChicletSize } from '@uifabric/experiments';
-import { IButtonProps, IconButton, Stack } from 'office-ui-fabric-react';
-import { mergeStyles } from '@uifabric/merge-styles/lib/mergeStyles';
+import { IButtonProps, IconButton } from 'office-ui-fabric-react/lib/Button';
+import { Text } from 'office-ui-fabric-react/lib/Text';
+import { mergeStyles, FontWeights } from 'office-ui-fabric-react/lib/Styling';
 
-const TEST_URL = 'http://fabricweb.z5.web.core.windows.net/pr-deploy-site/refs/heads/master/chiclet-test.html';
+const SAMPLE_URL = 'https://contoso.sharepoint.com';
 
-export class FooterComponent extends React.Component<IFooterComponent, {}> {
+class FooterComponent extends React.Component<IFooterComponent, {}> {
   public render(): JSX.Element {
     const { buttonProps, activities } = this.props;
 
@@ -14,32 +15,28 @@ export class FooterComponent extends React.Component<IFooterComponent, {}> {
 }
 
 const footerStyle = mergeStyles({
+  display: 'flex',
+  position: 'absolute',
+  alignItems: 'flex-end',
+  justifyContent: 'flex-start',
   height: 36,
-  paddingLeft: 11
+  width: '100%',
+  bottom: 0
 });
 
 const activitiesStyle = mergeStyles({
-  width: 184,
-  height: 16,
-  fontSize: 12,
-  fontWeight: 'normal',
-  fontStyle: 'normal',
-  fontStretch: 'normal',
-  lineHeight: 1.83,
-  letterSpacing: 'normal',
-  float: 'left',
-  paddingTop: 18,
-  paddingBottom: 12,
-  marginTop: 0
+  paddingLeft: 16,
+  paddingBottom: 8,
+  fontWeight: FontWeights.semibold
 });
 
 const actionsStyle = mergeStyles({
-  paddingRight: 6,
-  position: 'relative'
+  display: 'flex',
+  fontSize: 16,
+  marginLeft: 'auto'
 });
 
 const actionStyle = mergeStyles({
-  float: 'right',
   cursor: 'pointer',
   width: 32,
   height: 36,
@@ -47,34 +44,24 @@ const actionStyle = mergeStyles({
   color: '#0078d7'
 });
 
-export interface IChicletFooterExampleState {
-  textFieldValue: string;
-}
+export const ChicletFooterExample: React.FunctionComponent<{}> = () => {
+  const footerButtonProps: IButtonProps[] = [
+    { iconProps: { iconName: 'More' } },
+    { iconProps: { iconName: 'Save' } },
+    { iconProps: { iconName: 'Share' } }
+  ];
+  const footer = <FooterComponent buttonProps={footerButtonProps} activities="10 Comments  16 Shares  87 Views" />;
 
-export class ChicletFooterExample extends React.Component<{}, IChicletFooterExampleState> {
-  constructor(props: {}) {
-    super(props);
-
-    this.state = {
-      textFieldValue: 'http://localhost:4322'
-    };
-  }
-
-  public render(): JSX.Element {
-    const footerButtonProps: IButtonProps[] = [
-      { iconProps: { iconName: 'More' } },
-      { iconProps: { iconName: 'Save' } },
-      { iconProps: { iconName: 'Share' } }
-    ];
-    const footer = <FooterComponent buttonProps={footerButtonProps} activities="10 Comments  16 Shares  87 Views" />;
-
-    return (
-      <Stack tokens={{ childrenGap: 16 }}>
-        <Chiclet url={TEST_URL} title="Quarterly Results.docx" size={ChicletSize.medium} footer={footer} />
-      </Stack>
-    );
-  }
-}
+  return (
+    <Chiclet
+      url={SAMPLE_URL}
+      image="https://static2.sharepointonline.com/files/fabric/assets/brand-icons/product/svg/word_16x1_5.svg"
+      title="Quarterly Results.docx"
+      size={ChicletSize.medium}
+      footer={footer}
+    />
+  );
+};
 
 export interface IFooterComponent extends React.Props<FooterComponent> {
   buttonProps: IButtonProps[];
@@ -84,7 +71,9 @@ export interface IFooterComponent extends React.Props<FooterComponent> {
 function _renderFooter(buttonProps: IButtonProps[], activities: string): React.ReactElement<HTMLDivElement> {
   return (
     <div className={footerStyle}>
-      <div className={activitiesStyle}>{activities ? activities : null}</div>
+      <Text variant="small" className={activitiesStyle}>
+        {activities}
+      </Text>
       <div className={actionsStyle}>
         {buttonProps &&
           buttonProps.map((buttonProp: IButtonProps, index: number) => {

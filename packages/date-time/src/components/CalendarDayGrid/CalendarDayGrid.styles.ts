@@ -1,17 +1,54 @@
 import { ICalendarDayGridStyleProps, ICalendarDayGridStyles } from './CalendarDayGrid.types';
-import { FontSizes, FontWeights, getFocusStyle, getGlobalClassNames } from '@uifabric/styling';
+import { FontSizes, FontWeights, getFocusStyle, getGlobalClassNames, AnimationStyles, IRawStyle, keyframes } from '@uifabric/styling';
 import { DateRangeType } from 'office-ui-fabric-react/lib/utilities/dateValues/DateValues';
+import { AnimationDirection } from '../Calendar/Calendar.types';
 
 const GlobalClassNames = {
   hoverStyle: 'ms-CalendarDay-hoverStyle',
   pressedStyle: 'ms-CalendarDay-pressedStyle'
 };
 
+const transitionRowDisappearance = keyframes({
+  '100%': {
+    width: 0,
+    height: 0,
+    overflow: 'hidden'
+  },
+  '99.9%': {
+    width: '100%',
+    height: 28,
+    overflow: 'visible'
+  },
+  '0%': {
+    width: '100%',
+    height: 28,
+    overflow: 'visible'
+  }
+});
+
 export const styles = (props: ICalendarDayGridStyleProps): ICalendarDayGridStyles => {
-  const { theme, dateRangeType, showWeekNumbers, lightenDaysOutsideNavigatedMonth } = props;
+  const { theme, dateRangeType, showWeekNumbers, lightenDaysOutsideNavigatedMonth, animateBackwards, animationDirection } = props;
   const { palette } = theme;
 
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
+
+  let rowAnimationStyle: IRawStyle = {};
+  if (animateBackwards !== undefined) {
+    if (animationDirection === AnimationDirection.Horizontal) {
+      rowAnimationStyle = animateBackwards ? AnimationStyles.slideRightIn20 : AnimationStyles.slideLeftIn20;
+    } else {
+      rowAnimationStyle = animateBackwards ? AnimationStyles.slideDownIn20 : AnimationStyles.slideUpIn20;
+    }
+  }
+
+  let firstTransitionRowAnimationStyle: IRawStyle = {};
+  let lastTransitionRowAnimationStyle: IRawStyle = {};
+  if (animateBackwards !== undefined) {
+    if (animationDirection !== AnimationDirection.Horizontal) {
+      firstTransitionRowAnimationStyle = animateBackwards ? { animationName: '' } : AnimationStyles.slideUpOut20;
+      lastTransitionRowAnimationStyle = animateBackwards ? AnimationStyles.slideDownOut20 : { animationName: '' };
+    }
+  }
 
   const disabledStyle = {
     selectors: {
@@ -23,6 +60,9 @@ export const styles = (props: ICalendarDayGridStyleProps): ICalendarDayGridStyle
   };
 
   return {
+    wrapper: {
+      paddingBottom: 10
+    },
     table: [
       {
         textAlign: 'center',
@@ -31,7 +71,9 @@ export const styles = (props: ICalendarDayGridStyleProps): ICalendarDayGridStyle
         tableLayout: 'fixed',
         fontSize: 'inherit',
         marginTop: 4,
-        width: 197
+        width: 196,
+        position: 'relative',
+        paddingBottom: 10
       },
       showWeekNumbers && {
         width: 226
@@ -49,31 +91,32 @@ export const styles = (props: ICalendarDayGridStyleProps): ICalendarDayGridStyle
       cursor: 'pointer',
       selectors: {
         ['&.' + classNames.hoverStyle]: {
-          backgroundColor: palette.neutralLight
+          backgroundColor: palette.neutralLighter
         },
         ['&.' + classNames.pressedStyle]: {
-          backgroundColor: palette.themeLight,
-          fontWeight: FontWeights.semibold
+          backgroundColor: palette.neutralLight
         }
       }
     },
     daySelected: [
       dateRangeType !== DateRangeType.Month && {
-        backgroundColor: palette.themeLight + '!important',
-        fontWeight: (FontWeights.semibold + '!important') as 'initial',
+        backgroundColor: palette.neutralLight + '!important',
         selectors: {
           ['&:hover, &.' + classNames.hoverStyle + ', &.' + classNames.pressedStyle]: {
-            backgroundColor: palette.themeLight + '!important',
-            fontWeight: FontWeights.semibold as 'initial'
+            backgroundColor: palette.neutralLight + '!important'
           }
         }
       }
     ],
+    weekRow: rowAnimationStyle,
+    weekDayLabelCell: AnimationStyles.fadeIn200,
     weekNumberCell: {
       margin: 0,
       padding: 0,
       borderRight: '1px solid',
       borderColor: palette.neutralLight,
+      backgroundColor: palette.neutralLighterAlt,
+      color: palette.neutralSecondary,
       boxSizing: 'border-box',
       width: 28,
       height: 28,
@@ -99,6 +142,7 @@ export const styles = (props: ICalendarDayGridStyleProps): ICalendarDayGridStyle
         color: 'inherit',
         backgroundColor: 'transparent',
         cursor: 'pointer',
+        overflow: 'visible', // explicitly specify for IE11
         selectors: {
           span: {
             height: 'inherit',
@@ -109,8 +153,28 @@ export const styles = (props: ICalendarDayGridStyleProps): ICalendarDayGridStyle
     ],
     dayIsToday: {
       backgroundColor: palette.themePrimary + '!important',
+      borderRadius: '100%',
       color: palette.white + '!important',
       fontWeight: (FontWeights.semibold + '!important') as 'initial'
+    },
+    firstTransitionWeek: {
+      position: 'absolute',
+      opacity: 0,
+      width: 0,
+      height: 0,
+      overflow: 'hidden',
+      ...firstTransitionRowAnimationStyle,
+      animationName: firstTransitionRowAnimationStyle.animationName + ',' + transitionRowDisappearance
+    },
+    lastTransitionWeek: {
+      position: 'absolute',
+      opacity: 0,
+      width: 0,
+      height: 0,
+      overflow: 'hidden',
+      marginTop: -28,
+      ...lastTransitionRowAnimationStyle,
+      animationName: lastTransitionRowAnimationStyle.animationName + ',' + transitionRowDisappearance
     },
     topRightCornerDate: {
       borderTopRightRadius: '2px'

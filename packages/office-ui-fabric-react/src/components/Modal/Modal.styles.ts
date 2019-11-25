@@ -26,14 +26,14 @@ export const getStyles = (props: IModalStyleProps): IModalStyles => {
     layerClassName,
     isDefaultDragHandle
   } = props;
-  const { palette, effects } = theme;
+  const { palette, effects, fonts } = theme;
 
   const classNames = getGlobalClassNames(globalClassNames, theme);
 
   return {
     root: [
       classNames.root,
-      theme.fonts.medium,
+      fonts.medium,
       {
         backgroundColor: 'transparent',
         position: isModeless ? 'absolute' : 'fixed',
@@ -67,7 +67,10 @@ export const getStyles = (props: IModalStyleProps): IModalStyles => {
         position: 'relative',
         textAlign: 'left',
         outline: '3px solid transparent',
-        maxHeight: '100%',
+        maxHeight: 'calc(100% - 32px)',
+        maxWidth: 'calc(100% - 32px)',
+        minHeight: '176px',
+        minWidth: '288px',
         overflowY: 'auto',
         zIndex: isModeless ? ZIndexes.Layer : undefined
       },
@@ -111,7 +114,7 @@ export const getStyles = (props: IModalStyleProps): IModalStyles => {
       padding: '3px 0px'
     },
     keyboardMoveIcon: {
-      fontSize: '24px',
+      fontSize: fonts.xLargePlus.fontSize,
       width: '24px'
     }
   };

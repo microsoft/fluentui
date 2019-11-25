@@ -65,4 +65,12 @@ describe('DropdownSizePosCache', () => {
     expect(cache.optionSetSize).toBe(7);
     expect(cache.positionInSet(3)).toBe(4);
   });
+
+  it('will respect hidden flag', () => {
+    const optionsWithHidden: IDropdownOption[] = [...pureOptions, { key: 'K', text: 'Option k', hidden: true }];
+    const cache: DropdownSizePosCache = new DropdownSizePosCache();
+    cache.updateOptions(optionsWithHidden);
+
+    expect(cache.optionSetSize).toBe(optionsWithHidden.length - 1);
+  });
 });
