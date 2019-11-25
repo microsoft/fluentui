@@ -156,7 +156,7 @@ export interface INavLinkGroup {
   collapseAriaLabel?: string;
 
   /**
-   * (Optional) Any additional properties to apply to the rendered groups.
+   * (Optional) Any additional properties to apply to a group.
    */
   [propertyName: string]: any;
 }
