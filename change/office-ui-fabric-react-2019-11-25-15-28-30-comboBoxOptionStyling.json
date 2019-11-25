@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "ComboBox: Fixing options' custom styling not applying to multiselect ComboBoxes.",
+  "packageName": "office-ui-fabric-react",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "commit": "926cc3e438ced516587c94885136ca07f23606e6",
+  "date": "2019-11-25T23:28:30.749Z"
+}
