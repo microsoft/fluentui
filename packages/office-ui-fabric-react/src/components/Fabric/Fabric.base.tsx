@@ -1,9 +1,24 @@
 import * as React from 'react';
-import { getNativeProps, on, divProperties, classNamesFunction, getWindow, getDocument, isDirectionalKeyCode } from '../../Utilities';
+import {
+  Customizer,
+  getNativeProps,
+  on,
+  divProperties,
+  classNamesFunction,
+  getWindow,
+  getDocument,
+  isDirectionalKeyCode,
+  memoizeFunction
+} from '../../Utilities';
 import { getStyles } from './Fabric.styles';
 import { IFabricProps, IFabricStyleProps, IFabricStyles } from './Fabric.types';
 import { IProcessedStyleSet } from '@uifabric/merge-styles';
+import { ITheme } from '../../Styling';
+
 const getClassNames = classNamesFunction<IFabricStyleProps, IFabricStyles>();
+
+const getRTLTheme = memoizeFunction((theme: ITheme) => ({ ...theme, rtl: true }));
+
 export class FabricBase extends React.Component<
   IFabricProps,
   {
@@ -20,9 +35,18 @@ export class FabricBase extends React.Component<
   }
 
   public render() {
+    const { as: Root = 'div', theme, dir } = this.props;
     const classNames = this._getClassNames();
     const divProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties);
-    return <div {...divProps} className={classNames.root} ref={this._rootElement} />;
+
+    let renderedContent = <Root {...divProps} className={classNames.root} ref={this._rootElement} />;
+
+    // Expose an rtl based theme if neccessary.
+    if (theme && !theme.rtl && dir === 'rtl') {
+      renderedContent = <Customizer settings={{ theme: getRTLTheme(theme) }}>{renderedContent}</Customizer>;
+    }
+
+    return renderedContent;
   }
 
   public componentDidMount(): void {
