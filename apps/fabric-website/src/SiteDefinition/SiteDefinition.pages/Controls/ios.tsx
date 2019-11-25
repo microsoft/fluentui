@@ -96,7 +96,10 @@ export const controlsPagesIos: INavPage[] = [
         title: 'Tab Bar',
         url: '#/controls/ios/tabbar',
         component: () => <LoadingComponent title="Tab Bar" />,
-        getComponent: cb => require.ensure([], require => cb(require<any>('../../../pages/Controls/TabBarPage/TabBarPage').TabBarPage))
+        getComponent: cb =>
+          require.ensure([], require =>
+            cb(require<any>('../../../pages/Controls/BottomNavigationPage/BottomNavigationPage').BottomNavigationPage)
+          )
       }
     ]
   },

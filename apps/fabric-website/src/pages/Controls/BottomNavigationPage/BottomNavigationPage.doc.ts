@@ -1,0 +1,14 @@
+import { TFabricPlatformPageProps } from '../../../interfaces/Platforms';
+
+const related = require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/BottomNavigationPage/docs/BottomNavigationRelated.md') as string;
+const componentUrl =
+  'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/apps/fabric-website/src/pages/Controls/BottomNavigationPage';
+
+export const BottomNavigationPageProps: TFabricPlatformPageProps = {
+  ios: {
+    title: 'Tab Bar',
+    overview: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/BottomNavigationPage/docs/ios/BottomNavigationOverview.md') as string,
+    related,
+    componentUrl
+  }
+};
