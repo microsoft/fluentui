@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Button: Adding missing label in strong scheme variant in MDL2 theme",
+  "packageName": "@uifabric/mdl2-theme",
+  "email": "marygans@microsoft.com",
+  "commit": "27918d9206cc2c726992659b6e807004a28eef23",
+  "date": "2019-11-25T17:52:16.972Z"
+}
