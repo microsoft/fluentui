@@ -33,5 +33,19 @@ function _otherSections(platform?: Platforms): IPageSectionProps<Platforms>[] | 
           )
         }
       ];
+    case 'android':
+      return [
+        {
+          sectionName: 'Implementation',
+          editUrl: baseUrl + 'docs/android/BottomNavigationImplementation.md',
+          content: (
+            <Markdown>
+              {
+                require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/BottomNavigationPage/docs/android/BottomNavigationImplementation.md') as string
+              }
+            </Markdown>
+          )
+        }
+      ];
   }
 }
