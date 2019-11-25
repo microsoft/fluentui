@@ -33,6 +33,7 @@ export class DialogContentBase extends BaseComponent<IDialogContentProps, {}> {
       subText,
       titleId,
       title,
+      closeButtonToolTip,
       type,
       styles,
       theme,
@@ -73,6 +74,7 @@ export class DialogContentBase extends BaseComponent<IDialogContentProps, {}> {
                 iconProps={{ iconName: 'Cancel' }}
                 ariaLabel={closeButtonAriaLabel}
                 onClick={onDismiss as any}
+                title={closeButtonToolTip}
               />
             )}
           </div>

@@ -47,6 +47,7 @@ export class DialogBasicExample extends React.Component<{}, IDialogBasicExampleS
           dialogContentProps={{
             type: DialogType.normal,
             title: 'Missing Subject',
+            closeButtonToolTip: 'Close',
             subText: 'Do you want to send this message without a subject?'
           }}
           modalProps={{

@@ -43,6 +43,11 @@ export interface IDialogContentProps extends React.ClassAttributes<DialogContent
   showCloseButton?: boolean;
 
   /**
+   * Show an 'x' close button in the upper-right corner of the L2 panel
+   */
+  closeButtonToolTip?: string;
+
+  /**
    * Other top buttons that will show up next to the close button
    */
   topButtonsProps?: IButtonProps[];
