@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Accessibility fixes for date-time Calendar, adding new strings for new aria labels and fixing aria-live regions",
-  "packageName": "@uifabric/date-time",
-  "email": "jolore@microsoft.com",
-  "commit": "2e06318622eba26ed36ded82a07969a71e966e6e",
-  "date": "2019-11-20T00:57:34.064Z"
-}

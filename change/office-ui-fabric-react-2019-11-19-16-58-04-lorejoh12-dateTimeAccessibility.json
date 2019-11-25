@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fixing double selection in Calendar month picker",
-  "packageName": "office-ui-fabric-react",
-  "email": "jolore@microsoft.com",
-  "commit": "2e06318622eba26ed36ded82a07969a71e966e6e",
-  "date": "2019-11-20T00:58:04.101Z"
-}

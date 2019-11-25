@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Revert label change",
-  "packageName": "office-ui-fabric-react",
-  "email": "rezha@microsoft.com",
-  "commit": "f8bd0197350ce4f6b779cbeea553e1d38c10642b",
-  "date": "2019-11-22T21:14:51.903Z"
-}

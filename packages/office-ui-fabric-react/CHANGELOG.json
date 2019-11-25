@@ -2,6 +2,40 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Mon, 25 Nov 2019 12:31:13 GMT",
+      "tag": "office-ui-fabric-react_v7.64.2",
+      "version": "7.64.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "CommandBar: Removed unnecessary role={'presentation'} from OverflowSet",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "135b0568a6ae57885111f1fa4c377e35298de918"
+          },
+          {
+            "comment": "fixing double selection in Calendar month picker",
+            "author": "jolore@microsoft.com",
+            "commit": "2e06318622eba26ed36ded82a07969a71e966e6e"
+          },
+          {
+            "comment": "CommandBarButton: Fixed hidden CommandBarButton splitbuttonDivider",
+            "author": "v-mare@microsoft.com",
+            "commit": "0cae80c33eab4fb0ecbde1da925e740e85ddefe0"
+          },
+          {
+            "comment": "test",
+            "author": "cliff.koh@microsoft.com",
+            "commit": "10aafb71f6bd18ccdb825a980a68d8de13495a6a"
+          },
+          {
+            "comment": "Revert label change",
+            "author": "rezha@microsoft.com",
+            "commit": "f8bd0197350ce4f6b779cbeea553e1d38c10642b"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 22 Nov 2019 16:57:54 GMT",
       "tag": "office-ui-fabric-react_v7.64.1",
       "version": "7.64.1",

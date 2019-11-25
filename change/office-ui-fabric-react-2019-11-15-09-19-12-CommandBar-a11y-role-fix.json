@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "CommandBar: Removed unnecessary role={'presentation'} from OverflowSet",
-  "packageName": "office-ui-fabric-react",
-  "email": "mgodbolt@microsoft.com",
-  "commit": "135b0568a6ae57885111f1fa4c377e35298de918",
-  "date": "2019-11-15T17:19:12.572Z"
-}
