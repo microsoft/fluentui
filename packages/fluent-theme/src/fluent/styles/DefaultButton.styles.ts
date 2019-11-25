@@ -68,7 +68,8 @@ export const DefaultButtonStyles = (props: IButtonProps): Partial<IButtonStyles>
           }
         },
         '.ms-Button.is-disabled': {
-          backgroundColor: palette.neutralLighter
+          backgroundColor: palette.neutralLighter,
+          color: palette.neutralTertiary
         },
         '.ms-Button.is-disabled + .ms-Button.is-disabled': {
           backgroundColor: palette.neutralLighter,
