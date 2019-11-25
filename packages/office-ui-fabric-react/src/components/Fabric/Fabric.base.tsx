@@ -16,8 +16,7 @@ import { IProcessedStyleSet } from '@uifabric/merge-styles';
 import { ITheme } from '../../Styling';
 
 const getClassNames = classNamesFunction<IFabricStyleProps, IFabricStyles>();
-
-const getRTLTheme = memoizeFunction((theme: ITheme) => ({ ...theme, rtl: true }));
+const getRTLTheme = memoizeFunction((theme: ITheme, isRTL: boolean) => ({ ...theme, rtl: isRTL }));
 
 export class FabricBase extends React.Component<
   IFabricProps,
@@ -38,12 +37,12 @@ export class FabricBase extends React.Component<
     const { as: Root = 'div', theme, dir } = this.props;
     const classNames = this._getClassNames();
     const divProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties);
-
+    const isRTL = dir === 'rtl';
     let renderedContent = <Root {...divProps} className={classNames.root} ref={this._rootElement} />;
 
-    // Expose an rtl based theme if neccessary.
-    if (theme && !theme.rtl && dir === 'rtl') {
-      renderedContent = <Customizer settings={{ theme: getRTLTheme(theme) }}>{renderedContent}</Customizer>;
+    // Expose an rtl based theme if dir is specified and it doesn't agree with the theme setting.
+    if (dir !== undefined && theme && (theme.rtl === undefined || theme.rtl !== isRTL)) {
+      renderedContent = <Customizer settings={{ theme: getRTLTheme(theme, isRTL) }}>{renderedContent}</Customizer>;
     }
 
     return renderedContent;
