@@ -19,6 +19,10 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
 
   private _inputElement = React.createRef<HTMLInputElement>();
   private _autoFillEnabled = true;
+  /**
+   * Track if we are currently doing multicharacter composing input (e.g. jp hiragana)
+   **/
+  private _isComposing = false;
   private _value: string;
 
   constructor(props: IAutofillProps) {
@@ -136,7 +140,7 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
 
   public clear() {
     this._autoFillEnabled = true;
-    this._updateValue('');
+    this._updateValue('', false);
     this._inputElement.current && this._inputElement.current.setSelectionRange(0, 0);
   }
 
@@ -145,12 +149,14 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
   // Find out more at https://developer.mozilla.org/en-US/docs/Web/Events/compositionstart
   private _onCompositionStart = (ev: React.CompositionEvent<HTMLInputElement>) => {
     this._autoFillEnabled = false;
+    this._isComposing = true;
   };
 
   // Composition events are used when the character/text requires several keystrokes to be completed.
   // Some examples of this are mobile text input and langauges like Japanese or Arabic.
   // Find out more at https://developer.mozilla.org/en-US/docs/Web/Events/compositionstart
   private _onCompositionEnd = (ev: React.CompositionEvent<HTMLInputElement>) => {
+    this._isComposing = false;
     const inputValue = this._getCurrentInputValue();
     this._tryEnableAutofill(inputValue, this.value, false, true);
     // Korean characters typing issue has been addressed in React 16.5
@@ -161,7 +167,10 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
     this._async.setTimeout(() => {
       // Call getCurrentInputValue here again since there can be a race condition where this value has changed during the async call
       const updatedInputValue = isKorean ? this.value : this._getCurrentInputValue();
-      this._updateValue(updatedInputValue);
+      // it's technically possible that the value of _isComposing is reset during this timeout,
+      // so explicitly trigger this with wasComposing=true here, since it is supposed to be the
+      // update for composition end
+      this._updateValue(updatedInputValue, true);
     }, 0);
   };
 
@@ -206,7 +215,7 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
 
     // Right now typing does not have isComposing, once that has been fixed any should be removed.
     this._tryEnableAutofill(value, this._value, (ev.nativeEvent as any).isComposing);
-    this._updateValue(value);
+    this._updateValue(value, this._isComposing);
   };
 
   private _onChanged = (): void => {
@@ -249,9 +258,9 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
     }
   }
 
-  private _notifyInputChange(newValue: string): void {
+  private _notifyInputChange(newValue: string, wasComposing: boolean): void {
     if (this.props.onInputValueChange) {
-      this.props.onInputValueChange(newValue);
+      this.props.onInputValueChange(newValue, wasComposing);
     }
   }
 
@@ -259,18 +268,18 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
    * Updates the current input value as well as getting a new display value.
    * @param newValue - The new value from the input
    */
-  private _updateValue = (newValue: string) => {
+  private _updateValue = (newValue: string, wasComposing: boolean) => {
     // Only proceed if the value is nonempty and is different from the old value
     // This is to work around the fact that, in IE 11, inputs with a placeholder fire an onInput event on focus
     if (!newValue && newValue === this._value) {
       return;
     }
-    this._value = this.props.onInputChange ? this.props.onInputChange(newValue) : newValue;
+    this._value = this.props.onInputChange ? this.props.onInputChange(newValue, wasComposing) : newValue;
     this.setState(
       {
         displayValue: this._getDisplayValue(this._value, this.props.suggestedDisplayValue)
       },
-      () => this._notifyInputChange(this._value)
+      () => this._notifyInputChange(this._value, wasComposing)
     );
   };
 

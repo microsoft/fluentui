@@ -176,10 +176,12 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
     );
   }
 
-  protected onInputChange = (value: string): void => {
-    this.setState({ queryString: value });
-    if (this.floatingPicker.current) {
-      this.floatingPicker.current.onQueryStringChanged(value);
+  protected onInputChange = (value: string, wasComposing?: boolean): void => {
+    if (!wasComposing) {
+      this.setState({ queryString: value });
+      if (this.floatingPicker.current) {
+        this.floatingPicker.current.onQueryStringChanged(value);
+      }
     }
   };
 
