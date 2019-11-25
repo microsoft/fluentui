@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Button: Adding missing button label to Fluent theme in strong scheme",
+  "packageName": "@uifabric/fluent-theme",
+  "email": "marygans@microsoft.com",
+  "commit": "924721cbd843abf02752617cf003c73435f9654f",
+  "date": "2019-11-25T19:48:20.139Z"
+}
