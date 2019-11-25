@@ -2,6 +2,20 @@
   "name": "@uifabric/date-time",
   "entries": [
     {
+      "date": "Mon, 25 Nov 2019 12:31:13 GMT",
+      "tag": "@uifabric/date-time_v7.6.0",
+      "version": "7.6.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Accessibility fixes for date-time Calendar, adding new strings for new aria labels and fixing aria-live regions",
+            "author": "jolore@microsoft.com",
+            "commit": "2e06318622eba26ed36ded82a07969a71e966e6e"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 21 Nov 2019 12:30:32 GMT",
       "tag": "@uifabric/date-time_v7.5.7",
       "version": "7.5.7",

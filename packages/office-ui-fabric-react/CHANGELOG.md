@@ -1,7 +1,17 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 22 Nov 2019 16:57:54 GMT and should not be manually modified.
+This log was last generated on Mon, 25 Nov 2019 12:31:13 GMT and should not be manually modified.
 
+## 7.64.2
+Mon, 25 Nov 2019 12:31:13 GMT
+
+### Patches
+
+- CommandBar: Removed unnecessary role={'presentation'} from OverflowSet (mgodbolt@microsoft.com)
+- fixing double selection in Calendar month picker (jolore@microsoft.com)
+- CommandBarButton: Fixed hidden CommandBarButton splitbuttonDivider (v-mare@microsoft.com)
+- test (cliff.koh@microsoft.com)
+- Revert label change (rezha@microsoft.com)
 ## 7.64.1
 Fri, 22 Nov 2019 16:57:54 GMT
 
