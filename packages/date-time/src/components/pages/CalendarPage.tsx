@@ -4,6 +4,8 @@ import { DateRangeType, DayOfWeek } from '../Calendar/Calendar.types';
 import { CalendarButtonExample } from '../Calendar/examples/Calendar.Button.Example';
 import { CalendarInlineExample } from '../Calendar/examples/Calendar.Inline.Example';
 import { addMonths, addYears, addDays } from 'office-ui-fabric-react/lib/utilities/dateMath/DateMath';
+import { IProcessedStyleSet } from '@uifabric/styling';
+import { ICalendarDayGridStyles } from '@uifabric/date-time';
 
 const CalendarButtonExampleCode = require('!raw-loader!@uifabric/date-time/src/components/Calendar/examples/Calendar.Button.Example.tsx') as string;
 const CalendarInlineExampleCode = require('!raw-loader!@uifabric/date-time/src/components/Calendar/examples/Calendar.Inline.Example.tsx') as string;
@@ -132,6 +134,28 @@ export class CalendarPage extends React.Component<{}, {}> {
                 showGoToToday={true}
                 calendarDayProps={{ daysToSelectInDayView: 4 }}
                 showDaysToSelectInDayViewDropdown={true}
+              />
+            </ExampleCard>
+            <ExampleCard
+              title="Calendar with customDayCellRef applying a tooltip to each day and disabling weekends"
+              code={CalendarInlineExampleCode}
+            >
+              <CalendarInlineExample
+                dateRangeType={DateRangeType.Day}
+                highlightCurrentMonth={false}
+                highlightSelectedMonth={true}
+                showGoToToday={true}
+                calendarDayProps={{
+                  customDayCellRef: (element: HTMLElement, date: Date, classNames: IProcessedStyleSet<ICalendarDayGridStyles>) => {
+                    if (element) {
+                      element.title = 'custom title from customDayCellRef: ' + date.toString();
+                      if (date.getDay() === 0 || date.getDay() === 6) {
+                        classNames.dayOutsideBounds && element.classList.add(classNames.dayOutsideBounds);
+                        (element.children[0] as HTMLButtonElement).disabled = true;
+                      }
+                    }
+                  }
+                }}
               />
             </ExampleCard>
             <ExampleCard title="Calendar launched from a button" code={CalendarButtonExampleCode}>

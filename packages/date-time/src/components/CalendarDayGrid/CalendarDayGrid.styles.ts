@@ -71,7 +71,7 @@ export const styles = (props: ICalendarDayGridStyleProps): ICalendarDayGridStyle
         tableLayout: 'fixed',
         fontSize: 'inherit',
         marginTop: 4,
-        width: 197,
+        width: 196,
         position: 'relative',
         paddingBottom: 10
       },
