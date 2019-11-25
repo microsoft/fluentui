@@ -9,7 +9,7 @@ const explanation =
   'This panel has custom content in the navigation region (the part at the top which normally ' +
   'contains the close button). If the custom content replaces the close button, be sure to provide ' +
   'some other obvious way for users to close the panel.';
-const searchboxStyles = { root: { margin: '5px', height: 'auto', width: '100%' } };
+const searchboxStyles = { root: { height: '32px' } };
 
 export const PanelNavigationExample: React.FunctionComponent = () => {
   const [isOpen, setIsOpen] = React.useState(false);
@@ -39,9 +39,7 @@ export const PanelNavigationExample: React.FunctionComponent = () => {
         onDismiss={dismissPanel}
         closeButtonAriaLabel="Close"
       >
-        <div>
-          <p>{explanation}</p>
-        </div>
+        <span>{explanation}</span>
       </Panel>
     </div>
   );
