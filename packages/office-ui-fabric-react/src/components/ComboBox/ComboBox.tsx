@@ -537,7 +537,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
     // If the user passed is a value prop, use that
     // unless we are open and have a valid current pending index
-    if (!(isOpen && currentPendingIndexValid) && (text && (currentPendingValue === null || currentPendingValue === undefined))) {
+    if (!(isOpen && currentPendingIndexValid) && text && (currentPendingValue === null || currentPendingValue === undefined)) {
       return text;
     }
 
@@ -1055,15 +1055,15 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         // the live value in the underlying input matches the pending option; update the state
         if (
           currentPendingValue.toLocaleLowerCase() === pendingOptionText ||
-          ((autoComplete &&
+          (autoComplete &&
             pendingOptionText.indexOf(currentPendingValue.toLocaleLowerCase()) === 0 &&
-            (this._autofill.current &&
-              this._autofill.current.isValueSelected &&
-              currentPendingValue.length + (this._autofill.current.selectionEnd! - this._autofill.current.selectionStart!) ===
-                pendingOptionText.length)) ||
-            (this._autofill.current &&
-              this._autofill.current.inputElement &&
-              this._autofill.current.inputElement.value.toLocaleLowerCase() === pendingOptionText))
+            this._autofill.current &&
+            this._autofill.current.isValueSelected &&
+            currentPendingValue.length + (this._autofill.current.selectionEnd! - this._autofill.current.selectionStart!) ===
+              pendingOptionText.length) ||
+          (this._autofill.current &&
+            this._autofill.current.inputElement &&
+            this._autofill.current.inputElement.value.toLocaleLowerCase() === pendingOptionText)
         ) {
           this._setSelectedIndex(currentPendingValueValidIndex, submitPendingValueEvent);
           this._clearPendingInfo();
@@ -1234,10 +1234,9 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     const isSelected: boolean = this._isOptionSelected(item.index);
     const optionStyles = this._getCurrentOptionStyles(item);
     const optionClassNames = getComboBoxOptionClassNames(this._getCurrentOptionStyles(item));
-    const checkboxStyles = () => {
-      return optionStyles;
-    };
     const title = this._getPreviewText(item);
+
+    const onRenderCheckboxLabel = () => onRenderOption(item, this._onRenderOptionContent);
 
     const getOptionComponent = () => {
       return !this.props.multiSelect ? (
@@ -1245,7 +1244,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
           id={id + '-list' + item.index}
           key={item.key}
           data-index={item.index}
-          styles={this._getCurrentOptionStyles(item)}
+          styles={optionStyles}
           checked={isSelected}
           className={'ms-ComboBox-option'}
           onClick={this._onItemClick(item)}
@@ -1271,7 +1270,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
           ariaLabel={this._getPreviewText(item)}
           key={item.key}
           data-index={item.index}
-          styles={checkboxStyles}
+          styles={optionStyles}
           className={'ms-ComboBox-option'}
           data-is-focusable={true}
           onChange={this._onItemClick(item)}
@@ -1281,9 +1280,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
           checked={isSelected}
           title={title}
           disabled={item.disabled}
-        >
-          {onRenderOption(item, this._onRenderOptionContent)}
-        </Checkbox>
+          onRenderLabel={onRenderCheckboxLabel}
+        />
       );
     };
 
@@ -1343,7 +1341,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     return currentPendingValueValidIndexOnHover >= 0
       ? currentPendingValueValidIndexOnHover
       : currentPendingValueValidIndex >= 0 ||
-        (includeCurrentPendingValue && (currentPendingValue !== null && currentPendingValue !== undefined))
+        (includeCurrentPendingValue && currentPendingValue !== null && currentPendingValue !== undefined)
       ? currentPendingValueValidIndex
       : this.props.multiSelect
       ? 0
