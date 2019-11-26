@@ -3852,6 +3852,8 @@ export interface IDialogState {
     // (undocumented)
     hasBeenOpened?: boolean;
     // (undocumented)
+    hasRegisteredKeyUp?: boolean;
+    // (undocumented)
     id?: string;
     // (undocumented)
     isInKeyboardMoveMode?: boolean;
@@ -8122,6 +8124,8 @@ export const Modal: React.StatelessComponent<IModalProps>;
 // @public (undocumented)
 export class ModalBase extends BaseComponent<IModalProps, IDialogState> implements IModal {
     constructor(props: IModalProps);
+    // (undocumented)
+    componentDidMount(): void;
     // (undocumented)
     componentDidUpdate(prevProps: IModalProps, prevState: IDialogState): void;
     // (undocumented)
