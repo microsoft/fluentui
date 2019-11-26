@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "applying a custom ref callback for days in the calendardaygrid to allow consumers to specify their own properties directly on the dom element",
-  "packageName": "@uifabric/date-time",
-  "email": "jolore@microsoft.com",
-  "commit": "326c5fde19df5d2f2c18aff5df3ee33ec87d14fa",
-  "date": "2019-11-22T19:28:02.478Z"
-}
