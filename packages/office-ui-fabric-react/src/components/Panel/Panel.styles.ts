@@ -110,6 +110,7 @@ const getPanelBreakpoints = (type: PanelType): { [x: string]: IStyle } | undefin
   // and have the checks done separately in the `getStyles` function below.
   switch (type) {
     case PanelType.smallFixedFar:
+    case PanelType.smallEmbedded:
       selectors = {
         ...smallPanelSelectors
       };

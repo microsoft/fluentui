@@ -149,6 +149,7 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
     const nativeProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties);
     const isOpen = this.isActive;
     const isAnimating = visibility === PanelVisibilityState.animatingClosed || visibility === PanelVisibilityState.animatingOpen;
+    const isNoOverlay = type === PanelType.smallEmbedded;
 
     if (!isOpen && !isAnimating && !isHiddenOnDismiss) {
       return null;
@@ -184,43 +185,47 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
     }
 
     const header = onRenderHeader(this.props, this._onRenderHeader, headerTextId);
-
-    return (
-      <Layer {...layerProps}>
-        <Popup
-          role="dialog"
-          aria-modal="true"
-          ariaLabelledBy={header ? headerTextId : undefined}
-          onDismiss={this.dismiss}
-          className={_classNames.hiddenPanel}
-        >
-          <div aria-hidden={!isOpen && isAnimating} {...nativeProps} ref={this._panel} className={_classNames.root}>
-            {overlay}
-            <FocusTrapZone
-              ignoreExternalFocusing={ignoreExternalFocusing}
-              forceFocusInsideTrap={!isBlocking || (isHiddenOnDismiss && !isOpen) ? false : forceFocusInsideTrap}
-              firstFocusableSelector={firstFocusableSelector}
-              isClickableOutsideFocusTrap={true}
-              {...focusTrapZoneProps}
-              className={_classNames.main}
-              style={customWidthStyles}
-              elementToFocusOnDismiss={elementToFocusOnDismiss}
-            >
-              <div className={_classNames.commands} data-is-visible={true}>
-                {onRenderNavigation(this.props, this._onRenderNavigation)}
+    const body = (
+      <Popup
+        role="dialog"
+        aria-modal="true"
+        ariaLabelledBy={header ? headerTextId : undefined}
+        onDismiss={this.dismiss}
+        className={_classNames.hiddenPanel}
+      >
+        <div aria-hidden={!isOpen && isAnimating} {...nativeProps} ref={this._panel} className={_classNames.root}>
+          {overlay}
+          <FocusTrapZone
+            ignoreExternalFocusing={ignoreExternalFocusing}
+            forceFocusInsideTrap={!isBlocking || (isHiddenOnDismiss && !isOpen) ? false : forceFocusInsideTrap}
+            firstFocusableSelector={firstFocusableSelector}
+            isClickableOutsideFocusTrap={true}
+            {...focusTrapZoneProps}
+            className={_classNames.main}
+            style={customWidthStyles}
+            elementToFocusOnDismiss={elementToFocusOnDismiss}
+          >
+            <div className={_classNames.commands} data-is-visible={true}>
+              {onRenderNavigation(this.props, this._onRenderNavigation)}
+            </div>
+            <div className={_classNames.contentInner}>
+              {header}
+              <div ref={this._allowScrollOnPanel} className={_classNames.scrollableContent} data-is-scrollable={true}>
+                {onRenderBody(this.props, this._onRenderBody)}
               </div>
-              <div className={_classNames.contentInner}>
-                {header}
-                <div ref={this._allowScrollOnPanel} className={_classNames.scrollableContent} data-is-scrollable={true}>
-                  {onRenderBody(this.props, this._onRenderBody)}
-                </div>
-                {onRenderFooter(this.props, this._onRenderFooter)}
-              </div>
-            </FocusTrapZone>
-          </div>
-        </Popup>
-      </Layer>
+              {onRenderFooter(this.props, this._onRenderFooter)}
+            </div>
+          </FocusTrapZone>
+        </div>
+      </Popup>
     );
+
+    if (isNoOverlay) {
+      // TODO: add classes and styles
+      return <div>{body}</div>;
+    }
+
+    return <Layer {...layerProps}>{body}</Layer>;
   }
 
   public open() {
