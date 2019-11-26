@@ -76,22 +76,9 @@ export class CalendarInlineExample extends React.Component<ICalendarInlineExampl
           {...this.props}
           onSelectDate={this._onSelectDate}
           onDismiss={this._onDismiss}
-          isMonthPickerVisible={this.props.isMonthPickerVisible}
-          dateRangeType={this.props.dateRangeType}
-          showGoToToday={this.props.showGoToToday}
           value={this.state.selectedDate!}
           firstDayOfWeek={this.props.firstDayOfWeek ? this.props.firstDayOfWeek : DayOfWeek.Sunday}
           strings={defaultDayPickerStrings}
-          highlightCurrentMonth={this.props.highlightCurrentMonth}
-          highlightSelectedMonth={this.props.highlightSelectedMonth}
-          isDayPickerVisible={this.props.isDayPickerVisible}
-          showMonthPickerAsOverlay={this.props.showMonthPickerAsOverlay}
-          showWeekNumbers={this.props.showWeekNumbers}
-          minDate={this.props.minDate}
-          maxDate={this.props.maxDate}
-          restrictedDates={this.props.restrictedDates}
-          showSixWeeksByDefault={this.props.showSixWeeksByDefault}
-          workWeekDays={this.props.workWeekDays}
           calendarDayProps={{
             ...this.props.calendarDayProps,
             daysToSelectInDayView: this.state.daysToSelectInDayView

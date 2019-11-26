@@ -1,7 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 25 Nov 2019 12:31:13 GMT and should not be manually modified.
+This log was last generated on Tue, 26 Nov 2019 12:32:11 GMT and should not be manually modified.
 
+## 7.65.0
+Tue, 26 Nov 2019 12:32:11 GMT
+
+### Minor changes
+
+- Fabric component: adding `dir=rtl` support to affect both the `dir` attribute as well as affecting the styling generated within scope (by creating an rtl-versioned theme and exposing it via `Customizer`.) (dzearing@hotmail.com)
 ## 7.64.2
 Mon, 25 Nov 2019 12:31:13 GMT
 

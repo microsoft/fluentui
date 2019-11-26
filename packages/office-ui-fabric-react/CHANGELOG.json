@@ -2,6 +2,20 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Tue, 26 Nov 2019 12:32:11 GMT",
+      "tag": "office-ui-fabric-react_v7.65.0",
+      "version": "7.65.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Fabric component: adding `dir=rtl` support to affect both the `dir` attribute as well as affecting the styling generated within scope (by creating an rtl-versioned theme and exposing it via `Customizer`.)",
+            "author": "dzearing@hotmail.com",
+            "commit": "0c93b631db2d354fa0cb529981aa26d25834353d"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 25 Nov 2019 12:31:13 GMT",
       "tag": "office-ui-fabric-react_v7.64.2",
       "version": "7.64.2",
