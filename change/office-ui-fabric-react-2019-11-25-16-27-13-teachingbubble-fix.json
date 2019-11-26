@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "TeachingBubble: margin for header no longer is hidden under a close button.",
+  "comment": "TeachingBubble: add hasCloseButton and deprecate hasCloseIcon; prevent header text from overlapping with close button.",
   "packageName": "office-ui-fabric-react",
   "email": "dzearing@microsoft.com",
   "commit": "b539f5ee1c3bbd793a83ad269f0458dbfec5659f",
