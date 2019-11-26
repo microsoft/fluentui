@@ -4480,15 +4480,13 @@ export interface IExtendedPersonaProps extends IPersonaProps {
 
 // @public (undocumented)
 export interface IFabricProps extends React.HTMLAttributes<HTMLDivElement> {
-    // (undocumented)
     applyTheme?: boolean;
-    // (undocumented)
     applyThemeToBody?: boolean;
+    as?: React.ReactType;
     // (undocumented)
     componentRef?: IRefObject<{}>;
-    // (undocumented)
+    dir?: 'rtl' | 'ltr' | 'auto';
     styles?: IStyleFunctionOrObject<IFabricStyleProps, IFabricStyles>;
-    // (undocumented)
     theme?: ITheme;
 }
 

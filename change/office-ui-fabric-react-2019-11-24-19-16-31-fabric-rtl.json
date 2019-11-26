@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Fabric component: adding `dir=rtl` support to affect both the `dir` attribute as well as affecting the styling generated within scope (by creating an rtl-versioned theme and exposing it via `Customizer`.)",
+  "packageName": "office-ui-fabric-react",
+  "email": "dzearing@hotmail.com",
+  "commit": "0c93b631db2d354fa0cb529981aa26d25834353d",
+  "date": "2019-11-25T03:16:31.848Z"
+}
