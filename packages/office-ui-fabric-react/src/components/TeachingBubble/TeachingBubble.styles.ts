@@ -87,6 +87,7 @@ export const getStyles = (props: ITeachingBubbleStyleProps): ITeachingBubbleStyl
     calloutClassName,
     hasCondensedHeadline,
     hasSmallHeadline,
+    hasCloseButton,
     isWide,
     primaryButtonClassName,
     secondaryButtonClassName,
@@ -164,7 +165,7 @@ export const getStyles = (props: ITeachingBubbleStyleProps): ITeachingBubbleStyl
     header: [
       classNames.header,
       ...headerStyle(classNames, hasCondensedHeadline, hasSmallHeadline),
-      { marginRight: 24 },
+      hasCloseButton && { marginRight: 24 },
       (hasCondensedHeadline || hasSmallHeadline) && [
         fonts.medium,
         {

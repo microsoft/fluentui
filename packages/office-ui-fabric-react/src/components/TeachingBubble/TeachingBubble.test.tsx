@@ -47,7 +47,7 @@ describe('TeachingBubble', () => {
     const componentContent = renderer.create(
       <TeachingBubbleContent
         headline="Test Title"
-        hasCloseIcon={true}
+        hasCloseButton={true}
         primaryButtonProps={{ children: 'Test Primary Button', className: 'primary-className' }}
         secondaryButtonProps={{ children: 'Test Secondary Button', className: 'secondary-className' }}
       >

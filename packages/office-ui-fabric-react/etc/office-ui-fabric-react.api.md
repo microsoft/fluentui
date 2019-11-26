@@ -7468,6 +7468,8 @@ export interface ITeachingBubbleProps extends React.ClassAttributes<TeachingBubb
     calloutProps?: ICalloutProps;
     componentRef?: IRefObject<ITeachingBubble>;
     footerContent?: string | JSX.Element;
+    hasCloseButton?: boolean;
+    // @deprecated (undocumented)
     hasCloseIcon?: boolean;
     hasCondensedHeadline?: boolean;
     hasSmallHeadline?: boolean;
@@ -7495,6 +7497,7 @@ export type ITeachingBubbleStyleProps = Required<Pick<ITeachingBubbleProps, 'the
     calloutClassName?: string;
     primaryButtonClassName?: string;
     secondaryButtonClassName?: string;
+    hasCloseButton?: boolean;
 };
 
 // @public (undocumented)
