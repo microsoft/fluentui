@@ -7,7 +7,7 @@ import {
   ICalendarFormatDateCallbacks,
   AnimationDirection
 } from '../Calendar/Calendar.types';
-import { IStyle, ITheme } from '@uifabric/styling';
+import { IStyle, ITheme, IProcessedStyleSet } from '@uifabric/styling';
 
 export interface ICalendarDayGrid {
   focus(): void;
@@ -111,6 +111,11 @@ export interface ICalendarDayGridProps extends IBaseProps<ICalendarDayGrid> {
    * Apply additional formating to dates, for example localized date formatting.
    */
   dateTimeFormatter: ICalendarFormatDateCallbacks;
+
+  /**
+   * Ref callback for individual days. Allows for customization of the styling, properties, or listeners of the specific day.
+   */
+  customDayCellRef?: (element: HTMLElement, date: Date, classNames: IProcessedStyleSet<ICalendarDayGridStyles>) => void;
 
   /**
    * How many weeks to show by default. If not provided, will show enough weeks to display the current

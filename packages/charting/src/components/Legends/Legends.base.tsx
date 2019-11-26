@@ -97,6 +97,9 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
           },
           item: {
             marginBottom: '16px'
+          },
+          overflowButton: {
+            marginBottom: '16px'
           }
         }}
       />
@@ -158,7 +161,8 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
     });
     const plainCardProps = {
       onRenderPlainCard: this._onRenderCompactCard,
-      renderData: renderOverflowData
+      renderData: renderOverflowData,
+      gapSpace: 12
     };
 
     // execute similar to "_onClick" and "_onLeave" logic at HoverCard onCardHide event
@@ -180,13 +184,7 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
       }
     };
     return (
-      <HoverCard
-        type={HoverCardType.plain}
-        plainCardProps={plainCardProps}
-        sticky={true}
-        instantOpenOnClick={true}
-        onCardHide={onHoverCardHideHandler}
-      >
+      <HoverCard type={HoverCardType.plain} plainCardProps={plainCardProps} instantOpenOnClick={true} onCardHide={onHoverCardHideHandler}>
         <div className={classNames.overflowIndicationTextStyle}>{items.length} more</div>
       </HoverCard>
     );
