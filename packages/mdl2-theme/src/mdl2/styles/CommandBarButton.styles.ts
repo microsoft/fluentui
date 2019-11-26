@@ -6,7 +6,7 @@ export const CommandBarButtonStyles = (props: IButtonProps): Partial<IButtonStyl
   if (!theme) {
     throw new Error('Theme is undefined or null.');
   }
-  const { palette } = theme;
+  const { palette, semanticColors } = theme;
 
   return {
     root: {
@@ -29,7 +29,7 @@ export const CommandBarButtonStyles = (props: IButtonProps): Partial<IButtonStyl
       backgroundColor: palette.neutralQuaternaryAlt
     },
     rootDisabled: {
-      backgroundColor: palette.neutralLighter
+      backgroundColor: semanticColors.disabledBackground
     },
     splitButtonMenuButton: {
       backgroundColor: palette.neutralLighter,

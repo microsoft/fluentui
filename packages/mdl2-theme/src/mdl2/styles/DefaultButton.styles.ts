@@ -6,7 +6,7 @@ export const DefaultButtonStyles = (props: IButtonProps): Partial<IButtonStyles>
   if (!theme) {
     throw new Error('Theme is undefined or null.');
   }
-  const { palette } = theme;
+  const { palette, semanticColors } = theme;
 
   return {
     root: {
@@ -32,7 +32,7 @@ export const DefaultButtonStyles = (props: IButtonProps): Partial<IButtonStyles>
       backgroundColor: palette.neutralTertiaryAlt
     },
     rootDisabled: {
-      backgroundColor: palette.neutralLighter,
+      backgroundColor: semanticColors.disabledBackground,
       borderColor: 'transparent'
     },
     splitButtonMenuButton: {
@@ -58,11 +58,10 @@ export const DefaultButtonStyles = (props: IButtonProps): Partial<IButtonStyles>
           }
         },
         '.ms-Button.is-disabled': {
-          backgroundColor: palette.neutralLighter,
-          color: palette.neutralTertiary
+          backgroundColor: semanticColors.disabledBackground
         },
         '.ms-Button.is-disabled + .ms-Button.is-disabled': {
-          backgroundColor: palette.neutralLighter,
+          backgroundColor: semanticColors.disabledBackground,
           border: 'none'
         }
       }

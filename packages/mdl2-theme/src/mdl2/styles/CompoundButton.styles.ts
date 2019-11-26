@@ -6,7 +6,7 @@ export const CompoundButtonStyles = (props: IButtonProps): Partial<IButtonStyles
   if (!theme) {
     throw new Error('Theme is undefined or null.');
   }
-  const { palette } = theme;
+  const { palette, semanticColors } = theme;
 
   return {
     root: {
@@ -62,11 +62,10 @@ export const CompoundButtonStyles = (props: IButtonProps): Partial<IButtonStyles
     },
     rootDisabled: {
       borderColor: palette.neutralLighter,
-
       // Primary styles require targeting a selector for now.
       selectors: {
         '&.ms-Button--compoundPrimary': {
-          backgroundColor: palette.neutralLighter,
+          backgroundColor: semanticColors.disabledBackground,
           borderColor: palette.neutralLighter
         }
       }
