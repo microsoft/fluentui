@@ -301,8 +301,6 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
           // className={iconButtonStyles}
           styles={{
             root: {
-              height: 'auto',
-              width: '44px',
               color: theme.palette.neutralSecondary,
               fontSize: IconFontSizes.large
             },

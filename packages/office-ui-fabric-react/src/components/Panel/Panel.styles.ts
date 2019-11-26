@@ -297,11 +297,9 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
       classNames.closeButton,
       {
         flexGrow: 0,
-        height: 32,
         justifySelf: 'flex-start',
         marginLeft: 14,
-        order: 1,
-        width: 32
+        order: 1
       }
     ],
     contentInner: [
