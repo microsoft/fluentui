@@ -1,5 +1,5 @@
 {
-  "type": "patch",
+  "type": "minor",
   "comment": "TeachingBubble: margin for header no longer is hidden under a close button.",
   "packageName": "office-ui-fabric-react",
   "email": "dzearing@microsoft.com",
