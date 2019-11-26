@@ -158,7 +158,7 @@ export interface INavLinkGroup {
   /**
    * (Optional) Any additional properties to apply to a group.
    */
-  [propertyName: string]: any;
+  groupData?: any;
 }
 
 /**
