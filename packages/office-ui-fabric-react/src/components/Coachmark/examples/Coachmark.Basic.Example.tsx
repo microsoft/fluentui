@@ -9,17 +9,13 @@ import {
   IButtonProps,
   IDropdownOption,
   IStyle,
-  TeachingBubbleContent,
-  Stack,
-  IToggleProps,
-  Toggle
+  TeachingBubbleContent
 } from 'office-ui-fabric-react';
 
 export interface ICoachmarkBasicExampleState {
   isCoachmarkVisible?: boolean;
   coachmarkPosition: DirectionalHint;
   dropdownSelectedOptionKey: string | number;
-  isPersistentBeak?: boolean;
 }
 
 export interface ICoachmarkBasicExampleStyles {
@@ -46,7 +42,6 @@ export class CoachmarkBasicExample extends BaseComponent<{}, ICoachmarkBasicExam
     super(props);
 
     this.state = {
-      isPersistentBeak: false,
       isCoachmarkVisible: false,
       coachmarkPosition: DirectionalHint.bottomAutoEdge,
       dropdownSelectedOptionKey: 'H'
@@ -79,7 +74,7 @@ export class CoachmarkBasicExample extends BaseComponent<{}, ICoachmarkBasicExam
 
     return (
       <div className={classNames.root}>
-        <Stack className={classNames.dropdownContainer}>
+        <div className={classNames.dropdownContainer}>
           <Dropdown
             label="Coachmark position"
             selectedKey={dropdownSelectedOptionKey}
@@ -102,14 +97,7 @@ export class CoachmarkBasicExample extends BaseComponent<{}, ICoachmarkBasicExam
             ]}
             onChange={this._onDropdownChange}
           />
-          <Toggle
-            onText="visible"
-            offText="not visible"
-            label="Coachmark Beak Visibility"
-            checked={this.state.isPersistentBeak}
-            onChange={this._onToggleChange}
-          />
-        </Stack>
+        </div>
 
         <div className={classNames.buttonContainer} ref={this._targetButton}>
           <DefaultButton onClick={this._onShowMenuClicked} text={isCoachmarkVisible ? 'Hide Coachmark' : 'Show Coachmark'} />
@@ -126,7 +114,6 @@ export class CoachmarkBasicExample extends BaseComponent<{}, ICoachmarkBasicExam
             ariaLabelledBy={'coachmark-label1'}
             ariaDescribedByText={'Press enter or alt + C to open the Coachmark notification'}
             ariaLabelledByText={'Coachmark notification'}
-            persistentBeak={this.state.isPersistentBeak}
           >
             <TeachingBubbleContent
               headline="Example Title"
@@ -145,12 +132,6 @@ export class CoachmarkBasicExample extends BaseComponent<{}, ICoachmarkBasicExam
       </div>
     );
   }
-
-  private _onToggleChange: IToggleProps['onChange'] = (ev, checked) => {
-    this.setState({
-      isPersistentBeak: checked
-    });
-  };
 
   private _onDismiss = (): void => {
     this.setState({

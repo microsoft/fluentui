@@ -178,7 +178,7 @@ export interface ICoachmarkProps extends React.ClassAttributes<CoachmarkBase> {
   preventDismissOnLostFocus?: boolean;
 
   /**
-   * If true then the Coachmark beak will always be visible as long as Coachmark is visible
+   * If true then the Coachmark beak (arrow pointing towards target) will always be visible as long as Coachmark is visible
    * @defaultvalue false
    */
   persistentBeak?: boolean;
