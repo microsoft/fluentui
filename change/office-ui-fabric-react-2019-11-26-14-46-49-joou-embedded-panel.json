@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Fix feature request #10918 by implementing a new panel type",
+  "packageName": "office-ui-fabric-react",
+  "email": "kuzhou@microsoft.com",
+  "commit": "8efd18b6ae4457a588b96641a1fd961496478ca3",
+  "date": "2019-11-26T06:46:49.680Z"
+}
