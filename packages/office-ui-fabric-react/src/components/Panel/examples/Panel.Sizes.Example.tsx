@@ -46,8 +46,7 @@ const options: IDropdownOption[] = [
   { text: 'Extra large', key: String(PanelType.extraLarge) },
   { text: 'Full-width (fluid)', key: String(PanelType.smallFluid) },
   { text: 'Custom (example: 888px)', key: String(PanelType.custom) },
-  { text: 'Custom (example: 888px), near side', key: String(PanelType.customNear) },
-  { text: 'Embedded (relative to its container)', key: String(PanelType.smallEmbedded) }
+  { text: 'Custom (example: 888px), near side', key: String(PanelType.customNear) }
 ];
 const dropdownStyles = { root: { maxWidth: 250, marginBottom: 16 } };
 const firstPStyle = { marginTop: 0 };

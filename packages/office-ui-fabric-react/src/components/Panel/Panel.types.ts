@@ -338,7 +338,7 @@ export enum PanelType {
   customNear = 8,
 
   /**
-   * Renders the Panel under father container in `small` size, anchored to the far side (right in LTR mode).
+   * Renders the Panel takes its father element as container in `small` size, anchored to the far side (right in LTR mode).
    * Recommended for use on small screen breakpoints.
    * - Small (320-479): full screen width, 16px left/right padding
    * - Medium (480-639): full screen width, 16px left/right padding
@@ -346,7 +346,7 @@ export enum PanelType {
    * - XLarge (1024-1365): full screen width, 32px left/right padding
    * - XXLarge (1366-up): full screen width, 40px left/right padding
    */
-  smallEmbedded = 9
+  samllRelativeFar = 9
 }
 
 /**

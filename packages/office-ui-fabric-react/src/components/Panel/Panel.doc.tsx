@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { IDocPageProps } from '../../common/DocPage.types';
 import { PanelBasicExample } from './examples/Panel.Basic.Example';
+import { PanelRelativeExample } from './examples/Panel.Relative.Example';
 import { PanelConfirmDismissExample } from './examples/Panel.ConfirmDismiss.Example';
 import { PanelControlledExample } from './examples/Panel.Controlled.Example';
 import { PanelFooterExample } from './examples/Panel.Footer.Example';
@@ -13,6 +14,7 @@ import { PanelNonModalExample } from './examples/Panel.NonModal.Example';
 import { PanelSizesExample } from './examples/Panel.Sizes.Example';
 
 const PanelBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Panel/examples/Panel.Basic.Example.tsx') as string;
+const PanelRelativeExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Panel/examples/Panel.Relative.Example.tsx') as string;
 const PanelSizesExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Panel/examples/Panel.Sizes.Example.tsx') as string;
 const PanelConfirmDismissExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Panel/examples/Panel.ConfirmDismiss.Example.tsx') as string;
 const PanelControlledExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Panel/examples/Panel.Controlled.Example.tsx') as string;
@@ -33,6 +35,11 @@ export const PanelPageProps: IDocPageProps = {
       title: 'Basic',
       code: PanelBasicExampleCode,
       view: <PanelBasicExample />
+    },
+    {
+      title: 'Relative layout',
+      code: PanelRelativeExampleCode,
+      view: <PanelRelativeExample />
     },
     {
       title: 'Size options',

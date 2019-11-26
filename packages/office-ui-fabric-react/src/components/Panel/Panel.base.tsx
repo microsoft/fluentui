@@ -149,7 +149,7 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
     const nativeProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties);
     const isOpen = this.isActive;
     const isAnimating = visibility === PanelVisibilityState.animatingClosed || visibility === PanelVisibilityState.animatingOpen;
-    const isNoOverlay = type === PanelType.smallEmbedded;
+    const isNoOverlay = type === PanelType.samllRelativeFar;
 
     if (!isOpen && !isAnimating && !isHiddenOnDismiss) {
       return null;
@@ -221,8 +221,7 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
     );
 
     if (isNoOverlay) {
-      // TODO: add classes and styles
-      return <div>{body}</div>;
+      return <>{body}</>;
     }
 
     return <Layer {...layerProps}>{body}</Layer>;
