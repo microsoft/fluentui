@@ -272,18 +272,21 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
         display: 'flex',
         flexDirection: 'row-reverse',
         flexWrap: 'wrap',
-        marginBottom: 14
+        marginBottom: 14,
+        marginLeft: 24,
+        marginTop: 14
       }
     ],
     navigation: [
       classNames.navigation,
       {
+        alignItems: 'baseline',
         display: 'flex',
         flexDirection: 'row-reverse',
         flexGrow: 1,
-        marginLeft: 24,
-        marginRight: 14,
-        marginTop: 16,
+        flexWrap: 'wrap',
+        marginRight: 24,
+        marginBottom: 14,
         selectors: {
           '& > *': {
             flexGrow: 1,
@@ -299,6 +302,7 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
         flexGrow: 0,
         justifySelf: 'flex-start',
         marginLeft: 14,
+        marginRight: -10,
         order: 1
       }
     ],
@@ -314,17 +318,11 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
     header: [
       classNames.header,
       {
-        alignItems: 'center',
-        display: 'flex',
-        flexShrink: 0,
-        marginLeft: 24,
-        marginTop: 14,
         marginRight: 'auto',
         order: 2,
+        // Width: Ensures that the header container doesnt wrap
+        // to the next line but rather the text does
         width: 'calc(100% - 110px)'
-      },
-      !hasCloseButton && {
-        marginTop: 18
       }
     ],
     headerText: [
