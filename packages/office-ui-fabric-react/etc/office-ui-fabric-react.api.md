@@ -8232,6 +8232,7 @@ export enum PanelType {
     large = 4,
     largeFixed = 5,
     medium = 3,
+    samllRelativeFar = 9,
     smallFixedFar = 1,
     smallFixedNear = 2,
     smallFluid = 0
