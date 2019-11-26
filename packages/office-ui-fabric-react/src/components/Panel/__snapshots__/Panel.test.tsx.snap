@@ -164,7 +164,13 @@ exports[`Panel renders Panel correctly 1`] = `
           <div
             className=
                 ms-Panel-commands
-
+                {
+                  align-items: baseline;
+                  display: flex;
+                  flex-direction: row-reverse;
+                  flex-wrap: wrap;
+                  margin-bottom: 14px;
+                }
             data-is-visible={true}
           >
             <div
@@ -172,12 +178,16 @@ exports[`Panel renders Panel correctly 1`] = `
                   ms-Panel-navigation
                   {
                     display: flex;
-                    height: 44px;
-                    justify-content: flex-end;
-                    padding-bottom: 0;
-                    padding-left: 5px;
-                    padding-right: 5px;
-                    padding-top: 0;
+                    flex-direction: row-reverse;
+                    flex-grow: 1;
+                    margin-left: 24px;
+                    margin-right: 14px;
+                    margin-top: 16px;
+                  }
+                  & > * {
+                    flex-grow: 1;
+                    justify-self: flex-end;
+                    order: 2;
                   }
             >
               <button
@@ -196,10 +206,14 @@ exports[`Panel renders Panel correctly 1`] = `
                       color: #605e5c;
                       cursor: pointer;
                       display: inline-block;
+                      flex-grow: 0;
                       font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                       font-size: 20px;
                       font-weight: 400;
-                      height: auto;
+                      height: 32px;
+                      justify-self: flex-start;
+                      margin-left: 14px;
+                      order: 1;
                       outline: transparent;
                       padding-bottom: 0;
                       padding-left: 4px;
@@ -210,7 +224,7 @@ exports[`Panel renders Panel correctly 1`] = `
                       text-decoration: none;
                       user-select: none;
                       vertical-align: top;
-                      width: 44px;
+                      width: 32px;
                     }
                     &::-moz-focus-inner {
                       border: 0;
@@ -309,31 +323,18 @@ exports[`Panel renders Panel correctly 1`] = `
                 </span>
               </button>
             </div>
-          </div>
-          <div
-            className=
-                ms-Panel-contentInner
-                {
-                  display: flex;
-                  flex-direction: column;
-                  flex-grow: 1;
-                  overflow-y: hidden;
-                }
-          >
             <div
               className=
                   ms-Panel-header
                   {
+                    align-items: center;
+                    display: flex;
                     flex-shrink: 0;
-                    margin-bottom: 14px;
-                    margin-left: 0;
-                    margin-right: 0;
+                    margin-left: 24px;
+                    margin-right: auto;
                     margin-top: 14px;
-                    padding-left: 16px;
-                    padding-right: 16px;
-                  }
-                  @media (min-width: 1024px){& {
-                    margin-top: 30px;
+                    order: 2;
+                    width: calc(100% - 110px);
                   }
             >
               <p
@@ -363,6 +364,17 @@ exports[`Panel renders Panel correctly 1`] = `
                 Test Panel
               </p>
             </div>
+          </div>
+          <div
+            className=
+                ms-Panel-contentInner
+                {
+                  display: flex;
+                  flex-direction: column;
+                  flex-grow: 1;
+                  overflow-y: hidden;
+                }
+          >
             <div
               className=
                   ms-Panel-scrollableContent
@@ -375,10 +387,10 @@ exports[`Panel renders Panel correctly 1`] = `
                 className=
                     ms-Panel-content
                     {
-                      margin-bottom: 0px;
-                      padding-bottom: 20px;
-                      padding-left: 16px;
-                      padding-right: 16px;
+                      margin-bottom: 24px;
+                      margin-left: 24px;
+                      margin-right: 24px;
+                      margin-top: 0;
                     }
               >
                 <span>
