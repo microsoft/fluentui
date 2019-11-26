@@ -537,7 +537,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
     // If the user passed is a value prop, use that
     // unless we are open and have a valid current pending index
-    if (!(isOpen && currentPendingIndexValid) && (text && (currentPendingValue === null || currentPendingValue === undefined))) {
+    if (!(isOpen && currentPendingIndexValid) && text && (currentPendingValue === null || currentPendingValue === undefined)) {
       return text;
     }
 
@@ -596,6 +596,10 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
           // the matched option's index
           index = currentPendingValueValidIndex;
           displayValues.push(this._normalizeToString(currentPendingValue));
+        } else if (!this.state.isOpen && currentPendingValue) {
+          displayValues.push(
+            this._indexWithinBounds(currentOptions, index) ? currentPendingValue : this._normalizeToString(suggestedDisplayValue)
+          );
         } else {
           displayValues.push(
             this._indexWithinBounds(currentOptions, index) ? currentOptions[index].text : this._normalizeToString(suggestedDisplayValue)
@@ -868,7 +872,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     // there is nothing to do
     if (this.props.multiSelect || selectedIndices.length < 1 || (selectedIndices.length === 1 && selectedIndices[0] !== index)) {
       const option: IComboBoxOption = { ...currentOptions[index] };
-      if (!option) {
+      // if option doesn't existing, or option is disabled, we noop
+      if (!option || option.disabled) {
         return;
       }
       if (this.props.multiSelect) {
@@ -1055,15 +1060,15 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         // the live value in the underlying input matches the pending option; update the state
         if (
           currentPendingValue.toLocaleLowerCase() === pendingOptionText ||
-          ((autoComplete &&
+          (autoComplete &&
             pendingOptionText.indexOf(currentPendingValue.toLocaleLowerCase()) === 0 &&
-            (this._autofill.current &&
-              this._autofill.current.isValueSelected &&
-              currentPendingValue.length + (this._autofill.current.selectionEnd! - this._autofill.current.selectionStart!) ===
-                pendingOptionText.length)) ||
-            (this._autofill.current &&
-              this._autofill.current.inputElement &&
-              this._autofill.current.inputElement.value.toLocaleLowerCase() === pendingOptionText))
+            this._autofill.current &&
+            this._autofill.current.isValueSelected &&
+            currentPendingValue.length + (this._autofill.current.selectionEnd! - this._autofill.current.selectionStart!) ===
+              pendingOptionText.length) ||
+          (this._autofill.current &&
+            this._autofill.current.inputElement &&
+            this._autofill.current.inputElement.value.toLocaleLowerCase() === pendingOptionText)
         ) {
           this._setSelectedIndex(currentPendingValueValidIndex, submitPendingValueEvent);
           this._clearPendingInfo();
@@ -1343,7 +1348,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     return currentPendingValueValidIndexOnHover >= 0
       ? currentPendingValueValidIndexOnHover
       : currentPendingValueValidIndex >= 0 ||
-        (includeCurrentPendingValue && (currentPendingValue !== null && currentPendingValue !== undefined))
+        (includeCurrentPendingValue && currentPendingValue !== null && currentPendingValue !== undefined)
       ? currentPendingValueValidIndex
       : this.props.multiSelect
       ? 0
