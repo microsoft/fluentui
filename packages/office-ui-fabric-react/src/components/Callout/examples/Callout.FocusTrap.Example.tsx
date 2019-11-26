@@ -50,7 +50,9 @@ const styles = mergeStyleSets({
     whiteSpace: 'nowrap'
   },
   buttons: {
-    padding: '0 24px 12px'
+    display: 'flex',
+    justifyContent: 'flex-end',
+    padding: '0 24px 24px'
   },
   subtext: [
     theme.fonts.small,

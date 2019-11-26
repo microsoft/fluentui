@@ -2,6 +2,20 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "date": "Mon, 25 Nov 2019 12:31:13 GMT",
+      "tag": "@uifabric/experiments_v7.18.6",
+      "version": "7.18.6",
+      "comments": {
+        "none": [
+          {
+            "comment": "Experimental button: removed unnecessary test that was causing flickers",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "2ddcf0242d9daab050f5446b93ae6f34a67a9668"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 18 Nov 2019 12:33:30 GMT",
       "tag": "@uifabric/experiments_v7.18.6",
       "version": "7.18.6",

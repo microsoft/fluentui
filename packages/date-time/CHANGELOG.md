@@ -1,7 +1,13 @@
 # Change Log - @uifabric/date-time
 
-This log was last generated on Thu, 21 Nov 2019 12:30:32 GMT and should not be manually modified.
+This log was last generated on Mon, 25 Nov 2019 12:31:13 GMT and should not be manually modified.
 
+## 7.6.0
+Mon, 25 Nov 2019 12:31:13 GMT
+
+### Minor changes
+
+- Accessibility fixes for date-time Calendar, adding new strings for new aria labels and fixing aria-live regions (jolore@microsoft.com)
 ## 7.5.7
 Thu, 21 Nov 2019 12:30:32 GMT
 
