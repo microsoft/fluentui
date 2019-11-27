@@ -173,6 +173,8 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
   private _getAriaValueText = (value: number | undefined): string | undefined => {
     if (this.props.ariaValueText && value !== undefined) {
       return this.props.ariaValueText(value);
+    } else if (value) {
+      return value.toString();
     }
   };
 
