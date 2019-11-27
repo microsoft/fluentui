@@ -378,7 +378,7 @@ export class ColorsPage extends BaseComponent<{}, IColorsPageState> {
       }
     }
 
-    const themeAsCode = ThemeGenerator.getThemeAsCode(abridgedTheme);
+    const themeAsCode = ThemeGenerator.getThemeAsCode(abridgedTheme, false);
 
     return (
       <div>

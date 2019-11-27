@@ -81,11 +81,15 @@ export class ThemeGenerator {
   /*
    * Gets code-formatted load theme blob that can be copy and pasted.
    */
-  public static getThemeAsCode(slotRules: IThemeRules): any {
+  public static getThemeAsCode(slotRules: IThemeRules, forNewThemeDesigner: boolean): any {
     const attributeTemplate = "    {0}: '{1}',\n";
     let output = '';
 
-    output += 'loadTheme({\n  palette: {\n';
+    if (forNewThemeDesigner) {
+      output += 'const _theme = createTheme({\n  palette: {\n';
+    } else {
+      output += 'loadTheme({\n  palette: {\n';
+    }
 
     for (const ruleName in slotRules) {
       if (slotRules.hasOwnProperty(ruleName)) {
@@ -95,7 +99,7 @@ export class ThemeGenerator {
         output += format(attributeTemplate, camelCasedName, outputColor);
       }
     }
-    output += '  }\n});';
+    output += '  }});';
     return output;
   }
 
