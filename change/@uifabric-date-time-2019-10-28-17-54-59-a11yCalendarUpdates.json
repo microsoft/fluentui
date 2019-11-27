@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fixed accessibility of today in date-time package",
-  "packageName": "@uifabric/date-time",
-  "email": "betrue@microsoft.com",
-  "commit": "11e879f58c5599686bfb80ef79b91ac1549cb42e",
-  "date": "2019-10-29T00:54:59.135Z"
-}

@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { css } from 'office-ui-fabric-react/lib/Utilities';
 import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react/lib/FocusZone';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
@@ -7,7 +6,38 @@ import { List, ScrollToMode } from 'office-ui-fabric-react/lib/List';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import { createListItems, IExampleItem } from '@uifabric/example-data';
-import * as styles from './List.Scrolling.Example.scss';
+import { mergeStyleSets, getTheme, normalize } from 'office-ui-fabric-react/lib/Styling';
+
+const theme = getTheme();
+
+const styles = mergeStyleSets({
+  container: {
+    overflow: 'auto',
+    maxHeight: 500,
+    marginTop: 20,
+    selectors: {
+      '.ms-List-cell:nth-child(odd)': {
+        height: 50,
+        lineHeight: 50,
+        background: theme.palette.neutralLighter
+      },
+      '.ms-List-cell:nth-child(even)': {
+        height: 25,
+        lineHeight: 25
+      }
+    }
+  },
+  itemContent: [
+    theme.fonts.medium,
+    normalize,
+    {
+      position: 'relative',
+      display: 'block',
+      borderLeft: '3px solid ' + theme.palette.themePrimary,
+      paddingLeft: 27
+    }
+  ]
+});
 
 export interface IListScrollingExampleProps {
   items?: IExampleItem[];
@@ -123,7 +153,7 @@ export class ListScrollingExample extends React.Component<IListScrollingExampleP
   private _onRenderCell = (item: IExampleItem, index: number): JSX.Element => {
     return (
       <div data-is-focusable={true}>
-        <div className={css(styles.itemContent, index % 2 === 0 ? styles.itemContentEven : styles.itemContentOdd)}>
+        <div className={styles.itemContent}>
           {index} &nbsp; {item.name}
         </div>
       </div>

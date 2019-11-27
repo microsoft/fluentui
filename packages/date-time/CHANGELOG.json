@@ -2,6 +2,76 @@
   "name": "@uifabric/date-time",
   "entries": [
     {
+      "date": "Tue, 26 Nov 2019 12:32:11 GMT",
+      "tag": "@uifabric/date-time_v7.7.0",
+      "version": "7.7.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "applying a custom ref callback for days in the calendardaygrid to allow consumers to specify their own properties directly on the dom element",
+            "author": "jolore@microsoft.com",
+            "commit": "326c5fde19df5d2f2c18aff5df3ee33ec87d14fa"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 25 Nov 2019 12:31:13 GMT",
+      "tag": "@uifabric/date-time_v7.6.0",
+      "version": "7.6.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Accessibility fixes for date-time Calendar, adding new strings for new aria labels and fixing aria-live regions",
+            "author": "jolore@microsoft.com",
+            "commit": "2e06318622eba26ed36ded82a07969a71e966e6e"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 21 Nov 2019 12:30:32 GMT",
+      "tag": "@uifabric/date-time_v7.5.7",
+      "version": "7.5.7",
+      "comments": {
+        "patch": [
+          {
+            "comment": "updating work week hover state to match the actual days that are going to be selected. The mouse over state still takes the whole week into account",
+            "author": "jolore@microsoft.com",
+            "commit": "81548bf2b1f2092d423578a5a7a8261317a46059"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 08 Nov 2019 12:30:07 GMT",
+      "tag": "@uifabric/date-time_v7.5.6",
+      "version": "7.5.6",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Change files",
+            "author": "betrue@microsoft.com",
+            "commit": "1cd1d65557c39786eef998001daa1548909dbd56"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 30 Oct 2019 19:36:52 GMT",
+      "tag": "@uifabric/date-time_v7.5.5",
+      "version": "7.5.5",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fixed accessibility of today in date-time package",
+            "author": "betrue@microsoft.com",
+            "commit": "11e879f58c5599686bfb80ef79b91ac1549cb42e"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 24 Oct 2019 12:31:42 GMT",
       "tag": "@uifabric/date-time_v7.5.4",
       "version": "7.5.4",

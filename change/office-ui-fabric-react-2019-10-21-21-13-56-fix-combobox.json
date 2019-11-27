@@ -1,9 +1,0 @@
-{
-  "type": "patch",
-  "comment": "ComboBox: Allow Space KeyUp event to propagate",
-  "packageName": "office-ui-fabric-react",
-  "email": "xgao@microsoft.com",
-  "commit": "31043b5ba01a88858e161416914df0c2a3365d32",
-  "date": "2019-10-22T04:13:56.180Z",
-  "file": "/Users/xgao/Projects/office-ui-fabric-react/change/office-ui-fabric-react-2019-10-21-21-13-56-fix-combobox.json"
-}

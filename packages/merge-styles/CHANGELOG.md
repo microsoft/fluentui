@@ -1,7 +1,13 @@
 # Change Log - @uifabric/merge-styles
 
-This log was last generated on Mon, 21 Oct 2019 12:33:23 GMT and should not be manually modified.
+This log was last generated on Fri, 08 Nov 2019 12:30:07 GMT and should not be manually modified.
 
+## 7.8.1
+Fri, 08 Nov 2019 12:30:07 GMT
+
+### Patches
+
+- Add px units to flexBasis styling by default. Remove existing styling usage where it had no effect before this PR. (jagore@microsoft.com)
 ## 7.8.0
 Mon, 21 Oct 2019 12:33:23 GMT
 

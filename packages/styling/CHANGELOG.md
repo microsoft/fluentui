@@ -1,7 +1,13 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Thu, 26 Sep 2019 12:32:32 GMT and should not be manually modified.
+This log was last generated on Thu, 14 Nov 2019 12:30:52 GMT and should not be manually modified.
 
+## 7.7.3
+Thu, 14 Nov 2019 12:30:52 GMT
+
+### Patches
+
+- Theme Designer: pull semantic slots from primary source instead of have a secondary mapping. (email not defined)
 ## 7.7.2
 Thu, 26 Sep 2019 12:32:32 GMT
 

@@ -1,6 +1,16 @@
 import { IButtonStyles } from './Button.types';
-import { ITheme, HighContrastSelector } from '../../Styling';
+import { ITheme, HighContrastSelector, IRawStyle } from '../../Styling';
 import { IsFocusVisibleClassName } from '../../Utilities';
+
+const splitButtonDividerBaseStyles = (): IRawStyle => {
+  return {
+    position: 'absolute',
+    width: 1,
+    right: 31,
+    top: 8,
+    bottom: 8
+  };
+};
 
 export function standardStyles(theme: ITheme): IButtonStyles {
   const { semanticColors: s, palette: p } = theme;
@@ -95,12 +105,8 @@ export function standardStyles(theme: ITheme): IButtonStyles {
     },
 
     splitButtonDivider: {
+      ...splitButtonDividerBaseStyles(),
       backgroundColor: p.neutralTertiaryAlt,
-      position: 'absolute',
-      width: 1,
-      right: 31,
-      top: 8,
-      bottom: 8,
       selectors: {
         [HighContrastSelector]: {
           backgroundColor: 'WindowText'
@@ -223,12 +229,8 @@ export function primaryStyles(theme: ITheme): IButtonStyles {
     },
 
     splitButtonDivider: {
-      backgroundColor: p.neutralTertiaryAlt,
-      position: 'absolute',
-      width: 1,
-      right: 31,
-      top: 8,
-      bottom: 8,
+      ...splitButtonDividerBaseStyles(),
+      backgroundColor: p.white,
       selectors: {
         [HighContrastSelector]: {
           backgroundColor: 'Window'

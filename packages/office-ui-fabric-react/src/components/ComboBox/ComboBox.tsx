@@ -816,8 +816,11 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
     const option: IComboBoxOption = currentOptions[newIndex];
 
-    // attempt to skip headers and dividers
-    if (option.itemType === SelectableOptionMenuItemType.Header || option.itemType === SelectableOptionMenuItemType.Divider) {
+    if (
+      option.itemType === SelectableOptionMenuItemType.Header ||
+      option.itemType === SelectableOptionMenuItemType.Divider ||
+      option.hidden === true
+    ) {
       // Should we continue looking for an index to select?
       if (
         searchDirection !== SearchDirection.none &&
@@ -885,6 +888,11 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
       // Only setstate if combobox is uncontrolled.
       if (this.props.selectedKey || this.props.selectedKey === null) {
+        // If ComboBox value is changed, revert preview first
+        if (this._hasPendingValue && onPendingValueChanged) {
+          onPendingValueChanged();
+          this._hasPendingValue = false;
+        }
         if (onChange) {
           onChange(submitPendingValueEvent, option, index, undefined);
         }
@@ -1041,7 +1049,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       if (this._indexWithinBounds(currentOptions, currentPendingValueValidIndex)) {
         const pendingOptionText: string = this._getPreviewText(currentOptions[currentPendingValueValidIndex]).toLocaleLowerCase();
 
-        // By exact match, that means: our pending value is the same as the the pending option text OR
+        // By exact match, that means: our pending value is the same as the pending option text OR
         // the pending option starts with the pending value and we have an "autoComplete" selection
         // where the total length is equal to pending option length OR
         // the live value in the underlying input matches the pending option; update the state
@@ -1110,6 +1118,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       calloutProps,
       dropdownWidth,
       dropdownMaxWidth,
+      onRenderUpperContent = this._onRenderUpperContent,
       onRenderLowerContent = this._onRenderLowerContent,
       useComboBoxAsMenuWidth,
       persistMenu,
@@ -1140,6 +1149,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         hidden={persistMenu ? !isOpen : undefined}
         shouldRestoreFocus={shouldRestoreFocus}
       >
+        {onRenderUpperContent(this.props, this._onRenderUpperContent)}
         <div className={this._classNames.optionsContainerWrapper} ref={this._comboBoxMenu}>
           {(onRenderList as any)({ ...props }, this._onRenderList)}
         </div>
@@ -1190,6 +1200,11 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
   // Default _onRenderLowerContent function returns nothing
   private _onRenderLowerContent = (): null => {
+    return null;
+  };
+
+  // Default _onRenderUpperContent function returns nothing
+  private _onRenderUpperContent = (): null => {
     return null;
   };
 

@@ -2,6 +2,27 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "date": "Mon, 18 Nov 2019 12:33:30 GMT",
+      "tag": "@uifabric/utilities_v7.6.0",
+      "version": "7.6.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "AutoScroll: Add horizontal scrolling",
+            "author": "v-mare@microsoft.com",
+            "commit": "32bd9f52b12622a74b93f7f1ad032e0efeb1d27c"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Fix \"the the\" to \"the\"",
+            "author": "the.kinnikuman@gmail.com",
+            "commit": "fc378d1cf157c6022db9e2d2b9a4422e3872a824"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 07 Oct 2019 12:33:45 GMT",
       "tag": "@uifabric/utilities_v7.5.0",
       "version": "7.5.0",

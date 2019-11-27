@@ -4,8 +4,10 @@ import { ComponentPage, ExampleCard, IComponentDemoPageProps, PropertiesTableSet
 
 import { LegendOverflowExample } from './examples/Legends.Overflow.Example';
 import { LegendBasicExample } from './examples/Legends.Basic.Example';
+import { LegendWrapLinesExample } from './examples/Legends.WrapLines.Example';
 
 const LegendsOverflowExampleCode = require('!raw-loader!@uifabric/charting/src/components/Legends/examples/Legends.Overflow.Example.tsx') as string;
+const LegendsWrapLinesExampleCode = require('!raw-loader!@uifabric/charting/src/components/Legends/examples/Legends.WrapLines.Example.tsx') as string;
 const LegendsBasicExampleCode = require('!raw-loader!@uifabric/charting/src/components/Legends/examples/Legends.Basic.Example.tsx') as string;
 
 export class LegendsPage extends React.Component<IComponentDemoPageProps, {}> {
@@ -18,6 +20,10 @@ export class LegendsPage extends React.Component<IComponentDemoPageProps, {}> {
           <div>
             <ExampleCard title="Legends with overflow" code={LegendsOverflowExampleCode}>
               <LegendOverflowExample />
+            </ExampleCard>
+
+            <ExampleCard title="Legends with wrap lines" code={LegendsWrapLinesExampleCode}>
+              <LegendWrapLinesExample />
             </ExampleCard>
 
             <ExampleCard title="Legends with no overflow" code={LegendsBasicExampleCode}>

@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Option to use checkbox role in Toggle component",
-  "packageName": "office-ui-fabric-react",
-  "email": "satimals@microsoft.com",
-  "commit": "db4a33a8a686d180db5f64e7417b0ea279d9fdd7",
-  "date": "2019-10-25T00:56:34.058Z"
-}

@@ -1,7 +1,37 @@
 # Change Log - @uifabric/date-time
 
-This log was last generated on Thu, 24 Oct 2019 12:31:42 GMT and should not be manually modified.
+This log was last generated on Tue, 26 Nov 2019 12:32:11 GMT and should not be manually modified.
 
+## 7.7.0
+Tue, 26 Nov 2019 12:32:11 GMT
+
+### Minor changes
+
+- applying a custom ref callback for days in the calendardaygrid to allow consumers to specify their own properties directly on the dom element (jolore@microsoft.com)
+## 7.6.0
+Mon, 25 Nov 2019 12:31:13 GMT
+
+### Minor changes
+
+- Accessibility fixes for date-time Calendar, adding new strings for new aria labels and fixing aria-live regions (jolore@microsoft.com)
+## 7.5.7
+Thu, 21 Nov 2019 12:30:32 GMT
+
+### Patches
+
+- updating work week hover state to match the actual days that are going to be selected. The mouse over state still takes the whole week into account (jolore@microsoft.com)
+## 7.5.6
+Fri, 08 Nov 2019 12:30:07 GMT
+
+### Patches
+
+- Change files (betrue@microsoft.com)
+## 7.5.5
+Wed, 30 Oct 2019 19:36:52 GMT
+
+### Patches
+
+- Fixed accessibility of today in date-time package (betrue@microsoft.com)
 ## 7.5.4
 Thu, 24 Oct 2019 12:31:42 GMT
 

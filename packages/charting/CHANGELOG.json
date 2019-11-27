@@ -2,6 +2,48 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "date": "Tue, 26 Nov 2019 12:32:11 GMT",
+      "tag": "@uifabric/charting_v0.139.0",
+      "version": "0.139.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "removing the sticky={true} property from the hover card as the card should hide when the mouse goes away from the target element, and also added the gap space 12 to avoid the flickering issue of the hover card",
+            "author": "v-sivsar@microsoft.com",
+            "commit": "b37e7aeba72e73d45e239558a08f8636980e1630"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 19 Nov 2019 12:29:10 GMT",
+      "tag": "@uifabric/charting_v0.138.1",
+      "version": "0.138.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix the bug that x-axis for linechart does not display properly",
+            "author": "dajiang@microsoft.com",
+            "commit": "dbe454d44c1a8574397e9d27001da5659f1a9a04"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 05 Nov 2019 12:25:16 GMT",
+      "tag": "@uifabric/charting_v0.138.0",
+      "version": "0.138.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Enabled wrap lines for legends",
+            "author": "dajiang@microsoft.com",
+            "commit": "4dfa746477cfd7660c56018e1987fdccd8d16b69"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 24 Oct 2019 12:31:42 GMT",
       "tag": "@uifabric/charting_v0.137.2",
       "version": "0.137.2",

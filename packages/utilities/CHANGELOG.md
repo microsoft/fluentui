@@ -1,7 +1,13 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Mon, 07 Oct 2019 12:33:45 GMT and should not be manually modified.
+This log was last generated on Mon, 18 Nov 2019 12:33:30 GMT and should not be manually modified.
 
+## 7.6.0
+Mon, 18 Nov 2019 12:33:30 GMT
+
+### Minor changes
+
+- AutoScroll: Add horizontal scrolling (v-mare@microsoft.com)
 ## 7.5.0
 Mon, 07 Oct 2019 12:33:45 GMT
 

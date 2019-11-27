@@ -21,6 +21,7 @@ export interface ICalendarYearStrings {
   rangeAriaLabel?: string | ICalendarYearRangeToString;
   prevRangeAriaLabel?: string | ICalendarYearRangeToString;
   nextRangeAriaLabel?: string | ICalendarYearRangeToString;
+  headerAriaLabelFormatString?: string;
 }
 
 export interface ICalendarYearProps extends IBaseProps<ICalendarYear> {

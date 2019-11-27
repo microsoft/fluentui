@@ -698,7 +698,7 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
           className=
 
               {
-                background-color: #c8c6c4;
+                background-color: #ffffff;
                 bottom: 8px;
                 position: absolute;
                 right: 31px;
@@ -706,7 +706,7 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
                 width: 1px;
               }
               @media screen and (-ms-high-contrast: active){& {
-                background-color: Window;
+                background-color: WindowText;
               }
         />
       </span>

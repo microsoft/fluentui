@@ -571,10 +571,12 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
         ? this.props.onEmptyResolveSuggestions
         : this.props.onEmptyInputFocus;
 
-      if (input === '' && emptyResolveSuggestions) {
-        this.setState({ suggestionsVisible: true });
-        const suggestions = emptyResolveSuggestions!(this.state.items);
-        this.updateSuggestionsList(suggestions);
+      if (input === '') {
+        if (emptyResolveSuggestions) {
+          this.setState({ suggestionsVisible: true });
+          const suggestions = emptyResolveSuggestions!(this.state.items);
+          this.updateSuggestionsList(suggestions);
+        }
       } else {
         this._requestSuggestionsOnClick = true;
         this._onResolveSuggestions(input);

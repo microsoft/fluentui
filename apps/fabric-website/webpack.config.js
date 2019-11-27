@@ -1,12 +1,14 @@
 // @ts-check
 
-module.exports = function(env) {
+module.exports = function(env, argv) {
   const path = require('path');
   const resources = require('@uifabric/build/webpack/webpack-resources');
   const { addMonacoWebpackConfig } = require('@uifabric/tsx-editor/scripts/addMonacoWebpackConfig');
   // @ts-ignore
   const version = require('./package.json').version;
-  const isProductionArg = env && env.production;
+  // production mode is either coming from env variable, CLI argument as mode or production
+  const isProductionArg =
+    (env && (env.production || env.NODE_ENV === 'production')) || argv.mode === 'production' || argv.production === true;
   const now = Date.now();
 
   // Production defaults

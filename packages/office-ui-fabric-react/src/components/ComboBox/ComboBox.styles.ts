@@ -37,20 +37,26 @@ const getDisabledStyles = memoizeFunction(
   }
 );
 
-const getListOptionHighContrastStyles = memoizeFunction(
-  (theme: ITheme): IRawStyle => {
-    return {
-      selectors: {
-        [HighContrastSelector]: {
-          backgroundColor: 'Highlight',
-          borderColor: 'Highlight',
-          color: 'HighlightText',
-          MsHighContrastAdjust: 'none'
-        }
-      }
-    };
+const listOptionHighContrastStyles: IRawStyle = {
+  selectors: {
+    [HighContrastSelector]: {
+      backgroundColor: 'Highlight',
+      borderColor: 'Highlight',
+      color: 'HighlightText',
+      MsHighContrastAdjust: 'none'
+    }
   }
-);
+};
+
+const inputHighContrastStyles: IRawStyle = {
+  selectors: {
+    [HighContrastSelector]: {
+      color: 'WindowText',
+      backgroundColor: 'Window',
+      MsHighContrastAdjust: 'none'
+    }
+  }
+};
 
 export const getOptionStyles = memoizeFunction(
   (
@@ -101,6 +107,9 @@ export const getOptionStyles = memoizeFunction(
             },
             '&.ms-Button--command:hover:active': {
               backgroundColor: option.backgroundPressedColor
+            },
+            '.ms-Checkbox-label': {
+              width: '100%'
             }
           }
         }
@@ -117,13 +126,16 @@ export const getOptionStyles = memoizeFunction(
           backgroundColor: 'transparent',
           color: option.textSelectedColor,
           selectors: {
-            ':hover': {
-              backgroundColor: option.backgroundHoveredColor
-            }
+            ':hover': [
+              {
+                backgroundColor: option.backgroundHoveredColor
+              },
+              listOptionHighContrastStyles
+            ]
           }
         },
         getFocusStyle(theme, { inset: -1, isFocusedOnly: false }),
-        getListOptionHighContrastStyles(theme)
+        listOptionHighContrastStyles
       ],
       rootDisabled: {
         color: option.textDisabledColor,
@@ -162,14 +174,22 @@ export const getCaretDownButtonStyles = memoizeFunction(
       buttonBackgroundCheckedHoveredColor: semanticColors.listItemBackgroundCheckedHovered
     };
 
+    const buttonHighContrastStyles: IStyle = {
+      selectors: {
+        [HighContrastSelector]: {
+          backgroundColor: 'Highlight',
+          borderColor: 'Highlight',
+          color: 'HighlightText',
+          MsHighContrastAdjust: 'none'
+        }
+      }
+    };
+
     const styles: IButtonStyles = {
       root: {
         color: caret.buttonTextColor,
         fontSize: fonts.small.fontSize,
         position: 'absolute',
-        // The negative positioning accounts for the 1px root border now that box-sizing is border-box
-        top: '-1px',
-        right: '-1px',
         height: ComboBoxHeight,
         lineHeight: ComboBoxLineHeight,
         width: ComboBoxCaretDownWidth,
@@ -187,23 +207,35 @@ export const getCaretDownButtonStyles = memoizeFunction(
       icon: {
         fontSize: fonts.small.fontSize
       },
-      rootHovered: {
-        backgroundColor: caret.buttonBackgroundHoveredColor,
-        color: caret.buttonTextHoveredCheckedColor,
-        cursor: 'pointer'
-      },
-      rootPressed: {
-        backgroundColor: caret.buttonBackgroundCheckedColor,
-        color: caret.buttonTextHoveredCheckedColor
-      },
-      rootChecked: {
-        backgroundColor: caret.buttonBackgroundCheckedColor,
-        color: caret.buttonTextHoveredCheckedColor
-      },
-      rootCheckedHovered: {
-        backgroundColor: caret.buttonBackgroundCheckedHoveredColor,
-        color: caret.buttonTextHoveredCheckedColor
-      },
+      rootHovered: [
+        {
+          backgroundColor: caret.buttonBackgroundHoveredColor,
+          color: caret.buttonTextHoveredCheckedColor,
+          cursor: 'pointer'
+        },
+        buttonHighContrastStyles
+      ],
+      rootPressed: [
+        {
+          backgroundColor: caret.buttonBackgroundCheckedColor,
+          color: caret.buttonTextHoveredCheckedColor
+        },
+        buttonHighContrastStyles
+      ],
+      rootChecked: [
+        {
+          backgroundColor: caret.buttonBackgroundCheckedColor,
+          color: caret.buttonTextHoveredCheckedColor
+        },
+        buttonHighContrastStyles
+      ],
+      rootCheckedHovered: [
+        {
+          backgroundColor: caret.buttonBackgroundCheckedHoveredColor,
+          color: caret.buttonTextHoveredCheckedColor
+        },
+        buttonHighContrastStyles
+      ],
       rootDisabled: getDisabledStyles(theme)
     };
     return concatStyleSets(styles, customStyles);
@@ -230,33 +262,60 @@ export const getStyles = memoizeFunction(
     };
 
     // placeholder style variables
-    const placeholderStyles: IStyle = {
-      color: semanticColors.inputPlaceholderText
+    const placeholderHighContrastStyles: IRawStyle = {
+      selectors: {
+        [HighContrastSelector]: {
+          color: 'GrayText'
+        }
+      }
     };
-    const placeholderStylesHovered: IStyle = {
-      color: semanticColors.inputTextHovered
-    };
-    const disabledPlaceholderStyles: IStyle = {
-      color: semanticColors.disabledText
-    };
+    const placeholderStyles: IStyle = [
+      {
+        color: semanticColors.inputPlaceholderText
+      },
+      placeholderHighContrastStyles
+    ];
+    const placeholderStylesHovered: IStyle = [
+      {
+        color: semanticColors.inputTextHovered
+      },
+      placeholderHighContrastStyles
+    ];
+    const disabledPlaceholderStyles: IStyle = [
+      {
+        color: semanticColors.disabledText
+      },
+      placeholderHighContrastStyles
+    ];
 
     const ComboBoxRootHighContrastFocused = {
       color: 'HighlightText',
       borderColor: 'Highlight',
       backgroundColor: 'Window',
-      borderWidth: '2px',
-      MsHighContrastAdjust: 'none',
-      paddingLeft: '11px',
-      paddingTop: '0',
-      paddingBottom: '0',
+      MsHighContrastAdjust: 'none'
+    };
+
+    const getFocusBorder = (color: string): IStyle => ({
+      borderColor: color,
       selectors: {
-        '.ms-ComboBox-CaretDown-button': {
-          // Negative positioning to account for the 2px border
-          right: '-2px',
-          top: '-2px'
+        ':after': {
+          pointerEvents: 'none',
+          content: "''",
+          position: 'absolute',
+          left: -1,
+          top: -1,
+          bottom: -1,
+          right: -1,
+          border: '2px solid ' + color,
+          borderRadius: effects.roundedCorner2,
+          selectors: {
+            [HighContrastSelector]: {
+              borderColor: 'Highlight'
+            }
+          }
         }
       }
-    };
+    });
 
     const styles: IComboBoxStyles = {
       container: {},
@@ -276,10 +335,6 @@ export const getStyles = memoizeFunction(
           outline: '0',
           userSelect: 'none',
           backgroundColor: root.backgroundColor,
-          borderWidth: '1px',
-          borderStyle: 'solid',
-          borderColor: root.borderColor,
-          borderRadius: effects.roundedCorner2,
           cursor: 'text',
           display: 'block',
           height: ComboBoxHeight,
@@ -287,6 +342,10 @@ export const getStyles = memoizeFunction(
           whiteSpace: 'nowrap',
           textOverflow: 'ellipsis',
           boxSizing: 'border-box', // Border-box matches Dropdown and TextField
+          borderWidth: '1px',
+          borderStyle: 'solid',
+          borderColor: root.borderColor,
+          borderRadius: effects.roundedCorner2,
           selectors: {
             '.ms-Label': {
               display: 'inline-block',
@@ -305,38 +364,56 @@ export const getStyles = memoizeFunction(
       rootHovered: {
         borderColor: root.borderHoveredColor,
         selectors: {
-          '.ms-ComboBox-Input': [{ color: semanticColors.inputTextHovered }, getPlaceholderStyles(placeholderStylesHovered)],
+          '.ms-ComboBox-Input': [
+            {
+              color: semanticColors.inputTextHovered
+            },
+            getPlaceholderStyles(placeholderStylesHovered),
+            inputHighContrastStyles
+          ],
           [HighContrastSelector]: {
             color: 'HighlightText',
-            borderColor: 'Highlight',
             backgroundColor: 'Window',
-            MsHighContrastAdjust: 'none'
+            MsHighContrastAdjust: 'none',
+            borderColor: 'Highlight'
           }
         }
       },
 
-      rootPressed: {
-        borderColor: root.borderPressedColor,
-        selectors: {
-          [HighContrastSelector]: ComboBoxRootHighContrastFocused
-        }
-      },
+      rootPressed: [
+        {
+          position: 'relative',
+          selectors: {
+            [HighContrastSelector]: ComboBoxRootHighContrastFocused
+          }
+        },
+        getFocusBorder(root.borderPressedColor)
+      ],
 
-      rootFocused: {
-        borderColor: root.borderFocusedColor,
-        selectors: {
-          '.ms-ComboBox-Input': {
-            color: semanticColors.inputTextHovered
-          },
-          [HighContrastSelector]: ComboBoxRootHighContrastFocused
-        }
-      },
+      rootFocused: [
+        {
+          selectors: {
+            '.ms-ComboBox-Input': [
+              {
+                color: semanticColors.inputTextHovered
+              },
+              inputHighContrastStyles
+            ],
+            [HighContrastSelector]: ComboBoxRootHighContrastFocused
+          }
+        },
+        getFocusBorder(root.borderFocusedColor)
+      ],
 
       rootDisabled: getDisabledStyles(theme),
 
       rootError: {
         borderColor: root.erroredColor,
-        marginBottom: '5px'
+        selectors: {
+          ':hover': {
+            borderColor: semanticColors.inputBorderHovered
+          }
+        }
       },
 
       rootDisallowFreeForm: {},
@@ -359,14 +436,16 @@ export const getStyles = memoizeFunction(
               display: 'none'
             }
           }
-        }
+        },
+        inputHighContrastStyles
       ],
 
       inputDisabled: [getDisabledStyles(theme), getPlaceholderStyles(disabledPlaceholderStyles)],
       errorMessage: [
         theme.fonts.small,
         {
-          color: root.erroredColor
+          color: root.erroredColor,
+          marginTop: '5px'
         }
       ],
 
