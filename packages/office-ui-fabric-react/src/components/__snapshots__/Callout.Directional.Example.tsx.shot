@@ -492,6 +492,7 @@ Array [
           aria-valuemax={50}
           aria-valuemin={10}
           aria-valuenow={16}
+          aria-valuetext="16"
           className=
               ms-Slider-slideBox
               ms-Slider-showValue

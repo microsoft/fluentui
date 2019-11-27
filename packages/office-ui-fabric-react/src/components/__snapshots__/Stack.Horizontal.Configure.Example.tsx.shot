@@ -135,6 +135,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
               aria-valuemax={30}
               aria-valuemin={1}
               aria-valuenow={5}
+              aria-valuetext="5"
               className=
                   ms-Slider-slideBox
                   ms-Slider-showValue
@@ -1060,6 +1061,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                 aria-valuemax={100}
                 aria-valuemin={1}
                 aria-valuenow={100}
+                aria-valuetext="100"
                 className=
                     ms-Slider-slideBox
                     ms-Slider-showValue

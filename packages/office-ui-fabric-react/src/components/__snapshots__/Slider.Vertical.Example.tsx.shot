@@ -87,6 +87,7 @@ exports[`Component Examples renders Slider.Vertical.Example.tsx correctly 1`] = 
         aria-valuemax={5}
         aria-valuemin={1}
         aria-valuenow={2}
+        aria-valuetext="2"
         className=
             ms-Slider-slideBox
             ms-Slider-showValue
@@ -368,6 +369,7 @@ exports[`Component Examples renders Slider.Vertical.Example.tsx correctly 1`] = 
         aria-valuemax={500}
         aria-valuemin={50}
         aria-valuenow={300}
+        aria-valuetext="300"
         className=
             ms-Slider-slideBox
             ms-Slider-showValue
@@ -1158,6 +1160,7 @@ exports[`Component Examples renders Slider.Vertical.Example.tsx correctly 1`] = 
         aria-valuemax={15}
         aria-valuemin={-5}
         aria-valuenow={5}
+        aria-valuetext="5"
         className=
             ms-Slider-slideBox
             ms-Slider-showValue
