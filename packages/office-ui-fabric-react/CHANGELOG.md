@@ -1,7 +1,15 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 26 Nov 2019 12:32:11 GMT and should not be manually modified.
+This log was last generated on Wed, 27 Nov 2019 12:32:07 GMT and should not be manually modified.
 
+## 7.65.1
+Wed, 27 Nov 2019 12:32:07 GMT
+
+### Patches
+
+- Combobox: Noop if selected item is disabled (mgodbolt@microsoft.com)
+- PeoplePicker: Fix selected + hover Persona text styling. (Humberto.Morimoto@microsoft.com)
+- ComboBox: Fixing options' custom styling not applying to multiselect ComboBoxes. (Humberto.Morimoto@microsoft.com)
 ## 7.65.0
 Tue, 26 Nov 2019 12:32:11 GMT
 
