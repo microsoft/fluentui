@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Updated office-ui-fabric-core dependency",
+  "packageName": "office-ui-fabric-react",
+  "email": "v-mare@microsoft.com",
+  "commit": "c13f311f04b58f788cc50e1dc74b46ff087f378c",
+  "date": "2019-10-29T22:42:31.492Z"
+}

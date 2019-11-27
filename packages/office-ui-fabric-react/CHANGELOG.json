@@ -2,6 +2,30 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Wed, 27 Nov 2019 12:32:07 GMT",
+      "tag": "office-ui-fabric-react_v7.65.1",
+      "version": "7.65.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Combobox: Noop if selected item is disabled",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "183a84df49f8c1c0003f12fe1cc34b039c2d03e8"
+          },
+          {
+            "comment": "PeoplePicker: Fix selected + hover Persona text styling.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "bf1ad76a48adaa45481f304f416ae0a73fdca9db"
+          },
+          {
+            "comment": "ComboBox: Fixing options' custom styling not applying to multiselect ComboBoxes.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "926cc3e438ced516587c94885136ca07f23606e6"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 26 Nov 2019 12:32:11 GMT",
       "tag": "office-ui-fabric-react_v7.65.0",
       "version": "7.65.0",

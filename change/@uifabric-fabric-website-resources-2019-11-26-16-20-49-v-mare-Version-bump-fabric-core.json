@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Update fabric core dependency in other package.json files",
+  "packageName": "@uifabric/fabric-website-resources",
+  "email": "v-mare@microsoft.com",
+  "commit": "ecd83e48e22fb2931fe575f8123671dd1c162960",
+  "date": "2019-11-27T00:20:30.128Z"
+}

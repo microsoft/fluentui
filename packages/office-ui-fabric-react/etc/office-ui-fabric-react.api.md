@@ -2388,6 +2388,7 @@ export interface ICoachmarkProps extends React.ClassAttributes<CoachmarkBase> {
     onAnimationOpenStart?: () => void;
     onDismiss?: (ev?: any) => void;
     onMouseMove?: (e: MouseEvent) => void;
+    persistentBeak?: boolean;
     positioningContainerProps?: IPositioningContainerProps;
     preventDismissOnLostFocus?: boolean;
     preventFocusOnMount?: boolean;
@@ -8122,6 +8123,8 @@ export const Modal: React.StatelessComponent<IModalProps>;
 // @public (undocumented)
 export class ModalBase extends BaseComponent<IModalProps, IDialogState> implements IModal {
     constructor(props: IModalProps);
+    // (undocumented)
+    componentDidMount(): void;
     // (undocumented)
     componentDidUpdate(prevProps: IModalProps, prevState: IDialogState): void;
     // (undocumented)
