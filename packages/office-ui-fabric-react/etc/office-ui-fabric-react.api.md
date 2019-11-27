@@ -2388,6 +2388,7 @@ export interface ICoachmarkProps extends React.ClassAttributes<CoachmarkBase> {
     onAnimationOpenStart?: () => void;
     onDismiss?: (ev?: any) => void;
     onMouseMove?: (e: MouseEvent) => void;
+    persistentBeak?: boolean;
     positioningContainerProps?: IPositioningContainerProps;
     preventDismissOnLostFocus?: boolean;
     preventFocusOnMount?: boolean;
