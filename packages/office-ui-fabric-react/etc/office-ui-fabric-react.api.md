@@ -3852,8 +3852,6 @@ export interface IDialogState {
     // (undocumented)
     hasBeenOpened?: boolean;
     // (undocumented)
-    hasRegisteredKeyUp?: boolean;
-    // (undocumented)
     id?: string;
     // (undocumented)
     isInKeyboardMoveMode?: boolean;
