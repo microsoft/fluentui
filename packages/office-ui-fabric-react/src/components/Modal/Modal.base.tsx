@@ -80,9 +80,8 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
           isOpen: true
         });
         // Add a keyUp handler for all key up events when the dialog is open
-        if (newProps.dragOptions && !this._hasRegisteredKeyUp) {
-          this._events.on(window, 'keyup', this._onKeyUp, true /* useCapture */);
-          this._hasRegisteredKeyUp = true;
+        if (newProps.dragOptions) {
+          this._registerForKeyUp();
         }
       } else {
         // Modal has been opened
@@ -117,9 +116,8 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
   public componentDidMount() {
     // Not all modals show just by updating their props. Some only render when they are mounted and pass in
     // isOpen as true. We need to add the keyUp handler in componentDidMount if we are in that case.
-    if (this.state.isOpen && this.state.isVisible && !this._hasRegisteredKeyUp) {
-      this._events.on(window, 'keyup', this._onKeyUp, true /* useCapture */);
-      this._hasRegisteredKeyUp = true;
+    if (this.state.isOpen && this.state.isVisible) {
+      this._registerForKeyUp();
     }
   }
 
@@ -428,5 +426,12 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
     this._lastSetY = 0;
     this.setState({ isInKeyboardMoveMode: false });
     this._events.off(window, 'keydown', this._onKeyDown, true /* useCapture */);
+  };
+
+  private _registerForKeyUp = (): void => {
+    if (!this._hasRegisteredKeyUp) {
+      this._events.on(window, 'keyup', this._onKeyUp, true /* useCapture */);
+      this._hasRegisteredKeyUp = true;
+    }
   };
 }
