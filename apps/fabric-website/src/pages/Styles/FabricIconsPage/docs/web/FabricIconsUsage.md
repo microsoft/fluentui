@@ -43,7 +43,7 @@ ReactDOM.render(<MyIconButton />, document.body.firstChild);
 
 ### Fabric Core
 
-First, ensure that you've loaded the Fabric Core stylesheet following the [getting started instructions](#/get-started/web/fabric-core).
+First, ensure that you've loaded the Fabric Core stylesheet following the [getting started instructions](#/get-started/web#fabric-core).
 
 In your app, combine the base `ms-Icon` class with a modifier class for the specific icon:
 
