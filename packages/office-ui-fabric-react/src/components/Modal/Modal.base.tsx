@@ -28,7 +28,6 @@ export interface IDialogState {
   isInKeyboardMoveMode?: boolean;
   x: number;
   y: number;
-  hasRegisteredKeyUp?: boolean;
 }
 
 const getClassNames = classNamesFunction<IModalStyleProps, IModalStyles>();
@@ -48,6 +47,7 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
   private _scrollableContent: HTMLDivElement | null;
   private _lastSetX: number;
   private _lastSetY: number;
+  private _hasRegisteredKeyUp: boolean;
 
   constructor(props: IModalProps) {
     super(props);
@@ -80,11 +80,9 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
           isOpen: true
         });
         // Add a keyUp handler for all key up events when the dialog is open
-        if (newProps.dragOptions && !this.state.hasRegisteredKeyUp) {
+        if (newProps.dragOptions && !this._hasRegisteredKeyUp) {
           this._events.on(window, 'keyup', this._onKeyUp, true /* useCapture */);
-          this.setState({
-            hasRegisteredKeyUp: true
-          });
+          this._hasRegisteredKeyUp = true;
         }
       } else {
         // Modal has been opened
@@ -119,11 +117,9 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
   public componentDidMount() {
     // Not all modals show just by updating their props. Some only render when they are mounted and pass in
     // isOpen as true. We need to add the keyUp handler in componentDidMount if we are in that case.
-    if (this.state.isOpen && this.state.isVisible && !this.state.hasRegisteredKeyUp) {
+    if (this.state.isOpen && this.state.isVisible && !this._hasRegisteredKeyUp) {
       this._events.on(window, 'keyup', this._onKeyUp, true /* useCapture */);
-      this.setState({
-        hasRegisteredKeyUp: true
-      });
+      this._hasRegisteredKeyUp = true;
     }
   }
 
@@ -299,7 +295,7 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
       y: 0
     });
 
-    if (this.props.dragOptions && this.state.hasRegisteredKeyUp) {
+    if (this.props.dragOptions && this._hasRegisteredKeyUp) {
       this._events.off(window, 'keyup', this._onKeyUp, true /* useCapture */);
     }
 
