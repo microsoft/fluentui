@@ -8124,6 +8124,8 @@ export const Modal: React.StatelessComponent<IModalProps>;
 export class ModalBase extends BaseComponent<IModalProps, IDialogState> implements IModal {
     constructor(props: IModalProps);
     // (undocumented)
+    componentDidMount(): void;
+    // (undocumented)
     componentDidUpdate(prevProps: IModalProps, prevState: IDialogState): void;
     // (undocumented)
     static defaultProps: IModalProps;
