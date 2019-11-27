@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Update spinbutton check",
+  "packageName": "office-ui-fabric-react",
+  "email": "sareiff@microsoft.com",
+  "commit": "4b2b14b537356681abe29877d667fe6ea2279e28",
+  "date": "2019-11-27T18:06:29.752Z"
+}
