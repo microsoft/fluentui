@@ -51,7 +51,7 @@
     "@uifabric/tsx-editor": "^0.10.3",
     "color-check": "0.0.2",
     "markdown-to-jsx": "6.6.1",
-    "office-ui-fabric-core": "^10.0.0",
+    "office-ui-fabric-core": "^11.0.0",
     "office-ui-fabric-react": "^7.65.1",
     "react-custom-scrollbars": "^4.2.1",
     "react-syntax-highlighter": "^10.1.3",
