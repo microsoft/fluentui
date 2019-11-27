@@ -61,7 +61,6 @@ exports[`Facepile renders Facepile correctly 1`] = `
                 background-color: transparent;
                 border-radius: 50%;
                 border: none;
-                cursor: pointer;
                 display: inline;
                 padding-bottom: 0px;
                 padding-left: 0px;
@@ -184,7 +183,6 @@ exports[`Facepile renders Facepile correctly 1`] = `
                 background-color: transparent;
                 border-radius: 50%;
                 border: none;
-                cursor: pointer;
                 display: inline;
                 padding-bottom: 0px;
                 padding-left: 0px;
