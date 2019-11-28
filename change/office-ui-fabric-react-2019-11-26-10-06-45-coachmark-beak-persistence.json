@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Coachmark: Add prop to make beak persistent after opening",
-  "packageName": "office-ui-fabric-react",
-  "email": "mgodbolt@microsoft.com",
-  "commit": "793440e0b27de0e26428a6ad6d738b1a91dc50ac",
-  "date": "2019-11-26T18:06:45.401Z"
-}

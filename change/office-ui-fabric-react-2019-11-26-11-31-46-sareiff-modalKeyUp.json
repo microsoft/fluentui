@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Update Modal onKeyUp to also register in componentDidMount",
-  "packageName": "office-ui-fabric-react",
-  "email": "sareiff@microsoft.com",
-  "commit": "43091a0a918dfac18ce651255d52eef2cee5eeff",
-  "date": "2019-11-26T19:31:45.897Z"
-}

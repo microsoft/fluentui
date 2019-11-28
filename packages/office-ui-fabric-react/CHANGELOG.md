@@ -1,7 +1,18 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 27 Nov 2019 12:32:07 GMT and should not be manually modified.
+This log was last generated on Thu, 28 Nov 2019 12:32:23 GMT and should not be manually modified.
 
+## 7.66.0
+Thu, 28 Nov 2019 12:32:23 GMT
+
+### Minor changes
+
+- Updated office-ui-fabric-core dependency (v-mare@microsoft.com)
+- Coachmark: Add prop to make beak persistent after opening (mgodbolt@microsoft.com)
+### Patches
+
+- Update Modal onKeyUp to also register in componentDidMount (sareiff@microsoft.com)
+- Update spinbutton check (sareiff@microsoft.com)
 ## 7.65.1
 Wed, 27 Nov 2019 12:32:07 GMT
 

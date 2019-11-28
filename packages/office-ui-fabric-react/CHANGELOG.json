@@ -2,6 +2,37 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Thu, 28 Nov 2019 12:32:23 GMT",
+      "tag": "office-ui-fabric-react_v7.66.0",
+      "version": "7.66.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Updated office-ui-fabric-core dependency",
+            "author": "v-mare@microsoft.com",
+            "commit": "c13f311f04b58f788cc50e1dc74b46ff087f378c"
+          },
+          {
+            "comment": "Coachmark: Add prop to make beak persistent after opening",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "793440e0b27de0e26428a6ad6d738b1a91dc50ac"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Update Modal onKeyUp to also register in componentDidMount",
+            "author": "sareiff@microsoft.com",
+            "commit": "43091a0a918dfac18ce651255d52eef2cee5eeff"
+          },
+          {
+            "comment": "Update spinbutton check",
+            "author": "sareiff@microsoft.com",
+            "commit": "4b2b14b537356681abe29877d667fe6ea2279e28"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 27 Nov 2019 12:32:07 GMT",
       "tag": "office-ui-fabric-react_v7.65.1",
       "version": "7.65.1",
