@@ -577,12 +577,17 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
     const isAlreadySingleSelected = selection.getSelectedCount() === 1 && selection.isIndexSelected(index);
 
     if (!isAlreadySingleSelected) {
+      const isModal = selection.isModal && selection.isModal();
       selection.setChangeEvents(false);
       selection.setAllSelected(false);
       selection.setIndexSelected(index, true, true);
-      if (this.props.enterModalOnTouch && this._isTouch && selection.setModal) {
-        selection.setModal(true);
-        this._setIsTouch(false);
+      if (isModal || (this.props.enterModalOnTouch && this._isTouch)) {
+        if (selection.setModal) {
+          selection.setModal(true);
+        }
+        if (this._isTouch) {
+          this._setIsTouch(false);
+        }
       }
       selection.setChangeEvents(true);
     }
