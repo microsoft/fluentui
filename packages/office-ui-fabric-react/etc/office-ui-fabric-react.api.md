@@ -5529,6 +5529,7 @@ export interface IModal {
 
 // @public (undocumented)
 export interface IModalProps extends React.ClassAttributes<ModalBase>, IWithResponsiveModeState, IAccessiblePopupProps {
+    allowIosBodyScroll?: boolean;
     className?: string;
     componentRef?: IRefObject<IModal>;
     containerClassName?: string;
@@ -5736,6 +5737,7 @@ export interface IOverlay {
 
 // @public (undocumented)
 export interface IOverlayProps extends React.HTMLAttributes<HTMLElement> {
+    allowIosBodyScroll?: boolean;
     className?: string;
     componentRef?: IRefObject<IOverlay>;
     isDarkThemed?: boolean;
@@ -5815,6 +5817,7 @@ export interface IPanelHeaderRenderer extends IRenderFunction<IPanelProps> {
 // 
 // @public (undocumented)
 export interface IPanelProps extends React.HTMLAttributes<PanelBase> {
+    allowIosBodyScroll?: boolean;
     className?: string;
     closeButtonAriaLabel?: string;
     // @deprecated
@@ -8211,6 +8214,7 @@ export const Overlay: React.StatelessComponent<IOverlayProps>;
 
 // @public (undocumented)
 export class OverlayBase extends BaseComponent<IOverlayProps, {}> {
+    constructor(props: IOverlayProps);
     // (undocumented)
     componentDidMount(): void;
     // (undocumented)

@@ -47,6 +47,7 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
   private _scrollableContent: HTMLDivElement | null;
   private _lastSetX: number;
   private _lastSetY: number;
+  private _allowIosBodyScroll: boolean;
 
   constructor(props: IModalProps) {
     super(props);
@@ -65,6 +66,9 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
     this._warnDeprecations({
       onLayerDidMount: 'layerProps.onLayerDidMount'
     });
+
+    const { allowIosBodyScroll = false } = this.props;
+    this._allowIosBodyScroll = allowIosBodyScroll;
   }
 
   // tslint:disable-next-line function-name
@@ -229,7 +233,14 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
             onDismiss={onDismiss}
           >
             <div className={classNames.root}>
-              {!isModeless && <Overlay isDarkThemed={isDarkOverlay} onClick={isBlocking ? undefined : (onDismiss as any)} {...overlay} />}
+              {!isModeless && (
+                <Overlay
+                  isDarkThemed={isDarkOverlay}
+                  onClick={isBlocking ? undefined : (onDismiss as any)}
+                  allowIosBodyScroll={this._allowIosBodyScroll}
+                  {...overlay}
+                />
+              )}
               {dragOptions ? (
                 <DraggableZone
                   handleSelector={dragOptions.dragHandleSelector || `.${classNames.main.split(' ')[0]}`}
@@ -261,7 +272,7 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
   // Allow the user to scroll within the modal but not on the body
   private _allowScrollOnModal = (elt: HTMLDivElement | null): void => {
     if (elt) {
-      allowScrollOnElement(elt, this._events);
+      allowScrollOnElement(elt, this._events, this._allowIosBodyScroll);
     } else {
       this._events.off(this._scrollableContent);
     }

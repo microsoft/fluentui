@@ -45,6 +45,7 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
   private _classNames: IProcessedStyleSet<IPanelStyles>;
   private _scrollableContent: HTMLDivElement | null;
   private _animationCallback: number | null = null;
+  private _allowIosBodyScroll: boolean;
 
   public static getDerivedStateFromProps(nextProps: Readonly<IPanelProps>, prevState: Readonly<IPanelState>): Partial<IPanelState> | null {
     if (nextProps.isOpen === undefined) {
@@ -67,6 +68,9 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
 
   constructor(props: IPanelProps) {
     super(props);
+
+    const { allowIosBodyScroll = false } = this.props;
+    this._allowIosBodyScroll = allowIosBodyScroll;
 
     this._warnDeprecations({
       ignoreExternalFocusing: 'focusTrapZoneProps',
@@ -169,7 +173,7 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
       type
     });
 
-    const { _classNames } = this;
+    const { _classNames, _allowIosBodyScroll } = this;
 
     let overlay;
     if (isBlocking && isOpen) {
@@ -178,6 +182,7 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
           className={_classNames.overlay}
           isDarkThemed={false}
           onClick={isLightDismiss ? onLightDismissClick : undefined}
+          allowIosBodyScroll={_allowIosBodyScroll}
           {...overlayProps}
         />
       );
@@ -268,7 +273,7 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
   // Allow the user to scroll within the panel but not on the body
   private _allowScrollOnPanel = (elt: HTMLDivElement | null): void => {
     if (elt) {
-      allowScrollOnElement(elt, this._events);
+      allowScrollOnElement(elt, this._events, this._allowIosBodyScroll);
     } else {
       this._events.off(this._scrollableContent);
     }
