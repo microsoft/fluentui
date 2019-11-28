@@ -99,7 +99,14 @@ export interface ISelectionZoneProps extends React.ClassAttributes<SelectionZone
 /**
  * {@docCategory Selection}
  */
-export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
+export interface ISelectionZoneState {
+  isModal: boolean | undefined;
+}
+
+/**
+ * {@docCategory Selection}
+ */
+export class SelectionZone extends BaseComponent<ISelectionZoneProps, ISelectionZoneState> {
   public static defaultProps = {
     isSelectedOnFocus: true,
     selectionMode: SelectionMode.multiple
@@ -115,6 +122,27 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
   private _isTouch: boolean;
   private _isTouchTimeoutId: number | undefined;
 
+  public static getDerivedStateFromProps(nextProps: ISelectionZoneProps, prevState: ISelectionZoneState): ISelectionZoneState {
+    const isModal = nextProps.selection.isModal && nextProps.selection.isModal();
+
+    return {
+      ...prevState,
+      isModal
+    };
+  }
+
+  constructor(props: ISelectionZoneProps) {
+    super(props);
+
+    const { selection } = this.props;
+
+    const isModal = selection.isModal && selection.isModal();
+
+    this.state = {
+      isModal
+    };
+  }
+
   public componentDidMount(): void {
     const win = getWindow(this._root.current);
 
@@ -123,6 +151,8 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
     this._events.on(document, 'click', this._findScrollParentAndTryClearOnEmptyClick);
     this._events.on(document.body, 'touchstart', this._onTouchStartCapture, true);
     this._events.on(document.body, 'touchend', this._onTouchStartCapture, true);
+
+    this._events.on(this.props.selection, 'change', this._onSelectionChange);
   }
 
   public render(): JSX.Element {
@@ -139,10 +169,20 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
         onContextMenu={this._onContextMenu}
         onMouseDownCapture={this._onMouseDownCapture}
         onFocusCapture={this._onFocus}
+        data-selection-is-modal={this.state.isModal ? true : undefined}
       >
         {this.props.children}
       </div>
     );
+  }
+
+  public componentDidUpdate(previousProps: ISelectionZoneProps): void {
+    const { selection } = this.props;
+
+    if (selection !== previousProps.selection) {
+      this._events.off(previousProps.selection);
+      this._events.on(selection, 'change', this._onSelectionChange);
+    }
   }
 
   /**
@@ -153,6 +193,16 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
    */
   public ignoreNextFocus = (): void => {
     this._handleNextFocus(false);
+  };
+
+  private _onSelectionChange = (): void => {
+    const { selection } = this.props;
+
+    const isModal = selection.isModal && selection.isModal();
+
+    this.setState({
+      isModal
+    });
   };
 
   private _onMouseDownCapture = (ev: React.MouseEvent<HTMLElement>): void => {
