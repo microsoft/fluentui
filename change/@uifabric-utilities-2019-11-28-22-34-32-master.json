@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "scroll.ts: extended event handler provided by _makeElementScrollAllower with allowIosOverscroll argument to make blocking of body scroll on touch devices optional",
+  "packageName": "@uifabric/utilities",
+  "email": "dmitriy.ravdin@siemens.com",
+  "commit": "00c16da9f0d9ee3de29c6de6a0aa32d50397cdcc",
+  "date": "2019-11-28T21:34:32.268Z"
+}
