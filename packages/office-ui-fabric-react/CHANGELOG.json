@@ -2,6 +2,20 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Fri, 29 Nov 2019 12:34:49 GMT",
+      "tag": "office-ui-fabric-react_v7.67.0",
+      "version": "7.67.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "TeachingBubble: add hasCloseButton and deprecate hasCloseIcon; prevent header text from overlapping with close button.",
+            "author": "dzearing@microsoft.com",
+            "commit": "b539f5ee1c3bbd793a83ad269f0458dbfec5659f"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 28 Nov 2019 12:32:23 GMT",
       "tag": "office-ui-fabric-react_v7.66.0",
       "version": "7.66.0",
