@@ -896,6 +896,9 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                                             className=
                                                 ms-TeachingBubble-header
                                                 ms-TeachingBubble-header--large
+                                                {
+                                                  margin-right: 24px;
+                                                }
                                                 &:not(:last-child) {
                                                   margin-bottom: 14px;
                                                 }
