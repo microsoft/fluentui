@@ -5,13 +5,10 @@ import { IRenderFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { SearchBox } from 'office-ui-fabric-react/lib/SearchBox';
 import { useConstCallback } from '@uifabric/react-hooks';
 
-const explanation =
-  'This panel has custom content in the navigation region (the part at the top which normally ' +
-  'contains the close button). If the custom content replaces the close button, be sure to provide ' +
-  'some other obvious way for users to close the panel.';
-const searchboxStyles = { root: { margin: '5px', height: 'auto', width: '100%' } };
+const explanation = 'This panel has the new header component that you can opt in by passing useLegacyHeader={false} props.';
+const searchboxStyles = { root: { height: '32px' } };
 
-export const PanelNavigationExample: React.FunctionComponent = () => {
+export const PanelNewHeaderExample: React.FunctionComponent = () => {
   const [isOpen, setIsOpen] = React.useState(false);
 
   const openPanel = useConstCallback(() => setIsOpen(true));
@@ -33,11 +30,12 @@ export const PanelNavigationExample: React.FunctionComponent = () => {
       <br />
       <DefaultButton text="Open panel" onClick={openPanel} />
       <Panel
-        headerText="Panel with custom navigation content"
+        headerText="Panel with new header"
         onRenderNavigationContent={onRenderNavigationContent}
         isOpen={isOpen}
         onDismiss={dismissPanel}
         closeButtonAriaLabel="Close"
+        useLegacyHeader={false}
       >
         <span>{explanation}</span>
       </Panel>
