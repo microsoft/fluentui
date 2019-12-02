@@ -123,6 +123,7 @@ const excludedComponents: string[] = [
   'KeytipData', // helper component, not meant to take a className
   'KeytipLayer', // helper component, not meant to take a className
   'Layer', // className is not injected
+  'NewHeader', // className is not injected
   'PersonaPresence', // className is not injected
   'PositioningContainer', // className is not injected
   'Rating', // className is not injected
