@@ -241,7 +241,10 @@ export class CalendarDayGridBase extends BaseComponent<ICalendarDayGridProps, IC
           !day.isInBounds && classNames.dayOutsideBounds,
           !day.isInMonth && classNames.dayOutsideNavigatedMonth
         )}
-        ref={(element: HTMLTableCellElement) => this._setDayCellRef(element, day, isNavigatedDate)}
+        ref={(element: HTMLTableCellElement) => {
+          this.props.customDayCellRef && this.props.customDayCellRef(element, day.originalDate, classNames);
+          this._setDayCellRef(element, day, isNavigatedDate);
+        }}
         aria-hidden={ariaHidden}
         onClick={day.isInBounds && !ariaHidden ? day.onSelected : undefined}
         onMouseOver={!ariaHidden ? this.onMouseOverDay(day) : undefined}

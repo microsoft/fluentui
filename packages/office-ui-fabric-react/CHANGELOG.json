@@ -2,6 +2,89 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Fri, 29 Nov 2019 12:34:49 GMT",
+      "tag": "office-ui-fabric-react_v7.67.0",
+      "version": "7.67.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "TeachingBubble: add hasCloseButton and deprecate hasCloseIcon; prevent header text from overlapping with close button.",
+            "author": "dzearing@microsoft.com",
+            "commit": "b539f5ee1c3bbd793a83ad269f0458dbfec5659f"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 28 Nov 2019 12:32:23 GMT",
+      "tag": "office-ui-fabric-react_v7.66.0",
+      "version": "7.66.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Updated office-ui-fabric-core dependency",
+            "author": "v-mare@microsoft.com",
+            "commit": "c13f311f04b58f788cc50e1dc74b46ff087f378c"
+          },
+          {
+            "comment": "Coachmark: Add prop to make beak persistent after opening",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "793440e0b27de0e26428a6ad6d738b1a91dc50ac"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Update Modal onKeyUp to also register in componentDidMount",
+            "author": "sareiff@microsoft.com",
+            "commit": "43091a0a918dfac18ce651255d52eef2cee5eeff"
+          },
+          {
+            "comment": "Update spinbutton check",
+            "author": "sareiff@microsoft.com",
+            "commit": "4b2b14b537356681abe29877d667fe6ea2279e28"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 27 Nov 2019 12:32:07 GMT",
+      "tag": "office-ui-fabric-react_v7.65.1",
+      "version": "7.65.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Combobox: Noop if selected item is disabled",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "183a84df49f8c1c0003f12fe1cc34b039c2d03e8"
+          },
+          {
+            "comment": "PeoplePicker: Fix selected + hover Persona text styling.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "bf1ad76a48adaa45481f304f416ae0a73fdca9db"
+          },
+          {
+            "comment": "ComboBox: Fixing options' custom styling not applying to multiselect ComboBoxes.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "926cc3e438ced516587c94885136ca07f23606e6"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 26 Nov 2019 12:32:11 GMT",
+      "tag": "office-ui-fabric-react_v7.65.0",
+      "version": "7.65.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Fabric component: adding `dir=rtl` support to affect both the `dir` attribute as well as affecting the styling generated within scope (by creating an rtl-versioned theme and exposing it via `Customizer`.)",
+            "author": "dzearing@hotmail.com",
+            "commit": "0c93b631db2d354fa0cb529981aa26d25834353d"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 25 Nov 2019 12:31:13 GMT",
       "tag": "office-ui-fabric-react_v7.64.2",
       "version": "7.64.2",

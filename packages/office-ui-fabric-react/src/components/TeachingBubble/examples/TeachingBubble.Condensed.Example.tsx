@@ -36,7 +36,7 @@ export class TeachingBubbleCondensedExample extends React.Component<{}, ITeachin
               target={'#buttonId'}
               hasCondensedHeadline={true}
               onDismiss={this._onDismiss}
-              hasCloseIcon={true}
+              hasCloseButton={true}
               closeButtonAriaLabel="Close"
               headline="Discover what’s trending around you"
             >

@@ -2388,6 +2388,7 @@ export interface ICoachmarkProps extends React.ClassAttributes<CoachmarkBase> {
     onAnimationOpenStart?: () => void;
     onDismiss?: (ev?: any) => void;
     onMouseMove?: (e: MouseEvent) => void;
+    persistentBeak?: boolean;
     positioningContainerProps?: IPositioningContainerProps;
     preventDismissOnLostFocus?: boolean;
     preventFocusOnMount?: boolean;
@@ -4480,15 +4481,13 @@ export interface IExtendedPersonaProps extends IPersonaProps {
 
 // @public (undocumented)
 export interface IFabricProps extends React.HTMLAttributes<HTMLDivElement> {
-    // (undocumented)
     applyTheme?: boolean;
-    // (undocumented)
     applyThemeToBody?: boolean;
+    as?: React.ReactType;
     // (undocumented)
     componentRef?: IRefObject<{}>;
-    // (undocumented)
+    dir?: 'rtl' | 'ltr' | 'auto';
     styles?: IStyleFunctionOrObject<IFabricStyleProps, IFabricStyles>;
-    // (undocumented)
     theme?: ITheme;
 }
 
@@ -7468,6 +7467,8 @@ export interface ITeachingBubbleProps extends React.ClassAttributes<TeachingBubb
     calloutProps?: ICalloutProps;
     componentRef?: IRefObject<ITeachingBubble>;
     footerContent?: string | JSX.Element;
+    hasCloseButton?: boolean;
+    // @deprecated (undocumented)
     hasCloseIcon?: boolean;
     hasCondensedHeadline?: boolean;
     hasSmallHeadline?: boolean;
@@ -7495,6 +7496,7 @@ export type ITeachingBubbleStyleProps = Required<Pick<ITeachingBubbleProps, 'the
     calloutClassName?: string;
     primaryButtonClassName?: string;
     secondaryButtonClassName?: string;
+    hasCloseButton?: boolean;
 };
 
 // @public (undocumented)
@@ -8124,6 +8126,8 @@ export const Modal: React.StatelessComponent<IModalProps>;
 // @public (undocumented)
 export class ModalBase extends BaseComponent<IModalProps, IDialogState> implements IModal {
     constructor(props: IModalProps);
+    // (undocumented)
+    componentDidMount(): void;
     // (undocumented)
     componentDidUpdate(prevProps: IModalProps, prevState: IDialogState): void;
     // (undocumented)

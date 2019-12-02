@@ -2,6 +2,20 @@
   "name": "@uifabric/date-time",
   "entries": [
     {
+      "date": "Tue, 26 Nov 2019 12:32:11 GMT",
+      "tag": "@uifabric/date-time_v7.7.0",
+      "version": "7.7.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "applying a custom ref callback for days in the calendardaygrid to allow consumers to specify their own properties directly on the dom element",
+            "author": "jolore@microsoft.com",
+            "commit": "326c5fde19df5d2f2c18aff5df3ee33ec87d14fa"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 25 Nov 2019 12:31:13 GMT",
       "tag": "@uifabric/date-time_v7.6.0",
       "version": "7.6.0",
