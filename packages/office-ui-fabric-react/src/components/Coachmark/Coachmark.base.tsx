@@ -190,7 +190,8 @@ export class CoachmarkBase extends BaseComponent<ICoachmarkProps, ICoachmarkStat
       delayBeforeCoachmarkAnimation,
       styles,
       theme,
-      className
+      className,
+      persistentBeak
     } = this.props;
 
     const {
@@ -253,7 +254,7 @@ export class CoachmarkBase extends BaseComponent<ICoachmarkProps, ICoachmarkStat
           <div className={classNames.translateAnimationContainer} ref={this._translateAnimationContainer}>
             <div className={classNames.scaleAnimationLayer}>
               <div className={classNames.rotateAnimationLayer}>
-                {this._positioningContainer.current && isCollapsed && (
+                {this._positioningContainer.current && (isCollapsed || persistentBeak) && (
                   <Beak
                     left={beakLeft}
                     top={beakTop}

@@ -1,7 +1,13 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Tue, 19 Nov 2019 12:29:10 GMT and should not be manually modified.
+This log was last generated on Tue, 26 Nov 2019 12:32:11 GMT and should not be manually modified.
 
+## 0.139.0
+Tue, 26 Nov 2019 12:32:11 GMT
+
+### Minor changes
+
+- removing the sticky={true} property from the hover card as the card should hide when the mouse goes away from the target element, and also added the gap space 12 to avoid the flickering issue of the hover card (v-sivsar@microsoft.com)
 ## 0.138.1
 Tue, 19 Nov 2019 12:29:10 GMT
 

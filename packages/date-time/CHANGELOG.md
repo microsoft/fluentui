@@ -1,7 +1,13 @@
 # Change Log - @uifabric/date-time
 
-This log was last generated on Mon, 25 Nov 2019 12:31:13 GMT and should not be manually modified.
+This log was last generated on Tue, 26 Nov 2019 12:32:11 GMT and should not be manually modified.
 
+## 7.7.0
+Tue, 26 Nov 2019 12:32:11 GMT
+
+### Minor changes
+
+- applying a custom ref callback for days in the calendardaygrid to allow consumers to specify their own properties directly on the dom element (jolore@microsoft.com)
 ## 7.6.0
 Mon, 25 Nov 2019 12:31:13 GMT
 

@@ -25,6 +25,9 @@ export function getStyles(props: IPeoplePickerItemSelectedStyleProps): IPeoplePi
       !disabled && {
         color: palette.white,
         selectors: {
+          ':hover': {
+            color: palette.white
+          },
           [HighContrastSelector]: {
             color: 'HighlightText'
           }

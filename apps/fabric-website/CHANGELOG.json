@@ -2,6 +2,20 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "date": "Thu, 28 Nov 2019 12:32:23 GMT",
+      "tag": "@uifabric/fabric-website_v7.7.1",
+      "version": "7.7.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update fabric core dependency in other package.json files",
+            "author": "v-mare@microsoft.com",
+            "commit": "ecd83e48e22fb2931fe575f8123671dd1c162960"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 06 Nov 2019 12:34:07 GMT",
       "tag": "@uifabric/fabric-website_v7.7.0",
       "version": "7.7.0",

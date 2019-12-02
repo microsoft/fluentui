@@ -1,9 +1,0 @@
-{
-  "type": "minor",
-  "comment": "removing the sticky={true} property from the hover card as the card should hide when the mouse goes away from the target element, and also added the gap space 12 to avoid the flickering issue of the hover card",
-  "packageName": "@uifabric/charting",
-  "email": "v-sivsar@microsoft.com",
-  "commit": "b37e7aeba72e73d45e239558a08f8636980e1630",
-  "date": "2019-11-21T07:29:29.154Z",
-  "file": "C:\\git\\office-ui-fabric\\change\\@uifabric-charting-2019-11-21-12-59-29-user-v-sivsar-flickeringLegendChartIssue.json"
-}

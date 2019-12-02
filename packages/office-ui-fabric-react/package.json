@@ -1,6 +1,6 @@
 {
   "name": "office-ui-fabric-react",
-  "version": "7.64.2",
+  "version": "7.67.0",
   "description": "Reusable React components for building experiences for Office 365.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -57,7 +57,7 @@
     "glob": "^7.1.2",
     "highlight.js": "^9.12.0",
     "jest-snapshot": "24.1.0",
-    "office-ui-fabric-core": "^10.0.0",
+    "office-ui-fabric-core": "^11.0.0",
     "react": "16.8.6",
     "react-app-polyfill": "~1.0.1",
     "react-dom": "16.8.6",
