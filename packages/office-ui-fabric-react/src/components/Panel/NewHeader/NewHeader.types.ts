@@ -13,10 +13,12 @@ export interface INewHeaderProps extends IPanelProps {
     defaultRender?: IPanelHeaderRenderer | undefined,
     headerTextId?: string | undefined
   ) => JSX.Element;
+
   /**
    * Function that dismisses the panel
    */
   onPanelClick?: (ev?: any) => void;
+
   /**
    * The ID of an element containing the panel's title
    */

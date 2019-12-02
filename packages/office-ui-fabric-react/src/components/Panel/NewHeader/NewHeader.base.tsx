@@ -7,12 +7,12 @@ import { INewHeaderProps, INewHeaderStyleProps, INewHeaderStyles } from './NewHe
 const getClassNames = classNamesFunction<INewHeaderStyleProps, INewHeaderStyles>();
 
 export class NewHeaderBase extends React.Component<INewHeaderProps> {
+  private _classNames: IProcessedStyleSet<INewHeaderStyles>;
+
   constructor(props: INewHeaderProps) {
     super(props);
     initializeComponentRef(this);
   }
-
-  private _classNames: IProcessedStyleSet<INewHeaderStyles>;
 
   public render(): JSX.Element | null {
     const {
