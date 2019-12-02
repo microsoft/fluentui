@@ -42,7 +42,13 @@ export class SliderBasicExample extends React.Component<{}, ISliderBasicExampleS
           onChange={(value: number) => this.setState({ value })}
           showValue={true}
         />
-        <Slider label="Example with formatted value" max={100} valueFormat={(value: number) => `${value}%`} showValue={true} />
+        <Slider
+          label="Example with formatted value"
+          max={100}
+          ariaValueText={(value: number) => `${value} percent`}
+          valueFormat={(value: number) => `${value}%`}
+          showValue={true}
+        />
         <Slider label="Origin from zero" min={-5} max={5} step={1} defaultValue={2} showValue originFromZero />
       </Stack>
     );
