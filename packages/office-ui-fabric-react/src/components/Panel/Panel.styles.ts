@@ -150,6 +150,13 @@ const getPanelBreakpoints = (type: PanelType): { [x: string]: IStyle } | undefin
   return selectors;
 };
 
+const commandBarHeight = '44px';
+
+const sharedPaddingStyles = {
+  paddingLeft: '16px',
+  paddingRight: '16px'
+};
+
 // // TODO -Issue #5689: Comment in once Button is converted to mergeStyles
 // function getIconButtonStyles(props: IPanelStyleProps): IStyleFunctionOrObject<IButtonStyleProps, IButtonStyles> {
 //   const { theme } = props;
@@ -179,7 +186,8 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
     isOpen,
     isHiddenOnDismiss,
     theme,
-    type = PanelType.smallFixedFar
+    type = PanelType.smallFixedFar,
+    useLegacyHeader
   } = props;
   const { effects, fonts, semanticColors } = theme;
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
@@ -265,47 +273,17 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
       !isOpen && isAnimating && isOnRightSide && AnimationClassNames.slideRightOut40,
       focusTrapZoneClassName
     ],
-    commands: [
-      classNames.commands,
-      {
-        alignItems: 'baseline',
-        display: 'flex',
-        flexDirection: 'row-reverse',
-        flexWrap: 'wrap',
-        marginBottom: 14,
-        marginLeft: 24,
-        marginTop: 14
-      }
-    ],
+    commands: [classNames.commands],
     navigation: [
       classNames.navigation,
       {
-        alignItems: 'baseline',
+        padding: '0 5px',
+        height: commandBarHeight,
         display: 'flex',
-        flexDirection: 'row-reverse',
-        flexGrow: 1,
-        flexWrap: 'wrap',
-        marginRight: 24,
-        marginBottom: 14,
-        selectors: {
-          '& > *': {
-            flexGrow: 1,
-            justifySelf: 'flex-end',
-            order: 2
-          }
-        }
+        justifyContent: 'flex-end'
       }
     ],
-    closeButton: [
-      classNames.closeButton,
-      {
-        flexGrow: 0,
-        justifySelf: 'flex-start',
-        marginLeft: 14,
-        marginRight: -10,
-        order: 1
-      }
-    ],
+    closeButton: [classNames.closeButton],
     contentInner: [
       classNames.contentInner,
       {
@@ -317,12 +295,16 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
     ],
     header: [
       classNames.header,
+      sharedPaddingStyles,
       {
-        marginRight: 'auto',
-        order: 2,
-        // Width: Ensures that the header container doesnt wrap
-        // to the next line but rather the text does
-        width: 'calc(100% - 110px)'
+        margin: '14px 0',
+        // Ensure that title doesn't shrink if screen is too small
+        flexShrink: 0,
+        selectors: {
+          [`@media (min-width: ${ScreenWidthMinXLarge}px)`]: {
+            marginTop: '30px'
+          }
+        }
       }
     ],
     headerText: [
@@ -330,7 +312,7 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
       fonts.xLarge,
       {
         color: semanticColors.bodyText,
-        lineHeight: 27,
+        lineHeight: '27px',
         margin: 0,
         overflowWrap: 'break-word',
         wordWrap: 'break-word',
@@ -350,7 +332,14 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
     ],
     content: [
       classNames.content,
-      {
+      useLegacyHeader && [
+        sharedPaddingStyles,
+        {
+          marginBottom: 0,
+          paddingBottom: 20
+        }
+      ],
+      !useLegacyHeader && {
         margin: '0 24px 24px'
       }
     ],
@@ -359,7 +348,7 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
       {
         // Ensure that footer doesn't shrink if screen is too small
         flexShrink: 0,
-        borderTop: `1px solid ${theme.palette.neutralLighter}`,
+        borderTop: `1px solid ${useLegacyHeader ? 'transparent' : theme.palette.neutralLighter}`,
         transition: `opacity ${AnimationVariables.durationValue3} ${AnimationVariables.easeFunction2}`
       },
       isFooterSticky && {
@@ -369,9 +358,10 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
     ],
     footerInner: [
       classNames.footerInner,
+      sharedPaddingStyles,
       {
-        textAlign: 'right',
-        margin: 24
+        paddingBottom: 16,
+        paddingTop: 16
       }
     ]
     // subComponentStyles: {

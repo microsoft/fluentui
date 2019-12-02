@@ -3,6 +3,8 @@ import { IconButton } from '../../Button';
 import { Layer } from '../../Layer';
 import { Overlay } from '../../Overlay';
 import { Popup } from '../../Popup';
+import { NewHeader } from './NewHeader/NewHeader';
+
 import { getTheme, IconFontSizes, IProcessedStyleSet } from '../../Styling';
 import {
   allowScrollOnElement,
@@ -132,6 +134,7 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
       overlayProps,
       type,
       styles,
+      useLegacyHeader = true,
       theme,
       customWidth,
       onLightDismissClick = this._onPanelClick,
@@ -166,7 +169,8 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
       isOnRightSide,
       isOpen,
       isHiddenOnDismiss,
-      type
+      type,
+      useLegacyHeader
     });
 
     const { _classNames } = this;
@@ -184,6 +188,17 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
     }
 
     const header = onRenderHeader(this.props, this._onRenderHeader, headerTextId);
+
+    const newHeaderProps = {
+      closeButtonAriaLabel: this.props.closeButtonAriaLabel,
+      onPanelClick: this._onPanelClick,
+      headerText: this.props.headerText,
+      headerTextId,
+      onRenderHeader: this.props.onRenderHeader,
+      onRenderNavigation: this.props.onRenderNavigation,
+      onRenderNavigationContent: this.props.onRenderNavigationContent,
+      hasCloseButton: hasCloseButton
+    };
 
     return (
       <Layer {...layerProps}>
@@ -206,11 +221,15 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
               style={customWidthStyles}
               elementToFocusOnDismiss={elementToFocusOnDismiss}
             >
-              <div className={_classNames.commands} data-is-visible={true}>
-                {onRenderNavigation(this.props, this._onRenderNavigation)}
-                {header}
-              </div>
+              {useLegacyHeader ? (
+                <div className={_classNames.commands} data-is-visible={true}>
+                  {onRenderNavigation(this.props, this._onRenderNavigation)}
+                </div>
+              ) : (
+                <NewHeader {...newHeaderProps} />
+              )}
               <div className={_classNames.contentInner}>
+                {useLegacyHeader ? header : null}
                 <div ref={this._allowScrollOnPanel} className={_classNames.scrollableContent} data-is-scrollable={true}>
                   {onRenderBody(this.props, this._onRenderBody)}
                 </div>
@@ -288,7 +307,7 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
   };
 
   private _onRenderNavigationContent = (props: IPanelProps): JSX.Element | null => {
-    const { closeButtonAriaLabel, hasCloseButton } = props;
+    const { closeButtonAriaLabel, hasCloseButton, useLegacyHeader = true } = props;
     const theme = getTheme();
     if (hasCloseButton) {
       // TODO -Issue #5689: Comment in once Button is converted to mergeStyles
@@ -300,10 +319,16 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
           // TODO -Issue #5689: Comment in once Button is converted to mergeStyles
           // className={iconButtonStyles}
           styles={{
-            root: {
-              color: theme.palette.neutralSecondary,
-              fontSize: IconFontSizes.large
-            },
+            root: [
+              {
+                color: theme.palette.neutralSecondary,
+                fontSize: IconFontSizes.large
+              },
+              useLegacyHeader && {
+                height: 'auto',
+                width: '44px'
+              }
+            ],
             rootHovered: {
               color: theme.palette.neutralPrimary
             }

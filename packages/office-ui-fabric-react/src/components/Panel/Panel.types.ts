@@ -225,6 +225,11 @@ export interface IPanelProps extends React.HTMLAttributes<PanelBase> {
    * @deprecated Serves no function.
    */
   componentId?: string;
+
+  /**
+   * Optional boolean allowing users to use legacy or new header
+   */
+  useLegacyHeader?: boolean;
 }
 
 /**
@@ -401,6 +406,11 @@ export interface IPanelStyleProps {
    * Optional parameter to provider the class name for header text
    */
   headerClassName?: string;
+
+  /**
+   * Optional boolean allowing users to use legacy or new header
+   */
+  useLegacyHeader?: boolean;
 }
 
 // TODO -Issue #5689: Comment in once Button is converted to mergeStyles
