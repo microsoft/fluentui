@@ -111,6 +111,8 @@ export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement> {
    */
   alignTargetEdge?: boolean;
 
+  announced?: boolean;
+
   /**
    * Aria role assigned to the callout (Eg. dialog, alertdialog).
    */

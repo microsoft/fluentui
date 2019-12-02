@@ -14,7 +14,8 @@ import {
   getNativeProps,
   getWindow,
   on,
-  shallowCompare
+  shallowCompare,
+  DelayedRender
 } from '../../Utilities';
 import {
   positionCallout,
@@ -181,6 +182,7 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
     const {
       styles,
       style,
+      announced,
       ariaLabel,
       ariaDescribedBy,
       ariaLabelledBy,
@@ -217,6 +219,12 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
       calloutMaxWidth
     });
 
+    // announced scenario requires specific role and ariaLive values regardless of user provided values
+    const announcedProps = announced && {
+      role: 'status',
+      ariaLive: 'assertive'
+    };
+
     const overflowStyle: React.CSSProperties = {
       ...style,
       maxHeight: contentMaxHeight,
@@ -238,6 +246,7 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
           {beakVisible && <div className={this._classNames.beak} style={this._getBeakPosition()} />}
           {beakVisible && <div className={this._classNames.beakCurtain} />}
           <Popup
+            {...announcedProps}
             {...getNativeProps(this.props, ARIA_ROLE_ATTRIBUTES)}
             ariaLabel={ariaLabel}
             ariaDescribedBy={ariaDescribedBy}
@@ -250,7 +259,13 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
             onMouseDown={this._mouseDownOnPopup}
             onMouseUp={this._mouseUpOnPopup}
           >
-            {children}
+            {announced ? (
+              <DelayedRender>
+                <>{children}</>
+              </DelayedRender>
+            ) : (
+              children
+            )}
           </Popup>
         </div>
       </div>
@@ -321,7 +336,8 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
       (ev.target !== this._targetWindow &&
         isEventTargetOutsideCallout &&
         ((this._target as MouseEvent).stopPropagation ||
-          (!this._target || (target !== this._target && !elementContains(this._target as HTMLElement, target)))))
+          !this._target ||
+          (target !== this._target && !elementContains(this._target as HTMLElement, target))))
     ) {
       this.dismiss(ev);
     }
