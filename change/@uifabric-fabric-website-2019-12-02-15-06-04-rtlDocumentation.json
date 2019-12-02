@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Updating RTL documentation.",
+  "packageName": "@uifabric/fabric-website",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "commit": "ad256851e84dbaf73817719133d30411473efb9a",
+  "date": "2019-12-02T23:06:04.626Z"
+}
