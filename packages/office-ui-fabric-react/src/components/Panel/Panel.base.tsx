@@ -190,6 +190,7 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
     const header = onRenderHeader(this.props, this._onRenderHeader, headerTextId);
 
     const newHeaderProps = {
+      styles,
       closeButtonAriaLabel: this.props.closeButtonAriaLabel,
       onPanelClick: this._onPanelClick,
       headerText: this.props.headerText,
