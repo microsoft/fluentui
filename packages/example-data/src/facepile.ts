@@ -54,7 +54,9 @@ export const facepilePersonas: IExampleFacepilePersona[] = [
   {
     imageUrl: TestImages.personaFemale,
     personaName: 'Annie Lindqvist',
-    data: '50%'
+    data: '50%',
+    onClick: (ev: unknown, persona: IExampleFacepilePersona) =>
+      alert('You clicked on ' + persona.personaName + '. Extra data: ' + persona.data)
   },
   {
     imageUrl: TestImages.personaFemale,
