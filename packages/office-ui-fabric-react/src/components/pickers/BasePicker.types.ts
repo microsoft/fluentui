@@ -20,6 +20,14 @@ export interface IBasePicker<T> {
 
   /** Set focus to the input */
   focusInput: () => void;
+
+  /**
+   * When called, will take the currently selected suggestion and complete it.
+   * If called with forceComplete true, it will attempt to force the current suggestion
+   * to complete, must provide both createGenericSuggestion, so the text can be turned into
+   * an object in the right shape,.and onValidateInput, so the object knows if it's correct or not.
+   */
+  completeSuggestion: (forceComplete?: boolean) => void;
 }
 
 /**
@@ -230,6 +238,7 @@ export interface IBasePickerSuggestionsProps<T = any>
     | 'showRemoveButtons'
     | 'suggestionsAvailableAlertText'
     | 'suggestionsContainerAriaLabel'
+    | 'showForceResolve'
   > {}
 
 /**
