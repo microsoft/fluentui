@@ -60,7 +60,7 @@ export interface IAutofillProps extends React.InputHTMLAttributes<HTMLInputEleme
   /**
    * A callback for when the current input value changes.
    *
-   * @param wasComposing true if the change event was triggered while the
+   * @param wasComposing - true if the change event was triggered while the
    * inner input was in the middle of a multi-character composition.
    * (for example, jp-hiragana IME input)
    */
@@ -102,7 +102,7 @@ export interface IAutofillProps extends React.InputHTMLAttributes<HTMLInputEleme
   /**
    * A callback used to modify the input string.
    *
-   * @param wasComposing true if the change event was triggered while the
+   * @param wasComposing - true if the change event was triggered while the
    * inner input was in the middle of a multi-character composition.
    * (for example, jp-hiragana IME input)
    */
