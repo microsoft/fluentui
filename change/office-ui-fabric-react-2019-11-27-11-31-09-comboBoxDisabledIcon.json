@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "ComboBox: Fixing icon position when disabled.",
+  "packageName": "office-ui-fabric-react",
+  "email": "humbertomakotomorimoto@gmail.com",
+  "commit": "4bb65cfa615c48411a56daa64eaa0ce0a4827d5d",
+  "date": "2019-11-27T19:31:09.581Z"
+}
