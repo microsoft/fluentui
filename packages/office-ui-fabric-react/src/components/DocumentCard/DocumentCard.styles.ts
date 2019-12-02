@@ -28,8 +28,7 @@ export const getStyles = (props: IDocumentCardStyleProps): IDocumentCardStyles =
         top: -1,
         bottom: -1,
         right: -1,
-        // same color as existing hover border
-        border: '2px solid ' + palette.neutralTertiaryAlt,
+        border: '2px solid ' + palette.neutralSecondary,
         selectors: {
           [HighContrastSelector]: {
             borderColor: 'Highlight'
