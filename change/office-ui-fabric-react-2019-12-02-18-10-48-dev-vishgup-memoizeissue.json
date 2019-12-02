@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "The items for which callback method returned null/undefined value, null/undefined was being stored in cache for these items. With the changes introduced, this undefined/null value can be updated (if available later) based on a flag.",
+  "packageName": "office-ui-fabric-react",
+  "email": "vishgup@microsoft.com",
+  "commit": "cee2f1aee7bc1e19362683cb7f2d1f098159b88d",
+  "date": "2019-12-02T12:40:15.635Z"
+}
