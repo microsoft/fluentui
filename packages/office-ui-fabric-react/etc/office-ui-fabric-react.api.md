@@ -5855,6 +5855,7 @@ export interface IPanelProps extends React.HTMLAttributes<PanelBase> {
     styles?: IStyleFunctionOrObject<IPanelStyleProps, IPanelStyles>;
     theme?: ITheme;
     type?: PanelType;
+    useLegacyHeader?: boolean;
 }
 
 // @public (undocumented)
@@ -5871,6 +5872,7 @@ export interface IPanelStyleProps {
     isOpen?: boolean;
     theme: ITheme;
     type?: PanelType;
+    useLegacyHeader?: boolean;
 }
 
 // @public (undocumented)
