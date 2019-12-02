@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "DatePicker: Making styles accept functions and objects and not only functions.",
+  "packageName": "@uifabric/date-time",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "commit": "70a9d673ea890e14275f57548e01b9c6d1e7c07e",
+  "date": "2019-12-02T22:29:34.305Z"
+}
