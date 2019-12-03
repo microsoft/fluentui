@@ -1,7 +1,43 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 26 Nov 2019 12:32:11 GMT and should not be manually modified.
+This log was last generated on Tue, 03 Dec 2019 12:36:28 GMT and should not be manually modified.
 
+## 7.68.0
+Tue, 03 Dec 2019 12:36:28 GMT
+
+### Minor changes
+
+- Pickers: Allow force resolve when no match found (joschect@microsoft.com)
+- DatePicker: Making styles accept functions and objects and not only functions. (Humberto.Morimoto@microsoft.com)
+### Patches
+
+- ComboBox: Fixing icon position when disabled. (humbertomakotomorimoto@gmail.com)
+- Removed persona cursor style as it was making non buttons look like clickable buttons (mgodbolt@microsoft.com)
+## 7.67.0
+Fri, 29 Nov 2019 12:34:49 GMT
+
+### Minor changes
+
+- TeachingBubble: add hasCloseButton and deprecate hasCloseIcon; prevent header text from overlapping with close button. (dzearing@microsoft.com)
+## 7.66.0
+Thu, 28 Nov 2019 12:32:23 GMT
+
+### Minor changes
+
+- Updated office-ui-fabric-core dependency (v-mare@microsoft.com)
+- Coachmark: Add prop to make beak persistent after opening (mgodbolt@microsoft.com)
+### Patches
+
+- Update Modal onKeyUp to also register in componentDidMount (sareiff@microsoft.com)
+- Update spinbutton check (sareiff@microsoft.com)
+## 7.65.1
+Wed, 27 Nov 2019 12:32:07 GMT
+
+### Patches
+
+- Combobox: Noop if selected item is disabled (mgodbolt@microsoft.com)
+- PeoplePicker: Fix selected + hover Persona text styling. (Humberto.Morimoto@microsoft.com)
+- ComboBox: Fixing options' custom styling not applying to multiselect ComboBoxes. (Humberto.Morimoto@microsoft.com)
 ## 7.65.0
 Tue, 26 Nov 2019 12:32:11 GMT
 

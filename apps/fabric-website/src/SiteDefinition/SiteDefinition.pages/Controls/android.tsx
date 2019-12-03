@@ -88,6 +88,15 @@ export const controlsPagesAndroid: INavPage[] = [
     isCategory: true,
     pages: [
       {
+        title: 'Bottom Navigation',
+        url: '#/controls/android/bottomnavigation',
+        component: () => <LoadingComponent title="Bottom Navigation" />,
+        getComponent: cb =>
+          require.ensure([], require =>
+            cb(require<any>('../../../pages/Controls/BottomNavigationPage/BottomNavigationPage').BottomNavigationPage)
+          )
+      },
+      {
         title: 'Popup Menu',
         url: '#/controls/android/popupmenu',
         component: () => <LoadingComponent title="PopupMenu" />,

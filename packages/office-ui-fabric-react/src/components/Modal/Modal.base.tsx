@@ -48,7 +48,8 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
   private _lastSetX: number;
   private _lastSetY: number;
   private _allowIosBodyScroll: boolean;
-
+  private _hasRegisteredKeyUp: boolean;
+  
   constructor(props: IModalProps) {
     super(props);
     this.state = {
@@ -84,7 +85,7 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
         });
         // Add a keyUp handler for all key up events when the dialog is open
         if (newProps.dragOptions) {
-          this._events.on(window, 'keyup', this._onKeyUp, true /* useCapture */);
+          this._registerForKeyUp();
         }
       } else {
         // Modal has been opened
@@ -113,6 +114,14 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
       this.setState({
         isVisible: false
       });
+    }
+  }
+
+  public componentDidMount() {
+    // Not all modals show just by updating their props. Some only render when they are mounted and pass in
+    // isOpen as true. We need to add the keyUp handler in componentDidMount if we are in that case.
+    if (this.state.isOpen && this.state.isVisible) {
+      this._registerForKeyUp();
     }
   }
 
@@ -295,7 +304,7 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
       y: 0
     });
 
-    if (this.props.dragOptions) {
+    if (this.props.dragOptions && this._hasRegisteredKeyUp) {
       this._events.off(window, 'keyup', this._onKeyUp, true /* useCapture */);
     }
 
@@ -428,5 +437,12 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
     this._lastSetY = 0;
     this.setState({ isInKeyboardMoveMode: false });
     this._events.off(window, 'keydown', this._onKeyDown, true /* useCapture */);
+  };
+
+  private _registerForKeyUp = (): void => {
+    if (!this._hasRegisteredKeyUp) {
+      this._events.on(window, 'keyup', this._onKeyUp, true /* useCapture */);
+      this._hasRegisteredKeyUp = true;
+    }
   };
 }

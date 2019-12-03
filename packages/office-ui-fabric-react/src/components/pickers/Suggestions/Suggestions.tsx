@@ -155,6 +155,7 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
             componentRef={this._forceResolveButton}
             className={this._classNames.forceResolveButton}
             onClick={this._forceResolve}
+            data-automationid={'sug-forceResolve'}
           >
             {forceResolveText}
           </CommandButton>

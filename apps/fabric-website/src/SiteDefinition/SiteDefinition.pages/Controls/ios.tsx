@@ -91,14 +91,29 @@ export const controlsPagesIos: INavPage[] = [
         component: () => <LoadingComponent title="Popup Menu" />,
         getComponent: cb =>
           require.ensure([], require => cb(require<any>('../../../pages/Controls/PopupMenuPage/PopupMenuPage').PopupMenuPage))
+      },
+      {
+        title: 'Tab Bar',
+        url: '#/controls/ios/tabbar',
+        component: () => <LoadingComponent title="Tab Bar" />,
+        getComponent: cb =>
+          require.ensure([], require =>
+            cb(require<any>('../../../pages/Controls/BottomNavigationPage/BottomNavigationPage').BottomNavigationPage)
+          )
       }
     ]
   },
   {
     title: 'Progress',
-    url: '#/controls/ios/spinner',
+    url: '#/controls/ios/shimmer',
     isCategory: true,
     pages: [
+      {
+        title: 'Shimmer',
+        url: '#/controls/ios/shimmer',
+        component: () => <LoadingComponent title="Shimmer" />,
+        getComponent: cb => require.ensure([], require => cb(require<any>('../../../pages/Controls/ShimmerPage/ShimmerPage').ShimmerPage))
+      },
       {
         title: 'Spinner',
         url: '#/controls/ios/spinner',

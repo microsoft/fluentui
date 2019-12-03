@@ -236,7 +236,12 @@ export const getCaretDownButtonStyles = memoizeFunction(
         },
         buttonHighContrastStyles
       ],
-      rootDisabled: getDisabledStyles(theme)
+      rootDisabled: [
+        getDisabledStyles(theme),
+        {
+          position: 'absolute'
+        }
+      ]
     };
     return concatStyleSets(styles, customStyles);
   }
