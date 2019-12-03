@@ -88,7 +88,7 @@ exports[`Component Examples renders SpinButton.BasicWithIcon.Example.tsx correct
 
           {
             border-radius: 2px;
-            border: 1px solid #8a8886;
+            border: 1px solid #605e5c;
             box-sizing: border-box;
             display: flex;
             height: 32px;

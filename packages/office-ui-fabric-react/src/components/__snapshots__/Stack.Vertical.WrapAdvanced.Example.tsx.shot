@@ -776,7 +776,7 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
                 ms-Dropdown-title
                 {
                   background-color: #ffffff;
-                  border-color: #8a8886;
+                  border-color: #605e5c;
                   border-radius: 2px;
                   border-style: solid;
                   border-width: 1px;
@@ -999,7 +999,7 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
                 ms-Dropdown-title
                 {
                   background-color: #ffffff;
-                  border-color: #8a8886;
+                  border-color: #605e5c;
                   border-radius: 2px;
                   border-style: solid;
                   border-width: 1px;
@@ -1222,7 +1222,7 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
                 ms-Dropdown-title
                 {
                   background-color: #ffffff;
-                  border-color: #8a8886;
+                  border-color: #605e5c;
                   border-radius: 2px;
                   border-style: solid;
                   border-width: 1px;

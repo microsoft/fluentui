@@ -69,7 +69,7 @@ exports[`Component Examples renders DatePicker.WeekNumbers.Example.tsx correctly
                   align-items: stretch;
                   background: #ffffff;
                   border-radius: 2px;
-                  border: 1px solid #8a8886;
+                  border: 1px solid #605e5c;
                   box-shadow: none;
                   box-sizing: border-box;
                   cursor: text;
@@ -363,7 +363,7 @@ exports[`Component Examples renders DatePicker.WeekNumbers.Example.tsx correctly
             ms-Dropdown-title
             {
               background-color: #ffffff;
-              border-color: #8a8886;
+              border-color: #605e5c;
               border-radius: 2px;
               border-style: solid;
               border-width: 1px;
