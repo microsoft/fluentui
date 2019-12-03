@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { DefaultButton, Callout, Link, getTheme, FontWeights, mergeStyleSets, getId } from 'office-ui-fabric-react';
+import { DefaultButton, Callout, getTheme, FontWeights, mergeStyleSets } from 'office-ui-fabric-react';
 
-export interface ICalloutBasicExampleState {
+export interface ICalloutAnnouncedExampleState {
   isCalloutVisible?: boolean;
 }
 
@@ -57,16 +57,14 @@ const styles = mergeStyleSets({
 });
 
 // Example code
-export class CalloutBasicExample extends React.Component<{}, ICalloutBasicExampleState> {
-  public state: ICalloutBasicExampleState = {
+export class CalloutAnnouncedExample extends React.Component<{}, ICalloutAnnouncedExampleState> {
+  public state: ICalloutAnnouncedExampleState = {
     isCalloutVisible: false
   };
 
   private _menuButtonElement = React.createRef<HTMLDivElement>();
   // Use getId() to ensure that the callout label and description IDs are unique on the page.
   // (It's also okay to use plain strings without getId() and manually ensure their uniqueness.)
-  private _labelId: string = getId('callout-label');
-  private _descriptionId: string = getId('callout-description');
 
   public render(): JSX.Element {
     const { isCalloutVisible } = this.state;
@@ -86,19 +84,12 @@ export class CalloutBasicExample extends React.Component<{}, ICalloutBasicExampl
             announced={true}
           >
             <div className={styles.header}>
-              <p className={styles.title} id={this._labelId}>
-                All of your favorite people
-              </p>
+              <p className={styles.title}>All of your favorite people</p>
             </div>
             <div className={styles.inner}>
-              <p className={styles.subtext} id={this._descriptionId}>
+              <p className={styles.subtext}>
                 Message body is optional. If help documentation is available, consider adding a link to learn more at the bottom.
               </p>
-              <div className={styles.actions}>
-                {/* <Link className={styles.link} href="http://microsoft.com" target="_blank">
-                  Go to microsoft
-                </Link> */}
-              </div>
             </div>
           </Callout>
         )}
