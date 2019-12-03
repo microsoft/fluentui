@@ -84,9 +84,8 @@ export class ThemeGenerator {
    * unlike in the new theme designer.
    */
   public static getThemeAsCode(slotRules: IThemeRules): any {
-    const attributeTemplate = "    {0}: '{1}',\n";
     let output = 'loadTheme({\n  palette: {\n';
-    return ThemeGenerator._makeRemainingCode(output, slotRules, attributeTemplate);
+    return ThemeGenerator._makeRemainingCode(output, slotRules);
   }
 
   /**
@@ -95,12 +94,12 @@ export class ThemeGenerator {
    * We want to use the theme object from createTheme and use the Customizations.applySettings API instead.
    */
   public static getThemeAsCodeForThemeDesigner(slotRules: IThemeRules): any {
-    const attributeTemplate = "    {0}: '{1}',\n";
     let output = 'const _theme = createTheme({\n  palette: {\n';
-    return ThemeGenerator._makeRemainingCode(output, slotRules, attributeTemplate);
+    return ThemeGenerator._makeRemainingCode(output, slotRules);
   }
 
-  private static _makeRemainingCode(output: string, slotRules: IThemeRules, attributeTemplate: string) {
+  private static _makeRemainingCode(output: string, slotRules: IThemeRules) {
+    const attributeTemplate = "    {0}: '{1}',\n";
     for (const ruleName in slotRules) {
       if (slotRules.hasOwnProperty(ruleName)) {
         const rule: IThemeSlotRule = slotRules[ruleName];
