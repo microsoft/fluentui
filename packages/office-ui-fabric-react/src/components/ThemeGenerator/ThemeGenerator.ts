@@ -80,17 +80,27 @@ export class ThemeGenerator {
 
   /*
    * Gets code-formatted load theme blob that can be copy and pasted.
+   * Only used for the old theme designer, where loadTheme usage is acceptable,
+   * unlike in the new theme designer.
    */
-  public static getThemeAsCode(slotRules: IThemeRules, forNewThemeDesigner: boolean): any {
+  public static getThemeAsCode(slotRules: IThemeRules): any {
     const attributeTemplate = "    {0}: '{1}',\n";
-    let output = '';
+    let output = 'loadTheme({\n  palette: {\n';
+    return ThemeGenerator._makeRemainingCode(output, slotRules, attributeTemplate);
+  }
 
-    if (forNewThemeDesigner) {
-      output += 'const _theme = createTheme({\n  palette: {\n';
-    } else {
-      output += 'loadTheme({\n  palette: {\n';
-    }
+  /**
+   * Gets code-formatted load theme blob, specifically for the new theme designer,
+   * aka.ms/themedesigner. Can't use loadtheme like the old theme designer.
+   * We want to use the theme object from createTheme and use the Customizations.applySettings API instead.
+   */
+  public static getThemeAsCodeForThemeDesigner(slotRules: IThemeRules): any {
+    const attributeTemplate = "    {0}: '{1}',\n";
+    let output = 'const _theme = createTheme({\n  palette: {\n';
+    return ThemeGenerator._makeRemainingCode(output, slotRules, attributeTemplate);
+  }
 
+  private static _makeRemainingCode(output: string, slotRules: IThemeRules, attributeTemplate: string) {
     for (const ruleName in slotRules) {
       if (slotRules.hasOwnProperty(ruleName)) {
         const rule: IThemeSlotRule = slotRules[ruleName];
