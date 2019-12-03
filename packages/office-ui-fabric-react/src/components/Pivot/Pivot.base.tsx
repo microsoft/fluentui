@@ -4,16 +4,16 @@ import { CommandButton, CommandBarButton, IButtonProps } from '../../Button';
 import { IPivotProps, IPivotStyleProps, IPivotStyles, IPivot } from './Pivot.types';
 import { IPivotItemProps } from './PivotItem.types';
 import { FocusZoneDirection } from '../../FocusZone';
-import { PivotItem } from './PivotItem';
 import { PivotLinkFormat } from './Pivot.types';
 import { PivotLinkSize } from './Pivot.types';
+import { PivotItem } from './PivotItem';
 import { Icon } from '../../Icon';
-import { IOverflowSet } from '../OverflowSet/OverflowSet.types';
-import { OverflowSet } from '../OverflowSet';
-import { IResizeGroup } from '../ResizeGroup/ResizeGroup.types';
-import { ResizeGroup } from '../ResizeGroup';
-import { ICommandBarItemProps } from '../CommandBar/CommandBar.types';
 import { IContextualMenuItem, ContextualMenuItemType } from '../ContextualMenu/ContextualMenu.types';
+import { ICommandBarItemProps } from '../CommandBar/CommandBar.types';
+import { IOverflowSet } from '../OverflowSet/OverflowSet.types';
+import { OverflowSet } from '../OverflowSet/OverflowSet';
+import { IResizeGroup } from '../ResizeGroup/ResizeGroup.types';
+import { ResizeGroup } from '../ResizeGroup/ResizeGroup';
 
 const getClassNames = classNamesFunction<IPivotStyleProps, IPivotStyles>();
 export interface IPivotData {

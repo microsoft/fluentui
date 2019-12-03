@@ -136,6 +136,7 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
   public dismiss = (ev?: any, dismissAll?: boolean) => {
     const { onDismiss } = this.props;
 
+    // console.log('Base props: ', !!onDismiss, this.props)
     if (onDismiss) {
       onDismiss(ev, dismissAll);
     }
@@ -1070,7 +1071,9 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
 
     let dismiss = false;
     if (item.onClick) {
+      console.log('****Menu base clicked');
       dismiss = !!item.onClick(ev, item);
+      console.log('Bsae result: ', dismiss);
     } else if (this.props.onItemClick) {
       dismiss = !!this.props.onItemClick(ev, item);
     }

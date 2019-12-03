@@ -3,8 +3,8 @@ import { PivotBase, IPivotData } from './Pivot.base';
 import { IStyle, ITheme } from '../../Styling';
 import { IRefObject, IStyleFunctionOrObject, IComponentAs } from '../../Utilities';
 import { PivotItem } from './PivotItem';
-import { IButtonProps } from '../Button';
 import { IPivotItemProps } from './PivotItem.types';
+import { IButtonProps } from '../Button/Button.types';
 
 /**
  * {@docCategory Pivot}
