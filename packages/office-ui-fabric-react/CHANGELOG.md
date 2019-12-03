@@ -1,7 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 28 Nov 2019 12:32:23 GMT and should not be manually modified.
+This log was last generated on Fri, 29 Nov 2019 12:34:49 GMT and should not be manually modified.
 
+## 7.67.0
+Fri, 29 Nov 2019 12:34:49 GMT
+
+### Minor changes
+
+- TeachingBubble: add hasCloseButton and deprecate hasCloseIcon; prevent header text from overlapping with close button. (dzearing@microsoft.com)
 ## 7.66.0
 Thu, 28 Nov 2019 12:32:23 GMT
 

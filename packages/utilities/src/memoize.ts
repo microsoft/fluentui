@@ -82,7 +82,11 @@ export function memoize<T extends Function>(
  * @param maxCacheSize - Max results to cache. If the cache exceeds this value, it will reset on the next call.
  * @returns A memoized version of the function.
  */
-export function memoizeFunction<T extends (...args: any[]) => RET_TYPE, RET_TYPE>(cb: T, maxCacheSize: number = 100): T {
+export function memoizeFunction<T extends (...args: any[]) => RET_TYPE, RET_TYPE>(
+  cb: T,
+  maxCacheSize: number = 100,
+  updateUndefinedObjects: boolean = false
+): T {
   // Avoid breaking scenarios which don't have weak map.
   if (!_weakMap) {
     return cb;
@@ -118,6 +122,10 @@ export function memoizeFunction<T extends (...args: any[]) => RET_TYPE, RET_TYPE
     if (!currentNode.hasOwnProperty('value')) {
       currentNode.value = cb(...args);
       cacheSize++;
+    }
+
+    if (updateUndefinedObjects && currentNode.value && !currentNode.value.children) {
+      currentNode.value = cb(...args);
     }
 
     return currentNode.value;
