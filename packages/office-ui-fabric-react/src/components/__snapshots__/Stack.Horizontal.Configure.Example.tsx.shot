@@ -1382,6 +1382,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
               aria-valuemax={50}
               aria-valuemin={0}
               aria-valuenow={0}
+              aria-valuetext="0"
               className=
                   ms-Slider-slideBox
                   ms-Slider-showValue
@@ -1642,6 +1643,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
               aria-valuemax={50}
               aria-valuemin={0}
               aria-valuenow={0}
+              aria-valuetext="0"
               className=
                   ms-Slider-slideBox
                   ms-Slider-showValue
@@ -1939,6 +1941,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
               aria-valuemax={50}
               aria-valuemin={0}
               aria-valuenow={0}
+              aria-valuetext="0"
               className=
                   ms-Slider-slideBox
                   ms-Slider-showValue
@@ -2199,6 +2202,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
               aria-valuemax={50}
               aria-valuemin={0}
               aria-valuenow={0}
+              aria-valuetext="0"
               className=
                   ms-Slider-slideBox
                   ms-Slider-showValue
@@ -2496,6 +2500,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
               aria-valuemax={50}
               aria-valuemin={0}
               aria-valuenow={0}
+              aria-valuetext="0"
               className=
                   ms-Slider-slideBox
                   ms-Slider-showValue
@@ -2756,6 +2761,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
               aria-valuemax={50}
               aria-valuemin={0}
               aria-valuenow={0}
+              aria-valuetext="0"
               className=
                   ms-Slider-slideBox
                   ms-Slider-showValue

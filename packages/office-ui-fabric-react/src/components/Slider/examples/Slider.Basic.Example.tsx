@@ -15,15 +15,7 @@ export class SliderBasicExample extends React.Component<{}, ISliderBasicExampleS
 
     return (
       <Stack tokens={stackTokens} styles={{ root: { maxWidth: 300 } }}>
-        <Slider
-          label="Basic example"
-          min={1}
-          max={5}
-          step={1}
-          defaultValue={2}
-          showValue={true}
-          onChange={(value: number) => console.log(value)}
-        />
+        <Slider />
         <Slider
           label="Snapping slider example"
           min={0}
