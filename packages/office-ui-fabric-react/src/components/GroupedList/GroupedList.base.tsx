@@ -231,8 +231,9 @@ export class GroupedListBase extends React.Component<IGroupedListProps, IGrouped
 
   private _getGroupHeight = (group: IGroup): number => {
     const rowHeight = this.props.compact ? COMPACT_ROW_HEIGHT : ROW_HEIGHT;
-
-    return rowHeight + (group.isCollapsed ? 0 : rowHeight * this._getGroupItemLimit(group));
+    if (group.isCollapsed) return rowHeight;
+    if (!group.children || !group.children.length) return rowHeight + rowHeight * this._getGroupItemLimit(group);
+    return group.children.reduce((acc, child) => acc + this._getGroupHeight(child), rowHeight);
   };
 
   private _getPageHeight: IListProps['getPageHeight'] = (itemIndex: number) => {
