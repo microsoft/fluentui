@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Persona Data: Added an on click to first item so that it didn't appear that last item was only with focus",
-  "packageName": "@uifabric/example-data",
-  "email": "mgodbolt@microsoft.com",
-  "commit": "5da7e670bb1fd7cfd706e10a920324f9ac166e94",
-  "date": "2019-11-27T19:53:29.010Z"
-}

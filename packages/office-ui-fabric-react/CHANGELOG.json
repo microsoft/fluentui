@@ -2,6 +2,37 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Tue, 03 Dec 2019 12:36:28 GMT",
+      "tag": "office-ui-fabric-react_v7.68.0",
+      "version": "7.68.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Pickers: Allow force resolve when no match found",
+            "author": "joschect@microsoft.com",
+            "commit": "a1eab542869ceeb70c1b2c7f9a1fc10c6f0f89df"
+          },
+          {
+            "comment": "DatePicker: Making styles accept functions and objects and not only functions.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "70a9d673ea890e14275f57548e01b9c6d1e7c07e"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "ComboBox: Fixing icon position when disabled.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "4bb65cfa615c48411a56daa64eaa0ce0a4827d5d"
+          },
+          {
+            "comment": "Removed persona cursor style as it was making non buttons look like clickable buttons",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "5da7e670bb1fd7cfd706e10a920324f9ac166e94"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 29 Nov 2019 12:34:49 GMT",
       "tag": "office-ui-fabric-react_v7.67.0",
       "version": "7.67.0",

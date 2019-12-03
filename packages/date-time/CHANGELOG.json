@@ -2,6 +2,20 @@
   "name": "@uifabric/date-time",
   "entries": [
     {
+      "date": "Tue, 03 Dec 2019 12:36:28 GMT",
+      "tag": "@uifabric/date-time_v7.8.0",
+      "version": "7.8.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "DatePicker: Making styles accept functions and objects and not only functions.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "70a9d673ea890e14275f57548e01b9c6d1e7c07e"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 26 Nov 2019 12:32:11 GMT",
       "tag": "@uifabric/date-time_v7.7.0",
       "version": "7.7.0",

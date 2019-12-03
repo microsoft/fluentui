@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Removed persona cursor style as it was making non buttons look like clickable buttons",
-  "packageName": "office-ui-fabric-react",
-  "email": "mgodbolt@microsoft.com",
-  "commit": "5da7e670bb1fd7cfd706e10a920324f9ac166e94",
-  "date": "2019-11-27T19:53:32.471Z"
-}
