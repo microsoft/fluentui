@@ -325,7 +325,7 @@ export class PivotBase extends BaseComponent<IPivotProps, IPivotState> implement
 
   /**
    * Handles the onClick event on PivotLinks
-   * @param preventDefault in the case of the overflow set we don't want to prevent the default as that is what closes the menu
+   * @param preventDefault - in the case of the overflow set we don't want to prevent the default as that is what closes the menu
    */
   private _onLinkClick(itemKey: string, preventDefault: boolean, ev: React.MouseEvent<HTMLElement>): void {
     if (preventDefault) {
@@ -336,7 +336,7 @@ export class PivotBase extends BaseComponent<IPivotProps, IPivotState> implement
 
   /**
    * Handle the onKeyPress eventon the PivotLinks
-   * @param preventDefault in the case of the overflow set we don't want to prevent the default as that is what closes the menu
+   * @param preventDefault - in the case of the overflow set we don't want to prevent the default as that is what closes the menu
    */
   private _onKeyPress(itemKey: string, preventDefault: boolean, ev: React.KeyboardEvent<HTMLElement>): void {
     if (ev.which === KeyCodes.enter) {
