@@ -14,8 +14,7 @@ import {
   getNativeProps,
   getWindow,
   on,
-  shallowCompare,
-  DelayedRender
+  shallowCompare
 } from '../../Utilities';
 import {
   positionCallout,
@@ -182,7 +181,6 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
     const {
       styles,
       style,
-      announced,
       ariaLabel,
       ariaDescribedBy,
       ariaLabelledBy,
@@ -219,12 +217,6 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
       calloutMaxWidth
     });
 
-    // announced scenario requires specific role and ariaLive values regardless of user provided values
-    const announcedProps = announced && {
-      role: 'status',
-      ariaLive: 'assertive'
-    };
-
     const overflowStyle: React.CSSProperties = {
       ...style,
       maxHeight: contentMaxHeight,
@@ -246,7 +238,6 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
           {beakVisible && <div className={this._classNames.beak} style={this._getBeakPosition()} />}
           {beakVisible && <div className={this._classNames.beakCurtain} />}
           <Popup
-            {...announcedProps}
             {...getNativeProps(this.props, ARIA_ROLE_ATTRIBUTES)}
             ariaLabel={ariaLabel}
             ariaDescribedBy={ariaDescribedBy}
@@ -259,13 +250,7 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
             onMouseDown={this._mouseDownOnPopup}
             onMouseUp={this._mouseUpOnPopup}
           >
-            {announced ? (
-              <DelayedRender>
-                <>{children}</>
-              </DelayedRender>
-            ) : (
-              children
-            )}
+            {children}
           </Popup>
         </div>
       </div>
