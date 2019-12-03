@@ -9454,7 +9454,7 @@ export class VirtualizedComboBox extends BaseComponent<IComboBoxProps, {}> imple
     // (undocumented)
     dismissMenu(): void;
     // (undocumented)
-    focus(): boolean;
+    focus(shouldOpenOnFocus?: boolean, useFocusAsync?: boolean): boolean;
     // (undocumented)
     protected _onRenderList: (props: IComboBoxProps) => JSX.Element;
     // (undocumented)
