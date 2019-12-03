@@ -3184,7 +3184,7 @@ export interface IDatePickerProps extends IBaseProps<IDatePicker>, React.HTMLAtt
     showMonthPickerAsOverlay?: boolean;
     showWeekNumbers?: boolean;
     strings?: IDatePickerStrings;
-    styles?: IStyleFunction<IDatePickerStyleProps, IDatePickerStyles>;
+    styles?: IStyleFunctionOrObject<IDatePickerStyleProps, IDatePickerStyles>;
     tabIndex?: number;
     textField?: ITextFieldProps;
     theme?: ITheme;
