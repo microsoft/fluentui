@@ -1,7 +1,13 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Thu, 28 Nov 2019 12:32:23 GMT and should not be manually modified.
+This log was last generated on Tue, 03 Dec 2019 12:36:28 GMT and should not be manually modified.
 
+## 7.7.2
+Tue, 03 Dec 2019 12:36:28 GMT
+
+### Patches
+
+- Updating mobile docs - including bottom navigation and iOS Shimmer. (emlynam@microsoft.com)
 ## 7.7.1
 Thu, 28 Nov 2019 12:32:23 GMT
 

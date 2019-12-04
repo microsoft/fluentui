@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Updating mobile docs - including bottom navigation and iOS Shimmer.",
-  "packageName": "@uifabric/fabric-website",
-  "email": "emlynam@microsoft.com",
-  "commit": "bfdafb8e0f7b62d4ea51d0668f183f5b3939ed19",
-  "date": "2019-11-26T20:24:29.205Z"
-}

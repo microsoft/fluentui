@@ -1,7 +1,27 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 29 Nov 2019 12:34:49 GMT and should not be manually modified.
+This log was last generated on Wed, 04 Dec 2019 12:32:13 GMT and should not be manually modified.
 
+## 7.69.0
+Wed, 04 Dec 2019 12:32:13 GMT
+
+### Minor changes
+
+- Add calloutProps to HoverCard (anihan@microsoft.com)
+### Patches
+
+- Added a a field to Nav Group Props" (num@microsoft.com)
+## 7.68.0
+Tue, 03 Dec 2019 12:36:28 GMT
+
+### Minor changes
+
+- Pickers: Allow force resolve when no match found (joschect@microsoft.com)
+- DatePicker: Making styles accept functions and objects and not only functions. (Humberto.Morimoto@microsoft.com)
+### Patches
+
+- ComboBox: Fixing icon position when disabled. (humbertomakotomorimoto@gmail.com)
+- Removed persona cursor style as it was making non buttons look like clickable buttons (mgodbolt@microsoft.com)
 ## 7.67.0
 Fri, 29 Nov 2019 12:34:49 GMT
 

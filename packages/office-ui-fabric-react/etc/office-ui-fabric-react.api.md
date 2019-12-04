@@ -3184,7 +3184,7 @@ export interface IDatePickerProps extends IBaseProps<IDatePicker>, React.HTMLAtt
     showMonthPickerAsOverlay?: boolean;
     showWeekNumbers?: boolean;
     strings?: IDatePickerStrings;
-    styles?: IStyleFunction<IDatePickerStyleProps, IDatePickerStyles>;
+    styles?: IStyleFunctionOrObject<IDatePickerStyleProps, IDatePickerStyles>;
     tabIndex?: number;
     textField?: ITextFieldProps;
     theme?: ITheme;
@@ -5619,6 +5619,7 @@ export interface INavLinkGroup {
     collapseAriaLabel?: string;
     collapseByDefault?: boolean;
     expandAriaLabel?: string;
+    groupData?: any;
     links: INavLink[];
     name?: string;
     onHeaderClick?: (ev?: React.MouseEvent<HTMLElement>, isCollapsing?: boolean) => void;
