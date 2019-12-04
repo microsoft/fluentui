@@ -539,7 +539,41 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
   private _onRenderList = (props: ISelectableDroppableTextProps<IDropdown, HTMLDivElement>): JSX.Element => {
     const { onRenderItem = this._onRenderItem } = props;
 
-    return <>{props.options.map((item: any, index: number) => onRenderItem({ ...item, index }, this._onRenderItem))}</>;
+    const groups: IDropdownOption[][] = [[]];
+    let allItems = [];
+
+    for (const item of props.options) {
+      const groupLength = groups.length;
+      const currentGroup = groups[groupLength - 1];
+      if (item.itemType === SelectableOptionMenuItemType.Header) {
+        if (currentGroup.length === 0) {
+          // if current group is empty i.e. header is first item
+          currentGroup.push(item);
+        } else {
+          // otherwise create a new group and push header to new group
+          groups[groupLength] = [];
+          groups[groupLength].push(item);
+        }
+      } else {
+        // push all non headers to the current group
+        currentGroup.push(item);
+      }
+    }
+
+    for (const group of groups) {
+      // check if first item in group is a header
+      const hasHeader = group[0].itemType && group[0].itemType !== SelectableOptionMenuItemType.Header;
+      const items = group.map((item: any, index: number) => {
+        return onRenderItem({ ...item, index }, this._onRenderItem);
+      });
+      allItems.push(hasHeader ? <div>{items}</div> : items);
+    }
+
+    const items = props.options.map((item: any, index: number) => {
+      return onRenderItem({ ...item, index }, this._onRenderItem);
+    });
+
+    return <>{items}</>;
   };
 
   private _onRenderItem = (item: IDropdownOption): JSX.Element | null => {
