@@ -8,6 +8,8 @@ export class SpinButtonBasicExample extends React.Component<any, any> {
         <SpinButton
           defaultValue="0"
           label={'Basic SpinButton:'}
+          min={0}
+          max={100}
           step={1}
           iconProps={{ iconName: 'IncreaseIndentLegacy' }}
           // tslint:disable:jsx-no-lambda
