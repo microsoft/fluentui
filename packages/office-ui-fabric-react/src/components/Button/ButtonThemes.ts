@@ -153,7 +153,7 @@ export function primaryStyles(theme: ITheme): IButtonStyles {
     root: {
       backgroundColor: s.primaryButtonBackground,
       color: s.primaryButtonText,
-      border: 'none',
+      border: `1px solid ${s.primaryButtonBackground}`,
       selectors: {
         [HighContrastSelector]: {
           color: 'Window',
