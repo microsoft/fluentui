@@ -339,7 +339,6 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     } = this.props;
     const { isOpen, focused, suggestedDisplayValue } = this.state;
     this._currentVisibleValue = this._getVisibleValue();
-    const hasText = this._currentVisibleValue === '';
 
     const divProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties, ['onChange', 'value']);
 
@@ -447,7 +446,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
           aria-live="polite"
           aria-atomic="true"
           id={errorMessageId}
-          className={hasText ? this._classNames.errorMessage : ''}
+          className={hasErrorMessage ? this._classNames.errorMessage : ''}
         >
           {errorMessage !== undefined ? errorMessage : ''}
         </div>
