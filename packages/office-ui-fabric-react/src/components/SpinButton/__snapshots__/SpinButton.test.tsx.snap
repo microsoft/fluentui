@@ -76,8 +76,6 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
     <input
       aria-disabled={false}
       aria-labelledby="Label0"
-      aria-valuemax={100}
-      aria-valuemin={0}
       aria-valuenow={0}
       autoComplete="off"
       className=
@@ -497,8 +495,6 @@ exports[`SpinButton renders SpinButton correctly with values that the user passe
     <input
       aria-disabled={false}
       aria-labelledby="Label0"
-      aria-valuemax={100}
-      aria-valuemin={0}
       aria-valuenow={0}
       aria-valuetext="0 pt"
       autoComplete="off"

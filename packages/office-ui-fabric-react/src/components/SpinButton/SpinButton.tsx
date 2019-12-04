@@ -47,7 +47,7 @@ export interface ISpinButtonState {
 }
 
 export type DefaultProps = Required<
-  Pick<ISpinButtonProps, 'step' | 'disabled' | 'defaultValue' | 'labelPosition' | 'label' | 'incrementButtonIcon' | 'decrementButtonIcon'>
+  Pick<ISpinButtonProps, 'step' | 'disabled' | 'labelPosition' | 'label' | 'incrementButtonIcon' | 'decrementButtonIcon'>
 >;
 
 /** Internal only props */
@@ -57,7 +57,6 @@ type ISpinButtonInternalProps = ISpinButtonProps & DefaultProps;
 export class SpinButton extends React.Component<ISpinButtonProps, ISpinButtonState> implements ISpinButton {
   public static defaultProps: DefaultProps = {
     step: 1,
-    defaultValue: '0',
     disabled: false,
     labelPosition: Position.start,
     label: '',
@@ -88,8 +87,7 @@ export class SpinButton extends React.Component<ISpinButtonProps, ISpinButtonSta
       value: 'defaultValue'
     });
 
-    const value =
-      props.value || this._getValueWithinBoundary(props.defaultValue, props.min, props.max) || SpinButton.defaultProps.defaultValue;
+    const value = props.value !== undefined ? props.value : this._getValueWithinBoundary(props.defaultValue, props.min, props.max) || '0';
     this._lastValidValue = value;
 
     // Ensure that the autocalculated precision is not negative.
@@ -515,7 +513,7 @@ export class SpinButton extends React.Component<ISpinButtonProps, ISpinButtonSta
   private _getValueWithinBoundary(value: string | undefined, min: number | undefined, max: number | undefined): string | undefined {
     let valueNum = Number(value);
     if (isNaN(valueNum)) {
-      return undefined;
+      return min !== undefined ? String(min) : undefined;
     }
 
     if (max !== undefined) {
