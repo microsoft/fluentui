@@ -84,7 +84,7 @@ export class ThemeGenerator {
    * unlike in the new theme designer.
    */
   public static getThemeAsCode(slotRules: IThemeRules): any {
-    let output = 'loadTheme({\n  palette: {\n';
+    const output = 'loadTheme({\n  palette: {\n';
     return ThemeGenerator._makeRemainingCode(output, slotRules);
   }
 
@@ -94,7 +94,7 @@ export class ThemeGenerator {
    * We want to use the theme object from createTheme and use the Customizations.applySettings API instead.
    */
   public static getThemeAsCodeForThemeDesigner(slotRules: IThemeRules): any {
-    let output = 'const _theme = createTheme({\n  palette: {\n';
+    const output = 'const _theme = createTheme({\n  palette: {\n';
     return ThemeGenerator._makeRemainingCode(output, slotRules);
   }
 
