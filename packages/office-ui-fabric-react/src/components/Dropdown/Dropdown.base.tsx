@@ -572,7 +572,15 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
         index++;
         return onRenderItem({ ...item, index }, this._onRenderItem);
       });
-      renderedGroups.push(hasHeader ? <div aria-labelledby={groupId}>{items}</div> : items);
+      renderedGroups.push(
+        hasHeader ? (
+          <div role="group" aria-labelledby={groupId}>
+            {items}
+          </div>
+        ) : (
+          items
+        )
+      );
     }
 
     return <>{renderedGroups}</>;
