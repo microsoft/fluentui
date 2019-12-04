@@ -109,6 +109,7 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
     if (this.props.multiSelect) {
       const selectedKeys = props.defaultSelectedKeys !== undefined ? props.defaultSelectedKeys : props.selectedKeys;
       selectedIndices = this._getSelectedIndexes(props.options, selectedKeys);
+      this._sizePosCache.updateOptions(props.options);
     } else {
       const selectedKey = props.defaultSelectedKey !== undefined ? props.defaultSelectedKey : props.selectedKey;
       selectedIndices = this._getSelectedIndexes(props.options, selectedKey!);
@@ -546,13 +547,14 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
       const groupLength = groups.length;
       const currentGroup = groups[groupLength - 1];
       if (item.itemType === SelectableOptionMenuItemType.Header) {
+        const header = { id: this._id + item.key, ...item };
         if (currentGroup.length === 0) {
           // if current group is empty i.e. header is first item
-          currentGroup.push(item);
+          currentGroup.push(header);
         } else {
           // otherwise create a new group and push header to new group
           groups[groupLength] = [];
-          groups[groupLength].push(item);
+          groups[groupLength].push(header);
         }
       } else {
         // push all non headers to the current group
@@ -562,19 +564,16 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
 
     const renderedGroups = [];
     for (const group of groups) {
-      const groupId = getId('group');
       // check if first item in group is a header
-      const hasHeader = group[0].itemType && group[0].itemType === SelectableOptionMenuItemType.Header;
-      if (hasHeader) {
-        group[0].id = groupId;
-      }
+      const hasHeader = group[0].itemType === SelectableOptionMenuItemType.Header;
+
       const items = group.map((item: any) => {
         index++;
         return onRenderItem({ ...item, index }, this._onRenderItem);
       });
       renderedGroups.push(
         hasHeader ? (
-          <div role="group" aria-labelledby={groupId}>
+          <div role="group" key={group[0].key} aria-labelledby={group[0].id}>
             {items}
           </div>
         ) : (
@@ -637,11 +636,6 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
       ? (this._classNames.subComponentStyles.multiSelectItem as IStyleFunctionOrObject<ICheckboxStyleProps, ICheckboxStyles>)
       : undefined;
 
-    const ariaPosProps = {
-      ['aria-posinset']: this._sizePosCache.positionInSet(item.index),
-      ['aria-setsize']: this._sizePosCache.optionSetSize
-    };
-
     return !this.props.multiSelect ? (
       <CommandButton
         id={this._listId + item.index}
@@ -658,7 +652,8 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
         aria-selected={isItemSelected ? 'true' : 'false'}
         ariaLabel={item.ariaLabel}
         title={title}
-        {...ariaPosProps}
+        aria-posinset={this._sizePosCache.positionInSet(item.index)}
+        aria-setsize={this._sizePosCache.optionSetSize}
       >
         {onRenderOption(item, this._onRenderOption)}
       </CommandButton>
@@ -683,7 +678,8 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
         aria-selected={isItemSelected ? 'true' : 'false'}
         checked={isItemSelected}
         styles={multiSelectItemStyles}
-        {...ariaPosProps}
+        ariaPositionInSet={this._sizePosCache.positionInSet(item.index)}
+        ariaSetSize={this._sizePosCache.optionSetSize}
       />
     );
   };
