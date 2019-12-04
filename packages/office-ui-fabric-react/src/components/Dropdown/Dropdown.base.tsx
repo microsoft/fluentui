@@ -540,7 +540,7 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
     const { onRenderItem = this._onRenderItem } = props;
 
     const groups: IDropdownOption[][] = [[]];
-    let allItems = [];
+    let index = -1;
 
     for (const item of props.options) {
       const groupLength = groups.length;
@@ -560,20 +560,22 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
       }
     }
 
+    const renderedGroups = [];
     for (const group of groups) {
+      const groupId = getId('group');
       // check if first item in group is a header
-      const hasHeader = group[0].itemType && group[0].itemType !== SelectableOptionMenuItemType.Header;
-      const items = group.map((item: any, index: number) => {
+      const hasHeader = group[0].itemType && group[0].itemType === SelectableOptionMenuItemType.Header;
+      if (hasHeader) {
+        group[0].id = groupId;
+      }
+      const items = group.map((item: any) => {
+        index++;
         return onRenderItem({ ...item, index }, this._onRenderItem);
       });
-      allItems.push(hasHeader ? <div>{items}</div> : items);
+      renderedGroups.push(hasHeader ? <div aria-labelledby={groupId}>{items}</div> : items);
     }
 
-    const items = props.options.map((item: any, index: number) => {
-      return onRenderItem({ ...item, index }, this._onRenderItem);
-    });
-
-    return <>{items}</>;
+    return <>{renderedGroups}</>;
   };
 
   private _onRenderItem = (item: IDropdownOption): JSX.Element | null => {
@@ -597,9 +599,9 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
 
   private _renderHeader(item: IDropdownOption): JSX.Element {
     const { onRenderOption = this._onRenderOption } = this.props;
-    const { key } = item;
+    const { key, id } = item;
     return (
-      <div key={key} className={this._classNames.dropdownItemHeader}>
+      <div id={id} key={key} className={this._classNames.dropdownItemHeader}>
         {onRenderOption(item, this._onRenderOption)}
       </div>
     );
@@ -627,6 +629,11 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
       ? (this._classNames.subComponentStyles.multiSelectItem as IStyleFunctionOrObject<ICheckboxStyleProps, ICheckboxStyles>)
       : undefined;
 
+    const ariaPosProps = {
+      ['aria-posinset']: this._sizePosCache.positionInSet(item.index),
+      ['aria-setsize']: this._sizePosCache.optionSetSize
+    };
+
     return !this.props.multiSelect ? (
       <CommandButton
         id={this._listId + item.index}
@@ -643,6 +650,7 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
         aria-selected={isItemSelected ? 'true' : 'false'}
         ariaLabel={item.ariaLabel}
         title={title}
+        {...ariaPosProps}
       >
         {onRenderOption(item, this._onRenderOption)}
       </CommandButton>
@@ -667,13 +675,18 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
         aria-selected={isItemSelected ? 'true' : 'false'}
         checked={isItemSelected}
         styles={multiSelectItemStyles}
+        {...ariaPosProps}
       />
     );
   };
 
   /** Render content of item (i.e. text/icon inside of button) */
   private _onRenderOption = (item: IDropdownOption): JSX.Element => {
-    return <span className={this._classNames.dropdownOptionText}>{item.text}</span>;
+    return (
+      <span role="presentation" className={this._classNames.dropdownOptionText}>
+        {item.text}
+      </span>
+    );
   };
 
   /** Render custom label for drop down item */
