@@ -98,20 +98,6 @@ export class ThemeGenerator {
     return ThemeGenerator._makeRemainingCode(output, slotRules);
   }
 
-  private static _makeRemainingCode(output: string, slotRules: IThemeRules) {
-    const attributeTemplate = "    {0}: '{1}',\n";
-    for (const ruleName in slotRules) {
-      if (slotRules.hasOwnProperty(ruleName)) {
-        const rule: IThemeSlotRule = slotRules[ruleName];
-        const camelCasedName = rule.name.charAt(0).toLowerCase() + rule.name.slice(1);
-        const outputColor = rule.color ? '#' + rule.color.hex : rule.value || '';
-        output += format(attributeTemplate, camelCasedName, outputColor);
-      }
-    }
-    output += '  }});';
-    return output;
-  }
-
   /* Gets the theme as a list of SASS variables that can be used in code
    * $tokenName: "[theme:tokenName, default:#f00f00]";
    * $tokenName2: "[theme:tokenName2, default:#ba2ba2]";
@@ -191,5 +177,30 @@ export class ThemeGenerator {
         ThemeGenerator._setSlot(ruleToUpdate, rule.color, isInverted, false, overwriteCustomColor);
       }
     }
+  }
+
+  /* Makes the rest of the code that's used for the load theme blob in the theme designers' codepens.
+     Takes in theme rules and converts them to format fitting a list of palette colors and their values.
+     Resulting output looks like:
+     const _theme = createTheme({
+      palette: {
+        themePrimary: '#0078d4',
+        themeLighterAlt: '#f3f9fd',
+        ...
+      }});
+     The first line is loadTheme instead of createTheme for the old sharepoint theme designer.
+  */
+  private static _makeRemainingCode(output: string, slotRules: IThemeRules) {
+    const attributeTemplate = "    {0}: '{1}',\n";
+    for (const ruleName in slotRules) {
+      if (slotRules.hasOwnProperty(ruleName)) {
+        const rule: IThemeSlotRule = slotRules[ruleName];
+        const camelCasedName = rule.name.charAt(0).toLowerCase() + rule.name.slice(1);
+        const outputColor = rule.color ? '#' + rule.color.hex : rule.value || '';
+        output += format(attributeTemplate, camelCasedName, outputColor);
+      }
+    }
+    output += '  }});';
+    return output;
   }
 }
