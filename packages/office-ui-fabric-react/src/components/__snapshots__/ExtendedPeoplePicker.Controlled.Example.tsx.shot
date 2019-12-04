@@ -90,7 +90,7 @@ exports[`Component Examples renders ExtendedPeoplePicker.Controlled.Example.tsx 
           -webkit-font-smoothing: antialiased;
           background-color: #0078d4;
           border-radius: 2px;
-          border: none;
+          border: 1px solid #0078d4;
           box-sizing: border-box;
           color: #ffffff;
           cursor: pointer;
