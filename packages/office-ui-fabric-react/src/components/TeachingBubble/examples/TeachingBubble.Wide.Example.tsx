@@ -38,7 +38,7 @@ export class TeachingBubbleWideExample extends React.Component<{}, ITeachingBubb
             <TeachingBubble
               calloutProps={{ directionalHint: DirectionalHint.bottomCenter }}
               isWide={true}
-              hasCloseIcon={true}
+              hasCloseButton={true}
               closeButtonAriaLabel="Close"
               target={this._menuButtonElement}
               onDismiss={this._onDismiss}

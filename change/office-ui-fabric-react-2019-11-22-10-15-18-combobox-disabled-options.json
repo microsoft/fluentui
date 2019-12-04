@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Combobox: Noop if selected item is disabled",
-  "packageName": "office-ui-fabric-react",
-  "email": "mgodbolt@microsoft.com",
-  "commit": "183a84df49f8c1c0003f12fe1cc34b039c2d03e8",
-  "date": "2019-11-22T18:15:18.983Z"
-}

@@ -25,7 +25,7 @@ storiesOf('TeachingBubble', module)
           calloutProps={{ directionalHint: DirectionalHint.bottomCenter }}
           isWide={true}
           hasSmallHeadline={true}
-          hasCloseIcon={true}
+          hasCloseButton={true}
           primaryButtonProps={{ children: 'Got it' }}
           headline="Discover what’s trending around you"
         >
@@ -40,7 +40,7 @@ storiesOf('TeachingBubble', module)
     return (
       <TeachingBubble
         hasSmallHeadline={true}
-        hasCloseIcon={true}
+        hasCloseButton={true}
         primaryButtonProps={{
           children: 'Got it'
         }}

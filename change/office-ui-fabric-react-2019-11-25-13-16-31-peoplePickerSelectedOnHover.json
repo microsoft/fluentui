@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "PeoplePicker: Fix selected + hover Persona text styling.",
-  "packageName": "office-ui-fabric-react",
-  "email": "Humberto.Morimoto@microsoft.com",
-  "commit": "bf1ad76a48adaa45481f304f416ae0a73fdca9db",
-  "date": "2019-11-25T21:16:31.475Z"
-}

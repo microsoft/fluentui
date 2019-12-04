@@ -2,6 +2,127 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Wed, 04 Dec 2019 12:32:13 GMT",
+      "tag": "office-ui-fabric-react_v7.69.0",
+      "version": "7.69.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Added a a field to Nav Group Props\"",
+            "author": "num@microsoft.com",
+            "commit": "af19dcd033614fa3c3656428c65c939eb9679e6e"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Add calloutProps to HoverCard",
+            "author": "anihan@microsoft.com",
+            "commit": "db9c6eea4e1697d2b7ffe9233b81f42f0f5804e8"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 03 Dec 2019 12:36:28 GMT",
+      "tag": "office-ui-fabric-react_v7.68.0",
+      "version": "7.68.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Pickers: Allow force resolve when no match found",
+            "author": "joschect@microsoft.com",
+            "commit": "a1eab542869ceeb70c1b2c7f9a1fc10c6f0f89df"
+          },
+          {
+            "comment": "DatePicker: Making styles accept functions and objects and not only functions.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "70a9d673ea890e14275f57548e01b9c6d1e7c07e"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "ComboBox: Fixing icon position when disabled.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "4bb65cfa615c48411a56daa64eaa0ce0a4827d5d"
+          },
+          {
+            "comment": "Removed persona cursor style as it was making non buttons look like clickable buttons",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "5da7e670bb1fd7cfd706e10a920324f9ac166e94"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 29 Nov 2019 12:34:49 GMT",
+      "tag": "office-ui-fabric-react_v7.67.0",
+      "version": "7.67.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "TeachingBubble: add hasCloseButton and deprecate hasCloseIcon; prevent header text from overlapping with close button.",
+            "author": "dzearing@microsoft.com",
+            "commit": "b539f5ee1c3bbd793a83ad269f0458dbfec5659f"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 28 Nov 2019 12:32:23 GMT",
+      "tag": "office-ui-fabric-react_v7.66.0",
+      "version": "7.66.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Updated office-ui-fabric-core dependency",
+            "author": "v-mare@microsoft.com",
+            "commit": "c13f311f04b58f788cc50e1dc74b46ff087f378c"
+          },
+          {
+            "comment": "Coachmark: Add prop to make beak persistent after opening",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "793440e0b27de0e26428a6ad6d738b1a91dc50ac"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Update Modal onKeyUp to also register in componentDidMount",
+            "author": "sareiff@microsoft.com",
+            "commit": "43091a0a918dfac18ce651255d52eef2cee5eeff"
+          },
+          {
+            "comment": "Update spinbutton check",
+            "author": "sareiff@microsoft.com",
+            "commit": "4b2b14b537356681abe29877d667fe6ea2279e28"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 27 Nov 2019 12:32:07 GMT",
+      "tag": "office-ui-fabric-react_v7.65.1",
+      "version": "7.65.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Combobox: Noop if selected item is disabled",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "183a84df49f8c1c0003f12fe1cc34b039c2d03e8"
+          },
+          {
+            "comment": "PeoplePicker: Fix selected + hover Persona text styling.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "bf1ad76a48adaa45481f304f416ae0a73fdca9db"
+          },
+          {
+            "comment": "ComboBox: Fixing options' custom styling not applying to multiselect ComboBoxes.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "926cc3e438ced516587c94885136ca07f23606e6"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 26 Nov 2019 12:32:11 GMT",
       "tag": "office-ui-fabric-react_v7.65.0",
       "version": "7.65.0",

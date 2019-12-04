@@ -1,7 +1,13 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Wed, 13 Nov 2019 12:33:43 GMT and should not be manually modified.
+This log was last generated on Thu, 28 Nov 2019 12:32:23 GMT and should not be manually modified.
 
+## 7.10.2
+Thu, 28 Nov 2019 12:32:23 GMT
+
+### Patches
+
+- Update fabric core dependency in other package.json files (v-mare@microsoft.com)
 ## 7.10.1
 Wed, 13 Nov 2019 12:33:43 GMT
 
