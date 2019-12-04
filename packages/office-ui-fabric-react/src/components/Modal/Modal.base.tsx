@@ -49,7 +49,7 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
   private _lastSetY: number;
   private _allowIosBodyScroll: boolean;
   private _hasRegisteredKeyUp: boolean;
-  
+
   constructor(props: IModalProps) {
     super(props);
     this.state = {
