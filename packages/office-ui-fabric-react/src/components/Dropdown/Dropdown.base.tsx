@@ -690,11 +690,7 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
 
   /** Render content of item (i.e. text/icon inside of button) */
   private _onRenderOption = (item: IDropdownOption): JSX.Element => {
-    return (
-      <span role="presentation" className={this._classNames.dropdownOptionText}>
-        {item.text}
-      </span>
-    );
+    return <span className={this._classNames.dropdownOptionText}>{item.text}</span>;
   };
 
   /** Render custom label for drop down item */
