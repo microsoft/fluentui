@@ -2,6 +2,27 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Wed, 04 Dec 2019 12:32:13 GMT",
+      "tag": "office-ui-fabric-react_v7.69.0",
+      "version": "7.69.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Added a a field to Nav Group Props\"",
+            "author": "num@microsoft.com",
+            "commit": "af19dcd033614fa3c3656428c65c939eb9679e6e"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Add calloutProps to HoverCard",
+            "author": "anihan@microsoft.com",
+            "commit": "db9c6eea4e1697d2b7ffe9233b81f42f0f5804e8"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 03 Dec 2019 12:36:28 GMT",
       "tag": "office-ui-fabric-react_v7.68.0",
       "version": "7.68.0",

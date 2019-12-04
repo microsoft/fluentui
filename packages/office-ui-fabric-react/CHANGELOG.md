@@ -1,7 +1,16 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 03 Dec 2019 12:36:28 GMT and should not be manually modified.
+This log was last generated on Wed, 04 Dec 2019 12:32:13 GMT and should not be manually modified.
 
+## 7.69.0
+Wed, 04 Dec 2019 12:32:13 GMT
+
+### Minor changes
+
+- Add calloutProps to HoverCard (anihan@microsoft.com)
+### Patches
+
+- Added a a field to Nav Group Props" (num@microsoft.com)
 ## 7.68.0
 Tue, 03 Dec 2019 12:36:28 GMT
 
