@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "SpinButton: remove default min/max values",
+  "packageName": "office-ui-fabric-react",
+  "email": "xgao@microsoft.com",
+  "commit": "5aa60cceabe5b6d25ffaea071ed2b1a2cd10a37d",
+  "date": "2019-12-04T07:20:52.135Z"
+}
