@@ -49,13 +49,11 @@ export interface ISpinButtonProps extends React.HTMLAttributes<HTMLDivElement> {
 
   /**
    * The min value of the SpinButton.
-   * @defaultvalue 0
    */
   min?: number;
 
   /**
    * The max value of the SpinButton.
-   * @defaultvalue 10
    */
   max?: number;
 
