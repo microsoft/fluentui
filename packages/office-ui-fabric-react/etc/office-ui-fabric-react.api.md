@@ -836,7 +836,7 @@ export class DefaultButton extends BaseComponent<IButtonProps, {}> {
 }
 
 // @public (undocumented)
-export type DefaultProps = Required<Pick<ISpinButtonProps, 'step' | 'disabled' | 'defaultValue' | 'labelPosition' | 'label' | 'incrementButtonIcon' | 'decrementButtonIcon'>>;
+export type DefaultProps = Required<Pick<ISpinButtonProps, 'step' | 'disabled' | 'labelPosition' | 'label' | 'incrementButtonIcon' | 'decrementButtonIcon'>>;
 
 // @public
 export class DetailsColumnBase extends React.Component<IDetailsColumnProps> {
