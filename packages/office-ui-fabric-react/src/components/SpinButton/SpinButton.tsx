@@ -47,7 +47,7 @@ export interface ISpinButtonState {
 }
 
 export type DefaultProps = Required<
-  Pick<ISpinButtonProps, 'step' | 'min' | 'max' | 'disabled' | 'labelPosition' | 'label' | 'incrementButtonIcon' | 'decrementButtonIcon'>
+  Pick<ISpinButtonProps, 'step' | 'disabled' | 'defaultValue' | 'labelPosition' | 'label' | 'incrementButtonIcon' | 'decrementButtonIcon'>
 >;
 
 /** Internal only props */
@@ -57,8 +57,7 @@ type ISpinButtonInternalProps = ISpinButtonProps & DefaultProps;
 export class SpinButton extends React.Component<ISpinButtonProps, ISpinButtonState> implements ISpinButton {
   public static defaultProps: DefaultProps = {
     step: 1,
-    min: 0,
-    max: 100,
+    defaultValue: '0',
     disabled: false,
     labelPosition: Position.start,
     label: '',
@@ -89,7 +88,8 @@ export class SpinButton extends React.Component<ISpinButtonProps, ISpinButtonSta
       value: 'defaultValue'
     });
 
-    const value = props.value || props.defaultValue || String(props.min) || '0';
+    const value =
+      props.value || this._getValueWithinBoundary(props.defaultValue, props.min, props.max) || SpinButton.defaultProps.defaultValue;
     this._lastValidValue = value;
 
     // Ensure that the autocalculated precision is not negative.
@@ -97,7 +97,7 @@ export class SpinButton extends React.Component<ISpinButtonProps, ISpinButtonSta
 
     this.state = {
       isFocused: false,
-      value: value,
+      value,
       keyboardSpinDirection: KeyboardSpinDirection.notSpinning
     };
 
@@ -112,23 +112,19 @@ export class SpinButton extends React.Component<ISpinButtonProps, ISpinButtonSta
   public componentWillUnmount(): void {
     this._async.dispose();
   }
-
   /**
    * Invoked when a component is receiving new props. This method is not called for the initial render.
    */
   // tslint:disable-next-line function-name
   public UNSAFE_componentWillReceiveProps(newProps: ISpinButtonProps): void {
     this._lastValidValue = this.state.value;
-    let value: string = newProps.value !== undefined ? newProps.value : String(newProps.min);
-    if (newProps.defaultValue) {
-      value = String(Math.max(newProps.min as number, Math.min(newProps.max as number, Number(newProps.defaultValue))));
-    }
 
     if (newProps.value !== undefined) {
       this.setState({
-        value: value
+        value: newProps.value
       });
     }
+
     this._precision = this._calculatePrecision(newProps as ISpinButtonProps & DefaultProps);
   }
 
@@ -323,7 +319,8 @@ export class SpinButton extends React.Component<ISpinButtonProps, ISpinButtonSta
     if (value === null || value.trim().length === 0 || isNaN(Number(value))) {
       return this._lastValidValue;
     }
-    const newValue = Math.min(this.props.max as number, Math.max(this.props.min as number, Number(value)));
+
+    const newValue = this._getValueWithinBoundary(value, this.props.min, this.props.max);
     return String(newValue);
   };
 
@@ -340,7 +337,8 @@ export class SpinButton extends React.Component<ISpinButtonProps, ISpinButtonSta
    */
   private _defaultOnIncrement = (value: string): string | void => {
     const { max, step } = this.props as ISpinButtonInternalProps;
-    let newValue: number = Math.min(Number(value) + Number(step), max);
+    let newValue: number = Number(value) + Number(step);
+    newValue = max !== undefined ? Math.min(newValue, max) : newValue;
     newValue = precisionRound(newValue, this._precision);
     return String(newValue);
   };
@@ -358,7 +356,8 @@ export class SpinButton extends React.Component<ISpinButtonProps, ISpinButtonSta
    */
   private _defaultOnDecrement = (value: string): string | void => {
     const { min, step } = this.props as ISpinButtonInternalProps;
-    let newValue: number = Math.max(Number(value) - Number(step), min);
+    let newValue: number = Number(value) - Number(step);
+    newValue = min !== undefined ? Math.max(newValue, min) : newValue;
     newValue = precisionRound(newValue, this._precision);
     return String(newValue);
   };
@@ -512,4 +511,20 @@ export class SpinButton extends React.Component<ISpinButtonProps, ISpinButtonSta
   private _onDecrementMouseDown = (): void => {
     this._updateValue(true /* shouldSpin */, this._initialStepDelay, this._onDecrement!);
   };
+
+  private _getValueWithinBoundary(value: string | undefined, min: number | undefined, max: number | undefined): string | undefined {
+    let valueNum = Number(value);
+    if (isNaN(valueNum)) {
+      return undefined;
+    }
+
+    if (max !== undefined) {
+      valueNum = Math.min(max, valueNum);
+    }
+    if (min !== undefined) {
+      valueNum = Math.max(min, valueNum);
+    }
+
+    return String(valueNum);
+  }
 }
