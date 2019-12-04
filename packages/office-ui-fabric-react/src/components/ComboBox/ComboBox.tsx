@@ -441,7 +441,13 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
             },
             this._onRenderContainer
           )}
-        <div role="region" aria-live="polite" aria-atomic="true" id={errorMessageId} className={this._classNames.errorMessage}>
+        <div
+          role="region"
+          aria-live="polite"
+          aria-atomic="true"
+          id={errorMessageId}
+          className={hasErrorMessage ? this._classNames.errorMessage : ''}
+        >
           {errorMessage !== undefined ? errorMessage : ''}
         </div>
       </div>
