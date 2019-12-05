@@ -71,7 +71,7 @@ exports[`Component Examples renders ComboBox.CustomStyled.Example.tsx correctly 
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
             background-color: #b4a0ff;
-            border-color: #8a8886;
+            border-color: #605e5c;
             border-radius: 2px;
             border-style: solid;
             border-width: 1px;
@@ -101,7 +101,7 @@ exports[`Component Examples renders ComboBox.CustomStyled.Example.tsx correctly 
             margin-bottom: 8px;
           }
           &.is-open {
-            border-color: #8a8886;
+            border-color: #605e5c;
           }
           @media screen and (-ms-high-contrast: active){&.is-open {
             -ms-high-contrast-adjust: none;
@@ -466,7 +466,7 @@ exports[`Component Examples renders ComboBox.CustomStyled.Example.tsx correctly 
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
             background-color: #ffffff;
-            border-color: #8a8886;
+            border-color: #605e5c;
             border-radius: 2px;
             border-style: solid;
             border-width: 1px;
@@ -496,7 +496,7 @@ exports[`Component Examples renders ComboBox.CustomStyled.Example.tsx correctly 
             margin-bottom: 8px;
           }
           &.is-open {
-            border-color: #8a8886;
+            border-color: #605e5c;
           }
           @media screen and (-ms-high-contrast: active){&.is-open {
             -ms-high-contrast-adjust: none;

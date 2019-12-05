@@ -59,7 +59,7 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
 
         {
           border-radius: 2px;
-          border: 1px solid #8a8886;
+          border: 1px solid #605e5c;
           box-sizing: border-box;
           display: flex;
           height: 32px;
@@ -479,7 +479,7 @@ exports[`SpinButton renders SpinButton correctly with values that the user passe
 
         {
           border-radius: 2px;
-          border: 1px solid #8a8886;
+          border: 1px solid #605e5c;
           box-sizing: border-box;
           display: flex;
           height: 32px;
