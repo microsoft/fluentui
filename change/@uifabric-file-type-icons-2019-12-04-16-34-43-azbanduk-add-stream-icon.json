@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "ComboBox: empty errorMessage shouldn't create white space. (#11353)",
+  "comment": "Added stream to file icon types",
   "packageName": "@uifabric/file-type-icons",
   "email": "azbanduk@microsoft.com",
   "commit": "9a2fa4a81f817eaf50b790dfeaade9a421965c17",
