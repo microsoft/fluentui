@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ILayoutGroupProps } from './LayoutGroup.types';
+import { ILayoutGroupProps, AlignItems } from './LayoutGroup.types';
 import { IRawStyle, mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 import { getNativeProps, divProperties } from 'office-ui-fabric-react/lib/Utilities';
 
@@ -7,11 +7,12 @@ export class LayoutGroup extends React.Component<ILayoutGroupProps, {}> {
   public static defaultProps: ILayoutGroupProps = {
     layoutGap: 8,
     direction: 'vertical',
-    justify: 'start'
+    justify: 'start',
+    alignItems: AlignItems.START
   };
 
   public render(): JSX.Element | null {
-    const { children, direction, layoutGap, justify } = this.props;
+    const { children, direction, layoutGap, justify, alignItems } = this.props;
 
     const divProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties);
 
@@ -51,7 +52,8 @@ export class LayoutGroup extends React.Component<ILayoutGroupProps, {}> {
         className={mergeStyles('ms-LayoutGroup', {
           display: 'flex',
           flexDirection: direction === 'horizontal' ? 'row' : 'column',
-          justifyContent: this._getJustify(justify)
+          justifyContent: this._getJustify(justify),
+          alignItems: alignItems || 'flex-start'
         } as IRawStyle)}
       >
         {group}

@@ -2,6 +2,14 @@ import * as React from 'react';
 import { IBaseProps } from 'office-ui-fabric-react/lib/Utilities';
 import { LayoutGroup } from './LayoutGroup';
 
+export enum AlignItems {
+  START = 'flex-start',
+  END = 'flex-end',
+  CENTER = 'center',
+  STRETCH = 'strech',
+  BASELINE = 'baseline'
+}
+
 export interface ILayoutGroupProps extends IBaseProps, React.HTMLAttributes<LayoutGroup | HTMLDivElement> {
   /**
    * Direction in which the child elements will be layed out.
@@ -20,4 +28,11 @@ export interface ILayoutGroupProps extends IBaseProps, React.HTMLAttributes<Layo
    * @default start
    */
   justify?: 'start' | 'end' | 'center' | 'fill';
+
+  /**
+   * Defines the default behavior for how items are laid out along the cross axis
+   * (perpendicular to the main axis).
+   * @default flex-start;
+   */
+  alignItems?: AlignItems;
 }
