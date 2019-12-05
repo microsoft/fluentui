@@ -1,0 +1,9 @@
+{
+  "type": "patch",
+  "comment": "add alignItems for layout group to provide more flexibility",
+  "packageName": "@uifabric/experiments",
+  "email": "huaxi@microsoft.com",
+  "commit": "20e519c2a24262a144394106042d3cae3d0e7f4b",
+  "date": "2019-12-05T00:38:56.540Z",
+  "file": "C:\\Git\\office-ui-fabric-react\\change\\@uifabric-experiments-2019-12-04-16-38-56-huaxi-layout-group.json"
+}
