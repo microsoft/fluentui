@@ -115,6 +115,7 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
             aria-valuemax={420}
             aria-valuemin={1}
             aria-valuenow={420}
+            aria-valuetext="420"
             className=
                 ms-Slider-slideBox
                 ms-Slider-showValue
@@ -391,6 +392,7 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
             aria-valuemax={100}
             aria-valuemin={1}
             aria-valuenow={100}
+            aria-valuetext="100"
             className=
                 ms-Slider-slideBox
                 ms-Slider-showValue

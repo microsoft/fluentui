@@ -791,6 +791,7 @@ exports[`Component Examples renders Facepile.Overflow.Example.tsx correctly 1`] 
           aria-valuemax={5}
           aria-valuemin={1}
           aria-valuenow={5}
+          aria-valuetext="5"
           className=
               ms-Slider-slideBox
               ms-Slider-showValue
