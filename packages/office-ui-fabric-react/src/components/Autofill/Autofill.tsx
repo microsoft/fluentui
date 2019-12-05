@@ -175,7 +175,7 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
     // Due to timing, this needs to be async, otherwise no text will be selected.
     this._async.setTimeout(() => {
       // it's technically possible that the value of _isComposing is reset during this timeout,
-      // so explicitly trigger this with wasComposing=true here, since it is supposed to be the
+      // so explicitly trigger this with composing=true here, since it is supposed to be the
       // update for composition end
       this._updateValue(this._getCurrentInputValue(), true);
     }, 0);
@@ -270,9 +270,9 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
     }
   }
 
-  private _notifyInputChange(newValue: string, wasComposing: boolean): void {
+  private _notifyInputChange(newValue: string, composing: boolean): void {
     if (this.props.onInputValueChange) {
-      this.props.onInputValueChange(newValue, wasComposing);
+      this.props.onInputValueChange(newValue, composing);
     }
   }
 
@@ -280,18 +280,18 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
    * Updates the current input value as well as getting a new display value.
    * @param newValue - The new value from the input
    */
-  private _updateValue = (newValue: string, wasComposing: boolean) => {
+  private _updateValue = (newValue: string, composing: boolean) => {
     // Only proceed if the value is nonempty and is different from the old value
     // This is to work around the fact that, in IE 11, inputs with a placeholder fire an onInput event on focus
     if (!newValue && newValue === this._value) {
       return;
     }
-    this._value = this.props.onInputChange ? this.props.onInputChange(newValue, wasComposing) : newValue;
+    this._value = this.props.onInputChange ? this.props.onInputChange(newValue, composing) : newValue;
     this.setState(
       {
         displayValue: this._getDisplayValue(this._value, this.props.suggestedDisplayValue)
       },
-      () => this._notifyInputChange(this._value, wasComposing)
+      () => this._notifyInputChange(this._value, composing)
     );
   };
 

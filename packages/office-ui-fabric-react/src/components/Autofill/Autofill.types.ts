@@ -60,11 +60,11 @@ export interface IAutofillProps extends React.InputHTMLAttributes<HTMLInputEleme
   /**
    * A callback for when the current input value changes.
    *
-   * @param wasComposing - true if the change event was triggered while the
+   * @param composing - true if the change event was triggered while the
    * inner input was in the middle of a multi-character composition.
    * (for example, jp-hiragana IME input)
    */
-  onInputValueChange?: (newValue?: string, wasComposing?: boolean) => void;
+  onInputValueChange?: (newValue?: string, composing?: boolean) => void;
 
   /**
    * When the user uses left arrow, right arrow, clicks, or deletes text autofill is disabled
@@ -102,11 +102,11 @@ export interface IAutofillProps extends React.InputHTMLAttributes<HTMLInputEleme
   /**
    * A callback used to modify the input string.
    *
-   * @param wasComposing - true if the change event was triggered while the
+   * @param composing - true if the change event was triggered while the
    * inner input was in the middle of a multi-character composition.
    * (for example, jp-hiragana IME input)
    */
-  onInputChange?: (value: string, wasComposing: boolean) => string;
+  onInputChange?: (value: string, composing: boolean) => string;
 
   /**
    * Should the value of the input be selected? True if we're focused on our input, false otherwise.
