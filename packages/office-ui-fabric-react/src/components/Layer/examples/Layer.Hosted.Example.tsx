@@ -1,11 +1,10 @@
 import * as React from 'react';
 import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
 import { Layer, LayerHost } from 'office-ui-fabric-react/lib/Layer';
-import { AnimationClassNames, mergeStyles } from 'office-ui-fabric-react/lib/Styling';
+import { AnimationClassNames, mergeStyles, mergeStyleSets, getTheme } from 'office-ui-fabric-react/lib/Styling';
 import { getId, css } from 'office-ui-fabric-react/lib/Utilities';
 import { IToggleStyles } from 'office-ui-fabric-react/lib/Toggle';
 import { IStyleSet } from 'office-ui-fabric-react/lib/Styling';
-import * as styles from './Layer.Example.scss';
 
 const toggleStyles: Partial<IStyleSet<IToggleStyles>> = {
   root: { margin: '10px 0' }
@@ -13,6 +12,35 @@ const toggleStyles: Partial<IStyleSet<IToggleStyles>> = {
 
 const rootClass = mergeStyles({
   selectors: { p: { marginTop: 30 } }
+});
+
+const theme = getTheme();
+
+const styles = mergeStyleSets({
+  content: {
+    backgroundColor: theme.palette.themePrimary,
+    color: theme.palette.white,
+    lineHeight: '50px',
+    padding: '0 20px',
+    display: 'flex'
+  },
+  nonLayered: {
+    backgroundColor: theme.palette.neutralTertiaryAlt,
+    lineHeight: '50px',
+    padding: '0 20px',
+    margin: '8px 0'
+  },
+  customHost: {
+    height: '100px',
+    padding: '20px',
+    background: 'rgba(255, 0, 0, 0.2)',
+    border: '1px dashed black',
+    position: 'relative',
+    // Instead of translation, we can just use flex align
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center'
+  }
 });
 
 export interface ILayerHostedExampleState {
@@ -39,7 +67,11 @@ export class LayerHostedExample extends React.Component<{}, ILayerHostedExampleS
       <div className={rootClass}>
         <Toggle label="Show host" inlineLabel checked={showHost} onChange={this._onChangeToggle} />
 
-        {showHost && <LayerHost id={this._layerHostId} className={styles.customHost} />}
+        {showHost && (
+          <LayerHost id={this._layerHostId} className={styles.customHost}>
+            I am a LayerHost with id=layerhost1
+          </LayerHost>
+        )}
 
         <p>
           In some cases, you may need to contain layered content within an area. Create an instance of a LayerHost along with an id, and
