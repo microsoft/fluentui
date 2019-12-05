@@ -540,56 +540,63 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
   private _onRenderList = (props: ISelectableDroppableTextProps<IDropdown, HTMLDivElement>): JSX.Element => {
     const { onRenderItem = this._onRenderItem } = props;
 
-    let tempGroup: JSX.Element[] = [];
-    const allOptions: JSX.Element[] = [];
-    let header: IDropdownOption | undefined = undefined;
+    let queue: { id?: string; items: JSX.Element[] } = { items: [] };
+    let renderedList: JSX.Element[] = [];
 
-    const transferTempGroup = (): void => {
-      allOptions.push(
-        header ? (
-          <div role="group" key={header.key} aria-labelledby={header.id}>
-            {tempGroup}
-          </div>
-        ) : (
-          <>{tempGroup}</>
-        )
-      );
-      // then flush tempGroup and header
-      tempGroup = [];
-      header = undefined;
+    const emptyQueue = (): void => {
+      const newGroup = queue.id
+        ? [
+            <div role="group" key={queue.id} aria-labelledby={queue.id}>
+              {queue.items}
+            </div>
+          ]
+        : queue.items;
+
+      renderedList = [...renderedList, ...newGroup];
+      // Flush items and id
+      queue = { items: [] };
     };
 
-    props.options.forEach((item: IDropdownOption, index: number) => {
+    const placeRenderedOptionIntoQueue = (item: IDropdownOption, index: number) => {
+      /*
+        Case Header
+          empty queue if it's not already empty
+          ensure unique ID for header and set queue ID
+          push header onto queue
+        Case Divider
+          push divider onto queue
+          empty queue
+        Default
+          push item onto queue
+      */
       switch (item.itemType) {
         case SelectableOptionMenuItemType.Header:
-          // if tempGroup is not empty when we see a header, dump the existing contents into allOptions
-          if (tempGroup.length > 0) {
-            transferTempGroup();
+          if (queue.items.length > 0) {
+            emptyQueue();
           }
-          // Add header to tempGroup
-          header = { id: this._id + item.key, ...item };
-          const renderedHeader = onRenderItem({ ...header!, index }, this._onRenderItem);
-          renderedHeader && tempGroup.push(renderedHeader);
+          const id = this._id + item.key;
+          queue.items.push(onRenderItem({ id, ...item, index }, this._onRenderItem)!);
+          queue.id = id;
           break;
         case SelectableOptionMenuItemType.Divider:
-          // Add divider to tempGroup then flush temp
-          const renderedDivider = onRenderItem({ ...item, index }, this._onRenderItem);
-          renderedDivider && tempGroup.push(renderedDivider);
+          queue.items.push(onRenderItem({ ...item, index }, this._onRenderItem)!);
 
-          if (tempGroup.length > 0) {
-            transferTempGroup();
-          }
+          emptyQueue();
           break;
         default:
-          // Add item to tempGroup
-          const renderedItem = onRenderItem({ ...item, index }, this._onRenderItem);
-          renderedItem && tempGroup.push(renderedItem);
+          queue.items.push(onRenderItem({ ...item, index }, this._onRenderItem)!);
       }
-    });
-    // push remaining items into all allOptions
-    tempGroup.length > 0 && transferTempGroup();
+    };
 
-    return <>{allOptions}</>;
+    // Place options into the queue. Queue will be emptied anytime a Header or Divider is encountered
+    props.options.forEach((item: IDropdownOption, index: number) => {
+      placeRenderedOptionIntoQueue(item, index);
+    });
+
+    // Push remaining items into all renderedList
+    queue.items.length > 0 && emptyQueue();
+
+    return <>{renderedList}</>;
   };
 
   private _onRenderItem = (item: IDropdownOption): JSX.Element | null => {
