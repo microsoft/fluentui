@@ -2,6 +2,25 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Thu, 05 Dec 2019 12:34:16 GMT",
+      "tag": "office-ui-fabric-react_v7.69.1",
+      "version": "7.69.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "ComboBox: empty errorMessage shouldn't create white space",
+            "author": "aneeshak@microsoft.com",
+            "commit": "6e901b4d6ac171f5d0a80aaa6d6829bdceb6fd35"
+          },
+          {
+            "comment": "VirtualizedComboBox: Implement focus(shouldOpenOnFocus, asyncFocus)",
+            "author": "aneeshak@microsoft.com",
+            "commit": "3f35e4cf39a4958208e52282f26c5c1fcb254d7b"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 04 Dec 2019 12:32:13 GMT",
       "tag": "office-ui-fabric-react_v7.69.0",
       "version": "7.69.0",

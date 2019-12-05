@@ -47,7 +47,7 @@
   "dependencies": {
     "@microsoft/load-themed-styles": "^1.7.13",
     "@uifabric/set-version": "^7.0.2",
-    "office-ui-fabric-react": "^7.69.0",
+    "office-ui-fabric-react": "^7.69.1",
     "tslib": "^1.7.1"
   },
   "peerDependencies": {

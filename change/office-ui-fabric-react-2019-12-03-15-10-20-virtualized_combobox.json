@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "VirtualizedComboBox: Implement focus(shouldOpenOnFocus, asyncFocus)",
-  "packageName": "office-ui-fabric-react",
-  "email": "aneeshak@microsoft.com",
-  "commit": "3f35e4cf39a4958208e52282f26c5c1fcb254d7b",
-  "date": "2019-12-03T23:10:20.826Z"
-}

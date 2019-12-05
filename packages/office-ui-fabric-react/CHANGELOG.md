@@ -1,7 +1,14 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 04 Dec 2019 12:32:13 GMT and should not be manually modified.
+This log was last generated on Thu, 05 Dec 2019 12:34:16 GMT and should not be manually modified.
 
+## 7.69.1
+Thu, 05 Dec 2019 12:34:16 GMT
+
+### Patches
+
+- ComboBox: empty errorMessage shouldn't create white space (aneeshak@microsoft.com)
+- VirtualizedComboBox: Implement focus(shouldOpenOnFocus, asyncFocus) (aneeshak@microsoft.com)
 ## 7.69.0
 Wed, 04 Dec 2019 12:32:13 GMT
 
