@@ -36,7 +36,8 @@ export enum TooltipOverflowMode {
 }
 
 /**
- * TooltipHost props. All native props are passed through to the Tooltip itself.
+ * TooltipHost props. Note that native props (such as `id`, `className`, and `aria-` props) are
+ * passed through to the Tooltip itself, rather than being used on the host element.
  * {@docCategory Tooltip}
  */
 export interface ITooltipHostProps extends React.HTMLAttributes<HTMLDivElement | TooltipHostBase> {
