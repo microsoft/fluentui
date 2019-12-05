@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Correct SpinButton default max value in documentation",
+  "packageName": "office-ui-fabric-react",
+  "email": "xgao@microsoft.com",
+  "commit": "e2ee601bb1439348f60626962e835ca466d176cb",
+  "date": "2019-12-05T04:55:08.773Z"
+}
