@@ -146,9 +146,25 @@ exports[`Component Examples renders Layer.Hosted.Example.tsx correctly 1`] = `
     </div>
   </div>
   <div
-    className="ms-LayerHost"
+    className=
+        ms-LayerHost
+        {
+          align-items: center;
+          background: rgba(255, 0, 0, 0.2);
+          border: 1px dashed black;
+          display: flex;
+          height: 100px;
+          justify-content: center;
+          padding-bottom: 20px;
+          padding-left: 20px;
+          padding-right: 20px;
+          padding-top: 20px;
+          position: relative;
+        }
     id="layerhost0"
-  />
+  >
+    I am a LayerHost with id=layerhost1
+  </div>
   <p>
     In some cases, you may need to contain layered content within an area. Create an instance of a LayerHost along with an id, and provide a hostId on the layer to render it within the specific host. (Note that it's important that you don't include children within the LayerHost. It's meant to contain Layered content only.)
   </p>
@@ -290,6 +306,16 @@ exports[`Component Examples renders Layer.Hosted.Example.tsx correctly 1`] = `
     className=
 
         {
+          background-color: #0078d4;
+          color: #ffffff;
+          display: flex;
+          line-height: 50px;
+          padding-bottom: 0;
+          padding-left: 20px;
+          padding-right: 20px;
+          padding-top: 0;
+        }
+        {
           animation-duration: 0.367s;
           animation-fill-mode: both;
           animation-name: keyframes from{opacity:0;}to{opacity:1;} keyframes from{transform:scale3d(.98,.98,1);}to{transform:scale3d(1,1,1);};
@@ -298,7 +324,22 @@ exports[`Component Examples renders Layer.Hosted.Example.tsx correctly 1`] = `
   >
     This is example layer content.
   </div>
-  <div>
+  <div
+    className=
+
+        {
+          background-color: #c8c6c4;
+          line-height: 50px;
+          margin-bottom: 8px;
+          margin-left: 0;
+          margin-right: 0;
+          margin-top: 8px;
+          padding-bottom: 0;
+          padding-left: 20px;
+          padding-right: 20px;
+          padding-top: 0;
+        }
+  >
     I am normally below the content.
   </div>
   <p>
@@ -441,6 +482,16 @@ exports[`Component Examples renders Layer.Hosted.Example.tsx correctly 1`] = `
   <div
     className=
 
+        {
+          background-color: #0078d4;
+          color: #ffffff;
+          display: flex;
+          line-height: 50px;
+          padding-bottom: 0;
+          padding-left: 20px;
+          padding-right: 20px;
+          padding-top: 0;
+        }
         {
           animation-duration: 0.367s;
           animation-fill-mode: both;
