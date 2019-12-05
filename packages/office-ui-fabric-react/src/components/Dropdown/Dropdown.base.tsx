@@ -564,24 +564,23 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
           ensure unique ID for header and set queue ID
           push header into queue
         Case Divider
-          push divider into queue
-          empty queue
+          push divider into queue if not first item
+          empty queue if not already empty
         Default
           push item into queue
       */
       switch (item.itemType) {
         case SelectableOptionMenuItemType.Header:
-          if (queue.items.length > 0) {
-            emptyQueue();
-          }
+          queue.items.length > 0 && emptyQueue();
+
           const id = this._id + item.key;
           queue.items.push(onRenderItem({ id, ...item, index }, this._onRenderItem)!);
           queue.id = id;
           break;
         case SelectableOptionMenuItemType.Divider:
-          queue.items.push(onRenderItem({ ...item, index }, this._onRenderItem)!);
+          index > 0 && queue.items.push(onRenderItem({ ...item, index }, this._onRenderItem)!);
 
-          emptyQueue();
+          queue.items.length > 0 && emptyQueue();
           break;
         default:
           queue.items.push(onRenderItem({ ...item, index }, this._onRenderItem)!);
