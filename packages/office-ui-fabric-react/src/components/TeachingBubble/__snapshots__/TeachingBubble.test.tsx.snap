@@ -624,6 +624,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
                 @media screen and (-ms-high-contrast: active){& {
                   -ms-high-contrast-adjust: none;
                   background-color: WindowText;
+                  border-color: WindowText;
                   color: Window;
                 }
                 &:hover {

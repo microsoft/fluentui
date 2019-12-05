@@ -142,6 +142,7 @@ exports[`Component Examples renders ExtendedPeoplePicker.Controlled.Example.tsx 
         @media screen and (-ms-high-contrast: active){& {
           -ms-high-contrast-adjust: none;
           background-color: WindowText;
+          border-color: WindowText;
           color: Window;
         }
         &:hover {
