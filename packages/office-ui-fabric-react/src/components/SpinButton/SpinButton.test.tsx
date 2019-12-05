@@ -1,12 +1,15 @@
 import * as React from 'react';
 import * as ReactTestUtils from 'react-dom/test-utils';
 import * as renderer from 'react-test-renderer';
-import { SpinButton } from './SpinButton';
-import { ISpinButton } from './SpinButton.types';
+import { SpinButton, ISpinButtonState } from './SpinButton';
+import { ISpinButton, ISpinButtonProps } from './SpinButton.types';
 import { KeyCodes, resetIds } from '../../Utilities';
 import { mockEvent, renderIntoDocument } from '../../common/testUtilities';
+import { ReactWrapper, mount } from 'enzyme';
 
 describe('SpinButton', () => {
+  let wrapper: ReactWrapper<ISpinButtonProps, ISpinButtonState, SpinButton>;
+
   beforeEach(() => {
     resetIds();
   });
@@ -14,6 +17,9 @@ describe('SpinButton', () => {
   afterEach(() => {
     if ((setTimeout as any).mock) {
       jest.useRealTimers();
+    }
+    if (wrapper) {
+      wrapper.unmount();
     }
   });
 
@@ -39,6 +45,22 @@ describe('SpinButton', () => {
     const component = renderer.create(<SpinButton label="label" value={'0'} ariaValueNow={0} ariaValueText={'0 pt'} data-test="test" />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
+  });
+
+  it('should update value when value prop changes', () => {
+    const exampleLabelValue = 'SpinButton';
+    const exampleMinValue = 1;
+    const exampleMaxValue = 10;
+    const exampleValue = '12 cm';
+    const exampleValueUpdated = '13 cm';
+
+    wrapper = mount(<SpinButton label={exampleLabelValue} min={exampleMinValue} max={exampleMaxValue} value={exampleValue} />);
+    const input = wrapper.getDOMNode().querySelector('.ms-spinButton-input') as HTMLInputElement;
+    expect(input).not.toBe(null);
+    expect(input!.value).toBe(exampleValue);
+    wrapper.setProps({ value: exampleValueUpdated });
+    wrapper.update();
+    expect(input!.value).toBe(exampleValueUpdated);
   });
 
   it('should render a spinner with the default value on the input element', () => {
