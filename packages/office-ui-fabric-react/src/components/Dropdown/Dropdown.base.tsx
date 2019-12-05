@@ -562,12 +562,12 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
         Case Header
           empty queue if it's not already empty
           ensure unique ID for header and set queue ID
-          push header onto queue
+          push header into queue
         Case Divider
-          push divider onto queue
+          push divider into queue
           empty queue
         Default
-          push item onto queue
+          push item into queue
       */
       switch (item.itemType) {
         case SelectableOptionMenuItemType.Header:
