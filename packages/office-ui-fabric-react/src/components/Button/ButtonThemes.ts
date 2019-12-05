@@ -158,6 +158,7 @@ export function primaryStyles(theme: ITheme): IButtonStyles {
         [HighContrastSelector]: {
           color: 'Window',
           backgroundColor: 'WindowText',
+          borderColor: 'WindowText',
           MsHighContrastAdjust: 'none'
         },
         [`.${IsFocusVisibleClassName} &:focus`]: {
