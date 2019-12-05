@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "DocumentCard: Adding explicit focus styles",
+  "packageName": "office-ui-fabric-react",
+  "email": "mgodbolt@microsoft.com",
+  "commit": "3546fe64d1450554b93a1833a395ef53b3684bb0",
+  "date": "2019-11-25T23:59:41.364Z"
+}
