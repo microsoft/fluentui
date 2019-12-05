@@ -1,6 +1,5 @@
 import * as React from 'react';
-import * as styles from './Layer.Example.scss';
-import { AnimationClassNames } from 'office-ui-fabric-react/lib/Styling';
+import { AnimationClassNames, mergeStyleSets, getTheme } from 'office-ui-fabric-react/lib/Styling';
 import { BaseComponent, css } from 'office-ui-fabric-react/lib/Utilities';
 import { Layer } from 'office-ui-fabric-react/lib/Layer';
 import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
@@ -14,6 +13,21 @@ const LayerBasicExampleContext = React.createContext<ILayerBasicExampleContext>(
 interface ILayerContentExampleState {
   time: string;
 }
+
+const theme = getTheme();
+
+const styles = mergeStyleSets({
+  content: {
+    backgroundColor: theme.palette.themePrimary,
+    color: theme.palette.white,
+    lineHeight: '50px',
+    padding: '0 20px',
+    display: 'flex'
+  },
+  textContent: {
+    flexGrow: '1'
+  }
+});
 
 class LayerContentExample extends BaseComponent<{}, ILayerContentExampleState> {
   public state = {
