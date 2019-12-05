@@ -12,7 +12,7 @@ export enum FileIconType {
   listItem = 4,
   sharedFolder = 5,
   multiple = 6,
-  stream=7
+  stream = 7
 }
 
 export type FileIconTypeInput = 1 | 2 | 3 | 4 | 5 | 6 | 7;
