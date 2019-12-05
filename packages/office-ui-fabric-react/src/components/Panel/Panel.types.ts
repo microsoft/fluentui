@@ -230,7 +230,7 @@ export interface IPanelProps extends React.HTMLAttributes<PanelBase> {
    * Allow body scroll on content and overlay. Changing after mounting has no effect.
    * @defaultvalue false
    */
-  allowIosBodyScroll?: boolean;
+  allowTouchBodyScroll?: boolean;
 }
 
 /**

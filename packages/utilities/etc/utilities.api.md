@@ -18,7 +18,10 @@ export function addDirectionalKeyCode(which: number): void;
 export function addElementAtIndex<T>(array: T[], index: number, itemToAdd: T): T[];
 
 // @public
-export const allowScrollOnElement: (element: HTMLElement | null, events: EventGroup, allowIosOverscroll?: boolean) => void;
+export const allowOverscrollOnElement: (element: HTMLElement | null, events: EventGroup) => void;
+
+// @public
+export const allowScrollOnElement: (element: HTMLElement | null, events: EventGroup) => void;
 
 // @public
 export const anchorProperties: string[];

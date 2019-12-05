@@ -158,7 +158,7 @@ export interface IModalProps extends React.ClassAttributes<ModalBase>, IWithResp
    * Allow body scroll on content and overlay. Changing after mounting has no effect.
    * @defaultvalue false
    */
-  allowIosBodyScroll?: boolean;
+  allowTouchBodyScroll?: boolean;
 }
 
 /**

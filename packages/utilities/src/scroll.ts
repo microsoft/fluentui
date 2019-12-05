@@ -32,7 +32,7 @@ const _makeElementScrollAllower = () => {
 
   // prevent the body from scrolling when the user attempts
   // to scroll past the top or bottom of the element
-  const _preventOverscrolling = (event: TouchEvent, allowIosOverscroll: boolean): void => {
+  const _preventOverscrolling = (event: TouchEvent): void => {
     // only respond to a single-finger touch
     if (event.targetTouches.length !== 1) {
       return;
@@ -53,10 +53,6 @@ const _makeElementScrollAllower = () => {
       _element = scrollableParent;
     }
 
-    if (allowIosOverscroll) {
-      return;
-    }
-
     // if the element is scrolled to the top,
     // prevent the user from scrolling up
     if (_element.scrollTop === 0 && clientY > 0) {
@@ -70,20 +66,13 @@ const _makeElementScrollAllower = () => {
     }
   };
 
-  return (element: HTMLElement | null, events: EventGroup, allowIosOverscroll: boolean = false): void => {
+  return (element: HTMLElement | null, events: EventGroup): void => {
     if (!element) {
       return;
     }
 
     events.on(element, 'touchstart', _saveClientY, { passive: false });
-    events.on(
-      element,
-      'touchmove',
-      (event: TouchEvent): void => {
-        _preventOverscrolling(event, allowIosOverscroll);
-      },
-      { passive: false }
-    );
+    events.on(element, 'touchmove', _preventOverscrolling, { passive: false });
 
     _element = element;
   };
@@ -94,6 +83,19 @@ const _makeElementScrollAllower = () => {
  * while preventing the user from scrolling the body
  */
 export const allowScrollOnElement = _makeElementScrollAllower();
+
+/**
+ * Same as allowScrollOnElement but does not prevent overscrolling.
+ */
+export const allowOverscrollOnElement = (element: HTMLElement | null, events: EventGroup): void => {
+  if (!element) {
+    return;
+  }
+  const _allowElementScroll = (event: TouchEvent) => {
+    event.stopPropagation();
+  };
+  events.on(element, 'touchmove', _allowElementScroll, { passive: false });
+};
 
 const _disableIosBodyScroll = (event: TouchEvent) => {
   event.preventDefault();
