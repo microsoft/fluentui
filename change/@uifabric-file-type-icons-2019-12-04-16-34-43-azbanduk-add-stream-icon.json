@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "ComboBox: empty errorMessage shouldn't create white space. (#11353)",
+  "packageName": "@uifabric/file-type-icons",
+  "email": "azbanduk@microsoft.com",
+  "commit": "9a2fa4a81f817eaf50b790dfeaade9a421965c17",
+  "date": "2019-12-05T00:34:43.350Z"
+}
