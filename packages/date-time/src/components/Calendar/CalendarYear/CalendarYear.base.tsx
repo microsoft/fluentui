@@ -9,7 +9,7 @@ import {
   ICalendarYearStyleProps,
   ICalendarYearStyles
 } from './CalendarYear.types';
-import { BaseComponent, KeyCodes, getRTL, classNamesFunction, css } from 'office-ui-fabric-react/lib/Utilities';
+import { BaseComponent, KeyCodes, getRTL, classNamesFunction, css, format } from 'office-ui-fabric-react/lib/Utilities';
 import { FocusZone } from 'office-ui-fabric-react/lib/FocusZone';
 import { Icon } from 'office-ui-fabric-react/lib/Icon';
 import { ICalendarIconStrings } from '../Calendar.types';
@@ -344,15 +344,17 @@ class CalendarYearTitle extends React.Component<ICalendarYearHeaderProps, {}> {
 
     if (onHeaderSelect) {
       const rangeAriaLabel = (strings || DefaultCalendarYearStrings).rangeAriaLabel;
-      const ariaLabel = rangeAriaLabel
+      const headerAriaLabelFormatString = strings!.headerAriaLabelFormatString;
+      const currentDateRange = rangeAriaLabel
         ? typeof rangeAriaLabel === 'string'
           ? (rangeAriaLabel as string)
           : (rangeAriaLabel as ICalendarYearRangeToString)(this.props)
         : undefined;
 
+      const ariaLabel = headerAriaLabelFormatString ? format(headerAriaLabelFormatString, currentDateRange) : currentDateRange;
+
       return (
         <button
-          key={fromYear}
           className={classNames.currentItemButton}
           onClick={this._onHeaderSelect}
           onKeyDown={this._onHeaderKeyDown}
@@ -360,7 +362,7 @@ class CalendarYearTitle extends React.Component<ICalendarYearHeaderProps, {}> {
           role="button"
           type="button"
           aria-atomic={true}
-          aria-live="polite"
+          aria-live="polite" // if this component rerenders when text changes, aria-live will not be announced, so make key consistent
         >
           {this._onRenderYear(fromYear)} - {this._onRenderYear(toYear)}
         </button>

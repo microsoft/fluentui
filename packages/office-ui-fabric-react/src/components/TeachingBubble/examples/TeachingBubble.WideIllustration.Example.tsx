@@ -49,7 +49,7 @@ export class TeachingBubbleWideIllustrationExample extends React.Component<{}, I
               calloutProps={{ directionalHint: DirectionalHint.bottomCenter }}
               isWide={true}
               hasSmallHeadline={true}
-              hasCloseIcon={true}
+              hasCloseButton={true}
               closeButtonAriaLabel="Close"
               target={this._menuButtonElement}
               primaryButtonProps={examplePrimaryButton}

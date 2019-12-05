@@ -1,7 +1,37 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Wed, 30 Oct 2019 19:36:52 GMT and should not be manually modified.
+This log was last generated on Tue, 03 Dec 2019 12:36:28 GMT and should not be manually modified.
 
+## 7.7.2
+Tue, 03 Dec 2019 12:36:28 GMT
+
+### Patches
+
+- Updating mobile docs - including bottom navigation and iOS Shimmer. (emlynam@microsoft.com)
+## 7.7.1
+Thu, 28 Nov 2019 12:32:23 GMT
+
+### Patches
+
+- Update fabric core dependency in other package.json files (v-mare@microsoft.com)
+## 7.7.0
+Wed, 06 Nov 2019 12:34:07 GMT
+
+### Minor changes
+
+- website: Fixes for high contrast (jdh@microsoft.com)
+## 7.6.1
+Tue, 05 Nov 2019 23:43:46 GMT
+
+### Patches
+
+- fixing the production flag to be respected in the webpackCliTask world (kchau@microsoft.com)
+## 7.6.0
+Fri, 01 Nov 2019 12:25:57 GMT
+
+### Minor changes
+
+- Adds the SharePoint Figma toolkit to the Resources page of the website (pejahn@microsoft.com)
 ## 7.5.8
 Wed, 30 Oct 2019 19:36:52 GMT
 

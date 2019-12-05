@@ -17,7 +17,7 @@ If you want to preview the Fluent styles and how they will affect your existing 
 
 ### Fluent for Fabric Core (CSS styles)
 
-For apps built with Fabric Core, version 10 has now been released and includes the new Fluent colors, type sizes, animations, and shadows. Use NPM to import the latest release:
+For apps built with Fabric Core, version 10 and later include the new Fluent colors, type sizes, animations, and shadows. Use NPM to import the latest release:
 
 ```
 npm install office-ui-fabric-core

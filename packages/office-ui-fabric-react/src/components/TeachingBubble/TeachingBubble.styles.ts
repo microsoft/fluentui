@@ -87,13 +87,14 @@ export const getStyles = (props: ITeachingBubbleStyleProps): ITeachingBubbleStyl
     calloutClassName,
     hasCondensedHeadline,
     hasSmallHeadline,
+    hasCloseButton,
     isWide,
     primaryButtonClassName,
     secondaryButtonClassName,
     theme
   } = props;
   const hasLargeHeadline: boolean = !hasCondensedHeadline && !hasSmallHeadline;
-  const { palette, fonts } = theme;
+  const { palette, semanticColors, fonts } = theme;
   const classNames = getGlobalClassNames(globalClassNames, theme);
 
   return {
@@ -132,6 +133,9 @@ export const getStyles = (props: ITeachingBubbleStyleProps): ITeachingBubbleStyl
           ':active': {
             background: palette.themeDark,
             color: palette.white
+          },
+          ':focus': {
+            border: `1px solid ${semanticColors.variantBorder}`
           }
         }
       }
@@ -161,10 +165,10 @@ export const getStyles = (props: ITeachingBubbleStyleProps): ITeachingBubbleStyl
     header: [
       classNames.header,
       ...headerStyle(classNames, hasCondensedHeadline, hasSmallHeadline),
+      hasCloseButton && { marginRight: 24 },
       (hasCondensedHeadline || hasSmallHeadline) && [
         fonts.medium,
         {
-          marginRight: 24,
           fontWeight: FontWeights.semibold
         }
       ]

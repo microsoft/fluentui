@@ -279,7 +279,7 @@ export interface IDropdownSubComponentStyles {
   label: IStyleFunctionOrObject<ILabelStyleProps, any>;
   // #5690: replace any with ILabelStyles in TS 2.9
 
-  /** Refers to the the individual dropdown item when the multiSelect prop is true. */
+  /** Refers to the individual dropdown item when the multiSelect prop is true. */
   multiSelectItem: IStyleFunctionOrObject<ICheckboxStyleProps, any>;
   // #5690: replace any with ILabelStyles in TS 2.9
 }

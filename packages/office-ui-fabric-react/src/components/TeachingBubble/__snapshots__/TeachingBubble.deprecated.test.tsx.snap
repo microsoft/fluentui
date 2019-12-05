@@ -1,0 +1,592 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TeachingBubble renders renders with hasCloseIcon which is deprecated 1`] = `
+<div
+  className=
+      ms-TeachingBubble-content
+      {
+        animation-duration: 300ms;
+        animation-fill-mode: both;
+        animation-name: keyframes 0%{opacity:0;animation-timing-function:cubic-bezier(.1,.9,.2,1);transform:scale3d(.90,.90,.90);}100%{opacity:1;transform:scale3d(1,1,1);};
+        animation-timing-function: linear;
+        border: 0px;
+        display: block;
+        max-width: 364px;
+        outline: transparent;
+        width: calc(100% + 1px);
+      }
+  data-is-focusable={true}
+  role="dialog"
+  tabIndex={-1}
+>
+  <div
+    onBlur={[Function]}
+    onFocus={[Function]}
+    onFocusCapture={[Function]}
+  >
+    <div
+      data-is-visible={true}
+      onFocus={[Function]}
+      style={
+        Object {
+          "pointerEvents": "none",
+          "position": "fixed",
+        }
+      }
+      tabIndex={0}
+    />
+    <div
+      className=
+          ms-TeachingBubble-bodycontent
+          {
+            padding-bottom: 20px;
+            padding-left: 24px;
+            padding-right: 24px;
+            padding-top: 20px;
+          }
+    >
+      <div
+        className=
+            ms-TeachingBubble-header
+            ms-TeachingBubble-header--large
+            {
+              margin-right: 24px;
+            }
+            &:not(:last-child) {
+              margin-bottom: 14px;
+            }
+      >
+        <p
+          className=
+              ms-TeachingBubble-headline
+              {
+                color: #ffffff;
+                font-size: 20px;
+                font-weight: 600;
+                margin-bottom: 0px;
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-top: 0px;
+              }
+          role="heading"
+        >
+          Test Title
+        </p>
+      </div>
+      <div
+        className=
+            ms-TeachingBubble-body
+            &:not(:last-child) {
+              margin-bottom: 20px;
+            }
+      >
+        <p
+          className=
+              ms-TeachingBubble-subText
+              {
+                color: #ffffff;
+                font-size: 14px;
+                font-weight: 400;
+                margin-bottom: 0px;
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-top: 0px;
+              }
+        >
+          Content
+        </p>
+      </div>
+      <div
+        className=
+            ms-Stack
+            ms-TeachingBubble-footer
+            {
+              align-items: center;
+              box-sizing: border-box;
+              color: #ffffff;
+              display: flex;
+              flex-direction: row;
+              flex-wrap: nowrap;
+              flex: auto;
+              height: auto;
+              justify-content: flex-end;
+              width: auto;
+            }
+            & > * {
+              text-overflow: ellipsis;
+            }
+            & > *:not(:first-child) {
+              margin-left: 0px;
+            }
+            & > *:not(.ms-StackItem) {
+              flex-shrink: 1;
+            }
+            & .ms-Button:not(:first-child) {
+              margin-left: 10px;
+            }
+      >
+        <div
+          className=
+              ms-StackItem
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                align-self: center;
+                flex-shrink: 1;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
+                height: auto;
+                width: auto;
+              }
+        >
+          <span />
+        </div>
+        <div
+          className=
+              ms-StackItem
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                flex-shrink: 1;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
+                height: auto;
+                width: auto;
+              }
+        >
+          <button
+            className=
+                ms-Button
+                ms-Button--default
+                ms-TeachingBubble-secondaryButton
+                secondary-className
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  background-color: #0078d4;
+                  border-color: #ffffff;
+                  border-radius: 2px;
+                  border: 1px solid #8a8886;
+                  box-sizing: border-box;
+                  color: #323130;
+                  cursor: pointer;
+                  display: inline-block;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                  height: 32px;
+                  min-width: 80px;
+                  outline: transparent;
+                  padding-bottom: 0;
+                  padding-left: 16px;
+                  padding-right: 16px;
+                  padding-top: 0;
+                  position: relative;
+                  text-align: center;
+                  text-decoration: none;
+                  user-select: none;
+                  vertical-align: top;
+                  white-space: nowrap;
+                }
+                &::-moz-focus-inner {
+                  border: 0;
+                }
+                .ms-Fabric--isFocusVisible &:focus:after {
+                  border: 1px solid transparent;
+                  bottom: 2px;
+                  content: "";
+                  left: 2px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: 2px;
+                  top: 2px;
+                  z-index: 1;
+                }
+                @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                  border: none;
+                  bottom: -2px;
+                  left: -2px;
+                  outline-color: ButtonText;
+                  right: -2px;
+                  top: -2px;
+                }
+                &:active > * {
+                  left: 0px;
+                  position: relative;
+                  top: 0px;
+                }
+                &:hover {
+                  background-color: #106ebe;
+                  border-color: #ffffff;
+                  color: #201f1e;
+                }
+                @media screen and (-ms-high-contrast: active){&:hover {
+                  border-color: Highlight;
+                  color: Highlight;
+                }
+                &:focus {
+                  background-color: #106ebe;
+                  border-color: #ffffff;
+                }
+                &:active {
+                  background-color: #0078d4;
+                  border-color: #ffffff;
+                  color: #201f1e;
+                }
+                & .ms-Button-label {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  color: #ffffff;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                }
+            data-is-focusable={true}
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            onKeyPress={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseUp={[Function]}
+            type="button"
+          >
+            <span
+              className=
+                  ms-Button-flexContainer
+                  {
+                    align-items: center;
+                    display: flex;
+                    flex-wrap: nowrap;
+                    height: 100%;
+                    justify-content: center;
+                  }
+              data-automationid="splitbuttonprimary"
+            >
+              <span
+                className=
+                    ms-Button-textContainer
+                    {
+                      display: block;
+                      flex-grow: 1;
+                    }
+              >
+                <span
+                  className=
+                      ms-Button-label
+                      {
+                        display: block;
+                        font-weight: 600;
+                        line-height: 100%;
+                        margin-bottom: 0;
+                        margin-left: 4px;
+                        margin-right: 4px;
+                        margin-top: 0;
+                      }
+                  id="id__0"
+                >
+                  Test Secondary Button
+                </span>
+              </span>
+            </span>
+          </button>
+          <button
+            className=
+                ms-Button
+                ms-Button--primary
+                ms-TeachingBubble-primaryButton
+                primary-className
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  background-color: #ffffff;
+                  border-color: #ffffff;
+                  border-radius: 2px;
+                  border: none;
+                  box-sizing: border-box;
+                  color: #0078d4;
+                  cursor: pointer;
+                  display: inline-block;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                  height: 32px;
+                  min-width: 80px;
+                  outline: transparent;
+                  padding-bottom: 0;
+                  padding-left: 16px;
+                  padding-right: 16px;
+                  padding-top: 0;
+                  position: relative;
+                  text-align: center;
+                  text-decoration: none;
+                  user-select: none;
+                  vertical-align: top;
+                  white-space: nowrap;
+                }
+                &::-moz-focus-inner {
+                  border: 0;
+                }
+                .ms-Fabric--isFocusVisible &:focus:after {
+                  border: none;
+                  bottom: 2px;
+                  content: "";
+                  left: 2px;
+                  outline-color: #ffffff;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: 2px;
+                  top: 2px;
+                  z-index: 1;
+                }
+                @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                  border: none;
+                  bottom: -2px;
+                  left: -2px;
+                  outline-color: ButtonText;
+                  right: -2px;
+                  top: -2px;
+                }
+                &:active > * {
+                  left: 0px;
+                  position: relative;
+                  top: 0px;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  -ms-high-contrast-adjust: none;
+                  background-color: WindowText;
+                  color: Window;
+                }
+                &:hover {
+                  background-color: #deecf9;
+                  border-color: #deecf9;
+                  color: #0078d4;
+                }
+                @media screen and (-ms-high-contrast: active){&:hover {
+                  background-color: Highlight;
+                  color: Window;
+                }
+                &:focus {
+                  background-color: #deecf9;
+                  border-color: #ffffff;
+                }
+                &:active {
+                  background-color: #ffffff;
+                  border-color: #ffffff;
+                  color: #0078d4;
+                }
+                @media screen and (-ms-high-contrast: active){&:active {
+                  -ms-high-contrast-adjust: none;
+                  background-color: WindowText;
+                  color: Window;
+                }
+                & .ms-Button-label {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                }
+            data-is-focusable={true}
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            onKeyPress={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseUp={[Function]}
+            type="button"
+          >
+            <span
+              className=
+                  ms-Button-flexContainer
+                  {
+                    align-items: center;
+                    display: flex;
+                    flex-wrap: nowrap;
+                    height: 100%;
+                    justify-content: center;
+                  }
+              data-automationid="splitbuttonprimary"
+            >
+              <span
+                className=
+                    ms-Button-textContainer
+                    {
+                      display: block;
+                      flex-grow: 1;
+                    }
+              >
+                <span
+                  className=
+                      ms-Button-label
+                      {
+                        display: block;
+                        font-weight: 600;
+                        line-height: 100%;
+                        margin-bottom: 0;
+                        margin-left: 4px;
+                        margin-right: 4px;
+                        margin-top: 0;
+                      }
+                  id="id__3"
+                >
+                  Test Primary Button
+                </span>
+              </span>
+            </span>
+          </button>
+        </div>
+      </div>
+      <button
+        className=
+            ms-Button
+            ms-Button--icon
+            ms-TeachingBubble-closebutton
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              background-color: transparent;
+              border-radius: 0px;
+              border: none;
+              box-sizing: border-box;
+              color: #ffffff;
+              cursor: pointer;
+              display: inline-block;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 12px;
+              font-weight: 400;
+              height: 32px;
+              margin-bottom: 0;
+              margin-left: 0;
+              margin-right: 15px;
+              margin-top: 15px;
+              outline: transparent;
+              padding-bottom: 0;
+              padding-left: 4px;
+              padding-right: 4px;
+              padding-top: 0;
+              position: absolute;
+              right: 0px;
+              text-align: center;
+              text-decoration: none;
+              top: 0px;
+              user-select: none;
+              vertical-align: top;
+              width: 32px;
+            }
+            &::-moz-focus-inner {
+              border: 0;
+            }
+            .ms-Fabric--isFocusVisible &:focus:after {
+              border: 1px solid transparent;
+              bottom: 2px;
+              content: "";
+              left: 2px;
+              outline: 1px solid #605e5c;
+              position: absolute;
+              right: 2px;
+              top: 2px;
+              z-index: 1;
+            }
+            @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+              border: none;
+              bottom: -2px;
+              left: -2px;
+              outline-color: ButtonText;
+              right: -2px;
+              top: -2px;
+            }
+            &:active > * {
+              left: 0px;
+              position: relative;
+              top: 0px;
+            }
+            &:hover {
+              background-color: #f3f2f1;
+              background: #106ebe;
+              color: #ffffff;
+            }
+            @media screen and (-ms-high-contrast: active){&:hover {
+              border-color: Highlight;
+              color: Highlight;
+            }
+            &:focus {
+              border: 1px solid #edebe9;
+            }
+            &:active {
+              background-color: #edebe9;
+              background: #005a9e;
+              color: #ffffff;
+            }
+        data-is-focusable={true}
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        onKeyPress={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseUp={[Function]}
+        type="button"
+      >
+        <span
+          className=
+              ms-Button-flexContainer
+              {
+                align-items: center;
+                display: flex;
+                flex-wrap: nowrap;
+                height: 100%;
+                justify-content: center;
+              }
+          data-automationid="splitbuttonprimary"
+        >
+          <i
+            aria-hidden={true}
+            className=
+                ms-Icon
+                ms-Button-icon
+                {
+                  display: inline-block;
+                }
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  font-family: "FabricMDL2Icons";
+                  font-style: normal;
+                  font-weight: normal;
+                  speak: none;
+                }
+                {
+                  flex-shrink: 0;
+                  font-size: 16px;
+                  height: 16px;
+                  line-height: 16px;
+                  margin-bottom: 0;
+                  margin-left: 4px;
+                  margin-right: 4px;
+                  margin-top: 0;
+                  text-align: center;
+                  vertical-align: middle;
+                }
+            data-icon-name="Cancel"
+            role="presentation"
+          >
+            
+          </i>
+        </span>
+      </button>
+    </div>
+    <div
+      data-is-visible={true}
+      onFocus={[Function]}
+      style={
+        Object {
+          "pointerEvents": "none",
+          "position": "fixed",
+        }
+      }
+      tabIndex={0}
+    />
+  </div>
+</div>
+`;

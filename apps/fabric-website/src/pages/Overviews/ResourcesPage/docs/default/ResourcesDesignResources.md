@@ -18,7 +18,7 @@ These SharePoint design resources provide everything you need to design your web
 
 <ul class="md-list--flex">
   <li class="mdut--half">[Designing SharePoint experiences](https://aka.ms/spdesign)</li>
-  <li class="mdut--half">[SharePoint Toolkit (XD)](https://aka.ms/sharepoint-toolkit)</li>
+  <li class="mdut--half">[SharePoint Toolkit (Figma)](https://aka.ms/SharePointToolkits/Web/Figma)</li>
 </ul>
 
 <h3 id="office-add-ins-design">Office Add-ins</h3>

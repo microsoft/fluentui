@@ -1,7 +1,19 @@
 # Change Log - @uifabric/fabric-website-resources
 
-This log was last generated on Mon, 28 Oct 2019 22:25:45 GMT and should not be manually modified.
+This log was last generated on Thu, 28 Nov 2019 12:32:23 GMT and should not be manually modified.
 
+## 7.4.2
+Thu, 28 Nov 2019 12:32:23 GMT
+
+### Patches
+
+- Update fabric core dependency in other package.json files (v-mare@microsoft.com)
+## 7.4.1
+Wed, 06 Nov 2019 12:34:07 GMT
+
+### Patches
+
+- Remove some unused things (elcraig@microsoft.com)
 ## 7.4.0
 Mon, 28 Oct 2019 22:25:45 GMT
 

@@ -92,7 +92,12 @@ export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
           borderColor: inputBorderDisabled,
           backgroundColor: inputBackgroundDisabled,
           pointerEvents: 'none',
-          cursor: 'default'
+          cursor: 'default',
+          selectors: {
+            [HighContrastSelector]: {
+              borderColor: 'GrayText'
+            }
+          }
         }
       ],
       underlined && [

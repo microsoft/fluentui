@@ -276,7 +276,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     // (undocumented)
     protected canAddItems(): boolean;
     // (undocumented)
-    completeSuggestion(): void;
+    completeSuggestion(forceComplete?: boolean): void;
     // (undocumented)
     componentDidMount(): void;
     // (undocumented)
@@ -599,17 +599,11 @@ export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPi
     // (undocumented)
     readonly color: IColor;
     // (undocumented)
-    static defaultProps: {
-        hexLabel: string;
-        redLabel: string;
-        greenLabel: string;
-        blueLabel: string;
-        alphaLabel: string;
-    };
+    componentDidUpdate(prevProps: Readonly<IColorPickerProps>, prevState: Readonly<IColorPickerState>): void;
+    // (undocumented)
+    static defaultProps: Partial<IColorPickerProps>;
     // (undocumented)
     render(): JSX.Element;
-    // (undocumented)
-    UNSAFE_componentWillReceiveProps(newProps: IColorPickerProps): void;
     }
 
 // @public (undocumented)
@@ -1667,6 +1661,7 @@ export type IBaseFloatingPickerSuggestionProps = Pick<ISuggestionsControlProps<a
 
 // @public
 export interface IBasePicker<T> {
+    completeSuggestion: (forceComplete?: boolean) => void;
     focus: () => void;
     focusInput: () => void;
     items: T[] | undefined;
@@ -1751,7 +1746,7 @@ export interface IBasePickerStyles {
 }
 
 // @public
-export interface IBasePickerSuggestionsProps<T = any> extends Pick<ISuggestionsProps<T>, 'onRenderNoResultFound' | 'suggestionsHeaderText' | 'mostRecentlyUsedHeaderText' | 'noResultsFoundText' | 'className' | 'suggestionsClassName' | 'suggestionsItemClassName' | 'searchForMoreText' | 'forceResolveText' | 'loadingText' | 'searchingText' | 'resultsFooterFull' | 'resultsFooter' | 'resultsMaximumNumber' | 'showRemoveButtons' | 'suggestionsAvailableAlertText' | 'suggestionsContainerAriaLabel'> {
+export interface IBasePickerSuggestionsProps<T = any> extends Pick<ISuggestionsProps<T>, 'onRenderNoResultFound' | 'suggestionsHeaderText' | 'mostRecentlyUsedHeaderText' | 'noResultsFoundText' | 'className' | 'suggestionsClassName' | 'suggestionsItemClassName' | 'searchForMoreText' | 'forceResolveText' | 'loadingText' | 'searchingText' | 'resultsFooterFull' | 'resultsFooter' | 'resultsMaximumNumber' | 'showRemoveButtons' | 'suggestionsAvailableAlertText' | 'suggestionsContainerAriaLabel' | 'showForceResolve'> {
 }
 
 // @public (undocumented)
@@ -2394,6 +2389,7 @@ export interface ICoachmarkProps extends React.ClassAttributes<CoachmarkBase> {
     onAnimationOpenStart?: () => void;
     onDismiss?: (ev?: any) => void;
     onMouseMove?: (e: MouseEvent) => void;
+    persistentBeak?: boolean;
     positioningContainerProps?: IPositioningContainerProps;
     preventDismissOnLostFocus?: boolean;
     preventFocusOnMount?: boolean;
@@ -2527,17 +2523,23 @@ export interface IColorPickerGridCellStyles {
 
 // @public (undocumented)
 export interface IColorPickerProps {
+    // @deprecated
     alphaLabel?: string;
     alphaSliderHidden?: boolean;
+    // @deprecated
     blueLabel?: string;
     className?: string;
     color: IColor | string;
     componentRef?: IRefObject<IColorPicker>;
+    // @deprecated
     greenLabel?: string;
+    // @deprecated
     hexLabel?: string;
     onChange?: (ev: React.SyntheticEvent<HTMLElement>, color: IColor) => void;
+    // @deprecated
     redLabel?: string;
     showPreview?: boolean;
+    strings?: IColorPickerStrings;
     styles?: IStyleFunctionOrObject<IColorPickerStyleProps, IColorPickerStyles>;
     theme?: ITheme;
 }
@@ -2551,6 +2553,20 @@ export interface IColorPickerState {
         component: keyof IRGBHex;
         value: string;
     };
+}
+
+// @public (undocumented)
+export interface IColorPickerStrings {
+    alpha?: string;
+    blue?: string;
+    green?: string;
+    hex?: string;
+    hue?: string;
+    red?: string;
+    rootAriaLabelFormat?: string;
+    svAriaDescription?: string;
+    svAriaLabel?: string;
+    svAriaValueFormat?: string;
 }
 
 // @public (undocumented)
@@ -2581,11 +2597,14 @@ export interface IColorRectangle {
 
 // @public (undocumented)
 export interface IColorRectangleProps {
+    ariaDescription?: string;
+    ariaLabel?: string;
+    ariaValueFormat?: string;
     className?: string;
     color: IColor;
     componentRef?: IRefObject<IColorRectangle>;
     minSize?: number;
-    onChange?: (ev: React.MouseEvent<HTMLElement>, color: IColor) => void;
+    onChange?: (ev: React.MouseEvent | React.KeyboardEvent, color: IColor) => void;
     styles?: IStyleFunctionOrObject<IColorRectangleStyleProps, IColorRectangleStyles>;
     theme?: ITheme;
 }
@@ -2600,6 +2619,7 @@ export interface IColorRectangleStyleProps {
 // @public (undocumented)
 export interface IColorRectangleStyles {
     dark?: IStyle;
+    description?: IStyle;
     light?: IStyle;
     root?: IStyle;
     thumb?: IStyle;
@@ -2607,28 +2627,30 @@ export interface IColorRectangleStyles {
 
 // @public (undocumented)
 export interface IColorSlider {
+    value: number;
 }
 
 // @public (undocumented)
 export interface IColorSliderProps {
+    ariaLabel?: string;
     className?: string;
     componentRef?: IRefObject<IColorSlider>;
     isAlpha?: boolean;
     maxValue?: number;
     minValue?: number;
-    onChange?: (event: React.MouseEvent<HTMLElement>, newValue?: number) => void;
-    overlayStyle?: any;
+    onChange?: (event: React.MouseEvent | React.KeyboardEvent, newValue?: number) => void;
+    overlayColor?: string;
+    // @deprecated
+    overlayStyle?: React.CSSProperties;
     styles?: IStyleFunctionOrObject<IColorSliderStyleProps, IColorSliderStyles>;
     theme?: ITheme;
+    // @deprecated
     thumbColor?: string;
     value?: number;
 }
 
 // @public (undocumented)
-export interface IColorSliderStyleProps {
-    className?: string;
-    theme: ITheme;
-}
+export type IColorSliderStyleProps = Required<Pick<IColorSliderProps, 'theme'>> & Pick<IColorSliderProps, 'className' | 'isAlpha'>;
 
 // @public (undocumented)
 export interface IColorSliderStyles {
@@ -2755,6 +2777,7 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox,
     onMenuOpen?: () => void;
     onPendingValueChanged?: (option?: IComboBoxOption, index?: number, value?: string) => void;
     onRenderLowerContent?: IRenderFunction<IComboBoxProps>;
+    onRenderUpperContent?: IRenderFunction<IComboBoxProps>;
     onResolveOptions?: (options: IComboBoxOption[]) => IComboBoxOption[] | PromiseLike<IComboBoxOption[]>;
     onScrollToItem?: (itemIndex: number) => void;
     options: IComboBoxOption[];
@@ -2842,7 +2865,7 @@ export interface ICommandBarProps extends React.HTMLAttributes<HTMLDivElement> {
     overflowButtonAs?: IComponentAs<IButtonProps>;
     overflowButtonProps?: IButtonProps;
     overflowItems?: ICommandBarItemProps[];
-    shiftOnReduce?: Boolean;
+    shiftOnReduce?: boolean;
     styles?: IStyleFunctionOrObject<ICommandBarStyleProps, ICommandBarStyles>;
     theme?: ITheme;
 }
@@ -3161,7 +3184,7 @@ export interface IDatePickerProps extends IBaseProps<IDatePicker>, React.HTMLAtt
     showMonthPickerAsOverlay?: boolean;
     showWeekNumbers?: boolean;
     strings?: IDatePickerStrings;
-    styles?: IStyleFunction<IDatePickerStyleProps, IDatePickerStyles>;
+    styles?: IStyleFunctionOrObject<IDatePickerStyleProps, IDatePickerStyles>;
     tabIndex?: number;
     textField?: ITextFieldProps;
     theme?: ITheme;
@@ -4459,11 +4482,13 @@ export interface IExtendedPersonaProps extends IPersonaProps {
 
 // @public (undocumented)
 export interface IFabricProps extends React.HTMLAttributes<HTMLDivElement> {
+    applyTheme?: boolean;
+    applyThemeToBody?: boolean;
+    as?: React.ReactType;
     // (undocumented)
     componentRef?: IRefObject<{}>;
-    // (undocumented)
+    dir?: 'rtl' | 'ltr' | 'auto';
     styles?: IStyleFunctionOrObject<IFabricStyleProps, IFabricStyles>;
-    // (undocumented)
     theme?: ITheme;
 }
 
@@ -4477,6 +4502,8 @@ export interface IFabricStyleProps extends IFabricProps {
 
 // @public (undocumented)
 export interface IFabricStyles {
+    // (undocumented)
+    bodyThemed: IStyle;
     // (undocumented)
     root: IStyle;
 }
@@ -5559,6 +5586,11 @@ export interface INav {
 }
 
 // @public (undocumented)
+export interface INavButtonProps extends IButtonProps {
+    link?: INavLink;
+}
+
+// @public (undocumented)
 export interface INavLink {
     [propertyName: string]: any;
     ariaLabel?: string;
@@ -5587,6 +5619,7 @@ export interface INavLinkGroup {
     collapseAriaLabel?: string;
     collapseByDefault?: boolean;
     expandAriaLabel?: string;
+    groupData?: any;
     links: INavLink[];
     name?: string;
     onHeaderClick?: (ev?: React.MouseEvent<HTMLElement>, isCollapsing?: boolean) => void;
@@ -5602,7 +5635,7 @@ export interface INavProps {
     groups: INavLinkGroup[] | null;
     initialSelectedKey?: string;
     isOnTop?: boolean;
-    linkAs?: IComponentAs<IButtonProps>;
+    linkAs?: IComponentAs<INavButtonProps>;
     onLinkClick?: (ev?: React.MouseEvent<HTMLElement>, item?: INavLink) => void;
     onLinkExpandClick?: (ev?: React.MouseEvent<HTMLElement>, item?: INavLink) => void;
     onRenderGroupHeader?: IRenderFunction<INavLinkGroup>;
@@ -7436,6 +7469,8 @@ export interface ITeachingBubbleProps extends React.ClassAttributes<TeachingBubb
     calloutProps?: ICalloutProps;
     componentRef?: IRefObject<ITeachingBubble>;
     footerContent?: string | JSX.Element;
+    hasCloseButton?: boolean;
+    // @deprecated (undocumented)
     hasCloseIcon?: boolean;
     hasCondensedHeadline?: boolean;
     hasSmallHeadline?: boolean;
@@ -7463,6 +7498,7 @@ export type ITeachingBubbleStyleProps = Required<Pick<ITeachingBubbleProps, 'the
     calloutClassName?: string;
     primaryButtonClassName?: string;
     secondaryButtonClassName?: string;
+    hasCloseButton?: boolean;
 };
 
 // @public (undocumented)
@@ -8098,6 +8134,8 @@ export const Modal: React.StatelessComponent<IModalProps>;
 // @public (undocumented)
 export class ModalBase extends BaseComponent<IModalProps, IDialogState> implements IModal {
     constructor(props: IModalProps);
+    // (undocumented)
+    componentDidMount(): void;
     // (undocumented)
     componentDidUpdate(prevProps: IModalProps, prevState: IDialogState): void;
     // (undocumented)

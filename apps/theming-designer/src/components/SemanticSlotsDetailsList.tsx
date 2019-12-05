@@ -30,10 +30,10 @@ interface ISemanticSlotsDetailsList {
 export const SemanticSlotsDetailsList: React.StatelessComponent<ISemanticSlotsDetailsListProps> = (
   props: ISemanticSlotsDetailsListProps
 ) => {
-  let countDefaults = 13;
+  let countDefaults = 17;
   let countLinks = 4;
-  let countButtons = 25;
-  let countInputs = 14;
+  let countButtons = 23;
+  let countInputs = 18;
   let countLists = 7;
   let countMenus = 8;
 
@@ -83,7 +83,7 @@ export const SemanticSlotsDetailsList: React.StatelessComponent<ISemanticSlotsDe
     {
       key: 'button',
       name: 'Buttons',
-      startIndex: countLinks + countDefaults,
+      startIndex: countDefaults + countLinks,
       count: countButtons,
       isCollapsed: true
     },
@@ -91,7 +91,7 @@ export const SemanticSlotsDetailsList: React.StatelessComponent<ISemanticSlotsDe
     {
       key: 'inputs',
       name: 'Inputs',
-      startIndex: countButtons + countLinks + countDefaults,
+      startIndex: countDefaults + countLinks + countButtons,
       count: countInputs,
       isCollapsed: true
     },
@@ -99,7 +99,7 @@ export const SemanticSlotsDetailsList: React.StatelessComponent<ISemanticSlotsDe
     {
       key: 'lists',
       name: 'Lists',
-      startIndex: countInputs + countButtons + countLinks + countDefaults,
+      startIndex: countDefaults + countLinks + countButtons + countInputs,
       count: countLists,
       isCollapsed: true
     },
@@ -107,7 +107,7 @@ export const SemanticSlotsDetailsList: React.StatelessComponent<ISemanticSlotsDe
     {
       key: 'menus',
       name: 'Menus',
-      startIndex: countLists + countInputs + countButtons + countLinks + countDefaults,
+      startIndex: countDefaults + countLinks + countButtons + countInputs + countLists,
       count: countMenus,
       isCollapsed: true
     }

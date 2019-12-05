@@ -18,7 +18,7 @@ const _getDisabledStyles = memoizeFunction(
 
     return {
       backgroundColor: SpinButtonBackgroundColorDisabled,
-      borderColor: 'transparent',
+      borderColor: SpinButtonBackgroundColorDisabled,
       pointerEvents: 'none',
       cursor: 'default',
       color: SpinButtonTextColorDisabled,
@@ -176,6 +176,7 @@ export const getStyles = memoizeFunction(
       labelDisabled: {},
       spinButtonWrapper: {
         display: 'flex',
+        position: 'relative',
         boxSizing: 'border-box',
         height: DEFAULT_HEIGHT,
         minWidth: DEFAULT_MIN_WIDTH,
@@ -194,10 +195,20 @@ export const getStyles = memoizeFunction(
         }
       },
       spinButtonWrapperFocused: {
-        borderColor: SpinButtonRootBorderColorFocused,
         selectors: {
           [HighContrastSelector]: {
             borderColor: 'Highlight'
+          },
+          ':after': {
+            pointerEvents: 'none',
+            content: "''",
+            position: 'absolute',
+            left: -1,
+            top: -1,
+            bottom: -1,
+            right: -1,
+            border: `2px solid ${SpinButtonRootBorderColorFocused}`,
+            borderRadius: effects.roundedCorner2
           }
         }
       },

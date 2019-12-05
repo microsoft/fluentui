@@ -93,9 +93,7 @@ export class CalendarDayBase extends BaseComponent<ICalendarDayProps, ICalendarD
       <div className={classNames.root} id={dayPickerId}>
         <div className={classNames.header}>
           <button
-            key={dateTimeFormatter.formatMonthYear(navigatedDate, strings)}
-            aria-live="polite"
-            aria-relevant="text"
+            aria-live="polite" // if this component rerenders when text changes, aria-live will not be announced, so make key consistent
             aria-atomic="true"
             id={monthAndYearId}
             className={classNames.monthAndYear}

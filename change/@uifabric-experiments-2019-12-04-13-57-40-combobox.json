@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "ComboBox: empty errorMessage shouldn't create white space",
+  "packageName": "@uifabric/experiments",
+  "email": "aneeshak@microsoft.com",
+  "commit": "55ccc0dac8e3e16b874492f5fa8f0527d1de9ea4",
+  "date": "2019-12-04T21:57:40.279Z"
+}

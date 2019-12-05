@@ -1,9 +1,0 @@
-{
-  "type": "patch",
-  "comment": "API table: render enum descriptions as multi-line",
-  "packageName": "@uifabric/example-app-base",
-  "email": "elcraig@microsoft.com",
-  "commit": "e6575e62c8c206540654d313e4ea81f47a4007ac",
-  "date": "2019-10-22T01:01:02.837Z",
-  "file": "/Users/elizabeth/git/fabric-react10/change/@uifabric-example-app-base-2019-10-21-18-01-13-panel-close.json"
-}

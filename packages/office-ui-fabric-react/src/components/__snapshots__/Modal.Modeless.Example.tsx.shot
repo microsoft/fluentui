@@ -8,6 +8,7 @@ exports[`Component Examples renders Modal.Modeless.Example.tsx correctly 1`] = `
         is-enabled
         {
           display: flex;
+          margin-bottom: 20px;
           position: relative;
         }
         &:hover .ms-Checkbox-checkbox {

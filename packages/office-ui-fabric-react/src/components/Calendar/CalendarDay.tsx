@@ -499,6 +499,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
     return (ev: React.KeyboardEvent<HTMLElement>): void => {
       if (ev.which === KeyCodes.enter) {
         this._onSelectDate(originalDate, ev);
+        ev.preventDefault();
       } else {
         this._navigateMonthEdge(ev, originalDate, weekIndex, dayIndex);
       }

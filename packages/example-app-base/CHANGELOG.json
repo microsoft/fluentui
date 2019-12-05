@@ -2,6 +2,81 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "date": "Thu, 28 Nov 2019 12:32:23 GMT",
+      "tag": "@uifabric/example-app-base_v7.10.2",
+      "version": "7.10.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update fabric core dependency in other package.json files",
+            "author": "v-mare@microsoft.com",
+            "commit": "ecd83e48e22fb2931fe575f8123671dd1c162960"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 13 Nov 2019 12:33:43 GMT",
+      "tag": "@uifabric/example-app-base_v7.10.1",
+      "version": "7.10.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "PlatformPicker: High Contrast support",
+            "author": "jdh@microsoft.com",
+            "commit": "64d918168ddc62de51799cb4f02f05b0d22df9b5"
+          },
+          {
+            "comment": "Fix API reference links",
+            "author": "elcraig@microsoft.com",
+            "commit": "129ef2b9ffc8ace9bc479a314295deed7cd68d4f"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 12 Nov 2019 12:32:39 GMT",
+      "tag": "@uifabric/example-app-base_v7.10.0",
+      "version": "7.10.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "API doc table refactor",
+            "author": "elcraig@microsoft.com",
+            "commit": "32afa854a8d36c21859d44b312ea02b9261e0238"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 06 Nov 2019 12:34:07 GMT",
+      "tag": "@uifabric/example-app-base_v7.9.0",
+      "version": "7.9.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Update API doc generation to handle deprecated messages",
+            "author": "elcraig@microsoft.com",
+            "commit": "3922bd804a64f9b2c25ff7c1bc7df911b898e69d"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 01 Nov 2019 01:02:38 GMT",
+      "tag": "@uifabric/example-app-base_v7.8.5",
+      "version": "7.8.5",
+      "comments": {
+        "patch": [
+          {
+            "comment": "API table: render enum descriptions as multi-line",
+            "author": "elcraig@microsoft.com",
+            "commit": "e6575e62c8c206540654d313e4ea81f47a4007ac"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 04 Oct 2019 22:19:48 GMT",
       "tag": "@uifabric/example-app-base_v7.8.4",
       "version": "7.8.4",

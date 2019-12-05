@@ -221,7 +221,7 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, ICalendarM
                         onClick={isInBounds ? this._selectMonthCallbacks[monthIndex] : undefined}
                         onKeyDown={isInBounds ? this._onSelectMonthKeyDown(monthIndex) : undefined}
                         aria-label={dateTimeFormatter.formatMonthYear(indexedMonth, strings)}
-                        aria-selected={isCurrentMonth || isNavigatedMonth}
+                        aria-selected={isNavigatedMonth}
                         data-is-focusable={isInBounds ? true : undefined}
                         ref={isNavigatedMonth ? this._navigatedMonthRef : undefined}
                         type="button"

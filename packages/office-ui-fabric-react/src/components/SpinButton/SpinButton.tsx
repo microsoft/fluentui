@@ -119,7 +119,7 @@ export class SpinButton extends React.Component<ISpinButtonProps, ISpinButtonSta
   // tslint:disable-next-line function-name
   public UNSAFE_componentWillReceiveProps(newProps: ISpinButtonProps): void {
     this._lastValidValue = this.state.value;
-    let value: string = newProps.value ? newProps.value : String(newProps.min);
+    let value: string = newProps.value !== undefined ? newProps.value : String(newProps.min);
     if (newProps.defaultValue) {
       value = String(Math.max(newProps.min as number, Math.min(newProps.max as number, Number(newProps.defaultValue))));
     }

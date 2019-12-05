@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, classNamesFunction, getId, allowScrollOnElement, KeyCodes } from '../../Utilities';
+import { BaseComponent, classNamesFunction, getId, allowScrollOnElement, KeyCodes, elementContains } from '../../Utilities';
 import { FocusTrapZone, IFocusTrapZone } from '../FocusTrapZone/index';
 import { animationDuration } from './Modal.styles';
 import { IModalProps, IModalStyleProps, IModalStyles, IModal } from './Modal.types';
@@ -47,6 +47,7 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
   private _scrollableContent: HTMLDivElement | null;
   private _lastSetX: number;
   private _lastSetY: number;
+  private _hasRegisteredKeyUp: boolean;
 
   constructor(props: IModalProps) {
     super(props);
@@ -78,6 +79,10 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
         this.setState({
           isOpen: true
         });
+        // Add a keyUp handler for all key up events when the dialog is open
+        if (newProps.dragOptions) {
+          this._registerForKeyUp();
+        }
       } else {
         // Modal has been opened
         // Reopen during closing
@@ -105,6 +110,14 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
       this.setState({
         isVisible: false
       });
+    }
+  }
+
+  public componentDidMount() {
+    // Not all modals show just by updating their props. Some only render when they are mounted and pass in
+    // isOpen as true. We need to add the keyUp handler in componentDidMount if we are in that case.
+    if (this.state.isOpen && this.state.isVisible) {
+      this._registerForKeyUp();
     }
   }
 
@@ -181,8 +194,6 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
         forceFocusInsideTrap={isModeless ? !isModeless : forceFocusInsideTrap}
         firstFocusableSelector={firstFocusableSelector}
         focusPreviouslyFocusedInnerElement={true}
-        onKeyDown={dragOptions ? this._onDialogKeyDown : undefined}
-        onKeyUp={dragOptions ? this._onDialogKeyUp : undefined}
         onBlur={isInKeyboardMoveMode ? this._onExitKeyboardMoveMode : undefined}
       >
         {dragOptions && isInKeyboardMoveMode && (
@@ -282,6 +293,10 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
       y: 0
     });
 
+    if (this.props.dragOptions && this._hasRegisteredKeyUp) {
+      this._events.off(window, 'keyup', this._onKeyUp, true /* useCapture */);
+    }
+
     // Call the onDismiss callback
     if (this.props.onDismissed) {
       this.props.onDismissed();
@@ -301,19 +316,25 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
     this.focus();
   };
 
-  private _onDialogKeyUp = (event: React.KeyboardEvent<HTMLDivElement>): void => {
+  private _onKeyUp = (event: React.KeyboardEvent<HTMLElement>): void => {
     // Need to handle the CTRL + ALT + SPACE key during keyup due to FireFox bug:
     // https://bugzilla.mozilla.org/show_bug.cgi?id=1220143
     // Otherwise it would continue to fire a click even if the event was cancelled
     // during mouseDown.
     if (event.altKey && event.ctrlKey && event.keyCode === KeyCodes.space) {
-      this.setState({ isModalMenuOpen: !this.state.isModalMenuOpen });
-      event.preventDefault();
-      event.stopPropagation();
+      // Since this is a global handler, we should make sure the target is within the dialog
+      // before opening the dropdown
+      if (elementContains(this._scrollableContent, event.target as HTMLElement)) {
+        this.setState({ isModalMenuOpen: !this.state.isModalMenuOpen });
+        event.preventDefault();
+        event.stopPropagation();
+      }
     }
   };
 
-  private _onDialogKeyDown = (event: React.KeyboardEvent<HTMLDivElement>): void => {
+  // We need a global onKeyDown event when we are in the move mode so that we can
+  // handle the key presses and the components inside the modal do not get the events
+  private _onKeyDown = (event: React.KeyboardEvent<HTMLElement>): void => {
     if (event.altKey && event.ctrlKey && event.keyCode === KeyCodes.space) {
       // CTRL + ALT + SPACE is handled during keyUp
       event.preventDefault();
@@ -380,7 +401,7 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
     }
   };
 
-  private _getMoveDelta(event: React.KeyboardEvent<HTMLDivElement>): number {
+  private _getMoveDelta(event: React.KeyboardEvent<HTMLElement>): number {
     let delta = 10;
     if (event.shiftKey) {
       if (!event.ctrlKey) {
@@ -397,11 +418,20 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
     this._lastSetX = this.state.x;
     this._lastSetY = this.state.y;
     this.setState({ isInKeyboardMoveMode: true, isModalMenuOpen: false });
+    this._events.on(window, 'keydown', this._onKeyDown, true /* useCapture */);
   };
 
   private _onExitKeyboardMoveMode = () => {
     this._lastSetX = 0;
     this._lastSetY = 0;
     this.setState({ isInKeyboardMoveMode: false });
+    this._events.off(window, 'keydown', this._onKeyDown, true /* useCapture */);
+  };
+
+  private _registerForKeyUp = (): void => {
+    if (!this._hasRegisteredKeyUp) {
+      this._events.on(window, 'keyup', this._onKeyUp, true /* useCapture */);
+      this._hasRegisteredKeyUp = true;
+    }
   };
 }

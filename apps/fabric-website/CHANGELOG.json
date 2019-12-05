@@ -2,6 +2,76 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "date": "Tue, 03 Dec 2019 12:36:28 GMT",
+      "tag": "@uifabric/fabric-website_v7.7.2",
+      "version": "7.7.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Updating mobile docs - including bottom navigation and iOS Shimmer.",
+            "author": "emlynam@microsoft.com",
+            "commit": "bfdafb8e0f7b62d4ea51d0668f183f5b3939ed19"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 28 Nov 2019 12:32:23 GMT",
+      "tag": "@uifabric/fabric-website_v7.7.1",
+      "version": "7.7.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update fabric core dependency in other package.json files",
+            "author": "v-mare@microsoft.com",
+            "commit": "ecd83e48e22fb2931fe575f8123671dd1c162960"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 06 Nov 2019 12:34:07 GMT",
+      "tag": "@uifabric/fabric-website_v7.7.0",
+      "version": "7.7.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "website: Fixes for high contrast",
+            "author": "jdh@microsoft.com",
+            "commit": "f5cf5ae4c2059ca823a4b0a560aa56592ea0b132"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 05 Nov 2019 23:43:46 GMT",
+      "tag": "@uifabric/fabric-website_v7.6.1",
+      "version": "7.6.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fixing the production flag to be respected in the webpackCliTask world",
+            "author": "kchau@microsoft.com",
+            "commit": "e35c4367b6f6f87ebf2d9372136a15c6b9eb190b"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 01 Nov 2019 12:25:57 GMT",
+      "tag": "@uifabric/fabric-website_v7.6.0",
+      "version": "7.6.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Adds the SharePoint Figma toolkit to the Resources page of the website",
+            "author": "pejahn@microsoft.com",
+            "commit": "d2839f8cc09e37329c56e30399b5c046c9002f80"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 30 Oct 2019 19:36:52 GMT",
       "tag": "@uifabric/fabric-website_v7.5.8",
       "version": "7.5.8",

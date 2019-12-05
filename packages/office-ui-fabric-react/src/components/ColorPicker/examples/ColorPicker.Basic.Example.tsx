@@ -1,25 +1,10 @@
 import * as React from 'react';
 import { ColorPicker, Toggle, getColorFromString, IColor, IColorPickerStyles, updateA } from 'office-ui-fabric-react/lib/index';
-import { mergeStyleSets, HighContrastSelector } from 'office-ui-fabric-react/lib/Styling';
+import { mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
 
 const classNames = mergeStyleSets({
-  wrapper: {
-    display: 'flex'
-  },
-  column2: {
-    marginLeft: 10
-  },
-  colorSquare: {
-    width: 100,
-    height: 100,
-    margin: '16px 0',
-    border: '1px solid #c8c6c4',
-    selectors: {
-      [HighContrastSelector]: {
-        MsHighContrastAdjust: 'none'
-      }
-    }
-  }
+  wrapper: { display: 'flex' },
+  column2: { marginLeft: 10 }
 });
 
 const colorPickerStyles: Partial<IColorPickerStyles> = {
@@ -54,6 +39,8 @@ export class ColorPickerBasicExample extends React.Component<{}, IBasicColorPick
           alphaSliderHidden={alphaSliderHidden}
           showPreview={showPreview}
           styles={colorPickerStyles}
+          // The ColorPicker provides default English strings.
+          // If your app is localized, you MUST provide the `strings` prop with localized strings.
         />
 
         <div className={classNames.column2}>

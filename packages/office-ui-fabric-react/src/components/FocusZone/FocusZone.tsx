@@ -364,7 +364,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
     // update alignment an immediate descendant
     if (newActiveElement && newActiveElement !== this._activeElement) {
       if (isImmediateDescendant || initialElementFocused) {
-        this._setFocusAlignment(newActiveElement, initialElementFocused);
+        this._setFocusAlignment(newActiveElement, true, true);
       }
 
       this._activeElement = newActiveElement;
