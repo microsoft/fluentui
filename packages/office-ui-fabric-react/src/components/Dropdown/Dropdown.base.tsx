@@ -540,49 +540,56 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
   private _onRenderList = (props: ISelectableDroppableTextProps<IDropdown, HTMLDivElement>): JSX.Element => {
     const { onRenderItem = this._onRenderItem } = props;
 
-    const groups: IDropdownOption[][] = [[]];
-    let index = -1;
+    let tempGroup: JSX.Element[] = [];
+    const allOptions: JSX.Element[] = [];
+    let header: IDropdownOption | undefined = undefined;
 
-    for (const item of props.options) {
-      const groupLength = groups.length;
-      const currentGroup = groups[groupLength - 1];
-      if (item.itemType === SelectableOptionMenuItemType.Header) {
-        const header = { id: this._id + item.key, ...item };
-        if (currentGroup.length === 0) {
-          // if current group is empty i.e. header is first item
-          currentGroup.push(header);
-        } else {
-          // otherwise create a new group and push header to new group
-          groups[groupLength] = [];
-          groups[groupLength].push(header);
-        }
-      } else {
-        // push all non headers to the current group
-        currentGroup.push(item);
-      }
-    }
-
-    const renderedGroups = [];
-    for (const group of groups) {
-      // check if first item in group is a header
-      const hasHeader = group[0].itemType === SelectableOptionMenuItemType.Header;
-
-      const items = group.map((item: any) => {
-        index++;
-        return onRenderItem({ ...item, index }, this._onRenderItem);
-      });
-      renderedGroups.push(
-        hasHeader ? (
-          <div role="group" key={group[0].key} aria-labelledby={group[0].id}>
-            {items}
+    const transferTempGroup = (): void => {
+      allOptions.push(
+        header ? (
+          <div role="group" key={header.key} aria-labelledby={header.id}>
+            {tempGroup}
           </div>
         ) : (
-          items
+          <>{tempGroup}</>
         )
       );
-    }
+      // then flush tempGroup and header
+      tempGroup = [];
+      header = undefined;
+    };
 
-    return <>{renderedGroups}</>;
+    props.options.forEach((item: IDropdownOption, index: number) => {
+      switch (item.itemType) {
+        case SelectableOptionMenuItemType.Header:
+          // if tempGroup is not empty when we see a header, dump the existing contents into allOptions
+          if (tempGroup.length > 0) {
+            transferTempGroup();
+          }
+          // Add header to tempGroup
+          header = { id: this._id + item.key, ...item };
+          const renderedHeader = onRenderItem({ ...header!, index }, this._onRenderItem);
+          renderedHeader && tempGroup.push(renderedHeader);
+          break;
+        case SelectableOptionMenuItemType.Divider:
+          // Add divider to tempGroup then flush temp
+          const renderedDivider = onRenderItem({ ...item, index }, this._onRenderItem);
+          renderedDivider && tempGroup.push(renderedDivider);
+
+          if (tempGroup.length > 0) {
+            transferTempGroup();
+          }
+          break;
+        default:
+          // Add item to tempGroup
+          const renderedItem = onRenderItem({ ...item, index }, this._onRenderItem);
+          renderedItem && tempGroup.push(renderedItem);
+      }
+    });
+    // push remaining items into all allOptions
+    tempGroup.length > 0 && transferTempGroup();
+
+    return <>{allOptions}</>;
   };
 
   private _onRenderItem = (item: IDropdownOption): JSX.Element | null => {
