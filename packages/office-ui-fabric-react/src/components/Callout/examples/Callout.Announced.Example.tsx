@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { DefaultButton, getTheme, FontWeights, mergeStyleSets, AnnouncedCallout } from 'office-ui-fabric-react';
+import { DefaultButton, getTheme, FontWeights, mergeStyleSets, AnnouncedCallout, DelayedRender, Callout } from 'office-ui-fabric-react';
 
 export interface IAnnouncedCalloutExampleState {
   isCalloutVisible?: boolean;
@@ -52,19 +52,36 @@ export class AnnouncedCalloutExample extends React.Component<{}, IAnnouncedCallo
           <DefaultButton onClick={this._onShowMenuClicked} text={isCalloutVisible ? 'Hide AnnouncedCallout' : 'Show AnnouncedCallout'} />
         </div>
         {this.state.isCalloutVisible && (
-          <AnnouncedCallout
-            className={styles.callout}
-            gapSpace={0}
-            target={this._menuButtonElement.current}
-            onDismiss={this._onCalloutDismiss}
-            setInitialFocus={true}
-          >
+          <AnnouncedCallout className={styles.callout} target={this._menuButtonElement.current} onDismiss={this._onCalloutDismiss}>
             <div className={styles.inner}>
               <p className={styles.subtext}>
                 This message is treated as an aria-live assertive status message, and will be read by narrator regardless of focus.
               </p>
             </div>
           </AnnouncedCallout>
+        )}
+
+        <div className={styles.buttonArea} ref={this._menuButtonElement}>
+          <DefaultButton onClick={this._onShowMenuClicked} text={isCalloutVisible ? 'Hide AnnouncedCallout' : 'Show AnnouncedCallout'} />
+        </div>
+        {this.state.isCalloutVisible && (
+          <Callout
+            className={styles.callout}
+            target={this._menuButtonElement.current}
+            onDismiss={this._onCalloutDismiss}
+            role="status"
+            aria-live="assertive"
+          >
+            <DelayedRender>
+              <>
+                <div className={styles.inner}>
+                  <p className={styles.subtext}>
+                    This message is treated as an aria-live assertive status message, and will be read by narrator regardless of focus.
+                  </p>
+                </div>
+              </>
+            </DelayedRender>
+          </Callout>
         )}
       </>
     );
