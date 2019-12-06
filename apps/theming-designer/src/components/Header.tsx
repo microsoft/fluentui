@@ -52,14 +52,20 @@ const headerStackStyles = (p: IStackProps, theme: ITheme) => ({
   }
 });
 
-const codepenHeader = 'const { createTheme, Customizations, DefaultButton, PrimaryButton, Toggle, TooltipHost } = Fabric;\n\n';
-const codepenSamples =
-  '\n\nclass Content extends React.Component {\n  public render() {\n  Customizations.applySettings({ theme: _theme });  ' +
-  '\n    return (<div>' +
-  '<DefaultButton text="DefaultButton"/><PrimaryButton text="PrimaryButton"/>' +
-  '<Toggle label="Enabled"/><Toggle label="Disabled" disabled={true}/>' +
-  '</div>);\n  }\n}\n' +
-  "ReactDOM.render(<Content />,document.getElementById('content'));";
+const codepenHeader = `const { createTheme, Customizations, DefaultButton, PrimaryButton, Toggle, TooltipHost } = Fabric;\n\n`;
+const codepenSamples = `\n\nclass Content extends React.Component {
+    public render()
+    {
+      Customizations.applySettings({ theme: myTheme });
+      return (
+        <div>
+          <DefaultButton text="DefaultButton"/><PrimaryButton text="PrimaryButton"/>
+          <Toggle label="Enabled"/><Toggle label="Disabled" disabled={true}/>
+        </div>
+      );
+    }
+}
+ReactDOM.render(<Content />,document.getElementById('content'));`;
 
 export class Header extends React.Component<IHeaderProps, IHeaderState> {
   constructor(props: any) {
@@ -144,7 +150,7 @@ export class Header extends React.Component<IHeaderProps, IHeaderState> {
     this.setState({
       jsonTheme: JSON.stringify(ThemeGenerator.getThemeAsJson(abridgedTheme), void 0, 2),
       powershellTheme: ThemeGenerator.getThemeForPowerShell(abridgedTheme),
-      themeAsCode: ThemeGenerator.getThemeAsCodeForThemeDesigner(abridgedTheme)
+      themeAsCode: ThemeGenerator.getThemeAsCodeWithCreateTheme(abridgedTheme)
     });
   };
 
