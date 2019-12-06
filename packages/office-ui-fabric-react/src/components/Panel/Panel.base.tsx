@@ -144,6 +144,7 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
     const isLeft = type === PanelType.smallFixedNear || type === PanelType.customNear ? true : false;
     const isRTL = getRTL();
     const isOnRightSide = isRTL ? isLeft : !isLeft;
+    const isHeaderInContentInner = !!(this.props.onRenderNavigation || this.props.onRenderNavigationContent);
     const headerTextId = headerText && id + '-headerText';
     const customWidthStyles = type === PanelType.custom || type === PanelType.customNear ? { width: customWidth } : {};
     const nativeProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties);
@@ -166,7 +167,8 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
       isOnRightSide,
       isOpen,
       isHiddenOnDismiss,
-      type
+      type,
+      isHeaderInContentInner
     });
 
     const { _classNames } = this;
@@ -210,7 +212,7 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
                 {onRenderNavigation(this.props, this._onRenderNavigation)}
               </div>
               <div className={_classNames.contentInner}>
-                {header}
+                {(isHeaderInContentInner || !hasCloseButton) && header}
                 <div ref={this._allowScrollOnPanel} className={_classNames.scrollableContent} data-is-scrollable={true}>
                   {onRenderBody(this.props, this._onRenderBody)}
                 </div>
@@ -295,28 +297,39 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
       // const iconButtonStyles = this._classNames.subComponentStyles
       // ? (this._classNames.subComponentStyles.iconButton as IStyleFunctionOrObject<IButtonStyleProps, IButtonStyles>)
       // : undefined;
+      const headerTextId = this.props.headerText && this.state.id + '-headerText';
+      const header = this._onRenderHeader(this.props, this._onRenderHeader, headerTextId);
+      const isHeaderInContentInner = !!(this.props.onRenderNavigation || this.props.onRenderNavigationContent);
+
       return (
-        <IconButton
-          // TODO -Issue #5689: Comment in once Button is converted to mergeStyles
-          // className={iconButtonStyles}
-          styles={{
-            root: {
-              height: 'auto',
-              width: '44px',
-              color: theme.palette.neutralSecondary,
-              fontSize: IconFontSizes.large
-            },
-            rootHovered: {
-              color: theme.palette.neutralPrimary
-            }
-          }}
-          className={this._classNames.closeButton}
-          onClick={this._onPanelClick}
-          ariaLabel={closeButtonAriaLabel}
-          title={closeButtonAriaLabel}
-          data-is-visible={true}
-          iconProps={{ iconName: 'Cancel' }}
-        />
+        <React.Fragment>
+          {!this.props.onRenderNavigation && !this.props.onRenderNavigationContent && header}
+          <IconButton
+            // TODO -Issue #5689: Comment in once Button is converted to mergeStyles
+            // className={iconButtonStyles}
+            styles={{
+              root: [
+                isHeaderInContentInner && {
+                  height: 'auto',
+                  width: '44px'
+                },
+                {
+                  color: theme.palette.neutralSecondary,
+                  fontSize: IconFontSizes.large
+                }
+              ],
+              rootHovered: {
+                color: theme.palette.neutralPrimary
+              }
+            }}
+            className={this._classNames.closeButton}
+            onClick={this._onPanelClick}
+            ariaLabel={closeButtonAriaLabel}
+            title={closeButtonAriaLabel}
+            data-is-visible={true}
+            iconProps={{ iconName: 'Cancel' }}
+          />
+        </React.Fragment>
       );
     }
     return null;
