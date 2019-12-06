@@ -406,7 +406,7 @@ export interface IPanelStyleProps {
    * Determines where the header is rendered based on whether the user
    * has passed in a custom onRenderNavigation or onRenderNavigationContent render callback
    */
-  isHeaderInContentInner?: boolean;
+  hasCustomNavigation?: boolean;
 }
 
 // TODO -Issue #5689: Comment in once Button is converted to mergeStyles

@@ -45,6 +45,8 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
   private _classNames: IProcessedStyleSet<IPanelStyles>;
   private _scrollableContent: HTMLDivElement | null;
   private _animationCallback: number | null = null;
+  private _hasCustomNavigation: boolean = !!(this.props.onRenderNavigation || this.props.onRenderNavigationContent);
+  private _header: JSX.Element | null;
 
   public static getDerivedStateFromProps(nextProps: Readonly<IPanelProps>, prevState: Readonly<IPanelState>): Partial<IPanelState> | null {
     if (nextProps.isOpen === undefined) {
@@ -144,7 +146,6 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
     const isLeft = type === PanelType.smallFixedNear || type === PanelType.customNear ? true : false;
     const isRTL = getRTL();
     const isOnRightSide = isRTL ? isLeft : !isLeft;
-    const isHeaderInContentInner = !!(this.props.onRenderNavigation || this.props.onRenderNavigationContent);
     const headerTextId = headerText && id + '-headerText';
     const customWidthStyles = type === PanelType.custom || type === PanelType.customNear ? { width: customWidth } : {};
     const nativeProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties);
@@ -168,8 +169,10 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
       isOpen,
       isHiddenOnDismiss,
       type,
-      isHeaderInContentInner
+      hasCustomNavigation: this._hasCustomNavigation
     });
+
+    this._header = onRenderHeader(this.props, this._onRenderHeader, headerTextId);
 
     const { _classNames } = this;
 
@@ -185,14 +188,12 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
       );
     }
 
-    const header = onRenderHeader(this.props, this._onRenderHeader, headerTextId);
-
     return (
       <Layer {...layerProps}>
         <Popup
           role="dialog"
           aria-modal="true"
-          ariaLabelledBy={header ? headerTextId : undefined}
+          ariaLabelledBy={this._header ? headerTextId : undefined}
           onDismiss={this.dismiss}
           className={_classNames.hiddenPanel}
         >
@@ -212,7 +213,7 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
                 {onRenderNavigation(this.props, this._onRenderNavigation)}
               </div>
               <div className={_classNames.contentInner}>
-                {(isHeaderInContentInner || !hasCloseButton) && header}
+                {(this._hasCustomNavigation || !hasCloseButton) && this._header}
                 <div ref={this._allowScrollOnPanel} className={_classNames.scrollableContent} data-is-scrollable={true}>
                   {onRenderBody(this.props, this._onRenderBody)}
                 </div>
@@ -297,19 +298,16 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
       // const iconButtonStyles = this._classNames.subComponentStyles
       // ? (this._classNames.subComponentStyles.iconButton as IStyleFunctionOrObject<IButtonStyleProps, IButtonStyles>)
       // : undefined;
-      const headerTextId = this.props.headerText && this.state.id + '-headerText';
-      const header = this._onRenderHeader(this.props, this._onRenderHeader, headerTextId);
-      const isHeaderInContentInner = !!(this.props.onRenderNavigation || this.props.onRenderNavigationContent);
 
       return (
         <React.Fragment>
-          {!this.props.onRenderNavigation && !this.props.onRenderNavigationContent && header}
+          {!this._hasCustomNavigation && this._header}
           <IconButton
             // TODO -Issue #5689: Comment in once Button is converted to mergeStyles
             // className={iconButtonStyles}
             styles={{
               root: [
-                isHeaderInContentInner && {
+                this._hasCustomNavigation && {
                   height: 'auto',
                   width: '44px'
                 },

@@ -185,7 +185,7 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
     isOnRightSide,
     isOpen,
     isHiddenOnDismiss,
-    isHeaderInContentInner,
+    hasCustomNavigation,
     theme,
     type = PanelType.smallFixedFar
   } = props;
@@ -278,7 +278,7 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
       {
         marginTop: 18
       },
-      isHeaderInContentInner && {
+      hasCustomNavigation && {
         marginTop: 'inherit'
       }
     ],
@@ -288,7 +288,7 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
         display: 'flex',
         justifyContent: 'flex-end'
       },
-      isHeaderInContentInner && {
+      hasCustomNavigation && {
         height: commandBarHeight
       }
     ],
@@ -297,7 +297,7 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
       {
         marginRight: 14
       },
-      isHeaderInContentInner && {
+      hasCustomNavigation && {
         marginRight: 0
       }
     ],
@@ -317,7 +317,7 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
         flexShrink: 1,
         marginRight: 'auto'
       },
-      isHeaderInContentInner && {
+      hasCustomNavigation && {
         // Ensure that title doesn't shrink if screen is too small
         flexShrink: 0,
         marginRight: 0
