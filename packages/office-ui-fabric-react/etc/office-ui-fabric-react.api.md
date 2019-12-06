@@ -8204,8 +8204,6 @@ export class OverflowSetBase extends BaseComponent<IOverflowSetProps, {}> implem
     componentDidUpdate(): void;
     // (undocumented)
     componentWillUnmount(): void;
-    // (undocumented)
-    static defaultProps: Pick<IOverflowSetProps, 'vertical' | 'role'>;
     focus(forceIntoFirstElement?: boolean): boolean;
     focusElement(childElement?: HTMLElement): boolean;
     // (undocumented)
