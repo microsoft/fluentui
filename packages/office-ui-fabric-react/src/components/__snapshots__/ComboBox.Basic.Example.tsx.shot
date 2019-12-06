@@ -2039,7 +2039,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           }
                       data-automationid="splitbuttonprimary"
                     >
-                       
                       <span
                         className=
 
@@ -2201,7 +2200,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           }
                       data-automationid="splitbuttonprimary"
                     >
-                       
                       <span
                         className=
 
@@ -2359,7 +2357,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           }
                       data-automationid="splitbuttonprimary"
                     >
-                       
                       <span
                         className=
 
@@ -2517,7 +2514,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           }
                       data-automationid="splitbuttonprimary"
                     >
-                       
                       <span
                         className=
 
@@ -2724,7 +2720,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           }
                       data-automationid="splitbuttonprimary"
                     >
-                       
                       <span
                         className=
 
@@ -2873,7 +2868,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           }
                       data-automationid="splitbuttonprimary"
                     >
-                       
                       <span
                         className=
 
@@ -3031,7 +3025,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           }
                       data-automationid="splitbuttonprimary"
                     >
-                       
                       <span
                         className=
 
@@ -3189,7 +3182,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           }
                       data-automationid="splitbuttonprimary"
                     >
-                       
                       <span
                         className=
 
@@ -3347,7 +3339,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           }
                       data-automationid="splitbuttonprimary"
                     >
-                       
                       <span
                         className=
 
@@ -3505,7 +3496,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           }
                       data-automationid="splitbuttonprimary"
                     >
-                       
                       <span
                         className=
 
