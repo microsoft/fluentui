@@ -19,6 +19,18 @@ export const getIconContent = memoizeFunction((iconName?: string) => {
   };
 });
 
+export const getIconContentUnCached = memoizeFunction(
+  (iconName?: string) => {
+    const iconDefinition = getIcon(iconName) || {
+      subset: { className: undefined },
+      code: undefined
+    };
+    return { children: iconDefinition.code, iconClassName: iconDefinition.subset.className };
+  },
+  undefined,
+  true
+);
+
 /**
  * Fast icon component which only supports font glyphs (not images) and can't be targeted by customizations.
  * To style the icon, use `className` or reference `ms-Icon` in CSS.

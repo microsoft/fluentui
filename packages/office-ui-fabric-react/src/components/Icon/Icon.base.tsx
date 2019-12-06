@@ -3,8 +3,8 @@ import * as React from 'react';
 import { IIconProps, IconType, IIconStyleProps, IIconStyles } from './Icon.types';
 import { Image } from '../Image/Image';
 import { ImageLoadState, IImageProps } from '../Image/Image.types';
-import { getNativeProps, htmlElementProperties, classNamesFunction, memoizeFunction } from '../../Utilities';
-import { getIcon } from '../../Styling';
+import { getNativeProps, htmlElementProperties, classNamesFunction } from '../../Utilities';
+import { getIconContent, getIconContentUnCached } from './FontIcon';
 
 export interface IIconState {
   imageLoadError: boolean;
@@ -13,18 +13,6 @@ export interface IIconState {
 const getClassNames = classNamesFunction<IIconStyleProps, IIconStyles>({
   disableCaching: true
 });
-
-const getIconContent = memoizeFunction(
-  (iconName?: string) => {
-    const iconDefinition = getIcon(iconName) || {
-      subset: { className: undefined },
-      code: undefined
-    };
-    return { children: iconDefinition.code, iconClassName: iconDefinition.subset.className };
-  },
-  undefined,
-  true
-);
 
 export class IconBase extends React.Component<IIconProps, IIconState> {
   constructor(props: IIconProps) {
@@ -38,8 +26,9 @@ export class IconBase extends React.Component<IIconProps, IIconState> {
     const { className, styles, iconName, imageErrorAs, theme } = this.props;
     const isPlaceholder = typeof iconName === 'string' && iconName.length === 0;
     const isImage = this.props.iconType === IconType.image || this.props.iconType === IconType.Image || !!this.props.imageProps;
-    const { iconClassName, children } = getIconContent(iconName);
-
+    const { iconClassName, children } = this.props.recomputeUndefinedCachedIcon
+      ? getIconContentUnCached(iconName)
+      : getIconContent(iconName);
     const classNames = getClassNames(styles, {
       theme: theme!,
       className,

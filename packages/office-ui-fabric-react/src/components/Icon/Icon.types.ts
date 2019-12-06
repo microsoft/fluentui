@@ -70,6 +70,11 @@ export interface IIconProps extends IBaseProps, React.HTMLAttributes<HTMLElement
    */
   styles?: IStyleFunctionOrObject<IIconStyleProps, IIconStyles>;
   theme?: ITheme;
+
+  /**
+   * If the icon is cached, but is undefined - then causes it to ignore the cached version and recompute.
+   */
+  recomputeUndefinedCachedIcon?: boolean;
 }
 
 /**
