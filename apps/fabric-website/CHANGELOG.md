@@ -1,7 +1,13 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Tue, 03 Dec 2019 12:36:28 GMT and should not be manually modified.
+This log was last generated on Fri, 06 Dec 2019 12:33:21 GMT and should not be manually modified.
 
+## 7.7.3
+Fri, 06 Dec 2019 12:33:21 GMT
+
+### Patches
+
+- Updating RTL documentation. (Humberto.Morimoto@microsoft.com)
 ## 7.7.2
 Tue, 03 Dec 2019 12:36:28 GMT
 

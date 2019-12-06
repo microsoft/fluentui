@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Making rest state accessible",
-  "packageName": "@uifabric/styling",
-  "email": "betrue@microsoft.com",
-  "commit": "ff294c712714651495c128c74e2ad9bff5336dee",
-  "date": "2019-12-03T19:55:48.654Z"
-}

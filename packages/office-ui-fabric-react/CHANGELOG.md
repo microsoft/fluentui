@@ -1,7 +1,18 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 05 Dec 2019 12:34:16 GMT and should not be manually modified.
+This log was last generated on Fri, 06 Dec 2019 12:33:21 GMT and should not be manually modified.
 
+## 7.69.2
+Fri, 06 Dec 2019 12:33:21 GMT
+
+### Patches
+
+- Fixed after element misalignment (betrue@microsoft.com)
+- Dropdown: fix misalignment (betrue@microsoft.com)
+- DocumentCard: Adding explicit focus styles (mgodbolt@microsoft.com)
+- Slider: getAriaValueText should return value if ariaValueText isn't supplied (mgodbolt@microsoft.com)
+- updated snapshots (betrue@microsoft.com)
+- Correct SpinButton default max value in documentation (xgao@microsoft.com)
 ## 7.69.1
 Thu, 05 Dec 2019 12:34:16 GMT
 

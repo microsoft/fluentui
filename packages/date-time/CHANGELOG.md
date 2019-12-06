@@ -1,7 +1,13 @@
 # Change Log - @uifabric/date-time
 
-This log was last generated on Tue, 03 Dec 2019 12:36:28 GMT and should not be manually modified.
+This log was last generated on Fri, 06 Dec 2019 12:33:21 GMT and should not be manually modified.
 
+## 7.8.1
+Fri, 06 Dec 2019 12:33:21 GMT
+
+### Patches
+
+- updated snapshots (betrue@microsoft.com)
 ## 7.8.0
 Tue, 03 Dec 2019 12:36:28 GMT
 

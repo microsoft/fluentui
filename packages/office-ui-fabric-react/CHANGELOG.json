@@ -2,6 +2,45 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Fri, 06 Dec 2019 12:33:21 GMT",
+      "tag": "office-ui-fabric-react_v7.69.2",
+      "version": "7.69.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fixed after element misalignment",
+            "author": "betrue@microsoft.com",
+            "commit": "7ff0e395f59b1d57caf300916a102b40ab37b769"
+          },
+          {
+            "comment": "Dropdown: fix misalignment",
+            "author": "betrue@microsoft.com",
+            "commit": "7ff0e395f59b1d57caf300916a102b40ab37b769"
+          },
+          {
+            "comment": "DocumentCard: Adding explicit focus styles",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "3546fe64d1450554b93a1833a395ef53b3684bb0"
+          },
+          {
+            "comment": "Slider: getAriaValueText should return value if ariaValueText isn't supplied",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "0832fed37f03f299f03ccb305e49ba6cc378e2f1"
+          },
+          {
+            "comment": "updated snapshots",
+            "author": "betrue@microsoft.com",
+            "commit": "287bff63b4a7803d0c8ff21bc9f927777fc2ceb3"
+          },
+          {
+            "comment": "Correct SpinButton default max value in documentation",
+            "author": "xgao@microsoft.com",
+            "commit": "e2ee601bb1439348f60626962e835ca466d176cb"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 05 Dec 2019 12:34:16 GMT",
       "tag": "office-ui-fabric-react_v7.69.1",
       "version": "7.69.1",

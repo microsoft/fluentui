@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Slider: getAriaValueText should return value if ariaValueText isn't supplied",
-  "packageName": "office-ui-fabric-react",
-  "email": "mgodbolt@microsoft.com",
-  "commit": "0832fed37f03f299f03ccb305e49ba6cc378e2f1",
-  "date": "2019-11-27T19:27:47.436Z"
-}

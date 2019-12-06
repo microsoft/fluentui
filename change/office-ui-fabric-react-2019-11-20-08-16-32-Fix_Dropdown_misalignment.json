@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fixed after element misalignment",
-  "packageName": "office-ui-fabric-react",
-  "email": "betrue@microsoft.com",
-  "commit": "7ff0e395f59b1d57caf300916a102b40ab37b769",
-  "date": "2019-11-20T16:16:32.399Z"
-}
