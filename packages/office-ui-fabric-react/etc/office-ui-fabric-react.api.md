@@ -5868,6 +5868,7 @@ export interface IPanelStyleProps {
     isAnimating?: boolean;
     isFooterAtBottom?: boolean;
     isFooterSticky?: boolean;
+    isHeaderInContentInner?: boolean;
     isHiddenOnDismiss?: boolean;
     isOnRightSide?: boolean;
     isOpen?: boolean;
