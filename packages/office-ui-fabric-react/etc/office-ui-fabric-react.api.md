@@ -5864,11 +5864,11 @@ export interface IPanelStyleProps {
     className?: string;
     focusTrapZoneClassName?: string;
     hasCloseButton?: boolean;
+    hasCustomNavigation?: boolean;
     headerClassName?: string;
     isAnimating?: boolean;
     isFooterAtBottom?: boolean;
     isFooterSticky?: boolean;
-    isHeaderInContentInner?: boolean;
     isHiddenOnDismiss?: boolean;
     isOnRightSide?: boolean;
     isOpen?: boolean;
