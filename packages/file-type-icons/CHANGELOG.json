@@ -2,6 +2,20 @@
   "name": "@uifabric/file-type-icons",
   "entries": [
     {
+      "date": "Fri, 06 Dec 2019 12:19:19 GMT",
+      "tag": "@uifabric/file-type-icons_v6.8.0",
+      "version": "6.8.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "added stream icon to 6.0",
+            "author": "azbanduk@microsoft.com",
+            "commit": "36b303369907c8d1c2847c0c38b6fcf488e2a58d"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 15 Oct 2019 12:23:45 GMT",
       "tag": "@uifabric/file-type-icons_v6.7.1",
       "version": "6.7.1",

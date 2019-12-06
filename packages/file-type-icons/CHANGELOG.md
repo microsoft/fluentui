@@ -1,7 +1,13 @@
 # Change Log - @uifabric/file-type-icons
 
-This log was last generated on Tue, 15 Oct 2019 12:23:45 GMT and should not be manually modified.
+This log was last generated on Fri, 06 Dec 2019 12:19:19 GMT and should not be manually modified.
 
+## 6.8.0
+Fri, 06 Dec 2019 12:19:19 GMT
+
+### Minor changes
+
+- added stream icon to 6.0 (azbanduk@microsoft.com)
 ## 6.7.1
 Tue, 15 Oct 2019 12:23:45 GMT
 
