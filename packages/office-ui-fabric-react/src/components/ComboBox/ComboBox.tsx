@@ -935,9 +935,11 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         );
       }
     }
-
+    if (this.props.multiSelect && this.state.isOpen) {
+      return;
+    }
     // clear all of the pending info
-    !this.props.multiSelect && this._clearPendingInfo();
+    this._clearPendingInfo();
   }
 
   /**
@@ -1080,7 +1082,10 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
             this._autofill.current.inputElement.value.toLocaleLowerCase() === pendingOptionText)
         ) {
           this._setSelectedIndex(currentPendingValueValidIndex, submitPendingValueEvent);
-          !this.props.multiSelect && this._clearPendingInfo();
+          if (this.props.multiSelect && this.state.isOpen) {
+            return;
+          }
+          this._clearPendingInfo();
           return;
         }
       }
