@@ -2,6 +2,20 @@
   "name": "@uifabric/styling",
   "entries": [
     {
+      "date": "Fri, 06 Dec 2019 12:33:21 GMT",
+      "tag": "@uifabric/styling_v7.7.4",
+      "version": "7.7.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Making rest state accessible",
+            "author": "betrue@microsoft.com",
+            "commit": "ff294c712714651495c128c74e2ad9bff5336dee"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 14 Nov 2019 12:30:52 GMT",
       "tag": "@uifabric/styling_v7.7.3",
       "version": "7.7.3",

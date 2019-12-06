@@ -2,6 +2,20 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "date": "Fri, 06 Dec 2019 12:33:21 GMT",
+      "tag": "@uifabric/fabric-website_v7.7.3",
+      "version": "7.7.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Updating RTL documentation.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "ad256851e84dbaf73817719133d30411473efb9a"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 03 Dec 2019 12:36:28 GMT",
       "tag": "@uifabric/fabric-website_v7.7.2",
       "version": "7.7.2",

@@ -1,7 +1,19 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Mon, 18 Nov 2019 12:33:30 GMT and should not be manually modified.
+This log was last generated on Fri, 06 Dec 2019 12:33:21 GMT and should not be manually modified.
 
+## 7.18.8
+Fri, 06 Dec 2019 12:33:21 GMT
+
+### Patches
+
+- updated snapshots (betrue@microsoft.com)
+## 7.18.7
+Thu, 05 Dec 2019 12:34:16 GMT
+
+### Patches
+
+- ComboBox: empty errorMessage shouldn't create white space (aneeshak@microsoft.com)
 ## 7.18.6
 Mon, 18 Nov 2019 12:33:30 GMT
 
