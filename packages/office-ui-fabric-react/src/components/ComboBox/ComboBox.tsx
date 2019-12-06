@@ -1290,11 +1290,13 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
           onChange={this._onItemClick(item)}
           label={item.text}
           role="option"
-          aria-selected={isSelected ? 'true' : 'false'}
           checked={isChecked}
           title={title}
           disabled={item.disabled}
           onRenderLabel={onRenderCheckboxLabel}
+          inputProps={{
+            'aria-selected': isSelected ? 'true' : 'false'
+          }}
         />
       );
     };
