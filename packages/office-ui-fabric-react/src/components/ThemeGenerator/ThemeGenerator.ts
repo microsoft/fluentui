@@ -179,8 +179,10 @@ export class ThemeGenerator {
     }
   }
 
-  /* Makes the rest of the code that's used for the load theme blob in the exported codepens of both the older sharepoint-specific theme       designer and the new theme designer. Takes in theme rules and converts them to format fitting a list of palette colors
-     and their values. Resulting output looks like:
+  /* Makes the rest of the code that's used for the load theme blob in the exported codepens of
+     both the older sharepoint-specific theme designer and the new theme designer. Takes in
+     theme rules and converts them to format fitting a list of palette colors and their values.
+     Resulting output looks like:
      const _theme = createTheme({
       palette: {
         themePrimary: '#0078d4',
