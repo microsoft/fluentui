@@ -9349,6 +9349,7 @@ export const TextView: ITextComponent['view'];
 export class ThemeGenerator {
     // (undocumented)
     static getThemeAsCode(slotRules: IThemeRules): any;
+    static getThemeAsCodeWithCreateTheme(slotRules: IThemeRules): any;
     // (undocumented)
     static getThemeAsJson(slotRules: IThemeRules): any;
     // (undocumented)
