@@ -69,19 +69,23 @@ exports[`Component Examples renders Button.ScreenReader.Example.tsx correctly 1`
       }
       &:hover {
         background-color: #106ebe;
+        border: 1px solid #106ebe;
         color: #ffffff;
       }
       @media screen and (-ms-high-contrast: active){&:hover {
         background-color: Highlight;
+        border-color: Highlight;
         color: Window;
       }
       &:active {
         background-color: #005a9e;
+        border: 1px solid #005a9e;
         color: #ffffff;
       }
       @media screen and (-ms-high-contrast: active){&:active {
         -ms-high-contrast-adjust: none;
         background-color: WindowText;
+        border-color: WindowText;
         color: Window;
       }
   data-is-focusable={true}
