@@ -12,7 +12,6 @@ exports[`Component Examples renders DocumentCard.Conversation.Example.tsx correc
           -webkit-font-smoothing: antialiased;
           background-color: #ffffff;
           border: 1px solid #edebe9;
-          box-sizing: border-box;
           display: inline-block;
           margin-right: 20px;
           max-width: 320px;
@@ -20,6 +19,22 @@ exports[`Component Examples renders DocumentCard.Conversation.Example.tsx correc
           position: relative;
           user-select: none;
           width: 320px;
+        }
+        &:focus {
+          outline: 0px solid;
+        }
+        .ms-Fabric--isFocusVisible &:focus:after {
+          border: 2px solid #605e5c;
+          bottom: -1px;
+          content: '';
+          left: -1px;
+          pointer-events: none;
+          position: absolute;
+          right: -1px;
+          top: -1px;
+        }
+        @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+          border-color: Highlight;
         }
         & .ms-DocumentCardLocation + .ms-DocumentCardTitle {
           padding-top: 4px;
@@ -444,7 +459,6 @@ exports[`Component Examples renders DocumentCard.Conversation.Example.tsx correc
           -webkit-font-smoothing: antialiased;
           background-color: #ffffff;
           border: 1px solid #edebe9;
-          box-sizing: border-box;
           display: inline-block;
           margin-right: 20px;
           max-width: 320px;
@@ -452,6 +466,22 @@ exports[`Component Examples renders DocumentCard.Conversation.Example.tsx correc
           position: relative;
           user-select: none;
           width: 320px;
+        }
+        &:focus {
+          outline: 0px solid;
+        }
+        .ms-Fabric--isFocusVisible &:focus:after {
+          border: 2px solid #605e5c;
+          bottom: -1px;
+          content: '';
+          left: -1px;
+          pointer-events: none;
+          position: absolute;
+          right: -1px;
+          top: -1px;
+        }
+        @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+          border-color: Highlight;
         }
         & .ms-DocumentCardLocation + .ms-DocumentCardTitle {
           padding-top: 4px;
@@ -866,7 +896,6 @@ exports[`Component Examples renders DocumentCard.Conversation.Example.tsx correc
           -webkit-font-smoothing: antialiased;
           background-color: #ffffff;
           border: 1px solid #edebe9;
-          box-sizing: border-box;
           display: inline-block;
           margin-right: 20px;
           max-width: 320px;
@@ -874,6 +903,22 @@ exports[`Component Examples renders DocumentCard.Conversation.Example.tsx correc
           position: relative;
           user-select: none;
           width: 320px;
+        }
+        &:focus {
+          outline: 0px solid;
+        }
+        .ms-Fabric--isFocusVisible &:focus:after {
+          border: 2px solid #605e5c;
+          bottom: -1px;
+          content: '';
+          left: -1px;
+          pointer-events: none;
+          position: absolute;
+          right: -1px;
+          top: -1px;
+        }
+        @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+          border-color: Highlight;
         }
         & .ms-DocumentCardLocation + .ms-DocumentCardTitle {
           padding-top: 4px;

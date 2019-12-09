@@ -27,9 +27,9 @@ export class VirtualizedComboBox extends BaseComponent<IComboBoxProps, {}> imple
     }
   }
 
-  public focus() {
+  public focus(shouldOpenOnFocus?: boolean, useFocusAsync?: boolean) {
     if (this._comboBox.current) {
-      this._comboBox.current.focus();
+      this._comboBox.current.focus(shouldOpenOnFocus, useFocusAsync);
       return true;
     }
 

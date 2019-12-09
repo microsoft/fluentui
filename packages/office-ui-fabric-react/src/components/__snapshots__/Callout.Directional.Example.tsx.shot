@@ -232,6 +232,7 @@ Array [
           aria-valuemax={30}
           aria-valuemin={0}
           aria-valuenow={0}
+          aria-valuetext="0"
           className=
               ms-Slider-slideBox
               ms-Slider-showValue
@@ -492,6 +493,7 @@ Array [
           aria-valuemax={50}
           aria-valuemin={10}
           aria-valuenow={16}
+          aria-valuetext="16"
           className=
               ms-Slider-slideBox
               ms-Slider-showValue
@@ -765,18 +767,26 @@ Array [
               border-color: Highlight;
             }
             &:focus .ms-Dropdown-title {
-              border-color: #0078d4;
-              border-width: 2px;
               color: #201f1e;
-              left: -1px;
-              top: -1px;
             }
-            @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-title {
+            &:focus:after {
+              border-radius: 2px;
+              border: 2px solid #0078d4;
+              box-sizing: border-box;
+              content: '';
+              height: 100%;
+              left: 0px;
+              pointer-events: none;
+              position: absolute;
+              top: 0px;
+              width: 100%;
+            }
+            @media screen and (-ms-high-contrast: active){&:focus:after {
               background-color: Highlight;
               border-color: Highlight;
               color: HighlightText;
             }
-            @media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: black-on-white){&:focus .ms-Dropdown-title {
+            @media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: black-on-white){&:focus:after {
               -ms-high-contrast-adjust: none;
             }
             &:active .ms-Dropdown-title {
@@ -839,7 +849,7 @@ Array [
               ms-Dropdown-title
               {
                 background-color: #ffffff;
-                border-color: #8a8886;
+                border-color: #605e5c;
                 border-radius: 2px;
                 border-style: solid;
                 border-width: 1px;

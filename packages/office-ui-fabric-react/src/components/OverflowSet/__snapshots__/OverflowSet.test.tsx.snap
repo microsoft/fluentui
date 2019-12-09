@@ -65,6 +65,6 @@ exports[`OverflowSet snapshot tests snapshot with classname and vertical layout 
   onFocus={[Function]}
   onKeyDown={[Function]}
   onMouseDownCapture={[Function]}
-  role="menubar"
+  role="menu"
 />
 `;
