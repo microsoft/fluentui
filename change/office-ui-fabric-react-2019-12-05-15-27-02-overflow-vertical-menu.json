@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "OverflowSet: Vertical layout now uses menu instead of menubar",
-  "packageName": "office-ui-fabric-react",
-  "email": "mgodbolt@microsoft.com",
-  "commit": "6feb1b112efeefb7d63d9e1cfd8d812cb7b0150a",
-  "date": "2019-12-05T23:27:02.240Z"
-}

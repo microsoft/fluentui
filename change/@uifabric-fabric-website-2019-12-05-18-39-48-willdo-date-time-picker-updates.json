@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "updated Fabric Android Date Time Picker documentation",
-  "packageName": "@uifabric/fabric-website",
-  "email": "willdo@microsoft.com",
-  "commit": "d54b49c19a8b0d775f731366dcee31b95bb2716e",
-  "date": "2019-12-06T02:39:48.643Z"
-}

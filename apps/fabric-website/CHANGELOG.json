@@ -2,6 +2,20 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "date": "Mon, 09 Dec 2019 12:29:23 GMT",
+      "tag": "@uifabric/fabric-website_v7.7.4",
+      "version": "7.7.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "updated Fabric Android Date Time Picker documentation",
+            "author": "willdo@microsoft.com",
+            "commit": "d54b49c19a8b0d775f731366dcee31b95bb2716e"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 06 Dec 2019 12:33:21 GMT",
       "tag": "@uifabric/fabric-website_v7.7.3",
       "version": "7.7.3",
