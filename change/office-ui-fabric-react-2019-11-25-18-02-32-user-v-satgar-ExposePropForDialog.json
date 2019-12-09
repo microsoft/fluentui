@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Dialog: Use closeButtonAriaLabel for close button tooltip",
+  "packageName": "office-ui-fabric-react",
+  "email": "v-ragor@microsoft.com",
+  "commit": "dbcbaed1f306bbe5f18433ef54165b21b1600fad",
+  "date": "2019-11-25T12:32:32.409Z"
+}
