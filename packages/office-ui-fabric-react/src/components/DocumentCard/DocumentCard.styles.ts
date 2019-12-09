@@ -1,4 +1,5 @@
-import { getGlobalClassNames } from '../../Styling';
+import { getGlobalClassNames, HighContrastSelector, IStyle } from '../../Styling';
+import { IsFocusVisibleClassName } from '../../Utilities';
 import { IDocumentCardStyleProps, IDocumentCardStyles } from './DocumentCard.types';
 import { DocumentCardPreviewGlobalClassNames as previewClassNames } from './DocumentCardPreview.styles';
 import { DocumentCardActivityGlobalClassNames as activityClassNames } from './DocumentCardActivity.styles';
@@ -17,6 +18,26 @@ export const getStyles = (props: IDocumentCardStyleProps): IDocumentCardStyles =
 
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
+  const getFocusBorder: IStyle = {
+    selectors: {
+      ':after': {
+        pointerEvents: 'none',
+        content: "''",
+        position: 'absolute',
+        left: -1,
+        top: -1,
+        bottom: -1,
+        right: -1,
+        border: '2px solid ' + palette.neutralSecondary,
+        selectors: {
+          [HighContrastSelector]: {
+            borderColor: 'Highlight'
+          }
+        }
+      }
+    }
+  };
+
   return {
     root: [
       classNames.root,
@@ -24,12 +45,17 @@ export const getStyles = (props: IDocumentCardStyleProps): IDocumentCardStyles =
         WebkitFontSmoothing: 'antialiased',
         backgroundColor: palette.white,
         border: `1px solid ${palette.neutralLight}`,
-        boxSizing: 'border-box',
         maxWidth: '320px',
         minWidth: '206px',
         userSelect: 'none',
         position: 'relative',
         selectors: {
+          ':focus': {
+            outline: '0px solid'
+          },
+          [`.${IsFocusVisibleClassName} &:focus`]: {
+            ...getFocusBorder
+          },
           [`.${locationClassNames.root} + .${titleClassNames.root}`]: {
             paddingTop: '4px'
           }

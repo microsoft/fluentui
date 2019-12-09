@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Add calloutProps to HoverCard",
-  "packageName": "office-ui-fabric-react",
-  "email": "anihan@microsoft.com",
-  "commit": "db9c6eea4e1697d2b7ffe9233b81f42f0f5804e8",
-  "date": "2019-11-26T01:23:39.401Z"
-}

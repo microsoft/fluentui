@@ -236,7 +236,7 @@ function _makeSemanticColorsFromPalette(p: IPalette, isInverted: boolean, depCom
     accentButtonText: p.white,
 
     // INPUTS
-    inputBorder: p.neutralSecondaryAlt,
+    inputBorder: p.neutralSecondary,
     inputBorderHovered: p.neutralPrimary,
     inputBackground: p.white,
     inputBackgroundChecked: p.themePrimary,

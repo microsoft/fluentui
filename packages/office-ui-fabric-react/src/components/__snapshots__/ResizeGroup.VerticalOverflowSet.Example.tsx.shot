@@ -44,7 +44,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
-        role="menubar"
+        role="menu"
       >
         <div
           className=

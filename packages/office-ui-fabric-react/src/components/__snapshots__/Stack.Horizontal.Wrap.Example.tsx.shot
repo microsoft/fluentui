@@ -79,6 +79,7 @@ exports[`Component Examples renders Stack.Horizontal.Wrap.Example.tsx correctly 
         aria-valuemax={100}
         aria-valuemin={1}
         aria-valuenow={100}
+        aria-valuetext="100"
         className=
             ms-Slider-slideBox
             ms-Slider-showValue
