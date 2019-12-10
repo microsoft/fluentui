@@ -715,11 +715,13 @@ describe('ComboBox', () => {
     inputElement.simulate('input', { target: { value: 'ManuallyEnteredValue' } });
     _verifyStateVariables(componentRef, true, [...DEFAULT_OPTIONS, { ...comboBoxOption }], [3]);
 
-    // this should toggle the checkbox
+    // this should toggle the checkbox off
+    // With multi-select the currentPendingValue is not reset on input change because it would break keyboard accessibility
     wrapper.find('.ms-ComboBox button').simulate('click');
     const buttons = document.querySelectorAll('.ms-ComboBox-option > input');
     ReactTestUtils.Simulate.change(buttons[3]);
 
+    // with 'ManuallyEnteredValue' still in the input, on blur it should toggle the check back to on
     inputElement.simulate('blur');
     _verifyStateVariables(
       componentRef,
@@ -728,10 +730,10 @@ describe('ComboBox', () => {
         ...DEFAULT_OPTIONS,
         {
           ...comboBoxOption,
-          selected: false
+          selected: true
         }
       ],
-      []
+      [3]
     );
   });
 
