@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "Callout: Create AnnouncedCallout variant to support Callouts without focusable content",
+  "comment": "Callout: Add Non Focusable Callout example",
   "packageName": "office-ui-fabric-react",
   "email": "mgodbolt@microsoft.com",
   "commit": "a7874eb0405494ad488fe8fff466bdead7a56c0c",
