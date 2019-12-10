@@ -90,12 +90,12 @@ export const CardView: ICardComponent['view'] = props => {
 
   return (
     <Slots.root
-      {...nativeProps}
-      horizontal={horizontal}
-      horizontalAlign={horizontal ? 'start' : 'stretch'}
       onClick={onClick}
       onKeyDown={_onKeyDown}
       tabIndex={onClick ? 0 : -1}
+      {...nativeProps}
+      horizontal={horizontal}
+      horizontalAlign={horizontal ? 'start' : 'stretch'}
       tokens={tokens as IStackComponent['tokens']}
       verticalAlign="start"
       verticalFill
