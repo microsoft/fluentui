@@ -164,7 +164,7 @@ export class CalendarMonthBase extends BaseComponent<ICalendarMonthProps, ICalen
             onClick={this._onHeaderSelect}
             onKeyDown={this._onButtonKeyDown(this._onHeaderSelect)}
             aria-label={headerAriaLabel}
-            data-is-focusable={!!onHeaderSelect || !yearPickerHidden ? 0 : -1}
+            data-is-focusable={!!onHeaderSelect || !yearPickerHidden}
             tabIndex={!!onHeaderSelect || !yearPickerHidden ? 0 : -1}
             type="button"
             aria-atomic={true}
