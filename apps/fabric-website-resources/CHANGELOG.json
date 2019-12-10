@@ -2,6 +2,20 @@
   "name": "@uifabric/fabric-website-resources",
   "entries": [
     {
+      "date": "Tue, 10 Dec 2019 12:34:47 GMT",
+      "tag": "@uifabric/fabric-website-resources_v7.4.3",
+      "version": "7.4.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Theme Designer: use createTheme and Customizations.applySettings instead of loadTheme",
+            "author": "aneeshak@microsoft.com",
+            "commit": "52439671fd3d6261ad1ec2243f82d769b974849f"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 28 Nov 2019 12:32:23 GMT",
       "tag": "@uifabric/fabric-website-resources_v7.4.2",
       "version": "7.4.2",

@@ -1,7 +1,19 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 09 Dec 2019 12:29:23 GMT and should not be manually modified.
+This log was last generated on Tue, 10 Dec 2019 12:34:47 GMT and should not be manually modified.
 
+## 7.70.0
+Tue, 10 Dec 2019 12:34:47 GMT
+
+### Minor changes
+
+- DetailsList: Pass column styles to DetailsColumn (mgodbolt@microsoft.com)
+### Patches
+
+- Dialog: Use closeButtonAriaLabel for close button tooltip (v-ragor@microsoft.com)
+- Theme Designer: use createTheme and Customizations.applySettings instead of loadTheme (aneeshak@microsoft.com)
+- Screen Reader is reading wrong column header with associated cell value for single-select detail list (xgao@microsoft.com)
+- Button: fix size mismatch between primary and default buttons (xgao@microsoft.com)
 ## 7.69.3
 Mon, 09 Dec 2019 12:29:23 GMT
 

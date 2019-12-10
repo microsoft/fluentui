@@ -1,7 +1,13 @@
 # Change Log - @uifabric/fabric-website-resources
 
-This log was last generated on Thu, 28 Nov 2019 12:32:23 GMT and should not be manually modified.
+This log was last generated on Tue, 10 Dec 2019 12:34:47 GMT and should not be manually modified.
 
+## 7.4.3
+Tue, 10 Dec 2019 12:34:47 GMT
+
+### Patches
+
+- Theme Designer: use createTheme and Customizations.applySettings instead of loadTheme (aneeshak@microsoft.com)
 ## 7.4.2
 Thu, 28 Nov 2019 12:32:23 GMT
 

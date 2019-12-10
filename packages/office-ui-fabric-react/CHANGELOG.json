@@ -2,6 +2,42 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Tue, 10 Dec 2019 12:34:47 GMT",
+      "tag": "office-ui-fabric-react_v7.70.0",
+      "version": "7.70.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Dialog: Use closeButtonAriaLabel for close button tooltip",
+            "author": "v-ragor@microsoft.com",
+            "commit": "dbcbaed1f306bbe5f18433ef54165b21b1600fad"
+          },
+          {
+            "comment": "Theme Designer: use createTheme and Customizations.applySettings instead of loadTheme",
+            "author": "aneeshak@microsoft.com",
+            "commit": "52439671fd3d6261ad1ec2243f82d769b974849f"
+          },
+          {
+            "comment": "Screen Reader is reading wrong column header with associated cell value for single-select detail list",
+            "author": "xgao@microsoft.com",
+            "commit": "153203d03b2612359bdcd61ae4fd45ef71be680e"
+          },
+          {
+            "comment": "Button: fix size mismatch between primary and default buttons",
+            "author": "xgao@microsoft.com",
+            "commit": "768d5b2be63e2c8e9fd58e4eb91c3268f85820bf"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "DetailsList: Pass column styles to DetailsColumn",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "4b433e866c2d4d73975abcabcbdaadef3fc998f4"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 09 Dec 2019 12:29:23 GMT",
       "tag": "office-ui-fabric-react_v7.69.3",
       "version": "7.69.3",

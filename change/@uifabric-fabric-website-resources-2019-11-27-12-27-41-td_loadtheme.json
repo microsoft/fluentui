@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Theme Designer: use createTheme and Customizations.applySettings instead of loadTheme",
-  "packageName": "@uifabric/fabric-website-resources",
-  "email": "aneeshak@microsoft.com",
-  "commit": "52439671fd3d6261ad1ec2243f82d769b974849f",
-  "date": "2019-11-27T20:27:33.665Z"
-}
