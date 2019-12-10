@@ -95,7 +95,7 @@ export class CalloutFocusTrapExample extends React.Component<{}, ICalloutFocusTr
               <div className={styles.inner}>
                 <div>
                   <p className={styles.subtext}>
-                    Content is wrapped in a Focus Trap Zone so that user cannot accidently tab out of this callout.
+                    Content is wrapped in a FocusTrapZone so that user cannot accidently tab out of this callout.
                   </p>
                 </div>
               </div>
