@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "BasePicker: allow BasePicker inputProps to override autoComplete and other props",
+  "packageName": "office-ui-fabric-react",
+  "email": "mgodbolt@microsoft.com",
+  "commit": "6a2e3e7f250a3cf66d261afd397b0677c8878840",
+  "date": "2019-12-10T00:40:52.828Z"
+}
