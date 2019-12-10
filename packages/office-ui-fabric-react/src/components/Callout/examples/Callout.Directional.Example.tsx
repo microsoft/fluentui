@@ -162,7 +162,7 @@ export class CalloutDirectionalExample extends React.Component<{}, ICalloutDirec
               </p>
               <div className={styles.actions}>
                 <Link className={styles.link} href="http://microsoft.com" target="_blank">
-                  Go to microsoft
+                  Go to Microsoft
                 </Link>
               </div>
             </div>
