@@ -100,7 +100,7 @@ export class CalloutDirectionalExample extends React.Component<{}, ICalloutDirec
   private _menuButtonElement: HTMLElement | null;
 
   // Use getId() to ensure that the callout label and description IDs are unique on the page.
-  // (It's also okay to use plain strings without getId() and manually ensure their uniqueness.)
+  // It's also okay, though not recommended, to use plain strings without getId() and manually ensure their uniqueness.
   private _labelId: string = getId('callout-label');
   private _descriptionId: string = getId('callout-description');
 
