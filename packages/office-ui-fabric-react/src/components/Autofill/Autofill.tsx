@@ -168,7 +168,6 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
   // Some examples of this are mobile text input and langauges like Japanese or Arabic.
   // Find out more at https://developer.mozilla.org/en-US/docs/Web/Events/compositionstart
   private _onCompositionEnd = (ev: React.CompositionEvent<HTMLInputElement>) => {
-    this._isComposing = false;
     const inputValue = this._getCurrentInputValue();
     this._tryEnableAutofill(inputValue, this.value, false, true);
     this._isComposing = false;
@@ -177,7 +176,7 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
       // it's technically possible that the value of _isComposing is reset during this timeout,
       // so explicitly trigger this with composing=true here, since it is supposed to be the
       // update for composition end
-      this._updateValue(this._getCurrentInputValue(), true);
+      this._updateValue(this._getCurrentInputValue(), false);
     }, 0);
   };
 
@@ -226,7 +225,7 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
 
     // If it is not IE11 and currently composing, update the value
     if (!(isIE11() && this._isComposing)) {
-      this._updateValue(value, this._isComposing);
+      this._updateValue(value, (ev.nativeEvent as any).isComposing);
     }
   };
 
