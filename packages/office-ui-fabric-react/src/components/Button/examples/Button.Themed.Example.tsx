@@ -2,12 +2,6 @@ import * as React from 'react';
 import { mergeCss } from '@uifabric/merge-styles';
 import { BaseButton, ButtonText } from './BaseButton';
 
-export interface IButtonExampleProps {
-  // These are set based on the toggles shown above the examples (not needed in real code)
-  disabled?: boolean;
-  checked?: boolean;
-}
-
 const getButtonStyles = () => {
   return {
     primaryText: mergeCss({ fontSize: '16px', fontWeight: 600, display: 'block' }),
@@ -16,13 +10,9 @@ const getButtonStyles = () => {
   };
 };
 
-const largeRedBorder = mergeCss({ border: '10px solid red' });
-const redBackground = mergeCss({ backgroundColor: 'red' });
-const whiteText = mergeCss({ color: 'white' });
-const roundedCorner = mergeCss({ borderRadius: 10 });
-const largeText = mergeCss({ fontSize: '250%' });
+const borderClassName = mergeCss({ border: '10px solid red' });
 
-export const ButtonDefaultExample: React.FunctionComponent<IButtonExampleProps> = props => {
+export const ButtonThemedExample: React.FunctionComponent<{}> = props => {
   const onClick = React.useCallback(() => console.log('clicked button'), []);
   const buttonStyles = getButtonStyles();
 
@@ -30,7 +20,7 @@ export const ButtonDefaultExample: React.FunctionComponent<IButtonExampleProps> 
     <div>
       <div>
         <BaseButton
-          className={largeRedBorder}
+          className={borderClassName}
           slots={{ primaryText: ButtonText, secondaryText: ButtonText }}
           slotProps={{
             primaryText: {
@@ -43,15 +33,8 @@ export const ButtonDefaultExample: React.FunctionComponent<IButtonExampleProps> 
               className: buttonStyles.root
             }
           }}
-          // tslint:disable-next-line:jsx-no-lambda
           onClick={onClick}
         />
-      </div>
-
-      <div>
-        <BaseButton className={[redBackground, largeText, whiteText, roundedCorner].join(' ')} onClick={onClick}>
-          Hello, World!
-        </BaseButton>
       </div>
     </div>
   );
