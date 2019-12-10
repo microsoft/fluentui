@@ -1,8 +1,8 @@
 import * as React from 'react';
 
 /**
- * issues:
- * 1) do we really need slots prop
+ * TODO:
+ * 1) do we really need slots prop?
  */
 interface IBaseButtonProps extends React.AllHTMLAttributes<any> {
   slots?: any;

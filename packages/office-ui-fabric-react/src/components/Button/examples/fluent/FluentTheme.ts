@@ -11,6 +11,35 @@ export const FluentTheme: IFluentThemeShape = {
   }
 };
 
+export const FluentButtonTheme = {
+  styles: ({ typography, colors }: any) => ({
+    root: {
+      fontFamily: typography.fontFace,
+      fontSize: typography.ramp[5],
+      backgroundColor: colors.brand.strongest(),
+      color: colors.neutral.weakest()
+    }
+  }),
+  variants: {
+    // TODO: enum props
+    // ['size.small']: {
+
+    // },
+    tiny: {
+      root: { fontSize: '20%' }
+    },
+    large: {
+      root: { fontSize: '400%' }
+    },
+    shadowed: {
+      root: { fontSize: '77%', boxShadow: '10px 5px 5px purple' }
+    },
+    bigIcon: {
+      icon: { fontSize: '300%' }
+    }
+  }
+};
+
 export const PlannerFluentTheme: IFluentThemeShape = {
   colors: {
     brand: new ColorRamp(['#00f9ff', '#008e91', '#003233']),
@@ -21,30 +50,7 @@ export const PlannerFluentTheme: IFluentThemeShape = {
     fontFace: 'Futura'
   },
   components: {
-    FluentButton: {
-      styles: ({ typography, colors }: any) => ({
-        root: {
-          fontFamily: typography.fontFace,
-          fontSize: typography.ramp[5],
-          backgroundColor: colors.brand.strongest(),
-          color: colors.neutral.weakest()
-        }
-      }),
-      variants: {
-        tiny: {
-          root: { fontSize: '20%' }
-        },
-        large: {
-          root: { fontSize: '400%' }
-        },
-        shadowed: {
-          root: { boxShadow: '10px 5px 5px purple' }
-        },
-        bigIcon: {
-          icon: { fontSize: '300%' }
-        }
-      }
-    }
+    FluentButton: FluentButtonTheme
   }
 };
 
