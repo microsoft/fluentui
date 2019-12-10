@@ -1,3 +1,5 @@
+jest.useFakeTimers();
+
 import * as React from 'react';
 
 import * as ReactTestUtils from 'react-dom/test-utils';
@@ -135,6 +137,75 @@ describe('Autofill', () => {
     ReactTestUtils.Simulate.input(autofill.inputElement!);
 
     expect(autofill.value).toBe('🆘');
+  });
+
+  it('will handle composition events when multiple compositionEnd events are dispatched without a compositionStart', () => {
+    const onInputChange = jest.fn((a: string, b: boolean) => a);
+    component = mount(<Autofill componentRef={autofillRef} onInputChange={onInputChange} suggestedDisplayValue="he" />);
+
+    autofill.inputElement!.value = 'hel';
+    ReactTestUtils.Simulate.input(autofill.inputElement!);
+    expect(autofill.value).toBe('hel');
+
+    ReactTestUtils.Simulate.compositionStart(autofill.inputElement!, {});
+
+    ReactTestUtils.Simulate.keyDown(autofill.inputElement!, {
+      keyCode: KeyCodes.p,
+      which: KeyCodes.p
+    });
+    autofill.inputElement!.value = 'help';
+    ReactTestUtils.Simulate.input(autofill.inputElement!, {
+      target: autofill.inputElement!,
+      nativeEvent: {
+        isComposing: true
+      } as any
+    });
+
+    ReactTestUtils.Simulate.compositionEnd(autofill.inputElement!, {});
+    autofill.inputElement!.value = '🆘';
+    ReactTestUtils.Simulate.input(autofill.inputElement!, {
+      target: autofill.inputElement!,
+      nativeEvent: {
+        isComposing: true
+      } as any
+    });
+    jest.runOnlyPendingTimers();
+
+    ReactTestUtils.Simulate.keyDown(autofill.inputElement!, {
+      keyCode: KeyCodes.m,
+      which: KeyCodes.m,
+      nativeEvent: {
+        isComposing: true
+      } as any
+    });
+    autofill.inputElement!.value = '🆘m';
+    ReactTestUtils.Simulate.input(autofill.inputElement!, {
+      target: autofill.inputElement!,
+      nativeEvent: {
+        isComposing: true
+      } as any
+    });
+
+    ReactTestUtils.Simulate.compositionEnd(autofill.inputElement!, {});
+    autofill.inputElement!.value = '🆘Ⓜ';
+    ReactTestUtils.Simulate.input(autofill.inputElement!, {
+      target: autofill.inputElement!,
+      nativeEvent: {
+        isComposing: false
+      } as any
+    });
+    jest.runOnlyPendingTimers();
+
+    expect(onInputChange.mock.calls).toEqual([
+      ['hel', false],
+      ['help', true],
+      ['🆘', true], // from input event
+      ['🆘', false], // from timeout on compositionEnd event
+      ['🆘m', true],
+      ['🆘Ⓜ', false], // from input event
+      ['🆘Ⓜ', false] // from  timeout on compositionEnd event
+    ]);
+    expect(autofill.value).toBe('🆘Ⓜ');
   });
 
   it('will call onInputChange w/ composition events', () => {

@@ -225,7 +225,9 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
 
     // If it is not IE11 and currently composing, update the value
     if (!(isIE11() && this._isComposing)) {
-      this._updateValue(value, (ev.nativeEvent as any).isComposing);
+      const nativeEventComposing = (ev.nativeEvent as any).isComposing;
+      const isComposing = nativeEventComposing === undefined ? this._isComposing : nativeEventComposing;
+      this._updateValue(value, isComposing);
     }
   };
 
