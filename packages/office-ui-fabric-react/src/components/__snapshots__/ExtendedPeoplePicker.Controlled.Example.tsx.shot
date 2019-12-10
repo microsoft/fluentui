@@ -54,6 +54,7 @@ exports[`Component Examples renders ExtendedPeoplePicker.Controlled.Example.tsx 
             To:
           </div>
           <input
+            aria-autocomplete="both"
             aria-expanded={false}
             aria-haspopup="true"
             aria-label="People Picker"

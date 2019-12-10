@@ -127,8 +127,6 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
                   aria-owns={isExpanded ? 'suggestion-list' : undefined}
                   aria-expanded={isExpanded}
                   aria-haspopup="true"
-                  autoCapitalize="off"
-                  autoComplete="off"
                   role="combobox"
                   disabled={disabled}
                   onPaste={this.onPaste}
