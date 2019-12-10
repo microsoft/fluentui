@@ -2698,6 +2698,7 @@ export interface IColumn {
     onRenderDivider?: IRenderFunction<IDetailsColumnProps>;
     sortAscendingAriaLabel?: string;
     sortDescendingAriaLabel?: string;
+    styles?: IStyleFunctionOrObject<IDetailsColumnStyleProps, IDetailsColumnStyles>;
 }
 
 // @public (undocumented)
