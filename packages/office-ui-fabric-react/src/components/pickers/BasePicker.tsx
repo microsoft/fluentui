@@ -268,13 +268,10 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
                   aria-expanded={!!this.state.suggestionsVisible}
                   aria-haspopup="true"
                   aria-describedby={items.length > 0 ? this._ariaMap.selectedItems : undefined}
-                  autoCapitalize="off"
-                  autoComplete="off"
                   role={'combobox'}
                   disabled={disabled}
                   aria-controls={`${suggestionsAvailable} ${selectedSuggestionAlertId}` || undefined}
                   aria-owns={suggestionsAvailable || undefined}
-                  aria-autocomplete={'both'}
                   onInputChange={this.props.onInputChange}
                 />
               )}
@@ -751,7 +748,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   protected onBackspace(ev: React.KeyboardEvent<HTMLElement>) {
     if (
       (this.state.items.length && !this.input.current) ||
-      (this.input.current && (!this.input.current.isValueSelected && this.input.current.cursorLocation === 0))
+      (this.input.current && !this.input.current.isValueSelected && this.input.current.cursorLocation === 0)
     ) {
       if (this.selection.getSelectedCount() > 0) {
         this.removeItems(this.selection.getSelection());
@@ -911,9 +908,6 @@ export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BaseP
               suggestedDisplayValue={suggestedDisplayValue}
               aria-activedescendant={this.getActiveDescendant()}
               aria-expanded={!!this.state.suggestionsVisible}
-              aria-haspopup="true"
-              autoCapitalize="off"
-              autoComplete="off"
               role="combobox"
               disabled={disabled}
               aria-controls={`${suggestionsAvailable} ${selectedSuggestionAlertId}` || undefined}

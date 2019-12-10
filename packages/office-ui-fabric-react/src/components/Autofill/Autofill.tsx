@@ -114,11 +114,12 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
     const nativeProps = getNativeProps(this.props, inputProperties);
     return (
       <input
+        autoCapitalize="off"
+        autoComplete="off"
+        aria-autocomplete={'both'}
         {...nativeProps}
         ref={this._inputElement}
         value={displayValue}
-        autoCapitalize={'off'}
-        autoComplete={'off'}
         onCompositionStart={this._onCompositionStart}
         onCompositionEnd={this._onCompositionEnd}
         onChange={this._onChanged}

@@ -125,8 +125,6 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
                   aria-owns="suggestion-list"
                   aria-expanded={this.floatingPicker.current ? this.floatingPicker.current.isSuggestionsShown : false}
                   aria-haspopup="true"
-                  autoCapitalize="off"
-                  autoComplete="off"
                   role="combobox"
                   disabled={disabled}
                   onPaste={this.onPaste}
