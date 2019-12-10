@@ -733,7 +733,7 @@ describe('ComboBox', () => {
           selected: true
         }
       ],
-      []
+      [3]
     );
   });
 
