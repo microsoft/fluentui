@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "DetailsList: Pass column styles to DetailsColumn",
+  "packageName": "office-ui-fabric-react",
+  "email": "mgodbolt@microsoft.com",
+  "commit": "4b433e866c2d4d73975abcabcbdaadef3fc998f4",
+  "date": "2019-12-10T00:03:27.868Z"
+}
