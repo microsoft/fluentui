@@ -59,7 +59,7 @@ export class StatusCalloutExample extends React.Component<{}, IStatusCalloutExam
             <DelayedRender>
               <>
                 <p className={styles.subtext}>
-                  This message is treated as an aria-live assertive status message, and will be read by narrator regardless of focus.
+                  This message is treated as an aria-live assertive status message, and will be read by a screen reader regardless of focus.
                 </p>
               </>
             </DelayedRender>
