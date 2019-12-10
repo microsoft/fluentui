@@ -80,23 +80,22 @@ export class ThemeGenerator {
 
   /*
    * Gets code-formatted load theme blob that can be copy and pasted.
+   * Only used for the old theme designer, where loadTheme usage is acceptable,
+   * unlike in the new theme designer.
    */
   public static getThemeAsCode(slotRules: IThemeRules): any {
-    const attributeTemplate = "    {0}: '{1}',\n";
-    let output = '';
+    const output = 'loadTheme({\n  palette: {\n';
+    return ThemeGenerator._makeRemainingCode(output, slotRules);
+  }
 
-    output += 'loadTheme({\n  palette: {\n';
-
-    for (const ruleName in slotRules) {
-      if (slotRules.hasOwnProperty(ruleName)) {
-        const rule: IThemeSlotRule = slotRules[ruleName];
-        const camelCasedName = rule.name.charAt(0).toLowerCase() + rule.name.slice(1);
-        const outputColor = rule.color ? '#' + rule.color.hex : rule.value || '';
-        output += format(attributeTemplate, camelCasedName, outputColor);
-      }
-    }
-    output += '  }\n});';
-    return output;
+  /**
+   * Gets code-formatted load theme blob, specifically for the new theme designer,
+   * aka.ms/themedesigner. Shouldn't use loadTheme like the old theme designer since it's deprecated.
+   * We want to use the theme object from createTheme and use the Customizations.applySettings API instead.
+   */
+  public static getThemeAsCodeWithCreateTheme(slotRules: IThemeRules): any {
+    const output = 'const myTheme = createTheme({\n  palette: {\n';
+    return ThemeGenerator._makeRemainingCode(output, slotRules);
   }
 
   /* Gets the theme as a list of SASS variables that can be used in code
@@ -178,5 +177,31 @@ export class ThemeGenerator {
         ThemeGenerator._setSlot(ruleToUpdate, rule.color, isInverted, false, overwriteCustomColor);
       }
     }
+  }
+
+  /* Makes the rest of the code that's used for the load theme blob in the exported codepens of
+     both the older sharepoint-specific theme designer and the new theme designer. Takes in
+     theme rules and converts them to format fitting a list of palette colors and their values.
+     Resulting output looks like:
+     const _theme = createTheme({
+      palette: {
+        themePrimary: '#0078d4',
+        themeLighterAlt: '#f3f9fd',
+        ...
+      }});
+     The first line is loadTheme instead of createTheme for the old sharepoint theme designer.
+  */
+  private static _makeRemainingCode(output: string, slotRules: IThemeRules) {
+    const attributeTemplate = "    {0}: '{1}',\n";
+    for (const ruleName in slotRules) {
+      if (slotRules.hasOwnProperty(ruleName)) {
+        const rule: IThemeSlotRule = slotRules[ruleName];
+        const camelCasedName = rule.name.charAt(0).toLowerCase() + rule.name.slice(1);
+        const outputColor = rule.color ? '#' + rule.color.hex : rule.value || '';
+        output += format(attributeTemplate, camelCasedName, outputColor);
+      }
+    }
+    output += '  }});';
+    return output;
   }
 }

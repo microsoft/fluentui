@@ -46,6 +46,7 @@ export interface ISpinButtonState {
   keyboardSpinDirection: KeyboardSpinDirection;
 }
 
+// TODO (Fabric Next): remove default min/max values (issue #11358).
 export type DefaultProps = Required<
   Pick<ISpinButtonProps, 'step' | 'min' | 'max' | 'disabled' | 'labelPosition' | 'label' | 'incrementButtonIcon' | 'decrementButtonIcon'>
 >;

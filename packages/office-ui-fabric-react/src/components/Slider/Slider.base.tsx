@@ -171,9 +171,11 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
   }
 
   private _getAriaValueText = (value: number | undefined): string | undefined => {
-    if (this.props.ariaValueText && value !== undefined) {
-      return this.props.ariaValueText(value);
+    const { ariaValueText } = this.props;
+    if (value !== undefined) {
+      return ariaValueText ? ariaValueText(value) : value.toString();
     }
+    return undefined;
   };
 
   private _getStyleUsingOffsetPercent(vertical: boolean | undefined, thumbOffsetPercent: number): any {

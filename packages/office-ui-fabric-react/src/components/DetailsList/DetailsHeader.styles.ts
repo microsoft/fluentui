@@ -57,16 +57,7 @@ export const getCellStyles = (props: { theme: ITheme; cellStyleProps?: ICellStyl
 };
 
 export const getStyles = (props: IDetailsHeaderStyleProps): IDetailsHeaderStyles => {
-  const {
-    theme,
-    className,
-    isSelectAllHidden,
-    isAllSelected,
-    isResizingColumn,
-    isSizing,
-    isAllCollapsed,
-    cellStyleProps = DEFAULT_CELL_STYLE_PROPS
-  } = props;
+  const { theme, className, isAllSelected, isResizingColumn, isSizing, isAllCollapsed, cellStyleProps = DEFAULT_CELL_STYLE_PROPS } = props;
 
   const { semanticColors, palette, fonts } = theme;
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
@@ -115,13 +106,6 @@ export const getStyles = (props: IDetailsHeaderStyleProps): IDetailsHeaderStyles
         }
       },
       isAllSelected && classNames.isAllSelected,
-      isSelectAllHidden && {
-        selectors: {
-          [`& .${classNames.cellIsCheck}`]: {
-            visibility: 'hidden'
-          }
-        }
-      },
       isResizingColumn && classNames.isResizingColumn,
       className
     ],

@@ -88,7 +88,7 @@ describe('Slider', () => {
   it('renders correct aria-valuetext', () => {
     let component = mount(<Slider />);
 
-    expect(component.find('.ms-Slider-slideBox').prop('aria-valuetext')).toBeUndefined();
+    expect(component.find('.ms-Slider-slideBox').prop('aria-valuetext')).toEqual('0');
 
     const values = ['small', 'medium', 'large'];
     const selected = 1;

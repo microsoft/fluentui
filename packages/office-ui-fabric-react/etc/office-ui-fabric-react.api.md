@@ -2698,6 +2698,7 @@ export interface IColumn {
     onRenderDivider?: IRenderFunction<IDetailsColumnProps>;
     sortAscendingAriaLabel?: string;
     sortDescendingAriaLabel?: string;
+    styles?: IStyleFunctionOrObject<IDetailsColumnStyleProps, IDetailsColumnStyles>;
 }
 
 // @public (undocumented)
@@ -8205,8 +8206,6 @@ export class OverflowSetBase extends BaseComponent<IOverflowSetProps, {}> implem
     componentDidUpdate(): void;
     // (undocumented)
     componentWillUnmount(): void;
-    // (undocumented)
-    static defaultProps: Pick<IOverflowSetProps, 'vertical' | 'role'>;
     focus(forceIntoFirstElement?: boolean): boolean;
     focusElement(childElement?: HTMLElement): boolean;
     // (undocumented)
@@ -9352,6 +9351,7 @@ export const TextView: ITextComponent['view'];
 export class ThemeGenerator {
     // (undocumented)
     static getThemeAsCode(slotRules: IThemeRules): any;
+    static getThemeAsCodeWithCreateTheme(slotRules: IThemeRules): any;
     // (undocumented)
     static getThemeAsJson(slotRules: IThemeRules): any;
     // (undocumented)
@@ -9456,7 +9456,7 @@ export class VirtualizedComboBox extends BaseComponent<IComboBoxProps, {}> imple
     // (undocumented)
     dismissMenu(): void;
     // (undocumented)
-    focus(): boolean;
+    focus(shouldOpenOnFocus?: boolean, useFocusAsync?: boolean): boolean;
     // (undocumented)
     protected _onRenderList: (props: IComboBoxProps) => JSX.Element;
     // (undocumented)
