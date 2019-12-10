@@ -1,41 +1,27 @@
 import * as React from 'react';
 import { mergeCss } from '@uifabric/merge-styles';
-import { BaseButton, ButtonText } from './BaseButton';
+import { Provider } from './Provider';
+import { FluentTheme } from './fluent/FluentTheme';
+import { FluentButton } from './fluent/FluentButton';
 
-const getButtonStyles = () => {
-  return {
-    primaryText: mergeCss({ fontSize: '16px', fontWeight: 600, display: 'block' }),
-    secondaryText: mergeCss({ fontSize: '12px', display: 'block' }),
-    root: mergeCss({ backgroundColor: 'yellow' })
-  };
-};
-
-const borderClassName = mergeCss({ border: '10px solid red' });
+const oddRedBorder = mergeCss({ border: '10px solid red' });
 
 export const ButtonThemedExample: React.FunctionComponent<{}> = props => {
   const onClick = React.useCallback(() => console.log('clicked button'), []);
-  const buttonStyles = getButtonStyles();
 
   return (
-    <div>
+    <Provider theme={FluentTheme}>
       <div>
-        <BaseButton
-          className={borderClassName}
-          slots={{ primaryText: ButtonText, secondaryText: ButtonText }}
-          slotProps={{
-            primaryText: {
-              className: buttonStyles.primaryText
-            },
-            secondaryText: {
-              className: buttonStyles.secondaryText
-            },
-            root: {
-              className: buttonStyles.root
-            }
-          }}
-          onClick={onClick}
-        />
+        <div>
+          <FluentButton onClick={onClick}>A standard fluent button</FluentButton>
+        </div>
+
+        <div>
+          <FluentButton onClick={onClick} className={oddRedBorder}>
+            Fluent Button with an odd red border
+          </FluentButton>
+        </div>
       </div>
-    </div>
+    </Provider>
   );
 };
