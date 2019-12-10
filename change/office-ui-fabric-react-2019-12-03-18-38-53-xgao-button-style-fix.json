@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Button: fix size mismatch between primary and default buttons",
+  "packageName": "office-ui-fabric-react",
+  "email": "xgao@microsoft.com",
+  "commit": "768d5b2be63e2c8e9fd58e4eb91c3268f85820bf",
+  "date": "2019-12-04T02:38:53.362Z"
+}

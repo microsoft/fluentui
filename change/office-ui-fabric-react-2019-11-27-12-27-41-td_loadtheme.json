@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Theme Designer: use createTheme and Customizations.applySettings instead of loadTheme",
+  "packageName": "office-ui-fabric-react",
+  "email": "aneeshak@microsoft.com",
+  "commit": "52439671fd3d6261ad1ec2243f82d769b974849f",
+  "date": "2019-11-27T20:27:41.037Z"
+}

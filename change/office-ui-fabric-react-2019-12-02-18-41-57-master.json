@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Screen Reader is reading wrong column header with associated cell value for single-select detail list",
+  "packageName": "office-ui-fabric-react",
+  "email": "xgao@microsoft.com",
+  "commit": "153203d03b2612359bdcd61ae4fd45ef71be680e",
+  "date": "2019-12-03T02:41:57.509Z"
+}

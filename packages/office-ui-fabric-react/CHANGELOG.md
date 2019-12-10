@@ -1,7 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 06 Dec 2019 12:33:21 GMT and should not be manually modified.
+This log was last generated on Mon, 09 Dec 2019 12:29:23 GMT and should not be manually modified.
 
+## 7.69.3
+Mon, 09 Dec 2019 12:29:23 GMT
+
+### Patches
+
+- OverflowSet: Vertical layout now uses menu instead of menubar (mgodbolt@microsoft.com)
 ## 7.69.2
 Fri, 06 Dec 2019 12:33:21 GMT
 
