@@ -15,8 +15,8 @@ const DEFAULT_OPTIONS: IDropdownOption[] = [
   { key: '2', text: '2', title: 'test' },
   { key: '3', text: '3' },
   { key: 'Divider1', text: '-', itemType: DropdownMenuItemType.Divider },
-  { key: 'Header2', text: 'Header 2', itemType: DropdownMenuItemType.Header },
   { key: '4', text: '4' },
+  { key: 'Header2', text: 'Header 2', itemType: DropdownMenuItemType.Header },
   { key: '5', text: '5' },
   { key: '6', text: '6' }
 ];
@@ -47,6 +47,27 @@ describe('Dropdown', () => {
       component = renderer.create(<Dropdown options={DEFAULT_OPTIONS} />);
       const tree = component.toJSON();
       expect(tree).toMatchSnapshot();
+    });
+
+    it('Renders groups based on header start and divider end', () => {
+      wrapper = mount(<Dropdown options={DEFAULT_OPTIONS} />);
+
+      wrapper.find('.ms-Dropdown').simulate('click');
+      const groups = document.querySelectorAll('[role="group"]');
+      // Expect 2 groups with role=group
+      expect(groups.length).toEqual(2);
+      // Expect first group to have 5 elements
+      expect(groups[0].childElementCount).toEqual(5);
+      // Expect first item to have text Header 1
+      expect(groups[0].childNodes[0].textContent).toEqual('Header 1');
+      // Expect first item (the header) to have id equal to the group's aria-labelledby
+      expect(groups[0].firstElementChild!.getAttribute('id')).toEqual(groups[0].getAttribute('aria-labelledby'));
+      // Expect last item to be the divider
+      expect(groups[0].childNodes[groups[0].childNodes.length - 1].textContent).toEqual('');
+      // Expect option 4 to be a sibling of the first group
+      expect(groups[0].nextSibling!.textContent).toEqual('4');
+      // Expect second group to have 3 elements
+      expect(groups[1].childElementCount).toEqual(3);
     });
 
     it('Can flip between enabled and disabled.', () => {

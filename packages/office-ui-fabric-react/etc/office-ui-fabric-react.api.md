@@ -6605,6 +6605,7 @@ export interface ISelectableOption {
     data?: any;
     disabled?: boolean;
     hidden?: boolean;
+    id?: string;
     index?: number;
     itemType?: SelectableOptionMenuItemType;
     key: string | number;
