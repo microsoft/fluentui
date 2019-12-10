@@ -1,15 +1,12 @@
 import * as React from 'react';
-import { DefaultButton, PrimaryButton, Stack, IStackTokens } from 'office-ui-fabric-react';
 import { mergeCss } from '@uifabric/merge-styles';
+import { BaseButton, ButtonText } from './BaseButton';
 
 export interface IButtonExampleProps {
   // These are set based on the toggles shown above the examples (not needed in real code)
   disabled?: boolean;
   checked?: boolean;
 }
-
-// Example formatting
-const stackTokens: IStackTokens = { childrenGap: 40 };
 
 const getButtonStyles = () => {
   return {
@@ -19,71 +16,43 @@ const getButtonStyles = () => {
   };
 };
 
-const borderClassName = mergeCss({ border: '10px solid red' });
+const largeRedBorder = mergeCss({ border: '10px solid red' });
+const redBackground = mergeCss({ backgroundColor: 'red' });
+const whiteText = mergeCss({ color: 'white' });
+const roundedCorner = mergeCss({ borderRadius: 10 });
+const largeText = mergeCss({ fontSize: '250%' });
 
 export const ButtonDefaultExample: React.FunctionComponent<IButtonExampleProps> = props => {
-  const { disabled, checked } = props;
+  const onClick = React.useCallback(() => console.log('clicked button'), []);
   const buttonStyles = getButtonStyles();
 
   return (
-    <Stack horizontal tokens={stackTokens}>
-      <BaseButton
-        className={borderClassName}
-        slots={{ primaryText: ButtonText, secondaryText: ButtonText }}
-        slotProps={{
-          primaryText: {
-            className: buttonStyles.primaryText
-          },
-          secondaryText: {
-            className: buttonStyles.secondaryText
-          },
-          root: {
-            className: buttonStyles.root
-          }
-        }}
-        // tslint:disable-next-line:jsx-no-lambda
-        onClick={() => console.log('clicked button')}
-      />
-      <DefaultButton text="Standard" onClick={_alertClicked} allowDisabledFocus disabled={disabled} checked={checked} />
-      <PrimaryButton text="Primary" onClick={_alertClicked} allowDisabledFocus disabled={disabled} checked={checked} />
-    </Stack>
-  );
-};
+    <div>
+      <div>
+        <BaseButton
+          className={largeRedBorder}
+          slots={{ primaryText: ButtonText, secondaryText: ButtonText }}
+          slotProps={{
+            primaryText: {
+              className: buttonStyles.primaryText
+            },
+            secondaryText: {
+              className: buttonStyles.secondaryText
+            },
+            root: {
+              className: buttonStyles.root
+            }
+          }}
+          // tslint:disable-next-line:jsx-no-lambda
+          onClick={onClick}
+        />
+      </div>
 
-function _alertClicked(): void {
-  alert('Clicked');
-}
-
-/**
- * issues:
- * 1) do we really need slots prop
- */
-interface IBaseButtonProps extends React.AllHTMLAttributes<any> {
-  slots?: any;
-  slotProps?: any;
-}
-
-const ButtonText: React.FunctionComponent<any> = props => <span {...props}>my button</span>;
-
-const BaseButton: React.FunctionComponent<IBaseButtonProps> = props => {
-  const { slots, children, slotProps, ...rest } = props;
-  const { root: Root = 'button', icon: Icon, primaryText: PrimaryText, secondaryText: SecondaryText } = slots;
-  const { root = {}, icon = {}, primaryText = {}, secondaryText = {} } = slotProps;
-
-  const rootClassName = `${root.className || ''}${` ${rest.className}` || ''}`;
-  const content = children ? (
-    children
-  ) : (
-    <>
-      {Icon && <Icon {...icon} />}
-      {PrimaryText && <PrimaryText {...primaryText} />}
-      {SecondaryText && <SecondaryText {...secondaryText} />}
-    </>
-  );
-
-  return (
-    <Root {...root} {...rest} className={rootClassName}>
-      {content}
-    </Root>
+      <div>
+        <BaseButton className={[redBackground, largeText, whiteText, roundedCorner].join(' ')} onClick={onClick}>
+          Hello, World!
+        </BaseButton>
+      </div>
+    </div>
   );
 };
