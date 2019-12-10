@@ -1,5 +1,5 @@
 {
-  "type": "major",
+  "type": "patch",
   "comment": "GroupedList _getGroupHeight is now calculated with recursion for children",
   "packageName": "office-ui-fabric-react",
   "email": "marwankhalili@hotmail.com",
