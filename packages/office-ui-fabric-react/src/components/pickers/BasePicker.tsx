@@ -272,9 +272,6 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
               {this.canAddItems() && (
                 <Autofill
                   spellCheck={false}
-                  autoCapitalize="off"
-                  autoComplete="off"
-                  aria-autocomplete={'both'}
                   {...inputProps as any}
                   className={classNames.input}
                   componentRef={this.input}
@@ -980,8 +977,6 @@ export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BaseP
             role="combobox"
           >
             <Autofill
-              autoCapitalize="off"
-              autoComplete="off"
               {...inputProps as any}
               className={classNames.input}
               componentRef={this.input}

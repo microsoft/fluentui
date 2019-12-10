@@ -117,8 +117,6 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
               {this.renderSelectedItemsList()}
               {this.canAddItems() && (
                 <Autofill
-                  autoCapitalize="off"
-                  autoComplete="off"
                   {...inputProps as IInputProps}
                   className={css('ms-BasePicker-input', styles.pickerInput)}
                   ref={this.input}
