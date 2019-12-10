@@ -31,7 +31,7 @@ export const CalloutPageProps: IDocPageProps = {
       view: <CalloutFocusTrapExample />
     },
     {
-      title: 'Non Focused Callout Example',
+      title: 'Non Focusable Callout Example',
       code: StatusCalloutExampleCode,
       view: <StatusCalloutExample />
     },

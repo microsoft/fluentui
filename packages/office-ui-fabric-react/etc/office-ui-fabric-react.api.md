@@ -68,9 +68,6 @@ export class AnnouncedBase extends React.Component<IAnnouncedProps> {
     render(): JSX.Element;
 }
 
-// @public
-export const AnnouncedCallout: React.StatelessComponent<IAnnouncedCalloutProps>;
-
 // @public (undocumented)
 export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> implements IAutofill {
     constructor(props: IAutofillProps);
@@ -1495,10 +1492,6 @@ export interface IActivityItemStyles {
     pulsingBeacon?: IStyle;
     root?: IStyle;
     timeStamp?: IStyle;
-}
-
-// @public (undocumented)
-export interface IAnnouncedCalloutProps extends ICalloutProps {
 }
 
 // @public (undocumented)
