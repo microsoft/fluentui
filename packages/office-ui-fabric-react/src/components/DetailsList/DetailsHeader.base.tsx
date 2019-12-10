@@ -268,6 +268,7 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
               this._renderDropHint(columnIndex),
             <DetailsColumn
               column={column}
+              styles={column.styles}
               key={column.key}
               columnIndex={(showCheckbox ? 2 : 1) + columnIndex}
               parentId={this._id}
