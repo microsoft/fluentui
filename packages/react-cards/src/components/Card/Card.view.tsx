@@ -1,7 +1,7 @@
 /** @jsx withSlots */
 import * as React from 'react';
 import { withSlots, getSlots } from '@uifabric/foundation';
-import { getNativeProps, htmlElementProperties, warn } from '@uifabric/utilities';
+import { getNativeProps, htmlElementProperties, warn, KeyCodes } from '@uifabric/utilities';
 import { Stack, IStackComponent } from 'office-ui-fabric-react';
 
 import { ICardComponent, ICardProps, ICardSlots, ICardTokens } from './Card.types';
@@ -15,7 +15,7 @@ export const CardView: ICardComponent['view'] = props => {
     root: Stack
   });
 
-  const { children, styles, tokens, horizontal, ...rest } = props;
+  const { children, styles, tokens, horizontal, onClick, ...rest } = props;
 
   const nativeProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(rest, htmlElementProperties);
 
@@ -81,14 +81,24 @@ export const CardView: ICardComponent['view'] = props => {
     }
   );
 
+  const _onKeyDown = (ev: React.KeyboardEvent): void => {
+    if (onClick && (ev.which === KeyCodes.enter || ev.which === KeyCodes.space)) {
+      onClick(ev as any);
+      ev.preventDefault();
+    }
+  };
+
   return (
     <Slots.root
       {...nativeProps}
       horizontal={horizontal}
-      tokens={tokens as IStackComponent['tokens']}
-      verticalFill
-      verticalAlign="start"
       horizontalAlign={horizontal ? 'start' : 'stretch'}
+      onClick={onClick}
+      onKeyDown={_onKeyDown}
+      tabIndex={onClick ? 0 : -1}
+      tokens={tokens as IStackComponent['tokens']}
+      verticalAlign="start"
+      verticalFill
     >
       {cardChildren}
     </Slots.root>

@@ -36,6 +36,7 @@ export class CardHorizontalExample extends React.Component<{}, {}> {
     };
     const footerCardSectionStyles: ICardSectionStyles = {
       root: {
+        alignSelf: 'stretch',
         borderLeft: '1px solid #F3F2F1'
       }
     };
