@@ -65,7 +65,7 @@ exports[`TextField snapshots renders correctly 1`] = `
             align-items: stretch;
             background: #ffffff;
             border-radius: 2px;
-            border: 1px solid #8a8886;
+            border: 1px solid #605e5c;
             box-shadow: none;
             box-sizing: border-box;
             cursor: text;
@@ -736,7 +736,7 @@ exports[`TextField snapshots renders multiline resizable correctly 1`] = `
             align-items: stretch;
             background: #ffffff;
             border-radius: 2px;
-            border: 1px solid #8a8886;
+            border: 1px solid #605e5c;
             box-shadow: none;
             box-sizing: border-box;
             cursor: text;
@@ -912,7 +912,7 @@ exports[`TextField snapshots renders multiline unresizable correctly 1`] = `
             align-items: stretch;
             background: #ffffff;
             border-radius: 2px;
-            border: 1px solid #8a8886;
+            border: 1px solid #605e5c;
             box-shadow: none;
             box-sizing: border-box;
             cursor: text;
@@ -1090,7 +1090,7 @@ exports[`TextField snapshots renders multiline with placeholder correctly 1`] = 
             align-items: stretch;
             background: #ffffff;
             border-radius: 2px;
-            border: 1px solid #8a8886;
+            border: 1px solid #605e5c;
             box-shadow: none;
             box-sizing: border-box;
             cursor: text;

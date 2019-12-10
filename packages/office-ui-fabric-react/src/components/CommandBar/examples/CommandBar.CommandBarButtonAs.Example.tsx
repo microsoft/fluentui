@@ -40,7 +40,7 @@ const CoachmarkCommandBarButton: React.FunctionComponent<ICoachmarkCommandBarBut
         >
           <TeachingBubbleContent
             headline="Example Title"
-            hasCloseIcon={true}
+            hasCloseButton={true}
             closeButtonAriaLabel="Close"
             onDismiss={onDismiss}
             ariaDescribedBy="example-description1"

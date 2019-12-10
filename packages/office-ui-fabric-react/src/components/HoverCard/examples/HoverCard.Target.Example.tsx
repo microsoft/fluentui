@@ -109,7 +109,10 @@ export class HoverCardTargetExample extends React.Component<{}, {}> {
       onRenderExpandedCard: this._onRenderExpandedCard,
       renderData: item,
       directionalHint: DirectionalHint.rightTopEdge,
-      gapSpace: 16
+      gapSpace: 16,
+      calloutProps: {
+        isBeakVisible: true
+      }
     };
 
     if (column.key === 'key') {

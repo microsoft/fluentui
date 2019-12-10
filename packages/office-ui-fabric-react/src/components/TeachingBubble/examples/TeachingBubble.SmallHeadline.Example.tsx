@@ -41,7 +41,7 @@ export class TeachingBubbleSmallHeadlineExample extends React.Component<{}, ITea
               target={this._menuButtonElement}
               hasSmallHeadline={true}
               onDismiss={this._onDismiss}
-              hasCloseIcon={true}
+              hasCloseButton={true}
               closeButtonAriaLabel="Close"
               primaryButtonProps={examplePrimaryButton}
               headline="Discover what’s trending around you"

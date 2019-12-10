@@ -59,7 +59,7 @@ exports[`CommandBar renders commands correctly 1`] = `
                 flex-wrap: nowrap;
                 position: relative;
               }
-          role="presentation"
+          role="menubar"
         >
           <div
             className=

@@ -1,8 +1,0 @@
-{
-  "comment": "Removed SCSS from ResizeGroup. Added ResizeGroup.OverflowSet.Example.Style file. Added Codepen export support",
-  "type": "patch",
-  "packageName": "office-ui-fabric-react",
-  "email": "pandasa123@gmail.com",
-  "commit": "",
-  "date": "2019-11-14T17:21:04.034Z"
-}

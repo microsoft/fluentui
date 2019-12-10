@@ -54,7 +54,7 @@ export class TeachingBubbleContentBase extends BaseComponent<ITeachingBubbleProp
       secondaryButtonProps,
       headline,
       hasCondensedHeadline,
-      hasCloseIcon,
+      hasCloseButton = this.props.hasCloseIcon,
       onDismiss,
       closeButtonAriaLabel,
       hasSmallHeadline,
@@ -76,6 +76,7 @@ export class TeachingBubbleContentBase extends BaseComponent<ITeachingBubbleProp
       theme: theme!,
       hasCondensedHeadline,
       hasSmallHeadline,
+      hasCloseButton,
       isWide,
       primaryButtonClassName: primaryButtonProps ? primaryButtonProps.className : undefined,
       secondaryButtonClassName: secondaryButtonProps ? secondaryButtonProps.className : undefined
@@ -125,7 +126,7 @@ export class TeachingBubbleContentBase extends BaseComponent<ITeachingBubbleProp
       );
     }
 
-    if (hasCloseIcon) {
+    if (hasCloseButton) {
       closeButton = (
         <IconButton
           className={classNames.closeButton}
