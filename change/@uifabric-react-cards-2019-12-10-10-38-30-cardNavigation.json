@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Card: Adding keyboard navigation and interaction on clickable Cards and fixing example styling.",
+  "packageName": "@uifabric/react-cards",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "commit": "60b4876d3aea384d39e800585ba8698033e3eafc",
+  "date": "2019-12-10T18:38:30.925Z"
+}
