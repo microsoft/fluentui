@@ -39,9 +39,15 @@ jobs:
         ContainerName: '$web'
         BlobPrefix: 'pr-deploy-site/$(Build.SourceBranch)'
 
+    - publish: $(System.DefaultWorkingDirectory)
+      artifact: Build
+
   - job: PerfTest
     dependsOn: Build
     steps:
+    - download: current
+      artifact: Build
+
     - script: |
         npm run just perf-test
       workingDirectory: apps/perf-test
@@ -84,6 +90,9 @@ jobs:
   - job: VRTest
     dependsOn: Build
     steps:
+    - download: current
+      artifact: Build
+
     - script: |
         git config --global user.email "fabrictactical@microsoft.com"
         git config --global user.name "Fabric Tactical"
