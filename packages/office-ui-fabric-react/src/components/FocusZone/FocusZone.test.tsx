@@ -1631,7 +1631,7 @@ describe('FocusZone', () => {
       <div {...{ onFocusCapture: _onFocus }}>
         <FocusZone isInnerZoneKeystroke={isInnerZoneKeystroke}>
           <input className="a" />
-          <input readOnly value="foo" className="b" />
+          <input readOnly defaultValue="foo" className="b" />
           <input className="c" />
         </FocusZone>
       </div>

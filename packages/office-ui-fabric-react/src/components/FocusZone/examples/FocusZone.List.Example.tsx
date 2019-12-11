@@ -22,23 +22,23 @@ const COLUMNS: IColumn[] = [
   {
     key: 'link',
     name: 'Link',
-    fieldName: 'url',
+    fieldName: '',
     minWidth: 100,
     onRender: item => <Link href={item.url}>{item.url}</Link>
   },
   {
     key: 'textfield',
     name: 'Link',
-    fieldName: 'url',
+    fieldName: '',
     minWidth: 130,
-    onRender: item => <TextField readOnly value={'ReadOnly ' + item.name} />
+    onRender: item => <TextField readOnly defaultValue={'ReadOnly ' + item.name} />
   },
   {
-    key: 'textfield',
-    name: 'Link',
-    fieldName: 'url',
+    key: 'textfield2',
+    name: 'Link2',
+    fieldName: '',
     minWidth: 130,
-    onRender: item => <TextField value={item.name} />
+    onRender: item => <TextField defaultValue={item.name} />
   }
 ];
 
