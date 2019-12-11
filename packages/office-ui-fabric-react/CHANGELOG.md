@@ -1,7 +1,19 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 10 Dec 2019 12:34:47 GMT and should not be manually modified.
+This log was last generated on Wed, 11 Dec 2019 12:30:26 GMT and should not be manually modified.
 
+## 7.71.0
+Wed, 11 Dec 2019 12:30:26 GMT
+
+### Minor changes
+
+- Only update ExtendedPicker state on input events that are not mid-composition  (mahuangh@microsoft.com)
+- Dropdown: Render options with header in group so that narrator associates group with header (mgodbolt@microsoft.com)
+- Autocomplete: Allow value to be overriden (mgodbolt@microsoft.com)
+### Patches
+
+- Combobox: multi-select does not clear index on selection. Selected and checked properly supported (mgodbolt@microsoft.com)
+- fix contextual menu split button cannot be read by screen reader bug (xgao@microsoft.com)
 ## 7.70.0
 Tue, 10 Dec 2019 12:34:47 GMT
 

@@ -2,6 +2,42 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Wed, 11 Dec 2019 12:30:26 GMT",
+      "tag": "office-ui-fabric-react_v7.71.0",
+      "version": "7.71.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Only update ExtendedPicker state on input events that are not mid-composition ",
+            "author": "mahuangh@microsoft.com",
+            "commit": "6caf1e9e0854a9ffc9fe8c4b3daaafe35ae892e9"
+          },
+          {
+            "comment": "Dropdown: Render options with header in group so that narrator associates group with header",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "a46a9e04d0648d92ebcf29137218fd775b59e366"
+          },
+          {
+            "comment": "Autocomplete: Allow value to be overriden",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "cd4f87ccb3261f7a26c6a183b4cec33a64ed9be2"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Combobox: multi-select does not clear index on selection. Selected and checked properly supported",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "bd52f72fa7dc908bd86ecec79f8c041c3ea07acc"
+          },
+          {
+            "comment": "fix contextual menu split button cannot be read by screen reader bug",
+            "author": "xgao@microsoft.com",
+            "commit": "26105362a59563dd559eae94960bed01a7f2103c"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 10 Dec 2019 12:34:47 GMT",
       "tag": "office-ui-fabric-react_v7.70.0",
       "version": "7.70.0",

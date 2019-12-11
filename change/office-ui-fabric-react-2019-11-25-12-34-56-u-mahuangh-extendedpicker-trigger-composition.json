@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Only update ExtendedPicker state on input events that are not mid-composition ",
-  "packageName": "office-ui-fabric-react",
-  "email": "mahuangh@microsoft.com",
-  "commit": "6caf1e9e0854a9ffc9fe8c4b3daaafe35ae892e9",
-  "date": "2019-11-25T20:34:56.928Z"
-}
