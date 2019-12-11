@@ -52,8 +52,6 @@ export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPi
       blue: 'Blue',
       alpha: 'Alpha',
       hue: 'Hue',
-      hueAriaLabel: 'Hue',
-      alphaAriaLabel: 'Alpha',
       svAriaLabel: ColorRectangleBase.defaultProps.ariaLabel!,
       svAriaValueFormat: ColorRectangleBase.defaultProps.ariaValueFormat!,
       svAriaDescription: ColorRectangleBase.defaultProps.ariaDescription!
