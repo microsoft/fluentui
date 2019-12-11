@@ -155,7 +155,6 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   private _lastTouchTimeoutId: number | undefined;
   /** True if the most recent keydown event was for alt (option) or meta (command). */
   private _lastKeyDownWasAltOrMeta: boolean | undefined;
-  private _multidisplay: string | undefined;
 
   /**
    * Determines if we should be setting focus back to the input when the menu closes.
@@ -340,7 +339,11 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     } = this.props;
     const { isOpen, focused, suggestedDisplayValue } = this.state;
     this._currentVisibleValue = this._getVisibleValue();
-    this._getDisplay(this.state.selectedIndices, this.state.currentOptions, suggestedDisplayValue);
+    const MultiLineDisplayString = this._getMultiLineDisplayString(
+      this.state.selectedIndices,
+      this.state.currentOptions,
+      suggestedDisplayValue
+    );
 
     const divProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties, ['onChange', 'value']);
 
@@ -364,6 +367,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         {label && (
           <Label id={id + '-label'} disabled={disabled} required={required} htmlFor={id + '-input'} className={this._classNames.label}>
             {label}
+            <div className={this._classNames.screenReaderText}>{MultiLineDisplayString}</div>
           </Label>
         )}
         <KeytipData keytipProps={keytipProps} disabled={disabled}>
@@ -410,7 +414,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
                 shouldSelectFullInputValueInComponentDidUpdate={this._onShouldSelectFullInputValueInAutofillComponentDidUpdate}
                 title={title}
                 preventValueSelection={!focused}
-                placeholder={focus && this.props.multiSelect && this._multidisplay ? this._multidisplay : placeholder}
+                placeholder={focus && this.props.multiSelect && MultiLineDisplayString ? MultiLineDisplayString : placeholder}
                 tabIndex={tabIndex}
                 {...autofill}
               />
@@ -622,7 +626,11 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     return displayString;
   };
 
-  private _getDisplay(selectedIndices: number[] | undefined, currentOptions: IComboBoxOption[], suggestedDisplayValue: string | undefined) {
+  private _getMultiLineDisplayString(
+    selectedIndices: number[] | undefined,
+    currentOptions: IComboBoxOption[],
+    suggestedDisplayValue: string | undefined
+  ) {
     const displayValues = [];
     for (let idx = 0; selectedIndices && idx < selectedIndices.length; idx++) {
       const index: number = selectedIndices[idx];
@@ -637,7 +645,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       }
       displayString += displayValues[idx];
     }
-    this._multidisplay = displayString;
+    return displayString;
   }
 
   /**
