@@ -14,7 +14,7 @@ The `Stack` component provides an abstraction of a flexbox container but there a
 
 A `Stack Item` abstracts those properties that are or can be specifically applied on flexbox's children, like `grow` and `shrink`.
 
-To use a `Stack Item` in an application, the `Stack` component should be imported and `Stack.Item` should be used. This is done so that the existence of the `Stack Item` is inherently linked to the `Stack` component, since it doesn't make sense for a `Stack Item` to exist outside of the context of a `Stack`.
+To use a `Stack Item` in an application, the `Stack` component should be imported and `Stack.Item` should be used inside of a `Stack`. This is done so that the existence of the `Stack Item` is inherently linked to the `Stack` component.
 
 ## Stack Wrapping
 
