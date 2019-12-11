@@ -2,6 +2,48 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "date": "Mon, 09 Dec 2019 12:29:23 GMT",
+      "tag": "@uifabric/fabric-website_v7.7.4",
+      "version": "7.7.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "updated Fabric Android Date Time Picker documentation",
+            "author": "willdo@microsoft.com",
+            "commit": "d54b49c19a8b0d775f731366dcee31b95bb2716e"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 06 Dec 2019 12:33:21 GMT",
+      "tag": "@uifabric/fabric-website_v7.7.3",
+      "version": "7.7.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Updating RTL documentation.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "ad256851e84dbaf73817719133d30411473efb9a"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 03 Dec 2019 12:36:28 GMT",
+      "tag": "@uifabric/fabric-website_v7.7.2",
+      "version": "7.7.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Updating mobile docs - including bottom navigation and iOS Shimmer.",
+            "author": "emlynam@microsoft.com",
+            "commit": "bfdafb8e0f7b62d4ea51d0668f183f5b3939ed19"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 28 Nov 2019 12:32:23 GMT",
       "tag": "@uifabric/fabric-website_v7.7.1",
       "version": "7.7.1",

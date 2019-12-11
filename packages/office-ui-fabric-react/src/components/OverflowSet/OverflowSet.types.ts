@@ -49,6 +49,7 @@ export interface IOverflowSetProps extends React.ClassAttributes<OverflowSetBase
 
   /**
    * Change item layout direction to vertical/stacked.
+   * Setting vertical to true also changes default role to "menu".
    * @defaultvalue false
    */
   vertical?: boolean;

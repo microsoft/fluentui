@@ -86,6 +86,9 @@ interface IComboBoxOptionWrapperProps extends IComboBoxOption {
   /** True if the option is currently selected */
   isSelected: boolean;
 
+  /** True if the option is currently checked (multi-select) */
+  isChecked: boolean;
+
   /**
    * A function that returns the children of the OptionWrapper. We pass this in as a function to ensure that
    * children methods don't get called unnecessarily if the component doesn't need to be updated. This leads
@@ -452,7 +455,13 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
             },
             this._onRenderContainer
           )}
-        <div role="region" aria-live="polite" aria-atomic="true" id={errorMessageId} className={this._classNames.errorMessage}>
+        <div
+          role="region"
+          aria-live="polite"
+          aria-atomic="true"
+          id={errorMessageId}
+          className={hasErrorMessage ? this._classNames.errorMessage : ''}
+        >
           {errorMessage !== undefined ? errorMessage : ''}
         </div>
       </div>
@@ -934,7 +943,9 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         );
       }
     }
-
+    if (this.props.multiSelect && this.state.isOpen) {
+      return;
+    }
     // clear all of the pending info
     this._clearPendingInfo();
   }
@@ -1079,6 +1090,9 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
             this._autofill.current.inputElement.value.toLocaleLowerCase() === pendingOptionText)
         ) {
           this._setSelectedIndex(currentPendingValueValidIndex, submitPendingValueEvent);
+          if (this.props.multiSelect && this.state.isOpen) {
+            return;
+          }
           this._clearPendingInfo();
           return;
         }
@@ -1245,6 +1259,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     const { onRenderOption = this._onRenderOptionContent } = this.props;
     const id = this._id;
     const isSelected: boolean = this._isOptionSelected(item.index);
+    const isChecked: boolean = this._isOptionChecked(item.index);
     const optionStyles = this._getCurrentOptionStyles(item);
     const optionClassNames = getComboBoxOptionClassNames(this._getCurrentOptionStyles(item));
     const title = this._getPreviewText(item);
@@ -1270,7 +1285,6 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
           disabled={item.disabled}
           title={title}
         >
-          {' '}
           {
             <span className={optionClassNames.optionTextWrapper} ref={isSelected ? this._selectedElement : undefined}>
               {onRenderOption(item, this._onRenderOptionContent)}
@@ -1289,11 +1303,13 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
           onChange={this._onItemClick(item)}
           label={item.text}
           role="option"
-          aria-selected={isSelected ? 'true' : 'false'}
-          checked={isSelected}
+          checked={isChecked}
           title={title}
           disabled={item.disabled}
           onRenderLabel={onRenderCheckboxLabel}
+          inputProps={{
+            'aria-selected': isSelected ? 'true' : 'false'
+          }}
         />
       );
     };
@@ -1304,6 +1320,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         index={item.index}
         disabled={item.disabled}
         isSelected={isSelected}
+        isChecked={isChecked}
         text={item.text}
         render={getOptionComponent}
         data={item.data}
@@ -1332,15 +1349,17 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       return false;
     }
 
-    if (!this.props.multiSelect && this._getPendingSelectedIndex(true /* includePendingValue */) === index) {
-      return true;
-    }
+    return this._getPendingSelectedIndex(true /* includePendingValue */) === index ? true : false;
+  }
 
-    let idxOfSelectedIndex = -1;
+  private _isOptionChecked(index: number | undefined): boolean {
     if (this.props.multiSelect && index !== undefined && this.state.selectedIndices) {
+      let idxOfSelectedIndex = -1;
+
       idxOfSelectedIndex = this.state.selectedIndices.indexOf(index);
+      return idxOfSelectedIndex >= 0;
     }
-    return idxOfSelectedIndex >= 0;
+    return false;
   }
 
   /**
@@ -1509,7 +1528,6 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    */
   private _resetSelectedIndex(): void {
     const { currentOptions } = this.state;
-
     this._clearPendingInfo();
 
     const selectedIndex: number = this._getFirstSelectedIndex();
@@ -1530,6 +1548,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    */
   private _clearPendingInfo(): void {
     this._processingClearPendingInfo = true;
+
     this.setState(
       {
         currentPendingValue: undefined,

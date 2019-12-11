@@ -45,10 +45,10 @@ export class EditingItem extends BaseComponent<IEditingSelectedPeopleItemProps, 
     return (
       <div aria-labelledby={'editingItemPersona-' + itemId} className={css('ms-EditingItem', styles.editingContainer)}>
         <input
-          {...nativeProps}
-          ref={this._resolveInputRef}
           autoCapitalize={'off'}
           autoComplete={'off'}
+          {...nativeProps}
+          ref={this._resolveInputRef}
           onChange={this._onInputChange}
           onKeyDown={this._onInputKeyDown}
           onBlur={this._onInputBlur}

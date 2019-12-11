@@ -1,7 +1,25 @@
 # Change Log - @uifabric/date-time
 
-This log was last generated on Tue, 26 Nov 2019 12:32:11 GMT and should not be manually modified.
+This log was last generated on Wed, 11 Dec 2019 12:30:26 GMT and should not be manually modified.
 
+## 7.8.2
+Wed, 11 Dec 2019 12:30:26 GMT
+
+### Patches
+
+- Allow focus on CalendarMonth header. (phtucker@microsoft.com)
+## 7.8.1
+Fri, 06 Dec 2019 12:33:21 GMT
+
+### Patches
+
+- updated snapshots (betrue@microsoft.com)
+## 7.8.0
+Tue, 03 Dec 2019 12:36:28 GMT
+
+### Minor changes
+
+- DatePicker: Making styles accept functions and objects and not only functions. (Humberto.Morimoto@microsoft.com)
 ## 7.7.0
 Tue, 26 Nov 2019 12:32:11 GMT
 

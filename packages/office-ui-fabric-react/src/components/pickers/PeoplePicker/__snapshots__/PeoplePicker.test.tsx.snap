@@ -40,7 +40,7 @@ exports[`PeoplePicker renders correctly 1`] = `
             {
               align-items: center;
               border-radius: 2px;
-              border: 1px solid #8a8886;
+              border: 1px solid #605e5c;
               box-sizing: border-box;
               display: flex;
               flex-wrap: wrap;
@@ -138,7 +138,7 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
             {
               align-items: center;
               border-radius: 2px;
-              border: 1px solid #8a8886;
+              border: 1px solid #605e5c;
               box-sizing: border-box;
               display: flex;
               flex-wrap: wrap;

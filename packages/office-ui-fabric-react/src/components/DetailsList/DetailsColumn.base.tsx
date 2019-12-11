@@ -5,9 +5,8 @@ import { ColumnActionsMode } from './DetailsList.types';
 
 import { ITooltipHostProps } from '../../Tooltip';
 import { IDragDropOptions } from './../../utilities/dragdrop/interfaces';
-import { IDetailsColumnStyles } from './DetailsColumn.types';
 import { DEFAULT_CELL_STYLE_PROPS } from './DetailsRow.styles';
-import { IDetailsColumnStyleProps, IDetailsColumnProps } from './DetailsColumn.types';
+import { IDetailsColumnStyleProps, IDetailsColumnProps, IDetailsColumnStyles } from './DetailsColumn.types';
 
 const MOUSEDOWN_PRIMARY_BUTTON = 0; // for mouse down event we are using ev.button property, 0 means left button
 

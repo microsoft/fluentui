@@ -2,6 +2,20 @@
   "name": "@uifabric/example-data",
   "entries": [
     {
+      "date": "Tue, 03 Dec 2019 12:36:28 GMT",
+      "tag": "@uifabric/example-data_v7.0.2",
+      "version": "7.0.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Persona Data: Added an on click to first item so that it didn't appear that last item was only with focus",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "5da7e670bb1fd7cfd706e10a920324f9ac166e94"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 27 Aug 2019 12:33:51 GMT",
       "tag": "@uifabric/example-data_v7.0.1",
       "version": "7.0.1",

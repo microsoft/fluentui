@@ -154,6 +154,11 @@ export interface INavLinkGroup {
    * ARIA label when group is collapsed and can be expanded.
    */
   collapseAriaLabel?: string;
+
+  /**
+   * (Optional) Any additional properties to apply to a group.
+   */
+  groupData?: any;
 }
 
 /**

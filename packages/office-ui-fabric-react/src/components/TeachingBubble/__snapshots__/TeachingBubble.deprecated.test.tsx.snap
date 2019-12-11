@@ -303,7 +303,7 @@ exports[`TeachingBubble renders renders with hasCloseIcon which is deprecated 1`
                   background-color: #ffffff;
                   border-color: #ffffff;
                   border-radius: 2px;
-                  border: none;
+                  border: 1px solid #0078d4;
                   box-sizing: border-box;
                   color: #0078d4;
                   cursor: pointer;
@@ -356,15 +356,18 @@ exports[`TeachingBubble renders renders with hasCloseIcon which is deprecated 1`
                 @media screen and (-ms-high-contrast: active){& {
                   -ms-high-contrast-adjust: none;
                   background-color: WindowText;
+                  border-color: WindowText;
                   color: Window;
                 }
                 &:hover {
                   background-color: #deecf9;
                   border-color: #deecf9;
+                  border: 1px solid #106ebe;
                   color: #0078d4;
                 }
                 @media screen and (-ms-high-contrast: active){&:hover {
                   background-color: Highlight;
+                  border-color: Highlight;
                   color: Window;
                 }
                 &:focus {
@@ -374,11 +377,13 @@ exports[`TeachingBubble renders renders with hasCloseIcon which is deprecated 1`
                 &:active {
                   background-color: #ffffff;
                   border-color: #ffffff;
+                  border: 1px solid #005a9e;
                   color: #0078d4;
                 }
                 @media screen and (-ms-high-contrast: active){&:active {
                   -ms-high-contrast-adjust: none;
                   background-color: WindowText;
+                  border-color: WindowText;
                   color: Window;
                 }
                 & .ms-Button-label {
