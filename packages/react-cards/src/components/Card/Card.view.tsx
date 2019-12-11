@@ -92,6 +92,7 @@ export const CardView: ICardComponent['view'] = props => {
     <Slots.root
       onClick={onClick}
       onKeyDown={_onKeyDown}
+      role={onClick ? 'button' : 'presentation'}
       tabIndex={onClick ? 0 : -1}
       {...nativeProps}
       horizontal={horizontal}
