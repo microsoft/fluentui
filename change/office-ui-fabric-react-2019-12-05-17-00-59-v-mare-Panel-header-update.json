@@ -1,5 +1,5 @@
 {
-  "type": "patch",
+  "type": "minor",
   "comment": "Panel: Restyled Panel's header and navigation sections",
   "packageName": "office-ui-fabric-react",
   "email": "v-mare@microsoft.com",
