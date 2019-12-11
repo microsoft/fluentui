@@ -41,7 +41,7 @@ export interface IOverlayProps extends React.HTMLAttributes<HTMLElement> {
   onClick?: () => void;
 
   /**
-   * Allow body scroll on ios. Changing after mounting has no effect.
+   * Allow body scroll on touch devices. Changing after mounting has no effect.
    * @defaultvalue false
    */
   allowTouchBodyScroll?: boolean;
