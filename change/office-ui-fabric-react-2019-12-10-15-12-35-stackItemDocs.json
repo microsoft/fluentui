@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Stack: Adding documentation about Stack Items in the Stack overview.",
+  "packageName": "office-ui-fabric-react",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "commit": "3488c442e457b72ba94e43e93047ee46ccc0076e",
+  "date": "2019-12-10T23:12:35.261Z"
+}
