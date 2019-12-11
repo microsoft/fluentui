@@ -603,7 +603,7 @@ describe('ComboBox', () => {
     expect((comboBoxRef.current as ComboBox).state.selectedIndices).toEqual([0, 2, 1]);
   });
 
-  it('in multiSelect mode, defaultselected keys produce correct display inpu', () => {
+  it('in multiSelect mode, defaultselected keys produce correct display input', () => {
     const comboBoxRef = React.createRef<any>();
     wrapper = mount(
       <ComboBox
