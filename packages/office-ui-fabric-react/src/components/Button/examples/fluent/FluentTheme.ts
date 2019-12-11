@@ -26,16 +26,27 @@ export const FluentButtonTheme = {
 
     // },
     tiny: {
-      root: { fontSize: '20%' }
+      true: {
+        root: { fontSize: '20%' }
+      }
     },
     large: {
-      root: { fontSize: '400%' }
+      true: {
+        root: { fontSize: '400%' }
+      }
+    },
+    size: {
+      s: { root: { fontSize: '100%' } },
+      m: { root: { fontSize: '200%' } },
+      l: { root: { fontSize: '400%' } }
     },
     shadowed: {
-      root: { fontSize: '77%', boxShadow: '10px 5px 5px purple' }
+      true: { root: { fontSize: '77%', boxShadow: '10px 5px 5px purple' } }
     },
     bigIcon: {
-      icon: { fontSize: '300%' }
+      true: {
+        icon: { fontSize: '300%' }
+      }
     }
   }
 };

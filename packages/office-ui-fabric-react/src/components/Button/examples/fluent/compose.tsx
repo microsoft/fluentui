@@ -23,7 +23,13 @@ const getProps = (cssMap: any, props: any) => {
   return newProps;
 };
 
-export const getClassName = (theme: any, componentProps: any, componentName: string, slotNames: string[]) => {
+export const getClassName = (
+  theme: any,
+  componentProps: any,
+  componentName: string,
+  slotNames: string[],
+  cssRenderer: (args: any) => string = mergeCss
+) => {
   const stylesAdditions: any = {};
   const variantNames: string[] = [];
   const componentStyles =
@@ -35,11 +41,16 @@ export const getClassName = (theme: any, componentProps: any, componentName: str
     Object.keys(theme.components[componentName].variants).forEach(variantName => {
       stylesAdditions[variantName] = {};
       variantNames.push(variantName);
-      Object.keys(theme.components[componentName].variants[variantName]).forEach(slotName => {
-        if (!slotNames.find(s => s === slotName)) {
-          slotNames.push(slotName);
-        }
-        stylesAdditions[variantName][slotName] = theme.components[componentName].variants[variantName][slotName];
+      Object.keys(theme.components[componentName].variants[variantName]).forEach(enumValue => {
+        const variant: any = {};
+        stylesAdditions[variantName][enumValue] = variant;
+
+        Object.keys(theme.components[componentName].variants[variantName][enumValue]).forEach(slotName => {
+          if (!slotNames.find(s => s === slotName)) {
+            slotNames.push(slotName);
+          }
+          variant[slotName] = theme.components[componentName].variants[variantName][enumValue][slotName];
+        });
       });
     });
   }
@@ -49,23 +60,17 @@ export const getClassName = (theme: any, componentProps: any, componentName: str
   slotNames.forEach(slotName => {
     mergedSlotStyles[slotName] = componentStyles[slotName] || {};
     variantNames.map(v => {
-      if (componentProps[v]) {
-        mergedSlotStyles[slotName] = { ...mergedSlotStyles[slotName], ...stylesAdditions[v][slotName] };
+      if (componentProps[v] !== undefined && stylesAdditions[v] !== undefined && stylesAdditions[v][componentProps[v]] !== undefined) {
+        mergedSlotStyles[slotName] = { ...mergedSlotStyles[slotName], ...stylesAdditions[v][componentProps[v]][slotName] };
       }
     });
   });
 
   const cssMap: any = {};
-  // tslint:disable-next-line:no-shadowed-variable
   slotNames.forEach(slotName => {
-    cssMap[slotName] = mergeCss(mergedSlotStyles[slotName]);
+    cssMap[slotName] = cssRenderer(mergedSlotStyles[slotName]);
   });
 
-  // console.log({
-  //   stylesAdditions,
-  //   mergedSlotStyles,
-  //   cssMap
-  // });
   return cssMap;
 };
 
