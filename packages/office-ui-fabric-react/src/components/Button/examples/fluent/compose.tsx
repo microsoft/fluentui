@@ -4,6 +4,7 @@ import { mergeCss } from '@uifabric/merge-styles';
 
 // TODO:
 // 1. how do we know the slots for component?
+//    Why do we need to?
 // 2. how do we tackle enum props (not just booleans)
 // 3. final decision on styles living in theme (sync with JD)
 // 4. type safety (props which are variants should be typed)
@@ -22,10 +23,9 @@ const getProps = (cssMap: any, props: any) => {
   return newProps;
 };
 
-const getClassName = (theme: any, componentProps: any, componentName: string) => {
+export const getClassName = (theme: any, componentProps: any, componentName: string, slotNames: string[]) => {
   const stylesAdditions: any = {};
   const variantNames: string[] = [];
-  const slotNames: string[] = ['root', 'icon', 'primaryText', 'secondaryText'];
   const componentStyles =
     theme && theme.components && theme.components[componentName] && theme.components[componentName].styles
       ? theme.components[componentName].styles({ typography: theme.typography, colors: theme.colors })
@@ -71,7 +71,7 @@ const getClassName = (theme: any, componentProps: any, componentName: string) =>
 
 export const compose = (displayName: string, BaseComponent: any) => (props: any) => {
   const theme = (React.useContext(ProviderContext) as any)!;
-  const cssMap = getClassName(theme, props, displayName);
+  const cssMap = getClassName(theme, props, displayName, ['root', 'icon', 'primaryText', 'secondaryText']);
   const newProps = getProps(cssMap, props);
 
   return <BaseComponent {...newProps} />;
