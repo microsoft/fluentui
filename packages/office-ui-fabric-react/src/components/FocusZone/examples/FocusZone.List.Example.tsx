@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { KeyCodes, createArray, getRTLSafeKeyCode } from 'office-ui-fabric-react/lib/Utilities';
 import { useConst } from '@uifabric/react-hooks';
-import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
+import { TextField } from 'office-ui-fabric-react';
 import { Link } from 'office-ui-fabric-react/lib/Link';
 import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react/lib/FocusZone';
 import { DetailsRow, IColumn, Selection, SelectionMode } from 'office-ui-fabric-react/lib/DetailsList';
@@ -9,7 +9,7 @@ import { DetailsRow, IColumn, Selection, SelectionMode } from 'office-ui-fabric-
 const ITEMS = createArray(10, index => ({
   key: index.toString(),
   name: 'Item-' + index,
-  url: 'http://placehold.it/100x' + (200 + index!)
+  url: 'http://placehold.it/100x' + (100 + index!)
 }));
 
 const COLUMNS: IColumn[] = [
@@ -27,11 +27,18 @@ const COLUMNS: IColumn[] = [
     onRender: item => <Link href={item.url}>{item.url}</Link>
   },
   {
-    key: 'defaultButton',
+    key: 'textfield',
     name: 'Link',
     fieldName: 'url',
-    minWidth: 100,
-    onRender: item => <DefaultButton>{item.url}</DefaultButton>
+    minWidth: 130,
+    onRender: item => <TextField readOnly value={'ReadOnly ' + item.name} />
+  },
+  {
+    key: 'textfield',
+    name: 'Link',
+    fieldName: 'url',
+    minWidth: 130,
+    onRender: item => <TextField value={item.name} />
   }
 ];
 
