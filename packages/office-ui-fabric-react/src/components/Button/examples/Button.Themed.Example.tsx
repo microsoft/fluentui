@@ -20,6 +20,12 @@ export const ButtonThemedExample: React.FunctionComponent<{}> = props => {
           <FluentButton large>large</FluentButton>
         </div>
         <div className={example}>
+          <FluentButton size="s">small</FluentButton>
+          <FluentButton size="m">medium</FluentButton>
+          <FluentButton size="l">large</FluentButton>
+        </div>
+
+        <div className={example}>
           <FluentButton shadowed>shadowed</FluentButton>
         </div>
         <div className={example}>
