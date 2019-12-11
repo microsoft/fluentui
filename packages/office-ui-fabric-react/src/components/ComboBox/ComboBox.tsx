@@ -155,6 +155,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   private _lastTouchTimeoutId: number | undefined;
   /** True if the most recent keydown event was for alt (option) or meta (command). */
   private _lastKeyDownWasAltOrMeta: boolean | undefined;
+  private _multidisplay: string | undefined;
 
   /**
    * Determines if we should be setting focus back to the input when the menu closes.
@@ -339,6 +340,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     } = this.props;
     const { isOpen, focused, suggestedDisplayValue } = this.state;
     this._currentVisibleValue = this._getVisibleValue();
+    this._getDisplay(this.state.selectedIndices, this.state.currentOptions, suggestedDisplayValue);
 
     const divProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties, ['onChange', 'value']);
 
@@ -408,7 +410,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
                 shouldSelectFullInputValueInComponentDidUpdate={this._onShouldSelectFullInputValueInAutofillComponentDidUpdate}
                 title={title}
                 preventValueSelection={!focused}
-                placeholder={placeholder}
+                placeholder={focus && this.props.multiSelect && this._multidisplay ? this._multidisplay : placeholder}
                 tabIndex={tabIndex}
                 {...autofill}
               />
@@ -498,7 +500,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       // If visibleValue is empty, make it a zero width space.
       // If we did not do that, the empty string would not get used
       // potentially resulting in an unexpected value being used
-      return visibleValue || '​';
+      return visibleValue || '';
     }
 
     return comboBox.value;
@@ -619,6 +621,24 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     }
     return displayString;
   };
+
+  private _getDisplay(selectedIndices: number[] | undefined, currentOptions: IComboBoxOption[], suggestedDisplayValue: string | undefined) {
+    const displayValues = [];
+    for (let idx = 0; selectedIndices && idx < selectedIndices.length; idx++) {
+      const index: number = selectedIndices[idx];
+      displayValues.push(
+        this._indexWithinBounds(currentOptions, index) ? currentOptions[index].text : this._normalizeToString(suggestedDisplayValue)
+      );
+    }
+    let displayString = '';
+    for (let idx = 0; idx < displayValues.length; idx++) {
+      if (idx > 0) {
+        displayString += ', ';
+      }
+      displayString += displayValues[idx];
+    }
+    this._multidisplay = displayString;
+  }
 
   /**
    * Is the index within the bounds of the array?
