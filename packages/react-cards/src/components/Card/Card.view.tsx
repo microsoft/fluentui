@@ -15,7 +15,7 @@ export const CardView: ICardComponent['view'] = props => {
     root: Stack
   });
 
-  const { children, styles, tokens, horizontal, onClick, ...rest } = props;
+  const { children, styles, tokens, horizontal, onClick, onKeyDown, ...rest } = props;
 
   const nativeProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(rest, htmlElementProperties);
 
@@ -81,9 +81,13 @@ export const CardView: ICardComponent['view'] = props => {
     }
   );
 
-  const _onKeyDown = (ev: React.KeyboardEvent): void => {
-    if (onClick && (ev.which === KeyCodes.enter || ev.which === KeyCodes.space)) {
-      onClick(ev as any);
+  const _onKeyDown = (ev?: React.KeyboardEvent<HTMLElement>): void => {
+    if (onKeyDown) {
+      onKeyDown(ev);
+    } else if (onClick && ev && (ev.which === KeyCodes.enter || ev.which === KeyCodes.space)) {
+      // If onKeyDown is undefined and onClick has been passed, then replicate a Button's behavior by triggering the onClick function on
+      // pressing down the 'Enter' and 'Space' keys.
+      onClick();
       ev.preventDefault();
     }
   };
