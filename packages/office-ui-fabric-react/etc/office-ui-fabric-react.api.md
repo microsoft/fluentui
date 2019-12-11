@@ -154,7 +154,7 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
     // (undocumented)
     protected onCopy: (ev: React.ClipboardEvent<HTMLElement>) => void;
     // (undocumented)
-    protected onInputChange: (value: string) => void;
+    protected onInputChange: (value: string, composing?: boolean | undefined) => void;
     // (undocumented)
     protected onInputClick: (ev: React.MouseEvent<HTMLInputElement | Autofill, MouseEvent>) => void;
     // (undocumented)
@@ -1528,8 +1528,8 @@ export interface IAutofillProps extends React.InputHTMLAttributes<HTMLInputEleme
     componentRef?: IRefObject<IAutofill>;
     defaultVisibleValue?: string;
     enableAutofillOnKeyPress?: KeyCodes[];
-    onInputChange?: (value: string) => string;
-    onInputValueChange?: (newValue?: string) => void;
+    onInputChange?: (value: string, composing: boolean) => string;
+    onInputValueChange?: (newValue?: string, composing?: boolean) => void;
     preventValueSelection?: boolean;
     shouldSelectFullInputValueInComponentDidUpdate?: () => boolean;
     suggestedDisplayValue?: string;
