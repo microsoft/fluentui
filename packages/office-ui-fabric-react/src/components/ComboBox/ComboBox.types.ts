@@ -348,6 +348,9 @@ export interface IComboBoxStyles {
    */
   divider: IStyle;
 
+  /**
+   * Styles for hidden screen reader text
+   */
   screenReaderText: IStyle;
 }
 
