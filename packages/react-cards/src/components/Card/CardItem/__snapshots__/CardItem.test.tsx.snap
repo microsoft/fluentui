@@ -34,6 +34,7 @@ exports[`Card Item renders correctly 1`] = `
         box-shadow: 0 1.6px 3.6px 0 Highlight, 0 0.3px 0.9px 0 Highlight;
       }
   onKeyDown={[Function]}
+  role="presentation"
   tabIndex={-1}
 >
   <div
@@ -98,6 +99,7 @@ exports[`Card Item renders correctly when filling up the margins while being the
         box-shadow: 0 1.6px 3.6px 0 Highlight, 0 0.3px 0.9px 0 Highlight;
       }
   onKeyDown={[Function]}
+  role="presentation"
   tabIndex={-1}
 >
   <div
@@ -187,6 +189,7 @@ exports[`Card Item renders correctly when filling up the margins while being the
         box-shadow: 0 1.6px 3.6px 0 Highlight, 0 0.3px 0.9px 0 Highlight;
       }
   onKeyDown={[Function]}
+  role="presentation"
   tabIndex={-1}
 >
   <div
@@ -276,6 +279,7 @@ exports[`Card Item renders correctly when filling up the margins while being the
         box-shadow: 0 1.6px 3.6px 0 Highlight, 0 0.3px 0.9px 0 Highlight;
       }
   onKeyDown={[Function]}
+  role="presentation"
   tabIndex={-1}
 >
   <div
@@ -365,6 +369,7 @@ exports[`Card Item renders correctly when filling up the margins while being the
         box-shadow: 0 1.6px 3.6px 0 Highlight, 0 0.3px 0.9px 0 Highlight;
       }
   onKeyDown={[Function]}
+  role="presentation"
   tabIndex={-1}
 >
   <div
@@ -454,6 +459,7 @@ exports[`Card Item renders correctly when filling up the margins while being the
         box-shadow: 0 1.6px 3.6px 0 Highlight, 0 0.3px 0.9px 0 Highlight;
       }
   onKeyDown={[Function]}
+  role="presentation"
   tabIndex={-1}
 >
   <div
@@ -568,6 +574,7 @@ exports[`Card Item renders correctly when filling up the margins while being the
         box-shadow: 0 1.6px 3.6px 0 Highlight, 0 0.3px 0.9px 0 Highlight;
       }
   onKeyDown={[Function]}
+  role="presentation"
   tabIndex={-1}
 >
   <div
@@ -682,6 +689,7 @@ exports[`Card Item renders correctly when filling up the margins while being the
         box-shadow: 0 1.6px 3.6px 0 Highlight, 0 0.3px 0.9px 0 Highlight;
       }
   onKeyDown={[Function]}
+  role="presentation"
   tabIndex={-1}
 >
   <div
@@ -746,6 +754,7 @@ exports[`Card Item renders correctly when filling up the margins while being the
         box-shadow: 0 1.6px 3.6px 0 Highlight, 0 0.3px 0.9px 0 Highlight;
       }
   onKeyDown={[Function]}
+  role="presentation"
   tabIndex={-1}
 >
   <div
@@ -810,6 +819,7 @@ exports[`Card Item renders correctly when having tokens passed to it 1`] = `
         box-shadow: 0 1.6px 3.6px 0 Highlight, 0 0.3px 0.9px 0 Highlight;
       }
   onKeyDown={[Function]}
+  role="presentation"
   tabIndex={-1}
 >
   <div
