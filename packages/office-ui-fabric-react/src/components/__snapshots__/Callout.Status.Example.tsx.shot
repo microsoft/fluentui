@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Component Examples renders Callout.Basic.Example.tsx correctly 1`] = `
+exports[`Component Examples renders Callout.Status.Example.tsx correctly 1`] = `
 <div
   className=
 
@@ -126,9 +126,9 @@ exports[`Component Examples renders Callout.Basic.Example.tsx correctly 1`] = `
                 margin-right: 4px;
                 margin-top: 0;
               }
-          id="id__2"
+          id="id__0"
         >
-          Show Callout
+          Show StatusCallout
         </span>
       </span>
     </span>

@@ -76,7 +76,7 @@ Array [
             @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
               outline: 1px solid ActiveBorder;
             }
-        id="checkbox-0"
+        id="checkbox-2"
         onBlur={[Function]}
         onChange={[Function]}
         onFocus={[Function]}
@@ -107,7 +107,7 @@ Array [
               right: 0px;
               top: 0px;
             }
-        htmlFor="checkbox-0"
+        htmlFor="checkbox-2"
       >
         <div
           className=
@@ -213,7 +213,7 @@ Array [
               padding-top: 0px;
               word-wrap: break-word;
             }
-        htmlFor="Slider1"
+        htmlFor="Slider3"
       >
         Gap Space
       </label>
@@ -316,7 +316,7 @@ Array [
                 background-color: Highlight;
               }
           data-is-focusable={true}
-          id="Slider1"
+          id="Slider3"
           onKeyDown={[Function]}
           onMouseDown={[Function]}
           onTouchStart={[Function]}
@@ -474,7 +474,7 @@ Array [
               padding-top: 0px;
               word-wrap: break-word;
             }
-        htmlFor="Slider2"
+        htmlFor="Slider4"
       >
         Beak Width
       </label>
@@ -577,7 +577,7 @@ Array [
                 background-color: Highlight;
               }
           data-is-focusable={true}
-          id="Slider2"
+          id="Slider4"
           onKeyDown={[Function]}
           onMouseDown={[Function]}
           onTouchStart={[Function]}
@@ -727,14 +727,14 @@ Array [
               padding-top: 5px;
               word-wrap: break-word;
             }
-        id="Dropdown3-label"
+        id="Dropdown5-label"
       >
         Directional hint
       </label>
       <div
         aria-expanded="false"
         aria-haspopup="listbox"
-        aria-labelledby="Dropdown3-label Dropdown3-option"
+        aria-labelledby="Dropdown5-label Dropdown5-option"
         className=
             ms-Dropdown
             {
@@ -827,7 +827,7 @@ Array [
               border-color: #a4262c;
             }
         data-is-focusable={true}
-        id="Dropdown3"
+        id="Dropdown5"
         onBlur={[Function]}
         onChange={[Function]}
         onClick={[Function]}
@@ -872,7 +872,7 @@ Array [
                 text-overflow: ellipsis;
                 white-space: nowrap;
               }
-          id="Dropdown3-option"
+          id="Dropdown5-option"
           role="option"
         >
           Bottom Left Edge
@@ -1039,7 +1039,7 @@ Array [
                   margin-right: 4px;
                   margin-top: 0;
                 }
-            id="id__4"
+            id="id__6"
           >
             Show callout
           </span>
