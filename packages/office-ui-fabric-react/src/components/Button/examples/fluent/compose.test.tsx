@@ -3,11 +3,25 @@ import { getClassName } from './compose';
 describe('compose', () => {
   describe('getClassName', () => {
     it('returns nothing in the default case', () => {
-      expect(getClassName({}, {}, '', [])).toEqual({});
+      expect(getClassName({}, {}, '')).toEqual({});
     });
 
     it('returns classNames for a single slot', () => {
-      expect(getClassName({}, {}, '', ['root'])).toEqual({ root: '' });
+      expect(
+        getClassName(
+          {
+            components: {
+              foo: {
+                styles: () => ({
+                  root: {}
+                })
+              }
+            }
+          },
+          {},
+          'foo'
+        )
+      ).toEqual({ root: '' });
     });
 
     it('returns customized classNames for a single slot', () => {
@@ -36,7 +50,6 @@ describe('compose', () => {
           },
           { primary: true },
           'foo',
-          ['root'],
           cssRenderer
         )
       ).toEqual({ root: 'correct' });
@@ -75,7 +88,6 @@ describe('compose', () => {
           },
           { primary: true, disabled: true },
           'foo',
-          ['root'],
           cssRenderer
         )
       ).toEqual({ root: 'correct' });
@@ -107,7 +119,6 @@ describe('compose', () => {
           },
           { primary: 'very' },
           'foo',
-          ['root'],
           cssRenderer
         )
       ).toEqual({ root: 'correct' });
