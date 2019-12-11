@@ -137,8 +137,20 @@ export interface IColorPickerStrings {
   alpha?: string;
 
   /**
+   * Aria label for the alpha slider.
+   * @defaultvalue Alpha
+   */
+  alphaAriaLabel?: string;
+
+  /**
    * Aria label for the hue slider.
    * @defaultvalue Hue
+   */
+  hueAriaLabel?: string;
+
+  /**
+   * Aria label for the hue slider.
+   * @deprecated use 'hueAriaLabel'
    */
   hue?: string;
 
