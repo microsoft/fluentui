@@ -1670,20 +1670,13 @@ describe('FocusZone', () => {
       }
     });
 
-    // inputA should be focussed.
-    ReactTestUtils.Simulate.focus(inputA);
-    expect(lastFocusedElement).toBe(inputA);
-
-    // Pressing right should go to b.
-    ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.right });
-    expect(lastFocusedElement).toBe(inputB);
-
+    ReactTestUtils.Simulate.focus(inputB);
     // Pressing right should go to c.
     ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.right });
     expect(lastFocusedElement).toBe(inputC);
 
-    // Pressing left from b should go back to a
     ReactTestUtils.Simulate.focus(inputB);
+    // Pressing left from b should go back to a
     ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.left });
     expect(lastFocusedElement).toBe(inputA);
   });

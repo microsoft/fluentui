@@ -1041,7 +1041,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
       // We shouldn't lose focus in the following cases:
       // 1. There is range selected.
       // 2. When selection start is larger than 0 and it is backward and not readOnly.
-      // 3. when selection start is not the end of length and it is forward.
+      // 3. when selection start is not the end of length, it is forward and not readOnly.
       // 4. We press any of the arrow keys when our handleTabKey isn't none or undefined (only losing focus if we hit tab)
       // and if shouldInputLoseFocusOnArrowKey is defined, if scenario prefers to not loose the focus which is determined by calling the
       // callback shouldInputLoseFocusOnArrowKey
