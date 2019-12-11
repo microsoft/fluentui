@@ -515,9 +515,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
     const visibleValue = this._normalizeToString(this._currentVisibleValue);
     if (comboBox.value !== visibleValue) {
-      // If visibleValue is empty, make it a zero width space.
-      // If we did not do that, the empty string would not get used
-      // potentially resulting in an unexpected value being used
+      // If visibleValue is empty, ensure that the empty string is used
       return visibleValue || '';
     }
 
