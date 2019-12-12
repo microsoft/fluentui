@@ -1,5 +1,5 @@
 {
-  "type": "patch",
+  "type": "minor",
   "comment": "Toggle: Change div inside button to be a span",
   "packageName": "office-ui-fabric-react",
   "email": "mgodbolt@microsoft.com",
