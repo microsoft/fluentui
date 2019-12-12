@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "DetailsList: Adding aria-readonly attribute so screen readers don't announce the cells as editable.",
+  "packageName": "office-ui-fabric-react",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "commit": "d6d77b3dcec53af1acd2c5a89b9b4003b713bd9f",
+  "date": "2019-12-12T19:32:14.387Z"
+}
