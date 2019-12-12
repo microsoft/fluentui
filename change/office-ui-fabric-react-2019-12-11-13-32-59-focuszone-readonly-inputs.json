@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "FocusZone: Escape readOnly input on arrow clicks",
+  "packageName": "office-ui-fabric-react",
+  "email": "mgodbolt@microsoft.com",
+  "commit": "7bcce389cacf0686f679ec630ce3d0712f0bc05b",
+  "date": "2019-12-11T21:32:59.251Z"
+}
