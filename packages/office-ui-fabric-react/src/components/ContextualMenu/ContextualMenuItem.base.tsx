@@ -45,9 +45,9 @@ const renderSecondaryText = ({ item, classNames }: IContextualMenuItemProps) => 
   return null;
 };
 
-const renderSubMenuIcon = ({ item, classNames }: IContextualMenuItemProps) => {
+const renderSubMenuIcon = ({ item, classNames, theme }: IContextualMenuItemProps) => {
   if (hasSubmenu(item)) {
-    return <Icon iconName={getRTL() ? 'ChevronLeft' : 'ChevronRight'} {...item.submenuIconProps} className={classNames.subMenuIcon} />;
+    return <Icon iconName={getRTL(theme) ? 'ChevronLeft' : 'ChevronRight'} {...item.submenuIconProps} className={classNames.subMenuIcon} />;
   }
   return null;
 };

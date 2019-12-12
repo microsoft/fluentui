@@ -394,7 +394,7 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
   private _getStickyContainerStyle = (height: number, isTop: boolean): React.CSSProperties => {
     return {
       height: height,
-      ...(getRTL()
+      ...(getRTL(this.props.theme)
         ? {
             right: '0',
             left: `${this.state.scrollbarWidth || this._getScrollbarWidth() || 0}px`

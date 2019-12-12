@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "getRTL uses RTL flag on theme if present.",
+  "packageName": "@uifabric/utilities",
+  "email": "jdh@microsoft.com",
+  "commit": "3bfff30ef0a5a091100d67ab970e470cb3e696fb",
+  "date": "2019-12-12T20:10:04.735Z"
+}

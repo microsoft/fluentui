@@ -331,10 +331,14 @@ export function getRect(element: HTMLElement | Window | null): IRectangle | unde
 export function getResourceUrl(url: string): string;
 
 // @public
-export function getRTL(): boolean;
+export function getRTL(theme?: {
+    rtl?: boolean;
+}): boolean;
 
 // @public
-export function getRTLSafeKeyCode(key: number): number;
+export function getRTLSafeKeyCode(key: number, theme?: {
+    rtl?: boolean;
+}): number;
 
 // @public
 export function getScrollbarWidth(): number;

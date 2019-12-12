@@ -72,7 +72,7 @@ export class GroupHeaderBase extends React.Component<IGroupHeaderProps, IGroupHe
     const isSelectionCheckVisible = canSelectGroup && (isCollapsedGroupSelectVisible || !(group && group.isCollapsed));
     const currentlySelected = isSelected || selected;
 
-    const isRTL = getRTL();
+    const isRTL = getRTL(theme);
 
     this._classNames = getClassNames(styles, {
       theme: theme!,

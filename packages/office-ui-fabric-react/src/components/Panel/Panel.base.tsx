@@ -142,7 +142,7 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
     } = this.props;
     const { isFooterSticky, visibility, id } = this.state;
     const isLeft = type === PanelType.smallFixedNear || type === PanelType.customNear ? true : false;
-    const isRTL = getRTL();
+    const isRTL = getRTL(theme);
     const isOnRightSide = isRTL ? isLeft : !isLeft;
     const headerTextId = headerText && id + '-headerText';
     const customWidthStyles = type === PanelType.custom || type === PanelType.customNear ? { width: customWidth } : {};
