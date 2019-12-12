@@ -179,7 +179,7 @@ export class PersonaCoinBase extends BaseComponent<IPersonaCoinProps, IPersonaSt
       return <Icon iconName="Help" />;
     }
 
-    const isRTL = getRTL();
+    const isRTL = getRTL(this.props.theme);
 
     imageInitials = imageInitials || getInitials(this._getText(), isRTL, allowPhoneInitials);
 

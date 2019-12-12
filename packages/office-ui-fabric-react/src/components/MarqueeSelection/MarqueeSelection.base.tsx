@@ -109,7 +109,7 @@ export class MarqueeSelectionBase extends BaseComponent<IMarqueeSelectionProps, 
       const targetRect = targetElement.getBoundingClientRect();
 
       // Check vertical scroll
-      if (getRTL()) {
+      if (getRTL(this.props.theme)) {
         if (ev.clientX < targetRect.left + targetScrollbarWidth) {
           return true;
         }

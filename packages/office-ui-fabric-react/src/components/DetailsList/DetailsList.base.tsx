@@ -270,7 +270,7 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
       shouldForceUpdates = true;
     }
 
-    if (isAllGroupsCollapsed === undefined && (newProps.groupProps && newProps.groupProps.isAllGroupsCollapsed !== undefined)) {
+    if (isAllGroupsCollapsed === undefined && newProps.groupProps && newProps.groupProps.isAllGroupsCollapsed !== undefined) {
       this.setState({
         isCollapsed: newProps.groupProps.isAllGroupsCollapsed,
         isSomeGroupExpanded: !newProps.groupProps.isAllGroupsCollapsed
@@ -468,7 +468,7 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
               componentRef={this._focusZone}
               className={classNames.focusZone}
               direction={FocusZoneDirection.vertical}
-              isInnerZoneKeystroke={isRightArrow}
+              isInnerZoneKeystroke={this.isRightArrow}
               onActiveElementChanged={this._onActiveRowChanged}
               onBlur={this._onBlur}
             >
@@ -1082,6 +1082,10 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
       onRenderHeader
     };
   }
+
+  private isRightArrow = (event: React.KeyboardEvent<HTMLElement>) => {
+    return event.which === getRTLSafeKeyCode(KeyCodes.right, this.props.theme);
+  };
 }
 
 export function buildColumns(
@@ -1122,10 +1126,6 @@ export function buildColumns(
   }
 
   return columns;
-}
-
-function isRightArrow(event: React.KeyboardEvent<HTMLElement>): boolean {
-  return event.which === getRTLSafeKeyCode(KeyCodes.right);
 }
 
 function getPaddedWidth(column: IColumn, isFirst: boolean, props: IDetailsListProps): number {
