@@ -275,7 +275,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     // (undocumented)
     protected canAddItems(): boolean;
     // (undocumented)
-    completeSuggestion(): void;
+    completeSuggestion(forceComplete?: boolean): void;
     // (undocumented)
     componentDidMount(): void;
     // (undocumented)
@@ -1647,6 +1647,7 @@ export type IBaseFloatingPickerSuggestionProps = Pick<ISuggestionsControlProps<a
 
 // @public
 export interface IBasePicker<T> {
+    completeSuggestion: (forceComplete?: boolean) => void;
     focus: () => void;
     focusInput: () => void;
     items: T[] | undefined;
@@ -1728,7 +1729,7 @@ export interface IBasePickerStyles {
 }
 
 // @public
-export interface IBasePickerSuggestionsProps<T = any> extends Pick<ISuggestionsProps<T>, 'onRenderNoResultFound' | 'suggestionsHeaderText' | 'mostRecentlyUsedHeaderText' | 'noResultsFoundText' | 'className' | 'suggestionsClassName' | 'suggestionsItemClassName' | 'searchForMoreText' | 'forceResolveText' | 'loadingText' | 'searchingText' | 'resultsFooterFull' | 'resultsFooter' | 'resultsMaximumNumber' | 'showRemoveButtons' | 'suggestionsAvailableAlertText' | 'suggestionsContainerAriaLabel'> {
+export interface IBasePickerSuggestionsProps<T = any> extends Pick<ISuggestionsProps<T>, 'onRenderNoResultFound' | 'suggestionsHeaderText' | 'mostRecentlyUsedHeaderText' | 'noResultsFoundText' | 'className' | 'suggestionsClassName' | 'suggestionsItemClassName' | 'searchForMoreText' | 'forceResolveText' | 'loadingText' | 'searchingText' | 'resultsFooterFull' | 'resultsFooter' | 'resultsMaximumNumber' | 'showRemoveButtons' | 'suggestionsAvailableAlertText' | 'suggestionsContainerAriaLabel' | 'showForceResolve'> {
 }
 
 // @public (undocumented)
