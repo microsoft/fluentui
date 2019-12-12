@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Add missing aria labels on example card dropdowns",
+  "packageName": "@uifabric/example-app-base",
+  "email": "elcraig@microsoft.com",
+  "commit": "e4511ced66739b1321ef6af6467ba545a61b9ae2",
+  "date": "2019-12-12T22:52:16.123Z"
+}
