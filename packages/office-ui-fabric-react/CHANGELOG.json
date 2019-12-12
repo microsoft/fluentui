@@ -2,6 +2,32 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Thu, 12 Dec 2019 12:29:56 GMT",
+      "tag": "office-ui-fabric-react_v7.72.0",
+      "version": "7.72.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Ensure that navigating between selected items doesn't clear modal state",
+            "author": "tmichon@microsoft.com",
+            "commit": "26017212a790aab5f921a3ee59bf66df025400b4"
+          },
+          {
+            "comment": "Stack: Adding documentation about Stack Items in the Stack overview.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "3488c442e457b72ba94e43e93047ee46ccc0076e"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Callout: Add Non Focusable Callout example",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "a7874eb0405494ad488fe8fff466bdead7a56c0c"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 11 Dec 2019 12:30:26 GMT",
       "tag": "office-ui-fabric-react_v7.71.0",
       "version": "7.71.0",
