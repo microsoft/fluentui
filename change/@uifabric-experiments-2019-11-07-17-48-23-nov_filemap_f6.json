@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "cleaning up the signal color CSS",
-  "packageName": "@uifabric/experiments",
-  "email": "caperez@microsoft.com",
-  "commit": "7a1bea699bb0615b71e42d14ead7fc85c1caecce",
-  "date": "2019-11-08T01:48:08.007Z"
-}

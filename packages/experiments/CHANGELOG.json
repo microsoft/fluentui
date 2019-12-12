@@ -2,6 +2,20 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "date": "Thu, 12 Dec 2019 12:21:54 GMT",
+      "tag": "@uifabric/experiments_v6.83.3",
+      "version": "6.83.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "cleaning up the signal color CSS",
+            "author": "caperez@microsoft.com",
+            "commit": "7a1bea699bb0615b71e42d14ead7fc85c1caecce"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 08 Nov 2019 12:22:05 GMT",
       "tag": "@uifabric/experiments_v6.83.2",
       "version": "6.83.2",

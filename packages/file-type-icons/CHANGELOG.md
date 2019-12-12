@@ -1,7 +1,13 @@
 # Change Log - @uifabric/file-type-icons
 
-This log was last generated on Fri, 06 Dec 2019 12:19:19 GMT and should not be manually modified.
+This log was last generated on Thu, 12 Dec 2019 12:21:54 GMT and should not be manually modified.
 
+## 6.8.1
+Thu, 12 Dec 2019 12:21:54 GMT
+
+### Patches
+
+- refining color and size of signal and itemcount on folder tile, updating filetype CDN salt to pull through new fluid icon (caperez@microsoft.com)
 ## 6.8.0
 Fri, 06 Dec 2019 12:19:19 GMT
 
