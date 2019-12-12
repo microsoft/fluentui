@@ -353,7 +353,7 @@ export function getStrongVariant(theme: IPartialTheme): ITheme {
     menuDivider: p.neutralTertiaryAlt,
     menuItemBackgroundHovered: p.themeTertiary,
     menuItemBackgroundPressed: p.themeLight,
-    menuItemText: p.white,
+    menuItemText: p.neutralPrimary,
     menuItemTextHovered: !fullTheme.isInverted ? p.neutralLighter : p.white
   };
 
