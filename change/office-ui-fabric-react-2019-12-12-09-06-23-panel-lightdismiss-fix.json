@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Panel: onLightDismissClick now properly prevents light dismiss",
+  "packageName": "office-ui-fabric-react",
+  "email": "mgodbolt@microsoft.com",
+  "commit": "b291e1361a914558025560c9193296202cd95d1d",
+  "date": "2019-12-12T17:06:23.328Z"
+}
