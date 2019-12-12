@@ -33,7 +33,7 @@ const GlobalClassNames = {
 export const getStyles = (props: IPersonaStyleProps): IPersonaStyles => {
   const { className, showSecondaryText, theme } = props;
 
-  const { palette, fonts } = theme;
+  const { semanticColors, fonts } = theme;
 
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
@@ -43,7 +43,7 @@ export const getStyles = (props: IPersonaStyleProps): IPersonaStyles => {
   const showSecondaryTextDefaultHeight = '16px';
 
   const sharedTextStyles: IStyle = {
-    color: palette.neutralSecondary,
+    color: semanticColors.bodySubtext,
     fontWeight: FontWeights.regular,
     fontSize: fonts.small.fontSize
   };
@@ -54,7 +54,7 @@ export const getStyles = (props: IPersonaStyleProps): IPersonaStyles => {
       theme.fonts.medium,
       normalize,
       {
-        color: palette.neutralPrimary,
+        color: semanticColors.bodyText,
         position: 'relative',
         height: personaSize.size48,
         minWidth: personaSize.size48,
@@ -212,12 +212,12 @@ export const getStyles = (props: IPersonaStyleProps): IPersonaStyles => {
       classNames.primaryText,
       noWrap,
       {
-        color: palette.neutralPrimary,
+        color: semanticColors.bodyText,
         fontWeight: FontWeights.regular,
         fontSize: fonts.medium.fontSize,
         selectors: {
           ':hover': {
-            color: palette.neutralDark
+            color: semanticColors.inputTextHovered
           }
         }
       },

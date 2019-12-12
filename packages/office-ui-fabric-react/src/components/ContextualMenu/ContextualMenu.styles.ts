@@ -15,7 +15,7 @@ export const getStyles = (props: IContextualMenuStyleProps): IContextualMenuStyl
   const { className, theme } = props;
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
-  const { palette, fonts, semanticColors, effects } = theme;
+  const { fonts, semanticColors, effects } = theme;
 
   return {
     root: [
@@ -23,7 +23,7 @@ export const getStyles = (props: IContextualMenuStyleProps): IContextualMenuStyl
       classNames.root,
       classNames.isopen,
       {
-        backgroundColor: semanticColors.bodyBackground,
+        backgroundColor: semanticColors.menuBackground,
         minWidth: '180px'
       },
       className
@@ -70,7 +70,7 @@ export const getStyles = (props: IContextualMenuStyleProps): IContextualMenuStyl
         paddingLeft: '14px',
         paddingBottom: '5px',
         paddingTop: '5px',
-        backgroundColor: palette.neutralLight
+        backgroundColor: semanticColors.menuItemBackgroundPressed
       }
     ],
     subComponentStyles: {
