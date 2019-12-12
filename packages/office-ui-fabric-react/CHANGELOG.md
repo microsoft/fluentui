@@ -1,7 +1,17 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 11 Dec 2019 12:30:26 GMT and should not be manually modified.
+This log was last generated on Thu, 12 Dec 2019 12:29:56 GMT and should not be manually modified.
 
+## 7.72.0
+Thu, 12 Dec 2019 12:29:56 GMT
+
+### Minor changes
+
+- Callout: Add Non Focusable Callout example (mgodbolt@microsoft.com)
+### Patches
+
+- Ensure that navigating between selected items doesn't clear modal state (tmichon@microsoft.com)
+- Stack: Adding documentation about Stack Items in the Stack overview. (Humberto.Morimoto@microsoft.com)
 ## 7.71.0
 Wed, 11 Dec 2019 12:30:26 GMT
 

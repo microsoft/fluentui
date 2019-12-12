@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Callout: Add Non Focusable Callout example",
-  "packageName": "office-ui-fabric-react",
-  "email": "mgodbolt@microsoft.com",
-  "commit": "a7874eb0405494ad488fe8fff466bdead7a56c0c",
-  "date": "2019-12-03T17:31:20.775Z"
-}
