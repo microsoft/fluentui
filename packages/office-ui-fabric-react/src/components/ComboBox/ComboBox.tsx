@@ -343,9 +343,13 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     } = this.props;
     const { isOpen, focused, suggestedDisplayValue } = this.state;
     this._currentVisibleValue = this._getVisibleValue();
-    const multiselectPlaceholder = multiSelect
+
+    // Single select is already accessible since the whole text is selected
+    // when focus enters the input. Since multiselect appears to clear the input
+    // it needs special accessible text
+    const multiselectAccessibleText = multiSelect
       ? this._getMultiselectDisplayString(this.state.selectedIndices, this.state.currentOptions, suggestedDisplayValue)
-      : '';
+      : undefined;
 
     const divProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties, ['onChange', 'value']);
 
@@ -355,7 +359,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     // so that the selected items don't appear to vanish. This is not ideal but it's the only reasonable way
     // to correct the behavior where the input is cleared so the user can type. If a full refactor this
     // should be removed and the multiselect combobox should behave like a picker.
-    const placeholder = focus && this.props.multiSelect && multiselectPlaceholder ? multiselectPlaceholder : placeholderProp;
+    const placeholder = focus && this.props.multiSelect && multiselectAccessibleText ? multiselectAccessibleText : placeholderProp;
 
     this._classNames = this.props.getClassNames
       ? this.props.getClassNames(theme!, !!isOpen, !!disabled, !!required, !!focused, !!allowFreeform, !!hasErrorMessage, className)
@@ -375,7 +379,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         {label && (
           <Label id={id + '-label'} disabled={disabled} required={required} htmlFor={id + '-input'} className={this._classNames.label}>
             {label}
-            <div className={this._classNames.screenReaderText}>{multiselectPlaceholder}</div>
+            {multiselectAccessibleText && <span className={this._classNames.screenReaderText}>{multiselectAccessibleText}</span>}
           </Label>
         )}
         <KeytipData keytipProps={keytipProps} disabled={disabled}>

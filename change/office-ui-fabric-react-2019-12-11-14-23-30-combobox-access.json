@@ -1,5 +1,5 @@
 {
-  "type": "patch",
+  "type": "minor",
   "comment": "Combobox: Fix multiselect options not read",
   "packageName": "office-ui-fabric-react",
   "email": "joschect@microsoft.com",
