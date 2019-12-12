@@ -52,14 +52,20 @@ const headerStackStyles = (p: IStackProps, theme: ITheme) => ({
   }
 });
 
-const codeHeader = "import { loadTheme } from 'office-ui-fabric-react';\n\n";
-const codepenHeader = 'const { loadTheme, DefaultButton, PrimaryButton, Toggle, TooltipHost } = Fabric;\n\n';
-const codepenSamples =
-  '\n\nclass Content extends React.Component {\n  public render() {\n    return (<div>' +
-  '<DefaultButton text="DefaultButton"/><PrimaryButton text="PrimaryButton"/>' +
-  '<Toggle label="Enabled"/><Toggle label="Disabled" disabled={true}/>' +
-  '</div>);\n  }\n}\n' +
-  "ReactDOM.render(<Content />,document.getElementById('content'));";
+const codepenHeader = `const { createTheme, Customizations, DefaultButton, PrimaryButton, Toggle, TooltipHost } = Fabric;\n\n`;
+const codepenSamples = `\n\nclass Content extends React.Component {
+    public render()
+    {
+      Customizations.applySettings({ theme: myTheme });
+      return (
+        <div>
+          <DefaultButton text="DefaultButton"/><PrimaryButton text="PrimaryButton"/>
+          <Toggle label="Enabled"/><Toggle label="Disabled" disabled={true}/>
+        </div>
+      );
+    }
+}
+ReactDOM.render(<Content />,document.getElementById('content'));`;
 
 export class Header extends React.Component<IHeaderProps, IHeaderState> {
   constructor(props: any) {
@@ -99,15 +105,15 @@ export class Header extends React.Component<IHeaderProps, IHeaderState> {
         >
           <span>
             <p>
-              This code block initializes the theme you have configured above and loads it using the loadTheme utility function. Calling
-              loadTheme will automatically apply the configured theming to any Fabric controls used within the same app. You can also export
-              this example to CodePen with a few component examples below.
+              This code block creates the theme you have configured above using the createTheme utility function. Calling
+              Customizations.applySettings with this theme will automatically apply the configured theming to any Fabric controls used
+              within the same app. You can also export this example to CodePen with a few component examples below.
             </p>
           </span>
           <div className={outputPanelClassName}>
             <Pivot>
               <PivotItem headerText="Code">
-                <textarea className={textAreaClassName} readOnly={true} spellCheck={false} value={codeHeader + this.state.themeAsCode} />
+                <textarea className={textAreaClassName} readOnly={true} spellCheck={false} value={this.state.themeAsCode} />
               </PivotItem>
               <PivotItem headerText="JSON">
                 <textarea className={textAreaClassName} readOnly={true} spellCheck={false} value={this.state.jsonTheme} />
@@ -144,7 +150,7 @@ export class Header extends React.Component<IHeaderProps, IHeaderState> {
     this.setState({
       jsonTheme: JSON.stringify(ThemeGenerator.getThemeAsJson(abridgedTheme), void 0, 2),
       powershellTheme: ThemeGenerator.getThemeForPowerShell(abridgedTheme),
-      themeAsCode: ThemeGenerator.getThemeAsCode(abridgedTheme)
+      themeAsCode: ThemeGenerator.getThemeAsCodeWithCreateTheme(abridgedTheme)
     });
   };
 

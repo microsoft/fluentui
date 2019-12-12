@@ -5,6 +5,11 @@ export interface ISelectableOption {
   key: string | number;
 
   /**
+   * ID attribute associated with this option
+   */
+  id?: string;
+
+  /**
    * Text to render for this option
    */
   text: string;

@@ -154,7 +154,7 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
     // (undocumented)
     protected onCopy: (ev: React.ClipboardEvent<HTMLElement>) => void;
     // (undocumented)
-    protected onInputChange: (value: string) => void;
+    protected onInputChange: (value: string, composing?: boolean | undefined) => void;
     // (undocumented)
     protected onInputClick: (ev: React.MouseEvent<HTMLInputElement | Autofill, MouseEvent>) => void;
     // (undocumented)
@@ -1528,8 +1528,8 @@ export interface IAutofillProps extends React.InputHTMLAttributes<HTMLInputEleme
     componentRef?: IRefObject<IAutofill>;
     defaultVisibleValue?: string;
     enableAutofillOnKeyPress?: KeyCodes[];
-    onInputChange?: (value: string) => string;
-    onInputValueChange?: (newValue?: string) => void;
+    onInputChange?: (value: string, composing: boolean) => string;
+    onInputValueChange?: (newValue?: string, composing?: boolean) => void;
     preventValueSelection?: boolean;
     shouldSelectFullInputValueInComponentDidUpdate?: () => boolean;
     suggestedDisplayValue?: string;
@@ -2698,6 +2698,7 @@ export interface IColumn {
     onRenderDivider?: IRenderFunction<IDetailsColumnProps>;
     sortAscendingAriaLabel?: string;
     sortDescendingAriaLabel?: string;
+    styles?: IStyleFunctionOrObject<IDetailsColumnStyleProps, IDetailsColumnStyles>;
 }
 
 // @public (undocumented)
@@ -6604,6 +6605,7 @@ export interface ISelectableOption {
     data?: any;
     disabled?: boolean;
     hidden?: boolean;
+    id?: string;
     index?: number;
     itemType?: SelectableOptionMenuItemType;
     key: string | number;
@@ -6668,6 +6670,12 @@ export interface ISelectionZoneProps extends React.ClassAttributes<SelectionZone
     selection: ISelection;
     selectionMode?: SelectionMode;
     selectionPreservedOnEmptyClick?: boolean;
+}
+
+// @public (undocumented)
+export interface ISelectionZoneState {
+    // (undocumented)
+    isModal: boolean | undefined;
 }
 
 // @public (undocumented)
@@ -8210,8 +8218,6 @@ export class OverflowSetBase extends BaseComponent<IOverflowSetProps, {}> implem
     componentDidUpdate(): void;
     // (undocumented)
     componentWillUnmount(): void;
-    // (undocumented)
-    static defaultProps: Pick<IOverflowSetProps, 'vertical' | 'role'>;
     focus(forceIntoFirstElement?: boolean): boolean;
     focusElement(childElement?: HTMLElement): boolean;
     // (undocumented)
@@ -8760,14 +8766,19 @@ export { SelectionDirection }
 export { SelectionMode }
 
 // @public (undocumented)
-export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
+export class SelectionZone extends BaseComponent<ISelectionZoneProps, ISelectionZoneState> {
+    constructor(props: ISelectionZoneProps);
     // (undocumented)
     componentDidMount(): void;
+    // (undocumented)
+    componentDidUpdate(previousProps: ISelectionZoneProps): void;
     // (undocumented)
     static defaultProps: {
         isSelectedOnFocus: boolean;
         selectionMode: SelectionMode;
     };
+    // (undocumented)
+    static getDerivedStateFromProps(nextProps: ISelectionZoneProps, prevState: ISelectionZoneState): ISelectionZoneState;
     ignoreNextFocus: () => void;
     // (undocumented)
     render(): JSX.Element;
@@ -9357,6 +9368,7 @@ export const TextView: ITextComponent['view'];
 export class ThemeGenerator {
     // (undocumented)
     static getThemeAsCode(slotRules: IThemeRules): any;
+    static getThemeAsCodeWithCreateTheme(slotRules: IThemeRules): any;
     // (undocumented)
     static getThemeAsJson(slotRules: IThemeRules): any;
     // (undocumented)
@@ -9459,7 +9471,7 @@ export class VirtualizedComboBox extends BaseComponent<IComboBoxProps, {}> imple
     // (undocumented)
     dismissMenu(): void;
     // (undocumented)
-    focus(): boolean;
+    focus(shouldOpenOnFocus?: boolean, useFocusAsync?: boolean): boolean;
     // (undocumented)
     protected _onRenderList: (props: IComboBoxProps) => JSX.Element;
     // (undocumented)

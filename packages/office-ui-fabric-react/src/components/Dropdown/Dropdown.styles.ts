@@ -200,14 +200,21 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
             { borderColor: !isOpen ? palette.neutralPrimary : palette.themePrimary },
             highContrastBorderState
           ],
-          ['&:focus .' + globalClassnames.title]: [
-            !disabled && rootHoverFocusActiveSelectorNeutralDarkMixin,
+          ['&:focus .' + globalClassnames.title]: [!disabled && rootHoverFocusActiveSelectorNeutralDarkMixin],
+
+          ['&:focus:after']: [
             {
-              borderColor:
-                palette.themePrimary /* see https://github.com/OfficeDev/office-ui-fabric-react/pull/9182 for semantic color disc */,
-              borderWidth: '2px',
-              top: '-1px',
-              left: '-1px'
+              pointerEvents: 'none',
+              content: "''",
+              position: 'absolute',
+              boxSizing: 'border-box',
+              top: '0px',
+              left: '0px',
+              width: '100%',
+              height: '100%',
+              // see https://github.com/OfficeDev/office-ui-fabric-react/pull/9182 for semantic color disc
+              border: !disabled ? `2px solid ${palette.themePrimary}` : 'none',
+              borderRadius: '2px'
             },
             highContrastItemAndTitleStateMixin
           ],

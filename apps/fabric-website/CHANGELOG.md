@@ -1,7 +1,19 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Tue, 03 Dec 2019 12:36:28 GMT and should not be manually modified.
+This log was last generated on Mon, 09 Dec 2019 12:29:23 GMT and should not be manually modified.
 
+## 7.7.4
+Mon, 09 Dec 2019 12:29:23 GMT
+
+### Patches
+
+- updated Fabric Android Date Time Picker documentation (willdo@microsoft.com)
+## 7.7.3
+Fri, 06 Dec 2019 12:33:21 GMT
+
+### Patches
+
+- Updating RTL documentation. (Humberto.Morimoto@microsoft.com)
 ## 7.7.2
 Tue, 03 Dec 2019 12:36:28 GMT
 

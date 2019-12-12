@@ -73,6 +73,7 @@ export class DialogContentBase extends BaseComponent<IDialogContentProps, {}> {
                 iconProps={{ iconName: 'Cancel' }}
                 ariaLabel={closeButtonAriaLabel}
                 onClick={onDismiss as any}
+                title={closeButtonAriaLabel}
               />
             )}
           </div>

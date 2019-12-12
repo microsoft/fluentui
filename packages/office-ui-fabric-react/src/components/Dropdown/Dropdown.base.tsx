@@ -109,6 +109,7 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
     if (this.props.multiSelect) {
       const selectedKeys = props.defaultSelectedKeys !== undefined ? props.defaultSelectedKeys : props.selectedKeys;
       selectedIndices = this._getSelectedIndexes(props.options, selectedKeys);
+      this._sizePosCache.updateOptions(props.options);
     } else {
       const selectedKey = props.defaultSelectedKey !== undefined ? props.defaultSelectedKey : props.selectedKey;
       selectedIndices = this._getSelectedIndexes(props.options, selectedKey!);
@@ -539,7 +540,62 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
   private _onRenderList = (props: ISelectableDroppableTextProps<IDropdown, HTMLDivElement>): JSX.Element => {
     const { onRenderItem = this._onRenderItem } = props;
 
-    return <>{props.options.map((item: any, index: number) => onRenderItem({ ...item, index }, this._onRenderItem))}</>;
+    let queue: { id?: string; items: JSX.Element[] } = { items: [] };
+    let renderedList: JSX.Element[] = [];
+
+    const emptyQueue = (): void => {
+      const newGroup = queue.id
+        ? [
+            <div role="group" key={queue.id} aria-labelledby={queue.id}>
+              {queue.items}
+            </div>
+          ]
+        : queue.items;
+
+      renderedList = [...renderedList, ...newGroup];
+      // Flush items and id
+      queue = { items: [] };
+    };
+
+    const placeRenderedOptionIntoQueue = (item: IDropdownOption, index: number) => {
+      /*
+        Case Header
+          empty queue if it's not already empty
+          ensure unique ID for header and set queue ID
+          push header into queue
+        Case Divider
+          push divider into queue if not first item
+          empty queue if not already empty
+        Default
+          push item into queue
+      */
+      switch (item.itemType) {
+        case SelectableOptionMenuItemType.Header:
+          queue.items.length > 0 && emptyQueue();
+
+          const id = this._id + item.key;
+          queue.items.push(onRenderItem({ id, ...item, index }, this._onRenderItem)!);
+          queue.id = id;
+          break;
+        case SelectableOptionMenuItemType.Divider:
+          index > 0 && queue.items.push(onRenderItem({ ...item, index }, this._onRenderItem)!);
+
+          queue.items.length > 0 && emptyQueue();
+          break;
+        default:
+          queue.items.push(onRenderItem({ ...item, index }, this._onRenderItem)!);
+      }
+    };
+
+    // Place options into the queue. Queue will be emptied anytime a Header or Divider is encountered
+    props.options.forEach((item: IDropdownOption, index: number) => {
+      placeRenderedOptionIntoQueue(item, index);
+    });
+
+    // Push remaining items into all renderedList
+    queue.items.length > 0 && emptyQueue();
+
+    return <>{renderedList}</>;
   };
 
   private _onRenderItem = (item: IDropdownOption): JSX.Element | null => {
@@ -563,9 +619,9 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
 
   private _renderHeader(item: IDropdownOption): JSX.Element {
     const { onRenderOption = this._onRenderOption } = this.props;
-    const { key } = item;
+    const { key, id } = item;
     return (
-      <div key={key} className={this._classNames.dropdownItemHeader}>
+      <div id={id} key={key} className={this._classNames.dropdownItemHeader}>
         {onRenderOption(item, this._onRenderOption)}
       </div>
     );
@@ -609,6 +665,8 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
         aria-selected={isItemSelected ? 'true' : 'false'}
         ariaLabel={item.ariaLabel}
         title={title}
+        aria-posinset={this._sizePosCache.positionInSet(item.index)}
+        aria-setsize={this._sizePosCache.optionSetSize}
       >
         {onRenderOption(item, this._onRenderOption)}
       </CommandButton>
@@ -633,6 +691,8 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
         aria-selected={isItemSelected ? 'true' : 'false'}
         checked={isItemSelected}
         styles={multiSelectItemStyles}
+        ariaPositionInSet={this._sizePosCache.positionInSet(item.index)}
+        ariaSetSize={this._sizePosCache.optionSetSize}
       />
     );
   };

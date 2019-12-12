@@ -2,6 +2,20 @@
   "name": "@uifabric/react-cards",
   "entries": [
     {
+      "date": "Thu, 12 Dec 2019 12:29:56 GMT",
+      "tag": "@uifabric/react-cards_v0.109.2",
+      "version": "0.109.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Card: Adding keyboard navigation and interaction on clickable Cards and fixing example styling.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "60b4876d3aea384d39e800585ba8698033e3eafc"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 16 Oct 2019 12:33:21 GMT",
       "tag": "@uifabric/react-cards_v0.109.1",
       "version": "0.109.1",

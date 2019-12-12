@@ -1,7 +1,7 @@
 /** @jsx withSlots */
 import * as React from 'react';
 import { withSlots, getSlots } from '@uifabric/foundation';
-import { getNativeProps, htmlElementProperties, warn } from '@uifabric/utilities';
+import { getNativeProps, htmlElementProperties, warn, KeyCodes } from '@uifabric/utilities';
 import { Stack, IStackComponent } from 'office-ui-fabric-react';
 
 import { ICardComponent, ICardProps, ICardSlots, ICardTokens } from './Card.types';
@@ -15,7 +15,7 @@ export const CardView: ICardComponent['view'] = props => {
     root: Stack
   });
 
-  const { children, styles, tokens, horizontal, ...rest } = props;
+  const { children, styles, tokens, horizontal, onClick, onKeyDown, ...rest } = props;
 
   const nativeProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(rest, htmlElementProperties);
 
@@ -81,14 +81,29 @@ export const CardView: ICardComponent['view'] = props => {
     }
   );
 
+  const _onKeyDown = (ev?: React.KeyboardEvent<HTMLElement>): void => {
+    if (onKeyDown) {
+      onKeyDown(ev);
+    } else if (onClick && ev && (ev.which === KeyCodes.enter || ev.which === KeyCodes.space)) {
+      // If onKeyDown is undefined and onClick has been passed, then replicate a Button's behavior by triggering the onClick function on
+      // pressing down the 'Enter' and 'Space' keys.
+      onClick();
+      ev.preventDefault();
+    }
+  };
+
   return (
     <Slots.root
+      onClick={onClick}
+      onKeyDown={_onKeyDown}
+      role={onClick ? 'button' : 'presentation'}
+      tabIndex={onClick ? 0 : -1}
       {...nativeProps}
       horizontal={horizontal}
-      tokens={tokens as IStackComponent['tokens']}
-      verticalFill
-      verticalAlign="start"
       horizontalAlign={horizontal ? 'start' : 'stretch'}
+      tokens={tokens as IStackComponent['tokens']}
+      verticalAlign="start"
+      verticalFill
     >
       {cardChildren}
     </Slots.root>

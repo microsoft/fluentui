@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Nav: Allow falsy values of title to be passed into items",
+  "packageName": "office-ui-fabric-react",
+  "email": "mgodbolt@microsoft.com",
+  "commit": "a4845e8b662cbaedbef12a80169e05a349d3ede2",
+  "date": "2019-12-11T22:34:16.848Z"
+}

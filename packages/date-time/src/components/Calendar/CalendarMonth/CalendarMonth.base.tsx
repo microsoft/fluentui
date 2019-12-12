@@ -164,8 +164,8 @@ export class CalendarMonthBase extends BaseComponent<ICalendarMonthProps, ICalen
             onClick={this._onHeaderSelect}
             onKeyDown={this._onButtonKeyDown(this._onHeaderSelect)}
             aria-label={headerAriaLabel}
-            data-is-focusable={!!onHeaderSelect}
-            tabIndex={!!onHeaderSelect ? 0 : -1} // prevent focus if there's no action for the button
+            data-is-focusable={!!onHeaderSelect || !yearPickerHidden}
+            tabIndex={!!onHeaderSelect || !yearPickerHidden ? 0 : -1}
             type="button"
             aria-atomic={true}
             aria-live="polite" // if this component rerenders when text changes, aria-live will not be announced, so make key consistent

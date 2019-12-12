@@ -35,8 +35,8 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
           content: (
             <>
               <p>
-                With the reading direction set to RTL and Fabric's RTL stylesheet referenced (see above), directional icons will
-                automatically be substituted. These pairs of icons will be swapped when viewed on RTL pages:
+                With the reading direction set to RTL, Fabric Core uses mixins to add RTL-specific rules which will automatically substitute
+                directional icons. The following pairs of icons will be swapped when viewed on RTL pages:
               </p>
               <ul className={styles.directionalIcons}>
                 {directionalIconsData.map((pair, pairIndex) => (

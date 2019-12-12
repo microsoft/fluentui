@@ -1,7 +1,65 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 04 Dec 2019 12:32:13 GMT and should not be manually modified.
+This log was last generated on Thu, 12 Dec 2019 12:29:56 GMT and should not be manually modified.
 
+## 7.72.0
+Thu, 12 Dec 2019 12:29:56 GMT
+
+### Minor changes
+
+- Callout: Add Non Focusable Callout example (mgodbolt@microsoft.com)
+### Patches
+
+- Ensure that navigating between selected items doesn't clear modal state (tmichon@microsoft.com)
+- Stack: Adding documentation about Stack Items in the Stack overview. (Humberto.Morimoto@microsoft.com)
+## 7.71.0
+Wed, 11 Dec 2019 12:30:26 GMT
+
+### Minor changes
+
+- Only update ExtendedPicker state on input events that are not mid-composition  (mahuangh@microsoft.com)
+- Dropdown: Render options with header in group so that narrator associates group with header (mgodbolt@microsoft.com)
+- Autocomplete: Allow value to be overriden (mgodbolt@microsoft.com)
+### Patches
+
+- Combobox: multi-select does not clear index on selection. Selected and checked properly supported (mgodbolt@microsoft.com)
+- fix contextual menu split button cannot be read by screen reader bug (xgao@microsoft.com)
+## 7.70.0
+Tue, 10 Dec 2019 12:34:47 GMT
+
+### Minor changes
+
+- DetailsList: Pass column styles to DetailsColumn (mgodbolt@microsoft.com)
+### Patches
+
+- Dialog: Use closeButtonAriaLabel for close button tooltip (v-ragor@microsoft.com)
+- Theme Designer: use createTheme and Customizations.applySettings instead of loadTheme (aneeshak@microsoft.com)
+- Screen Reader is reading wrong column header with associated cell value for single-select detail list (xgao@microsoft.com)
+- Button: fix size mismatch between primary and default buttons (xgao@microsoft.com)
+## 7.69.3
+Mon, 09 Dec 2019 12:29:23 GMT
+
+### Patches
+
+- OverflowSet: Vertical layout now uses menu instead of menubar (mgodbolt@microsoft.com)
+## 7.69.2
+Fri, 06 Dec 2019 12:33:21 GMT
+
+### Patches
+
+- Fixed after element misalignment (betrue@microsoft.com)
+- Dropdown: fix misalignment (betrue@microsoft.com)
+- DocumentCard: Adding explicit focus styles (mgodbolt@microsoft.com)
+- Slider: getAriaValueText should return value if ariaValueText isn't supplied (mgodbolt@microsoft.com)
+- updated snapshots (betrue@microsoft.com)
+- Correct SpinButton default max value in documentation (xgao@microsoft.com)
+## 7.69.1
+Thu, 05 Dec 2019 12:34:16 GMT
+
+### Patches
+
+- ComboBox: empty errorMessage shouldn't create white space (aneeshak@microsoft.com)
+- VirtualizedComboBox: Implement focus(shouldOpenOnFocus, asyncFocus) (aneeshak@microsoft.com)
 ## 7.69.0
 Wed, 04 Dec 2019 12:32:13 GMT
 

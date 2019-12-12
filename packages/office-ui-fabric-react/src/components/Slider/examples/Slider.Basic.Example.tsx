@@ -15,15 +15,7 @@ export class SliderBasicExample extends React.Component<{}, ISliderBasicExampleS
 
     return (
       <Stack tokens={stackTokens} styles={{ root: { maxWidth: 300 } }}>
-        <Slider
-          label="Basic example"
-          min={1}
-          max={5}
-          step={1}
-          defaultValue={2}
-          showValue={true}
-          onChange={(value: number) => console.log(value)}
-        />
+        <Slider />
         <Slider
           label="Snapping slider example"
           min={0}
@@ -42,7 +34,13 @@ export class SliderBasicExample extends React.Component<{}, ISliderBasicExampleS
           onChange={(value: number) => this.setState({ value })}
           showValue={true}
         />
-        <Slider label="Example with formatted value" max={100} valueFormat={(value: number) => `${value}%`} showValue={true} />
+        <Slider
+          label="Example with formatted value"
+          max={100}
+          ariaValueText={(value: number) => `${value} percent`}
+          valueFormat={(value: number) => `${value}%`}
+          showValue={true}
+        />
         <Slider label="Origin from zero" min={-5} max={5} step={1} defaultValue={2} showValue originFromZero />
       </Stack>
     );

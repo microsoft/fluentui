@@ -1,7 +1,13 @@
 # Change Log - @uifabric/file-type-icons
 
-This log was last generated on Thu, 14 Nov 2019 12:30:52 GMT and should not be manually modified.
+This log was last generated on Fri, 06 Dec 2019 12:33:21 GMT and should not be manually modified.
 
+## 7.2.0
+Fri, 06 Dec 2019 12:33:21 GMT
+
+### Minor changes
+
+- Added stream to file icon types (azbanduk@microsoft.com)
 ## 7.1.4
 Thu, 14 Nov 2019 12:30:52 GMT
 
