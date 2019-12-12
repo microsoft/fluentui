@@ -276,7 +276,6 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
   };
 
   private _shouldListenForOuterClick(props: IPanelProps): boolean {
-    console.log(props);
     return !!props.isBlocking && !!props.isOpen;
   }
 
