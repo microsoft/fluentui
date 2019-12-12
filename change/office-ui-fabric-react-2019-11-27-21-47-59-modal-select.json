@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Ensure that navigating between selected items doesn't clear modal state",
+  "packageName": "office-ui-fabric-react",
+  "email": "tmichon@microsoft.com",
+  "commit": "26017212a790aab5f921a3ee59bf66df025400b4",
+  "date": "2019-11-28T05:47:59.136Z"
+}

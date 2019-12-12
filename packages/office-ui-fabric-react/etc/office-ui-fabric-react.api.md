@@ -6673,6 +6673,12 @@ export interface ISelectionZoneProps extends React.ClassAttributes<SelectionZone
 }
 
 // @public (undocumented)
+export interface ISelectionZoneState {
+    // (undocumented)
+    isModal: boolean | undefined;
+}
+
+// @public (undocumented)
 export interface ISeparator {
 }
 
@@ -8754,14 +8760,19 @@ export { SelectionDirection }
 export { SelectionMode }
 
 // @public (undocumented)
-export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
+export class SelectionZone extends BaseComponent<ISelectionZoneProps, ISelectionZoneState> {
+    constructor(props: ISelectionZoneProps);
     // (undocumented)
     componentDidMount(): void;
+    // (undocumented)
+    componentDidUpdate(previousProps: ISelectionZoneProps): void;
     // (undocumented)
     static defaultProps: {
         isSelectedOnFocus: boolean;
         selectionMode: SelectionMode;
     };
+    // (undocumented)
+    static getDerivedStateFromProps(nextProps: ISelectionZoneProps, prevState: ISelectionZoneState): ISelectionZoneState;
     ignoreNextFocus: () => void;
     // (undocumented)
     render(): JSX.Element;
