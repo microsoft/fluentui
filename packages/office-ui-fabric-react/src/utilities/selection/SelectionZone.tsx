@@ -7,7 +7,8 @@ import {
   getParent,
   getDocument,
   getWindow,
-  isElementTabbable
+  isElementTabbable,
+  css
 } from '../../Utilities';
 import { ISelection, SelectionMode, IObjectWithKey } from './interfaces';
 
@@ -136,6 +137,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, ISelection
 
     const { selection } = this.props;
 
+    // Reflect the initial modal state of selection into the state.
     const isModal = selection.isModal && selection.isModal();
 
     this.state = {
@@ -152,13 +154,18 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, ISelection
     this._events.on(document.body, 'touchstart', this._onTouchStartCapture, true);
     this._events.on(document.body, 'touchend', this._onTouchStartCapture, true);
 
+    // Subscribe to the selection to keep modal state updated.
     this._events.on(this.props.selection, 'change', this._onSelectionChange);
   }
 
   public render(): JSX.Element {
+    const { isModal } = this.state;
+
     return (
       <div
-        className="ms-SelectionZone"
+        className={css('ms-SelectionZone', {
+          'ms-SelectionZone--modal': !!isModal
+        })}
         ref={this._root}
         onKeyDown={this._onKeyDown}
         onMouseDown={this._onMouseDown}
@@ -169,7 +176,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, ISelection
         onContextMenu={this._onContextMenu}
         onMouseDownCapture={this._onMouseDownCapture}
         onFocusCapture={this._onFocus}
-        data-selection-is-modal={this.state.isModal ? true : undefined}
+        data-selection-is-modal={isModal ? true : undefined}
       >
         {this.props.children}
       </div>
@@ -180,6 +187,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, ISelection
     const { selection } = this.props;
 
     if (selection !== previousProps.selection) {
+      // Whenever selection changes, update the subscripton to keep modal state updated.
       this._events.off(previousProps.selection);
       this._events.on(selection, 'change', this._onSelectionChange);
     }
