@@ -120,7 +120,7 @@ export const getArrowButtonStyles = memoizeFunction(
 
 export const getStyles = memoizeFunction(
   (theme: ITheme, customStyles?: Partial<ISpinButtonStyles>): ISpinButtonStyles => {
-    const { semanticColors, effects, fonts } = theme;
+    const { palette, semanticColors, effects, fonts } = theme;
 
     const SpinButtonRootBorderColor = semanticColors.inputBorder;
     const SpinButtonRootBackgroundColor = semanticColors.inputBackground;
@@ -128,7 +128,7 @@ export const getStyles = memoizeFunction(
     const SpinButtonRootBorderColorFocused = semanticColors.inputFocusBorderAlt;
 
     const SpinButtonInputTextColor = semanticColors.inputText;
-    const SpinButtonInputTextColorSelected = semanticColors.inputText;
+    const SpinButtonInputTextColorSelected = palette.white;
     const SpinButtonInputBackgroundColorSelected = semanticColors.inputBackgroundChecked;
 
     const SpinButtonIconDisabledColor = semanticColors.disabledText;
