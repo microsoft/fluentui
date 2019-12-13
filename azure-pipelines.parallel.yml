@@ -7,8 +7,7 @@ trigger:
 variables:
   - group: fabric-variables
 
-pool:
-  vmImage: 'Ubuntu 16.04'
+pool: 'Docker Test'
 
 jobs:
   - job: Build
