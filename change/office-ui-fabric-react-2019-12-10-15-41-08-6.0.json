@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Autocomplete: Allow value to be overriden",
+  "packageName": "office-ui-fabric-react",
+  "email": "mgodbolt@microsoft.com",
+  "commit": "a8ac7ed2ae97ebcffffa0a16ad03c7be28d8a665",
+  "date": "2019-12-10T23:41:08.209Z"
+}

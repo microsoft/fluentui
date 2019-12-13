@@ -270,13 +270,10 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
                   aria-expanded={!!this.state.suggestionsVisible}
                   aria-haspopup="true"
                   aria-describedby={items.length > 0 ? this._ariaMap.selectedItems : undefined}
-                  autoCapitalize="off"
-                  autoComplete="off"
                   role={'combobox'}
                   disabled={disabled}
                   aria-controls={`${suggestionsAvailable} ${selectedSuggestionAlertId}` || undefined}
                   aria-owns={suggestionsAvailable || undefined}
-                  aria-autocomplete={'both'}
                   onInputChange={this.props.onInputChange}
                 />
               )}
@@ -914,9 +911,6 @@ export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BaseP
               suggestedDisplayValue={suggestedDisplayValue}
               aria-activedescendant={this.getActiveDescendant()}
               aria-expanded={!!this.state.suggestionsVisible}
-              aria-haspopup="true"
-              autoCapitalize="off"
-              autoComplete="off"
               role="combobox"
               disabled={disabled}
               aria-controls={`${suggestionsAvailable} ${selectedSuggestionAlertId}` || undefined}
