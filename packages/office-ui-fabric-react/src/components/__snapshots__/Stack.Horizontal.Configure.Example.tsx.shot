@@ -3156,7 +3156,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                 ms-Dropdown-title
                 {
                   background-color: #ffffff;
-                  border-color: #605e5c;
+                  border-color: #8a8886;
                   border-radius: 2px;
                   border-style: solid;
                   border-width: 1px;
@@ -3386,7 +3386,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                 ms-Dropdown-title
                 {
                   background-color: #ffffff;
-                  border-color: #605e5c;
+                  border-color: #8a8886;
                   border-radius: 2px;
                   border-style: solid;
                   border-width: 1px;
@@ -3684,7 +3684,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                   align-items: stretch;
                   background: #ffffff;
                   border-radius: 2px;
-                  border: 1px solid #605e5c;
+                  border: 1px solid #8a8886;
                   box-shadow: none;
                   box-sizing: border-box;
                   cursor: text;

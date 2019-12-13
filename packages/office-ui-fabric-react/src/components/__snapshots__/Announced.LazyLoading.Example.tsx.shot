@@ -222,7 +222,7 @@ exports[`Component Examples renders Announced.LazyLoading.Example.tsx correctly 
               width: 0px;
             }
             @media screen and (-ms-high-contrast: active){& {
-              background-color: WindowText;
+              background-color: highlight;
             }
         role="progressbar"
         style={

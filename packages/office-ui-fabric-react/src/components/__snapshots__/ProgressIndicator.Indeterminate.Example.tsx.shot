@@ -66,7 +66,8 @@ exports[`Component Examples renders ProgressIndicator.Indeterminate.Example.tsx 
             width: 0px;
           }
           @media screen and (-ms-high-contrast: active){& {
-            background-color: WindowText;
+            background-color: highlight;
+            background: highlight;
           }
       role="progressbar"
       style={
