@@ -80,6 +80,7 @@ export const DetailsRowFields: React.FunctionComponent<IDetailsRowFieldsProps> =
           <div
             key={key}
             role={column.isRowHeader ? 'rowheader' : 'gridcell'}
+            aria-readonly
             aria-colindex={columnIndex + columnStartIndex + 1}
             className={css(
               column.className,

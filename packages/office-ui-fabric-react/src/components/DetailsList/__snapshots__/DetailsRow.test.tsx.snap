@@ -1991,6 +1991,7 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
   >
     <div
       aria-colindex={2}
+      aria-readonly={true}
       className=
           ms-DetailsRow-cell
           {
@@ -2047,6 +2048,7 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
     </div>
     <div
       aria-colindex={3}
+      aria-readonly={true}
       className=
           ms-DetailsRow-cell
           {
@@ -2103,6 +2105,7 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
     </div>
     <div
       aria-colindex={4}
+      aria-readonly={true}
       className=
           ms-DetailsRow-cell
           {

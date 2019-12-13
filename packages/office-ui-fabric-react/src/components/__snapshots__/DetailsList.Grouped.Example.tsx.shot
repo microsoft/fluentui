@@ -1952,6 +1952,7 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                     >
                                       <div
                                         aria-colindex={2}
+                                        aria-readonly={true}
                                         className=
                                             ms-DetailsRow-cell
                                             {
@@ -2012,6 +2013,7 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                       </div>
                                       <div
                                         aria-colindex={3}
+                                        aria-readonly={true}
                                         className=
                                             ms-DetailsRow-cell
                                             {
@@ -2419,6 +2421,7 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                     >
                                       <div
                                         aria-colindex={2}
+                                        aria-readonly={true}
                                         className=
                                             ms-DetailsRow-cell
                                             {
@@ -2479,6 +2482,7 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                       </div>
                                       <div
                                         aria-colindex={3}
+                                        aria-readonly={true}
                                         className=
                                             ms-DetailsRow-cell
                                             {
@@ -3690,6 +3694,7 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                     >
                                       <div
                                         aria-colindex={2}
+                                        aria-readonly={true}
                                         className=
                                             ms-DetailsRow-cell
                                             {
@@ -3750,6 +3755,7 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                       </div>
                                       <div
                                         aria-colindex={3}
+                                        aria-readonly={true}
                                         className=
                                             ms-DetailsRow-cell
                                             {
@@ -4157,6 +4163,7 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                     >
                                       <div
                                         aria-colindex={2}
+                                        aria-readonly={true}
                                         className=
                                             ms-DetailsRow-cell
                                             {
@@ -4217,6 +4224,7 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                       </div>
                                       <div
                                         aria-colindex={3}
+                                        aria-readonly={true}
                                         className=
                                             ms-DetailsRow-cell
                                             {
@@ -4624,6 +4632,7 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                     >
                                       <div
                                         aria-colindex={2}
+                                        aria-readonly={true}
                                         className=
                                             ms-DetailsRow-cell
                                             {
@@ -4684,6 +4693,7 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                       </div>
                                       <div
                                         aria-colindex={3}
+                                        aria-readonly={true}
                                         className=
                                             ms-DetailsRow-cell
                                             {
