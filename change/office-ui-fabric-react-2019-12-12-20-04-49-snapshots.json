@@ -1,0 +1,8 @@
+{
+  "type": "none",
+  "comment": "Fix snapshot update conflict",
+  "packageName": "office-ui-fabric-react",
+  "email": "elcraig@microsoft.com",
+  "commit": "d962f8d41dccb634affb27fa23eabd9a61b0be0f",
+  "date": "2019-12-13T04:04:49.064Z"
+}
