@@ -1,7 +1,13 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Thu, 28 Nov 2019 12:32:23 GMT and should not be manually modified.
+This log was last generated on Fri, 13 Dec 2019 12:30:51 GMT and should not be manually modified.
 
+## 7.10.3
+Fri, 13 Dec 2019 12:30:51 GMT
+
+### Patches
+
+- Add missing aria labels on example card dropdowns (elcraig@microsoft.com)
 ## 7.10.2
 Thu, 28 Nov 2019 12:32:23 GMT
 

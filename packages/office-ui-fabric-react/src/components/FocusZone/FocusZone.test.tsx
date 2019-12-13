@@ -1624,6 +1624,63 @@ describe('FocusZone', () => {
     expect(lastFocusedElement).toBe(buttonB);
   });
 
+  it('Focus is not affected by readOnly inputs with values', () => {
+    const isInnerZoneKeystroke = (e: React.KeyboardEvent<HTMLElement>): boolean => e.which === KeyCodes.enter;
+
+    const component = ReactTestUtils.renderIntoDocument(
+      <div {...{ onFocusCapture: _onFocus }}>
+        <FocusZone isInnerZoneKeystroke={isInnerZoneKeystroke}>
+          <input className="a" />
+          <input readOnly defaultValue="foo" className="b" />
+          <input className="c" />
+        </FocusZone>
+      </div>
+    );
+
+    const focusZone = ReactDOM.findDOMNode((component as unknown) as React.ReactInstance)!.firstChild as Element;
+
+    const inputA = focusZone.querySelector('.a') as HTMLElement;
+    const inputB = focusZone.querySelector('.b') as HTMLElement;
+    const inputC = focusZone.querySelector('.c') as HTMLElement;
+
+    setupElement(inputA, {
+      clientRect: {
+        top: 0,
+        bottom: 20,
+        left: 0,
+        right: 20
+      }
+    });
+
+    setupElement(inputB, {
+      clientRect: {
+        top: 0,
+        bottom: 20,
+        left: 20,
+        right: 40
+      }
+    });
+
+    setupElement(inputC, {
+      clientRect: {
+        top: 0,
+        bottom: 20,
+        left: 40,
+        right: 60
+      }
+    });
+
+    ReactTestUtils.Simulate.focus(inputB);
+    // Pressing right should go to c.
+    ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.right });
+    expect(lastFocusedElement).toBe(inputC);
+
+    ReactTestUtils.Simulate.focus(inputB);
+    // Pressing left from b should go back to a
+    ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.left });
+    expect(lastFocusedElement).toBe(inputA);
+  });
+
   it('removes tab-index of previous element when another one is selected (mouse & keyboard)', () => {
     let focusZone: FocusZone | null = null;
     let buttonA: HTMLButtonElement | null = null;
