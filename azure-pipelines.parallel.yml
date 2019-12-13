@@ -18,6 +18,13 @@ jobs:
         versionSpec: '10.x'
       displayName: 'Install Node.js'
 
+    - task: geeklearningio.gl-vsts-tasks-yarn.yarn-installer-task.YarnInstaller@3
+      displayName: 'Use Yarn 1.19.x'
+      inputs:
+        versionSpec: 1.19.x
+        checkLatest: true
+        includePrerelease: false
+
     - script: |
         yarn
       displayName: yarn
