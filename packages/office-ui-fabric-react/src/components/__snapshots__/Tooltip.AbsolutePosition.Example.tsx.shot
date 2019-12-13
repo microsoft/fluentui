@@ -1,12 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Component Examples renders Tooltip.Interactive.Example.tsx correctly 1`] = `
-<div>
+exports[`Component Examples renders Tooltip.AbsolutePosition.Example.tsx correctly 1`] = `
+<div
+  style={
+    Object {
+      "minHeight": 50,
+    }
+  }
+>
   <div
     className=
         ms-TooltipHost
         {
-          display: inline-block;
+          display: inline;
         }
     onBlurCapture={[Function]}
     onFocusCapture={[Function]}
@@ -16,7 +22,7 @@ exports[`Component Examples renders Tooltip.Interactive.Example.tsx correctly 1`
   >
     <button
       aria-describedby="tooltip0"
-      aria-labelledby="id__2"
+      aria-labelledby="id__3"
       className=
           ms-Button
           ms-Button--default
@@ -34,13 +40,14 @@ exports[`Component Examples renders Tooltip.Interactive.Example.tsx correctly 1`
             font-size: 14px;
             font-weight: 400;
             height: 32px;
+            left: 200px;
             min-width: 80px;
             outline: transparent;
             padding-bottom: 0;
             padding-left: 16px;
             padding-right: 16px;
             padding-top: 0;
-            position: relative;
+            position: absolute;
             text-align: center;
             text-decoration: none;
             user-select: none;
@@ -86,6 +93,7 @@ exports[`Component Examples renders Tooltip.Interactive.Example.tsx correctly 1`
             color: #201f1e;
           }
       data-is-focusable={true}
+      id="targetButton1"
       onClick={[Function]}
       onKeyDown={[Function]}
       onKeyPress={[Function]}
@@ -126,9 +134,9 @@ exports[`Component Examples renders Tooltip.Interactive.Example.tsx correctly 1`
                   margin-right: 4px;
                   margin-top: 0;
                 }
-            id="id__2"
+            id="id__3"
           >
-            Interact with my tooltip
+            Hover over me
           </span>
         </span>
       </span>
