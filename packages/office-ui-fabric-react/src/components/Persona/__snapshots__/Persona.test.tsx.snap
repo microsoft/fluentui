@@ -43,6 +43,7 @@ exports[`Persona renders Persona children correctly 1`] = `
           font-size: 14px;
           font-weight: 400;
         }
+    role="presentation"
   >
     <div
       className=
@@ -54,6 +55,7 @@ exports[`Persona renders Persona children correctly 1`] = `
             text-align: center;
             width: 48px;
           }
+      role="presentation"
     >
       <div
         aria-hidden="true"
@@ -223,6 +225,7 @@ exports[`Persona renders Persona correctly with UnknownPersona coin 1`] = `
           font-size: 14px;
           font-weight: 400;
         }
+    role="presentation"
   >
     <div
       className=
@@ -234,6 +237,7 @@ exports[`Persona renders Persona correctly with UnknownPersona coin 1`] = `
             text-align: center;
             width: 48px;
           }
+      role="presentation"
     >
       <div
         aria-hidden="true"
@@ -414,6 +418,7 @@ exports[`Persona renders Persona correctly with image 1`] = `
           font-size: 14px;
           font-weight: 400;
         }
+    role="presentation"
   >
     <div
       className=
@@ -425,6 +430,7 @@ exports[`Persona renders Persona correctly with image 1`] = `
             text-align: center;
             width: 48px;
           }
+      role="presentation"
     >
       <div
         className=
@@ -615,6 +621,7 @@ exports[`Persona renders Persona correctly with initials 1`] = `
           font-size: 14px;
           font-weight: 400;
         }
+    role="presentation"
   >
     <div
       className=
@@ -626,6 +633,7 @@ exports[`Persona renders Persona correctly with initials 1`] = `
             text-align: center;
             width: 48px;
           }
+      role="presentation"
     >
       <div
         aria-hidden="true"
@@ -792,6 +800,7 @@ exports[`Persona renders Persona correctly with no props 1`] = `
           font-size: 14px;
           font-weight: 400;
         }
+    role="presentation"
   >
     <div
       className=
@@ -803,6 +812,7 @@ exports[`Persona renders Persona correctly with no props 1`] = `
             text-align: center;
             width: 48px;
           }
+      role="presentation"
     >
       <div
         aria-hidden="true"
@@ -969,6 +979,7 @@ exports[`Persona renders Persona which calls onRenderCoin callback without image
           font-size: 14px;
           font-weight: 400;
         }
+    role="presentation"
   >
     <div
       className=
@@ -980,6 +991,7 @@ exports[`Persona renders Persona which calls onRenderCoin callback without image
             text-align: center;
             width: 100px;
           }
+      role="presentation"
     >
       <div
         aria-hidden="true"
@@ -1067,6 +1079,7 @@ exports[`Persona renders Persona which calls onRenderCoin callback without image
               top: 1px;
               width: calc(100% - 2px);
             }
+        role="presentation"
       >
         <i
           aria-hidden={true}
@@ -1457,6 +1470,7 @@ exports[`Persona renders correctly with onRender callback 1`] = `
           font-size: 14px;
           font-weight: 400;
         }
+    role="presentation"
   >
     <div
       className=
@@ -1468,6 +1482,7 @@ exports[`Persona renders correctly with onRender callback 1`] = `
             text-align: center;
             width: 100px;
           }
+      role="presentation"
     >
       <div
         className=
@@ -1576,6 +1591,7 @@ exports[`Persona renders correctly with onRender callback 1`] = `
               top: 1px;
               width: calc(100% - 2px);
             }
+        role="presentation"
       >
         <i
           aria-hidden={true}

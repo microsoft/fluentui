@@ -178,6 +178,7 @@ exports[`Component Examples renders Facepile.Basic.Example.tsx correctly 1`] = `
                       font-size: 14px;
                       font-weight: 400;
                     }
+                role="presentation"
               >
                 <div
                   className=
@@ -189,6 +190,7 @@ exports[`Component Examples renders Facepile.Basic.Example.tsx correctly 1`] = `
                         text-align: center;
                         width: 32px;
                       }
+                  role="presentation"
                 >
                   <div
                     className=
@@ -264,6 +266,7 @@ exports[`Component Examples renders Facepile.Basic.Example.tsx correctly 1`] = `
                           background-color: WindowText;
                           border-color: Window;
                         }
+                    role="presentation"
                   />
                 </div>
               </div>
@@ -324,6 +327,7 @@ exports[`Component Examples renders Facepile.Basic.Example.tsx correctly 1`] = `
                     font-size: 14px;
                     font-weight: 400;
                   }
+              role="presentation"
             >
               <div
                 className=
@@ -335,6 +339,7 @@ exports[`Component Examples renders Facepile.Basic.Example.tsx correctly 1`] = `
                       text-align: center;
                       width: 32px;
                     }
+                role="presentation"
               >
                 <div
                   className=
@@ -410,6 +415,7 @@ exports[`Component Examples renders Facepile.Basic.Example.tsx correctly 1`] = `
                         background-color: Highlight;
                         border-color: Window;
                       }
+                  role="presentation"
                 />
               </div>
             </div>
@@ -525,6 +531,7 @@ exports[`Component Examples renders Facepile.Basic.Example.tsx correctly 1`] = `
                       font-size: 14px;
                       font-weight: 400;
                     }
+                role="presentation"
               >
                 <div
                   className=
@@ -536,6 +543,7 @@ exports[`Component Examples renders Facepile.Basic.Example.tsx correctly 1`] = `
                         text-align: center;
                         width: 32px;
                       }
+                  role="presentation"
                 >
                   <div
                     aria-hidden="true"
@@ -605,6 +613,7 @@ exports[`Component Examples renders Facepile.Basic.Example.tsx correctly 1`] = `
                           top: 1px;
                           width: calc(100% - 2px);
                         }
+                    role="presentation"
                   />
                 </div>
               </div>
