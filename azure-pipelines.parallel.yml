@@ -46,7 +46,7 @@ jobs:
         ContainerName: '$web'
         BlobPrefix: 'pr-deploy-site/$(Build.SourceBranch)'
 
-    - publish: $(System.DefaultWorkingDirectory)
+    - publish: $(System.BuildDirectory)
       artifact: Build
 
   - job: PerfTest
