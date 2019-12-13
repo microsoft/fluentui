@@ -97,7 +97,7 @@ export const getStyles = (props: IProgressIndicatorStyleProps): IProgressIndicat
 
         selectors: {
           [HighContrastSelector]: {
-            backgroundColor: 'WindowText'
+            backgroundColor: 'highlight'
           }
         }
       },
@@ -107,7 +107,12 @@ export const getStyles = (props: IProgressIndicatorStyleProps): IProgressIndicat
             position: 'absolute',
             minWidth: '33%',
             background: `linear-gradient(to right, ${progressTrackColor} 0%, ${palette.themePrimary} 50%, ${progressTrackColor} 100%)`,
-            animation: `${isRTL ? IndeterminateProgressRTL : IndeterminateProgress} 3s infinite`
+            animation: `${isRTL ? IndeterminateProgressRTL : IndeterminateProgress} 3s infinite`,
+            selectors: {
+              [HighContrastSelector]: {
+                background: `highlight`
+              }
+            }
           } as IRawStyle)
         : ({
             transition: 'width .15s linear'
