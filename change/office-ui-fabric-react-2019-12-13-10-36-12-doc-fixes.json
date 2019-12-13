@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Fix minor doc issues for TextField and pickers",
+  "packageName": "office-ui-fabric-react",
+  "email": "elcraig@microsoft.com",
+  "commit": "c97aedf3e01fceec41896005ed602d87dce9c3b4",
+  "date": "2019-12-13T18:36:12.308Z"
+}
