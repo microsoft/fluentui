@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Move ARIA role to outer div where native props are assigned to allow for ARIA attributes such as aria-label.",
+  "packageName": "office-ui-fabric-react",
+  "email": "jagore@microsoft.com",
+  "commit": "b39f8d8589a174e424508eb79180a2455da0872f",
+  "date": "2019-12-13T21:35:32.144Z"
+}
