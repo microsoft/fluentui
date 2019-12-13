@@ -70,7 +70,7 @@ exports[`Component Examples renders TextField.Borderless.Example.tsx correctly 1
         className=
             ms-TextField-wrapper
             {
-              border-bottom: 1px solid #8a8886;
+              border-bottom: 1px solid #605e5c;
               display: flex;
               width: 100%;
             }
@@ -256,7 +256,7 @@ exports[`Component Examples renders TextField.Borderless.Example.tsx correctly 1
             ms-TextField-wrapper
             {
               border-bottom-color: #f3f2f1;
-              border-bottom: 1px solid #8a8886;
+              border-bottom: 1px solid #605e5c;
               display: flex;
               width: 100%;
             }
@@ -442,7 +442,7 @@ exports[`Component Examples renders TextField.Borderless.Example.tsx correctly 1
         className=
             ms-TextField-wrapper
             {
-              border-bottom: 1px solid #8a8886;
+              border-bottom: 1px solid #605e5c;
               display: flex;
               width: 100%;
             }
