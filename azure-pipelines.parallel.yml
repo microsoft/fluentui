@@ -7,8 +7,7 @@ trigger:
 variables:
   - group: fabric-variables
 
-pool:
-  name: Docker Test
+pool: Docker Test
 
 jobs:
   - job: Build
@@ -46,7 +45,7 @@ jobs:
         ContainerName: '$web'
         BlobPrefix: 'pr-deploy-site/$(Build.SourceBranch)'
 
-    - publish: $(System.BuildDirectory)
+    - publish: $(Agent.BuildDirectory)
       artifact: Build
 
   - job: PerfTest
