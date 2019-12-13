@@ -238,6 +238,7 @@ exports[`PersonaCoin renders presence correctly when a very large coin is render
           background-color: WindowText;
           border-color: Window;
         }
+    role="presentation"
     style={
       Object {
         "height": "33.333333333333336px",
@@ -335,6 +336,7 @@ exports[`PersonaCoin renders presence when it is passed 1`] = `
           background-color: WindowText;
           border-color: Window;
         }
+    role="presentation"
     style={
       Object {
         "height": "16px",
