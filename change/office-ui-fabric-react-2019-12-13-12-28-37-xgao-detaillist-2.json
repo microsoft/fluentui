@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "List: always render last page in list so user can 'End' key nav to the real last item in the list",
+  "packageName": "office-ui-fabric-react",
+  "email": "xgao@microsoft.com",
+  "commit": "4c022384a7f3c8d60d3b466fee57975c4da81e1e",
+  "date": "2019-12-13T20:28:37.263Z"
+}

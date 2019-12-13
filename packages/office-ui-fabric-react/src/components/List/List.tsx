@@ -798,15 +798,13 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
       const isFirstPage = itemIndex === startIndex;
       const isLastPage = items ? itemIndex + itemsPerPage >= items.length : false;
 
-      console.log(
-        'building page',
-        itemIndex,
-        'pageTop: ' + pageTop,
-        'inAllowed: ' + isPageInAllowedRange,
-        'inRequired: ' + isPageInRequiredRange,
-        isFirstPage,
-        isLastPage
-      );
+      // console.log(
+      //   'building page',
+      //   itemIndex,
+      //   'pageTop: ' + pageTop,
+      //   'inAllowed: ' + isPageInAllowedRange,
+      //   'inRequired: ' + isPageInRequiredRange
+      // );
 
       // Only render whats visible, focused, first page, or last page,
       // or when running in fast rendering mode (not in virtualized mode), we render all current items in pages
