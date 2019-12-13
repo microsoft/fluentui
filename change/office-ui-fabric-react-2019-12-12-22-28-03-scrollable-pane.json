@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Fix iteration of Sticky items in ScrollablePane",
+  "packageName": "office-ui-fabric-react",
+  "email": "tmichon@microsoft.com",
+  "commit": "499a13dcb8eceec4b06291e7266830b3d8f9cb68",
+  "date": "2019-12-13T06:28:03.850Z"
+}
