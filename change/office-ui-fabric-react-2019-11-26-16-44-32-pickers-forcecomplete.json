@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Pickers: Allow force resolve when no match found",
-  "packageName": "office-ui-fabric-react",
-  "email": "joschect@microsoft.com",
-  "commit": "a1eab542869ceeb70c1b2c7f9a1fc10c6f0f89df",
-  "date": "2019-11-27T00:44:31.997Z"
-}

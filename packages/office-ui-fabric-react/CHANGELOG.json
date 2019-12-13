@@ -2,6 +2,27 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Fri, 13 Dec 2019 12:22:42 GMT",
+      "tag": "office-ui-fabric-react_v6.211.0",
+      "version": "6.211.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Pickers: Allow force resolve when no match found",
+            "author": "joschect@microsoft.com",
+            "commit": "a1eab542869ceeb70c1b2c7f9a1fc10c6f0f89df"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Autocomplete: Allow value to be overriden",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "a8ac7ed2ae97ebcffffa0a16ad03c7be28d8a665"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 11 Dec 2019 12:21:08 GMT",
       "tag": "office-ui-fabric-react_v6.210.6",
       "version": "6.210.6",
