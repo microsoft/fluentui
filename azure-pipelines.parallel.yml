@@ -8,7 +8,7 @@ variables:
   - group: fabric-variables
 
 pool:
-  name: 'Docker Test'
+  name: Docker Test
 
 jobs:
   - job: Build
