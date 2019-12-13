@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "ContextualMenu: Fix accessibility issue in example",
+  "packageName": "office-ui-fabric-react",
+  "email": "mgodbolt@microsoft.com",
+  "commit": "018482937b8d415a99ad688a00be2fdd481bdc6a",
+  "date": "2019-12-12T22:59:46.630Z"
+}
