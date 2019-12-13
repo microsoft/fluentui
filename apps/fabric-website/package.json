@@ -47,7 +47,7 @@
   "dependencies": {
     "@microsoft/load-themed-styles": "^1.7.13",
     "@uifabric/api-docs": "^7.1.1",
-    "@uifabric/example-app-base": "^7.10.2",
+    "@uifabric/example-app-base": "^7.10.3",
     "@uifabric/experiments": "^7.18.8",
     "@uifabric/fabric-website-resources": "^7.4.3",
     "@uifabric/file-type-icons": "^7.2.0",
@@ -57,7 +57,7 @@
     "@uifabric/set-version": "^7.0.2",
     "@uifabric/theme-samples": "^7.0.5",
     "json-loader": "^0.5.7",
-    "office-ui-fabric-react": "^7.72.0",
+    "office-ui-fabric-react": "^7.73.0",
     "tslib": "^1.7.1",
     "whatwg-fetch": "2.0.4"
   }

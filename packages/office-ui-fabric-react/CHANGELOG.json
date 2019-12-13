@@ -2,6 +2,54 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Fri, 13 Dec 2019 12:30:51 GMT",
+      "tag": "office-ui-fabric-react_v7.73.0",
+      "version": "7.73.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Tooltip: clarify examples and docs",
+            "author": "elcraig@microsoft.com",
+            "commit": "57f2bf3a5b2eebbf3a082266e09b157fc198a33d"
+          },
+          {
+            "comment": "FocusZone: Escape readOnly input on arrow clicks",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "7bcce389cacf0686f679ec630ce3d0712f0bc05b"
+          },
+          {
+            "comment": "Nav: Allow falsy values of title to be passed into items",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "a4845e8b662cbaedbef12a80169e05a349d3ede2"
+          },
+          {
+            "comment": "Panel: onLightDismissClick now properly prevents light dismiss",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "b291e1361a914558025560c9193296202cd95d1d"
+          },
+          {
+            "comment": "ContextualMenu: Fix accessibility issue in example",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "018482937b8d415a99ad688a00be2fdd481bdc6a"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Toggle: Change div inside button to be a span",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "de3f5c2db38d5d11c0e03c9d184141d9c431a01e"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Fix snapshot update conflict",
+            "author": "elcraig@microsoft.com",
+            "commit": "d962f8d41dccb634affb27fa23eabd9a61b0be0f"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 12 Dec 2019 12:29:56 GMT",
       "tag": "office-ui-fabric-react_v7.72.0",
       "version": "7.72.0",

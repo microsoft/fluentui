@@ -1,7 +1,20 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 12 Dec 2019 12:29:56 GMT and should not be manually modified.
+This log was last generated on Fri, 13 Dec 2019 12:30:51 GMT and should not be manually modified.
 
+## 7.73.0
+Fri, 13 Dec 2019 12:30:51 GMT
+
+### Minor changes
+
+- Toggle: Change div inside button to be a span (mgodbolt@microsoft.com)
+### Patches
+
+- Tooltip: clarify examples and docs (elcraig@microsoft.com)
+- FocusZone: Escape readOnly input on arrow clicks (mgodbolt@microsoft.com)
+- Nav: Allow falsy values of title to be passed into items (mgodbolt@microsoft.com)
+- Panel: onLightDismissClick now properly prevents light dismiss (mgodbolt@microsoft.com)
+- ContextualMenu: Fix accessibility issue in example (mgodbolt@microsoft.com)
 ## 7.72.0
 Thu, 12 Dec 2019 12:29:56 GMT
 

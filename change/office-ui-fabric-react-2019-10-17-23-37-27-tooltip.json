@@ -1,9 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Tooltip: clarify examples and docs",
-  "packageName": "office-ui-fabric-react",
-  "email": "elcraig@microsoft.com",
-  "commit": "57f2bf3a5b2eebbf3a082266e09b157fc198a33d",
-  "date": "2019-10-18T06:37:27.731Z",
-  "file": "/Users/elizabeth/git/fabric-react4/change/office-ui-fabric-react-2019-10-17-23-37-27-tooltip.json"
-}
