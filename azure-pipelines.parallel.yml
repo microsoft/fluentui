@@ -44,7 +44,7 @@ jobs:
         ContainerName: '$web'
         BlobPrefix: 'pr-deploy-site/$(Build.SourceBranch)'
 
-    - publish: $(Build.ArtifactStagingDirectory)
+    - publish: $(Build.Build.Repository.LocalPath)
       artifact: Build
 
   # TODO: what is running Checkout task for all jobs? may not be needed
@@ -53,9 +53,12 @@ jobs:
     pool: Docker Test
     dependsOn: Build
     steps:
+    - checkout: none
+
     # TODO: optimize this based on what perf-test needs. yarn and built bundle?
     - download: current
       artifact: Build
+      path: $(Build.Repository.LocalPath)
 
     - script: |
         npm run just perf-test
@@ -100,9 +103,12 @@ jobs:
     pool: Docker Test
     dependsOn: Build
     steps:
+    - checkout: none
+
     # TODO: optimize this based on what VR test needs.
     - download: current
       artifact: Build
+      path: $(Build.Repository.LocalPath)
 
     - script: |
         git config --global user.email "fabrictactical@microsoft.com"
