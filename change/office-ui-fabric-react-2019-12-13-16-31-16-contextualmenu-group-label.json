@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "ContextualMenu: Associate group with header to improve narrator",
+  "packageName": "office-ui-fabric-react",
+  "email": "micahgodbolt@gmail.com",
+  "commit": "1ee6f96d4c765cebd950fc9a9d82fae25ebf8ee6",
+  "date": "2019-12-14T00:31:16.113Z"
+}
