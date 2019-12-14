@@ -34,11 +34,7 @@ export class TextFieldCustomRenderExample extends React.Component<{}, ITextField
           description="Click the (i) icon!"
         />
 
-        <TextField
-          aria-labelledby={this._labelId}
-          label="Wrapping default label renderer"
-          onRenderLabel={this._onWrapDefaultLabelRenderer}
-        />
+        <TextField label="Wrapping default label renderer" onRenderLabel={this._onWrapDefaultLabelRenderer} />
 
         <TextField
           label="Custom description rendering"
@@ -95,7 +91,7 @@ export class TextFieldCustomRenderExample extends React.Component<{}, ITextField
       <>
         <Stack horizontal verticalAlign="center" tokens={{ childrenGap: 6 }}>
           <span>{defaultRender(props)}</span>
-          <Icon id={this._iconButtonId} iconName="Globe" title="Globe" ariaLabel="Globe" styles={{ root: { marginBottom: -3 } }} />
+          <Icon iconName="Globe" title="Globe" ariaLabel="Globe" styles={{ root: { marginBottom: -3 } }} />
         </Stack>
       </>
     );
