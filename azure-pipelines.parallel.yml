@@ -56,9 +56,10 @@ jobs:
     - checkout: none
 
     # TODO: optimize this based on what perf-test needs. yarn and built bundle?
-    - download: current
-      artifact: Build
+    # It seems using DownloadPipelineArtifact@2 instead of 'download:current' is required to use path
+    - task: DownloadPipelineArtifact@2
       inputs:
+        artifact: Build
         path: $(Build.Repository.LocalPath)
 
     - script: |
@@ -107,9 +108,10 @@ jobs:
     - checkout: none
 
     # TODO: optimize this based on what VR test needs.
-    - download: current
-      artifact: Build
+    # It seems using DownloadPipelineArtifact@2 instead of 'download:current' is required to use path
+    - task: DownloadPipelineArtifact@2
       inputs:
+        artifact: Build
         path: $(Build.Repository.LocalPath)
 
     - script: |
