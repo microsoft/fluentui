@@ -7,10 +7,9 @@ trigger:
 variables:
   - group: fabric-variables
 
-pool: Docker Test
-
 jobs:
   - job: Build
+    pool: Docker Build
     steps:
     - task: NodeTool@0
       inputs:
@@ -45,12 +44,16 @@ jobs:
         ContainerName: '$web'
         BlobPrefix: 'pr-deploy-site/$(Build.SourceBranch)'
 
-    - publish: $(Agent.BuildDirectory)
+    - publish: $(Build.ArtifactStagingDirectory)
       artifact: Build
 
+  # TODO: what is running Checkout task for all jobs? may not be needed
+  # TODO: make sure test jobs work even on clean images (with neither reusing an agent with build artifacts)
   - job: PerfTest
+    pool: Docker Test
     dependsOn: Build
     steps:
+    # TODO: optimize this based on what perf-test needs. yarn and built bundle?
     - download: current
       artifact: Build
 
@@ -94,8 +97,10 @@ jobs:
     #  displayName: publish sarif a11y reports
 
   - job: VRTest
+    pool: Docker Test
     dependsOn: Build
     steps:
+    # TODO: optimize this based on what VR test needs.
     - download: current
       artifact: Build
 
