@@ -58,7 +58,8 @@ jobs:
     # TODO: optimize this based on what perf-test needs. yarn and built bundle?
     - download: current
       artifact: Build
-      path: $(Build.Repository.LocalPath)
+      inputs:
+        path: $(Build.Repository.LocalPath)
 
     - script: |
         npm run just perf-test
@@ -108,7 +109,8 @@ jobs:
     # TODO: optimize this based on what VR test needs.
     - download: current
       artifact: Build
-      path: $(Build.Repository.LocalPath)
+      inputs:
+        path: $(Build.Repository.LocalPath)
 
     - script: |
         git config --global user.email "fabrictactical@microsoft.com"
