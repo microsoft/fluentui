@@ -97,6 +97,7 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
     beakWidth: 16
   };
 
+  private _id: string;
   private _host: HTMLElement;
   private _previousActiveElement: HTMLElement | null;
   private _isFocusingPreviousElement: boolean;
@@ -127,6 +128,7 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
       getMenuClassNames: 'styles'
     });
 
+    this._id = props.id || getId('ContextualMenu');
     this._isFocusingPreviousElement = false;
     this._isScrollIdle = true;
     this._shouldUpdateFocusOnMouseEvent = !this.props.delayUpdateFocusOnHover;
@@ -561,11 +563,18 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
     }
 
     let headerItem;
+    let groupProps;
     if (sectionProps.title) {
+      const id = this._id + sectionProps.title;
       const headerContextualMenuItem: IContextualMenuItem = {
         key: `section-${sectionProps.title}-title`,
         itemType: ContextualMenuItemType.Header,
-        text: sectionProps.title
+        text: sectionProps.title,
+        id: id
+      };
+      groupProps = {
+        role: 'group',
+        'aria-labelledby': id
       };
       headerItem = this._renderHeaderMenuItem(headerContextualMenuItem, menuClassNames, index, hasCheckmarks, hasIcons);
     }
@@ -573,7 +582,7 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
     if (sectionProps.items && sectionProps.items.length > 0) {
       return (
         <li role="presentation" key={sectionProps.key || sectionItem.key || `section-${index}`}>
-          <div role="group">
+          <div {...groupProps}>
             <ul className={this._classNames.list}>
               {sectionProps.topDivider && this._renderSeparator(index, menuClassNames, true, true)}
               {headerItem && this._renderListItem(headerItem, sectionItem.key || index, menuClassNames, sectionItem.title)}
@@ -641,10 +650,10 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
     hasIcons: boolean
   ): React.ReactNode {
     const { contextualMenuItemAs: ChildrenRenderer = ContextualMenuItem } = this.props;
-    const { itemProps } = item;
+    const { itemProps, id } = item;
     const divHtmlProperties = itemProps && getNativeProps<React.HTMLAttributes<HTMLDivElement>>(itemProps, divProperties);
     return (
-      <div className={this._classNames.header} {...divHtmlProperties} style={item.style}>
+      <div id={id} className={this._classNames.header} {...divHtmlProperties} style={item.style}>
         <ChildrenRenderer
           item={item}
           classNames={classNames}
