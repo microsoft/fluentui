@@ -29,7 +29,7 @@ const IndeterminateProgressRTL = keyframes({
 });
 
 export const getStyles = (props: IProgressIndicatorStyleProps): IProgressIndicatorStyles => {
-  const isRTL = getRTL();
+  const isRTL = getRTL(props.theme);
   const { className, indeterminate, theme, barHeight = 2 } = props;
 
   const { palette, semanticColors, fonts } = theme;

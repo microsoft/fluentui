@@ -851,7 +851,7 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
    * Checks if the submenu should be closed
    */
   private _shouldCloseSubMenu = (ev: React.KeyboardEvent<HTMLElement>): boolean => {
-    const submenuCloseKey = getRTL() ? KeyCodes.right : KeyCodes.left;
+    const submenuCloseKey = getRTL(this.props.theme) ? KeyCodes.right : KeyCodes.left;
 
     if (ev.which !== submenuCloseKey || !this.props.isSubMenu) {
       return false;
@@ -1079,7 +1079,7 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
   };
 
   private _onItemKeyDown = (item: any, ev: React.KeyboardEvent<HTMLElement>): void => {
-    const openKey = getRTL() ? KeyCodes.left : KeyCodes.right;
+    const openKey = getRTL(this.props.theme) ? KeyCodes.left : KeyCodes.right;
 
     if (
       !item.disabled &&
@@ -1131,7 +1131,7 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
         id: this.state.subMenuId,
         shouldFocusOnMount: true,
         shouldFocusOnContainer: this.state.expandedByMouseClick,
-        directionalHint: getRTL() ? DirectionalHint.leftTopEdge : DirectionalHint.rightTopEdge,
+        directionalHint: getRTL(this.props.theme) ? DirectionalHint.leftTopEdge : DirectionalHint.rightTopEdge,
         className: this.props.className,
         gapSpace: 0,
         isBeakVisible: false
