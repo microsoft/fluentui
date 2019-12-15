@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "getRTL uses RTL flag on theme if present.",
-  "packageName": "office-ui-fabric-react",
-  "email": "jdh@microsoft.com",
-  "commit": "3bfff30ef0a5a091100d67ab970e470cb3e696fb",
-  "date": "2019-12-12T20:09:57.969Z"
-}

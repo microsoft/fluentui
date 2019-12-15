@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fix minor picker doc issue",
-  "packageName": "@uifabric/experiments",
-  "email": "elcraig@microsoft.com",
-  "commit": "c97aedf3e01fceec41896005ed602d87dce9c3b4",
-  "date": "2019-12-13T18:36:10.372Z"
-}

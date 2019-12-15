@@ -2,6 +2,20 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "date": "Sun, 15 Dec 2019 23:45:36 GMT",
+      "tag": "@uifabric/utilities_v7.7.0",
+      "version": "7.7.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "getRTL uses RTL flag on theme if present.",
+            "author": "jdh@microsoft.com",
+            "commit": "3bfff30ef0a5a091100d67ab970e470cb3e696fb"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 18 Nov 2019 12:33:30 GMT",
       "tag": "@uifabric/utilities_v7.6.0",
       "version": "7.6.0",

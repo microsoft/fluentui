@@ -2,6 +2,52 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Sun, 15 Dec 2019 23:45:36 GMT",
+      "tag": "office-ui-fabric-react_v7.74.0",
+      "version": "7.74.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "DetailsList: Adding aria-readonly attribute so screen readers don't announce the cells as editable.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "d6d77b3dcec53af1acd2c5a89b9b4003b713bd9f"
+          },
+          {
+            "comment": "getRTL uses RTL flag on theme if present.",
+            "author": "jdh@microsoft.com",
+            "commit": "3bfff30ef0a5a091100d67ab970e470cb3e696fb"
+          },
+          {
+            "comment": "Fix iteration of Sticky items in ScrollablePane",
+            "author": "tmichon@microsoft.com",
+            "commit": "499a13dcb8eceec4b06291e7266830b3d8f9cb68"
+          },
+          {
+            "comment": "Fix minor doc issues for TextField and pickers",
+            "author": "elcraig@microsoft.com",
+            "commit": "c97aedf3e01fceec41896005ed602d87dce9c3b4"
+          },
+          {
+            "comment": "Move ARIA role to outer div where native props are assigned to allow for ARIA attributes such as aria-label.",
+            "author": "jagore@microsoft.com",
+            "commit": "b39f8d8589a174e424508eb79180a2455da0872f"
+          },
+          {
+            "comment": "ContextualMenu: Associate group with header to improve narrator",
+            "author": "micahgodbolt@gmail.com",
+            "commit": "1ee6f96d4c765cebd950fc9a9d82fae25ebf8ee6"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Persona: adding alt text to examples",
+            "author": "aneeshak@microsoft.com",
+            "commit": "4f0aaa0a009326081d9e51816fbb701f4b998cf9"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 13 Dec 2019 12:30:51 GMT",
       "tag": "office-ui-fabric-react_v7.73.0",
       "version": "7.73.0",

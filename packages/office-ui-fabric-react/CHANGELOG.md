@@ -1,7 +1,21 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 13 Dec 2019 12:30:51 GMT and should not be manually modified.
+This log was last generated on Sun, 15 Dec 2019 23:45:36 GMT and should not be manually modified.
 
+## 7.74.0
+Sun, 15 Dec 2019 23:45:36 GMT
+
+### Minor changes
+
+- Persona: adding alt text to examples (aneeshak@microsoft.com)
+### Patches
+
+- DetailsList: Adding aria-readonly attribute so screen readers don't announce the cells as editable. (Humberto.Morimoto@microsoft.com)
+- getRTL uses RTL flag on theme if present. (jdh@microsoft.com)
+- Fix iteration of Sticky items in ScrollablePane (tmichon@microsoft.com)
+- Fix minor doc issues for TextField and pickers (elcraig@microsoft.com)
+- Move ARIA role to outer div where native props are assigned to allow for ARIA attributes such as aria-label. (jagore@microsoft.com)
+- ContextualMenu: Associate group with header to improve narrator (micahgodbolt@gmail.com)
 ## 7.73.0
 Fri, 13 Dec 2019 12:30:51 GMT
 

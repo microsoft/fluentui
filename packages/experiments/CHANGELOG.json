@@ -2,6 +2,20 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "date": "Sun, 15 Dec 2019 23:45:36 GMT",
+      "tag": "@uifabric/experiments_v7.18.9",
+      "version": "7.18.9",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix minor picker doc issue",
+            "author": "elcraig@microsoft.com",
+            "commit": "c97aedf3e01fceec41896005ed602d87dce9c3b4"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 06 Dec 2019 12:33:21 GMT",
       "tag": "@uifabric/experiments_v7.18.8",
       "version": "7.18.8",

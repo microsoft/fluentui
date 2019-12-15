@@ -1,7 +1,13 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Fri, 06 Dec 2019 12:33:21 GMT and should not be manually modified.
+This log was last generated on Sun, 15 Dec 2019 23:45:36 GMT and should not be manually modified.
 
+## 7.18.9
+Sun, 15 Dec 2019 23:45:36 GMT
+
+### Patches
+
+- Fix minor picker doc issue (elcraig@microsoft.com)
 ## 7.18.8
 Fri, 06 Dec 2019 12:33:21 GMT
 
