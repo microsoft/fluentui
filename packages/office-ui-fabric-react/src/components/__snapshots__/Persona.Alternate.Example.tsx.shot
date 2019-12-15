@@ -105,7 +105,7 @@ exports[`Component Examples renders Persona.Alternate.Example.tsx correctly 1`] 
           }
         >
           <img
-            alt=""
+            alt="Annie Ried, status is unknown"
             className=
                 ms-Image-image
                 ms-Image-image--cover
@@ -125,7 +125,7 @@ exports[`Component Examples renders Persona.Alternate.Example.tsx correctly 1`] 
                 }
             onError={[Function]}
             onLoad={[Function]}
-            src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/persona-male.png"
+            src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/persona-female.png"
           />
         </div>
       </div>
@@ -355,7 +355,7 @@ exports[`Component Examples renders Persona.Alternate.Example.tsx correctly 1`] 
           }
         >
           <img
-            alt=""
+            alt="Annie Ried, status is unknown"
             className=
                 ms-Image-image
                 ms-Image-image--cover
@@ -375,7 +375,7 @@ exports[`Component Examples renders Persona.Alternate.Example.tsx correctly 1`] 
                 }
             onError={[Function]}
             onLoad={[Function]}
-            src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/persona-male.png"
+            src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/persona-female.png"
           />
         </div>
       </div>
@@ -606,7 +606,7 @@ exports[`Component Examples renders Persona.Alternate.Example.tsx correctly 1`] 
           }
         >
           <img
-            alt=""
+            alt="Annie Ried, status is available at 4 PM"
             className=
                 ms-Image-image
                 ms-Image-image--cover
@@ -626,7 +626,7 @@ exports[`Component Examples renders Persona.Alternate.Example.tsx correctly 1`] 
                 }
             onError={[Function]}
             onLoad={[Function]}
-            src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/persona-male.png"
+            src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/persona-female.png"
           />
         </div>
         <div
