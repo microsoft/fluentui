@@ -52,7 +52,7 @@ jobs:
     - task: ArchiveFiles@2
       inputs:
         rootFolderOrFile: $(Build.Repository.LocalPath)
-        includeRootFolder: true
+        includeRootFolder: false
         archiveType: 'tar'
         tarCompression: 'gz'
         archiveFile: $(Build.ArtifactStagingDirectory)/build.tar.gz
