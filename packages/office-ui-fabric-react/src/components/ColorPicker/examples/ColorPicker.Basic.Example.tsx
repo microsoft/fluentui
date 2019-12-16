@@ -42,8 +42,8 @@ export class ColorPickerBasicExample extends React.Component<{}, IBasicColorPick
           // The ColorPicker provides default English strings.
           // If your app is localized, you MUST provide the `strings` prop with localized strings.
           strings={{
-            alphaAriaLabel: 'Use left and right arrow keys to change alpha value. Hold shift for a larger jump',
-            hueAriaLabel: 'Use left and right arrow keys to change hue value. Hold shift for a larger jump'
+            alphaAriaLabel: 'Alpha Slider: Use left and right arrow keys to change value, hold shift for a larger jump',
+            hueAriaLabel: 'Hue Slider: Use left and right arrow keys to change value, hold shift for a larger jump'
           }}
         />
 
