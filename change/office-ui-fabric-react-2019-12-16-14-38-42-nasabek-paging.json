@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "add page down/up feature",
+  "comment": "FocusZone:add page down/up feature",
   "packageName": "office-ui-fabric-react",
   "email": "nasabek@microsoft.com",
   "commit": "7944d67993e932af998a7070699eb5f20834969a",
