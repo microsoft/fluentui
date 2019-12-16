@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "add select to be a focusable target for focus utility",
+  "packageName": "@uifabric/utilities",
+  "email": "joschect@microsoft.com",
+  "commit": "1268c4eac18a6c1b19f95c33cb2eb3988d54b47f",
+  "date": "2019-12-16T17:21:31.739Z"
+}
