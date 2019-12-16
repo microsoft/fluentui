@@ -49,7 +49,17 @@ jobs:
     #     ContainerName: '$web'
     #     BlobPrefix: 'pr-deploy-site/$(Build.SourceBranch)'
 
-    - publish: $(Build.Repository.LocalPath)
+    - task: ArchiveFiles@2
+      inputs:
+        rootFolderOrFile: $(Build.Repository.LocalPath)
+        includeRootFolder: true
+        archiveType: 'tar'
+        tarCompression: 'gz'
+        archiveFile: $(Build.ArtifactStagingDirectory)/build.tar.gz
+        replaceExistingArchive: true
+
+    #- publish: $(Build.Repository.LocalPath)
+    - publish: $(Build.ArtifactStagingDirectory)
       artifact: Build
 
   # TODO: what is running Checkout task for all jobs? may not be needed
@@ -65,7 +75,14 @@ jobs:
     - task: DownloadPipelineArtifact@2
       inputs:
         artifact: Build
-        path: $(Build.Repository.LocalPath)
+        path: $(Pipeline.Workspace)
+        # path: $(Build.Repository.LocalPath)
+
+    - task: ExtractFiles@1
+      inputs:
+        archiveFilePatterns: '*.tar.gz'
+        destinationFolder: $(Build.Repository.LocalPath)
+        cleanDestinationFolder: true
 
     - script: |
         npm run just perf-test
@@ -106,27 +123,27 @@ jobs:
     #    artifactName: 'CodeAnalysisLogs'
     #  displayName: publish sarif a11y reports
 
-  - job: VRTest
-    pool: Docker Test
-    dependsOn: Build
-    steps:
-    - checkout: none
+  # - job: VRTest
+  #   pool: Docker Test
+  #   dependsOn: Build
+  #   steps:
+  #   - checkout: none
 
-    # TODO: optimize this based on what VR test needs.
-    # It seems using DownloadPipelineArtifact@2 instead of 'download:current' is required to use path
-    - task: DownloadPipelineArtifact@2
-      inputs:
-        artifact: Build
-        path: $(Build.Repository.LocalPath)
+  #   # TODO: optimize this based on what VR test needs.
+  #   # It seems using DownloadPipelineArtifact@2 instead of 'download:current' is required to use path
+  #   - task: DownloadPipelineArtifact@2
+  #     inputs:
+  #       artifact: Build
+  #       path: $(Build.Repository.LocalPath)
 
-    - script: |
-        git config --global user.email "fabrictactical@microsoft.com"
-        git config --global user.name "Fabric Tactical"
-        npm run vrtest -- --debug
-      displayName: run VR Test
-      env:
-        SCREENER_API_KEY: $(screener.key)
+  #   - script: |
+  #       git config --global user.email "fabrictactical@microsoft.com"
+  #       git config --global user.name "Fabric Tactical"
+  #       npm run vrtest -- --debug
+  #     displayName: run VR Test
+  #     env:
+  #       SCREENER_API_KEY: $(screener.key)
 
-    - script: |
-        npm run check-for-changed-files
-      displayName: check for change file
+  #   - script: |
+  #       npm run check-for-changed-files
+  #     displayName: check for change file
