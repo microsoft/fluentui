@@ -391,6 +391,7 @@ export function isElementTabbable(element: HTMLElement, checkTabIndex?: boolean)
       element.tagName === 'BUTTON' ||
       element.tagName === 'INPUT' ||
       element.tagName === 'TEXTAREA' ||
+      element.tagName === 'SELECT' ||
       isFocusableAttribute === 'true' ||
       isTabIndexSet);
 

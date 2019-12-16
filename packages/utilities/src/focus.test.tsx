@@ -93,6 +93,12 @@ describe('isElementTabbable', () => {
     expect(isElementTabbable(input)).toEqual(true);
   });
 
+  it('returns true on select elements', () => {
+    let anchor = document.createElement('select');
+
+    expect(isElementTabbable(anchor)).toEqual(true);
+  });
+
   it('returns true on textarea elements', () => {
     let textarea = document.createElement('textarea');
 
