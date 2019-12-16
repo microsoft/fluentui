@@ -1,6 +1,7 @@
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import { BaseComponent } from '../../Utilities';
+import { hiddenContentStyle } from '../../Styling';
 import { IScrollablePaneContext, ScrollablePaneContext } from '../ScrollablePane/ScrollablePane.types';
 import { IStickyProps, StickyPositionType } from './Sticky.types';
 
@@ -161,6 +162,7 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
           </div>
         )}
         <div style={this._getNonStickyPlaceholderHeightAndWidth()} ref={this._placeHolder}>
+          {(isStickyTop || isStickyBottom) && <span style={hiddenContentStyle as any}>{children}</span>}
           <div
             ref={this._nonStickyContent}
             className={isStickyTop || isStickyBottom ? stickyClassName : undefined}

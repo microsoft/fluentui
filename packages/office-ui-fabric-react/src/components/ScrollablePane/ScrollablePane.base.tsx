@@ -177,8 +177,13 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
         <div ref={this._contentContainer} className={classNames.contentContainer} data-is-scrollable={true}>
           <ScrollablePaneContext.Provider value={this._getScrollablePaneContext()}>{this.props.children}</ScrollablePaneContext.Provider>
         </div>
-        <div ref={this._stickyAboveRef} className={classNames.stickyAbove} style={this._getStickyContainerStyle(stickyTopHeight, true)} />
-        <div className={classNames.stickyBelow} style={this._getStickyContainerStyle(stickyBottomHeight, false)}>
+        <div
+          aria-hidden="true"
+          ref={this._stickyAboveRef}
+          className={classNames.stickyAbove}
+          style={this._getStickyContainerStyle(stickyTopHeight, true)}
+        />
+        <div aria-hidden="true" className={classNames.stickyBelow} style={this._getStickyContainerStyle(stickyBottomHeight, false)}>
           <div ref={this._stickyBelowRef} className={classNames.stickyBelowItems} />
         </div>
       </div>
