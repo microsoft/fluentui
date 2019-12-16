@@ -100,10 +100,10 @@ export class PersonaCoinBase extends BaseComponent<IPersonaCoinProps, IPersonaSt
     );
 
     return (
-      <div {...divProps} className={classNames.coin}>
+      <div role="presentation" {...divProps} className={classNames.coin}>
         {// Render PersonaCoin if size is not size8. size10 and tiny need to removed after a deprecation cleanup.
         size !== PersonaSize.size8 && size !== PersonaSize.size10 && size !== PersonaSize.tiny ? (
-          <div {...divCoinProps} className={classNames.imageArea} style={coinSizeStyle}>
+          <div role="presentation" {...divCoinProps} className={classNames.imageArea} style={coinSizeStyle}>
             {shouldRenderInitials && (
               <div
                 className={mergeStyles(

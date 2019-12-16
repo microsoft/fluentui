@@ -373,6 +373,7 @@ exports[`Component Examples renders SelectedPeopleList.Controlled.Example.tsx co
                         font-size: 14px;
                         font-weight: 400;
                       }
+                  role="presentation"
                 >
                   <div
                     className=
@@ -384,6 +385,7 @@ exports[`Component Examples renders SelectedPeopleList.Controlled.Example.tsx co
                           text-align: center;
                           width: 32px;
                         }
+                    role="presentation"
                   >
                     <div
                       aria-hidden="true"

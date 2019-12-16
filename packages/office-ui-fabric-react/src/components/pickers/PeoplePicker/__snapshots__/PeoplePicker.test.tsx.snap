@@ -261,6 +261,7 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
                         font-size: 14px;
                         font-weight: 400;
                       }
+                  role="presentation"
                 >
                   <div
                     className=
@@ -272,6 +273,7 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
                           text-align: center;
                           width: 24px;
                         }
+                    role="presentation"
                   >
                     <div
                       className=
@@ -347,6 +349,7 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
                             background-color: Highlight;
                             border-color: Window;
                           }
+                      role="presentation"
                     />
                   </div>
                 </div>
