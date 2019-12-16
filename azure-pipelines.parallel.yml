@@ -72,18 +72,22 @@ jobs:
 
     # TODO: optimize this based on what perf-test needs. yarn and built bundle?
     # It seems using DownloadPipelineArtifact@2 instead of 'download:current' is required to use path
-    - task: DownloadPipelineArtifact@2
-      inputs:
-        artifact: Build
-        path: $(Pipeline.Workspace)
-        # path: $(Build.Repository.LocalPath)
+    # - task: DownloadPipelineArtifact@2
+    #   inputs:
+    #     artifact: Build
+    #     path: $(Pipeline.Workspace)
+    #     # path: $(Build.Repository.LocalPath)
+    - download: current
+      artifact: Build
 
     - task: ExtractFiles@1
       inputs:
         # By default, patterns start in the root folder of the repo (same as if you had specified $(Build.SourcesDirectory)).
         # Pipeline.Workspace is one level up.
-        archiveFilePatterns: '../*.tar.gz'
+        archiveFilePatterns: '../Build/*.tar.gz'
+        # archiveFilePatterns: '../*.tar.gz'
         # This is really bad and hacky, but this task requires relative pathing. It'd be nice to use the environment variables, instead.
+        # Might be better to use a bash task to allow for use of environment variables.
         destinationFolder: '..'
         # destinationFolder: $(Build.Repository.LocalPath)
         cleanDestinationFolder: false
