@@ -80,7 +80,9 @@ jobs:
 
     - task: ExtractFiles@1
       inputs:
-        archiveFilePatterns: '*.tar.gz'
+        # By default, patterns start in the root folder of the repo (same as if you had specified $(Build.SourcesDirectory)).
+        # Pipeline.Workspace is one level up.
+        archiveFilePatterns: '../*.tar.gz'
         destinationFolder: $(Build.Repository.LocalPath)
         cleanDestinationFolder: true
 
