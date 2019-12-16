@@ -11,29 +11,30 @@ jobs:
   - job: Build
     pool: Docker Build
     steps:
-    - task: NodeTool@0
-      inputs:
-        versionSpec: '10.x'
-      displayName: 'Install Node.js'
+    # TODO: uncomment, temporarily disabled to speed debugging
+    # - task: NodeTool@0
+    #   inputs:
+    #     versionSpec: '10.x'
+    #   displayName: 'Install Node.js'
 
-    - task: geeklearningio.gl-vsts-tasks-yarn.yarn-installer-task.YarnInstaller@3
-      displayName: 'Use Yarn 1.19.x'
-      inputs:
-        versionSpec: 1.19.x
-        checkLatest: true
-        includePrerelease: false
+    # - task: geeklearningio.gl-vsts-tasks-yarn.yarn-installer-task.YarnInstaller@3
+    #   displayName: 'Use Yarn 1.19.x'
+    #   inputs:
+    #     versionSpec: 1.19.x
+    #     checkLatest: true
+    #     includePrerelease: false
 
-    - script: |
-        yarn
-      displayName: yarn
+    # - script: |
+    #     yarn
+    #   displayName: yarn
 
-    - script: |
-        npm run checkchange
-      displayName: check change
+    # - script: |
+    #     npm run checkchange
+    #   displayName: check change
 
-    - script: |
-        npm run buildci
-      displayName: build ci
+    # - script: |
+    #     npm run buildci
+    #   displayName: build ci
 
     - task: AzureUpload@1
       displayName: Upload PR deploy site
@@ -44,7 +45,7 @@ jobs:
         ContainerName: '$web'
         BlobPrefix: 'pr-deploy-site/$(Build.SourceBranch)'
 
-    - publish: $(Build.Build.Repository.LocalPath)
+    - publish: $(Build.Repository.LocalPath)
       artifact: Build
 
   # TODO: what is running Checkout task for all jobs? may not be needed
