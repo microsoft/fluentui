@@ -164,6 +164,7 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
         <div style={this._getNonStickyPlaceholderHeightAndWidth()} ref={this._placeHolder}>
           {(isStickyTop || isStickyBottom) && <span style={hiddenContentStyle as any}>{children}</span>}
           <div
+            aria-hidden={isStickyTop || isStickyBottom}
             ref={this._nonStickyContent}
             className={isStickyTop || isStickyBottom ? stickyClassName : undefined}
             style={this._getContentStyles(isStickyTop || isStickyBottom)}
