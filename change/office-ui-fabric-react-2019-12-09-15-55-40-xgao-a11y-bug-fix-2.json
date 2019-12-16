@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix contextual menu split button cannot be read by screen reader bug",
-  "packageName": "office-ui-fabric-react",
-  "email": "xgao@microsoft.com",
-  "commit": "26105362a59563dd559eae94960bed01a7f2103c",
-  "date": "2019-12-09T23:55:40.485Z"
-}

@@ -2,6 +2,162 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Sun, 15 Dec 2019 23:45:36 GMT",
+      "tag": "office-ui-fabric-react_v7.74.0",
+      "version": "7.74.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "DetailsList: Adding aria-readonly attribute so screen readers don't announce the cells as editable.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "d6d77b3dcec53af1acd2c5a89b9b4003b713bd9f"
+          },
+          {
+            "comment": "getRTL uses RTL flag on theme if present.",
+            "author": "jdh@microsoft.com",
+            "commit": "3bfff30ef0a5a091100d67ab970e470cb3e696fb"
+          },
+          {
+            "comment": "Fix iteration of Sticky items in ScrollablePane",
+            "author": "tmichon@microsoft.com",
+            "commit": "499a13dcb8eceec4b06291e7266830b3d8f9cb68"
+          },
+          {
+            "comment": "Fix minor doc issues for TextField and pickers",
+            "author": "elcraig@microsoft.com",
+            "commit": "c97aedf3e01fceec41896005ed602d87dce9c3b4"
+          },
+          {
+            "comment": "Move ARIA role to outer div where native props are assigned to allow for ARIA attributes such as aria-label.",
+            "author": "jagore@microsoft.com",
+            "commit": "b39f8d8589a174e424508eb79180a2455da0872f"
+          },
+          {
+            "comment": "ContextualMenu: Associate group with header to improve narrator",
+            "author": "micahgodbolt@gmail.com",
+            "commit": "1ee6f96d4c765cebd950fc9a9d82fae25ebf8ee6"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Persona: adding alt text to examples",
+            "author": "aneeshak@microsoft.com",
+            "commit": "4f0aaa0a009326081d9e51816fbb701f4b998cf9"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 13 Dec 2019 12:30:51 GMT",
+      "tag": "office-ui-fabric-react_v7.73.0",
+      "version": "7.73.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Tooltip: clarify examples and docs",
+            "author": "elcraig@microsoft.com",
+            "commit": "57f2bf3a5b2eebbf3a082266e09b157fc198a33d"
+          },
+          {
+            "comment": "FocusZone: Escape readOnly input on arrow clicks",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "7bcce389cacf0686f679ec630ce3d0712f0bc05b"
+          },
+          {
+            "comment": "Nav: Allow falsy values of title to be passed into items",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "a4845e8b662cbaedbef12a80169e05a349d3ede2"
+          },
+          {
+            "comment": "Panel: onLightDismissClick now properly prevents light dismiss",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "b291e1361a914558025560c9193296202cd95d1d"
+          },
+          {
+            "comment": "ContextualMenu: Fix accessibility issue in example",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "018482937b8d415a99ad688a00be2fdd481bdc6a"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Toggle: Change div inside button to be a span",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "de3f5c2db38d5d11c0e03c9d184141d9c431a01e"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Fix snapshot update conflict",
+            "author": "elcraig@microsoft.com",
+            "commit": "d962f8d41dccb634affb27fa23eabd9a61b0be0f"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 12 Dec 2019 12:29:56 GMT",
+      "tag": "office-ui-fabric-react_v7.72.0",
+      "version": "7.72.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Ensure that navigating between selected items doesn't clear modal state",
+            "author": "tmichon@microsoft.com",
+            "commit": "26017212a790aab5f921a3ee59bf66df025400b4"
+          },
+          {
+            "comment": "Stack: Adding documentation about Stack Items in the Stack overview.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "3488c442e457b72ba94e43e93047ee46ccc0076e"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Callout: Add Non Focusable Callout example",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "a7874eb0405494ad488fe8fff466bdead7a56c0c"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 11 Dec 2019 12:30:26 GMT",
+      "tag": "office-ui-fabric-react_v7.71.0",
+      "version": "7.71.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Only update ExtendedPicker state on input events that are not mid-composition ",
+            "author": "mahuangh@microsoft.com",
+            "commit": "6caf1e9e0854a9ffc9fe8c4b3daaafe35ae892e9"
+          },
+          {
+            "comment": "Dropdown: Render options with header in group so that narrator associates group with header",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "a46a9e04d0648d92ebcf29137218fd775b59e366"
+          },
+          {
+            "comment": "Autocomplete: Allow value to be overriden",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "cd4f87ccb3261f7a26c6a183b4cec33a64ed9be2"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Combobox: multi-select does not clear index on selection. Selected and checked properly supported",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "bd52f72fa7dc908bd86ecec79f8c041c3ea07acc"
+          },
+          {
+            "comment": "fix contextual menu split button cannot be read by screen reader bug",
+            "author": "xgao@microsoft.com",
+            "commit": "26105362a59563dd559eae94960bed01a7f2103c"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 10 Dec 2019 12:34:47 GMT",
       "tag": "office-ui-fabric-react_v7.70.0",
       "version": "7.70.0",

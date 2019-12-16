@@ -167,7 +167,7 @@ export function getStyles(props: ICoachmarkStyleProps): ICoachmarkStyles {
         position: 'absolute',
         top: '50%',
         left: '50%',
-        transform: getRTL() ? 'translate(50%, -50%)' : 'translate(-50%, -50%)',
+        transform: getRTL(theme) ? 'translate(50%, -50%)' : 'translate(-50%, -50%)',
         width: '0px',
         height: '0px',
         borderRadius: '225px',

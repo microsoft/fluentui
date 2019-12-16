@@ -153,7 +153,7 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
           role="switch"
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Toggle-thumb
                 {
@@ -163,6 +163,7 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
                   border-style: solid;
                   border-width: .28em;
                   box-sizing: border-box;
+                  display: block;
                   height: 12px;
                   transition: all 0.1s ease;
                   width: 12px;

@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Autocomplete: Allow value to be overriden",
-  "packageName": "office-ui-fabric-react",
-  "email": "mgodbolt@microsoft.com",
-  "commit": "cd4f87ccb3261f7a26c6a183b4cec33a64ed9be2",
-  "date": "2019-12-10T01:38:21.436Z"
-}

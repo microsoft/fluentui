@@ -47,7 +47,7 @@ export class PivotRemoveExample extends React.Component<any, IPivotOnChangeExamp
 
     return (
       <div>
-        <Pivot linkSize={PivotLinkSize.large} linkFormat={PivotLinkFormat.tabs}>
+        <Pivot aria-label="Remove Pivot Example" linkSize={PivotLinkSize.large} linkFormat={PivotLinkFormat.tabs}>
           {pivotArray}
         </Pivot>
         <div>

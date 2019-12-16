@@ -1228,6 +1228,7 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                   >
                                     <div
                                       aria-colindex={2}
+                                      aria-readonly={true}
                                       className=
                                           ms-DetailsRow-cell
                                           {
@@ -1631,6 +1632,7 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                   >
                                     <div
                                       aria-colindex={2}
+                                      aria-readonly={true}
                                       className=
                                           ms-DetailsRow-cell
                                           {
@@ -2034,6 +2036,7 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                   >
                                     <div
                                       aria-colindex={2}
+                                      aria-readonly={true}
                                       className=
                                           ms-DetailsRow-cell
                                           {
@@ -2437,6 +2440,7 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                   >
                                     <div
                                       aria-colindex={2}
+                                      aria-readonly={true}
                                       className=
                                           ms-DetailsRow-cell
                                           {
@@ -2840,6 +2844,7 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                   >
                                     <div
                                       aria-colindex={2}
+                                      aria-readonly={true}
                                       className=
                                           ms-DetailsRow-cell
                                           {
@@ -3243,6 +3248,7 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                   >
                                     <div
                                       aria-colindex={2}
+                                      aria-readonly={true}
                                       className=
                                           ms-DetailsRow-cell
                                           {
@@ -3646,6 +3652,7 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                   >
                                     <div
                                       aria-colindex={2}
+                                      aria-readonly={true}
                                       className=
                                           ms-DetailsRow-cell
                                           {
@@ -4049,6 +4056,7 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                   >
                                     <div
                                       aria-colindex={2}
+                                      aria-readonly={true}
                                       className=
                                           ms-DetailsRow-cell
                                           {
@@ -4452,6 +4460,7 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                   >
                                     <div
                                       aria-colindex={2}
+                                      aria-readonly={true}
                                       className=
                                           ms-DetailsRow-cell
                                           {
@@ -4855,6 +4864,7 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                   >
                                     <div
                                       aria-colindex={2}
+                                      aria-readonly={true}
                                       className=
                                           ms-DetailsRow-cell
                                           {

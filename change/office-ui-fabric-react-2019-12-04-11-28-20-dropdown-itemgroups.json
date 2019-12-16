@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Dropdown: Render options with header in group so that narrator associates group with header",
-  "packageName": "office-ui-fabric-react",
-  "email": "mgodbolt@microsoft.com",
-  "commit": "a46a9e04d0648d92ebcf29137218fd775b59e366",
-  "date": "2019-12-04T19:28:20.469Z"
-}

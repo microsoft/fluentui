@@ -489,6 +489,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                   text-align: center;
                   width: 32px;
                 }
+            role="presentation"
           >
             <div
               className=

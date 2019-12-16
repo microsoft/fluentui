@@ -25,7 +25,7 @@ export const PersonaCustomCoinRenderExample: React.FunctionComponent = () => {
         size={PersonaSize.size72}
         presence={PersonaPresence.online}
         onRenderCoin={_onRenderCoin}
-        imageAlt="Custom Coin Image"
+        imageAlt="Ted Randall, status is available at 4 PM"
         imageUrl={TestImages.personaMale}
         coinSize={72}
       />

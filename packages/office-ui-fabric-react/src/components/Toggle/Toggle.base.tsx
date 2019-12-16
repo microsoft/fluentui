@@ -129,7 +129,7 @@ export class ToggleBase extends BaseComponent<IToggleProps, IToggleState> implem
                 onClick={this._onClick}
                 aria-labelledby={labelledById}
               >
-                <div className={classNames.thumb} />
+                <span className={classNames.thumb} />
               </button>
             )}
           </KeytipData>
