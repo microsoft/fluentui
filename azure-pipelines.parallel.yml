@@ -52,7 +52,7 @@ jobs:
     - task: ArchiveFiles@2
       inputs:
         rootFolderOrFile: $(Build.Repository.LocalPath)
-        includeRootFolder: false
+        includeRootFolder: true
         archiveType: 'tar'
         tarCompression: 'gz'
         archiveFile: $(Build.ArtifactStagingDirectory)/build.tar.gz
@@ -83,8 +83,10 @@ jobs:
         # By default, patterns start in the root folder of the repo (same as if you had specified $(Build.SourcesDirectory)).
         # Pipeline.Workspace is one level up.
         archiveFilePatterns: '../*.tar.gz'
-        destinationFolder: $(Build.Repository.LocalPath)
-        cleanDestinationFolder: true
+        # This is really bad and hacky, but this task requires relative pathing. It'd be nice to use the environment variables, instead.
+        destinationFolder: '..'
+        # destinationFolder: $(Build.Repository.LocalPath)
+        cleanDestinationFolder: false
 
     - script: |
         npm run just perf-test
