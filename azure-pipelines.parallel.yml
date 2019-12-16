@@ -12,8 +12,8 @@ jobs:
     pool: Docker Build
     steps:
     # TODO: remove, temporarily disabled to speed debugging
-    - checkout: none
-      clean: false
+    # - checkout: none
+    #   clean: false
 
     # TODO: uncomment, temporarily disabled to speed debugging
     - task: NodeTool@0
