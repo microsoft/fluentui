@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Add ms-BasePicker-input css class to EditingItem input element",
+  "packageName": "office-ui-fabric-react",
+  "email": "sanredd@microsoft.com",
+  "commit": "954e7b3f4a864eaacecc380f99ec76b8aa7b7931",
+  "date": "2019-12-17T21:46:32.506Z"
+}
