@@ -131,7 +131,8 @@ export interface IColorPickerStrings {
   blue?: string;
 
   /**
-   * Label for the alpha text field and slider aria-label.
+   * Label for the alpha text field.
+   * Also used as the aria label for the alpha slider if `alphaAriaLabel` is not provided.
    * @defaultvalue Alpha
    */
   alpha?: string;
