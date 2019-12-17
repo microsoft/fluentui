@@ -150,7 +150,7 @@ export interface IColorPickerStrings {
 
   /**
    * Aria label for the hue slider.
-   * @deprecated use 'hueAriaLabel'
+   * @deprecated Use `hueAriaLabel`
    */
   hue?: string;
 
