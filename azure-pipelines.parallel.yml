@@ -7,9 +7,11 @@ trigger:
 variables:
   - group: fabric-variables
 
+pool:
+  vmImage: 'Ubuntu 16.04'
+
 jobs:
   - job: Build
-    pool: Docker Build
     steps:
     # TODO: remove, temporarily disabled to speed debugging
     # - checkout: none
@@ -53,7 +55,6 @@ jobs:
       artifact: Build
 
   - job: PerfTest
-    pool: Docker Test
     dependsOn: Build
     steps:
 
@@ -98,7 +99,6 @@ jobs:
         githubTargetLink: 'http://fabricweb.z5.web.core.windows.net/pr-deploy-site/$(Build.SourceBranch)/'
 
   - job: VRTest
-    pool: Docker Test
     dependsOn: Build
     steps:
     # No need for checkout since we're using build artifacts.
