@@ -4,7 +4,7 @@ jobs:
       name: Hosted VS2017
       demands: npm
     steps:
-      - bash: |
+      - script: |
           echo 'Environment variable'
           echo $BUILD_SOURCEVERSIONMESSAGE
           echo 'Pipeline variable'
@@ -58,7 +58,7 @@ jobs:
     pool: server
     dependsOn: build
     steps:
-      - bash: |
+      - script: |
           echo 'Environment variable'
           echo $BUILD_SOURCEVERSIONMESSAGE
           echo 'Pipeline variable'
