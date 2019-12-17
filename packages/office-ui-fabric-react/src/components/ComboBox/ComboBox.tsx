@@ -617,6 +617,10 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       : '';
   }
 
+  /**
+   * Returns a string that concatenates all of the selected values
+   * for multiselect combobox.
+   */
   private _getMultiselectDisplayString(
     selectedIndices: number[] | undefined,
     currentOptions: IComboBoxOption[],
