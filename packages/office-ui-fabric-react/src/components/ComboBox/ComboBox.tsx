@@ -357,7 +357,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
     // If the combobox has focus, is multiselect, and has a display string, then use that placeholder
     // so that the selected items don't appear to vanish. This is not ideal but it's the only reasonable way
-    // to correct the behavior where the input is cleared so the user can type. If a full refactor this
+    // to correct the behavior where the input is cleared so the user can type. If a full refactor is done, then this
     // should be removed and the multiselect combobox should behave like a picker.
     const placeholder = focus && this.props.multiSelect && multiselectAccessibleText ? multiselectAccessibleText : placeholderProp;
 
@@ -672,7 +672,6 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    */
   private _processInputChangeWithFreeform(updatedValue: string): void {
     const { currentOptions } = this.state;
-    updatedValue = this._removeZeroWidthSpaces(updatedValue);
     let newCurrentPendingValueValidIndex = -1;
 
     // if the new value is empty, see if we have an exact match
@@ -758,7 +757,6 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   private _processInputChangeWithoutFreeform(updatedValue: string): void {
     const { currentPendingValue, currentPendingValueValidIndex, currentOptions } = this.state;
 
-    updatedValue = this._removeZeroWidthSpaces(updatedValue);
     if (this.props.autoComplete === 'on') {
       // If autoComplete is on while allow freeform is off,
       // we will remember the keypresses and build up a string to attempt to match
@@ -1578,7 +1576,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     }
 
     this.setState({
-      currentPendingValue: currentPendingValue && this._removeZeroWidthSpaces(currentPendingValue),
+      currentPendingValue: this._normalizeToString(currentPendingValue),
       currentPendingValueValidIndex: currentPendingValueValidIndex,
       suggestedDisplayValue: suggestedDisplayValue,
       currentPendingValueValidIndexOnHover: HoverStatus.default
@@ -2126,10 +2124,5 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
   private _normalizeToString(value?: string): string {
     return value || '';
-  }
-
-  private _removeZeroWidthSpaces(value: string): string {
-    // remove any zero width space characters
-    return value.replace(RegExp('​', 'g'), '');
   }
 }
