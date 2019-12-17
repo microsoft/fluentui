@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Refining typography and signal icon on top of Folder Icon, filetype mapping updates",
-  "packageName": "@uifabric/experiments",
-  "email": "caperez@microsoft.com",
-  "commit": "4d72a330013373ac60292c9cb3ef8787ad2fd408",
-  "date": "2019-12-10T19:25:45.235Z"
-}

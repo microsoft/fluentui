@@ -2,6 +2,25 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "date": "Tue, 17 Dec 2019 12:29:42 GMT",
+      "tag": "@uifabric/experiments_v7.18.10",
+      "version": "7.18.10",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Refining typography and signal icon on top of Folder Icon, filetype mapping updates",
+            "author": "caperez@microsoft.com",
+            "commit": "4d72a330013373ac60292c9cb3ef8787ad2fd408"
+          },
+          {
+            "comment": "PersonaCoin: make divs role presentation",
+            "author": "micahgodbolt@gmail.com",
+            "commit": "f491aa022d50b489b2a9bd49ef29ee48870213ef"
+          }
+        ]
+      }
+    },
+    {
       "date": "Sun, 15 Dec 2019 23:45:36 GMT",
       "tag": "@uifabric/experiments_v7.18.9",
       "version": "7.18.9",

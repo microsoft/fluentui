@@ -1,7 +1,14 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Sun, 15 Dec 2019 23:45:36 GMT and should not be manually modified.
+This log was last generated on Tue, 17 Dec 2019 12:29:42 GMT and should not be manually modified.
 
+## 7.74.1
+Tue, 17 Dec 2019 12:29:42 GMT
+
+### Patches
+
+- ProgressIndicator: improve high contrast colors for progress bar (micahgodbolt@gmail.com)
+- PersonaCoin: make divs role presentation (micahgodbolt@gmail.com)
 ## 7.74.0
 Sun, 15 Dec 2019 23:45:36 GMT
 

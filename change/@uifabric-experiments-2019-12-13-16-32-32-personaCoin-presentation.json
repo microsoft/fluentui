@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "PersonaCoin: make divs role presentation",
-  "packageName": "@uifabric/experiments",
-  "email": "micahgodbolt@gmail.com",
-  "commit": "f491aa022d50b489b2a9bd49ef29ee48870213ef",
-  "date": "2019-12-14T00:32:32.423Z"
-}
