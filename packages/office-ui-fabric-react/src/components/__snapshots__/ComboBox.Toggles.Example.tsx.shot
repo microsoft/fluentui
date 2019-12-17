@@ -60,27 +60,6 @@ exports[`Component Examples renders ComboBox.Toggles.Example.tsx correctly 1`] =
       id="ComboBox0-label"
     >
       ComboBox with toggleable freeform/auto-complete
-      <div
-        className=
-
-            {
-              border: 0px;
-              height: 1px;
-              margin-bottom: -1px;
-              margin-left: -1px;
-              margin-right: -1px;
-              margin-top: -1px;
-              overflow: hidden;
-              padding-bottom: 0px;
-              padding-left: 0px;
-              padding-right: 0px;
-              padding-top: 0px;
-              position: absolute;
-              width: 1px;
-            }
-      >
-        
-      </div>
     </label>
     <div
       className=

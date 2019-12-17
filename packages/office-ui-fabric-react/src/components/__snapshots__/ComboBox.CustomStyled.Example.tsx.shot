@@ -63,27 +63,6 @@ exports[`Component Examples renders ComboBox.CustomStyled.Example.tsx correctly 
       id="ComboBox0-label"
     >
       Custom styled ComboBox
-      <div
-        className=
-
-            {
-              border: 0px;
-              height: 1px;
-              margin-bottom: -1px;
-              margin-left: -1px;
-              margin-right: -1px;
-              margin-top: -1px;
-              overflow: hidden;
-              padding-bottom: 0px;
-              padding-left: 0px;
-              padding-right: 0px;
-              padding-top: 0px;
-              position: absolute;
-              width: 1px;
-            }
-      >
-        
-      </div>
     </label>
     <div
       className=
@@ -479,27 +458,6 @@ exports[`Component Examples renders ComboBox.CustomStyled.Example.tsx correctly 
       id="ComboBox4-label"
     >
       ComboBox with custom option rendering (type the name of a font and the option will render in that font)
-      <div
-        className=
-
-            {
-              border: 0px;
-              height: 1px;
-              margin-bottom: -1px;
-              margin-left: -1px;
-              margin-right: -1px;
-              margin-top: -1px;
-              overflow: hidden;
-              padding-bottom: 0px;
-              padding-left: 0px;
-              padding-right: 0px;
-              padding-top: 0px;
-              position: absolute;
-              width: 1px;
-            }
-      >
-        
-      </div>
     </label>
     <div
       className=
