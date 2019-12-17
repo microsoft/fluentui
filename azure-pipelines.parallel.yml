@@ -16,17 +16,7 @@ jobs:
       clean: false
 
     # TODO: uncomment, temporarily disabled to speed debugging
-    # - task: NodeTool@0
-    #   inputs:
-    #     versionSpec: '10.x'
-    #   displayName: 'Install Node.js'
-
-    # - task: geeklearningio.gl-vsts-tasks-yarn.yarn-installer-task.YarnInstaller@3
-    #   displayName: 'Use Yarn 1.19.x'
-    #   inputs:
-    #     versionSpec: 1.19.x
-    #     checkLatest: true
-    #     includePrerelease: false
+    # - template: azure-pipelines.tools.yml
 
     # - script: |
     #     yarn
@@ -58,39 +48,21 @@ jobs:
         archiveFile: $(Build.ArtifactStagingDirectory)/build.tar.gz
         replaceExistingArchive: true
 
-    #- publish: $(Build.Repository.LocalPath)
     - publish: $(Build.ArtifactStagingDirectory)
       artifact: Build
 
-  # TODO: what is running Checkout task for all jobs? may not be needed
-  # TODO: make sure test jobs work even on clean images (with neither reusing an agent with build artifacts)
   - job: PerfTest
     pool: Docker Test
     dependsOn: Build
     steps:
-    - checkout: none
 
-    # TODO: optimize this based on what perf-test needs. yarn and built bundle?
-    # It seems using DownloadPipelineArtifact@2 instead of 'download:current' is required to use path
-    # - task: DownloadPipelineArtifact@2
-    #   inputs:
-    #     artifact: Build
-    #     path: $(Pipeline.Workspace)
-    #     # path: $(Build.Repository.LocalPath)
-    - download: current
-      artifact: Build
+    # Perf test uses PR bundle deployed to PR deploy site and therefore does not need previously built artifacts.
+    # We just need to do a tools install.
+    - template: azure-pipelines.tools.yml
 
-    - task: ExtractFiles@1
-      inputs:
-        # By default, patterns start in the root folder of the repo (same as if you had specified $(Build.SourcesDirectory)).
-        # Pipeline.Workspace is one level up.
-        archiveFilePatterns: '../Build/*.tar.gz'
-        # archiveFilePatterns: '../*.tar.gz'
-        # This is really bad and hacky, but this task requires relative pathing. It'd be nice to use the environment variables, instead.
-        # Might be better to use a bash task to allow for use of environment variables.
-        destinationFolder: '..'
-        # destinationFolder: $(Build.Repository.LocalPath)
-        cleanDestinationFolder: false
+    - script: |
+        yarn
+      displayName: yarn
 
     - script: |
         npm run just perf-test
@@ -124,34 +96,44 @@ jobs:
         githubDescription: 'Click "Details" to go to the Deployed Site'
         githubTargetLink: 'http://fabricweb.z5.web.core.windows.net/pr-deploy-site/$(Build.SourceBranch)/'
 
+  - job: VRTest
+    pool: Docker Test
+    dependsOn: Build
+    steps:
+    # No need for checkout since we're using build artifacts.
+    - checkout: none
+
+    - download: current
+      artifact: Build
+
+    - task: ExtractFiles@1
+      inputs:
+        # By default, patterns start in the root folder of the repo (same as if you had specified $(Build.SourcesDirectory)).
+        # Pipeline.Workspace is one level up.
+        archiveFilePatterns: '../Build/*.tar.gz'
+        # archiveFilePatterns: '../*.tar.gz'
+        # This is really bad and hacky, but this task requires relative pathing. It'd be nice to use the environment variables, instead.
+        # Might be better to use a bash task to allow for use of environment variables.
+        destinationFolder: '..'
+        # destinationFolder: $(Build.Repository.LocalPath)
+        cleanDestinationFolder: false
+
+    - script: |
+        git config --global user.email "fabrictactical@microsoft.com"
+        git config --global user.name "Fabric Tactical"
+        npm run vrtest -- --debug
+      displayName: run VR Test
+      env:
+        SCREENER_API_KEY: $(screener.key)
+
+    - script: |
+        npm run check-for-changed-files
+      displayName: check for change file
+
     # a11y-tests disabled until occasional local and CI timeout issue can be resolved.
+    # If/when re-enabled, should probably be made as a standalone job (or appended to another test job.)
     #- task: PublishBuildArtifacts@1
     #  inputs:
     #    pathtoPublish: './apps/a11y-tests/dist/reports'
     #    artifactName: 'CodeAnalysisLogs'
     #  displayName: publish sarif a11y reports
-
-  # - job: VRTest
-  #   pool: Docker Test
-  #   dependsOn: Build
-  #   steps:
-  #   - checkout: none
-
-  #   # TODO: optimize this based on what VR test needs.
-  #   # It seems using DownloadPipelineArtifact@2 instead of 'download:current' is required to use path
-  #   - task: DownloadPipelineArtifact@2
-  #     inputs:
-  #       artifact: Build
-  #       path: $(Build.Repository.LocalPath)
-
-  #   - script: |
-  #       git config --global user.email "fabrictactical@microsoft.com"
-  #       git config --global user.name "Fabric Tactical"
-  #       npm run vrtest -- --debug
-  #     displayName: run VR Test
-  #     env:
-  #       SCREENER_API_KEY: $(screener.key)
-
-  #   - script: |
-  #       npm run check-for-changed-files
-  #     displayName: check for change file
