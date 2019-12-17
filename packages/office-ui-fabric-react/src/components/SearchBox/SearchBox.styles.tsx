@@ -47,7 +47,7 @@ export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
         height: 32,
         selectors: {
           [HighContrastSelector]: {
-            border: '1px solid WindowText'
+            borderColor: 'WindowText'
           },
           ':hover': {
             borderColor: semanticColors.inputBorderHovered,
