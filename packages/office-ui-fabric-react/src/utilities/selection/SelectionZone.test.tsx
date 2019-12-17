@@ -7,7 +7,7 @@ import { SelectionZone } from './SelectionZone';
 import { Selection } from './Selection';
 import { SelectionMode, IObjectWithKey } from './interfaces';
 
-import { KeyCodes } from '../../Utilities';
+import { KeyCodes, EventGroup } from '../../Utilities';
 
 let _selection: Selection;
 let _selectionZone: any;
@@ -34,6 +34,7 @@ function _initializeSelection(selectionMode = SelectionMode.multiple): void {
       selection={_selection}
       selectionMode={selectionMode}
       disableAutoSelectOnInputElements={true}
+      enterModalOnTouch={true}
       // tslint:disable-next-line:jsx-no-lambda
       onItemInvoked={(item: IObjectWithKey) => {
         _onItemInvokeCalled++;
@@ -274,6 +275,47 @@ describe('SelectionZone', () => {
   it('selects an item when a button is clicked that has data-selection-select', () => {
     ReactTestUtils.Simulate.keyDown(_select1, { which: KeyCodes.enter });
     expect(_selection.isIndexSelected(1)).toEqual(true);
+  });
+
+  it('enters modal selection state when commanded', () => {
+    _selection.setModal(true);
+    expect(_componentElement.getAttribute('data-selection-is-modal')).toEqual('true');
+
+    _selection.setModal(false);
+    expect(_componentElement.getAttribute('data-selection-is-modal')).toBeNull();
+  });
+
+  it('exits modal selection state when the last item is deselected', () => {
+    _selection.setModal(true);
+    expect(_componentElement.getAttribute('data-selection-is-modal')).toEqual('true');
+
+    _selection.setIndexSelected(1, true, false);
+    expect(_componentElement.getAttribute('data-selection-is-modal')).toEqual('true');
+
+    _selection.setIndexSelected(1, false, false);
+    expect(_componentElement.getAttribute('data-selection-is-modal')).toBeNull();
+  });
+
+  it('preserves modal state when switching selection', () => {
+    _selection.setModal(true);
+    expect(_componentElement.getAttribute('data-selection-is-modal')).toEqual('true');
+
+    _simulateClick(_surface0);
+    expect(_selection.getSelectedIndices()).toEqual([0]);
+    expect(_componentElement.getAttribute('data-selection-is-modal')).toEqual('true');
+
+    _simulateClick(_surface1);
+    expect(_selection.getSelectedIndices()).toEqual([1]);
+    expect(_componentElement.getAttribute('data-selection-is-modal')).toEqual('true');
+  });
+
+  it('enters modal selection state on a touch event', () => {
+    EventGroup.raise(document.body, 'touchstart', {}, true);
+
+    ReactTestUtils.Simulate.focus(_surface0);
+    ReactTestUtils.Simulate.click(_surface0);
+    expect(_selection.isIndexSelected(0)).toEqual(true);
+    expect(_componentElement.getAttribute('data-selection-is-modal')).toEqual('true');
   });
 });
 

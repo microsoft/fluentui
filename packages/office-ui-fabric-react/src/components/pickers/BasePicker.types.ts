@@ -25,7 +25,7 @@ export interface IBasePicker<T> {
    * When called, will take the currently selected suggestion and complete it.
    * If called with forceComplete true, it will attempt to force the current suggestion
    * to complete, must provide both createGenericSuggestion, so the text can be turned into
-   * an object in the right shape,.and onValidateInput, so the object knows if it's correct or not.
+   * an object in the right shape, and onValidateInput, so the object knows if it's correct or not.
    */
   completeSuggestion: (forceComplete?: boolean) => void;
 }
@@ -56,7 +56,7 @@ export interface IBasePickerProps<T> extends React.Props<any> {
   /**
    * A callback for what should happen when a person types text into the input.
    * Returns the already selected items so the resolver can filter them out.
-   * If used in conjunction with resolveDelay this will ony kick off after the delay throttle.
+   * If used in conjunction with resolveDelay this will only kick off after the delay throttle.
    */
   onResolveSuggestions: (filter: string, selectedItems?: T[]) => T[] | PromiseLike<T[]>;
 
@@ -78,7 +78,7 @@ export interface IBasePickerProps<T> extends React.Props<any> {
    * A callback for what should happen when suggestions are shown without
    * input provided.
    * Returns the already selected items so the resolver can filter them out.
-   * If used in conjunction with resolveDelay this will ony kick off after the delay throttle.
+   * If used in conjunction with resolveDelay this will only kick off after the delay throttle.
    */
   onEmptyResolveSuggestions?: (selectedItems?: T[]) => T[] | PromiseLike<T[]>;
 

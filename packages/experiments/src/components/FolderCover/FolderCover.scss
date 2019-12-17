@@ -1,5 +1,7 @@
 @import '~office-ui-fabric-react/src/common/common';
 
+$folder-accent: #bf5712;
+
 .root {
   display: inline-flex;
   position: relative;
@@ -87,19 +89,19 @@
 
   .isFluent & {
     @include text-align(left);
-    color: $ms-color-yellowDark;
+    color: $folder-accent;
   }
 
   &,
   &.isSmall {
     font-size: $ms-font-size-s;
-    margin-bottom: 3px;
+    margin-bottom: 1px;
     @include margin-left(4px);
   }
 
   .isLarge & {
     font-size: $ms-font-size-m;
-    margin-bottom: 6px;
+    margin-bottom: 4px;
     @include margin-left(8px);
   }
 }
@@ -111,15 +113,20 @@
   @include margin-left(8px);
   @include margin-right(4px);
 
+  // Added :first-child to CSS selector because a rule from Signal.scss affecting the Icon will otherwise trample this color change.
+  .isFluent & :first-child {
+    color: $folder-accent;
+  }
+
   &,
   &.isSmall {
-    font-size: $ms-font-size-l;
-    margin-bottom: 3px;
+    @include ms-fontSize-16;
+    margin-bottom: 1px;
   }
 
   .isLarge & {
-    font-size: $ms-font-size-xl;
-    margin-bottom: 6px;
+    @include ms-fontSize-16;
+    margin-bottom: 4px;
     @include margin-right(7px);
   }
 }

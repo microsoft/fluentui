@@ -11,7 +11,7 @@ const labelStyles: Partial<IStyleSet<ILabelStyles>> = {
 export const PivotIconCountExample: React.FunctionComponent = () => {
   return (
     <div>
-      <Pivot>
+      <Pivot aria-label="Count and Icon Pivot Example">
         <PivotItem headerText="My Files" itemCount={42} itemIcon="Emoji2">
           <Label styles={labelStyles}>Pivot #1</Label>
         </PivotItem>

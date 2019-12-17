@@ -350,9 +350,9 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
 
         // Get first element that has a distance from top that is further than our sticky that is being added
         let targetStickyToAppendBefore: Sticky | undefined = undefined;
-        for (const i in stickyListSorted) {
-          if ((stickyListSorted[i].state.distanceFromTop || 0) >= (sticky.state.distanceFromTop || 0)) {
-            targetStickyToAppendBefore = stickyListSorted[i];
+        for (const stickyListItem of stickyListSorted) {
+          if ((stickyListItem.state.distanceFromTop || 0) >= (sticky.state.distanceFromTop || 0)) {
+            targetStickyToAppendBefore = stickyListItem;
             break;
           }
         }
@@ -394,7 +394,7 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
   private _getStickyContainerStyle = (height: number, isTop: boolean): React.CSSProperties => {
     return {
       height: height,
-      ...(getRTL()
+      ...(getRTL(this.props.theme)
         ? {
             right: '0',
             left: `${this.state.scrollbarWidth || this._getScrollbarWidth() || 0}px`

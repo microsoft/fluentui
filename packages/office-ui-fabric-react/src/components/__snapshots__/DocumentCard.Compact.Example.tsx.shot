@@ -295,6 +295,7 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
                       text-align: center;
                       width: 32px;
                     }
+                role="presentation"
               >
                 <div
                   aria-hidden="true"
@@ -870,6 +871,7 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
                       text-align: center;
                       width: 32px;
                     }
+                role="presentation"
               >
                 <div
                   className=
@@ -1206,6 +1208,7 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
                       text-align: center;
                       width: 32px;
                     }
+                role="presentation"
               >
                 <div
                   className=
@@ -1544,6 +1547,7 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
                       text-align: center;
                       width: 32px;
                     }
+                role="presentation"
               >
                 <div
                   aria-hidden="true"
