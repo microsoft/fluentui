@@ -61,7 +61,11 @@ function getLabelStyles(props: ITextFieldStyleProps): IStyleFunctionOrObject<ILa
   });
 }
 
-export const getFocusBorder = (color: string, borderRadius: string | number, borderType: 'border' | 'borderBottom' = 'border'): IStyle => ({
+export const getInputFocusBorder = (
+  color: string,
+  borderRadius: string | number,
+  borderType: 'border' | 'borderBottom' = 'border'
+): IStyle => ({
   borderColor: color,
   selectors: {
     ':after': {
@@ -72,7 +76,7 @@ export const getFocusBorder = (color: string, borderRadius: string | number, bor
       top: -1,
       bottom: -1,
       right: -1,
-      [borderType]: '2px solid ' + color,
+      [borderType]: `2px solid ${color}`,
       borderRadius,
       width: borderType === 'borderBottom' ? '100%' : undefined,
       selectors: {
@@ -175,7 +179,7 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
             }
           }
         },
-        focused && getFocusBorder(!hasErrorMessage ? semanticColors.inputFocusBorderAlt : semanticColors.errorText, 'borderBottom')
+        focused && getInputFocusBorder(!hasErrorMessage ? semanticColors.inputFocusBorderAlt : semanticColors.errorText, 'borderBottom')
       ]
     ],
     fieldGroup: [
@@ -214,7 +218,7 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
 
       focused &&
         !underlined &&
-        getFocusBorder(!hasErrorMessage ? semanticColors.inputFocusBorderAlt : semanticColors.errorText, effects.roundedCorner2),
+        getInputFocusBorder(!hasErrorMessage ? semanticColors.inputFocusBorderAlt : semanticColors.errorText, effects.roundedCorner2),
       disabled && {
         borderColor: semanticColors.disabledBackground,
         selectors: {

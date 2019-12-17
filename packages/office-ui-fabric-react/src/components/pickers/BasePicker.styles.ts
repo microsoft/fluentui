@@ -1,6 +1,6 @@
 import { getGlobalClassNames, hiddenContentStyle, HighContrastSelector } from '../../Styling';
 import { IBasePickerStyleProps, IBasePickerStyles } from './BasePicker.types';
-import { getFocusBorder } from '../TextField/TextField.styles';
+import { getInputFocusBorder } from '../TextField/TextField.styles';
 
 const GlobalClassNames = {
   root: 'ms-BasePicker',
@@ -49,7 +49,7 @@ export function getStyles(props: IBasePickerStyleProps): IBasePickerStyles {
             }
           }
         },
-      isFocused && !disabled && getFocusBorder(inputFocusBorderAlt, effects.roundedCorner2),
+      isFocused && !disabled && getInputFocusBorder(inputFocusBorderAlt, effects.roundedCorner2),
       disabled && {
         borderColor: disabledOverlayColor,
         selectors: {

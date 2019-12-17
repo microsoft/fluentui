@@ -1,7 +1,7 @@
 import { HighContrastSelector, AnimationVariables, normalize, IStyle, getPlaceholderStyles, getGlobalClassNames } from '../../Styling';
 import { ISearchBoxStyleProps, ISearchBoxStyles } from './SearchBox.types';
 import { getRTL } from '../../Utilities';
-import { getFocusBorder } from '../TextField/TextField.styles';
+import { getInputFocusBorder } from '../TextField/TextField.styles';
 
 const GlobalClassNames = {
   root: 'ms-SearchBox',
@@ -78,7 +78,11 @@ export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
         {
           position: 'relative'
         },
-        getFocusBorder(semanticColors.inputFocusBorderAlt, underlined ? 0 : effects.roundedCorner2, underlined ? 'borderBottom' : 'border')
+        getInputFocusBorder(
+          semanticColors.inputFocusBorderAlt,
+          underlined ? 0 : effects.roundedCorner2,
+          underlined ? 'borderBottom' : 'border'
+        )
       ],
       disabled && [
         'is-disabled',

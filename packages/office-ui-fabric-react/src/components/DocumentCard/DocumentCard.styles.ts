@@ -5,6 +5,7 @@ import { DocumentCardPreviewGlobalClassNames as previewClassNames } from './Docu
 import { DocumentCardActivityGlobalClassNames as activityClassNames } from './DocumentCardActivity.styles';
 import { DocumentCardTitleGlobalClassNames as titleClassNames } from './DocumentCardTitle.styles';
 import { DocumentCardLocationGlobalClassNames as locationClassNames } from './DocumentCardLocation.styles';
+import { getInputFocusBorder } from '../TextField/TextField.styles';
 
 const GlobalClassNames = {
   root: 'ms-DocumentCard',
@@ -14,29 +15,9 @@ const GlobalClassNames = {
 
 export const getStyles = (props: IDocumentCardStyleProps): IDocumentCardStyles => {
   const { className, theme, actionable, compact } = props;
-  const { palette, fonts } = theme;
+  const { palette, fonts, effects } = theme;
 
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
-
-  const getFocusBorder: IStyle = {
-    selectors: {
-      ':after': {
-        pointerEvents: 'none',
-        content: "''",
-        position: 'absolute',
-        left: -1,
-        top: -1,
-        bottom: -1,
-        right: -1,
-        border: '2px solid ' + palette.neutralSecondary,
-        selectors: {
-          [HighContrastSelector]: {
-            borderColor: 'Highlight'
-          }
-        }
-      }
-    }
-  };
 
   return {
     root: [
@@ -53,9 +34,7 @@ export const getStyles = (props: IDocumentCardStyleProps): IDocumentCardStyles =
           ':focus': {
             outline: '0px solid'
           },
-          [`.${IsFocusVisibleClassName} &:focus`]: {
-            ...getFocusBorder
-          },
+          [`.${IsFocusVisibleClassName} &:focus`]: getInputFocusBorder(palette.neutralSecondary, effects.roundedCorner2),
           [`.${locationClassNames.root} + .${titleClassNames.root}`]: {
             paddingTop: '4px'
           }
