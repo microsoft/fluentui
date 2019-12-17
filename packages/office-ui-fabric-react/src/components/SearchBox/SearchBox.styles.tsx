@@ -14,6 +14,27 @@ export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
   const { theme, underlined, disabled, hasFocus, className, hasInput, disableAnimation } = props;
   const { palette, fonts, semanticColors, effects } = theme;
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
+  const getFocusBorder = (color: string): IStyle => ({
+    borderColor: color,
+    selectors: {
+      ':after': {
+        pointerEvents: 'none',
+        content: "''",
+        position: 'absolute',
+        left: -1,
+        top: -1,
+        bottom: -1,
+        right: -1,
+        border: '2px solid ' + color,
+        borderRadius: effects.roundedCorner2,
+        selectors: {
+          [HighContrastSelector]: {
+            borderColor: 'Highlight'
+          }
+        }
+      }
+    }
+  });
 
   // placeholder style constants
   const placeholderStyles: IStyle = {
@@ -75,16 +96,14 @@ export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
       hasFocus && [
         'is-active',
         {
-          borderColor: semanticColors.inputFocusBorderAlt,
+          position: 'relative',
           selectors: {
-            ':hover': {
-              borderColor: semanticColors.inputFocusBorderAlt
-            },
             [HighContrastSelector]: {
               borderColor: 'Highlight'
             }
           }
-        }
+        },
+        getFocusBorder(semanticColors.inputFocusBorderAlt)
       ],
       disabled && [
         'is-disabled',
