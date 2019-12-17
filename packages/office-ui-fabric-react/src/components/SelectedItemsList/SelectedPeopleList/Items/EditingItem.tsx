@@ -54,7 +54,7 @@ export class EditingItem extends BaseComponent<IEditingSelectedPeopleItemProps, 
           onBlur={this._onInputBlur}
           onClick={this._onInputClick}
           data-lpignore={true}
-          className={styles.editingInput}
+          className={css('ms-BasePicker-input', styles.editingInput)}
           id={itemId}
         />
         {this._renderEditingSuggestions()}
