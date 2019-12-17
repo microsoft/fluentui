@@ -96,12 +96,7 @@ export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
       hasFocus && [
         'is-active',
         {
-          position: 'relative',
-          selectors: {
-            [HighContrastSelector]: {
-              borderColor: 'Highlight'
-            }
-          }
+          position: 'relative'
         },
         getFocusBorder(semanticColors.inputFocusBorderAlt)
       ],
