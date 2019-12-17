@@ -55,5 +55,5 @@ jobs:
         displayName: 'Size Auditor Check on LightRail'
         inputs:
           connectedServiceName: lowimpact
-          sourceVersionMessage: $(Build.SourceVersionMessage)
+          sourceVersionMessage: "$(Build.SourceVersionMessage)"
           sourceRepositoryUrl: 'https://github.com/OfficeDev/office-ui-fabric-react'
