@@ -1,6 +1,7 @@
 import { HighContrastSelector, AnimationVariables, normalize, IStyle, getPlaceholderStyles, getGlobalClassNames } from '../../Styling';
 import { ISearchBoxStyleProps, ISearchBoxStyles } from './SearchBox.types';
 import { getRTL } from '../../Utilities';
+import { getFocusBorder } from '../TextField/TextField.styles';
 
 const GlobalClassNames = {
   root: 'ms-SearchBox',
@@ -14,27 +15,6 @@ export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
   const { theme, underlined, disabled, hasFocus, className, hasInput, disableAnimation } = props;
   const { palette, fonts, semanticColors, effects } = theme;
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
-  const getFocusBorder = (color: string): IStyle => ({
-    borderColor: color,
-    selectors: {
-      ':after': {
-        pointerEvents: 'none',
-        content: "''",
-        position: 'absolute',
-        left: -1,
-        top: -1,
-        bottom: -1,
-        right: -1,
-        border: '2px solid ' + color,
-        borderRadius: effects.roundedCorner2,
-        selectors: {
-          [HighContrastSelector]: {
-            borderColor: 'Highlight'
-          }
-        }
-      }
-    }
-  });
 
   // placeholder style constants
   const placeholderStyles: IStyle = {
@@ -98,7 +78,7 @@ export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
         {
           position: 'relative'
         },
-        getFocusBorder(semanticColors.inputFocusBorderAlt)
+        getFocusBorder(semanticColors.inputFocusBorderAlt, underlined ? 0 : effects.roundedCorner2, underlined ? 'borderBottom' : 'border')
       ],
       disabled && [
         'is-disabled',

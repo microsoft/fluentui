@@ -61,6 +61,29 @@ function getLabelStyles(props: ITextFieldStyleProps): IStyleFunctionOrObject<ILa
   });
 }
 
+export const getFocusBorder = (color: string, borderRadius: string | number, borderType: 'border' | 'borderBottom' = 'border'): IStyle => ({
+  borderColor: color,
+  selectors: {
+    ':after': {
+      pointerEvents: 'none',
+      content: "''",
+      position: 'absolute',
+      left: -1,
+      top: -1,
+      bottom: -1,
+      right: -1,
+      [borderType]: '2px solid ' + color,
+      borderRadius,
+      width: borderType === 'borderBottom' ? '100%' : undefined,
+      selectors: {
+        [HighContrastSelector]: {
+          [borderType === 'border' ? 'borderColor' : 'borderBottomColor']: 'Highlight'
+        }
+      }
+    }
+  }
+});
+
 export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
   const {
     theme,
@@ -106,29 +129,6 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
   const disabledPlaceholderStyles: IStyle = {
     color: semanticColors.disabledText
   };
-
-  const getFocusBorder = (color: string, borderType: 'border' | 'borderBottom' = 'border'): IStyle => ({
-    borderColor: color,
-    selectors: {
-      ':after': {
-        pointerEvents: 'none',
-        content: "''",
-        position: 'absolute',
-        left: -1,
-        top: -1,
-        bottom: -1,
-        right: -1,
-        [borderType]: '2px solid ' + color,
-        borderRadius: effects.roundedCorner2,
-        width: borderType === 'borderBottom' ? '100%' : undefined,
-        selectors: {
-          [HighContrastSelector]: {
-            [borderType === 'border' ? 'borderColor' : 'borderBottomColor']: 'Highlight'
-          }
-        }
-      }
-    }
-  });
 
   return {
     root: [
@@ -212,7 +212,9 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
           }
         },
 
-      focused && !underlined && getFocusBorder(!hasErrorMessage ? semanticColors.inputFocusBorderAlt : semanticColors.errorText),
+      focused &&
+        !underlined &&
+        getFocusBorder(!hasErrorMessage ? semanticColors.inputFocusBorderAlt : semanticColors.errorText, effects.roundedCorner2),
       disabled && {
         borderColor: semanticColors.disabledBackground,
         selectors: {

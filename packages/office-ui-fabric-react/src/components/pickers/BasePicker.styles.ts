@@ -1,5 +1,6 @@
-import { getGlobalClassNames, hiddenContentStyle, HighContrastSelector, IStyle } from '../../Styling';
+import { getGlobalClassNames, hiddenContentStyle, HighContrastSelector } from '../../Styling';
 import { IBasePickerStyleProps, IBasePickerStyles } from './BasePicker.types';
+import { getFocusBorder } from '../TextField/TextField.styles';
 
 const GlobalClassNames = {
   root: 'ms-BasePicker',
@@ -18,27 +19,6 @@ export function getStyles(props: IBasePickerStyleProps): IBasePickerStyles {
   const { inputBorder, inputBorderHovered, inputFocusBorderAlt } = semanticColors;
 
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
-  const getFocusBorder = (color: string): IStyle => ({
-    borderColor: color,
-    selectors: {
-      ':after': {
-        pointerEvents: 'none',
-        content: "''",
-        position: 'absolute',
-        left: -1,
-        top: -1,
-        bottom: -1,
-        right: -1,
-        border: '2px solid ' + color,
-        borderRadius: effects.roundedCorner2,
-        selectors: {
-          [HighContrastSelector]: {
-            borderColor: 'Highlight'
-          }
-        }
-      }
-    }
-  });
 
   // The following lines are to create a semi-transparent color overlay for the disabled state with designer's approval.
   // @todo: investigate the performance cost of the calculation below and apply if negligible. Replacing with a static color for now.
@@ -69,7 +49,7 @@ export function getStyles(props: IBasePickerStyleProps): IBasePickerStyles {
             }
           }
         },
-      isFocused && !disabled && getFocusBorder(inputFocusBorderAlt),
+      isFocused && !disabled && getFocusBorder(inputFocusBorderAlt, effects.roundedCorner2),
       disabled && {
         borderColor: disabledOverlayColor,
         selectors: {
