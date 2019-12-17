@@ -4,11 +4,9 @@ jobs:
       name: Hosted VS2017
       demands: npm
     steps:
-      - script: |
-          echo 'Environment variable'
-          echo $BUILD_SOURCEVERSIONMESSAGE
-          echo 'Pipeline variable'
-          echo '$(Build.SourceVersionMessage)'
+      - powershell: |
+          write-host "Environment variable: $env:BUILD_SOURCEVERSIONMESSAGE"
+          write-host "Pipeline variable: $(Build.SourceVersionMessage)"
         displayName: 'Echo source version message'
 
       - task: NodeTool@0
@@ -58,11 +56,9 @@ jobs:
     pool: server
     dependsOn: build
     steps:
-      - script: |
-          echo 'Environment variable'
-          echo $BUILD_SOURCEVERSIONMESSAGE
-          echo 'Pipeline variable'
-          echo '$(Build.SourceVersionMessage)'
+      - powershell: |
+          write-host "Environment variable: $env:BUILD_SOURCEVERSIONMESSAGE"
+          write-host "Pipeline variable: $(Build.SourceVersionMessage)"
         displayName: 'Echo source version message'
 
       - task: odefun.odsp-lightrail-tasks-partner.odsp-lightrail-tasks-SizeAuditorWorker.SizeAuditorWorker@0
