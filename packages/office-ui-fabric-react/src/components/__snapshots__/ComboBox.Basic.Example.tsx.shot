@@ -58,7 +58,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
               padding-top: 5px;
               word-wrap: break-word;
             }
-        htmlFor="ComboBox0-input"
         id="ComboBox0-label"
       >
         Single-select ComboBox (uncontrolled, allowFreeform: T, autoComplete: T)
@@ -593,7 +592,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
             padding-top: 5px;
             word-wrap: break-word;
           }
-      htmlFor="ComboBox7-input"
       id="ComboBox7-label"
     >
       Multi-select ComboBox (uncontrolled)
@@ -988,7 +986,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
             padding-top: 5px;
             word-wrap: break-word;
           }
-      htmlFor="ComboBox11-input"
       id="ComboBox11-label"
     >
       ComboBox with placeholder text
@@ -1384,7 +1381,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
             padding-top: 5px;
             word-wrap: break-word;
           }
-      htmlFor="ComboBox15-input"
       id="ComboBox15-label"
     >
       ComboBox with persisted menu
@@ -3573,7 +3569,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
             padding-top: 5px;
             word-wrap: break-word;
           }
-      htmlFor="ComboBox19-input"
       id="ComboBox19-label"
     >
       ComboBox with static error message
@@ -3907,7 +3902,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
             padding-top: 5px;
             word-wrap: break-word;
           }
-      htmlFor="ComboBox23-input"
       id="ComboBox23-label"
     >
       ComboBox with dynamic error message
@@ -4306,7 +4300,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
           @media screen and (-ms-high-contrast: active){& {
             color: GrayText;
           }
-      htmlFor="ComboBox27-input"
       id="ComboBox27-label"
     >
       Disabled ComboBox
