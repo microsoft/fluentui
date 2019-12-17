@@ -1,7 +1,13 @@
 # Change Log - @uifabric/file-type-icons
 
-This log was last generated on Fri, 06 Dec 2019 12:33:21 GMT and should not be manually modified.
+This log was last generated on Tue, 17 Dec 2019 12:29:42 GMT and should not be manually modified.
 
+## 7.2.1
+Tue, 17 Dec 2019 12:29:42 GMT
+
+### Patches
+
+- Refining typography and signal icon on top of Folder Icon, filetype mapping updates (caperez@microsoft.com)
 ## 7.2.0
 Fri, 06 Dec 2019 12:33:21 GMT
 

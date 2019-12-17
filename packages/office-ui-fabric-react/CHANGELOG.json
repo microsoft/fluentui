@@ -2,6 +2,25 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Tue, 17 Dec 2019 12:29:42 GMT",
+      "tag": "office-ui-fabric-react_v7.74.1",
+      "version": "7.74.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "ProgressIndicator: improve high contrast colors for progress bar",
+            "author": "micahgodbolt@gmail.com",
+            "commit": "b7509013866f12f382107f870949a65b2a7be509"
+          },
+          {
+            "comment": "PersonaCoin: make divs role presentation",
+            "author": "micahgodbolt@gmail.com",
+            "commit": "c6290045f0f34b3dba3e0b16b5c31a8536f8c6ea"
+          }
+        ]
+      }
+    },
+    {
       "date": "Sun, 15 Dec 2019 23:45:36 GMT",
       "tag": "office-ui-fabric-react_v7.74.0",
       "version": "7.74.0",

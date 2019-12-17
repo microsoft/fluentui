@@ -2,6 +2,20 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "date": "Tue, 17 Dec 2019 12:29:42 GMT",
+      "tag": "@uifabric/utilities_v7.7.1",
+      "version": "7.7.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "add select to be a focusable target for focus utility",
+            "author": "joschect@microsoft.com",
+            "commit": "1268c4eac18a6c1b19f95c33cb2eb3988d54b47f"
+          }
+        ]
+      }
+    },
+    {
       "date": "Sun, 15 Dec 2019 23:45:36 GMT",
       "tag": "@uifabric/utilities_v7.7.0",
       "version": "7.7.0",
