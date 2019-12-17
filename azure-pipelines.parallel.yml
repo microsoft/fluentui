@@ -65,7 +65,7 @@ jobs:
       displayName: yarn
 
     - script: |
-        npm run just perf-test
+        npm run just run-perf-test
       workingDirectory: apps/perf-test
       displayName: Perf Test
 
