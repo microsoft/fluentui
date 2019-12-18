@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "ProgressIndicator: improve high contrast colors for progress bar",
-  "packageName": "office-ui-fabric-react",
-  "email": "micahgodbolt@gmail.com",
-  "commit": "b7509013866f12f382107f870949a65b2a7be509",
-  "date": "2019-12-13T03:13:27.328Z"
-}
