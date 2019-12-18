@@ -25,6 +25,10 @@ steps:
     displayName: check change
 
   - script: |
+      yarn showEnv
+    displayName: showEnv
+
+  - script: |
       npm run buildci
     displayName: build ci
 

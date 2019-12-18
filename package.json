@@ -8,6 +8,7 @@
     "url": "https://github.com/OfficeDev/office-ui-fabric-react"
   },
   "scripts": {
+    "showEnv": "node ./scripts/showEnv.js",
     "preinstall": "node ./scripts/use-yarn-please.js",
     "postinstall": "node ./scripts/postinstall.js",
     "buildto": "node ./scripts/monorepo/buildTo.js",
