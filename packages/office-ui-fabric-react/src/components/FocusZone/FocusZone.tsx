@@ -569,12 +569,12 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
           }
           return;
         case KeyCodes.pageDown:
-          if (direction !== FocusZoneDirection.horizontal && this._movePageDown()) {
+          if (this._movePageDown()) {
             break;
           }
           return;
         case KeyCodes.pageUp:
-          if (direction !== FocusZoneDirection.horizontal && this._movePageUp()) {
+          if (this._movePageUp()) {
             break;
           }
           return;
