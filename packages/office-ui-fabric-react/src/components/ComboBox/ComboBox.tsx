@@ -359,7 +359,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     // so that the selected items don't appear to vanish. This is not ideal but it's the only reasonable way
     // to correct the behavior where the input is cleared so the user can type. If a full refactor is done, then this
     // should be removed and the multiselect combobox should behave like a picker.
-    const placeholder = focus && this.props.multiSelect && multiselectAccessibleText ? multiselectAccessibleText : placeholderProp;
+    const placeholder = focused && this.props.multiSelect && multiselectAccessibleText ? multiselectAccessibleText : placeholderProp;
 
     this._classNames = this.props.getClassNames
       ? this.props.getClassNames(theme!, !!isOpen, !!disabled, !!required, !!focused, !!allowFreeform, !!hasErrorMessage, className)

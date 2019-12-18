@@ -819,7 +819,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
         onKeyDown={[Function]}
         onKeyUp={[Function]}
         onTouchStart={[Function]}
-        placeholder="Option C, Option E"
         readOnly={false}
         role="combobox"
         spellCheck={false}
