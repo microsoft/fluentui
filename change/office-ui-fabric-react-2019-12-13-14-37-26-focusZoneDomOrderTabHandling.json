@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "FocusZone: Adding tab handle for DomOrder direction.",
-  "packageName": "office-ui-fabric-react",
-  "email": "Humberto.Morimoto@microsoft.com",
-  "commit": "15fc4fbae5bb62a79129c26cd30799b35fe15336",
-  "date": "2019-12-13T22:37:26.232Z"
-}
