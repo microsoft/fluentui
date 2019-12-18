@@ -1,7 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 17 Dec 2019 12:29:42 GMT and should not be manually modified.
+This log was last generated on Wed, 18 Dec 2019 12:30:18 GMT and should not be manually modified.
 
+## 7.74.2
+Wed, 18 Dec 2019 12:30:18 GMT
+
+### Patches
+
+- FocusZone: Adding tab handle for DomOrder direction. (Humberto.Morimoto@microsoft.com)
 ## 7.74.1
 Tue, 17 Dec 2019 12:29:42 GMT
 
