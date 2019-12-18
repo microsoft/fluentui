@@ -47,13 +47,13 @@ jobs:
           PathtoPublish: 'packages/office-ui-fabric-react/dist/office-ui-fabric-react.js'
           ArtifactName: oufrdrop
 
-  # - job: lightrail
-  #   pool: server
-  #   dependsOn: build
-  #   steps:
-  #     - task: odefun.odsp-lightrail-tasks-partner.odsp-lightrail-tasks-SizeAuditorWorker.SizeAuditorWorker@0
-  #       displayName: 'Size Auditor Check on LightRail'
-  #       inputs:
-  #         connectedServiceName: lowimpact
-  #         sourceVersionMessage: '$(Build.SourceVersionMessage)'
-  #         sourceRepositoryUrl: 'https://github.com/OfficeDev/office-ui-fabric-react'
+  - job: lightrail
+    pool: server
+    dependsOn: build
+    steps:
+      - task: odefun.odsp-lightrail-tasks-partner.odsp-lightrail-tasks-SizeAuditorWorker.SizeAuditorWorker@0
+        displayName: 'Size Auditor Check on LightRail'
+        inputs:
+          connectedServiceName: lowimpact
+          sourceVersionMessage: '$(Build.SourceVersionMessage)'
+          sourceRepositoryUrl: 'https://github.com/OfficeDev/office-ui-fabric-react'
