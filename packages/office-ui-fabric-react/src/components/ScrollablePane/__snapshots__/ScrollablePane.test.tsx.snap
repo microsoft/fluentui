@@ -33,6 +33,7 @@ exports[`ScrollablePane renders correctly 1`] = `
     data-is-scrollable={true}
   />
   <div
+    aria-hidden="true"
     className=
 
         {
@@ -53,6 +54,7 @@ exports[`ScrollablePane renders correctly 1`] = `
     }
   />
   <div
+    aria-hidden="true"
     className=
 
         {
