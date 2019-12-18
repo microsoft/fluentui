@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Combobox: Support aria-posinset for input values when dropdown is closed",
+  "packageName": "office-ui-fabric-react",
+  "email": "mgodbolt@microsoft.com",
+  "commit": "2c2cb046182bdc559e20c4af7693712cc14fcced",
+  "date": "2019-12-18T22:35:45.012Z"
+}
