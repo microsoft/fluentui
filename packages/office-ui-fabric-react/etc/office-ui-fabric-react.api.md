@@ -2558,10 +2558,13 @@ export interface IColorPickerState {
 // @public (undocumented)
 export interface IColorPickerStrings {
     alpha?: string;
+    alphaAriaLabel?: string;
     blue?: string;
     green?: string;
     hex?: string;
+    // @deprecated
     hue?: string;
+    hueAriaLabel?: string;
     red?: string;
     rootAriaLabelFormat?: string;
     svAriaDescription?: string;
