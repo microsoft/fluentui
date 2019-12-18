@@ -144,6 +144,8 @@ exports[`ComboBox Renders correctly 1`] = `
     <input
       aria-autocomplete="both"
       aria-expanded={false}
+      aria-live="polite"
+      aria-setsize={3}
       autoCapitalize="off"
       autoComplete="off"
       className=
@@ -514,6 +516,8 @@ exports[`ComboBox renders with a Keytip correctly 1`] = `
       aria-autocomplete="both"
       aria-describedby="ktp-layer-id ktp-a"
       aria-expanded={false}
+      aria-live="polite"
+      aria-setsize={3}
       autoCapitalize="off"
       autoComplete="off"
       className=

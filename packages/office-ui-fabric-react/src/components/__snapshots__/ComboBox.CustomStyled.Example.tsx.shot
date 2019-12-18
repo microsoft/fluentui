@@ -204,6 +204,9 @@ exports[`Component Examples renders ComboBox.CustomStyled.Example.tsx correctly 
         aria-autocomplete="both"
         aria-expanded={false}
         aria-labelledby="ComboBox0-label"
+        aria-live="polite"
+        aria-posinset={4}
+        aria-setsize={4}
         autoCapitalize="off"
         autoComplete="off"
         className=
@@ -598,6 +601,9 @@ exports[`Component Examples renders ComboBox.CustomStyled.Example.tsx correctly 
         aria-autocomplete="inline"
         aria-expanded={false}
         aria-labelledby="ComboBox4-label"
+        aria-live="polite"
+        aria-posinset={4}
+        aria-setsize={4}
         autoCapitalize="off"
         autoComplete="off"
         className=
