@@ -935,10 +935,92 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
 
     return false;
   }
+  private _moveFocusPaging(
+    isForward: boolean,
+    getDistanceFromCenter: (activeRect: ClientRect, targetRect: ClientRect) => number,
+    useDefaultWrap: boolean = true
+  ): boolean {
+    if (useDefaultWrap === void 0) {
+      useDefaultWrap = true;
+    }
+    let element = this._activeElement;
+    let candidateDistance = -1;
+    let candidateElement = undefined;
+    let changedFocus = false;
+    let pagesize = 0;
+    let targetTop = -1;
+    let targetBottom = -1;
+
+    if (!element || !this._root.current) {
+      return false;
+    }
+    if (this._isElementInput(element)) {
+      if (!this._shouldInputLoseFocus(element as HTMLInputElement, isForward)) {
+        return false;
+      }
+    }
+    const scrollableParent = findScrollableParent(element);
+    if (scrollableParent) {
+      pagesize = scrollableParent.clientHeight;
+      const activeRect = element.getBoundingClientRect();
+      do {
+        element = isForward ? getNextElement(this._root.current, element) : getPreviousElement(this._root.current, element);
+        if (element) {
+          const targetRect = element.getBoundingClientRect();
+          const targetRectTop = Math.floor(targetRect.top);
+          const activeRectBottom = Math.floor(activeRect.bottom);
+          var targetRectBottom = Math.floor(targetRect.bottom);
+          var activeRectTop = Math.floor(activeRect.top);
+          const elementDistance = getDistanceFromCenter(activeRect, targetRect);
+
+          // for paging down
+          if (isForward && targetRectTop > activeRectBottom + pagesize) {
+            break;
+          }
+          // for paging up
+          if (!isForward && targetRectBottom < activeRectTop - pagesize) {
+            break;
+          }
+          if (elementDistance > -1) {
+            // for paging down
+            if (isForward && targetRectTop > targetTop) {
+              targetTop = targetRectTop;
+              candidateDistance = elementDistance;
+              candidateElement = element;
+            }
+            // for paging up
+            else if (!isForward && targetRectBottom < targetBottom) {
+              targetBottom = targetRectBottom;
+              candidateDistance = elementDistance;
+              candidateElement = element;
+            } else {
+              if (candidateDistance === -1 || elementDistance <= candidateDistance) {
+                candidateDistance = elementDistance;
+                candidateElement = element;
+              }
+            }
+          }
+        }
+      } while (element);
+
+      // Focus the closest candidate
+      if (candidateElement && candidateElement !== this._activeElement) {
+        changedFocus = true;
+        this.focusElement(candidateElement);
+      } else if (this.props.isCircularNavigation && useDefaultWrap && isForward) {
+        return this.focusElement(getNextElement(
+          this._root.current,
+          this._root.current.firstElementChild as HTMLElement,
+          true
+        ) as HTMLElement);
+      }
+    }
+    return changedFocus;
+  }
   private _movePageDown(): boolean {
     const leftAlignment = this._focusAlignment.x;
     if (
-      this._moveFocusPageDown(true, (activeRect: ClientRect, targetRect: ClientRect) => {
+      this._moveFocusPaging(true, (activeRect: ClientRect, targetRect: ClientRect) => {
         let distance = -1;
         // ClientRect values can be floats that differ by very small fractions of a decimal.
         // If the difference between top and bottom are within a pixel then we should treat
@@ -967,78 +1049,10 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
     return false;
   }
 
-  private _moveFocusPageDown(
-    isForward: boolean,
-    getDistanceFromCenter: (activeRect: ClientRect, targetRect: ClientRect) => number,
-    useDefaultWrap: boolean = true
-  ): boolean {
-    if (useDefaultWrap === void 0) {
-      useDefaultWrap = true;
-    }
-    let element = this._activeElement;
-    let candidateDistance = -1;
-    let candidateElement = undefined;
-    let changedFocus = false;
-    let pagesize = 0;
-    let targetTop = -1;
-
-    if (!element || !this._root.current) {
-      return false;
-    }
-    if (this._isElementInput(element)) {
-      if (!this._shouldInputLoseFocus(element as HTMLInputElement, isForward)) {
-        return false;
-      }
-    }
-    const scrollableParent = findScrollableParent(element);
-    if (scrollableParent) {
-      pagesize = scrollableParent.clientHeight;
-      const activeRect = element.getBoundingClientRect();
-      do {
-        element = getNextElement(this._root.current, element);
-        if (element) {
-          const targetRect = element.getBoundingClientRect();
-          const targetRectTop = Math.floor(targetRect.top);
-          const activeRectBottom = Math.floor(activeRect.bottom);
-          const elementDistance = getDistanceFromCenter(activeRect, targetRect);
-
-          if (targetRectTop > activeRectBottom + pagesize) {
-            break;
-          }
-          if (elementDistance > -1) {
-            if (targetRectTop > targetTop) {
-              targetTop = targetRectTop;
-              candidateDistance = elementDistance;
-              candidateElement = element;
-            } else {
-              if (candidateDistance === -1 || elementDistance <= candidateDistance) {
-                candidateDistance = elementDistance;
-                candidateElement = element;
-              }
-            }
-          }
-        }
-      } while (element);
-
-      // Focus the closest candidate
-      if (candidateElement && candidateElement !== this._activeElement) {
-        changedFocus = true;
-        this.focusElement(candidateElement);
-      } else if (this.props.isCircularNavigation && useDefaultWrap && isForward) {
-        return this.focusElement(getNextElement(
-          this._root.current,
-          this._root.current.firstElementChild as HTMLElement,
-          true
-        ) as HTMLElement);
-      }
-    }
-    return changedFocus;
-  }
-
   private _movePageUp(): boolean {
     const leftAlignment = this._focusAlignment.x;
     if (
-      this._moveFocusPageUp(false, (activeRect: ClientRect, targetRect: ClientRect) => {
+      this._moveFocusPaging(false, (activeRect: ClientRect, targetRect: ClientRect) => {
         let distance = -1;
         // ClientRect values can be floats that differ by very small fractions of a decimal.
         // If the difference between top and bottom are within a pixel then we should treat
@@ -1066,76 +1080,6 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
       return true;
     }
     return false;
-  }
-
-  private _moveFocusPageUp(
-    isForward: boolean,
-    getDistanceFromCenter: (activeRect: ClientRect, targetRect: ClientRect) => number,
-    useDefaultWrap: boolean = true
-  ): boolean {
-    if (useDefaultWrap === void 0) {
-      useDefaultWrap = true;
-    }
-    let element = this._activeElement;
-    let candidateDistance = -1;
-    let candidateElement = undefined;
-    let changedFocus = false;
-    let pagesize = 0;
-    let targetBottom = -1;
-
-    if (!element || !this._root.current) {
-      return false;
-    }
-    if (this._isElementInput(element)) {
-      if (!this._shouldInputLoseFocus(element as HTMLInputElement, isForward)) {
-        return false;
-      }
-    }
-    const scrollableParent = findScrollableParent(element);
-    if (scrollableParent) {
-      pagesize = scrollableParent.clientHeight;
-      const activeRect = element.getBoundingClientRect();
-      do {
-        element = getPreviousElement(this._root.current, element);
-        if (element) {
-          const targetRect = element.getBoundingClientRect();
-          const targetRectBottom = Math.floor(targetRect.bottom);
-          const activeRectTop = Math.floor(activeRect.top);
-          const elementDistance = getDistanceFromCenter(activeRect, targetRect);
-
-          if (targetRectBottom < activeRectTop - pagesize) {
-            break;
-          }
-          if (elementDistance > -1) {
-            if (targetRectBottom < targetBottom) {
-              targetBottom = targetRectBottom;
-              candidateDistance = elementDistance;
-              candidateElement = element;
-            } else {
-              if (candidateDistance === -1 || elementDistance <= candidateDistance) {
-                candidateDistance = elementDistance;
-                candidateElement = element;
-              }
-            }
-          }
-        }
-      } while (element);
-
-      // Focus the closest candidate
-      if (candidateElement && candidateElement !== this._activeElement) {
-        changedFocus = true;
-        this.focusElement(candidateElement);
-      } else if (this.props.isCircularNavigation && useDefaultWrap && !isForward) {
-        return this.focusElement(getPreviousElement(
-          this._root.current,
-          this._root.current.lastElementChild as HTMLElement,
-          true,
-          true,
-          true
-        ) as HTMLElement);
-      }
-    }
-    return changedFocus;
   }
 
   private _setFocusAlignment(element: HTMLElement, isHorizontal?: boolean, isVertical?: boolean) {
