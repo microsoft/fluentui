@@ -800,6 +800,13 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
     </div>
   </div>
   <div
+    aria-live="polite"
+    className=
+
+
+    role="status"
+  />
+  <div
     className="ms-Viewport"
     style={
       Object {

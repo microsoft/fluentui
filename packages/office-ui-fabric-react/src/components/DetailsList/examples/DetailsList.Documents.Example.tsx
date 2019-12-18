@@ -202,6 +202,7 @@ export class DetailsListDocumentsExample extends React.Component<{}, IDetailsLis
           <TextField label="Filter by name:" onChange={this._onChangeText} styles={controlStyles} />
         </div>
         <div className={classNames.selectionDetails}>{selectionDetails}</div>
+        <Announced message={selectionDetails} />
         {announcedMessage ? <Announced message={announcedMessage} /> : undefined}
         {isModalSelection ? (
           <MarqueeSelection selection={this._selection}>

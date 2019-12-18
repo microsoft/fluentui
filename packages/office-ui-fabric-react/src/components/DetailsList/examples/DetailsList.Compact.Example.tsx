@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Announced } from 'office-ui-fabric-react/lib/Announced';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import { DetailsList, DetailsListLayoutMode, Selection, IColumn } from 'office-ui-fabric-react/lib/DetailsList';
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
@@ -59,6 +60,7 @@ export class DetailsListCompactExample extends React.Component<{}, IDetailsListC
     return (
       <Fabric>
         <div className={exampleChildClass}>{selectionDetails}</div>
+        <Announced message={selectionDetails} />
         <TextField
           className={exampleChildClass}
           label="Filter by name:"

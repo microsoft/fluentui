@@ -160,6 +160,7 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
           )}
           farItems={[{ key: 'count', text: `${this.state.selectionCount} selected` }]}
         />
+        <Announced message={`${this.state.selectionCount} selected`} />
 
         {isGrouped ? <TextField label="Group item limit" onChange={this._onItemLimitChanged} /> : null}
 
