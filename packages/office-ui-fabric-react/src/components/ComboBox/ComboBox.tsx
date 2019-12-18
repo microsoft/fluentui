@@ -27,6 +27,7 @@ import { KeytipData } from '../../KeytipData';
 import { Label } from '../../Label';
 import { SelectableOptionMenuItemType, getAllSelectedOptions } from '../../utilities/selectableOption/index';
 import { BaseButton, Button } from '../Button/index';
+import { DropdownSizePosCache } from '../Dropdown/utilities/DropdownSizePosCache';
 
 export interface IComboBoxState {
   /** The open state */
@@ -122,6 +123,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     buttonIconProps: { iconName: 'ChevronDown' }
   };
 
+  private _sizePosCache: DropdownSizePosCache = new DropdownSizePosCache();
+
   private _root = React.createRef<HTMLDivElement>();
 
   /** The input aspect of the comboBox */
@@ -191,12 +194,16 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
     const initialSelectedIndices: number[] = this._getSelectedIndices(props.options, selectedKeys);
 
+    this._sizePosCache.updateOptions(props.options);
+
     this.state = {
       isOpen: false,
       selectedIndices: initialSelectedIndices,
       focused: false,
       suggestedDisplayValue: undefined,
+      // suggestedDisplayIndex: undefined,
       currentOptions: this.props.options,
+      // currentPendingValueValidIndex: initialSelectedIndices.length ? initialSelectedIndices[0] : -1,
       currentPendingValueValidIndex: -1,
       currentPendingValue: undefined,
       currentPendingValueValidIndexOnHover: HoverStatus.default
@@ -242,6 +249,13 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
           suggestedDisplayValue: undefined
         });
       }
+    }
+
+    if (
+      newProps.options !== this.props.options && // preexisting code assumes purity of the options...
+      !newProps.multiSelect // only relevant in single selection
+    ) {
+      this._sizePosCache.updateOptions(newProps.options);
     }
   }
 
@@ -341,7 +355,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       iconButtonProps,
       multiSelect
     } = this.props;
-    const { isOpen, focused, suggestedDisplayValue } = this.state;
+    const { isOpen, focused, suggestedDisplayValue, selectedIndices = [], currentPendingValueValidIndex } = this.state;
     this._currentVisibleValue = this._getVisibleValue();
 
     // Single select is already accessible since the whole text is selected
@@ -391,6 +405,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
               className={this._classNames.root}
             >
               <Autofill
+                aria-live="polite"
                 data-ktp-execute-target={keytipAttributes['data-ktp-execute-target']}
                 data-is-interactable={!disabled}
                 componentRef={this._autofill}
@@ -408,6 +423,10 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
                 aria-autocomplete={this._getAriaAutoCompleteValue()}
                 role="combobox"
                 readOnly={disabled || !allowFreeform}
+                aria-posinset={this._sizePosCache.positionInSet(
+                  currentPendingValueValidIndex > 0 ? currentPendingValueValidIndex : selectedIndices[0]
+                )}
+                aria-setsize={this._sizePosCache.optionSetSize}
                 aria-labelledby={label && id + '-label'}
                 aria-label={ariaLabel && !label ? ariaLabel : undefined}
                 aria-describedby={
