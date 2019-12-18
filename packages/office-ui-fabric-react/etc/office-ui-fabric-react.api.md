@@ -2826,6 +2826,7 @@ export interface IComboBoxStyles {
     rootFocused: IStyle;
     rootHovered: IStyle;
     rootPressed: IStyle;
+    screenReaderText: IStyle;
 }
 
 // @public (undocumented)
