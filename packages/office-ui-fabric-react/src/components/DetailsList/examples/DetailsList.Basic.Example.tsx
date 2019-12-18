@@ -19,7 +19,7 @@ export interface IDetailsListBasicExampleItem {
 
 export interface IDetailsListBasicExampleState {
   items: IDetailsListBasicExampleItem[];
-  selectionDetails: {};
+  selectionDetails: string;
 }
 
 export class DetailsListBasicExample extends React.Component<{}, IDetailsListBasicExampleState> {
