@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Sticky: Always render narrator readable content in place",
+  "packageName": "office-ui-fabric-react",
+  "email": "mgodbolt@microsoft.com",
+  "commit": "b719af739bcf3ec0cb98ae10d1ee5e250db0a8a1",
+  "date": "2019-12-16T20:37:45.775Z"
+}

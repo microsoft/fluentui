@@ -6,7 +6,8 @@ import {
   getFocusStyle,
   HighContrastSelector,
   IStyle,
-  getPlaceholderStyles
+  getPlaceholderStyles,
+  hiddenContentStyle
 } from '../../Styling';
 import { IComboBoxOptionStyles, IComboBoxStyles } from './ComboBox.types';
 
@@ -465,6 +466,7 @@ export const getStyles = memoizeFunction(
       optionsContainer: {
         display: 'block'
       },
+      screenReaderText: hiddenContentStyle,
 
       header: [
         fonts.medium,

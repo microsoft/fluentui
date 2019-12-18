@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Combobox: Removed redundant htmlFor attribute as input already use aria-labelledby",
+  "packageName": "office-ui-fabric-react",
+  "email": "mgodbolt@microsoft.com",
+  "commit": "7728daa71c4b3693cd812f6e67b5906dcb12f1e9",
+  "date": "2019-12-17T22:27:30.436Z"
+}
