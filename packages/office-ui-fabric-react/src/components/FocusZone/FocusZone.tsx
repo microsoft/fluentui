@@ -969,8 +969,8 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
           const targetRect = element.getBoundingClientRect();
           const targetRectTop = Math.floor(targetRect.top);
           const activeRectBottom = Math.floor(activeRect.bottom);
-          var targetRectBottom = Math.floor(targetRect.bottom);
-          var activeRectTop = Math.floor(activeRect.top);
+          const targetRectBottom = Math.floor(targetRect.bottom);
+          const activeRectTop = Math.floor(activeRect.top);
           const elementDistance = getDistanceFromCenter(activeRect, targetRect);
 
           // for paging down
@@ -987,9 +987,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
               targetTop = targetRectTop;
               candidateDistance = elementDistance;
               candidateElement = element;
-            }
-            // for paging up
-            else if (!isForward && targetRectBottom < targetBottom) {
+            } else if (!isForward && targetRectBottom < targetBottom) {
               targetBottom = targetRectBottom;
               candidateDistance = elementDistance;
               candidateElement = element;
