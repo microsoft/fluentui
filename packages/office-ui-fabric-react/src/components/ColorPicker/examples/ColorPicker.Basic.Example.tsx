@@ -39,8 +39,13 @@ export class ColorPickerBasicExample extends React.Component<{}, IBasicColorPick
           alphaSliderHidden={alphaSliderHidden}
           showPreview={showPreview}
           styles={colorPickerStyles}
-          // The ColorPicker provides default English strings.
+          // The ColorPicker provides default English strings for visible text.
           // If your app is localized, you MUST provide the `strings` prop with localized strings.
+          // Below are the recommended aria labels for the hue and alpha slider
+          strings={{
+            alphaAriaLabel: 'Alpha Slider: Use left and right arrow keys to change value, hold shift for a larger jump',
+            hueAriaLabel: 'Hue Slider: Use left and right arrow keys to change value, hold shift for a larger jump'
+          }}
         />
 
         <div className={classNames.column2}>
