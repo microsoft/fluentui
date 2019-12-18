@@ -4155,6 +4155,8 @@ export interface IDocumentCardPreviewStyles {
     // (undocumented)
     fileListIcon: IStyle;
     // (undocumented)
+    fileListLink: IStyle;
+    // (undocumented)
     fileListOverflowText: IStyle;
     // (undocumented)
     icon: IStyle;
