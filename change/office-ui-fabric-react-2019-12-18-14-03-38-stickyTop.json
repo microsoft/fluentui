@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "ScrollablePane: Fixing tabbing navigation with Sticky headers.",
+  "packageName": "office-ui-fabric-react",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "commit": "c98780c3071c6804444fb1b019a9d6d213268967",
+  "date": "2019-12-18T22:03:38.843Z"
+}
