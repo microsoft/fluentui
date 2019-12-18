@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Update color picker to include aria labels for hue and alpha sliders",
+  "packageName": "office-ui-fabric-react",
+  "email": "mgodbolt@microsoft.com",
+  "commit": "a2a2d2122397d159cf0909a5889a421965023bc4",
+  "date": "2019-12-11T00:41:01.763Z"
+}

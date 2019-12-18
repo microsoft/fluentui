@@ -1,7 +1,13 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Sun, 15 Dec 2019 23:45:36 GMT and should not be manually modified.
+This log was last generated on Tue, 17 Dec 2019 12:29:42 GMT and should not be manually modified.
 
+## 7.7.1
+Tue, 17 Dec 2019 12:29:42 GMT
+
+### Patches
+
+- add select to be a focusable target for focus utility (joschect@microsoft.com)
 ## 7.7.0
 Sun, 15 Dec 2019 23:45:36 GMT
 
