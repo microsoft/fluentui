@@ -1,6 +1,7 @@
 import {
   AnimationClassNames,
   getGlobalClassNames,
+  getInputFocusStyle,
   HighContrastSelector,
   IStyle,
   normalize,
@@ -60,33 +61,6 @@ function getLabelStyles(props: ITextFieldStyleProps): IStyleFunctionOrObject<ILa
     ]
   });
 }
-
-export const getInputFocusBorder = (
-  color: string,
-  borderRadius: string | number,
-  borderType: 'border' | 'borderBottom' = 'border'
-): IStyle => ({
-  borderColor: color,
-  selectors: {
-    ':after': {
-      pointerEvents: 'none',
-      content: "''",
-      position: 'absolute',
-      left: -1,
-      top: -1,
-      bottom: -1,
-      right: -1,
-      [borderType]: `2px solid ${color}`,
-      borderRadius,
-      width: borderType === 'borderBottom' ? '100%' : undefined,
-      selectors: {
-        [HighContrastSelector]: {
-          [borderType === 'border' ? 'borderColor' : 'borderBottomColor']: 'Highlight'
-        }
-      }
-    }
-  }
-});
 
 export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
   const {
@@ -179,7 +153,7 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
             }
           }
         },
-        focused && getInputFocusBorder(!hasErrorMessage ? semanticColors.inputFocusBorderAlt : semanticColors.errorText, 'borderBottom')
+        focused && getInputFocusStyle(!hasErrorMessage ? semanticColors.inputFocusBorderAlt : semanticColors.errorText, 'borderBottom')
       ]
     ],
     fieldGroup: [
@@ -218,7 +192,7 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
 
       focused &&
         !underlined &&
-        getInputFocusBorder(!hasErrorMessage ? semanticColors.inputFocusBorderAlt : semanticColors.errorText, effects.roundedCorner2),
+        getInputFocusStyle(!hasErrorMessage ? semanticColors.inputFocusBorderAlt : semanticColors.errorText, effects.roundedCorner2),
       disabled && {
         borderColor: semanticColors.disabledBackground,
         selectors: {

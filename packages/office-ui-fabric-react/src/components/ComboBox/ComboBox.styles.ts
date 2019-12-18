@@ -7,13 +7,13 @@ import {
   HighContrastSelector,
   IStyle,
   getPlaceholderStyles,
-  hiddenContentStyle
+  hiddenContentStyle,
+  getInputFocusStyle
 } from '../../Styling';
 import { IComboBoxOptionStyles, IComboBoxStyles } from './ComboBox.types';
 
 import { IButtonStyles } from '../../Button';
 import { memoizeFunction } from '../../Utilities';
-import { getInputFocusBorder } from '../TextField/TextField.styles';
 
 const ComboBoxHeight = 32;
 const ComboBoxLineHeight = 30;
@@ -302,7 +302,7 @@ export const getStyles = memoizeFunction(
       MsHighContrastAdjust: 'none'
     };
 
-    const focusBorderStyles: IStyle = getInputFocusBorder(root.borderPressedColor, effects.roundedCorner2);
+    const focusBorderStyles: IStyle = getInputFocusStyle(root.borderPressedColor, effects.roundedCorner2);
 
     const styles: IComboBoxStyles = {
       container: {},

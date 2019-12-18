@@ -1,11 +1,10 @@
-import { getGlobalClassNames, HighContrastSelector, IStyle } from '../../Styling';
+import { getGlobalClassNames, getInputFocusStyle } from '../../Styling';
 import { IsFocusVisibleClassName } from '../../Utilities';
 import { IDocumentCardStyleProps, IDocumentCardStyles } from './DocumentCard.types';
 import { DocumentCardPreviewGlobalClassNames as previewClassNames } from './DocumentCardPreview.styles';
 import { DocumentCardActivityGlobalClassNames as activityClassNames } from './DocumentCardActivity.styles';
 import { DocumentCardTitleGlobalClassNames as titleClassNames } from './DocumentCardTitle.styles';
 import { DocumentCardLocationGlobalClassNames as locationClassNames } from './DocumentCardLocation.styles';
-import { getInputFocusBorder } from '../TextField/TextField.styles';
 
 const GlobalClassNames = {
   root: 'ms-DocumentCard',
@@ -34,7 +33,7 @@ export const getStyles = (props: IDocumentCardStyleProps): IDocumentCardStyles =
           ':focus': {
             outline: '0px solid'
           },
-          [`.${IsFocusVisibleClassName} &:focus`]: getInputFocusBorder(palette.neutralSecondary, effects.roundedCorner2),
+          [`.${IsFocusVisibleClassName} &:focus`]: getInputFocusStyle(palette.neutralSecondary, effects.roundedCorner2),
           [`.${locationClassNames.root} + .${titleClassNames.root}`]: {
             paddingTop: '4px'
           }
