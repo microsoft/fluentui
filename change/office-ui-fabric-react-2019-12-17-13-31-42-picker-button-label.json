@@ -1,0 +1,8 @@
+{
+  "type": "none",
+  "comment": "TagPicker: Add aria-label to examples",
+  "packageName": "office-ui-fabric-react",
+  "email": "mgodbolt@microsoft.com",
+  "commit": "cc2f170f740d5ca4f49338ebc39eae1158cbad3b",
+  "date": "2019-12-17T21:31:42.205Z"
+}

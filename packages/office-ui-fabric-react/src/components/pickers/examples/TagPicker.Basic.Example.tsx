@@ -52,6 +52,7 @@ export class TagPickerBasicExample extends React.Component<{}, ITagPickerDemoPag
         />
         Filter items in suggestions: This picker will filter added items from the search suggestions.
         <TagPicker
+          removeButtonAriaLabel="Remove"
           onResolveSuggestions={this._onFilterChanged}
           getTextFromItem={this._getTextFromItem}
           pickerSuggestionsProps={{
@@ -69,6 +70,7 @@ export class TagPickerBasicExample extends React.Component<{}, ITagPickerDemoPag
         <br />
         Filter items on selected: This picker will show already-added suggestions but will not add duplicate tags.
         <TagPicker
+          removeButtonAriaLabel="Remove"
           componentRef={this._picker}
           onResolveSuggestions={this._onFilterChangedNoFilter}
           onItemSelected={this._onItemSelected}
