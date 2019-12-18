@@ -239,6 +239,7 @@ storiesOf('ScrollablePane Grouped Details List', module)
   .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()
+        .wait(100)
         .snapshot('default: scrollbars should be visible', cropTo)
         .executeScript(`${getElement}.scrollTop = 100`)
         .snapshot('Scrollbars visibility when header is sticky', cropTo)
