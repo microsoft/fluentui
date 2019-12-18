@@ -63,7 +63,7 @@ export const getStyles = (props: IDocumentCardPreviewStyleProps): IDocumentCardP
     fileListLink: [
       getFocusStyle(theme, {
         highContrastStyle: {
-          border: '1px solid Highlight',
+          border: '1px solid WindowText',
           outline: 'none'
         }
       }),

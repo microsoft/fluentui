@@ -191,7 +191,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                   z-index: 1;
                 }
                 @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                  border: 1px solid Highlight;
+                  border: 1px solid WindowText;
                   outline: none;
                 }
             href="http://bing.com"
@@ -299,7 +299,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                   z-index: 1;
                 }
                 @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                  border: 1px solid Highlight;
+                  border: 1px solid WindowText;
                   outline: none;
                 }
             href="http://bing.com"
@@ -407,7 +407,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                   z-index: 1;
                 }
                 @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                  border: 1px solid Highlight;
+                  border: 1px solid WindowText;
                   outline: none;
                 }
             href="http://bing.com"
