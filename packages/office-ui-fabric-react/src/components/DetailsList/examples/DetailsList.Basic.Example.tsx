@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Announced } from 'office-ui-fabric-react/lib/Announced';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import { DetailsList, DetailsListLayoutMode, Selection, IColumn } from 'office-ui-fabric-react/lib/DetailsList';
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
@@ -66,6 +67,7 @@ export class DetailsListBasicExample extends React.Component<{}, IDetailsListBas
           onChange={this._onFilter}
           styles={{ root: { maxWidth: '300px' } }}
         />
+        <Announced message={`Number of items after filter applied: ${items.length}.`} />
         <MarqueeSelection selection={this._selection}>
           <DetailsList
             items={items}

@@ -547,6 +547,13 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
         </div>
       </div>
     </div>
+    <div
+      aria-live="polite"
+      className=
+
+
+      role="status"
+    />
   </div>
   <div
     className=
