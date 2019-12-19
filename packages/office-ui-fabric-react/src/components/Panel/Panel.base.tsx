@@ -6,6 +6,7 @@ import { Popup } from '../../Popup';
 import { getTheme, IconFontSizes, IProcessedStyleSet } from '../../Styling';
 import {
   allowScrollOnElement,
+  allowOverscrollOnElement,
   BaseComponent,
   classNamesFunction,
   divProperties,
@@ -47,6 +48,7 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
   private _animationCallback: number | null = null;
   private _hasCustomNavigation: boolean = !!(this.props.onRenderNavigation || this.props.onRenderNavigationContent);
   private _headerTextId: string | undefined;
+  private _allowTouchBodyScroll: boolean;
 
   public static getDerivedStateFromProps(nextProps: Readonly<IPanelProps>, prevState: Readonly<IPanelState>): Partial<IPanelState> | null {
     if (nextProps.isOpen === undefined) {
@@ -69,6 +71,9 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
 
   constructor(props: IPanelProps) {
     super(props);
+
+    const { allowTouchBodyScroll = false } = this.props;
+    this._allowTouchBodyScroll = allowTouchBodyScroll;
 
     this._warnDeprecations({
       ignoreExternalFocusing: 'focusTrapZoneProps',
@@ -144,7 +149,7 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
     } = this.props;
     const { isFooterSticky, visibility, id } = this.state;
     const isLeft = type === PanelType.smallFixedNear || type === PanelType.customNear ? true : false;
-    const isRTL = getRTL();
+    const isRTL = getRTL(theme);
     const isOnRightSide = isRTL ? isLeft : !isLeft;
     const customWidthStyles = type === PanelType.custom || type === PanelType.customNear ? { width: customWidth } : {};
     const nativeProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties);
@@ -173,7 +178,7 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
       hasCustomNavigation: this._hasCustomNavigation
     });
 
-    const { _classNames } = this;
+    const { _classNames, _allowTouchBodyScroll } = this;
 
     let overlay;
     if (isBlocking && isOpen) {
@@ -182,6 +187,7 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
           className={_classNames.overlay}
           isDarkThemed={false}
           onClick={isLightDismiss ? onLightDismissClick : undefined}
+          allowTouchBodyScroll={_allowTouchBodyScroll}
           {...overlayProps}
         />
       );
@@ -270,7 +276,11 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
   // Allow the user to scroll within the panel but not on the body
   private _allowScrollOnPanel = (elt: HTMLDivElement | null): void => {
     if (elt) {
-      allowScrollOnElement(elt, this._events);
+      if (this._allowTouchBodyScroll) {
+        allowOverscrollOnElement(elt, this._events);
+      } else {
+        allowScrollOnElement(elt, this._events);
+      }
     } else {
       this._events.off(this._scrollableContent);
     }
@@ -381,7 +391,7 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
 
   private _dismissOnOuterClick(ev: any): void {
     const panel = this._panel.current;
-    if (this.isActive && panel) {
+    if (this.isActive && panel && !ev.defaultPrevented()) {
       if (!elementContains(panel, ev.target)) {
         if (this.props.onOuterClick) {
           this.props.onOuterClick();

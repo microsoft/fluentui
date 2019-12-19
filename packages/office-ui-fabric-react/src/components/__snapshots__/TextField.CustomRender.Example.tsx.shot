@@ -430,7 +430,6 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
                 speak: none;
               }
           data-icon-name="Globe"
-          id="iconButton1"
           title="Globe"
         >
           
@@ -469,7 +468,7 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
       >
         <input
           aria-invalid={false}
-          aria-labelledby="label2"
+          aria-labelledby="TextFieldLabel11"
           className=
               ms-TextField-field
               {

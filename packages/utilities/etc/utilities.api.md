@@ -18,6 +18,9 @@ export function addDirectionalKeyCode(which: number): void;
 export function addElementAtIndex<T>(array: T[], index: number, itemToAdd: T): T[];
 
 // @public
+export const allowOverscrollOnElement: (element: HTMLElement | null, events: EventGroup) => void;
+
+// @public
 export const allowScrollOnElement: (element: HTMLElement | null, events: EventGroup) => void;
 
 // @public
@@ -331,10 +334,14 @@ export function getRect(element: HTMLElement | Window | null): IRectangle | unde
 export function getResourceUrl(url: string): string;
 
 // @public
-export function getRTL(): boolean;
+export function getRTL(theme?: {
+    rtl?: boolean;
+}): boolean;
 
 // @public
-export function getRTLSafeKeyCode(key: number): number;
+export function getRTLSafeKeyCode(key: number, theme?: {
+    rtl?: boolean;
+}): number;
 
 // @public
 export function getScrollbarWidth(): number;

@@ -6,16 +6,14 @@ import { TooltipBasicExample } from './examples/Tooltip.Basic.Example';
 import { TooltipDisplayExample } from './examples/Tooltip.Display.Example';
 import { TooltipInteractiveExample } from './examples/Tooltip.Interactive.Example';
 import { TooltipOverflowExample } from './examples/Tooltip.Overflow.Example';
-import { TooltipNoScrollExample } from './examples/Tooltip.NoScroll.Example';
-import { TooltipAbsolutePositionExample } from './examples/Tooltip.Absolute.Position.Example';
+import { TooltipAbsolutePositionExample } from './examples/Tooltip.AbsolutePosition.Example';
 
 const TooltipBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Tooltip/examples/Tooltip.Basic.Example.tsx') as string;
 const TooltipDisplayExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Tooltip/examples/Tooltip.Display.Example.tsx') as string;
 const TooltipCustomExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Tooltip/examples/Tooltip.Custom.Example.tsx') as string;
 const TooltipInteractiveExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Tooltip/examples/Tooltip.Interactive.Example.tsx') as string;
 const TooltipOverflowExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Tooltip/examples/Tooltip.Overflow.Example.tsx') as string;
-const TooltipNoScrollExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Tooltip/examples/Tooltip.NoScroll.Example.tsx') as string;
-const TooltipAbsolutePositionExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Tooltip/examples/Tooltip.Absolute.Position.Example.tsx') as string;
+const TooltipAbsolutePositionExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Tooltip/examples/Tooltip.AbsolutePosition.Example.tsx') as string;
 
 export const TooltipPageProps: IDocPageProps = {
   title: 'Tooltip',
@@ -33,7 +31,7 @@ export const TooltipPageProps: IDocPageProps = {
       view: <TooltipDisplayExample />
     },
     {
-      title: 'Tooltip with list',
+      title: 'Tooltip with custom content',
       code: TooltipCustomExampleCode,
       view: <TooltipCustomExample />
     },
@@ -48,12 +46,7 @@ export const TooltipPageProps: IDocPageProps = {
       view: <TooltipOverflowExample />
     },
     {
-      title: 'Tooltip without scroll (improves performance)',
-      code: TooltipNoScrollExampleCode,
-      view: <TooltipNoScrollExample />
-    },
-    {
-      title: 'Tooltip with position absolute',
+      title: 'Tooltip on absolutely-positioned element',
       code: TooltipAbsolutePositionExampleCode,
       view: <TooltipAbsolutePositionExample />
     }

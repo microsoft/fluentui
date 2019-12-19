@@ -139,7 +139,11 @@ export class BreadcrumbBase extends React.Component<IBreadcrumbProps, any> {
       <li className={this._classNames.listItem} key={item.key || String(index)}>
         {onRenderItem(item, this._onRenderItem)}
         {(index !== lastItemIndex || (hasOverflowItems && index === overflowIndex! - 1)) && (
-          <DividerType className={this._classNames.chevron} iconName={getRTL() ? 'ChevronLeft' : 'ChevronRight'} item={item} />
+          <DividerType
+            className={this._classNames.chevron}
+            iconName={getRTL(this.props.theme) ? 'ChevronLeft' : 'ChevronRight'}
+            item={item}
+          />
         )}
       </li>
     ));
@@ -167,7 +171,7 @@ export class BreadcrumbBase extends React.Component<IBreadcrumbProps, any> {
           {overflowIndex !== lastItemIndex + 1 && (
             <DividerType
               className={this._classNames.chevron}
-              iconName={getRTL() ? 'ChevronLeft' : 'ChevronRight'}
+              iconName={getRTL(this.props.theme) ? 'ChevronLeft' : 'ChevronRight'}
               item={renderedOverflowItems[renderedOverflowItems.length - 1]}
             />
           )}

@@ -1624,6 +1624,63 @@ describe('FocusZone', () => {
     expect(lastFocusedElement).toBe(buttonB);
   });
 
+  it('Focus is not affected by readOnly inputs with values', () => {
+    const isInnerZoneKeystroke = (e: React.KeyboardEvent<HTMLElement>): boolean => e.which === KeyCodes.enter;
+
+    const component = ReactTestUtils.renderIntoDocument(
+      <div {...{ onFocusCapture: _onFocus }}>
+        <FocusZone isInnerZoneKeystroke={isInnerZoneKeystroke}>
+          <input className="a" />
+          <input readOnly defaultValue="foo" className="b" />
+          <input className="c" />
+        </FocusZone>
+      </div>
+    );
+
+    const focusZone = ReactDOM.findDOMNode((component as unknown) as React.ReactInstance)!.firstChild as Element;
+
+    const inputA = focusZone.querySelector('.a') as HTMLElement;
+    const inputB = focusZone.querySelector('.b') as HTMLElement;
+    const inputC = focusZone.querySelector('.c') as HTMLElement;
+
+    setupElement(inputA, {
+      clientRect: {
+        top: 0,
+        bottom: 20,
+        left: 0,
+        right: 20
+      }
+    });
+
+    setupElement(inputB, {
+      clientRect: {
+        top: 0,
+        bottom: 20,
+        left: 20,
+        right: 40
+      }
+    });
+
+    setupElement(inputC, {
+      clientRect: {
+        top: 0,
+        bottom: 20,
+        left: 40,
+        right: 60
+      }
+    });
+
+    ReactTestUtils.Simulate.focus(inputB);
+    // Pressing right should go to c.
+    ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.right });
+    expect(lastFocusedElement).toBe(inputC);
+
+    ReactTestUtils.Simulate.focus(inputB);
+    // Pressing left from b should go back to a
+    ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.left });
+    expect(lastFocusedElement).toBe(inputA);
+  });
+
   it('removes tab-index of previous element when another one is selected (mouse & keyboard)', () => {
     let focusZone: FocusZone | null = null;
     let buttonA: HTMLButtonElement | null = null;
@@ -1991,5 +2048,78 @@ describe('FocusZone', () => {
     ReactTestUtils.Simulate.focus(externalElement);
     expect((focusZoneRef.current! as any)._activeElement.id).not.toBe('externalElement');
     expect((focusZoneRef.current! as any)._activeElement.id).toBe('a');
+  });
+
+  it('Handles focus moving to different targets correctly in focus zone following DOM order diretion and allowing tabbing', () => {
+    const tabDownListener = jest.fn();
+    const component = ReactTestUtils.renderIntoDocument(
+      <div {...{ onFocusCapture: _onFocus, onKeyDown: tabDownListener }}>
+        <FocusZone direction={FocusZoneDirection.domOrder} handleTabKey={FocusZoneTabbableElements.all}>
+          <button className="a">a</button>
+          <button className="b">b</button>
+          <button className="c">c</button>
+        </FocusZone>
+      </div>
+    );
+
+    const focusZone = ReactDOM.findDOMNode((component as unknown) as React.ReactInstance)!.firstChild as Element;
+
+    const buttonA = focusZone.querySelector('.a') as HTMLElement;
+    const buttonB = focusZone.querySelector('.b') as HTMLElement;
+    const buttonC = focusZone.querySelector('.c') as HTMLElement;
+
+    setupElement(buttonA, {
+      clientRect: {
+        top: 0,
+        bottom: 20,
+        left: 0,
+        right: 20
+      }
+    });
+
+    setupElement(buttonB, {
+      clientRect: {
+        top: 0,
+        bottom: 20,
+        left: 20,
+        right: 40
+      }
+    });
+
+    setupElement(buttonC, {
+      clientRect: {
+        top: 0,
+        bottom: 20,
+        left: 40,
+        right: 60
+      }
+    });
+
+    // ButtonA should be focussed.
+    ReactTestUtils.Simulate.focus(buttonA);
+    expect(lastFocusedElement).toBe(buttonA);
+
+    expect(buttonA.tabIndex).toBe(0);
+    expect(buttonB.tabIndex).toBe(-1);
+    expect(buttonC.tabIndex).toBe(-1);
+
+    // Pressing tab will shift focus to button B
+    ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.tab });
+    expect(lastFocusedElement).toBe(buttonB);
+
+    expect(buttonA.tabIndex).toBe(-1);
+    expect(buttonB.tabIndex).toBe(0);
+    expect(buttonC.tabIndex).toBe(-1);
+
+    // Pressing tab will shift focus to button C
+    ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.tab });
+    expect(lastFocusedElement).toBe(buttonC);
+
+    expect(buttonA.tabIndex).toBe(-1);
+    expect(buttonB.tabIndex).toBe(-1);
+    expect(buttonC.tabIndex).toBe(0);
+
+    // FocusZone stops propagation of our tab when we enable tab handling
+    expect(tabDownListener.mock.calls.length).toBe(0);
   });
 });

@@ -1,7 +1,20 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Fri, 06 Dec 2019 12:33:21 GMT and should not be manually modified.
+This log was last generated on Tue, 17 Dec 2019 12:29:42 GMT and should not be manually modified.
 
+## 7.18.10
+Tue, 17 Dec 2019 12:29:42 GMT
+
+### Patches
+
+- Refining typography and signal icon on top of Folder Icon, filetype mapping updates (caperez@microsoft.com)
+- PersonaCoin: make divs role presentation (micahgodbolt@gmail.com)
+## 7.18.9
+Sun, 15 Dec 2019 23:45:36 GMT
+
+### Patches
+
+- Fix minor picker doc issue (elcraig@microsoft.com)
 ## 7.18.8
 Fri, 06 Dec 2019 12:33:21 GMT
 

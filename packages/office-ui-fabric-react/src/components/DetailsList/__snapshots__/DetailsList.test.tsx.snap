@@ -5400,6 +5400,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                   >
                                     <div
                                       aria-colindex={1}
+                                      aria-readonly={true}
                                       className=
                                           ms-DetailsRow-cell
                                           {
@@ -5583,6 +5584,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                   >
                                     <div
                                       aria-colindex={1}
+                                      aria-readonly={true}
                                       className=
                                           ms-DetailsRow-cell
                                           {
@@ -6011,6 +6013,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                   >
                                     <div
                                       aria-colindex={1}
+                                      aria-readonly={true}
                                       className=
                                           ms-DetailsRow-cell
                                           {
@@ -6194,6 +6197,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                   >
                                     <div
                                       aria-colindex={1}
+                                      aria-readonly={true}
                                       className=
                                           ms-DetailsRow-cell
                                           {
@@ -6377,6 +6381,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                   >
                                     <div
                                       aria-colindex={1}
+                                      aria-readonly={true}
                                       className=
                                           ms-DetailsRow-cell
                                           {

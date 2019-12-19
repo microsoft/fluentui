@@ -283,11 +283,8 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
                   aria-describedby={items.length > 0 ? this._ariaMap.selectedItems : undefined}
                   aria-controls={`${suggestionsAvailable} ${selectedSuggestionAlertId}` || undefined}
                   aria-activedescendant={this.getActiveDescendant()}
-                  autoCapitalize="off"
-                  autoComplete="off"
                   role={'textbox'}
                   disabled={disabled}
-                  aria-autocomplete={'both'}
                   onInputChange={this.props.onInputChange}
                 />
               )}
@@ -989,8 +986,6 @@ export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BaseP
               onInputValueChange={this.onInputChange}
               suggestedDisplayValue={suggestedDisplayValue}
               aria-activedescendant={this.getActiveDescendant()}
-              autoCapitalize="off"
-              autoComplete="off"
               role="textbox"
               disabled={disabled}
               aria-controls={`${suggestionsAvailable} ${selectedSuggestionAlertId}` || undefined}

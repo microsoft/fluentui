@@ -10,11 +10,6 @@ import { IOverflowSet, IOverflowSetItemProps, IOverflowSetProps, IOverflowSetSty
 const getClassNames = classNamesFunction<IOverflowSetStyleProps, IOverflowSetStyles>();
 
 export class OverflowSetBase extends BaseComponent<IOverflowSetProps, {}> implements IOverflowSet {
-  public static defaultProps: Pick<IOverflowSetProps, 'vertical' | 'role'> = {
-    vertical: false,
-    role: 'menubar'
-  };
-
   private _focusZone = React.createRef<IFocusZone>();
   private _persistedKeytips: { [uniqueID: string]: IKeytipProps } = {};
   private _keytipManager: KeytipManager = KeytipManager.getInstance();
@@ -32,9 +27,11 @@ export class OverflowSetBase extends BaseComponent<IOverflowSetProps, {}> implem
   }
 
   public render(): JSX.Element {
-    const { items, overflowItems, className, focusZoneProps, styles, vertical, role, doNotContainWithinFocusZone } = this.props;
+    const { items, overflowItems, className, focusZoneProps, styles, vertical, doNotContainWithinFocusZone } = this.props;
 
     this._classNames = getClassNames(styles, { className, vertical });
+
+    const role = this.props.role || vertical ? 'menu' : 'menubar';
 
     let Tag;
     let uniqueComponentProps;

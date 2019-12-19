@@ -153,6 +153,12 @@ export interface IModalProps extends React.ClassAttributes<ModalBase>, IWithResp
    * The options to make the modal draggable
    */
   dragOptions?: IDragOptions;
+
+  /**
+   * Allow body scroll on content and overlay on touch devices. Changing after mounting has no effect.
+   * @defaultvalue false
+   */
+  allowTouchBodyScroll?: boolean;
 }
 
 /**

@@ -77,7 +77,7 @@ export class CalloutFocusTrapExample extends React.Component<{}, ICalloutFocusTr
     return (
       <>
         <div className={styles.buttonArea} ref={menuButton => (this._menuButtonElement = menuButton)}>
-          <DefaultButton onClick={this._onDismiss} text={isCalloutVisible ? 'Hide callout' : 'Show callout'} />
+          <DefaultButton onClick={this._onDismiss} text={isCalloutVisible ? 'Hide FocusTrapCallout' : 'Show FocusTrapCallout'} />
         </div>
         {isCalloutVisible ? (
           <div>
@@ -95,14 +95,14 @@ export class CalloutFocusTrapExample extends React.Component<{}, ICalloutFocusTr
               <div className={styles.inner}>
                 <div>
                   <p className={styles.subtext}>
-                    Message body is optional. If help documentation is available, consider adding a link to learn more at the bottom.
+                    Content is wrapped in a FocusTrapZone so that user cannot accidently tab out of this callout.
                   </p>
                 </div>
               </div>
               <FocusZone>
                 <Stack className={styles.buttons} gap={8} horizontal>
-                  <PrimaryButton onClick={this._onDismiss}>Agree</PrimaryButton>
-                  <DefaultButton onClick={this._onDismiss}>Cancel</DefaultButton>
+                  <PrimaryButton onClick={this._onDismiss}>Button 1</PrimaryButton>
+                  <DefaultButton onClick={this._onDismiss}>Button 2</DefaultButton>
                 </Stack>
               </FocusZone>
             </FocusTrapCallout>

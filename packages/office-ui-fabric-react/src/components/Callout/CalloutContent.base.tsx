@@ -321,7 +321,8 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
       (ev.target !== this._targetWindow &&
         isEventTargetOutsideCallout &&
         ((this._target as MouseEvent).stopPropagation ||
-          (!this._target || (target !== this._target && !elementContains(this._target as HTMLElement, target)))))
+          !this._target ||
+          (target !== this._target && !elementContains(this._target as HTMLElement, target))))
     ) {
       this.dismiss(ev);
     }

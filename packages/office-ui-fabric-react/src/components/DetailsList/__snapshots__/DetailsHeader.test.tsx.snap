@@ -943,9 +943,6 @@ exports[`DetailsHeader can render a hidden select all checkbox in single selecti
       & .ms-TooltipHost .ms-DetailsHeader-checkTooltip {
         display: block;
       }
-      & .ms-DetailsHeader-cellIsCheck {
-        visibility: hidden;
-      }
   data-automationid="DetailsHeader"
   data-focuszone-id="FocusZone3"
   onFocus={[Function]}

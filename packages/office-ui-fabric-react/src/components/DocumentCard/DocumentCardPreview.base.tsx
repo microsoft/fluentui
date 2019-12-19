@@ -96,7 +96,12 @@ export class DocumentCardPreviewBase extends BaseComponent<IDocumentCardPreviewP
     const fileListItems = previewImages.slice(0, LIST_ITEM_COUNT).map((file, fileIndex) => (
       <li key={fileIndex}>
         <Image className={this._classNames.fileListIcon} src={file.iconSrc} role="presentation" alt="" width="16px" height="16px" />
-        <Link {...(file.linkProps, { href: file.url || (file.linkProps && file.linkProps.href) })}>{file.name}</Link>
+        <Link
+          className={this._classNames.fileListLink}
+          {...(file.linkProps, { href: file.url || (file.linkProps && file.linkProps.href) })}
+        >
+          {file.name}
+        </Link>
       </li>
     ));
 

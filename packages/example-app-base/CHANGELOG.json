@@ -2,6 +2,20 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "date": "Fri, 13 Dec 2019 12:30:51 GMT",
+      "tag": "@uifabric/example-app-base_v7.10.3",
+      "version": "7.10.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add missing aria labels on example card dropdowns",
+            "author": "elcraig@microsoft.com",
+            "commit": "e4511ced66739b1321ef6af6467ba545a61b9ae2"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 28 Nov 2019 12:32:23 GMT",
       "tag": "@uifabric/example-app-base_v7.10.2",
       "version": "7.10.2",

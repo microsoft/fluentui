@@ -1,5 +1,13 @@
 import * as React from 'react';
-import { BaseComponent, classNamesFunction, getId, allowScrollOnElement, KeyCodes, elementContains } from '../../Utilities';
+import {
+  BaseComponent,
+  classNamesFunction,
+  getId,
+  allowScrollOnElement,
+  allowOverscrollOnElement,
+  KeyCodes,
+  elementContains
+} from '../../Utilities';
 import { FocusTrapZone, IFocusTrapZone } from '../FocusTrapZone/index';
 import { animationDuration } from './Modal.styles';
 import { IModalProps, IModalStyleProps, IModalStyles, IModal } from './Modal.types';
@@ -47,6 +55,7 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
   private _scrollableContent: HTMLDivElement | null;
   private _lastSetX: number;
   private _lastSetY: number;
+  private _allowTouchBodyScroll: boolean;
   private _hasRegisteredKeyUp: boolean;
 
   constructor(props: IModalProps) {
@@ -66,6 +75,9 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
     this._warnDeprecations({
       onLayerDidMount: 'layerProps.onLayerDidMount'
     });
+
+    const { allowTouchBodyScroll = false } = this.props;
+    this._allowTouchBodyScroll = allowTouchBodyScroll;
   }
 
   // tslint:disable-next-line function-name
@@ -238,7 +250,14 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
             onDismiss={onDismiss}
           >
             <div className={classNames.root}>
-              {!isModeless && <Overlay isDarkThemed={isDarkOverlay} onClick={isBlocking ? undefined : (onDismiss as any)} {...overlay} />}
+              {!isModeless && (
+                <Overlay
+                  isDarkThemed={isDarkOverlay}
+                  onClick={isBlocking ? undefined : (onDismiss as any)}
+                  allowTouchBodyScroll={this._allowTouchBodyScroll}
+                  {...overlay}
+                />
+              )}
               {dragOptions ? (
                 <DraggableZone
                   handleSelector={dragOptions.dragHandleSelector || `.${classNames.main.split(' ')[0]}`}
@@ -270,7 +289,11 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
   // Allow the user to scroll within the modal but not on the body
   private _allowScrollOnModal = (elt: HTMLDivElement | null): void => {
     if (elt) {
-      allowScrollOnElement(elt, this._events);
+      if (this._allowTouchBodyScroll) {
+        allowOverscrollOnElement(elt, this._events);
+      } else {
+        allowScrollOnElement(elt, this._events);
+      }
     } else {
       this._events.off(this._scrollableContent);
     }

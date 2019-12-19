@@ -1,4 +1,6 @@
-These pickers let users quickly choose a date or time through a familiar popup across M365 mobile apps. Your app can invoke it from a form, for example for setting the date of a new appointment or the due date for a task.
+These pickers let users quickly choose a date or time through a familiar popup across M365 mobile apps. Your app can invoke it from a form, for example setting the date of a new appointment or the due date for a task.
+
+`DateTimePicker` wraps a `DateTimePickerDialog` and provides state retention for configuration changes.
 
 <!-- prettier-ignore-start -->
 | Date Picker | Time Picker |

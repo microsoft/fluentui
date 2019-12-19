@@ -9,7 +9,9 @@ import {
   Slider,
   getTheme,
   mergeStyleSets,
-  FontWeights
+  FontWeights,
+  Link,
+  getId
 } from 'office-ui-fabric-react';
 
 export interface ICalloutDirectionalExampleState {
@@ -79,11 +81,28 @@ const styles = mergeStyleSets({
       color: theme.palette.neutralPrimary,
       fontWeight: FontWeights.semilight
     }
-  ]
+  ],
+  link: [
+    theme.fonts.medium,
+    {
+      color: theme.palette.neutralPrimary
+    }
+  ],
+  actions: {
+    position: 'relative',
+    marginTop: 20,
+    width: '100%',
+    whiteSpace: 'nowrap'
+  }
 });
 
 export class CalloutDirectionalExample extends React.Component<{}, ICalloutDirectionalExampleState> {
   private _menuButtonElement: HTMLElement | null;
+
+  // Use getId() to ensure that the callout label and description IDs are unique on the page.
+  // It's also okay, though not recommended, to use plain strings without getId() and manually ensure their uniqueness.
+  private _labelId: string = getId('callout-label');
+  private _descriptionId: string = getId('callout-description');
 
   public constructor(props: {}) {
     super(props);
@@ -121,6 +140,8 @@ export class CalloutDirectionalExample extends React.Component<{}, ICalloutDirec
         </div>
         {isCalloutVisible ? (
           <Callout
+            ariaLabelledBy={this._labelId}
+            ariaDescribedBy={this._descriptionId}
             className={styles.callout}
             gapSpace={gapSpace}
             target={this._menuButtonElement}
@@ -131,13 +152,18 @@ export class CalloutDirectionalExample extends React.Component<{}, ICalloutDirec
             setInitialFocus={true}
           >
             <div className={styles.header}>
-              <p className={styles.title}>All of your favorite people</p>
+              <p className={styles.title} id={this._labelId}>
+                All of your favorite people
+              </p>
             </div>
             <div className={styles.inner}>
-              <div>
-                <p className={styles.subtext}>
-                  Message body is optional. If help documentation is available, consider adding a link to learn more at the bottom.
-                </p>
+              <p className={styles.subtext} id={this._descriptionId}>
+                Message body is optional. If help documentation is available, consider adding a link to learn more at the bottom.
+              </p>
+              <div className={styles.actions}>
+                <Link className={styles.link} href="http://microsoft.com" target="_blank">
+                  Go to Microsoft
+                </Link>
               </div>
             </div>
           </Callout>

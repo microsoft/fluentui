@@ -36,6 +36,7 @@ export class CardHorizontalExample extends React.Component<{}, {}> {
     };
     const footerCardSectionStyles: ICardSectionStyles = {
       root: {
+        alignSelf: 'stretch',
         borderLeft: '1px solid #F3F2F1'
       }
     };
@@ -46,13 +47,13 @@ export class CardHorizontalExample extends React.Component<{}, {}> {
 
     return (
       <Stack tokens={sectionStackTokens}>
-        <Card horizontal tokens={cardTokens}>
+        <Card aria-label="Basic horizontal card" horizontal tokens={cardTokens}>
           <Card.Item>
             <Text>Basic horizontal card</Text>
           </Card.Item>
         </Card>
 
-        <Card horizontal onClick={alertClicked} tokens={cardTokens}>
+        <Card aria-label="Clickable horizontal card " horizontal onClick={alertClicked} tokens={cardTokens}>
           <Card.Item fill>
             <Image src="https://placehold.it/180x135" alt="Placeholder image." />
           </Card.Item>

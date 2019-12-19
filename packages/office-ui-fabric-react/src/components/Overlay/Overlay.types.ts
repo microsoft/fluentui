@@ -39,6 +39,12 @@ export interface IOverlayProps extends React.HTMLAttributes<HTMLElement> {
   isDarkThemed?: boolean;
 
   onClick?: () => void;
+
+  /**
+   * Allow body scroll on touch devices. Changing after mounting has no effect.
+   * @defaultvalue false
+   */
+  allowTouchBodyScroll?: boolean;
 }
 
 /**

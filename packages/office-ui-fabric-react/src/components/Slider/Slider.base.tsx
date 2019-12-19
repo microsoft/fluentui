@@ -179,7 +179,7 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
   };
 
   private _getStyleUsingOffsetPercent(vertical: boolean | undefined, thumbOffsetPercent: number): any {
-    const direction: string = vertical ? 'bottom' : getRTL() ? 'right' : 'left';
+    const direction: string = vertical ? 'bottom' : getRTL(this.props.theme) ? 'right' : 'left';
     return {
       [direction]: thumbOffsetPercent + '%'
     };
@@ -211,7 +211,7 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
 
     if (!this.props.vertical) {
       const left: number | undefined = this._getPosition(event, this.props.vertical);
-      distance = getRTL() ? sliderPositionRect.right - left! : left! - sliderPositionRect.left;
+      distance = getRTL(this.props.theme) ? sliderPositionRect.right - left! : left! - sliderPositionRect.left;
       currentSteps = distance / stepLength;
     } else {
       const bottom: number | undefined = this._getPosition(event, this.props.vertical);
@@ -304,7 +304,7 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
     let diff: number | undefined = 0;
 
     switch (event.which) {
-      case getRTLSafeKeyCode(KeyCodes.left):
+      case getRTLSafeKeyCode(KeyCodes.left, this.props.theme):
       case KeyCodes.down:
         diff = -(step as number);
 
@@ -312,7 +312,7 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
         this._setOnKeyDownTimer(event);
 
         break;
-      case getRTLSafeKeyCode(KeyCodes.right):
+      case getRTLSafeKeyCode(KeyCodes.right, this.props.theme):
       case KeyCodes.up:
         diff = step;
 
