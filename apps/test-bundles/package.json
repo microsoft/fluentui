@@ -29,7 +29,7 @@
     "@uifabric/experiments": "^7.18.10",
     "@uifabric/set-version": "^7.0.2",
     "@uifabric/styling": "^7.7.4",
-    "office-ui-fabric-react": "^7.74.2",
+    "office-ui-fabric-react": "^7.75.0",
     "react": "16.8.6",
     "react-app-polyfill": "~1.0.1",
     "react-dom": "16.8.6",

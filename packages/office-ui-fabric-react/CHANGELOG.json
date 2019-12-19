@@ -2,6 +2,64 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Thu, 19 Dec 2019 12:33:02 GMT",
+      "tag": "office-ui-fabric-react_v7.75.0",
+      "version": "7.75.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Update color picker to include aria labels for hue and alpha sliders",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "a2a2d2122397d159cf0909a5889a421965023bc4"
+          },
+          {
+            "comment": "Combobox: Fix multiselect options not being read by screen readers.",
+            "author": "joschect@microsoft.com",
+            "commit": "1c107f4a4a4650bd46798a3e058b1f5a8e771610"
+          },
+          {
+            "comment": "Sticky: Always render narrator readable content in place",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "b719af739bcf3ec0cb98ae10d1ee5e250db0a8a1"
+          },
+          {
+            "comment": "DocumentCard: Fixing focus styling on Links in DocumentCardPreview.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "a4a7326f8e49f387c11a6a3fab54d0ed63c72654"
+          }
+        ],
+        "none": [
+          {
+            "comment": "TagPicker: Add aria-label to examples",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "cc2f170f740d5ca4f49338ebc39eae1158cbad3b"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Combobox: Removed redundant htmlFor attribute as input already use aria-labelledby",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "7728daa71c4b3693cd812f6e67b5906dcb12f1e9"
+          },
+          {
+            "comment": "SearchBox: Don't duplicate placeholder text in aria-label",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "fc04a332db8c85e7feacabdbbfb79f36e516381e"
+          },
+          {
+            "comment": "DetailsList: Adding Announced section for # of filtered items in examples.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "00a61a5d34d3c557742809ac3fbe06095f742627"
+          },
+          {
+            "comment": "DetailsList: Adding Announced section for examples that have '# of items selected' message in display.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "3843534144011bbca749b526c94964d409adee88"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 18 Dec 2019 12:30:18 GMT",
       "tag": "office-ui-fabric-react_v7.74.2",
       "version": "7.74.2",

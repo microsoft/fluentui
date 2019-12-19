@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "DetailsList: Adding Announced section for # of filtered items in examples.",
-  "packageName": "office-ui-fabric-react",
-  "email": "Humberto.Morimoto@microsoft.com",
-  "commit": "00a61a5d34d3c557742809ac3fbe06095f742627",
-  "date": "2019-12-18T22:39:37.781Z"
-}

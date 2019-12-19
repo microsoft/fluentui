@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "DocumentCard: Fixing focus styling on Links in DocumentCardPreview.",
-  "packageName": "office-ui-fabric-react",
-  "email": "Humberto.Morimoto@microsoft.com",
-  "commit": "a4a7326f8e49f387c11a6a3fab54d0ed63c72654",
-  "date": "2019-12-16T23:50:53.384Z"
-}

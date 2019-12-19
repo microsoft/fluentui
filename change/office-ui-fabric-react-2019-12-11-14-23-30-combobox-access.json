@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Combobox: Fix multiselect options not being read by screen readers.",
-  "packageName": "office-ui-fabric-react",
-  "email": "joschect@microsoft.com",
-  "commit": "1c107f4a4a4650bd46798a3e058b1f5a8e771610",
-  "date": "2019-12-11T22:23:30.882Z"
-}

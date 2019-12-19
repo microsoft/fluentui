@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "DetailsList: Adding Announced section for examples that have '# of items selected' message in display.",
-  "packageName": "office-ui-fabric-react",
-  "email": "Humberto.Morimoto@microsoft.com",
-  "commit": "3843534144011bbca749b526c94964d409adee88",
-  "date": "2019-12-18T23:14:21.839Z"
-}
