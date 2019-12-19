@@ -19,7 +19,7 @@ export interface IDetailsListBasicExampleItem {
 
 export interface IDetailsListBasicExampleState {
   items: IDetailsListBasicExampleItem[];
-  selectionDetails: {};
+  selectionDetails: string;
 }
 
 export class DetailsListBasicExample extends React.Component<{}, IDetailsListBasicExampleState> {
@@ -61,6 +61,7 @@ export class DetailsListBasicExample extends React.Component<{}, IDetailsListBas
     return (
       <Fabric>
         <div className={exampleChildClass}>{selectionDetails}</div>
+        <Announced message={selectionDetails} />
         <TextField
           className={exampleChildClass}
           label="Filter by name:"

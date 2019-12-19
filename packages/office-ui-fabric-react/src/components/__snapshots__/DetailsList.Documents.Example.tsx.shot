@@ -565,6 +565,13 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
     No items selected
   </div>
   <div
+    aria-live="polite"
+    className=
+
+
+    role="status"
+  />
+  <div
     className="ms-Viewport"
     style={
       Object {

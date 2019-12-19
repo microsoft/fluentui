@@ -60,6 +60,7 @@ export class DetailsListCompactExample extends React.Component<{}, IDetailsListC
     return (
       <Fabric>
         <div className={exampleChildClass}>{selectionDetails}</div>
+        <Announced message={selectionDetails} />
         <TextField
           className={exampleChildClass}
           label="Filter by name:"
