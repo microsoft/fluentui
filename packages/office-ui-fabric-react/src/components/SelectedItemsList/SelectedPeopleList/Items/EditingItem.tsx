@@ -2,24 +2,13 @@
 import * as React from 'react';
 /* tslint:enable */
 import { BaseComponent, KeyCodes, getId, getNativeProps, inputProperties, css } from '../../../../Utilities';
-import { FloatingPeoplePicker, IBaseFloatingPickerProps } from '../../../../FloatingPicker';
-import { ISelectedPeopleItemProps } from '../SelectedPeopleList';
+import { FloatingPeoplePicker } from '../../../../FloatingPicker';
 import { IExtendedPersonaProps } from '../SelectedPeopleList';
 import { IPeoplePickerItemState } from './ExtendedSelectedItem';
-import { IPersonaProps } from '../../../../Persona';
-
-import * as stylesImport from './EditingItem.scss';
-
-// tslint:disable-next-line:no-any
-const styles: any = stylesImport;
-
-export interface IEditingSelectedPeopleItemProps extends ISelectedPeopleItemProps {
-  // tslint:disable-next-line:no-any
-  onEditingComplete: (oldItem: any, newItem: any) => void;
-  onRenderFloatingPicker?: React.ComponentType<IBaseFloatingPickerProps<IPersonaProps>>;
-  floatingPickerProps?: IBaseFloatingPickerProps<IPersonaProps>;
-  getEditingItemText?: (item: IExtendedPersonaProps) => string;
-}
+import { IEditingSelectedPeopleItemProps } from './EditingItem.types';
+import { getStyles } from './EditingItem.styles';
+import { IEditingSelectedPeopleItemStyles, IEditingSelectedPeopleItemStylesProps } from './EditingItem.types';
+import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 
 export class EditingItem extends BaseComponent<IEditingSelectedPeopleItemProps, IPeoplePickerItemState> {
   private _editingInput: HTMLInputElement;
@@ -42,8 +31,10 @@ export class EditingItem extends BaseComponent<IEditingSelectedPeopleItemProps, 
   public render(): JSX.Element {
     const itemId = getId();
     const nativeProps = getNativeProps<React.InputHTMLAttributes<HTMLInputElement>>(this.props, inputProperties);
+    const getClassNames = classNamesFunction<IEditingSelectedPeopleItemStylesProps, IEditingSelectedPeopleItemStyles>();
+    const classNames = getClassNames(getStyles);
     return (
-      <div aria-labelledby={'editingItemPersona-' + itemId} className={css('ms-EditingItem', styles.editingContainer)}>
+      <div aria-labelledby={'editingItemPersona-' + itemId} className={classNames.root}>
         <input
           autoCapitalize={'off'}
           autoComplete={'off'}
@@ -54,7 +45,7 @@ export class EditingItem extends BaseComponent<IEditingSelectedPeopleItemProps, 
           onBlur={this._onInputBlur}
           onClick={this._onInputClick}
           data-lpignore={true}
-          className={styles.editingInput}
+          className={classNames.input}
           id={itemId}
         />
         {this._renderEditingSuggestions()}
