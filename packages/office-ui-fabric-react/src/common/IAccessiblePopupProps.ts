@@ -1,3 +1,6 @@
+/**
+ * {@docCategory Modal}
+ */
 export interface IAccessiblePopupProps {
   /**
    * Sets the HTMLElement to focus on when exiting the FocusTrapZone.

@@ -236,6 +236,7 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
             ariaLabelledBy={titleAriaId}
             ariaDescribedBy={subtitleAriaId}
             onDismiss={onDismiss}
+            shouldRestoreFocus={!ignoreExternalFocusing}
           >
             <div className={classNames.root}>
               {!isModeless && <Overlay isDarkThemed={isDarkOverlay} onClick={isBlocking ? undefined : (onDismiss as any)} {...overlay} />}
