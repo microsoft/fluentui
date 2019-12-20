@@ -569,12 +569,12 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
           }
           return;
         case KeyCodes.pageDown:
-          if (this._movePageDown()) {
+          if (this._moveFocusPaging(true)) {
             break;
           }
           return;
         case KeyCodes.pageUp:
-          if (this._movePageUp()) {
+          if (this._moveFocusPaging(false)) {
             break;
           }
           return;
@@ -935,22 +935,45 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
 
     return false;
   }
-  private _moveFocusPaging(
-    isForward: boolean,
-    getDistanceFromCenter: (activeRect: ClientRect, targetRect: ClientRect) => number,
-    useDefaultWrap: boolean = true
-  ): boolean {
+
+  private _getHorizontalDistanceFromCenter = (isForward: boolean, activeRect: ClientRect, targetRect: ClientRect): number => {
+    const leftAlignment = this._focusAlignment.x;
+    let distance = -1;
+    // ClientRect values can be floats that differ by very small fractions of a decimal.
+    // If the difference between top and bottom are within a pixel then we should treat
+    // them as equivalent by using Math.floor. For instance 5.2222 and 5.222221 should be equivalent,
+    // but without Math.Floor they will be handled incorrectly.
+    const targetRectTop = Math.floor(targetRect.top);
+    const activeRectBottom = Math.floor(activeRect.bottom);
+    const targetRectBottom = Math.floor(targetRect.bottom);
+    const activeRectTop = Math.floor(activeRect.top);
+    // for paging down
+    if (isForward && targetRectTop < activeRectBottom) {
+      if (!this._shouldWrapFocus(this._activeElement as HTMLElement, NO_VERTICAL_WRAP)) {
+        return LARGE_NEGATIVE_DISTANCE_FROM_CENTER;
+      }
+      return LARGE_DISTANCE_FROM_CENTER;
+    } else if (!isForward && targetRectBottom > activeRectTop) {
+      // for paging up
+      if (!this._shouldWrapFocus(this._activeElement as HTMLElement, NO_VERTICAL_WRAP)) {
+        return LARGE_NEGATIVE_DISTANCE_FROM_CENTER;
+      }
+      return LARGE_DISTANCE_FROM_CENTER;
+    } else {
+      if (leftAlignment >= targetRect.left && leftAlignment <= targetRect.left + targetRect.width) {
+        distance = 0;
+      } else {
+        distance = Math.abs(targetRect.left + targetRect.width / 2 - leftAlignment);
+      }
+    }
+    return distance;
+  };
+
+  private _moveFocusPaging(isForward: boolean, useDefaultWrap: boolean = true): boolean {
     if (useDefaultWrap === void 0) {
       useDefaultWrap = true;
     }
     let element = this._activeElement;
-    let candidateDistance = -1;
-    let candidateElement = undefined;
-    let changedFocus = false;
-    let pagesize = 0;
-    let targetTop = -1;
-    let targetBottom = -1;
-
     if (!element || !this._root.current) {
       return false;
     }
@@ -960,126 +983,79 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
       }
     }
     const scrollableParent = findScrollableParent(element);
-    if (scrollableParent) {
-      pagesize = scrollableParent.clientHeight;
-      const activeRect = element.getBoundingClientRect();
-      do {
-        element = isForward ? getNextElement(this._root.current, element) : getPreviousElement(this._root.current, element);
-        if (element) {
-          const targetRect = element.getBoundingClientRect();
-          const targetRectTop = Math.floor(targetRect.top);
-          const activeRectBottom = Math.floor(activeRect.bottom);
-          const targetRectBottom = Math.floor(targetRect.bottom);
-          const activeRectTop = Math.floor(activeRect.top);
-          const elementDistance = getDistanceFromCenter(activeRect, targetRect);
+    if (!scrollableParent) {
+      return false;
+    }
+    let candidateDistance = -1;
+    let candidateElement = undefined;
+    let targetTop = -1;
+    let targetBottom = -1;
+    const pagesize = scrollableParent.clientHeight;
+    const activeRect = element.getBoundingClientRect();
+    do {
+      element = isForward ? getNextElement(this._root.current, element) : getPreviousElement(this._root.current, element);
+      if (element) {
+        const targetRect = element.getBoundingClientRect();
+        const targetRectTop = Math.floor(targetRect.top);
+        const activeRectBottom = Math.floor(activeRect.bottom);
+        const targetRectBottom = Math.floor(targetRect.bottom);
+        const activeRectTop = Math.floor(activeRect.top);
+        const elementDistance = this._getHorizontalDistanceFromCenter(isForward, activeRect, targetRect);
 
+        // for paging down
+        if (isForward && targetRectTop > activeRectBottom + pagesize) {
+          break;
+        }
+        // for paging up
+        if (!isForward && targetRectBottom < activeRectTop - pagesize) {
+          break;
+        }
+        if (elementDistance > -1) {
           // for paging down
-          if (isForward && targetRectTop > activeRectBottom + pagesize) {
-            break;
-          }
-          // for paging up
-          if (!isForward && targetRectBottom < activeRectTop - pagesize) {
-            break;
-          }
-          if (elementDistance > -1) {
-            // for paging down
-            if (isForward && targetRectTop > targetTop) {
-              targetTop = targetRectTop;
+          if (isForward && targetRectTop > targetTop) {
+            targetTop = targetRectTop;
+            candidateDistance = elementDistance;
+            candidateElement = element;
+          } else if (!isForward && targetRectBottom < targetBottom) {
+            // for paging up
+            targetBottom = targetRectBottom;
+            candidateDistance = elementDistance;
+            candidateElement = element;
+          } else {
+            if (candidateDistance === -1 || elementDistance <= candidateDistance) {
               candidateDistance = elementDistance;
               candidateElement = element;
-            } else if (!isForward && targetRectBottom < targetBottom) {
-              targetBottom = targetRectBottom;
-              candidateDistance = elementDistance;
-              candidateElement = element;
-            } else {
-              if (candidateDistance === -1 || elementDistance <= candidateDistance) {
-                candidateDistance = elementDistance;
-                candidateElement = element;
-              }
             }
           }
         }
-      } while (element);
+      }
+    } while (element);
 
-      // Focus the closest candidate
-      if (candidateElement && candidateElement !== this._activeElement) {
-        changedFocus = true;
-        this.focusElement(candidateElement);
-      } else if (this.props.isCircularNavigation && useDefaultWrap && isForward) {
+    let changedFocus = false;
+    // Focus the closest candidate
+    if (candidateElement && candidateElement !== this._activeElement) {
+      changedFocus = true;
+      this.focusElement(candidateElement);
+      this._setFocusAlignment(candidateElement as HTMLElement, false, true);
+    } else if (this.props.isCircularNavigation && useDefaultWrap) {
+      if (isForward) {
         return this.focusElement(getNextElement(
           this._root.current,
           this._root.current.firstElementChild as HTMLElement,
+          true
+        ) as HTMLElement);
+      } else {
+        return this.focusElement(getPreviousElement(
+          this._root.current,
+          this._root.current.lastElementChild as HTMLElement,
+          true,
+          true,
           true
         ) as HTMLElement);
       }
     }
     return changedFocus;
   }
-  private _movePageDown(): boolean {
-    const leftAlignment = this._focusAlignment.x;
-    if (
-      this._moveFocusPaging(true, (activeRect: ClientRect, targetRect: ClientRect) => {
-        let distance = -1;
-        // ClientRect values can be floats that differ by very small fractions of a decimal.
-        // If the difference between top and bottom are within a pixel then we should treat
-        // them as equivalent by using Math.floor. For instance 5.2222 and 5.222221 should be equivalent,
-        // but without Math.Floor they will be handled incorrectly.
-        const targetRectTop = Math.floor(targetRect.top);
-        const activeRectBottom = Math.floor(activeRect.bottom);
-        if (targetRectTop < activeRectBottom) {
-          if (!this._shouldWrapFocus(this._activeElement as HTMLElement, NO_VERTICAL_WRAP)) {
-            return LARGE_NEGATIVE_DISTANCE_FROM_CENTER;
-          }
-          return LARGE_DISTANCE_FROM_CENTER;
-        } else {
-          if (leftAlignment >= targetRect.left && leftAlignment <= targetRect.left + targetRect.width) {
-            distance = 0;
-          } else {
-            distance = Math.abs(targetRect.left + targetRect.width / 2 - leftAlignment);
-          }
-        }
-        return distance;
-      })
-    ) {
-      this._setFocusAlignment(this._activeElement as HTMLElement, false, true);
-      return true;
-    }
-    return false;
-  }
-
-  private _movePageUp(): boolean {
-    const leftAlignment = this._focusAlignment.x;
-    if (
-      this._moveFocusPaging(false, (activeRect: ClientRect, targetRect: ClientRect) => {
-        let distance = -1;
-        // ClientRect values can be floats that differ by very small fractions of a decimal.
-        // If the difference between top and bottom are within a pixel then we should treat
-        // them as equivalent by using Math.floor. For instance 5.2222 and 5.222221 should be equivalent,
-        // but without Math.Floor they will be handled incorrectly.
-        const targetRectBottom = Math.floor(targetRect.bottom);
-        const activeRectTop = Math.floor(activeRect.top);
-
-        if (targetRectBottom > activeRectTop) {
-          if (!this._shouldWrapFocus(this._activeElement as HTMLElement, NO_VERTICAL_WRAP)) {
-            return LARGE_NEGATIVE_DISTANCE_FROM_CENTER;
-          }
-          return LARGE_DISTANCE_FROM_CENTER;
-        } else {
-          if (leftAlignment >= targetRect.left && leftAlignment <= targetRect.left + targetRect.width) {
-            distance = 0;
-          } else {
-            distance = Math.abs(targetRect.left + targetRect.width / 2 - leftAlignment);
-          }
-        }
-        return distance;
-      })
-    ) {
-      this._setFocusAlignment(this._activeElement as HTMLElement, false, true);
-      return true;
-    }
-    return false;
-  }
-
   private _setFocusAlignment(element: HTMLElement, isHorizontal?: boolean, isVertical?: boolean) {
     if (this.props.direction === FocusZoneDirection.bidirectional && (!this._focusAlignment || isHorizontal || isVertical)) {
       const rect = element.getBoundingClientRect();
