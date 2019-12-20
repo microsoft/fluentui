@@ -1,7 +1,16 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 19 Dec 2019 12:33:02 GMT and should not be manually modified.
+This log was last generated on Fri, 20 Dec 2019 12:32:45 GMT and should not be manually modified.
 
+## 7.76.0
+Fri, 20 Dec 2019 12:32:45 GMT
+
+### Minor changes
+
+- Modal, Panel, Overlay: added optional prop allowTouchBodyScroll that allows body scroll on touch devices (dmitriy.ravdin@siemens.com)
+### Patches
+
+- ScrollablePane: Fixing tabbing navigation with Sticky headers. (Humberto.Morimoto@microsoft.com)
 ## 7.75.0
 Thu, 19 Dec 2019 12:33:02 GMT
 

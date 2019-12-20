@@ -2,6 +2,27 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Fri, 20 Dec 2019 12:32:45 GMT",
+      "tag": "office-ui-fabric-react_v7.76.0",
+      "version": "7.76.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Modal, Panel, Overlay: added optional prop allowTouchBodyScroll that allows body scroll on touch devices",
+            "author": "dmitriy.ravdin@siemens.com",
+            "commit": "00c16da9f0d9ee3de29c6de6a0aa32d50397cdcc"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "ScrollablePane: Fixing tabbing navigation with Sticky headers.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "c98780c3071c6804444fb1b019a9d6d213268967"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 19 Dec 2019 12:33:02 GMT",
       "tag": "office-ui-fabric-react_v7.75.0",
       "version": "7.75.0",
