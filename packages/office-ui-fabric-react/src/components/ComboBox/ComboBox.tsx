@@ -405,13 +405,16 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
               className={this._classNames.root}
             >
               <Autofill
-                aria-live="polite"
-                data-ktp-execute-target={keytipAttributes['data-ktp-execute-target']}
-                data-is-interactable={!disabled}
                 componentRef={this._autofill}
                 id={id + '-input'}
                 className={this._classNames.input}
                 type="text"
+                role="combobox"
+                title={title}
+                placeholder={placeholder}
+                spellCheck={false}
+                tabIndex={tabIndex}
+                readOnly={disabled || !allowFreeform}
                 onFocus={this._select}
                 onBlur={this._onBlur}
                 onKeyDown={this._onInputKeyDown}
@@ -421,10 +424,9 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
                 onInputValueChange={this._onInputChange}
                 aria-expanded={isOpen}
                 aria-autocomplete={this._getAriaAutoCompleteValue()}
-                role="combobox"
-                readOnly={disabled || !allowFreeform}
+                aria-live={this.state.isOpen ? 'off' : 'polite'}
                 aria-posinset={this._sizePosCache.positionInSet(
-                  currentPendingValueValidIndex > 0 ? currentPendingValueValidIndex : selectedIndices[0]
+                  currentPendingValueValidIndex >= 0 ? currentPendingValueValidIndex : selectedIndices[0]
                 )}
                 aria-setsize={this._sizePosCache.optionSetSize}
                 aria-labelledby={label && id + '-label'}
@@ -438,15 +440,13 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
                 aria-required={required}
                 aria-disabled={disabled}
                 aria-owns={isOpen ? id + '-list' : undefined}
-                spellCheck={false}
+                data-ktp-execute-target={keytipAttributes['data-ktp-execute-target']}
+                data-is-interactable={!disabled}
                 defaultVisibleValue={this._currentVisibleValue}
                 suggestedDisplayValue={suggestedDisplayValue}
                 updateValueInWillReceiveProps={this._onUpdateValueInAutofillWillReceiveProps}
                 shouldSelectFullInputValueInComponentDidUpdate={this._onShouldSelectFullInputValueInAutofillComponentDidUpdate}
-                title={title}
                 preventValueSelection={!focused}
-                placeholder={placeholder}
-                tabIndex={tabIndex}
                 {...autofill}
               />
               <IconButton
