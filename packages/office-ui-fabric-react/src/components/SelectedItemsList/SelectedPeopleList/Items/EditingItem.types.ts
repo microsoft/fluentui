@@ -4,6 +4,7 @@ import { IBaseFloatingPickerProps } from '../../../../FloatingPicker';
 import { ISelectedPeopleItemProps } from '../SelectedPeopleList';
 import { IExtendedPersonaProps } from '../SelectedPeopleList';
 import { IPersonaProps } from '../../../../Persona';
+import { IStyle } from '@uifabric/styling';
 
 export interface IEditingSelectedPeopleItemProps extends ISelectedPeopleItemProps {
   // tslint:disable-next-line:no-any
@@ -13,4 +14,9 @@ export interface IEditingSelectedPeopleItemProps extends ISelectedPeopleItemProp
   getEditingItemText?: (item: IExtendedPersonaProps) => string;
 }
 
-export interface IEditingSelectedPeopleItemStyles {}
+export interface IEditingSelectedPeopleItemStylesProps {}
+
+export interface IEditingSelectedPeopleItemStyles {
+  root: IStyle;
+  input: IStyle;
+}

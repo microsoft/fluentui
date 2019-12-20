@@ -1,14 +1,13 @@
 /* tslint:disable */
 import * as React from 'react';
 /* tslint:enable */
-import { BaseComponent, KeyCodes, getId, getNativeProps, inputProperties, css } from '../../../../Utilities';
+import { BaseComponent, KeyCodes, getId, getNativeProps, inputProperties, classNamesFunction } from '../../../../Utilities';
 import { FloatingPeoplePicker } from '../../../../FloatingPicker';
 import { IExtendedPersonaProps } from '../SelectedPeopleList';
 import { IPeoplePickerItemState } from './ExtendedSelectedItem';
 import { IEditingSelectedPeopleItemProps } from './EditingItem.types';
 import { getStyles } from './EditingItem.styles';
 import { IEditingSelectedPeopleItemStyles, IEditingSelectedPeopleItemStylesProps } from './EditingItem.types';
-import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 
 export class EditingItem extends BaseComponent<IEditingSelectedPeopleItemProps, IPeoplePickerItemState> {
   private _editingInput: HTMLInputElement;
