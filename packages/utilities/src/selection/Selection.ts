@@ -36,7 +36,7 @@ export class Selection<TItem = IObjectWithKey> implements ISelection<TItem> {
   private _unselectableCount: number;
   private _isModal: boolean;
 
-  constructor(options: ISelectionOptions = {}) {
+  constructor(options: ISelectionOptions<TItem> = {}) {
     const { onSelectionChanged, getKey, canSelectItem = () => true, selectionMode = SelectionMode.multiple } = options;
 
     this.mode = selectionMode;
