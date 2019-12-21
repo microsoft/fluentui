@@ -1,4 +1,4 @@
-import { Selection, ISelectionOptions } from './Selection';
+import { Selection } from './Selection';
 
 const setA = [{ key: 'a' }, { key: 'b' }, { key: 'c' }];
 const setB = [{ key: 'a' }, { key: 'd' }, { key: 'b' }];
