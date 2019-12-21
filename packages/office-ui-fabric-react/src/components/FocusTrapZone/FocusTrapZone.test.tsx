@@ -592,10 +592,18 @@ describe('FocusTrapZone', () => {
       expect(document.activeElement).toBe(activeElement);
     });
 
-    it('Focuses on firstFocusableSelector on mount', async () => {
+    it('Focuses on firstFocusableSelector class name on mount', async () => {
       expect.assertions(1);
 
       const { buttonC } = setupTest({ firstFocusableSelector: 'c' });
+
+      expect(document.activeElement).toBe(buttonC);
+    });
+
+    it('Focuses on firstFocusableSelector actual selector on mount', async () => {
+      expect.assertions(1);
+
+      const { buttonC } = setupTest({ firstFocusableSelector: '.c' });
 
       expect(document.activeElement).toBe(buttonC);
     });
