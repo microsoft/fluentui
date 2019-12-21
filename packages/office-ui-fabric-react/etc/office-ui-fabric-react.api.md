@@ -1316,6 +1316,7 @@ export function getFullColorString(color: IColor): string;
 export const getIconContent: (iconName?: string | undefined) => {
     children: string | undefined;
     iconClassName: string | undefined;
+    fontFamily: string | undefined;
 };
 
 // @public
