@@ -10,7 +10,7 @@ export class GridBase extends BaseComponent<IGridProps, {}> implements IGrid {
 
   constructor(props: IGridProps) {
     super(props);
-    this._id = getId() || (props as any).id;
+    this._id = props.id || getId();
   }
 
   public render(): JSX.Element {

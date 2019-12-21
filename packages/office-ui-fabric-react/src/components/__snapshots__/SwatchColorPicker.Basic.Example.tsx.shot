@@ -38,8 +38,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
             padding-right: 2px;
             padding-top: 2px;
           }
-      id="id__1"
-      onBlur={[Function]}
+      id="swatchColorPicker0"
       role="grid"
     >
       <tbody>
@@ -936,8 +935,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
             padding-right: 2px;
             padding-top: 2px;
           }
-      id="id__19"
-      onBlur={[Function]}
+      id="swatchColorPicker18"
       role="grid"
     >
       <tbody>
@@ -1779,8 +1777,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
             padding-right: 2px;
             padding-top: 2px;
           }
-      id="id__37"
-      onBlur={[Function]}
+      id="swatchColorPicker36"
       role="grid"
     >
       <tbody>
@@ -2632,8 +2629,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
             padding-right: 2px;
             padding-top: 2px;
           }
-      id="id__55"
-      onBlur={[Function]}
+      id="swatchColorPicker54"
       role="grid"
     >
       <tbody>
@@ -4728,8 +4724,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
             padding-right: 2px;
             padding-top: 2px;
           }
-      id="id__94"
-      onBlur={[Function]}
+      id="swatchColorPicker93"
       role="grid"
     >
       <tbody>
