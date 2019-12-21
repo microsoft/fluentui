@@ -745,6 +745,11 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                 }
             data-icon-name="Share"
             role="presentation"
+            style={
+              Object {
+                "fontFamily": "\\"FabricMDL2Icons\\"",
+              }
+            }
           >
             
           </i>
@@ -891,6 +896,11 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                 }
             data-icon-name="Pin"
             role="presentation"
+            style={
+              Object {
+                "fontFamily": "\\"FabricMDL2Icons-0\\"",
+              }
+            }
           >
             
           </i>
@@ -1037,6 +1047,11 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                 }
             data-icon-name="Ringer"
             role="presentation"
+            style={
+              Object {
+                "fontFamily": "\\"FabricMDL2Icons-4\\"",
+              }
+            }
           >
             
           </i>

@@ -125,6 +125,11 @@ exports[`ContextualMenu ContextualMenu snapshot ContextualMenu should be present
           }
       data-icon-name="ChevronDown"
       role="presentation"
+      style={
+        Object {
+          "fontFamily": "\\"FabricMDL2Icons\\"",
+        }
+      }
     >
       
     </i>

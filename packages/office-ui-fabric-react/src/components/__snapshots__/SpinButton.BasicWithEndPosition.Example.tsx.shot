@@ -302,6 +302,11 @@ exports[`Component Examples renders SpinButton.BasicWithEndPosition.Example.tsx 
                   }
               data-icon-name="ChevronUpSmall"
               role="presentation"
+              style={
+                Object {
+                  "fontFamily": "\\"FabricMDL2Icons-2\\"",
+                }
+              }
             >
               
             </i>
@@ -441,6 +446,11 @@ exports[`Component Examples renders SpinButton.BasicWithEndPosition.Example.tsx 
                   }
               data-icon-name="ChevronDownSmall"
               role="presentation"
+              style={
+                Object {
+                  "fontFamily": "\\"FabricMDL2Icons-3\\"",
+                }
+              }
             >
               
             </i>

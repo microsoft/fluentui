@@ -409,6 +409,11 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                   }
               data-icon-name="ChevronDown"
               role="presentation"
+              style={
+                Object {
+                  "fontFamily": "\\"FabricMDL2Icons\\"",
+                }
+              }
             >
               
             </i>
@@ -943,6 +948,11 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                 }
             data-icon-name="ChevronDown"
             role="presentation"
+            style={
+              Object {
+                "fontFamily": "\\"FabricMDL2Icons\\"",
+              }
+            }
           >
             
           </i>
@@ -1338,6 +1348,11 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                 }
             data-icon-name="ChevronDown"
             role="presentation"
+            style={
+              Object {
+                "fontFamily": "\\"FabricMDL2Icons\\"",
+              }
+            }
           >
             
           </i>
@@ -1732,6 +1747,11 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                 }
             data-icon-name="ChevronDown"
             role="presentation"
+            style={
+              Object {
+                "fontFamily": "\\"FabricMDL2Icons\\"",
+              }
+            }
           >
             
           </i>
@@ -3849,6 +3869,11 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                 }
             data-icon-name="ChevronDown"
             role="presentation"
+            style={
+              Object {
+                "fontFamily": "\\"FabricMDL2Icons\\"",
+              }
+            }
           >
             
           </i>
@@ -4254,6 +4279,11 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                 }
             data-icon-name="ChevronDown"
             role="presentation"
+            style={
+              Object {
+                "fontFamily": "\\"FabricMDL2Icons\\"",
+              }
+            }
           >
             
           </i>
@@ -4561,6 +4591,11 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                 }
             data-icon-name="ChevronDown"
             role="presentation"
+            style={
+              Object {
+                "fontFamily": "\\"FabricMDL2Icons\\"",
+              }
+            }
           >
             
           </i>

@@ -281,6 +281,11 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                         }
                     data-icon-name="CircleRing"
                     role="presentation"
+                    style={
+                      Object {
+                        "fontFamily": "\\"FabricMDL2Icons\\"",
+                      }
+                    }
                   >
                     
                   </i>
@@ -320,6 +325,11 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                         }
                     data-icon-name="StatusCircleCheckmark"
                     role="presentation"
+                    style={
+                      Object {
+                        "fontFamily": "\\"FabricMDL2Icons\\"",
+                      }
+                    }
                   >
                     
                   </i>
@@ -934,6 +944,11 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                                   }
                               data-icon-name="CircleRing"
                               role="presentation"
+                              style={
+                                Object {
+                                  "fontFamily": "\\"FabricMDL2Icons\\"",
+                                }
+                              }
                             >
                               
                             </i>
@@ -973,6 +988,11 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                                   }
                               data-icon-name="StatusCircleCheckmark"
                               role="presentation"
+                              style={
+                                Object {
+                                  "fontFamily": "\\"FabricMDL2Icons\\"",
+                                }
+                              }
                             >
                               
                             </i>
@@ -1450,6 +1470,11 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                                   }
                               data-icon-name="CircleRing"
                               role="presentation"
+                              style={
+                                Object {
+                                  "fontFamily": "\\"FabricMDL2Icons\\"",
+                                }
+                              }
                             >
                               
                             </i>
@@ -1489,6 +1514,11 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                                   }
                               data-icon-name="StatusCircleCheckmark"
                               role="presentation"
+                              style={
+                                Object {
+                                  "fontFamily": "\\"FabricMDL2Icons\\"",
+                                }
+                              }
                             >
                               
                             </i>
@@ -1966,6 +1996,11 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                                   }
                               data-icon-name="CircleRing"
                               role="presentation"
+                              style={
+                                Object {
+                                  "fontFamily": "\\"FabricMDL2Icons\\"",
+                                }
+                              }
                             >
                               
                             </i>
@@ -2005,6 +2040,11 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                                   }
                               data-icon-name="StatusCircleCheckmark"
                               role="presentation"
+                              style={
+                                Object {
+                                  "fontFamily": "\\"FabricMDL2Icons\\"",
+                                }
+                              }
                             >
                               
                             </i>
@@ -2482,6 +2522,11 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                                   }
                               data-icon-name="CircleRing"
                               role="presentation"
+                              style={
+                                Object {
+                                  "fontFamily": "\\"FabricMDL2Icons\\"",
+                                }
+                              }
                             >
                               
                             </i>
@@ -2521,6 +2566,11 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                                   }
                               data-icon-name="StatusCircleCheckmark"
                               role="presentation"
+                              style={
+                                Object {
+                                  "fontFamily": "\\"FabricMDL2Icons\\"",
+                                }
+                              }
                             >
                               
                             </i>
@@ -2998,6 +3048,11 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                                   }
                               data-icon-name="CircleRing"
                               role="presentation"
+                              style={
+                                Object {
+                                  "fontFamily": "\\"FabricMDL2Icons\\"",
+                                }
+                              }
                             >
                               
                             </i>
@@ -3037,6 +3092,11 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                                   }
                               data-icon-name="StatusCircleCheckmark"
                               role="presentation"
+                              style={
+                                Object {
+                                  "fontFamily": "\\"FabricMDL2Icons\\"",
+                                }
+                              }
                             >
                               
                             </i>
@@ -3514,6 +3574,11 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                                   }
                               data-icon-name="CircleRing"
                               role="presentation"
+                              style={
+                                Object {
+                                  "fontFamily": "\\"FabricMDL2Icons\\"",
+                                }
+                              }
                             >
                               
                             </i>
@@ -3553,6 +3618,11 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                                   }
                               data-icon-name="StatusCircleCheckmark"
                               role="presentation"
+                              style={
+                                Object {
+                                  "fontFamily": "\\"FabricMDL2Icons\\"",
+                                }
+                              }
                             >
                               
                             </i>
@@ -4030,6 +4100,11 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                                   }
                               data-icon-name="CircleRing"
                               role="presentation"
+                              style={
+                                Object {
+                                  "fontFamily": "\\"FabricMDL2Icons\\"",
+                                }
+                              }
                             >
                               
                             </i>
@@ -4069,6 +4144,11 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                                   }
                               data-icon-name="StatusCircleCheckmark"
                               role="presentation"
+                              style={
+                                Object {
+                                  "fontFamily": "\\"FabricMDL2Icons\\"",
+                                }
+                              }
                             >
                               
                             </i>
@@ -4546,6 +4626,11 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                                   }
                               data-icon-name="CircleRing"
                               role="presentation"
+                              style={
+                                Object {
+                                  "fontFamily": "\\"FabricMDL2Icons\\"",
+                                }
+                              }
                             >
                               
                             </i>
@@ -4585,6 +4670,11 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                                   }
                               data-icon-name="StatusCircleCheckmark"
                               role="presentation"
+                              style={
+                                Object {
+                                  "fontFamily": "\\"FabricMDL2Icons\\"",
+                                }
+                              }
                             >
                               
                             </i>
@@ -5062,6 +5152,11 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                                   }
                               data-icon-name="CircleRing"
                               role="presentation"
+                              style={
+                                Object {
+                                  "fontFamily": "\\"FabricMDL2Icons\\"",
+                                }
+                              }
                             >
                               
                             </i>
@@ -5101,6 +5196,11 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                                   }
                               data-icon-name="StatusCircleCheckmark"
                               role="presentation"
+                              style={
+                                Object {
+                                  "fontFamily": "\\"FabricMDL2Icons\\"",
+                                }
+                              }
                             >
                               
                             </i>
