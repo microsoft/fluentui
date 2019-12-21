@@ -169,6 +169,11 @@ exports[`MicroFeedback renders correctly with inline prop set 1`] = `
                 }
             data-icon-name="Like"
             role="presentation"
+            style={
+              Object {
+                "fontFamily": "\\"FabricMDL2Icons-2\\"",
+              }
+            }
           >
             
           </i>
@@ -296,6 +301,11 @@ exports[`MicroFeedback renders correctly with inline prop set 1`] = `
                 }
             data-icon-name="Dislike"
             role="presentation"
+            style={
+              Object {
+                "fontFamily": "\\"FabricMDL2Icons-2\\"",
+              }
+            }
           >
             
           </i>
@@ -475,6 +485,11 @@ exports[`MicroFeedback renders correctly with no props 1`] = `
                 }
             data-icon-name="Like"
             role="presentation"
+            style={
+              Object {
+                "fontFamily": "\\"FabricMDL2Icons-2\\"",
+              }
+            }
           >
             
           </i>
@@ -602,6 +617,11 @@ exports[`MicroFeedback renders correctly with no props 1`] = `
                 }
             data-icon-name="Dislike"
             role="presentation"
+            style={
+              Object {
+                "fontFamily": "\\"FabricMDL2Icons-2\\"",
+              }
+            }
           >
             
           </i>
