@@ -1011,7 +1011,7 @@ export const safeSetTimeout: (component: React.Component<{}, {}, any>) => (cb: F
 
 // @public (undocumented)
 export class Selection<TItem = IObjectWithKey> implements ISelection<TItem> {
-    constructor(options?: ISelectionOptions);
+    constructor(options?: ISelectionOptions<TItem>);
     // (undocumented)
     canSelectItem(item: TItem, index?: number): boolean;
     // (undocumented)
