@@ -1,7 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 20 Dec 2019 12:32:45 GMT and should not be manually modified.
+This log was last generated on Mon, 23 Dec 2019 12:34:01 GMT and should not be manually modified.
 
+## 7.76.1
+Mon, 23 Dec 2019 12:34:01 GMT
+
+### Patches
+
+- Align color system in Tooltip (nif_tony@outlook.com)
 ## 7.76.0
 Fri, 20 Dec 2019 12:32:45 GMT
 

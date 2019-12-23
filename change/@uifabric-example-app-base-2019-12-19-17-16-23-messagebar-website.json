@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fix Link colors inside MessageBar",
-  "packageName": "@uifabric/example-app-base",
-  "email": "elcraig@microsoft.com",
-  "commit": "30b8026fbfad792779bf9a895b35475e59656f5f",
-  "date": "2019-12-20T01:16:23.246Z"
-}
