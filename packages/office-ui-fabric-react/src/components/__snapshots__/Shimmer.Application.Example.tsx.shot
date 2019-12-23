@@ -429,6 +429,11 @@ exports[`Component Examples renders Shimmer.Application.Example.tsx correctly 1`
                             }
                         data-icon-name="Page"
                         role="presentation"
+                        style={
+                          Object {
+                            "fontFamily": "\\"FabricMDL2Icons\\"",
+                          }
+                        }
                       >
                         
                       </i>

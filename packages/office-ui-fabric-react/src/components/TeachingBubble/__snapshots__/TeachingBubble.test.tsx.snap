@@ -843,6 +843,11 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
                 }
             data-icon-name="Cancel"
             role="presentation"
+            style={
+              Object {
+                "fontFamily": "\\"FabricMDL2Icons\\"",
+              }
+            }
           >
             
           </i>

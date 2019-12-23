@@ -151,6 +151,11 @@ exports[`Component Examples renders ContextualMenu.Persisted.Example.tsx correct
             }
         data-icon-name="ChevronDown"
         role="presentation"
+        style={
+          Object {
+            "fontFamily": "\\"FabricMDL2Icons\\"",
+          }
+        }
       >
         
       </i>
