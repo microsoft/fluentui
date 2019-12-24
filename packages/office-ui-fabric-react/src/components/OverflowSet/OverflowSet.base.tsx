@@ -143,7 +143,8 @@ export class OverflowSetBase extends BaseComponent<IOverflowSetProps, {}> implem
   private _onRenderItems = (items: IOverflowSetItemProps[]): JSX.Element[] => {
     return items.map((item, i) => {
       const wrapperDivProps: React.HTMLProps<HTMLDivElement> = {
-        className: this._classNames.item
+        className: this._classNames.item,
+        role: item.role ? item.role : 'menuitem'
       };
       return (
         <div key={item.key} {...wrapperDivProps}>
