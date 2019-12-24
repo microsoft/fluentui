@@ -2,6 +2,20 @@
   "name": "@uifabric/styling",
   "entries": [
     {
+      "date": "Tue, 24 Dec 2019 12:33:51 GMT",
+      "tag": "@uifabric/styling_v7.8.0",
+      "version": "7.8.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Export IIconSubsetRecord",
+            "author": "elcraig@microsoft.com",
+            "commit": "a80d9e640f4655674a2e17a29adc6043d6048dae"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 06 Dec 2019 12:33:21 GMT",
       "tag": "@uifabric/styling_v7.7.4",
       "version": "7.7.4",

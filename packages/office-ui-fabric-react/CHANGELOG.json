@@ -2,6 +2,20 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Tue, 24 Dec 2019 12:33:51 GMT",
+      "tag": "office-ui-fabric-react_v7.76.2",
+      "version": "7.76.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Ensure icon font family isn't overridden by Fabric Core",
+            "author": "elcraig@microsoft.com",
+            "commit": "a80d9e640f4655674a2e17a29adc6043d6048dae"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 23 Dec 2019 12:34:01 GMT",
       "tag": "office-ui-fabric-react_v7.76.1",
       "version": "7.76.1",

@@ -1,7 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 23 Dec 2019 12:34:01 GMT and should not be manually modified.
+This log was last generated on Tue, 24 Dec 2019 12:33:51 GMT and should not be manually modified.
 
+## 7.76.2
+Tue, 24 Dec 2019 12:33:51 GMT
+
+### Patches
+
+- Ensure icon font family isn't overridden by Fabric Core (elcraig@microsoft.com)
 ## 7.76.1
 Mon, 23 Dec 2019 12:34:01 GMT
 

@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Export IIconSubsetRecord",
-  "packageName": "@uifabric/styling",
-  "email": "elcraig@microsoft.com",
-  "commit": "a80d9e640f4655674a2e17a29adc6043d6048dae",
-  "date": "2019-12-20T00:10:04.469Z"
-}
