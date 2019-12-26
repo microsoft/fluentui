@@ -1316,13 +1316,13 @@ export function getFullColorString(color: IColor): string;
 export const getIconContent: (iconName?: string | undefined) => {
     children: string | undefined;
     iconClassName: string | undefined;
-};
+} | undefined;
 
 // @public (undocumented)
 export const getIconContentUnCached: (iconName?: string | undefined) => {
     children: string | undefined;
     iconClassName: string | undefined;
-};
+} | undefined;
 
 // @public
 export const getMeasurementCache: () => {
@@ -5003,12 +5003,12 @@ export interface IHSV {
 export interface IIconProps extends IBaseProps, React.HTMLAttributes<HTMLElement> {
     // @deprecated
     ariaLabel?: string;
+    doNotCacheNullIcon?: boolean;
     iconName?: string;
     // @deprecated
     iconType?: IconType;
     imageErrorAs?: React.ComponentType<IImageProps>;
     imageProps?: IImageProps;
-    recomputeUndefinedCachedIcon?: boolean;
     styles?: IStyleFunctionOrObject<IIconStyleProps, IIconStyles>;
     // (undocumented)
     theme?: ITheme;

@@ -6,13 +6,10 @@ import { css, getNativeProps, htmlElementProperties, memoizeFunction } from '../
 import { getIcon } from '../../Styling';
 
 export const getIconContent = memoizeFunction((iconName?: string) => {
-  const iconDefinition = getIcon(iconName) || {
-    subset: {
-      className: undefined
-    },
-    code: undefined
-  };
-
+  const iconDefinition = getIcon(iconName);
+  if (!iconDefinition) {
+    return iconDefinition;
+  }
   return {
     children: iconDefinition.code,
     iconClassName: iconDefinition.subset.className
@@ -21,10 +18,10 @@ export const getIconContent = memoizeFunction((iconName?: string) => {
 
 export const getIconContentUnCached = memoizeFunction(
   (iconName?: string) => {
-    const iconDefinition = getIcon(iconName) || {
-      subset: { className: undefined },
-      code: undefined
-    };
+    const iconDefinition = getIcon(iconName);
+    if (!iconDefinition) {
+      return iconDefinition;
+    }
     return { children: iconDefinition.code, iconClassName: iconDefinition.subset.className };
   },
   undefined,
@@ -38,7 +35,14 @@ export const getIconContentUnCached = memoizeFunction(
  */
 export const FontIcon: React.FunctionComponent<IFontIconProps> = props => {
   const { iconName, className } = props;
-  const { iconClassName, children } = getIconContent(iconName);
+  let iconContent = getIconContent(iconName);
+  let iconClassName = undefined;
+  let children = undefined;
+
+  if (iconContent) {
+    iconClassName = iconContent.iconClassName;
+    children = iconContent.children;
+  }
 
   const nativeProps = getNativeProps<React.HTMLAttributes<HTMLElement>>(props, htmlElementProperties);
   const containerProps = props['aria-label']

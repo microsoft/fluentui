@@ -26,9 +26,22 @@ export class IconBase extends React.Component<IIconProps, IIconState> {
     const { className, styles, iconName, imageErrorAs, theme } = this.props;
     const isPlaceholder = typeof iconName === 'string' && iconName.length === 0;
     const isImage = this.props.iconType === IconType.image || this.props.iconType === IconType.Image || !!this.props.imageProps;
-    const { iconClassName, children } = this.props.recomputeUndefinedCachedIcon
-      ? getIconContentUnCached(iconName)
-      : getIconContent(iconName);
+    let iconContent = undefined;
+
+    if (this.props.doNotCacheNullIcon) {
+      iconContent = getIconContentUnCached(iconName);
+    } else {
+      iconContent = getIconContent(iconName);
+    }
+
+    let iconClassName = undefined;
+    let children = undefined;
+
+    if (iconContent) {
+      iconClassName = iconContent.iconClassName;
+      children = iconContent.children;
+    }
+
     const classNames = getClassNames(styles, {
       theme: theme!,
       className,
@@ -49,11 +62,11 @@ export class IconBase extends React.Component<IIconProps, IIconState> {
     const ariaLabel = this.props.ariaLabel || this.props['aria-label'];
     const containerProps = ariaLabel
       ? {
-          'aria-label': ariaLabel
-        }
+        'aria-label': ariaLabel
+      }
       : {
-          'aria-hidden': this.props['aria-labelledby'] || imageProps['aria-labelledby'] ? false : true
-        };
+        'aria-hidden': this.props['aria-labelledby'] || imageProps['aria-labelledby'] ? false : true
+      };
 
     return (
       <RootType data-icon-name={iconName} {...containerProps} {...nativeProps} className={classNames.root}>

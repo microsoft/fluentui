@@ -72,9 +72,9 @@ export interface IIconProps extends IBaseProps, React.HTMLAttributes<HTMLElement
   theme?: ITheme;
 
   /**
-   * If the icon is cached, but is undefined - then causes it to ignore the cached version and recompute.
+   * Flag to decide whether to cache null icon or not. If the flag is set to true, the icon is recomputed every time till the icon is not null for the first time and then the non-null version gets cached.
    */
-  recomputeUndefinedCachedIcon?: boolean;
+  doNotCacheNullIcon?: boolean;
 }
 
 /**
