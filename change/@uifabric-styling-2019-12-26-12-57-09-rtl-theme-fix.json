@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "createTheme: Pass through RTL if specified",
+  "packageName": "@uifabric/styling",
+  "email": "mgodbolt@microsoft.com",
+  "commit": "75306dc096b49d26b0e3f3310343fbe267b7f1f9",
+  "date": "2019-12-26T20:57:09.095Z"
+}
