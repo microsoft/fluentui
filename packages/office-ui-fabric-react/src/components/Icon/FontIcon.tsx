@@ -48,7 +48,7 @@ export const getIconContentUnCached = memoizeFunction(
  */
 export const FontIcon: React.FunctionComponent<IFontIconProps> = props => {
   const { iconName, className, style = {} } = props;
-  let iconContent = getIconContent(iconName);
+  const iconContent = getIconContent(iconName);
   let iconClassName = undefined;
   let children = undefined;
   let fontFamily = undefined;
