@@ -16,10 +16,12 @@ export const getStyles = (props: ILayerStyleProps): ILayerStyles => {
     root: [
       classNames.root,
       theme.fonts.medium,
+      {
+        direction: theme.rtl ? 'rtl' : undefined
+      },
       isNotHost && [
         classNames.rootNoHost,
         {
-          direction: theme.rtl ? 'rtl' : undefined,
           position: 'fixed',
           zIndex: ZIndexes.Layer,
           top: 0,
