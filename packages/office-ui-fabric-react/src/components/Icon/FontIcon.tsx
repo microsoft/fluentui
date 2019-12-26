@@ -11,9 +11,10 @@ export const getIconContent = memoizeFunction((iconName?: string) => {
     code: undefined
   };
 
-  if (!code) {
+  if (!subset) {
     return null;
   }
+
   return {
     children: code,
     iconClassName: subset.className,
@@ -28,9 +29,10 @@ export const getIconContentUnCached = memoizeFunction(
       code: undefined
     };
 
-    if (!code) {
+    if (!subset) {
       return null;
     }
+
     return {
       children: code,
       iconClassName: subset.className,

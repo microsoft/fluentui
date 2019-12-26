@@ -1314,14 +1314,14 @@ export function getFullColorString(color: IColor): string;
 
 // @public (undocumented)
 export const getIconContent: (iconName?: string | undefined) => {
-    children: string;
+    children: string | undefined;
     iconClassName: string | undefined;
     fontFamily: string | undefined;
 } | null;
 
 // @public (undocumented)
 export const getIconContentUnCached: (iconName?: string | undefined) => {
-    children: string;
+    children: string | undefined;
     iconClassName: string | undefined;
     fontFamily: string | undefined;
 } | null;
