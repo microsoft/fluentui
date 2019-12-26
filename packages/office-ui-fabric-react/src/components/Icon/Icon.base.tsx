@@ -62,11 +62,11 @@ export class IconBase extends React.Component<IIconProps, IIconState> {
     const ariaLabel = this.props.ariaLabel || this.props['aria-label'];
     const containerProps = ariaLabel
       ? {
-        'aria-label': ariaLabel
-      }
+          'aria-label': ariaLabel
+        }
       : {
-        'aria-hidden': this.props['aria-labelledby'] || imageProps['aria-labelledby'] ? false : true
-      };
+          'aria-hidden': this.props['aria-labelledby'] || imageProps['aria-labelledby'] ? false : true
+        };
 
     return (
       <RootType data-icon-name={iconName} {...containerProps} {...nativeProps} className={classNames.root}>
