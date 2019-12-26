@@ -1314,20 +1314,17 @@ export function getFullColorString(color: IColor): string;
 
 // @public (undocumented)
 export const getIconContent: (iconName?: string | undefined) => {
-    children: string | undefined;
+    children: string;
     iconClassName: string | undefined;
-<<<<<<< HEAD
-} | undefined;
+    fontFamily: string | undefined;
+} | null;
 
 // @public (undocumented)
 export const getIconContentUnCached: (iconName?: string | undefined) => {
-    children: string | undefined;
+    children: string;
     iconClassName: string | undefined;
-} | undefined;
-=======
     fontFamily: string | undefined;
-};
->>>>>>> master
+} | null;
 
 // @public
 export const getMeasurementCache: () => {
