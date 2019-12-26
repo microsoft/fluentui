@@ -137,6 +137,11 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
               }
           data-icon-name="Previous"
           role="presentation"
+          style={
+            Object {
+              "fontFamily": "\\"FabricMDL2Icons-1\\"",
+            }
+          }
         >
           
         </i>
@@ -267,6 +272,11 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
               }
           data-icon-name="CaretSolidLeft"
           role="presentation"
+          style={
+            Object {
+              "fontFamily": "\\"FabricMDL2Icons-8\\"",
+            }
+          }
         >
           
         </i>
@@ -929,6 +939,11 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
               }
           data-icon-name="CaretSolidRight"
           role="presentation"
+          style={
+            Object {
+              "fontFamily": "\\"FabricMDL2Icons-8\\"",
+            }
+          }
         >
           
         </i>
@@ -1068,6 +1083,11 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
                 }
             data-icon-name="Next"
             role="presentation"
+            style={
+              Object {
+                "fontFamily": "\\"FabricMDL2Icons-1\\"",
+              }
+            }
           >
             
           </i>
@@ -1219,6 +1239,11 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
             }
         data-icon-name="Previous"
         role="presentation"
+        style={
+          Object {
+            "fontFamily": "\\"FabricMDL2Icons-1\\"",
+          }
+        }
       >
         
       </i>
@@ -1349,6 +1374,11 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
             }
         data-icon-name="CaretSolidLeft"
         role="presentation"
+        style={
+          Object {
+            "fontFamily": "\\"FabricMDL2Icons-8\\"",
+          }
+        }
       >
         
       </i>
@@ -1370,7 +1400,7 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
             background-color: #ffffff;
-            border-color: #8a8886;
+            border-color: #605e5c;
             border-radius: 2px;
             border-style: solid;
             border-width: 1px;
@@ -1400,7 +1430,7 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
             margin-bottom: 8px;
           }
           &.is-open {
-            border-color: #8a8886;
+            border-color: #605e5c;
           }
           @media screen and (-ms-high-contrast: active){&.is-open {
             -ms-high-contrast-adjust: none;
@@ -1709,6 +1739,11 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
                 }
             data-icon-name="ChevronDown"
             role="presentation"
+            style={
+              Object {
+                "fontFamily": "\\"FabricMDL2Icons\\"",
+              }
+            }
           >
             
           </i>
@@ -1718,17 +1753,7 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
     <div
       aria-atomic="true"
       aria-live="polite"
-      className=
-
-          {
-            -moz-osx-font-smoothing: grayscale;
-            -webkit-font-smoothing: antialiased;
-            color: #a4262c;
-            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-            font-size: 12px;
-            font-weight: 400;
-            margin-top: 5px;
-          }
+      className=""
       id="ComboBox6-error"
       role="region"
     >
@@ -1856,6 +1881,11 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
             }
         data-icon-name="CaretSolidRight"
         role="presentation"
+        style={
+          Object {
+            "fontFamily": "\\"FabricMDL2Icons-8\\"",
+          }
+        }
       >
         
       </i>
@@ -1982,6 +2012,11 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
             }
         data-icon-name="Next"
         role="presentation"
+        style={
+          Object {
+            "fontFamily": "\\"FabricMDL2Icons-1\\"",
+          }
+        }
       >
         
       </i>

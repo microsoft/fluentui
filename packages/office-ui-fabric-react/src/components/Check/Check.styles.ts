@@ -14,7 +14,7 @@ export const getStyles = (props: ICheckStyleProps): ICheckStyles => {
   const { height = props.checkBoxHeight || '18px', checked, className, theme } = props;
 
   const { palette, semanticColors, fonts } = theme;
-  const isRTL = getRTL();
+  const isRTL = getRTL(theme);
 
   const classNames = getGlobalClassNames(CheckGlobalClassNames, theme);
 

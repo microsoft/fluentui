@@ -76,7 +76,7 @@ Array [
             @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
               outline: 1px solid ActiveBorder;
             }
-        id="checkbox-0"
+        id="checkbox-2"
         onBlur={[Function]}
         onChange={[Function]}
         onFocus={[Function]}
@@ -107,7 +107,7 @@ Array [
               right: 0px;
               top: 0px;
             }
-        htmlFor="checkbox-0"
+        htmlFor="checkbox-2"
       >
         <div
           className=
@@ -213,7 +213,7 @@ Array [
               padding-top: 0px;
               word-wrap: break-word;
             }
-        htmlFor="Slider1"
+        htmlFor="Slider3"
       >
         Gap Space
       </label>
@@ -232,6 +232,7 @@ Array [
           aria-valuemax={30}
           aria-valuemin={0}
           aria-valuenow={0}
+          aria-valuetext="0"
           className=
               ms-Slider-slideBox
               ms-Slider-showValue
@@ -315,7 +316,7 @@ Array [
                 background-color: Highlight;
               }
           data-is-focusable={true}
-          id="Slider1"
+          id="Slider3"
           onKeyDown={[Function]}
           onMouseDown={[Function]}
           onTouchStart={[Function]}
@@ -473,7 +474,7 @@ Array [
               padding-top: 0px;
               word-wrap: break-word;
             }
-        htmlFor="Slider2"
+        htmlFor="Slider4"
       >
         Beak Width
       </label>
@@ -492,6 +493,7 @@ Array [
           aria-valuemax={50}
           aria-valuemin={10}
           aria-valuenow={16}
+          aria-valuetext="16"
           className=
               ms-Slider-slideBox
               ms-Slider-showValue
@@ -575,7 +577,7 @@ Array [
                 background-color: Highlight;
               }
           data-is-focusable={true}
-          id="Slider2"
+          id="Slider4"
           onKeyDown={[Function]}
           onMouseDown={[Function]}
           onTouchStart={[Function]}
@@ -725,14 +727,14 @@ Array [
               padding-top: 5px;
               word-wrap: break-word;
             }
-        id="Dropdown3-label"
+        id="Dropdown5-label"
       >
         Directional hint
       </label>
       <div
         aria-expanded="false"
         aria-haspopup="listbox"
-        aria-labelledby="Dropdown3-label Dropdown3-option"
+        aria-labelledby="Dropdown5-label Dropdown5-option"
         className=
             ms-Dropdown
             {
@@ -765,18 +767,26 @@ Array [
               border-color: Highlight;
             }
             &:focus .ms-Dropdown-title {
-              border-color: #0078d4;
-              border-width: 2px;
               color: #201f1e;
-              left: -1px;
-              top: -1px;
             }
-            @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-title {
+            &:focus:after {
+              border-radius: 2px;
+              border: 2px solid #0078d4;
+              box-sizing: border-box;
+              content: '';
+              height: 100%;
+              left: 0px;
+              pointer-events: none;
+              position: absolute;
+              top: 0px;
+              width: 100%;
+            }
+            @media screen and (-ms-high-contrast: active){&:focus:after {
               background-color: Highlight;
               border-color: Highlight;
               color: HighlightText;
             }
-            @media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: black-on-white){&:focus .ms-Dropdown-title {
+            @media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: black-on-white){&:focus:after {
               -ms-high-contrast-adjust: none;
             }
             &:active .ms-Dropdown-title {
@@ -817,7 +827,7 @@ Array [
               border-color: #a4262c;
             }
         data-is-focusable={true}
-        id="Dropdown3"
+        id="Dropdown5"
         onBlur={[Function]}
         onChange={[Function]}
         onClick={[Function]}
@@ -839,7 +849,7 @@ Array [
               ms-Dropdown-title
               {
                 background-color: #ffffff;
-                border-color: #8a8886;
+                border-color: #605e5c;
                 border-radius: 2px;
                 border-style: solid;
                 border-width: 1px;
@@ -862,7 +872,7 @@ Array [
                 text-overflow: ellipsis;
                 white-space: nowrap;
               }
-          id="Dropdown3-option"
+          id="Dropdown5-option"
           role="option"
         >
           Bottom Left Edge
@@ -1029,7 +1039,7 @@ Array [
                   margin-right: 4px;
                   margin-top: 0;
                 }
-            id="id__4"
+            id="id__6"
           >
             Show callout
           </span>

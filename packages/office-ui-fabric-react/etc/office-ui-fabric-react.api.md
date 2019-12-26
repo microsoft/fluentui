@@ -154,7 +154,7 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
     // (undocumented)
     protected onCopy: (ev: React.ClipboardEvent<HTMLElement>) => void;
     // (undocumented)
-    protected onInputChange: (value: string) => void;
+    protected onInputChange: (value: string, composing?: boolean | undefined) => void;
     // (undocumented)
     protected onInputClick: (ev: React.MouseEvent<HTMLInputElement | Autofill, MouseEvent>) => void;
     // (undocumented)
@@ -276,7 +276,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     // (undocumented)
     protected canAddItems(): boolean;
     // (undocumented)
-    completeSuggestion(): void;
+    completeSuggestion(forceComplete?: boolean): void;
     // (undocumented)
     componentDidMount(): void;
     // (undocumented)
@@ -1316,6 +1316,7 @@ export function getFullColorString(color: IColor): string;
 export const getIconContent: (iconName?: string | undefined) => {
     children: string | undefined;
     iconClassName: string | undefined;
+<<<<<<< HEAD
 } | undefined;
 
 // @public (undocumented)
@@ -1323,6 +1324,10 @@ export const getIconContentUnCached: (iconName?: string | undefined) => {
     children: string | undefined;
     iconClassName: string | undefined;
 } | undefined;
+=======
+    fontFamily: string | undefined;
+};
+>>>>>>> master
 
 // @public
 export const getMeasurementCache: () => {
@@ -1534,8 +1539,8 @@ export interface IAutofillProps extends React.InputHTMLAttributes<HTMLInputEleme
     componentRef?: IRefObject<IAutofill>;
     defaultVisibleValue?: string;
     enableAutofillOnKeyPress?: KeyCodes[];
-    onInputChange?: (value: string) => string;
-    onInputValueChange?: (newValue?: string) => void;
+    onInputChange?: (value: string, composing: boolean) => string;
+    onInputValueChange?: (newValue?: string, composing?: boolean) => void;
     preventValueSelection?: boolean;
     shouldSelectFullInputValueInComponentDidUpdate?: () => boolean;
     suggestedDisplayValue?: string;
@@ -1667,6 +1672,7 @@ export type IBaseFloatingPickerSuggestionProps = Pick<ISuggestionsControlProps<a
 
 // @public
 export interface IBasePicker<T> {
+    completeSuggestion: (forceComplete?: boolean) => void;
     focus: () => void;
     focusInput: () => void;
     items: T[] | undefined;
@@ -1751,7 +1757,7 @@ export interface IBasePickerStyles {
 }
 
 // @public
-export interface IBasePickerSuggestionsProps<T = any> extends Pick<ISuggestionsProps<T>, 'onRenderNoResultFound' | 'suggestionsHeaderText' | 'mostRecentlyUsedHeaderText' | 'noResultsFoundText' | 'className' | 'suggestionsClassName' | 'suggestionsItemClassName' | 'searchForMoreText' | 'forceResolveText' | 'loadingText' | 'searchingText' | 'resultsFooterFull' | 'resultsFooter' | 'resultsMaximumNumber' | 'showRemoveButtons' | 'suggestionsAvailableAlertText' | 'suggestionsContainerAriaLabel'> {
+export interface IBasePickerSuggestionsProps<T = any> extends Pick<ISuggestionsProps<T>, 'onRenderNoResultFound' | 'suggestionsHeaderText' | 'mostRecentlyUsedHeaderText' | 'noResultsFoundText' | 'className' | 'suggestionsClassName' | 'suggestionsItemClassName' | 'searchForMoreText' | 'forceResolveText' | 'loadingText' | 'searchingText' | 'resultsFooterFull' | 'resultsFooter' | 'resultsMaximumNumber' | 'showRemoveButtons' | 'suggestionsAvailableAlertText' | 'suggestionsContainerAriaLabel' | 'showForceResolve'> {
 }
 
 // @public (undocumented)
@@ -2563,10 +2569,13 @@ export interface IColorPickerState {
 // @public (undocumented)
 export interface IColorPickerStrings {
     alpha?: string;
+    alphaAriaLabel?: string;
     blue?: string;
     green?: string;
     hex?: string;
+    // @deprecated
     hue?: string;
+    hueAriaLabel?: string;
     red?: string;
     rootAriaLabelFormat?: string;
     svAriaDescription?: string;
@@ -2703,6 +2712,7 @@ export interface IColumn {
     onRenderDivider?: IRenderFunction<IDetailsColumnProps>;
     sortAscendingAriaLabel?: string;
     sortDescendingAriaLabel?: string;
+    styles?: IStyleFunctionOrObject<IDetailsColumnStyleProps, IDetailsColumnStyles>;
 }
 
 // @public (undocumented)
@@ -2827,6 +2837,7 @@ export interface IComboBoxStyles {
     rootFocused: IStyle;
     rootHovered: IStyle;
     rootPressed: IStyle;
+    screenReaderText: IStyle;
 }
 
 // @public (undocumented)
@@ -3189,7 +3200,7 @@ export interface IDatePickerProps extends IBaseProps<IDatePicker>, React.HTMLAtt
     showMonthPickerAsOverlay?: boolean;
     showWeekNumbers?: boolean;
     strings?: IDatePickerStrings;
-    styles?: IStyleFunction<IDatePickerStyleProps, IDatePickerStyles>;
+    styles?: IStyleFunctionOrObject<IDatePickerStyleProps, IDatePickerStyles>;
     tabIndex?: number;
     textField?: ITextFieldProps;
     theme?: ITheme;
@@ -4154,6 +4165,8 @@ export interface IDocumentCardPreviewStyles {
     fileList: IStyle;
     // (undocumented)
     fileListIcon: IStyle;
+    // (undocumented)
+    fileListLink: IStyle;
     // (undocumented)
     fileListOverflowText: IStyle;
     // (undocumented)
@@ -5537,6 +5550,7 @@ export interface IModal {
 
 // @public (undocumented)
 export interface IModalProps extends React.ClassAttributes<ModalBase>, IWithResponsiveModeState, IAccessiblePopupProps {
+    allowTouchBodyScroll?: boolean;
     className?: string;
     componentRef?: IRefObject<IModal>;
     containerClassName?: string;
@@ -5625,6 +5639,7 @@ export interface INavLinkGroup {
     collapseAriaLabel?: string;
     collapseByDefault?: boolean;
     expandAriaLabel?: string;
+    groupData?: any;
     links: INavLink[];
     name?: string;
     onHeaderClick?: (ev?: React.MouseEvent<HTMLElement>, isCollapsing?: boolean) => void;
@@ -5744,6 +5759,7 @@ export interface IOverlay {
 
 // @public (undocumented)
 export interface IOverlayProps extends React.HTMLAttributes<HTMLElement> {
+    allowTouchBodyScroll?: boolean;
     className?: string;
     componentRef?: IRefObject<IOverlay>;
     isDarkThemed?: boolean;
@@ -5823,6 +5839,7 @@ export interface IPanelHeaderRenderer extends IRenderFunction<IPanelProps> {
 // 
 // @public (undocumented)
 export interface IPanelProps extends React.HTMLAttributes<PanelBase> {
+    allowTouchBodyScroll?: boolean;
     className?: string;
     closeButtonAriaLabel?: string;
     // @deprecated
@@ -6609,6 +6626,7 @@ export interface ISelectableOption {
     data?: any;
     disabled?: boolean;
     hidden?: boolean;
+    id?: string;
     index?: number;
     itemType?: SelectableOptionMenuItemType;
     key: string | number;
@@ -6673,6 +6691,12 @@ export interface ISelectionZoneProps extends React.ClassAttributes<SelectionZone
     selection: ISelection;
     selectionMode?: SelectionMode;
     selectionPreservedOnEmptyClick?: boolean;
+}
+
+// @public (undocumented)
+export interface ISelectionZoneState {
+    // (undocumented)
+    isModal: boolean | undefined;
 }
 
 // @public (undocumented)
@@ -7768,6 +7792,7 @@ export interface ITooltipHost {
 // @public
 export interface ITooltipHostProps extends React.HTMLAttributes<HTMLDivElement | TooltipHostBase> {
     calloutProps?: ICalloutProps;
+    className?: string;
     closeDelay?: number;
     componentRef?: IRefObject<ITooltipHost>;
     content?: string | JSX.Element | JSX.Element[];
@@ -7775,6 +7800,7 @@ export interface ITooltipHostProps extends React.HTMLAttributes<HTMLDivElement |
     directionalHint?: DirectionalHint;
     directionalHintForRTL?: DirectionalHint;
     hostClassName?: string;
+    id?: string;
     onTooltipToggle?(isTooltipVisible: boolean): void;
     overflowMode?: TooltipOverflowMode;
     setAriaDescribedBy?: boolean;
@@ -7793,7 +7819,9 @@ export interface ITooltipHostState {
 
 // @public (undocumented)
 export interface ITooltipHostStyleProps {
+    // (undocumented)
     className?: string;
+    // (undocumented)
     theme: ITheme;
 }
 
@@ -7802,7 +7830,7 @@ export interface ITooltipHostStyles {
     root: IStyle;
 }
 
-// @public
+// @public (undocumented)
 export interface ITooltipProps extends React.HTMLAttributes<HTMLDivElement | TooltipBase> {
     calloutProps?: ICalloutProps;
     componentRef?: IRefObject<ITooltip>;
@@ -7820,11 +7848,13 @@ export interface ITooltipProps extends React.HTMLAttributes<HTMLDivElement | Too
 // @public (undocumented)
 export interface ITooltipStyleProps {
     beakWidth?: number;
+    // (undocumented)
     className?: string;
     // @deprecated
     delay?: TooltipDelay;
     gapSpace?: number;
     maxWidth?: string;
+    // (undocumented)
     theme: ITheme;
 }
 
@@ -8209,8 +8239,6 @@ export class OverflowSetBase extends BaseComponent<IOverflowSetProps, {}> implem
     componentDidUpdate(): void;
     // (undocumented)
     componentWillUnmount(): void;
-    // (undocumented)
-    static defaultProps: Pick<IOverflowSetProps, 'vertical' | 'role'>;
     focus(forceIntoFirstElement?: boolean): boolean;
     focusElement(childElement?: HTMLElement): boolean;
     // (undocumented)
@@ -8224,6 +8252,7 @@ export const Overlay: React.StatelessComponent<IOverlayProps>;
 
 // @public (undocumented)
 export class OverlayBase extends BaseComponent<IOverlayProps, {}> {
+    constructor(props: IOverlayProps);
     // (undocumented)
     componentDidMount(): void;
     // (undocumented)
@@ -8759,14 +8788,19 @@ export { SelectionDirection }
 export { SelectionMode }
 
 // @public (undocumented)
-export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
+export class SelectionZone extends BaseComponent<ISelectionZoneProps, ISelectionZoneState> {
+    constructor(props: ISelectionZoneProps);
     // (undocumented)
     componentDidMount(): void;
+    // (undocumented)
+    componentDidUpdate(previousProps: ISelectionZoneProps): void;
     // (undocumented)
     static defaultProps: {
         isSelectedOnFocus: boolean;
         selectionMode: SelectionMode;
     };
+    // (undocumented)
+    static getDerivedStateFromProps(nextProps: ISelectionZoneProps, prevState: ISelectionZoneState): ISelectionZoneState;
     ignoreNextFocus: () => void;
     // (undocumented)
     render(): JSX.Element;
@@ -9356,6 +9390,7 @@ export const TextView: ITextComponent['view'];
 export class ThemeGenerator {
     // (undocumented)
     static getThemeAsCode(slotRules: IThemeRules): any;
+    static getThemeAsCodeWithCreateTheme(slotRules: IThemeRules): any;
     // (undocumented)
     static getThemeAsJson(slotRules: IThemeRules): any;
     // (undocumented)
@@ -9399,9 +9434,7 @@ export class TooltipBase extends React.Component<ITooltipProps, any> {
 
 // @public (undocumented)
 export enum TooltipDelay {
-    // (undocumented)
     long = 2,
-    // (undocumented)
     medium = 1,
     // (undocumented)
     zero = 0
@@ -9460,7 +9493,7 @@ export class VirtualizedComboBox extends BaseComponent<IComboBoxProps, {}> imple
     // (undocumented)
     dismissMenu(): void;
     // (undocumented)
-    focus(): boolean;
+    focus(shouldOpenOnFocus?: boolean, useFocusAsync?: boolean): boolean;
     // (undocumented)
     protected _onRenderList: (props: IComboBoxProps) => JSX.Element;
     // (undocumented)

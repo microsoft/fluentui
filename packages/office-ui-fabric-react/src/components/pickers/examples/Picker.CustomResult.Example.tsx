@@ -336,6 +336,7 @@ export class PickerCustomResultExample extends React.Component<{}, IPeoplePicker
           onChange={this._onDisabledButtonClick}
         />
         <DocumentPicker
+          removeButtonAriaLabel="Remove"
           onRenderSuggestionsItem={SuggestedBigItem as any}
           onResolveSuggestions={this._onFilterChanged}
           onRenderItem={SelectedDocumentItem}

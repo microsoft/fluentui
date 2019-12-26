@@ -121,6 +121,7 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
 
                   {exampleCardCustomizations && (
                     <Dropdown
+                      ariaLabel="Example theme"
                       defaultSelectedKey={0}
                       onChange={this._onThemeChange}
                       options={this._themeOptions}
@@ -130,6 +131,7 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
 
                   {exampleCardCustomizations && !hideSchemes && (
                     <Dropdown
+                      ariaLabel="Example scheme"
                       defaultSelectedKey={0}
                       onChange={this._onSchemeChange}
                       options={_schemeOptions}

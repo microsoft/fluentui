@@ -279,6 +279,11 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                         }
                     data-icon-name="CircleRing"
                     role="presentation"
+                    style={
+                      Object {
+                        "fontFamily": "\\"FabricMDL2Icons\\"",
+                      }
+                    }
                   >
                     
                   </i>
@@ -318,6 +323,11 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                         }
                     data-icon-name="StatusCircleCheckmark"
                     role="presentation"
+                    style={
+                      Object {
+                        "fontFamily": "\\"FabricMDL2Icons\\"",
+                      }
+                    }
                   >
                     
                   </i>
@@ -1118,6 +1128,11 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                         }
                     data-icon-name="CircleRing"
                     role="presentation"
+                    style={
+                      Object {
+                        "fontFamily": "\\"FabricMDL2Icons\\"",
+                      }
+                    }
                   >
                     
                   </i>
@@ -1157,6 +1172,11 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                         }
                     data-icon-name="StatusCircleCheckmark"
                     role="presentation"
+                    style={
+                      Object {
+                        "fontFamily": "\\"FabricMDL2Icons\\"",
+                      }
+                    }
                   >
                     
                   </i>
@@ -1934,6 +1954,11 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
               }
           data-icon-name="CircleRing"
           role="presentation"
+          style={
+            Object {
+              "fontFamily": "\\"FabricMDL2Icons\\"",
+            }
+          }
         >
           
         </i>
@@ -1973,6 +1998,11 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
               }
           data-icon-name="StatusCircleCheckmark"
           role="presentation"
+          style={
+            Object {
+              "fontFamily": "\\"FabricMDL2Icons\\"",
+            }
+          }
         >
           
         </i>
@@ -1991,6 +2021,7 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
   >
     <div
       aria-colindex={2}
+      aria-readonly={true}
       className=
           ms-DetailsRow-cell
           {
@@ -2047,6 +2078,7 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
     </div>
     <div
       aria-colindex={3}
+      aria-readonly={true}
       className=
           ms-DetailsRow-cell
           {
@@ -2103,6 +2135,7 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
     </div>
     <div
       aria-colindex={4}
+      aria-readonly={true}
       className=
           ms-DetailsRow-cell
           {
@@ -2455,6 +2488,11 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                         }
                     data-icon-name="CircleRing"
                     role="presentation"
+                    style={
+                      Object {
+                        "fontFamily": "\\"FabricMDL2Icons\\"",
+                      }
+                    }
                   >
                     
                   </i>
@@ -2494,6 +2532,11 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                         }
                     data-icon-name="StatusCircleCheckmark"
                     role="presentation"
+                    style={
+                      Object {
+                        "fontFamily": "\\"FabricMDL2Icons\\"",
+                      }
+                    }
                   >
                     
                   </i>
@@ -3294,6 +3337,11 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                         }
                     data-icon-name="CircleRing"
                     role="presentation"
+                    style={
+                      Object {
+                        "fontFamily": "\\"FabricMDL2Icons\\"",
+                      }
+                    }
                   >
                     
                   </i>
@@ -3333,6 +3381,11 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                         }
                     data-icon-name="StatusCircleCheckmark"
                     role="presentation"
+                    style={
+                      Object {
+                        "fontFamily": "\\"FabricMDL2Icons\\"",
+                      }
+                    }
                   >
                     
                   </i>

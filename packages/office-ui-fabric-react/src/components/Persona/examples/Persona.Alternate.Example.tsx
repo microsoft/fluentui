@@ -5,7 +5,7 @@ import { TestImages } from '@uifabric/example-data';
 
 export const PersonaAlternateExample: React.FunctionComponent = () => {
   const examplePersona: IPersonaSharedProps = {
-    imageUrl: TestImages.personaMale,
+    imageUrl: TestImages.personaFemale,
     imageInitials: 'AR',
     text: 'Annie Reid',
     secondaryText: 'Designer',
@@ -16,9 +16,14 @@ export const PersonaAlternateExample: React.FunctionComponent = () => {
 
   return (
     <Stack tokens={{ childrenGap: 10 }}>
-      <Persona {...examplePersona} size={PersonaSize.size24} presence={PersonaPresence.none} />
-      <Persona {...examplePersona} size={PersonaSize.size28} presence={PersonaPresence.none} />
-      <Persona {...examplePersona} size={PersonaSize.size32} presence={PersonaPresence.online} />
+      <Persona {...examplePersona} size={PersonaSize.size24} presence={PersonaPresence.none} imageAlt="Annie Ried, status is unknown" />
+      <Persona {...examplePersona} size={PersonaSize.size28} presence={PersonaPresence.none} imageAlt="Annie Ried, status is unknown" />
+      <Persona
+        {...examplePersona}
+        size={PersonaSize.size32}
+        presence={PersonaPresence.online}
+        imageAlt="Annie Ried, status is available at 4 PM"
+      />
     </Stack>
   );
 };

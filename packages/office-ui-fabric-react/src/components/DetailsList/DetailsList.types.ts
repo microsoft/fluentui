@@ -11,8 +11,8 @@ import { IWithViewportProps, IViewport } from '../../utilities/decorators/withVi
 import { IList, IListProps, ScrollToMode } from '../List/index';
 import { ITheme, IStyle } from '../../Styling';
 import { ICellStyleProps, IDetailsItemProps } from './DetailsRow.types';
-import { IDetailsColumnProps } from './DetailsColumn';
 import { IDetailsCheckboxProps } from './DetailsRowCheck.types';
+import { IDetailsColumnStyleProps, IDetailsColumnProps, IDetailsColumnStyles } from './DetailsColumn.types';
 
 export {
   IDetailsHeaderProps,
@@ -354,6 +354,11 @@ export interface IColumn {
    * An optional class name to stick on the column cell within each row.
    */
   className?: string;
+
+  /**
+   * Style function to be passed in to override the themed or default styles
+   */
+  styles?: IStyleFunctionOrObject<IDetailsColumnStyleProps, IDetailsColumnStyles>;
 
   /**
    * Minimum width for the column.

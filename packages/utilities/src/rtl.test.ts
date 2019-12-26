@@ -80,4 +80,25 @@ describe('getRTL', () => {
 
     jest.restoreAllMocks();
   });
+
+  describe('theme support', () => {
+    it('returns document default (ltr) when called with no theme', () => {
+      expect(RTL.getRTL()).toBeFalsy();
+    });
+
+    it('returns document default (ltr) when called theme not specifying direction', () => {
+      const theme = {};
+      expect(RTL.getRTL(theme)).toBeFalsy();
+    });
+
+    it('returns ltr when called theme specifying ltr', () => {
+      const theme = { rtl: false };
+      expect(RTL.getRTL(theme)).toBeFalsy();
+    });
+
+    it('returns rtl when called theme specifying rtl', () => {
+      const theme = { rtl: true };
+      expect(RTL.getRTL(theme)).toBeTruthy();
+    });
+  });
 });

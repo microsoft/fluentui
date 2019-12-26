@@ -2,6 +2,48 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "date": "Fri, 20 Dec 2019 12:32:45 GMT",
+      "tag": "@uifabric/utilities_v7.8.0",
+      "version": "7.8.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "scroll.ts: added allowOverscrollOnElement, alternative to allowScrollOnElement that allows body scroll on touch devices",
+            "author": "dmitriy.ravdin@siemens.com",
+            "commit": "00c16da9f0d9ee3de29c6de6a0aa32d50397cdcc"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 17 Dec 2019 12:29:42 GMT",
+      "tag": "@uifabric/utilities_v7.7.1",
+      "version": "7.7.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "add select to be a focusable target for focus utility",
+            "author": "joschect@microsoft.com",
+            "commit": "1268c4eac18a6c1b19f95c33cb2eb3988d54b47f"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Sun, 15 Dec 2019 23:45:36 GMT",
+      "tag": "@uifabric/utilities_v7.7.0",
+      "version": "7.7.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "getRTL uses RTL flag on theme if present.",
+            "author": "jdh@microsoft.com",
+            "commit": "3bfff30ef0a5a091100d67ab970e470cb3e696fb"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 18 Nov 2019 12:33:30 GMT",
       "tag": "@uifabric/utilities_v7.6.0",
       "version": "7.6.0",

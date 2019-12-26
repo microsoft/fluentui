@@ -3,10 +3,10 @@ import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-dom/test-utils';
 import * as renderer from 'react-test-renderer';
 
-import { IBasePickerProps, IBasePicker } from './BasePicker.types';
+import { IBasePickerProps, IBasePicker, ValidationState } from './BasePicker.types';
 import { BasePicker } from './BasePicker';
 import { IPickerItemProps } from './PickerItem.types';
-import { resetIds } from '@uifabric/utilities';
+import { resetIds, KeyCodes } from '@uifabric/utilities';
 
 function onResolveSuggestions(text: string): ISimple[] {
   return [
@@ -44,8 +44,14 @@ const basicSuggestionRenderer = (props: ISimple) => {
 };
 
 describe('BasePicker', () => {
+  let root: HTMLDivElement;
   beforeEach(() => {
+    root = document.createElement('div');
     resetIds();
+  });
+
+  afterEach(() => {
+    ReactDOM.unmountComponentAtNode(root);
   });
   const BasePickerWithType = BasePicker as new (props: IBasePickerProps<ISimple>) => BasePicker<ISimple, IBasePickerProps<ISimple>>;
   const onRenderItem = (props: IPickerItemProps<ISimple>): JSX.Element => <div key={props.item.name}>{basicRenderer(props)}</div>;
@@ -80,7 +86,6 @@ describe('BasePicker', () => {
   });
 
   it('can provide custom renderers', () => {
-    const root = document.createElement('div');
     document.body.appendChild(root);
 
     const picker = React.createRef<IBasePicker<ISimple>>();
@@ -110,12 +115,103 @@ describe('BasePicker', () => {
     const currentPicker = picker.current!.items;
     expect(currentPicker).toHaveLength(1);
     expect(currentPicker![0].name).toEqual('black');
+  });
 
-    ReactDOM.unmountComponentAtNode(root);
+  it('can select generic items.', () => {
+    document.body.appendChild(root);
+
+    const picker = React.createRef<IBasePicker<ISimple>>();
+    const onValidateInput = () => {
+      return ValidationState.valid;
+    };
+
+    const createGenericItem = (str: string): ISimple => {
+      return {
+        key: str,
+        name: str
+      };
+    };
+
+    ReactDOM.render(
+      <BasePickerWithType
+        onResolveSuggestions={onResolveSuggestions}
+        onRenderItem={onRenderItem}
+        onRenderSuggestionsItem={basicSuggestionRenderer}
+        componentRef={picker}
+        createGenericItem={createGenericItem}
+        onValidateInput={onValidateInput}
+      />,
+      root
+    );
+
+    const input = document.querySelector('.ms-BasePicker-input') as HTMLInputElement;
+    input.focus();
+    input.value = 'asdff';
+    ReactTestUtils.Simulate.input(input);
+
+    const suggestions = document.querySelector('.ms-Suggestions') as HTMLInputElement;
+    expect(suggestions).toBeDefined();
+
+    const suggestionOptions = document.querySelectorAll('.ms-Suggestions-itemButton');
+    expect(suggestionOptions.length).toEqual(0);
+    ReactTestUtils.Simulate.keyDown(input, { which: KeyCodes.enter });
+
+    const currentPicker = picker.current!.items;
+    expect(currentPicker).toHaveLength(1);
+    expect(currentPicker![0].name).toEqual('asdff');
+  });
+
+  it('has force suggestions button', () => {
+    document.body.appendChild(root);
+
+    const picker = React.createRef<IBasePicker<ISimple>>();
+    const onValidateInput = () => {
+      return ValidationState.valid;
+    };
+
+    const createGenericItem = (str: string): ISimple => {
+      return {
+        key: str,
+        name: str
+      };
+    };
+
+    const showForceSuggestionsText = () => true;
+
+    ReactDOM.render(
+      <BasePickerWithType
+        onResolveSuggestions={onResolveSuggestions}
+        onRenderItem={onRenderItem}
+        onRenderSuggestionsItem={basicSuggestionRenderer}
+        componentRef={picker}
+        createGenericItem={createGenericItem}
+        onValidateInput={onValidateInput}
+        pickerSuggestionsProps={{
+          showForceResolve: showForceSuggestionsText,
+          forceResolveText: 'Force'
+        }}
+      />,
+      root
+    );
+
+    const input = document.querySelector('.ms-BasePicker-input') as HTMLInputElement;
+    input.focus();
+    input.value = 'asdff';
+    ReactTestUtils.Simulate.input(input);
+
+    const suggestions = document.querySelector('.ms-Suggestions') as HTMLInputElement;
+    expect(suggestions).toBeDefined();
+
+    const forceButton = document.querySelectorAll('[data-automationid=sug-forceResolve]');
+    expect(forceButton.length).toEqual(1);
+    ReactTestUtils.Simulate.click(forceButton[0]);
+
+    const currentPicker = picker.current!.items;
+    expect(currentPicker).toHaveLength(1);
+    expect(currentPicker![0].name).toEqual('asdff');
   });
 
   it('can will not render input when items reach itemLimit', () => {
-    const root = document.createElement('div');
     document.body.appendChild(root);
 
     const picker = React.createRef<IBasePicker<ISimple>>();
@@ -144,12 +240,9 @@ describe('BasePicker', () => {
 
     input = document.querySelector('.ms-BasePicker-input') as HTMLInputElement;
     expect(input).toBeNull();
-
-    ReactDOM.unmountComponentAtNode(root);
   });
 
   it('will still render with itemLimit set to 0', () => {
-    const root = document.createElement('div');
     document.body.appendChild(root);
 
     ReactDOM.render(
@@ -164,12 +257,9 @@ describe('BasePicker', () => {
 
     const input = document.querySelector('.ms-BasePicker-input') as HTMLInputElement;
     expect(input).toBeNull();
-
-    ReactDOM.unmountComponentAtNode(root);
   });
 
   it('can be set with selectedItems and a lower itemLimit', () => {
-    const root = document.createElement('div');
     document.body.appendChild(root);
 
     const picker = React.createRef<IBasePicker<ISimple>>();
@@ -191,12 +281,9 @@ describe('BasePicker', () => {
 
     const currentPicker = picker.current!.items;
     expect(currentPicker).toHaveLength(2);
-
-    ReactDOM.unmountComponentAtNode(root);
   });
 
   it('can render MRU when input is focused', () => {
-    const root = document.createElement('div');
     const resolveSuggestions = () => onResolveSuggestions('');
     document.body.appendChild(root);
 
@@ -224,7 +311,5 @@ describe('BasePicker', () => {
 
     const currentPicker = picker.current!.items;
     expect(currentPicker).toHaveLength(0);
-
-    ReactDOM.unmountComponentAtNode(root);
   });
 });

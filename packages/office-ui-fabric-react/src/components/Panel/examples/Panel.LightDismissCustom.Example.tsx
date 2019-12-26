@@ -21,7 +21,10 @@ export const PanelLightDismissCustomExample: React.FunctionComponent = () => {
   const openPanel = useConstCallback(() => setIsPanelOpen(true));
   const dismissPanel = useConstCallback(() => setIsPanelOpen(false));
   const showDialog = useConstCallback(() => setIsDialogVisible(true));
-  const hideDialog = useConstCallback(() => setIsDialogVisible(false));
+  const hideDialog = useConstCallback(ev => {
+    ev.preventDefault();
+    setIsDialogVisible(false);
+  });
   const hideDialogAndPanel = useConstCallback(() => {
     setIsPanelOpen(false);
     setIsDialogVisible(false);

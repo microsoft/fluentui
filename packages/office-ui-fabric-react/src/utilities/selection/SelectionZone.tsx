@@ -7,7 +7,8 @@ import {
   getParent,
   getDocument,
   getWindow,
-  isElementTabbable
+  isElementTabbable,
+  css
 } from '../../Utilities';
 import { ISelection, SelectionMode, IObjectWithKey } from './interfaces';
 
@@ -99,7 +100,14 @@ export interface ISelectionZoneProps extends React.ClassAttributes<SelectionZone
 /**
  * {@docCategory Selection}
  */
-export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
+export interface ISelectionZoneState {
+  isModal: boolean | undefined;
+}
+
+/**
+ * {@docCategory Selection}
+ */
+export class SelectionZone extends BaseComponent<ISelectionZoneProps, ISelectionZoneState> {
   public static defaultProps = {
     isSelectedOnFocus: true,
     selectionMode: SelectionMode.multiple
@@ -115,6 +123,28 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
   private _isTouch: boolean;
   private _isTouchTimeoutId: number | undefined;
 
+  public static getDerivedStateFromProps(nextProps: ISelectionZoneProps, prevState: ISelectionZoneState): ISelectionZoneState {
+    const isModal = nextProps.selection.isModal && nextProps.selection.isModal();
+
+    return {
+      ...prevState,
+      isModal
+    };
+  }
+
+  constructor(props: ISelectionZoneProps) {
+    super(props);
+
+    const { selection } = this.props;
+
+    // Reflect the initial modal state of selection into the state.
+    const isModal = selection.isModal && selection.isModal();
+
+    this.state = {
+      isModal
+    };
+  }
+
   public componentDidMount(): void {
     const win = getWindow(this._root.current);
 
@@ -123,12 +153,19 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
     this._events.on(document, 'click', this._findScrollParentAndTryClearOnEmptyClick);
     this._events.on(document.body, 'touchstart', this._onTouchStartCapture, true);
     this._events.on(document.body, 'touchend', this._onTouchStartCapture, true);
+
+    // Subscribe to the selection to keep modal state updated.
+    this._events.on(this.props.selection, 'change', this._onSelectionChange);
   }
 
   public render(): JSX.Element {
+    const { isModal } = this.state;
+
     return (
       <div
-        className="ms-SelectionZone"
+        className={css('ms-SelectionZone', {
+          'ms-SelectionZone--modal': !!isModal
+        })}
         ref={this._root}
         onKeyDown={this._onKeyDown}
         onMouseDown={this._onMouseDown}
@@ -139,10 +176,21 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
         onContextMenu={this._onContextMenu}
         onMouseDownCapture={this._onMouseDownCapture}
         onFocusCapture={this._onFocus}
+        data-selection-is-modal={isModal ? true : undefined}
       >
         {this.props.children}
       </div>
     );
+  }
+
+  public componentDidUpdate(previousProps: ISelectionZoneProps): void {
+    const { selection } = this.props;
+
+    if (selection !== previousProps.selection) {
+      // Whenever selection changes, update the subscripton to keep modal state updated.
+      this._events.off(previousProps.selection);
+      this._events.on(selection, 'change', this._onSelectionChange);
+    }
   }
 
   /**
@@ -153,6 +201,16 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
    */
   public ignoreNextFocus = (): void => {
     this._handleNextFocus(false);
+  };
+
+  private _onSelectionChange = (): void => {
+    const { selection } = this.props;
+
+    const isModal = selection.isModal && selection.isModal();
+
+    this.setState({
+      isModal
+    });
   };
 
   private _onMouseDownCapture = (ev: React.MouseEvent<HTMLElement>): void => {
@@ -577,12 +635,17 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
     const isAlreadySingleSelected = selection.getSelectedCount() === 1 && selection.isIndexSelected(index);
 
     if (!isAlreadySingleSelected) {
+      const isModal = selection.isModal && selection.isModal();
       selection.setChangeEvents(false);
       selection.setAllSelected(false);
       selection.setIndexSelected(index, true, true);
-      if (this.props.enterModalOnTouch && this._isTouch && selection.setModal) {
-        selection.setModal(true);
-        this._setIsTouch(false);
+      if (isModal || (this.props.enterModalOnTouch && this._isTouch)) {
+        if (selection.setModal) {
+          selection.setModal(true);
+        }
+        if (this._isTouch) {
+          this._setIsTouch(false);
+        }
       }
       selection.setChangeEvents(true);
     }

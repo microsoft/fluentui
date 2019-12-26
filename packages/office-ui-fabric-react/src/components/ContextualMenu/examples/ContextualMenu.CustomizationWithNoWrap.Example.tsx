@@ -176,11 +176,11 @@ export class ContextualMenuCustomizationWithNoWrapExample extends React.Componen
                   },
                   {
                     key: 'clear',
-                    text: 'Clear categories'
+                    text: 'Additional Item'
                   },
                   {
                     key: 'manage',
-                    text: 'Manage categories'
+                    text: 'Additional Item'
                   }
                 ]
               }

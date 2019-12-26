@@ -1,7 +1,19 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Thu, 14 Nov 2019 12:30:52 GMT and should not be manually modified.
+This log was last generated on Tue, 24 Dec 2019 12:33:51 GMT and should not be manually modified.
 
+## 7.8.0
+Tue, 24 Dec 2019 12:33:51 GMT
+
+### Minor changes
+
+- Export IIconSubsetRecord (elcraig@microsoft.com)
+## 7.7.4
+Fri, 06 Dec 2019 12:33:21 GMT
+
+### Patches
+
+- Making rest state accessible (betrue@microsoft.com)
 ## 7.7.3
 Thu, 14 Nov 2019 12:30:52 GMT
 

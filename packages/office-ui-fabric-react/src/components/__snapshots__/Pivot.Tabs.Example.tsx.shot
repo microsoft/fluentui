@@ -2,7 +2,10 @@
 
 exports[`Component Examples renders Pivot.Tabs.Example.tsx correctly 1`] = `
 <div>
-  <div>
+  <div
+    aria-label="Links of Tab Style Pivot Example"
+    role="tablist"
+  >
     <div
       className=
           ms-FocusZone
@@ -38,7 +41,6 @@ exports[`Component Examples renders Pivot.Tabs.Example.tsx correctly 1`] = `
               position: relative;
               white-space: nowrap;
             }
-        role="tablist"
       >
         <button
           aria-selected={true}

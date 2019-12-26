@@ -193,11 +193,13 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     this.setState({ suggestionsVisible: false });
   };
 
-  public completeSuggestion() {
+  public completeSuggestion(forceComplete?: boolean) {
     if (this.suggestionStore.hasSelectedSuggestion() && this.input.current) {
       this.addItem(this.suggestionStore.currentSuggestion!.item);
       this.updateValue('');
       this.input.current.clear();
+    } else if (forceComplete) {
+      this._completeGenericSuggestion();
     }
   }
 
@@ -281,11 +283,8 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
                   aria-describedby={items.length > 0 ? this._ariaMap.selectedItems : undefined}
                   aria-controls={`${suggestionsAvailable} ${selectedSuggestionAlertId}` || undefined}
                   aria-activedescendant={this.getActiveDescendant()}
-                  autoCapitalize="off"
-                  autoComplete="off"
                   role={'textbox'}
                   disabled={disabled}
-                  aria-autocomplete={'both'}
                   onInputChange={this.props.onInputChange}
                 />
               )}
@@ -332,6 +331,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
           refocusSuggestions={this.refocusSuggestions}
           removeSuggestionAriaLabel={this.props.removeButtonAriaLabel}
           suggestionsListId={this._ariaMap.suggestionList}
+          createGenericItem={this._completeGenericSuggestion}
           {...this.props.pickerSuggestionsProps}
         />
       </Callout>
@@ -605,7 +605,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
           ev.preventDefault();
           ev.stopPropagation();
         } else {
-          this._onValidateInput();
+          this._completeGenericSuggestion();
         }
 
         break;
@@ -800,7 +800,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   protected onBackspace(ev: React.KeyboardEvent<HTMLElement>) {
     if (
       (this.state.items.length && !this.input.current) ||
-      (this.input.current && (!this.input.current.isValueSelected && this.input.current.cursorLocation === 0))
+      (this.input.current && !this.input.current.isValueSelected && this.input.current.cursorLocation === 0)
     ) {
       if (this.selection.getSelectedCount() > 0) {
         this.removeItems(this.selection.getSelection());
@@ -906,7 +906,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     }
   }
 
-  private _onValidateInput(): void {
+  private _completeGenericSuggestion = (): void => {
     if (
       this.props.onValidateInput &&
       this.input.current &&
@@ -917,7 +917,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
       this.suggestionStore.createGenericSuggestion(itemToConvert);
       this.completeSuggestion();
     }
-  }
+  };
 
   private _getTextFromItem(item: T, currentValue?: string): string {
     if (this.props.getTextFromItem) {
@@ -986,8 +986,6 @@ export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BaseP
               onInputValueChange={this.onInputChange}
               suggestedDisplayValue={suggestedDisplayValue}
               aria-activedescendant={this.getActiveDescendant()}
-              autoCapitalize="off"
-              autoComplete="off"
               role="textbox"
               disabled={disabled}
               aria-controls={`${suggestionsAvailable} ${selectedSuggestionAlertId}` || undefined}

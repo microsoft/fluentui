@@ -59,7 +59,6 @@ exports[`Component Examples renders ComboBox.CustomStyled.Example.tsx correctly 
             padding-top: 5px;
             word-wrap: break-word;
           }
-      htmlFor="ComboBox0-input"
       id="ComboBox0-label"
     >
       Custom styled ComboBox
@@ -71,7 +70,7 @@ exports[`Component Examples renders ComboBox.CustomStyled.Example.tsx correctly 
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
             background-color: #b4a0ff;
-            border-color: #8a8886;
+            border-color: #605e5c;
             border-radius: 2px;
             border-style: solid;
             border-width: 1px;
@@ -101,7 +100,7 @@ exports[`Component Examples renders ComboBox.CustomStyled.Example.tsx correctly 
             margin-bottom: 8px;
           }
           &.is-open {
-            border-color: #8a8886;
+            border-color: #605e5c;
           }
           @media screen and (-ms-high-contrast: active){&.is-open {
             -ms-high-contrast-adjust: none;
@@ -411,6 +410,11 @@ exports[`Component Examples renders ComboBox.CustomStyled.Example.tsx correctly 
                 }
             data-icon-name="ChevronDown"
             role="presentation"
+            style={
+              Object {
+                "fontFamily": "\\"FabricMDL2Icons\\"",
+              }
+            }
           >
             
           </i>
@@ -420,17 +424,7 @@ exports[`Component Examples renders ComboBox.CustomStyled.Example.tsx correctly 
     <div
       aria-atomic="true"
       aria-live="polite"
-      className=
-
-          {
-            -moz-osx-font-smoothing: grayscale;
-            -webkit-font-smoothing: antialiased;
-            color: #a4262c;
-            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-            font-size: 12px;
-            font-weight: 400;
-            margin-top: 5px;
-          }
+      className=""
       id="ComboBox0-error"
       role="region"
     >
@@ -464,7 +458,6 @@ exports[`Component Examples renders ComboBox.CustomStyled.Example.tsx correctly 
             padding-top: 5px;
             word-wrap: break-word;
           }
-      htmlFor="ComboBox4-input"
       id="ComboBox4-label"
     >
       ComboBox with custom option rendering (type the name of a font and the option will render in that font)
@@ -476,7 +469,7 @@ exports[`Component Examples renders ComboBox.CustomStyled.Example.tsx correctly 
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
             background-color: #ffffff;
-            border-color: #8a8886;
+            border-color: #605e5c;
             border-radius: 2px;
             border-style: solid;
             border-width: 1px;
@@ -506,7 +499,7 @@ exports[`Component Examples renders ComboBox.CustomStyled.Example.tsx correctly 
             margin-bottom: 8px;
           }
           &.is-open {
-            border-color: #8a8886;
+            border-color: #605e5c;
           }
           @media screen and (-ms-high-contrast: active){&.is-open {
             -ms-high-contrast-adjust: none;
@@ -816,6 +809,11 @@ exports[`Component Examples renders ComboBox.CustomStyled.Example.tsx correctly 
                 }
             data-icon-name="ChevronDown"
             role="presentation"
+            style={
+              Object {
+                "fontFamily": "\\"FabricMDL2Icons\\"",
+              }
+            }
           >
             
           </i>
@@ -825,17 +823,7 @@ exports[`Component Examples renders ComboBox.CustomStyled.Example.tsx correctly 
     <div
       aria-atomic="true"
       aria-live="polite"
-      className=
-
-          {
-            -moz-osx-font-smoothing: grayscale;
-            -webkit-font-smoothing: antialiased;
-            color: #a4262c;
-            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-            font-size: 12px;
-            font-weight: 400;
-            margin-top: 5px;
-          }
+      className=""
       id="ComboBox4-error"
       role="region"
     >

@@ -61,7 +61,6 @@ exports[`Facepile renders Facepile correctly 1`] = `
                 background-color: transparent;
                 border-radius: 50%;
                 border: none;
-                cursor: pointer;
                 display: inline;
                 padding-bottom: 0px;
                 padding-left: 0px;
@@ -93,6 +92,7 @@ exports[`Facepile renders Facepile correctly 1`] = `
                   font-size: 14px;
                   font-weight: 400;
                 }
+            role="presentation"
           >
             <div
               className=
@@ -104,6 +104,7 @@ exports[`Facepile renders Facepile correctly 1`] = `
                     text-align: center;
                     width: 32px;
                   }
+              role="presentation"
             >
               <div
                 className=
@@ -184,7 +185,6 @@ exports[`Facepile renders Facepile correctly 1`] = `
                 background-color: transparent;
                 border-radius: 50%;
                 border: none;
-                cursor: pointer;
                 display: inline;
                 padding-bottom: 0px;
                 padding-left: 0px;
@@ -216,6 +216,7 @@ exports[`Facepile renders Facepile correctly 1`] = `
                   font-size: 14px;
                   font-weight: 400;
                 }
+            role="presentation"
           >
             <div
               className=
@@ -227,6 +228,7 @@ exports[`Facepile renders Facepile correctly 1`] = `
                     text-align: center;
                     width: 32px;
                   }
+              role="presentation"
             >
               <div
                 className=
@@ -394,6 +396,7 @@ exports[`Facepile renders Facepile correctly 1`] = `
                     font-size: 14px;
                     font-weight: 400;
                   }
+              role="presentation"
             >
               <div
                 className=
@@ -405,6 +408,7 @@ exports[`Facepile renders Facepile correctly 1`] = `
                       text-align: center;
                       width: 32px;
                     }
+                role="presentation"
               >
                 <div
                   aria-hidden="true"

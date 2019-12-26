@@ -84,6 +84,19 @@ const _makeElementScrollAllower = () => {
  */
 export const allowScrollOnElement = _makeElementScrollAllower();
 
+/**
+ * Same as allowScrollOnElement but does not prevent overscrolling.
+ */
+export const allowOverscrollOnElement = (element: HTMLElement | null, events: EventGroup): void => {
+  if (!element) {
+    return;
+  }
+  const _allowElementScroll = (event: TouchEvent) => {
+    event.stopPropagation();
+  };
+  events.on(element, 'touchmove', _allowElementScroll, { passive: false });
+};
+
 const _disableIosBodyScroll = (event: TouchEvent) => {
   event.preventDefault();
 };

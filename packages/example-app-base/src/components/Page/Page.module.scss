@@ -24,6 +24,19 @@ $usageListPadding: 24px;
       color: $linkHoveredColor;
     }
   }
+
+  :global(.ms-MessageBar) a:global(.ms-Link) {
+    // Link colors need to be darker inside MessageBar
+    color: $ms-color-themeDark;
+    &:link {
+      color: $ms-color-themeDark;
+    }
+    &:active,
+    &:hover,
+    &:active:hover {
+      color: $linkHoveredColor;
+    }
+  }
 }
 
 .section {

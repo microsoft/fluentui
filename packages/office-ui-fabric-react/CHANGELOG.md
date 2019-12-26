@@ -1,7 +1,161 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 29 Nov 2019 12:34:49 GMT and should not be manually modified.
+This log was last generated on Tue, 24 Dec 2019 12:33:51 GMT and should not be manually modified.
 
+## 7.76.2
+Tue, 24 Dec 2019 12:33:51 GMT
+
+### Patches
+
+- Ensure icon font family isn't overridden by Fabric Core (elcraig@microsoft.com)
+## 7.76.1
+Mon, 23 Dec 2019 12:34:01 GMT
+
+### Patches
+
+- Align color system in Tooltip (nif_tony@outlook.com)
+## 7.76.0
+Fri, 20 Dec 2019 12:32:45 GMT
+
+### Minor changes
+
+- Modal, Panel, Overlay: added optional prop allowTouchBodyScroll that allows body scroll on touch devices (dmitriy.ravdin@siemens.com)
+### Patches
+
+- ScrollablePane: Fixing tabbing navigation with Sticky headers. (Humberto.Morimoto@microsoft.com)
+## 7.75.0
+Thu, 19 Dec 2019 12:33:02 GMT
+
+### Minor changes
+
+- Update color picker to include aria labels for hue and alpha sliders (mgodbolt@microsoft.com)
+- Combobox: Fix multiselect options not being read by screen readers. (joschect@microsoft.com)
+- Sticky: Always render narrator readable content in place (mgodbolt@microsoft.com)
+- DocumentCard: Fixing focus styling on Links in DocumentCardPreview. (Humberto.Morimoto@microsoft.com)
+### Patches
+
+- Combobox: Removed redundant htmlFor attribute as input already use aria-labelledby (mgodbolt@microsoft.com)
+- SearchBox: Don't duplicate placeholder text in aria-label (mgodbolt@microsoft.com)
+- DetailsList: Adding Announced section for # of filtered items in examples. (Humberto.Morimoto@microsoft.com)
+- DetailsList: Adding Announced section for examples that have '# of items selected' message in display. (Humberto.Morimoto@microsoft.com)
+## 7.74.2
+Wed, 18 Dec 2019 12:30:18 GMT
+
+### Patches
+
+- FocusZone: Adding tab handle for DomOrder direction. (Humberto.Morimoto@microsoft.com)
+## 7.74.1
+Tue, 17 Dec 2019 12:29:42 GMT
+
+### Patches
+
+- ProgressIndicator: improve high contrast colors for progress bar (micahgodbolt@gmail.com)
+- PersonaCoin: make divs role presentation (micahgodbolt@gmail.com)
+## 7.74.0
+Sun, 15 Dec 2019 23:45:36 GMT
+
+### Minor changes
+
+- Persona: adding alt text to examples (aneeshak@microsoft.com)
+### Patches
+
+- DetailsList: Adding aria-readonly attribute so screen readers don't announce the cells as editable. (Humberto.Morimoto@microsoft.com)
+- getRTL uses RTL flag on theme if present. (jdh@microsoft.com)
+- Fix iteration of Sticky items in ScrollablePane (tmichon@microsoft.com)
+- Fix minor doc issues for TextField and pickers (elcraig@microsoft.com)
+- Move ARIA role to outer div where native props are assigned to allow for ARIA attributes such as aria-label. (jagore@microsoft.com)
+- ContextualMenu: Associate group with header to improve narrator (micahgodbolt@gmail.com)
+## 7.73.0
+Fri, 13 Dec 2019 12:30:51 GMT
+
+### Minor changes
+
+- Toggle: Change div inside button to be a span (mgodbolt@microsoft.com)
+### Patches
+
+- Tooltip: clarify examples and docs (elcraig@microsoft.com)
+- FocusZone: Escape readOnly input on arrow clicks (mgodbolt@microsoft.com)
+- Nav: Allow falsy values of title to be passed into items (mgodbolt@microsoft.com)
+- Panel: onLightDismissClick now properly prevents light dismiss (mgodbolt@microsoft.com)
+- ContextualMenu: Fix accessibility issue in example (mgodbolt@microsoft.com)
+## 7.72.0
+Thu, 12 Dec 2019 12:29:56 GMT
+
+### Minor changes
+
+- Callout: Add Non Focusable Callout example (mgodbolt@microsoft.com)
+### Patches
+
+- Ensure that navigating between selected items doesn't clear modal state (tmichon@microsoft.com)
+- Stack: Adding documentation about Stack Items in the Stack overview. (Humberto.Morimoto@microsoft.com)
+## 7.71.0
+Wed, 11 Dec 2019 12:30:26 GMT
+
+### Minor changes
+
+- Only update ExtendedPicker state on input events that are not mid-composition  (mahuangh@microsoft.com)
+- Dropdown: Render options with header in group so that narrator associates group with header (mgodbolt@microsoft.com)
+- Autocomplete: Allow value to be overriden (mgodbolt@microsoft.com)
+### Patches
+
+- Combobox: multi-select does not clear index on selection. Selected and checked properly supported (mgodbolt@microsoft.com)
+- fix contextual menu split button cannot be read by screen reader bug (xgao@microsoft.com)
+## 7.70.0
+Tue, 10 Dec 2019 12:34:47 GMT
+
+### Minor changes
+
+- DetailsList: Pass column styles to DetailsColumn (mgodbolt@microsoft.com)
+### Patches
+
+- Dialog: Use closeButtonAriaLabel for close button tooltip (v-ragor@microsoft.com)
+- Theme Designer: use createTheme and Customizations.applySettings instead of loadTheme (aneeshak@microsoft.com)
+- Screen Reader is reading wrong column header with associated cell value for single-select detail list (xgao@microsoft.com)
+- Button: fix size mismatch between primary and default buttons (xgao@microsoft.com)
+## 7.69.3
+Mon, 09 Dec 2019 12:29:23 GMT
+
+### Patches
+
+- OverflowSet: Vertical layout now uses menu instead of menubar (mgodbolt@microsoft.com)
+## 7.69.2
+Fri, 06 Dec 2019 12:33:21 GMT
+
+### Patches
+
+- Fixed after element misalignment (betrue@microsoft.com)
+- Dropdown: fix misalignment (betrue@microsoft.com)
+- DocumentCard: Adding explicit focus styles (mgodbolt@microsoft.com)
+- Slider: getAriaValueText should return value if ariaValueText isn't supplied (mgodbolt@microsoft.com)
+- updated snapshots (betrue@microsoft.com)
+- Correct SpinButton default max value in documentation (xgao@microsoft.com)
+## 7.69.1
+Thu, 05 Dec 2019 12:34:16 GMT
+
+### Patches
+
+- ComboBox: empty errorMessage shouldn't create white space (aneeshak@microsoft.com)
+- VirtualizedComboBox: Implement focus(shouldOpenOnFocus, asyncFocus) (aneeshak@microsoft.com)
+## 7.69.0
+Wed, 04 Dec 2019 12:32:13 GMT
+
+### Minor changes
+
+- Add calloutProps to HoverCard (anihan@microsoft.com)
+### Patches
+
+- Added a a field to Nav Group Props" (num@microsoft.com)
+## 7.68.0
+Tue, 03 Dec 2019 12:36:28 GMT
+
+### Minor changes
+
+- Pickers: Allow force resolve when no match found (joschect@microsoft.com)
+- DatePicker: Making styles accept functions and objects and not only functions. (Humberto.Morimoto@microsoft.com)
+### Patches
+
+- ComboBox: Fixing icon position when disabled. (humbertomakotomorimoto@gmail.com)
+- Removed persona cursor style as it was making non buttons look like clickable buttons (mgodbolt@microsoft.com)
 ## 7.67.0
 Fri, 29 Nov 2019 12:34:49 GMT
 

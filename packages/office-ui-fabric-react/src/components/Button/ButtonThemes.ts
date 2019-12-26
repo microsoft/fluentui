@@ -152,12 +152,13 @@ export function primaryStyles(theme: ITheme): IButtonStyles {
   return {
     root: {
       backgroundColor: s.primaryButtonBackground,
+      border: `1px solid ${s.primaryButtonBackground}`,
       color: s.primaryButtonText,
-      border: 'none',
       selectors: {
         [HighContrastSelector]: {
           color: 'Window',
           backgroundColor: 'WindowText',
+          borderColor: 'WindowText',
           MsHighContrastAdjust: 'none'
         },
         [`.${IsFocusVisibleClassName} &:focus`]: {
@@ -173,22 +174,26 @@ export function primaryStyles(theme: ITheme): IButtonStyles {
 
     rootHovered: {
       backgroundColor: s.primaryButtonBackgroundHovered,
+      border: `1px solid ${s.primaryButtonBackgroundHovered}`,
       color: s.primaryButtonTextHovered,
       selectors: {
         [HighContrastSelector]: {
           color: 'Window',
-          backgroundColor: 'Highlight'
+          backgroundColor: 'Highlight',
+          borderColor: 'Highlight'
         }
       }
     },
 
     rootPressed: {
       backgroundColor: s.primaryButtonBackgroundPressed,
+      border: `1px solid ${s.primaryButtonBackgroundPressed}`,
       color: s.primaryButtonTextPressed,
       selectors: {
         [HighContrastSelector]: {
           color: 'Window',
           backgroundColor: 'WindowText',
+          borderColor: 'WindowText',
           MsHighContrastAdjust: 'none'
         }
       }

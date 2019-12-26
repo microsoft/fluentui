@@ -120,8 +120,7 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
       isChecked: item.isChecked,
       checked: item.checked,
       iconProps: item.iconProps,
-      'data-is-focusable': false,
-      'aria-hidden': true
+      'data-is-focusable': false
     };
 
     const { itemProps: itemComponentProps } = item;

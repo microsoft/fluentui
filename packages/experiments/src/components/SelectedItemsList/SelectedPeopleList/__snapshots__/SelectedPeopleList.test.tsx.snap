@@ -167,6 +167,7 @@ Array [
             role="presentation"
             style={
               Object {
+                "fontFamily": "\\"FabricMDL2Icons\\"",
                 "fontSize": "14px",
               }
             }
@@ -236,6 +237,7 @@ Array [
                   font-size: 14px;
                   font-weight: 400;
                 }
+            role="presentation"
           >
             <div
               className=
@@ -247,6 +249,7 @@ Array [
                     text-align: center;
                     width: 32px;
                   }
+              role="presentation"
             >
               <div
                 aria-hidden="true"
@@ -501,6 +504,7 @@ Array [
             role="presentation"
             style={
               Object {
+                "fontFamily": "\\"FabricMDL2Icons\\"",
                 "fontSize": "14px",
               }
             }
@@ -676,6 +680,7 @@ Array [
             role="presentation"
             style={
               Object {
+                "fontFamily": "\\"FabricMDL2Icons\\"",
                 "fontSize": "14px",
               }
             }
@@ -745,6 +750,7 @@ Array [
                   font-size: 14px;
                   font-weight: 400;
                 }
+            role="presentation"
           >
             <div
               className=
@@ -756,6 +762,7 @@ Array [
                     text-align: center;
                     width: 32px;
                   }
+              role="presentation"
             >
               <div
                 aria-hidden="true"
@@ -1010,6 +1017,7 @@ Array [
             role="presentation"
             style={
               Object {
+                "fontFamily": "\\"FabricMDL2Icons\\"",
                 "fontSize": "14px",
               }
             }

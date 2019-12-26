@@ -6,7 +6,8 @@ import {
   getFocusStyle,
   HighContrastSelector,
   IStyle,
-  getPlaceholderStyles
+  getPlaceholderStyles,
+  hiddenContentStyle
 } from '../../Styling';
 import { IComboBoxOptionStyles, IComboBoxStyles } from './ComboBox.types';
 
@@ -236,7 +237,12 @@ export const getCaretDownButtonStyles = memoizeFunction(
         },
         buttonHighContrastStyles
       ],
-      rootDisabled: getDisabledStyles(theme)
+      rootDisabled: [
+        getDisabledStyles(theme),
+        {
+          position: 'absolute'
+        }
+      ]
     };
     return concatStyleSets(styles, customStyles);
   }
@@ -460,6 +466,7 @@ export const getStyles = memoizeFunction(
       optionsContainer: {
         display: 'block'
       },
+      screenReaderText: hiddenContentStyle,
 
       header: [
         fonts.medium,

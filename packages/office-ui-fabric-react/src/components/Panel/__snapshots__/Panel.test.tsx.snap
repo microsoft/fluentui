@@ -303,6 +303,11 @@ exports[`Panel renders Panel correctly 1`] = `
                         }
                     data-icon-name="Cancel"
                     role="presentation"
+                    style={
+                      Object {
+                        "fontFamily": "\\"FabricMDL2Icons\\"",
+                      }
+                    }
                   >
                     
                   </i>

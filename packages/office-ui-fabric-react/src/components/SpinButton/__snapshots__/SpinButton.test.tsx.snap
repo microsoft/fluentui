@@ -59,7 +59,7 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
 
         {
           border-radius: 2px;
-          border: 1px solid #8a8886;
+          border: 1px solid #605e5c;
           box-sizing: border-box;
           display: flex;
           height: 32px;
@@ -272,6 +272,11 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
                 }
             data-icon-name="ChevronUpSmall"
             role="presentation"
+            style={
+              Object {
+                "fontFamily": "\\"FabricMDL2Icons-2\\"",
+              }
+            }
           >
             
           </i>
@@ -410,6 +415,11 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
                 }
             data-icon-name="ChevronDownSmall"
             role="presentation"
+            style={
+              Object {
+                "fontFamily": "\\"FabricMDL2Icons-3\\"",
+              }
+            }
           >
             
           </i>
@@ -479,7 +489,7 @@ exports[`SpinButton renders SpinButton correctly with values that the user passe
 
         {
           border-radius: 2px;
-          border: 1px solid #8a8886;
+          border: 1px solid #605e5c;
           box-sizing: border-box;
           display: flex;
           height: 32px;
@@ -694,6 +704,11 @@ exports[`SpinButton renders SpinButton correctly with values that the user passe
                 }
             data-icon-name="ChevronUpSmall"
             role="presentation"
+            style={
+              Object {
+                "fontFamily": "\\"FabricMDL2Icons-2\\"",
+              }
+            }
           >
             
           </i>
@@ -832,6 +847,11 @@ exports[`SpinButton renders SpinButton correctly with values that the user passe
                 }
             data-icon-name="ChevronDownSmall"
             role="presentation"
+            style={
+              Object {
+                "fontFamily": "\\"FabricMDL2Icons-3\\"",
+              }
+            }
           >
             
           </i>

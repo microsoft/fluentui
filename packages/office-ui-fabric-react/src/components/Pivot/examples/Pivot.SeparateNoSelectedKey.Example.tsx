@@ -22,6 +22,7 @@ export class PivotSeparateNoSelectedKeyExample extends React.Component<any, any>
           }}
         >
           <Pivot
+            aria-label="No Selected Pivot Example"
             style={{ flexGrow: 1 }}
             selectedKey={Object.keys(pivotItems).indexOf(this.state.selectedKey) >= 0 ? this.state.selectedKey : null}
             onLinkClick={this._handleLinkClick}

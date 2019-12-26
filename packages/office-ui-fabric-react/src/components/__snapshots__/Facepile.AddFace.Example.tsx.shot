@@ -149,6 +149,7 @@ exports[`Component Examples renders Facepile.AddFace.Example.tsx correctly 1`] =
                 font-size: 14px;
                 font-weight: 400;
               }
+          role="presentation"
         >
           <div
             className=
@@ -160,6 +161,7 @@ exports[`Component Examples renders Facepile.AddFace.Example.tsx correctly 1`] =
                   text-align: center;
                   width: 32px;
                 }
+            role="presentation"
           >
             <div
               aria-hidden="true"

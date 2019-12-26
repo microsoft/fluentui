@@ -174,11 +174,16 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
 
     return (
       <div {...getNativeProps(this.props, divProperties)} ref={this._root} className={classNames.root}>
+        <div
+          aria-hidden="true"
+          ref={this._stickyAboveRef}
+          className={classNames.stickyAbove}
+          style={this._getStickyContainerStyle(stickyTopHeight, true)}
+        />
         <div ref={this._contentContainer} className={classNames.contentContainer} data-is-scrollable={true}>
           <ScrollablePaneContext.Provider value={this._getScrollablePaneContext()}>{this.props.children}</ScrollablePaneContext.Provider>
         </div>
-        <div ref={this._stickyAboveRef} className={classNames.stickyAbove} style={this._getStickyContainerStyle(stickyTopHeight, true)} />
-        <div className={classNames.stickyBelow} style={this._getStickyContainerStyle(stickyBottomHeight, false)}>
+        <div aria-hidden="true" className={classNames.stickyBelow} style={this._getStickyContainerStyle(stickyBottomHeight, false)}>
           <div ref={this._stickyBelowRef} className={classNames.stickyBelowItems} />
         </div>
       </div>
@@ -350,9 +355,9 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
 
         // Get first element that has a distance from top that is further than our sticky that is being added
         let targetStickyToAppendBefore: Sticky | undefined = undefined;
-        for (const i in stickyListSorted) {
-          if ((stickyListSorted[i].state.distanceFromTop || 0) >= (sticky.state.distanceFromTop || 0)) {
-            targetStickyToAppendBefore = stickyListSorted[i];
+        for (const stickyListItem of stickyListSorted) {
+          if ((stickyListItem.state.distanceFromTop || 0) >= (sticky.state.distanceFromTop || 0)) {
+            targetStickyToAppendBefore = stickyListItem;
             break;
           }
         }
@@ -394,7 +399,7 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
   private _getStickyContainerStyle = (height: number, isTop: boolean): React.CSSProperties => {
     return {
       height: height,
-      ...(getRTL()
+      ...(getRTL(this.props.theme)
         ? {
             right: '0',
             left: `${this.state.scrollbarWidth || this._getScrollbarWidth() || 0}px`

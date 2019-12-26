@@ -68,7 +68,7 @@ export class PersonaPresenceBase extends BaseComponent<IPersonaPresenceProps, {}
     }
 
     return (
-      <div className={classNames.presence} style={coinSizeWithPresenceStyle} title={presenceTitle}>
+      <div role="presentation" className={classNames.presence} style={coinSizeWithPresenceStyle} title={presenceTitle}>
         {renderIcon && this._onRenderIcon(classNames.presenceIcon, coinSizeWithPresenceIconStyle)}
       </div>
     );

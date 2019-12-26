@@ -1,6 +1,6 @@
 {
   "name": "office-ui-fabric-react",
-  "version": "7.67.0",
+  "version": "7.76.2",
   "description": "Reusable React components for building experiences for Office 365.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -47,7 +47,7 @@
     "@uifabric/test-utilities": "^7.0.6",
     "@uifabric/tslint-rules": "^7.0.5",
     "@uifabric/webpack-utils": "^7.0.4",
-    "@uifabric/example-data": "7.0.1",
+    "@uifabric/example-data": "7.0.2",
     "enzyme": "~3.9.0",
     "enzyme-adapter-react-16": "^1.2.0",
     "enzyme-to-json": "^3.3.4",
@@ -74,8 +74,8 @@
     "@uifabric/merge-styles": "^7.8.1",
     "@uifabric/react-hooks": "^7.0.1",
     "@uifabric/set-version": "^7.0.2",
-    "@uifabric/styling": "^7.7.3",
-    "@uifabric/utilities": "^7.6.0",
+    "@uifabric/styling": "^7.8.0",
+    "@uifabric/utilities": "^7.8.0",
     "prop-types": "^15.5.10",
     "tslib": "^1.7.1"
   },

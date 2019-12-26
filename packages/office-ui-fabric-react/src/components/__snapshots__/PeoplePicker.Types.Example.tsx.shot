@@ -42,7 +42,7 @@ exports[`Component Examples renders PeoplePicker.Types.Example.tsx correctly 1`]
               {
                 align-items: center;
                 border-radius: 2px;
-                border: 1px solid #8a8886;
+                border: 1px solid #605e5c;
                 box-sizing: border-box;
                 display: flex;
                 flex-wrap: wrap;
@@ -177,18 +177,26 @@ exports[`Component Examples renders PeoplePicker.Types.Example.tsx correctly 1`]
               border-color: Highlight;
             }
             &:focus .ms-Dropdown-title {
-              border-color: #0078d4;
-              border-width: 2px;
               color: #201f1e;
-              left: -1px;
-              top: -1px;
             }
-            @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-title {
+            &:focus:after {
+              border-radius: 2px;
+              border: 2px solid #0078d4;
+              box-sizing: border-box;
+              content: '';
+              height: 100%;
+              left: 0px;
+              pointer-events: none;
+              position: absolute;
+              top: 0px;
+              width: 100%;
+            }
+            @media screen and (-ms-high-contrast: active){&:focus:after {
               background-color: Highlight;
               border-color: Highlight;
               color: HighlightText;
             }
-            @media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: black-on-white){&:focus .ms-Dropdown-title {
+            @media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: black-on-white){&:focus:after {
               -ms-high-contrast-adjust: none;
             }
             &:active .ms-Dropdown-title {
@@ -251,7 +259,7 @@ exports[`Component Examples renders PeoplePicker.Types.Example.tsx correctly 1`]
               ms-Dropdown-title
               {
                 background-color: #ffffff;
-                border-color: #8a8886;
+                border-color: #605e5c;
                 border-radius: 2px;
                 border-style: solid;
                 border-width: 1px;
@@ -565,7 +573,7 @@ exports[`Component Examples renders PeoplePicker.Types.Example.tsx correctly 1`]
           role="switch"
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Toggle-thumb
                 {
@@ -575,6 +583,7 @@ exports[`Component Examples renders PeoplePicker.Types.Example.tsx correctly 1`]
                   border-style: solid;
                   border-width: .28em;
                   box-sizing: border-box;
+                  display: block;
                   height: 12px;
                   transition: all 0.1s ease;
                   width: 12px;
@@ -593,7 +602,7 @@ exports[`Component Examples renders PeoplePicker.Types.Example.tsx correctly 1`]
           -webkit-font-smoothing: antialiased;
           background-color: #0078d4;
           border-radius: 2px;
-          border: none;
+          border: 1px solid #0078d4;
           box-sizing: border-box;
           color: #ffffff;
           cursor: pointer;
@@ -645,23 +654,28 @@ exports[`Component Examples renders PeoplePicker.Types.Example.tsx correctly 1`]
         @media screen and (-ms-high-contrast: active){& {
           -ms-high-contrast-adjust: none;
           background-color: WindowText;
+          border-color: WindowText;
           color: Window;
         }
         &:hover {
           background-color: #106ebe;
+          border: 1px solid #106ebe;
           color: #ffffff;
         }
         @media screen and (-ms-high-contrast: active){&:hover {
           background-color: Highlight;
+          border-color: Highlight;
           color: Window;
         }
         &:active {
           background-color: #005a9e;
+          border: 1px solid #005a9e;
           color: #ffffff;
         }
         @media screen and (-ms-high-contrast: active){&:active {
           -ms-high-contrast-adjust: none;
           background-color: WindowText;
+          border-color: WindowText;
           color: Window;
         }
     data-is-focusable={true}

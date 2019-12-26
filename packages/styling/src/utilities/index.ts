@@ -3,6 +3,7 @@ export { buildClassMap } from './buildClassMap';
 export {
   IIconRecord,
   IIconSubset,
+  IIconSubsetRecord,
   IIconOptions,
   getIcon,
   registerIcons,

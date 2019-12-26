@@ -3,26 +3,39 @@ import * as React from 'react';
 import { IFontIconProps } from './Icon.types';
 import { classNames, MS_ICON } from './Icon.styles';
 import { css, getNativeProps, htmlElementProperties, memoizeFunction } from '../../Utilities';
-import { getIcon } from '../../Styling';
+import { getIcon, IIconRecord, IIconSubsetRecord } from '../../Styling';
 
 export const getIconContent = memoizeFunction((iconName?: string) => {
-  const iconDefinition = getIcon(iconName);
-  if (!iconDefinition) {
-    return iconDefinition;
+  const { code, subset }: Pick<IIconRecord, 'code'> & { subset: Partial<IIconSubsetRecord> } = getIcon(iconName) || {
+    subset: {},
+    code: undefined
+  };
+
+  if (!code) {
+    return null;
   }
   return {
-    children: iconDefinition.code,
-    iconClassName: iconDefinition.subset.className
+    children: code,
+    iconClassName: subset.className,
+    fontFamily: subset.fontFace && subset.fontFace.fontFamily
   };
 });
 
 export const getIconContentUnCached = memoizeFunction(
   (iconName?: string) => {
-    const iconDefinition = getIcon(iconName);
-    if (!iconDefinition) {
-      return iconDefinition;
+    const { code, subset }: Pick<IIconRecord, 'code'> & { subset: Partial<IIconSubsetRecord> } = getIcon(iconName) || {
+      subset: {},
+      code: undefined
+    };
+
+    if (!code) {
+      return null;
     }
-    return { children: iconDefinition.code, iconClassName: iconDefinition.subset.className };
+    return {
+      children: code,
+      iconClassName: subset.className,
+      fontFamily: subset.fontFace && subset.fontFace.fontFamily
+    };
   },
   undefined,
   true
@@ -34,14 +47,16 @@ export const getIconContentUnCached = memoizeFunction(
  * {@docCategory Icon}
  */
 export const FontIcon: React.FunctionComponent<IFontIconProps> = props => {
-  const { iconName, className } = props;
+  const { iconName, className, style = {} } = props;
   let iconContent = getIconContent(iconName);
   let iconClassName = undefined;
   let children = undefined;
+  let fontFamily = undefined;
 
   if (iconContent) {
     iconClassName = iconContent.iconClassName;
     children = iconContent.children;
+    fontFamily = iconContent.fontFamily;
   }
 
   const nativeProps = getNativeProps<React.HTMLAttributes<HTMLElement>>(props, htmlElementProperties);
@@ -58,6 +73,9 @@ export const FontIcon: React.FunctionComponent<IFontIconProps> = props => {
       {...containerProps}
       {...nativeProps}
       className={css(MS_ICON, classNames.root, iconClassName, !iconName && classNames.placeholder, className)}
+      // Apply the font family this way to ensure it doesn't get overridden by Fabric Core ms-Icon styles
+      // https://github.com/OfficeDev/office-ui-fabric-react/issues/10449
+      style={{ fontFamily, ...style }}
     >
       {children}
     </i>

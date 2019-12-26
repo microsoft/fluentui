@@ -99,7 +99,7 @@ export function getStyles(props: ITagItemStyleProps): ITagItemStyles {
         width: 30,
         height: '100%',
         flex: '0 0 auto',
-        borderRadius: getRTL()
+        borderRadius: getRTL(theme)
           ? `${effects.roundedCorner2} 0 0 ${effects.roundedCorner2}`
           : `0 ${effects.roundedCorner2} ${effects.roundedCorner2} 0`,
         selectors: {

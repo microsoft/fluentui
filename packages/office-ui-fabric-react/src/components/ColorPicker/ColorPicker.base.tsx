@@ -51,7 +51,7 @@ export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPi
       green: 'Green',
       blue: 'Blue',
       alpha: 'Alpha',
-      hue: 'Hue',
+      hueAriaLabel: 'Hue',
       svAriaLabel: ColorRectangleBase.defaultProps.ariaLabel!,
       svAriaValueFormat: ColorRectangleBase.defaultProps.ariaValueFormat!,
       svAriaDescription: ColorRectangleBase.defaultProps.ariaDescription!
@@ -151,7 +151,7 @@ export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPi
             <div className={classNames.flexSlider}>
               <ColorSlider
                 className="is-hue"
-                ariaLabel={strings.hue}
+                ariaLabel={strings.hue || strings.hueAriaLabel}
                 minValue={0}
                 maxValue={MAX_COLOR_HUE}
                 value={color.h}
@@ -161,7 +161,7 @@ export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPi
                 <ColorSlider
                   className="is-alpha"
                   isAlpha
-                  ariaLabel={textLabels.a}
+                  ariaLabel={strings.alphaAriaLabel || textLabels.a}
                   overlayColor={color.hex}
                   minValue={0}
                   maxValue={MAX_COLOR_ALPHA}

@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Pivot renders link Pivot correctly 1`] = `
-<div>
+<div
+  role="tablist"
+>
   <div
     className=
         ms-FocusZone
@@ -36,7 +38,6 @@ exports[`Pivot renders link Pivot correctly 1`] = `
             position: relative;
             white-space: nowrap;
           }
-      role="tablist"
     >
       <button
         aria-selected={true}

@@ -11,7 +11,7 @@ exports[`Component Examples renders SelectedPeopleList.Controlled.Example.tsx co
           -webkit-font-smoothing: antialiased;
           background-color: #0078d4;
           border-radius: 2px;
-          border: none;
+          border: 1px solid #0078d4;
           box-sizing: border-box;
           color: #ffffff;
           cursor: pointer;
@@ -64,23 +64,28 @@ exports[`Component Examples renders SelectedPeopleList.Controlled.Example.tsx co
         @media screen and (-ms-high-contrast: active){& {
           -ms-high-contrast-adjust: none;
           background-color: WindowText;
+          border-color: WindowText;
           color: Window;
         }
         &:hover {
           background-color: #106ebe;
+          border: 1px solid #106ebe;
           color: #ffffff;
         }
         @media screen and (-ms-high-contrast: active){&:hover {
           background-color: Highlight;
+          border-color: Highlight;
           color: Window;
         }
         &:active {
           background-color: #005a9e;
+          border: 1px solid #005a9e;
           color: #ffffff;
         }
         @media screen and (-ms-high-contrast: active){&:active {
           -ms-high-contrast-adjust: none;
           background-color: WindowText;
+          border-color: WindowText;
           color: Window;
         }
     data-is-focusable={true}
@@ -310,6 +315,7 @@ exports[`Component Examples renders SelectedPeopleList.Controlled.Example.tsx co
                   role="presentation"
                   style={
                     Object {
+                      "fontFamily": "\\"FabricMDL2Icons\\"",
                       "fontSize": "14px",
                     }
                   }
@@ -368,6 +374,7 @@ exports[`Component Examples renders SelectedPeopleList.Controlled.Example.tsx co
                         font-size: 14px;
                         font-weight: 400;
                       }
+                  role="presentation"
                 >
                   <div
                     className=
@@ -379,6 +386,7 @@ exports[`Component Examples renders SelectedPeopleList.Controlled.Example.tsx co
                           text-align: center;
                           width: 32px;
                         }
+                    role="presentation"
                   >
                     <div
                       aria-hidden="true"
@@ -626,6 +634,7 @@ exports[`Component Examples renders SelectedPeopleList.Controlled.Example.tsx co
                   role="presentation"
                   style={
                     Object {
+                      "fontFamily": "\\"FabricMDL2Icons\\"",
                       "fontSize": "14px",
                     }
                   }

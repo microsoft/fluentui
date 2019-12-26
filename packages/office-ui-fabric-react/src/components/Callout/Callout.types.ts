@@ -139,6 +139,9 @@ export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement> {
 
   /**
    * CSS style to apply to the callout.
+   *
+   * If you set `overflowY` in this object, it provides a performance optimization by preventing
+   * Popup (underlying component of Callout) from calculating whether it needs a scroll bar.
    */
   style?: React.CSSProperties;
 
