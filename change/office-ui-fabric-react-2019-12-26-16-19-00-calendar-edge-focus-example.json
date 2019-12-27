@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "add firstFocusableSelector to example FocusTrapZone to resolve Edge issue",
+  "packageName": "office-ui-fabric-react",
+  "email": "mgodbolt@microsoft.com",
+  "commit": "8cabe7e25ae40ef46dca35f9fc3189c04f370b54",
+  "date": "2019-12-27T00:19:00.563Z"
+}
