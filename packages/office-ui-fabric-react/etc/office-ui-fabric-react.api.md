@@ -836,6 +836,9 @@ export class DefaultButton extends BaseComponent<IButtonProps, {}> {
 }
 
 // @public (undocumented)
+export const defaultIconRenderers: ICalendarIconRenderer;
+
+// @public (undocumented)
 export type DefaultProps = Required<Pick<ISpinButtonProps, 'step' | 'min' | 'max' | 'disabled' | 'labelPosition' | 'label' | 'incrementButtonIcon' | 'decrementButtonIcon'>>;
 
 // @public
@@ -1996,6 +1999,13 @@ export interface ICalendarFormatDateCallbacks {
 }
 
 // @public (undocumented)
+export interface ICalendarIconRenderer {
+    closeIcon?: JSX.Element;
+    leftNavigation?: JSX.Element;
+    rightNavigation?: JSX.Element;
+}
+
+// @public (undocumented)
 export interface ICalendarIconStrings {
     closeIcon?: string;
     leftNavigation?: string;
@@ -2019,6 +2029,7 @@ export interface ICalendarProps extends IBaseProps<ICalendar>, React.HTMLAttribu
     maxDate?: Date;
     minDate?: Date;
     navigationIcons?: ICalendarIconStrings;
+    navigationIconsRenderer?: ICalendarIconRenderer;
     onDismiss?: () => void;
     onSelectDate?: (date: Date, selectedDateRangeArray?: Date[]) => void;
     restrictedDates?: Date[];

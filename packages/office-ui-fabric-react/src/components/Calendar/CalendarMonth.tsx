@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { BaseComponent, KeyCodes, css, getRTL, IRefObject } from '../../Utilities';
-import { ICalendarStrings, ICalendarIconStrings, ICalendarFormatDateCallbacks } from './Calendar.types';
+import { BaseComponent, KeyCodes, css, IRefObject } from '../../Utilities';
+import { ICalendarStrings, ICalendarFormatDateCallbacks, ICalendarIconRenderer } from './Calendar.types';
 import { FocusZone } from '../../FocusZone';
 import {
   addYears,
@@ -11,7 +11,6 @@ import {
   getMonthEnd,
   compareDatePart
 } from '../../utilities/dateMath/DateMath';
-import { Icon } from '../../Icon';
 import * as stylesImport from './Calendar.scss';
 import { CalendarYear, ICalendarYearRange } from './CalendarYear';
 const styles: any = stylesImport;
@@ -31,7 +30,7 @@ export interface ICalendarMonthProps extends React.ClassAttributes<CalendarMonth
   highlightCurrentMonth: boolean;
   highlightSelectedMonth: boolean;
   onHeaderSelect?: (focus: boolean) => void;
-  navigationIcons: ICalendarIconStrings;
+  navigationIconsRenderer: ICalendarIconRenderer;
   dateTimeFormatter: ICalendarFormatDateCallbacks;
   minDate?: Date;
   maxDate?: Date;
@@ -88,7 +87,7 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, ICalendarM
       today,
       highlightCurrentMonth,
       highlightSelectedMonth,
-      navigationIcons,
+      navigationIconsRenderer,
       dateTimeFormatter,
       minDate,
       maxDate,
@@ -104,7 +103,7 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, ICalendarM
           minYear={minDate ? minDate.getFullYear() : undefined}
           maxYear={maxDate ? maxDate.getFullYear() : undefined}
           onSelectYear={this._onSelectYear}
-          navigationIcons={navigationIcons}
+          navigationIconsRenderer={navigationIconsRenderer}
           onHeaderSelect={this._onYearPickerHeaderSelect}
           selectedYear={currentSelectedDate}
           onRenderYear={this._onRenderYear}
@@ -123,8 +122,8 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, ICalendarM
       rowIndexes.push(i);
     }
 
-    const leftNavigationIcon = navigationIcons.leftNavigation;
-    const rightNavigationIcon = navigationIcons.rightNavigation;
+    const leftNavigationIcon = navigationIconsRenderer.leftNavigation;
+    const rightNavigationIcon = navigationIconsRenderer.rightNavigation;
 
     // determine if previous/next years are in bounds
     const isPrevYearInBounds = minDate ? compareDatePart(minDate, getYearStart(navigatedDate)) < 0 : true;
@@ -168,7 +167,7 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, ICalendarM
                 role="button"
                 type="button"
               >
-                <Icon iconName={getRTL() ? rightNavigationIcon : leftNavigationIcon} />
+                {leftNavigationIcon}
               </button>
               <button
                 className={css('ms-DatePicker-nextYear js-nextYear', styles.nextYear, {
@@ -185,7 +184,7 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, ICalendarM
                 role="button"
                 type="button"
               >
-                <Icon iconName={getRTL() ? leftNavigationIcon : rightNavigationIcon} />
+                {rightNavigationIcon}
               </button>
             </div>
           </div>

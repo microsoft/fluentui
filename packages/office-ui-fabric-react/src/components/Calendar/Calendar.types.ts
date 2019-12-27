@@ -122,6 +122,11 @@ export interface ICalendarProps extends IBaseProps<ICalendar>, React.HTMLAttribu
   navigationIcons?: ICalendarIconStrings;
 
   /**
+   * Customize navigation icons using ICalendarIconRenderer
+   */
+  navigationIconsRenderer?: ICalendarIconRenderer;
+
+  /**
    * Whether the calendar should show the week number (weeks 1 to 53) before each week row
    * @defaultvalue false
    */
@@ -286,6 +291,26 @@ export interface ICalendarIconStrings {
    * @defaultvalue 'CalculatorMultiply'
    */
   closeIcon?: string;
+}
+
+export interface ICalendarIconRenderer {
+  /**
+   * FabricMDL2Icons name for the left navigation icon.  Previous default: ChevronLeft.
+   * @defaultvalue  'Up'
+   */
+  leftNavigation?: JSX.Element;
+
+  /**
+   * FabricMDL2Icons name for the right navigation icon.  Previous default: ChevronRight.
+   * @defaultvalue  'Down'
+   */
+  rightNavigation?: JSX.Element;
+
+  /**
+   * Close icon
+   * @defaultvalue  'CalculatorMultiply'
+   */
+  closeIcon?: JSX.Element;
 }
 
 /**

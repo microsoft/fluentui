@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { addDays, getDateRangeArray } from 'office-ui-fabric-react/lib/utilities/dateMath/DateMath';
-import { Calendar, DayOfWeek, DateRangeType } from 'office-ui-fabric-react/lib/Calendar';
+import { Calendar, DayOfWeek, DateRangeType, ICalendarIconRenderer } from 'office-ui-fabric-react/lib/Calendar';
 
 const DayPickerStrings = {
   months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
@@ -41,6 +41,7 @@ export interface ICalendarInlineExampleProps {
   showSixWeeksByDefault?: boolean;
   workWeekDays?: DayOfWeek[];
   firstDayOfWeek?: DayOfWeek;
+  iconRenderer?: ICalendarIconRenderer;
 }
 
 export class CalendarInlineExample extends React.Component<ICalendarInlineExampleProps, ICalendarInlineExampleState> {
@@ -124,6 +125,7 @@ export class CalendarInlineExample extends React.Component<ICalendarInlineExampl
           restrictedDates={this.props.restrictedDates}
           showSixWeeksByDefault={this.props.showSixWeeksByDefault}
           workWeekDays={this.props.workWeekDays}
+          navigationIconsRenderer={this.props.iconRenderer}
         />
         {this.props.showNavigateButtons && (
           <div>

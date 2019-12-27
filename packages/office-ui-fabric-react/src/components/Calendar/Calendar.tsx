@@ -1,21 +1,21 @@
 import * as React from 'react';
-import { ICalendar, ICalendarProps, ICalendarStrings, ICalendarIconStrings, ICalendarFormatDateCallbacks } from './Calendar.types';
+import {
+  ICalendar,
+  ICalendarProps,
+  ICalendarStrings,
+  ICalendarIconStrings,
+  ICalendarFormatDateCallbacks,
+  ICalendarIconRenderer
+} from './Calendar.types';
 import { DayOfWeek, FirstWeekOfYear, DateRangeType } from '../../utilities/dateValues/DateValues';
 import { CalendarDay, ICalendarDay } from './CalendarDay';
 import { CalendarMonth, ICalendarMonth } from './CalendarMonth';
 import { compareDates, getDateRangeArray } from '../../utilities/dateMath/DateMath';
-import { css, BaseComponent, KeyCodes, getNativeProps, divProperties } from '../../Utilities';
+import { css, BaseComponent, KeyCodes, getNativeProps, divProperties, getRTL, memoizeFunction } from '../../Utilities';
 import * as stylesImport from './Calendar.scss';
+import { Icon } from '../Icon';
 const styles: any = stylesImport;
 
-const leftArrow = 'Up';
-const rightArrow = 'Down';
-const closeIcon = 'CalculatorMultiply';
-const iconStrings: ICalendarIconStrings = {
-  leftNavigation: leftArrow,
-  rightNavigation: rightArrow,
-  closeIcon: closeIcon
-};
 const defaultWorkWeekDays: DayOfWeek[] = [DayOfWeek.Monday, DayOfWeek.Tuesday, DayOfWeek.Wednesday, DayOfWeek.Thursday, DayOfWeek.Friday];
 
 const dateTimeFormatterCallbacks: ICalendarFormatDateCallbacks = {
@@ -25,6 +25,25 @@ const dateTimeFormatterCallbacks: ICalendarFormatDateCallbacks = {
   formatDay: (date: Date) => date.getDate().toString(),
   formatYear: (date: Date) => date.getFullYear().toString()
 };
+
+const getIconRenderers = (calendarIconString: ICalendarIconStrings): ICalendarIconRenderer => {
+  if (!calendarIconString) {
+    return {};
+  }
+  return {
+    leftNavigation: <Icon iconName={getRTL() ? calendarIconString.rightNavigation : calendarIconString.leftNavigation} />,
+    rightNavigation: <Icon iconName={getRTL() ? calendarIconString.leftNavigation : calendarIconString.rightNavigation} />,
+    closeIcon: <Icon iconName={calendarIconString.closeIcon} />
+  } as ICalendarIconRenderer;
+};
+
+const defaultIconStrings: ICalendarIconStrings = {
+  leftNavigation: 'Up',
+  rightNavigation: 'Down',
+  closeIcon: 'CalculatorMultiply'
+};
+
+export const defaultIconRenderers: ICalendarIconRenderer = getIconRenderers(defaultIconStrings);
 
 export interface ICalendarState {
   /** The currently focused date in the day picker, but not necessarily selected */
@@ -59,7 +78,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
     strings: null,
     highlightCurrentMonth: false,
     highlightSelectedMonth: false,
-    navigationIcons: iconStrings,
+    navigationIconsRenderer: defaultIconRenderers,
     showWeekNumbers: false,
     firstWeekOfYear: FirstWeekOfYear.FirstDay,
     dateTimeFormatter: dateTimeFormatterCallbacks,
@@ -73,6 +92,8 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
   private _monthPicker = React.createRef<ICalendarMonth>();
 
   private _focusOnUpdate: boolean;
+
+  private _getNavigationIconsRenderer = memoizeFunction(getIconRenderers);
 
   constructor(props: ICalendarProps) {
     super(props);
@@ -130,6 +151,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
       highlightCurrentMonth,
       highlightSelectedMonth,
       navigationIcons,
+      navigationIconsRenderer,
       minDate,
       maxDate,
       restrictedDates,
@@ -145,6 +167,8 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
     const onHeaderSelect = showMonthPickerAsOverlay ? this._onHeaderSelect : undefined;
     const monthPickerOnly = !showMonthPickerAsOverlay && !isDayPickerVisible;
     const overlayedWithButton = showMonthPickerAsOverlay && showGoToToday;
+
+    const iconRenderer = navigationIcons ? this._getNavigationIconsRenderer(navigationIcons!) : navigationIconsRenderer;
 
     let goTodayEnabled = showGoToToday;
 
@@ -190,7 +214,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
                     autoNavigateOnSelection={autoNavigateOnSelection!}
                     strings={strings!}
                     onHeaderSelect={onHeaderSelect}
-                    navigationIcons={navigationIcons!}
+                    navigationIconsRenderer={iconRenderer!}
                     showWeekNumbers={this.props.showWeekNumbers}
                     firstWeekOfYear={this.props.firstWeekOfYear!}
                     dateTimeFormatter={this.props.dateTimeFormatter!}
@@ -215,7 +239,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
                     highlightCurrentMonth={highlightCurrentMonth!}
                     highlightSelectedMonth={highlightSelectedMonth!}
                     onHeaderSelect={onHeaderSelect}
-                    navigationIcons={navigationIcons!}
+                    navigationIconsRenderer={iconRenderer!}
                     dateTimeFormatter={this.props.dateTimeFormatter!}
                     minDate={minDate}
                     maxDate={maxDate}

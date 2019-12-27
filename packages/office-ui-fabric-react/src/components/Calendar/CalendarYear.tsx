@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { KeyCodes, css, getRTL } from '../../Utilities';
-import { ICalendarIconStrings } from './Calendar.types';
+import { KeyCodes, css } from '../../Utilities';
+import { ICalendarIconRenderer } from './Calendar.types';
 import { FocusZone } from '../../FocusZone';
 import * as stylesImport from './Calendar.scss';
-import { Icon } from '../../Icon';
+import { defaultIconRenderers } from './Calendar';
 
 const styles: any = stylesImport;
 
@@ -29,7 +29,7 @@ export interface ICalendarYear {
 }
 
 export interface ICalendarYearProps {
-  navigationIcons?: ICalendarIconStrings;
+  navigationIconsRenderer: ICalendarIconRenderer;
   navigatedYear?: number;
   selectedYear?: number;
   minYear?: number;
@@ -45,12 +45,6 @@ export interface ICalendarYearProps {
 const DefaultCalendarYearStrings: ICalendarYearStrings = {
   prevRangeAriaLabel: undefined,
   nextRangeAriaLabel: undefined
-};
-
-const DefaultNavigationIcons: ICalendarIconStrings = {
-  leftNavigation: 'Up',
-  rightNavigation: 'Down',
-  closeIcon: 'CalculatorMultiply'
 };
 
 interface ICalendarYearGridCell {
@@ -181,7 +175,7 @@ export interface ICalendarYearHeaderProps extends ICalendarYearProps, ICalendarY
 
 class CalendarYearNavPrev extends React.Component<ICalendarYearHeaderProps, any> {
   public render() {
-    const iconStrings = this.props.navigationIcons || DefaultNavigationIcons;
+    const iconRenderers = this.props.navigationIconsRenderer || defaultIconRenderers;
     const strings = this.props.strings || DefaultCalendarYearStrings;
     const prevRangeAriaLabel = strings.prevRangeAriaLabel;
     const prevRange = { fromYear: this.props.fromYear - CELL_COUNT, toYear: this.props.toYear - CELL_COUNT };
@@ -204,7 +198,7 @@ class CalendarYearNavPrev extends React.Component<ICalendarYearHeaderProps, any>
         title={prevAriaLabel}
         disabled={disabled}
       >
-        <Icon iconName={getRTL() ? iconStrings.rightNavigation : iconStrings.leftNavigation} />
+        {iconRenderers.leftNavigation}
       </button>
     );
   }
@@ -229,7 +223,7 @@ class CalendarYearNavPrev extends React.Component<ICalendarYearHeaderProps, any>
 
 class CalendarYearNavNext extends React.Component<ICalendarYearHeaderProps, any> {
   public render() {
-    const iconStrings = this.props.navigationIcons || DefaultNavigationIcons;
+    const iconRenderers = this.props.navigationIconsRenderer || defaultIconRenderers;
     const strings = this.props.strings || DefaultCalendarYearStrings;
     const nextRangeAriaLabel = strings.nextRangeAriaLabel;
     const nextRange = { fromYear: this.props.fromYear + CELL_COUNT, toYear: this.props.toYear + CELL_COUNT };
@@ -252,7 +246,7 @@ class CalendarYearNavNext extends React.Component<ICalendarYearHeaderProps, any>
         title={nextAriaLabel}
         disabled={this.isDisabled}
       >
-        <Icon iconName={getRTL() ? iconStrings.leftNavigation : iconStrings.rightNavigation} />
+        {iconRenderers.rightNavigation}
       </button>
     );
   }

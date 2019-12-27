@@ -4,6 +4,7 @@ import { IDocPageProps } from 'office-ui-fabric-react/lib/common/DocPage.types';
 import { CalendarButtonExample } from './examples/Calendar.Button.Example';
 import { CalendarInlineExample } from './examples/Calendar.Inline.Example';
 import { addMonths, addYears, addWeeks, addDays } from 'office-ui-fabric-react/lib/utilities/dateMath/DateMath';
+import { Icon } from 'office-ui-fabric-react/lib/Icon';
 
 const CalendarButtonExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Calendar/examples/Calendar.Button.Example.tsx') as string;
 const CalendarInlineExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Calendar/examples/Calendar.Inline.Example.tsx') as string;
@@ -164,6 +165,24 @@ export const CalendarPageProps: IDocPageProps = {
           minDate={addMonths(today, -1)}
           maxDate={addYears(today, 1)}
           restrictedDates={[addDays(today, -2), addDays(today, -8), addDays(today, 2), addDays(today, 8)]}
+        />
+      )
+    },
+    {
+      title: 'Inline Calendar with custom rendered icons',
+      code: CalendarInlineExampleCode,
+
+      view: (
+        <CalendarInlineExample
+          isMonthPickerVisible={false}
+          dateRangeType={DateRangeType.Day}
+          autoNavigateOnSelection={false}
+          showGoToToday={true}
+          iconRenderer={{
+            leftNavigation: <Icon iconName={'chevronLeft'} />,
+            rightNavigation: <Icon iconName={'chevronRight'} />,
+            closeIcon: <Icon iconName={'CalculatorMultiply'} />
+          }}
         />
       )
     },

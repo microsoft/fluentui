@@ -1,9 +1,8 @@
 import * as React from 'react';
 import { BaseComponent, KeyCodes, css, getId, getRTL, getRTLSafeKeyCode, format, IRefObject, findIndex, find } from '../../Utilities';
-import { ICalendarStrings, ICalendarIconStrings, ICalendarFormatDateCallbacks } from './Calendar.types';
+import { ICalendarStrings, ICalendarFormatDateCallbacks, ICalendarIconRenderer } from './Calendar.types';
 import { DayOfWeek, FirstWeekOfYear, DateRangeType } from '../../utilities/dateValues/DateValues';
 import { FocusZone } from '../../FocusZone';
-import { Icon } from '../../Icon';
 import {
   addDays,
   addWeeks,
@@ -49,7 +48,7 @@ export interface ICalendarDayProps extends React.ClassAttributes<CalendarDay> {
   firstDayOfWeek: DayOfWeek;
   dateRangeType: DateRangeType;
   autoNavigateOnSelection: boolean;
-  navigationIcons: ICalendarIconStrings;
+  navigationIconsRenderer: ICalendarIconRenderer;
   today?: Date;
   onHeaderSelect?: (focus: boolean) => void;
   showWeekNumbers?: boolean;
@@ -105,7 +104,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
       navigatedDate,
       selectedDate,
       dateRangeType,
-      navigationIcons,
+      navigationIconsRenderer,
       showWeekNumbers,
       firstWeekOfYear,
       dateTimeFormatter,
@@ -116,9 +115,9 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
     } = this.props;
     const dayPickerId = getId('DatePickerDay-dayPicker');
     const monthAndYearId = getId('DatePickerDay-monthAndYear');
-    const leftNavigationIcon = navigationIcons.leftNavigation;
-    const rightNavigationIcon = navigationIcons.rightNavigation;
-    const closeNavigationIcon = navigationIcons.closeIcon;
+    const leftNavigationIcon = navigationIconsRenderer.leftNavigation;
+    const rightNavigationIcon = navigationIconsRenderer.rightNavigation;
+    const closeNavigationIcon = navigationIconsRenderer.closeIcon;
     const weekNumbers = showWeekNumbers ? getWeekNumbersInMonth(weeks!.length, firstDayOfWeek, firstWeekOfYear, navigatedDate) : null;
     const selectedDateWeekNumber = showWeekNumbers ? getWeekNumber(selectedDate, firstDayOfWeek, firstWeekOfYear) : undefined;
 
@@ -176,7 +175,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
                 role="button"
                 type="button"
               >
-                <Icon iconName={leftNavigationIcon} />
+                {leftNavigationIcon}
               </button>
               <button
                 className={css('ms-DatePicker-nextMonth js-nextMonth', styles.nextMonth, {
@@ -195,7 +194,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
                 role="button"
                 type="button"
               >
-                <Icon iconName={rightNavigationIcon} />
+                {rightNavigationIcon}
               </button>
               {showCloseButton && (
                 <button
@@ -206,7 +205,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
                   role="button"
                   type="button"
                 >
-                  <Icon iconName={closeNavigationIcon} />
+                  {closeNavigationIcon}
                 </button>
               )}
             </div>
