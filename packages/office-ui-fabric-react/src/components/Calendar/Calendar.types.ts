@@ -293,21 +293,22 @@ export interface ICalendarIconStrings {
   closeIcon?: string;
 }
 
+/**
+ * {@docCategory Calendar}
+ */
 export interface ICalendarIconRenderer {
   /**
-   * FabricMDL2Icons name for the left navigation icon.  Previous default: ChevronLeft.
-   * @defaultvalue  'Up'
+   * Left navigation icon renderer
    */
   leftNavigation?: JSX.Element;
 
   /**
-   * FabricMDL2Icons name for the right navigation icon.  Previous default: ChevronRight.
-   * @defaultvalue  'Down'
+   * Right navigation icon renderer
    */
   rightNavigation?: JSX.Element;
 
   /**
-   * Close icon
+   * Close icon renderer
    * @defaultvalue  'CalculatorMultiply'
    */
   closeIcon?: JSX.Element;
