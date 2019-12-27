@@ -82,7 +82,7 @@ export class DetailsListCustomGroupHeadersExample extends React.Component<{}, {}
     return null;
   };
 
-  private _onRenderGroupHeader: IDetailsGroupRenderProps['onRenderHeader'] = (props): JSX.Element => {
+  private _onRenderGroupHeader: IDetailsGroupRenderProps['onRenderHeader'] = props => {
     if (props) {
       return (
         <div className={classNames.headerAndFooter}>
@@ -98,9 +98,11 @@ export class DetailsListCustomGroupHeadersExample extends React.Component<{}, {}
         </div>
       );
     }
+
+    return null;
   };
 
-  private _onRenderGroupFooter: IDetailsGroupRenderProps['onRenderFooter'] = (props): JSX.Element => {
+  private _onRenderGroupFooter: IDetailsGroupRenderProps['onRenderFooter'] = props => {
     if (props) {
       return (
         <div className={classNames.headerAndFooter}>
@@ -108,6 +110,8 @@ export class DetailsListCustomGroupHeadersExample extends React.Component<{}, {}
         </div>
       );
     }
+
+    return null;
   };
 
   private _getGroupTotalRowHeight = (group: IGroup): number => {

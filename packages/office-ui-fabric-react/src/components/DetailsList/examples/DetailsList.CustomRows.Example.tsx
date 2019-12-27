@@ -17,7 +17,7 @@ export class DetailsListCustomRowsExample extends React.Component<{}, {}> {
     return <DetailsList items={this._items} setKey="set" onRenderRow={this._onRenderRow} checkButtonAriaLabel="Row checkbox" />;
   }
 
-  private _onRenderRow: IDetailsListProps['onRenderRow'] = (props): JSX.Element => {
+  private _onRenderRow: IDetailsListProps['onRenderRow'] = props => {
     const customStyles: Partial<IDetailsRowStyles> = {};
     if (props) {
       if (props.itemIndex % 2 === 0) {
@@ -27,5 +27,6 @@ export class DetailsListCustomRowsExample extends React.Component<{}, {}> {
 
       return <DetailsRow {...props} styles={customStyles} />;
     }
+    return null;
   };
 }
