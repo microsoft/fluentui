@@ -1,8 +1,7 @@
 import * as React from 'react';
-import { DetailsList, DetailsRow, IDetailsRowStyles } from 'office-ui-fabric-react/lib/DetailsList';
+import { DetailsList, DetailsRow, IDetailsRowStyles, IDetailsListProps } from 'office-ui-fabric-react/lib/DetailsList';
 import { createListItems, IExampleItem } from '@uifabric/example-data';
 import { getTheme } from 'office-ui-fabric-react/lib/Styling';
-import { IDetailsListProps } from '../DetailsList';
 
 const theme = getTheme();
 

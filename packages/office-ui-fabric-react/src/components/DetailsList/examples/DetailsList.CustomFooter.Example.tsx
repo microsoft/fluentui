@@ -6,9 +6,9 @@ import {
   IDetailsFooterProps,
   DetailsRow,
   SelectionMode,
-  DetailsRowCheck
+  DetailsRowCheck,
+  IDetailsRowBaseProps
 } from 'office-ui-fabric-react/lib/DetailsList';
-import { IDetailsRowBaseProps } from '../DetailsRow';
 
 export interface IDetailsListCustomFooterExampleItem {
   key: number;
