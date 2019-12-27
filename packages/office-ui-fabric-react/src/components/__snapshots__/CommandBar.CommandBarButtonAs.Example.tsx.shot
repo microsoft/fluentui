@@ -658,6 +658,10 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                 onMouseOver={[Function]}
                 onMouseUp={[Function]}
                 onSubmit={[Function]}
+                onTouchCancel={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
               >
                 <div
                   className=

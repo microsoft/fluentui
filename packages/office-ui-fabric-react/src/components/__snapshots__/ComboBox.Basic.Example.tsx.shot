@@ -1830,6 +1830,10 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
         onMouseOver={[Function]}
         onMouseUp={[Function]}
         onSubmit={[Function]}
+        onTouchCancel={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
       >
         <div
           className=
