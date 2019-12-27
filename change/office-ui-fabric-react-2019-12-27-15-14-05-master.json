@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Add custom renderers to Calendar Icons",
+  "packageName": "office-ui-fabric-react",
+  "email": "madomi@microsoft.com",
+  "commit": "dfb2dc019f02b1108fda68d867484495c1df6d45",
+  "date": "2019-12-27T23:14:05.203Z"
+}
