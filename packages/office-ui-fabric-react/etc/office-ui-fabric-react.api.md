@@ -1317,13 +1317,12 @@ export const getIconContent: (iconName?: string | undefined) => {
     children: string | undefined;
     iconClassName: string | undefined;
     fontFamily: string | undefined;
-} | null;
+};
 
 // @public (undocumented)
-export const getIconContentUnCached: (iconName?: string | undefined) => {
-    children: string | undefined;
+export const getIconContentWithValidIconCaching: (iconName?: string | undefined) => {
+    children: string;
     iconClassName: string | undefined;
-    fontFamily: string | undefined;
 } | null;
 
 // @public

@@ -11,11 +11,6 @@ export const getIconContent = memoizeFunction((iconName?: string) => {
     code: undefined
   };
 
-  const shouldReturnNull: boolean = code ? false : true;
-  if (shouldReturnNull) {
-    return null;
-  }
-
   return {
     children: code,
     iconClassName: subset.className,
@@ -23,25 +18,24 @@ export const getIconContent = memoizeFunction((iconName?: string) => {
   };
 });
 
-export const getIconContentUnCached = memoizeFunction(
+export const getIconContentWithValidIconCaching = memoizeFunction(
   (iconName?: string) => {
     const { code, subset }: Pick<IIconRecord, 'code'> & { subset: Partial<IIconSubsetRecord> } = getIcon(iconName) || {
       subset: {},
       code: undefined
     };
 
-    const shouldReturnNull: boolean = code ? false : true;
-    if (shouldReturnNull) {
+    if (!code) {
       return null;
     }
+
     return {
       children: code,
-      iconClassName: subset.className,
-      fontFamily: subset.fontFace && subset.fontFace.fontFamily
+      iconClassName: subset.className
     };
   },
   undefined,
-  true
+  true /*doNotCacheIfCallbackResultIsNull */
 );
 
 /**
@@ -51,16 +45,7 @@ export const getIconContentUnCached = memoizeFunction(
  */
 export const FontIcon: React.FunctionComponent<IFontIconProps> = props => {
   const { iconName, className, style = {} } = props;
-  const iconContent = getIconContent(iconName);
-  let iconClassName = undefined;
-  let children = undefined;
-  let fontFamily = undefined;
-
-  if (iconContent) {
-    iconClassName = iconContent.iconClassName;
-    children = iconContent.children;
-    fontFamily = iconContent.fontFamily;
-  }
+  const { iconClassName, children, fontFamily } = getIconContent(iconName);
 
   const nativeProps = getNativeProps<React.HTMLAttributes<HTMLElement>>(props, htmlElementProperties);
   const containerProps = props['aria-label']

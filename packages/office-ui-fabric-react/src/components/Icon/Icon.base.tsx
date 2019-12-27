@@ -4,7 +4,7 @@ import { IIconProps, IconType, IIconStyleProps, IIconStyles } from './Icon.types
 import { Image } from '../Image/Image';
 import { ImageLoadState, IImageProps } from '../Image/Image.types';
 import { getNativeProps, htmlElementProperties, classNamesFunction } from '../../Utilities';
-import { getIconContent, getIconContentUnCached } from './FontIcon';
+import { getIconContent, getIconContentWithValidIconCaching } from './FontIcon';
 
 export interface IIconState {
   imageLoadError: boolean;
@@ -26,21 +26,12 @@ export class IconBase extends React.Component<IIconProps, IIconState> {
     const { className, styles, iconName, imageErrorAs, theme } = this.props;
     const isPlaceholder = typeof iconName === 'string' && iconName.length === 0;
     const isImage = this.props.iconType === IconType.image || this.props.iconType === IconType.Image || !!this.props.imageProps;
-    let iconContent = undefined;
+    const iconContent = this.props.doNotCacheNullIcon ? getIconContentWithValidIconCaching(iconName) : getIconContent(iconName);
 
-    if (this.props.doNotCacheNullIcon) {
-      iconContent = getIconContentUnCached(iconName);
-    } else {
-      iconContent = getIconContent(iconName);
-    }
-
-    let iconClassName = undefined;
-    let children = undefined;
-
-    if (iconContent) {
-      iconClassName = iconContent.iconClassName;
-      children = iconContent.children;
-    }
+    const { iconClassName, children } = iconContent || {
+      iconClassName: undefined,
+      children: undefined
+    };
 
     const classNames = getClassNames(styles, {
       theme: theme!,
