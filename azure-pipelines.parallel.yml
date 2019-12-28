@@ -32,6 +32,16 @@ jobs:
         npm run build
       displayName: build
 
+    - task: ArchiveFiles@2
+      inputs:
+        rootFolderOrFile: $(Build.Repository.LocalPath)
+        # Include root folder so archive can just be extracted into $(Pipeline.Workspace)
+        includeRootFolder: true
+        archiveType: 'tar'
+        tarCompression: 'gz'
+        archiveFile: $(Build.ArtifactStagingDirectory)/build.tar.gz
+        replaceExistingArchive: true
+
     - publish: $(Build.ArtifactStagingDirectory)
       artifact: Build
 
@@ -71,16 +81,6 @@ jobs:
         storage: fabricweb
         ContainerName: '$web'
         BlobPrefix: 'pr-deploy-site/$(Build.SourceBranch)'
-
-    - task: ArchiveFiles@2
-      inputs:
-        rootFolderOrFile: $(Build.Repository.LocalPath)
-        # Include root folder so archive can just be extracted into $(Pipeline.Workspace)
-        includeRootFolder: true
-        archiveType: 'tar'
-        tarCompression: 'gz'
-        archiveFile: $(Build.ArtifactStagingDirectory)/build.tar.gz
-        replaceExistingArchive: true
 
   - job: PerfTest
     dependsOn: Build
