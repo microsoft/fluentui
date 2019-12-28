@@ -28,6 +28,10 @@ jobs:
         npm run checkchange
       displayName: check change
 
+    - script: |
+        npm run build
+      displayName: build
+
     - publish: $(Build.ArtifactStagingDirectory)
       artifact: Build
 
