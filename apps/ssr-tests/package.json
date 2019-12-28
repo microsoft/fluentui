@@ -5,6 +5,8 @@
   "private": true,
   "scripts": {
     "build": "just-scripts build",
+    "bundle": "just-scripts bundle",
+    "test": "just-scripts test",
     "code-style": "node -v",
     "clean": "",
     "just": "just-scripts"

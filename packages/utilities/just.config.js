@@ -1,5 +1,5 @@
 const { preset, just } = require('@uifabric/build');
-const { chain, task } = just;
+const { chain } = just;
 
 preset();
 

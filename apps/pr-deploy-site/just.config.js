@@ -8,6 +8,9 @@ const findGitRoot = require('@uifabric/build/monorepo/findGitRoot');
 const gitRoot = findGitRoot();
 let instructions = [];
 
+// TODO: this doesn't appear to be working compared to master. why?
+// TODO: this works when 'yarn build' is called in 'apps/pr-deploy-site', but not when called from repo root.
+// TODO: is this meant to run purely as a side effect? when should it run? what triggers it? seems unreliable.
 const repoDeps = findRepoDeps();
 repoDeps.forEach(dep => {
   const distPath = path.join(gitRoot, dep.packagePath, 'dist');
@@ -32,7 +35,7 @@ repoDeps.forEach(dep => {
 preset();
 
 task(
-  'build',
+  'bundle',
   copyInstructionsTask({
     copyInstructions: [...copyInstructions.copyFilesToDestinationDirectory(['index.html', 'chiclet-test.html'], 'dist'), ...instructions]
   })

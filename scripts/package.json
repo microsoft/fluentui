@@ -11,7 +11,7 @@
     "bundlesize": "bundlesize --debug",
     "clean": "",
     "code-style": "node ./just-scripts.js code-style",
-    "test": "jest"
+    "test": ""
   },
   "devDependencies": {
     "@microsoft/api-extractor": "7.3.7",

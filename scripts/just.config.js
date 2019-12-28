@@ -71,31 +71,19 @@ module.exports = function preset() {
       : parallel('ts:commonjs', 'ts:esm', condition('ts:amd', () => argv().production && !argv().min));
   });
 
-  task('validate', fs.existsSync(path.join(process.cwd(), 'jest.config.js')) ? series('tslint', 'jest') : 'tslint');
+  task('test', condition('jest', () => fs.existsSync(path.join(process.cwd(), 'jest.config.js')))).cached();
+
+  task('lint', parallel('lint-imports', 'tslint')).cached();
+
   task('code-style', series('prettier', 'tslint'));
   task('update-api', series('clean', 'copy', 'sass', 'ts', 'update-api-extractor'));
   task('dev', series('clean', 'copy', 'sass', 'webpack-dev-server'));
 
-  task('build:node-lib', series('clean', 'copy', series(condition('validate', () => !argv().min), 'ts:commonjs-only'))).cached();
+  task('build:node-lib', series('clean', 'copy', series(condition('test', () => !argv().min), 'ts:commonjs-only'))).cached();
 
-  task(
-    'build',
-    series(
-      'clean',
-      'copy',
-      'sass',
-      parallel(
-        condition('validate', () => !argv().min),
-        series(
-          'ts',
-          parallel(
-            condition('webpack', () => !argv().min && !!resolveCwd('webpack.config.js')),
-            condition('lint-imports', () => !argv().min)
-          )
-        )
-      )
-    )
-  ).cached();
+  task('build', series('clean', 'copy', 'sass', 'ts')).cached();
+
+  task('bundle', condition('webpack', () => !!resolveCwd('webpack.config.js'))).cached();
 
   task('no-op', () => {}).cached();
 };
