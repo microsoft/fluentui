@@ -2,6 +2,20 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Mon, 30 Dec 2019 12:25:00 GMT",
+      "tag": "office-ui-fabric-react_v7.76.3",
+      "version": "7.76.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "add firstFocusableSelector to example FocusTrapZone to resolve Edge issue",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "8cabe7e25ae40ef46dca35f9fc3189c04f370b54"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 24 Dec 2019 12:33:51 GMT",
       "tag": "office-ui-fabric-react_v7.76.2",
       "version": "7.76.2",

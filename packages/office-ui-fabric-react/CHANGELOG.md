@@ -1,7 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 24 Dec 2019 12:33:51 GMT and should not be manually modified.
+This log was last generated on Mon, 30 Dec 2019 12:25:00 GMT and should not be manually modified.
 
+## 7.76.3
+Mon, 30 Dec 2019 12:25:00 GMT
+
+### Patches
+
+- add firstFocusableSelector to example FocusTrapZone to resolve Edge issue (mgodbolt@microsoft.com)
 ## 7.76.2
 Tue, 24 Dec 2019 12:33:51 GMT
 
