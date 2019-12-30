@@ -1533,6 +1533,9 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
       <input
         aria-autocomplete="both"
         aria-expanded={false}
+        aria-live="polite"
+        aria-posinset={1}
+        aria-setsize={10}
         autoCapitalize="off"
         autoComplete="off"
         className=
