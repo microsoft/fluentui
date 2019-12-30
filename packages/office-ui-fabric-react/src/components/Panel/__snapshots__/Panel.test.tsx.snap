@@ -52,6 +52,10 @@ exports[`Panel renders Panel correctly 1`] = `
     onMouseOver={[Function]}
     onMouseUp={[Function]}
     onSubmit={[Function]}
+    onTouchCancel={[Function]}
+    onTouchEnd={[Function]}
+    onTouchMove={[Function]}
+    onTouchStart={[Function]}
   >
     <div
       aria-labelledby="Panel0-headerText"
