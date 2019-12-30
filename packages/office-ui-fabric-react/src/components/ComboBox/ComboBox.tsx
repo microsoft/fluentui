@@ -1461,8 +1461,11 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     return (ev: any): void => {
       onItemClick && onItemClick(ev, item, index);
       this._setSelectedIndex(index as number, ev);
+
+      // only close the callout when it's in single-select mode
       if (!this.props.multiSelect) {
-        // only close the callout when it's in single-select mode
+        // ensure that focus returns to the input, not the button
+        this._autofill.current && this._autofill.current.focus();
         this.setState({
           isOpen: false
         });

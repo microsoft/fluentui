@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Combobox: Focus returns to input after item click",
+  "packageName": "office-ui-fabric-react",
+  "email": "mgodbolt@microsoft.com",
+  "commit": "c45255bca111b40e965ed67540aaf1461f4163d8",
+  "date": "2019-12-27T21:19:48.386Z"
+}
