@@ -547,6 +547,13 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
         </div>
       </div>
     </div>
+    <div
+      aria-live="polite"
+      className=
+
+
+      role="status"
+    />
   </div>
   <div
     className=
@@ -557,6 +564,13 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
   >
     No items selected
   </div>
+  <div
+    aria-live="polite"
+    className=
+
+
+    role="status"
+  />
   <div
     className="ms-Viewport"
     style={
@@ -813,6 +827,11 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                           }
                       data-icon-name="Page"
                       role="presentation"
+                      style={
+                        Object {
+                          "fontFamily": "\\"FabricMDL2Icons\\"",
+                        }
+                      }
                     >
                       
                     </i>
@@ -1021,6 +1040,11 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                         }
                     data-icon-name="SortUp"
                     role="presentation"
+                    style={
+                      Object {
+                        "fontFamily": "\\"FabricMDL2Icons\\"",
+                      }
+                    }
                   >
                     
                   </i>

@@ -166,6 +166,11 @@ exports[`Component Examples renders OverflowSet.Vertical.Example.tsx correctly 1
               }
           data-icon-name="Add"
           role="presentation"
+          style={
+            Object {
+              "fontFamily": "\\"FabricMDL2Icons\\"",
+            }
+          }
         >
           
         </i>
@@ -316,6 +321,11 @@ exports[`Component Examples renders OverflowSet.Vertical.Example.tsx correctly 1
               }
           data-icon-name="Upload"
           role="presentation"
+          style={
+            Object {
+              "fontFamily": "\\"FabricMDL2Icons\\"",
+            }
+          }
         >
           
         </i>
@@ -466,6 +476,11 @@ exports[`Component Examples renders OverflowSet.Vertical.Example.tsx correctly 1
               }
           data-icon-name="Share"
           role="presentation"
+          style={
+            Object {
+              "fontFamily": "\\"FabricMDL2Icons\\"",
+            }
+          }
         >
           
         </i>
@@ -620,6 +635,11 @@ exports[`Component Examples renders OverflowSet.Vertical.Example.tsx correctly 1
               }
           data-icon-name="More"
           role="presentation"
+          style={
+            Object {
+              "fontFamily": "\\"FabricMDL2Icons\\"",
+            }
+          }
         >
           
         </i>

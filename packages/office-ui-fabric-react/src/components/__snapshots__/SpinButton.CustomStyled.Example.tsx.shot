@@ -274,6 +274,11 @@ exports[`Component Examples renders SpinButton.CustomStyled.Example.tsx correctl
                   }
               data-icon-name="ChevronUpSmall"
               role="presentation"
+              style={
+                Object {
+                  "fontFamily": "\\"FabricMDL2Icons-2\\"",
+                }
+              }
             >
               
             </i>
@@ -413,6 +418,11 @@ exports[`Component Examples renders SpinButton.CustomStyled.Example.tsx correctl
                   }
               data-icon-name="ChevronDownSmall"
               role="presentation"
+              style={
+                Object {
+                  "fontFamily": "\\"FabricMDL2Icons-3\\"",
+                }
+              }
             >
               
             </i>

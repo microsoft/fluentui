@@ -1,7 +1,13 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Tue, 17 Dec 2019 12:29:42 GMT and should not be manually modified.
+This log was last generated on Fri, 20 Dec 2019 12:32:45 GMT and should not be manually modified.
 
+## 7.8.0
+Fri, 20 Dec 2019 12:32:45 GMT
+
+### Minor changes
+
+- scroll.ts: added allowOverscrollOnElement, alternative to allowScrollOnElement that allows body scroll on touch devices (dmitriy.ravdin@siemens.com)
 ## 7.7.1
 Tue, 17 Dec 2019 12:29:42 GMT
 

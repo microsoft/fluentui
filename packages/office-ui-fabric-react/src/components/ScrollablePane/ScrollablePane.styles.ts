@@ -37,6 +37,7 @@ export const getStyles = (props: IScrollablePaneStyleProps): IScrollablePaneStyl
     stickyAbove: [
       {
         top: 0,
+        zIndex: 1,
         selectors: {
           [HighContrastSelector]: {
             borderBottom: '1px solid WindowText'

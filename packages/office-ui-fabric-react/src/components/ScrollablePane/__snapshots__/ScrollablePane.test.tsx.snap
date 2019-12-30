@@ -19,20 +19,6 @@ exports[`ScrollablePane renders correctly 1`] = `
       }
 >
   <div
-    className=
-        ms-ScrollablePane--contentContainer
-        {
-          -webkit-overflow-scrolling: touch;
-          bottom: 0px;
-          left: 0px;
-          overflow-y: auto;
-          position: absolute;
-          right: 0px;
-          top: 0px;
-        }
-    data-is-scrollable={true}
-  />
-  <div
     aria-hidden="true"
     className=
 
@@ -40,6 +26,7 @@ exports[`ScrollablePane renders correctly 1`] = `
           pointer-events: auto;
           position: absolute;
           top: 0px;
+          z-index: 1;
         }
         @media screen and (-ms-high-contrast: active){& {
           border-bottom: 1px solid WindowText;
@@ -52,6 +39,20 @@ exports[`ScrollablePane renders correctly 1`] = `
         "top": "0",
       }
     }
+  />
+  <div
+    className=
+        ms-ScrollablePane--contentContainer
+        {
+          -webkit-overflow-scrolling: touch;
+          bottom: 0px;
+          left: 0px;
+          overflow-y: auto;
+          position: absolute;
+          right: 0px;
+          top: 0px;
+        }
+    data-is-scrollable={true}
   />
   <div
     aria-hidden="true"

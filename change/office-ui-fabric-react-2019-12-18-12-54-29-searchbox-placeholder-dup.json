@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "SearchBox: Don't duplicate placeholder text in aria-label",
-  "packageName": "office-ui-fabric-react",
-  "email": "mgodbolt@microsoft.com",
-  "commit": "fc04a332db8c85e7feacabdbbfb79f36e516381e",
-  "date": "2019-12-18T20:54:29.522Z"
-}

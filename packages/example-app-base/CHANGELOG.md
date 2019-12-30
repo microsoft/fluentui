@@ -1,7 +1,13 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Fri, 13 Dec 2019 12:30:51 GMT and should not be manually modified.
+This log was last generated on Mon, 23 Dec 2019 12:34:01 GMT and should not be manually modified.
 
+## 7.10.4
+Mon, 23 Dec 2019 12:34:01 GMT
+
+### Patches
+
+- Fix Link colors inside MessageBar (elcraig@microsoft.com)
 ## 7.10.3
 Fri, 13 Dec 2019 12:30:51 GMT
 

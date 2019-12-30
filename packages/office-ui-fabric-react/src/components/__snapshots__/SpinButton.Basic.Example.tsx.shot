@@ -302,6 +302,11 @@ exports[`Component Examples renders SpinButton.Basic.Example.tsx correctly 1`] =
                   }
               data-icon-name="ChevronUpSmall"
               role="presentation"
+              style={
+                Object {
+                  "fontFamily": "\\"FabricMDL2Icons-2\\"",
+                }
+              }
             >
               
             </i>
@@ -441,6 +446,11 @@ exports[`Component Examples renders SpinButton.Basic.Example.tsx correctly 1`] =
                   }
               data-icon-name="ChevronDownSmall"
               role="presentation"
+              style={
+                Object {
+                  "fontFamily": "\\"FabricMDL2Icons-3\\"",
+                }
+              }
             >
               
             </i>
@@ -721,6 +731,11 @@ exports[`Component Examples renders SpinButton.Basic.Example.tsx correctly 1`] =
                   }
               data-icon-name="ChevronUpSmall"
               role="presentation"
+              style={
+                Object {
+                  "fontFamily": "\\"FabricMDL2Icons-2\\"",
+                }
+              }
             >
               
             </i>
@@ -860,6 +875,11 @@ exports[`Component Examples renders SpinButton.Basic.Example.tsx correctly 1`] =
                   }
               data-icon-name="ChevronDownSmall"
               role="presentation"
+              style={
+                Object {
+                  "fontFamily": "\\"FabricMDL2Icons-3\\"",
+                }
+              }
             >
               
             </i>

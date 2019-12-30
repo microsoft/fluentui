@@ -289,6 +289,11 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                             }
                         data-icon-name="Add"
                         role="presentation"
+                        style={
+                          Object {
+                            "fontFamily": "\\"FabricMDL2Icons\\"",
+                          }
+                        }
                       >
                         
                       </i>
@@ -436,6 +441,11 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                             }
                         data-icon-name="ChevronDown"
                         role="presentation"
+                        style={
+                          Object {
+                            "fontFamily": "\\"FabricMDL2Icons\\"",
+                          }
+                        }
                       >
                         
                       </i>
@@ -671,6 +681,11 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                             }
                         data-icon-name="Upload"
                         role="presentation"
+                        style={
+                          Object {
+                            "fontFamily": "\\"FabricMDL2Icons\\"",
+                          }
+                        }
                       >
                         
                       </i>
@@ -833,6 +848,11 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                             }
                         data-icon-name="ChevronDown"
                         role="presentation"
+                        style={
+                          Object {
+                            "fontFamily": "\\"FabricMDL2Icons\\"",
+                          }
+                        }
                       >
                         
                       </i>
@@ -995,6 +1015,11 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                         }
                     data-icon-name="Share"
                     role="presentation"
+                    style={
+                      Object {
+                        "fontFamily": "\\"FabricMDL2Icons\\"",
+                      }
+                    }
                   >
                     
                   </i>
@@ -1178,6 +1203,11 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                           }
                       data-icon-name="Download"
                       role="presentation"
+                      style={
+                        Object {
+                          "fontFamily": "\\"FabricMDL2Icons\\"",
+                        }
+                      }
                     >
                       
                     </i>
