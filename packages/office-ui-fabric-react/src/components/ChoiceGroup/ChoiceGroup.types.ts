@@ -102,7 +102,7 @@ export interface IChoiceGroupOption extends React.InputHTMLAttributes<HTMLElemen
   /**
    * Optional override of label render
    */
-  onRenderLabel?: (option: IChoiceGroupOption) => JSX.Element;
+  onRenderLabel?: IRenderFunction<IChoiceGroupOption>;
 
   /**
    * The Icon component props for choice field
