@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Revert \"SwatchColorPicker: properly apply ID; naming and doc updates (#11526)\"",
+  "packageName": "office-ui-fabric-react",
+  "email": "joschect@microsoft.com",
+  "commit": "4b44315a37b094492ef7c0999adc24aed084d7db",
+  "date": "2019-12-30T22:15:26.571Z"
+}
