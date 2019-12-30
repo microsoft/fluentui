@@ -148,6 +148,7 @@ export function createTheme(theme: IPartialTheme, depComments: boolean = false):
     fonts: {
       ...defaultFontStyles
     },
+    rtl: theme.rtl,
     semanticColors: newSemanticColors,
     isInverted: !!theme.isInverted,
     disableGlobalClassNames: !!theme.disableGlobalClassNames,
