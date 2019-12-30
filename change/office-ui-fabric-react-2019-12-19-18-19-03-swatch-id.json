@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "SwatchColorPicker: properly apply ID; doc updates",
-  "packageName": "office-ui-fabric-react",
-  "email": "elcraig@microsoft.com",
-  "commit": "7be84c9391cdbc832cca9f4325b2814b2c92bcdf",
-  "date": "2019-12-20T02:19:03.368Z"
-}

@@ -1,17 +1,16 @@
-import * as React from 'react';
 import { IStyle, ITheme } from '../../Styling';
 import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 
 export interface IGrid {}
 
-export interface IGridProps extends React.TableHTMLAttributes<HTMLTableElement> {
+export interface IGridProps {
   /**
    * Gets the component ref.
    */
   componentRef?: IRefObject<IGrid>;
 
   /**
-   * Items to display in a grid with the specified number of columns
+   * The items to turn into a grid
    */
   items: any[];
 
@@ -26,46 +25,36 @@ export interface IGridProps extends React.TableHTMLAttributes<HTMLTableElement> 
   onRenderItem: (item: any, index: number) => JSX.Element;
 
   /**
-   * Whether focus should cycle back to the beginning once the user navigates past the end (and vice versa).
-   * Only relevant if `doNotContainWithinFocusZone` is not true.
+   * Boolean indicating if the focus should support circular navigation.
+   * This prop is only relevant if doNotcontainWithinFocusZone is not true
    */
   shouldFocusCircularNavigate?: boolean;
 
   /**
-   * If false (the default), the grid is contained inside a FocusZone.
-   * If true, a FocusZone is not used.
-   * @default false
+   * If true do not contain the grid inside of a FocusZone.
+   * If false contain the grid inside of a FocusZone.
    */
   doNotContainWithinFocusZone?: boolean;
 
   /**
-   * Class name for the FocusZone container for the grid.
-   * @deprecated Use `styles.focusedContainer` to define styling for the focus zone container
+   * Optional, class name for the FocusZone container for the grid
+   * @deprecated Use `styles` and `IGridStyles` to define a styling for the focus zone container with
+   * focusedContainer property.
    */
   containerClassName?: string;
 
   /**
-   * Handler for when focus leaves the grid.
+   * Optional, handler for when the grid should blur
    */
   onBlur?: () => void;
 
   /**
-   * Position this grid is in the parent set (index in a parent menu, for example)
-   */
-  ariaPosInSet?: number;
-
-  /**
-   * @deprecated Use `ariaPosInSet`
+   * The optional position this grid is in the parent set (index in a parent menu, for example)
    */
   positionInSet?: number;
 
   /**
-   * Size of the parent set (size of parent menu, for example)
-   */
-  ariaSetSize?: number;
-
-  /**
-   * @deprecated Use `ariaSetSize`
+   * The optional size of the parent set (size of parent menu, for example)
    */
   setSize?: number;
 
@@ -105,7 +94,7 @@ export interface IGridStyles {
   tableCell: IStyle;
 
   /**
-   * Style for the FocusZone container for the grid.
+   * Optional, style for the FocusZone container for the grid
    */
   focusedContainer?: IStyle;
 }

@@ -10,14 +10,15 @@ export class GridBase extends BaseComponent<IGridProps, {}> implements IGrid {
 
   constructor(props: IGridProps) {
     super(props);
-    this._id = props.id || getId();
+    this._id = getId();
   }
 
   public render(): JSX.Element {
-    const props = this.props;
-    const { items, columnCount, onRenderItem, ariaPosInSet = props.positionInSet, ariaSetSize = props.setSize, styles } = props;
+    const { items, columnCount, onRenderItem, positionInSet, setSize, styles } = this.props;
 
-    const htmlProps = getNativeProps<React.HTMLAttributes<HTMLTableElement>>(this.props, htmlElementProperties, ['onBlur']);
+    const htmlProps = getNativeProps<React.HTMLAttributes<HTMLTableElement>>(this.props, htmlElementProperties, [
+      'onBlur, aria-posinset, aria-setsize'
+    ]);
 
     const classNames = getClassNames(styles!, { theme: this.props.theme! });
 
@@ -25,7 +26,7 @@ export class GridBase extends BaseComponent<IGridProps, {}> implements IGrid {
     const rowsOfItems: any[][] = toMatrix(items, columnCount);
 
     const content = (
-      <table aria-posinset={ariaPosInSet} aria-setsize={ariaSetSize} id={this._id} role="grid" {...htmlProps} className={classNames.root}>
+      <table {...htmlProps} aria-posinset={positionInSet} aria-setsize={setSize} id={this._id} role={'grid'} className={classNames.root}>
         <tbody>
           {rowsOfItems.map((rows: any[], rowIndex: number) => {
             return (

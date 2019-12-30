@@ -51,8 +51,15 @@ describe('SwatchColorPicker', () => {
   });
 
   it('Can execute a cell in non-collapsable swatch color picker ', () => {
-    const onChange = jest.fn();
-    const wrapper = mount(<SwatchColorPicker colorCells={[DEFAULT_OPTIONS[0]]} onColorChanged={onChange} columnCount={4} />);
+    let eventFireCounter = 0;
+    const wrapper = mount(
+      <SwatchColorPicker
+        colorCells={[{ id: 'a', label: 'green', color: '#00ff00' }]}
+        // tslint:disable-next-line:jsx-no-lambda
+        onColorChanged={color => eventFireCounter++}
+        columnCount={4}
+      />
+    );
 
     expectNodes(wrapper, '.ms-swatchColorPickerBodyContainer', 1);
     expectNodes(wrapper, '.ms-swatchColorPickerBodyContainer [role="gridcell"]', 1);
@@ -61,28 +68,42 @@ describe('SwatchColorPicker', () => {
       .find('.ms-swatchColorPickerBodyContainer [role="gridcell"]')
       .at(1)
       .simulate('click');
-    expect(onChange).toHaveBeenCalledTimes(1);
+    expect(eventFireCounter).toEqual(1);
   });
 
   it('Can fire the hover event on a cell in non-collapsable swatch color picker ', () => {
-    const onHover = jest.fn();
-    const wrapper = mount(<SwatchColorPicker colorCells={[DEFAULT_OPTIONS[0]]} onCellHovered={onHover} columnCount={4} />);
+    let eventFireCounter = 0;
+    const wrapper = mount(
+      <SwatchColorPicker
+        colorCells={[{ id: 'a', label: 'green', color: '#00ff00' }]}
+        // tslint:disable-next-line:jsx-no-lambda
+        onCellHovered={color => eventFireCounter++}
+        columnCount={4}
+      />
+    );
 
     wrapper
       .find('.ms-swatchColorPickerBodyContainer [role="gridcell"]')
       .at(0)
       .simulate('mouseenter');
-    expect(onHover).toHaveBeenCalledTimes(1);
+    expect(eventFireCounter).toEqual(1);
   });
 
   it('Can fire the focus event on a cell in non-collapsable swatch color picker ', () => {
-    const onFocus = jest.fn();
-    const wrapper = mount(<SwatchColorPicker colorCells={[DEFAULT_OPTIONS[0]]} onCellFocused={onFocus} columnCount={4} />);
+    let eventFireCounter = 0;
+    const wrapper = mount(
+      <SwatchColorPicker
+        colorCells={[{ id: 'a', label: 'green', color: '#00ff00' }]}
+        // tslint:disable-next-line:jsx-no-lambda
+        onCellFocused={color => eventFireCounter++}
+        columnCount={4}
+      />
+    );
 
     wrapper
       .find('.ms-swatchColorPickerBodyContainer [role="gridcell"]')
       .at(0)
       .simulate('focus');
-    expect(onFocus).toHaveBeenCalledTimes(1);
+    expect(eventFireCounter).toEqual(1);
   });
 });

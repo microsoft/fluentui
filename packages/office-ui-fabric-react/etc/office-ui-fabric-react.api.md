@@ -612,7 +612,7 @@ export const ColorPickerGridCell: React.StatelessComponent<IColorPickerGridCellP
 // @public (undocumented)
 export class ColorPickerGridCellBase extends React.PureComponent<IColorPickerGridCellProps, {}> {
     // (undocumented)
-    static defaultProps: Partial<IColorPickerGridCellProps>;
+    static defaultProps: IColorPickerGridCellProps;
     // (undocumented)
     render(): JSX.Element;
 }
@@ -2486,24 +2486,17 @@ export interface IColorPickerGridCellProps {
     color?: string;
     disabled?: boolean;
     height?: number;
-    // @deprecated
-    id?: string;
-    idPrefix?: string;
+    id: string;
     index?: number;
     item: IColorCellProps;
     label?: string;
     onClick?: (item: IColorCellProps) => void;
-    // (undocumented)
     onFocus?: (item: IColorCellProps) => void;
-    // (undocumented)
     onHover?: (item?: IColorCellProps) => void;
-    // (undocumented)
     onKeyDown?: (ev: React.KeyboardEvent<HTMLButtonElement>) => void;
     onMouseEnter?: (ev: React.MouseEvent<HTMLButtonElement>) => boolean;
-    // (undocumented)
     onMouseLeave?: (ev: React.MouseEvent<HTMLButtonElement>) => void;
     onMouseMove?: (ev: React.MouseEvent<HTMLButtonElement>) => boolean;
-    // (undocumented)
     onWheel?: (ev: React.MouseEvent<HTMLButtonElement>) => void;
     selected: boolean;
     styles?: IStyleFunctionOrObject<IColorPickerGridCellStyleProps, IColorPickerGridCellStyles>;
@@ -2511,7 +2504,7 @@ export interface IColorPickerGridCellProps {
     width?: number;
 }
 
-// @public (undocumented)
+// @public
 export interface IColorPickerGridCellStyleProps {
     borderWidth?: number;
     circle?: boolean;
@@ -2523,7 +2516,7 @@ export interface IColorPickerGridCellStyleProps {
     width?: number;
 }
 
-// @public (undocumented)
+// @public
 export interface IColorPickerGridCellStyles {
     colorCell: IStyle;
     svg: IStyle;
@@ -4706,9 +4699,7 @@ export interface IGridCellProps<T> {
 }
 
 // @public (undocumented)
-export interface IGridProps extends React.TableHTMLAttributes<HTMLTableElement> {
-    ariaPosInSet?: number;
-    ariaSetSize?: number;
+export interface IGridProps {
     columnCount: number;
     componentRef?: IRefObject<IGrid>;
     // @deprecated
@@ -4717,9 +4708,7 @@ export interface IGridProps extends React.TableHTMLAttributes<HTMLTableElement> 
     items: any[];
     onBlur?: () => void;
     onRenderItem: (item: any, index: number) => JSX.Element;
-    // @deprecated (undocumented)
     positionInSet?: number;
-    // @deprecated (undocumented)
     setSize?: number;
     shouldFocusCircularNavigate?: boolean;
     styles?: IStyleFunctionOrObject<IGridStyleProps, IGridStyles>;
@@ -7397,8 +7386,6 @@ export function isValidShade(shade?: Shade): boolean;
 
 // @public (undocumented)
 export interface ISwatchColorPickerProps {
-    ariaPosInSet?: number;
-    ariaSetSize?: number;
     cellBorderWidth?: number;
     cellHeight?: number;
     cellMargin?: number;
@@ -7417,10 +7404,8 @@ export interface ISwatchColorPickerProps {
     onCellFocused?: (id?: string, color?: string) => void;
     onCellHovered?: (id?: string, color?: string) => void;
     onColorChanged?: (id?: string, color?: string) => void;
-    // @deprecated (undocumented)
     positionInSet?: number;
     selectedId?: string;
-    // @deprecated (undocumented)
     setSize?: number;
     shouldFocusCircularNavigate?: boolean;
     styles?: IStyleFunctionOrObject<ISwatchColorPickerStyleProps, ISwatchColorPickerStyles>;
