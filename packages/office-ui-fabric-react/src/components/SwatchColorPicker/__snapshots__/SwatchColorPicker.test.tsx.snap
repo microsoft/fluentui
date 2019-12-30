@@ -13,7 +13,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
         display: block;
         min-width: 180px;
       }
-  data-focuszone-id="FocusZone3"
+  data-focuszone-id="FocusZone2"
   onBlur={[Function]}
   onFocus={[Function]}
   onKeyDown={[Function]}
@@ -34,8 +34,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
           padding-right: 2px;
           padding-top: 2px;
         }
-    id="id__2"
-    onBlur={[Function]}
+    id="swatchColorPicker1"
     role="grid"
   >
     <tbody>
