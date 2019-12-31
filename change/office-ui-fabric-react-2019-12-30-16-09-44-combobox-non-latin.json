@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "ComboBox: Move autoComplete with no freeform key handling to onKeyUp to get access to key value vs key code to support non latin characters",
+  "packageName": "office-ui-fabric-react",
+  "email": "mgodbolt@microsoft.com",
+  "commit": "88e33cb68a8ae63e40b3cb05ca8233df4eb1a960",
+  "date": "2019-12-31T00:09:44.222Z"
+}
