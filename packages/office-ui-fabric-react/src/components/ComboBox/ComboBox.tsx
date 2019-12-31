@@ -1386,6 +1386,9 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       : this._getFirstSelectedIndex();
   }
 
+  /**
+   * Mouse clicks to headers, dividers and scrollbar should not make input lose focus
+   */
   private _onCalloutMouseDown: ICalloutProps['onMouseDown'] = ev => {
     ev.preventDefault();
   };
