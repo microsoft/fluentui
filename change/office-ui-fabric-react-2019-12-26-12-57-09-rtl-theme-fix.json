@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fabric control: listen for rtl in theme",
-  "packageName": "office-ui-fabric-react",
-  "email": "mgodbolt@microsoft.com",
-  "commit": "75306dc096b49d26b0e3f3310343fbe267b7f1f9",
-  "date": "2019-12-26T20:56:42.440Z"
-}

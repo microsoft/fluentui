@@ -2,6 +2,42 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Tue, 31 Dec 2019 12:31:45 GMT",
+      "tag": "office-ui-fabric-react_v7.77.0",
+      "version": "7.77.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "SwatchColorPicker: properly apply ID; doc updates",
+            "author": "elcraig@microsoft.com",
+            "commit": "7be84c9391cdbc832cca9f4325b2814b2c92bcdf"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Fabric control: listen for rtl in theme",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "75306dc096b49d26b0e3f3310343fbe267b7f1f9"
+          },
+          {
+            "comment": "DetailsList: Update examples to work in strictFunctionTypes",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "4b7738397411b203ef516b28f9c8f00c569dcc2e"
+          },
+          {
+            "comment": "Combobox: Focus returns to input after item click",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "c45255bca111b40e965ed67540aaf1461f4163d8"
+          },
+          {
+            "comment": "Layer: add touch events to filtering to stop those that are bubbling up",
+            "author": "aneeshak@microsoft.com",
+            "commit": "992537473a22e8d7f7ef217e17ab4da31ceef3db"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 30 Dec 2019 12:25:00 GMT",
       "tag": "office-ui-fabric-react_v7.76.3",
       "version": "7.76.3",

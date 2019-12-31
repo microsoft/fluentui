@@ -49,13 +49,13 @@
   "dependencies": {
     "@microsoft/load-themed-styles": "^1.7.13",
     "@uifabric/azure-themes": "^7.0.10",
-    "@uifabric/file-type-icons": "^7.2.1",
+    "@uifabric/file-type-icons": "^7.2.2",
     "@uifabric/foundation": "^7.5.0",
     "@uifabric/set-version": "^7.0.2",
-    "@uifabric/styling": "^7.8.0",
+    "@uifabric/styling": "^7.8.1",
     "@uifabric/theme-samples": "^7.0.5",
     "@uifabric/utilities": "^7.8.0",
-    "office-ui-fabric-react": "^7.76.3",
+    "office-ui-fabric-react": "^7.77.0",
     "tslib": "^1.7.1"
   },
   "peerDependencies": {

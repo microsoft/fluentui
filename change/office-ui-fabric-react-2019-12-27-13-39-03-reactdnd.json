@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Layer: add touch events to filtering to stop those that are bubbling up",
-  "packageName": "office-ui-fabric-react",
-  "email": "aneeshak@microsoft.com",
-  "commit": "992537473a22e8d7f7ef217e17ab4da31ceef3db",
-  "date": "2019-12-27T21:39:03.474Z"
-}

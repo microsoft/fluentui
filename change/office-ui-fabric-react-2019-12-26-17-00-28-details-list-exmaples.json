@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "DetailsList: Update examples to work in strictFunctionTypes",
-  "packageName": "office-ui-fabric-react",
-  "email": "mgodbolt@microsoft.com",
-  "commit": "4b7738397411b203ef516b28f9c8f00c569dcc2e",
-  "date": "2019-12-27T01:00:28.650Z"
-}

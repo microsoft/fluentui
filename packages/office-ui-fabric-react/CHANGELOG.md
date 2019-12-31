@@ -1,7 +1,19 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 30 Dec 2019 12:25:00 GMT and should not be manually modified.
+This log was last generated on Tue, 31 Dec 2019 12:31:45 GMT and should not be manually modified.
 
+## 7.77.0
+Tue, 31 Dec 2019 12:31:45 GMT
+
+### Minor changes
+
+- SwatchColorPicker: properly apply ID; doc updates (elcraig@microsoft.com)
+### Patches
+
+- Fabric control: listen for rtl in theme (mgodbolt@microsoft.com)
+- DetailsList: Update examples to work in strictFunctionTypes (mgodbolt@microsoft.com)
+- Combobox: Focus returns to input after item click (mgodbolt@microsoft.com)
+- Layer: add touch events to filtering to stop those that are bubbling up (aneeshak@microsoft.com)
 ## 7.76.3
 Mon, 30 Dec 2019 12:25:00 GMT
 
