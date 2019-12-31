@@ -27,7 +27,7 @@ import { KeytipData } from '../../KeytipData';
 import { Label } from '../../Label';
 import { SelectableOptionMenuItemType, getAllSelectedOptions } from '../../utilities/selectableOption/index';
 import { BaseButton, Button } from '../Button/index';
-import { ICalloutProps } from '../Callout';
+import { ICalloutProps } from '../../Callout';
 
 export interface IComboBoxState {
   /** The open state */
