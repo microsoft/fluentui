@@ -1693,7 +1693,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    * @param ev - The keyboard event that was fired
    */
   private _onInputKeyDown = (ev: React.KeyboardEvent<HTMLElement | Autofill>): void => {
-    const { disabled, allowFreeform } = this.props;
+    const { disabled, allowFreeform, autoComplete } = this.props;
     const { isOpen, currentOptions, currentPendingValueValidIndexOnHover } = this.state;
 
     // Take note if we are processing an alt (option) or meta (command) keydown.
@@ -1833,7 +1833,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
       case KeyCodes.space:
         // event handled in _onComboBoxKeyUp
-        if (!allowFreeform) {
+        if (!allowFreeform && autoComplete === 'off') {
           break;
         }
 
@@ -1847,6 +1847,14 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         // or meta key, let the event propagate
         if (ev.keyCode === KeyCodes.alt || ev.key === 'Meta' /* && isOpen */) {
           return;
+        }
+
+        // If we are not allowing freeform and
+        // allowing autoComplete, handle the input here
+        // since we have marked the input as readonly
+        if (!allowFreeform && autoComplete === 'on') {
+          this._onInputChange(ev.key);
+          break;
         }
 
         // allow the key to propagate by default
@@ -1885,15 +1893,6 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
     if (disabled) {
       this._handleInputWhenDisabled(ev);
-      return;
-    }
-
-    // If we are not allowing freeform and
-    // allowing autoComplete, handle the input here
-    // since we have marked the input as readonly
-
-    if (!allowFreeform && autoComplete === 'on') {
-      this._onInputChange(ev.key);
       return;
     }
 
