@@ -241,7 +241,7 @@ describe('ComboBox', () => {
   it('Can insert non latin text in uncontrolled case with autoComplete on and allowFreeform off', () => {
     wrapper = mount(<ComboBox defaultSelectedKey="0" options={RUSSIAN_OPTIONS} autoComplete="on" allowFreeform={false} />);
 
-    wrapper.find('input').simulate('keyup', { key: 'п' });
+    wrapper.find('input').simulate('input', { target: { value: 'п' } });
     wrapper.update();
     expect(wrapper.find('input').props().value).toEqual('папа');
   });
