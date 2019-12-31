@@ -1,4 +1,4 @@
-/* tslint:disable:no-unused-variable */
+/* tslint:disable:no-unused-variable jsx-no-lambda */
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 import * as renderer from 'react-test-renderer';
@@ -19,16 +19,24 @@ describe('ChoiceGroupOption', () => {
         <ChoiceGroupOption iconProps={{ iconName: 'CalendarWeek' }} key="G" text="Option G" focused />
         <ChoiceGroupOption iconProps={{ iconName: 'CalendarDay' }} key="H" text="Option H" checked />
         <ChoiceGroupOption iconProps={{ iconName: 'CalendarWeek' }} key="I" text="Option I" disabled />
+      </div>
+    );
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+  it('custom renders correctly', () => {
+    const component = renderer.create(
+      <div>
         <ChoiceGroupOption
-          key="J"
-          text="Option J"
+          key="A"
+          text="Option A"
           onRenderLabel={(option: IChoiceGroupOptionProps): JSX.Element => {
             return <span>{option.text}</span>;
           }}
         />
         <ChoiceGroupOption
-          key="K"
-          text="Option K"
+          key="B"
+          text="Option B"
           onRenderLabel={(
             option: IChoiceGroupOptionProps,
             defaultRender: (props?: IChoiceGroupOptionProps) => JSX.Element
@@ -37,8 +45,8 @@ describe('ChoiceGroupOption', () => {
           }}
         />
         <ChoiceGroupOption
-          key="L"
-          text="Option L"
+          key="C"
+          text="Option C"
           onRenderLabel={(
             option: IChoiceGroupOptionProps,
             defaultRender: (props?: IChoiceGroupOptionProps) => JSX.Element
