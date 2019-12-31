@@ -1833,7 +1833,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
       case KeyCodes.space:
         // event handled in _onComboBoxKeyUp
-        if (!allowFreeform && autoComplete === 'off') {
+        if (!allowFreeform) {
           break;
         }
 
