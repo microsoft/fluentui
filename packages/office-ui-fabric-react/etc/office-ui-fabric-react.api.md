@@ -2254,7 +2254,7 @@ export interface IChoiceGroupOption extends React.InputHTMLAttributes<HTMLElemen
     key: string;
     labelId?: string;
     onRenderField?: IRenderFunction<IChoiceGroupOption>;
-    onRenderLabel?: (option: IChoiceGroupOption) => JSX.Element;
+    onRenderLabel?: IRenderFunction<IChoiceGroupOption>;
     selectedImageSrc?: string;
     styles?: IStyleFunctionOrObject<IChoiceGroupOptionStyleProps, IChoiceGroupOptionStyles>;
     text: string;

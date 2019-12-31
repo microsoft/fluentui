@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Pass the original renderer to onRenderLabel in ChoiceGroupOption (#11575)",
+  "packageName": "office-ui-fabric-react",
+  "email": "dagoltz@microsoft.com",
+  "commit": "3841e791314110fdd74be38aa2500b10f251987c",
+  "date": "2019-12-30T22:15:36.669Z"
+}
