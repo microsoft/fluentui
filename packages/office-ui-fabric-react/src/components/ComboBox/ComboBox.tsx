@@ -1693,7 +1693,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    * @param ev - The keyboard event that was fired
    */
   private _onInputKeyDown = (ev: React.KeyboardEvent<HTMLElement | Autofill>): void => {
-    const { disabled, allowFreeform, autoComplete } = this.props;
+    const { disabled, allowFreeform } = this.props;
     const { isOpen, currentOptions, currentPendingValueValidIndexOnHover } = this.state;
 
     // Take note if we are processing an alt (option) or meta (command) keydown.
