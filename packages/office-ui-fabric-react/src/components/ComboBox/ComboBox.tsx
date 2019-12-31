@@ -1849,14 +1849,6 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
           return;
         }
 
-        // If we are not allowing freeform and
-        // allowing autoComplete, handle the input here
-        // since we have marked the input as readonly
-        if (!allowFreeform && autoComplete === 'on') {
-          this._onInputChange(String.fromCharCode(ev.which));
-          break;
-        }
-
         // allow the key to propagate by default
         return;
     }
@@ -1893,6 +1885,15 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
     if (disabled) {
       this._handleInputWhenDisabled(ev);
+      return;
+    }
+
+    // If we are not allowing freeform and
+    // allowing autoComplete, handle the input here
+    // since we have marked the input as readonly
+
+    if (!allowFreeform && autoComplete === 'on') {
+      this._onInputChange(ev.key);
       return;
     }
 
