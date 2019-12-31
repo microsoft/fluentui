@@ -2,6 +2,20 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "5.135.4",
+      "tag": "office-ui-fabric-react_v5.135.4",
+      "date": "Tue, 31 Dec 2019 11:15:26 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "LeopoldLerch <leopold.lerch@gmail.com>",
+            "commit": "3c84175318afcf63a4e506115b47818dedb09405",
+            "comment": "Removed the circular import in positioning.types.ts"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.135.3",
       "tag": "office-ui-fabric-react_v5.135.3",
       "date": "Tue, 30 Jul 2019 11:14:55 GMT",

@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 30 Jul 2019 11:14:55 GMT and should not be manually modified.
+This log was last generated on Tue, 31 Dec 2019 11:15:26 GMT and should not be manually modified.
+
+## 5.135.4
+Tue, 31 Dec 2019 11:15:26 GMT
+
+### Patches
+
+- Removed the circular import in positioning.types.ts
 
 ## 5.135.3
 Tue, 30 Jul 2019 11:14:55 GMT
