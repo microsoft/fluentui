@@ -1,7 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 31 Dec 2019 12:31:45 GMT and should not be manually modified.
+This log was last generated on Wed, 01 Jan 2020 12:30:43 GMT and should not be manually modified.
 
+## 7.78.0
+Wed, 01 Jan 2020 12:30:43 GMT
+
+### Minor changes
+
+- Pass the original renderer to onRenderLabel in ChoiceGroupOption (#11575) (dagoltz@microsoft.com)
 ## 7.77.0
 Tue, 31 Dec 2019 12:31:45 GMT
 

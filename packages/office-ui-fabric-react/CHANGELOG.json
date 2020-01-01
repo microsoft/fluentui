@@ -2,6 +2,20 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Wed, 01 Jan 2020 12:30:43 GMT",
+      "tag": "office-ui-fabric-react_v7.78.0",
+      "version": "7.78.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Pass the original renderer to onRenderLabel in ChoiceGroupOption (#11575)",
+            "author": "dagoltz@microsoft.com",
+            "commit": "3841e791314110fdd74be38aa2500b10f251987c"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 31 Dec 2019 12:31:45 GMT",
       "tag": "office-ui-fabric-react_v7.77.0",
       "version": "7.77.0",
