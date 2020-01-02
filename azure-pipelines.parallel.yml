@@ -25,11 +25,11 @@ jobs:
       displayName: yarn
 
     - script: |
-        npm run checkchange
+        yarn checkchange
       displayName: check change
 
     - script: |
-        npm run build
+        yarn build
       displayName: build
 
     - task: ArchiveFiles@2
@@ -53,14 +53,12 @@ jobs:
 
     - template: azure-pipelines.artifacts.yml
 
-    - template: azure-pipelines.tools.yml
-
     - script: |
-        npm run test
+        yarn test
       displayName: test
 
     - script: |
-        npm run lint
+        yarn lint
       displayName: lint
 
   - job: Deploy
@@ -71,8 +69,10 @@ jobs:
 
     - template: azure-pipelines.artifacts.yml
 
+    - template: azure-pipelines.tools.yml
+
     - script: |
-        npm run bundle
+        yarn bundle
       displayName: bundle
 
     - task: AzureUpload@1
@@ -97,7 +97,7 @@ jobs:
       displayName: yarn
 
     - script: |
-        npm run just run-perf-test
+        yarn just run-perf-test
       workingDirectory: apps/perf-test
       displayName: Perf Test
 
@@ -139,13 +139,13 @@ jobs:
     - script: |
         git config --global user.email "fabrictactical@microsoft.com"
         git config --global user.name "Fabric Tactical"
-        npm run vrtest -- --debug
+        yarn vrtest -- --debug
       displayName: run VR Test
       env:
         SCREENER_API_KEY: $(screener.key)
 
     - script: |
-        npm run check-for-changed-files
+        yarn check-for-changed-files
       displayName: check for change file
 
     # a11y-tests disabled until occasional local and CI timeout issue can be resolved.
