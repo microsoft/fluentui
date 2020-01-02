@@ -6,6 +6,7 @@ import { EventGroup } from '../EventGroup';
  */
 export interface ISelectionOptions<TItem = IObjectWithKey> {
   onSelectionChanged?: () => void;
+  /** Custom logic to generate item keys. Required if `TItem` does not have a `key` property. */
   getKey?: (item: TItem, index?: number) => string | number;
   canSelectItem?: (item: TItem, index?: number) => boolean;
   selectionMode?: SelectionMode;
@@ -15,6 +16,7 @@ export interface ISelectionOptions<TItem = IObjectWithKey> {
  * {@docCategory Selection}
  */
 export class Selection<TItem = IObjectWithKey> implements ISelection<TItem> {
+  /** Number of items selected. Do not modify. */
   public count: number;
   public readonly mode: SelectionMode;
 
