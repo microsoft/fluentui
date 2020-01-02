@@ -316,6 +316,14 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
   }
 
   public componentWillUnmount(): void {
+    this._events.off(window, 'resize', this._onAsyncResize);
+    this._events.off(this._scrollElement, 'scroll', this._onScroll);
+    this._events.off(this._scrollElement, 'scroll', this._onAsyncScroll);
+
+    this._onAsyncIdle();
+    this._onAsyncResize();
+    this._onAsyncScroll();
+
     this._async.dispose();
     this._events.dispose();
   }
