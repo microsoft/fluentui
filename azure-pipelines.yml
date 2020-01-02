@@ -60,6 +60,10 @@ jobs:
         yarn lint
       displayName: lint
 
+    - script: |
+        yarn check-for-changed-files
+      displayName: check for changed files
+
   - job: Deploy
     dependsOn: Build
     steps:
@@ -141,10 +145,6 @@ jobs:
       displayName: run VR Test
       env:
         SCREENER_API_KEY: $(screener.key)
-
-    - script: |
-        yarn check-for-changed-files
-      displayName: check for change file
 
     # a11y-tests disabled until occasional local and CI timeout issue can be resolved.
     # If/when re-enabled, analyze job strategy to optimize build time. Make standalone job or append to another test job?
