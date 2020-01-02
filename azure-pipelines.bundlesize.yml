@@ -12,11 +12,11 @@ jobs:
       - script: yarn
         displayName: yarn
 
-      - script: yarn buildto test-bundles -- --min
-        displayName: yarn build to test-bundles, with no tests or webpack
+      - script: yarn buildto test-bundles
+        displayName: yarn build to test-bundles
 
-      - script: yarn workspace test-bundles build
-        displayName: yarn build test-bundles
+      - script: yarn workspace test-bundles bundle
+        displayName: yarn bundle test-bundles
 
       - script: yarn workspace office-ui-fabric-react just webpack
         displayName: yarn bundle OUFR
