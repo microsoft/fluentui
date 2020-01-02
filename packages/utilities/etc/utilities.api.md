@@ -715,13 +715,15 @@ export interface ISelection<TItem = IObjectWithKey> {
 export interface ISelectionOptions<TItem = IObjectWithKey> {
     // (undocumented)
     canSelectItem?: (item: TItem, index?: number) => boolean;
-    // (undocumented)
     getKey?: (item: TItem, index?: number) => string | number;
     // (undocumented)
     onSelectionChanged?: () => void;
     // (undocumented)
     selectionMode?: SelectionMode;
 }
+
+// @public
+export type ISelectionOptionsWithRequiredGetKey<TItem> = ISelectionOptions<TItem> & Required<Pick<ISelectionOptions<TItem>, 'getKey'>>;
 
 // @public
 export function isElementFocusSubZone(element?: HTMLElement): boolean;
@@ -1011,10 +1013,9 @@ export const safeSetTimeout: (component: React.Component<{}, {}, any>) => (cb: F
 
 // @public (undocumented)
 export class Selection<TItem = IObjectWithKey> implements ISelection<TItem> {
-    constructor(options?: ISelectionOptions<TItem>);
+    constructor(...options: TItem extends IObjectWithKey ? [ISelectionOptions<TItem>] | [] : [ISelectionOptionsWithRequiredGetKey<TItem>]);
     // (undocumented)
     canSelectItem(item: TItem, index?: number): boolean;
-    // (undocumented)
     count: number;
     // (undocumented)
     getItems(): TItem[];

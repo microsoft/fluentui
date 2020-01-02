@@ -13,6 +13,12 @@ export interface ISelectionOptions<TItem = IObjectWithKey> {
 }
 
 /**
+ * Selection options with required `getKey` property.
+ * {@docCategory Selection}
+ */
+export type ISelectionOptionsWithRequiredGetKey<TItem> = ISelectionOptions<TItem> & Required<Pick<ISelectionOptions<TItem>, 'getKey'>>;
+
+/**
  * {@docCategory Selection}
  */
 export class Selection<TItem = IObjectWithKey> implements ISelection<TItem> {
@@ -38,8 +44,14 @@ export class Selection<TItem = IObjectWithKey> implements ISelection<TItem> {
   private _unselectableCount: number;
   private _isModal: boolean;
 
-  constructor(options: ISelectionOptions<TItem> = {}) {
-    const { onSelectionChanged, getKey, canSelectItem = () => true, selectionMode = SelectionMode.multiple } = options;
+  /**
+   * Create a new Selection. If `TItem` has a `key` property, the `options` parameter is optional.
+   * Otherwise, you must provide `options` with a `getKey` implementation. (At most one `options`
+   * object is accepted.)
+   */
+  constructor(...options: TItem extends IObjectWithKey ? [ISelectionOptions<TItem>] | [] : [ISelectionOptionsWithRequiredGetKey<TItem>]) {
+    const { onSelectionChanged, getKey, canSelectItem = () => true, selectionMode = SelectionMode.multiple } =
+      options[0] || ({} as ISelectionOptions<TItem>);
 
     this.mode = selectionMode;
 
