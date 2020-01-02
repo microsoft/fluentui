@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "fix color of text over image in dark mode",
+  "comment": "Tile: fix color of text over image in dark mode",
   "packageName": "@uifabric/experiments",
   "email": "prchhaje@microsoft.com",
   "commit": "964a018662ecadc2db4f6ee9cb049bc9543b1ec3",
