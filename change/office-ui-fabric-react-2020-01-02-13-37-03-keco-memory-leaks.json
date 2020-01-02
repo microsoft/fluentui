@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Terminate List event listeners on unmount to fix memory leaks",
+  "packageName": "office-ui-fabric-react",
+  "email": "KevinTCoughlin@users.noreply.github.com",
+  "commit": "34344ceaaec0e21eb4b3cf394a7169a86e4e9f29",
+  "date": "2020-01-02T21:37:03.449Z"
+}
