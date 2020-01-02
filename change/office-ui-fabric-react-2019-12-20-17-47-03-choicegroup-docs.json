@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "ChoiceGroup: update docs and examples",
+  "packageName": "office-ui-fabric-react",
+  "email": "elcraig@microsoft.com",
+  "commit": "df9d42f327766a33456b5599eccc4df977a8c06e",
+  "date": "2019-12-21T01:47:03.404Z"
+}
