@@ -8,7 +8,7 @@ import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { classNamesFunction } from '../../Utilities';
 import { CommandBarButton, IButtonProps } from '../../Button';
 import { TooltipHost } from '../../Tooltip';
-import { IComponentAs, getNativeProps, divProperties } from '@uifabric/utilities';
+import { IComponentAs, getNativeProps, divProperties, composeComponentAs } from '@uifabric/utilities';
 import { mergeStyles, IStyle } from '@uifabric/styling';
 
 const getClassNames = classNamesFunction<ICommandBarStyleProps, ICommandBarStyles>();
@@ -174,10 +174,18 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
     const DefaultButtonAs = (CommandBarButton as {}) as IComponentAs<ICommandBarItemProps>;
 
     // The prop types between these three possible implementations overlap enough that a force-cast is safe.
-    const Type = ButtonAs || CommandBarButtonAs || DefaultButtonAs;
+    let Type = DefaultButtonAs;
+
+    if (CommandBarButtonAs) {
+      Type = composeComponentAs(CommandBarButtonAs, Type);
+    }
+
+    if (ButtonAs) {
+      Type = composeComponentAs(ButtonAs, Type);
+    }
 
     // Always pass the default implementation to the override so it may be composed.
-    return <Type {...props as ICommandBarItemProps} defaultRender={DefaultButtonAs} />;
+    return <Type {...props as ICommandBarItemProps} />;
   };
 
   private _onButtonClick(item: ICommandBarItemProps): (ev: React.MouseEvent<HTMLButtonElement>) => void {
@@ -194,7 +202,6 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
 
   private _onRenderOverflowButton = (overflowItems: ICommandBarItemProps[]): JSX.Element => {
     const {
-      overflowButtonAs: OverflowButtonType = CommandBarButton,
       overflowButtonProps = {} // assure that props is not empty
     } = this.props;
 
@@ -210,6 +217,10 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
       menuProps: { ...overflowButtonProps.menuProps, items: combinedOverflowItems },
       menuIconProps: { iconName: 'More', ...overflowButtonProps.menuIconProps }
     };
+
+    const OverflowButtonType = this.props.overflowButtonAs
+      ? composeComponentAs(this.props.overflowButtonAs, CommandBarButton)
+      : CommandBarButton;
 
     return <OverflowButtonType {...overflowProps as IButtonProps} />;
   };
