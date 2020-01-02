@@ -50,7 +50,6 @@ jobs:
     steps:
     # No need for checkout since we're using build artifacts.
     - checkout: none
-
     - template: azure-pipelines.artifacts.yml
 
     - script: |
@@ -66,7 +65,6 @@ jobs:
     steps:
     # No need for checkout since we're using build artifacts.
     - checkout: none
-
     - template: azure-pipelines.artifacts.yml
 
     - template: azure-pipelines.tools.yml
@@ -87,9 +85,10 @@ jobs:
   - job: PerfTest
     dependsOn: Build
     steps:
+    # No need for checkout since we're using build artifacts.
+    - checkout: none
+    - template: azure-pipelines.artifacts.yml
 
-    # Perf test uses PR bundle deployed to PR deploy site and therefore does not need previously built artifacts.
-    # We just need to do a tools install.
     - template: azure-pipelines.tools.yml
 
     - script: |
@@ -97,7 +96,7 @@ jobs:
       displayName: yarn
 
     - script: |
-        yarn just run-perf-test
+        yarn just perf-test
       workingDirectory: apps/perf-test
       displayName: Perf Test
 
@@ -133,7 +132,6 @@ jobs:
     steps:
     # No need for checkout since we're using build artifacts.
     - checkout: none
-
     - template: azure-pipelines.artifacts.yml
 
     - script: |

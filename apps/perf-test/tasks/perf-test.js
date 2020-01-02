@@ -184,9 +184,13 @@ const iterationsDefault = 5000;
 //        await page.goto(testUrl);
 //        await page.tracing.stop();
 
-const urlForDeployPath = process.env.BUILD_SOURCEBRANCH
-  ? `http://fabricweb.z5.web.core.windows.net/pr-deploy-site/${process.env.BUILD_SOURCEBRANCH}/perf-test`
-  : 'file://' + path.resolve(__dirname, '../dist/');
+// Temporarily comment out deploy site usage to speed up CI build time and support parallelization.
+// At some point perf test should be broken out from CI default pipeline entirely and then can go back to using deploy site.
+// For now, use local files so that perf-test job can run ASAP (before files are bundled and deployed.)
+// const urlForDeployPath = process.env.BUILD_SOURCEBRANCH
+//   ? `http://fabricweb.z5.web.core.windows.net/pr-deploy-site/${process.env.BUILD_SOURCEBRANCH}/perf-test`
+//   : 'file://' + path.resolve(__dirname, '../dist/');
+const urlForDeployPath = 'file://' + path.resolve(__dirname, '../dist/');
 
 const urlForDeploy = urlForDeployPath + '/index.html';
 
