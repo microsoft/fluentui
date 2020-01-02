@@ -53,6 +53,8 @@ jobs:
 
     - template: azure-pipelines.artifacts.yml
 
+    - template: azure-pipelines.tools.yml
+
     - script: |
         npm run test
       displayName: test
