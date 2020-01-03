@@ -115,6 +115,7 @@ export class SearchBoxBase extends React.Component<ISearchBoxProps, ISearchBoxSt
         <input
           {...nativeProps}
           id={id}
+          onFocusCapture={() => console.log('focus capture')}
           className={classNames.field}
           placeholder={placeholderValue}
           onChange={this._onInputChange}
@@ -237,6 +238,7 @@ export class SearchBoxBase extends React.Component<ISearchBoxProps, ISearchBoxSt
   };
 
   private _onBlur = (ev: React.FocusEvent<HTMLInputElement>): void => {
+    console.log(ev);
     if (this._events) {
       this._events.off();
     }
