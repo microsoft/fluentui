@@ -2,6 +2,35 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Fri, 03 Jan 2020 12:27:16 GMT",
+      "tag": "office-ui-fabric-react_v7.78.1",
+      "version": "7.78.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "ChoiceGroup: update docs and examples",
+            "author": "elcraig@microsoft.com",
+            "commit": "df9d42f327766a33456b5599eccc4df977a8c06e"
+          },
+          {
+            "comment": "Remove duplicate ChoiceGroupOption export",
+            "author": "elcraig@microsoft.com",
+            "commit": "871ba269748259eed69b43106d8b1a1f5e320408"
+          },
+          {
+            "comment": "TagPicker: Define `title` for TagItem in case text overflows.",
+            "author": "jdh@microsoft.com",
+            "commit": "1305118f16f025f9517b4a25ad0fc3df16b7f882"
+          },
+          {
+            "comment": "update callout docs comment",
+            "author": "joschect@microsoft.com",
+            "commit": "37acc2d517d3a5d2d7feceff4ca26975df927c3a"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 01 Jan 2020 12:30:43 GMT",
       "tag": "office-ui-fabric-react_v7.78.0",
       "version": "7.78.0",
