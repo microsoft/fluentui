@@ -12,7 +12,7 @@
     "postinstall": "node ./scripts/postinstall.js",
     "buildto": "node ./scripts/monorepo/buildTo.js",
     "builddemo": "node ./scripts/monorepo/buildTo.js fabric-website-resources --min",
-    "bundle": "lerna run bundle --stream --",
+    "bundle": "lerna run bundle --parallel --",
     "scrub": "node ./scripts/scrub.js",
     "vrtest": "cd apps && cd vr-tests && npm run screener",
     "a11ytest": "cd apps && cd a11y-tests && npm run test",
@@ -20,7 +20,7 @@
     "start-exp": "yarn workspace @uifabric/experiments start",
     "build": "lerna run build --stream --",
     "buildci": "lerna run build --stream",
-    "clean": "lerna run clean --stream",
+    "clean": "lerna run clean --parallel",
     "rebuild": "node ./scripts/invalidate-just-cache.js && npx lerna build --stream",
     "code-style": "lerna run code-style --stream",
     "change": "beachball change",
@@ -39,8 +39,8 @@
     "generate-version-files": "yarn workspace @uifabric/build just generate-version-files",
     "codepen": "cd packages/office-ui-fabric-react && node ../../scripts/local-codepen.js",
     "dom-test": "cd apps/dom-tests && just-scripts jest-dom-with-webpack",
-    "lint": "lerna run lint --stream",
-    "test": "lerna run test --stream"
+    "lint": "lerna run lint --parallel",
+    "test": "lerna run test --parallel"
   },
   "devDependencies": {
     "beachball": "^1.14.2",
