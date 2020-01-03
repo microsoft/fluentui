@@ -22,7 +22,7 @@ To run the local demo app for this project, first follow the [setup instructions
 
 ```
 yarn
-yarn buildto experiments --min
+yarn buildto experiments
 cd packages
 cd experiments
 yarn start

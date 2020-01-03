@@ -29,9 +29,6 @@ function basicPreset() {
 
   option('production');
 
-  // Adds an alias for 'npm-install-mode' for backwards compatibility
-  option('min', { alias: 'npm-install-mode' });
-
   option('webpackConfig', { alias: 'w' });
 
   // Build only commonjs (not other TS variants) but still run other tasks
@@ -65,25 +62,28 @@ module.exports = function preset() {
   task('check-for-modified-files', checkForModifiedFiles);
   task('generate-version-files', generateVersionFiles);
   task('generate-package-manifest', generatePackageManifestTask);
+  // TODO: how will this work with production? make sure this works (that amd is generated)
+  // TODO: is there a reason not just to generate ts:amd all the time? (it was by default previously anyways)
+  // TODO: make sure this works with build:prod
   task('ts', () => {
     return argv().commonjs
       ? 'ts:commonjs-only'
       : parallel('ts:commonjs', 'ts:esm', condition('ts:amd', () => argv().production && !argv().min));
   });
 
-  task('test', condition('jest', () => fs.existsSync(path.join(process.cwd(), 'jest.config.js')))).cached();
+  task('test', condition('jest', () => fs.existsSync(path.join(process.cwd(), 'jest.config.js'))));
 
-  task('lint', parallel('lint-imports', 'tslint')).cached();
+  task('lint', parallel('lint-imports', 'tslint'));
 
   task('code-style', series('prettier', 'tslint'));
   task('update-api', series('clean', 'copy', 'sass', 'ts', 'update-api-extractor'));
   task('dev', series('clean', 'copy', 'sass', 'webpack-dev-server'));
 
-  task('build:node-lib', series('clean', 'copy', series(condition('test', () => !argv().min), 'ts:commonjs-only'))).cached();
+  task('build:node-lib', series('clean', 'copy', 'ts:commonjs-only')).cached();
 
   task('build', series('clean', 'copy', 'sass', 'ts')).cached();
 
-  task('bundle', condition('webpack', () => !!resolveCwd('webpack.config.js'))).cached();
+  task('bundle', condition('webpack', () => !!resolveCwd('webpack.config.js')));
 
   task('no-op', () => {}).cached();
 };

@@ -10,7 +10,6 @@ task('mocha', () => {
   return spawn(process.execPath, [mochaCmd, 'dist/ssr-tests.js'], { stdio: 'inherit' });
 });
 
-// TODO: add typescript task? shouldn't have to bundle for typechecking
-task('build', 'webpack').cached();
+task('build', 'webpack');
 
-task('test', 'mocha').cached();
+task('test', 'mocha');

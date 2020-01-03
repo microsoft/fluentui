@@ -4,4 +4,4 @@
 
 // preset();
 
-// task('build', series('clean', 'ts:commonjs-only', condition('jest', () => !argv().min))).cached();
+// task('build', series('clean', 'ts:commonjs-only')).cached();
