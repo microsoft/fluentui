@@ -63,6 +63,10 @@ exports[`Component Examples renders ContextualMenu.Basic.Example.tsx correctly 1
       onMouseOver={[Function]}
       onMouseUp={[Function]}
       onSubmit={[Function]}
+      onTouchCancel={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
     >
       <div
         className=
