@@ -27,6 +27,7 @@ import { KeytipData } from '../../KeytipData';
 import { Label } from '../../Label';
 import { SelectableOptionMenuItemType, getAllSelectedOptions } from '../../utilities/selectableOption/index';
 import { BaseButton, Button } from '../Button/index';
+import { ICalloutProps } from '../../Callout';
 
 export interface IComboBoxState {
   /** The open state */
@@ -1173,6 +1174,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         className={css(this._classNames.callout, calloutProps ? calloutProps.className : undefined)}
         target={this._comboBoxWrapper.current}
         onDismiss={this._onDismiss}
+        onMouseDown={this._onCalloutMouseDown}
         onScroll={this._onScroll}
         setInitialFocus={false}
         calloutWidth={useComboBoxAsMenuWidth && this._comboBoxWrapper.current ? comboBoxMenuWidth && comboBoxMenuWidth : dropdownWidth}
@@ -1383,6 +1385,13 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       ? 0
       : this._getFirstSelectedIndex();
   }
+
+  /**
+   * Mouse clicks to headers, dividers and scrollbar should not make input lose focus
+   */
+  private _onCalloutMouseDown: ICalloutProps['onMouseDown'] = ev => {
+    ev.preventDefault();
+  };
 
   /**
    * Scroll handler for the callout to make sure the mouse events
