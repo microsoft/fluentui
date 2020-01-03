@@ -1,7 +1,13 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Fri, 08 Nov 2019 12:22:05 GMT and should not be manually modified.
+This log was last generated on Thu, 12 Dec 2019 12:21:54 GMT and should not be manually modified.
 
+## 6.83.3
+Thu, 12 Dec 2019 12:21:54 GMT
+
+### Patches
+
+- cleaning up the signal color CSS (caperez@microsoft.com)
 ## 6.83.2
 Fri, 08 Nov 2019 12:22:05 GMT
 

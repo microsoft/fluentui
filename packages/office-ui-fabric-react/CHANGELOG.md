@@ -1,7 +1,22 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 21 Nov 2019 12:23:13 GMT and should not be manually modified.
+This log was last generated on Fri, 13 Dec 2019 12:22:42 GMT and should not be manually modified.
 
+## 6.211.0
+Fri, 13 Dec 2019 12:22:42 GMT
+
+### Minor changes
+
+- Pickers: Allow force resolve when no match found (joschect@microsoft.com)
+### Patches
+
+- Autocomplete: Allow value to be overriden (mgodbolt@microsoft.com)
+## 6.210.6
+Wed, 11 Dec 2019 12:21:08 GMT
+
+### Patches
+
+-  Added role to the selection list for BasePickerListBelow control so screen readers will read off "n" of "m" when arrowing through the list. (malind@microsoft.com)
 ## 6.210.5
 Thu, 21 Nov 2019 12:23:13 GMT
 
