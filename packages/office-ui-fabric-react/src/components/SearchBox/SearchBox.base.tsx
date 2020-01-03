@@ -3,7 +3,6 @@ import { ISearchBoxProps, ISearchBoxStyleProps, ISearchBoxStyles } from './Searc
 import {
   initializeComponentRef,
   warnDeprecations,
-  EventGroup,
   getId,
   KeyCodes,
   classNamesFunction,
@@ -32,7 +31,6 @@ export class SearchBoxBase extends React.Component<ISearchBoxProps, ISearchBoxSt
   private _inputElement = React.createRef<HTMLInputElement>();
   private _latestValue: string;
   private _fallbackId: string;
-  private _events: EventGroup | undefined;
 
   public constructor(props: ISearchBoxProps) {
     super(props);
@@ -62,12 +60,6 @@ export class SearchBoxBase extends React.Component<ISearchBoxProps, ISearchBoxSt
       this.setState({
         value: newProps.value || ''
       });
-    }
-  }
-
-  public componentWillUnmount() {
-    if (this._events) {
-      this._events.dispose();
     }
   }
 
@@ -115,7 +107,6 @@ export class SearchBoxBase extends React.Component<ISearchBoxProps, ISearchBoxSt
         <input
           {...nativeProps}
           id={id}
-          onFocusCapture={() => console.log('focus capture')}
           className={classNames.field}
           placeholder={placeholderValue}
           onChange={this._onInputChange}
@@ -126,6 +117,7 @@ export class SearchBoxBase extends React.Component<ISearchBoxProps, ISearchBoxSt
           role="searchbox"
           aria-label={ariaLabel}
           ref={this._inputElement}
+          onBlur={this._onBlur}
         />
         {value!.length > 0 && (
           <div className={classNames.clearButton}>
@@ -185,11 +177,6 @@ export class SearchBoxBase extends React.Component<ISearchBoxProps, ISearchBoxSt
       hasFocus: true
     });
 
-    if (!this._events) {
-      this._events = new EventGroup(this);
-    }
-    this._events.on(ev.currentTarget, 'blur', this._onBlur, true);
-
     if (this.props.onFocus) {
       this.props.onFocus(ev as React.FocusEvent<HTMLInputElement>);
     }
@@ -238,10 +225,6 @@ export class SearchBoxBase extends React.Component<ISearchBoxProps, ISearchBoxSt
   };
 
   private _onBlur = (ev: React.FocusEvent<HTMLInputElement>): void => {
-    console.log(ev);
-    if (this._events) {
-      this._events.off();
-    }
     this.setState({
       hasFocus: false
     });
