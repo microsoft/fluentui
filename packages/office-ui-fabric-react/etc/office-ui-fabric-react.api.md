@@ -276,6 +276,8 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     // (undocumented)
     protected canAddItems(): boolean;
     // (undocumented)
+    protected completeSelection: (item: T) => void;
+    // (undocumented)
     completeSuggestion(forceComplete?: boolean): void;
     // (undocumented)
     componentDidMount(): void;
