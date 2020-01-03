@@ -238,8 +238,8 @@ export class GroupedListSection extends React.Component<IGroupedListSectionProps
             id={this._id}
           />
         ) : (
-          this._onRenderGroup(renderCount)
-        )}
+            this._onRenderGroup(renderCount)
+          )}
         {group && group.isCollapsed ? null : isShowAllVisible && onRenderGroupShowAll(groupShowAllProps, this._onRenderGroupShowAll)}
         {onRenderGroupFooter(groupFooterProps, this._onRenderGroupFooter)}
       </div>
@@ -402,9 +402,14 @@ export class GroupedListSection extends React.Component<IGroupedListSectionProps
       eventMap: eventsToRegister,
       selectionIndex: -1,
       context: { data: group, index: groupIndex, isGroup: true },
-      canDrag: () => false, // cannot drag groups
+      canDrag: dragDropEvents!.canDrag,
       canDrop: dragDropEvents!.canDrop,
-      updateDropState: this._updateDroppingState
+      updateDropState: this._updateDroppingState,
+      onDrop: dragDropEvents!.onDrop,
+      onDragStart: dragDropEvents!.onDragStart,
+      onDragEnter: dragDropEvents!.onDragEnter,
+      onDragLeave: dragDropEvents!.onDragLeave,
+      onDragEnd: dragDropEvents!.onDragEnd
     };
     return options as IDragDropOptions;
   };
