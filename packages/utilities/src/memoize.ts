@@ -1,5 +1,4 @@
 import { Stylesheet } from '@uifabric/merge-styles';
-import { values } from './object';
 
 const stylesheet = Stylesheet.getInstance();
 

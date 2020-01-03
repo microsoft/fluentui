@@ -41,9 +41,9 @@ export const FontIcon: React.FunctionComponent<IFontIconProps> = props => {
   const containerProps = props['aria-label']
     ? {}
     : {
-      role: 'presentation',
-      'aria-hidden': true
-    };
+        role: 'presentation',
+        'aria-hidden': true
+      };
 
   return (
     <i
