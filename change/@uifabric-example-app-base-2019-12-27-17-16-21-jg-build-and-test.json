@@ -1,5 +1,5 @@
 {
-  "type": "patch",
+  "type": "none",
   "comment": "Break up build task into build, bundle, test and lint tasks. Add parallilization pipeline using new tasks.",
   "packageName": "@uifabric/example-app-base",
   "email": "jagore@microsoft.com",
