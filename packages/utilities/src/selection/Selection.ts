@@ -45,11 +45,15 @@ export class Selection<TItem = IObjectWithKey> implements ISelection<TItem> {
   private _isModal: boolean;
 
   /**
-   * Create a new Selection. If `TItem` has a `key` property, the `options` parameter is optional.
-   * Otherwise, you must provide `options` with a `getKey` implementation. (At most one `options`
-   * object is accepted.)
+   * Create a new Selection. If `TItem` does not have a `key` property, you must provide an options
+   * object with a `getKey` implementation. Providing options is optional otherwise.
+   * (At most one `options` object is accepted.)
    */
-  constructor(...options: TItem extends IObjectWithKey ? [ISelectionOptions<TItem>] | [] : [ISelectionOptionsWithRequiredGetKey<TItem>]) {
+  constructor(
+    ...options: TItem extends IObjectWithKey // If the item type has a built-in key...
+      ? [] | [ISelectionOptions<TItem>] // Then the arguments can be empty or have the options without `getKey`
+      : [ISelectionOptionsWithRequiredGetKey<TItem>] // Otherwise, arguments require options with `getKey`.
+  ) {
     const { onSelectionChanged, getKey, canSelectItem = () => true, selectionMode = SelectionMode.multiple } =
       options[0] || ({} as ISelectionOptions<TItem>);
 
