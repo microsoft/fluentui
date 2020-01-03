@@ -4,7 +4,7 @@ import { IIconProps, IconType, IIconStyleProps, IIconStyles } from './Icon.types
 import { Image } from '../Image/Image';
 import { ImageLoadState, IImageProps } from '../Image/Image.types';
 import { getNativeProps, htmlElementProperties, classNamesFunction } from '../../Utilities';
-import { getIconContent, getIconContentWithValidIconCaching } from './FontIcon';
+import { getIconContent } from './FontIcon';
 
 export interface IIconState {
   imageLoadError: boolean;
@@ -26,7 +26,7 @@ export class IconBase extends React.Component<IIconProps, IIconState> {
     const { className, styles, iconName, imageErrorAs, theme } = this.props;
     const isPlaceholder = typeof iconName === 'string' && iconName.length === 0;
     const isImage = this.props.iconType === IconType.image || this.props.iconType === IconType.Image || !!this.props.imageProps;
-    const iconContent = this.props.doNotCacheNullIcon ? getIconContentWithValidIconCaching(iconName) : getIconContent(iconName);
+    const iconContent = getIconContent(iconName);
 
     const { iconClassName, children } = iconContent || {
       iconClassName: undefined,
@@ -53,11 +53,11 @@ export class IconBase extends React.Component<IIconProps, IIconState> {
     const ariaLabel = this.props.ariaLabel || this.props['aria-label'];
     const containerProps = ariaLabel
       ? {
-          'aria-label': ariaLabel
-        }
+        'aria-label': ariaLabel
+      }
       : {
-          'aria-hidden': this.props['aria-labelledby'] || imageProps['aria-labelledby'] ? false : true
-        };
+        'aria-hidden': this.props['aria-labelledby'] || imageProps['aria-labelledby'] ? false : true
+      };
 
     return (
       <RootType data-icon-name={iconName} {...containerProps} {...nativeProps} className={classNames.root}>

@@ -11,32 +11,18 @@ export const getIconContent = memoizeFunction((iconName?: string) => {
     code: undefined
   };
 
+  if (!code) {
+    return null;
+  }
+
   return {
     children: code,
     iconClassName: subset.className,
     fontFamily: subset.fontFace && subset.fontFace.fontFamily
   };
-});
-
-export const getIconContentWithValidIconCaching = memoizeFunction(
-  (iconName?: string) => {
-    const { code, subset }: Pick<IIconRecord, 'code'> & { subset: Partial<IIconSubsetRecord> } = getIcon(iconName) || {
-      subset: {},
-      code: undefined
-    };
-
-    if (!code) {
-      return null;
-    }
-
-    return {
-      children: code,
-      iconClassName: subset.className
-    };
-  },
+},
   undefined,
-  true /*doNotCacheIfCallbackResultIsNull */
-);
+  true /*ignoreNullOrUndefinedResult */);
 
 /**
  * Fast icon component which only supports font glyphs (not images) and can't be targeted by customizations.
@@ -45,15 +31,19 @@ export const getIconContentWithValidIconCaching = memoizeFunction(
  */
 export const FontIcon: React.FunctionComponent<IFontIconProps> = props => {
   const { iconName, className, style = {} } = props;
-  const { iconClassName, children, fontFamily } = getIconContent(iconName);
+  const { iconClassName, children, fontFamily } = getIconContent(iconName) || {
+    iconClassName: undefined,
+    children: undefined,
+    fontFamily: undefined
+  };;
 
   const nativeProps = getNativeProps<React.HTMLAttributes<HTMLElement>>(props, htmlElementProperties);
   const containerProps = props['aria-label']
     ? {}
     : {
-        role: 'presentation',
-        'aria-hidden': true
-      };
+      role: 'presentation',
+      'aria-hidden': true
+    };
 
   return (
     <i

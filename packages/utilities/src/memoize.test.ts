@@ -98,6 +98,30 @@ describe('memoizeFunction', () => {
     expect(func('a')).toEqual('a4');
     expect(func('a')).toEqual('a4');
   });
+
+  it('caches and preserves falsey values other than null and undefined', () => {
+    let returnFalseyValue = true;
+    let falseyValue: any = null;
+
+    let callback = (): number | null => {
+      if (returnFalseyValue) { return falseyValue; }
+      return 1;
+    };
+    let func = memoizeFunction((a: string, callback: any) => callback(a));
+
+    //If falsey value returned by the callback method is null, update the cached value.
+    expect(func('updateFalseyvalue', callback)).toEqual(falseyValue);
+    returnFalseyValue = false;
+    expect(func('updateFalseyvalue', callback)).toEqual(1);
+
+    //If falsey value returned by the callback method is 0, do not update the cached value.
+    returnFalseyValue = true;
+    falseyValue = 0;
+    expect(func('doNotUpdateFalseyvalue', callback)).toEqual(falseyValue);
+    returnFalseyValue = false;
+    expect(func('doNotUpdateFalseyvalue', callback)).toEqual(falseyValue);
+
+  });
 });
 
 describe('memoize', () => {
