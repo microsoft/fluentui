@@ -101,25 +101,55 @@ describe('memoizeFunction', () => {
 
   it('caches and preserves falsey values other than null and undefined', () => {
     let returnFalseyValue = true;
+
+    // tslint:disable-next-line:no-any
     let falseyValue: any = null;
 
     let callback = (): number | null => {
       if (returnFalseyValue) { return falseyValue; }
       return 1;
     };
-    let func = memoizeFunction((a: string, callback: any) => callback(a));
+    let func = memoizeFunction((a: string) => callback(), undefined, true/*ignoreNullOrUndefinedResult */);
 
-    //If falsey value returned by the callback method is null, update the cached value.
-    expect(func('updateFalseyvalue', callback)).toEqual(falseyValue);
+    // If falsey value returned by the callback method is null, update the cached value.
+    expect(func('nullFqalseyValue')).toEqual(falseyValue);
     returnFalseyValue = false;
-    expect(func('updateFalseyvalue', callback)).toEqual(1);
+    expect(func('nullFalseyValue')).toEqual(1);
 
-    //If falsey value returned by the callback method is 0, do not update the cached value.
+    // If falsey value returned by the callback method is undefined, update the cached value.
+    returnFalseyValue = true;
+    falseyValue = undefined;
+    expect(func('undefinedFalseyValue')).toEqual(falseyValue);
+    returnFalseyValue = false;
+    expect(func('undefinedFalseyValue')).toEqual(1);
+
+    // If falsey value returned by the callback method is 0, do not update the cached value.
     returnFalseyValue = true;
     falseyValue = 0;
-    expect(func('doNotUpdateFalseyvalue', callback)).toEqual(falseyValue);
+    expect(func('zeroFalseyValue')).toEqual(falseyValue);
     returnFalseyValue = false;
-    expect(func('doNotUpdateFalseyvalue', callback)).toEqual(falseyValue);
+    expect(func('zeroFalseyValue')).toEqual(falseyValue);
+
+    // If falsey value returned by the callback method is NaN, do not update the cached value.
+    returnFalseyValue = true;
+    falseyValue = NaN;
+    expect(func('NaNFalseyValue')).toEqual(falseyValue);
+    returnFalseyValue = false;
+    expect(func('NaNFalseyValue')).toEqual(falseyValue);
+
+    // If falsey value returned by the callback method is false, do not update the cached value.
+    returnFalseyValue = true;
+    falseyValue = false;
+    expect(func('falseFalseyValue')).toEqual(falseyValue);
+    returnFalseyValue = false;
+    expect(func('falseFalseyValue')).toEqual(falseyValue);
+
+    // If falsey value returned by the callback method is empty string, do not update the cached value.
+    returnFalseyValue = true;
+    falseyValue = '';
+    expect(func('emptyStringFalseyValue')).toEqual(falseyValue);
+    returnFalseyValue = false;
+    expect(func('emptyStringFalseyValue')).toEqual(falseyValue);
 
   });
 });
