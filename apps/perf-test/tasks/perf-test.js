@@ -3,6 +3,7 @@
 const fs = require('fs');
 const path = require('path');
 const flamegrill = require('flamegrill');
+const scenarioIterations = require('../src/scenarioIterations');
 const scenarioNames = require('../src/scenarioNames');
 const { argv } = require('@uifabric/build').just;
 
@@ -204,7 +205,6 @@ const tempDir = path.join(__dirname, '../logfiles');
 module.exports = async function getPerfRegressions() {
   const iterationsArgv = /** @type {number} */ (argv().iterations);
   const iterationsArg = Number.isInteger(iterationsArgv) && iterationsArgv;
-  const iterations = iterationsArg || iterationsDefault;
 
   const scenariosAvailable = fs
     .readdirSync(path.join(__dirname, '../src/scenarios'))
@@ -227,6 +227,7 @@ module.exports = async function getPerfRegressions() {
     if (!scenariosAvailable.includes(scenarioName)) {
       throw new Error(`Invalid scenario: ${scenarioName}.`);
     }
+    const iterations = iterationsArg || scenarioIterations[scenarioName] || iterationsDefault;
     // These lines can be used to check for consistency.
     // Array.from({ length: 20 }, (entry, index) => {
     scenarios[scenarioName] = {
@@ -237,7 +238,8 @@ module.exports = async function getPerfRegressions() {
   });
   // });
 
-  console.log(`\nRunning ${iterations} iterations for each of these scenarios: ${scenarioList}\n`);
+  console.log(`\nRunning scenarios:`);
+  console.dir(scenarios);
 
   if (fs.existsSync(tempDir)) {
     const tempContents = fs.readdirSync(tempDir);
