@@ -474,11 +474,13 @@
     }
 
     .name {
+      // text appearing on tile must be white irrespective of theme
       color: #fff;
       text-shadow: 0.5px 0.5px 2px rgba(#000, 0.55);
     }
 
     .activity {
+      // text appearing on tile must be white irrespective of theme
       color: #fff;
       text-shadow: 0.5px 0.5px 2px rgba(#000, 0.55);
     }
