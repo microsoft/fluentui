@@ -743,18 +743,18 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     );
   };
 
-  protected addItemByIndex = (index: number): void => {
-    this.completeSelection(this.suggestionStore.getSuggestionAtIndex(index).item);
-  };
-
-  protected completeSelection(item: T) {
+  protected completeSelection = (item: T) => {
     this.addItem(item);
     this.updateValue('');
     if (this.input.current) {
       this.input.current.clear();
     }
     this.setState({ suggestionsVisible: false });
-  }
+  };
+
+  protected addItemByIndex = (index: number): void => {
+    this.completeSelection(this.suggestionStore.getSuggestionAtIndex(index).item);
+  };
 
   protected addItem = (item: T): void => {
     const processedItem: T | PromiseLike<T> | null = this.props.onItemSelected ? (this.props.onItemSelected as any)(item) : item;
