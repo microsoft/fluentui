@@ -1,5 +1,5 @@
 /**
- * {@docCategory Modal}
+ * {@docCategory IAccessiblePopupProps}
  */
 export interface IAccessiblePopupProps {
   /**
