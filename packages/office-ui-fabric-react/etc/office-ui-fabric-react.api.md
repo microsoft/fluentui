@@ -1454,6 +1454,16 @@ export function hsv2hsl(h: number, s: number, v: number): IHSL;
 export function hsv2rgb(h: number, s: number, v: number): IRGB;
 
 // @public (undocumented)
+export interface IAccessiblePopupProps {
+    closeButtonAriaLabel?: string;
+    elementToFocusOnDismiss?: HTMLElement;
+    firstFocusableSelector?: string | (() => string);
+    forceFocusInsideTrap?: boolean;
+    ignoreExternalFocusing?: boolean;
+    isClickableOutsideFocusTrap?: boolean;
+}
+
+// @public (undocumented)
 export interface IActivityItemProps extends React.AllHTMLAttributes<HTMLElement> {
     activityDescription?: React.ReactNode[] | React.ReactNode;
     // @deprecated
@@ -3816,8 +3826,6 @@ export interface IDialogFooterStyles {
     actionsRight: IStyle;
 }
 
-// Warning: (ae-forgotten-export) The symbol "IAccessiblePopupProps" needs to be exported by the entry point index.d.ts
-// 
 // @public (undocumented)
 export interface IDialogProps extends React.ClassAttributes<DialogBase>, IWithResponsiveModeState, IAccessiblePopupProps {
     // @deprecated

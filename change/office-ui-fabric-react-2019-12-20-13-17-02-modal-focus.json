@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Modal ignoreExternalFocusing prop should also affect Popup",
+  "packageName": "office-ui-fabric-react",
+  "email": "elcraig@microsoft.com",
+  "commit": "30f3293eb58cb16866a2005a6ef54fceef24dd5d",
+  "date": "2019-12-20T21:17:02.143Z"
+}
