@@ -660,19 +660,19 @@ export function isControlled<P>(props: P, valueProp: keyof P): boolean;
 export function isDirectionalKeyCode(which: number): boolean;
 
 // @public (undocumented)
-export interface ISelection {
+export interface ISelection<TItem = IObjectWithKey> {
     // (undocumented)
-    canSelectItem: (item: IObjectWithKey, index?: number) => boolean;
+    canSelectItem: (item: TItem, index?: number) => boolean;
     // (undocumented)
     count: number;
     // (undocumented)
-    getItems(): IObjectWithKey[];
+    getItems(): TItem[];
     // (undocumented)
     getSelectedCount(): number;
     // (undocumented)
     getSelectedIndices(): number[];
     // (undocumented)
-    getSelection(): IObjectWithKey[];
+    getSelection(): TItem[];
     // (undocumented)
     isAllSelected(): boolean;
     // (undocumented)
@@ -696,7 +696,7 @@ export interface ISelection {
     // (undocumented)
     setIndexSelected(index: number, isSelected: boolean, shouldAnchor: boolean): void;
     // (undocumented)
-    setItems(items: IObjectWithKey[], shouldClear: boolean): void;
+    setItems(items: TItem[], shouldClear: boolean): void;
     // (undocumented)
     setKeySelected(key: string, isSelected: boolean, shouldAnchor: boolean): void;
     // (undocumented)
@@ -712,16 +712,18 @@ export interface ISelection {
 }
 
 // @public (undocumented)
-export interface ISelectionOptions {
+export interface ISelectionOptions<TItem = IObjectWithKey> {
     // (undocumented)
-    canSelectItem?: (item: IObjectWithKey, index?: number) => boolean;
-    // (undocumented)
-    getKey?: (item: IObjectWithKey, index?: number) => string | number;
+    canSelectItem?: (item: TItem, index?: number) => boolean;
+    getKey?: (item: TItem, index?: number) => string | number;
     // (undocumented)
     onSelectionChanged?: () => void;
     // (undocumented)
     selectionMode?: SelectionMode;
 }
+
+// @public
+export type ISelectionOptionsWithRequiredGetKey<TItem> = ISelectionOptions<TItem> & Required<Pick<ISelectionOptions<TItem>, 'getKey'>>;
 
 // @public
 export function isElementFocusSubZone(element?: HTMLElement): boolean;
@@ -1010,22 +1012,21 @@ export const safeRequestAnimationFrame: (component: React.Component<{}, {}, any>
 export const safeSetTimeout: (component: React.Component<{}, {}, any>) => (cb: Function, duration: number) => void;
 
 // @public (undocumented)
-export class Selection implements ISelection {
-    constructor(options?: ISelectionOptions);
+export class Selection<TItem = IObjectWithKey> implements ISelection<TItem> {
+    constructor(...options: TItem extends IObjectWithKey ? [] | [ISelectionOptions<TItem>] : [ISelectionOptionsWithRequiredGetKey<TItem>]);
     // (undocumented)
-    canSelectItem(item: IObjectWithKey, index?: number): boolean;
-    // (undocumented)
+    canSelectItem(item: TItem, index?: number): boolean;
     count: number;
     // (undocumented)
-    getItems(): IObjectWithKey[];
+    getItems(): TItem[];
     // (undocumented)
-    getKey(item: IObjectWithKey, index?: number): string;
+    getKey(item: TItem, index?: number): string;
     // (undocumented)
     getSelectedCount(): number;
     // (undocumented)
     getSelectedIndices(): number[];
     // (undocumented)
-    getSelection(): IObjectWithKey[];
+    getSelection(): TItem[];
     // (undocumented)
     isAllSelected(): boolean;
     // (undocumented)
@@ -1048,7 +1049,7 @@ export class Selection implements ISelection {
     setChangeEvents(isEnabled: boolean, suppressChange?: boolean): void;
     // (undocumented)
     setIndexSelected(index: number, isSelected: boolean, shouldAnchor: boolean): void;
-    setItems(items: IObjectWithKey[], shouldClear?: boolean): void;
+    setItems(items: TItem[], shouldClear?: boolean): void;
     // (undocumented)
     setKeySelected(key: string, isSelected: boolean, shouldAnchor: boolean): void;
     // (undocumented)

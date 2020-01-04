@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Selection: accept generic item type",
+  "packageName": "@uifabric/utilities",
+  "email": "elcraig@microsoft.com",
+  "commit": "fd4b72e61ce81ab4dc8ff2e7ffe6d455a8996694",
+  "date": "2019-12-21T02:35:16.898Z"
+}
