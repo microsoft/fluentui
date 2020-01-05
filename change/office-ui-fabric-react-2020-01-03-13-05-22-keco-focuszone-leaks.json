@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "FocusZone: Delete function references on unmount",
+  "packageName": "office-ui-fabric-react",
+  "email": "KevinTCoughlin@users.noreply.github.com",
+  "commit": "35c50bbe030217627f9f5df3b577129bace2edf4",
+  "date": "2020-01-03T21:05:22.458Z"
+}
