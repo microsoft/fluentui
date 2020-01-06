@@ -26,12 +26,7 @@ export class IconBase extends React.Component<IIconProps, IIconState> {
     const { className, styles, iconName, imageErrorAs, theme } = this.props;
     const isPlaceholder = typeof iconName === 'string' && iconName.length === 0;
     const isImage = this.props.iconType === IconType.image || this.props.iconType === IconType.Image || !!this.props.imageProps;
-    const iconContent = getIconContent(iconName);
-
-    const { iconClassName, children } = iconContent || {
-      iconClassName: undefined,
-      children: undefined
-    };
+    const { iconClassName, children } = getIconContent(iconName);
 
     const classNames = getClassNames(styles, {
       theme: theme!,

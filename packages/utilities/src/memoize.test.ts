@@ -99,58 +99,99 @@ describe('memoizeFunction', () => {
     expect(func('a')).toEqual('a4');
   });
 
-  it('caches and preserves falsey values other than null and undefined', () => {
+  it('updates the cache if the cached value is null', () => {
     let returnFalseyValue = true;
-
-    // tslint:disable-next-line:no-any
-    let falseyValue: any = null;
-
+    let falseyValue: null = null;
     let callback = (): number | null => {
-      if (returnFalseyValue) { return falseyValue; }
+      if (returnFalseyValue) {
+        return falseyValue;
+      }
       return 1;
     };
-    let func = memoizeFunction((a: string) => callback(), undefined, true/*ignoreNullOrUndefinedResult */);
-
-    // If falsey value returned by the callback method is null, update the cached value.
-    expect(func('nullFqalseyValue')).toEqual(falseyValue);
+    let func = memoizeFunction(() => callback(), undefined, true /*ignoreNullOrUndefinedResult */);
+    expect(func()).toEqual(falseyValue);
     returnFalseyValue = false;
-    expect(func('nullFalseyValue')).toEqual(1);
+    expect(func()).toEqual(1);
+  });
 
-    // If falsey value returned by the callback method is undefined, update the cached value.
+  it('updates the cache if the cached value is undefined', () => {
+    let returnFalseyValue = true;
+    let falseyValue: undefined = undefined;
+    let callback = (): number | undefined => {
+      if (returnFalseyValue) {
+        return falseyValue;
+      }
+      return 1;
+    };
+    let func = memoizeFunction(() => callback(), undefined, true /*ignoreNullOrUndefinedResult */);
     returnFalseyValue = true;
-    falseyValue = undefined;
-    expect(func('undefinedFalseyValue')).toEqual(falseyValue);
+    expect(func()).toEqual(falseyValue);
     returnFalseyValue = false;
-    expect(func('undefinedFalseyValue')).toEqual(1);
+    expect(func()).toEqual(1);
+  });
 
-    // If falsey value returned by the callback method is 0, do not update the cached value.
+  it('caches and preserves if the falsey value returned by the callback method is 0', () => {
+    let returnFalseyValue = true;
+    let falseyValue: number = 0;
+    let callback = (): number => {
+      if (returnFalseyValue) {
+        return falseyValue;
+      }
+      return 1;
+    };
+    let func = memoizeFunction(() => callback(), undefined, true /*ignoreNullOrUndefinedResult */);
     returnFalseyValue = true;
-    falseyValue = 0;
-    expect(func('zeroFalseyValue')).toEqual(falseyValue);
+    expect(func()).toEqual(falseyValue);
     returnFalseyValue = false;
-    expect(func('zeroFalseyValue')).toEqual(falseyValue);
+    expect(func()).toEqual(falseyValue);
+  });
 
-    // If falsey value returned by the callback method is NaN, do not update the cached value.
+  it('caches and preserves if the falsey value returned by the callback method is NaN', () => {
+    let returnFalseyValue = true;
+    let falseyValue: number = NaN;
+    let callback = (): number | null => {
+      if (returnFalseyValue) {
+        return falseyValue;
+      }
+      return 1;
+    };
+    let func = memoizeFunction(() => callback(), undefined, true /*ignoreNullOrUndefinedResult */);
     returnFalseyValue = true;
-    falseyValue = NaN;
-    expect(func('NaNFalseyValue')).toEqual(falseyValue);
+    expect(func()).toEqual(falseyValue);
     returnFalseyValue = false;
-    expect(func('NaNFalseyValue')).toEqual(falseyValue);
+    expect(func()).toEqual(falseyValue);
+  });
 
-    // If falsey value returned by the callback method is false, do not update the cached value.
+  it('caches and preserves if the falsey value returned by the callback method is false', () => {
+    let returnFalseyValue = true;
+    let falseyValue: boolean = false;
+    let callback = (): number | boolean => {
+      if (returnFalseyValue) {
+        return falseyValue;
+      }
+      return 1;
+    };
+    let func = memoizeFunction(() => callback(), undefined, true /*ignoreNullOrUndefinedResult */);
     returnFalseyValue = true;
-    falseyValue = false;
-    expect(func('falseFalseyValue')).toEqual(falseyValue);
+    expect(func()).toEqual(falseyValue);
     returnFalseyValue = false;
-    expect(func('falseFalseyValue')).toEqual(falseyValue);
+    expect(func()).toEqual(falseyValue);
+  });
 
-    // If falsey value returned by the callback method is empty string, do not update the cached value.
+  it('caches and preserves if the falsey value returned by the callback method is empty string', () => {
+    let returnFalseyValue = true;
+    let falseyValue: string = '';
+    let callback = (): number | string => {
+      if (returnFalseyValue) {
+        return falseyValue;
+      }
+      return 1;
+    };
+    let func = memoizeFunction(() => callback(), undefined, true /*ignoreNullOrUndefinedResult */);
     returnFalseyValue = true;
-    falseyValue = '';
-    expect(func('emptyStringFalseyValue')).toEqual(falseyValue);
+    expect(func()).toEqual(falseyValue);
     returnFalseyValue = false;
-    expect(func('emptyStringFalseyValue')).toEqual(falseyValue);
-
+    expect(func()).toEqual(falseyValue);
   });
 });
 

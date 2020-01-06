@@ -1313,11 +1313,7 @@ export const getFontIcon: (iconName: string, className?: string | undefined, ari
 export function getFullColorString(color: IColor): string;
 
 // @public (undocumented)
-export const getIconContent: (iconName?: string | undefined) => {
-    children: string;
-    iconClassName: string | undefined;
-    fontFamily: string | undefined;
-} | null;
+export const getIconContent: (iconName?: string | undefined) => IIconContent;
 
 // @public
 export const getMeasurementCache: () => {
@@ -5011,6 +5007,16 @@ export interface IHSV {
     h: number;
     s: number;
     v: number;
+}
+
+// @public (undocumented)
+export interface IIconContent {
+    // (undocumented)
+    children?: string;
+    // (undocumented)
+    fontFamily?: string;
+    // (undocumented)
+    iconClassName?: string;
 }
 
 // @public (undocumented)
