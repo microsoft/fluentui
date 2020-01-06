@@ -3,7 +3,11 @@
     "baseUrl": ".",
     "outDir": "lib",
     "target": "es5",
-    "module": "commonjs",
+    // Setting this to esnext is required to make webpack code splitting work with import() and React.lazy
+    // https://github.com/webpack/webpack/issues/5703#issuecomment-357512412
+    // (the setting in tsconfig.json only affects serve mode; in non-serve mode webpack runs against
+    // <package>/lib which is also in esnext format)
+    "module": "esnext",
     "jsx": "react",
     "declaration": true,
     "sourceMap": true,

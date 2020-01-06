@@ -18,6 +18,8 @@ By default, the editor will load types for React and UI Fabric. It can also be c
 
 Monaco's code is very large and should be loaded after main page content is ready. When consumed with Webpack, this package takes care of delay loading Monaco.
 
+**IMPORTANT:** For delay loading to work properly in a TypeScript app, you **must** use `"module": "esnext"` (not `"module": "commonjs"`) in your `tsconfig.json`. Otherwise, dynamic imports in the editor code will be transformed into `require` statements which break code splitting. [More info here.](https://github.com/webpack/webpack/issues/5703#issuecomment-357512412)
+
 ### Read-only rendering in unsupported browsers
 
 If the user's browser can't support the editor (mainly IE 11 and some mobile browsers), the code will be rendered read-only.

@@ -7,15 +7,9 @@ import { isEditorSupported } from '../utilities/index';
 import { ITransformedExample } from '../interfaces/index';
 import { DEFAULT_HEIGHT } from './consts';
 
-// This file MUST NOT directly load the main TsxEditor module which depends on Monaco
-// (aside from for typing purposes), to avoid pulling it into a bundle.
-import * as TsxEditorModule from './TsxEditor';
-const TsxEditorLazy = React.lazy(
-  () =>
-    // Theoretically we could use import() here, but that seems to pull things into bundles
-    // even though it shouldn't (maybe due to commonjs transpilation)
-    new Promise<typeof TsxEditorModule>(resolve => require.ensure([], require => resolve(require('./TsxEditor'))))
-);
+// This file MUST NOT directly load the main TsxEditor module which depends on Monaco, to avoid
+// pulling it into a bundle. Importing/rendering with React.lazy solves this.
+const TsxEditorLazy = React.lazy(() => import('./TsxEditor'));
 
 export const EditorWrapper: React.FunctionComponent<IEditorWrapperProps> = props => {
   const {

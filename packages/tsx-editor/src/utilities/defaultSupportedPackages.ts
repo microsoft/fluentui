@@ -1,24 +1,20 @@
 import { IPackageGroup } from '../interfaces/index';
 
-// tslint:disable:no-any
 const fabricGroup: IPackageGroup = {
   globalName: 'Fabric',
-  // Theoretically we could use import() here, but that seems to pull things into bundles
-  // even though it shouldn't (maybe due to commonjs transpilation)
-  loadGlobal: cb => require.ensure([], require => cb(require('office-ui-fabric-react'))),
+  loadGlobal: () => import('office-ui-fabric-react'),
   packages: []
 };
 const hooksGroup: IPackageGroup = {
   globalName: 'FabricReactHooks',
-  loadGlobal: cb => require.ensure([], require => cb(require('@uifabric/react-hooks'))),
+  loadGlobal: () => import('@uifabric/react-hooks'),
   packages: []
 };
 const exampleDataGroup: IPackageGroup = {
   globalName: 'FabricExampleData',
-  loadGlobal: cb => require.ensure([], require => cb(require('@uifabric/example-data'))),
+  loadGlobal: () => import('@uifabric/example-data'),
   packages: []
 };
-// tslint:enable:no-any
 
 let typesContext: __WebpackModuleApi.RequireContext | undefined;
 try {

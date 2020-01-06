@@ -1,6 +1,6 @@
 {
-  "type": "minor",
-  "comment": "Fix worker loader in Chrome; reduce chance of editor files being bundled; update Monaco",
+  "type": "patch",
+  "comment": "Update Monaco; fix worker loader in Chrome; add notes on bundling",
   "packageName": "@uifabric/tsx-editor",
   "email": "elcraig@microsoft.com",
   "commit": "29c174fac706f1131912e9db3aa993b59473f939",

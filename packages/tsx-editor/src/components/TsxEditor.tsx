@@ -81,15 +81,8 @@ function _useGlobals(supportedPackages: IPackageGroup[]): boolean {
     Promise.all(
       supportedPackages.map(group => {
         if (!win[group.globalName]) {
-          // tslint:disable:no-any
-          return new Promise<any>(resolve => {
-            // handle either promise or callback function
-            const globalResult = group.loadGlobal(resolve);
-            if (globalResult && (globalResult as PromiseLike<any>).then) {
-              globalResult.then(resolve);
-            }
-          }).then((globalModule: any) => (win[group.globalName] = globalModule));
-          // tslint:enable:no-any
+          // tslint:disable-next-line:no-any
+          return group.loadGlobal().then((globalModule: any) => (win[group.globalName] = globalModule));
         }
       })
     ).then(() => setHasLoadedGlobals(true));
@@ -145,17 +138,15 @@ function _loadTypes(supportedPackages: IPackageGroup[]): Promise<void> {
   const promises: Promise<void>[] = [];
   const typesPrefix = filePrefix + 'node_modules/@types';
 
-  // React types must be loaded first (don't use import() to avoid potential bundling issues)
+  // React must be loaded first
   promises.push(
-    new Promise<void>(resolve =>
-      require.ensure([], require => {
-        // raw-loader 0.x exports a single string, and later versions export a default.
-        // The package.json specifies 0.x, but handle either just in case.
-        const result: string | { default: string } = require('!raw-loader!@types/react/index.d.ts');
+    // @ts-ignore: this import is handled by webpack
+    import('!raw-loader!@types/react/index.d.ts')
+      // raw-loader 0.x exports a single string, and later versions export a default.
+      // The package.json specifies 0.x, but handle either just in case.
+      .then((result: string | { default: string }) => {
         typescriptDefaults.addExtraLib(typeof result === 'string' ? result : result.default, `${typesPrefix}/react/index.d.ts`);
-        resolve();
       })
-    )
   );
 
   // Load each package and add it to TS (and save path mappings to add to TS later)
