@@ -2,6 +2,20 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Mon, 06 Jan 2020 12:22:35 GMT",
+      "tag": "office-ui-fabric-react_v6.211.1",
+      "version": "6.211.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Autocomplete: Allow value to be overriden",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "a8ac7ed2ae97ebcffffa0a16ad03c7be28d8a665"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 13 Dec 2019 12:22:42 GMT",
       "tag": "office-ui-fabric-react_v6.211.0",
       "version": "6.211.0",

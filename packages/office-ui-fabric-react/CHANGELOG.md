@@ -1,7 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 13 Dec 2019 12:22:42 GMT and should not be manually modified.
+This log was last generated on Mon, 06 Jan 2020 12:22:35 GMT and should not be manually modified.
 
+## 6.211.1
+Mon, 06 Jan 2020 12:22:35 GMT
+
+### Patches
+
+- Autocomplete: Allow value to be overriden (mgodbolt@microsoft.com)
 ## 6.211.0
 Fri, 13 Dec 2019 12:22:42 GMT
 
