@@ -54,8 +54,8 @@ module.exports = function preset() {
   task('ts:commonjs-only', ts.commonjsOnly);
   task('webpack', webpack);
   task('webpack-dev-server', webpackDevServer);
-  task('verify-api-extractor', verifyApiExtractor);
-  task('update-api-extractor', updateApiExtractor);
+  task('api-extractor:verify', verifyApiExtractor);
+  task('api-extractor:update', updateApiExtractor);
   task('lint-imports', lintImports);
   task('prettier', prettier);
   task('bundle-size-collect', bundleSizeCollect);
@@ -76,12 +76,21 @@ module.exports = function preset() {
   task('lint', parallel('lint-imports', 'tslint'));
 
   task('code-style', series('prettier', 'tslint'));
-  task('update-api', series('clean', 'copy', 'sass', 'ts', 'update-api-extractor'));
+  task('update-api', series('clean', 'copy', 'sass', 'ts', 'api-extractor:update'));
   task('dev', series('clean', 'copy', 'sass', 'webpack-dev-server'));
 
   task('build:node-lib', series('clean', 'copy', 'ts:commonjs-only')).cached();
 
-  task('build', series('clean', 'copy', 'sass', 'ts')).cached();
+  task(
+    'build',
+    series(
+      'clean',
+      'copy',
+      'sass',
+      'ts',
+      condition('api-extractor:verify', () => fs.existsSync(path.join(process.cwd(), 'config/api-extractor.json')))
+    )
+  ).cached();
 
   task('bundle', condition('webpack', () => !!resolveCwd('webpack.config.js')));
 
