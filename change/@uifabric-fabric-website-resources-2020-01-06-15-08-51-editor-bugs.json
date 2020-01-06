@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Fix bundling issues",
+  "packageName": "@uifabric/fabric-website-resources",
+  "email": "elcraig@microsoft.com",
+  "commit": "f7a8d49bb4df7bf871151dec5978b5cd533edd65",
+  "date": "2020-01-06T23:08:51.092Z"
+}
