@@ -201,9 +201,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       selectedIndices: initialSelectedIndices,
       focused: false,
       suggestedDisplayValue: undefined,
-      // suggestedDisplayIndex: undefined,
       currentOptions: this.props.options,
-      // currentPendingValueValidIndex: initialSelectedIndices.length ? initialSelectedIndices[0] : -1,
       currentPendingValueValidIndex: -1,
       currentPendingValue: undefined,
       currentPendingValueValidIndexOnHover: HoverStatus.default
