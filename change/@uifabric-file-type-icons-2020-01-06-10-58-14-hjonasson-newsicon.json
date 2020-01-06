@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Make news icon available",
+  "packageName": "@uifabric/file-type-icons",
+  "email": "hjorturj@microsoft.com",
+  "commit": "3b1679c670b59956d04d61306fca5897cd6fdc2c",
+  "date": "2020-01-06T09:58:14.238Z"
+}
