@@ -1,0 +1,8 @@
+{
+  "type": "none",
+  "comment": "[Migration] Update test fixtures to handle windows path issue.",
+  "packageName": "@uifabric/migration",
+  "email": "email not defined",
+  "commit": "ab97c688f1d13c0e77f87685a948e01cd4842946",
+  "date": "2020-01-06T18:02:55.924Z"
+}
