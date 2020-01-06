@@ -45,7 +45,7 @@
     "@uifabric/tsx-editor": "^0.10.3"
   },
   "dependencies": {
-    "@microsoft/load-themed-styles": "^1.7.13",
+    "@microsoft/load-themed-styles": "^1.10.26",
     "@uifabric/api-docs": "^7.1.1",
     "@uifabric/example-app-base": "^7.10.4",
     "@uifabric/experiments": "^7.18.10",
