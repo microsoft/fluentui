@@ -12,14 +12,14 @@ export interface IIconContent {
 }
 
 export const getIconContent = memoizeFunction(
-  (iconName?: string): IIconContent => {
+  (iconName?: string): IIconContent | null => {
     const { code, subset }: Pick<IIconRecord, 'code'> & { subset: Partial<IIconSubsetRecord> } = getIcon(iconName) || {
       subset: {},
       code: undefined
     };
 
     if (!code) {
-      return {};
+      return null;
     }
 
     return {
@@ -39,7 +39,8 @@ export const getIconContent = memoizeFunction(
  */
 export const FontIcon: React.FunctionComponent<IFontIconProps> = props => {
   const { iconName, className, style = {} } = props;
-  const { iconClassName, children, fontFamily } = getIconContent(iconName);
+  const iconContent = getIconContent(iconName) || {};
+  const { iconClassName, children, fontFamily } = iconContent;
 
   const nativeProps = getNativeProps<React.HTMLAttributes<HTMLElement>>(props, htmlElementProperties);
   const containerProps = props['aria-label']

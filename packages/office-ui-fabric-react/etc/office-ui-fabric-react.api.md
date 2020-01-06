@@ -1313,7 +1313,7 @@ export const getFontIcon: (iconName: string, className?: string | undefined, ari
 export function getFullColorString(color: IColor): string;
 
 // @public (undocumented)
-export const getIconContent: (iconName?: string | undefined) => IIconContent;
+export const getIconContent: (iconName?: string | undefined) => IIconContent | null;
 
 // @public
 export const getMeasurementCache: () => {
