@@ -2,6 +2,109 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Mon, 06 Jan 2020 12:29:10 GMT",
+      "tag": "office-ui-fabric-react_v7.78.2",
+      "version": "7.78.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Modal ignoreExternalFocusing prop should also affect Popup",
+            "author": "elcraig@microsoft.com",
+            "commit": "30f3293eb58cb16866a2005a6ef54fceef24dd5d"
+          },
+          {
+            "comment": "Combobox: Clicks to headers and scrollbars no longer cause onBlur",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "399896de32fe539ce1bab0bc7b7d0503710e4fa5"
+          },
+          {
+            "comment": "FocusZone: Delete function references on unmount",
+            "author": "KevinTCoughlin@users.noreply.github.com",
+            "commit": "35c50bbe030217627f9f5df3b577129bace2edf4"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 03 Jan 2020 12:27:16 GMT",
+      "tag": "office-ui-fabric-react_v7.78.1",
+      "version": "7.78.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "ChoiceGroup: update docs and examples",
+            "author": "elcraig@microsoft.com",
+            "commit": "df9d42f327766a33456b5599eccc4df977a8c06e"
+          },
+          {
+            "comment": "Remove duplicate ChoiceGroupOption export",
+            "author": "elcraig@microsoft.com",
+            "commit": "871ba269748259eed69b43106d8b1a1f5e320408"
+          },
+          {
+            "comment": "TagPicker: Define `title` for TagItem in case text overflows.",
+            "author": "jdh@microsoft.com",
+            "commit": "1305118f16f025f9517b4a25ad0fc3df16b7f882"
+          },
+          {
+            "comment": "update callout docs comment",
+            "author": "joschect@microsoft.com",
+            "commit": "37acc2d517d3a5d2d7feceff4ca26975df927c3a"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 01 Jan 2020 12:30:43 GMT",
+      "tag": "office-ui-fabric-react_v7.78.0",
+      "version": "7.78.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Pass the original renderer to onRenderLabel in ChoiceGroupOption (#11575)",
+            "author": "dagoltz@microsoft.com",
+            "commit": "3841e791314110fdd74be38aa2500b10f251987c"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 31 Dec 2019 12:31:45 GMT",
+      "tag": "office-ui-fabric-react_v7.77.0",
+      "version": "7.77.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "SwatchColorPicker: properly apply ID; doc updates",
+            "author": "elcraig@microsoft.com",
+            "commit": "7be84c9391cdbc832cca9f4325b2814b2c92bcdf"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Fabric control: listen for rtl in theme",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "75306dc096b49d26b0e3f3310343fbe267b7f1f9"
+          },
+          {
+            "comment": "DetailsList: Update examples to work in strictFunctionTypes",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "4b7738397411b203ef516b28f9c8f00c569dcc2e"
+          },
+          {
+            "comment": "Combobox: Focus returns to input after item click",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "c45255bca111b40e965ed67540aaf1461f4163d8"
+          },
+          {
+            "comment": "Layer: add touch events to filtering to stop those that are bubbling up",
+            "author": "aneeshak@microsoft.com",
+            "commit": "992537473a22e8d7f7ef217e17ab4da31ceef3db"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 30 Dec 2019 12:25:00 GMT",
       "tag": "office-ui-fabric-react_v7.76.3",
       "version": "7.76.3",

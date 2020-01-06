@@ -16,7 +16,7 @@ import {
   shallowCompare,
   mergeAriaAttributeValues
 } from '../../Utilities';
-import { Callout } from '../../Callout';
+import { Callout, ICalloutProps } from '../../Callout';
 import { Checkbox } from '../../Checkbox';
 import { CommandButton, IButtonStyles, IconButton } from '../../Button';
 import { DirectionalHint } from '../../common/DirectionalHint';
@@ -1190,6 +1190,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         className={css(this._classNames.callout, calloutProps ? calloutProps.className : undefined)}
         target={this._comboBoxWrapper.current}
         onDismiss={this._onDismiss}
+        onMouseDown={this._onCalloutMouseDown}
         onScroll={this._onScroll}
         setInitialFocus={false}
         calloutWidth={useComboBoxAsMenuWidth && this._comboBoxWrapper.current ? comboBoxMenuWidth && comboBoxMenuWidth : dropdownWidth}
@@ -1402,6 +1403,13 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   }
 
   /**
+   * Mouse clicks to headers, dividers and scrollbar should not make input lose focus
+   */
+  private _onCalloutMouseDown: ICalloutProps['onMouseDown'] = ev => {
+    ev.preventDefault();
+  };
+
+  /**
    * Scroll handler for the callout to make sure the mouse events
    * for updating focus are not interacting during scroll
    */
@@ -1478,8 +1486,11 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     return (ev: any): void => {
       onItemClick && onItemClick(ev, item, index);
       this._setSelectedIndex(index as number, ev);
+
+      // only close the callout when it's in single-select mode
       if (!this.props.multiSelect) {
-        // only close the callout when it's in single-select mode
+        // ensure that focus returns to the input, not the button
+        this._autofill.current && this._autofill.current.focus();
         this.setState({
           isOpen: false
         });

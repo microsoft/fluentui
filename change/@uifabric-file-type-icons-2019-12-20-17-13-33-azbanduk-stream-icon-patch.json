@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "added stream icon code to getFileIconProps",
-  "packageName": "@uifabric/file-type-icons",
-  "email": "azra.bandukwala@microsoft.com",
-  "commit": "44d0a3ed65bbcb6f2615ccf5ccb9a68f47e86524",
-  "date": "2019-12-21T01:13:33.921Z"
-}
