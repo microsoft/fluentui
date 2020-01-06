@@ -91,12 +91,6 @@ exports[`Component Examples renders ComboBox.Virtualized.Example.tsx correctly 1
             display: inline-block;
             margin-bottom: 8px;
           }
-          &.is-open {
-            border-color: #605e5c;
-          }
-          &.is-open:after {
-            content: none;
-          }
           @media screen and (-ms-high-contrast: active){&.is-open {
             -ms-high-contrast-adjust: none;
             background-color: Window;
