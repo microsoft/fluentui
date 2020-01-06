@@ -2,6 +2,27 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "date": "Mon, 06 Jan 2020 12:29:10 GMT",
+      "tag": "@uifabric/utilities_v7.9.0",
+      "version": "7.9.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Selection: accept generic item type",
+            "author": "elcraig@microsoft.com",
+            "commit": "fd4b72e61ce81ab4dc8ff2e7ffe6d455a8996694"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "getClassNames: fix for LTR in RTL context.",
+            "author": "jdh@microsoft.com",
+            "commit": "14b05e455f69d29e88703ce13a3f8f4a139ed61c"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 20 Dec 2019 12:32:45 GMT",
       "tag": "@uifabric/utilities_v7.8.0",
       "version": "7.8.0",

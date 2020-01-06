@@ -2,6 +2,30 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Mon, 06 Jan 2020 12:29:10 GMT",
+      "tag": "office-ui-fabric-react_v7.78.2",
+      "version": "7.78.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Modal ignoreExternalFocusing prop should also affect Popup",
+            "author": "elcraig@microsoft.com",
+            "commit": "30f3293eb58cb16866a2005a6ef54fceef24dd5d"
+          },
+          {
+            "comment": "Combobox: Clicks to headers and scrollbars no longer cause onBlur",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "399896de32fe539ce1bab0bc7b7d0503710e4fa5"
+          },
+          {
+            "comment": "FocusZone: Delete function references on unmount",
+            "author": "KevinTCoughlin@users.noreply.github.com",
+            "commit": "35c50bbe030217627f9f5df3b577129bace2edf4"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 03 Jan 2020 12:27:16 GMT",
       "tag": "office-ui-fabric-react_v7.78.1",
       "version": "7.78.1",

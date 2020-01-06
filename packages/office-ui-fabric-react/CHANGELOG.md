@@ -1,7 +1,15 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 03 Jan 2020 12:27:16 GMT and should not be manually modified.
+This log was last generated on Mon, 06 Jan 2020 12:29:10 GMT and should not be manually modified.
 
+## 7.78.2
+Mon, 06 Jan 2020 12:29:10 GMT
+
+### Patches
+
+- Modal ignoreExternalFocusing prop should also affect Popup (elcraig@microsoft.com)
+- Combobox: Clicks to headers and scrollbars no longer cause onBlur (mgodbolt@microsoft.com)
+- FocusZone: Delete function references on unmount (KevinTCoughlin@users.noreply.github.com)
 ## 7.78.1
 Fri, 03 Jan 2020 12:27:16 GMT
 

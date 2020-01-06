@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "getClassNames: fix for LTR in RTL context.",
-  "packageName": "@uifabric/utilities",
-  "email": "jdh@microsoft.com",
-  "commit": "14b05e455f69d29e88703ce13a3f8f4a139ed61c",
-  "date": "2020-01-03T23:20:10.105Z"
-}
