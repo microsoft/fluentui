@@ -339,11 +339,7 @@ export const getStyles = memoizeFunction(
               marginBottom: '8px'
             },
             '&.is-open': {
-              borderColor: root.borderColor,
               selectors: {
-                ':after': {
-                  content: 'none'
-                },
                 [HighContrastSelector]: ComboBoxRootHighContrastFocused
               }
             }
