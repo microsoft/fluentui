@@ -34,18 +34,16 @@ export class FabricBase extends React.Component<
   }
 
   public render() {
-    const { as: Root = 'div', theme, dir } = this.props;
-    const classNames = this._getClassNames();
-    const divProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties);
+    const { dir, theme } = this.props;
     const isRTL = dir === 'rtl';
-    let renderedContent = <Root {...divProps} className={classNames.root} ref={this._rootElement} />;
+    const needDirectionChange = dir !== undefined && theme && (theme.rtl === undefined || theme.rtl !== isRTL);
 
-    // Expose an rtl based theme if dir is specified and it doesn't agree with the theme setting.
-    if (dir !== undefined && theme && (theme.rtl === undefined || theme.rtl !== isRTL)) {
-      renderedContent = <Customizer settings={{ theme: getRTLTheme(theme, isRTL) }}>{renderedContent}</Customizer>;
+    if (needDirectionChange) {
+      const switchedTheme = getRTLTheme(theme!, isRTL);
+      return <Customizer settings={{ theme: switchedTheme }}>{this._renderRoot(switchedTheme)}</Customizer>;
+    } else {
+      return this._renderRoot(theme!);
     }
-
-    return renderedContent;
   }
 
   public componentDidMount(): void {
@@ -63,10 +61,17 @@ export class FabricBase extends React.Component<
     }
   }
 
-  private _getClassNames(): IProcessedStyleSet<IFabricStyles> {
-    const { className, theme, applyTheme } = this.props;
+  private _renderRoot(theme: ITheme) {
+    const { as: Root = 'div' } = this.props;
+    const classNames = this._getClassNames(theme);
+    const divProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties);
+    return <Root {...divProps} className={classNames.root} ref={this._rootElement} />;
+  }
+
+  private _getClassNames(theme: ITheme): IProcessedStyleSet<IFabricStyles> {
+    const { className, applyTheme } = this.props;
     const classNames = getClassNames(getStyles, {
-      theme: theme!,
+      theme,
       applyTheme: applyTheme,
       className,
       isFocusVisible: this.state.isFocusVisible
@@ -76,7 +81,7 @@ export class FabricBase extends React.Component<
 
   private _addClassNameToBody(): void {
     if (this.props.applyThemeToBody) {
-      const classNames = this._getClassNames();
+      const classNames = this._getClassNames(this.props.theme!);
       const currentDoc = getDocument(this._rootElement.current);
       if (currentDoc) {
         currentDoc.body.classList.add(classNames.bodyThemed);

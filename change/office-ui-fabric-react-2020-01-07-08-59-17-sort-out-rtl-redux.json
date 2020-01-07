@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Fabric: Fix for RTL/LTR switching.",
+  "packageName": "office-ui-fabric-react",
+  "email": "jdh@microsoft.com",
+  "commit": "337a6ea1862def7b83bd4f46e9728a1ee0a033e0",
+  "date": "2020-01-07T16:59:17.415Z"
+}

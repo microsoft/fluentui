@@ -341,6 +341,7 @@ exports[`Fabric renders a Fabric component in RTL 1`] = `
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
             color: #323130;
+            direction: rtl;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
             font-weight: 400;
@@ -505,7 +506,6 @@ exports[`Fabric renders a Fabric component in RTL 1`] = `
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
               color: #323130;
-              direction: rtl;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
               font-weight: 400;
