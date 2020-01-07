@@ -1,7 +1,24 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 01 Jan 2020 12:30:43 GMT and should not be manually modified.
+This log was last generated on Mon, 06 Jan 2020 12:29:10 GMT and should not be manually modified.
 
+## 7.78.2
+Mon, 06 Jan 2020 12:29:10 GMT
+
+### Patches
+
+- Modal ignoreExternalFocusing prop should also affect Popup (elcraig@microsoft.com)
+- Combobox: Clicks to headers and scrollbars no longer cause onBlur (mgodbolt@microsoft.com)
+- FocusZone: Delete function references on unmount (KevinTCoughlin@users.noreply.github.com)
+## 7.78.1
+Fri, 03 Jan 2020 12:27:16 GMT
+
+### Patches
+
+- ChoiceGroup: update docs and examples (elcraig@microsoft.com)
+- Remove duplicate ChoiceGroupOption export (elcraig@microsoft.com)
+- TagPicker: Define `title` for TagItem in case text overflows. (jdh@microsoft.com)
+- update callout docs comment (joschect@microsoft.com)
 ## 7.78.0
 Wed, 01 Jan 2020 12:30:43 GMT
 

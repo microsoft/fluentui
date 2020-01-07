@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Remove duplicate ChoiceGroupOption export",
-  "packageName": "office-ui-fabric-react",
-  "email": "elcraig@microsoft.com",
-  "commit": "871ba269748259eed69b43106d8b1a1f5e320408",
-  "date": "2019-12-21T02:11:31.853Z"
-}

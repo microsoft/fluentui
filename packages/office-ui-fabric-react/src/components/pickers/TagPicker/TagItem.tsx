@@ -40,7 +40,7 @@ export const TagItemBase = (props: ITagItemProps) => {
       data-selection-index={index}
       data-is-focusable={(enableTagFocusInDisabledPicker || !disabled) && true}
     >
-      <span className={classNames.text} aria-label={children as string}>
+      <span className={classNames.text} aria-label={children as string} title={children as string}>
         {children}
       </span>
       <IconButton

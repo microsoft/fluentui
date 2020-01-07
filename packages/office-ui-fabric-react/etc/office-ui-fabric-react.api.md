@@ -276,6 +276,8 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     // (undocumented)
     protected canAddItems(): boolean;
     // (undocumented)
+    protected completeSelection: (item: T) => void;
+    // (undocumented)
     completeSuggestion(forceComplete?: boolean): void;
     // (undocumented)
     componentDidMount(): void;
@@ -1452,6 +1454,16 @@ export function hsv2hsl(h: number, s: number, v: number): IHSL;
 
 // @public
 export function hsv2rgb(h: number, s: number, v: number): IRGB;
+
+// @public (undocumented)
+export interface IAccessiblePopupProps {
+    closeButtonAriaLabel?: string;
+    elementToFocusOnDismiss?: HTMLElement;
+    firstFocusableSelector?: string | (() => string);
+    forceFocusInsideTrap?: boolean;
+    ignoreExternalFocusing?: boolean;
+    isClickableOutsideFocusTrap?: boolean;
+}
 
 // @public (undocumented)
 export interface IActivityItemProps extends React.AllHTMLAttributes<HTMLElement> {
@@ -3816,8 +3828,6 @@ export interface IDialogFooterStyles {
     actionsRight: IStyle;
 }
 
-// Warning: (ae-forgotten-export) The symbol "IAccessiblePopupProps" needs to be exported by the entry point index.d.ts
-// 
 // @public (undocumented)
 export interface IDialogProps extends React.ClassAttributes<DialogBase>, IWithResponsiveModeState, IAccessiblePopupProps {
     // @deprecated
