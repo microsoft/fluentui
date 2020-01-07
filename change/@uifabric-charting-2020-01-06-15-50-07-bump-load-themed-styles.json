@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "bumping load-themed-styles to take advantage of es6 version of it",
+  "packageName": "@uifabric/charting",
+  "email": "kchau@microsoft.com",
+  "commit": "9041aee981e0ad058920172d078af2d2cc2292db",
+  "date": "2020-01-06T23:50:03.641Z"
+}
