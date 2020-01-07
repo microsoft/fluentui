@@ -1429,9 +1429,6 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
             display: inline-block;
             margin-bottom: 8px;
           }
-          &.is-open {
-            border-color: #605e5c;
-          }
           @media screen and (-ms-high-contrast: active){&.is-open {
             -ms-high-contrast-adjust: none;
             background-color: Window;

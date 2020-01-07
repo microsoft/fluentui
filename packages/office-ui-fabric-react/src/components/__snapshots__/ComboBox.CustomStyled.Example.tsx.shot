@@ -99,9 +99,6 @@ exports[`Component Examples renders ComboBox.CustomStyled.Example.tsx correctly 
             display: inline-block;
             margin-bottom: 8px;
           }
-          &.is-open {
-            border-color: #605e5c;
-          }
           @media screen and (-ms-high-contrast: active){&.is-open {
             -ms-high-contrast-adjust: none;
             background-color: Window;
@@ -497,9 +494,6 @@ exports[`Component Examples renders ComboBox.CustomStyled.Example.tsx correctly 
           & .ms-Label {
             display: inline-block;
             margin-bottom: 8px;
-          }
-          &.is-open {
-            border-color: #605e5c;
           }
           @media screen and (-ms-high-contrast: active){&.is-open {
             -ms-high-contrast-adjust: none;
