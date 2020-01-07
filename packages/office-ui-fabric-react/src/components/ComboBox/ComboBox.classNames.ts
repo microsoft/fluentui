@@ -37,8 +37,6 @@ export const getClassNames = memoizeFunction(
   ): IComboBoxClassNames => {
     return {
       container: mergeStyles('ms-ComboBox-container', className, styles.container),
-      icon: mergeStyles(styles.icon, disabled && styles.iconDisabled),
-      iconAndLabelContainerWrapper: mergeStyles(styles.iconAndLabelContainerWrapper),
       label: mergeStyles(styles.label, disabled && styles.labelDisabled),
       root: mergeStyles(
         'ms-ComboBox',
@@ -63,7 +61,9 @@ export const getClassNames = memoizeFunction(
       optionsContainer: mergeStyles('ms-ComboBox-optionsContainer', styles.optionsContainer),
       header: mergeStyles('ms-ComboBox-header', styles.header),
       divider: mergeStyles('ms-ComboBox-divider', styles.divider),
-      screenReaderText: mergeStyles(styles.screenReaderText)
+      screenReaderText: mergeStyles(styles.screenReaderText),
+      icon: mergeStyles(styles.icon, disabled && styles.iconDisabled),
+      iconAndLabelContainerWrapper: mergeStyles(styles.iconAndLabelContainerWrapper)
     };
   }
 );
