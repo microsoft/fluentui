@@ -5,8 +5,10 @@
   "description": "A11y Tests for Office UI Fabric React",
   "scripts": {
     "build": "just-scripts build",
+    "bundle": "just-scripts bundle",
+    "lint": "just-scripts lint",
     "just": "just-scripts",
-    "test": "just-scripts jest",
+    "test": "just-scripts test",
     "code-style": "just-scripts code-style",
     "update-snapshots": "just-scripts jest -u"
   },

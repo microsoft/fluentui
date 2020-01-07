@@ -5,4 +5,4 @@ const { task, series } = just;
 preset();
 
 task('run-perf-test', perfTest);
-task('perf-test', series('build', 'run-perf-test'));
+task('perf-test', series('build', 'bundle', 'run-perf-test'));

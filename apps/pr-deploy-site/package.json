@@ -5,6 +5,8 @@
   "main": "index.js",
   "scripts": {
     "build": "just-scripts build",
+    "bundle": "just-scripts bundle",
+    "test": "just-scripts test",
     "just": "just-scripts"
   },
   "license": "MIT",

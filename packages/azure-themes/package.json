@@ -15,6 +15,9 @@
   "license": "MIT",
   "scripts": {
     "build": "just-scripts build",
+    "bundle": "just-scripts bundle",
+    "lint": "just-scripts lint",
+    "test": "just-scripts test",
     "just": "just-scripts",
     "code-style": "just-scripts code-style",
     "clean": "just-scripts clean"
