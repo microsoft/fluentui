@@ -952,9 +952,8 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
     if (isValidCandidateOnpagingDown || isValidCandidateOnpagingUp) {
       if (leftAlignment >= targetRect.left && leftAlignment <= targetRect.left + targetRect.width) {
         return 0;
-      } else {
-        return Math.abs(targetRect.left + targetRect.width / 2 - leftAlignment);
       }
+      return Math.abs(targetRect.left + targetRect.width / 2 - leftAlignment);
     } else {
       if (!this._shouldWrapFocus(this._activeElement as HTMLElement, NO_VERTICAL_WRAP)) {
         return LARGE_NEGATIVE_DISTANCE_FROM_CENTER;
@@ -1035,15 +1034,14 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
           this._root.current.firstElementChild as HTMLElement,
           true
         ) as HTMLElement);
-      } else {
-        return this.focusElement(getPreviousElement(
-          this._root.current,
-          this._root.current.lastElementChild as HTMLElement,
-          true,
-          true,
-          true
-        ) as HTMLElement);
       }
+      return this.focusElement(getPreviousElement(
+        this._root.current,
+        this._root.current.lastElementChild as HTMLElement,
+        true,
+        true,
+        true
+      ) as HTMLElement);
     }
     return changedFocus;
   }
