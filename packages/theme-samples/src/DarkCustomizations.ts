@@ -1,11 +1,18 @@
-import { createTheme, ICustomizations, IPalette, ITheme } from 'office-ui-fabric-react';
+import {
+  createTheme,
+  ICustomizations,
+  IPalette,
+  ITheme,
+  IPeoplePickerItemSelectedStyleProps,
+  IPeoplePickerItemSelectedStyles
+} from 'office-ui-fabric-react';
 import { addVariants } from '@uifabric/variants';
 
 const DarkDefaultPalette: Partial<IPalette> = {
   themeDarker: '#8ac2ec',
   themeDark: '#65aee6',
   themeDarkAlt: '#4ba0e1',
-  themePrimary: '#3a96dd',
+  themePrimary: '#2899f5',
   themeSecondary: '#3385c3',
   themeTertiary: '#235a85',
   themeLight: '#112d43',
@@ -24,31 +31,160 @@ const DarkDefaultPalette: Partial<IPalette> = {
   neutralLight: '#292827',
   neutralLighter: '#252423',
   neutralLighterAlt: '#201f1e',
-  white: '#1b1a19'
+  white: '#1b1a19',
+  redDark: '#F1707B'
 };
 
 const DarkTheme: ITheme = createTheme({
   palette: DarkDefaultPalette,
   semanticColors: {
+    buttonText: DarkDefaultPalette.black,
+    buttonTextPressed: DarkDefaultPalette.neutralDark,
+    buttonTextHovered: DarkDefaultPalette.neutralPrimary,
+    bodySubtext: '#ffffff',
     disabledBackground: DarkDefaultPalette.neutralQuaternaryAlt,
-    inputBackgroundChecked: DarkDefaultPalette.themeSecondary,
-    inputPlaceholderBackgroundChecked: DarkDefaultPalette.themeDarker,
+    inputBackgroundChecked: DarkDefaultPalette.themePrimary,
+    inputPlaceholderBackgroundChecked: DarkDefaultPalette.themeTertiary,
     menuBackground: DarkDefaultPalette.neutralLighter,
     menuItemBackgroundHovered: DarkDefaultPalette.neutralQuaternaryAlt,
     menuItemBackgroundPressed: DarkDefaultPalette.neutralQuaternary,
     menuDivider: DarkDefaultPalette.neutralTertiaryAlt,
     menuIcon: DarkDefaultPalette.themeDarkAlt,
-    menuHeader: DarkDefaultPalette.themeDarkAlt,
+    menuHeader: DarkDefaultPalette.black,
     menuItemText: DarkDefaultPalette.neutralPrimary,
     menuItemTextHovered: DarkDefaultPalette.neutralDark
   }
 });
 
+export const PeoplePickerItemStyles = (props: IPeoplePickerItemSelectedStyleProps): Partial<IPeoplePickerItemSelectedStyles> => {
+  const { selected, theme } = props;
+  const { palette } = theme;
+
+  return {
+    root: {
+      background: DarkTheme.palette.neutralQuaternaryAlt,
+      selectors: {
+        ':hover': {
+          background: DarkTheme.palette.neutralQuaternary
+        }
+      }
+    },
+    removeButton: [
+      {
+        background: 'transparent',
+        selectors: {
+          ':active': {
+            color: palette.white,
+            backgroundColor: palette.themeDark
+          }
+        }
+      },
+      !selected && {
+        color: palette.neutralPrimary
+      },
+      selected && {
+        color: palette.white
+      }
+    ]
+  };
+};
 export const DarkCustomizations: ICustomizations = {
   settings: {
     theme: DarkTheme
   },
-  scopedSettings: {}
+  scopedSettings: {
+    DetailsList: {
+      styles: {
+        headerWrapper: {
+          selectors: {
+            '.ms-DetailsHeader': {
+              borderColor: DarkTheme.palette.neutralQuaternary
+            }
+          }
+        }
+      }
+    },
+    DetailsRow: {
+      styles: {
+        root: {
+          borderColor: DarkTheme.palette.neutralQuaternaryAlt
+        }
+      }
+    },
+    ActivityItem: {
+      styles: {
+        root: {
+          color: DarkTheme.palette.redDark
+        }
+      }
+    },
+    VerticalDivider: {
+      styles: {
+        divider: {
+          backgroundColor: DarkTheme.palette.neutralQuaternaryAlt
+        }
+      }
+    },
+    DocumentCard: {
+      styles: {
+        root: {
+          borderColor: DarkTheme.palette.neutralQuaternaryAlt
+        }
+      }
+    },
+    Persona: {
+      styles: {
+        intials: {
+          color: DarkTheme.palette.neutralLighter
+        }
+      }
+    },
+    PersonaCoin: {
+      styles: {
+        presence: {
+          backgroundColor: DarkTheme.palette.redDark
+        },
+        presenceIcon: {
+          backgroundColor: DarkTheme.palette.redDark
+        }
+      }
+    },
+    Panel: {
+      styles: {
+        main: {
+          backgroundColor: DarkTheme.palette.neutralLighter
+        },
+        closeButton: {
+          color: DarkTheme.palette.neutralSecondary,
+          selectors: {
+            ':hover': {
+              color: DarkTheme.palette.neutralPrimary
+            }
+          }
+        }
+      }
+    },
+    PeoplePickerItem: {
+      styles: {
+        PeoplePickerItemStyles
+      }
+    },
+    SelectedPersona: {
+      styles: {
+        main: {
+          backgroundColor: DarkTheme.palette.neutralLighter
+        },
+        closeButton: {
+          color: DarkTheme.palette.neutralSecondary,
+          selectors: {
+            ':hover': {
+              color: DarkTheme.palette.neutralPrimary
+            }
+          }
+        }
+      }
+    }
+  }
 };
 
 addVariants(DarkCustomizations.settings.theme);
