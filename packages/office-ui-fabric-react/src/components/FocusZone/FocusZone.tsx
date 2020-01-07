@@ -938,7 +938,6 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
 
   private _getHorizontalDistanceFromCenter = (isForward: boolean, activeRect: ClientRect, targetRect: ClientRect): number => {
     const leftAlignment = this._focusAlignment.x;
-    let distance = -1;
     // ClientRect values can be floats that differ by very small fractions of a decimal.
     // If the difference between top and bottom are within a pixel then we should treat
     // them as equivalent by using Math.floor. For instance 5.2222 and 5.222221 should be equivalent,
@@ -947,26 +946,21 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
     const activeRectBottom = Math.floor(activeRect.bottom);
     const targetRectBottom = Math.floor(targetRect.bottom);
     const activeRectTop = Math.floor(activeRect.top);
-    // for paging down
-    if (isForward && targetRectTop < activeRectBottom) {
-      if (!this._shouldWrapFocus(this._activeElement as HTMLElement, NO_VERTICAL_WRAP)) {
-        return LARGE_NEGATIVE_DISTANCE_FROM_CENTER;
-      }
-      return LARGE_DISTANCE_FROM_CENTER;
-    } else if (!isForward && targetRectBottom > activeRectTop) {
-      // for paging up
-      if (!this._shouldWrapFocus(this._activeElement as HTMLElement, NO_VERTICAL_WRAP)) {
-        return LARGE_NEGATIVE_DISTANCE_FROM_CENTER;
-      }
-      return LARGE_DISTANCE_FROM_CENTER;
-    } else {
+    const isValidCandidateOnpagingDown = isForward && targetRectTop > activeRectBottom;
+    const isValidCandidateOnpagingUp = !isForward && targetRectBottom < activeRectTop;
+
+    if (isValidCandidateOnpagingDown || isValidCandidateOnpagingUp) {
       if (leftAlignment >= targetRect.left && leftAlignment <= targetRect.left + targetRect.width) {
-        distance = 0;
+        return 0;
       } else {
-        distance = Math.abs(targetRect.left + targetRect.width / 2 - leftAlignment);
+        return Math.abs(targetRect.left + targetRect.width / 2 - leftAlignment);
       }
+    } else {
+      if (!this._shouldWrapFocus(this._activeElement as HTMLElement, NO_VERTICAL_WRAP)) {
+        return LARGE_NEGATIVE_DISTANCE_FROM_CENTER;
+      }
+      return LARGE_DISTANCE_FROM_CENTER;
     }
-    return distance;
   };
 
   private _moveFocusPaging(isForward: boolean, useDefaultWrap: boolean = true): boolean {
@@ -1001,13 +995,10 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
         const targetRectBottom = Math.floor(targetRect.bottom);
         const activeRectTop = Math.floor(activeRect.top);
         const elementDistance = this._getHorizontalDistanceFromCenter(isForward, activeRect, targetRect);
+        const isElementPassedPageSizeOnPagingDown = isForward && targetRectTop > activeRectBottom + pagesize;
+        const isElementPassedPageSizeOnPagingUp = !isForward && targetRectBottom < activeRectTop - pagesize;
 
-        // for paging down
-        if (isForward && targetRectTop > activeRectBottom + pagesize) {
-          break;
-        }
-        // for paging up
-        if (!isForward && targetRectBottom < activeRectTop - pagesize) {
+        if (isElementPassedPageSizeOnPagingDown || isElementPassedPageSizeOnPagingUp) {
           break;
         }
         if (elementDistance > -1) {
