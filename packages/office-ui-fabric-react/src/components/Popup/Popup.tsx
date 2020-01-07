@@ -143,7 +143,7 @@ export class Popup extends React.Component<IPopupProps, IPopupState> {
   };
 
   private _onBlur = (ev: FocusEvent): void => {
-    if (this._root.current && this._root.current.contains(ev.relatedTarget as HTMLElement)) {
+    if (this._root.current && ev.relatedTarget && !this._root.current.contains(ev.relatedTarget as HTMLElement)) {
       this._containsFocus = false;
     }
   };
