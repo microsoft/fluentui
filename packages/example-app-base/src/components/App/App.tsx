@@ -101,11 +101,7 @@ export class AppBase extends React.Component<IAppProps, IAppState> {
         );
       }
       if (Object.keys(otherCustomizations).length) {
-        app = (
-          <Customizer settings={{}} scopedSettings={{}} {...otherCustomizations}>
-            {app}
-          </Customizer>
-        );
+        app = <Customizer {...otherCustomizations}>{app}</Customizer>;
       }
     }
     return app;
