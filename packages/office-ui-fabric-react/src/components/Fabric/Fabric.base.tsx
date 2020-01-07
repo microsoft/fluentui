@@ -36,9 +36,11 @@ export class FabricBase extends React.Component<
   public render() {
     const { as: Root = 'div', theme, dir } = this.props;
     const classNames = this._getClassNames();
-    const divProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties);
+    const divProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties, ['dir']);
+    // If dir is set via props, use that value, otherwise if theme is set, use theme RTL setting, otherwise, set undefined.
+    const htmlDir = dir !== undefined ? dir : theme !== undefined ? (theme.rtl === true ? 'rtl' : 'ltr') : undefined;
     const isRTL = dir === 'rtl';
-    let renderedContent = <Root {...divProps} className={classNames.root} ref={this._rootElement} />;
+    let renderedContent = <Root dir={htmlDir} {...divProps} className={classNames.root} ref={this._rootElement} />;
 
     // Expose an rtl based theme if dir is specified and it doesn't agree with the theme setting.
     if (dir !== undefined && theme && (theme.rtl === undefined || theme.rtl !== isRTL)) {
