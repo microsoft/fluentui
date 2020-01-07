@@ -28,6 +28,7 @@ import { Label } from '../../Label';
 import { SelectableOptionMenuItemType, getAllSelectedOptions } from '../../utilities/selectableOption/index';
 import { BaseButton, Button } from '../Button/index';
 import { ICalloutProps } from '../../Callout';
+import { Icon } from '../Icon';
 
 export interface IComboBoxState {
   /** The open state */
@@ -340,7 +341,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       autofill,
       persistMenu,
       iconButtonProps,
-      multiSelect
+      multiSelect,
+      iconProps
     } = this.props;
     const { isOpen, focused, suggestedDisplayValue } = this.state;
     this._currentVisibleValue = this._getVisibleValue();
@@ -377,11 +379,16 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
     return (
       <div {...divProps} ref={this._root} className={this._classNames.container}>
-        {label && (
-          <Label id={id + '-label'} disabled={disabled} required={required} className={this._classNames.label}>
-            {label}
-            {multiselectAccessibleText && <span className={this._classNames.screenReaderText}>{multiselectAccessibleText}</span>}
-          </Label>
+        {(iconProps || label) && (
+          <div className={this._classNames.iconAndLabelContainerWrapper}>
+            {iconProps && <Icon id={id + '-icon'} className={this._classNames.icon} {...iconProps} />}
+            {label && (
+              <Label id={id + '-label'} disabled={disabled} required={required} className={this._classNames.label}>
+                {label}
+                {multiselectAccessibleText && <span className={this._classNames.screenReaderText}>{multiselectAccessibleText}</span>}
+              </Label>
+            )}
+          </div>
         )}
         <KeytipData keytipProps={keytipProps} disabled={disabled}>
           {(keytipAttributes: any): JSX.Element => (

@@ -14,6 +14,8 @@ export interface IComboBoxClassNames {
   divider: string;
   optionsContainerWrapper: string;
   screenReaderText: string;
+  icon?: string;
+  iconAndLabelContainerWrapper?: string;
 }
 
 export interface IComboBoxOptionClassNames {
@@ -35,6 +37,8 @@ export const getClassNames = memoizeFunction(
   ): IComboBoxClassNames => {
     return {
       container: mergeStyles('ms-ComboBox-container', className, styles.container),
+      icon: mergeStyles(styles.icon, disabled && styles.iconDisabled),
+      iconAndLabelContainerWrapper: mergeStyles(styles.iconAndLabelContainerWrapper),
       label: mergeStyles(styles.label, disabled && styles.labelDisabled),
       root: mergeStyles(
         'ms-ComboBox',

@@ -121,6 +121,7 @@ export class ComboBoxBasicExample extends React.Component<{}, IComboBoxBasicExam
         />
 
         <ComboBox disabled label="Disabled ComboBox" defaultSelectedKey="D" options={INITIAL_OPTIONS} />
+        <ComboBox iconProps={{ iconName: 'Airplane' }} label="With Icon ComboBox" defaultSelectedKey="D" options={INITIAL_OPTIONS} />
       </Fabric>
     );
   }
