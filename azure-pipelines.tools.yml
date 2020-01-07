@@ -1,3 +1,4 @@
+# Install versions of Node and Yarn required by build pipelines.
 steps:
 - task: NodeTool@0
   inputs:
