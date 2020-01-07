@@ -25,7 +25,9 @@ $errorBackgroundColor: '[theme:errorBackground, default: rgba(245, 135, 145, .2)
 $blockingBackgroundColor: '[theme:blockingBackground, default: rgba(250, 65, 0, .2)]'; 
 $warningBackgroundColor: '[theme:warningBackground, default: rgba(255, 200, 10, .2)]'; 
 $warningHighlightColor: '[theme:warningHighlight, default: #ffb900]'; 
-$successBackgroundColor: '[theme:successBackground, default: rgba(95, 210, 85, .2)]'; 
+$successBackgroundColor: '[theme:successBackground, default: rgba(95, 210, 85, .2)]';
+$infoBackground: '[theme.neutralLighter, default: #f4f4f4]';
+$infoText: '[theme.neutralSecondary, default: #666666]';
 $inputBorderColor: '[theme:inputBorder, default: #8a8886]'; 
 $inputBorderHoveredColor: '[theme:inputBorderHovered, default: #323130]'; 
 $inputBackgroundColor: '[theme:inputBackground, default: #ffffff]'; 

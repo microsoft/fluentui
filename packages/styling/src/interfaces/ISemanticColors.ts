@@ -167,6 +167,11 @@ export interface ISemanticColors extends ISemanticTextColors {
    */
   successBackground: string;
 
+  /**
+   * Background for info
+   */
+  infoBackground: string;
+
   //// Input controls slots (text fields, checkboxes, radios...)
 
   /**

@@ -51,7 +51,7 @@ const getRootBackground = (
     case MessageBarType.warning:
       return semanticColors.warningBackground;
   }
-  return palette.neutralLighter;
+  return semanticColors.infoBackground;
 };
 
 /**
@@ -74,22 +74,18 @@ const getHighContrastRootBackground = (messageBarType: MessageBarType | undefine
 };
 
 // Returns the icon color based on the type of MessageBar.
-const getIconColor = (
-  messageBarType: MessageBarType | undefined,
-  palette: IPalette,
-  semanticColors: ISemanticColors,
-): string => {
+const getIconColor = (messageBarType: MessageBarType | undefined, semanticColors: ISemanticColors): string => {
   switch (messageBarType) {
     case MessageBarType.error:
     case MessageBarType.blocked:
     case MessageBarType.severeWarning:
       return semanticColors.errorText;
     case MessageBarType.success:
-      return palette.green;
+      return semanticColors.successText;
     case MessageBarType.warning:
       return semanticColors.warningText;
   }
-  return palette.neutralSecondary;
+  return semanticColors.infoText;
 };
 
 export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
@@ -200,7 +196,7 @@ export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
       },
     ],
     icon: {
-      color: getIconColor(messageBarType, palette, semanticColors),
+      color: getIconColor(messageBarType, semanticColors),
       selectors: {
         [HighContrastSelector]: {
           MsHighContrastAdjust: 'none',

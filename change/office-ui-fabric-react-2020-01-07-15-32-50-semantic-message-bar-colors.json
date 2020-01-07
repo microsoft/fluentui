@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "MessageBar: Semantic colors for default and success cases.",
+  "packageName": "office-ui-fabric-react",
+  "email": "jdh@microsoft.com",
+  "commit": "d28a34c4081a218e459fdaa9aaf9c185b3f39ab3",
+  "date": "2020-01-07T23:32:14.343Z"
+}

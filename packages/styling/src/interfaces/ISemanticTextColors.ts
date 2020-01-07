@@ -80,6 +80,11 @@ export interface ISemanticTextColors {
   successText: string;
 
   /**
+   * The default color of info text on infoBackground.
+   */
+  infoText: string;
+
+  /**
    * The color of input text.
    */
   inputText: string;

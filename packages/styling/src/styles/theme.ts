@@ -277,14 +277,16 @@ function _makeSemanticColorsFromPalette(p: IPalette, isInverted: boolean, depCom
     menuItemText: p.neutralPrimary,
     menuItemTextHovered: p.neutralDark,
 
-    errorText: !isInverted ? p.redDark : '#ff5f5f',
-    warningText: !isInverted ? '#333333' : '#ffffff',
-    successText: !isInverted ? '#107C10' : '#92c353',
-    errorBackground: !isInverted ? 'rgba(245, 135, 145, .2)' : 'rgba(232, 17, 35, .5)',
     blockingBackground: !isInverted ? 'rgba(250, 65, 0, .2)' : 'rgba(234, 67, 0, .5)',
+    errorBackground: !isInverted ? 'rgba(245, 135, 145, .2)' : 'rgba(232, 17, 35, .5)',
+    errorText: !isInverted ? p.redDark : '#ff5f5f',
+    infoBackground: p.neutralLighter,
+    infoText: p.neutralSecondary,
+    successBackground: !isInverted ? 'rgba(95, 210, 85, .2)' : 'rgba(186, 216, 10, .4)',
+    successText: !isInverted ? '#107C10' : '#92c353',
     warningBackground: !isInverted ? 'rgba(255, 200, 10, .2)' : 'rgba(255, 251, 0, .6)',
     warningHighlight: !isInverted ? '#ffb900' : '#fff100',
-    successBackground: !isInverted ? 'rgba(95, 210, 85, .2)' : 'rgba(186, 216, 10, .4)',
+    warningText: !isInverted ? '#333333' : '#ffffff',
 
     // Deprecated slots, second pass by _fixDeprecatedSlots() later for self-referential slots
     listTextColor: '',
