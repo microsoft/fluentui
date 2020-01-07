@@ -28,7 +28,6 @@ exports[`Component Examples renders ComboBox.Toggles.Example.tsx correctly 1`] =
       & .ms-ComboBox {
         max-width: 300px;
       }
-  dir="ltr"
 >
   <div
     className="ms-ComboBox-container "

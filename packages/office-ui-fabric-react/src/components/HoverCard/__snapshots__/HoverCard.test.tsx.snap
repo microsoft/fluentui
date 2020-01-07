@@ -26,7 +26,6 @@ exports[`HoverCard renders ExpandingCard correctly 1`] = `
         & textarea {
           font-family: inherit;
         }
-    dir="ltr"
     onBlur={[Function]}
     onChange={[Function]}
     onClick={[Function]}
@@ -194,7 +193,6 @@ exports[`HoverCard renders PlainCard correctly 1`] = `
         & textarea {
           font-family: inherit;
         }
-    dir="ltr"
     onBlur={[Function]}
     onChange={[Function]}
     onClick={[Function]}
