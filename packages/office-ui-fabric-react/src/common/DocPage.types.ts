@@ -148,7 +148,7 @@ export interface ITableJson {
    */
   extendsTokens: ILinkToken[];
   description: string;
-  members: ITableRowJson[] | IEnumTableRowJson[];
+  members?: ITableRowJson[] | IEnumTableRowJson[];
   deprecated?: boolean;
   deprecatedMessage?: string;
 }

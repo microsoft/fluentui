@@ -149,7 +149,7 @@ function _generateTableProps(jsonDocs: IPageJson | undefined): IApiReferencesTab
       name,
       title: kind !== 'typeAlias' ? name + ' ' + kind : name,
       renderAs: kind,
-      properties: members,
+      properties: members || [],
       tokenResolver: tokenResolver
     };
 
