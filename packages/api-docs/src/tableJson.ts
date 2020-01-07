@@ -46,6 +46,7 @@ function createBasicTableJson(
   const tableJson: ITableJson = {
     kind,
     name: apiItem.displayName,
+    members: [],
     description: (tsdocComment && renderDocNodeWithoutInlineTag(tsdocComment.summarySection)) || undefined
   };
 

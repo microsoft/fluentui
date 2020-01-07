@@ -50,7 +50,7 @@ export interface ITableJson {
    * `[{ text: 'Readonly<' }, { text: 'IFoo', linkedPage: 'Foo', linkedPageGroup: 'components' }, { text: '>' }]`
    */
   extendsTokens?: ILinkToken[];
-  members?: ITableRowJson[] | IEnumTableRowJson[];
+  members: ITableRowJson[] | IEnumTableRowJson[];
   deprecated?: boolean;
   deprecatedMessage?: string;
 }
