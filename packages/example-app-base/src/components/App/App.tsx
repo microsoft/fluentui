@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { AppCustomizationsContext } from '../../utilities/customizations';
-import { classNamesFunction, css, styled } from 'office-ui-fabric-react/lib/Utilities';
+import { classNamesFunction, css, styled, Customizer } from 'office-ui-fabric-react/lib/Utilities';
 import { ExampleStatus, IAppProps, IAppStyleProps, IAppStyles } from './App.types';
 import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
 import { getStyles } from './App.styles';
@@ -53,7 +53,7 @@ export class AppBase extends React.Component<IAppProps, IAppState> {
       />
     );
 
-    const app = (
+    let app = (
       <Fabric className={classNames.root}>
         {!onlyExamples && (
           <div className={classNames.headerContainer}>
@@ -92,7 +92,19 @@ export class AppBase extends React.Component<IAppProps, IAppState> {
       </Fabric>
     );
 
-    return customizations ? <AppCustomizationsContext.Provider value={customizations}>{app}</AppCustomizationsContext.Provider> : app;
+    if (customizations) {
+      const { exampleCardCustomizations, hideSchemes, ...otherCustomizations } = customizations;
+
+      if (exampleCardCustomizations || typeof hideSchemes === 'boolean') {
+        app = (
+          <AppCustomizationsContext.Provider value={{ exampleCardCustomizations, hideSchemes }}>{app}</AppCustomizationsContext.Provider>
+        );
+      }
+      if (Object.keys(otherCustomizations).length) {
+        app = <Customizer {...otherCustomizations}>{app}</Customizer>;
+      }
+    }
+    return app;
   }
 
   private _onIsMenuVisibleChanged = (isMenuVisible: boolean): void => {
