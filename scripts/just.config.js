@@ -66,9 +66,7 @@ module.exports = function preset() {
   // TODO: is there a reason not just to generate ts:amd all the time? (it was by default previously anyways)
   // TODO: make sure this works with build:prod
   task('ts', () => {
-    return argv().commonjs
-      ? 'ts:commonjs-only'
-      : parallel('ts:commonjs', 'ts:esm', condition('ts:amd', () => argv().production && !argv().min));
+    return argv().commonjs ? 'ts:commonjs-only' : parallel('ts:commonjs', 'ts:esm', condition('ts:amd', () => !!argv().production));
   });
 
   task('test', condition('jest', () => fs.existsSync(path.join(process.cwd(), 'jest.config.js'))));
