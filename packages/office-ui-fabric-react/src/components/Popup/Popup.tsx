@@ -53,6 +53,8 @@ export class Popup extends React.Component<IPopupProps, IPopupState> {
 
   public componentWillUnmount(): void {
     this._disposables.forEach((dispose: () => void) => dispose());
+    this._async.dispose();
+
     if (
       this.props.shouldRestoreFocus &&
       this._originalFocusedElement &&
@@ -67,6 +69,7 @@ export class Popup extends React.Component<IPopupProps, IPopupState> {
       }
     }
 
+    // Ensure event handler callback closures and references can be garbage-collected
     delete this._originalFocusedElement;
     delete this._disposables;
   }
