@@ -1,7 +1,14 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 06 Jan 2020 12:29:10 GMT and should not be manually modified.
+This log was last generated on Tue, 07 Jan 2020 12:31:36 GMT and should not be manually modified.
 
+## 7.78.3
+Tue, 07 Jan 2020 12:31:36 GMT
+
+### Patches
+
+- Pickers: fix multiple enter presses selecting same option many times (joschect@microsoft.com)
+- FocusTrapZone: Release event handlers and element references for garbage-collection (KevinTCoughlin@users.noreply.github.com)
 ## 7.78.2
 Mon, 06 Jan 2020 12:29:10 GMT
 

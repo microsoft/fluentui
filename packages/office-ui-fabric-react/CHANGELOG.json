@@ -2,6 +2,25 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Tue, 07 Jan 2020 12:31:36 GMT",
+      "tag": "office-ui-fabric-react_v7.78.3",
+      "version": "7.78.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Pickers: fix multiple enter presses selecting same option many times",
+            "author": "joschect@microsoft.com",
+            "commit": "3f526ca3afd4baa4e36e166ac451d3c2ef6135cc"
+          },
+          {
+            "comment": "FocusTrapZone: Release event handlers and element references for garbage-collection",
+            "author": "KevinTCoughlin@users.noreply.github.com",
+            "commit": "48919fcf5f091b25b4b21931164e5572084f2e98"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 06 Jan 2020 12:29:10 GMT",
       "tag": "office-ui-fabric-react_v7.78.2",
       "version": "7.78.2",
