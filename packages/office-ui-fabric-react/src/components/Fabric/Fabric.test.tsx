@@ -22,7 +22,6 @@ describe('Fabric', () => {
   it('renders a Fabric component in RTL and LTR theme', () => {
     const content = (
       <div>
-        <Checkbox label="I am a default Checkbox" />
         <Fabric dir="ltr">
           <Checkbox label="I am in ltr" />
 
