@@ -6,8 +6,8 @@ import {
   IDetailsFooterProps,
   DetailsRow,
   SelectionMode,
-  IDetailsRowCheckProps,
-  DetailsRowCheck
+  DetailsRowCheck,
+  IDetailsRowBaseProps
 } from 'office-ui-fabric-react/lib/DetailsList';
 
 export interface IDetailsListCustomFooterExampleItem {
@@ -71,14 +71,17 @@ export class DetailsListCustomFooterExample extends React.Component<{}, {}> {
   }
 }
 
-function _renderDetailsFooterItemColumn(item: IDetailsListCustomFooterExampleItem, index: number, column: IColumn) {
-  return (
-    <div>
-      <b>{column.name}</b>
-    </div>
-  );
-}
+const _renderDetailsFooterItemColumn: IDetailsRowBaseProps['onRenderItemColumn'] = (item, index, column) => {
+  if (column) {
+    return (
+      <div>
+        <b>{column.name}</b>
+      </div>
+    );
+  }
+  return undefined;
+};
 
-function _onRenderCheckForFooterRow(props: IDetailsRowCheckProps): JSX.Element {
+const _onRenderCheckForFooterRow: IDetailsRowBaseProps['onRenderCheck'] = (props): JSX.Element => {
   return <DetailsRowCheck {...props} styles={{ root: { visibility: 'hidden' } }} selected={true} />;
-}
+};

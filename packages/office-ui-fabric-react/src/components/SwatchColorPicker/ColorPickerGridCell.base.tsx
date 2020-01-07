@@ -61,18 +61,18 @@ const getClassNames = classNamesFunction<IColorPickerGridCellStyleProps, IColorP
 class ColorCell extends GridCell<IColorCellProps, IGridCellProps<IColorCellProps>> {}
 
 export class ColorPickerGridCellBase extends React.PureComponent<IColorPickerGridCellProps, {}> {
-  public static defaultProps = {
+  public static defaultProps: Partial<IColorPickerGridCellProps> = {
     circle: true,
     disabled: false,
     selected: false
-  } as IColorPickerGridCellProps;
+  };
 
   private _classNames: { [key in keyof IColorPickerGridCellStyles]: string };
 
   public render(): JSX.Element {
     const {
       item,
-      id,
+      idPrefix = this.props.id,
       selected,
       disabled,
       styles,
@@ -106,7 +106,7 @@ export class ColorPickerGridCellBase extends React.PureComponent<IColorPickerGri
     return (
       <ColorCell
         item={item}
-        id={`${id}-${item.id}-${item.index}`}
+        id={`${idPrefix}-${item.id}-${item.index}`}
         key={item.id}
         disabled={disabled}
         role={'gridcell'}
