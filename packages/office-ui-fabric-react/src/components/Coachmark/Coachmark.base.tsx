@@ -523,14 +523,14 @@ export class CoachmarkBase extends BaseComponent<ICoachmarkProps, ICoachmarkStat
         }
 
         if (this._beakDirection === RectangleEdge.left) {
-          if (getRTL()) {
+          if (getRTL(this.props.theme)) {
             beakRight = distanceAdjustment;
           } else {
             beakLeft = distanceAdjustment;
           }
           transformOriginX = 'left';
         } else {
-          if (getRTL()) {
+          if (getRTL(this.props.theme)) {
             beakLeft = distanceAdjustment;
           } else {
             beakRight = distanceAdjustment;

@@ -92,7 +92,6 @@ exports[`Component Examples renders FloatingPeoplePicker.Basic.Example.tsx corre
         </i>
       </div>
       <input
-        aria-label="Search for person"
         className=
             ms-SearchBox-field
             {

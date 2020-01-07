@@ -20,6 +20,8 @@ exports[`Component Examples renders Pivot.SeparateNoSelectedKey.Example.tsx corr
     }
   >
     <div
+      aria-label="No Selected Pivot Example"
+      role="tablist"
       style={
         Object {
           "flexGrow": 1,
@@ -60,7 +62,6 @@ exports[`Component Examples renders Pivot.SeparateNoSelectedKey.Example.tsx corr
                 position: relative;
                 white-space: nowrap;
               }
-          role="tablist"
         >
           <button
             aria-selected={false}
@@ -662,6 +663,7 @@ exports[`Component Examples renders Pivot.SeparateNoSelectedKey.Example.tsx corr
           style={
             Object {
               "color": "blue",
+              "fontFamily": "\\"FabricMDL2Icons\\"",
             }
           }
         >

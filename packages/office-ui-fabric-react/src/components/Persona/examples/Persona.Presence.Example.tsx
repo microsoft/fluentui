@@ -29,20 +29,70 @@ export class PersonaPresenceExample extends React.Component<{}> {
           <Stack>
             <Label>Online</Label>
             <Stack horizontal>
-              <Persona text="" size={PersonaSize.size8} hidePersonaDetails presence={PersonaPresence.online} />
-              <Persona {...examplePersona} size={PersonaSize.size24} hidePersonaDetails presence={PersonaPresence.online} />
-              <Persona {...examplePersona} hidePersonaDetails presence={PersonaPresence.online} />
-              <Persona {...examplePersona} size={PersonaSize.size72} hidePersonaDetails presence={PersonaPresence.online} />
+              <Persona
+                text=""
+                size={PersonaSize.size8}
+                hidePersonaDetails
+                presence={PersonaPresence.online}
+                imageAlt="Annie Lindqvist, status is online."
+              />
+              <Persona
+                {...examplePersona}
+                size={PersonaSize.size24}
+                hidePersonaDetails
+                presence={PersonaPresence.online}
+                imageAlt="Annie Lindqvist, status is online."
+              />
+              <Persona
+                {...examplePersona}
+                hidePersonaDetails
+                presence={PersonaPresence.online}
+                imageAlt="Annie Lindqvist, status is online."
+              />
+              <Persona
+                {...examplePersona}
+                size={PersonaSize.size72}
+                hidePersonaDetails
+                presence={PersonaPresence.online}
+                imageAlt="Annie Lindqvist, status is online."
+              />
             </Stack>
           </Stack>
 
           <Stack>
             <Label>Online + Out of Office</Label>
             <Stack horizontal>
-              <Persona text="" size={PersonaSize.size8} hidePersonaDetails presence={PersonaPresence.online} isOutOfOffice />
-              <Persona {...examplePersona} size={PersonaSize.size24} hidePersonaDetails presence={PersonaPresence.online} isOutOfOffice />
-              <Persona {...examplePersona} hidePersonaDetails presence={PersonaPresence.online} isOutOfOffice />
-              <Persona {...examplePersona} size={PersonaSize.size72} hidePersonaDetails presence={PersonaPresence.online} isOutOfOffice />
+              <Persona
+                text=""
+                size={PersonaSize.size8}
+                hidePersonaDetails
+                presence={PersonaPresence.online}
+                isOutOfOffice
+                imageAlt="Annie Lindqvist, status is online and out of office."
+              />
+              <Persona
+                {...examplePersona}
+                size={PersonaSize.size24}
+                hidePersonaDetails
+                presence={PersonaPresence.online}
+                isOutOfOffice
+                imageAlt="Annie Lindqvist, status is online and out of office."
+              />
+              <Persona
+                {...examplePersona}
+                hidePersonaDetails
+                presence={PersonaPresence.online}
+                isOutOfOffice
+                imageAlt="Annie Lindqvist, status is online and out of office."
+              />
+              <Persona
+                {...examplePersona}
+                size={PersonaSize.size72}
+                hidePersonaDetails
+                presence={PersonaPresence.online}
+                isOutOfOffice
+                imageAlt="Annie Lindqvist, status is online and out of office."
+              />
             </Stack>
           </Stack>
         </Stack>
@@ -51,20 +101,65 @@ export class PersonaPresenceExample extends React.Component<{}> {
           <Stack>
             <Label>Away</Label>
             <Stack horizontal>
-              <Persona text="" size={PersonaSize.size8} hidePersonaDetails presence={PersonaPresence.away} />
-              <Persona {...examplePersona} size={PersonaSize.size24} hidePersonaDetails presence={PersonaPresence.away} />
-              <Persona {...examplePersona} hidePersonaDetails presence={PersonaPresence.away} />
-              <Persona {...examplePersona} size={PersonaSize.size72} hidePersonaDetails presence={PersonaPresence.away} />
+              <Persona
+                text=""
+                size={PersonaSize.size8}
+                hidePersonaDetails
+                presence={PersonaPresence.away}
+                imageAlt="Annie Lindqvist, status is away."
+              />
+              <Persona
+                {...examplePersona}
+                size={PersonaSize.size24}
+                hidePersonaDetails
+                presence={PersonaPresence.away}
+                imageAlt="Annie Lindqvist, status is away."
+              />
+              <Persona {...examplePersona} hidePersonaDetails presence={PersonaPresence.away} imageAlt="Annie Lindqvist, status is away." />
+              <Persona
+                {...examplePersona}
+                size={PersonaSize.size72}
+                hidePersonaDetails
+                presence={PersonaPresence.away}
+                imageAlt="Annie Lindqvist, status is away."
+              />
             </Stack>
           </Stack>
 
           <Stack>
             <Label>Away + Out of Office</Label>
             <Stack horizontal>
-              <Persona text="" size={PersonaSize.size8} hidePersonaDetails presence={PersonaPresence.away} isOutOfOffice />
-              <Persona {...examplePersona} size={PersonaSize.size24} hidePersonaDetails presence={PersonaPresence.away} isOutOfOffice />
-              <Persona {...examplePersona} hidePersonaDetails presence={PersonaPresence.away} isOutOfOffice />
-              <Persona {...examplePersona} size={PersonaSize.size72} hidePersonaDetails presence={PersonaPresence.away} isOutOfOffice />
+              <Persona
+                text=""
+                size={PersonaSize.size8}
+                hidePersonaDetails
+                presence={PersonaPresence.away}
+                isOutOfOffice
+                imageAlt="Annie Lindqvist, status is away and out of office."
+              />
+              <Persona
+                {...examplePersona}
+                size={PersonaSize.size24}
+                hidePersonaDetails
+                presence={PersonaPresence.away}
+                isOutOfOffice
+                imageAlt="Annie Lindqvist, status is away and out of office."
+              />
+              <Persona
+                {...examplePersona}
+                hidePersonaDetails
+                presence={PersonaPresence.away}
+                isOutOfOffice
+                imageAlt="Annie Lindqvist, status is away and out of office."
+              />
+              <Persona
+                {...examplePersona}
+                size={PersonaSize.size72}
+                hidePersonaDetails
+                presence={PersonaPresence.away}
+                isOutOfOffice
+                imageAlt="Annie Lindqvist, status is away and out of office."
+              />
             </Stack>
           </Stack>
         </Stack>
@@ -73,20 +168,65 @@ export class PersonaPresenceExample extends React.Component<{}> {
           <Stack>
             <Label>Busy</Label>
             <Stack horizontal>
-              <Persona text="" size={PersonaSize.size8} hidePersonaDetails presence={PersonaPresence.busy} />
-              <Persona {...examplePersona} size={PersonaSize.size24} hidePersonaDetails presence={PersonaPresence.busy} />
-              <Persona {...examplePersona} hidePersonaDetails presence={PersonaPresence.busy} />
-              <Persona {...examplePersona} size={PersonaSize.size72} hidePersonaDetails presence={PersonaPresence.busy} />
+              <Persona
+                text=""
+                size={PersonaSize.size8}
+                hidePersonaDetails
+                presence={PersonaPresence.busy}
+                imageAlt="Annie Lindqvist, status is busy"
+              />
+              <Persona
+                {...examplePersona}
+                size={PersonaSize.size24}
+                hidePersonaDetails
+                presence={PersonaPresence.busy}
+                imageAlt="Annie Lindqvist, status is busy"
+              />
+              <Persona {...examplePersona} hidePersonaDetails presence={PersonaPresence.busy} imageAlt="Annie Lindqvist, status is busy" />
+              <Persona
+                {...examplePersona}
+                size={PersonaSize.size72}
+                hidePersonaDetails
+                presence={PersonaPresence.busy}
+                imageAlt="Annie Lindqvist, status is busy"
+              />
             </Stack>
           </Stack>
 
           <Stack>
             <Label>Busy + Out of Office</Label>
             <Stack horizontal>
-              <Persona text="" size={PersonaSize.size8} hidePersonaDetails presence={PersonaPresence.busy} isOutOfOffice />
-              <Persona {...examplePersona} size={PersonaSize.size24} hidePersonaDetails presence={PersonaPresence.busy} isOutOfOffice />
-              <Persona {...examplePersona} hidePersonaDetails presence={PersonaPresence.busy} isOutOfOffice />
-              <Persona {...examplePersona} size={PersonaSize.size72} hidePersonaDetails presence={PersonaPresence.busy} isOutOfOffice />
+              <Persona
+                text=""
+                size={PersonaSize.size8}
+                hidePersonaDetails
+                presence={PersonaPresence.busy}
+                isOutOfOffice
+                imageAlt="Annie Lindqvist, status is busy and out of office"
+              />
+              <Persona
+                {...examplePersona}
+                size={PersonaSize.size24}
+                hidePersonaDetails
+                presence={PersonaPresence.busy}
+                isOutOfOffice
+                imageAlt="Annie Lindqvist, status is busy and out of office"
+              />
+              <Persona
+                {...examplePersona}
+                hidePersonaDetails
+                presence={PersonaPresence.busy}
+                isOutOfOffice
+                imageAlt="Annie Lindqvist, status is busy and out of office"
+              />
+              <Persona
+                {...examplePersona}
+                size={PersonaSize.size72}
+                hidePersonaDetails
+                presence={PersonaPresence.busy}
+                isOutOfOffice
+                imageAlt="Annie Lindqvist, status is busy and out of office"
+              />
             </Stack>
           </Stack>
         </Stack>
@@ -95,50 +235,173 @@ export class PersonaPresenceExample extends React.Component<{}> {
           <Stack>
             <Label>Do not Disturb</Label>
             <Stack horizontal>
-              <Persona text="" size={PersonaSize.size8} hidePersonaDetails presence={PersonaPresence.dnd} />
-              <Persona {...examplePersona} size={PersonaSize.size24} hidePersonaDetails presence={PersonaPresence.dnd} />
-              <Persona {...examplePersona} hidePersonaDetails presence={PersonaPresence.dnd} />
-              <Persona {...examplePersona} size={PersonaSize.size72} hidePersonaDetails presence={PersonaPresence.dnd} />
+              <Persona
+                text=""
+                size={PersonaSize.size8}
+                hidePersonaDetails
+                presence={PersonaPresence.dnd}
+                imageAlt="Annie Lindqvist, status is do not disturb"
+              />
+              <Persona
+                {...examplePersona}
+                size={PersonaSize.size24}
+                hidePersonaDetails
+                presence={PersonaPresence.dnd}
+                imageAlt="Annie Lindqvist, status is do not disturb"
+              />
+              <Persona
+                {...examplePersona}
+                hidePersonaDetails
+                presence={PersonaPresence.dnd}
+                imageAlt="Annie Lindqvist, status is do not disturb"
+              />
+              <Persona
+                {...examplePersona}
+                size={PersonaSize.size72}
+                hidePersonaDetails
+                presence={PersonaPresence.dnd}
+                imageAlt="Annie Lindqvist, status is do not disturb"
+              />
             </Stack>
           </Stack>
 
           <Stack>
             <Label>Do not Disturb + Out of Office</Label>
             <Stack horizontal>
-              <Persona text="" size={PersonaSize.size8} hidePersonaDetails presence={PersonaPresence.dnd} isOutOfOffice />
-              <Persona {...examplePersona} size={PersonaSize.size24} hidePersonaDetails presence={PersonaPresence.dnd} isOutOfOffice />
-              <Persona {...examplePersona} hidePersonaDetails presence={PersonaPresence.dnd} isOutOfOffice />
-              <Persona {...examplePersona} size={PersonaSize.size72} hidePersonaDetails presence={PersonaPresence.dnd} isOutOfOffice />
+              <Persona
+                text=""
+                size={PersonaSize.size8}
+                hidePersonaDetails
+                presence={PersonaPresence.dnd}
+                isOutOfOffice
+                imageAlt="Annie Lindqvist, status is do not disturb and out of office"
+              />
+              <Persona
+                {...examplePersona}
+                size={PersonaSize.size24}
+                hidePersonaDetails
+                presence={PersonaPresence.dnd}
+                isOutOfOffice
+                imageAlt="Annie Lindqvist, status is do not disturb and out of office"
+              />
+              <Persona
+                {...examplePersona}
+                hidePersonaDetails
+                presence={PersonaPresence.dnd}
+                isOutOfOffice
+                imageAlt="Annie Lindqvist, status is do not disturb and out of office"
+              />
+              <Persona
+                {...examplePersona}
+                size={PersonaSize.size72}
+                hidePersonaDetails
+                presence={PersonaPresence.dnd}
+                isOutOfOffice
+                imageAlt="Annie Lindqvist, status is do not disturb and out of office"
+              />
             </Stack>
           </Stack>
         </Stack>
 
         <Label>Blocked</Label>
         <Stack horizontal>
-          <Persona text="" size={PersonaSize.size8} hidePersonaDetails presence={PersonaPresence.blocked} />
-          <Persona {...examplePersona} size={PersonaSize.size24} hidePersonaDetails presence={PersonaPresence.blocked} />
-          <Persona {...examplePersona} hidePersonaDetails presence={PersonaPresence.blocked} />
-          <Persona {...examplePersona} size={PersonaSize.size72} hidePersonaDetails presence={PersonaPresence.blocked} />
+          <Persona
+            text=""
+            size={PersonaSize.size8}
+            hidePersonaDetails
+            presence={PersonaPresence.blocked}
+            imageAlt="Annie Lindqvist, status is blocked"
+          />
+          <Persona
+            {...examplePersona}
+            size={PersonaSize.size24}
+            hidePersonaDetails
+            presence={PersonaPresence.blocked}
+            imageAlt="Annie Lindqvist, status is blocked"
+          />
+          <Persona
+            {...examplePersona}
+            hidePersonaDetails
+            presence={PersonaPresence.blocked}
+            imageAlt="Annie Lindqvist, status is blocked"
+          />
+          <Persona
+            {...examplePersona}
+            size={PersonaSize.size72}
+            hidePersonaDetails
+            presence={PersonaPresence.blocked}
+            imageAlt="Annie Lindqvist, status is blocked"
+          />
         </Stack>
 
         <Stack horizontal>
           <Stack>
             <Label>Offline</Label>
             <Stack horizontal>
-              <Persona text="" size={PersonaSize.size8} hidePersonaDetails presence={PersonaPresence.offline} />
-              <Persona {...examplePersona} size={PersonaSize.size24} hidePersonaDetails presence={PersonaPresence.offline} />
-              <Persona {...examplePersona} hidePersonaDetails presence={PersonaPresence.offline} />
-              <Persona {...examplePersona} size={PersonaSize.size72} hidePersonaDetails presence={PersonaPresence.offline} />
+              <Persona
+                text=""
+                size={PersonaSize.size8}
+                hidePersonaDetails
+                presence={PersonaPresence.offline}
+                imageAlt="Annie Lindqvist, status is offline"
+              />
+              <Persona
+                {...examplePersona}
+                size={PersonaSize.size24}
+                hidePersonaDetails
+                presence={PersonaPresence.offline}
+                imageAlt="Annie Lindqvist, status is offline"
+              />
+              <Persona
+                {...examplePersona}
+                hidePersonaDetails
+                presence={PersonaPresence.offline}
+                imageAlt="Annie Lindqvist, status is offline"
+              />
+              <Persona
+                {...examplePersona}
+                size={PersonaSize.size72}
+                hidePersonaDetails
+                presence={PersonaPresence.offline}
+                imageAlt="Annie Lindqvist, status is offline"
+              />
             </Stack>
           </Stack>
 
           <Stack>
             <Label>Offline + Out of Office</Label>
             <Stack horizontal>
-              <Persona text="" size={PersonaSize.size8} hidePersonaDetails presence={PersonaPresence.offline} isOutOfOffice />
-              <Persona {...examplePersona} size={PersonaSize.size24} hidePersonaDetails presence={PersonaPresence.offline} isOutOfOffice />
-              <Persona {...examplePersona} hidePersonaDetails presence={PersonaPresence.offline} isOutOfOffice />
-              <Persona {...examplePersona} size={PersonaSize.size72} hidePersonaDetails presence={PersonaPresence.offline} isOutOfOffice />
+              <Persona
+                text=""
+                size={PersonaSize.size8}
+                hidePersonaDetails
+                presence={PersonaPresence.offline}
+                isOutOfOffice
+                imageAlt="Annie Lindqvist, status is offline and out of office"
+              />
+              <Persona
+                {...examplePersona}
+                size={PersonaSize.size24}
+                hidePersonaDetails
+                presence={PersonaPresence.offline}
+                isOutOfOffice
+                imageAlt="Annie Lindqvist, status is offline and out of office"
+              />
+              <Persona
+                {...examplePersona}
+                hidePersonaDetails
+                presence={PersonaPresence.offline}
+                isOutOfOffice
+                imageAlt="Annie Lindqvist, status is offline and out of office"
+              />
+              <Persona
+                {...examplePersona}
+                size={PersonaSize.size72}
+                hidePersonaDetails
+                presence={PersonaPresence.offline}
+                isOutOfOffice
+                imageAlt="Annie Lindqvist, status is offline and out of office"
+              />
             </Stack>
           </Stack>
         </Stack>

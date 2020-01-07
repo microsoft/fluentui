@@ -2,6 +2,34 @@
   "name": "@uifabric/file-type-icons",
   "entries": [
     {
+      "date": "Tue, 31 Dec 2019 12:31:45 GMT",
+      "tag": "@uifabric/file-type-icons_v7.2.2",
+      "version": "7.2.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "added stream icon code to getFileIconProps",
+            "author": "azra.bandukwala@microsoft.com",
+            "commit": "44d0a3ed65bbcb6f2615ccf5ccb9a68f47e86524"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 17 Dec 2019 12:29:42 GMT",
+      "tag": "@uifabric/file-type-icons_v7.2.1",
+      "version": "7.2.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Refining typography and signal icon on top of Folder Icon, filetype mapping updates",
+            "author": "caperez@microsoft.com",
+            "commit": "4d72a330013373ac60292c9cb3ef8787ad2fd408"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 06 Dec 2019 12:33:21 GMT",
       "tag": "@uifabric/file-type-icons_v7.2.0",
       "version": "7.2.0",

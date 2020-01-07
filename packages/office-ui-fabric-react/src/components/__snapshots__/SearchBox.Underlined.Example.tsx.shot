@@ -86,7 +86,6 @@ exports[`Component Examples renders SearchBox.Underlined.Example.tsx correctly 1
     </i>
   </div>
   <input
-    aria-label="Search"
     className=
         ms-SearchBox-field
         {

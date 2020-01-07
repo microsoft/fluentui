@@ -199,6 +199,9 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
     // Dispose all events.
     this._disposables.forEach(d => d());
 
+    // Clear function references so their closures can be garbage-collected.
+    delete this._disposables;
+
     // If this is the last outer zone, remove the keydown listener.
     if (_outerZones.size === 0 && _disposeGlobalKeyDownListener) {
       _disposeGlobalKeyDownListener();
@@ -581,7 +584,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
               !this._shouldWrapFocus(this._activeElement as HTMLElement, NO_HORIZONTAL_WRAP)
             ) {
               focusChanged = ev.shiftKey ? this._moveFocusUp() : this._moveFocusDown();
-            } else if (direction === FocusZoneDirection.horizontal || direction === FocusZoneDirection.bidirectional) {
+            } else {
               const tabWithDirection = getRTL() ? !ev.shiftKey : ev.shiftKey;
               focusChanged = tabWithDirection ? this._moveFocusLeft() : this._moveFocusRight();
             }

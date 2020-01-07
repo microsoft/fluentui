@@ -343,8 +343,6 @@ export interface IIconOptions {
 export interface IIconRecord {
     // (undocumented)
     code: string | undefined;
-    // Warning: (ae-forgotten-export) The symbol "IIconSubsetRecord" needs to be exported by the entry point index.d.ts
-    // 
     // (undocumented)
     subset: IIconSubsetRecord;
 }
@@ -359,6 +357,14 @@ export interface IIconSubset {
     };
     // (undocumented)
     style?: IRawStyle;
+}
+
+// @public (undocumented)
+export interface IIconSubsetRecord extends IIconSubset {
+    // (undocumented)
+    className?: string;
+    // (undocumented)
+    isRegistered?: boolean;
 }
 
 export { InjectionMode }

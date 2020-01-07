@@ -323,6 +323,11 @@ exports[`Component Examples renders ContextualMenu.Submenu.Example.tsx correctly
             }
         data-icon-name="ChevronDown"
         role="presentation"
+        style={
+          Object {
+            "fontFamily": "\\"FabricMDL2Icons\\"",
+          }
+        }
       >
         
       </i>

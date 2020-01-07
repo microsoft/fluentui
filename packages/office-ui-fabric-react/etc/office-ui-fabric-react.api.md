@@ -276,6 +276,8 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     // (undocumented)
     protected canAddItems(): boolean;
     // (undocumented)
+    protected completeSelection: (item: T) => void;
+    // (undocumented)
     completeSuggestion(forceComplete?: boolean): void;
     // (undocumented)
     componentDidMount(): void;
@@ -612,7 +614,7 @@ export const ColorPickerGridCell: React.StatelessComponent<IColorPickerGridCellP
 // @public (undocumented)
 export class ColorPickerGridCellBase extends React.PureComponent<IColorPickerGridCellProps, {}> {
     // (undocumented)
-    static defaultProps: IColorPickerGridCellProps;
+    static defaultProps: Partial<IColorPickerGridCellProps>;
     // (undocumented)
     render(): JSX.Element;
 }
@@ -1316,6 +1318,7 @@ export function getFullColorString(color: IColor): string;
 export const getIconContent: (iconName?: string | undefined) => {
     children: string | undefined;
     iconClassName: string | undefined;
+    fontFamily: string | undefined;
 };
 
 // @public
@@ -1451,6 +1454,16 @@ export function hsv2hsl(h: number, s: number, v: number): IHSL;
 
 // @public
 export function hsv2rgb(h: number, s: number, v: number): IRGB;
+
+// @public (undocumented)
+export interface IAccessiblePopupProps {
+    closeButtonAriaLabel?: string;
+    elementToFocusOnDismiss?: HTMLElement;
+    firstFocusableSelector?: string | (() => string);
+    forceFocusInsideTrap?: boolean;
+    ignoreExternalFocusing?: boolean;
+    isClickableOutsideFocusTrap?: boolean;
+}
 
 // @public (undocumented)
 export interface IActivityItemProps extends React.AllHTMLAttributes<HTMLElement> {
@@ -2253,7 +2266,7 @@ export interface IChoiceGroupOption extends React.InputHTMLAttributes<HTMLElemen
     key: string;
     labelId?: string;
     onRenderField?: IRenderFunction<IChoiceGroupOption>;
-    onRenderLabel?: (option: IChoiceGroupOption) => JSX.Element;
+    onRenderLabel?: IRenderFunction<IChoiceGroupOption>;
     selectedImageSrc?: string;
     styles?: IStyleFunctionOrObject<IChoiceGroupOptionStyleProps, IChoiceGroupOptionStyles>;
     text: string;
@@ -2485,17 +2498,24 @@ export interface IColorPickerGridCellProps {
     color?: string;
     disabled?: boolean;
     height?: number;
-    id: string;
+    // @deprecated
+    id?: string;
+    idPrefix?: string;
     index?: number;
     item: IColorCellProps;
     label?: string;
     onClick?: (item: IColorCellProps) => void;
+    // (undocumented)
     onFocus?: (item: IColorCellProps) => void;
+    // (undocumented)
     onHover?: (item?: IColorCellProps) => void;
+    // (undocumented)
     onKeyDown?: (ev: React.KeyboardEvent<HTMLButtonElement>) => void;
     onMouseEnter?: (ev: React.MouseEvent<HTMLButtonElement>) => boolean;
+    // (undocumented)
     onMouseLeave?: (ev: React.MouseEvent<HTMLButtonElement>) => void;
     onMouseMove?: (ev: React.MouseEvent<HTMLButtonElement>) => boolean;
+    // (undocumented)
     onWheel?: (ev: React.MouseEvent<HTMLButtonElement>) => void;
     selected: boolean;
     styles?: IStyleFunctionOrObject<IColorPickerGridCellStyleProps, IColorPickerGridCellStyles>;
@@ -2503,7 +2523,7 @@ export interface IColorPickerGridCellProps {
     width?: number;
 }
 
-// @public
+// @public (undocumented)
 export interface IColorPickerGridCellStyleProps {
     borderWidth?: number;
     circle?: boolean;
@@ -2515,7 +2535,7 @@ export interface IColorPickerGridCellStyleProps {
     width?: number;
 }
 
-// @public
+// @public (undocumented)
 export interface IColorPickerGridCellStyles {
     colorCell: IStyle;
     svg: IStyle;
@@ -2558,10 +2578,13 @@ export interface IColorPickerState {
 // @public (undocumented)
 export interface IColorPickerStrings {
     alpha?: string;
+    alphaAriaLabel?: string;
     blue?: string;
     green?: string;
     hex?: string;
+    // @deprecated
     hue?: string;
+    hueAriaLabel?: string;
     red?: string;
     rootAriaLabelFormat?: string;
     svAriaDescription?: string;
@@ -2823,6 +2846,7 @@ export interface IComboBoxStyles {
     rootFocused: IStyle;
     rootHovered: IStyle;
     rootPressed: IStyle;
+    screenReaderText: IStyle;
 }
 
 // @public (undocumented)
@@ -3804,8 +3828,6 @@ export interface IDialogFooterStyles {
     actionsRight: IStyle;
 }
 
-// Warning: (ae-forgotten-export) The symbol "IAccessiblePopupProps" needs to be exported by the entry point index.d.ts
-// 
 // @public (undocumented)
 export interface IDialogProps extends React.ClassAttributes<DialogBase>, IWithResponsiveModeState, IAccessiblePopupProps {
     // @deprecated
@@ -4150,6 +4172,8 @@ export interface IDocumentCardPreviewStyles {
     fileList: IStyle;
     // (undocumented)
     fileListIcon: IStyle;
+    // (undocumented)
+    fileListLink: IStyle;
     // (undocumented)
     fileListOverflowText: IStyle;
     // (undocumented)
@@ -4692,7 +4716,9 @@ export interface IGridCellProps<T> {
 }
 
 // @public (undocumented)
-export interface IGridProps {
+export interface IGridProps extends React.TableHTMLAttributes<HTMLTableElement> {
+    ariaPosInSet?: number;
+    ariaSetSize?: number;
     columnCount: number;
     componentRef?: IRefObject<IGrid>;
     // @deprecated
@@ -4701,7 +4727,9 @@ export interface IGridProps {
     items: any[];
     onBlur?: () => void;
     onRenderItem: (item: any, index: number) => JSX.Element;
+    // @deprecated (undocumented)
     positionInSet?: number;
+    // @deprecated (undocumented)
     setSize?: number;
     shouldFocusCircularNavigate?: boolean;
     styles?: IStyleFunctionOrObject<IGridStyleProps, IGridStyles>;
@@ -5532,6 +5560,7 @@ export interface IModal {
 
 // @public (undocumented)
 export interface IModalProps extends React.ClassAttributes<ModalBase>, IWithResponsiveModeState, IAccessiblePopupProps {
+    allowTouchBodyScroll?: boolean;
     className?: string;
     componentRef?: IRefObject<IModal>;
     containerClassName?: string;
@@ -5740,6 +5769,7 @@ export interface IOverlay {
 
 // @public (undocumented)
 export interface IOverlayProps extends React.HTMLAttributes<HTMLElement> {
+    allowTouchBodyScroll?: boolean;
     className?: string;
     componentRef?: IRefObject<IOverlay>;
     isDarkThemed?: boolean;
@@ -5819,6 +5849,7 @@ export interface IPanelHeaderRenderer extends IRenderFunction<IPanelProps> {
 // 
 // @public (undocumented)
 export interface IPanelProps extends React.HTMLAttributes<PanelBase> {
+    allowTouchBodyScroll?: boolean;
     className?: string;
     closeButtonAriaLabel?: string;
     // @deprecated
@@ -7376,6 +7407,8 @@ export function isValidShade(shade?: Shade): boolean;
 
 // @public (undocumented)
 export interface ISwatchColorPickerProps {
+    ariaPosInSet?: number;
+    ariaSetSize?: number;
     cellBorderWidth?: number;
     cellHeight?: number;
     cellMargin?: number;
@@ -7394,8 +7427,10 @@ export interface ISwatchColorPickerProps {
     onCellFocused?: (id?: string, color?: string) => void;
     onCellHovered?: (id?: string, color?: string) => void;
     onColorChanged?: (id?: string, color?: string) => void;
+    // @deprecated (undocumented)
     positionInSet?: number;
     selectedId?: string;
+    // @deprecated (undocumented)
     setSize?: number;
     shouldFocusCircularNavigate?: boolean;
     styles?: IStyleFunctionOrObject<ISwatchColorPickerStyleProps, ISwatchColorPickerStyles>;
@@ -7771,6 +7806,7 @@ export interface ITooltipHost {
 // @public
 export interface ITooltipHostProps extends React.HTMLAttributes<HTMLDivElement | TooltipHostBase> {
     calloutProps?: ICalloutProps;
+    className?: string;
     closeDelay?: number;
     componentRef?: IRefObject<ITooltipHost>;
     content?: string | JSX.Element | JSX.Element[];
@@ -7778,6 +7814,7 @@ export interface ITooltipHostProps extends React.HTMLAttributes<HTMLDivElement |
     directionalHint?: DirectionalHint;
     directionalHintForRTL?: DirectionalHint;
     hostClassName?: string;
+    id?: string;
     onTooltipToggle?(isTooltipVisible: boolean): void;
     overflowMode?: TooltipOverflowMode;
     setAriaDescribedBy?: boolean;
@@ -7796,7 +7833,9 @@ export interface ITooltipHostState {
 
 // @public (undocumented)
 export interface ITooltipHostStyleProps {
+    // (undocumented)
     className?: string;
+    // (undocumented)
     theme: ITheme;
 }
 
@@ -7805,7 +7844,7 @@ export interface ITooltipHostStyles {
     root: IStyle;
 }
 
-// @public
+// @public (undocumented)
 export interface ITooltipProps extends React.HTMLAttributes<HTMLDivElement | TooltipBase> {
     calloutProps?: ICalloutProps;
     componentRef?: IRefObject<ITooltip>;
@@ -7823,11 +7862,13 @@ export interface ITooltipProps extends React.HTMLAttributes<HTMLDivElement | Too
 // @public (undocumented)
 export interface ITooltipStyleProps {
     beakWidth?: number;
+    // (undocumented)
     className?: string;
     // @deprecated
     delay?: TooltipDelay;
     gapSpace?: number;
     maxWidth?: string;
+    // (undocumented)
     theme: ITheme;
 }
 
@@ -8225,6 +8266,7 @@ export const Overlay: React.StatelessComponent<IOverlayProps>;
 
 // @public (undocumented)
 export class OverlayBase extends BaseComponent<IOverlayProps, {}> {
+    constructor(props: IOverlayProps);
     // (undocumented)
     componentDidMount(): void;
     // (undocumented)
@@ -9406,9 +9448,7 @@ export class TooltipBase extends React.Component<ITooltipProps, any> {
 
 // @public (undocumented)
 export enum TooltipDelay {
-    // (undocumented)
     long = 2,
-    // (undocumented)
     medium = 1,
     // (undocumented)
     zero = 0

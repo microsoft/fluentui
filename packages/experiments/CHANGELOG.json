@@ -2,6 +2,53 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "date": "Tue, 24 Dec 2019 12:33:51 GMT",
+      "tag": "@uifabric/experiments_v7.18.10",
+      "version": "7.18.10",
+      "comments": {
+        "none": [
+          {
+            "comment": "Snapshot updates",
+            "author": "elcraig@microsoft.com",
+            "commit": "48c4125c20e70512140597cc94447991607237c4"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 17 Dec 2019 12:29:42 GMT",
+      "tag": "@uifabric/experiments_v7.18.10",
+      "version": "7.18.10",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Refining typography and signal icon on top of Folder Icon, filetype mapping updates",
+            "author": "caperez@microsoft.com",
+            "commit": "4d72a330013373ac60292c9cb3ef8787ad2fd408"
+          },
+          {
+            "comment": "PersonaCoin: make divs role presentation",
+            "author": "micahgodbolt@gmail.com",
+            "commit": "f491aa022d50b489b2a9bd49ef29ee48870213ef"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Sun, 15 Dec 2019 23:45:36 GMT",
+      "tag": "@uifabric/experiments_v7.18.9",
+      "version": "7.18.9",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix minor picker doc issue",
+            "author": "elcraig@microsoft.com",
+            "commit": "c97aedf3e01fceec41896005ed602d87dce9c3b4"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 06 Dec 2019 12:33:21 GMT",
       "tag": "@uifabric/experiments_v7.18.8",
       "version": "7.18.8",

@@ -59,7 +59,6 @@ exports[`Component Examples renders ComboBox.CustomStyled.Example.tsx correctly 
             padding-top: 5px;
             word-wrap: break-word;
           }
-      htmlFor="ComboBox0-input"
       id="ComboBox0-label"
     >
       Custom styled ComboBox
@@ -411,6 +410,11 @@ exports[`Component Examples renders ComboBox.CustomStyled.Example.tsx correctly 
                 }
             data-icon-name="ChevronDown"
             role="presentation"
+            style={
+              Object {
+                "fontFamily": "\\"FabricMDL2Icons\\"",
+              }
+            }
           >
             
           </i>
@@ -454,7 +458,6 @@ exports[`Component Examples renders ComboBox.CustomStyled.Example.tsx correctly 
             padding-top: 5px;
             word-wrap: break-word;
           }
-      htmlFor="ComboBox4-input"
       id="ComboBox4-label"
     >
       ComboBox with custom option rendering (type the name of a font and the option will render in that font)
@@ -806,6 +809,11 @@ exports[`Component Examples renders ComboBox.CustomStyled.Example.tsx correctly 
                 }
             data-icon-name="ChevronDown"
             role="presentation"
+            style={
+              Object {
+                "fontFamily": "\\"FabricMDL2Icons\\"",
+              }
+            }
           >
             
           </i>

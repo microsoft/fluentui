@@ -12,6 +12,7 @@ exports[`PersonaCoin renders correctly 1`] = `
         font-size: 14px;
         font-weight: 400;
       }
+  role="presentation"
 >
   <div
     className=
@@ -23,6 +24,7 @@ exports[`PersonaCoin renders correctly 1`] = `
           text-align: center;
           width: 48px;
         }
+    role="presentation"
   >
     <div
       aria-hidden="true"
@@ -82,6 +84,7 @@ exports[`PersonaCoin renders correctly with image 1`] = `
         font-size: 14px;
         font-weight: 400;
       }
+  role="presentation"
 >
   <div
     className=
@@ -93,6 +96,7 @@ exports[`PersonaCoin renders correctly with image 1`] = `
           text-align: center;
           width: 48px;
         }
+    role="presentation"
   >
     <div
       className=
@@ -162,6 +166,7 @@ exports[`PersonaCoin renders correctly with provided initials 1`] = `
         font-size: 14px;
         font-weight: 400;
       }
+  role="presentation"
 >
   <div
     className=
@@ -173,6 +178,7 @@ exports[`PersonaCoin renders correctly with provided initials 1`] = `
           text-align: center;
           width: 48px;
         }
+    role="presentation"
   >
     <div
       aria-hidden="true"
@@ -218,6 +224,7 @@ exports[`PersonaCoin renders correctly with text 1`] = `
         font-size: 14px;
         font-weight: 400;
       }
+  role="presentation"
 >
   <div
     className=
@@ -229,6 +236,7 @@ exports[`PersonaCoin renders correctly with text 1`] = `
           text-align: center;
           width: 48px;
         }
+    role="presentation"
   >
     <div
       aria-hidden="true"

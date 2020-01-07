@@ -279,6 +279,11 @@ exports[`DetailsList renders List correctly 1`] = `
                         }
                     data-icon-name="CircleRing"
                     role="presentation"
+                    style={
+                      Object {
+                        "fontFamily": "\\"FabricMDL2Icons\\"",
+                      }
+                    }
                   >
                     
                   </i>
@@ -318,6 +323,11 @@ exports[`DetailsList renders List correctly 1`] = `
                         }
                     data-icon-name="StatusCircleCheckmark"
                     role="presentation"
+                    style={
+                      Object {
+                        "fontFamily": "\\"FabricMDL2Icons\\"",
+                      }
+                    }
                   >
                     
                   </i>
@@ -886,6 +896,11 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                         }
                     data-icon-name="CircleRing"
                     role="presentation"
+                    style={
+                      Object {
+                        "fontFamily": "\\"FabricMDL2Icons\\"",
+                      }
+                    }
                   >
                     
                   </i>
@@ -925,6 +940,11 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                         }
                     data-icon-name="StatusCircleCheckmark"
                     role="presentation"
+                    style={
+                      Object {
+                        "fontFamily": "\\"FabricMDL2Icons\\"",
+                      }
+                    }
                   >
                     
                   </i>
@@ -2089,6 +2109,11 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
                         }
                     data-icon-name="CircleRing"
                     role="presentation"
+                    style={
+                      Object {
+                        "fontFamily": "\\"FabricMDL2Icons\\"",
+                      }
+                    }
                   >
                     
                   </i>
@@ -2128,6 +2153,11 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
                         }
                     data-icon-name="StatusCircleCheckmark"
                     role="presentation"
+                    style={
+                      Object {
+                        "fontFamily": "\\"FabricMDL2Icons\\"",
+                      }
+                    }
                   >
                     
                   </i>
@@ -2697,6 +2727,11 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
                         }
                     data-icon-name="CircleRing"
                     role="presentation"
+                    style={
+                      Object {
+                        "fontFamily": "\\"FabricMDL2Icons\\"",
+                      }
+                    }
                   >
                     
                   </i>
@@ -2736,6 +2771,11 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
                         }
                     data-icon-name="StatusCircleCheckmark"
                     role="presentation"
+                    style={
+                      Object {
+                        "fontFamily": "\\"FabricMDL2Icons\\"",
+                      }
+                    }
                   >
                     
                   </i>
@@ -3684,6 +3724,11 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                         }
                     data-icon-name="CircleRing"
                     role="presentation"
+                    style={
+                      Object {
+                        "fontFamily": "\\"FabricMDL2Icons\\"",
+                      }
+                    }
                   >
                     
                   </i>
@@ -3723,6 +3768,11 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                         }
                     data-icon-name="StatusCircleCheckmark"
                     role="presentation"
+                    style={
+                      Object {
+                        "fontFamily": "\\"FabricMDL2Icons\\"",
+                      }
+                    }
                   >
                     
                   </i>
@@ -4792,6 +4842,11 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                   }
               data-icon-name="ChevronRightMed"
               role="presentation"
+              style={
+                Object {
+                  "fontFamily": "\\"FabricMDL2Icons-3\\"",
+                }
+              }
             >
               
             </i>
@@ -5400,6 +5455,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                   >
                                     <div
                                       aria-colindex={1}
+                                      aria-readonly={true}
                                       className=
                                           ms-DetailsRow-cell
                                           {
@@ -5583,6 +5639,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                   >
                                     <div
                                       aria-colindex={1}
+                                      aria-readonly={true}
                                       className=
                                           ms-DetailsRow-cell
                                           {
@@ -6011,6 +6068,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                   >
                                     <div
                                       aria-colindex={1}
+                                      aria-readonly={true}
                                       className=
                                           ms-DetailsRow-cell
                                           {
@@ -6194,6 +6252,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                   >
                                     <div
                                       aria-colindex={1}
+                                      aria-readonly={true}
                                       className=
                                           ms-DetailsRow-cell
                                           {
@@ -6377,6 +6436,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                   >
                                     <div
                                       aria-colindex={1}
+                                      aria-readonly={true}
                                       className=
                                           ms-DetailsRow-cell
                                           {

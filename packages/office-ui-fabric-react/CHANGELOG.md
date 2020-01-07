@@ -1,7 +1,131 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 12 Dec 2019 12:29:56 GMT and should not be manually modified.
+This log was last generated on Tue, 07 Jan 2020 12:31:36 GMT and should not be manually modified.
 
+## 7.78.3
+Tue, 07 Jan 2020 12:31:36 GMT
+
+### Patches
+
+- Pickers: fix multiple enter presses selecting same option many times (joschect@microsoft.com)
+- FocusTrapZone: Release event handlers and element references for garbage-collection (KevinTCoughlin@users.noreply.github.com)
+## 7.78.2
+Mon, 06 Jan 2020 12:29:10 GMT
+
+### Patches
+
+- Modal ignoreExternalFocusing prop should also affect Popup (elcraig@microsoft.com)
+- Combobox: Clicks to headers and scrollbars no longer cause onBlur (mgodbolt@microsoft.com)
+- FocusZone: Delete function references on unmount (KevinTCoughlin@users.noreply.github.com)
+## 7.78.1
+Fri, 03 Jan 2020 12:27:16 GMT
+
+### Patches
+
+- ChoiceGroup: update docs and examples (elcraig@microsoft.com)
+- Remove duplicate ChoiceGroupOption export (elcraig@microsoft.com)
+- TagPicker: Define `title` for TagItem in case text overflows. (jdh@microsoft.com)
+- update callout docs comment (joschect@microsoft.com)
+## 7.78.0
+Wed, 01 Jan 2020 12:30:43 GMT
+
+### Minor changes
+
+- Pass the original renderer to onRenderLabel in ChoiceGroupOption (#11575) (dagoltz@microsoft.com)
+## 7.77.0
+Tue, 31 Dec 2019 12:31:45 GMT
+
+### Minor changes
+
+- SwatchColorPicker: properly apply ID; doc updates (elcraig@microsoft.com)
+### Patches
+
+- Fabric control: listen for rtl in theme (mgodbolt@microsoft.com)
+- DetailsList: Update examples to work in strictFunctionTypes (mgodbolt@microsoft.com)
+- Combobox: Focus returns to input after item click (mgodbolt@microsoft.com)
+- Layer: add touch events to filtering to stop those that are bubbling up (aneeshak@microsoft.com)
+## 7.76.3
+Mon, 30 Dec 2019 12:25:00 GMT
+
+### Patches
+
+- add firstFocusableSelector to example FocusTrapZone to resolve Edge issue (mgodbolt@microsoft.com)
+## 7.76.2
+Tue, 24 Dec 2019 12:33:51 GMT
+
+### Patches
+
+- Ensure icon font family isn't overridden by Fabric Core (elcraig@microsoft.com)
+## 7.76.1
+Mon, 23 Dec 2019 12:34:01 GMT
+
+### Patches
+
+- Align color system in Tooltip (nif_tony@outlook.com)
+## 7.76.0
+Fri, 20 Dec 2019 12:32:45 GMT
+
+### Minor changes
+
+- Modal, Panel, Overlay: added optional prop allowTouchBodyScroll that allows body scroll on touch devices (dmitriy.ravdin@siemens.com)
+### Patches
+
+- ScrollablePane: Fixing tabbing navigation with Sticky headers. (Humberto.Morimoto@microsoft.com)
+## 7.75.0
+Thu, 19 Dec 2019 12:33:02 GMT
+
+### Minor changes
+
+- Update color picker to include aria labels for hue and alpha sliders (mgodbolt@microsoft.com)
+- Combobox: Fix multiselect options not being read by screen readers. (joschect@microsoft.com)
+- Sticky: Always render narrator readable content in place (mgodbolt@microsoft.com)
+- DocumentCard: Fixing focus styling on Links in DocumentCardPreview. (Humberto.Morimoto@microsoft.com)
+### Patches
+
+- Combobox: Removed redundant htmlFor attribute as input already use aria-labelledby (mgodbolt@microsoft.com)
+- SearchBox: Don't duplicate placeholder text in aria-label (mgodbolt@microsoft.com)
+- DetailsList: Adding Announced section for # of filtered items in examples. (Humberto.Morimoto@microsoft.com)
+- DetailsList: Adding Announced section for examples that have '# of items selected' message in display. (Humberto.Morimoto@microsoft.com)
+## 7.74.2
+Wed, 18 Dec 2019 12:30:18 GMT
+
+### Patches
+
+- FocusZone: Adding tab handle for DomOrder direction. (Humberto.Morimoto@microsoft.com)
+## 7.74.1
+Tue, 17 Dec 2019 12:29:42 GMT
+
+### Patches
+
+- ProgressIndicator: improve high contrast colors for progress bar (micahgodbolt@gmail.com)
+- PersonaCoin: make divs role presentation (micahgodbolt@gmail.com)
+## 7.74.0
+Sun, 15 Dec 2019 23:45:36 GMT
+
+### Minor changes
+
+- Persona: adding alt text to examples (aneeshak@microsoft.com)
+### Patches
+
+- DetailsList: Adding aria-readonly attribute so screen readers don't announce the cells as editable. (Humberto.Morimoto@microsoft.com)
+- getRTL uses RTL flag on theme if present. (jdh@microsoft.com)
+- Fix iteration of Sticky items in ScrollablePane (tmichon@microsoft.com)
+- Fix minor doc issues for TextField and pickers (elcraig@microsoft.com)
+- Move ARIA role to outer div where native props are assigned to allow for ARIA attributes such as aria-label. (jagore@microsoft.com)
+- ContextualMenu: Associate group with header to improve narrator (micahgodbolt@gmail.com)
+## 7.73.0
+Fri, 13 Dec 2019 12:30:51 GMT
+
+### Minor changes
+
+- Toggle: Change div inside button to be a span (mgodbolt@microsoft.com)
+### Patches
+
+- Tooltip: clarify examples and docs (elcraig@microsoft.com)
+- FocusZone: Escape readOnly input on arrow clicks (mgodbolt@microsoft.com)
+- Nav: Allow falsy values of title to be passed into items (mgodbolt@microsoft.com)
+- Panel: onLightDismissClick now properly prevents light dismiss (mgodbolt@microsoft.com)
+- ContextualMenu: Fix accessibility issue in example (mgodbolt@microsoft.com)
 ## 7.72.0
 Thu, 12 Dec 2019 12:29:56 GMT
 
