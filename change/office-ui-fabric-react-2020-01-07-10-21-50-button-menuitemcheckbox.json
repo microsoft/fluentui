@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Button: Use aria-checked for checkbox and menuitemcheckbox roles",
+  "packageName": "office-ui-fabric-react",
+  "email": "mgodbolt@microsoft.com",
+  "commit": "e86bd78988b374a38420a4ed08089b081e246af8",
+  "date": "2020-01-07T18:21:50.185Z"
+}
