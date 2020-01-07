@@ -276,6 +276,8 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     // (undocumented)
     protected canAddItems(): boolean;
     // (undocumented)
+    protected completeSelection: (item: T) => void;
+    // (undocumented)
     completeSuggestion(forceComplete?: boolean): void;
     // (undocumented)
     componentDidMount(): void;
@@ -612,7 +614,7 @@ export const ColorPickerGridCell: React.StatelessComponent<IColorPickerGridCellP
 // @public (undocumented)
 export class ColorPickerGridCellBase extends React.PureComponent<IColorPickerGridCellProps, {}> {
     // (undocumented)
-    static defaultProps: IColorPickerGridCellProps;
+    static defaultProps: Partial<IColorPickerGridCellProps>;
     // (undocumented)
     render(): JSX.Element;
 }
@@ -1316,6 +1318,7 @@ export function getFullColorString(color: IColor): string;
 export const getIconContent: (iconName?: string | undefined) => {
     children: string | undefined;
     iconClassName: string | undefined;
+    fontFamily: string | undefined;
 };
 
 // @public
@@ -1451,6 +1454,16 @@ export function hsv2hsl(h: number, s: number, v: number): IHSL;
 
 // @public
 export function hsv2rgb(h: number, s: number, v: number): IRGB;
+
+// @public (undocumented)
+export interface IAccessiblePopupProps {
+    closeButtonAriaLabel?: string;
+    elementToFocusOnDismiss?: HTMLElement;
+    firstFocusableSelector?: string | (() => string);
+    forceFocusInsideTrap?: boolean;
+    ignoreExternalFocusing?: boolean;
+    isClickableOutsideFocusTrap?: boolean;
+}
 
 // @public (undocumented)
 export interface IActivityItemProps extends React.AllHTMLAttributes<HTMLElement> {
@@ -2253,7 +2266,7 @@ export interface IChoiceGroupOption extends React.InputHTMLAttributes<HTMLElemen
     key: string;
     labelId?: string;
     onRenderField?: IRenderFunction<IChoiceGroupOption>;
-    onRenderLabel?: (option: IChoiceGroupOption) => JSX.Element;
+    onRenderLabel?: IRenderFunction<IChoiceGroupOption>;
     selectedImageSrc?: string;
     styles?: IStyleFunctionOrObject<IChoiceGroupOptionStyleProps, IChoiceGroupOptionStyles>;
     text: string;
@@ -2485,17 +2498,24 @@ export interface IColorPickerGridCellProps {
     color?: string;
     disabled?: boolean;
     height?: number;
-    id: string;
+    // @deprecated
+    id?: string;
+    idPrefix?: string;
     index?: number;
     item: IColorCellProps;
     label?: string;
     onClick?: (item: IColorCellProps) => void;
+    // (undocumented)
     onFocus?: (item: IColorCellProps) => void;
+    // (undocumented)
     onHover?: (item?: IColorCellProps) => void;
+    // (undocumented)
     onKeyDown?: (ev: React.KeyboardEvent<HTMLButtonElement>) => void;
     onMouseEnter?: (ev: React.MouseEvent<HTMLButtonElement>) => boolean;
+    // (undocumented)
     onMouseLeave?: (ev: React.MouseEvent<HTMLButtonElement>) => void;
     onMouseMove?: (ev: React.MouseEvent<HTMLButtonElement>) => boolean;
+    // (undocumented)
     onWheel?: (ev: React.MouseEvent<HTMLButtonElement>) => void;
     selected: boolean;
     styles?: IStyleFunctionOrObject<IColorPickerGridCellStyleProps, IColorPickerGridCellStyles>;
@@ -2503,7 +2523,7 @@ export interface IColorPickerGridCellProps {
     width?: number;
 }
 
-// @public
+// @public (undocumented)
 export interface IColorPickerGridCellStyleProps {
     borderWidth?: number;
     circle?: boolean;
@@ -2515,7 +2535,7 @@ export interface IColorPickerGridCellStyleProps {
     width?: number;
 }
 
-// @public
+// @public (undocumented)
 export interface IColorPickerGridCellStyles {
     colorCell: IStyle;
     svg: IStyle;
@@ -3808,8 +3828,6 @@ export interface IDialogFooterStyles {
     actionsRight: IStyle;
 }
 
-// Warning: (ae-forgotten-export) The symbol "IAccessiblePopupProps" needs to be exported by the entry point index.d.ts
-// 
 // @public (undocumented)
 export interface IDialogProps extends React.ClassAttributes<DialogBase>, IWithResponsiveModeState, IAccessiblePopupProps {
     // @deprecated
@@ -4698,7 +4716,9 @@ export interface IGridCellProps<T> {
 }
 
 // @public (undocumented)
-export interface IGridProps {
+export interface IGridProps extends React.TableHTMLAttributes<HTMLTableElement> {
+    ariaPosInSet?: number;
+    ariaSetSize?: number;
     columnCount: number;
     componentRef?: IRefObject<IGrid>;
     // @deprecated
@@ -4707,7 +4727,9 @@ export interface IGridProps {
     items: any[];
     onBlur?: () => void;
     onRenderItem: (item: any, index: number) => JSX.Element;
+    // @deprecated (undocumented)
     positionInSet?: number;
+    // @deprecated (undocumented)
     setSize?: number;
     shouldFocusCircularNavigate?: boolean;
     styles?: IStyleFunctionOrObject<IGridStyleProps, IGridStyles>;
@@ -7385,6 +7407,8 @@ export function isValidShade(shade?: Shade): boolean;
 
 // @public (undocumented)
 export interface ISwatchColorPickerProps {
+    ariaPosInSet?: number;
+    ariaSetSize?: number;
     cellBorderWidth?: number;
     cellHeight?: number;
     cellMargin?: number;
@@ -7403,8 +7427,10 @@ export interface ISwatchColorPickerProps {
     onCellFocused?: (id?: string, color?: string) => void;
     onCellHovered?: (id?: string, color?: string) => void;
     onColorChanged?: (id?: string, color?: string) => void;
+    // @deprecated (undocumented)
     positionInSet?: number;
     selectedId?: string;
+    // @deprecated (undocumented)
     setSize?: number;
     shouldFocusCircularNavigate?: boolean;
     styles?: IStyleFunctionOrObject<ISwatchColorPickerStyleProps, ISwatchColorPickerStyles>;

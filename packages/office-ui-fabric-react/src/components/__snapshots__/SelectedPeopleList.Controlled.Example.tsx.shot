@@ -315,6 +315,7 @@ exports[`Component Examples renders SelectedPeopleList.Controlled.Example.tsx co
                   role="presentation"
                   style={
                     Object {
+                      "fontFamily": "\\"FabricMDL2Icons\\"",
                       "fontSize": "14px",
                     }
                   }
@@ -633,6 +634,7 @@ exports[`Component Examples renders SelectedPeopleList.Controlled.Example.tsx co
                   role="presentation"
                   style={
                     Object {
+                      "fontFamily": "\\"FabricMDL2Icons\\"",
                       "fontSize": "14px",
                     }
                   }

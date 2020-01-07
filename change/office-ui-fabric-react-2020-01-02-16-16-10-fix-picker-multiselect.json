@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Pickers: fix multiple enter presses selecting same option many times",
+  "packageName": "office-ui-fabric-react",
+  "email": "joschect@microsoft.com",
+  "commit": "3f526ca3afd4baa4e36e166ac451d3c2ef6135cc",
+  "date": "2020-01-03T00:16:10.280Z"
+}

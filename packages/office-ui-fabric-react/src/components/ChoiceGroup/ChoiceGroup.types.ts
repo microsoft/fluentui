@@ -65,7 +65,7 @@ export interface IChoiceGroupProps extends React.InputHTMLAttributes<HTMLElement
   onChanged?: (option: IChoiceGroupOption, evt?: React.FormEvent<HTMLElement | HTMLInputElement>) => void;
 
   /**
-   * Theme (provided through customization.)
+   * Theme (provided through customization).
    */
   theme?: ITheme;
 
@@ -75,7 +75,7 @@ export interface IChoiceGroupProps extends React.InputHTMLAttributes<HTMLElement
   styles?: IStyleFunctionOrObject<IChoiceGroupStyleProps, IChoiceGroupStyles>;
 
   /**
-   * Aria labelled by prop for the ChoiceGroup itself
+   * ID of an element to use as the aria label for this ChoiceGroup.
    */
   ariaLabelledBy?: string;
 }
@@ -95,27 +95,28 @@ export interface IChoiceGroupOption extends React.InputHTMLAttributes<HTMLElemen
   text: string;
 
   /**
-   * Optional override of option render
+   * Used to customize option rendering.
    */
   onRenderField?: IRenderFunction<IChoiceGroupOption>;
 
   /**
-   * Optional override of label render
+   * Used to customize label rendering.
    */
-  onRenderLabel?: (option: IChoiceGroupOption) => JSX.Element;
+  onRenderLabel?: IRenderFunction<IChoiceGroupOption>;
 
   /**
-   * The Icon component props for choice field
+   * Props for an icon to display with this option.
    */
   iconProps?: IIconProps;
 
   /**
-   * The src of image for choice field.
+   * Image to display with this option.
    */
   imageSrc?: string;
 
   /**
-   * The alt of image for choice field. Defaults to '' if not set.
+   * Alt text if the option is an image.
+   * @default '' (empty string)
    */
   imageAlt?: string;
 
@@ -126,7 +127,7 @@ export interface IChoiceGroupOption extends React.InputHTMLAttributes<HTMLElemen
 
   /**
    * The width and height of the image in px for choice field.
-   * @defaultvalue \{ width: 32, height: 32 \}
+   * @defaultvalue `{ width: 32, height: 32 }`
    */
   imageSize?: { width: number; height: number };
 
@@ -147,19 +148,17 @@ export interface IChoiceGroupOption extends React.InputHTMLAttributes<HTMLElemen
   checked?: boolean;
 
   /**
-   * DOM id to tag the ChoiceGroup input with, for reference.
-   * Should be used for 'aria-owns' and other such uses, rather than direct reference for programmatic purposes.
+   * ID used on the option's input element.
    */
   id?: string;
 
   /**
-   * DOM id to tag the ChoiceGroup label with, for reference.
-   * Should be used for 'aria-owns' and other such uses, rather than direct reference for programmatic purposes.
+   * ID used on the option's label.
    */
   labelId?: string;
 
   /**
-   * The aria label of the ChoiceGroupOption for the benefit of screen readers.
+   * Aria label of the option for the benefit of screen reader users.
    */
   ariaLabel?: string;
 

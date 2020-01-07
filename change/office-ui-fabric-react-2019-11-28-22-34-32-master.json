@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Modal, Panel, Overlay: added optional prop allowTouchBodyScroll that allows body scroll on touch devices",
-  "packageName": "office-ui-fabric-react",
-  "email": "dmitriy.ravdin@siemens.com",
-  "commit": "00c16da9f0d9ee3de29c6de6a0aa32d50397cdcc",
-  "date": "2019-11-28T21:34:30.900Z"
-}

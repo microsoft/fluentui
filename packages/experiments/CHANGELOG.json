@@ -2,6 +2,20 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "date": "Tue, 24 Dec 2019 12:33:51 GMT",
+      "tag": "@uifabric/experiments_v7.18.10",
+      "version": "7.18.10",
+      "comments": {
+        "none": [
+          {
+            "comment": "Snapshot updates",
+            "author": "elcraig@microsoft.com",
+            "commit": "48c4125c20e70512140597cc94447991607237c4"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 17 Dec 2019 12:29:42 GMT",
       "tag": "@uifabric/experiments_v7.18.10",
       "version": "7.18.10",

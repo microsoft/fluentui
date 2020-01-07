@@ -79,7 +79,7 @@ export class CalendarButtonExample extends React.Component<ICalendarButtonExampl
             onDismiss={this._onDismiss}
             setInitialFocus={true}
           >
-            <FocusTrapZone isClickableOutsideFocusTrap={true}>
+            <FocusTrapZone firstFocusableSelector="ms-DatePicker-day--today" isClickableOutsideFocusTrap={true}>
               <Calendar
                 onSelectDate={this._onSelectDate}
                 onDismiss={this._onDismiss}

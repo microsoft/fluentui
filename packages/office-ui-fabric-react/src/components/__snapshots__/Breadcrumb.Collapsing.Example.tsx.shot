@@ -1208,6 +1208,11 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                           }
                       data-icon-name="More"
                       role="presentation"
+                      style={
+                        Object {
+                          "fontFamily": "\\"FabricMDL2Icons\\"",
+                        }
+                      }
                     >
                       
                     </i>
@@ -2037,6 +2042,11 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                           }
                       data-icon-name="More"
                       role="presentation"
+                      style={
+                        Object {
+                          "fontFamily": "\\"FabricMDL2Icons\\"",
+                        }
+                      }
                     >
                       
                     </i>
