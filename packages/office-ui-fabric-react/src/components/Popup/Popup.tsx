@@ -53,7 +53,6 @@ export class Popup extends React.Component<IPopupProps, IPopupState> {
 
   public componentWillUnmount(): void {
     this._disposables.forEach((dispose: () => void) => dispose());
-
     if (
       this.props.shouldRestoreFocus &&
       this._originalFocusedElement &&
