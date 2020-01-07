@@ -1,4 +1,12 @@
-import { HighContrastSelector, AnimationVariables, normalize, IStyle, getPlaceholderStyles, getGlobalClassNames } from '../../Styling';
+import {
+  HighContrastSelector,
+  AnimationVariables,
+  normalize,
+  IStyle,
+  getPlaceholderStyles,
+  getGlobalClassNames,
+  getInputFocusStyle
+} from '../../Styling';
 import { ISearchBoxStyleProps, ISearchBoxStyles } from './SearchBox.types';
 import { getRTL } from '../../Utilities';
 
@@ -46,7 +54,7 @@ export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
         height: 32,
         selectors: {
           [HighContrastSelector]: {
-            border: '1px solid WindowText'
+            borderColor: 'WindowText'
           },
           ':hover': {
             borderColor: semanticColors.inputBorderHovered,
@@ -75,16 +83,13 @@ export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
       hasFocus && [
         'is-active',
         {
-          borderColor: semanticColors.inputFocusBorderAlt,
-          selectors: {
-            ':hover': {
-              borderColor: semanticColors.inputFocusBorderAlt
-            },
-            [HighContrastSelector]: {
-              borderColor: 'Highlight'
-            }
-          }
-        }
+          position: 'relative'
+        },
+        getInputFocusStyle(
+          semanticColors.inputFocusBorderAlt,
+          underlined ? 0 : effects.roundedCorner2,
+          underlined ? 'borderBottom' : 'border'
+        )
       ],
       disabled && [
         'is-disabled',

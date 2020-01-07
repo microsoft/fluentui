@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Update snapshots from combobox style update",
+  "packageName": "@uifabric/experiments",
+  "email": "xgao@microsoft.com",
+  "commit": "3d78a7b98fca4a03ed6116106628722f6c8c262e",
+  "date": "2020-01-06T19:49:47.568Z"
+}

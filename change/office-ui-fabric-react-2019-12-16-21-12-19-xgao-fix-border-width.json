@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Update focus border styles for SearchBox, BasePicker",
+  "packageName": "office-ui-fabric-react",
+  "email": "xgao@microsoft.com",
+  "commit": "da8b56f6167485f487c59130be4f85fe46728bc6",
+  "date": "2019-12-17T05:12:19.322Z"
+}

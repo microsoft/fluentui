@@ -7,7 +7,8 @@ import {
   HighContrastSelector,
   IStyle,
   getPlaceholderStyles,
-  hiddenContentStyle
+  hiddenContentStyle,
+  getInputFocusStyle
 } from '../../Styling';
 import { IComboBoxOptionStyles, IComboBoxStyles } from './ComboBox.types';
 
@@ -301,27 +302,7 @@ export const getStyles = memoizeFunction(
       MsHighContrastAdjust: 'none'
     };
 
-    const getFocusBorder = (color: string): IStyle => ({
-      borderColor: color,
-      selectors: {
-        ':after': {
-          pointerEvents: 'none',
-          content: "''",
-          position: 'absolute',
-          left: -1,
-          top: -1,
-          bottom: -1,
-          right: -1,
-          border: '2px solid ' + color,
-          borderRadius: effects.roundedCorner2,
-          selectors: {
-            [HighContrastSelector]: {
-              borderColor: 'Highlight'
-            }
-          }
-        }
-      }
-    });
+    const focusBorderStyles: IStyle = getInputFocusStyle(root.borderPressedColor, effects.roundedCorner2);
 
     const styles: IComboBoxStyles = {
       container: {},
@@ -358,7 +339,6 @@ export const getStyles = memoizeFunction(
               marginBottom: '8px'
             },
             '&.is-open': {
-              borderColor: root.borderColor,
               selectors: {
                 [HighContrastSelector]: ComboBoxRootHighContrastFocused
               }
@@ -393,7 +373,7 @@ export const getStyles = memoizeFunction(
             [HighContrastSelector]: ComboBoxRootHighContrastFocused
           }
         },
-        getFocusBorder(root.borderPressedColor)
+        focusBorderStyles
       ],
 
       rootFocused: [
@@ -408,7 +388,7 @@ export const getStyles = memoizeFunction(
             [HighContrastSelector]: ComboBoxRootHighContrastFocused
           }
         },
-        getFocusBorder(root.borderFocusedColor)
+        focusBorderStyles
       ],
 
       rootDisabled: getDisabledStyles(theme),
