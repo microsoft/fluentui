@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "ExampleCard: add prop for custom supportedPackages for editor",
+  "comment": "Add ExampleCard prop for custom editorSupportedPackages, and add support for ICustomizations in IAppDefinition.customizations for customizing all ExampleCards.",
   "packageName": "@uifabric/example-app-base",
   "email": "elcraig@microsoft.com",
   "commit": "a84e7752d10a977cd8fe148a12004113808f573f",
