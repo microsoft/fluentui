@@ -1,7 +1,22 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Tue, 17 Dec 2019 12:29:42 GMT and should not be manually modified.
+This log was last generated on Mon, 06 Jan 2020 12:29:10 GMT and should not be manually modified.
 
+## 7.9.0
+Mon, 06 Jan 2020 12:29:10 GMT
+
+### Minor changes
+
+- Selection: accept generic item type (elcraig@microsoft.com)
+### Patches
+
+- getClassNames: fix for LTR in RTL context. (jdh@microsoft.com)
+## 7.8.0
+Fri, 20 Dec 2019 12:32:45 GMT
+
+### Minor changes
+
+- scroll.ts: added allowOverscrollOnElement, alternative to allowScrollOnElement that allows body scroll on touch devices (dmitriy.ravdin@siemens.com)
 ## 7.7.1
 Tue, 17 Dec 2019 12:29:42 GMT
 

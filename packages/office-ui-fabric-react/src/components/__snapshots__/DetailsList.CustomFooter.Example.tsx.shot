@@ -281,6 +281,11 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                         }
                     data-icon-name="CircleRing"
                     role="presentation"
+                    style={
+                      Object {
+                        "fontFamily": "\\"FabricMDL2Icons\\"",
+                      }
+                    }
                   >
                     
                   </i>
@@ -320,6 +325,11 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                         }
                     data-icon-name="StatusCircleCheckmark"
                     role="presentation"
+                    style={
+                      Object {
+                        "fontFamily": "\\"FabricMDL2Icons\\"",
+                      }
+                    }
                   >
                     
                   </i>
@@ -1046,6 +1056,11 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                                   }
                               data-icon-name="CircleRing"
                               role="presentation"
+                              style={
+                                Object {
+                                  "fontFamily": "\\"FabricMDL2Icons\\"",
+                                }
+                              }
                             >
                               
                             </i>
@@ -1085,6 +1100,11 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                                   }
                               data-icon-name="StatusCircleCheckmark"
                               role="presentation"
+                              style={
+                                Object {
+                                  "fontFamily": "\\"FabricMDL2Icons\\"",
+                                }
+                              }
                             >
                               
                             </i>
@@ -1498,6 +1518,11 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                                   }
                               data-icon-name="CircleRing"
                               role="presentation"
+                              style={
+                                Object {
+                                  "fontFamily": "\\"FabricMDL2Icons\\"",
+                                }
+                              }
                             >
                               
                             </i>
@@ -1537,6 +1562,11 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                                   }
                               data-icon-name="StatusCircleCheckmark"
                               role="presentation"
+                              style={
+                                Object {
+                                  "fontFamily": "\\"FabricMDL2Icons\\"",
+                                }
+                              }
                             >
                               
                             </i>
@@ -1950,6 +1980,11 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                                   }
                               data-icon-name="CircleRing"
                               role="presentation"
+                              style={
+                                Object {
+                                  "fontFamily": "\\"FabricMDL2Icons\\"",
+                                }
+                              }
                             >
                               
                             </i>
@@ -1989,6 +2024,11 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                                   }
                               data-icon-name="StatusCircleCheckmark"
                               role="presentation"
+                              style={
+                                Object {
+                                  "fontFamily": "\\"FabricMDL2Icons\\"",
+                                }
+                              }
                             >
                               
                             </i>
@@ -2402,6 +2442,11 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                                   }
                               data-icon-name="CircleRing"
                               role="presentation"
+                              style={
+                                Object {
+                                  "fontFamily": "\\"FabricMDL2Icons\\"",
+                                }
+                              }
                             >
                               
                             </i>
@@ -2441,6 +2486,11 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                                   }
                               data-icon-name="StatusCircleCheckmark"
                               role="presentation"
+                              style={
+                                Object {
+                                  "fontFamily": "\\"FabricMDL2Icons\\"",
+                                }
+                              }
                             >
                               
                             </i>
@@ -2854,6 +2904,11 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                                   }
                               data-icon-name="CircleRing"
                               role="presentation"
+                              style={
+                                Object {
+                                  "fontFamily": "\\"FabricMDL2Icons\\"",
+                                }
+                              }
                             >
                               
                             </i>
@@ -2893,6 +2948,11 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                                   }
                               data-icon-name="StatusCircleCheckmark"
                               role="presentation"
+                              style={
+                                Object {
+                                  "fontFamily": "\\"FabricMDL2Icons\\"",
+                                }
+                              }
                             >
                               
                             </i>

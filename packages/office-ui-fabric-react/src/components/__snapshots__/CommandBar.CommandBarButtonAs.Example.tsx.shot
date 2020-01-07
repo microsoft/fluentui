@@ -205,6 +205,11 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                       }
                   data-icon-name="Add"
                   role="presentation"
+                  style={
+                    Object {
+                      "fontFamily": "\\"FabricMDL2Icons\\"",
+                    }
+                  }
                 >
                   
                 </i>
@@ -382,6 +387,11 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                       }
                   data-icon-name="Upload"
                   role="presentation"
+                  style={
+                    Object {
+                      "fontFamily": "\\"FabricMDL2Icons\\"",
+                    }
+                  }
                 >
                   
                 </i>
@@ -560,6 +570,11 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                         }
                     data-icon-name="Share"
                     role="presentation"
+                    style={
+                      Object {
+                        "fontFamily": "\\"FabricMDL2Icons\\"",
+                      }
+                    }
                   >
                     
                   </i>
@@ -643,6 +658,10 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                 onMouseOver={[Function]}
                 onMouseUp={[Function]}
                 onSubmit={[Function]}
+                onTouchCancel={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
               >
                 <div
                   className=
@@ -1079,6 +1098,11 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                                                     }
                                                 data-icon-name="Cancel"
                                                 role="presentation"
+                                                style={
+                                                  Object {
+                                                    "fontFamily": "\\"FabricMDL2Icons\\"",
+                                                  }
+                                                }
                                               >
                                                 
                                               </i>
@@ -1267,6 +1291,11 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                       }
                   data-icon-name="Download"
                   role="presentation"
+                  style={
+                    Object {
+                      "fontFamily": "\\"FabricMDL2Icons\\"",
+                    }
+                  }
                 >
                   
                 </i>

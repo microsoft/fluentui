@@ -346,6 +346,11 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
                   }
               data-icon-name="ChevronDown"
               role="presentation"
+              style={
+                Object {
+                  "fontFamily": "\\"FabricMDL2Icons\\"",
+                }
+              }
             >
               
             </i>
@@ -693,6 +698,11 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
                   }
               data-icon-name="ChevronDown"
               role="presentation"
+              style={
+                Object {
+                  "fontFamily": "\\"FabricMDL2Icons\\"",
+                }
+              }
             >
               
             </i>
@@ -1024,6 +1034,11 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
                   }
               data-icon-name="ChevronDown"
               role="presentation"
+              style={
+                Object {
+                  "fontFamily": "\\"FabricMDL2Icons\\"",
+                }
+              }
             >
               
             </i>
@@ -1363,6 +1378,11 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
                   }
               data-icon-name="ChevronDown"
               role="presentation"
+              style={
+                Object {
+                  "fontFamily": "\\"FabricMDL2Icons\\"",
+                }
+              }
             >
               
             </i>

@@ -10,6 +10,7 @@ const DOCSET_FOLDER = 'docset';
 const LIST_ITEM = 'splist';
 const MULTIPLE_ITEMS = 'multiple';
 const NEWS = 'sponews';
+const STREAM = 'stream';
 const DEFAULT_ICON_SIZE: FileTypeIconSize = 16;
 
 export type FileTypeIconSize = 16 | 20 | 24 | 32 | 40 | 48 | 64 | 96;
@@ -66,6 +67,9 @@ export function getFileTypeIconProps(options: IFileTypeIconOptions): { iconName:
         break;
       case FileIconType.sharedFolder:
         iconBaseName = SHARED_FOLDER;
+        break;
+      case FileIconType.stream:
+        iconBaseName = STREAM;
         break;
       case FileIconType.multiple:
         iconBaseName = MULTIPLE_ITEMS;

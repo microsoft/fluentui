@@ -125,6 +125,11 @@ exports[`ContextualMenu ContextualMenu snapshot ContextualMenu should be present
           }
       data-icon-name="ChevronDown"
       role="presentation"
+      style={
+        Object {
+          "fontFamily": "\\"FabricMDL2Icons\\"",
+        }
+      }
     >
       
     </i>
@@ -179,6 +184,10 @@ exports[`ContextualMenu ContextualMenu snapshot ContextualMenu should be present
         onMouseOver={[Function]}
         onMouseUp={[Function]}
         onSubmit={[Function]}
+        onTouchCancel={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
       >
         <div
           className=

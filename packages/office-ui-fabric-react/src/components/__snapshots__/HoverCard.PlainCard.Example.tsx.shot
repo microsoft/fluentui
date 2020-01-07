@@ -307,6 +307,11 @@ exports[`Component Examples renders HoverCard.PlainCard.Example.tsx correctly 1`
                           }
                       data-icon-name="CircleRing"
                       role="presentation"
+                      style={
+                        Object {
+                          "fontFamily": "\\"FabricMDL2Icons\\"",
+                        }
+                      }
                     >
                       
                     </i>
@@ -346,6 +351,11 @@ exports[`Component Examples renders HoverCard.PlainCard.Example.tsx correctly 1`
                           }
                       data-icon-name="StatusCircleCheckmark"
                       role="presentation"
+                      style={
+                        Object {
+                          "fontFamily": "\\"FabricMDL2Icons\\"",
+                        }
+                      }
                     >
                       
                     </i>
@@ -802,6 +812,11 @@ exports[`Component Examples renders HoverCard.PlainCard.Example.tsx correctly 1`
                                     }
                                 data-icon-name="CircleRing"
                                 role="presentation"
+                                style={
+                                  Object {
+                                    "fontFamily": "\\"FabricMDL2Icons\\"",
+                                  }
+                                }
                               >
                                 
                               </i>
@@ -841,6 +856,11 @@ exports[`Component Examples renders HoverCard.PlainCard.Example.tsx correctly 1`
                                     }
                                 data-icon-name="StatusCircleCheckmark"
                                 role="presentation"
+                                style={
+                                  Object {
+                                    "fontFamily": "\\"FabricMDL2Icons\\"",
+                                  }
+                                }
                               >
                                 
                               </i>
@@ -1217,6 +1237,11 @@ exports[`Component Examples renders HoverCard.PlainCard.Example.tsx correctly 1`
                                     }
                                 data-icon-name="CircleRing"
                                 role="presentation"
+                                style={
+                                  Object {
+                                    "fontFamily": "\\"FabricMDL2Icons\\"",
+                                  }
+                                }
                               >
                                 
                               </i>
@@ -1256,6 +1281,11 @@ exports[`Component Examples renders HoverCard.PlainCard.Example.tsx correctly 1`
                                     }
                                 data-icon-name="StatusCircleCheckmark"
                                 role="presentation"
+                                style={
+                                  Object {
+                                    "fontFamily": "\\"FabricMDL2Icons\\"",
+                                  }
+                                }
                               >
                                 
                               </i>
@@ -1632,6 +1662,11 @@ exports[`Component Examples renders HoverCard.PlainCard.Example.tsx correctly 1`
                                     }
                                 data-icon-name="CircleRing"
                                 role="presentation"
+                                style={
+                                  Object {
+                                    "fontFamily": "\\"FabricMDL2Icons\\"",
+                                  }
+                                }
                               >
                                 
                               </i>
@@ -1671,6 +1706,11 @@ exports[`Component Examples renders HoverCard.PlainCard.Example.tsx correctly 1`
                                     }
                                 data-icon-name="StatusCircleCheckmark"
                                 role="presentation"
+                                style={
+                                  Object {
+                                    "fontFamily": "\\"FabricMDL2Icons\\"",
+                                  }
+                                }
                               >
                                 
                               </i>
@@ -2047,6 +2087,11 @@ exports[`Component Examples renders HoverCard.PlainCard.Example.tsx correctly 1`
                                     }
                                 data-icon-name="CircleRing"
                                 role="presentation"
+                                style={
+                                  Object {
+                                    "fontFamily": "\\"FabricMDL2Icons\\"",
+                                  }
+                                }
                               >
                                 
                               </i>
@@ -2086,6 +2131,11 @@ exports[`Component Examples renders HoverCard.PlainCard.Example.tsx correctly 1`
                                     }
                                 data-icon-name="StatusCircleCheckmark"
                                 role="presentation"
+                                style={
+                                  Object {
+                                    "fontFamily": "\\"FabricMDL2Icons\\"",
+                                  }
+                                }
                               >
                                 
                               </i>
@@ -2462,6 +2512,11 @@ exports[`Component Examples renders HoverCard.PlainCard.Example.tsx correctly 1`
                                     }
                                 data-icon-name="CircleRing"
                                 role="presentation"
+                                style={
+                                  Object {
+                                    "fontFamily": "\\"FabricMDL2Icons\\"",
+                                  }
+                                }
                               >
                                 
                               </i>
@@ -2501,6 +2556,11 @@ exports[`Component Examples renders HoverCard.PlainCard.Example.tsx correctly 1`
                                     }
                                 data-icon-name="StatusCircleCheckmark"
                                 role="presentation"
+                                style={
+                                  Object {
+                                    "fontFamily": "\\"FabricMDL2Icons\\"",
+                                  }
+                                }
                               >
                                 
                               </i>
@@ -2877,6 +2937,11 @@ exports[`Component Examples renders HoverCard.PlainCard.Example.tsx correctly 1`
                                     }
                                 data-icon-name="CircleRing"
                                 role="presentation"
+                                style={
+                                  Object {
+                                    "fontFamily": "\\"FabricMDL2Icons\\"",
+                                  }
+                                }
                               >
                                 
                               </i>
@@ -2916,6 +2981,11 @@ exports[`Component Examples renders HoverCard.PlainCard.Example.tsx correctly 1`
                                     }
                                 data-icon-name="StatusCircleCheckmark"
                                 role="presentation"
+                                style={
+                                  Object {
+                                    "fontFamily": "\\"FabricMDL2Icons\\"",
+                                  }
+                                }
                               >
                                 
                               </i>
@@ -3292,6 +3362,11 @@ exports[`Component Examples renders HoverCard.PlainCard.Example.tsx correctly 1`
                                     }
                                 data-icon-name="CircleRing"
                                 role="presentation"
+                                style={
+                                  Object {
+                                    "fontFamily": "\\"FabricMDL2Icons\\"",
+                                  }
+                                }
                               >
                                 
                               </i>
@@ -3331,6 +3406,11 @@ exports[`Component Examples renders HoverCard.PlainCard.Example.tsx correctly 1`
                                     }
                                 data-icon-name="StatusCircleCheckmark"
                                 role="presentation"
+                                style={
+                                  Object {
+                                    "fontFamily": "\\"FabricMDL2Icons\\"",
+                                  }
+                                }
                               >
                                 
                               </i>
@@ -3707,6 +3787,11 @@ exports[`Component Examples renders HoverCard.PlainCard.Example.tsx correctly 1`
                                     }
                                 data-icon-name="CircleRing"
                                 role="presentation"
+                                style={
+                                  Object {
+                                    "fontFamily": "\\"FabricMDL2Icons\\"",
+                                  }
+                                }
                               >
                                 
                               </i>
@@ -3746,6 +3831,11 @@ exports[`Component Examples renders HoverCard.PlainCard.Example.tsx correctly 1`
                                     }
                                 data-icon-name="StatusCircleCheckmark"
                                 role="presentation"
+                                style={
+                                  Object {
+                                    "fontFamily": "\\"FabricMDL2Icons\\"",
+                                  }
+                                }
                               >
                                 
                               </i>
@@ -4122,6 +4212,11 @@ exports[`Component Examples renders HoverCard.PlainCard.Example.tsx correctly 1`
                                     }
                                 data-icon-name="CircleRing"
                                 role="presentation"
+                                style={
+                                  Object {
+                                    "fontFamily": "\\"FabricMDL2Icons\\"",
+                                  }
+                                }
                               >
                                 
                               </i>
@@ -4161,6 +4256,11 @@ exports[`Component Examples renders HoverCard.PlainCard.Example.tsx correctly 1`
                                     }
                                 data-icon-name="StatusCircleCheckmark"
                                 role="presentation"
+                                style={
+                                  Object {
+                                    "fontFamily": "\\"FabricMDL2Icons\\"",
+                                  }
+                                }
                               >
                                 
                               </i>
@@ -4537,6 +4637,11 @@ exports[`Component Examples renders HoverCard.PlainCard.Example.tsx correctly 1`
                                     }
                                 data-icon-name="CircleRing"
                                 role="presentation"
+                                style={
+                                  Object {
+                                    "fontFamily": "\\"FabricMDL2Icons\\"",
+                                  }
+                                }
                               >
                                 
                               </i>
@@ -4576,6 +4681,11 @@ exports[`Component Examples renders HoverCard.PlainCard.Example.tsx correctly 1`
                                     }
                                 data-icon-name="StatusCircleCheckmark"
                                 role="presentation"
+                                style={
+                                  Object {
+                                    "fontFamily": "\\"FabricMDL2Icons\\"",
+                                  }
+                                }
                               >
                                 
                               </i>

@@ -663,6 +663,7 @@ exports[`Component Examples renders Pivot.SeparateNoSelectedKey.Example.tsx corr
           style={
             Object {
               "color": "blue",
+              "fontFamily": "\\"FabricMDL2Icons\\"",
             }
           }
         >
