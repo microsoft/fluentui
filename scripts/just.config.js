@@ -62,9 +62,6 @@ module.exports = function preset() {
   task('check-for-modified-files', checkForModifiedFiles);
   task('generate-version-files', generateVersionFiles);
   task('generate-package-manifest', generatePackageManifestTask);
-  // TODO: how will this work with production? make sure this works (that amd is generated)
-  // TODO: is there a reason not just to generate ts:amd all the time? (it was by default previously anyways)
-  // TODO: make sure this works with build:prod
   task('ts', () => {
     return argv().commonjs ? 'ts:commonjs-only' : parallel('ts:commonjs', 'ts:esm', condition('ts:amd', () => !!argv().production));
   });
