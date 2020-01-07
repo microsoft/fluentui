@@ -92,8 +92,8 @@ export class AppBase extends React.Component<IAppProps, IAppState> {
       </Fabric>
     );
 
-    if (appDefinition.customizations) {
-      const { exampleCardCustomizations, hideSchemes, ...otherCustomizations } = appDefinition.customizations;
+    if (customizations) {
+      const { exampleCardCustomizations, hideSchemes, ...otherCustomizations } = customizations;
 
       if (exampleCardCustomizations || typeof hideSchemes === 'boolean') {
         app = (
