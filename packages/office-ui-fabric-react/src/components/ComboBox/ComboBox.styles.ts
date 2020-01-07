@@ -192,7 +192,9 @@ export const getCaretDownButtonStyles = memoizeFunction(
         color: caret.buttonTextColor,
         fontSize: fonts.small.fontSize,
         position: 'absolute',
-        height: ComboBoxHeight,
+        top: 0,
+        height: '100%',
+        paddingTop: 1, // make the chevron down visually vertically centered
         lineHeight: ComboBoxLineHeight,
         width: ComboBoxCaretDownWidth,
         textAlign: 'center',
