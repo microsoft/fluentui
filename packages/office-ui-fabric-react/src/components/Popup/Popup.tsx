@@ -66,6 +66,9 @@ export class Popup extends React.Component<IPopupProps, IPopupState> {
         this._originalFocusedElement.focus();
       }
     }
+
+    delete this._originalFocusedElement;
+    delete this._disposables;
   }
 
   public render(): JSX.Element {
