@@ -15,7 +15,7 @@ function loadReferences(): IAppLink[] {
   return requireContext.keys().map(pagePath => {
     const pageName = pagePath.match(/(\w+)\.page\.json/)![1];
     return {
-      component: () => <ApiReferencesTableSet className={propertiesTableMargins} jsonDocs={requireContext(pagePath)} />,
+      component: () => <ApiReferencesTableSet className={propertiesTableMargins} jsonDocs={requireContext(pagePath)} showAll />,
       key: pageName,
       name: pageName,
       url: '#/examples/references/' + pageName.toLowerCase()
