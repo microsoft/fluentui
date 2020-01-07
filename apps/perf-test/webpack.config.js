@@ -1,4 +1,3 @@
-const path = require('path');
 const resources = require('../../scripts/webpack/webpack-resources');
 
 // The issue here is making readable Flamegraphs that don't have complicated paths like:

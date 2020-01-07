@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Combobox: Clicks to headers and scrollbars no longer cause onBlur",
-  "packageName": "office-ui-fabric-react",
-  "email": "mgodbolt@microsoft.com",
-  "commit": "399896de32fe539ce1bab0bc7b7d0503710e4fa5",
-  "date": "2019-12-31T19:32:45.864Z"
-}

@@ -199,6 +199,9 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
     // Dispose all events.
     this._disposables.forEach(d => d());
 
+    // Clear function references so their closures can be garbage-collected.
+    delete this._disposables;
+
     // If this is the last outer zone, remove the keydown listener.
     if (_outerZones.size === 0 && _disposeGlobalKeyDownListener) {
       _disposeGlobalKeyDownListener();

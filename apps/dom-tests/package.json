@@ -5,6 +5,9 @@
   "description": "App for test that use real browser.",
   "scripts": {
     "build": "just-scripts build",
+    "bundle": "just-scripts bundle",
+    "lint": "just-scripts lint",
+    "test": "just-scripts test",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
     "jest-dom": "just-scripts ",
@@ -12,12 +15,12 @@
     "start": "just-scripts dev"
   },
   "dependencies": {
-    "@microsoft/load-themed-styles": "^1.7.13",
+    "@microsoft/load-themed-styles": "^1.10.26",
     "@uifabric/experiments": "^7.18.10",
     "@uifabric/set-version": "^7.0.2",
     "es6-promise": "^4.1.0",
     "immutability-helper": "~2.8.1",
-    "office-ui-fabric-react": "^7.78.1",
+    "office-ui-fabric-react": "^7.78.3",
     "react": "16.8.6",
     "react-app-polyfill": "~1.0.1",
     "react-dom": "16.8.6",

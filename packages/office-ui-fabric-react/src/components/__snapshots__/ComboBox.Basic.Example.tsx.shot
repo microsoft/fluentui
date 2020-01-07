@@ -98,9 +98,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
               display: inline-block;
               margin-bottom: 8px;
             }
-            &.is-open {
-              border-color: #605e5c;
-            }
             @media screen and (-ms-high-contrast: active){&.is-open {
               -ms-high-contrast-adjust: none;
               background-color: Window;
@@ -658,9 +655,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
             display: inline-block;
             margin-bottom: 8px;
           }
-          &.is-open {
-            border-color: #605e5c;
-          }
           @media screen and (-ms-high-contrast: active){&.is-open {
             -ms-high-contrast-adjust: none;
             background-color: Window;
@@ -1056,9 +1050,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
           & .ms-Label {
             display: inline-block;
             margin-bottom: 8px;
-          }
-          &.is-open {
-            border-color: #605e5c;
           }
           @media screen and (-ms-high-contrast: active){&.is-open {
             -ms-high-contrast-adjust: none;
@@ -1456,9 +1447,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
           & .ms-Label {
             display: inline-block;
             margin-bottom: 8px;
-          }
-          &.is-open {
-            border-color: #605e5c;
           }
           @media screen and (-ms-high-contrast: active){&.is-open {
             -ms-high-contrast-adjust: none;
@@ -3658,9 +3646,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
             display: inline-block;
             margin-bottom: 8px;
           }
-          &.is-open {
-            border-color: #605e5c;
-          }
           @media screen and (-ms-high-contrast: active){&.is-open {
             -ms-high-contrast-adjust: none;
             background-color: Window;
@@ -3992,9 +3977,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
           & .ms-Label {
             display: inline-block;
             margin-bottom: 8px;
-          }
-          &.is-open {
-            border-color: #605e5c;
           }
           @media screen and (-ms-high-contrast: active){&.is-open {
             -ms-high-contrast-adjust: none;
@@ -4396,9 +4378,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
           & .ms-Label {
             display: inline-block;
             margin-bottom: 8px;
-          }
-          &.is-open {
-            border-color: #605e5c;
           }
           @media screen and (-ms-high-contrast: active){&.is-open {
             -ms-high-contrast-adjust: none;

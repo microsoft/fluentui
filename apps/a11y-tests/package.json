@@ -5,8 +5,10 @@
   "description": "A11y Tests for Office UI Fabric React",
   "scripts": {
     "build": "just-scripts build",
+    "bundle": "just-scripts bundle",
+    "lint": "just-scripts lint",
     "just": "just-scripts",
-    "test": "just-scripts jest",
+    "test": "just-scripts test",
     "code-style": "just-scripts code-style",
     "update-snapshots": "just-scripts jest -u"
   },
@@ -17,7 +19,7 @@
     "axe-sarif-converter": "^2.0.1",
     "glob": "^7.1.2",
     "mkdirp": "^0.5.1",
-    "office-ui-fabric-react": "^7.78.1",
+    "office-ui-fabric-react": "^7.78.3",
     "puppeteer": "^1.13.0",
     "tslib": "^1.7.1",
     "react": "16.8.6",

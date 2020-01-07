@@ -1064,17 +1064,17 @@
     source-map "~0.6.1"
     typescript "~3.5.3"
 
-"@microsoft/load-themed-styles@1.9.7", "@microsoft/load-themed-styles@^1.7.13":
-  version "1.9.7"
-  resolved "https://registry.yarnpkg.com/@microsoft/load-themed-styles/-/load-themed-styles-1.9.7.tgz#4f28d7097802317d2a491888ba65fac617c56dd4"
-  integrity sha512-8Iua4vPmffV2tT1nR/E55GSbUkYRPD9xFfa6v8zJ89EiiDrlyO2OGuXAtC6/nWxLTeVRA3GhtQuU2SApD2sQAA==
+"@microsoft/load-themed-styles@1.10.26", "@microsoft/load-themed-styles@^1.10.26":
+  version "1.10.26"
+  resolved "https://registry.yarnpkg.com/@microsoft/load-themed-styles/-/load-themed-styles-1.10.26.tgz#95673415103564e5427ca0d43f41da5cc44f29dc"
+  integrity sha512-N//pFTBL/iCSrMuDoLvBLpgGjlk+MgKX2kyFI3bJVb+LRozeyWCOZVRcR8aMKiYHdqwy5isu2Frp8drvWx7RbA==
 
-"@microsoft/loader-load-themed-styles@^1.6.0":
-  version "1.7.165"
-  resolved "https://registry.yarnpkg.com/@microsoft/loader-load-themed-styles/-/loader-load-themed-styles-1.7.165.tgz#1d5fb481a3ab0afbb2d8c8174462c03eff4bc962"
-  integrity sha512-OvylDfTP395M9jdgUyGZdR8VgN5mkZhLAsZ1I9jbl8KNb/c9tabsXQ98DfuhC5NSjDKP3YoNERTpkbz/MrfNkA==
+"@microsoft/loader-load-themed-styles@^1.7.205":
+  version "1.7.205"
+  resolved "https://registry.yarnpkg.com/@microsoft/loader-load-themed-styles/-/loader-load-themed-styles-1.7.205.tgz#40b62004f5c29f832b4f333030ed7ee6bf55d980"
+  integrity sha512-nDG4TEW2fH8ez03jz3boK3qaa/Iz7b36H6dvnwJebHCl3oCj804g4wYhPtVXzgxsLYNh0ZHeLO1tSvUYeClduw==
   dependencies:
-    "@microsoft/load-themed-styles" "1.9.7"
+    "@microsoft/load-themed-styles" "1.10.26"
     loader-utils "~1.1.0"
 
 "@microsoft/node-core-library@3.14.0":
