@@ -1,7 +1,19 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 07 Jan 2020 12:31:36 GMT and should not be manually modified.
+This log was last generated on Wed, 08 Jan 2020 17:02:57 GMT and should not be manually modified.
 
+## 7.79.0
+Wed, 08 Jan 2020 17:02:57 GMT
+
+### Minor changes
+
+- Button: Use aria-checked for checkbox and menuitemcheckbox roles (mgodbolt@microsoft.com)
+### Patches
+
+- Update focus border styles for SearchBox, BasePicker (xgao@microsoft.com)
+- bumping load-themed-styles to take advantage of es6 version of it (kchau@microsoft.com)
+- For API reference pages, show all property tables on page load (elcraig@microsoft.com)
+- Calendar: Fixing text color of 'today's day cell' when in High Contrast Mode. (Humberto.Morimoto@microsoft.com)
 ## 7.78.3
 Tue, 07 Jan 2020 12:31:36 GMT
 

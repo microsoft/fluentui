@@ -2,6 +2,49 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Wed, 08 Jan 2020 17:02:57 GMT",
+      "tag": "office-ui-fabric-react_v7.79.0",
+      "version": "7.79.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update focus border styles for SearchBox, BasePicker",
+            "author": "xgao@microsoft.com",
+            "commit": "da8b56f6167485f487c59130be4f85fe46728bc6"
+          },
+          {
+            "comment": "bumping load-themed-styles to take advantage of es6 version of it",
+            "author": "kchau@microsoft.com",
+            "commit": "9041aee981e0ad058920172d078af2d2cc2292db"
+          },
+          {
+            "comment": "For API reference pages, show all property tables on page load",
+            "author": "elcraig@microsoft.com",
+            "commit": "0d8e4da2a7c3d0f4855b3dfade06654c1def6cfb"
+          },
+          {
+            "comment": "Calendar: Fixing text color of 'today's day cell' when in High Contrast Mode.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "92cfe30b9cc98ceaeab52d4bd95eb17d98a0dfe2"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Break up build task into build, bundle, test and lint tasks. Add parallelization pipeline using new tasks.",
+            "author": "jagore@microsoft.com",
+            "commit": "f1f07695f5d18c2c975eef382c5b777d7ccb52e2"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Button: Use aria-checked for checkbox and menuitemcheckbox roles",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "e86bd78988b374a38420a4ed08089b081e246af8"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 07 Jan 2020 12:31:36 GMT",
       "tag": "office-ui-fabric-react_v7.78.3",
       "version": "7.78.3",

@@ -1,7 +1,13 @@
 # Change Log - @uifabric/date-time
 
-This log was last generated on Wed, 11 Dec 2019 12:30:26 GMT and should not be manually modified.
+This log was last generated on Wed, 08 Jan 2020 17:02:57 GMT and should not be manually modified.
 
+## 7.8.3
+Wed, 08 Jan 2020 17:02:57 GMT
+
+### Patches
+
+- bumping load-themed-styles to take advantage of es6 version of it (kchau@microsoft.com)
 ## 7.8.2
 Wed, 11 Dec 2019 12:30:26 GMT
 

@@ -2,6 +2,32 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "date": "Wed, 08 Jan 2020 17:02:57 GMT",
+      "tag": "@uifabric/experiments_v7.18.11",
+      "version": "7.18.11",
+      "comments": {
+        "none": [
+          {
+            "comment": "Break up build task into build, bundle, test and lint tasks. Add parallelization pipeline using new tasks.",
+            "author": "jagore@microsoft.com",
+            "commit": "f1f07695f5d18c2c975eef382c5b777d7ccb52e2"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Update snapshots from combobox style update",
+            "author": "xgao@microsoft.com",
+            "commit": "3d78a7b98fca4a03ed6116106628722f6c8c262e"
+          },
+          {
+            "comment": "bumping load-themed-styles to take advantage of es6 version of it",
+            "author": "kchau@microsoft.com",
+            "commit": "9041aee981e0ad058920172d078af2d2cc2292db"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 24 Dec 2019 12:33:51 GMT",
       "tag": "@uifabric/experiments_v7.18.10",
       "version": "7.18.10",

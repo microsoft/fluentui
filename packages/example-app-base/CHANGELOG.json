@@ -2,6 +2,39 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "date": "Wed, 08 Jan 2020 17:02:57 GMT",
+      "tag": "@uifabric/example-app-base_v7.11.0",
+      "version": "7.11.0",
+      "comments": {
+        "none": [
+          {
+            "comment": "Break up build task into build, bundle, test and lint tasks. Add parallelization pipeline using new tasks.",
+            "author": "jagore@microsoft.com",
+            "commit": "f1f07695f5d18c2c975eef382c5b777d7ccb52e2"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "bumping load-themed-styles to take advantage of es6 version of it",
+            "author": "kchau@microsoft.com",
+            "commit": "9041aee981e0ad058920172d078af2d2cc2292db"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Add ExampleCard prop for custom editorSupportedPackages, and add support for ICustomizations in IAppDefinition.customizations for customizing all ExampleCards.",
+            "author": "elcraig@microsoft.com",
+            "commit": "a84e7752d10a977cd8fe148a12004113808f573f"
+          },
+          {
+            "comment": "Fix API reference generation bugs and add support for showing all tables on load",
+            "author": "elcraig@microsoft.com",
+            "commit": "0d8e4da2a7c3d0f4855b3dfade06654c1def6cfb"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 23 Dec 2019 12:34:01 GMT",
       "tag": "@uifabric/example-app-base_v7.10.4",
       "version": "7.10.4",

@@ -2,6 +2,20 @@
   "name": "@uifabric/icons",
   "entries": [
     {
+      "date": "Wed, 08 Jan 2020 17:02:57 GMT",
+      "tag": "@uifabric/icons_v7.3.0",
+      "version": "7.3.0",
+      "comments": {
+        "none": [
+          {
+            "comment": "Break up build task into build, bundle, test and lint tasks. Add parallelization pipeline using new tasks.",
+            "author": "jagore@microsoft.com",
+            "commit": "f1f07695f5d18c2c975eef382c5b777d7ccb52e2"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 23 Sep 2019 12:33:15 GMT",
       "tag": "@uifabric/icons_v7.3.0",
       "version": "7.3.0",

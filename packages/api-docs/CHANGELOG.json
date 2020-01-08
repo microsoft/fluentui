@@ -2,6 +2,27 @@
   "name": "@uifabric/api-docs",
   "entries": [
     {
+      "date": "Wed, 08 Jan 2020 17:02:57 GMT",
+      "tag": "@uifabric/api-docs_v7.1.2",
+      "version": "7.1.2",
+      "comments": {
+        "none": [
+          {
+            "comment": "Break up build task into build, bundle, test and lint tasks. Add parallelization pipeline using new tasks.",
+            "author": "jagore@microsoft.com",
+            "commit": "f1f07695f5d18c2c975eef382c5b777d7ccb52e2"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Fix API reference generation bugs",
+            "author": "elcraig@microsoft.com",
+            "commit": "0d8e4da2a7c3d0f4855b3dfade06654c1def6cfb"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 12 Nov 2019 12:32:39 GMT",
       "tag": "@uifabric/api-docs_v7.1.1",
       "version": "7.1.1",
