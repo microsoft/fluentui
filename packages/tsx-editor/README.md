@@ -16,7 +16,7 @@ By default, the editor will load types for React and UI Fabric. It can also be c
 
 ### Delay loading
 
-Monaco's code is very large and should be loaded after main page content is ready. When consumed with Webpack, this package takes care of delay loading Monaco. (See Setup step 2 for a caveat if using Webpack with TypeScript.)
+Monaco's code is very large and should be loaded after main page content is ready. When consumed with Webpack, this package takes care of delay loading Monaco.
 
 ### Read-only rendering in unsupported browsers
 
@@ -24,13 +24,12 @@ If the user's browser can't support the editor (mainly IE 11 and some mobile bro
 
 ## Setup
 
-1. Follow the Webpack and runtime configuration instructions from the [`@uifabric/monaco-editor` readme](https://github.com/OfficeDev/office-ui-fabric-react/blob/master/packages/monaco-editor/README.md). Note that the helpers used are re-exported from this package for convenience:
-  - `addMonacoWebpackConfig`: import from `@uifabric/tsx-editor/scripts/addMonacoWebpackConfig`
-  - `configureEnvironment` and `IMonacoConfig`: import from `@uifabric/tsx-editor`
+Follow the Webpack and runtime configuration instructions from the [`@uifabric/monaco-editor` readme](https://github.com/OfficeDev/office-ui-fabric-react/blob/master/packages/monaco-editor/README.md). Note that the helpers used are re-exported from this package for convenience:
 
-2. If your project uses TypeScript, you **must** use `"module": "esnext"` (not `"module": "commonjs"`) in your `tsconfig.json`. Otherwise, dynamic imports in the editor code will be transformed into `require` statements which break code splitting. [More info here.](https://github.com/webpack/webpack/issues/5703#issuecomment-357512412)
+- `addMonacoWebpackConfig`: import from `@uifabric/tsx-editor/scripts/addMonacoWebpackConfig`
+- `configureEnvironment` and `IMonacoConfig`: import from `@uifabric/tsx-editor`
 
-3. Choose one of the API options below for rendering the editor.
+Then choose one of the API options below for rendering the editor.
 
 ## API options
 

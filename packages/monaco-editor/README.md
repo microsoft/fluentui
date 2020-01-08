@@ -29,10 +29,6 @@ Parameters:
   - `false` (default): Imports for `@uifabric/monaco-editor` will be remapped to `@uifabric/monaco-editor/lib/monacoCoreBundle`, which includes only core editor features and TypeScript language features. Entry configs will be added for the main editor worker (`editor.worker.js`) and TS worker (`ts.worker.js`) but not other languages.
   - `true`: Imports for `@uifabric/monaco-editor` will be remapped to `@uifabric/monaco-editor/lib/monacoBundle`, which includes all language contributions. Also, entry configs will be added for CSS/HTML/JSON workers in addition to TS.
 
-#### Using with TypeScript
-
-If your project uses TypeScript, you **must** use `"module": "esnext"` (not `"module": "commonjs"`) in your `tsconfig.json`. Otherwise, dynamic imports in the editor code will be transformed into `require` statements which break code splitting. [More info here.](https://github.com/webpack/webpack/issues/5703#issuecomment-357512412)
-
 ### 2. Runtime configuration
 
 This project provides two options for setting up global Monaco configuration at runtime. The options are outlined below, but both involve a config object with the following properties:
