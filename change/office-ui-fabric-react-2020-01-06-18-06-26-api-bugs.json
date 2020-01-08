@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "For API reference pages, show all property tables on page load",
+  "packageName": "office-ui-fabric-react",
+  "email": "elcraig@microsoft.com",
+  "commit": "0d8e4da2a7c3d0f4855b3dfade06654c1def6cfb",
+  "date": "2020-01-07T02:06:26.725Z"
+}

@@ -31,7 +31,7 @@ exports[`SearchBox renders SearchBox correctly 1`] = `
         padding-top: 1px;
       }
       @media screen and (-ms-high-contrast: active){& {
-        border: 1px solid WindowText;
+        border-color: WindowText;
       }
       &:hover {
         border-color: #323130;
@@ -165,7 +165,7 @@ exports[`SearchBox renders SearchBox without animation correctly 1`] = `
         padding-top: 1px;
       }
       @media screen and (-ms-high-contrast: active){& {
-        border: 1px solid WindowText;
+        border-color: WindowText;
       }
       &:hover {
         border-color: #323130;

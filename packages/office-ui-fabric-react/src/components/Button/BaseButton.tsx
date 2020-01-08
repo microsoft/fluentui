@@ -109,7 +109,8 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       variantClassName,
       theme,
       toggle,
-      getClassNames
+      getClassNames,
+      role
     } = this.props;
 
     const { menuHidden } = this.state;
@@ -192,6 +193,12 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     const dataIsFocusable =
       (this.props as any)['data-is-focusable'] === false || (disabled && !allowDisabledFocus) || this._isSplitButton ? false : true;
 
+    const isCheckboxTypeRole = role === 'menuitemcheckbox' || role === 'checkbox';
+    // if isCheckboxTypeRole, always return a checked value, otherwise only return checked value if toggle is set to true
+    // This is because role="checkbox" always needs to have an aria-checked value
+    // but our checked prop only sets aria-pressed if we mark the button as a toggle="true"
+    const checkedOrPressedValue = isCheckboxTypeRole ? !!checked : toggle === true ? !!checked : undefined;
+
     const buttonProps = assign(nativeProps, {
       className: this._classNames.root,
       ref: this._buttonElement,
@@ -207,7 +214,9 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       'aria-describedby': ariaDescribedBy,
       'aria-disabled': isPrimaryButtonDisabled,
       'data-is-focusable': dataIsFocusable,
-      'aria-pressed': toggle ? !!checked : undefined // aria-pressed attribute should only be present for toggle buttons
+      // aria-pressed attribute should only be present for toggle buttons
+      // aria-checked attribute should only be present for toggle buttons with checkbox type role
+      [isCheckboxTypeRole ? 'aria-checked' : 'aria-pressed']: checkedOrPressedValue
     });
 
     if (ariaHidden) {

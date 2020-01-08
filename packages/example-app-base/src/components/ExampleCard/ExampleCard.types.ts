@@ -1,6 +1,7 @@
 import { IStyle, ITheme } from 'office-ui-fabric-react/lib/Styling';
 import { IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
 import { IDropdownStyleProps } from 'office-ui-fabric-react/lib/Dropdown';
+import { IPackageGroup } from '@uifabric/tsx-editor';
 
 export interface IExampleCardProps {
   /** Example title */
@@ -37,6 +38,13 @@ export interface IExampleCardProps {
 
   /** Whether code example is visible */
   isCodeVisible?: boolean;
+
+  /**
+   * Custom supported packages for the live code editor. Defaults to core Fabric packages plus
+   * example-data. If you want to build off the default list of packages, it's exported from
+   * `@uifabric/tsx-editor/lib/utilities/defaultSupportedPackages`.
+   */
+  editorSupportedPackages?: IPackageGroup[];
 }
 
 export type IExampleCardStyleProps = Pick<IExampleCardProps, 'isRightAligned' | 'isScrollable' | 'theme'> & {

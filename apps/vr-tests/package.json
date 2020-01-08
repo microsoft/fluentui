@@ -5,6 +5,7 @@
   "private": true,
   "scripts": {
     "build": "just-scripts build",
+    "test": "just-scripts test",
     "clean": "",
     "code-style": "just-scripts code-style",
     "screener": "screener-storybook --conf screener.config.js",
