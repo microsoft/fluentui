@@ -286,6 +286,32 @@ describe('Button', () => {
         expect(button.getAttribute('aria-pressed')).toEqual('false');
       });
 
+      it('applies aria-checked to a role=menuitemcheckbox checked button', () => {
+        const button: any = render(
+          <DefaultButton role="menuitemcheckbox" toggle={true} checked={true}>
+            Hello
+          </DefaultButton>
+        );
+
+        expect(button.getAttribute('aria-checked')).toEqual('true');
+      });
+
+      it('applies aria-checked to a role=checkbox checked button', () => {
+        const button: any = render(
+          <DefaultButton role="checkbox" toggle={true} checked={true}>
+            Hello
+          </DefaultButton>
+        );
+
+        expect(button.getAttribute('aria-checked')).toEqual('true');
+      });
+
+      it('applies aria-checked=false to a role=checkbox button even if toggle is not passed', () => {
+        const button: any = render(<DefaultButton role="checkbox">Hello</DefaultButton>);
+
+        expect(button.getAttribute('aria-checked')).toEqual('false');
+      });
+
       it('does not mutate menuprops hidden property', () => {
         const menuProps: IContextualMenuProps = {
           hidden: false,
