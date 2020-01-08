@@ -15,7 +15,6 @@
     "noImplicitAny": true,
     "moduleResolution": "node",
     "preserveConstEnums": true,
-    "skipLibCheck": true,
     "lib": ["es5", "dom"],
     "types": [],
     "paths": {
