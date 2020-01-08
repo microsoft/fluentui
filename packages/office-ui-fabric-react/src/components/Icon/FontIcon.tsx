@@ -5,18 +5,32 @@ import { classNames, MS_ICON } from './Icon.styles';
 import { css, getNativeProps, htmlElementProperties, memoizeFunction } from '../../Utilities';
 import { getIcon, IIconRecord, IIconSubsetRecord } from '../../Styling';
 
-export const getIconContent = memoizeFunction((iconName?: string) => {
-  const { code, subset }: Pick<IIconRecord, 'code'> & { subset: Partial<IIconSubsetRecord> } = getIcon(iconName) || {
-    subset: {},
-    code: undefined
-  };
+export interface IIconContent {
+  children?: string;
+  iconClassName?: string;
+  fontFamily?: string;
+}
 
-  return {
-    children: code,
-    iconClassName: subset.className,
-    fontFamily: subset.fontFace && subset.fontFace.fontFamily
-  };
-});
+export const getIconContent = memoizeFunction(
+  (iconName?: string): IIconContent | null => {
+    const { code, subset }: Pick<IIconRecord, 'code'> & { subset: Partial<IIconSubsetRecord> } = getIcon(iconName) || {
+      subset: {},
+      code: undefined
+    };
+
+    if (!code) {
+      return null;
+    }
+
+    return {
+      children: code,
+      iconClassName: subset.className,
+      fontFamily: subset.fontFace && subset.fontFace.fontFamily
+    };
+  },
+  undefined,
+  true /*ignoreNullOrUndefinedResult */
+);
 
 /**
  * Fast icon component which only supports font glyphs (not images) and can't be targeted by customizations.
@@ -25,7 +39,8 @@ export const getIconContent = memoizeFunction((iconName?: string) => {
  */
 export const FontIcon: React.FunctionComponent<IFontIconProps> = props => {
   const { iconName, className, style = {} } = props;
-  const { iconClassName, children, fontFamily } = getIconContent(iconName);
+  const iconContent = getIconContent(iconName) || {};
+  const { iconClassName, children, fontFamily } = iconContent;
 
   const nativeProps = getNativeProps<React.HTMLAttributes<HTMLElement>>(props, htmlElementProperties);
   const containerProps = props['aria-label']
