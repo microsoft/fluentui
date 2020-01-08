@@ -33,8 +33,12 @@ const getDisabledStyles = memoizeFunction(
           borderColor: semanticColors.disabledBackground
         },
         [HighContrastSelector]: {
-          borderColor: 'GrayText',
-          color: 'GrayText'
+          color: 'GrayText',
+          selectors: {
+            ':after': {
+              borderColor: 'GrayText'
+            }
+          }
         }
       }
     };
