@@ -16,7 +16,7 @@ By default, the editor will load types for React and UI Fabric. It can also be c
 
 ### Delay loading
 
-Monaco's code is very large and should be loaded after main page content is ready. When consumed with Webpack, this package takes care of delay loading Monaco. (See warning under Setup if using Webpack with TypeScript.)
+Monaco's code is very large and should be loaded after main page content is ready. When consumed with Webpack, this package takes care of delay loading Monaco. (See Setup step 2 for a caveat if using Webpack with TypeScript.)
 
 ### Read-only rendering in unsupported browsers
 
