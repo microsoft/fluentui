@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "add borderPosition param to getInputFocusStyle",
+  "packageName": "@uifabric/styling",
+  "email": "xgao@microsoft.com",
+  "commit": "927aefb4447731b6eb0aa84f1fb57e3adc638bdb",
+  "date": "2020-01-08T02:22:34.442Z"
+}

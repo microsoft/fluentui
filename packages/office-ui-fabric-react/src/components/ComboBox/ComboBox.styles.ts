@@ -313,19 +313,7 @@ export const getStyles = memoizeFunction(
       }
     };
 
-    const focusBorderStyles: IStyle = [
-      getInputFocusStyle(root.borderPressedColor, effects.roundedCorner2),
-      {
-        selectors: {
-          ':after': {
-            top: 0,
-            bottom: 0,
-            left: 0,
-            right: 0
-          }
-        }
-      }
-    ];
+    const focusBorderStyles: IStyle = getInputFocusStyle(root.borderPressedColor, effects.roundedCorner2, 'border', 0);
 
     const styles: IComboBoxStyles = {
       container: {},
