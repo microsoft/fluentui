@@ -347,6 +347,8 @@ export const getStyles = memoizeFunction(
                 [HighContrastSelector]: ComboBoxRootHighContrastFocused
               }
             },
+            // setting border using pseudo-element here in order to
+            // prevent chevron button to overlap ComboBox border under certain resolutions
             ':after': {
               pointerEvents: 'none',
               content: "''",
