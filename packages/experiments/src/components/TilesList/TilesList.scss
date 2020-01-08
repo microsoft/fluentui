@@ -42,6 +42,11 @@
   align-content: flex-start;
 }
 
+.row {
+  display: flex;
+  width: 100%;
+}
+
 .shimmeredList {
   &::after {
     content: '';

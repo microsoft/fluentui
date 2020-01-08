@@ -221,6 +221,7 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
     const endIndex = cells.length;
 
     let currentRow: IRowData | undefined;
+    let currentRowCells = [];
 
     let shimmerWrapperWidth = 0;
 
@@ -245,6 +246,11 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
         const cellAsFirstRow = data.rows[index];
 
         if (cellAsFirstRow) {
+          if (currentRowCells.length > 0) {
+            renderedCells.push(this._renderRow(currentRowCells, grid, isPlaceholder));
+            currentRowCells = [];
+          }
+
           if (cellAsFirstRow !== currentRow) {
             rowCount++;
           }
@@ -308,11 +314,11 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
           const totalPlaceholderItems = cellsPerRow * ROWS_OF_PLACEHOLDER_CELLS;
           shimmerWrapperWidth = cellsPerRow * finalSize.width + grid.spacing * (cellsPerRow - 1);
           for (let j = 0; j < totalPlaceholderItems; j++) {
-            renderedCells.push(renderedCell(j));
+            currentRowCells.push(renderedCell(j));
           }
         } else {
           shimmerWrapperWidth = finalSize.width / 3;
-          renderedCells.push(renderedCell());
+          currentRowCells.push(renderedCell());
         }
       }
 
@@ -326,6 +332,11 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
       const isOpenEnd = nextCell && nextCell.grid === grid;
 
       const margin = grid.spacing / 2;
+
+      if (currentRowCells.length > 0) {
+        renderedCells.push(this._renderRow(currentRowCells, grid, isPlaceholder));
+        currentRowCells = [];
+      }
 
       const finalGrid: JSX.Element = (
         <div
@@ -551,6 +562,14 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
     pageSpecificationCache.byIndex[startIndex] = pageSpecification;
 
     return pageSpecification;
+  };
+
+  private _renderRow = (row: JSX.Element[], grid: ITileGrid, isPlaceholder: boolean | undefined): JSX.Element => {
+    return (
+      <div role="row" className={TilesListStyles.row}>
+        {row}
+      </div>
+    );
   };
 
   private _onGetCellClassName = (): string => {
