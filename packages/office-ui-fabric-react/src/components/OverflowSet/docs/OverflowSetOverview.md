@@ -2,4 +2,4 @@ The OverflowSet is a flexible container component that is useful for displaying 
 
 ### Accessibility
 
-If you used as a menu, you will need to add to the OverflowSet `role="menubar"`, or `role="menu"` for `vertical` menus, and add proper aria roles to each rendered item (`menuitem`, `menuitemcheckbox`, `menuitemradio`)
+By default, the OverflowSet is simply `role=group`. If you used as a menu, you will need to add `role="menubar"` and add proper aria roles to each rendered item (`menuitem`, `menuitemcheckbox`, `menuitemradio`)

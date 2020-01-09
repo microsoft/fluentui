@@ -58,6 +58,7 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                   flex-wrap: nowrap;
                   position: relative;
                 }
+            role="group"
           >
             <div
               className=
@@ -1073,6 +1074,7 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                 onKeyDown={[Function]}
                 onMouseEnter={[Function]}
                 onMouseLeave={[Function]}
+                role="presentation"
               >
                 <button
                   aria-disabled={true}

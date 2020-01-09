@@ -154,6 +154,7 @@ exports[`Persona renders Persona correctly with image 1`] = `
         onKeyDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
+        role="presentation"
       >
         Kat Larrson
       </div>
@@ -333,6 +334,7 @@ exports[`Persona renders Persona correctly with initials 1`] = `
         onKeyDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
+        role="presentation"
       >
         Kat Larrson
       </div>

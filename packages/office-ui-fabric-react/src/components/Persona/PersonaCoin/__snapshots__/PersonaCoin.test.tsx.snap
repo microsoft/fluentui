@@ -130,6 +130,7 @@ exports[`Persona renders Persona children correctly 1`] = `
         onKeyDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
+        role="presentation"
       >
         Kat Larrson
       </div>
@@ -326,6 +327,7 @@ exports[`Persona renders Persona correctly with UnknownPersona coin 1`] = `
         onKeyDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
+        role="presentation"
       >
         Kat Larrson
       </div>
@@ -529,6 +531,7 @@ exports[`Persona renders Persona correctly with image 1`] = `
         onKeyDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
+        role="presentation"
       >
         Kat Larrson
       </div>
@@ -708,6 +711,7 @@ exports[`Persona renders Persona correctly with initials 1`] = `
         onKeyDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
+        role="presentation"
       >
         Kat Larrson
       </div>
@@ -1145,6 +1149,7 @@ exports[`Persona renders Persona which calls onRenderCoin callback without image
         onKeyDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
+        role="presentation"
       >
         Swapnil Vaibhav
       </div>
@@ -1173,6 +1178,7 @@ exports[`Persona renders Persona which calls onRenderCoin callback without image
         onKeyDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
+        role="presentation"
       >
         Software Engineer
       </div>
@@ -1202,6 +1208,7 @@ exports[`Persona renders Persona which calls onRenderCoin callback without image
         onKeyDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
+        role="presentation"
       >
         In a meeting
       </div>
@@ -1231,6 +1238,7 @@ exports[`Persona renders Persona which calls onRenderCoin callback without image
         onKeyDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
+        role="presentation"
       >
         Available at 4:00pm
       </div>
@@ -1332,6 +1340,7 @@ exports[`Persona renders Persona which calls onRenderPersonaCoin callback with c
         onKeyDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
+        role="presentation"
       >
         Swapnil Vaibhav
       </div>
@@ -1360,6 +1369,7 @@ exports[`Persona renders Persona which calls onRenderPersonaCoin callback with c
         onKeyDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
+        role="presentation"
       >
         Software Engineer
       </div>
@@ -1389,6 +1399,7 @@ exports[`Persona renders Persona which calls onRenderPersonaCoin callback with c
         onKeyDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
+        role="presentation"
       >
         In a meeting
       </div>
@@ -1418,6 +1429,7 @@ exports[`Persona renders Persona which calls onRenderPersonaCoin callback with c
         onKeyDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
+        role="presentation"
       >
         Available at 4:00pm
       </div>
@@ -1657,6 +1669,7 @@ exports[`Persona renders correctly with onRender callback 1`] = `
         onKeyDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
+        role="presentation"
       >
         Swapnil Vaibhav
       </div>
@@ -1685,6 +1698,7 @@ exports[`Persona renders correctly with onRender callback 1`] = `
         onKeyDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
+        role="presentation"
       >
         Software Engineer
       </div>
@@ -1714,6 +1728,7 @@ exports[`Persona renders correctly with onRender callback 1`] = `
         onKeyDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
+        role="presentation"
       >
         In a meeting
       </div>
@@ -1743,6 +1758,7 @@ exports[`Persona renders correctly with onRender callback 1`] = `
         onKeyDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
+        role="presentation"
       >
         Available at 4:00pm
       </div>

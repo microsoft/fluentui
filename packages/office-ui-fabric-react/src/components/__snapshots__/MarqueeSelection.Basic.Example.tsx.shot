@@ -56,6 +56,7 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
         &:focus .ms-Checkbox-text {
           color: #201f1e;
         }
+    role="presentation"
   >
     <input
       aria-checked="true"

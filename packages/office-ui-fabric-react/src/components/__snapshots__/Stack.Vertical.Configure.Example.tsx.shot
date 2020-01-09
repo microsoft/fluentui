@@ -392,6 +392,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                 &:focus .ms-Checkbox-text {
                   color: #201f1e;
                 }
+            role="presentation"
           >
             <input
               aria-checked="false"
@@ -535,6 +536,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                 &:focus .ms-Checkbox-text {
                   color: #201f1e;
                 }
+            role="presentation"
           >
             <input
               aria-checked="false"
@@ -678,6 +680,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                 &:focus .ms-Checkbox-text {
                   color: #201f1e;
                 }
+            role="presentation"
           >
             <input
               aria-checked="false"
@@ -820,6 +823,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                 &:focus .ms-Checkbox-text {
                   color: #201f1e;
                 }
+            role="presentation"
           >
             <input
               aria-checked="false"
@@ -1234,6 +1238,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
               &:focus .ms-Checkbox-text {
                 color: #201f1e;
               }
+          role="presentation"
         >
           <input
             aria-checked="true"
@@ -2201,6 +2206,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                   &:focus .ms-Checkbox-text {
                     color: #201f1e;
                   }
+              role="presentation"
             >
               <input
                 aria-checked="false"

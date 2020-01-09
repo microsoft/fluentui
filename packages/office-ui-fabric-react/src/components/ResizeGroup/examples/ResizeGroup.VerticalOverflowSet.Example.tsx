@@ -74,7 +74,7 @@ export class ResizeGroupVerticalOverflowSetExample extends BaseComponent {
         onRenderData={data => {
           return (
             <OverflowSet
-              role="menu"
+              role="menubar"
               vertical={true}
               items={data.primary}
               overflowItems={data.overflow.length ? data.overflow : null}

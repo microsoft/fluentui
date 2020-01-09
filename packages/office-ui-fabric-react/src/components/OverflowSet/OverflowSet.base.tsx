@@ -27,7 +27,7 @@ export class OverflowSetBase extends BaseComponent<IOverflowSetProps, {}> implem
   }
 
   public render(): JSX.Element {
-    const { items, overflowItems, className, focusZoneProps, styles, vertical, doNotContainWithinFocusZone } = this.props;
+    const { items, overflowItems, className, focusZoneProps, styles, vertical, doNotContainWithinFocusZone, role } = this.props;
 
     this._classNames = getClassNames(styles, { className, vertical });
 
@@ -51,7 +51,12 @@ export class OverflowSetBase extends BaseComponent<IOverflowSetProps, {}> implem
     }
 
     return (
-      <Tag {...uniqueComponentProps} className={this._classNames.root}>
+      <Tag
+        {...uniqueComponentProps}
+        role={role || 'group'}
+        aria-orientation={role === 'menubar' ? (vertical === true ? 'vertical' : 'horizontal') : undefined}
+        className={this._classNames.root}
+      >
         {items && this._onRenderItems(items)}
         {overflowItems && overflowItems.length > 0 && this._onRenderOverflowButtonWrapper(overflowItems)}
       </Tag>

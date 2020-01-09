@@ -27,6 +27,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
       }
     >
       <div
+        aria-orientation="vertical"
         className=
             ms-FocusZone
             ms-OverflowSet
@@ -43,7 +44,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
-        role="menu"
+        role="menubar"
       >
         <div
           className=

@@ -52,6 +52,7 @@ exports[`Component Examples renders Checkbox.Basic.Example.tsx correctly 1`] = `
         &:focus .ms-Checkbox-text {
           color: #201f1e;
         }
+    role="presentation"
   >
     <input
       aria-checked="false"
@@ -207,6 +208,7 @@ exports[`Component Examples renders Checkbox.Basic.Example.tsx correctly 1`] = `
         &:focus .ms-Checkbox-text {
           color: #201f1e;
         }
+    role="presentation"
   >
     <input
       aria-checked="true"
@@ -333,6 +335,7 @@ exports[`Component Examples renders Checkbox.Basic.Example.tsx correctly 1`] = `
           display: flex;
           position: relative;
         }
+    role="presentation"
   >
     <input
       aria-checked="false"
@@ -463,6 +466,7 @@ exports[`Component Examples renders Checkbox.Basic.Example.tsx correctly 1`] = `
           display: flex;
           position: relative;
         }
+    role="presentation"
   >
     <input
       aria-checked="true"

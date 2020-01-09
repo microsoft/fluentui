@@ -171,6 +171,7 @@ exports[`Component Examples renders Persona.Colors.Example.tsx correctly 1`] = `
             onKeyDown={[Function]}
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
+            role="presentation"
           >
             green10
           </div>
@@ -348,6 +349,7 @@ exports[`Component Examples renders Persona.Colors.Example.tsx correctly 1`] = `
             onKeyDown={[Function]}
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
+            role="presentation"
           >
             darkGreen20
           </div>
@@ -525,6 +527,7 @@ exports[`Component Examples renders Persona.Colors.Example.tsx correctly 1`] = `
             onKeyDown={[Function]}
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
+            role="presentation"
           >
             teal10
           </div>
@@ -702,6 +705,7 @@ exports[`Component Examples renders Persona.Colors.Example.tsx correctly 1`] = `
             onKeyDown={[Function]}
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
+            role="presentation"
           >
             cyan30
           </div>
@@ -879,6 +883,7 @@ exports[`Component Examples renders Persona.Colors.Example.tsx correctly 1`] = `
             onKeyDown={[Function]}
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
+            role="presentation"
           >
             lightBlue30
           </div>
@@ -1056,6 +1061,7 @@ exports[`Component Examples renders Persona.Colors.Example.tsx correctly 1`] = `
             onKeyDown={[Function]}
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
+            role="presentation"
           >
             blue20
           </div>
@@ -1233,6 +1239,7 @@ exports[`Component Examples renders Persona.Colors.Example.tsx correctly 1`] = `
             onKeyDown={[Function]}
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
+            role="presentation"
           >
             darkBlue10
           </div>
@@ -1410,6 +1417,7 @@ exports[`Component Examples renders Persona.Colors.Example.tsx correctly 1`] = `
             onKeyDown={[Function]}
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
+            role="presentation"
           >
             violet10
           </div>
@@ -1587,6 +1595,7 @@ exports[`Component Examples renders Persona.Colors.Example.tsx correctly 1`] = `
             onKeyDown={[Function]}
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
+            role="presentation"
           >
             purple10
           </div>
@@ -1764,6 +1773,7 @@ exports[`Component Examples renders Persona.Colors.Example.tsx correctly 1`] = `
             onKeyDown={[Function]}
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
+            role="presentation"
           >
             magenta10
           </div>
@@ -1941,6 +1951,7 @@ exports[`Component Examples renders Persona.Colors.Example.tsx correctly 1`] = `
             onKeyDown={[Function]}
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
+            role="presentation"
           >
             lightPink10
           </div>
@@ -2118,6 +2129,7 @@ exports[`Component Examples renders Persona.Colors.Example.tsx correctly 1`] = `
             onKeyDown={[Function]}
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
+            role="presentation"
           >
             pink10
           </div>
@@ -2295,6 +2307,7 @@ exports[`Component Examples renders Persona.Colors.Example.tsx correctly 1`] = `
             onKeyDown={[Function]}
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
+            role="presentation"
           >
             pinkRed10
           </div>
@@ -2472,6 +2485,7 @@ exports[`Component Examples renders Persona.Colors.Example.tsx correctly 1`] = `
             onKeyDown={[Function]}
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
+            role="presentation"
           >
             red10
           </div>
@@ -2649,6 +2663,7 @@ exports[`Component Examples renders Persona.Colors.Example.tsx correctly 1`] = `
             onKeyDown={[Function]}
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
+            role="presentation"
           >
             darkRed20
           </div>
@@ -2826,6 +2841,7 @@ exports[`Component Examples renders Persona.Colors.Example.tsx correctly 1`] = `
             onKeyDown={[Function]}
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
+            role="presentation"
           >
             orange10
           </div>
@@ -3003,6 +3019,7 @@ exports[`Component Examples renders Persona.Colors.Example.tsx correctly 1`] = `
             onKeyDown={[Function]}
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
+            role="presentation"
           >
             orange30
           </div>
@@ -3180,6 +3197,7 @@ exports[`Component Examples renders Persona.Colors.Example.tsx correctly 1`] = `
             onKeyDown={[Function]}
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
+            role="presentation"
           >
             orangeYellow20
           </div>
@@ -3357,6 +3375,7 @@ exports[`Component Examples renders Persona.Colors.Example.tsx correctly 1`] = `
             onKeyDown={[Function]}
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
+            role="presentation"
           >
             gray30
           </div>
@@ -3534,6 +3553,7 @@ exports[`Component Examples renders Persona.Colors.Example.tsx correctly 1`] = `
             onKeyDown={[Function]}
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
+            role="presentation"
           >
             gray20
           </div>

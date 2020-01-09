@@ -44,6 +44,7 @@ exports[`Checkbox renders checked correctly 1`] = `
       &:focus .ms-Checkbox-text {
         color: #201f1e;
       }
+  role="presentation"
 >
   <input
     aria-checked="true"
@@ -198,6 +199,7 @@ exports[`Checkbox renders indeterminate correctly 1`] = `
       &:focus .ms-Checkbox-text {
         color: #201f1e;
       }
+  role="presentation"
 >
   <input
     aria-checked="mixed"
@@ -360,6 +362,7 @@ exports[`Checkbox renders unchecked correctly 1`] = `
       &:focus .ms-Checkbox-text {
         color: #201f1e;
       }
+  role="presentation"
 >
   <input
     aria-checked="false"

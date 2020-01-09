@@ -19,6 +19,7 @@ exports[`Component Examples renders Tooltip.AbsolutePosition.Example.tsx correct
     onKeyDown={[Function]}
     onMouseEnter={[Function]}
     onMouseLeave={[Function]}
+    role="presentation"
   >
     <button
       aria-describedby="tooltip0"

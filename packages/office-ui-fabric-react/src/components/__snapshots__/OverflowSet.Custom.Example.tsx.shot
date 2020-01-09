@@ -3,6 +3,7 @@
 exports[`Component Examples renders OverflowSet.Custom.Example.tsx correctly 1`] = `
 <div
   aria-label="Custom Example"
+  aria-orientation="horizontal"
   className=
       ms-FocusZone
       ms-OverflowSet
@@ -60,7 +61,7 @@ exports[`Component Examples renders OverflowSet.Custom.Example.tsx correctly 1`]
           &:focus .ms-Checkbox-text {
             color: #201f1e;
           }
-      role="menuitemcheckbox"
+      role="presentation"
     >
       <input
         aria-checked="false"
@@ -84,6 +85,7 @@ exports[`Component Examples renders OverflowSet.Custom.Example.tsx correctly 1`]
         onBlur={[Function]}
         onChange={[Function]}
         onFocus={[Function]}
+        role="menuitemcheckbox"
         type="checkbox"
       />
       <label

@@ -25,6 +25,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
         }
       >
         <div
+          aria-orientation="horizontal"
           className=
               ms-FocusZone
               ms-OverflowSet
@@ -3684,6 +3685,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
           &:focus .ms-Checkbox-text {
             color: #201f1e;
           }
+      role="presentation"
     >
       <input
         aria-checked="false"
@@ -3826,6 +3828,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
           &:focus .ms-Checkbox-text {
             color: #201f1e;
           }
+      role="presentation"
     >
       <input
         aria-checked="false"
@@ -3968,6 +3971,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
           &:focus .ms-Checkbox-text {
             color: #201f1e;
           }
+      role="presentation"
     >
       <input
         aria-checked="false"

@@ -64,6 +64,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                   flex-wrap: nowrap;
                   position: relative;
                 }
+            role="group"
           >
             <div
               className=
@@ -669,6 +670,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                   flex-wrap: nowrap;
                   position: relative;
                 }
+            role="group"
           >
             <div
               className=

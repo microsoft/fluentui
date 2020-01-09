@@ -10,7 +10,7 @@ export class OverflowSetBasicExample extends React.PureComponent {
     return (
       <OverflowSet
         aria-label="Basic Menu Example"
-        aria-role="menubar"
+        role="menubar"
         items={[
           {
             key: 'item1',

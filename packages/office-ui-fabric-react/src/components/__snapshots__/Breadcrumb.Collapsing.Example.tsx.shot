@@ -220,6 +220,7 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                     onKeyDown={[Function]}
                     onMouseEnter={[Function]}
                     onMouseLeave={[Function]}
+                    role="presentation"
                   >
                     Files
                   </div>
@@ -380,6 +381,7 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                     onKeyDown={[Function]}
                     onMouseEnter={[Function]}
                     onMouseLeave={[Function]}
+                    role="presentation"
                   >
                     This is folder 1
                   </div>
@@ -540,6 +542,7 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                     onKeyDown={[Function]}
                     onMouseEnter={[Function]}
                     onMouseLeave={[Function]}
+                    role="presentation"
                   >
                     This is folder 2 with a long name
                   </div>
@@ -700,6 +703,7 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                     onKeyDown={[Function]}
                     onMouseEnter={[Function]}
                     onMouseLeave={[Function]}
+                    role="presentation"
                   >
                     This is folder 3 long
                   </div>
@@ -788,6 +792,7 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                     onKeyDown={[Function]}
                     onMouseEnter={[Function]}
                     onMouseLeave={[Function]}
+                    role="presentation"
                   >
                     This is non-clickable folder 4
                   </div>
@@ -949,6 +954,7 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                     onKeyDown={[Function]}
                     onMouseEnter={[Function]}
                     onMouseLeave={[Function]}
+                    role="presentation"
                   >
                     This is folder 5
                   </div>
@@ -1374,6 +1380,7 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                     onKeyDown={[Function]}
                     onMouseEnter={[Function]}
                     onMouseLeave={[Function]}
+                    role="presentation"
                   >
                     This is folder 3 long
                   </div>
@@ -1462,6 +1469,7 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                     onKeyDown={[Function]}
                     onMouseEnter={[Function]}
                     onMouseLeave={[Function]}
+                    role="presentation"
                   >
                     This is non-clickable folder 4
                   </div>
@@ -1623,6 +1631,7 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                     onKeyDown={[Function]}
                     onMouseEnter={[Function]}
                     onMouseLeave={[Function]}
+                    role="presentation"
                   >
                     This is folder 5
                   </div>
@@ -1852,6 +1861,7 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                     onKeyDown={[Function]}
                     onMouseEnter={[Function]}
                     onMouseLeave={[Function]}
+                    role="presentation"
                   >
                     Files
                   </div>
@@ -2209,6 +2219,7 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                     onKeyDown={[Function]}
                     onMouseEnter={[Function]}
                     onMouseLeave={[Function]}
+                    role="presentation"
                   >
                     This is folder 5
                   </div>
