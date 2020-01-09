@@ -15,9 +15,21 @@ export class GridBase extends BaseComponent<IGridProps, {}> implements IGrid {
 
   public render(): JSX.Element {
     const props = this.props;
-    const { items, columnCount, onRenderItem, ariaPosInSet = props.positionInSet, ariaSetSize = props.setSize, styles } = props;
+    const {
+      items,
+      columnCount,
+      onRenderItem,
+      ariaPosInSet = props.positionInSet,
+      ariaSetSize = props.setSize,
+      styles,
+      doNotContainWithinFocusZone
+    } = props;
 
-    const htmlProps = getNativeProps<React.HTMLAttributes<HTMLTableElement>>(this.props, htmlElementProperties);
+    const htmlProps = getNativeProps<React.HTMLAttributes<HTMLTableElement>>(
+      this.props,
+      htmlElementProperties,
+      doNotContainWithinFocusZone ? [] : ['onBlur']
+    );
 
     const classNames = getClassNames(styles!, { theme: this.props.theme! });
 
@@ -45,7 +57,7 @@ export class GridBase extends BaseComponent<IGridProps, {}> implements IGrid {
     );
 
     // Create the table/grid
-    return this.props.doNotContainWithinFocusZone ? (
+    return doNotContainWithinFocusZone ? (
       content
     ) : (
       <FocusZone
