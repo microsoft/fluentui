@@ -5746,7 +5746,9 @@ export interface IOverflowSetItemProps {
 export interface IOverflowSetProps extends React.ClassAttributes<OverflowSetBase> {
     className?: string;
     componentRef?: IRefObject<IOverflowSet>;
+    // @deprecated
     doNotContainWithinFocusZone?: boolean;
+    // @deprecated
     focusZoneProps?: IFocusZoneProps;
     items?: IOverflowSetItemProps[];
     itemSubMenuProvider?: (item: IOverflowSetItemProps) => any[] | undefined;
