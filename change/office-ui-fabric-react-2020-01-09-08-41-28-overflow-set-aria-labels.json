@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "OverflowSet: Don't assume role or orientation. Update CommandBar, examples and docs",
+  "packageName": "office-ui-fabric-react",
+  "email": "mgodbolt@microsoft.com",
+  "commit": "46f7a701adaa56fd999a6bdb4ed6c485aa7ee7cb",
+  "date": "2020-01-09T16:41:28.299Z"
+}
