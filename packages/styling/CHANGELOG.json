@@ -2,6 +2,34 @@
   "name": "@uifabric/styling",
   "entries": [
     {
+      "date": "Wed, 08 Jan 2020 17:02:57 GMT",
+      "tag": "@uifabric/styling_v7.9.0",
+      "version": "7.9.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "add getInputFocusStyle function to build styles for text input on focus",
+            "author": "xgao@microsoft.com",
+            "commit": "7da68efa3439011bcfdb99b5c2fe5d1b40ee16aa"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Break up build task into build, bundle, test and lint tasks. Add parallelization pipeline using new tasks.",
+            "author": "jagore@microsoft.com",
+            "commit": "f1f07695f5d18c2c975eef382c5b777d7ccb52e2"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "bumping load-themed-styles to take advantage of es6 version of it",
+            "author": "kchau@microsoft.com",
+            "commit": "9041aee981e0ad058920172d078af2d2cc2292db"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 31 Dec 2019 12:31:45 GMT",
       "tag": "@uifabric/styling_v7.8.1",
       "version": "7.8.1",

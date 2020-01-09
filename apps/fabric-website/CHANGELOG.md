@@ -1,7 +1,13 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Mon, 09 Dec 2019 12:29:23 GMT and should not be manually modified.
+This log was last generated on Wed, 08 Jan 2020 17:02:57 GMT and should not be manually modified.
 
+## 7.7.5
+Wed, 08 Jan 2020 17:02:57 GMT
+
+### Patches
+
+- bumping load-themed-styles to take advantage of es6 version of it (kchau@microsoft.com)
 ## 7.7.4
 Mon, 09 Dec 2019 12:29:23 GMT
 

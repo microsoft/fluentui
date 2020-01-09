@@ -1,7 +1,14 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Tue, 17 Dec 2019 12:29:42 GMT and should not be manually modified.
+This log was last generated on Wed, 08 Jan 2020 17:02:57 GMT and should not be manually modified.
 
+## 7.18.11
+Wed, 08 Jan 2020 17:02:57 GMT
+
+### Patches
+
+- Update snapshots from combobox style update (xgao@microsoft.com)
+- bumping load-themed-styles to take advantage of es6 version of it (kchau@microsoft.com)
 ## 7.18.10
 Tue, 17 Dec 2019 12:29:42 GMT
 

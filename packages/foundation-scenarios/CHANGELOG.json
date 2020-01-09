@@ -2,6 +2,27 @@
   "name": "@uifabric/foundation-scenarios",
   "entries": [
     {
+      "date": "Wed, 08 Jan 2020 17:02:57 GMT",
+      "tag": "@uifabric/foundation-scenarios_v0.102.7",
+      "version": "0.102.7",
+      "comments": {
+        "none": [
+          {
+            "comment": "Break up build task into build, bundle, test and lint tasks. Add parallelization pipeline using new tasks.",
+            "author": "jagore@microsoft.com",
+            "commit": "f1f07695f5d18c2c975eef382c5b777d7ccb52e2"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "bumping load-themed-styles to take advantage of es6 version of it",
+            "author": "kchau@microsoft.com",
+            "commit": "9041aee981e0ad058920172d078af2d2cc2292db"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 03 Oct 2019 23:14:46 GMT",
       "tag": "@uifabric/foundation-scenarios_v0.102.6",
       "version": "0.102.6",

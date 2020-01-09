@@ -2,6 +2,41 @@
   "name": "@uifabric/monaco-editor",
   "entries": [
     {
+      "date": "Thu, 09 Jan 2020 12:34:52 GMT",
+      "tag": "@uifabric/monaco-editor_v0.5.0",
+      "version": "0.5.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Update Monaco and fix worker loader in Chrome",
+            "author": "elcraig@microsoft.com",
+            "commit": "29c174fac706f1131912e9db3aa993b59473f939"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Remove note about using with typescript",
+            "author": "elcraig@microsoft.com",
+            "commit": "f70e51cc627c99f0b6151f14e7bbca5f07fa5a81"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 08 Jan 2020 17:02:57 GMT",
+      "tag": "@uifabric/monaco-editor_v0.4.1",
+      "version": "0.4.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "bumping load-themed-styles to take advantage of es6 version of it",
+            "author": "kchau@microsoft.com",
+            "commit": "9041aee981e0ad058920172d078af2d2cc2292db"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 28 Oct 2019 22:25:45 GMT",
       "tag": "@uifabric/monaco-editor_v0.4.0",
       "version": "0.4.0",

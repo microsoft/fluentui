@@ -2,6 +2,27 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "date": "Wed, 08 Jan 2020 17:02:57 GMT",
+      "tag": "@uifabric/charting_v0.139.1",
+      "version": "0.139.1",
+      "comments": {
+        "none": [
+          {
+            "comment": "Break up build task into build, bundle, test and lint tasks. Add parallelization pipeline using new tasks.",
+            "author": "jagore@microsoft.com",
+            "commit": "f1f07695f5d18c2c975eef382c5b777d7ccb52e2"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "bumping load-themed-styles to take advantage of es6 version of it",
+            "author": "kchau@microsoft.com",
+            "commit": "9041aee981e0ad058920172d078af2d2cc2292db"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 26 Nov 2019 12:32:11 GMT",
       "tag": "@uifabric/charting_v0.139.0",
       "version": "0.139.0",

@@ -2,6 +2,20 @@
   "name": "@uifabric/webpack-utils",
   "entries": [
     {
+      "date": "Wed, 08 Jan 2020 17:02:57 GMT",
+      "tag": "@uifabric/webpack-utils_v7.0.4",
+      "version": "7.0.4",
+      "comments": {
+        "none": [
+          {
+            "comment": "Break up build task into build, bundle, test and lint tasks. Add parallelization pipeline using new tasks.",
+            "author": "jagore@microsoft.com",
+            "commit": "f1f07695f5d18c2c975eef382c5b777d7ccb52e2"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 23 Aug 2019 12:35:28 GMT",
       "tag": "@uifabric/webpack-utils_v7.0.4",
       "version": "7.0.4",

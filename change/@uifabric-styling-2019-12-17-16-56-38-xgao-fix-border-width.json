@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "add getInputFocusStyle function to build styles for text input on focus",
-  "packageName": "@uifabric/styling",
-  "email": "xgao@microsoft.com",
-  "commit": "7da68efa3439011bcfdb99b5c2fe5d1b40ee16aa",
-  "date": "2019-12-18T00:56:38.321Z"
-}

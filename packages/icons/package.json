@@ -30,7 +30,7 @@
   },
   "dependencies": {
     "@uifabric/set-version": "^7.0.2",
-    "@uifabric/styling": "^7.8.1",
+    "@uifabric/styling": "^7.9.0",
     "tslib": "^1.7.1"
   }
 }

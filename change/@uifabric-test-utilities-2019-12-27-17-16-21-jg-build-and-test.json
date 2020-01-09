@@ -1,8 +1,0 @@
-{
-  "type": "none",
-  "comment": "Break up build task into build, bundle, test and lint tasks. Add parallelization pipeline using new tasks.",
-  "packageName": "@uifabric/test-utilities",
-  "email": "jagore@microsoft.com",
-  "commit": "f1f07695f5d18c2c975eef382c5b777d7ccb52e2",
-  "date": "2019-12-28T01:16:19.580Z"
-}
