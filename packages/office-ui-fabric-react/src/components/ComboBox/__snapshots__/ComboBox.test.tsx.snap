@@ -40,9 +40,6 @@ exports[`ComboBox Renders correctly 1`] = `
           display: inline-block;
           margin-bottom: 8px;
         }
-        &.is-open {
-          border-color: #605e5c;
-        }
         @media screen and (-ms-high-contrast: active){&.is-open {
           -ms-high-contrast-adjust: none;
           background-color: Window;
@@ -412,9 +409,6 @@ exports[`ComboBox renders with a Keytip correctly 1`] = `
         & .ms-Label {
           display: inline-block;
           margin-bottom: 8px;
-        }
-        &.is-open {
-          border-color: #605e5c;
         }
         @media screen and (-ms-high-contrast: active){&.is-open {
           -ms-high-contrast-adjust: none;

@@ -66,6 +66,9 @@ export class Popup extends React.Component<IPopupProps, IPopupState> {
         this._originalFocusedElement.focus();
       }
     }
+
+    // De-reference DOM Node to avoid retainment via transpiled closure of _onKeyDown
+    delete this._originalFocusedElement;
   }
 
   public render(): JSX.Element {

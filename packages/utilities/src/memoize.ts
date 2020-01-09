@@ -80,9 +80,16 @@ export function memoize<T extends Function>(
  * @public
  * @param cb - The function to memoize.
  * @param maxCacheSize - Max results to cache. If the cache exceeds this value, it will reset on the next call.
+ * @param ignoreNullOrUndefinedResult - Flag to decide whether to cache callback result if it is undefined/null.
+ * If the flag is set to true, the callback result is recomputed every time till the callback result is not undefined/null
+ * for the first time and then the non-undefined/null version gets cached.
  * @returns A memoized version of the function.
  */
-export function memoizeFunction<T extends (...args: any[]) => RET_TYPE, RET_TYPE>(cb: T, maxCacheSize: number = 100): T {
+export function memoizeFunction<T extends (...args: any[]) => RET_TYPE, RET_TYPE>(
+  cb: T,
+  maxCacheSize: number = 100,
+  ignoreNullOrUndefinedResult: boolean = false
+): T {
   // Avoid breaking scenarios which don't have weak map.
   if (!_weakMap) {
     return cb;
@@ -118,6 +125,10 @@ export function memoizeFunction<T extends (...args: any[]) => RET_TYPE, RET_TYPE
     if (!currentNode.hasOwnProperty('value')) {
       currentNode.value = cb(...args);
       cacheSize++;
+    }
+
+    if (ignoreNullOrUndefinedResult && (currentNode.value === null || currentNode.value === undefined)) {
+      currentNode.value = cb(...args);
     }
 
     return currentNode.value;

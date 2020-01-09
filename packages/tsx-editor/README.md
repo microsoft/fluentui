@@ -24,14 +24,12 @@ If the user's browser can't support the editor (mainly IE 11 and some mobile bro
 
 ## Setup
 
-Any project consuming `@uifabric/tsx-editor` should follow the Webpack and runtime configuration instructions from the [`@uifabric/monaco-editor` readme](https://github.com/OfficeDev/office-ui-fabric-react/blob/master/packages/monaco-editor/README.md). Note that the helpers used are re-exported from this package for convenience:
+Follow the Webpack and runtime configuration instructions from the [`@uifabric/monaco-editor` readme](https://github.com/OfficeDev/office-ui-fabric-react/blob/master/packages/monaco-editor/README.md). Note that the helpers used are re-exported from this package for convenience:
 
 - `addMonacoWebpackConfig`: import from `@uifabric/tsx-editor/scripts/addMonacoWebpackConfig`
 - `configureEnvironment` and `IMonacoConfig`: import from `@uifabric/tsx-editor`
 
-The editor code also assumes that React is available on the page as a global.
-
-To use the editor, choose one of the API options below.
+Then choose one of the API options below for rendering the editor.
 
 ## API options
 

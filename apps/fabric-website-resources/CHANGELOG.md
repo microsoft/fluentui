@@ -1,7 +1,14 @@
 # Change Log - @uifabric/fabric-website-resources
 
-This log was last generated on Tue, 10 Dec 2019 12:34:47 GMT and should not be manually modified.
+This log was last generated on Wed, 08 Jan 2020 17:02:57 GMT and should not be manually modified.
 
+## 7.4.4
+Wed, 08 Jan 2020 17:02:57 GMT
+
+### Patches
+
+- bumping load-themed-styles to take advantage of es6 version of it (kchau@microsoft.com)
+- For API reference pages, show all property tables on page load (elcraig@microsoft.com)
 ## 7.4.3
 Tue, 10 Dec 2019 12:34:47 GMT
 

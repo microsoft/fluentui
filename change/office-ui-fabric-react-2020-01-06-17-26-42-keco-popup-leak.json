@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Popup: Fix disposables and element ref memory leaks",
+  "packageName": "office-ui-fabric-react",
+  "email": "KevinTCoughlin@users.noreply.github.com",
+  "commit": "721006ed4c2f5f95e8d2f126d2e79a03af2f02a8",
+  "date": "2020-01-07T01:26:42.776Z"
+}
