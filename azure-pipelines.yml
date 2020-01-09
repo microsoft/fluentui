@@ -92,9 +92,9 @@ jobs:
           ContainerName: '$web'
           BlobPrefix: 'pr-deploy-site/$(Build.SourceBranch)'
 
-       - task: DeleteFiles@1
-         inputs:
-           SourceFolder: $(Build.SourceDirectory)
+      - task: DeleteFiles@1
+        inputs:
+          SourceFolder: $(Build.SourceDirectory)
 
   - job: PerfTest
     dependsOn: Build
@@ -141,9 +141,9 @@ jobs:
           githubDescription: 'Click "Details" to go to the Deployed Site'
           githubTargetLink: 'http://fabricweb.z5.web.core.windows.net/pr-deploy-site/$(Build.SourceBranch)/'
 
-       - task: DeleteFiles@1
-         inputs:
-           SourceFolder: $(Build.SourceDirectory)
+      - task: DeleteFiles@1
+        inputs:
+          SourceFolder: $(Build.SourceDirectory)
 
   - job: VRTest
     dependsOn: Build
@@ -160,9 +160,9 @@ jobs:
         env:
           SCREENER_API_KEY: $(screener.key)
 
-       - task: DeleteFiles@1
-         inputs:
-           SourceFolder: $(Build.SourceDirectory)
+      - task: DeleteFiles@1
+        inputs:
+          SourceFolder: $(Build.SourceDirectory)
     # a11y-tests disabled until occasional local and CI timeout issue can be resolved.
     # If/when re-enabled, analyze job strategy to optimize build time. Make standalone job or append to another test job?
     #- task: PublishBuildArtifacts@1
