@@ -44,6 +44,7 @@ jobs:
       - task: DeleteFiles@1
         inputs:
           SourceFolder: $(Build.SourceDirectory)
+          Contents: '**/*'
 
   - job: Validate
     dependsOn: Build
@@ -68,6 +69,7 @@ jobs:
       - task: DeleteFiles@1
         inputs:
           SourceFolder: $(Build.SourceDirectory)
+          Contents: '**/*'
 
   - job: Deploy
     dependsOn: Build
@@ -95,6 +97,7 @@ jobs:
       - task: DeleteFiles@1
         inputs:
           SourceFolder: $(Build.SourceDirectory)
+          Contents: '**/*'
 
   - job: PerfTest
     dependsOn: Build
@@ -144,6 +147,7 @@ jobs:
       - task: DeleteFiles@1
         inputs:
           SourceFolder: $(Build.SourceDirectory)
+          Contents: '**/*'
 
   - job: VRTest
     dependsOn: Build
@@ -163,6 +167,7 @@ jobs:
       - task: DeleteFiles@1
         inputs:
           SourceFolder: $(Build.SourceDirectory)
+          Contents: '**/*'
     # a11y-tests disabled until occasional local and CI timeout issue can be resolved.
     # If/when re-enabled, analyze job strategy to optimize build time. Make standalone job or append to another test job?
     #- task: PublishBuildArtifacts@1
