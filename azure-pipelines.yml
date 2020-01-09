@@ -1,8 +1,6 @@
-pr:
-  - master
+pr: none
 
-trigger:
-  - master
+trigger: none
 
 variables:
   - group: fabric-variables
