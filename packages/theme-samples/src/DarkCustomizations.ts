@@ -111,13 +111,6 @@ export const DarkCustomizations: ICustomizations = {
         }
       }
     },
-    ActivityItem: {
-      styles: {
-        root: {
-          color: DarkTheme.palette.redDark
-        }
-      }
-    },
     VerticalDivider: {
       styles: {
         divider: {
@@ -136,16 +129,6 @@ export const DarkCustomizations: ICustomizations = {
       styles: {
         intials: {
           color: DarkTheme.palette.neutralLighter
-        }
-      }
-    },
-    PersonaCoin: {
-      styles: {
-        presence: {
-          backgroundColor: DarkTheme.palette.redDark
-        },
-        presenceIcon: {
-          backgroundColor: DarkTheme.palette.redDark
         }
       }
     },
