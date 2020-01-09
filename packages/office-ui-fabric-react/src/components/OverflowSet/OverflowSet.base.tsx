@@ -52,9 +52,9 @@ export class OverflowSetBase extends BaseComponent<IOverflowSetProps, {}> implem
 
     return (
       <Tag
-        {...uniqueComponentProps}
         role={role || 'group'}
         aria-orientation={role === 'menubar' ? (vertical === true ? 'vertical' : 'horizontal') : undefined}
+        {...uniqueComponentProps}
         className={this._classNames.root}
       >
         {items && this._onRenderItems(items)}
