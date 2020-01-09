@@ -41,6 +41,11 @@ jobs:
       - publish: $(Build.ArtifactStagingDirectory)
         artifact: Build
 
+      - task: DeleteFiles@1
+        inputs:
+          SourceFolder: $(Build.SourcesDirectory)
+          Contents: '**/*'
+
   - job: Validate
     dependsOn: Build
     pool: 'Self Host Ubuntu'
@@ -60,6 +65,11 @@ jobs:
       - script: |
           yarn check-for-changed-files
         displayName: check for changed files
+
+      - task: DeleteFiles@1
+        inputs:
+          SourceFolder: $(Build.SourcesDirectory)
+          Contents: '**/*'
 
   - job: Deploy
     dependsOn: Build
@@ -83,6 +93,11 @@ jobs:
           storage: fabricweb
           ContainerName: '$web'
           BlobPrefix: 'pr-deploy-site/$(Build.SourceBranch)'
+
+      - task: DeleteFiles@1
+        inputs:
+          SourceFolder: $(Build.SourcesDirectory)
+          Contents: '**/*'
 
   - job: PerfTest
     dependsOn: Build
@@ -129,6 +144,11 @@ jobs:
           githubDescription: 'Click "Details" to go to the Deployed Site'
           githubTargetLink: 'http://fabricweb.z5.web.core.windows.net/pr-deploy-site/$(Build.SourceBranch)/'
 
+      - task: DeleteFiles@1
+        inputs:
+          SourceFolder: $(Build.SourcesDirectory)
+          Contents: '**/*'
+
   - job: VRTest
     dependsOn: Build
     steps:
@@ -143,6 +163,11 @@ jobs:
         displayName: run VR Test
         env:
           SCREENER_API_KEY: $(screener.key)
+
+      - task: DeleteFiles@1
+        inputs:
+          SourceFolder: $(Build.SourcesDirectory)
+          Contents: '**/*'
     # a11y-tests disabled until occasional local and CI timeout issue can be resolved.
     # If/when re-enabled, analyze job strategy to optimize build time. Make standalone job or append to another test job?
     #- task: PublishBuildArtifacts@1
