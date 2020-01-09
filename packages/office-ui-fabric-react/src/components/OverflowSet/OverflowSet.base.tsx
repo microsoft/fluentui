@@ -31,8 +31,6 @@ export class OverflowSetBase extends BaseComponent<IOverflowSetProps, {}> implem
 
     this._classNames = getClassNames(styles, { className, vertical });
 
-    const role = this.props.role || vertical ? 'menu' : 'menubar';
-
     let Tag;
     let uniqueComponentProps;
 
@@ -53,7 +51,7 @@ export class OverflowSetBase extends BaseComponent<IOverflowSetProps, {}> implem
     }
 
     return (
-      <Tag aria-orientation={vertical ? 'vertical' : 'horizontal'} {...uniqueComponentProps} className={this._classNames.root} role={role}>
+      <Tag {...uniqueComponentProps} className={this._classNames.root}>
         {items && this._onRenderItems(items)}
         {overflowItems && overflowItems.length > 0 && this._onRenderOverflowButtonWrapper(overflowItems)}
       </Tag>
@@ -142,11 +140,8 @@ export class OverflowSetBase extends BaseComponent<IOverflowSetProps, {}> implem
 
   private _onRenderItems = (items: IOverflowSetItemProps[]): JSX.Element[] => {
     return items.map((item, i) => {
-      const wrapperDivProps: React.HTMLProps<HTMLDivElement> = {
-        className: this._classNames.item
-      };
       return (
-        <div key={item.key} {...wrapperDivProps}>
+        <div role="presentation" key={item.key} className={this._classNames.item}>
           {this.props.onRenderItem(item)}
         </div>
       );
