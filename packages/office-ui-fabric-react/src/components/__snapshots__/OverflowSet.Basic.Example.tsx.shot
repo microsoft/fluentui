@@ -2,8 +2,8 @@
 
 exports[`Component Examples renders OverflowSet.Basic.Example.tsx correctly 1`] = `
 <div
-  aria-label="Basic Example"
-  aria-orientation="horizontal"
+  aria-label="Basic Menu Example"
+  aria-role="menubar"
   className=
       ms-FocusZone
       ms-OverflowSet
@@ -19,7 +19,6 @@ exports[`Component Examples renders OverflowSet.Basic.Example.tsx correctly 1`] 
   onFocus={[Function]}
   onKeyDown={[Function]}
   onMouseDownCapture={[Function]}
-  role="menubar"
 >
   <div
     className=
@@ -28,6 +27,7 @@ exports[`Component Examples renders OverflowSet.Basic.Example.tsx correctly 1`] 
           display: inherit;
           flex-shrink: 0;
         }
+    role="presentation"
   >
     <button
       className=
@@ -103,6 +103,7 @@ exports[`Component Examples renders OverflowSet.Basic.Example.tsx correctly 1`] 
           display: inherit;
           flex-shrink: 0;
         }
+    role="presentation"
   >
     <button
       className=
@@ -178,6 +179,7 @@ exports[`Component Examples renders OverflowSet.Basic.Example.tsx correctly 1`] 
           display: inherit;
           flex-shrink: 0;
         }
+    role="presentation"
   >
     <button
       className=

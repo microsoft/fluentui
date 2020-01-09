@@ -48,7 +48,6 @@ exports[`CommandBar renders commands correctly 1`] = `
         role="menubar"
       >
         <div
-          aria-orientation="horizontal"
           className=
               ms-OverflowSet
               ms-CommandBar-primaryCommand
@@ -59,7 +58,6 @@ exports[`CommandBar renders commands correctly 1`] = `
                 flex-wrap: nowrap;
                 position: relative;
               }
-          role="menubar"
         >
           <div
             className=
@@ -68,6 +66,7 @@ exports[`CommandBar renders commands correctly 1`] = `
                   display: inherit;
                   flex-shrink: 0;
                 }
+            role="presentation"
           >
             <button
               className=
@@ -212,6 +211,7 @@ exports[`CommandBar renders commands correctly 1`] = `
                   display: inherit;
                   flex-shrink: 0;
                 }
+            role="presentation"
           >
             <button
               className=

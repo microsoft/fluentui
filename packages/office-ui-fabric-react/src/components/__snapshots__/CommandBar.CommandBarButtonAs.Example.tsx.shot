@@ -47,7 +47,6 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
         role="menubar"
       >
         <div
-          aria-orientation="horizontal"
           className=
               ms-OverflowSet
               ms-CommandBar-primaryCommand
@@ -58,7 +57,6 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                 flex-wrap: nowrap;
                 position: relative;
               }
-          role="menubar"
         >
           <div
             className=
@@ -67,6 +65,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                   display: inherit;
                   flex-shrink: 0;
                 }
+            role="presentation"
           >
             <button
               className=
@@ -249,6 +248,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                   display: inherit;
                   flex-shrink: 0;
                 }
+            role="presentation"
           >
             <button
               className=
@@ -431,6 +431,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                   display: inherit;
                   flex-shrink: 0;
                 }
+            role="presentation"
           >
             <div>
               <button
@@ -1153,6 +1154,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                   display: inherit;
                   flex-shrink: 0;
                 }
+            role="presentation"
           >
             <button
               className=

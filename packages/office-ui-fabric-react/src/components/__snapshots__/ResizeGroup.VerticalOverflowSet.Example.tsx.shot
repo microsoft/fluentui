@@ -27,7 +27,6 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
       }
     >
       <div
-        aria-orientation="vertical"
         className=
             ms-FocusZone
             ms-OverflowSet
@@ -53,6 +52,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                 display: inherit;
                 flex-shrink: 0;
               }
+          role="presentation"
         >
           <button
             className=
@@ -144,6 +144,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
             onKeyUp={[Function]}
             onMouseDown={[Function]}
             onMouseUp={[Function]}
+            role="menuitem"
             type="button"
           >
             <span
@@ -232,6 +233,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                 display: inherit;
                 flex-shrink: 0;
               }
+          role="presentation"
         >
           <button
             className=
@@ -323,6 +325,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
             onKeyUp={[Function]}
             onMouseDown={[Function]}
             onMouseUp={[Function]}
+            role="menuitem"
             type="button"
           >
             <span
@@ -411,6 +414,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                 display: inherit;
                 flex-shrink: 0;
               }
+          role="presentation"
         >
           <button
             className=
@@ -502,6 +506,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
             onKeyUp={[Function]}
             onMouseDown={[Function]}
             onMouseUp={[Function]}
+            role="menuitem"
             type="button"
           >
             <span
@@ -590,6 +595,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                 display: inherit;
                 flex-shrink: 0;
               }
+          role="presentation"
         >
           <button
             className=
@@ -681,6 +687,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
             onKeyUp={[Function]}
             onMouseDown={[Function]}
             onMouseUp={[Function]}
+            role="menuitem"
             type="button"
           >
             <span
@@ -769,6 +776,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                 display: inherit;
                 flex-shrink: 0;
               }
+          role="presentation"
         >
           <button
             className=
@@ -860,6 +868,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
             onKeyUp={[Function]}
             onMouseDown={[Function]}
             onMouseUp={[Function]}
+            role="menuitem"
             type="button"
           >
             <span
@@ -948,6 +957,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                 display: inherit;
                 flex-shrink: 0;
               }
+          role="presentation"
         >
           <button
             className=
@@ -1039,6 +1049,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
             onKeyUp={[Function]}
             onMouseDown={[Function]}
             onMouseUp={[Function]}
+            role="menuitem"
             type="button"
           >
             <span
@@ -1127,6 +1138,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                 display: inherit;
                 flex-shrink: 0;
               }
+          role="presentation"
         >
           <button
             className=
@@ -1218,6 +1230,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
             onKeyUp={[Function]}
             onMouseDown={[Function]}
             onMouseUp={[Function]}
+            role="menuitem"
             type="button"
           >
             <span
@@ -1306,6 +1319,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                 display: inherit;
                 flex-shrink: 0;
               }
+          role="presentation"
         >
           <button
             className=
@@ -1397,6 +1411,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
             onKeyUp={[Function]}
             onMouseDown={[Function]}
             onMouseUp={[Function]}
+            role="menuitem"
             type="button"
           >
             <span
@@ -1485,6 +1500,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                 display: inherit;
                 flex-shrink: 0;
               }
+          role="presentation"
         >
           <button
             className=
@@ -1576,6 +1592,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
             onKeyUp={[Function]}
             onMouseDown={[Function]}
             onMouseUp={[Function]}
+            role="menuitem"
             type="button"
           >
             <span
@@ -1664,6 +1681,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                 display: inherit;
                 flex-shrink: 0;
               }
+          role="presentation"
         >
           <button
             className=
@@ -1755,6 +1773,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
             onKeyUp={[Function]}
             onMouseDown={[Function]}
             onMouseUp={[Function]}
+            role="menuitem"
             type="button"
           >
             <span
@@ -1843,6 +1862,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                 display: inherit;
                 flex-shrink: 0;
               }
+          role="presentation"
         >
           <button
             className=
@@ -1934,6 +1954,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
             onKeyUp={[Function]}
             onMouseDown={[Function]}
             onMouseUp={[Function]}
+            role="menuitem"
             type="button"
           >
             <span
@@ -2022,6 +2043,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                 display: inherit;
                 flex-shrink: 0;
               }
+          role="presentation"
         >
           <button
             className=
@@ -2113,6 +2135,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
             onKeyUp={[Function]}
             onMouseDown={[Function]}
             onMouseUp={[Function]}
+            role="menuitem"
             type="button"
           >
             <span
@@ -2201,6 +2224,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                 display: inherit;
                 flex-shrink: 0;
               }
+          role="presentation"
         >
           <button
             className=
@@ -2292,6 +2316,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
             onKeyUp={[Function]}
             onMouseDown={[Function]}
             onMouseUp={[Function]}
+            role="menuitem"
             type="button"
           >
             <span
@@ -2380,6 +2405,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                 display: inherit;
                 flex-shrink: 0;
               }
+          role="presentation"
         >
           <button
             className=
@@ -2471,6 +2497,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
             onKeyUp={[Function]}
             onMouseDown={[Function]}
             onMouseUp={[Function]}
+            role="menuitem"
             type="button"
           >
             <span
@@ -2559,6 +2586,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                 display: inherit;
                 flex-shrink: 0;
               }
+          role="presentation"
         >
           <button
             className=
@@ -2650,6 +2678,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
             onKeyUp={[Function]}
             onMouseDown={[Function]}
             onMouseUp={[Function]}
+            role="menuitem"
             type="button"
           >
             <span
@@ -2738,6 +2767,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                 display: inherit;
                 flex-shrink: 0;
               }
+          role="presentation"
         >
           <button
             className=
@@ -2829,6 +2859,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
             onKeyUp={[Function]}
             onMouseDown={[Function]}
             onMouseUp={[Function]}
+            role="menuitem"
             type="button"
           >
             <span
@@ -2917,6 +2948,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                 display: inherit;
                 flex-shrink: 0;
               }
+          role="presentation"
         >
           <button
             className=
@@ -3008,6 +3040,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
             onKeyUp={[Function]}
             onMouseDown={[Function]}
             onMouseUp={[Function]}
+            role="menuitem"
             type="button"
           >
             <span
@@ -3096,6 +3129,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                 display: inherit;
                 flex-shrink: 0;
               }
+          role="presentation"
         >
           <button
             className=
@@ -3187,6 +3221,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
             onKeyUp={[Function]}
             onMouseDown={[Function]}
             onMouseUp={[Function]}
+            role="menuitem"
             type="button"
           >
             <span
@@ -3275,6 +3310,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                 display: inherit;
                 flex-shrink: 0;
               }
+          role="presentation"
         >
           <button
             className=
@@ -3366,6 +3402,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
             onKeyUp={[Function]}
             onMouseDown={[Function]}
             onMouseUp={[Function]}
+            role="menuitem"
             type="button"
           >
             <span
@@ -3454,6 +3491,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                 display: inherit;
                 flex-shrink: 0;
               }
+          role="presentation"
         >
           <button
             className=
@@ -3545,6 +3583,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
             onKeyUp={[Function]}
             onMouseDown={[Function]}
             onMouseUp={[Function]}
+            role="menuitem"
             type="button"
           >
             <span
