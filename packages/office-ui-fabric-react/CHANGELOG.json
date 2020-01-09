@@ -2,6 +2,25 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Thu, 09 Jan 2020 12:34:52 GMT",
+      "tag": "office-ui-fabric-react_v7.79.1",
+      "version": "7.79.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Icon: update null/undefinedcached icons till the time non-null/undefined icons are available for the first time. Then cache the non-null/undefined icons.",
+            "author": "vishgup@microsoft.com",
+            "commit": "cee2f1aee7bc1e19362683cb7f2d1f098159b88d"
+          },
+          {
+            "comment": "Popup: Fix disposables and element ref memory leaks",
+            "author": "KevinTCoughlin@users.noreply.github.com",
+            "commit": "721006ed4c2f5f95e8d2f126d2e79a03af2f02a8"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 08 Jan 2020 17:02:57 GMT",
       "tag": "office-ui-fabric-react_v7.79.0",
       "version": "7.79.0",

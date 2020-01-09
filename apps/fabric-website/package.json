@@ -45,14 +45,14 @@
     "react-highlight": "0.10.0",
     "write-file-webpack-plugin": "^4.1.0",
     "@uifabric/build": "^7.0.0",
-    "@uifabric/tsx-editor": "^0.10.4"
+    "@uifabric/tsx-editor": "^0.11.0"
   },
   "dependencies": {
     "@microsoft/load-themed-styles": "^1.10.26",
     "@uifabric/api-docs": "^7.1.2",
     "@uifabric/example-app-base": "^7.11.0",
     "@uifabric/experiments": "^7.18.11",
-    "@uifabric/fabric-website-resources": "^7.4.4",
+    "@uifabric/fabric-website-resources": "^7.4.5",
     "@uifabric/file-type-icons": "^7.2.2",
     "@uifabric/fluent-theme": "^7.1.4",
     "@uifabric/icons": "^7.3.0",
@@ -60,7 +60,7 @@
     "@uifabric/set-version": "^7.0.2",
     "@uifabric/theme-samples": "^7.0.5",
     "json-loader": "^0.5.7",
-    "office-ui-fabric-react": "^7.79.0",
+    "office-ui-fabric-react": "^7.79.1",
     "tslib": "^1.7.1",
     "whatwg-fetch": "2.0.4"
   }

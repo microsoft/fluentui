@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Update Monaco and fix worker loader in Chrome",
-  "packageName": "@uifabric/monaco-editor",
-  "email": "elcraig@microsoft.com",
-  "commit": "29c174fac706f1131912e9db3aa993b59473f939",
-  "date": "2020-01-04T04:45:03.313Z"
-}

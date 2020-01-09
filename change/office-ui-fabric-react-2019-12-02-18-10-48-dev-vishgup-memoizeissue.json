@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Icon: update null/undefinedcached icons till the time non-null/undefined icons are available for the first time. Then cache the non-null/undefined icons.",
-  "packageName": "office-ui-fabric-react",
-  "email": "vishgup@microsoft.com",
-  "commit": "cee2f1aee7bc1e19362683cb7f2d1f098159b88d",
-  "date": "2019-12-02T12:40:15.635Z"
-}

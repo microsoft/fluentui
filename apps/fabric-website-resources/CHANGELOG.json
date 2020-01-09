@@ -2,6 +2,27 @@
   "name": "@uifabric/fabric-website-resources",
   "entries": [
     {
+      "date": "Thu, 09 Jan 2020 12:34:52 GMT",
+      "tag": "@uifabric/fabric-website-resources_v7.4.5",
+      "version": "7.4.5",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix bundling issues",
+            "author": "elcraig@microsoft.com",
+            "commit": "f7a8d49bb4df7bf871151dec5978b5cd533edd65"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Switch tsconfig back to commonjs modules",
+            "author": "elcraig@microsoft.com",
+            "commit": "f70e51cc627c99f0b6151f14e7bbca5f07fa5a81"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 08 Jan 2020 17:02:57 GMT",
       "tag": "@uifabric/fabric-website-resources_v7.4.4",
       "version": "7.4.4",

@@ -2,6 +2,27 @@
   "name": "@uifabric/tsx-editor",
   "entries": [
     {
+      "date": "Thu, 09 Jan 2020 12:34:52 GMT",
+      "tag": "@uifabric/tsx-editor_v0.11.0",
+      "version": "0.11.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update Monaco; fix worker loader in Chrome; fix bundling",
+            "author": "elcraig@microsoft.com",
+            "commit": "29c174fac706f1131912e9db3aa993b59473f939"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Switch dynamic imports in tsx-editor to require.ensure",
+            "author": "elcraig@microsoft.com",
+            "commit": "f70e51cc627c99f0b6151f14e7bbca5f07fa5a81"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 08 Jan 2020 17:02:57 GMT",
       "tag": "@uifabric/tsx-editor_v0.10.4",
       "version": "0.10.4",

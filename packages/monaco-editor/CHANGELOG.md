@@ -1,7 +1,13 @@
 # Change Log - @uifabric/monaco-editor
 
-This log was last generated on Wed, 08 Jan 2020 17:02:57 GMT and should not be manually modified.
+This log was last generated on Thu, 09 Jan 2020 12:34:52 GMT and should not be manually modified.
 
+## 0.5.0
+Thu, 09 Jan 2020 12:34:52 GMT
+
+### Minor changes
+
+- Update Monaco and fix worker loader in Chrome (elcraig@microsoft.com)
 ## 0.4.1
 Wed, 08 Jan 2020 17:02:57 GMT
 

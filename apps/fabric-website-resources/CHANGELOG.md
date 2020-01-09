@@ -1,7 +1,13 @@
 # Change Log - @uifabric/fabric-website-resources
 
-This log was last generated on Wed, 08 Jan 2020 17:02:57 GMT and should not be manually modified.
+This log was last generated on Thu, 09 Jan 2020 12:34:52 GMT and should not be manually modified.
 
+## 7.4.5
+Thu, 09 Jan 2020 12:34:52 GMT
+
+### Patches
+
+- Fix bundling issues (elcraig@microsoft.com)
 ## 7.4.4
 Wed, 08 Jan 2020 17:02:57 GMT
 
