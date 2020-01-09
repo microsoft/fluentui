@@ -115,13 +115,6 @@ export class ComboBoxBasicExample extends React.Component<{}, IComboBoxBasicExam
           options={INITIAL_OPTIONS}
         />
         <ComboBox disabled label="Disabled ComboBox" defaultSelectedKey="D" options={INITIAL_OPTIONS} />
-        <ComboBox
-          label="Disabled ComboBox"
-          defaultSelectedKey="D"
-          options={INITIAL_OPTIONS}
-          onRenderLabel={(props: IComboBoxProps) => {
-            return <span>{`Foobar  ${props.label}`}</span>;
-          }}
         />
       </Fabric>
     );
