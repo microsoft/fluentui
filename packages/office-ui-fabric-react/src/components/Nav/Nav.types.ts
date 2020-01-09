@@ -65,7 +65,7 @@ export interface INavProps {
    * Render a custom link in place of the normal one.
    * This replaces the entire button rather than simply button content
    */
-  linkAs?: IComponentAs<IButtonProps>;
+  linkAs?: IComponentAs<INavButtonProps>;
 
   /**
    * Used to customize how content inside the link tag is rendered
@@ -106,6 +106,8 @@ export interface INavProps {
   /**
    * (Optional) The nav container aria label. The link name is prepended to this label.
    * If not provided, the aria label will default to the link name.
+   *
+   * @deprecated - Use expandAriaLabel and collapseAriaLabel on groups instead
    */
   expandButtonAriaLabel?: string;
   /**
@@ -142,6 +144,21 @@ export interface INavLinkGroup {
    * Callback invoked when a group header is clicked
    */
   onHeaderClick?: (ev?: React.MouseEvent<HTMLElement>, isCollapsing?: boolean) => void;
+
+  /**
+   * ARIA label when group is collapsed and can be expanded.
+   */
+  expandAriaLabel?: string;
+
+  /**
+   * ARIA label when group is collapsed and can be expanded.
+   */
+  collapseAriaLabel?: string;
+
+  /**
+   * (Optional) Any additional properties to apply to a group.
+   */
+  groupData?: any;
 }
 
 /**
@@ -202,7 +219,7 @@ export interface INavLink {
   isExpanded?: boolean;
 
   /**
-   * Aria label for nav link
+   * Aria label for nav link. Ignored if `collapseAriaLabel` or `expandAriaLabel` is provided.
    */
   ariaLabel?: string;
 
@@ -227,6 +244,16 @@ export interface INavLink {
    * will render as anchors by default.)
    */
   forceAnchor?: boolean;
+
+  /**
+   * ARIA label when group is collapsed and can be expanded.
+   */
+  expandAriaLabel?: string;
+
+  /**
+   * ARIA label when group is collapsed and can be expanded.
+   */
+  collapseAriaLabel?: string;
 
   /**
    * (Optional) Any additional properties to apply to the rendered links.
@@ -371,4 +398,14 @@ export interface INavStyles {
    * Style set for the group content div inside group.
    */
   groupContent: IStyle;
+}
+
+/**
+ * {@docCategory Nav}
+ */
+export interface INavButtonProps extends IButtonProps {
+  /**
+   * (Optional) Link to be rendered.
+   */
+  link?: INavLink;
 }

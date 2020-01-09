@@ -1,7 +1,104 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Thu, 19 Sep 2019 13:05:24 GMT and should not be manually modified.
+This log was last generated on Wed, 08 Jan 2020 17:02:57 GMT and should not be manually modified.
 
+## 7.7.5
+Wed, 08 Jan 2020 17:02:57 GMT
+
+### Patches
+
+- bumping load-themed-styles to take advantage of es6 version of it (kchau@microsoft.com)
+## 7.7.4
+Mon, 09 Dec 2019 12:29:23 GMT
+
+### Patches
+
+- updated Fabric Android Date Time Picker documentation (willdo@microsoft.com)
+## 7.7.3
+Fri, 06 Dec 2019 12:33:21 GMT
+
+### Patches
+
+- Updating RTL documentation. (Humberto.Morimoto@microsoft.com)
+## 7.7.2
+Tue, 03 Dec 2019 12:36:28 GMT
+
+### Patches
+
+- Updating mobile docs - including bottom navigation and iOS Shimmer. (emlynam@microsoft.com)
+## 7.7.1
+Thu, 28 Nov 2019 12:32:23 GMT
+
+### Patches
+
+- Update fabric core dependency in other package.json files (v-mare@microsoft.com)
+## 7.7.0
+Wed, 06 Nov 2019 12:34:07 GMT
+
+### Minor changes
+
+- website: Fixes for high contrast (jdh@microsoft.com)
+## 7.6.1
+Tue, 05 Nov 2019 23:43:46 GMT
+
+### Patches
+
+- fixing the production flag to be respected in the webpackCliTask world (kchau@microsoft.com)
+## 7.6.0
+Fri, 01 Nov 2019 12:25:57 GMT
+
+### Minor changes
+
+- Adds the SharePoint Figma toolkit to the Resources page of the website (pejahn@microsoft.com)
+## 7.5.8
+Wed, 30 Oct 2019 19:36:52 GMT
+
+### Patches
+
+- Prettier ignore ranges for markdown tables. (emlynam@microsoft.com)
+## 7.5.7
+Tue, 29 Oct 2019 12:36:28 GMT
+
+### Patches
+
+- Add AppBar to mobile docs for Android. (emlynam@microsoft.com)
+## 7.5.6
+Tue, 15 Oct 2019 12:32:28 GMT
+
+### Patches
+
+- Hide UHF flightPicker element that causes accessibility issues (elcraig@microsoft.com)
+## 7.5.5
+Thu, 10 Oct 2019 12:32:08 GMT
+
+### Patches
+
+- added header examples and updated alt descriptions for BottomSheet (willdo@microsoft.com)
+## 7.5.4
+Thu, 03 Oct 2019 23:14:46 GMT
+
+### Patches
+
+- Fixes publish issue from beachball (odbuild@microsoft.com)
+## 7.5.2
+Thu, 03 Oct 2019 01:14:35 GMT
+
+### Patches
+
+- Bundle React even in serve mode for more representative testing environment (elcraig@microsoft.com)
+- Adding iOS NavBar to website docs. (emlynam@microsoft.com)
+## 7.5.1
+Mon, 30 Sep 2019 12:35:16 GMT
+
+### Patches
+
+- Don't load minified editor files (elcraig@microsoft.com)
+## 7.5.0
+Fri, 20 Sep 2019 12:34:28 GMT
+
+### Minor changes
+
+- Website: Split Brand icons page into Brand Icons and File Type Icons pages (marygans@microsoft.com)
 ## 7.4.8
 Thu, 19 Sep 2019 13:05:24 GMT
 

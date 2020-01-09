@@ -5,12 +5,21 @@ import { IOverlayProps, IOverlayStyleProps, IOverlayStyles } from './Overlay.typ
 const getClassNames = classNamesFunction<IOverlayStyleProps, IOverlayStyles>();
 
 export class OverlayBase extends BaseComponent<IOverlayProps, {}> {
+  private _allowTouchBodyScroll: boolean;
+
+  constructor(props: IOverlayProps) {
+    super(props);
+
+    const { allowTouchBodyScroll = false } = this.props;
+    this._allowTouchBodyScroll = allowTouchBodyScroll;
+  }
+
   public componentDidMount(): void {
-    disableBodyScroll();
+    !this._allowTouchBodyScroll && disableBodyScroll();
   }
 
   public componentWillUnmount(): void {
-    enableBodyScroll();
+    !this._allowTouchBodyScroll && enableBodyScroll();
   }
 
   public render(): JSX.Element {

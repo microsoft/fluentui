@@ -5,7 +5,6 @@ import { IDocPageProps } from '../../common/DocPage.types';
 import { RatingButtonControlledExample } from './examples/Rating.ButtonControlled.Example';
 
 const RatingBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Rating/examples/Rating.Basic.Example.tsx') as string;
-const RatingBasicExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/Rating/examples/Rating.Basic.Example.tsx') as string;
 const RatingButtonControlledExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Rating/examples/Rating.ButtonControlled.Example.tsx') as string;
 
 export const RatingPageProps: IDocPageProps = {
@@ -16,8 +15,7 @@ export const RatingPageProps: IDocPageProps = {
     {
       title: 'Rating',
       code: RatingBasicExampleCode,
-      view: <RatingBasicExample />,
-      codepenJS: RatingBasicExampleCodepen
+      view: <RatingBasicExample />
     },
     {
       title: 'Button Controlled Rating',

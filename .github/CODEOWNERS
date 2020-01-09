@@ -24,7 +24,8 @@ jest.config.js @kenotron @ecraig12345
 tsconfig.json @kenotron @ecraig12345
 lerna.json @kenotron @ecraig12345
 LICENSE @kenotron @ecraig12345
-azure-pipelines.yml @ecraig12345 @kenotron
+azure-pipelines.yml @ecraig12345 @kenotron @JasonGore
+azure-pipelines.*.yml @ecraig12345 @kenotron @JasonGore
 .appveyor.yml @kenotron @ecraig12345
 .npmrc @kenotron @ecraig12345
 .npmignore @kenotron @ecraig12345
@@ -45,7 +46,6 @@ Controls/web.tsx @Vitalius1 @natalieethell
 
 #### Packages
 packages/charting/ @Raghurk
-packages/codepen-loader/ @ecraig12345 @kenotron
 packages/date-time @OfficeDev/uifabric-calendar @lorejoh @evlevy
 packages/example-app-base/ @ecraig12345
 packages/file-type-icons/  @KatherineThayerMicrosoft @jahnp @bigbadcapers
@@ -87,7 +87,7 @@ Callout/ @joschect
 react-cards/Card/  @khmakoto
 Check/ @KevinTCoughlin
 Checkbox/ @cliffkoh
-ChoiceGroup/ @srideshpande @ecraig12345
+ChoiceGroup/ @ecraig12345
 Coachmark/ @leddie24
 CollapsibleSection/ @JasonGore
 ColorPicker/ @ecraig12345
@@ -100,8 +100,8 @@ Dialog/ @JasonGore
 DocumentCard/ @yiminwu
 Dropdown/ @joschect
 Fabric/ @dzearing
-FacePile/ @markionium @mtennoe
-FolderCover/ @ThomasMichon
+Facepile/ @markionium @mtennoe
+FolderCover/ @ThomasMichon @bigbadcapers
 FocusTrapZone/ @JasonGore
 FocusZone/ @JasonGore
 GroupedList/  @aditima @KevinTCoughlin
@@ -169,7 +169,7 @@ DetailsList/docs/ @KevinTCoughlin
 DocumentCard/docs/ @yiminwu
 # Dropdown/docs/
 # Fabric/docs/
-# FacePile/docs/
+# Facepile/docs/
 # FocusTrapZone/docs/
 # FocusZone/docs/
 GroupedList/docs/  @aditima @KevinTCoughlin

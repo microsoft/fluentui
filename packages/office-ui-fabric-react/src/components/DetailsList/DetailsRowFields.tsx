@@ -11,6 +11,10 @@ const getCellText = (item: any, column: IColumn): string => {
     value = '';
   }
 
+  if (typeof value === 'boolean') {
+    return value.toString();
+  }
+
   return value;
 };
 
@@ -76,6 +80,7 @@ export const DetailsRowFields: React.FunctionComponent<IDetailsRowFieldsProps> =
           <div
             key={key}
             role={column.isRowHeader ? 'rowheader' : 'gridcell'}
+            aria-readonly
             aria-colindex={columnIndex + columnStartIndex + 1}
             className={css(
               column.className,

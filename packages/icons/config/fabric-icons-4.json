@@ -10,6 +10,54 @@
   },
   "glyphs": [
     {
+      "name": "HelpMirrored",
+      "unicode": "EA51"
+    },
+    {
+      "name": "ImportMirrored",
+      "unicode": "EA52"
+    },
+    {
+      "name": "ImportAllMirrored",
+      "unicode": "EA53"
+    },
+    {
+      "name": "ListMirrored",
+      "unicode": "EA55"
+    },
+    {
+      "name": "MailForwardMirrored",
+      "unicode": "EA56"
+    },
+    {
+      "name": "MailReplyMirrored",
+      "unicode": "EA57"
+    },
+    {
+      "name": "MailReplyAllMirrored",
+      "unicode": "EA58"
+    },
+    {
+      "name": "MiniContractMirrored",
+      "unicode": "EA59"
+    },
+    {
+      "name": "MiniExpandMirrored",
+      "unicode": "EA5A"
+    },
+    {
+      "name": "OpenPaneMirrored",
+      "unicode": "EA5B"
+    },
+    {
+      "name": "ParkingLocationMirrored",
+      "unicode": "EA5E"
+    },
+    {
+      "name": "SendMirrored",
+      "unicode": "EA63"
+    },
+    {
       "name": "ShowResultsMirrored",
       "unicode": "EA65"
     },
@@ -360,54 +408,6 @@
     {
       "name": "StatusErrorFull",
       "unicode": "EB90"
-    },
-    {
-      "name": "Certificate",
-      "unicode": "EB95"
-    },
-    {
-      "name": "FastForward",
-      "unicode": "EB9D"
-    },
-    {
-      "name": "Rewind",
-      "unicode": "EB9E"
-    },
-    {
-      "name": "Photo2",
-      "unicode": "EB9F"
-    },
-    {
-      "name": "OpenSource",
-      "unicode": "EBC2"
-    },
-    {
-      "name": "Movers",
-      "unicode": "EBCD"
-    },
-    {
-      "name": "CloudDownload",
-      "unicode": "EBD3"
-    },
-    {
-      "name": "Family",
-      "unicode": "EBDA"
-    },
-    {
-      "name": "WindDirection",
-      "unicode": "EBE6"
-    },
-    {
-      "name": "Bug",
-      "unicode": "EBE8"
-    },
-    {
-      "name": "SiteScan",
-      "unicode": "EBEC"
-    },
-    {
-      "name": "BrowserScreenShot",
-      "unicode": "EBED"
     }
   ]
 }

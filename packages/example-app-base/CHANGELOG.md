@@ -1,7 +1,84 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Fri, 13 Sep 2019 12:34:39 GMT and should not be manually modified.
+This log was last generated on Wed, 08 Jan 2020 17:02:57 GMT and should not be manually modified.
 
+## 7.11.0
+Wed, 08 Jan 2020 17:02:57 GMT
+
+### Minor changes
+
+- Add ExampleCard prop for custom editorSupportedPackages, and add support for ICustomizations in IAppDefinition.customizations for customizing all ExampleCards. (elcraig@microsoft.com)
+- Fix API reference generation bugs and add support for showing all tables on load (elcraig@microsoft.com)
+### Patches
+
+- bumping load-themed-styles to take advantage of es6 version of it (kchau@microsoft.com)
+## 7.10.4
+Mon, 23 Dec 2019 12:34:01 GMT
+
+### Patches
+
+- Fix Link colors inside MessageBar (elcraig@microsoft.com)
+## 7.10.3
+Fri, 13 Dec 2019 12:30:51 GMT
+
+### Patches
+
+- Add missing aria labels on example card dropdowns (elcraig@microsoft.com)
+## 7.10.2
+Thu, 28 Nov 2019 12:32:23 GMT
+
+### Patches
+
+- Update fabric core dependency in other package.json files (v-mare@microsoft.com)
+## 7.10.1
+Wed, 13 Nov 2019 12:33:43 GMT
+
+### Patches
+
+- PlatformPicker: High Contrast support (jdh@microsoft.com)
+- Fix API reference links (elcraig@microsoft.com)
+## 7.10.0
+Tue, 12 Nov 2019 12:32:39 GMT
+
+### Minor changes
+
+- API doc table refactor (elcraig@microsoft.com)
+## 7.9.0
+Wed, 06 Nov 2019 12:34:07 GMT
+
+### Minor changes
+
+- Update API doc generation to handle deprecated messages (elcraig@microsoft.com)
+## 7.8.5
+Fri, 01 Nov 2019 01:02:38 GMT
+
+### Patches
+
+- API table: render enum descriptions as multi-line (elcraig@microsoft.com)
+## 7.8.4
+Fri, 04 Oct 2019 22:19:48 GMT
+
+### Patches
+
+- Use latest tsx-editor APIs (elcraig@microsoft.com)
+## 7.8.3
+Thu, 03 Oct 2019 23:14:46 GMT
+
+### Patches
+
+- Fix a publish issue with example-app-base (odbuild@microsoft.com)
+## 7.8.1
+Thu, 03 Oct 2019 01:14:35 GMT
+
+### Patches
+
+- Editor: add accessibility props and improve preview rendering (elcraig@microsoft.com)
+## 7.8.0
+Tue, 24 Sep 2019 12:35:43 GMT
+
+### Minor changes
+
+- Export to codepen can use in-browser transform and latest edited code (elcraig@microsoft.com)
 ## 7.7.0
 Fri, 13 Sep 2019 12:34:39 GMT
 

@@ -22,9 +22,25 @@ export function initializeIcons(
     },
     fontFace: {
       fontFamily: `"FabricMDL2Icons-14"`,
-      src: `url('${baseUrl}fabric-icons-14-ed5abc6f.woff') format('woff')`
+      src: `url('${baseUrl}fabric-icons-14-5cf58db8.woff') format('woff')`
     },
     icons: {
+      'Snooze': '\uF4BD',
+      'WaffleOffice365': '\uF4E0',
+      'ImageSearch': '\uF4E8',
+      'NewsSearch': '\uF4E9',
+      'VideoSearch': '\uF4EA',
+      'R': '\uF4EB',
+      'FontColorA': '\uF4EC',
+      'FontColorSwatch': '\uF4ED',
+      'LightWeight': '\uF4EE',
+      'NormalWeight': '\uF4EF',
+      'SemiboldWeight': '\uF4F0',
+      'GroupObject': '\uF4F1',
+      'UngroupObject': '\uF4F2',
+      'AlignHorizontalLeft': '\uF4F3',
+      'AlignHorizontalCenter': '\uF4F4',
+      'AlignHorizontalRight': '\uF4F5',
       'AlignVerticalTop': '\uF4F6',
       'AlignVerticalCenter': '\uF4F7',
       'AlignVerticalBottom': '\uF4F8',
@@ -108,23 +124,7 @@ export function initializeIcons(
       'EntryView': '\uF554',
       'EntryDecline': '\uF555',
       'ContactCardSettings': '\uF556',
-      'ContactCardSettingsMirrored': '\uF557',
-      'CalendarSettings': '\uF558',
-      'CalendarSettingsMirrored': '\uF559',
-      'HardDriveLock': '\uF55A',
-      'HardDriveUnlock': '\uF55B',
-      'AccountManagement': '\uF55C',
-      'ReportWarning': '\uF569',
-      'TransitionPop': '\uF5B2',
-      'TransitionPush': '\uF5B3',
-      'TransitionEffect': '\uF5B4',
-      'LookupEntities': '\uF5B5',
-      'ExploreData': '\uF5B6',
-      'AddBookmark': '\uF5B7',
-      'SearchBookmark': '\uF5B8',
-      'DrillThrough': '\uF5B9',
-      'MasterDatabase': '\uF5BA',
-      'CertifiedDatabase': '\uF5BB'
+      'ContactCardSettingsMirrored': '\uF557'
     }
   };
 

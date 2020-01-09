@@ -3,11 +3,11 @@ import * as React from 'react';
 import { IDocPageProps } from 'office-ui-fabric-react/lib/common/DocPage.types';
 
 import { CardVerticalExample } from './examples/Card.Vertical.Example';
-import { CardCompactExample } from './examples/Card.Compact.Example';
+import { CardHorizontalExample } from './examples/Card.Horizontal.Example';
 import { CardConfigureExample } from './examples/Card.Configure.Example';
 
 const CardVerticalExampleCode = require('!raw-loader!@uifabric/react-cards/src/components/Card/examples/Card.Vertical.Example.tsx') as string;
-const CardCompactExampleCode = require('!raw-loader!@uifabric/react-cards/src/components/Card/examples/Card.Compact.Example.tsx') as string;
+const CardHorizontalExampleCode = require('!raw-loader!@uifabric/react-cards/src/components/Card/examples/Card.Horizontal.Example.tsx') as string;
 const CardConfigureExampleCode = require('!raw-loader!@uifabric/react-cards/src/components/Card/examples/Card.Configure.Example.tsx') as string;
 
 export const CardPageProps: IDocPageProps = {
@@ -21,9 +21,9 @@ export const CardPageProps: IDocPageProps = {
       view: <CardVerticalExample />
     },
     {
-      title: 'Compact Card',
-      code: CardCompactExampleCode,
-      view: <CardCompactExample />
+      title: 'Horizontal Card',
+      code: CardHorizontalExampleCode,
+      view: <CardHorizontalExample />
     },
     {
       title: 'Configure Properties',

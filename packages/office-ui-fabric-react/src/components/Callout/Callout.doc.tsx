@@ -3,13 +3,13 @@ import * as React from 'react';
 import { IDocPageProps } from '../../common/DocPage.types';
 
 import { CalloutBasicExample } from './examples/Callout.Basic.Example';
-import { CalloutNestedExample } from './examples/Callout.Nested.Example';
+import { StatusCalloutExample } from './examples/Callout.Status.Example';
 import { CalloutFocusTrapExample } from './examples/Callout.FocusTrap.Example';
 import { CalloutDirectionalExample } from './examples/Callout.Directional.Example';
 import { CalloutCoverExample } from './examples/Callout.Cover.Example';
 
 const CalloutBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Callout/examples/Callout.Basic.Example.tsx') as string;
-const CalloutNestedExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Callout/examples/Callout.Nested.Example.tsx') as string;
+const StatusCalloutExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Callout/examples/Callout.Status.Example.tsx') as string;
 const CalloutFocusTrapExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Callout/examples/Callout.FocusTrap.Example.tsx') as string;
 const CalloutDirectionalExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Callout/examples/Callout.Directional.Example.tsx') as string;
 const CalloutCoverExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Callout/examples/Callout.Cover.Example.tsx') as string;
@@ -24,15 +24,16 @@ export const CalloutPageProps: IDocPageProps = {
       code: CalloutBasicExampleCode,
       view: <CalloutBasicExample />
     },
+
     {
-      title: 'Nested Callout... Callout with a commandbar with a sub menu',
-      code: CalloutNestedExampleCode,
-      view: <CalloutNestedExample />
-    },
-    {
-      title: 'Focus Trap Callout',
+      title: 'FocusTrapCallout Variant',
       code: CalloutFocusTrapExampleCode,
       view: <CalloutFocusTrapExample />
+    },
+    {
+      title: 'Non-focusable Callout with accessible text',
+      code: StatusCalloutExampleCode,
+      view: <StatusCalloutExample />
     },
     {
       title: 'Callout with directional hint',
@@ -40,7 +41,7 @@ export const CalloutPageProps: IDocPageProps = {
       view: <CalloutDirectionalExample />
     },
     {
-      title: 'Callout with cover',
+      title: 'Callout that covers the target element',
       code: CalloutCoverExampleCode,
       view: <CalloutCoverExample />
     }

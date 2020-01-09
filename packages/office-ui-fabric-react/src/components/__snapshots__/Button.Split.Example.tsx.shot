@@ -126,6 +126,7 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
           className=
               ms-Button
               ms-Button--default
+              ms-Button--hasMenu
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -345,6 +346,11 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
                   }
               data-icon-name="ChevronDown"
               role="presentation"
+              style={
+                Object {
+                  "fontFamily": "\\"FabricMDL2Icons\\"",
+                }
+              }
             >
               
             </i>
@@ -453,12 +459,13 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
           className=
               ms-Button
               ms-Button--primary
+              ms-Button--hasMenu
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
                 background-color: #0078d4;
                 border-radius: 2px;
-                border: none;
+                border: 1px solid #0078d4;
                 box-sizing: border-box;
                 color: #ffffff;
                 cursor: pointer;
@@ -510,23 +517,28 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
               @media screen and (-ms-high-contrast: active){& {
                 -ms-high-contrast-adjust: none;
                 background-color: WindowText;
+                border-color: WindowText;
                 color: Window;
               }
               &:hover {
                 background-color: #106ebe;
+                border: 1px solid #106ebe;
                 color: #ffffff;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 background-color: Highlight;
+                border-color: Highlight;
                 color: Window;
               }
               &:active {
                 background-color: #005a9e;
+                border: 1px solid #005a9e;
                 color: #ffffff;
               }
               @media screen and (-ms-high-contrast: active){&:active {
                 -ms-high-contrast-adjust: none;
                 background-color: WindowText;
+                border-color: WindowText;
                 color: Window;
               }
           data-is-focusable={false}
@@ -686,6 +698,11 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
                   }
               data-icon-name="ChevronDown"
               role="presentation"
+              style={
+                Object {
+                  "fontFamily": "\\"FabricMDL2Icons\\"",
+                }
+              }
             >
               
             </i>
@@ -696,7 +713,7 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
           className=
 
               {
-                background-color: #c8c6c4;
+                background-color: #ffffff;
                 bottom: 8px;
                 position: absolute;
                 right: 31px;
@@ -704,7 +721,7 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
                 width: 1px;
               }
               @media screen and (-ms-high-contrast: active){& {
-                background-color: Window;
+                background-color: WindowText;
               }
         />
       </span>
@@ -794,6 +811,7 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
           className=
               ms-Button
               ms-Button--default
+              ms-Button--hasMenu
               is-disabled
               {
                 -moz-osx-font-smoothing: grayscale;
@@ -1016,6 +1034,11 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
                   }
               data-icon-name="ChevronDown"
               role="presentation"
+              style={
+                Object {
+                  "fontFamily": "\\"FabricMDL2Icons\\"",
+                }
+              }
             >
               
             </i>
@@ -1117,6 +1140,7 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
           className=
               ms-Button
               ms-Button--default
+              ms-Button--hasMenu
               is-disabled
               {
                 -moz-osx-font-smoothing: grayscale;
@@ -1354,6 +1378,11 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
                   }
               data-icon-name="ChevronDown"
               role="presentation"
+              style={
+                Object {
+                  "fontFamily": "\\"FabricMDL2Icons\\"",
+                }
+              }
             >
               
             </i>

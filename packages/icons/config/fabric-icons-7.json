@@ -10,6 +10,58 @@
   },
   "glyphs": [
     {
+      "name": "SingleBookmark",
+      "unicode": "EDFF"
+    },
+    {
+      "name": "SingleBookmarkSolid",
+      "unicode": "EE00"
+    },
+    {
+      "name": "DoubleChevronDown",
+      "unicode": "EE04"
+    },
+    {
+      "name": "FollowUser",
+      "unicode": "EE05"
+    },
+    {
+      "name": "ReplyAll",
+      "unicode": "EE0A"
+    },
+    {
+      "name": "WorkforceManagement",
+      "unicode": "EE0F"
+    },
+    {
+      "name": "RecruitmentManagement",
+      "unicode": "EE12"
+    },
+    {
+      "name": "Questionnaire",
+      "unicode": "EE19"
+    },
+    {
+      "name": "ManagerSelfService",
+      "unicode": "EE23"
+    },
+    {
+      "name": "ProductionFloorManagement",
+      "unicode": "EE29"
+    },
+    {
+      "name": "ProductRelease",
+      "unicode": "EE2E"
+    },
+    {
+      "name": "ProductVariant",
+      "unicode": "EE30"
+    },
+    {
+      "name": "ReplyMirrored",
+      "unicode": "EE35"
+    },
+    {
       "name": "ReplyAllMirrored",
       "unicode": "EE36"
     },
@@ -356,58 +408,6 @@
     {
       "name": "FolderSearch",
       "unicode": "EF65"
-    },
-    {
-      "name": "CollapseMenu",
-      "unicode": "EF66"
-    },
-    {
-      "name": "ExpandMenu",
-      "unicode": "EF67"
-    },
-    {
-      "name": "Boards",
-      "unicode": "EF68"
-    },
-    {
-      "name": "SunAdd",
-      "unicode": "EF69"
-    },
-    {
-      "name": "SunQuestionMark",
-      "unicode": "EF6A"
-    },
-    {
-      "name": "LandscapeOrientation",
-      "unicode": "EF6B"
-    },
-    {
-      "name": "DocumentSearch",
-      "unicode": "EF6C"
-    },
-    {
-      "name": "PublicCalendar",
-      "unicode": "EF6D"
-    },
-    {
-      "name": "PublicContactCard",
-      "unicode": "EF6E"
-    },
-    {
-      "name": "PublicEmail",
-      "unicode": "EF6F"
-    },
-    {
-      "name": "PublicFolder",
-      "unicode": "EF70"
-    },
-    {
-      "name": "WordDocument",
-      "unicode": "EF71"
-    },
-    {
-      "name": "PowerPointDocument",
-      "unicode": "EF72"
     }
   ]
 }

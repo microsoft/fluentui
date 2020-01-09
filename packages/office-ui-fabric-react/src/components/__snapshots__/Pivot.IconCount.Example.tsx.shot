@@ -2,7 +2,10 @@
 
 exports[`Component Examples renders Pivot.IconCount.Example.tsx correctly 1`] = `
 <div>
-  <div>
+  <div
+    aria-label="Count and Icon Pivot Example"
+    role="tablist"
+  >
     <div
       className=
           ms-FocusZone
@@ -37,7 +40,6 @@ exports[`Component Examples renders Pivot.IconCount.Example.tsx correctly 1`] = 
               position: relative;
               white-space: nowrap;
             }
-        role="tablist"
       >
         <button
           aria-selected={true}
@@ -213,7 +215,6 @@ exports[`Component Examples renders Pivot.IconCount.Example.tsx correctly 1`] = 
                         speak: none;
                       }
                   data-icon-name="Emoji2"
-                  role="presentation"
                 >
                   
                 </i>
@@ -406,7 +407,6 @@ exports[`Component Examples renders Pivot.IconCount.Example.tsx correctly 1`] = 
                         speak: none;
                       }
                   data-icon-name="Recent"
-                  role="presentation"
                 >
                   
                 </i>
@@ -532,9 +532,10 @@ exports[`Component Examples renders Pivot.IconCount.Example.tsx correctly 1`] = 
               .ms-Fabric--isFocusVisible &:focus {
                 outline: 1px solid #605e5c;
               }
-          data-content=" xx"
+          data-content="Placeholder xx"
           data-is-focusable={true}
           id="Pivot0-Tab2"
+          name="Placeholder"
           onClick={[Function]}
           onKeyDown={[Function]}
           onKeyPress={[Function]}
@@ -588,10 +589,20 @@ exports[`Component Examples renders Pivot.IconCount.Example.tsx correctly 1`] = 
                         speak: none;
                       }
                   data-icon-name="Globe"
-                  role="presentation"
                 >
                   
                 </i>
+              </span>
+              <span
+                className=
+                    ms-Pivot-text
+                    {
+                      display: inline-block;
+                      vertical-align: top;
+                    }
+              >
+                 
+                Placeholder
               </span>
             </span>
           </span>
@@ -759,7 +770,6 @@ exports[`Component Examples renders Pivot.IconCount.Example.tsx correctly 1`] = 
                         speak: none;
                       }
                   data-icon-name="Ringer"
-                  role="presentation"
                 >
                   
                 </i>
@@ -954,7 +964,6 @@ exports[`Component Examples renders Pivot.IconCount.Example.tsx correctly 1`] = 
                           speak: none;
                         }
                     data-icon-name="Globe"
-                    role="presentation"
                   >
                     
                   </i>
@@ -997,7 +1006,6 @@ exports[`Component Examples renders Pivot.IconCount.Example.tsx correctly 1`] = 
                       speak: none;
                     }
                 data-icon-name="Airplane"
-                role="presentation"
                 style={
                   Object {
                     "color": "red",

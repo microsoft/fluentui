@@ -10,6 +10,58 @@
   },
   "glyphs": [
     {
+      "name": "SwayLogoInverse",
+      "unicode": "ED29"
+    },
+    {
+      "name": "OutOfOffice",
+      "unicode": "ED34"
+    },
+    {
+      "name": "Trophy",
+      "unicode": "ED3F"
+    },
+    {
+      "name": "ReopenPages",
+      "unicode": "ED50"
+    },
+    {
+      "name": "EmojiTabSymbols",
+      "unicode": "ED58"
+    },
+    {
+      "name": "AADLogo",
+      "unicode": "ED68"
+    },
+    {
+      "name": "AccessLogo",
+      "unicode": "ED69"
+    },
+    {
+      "name": "AdminALogoInverse32",
+      "unicode": "ED6A"
+    },
+    {
+      "name": "AdminCLogoInverse32",
+      "unicode": "ED6B"
+    },
+    {
+      "name": "AdminDLogoInverse32",
+      "unicode": "ED6C"
+    },
+    {
+      "name": "AdminELogoInverse32",
+      "unicode": "ED6D"
+    },
+    {
+      "name": "AdminLLogoInverse32",
+      "unicode": "ED6E"
+    },
+    {
+      "name": "AdminMLogoInverse32",
+      "unicode": "ED6F"
+    },
+    {
       "name": "AdminOLogoInverse32",
       "unicode": "ED70"
     },
@@ -356,58 +408,6 @@
     {
       "name": "ExportMirrored",
       "unicode": "EDE2"
-    },
-    {
-      "name": "SingleBookmark",
-      "unicode": "EDFF"
-    },
-    {
-      "name": "SingleBookmarkSolid",
-      "unicode": "EE00"
-    },
-    {
-      "name": "DoubleChevronDown",
-      "unicode": "EE04"
-    },
-    {
-      "name": "FollowUser",
-      "unicode": "EE05"
-    },
-    {
-      "name": "ReplyAll",
-      "unicode": "EE0A"
-    },
-    {
-      "name": "WorkforceManagement",
-      "unicode": "EE0F"
-    },
-    {
-      "name": "RecruitmentManagement",
-      "unicode": "EE12"
-    },
-    {
-      "name": "Questionnaire",
-      "unicode": "EE19"
-    },
-    {
-      "name": "ManagerSelfService",
-      "unicode": "EE23"
-    },
-    {
-      "name": "ProductionFloorManagement",
-      "unicode": "EE29"
-    },
-    {
-      "name": "ProductRelease",
-      "unicode": "EE2E"
-    },
-    {
-      "name": "ProductVariant",
-      "unicode": "EE30"
-    },
-    {
-      "name": "ReplyMirrored",
-      "unicode": "EE35"
     }
   ]
 }

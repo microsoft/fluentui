@@ -4,8 +4,8 @@ export interface IMonacoConfig {
   /** Whether to use minified versions of the files (`.min.js`) */
   useMinified?: boolean;
   /**
-   * Whether to use a configuration variant which works when this script lives
-   * on a different domain than the core Monaco scripts
+   * Whether to use a configuration variant which works when the worker script lives on a
+   * different domain than the website host (like a CDN).
    */
   crossDomain?: boolean;
 }
@@ -28,7 +28,7 @@ const labelMap: { [key: string]: string } = {
   json: 'json'
 };
 
-export function getMonacoConfig(): IMonacoConfig | undefined {
+function getMonacoConfig(): IMonacoConfig | undefined {
   return (
     globalObj.MonacoConfig ||
     // TODO: remove once fabric-website homepage.htm is updated
@@ -36,7 +36,8 @@ export function getMonacoConfig(): IMonacoConfig | undefined {
     (globalObj.MonacoEnvironment && globalObj.appPath && globalObj.jsSuffix
       ? {
           baseUrl: globalObj.appPath,
-          useMinified: globalObj.jsSuffix === '.min.js'
+          useMinified: globalObj.jsSuffix === '.min.js',
+          crossDomain: globalObj.location.hostname.indexOf('microsoft.com') !== -1
         }
       : undefined)
   );
@@ -67,14 +68,30 @@ export function configureEnvironment(config?: IMonacoConfig): void {
       const path = `${baseUrlNoSlash}/${workerName}.worker${minPart}.js`;
 
       if (crossDomain) {
-        // This is needed for cases where the JS files will be on a different domain (the CDN)
-        // instead of the domain the HTML is running on. Web workers (used by Monaco) can't be
-        // loaded by script residing on a different domain, so we use this proxy script on the
-        // main domain to load the worker script. (Also do this with localhost/devhost for testing.)
+        // If the JS files will be on a different domain (the CDN) instead of the domain the HTML
+        // is running on, we have to load the web worker scripts using a proxy. More info:
         // https://github.com/microsoft/monaco-editor/blob/master/docs/integrate-amd-cross.md
-        return 'data:text/javascript;charset=utf-8,' + encodeURIComponent(`importScripts("${path}");`);
+
+        // Next part varies for Chrome/Firefox/new Edge old Edge (new Edge uses Edg/ in UA)
+        const isEdge = / Edge\//.test(navigator.userAgent);
+        if (!isEdge) {
+          // This approach (suggested in the docs) works in Chrome but not old Edge
+          return 'data:text/javascript;charset=utf-8,' + encodeURIComponent(`importScripts("${path}");`);
+        } else {
+          // This works in Edge but causes workers to run on the UI thread in Chrome
+          // https://benohead.com/cross-domain-cross-browser-web-workers/
+          const blob = new Blob([`importScripts("${path}")`], { type: 'application/javascript' });
+          return URL.createObjectURL(blob);
+        }
       }
       return path;
     }
   };
+}
+
+/**
+ * Returns true if either MonacoEnvironment or MonacoConfig is set.
+ */
+export function isConfigAvailable(): boolean {
+  return !!(globalObj.MonacoConfig || globalObj.MonacoEnvironment);
 }

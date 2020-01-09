@@ -8,7 +8,7 @@
 
 `TextAppearance.UIFabric.Heading`
 
-`TextAppearance.UIFabric.SubHeading`
+`TextAppearance.UIFabric.SubHeading1`
 
 `TextAppearance.UIFabric.SubHeading2`
 

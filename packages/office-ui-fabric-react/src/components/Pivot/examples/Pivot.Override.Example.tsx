@@ -17,7 +17,7 @@ export class PivotOverrideExample extends React.Component<any, any> {
   public render(): JSX.Element {
     return (
       <div>
-        <Pivot selectedKey={`${this.state.selectedKey}`}>
+        <Pivot aria-label="Override Selected Item Pivot Example" selectedKey={`${this.state.selectedKey}`}>
           <PivotItem headerText="My Files" itemKey="0">
             <Label>Pivot #1</Label>
           </PivotItem>

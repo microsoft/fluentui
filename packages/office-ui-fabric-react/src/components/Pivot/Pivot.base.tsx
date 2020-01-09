@@ -15,8 +15,6 @@ export interface IPivotState {
   selectedKey: string | undefined;
 }
 
-const PivotItemType = (<PivotItem /> as React.ReactElement<IPivotItemProps>).type;
-
 type PivotLinkCollection = {
   links: IPivotItemProps[];
   keyToIndexMapping: { [key: string]: number };
@@ -89,7 +87,7 @@ export class PivotBase extends BaseComponent<IPivotProps, IPivotState> {
     this._classNames = this._getClassNames(this.props);
 
     return (
-      <div {...divProps}>
+      <div role="tablist" {...divProps}>
         {this._renderPivotLinks(linkCollection, selectedKey)}
         {selectedKey && this._renderPivotItem(linkCollection, selectedKey)}
       </div>
@@ -123,9 +121,7 @@ export class PivotBase extends BaseComponent<IPivotProps, IPivotState> {
 
     return (
       <FocusZone componentRef={this._focusZone} direction={FocusZoneDirection.horizontal}>
-        <div className={this._classNames.root} role="tablist">
-          {items}
-        </div>
+        <div className={this._classNames.root}>{items}</div>
       </FocusZone>
     );
   }
@@ -218,9 +214,9 @@ export class PivotBase extends BaseComponent<IPivotProps, IPivotState> {
       keyToTabIdMapping: {}
     };
 
-    React.Children.map(React.Children.toArray(props.children), (child: any, index: number) => {
-      if (typeof child === 'object' && child.type === PivotItemType) {
-        const pivotItem = child as PivotItem;
+    React.Children.map(React.Children.toArray(props.children), (child: React.ReactChild, index: number) => {
+      if (_isPivotItem(child)) {
+        const pivotItem = child;
         const { linkText, ...pivotItemProps } = pivotItem.props;
         const itemKey = pivotItem.props.itemKey || index.toString();
 
@@ -290,10 +286,10 @@ export class PivotBase extends BaseComponent<IPivotProps, IPivotState> {
       const index = linkCollection.keyToIndexMapping[itemKey];
 
       // React.Element<any> cannot directly convert to PivotItem.
-      const item = React.Children.toArray(this.props.children)[index] as any;
+      const item = React.Children.toArray(this.props.children)[index];
 
-      if (typeof item === 'object' && item.type === PivotItemType) {
-        this.props.onLinkClick(item as PivotItem, ev);
+      if (_isPivotItem(item)) {
+        this.props.onLinkClick(item, ev);
       }
     }
   }
@@ -309,4 +305,16 @@ export class PivotBase extends BaseComponent<IPivotProps, IPivotState> {
       rootIsTabs
     });
   }
+}
+
+function _isPivotItem(item: React.ReactNode): item is PivotItem {
+  // In theory, we should be able to just check item.type === PivotItem.
+  // However, under certain unclear circumstances (see https://github.com/OfficeDev/office-ui-fabric-react/issues/10785),
+  // the object identity is different despite the function implementation being the same.
+  return (
+    !!item &&
+    typeof item === 'object' &&
+    !!(item as React.ReactElement).type &&
+    ((item as React.ReactElement).type as React.ComponentType).name === PivotItem.name
+  );
 }

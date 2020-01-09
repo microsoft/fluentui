@@ -85,7 +85,7 @@ exports[`Component Examples renders Nav.Nested.Example.tsx correctly 1`] = `
             >
               <button
                 aria-expanded="false"
-                aria-label="Parent link 1 Expand or collapse"
+                aria-label="Expand Parent link 1"
                 className=
                     ms-Nav-chevronButton
                     {
@@ -135,14 +135,6 @@ exports[`Component Examples renders Nav.Nested.Example.tsx correctly 1`] = `
                       z-index: 1;
                     }
                     &:visited {
-                      color: inherit;
-                    }
-                    &:hover {
-                      background-color: #f3f2f1;
-                      color: #323130;
-                    }
-                    .ms-Nav-compositeLink:hover & {
-                      background-color: #f3f2f1;
                       color: #323130;
                     }
                 onClick={[Function]}
@@ -168,7 +160,6 @@ exports[`Component Examples renders Nav.Nested.Example.tsx correctly 1`] = `
                         transition: transform .1s linear;
                       }
                   data-icon-name="ChevronDown"
-                  role="presentation"
                 >
                   
                 </i>
@@ -260,7 +251,6 @@ exports[`Component Examples renders Nav.Nested.Example.tsx correctly 1`] = `
                     }
                     .ms-Nav-compositeLink:hover & {
                       background-color: #f3f2f1;
-                      color: #323130;
                     }
                 data-is-focusable={true}
                 href="http://example.com"
@@ -328,7 +318,7 @@ exports[`Component Examples renders Nav.Nested.Example.tsx correctly 1`] = `
             >
               <button
                 aria-expanded="false"
-                aria-label="Parent link 2 Expand or collapse"
+                aria-label="Expand Parent link 2"
                 className=
                     ms-Nav-chevronButton
                     {
@@ -378,14 +368,6 @@ exports[`Component Examples renders Nav.Nested.Example.tsx correctly 1`] = `
                       z-index: 1;
                     }
                     &:visited {
-                      color: inherit;
-                    }
-                    &:hover {
-                      background-color: #f3f2f1;
-                      color: #323130;
-                    }
-                    .ms-Nav-compositeLink:hover & {
-                      background-color: #f3f2f1;
                       color: #323130;
                     }
                 onClick={[Function]}
@@ -411,7 +393,6 @@ exports[`Component Examples renders Nav.Nested.Example.tsx correctly 1`] = `
                         transition: transform .1s linear;
                       }
                   data-icon-name="ChevronDown"
-                  role="presentation"
                 >
                   
                 </i>
@@ -503,7 +484,6 @@ exports[`Component Examples renders Nav.Nested.Example.tsx correctly 1`] = `
                     }
                     .ms-Nav-compositeLink:hover & {
                       background-color: #f3f2f1;
-                      color: #323130;
                     }
                 data-is-focusable={true}
                 href="http://example.com"

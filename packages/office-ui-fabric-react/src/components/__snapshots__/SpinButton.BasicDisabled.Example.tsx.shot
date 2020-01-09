@@ -69,9 +69,9 @@ exports[`Component Examples renders SpinButton.BasicDisabled.Example.tsx correct
 
           {
             background-color: #f3f2f1;
-            border-color: transparent;
+            border-color: #f3f2f1;
             border-radius: 2px;
-            border: 1px solid #8a8886;
+            border: 1px solid #605e5c;
             box-sizing: border-box;
             color: #a19f9d;
             cursor: default;
@@ -79,6 +79,7 @@ exports[`Component Examples renders SpinButton.BasicDisabled.Example.tsx correct
             height: 32px;
             min-width: 86px;
             pointer-events: none;
+            position: relative;
           }
           @media screen and (-ms-high-contrast: active){& {
             color: GrayText;
@@ -95,7 +96,7 @@ exports[`Component Examples renders SpinButton.BasicDisabled.Example.tsx correct
             ms-spinButton-input
             {
               background-color: #f3f2f1;
-              border-color: transparent;
+              border-color: #f3f2f1;
               border-radius: 2px 0 0 2px;
               border-style: none;
               box-shadow: none;
@@ -110,7 +111,7 @@ exports[`Component Examples renders SpinButton.BasicDisabled.Example.tsx correct
               margin-left: 0px;
               margin-right: 0px;
               margin-top: 0px;
-              min-width: 72px;
+              min-width: 61px;
               outline: 0px;
               overflow: hidden;
               padding-bottom: 0;
@@ -143,7 +144,7 @@ exports[`Component Examples renders SpinButton.BasicDisabled.Example.tsx correct
 
             {
               background-color: #f3f2f1;
-              border-color: transparent;
+              border-color: #f3f2f1;
               color: #a19f9d;
               cursor: default;
               display: block;
@@ -177,7 +178,6 @@ exports[`Component Examples renders SpinButton.BasicDisabled.Example.tsx correct
                 font-size: 14px;
                 font-weight: 400;
                 height: 50%;
-                min-width: 32px;
                 opacity: 0.5;
                 outline: transparent;
                 padding-bottom: 0px;
@@ -291,6 +291,11 @@ exports[`Component Examples renders SpinButton.BasicDisabled.Example.tsx correct
                   }
               data-icon-name="ChevronUpSmall"
               role="presentation"
+              style={
+                Object {
+                  "fontFamily": "\\"FabricMDL2Icons-2\\"",
+                }
+              }
             >
               
             </i>
@@ -319,7 +324,6 @@ exports[`Component Examples renders SpinButton.BasicDisabled.Example.tsx correct
                 font-size: 14px;
                 font-weight: 400;
                 height: 50%;
-                min-width: 32px;
                 opacity: 0.5;
                 outline: transparent;
                 padding-bottom: 0px;
@@ -413,7 +417,7 @@ exports[`Component Examples renders SpinButton.BasicDisabled.Example.tsx correct
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
-                    font-family: "FabricMDL2Icons-2";
+                    font-family: "FabricMDL2Icons-3";
                     font-style: normal;
                     font-weight: normal;
                     speak: none;
@@ -433,6 +437,11 @@ exports[`Component Examples renders SpinButton.BasicDisabled.Example.tsx correct
                   }
               data-icon-name="ChevronDownSmall"
               role="presentation"
+              style={
+                Object {
+                  "fontFamily": "\\"FabricMDL2Icons-3\\"",
+                }
+              }
             >
               
             </i>

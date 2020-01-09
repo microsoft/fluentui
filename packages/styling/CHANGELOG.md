@@ -1,7 +1,58 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Wed, 04 Sep 2019 04:09:58 GMT and should not be manually modified.
+This log was last generated on Wed, 08 Jan 2020 17:02:57 GMT and should not be manually modified.
 
+## 7.9.0
+Wed, 08 Jan 2020 17:02:57 GMT
+
+### Minor changes
+
+- add getInputFocusStyle function to build styles for text input on focus (xgao@microsoft.com)
+### Patches
+
+- bumping load-themed-styles to take advantage of es6 version of it (kchau@microsoft.com)
+## 7.8.1
+Tue, 31 Dec 2019 12:31:45 GMT
+
+### Patches
+
+- createTheme: Pass through RTL if specified (mgodbolt@microsoft.com)
+## 7.8.0
+Tue, 24 Dec 2019 12:33:51 GMT
+
+### Minor changes
+
+- Export IIconSubsetRecord (elcraig@microsoft.com)
+## 7.7.4
+Fri, 06 Dec 2019 12:33:21 GMT
+
+### Patches
+
+- Making rest state accessible (betrue@microsoft.com)
+## 7.7.3
+Thu, 14 Nov 2019 12:30:52 GMT
+
+### Patches
+
+- Theme Designer: pull semantic slots from primary source instead of have a secondary mapping. (email not defined)
+## 7.7.2
+Thu, 26 Sep 2019 12:32:32 GMT
+
+### Patches
+
+- Add optional rtl property to IScheme (jdh@microsoft.com)
+## 7.7.1
+Mon, 23 Sep 2019 12:33:15 GMT
+
+### Patches
+
+- Animations should not leave invisible elements behind so setting visibility to hidden on fade out to get rid of any interactivity where the faded element was (email not defined)
+## 7.7.0
+Fri, 20 Sep 2019 12:34:28 GMT
+
+### Minor changes
+
+- Exporting new merge-styles apis. (dzearing@microsoft.com)
 ## 7.6.2
 Wed, 04 Sep 2019 04:09:58 GMT
 

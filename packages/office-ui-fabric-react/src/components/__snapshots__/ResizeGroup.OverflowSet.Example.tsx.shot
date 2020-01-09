@@ -25,6 +25,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
         }
       >
         <div
+          aria-orientation="horizontal"
           className=
               ms-FocusZone
               ms-OverflowSet
@@ -185,6 +186,11 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                       }
                   data-icon-name="Add"
                   role="presentation"
+                  style={
+                    Object {
+                      "fontFamily": "\\"FabricMDL2Icons\\"",
+                    }
+                  }
                 >
                   
                 </i>
@@ -358,6 +364,11 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                       }
                   data-icon-name="Share"
                   role="presentation"
+                  style={
+                    Object {
+                      "fontFamily": "\\"FabricMDL2Icons\\"",
+                    }
+                  }
                 >
                   
                 </i>
@@ -531,6 +542,11 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                       }
                   data-icon-name="Upload"
                   role="presentation"
+                  style={
+                    Object {
+                      "fontFamily": "\\"FabricMDL2Icons\\"",
+                    }
+                  }
                 >
                   
                 </i>
@@ -704,6 +720,11 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                       }
                   data-icon-name="Add"
                   role="presentation"
+                  style={
+                    Object {
+                      "fontFamily": "\\"FabricMDL2Icons\\"",
+                    }
+                  }
                 >
                   
                 </i>
@@ -877,6 +898,11 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                       }
                   data-icon-name="Share"
                   role="presentation"
+                  style={
+                    Object {
+                      "fontFamily": "\\"FabricMDL2Icons\\"",
+                    }
+                  }
                 >
                   
                 </i>
@@ -1050,6 +1076,11 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                       }
                   data-icon-name="Upload"
                   role="presentation"
+                  style={
+                    Object {
+                      "fontFamily": "\\"FabricMDL2Icons\\"",
+                    }
+                  }
                 >
                   
                 </i>
@@ -1223,6 +1254,11 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                       }
                   data-icon-name="Add"
                   role="presentation"
+                  style={
+                    Object {
+                      "fontFamily": "\\"FabricMDL2Icons\\"",
+                    }
+                  }
                 >
                   
                 </i>
@@ -1396,6 +1432,11 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                       }
                   data-icon-name="Share"
                   role="presentation"
+                  style={
+                    Object {
+                      "fontFamily": "\\"FabricMDL2Icons\\"",
+                    }
+                  }
                 >
                   
                 </i>
@@ -1569,6 +1610,11 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                       }
                   data-icon-name="Upload"
                   role="presentation"
+                  style={
+                    Object {
+                      "fontFamily": "\\"FabricMDL2Icons\\"",
+                    }
+                  }
                 >
                   
                 </i>
@@ -1742,6 +1788,11 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                       }
                   data-icon-name="Add"
                   role="presentation"
+                  style={
+                    Object {
+                      "fontFamily": "\\"FabricMDL2Icons\\"",
+                    }
+                  }
                 >
                   
                 </i>
@@ -1915,6 +1966,11 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                       }
                   data-icon-name="Share"
                   role="presentation"
+                  style={
+                    Object {
+                      "fontFamily": "\\"FabricMDL2Icons\\"",
+                    }
+                  }
                 >
                   
                 </i>
@@ -2088,6 +2144,11 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                       }
                   data-icon-name="Upload"
                   role="presentation"
+                  style={
+                    Object {
+                      "fontFamily": "\\"FabricMDL2Icons\\"",
+                    }
+                  }
                 >
                   
                 </i>
@@ -2261,6 +2322,11 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                       }
                   data-icon-name="Add"
                   role="presentation"
+                  style={
+                    Object {
+                      "fontFamily": "\\"FabricMDL2Icons\\"",
+                    }
+                  }
                 >
                   
                 </i>
@@ -2434,6 +2500,11 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                       }
                   data-icon-name="Share"
                   role="presentation"
+                  style={
+                    Object {
+                      "fontFamily": "\\"FabricMDL2Icons\\"",
+                    }
+                  }
                 >
                   
                 </i>
@@ -2607,6 +2678,11 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                       }
                   data-icon-name="Upload"
                   role="presentation"
+                  style={
+                    Object {
+                      "fontFamily": "\\"FabricMDL2Icons\\"",
+                    }
+                  }
                 >
                   
                 </i>
@@ -2780,6 +2856,11 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                       }
                   data-icon-name="Add"
                   role="presentation"
+                  style={
+                    Object {
+                      "fontFamily": "\\"FabricMDL2Icons\\"",
+                    }
+                  }
                 >
                   
                 </i>
@@ -2953,6 +3034,11 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                       }
                   data-icon-name="Share"
                   role="presentation"
+                  style={
+                    Object {
+                      "fontFamily": "\\"FabricMDL2Icons\\"",
+                    }
+                  }
                 >
                   
                 </i>
@@ -3126,6 +3212,11 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                       }
                   data-icon-name="Upload"
                   role="presentation"
+                  style={
+                    Object {
+                      "fontFamily": "\\"FabricMDL2Icons\\"",
+                    }
+                  }
                 >
                   
                 </i>
@@ -3299,6 +3390,11 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                       }
                   data-icon-name="Add"
                   role="presentation"
+                  style={
+                    Object {
+                      "fontFamily": "\\"FabricMDL2Icons\\"",
+                    }
+                  }
                 >
                   
                 </i>
@@ -3472,6 +3568,11 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                       }
                   data-icon-name="Share"
                   role="presentation"
+                  style={
+                    Object {
+                      "fontFamily": "\\"FabricMDL2Icons\\"",
+                    }
+                  }
                 >
                   
                 </i>
@@ -3507,7 +3608,13 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
       </div>
     </div>
   </div>
-  <div>
+  <div
+    className=
+
+        {
+          padding-top: 20px;
+        }
+  >
     <div
       className=
           ms-Checkbox
@@ -3631,7 +3738,6 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   color: Window;
                 }
             data-icon-name="CheckMark"
-            role="presentation"
           >
             
           </i>
@@ -3774,7 +3880,6 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   color: Window;
                 }
             data-icon-name="CheckMark"
-            role="presentation"
           >
             
           </i>
@@ -3917,7 +4022,6 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   color: Window;
                 }
             data-icon-name="CheckMark"
-            role="presentation"
           >
             
           </i>
@@ -3937,7 +4041,13 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
         </span>
       </label>
     </div>
-    <div>
+    <div
+      className=
+
+          {
+            width: 180px;
+          }
+    >
       <div
         className=
             ms-Dropdown-container
@@ -3968,15 +4078,14 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                 padding-top: 5px;
                 word-wrap: break-word;
               }
-          htmlFor="Dropdown64"
           id="Dropdown64-label"
         >
           Number of items to render
         </label>
         <div
-          aria-describedby="Dropdown64-option"
           aria-expanded="false"
-          aria-labelledby="Dropdown64-label"
+          aria-haspopup="listbox"
+          aria-labelledby="Dropdown64-label Dropdown64-option"
           className=
               ms-Dropdown
               {
@@ -4009,18 +4118,26 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                 border-color: Highlight;
               }
               &:focus .ms-Dropdown-title {
-                border-color: #0078d4;
                 color: #201f1e;
               }
-              @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-title {
+              &:focus:after {
+                border-radius: 2px;
+                border: 2px solid #0078d4;
+                box-sizing: border-box;
+                content: '';
+                height: 100%;
+                left: 0px;
+                pointer-events: none;
+                position: absolute;
+                top: 0px;
+                width: 100%;
+              }
+              @media screen and (-ms-high-contrast: active){&:focus:after {
                 background-color: Highlight;
                 border-color: Highlight;
                 color: HighlightText;
               }
-              @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-title:hover {
-                color: HighlightText;
-              }
-              @media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: black-on-white){&:focus .ms-Dropdown-title {
+              @media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: black-on-white){&:focus:after {
                 -ms-high-contrast-adjust: none;
               }
               &:active .ms-Dropdown-title {
@@ -4060,9 +4177,6 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
               &:active .ms-Dropdown-title--hasError {
                 border-color: #a4262c;
               }
-              &:focus .ms-Dropdown-title--hasError {
-                border-color: #a4262c;
-              }
           data-is-focusable={true}
           id="Dropdown64"
           onBlur={[Function]}
@@ -4071,13 +4185,14 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
           onFocus={[Function]}
           onKeyDown={[Function]}
           onKeyUp={[Function]}
+          onMouseDown={[Function]}
           role="listbox"
           tabIndex={0}
         >
           <span
             aria-atomic={true}
-            aria-label="20"
-            aria-live="off"
+            aria-invalid={false}
+            aria-live="polite"
             aria-posinset={1}
             aria-selected={true}
             aria-setsize={7}
@@ -4085,7 +4200,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                 ms-Dropdown-title
                 {
                   background-color: #ffffff;
-                  border-color: #8a8886;
+                  border-color: #605e5c;
                   border-radius: 2px;
                   border-style: solid;
                   border-width: 1px;
@@ -4111,9 +4226,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
             id="Dropdown64-option"
             role="option"
           >
-            <span>
-              20
-            </span>
+            20
           </span>
           <span
             className=
@@ -4144,7 +4257,6 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                     speak: none;
                   }
               data-icon-name="ChevronDown"
-              role="presentation"
             >
               
             </i>

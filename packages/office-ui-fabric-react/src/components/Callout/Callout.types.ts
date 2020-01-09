@@ -29,7 +29,9 @@ export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement> {
 
   /**
    * How the element should be positioned in RTL layouts.
-   * If not specified, a mirror of `directionalHint` will be used instead
+   * If not specified, a mirror of the `directionalHint` alignment edge will be used instead.
+   * This means that `DirectionalHint.BottomLeft` will change to `DirectionalHint.BottomRight` but
+   * `DirectionalHint.LeftAuto` will not change.
    */
   directionalHintForRTL?: DirectionalHint;
 
@@ -139,6 +141,9 @@ export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement> {
 
   /**
    * CSS style to apply to the callout.
+   *
+   * If you set `overflowY` in this object, it provides a performance optimization by preventing
+   * Popup (underlying component of Callout) from calculating whether it needs a scroll bar.
    */
   style?: React.CSSProperties;
 
@@ -227,6 +232,15 @@ export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement> {
    * once the callout is visible.
    */
   hidden?: boolean;
+
+  /**
+   * If true, the component will be updated even when hidden=true.
+   * Note that this would consume resources to update even though
+   * nothing is being shown to the user.
+   * This might be helpful though if your updates are small and you want the
+   * callout to be revealed fast to the user when hidden is set to false.
+   */
+  shouldUpdateWhenHidden?: boolean;
 
   /**
    * If specified, determines whether the underlying "Popup" component should try to restore

@@ -1,10 +1,18 @@
 import * as React from 'react';
-import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
-import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
-import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
-import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
-import { Slider } from 'office-ui-fabric-react/lib/Slider';
-import './CalloutExample.scss';
+import {
+  DefaultButton,
+  Callout,
+  DirectionalHint,
+  Dropdown,
+  IDropdownOption,
+  Checkbox,
+  Slider,
+  getTheme,
+  mergeStyleSets,
+  FontWeights,
+  Link,
+  getId
+} from 'office-ui-fabric-react';
 
 export interface ICalloutDirectionalExampleState {
   isCalloutVisible?: boolean;
@@ -31,8 +39,70 @@ const DIRECTION_OPTIONS = [
   { key: DirectionalHint.rightBottomEdge, text: 'Right Bottom Edge' }
 ];
 
+const theme = getTheme();
+const styles = mergeStyleSets({
+  buttonArea: {
+    verticalAlign: 'top',
+    display: 'inline-block',
+    textAlign: 'center',
+    margin: '0 100px',
+    minWidth: 130,
+    height: 32
+  },
+  configArea: {
+    minWidth: '300px',
+    display: 'inline-block'
+  },
+  callout: {
+    maxWidth: 300
+  },
+  calloutExampleButton: {
+    width: '100%'
+  },
+  header: {
+    padding: '18px 24px 12px'
+  },
+  title: [
+    theme.fonts.xLarge,
+    {
+      margin: 0,
+      color: theme.palette.neutralPrimary,
+      fontWeight: FontWeights.semilight
+    }
+  ],
+  inner: {
+    height: '100%',
+    padding: '0 24px 20px'
+  },
+  subtext: [
+    theme.fonts.small,
+    {
+      margin: 0,
+      color: theme.palette.neutralPrimary,
+      fontWeight: FontWeights.semilight
+    }
+  ],
+  link: [
+    theme.fonts.medium,
+    {
+      color: theme.palette.neutralPrimary
+    }
+  ],
+  actions: {
+    position: 'relative',
+    marginTop: 20,
+    width: '100%',
+    whiteSpace: 'nowrap'
+  }
+});
+
 export class CalloutDirectionalExample extends React.Component<{}, ICalloutDirectionalExampleState> {
   private _menuButtonElement: HTMLElement | null;
+
+  // Use getId() to ensure that the callout label and description IDs are unique on the page.
+  // It's also okay, though not recommended, to use plain strings without getId() and manually ensure their uniqueness.
+  private _labelId: string = getId('callout-label');
+  private _descriptionId: string = getId('callout-description');
 
   public constructor(props: {}) {
     super(props);
@@ -49,8 +119,8 @@ export class CalloutDirectionalExample extends React.Component<{}, ICalloutDirec
     //  ms-Callout-smallbeak is used in this directional example to reflect all the positions.
     //  Large beak will disable some position to avoid beak over the callout edge.
     return (
-      <div className="ms-CalloutExample">
-        <div className="ms-CalloutExample-configArea">
+      <>
+        <div className={styles.configArea}>
           <Checkbox styles={{ root: { margin: '10px 0' } }} label="Show beak" checked={isBeakVisible} onChange={this._onShowBeakChange} />
           <Slider max={30} label="Gap Space" min={0} defaultValue={0} onChange={this._onGapSlider} />
           {isBeakVisible && <Slider max={50} label="Beak Width" min={10} defaultValue={16} onChange={this._onBeakWidthSlider} />}
@@ -61,36 +131,44 @@ export class CalloutDirectionalExample extends React.Component<{}, ICalloutDirec
             onChange={this._onDirectionalChanged}
           />
         </div>
-        <div className="ms-CalloutExample-buttonArea" ref={menuButton => (this._menuButtonElement = menuButton)}>
+        <div className={styles.buttonArea} ref={menuButton => (this._menuButtonElement = menuButton)}>
           <DefaultButton
-            className={'calloutExampleButton'}
+            className={styles.calloutExampleButton}
             onClick={this._onShowMenuClicked}
             text={isCalloutVisible ? 'Hide callout' : 'Show callout'}
           />
         </div>
         {isCalloutVisible ? (
           <Callout
-            className="ms-CalloutExample-callout"
+            ariaLabelledBy={this._labelId}
+            ariaDescribedBy={this._descriptionId}
+            className={styles.callout}
             gapSpace={gapSpace}
             target={this._menuButtonElement}
             isBeakVisible={isBeakVisible}
             beakWidth={beakWidth}
             onDismiss={this._onCalloutDismiss}
             directionalHint={directionalHint}
+            setInitialFocus={true}
           >
-            <div className="ms-CalloutExample-header">
-              <p className="ms-CalloutExample-title">All of your favorite people</p>
+            <div className={styles.header}>
+              <p className={styles.title} id={this._labelId}>
+                All of your favorite people
+              </p>
             </div>
-            <div className="ms-CalloutExample-inner">
-              <div className="ms-CalloutExample-content">
-                <p className="ms-CalloutExample-subText">
-                  Message body is optional. If help documentation is available, consider adding a link to learn more at the bottom.
-                </p>
+            <div className={styles.inner}>
+              <p className={styles.subtext} id={this._descriptionId}>
+                Message body is optional. If help documentation is available, consider adding a link to learn more at the bottom.
+              </p>
+              <div className={styles.actions}>
+                <Link className={styles.link} href="http://microsoft.com" target="_blank">
+                  Go to Microsoft
+                </Link>
               </div>
             </div>
           </Callout>
         ) : null}
-      </div>
+      </>
     );
   }
 

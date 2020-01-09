@@ -12,12 +12,15 @@ import { ISwatchColorPickerProps, ISwatchColorPickerStyleProps, ISwatchColorPick
 import { Grid } from '../../utilities/grid/Grid';
 import { IColorCellProps } from './ColorPickerGridCell.types';
 import { ColorPickerGridCell } from './ColorPickerGridCell';
+import { memoizeFunction, warnDeprecations } from '@uifabric/utilities';
 
 export interface ISwatchColorPickerState {
   selectedIndex?: number;
 }
 
 const getClassNames = classNamesFunction<ISwatchColorPickerStyleProps, ISwatchColorPickerStyles>();
+
+const COMPONENT_NAME = 'SwatchColorPicker';
 
 export class SwatchColorPickerBase extends React.Component<ISwatchColorPickerProps, ISwatchColorPickerState> {
   public static defaultProps = {
@@ -35,23 +38,29 @@ export class SwatchColorPickerBase extends React.Component<ISwatchColorPickerPro
   private readonly navigationIdleDelay: number = 250 /* ms */;
   private async: Async;
 
+  // Add an index to each color cells. Memoizes this so that color cells do not re-render on every update.
+  private _getItemsWithIndex = memoizeFunction((items: IColorCellProps[]) => {
+    return items.map((item, index) => {
+      return { ...item, index: index };
+    });
+  });
+
   constructor(props: ISwatchColorPickerProps) {
     super(props);
 
     this._id = props.id || getId('swatchColorPicker');
 
     if (process.env.NODE_ENV !== 'production') {
-      warnMutuallyExclusive('SwatchColorPicker', this.props, {
+      warnMutuallyExclusive(COMPONENT_NAME, props, {
         focusOnHover: 'onHover'
       });
 
-      warnConditionallyRequiredProps(
-        'SwatchColorPicker',
-        this.props,
-        ['focusOnHover'],
-        'mouseLeaveParentSelector',
-        !!this.props.mouseLeaveParentSelector
-      );
+      warnConditionallyRequiredProps(COMPONENT_NAME, props, ['focusOnHover'], 'mouseLeaveParentSelector', !!props.mouseLeaveParentSelector);
+
+      warnDeprecations(COMPONENT_NAME, props, {
+        positionInSet: 'ariaPosInSet',
+        setSize: 'ariaSetSize'
+      });
     }
 
     this.isNavigationIdle = true;
@@ -81,6 +90,7 @@ export class SwatchColorPickerBase extends React.Component<ISwatchColorPickerPro
       this._cellFocused = false;
       this.props.onCellFocused();
     }
+    this.async.dispose();
   }
 
   public render(): JSX.Element | null {
@@ -108,23 +118,21 @@ export class SwatchColorPickerBase extends React.Component<ISwatchColorPickerPro
     return (
       <Grid
         {...this.props}
-        items={colorCells.map((item, index) => {
-          return { ...item, index: index };
-        })}
+        id={this._id}
+        items={this._getItemsWithIndex(colorCells)}
         columnCount={columnCount}
         onRenderItem={this._renderOption}
-        positionInSet={positionInSet && positionInSet}
-        setSize={setSize && setSize}
+        ariaPosInSet={positionInSet}
+        ariaSetSize={setSize}
         shouldFocusCircularNavigate={shouldFocusCircularNavigate}
         doNotContainWithinFocusZone={doNotContainWithinFocusZone}
         onBlur={this._onSwatchColorPickerBlur}
         theme={this.props.theme!}
-        // tslint:disable-next-line:jsx-no-lambda
-        styles={props => ({
+        styles={{
           root: classNames.root,
           tableCell: classNames.tableCell,
           focusedContainer: classNames.focusedContainer
-        })}
+        }}
       />
     );
   }
@@ -157,29 +165,30 @@ export class SwatchColorPickerBase extends React.Component<ISwatchColorPickerPro
    * @returns - Element representing the item
    */
   private _renderOption = (item: IColorCellProps): JSX.Element => {
+    const props = this.props;
     const id = this._id;
 
     return (
       <ColorPickerGridCell
         item={item}
-        id={id}
+        idPrefix={id}
         color={item.color}
-        styles={this.props.getColorGridCellStyles}
-        disabled={this.props.disabled}
+        styles={props.getColorGridCellStyles}
+        disabled={props.disabled}
         onClick={this._onCellClick}
         onHover={this._onGridCellHovered}
         onFocus={this._onGridCellFocused}
         selected={this.state.selectedIndex !== undefined && this.state.selectedIndex === item.index}
-        circle={this.props.cellShape === 'circle'}
+        circle={props.cellShape === 'circle'}
         label={item.label}
         onMouseEnter={this._onMouseEnter}
         onMouseMove={this._onMouseMove}
         onMouseLeave={this._onMouseLeave}
         onWheel={this._onWheel}
         onKeyDown={this._onKeyDown}
-        height={this.props.cellHeight}
-        width={this.props.cellWidth}
-        borderWidth={this.props.cellBorderWidth}
+        height={props.cellHeight}
+        width={props.cellWidth}
+        borderWidth={props.cellBorderWidth}
       />
     );
   };
@@ -189,11 +198,7 @@ export class SwatchColorPickerBase extends React.Component<ISwatchColorPickerPro
    */
   private _onMouseEnter = (ev: React.MouseEvent<HTMLButtonElement>): boolean => {
     if (!this.props.focusOnHover) {
-      if (!this.isNavigationIdle || this.props.disabled) {
-        return true;
-      }
-
-      return false;
+      return !this.isNavigationIdle || !!this.props.disabled;
     }
 
     if (this.isNavigationIdle && !this.props.disabled) {
@@ -208,11 +213,7 @@ export class SwatchColorPickerBase extends React.Component<ISwatchColorPickerPro
    */
   private _onMouseMove = (ev: React.MouseEvent<HTMLButtonElement>): boolean => {
     if (!this.props.focusOnHover) {
-      if (!this.isNavigationIdle || this.props.disabled) {
-        return true;
-      }
-
-      return false;
+      return !this.isNavigationIdle || !!this.props.disabled;
     }
 
     const targetElement = ev.currentTarget as HTMLElement;
@@ -236,7 +237,7 @@ export class SwatchColorPickerBase extends React.Component<ISwatchColorPickerPro
       return;
     }
 
-    // Get the the elements that math the given selector
+    // Get the elements that math the given selector
     const elements = document.querySelectorAll(parentSelector);
 
     // iterate over the elements return to make sure it is a parent of the target and focus it

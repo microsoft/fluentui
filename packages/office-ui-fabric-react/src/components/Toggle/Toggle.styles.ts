@@ -60,7 +60,8 @@ export const getStyles = (props: IToggleStyleProps): IToggleStyles => {
         inlineLabel && {
           order: 1,
           marginLeft: 16
-        }
+        },
+      inlineLabel && { wordBreak: 'break-all' }
     ],
 
     container: [
@@ -167,6 +168,7 @@ export const getStyles = (props: IToggleStyleProps): IToggleStyles => {
     thumb: [
       'ms-Toggle-thumb',
       {
+        display: 'block',
         width: DEFAULT_THUMB_SIZE,
         height: DEFAULT_THUMB_SIZE,
         borderRadius: '50%',

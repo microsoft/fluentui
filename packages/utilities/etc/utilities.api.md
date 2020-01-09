@@ -18,6 +18,9 @@ export function addDirectionalKeyCode(which: number): void;
 export function addElementAtIndex<T>(array: T[], index: number, itemToAdd: T): T[];
 
 // @public
+export const allowOverscrollOnElement: (element: HTMLElement | null, events: EventGroup) => void;
+
+// @public
 export const allowScrollOnElement: (element: HTMLElement | null, events: EventGroup) => void;
 
 // @public
@@ -44,8 +47,8 @@ export function assign(target: any, ...args: any[]): any;
 export class Async {
     constructor(parent?: object, onError?: (e: any) => void);
     // (undocumented)
-    cancelAnimationFrame(id: number): void;
-    clearImmediate(id: number): void;
+    cancelAnimationFrame(id: number, targetElement?: Element | null): void;
+    clearImmediate(id: number, targetElement?: Element | null): void;
     clearInterval(id: number): void;
     clearTimeout(id: number): void;
     debounce<T extends Function>(func: T, wait?: number, options?: {
@@ -57,8 +60,8 @@ export class Async {
     // (undocumented)
     protected _logError(e: any): void;
     // (undocumented)
-    requestAnimationFrame(callback: () => void): number;
-    setImmediate(callback: () => void): number;
+    requestAnimationFrame(callback: () => void, targetElement?: Element | null): number;
+    setImmediate(callback: () => void, targetElement?: Element | null): number;
     setInterval(callback: () => void, duration: number): number;
     setTimeout(callback: () => void, duration: number): number;
     throttle<T extends Function>(func: T, wait?: number, options?: {
@@ -132,9 +135,8 @@ export function customizable(scope: string, fields: string[], concatStyles?: boo
 
 // @public (undocumented)
 export class Customizations {
-    // (undocumented)
+    static applyBatchedUpdates(code: () => void, suppressUpdate?: boolean): void;
     static applyScopedSettings(scopeName: string, settings: ISettings): void;
-    // (undocumented)
     static applySettings(settings: ISettings): void;
     // (undocumented)
     static getSettings(properties: string[], scopeName?: string, localSettings?: ICustomizations): any;
@@ -332,10 +334,14 @@ export function getRect(element: HTMLElement | Window | null): IRectangle | unde
 export function getResourceUrl(url: string): string;
 
 // @public
-export function getRTL(): boolean;
+export function getRTL(theme?: {
+    rtl?: boolean;
+}): boolean;
 
 // @public
-export function getRTLSafeKeyCode(key: number): number;
+export function getRTLSafeKeyCode(key: number, theme?: {
+    rtl?: boolean;
+}): number;
 
 // @public
 export function getScrollbarWidth(): number;
@@ -654,19 +660,19 @@ export function isControlled<P>(props: P, valueProp: keyof P): boolean;
 export function isDirectionalKeyCode(which: number): boolean;
 
 // @public (undocumented)
-export interface ISelection {
+export interface ISelection<TItem = IObjectWithKey> {
     // (undocumented)
-    canSelectItem: (item: IObjectWithKey, index?: number) => boolean;
+    canSelectItem: (item: TItem, index?: number) => boolean;
     // (undocumented)
     count: number;
     // (undocumented)
-    getItems(): IObjectWithKey[];
+    getItems(): TItem[];
     // (undocumented)
     getSelectedCount(): number;
     // (undocumented)
     getSelectedIndices(): number[];
     // (undocumented)
-    getSelection(): IObjectWithKey[];
+    getSelection(): TItem[];
     // (undocumented)
     isAllSelected(): boolean;
     // (undocumented)
@@ -690,7 +696,7 @@ export interface ISelection {
     // (undocumented)
     setIndexSelected(index: number, isSelected: boolean, shouldAnchor: boolean): void;
     // (undocumented)
-    setItems(items: IObjectWithKey[], shouldClear: boolean): void;
+    setItems(items: TItem[], shouldClear: boolean): void;
     // (undocumented)
     setKeySelected(key: string, isSelected: boolean, shouldAnchor: boolean): void;
     // (undocumented)
@@ -706,16 +712,18 @@ export interface ISelection {
 }
 
 // @public (undocumented)
-export interface ISelectionOptions {
+export interface ISelectionOptions<TItem = IObjectWithKey> {
     // (undocumented)
-    canSelectItem?: (item: IObjectWithKey, index?: number) => boolean;
-    // (undocumented)
-    getKey?: (item: IObjectWithKey, index?: number) => string | number;
+    canSelectItem?: (item: TItem, index?: number) => boolean;
+    getKey?: (item: TItem, index?: number) => string | number;
     // (undocumented)
     onSelectionChanged?: () => void;
     // (undocumented)
     selectionMode?: SelectionMode;
 }
+
+// @public
+export type ISelectionOptionsWithRequiredGetKey<TItem> = ISelectionOptions<TItem> & Required<Pick<ISelectionOptions<TItem>, 'getKey'>>;
 
 // @public
 export function isElementFocusSubZone(element?: HTMLElement): boolean;
@@ -920,13 +928,13 @@ export function memoize<T extends Function>(target: any, key: string, descriptor
 };
 
 // @public
-export function memoizeFunction<T extends (...args: any[]) => RET_TYPE, RET_TYPE>(cb: T, maxCacheSize?: number): T;
+export function memoizeFunction<T extends (...args: any[]) => RET_TYPE, RET_TYPE>(cb: T, maxCacheSize?: number, ignoreNullOrUndefinedResult?: boolean): T;
 
 // @public
 export function merge<T = {}>(target: Partial<T>, ...args: (Partial<T> | null | undefined | false)[]): T;
 
 // @public
-export function mergeAriaAttributeValues(...ariaAttributes: (string | undefined)[]): string | undefined;
+export function mergeAriaAttributeValues(...ariaAttributes: (string | undefined | false)[]): string | undefined;
 
 // @public
 export function mergeCustomizations(props: ICustomizerProps, parentContext: ICustomizerContext): ICustomizerContext;
@@ -1004,22 +1012,21 @@ export const safeRequestAnimationFrame: (component: React.Component<{}, {}, any>
 export const safeSetTimeout: (component: React.Component<{}, {}, any>) => (cb: Function, duration: number) => void;
 
 // @public (undocumented)
-export class Selection implements ISelection {
-    constructor(options?: ISelectionOptions);
+export class Selection<TItem = IObjectWithKey> implements ISelection<TItem> {
+    constructor(...options: TItem extends IObjectWithKey ? [] | [ISelectionOptions<TItem>] : [ISelectionOptionsWithRequiredGetKey<TItem>]);
     // (undocumented)
-    canSelectItem(item: IObjectWithKey, index?: number): boolean;
-    // (undocumented)
+    canSelectItem(item: TItem, index?: number): boolean;
     count: number;
     // (undocumented)
-    getItems(): IObjectWithKey[];
+    getItems(): TItem[];
     // (undocumented)
-    getKey(item: IObjectWithKey, index?: number): string;
+    getKey(item: TItem, index?: number): string;
     // (undocumented)
     getSelectedCount(): number;
     // (undocumented)
     getSelectedIndices(): number[];
     // (undocumented)
-    getSelection(): IObjectWithKey[];
+    getSelection(): TItem[];
     // (undocumented)
     isAllSelected(): boolean;
     // (undocumented)
@@ -1042,7 +1049,7 @@ export class Selection implements ISelection {
     setChangeEvents(isEnabled: boolean, suppressChange?: boolean): void;
     // (undocumented)
     setIndexSelected(index: number, isSelected: boolean, shouldAnchor: boolean): void;
-    setItems(items: IObjectWithKey[], shouldClear?: boolean): void;
+    setItems(items: TItem[], shouldClear?: boolean): void;
     // (undocumented)
     setKeySelected(key: string, isSelected: boolean, shouldAnchor: boolean): void;
     // (undocumented)

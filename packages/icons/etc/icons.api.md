@@ -51,6 +51,8 @@ export const enum IconNames {
     // (undocumented)
     AddIn = "AddIn",
     // (undocumented)
+    AddLink = "AddLink",
+    // (undocumented)
     AddNotes = "AddNotes",
     // (undocumented)
     AddOnlineMeeting = "AddOnlineMeeting",
@@ -406,6 +408,8 @@ export const enum IconNames {
     BulletedListText = "BulletedListText",
     // (undocumented)
     BulletedListTextMirrored = "BulletedListTextMirrored",
+    // (undocumented)
+    BulletedTreeList = "BulletedTreeList",
     // (undocumented)
     Bullseye = "Bullseye",
     // (undocumented)
@@ -793,6 +797,8 @@ export const enum IconNames {
     // (undocumented)
     CompletedSolid = "CompletedSolid",
     // (undocumented)
+    ComplianceAudit = "ComplianceAudit",
+    // (undocumented)
     ConfigurationSolid = "ConfigurationSolid",
     // (undocumented)
     ConnectContacts = "ConnectContacts",
@@ -884,6 +890,8 @@ export const enum IconNames {
     DataConnectionLibrary = "DataConnectionLibrary",
     // (undocumented)
     Dataflows = "Dataflows",
+    // (undocumented)
+    DataflowsLink = "DataflowsLink",
     // (undocumented)
     DataManagementSettings = "DataManagementSettings",
     // (undocumented)
@@ -1611,6 +1619,8 @@ export const enum IconNames {
     // (undocumented)
     HorizontalDistributeCenter = "HorizontalDistributeCenter",
     // (undocumented)
+    HorizontalTabKey = "HorizontalTabKey",
+    // (undocumented)
     Hospital = "Hospital",
     // (undocumented)
     Hotel = "Hotel",
@@ -1664,6 +1674,8 @@ export const enum IconNames {
     InfoSolid = "InfoSolid",
     // (undocumented)
     InkingTool = "InkingTool",
+    // (undocumented)
+    Insert = "Insert",
     // (undocumented)
     InsertColumnsLeft = "InsertColumnsLeft",
     // (undocumented)
@@ -1889,6 +1901,8 @@ export const enum IconNames {
     // (undocumented)
     MicOff = "MicOff",
     // (undocumented)
+    MicOff2 = "MicOff2",
+    // (undocumented)
     Microphone = "Microphone",
     // (undocumented)
     MicrosoftFlowLogo = "MicrosoftFlowLogo",
@@ -1950,6 +1964,8 @@ export const enum IconNames {
     MusicInCollectionFill = "MusicInCollectionFill",
     // (undocumented)
     MusicNote = "MusicNote",
+    // (undocumented)
+    MuteChat = "MuteChat",
     // (undocumented)
     MyMoviesTV = "MyMoviesTV",
     // (undocumented)
@@ -2169,6 +2185,8 @@ export const enum IconNames {
     // (undocumented)
     PageRight = "PageRight",
     // (undocumented)
+    PageShared = "PageShared",
+    // (undocumented)
     PageSolid = "PageSolid",
     // (undocumented)
     PanoIndicator = "PanoIndicator",
@@ -2282,6 +2300,10 @@ export const enum IconNames {
     PinnedFill = "PinnedFill",
     // (undocumented)
     PinnedSolid = "PinnedSolid",
+    // (undocumented)
+    PinSolid12 = "PinSolid12",
+    // (undocumented)
+    PinSolidOff12 = "PinSolidOff12",
     // (undocumented)
     PivotChart = "PivotChart",
     // (undocumented)
@@ -2549,6 +2571,8 @@ export const enum IconNames {
     // (undocumented)
     ReminderPerson = "ReminderPerson",
     // (undocumented)
+    ReminderTime = "ReminderTime",
+    // (undocumented)
     Remote = "Remote",
     // (undocumented)
     Remove = "Remove",
@@ -2697,6 +2721,8 @@ export const enum IconNames {
     // (undocumented)
     ScheduleEventAction = "ScheduleEventAction",
     // (undocumented)
+    SchoolDataSyncLogo = "SchoolDataSyncLogo",
+    // (undocumented)
     ScopeTemplate = "ScopeTemplate",
     // (undocumented)
     ScreenCast = "ScreenCast",
@@ -2760,6 +2786,8 @@ export const enum IconNames {
     Share = "Share",
     // (undocumented)
     ShareiOS = "ShareiOS",
+    // (undocumented)
+    SharepointAppIcon16 = "SharepointAppIcon16",
     // (undocumented)
     SharepointLogo = "SharepointLogo",
     // (undocumented)
@@ -3189,6 +3217,8 @@ export const enum IconNames {
     // (undocumented)
     TimelineProgress = "TimelineProgress",
     // (undocumented)
+    TimePicker = "TimePicker",
+    // (undocumented)
     Timer = "Timer",
     // (undocumented)
     TimeSheet = "TimeSheet",
@@ -3268,6 +3298,8 @@ export const enum IconNames {
     TriggerAuto = "TriggerAuto",
     // (undocumented)
     TriggerUser = "TriggerUser",
+    // (undocumented)
+    Trim = "Trim",
     // (undocumented)
     TrimEnd = "TrimEnd",
     // (undocumented)
@@ -3368,6 +3400,8 @@ export const enum IconNames {
     UserRemove = "UserRemove",
     // (undocumented)
     UserSync = "UserSync",
+    // (undocumented)
+    UserWarning = "UserWarning",
     // (undocumented)
     Vacation = "Vacation",
     // (undocumented)
@@ -3498,6 +3532,8 @@ export const enum IconNames {
     WebAppBuilderModule = "WebAppBuilderModule",
     // (undocumented)
     WebAppBuilderSlot = "WebAppBuilderSlot",
+    // (undocumented)
+    Webcam2 = "Webcam2",
     // (undocumented)
     WebComponents = "WebComponents",
     // (undocumented)

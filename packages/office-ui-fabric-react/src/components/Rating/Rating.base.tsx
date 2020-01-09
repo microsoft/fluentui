@@ -11,7 +11,7 @@ import {
 } from '../../Utilities';
 import { IProcessedStyleSet } from '../../Styling';
 import { Icon } from '../../Icon';
-import { FocusZone, FocusZoneDirection } from '../../FocusZone';
+import { FocusZone, FocusZoneDirection, IFocusZoneProps } from '../../FocusZone';
 import { IRatingProps, RatingSize, IRatingStyleProps, IRatingStyles } from './Rating.types';
 
 const getClassNames = classNamesFunction<IRatingStyleProps, IRatingStyles>();
@@ -128,7 +128,20 @@ export class RatingBase extends React.Component<IRatingProps, IRatingState> {
       }
     }
 
-    const ariaLabel = getAriaLabel ? getAriaLabel(rating ? rating : 0, max as number) : '';
+    const ariaLabel = getAriaLabel ? getAriaLabel(rating ? rating : 0, max as number) : undefined;
+
+    // When in read-only mode, we allow focus (per ARIA standards) and set up ARIA attributes to indicate element is read-only.
+    // https://www.w3.org/TR/wai-aria-1.1/#aria-readonly
+    const readOnlyProps: IFocusZoneProps | undefined = readOnly
+      ? ({
+          allowFocusRoot: true,
+          disabled: true,
+          'aria-label': ariaLabel,
+          'aria-readonly': true,
+          'data-is-focusable': true,
+          tabIndex: 0
+        } as IFocusZoneProps)
+      : undefined;
 
     return (
       <div
@@ -142,14 +155,12 @@ export class RatingBase extends React.Component<IRatingProps, IRatingState> {
       >
         <FocusZone
           direction={FocusZoneDirection.horizontal}
-          tabIndex={readOnly ? 0 : -1}
           className={css(this._classNames.ratingFocusZone, {
             [this._classNames.rootIsLarge]: size === RatingSize.Large,
             [this._classNames.rootIsSmall]: size !== RatingSize.Large
           })}
-          data-is-focusable={readOnly ? true : false}
           defaultActiveElement={rating ? starIds[Math.ceil(rating) - 1] && '#' + starIds[Math.ceil(rating) - 1] : undefined}
-          aria-label={readOnly ? ariaLabel : ''}
+          {...readOnlyProps}
         >
           {stars}
         </FocusZone>

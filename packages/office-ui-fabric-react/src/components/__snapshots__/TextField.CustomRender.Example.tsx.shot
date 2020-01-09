@@ -97,7 +97,6 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
                 font-weight: 400;
                 height: 32px;
                 margin-bottom: -3px;
-                min-width: 32px;
                 outline: transparent;
                 padding-bottom: 0;
                 padding-left: 4px;
@@ -108,6 +107,7 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
                 text-decoration: none;
                 user-select: none;
                 vertical-align: top;
+                width: 32px;
               }
               &::-moz-focus-inner {
                 border: 0;
@@ -201,6 +201,11 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
                   }
               data-icon-name="Info"
               role="presentation"
+              style={
+                Object {
+                  "fontFamily": "\\"FabricMDL2Icons\\"",
+                }
+              }
             >
               
             </i>
@@ -214,7 +219,7 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
               align-items: stretch;
               background: #ffffff;
               border-radius: 2px;
-              border: 1px solid #8a8886;
+              border: 1px solid #605e5c;
               box-shadow: none;
               box-sizing: border-box;
               cursor: text;
@@ -430,7 +435,6 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
                 speak: none;
               }
           data-icon-name="Globe"
-          id="iconButton1"
           title="Globe"
         >
           
@@ -443,7 +447,7 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
               align-items: stretch;
               background: #ffffff;
               border-radius: 2px;
-              border: 1px solid #8a8886;
+              border: 1px solid #605e5c;
               box-shadow: none;
               box-sizing: border-box;
               cursor: text;
@@ -469,7 +473,7 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
       >
         <input
           aria-invalid={false}
-          aria-labelledby="label2"
+          aria-labelledby="TextFieldLabel11"
           className=
               ms-TextField-field
               {
@@ -611,7 +615,7 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
               align-items: stretch;
               background: #ffffff;
               border-radius: 2px;
-              border: 1px solid #8a8886;
+              border: 1px solid #605e5c;
               box-shadow: none;
               box-sizing: border-box;
               cursor: text;

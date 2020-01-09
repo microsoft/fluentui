@@ -1,6 +1,6 @@
 // @ts-check
 
-const { task, series, parallel, condition, option, argv, addResolvePath } = require('just-scripts');
+const { task, series, parallel, condition, option, argv, addResolvePath, resolveCwd } = require('just-scripts');
 
 const path = require('path');
 const fs = require('fs');
@@ -19,6 +19,8 @@ const bundleSizeCollect = require('./tasks/bundle-size-collect');
 const checkForModifiedFiles = require('./tasks/check-for-modified-files');
 const generateVersionFiles = require('./tasks/generate-version-files');
 const generatePackageManifestTask = require('./tasks/generate-package-manifest');
+const { postprocessAmdTask } = require('./tasks/postprocess-amd');
+const { postprocessCommonjsTask } = require('./tasks/postprocess-commonjs');
 
 /** Do only the bare minimum setup of options and resolve paths */
 function basicPreset() {
@@ -26,9 +28,6 @@ function basicPreset() {
   addResolvePath(__dirname);
 
   option('production');
-
-  // Adds an alias for 'npm-install-mode' for backwards compatibility
-  option('min', { alias: 'npm-install-mode' });
 
   option('webpackConfig', { alias: 'w' });
 
@@ -46,15 +45,17 @@ module.exports = function preset() {
   task('jest', jest);
   task('jest-watch', jestWatch);
   task('sass', sass);
+  task('postprocess:amd', postprocessAmdTask);
+  task('postprocess:commonjs', postprocessCommonjsTask);
   task('ts:commonjs', ts.commonjs);
   task('ts:esm', ts.esm);
-  task('ts:amd', ts.amd);
+  task('ts:amd', series(ts.amd, 'postprocess:amd'));
   task('tslint', tslint);
   task('ts:commonjs-only', ts.commonjsOnly);
   task('webpack', webpack);
   task('webpack-dev-server', webpackDevServer);
-  task('verify-api-extractor', verifyApiExtractor);
-  task('update-api-extractor', updateApiExtractor);
+  task('api-extractor:verify', verifyApiExtractor);
+  task('api-extractor:update', updateApiExtractor);
   task('lint-imports', lintImports);
   task('prettier', prettier);
   task('bundle-size-collect', bundleSizeCollect);
@@ -62,17 +63,18 @@ module.exports = function preset() {
   task('generate-version-files', generateVersionFiles);
   task('generate-package-manifest', generatePackageManifestTask);
   task('ts', () => {
-    return argv().commonjs
-      ? 'ts:commonjs-only'
-      : parallel('ts:commonjs', 'ts:esm', condition('ts:amd', () => argv().production && !argv().min));
+    return argv().commonjs ? 'ts:commonjs-only' : parallel('ts:commonjs', 'ts:esm', condition('ts:amd', () => !!argv().production));
   });
 
-  task('validate', fs.existsSync(path.join(process.cwd(), 'jest.config.js')) ? series('tslint', 'jest') : 'tslint');
+  task('test', condition('jest', () => fs.existsSync(path.join(process.cwd(), 'jest.config.js'))));
+
+  task('lint', parallel('lint-imports', 'tslint'));
+
   task('code-style', series('prettier', 'tslint'));
-  task('update-api', series('clean', 'copy', 'sass', 'ts', 'update-api-extractor'));
+  task('update-api', series('clean', 'copy', 'sass', 'ts', 'api-extractor:update'));
   task('dev', series('clean', 'copy', 'sass', 'webpack-dev-server'));
 
-  task('build:node-lib', series('clean', 'copy', series(condition('validate', () => !argv().min), 'ts:commonjs-only'))).cached();
+  task('build:node-lib', series('clean', 'copy', 'ts:commonjs-only')).cached();
 
   task(
     'build',
@@ -80,12 +82,12 @@ module.exports = function preset() {
       'clean',
       'copy',
       'sass',
-      parallel(
-        condition('validate', () => !argv().min),
-        series('ts', parallel(condition('webpack', () => !argv().min), condition('lint-imports', () => !argv().min)))
-      )
+      'ts',
+      condition('api-extractor:verify', () => fs.existsSync(path.join(process.cwd(), 'config/api-extractor.json')))
     )
   ).cached();
+
+  task('bundle', condition('webpack', () => !!resolveCwd('webpack.config.js')));
 
   task('no-op', () => {}).cached();
 };

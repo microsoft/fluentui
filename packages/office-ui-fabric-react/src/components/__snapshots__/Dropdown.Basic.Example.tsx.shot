@@ -52,15 +52,14 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
             padding-top: 5px;
             word-wrap: break-word;
           }
-      htmlFor="Dropdown0"
       id="Dropdown0-label"
     >
       Basic uncontrolled example
     </label>
     <div
-      aria-describedby="Dropdown0-option"
       aria-expanded="false"
-      aria-labelledby="Dropdown0-label"
+      aria-haspopup="listbox"
+      aria-labelledby="Dropdown0-label Dropdown0-option"
       className=
           ms-Dropdown
           {
@@ -94,18 +93,26 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
             border-color: Highlight;
           }
           &:focus .ms-Dropdown-title {
-            border-color: #0078d4;
             color: #201f1e;
           }
-          @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-title {
+          &:focus:after {
+            border-radius: 2px;
+            border: 2px solid #0078d4;
+            box-sizing: border-box;
+            content: '';
+            height: 100%;
+            left: 0px;
+            pointer-events: none;
+            position: absolute;
+            top: 0px;
+            width: 100%;
+          }
+          @media screen and (-ms-high-contrast: active){&:focus:after {
             background-color: Highlight;
             border-color: Highlight;
             color: HighlightText;
           }
-          @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-title:hover {
-            color: HighlightText;
-          }
-          @media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: black-on-white){&:focus .ms-Dropdown-title {
+          @media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: black-on-white){&:focus:after {
             -ms-high-contrast-adjust: none;
           }
           &:active .ms-Dropdown-title {
@@ -145,9 +152,6 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
           &:active .ms-Dropdown-title--hasError {
             border-color: #a4262c;
           }
-          &:focus .ms-Dropdown-title--hasError {
-            border-color: #a4262c;
-          }
       data-is-focusable={true}
       id="Dropdown0"
       onBlur={[Function]}
@@ -155,20 +159,21 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
       onFocus={[Function]}
       onKeyDown={[Function]}
       onKeyUp={[Function]}
+      onMouseDown={[Function]}
       role="listbox"
       tabIndex={0}
     >
       <span
         aria-atomic={true}
-        aria-label="Select an option"
-        aria-live="off"
+        aria-invalid={false}
+        aria-live="polite"
         aria-setsize={7}
         className=
             ms-Dropdown-title
             ms-Dropdown-titleIsPlaceHolder
             {
               background-color: #ffffff;
-              border-color: #8a8886;
+              border-color: #605e5c;
               border-radius: 2px;
               border-style: solid;
               border-width: 1px;
@@ -195,9 +200,7 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
         id="Dropdown0-option"
         role="option"
       >
-        <span>
-          Select an option
-        </span>
+        Select an option
       </span>
       <span
         className=
@@ -228,7 +231,6 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
                 speak: none;
               }
           data-icon-name="ChevronDown"
-          role="presentation"
         >
           
         </i>
@@ -268,16 +270,15 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
           @media screen and (-ms-high-contrast: active){& {
             color: GrayText;
           }
-      htmlFor="Dropdown1"
       id="Dropdown1-label"
     >
       Disabled example with defaultSelectedKey
     </label>
     <div
-      aria-describedby="Dropdown1-option"
       aria-disabled={true}
       aria-expanded="false"
-      aria-labelledby="Dropdown1-label"
+      aria-haspopup="listbox"
+      aria-labelledby="Dropdown1-label Dropdown1-option"
       className=
           ms-Dropdown
           is-disabled
@@ -310,18 +311,24 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
           @media screen and (-ms-high-contrast: active){&:hover .ms-Dropdown-title {
             border-color: Highlight;
           }
-          &:focus .ms-Dropdown-title {
-            border-color: #0078d4;
+          &:focus:after {
+            border-radius: 2px;
+            border: none;
+            box-sizing: border-box;
+            content: '';
+            height: 100%;
+            left: 0px;
+            pointer-events: none;
+            position: absolute;
+            top: 0px;
+            width: 100%;
           }
-          @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-title {
+          @media screen and (-ms-high-contrast: active){&:focus:after {
             background-color: Highlight;
             border-color: Highlight;
             color: HighlightText;
           }
-          @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-title:hover {
-            color: HighlightText;
-          }
-          @media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: black-on-white){&:focus .ms-Dropdown-title {
+          @media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: black-on-white){&:focus:after {
             -ms-high-contrast-adjust: none;
           }
           &:active .ms-Dropdown-title {
@@ -342,9 +349,6 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
           &:active .ms-Dropdown-title--hasError {
             border-color: #a4262c;
           }
-          &:focus .ms-Dropdown-title--hasError {
-            border-color: #a4262c;
-          }
       data-is-focusable={false}
       id="Dropdown1"
       onBlur={[Function]}
@@ -352,17 +356,18 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
       onFocus={[Function]}
       onKeyDown={[Function]}
       onKeyUp={[Function]}
+      onMouseDown={[Function]}
       tabIndex={-1}
     >
       <span
         aria-atomic={true}
-        aria-label="Broccoli"
-        aria-live="off"
+        aria-invalid={false}
+        aria-live="polite"
         className=
             ms-Dropdown-title
             {
               background-color: #f3f2f1;
-              border-color: #8a8886;
+              border-color: #605e5c;
               border-radius: 2px;
               border-style: solid;
               border-width: 1px;
@@ -393,9 +398,7 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
             }
         id="Dropdown1-option"
       >
-        <span>
-          Broccoli
-        </span>
+        Broccoli
       </span>
       <span
         className=
@@ -428,7 +431,6 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
                 color: GrayText;
               }
           data-icon-name="ChevronDown"
-          role="presentation"
         >
           
         </i>
@@ -465,15 +467,14 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
             padding-top: 5px;
             word-wrap: break-word;
           }
-      htmlFor="Dropdown2"
       id="Dropdown2-label"
     >
       Multi-select uncontrolled example
     </label>
     <div
-      aria-describedby="Dropdown2-option"
       aria-expanded="false"
-      aria-labelledby="Dropdown2-label"
+      aria-haspopup="listbox"
+      aria-labelledby="Dropdown2-label Dropdown2-option"
       className=
           ms-Dropdown
           {
@@ -507,18 +508,26 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
             border-color: Highlight;
           }
           &:focus .ms-Dropdown-title {
-            border-color: #0078d4;
             color: #201f1e;
           }
-          @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-title {
+          &:focus:after {
+            border-radius: 2px;
+            border: 2px solid #0078d4;
+            box-sizing: border-box;
+            content: '';
+            height: 100%;
+            left: 0px;
+            pointer-events: none;
+            position: absolute;
+            top: 0px;
+            width: 100%;
+          }
+          @media screen and (-ms-high-contrast: active){&:focus:after {
             background-color: Highlight;
             border-color: Highlight;
             color: HighlightText;
           }
-          @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-title:hover {
-            color: HighlightText;
-          }
-          @media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: black-on-white){&:focus .ms-Dropdown-title {
+          @media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: black-on-white){&:focus:after {
             -ms-high-contrast-adjust: none;
           }
           &:active .ms-Dropdown-title {
@@ -558,9 +567,6 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
           &:active .ms-Dropdown-title--hasError {
             border-color: #a4262c;
           }
-          &:focus .ms-Dropdown-title--hasError {
-            border-color: #a4262c;
-          }
       data-is-focusable={true}
       id="Dropdown2"
       onBlur={[Function]}
@@ -568,17 +574,18 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
       onFocus={[Function]}
       onKeyDown={[Function]}
       onKeyUp={[Function]}
+      onMouseDown={[Function]}
       tabIndex={0}
     >
       <span
         aria-atomic={true}
-        aria-label="Apple"
-        aria-live="off"
+        aria-invalid={false}
+        aria-live="polite"
         className=
             ms-Dropdown-title
             {
               background-color: #ffffff;
-              border-color: #8a8886;
+              border-color: #605e5c;
               border-radius: 2px;
               border-style: solid;
               border-width: 1px;
@@ -603,9 +610,7 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
             }
         id="Dropdown2-option"
       >
-        <span>
-          Apple, Banana, Grape
-        </span>
+        Apple, Banana, Grape
       </span>
       <span
         className=
@@ -636,7 +641,6 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
                 speak: none;
               }
           data-icon-name="ChevronDown"
-          role="presentation"
         >
           
         </i>

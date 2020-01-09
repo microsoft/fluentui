@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/merge-styles",
-  "version": "7.5.2",
+  "version": "7.8.1",
   "description": "Style loading utilities.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -15,6 +15,9 @@
   "license": "MIT",
   "scripts": {
     "build": "just-scripts build",
+    "bundle": "just-scripts bundle",
+    "lint": "just-scripts lint",
+    "test": "just-scripts test",
     "just": "just-scripts",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",

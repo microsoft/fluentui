@@ -35,7 +35,7 @@ export const styles = (props: IWeeklyDayPickerStyleProps): IWeeklyDayPickerStyle
     },
     daySelected: {},
     navigationIconButton: [
-      getFocusStyle(theme, { inset: -2 }),
+      getFocusStyle(theme, { inset: 0 }),
       {
         width: 12,
         minWidth: 12,

@@ -97,6 +97,7 @@ export class ChoiceGroupOptionBase extends React.Component<IChoiceGroupOptionPro
     const { onRenderLabel = this._onRenderLabel, id, imageSrc, imageAlt = '', selectedImageSrc, iconProps } = props;
 
     const imageSize = props.imageSize ? props.imageSize : { width: 32, height: 32 };
+    const label = onRenderLabel!(props, this._onRenderLabel);
 
     return (
       <label htmlFor={id} className={this._classNames.field}>
@@ -117,7 +118,7 @@ export class ChoiceGroupOptionBase extends React.Component<IChoiceGroupOptionPro
             </div>
           </div>
         )}
-        {imageSrc || iconProps ? <div className={this._classNames.labelWrapper}>{onRenderLabel!(props)}</div> : onRenderLabel!(props)}
+        {imageSrc || iconProps ? <div className={this._classNames.labelWrapper}>{label}</div> : label}
       </label>
     );
   };

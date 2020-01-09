@@ -1,46 +1,15 @@
 import * as React from 'react';
-import { WeeklyDayPicker, DateRangeType, DayOfWeek, addDays } from '@uifabric/date-time';
+import { WeeklyDayPicker, IWeeklyDayPickerProps, DayOfWeek, addDays, defaultDayPickerStrings } from '@uifabric/date-time';
 
 import * as styles from './WeeklyDayPicker.Example.scss';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
-
-const DayPickerStrings = {
-  months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-  shortMonths: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-  days: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
-  shortDays: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
-  goToToday: 'Go to today',
-  weekNumberFormatString: 'Week number {0}',
-  prevMonthAriaLabel: 'Previous month',
-  nextMonthAriaLabel: 'Next month',
-  prevYearAriaLabel: 'Previous year',
-  nextYearAriaLabel: 'Next year',
-  prevYearRangeAriaLabel: 'Previous year range',
-  nextYearRangeAriaLabel: 'Next year range',
-  closeButtonAriaLabel: 'Close'
-};
 
 export interface IWeeklyDayPickerInlineExampleState {
   selectedDate?: Date;
 }
 
-export interface IWeeklyDayPickerInlineExampleProps {
-  isMonthPickerVisible?: boolean;
-  dateRangeType: DateRangeType;
-  autoNavigateOnSelection: boolean;
-  showGoToToday: boolean;
+export interface IWeeklyDayPickerInlineExampleProps extends Omit<IWeeklyDayPickerProps, 'strings'> {
   showNavigateButtons?: boolean;
-  highlightCurrentMonth?: boolean;
-  highlightSelectedMonth?: boolean;
-  isDayPickerVisible?: boolean;
-  showMonthPickerAsOverlay?: boolean;
-  showWeekNumbers?: boolean;
-  minDate?: Date;
-  maxDate?: Date;
-  restrictedDates?: Date[];
-  showSixWeeksByDefault?: boolean;
-  workWeekDays?: DayOfWeek[];
-  firstDayOfWeek?: DayOfWeek;
 }
 
 export class WeeklyDayPickerInlineExample extends React.Component<IWeeklyDayPickerInlineExampleProps, IWeeklyDayPickerInlineExampleState> {
@@ -86,7 +55,7 @@ export class WeeklyDayPickerInlineExample extends React.Component<IWeeklyDayPick
         <WeeklyDayPicker
           onSelectDate={this._onSelectDate}
           firstDayOfWeek={this.props.firstDayOfWeek ? this.props.firstDayOfWeek : DayOfWeek.Sunday}
-          strings={DayPickerStrings}
+          strings={defaultDayPickerStrings}
           minDate={this.props.minDate}
           maxDate={this.props.maxDate}
           restrictedDates={this.props.restrictedDates}

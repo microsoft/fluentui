@@ -30,6 +30,7 @@ export const DropdownRequiredExample: React.StatelessComponent = () => {
       </Stack>
       <Dropdown
         placeholder="Required with no label"
+        ariaLabel="Required dropdown example"
         options={[
           { key: 'A', text: 'Option a', title: 'I am option a.' },
           { key: 'B', text: 'Option b' },

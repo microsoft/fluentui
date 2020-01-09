@@ -25,7 +25,7 @@ export class TeachingBubbleWideIllustrationExample extends React.Component<{}, I
 
   public render(): JSX.Element {
     const { isTeachingBubbleVisible } = this.state;
-    const exampleImageProps: IImageProps = { src: 'http://placehold.it/154x140' };
+    const exampleImageProps: IImageProps = { src: 'http://placehold.it/154x220', alt: 'Example placeholder image' };
     const examplePrimaryButton: IButtonProps = {
       children: 'Try it out'
     };
@@ -49,7 +49,7 @@ export class TeachingBubbleWideIllustrationExample extends React.Component<{}, I
               calloutProps={{ directionalHint: DirectionalHint.bottomCenter }}
               isWide={true}
               hasSmallHeadline={true}
-              hasCloseIcon={true}
+              hasCloseButton={true}
               closeButtonAriaLabel="Close"
               target={this._menuButtonElement}
               primaryButtonProps={examplePrimaryButton}

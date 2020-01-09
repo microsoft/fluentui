@@ -11,8 +11,8 @@ import { IWithViewportProps, IViewport } from '../../utilities/decorators/withVi
 import { IList, IListProps, ScrollToMode } from '../List/index';
 import { ITheme, IStyle } from '../../Styling';
 import { ICellStyleProps, IDetailsItemProps } from './DetailsRow.types';
-import { IDetailsColumnProps } from './DetailsColumn';
 import { IDetailsCheckboxProps } from './DetailsRowCheck.types';
+import { IDetailsColumnStyleProps, IDetailsColumnProps, IDetailsColumnStyles } from './DetailsColumn.types';
 
 export {
   IDetailsHeaderProps,
@@ -356,6 +356,11 @@ export interface IColumn {
   className?: string;
 
   /**
+   * Style function to be passed in to override the themed or default styles
+   */
+  styles?: IStyleFunctionOrObject<IDetailsColumnStyleProps, IDetailsColumnStyles>;
+
+  /**
    * Minimum width for the column.
    */
   minWidth: number;
@@ -680,7 +685,7 @@ export enum CheckboxVisibility {
  */
 export type IDetailsListStyleProps = Required<Pick<IDetailsListProps, 'theme'>> &
   Pick<IDetailsListProps, 'className'> & {
-    /** Whether the the list is horizontally constrained */
+    /** Whether the list is horizontally constrained */
     isHorizontalConstrained?: boolean;
 
     /** Whether the list is in compact mode */

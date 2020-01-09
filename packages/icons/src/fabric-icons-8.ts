@@ -22,9 +22,22 @@ export function initializeIcons(
     },
     fontFace: {
       fontFamily: `"FabricMDL2Icons-8"`,
-      src: `url('${baseUrl}fabric-icons-8-45feb768.woff') format('woff')`
+      src: `url('${baseUrl}fabric-icons-8-6fdf1528.woff') format('woff')`
     },
     icons: {
+      'CollapseMenu': '\uEF66',
+      'ExpandMenu': '\uEF67',
+      'Boards': '\uEF68',
+      'SunAdd': '\uEF69',
+      'SunQuestionMark': '\uEF6A',
+      'LandscapeOrientation': '\uEF6B',
+      'DocumentSearch': '\uEF6C',
+      'PublicCalendar': '\uEF6D',
+      'PublicContactCard': '\uEF6E',
+      'PublicEmail': '\uEF6F',
+      'PublicFolder': '\uEF70',
+      'WordDocument': '\uEF71',
+      'PowerPointDocument': '\uEF72',
       'ExcelDocument': '\uEF73',
       'GroupedList': '\uEF74',
       'ClassroomLogo': '\uEF75',
@@ -74,6 +87,7 @@ export function initializeIcons(
       'TextDocument': '\uF029',
       'TextDocumentShared': '\uF02B',
       'PageCheckedOut': '\uF02C',
+      'PageShared': '\uF02D',
       'SaveAndClose': '\uF038',
       'Script': '\uF03A',
       'Archive': '\uF03F',
@@ -110,21 +124,7 @@ export function initializeIcons(
       'FabricNewFolder': '\uF0AB',
       'FabricPictureLibrary': '\uF0AC',
       'PhotoVideoMedia': '\uF0B1',
-      'AddFavorite': '\uF0C8',
-      'AddFavoriteFill': '\uF0C9',
-      'BufferTimeBefore': '\uF0CF',
-      'BufferTimeAfter': '\uF0D0',
-      'BufferTimeBoth': '\uF0D1',
-      'PublishContent': '\uF0D4',
-      'ClipboardList': '\uF0E3',
-      'ClipboardListMirrored': '\uF0E4',
-      'CannedChat': '\uF0F2',
-      'SkypeForBusinessLogo': '\uF0FC',
-      'TabCenter': '\uF100',
-      'PageCheckedin': '\uF104',
-      'PageList': '\uF106',
-      'ReadOutLoud': '\uF112',
-      'CaretBottomLeftSolid8': '\uF121'
+      'AddFavorite': '\uF0C8'
     }
   };
 

@@ -5,6 +5,9 @@
   "private": true,
   "scripts": {
     "build": "just-scripts build",
+    "bundle": "just-scripts bundle",
+    "lint": "just-scripts lint",
+    "test": "just-scripts test",
     "just": "just-scripts",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
@@ -21,10 +24,10 @@
   },
   "dependencies": {
     "@uifabric/set-version": "^7.0.2",
-    "@microsoft/load-themed-styles": "^1.7.13",
+    "@microsoft/load-themed-styles": "^1.10.26",
     "es6-promise": "^4.1.0",
     "immutability-helper": "~2.8.1",
-    "office-ui-fabric-react": "^7.36.0",
+    "office-ui-fabric-react": "^7.79.1",
     "react": "16.8.6",
     "react-app-polyfill": "~1.0.1",
     "react-dom": "16.8.6",

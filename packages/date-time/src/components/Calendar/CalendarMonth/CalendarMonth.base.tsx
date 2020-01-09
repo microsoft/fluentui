@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { BaseComponent, css, getRTL, classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { FocusZone } from 'office-ui-fabric-react/lib/FocusZone';
 import {
   addYears,
@@ -14,7 +13,7 @@ import { Icon } from 'office-ui-fabric-react/lib/Icon';
 import { ICalendarMonthProps, ICalendarMonthStyles, ICalendarMonthStyleProps } from './CalendarMonth.types';
 import { getStyles } from './CalendarMonth.styles';
 import { defaultIconStrings, defaultDateTimeFormatterCallbacks } from '../Calendar.base';
-import { KeyCodes } from '@uifabric/utilities';
+import { BaseComponent, css, getRTL, classNamesFunction, KeyCodes, format } from '@uifabric/utilities';
 import { ICalendarYear, ICalendarYearRange } from '../CalendarYear/CalendarYear.types';
 import { CalendarYear } from '../CalendarYear/CalendarYear';
 
@@ -41,9 +40,12 @@ export class CalendarMonthBase extends BaseComponent<ICalendarMonthProps, ICalen
   private _calendarYearRef = React.createRef<ICalendarYear>();
   private _focusOnUpdate: boolean;
 
-  public static getDerivedStateFromProps(props: ICalendarMonthProps, state: ICalendarMonthState): ICalendarMonthState {
-    const previousYear = state.previousNavigatedDate ? state.previousNavigatedDate.getFullYear() : undefined;
-    const nextYear = props.navigatedDate.getFullYear();
+  public static getDerivedStateFromProps(
+    nextProps: Readonly<ICalendarMonthProps>,
+    prevState: Readonly<ICalendarMonthState>
+  ): Partial<ICalendarMonthState> | null {
+    const previousYear = prevState.previousNavigatedDate ? prevState.previousNavigatedDate.getFullYear() : undefined;
+    const nextYear = nextProps.navigatedDate.getFullYear();
     if (!previousYear) {
       return {};
     }
@@ -51,12 +53,12 @@ export class CalendarMonthBase extends BaseComponent<ICalendarMonthProps, ICalen
     if (previousYear < nextYear) {
       return {
         animateBackwards: false,
-        previousNavigatedDate: props.navigatedDate
+        previousNavigatedDate: nextProps.navigatedDate
       };
     } else if (previousYear > nextYear) {
       return {
         animateBackwards: true,
-        previousNavigatedDate: props.navigatedDate
+        previousNavigatedDate: nextProps.navigatedDate
       };
     }
 
@@ -134,7 +136,8 @@ export class CalendarMonthBase extends BaseComponent<ICalendarMonthProps, ICalen
           strings={{
             rangeAriaLabel: this._yearRangeToString,
             prevRangeAriaLabel: this._yearRangeToPrevDecadeLabel,
-            nextRangeAriaLabel: this._yearRangeToNextDecadeLabel
+            nextRangeAriaLabel: this._yearRangeToNextDecadeLabel,
+            headerAriaLabelFormatString: this.props.strings.yearPickerHeaderAriaLabel
           }}
           componentRef={this._calendarYearRef}
           styles={styles}
@@ -150,22 +153,24 @@ export class CalendarMonthBase extends BaseComponent<ICalendarMonthProps, ICalen
       rowIndexes.push(i);
     }
 
+    const yearString = dateFormatter.formatYear(navigatedDate);
+    const headerAriaLabel = strings.monthPickerHeaderAriaLabel ? format(strings.monthPickerHeaderAriaLabel, yearString) : yearString;
+
     return (
       <div className={classNames.root}>
         <div className={classNames.headerContainer}>
           <button
-            key={dateFormatter.formatYear(navigatedDate)}
             className={classNames.currentItemButton}
             onClick={this._onHeaderSelect}
             onKeyDown={this._onButtonKeyDown(this._onHeaderSelect)}
-            aria-label={dateFormatter.formatYear(navigatedDate)}
-            data-is-focusable={!!onHeaderSelect}
-            tabIndex={!!onHeaderSelect ? 0 : -1} // prevent focus if there's no action for the button
+            aria-label={headerAriaLabel}
+            data-is-focusable={!!onHeaderSelect || !yearPickerHidden}
+            tabIndex={!!onHeaderSelect || !yearPickerHidden ? 0 : -1}
             type="button"
             aria-atomic={true}
-            aria-live="polite"
+            aria-live="polite" // if this component rerenders when text changes, aria-live will not be announced, so make key consistent
           >
-            {dateFormatter.formatYear(navigatedDate)}
+            {yearString}
           </button>
           <div className={classNames.navigationButtonsContainer}>
             <button

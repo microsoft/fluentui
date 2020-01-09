@@ -1,10 +1,52 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`example transform can return component 1`] = `
+Object {
+  "output": "(function(React) {
+const { Label, Fabric, initializeIcons } = window.Fabric;
+
+// Initialize icons in case this example uses them
+initializeIcons();
+
+const LabelBasicExample = () => {
+  return (
+    <div>
+      <Label>I'm a Label</Label>
+    </div>
+  );
+};
+
+const LabelBasicExampleWrapper = () => React.createElement(Fabric, null, React.createElement(LabelBasicExample, null));
+return LabelBasicExampleWrapper;
+})",
+}
+`;
+
+exports[`example transform can return component with transpiled example 1`] = `
+Object {
+  "output": "(function(React) {
+const { Label, Fabric, initializeIcons } = window.Fabric;
+
+// Initialize icons in case this example uses them
+initializeIcons();
+
+var LabelBasicExample = function () {
+    return (React.createElement(\\"div\\", null,
+        React.createElement(Label, null, \\"I'm a Label\\")));
+};
+
+const LabelBasicExampleWrapper = () => React.createElement(Fabric, null, React.createElement(LabelBasicExample, null));
+return LabelBasicExampleWrapper;
+})",
+}
+`;
+
 exports[`example transform handles examples with class components 1`] = `
-"const { SpinButton, Fabric } = window.Fabric;
+Object {
+  "output": "const { SpinButton, Fabric, initializeIcons } = window.Fabric;
 
-    
-
+// Initialize icons in case this example uses them
+initializeIcons();
 
 class SpinButtonBasicExample extends React.Component<any, any> {
   public render(): JSX.Element {
@@ -25,18 +67,53 @@ class SpinButtonBasicExample extends React.Component<any, any> {
   }
 }
 
-    ReactDOM.render(
-      React.createElement(Fabric, null, React.createElement(undefined, null)),
-      document.getElementById('fake')
-    );
-    "
+const SpinButtonBasicExampleWrapper = () => <Fabric><SpinButtonBasicExample /></Fabric>;
+ReactDOM.render(<SpinButtonBasicExampleWrapper />, document.getElementById('fake'))",
+}
+`;
+
+exports[`example transform handles examples with custom supportedPackages 1`] = `
+Object {
+  "output": "const { FooLabel } = window.Foo;
+
+const FooExample = () => {
+  return (
+    <div>
+      <FooLabel>I'm a FooLabel</FooLabel>
+    </div>
+  );
+};
+ReactDOM.render(<FooExample />, document.getElementById('fake'))",
+}
+`;
+
+exports[`example transform handles examples with custom supportedPackages and Fabric 1`] = `
+Object {
+  "output": "const { Stack, Fabric, initializeIcons } = window.Fabric;
+const { FooLabel } = window.Foo;
+
+// Initialize icons in case this example uses them
+initializeIcons();
+
+const FooExample = () => {
+  return (
+    <Stack>
+      <FooLabel>I'm a FooLabel</FooLabel>
+    </Stack>
+  );
+};
+
+const FooExampleWrapper = () => <Fabric><FooExample /></Fabric>;
+ReactDOM.render(<FooExampleWrapper />, document.getElementById('fake'))",
+}
 `;
 
 exports[`example transform handles examples with function components 1`] = `
-"const { Label, Fabric } = window.Fabric;
+Object {
+  "output": "const { Label, Fabric, initializeIcons } = window.Fabric;
 
-    
-
+// Initialize icons in case this example uses them
+initializeIcons();
 
 const LabelBasicExample = () => {
   return (
@@ -46,17 +123,19 @@ const LabelBasicExample = () => {
   );
 };
 
-    ReactDOM.render(
-      React.createElement(Fabric, null, React.createElement(undefined, null)),
-      document.getElementById('fake')
-    );
-    "
+const LabelBasicExampleWrapper = () => <Fabric><LabelBasicExample /></Fabric>;
+ReactDOM.render(<LabelBasicExampleWrapper />, document.getElementById('fake'))",
+}
 `;
 
 exports[`example transform handles transpiled examples with class components 1`] = `
-"const { SpinButton, Fabric } = window.Fabric;
+Object {
+  "output": "const { SpinButton, Fabric, initializeIcons } = window.Fabric;
 
-    var __extends = (this && this.__extends) || (function () {
+// Initialize icons in case this example uses them
+initializeIcons();
+
+var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
             ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -84,26 +163,24 @@ var SpinButtonBasicExample = /** @class */ (function (_super) {
 }(React.Component));
 { SpinButtonBasicExample };
 
-    ReactDOM.render(
-      React.createElement(Fabric, null, React.createElement(SpinButtonBasicExample, null)),
-      document.getElementById('fake')
-    );
-    "
+const SpinButtonBasicExampleWrapper = () => <Fabric><SpinButtonBasicExample /></Fabric>;
+ReactDOM.render(<SpinButtonBasicExampleWrapper />, document.getElementById('fake'))",
+}
 `;
 
 exports[`example transform handles transpiled examples with function components 1`] = `
-"const { Label, Fabric } = window.Fabric;
+Object {
+  "output": "const { Label, Fabric, initializeIcons } = window.Fabric;
 
-    
+// Initialize icons in case this example uses them
+initializeIcons();
 
 var LabelBasicExample = function () {
     return (React.createElement(\\"div\\", null,
         React.createElement(Label, null, \\"I'm a Label\\")));
 };
 
-    ReactDOM.render(
-      React.createElement(Fabric, null, React.createElement(LabelBasicExample, null)),
-      document.getElementById('fake')
-    );
-    "
+const LabelBasicExampleWrapper = () => <Fabric><LabelBasicExample /></Fabric>;
+ReactDOM.render(<LabelBasicExampleWrapper />, document.getElementById('fake'))",
+}
 `;

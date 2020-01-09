@@ -46,7 +46,7 @@ export const AppColorSwatches: IColorSwatch[] = [
   },
   {
     name: 'PowerApps',
-    hex: '#5c005c',
+    hex: '#742774',
     icon: 'PowerAppsLogo'
   },
   {

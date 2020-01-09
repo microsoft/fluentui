@@ -41,8 +41,8 @@ steps:
     displayName: yarn generate-version-files
 
   - script: |
-      yarn build --production
-    displayName: yarn build (Create production build)
+      yarn buildci:prod
+    displayName: yarn buildci:prod (Create production build)
 
   - script: |
       echo Making $(Build.ArtifactStagingDirectory)/api &&

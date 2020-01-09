@@ -25,12 +25,13 @@ module.exports = resources.createServeConfig(
       'react-dom': 'ReactDOM'
     },
 
-    plugins: [new BundleAnalyzerPlugin()],
+    plugins: [/** @type {any} */ (new BundleAnalyzerPlugin())],
 
     resolve: {
       alias: {
         '@uifabric/tsx-editor/src': path.join(__dirname, 'src'),
         '@uifabric/tsx-editor/lib': path.join(__dirname, 'lib'),
+        '@uifabric/tsx-editor/dist': path.join(__dirname, 'dist'),
         '@uifabric/tsx-editor': path.join(__dirname, 'lib'),
         'Props.ts.js': 'Props',
         'Example.tsx.js': 'Example'

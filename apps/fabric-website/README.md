@@ -12,7 +12,7 @@ Once your repo is set up, run the following to start a local copy of the website
 
 ```
 yarn
-yarn buildto fabric-website --min
+yarn buildto fabric-website
 cd apps
 cd fabric-website
 yarn start

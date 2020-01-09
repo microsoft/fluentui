@@ -18,6 +18,7 @@ export type ISchemeNames = 'default' | 'neutral' | 'soft' | 'strong';
  * {@docCategory IScheme}
  */
 export interface IScheme {
+  rtl?: boolean;
   palette: IPalette;
   fonts: IFontStyles;
   semanticColors: ISemanticColors;
@@ -72,6 +73,7 @@ export type IPartialTheme = {
   semanticColors?: Partial<ISemanticColors>;
   isInverted?: boolean;
   disableGlobalClassNames?: boolean;
+  rtl?: boolean;
   spacing?: Partial<ISpacing>;
   effects?: Partial<IEffects>;
   schemes?: { [P in ISchemeNames]?: IScheme };

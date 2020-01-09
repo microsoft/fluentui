@@ -1,7 +1,61 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Wed, 11 Sep 2019 12:35:47 GMT and should not be manually modified.
+This log was last generated on Wed, 08 Jan 2020 17:02:57 GMT and should not be manually modified.
 
+## 0.139.1
+Wed, 08 Jan 2020 17:02:57 GMT
+
+### Patches
+
+- bumping load-themed-styles to take advantage of es6 version of it (kchau@microsoft.com)
+## 0.139.0
+Tue, 26 Nov 2019 12:32:11 GMT
+
+### Minor changes
+
+- removing the sticky={true} property from the hover card as the card should hide when the mouse goes away from the target element, and also added the gap space 12 to avoid the flickering issue of the hover card (v-sivsar@microsoft.com)
+## 0.138.1
+Tue, 19 Nov 2019 12:29:10 GMT
+
+### Patches
+
+- Fix the bug that x-axis for linechart does not display properly (dajiang@microsoft.com)
+## 0.138.0
+Tue, 05 Nov 2019 12:25:16 GMT
+
+### Minor changes
+
+- Enabled wrap lines for legends (dajiang@microsoft.com)
+## 0.137.2
+Thu, 24 Oct 2019 12:31:42 GMT
+
+### Patches
+
+- Change gapSpace to 10 to resolve line chart flickering issue (v-ragor@microsoft.com)
+## 0.137.1
+Tue, 22 Oct 2019 12:32:05 GMT
+
+### Patches
+
+- Fix getDerivedStateFromProps signatures (elcraig@microsoft.com)
+## 0.137.0
+Wed, 09 Oct 2019 22:25:09 GMT
+
+### Minor changes
+
+- Add placeholder mode to StackedBarChart (dajiang@microsoft.com)
+## 0.136.2
+Thu, 03 Oct 2019 23:14:46 GMT
+
+### Patches
+
+- Fixes publish issue from beachball (odbuild@microsoft.com)
+## 0.136.0
+Thu, 03 Oct 2019 01:14:35 GMT
+
+### Minor changes
+
+- Add benchmark triangle in stackedBarChart (dajiang@microsoft.com)
 ## 0.135.0
 Wed, 11 Sep 2019 12:35:47 GMT
 

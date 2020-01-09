@@ -22,9 +22,25 @@ export function initializeIcons(
     },
     fontFace: {
       fontFamily: `"FabricMDL2Icons-13"`,
-      src: `url('${baseUrl}fabric-icons-13-873bdea0.woff') format('woff')`
+      src: `url('${baseUrl}fabric-icons-13-c3989a02.woff') format('woff')`
     },
     icons: {
+      'RectangularClipping': '\uF407',
+      'TeamsLogo16': '\uF40A',
+      'TeamsLogoFill16': '\uF40B',
+      'Spacer': '\uF40D',
+      'SkypeLogo16': '\uF40E',
+      'SkypeForBusinessLogo16': '\uF40F',
+      'SkypeForBusinessLogoFill16': '\uF410',
+      'FilterSolid': '\uF412',
+      'MailUndelivered': '\uF415',
+      'MailTentative': '\uF416',
+      'MailTentativeMirrored': '\uF417',
+      'MailReminder': '\uF418',
+      'ReceiptUndelivered': '\uF419',
+      'ReceiptTentative': '\uF41A',
+      'ReceiptTentativeMirrored': '\uF41B',
+      'Inbox': '\uF41C',
       'IRMReply': '\uF41D',
       'IRMReplyMirrored': '\uF41E',
       'IRMForward': '\uF41F',
@@ -108,23 +124,7 @@ export function initializeIcons(
       'UneditableMirrored': '\uF4B9',
       'AdminALogo32': '\uF4BA',
       'AdminALogoFill32': '\uF4BB',
-      'ToDoLogoInverse': '\uF4BC',
-      'Snooze': '\uF4BD',
-      'WaffleOffice365': '\uF4E0',
-      'ImageSearch': '\uF4E8',
-      'NewsSearch': '\uF4E9',
-      'VideoSearch': '\uF4EA',
-      'R': '\uF4EB',
-      'FontColorA': '\uF4EC',
-      'FontColorSwatch': '\uF4ED',
-      'LightWeight': '\uF4EE',
-      'NormalWeight': '\uF4EF',
-      'SemiboldWeight': '\uF4F0',
-      'GroupObject': '\uF4F1',
-      'UngroupObject': '\uF4F2',
-      'AlignHorizontalLeft': '\uF4F3',
-      'AlignHorizontalCenter': '\uF4F4',
-      'AlignHorizontalRight': '\uF4F5'
+      'ToDoLogoInverse': '\uF4BC'
     }
   };
 

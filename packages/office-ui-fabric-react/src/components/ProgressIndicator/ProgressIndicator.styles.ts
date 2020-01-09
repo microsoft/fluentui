@@ -29,7 +29,7 @@ const IndeterminateProgressRTL = keyframes({
 });
 
 export const getStyles = (props: IProgressIndicatorStyleProps): IProgressIndicatorStyles => {
-  const isRTL = getRTL();
+  const isRTL = getRTL(props.theme);
   const { className, indeterminate, theme, barHeight = 2 } = props;
 
   const { palette, semanticColors, fonts } = theme;
@@ -97,7 +97,7 @@ export const getStyles = (props: IProgressIndicatorStyleProps): IProgressIndicat
 
         selectors: {
           [HighContrastSelector]: {
-            backgroundColor: 'WindowText'
+            backgroundColor: 'highlight'
           }
         }
       },
@@ -107,7 +107,12 @@ export const getStyles = (props: IProgressIndicatorStyleProps): IProgressIndicat
             position: 'absolute',
             minWidth: '33%',
             background: `linear-gradient(to right, ${progressTrackColor} 0%, ${palette.themePrimary} 50%, ${progressTrackColor} 100%)`,
-            animation: `${isRTL ? IndeterminateProgressRTL : IndeterminateProgress} 3s infinite`
+            animation: `${isRTL ? IndeterminateProgressRTL : IndeterminateProgress} 3s infinite`,
+            selectors: {
+              [HighContrastSelector]: {
+                background: `highlight`
+              }
+            }
           } as IRawStyle)
         : ({
             transition: 'width .15s linear'

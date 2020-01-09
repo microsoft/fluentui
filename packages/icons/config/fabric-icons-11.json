@@ -10,6 +10,70 @@
   },
   "glyphs": [
     {
+      "name": "BoxAdditionSolid",
+      "unicode": "F2D4"
+    },
+    {
+      "name": "BoxMultiplySolid",
+      "unicode": "F2D5"
+    },
+    {
+      "name": "BoxPlaySolid",
+      "unicode": "F2D6"
+    },
+    {
+      "name": "BoxCheckmarkSolid",
+      "unicode": "F2D7"
+    },
+    {
+      "name": "CirclePauseSolid",
+      "unicode": "F2D8"
+    },
+    {
+      "name": "CirclePause",
+      "unicode": "F2D9"
+    },
+    {
+      "name": "MSNVideosSolid",
+      "unicode": "F2DA"
+    },
+    {
+      "name": "CircleStopSolid",
+      "unicode": "F2DB"
+    },
+    {
+      "name": "CircleStop",
+      "unicode": "F2DC"
+    },
+    {
+      "name": "NavigateBack",
+      "unicode": "F2DD"
+    },
+    {
+      "name": "NavigateBackMirrored",
+      "unicode": "F2DE"
+    },
+    {
+      "name": "NavigateForward",
+      "unicode": "F2DF"
+    },
+    {
+      "name": "NavigateForwardMirrored",
+      "unicode": "F2E0"
+    },
+    {
+      "name": "UnknownSolid",
+      "unicode": "F2E1"
+    },
+    {
+      "name": "UnknownMirroredSolid",
+      "unicode": "F2E2"
+    },
+    {
+      "name": "CircleAddition",
+      "unicode": "F2E3"
+    },
+    {
       "name": "CircleAdditionSolid",
       "unicode": "F2E4"
     },
@@ -344,70 +408,6 @@
     {
       "name": "RibbonSolid",
       "unicode": "F345"
-    },
-    {
-      "name": "FinancialSolid",
-      "unicode": "F346"
-    },
-    {
-      "name": "FinancialMirroredSolid",
-      "unicode": "F347"
-    },
-    {
-      "name": "HeadsetSolid",
-      "unicode": "F348"
-    },
-    {
-      "name": "PermissionsSolid",
-      "unicode": "F349"
-    },
-    {
-      "name": "ParkingSolid",
-      "unicode": "F34A"
-    },
-    {
-      "name": "ParkingMirroredSolid",
-      "unicode": "F34B"
-    },
-    {
-      "name": "DiamondSolid",
-      "unicode": "F34C"
-    },
-    {
-      "name": "AsteriskSolid",
-      "unicode": "F34D"
-    },
-    {
-      "name": "OfflineStorageSolid",
-      "unicode": "F34E"
-    },
-    {
-      "name": "BankSolid",
-      "unicode": "F34F"
-    },
-    {
-      "name": "DecisionSolid",
-      "unicode": "F350"
-    },
-    {
-      "name": "Parachute",
-      "unicode": "F351"
-    },
-    {
-      "name": "ParachuteSolid",
-      "unicode": "F352"
-    },
-    {
-      "name": "FiltersSolid",
-      "unicode": "F353"
-    },
-    {
-      "name": "ColorSolid",
-      "unicode": "F354"
-    },
-    {
-      "name": "ReviewSolid",
-      "unicode": "F355"
     }
   ]
 }

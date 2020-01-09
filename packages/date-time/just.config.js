@@ -1,8 +1,5 @@
-const { preset, just } = require('@uifabric/build');
-const { task, series } = just;
+const { preset } = require('@uifabric/build');
 
 module.exports = () => {
   preset();
-  const buildTask = task('build');
-  task('build', series(buildTask, 'verify-api-extractor')).cached();
 };

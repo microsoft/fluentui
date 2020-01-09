@@ -111,7 +111,7 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
         href={link.url || (link.forceAnchor ? '#' : undefined)}
         iconProps={link.iconProps || { iconName: link.icon }}
         onClick={link.onClick ? this._onNavButtonLinkClicked.bind(this, link) : this._onNavAnchorLinkClicked.bind(this, link)}
-        title={link.title || link.name}
+        title={link.title !== undefined ? link.title : link.name}
         target={link.target}
         rel={rel}
         disabled={link.disabled}
@@ -124,6 +124,8 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
             ? link.ariaLabel
             : undefined
         }
+        link={link}
+        defaultRender={ActionButton}
       >
         {onRenderLink(link, this._onRenderLink)}
       </LinkAs>
@@ -143,7 +145,15 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
       groups
     });
 
-    const finalExpandBtnAriaLabel = expandButtonAriaLabel ? `${link.name} ${expandButtonAriaLabel}` : link.name;
+    let finalExpandBtnAriaLabel = '';
+    if (link.links && link.links.length > 0) {
+      if (link.collapseAriaLabel || link.expandAriaLabel) {
+        finalExpandBtnAriaLabel = link.isExpanded ? link.collapseAriaLabel! : link.expandAriaLabel!;
+      } else {
+        // TODO remove when `expandButtonAriaLabel` is removed. This is not an ideal concatenation for localization.
+        finalExpandBtnAriaLabel = expandButtonAriaLabel ? `${link.name} ${expandButtonAriaLabel}` : link.name;
+      }
+    }
 
     return (
       <div {...divProps} key={link.key || linkIndex} className={classNames.compositeLink}>
@@ -218,12 +228,15 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
       groups
     });
 
+    const isExpanded = this._isGroupExpanded(group);
+    const label = (isExpanded ? group.collapseAriaLabel : group.expandAriaLabel) || expandButtonAriaLabel;
+
     return (
       <button
         className={classNames.chevronButton}
         onClick={this._onGroupHeaderClicked.bind(this, group)}
-        aria-label={expandButtonAriaLabel}
-        aria-expanded={this._isGroupExpanded(group)}
+        aria-label={label}
+        aria-expanded={isExpanded}
       >
         <Icon className={classNames.chevronIcon} iconName="ChevronDown" />
         {group.name}

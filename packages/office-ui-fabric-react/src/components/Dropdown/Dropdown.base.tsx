@@ -21,7 +21,7 @@ import {
   warnMutuallyExclusive
 } from '../../Utilities';
 import { Callout } from '../../Callout';
-import { Checkbox } from '../../Checkbox';
+import { Checkbox, ICheckboxStyleProps, ICheckboxStyles } from '../../Checkbox';
 import { CommandButton } from '../../Button';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { DropdownMenuItemType, IDropdownOption, IDropdownProps, IDropdownStyleProps, IDropdownStyles, IDropdown } from './Dropdown.types';
@@ -60,6 +60,9 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
   private _focusZone = React.createRef<FocusZone>();
   private _dropDown = React.createRef<HTMLDivElement>();
   private _id: string;
+  private _labelId: string;
+  private _listId: string;
+  private _optionId: string;
   private _isScrollIdle: boolean;
   private readonly _scrollIdleDelay: number = 250 /* ms */;
   private _scrollIdleTimeoutId: number | undefined;
@@ -68,9 +71,10 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
   private _sizePosCache: DropdownSizePosCache = new DropdownSizePosCache();
   private _classNames: IProcessedStyleSet<IDropdownStyles>;
   private _requestAnimationFrame = safeRequestAnimationFrame(this);
-
   /** Flag for when we get the first mouseMove */
   private _gotMouseMove: boolean;
+  /** Flag for tracking whether focus is triggered by click (alternatively triggered by keyboard nav) */
+  private _isFocusedByClick: boolean;
 
   constructor(props: IDropdownProps) {
     super(props);
@@ -95,6 +99,9 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
     }
 
     this._id = props.id || getId('Dropdown');
+    this._labelId = this._id + '-label';
+    this._listId = this._id + '-list';
+    this._optionId = this._id + '-option';
     this._isScrollIdle = true;
 
     let selectedIndices: number[];
@@ -102,6 +109,7 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
     if (this.props.multiSelect) {
       const selectedKeys = props.defaultSelectedKeys !== undefined ? props.defaultSelectedKeys : props.selectedKeys;
       selectedIndices = this._getSelectedIndexes(props.options, selectedKeys);
+      this._sizePosCache.updateOptions(props.options);
     } else {
       const selectedKey = props.defaultSelectedKey !== undefined ? props.defaultSelectedKey : props.selectedKey;
       selectedIndices = this._getSelectedIndexes(props.options, selectedKey!);
@@ -193,18 +201,18 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
       ariaLabel,
       required,
       errorMessage,
-      multiSelect,
       keytipProps,
       styles: propStyles,
       theme,
       panelProps,
       calloutProps,
+      multiSelect,
       onRenderTitle = this._onRenderTitle,
       onRenderContainer = this._onRenderContainer,
       onRenderCaretDown = this._onRenderCaretDown,
       onRenderLabel = this._onRenderLabel
     } = props;
-    const { isOpen, selectedIndices, hasFocus, calloutRenderEdge } = this.state;
+    const { isOpen, selectedIndices, calloutRenderEdge } = this.state;
     const onRenderPlaceholder = props.onRenderPlaceholder || props.onRenderPlaceHolder || this._onRenderPlaceholder;
 
     const selectedOptions = getAllSelectedOptions(options, selectedIndices);
@@ -212,28 +220,23 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
 
     const disabled = this._isDisabled();
 
-    const optionId = id + '-option';
+    const errorMessageId = id + '-errorMessage';
+    const ariaActiveDescendant = disabled
+      ? undefined
+      : isOpen && selectedIndices.length === 1 && selectedIndices[0] >= 0
+      ? this._listId + selectedIndices[0]
+      : undefined;
     const ariaAttrs =
       multiSelect || disabled
-        ? {
-            role: undefined,
-            ariaActiveDescendant: undefined,
-            childRole: undefined,
-            ariaSetSize: undefined,
-            ariaPosInSet: undefined,
-            ariaSelected: undefined
-          }
+        ? {}
         : // single select
           {
             role: 'listbox',
-            ariaActiveDescendant:
-              isOpen && selectedIndices.length === 1 && selectedIndices[0] >= 0 ? this._id + '-list' + selectedIndices[0] : optionId,
             childRole: 'option',
             ariaSetSize: this._sizePosCache.optionSetSize,
             ariaPosInSet: this._sizePosCache.positionInSet(selectedIndices[0]),
             ariaSelected: selectedIndices[0] === undefined ? undefined : true
           };
-
     this._classNames = getClassNames(propStyles, {
       theme,
       className,
@@ -248,6 +251,8 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
       calloutRenderEdge: calloutRenderEdge
     });
 
+    const hasErrorMessage: boolean = !!errorMessage && errorMessage.length > 0;
+
     return (
       <div className={this._classNames.root}>
         {onRenderLabel(this.props, this._onRenderLabel)}
@@ -259,30 +264,35 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
               ref={this._dropDown}
               id={id}
               tabIndex={disabled ? -1 : 0}
-              aria-expanded={isOpen ? 'true' : 'false'}
               role={ariaAttrs.role}
+              aria-haspopup="listbox"
+              aria-expanded={isOpen ? 'true' : 'false'}
               aria-label={ariaLabel}
-              aria-labelledby={label && !ariaLabel ? id + '-label' : undefined}
-              aria-describedby={mergeAriaAttributeValues(optionId, keytipAttributes['aria-describedby'])}
-              aria-activedescendant={isOpen ? ariaAttrs.ariaActiveDescendant : undefined}
+              aria-labelledby={label && !ariaLabel ? mergeAriaAttributeValues(this._labelId, this._optionId) : undefined}
+              aria-describedby={mergeAriaAttributeValues(
+                keytipAttributes['aria-describedby'],
+                hasErrorMessage ? this._id + '-errorMessage' : undefined
+              )}
+              aria-activedescendant={ariaActiveDescendant}
               aria-required={required}
               aria-disabled={disabled}
-              aria-owns={isOpen ? id + '-list' : undefined}
+              aria-owns={isOpen ? this._listId : undefined}
               {...divProps}
               className={this._classNames.dropdown}
               onBlur={this._onDropdownBlur}
               onKeyDown={this._onDropdownKeyDown}
               onKeyUp={this._onDropdownKeyUp}
               onClick={this._onDropdownClick}
+              onMouseDown={this._onDropdownMouseDown}
               onFocus={this._onFocus}
             >
               <span
-                id={optionId}
+                id={this._optionId}
                 className={this._classNames.title}
+                aria-live="polite"
                 aria-atomic={true}
+                aria-invalid={hasErrorMessage}
                 role={ariaAttrs.childRole}
-                aria-live={!hasFocus || disabled || multiSelect || isOpen ? 'off' : 'assertive'}
-                aria-label={selectedOptions.length ? selectedOptions[0].text : this._placeholder}
                 aria-setsize={ariaAttrs.ariaSetSize}
                 aria-posinset={ariaAttrs.ariaPosInSet}
                 aria-selected={ariaAttrs.ariaSelected}
@@ -296,8 +306,12 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
             </div>
           )}
         </KeytipData>
-        {isOpen && onRenderContainer(props, this._onRenderContainer)}
-        {errorMessage && errorMessage.length > 0 && <div className={this._classNames.errorMessage}>{errorMessage}</div>}
+        {isOpen && onRenderContainer({ ...props, onDismiss: this._onDismiss }, this._onRenderContainer)}
+        {hasErrorMessage && (
+          <div role="alert" id={errorMessageId} className={this._classNames.errorMessage}>
+            {errorMessage}
+          </div>
+        )}
       </div>
     );
   }
@@ -367,19 +381,13 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
     multiSelect?: boolean
   ) => {
     const { onChange, onChanged } = this.props;
-    if (onChange) {
+    if (onChange || onChanged) {
       // for single-select, option passed in will always be selected.
       // for multi-select, flip the checked value
       const changedOpt = multiSelect ? { ...options[index], selected: !checked } : options[index];
 
-      onChange({ ...event, target: this._dropDown.current as EventTarget }, changedOpt, index);
-    }
-
-    if (onChanged) {
-      // for single-select, option passed in will always be selected.
-      // for multi-select, flip the checked value
-      const changedOpt = multiSelect ? { ...options[index], selected: !checked } : options[index];
-      onChanged(changedOpt, index);
+      onChange && onChange({ ...event, target: this._dropDown.current as EventTarget }, changedOpt, index);
+      onChanged && onChanged(changedOpt, index);
     }
   };
 
@@ -449,7 +457,7 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
     const { multiSelectDelimiter = ', ' } = this.props;
 
     const displayTxt = items.map(i => i.text).join(multiSelectDelimiter);
-    return <span>{displayTxt}</span>;
+    return <>{displayTxt}</>;
   };
 
   /** Render placeholder text in dropdown input */
@@ -457,7 +465,7 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
     if (!this._placeholder) {
       return null;
     }
-    return <span>{this._placeholder}</span>;
+    return <>{this._placeholder}</>;
   };
 
   /** Render Callout or Panel container and pass in list */
@@ -502,8 +510,7 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
 
   /** Wrap item list in a FocusZone */
   private _renderFocusableList(props: ISelectableDroppableTextProps<IDropdown, HTMLDivElement>): JSX.Element {
-    const { onRenderList = this._onRenderList, label, ariaLabel } = props;
-    const id = this._id;
+    const { onRenderList = this._onRenderList, label, ariaLabel, multiSelect } = props;
 
     return (
       <div
@@ -516,11 +523,12 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
         <FocusZone
           ref={this._focusZone}
           direction={FocusZoneDirection.vertical}
-          id={id + '-list'}
+          id={this._listId}
           className={this._classNames.dropdownItems}
-          aria-label={ariaLabel}
-          aria-labelledby={label && !ariaLabel ? id + '-label' : undefined}
           role="listbox"
+          aria-label={ariaLabel}
+          aria-labelledby={label && !ariaLabel ? this._labelId : undefined}
+          aria-multiselectable={multiSelect}
         >
           {onRenderList(props, this._onRenderList)}
         </FocusZone>
@@ -532,7 +540,62 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
   private _onRenderList = (props: ISelectableDroppableTextProps<IDropdown, HTMLDivElement>): JSX.Element => {
     const { onRenderItem = this._onRenderItem } = props;
 
-    return <>{props.options.map((item: any, index: number) => onRenderItem({ ...item, index }, this._onRenderItem))}</>;
+    let queue: { id?: string; items: JSX.Element[] } = { items: [] };
+    let renderedList: JSX.Element[] = [];
+
+    const emptyQueue = (): void => {
+      const newGroup = queue.id
+        ? [
+            <div role="group" key={queue.id} aria-labelledby={queue.id}>
+              {queue.items}
+            </div>
+          ]
+        : queue.items;
+
+      renderedList = [...renderedList, ...newGroup];
+      // Flush items and id
+      queue = { items: [] };
+    };
+
+    const placeRenderedOptionIntoQueue = (item: IDropdownOption, index: number) => {
+      /*
+        Case Header
+          empty queue if it's not already empty
+          ensure unique ID for header and set queue ID
+          push header into queue
+        Case Divider
+          push divider into queue if not first item
+          empty queue if not already empty
+        Default
+          push item into queue
+      */
+      switch (item.itemType) {
+        case SelectableOptionMenuItemType.Header:
+          queue.items.length > 0 && emptyQueue();
+
+          const id = this._id + item.key;
+          queue.items.push(onRenderItem({ id, ...item, index }, this._onRenderItem)!);
+          queue.id = id;
+          break;
+        case SelectableOptionMenuItemType.Divider:
+          index > 0 && queue.items.push(onRenderItem({ ...item, index }, this._onRenderItem)!);
+
+          queue.items.length > 0 && emptyQueue();
+          break;
+        default:
+          queue.items.push(onRenderItem({ ...item, index }, this._onRenderItem)!);
+      }
+    };
+
+    // Place options into the queue. Queue will be emptied anytime a Header or Divider is encountered
+    props.options.forEach((item: IDropdownOption, index: number) => {
+      placeRenderedOptionIntoQueue(item, index);
+    });
+
+    // Push remaining items into all renderedList
+    queue.items.length > 0 && emptyQueue();
+
+    return <>{renderedList}</>;
   };
 
   private _onRenderItem = (item: IDropdownOption): JSX.Element | null => {
@@ -556,9 +619,9 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
 
   private _renderHeader(item: IDropdownOption): JSX.Element {
     const { onRenderOption = this._onRenderOption } = this.props;
-    const { key } = item;
+    const { key, id } = item;
     return (
-      <div key={key} className={this._classNames.dropdownItemHeader}>
+      <div id={id} key={key} className={this._classNames.dropdownItemHeader}>
         {onRenderOption(item, this._onRenderOption)}
       </div>
     );
@@ -567,7 +630,6 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
   private _renderOption = (item: IDropdownOption): JSX.Element => {
     const { onRenderOption = this._onRenderOption } = this.props;
     const { selectedIndices = [] } = this.state;
-    const id = this._id;
     const isItemSelected = item.index !== undefined && selectedIndices ? selectedIndices.indexOf(item.index) > -1 : false;
 
     // select the right className based on the combination of selected/disabled
@@ -583,9 +645,13 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
 
     const { title = item.text } = item;
 
+    const multiSelectItemStyles = this._classNames.subComponentStyles
+      ? (this._classNames.subComponentStyles.multiSelectItem as IStyleFunctionOrObject<ICheckboxStyleProps, ICheckboxStyles>)
+      : undefined;
+
     return !this.props.multiSelect ? (
       <CommandButton
-        id={id + '-list' + item.index}
+        id={this._listId + item.index}
         key={item.key}
         data-index={item.index}
         data-is-focusable={!item.disabled}
@@ -599,12 +665,14 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
         aria-selected={isItemSelected ? 'true' : 'false'}
         ariaLabel={item.ariaLabel}
         title={title}
+        aria-posinset={this._sizePosCache.positionInSet(item.index)}
+        aria-setsize={this._sizePosCache.optionSetSize}
       >
         {onRenderOption(item, this._onRenderOption)}
       </CommandButton>
     ) : (
       <Checkbox
-        id={id + '-list' + item.index}
+        id={this._listId + item.index}
         key={item.key}
         data-index={item.index}
         data-is-focusable={!item.disabled}
@@ -616,12 +684,15 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
           onMouseMove: this._onItemMouseMove.bind(this, item)
         }}
         label={item.text}
-        title={item.title ? item.title : item.text}
+        title={title}
         onRenderLabel={this._onRenderItemLabel.bind(this, item)}
         className={itemClassName}
         role="option"
         aria-selected={isItemSelected ? 'true' : 'false'}
         checked={isItemSelected}
+        styles={multiSelectItemStyles}
+        ariaPositionInSet={this._sizePosCache.positionInSet(item.index)}
+        ariaSetSize={this._sizePosCache.optionSetSize}
       />
     );
   };
@@ -908,7 +979,7 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
 
     if (this.props.onKeyUp) {
       this.props.onKeyUp(ev);
-      if (ev.preventDefault) {
+      if (ev.defaultPrevented) {
         return;
       }
     }
@@ -1018,7 +1089,7 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
   private _onDropdownClick = (ev: React.MouseEvent<HTMLDivElement>): void => {
     if (this.props.onClick) {
       this.props.onClick(ev);
-      if (ev.preventDefault) {
+      if (ev.defaultPrevented) {
         return;
       }
     }
@@ -1026,31 +1097,38 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
     const { isOpen } = this.state;
     const disabled = this._isDisabled();
 
-    if (!disabled) {
+    if (!disabled && !this._shouldOpenOnFocus()) {
       this.setState({
         isOpen: !isOpen
       });
     }
+
+    this._isFocusedByClick = false; // reset
+  };
+
+  private _onDropdownMouseDown = (): void => {
+    this._isFocusedByClick = true;
   };
 
   private _onFocus = (ev: React.FocusEvent<HTMLDivElement>): void => {
-    const { isOpen, selectedIndices, hasFocus } = this.state;
-    const { multiSelect, openOnKeyboardFocus } = this.props;
+    const { isOpen, selectedIndices } = this.state;
+    const { multiSelect } = this.props;
 
     const disabled = this._isDisabled();
 
     if (!disabled) {
-      if (!isOpen && selectedIndices.length === 0 && !multiSelect) {
-        // Per aria
+      if (!this._isFocusedByClick && !isOpen && selectedIndices.length === 0 && !multiSelect) {
+        // Per aria: https://www.w3.org/TR/wai-aria-practices-1.1/#listbox_kbd_interaction
         this._moveIndex(ev, 1, 0, -1);
       }
       if (this.props.onFocus) {
         this.props.onFocus(ev);
       }
       const state: Pick<IDropdownState, 'hasFocus'> | Pick<IDropdownState, 'hasFocus' | 'isOpen'> = { hasFocus: true };
-      if (openOnKeyboardFocus && !hasFocus) {
+      if (this._shouldOpenOnFocus()) {
         (state as Pick<IDropdownState, 'hasFocus' | 'isOpen'>).isOpen = true;
       }
+
       this.setState(state);
     }
   };
@@ -1072,7 +1150,6 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
   };
 
   private _onRenderLabel = (props: IDropdownProps): JSX.Element | null => {
-    const id = this._id;
     const { label, required, disabled } = props;
 
     const labelStyles = this._classNames.subComponentStyles
@@ -1080,16 +1157,19 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
       : undefined;
 
     return label ? (
-      <Label
-        className={this._classNames.label}
-        id={id + '-label'}
-        htmlFor={id}
-        required={required}
-        styles={labelStyles}
-        disabled={disabled}
-      >
+      <Label className={this._classNames.label} id={this._labelId} required={required} styles={labelStyles} disabled={disabled}>
         {label}
       </Label>
     ) : null;
   };
+
+  /**
+   * Returns true if dropdown should set to open on focus.
+   * Otherwise, isOpen state should be toggled on click
+   */
+  private _shouldOpenOnFocus(): boolean {
+    const { hasFocus } = this.state;
+    const { openOnKeyboardFocus } = this.props;
+    return !this._isFocusedByClick && openOnKeyboardFocus === true && !hasFocus;
+  }
 }

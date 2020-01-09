@@ -22,9 +22,25 @@ export function initializeIcons(
     },
     fontFace: {
       fontFamily: `"FabricMDL2Icons-15"`,
-      src: `url('${baseUrl}fabric-icons-15-4009b151.woff') format('woff')`
+      src: `url('${baseUrl}fabric-icons-15-3807251b.woff') format('woff')`
     },
     icons: {
+      'CalendarSettings': '\uF558',
+      'CalendarSettingsMirrored': '\uF559',
+      'HardDriveLock': '\uF55A',
+      'HardDriveUnlock': '\uF55B',
+      'AccountManagement': '\uF55C',
+      'ReportWarning': '\uF569',
+      'TransitionPop': '\uF5B2',
+      'TransitionPush': '\uF5B3',
+      'TransitionEffect': '\uF5B4',
+      'LookupEntities': '\uF5B5',
+      'ExploreData': '\uF5B6',
+      'AddBookmark': '\uF5B7',
+      'SearchBookmark': '\uF5B8',
+      'DrillThrough': '\uF5B9',
+      'MasterDatabase': '\uF5BA',
+      'CertifiedDatabase': '\uF5BB',
       'MaximumValue': '\uF5BC',
       'MinimumValue': '\uF5BD',
       'VisualStudioIDELogo32': '\uF5D0',
@@ -108,23 +124,7 @@ export function initializeIcons(
       'UserGauge': '\uF6ED',
       'BlockedSiteSolid12': '\uF70A',
       'TagSolid': '\uF70E',
-      'OfficeChat': '\uF70F',
-      'OfficeChatSolid': '\uF710',
-      'MailSchedule': '\uF72E',
-      'WarningSolid': '\uF736',
-      'Blocked2Solid': '\uF737',
-      'SkypeCircleArrow': '\uF747',
-      'SkypeArrow': '\uF748',
-      'SyncStatus': '\uF751',
-      'SyncStatusSolid': '\uF752',
-      'ProjectDocument': '\uF759',
-      'ToDoLogoOutline': '\uF75B',
-      'VisioOnlineLogoFill32': '\uF75F',
-      'VisioOnlineLogo32': '\uF760',
-      'VisioOnlineLogoCloud32': '\uF761',
-      'VisioDiagramSync': '\uF762',
-      'Event12': '\uF763',
-      'EventDateMissed12': '\uF764'
+      'OfficeChat': '\uF70F'
     }
   };
 

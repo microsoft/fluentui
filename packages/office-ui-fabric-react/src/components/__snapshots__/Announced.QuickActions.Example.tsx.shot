@@ -157,7 +157,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                 <div
                   aria-checked={false}
                   aria-describedby="header0-checkTooltip"
-                  aria-label="Toggle selection"
+                  aria-label="Toggle selection for all items"
                   className=
                       ms-DetailsRow-check
                       ms-DetailsHeader-check
@@ -290,6 +290,11 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                           }
                       data-icon-name="CircleRing"
                       role="presentation"
+                      style={
+                        Object {
+                          "fontFamily": "\\"FabricMDL2Icons\\"",
+                        }
+                      }
                     >
                       
                     </i>
@@ -329,6 +334,11 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                           }
                       data-icon-name="StatusCircleCheckmark"
                       role="presentation"
+                      style={
+                        Object {
+                          "fontFamily": "\\"FabricMDL2Icons\\"",
+                        }
+                      }
                     >
                       
                     </i>
@@ -1434,6 +1444,11 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                     }
                                 data-icon-name="CircleRing"
                                 role="presentation"
+                                style={
+                                  Object {
+                                    "fontFamily": "\\"FabricMDL2Icons\\"",
+                                  }
+                                }
                               >
                                 
                               </i>
@@ -1473,6 +1488,11 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                     }
                                 data-icon-name="StatusCircleCheckmark"
                                 role="presentation"
+                                style={
+                                  Object {
+                                    "fontFamily": "\\"FabricMDL2Icons\\"",
+                                  }
+                                }
                               >
                                 
                               </i>
@@ -1491,6 +1511,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                         >
                           <div
                             aria-colindex={2}
+                            aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
                                 {
@@ -1553,6 +1574,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                 className=
                                     ms-Button
                                     ms-Button--icon
+                                    ms-Button--hasMenu
                                     {
                                       -moz-osx-font-smoothing: grayscale;
                                       -webkit-font-smoothing: antialiased;
@@ -1568,7 +1590,6 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                       font-size: 14px;
                                       font-weight: 400;
                                       height: inherit;
-                                      min-width: 32px;
                                       outline: transparent;
                                       padding-bottom: 0;
                                       padding-left: 4px;
@@ -1579,6 +1600,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                       text-decoration: none;
                                       user-select: none;
                                       vertical-align: top;
+                                      width: auto;
                                     }
                                     &::-moz-focus-inner {
                                       border: 0;
@@ -1671,6 +1693,11 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                         }
                                     data-icon-name="MoreVertical"
                                     role="presentation"
+                                    style={
+                                      Object {
+                                        "fontFamily": "\\"FabricMDL2Icons\\"",
+                                      }
+                                    }
                                   >
                                     
                                   </i>
@@ -1680,6 +1707,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                           </div>
                           <div
                             aria-colindex={3}
+                            aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
                                 {
@@ -1738,6 +1766,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                           </div>
                           <div
                             aria-colindex={4}
+                            aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
                                 {
@@ -1796,6 +1825,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                           </div>
                           <div
                             aria-colindex={5}
+                            aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
                                 {
@@ -2134,6 +2164,11 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                     }
                                 data-icon-name="CircleRing"
                                 role="presentation"
+                                style={
+                                  Object {
+                                    "fontFamily": "\\"FabricMDL2Icons\\"",
+                                  }
+                                }
                               >
                                 
                               </i>
@@ -2173,6 +2208,11 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                     }
                                 data-icon-name="StatusCircleCheckmark"
                                 role="presentation"
+                                style={
+                                  Object {
+                                    "fontFamily": "\\"FabricMDL2Icons\\"",
+                                  }
+                                }
                               >
                                 
                               </i>
@@ -2191,6 +2231,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                         >
                           <div
                             aria-colindex={2}
+                            aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
                                 {
@@ -2253,6 +2294,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                 className=
                                     ms-Button
                                     ms-Button--icon
+                                    ms-Button--hasMenu
                                     {
                                       -moz-osx-font-smoothing: grayscale;
                                       -webkit-font-smoothing: antialiased;
@@ -2268,7 +2310,6 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                       font-size: 14px;
                                       font-weight: 400;
                                       height: inherit;
-                                      min-width: 32px;
                                       outline: transparent;
                                       padding-bottom: 0;
                                       padding-left: 4px;
@@ -2279,6 +2320,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                       text-decoration: none;
                                       user-select: none;
                                       vertical-align: top;
+                                      width: auto;
                                     }
                                     &::-moz-focus-inner {
                                       border: 0;
@@ -2371,6 +2413,11 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                         }
                                     data-icon-name="MoreVertical"
                                     role="presentation"
+                                    style={
+                                      Object {
+                                        "fontFamily": "\\"FabricMDL2Icons\\"",
+                                      }
+                                    }
                                   >
                                     
                                   </i>
@@ -2380,6 +2427,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                           </div>
                           <div
                             aria-colindex={3}
+                            aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
                                 {
@@ -2438,6 +2486,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                           </div>
                           <div
                             aria-colindex={4}
+                            aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
                                 {
@@ -2496,6 +2545,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                           </div>
                           <div
                             aria-colindex={5}
+                            aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
                                 {
@@ -2834,6 +2884,11 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                     }
                                 data-icon-name="CircleRing"
                                 role="presentation"
+                                style={
+                                  Object {
+                                    "fontFamily": "\\"FabricMDL2Icons\\"",
+                                  }
+                                }
                               >
                                 
                               </i>
@@ -2873,6 +2928,11 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                     }
                                 data-icon-name="StatusCircleCheckmark"
                                 role="presentation"
+                                style={
+                                  Object {
+                                    "fontFamily": "\\"FabricMDL2Icons\\"",
+                                  }
+                                }
                               >
                                 
                               </i>
@@ -2891,6 +2951,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                         >
                           <div
                             aria-colindex={2}
+                            aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
                                 {
@@ -2953,6 +3014,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                 className=
                                     ms-Button
                                     ms-Button--icon
+                                    ms-Button--hasMenu
                                     {
                                       -moz-osx-font-smoothing: grayscale;
                                       -webkit-font-smoothing: antialiased;
@@ -2968,7 +3030,6 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                       font-size: 14px;
                                       font-weight: 400;
                                       height: inherit;
-                                      min-width: 32px;
                                       outline: transparent;
                                       padding-bottom: 0;
                                       padding-left: 4px;
@@ -2979,6 +3040,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                       text-decoration: none;
                                       user-select: none;
                                       vertical-align: top;
+                                      width: auto;
                                     }
                                     &::-moz-focus-inner {
                                       border: 0;
@@ -3071,6 +3133,11 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                         }
                                     data-icon-name="MoreVertical"
                                     role="presentation"
+                                    style={
+                                      Object {
+                                        "fontFamily": "\\"FabricMDL2Icons\\"",
+                                      }
+                                    }
                                   >
                                     
                                   </i>
@@ -3080,6 +3147,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                           </div>
                           <div
                             aria-colindex={3}
+                            aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
                                 {
@@ -3138,6 +3206,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                           </div>
                           <div
                             aria-colindex={4}
+                            aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
                                 {
@@ -3196,6 +3265,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                           </div>
                           <div
                             aria-colindex={5}
+                            aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
                                 {
@@ -3534,6 +3604,11 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                     }
                                 data-icon-name="CircleRing"
                                 role="presentation"
+                                style={
+                                  Object {
+                                    "fontFamily": "\\"FabricMDL2Icons\\"",
+                                  }
+                                }
                               >
                                 
                               </i>
@@ -3573,6 +3648,11 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                     }
                                 data-icon-name="StatusCircleCheckmark"
                                 role="presentation"
+                                style={
+                                  Object {
+                                    "fontFamily": "\\"FabricMDL2Icons\\"",
+                                  }
+                                }
                               >
                                 
                               </i>
@@ -3591,6 +3671,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                         >
                           <div
                             aria-colindex={2}
+                            aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
                                 {
@@ -3653,6 +3734,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                 className=
                                     ms-Button
                                     ms-Button--icon
+                                    ms-Button--hasMenu
                                     {
                                       -moz-osx-font-smoothing: grayscale;
                                       -webkit-font-smoothing: antialiased;
@@ -3668,7 +3750,6 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                       font-size: 14px;
                                       font-weight: 400;
                                       height: inherit;
-                                      min-width: 32px;
                                       outline: transparent;
                                       padding-bottom: 0;
                                       padding-left: 4px;
@@ -3679,6 +3760,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                       text-decoration: none;
                                       user-select: none;
                                       vertical-align: top;
+                                      width: auto;
                                     }
                                     &::-moz-focus-inner {
                                       border: 0;
@@ -3771,6 +3853,11 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                         }
                                     data-icon-name="MoreVertical"
                                     role="presentation"
+                                    style={
+                                      Object {
+                                        "fontFamily": "\\"FabricMDL2Icons\\"",
+                                      }
+                                    }
                                   >
                                     
                                   </i>
@@ -3780,6 +3867,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                           </div>
                           <div
                             aria-colindex={3}
+                            aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
                                 {
@@ -3838,6 +3926,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                           </div>
                           <div
                             aria-colindex={4}
+                            aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
                                 {
@@ -3896,6 +3985,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                           </div>
                           <div
                             aria-colindex={5}
+                            aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
                                 {
@@ -4234,6 +4324,11 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                     }
                                 data-icon-name="CircleRing"
                                 role="presentation"
+                                style={
+                                  Object {
+                                    "fontFamily": "\\"FabricMDL2Icons\\"",
+                                  }
+                                }
                               >
                                 
                               </i>
@@ -4273,6 +4368,11 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                     }
                                 data-icon-name="StatusCircleCheckmark"
                                 role="presentation"
+                                style={
+                                  Object {
+                                    "fontFamily": "\\"FabricMDL2Icons\\"",
+                                  }
+                                }
                               >
                                 
                               </i>
@@ -4291,6 +4391,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                         >
                           <div
                             aria-colindex={2}
+                            aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
                                 {
@@ -4353,6 +4454,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                 className=
                                     ms-Button
                                     ms-Button--icon
+                                    ms-Button--hasMenu
                                     {
                                       -moz-osx-font-smoothing: grayscale;
                                       -webkit-font-smoothing: antialiased;
@@ -4368,7 +4470,6 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                       font-size: 14px;
                                       font-weight: 400;
                                       height: inherit;
-                                      min-width: 32px;
                                       outline: transparent;
                                       padding-bottom: 0;
                                       padding-left: 4px;
@@ -4379,6 +4480,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                       text-decoration: none;
                                       user-select: none;
                                       vertical-align: top;
+                                      width: auto;
                                     }
                                     &::-moz-focus-inner {
                                       border: 0;
@@ -4471,6 +4573,11 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                         }
                                     data-icon-name="MoreVertical"
                                     role="presentation"
+                                    style={
+                                      Object {
+                                        "fontFamily": "\\"FabricMDL2Icons\\"",
+                                      }
+                                    }
                                   >
                                     
                                   </i>
@@ -4480,6 +4587,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                           </div>
                           <div
                             aria-colindex={3}
+                            aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
                                 {
@@ -4538,6 +4646,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                           </div>
                           <div
                             aria-colindex={4}
+                            aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
                                 {
@@ -4596,6 +4705,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                           </div>
                           <div
                             aria-colindex={5}
+                            aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
                                 {
@@ -4934,6 +5044,11 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                     }
                                 data-icon-name="CircleRing"
                                 role="presentation"
+                                style={
+                                  Object {
+                                    "fontFamily": "\\"FabricMDL2Icons\\"",
+                                  }
+                                }
                               >
                                 
                               </i>
@@ -4973,6 +5088,11 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                     }
                                 data-icon-name="StatusCircleCheckmark"
                                 role="presentation"
+                                style={
+                                  Object {
+                                    "fontFamily": "\\"FabricMDL2Icons\\"",
+                                  }
+                                }
                               >
                                 
                               </i>
@@ -4991,6 +5111,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                         >
                           <div
                             aria-colindex={2}
+                            aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
                                 {
@@ -5053,6 +5174,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                 className=
                                     ms-Button
                                     ms-Button--icon
+                                    ms-Button--hasMenu
                                     {
                                       -moz-osx-font-smoothing: grayscale;
                                       -webkit-font-smoothing: antialiased;
@@ -5068,7 +5190,6 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                       font-size: 14px;
                                       font-weight: 400;
                                       height: inherit;
-                                      min-width: 32px;
                                       outline: transparent;
                                       padding-bottom: 0;
                                       padding-left: 4px;
@@ -5079,6 +5200,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                       text-decoration: none;
                                       user-select: none;
                                       vertical-align: top;
+                                      width: auto;
                                     }
                                     &::-moz-focus-inner {
                                       border: 0;
@@ -5171,6 +5293,11 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                         }
                                     data-icon-name="MoreVertical"
                                     role="presentation"
+                                    style={
+                                      Object {
+                                        "fontFamily": "\\"FabricMDL2Icons\\"",
+                                      }
+                                    }
                                   >
                                     
                                   </i>
@@ -5180,6 +5307,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                           </div>
                           <div
                             aria-colindex={3}
+                            aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
                                 {
@@ -5238,6 +5366,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                           </div>
                           <div
                             aria-colindex={4}
+                            aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
                                 {
@@ -5296,6 +5425,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                           </div>
                           <div
                             aria-colindex={5}
+                            aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
                                 {
@@ -5634,6 +5764,11 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                     }
                                 data-icon-name="CircleRing"
                                 role="presentation"
+                                style={
+                                  Object {
+                                    "fontFamily": "\\"FabricMDL2Icons\\"",
+                                  }
+                                }
                               >
                                 
                               </i>
@@ -5673,6 +5808,11 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                     }
                                 data-icon-name="StatusCircleCheckmark"
                                 role="presentation"
+                                style={
+                                  Object {
+                                    "fontFamily": "\\"FabricMDL2Icons\\"",
+                                  }
+                                }
                               >
                                 
                               </i>
@@ -5691,6 +5831,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                         >
                           <div
                             aria-colindex={2}
+                            aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
                                 {
@@ -5753,6 +5894,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                 className=
                                     ms-Button
                                     ms-Button--icon
+                                    ms-Button--hasMenu
                                     {
                                       -moz-osx-font-smoothing: grayscale;
                                       -webkit-font-smoothing: antialiased;
@@ -5768,7 +5910,6 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                       font-size: 14px;
                                       font-weight: 400;
                                       height: inherit;
-                                      min-width: 32px;
                                       outline: transparent;
                                       padding-bottom: 0;
                                       padding-left: 4px;
@@ -5779,6 +5920,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                       text-decoration: none;
                                       user-select: none;
                                       vertical-align: top;
+                                      width: auto;
                                     }
                                     &::-moz-focus-inner {
                                       border: 0;
@@ -5871,6 +6013,11 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                         }
                                     data-icon-name="MoreVertical"
                                     role="presentation"
+                                    style={
+                                      Object {
+                                        "fontFamily": "\\"FabricMDL2Icons\\"",
+                                      }
+                                    }
                                   >
                                     
                                   </i>
@@ -5880,6 +6027,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                           </div>
                           <div
                             aria-colindex={3}
+                            aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
                                 {
@@ -5938,6 +6086,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                           </div>
                           <div
                             aria-colindex={4}
+                            aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
                                 {
@@ -5996,6 +6145,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                           </div>
                           <div
                             aria-colindex={5}
+                            aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
                                 {
@@ -6334,6 +6484,11 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                     }
                                 data-icon-name="CircleRing"
                                 role="presentation"
+                                style={
+                                  Object {
+                                    "fontFamily": "\\"FabricMDL2Icons\\"",
+                                  }
+                                }
                               >
                                 
                               </i>
@@ -6373,6 +6528,11 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                     }
                                 data-icon-name="StatusCircleCheckmark"
                                 role="presentation"
+                                style={
+                                  Object {
+                                    "fontFamily": "\\"FabricMDL2Icons\\"",
+                                  }
+                                }
                               >
                                 
                               </i>
@@ -6391,6 +6551,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                         >
                           <div
                             aria-colindex={2}
+                            aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
                                 {
@@ -6453,6 +6614,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                 className=
                                     ms-Button
                                     ms-Button--icon
+                                    ms-Button--hasMenu
                                     {
                                       -moz-osx-font-smoothing: grayscale;
                                       -webkit-font-smoothing: antialiased;
@@ -6468,7 +6630,6 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                       font-size: 14px;
                                       font-weight: 400;
                                       height: inherit;
-                                      min-width: 32px;
                                       outline: transparent;
                                       padding-bottom: 0;
                                       padding-left: 4px;
@@ -6479,6 +6640,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                       text-decoration: none;
                                       user-select: none;
                                       vertical-align: top;
+                                      width: auto;
                                     }
                                     &::-moz-focus-inner {
                                       border: 0;
@@ -6571,6 +6733,11 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                         }
                                     data-icon-name="MoreVertical"
                                     role="presentation"
+                                    style={
+                                      Object {
+                                        "fontFamily": "\\"FabricMDL2Icons\\"",
+                                      }
+                                    }
                                   >
                                     
                                   </i>
@@ -6580,6 +6747,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                           </div>
                           <div
                             aria-colindex={3}
+                            aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
                                 {
@@ -6638,6 +6806,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                           </div>
                           <div
                             aria-colindex={4}
+                            aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
                                 {
@@ -6696,6 +6865,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                           </div>
                           <div
                             aria-colindex={5}
+                            aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
                                 {
@@ -7034,6 +7204,11 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                     }
                                 data-icon-name="CircleRing"
                                 role="presentation"
+                                style={
+                                  Object {
+                                    "fontFamily": "\\"FabricMDL2Icons\\"",
+                                  }
+                                }
                               >
                                 
                               </i>
@@ -7073,6 +7248,11 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                     }
                                 data-icon-name="StatusCircleCheckmark"
                                 role="presentation"
+                                style={
+                                  Object {
+                                    "fontFamily": "\\"FabricMDL2Icons\\"",
+                                  }
+                                }
                               >
                                 
                               </i>
@@ -7091,6 +7271,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                         >
                           <div
                             aria-colindex={2}
+                            aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
                                 {
@@ -7153,6 +7334,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                 className=
                                     ms-Button
                                     ms-Button--icon
+                                    ms-Button--hasMenu
                                     {
                                       -moz-osx-font-smoothing: grayscale;
                                       -webkit-font-smoothing: antialiased;
@@ -7168,7 +7350,6 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                       font-size: 14px;
                                       font-weight: 400;
                                       height: inherit;
-                                      min-width: 32px;
                                       outline: transparent;
                                       padding-bottom: 0;
                                       padding-left: 4px;
@@ -7179,6 +7360,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                       text-decoration: none;
                                       user-select: none;
                                       vertical-align: top;
+                                      width: auto;
                                     }
                                     &::-moz-focus-inner {
                                       border: 0;
@@ -7271,6 +7453,11 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                         }
                                     data-icon-name="MoreVertical"
                                     role="presentation"
+                                    style={
+                                      Object {
+                                        "fontFamily": "\\"FabricMDL2Icons\\"",
+                                      }
+                                    }
                                   >
                                     
                                   </i>
@@ -7280,6 +7467,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                           </div>
                           <div
                             aria-colindex={3}
+                            aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
                                 {
@@ -7338,6 +7526,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                           </div>
                           <div
                             aria-colindex={4}
+                            aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
                                 {
@@ -7396,6 +7585,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                           </div>
                           <div
                             aria-colindex={5}
+                            aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
                                 {
@@ -7734,6 +7924,11 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                     }
                                 data-icon-name="CircleRing"
                                 role="presentation"
+                                style={
+                                  Object {
+                                    "fontFamily": "\\"FabricMDL2Icons\\"",
+                                  }
+                                }
                               >
                                 
                               </i>
@@ -7773,6 +7968,11 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                     }
                                 data-icon-name="StatusCircleCheckmark"
                                 role="presentation"
+                                style={
+                                  Object {
+                                    "fontFamily": "\\"FabricMDL2Icons\\"",
+                                  }
+                                }
                               >
                                 
                               </i>
@@ -7791,6 +7991,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                         >
                           <div
                             aria-colindex={2}
+                            aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
                                 {
@@ -7853,6 +8054,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                 className=
                                     ms-Button
                                     ms-Button--icon
+                                    ms-Button--hasMenu
                                     {
                                       -moz-osx-font-smoothing: grayscale;
                                       -webkit-font-smoothing: antialiased;
@@ -7868,7 +8070,6 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                       font-size: 14px;
                                       font-weight: 400;
                                       height: inherit;
-                                      min-width: 32px;
                                       outline: transparent;
                                       padding-bottom: 0;
                                       padding-left: 4px;
@@ -7879,6 +8080,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                       text-decoration: none;
                                       user-select: none;
                                       vertical-align: top;
+                                      width: auto;
                                     }
                                     &::-moz-focus-inner {
                                       border: 0;
@@ -7971,6 +8173,11 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                         }
                                     data-icon-name="MoreVertical"
                                     role="presentation"
+                                    style={
+                                      Object {
+                                        "fontFamily": "\\"FabricMDL2Icons\\"",
+                                      }
+                                    }
                                   >
                                     
                                   </i>
@@ -7980,6 +8187,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                           </div>
                           <div
                             aria-colindex={3}
+                            aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
                                 {
@@ -8038,6 +8246,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                           </div>
                           <div
                             aria-colindex={4}
+                            aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
                                 {
@@ -8096,6 +8305,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                           </div>
                           <div
                             aria-colindex={5}
+                            aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
                                 {

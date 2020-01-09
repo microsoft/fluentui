@@ -6,6 +6,7 @@ import { Popup } from '../../Popup';
 import { getTheme, IconFontSizes, IProcessedStyleSet } from '../../Styling';
 import {
   allowScrollOnElement,
+  allowOverscrollOnElement,
   BaseComponent,
   classNamesFunction,
   divProperties,
@@ -45,22 +46,32 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
   private _classNames: IProcessedStyleSet<IPanelStyles>;
   private _scrollableContent: HTMLDivElement | null;
   private _animationCallback: number | null = null;
+  private _allowTouchBodyScroll: boolean;
 
-  public static getDerivedStateFromProps(props: IPanelProps, state: IPanelState): IPanelState {
-    if (props.isOpen === undefined) {
-      return state;
+  public static getDerivedStateFromProps(nextProps: Readonly<IPanelProps>, prevState: Readonly<IPanelState>): Partial<IPanelState> | null {
+    if (nextProps.isOpen === undefined) {
+      return null; // no state update
     }
-    if (props.isOpen && (state.visibility === PanelVisibilityState.closed || state.visibility === PanelVisibilityState.animatingClosed)) {
-      return { ...state, visibility: PanelVisibilityState.animatingOpen };
+    if (
+      nextProps.isOpen &&
+      (prevState.visibility === PanelVisibilityState.closed || prevState.visibility === PanelVisibilityState.animatingClosed)
+    ) {
+      return { visibility: PanelVisibilityState.animatingOpen };
     }
-    if (!props.isOpen && (state.visibility === PanelVisibilityState.open || state.visibility === PanelVisibilityState.animatingOpen)) {
-      return { ...state, visibility: PanelVisibilityState.animatingClosed };
+    if (
+      !nextProps.isOpen &&
+      (prevState.visibility === PanelVisibilityState.open || prevState.visibility === PanelVisibilityState.animatingOpen)
+    ) {
+      return { visibility: PanelVisibilityState.animatingClosed };
     }
-    return state;
+    return null;
   }
 
   constructor(props: IPanelProps) {
     super(props);
+
+    const { allowTouchBodyScroll = false } = this.props;
+    this._allowTouchBodyScroll = allowTouchBodyScroll;
 
     this._warnDeprecations({
       ignoreExternalFocusing: 'focusTrapZoneProps',
@@ -136,7 +147,7 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
     } = this.props;
     const { isFooterSticky, visibility, id } = this.state;
     const isLeft = type === PanelType.smallFixedNear || type === PanelType.customNear ? true : false;
-    const isRTL = getRTL();
+    const isRTL = getRTL(theme);
     const isOnRightSide = isRTL ? isLeft : !isLeft;
     const headerTextId = headerText && id + '-headerText';
     const customWidthStyles = type === PanelType.custom || type === PanelType.customNear ? { width: customWidth } : {};
@@ -163,7 +174,7 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
       type
     });
 
-    const { _classNames } = this;
+    const { _classNames, _allowTouchBodyScroll } = this;
 
     let overlay;
     if (isBlocking && isOpen) {
@@ -172,6 +183,7 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
           className={_classNames.overlay}
           isDarkThemed={false}
           onClick={isLightDismiss ? onLightDismissClick : undefined}
+          allowTouchBodyScroll={_allowTouchBodyScroll}
           {...overlayProps}
         />
       );
@@ -262,7 +274,11 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
   // Allow the user to scroll within the panel but not on the body
   private _allowScrollOnPanel = (elt: HTMLDivElement | null): void => {
     if (elt) {
-      allowScrollOnElement(elt, this._events);
+      if (this._allowTouchBodyScroll) {
+        allowOverscrollOnElement(elt, this._events);
+      } else {
+        allowScrollOnElement(elt, this._events);
+      }
     } else {
       this._events.off(this._scrollableContent);
     }
@@ -365,7 +381,7 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
 
   private _dismissOnOuterClick(ev: any): void {
     const panel = this._panel.current;
-    if (this.isActive && panel) {
+    if (this.isActive && panel && !ev.defaultPrevented()) {
       if (!elementContains(panel, ev.target)) {
         if (this.props.onOuterClick) {
           this.props.onOuterClick();

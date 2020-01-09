@@ -1,4 +1,4 @@
-import { getGlobalClassNames, hiddenContentStyle, HighContrastSelector } from '../../Styling';
+import { getGlobalClassNames, getInputFocusStyle, hiddenContentStyle, HighContrastSelector } from '../../Styling';
 import { IBasePickerStyleProps, IBasePickerStyles } from './BasePicker.types';
 
 const GlobalClassNames = {
@@ -14,7 +14,7 @@ export function getStyles(props: IBasePickerStyleProps): IBasePickerStyles {
   if (!theme) {
     throw new Error('theme is undefined or null in base BasePicker getStyles function.');
   }
-  const { semanticColors, effects } = theme;
+  const { semanticColors, effects, fonts } = theme;
   const { inputBorder, inputBorderHovered, inputFocusBorderAlt } = semanticColors;
 
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
@@ -48,12 +48,9 @@ export function getStyles(props: IBasePickerStyleProps): IBasePickerStyles {
             }
           }
         },
-      isFocused &&
-        !disabled && {
-          borderColor: inputFocusBorderAlt
-        },
+      isFocused && !disabled && getInputFocusStyle(inputFocusBorderAlt, effects.roundedCorner2),
       disabled && {
-        borderColor: 'transparent',
+        borderColor: disabledOverlayColor,
         selectors: {
           ':after': {
             content: '""',
@@ -85,6 +82,7 @@ export function getStyles(props: IBasePickerStyleProps): IBasePickerStyles {
     ],
     input: [
       classNames.input,
+      fonts.medium,
       {
         height: 30,
         border: 'none',
@@ -93,7 +91,8 @@ export function getStyles(props: IBasePickerStyleProps): IBasePickerStyles {
         padding: '0 6px 0',
         alignSelf: 'flex-end',
         borderRadius: effects.roundedCorner2,
-        backgroundColor: 'transparent'
+        backgroundColor: 'transparent',
+        color: semanticColors.inputText
       },
       inputClassName
     ],

@@ -62,6 +62,7 @@ exports[`Component Examples renders TextField.ErrorMessage.Example.tsx correctly
             padding-left: 0;
             padding-right: 0;
             padding-top: 5px;
+            word-break: break-all;
             word-wrap: break-word;
           }
       htmlFor="Toggle0"
@@ -135,7 +136,7 @@ exports[`Component Examples renders TextField.ErrorMessage.Example.tsx correctly
         role="switch"
         type="button"
       >
-        <div
+        <span
           className=
               ms-Toggle-thumb
               {
@@ -145,6 +146,7 @@ exports[`Component Examples renders TextField.ErrorMessage.Example.tsx correctly
                 border-style: solid;
                 border-width: .28em;
                 box-sizing: border-box;
+                display: block;
                 height: 12px;
                 transition: all 0.1s ease;
                 width: 12px;

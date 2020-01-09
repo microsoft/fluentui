@@ -22,9 +22,21 @@ export function initializeIcons(
     },
     fontFace: {
       fontFamily: `"FabricMDL2Icons-4"`,
-      src: `url('${baseUrl}fabric-icons-4-013130c8.woff') format('woff')`
+      src: `url('${baseUrl}fabric-icons-4-a656cc0a.woff') format('woff')`
     },
     icons: {
+      'HelpMirrored': '\uEA51',
+      'ImportMirrored': '\uEA52',
+      'ImportAllMirrored': '\uEA53',
+      'ListMirrored': '\uEA55',
+      'MailForwardMirrored': '\uEA56',
+      'MailReplyMirrored': '\uEA57',
+      'MailReplyAllMirrored': '\uEA58',
+      'MiniContractMirrored': '\uEA59',
+      'MiniExpandMirrored': '\uEA5A',
+      'OpenPaneMirrored': '\uEA5B',
+      'ParkingLocationMirrored': '\uEA5E',
+      'SendMirrored': '\uEA63',
       'ShowResultsMirrored': '\uEA65',
       'ThumbnailViewMirrored': '\uEA67',
       'Media': '\uEA69',
@@ -112,19 +124,7 @@ export function initializeIcons(
       'EditMirrored': '\uEB7E',
       'GiftCard': '\uEB8E',
       'DoubleBookmark': '\uEB8F',
-      'StatusErrorFull': '\uEB90',
-      'Certificate': '\uEB95',
-      'FastForward': '\uEB9D',
-      'Rewind': '\uEB9E',
-      'Photo2': '\uEB9F',
-      'OpenSource': '\uEBC2',
-      'Movers': '\uEBCD',
-      'CloudDownload': '\uEBD3',
-      'Family': '\uEBDA',
-      'WindDirection': '\uEBE6',
-      'Bug': '\uEBE8',
-      'SiteScan': '\uEBEC',
-      'BrowserScreenShot': '\uEBED'
+      'StatusErrorFull': '\uEB90'
     }
   };
 

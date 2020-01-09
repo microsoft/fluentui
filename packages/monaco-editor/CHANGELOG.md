@@ -1,7 +1,55 @@
 # Change Log - @uifabric/monaco-editor
 
-This log was last generated on Thu, 19 Sep 2019 13:05:24 GMT and should not be manually modified.
+This log was last generated on Thu, 09 Jan 2020 12:34:52 GMT and should not be manually modified.
 
+## 0.5.0
+Thu, 09 Jan 2020 12:34:52 GMT
+
+### Minor changes
+
+- Update Monaco and fix worker loader in Chrome (elcraig@microsoft.com)
+## 0.4.1
+Wed, 08 Jan 2020 17:02:57 GMT
+
+### Patches
+
+- bumping load-themed-styles to take advantage of es6 version of it (kchau@microsoft.com)
+## 0.4.0
+Mon, 28 Oct 2019 22:25:45 GMT
+
+### Minor changes
+
+- Pick up new Monaco version and try a different cross-domain worker loading method (elcraig@microsoft.com)
+## 0.3.0
+Fri, 04 Oct 2019 22:19:48 GMT
+
+### Minor changes
+
+- Fix monaco bundle paths to use transformed CSS (elcraig@microsoft.com)
+## 0.2.4
+Thu, 03 Oct 2019 23:14:46 GMT
+
+### Patches
+
+- Fixes broken publish (odbuild@microsoft.com)
+## 0.2.3
+Thu, 03 Oct 2019 01:14:35 GMT
+
+### Patches
+
+- Move monaco-editor to a non-dev dependency (elcraig@microsoft.com)
+## 0.2.2
+Mon, 30 Sep 2019 12:35:16 GMT
+
+### Patches
+
+- Fix inference of cross-domain setting (elcraig@microsoft.com)
+## 0.2.1
+Tue, 24 Sep 2019 12:35:43 GMT
+
+### Patches
+
+- Build commonjs variant (elcraig@microsoft.com)
 ## 0.2.0
 Thu, 19 Sep 2019 13:05:24 GMT
 

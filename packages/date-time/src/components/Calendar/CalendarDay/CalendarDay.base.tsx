@@ -17,14 +17,17 @@ export interface ICalendarDayState {
 export class CalendarDayBase extends BaseComponent<ICalendarDayProps, ICalendarDayState> {
   private _dayGrid = React.createRef<ICalendarDayGrid>();
 
-  public static getDerivedStateFromProps(props: ICalendarDayProps, state: ICalendarDayState): ICalendarDayState {
-    const { dateTimeFormatter, strings } = props;
+  public static getDerivedStateFromProps(
+    nextProps: Readonly<ICalendarDayProps>,
+    prevState: Readonly<ICalendarDayState>
+  ): Partial<ICalendarDayState> | null {
+    const { dateTimeFormatter, strings } = nextProps;
 
-    const previousDate = state && state.previousNavigatedDate;
-    const nextDate = props.navigatedDate;
+    const previousDate = prevState && prevState.previousNavigatedDate;
+    const nextDate = nextProps.navigatedDate;
     if (!previousDate) {
       return {
-        previousNavigatedDate: props.navigatedDate
+        previousNavigatedDate: nextProps.navigatedDate
       };
     }
 
@@ -32,18 +35,18 @@ export class CalendarDayBase extends BaseComponent<ICalendarDayProps, ICalendarD
       if (previousDate < nextDate) {
         return {
           animateBackwards: false,
-          previousNavigatedDate: props.navigatedDate
+          previousNavigatedDate: nextProps.navigatedDate
         };
       } else if (previousDate > nextDate) {
         return {
           animateBackwards: true,
-          previousNavigatedDate: props.navigatedDate
+          previousNavigatedDate: nextProps.navigatedDate
         };
       }
     }
 
     return {
-      previousNavigatedDate: props.navigatedDate
+      previousNavigatedDate: nextProps.navigatedDate
     };
   }
 
@@ -90,9 +93,7 @@ export class CalendarDayBase extends BaseComponent<ICalendarDayProps, ICalendarD
       <div className={classNames.root} id={dayPickerId}>
         <div className={classNames.header}>
           <button
-            key={dateTimeFormatter.formatMonthYear(navigatedDate, strings)}
-            aria-live="polite"
-            aria-relevant="text"
+            aria-live="polite" // if this component rerenders when text changes, aria-live will not be announced, so make key consistent
             aria-atomic="true"
             id={monthAndYearId}
             className={classNames.monthAndYear}

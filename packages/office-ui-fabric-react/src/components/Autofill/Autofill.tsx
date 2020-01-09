@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { IAutofillProps, IAutofill } from './Autofill.types';
-import { BaseComponent, KeyCodes, getNativeProps, inputProperties } from '../../Utilities';
+import { BaseComponent, KeyCodes, getNativeProps, inputProperties, isIE11 } from '../../Utilities';
 
 export interface IAutofillState {
   displayValue?: string;
@@ -119,11 +119,12 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
     const nativeProps = getNativeProps<React.InputHTMLAttributes<HTMLInputElement>>(this.props, inputProperties);
     return (
       <input
+        autoCapitalize="off"
+        autoComplete="off"
+        aria-autocomplete={'both'}
         {...nativeProps}
         ref={this._inputElement}
         value={displayValue}
-        autoCapitalize={'off'}
-        autoComplete={'off'}
         onCompositionStart={this._onCompositionStart}
         onCompositionUpdate={this._onCompositionUpdate}
         onCompositionEnd={this._onCompositionEnd}
@@ -143,7 +144,7 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
 
   public clear() {
     this._autoFillEnabled = true;
-    this._updateValue('');
+    this._updateValue('', false);
     this._inputElement.current && this._inputElement.current.setSelectionRange(0, 0);
   }
 
@@ -159,7 +160,9 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
   // Some examples of this are mobile text input and languages like Japanese or Arabic.
   // Find out more at https://developer.mozilla.org/en-US/docs/Web/Events/compositionstart
   private _onCompositionUpdate = () => {
-    this._updateValue(this._getCurrentInputValue());
+    if (isIE11()) {
+      this._updateValue(this._getCurrentInputValue(), true);
+    }
   };
 
   // Composition events are used when the character/text requires several keystrokes to be completed.
@@ -171,8 +174,10 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
     this._isComposing = false;
     // Due to timing, this needs to be async, otherwise no text will be selected.
     this._async.setTimeout(() => {
-      // Call getCurrentInputValue here again since there can be a race condition where this value has changed during the async cal
-      this._updateValue(this._getCurrentInputValue());
+      // it's technically possible that the value of _isComposing is reset during this timeout,
+      // so explicitly trigger this with composing=true here, since it is supposed to be the
+      // update for composition end
+      this._updateValue(this._getCurrentInputValue(), false);
     }, 0);
   };
 
@@ -215,12 +220,15 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
   private _onInputChanged = (ev: React.FormEvent<HTMLElement>) => {
     const value: string = this._getCurrentInputValue(ev);
 
-    // Right now typing does not have isComposing, once that has been fixed any should be removed.
-    this._tryEnableAutofill(value, this._value, (ev.nativeEvent as any).isComposing);
-
-    // If is currently composing, rely on onCompositionUpdate event instead of onInput
     if (!this._isComposing) {
-      this._updateValue(value);
+      this._tryEnableAutofill(value, this._value, (ev.nativeEvent as any).isComposing);
+    }
+
+    // If it is not IE11 and currently composing, update the value
+    if (!(isIE11() && this._isComposing)) {
+      const nativeEventComposing = (ev.nativeEvent as any).isComposing;
+      const isComposing = nativeEventComposing === undefined ? this._isComposing : nativeEventComposing;
+      this._updateValue(value, isComposing);
     }
   };
 
@@ -264,9 +272,9 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
     }
   }
 
-  private _notifyInputChange(newValue: string): void {
+  private _notifyInputChange(newValue: string, composing: boolean): void {
     if (this.props.onInputValueChange) {
-      this.props.onInputValueChange(newValue);
+      this.props.onInputValueChange(newValue, composing);
     }
   }
 
@@ -274,18 +282,18 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
    * Updates the current input value as well as getting a new display value.
    * @param newValue - The new value from the input
    */
-  private _updateValue = (newValue: string) => {
+  private _updateValue = (newValue: string, composing: boolean) => {
     // Only proceed if the value is nonempty and is different from the old value
     // This is to work around the fact that, in IE 11, inputs with a placeholder fire an onInput event on focus
     if (!newValue && newValue === this._value) {
       return;
     }
-    this._value = this.props.onInputChange ? this.props.onInputChange(newValue) : newValue;
+    this._value = this.props.onInputChange ? this.props.onInputChange(newValue, composing) : newValue;
     this.setState(
       {
         displayValue: this._getDisplayValue(this._value, this.props.suggestedDisplayValue)
       },
-      () => this._notifyInputChange(this._value)
+      () => this._notifyInputChange(this._value, composing)
     );
   };
 

@@ -124,7 +124,7 @@ export class SearchBoxBase extends React.Component<ISearchBoxProps, ISearchBoxSt
           value={value}
           disabled={disabled}
           role="searchbox"
-          aria-label={ariaLabel ? ariaLabel : placeholder}
+          aria-label={ariaLabel}
           ref={this._inputElement}
         />
         {value!.length > 0 && (

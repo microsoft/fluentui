@@ -27,6 +27,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
       }
     >
       <div
+        aria-orientation="vertical"
         className=
             ms-FocusZone
             ms-OverflowSet
@@ -43,7 +44,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
-        role="menubar"
+        role="menu"
       >
         <div
           className=
@@ -188,6 +189,11 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                     }
                 data-icon-name="Add"
                 role="presentation"
+                style={
+                  Object {
+                    "fontFamily": "\\"FabricMDL2Icons\\"",
+                  }
+                }
               >
                 
               </i>
@@ -362,6 +368,11 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                     }
                 data-icon-name="Share"
                 role="presentation"
+                style={
+                  Object {
+                    "fontFamily": "\\"FabricMDL2Icons\\"",
+                  }
+                }
               >
                 
               </i>
@@ -536,6 +547,11 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                     }
                 data-icon-name="Upload"
                 role="presentation"
+                style={
+                  Object {
+                    "fontFamily": "\\"FabricMDL2Icons\\"",
+                  }
+                }
               >
                 
               </i>
@@ -710,6 +726,11 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                     }
                 data-icon-name="Add"
                 role="presentation"
+                style={
+                  Object {
+                    "fontFamily": "\\"FabricMDL2Icons\\"",
+                  }
+                }
               >
                 
               </i>
@@ -884,6 +905,11 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                     }
                 data-icon-name="Share"
                 role="presentation"
+                style={
+                  Object {
+                    "fontFamily": "\\"FabricMDL2Icons\\"",
+                  }
+                }
               >
                 
               </i>
@@ -1058,6 +1084,11 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                     }
                 data-icon-name="Upload"
                 role="presentation"
+                style={
+                  Object {
+                    "fontFamily": "\\"FabricMDL2Icons\\"",
+                  }
+                }
               >
                 
               </i>
@@ -1232,6 +1263,11 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                     }
                 data-icon-name="Add"
                 role="presentation"
+                style={
+                  Object {
+                    "fontFamily": "\\"FabricMDL2Icons\\"",
+                  }
+                }
               >
                 
               </i>
@@ -1406,6 +1442,11 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                     }
                 data-icon-name="Share"
                 role="presentation"
+                style={
+                  Object {
+                    "fontFamily": "\\"FabricMDL2Icons\\"",
+                  }
+                }
               >
                 
               </i>
@@ -1580,6 +1621,11 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                     }
                 data-icon-name="Upload"
                 role="presentation"
+                style={
+                  Object {
+                    "fontFamily": "\\"FabricMDL2Icons\\"",
+                  }
+                }
               >
                 
               </i>
@@ -1754,6 +1800,11 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                     }
                 data-icon-name="Add"
                 role="presentation"
+                style={
+                  Object {
+                    "fontFamily": "\\"FabricMDL2Icons\\"",
+                  }
+                }
               >
                 
               </i>
@@ -1928,6 +1979,11 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                     }
                 data-icon-name="Share"
                 role="presentation"
+                style={
+                  Object {
+                    "fontFamily": "\\"FabricMDL2Icons\\"",
+                  }
+                }
               >
                 
               </i>
@@ -2102,6 +2158,11 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                     }
                 data-icon-name="Upload"
                 role="presentation"
+                style={
+                  Object {
+                    "fontFamily": "\\"FabricMDL2Icons\\"",
+                  }
+                }
               >
                 
               </i>
@@ -2276,6 +2337,11 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                     }
                 data-icon-name="Add"
                 role="presentation"
+                style={
+                  Object {
+                    "fontFamily": "\\"FabricMDL2Icons\\"",
+                  }
+                }
               >
                 
               </i>
@@ -2450,6 +2516,11 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                     }
                 data-icon-name="Share"
                 role="presentation"
+                style={
+                  Object {
+                    "fontFamily": "\\"FabricMDL2Icons\\"",
+                  }
+                }
               >
                 
               </i>
@@ -2624,6 +2695,11 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                     }
                 data-icon-name="Upload"
                 role="presentation"
+                style={
+                  Object {
+                    "fontFamily": "\\"FabricMDL2Icons\\"",
+                  }
+                }
               >
                 
               </i>
@@ -2798,6 +2874,11 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                     }
                 data-icon-name="Add"
                 role="presentation"
+                style={
+                  Object {
+                    "fontFamily": "\\"FabricMDL2Icons\\"",
+                  }
+                }
               >
                 
               </i>
@@ -2972,6 +3053,11 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                     }
                 data-icon-name="Share"
                 role="presentation"
+                style={
+                  Object {
+                    "fontFamily": "\\"FabricMDL2Icons\\"",
+                  }
+                }
               >
                 
               </i>
@@ -3146,6 +3232,11 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                     }
                 data-icon-name="Upload"
                 role="presentation"
+                style={
+                  Object {
+                    "fontFamily": "\\"FabricMDL2Icons\\"",
+                  }
+                }
               >
                 
               </i>
@@ -3320,6 +3411,11 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                     }
                 data-icon-name="Add"
                 role="presentation"
+                style={
+                  Object {
+                    "fontFamily": "\\"FabricMDL2Icons\\"",
+                  }
+                }
               >
                 
               </i>
@@ -3494,6 +3590,11 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                     }
                 data-icon-name="Share"
                 role="presentation"
+                style={
+                  Object {
+                    "fontFamily": "\\"FabricMDL2Icons\\"",
+                  }
+                }
               >
                 
               </i>

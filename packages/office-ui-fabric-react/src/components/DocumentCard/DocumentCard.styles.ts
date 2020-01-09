@@ -1,4 +1,5 @@
-import { getGlobalClassNames } from '../../Styling';
+import { getGlobalClassNames, getInputFocusStyle } from '../../Styling';
+import { IsFocusVisibleClassName } from '../../Utilities';
 import { IDocumentCardStyleProps, IDocumentCardStyles } from './DocumentCard.types';
 import { DocumentCardPreviewGlobalClassNames as previewClassNames } from './DocumentCardPreview.styles';
 import { DocumentCardActivityGlobalClassNames as activityClassNames } from './DocumentCardActivity.styles';
@@ -13,7 +14,7 @@ const GlobalClassNames = {
 
 export const getStyles = (props: IDocumentCardStyleProps): IDocumentCardStyles => {
   const { className, theme, actionable, compact } = props;
-  const { palette, fonts } = theme;
+  const { palette, fonts, effects } = theme;
 
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
@@ -24,12 +25,15 @@ export const getStyles = (props: IDocumentCardStyleProps): IDocumentCardStyles =
         WebkitFontSmoothing: 'antialiased',
         backgroundColor: palette.white,
         border: `1px solid ${palette.neutralLight}`,
-        boxSizing: 'border-box',
         maxWidth: '320px',
         minWidth: '206px',
         userSelect: 'none',
         position: 'relative',
         selectors: {
+          ':focus': {
+            outline: '0px solid'
+          },
+          [`.${IsFocusVisibleClassName} &:focus`]: getInputFocusStyle(palette.neutralSecondary, effects.roundedCorner2),
           [`.${locationClassNames.root} + .${titleClassNames.root}`]: {
             paddingTop: '4px'
           }

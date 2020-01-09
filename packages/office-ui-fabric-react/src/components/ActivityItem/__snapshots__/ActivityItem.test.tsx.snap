@@ -77,6 +77,7 @@ exports[`ActivityItem renders compact with a single persona correctly 1`] = `
               overflow: visible;
               width: 8px;
             }
+        role="presentation"
         style={
           Object {
             "display": "inline-block",
@@ -96,6 +97,7 @@ exports[`ActivityItem renders compact with a single persona correctly 1`] = `
                 text-align: center;
                 width: 16px;
               }
+          role="presentation"
         >
           <div
             aria-hidden="true"
@@ -214,13 +216,12 @@ exports[`ActivityItem renders compact with an icon correctly 1`] = `
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
             display: inline-block;
-            font-family: "FabricMDL2Icons-1";
+            font-family: "FabricMDL2Icons-2";
             font-style: normal;
             font-weight: normal;
             speak: none;
           }
       data-icon-name="Message"
-      role="presentation"
     >
       
     </i>
@@ -353,6 +354,7 @@ exports[`ActivityItem renders compact with animation correctly 1`] = `
               overflow: visible;
               width: 8px;
             }
+        role="presentation"
         style={
           Object {
             "display": "inline-block",
@@ -372,6 +374,7 @@ exports[`ActivityItem renders compact with animation correctly 1`] = `
                 text-align: center;
                 width: 16px;
               }
+          role="presentation"
         >
           <div
             aria-hidden="true"
@@ -514,6 +517,7 @@ exports[`ActivityItem renders compact with multiple personas correctly 1`] = `
               overflow: visible;
               width: 8px;
             }
+        role="presentation"
         style={
           Object {
             "display": "inline-block",
@@ -533,6 +537,7 @@ exports[`ActivityItem renders compact with multiple personas correctly 1`] = `
                 text-align: center;
                 width: 16px;
               }
+          role="presentation"
         >
           <div
             aria-hidden="true"
@@ -580,6 +585,7 @@ exports[`ActivityItem renders compact with multiple personas correctly 1`] = `
               overflow: visible;
               width: 8px;
             }
+        role="presentation"
         style={
           Object {
             "display": "inline-block",
@@ -599,6 +605,7 @@ exports[`ActivityItem renders compact with multiple personas correctly 1`] = `
                 text-align: center;
                 width: 16px;
               }
+          role="presentation"
         >
           <div
             className=
@@ -670,6 +677,7 @@ exports[`ActivityItem renders compact with multiple personas correctly 1`] = `
               overflow: visible;
               width: 8px;
             }
+        role="presentation"
         style={
           Object {
             "display": "inline-block",
@@ -689,6 +697,7 @@ exports[`ActivityItem renders compact with multiple personas correctly 1`] = `
                 text-align: center;
                 width: 16px;
               }
+          role="presentation"
         >
           <div
             aria-hidden="true"
@@ -802,6 +811,7 @@ exports[`ActivityItem renders with a single persona correctly 1`] = `
               font-size: 14px;
               font-weight: 400;
             }
+        role="presentation"
       >
         <div
           className=
@@ -813,6 +823,7 @@ exports[`ActivityItem renders with a single persona correctly 1`] = `
                 text-align: center;
                 width: 32px;
               }
+          role="presentation"
         >
           <div
             aria-hidden="true"
@@ -931,13 +942,12 @@ exports[`ActivityItem renders with an icon correctly 1`] = `
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
             display: inline-block;
-            font-family: "FabricMDL2Icons-1";
+            font-family: "FabricMDL2Icons-2";
             font-style: normal;
             font-weight: normal;
             speak: none;
           }
       data-icon-name="Message"
-      role="presentation"
     >
       
     </i>
@@ -1043,6 +1053,7 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
               font-size: 14px;
               font-weight: 400;
             }
+        role="presentation"
       >
         <div
           className=
@@ -1054,6 +1065,7 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
                 text-align: center;
                 width: 16px;
               }
+          role="presentation"
         >
           <div
             aria-hidden="true"
@@ -1098,6 +1110,7 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
               font-size: 14px;
               font-weight: 400;
             }
+        role="presentation"
       >
         <div
           className=
@@ -1109,6 +1122,7 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
                 text-align: center;
                 width: 16px;
               }
+          role="presentation"
         >
           <div
             className=
@@ -1177,6 +1191,7 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
               font-size: 14px;
               font-weight: 400;
             }
+        role="presentation"
       >
         <div
           className=
@@ -1188,6 +1203,7 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
                 text-align: center;
                 width: 16px;
               }
+          role="presentation"
         >
           <div
             aria-hidden="true"
@@ -1232,6 +1248,7 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
               font-size: 14px;
               font-weight: 400;
             }
+        role="presentation"
       >
         <div
           className=
@@ -1243,6 +1260,7 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
                 text-align: center;
                 width: 16px;
               }
+          role="presentation"
         >
           <div
             className=

@@ -58,7 +58,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
               padding-top: 5px;
               word-wrap: break-word;
             }
-        htmlFor="ComboBox0-input"
         id="ComboBox0-label"
       >
         Single-select ComboBox (uncontrolled, allowFreeform: T, autoComplete: T)
@@ -70,7 +69,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
               background-color: #ffffff;
-              border-color: #8a8886;
+              border-color: #605e5c;
               border-radius: 2px;
               border-style: solid;
               border-width: 1px;
@@ -99,22 +98,11 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
               display: inline-block;
               margin-bottom: 8px;
             }
-            &.is-open {
-              border-color: #8a8886;
-            }
             @media screen and (-ms-high-contrast: active){&.is-open {
               -ms-high-contrast-adjust: none;
               background-color: Window;
               border-color: Highlight;
-              border-width: 2px;
               color: HighlightText;
-              padding-bottom: 0;
-              padding-left: 11px;
-              padding-top: 0;
-            }
-            @media screen and (-ms-high-contrast: active){&.is-open .ms-ComboBox-CaretDown-button {
-              right: -2px;
-              top: -2px;
             }
             &:hover {
               border-color: #323130;
@@ -125,11 +113,25 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
             &:hover .ms-ComboBox-Input::placeholder {
               color: #201f1e;
             }
+            @media screen and (-ms-high-contrast: active){&:hover .ms-ComboBox-Input::placeholder {
+              color: GrayText;
+            }
             &:hover .ms-ComboBox-Input:-ms-input-placeholder {
               color: #201f1e;
             }
+            @media screen and (-ms-high-contrast: active){&:hover .ms-ComboBox-Input:-ms-input-placeholder {
+              color: GrayText;
+            }
             &:hover .ms-ComboBox-Input::-ms-input-placeholder {
               color: #201f1e;
+            }
+            @media screen and (-ms-high-contrast: active){&:hover .ms-ComboBox-Input::-ms-input-placeholder {
+              color: GrayText;
+            }
+            @media screen and (-ms-high-contrast: active){&:hover .ms-ComboBox-Input {
+              -ms-high-contrast-adjust: none;
+              background-color: Window;
+              color: WindowText;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
               -ms-high-contrast-adjust: none;
@@ -139,20 +141,27 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
             }
             &:active {
               border-color: #0078d4;
+              position: relative;
             }
             @media screen and (-ms-high-contrast: active){&:active {
               -ms-high-contrast-adjust: none;
               background-color: Window;
               border-color: Highlight;
-              border-width: 2px;
               color: HighlightText;
-              padding-bottom: 0;
-              padding-left: 11px;
-              padding-top: 0;
             }
-            @media screen and (-ms-high-contrast: active){&:active .ms-ComboBox-CaretDown-button {
-              right: -2px;
-              top: -2px;
+            &:active:after {
+              border-radius: 2px;
+              border: 2px solid #0078d4;
+              bottom: -1px;
+              content: '';
+              left: -1px;
+              pointer-events: none;
+              position: absolute;
+              right: -1px;
+              top: -1px;
+            }
+            @media screen and (-ms-high-contrast: active){&:active:after {
+              border-color: Highlight;
             }
             &:focus {
               border-color: #0078d4;
@@ -160,19 +169,30 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
             &:focus .ms-ComboBox-Input {
               color: #201f1e;
             }
+            @media screen and (-ms-high-contrast: active){&:focus .ms-ComboBox-Input {
+              -ms-high-contrast-adjust: none;
+              background-color: Window;
+              color: WindowText;
+            }
             @media screen and (-ms-high-contrast: active){&:focus {
               -ms-high-contrast-adjust: none;
               background-color: Window;
               border-color: Highlight;
-              border-width: 2px;
               color: HighlightText;
-              padding-bottom: 0;
-              padding-left: 11px;
-              padding-top: 0;
             }
-            @media screen and (-ms-high-contrast: active){&:focus .ms-ComboBox-CaretDown-button {
-              right: -2px;
-              top: -2px;
+            &:focus:after {
+              border-radius: 2px;
+              border: 2px solid #0078d4;
+              bottom: -1px;
+              content: '';
+              left: -1px;
+              pointer-events: none;
+              position: absolute;
+              right: -1px;
+              top: -1px;
+            }
+            @media screen and (-ms-high-contrast: active){&:focus:after {
+              border-color: Highlight;
             }
         id="ComboBox0wrapper"
       >
@@ -202,14 +222,28 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
               &::placeholder {
                 color: #605e5c;
               }
+              @media screen and (-ms-high-contrast: active){&::placeholder {
+                color: GrayText;
+              }
               &:-ms-input-placeholder {
                 color: #605e5c;
+              }
+              @media screen and (-ms-high-contrast: active){&:-ms-input-placeholder {
+                color: GrayText;
               }
               &::-ms-input-placeholder {
                 color: #605e5c;
               }
+              @media screen and (-ms-high-contrast: active){&::-ms-input-placeholder {
+                color: GrayText;
+              }
               &::-ms-clear {
                 display: none;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                -ms-high-contrast-adjust: none;
+                background-color: Window;
+                color: WindowText;
               }
           data-is-interactable={true}
           data-lpignore={true}
@@ -252,17 +286,14 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                 font-weight: 400;
                 height: 32px;
                 line-height: 30px;
-                min-width: 32px;
                 outline: transparent;
                 padding-bottom: 0;
                 padding-left: 4px;
                 padding-right: 4px;
                 padding-top: 0;
                 position: absolute;
-                right: -1px;
                 text-align: center;
                 text-decoration: none;
-                top: -1px;
                 user-select: none;
                 vertical-align: top;
                 width: 32px;
@@ -306,12 +337,20 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                 cursor: pointer;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
+                -ms-high-contrast-adjust: none;
+                background-color: Highlight;
                 border-color: Highlight;
-                color: Highlight;
+                color: HighlightText;
               }
               &:active {
                 background-color: #edebe9;
                 color: #201f1e;
+              }
+              @media screen and (-ms-high-contrast: active){&:active {
+                -ms-high-contrast-adjust: none;
+                background-color: Highlight;
+                border-color: Highlight;
+                color: HighlightText;
               }
           data-is-focusable={false}
           onBlur={[Function]}
@@ -367,11 +406,25 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                   }
               data-icon-name="ChevronDown"
               role="presentation"
+              style={
+                Object {
+                  "fontFamily": "\\"FabricMDL2Icons\\"",
+                }
+              }
             >
               
             </i>
           </span>
         </button>
+      </div>
+      <div
+        aria-atomic="true"
+        aria-live="polite"
+        className=""
+        id="ComboBox0-error"
+        role="region"
+      >
+        
       </div>
     </div>
     <button
@@ -383,7 +436,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
             -webkit-font-smoothing: antialiased;
             background-color: #0078d4;
             border-radius: 2px;
-            border: none;
+            border: 1px solid #0078d4;
             box-sizing: border-box;
             color: #ffffff;
             cursor: pointer;
@@ -435,23 +488,28 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
           @media screen and (-ms-high-contrast: active){& {
             -ms-high-contrast-adjust: none;
             background-color: WindowText;
+            border-color: WindowText;
             color: Window;
           }
           &:hover {
             background-color: #106ebe;
+            border: 1px solid #106ebe;
             color: #ffffff;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
             background-color: Highlight;
+            border-color: Highlight;
             color: Window;
           }
           &:active {
             background-color: #005a9e;
+            border: 1px solid #005a9e;
             color: #ffffff;
           }
           @media screen and (-ms-high-contrast: active){&:active {
             -ms-high-contrast-adjust: none;
             background-color: WindowText;
+            border-color: WindowText;
             color: Window;
           }
       data-is-focusable={true}
@@ -536,10 +594,30 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
             padding-top: 5px;
             word-wrap: break-word;
           }
-      htmlFor="ComboBox7-input"
       id="ComboBox7-label"
     >
       Multi-select ComboBox (uncontrolled)
+      <span
+        className=
+
+            {
+              border: 0px;
+              height: 1px;
+              margin-bottom: -1px;
+              margin-left: -1px;
+              margin-right: -1px;
+              margin-top: -1px;
+              overflow: hidden;
+              padding-bottom: 0px;
+              padding-left: 0px;
+              padding-right: 0px;
+              padding-top: 0px;
+              position: absolute;
+              width: 1px;
+            }
+      >
+        Option C, Option E
+      </span>
     </label>
     <div
       className=
@@ -548,7 +626,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
             background-color: #ffffff;
-            border-color: #8a8886;
+            border-color: #605e5c;
             border-radius: 2px;
             border-style: solid;
             border-width: 1px;
@@ -577,22 +655,11 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
             display: inline-block;
             margin-bottom: 8px;
           }
-          &.is-open {
-            border-color: #8a8886;
-          }
           @media screen and (-ms-high-contrast: active){&.is-open {
             -ms-high-contrast-adjust: none;
             background-color: Window;
             border-color: Highlight;
-            border-width: 2px;
             color: HighlightText;
-            padding-bottom: 0;
-            padding-left: 11px;
-            padding-top: 0;
-          }
-          @media screen and (-ms-high-contrast: active){&.is-open .ms-ComboBox-CaretDown-button {
-            right: -2px;
-            top: -2px;
           }
           &:hover {
             border-color: #323130;
@@ -603,11 +670,25 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
           &:hover .ms-ComboBox-Input::placeholder {
             color: #201f1e;
           }
+          @media screen and (-ms-high-contrast: active){&:hover .ms-ComboBox-Input::placeholder {
+            color: GrayText;
+          }
           &:hover .ms-ComboBox-Input:-ms-input-placeholder {
             color: #201f1e;
           }
+          @media screen and (-ms-high-contrast: active){&:hover .ms-ComboBox-Input:-ms-input-placeholder {
+            color: GrayText;
+          }
           &:hover .ms-ComboBox-Input::-ms-input-placeholder {
             color: #201f1e;
+          }
+          @media screen and (-ms-high-contrast: active){&:hover .ms-ComboBox-Input::-ms-input-placeholder {
+            color: GrayText;
+          }
+          @media screen and (-ms-high-contrast: active){&:hover .ms-ComboBox-Input {
+            -ms-high-contrast-adjust: none;
+            background-color: Window;
+            color: WindowText;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
             -ms-high-contrast-adjust: none;
@@ -617,20 +698,27 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
           }
           &:active {
             border-color: #0078d4;
+            position: relative;
           }
           @media screen and (-ms-high-contrast: active){&:active {
             -ms-high-contrast-adjust: none;
             background-color: Window;
             border-color: Highlight;
-            border-width: 2px;
             color: HighlightText;
-            padding-bottom: 0;
-            padding-left: 11px;
-            padding-top: 0;
           }
-          @media screen and (-ms-high-contrast: active){&:active .ms-ComboBox-CaretDown-button {
-            right: -2px;
-            top: -2px;
+          &:active:after {
+            border-radius: 2px;
+            border: 2px solid #0078d4;
+            bottom: -1px;
+            content: '';
+            left: -1px;
+            pointer-events: none;
+            position: absolute;
+            right: -1px;
+            top: -1px;
+          }
+          @media screen and (-ms-high-contrast: active){&:active:after {
+            border-color: Highlight;
           }
           &:focus {
             border-color: #0078d4;
@@ -638,19 +726,30 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
           &:focus .ms-ComboBox-Input {
             color: #201f1e;
           }
+          @media screen and (-ms-high-contrast: active){&:focus .ms-ComboBox-Input {
+            -ms-high-contrast-adjust: none;
+            background-color: Window;
+            color: WindowText;
+          }
           @media screen and (-ms-high-contrast: active){&:focus {
             -ms-high-contrast-adjust: none;
             background-color: Window;
             border-color: Highlight;
-            border-width: 2px;
             color: HighlightText;
-            padding-bottom: 0;
-            padding-left: 11px;
-            padding-top: 0;
           }
-          @media screen and (-ms-high-contrast: active){&:focus .ms-ComboBox-CaretDown-button {
-            right: -2px;
-            top: -2px;
+          &:focus:after {
+            border-radius: 2px;
+            border: 2px solid #0078d4;
+            bottom: -1px;
+            content: '';
+            left: -1px;
+            pointer-events: none;
+            position: absolute;
+            right: -1px;
+            top: -1px;
+          }
+          @media screen and (-ms-high-contrast: active){&:focus:after {
+            border-color: Highlight;
           }
       id="ComboBox7wrapper"
     >
@@ -680,14 +779,28 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
             &::placeholder {
               color: #605e5c;
             }
+            @media screen and (-ms-high-contrast: active){&::placeholder {
+              color: GrayText;
+            }
             &:-ms-input-placeholder {
               color: #605e5c;
+            }
+            @media screen and (-ms-high-contrast: active){&:-ms-input-placeholder {
+              color: GrayText;
             }
             &::-ms-input-placeholder {
               color: #605e5c;
             }
+            @media screen and (-ms-high-contrast: active){&::-ms-input-placeholder {
+              color: GrayText;
+            }
             &::-ms-clear {
               display: none;
+            }
+            @media screen and (-ms-high-contrast: active){& {
+              -ms-high-contrast-adjust: none;
+              background-color: Window;
+              color: WindowText;
             }
         data-is-interactable={true}
         data-lpignore={true}
@@ -730,17 +843,14 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
               font-weight: 400;
               height: 32px;
               line-height: 30px;
-              min-width: 32px;
               outline: transparent;
               padding-bottom: 0;
               padding-left: 4px;
               padding-right: 4px;
               padding-top: 0;
               position: absolute;
-              right: -1px;
               text-align: center;
               text-decoration: none;
-              top: -1px;
               user-select: none;
               vertical-align: top;
               width: 32px;
@@ -784,12 +894,20 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
               cursor: pointer;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
+              -ms-high-contrast-adjust: none;
+              background-color: Highlight;
               border-color: Highlight;
-              color: Highlight;
+              color: HighlightText;
             }
             &:active {
               background-color: #edebe9;
               color: #201f1e;
+            }
+            @media screen and (-ms-high-contrast: active){&:active {
+              -ms-high-contrast-adjust: none;
+              background-color: Highlight;
+              border-color: Highlight;
+              color: HighlightText;
             }
         data-is-focusable={false}
         onBlur={[Function]}
@@ -845,11 +963,25 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                 }
             data-icon-name="ChevronDown"
             role="presentation"
+            style={
+              Object {
+                "fontFamily": "\\"FabricMDL2Icons\\"",
+              }
+            }
           >
             
           </i>
         </span>
       </button>
+    </div>
+    <div
+      aria-atomic="true"
+      aria-live="polite"
+      className=""
+      id="ComboBox7-error"
+      role="region"
+    >
+      
     </div>
   </div>
   <div
@@ -879,7 +1011,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
             padding-top: 5px;
             word-wrap: break-word;
           }
-      htmlFor="ComboBox11-input"
       id="ComboBox11-label"
     >
       ComboBox with placeholder text
@@ -891,7 +1022,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
             background-color: #ffffff;
-            border-color: #8a8886;
+            border-color: #605e5c;
             border-radius: 2px;
             border-style: solid;
             border-width: 1px;
@@ -920,22 +1051,11 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
             display: inline-block;
             margin-bottom: 8px;
           }
-          &.is-open {
-            border-color: #8a8886;
-          }
           @media screen and (-ms-high-contrast: active){&.is-open {
             -ms-high-contrast-adjust: none;
             background-color: Window;
             border-color: Highlight;
-            border-width: 2px;
             color: HighlightText;
-            padding-bottom: 0;
-            padding-left: 11px;
-            padding-top: 0;
-          }
-          @media screen and (-ms-high-contrast: active){&.is-open .ms-ComboBox-CaretDown-button {
-            right: -2px;
-            top: -2px;
           }
           &:hover {
             border-color: #323130;
@@ -946,11 +1066,25 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
           &:hover .ms-ComboBox-Input::placeholder {
             color: #201f1e;
           }
+          @media screen and (-ms-high-contrast: active){&:hover .ms-ComboBox-Input::placeholder {
+            color: GrayText;
+          }
           &:hover .ms-ComboBox-Input:-ms-input-placeholder {
             color: #201f1e;
           }
+          @media screen and (-ms-high-contrast: active){&:hover .ms-ComboBox-Input:-ms-input-placeholder {
+            color: GrayText;
+          }
           &:hover .ms-ComboBox-Input::-ms-input-placeholder {
             color: #201f1e;
+          }
+          @media screen and (-ms-high-contrast: active){&:hover .ms-ComboBox-Input::-ms-input-placeholder {
+            color: GrayText;
+          }
+          @media screen and (-ms-high-contrast: active){&:hover .ms-ComboBox-Input {
+            -ms-high-contrast-adjust: none;
+            background-color: Window;
+            color: WindowText;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
             -ms-high-contrast-adjust: none;
@@ -960,20 +1094,27 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
           }
           &:active {
             border-color: #0078d4;
+            position: relative;
           }
           @media screen and (-ms-high-contrast: active){&:active {
             -ms-high-contrast-adjust: none;
             background-color: Window;
             border-color: Highlight;
-            border-width: 2px;
             color: HighlightText;
-            padding-bottom: 0;
-            padding-left: 11px;
-            padding-top: 0;
           }
-          @media screen and (-ms-high-contrast: active){&:active .ms-ComboBox-CaretDown-button {
-            right: -2px;
-            top: -2px;
+          &:active:after {
+            border-radius: 2px;
+            border: 2px solid #0078d4;
+            bottom: -1px;
+            content: '';
+            left: -1px;
+            pointer-events: none;
+            position: absolute;
+            right: -1px;
+            top: -1px;
+          }
+          @media screen and (-ms-high-contrast: active){&:active:after {
+            border-color: Highlight;
           }
           &:focus {
             border-color: #0078d4;
@@ -981,19 +1122,30 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
           &:focus .ms-ComboBox-Input {
             color: #201f1e;
           }
+          @media screen and (-ms-high-contrast: active){&:focus .ms-ComboBox-Input {
+            -ms-high-contrast-adjust: none;
+            background-color: Window;
+            color: WindowText;
+          }
           @media screen and (-ms-high-contrast: active){&:focus {
             -ms-high-contrast-adjust: none;
             background-color: Window;
             border-color: Highlight;
-            border-width: 2px;
             color: HighlightText;
-            padding-bottom: 0;
-            padding-left: 11px;
-            padding-top: 0;
           }
-          @media screen and (-ms-high-contrast: active){&:focus .ms-ComboBox-CaretDown-button {
-            right: -2px;
-            top: -2px;
+          &:focus:after {
+            border-radius: 2px;
+            border: 2px solid #0078d4;
+            bottom: -1px;
+            content: '';
+            left: -1px;
+            pointer-events: none;
+            position: absolute;
+            right: -1px;
+            top: -1px;
+          }
+          @media screen and (-ms-high-contrast: active){&:focus:after {
+            border-color: Highlight;
           }
       id="ComboBox11wrapper"
     >
@@ -1023,14 +1175,28 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
             &::placeholder {
               color: #605e5c;
             }
+            @media screen and (-ms-high-contrast: active){&::placeholder {
+              color: GrayText;
+            }
             &:-ms-input-placeholder {
               color: #605e5c;
+            }
+            @media screen and (-ms-high-contrast: active){&:-ms-input-placeholder {
+              color: GrayText;
             }
             &::-ms-input-placeholder {
               color: #605e5c;
             }
+            @media screen and (-ms-high-contrast: active){&::-ms-input-placeholder {
+              color: GrayText;
+            }
             &::-ms-clear {
               display: none;
+            }
+            @media screen and (-ms-high-contrast: active){& {
+              -ms-high-contrast-adjust: none;
+              background-color: Window;
+              color: WindowText;
             }
         data-is-interactable={true}
         data-lpignore={true}
@@ -1074,17 +1240,14 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
               font-weight: 400;
               height: 32px;
               line-height: 30px;
-              min-width: 32px;
               outline: transparent;
               padding-bottom: 0;
               padding-left: 4px;
               padding-right: 4px;
               padding-top: 0;
               position: absolute;
-              right: -1px;
               text-align: center;
               text-decoration: none;
-              top: -1px;
               user-select: none;
               vertical-align: top;
               width: 32px;
@@ -1128,12 +1291,20 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
               cursor: pointer;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
+              -ms-high-contrast-adjust: none;
+              background-color: Highlight;
               border-color: Highlight;
-              color: Highlight;
+              color: HighlightText;
             }
             &:active {
               background-color: #edebe9;
               color: #201f1e;
+            }
+            @media screen and (-ms-high-contrast: active){&:active {
+              -ms-high-contrast-adjust: none;
+              background-color: Highlight;
+              border-color: Highlight;
+              color: HighlightText;
             }
         data-is-focusable={false}
         onBlur={[Function]}
@@ -1189,11 +1360,25 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                 }
             data-icon-name="ChevronDown"
             role="presentation"
+            style={
+              Object {
+                "fontFamily": "\\"FabricMDL2Icons\\"",
+              }
+            }
           >
             
           </i>
         </span>
       </button>
+    </div>
+    <div
+      aria-atomic="true"
+      aria-live="polite"
+      className=""
+      id="ComboBox11-error"
+      role="region"
+    >
+      
     </div>
   </div>
   <div
@@ -1223,7 +1408,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
             padding-top: 5px;
             word-wrap: break-word;
           }
-      htmlFor="ComboBox15-input"
       id="ComboBox15-label"
     >
       ComboBox with persisted menu
@@ -1235,7 +1419,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
             background-color: #ffffff;
-            border-color: #8a8886;
+            border-color: #605e5c;
             border-radius: 2px;
             border-style: solid;
             border-width: 1px;
@@ -1264,22 +1448,11 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
             display: inline-block;
             margin-bottom: 8px;
           }
-          &.is-open {
-            border-color: #8a8886;
-          }
           @media screen and (-ms-high-contrast: active){&.is-open {
             -ms-high-contrast-adjust: none;
             background-color: Window;
             border-color: Highlight;
-            border-width: 2px;
             color: HighlightText;
-            padding-bottom: 0;
-            padding-left: 11px;
-            padding-top: 0;
-          }
-          @media screen and (-ms-high-contrast: active){&.is-open .ms-ComboBox-CaretDown-button {
-            right: -2px;
-            top: -2px;
           }
           &:hover {
             border-color: #323130;
@@ -1290,11 +1463,25 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
           &:hover .ms-ComboBox-Input::placeholder {
             color: #201f1e;
           }
+          @media screen and (-ms-high-contrast: active){&:hover .ms-ComboBox-Input::placeholder {
+            color: GrayText;
+          }
           &:hover .ms-ComboBox-Input:-ms-input-placeholder {
             color: #201f1e;
           }
+          @media screen and (-ms-high-contrast: active){&:hover .ms-ComboBox-Input:-ms-input-placeholder {
+            color: GrayText;
+          }
           &:hover .ms-ComboBox-Input::-ms-input-placeholder {
             color: #201f1e;
+          }
+          @media screen and (-ms-high-contrast: active){&:hover .ms-ComboBox-Input::-ms-input-placeholder {
+            color: GrayText;
+          }
+          @media screen and (-ms-high-contrast: active){&:hover .ms-ComboBox-Input {
+            -ms-high-contrast-adjust: none;
+            background-color: Window;
+            color: WindowText;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
             -ms-high-contrast-adjust: none;
@@ -1304,20 +1491,27 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
           }
           &:active {
             border-color: #0078d4;
+            position: relative;
           }
           @media screen and (-ms-high-contrast: active){&:active {
             -ms-high-contrast-adjust: none;
             background-color: Window;
             border-color: Highlight;
-            border-width: 2px;
             color: HighlightText;
-            padding-bottom: 0;
-            padding-left: 11px;
-            padding-top: 0;
           }
-          @media screen and (-ms-high-contrast: active){&:active .ms-ComboBox-CaretDown-button {
-            right: -2px;
-            top: -2px;
+          &:active:after {
+            border-radius: 2px;
+            border: 2px solid #0078d4;
+            bottom: -1px;
+            content: '';
+            left: -1px;
+            pointer-events: none;
+            position: absolute;
+            right: -1px;
+            top: -1px;
+          }
+          @media screen and (-ms-high-contrast: active){&:active:after {
+            border-color: Highlight;
           }
           &:focus {
             border-color: #0078d4;
@@ -1325,19 +1519,30 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
           &:focus .ms-ComboBox-Input {
             color: #201f1e;
           }
+          @media screen and (-ms-high-contrast: active){&:focus .ms-ComboBox-Input {
+            -ms-high-contrast-adjust: none;
+            background-color: Window;
+            color: WindowText;
+          }
           @media screen and (-ms-high-contrast: active){&:focus {
             -ms-high-contrast-adjust: none;
             background-color: Window;
             border-color: Highlight;
-            border-width: 2px;
             color: HighlightText;
-            padding-bottom: 0;
-            padding-left: 11px;
-            padding-top: 0;
           }
-          @media screen and (-ms-high-contrast: active){&:focus .ms-ComboBox-CaretDown-button {
-            right: -2px;
-            top: -2px;
+          &:focus:after {
+            border-radius: 2px;
+            border: 2px solid #0078d4;
+            bottom: -1px;
+            content: '';
+            left: -1px;
+            pointer-events: none;
+            position: absolute;
+            right: -1px;
+            top: -1px;
+          }
+          @media screen and (-ms-high-contrast: active){&:focus:after {
+            border-color: Highlight;
           }
       id="ComboBox15wrapper"
     >
@@ -1367,14 +1572,28 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
             &::placeholder {
               color: #605e5c;
             }
+            @media screen and (-ms-high-contrast: active){&::placeholder {
+              color: GrayText;
+            }
             &:-ms-input-placeholder {
               color: #605e5c;
+            }
+            @media screen and (-ms-high-contrast: active){&:-ms-input-placeholder {
+              color: GrayText;
             }
             &::-ms-input-placeholder {
               color: #605e5c;
             }
+            @media screen and (-ms-high-contrast: active){&::-ms-input-placeholder {
+              color: GrayText;
+            }
             &::-ms-clear {
               display: none;
+            }
+            @media screen and (-ms-high-contrast: active){& {
+              -ms-high-contrast-adjust: none;
+              background-color: Window;
+              color: WindowText;
             }
         data-is-interactable={true}
         data-lpignore={true}
@@ -1417,17 +1636,14 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
               font-weight: 400;
               height: 32px;
               line-height: 30px;
-              min-width: 32px;
               outline: transparent;
               padding-bottom: 0;
               padding-left: 4px;
               padding-right: 4px;
               padding-top: 0;
               position: absolute;
-              right: -1px;
               text-align: center;
               text-decoration: none;
-              top: -1px;
               user-select: none;
               vertical-align: top;
               width: 32px;
@@ -1471,12 +1687,20 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
               cursor: pointer;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
+              -ms-high-contrast-adjust: none;
+              background-color: Highlight;
               border-color: Highlight;
-              color: Highlight;
+              color: HighlightText;
             }
             &:active {
               background-color: #edebe9;
               color: #201f1e;
+            }
+            @media screen and (-ms-high-contrast: active){&:active {
+              -ms-high-contrast-adjust: none;
+              background-color: Highlight;
+              border-color: Highlight;
+              color: HighlightText;
             }
         data-is-focusable={false}
         onBlur={[Function]}
@@ -1532,6 +1756,11 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                 }
             data-icon-name="ChevronDown"
             role="presentation"
+            style={
+              Object {
+                "fontFamily": "\\"FabricMDL2Icons\\"",
+              }
+            }
           >
             
           </i>
@@ -1589,6 +1818,10 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
         onMouseOver={[Function]}
         onMouseUp={[Function]}
         onSubmit={[Function]}
+        onTouchCancel={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
       >
         <div
           className=
@@ -1627,6 +1860,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                   border: 0px;
                 }
             hidden={true}
+            onMouseDown={[Function]}
             onScroll={[Function]}
             style={
               Object {
@@ -1789,6 +2023,9 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                         &.ms-Button--command:hover:active {
                           background-color: #edebe9;
                         }
+                        & .ms-Checkbox-label {
+                          width: 100%;
+                        }
                         &:hover {
                           background-color: #f3f2f1;
                           color: #201f1e;
@@ -1837,7 +2074,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           }
                       data-automationid="splitbuttonprimary"
                     >
-                       
                       <span
                         className=
 
@@ -1948,8 +2184,17 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                         &.ms-Button--command:hover:active {
                           background-color: #edebe9;
                         }
+                        & .ms-Checkbox-label {
+                          width: 100%;
+                        }
                         &:hover {
                           background-color: #f3f2f1;
+                        }
+                        @media screen and (-ms-high-contrast: active){&:hover {
+                          -ms-high-contrast-adjust: none;
+                          background-color: Highlight;
+                          border-color: Highlight;
+                          color: HighlightText;
                         }
                         .ms-Fabric--isFocusVisible &:after {
                           border: 1px solid #ffffff;
@@ -1990,7 +2235,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           }
                       data-automationid="splitbuttonprimary"
                     >
-                       
                       <span
                         className=
 
@@ -2097,6 +2341,9 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                         &.ms-Button--command:hover:active {
                           background-color: #edebe9;
                         }
+                        & .ms-Checkbox-label {
+                          width: 100%;
+                        }
                         &:hover {
                           background-color: #f3f2f1;
                           color: #201f1e;
@@ -2145,7 +2392,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           }
                       data-automationid="splitbuttonprimary"
                     >
-                       
                       <span
                         className=
 
@@ -2252,6 +2498,9 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                         &.ms-Button--command:hover:active {
                           background-color: #edebe9;
                         }
+                        & .ms-Checkbox-label {
+                          width: 100%;
+                        }
                         &:hover {
                           background-color: #f3f2f1;
                           color: #201f1e;
@@ -2300,7 +2549,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           }
                       data-automationid="splitbuttonprimary"
                     >
-                       
                       <span
                         className=
 
@@ -2456,6 +2704,9 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                         &.ms-Button--command:hover:active {
                           background-color: #edebe9;
                         }
+                        & .ms-Checkbox-label {
+                          width: 100%;
+                        }
                         &:hover {
                           background-color: #f3f2f1;
                           color: #201f1e;
@@ -2504,7 +2755,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           }
                       data-automationid="splitbuttonprimary"
                     >
-                       
                       <span
                         className=
 
@@ -2615,6 +2865,9 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                         &.ms-Button--command:hover:active {
                           background-color: #edebe9;
                         }
+                        & .ms-Checkbox-label {
+                          width: 100%;
+                        }
                         &:hover {
                           outline: 0px;
                         }
@@ -2650,7 +2903,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           }
                       data-automationid="splitbuttonprimary"
                     >
-                       
                       <span
                         className=
 
@@ -2757,6 +3009,9 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                         &.ms-Button--command:hover:active {
                           background-color: #edebe9;
                         }
+                        & .ms-Checkbox-label {
+                          width: 100%;
+                        }
                         &:hover {
                           background-color: #f3f2f1;
                           color: #201f1e;
@@ -2805,7 +3060,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           }
                       data-automationid="splitbuttonprimary"
                     >
-                       
                       <span
                         className=
 
@@ -2912,6 +3166,9 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                         &.ms-Button--command:hover:active {
                           background-color: #edebe9;
                         }
+                        & .ms-Checkbox-label {
+                          width: 100%;
+                        }
                         &:hover {
                           background-color: #f3f2f1;
                           color: #201f1e;
@@ -2960,7 +3217,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           }
                       data-automationid="splitbuttonprimary"
                     >
-                       
                       <span
                         className=
 
@@ -3067,6 +3323,9 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                         &.ms-Button--command:hover:active {
                           background-color: #edebe9;
                         }
+                        & .ms-Checkbox-label {
+                          width: 100%;
+                        }
                         &:hover {
                           background-color: #f3f2f1;
                           color: #201f1e;
@@ -3115,7 +3374,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           }
                       data-automationid="splitbuttonprimary"
                     >
-                       
                       <span
                         className=
 
@@ -3222,6 +3480,9 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                         &.ms-Button--command:hover:active {
                           background-color: #edebe9;
                         }
+                        & .ms-Checkbox-label {
+                          width: 100%;
+                        }
                         &:hover {
                           background-color: #f3f2f1;
                           color: #201f1e;
@@ -3270,7 +3531,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           }
                       data-automationid="splitbuttonprimary"
                     >
-                       
                       <span
                         className=
 
@@ -3306,6 +3566,15 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
         </div>
       </div>
     </span>
+    <div
+      aria-atomic="true"
+      aria-live="polite"
+      className=""
+      id="ComboBox15-error"
+      role="region"
+    >
+      
+    </div>
   </div>
   <div
     className="ms-ComboBox-container "
@@ -3334,10 +3603,9 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
             padding-top: 5px;
             word-wrap: break-word;
           }
-      htmlFor="ComboBox19-input"
       id="ComboBox19-label"
     >
-      ComboBox with error message
+      ComboBox with static error message
     </label>
     <div
       className=
@@ -3359,7 +3627,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
             font-size: 14px;
             font-weight: 400;
             height: 32px;
-            margin-bottom: 5px;
             margin-left: 0;
             outline: 0;
             overflow: hidden;
@@ -3372,43 +3639,39 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
             user-select: none;
             white-space: nowrap;
           }
+          &:hover {
+            border-color: #a4262c;
+          }
           & .ms-Label {
             display: inline-block;
             margin-bottom: 8px;
-          }
-          &.is-open {
-            border-color: #8a8886;
           }
           @media screen and (-ms-high-contrast: active){&.is-open {
             -ms-high-contrast-adjust: none;
             background-color: Window;
             border-color: Highlight;
-            border-width: 2px;
             color: HighlightText;
-            padding-bottom: 0;
-            padding-left: 11px;
-            padding-top: 0;
           }
-          @media screen and (-ms-high-contrast: active){&.is-open .ms-ComboBox-CaretDown-button {
-            right: -2px;
-            top: -2px;
-          }
-          &:hover {
-            border-color: #a4262c;
-            margin-bottom: 5px;
+          &:hover:hover {
+            border-color: #323130;
           }
           &:active {
             border-color: #a4262c;
-            margin-bottom: 5px;
+          }
+          &:active:hover {
+            border-color: #323130;
           }
           &:focus {
             border-color: #a4262c;
-            margin-bottom: 5px;
+          }
+          &:focus:hover {
+            border-color: #323130;
           }
       id="ComboBox19wrapper"
     >
       <input
         aria-autocomplete="both"
+        aria-describedby="ComboBox19-error"
         aria-expanded={false}
         aria-labelledby="ComboBox19-label"
         autoCapitalize="off"
@@ -3433,14 +3696,28 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
             &::placeholder {
               color: #605e5c;
             }
+            @media screen and (-ms-high-contrast: active){&::placeholder {
+              color: GrayText;
+            }
             &:-ms-input-placeholder {
               color: #605e5c;
+            }
+            @media screen and (-ms-high-contrast: active){&:-ms-input-placeholder {
+              color: GrayText;
             }
             &::-ms-input-placeholder {
               color: #605e5c;
             }
+            @media screen and (-ms-high-contrast: active){&::-ms-input-placeholder {
+              color: GrayText;
+            }
             &::-ms-clear {
               display: none;
+            }
+            @media screen and (-ms-high-contrast: active){& {
+              -ms-high-contrast-adjust: none;
+              background-color: Window;
+              color: WindowText;
             }
         data-is-interactable={true}
         data-lpignore={true}
@@ -3483,17 +3760,14 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
               font-weight: 400;
               height: 32px;
               line-height: 30px;
-              min-width: 32px;
               outline: transparent;
               padding-bottom: 0;
               padding-left: 4px;
               padding-right: 4px;
               padding-top: 0;
               position: absolute;
-              right: -1px;
               text-align: center;
               text-decoration: none;
-              top: -1px;
               user-select: none;
               vertical-align: top;
               width: 32px;
@@ -3537,12 +3811,20 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
               cursor: pointer;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
+              -ms-high-contrast-adjust: none;
+              background-color: Highlight;
               border-color: Highlight;
-              color: Highlight;
+              color: HighlightText;
             }
             &:active {
               background-color: #edebe9;
               color: #201f1e;
+            }
+            @media screen and (-ms-high-contrast: active){&:active {
+              -ms-high-contrast-adjust: none;
+              background-color: Highlight;
+              border-color: Highlight;
+              color: HighlightText;
             }
         data-is-focusable={false}
         onBlur={[Function]}
@@ -3598,6 +3880,11 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                 }
             data-icon-name="ChevronDown"
             role="presentation"
+            style={
+              Object {
+                "fontFamily": "\\"FabricMDL2Icons\\"",
+              }
+            }
           >
             
           </i>
@@ -3605,6 +3892,8 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
       </button>
     </div>
     <div
+      aria-atomic="true"
+      aria-live="polite"
       className=
 
           {
@@ -3614,9 +3903,409 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 12px;
             font-weight: 400;
+            margin-top: 5px;
           }
+      id="ComboBox19-error"
+      role="region"
     >
       Oh no! This ComboBox has an error!
+    </div>
+  </div>
+  <div
+    className="ms-ComboBox-container "
+  >
+    <label
+      className=
+          ms-Label
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            box-shadow: none;
+            box-sizing: border-box;
+            color: #323130;
+            display: block;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 0px;
+            margin-left: 0px;
+            margin-right: 0px;
+            margin-top: 0px;
+            overflow-wrap: break-word;
+            padding-bottom: 5px;
+            padding-left: 0;
+            padding-right: 0;
+            padding-top: 5px;
+            word-wrap: break-word;
+          }
+      id="ComboBox23-label"
+    >
+      ComboBox with dynamic error message
+    </label>
+    <div
+      className=
+          ms-ComboBox
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            background-color: #ffffff;
+            border-color: #605e5c;
+            border-radius: 2px;
+            border-style: solid;
+            border-width: 1px;
+            box-shadow: none;
+            box-sizing: border-box;
+            color: #323130;
+            cursor: text;
+            display: block;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            height: 32px;
+            margin-left: 0;
+            outline: 0;
+            overflow: hidden;
+            padding-bottom: 1px;
+            padding-left: 8px;
+            padding-right: 32px;
+            padding-top: 1px;
+            position: relative;
+            text-overflow: ellipsis;
+            user-select: none;
+            white-space: nowrap;
+          }
+          & .ms-Label {
+            display: inline-block;
+            margin-bottom: 8px;
+          }
+          @media screen and (-ms-high-contrast: active){&.is-open {
+            -ms-high-contrast-adjust: none;
+            background-color: Window;
+            border-color: Highlight;
+            color: HighlightText;
+          }
+          &:hover {
+            border-color: #323130;
+          }
+          &:hover .ms-ComboBox-Input {
+            color: #201f1e;
+          }
+          &:hover .ms-ComboBox-Input::placeholder {
+            color: #201f1e;
+          }
+          @media screen and (-ms-high-contrast: active){&:hover .ms-ComboBox-Input::placeholder {
+            color: GrayText;
+          }
+          &:hover .ms-ComboBox-Input:-ms-input-placeholder {
+            color: #201f1e;
+          }
+          @media screen and (-ms-high-contrast: active){&:hover .ms-ComboBox-Input:-ms-input-placeholder {
+            color: GrayText;
+          }
+          &:hover .ms-ComboBox-Input::-ms-input-placeholder {
+            color: #201f1e;
+          }
+          @media screen and (-ms-high-contrast: active){&:hover .ms-ComboBox-Input::-ms-input-placeholder {
+            color: GrayText;
+          }
+          @media screen and (-ms-high-contrast: active){&:hover .ms-ComboBox-Input {
+            -ms-high-contrast-adjust: none;
+            background-color: Window;
+            color: WindowText;
+          }
+          @media screen and (-ms-high-contrast: active){&:hover {
+            -ms-high-contrast-adjust: none;
+            background-color: Window;
+            border-color: Highlight;
+            color: HighlightText;
+          }
+          &:active {
+            border-color: #0078d4;
+            position: relative;
+          }
+          @media screen and (-ms-high-contrast: active){&:active {
+            -ms-high-contrast-adjust: none;
+            background-color: Window;
+            border-color: Highlight;
+            color: HighlightText;
+          }
+          &:active:after {
+            border-radius: 2px;
+            border: 2px solid #0078d4;
+            bottom: -1px;
+            content: '';
+            left: -1px;
+            pointer-events: none;
+            position: absolute;
+            right: -1px;
+            top: -1px;
+          }
+          @media screen and (-ms-high-contrast: active){&:active:after {
+            border-color: Highlight;
+          }
+          &:focus {
+            border-color: #0078d4;
+          }
+          &:focus .ms-ComboBox-Input {
+            color: #201f1e;
+          }
+          @media screen and (-ms-high-contrast: active){&:focus .ms-ComboBox-Input {
+            -ms-high-contrast-adjust: none;
+            background-color: Window;
+            color: WindowText;
+          }
+          @media screen and (-ms-high-contrast: active){&:focus {
+            -ms-high-contrast-adjust: none;
+            background-color: Window;
+            border-color: Highlight;
+            color: HighlightText;
+          }
+          &:focus:after {
+            border-radius: 2px;
+            border: 2px solid #0078d4;
+            bottom: -1px;
+            content: '';
+            left: -1px;
+            pointer-events: none;
+            position: absolute;
+            right: -1px;
+            top: -1px;
+          }
+          @media screen and (-ms-high-contrast: active){&:focus:after {
+            border-color: Highlight;
+          }
+      id="ComboBox23wrapper"
+    >
+      <input
+        aria-autocomplete="both"
+        aria-describedby="ComboBox23-error"
+        aria-expanded={false}
+        aria-labelledby="ComboBox23-label"
+        autoCapitalize="off"
+        autoComplete="off"
+        className=
+            ms-ComboBox-Input
+            {
+              background-color: #ffffff;
+              border-style: none;
+              box-sizing: border-box;
+              color: #323130;
+              font: inherit;
+              height: 28px;
+              outline: none;
+              padding-bottom: 0;
+              padding-left: 0;
+              padding-right: 0;
+              padding-top: 0;
+              text-overflow: ellipsis;
+              width: 100%;
+            }
+            &::placeholder {
+              color: #605e5c;
+            }
+            @media screen and (-ms-high-contrast: active){&::placeholder {
+              color: GrayText;
+            }
+            &:-ms-input-placeholder {
+              color: #605e5c;
+            }
+            @media screen and (-ms-high-contrast: active){&:-ms-input-placeholder {
+              color: GrayText;
+            }
+            &::-ms-input-placeholder {
+              color: #605e5c;
+            }
+            @media screen and (-ms-high-contrast: active){&::-ms-input-placeholder {
+              color: GrayText;
+            }
+            &::-ms-clear {
+              display: none;
+            }
+            @media screen and (-ms-high-contrast: active){& {
+              -ms-high-contrast-adjust: none;
+              background-color: Window;
+              color: WindowText;
+            }
+        data-is-interactable={true}
+        data-lpignore={true}
+        id="ComboBox23-input"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onClick={[Function]}
+        onCompositionEnd={[Function]}
+        onCompositionStart={[Function]}
+        onCompositionUpdate={[Function]}
+        onFocus={[Function]}
+        onInput={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onTouchStart={[Function]}
+        readOnly={true}
+        role="combobox"
+        spellCheck={false}
+        type="text"
+        value=""
+      />
+      <button
+        aria-hidden={true}
+        className=
+            ms-Button
+            ms-Button--icon
+            ms-ComboBox-CaretDown-button
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              background-color: transparent;
+              border-radius: 2px;
+              border: none;
+              box-sizing: border-box;
+              color: #605e5c;
+              cursor: default;
+              display: inline-block;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 12px;
+              font-weight: 400;
+              height: 32px;
+              line-height: 30px;
+              outline: transparent;
+              padding-bottom: 0;
+              padding-left: 4px;
+              padding-right: 4px;
+              padding-top: 0;
+              position: absolute;
+              text-align: center;
+              text-decoration: none;
+              user-select: none;
+              vertical-align: top;
+              width: 32px;
+            }
+            &::-moz-focus-inner {
+              border: 0;
+            }
+            .ms-Fabric--isFocusVisible &:focus:after {
+              border: 1px solid transparent;
+              bottom: 2px;
+              content: "";
+              left: 2px;
+              outline: 1px solid #605e5c;
+              position: absolute;
+              right: 2px;
+              top: 2px;
+              z-index: 1;
+            }
+            @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+              border: none;
+              bottom: -2px;
+              left: -2px;
+              outline-color: ButtonText;
+              right: -2px;
+              top: -2px;
+            }
+            &:active > * {
+              left: 0px;
+              position: relative;
+              top: 0px;
+            }
+            @media screen and (-ms-high-contrast: active){& {
+              -ms-high-contrast-adjust: none;
+              background-color: ButtonFace;
+              border-color: ButtonText;
+              color: ButtonText;
+            }
+            &:hover {
+              background-color: #f3f2f1;
+              color: #201f1e;
+              cursor: pointer;
+            }
+            @media screen and (-ms-high-contrast: active){&:hover {
+              -ms-high-contrast-adjust: none;
+              background-color: Highlight;
+              border-color: Highlight;
+              color: HighlightText;
+            }
+            &:active {
+              background-color: #edebe9;
+              color: #201f1e;
+            }
+            @media screen and (-ms-high-contrast: active){&:active {
+              -ms-high-contrast-adjust: none;
+              background-color: Highlight;
+              border-color: Highlight;
+              color: HighlightText;
+            }
+        data-is-focusable={false}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        onKeyPress={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseUp={[Function]}
+        role="presentation"
+        tabIndex={-1}
+        type="button"
+      >
+        <span
+          className=
+              ms-Button-flexContainer
+              {
+                align-items: center;
+                display: flex;
+                flex-wrap: nowrap;
+                height: 100%;
+                justify-content: center;
+              }
+          data-automationid="splitbuttonprimary"
+        >
+          <i
+            aria-hidden={true}
+            className=
+                ms-Icon
+                ms-Button-icon
+                {
+                  display: inline-block;
+                }
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  font-family: "FabricMDL2Icons";
+                  font-style: normal;
+                  font-weight: normal;
+                  speak: none;
+                }
+                {
+                  flex-shrink: 0;
+                  font-size: 12px;
+                  height: 16px;
+                  line-height: 16px;
+                  margin-bottom: 0;
+                  margin-left: 4px;
+                  margin-right: 4px;
+                  margin-top: 0;
+                  text-align: center;
+                  vertical-align: middle;
+                }
+            data-icon-name="ChevronDown"
+            role="presentation"
+            style={
+              Object {
+                "fontFamily": "\\"FabricMDL2Icons\\"",
+              }
+            }
+          >
+            
+          </i>
+        </span>
+      </button>
+    </div>
+    <div
+      aria-atomic="true"
+      aria-live="polite"
+      className=""
+      id="ComboBox23-error"
+      role="region"
+    >
+      
     </div>
   </div>
   <div
@@ -3649,8 +4338,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
           @media screen and (-ms-high-contrast: active){& {
             color: GrayText;
           }
-      htmlFor="ComboBox23-input"
-      id="ComboBox23-label"
+      id="ComboBox27-label"
     >
       Disabled ComboBox
     </label>
@@ -3691,34 +4379,23 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
             display: inline-block;
             margin-bottom: 8px;
           }
-          &.is-open {
-            border-color: #8a8886;
-          }
           @media screen and (-ms-high-contrast: active){&.is-open {
             -ms-high-contrast-adjust: none;
             background-color: Window;
             border-color: Highlight;
-            border-width: 2px;
             color: HighlightText;
-            padding-bottom: 0;
-            padding-left: 11px;
-            padding-top: 0;
-          }
-          @media screen and (-ms-high-contrast: active){&.is-open .ms-ComboBox-CaretDown-button {
-            right: -2px;
-            top: -2px;
           }
           @media screen and (-ms-high-contrast: active){& {
             border-color: GrayText;
             color: GrayText;
           }
-      id="ComboBox23wrapper"
+      id="ComboBox27wrapper"
     >
       <input
         aria-autocomplete="none"
         aria-disabled={true}
         aria-expanded={false}
-        aria-labelledby="ComboBox23-label"
+        aria-labelledby="ComboBox27-label"
         autoCapitalize="off"
         autoComplete="off"
         className=
@@ -3743,22 +4420,33 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
             &::placeholder {
               color: #a19f9d;
             }
+            @media screen and (-ms-high-contrast: active){&::placeholder {
+              color: GrayText;
+            }
             &:-ms-input-placeholder {
               color: #a19f9d;
             }
+            @media screen and (-ms-high-contrast: active){&:-ms-input-placeholder {
+              color: GrayText;
+            }
             &::-ms-input-placeholder {
               color: #a19f9d;
+            }
+            @media screen and (-ms-high-contrast: active){&::-ms-input-placeholder {
+              color: GrayText;
             }
             &::-ms-clear {
               display: none;
             }
             @media screen and (-ms-high-contrast: active){& {
+              -ms-high-contrast-adjust: none;
+              background-color: Window;
               border-color: GrayText;
               color: GrayText;
             }
         data-is-interactable={false}
         data-lpignore={true}
-        id="ComboBox23-input"
+        id="ComboBox27-input"
         onBlur={[Function]}
         onChange={[Function]}
         onClick={[Function]}
@@ -3800,18 +4488,15 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
               font-weight: 400;
               height: 32px;
               line-height: 30px;
-              min-width: 32px;
               outline: transparent;
               padding-bottom: 0;
               padding-left: 4px;
               padding-right: 4px;
               padding-top: 0;
               pointer-events: none;
-              position: relative;
-              right: -1px;
+              position: absolute;
               text-align: center;
               text-decoration: none;
-              top: -1px;
               user-select: none;
               vertical-align: top;
               width: 32px;
@@ -3911,11 +4596,25 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                 }
             data-icon-name="ChevronDown"
             role="presentation"
+            style={
+              Object {
+                "fontFamily": "\\"FabricMDL2Icons\\"",
+              }
+            }
           >
             
           </i>
         </span>
       </button>
+    </div>
+    <div
+      aria-atomic="true"
+      aria-live="polite"
+      className=""
+      id="ComboBox27-error"
+      role="region"
+    >
+      
     </div>
   </div>
 </div>

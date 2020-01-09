@@ -117,7 +117,7 @@ export interface IPanelProps extends React.HTMLAttributes<PanelBase> {
 
   /**
    * Type of the panel.
-   * @defaultvalue PanelType.smallFixedRight
+   * @defaultvalue PanelType.smallFixedFar
    */
   type?: PanelType;
 
@@ -225,6 +225,12 @@ export interface IPanelProps extends React.HTMLAttributes<PanelBase> {
    * @deprecated Serves no function.
    */
   componentId?: string;
+
+  /**
+   * Allow body scroll on content and overlay on touch devices. Changing after mounting has no effect.
+   * @defaultvalue false
+   */
+  allowTouchBodyScroll?: boolean;
 }
 
 /**

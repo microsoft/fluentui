@@ -12,7 +12,7 @@ export const getStyles = memoizeFunction(
     const iconButtonStyles: IButtonStyles = {
       root: {
         padding: '0 4px',
-        minWidth: '32px',
+        width: '32px',
         height: '32px',
         backgroundColor: 'transparent',
         border: 'none',
@@ -28,6 +28,10 @@ export const getStyles = memoizeFunction(
             color: 'Highlight'
           }
         }
+      },
+
+      rootHasMenu: {
+        width: 'auto'
       },
 
       rootPressed: {
