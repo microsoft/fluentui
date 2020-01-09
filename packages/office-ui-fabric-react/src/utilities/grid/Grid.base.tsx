@@ -17,7 +17,7 @@ export class GridBase extends BaseComponent<IGridProps, {}> implements IGrid {
     const props = this.props;
     const { items, columnCount, onRenderItem, ariaPosInSet = props.positionInSet, ariaSetSize = props.setSize, styles } = props;
 
-    const htmlProps = getNativeProps<React.HTMLAttributes<HTMLTableElement>>(this.props, htmlElementProperties, ['onBlur']);
+    const htmlProps = getNativeProps<React.HTMLAttributes<HTMLTableElement>>(this.props, htmlElementProperties);
 
     const classNames = getClassNames(styles!, { theme: this.props.theme! });
 
