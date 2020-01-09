@@ -66,6 +66,15 @@ export class ComboBoxBasicExample extends React.Component<{}, IComboBoxBasicExam
             onPendingValueChanged={(option, pendingIndex, pendingValue) =>
               console.log(`Preview value was changed. Pending index: ${pendingIndex}. Pending value: ${pendingValue}.`)
             }
+            styles={{
+              root: {
+                selectors: {
+                  ':after': {
+                    borderWidth: `2px`
+                  }
+                }
+              }
+            }}
           />
 
           <PrimaryButton
