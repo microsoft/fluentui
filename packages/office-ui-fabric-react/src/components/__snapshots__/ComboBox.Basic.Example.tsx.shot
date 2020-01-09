@@ -34,42 +34,34 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
       onBlur={[Function]}
       onFocus={[Function]}
     >
-      <div
+      <label
         className=
-
+            ms-Label
             {
-              display: flex;
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              box-shadow: none;
+              box-sizing: border-box;
+              color: #323130;
+              display: block;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 600;
+              margin-bottom: 0px;
+              margin-left: 0px;
+              margin-right: 0px;
+              margin-top: 0px;
+              overflow-wrap: break-word;
+              padding-bottom: 5px;
+              padding-left: 0;
+              padding-right: 0;
+              padding-top: 5px;
+              word-wrap: break-word;
             }
+        id="ComboBox0-label"
       >
-        <label
-          className=
-              ms-Label
-              {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                box-shadow: none;
-                box-sizing: border-box;
-                color: #323130;
-                display: block;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 14px;
-                font-weight: 600;
-                margin-bottom: 0px;
-                margin-left: 0px;
-                margin-right: 0px;
-                margin-top: 0px;
-                overflow-wrap: break-word;
-                padding-bottom: 5px;
-                padding-left: 0;
-                padding-right: 0;
-                padding-top: 5px;
-                word-wrap: break-word;
-              }
-          id="ComboBox0-label"
-        >
-          Single-select ComboBox (uncontrolled, allowFreeform: T, autoComplete: T)
-        </label>
-      </div>
+        Single-select ComboBox (uncontrolled, allowFreeform: T, autoComplete: T)
+      </label>
       <div
         className=
             ms-ComboBox
@@ -581,63 +573,55 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
   <div
     className="ms-ComboBox-container "
   >
-    <div
+    <label
       className=
-
+          ms-Label
           {
-            display: flex;
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            box-shadow: none;
+            box-sizing: border-box;
+            color: #323130;
+            display: block;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 0px;
+            margin-left: 0px;
+            margin-right: 0px;
+            margin-top: 0px;
+            overflow-wrap: break-word;
+            padding-bottom: 5px;
+            padding-left: 0;
+            padding-right: 0;
+            padding-top: 5px;
+            word-wrap: break-word;
           }
+      id="ComboBox7-label"
     >
-      <label
+      Multi-select ComboBox (uncontrolled)
+      <span
         className=
-            ms-Label
-            {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              box-shadow: none;
-              box-sizing: border-box;
-              color: #323130;
-              display: block;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 14px;
-              font-weight: 600;
-              margin-bottom: 0px;
-              margin-left: 0px;
-              margin-right: 0px;
-              margin-top: 0px;
-              overflow-wrap: break-word;
-              padding-bottom: 5px;
-              padding-left: 0;
-              padding-right: 0;
-              padding-top: 5px;
-              word-wrap: break-word;
-            }
-        id="ComboBox7-label"
-      >
-        Multi-select ComboBox (uncontrolled)
-        <span
-          className=
 
-              {
-                border: 0px;
-                height: 1px;
-                margin-bottom: -1px;
-                margin-left: -1px;
-                margin-right: -1px;
-                margin-top: -1px;
-                overflow: hidden;
-                padding-bottom: 0px;
-                padding-left: 0px;
-                padding-right: 0px;
-                padding-top: 0px;
-                position: absolute;
-                width: 1px;
-              }
-        >
-          Option C, Option E
-        </span>
-      </label>
-    </div>
+            {
+              border: 0px;
+              height: 1px;
+              margin-bottom: -1px;
+              margin-left: -1px;
+              margin-right: -1px;
+              margin-top: -1px;
+              overflow: hidden;
+              padding-bottom: 0px;
+              padding-left: 0px;
+              padding-right: 0px;
+              padding-top: 0px;
+              position: absolute;
+              width: 1px;
+            }
+      >
+        Option C, Option E
+      </span>
+    </label>
     <div
       className=
           ms-ComboBox
@@ -1009,42 +993,34 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
   <div
     className="ms-ComboBox-container "
   >
-    <div
+    <label
       className=
-
+          ms-Label
           {
-            display: flex;
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            box-shadow: none;
+            box-sizing: border-box;
+            color: #323130;
+            display: block;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 0px;
+            margin-left: 0px;
+            margin-right: 0px;
+            margin-top: 0px;
+            overflow-wrap: break-word;
+            padding-bottom: 5px;
+            padding-left: 0;
+            padding-right: 0;
+            padding-top: 5px;
+            word-wrap: break-word;
           }
+      id="ComboBox11-label"
     >
-      <label
-        className=
-            ms-Label
-            {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              box-shadow: none;
-              box-sizing: border-box;
-              color: #323130;
-              display: block;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 14px;
-              font-weight: 600;
-              margin-bottom: 0px;
-              margin-left: 0px;
-              margin-right: 0px;
-              margin-top: 0px;
-              overflow-wrap: break-word;
-              padding-bottom: 5px;
-              padding-left: 0;
-              padding-right: 0;
-              padding-top: 5px;
-              word-wrap: break-word;
-            }
-        id="ComboBox11-label"
-      >
-        ComboBox with placeholder text
-      </label>
-    </div>
+      ComboBox with placeholder text
+    </label>
     <div
       className=
           ms-ComboBox
@@ -1417,42 +1393,34 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
   <div
     className="ms-ComboBox-container "
   >
-    <div
+    <label
       className=
-
+          ms-Label
           {
-            display: flex;
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            box-shadow: none;
+            box-sizing: border-box;
+            color: #323130;
+            display: block;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 0px;
+            margin-left: 0px;
+            margin-right: 0px;
+            margin-top: 0px;
+            overflow-wrap: break-word;
+            padding-bottom: 5px;
+            padding-left: 0;
+            padding-right: 0;
+            padding-top: 5px;
+            word-wrap: break-word;
           }
+      id="ComboBox15-label"
     >
-      <label
-        className=
-            ms-Label
-            {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              box-shadow: none;
-              box-sizing: border-box;
-              color: #323130;
-              display: block;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 14px;
-              font-weight: 600;
-              margin-bottom: 0px;
-              margin-left: 0px;
-              margin-right: 0px;
-              margin-top: 0px;
-              overflow-wrap: break-word;
-              padding-bottom: 5px;
-              padding-left: 0;
-              padding-right: 0;
-              padding-top: 5px;
-              word-wrap: break-word;
-            }
-        id="ComboBox15-label"
-      >
-        ComboBox with persisted menu
-      </label>
-    </div>
+      ComboBox with persisted menu
+    </label>
     <div
       className=
           ms-ComboBox
@@ -3623,42 +3591,34 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
   <div
     className="ms-ComboBox-container "
   >
-    <div
+    <label
       className=
-
+          ms-Label
           {
-            display: flex;
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            box-shadow: none;
+            box-sizing: border-box;
+            color: #323130;
+            display: block;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 0px;
+            margin-left: 0px;
+            margin-right: 0px;
+            margin-top: 0px;
+            overflow-wrap: break-word;
+            padding-bottom: 5px;
+            padding-left: 0;
+            padding-right: 0;
+            padding-top: 5px;
+            word-wrap: break-word;
           }
+      id="ComboBox19-label"
     >
-      <label
-        className=
-            ms-Label
-            {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              box-shadow: none;
-              box-sizing: border-box;
-              color: #323130;
-              display: block;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 14px;
-              font-weight: 600;
-              margin-bottom: 0px;
-              margin-left: 0px;
-              margin-right: 0px;
-              margin-top: 0px;
-              overflow-wrap: break-word;
-              padding-bottom: 5px;
-              padding-left: 0;
-              padding-right: 0;
-              padding-top: 5px;
-              word-wrap: break-word;
-            }
-        id="ComboBox19-label"
-      >
-        ComboBox with static error message
-      </label>
-    </div>
+      ComboBox with static error message
+    </label>
     <div
       className=
           ms-ComboBox
@@ -3969,42 +3929,34 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
   <div
     className="ms-ComboBox-container "
   >
-    <div
+    <label
       className=
-
+          ms-Label
           {
-            display: flex;
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            box-shadow: none;
+            box-sizing: border-box;
+            color: #323130;
+            display: block;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 0px;
+            margin-left: 0px;
+            margin-right: 0px;
+            margin-top: 0px;
+            overflow-wrap: break-word;
+            padding-bottom: 5px;
+            padding-left: 0;
+            padding-right: 0;
+            padding-top: 5px;
+            word-wrap: break-word;
           }
+      id="ComboBox23-label"
     >
-      <label
-        className=
-            ms-Label
-            {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              box-shadow: none;
-              box-sizing: border-box;
-              color: #323130;
-              display: block;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 14px;
-              font-weight: 600;
-              margin-bottom: 0px;
-              margin-left: 0px;
-              margin-right: 0px;
-              margin-top: 0px;
-              overflow-wrap: break-word;
-              padding-bottom: 5px;
-              padding-left: 0;
-              padding-right: 0;
-              padding-top: 5px;
-              word-wrap: break-word;
-            }
-        id="ComboBox23-label"
-      >
-        ComboBox with dynamic error message
-      </label>
-    </div>
+      ComboBox with dynamic error message
+    </label>
     <div
       className=
           ms-ComboBox
@@ -4377,45 +4329,37 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
   <div
     className="ms-ComboBox-container "
   >
-    <div
+    <label
       className=
-
+          ms-Label
           {
-            display: flex;
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            box-shadow: none;
+            box-sizing: border-box;
+            color: #a19f9d;
+            display: block;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 0px;
+            margin-left: 0px;
+            margin-right: 0px;
+            margin-top: 0px;
+            overflow-wrap: break-word;
+            padding-bottom: 5px;
+            padding-left: 0;
+            padding-right: 0;
+            padding-top: 5px;
+            word-wrap: break-word;
           }
+          @media screen and (-ms-high-contrast: active){& {
+            color: GrayText;
+          }
+      id="ComboBox27-label"
     >
-      <label
-        className=
-            ms-Label
-            {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              box-shadow: none;
-              box-sizing: border-box;
-              color: #a19f9d;
-              display: block;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 14px;
-              font-weight: 600;
-              margin-bottom: 0px;
-              margin-left: 0px;
-              margin-right: 0px;
-              margin-top: 0px;
-              overflow-wrap: break-word;
-              padding-bottom: 5px;
-              padding-left: 0;
-              padding-right: 0;
-              padding-top: 5px;
-              word-wrap: break-word;
-            }
-            @media screen and (-ms-high-contrast: active){& {
-              color: GrayText;
-            }
-        id="ComboBox27-label"
-      >
-        Disabled ComboBox
-      </label>
-    </div>
+      Disabled ComboBox
+    </label>
     <div
       className=
           ms-ComboBox
@@ -4697,65 +4641,9 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
   <div
     className="ms-ComboBox-container "
   >
-    <div
-      className=
-
-          {
-            display: flex;
-          }
-    >
-      <i
-        aria-hidden={true}
-        className=
-
-            {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              display: inline-block;
-              font-family: "FabricMDL2Icons-0";
-              font-style: normal;
-              font-weight: normal;
-              margin-right: 10px;
-              padding-bottom: 5px;
-              padding-left: 0px;
-              padding-right: 0px;
-              padding-top: 5px;
-              speak: none;
-            }
-        data-icon-name="Airplane"
-        id="ComboBox31-icon"
-      >
-        
-      </i>
-      <label
-        className=
-            ms-Label
-            {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              box-shadow: none;
-              box-sizing: border-box;
-              color: #323130;
-              display: block;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 14px;
-              font-weight: 600;
-              margin-bottom: 0px;
-              margin-left: 0px;
-              margin-right: 0px;
-              margin-top: 0px;
-              overflow-wrap: break-word;
-              padding-bottom: 5px;
-              padding-left: 0;
-              padding-right: 0;
-              padding-top: 5px;
-              word-wrap: break-word;
-            }
-        id="ComboBox31-label"
-      >
-        With Icon ComboBox
-      </label>
-    </div>
+    <span>
+      Foobar  Disabled ComboBox
+    </span>
     <div
       className=
           ms-ComboBox

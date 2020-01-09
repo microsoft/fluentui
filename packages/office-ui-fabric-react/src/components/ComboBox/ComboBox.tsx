@@ -28,7 +28,6 @@ import { Label } from '../../Label';
 import { SelectableOptionMenuItemType, getAllSelectedOptions } from '../../utilities/selectableOption/index';
 import { BaseButton, Button } from '../Button/index';
 import { ICalloutProps } from '../../Callout';
-import { Icon } from '../Icon';
 
 export interface IComboBoxState {
   /** The open state */
@@ -160,6 +159,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   private _lastTouchTimeoutId: number | undefined;
   /** True if the most recent keydown event was for alt (option) or meta (command). */
   private _lastKeyDownWasAltOrMeta: boolean | undefined;
+
+  private _multiselectAccessibleText: string | undefined;
 
   /**
    * Determines if we should be setting focus back to the input when the menu closes.
@@ -326,6 +327,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       required,
       errorMessage,
       onRenderContainer = this._onRenderContainer,
+      onRenderLabel = this._onRenderLabel,
       onRenderList = this._onRenderList,
       onRenderItem = this._onRenderItem,
       onRenderOption = this._onRenderOptionContent,
@@ -341,8 +343,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       autofill,
       persistMenu,
       iconButtonProps,
-      multiSelect,
-      iconProps
+      multiSelect
     } = this.props;
     const { isOpen, focused, suggestedDisplayValue } = this.state;
     this._currentVisibleValue = this._getVisibleValue();
@@ -350,7 +351,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     // Single select is already accessible since the whole text is selected
     // when focus enters the input. Since multiselect appears to clear the input
     // it needs special accessible text
-    const multiselectAccessibleText = multiSelect
+    this._multiselectAccessibleText = multiSelect
       ? this._getMultiselectDisplayString(this.state.selectedIndices, this.state.currentOptions, suggestedDisplayValue)
       : undefined;
 
@@ -362,7 +363,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     // so that the selected items don't appear to vanish. This is not ideal but it's the only reasonable way
     // to correct the behavior where the input is cleared so the user can type. If a full refactor is done, then this
     // should be removed and the multiselect combobox should behave like a picker.
-    const placeholder = focused && this.props.multiSelect && multiselectAccessibleText ? multiselectAccessibleText : placeholderProp;
+    const placeholder =
+      focused && this.props.multiSelect && this._multiselectAccessibleText ? this._multiselectAccessibleText : placeholderProp;
 
     this._classNames = this.props.getClassNames
       ? this.props.getClassNames(theme!, !!isOpen, !!disabled, !!required, !!focused, !!allowFreeform, !!hasErrorMessage, className)
@@ -379,17 +381,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
     return (
       <div {...divProps} ref={this._root} className={this._classNames.container}>
-        {(iconProps || label) && (
-          <div className={this._classNames.iconAndLabelContainerWrapper}>
-            {iconProps && <Icon id={id + '-icon'} className={this._classNames.icon} {...iconProps} />}
-            {label && (
-              <Label id={id + '-label'} disabled={disabled} required={required} className={this._classNames.label}>
-                {label}
-                {multiselectAccessibleText && <span className={this._classNames.screenReaderText}>{multiselectAccessibleText}</span>}
-              </Label>
-            )}
-          </div>
-        )}
+        {onRenderLabel(this.props, this._onRenderLabel)}
         <KeytipData keytipProps={keytipProps} disabled={disabled}>
           {(keytipAttributes: any): JSX.Element => (
             <div
@@ -1212,6 +1204,21 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     if (this.props.calloutProps && this.props.calloutProps.onLayerMounted) {
       this.props.calloutProps.onLayerMounted();
     }
+  };
+
+  private _onRenderLabel = (props: IComboBoxProps): JSX.Element | null => {
+    const { label, disabled, required } = this.props;
+
+    if (label) {
+      return (
+        <Label id={this._id + '-label'} disabled={disabled} required={required} className={this._classNames.label}>
+          {label}
+          {this._multiselectAccessibleText && <span className={this._classNames.screenReaderText}>{this._multiselectAccessibleText}</span>}
+        </Label>
+      );
+    }
+
+    return null;
   };
 
   // Render List of items

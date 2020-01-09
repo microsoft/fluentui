@@ -325,9 +325,6 @@ export const getStyles = memoizeFunction(
 
     const styles: IComboBoxStyles = {
       container: {},
-      icon: { padding: '5px 0px', marginRight: '10px' },
-      iconDisabled: {},
-      iconAndLabelContainerWrapper: { display: 'flex' },
       label: {},
       labelDisabled: {},
       root: [

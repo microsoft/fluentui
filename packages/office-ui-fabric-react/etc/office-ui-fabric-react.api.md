@@ -2790,7 +2790,6 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox,
     // Warning: (ae-forgotten-export) The symbol "IComboBoxClassNames" needs to be exported by the entry point index.d.ts
     getClassNames?: (theme: ITheme, isOpen: boolean, disabled: boolean, required: boolean, focused: boolean, allowFreeForm: boolean, hasErrorMessage: boolean, className?: string) => IComboBoxClassNames;
     iconButtonProps?: IButtonProps;
-    iconProps?: IIconProps;
     isButtonAriaHidden?: boolean;
     keytipProps?: IKeytipProps;
     onChange?: (event: React.FormEvent<IComboBox>, option?: IComboBoxOption, index?: number, value?: string) => void;
@@ -2799,6 +2798,7 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox,
     onMenuDismissed?: () => void;
     onMenuOpen?: () => void;
     onPendingValueChanged?: (option?: IComboBoxOption, index?: number, value?: string) => void;
+    onRenderLabel?: IRenderFunction<IComboBoxProps>;
     onRenderLowerContent?: IRenderFunction<IComboBoxProps>;
     onRenderUpperContent?: IRenderFunction<IComboBoxProps>;
     onResolveOptions?: (options: IComboBoxOption[]) => IComboBoxOption[] | PromiseLike<IComboBoxOption[]>;
@@ -2832,9 +2832,6 @@ export interface IComboBoxStyles {
     divider: IStyle;
     errorMessage: IStyle;
     header: IStyle;
-    icon: IStyle;
-    iconAndLabelContainerWrapper: IStyle;
-    iconDisabled: IStyle;
     input: IStyle;
     inputDisabled: IStyle;
     label: IStyle;

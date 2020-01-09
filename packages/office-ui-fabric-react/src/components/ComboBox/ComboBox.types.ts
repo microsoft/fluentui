@@ -248,9 +248,9 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox,
   iconButtonProps?: IButtonProps;
 
   /**
-   * The props for the icon shown next to the label or combobox if label isn't present.
+   * Custom render function for the label text.
    */
-  iconProps?: IIconProps;
+  onRenderLabel?: IRenderFunction<IComboBoxProps>;
 }
 
 /**
@@ -261,21 +261,6 @@ export interface IComboBoxStyles {
    * Style for the container which has the ComboBox and the label
    */
   container: IStyle;
-
-  /**
-   * Style for the icon element of the ComboBox.
-   */
-  icon: IStyle;
-
-  /**
-   * Style for the icon element of the ComboBox in the disabled state.
-   */
-  iconDisabled: IStyle;
-
-  /**
-   * Style for the container of the ComboBox's icon and label.
-   */
-  iconAndLabelContainerWrapper: IStyle;
 
   /**
    * Style for the label element of the ComboBox.
