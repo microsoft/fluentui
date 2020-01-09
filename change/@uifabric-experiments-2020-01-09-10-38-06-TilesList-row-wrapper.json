@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "TilesList: Wrap each row with role row",
+  "packageName": "@uifabric/experiments",
+  "email": "erabelle@microsoft.com",
+  "commit": "7aee96fe9241ac6461a9632195d7ed469712e5e5",
+  "date": "2020-01-09T18:38:05.938Z"
+}
