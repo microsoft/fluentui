@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { AccessibilityDetailsList } from './AccessibilityDetailsList';
-import { FabricSlots, IThemeRules, Fabric } from 'office-ui-fabric-react';
+import { FabricSlots, IThemeRules } from 'office-ui-fabric-react';
 import { getContrastRatio } from 'office-ui-fabric-react/lib/utilities/color/shades';
 import { IColor } from 'office-ui-fabric-react/lib/utilities/color/interfaces';
 import { MainPanelInnerContent } from '../shared/MainPanelStyles';
