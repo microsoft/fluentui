@@ -1,0 +1,30 @@
+pr: none
+trigger: none
+
+variables:
+  - group: fabric-variables
+
+pool:
+  vmImage: 'Ubuntu 16.04'
+
+jobs:
+  - job: VRTest
+    steps:
+      # No need for checkout since we're using build artifacts.
+      - checkout: none
+      - template: azure-pipelines.artifacts.yml
+        parameters:
+          artifact: $(artifact)
+
+      - script: |
+          git config --global user.email "fabrictactical@microsoft.com"
+          git config --global user.name "Fabric Tactical"
+          yarn vrtest -- --debug
+        displayName: run VR Test
+        env:
+          SCREENER_API_KEY: $(screener.key)
+
+      - task: DeleteFiles@1
+        inputs:
+          SourceFolder: $(Build.SourcesDirectory)
+          Contents: '**/*'
