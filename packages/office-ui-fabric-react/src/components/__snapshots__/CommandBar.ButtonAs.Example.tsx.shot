@@ -1028,7 +1028,6 @@ exports[`Component Examples renders CommandBar.ButtonAs.Example.tsx correctly 1`
               onKeyDown={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
-              role="presentation"
             >
               <button
                 aria-label="Grid view"
@@ -1200,7 +1199,6 @@ exports[`Component Examples renders CommandBar.ButtonAs.Example.tsx correctly 1`
               onKeyDown={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
-              role="presentation"
             >
               <button
                 aria-label="Info"

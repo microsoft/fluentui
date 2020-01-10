@@ -212,7 +212,6 @@ exports[`Component Examples renders Persona.CustomCoinRender.Example.tsx correct
           onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
-          role="presentation"
         >
           Ted Randall
         </div>
@@ -241,7 +240,6 @@ exports[`Component Examples renders Persona.CustomCoinRender.Example.tsx correct
           onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
-          role="presentation"
         >
           Project Manager
         </div>
@@ -285,7 +283,6 @@ exports[`Component Examples renders Persona.CustomCoinRender.Example.tsx correct
           onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
-          role="presentation"
         >
           Available at 4:00pm
         </div>

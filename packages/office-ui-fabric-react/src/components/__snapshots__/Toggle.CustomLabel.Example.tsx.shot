@@ -77,7 +77,6 @@ exports[`Component Examples renders Toggle.CustomLabel.Example.tsx correctly 1`]
           onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
-          role="presentation"
         >
           <i
             aria-label="Info tooltip"
@@ -283,7 +282,6 @@ exports[`Component Examples renders Toggle.CustomLabel.Example.tsx correctly 1`]
           onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
-          role="presentation"
         >
           <i
             aria-label="Info tooltip"

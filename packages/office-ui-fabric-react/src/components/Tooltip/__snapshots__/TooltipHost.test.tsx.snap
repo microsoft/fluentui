@@ -12,6 +12,5 @@ exports[`TooltipHost renders correctly 1`] = `
   onKeyDown={[Function]}
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
-  role="presentation"
 />
 `;

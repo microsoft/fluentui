@@ -82,7 +82,6 @@ export class TooltipHostBase extends React.Component<ITooltipHostProps, ITooltip
 
     return (
       <div
-        role="presentation"
         className={this._classNames.root}
         ref={this._tooltipHost}
         {...{ onFocusCapture: this._onTooltipMouseEnter }}
