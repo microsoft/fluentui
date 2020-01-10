@@ -4637,6 +4637,5 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
       
     </div>
   </div>
-  /&gt;
 </div>
 `;

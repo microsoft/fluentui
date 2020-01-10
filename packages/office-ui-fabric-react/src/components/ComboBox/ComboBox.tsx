@@ -160,8 +160,6 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   /** True if the most recent keydown event was for alt (option) or meta (command). */
   private _lastKeyDownWasAltOrMeta: boolean | undefined;
 
-  private _multiselectAccessibleText: string | undefined;
-
   /**
    * Determines if we should be setting focus back to the input when the menu closes.
    * The general rule of thumb is if the menu was launched via the keyboard focus should go back
@@ -351,7 +349,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     // Single select is already accessible since the whole text is selected
     // when focus enters the input. Since multiselect appears to clear the input
     // it needs special accessible text
-    this._multiselectAccessibleText = multiSelect
+    const multiselectAccessibleText = multiSelect
       ? this._getMultiselectDisplayString(this.state.selectedIndices, this.state.currentOptions, suggestedDisplayValue)
       : undefined;
 
@@ -363,8 +361,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     // so that the selected items don't appear to vanish. This is not ideal but it's the only reasonable way
     // to correct the behavior where the input is cleared so the user can type. If a full refactor is done, then this
     // should be removed and the multiselect combobox should behave like a picker.
-    const placeholder =
-      focused && this.props.multiSelect && this._multiselectAccessibleText ? this._multiselectAccessibleText : placeholderProp;
+    const placeholder = focused && this.props.multiSelect && multiselectAccessibleText ? multiselectAccessibleText : placeholderProp;
 
     this._classNames = this.props.getClassNames
       ? this.props.getClassNames(theme!, !!isOpen, !!disabled, !!required, !!focused, !!allowFreeform, !!hasErrorMessage, className)
@@ -381,7 +378,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
     return (
       <div {...divProps} ref={this._root} className={this._classNames.container}>
-        {onRenderLabel(this.props, this._onRenderLabel)}
+        {onRenderLabel(this.props, multiselectAccessibleText, this._onRenderLabel)}
         <KeytipData keytipProps={keytipProps} disabled={disabled}>
           {(keytipAttributes: any): JSX.Element => (
             <div
@@ -1206,14 +1203,14 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     }
   };
 
-  private _onRenderLabel = (props: IComboBoxProps): JSX.Element | null => {
+  private _onRenderLabel = (props: IComboBoxProps, multiselectAccessibleText?: string): JSX.Element | null => {
     const { label, disabled, required } = this.props;
 
     if (label) {
       return (
         <Label id={this._id + '-label'} disabled={disabled} required={required} className={this._classNames.label}>
           {label}
-          {this._multiselectAccessibleText && <span className={this._classNames.screenReaderText}>{this._multiselectAccessibleText}</span>}
+          {multiselectAccessibleText && <span className={this._classNames.screenReaderText}>{multiselectAccessibleText}</span>}
         </Label>
       );
     }

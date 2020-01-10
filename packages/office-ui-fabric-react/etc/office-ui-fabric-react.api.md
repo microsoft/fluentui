@@ -2796,7 +2796,7 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox,
     onMenuDismissed?: () => void;
     onMenuOpen?: () => void;
     onPendingValueChanged?: (option?: IComboBoxOption, index?: number, value?: string) => void;
-    onRenderLabel?: IRenderFunction<IComboBoxProps>;
+    onRenderLabel?: (props?: IComboBoxProps, multiselectAccessibleText?: string, defaultRender?: (props?: IComboBoxProps) => JSX.Element | null) => JSX.Element | null;
     onRenderLowerContent?: IRenderFunction<IComboBoxProps>;
     onRenderUpperContent?: IRenderFunction<IComboBoxProps>;
     onResolveOptions?: (options: IComboBoxOption[]) => IComboBoxOption[] | PromiseLike<IComboBoxOption[]>;
