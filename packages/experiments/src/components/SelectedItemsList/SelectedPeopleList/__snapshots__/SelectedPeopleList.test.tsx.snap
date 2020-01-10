@@ -327,7 +327,6 @@ Array [
                 onKeyDown={[Function]}
                 onMouseEnter={[Function]}
                 onMouseLeave={[Function]}
-                role="presentation"
               >
                 Person A
               </div>
@@ -841,7 +840,6 @@ Array [
                 onKeyDown={[Function]}
                 onMouseEnter={[Function]}
                 onMouseLeave={[Function]}
-                role="presentation"
               >
                 Person B
               </div>

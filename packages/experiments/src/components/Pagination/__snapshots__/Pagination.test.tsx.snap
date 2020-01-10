@@ -960,7 +960,6 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
       onKeyDown={[Function]}
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
-      role="presentation"
     >
       <button
         aria-label="last page"
