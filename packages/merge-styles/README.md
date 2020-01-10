@@ -489,3 +489,23 @@ Caveats for server-side rendering (TODOs):
 - The rehydration logic has not yet been implemented, so we may run into issues when you rehydrate.
 
 - Only components which USE mergeStyles will have their css included. In Fabric, not all components have been converted from using SASS yet.
+
+## Working with content security policy (CSP)
+
+Some content security policies prevent style injection without a nonce. To set the nonce used by `merge-styles`:
+
+```ts
+Stylesheet.getInstance().setConfig({
+  cspSettings: { nonce: 'your nonce here' }
+});
+```
+
+If you're working inside a Fabric app, this setting can also be applied using the global `window.FabricConfig.mergeStyles.cspSettings`. Note that this must be set before any Fabric code is loaded, or it may not be applied properly.
+
+```ts
+window.FabricConfig = {
+  mergeStyles: {
+    cspSettings: { nonce: 'your nonce here' }
+  }
+};
+```
