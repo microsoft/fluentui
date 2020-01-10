@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Change focus class behavior: Alternate between 'hidden' and 'visible' classes",
+  "packageName": "office-ui-fabric-react",
+  "email": "paflakst@microsoft.com",
+  "commit": "bee187d4f1dec7d264a9dea28ffd3b93fc56302e",
+  "date": "2020-01-08T15:36:00.121Z"
+}
