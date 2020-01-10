@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/styling",
-  "version": "7.8.1",
+  "version": "7.10.0",
   "description": "Styling helpers for Office UI Fabric.",
   "repository": {
     "type": "git",
@@ -13,6 +13,9 @@
   "typings": "lib/index.d.ts",
   "scripts": {
     "build": "just-scripts build",
+    "bundle": "just-scripts bundle",
+    "lint": "just-scripts lint",
+    "test": "just-scripts test",
     "just": "just-scripts",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
@@ -30,10 +33,10 @@
     "@uifabric/build": "^7.0.0"
   },
   "dependencies": {
-    "@microsoft/load-themed-styles": "^1.7.13",
+    "@microsoft/load-themed-styles": "^1.10.26",
     "@uifabric/merge-styles": "^7.8.1",
     "@uifabric/set-version": "^7.0.2",
-    "@uifabric/utilities": "^7.9.0",
+    "@uifabric/utilities": "^7.10.0",
     "tslib": "^1.7.1"
   }
 }

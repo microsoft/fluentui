@@ -39,7 +39,7 @@ exports[`Component Examples renders FloatingPeoplePicker.Basic.Example.tsx corre
             padding-top: 1px;
           }
           @media screen and (-ms-high-contrast: active){& {
-            border: 1px solid WindowText;
+            border-color: WindowText;
           }
           &:hover {
             border-color: #323130;

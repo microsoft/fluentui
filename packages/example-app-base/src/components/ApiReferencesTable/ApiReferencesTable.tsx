@@ -65,7 +65,9 @@ const theme = getTheme();
 const rootClass = mergeStyles({
   selectors: {
     // Switch code blocks to a nicer font family and smaller size (monospace fonts tend to be large)
-    code: { fontFamily: codeFontFamily, fontSize: '11px' }
+    code: { fontFamily: codeFontFamily, fontSize: '11px' },
+    // Fix margins around Members/Methods h4 and control font size
+    h4: { margin: '16px 0 -8px 0', fontSize: '16px' }
   }
 });
 
@@ -126,13 +128,13 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
         <Stack tokens={gapTokens.medium}>
           {properties.length > 0 && (
             <Stack tokens={gapTokens.small}>
-              <Text variant={'medium'}>Members</Text>
+              <h4>Members</h4>
               <ApiDetailsList itemKind="property" items={properties as IApiInterfaceProperty[]} tokenResolver={tokenResolver} />
             </Stack>
           )}
           {methods && methods.length > 0 && (
             <Stack tokens={gapTokens.small}>
-              <Text variant={'medium'}>Methods</Text>
+              <h4>Methods</h4>
               <ApiDetailsList itemKind="method" items={methods!} tokenResolver={tokenResolver} />
             </Stack>
           )}
@@ -153,7 +155,8 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
     const { title, name } = this.props;
 
     return title ? (
-      <Text variant="xLarge" as="h3" styles={{ root: { marginTop: 0 } }} id={name}>
+      // This heading must be programmatically focusable for simulating jumping to an anchor
+      <Text variant="xLarge" as="h3" styles={{ root: { marginTop: 0 } }} id={name} tabIndex={-1}>
         {title}
       </Text>
     ) : (

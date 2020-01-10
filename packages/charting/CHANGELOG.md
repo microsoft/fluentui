@@ -1,7 +1,13 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Tue, 26 Nov 2019 12:32:11 GMT and should not be manually modified.
+This log was last generated on Wed, 08 Jan 2020 17:02:57 GMT and should not be manually modified.
 
+## 0.139.1
+Wed, 08 Jan 2020 17:02:57 GMT
+
+### Patches
+
+- bumping load-themed-styles to take advantage of es6 version of it (kchau@microsoft.com)
 ## 0.139.0
 Tue, 26 Nov 2019 12:32:11 GMT
 

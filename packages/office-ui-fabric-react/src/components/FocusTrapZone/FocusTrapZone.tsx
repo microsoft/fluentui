@@ -72,6 +72,21 @@ export class FocusTrapZone extends React.Component<IFocusTrapZoneProps, {}> impl
     ) {
       this._returnFocusToInitiator();
     }
+
+    // Dispose of event handlers so their closures can be garbage-collected
+    if (this._disposeClickHandler) {
+      this._disposeClickHandler();
+      this._disposeClickHandler = undefined;
+    }
+
+    if (this._disposeFocusHandler) {
+      this._disposeFocusHandler();
+      this._disposeFocusHandler = undefined;
+    }
+
+    // Dispose of element references so the DOM Nodes can be garbage-collected
+    delete this._previouslyFocusedElementInTrapZone;
+    delete this._previouslyFocusedElementOutsideTrapZone;
   }
 
   public render(): JSX.Element {

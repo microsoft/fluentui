@@ -194,6 +194,9 @@ $usageListPadding: 24px;
 
 .subHeading {
   @include ms-fontSize-24;
+  // These headings are programmatically focusable to simulate jumping to an anchor,
+  // but they shouldn't have a focus outline
+  outline: none;
 }
 
 .smallSubHeading {

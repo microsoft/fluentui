@@ -197,7 +197,7 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
         selectors: {
           ['&:hover .' + globalClassnames.title]: [
             !disabled && rootHoverFocusActiveSelectorNeutralDarkMixin,
-            { borderColor: !isOpen ? palette.neutralPrimary : palette.themePrimary },
+            { borderColor: isOpen ? palette.neutralSecondary : palette.neutralPrimary },
             highContrastBorderState
           ],
           ['&:focus .' + globalClassnames.title]: [!disabled && rootHoverFocusActiveSelectorNeutralDarkMixin],

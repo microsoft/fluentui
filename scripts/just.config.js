@@ -29,9 +29,6 @@ function basicPreset() {
 
   option('production');
 
-  // Adds an alias for 'npm-install-mode' for backwards compatibility
-  option('min', { alias: 'npm-install-mode' });
-
   option('webpackConfig', { alias: 'w' });
 
   // Build only commonjs (not other TS variants) but still run other tasks
@@ -57,8 +54,8 @@ module.exports = function preset() {
   task('ts:commonjs-only', ts.commonjsOnly);
   task('webpack', webpack);
   task('webpack-dev-server', webpackDevServer);
-  task('verify-api-extractor', verifyApiExtractor);
-  task('update-api-extractor', updateApiExtractor);
+  task('api-extractor:verify', verifyApiExtractor);
+  task('api-extractor:update', updateApiExtractor);
   task('lint-imports', lintImports);
   task('prettier', prettier);
   task('bundle-size-collect', bundleSizeCollect);
@@ -66,17 +63,18 @@ module.exports = function preset() {
   task('generate-version-files', generateVersionFiles);
   task('generate-package-manifest', generatePackageManifestTask);
   task('ts', () => {
-    return argv().commonjs
-      ? 'ts:commonjs-only'
-      : parallel('ts:commonjs', 'ts:esm', condition('ts:amd', () => argv().production && !argv().min));
+    return argv().commonjs ? 'ts:commonjs-only' : parallel('ts:commonjs', 'ts:esm', condition('ts:amd', () => !!argv().production));
   });
 
-  task('validate', fs.existsSync(path.join(process.cwd(), 'jest.config.js')) ? series('tslint', 'jest') : 'tslint');
+  task('test', condition('jest', () => fs.existsSync(path.join(process.cwd(), 'jest.config.js'))));
+
+  task('lint', parallel('lint-imports', 'tslint'));
+
   task('code-style', series('prettier', 'tslint'));
-  task('update-api', series('clean', 'copy', 'sass', 'ts', 'update-api-extractor'));
+  task('update-api', series('clean', 'copy', 'sass', 'ts', 'api-extractor:update'));
   task('dev', series('clean', 'copy', 'sass', 'webpack-dev-server'));
 
-  task('build:node-lib', series('clean', 'copy', series(condition('validate', () => !argv().min), 'ts:commonjs-only'))).cached();
+  task('build:node-lib', series('clean', 'copy', 'ts:commonjs-only')).cached();
 
   task(
     'build',
@@ -84,18 +82,12 @@ module.exports = function preset() {
       'clean',
       'copy',
       'sass',
-      parallel(
-        condition('validate', () => !argv().min),
-        series(
-          'ts',
-          parallel(
-            condition('webpack', () => !argv().min && !!resolveCwd('webpack.config.js')),
-            condition('lint-imports', () => !argv().min)
-          )
-        )
-      )
+      'ts',
+      condition('api-extractor:verify', () => fs.existsSync(path.join(process.cwd(), 'config/api-extractor.json')))
     )
   ).cached();
+
+  task('bundle', condition('webpack', () => !!resolveCwd('webpack.config.js')));
 
   task('no-op', () => {}).cached();
 };

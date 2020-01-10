@@ -20,10 +20,44 @@
         height: 100vh;
         justify-content: center;
       }
+
+      /* Copied from UHF site */
+      a.m-skip-to-main {
+        left: -999px;
+        position: absolute;
+        top: auto;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        z-index: -2;
+      }
+
+      a.m-skip-to-main:focus {
+        border: 1px dashed #000;
+      }
+      a.m-skip-to-main:focus,
+      a.m-skip-to-main:active {
+        background: #e6e6e6;
+        color: #0067b8;
+        position: fixed;
+        top: 0;
+        left: 0;
+        padding: 24px;
+        width: auto;
+        height: auto;
+        overflow: auto;
+        right: 0;
+        text-decoration: underline;
+        text-align: center;
+        z-index: 800;
+        outline: none;
+      }
     </style>
   </head>
 
   <body>
+    <!-- Copied from UHF site -->
+    <a id="uhfSkipToMain" class="m-skip-to-main" href="#mainContent" tabindex="0">Skip to main content</a>
     <div id="main">
       <div class="loading">
         <img

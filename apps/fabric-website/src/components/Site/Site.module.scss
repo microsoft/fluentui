@@ -50,6 +50,10 @@
 .siteContent {
   position: relative;
 
+  // This element is programmatically focusable to simulate jumping to an anchor,
+  // but it shouldn't have a focus outline
+  outline: none;
+
   @include high-contrast {
     border-right: 1px solid WindowText;
     border-left: 1px solid WindowText;

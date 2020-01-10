@@ -1,4 +1,4 @@
-import { getGlobalClassNames, HighContrastSelector, IStyle } from '../../Styling';
+import { getGlobalClassNames, getInputFocusStyle } from '../../Styling';
 import { IsFocusVisibleClassName } from '../../Utilities';
 import { IDocumentCardStyleProps, IDocumentCardStyles } from './DocumentCard.types';
 import { DocumentCardPreviewGlobalClassNames as previewClassNames } from './DocumentCardPreview.styles';
@@ -14,29 +14,9 @@ const GlobalClassNames = {
 
 export const getStyles = (props: IDocumentCardStyleProps): IDocumentCardStyles => {
   const { className, theme, actionable, compact } = props;
-  const { palette, fonts } = theme;
+  const { palette, fonts, effects } = theme;
 
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
-
-  const getFocusBorder: IStyle = {
-    selectors: {
-      ':after': {
-        pointerEvents: 'none',
-        content: "''",
-        position: 'absolute',
-        left: -1,
-        top: -1,
-        bottom: -1,
-        right: -1,
-        border: '2px solid ' + palette.neutralSecondary,
-        selectors: {
-          [HighContrastSelector]: {
-            borderColor: 'Highlight'
-          }
-        }
-      }
-    }
-  };
 
   return {
     root: [
@@ -53,9 +33,7 @@ export const getStyles = (props: IDocumentCardStyleProps): IDocumentCardStyles =
           ':focus': {
             outline: '0px solid'
           },
-          [`.${IsFocusVisibleClassName} &:focus`]: {
-            ...getFocusBorder
-          },
+          [`.${IsFocusVisibleClassName} &:focus`]: getInputFocusStyle(palette.neutralSecondary, effects.roundedCorner2),
           [`.${locationClassNames.root} + .${titleClassNames.root}`]: {
             paddingTop: '4px'
           }
