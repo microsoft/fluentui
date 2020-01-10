@@ -26,6 +26,7 @@ exports[`Modal renders Draggable Modal correctly 1`] = `
         & textarea {
           font-family: inherit;
         }
+    dir="ltr"
     onBlur={[Function]}
     onChange={[Function]}
     onClick={[Function]}
@@ -194,6 +195,7 @@ exports[`Modal renders Modal correctly 1`] = `
         & textarea {
           font-family: inherit;
         }
+    dir="ltr"
     onBlur={[Function]}
     onChange={[Function]}
     onClick={[Function]}
@@ -373,6 +375,7 @@ exports[`Modal renders Modeless Modal correctly 1`] = `
         & textarea {
           font-family: inherit;
         }
+    dir="ltr"
     onBlur={[Function]}
     onChange={[Function]}
     onClick={[Function]}
