@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "ComboBox: fix chevron button and focus border styling",
-  "packageName": "@uifabric/experiments",
-  "email": "xgao@microsoft.com",
-  "commit": "b1f23673efec6c713219c81d02be736f3dc7a373",
-  "date": "2020-01-08T01:48:44.522Z"
-}

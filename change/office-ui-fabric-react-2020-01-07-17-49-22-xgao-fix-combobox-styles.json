@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Update snapshot test after fixing combobox styling",
-  "packageName": "office-ui-fabric-react",
-  "email": "xgao@microsoft.com",
-  "commit": "b1f23673efec6c713219c81d02be736f3dc7a373",
-  "date": "2020-01-08T01:49:22.211Z"
-}

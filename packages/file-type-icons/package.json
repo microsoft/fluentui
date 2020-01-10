@@ -34,7 +34,7 @@
     "@uifabric/build": "^7.0.0"
   },
   "dependencies": {
-    "@uifabric/styling": "^7.9.0",
+    "@uifabric/styling": "^7.10.0",
     "@uifabric/set-version": "^7.0.2",
     "tslib": "^1.7.1"
   },

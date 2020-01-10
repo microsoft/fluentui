@@ -2,6 +2,20 @@
   "name": "@uifabric/styling",
   "entries": [
     {
+      "date": "Fri, 10 Jan 2020 12:31:47 GMT",
+      "tag": "@uifabric/styling_v7.10.0",
+      "version": "7.10.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "add borderPosition param to getInputFocusStyle",
+            "author": "xgao@microsoft.com",
+            "commit": "927aefb4447731b6eb0aa84f1fb57e3adc638bdb"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 08 Jan 2020 17:02:57 GMT",
       "tag": "@uifabric/styling_v7.9.0",
       "version": "7.9.0",
