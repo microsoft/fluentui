@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { AccessibilityDetailsList } from './AccessibilityDetailsList';
-import { FabricSlots, IThemeRules } from 'office-ui-fabric-react';
+import { FabricSlots, IThemeRules, Fabric } from 'office-ui-fabric-react';
 import { getContrastRatio } from 'office-ui-fabric-react/lib/utilities/color/shades';
 import { IColor } from 'office-ui-fabric-react/lib/utilities/color/interfaces';
 import { MainPanelInnerContent } from '../shared/MainPanelStyles';
@@ -51,6 +51,7 @@ export const AccessibilityChecker: React.StatelessComponent<IAccessibilityChecke
   const loadAllContrastRatioPairsList = () => {
     calculateContrastRatio(FabricSlots.themePrimary, FabricSlots.white, 'Primary color on Background color');
     calculateContrastRatio(FabricSlots.neutralPrimary, FabricSlots.white, 'Text color on Background color');
+    calculateContrastRatio(FabricSlots.neutralSecondary, FabricSlots.white, 'Secondary text color on Background color');
   };
 
   loadAllContrastRatioPairsList();
