@@ -218,10 +218,10 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
         aria-describedby={ariaDescribedBy}
         {...divProps}
         {
-          // root props has been deprecated and should get removed.
-          // it needs to be marked as "any" since root props expects a div element, but really Tag can
-          // be any native element so typescript rightly flags this as a problem.
-          ...rootProps as any
+        // root props has been deprecated and should get removed.
+        // it needs to be marked as "any" since root props expects a div element, but really Tag can
+        // be any native element so typescript rightly flags this as a problem.
+        ...rootProps as any
         }
         // Once the getClassName correctly memoizes inputs this should
         // be replaced so that className is passed to getRootClass and is included there so
@@ -935,7 +935,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
     // ClientRect values can be floats that differ by very small fractions of a decimal.
     // If the difference between top and bottom are within a pixel then we should treat
     // them as equivalent by using Math.floor. For instance 5.2222 and 5.222221 should be equivalent,
-    // but without Math.Floor they will be handled incorrectly.
+    // but without Math.Floor they will be handled incorrectly
     const targetRectTop = Math.floor(targetRect.top);
     const activeRectBottom = Math.floor(activeRect.bottom);
     const targetRectBottom = Math.floor(targetRect.bottom);
