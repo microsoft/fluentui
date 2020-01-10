@@ -86,8 +86,7 @@ export class CheckboxBase extends React.Component<ICheckboxProps, ICheckboxState
       ariaSetSize,
       keytipProps,
       title,
-      label,
-      role
+      label
     } = this.props;
 
     const { isChecked, isIndeterminate } = this.state;
@@ -105,9 +104,8 @@ export class CheckboxBase extends React.Component<ICheckboxProps, ICheckboxState
     return (
       <KeytipData keytipProps={keytipProps} disabled={disabled}>
         {(keytipAttributes: any): JSX.Element => (
-          <div role="presentation" className={this._classNames.root} title={title}>
+          <div className={this._classNames.root} title={title}>
             <input
-              role={role}
               type="checkbox"
               {...inputProps}
               data-ktp-execute-target={keytipAttributes['data-ktp-execute-target']}

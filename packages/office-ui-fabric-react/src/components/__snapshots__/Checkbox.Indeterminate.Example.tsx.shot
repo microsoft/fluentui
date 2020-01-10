@@ -55,7 +55,6 @@ exports[`Component Examples renders Checkbox.Indeterminate.Example.tsx correctly
         &:focus .ms-Checkbox-text {
           color: #201f1e;
         }
-    role="presentation"
   >
     <input
       aria-checked="mixed"
@@ -212,7 +211,6 @@ exports[`Component Examples renders Checkbox.Indeterminate.Example.tsx correctly
         &:focus .ms-Checkbox-text {
           color: #201f1e;
         }
-    role="presentation"
   >
     <input
       aria-checked="mixed"
@@ -350,7 +348,6 @@ exports[`Component Examples renders Checkbox.Indeterminate.Example.tsx correctly
           display: flex;
           position: relative;
         }
-    role="presentation"
   >
     <input
       aria-checked="mixed"
@@ -521,7 +518,6 @@ exports[`Component Examples renders Checkbox.Indeterminate.Example.tsx correctly
         &:focus .ms-Checkbox-text {
           color: #201f1e;
         }
-    role="presentation"
   >
     <input
       aria-checked="mixed"

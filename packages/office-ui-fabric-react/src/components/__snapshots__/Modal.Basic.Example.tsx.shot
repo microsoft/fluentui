@@ -33,7 +33,6 @@ exports[`Component Examples renders Modal.Basic.Example.tsx correctly 1`] = `
         &:focus .ms-Checkbox-text {
           color: #201f1e;
         }
-    role="presentation"
   >
     <input
       aria-checked="false"

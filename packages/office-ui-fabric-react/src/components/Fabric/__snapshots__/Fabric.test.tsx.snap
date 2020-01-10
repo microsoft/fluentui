@@ -58,7 +58,6 @@ exports[`Fabric renders a Fabric component in RTL 1`] = `
         &:focus .ms-Checkbox-text {
           color: #201f1e;
         }
-    role="presentation"
   >
     <input
       aria-checked="false"
@@ -223,7 +222,6 @@ exports[`Fabric renders a Fabric component in RTL 1`] = `
           &:focus .ms-Checkbox-text {
             color: #201f1e;
           }
-      role="presentation"
     >
       <input
         aria-checked="false"
@@ -388,7 +386,6 @@ exports[`Fabric renders a Fabric component in RTL 1`] = `
             &:focus .ms-Checkbox-text {
               color: #201f1e;
             }
-        role="presentation"
       >
         <input
           aria-checked="false"
@@ -554,7 +551,6 @@ exports[`Fabric renders a Fabric component in RTL 1`] = `
               &:focus .ms-Checkbox-text {
                 color: #201f1e;
               }
-          role="presentation"
         >
           <input
             aria-checked="false"

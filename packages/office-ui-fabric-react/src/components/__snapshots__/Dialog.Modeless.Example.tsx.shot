@@ -37,7 +37,6 @@ exports[`Component Examples renders Dialog.Modeless.Example.tsx correctly 1`] = 
           &:focus .ms-Checkbox-text {
             color: #201f1e;
           }
-      role="presentation"
     >
       <input
         aria-checked="false"

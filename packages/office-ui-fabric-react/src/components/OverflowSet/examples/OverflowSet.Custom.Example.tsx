@@ -19,7 +19,7 @@ export class OverflowSetCustomExample extends React.PureComponent {
           {
             key: 'checkbox',
             onRender: () => {
-              return <Checkbox role="menuitemcheckbox" label="A Checkbox" styles={checkboxStyles} />;
+              return <Checkbox inputProps={{ role: 'menuitemcheckbox' }} label="A Checkbox" styles={checkboxStyles} />;
             }
           },
           {

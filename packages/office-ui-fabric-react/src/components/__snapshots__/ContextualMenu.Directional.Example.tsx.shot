@@ -41,7 +41,6 @@ exports[`Component Examples renders ContextualMenu.Directional.Example.tsx corre
           &:focus .ms-Checkbox-text {
             color: #201f1e;
           }
-      role="presentation"
     >
       <input
         aria-checked="false"
