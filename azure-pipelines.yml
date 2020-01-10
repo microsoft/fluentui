@@ -28,15 +28,10 @@ jobs:
           yarn build
         displayName: build
 
-      - task: ArchiveFiles@2
-        inputs:
-          rootFolderOrFile: $(Build.Repository.LocalPath)
-          # Include root folder so archive can just be extracted into $(Pipeline.Workspace)
-          includeRootFolder: true
-          archiveType: 'tar'
-          tarCompression: 'gz'
-          archiveFile: $(Build.ArtifactStagingDirectory)/build.tar.gz
-          replaceExistingArchive: true
+      - script: |
+          cd $(Build.Repository.LocalPath)/..
+          BASENAME=$(Build.Repository.LocalPath)
+          tar --exclude=.cache --exclude=.git -zcvf $(Build.ArtifactStagingDirectory)/build.tar.gz $BASENAME
 
       - publish: $(Build.ArtifactStagingDirectory)
         artifact: Build
