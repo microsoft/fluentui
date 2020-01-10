@@ -43,9 +43,11 @@ jobs:
 
       - script: |
           az pipelines build queue --definition-name "office-ui-fabric-react - Perf-Test" --variables artifact=Build-PR-$(Build.BuildNumber)
+        displayName: Trigger perf-test job
 
       - script: |
           az pipelines build queue --definition-name "office-ui-fabric-react - Screener" --variables artifact=Build-PR-$(Build.BuildNumber)
+        displayName: Trigger screener job
 
       - task: DeleteFiles@1
         inputs:
