@@ -29,9 +29,9 @@ jobs:
         displayName: build
 
       - script: |
-          cd $(Build.Repository.LocalPath)/..
           BASENAME=$(Build.Repository.LocalPath)
-          tar --exclude=.cache --exclude=.git -zcvf $(Build.ArtifactStagingDirectory)/build.tar.gz $BASENAME
+          tar -C $(Build.Repository.LocalPath)/.. --exclude=.cache --exclude=.git -zcvf $(Build.ArtifactStagingDirectory)/build.tar.gz $BASENAME
+        displayName: Archive build artifacts
 
       - publish: $(Build.ArtifactStagingDirectory)
         artifact: Build
