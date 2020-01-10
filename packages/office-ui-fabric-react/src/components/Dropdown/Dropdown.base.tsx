@@ -227,7 +227,9 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
       : undefined;
     const ariaAttrs =
       multiSelect || disabled
-        ? {}
+        ? {
+            role: 'button'
+          }
         : // single select
           {
             role: 'listbox',
