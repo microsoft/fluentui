@@ -1,27 +1,27 @@
 # Install versions of Node and Yarn required by build pipelines.
 steps:
-- task: NodeTool@0
-  inputs:
-    versionSpec: '10.x'
-  displayName: 'Install Node.js'
+  - task: NodeTool@0
+    inputs:
+      versionSpec: '10.x'
+    displayName: 'Install Node.js'
 
-- task: geeklearningio.gl-vsts-tasks-yarn.yarn-installer-task.YarnInstaller@3
-  displayName: 'Use Yarn 1.19.x'
-  inputs:
-    versionSpec: 1.19.x
-    checkLatest: true
-    includePrerelease: false
+  - task: geeklearningio.gl-vsts-tasks-yarn.yarn-installer-task.YarnInstaller@3
+    displayName: 'Use Yarn 1.19.x'
+    inputs:
+      versionSpec: 1.19.x
+      checkLatest: true
+      includePrerelease: false
 
-- script: az --version
+  - script: az --version
     displayName: 'Show Azure CLI version'
 
-- script: az extension add -n azure-devops
-  displayName: 'Install Azure DevOps Extension'
+  - script: az extension add -n azure-devops
+    displayName: 'Install Azure DevOps Extension'
 
-- script: echo ${AZURE_DEVOPS_CLI_PAT} | az devops login
-  env:
-    AZURE_DEVOPS_CLI_PAT: $(System.AccessToken)
-  displayName: 'Login Azure DevOps Extension'
+  - script: echo ${AZURE_DEVOPS_CLI_PAT} | az devops login
+    env:
+      AZURE_DEVOPS_CLI_PAT: $(System.AccessToken)
+    displayName: 'Login Azure DevOps Extension'
 
-- script: az devops configure --defaults organization=https://uifabric.visualstudio.com project="fabricpublic" --use-git-aliases true
-  displayName: 'Set default Azure DevOps organization and project'
+  - script: az devops configure --defaults organization=https://uifabric.visualstudio.com project="fabricpublic" --use-git-aliases true
+    displayName: 'Set default Azure DevOps organization and project'
