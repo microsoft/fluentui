@@ -18,7 +18,6 @@
     "@uifabric/fabric-website": "^7.7.5",
     "@uifabric/foundation-scenarios": "^0.102.7",
     "perf-test": "^7.0.0",
-    "test-bundles": "^7.0.0",
     "theming-designer": "^7.0.0",
     "todo-app": "^7.0.0"
   },
