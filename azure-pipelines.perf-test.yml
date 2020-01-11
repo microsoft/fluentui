@@ -2,14 +2,6 @@ pr: none
 
 trigger: none
 
-resources:
-  pipelines:
-    - pipeline: UI Fabric
-      source: office-ui-fabric-react - PR and CI
-      trigger:
-        stages:
-          - Build
-
 variables:
   - group: fabric-variables
 
