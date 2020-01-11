@@ -4,7 +4,7 @@ parameters:
 
 # Download and extract build artifacts
 steps:
-    - script: |
+  - script: |
       echo "${{ parameters.artifact }}"
       echo "${{ parameters.buildId }}"
     displayName: echo some variables
