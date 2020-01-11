@@ -1,7 +1,22 @@
 # Change Log - @uifabric/tsx-editor
 
-This log was last generated on Mon, 28 Oct 2019 22:25:45 GMT and should not be manually modified.
+This log was last generated on Thu, 09 Jan 2020 12:34:52 GMT and should not be manually modified.
 
+## 0.11.0
+Thu, 09 Jan 2020 12:34:52 GMT
+
+### Minor changes
+
+- Switch dynamic imports in tsx-editor to require.ensure (elcraig@microsoft.com)
+### Patches
+
+- Update Monaco; fix worker loader in Chrome; fix bundling (elcraig@microsoft.com)
+## 0.10.4
+Wed, 08 Jan 2020 17:02:57 GMT
+
+### Patches
+
+- bumping load-themed-styles to take advantage of es6 version of it (kchau@microsoft.com)
 ## 0.10.3
 Mon, 28 Oct 2019 22:25:45 GMT
 

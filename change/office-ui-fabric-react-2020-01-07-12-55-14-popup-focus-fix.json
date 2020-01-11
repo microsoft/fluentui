@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Popup: fix an issue where onBlur would not correctly update focus state",
+  "packageName": "office-ui-fabric-react",
+  "email": "joschect@microsoft.com",
+  "commit": "bf10fc8ca151deb07bcc5ba33993f8c849eb9e14",
+  "date": "2020-01-07T20:55:14.687Z"
+}

@@ -1,7 +1,22 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Tue, 31 Dec 2019 12:31:45 GMT and should not be manually modified.
+This log was last generated on Fri, 10 Jan 2020 12:31:47 GMT and should not be manually modified.
 
+## 7.10.0
+Fri, 10 Jan 2020 12:31:47 GMT
+
+### Minor changes
+
+- add borderPosition param to getInputFocusStyle (xgao@microsoft.com)
+## 7.9.0
+Wed, 08 Jan 2020 17:02:57 GMT
+
+### Minor changes
+
+- add getInputFocusStyle function to build styles for text input on focus (xgao@microsoft.com)
+### Patches
+
+- bumping load-themed-styles to take advantage of es6 version of it (kchau@microsoft.com)
 ## 7.8.1
 Tue, 31 Dec 2019 12:31:45 GMT
 

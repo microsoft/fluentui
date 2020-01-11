@@ -43,7 +43,7 @@
     "codepen": "cd packages/office-ui-fabric-react && node ../../scripts/local-codepen.js",
     "dom-test": "cd apps/dom-tests && just-scripts jest-dom-with-webpack",
     "lint": "lerna run lint --parallel",
-    "test": "lerna run test --parallel"
+    "test": "lerna run test --stream"
   },
   "devDependencies": {
     "beachball": "^1.14.2",

@@ -1,7 +1,17 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Mon, 23 Dec 2019 12:34:01 GMT and should not be manually modified.
+This log was last generated on Wed, 08 Jan 2020 17:02:57 GMT and should not be manually modified.
 
+## 7.11.0
+Wed, 08 Jan 2020 17:02:57 GMT
+
+### Minor changes
+
+- Add ExampleCard prop for custom editorSupportedPackages, and add support for ICustomizations in IAppDefinition.customizations for customizing all ExampleCards. (elcraig@microsoft.com)
+- Fix API reference generation bugs and add support for showing all tables on load (elcraig@microsoft.com)
+### Patches
+
+- bumping load-themed-styles to take advantage of es6 version of it (kchau@microsoft.com)
 ## 7.10.4
 Mon, 23 Dec 2019 12:34:01 GMT
 

@@ -169,4 +169,19 @@ storiesOf('Dropdown', module)
       />
     ),
     { rtl: true }
-  );
+  )
+  .addStory('Required', () => (
+    <Dropdown
+      placeholder="Select an Option"
+      label="Required dropdown example:"
+      required={true}
+      options={[{ key: 'A', text: 'Option a' }, { key: 'B', text: 'Option b' }]}
+    />
+  ))
+  .addStory('Required without label', () => (
+    <Dropdown
+      placeholder="Select an Option"
+      required={true}
+      options={[{ key: 'A', text: 'Option a' }, { key: 'B', text: 'Option b' }]}
+    />
+  ));

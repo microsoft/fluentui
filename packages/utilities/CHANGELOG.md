@@ -1,7 +1,13 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Mon, 06 Jan 2020 12:29:10 GMT and should not be manually modified.
+This log was last generated on Thu, 09 Jan 2020 12:34:52 GMT and should not be manually modified.
 
+## 7.10.0
+Thu, 09 Jan 2020 12:34:52 GMT
+
+### Minor changes
+
+- memoizeFunction: The items for which callback method returned null/undefined value, null/undefined was being stored in cache for these items. In this PR, a new flag is introduced based on which the cached undefined/null value can be updated till the time non-undefined/null value is encountered for the first time. (vishgup@microsoft.com)
 ## 7.9.0
 Mon, 06 Jan 2020 12:29:10 GMT
 

@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fix API reference generation bugs",
-  "packageName": "@uifabric/api-docs",
-  "email": "elcraig@microsoft.com",
-  "commit": "0d8e4da2a7c3d0f4855b3dfade06654c1def6cfb",
-  "date": "2020-01-07T02:05:53.105Z"
-}

@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Calendar: Fixing text color of 'today's day cell' when in High Contrast Mode.",
-  "packageName": "office-ui-fabric-react",
-  "email": "Humberto.Morimoto@microsoft.com",
-  "commit": "92cfe30b9cc98ceaeab52d4bd95eb17d98a0dfe2",
-  "date": "2020-01-07T21:51:15.319Z"
-}

@@ -4,6 +4,8 @@ exports[`Fabric renders a Fabric component correctly 1`] = `
 <div
   className=
       ms-Fabric
+      is-focusHidden
+      ms-Fabric--isFocusHidden
       {
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
@@ -32,6 +34,8 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
   <div
     className=
         ms-Fabric
+        is-focusHidden
+        ms-Fabric--isFocusHidden
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
@@ -196,6 +200,8 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
     <div
       className=
           ms-Fabric
+          is-focusHidden
+          ms-Fabric--isFocusHidden
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
@@ -360,6 +366,8 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
       <div
         className=
             ms-Fabric
+            is-focusHidden
+            ms-Fabric--isFocusHidden
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
@@ -3016,6 +3024,8 @@ exports[`Fabric renders a Fabric component with applyTheme correctly 1`] = `
 <div
   className=
       ms-Fabric
+      is-focusHidden
+      ms-Fabric--isFocusHidden
       {
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
@@ -3044,6 +3054,8 @@ exports[`Fabric renders as a span using the "as" prop 1`] = `
 <span
   className=
       ms-Fabric
+      is-focusHidden
+      ms-Fabric--isFocusHidden
       {
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;

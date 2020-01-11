@@ -155,7 +155,8 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
     const { title, name } = this.props;
 
     return title ? (
-      <Text variant="xLarge" as="h3" styles={{ root: { marginTop: 0 } }} id={name}>
+      // This heading must be programmatically focusable for simulating jumping to an anchor
+      <Text variant="xLarge" as="h3" styles={{ root: { marginTop: 0 } }} id={name} tabIndex={-1}>
         {title}
       </Text>
     ) : (
