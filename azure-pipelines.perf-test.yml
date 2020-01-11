@@ -6,15 +6,19 @@ variables:
   - group: fabric-variables
 
 pool:
-  vmImage: 'Ubuntu 16.04'
+  vmImage: 'Ubuntu 18.04'
 
 steps:
   # No need for checkout since we're using build artifacts.
   - checkout: none
 
+  - script: |
+      echo "$(artifact)"
+    displayName: echoing what artifact name this is
+
   - template: azure-pipelines.artifacts.yml
     parameters:
-      artifact: $[variables.artifact]
+      artifact: $(artifact)
 
   - template: azure-pipelines.tools.yml
 
