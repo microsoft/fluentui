@@ -50,7 +50,7 @@ stages:
             displayName: 'Install Azure DevOps Extension'
 
           - script: |
-              echo ${AZURE_DEVOPS_CLI_PAT} | az devops login
+              echo ${AZURE_DEVOPS_CLI_PAT} | az devops login --organization https://uifabric.visualstudio.com
               az devops configure --defaults organization=https://uifabric.visualstudio.com project="fabricpublic" --use-git-aliases true
               az pipelines build queue --verbose --org https://uifabric.visualstudio.com -p fabricpublic --definition-name "office-ui-fabric-react - Perf-Test" --branch $(Build.SourceBranch) --variables artifact=Build-PR-$(Build.BuildNumber) buildId=$(Build.BuildId)
               az pipelines build queue --verbose --org https://uifabric.visualstudio.com -p fabricpublic --definition-name "office-ui-fabric-react - Screener" --branch $(Build.SourceBranch) --variables artifact=Build-PR-$(Build.BuildNumber) buildId=$(Build.BuildId)
