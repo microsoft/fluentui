@@ -52,8 +52,8 @@ stages:
           - script: |
               echo $(buildQueuePat) | az devops login --organization https://uifabric.visualstudio.com
               az devops configure --defaults organization=https://uifabric.visualstudio.com project="fabricpublic" --use-git-aliases true
-              az pipelines build queue --verbose --org https://uifabric.visualstudio.com -p fabricpublic --definition-name "office-ui-fabric-react - Perf-Test" --branch $(Build.SourceBranch) --variables artifact=Build-PR-$(Build.BuildNumber) buildId=$(Build.BuildId)
-              az pipelines build queue --verbose --org https://uifabric.visualstudio.com -p fabricpublic --definition-name "office-ui-fabric-react - Screener" --branch $(Build.SourceBranch) --variables artifact=Build-PR-$(Build.BuildNumber) buildId=$(Build.BuildId)
+              az pipelines build queue --verbose --org https://uifabric.visualstudio.com -p fabricpublic --definition-name "office-ui-fabric-react - Perf-Test" --branch $(Build.SourceBranch) --commit-id $(Build.SourceVersion) --variables artifact=Build-PR-$(Build.BuildNumber) buildId=$(Build.BuildId)
+              az pipelines build queue --verbose --org https://uifabric.visualstudio.com -p fabricpublic --definition-name "office-ui-fabric-react - Screener" --branch $(Build.SourceBranch) --commit-id $(Build.SourceVersion) --variables artifact=Build-PR-$(Build.BuildNumber) buildId=$(Build.BuildId)
             env:
               AZURE_DEVOPS_EXT_PAT: $(buildQueuePat)
             displayName: Trigger Perf-Test and Screener jobs
