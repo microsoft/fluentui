@@ -3,7 +3,7 @@ parameters:
 
 # Download and extract build artifacts
 steps:
-  - download: current
+  - download: 84
     artifact: ${{ parameters.artifact }}
 
   - task: ExtractFiles@1
