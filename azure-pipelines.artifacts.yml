@@ -1,7 +1,10 @@
+parameters:
+  artifact: ''
+
 # Download and extract build artifacts
 steps:
   - download: current
-    artifact: $(artifact)
+    artifact: $(parameters.artifact)
 
   - task: ExtractFiles@1
     inputs:
