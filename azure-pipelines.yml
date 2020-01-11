@@ -10,8 +10,8 @@ variables:
 pool:
   vmImage: 'Ubuntu 16.04'
 
-jobs:
-  - job: Build
+stages:
+  - stage: Build
     pool: 'Self Host Ubuntu'
     steps:
       - template: azure-pipelines.tools.yml
@@ -41,20 +41,20 @@ jobs:
       - publish: $(Build.ArtifactStagingDirectory)
         artifact: Build-PR-$(Build.BuildNumber)
 
-      - script: |
-          az pipelines build queue --definition-name "office-ui-fabric-react - Perf-Test" --variables artifact=Build-PR-$(Build.BuildNumber)
-        displayName: Trigger perf-test job
+      # - script: |
+      #     az pipelines build queue --definition-name "office-ui-fabric-react - Perf-Test" --variables artifact=Build-PR-$(Build.BuildNumber)
+      #   displayName: Trigger perf-test job
 
-      - script: |
-          az pipelines build queue --definition-name "office-ui-fabric-react - Screener" --variables artifact=Build-PR-$(Build.BuildNumber)
-        displayName: Trigger screener job
+      # - script: |
+      #     az pipelines build queue --definition-name "office-ui-fabric-react - Screener" --variables artifact=Build-PR-$(Build.BuildNumber)
+      #   displayName: Trigger screener job
 
       - task: DeleteFiles@1
         inputs:
           SourceFolder: $(Build.SourcesDirectory)
           Contents: '**/*'
 
-  - job: Validate
+  - stage: Validate
     dependsOn: Build
     pool: 'Self Host Ubuntu'
     steps:
@@ -81,7 +81,7 @@ jobs:
           SourceFolder: $(Build.SourcesDirectory)
           Contents: '**/*'
 
-  - job: Deploy
+  - stage: Deploy
     dependsOn: Build
     pool: 'Self Host Ubuntu'
     steps:
