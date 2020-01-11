@@ -14,7 +14,8 @@ steps:
 
   - script: |
       echo "$(artifact)"
-    displayName: echoing what artifact name this is
+      echo "$(buildId)"
+    displayName: echo some variables
 
   - template: azure-pipelines.buildartifacts.yml
     parameters:
