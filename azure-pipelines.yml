@@ -43,23 +43,18 @@ stages:
           - publish: $(Build.ArtifactStagingDirectory)
             artifact: Build-PR-$(Build.BuildNumber)
 
-          - script: az --version
-            displayName: 'Show Azure CLI version'
-
-          - script: az extension add -n azure-devops
-            displayName: 'Install Azure DevOps Extension'
-
           - script: |
-              echo $(Build.SourceBranch)
-              echo $(Build.SourceVersion)
-              echo Build-PR-$(Build.BuildNumber)
-              echo $(Build.BuildId)
-
-          - script: |
+              az --version
+              az extension add -n azure-devops
               echo $(buildQueuePat) | az devops login --organization https://uifabric.visualstudio.com
               az devops configure --defaults organization=https://uifabric.visualstudio.com project="fabricpublic" --use-git-aliases true
-              az pipelines build queue --verbose --org https://uifabric.visualstudio.com -p fabricpublic --definition-name "office-ui-fabric-react - Perf-Test" --branch $(Build.SourceBranch) --commit-id $(Build.SourceVersion) --variables artifact=Build-PR-$(Build.BuildNumber) buildId=$(Build.BuildId)
-              az pipelines build queue --verbose --org https://uifabric.visualstudio.com -p fabricpublic --definition-name "office-ui-fabric-react - Screener" --branch $(Build.SourceBranch) --commit-id $(Build.SourceVersion) --variables artifact=Build-PR-$(Build.BuildNumber) buildId=$(Build.BuildId)
+            env:
+              AZURE_DEVOPS_EXT_PAT: $(buildQueuePat)
+            displayName: Set up Azure CLI with DevOps
+
+          - script: |
+              az pipelines build queue --verbose --org https://uifabric.visualstudio.com -p fabricpublic --definition-name "office-ui-fabric-react - Perf-Test" --branch $(Build.SourceBranch) --variables artifact=Build-PR-$(Build.BuildNumber) buildId=$(Build.BuildId)
+              az pipelines build queue --verbose --org https://uifabric.visualstudio.com -p fabricpublic --definition-name "office-ui-fabric-react - Screener" --branch $(Build.SourceBranch) --variables artifact=Build-PR-$(Build.BuildNumber) buildId=$(Build.BuildId)
             env:
               AZURE_DEVOPS_EXT_PAT: $(buildQueuePat)
             displayName: Trigger Perf-Test and Screener jobs
