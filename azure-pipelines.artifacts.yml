@@ -3,7 +3,7 @@ parameters:
 
 # Download and extract build artifacts
 steps:
-  - download: 84
+  - download: office-ui-fabric-react - PR and CI
     artifact: ${{ parameters.artifact }}
 
   - task: ExtractFiles@1
