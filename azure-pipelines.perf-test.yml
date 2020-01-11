@@ -8,6 +8,9 @@ variables:
 pool:
   vmImage: 'Ubuntu 16.04'
 
+parameters:
+  artifact: ''
+
 steps:
   # No need for checkout since we're using build artifacts.
   - checkout: none
