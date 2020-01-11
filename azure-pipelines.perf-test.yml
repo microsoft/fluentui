@@ -12,7 +12,7 @@ steps:
   # No need for checkout since we're using build artifacts.
   - checkout: none
 
-  - template: azure-pipelines.buildartifacts.yml
+  - template: azure-pipelines.artifacts.yml
     parameters:
       artifact: $(artifact)
       buildId: $(buildId)

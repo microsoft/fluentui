@@ -75,6 +75,7 @@ stages:
           - template: azure-pipelines.artifacts.yml
             parameters:
               artifact: Build-PR-$(Build.BuildNumber)
+              buildId: $(Build.BuildId)
 
           - script: |
               yarn test
@@ -105,6 +106,7 @@ stages:
           - template: azure-pipelines.artifacts.yml
             parameters:
               artifact: Build-PR-$(Build.BuildNumber)
+              buildId: $(Build.BuildId)
 
           - template: azure-pipelines.tools.yml
 
