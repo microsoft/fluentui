@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Add aria role to multi-select dropdown ",
+  "packageName": "office-ui-fabric-react",
+  "email": "xgao@microsoft.com",
+  "commit": "a015ed681c996bfac40b60665abd2191f4d241ed",
+  "date": "2020-01-11T00:06:20.653Z"
+}
