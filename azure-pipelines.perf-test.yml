@@ -10,7 +10,6 @@ pool:
 
 jobs:
   - job: PerfTest
-    dependsOn: Build
     steps:
       # No need for checkout since we're using build artifacts.
       - checkout: none
