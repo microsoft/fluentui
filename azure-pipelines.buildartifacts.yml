@@ -31,7 +31,7 @@ steps:
       # By default, input patterns start in the root folder of the repo (same as if you had specified $(Build.SourcesDirectory)).
       # It'd be nice to use path variables here, but this task's inputs use relative pathing.
       # Artifacts are downloaded by named directories into $(Pipeline.Workspace) by default, which is one directory up.
-      archiveFilePatterns: '../Build/*.tar.gz'
+      archiveFilePatterns: '../${{ parameters.artifact }}/*.tar.gz'
       # Extract into $(Pipeline.Workspace). Archive should include root folder so that contents get extracted into proper subdirectories.
       destinationFolder: '..'
       cleanDestinationFolder: false
