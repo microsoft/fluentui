@@ -16,9 +16,10 @@ steps:
       echo "$(artifact)"
     displayName: echoing what artifact name this is
 
-  - template: azure-pipelines.artifacts.yml
+  - template: azure-pipelines.buildartifacts.yml
     parameters:
       artifact: $(artifact)
+      buildId: $(buildId)
 
   - template: azure-pipelines.tools.yml
 
