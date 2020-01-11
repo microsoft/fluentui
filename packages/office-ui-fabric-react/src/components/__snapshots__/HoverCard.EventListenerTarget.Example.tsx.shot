@@ -4,6 +4,8 @@ exports[`Component Examples renders HoverCard.EventListenerTarget.Example.tsx co
 <div
   className=
       ms-Fabric
+      is-focusHidden
+      ms-Fabric--isFocusHidden
       {
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;

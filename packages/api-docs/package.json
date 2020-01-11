@@ -23,10 +23,10 @@
     "@uifabric/build": "^7.0.0",
     "@uifabric/merge-styles": "^7.8.1",
     "@uifabric/react-cards": "^0.109.3",
-    "@uifabric/styling": "^7.9.0",
+    "@uifabric/styling": "^7.10.0",
     "@uifabric/tslint-rules": "^7.0.5",
     "@uifabric/utilities": "^7.10.0",
-    "office-ui-fabric-react": "^7.79.1"
+    "office-ui-fabric-react": "^7.80.0"
   },
   "dependencies": {
     "@microsoft/tsdoc": "0.12.12",

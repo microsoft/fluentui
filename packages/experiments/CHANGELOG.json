@@ -2,6 +2,20 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "date": "Fri, 10 Jan 2020 12:31:47 GMT",
+      "tag": "@uifabric/experiments_v7.18.12",
+      "version": "7.18.12",
+      "comments": {
+        "patch": [
+          {
+            "comment": "ComboBox: fix chevron button and focus border styling",
+            "author": "xgao@microsoft.com",
+            "commit": "b1f23673efec6c713219c81d02be736f3dc7a373"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 08 Jan 2020 17:02:57 GMT",
       "tag": "@uifabric/experiments_v7.18.11",
       "version": "7.18.11",

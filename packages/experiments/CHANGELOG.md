@@ -1,7 +1,13 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Wed, 08 Jan 2020 17:02:57 GMT and should not be manually modified.
+This log was last generated on Fri, 10 Jan 2020 12:31:47 GMT and should not be manually modified.
 
+## 7.18.12
+Fri, 10 Jan 2020 12:31:47 GMT
+
+### Patches
+
+- ComboBox: fix chevron button and focus border styling (xgao@microsoft.com)
 ## 7.18.11
 Wed, 08 Jan 2020 17:02:57 GMT
 

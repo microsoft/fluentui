@@ -2,6 +2,32 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Fri, 10 Jan 2020 12:31:47 GMT",
+      "tag": "office-ui-fabric-react_v7.80.0",
+      "version": "7.80.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "FocusZone:add page down/up feature",
+            "author": "nasabek@microsoft.com",
+            "commit": "584355c35881f70b8992e1ad453425f36c6c5232"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Update snapshot test after fixing combobox styling",
+            "author": "xgao@microsoft.com",
+            "commit": "b1f23673efec6c713219c81d02be736f3dc7a373"
+          },
+          {
+            "comment": "Remove onBlur from being excluded in grid",
+            "author": "chiechan@microsoft.com",
+            "commit": "ea8f7234b54a21f593e35d501885052bf92278a3"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 09 Jan 2020 12:34:52 GMT",
       "tag": "office-ui-fabric-react_v7.79.1",
       "version": "7.79.1",

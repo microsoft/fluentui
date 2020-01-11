@@ -245,7 +245,7 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
       required &&
         !hasLabel && {
           selectors: {
-            ':after': {
+            ':before': {
               content: `'*'`,
               color: semanticColors.errorText,
               position: 'absolute',

@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "getting rid of test-bundles dep from pr-deploy-site",
+  "packageName": "@uifabric/pr-deploy-site",
+  "email": "kchau@microsoft.com",
+  "commit": "94ac80c98368f12fe5fd63cd37f0ad24e3efe8c4",
+  "date": "2020-01-10T20:58:45.260Z"
+}

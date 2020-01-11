@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Dropdown: fix missing asterisk on focused dropdown",
+  "packageName": "office-ui-fabric-react",
+  "email": "xgao@microsoft.com",
+  "commit": "355a5a9a5b0f23ec5779a19ac1646eee4c2098e1",
+  "date": "2020-01-10T00:33:21.378Z"
+}

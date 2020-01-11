@@ -18,10 +18,11 @@
     "lint": "just-scripts lint",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
+    "just": "just-scripts",
     "start": "just-scripts dev",
     "start-test": "just-scripts jest-watch",
-    "update-snapshots": "just-scripts jest -u",
-    "just": "just-scripts"
+    "test": "just-scripts test",
+    "update-snapshots": "just-scripts jest -u"
   },
   "devDependencies": {
     "@types/jest": "23.0.0",
