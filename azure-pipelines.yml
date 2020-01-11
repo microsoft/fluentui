@@ -43,6 +43,10 @@ stages:
           - publish: $(Build.ArtifactStagingDirectory)
             artifact: Build-PR-$(Build.BuildNumber)
 
+          - script: |
+              echo "##vso[task.setvariable variable=artifact]Build-PR-$(Build.BuildNumber)"
+            displayName: set artifact name
+
           # - script: |
           #     az pipelines build queue --definition-name "office-ui-fabric-react - Perf-Test" --variables artifact=Build-PR-$(Build.BuildNumber)
           #   displayName: Trigger perf-test job
