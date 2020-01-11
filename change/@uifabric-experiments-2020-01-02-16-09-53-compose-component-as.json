@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Consume compose functions where appropriate",
+  "packageName": "@uifabric/experiments",
+  "email": "tmichon@microsoft.com",
+  "commit": "d9eaef588f46c10fe8c1791957571a8eb467d02e",
+  "date": "2020-01-03T00:09:49.172Z"
+}

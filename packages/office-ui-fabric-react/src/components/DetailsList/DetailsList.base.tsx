@@ -42,6 +42,7 @@ import { DEFAULT_CELL_STYLE_PROPS } from './DetailsRow.styles';
 import { CHECK_CELL_WIDTH as CHECKBOX_WIDTH } from './DetailsRowCheck.styles';
 // For every group level there is a GroupSpacer added. Importing this const to have the source value in one place.
 import { SPACER_WIDTH as GROUP_EXPAND_WIDTH } from '../GroupedList/GroupSpacer';
+import { composeRenderFunction } from '@uifabric/utilities';
 
 const getClassNames = classNamesFunction<IDetailsListStyleProps, IDetailsListStyles>();
 
@@ -538,7 +539,6 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
       onRenderMissingItem,
       onRenderItemColumn,
       getCellValueKey,
-      onRenderRow = this._onRenderRow,
       selectionMode = this._selection.mode,
       viewport,
       checkboxVisibility,
@@ -554,6 +554,9 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
       enableUpdateAnimations,
       useFastIcons
     } = this.props;
+
+    const onRenderRow = this.props.onRenderRow ? composeRenderFunction(this.props.onRenderRow, this._onRenderRow) : this._onRenderRow;
+
     const collapseAllVisibility = groupProps && groupProps.collapseAllVisibility;
     const selection = this._selection;
     const dragDropHelper = this._dragDropHelper;
@@ -598,7 +601,7 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
       return null;
     }
 
-    return onRenderRow(rowProps, this._onRenderRow);
+    return onRenderRow(rowProps);
   };
 
   private _onGroupExpandStateChanged = (isSomeGroupExpanded: boolean): void => {
@@ -1038,6 +1041,7 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
       indentWidth
     } = this.props;
     const groupNestingDepth = this._getGroupNestingDepth();
+
     const onRenderFooter = onRenderDetailsGroupFooter
       ? (props: IGroupDividerProps, defaultRender?: IRenderFunction<IGroupDividerProps>) => {
           return onRenderDetailsGroupFooter(
