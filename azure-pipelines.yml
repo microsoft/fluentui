@@ -44,7 +44,7 @@ stages:
             artifact: Build-PR-$(Build.BuildNumber)
 
           - script: az --version
-              displayName: 'Show Azure CLI version'
+            displayName: 'Show Azure CLI version'
 
           - script: az extension add -n azure-devops
             displayName: 'Install Azure DevOps Extension'
