@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "Documentation: Added note to merge-styles readme about working with CSP.",
+  "comment": "Documentation: Added note to merge-styles readme about working with content security policy (CSP).",
   "packageName": "@uifabric/merge-styles",
   "email": "elcraig@microsoft.com",
   "commit": "204bbe4b92735ff5b7b0298c20142324faa093f5",
