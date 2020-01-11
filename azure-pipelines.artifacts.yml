@@ -3,8 +3,12 @@ parameters:
 
 # Download and extract build artifacts
 steps:
-  - download: office-ui-fabric-react - PR and CI
-    artifact: ${{ parameters.artifact }}
+  - task: DownloadPipelineArtifact@2
+    inputs:
+      source: 'specific' # Options: current, specific
+      project: fabricpublic
+      pipeline: office-ui-fabric-react - PR and CI
+      artifact: ${{ parameters.artifact }}
 
   - task: ExtractFiles@1
     inputs:
