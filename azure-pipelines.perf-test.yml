@@ -5,16 +5,12 @@ trigger: none
 variables:
   - group: fabric-variables
 
-pool: 'Self Host Ubuntu'
+pool:
+  vmImage: 'Ubuntu 18.04'
 
 steps:
   # No need for checkout since we're using build artifacts.
   - checkout: none
-
-  - script: |
-      echo "$(artifact)"
-      echo "$(buildId)"
-    displayName: echo some variables
 
   - template: azure-pipelines.buildartifacts.yml
     parameters:
