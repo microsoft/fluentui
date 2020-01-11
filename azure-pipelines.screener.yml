@@ -11,9 +11,10 @@ steps:
   # No need for checkout since we're using build artifacts.
   - checkout: none
 
-  - template: azure-pipelines.artifacts.yml
+  - template: azure-pipelines.buildartifacts.yml
     parameters:
       artifact: $(artifact)
+      buildId: $(buildId)
 
   - script: |
       git config --global user.email "fabrictactical@microsoft.com"

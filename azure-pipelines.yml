@@ -44,11 +44,11 @@ stages:
             artifact: Build-PR-$(Build.BuildNumber)
 
           - script: |
-              az pipelines build queue --definition-name "office-ui-fabric-react - Perf-Test" --variables artifact=Build-PR-$(Build.BuildNumber) buildId=$(Build.BuildId)
+              az pipelines build queue --definition-name "office-ui-fabric-react - Perf-Test" --branch $(Build.SourceBranch) --variables artifact=Build-PR-$(Build.BuildNumber) buildId=$(Build.BuildId)
             displayName: Trigger perf-test job
 
           - script: |
-              az pipelines build queue --definition-name "office-ui-fabric-react - Screener" --variables artifact=Build-PR-$(Build.BuildNumber) buildId=$(Build.BuildId)
+              az pipelines build queue --definition-name "office-ui-fabric-react - Screener" --branch $(Build.SourceBranch) --variables artifact=Build-PR-$(Build.BuildNumber) buildId=$(Build.BuildId)
             displayName: Trigger screener job
 
           - task: DeleteFiles@1
