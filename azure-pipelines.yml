@@ -14,7 +14,7 @@ stages:
   - stage: Build
     pool: 'Self Host Ubuntu'
     jobs:
-      - job: Build Job
+      - job: BuildJob
         steps:
           - template: azure-pipelines.tools.yml
 
@@ -60,7 +60,7 @@ stages:
     dependsOn: Build
     pool: 'Self Host Ubuntu'
     jobs:
-      - job: Validate Job
+      - job: ValidateJob
         steps:
           # No need for checkout since we're using build artifacts.
           - checkout: none
@@ -90,7 +90,7 @@ stages:
     pool: 'Self Host Ubuntu'
 
     jobs:
-      - job: Deploy Job
+      - job: DeployJob
         steps:
           # No need for checkout since we're using build artifacts.
           - checkout: none
