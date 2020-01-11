@@ -5,7 +5,7 @@ trigger: none
 variables:
   - group: fabric-variables
 
-pool: 'Self Hosted Ubuntu'
+pool: 'Self Host Ubuntu'
 
 steps:
   # No need for checkout since we're using build artifacts.
