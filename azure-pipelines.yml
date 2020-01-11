@@ -13,100 +13,107 @@ pool:
 stages:
   - stage: Build
     pool: 'Self Host Ubuntu'
-    steps:
-      - template: azure-pipelines.tools.yml
+    jobs:
+      - job: Build Job
+        steps:
+          - template: azure-pipelines.tools.yml
 
-      - script: |
-          yarn
-        displayName: yarn
+          - script: |
+              yarn
+            displayName: yarn
 
-      - script: |
-          yarn checkchange
-        displayName: check change
+          - script: |
+              yarn checkchange
+            displayName: check change
 
-      - script: |
-          yarn build
-        displayName: build
+          - script: |
+              yarn build
+            displayName: build
 
-      - task: ArchiveFiles@2
-        inputs:
-          rootFolderOrFile: $(Build.Repository.LocalPath)
-          # Include root folder so archive can just be extracted into $(Pipeline.Workspace)
-          includeRootFolder: true
-          archiveType: 'tar'
-          tarCompression: 'gz'
-          archiveFile: $(Build.ArtifactStagingDirectory)/build.tar.gz
-          replaceExistingArchive: true
+          - task: ArchiveFiles@2
+            inputs:
+              rootFolderOrFile: $(Build.Repository.LocalPath)
+              # Include root folder so archive can just be extracted into $(Pipeline.Workspace)
+              includeRootFolder: true
+              archiveType: 'tar'
+              tarCompression: 'gz'
+              archiveFile: $(Build.ArtifactStagingDirectory)/build.tar.gz
+              replaceExistingArchive: true
 
-      - publish: $(Build.ArtifactStagingDirectory)
-        artifact: Build-PR-$(Build.BuildNumber)
+          - publish: $(Build.ArtifactStagingDirectory)
+            artifact: Build-PR-$(Build.BuildNumber)
 
-      # - script: |
-      #     az pipelines build queue --definition-name "office-ui-fabric-react - Perf-Test" --variables artifact=Build-PR-$(Build.BuildNumber)
-      #   displayName: Trigger perf-test job
+          # - script: |
+          #     az pipelines build queue --definition-name "office-ui-fabric-react - Perf-Test" --variables artifact=Build-PR-$(Build.BuildNumber)
+          #   displayName: Trigger perf-test job
 
-      # - script: |
-      #     az pipelines build queue --definition-name "office-ui-fabric-react - Screener" --variables artifact=Build-PR-$(Build.BuildNumber)
-      #   displayName: Trigger screener job
+          # - script: |
+          #     az pipelines build queue --definition-name "office-ui-fabric-react - Screener" --variables artifact=Build-PR-$(Build.BuildNumber)
+          #   displayName: Trigger screener job
 
-      - task: DeleteFiles@1
-        inputs:
-          SourceFolder: $(Build.SourcesDirectory)
-          Contents: '**/*'
+          - task: DeleteFiles@1
+            inputs:
+              SourceFolder: $(Build.SourcesDirectory)
+              Contents: '**/*'
 
   - stage: Validate
     dependsOn: Build
     pool: 'Self Host Ubuntu'
-    steps:
-      # No need for checkout since we're using build artifacts.
-      - checkout: none
-      - template: azure-pipelines.artifacts.yml
-        parameters:
-          artifact: Build-PR-$(Build.BuildNumber)
+    jobs:
+      - job: Validate Job
+        steps:
+          # No need for checkout since we're using build artifacts.
+          - checkout: none
+          - template: azure-pipelines.artifacts.yml
+            parameters:
+              artifact: Build-PR-$(Build.BuildNumber)
 
-      - script: |
-          yarn test
-        displayName: test
+          - script: |
+              yarn test
+            displayName: test
 
-      - script: |
-          yarn lint
-        displayName: lint
+          - script: |
+              yarn lint
+            displayName: lint
 
-      - script: |
-          yarn check-for-changed-files
-        displayName: check for changed files
+          - script: |
+              yarn check-for-changed-files
+            displayName: check for changed files
 
-      - task: DeleteFiles@1
-        inputs:
-          SourceFolder: $(Build.SourcesDirectory)
-          Contents: '**/*'
+          - task: DeleteFiles@1
+            inputs:
+              SourceFolder: $(Build.SourcesDirectory)
+              Contents: '**/*'
 
   - stage: Deploy
     dependsOn: Build
     pool: 'Self Host Ubuntu'
-    steps:
-      # No need for checkout since we're using build artifacts.
-      - checkout: none
-      - template: azure-pipelines.artifacts.yml
-        parameters:
-          artifact: Build-PR-$(Build.BuildNumber)
 
-      - template: azure-pipelines.tools.yml
+    jobs:
+      - job: Deploy Job
+        steps:
+          # No need for checkout since we're using build artifacts.
+          - checkout: none
+          - template: azure-pipelines.artifacts.yml
+            parameters:
+              artifact: Build-PR-$(Build.BuildNumber)
 
-      - script: |
-          yarn bundle
-        displayName: bundle
+          - template: azure-pipelines.tools.yml
 
-      - task: AzureUpload@1
-        displayName: Upload PR deploy site
-        inputs:
-          SourcePath: 'apps/pr-deploy-site/dist'
-          azureSubscription: 'UI Fabric (bac044cf-49e1-4843-8dda-1ce9662606c8)'
-          storage: fabricweb
-          ContainerName: '$web'
-          BlobPrefix: 'pr-deploy-site/$(Build.SourceBranch)'
+          - script: |
+              yarn bundle
+            displayName: bundle
 
-      - task: DeleteFiles@1
-        inputs:
-          SourceFolder: $(Build.SourcesDirectory)
-          Contents: '**/*'
+          - task: AzureUpload@1
+            displayName: Upload PR deploy site
+            inputs:
+              SourcePath: 'apps/pr-deploy-site/dist'
+              azureSubscription: 'UI Fabric (bac044cf-49e1-4843-8dda-1ce9662606c8)'
+              storage: fabricweb
+              ContainerName: '$web'
+              BlobPrefix: 'pr-deploy-site/$(Build.SourceBranch)'
+
+          - task: DeleteFiles@1
+            inputs:
+              SourceFolder: $(Build.SourcesDirectory)
+              Contents: '**/*'
