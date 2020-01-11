@@ -5,8 +5,8 @@ parameters:
 # Download and extract build artifacts
 steps:
   - script: |
-      echo "${{ parameters.artifact }}"
-      echo "${{ parameters.buildId }}"
+      echo "Artifact Name: ${{ parameters.artifact }}"
+      echo "Build ID / Run ID: ${{ parameters.buildId }}"
     displayName: echo some variables
 
   - task: DownloadPipelineArtifact@2
@@ -21,14 +21,14 @@ steps:
       #tags: # Optional
       artifact: ${{ parameters.artifact }}
       #patterns: '**' # Optional
-      #path: '$(Pipeline.Workspace)'
+      path: '$(Pipeline.Workspace)/a/${{ parameters.artifact }}'
 
   - task: ExtractFiles@1
     inputs:
       # By default, input patterns start in the root folder of the repo (same as if you had specified $(Build.SourcesDirectory)).
       # It'd be nice to use path variables here, but this task's inputs use relative pathing.
       # Artifacts are downloaded by named directories into $(Pipeline.Workspace) by default, which is one directory up.
-      archiveFilePatterns: '../${{ parameters.artifact }}/*.tar.gz'
+      archiveFilePatterns: '$(Pipeline.Workspace)/a/${{ parameters.artifact }}/*.tar.gz'
       # Extract into $(Pipeline.Workspace). Archive should include root folder so that contents get extracted into proper subdirectories.
-      destinationFolder: '..'
+      destinationFolder: '$(Pipeline.Workspace)'
       cleanDestinationFolder: false
