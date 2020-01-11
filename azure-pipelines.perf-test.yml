@@ -5,8 +5,7 @@ trigger: none
 variables:
   - group: fabric-variables
 
-pool:
-  vmImage: 'Ubuntu 18.04'
+pool: 'Self Hosted Ubuntu'
 
 steps:
   # No need for checkout since we're using build artifacts.
