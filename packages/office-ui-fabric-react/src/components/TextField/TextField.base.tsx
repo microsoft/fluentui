@@ -481,11 +481,17 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
     // tests (ours and maybe consumers' too), so it seemed best to do the switch in a major bump.
 
     const element = event.target as HTMLInputElement;
-    const value = element.value;
+
     // Ignore this event if the value is undefined (in case one of the IE bugs comes back)
-    if (value === undefined || value === this._lastChangeValue) {
+    if (element.value === undefined || element.value === this._lastChangeValue) {
       return;
     }
+
+    const value =
+      this.props.maxLength !== undefined && element.value.length >= this.props.maxLength
+        ? element.value.substring(0, this.props.maxLength)
+        : element.value;
+
     this._lastChangeValue = value;
 
     // This is so developers can access the event properties in asynchronous callbacks

@@ -143,6 +143,11 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
   value?: string;
 
   /**
+   * Maximum number of characters accepted in the text field.
+   */
+  maxLength?: number;
+
+  /**
    * Disabled state of the text field.
    * @defaultvalue false
    */

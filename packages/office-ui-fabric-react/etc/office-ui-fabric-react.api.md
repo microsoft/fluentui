@@ -7622,6 +7622,7 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
     maskFormat?: {
         [key: string]: RegExp;
     };
+    maxLength?: number;
     multiline?: boolean;
     onChange?: (event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, newValue?: string) => void;
     onGetErrorMessage?: (value: string) => string | JSX.Element | PromiseLike<string | JSX.Element> | undefined;

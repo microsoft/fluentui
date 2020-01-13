@@ -350,6 +350,7 @@ exports[`Component Examples renders TextField.Controlled.Example.tsx correctly 1
                 opacity: 1;
               }
           id="TextField3"
+          maxLength={5}
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
