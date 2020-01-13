@@ -6,7 +6,7 @@ export class PivotLargeExample extends React.Component<any, any> {
   public render(): JSX.Element {
     return (
       <div>
-        <Pivot aria-label="Large Link Size Pivot Example" linkSize={PivotLinkSize.large}>
+        <Pivot linkSize={PivotLinkSize.large}>
           <PivotItem headerText="My Files">
             <Label>Pivot #1</Label>
           </PivotItem>

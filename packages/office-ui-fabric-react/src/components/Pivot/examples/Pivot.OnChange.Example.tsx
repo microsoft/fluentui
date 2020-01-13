@@ -6,12 +6,7 @@ export class PivotOnChangeExample extends React.Component<any, any> {
   public render(): JSX.Element {
     return (
       <div>
-        <Pivot
-          aria-label="OnChange Pivot Example"
-          linkSize={PivotLinkSize.large}
-          linkFormat={PivotLinkFormat.tabs}
-          onLinkClick={this.onLinkClick}
-        >
+        <Pivot linkSize={PivotLinkSize.large} linkFormat={PivotLinkFormat.tabs} onLinkClick={this.onLinkClick}>
           <PivotItem headerText="Foo">
             <Label>Pivot #1</Label>
           </PivotItem>
