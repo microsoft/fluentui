@@ -153,11 +153,12 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
 
       if (!this._isInnerZone) {
         _outerZones.add(this);
+
+        if (windowElement && _outerZones.size === 1) {
+          _disposeGlobalKeyDownListener = on(windowElement, 'keydown', this._onKeyDownCapture, true);
+        }
       }
 
-      if (windowElement && _outerZones.size === 1) {
-        _disposeGlobalKeyDownListener = on(windowElement, 'keydown', this._onKeyDownCapture, true);
-      }
       this._disposables.push(on(root, 'blur', this._onBlur, true));
 
       // Assign initial tab indexes so that we can set initial focus as appropriate.
