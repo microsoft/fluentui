@@ -54,7 +54,6 @@ stages:
 
           - script: |
               az pipelines build queue --verbose --org https://uifabric.visualstudio.com -p fabricpublic --definition-name "office-ui-fabric-react - Perf-Test" --branch $(Build.SourceBranch) --variables artifact=Build-PR-$(Build.BuildNumber) buildId=$(Build.BuildId)
-              az pipelines build queue --verbose --org https://uifabric.visualstudio.com -p fabricpublic --definition-name "office-ui-fabric-react - Screener" --branch $(Build.SourceBranch) --variables artifact=Build-PR-$(Build.BuildNumber) buildId=$(Build.BuildId)
             env:
               AZURE_DEVOPS_EXT_PAT: $(buildQueuePat)
             displayName: Trigger Perf-Test and Screener jobs
@@ -63,6 +62,7 @@ stages:
             inputs:
               SourceFolder: $(Build.SourcesDirectory)
               Contents: '**/*'
+            condition: always()
 
   - stage: Validate
     dependsOn: Build
@@ -93,6 +93,7 @@ stages:
             inputs:
               SourceFolder: $(Build.SourcesDirectory)
               Contents: '**/*'
+            condition: always()
 
   - stage: Deploy
     dependsOn: Build
@@ -127,3 +128,34 @@ stages:
             inputs:
               SourceFolder: $(Build.SourcesDirectory)
               Contents: '**/*'
+            condition: always()
+
+  - stage: Screener
+    dependsOn: Build
+
+    pool:
+      vmImage: 'Ubuntu 16.04'
+
+    jobs:
+      - job: ScreenerJob
+        steps:
+          # No need for checkout since we're using build artifacts.
+          - checkout: none
+          - template: azure-pipelines.artifacts.yml
+            parameters:
+              artifact: Build-PR-$(Build.BuildNumber)
+              buildId: $(Build.BuildId)
+
+          - script: |
+              git config --global user.email "fabrictactical@microsoft.com"
+              git config --global user.name "Fabric Tactical"
+              yarn vrtest -- --debug
+            displayName: run VR Test
+            env:
+              SCREENER_API_KEY: $(screener.key)
+
+          - task: DeleteFiles@1
+            inputs:
+              SourceFolder: $(Build.SourcesDirectory)
+              Contents: '**/*'
+            condition: always()

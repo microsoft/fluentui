@@ -59,3 +59,4 @@ steps:
     inputs:
       SourceFolder: $(Build.SourcesDirectory)
       Contents: '**/*'
+    condition: always()
