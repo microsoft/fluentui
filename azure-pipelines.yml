@@ -7,155 +7,143 @@ trigger:
 variables:
   - group: fabric-variables
 
-pool:
-  vmImage: 'Ubuntu 16.04'
+pool: 'Self Host Ubuntu'
 
-stages:
-  - stage: Build
-    pool: 'Self Host Ubuntu'
-    jobs:
-      - job: BuildJob
-        steps:
-          - template: azure-pipelines.tools.yml
+jobs:
+  - job: Build
+    steps:
+      - template: azure-pipelines.tools.yml
 
-          - script: |
-              yarn
-            displayName: yarn
+      - script: |
+          yarn
+        displayName: yarn
 
-          - script: |
-              yarn checkchange
-            displayName: check change
+      - script: |
+          yarn checkchange
+        displayName: check change
 
-          - script: |
-              yarn build
-            displayName: build
+      - script: |
+          yarn build
+        displayName: build
 
-          - task: ArchiveFiles@2
-            inputs:
-              rootFolderOrFile: $(Build.Repository.LocalPath)
-              # Include root folder so archive can just be extracted into $(Pipeline.Workspace)
-              includeRootFolder: true
-              archiveType: 'tar'
-              tarCompression: 'gz'
-              archiveFile: $(Build.ArtifactStagingDirectory)/build.tar.gz
-              replaceExistingArchive: true
+      - task: ArchiveFiles@2
+        inputs:
+          rootFolderOrFile: $(Build.Repository.LocalPath)
+          # Include root folder so archive can just be extracted into $(Pipeline.Workspace)
+          includeRootFolder: true
+          archiveType: 'tar'
+          tarCompression: 'gz'
+          archiveFile: $(Build.ArtifactStagingDirectory)/build.tar.gz
+          replaceExistingArchive: true
 
-          - publish: $(Build.ArtifactStagingDirectory)
-            artifact: Build-PR-$(Build.BuildNumber)
+      - publish: $(Build.ArtifactStagingDirectory)
+        artifact: Build-PR-$(Build.BuildNumber)
 
-          - script: |
-              az --version
-              az extension add -n azure-devops
-              echo $(buildQueuePat) | az devops login --organization https://uifabric.visualstudio.com
-              az devops configure --defaults organization=https://uifabric.visualstudio.com project="fabricpublic" --use-git-aliases true
-            env:
-              AZURE_DEVOPS_EXT_PAT: $(buildQueuePat)
-            displayName: Set up Azure CLI with DevOps
+      - script: |
+          az --version
+          az extension add -n azure-devops
+          echo $(buildQueuePat) | az devops login --organization https://uifabric.visualstudio.com
+          az devops configure --defaults organization=https://uifabric.visualstudio.com project="fabricpublic" --use-git-aliases true
+        env:
+          AZURE_DEVOPS_EXT_PAT: $(buildQueuePat)
+        displayName: Set up Azure CLI with DevOps
 
-          - script: |
-              az pipelines build queue --verbose --org https://uifabric.visualstudio.com -p fabricpublic --definition-name "office-ui-fabric-react - Perf-Test" --branch $(Build.SourceBranch) --variables artifact=Build-PR-$(Build.BuildNumber) buildId=$(Build.BuildId)
-            env:
-              AZURE_DEVOPS_EXT_PAT: $(buildQueuePat)
-            displayName: Trigger Perf-Test and Screener jobs
+      - script: |
+          az pipelines build queue --verbose --org https://uifabric.visualstudio.com -p fabricpublic --definition-name "office-ui-fabric-react - Perf-Test" --branch $(Build.SourceBranch) --variables artifact=Build-PR-$(Build.BuildNumber) buildId=$(Build.BuildId)
+        env:
+          AZURE_DEVOPS_EXT_PAT: $(buildQueuePat)
+        displayName: Trigger Perf-Test and Screener jobs
 
-          - task: DeleteFiles@1
-            inputs:
-              SourceFolder: $(Build.SourcesDirectory)
-              Contents: '**/*'
-            condition: always()
+      - task: DeleteFiles@1
+        inputs:
+          SourceFolder: $(Build.SourcesDirectory)
+          Contents: '**/*'
+        condition: always()
 
-  - stage: Validate
+  - job: Validate
     dependsOn: Build
-    pool: 'Self Host Ubuntu'
-    jobs:
-      - job: ValidateJob
-        steps:
-          # No need for checkout since we're using build artifacts.
-          - checkout: none
-          - template: azure-pipelines.artifacts.yml
-            parameters:
-              artifact: Build-PR-$(Build.BuildNumber)
-              buildId: $(Build.BuildId)
+    steps:
+      # No need for checkout since we're using build artifacts.
+      - checkout: none
 
-          - script: |
-              yarn test
-            displayName: test
+      - template: azure-pipelines.artifacts.yml
+        parameters:
+          artifact: Build-PR-$(Build.BuildNumber)
+          buildId: $(Build.BuildId)
 
-          - script: |
-              yarn lint
-            displayName: lint
+      - script: |
+          yarn test
+        displayName: test
 
-          - script: |
-              yarn check-for-changed-files
-            displayName: check for changed files
+      - script: |
+          yarn lint
+        displayName: lint
 
-          - task: DeleteFiles@1
-            inputs:
-              SourceFolder: $(Build.SourcesDirectory)
-              Contents: '**/*'
-            condition: always()
+      - script: |
+          yarn check-for-changed-files
+        displayName: check for changed files
 
-  - stage: Deploy
+      - task: DeleteFiles@1
+        inputs:
+          SourceFolder: $(Build.SourcesDirectory)
+          Contents: '**/*'
+        condition: always()
+
+  - job: Deploy
     dependsOn: Build
-    pool: 'Self Host Ubuntu'
+    steps:
+      # No need for checkout since we're using build artifacts.
+      - checkout: none
 
-    jobs:
-      - job: DeployJob
-        steps:
-          # No need for checkout since we're using build artifacts.
-          - checkout: none
-          - template: azure-pipelines.artifacts.yml
-            parameters:
-              artifact: Build-PR-$(Build.BuildNumber)
-              buildId: $(Build.BuildId)
+      - template: azure-pipelines.artifacts.yml
+        parameters:
+          artifact: Build-PR-$(Build.BuildNumber)
+          buildId: $(Build.BuildId)
 
-          - template: azure-pipelines.tools.yml
+      - template: azure-pipelines.tools.yml
 
-          - script: |
-              yarn bundle
-            displayName: bundle
+      - script: |
+          yarn bundle
+        displayName: bundle
 
-          - task: AzureUpload@1
-            displayName: Upload PR deploy site
-            inputs:
-              SourcePath: 'apps/pr-deploy-site/dist'
-              azureSubscription: 'UI Fabric (bac044cf-49e1-4843-8dda-1ce9662606c8)'
-              storage: fabricweb
-              ContainerName: '$web'
-              BlobPrefix: 'pr-deploy-site/$(Build.SourceBranch)'
+      - task: AzureUpload@1
+        displayName: Upload PR deploy site
+        inputs:
+          SourcePath: 'apps/pr-deploy-site/dist'
+          azureSubscription: 'UI Fabric (bac044cf-49e1-4843-8dda-1ce9662606c8)'
+          storage: fabricweb
+          ContainerName: '$web'
+          BlobPrefix: 'pr-deploy-site/$(Build.SourceBranch)'
 
-          - task: DeleteFiles@1
-            inputs:
-              SourceFolder: $(Build.SourcesDirectory)
-              Contents: '**/*'
-            condition: always()
+      - task: DeleteFiles@1
+        inputs:
+          SourceFolder: $(Build.SourcesDirectory)
+          Contents: '**/*'
+        condition: always()
 
-  - stage: Screener
+  - job: Screener
     dependsOn: Build
-
     pool:
       vmImage: 'Ubuntu 16.04'
+    steps:
+      # No need for checkout since we're using build artifacts.
+      - checkout: none
 
-    jobs:
-      - job: ScreenerJob
-        steps:
-          # No need for checkout since we're using build artifacts.
-          - checkout: none
-          - template: azure-pipelines.artifacts.yml
-            parameters:
-              artifact: Build-PR-$(Build.BuildNumber)
-              buildId: $(Build.BuildId)
+      - template: azure-pipelines.artifacts.yml
+        parameters:
+          artifact: Build-PR-$(Build.BuildNumber)
+          buildId: $(Build.BuildId)
 
-          - script: |
-              git config --global user.email "fabrictactical@microsoft.com"
-              git config --global user.name "Fabric Tactical"
-              yarn vrtest -- --debug
-            displayName: run VR Test
-            env:
-              SCREENER_API_KEY: $(screener.key)
+      - script: |
+          git config --global user.email "fabrictactical@microsoft.com"
+          git config --global user.name "Fabric Tactical"
+          yarn vrtest -- --debug
+        displayName: run VR Test
+        env:
+          SCREENER_API_KEY: $(screener.key)
 
-          - task: DeleteFiles@1
-            inputs:
-              SourceFolder: $(Build.SourcesDirectory)
-              Contents: '**/*'
-            condition: always()
+      - task: DeleteFiles@1
+        inputs:
+          SourceFolder: $(Build.SourcesDirectory)
+          Contents: '**/*'
+        condition: always()
