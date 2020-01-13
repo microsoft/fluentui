@@ -65,6 +65,7 @@ export class ContextualMenuButton extends ContextualMenuItemWrapper {
       'aria-posinset': focusableElementIndex + 1,
       'aria-setsize': totalItemCount,
       'aria-disabled': isItemDisabled(item),
+      'data-is-focusable': !item.disabled,
       role: item.role || defaultRole,
       style: item.style
     };
