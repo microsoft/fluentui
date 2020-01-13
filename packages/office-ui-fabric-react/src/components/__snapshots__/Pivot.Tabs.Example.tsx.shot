@@ -2,7 +2,9 @@
 
 exports[`Component Examples renders Pivot.Tabs.Example.tsx correctly 1`] = `
 <div>
-  <div>
+  <div
+    aria-label="Links of Tab Style Pivot Example"
+  >
     <div
       className=
           ms-FocusZone

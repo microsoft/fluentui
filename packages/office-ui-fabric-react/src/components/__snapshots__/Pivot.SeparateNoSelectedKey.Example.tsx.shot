@@ -20,6 +20,7 @@ exports[`Component Examples renders Pivot.SeparateNoSelectedKey.Example.tsx corr
     }
   >
     <div
+      aria-label="No Selected Pivot Example"
       style={
         Object {
           "flexGrow": 1,
