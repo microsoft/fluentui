@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Added prop to restrict the max length accepted for the input in TextField component",
+  "packageName": "office-ui-fabric-react",
+  "email": "catalina@microsoft.com",
+  "commit": "577adf3293a03d1ccff545cf8e2a36e7036cfd2a",
+  "date": "2020-01-13T19:32:09.658Z"
+}
