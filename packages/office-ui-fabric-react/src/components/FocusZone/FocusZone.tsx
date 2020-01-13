@@ -153,11 +153,12 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
 
       if (!this._isInnerZone) {
         _outerZones.add(this);
+
+        if (windowElement && _outerZones.size === 1) {
+          _disposeGlobalKeyDownListener = on(windowElement, 'keydown', this._onKeyDownCapture, true);
+        }
       }
 
-      if (windowElement && _outerZones.size === 1) {
-        _disposeGlobalKeyDownListener = on(windowElement, 'keydown', this._onKeyDownCapture, true);
-      }
       this._disposables.push(on(root, 'blur', this._onBlur, true));
 
       // Assign initial tab indexes so that we can set initial focus as appropriate.
@@ -195,6 +196,11 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
 
     if (!this._isInnerZone) {
       _outerZones.delete(this);
+
+      // If this is the last outer zone, remove the keydown listener.
+      if (_outerZones.size === 0 && _disposeGlobalKeyDownListener) {
+        _disposeGlobalKeyDownListener();
+      }
     }
 
     // Dispose all events.
@@ -202,11 +208,6 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
 
     // Clear function references so their closures can be garbage-collected.
     delete this._disposables;
-
-    // If this is the last outer zone, remove the keydown listener.
-    if (_outerZones.size === 0 && _disposeGlobalKeyDownListener) {
-      _disposeGlobalKeyDownListener();
-    }
   }
 
   public render() {
