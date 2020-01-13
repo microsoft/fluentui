@@ -1,7 +1,18 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 10 Jan 2020 12:31:47 GMT and should not be manually modified.
+This log was last generated on Mon, 13 Jan 2020 12:28:56 GMT and should not be manually modified.
 
+## 7.81.0
+Mon, 13 Jan 2020 12:28:56 GMT
+
+### Minor changes
+
+- Change focus class behavior: Alternate between 'hidden' and 'visible' classes (paflakst@microsoft.com)
+### Patches
+
+- Consume compose functions where appropriate (tmichon@microsoft.com)
+- Popup: fix an issue where onBlur would not correctly update focus state (joschect@microsoft.com)
+- Dropdown: fix missing asterisk on focused dropdown (xgao@microsoft.com)
 ## 7.80.0
 Fri, 10 Jan 2020 12:31:47 GMT
 

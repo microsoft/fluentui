@@ -1,7 +1,13 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Wed, 08 Jan 2020 17:02:57 GMT and should not be manually modified.
+This log was last generated on Mon, 13 Jan 2020 12:28:56 GMT and should not be manually modified.
 
+## 7.7.6
+Mon, 13 Jan 2020 12:28:56 GMT
+
+### Patches
+
+- Fix UHF "skip to main content" link, and update focus properly when scrolling to anchors (elcraig@microsoft.com)
 ## 7.7.5
 Wed, 08 Jan 2020 17:02:57 GMT
 

@@ -2,6 +2,37 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Mon, 13 Jan 2020 12:28:56 GMT",
+      "tag": "office-ui-fabric-react_v7.81.0",
+      "version": "7.81.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Consume compose functions where appropriate",
+            "author": "tmichon@microsoft.com",
+            "commit": "d9eaef588f46c10fe8c1791957571a8eb467d02e"
+          },
+          {
+            "comment": "Popup: fix an issue where onBlur would not correctly update focus state",
+            "author": "joschect@microsoft.com",
+            "commit": "bf10fc8ca151deb07bcc5ba33993f8c849eb9e14"
+          },
+          {
+            "comment": "Dropdown: fix missing asterisk on focused dropdown",
+            "author": "xgao@microsoft.com",
+            "commit": "355a5a9a5b0f23ec5779a19ac1646eee4c2098e1"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Change focus class behavior: Alternate between 'hidden' and 'visible' classes",
+            "author": "paflakst@microsoft.com",
+            "commit": "bee187d4f1dec7d264a9dea28ffd3b93fc56302e"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 10 Jan 2020 12:31:47 GMT",
       "tag": "office-ui-fabric-react_v7.80.0",
       "version": "7.80.0",
