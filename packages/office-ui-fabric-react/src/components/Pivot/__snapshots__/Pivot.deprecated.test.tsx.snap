@@ -2,7 +2,7 @@
 
 exports[`Pivot renders link Pivot correctly 1`] = `
 <div
-  role="tablist"
+  role="toolbar"
 >
   <div
     className=
@@ -38,6 +38,7 @@ exports[`Pivot renders link Pivot correctly 1`] = `
             position: relative;
             white-space: nowrap;
           }
+      role="tablist"
     >
       <button
         aria-selected={true}
