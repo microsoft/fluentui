@@ -2,6 +2,27 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Tue, 14 Jan 2020 12:27:16 GMT",
+      "tag": "office-ui-fabric-react_v7.82.0",
+      "version": "7.82.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Fabric: Properly handle dir being passed into control",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "be6be1df20d4faf7a209deb271dc89fc645d7a89"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "FocusZone: remove keydown listener correctly to avoid a leak with inner zones.",
+            "author": "dzearing@microsoft.com",
+            "commit": "37992c637e8071f70a85d23aee51da9f7cbbdf46"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 13 Jan 2020 12:28:56 GMT",
       "tag": "office-ui-fabric-react_v7.81.0",
       "version": "7.81.0",

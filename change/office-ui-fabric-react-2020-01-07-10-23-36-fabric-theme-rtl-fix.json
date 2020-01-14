@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Fabric: Properly handle dir being passed into control",
-  "packageName": "office-ui-fabric-react",
-  "email": "mgodbolt@microsoft.com",
-  "commit": "be6be1df20d4faf7a209deb271dc89fc645d7a89",
-  "date": "2020-01-07T18:23:36.730Z"
-}

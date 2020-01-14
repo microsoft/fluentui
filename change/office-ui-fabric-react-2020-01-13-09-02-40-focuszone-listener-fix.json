@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "FocusZone: remove keydown listener correctly to avoid a leak with inner zones.",
-  "packageName": "office-ui-fabric-react",
-  "email": "dzearing@microsoft.com",
-  "commit": "37992c637e8071f70a85d23aee51da9f7cbbdf46",
-  "date": "2020-01-13T17:02:40.676Z"
-}

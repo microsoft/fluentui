@@ -1,7 +1,16 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 13 Jan 2020 12:28:56 GMT and should not be manually modified.
+This log was last generated on Tue, 14 Jan 2020 12:27:16 GMT and should not be manually modified.
 
+## 7.82.0
+Tue, 14 Jan 2020 12:27:16 GMT
+
+### Minor changes
+
+- Fabric: Properly handle dir being passed into control (mgodbolt@microsoft.com)
+### Patches
+
+- FocusZone: remove keydown listener correctly to avoid a leak with inner zones. (dzearing@microsoft.com)
 ## 7.81.0
 Mon, 13 Jan 2020 12:28:56 GMT
 
