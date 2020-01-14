@@ -20,10 +20,6 @@ steps:
   - template: azure-pipelines.tools.yml
 
   - script: |
-      yarn
-    displayName: yarn
-
-  - script: |
       yarn just perf-test
     workingDirectory: apps/perf-test
     displayName: Perf Test
