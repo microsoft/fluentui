@@ -31,6 +31,7 @@ export class DialogContentBase extends BaseComponent<IDialogContentProps, {}> {
       onDismiss,
       subTextId,
       subText,
+      titleAriaLevel,
       titleId,
       title,
       type,
@@ -60,7 +61,7 @@ export class DialogContentBase extends BaseComponent<IDialogContentProps, {}> {
     return (
       <div className={classNames.content}>
         <div className={classNames.header}>
-          <p className={classNames.title} id={titleId} role="heading" aria-level={2}>
+          <p className={classNames.title} id={titleId} role="heading" aria-level={titleAriaLevel || 2}>
             {title}
           </p>
           <div className={classNames.topButton}>

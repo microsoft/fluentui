@@ -3759,6 +3759,7 @@ export interface IDialogContentProps extends React.ClassAttributes<DialogContent
     subTextId?: string;
     theme?: ITheme;
     title?: string | JSX.Element;
+    titleAriaLevel?: number;
     titleId?: string;
     topButtonsProps?: IButtonProps[];
     type?: DialogType;

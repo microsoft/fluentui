@@ -58,17 +58,22 @@ export interface IDialogContentProps extends React.ClassAttributes<DialogContent
   onDismiss?: (ev?: React.MouseEvent<HTMLButtonElement>) => any;
 
   /**
-   * The Id for subText container
+   * Id of the subText container.
    */
   subTextId?: string;
 
   /**
-   * The subtext to display in the dialog
+   * The subtext to display in the dialog.
    */
   subText?: string;
 
   /**
-   * The Id for title container
+   * Aria level of the title container.
+   */
+  titleAriaLevel?: number;
+
+  /**
+   * Id of the title container.
    */
   titleId?: string;
 
