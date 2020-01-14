@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Dropdown: fix exception when options change due to DropdownSizePosCache",
+  "packageName": "office-ui-fabric-react",
+  "email": "xgao@microsoft.com",
+  "commit": "6b16c8d6b2858b5b085a1a807ea74c21785f138a",
+  "date": "2020-01-14T23:37:45.933Z"
+}
