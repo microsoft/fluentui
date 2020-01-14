@@ -224,7 +224,6 @@ export const getStyles = (props: IPersonaStyleProps): IPersonaStyles => {
 
       showSecondaryText && {
         height: showSecondaryTextDefaultHeight,
-        lineHeight: showSecondaryTextDefaultHeight,
         overflowX: 'hidden'
       },
 
@@ -264,7 +263,6 @@ export const getStyles = (props: IPersonaStyleProps): IPersonaStyles => {
       showSecondaryText && {
         display: 'block',
         height: showSecondaryTextDefaultHeight,
-        lineHeight: showSecondaryTextDefaultHeight,
         overflowX: 'hidden'
       },
 
