@@ -425,12 +425,11 @@ describe('Dropdown', () => {
 
       expect(titleElement.text()).toEqual('1, 4');
 
-      const newOptions = DEFAULT_OPTIONS.slice(2);
-      wrapper.setProps({ options: newOptions });
+      wrapper.setProps({ options: DEFAULT_OPTIONS.slice(2) });
 
       wrapper.find('.ms-Dropdown').simulate('click');
       const options = document.querySelectorAll('.ms-Dropdown-item');
-      expect(options.length).toEqual(newOptions.length);
+      expect(options.length).toEqual(5);
     });
 
     it('Renders no selected item in default case', () => {
