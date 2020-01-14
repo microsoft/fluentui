@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "updates persona styles to use normal line-height",
+  "packageName": "office-ui-fabric-react",
+  "email": "whitehan@msu.edu",
+  "commit": "277e6e234fdbdd66ccd6dd7fa98bc38f6f93e799",
+  "date": "2020-01-14T23:19:35.256Z"
+}
