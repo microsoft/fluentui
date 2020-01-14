@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Dialog: allow prop to set aria-level for title heading",
+  "packageName": "office-ui-fabric-react",
+  "email": "xgao@microsoft.com",
+  "commit": "bd5f04f01ecf5a16079e9765b9e4b462c2b34832",
+  "date": "2020-01-14T03:08:10.815Z"
+}
