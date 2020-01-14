@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Text: Fixing children check so it can render {0} value.",
+  "packageName": "office-ui-fabric-react",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "commit": "dc2170110070272040a4bf7c0508d725dfa61eec",
+  "date": "2020-01-09T19:08:17.440Z"
+}
