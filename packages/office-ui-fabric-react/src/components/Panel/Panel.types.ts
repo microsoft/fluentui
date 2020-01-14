@@ -78,6 +78,11 @@ export interface IPanelProps extends React.HTMLAttributes<PanelBase> {
   headerText?: string;
 
   /**
+   * Aria level of the header text for the Panel.
+   */
+  headerTextAriaLevel?: number;
+
+  /**
    * A callback function for when the Panel is opened, before the animation completes.
    */
   onOpen?: () => void;

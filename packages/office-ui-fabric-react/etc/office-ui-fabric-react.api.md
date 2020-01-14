@@ -5872,6 +5872,7 @@ export interface IPanelProps extends React.HTMLAttributes<PanelBase> {
     hasCloseButton?: boolean;
     headerClassName?: string;
     headerText?: string;
+    headerTextAriaLevel?: number;
     // @deprecated
     ignoreExternalFocusing?: boolean;
     isBlocking?: boolean;

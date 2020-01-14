@@ -342,7 +342,7 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
     if (headerText) {
       return (
         <div className={this._classNames.header}>
-          <p className={this._classNames.headerText} id={headerTextId} role="heading" aria-level={2}>
+          <p className={this._classNames.headerText} id={headerTextId} role="heading" aria-level={props.headerTextAriaLevel || 2}>
             {headerText}
           </p>
         </div>
