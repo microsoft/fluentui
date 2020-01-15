@@ -6,6 +6,7 @@ exports[`ContextualMenuButton creates a normal button renders the contextual men
   aria-posinset={1}
   aria-setsize={1}
   className="root"
+  data-is-focusable={true}
   onClick={[Function]}
   onMouseDown={[Function]}
   onMouseEnter={[Function]}

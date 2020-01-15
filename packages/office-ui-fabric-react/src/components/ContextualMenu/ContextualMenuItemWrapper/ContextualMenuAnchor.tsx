@@ -69,6 +69,7 @@ export class ContextualMenuAnchor extends ContextualMenuItemWrapper {
               aria-posinset={focusableElementIndex + 1}
               aria-setsize={totalItemCount}
               aria-disabled={isItemDisabled(item)}
+              data-is-focusable={!item.disabled}
               style={item.style}
               onClick={this._onItemClick}
               onMouseEnter={this._onItemMouseEnter}

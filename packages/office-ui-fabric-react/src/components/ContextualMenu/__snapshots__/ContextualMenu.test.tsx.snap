@@ -413,6 +413,7 @@ exports[`ContextualMenu ContextualMenu snapshot ContextualMenu should be present
                             .ms-Fabric--isFocusVisible &:hover {
                               background: inherit;
                             }
+                        data-is-focusable={true}
                         onClick={[Function]}
                         onKeyDown={[Function]}
                         onMouseDown={[Function]}
