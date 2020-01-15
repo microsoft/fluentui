@@ -3002,6 +3002,7 @@ export interface IContextualMenuItemStyleProps {
     disabled: boolean;
     dividerClassName?: string;
     expanded: boolean;
+    hideCheckmark?: boolean;
     iconClassName?: string;
     isAnchorLink: boolean;
     itemClassName?: string;
