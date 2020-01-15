@@ -26,7 +26,7 @@
     "@uifabric/styling": "^7.10.0",
     "@uifabric/tslint-rules": "^7.0.5",
     "@uifabric/utilities": "^7.11.0",
-    "office-ui-fabric-react": "^7.82.0"
+    "office-ui-fabric-react": "^7.82.1"
   },
   "dependencies": {
     "@microsoft/tsdoc": "0.12.12",

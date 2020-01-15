@@ -2,6 +2,30 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Wed, 15 Jan 2020 00:21:25 GMT",
+      "tag": "office-ui-fabric-react_v7.82.1",
+      "version": "7.82.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "ComboBox: Move autoComplete with no freeform key handling to onKeyUp to get access to key value vs key code to support non latin characters",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "88e33cb68a8ae63e40b3cb05ca8233df4eb1a960"
+          },
+          {
+            "comment": "Text: Fixing children check so it can render {0} value.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "dc2170110070272040a4bf7c0508d725dfa61eec"
+          },
+          {
+            "comment": "Reverting moving tablist to be a parent of tabpanel",
+            "author": "chiechan@microsoft.com",
+            "commit": "e68a3b6aedc1d1a497b0015c938d0ce058804791"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 14 Jan 2020 12:27:16 GMT",
       "tag": "office-ui-fabric-react_v7.82.0",
       "version": "7.82.0",
