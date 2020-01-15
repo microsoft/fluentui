@@ -1150,9 +1150,9 @@ export class FabricBase extends React.Component<IFabricProps, {
 // @public (undocumented)
 export enum FabricSlots {
     // (undocumented)
-    black = 21,
+    black = 20,
     // (undocumented)
-    neutralDark = 20,
+    neutralDark = 19,
     // (undocumented)
     neutralLight = 11,
     // (undocumented)
@@ -1160,17 +1160,15 @@ export enum FabricSlots {
     // (undocumented)
     neutralLighterAlt = 9,
     // (undocumented)
-    neutralPrimary = 19,
+    neutralPrimary = 18,
     // (undocumented)
-    neutralPrimaryAlt = 18,
+    neutralPrimaryAlt = 17,
     // (undocumented)
     neutralQuaternary = 13,
     // (undocumented)
     neutralQuaternaryAlt = 12,
     // (undocumented)
-    neutralSecondary = 17,
-    // (undocumented)
-    neutralSecondaryAlt = 16,
+    neutralSecondary = 16,
     // (undocumented)
     neutralTertiary = 15,
     // (undocumented)
@@ -1194,7 +1192,7 @@ export enum FabricSlots {
     // (undocumented)
     themeTertiary = 4,
     // (undocumented)
-    white = 22
+    white = 21
 }
 
 // @public
