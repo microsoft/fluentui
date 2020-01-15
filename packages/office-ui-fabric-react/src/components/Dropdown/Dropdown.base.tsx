@@ -225,17 +225,20 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
       : isOpen && selectedIndices.length === 1 && selectedIndices[0] >= 0
       ? this._listId + selectedIndices[0]
       : undefined;
-    const ariaAttrs =
-      multiSelect || disabled
-        ? {}
-        : // single select
-          {
-            role: 'listbox',
-            childRole: 'option',
-            ariaSetSize: this._sizePosCache.optionSetSize,
-            ariaPosInSet: this._sizePosCache.positionInSet(selectedIndices[0]),
-            ariaSelected: selectedIndices[0] === undefined ? undefined : true
-          };
+
+    const ariaAttrs = multiSelect
+      ? {
+          role: 'button'
+        }
+      : // single select
+        {
+          role: 'listbox',
+          childRole: 'option',
+          ariaSetSize: this._sizePosCache.optionSetSize,
+          ariaPosInSet: this._sizePosCache.positionInSet(selectedIndices[0]),
+          ariaSelected: selectedIndices[0] === undefined ? undefined : true
+        };
+
     this._classNames = getClassNames(propStyles, {
       theme,
       className,

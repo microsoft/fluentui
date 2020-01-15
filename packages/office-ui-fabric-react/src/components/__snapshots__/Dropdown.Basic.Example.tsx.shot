@@ -357,12 +357,16 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
       onKeyDown={[Function]}
       onKeyUp={[Function]}
       onMouseDown={[Function]}
+      role="listbox"
       tabIndex={-1}
     >
       <span
         aria-atomic={true}
         aria-invalid={false}
         aria-live="polite"
+        aria-posinset={5}
+        aria-selected={true}
+        aria-setsize={7}
         className=
             ms-Dropdown-title
             {
@@ -397,6 +401,7 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
               color: GrayText;
             }
         id="Dropdown1-option"
+        role="option"
       >
         Broccoli
       </span>
@@ -575,6 +580,7 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
       onKeyDown={[Function]}
       onKeyUp={[Function]}
       onMouseDown={[Function]}
+      role="button"
       tabIndex={0}
     >
       <span
