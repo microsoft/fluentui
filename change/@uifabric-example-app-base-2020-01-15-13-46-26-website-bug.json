@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Router: don't render routes without component or getComponent. Also make INavPage.url optional since categories don't have a url.",
+  "packageName": "@uifabric/example-app-base",
+  "email": "elcraig@microsoft.com",
+  "commit": "295eeb2ce32d167e5ebac6c0a6eea6053ccfa776",
+  "date": "2020-01-15T21:46:26.712Z"
+}

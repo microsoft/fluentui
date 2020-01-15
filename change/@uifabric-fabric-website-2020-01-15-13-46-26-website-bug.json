@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Don't make routes for page categories",
+  "packageName": "@uifabric/fabric-website",
+  "email": "elcraig@microsoft.com",
+  "commit": "295eeb2ce32d167e5ebac6c0a6eea6053ccfa776",
+  "date": "2020-01-15T21:45:51.769Z"
+}
