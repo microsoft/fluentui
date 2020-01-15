@@ -156,7 +156,6 @@ exports[`Component Examples renders Persona.Alternate.Example.tsx correctly 1`] 
               font-size: 14px;
               font-weight: 400;
               height: 18px;
-              line-height: 16px;
               overflow-x: hidden;
               overflow: hidden;
               text-overflow: ellipsis;
@@ -191,7 +190,6 @@ exports[`Component Examples renders Persona.Alternate.Example.tsx correctly 1`] 
               font-size: 12px;
               font-weight: 400;
               height: 18px;
-              line-height: 16px;
               overflow-x: hidden;
               overflow: hidden;
               text-overflow: ellipsis;
@@ -408,7 +406,6 @@ exports[`Component Examples renders Persona.Alternate.Example.tsx correctly 1`] 
               font-size: 14px;
               font-weight: 400;
               height: 18px;
-              line-height: 16px;
               overflow-x: hidden;
               overflow: hidden;
               text-overflow: ellipsis;
@@ -443,7 +440,6 @@ exports[`Component Examples renders Persona.Alternate.Example.tsx correctly 1`] 
               font-size: 12px;
               font-weight: 400;
               height: 16px;
-              line-height: 16px;
               overflow-x: hidden;
               overflow: hidden;
               text-overflow: ellipsis;
@@ -685,7 +681,6 @@ exports[`Component Examples renders Persona.Alternate.Example.tsx correctly 1`] 
               font-size: 14px;
               font-weight: 400;
               height: 18px;
-              line-height: 16px;
               overflow-x: hidden;
               overflow: hidden;
               text-overflow: ellipsis;
@@ -720,7 +715,6 @@ exports[`Component Examples renders Persona.Alternate.Example.tsx correctly 1`] 
               font-size: 12px;
               font-weight: 400;
               height: 16px;
-              line-height: 16px;
               overflow-x: hidden;
               overflow: hidden;
               text-overflow: ellipsis;
