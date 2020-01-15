@@ -23,6 +23,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
       & textarea {
         font-family: inherit;
       }
+  dir="ltr"
 >
   <div
     className=

@@ -20,6 +20,13 @@ const DEFAULT_OPTIONS3: IComboBoxOption[] = [
   { key: '3', text: 'Bar' }
 ];
 
+const RUSSIAN_OPTIONS: IComboBoxOption[] = [
+  { key: '0', text: 'сестра' },
+  { key: '1', text: 'брат' },
+  { key: '2', text: 'мама' },
+  { key: '3', text: 'папа' }
+];
+
 const returnUndefined = () => undefined;
 
 type InputElementWrapper = ReactWrapper<React.InputHTMLAttributes<any>, any>;
@@ -229,6 +236,14 @@ describe('ComboBox', () => {
     wrapper.find('input').simulate('input', { target: { value: 'f' } });
     wrapper.update();
     expect(wrapper.find('input').props().value).toEqual('Foo');
+  });
+
+  it('Can insert non latin text in uncontrolled case with autoComplete on and allowFreeform off', () => {
+    wrapper = mount(<ComboBox defaultSelectedKey="0" options={RUSSIAN_OPTIONS} autoComplete="on" allowFreeform={false} />);
+
+    wrapper.find('input').simulate('input', { target: { value: 'п' } });
+    wrapper.update();
+    expect(wrapper.find('input').props().value).toEqual('папа');
   });
 
   it('Can insert text in uncontrolled case with autoComplete off and allowFreeform on', () => {

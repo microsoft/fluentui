@@ -1,0 +1,58 @@
+pr: none
+
+trigger: none
+
+variables:
+  - group: fabric-variables
+
+pool:
+  vmImage: 'Ubuntu 18.04'
+
+steps:
+  # No need for checkout since we're using build artifacts.
+  - checkout: none
+
+  - template: azure-pipelines.artifacts.yml
+    parameters:
+      artifact: $(artifact)
+      buildId: $(buildId)
+
+  - template: azure-pipelines.tools.yml
+
+  - script: |
+      yarn just perf-test
+    workingDirectory: apps/perf-test
+    displayName: Perf Test
+
+  - task: AzureUpload@1
+    displayName: Upload Perf Test Result to PR deploy site
+    inputs:
+      SourcePath: 'apps/perf-test/dist'
+      azureSubscription: 'UI Fabric (bac044cf-49e1-4843-8dda-1ce9662606c8)'
+      storage: fabricweb
+      ContainerName: '$web'
+      BlobPrefix: 'pr-deploy-site/$(Build.SourceBranch)/perf-test'
+
+  - task: GithubPRComment@0
+    displayName: 'Post Perf Results to Github Pull Request'
+    inputs:
+      githubOwner: OfficeDev
+      githubRepo: 'office-ui-fabric-react'
+      blobFilePath: '$(Build.SourcesDirectory)/$(PerfCommentFilePath)'
+      status: '$(PerfCommentStatus)'
+      uniqueId: 'perfComment9423'
+
+  - task: GithubPRStatus@0
+    displayName: 'Update Github Pull Request Status'
+    inputs:
+      githubOwner: OfficeDev
+      githubRepo: 'office-ui-fabric-react'
+      githubContext: 'Pull Request Deployed Site'
+      githubDescription: 'Click "Details" to go to the Deployed Site'
+      githubTargetLink: 'http://fabricweb.z5.web.core.windows.net/pr-deploy-site/$(Build.SourceBranch)/'
+
+  - task: DeleteFiles@1
+    inputs:
+      SourceFolder: $(Build.SourcesDirectory)
+      Contents: '**/*'
+    condition: always()
