@@ -203,12 +203,11 @@ function generateCategories() {
       continue; // no pages in this category
     }
 
-    const parentPage: INavPage = {
-      title: parentCategory.title,
-      isCategory: true,
-      // First page in the category is a non-category version of the parent page
-      pages: [parentCategory]
-    };
+    const parentPage = parentCategory as INavPage;
+    // First page in the category is a non-category version of the parent page
+    parentPage.pages = [{ ...parentPage }];
+    parentPage.isCategory = true;
+    delete parentPage.url;
 
     for (const pagePath of childPagePaths) {
       // pagePath will be like ./DetailsList/DetailsListBasicPage
