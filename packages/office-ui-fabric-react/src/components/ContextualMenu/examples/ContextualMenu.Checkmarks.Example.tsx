@@ -193,6 +193,17 @@ export class ContextualMenuCheckmarksExample extends React.Component<{}, IContex
               name: 'Split Button Disabled Primary',
               split: true,
               primaryDisabled: true
+            },
+            {
+              key: keys[13],
+              iconProps: {
+                iconName: selection![keys[13]] ? 'SingleBookmarkSolid' : 'SingleBookmark'
+              },
+              name: selection![keys[13]] ? 'Toogled command no checkmark' : 'Toogle command no checkmark',
+              canCheck: true,
+              isChecked: selection![keys[13]],
+              onClick: this._onToggleSelect,
+              hideCheckmark: true
             }
           ]
         }}

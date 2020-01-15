@@ -162,6 +162,11 @@ export interface IContextualMenuItemStyleProps {
    * Whether or not the primary section of a split menu item is disabled.
    */
   primaryDisabled?: boolean;
+
+  /**
+   * Optional to hide checkmark for a toggle command
+   */
+  hideCheckmark?: boolean;
 }
 
 /**

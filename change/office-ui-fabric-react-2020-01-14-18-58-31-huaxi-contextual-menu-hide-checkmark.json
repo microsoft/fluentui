@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "add hideCheckmark props for IContextualMenuItem",
+  "packageName": "office-ui-fabric-react",
+  "email": "huaxi@microsoft.com",
+  "commit": "368c5017ae87efd2682df1f72e65933c78abbf28",
+  "date": "2020-01-15T02:58:31.503Z"
+}
