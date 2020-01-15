@@ -28,7 +28,6 @@ exports[`Component Examples renders OverflowSet.Basic.Example.tsx correctly 1`] 
           display: inherit;
           flex-shrink: 0;
         }
-    role="presentation"
   >
     <button
       className=
@@ -104,7 +103,6 @@ exports[`Component Examples renders OverflowSet.Basic.Example.tsx correctly 1`] 
           display: inherit;
           flex-shrink: 0;
         }
-    role="presentation"
   >
     <button
       className=
@@ -180,7 +178,6 @@ exports[`Component Examples renders OverflowSet.Basic.Example.tsx correctly 1`] 
           display: inherit;
           flex-shrink: 0;
         }
-    role="presentation"
   >
     <button
       className=

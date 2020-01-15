@@ -67,7 +67,6 @@ exports[`Component Examples renders CommandBar.Basic.Example.tsx correctly 1`] =
                     display: inherit;
                     flex-shrink: 0;
                   }
-              role="presentation"
             >
               <button
                 aria-expanded={false}
@@ -293,7 +292,6 @@ exports[`Component Examples renders CommandBar.Basic.Example.tsx correctly 1`] =
                     display: inherit;
                     flex-shrink: 0;
                   }
-              role="presentation"
             >
               <a
                 className=
@@ -476,7 +474,6 @@ exports[`Component Examples renders CommandBar.Basic.Example.tsx correctly 1`] =
                     display: inherit;
                     flex-shrink: 0;
                   }
-              role="presentation"
             >
               <button
                 className=
@@ -659,7 +656,6 @@ exports[`Component Examples renders CommandBar.Basic.Example.tsx correctly 1`] =
                     display: inherit;
                     flex-shrink: 0;
                   }
-              role="presentation"
             >
               <button
                 className=
@@ -1016,7 +1012,6 @@ exports[`Component Examples renders CommandBar.Basic.Example.tsx correctly 1`] =
                     display: inherit;
                     flex-shrink: 0;
                   }
-              role="presentation"
             >
               <div
                 className=
@@ -1187,7 +1182,6 @@ exports[`Component Examples renders CommandBar.Basic.Example.tsx correctly 1`] =
                     display: inherit;
                     flex-shrink: 0;
                   }
-              role="presentation"
             >
               <div
                 className=

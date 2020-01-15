@@ -53,7 +53,6 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                 display: inherit;
                 flex-shrink: 0;
               }
-          role="presentation"
         >
           <button
             className=
@@ -234,7 +233,6 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                 display: inherit;
                 flex-shrink: 0;
               }
-          role="presentation"
         >
           <button
             className=
@@ -415,7 +413,6 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                 display: inherit;
                 flex-shrink: 0;
               }
-          role="presentation"
         >
           <button
             className=
@@ -596,7 +593,6 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                 display: inherit;
                 flex-shrink: 0;
               }
-          role="presentation"
         >
           <button
             className=
@@ -777,7 +773,6 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                 display: inherit;
                 flex-shrink: 0;
               }
-          role="presentation"
         >
           <button
             className=
@@ -958,7 +953,6 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                 display: inherit;
                 flex-shrink: 0;
               }
-          role="presentation"
         >
           <button
             className=
@@ -1139,7 +1133,6 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                 display: inherit;
                 flex-shrink: 0;
               }
-          role="presentation"
         >
           <button
             className=
@@ -1320,7 +1313,6 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                 display: inherit;
                 flex-shrink: 0;
               }
-          role="presentation"
         >
           <button
             className=
@@ -1501,7 +1493,6 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                 display: inherit;
                 flex-shrink: 0;
               }
-          role="presentation"
         >
           <button
             className=
@@ -1682,7 +1673,6 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                 display: inherit;
                 flex-shrink: 0;
               }
-          role="presentation"
         >
           <button
             className=
@@ -1863,7 +1853,6 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                 display: inherit;
                 flex-shrink: 0;
               }
-          role="presentation"
         >
           <button
             className=
@@ -2044,7 +2033,6 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                 display: inherit;
                 flex-shrink: 0;
               }
-          role="presentation"
         >
           <button
             className=
@@ -2225,7 +2213,6 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                 display: inherit;
                 flex-shrink: 0;
               }
-          role="presentation"
         >
           <button
             className=
@@ -2406,7 +2393,6 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                 display: inherit;
                 flex-shrink: 0;
               }
-          role="presentation"
         >
           <button
             className=
@@ -2587,7 +2573,6 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                 display: inherit;
                 flex-shrink: 0;
               }
-          role="presentation"
         >
           <button
             className=
@@ -2768,7 +2753,6 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                 display: inherit;
                 flex-shrink: 0;
               }
-          role="presentation"
         >
           <button
             className=
@@ -2949,7 +2933,6 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                 display: inherit;
                 flex-shrink: 0;
               }
-          role="presentation"
         >
           <button
             className=
@@ -3130,7 +3113,6 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                 display: inherit;
                 flex-shrink: 0;
               }
-          role="presentation"
         >
           <button
             className=
@@ -3311,7 +3293,6 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                 display: inherit;
                 flex-shrink: 0;
               }
-          role="presentation"
         >
           <button
             className=
@@ -3492,7 +3473,6 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                 display: inherit;
                 flex-shrink: 0;
               }
-          role="presentation"
         >
           <button
             className=

@@ -67,7 +67,6 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                     display: inherit;
                     flex-shrink: 0;
                   }
-              role="presentation"
             >
               <div
                 aria-expanded={false}
@@ -477,7 +476,6 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                     display: inherit;
                     flex-shrink: 0;
                   }
-              role="presentation"
             >
               <div
                 aria-disabled={true}
@@ -885,7 +883,6 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                     display: inherit;
                     flex-shrink: 0;
                   }
-              role="presentation"
             >
               <button
                 aria-disabled={true}
@@ -1061,7 +1058,6 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                     display: inherit;
                     flex-shrink: 0;
                   }
-              role="presentation"
             >
               <div
                 className=

@@ -146,7 +146,7 @@ export class OverflowSetBase extends BaseComponent<IOverflowSetProps, {}> implem
   private _onRenderItems = (items: IOverflowSetItemProps[]): JSX.Element[] => {
     return items.map((item, i) => {
       return (
-        <div role="presentation" key={item.key} className={this._classNames.item}>
+        <div key={item.key} className={this._classNames.item}>
           {this.props.onRenderItem(item)}
         </div>
       );

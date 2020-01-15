@@ -29,7 +29,6 @@ exports[`Component Examples renders OverflowSet.Vertical.Example.tsx correctly 1
           display: inherit;
           flex-shrink: 0;
         }
-    role="presentation"
   >
     <button
       aria-label="Link 1"
@@ -185,7 +184,6 @@ exports[`Component Examples renders OverflowSet.Vertical.Example.tsx correctly 1
           display: inherit;
           flex-shrink: 0;
         }
-    role="presentation"
   >
     <button
       aria-label="Link 2"
@@ -341,7 +339,6 @@ exports[`Component Examples renders OverflowSet.Vertical.Example.tsx correctly 1
           display: inherit;
           flex-shrink: 0;
         }
-    role="presentation"
   >
     <button
       aria-label="Link 3"

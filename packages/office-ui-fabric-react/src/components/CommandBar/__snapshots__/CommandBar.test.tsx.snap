@@ -67,7 +67,6 @@ exports[`CommandBar renders commands correctly 1`] = `
                   display: inherit;
                   flex-shrink: 0;
                 }
-            role="presentation"
           >
             <button
               className=
@@ -211,7 +210,6 @@ exports[`CommandBar renders commands correctly 1`] = `
                   display: inherit;
                   flex-shrink: 0;
                 }
-            role="presentation"
           >
             <button
               className=
