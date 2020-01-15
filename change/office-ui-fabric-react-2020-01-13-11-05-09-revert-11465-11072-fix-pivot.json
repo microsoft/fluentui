@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Reverting moving tablist to be a parent of tabpanel",
-  "packageName": "office-ui-fabric-react",
-  "email": "chiechan@microsoft.com",
-  "commit": "e68a3b6aedc1d1a497b0015c938d0ce058804791",
-  "date": "2020-01-13T19:05:09.083Z"
-}

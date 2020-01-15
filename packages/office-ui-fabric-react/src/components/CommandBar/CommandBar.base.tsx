@@ -115,7 +115,7 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
         />
 
         {/*Secondary Items*/}
-        {data.farItems && (
+        {data.farItems && data.farItems.length > 0 && (
           <OverflowSet
             className={css(this._classNames.secondarySet)}
             doNotContainWithinFocusZone={true}

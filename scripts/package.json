@@ -13,7 +13,7 @@
     "code-style": "node ./just-scripts.js code-style"
   },
   "devDependencies": {
-    "@microsoft/api-extractor": "7.3.7",
+    "@microsoft/api-extractor": "7.7.1",
     "@microsoft/load-themed-styles": "^1.10.26",
     "@microsoft/loader-load-themed-styles": "^1.7.205",
     "@octokit/rest": "^16.28.2",
@@ -53,7 +53,7 @@
     "ts-loader": "^4.1.0",
     "tslint": "^5.7.0",
     "tslint-microsoft-contrib": "^5.0.1",
-    "typescript": "3.5.1",
+    "typescript": "3.7.4",
     "webpack": "4.29.5",
     "webpack-bundle-analyzer": "^3.0.4",
     "webpack-cli": "3.2.3",

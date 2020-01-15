@@ -419,6 +419,19 @@ describe('Dropdown', () => {
       expect(tree).toMatchSnapshot();
     });
 
+    it('Renders multiselect Dropdown correctly when options change', () => {
+      wrapper = mount(<Dropdown options={DEFAULT_OPTIONS} multiSelect defaultSelectedKeys={['1', '4']} />);
+      const titleElement = wrapper.find('.ms-Dropdown-title');
+
+      expect(titleElement.text()).toEqual('1, 4');
+
+      wrapper.setProps({ options: DEFAULT_OPTIONS.slice(2) });
+
+      wrapper.find('.ms-Dropdown').simulate('click');
+      const options = document.querySelectorAll('.ms-Dropdown-item');
+      expect(options.length).toEqual(5);
+    });
+
     it('Renders no selected item in default case', () => {
       wrapper = mount(<Dropdown label="testgroup" options={DEFAULT_OPTIONS} multiSelect />);
 

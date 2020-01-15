@@ -44,11 +44,11 @@
     "@uifabric/experiments": "^7.18.13",
     "@uifabric/set-version": "^7.0.2",
     "@uifabric/react-cards": "^0.109.3",
-    "office-ui-fabric-react": "^7.82.0",
+    "office-ui-fabric-react": "^7.82.1",
     "react": "16.8.6",
     "react-app-polyfill": "~1.0.1",
     "react-dom": "16.8.6",
     "tslib": "^1.7.1",
-    "typescript": "3.5.1"
+    "typescript": "3.7.4"
   }
 }

@@ -1,8 +1,10 @@
-import * as React from 'react';
+/** @jsx withSlots */
+import * as renderer from 'react-test-renderer';
 import { composed, resolveSlots } from './composed';
 import { IComponentStyles } from '../IComponent';
 import { IComponent, IComponentOptions, IRecompositionComponentOptions } from './IComponent';
 import { IHTMLElementSlot, IHTMLSlot } from '../IHTMLSlots';
+import { withSlots } from '../slots';
 import { ISlotDefinition } from '../ISlots';
 
 describe('composed', () => {
@@ -13,7 +15,9 @@ describe('composed', () => {
   }
   interface ITestProps extends ITestSlots {}
   interface ITestViewProps extends ITestProps {}
-  interface ITestTokens {}
+  interface ITestTokens {
+    testToken: number;
+  }
   type ITestStyles = IComponentStyles<ITestSlots>;
 
   const TestView: ITestComponent['view'] = (props, slots) => {
@@ -118,5 +122,22 @@ describe('composed', () => {
     expect(TestComponent2.__options!.view).toBeDefined();
     expect(recomposedOptions.view).toBeDefined();
     expect(TestComponent2.__options!.view).toEqual(recomposedOptions.view);
+  });
+
+  it(`resolves tokens without a runtime error`, () => {
+    const baseSlots: ISlotDefinition<Required<ITestSlots>> = {
+      root: 'div',
+      content: 'span'
+    };
+    const options: IComponentOptions<ITestProps, ITestTokens, ITestStyles, ITestViewProps, ITestSlots> = {
+      displayName: 'TestComponent',
+      slots: baseSlots,
+      tokens: { testToken: 1 },
+      view: TestView
+    };
+
+    const TestComponent = composed(options);
+
+    renderer.create(<TestComponent />);
   });
 });

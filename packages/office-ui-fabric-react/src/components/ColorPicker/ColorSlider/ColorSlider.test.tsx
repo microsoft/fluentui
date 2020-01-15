@@ -16,14 +16,15 @@ describe('ColorSlider', () => {
     colorSlider = ref;
   };
 
-  const getBoundingClientRect = () => ({
-    left: 0,
-    top: 0,
-    right: 100,
-    bottom: 18,
-    width: 100,
-    height: 18
-  });
+  const getBoundingClientRect = () =>
+    ({
+      left: 0,
+      top: 0,
+      right: 100,
+      bottom: 18,
+      width: 100,
+      height: 18
+    } as DOMRect);
 
   afterEach(() => {
     if (wrapper) {

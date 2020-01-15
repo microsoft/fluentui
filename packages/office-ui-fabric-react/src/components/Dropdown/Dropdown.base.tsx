@@ -109,12 +109,12 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
     if (this.props.multiSelect) {
       const selectedKeys = props.defaultSelectedKeys !== undefined ? props.defaultSelectedKeys : props.selectedKeys;
       selectedIndices = this._getSelectedIndexes(props.options, selectedKeys);
-      this._sizePosCache.updateOptions(props.options);
     } else {
       const selectedKey = props.defaultSelectedKey !== undefined ? props.defaultSelectedKey : props.selectedKey;
       selectedIndices = this._getSelectedIndexes(props.options, selectedKey!);
-      this._sizePosCache.updateOptions(props.options);
     }
+
+    this._sizePosCache.updateOptions(props.options);
 
     this.state = {
       isOpen: false,
@@ -169,8 +169,7 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
     }
 
     if (
-      newProps.options !== this.props.options && // preexisting code assumes purity of the options...
-      !newProps.multiSelect // only relevant in single selection
+      newProps.options !== this.props.options // preexisting code assumes purity of the options...
     ) {
       this._sizePosCache.updateOptions(newProps.options);
     }
@@ -226,17 +225,20 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
       : isOpen && selectedIndices.length === 1 && selectedIndices[0] >= 0
       ? this._listId + selectedIndices[0]
       : undefined;
-    const ariaAttrs =
-      multiSelect || disabled
-        ? {}
-        : // single select
-          {
-            role: 'listbox',
-            childRole: 'option',
-            ariaSetSize: this._sizePosCache.optionSetSize,
-            ariaPosInSet: this._sizePosCache.positionInSet(selectedIndices[0]),
-            ariaSelected: selectedIndices[0] === undefined ? undefined : true
-          };
+
+    const ariaAttrs = multiSelect
+      ? {
+          role: 'button'
+        }
+      : // single select
+        {
+          role: 'listbox',
+          childRole: 'option',
+          ariaSetSize: this._sizePosCache.optionSetSize,
+          ariaPosInSet: this._sizePosCache.positionInSet(selectedIndices[0]),
+          ariaSelected: selectedIndices[0] === undefined ? undefined : true
+        };
+
     this._classNames = getClassNames(propStyles, {
       theme,
       className,
