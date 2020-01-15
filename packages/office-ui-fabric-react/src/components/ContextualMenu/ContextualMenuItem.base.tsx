@@ -26,7 +26,7 @@ const renderCheckMarkIcon = ({ onCheckmarkClick, item, classNames }: IContextual
     // Ensures that the item is passed as the first argument to the checkmark click callback.
     const onClick = (e: React.MouseEvent<HTMLElement>) => onCheckmarkClick(item, e);
 
-    return <Icon iconName={isItemChecked ? 'CheckMark' : ''} className={classNames.checkmarkIcon} onClick={onClick} />;
+    return <Icon iconName={!!item.canCheck && isItemChecked ? 'CheckMark' : ''} className={classNames.checkmarkIcon} onClick={onClick} />;
   }
   return null;
 };
