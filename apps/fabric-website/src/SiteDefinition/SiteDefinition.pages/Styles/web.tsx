@@ -11,7 +11,6 @@ export const stylesPagesWeb: INavPage[] = [
   },
   {
     title: 'Colors',
-    url: '#/styles/web/colors',
     isCategory: true,
     pages: [
       {
@@ -77,7 +76,6 @@ export const stylesPagesWeb: INavPage[] = [
   },
   {
     title: 'Iconography',
-    url: '#/styles/web/icons',
     isCategory: true,
     // @TODO: Like with GetStarted page, IconsPage makes a require call
     // with a relative path to its office-ui-fabric-core node_modules
