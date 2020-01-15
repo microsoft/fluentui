@@ -135,7 +135,7 @@ export function createArray<T>(size: number, getItem: (index: number) => T): T[]
 export function createMemoizer<F extends (input: any) => any>(getValue: F): F;
 
 // Warning: (ae-incompatible-release-tags) The symbol "css" is marked as @public, but its signature references "ICssInput" which is marked as @internal
-// 
+//
 // @public
 export function css(...args: ICssInput[]): string;
 
@@ -177,7 +177,7 @@ export const DATA_IS_SCROLLABLE_ATTRIBUTE = "data-is-scrollable";
 export const DATA_PORTAL_ATTRIBUTE = "data-portal-element";
 
 // Warning: (ae-incompatible-release-tags) The symbol "DelayedRender" is marked as @public, but its signature references "IDelayedRenderState" which is marked as @internal
-// 
+//
 // @public
 export class DelayedRender extends React.Component<IDelayedRenderProps, IDelayedRenderState> {
     constructor(props: IDelayedRenderProps);
@@ -245,7 +245,7 @@ export class FabricPerformance {
     // (undocumented)
     static setPeriodicReset(): void;
     // Warning: (ae-incompatible-release-tags) The symbol "summary" is marked as @public, but its signature references "IPerfSummary" which is marked as @internal
-    // 
+    //
     // (undocumented)
     static summary: IPerfSummary;
     }
@@ -448,7 +448,7 @@ export type IComponentAsProps<T> = T & {
 };
 
 // Warning: (ae-internal-missing-underscore) The name "ICssInput" should be prefixed with an underscore because the declaration is marked as @internal
-// 
+//
 // @internal
 export type ICssInput = string | ISerializableObject | IDictionary | null | undefined | boolean;
 
@@ -485,7 +485,7 @@ export type ICustomizerProps = IBaseProps & Partial<{
 };
 
 // Warning: (ae-internal-missing-underscore) The name "IDeclaredEventsByName" should be prefixed with an underscore because the declaration is marked as @internal
-// 
+//
 // @internal
 export interface IDeclaredEventsByName {
     // (undocumented)
@@ -498,14 +498,14 @@ export interface IDelayedRenderProps extends React.Props<{}> {
 }
 
 // Warning: (ae-internal-missing-underscore) The name "IDelayedRenderState" should be prefixed with an underscore because the declaration is marked as @internal
-// 
+//
 // @internal
 export interface IDelayedRenderState {
     isRendered: boolean;
 }
 
 // Warning: (ae-internal-missing-underscore) The name "IDictionary" should be prefixed with an underscore because the declaration is marked as @internal
-// 
+//
 // @internal
 export interface IDictionary {
     // (undocumented)
@@ -519,7 +519,7 @@ export interface IDisposable {
 }
 
 // Warning: (ae-internal-missing-underscore) The name "IEventRecord" should be prefixed with an underscore because the declaration is marked as @internal
-// 
+//
 // @internal
 export interface IEventRecord {
     // (undocumented)
@@ -539,7 +539,7 @@ export interface IEventRecord {
 }
 
 // Warning: (ae-internal-missing-underscore) The name "IEventRecordList" should be prefixed with an underscore because the declaration is marked as @internal
-// 
+//
 // @internal
 export interface IEventRecordList {
     // (undocumented)
@@ -549,7 +549,7 @@ export interface IEventRecordList {
 }
 
 // Warning: (ae-internal-missing-underscore) The name "IEventRecordsByName" should be prefixed with an underscore because the declaration is marked as @internal
-// 
+//
 // @internal
 export interface IEventRecordsByName {
     // (undocumented)
@@ -589,7 +589,7 @@ export interface IObjectWithKey {
 }
 
 // Warning: (ae-internal-missing-underscore) The name "IPerfData" should be prefixed with an underscore because the declaration is marked as @internal
-// 
+//
 // @internal
 export interface IPerfData {
     // (undocumented)
@@ -599,7 +599,7 @@ export interface IPerfData {
 }
 
 // Warning: (ae-internal-missing-underscore) The name "IPerfMeasurement" should be prefixed with an underscore because the declaration is marked as @internal
-// 
+//
 // @internal
 export interface IPerfMeasurement {
     // (undocumented)
@@ -611,7 +611,7 @@ export interface IPerfMeasurement {
 }
 
 // Warning: (ae-internal-missing-underscore) The name "IPerfSummary" should be prefixed with an underscore because the declaration is marked as @internal
-// 
+//
 // @internal
 export interface IPerfSummary {
     // (undocumented)
@@ -747,7 +747,7 @@ export function isElementTabbable(element: HTMLElement, checkTabIndex?: boolean)
 export function isElementVisible(element: HTMLElement | undefined | null): boolean;
 
 // Warning: (ae-internal-missing-underscore) The name "ISerializableObject" should be prefixed with an underscore because the declaration is marked as @internal
-// 
+//
 // @internal
 export interface ISerializableObject {
     // (undocumented)
@@ -1107,7 +1107,7 @@ export function setFocusVisibility(enabled: boolean, target?: Element): void;
 export function setLanguage(language: string, avoidPersisting?: boolean): void;
 
 // Warning: (ae-internal-missing-underscore) The name "setMemoizeWeakMap" should be prefixed with an underscore because the declaration is marked as @internal
-// 
+//
 // @internal
 export function setMemoizeWeakMap(weakMap: any): void;
 

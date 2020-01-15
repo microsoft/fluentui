@@ -19,6 +19,7 @@ const bundleSizeCollect = require('./tasks/bundle-size-collect');
 const checkForModifiedFiles = require('./tasks/check-for-modified-files');
 const generateVersionFiles = require('./tasks/generate-version-files');
 const generatePackageManifestTask = require('./tasks/generate-package-manifest');
+const { postprocessTask } = require('./tasks/postprocess');
 const { postprocessAmdTask } = require('./tasks/postprocess-amd');
 const { postprocessCommonjsTask } = require('./tasks/postprocess-commonjs');
 
@@ -45,6 +46,7 @@ module.exports = function preset() {
   task('jest', jest);
   task('jest-watch', jestWatch);
   task('sass', sass);
+  task('ts:postprocess', postprocessTask);
   task('postprocess:amd', postprocessAmdTask);
   task('postprocess:commonjs', postprocessCommonjsTask);
   task('ts:commonjs', ts.commonjs);
@@ -62,9 +64,11 @@ module.exports = function preset() {
   task('check-for-modified-files', checkForModifiedFiles);
   task('generate-version-files', generateVersionFiles);
   task('generate-package-manifest', generatePackageManifestTask);
-  task('ts', () => {
+  task('ts:compile', () => {
     return argv().commonjs ? 'ts:commonjs-only' : parallel('ts:commonjs', 'ts:esm', condition('ts:amd', () => !!argv().production));
   });
+
+  task('ts', series('ts:compile', 'ts:postprocess'));
 
   task('test', condition('jest', () => fs.existsSync(path.join(process.cwd(), 'jest.config.js'))));
 

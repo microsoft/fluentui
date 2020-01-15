@@ -29,8 +29,8 @@
     "office-ui-fabric-react": "^7.82.1"
   },
   "dependencies": {
-    "@microsoft/tsdoc": "0.12.12",
-    "@microsoft/api-extractor-model": "7.3.2",
+    "@microsoft/tsdoc": "0.12.14",
+    "@microsoft/api-extractor-model": "7.7.1",
     "fs-extra": "^8.1.0"
   }
 }
