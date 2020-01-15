@@ -473,14 +473,13 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
     const subMenuIconClassName = item.submenuIconProps ? item.submenuIconProps.className : '';
 
     let itemClassNames: IMenuItemClassNames;
-    const disabled = isItemDisabled(item);
 
     // IContextualMenuItem#getItemClassNames for backwards compatibility
     // otherwise uses mergeStyles for class names.
     if (getItemClassNames) {
       itemClassNames = getItemClassNames(
         this.props.theme!,
-        disabled,
+        isItemDisabled(item),
         this.state.expandedMenuItemKey === item.key,
         !!getIsChecked(item),
         !!item.href,
@@ -494,7 +493,7 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
     } else {
       const itemStyleProps: IContextualMenuItemStyleProps = {
         theme: this.props.theme!,
-        disabled,
+        disabled: isItemDisabled(item),
         expanded: this.state.expandedMenuItemKey === item.key,
         checked: !!getIsChecked(item),
         isAnchorLink: !!item.href,
