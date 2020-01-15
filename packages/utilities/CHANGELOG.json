@@ -2,6 +2,25 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "date": "Mon, 13 Jan 2020 12:28:56 GMT",
+      "tag": "@uifabric/utilities_v7.11.0",
+      "version": "7.11.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add composeComponentAs to compose React decorator components",
+            "author": "tmichon@microsoft.com",
+            "commit": "0ad2440153218b174cb0d6a12d91c0ca1764c2f6"
+          },
+          {
+            "comment": "Change focus class behavior: Alternate between 'hidden' and 'visible' classes",
+            "author": "paflakst@microsoft.com",
+            "commit": "bee187d4f1dec7d264a9dea28ffd3b93fc56302e"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 09 Jan 2020 12:34:52 GMT",
       "tag": "@uifabric/utilities_v7.10.0",
       "version": "7.10.0",

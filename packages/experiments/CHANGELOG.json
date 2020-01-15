@@ -2,6 +2,39 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "date": "Mon, 13 Jan 2020 12:28:56 GMT",
+      "tag": "@uifabric/experiments_v7.18.13",
+      "version": "7.18.13",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Tile: fix color of text over image in dark mode",
+            "author": "prchhaje@microsoft.com",
+            "commit": "964a018662ecadc2db4f6ee9cb049bc9543b1ec3"
+          },
+          {
+            "comment": "Consume compose functions where appropriate",
+            "author": "tmichon@microsoft.com",
+            "commit": "d9eaef588f46c10fe8c1791957571a8eb467d02e"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 10 Jan 2020 12:31:47 GMT",
+      "tag": "@uifabric/experiments_v7.18.12",
+      "version": "7.18.12",
+      "comments": {
+        "patch": [
+          {
+            "comment": "ComboBox: fix chevron button and focus border styling",
+            "author": "xgao@microsoft.com",
+            "commit": "b1f23673efec6c713219c81d02be736f3dc7a373"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 08 Jan 2020 17:02:57 GMT",
       "tag": "@uifabric/experiments_v7.18.11",
       "version": "7.18.11",

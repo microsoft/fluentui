@@ -2,6 +2,20 @@
   "name": "@uifabric/migration",
   "entries": [
     {
+      "date": "Mon, 13 Jan 2020 12:28:56 GMT",
+      "tag": "@uifabric/migration_v7.0.5",
+      "version": "7.0.5",
+      "comments": {
+        "none": [
+          {
+            "comment": "[Migration] Update test fixtures to handle windows path issue.",
+            "author": "email not defined",
+            "commit": "ab97c688f1d13c0e77f87685a948e01cd4842946"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 08 Jan 2020 17:02:57 GMT",
       "tag": "@uifabric/migration_v7.0.5",
       "version": "7.0.5",

@@ -4,6 +4,8 @@ exports[`Component Examples renders HoverCard.EventListenerTarget.Example.tsx co
 <div
   className=
       ms-Fabric
+      is-focusHidden
+      ms-Fabric--isFocusHidden
       {
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
@@ -21,6 +23,7 @@ exports[`Component Examples renders HoverCard.EventListenerTarget.Example.tsx co
       & textarea {
         font-family: inherit;
       }
+  dir="ltr"
 >
   <p>
     Using the target to tag hover card on the right side of Emoji icon, and using eventListenerTarget to launch the card only when hovering over the text field, hovering over the icon doesn't trigger card open.

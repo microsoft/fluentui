@@ -135,6 +135,47 @@ export function memoizeFunction<T extends (...args: any[]) => RET_TYPE, RET_TYPE
   } as any;
 }
 
+/**
+ * Creates a memoizer for a single-value function, backed by a WeakMap.
+ * With a WeakMap, the memoized values are only kept as long as the source objects,
+ * ensuring that there is no memory leak.
+ *
+ * This function assumes that the input values passed to the wrapped function will be
+ * `function` or `object` types. To memoize functions which accept other inputs, use
+ * `memoizeFunction`, which memoizes against arbitrary inputs using a lookup cache.
+ *
+ * @public
+ */
+export function createMemoizer<F extends (input: any) => any>(getValue: F): F {
+  if (!_weakMap) {
+    // Without a `WeakMap` implementation, memoization is not possible.
+    return getValue;
+  }
+
+  const cache = new _weakMap();
+
+  function memoizedGetValue(input: any): any {
+    if (!input || (typeof input !== 'function' && typeof input !== 'object')) {
+      // A WeakMap can only be used to test against reference values, i.e. 'function' and 'object'.
+      // All other inputs cannot be memoized against in this manner.
+      return getValue(input);
+    }
+
+    if (cache.has(input)) {
+      // tslint:disable-next-line:no-non-null-assertion
+      return cache.get(input)!;
+    }
+
+    const value = getValue(input);
+
+    cache.set(input, value);
+
+    return value;
+  }
+
+  return memoizedGetValue as F;
+}
+
 function _normalizeArg(val: null | undefined): { empty: boolean } | any;
 function _normalizeArg(val: object): any;
 function _normalizeArg(val: any): any {

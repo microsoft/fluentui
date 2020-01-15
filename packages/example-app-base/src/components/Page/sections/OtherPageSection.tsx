@@ -26,7 +26,8 @@ export const OtherPageSection: React.StatelessComponent<IPageSectionProps> = pro
     <div className={className} style={style}>
       {readableSectionName ? (
         <div className={styles.sectionHeader}>
-          <h2 className={styles.subHeading} id={id}>
+          {/* This heading must be programmatically focusable for simulating jumping to an anchor */}
+          <h2 className={styles.subHeading} id={id} tabIndex={-1}>
             {readableSectionName}
           </h2>
           {editSection}

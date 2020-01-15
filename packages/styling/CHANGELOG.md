@@ -1,7 +1,13 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Wed, 08 Jan 2020 17:02:57 GMT and should not be manually modified.
+This log was last generated on Fri, 10 Jan 2020 12:31:47 GMT and should not be manually modified.
 
+## 7.10.0
+Fri, 10 Jan 2020 12:31:47 GMT
+
+### Minor changes
+
+- add borderPosition param to getInputFocusStyle (xgao@microsoft.com)
 ## 7.9.0
 Wed, 08 Jan 2020 17:02:57 GMT
 
