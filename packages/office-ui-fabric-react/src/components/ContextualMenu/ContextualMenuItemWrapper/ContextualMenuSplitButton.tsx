@@ -74,7 +74,7 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
             onClick={this._executeItemClick}
             onTouchStart={this._onTouchStart}
             tabIndex={0}
-            data-is-focusable={!item.disabled}
+            data-is-focusable={true}
             aria-roledescription={item['aria-roledescription']}
           >
             {this._renderSplitPrimaryButton(item, classNames, index, hasCheckmarks!, hasIcons!)}
