@@ -92,6 +92,16 @@ export const getStyles = (props: ILinkStyleProps): ILinkStyles => {
           },
           '&:focus': {
             color: linkColor
+          },
+          [HighContrastSelector]: {
+            selectors: {
+              '&:active, &:hover, &:active:hover': {
+                color: 'inherit'
+              },
+              '&:focus': {
+                color: 'inherit'
+              }
+            }
           }
         }
       },

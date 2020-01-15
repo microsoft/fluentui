@@ -49,6 +49,20 @@ const getRootBackground = (messageBarType: MessageBarType | undefined, palette: 
   }
   return palette.neutralLighter;
 };
+// Returns the background color of the MessageBar root element based on the type of MessageBar when in High Contrast Mode.
+const getHighContrastRootBackground = (messageBarType: MessageBarType | undefined): string => {
+  switch (messageBarType) {
+    case MessageBarType.error:
+    case MessageBarType.blocked:
+    case MessageBarType.severeWarning:
+      return 'rgba(255, 0, 0, 0.3)';
+    case MessageBarType.success:
+      return 'rgba(48, 241, 73, 0.3)';
+    case MessageBarType.warning:
+      return 'rgba(255, 254, 57, 0.3)';
+  }
+  return 'Window';
+};
 
 // Returns the icon color based on the type of MessageBar.
 const getIconColor = (messageBarType: MessageBarType | undefined, palette: IPalette, semanticColors: ISemanticColors): string => {
@@ -81,7 +95,7 @@ export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
     selectors: {
       [HighContrastSelector]: {
         MsHighContrastAdjust: 'none',
-        color: 'Window'
+        color: 'WindowText'
       }
     }
   };
@@ -134,11 +148,17 @@ export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
         selectors: {
           '& .ms-Link': {
             color: palette.themeDark,
-            ...fonts.small
+            ...fonts.small,
+            selectors: {
+              [HighContrastSelector]: {
+                color: 'inherit'
+              }
+            }
           },
           [HighContrastSelector]: {
-            background: 'WindowText',
-            color: 'Window'
+            background: getHighContrastRootBackground(messageBarType),
+            border: '1px solid WindowText',
+            color: 'WindowText'
           }
         }
       },
@@ -171,7 +191,7 @@ export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
       selectors: {
         [HighContrastSelector]: {
           MsHighContrastAdjust: 'none',
-          color: 'Window'
+          color: 'WindowText'
         }
       }
     },

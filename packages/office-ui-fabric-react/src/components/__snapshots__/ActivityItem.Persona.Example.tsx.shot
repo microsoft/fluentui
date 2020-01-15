@@ -186,19 +186,19 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
                 color: #00009F;
               }
               &:active {
-                color: #004578;
+                color: inherit;
                 text-decoration: underline;
               }
               &:hover {
-                color: #004578;
+                color: inherit;
                 text-decoration: underline;
               }
               &:active:hover {
-                color: #004578;
+                color: inherit;
                 text-decoration: underline;
               }
               &:focus {
-                color: #0078d4;
+                color: inherit;
               }
           onClick={[Function]}
           type="button"
@@ -490,19 +490,19 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
                 color: #00009F;
               }
               &:active {
-                color: #004578;
+                color: inherit;
                 text-decoration: underline;
               }
               &:hover {
-                color: #004578;
+                color: inherit;
                 text-decoration: underline;
               }
               &:active:hover {
-                color: #004578;
+                color: inherit;
                 text-decoration: underline;
               }
               &:focus {
-                color: #0078d4;
+                color: inherit;
               }
           onClick={[Function]}
           type="button"
@@ -558,19 +558,19 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
                 color: #00009F;
               }
               &:active {
-                color: #004578;
+                color: inherit;
                 text-decoration: underline;
               }
               &:hover {
-                color: #004578;
+                color: inherit;
                 text-decoration: underline;
               }
               &:active:hover {
-                color: #004578;
+                color: inherit;
                 text-decoration: underline;
               }
               &:focus {
-                color: #0078d4;
+                color: inherit;
               }
           onClick={[Function]}
           type="button"
@@ -626,19 +626,19 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
                 color: #00009F;
               }
               &:active {
-                color: #004578;
+                color: inherit;
                 text-decoration: underline;
               }
               &:hover {
-                color: #004578;
+                color: inherit;
                 text-decoration: underline;
               }
               &:active:hover {
-                color: #004578;
+                color: inherit;
                 text-decoration: underline;
               }
               &:focus {
-                color: #0078d4;
+                color: inherit;
               }
           onClick={[Function]}
           type="button"
@@ -984,19 +984,19 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
                 color: #00009F;
               }
               &:active {
-                color: #004578;
+                color: inherit;
                 text-decoration: underline;
               }
               &:hover {
-                color: #004578;
+                color: inherit;
                 text-decoration: underline;
               }
               &:active:hover {
-                color: #004578;
+                color: inherit;
                 text-decoration: underline;
               }
               &:focus {
-                color: #0078d4;
+                color: inherit;
               }
           onClick={[Function]}
           type="button"
@@ -1052,19 +1052,19 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
                 color: #00009F;
               }
               &:active {
-                color: #004578;
+                color: inherit;
                 text-decoration: underline;
               }
               &:hover {
-                color: #004578;
+                color: inherit;
                 text-decoration: underline;
               }
               &:active:hover {
-                color: #004578;
+                color: inherit;
                 text-decoration: underline;
               }
               &:focus {
-                color: #0078d4;
+                color: inherit;
               }
           onClick={[Function]}
           type="button"
@@ -1470,19 +1470,19 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
                 color: #00009F;
               }
               &:active {
-                color: #004578;
+                color: inherit;
                 text-decoration: underline;
               }
               &:hover {
-                color: #004578;
+                color: inherit;
                 text-decoration: underline;
               }
               &:active:hover {
-                color: #004578;
+                color: inherit;
                 text-decoration: underline;
               }
               &:focus {
-                color: #0078d4;
+                color: inherit;
               }
           onClick={[Function]}
           type="button"
@@ -1538,19 +1538,19 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
                 color: #00009F;
               }
               &:active {
-                color: #004578;
+                color: inherit;
                 text-decoration: underline;
               }
               &:hover {
-                color: #004578;
+                color: inherit;
                 text-decoration: underline;
               }
               &:active:hover {
-                color: #004578;
+                color: inherit;
                 text-decoration: underline;
               }
               &:focus {
-                color: #0078d4;
+                color: inherit;
               }
           onClick={[Function]}
           type="button"

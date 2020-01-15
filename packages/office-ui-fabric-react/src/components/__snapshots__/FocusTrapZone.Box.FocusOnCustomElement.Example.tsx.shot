@@ -592,19 +592,19 @@ exports[`Component Examples renders FocusTrapZone.Box.FocusOnCustomElement.Examp
               border-bottom: none;
             }
             &:active {
-              color: #004578;
+              color: inherit;
               text-decoration: underline;
             }
             &:hover {
-              color: #004578;
+              color: inherit;
               text-decoration: underline;
             }
             &:active:hover {
-              color: #004578;
+              color: inherit;
               text-decoration: underline;
             }
             &:focus {
-              color: #0078d4;
+              color: inherit;
             }
         href="https://bing.com"
         onClick={[Function]}
