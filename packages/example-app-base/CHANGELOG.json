@@ -2,6 +2,20 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "date": "Mon, 13 Jan 2020 12:28:56 GMT",
+      "tag": "@uifabric/example-app-base_v7.11.1",
+      "version": "7.11.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update focus properly when scrolling to anchors",
+            "author": "elcraig@microsoft.com",
+            "commit": "8b8801ab977cc1e8e1e64474ab5f99aefa7d6d47"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 08 Jan 2020 17:02:57 GMT",
       "tag": "@uifabric/example-app-base_v7.11.0",
       "version": "7.11.0",

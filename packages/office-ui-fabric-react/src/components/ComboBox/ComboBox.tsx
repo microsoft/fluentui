@@ -1862,7 +1862,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         // allowing autoComplete, handle the input here
         // since we have marked the input as readonly
         if (!allowFreeform && autoComplete === 'on') {
-          this._onInputChange(String.fromCharCode(ev.which));
+          this._onInputChange(ev.key);
           break;
         }
 

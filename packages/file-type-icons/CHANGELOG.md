@@ -1,7 +1,13 @@
 # Change Log - @uifabric/file-type-icons
 
-This log was last generated on Tue, 31 Dec 2019 12:31:45 GMT and should not be manually modified.
+This log was last generated on Wed, 15 Jan 2020 00:21:25 GMT and should not be manually modified.
 
+## 7.2.3
+Wed, 15 Jan 2020 00:21:25 GMT
+
+### Patches
+
+- Make news icon available (hjorturj@microsoft.com)
 ## 7.2.2
 Tue, 31 Dec 2019 12:31:45 GMT
 

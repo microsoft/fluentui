@@ -123,7 +123,16 @@ export const colGroupProperties: string[];
 export const colProperties: string[];
 
 // @public
+export function composeComponentAs<TProps>(outer: IComponentAs<TProps>, inner: IComponentAs<TProps>): IComponentAs<TProps>;
+
+// @public
+export function composeRenderFunction<TProps>(outer: IRenderFunction<TProps>, inner: IRenderFunction<TProps>): IRenderFunction<TProps>;
+
+// @public
 export function createArray<T>(size: number, getItem: (index: number) => T): T[];
+
+// @public
+export function createMemoizer<F extends (input: any) => any>(getValue: F): F;
 
 // Warning: (ae-incompatible-release-tags) The symbol "css" is marked as @public, but its signature references "ICssInput" which is marked as @internal
 // 

@@ -2,6 +2,20 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "date": "Mon, 13 Jan 2020 12:28:56 GMT",
+      "tag": "@uifabric/fabric-website_v7.7.6",
+      "version": "7.7.6",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix UHF \"skip to main content\" link, and update focus properly when scrolling to anchors",
+            "author": "elcraig@microsoft.com",
+            "commit": "8b8801ab977cc1e8e1e64474ab5f99aefa7d6d47"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 08 Jan 2020 17:02:57 GMT",
       "tag": "@uifabric/fabric-website_v7.7.5",
       "version": "7.7.5",

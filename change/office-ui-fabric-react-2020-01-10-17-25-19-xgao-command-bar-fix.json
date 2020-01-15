@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "CommandBar: Do not render empty div if farItems prop is empty array",
+  "packageName": "office-ui-fabric-react",
+  "email": "xgao@microsoft.com",
+  "commit": "2dd52014bf8fc9fc2a1ffabef881ac942f172180",
+  "date": "2020-01-11T01:25:19.456Z"
+}
