@@ -76,7 +76,7 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
     // (undocumented)
     componentDidUpdate(): void;
     // (undocumented)
-    get cursorLocation(): number | null;
+    readonly cursorLocation: number | null;
     // (undocumented)
     static defaultProps: {
         enableAutofillOnKeyPress: number[];
@@ -84,19 +84,19 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
     // (undocumented)
     focus(): void;
     // (undocumented)
-    get inputElement(): HTMLInputElement | null;
+    readonly inputElement: HTMLInputElement | null;
     // (undocumented)
-    get isValueSelected(): boolean;
+    readonly isValueSelected: boolean;
     // (undocumented)
     render(): JSX.Element;
     // (undocumented)
-    get selectionEnd(): number | null;
+    readonly selectionEnd: number | null;
     // (undocumented)
-    get selectionStart(): number | null;
+    readonly selectionStart: number | null;
     // (undocumented)
     UNSAFE_componentWillReceiveProps(nextProps: IAutofillProps): void;
     // (undocumented)
-    get value(): string;
+    readonly value: string;
     }
 
 // @public @deprecated (undocumented)
@@ -142,13 +142,13 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
     // (undocumented)
     focus(): void;
     // (undocumented)
-    get highlightedItems(): T[];
+    readonly highlightedItems: T[];
     // (undocumented)
     protected input: React.RefObject<Autofill>;
     // (undocumented)
-    get inputElement(): HTMLInputElement | null;
+    readonly inputElement: HTMLInputElement | null;
     // (undocumented)
-    get items(): any;
+    readonly items: any;
     // (undocumented)
     protected onBackspace: (ev: React.KeyboardEvent<HTMLElement>) => void;
     // (undocumented)
@@ -203,17 +203,17 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
     // (undocumented)
     protected currentPromise: PromiseLike<T[]>;
     // (undocumented)
-    get currentSelectedSuggestionIndex(): number;
+    readonly currentSelectedSuggestionIndex: number;
     // (undocumented)
     forceResolveSuggestion(): void;
     // (undocumented)
     hidePicker: () => void;
     // (undocumented)
-    get inputText(): string;
+    readonly inputText: string;
     // (undocumented)
     protected isComponentMounted: boolean;
     // (undocumented)
-    get isSuggestionsShown(): boolean;
+    readonly isSuggestionsShown: boolean;
     // (undocumented)
     protected onChange(item: T): void;
     // (undocumented)
@@ -237,7 +237,7 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
     // (undocumented)
     showPicker: (updateValue?: boolean) => void;
     // (undocumented)
-    get suggestions(): any[];
+    readonly suggestions: any[];
     // (undocumented)
     protected suggestionsControl: React.RefObject<SuggestionsControl<T>>;
     // (undocumented)
@@ -302,7 +302,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     // (undocumented)
     protected _isFocusZoneInnerKeystroke: (ev: React.KeyboardEvent<HTMLElement>) => boolean;
     // (undocumented)
-    get items(): T[];
+    readonly items: T[];
     // (undocumented)
     protected onBackspace(ev: React.KeyboardEvent<HTMLElement>): void;
     // (undocumented)
@@ -392,7 +392,7 @@ export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>> 
     // (undocumented)
     highlightedItems(): T[];
     // (undocumented)
-    get items(): T[];
+    readonly items: T[];
     // (undocumented)
     protected onChange(items?: T[]): void;
     // (undocumented)
@@ -519,7 +519,7 @@ export const Checkbox: React.StatelessComponent<ICheckboxProps>;
 export class CheckboxBase extends React.Component<ICheckboxProps, ICheckboxState> implements ICheckbox {
     constructor(props: ICheckboxProps, context?: any);
     // (undocumented)
-    get checked(): boolean;
+    readonly checked: boolean;
     // (undocumented)
     static defaultProps: ICheckboxProps;
     // (undocumented)
@@ -527,7 +527,7 @@ export class CheckboxBase extends React.Component<ICheckboxProps, ICheckboxState
     // (undocumented)
     static getDerivedStateFromProps(nextProps: Readonly<ICheckboxProps>, prevState: Readonly<ICheckboxState>): ICheckboxState | null;
     // (undocumented)
-    get indeterminate(): boolean;
+    readonly indeterminate: boolean;
     render(): JSX.Element;
 }
 
@@ -544,7 +544,7 @@ export const ChoiceGroup: React.StatelessComponent<IChoiceGroupProps>;
 // @public (undocumented)
 export class ChoiceGroupBase extends React.Component<IChoiceGroupProps, IChoiceGroupState> implements IChoiceGroup {
     constructor(props: IChoiceGroupProps);
-    get checkedOption(): IChoiceGroupOption | undefined;
+    readonly checkedOption: IChoiceGroupOption | undefined;
     // (undocumented)
     componentDidUpdate(prevProps: IChoiceGroupProps, prevState: IChoiceGroupState): void;
     // (undocumented)
@@ -599,7 +599,7 @@ export const ColorPicker: React.StatelessComponent<IColorPickerProps>;
 export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPickerState> implements IColorPicker {
     constructor(props: IColorPickerProps);
     // (undocumented)
-    get color(): IColor;
+    readonly color: IColor;
     // (undocumented)
     componentDidUpdate(prevProps: Readonly<IColorPickerProps>, prevState: Readonly<IColorPickerState>): void;
     // (undocumented)
@@ -651,7 +651,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     focus: (shouldOpenOnFocus?: boolean | undefined, useFocusAsync?: boolean | undefined) => void;
     // (undocumented)
     render(): JSX.Element;
-    get selectedOptions(): IComboBoxOption[];
+    readonly selectedOptions: IComboBoxOption[];
     // (undocumented)
     UNSAFE_componentWillReceiveProps(newProps: IComboBoxProps): void;
 }
@@ -1081,7 +1081,7 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
     focus(shouldOpenOnFocus?: boolean): void;
     // (undocumented)
     render(): JSX.Element;
-    get selectedOptions(): IDropdownOption[];
+    readonly selectedOptions: IDropdownOption[];
     // (undocumented)
     setSelectedIndex(event: React.FormEvent<HTMLDivElement>, index: number): void;
     // (undocumented)
@@ -8090,9 +8090,9 @@ export class MaskedTextField extends React.Component<ITextFieldProps, IMaskedTex
     // (undocumented)
     select(): void;
     // (undocumented)
-    get selectionEnd(): number | null;
+    readonly selectionEnd: number | null;
     // (undocumented)
-    get selectionStart(): number | null;
+    readonly selectionStart: number | null;
     // (undocumented)
     setSelectionEnd(value: number): void;
     // (undocumented)
@@ -8105,7 +8105,7 @@ export class MaskedTextField extends React.Component<ITextFieldProps, IMaskedTex
     // (undocumented)
     UNSAFE_componentWillReceiveProps(newProps: ITextFieldProps): void;
     // (undocumented)
-    get value(): string | undefined;
+    readonly value: string | undefined;
 }
 
 // @public (undocumented)
@@ -8209,7 +8209,7 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
     // (undocumented)
     render(): JSX.Element | null;
     // (undocumented)
-    get selectedKey(): string | undefined;
+    readonly selectedKey: string | undefined;
     }
 
 // @public (undocumented)
@@ -8693,7 +8693,7 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
     // (undocumented)
     componentWillUnmount(): void;
     // (undocumented)
-    get contentContainer(): HTMLDivElement | null;
+    readonly contentContainer: HTMLDivElement | null;
     // (undocumented)
     forceLayoutUpdate(): void;
     // (undocumented)
@@ -8705,7 +8705,7 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
     // (undocumented)
     render(): JSX.Element;
     // (undocumented)
-    get root(): HTMLDivElement | null;
+    readonly root: HTMLDivElement | null;
     // (undocumented)
     setStickiesDistanceFromTop(): void;
     // (undocumented)
@@ -8713,9 +8713,9 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
     // (undocumented)
     sortSticky: (sticky: Sticky, sortAgain?: boolean | undefined) => void;
     // (undocumented)
-    get stickyAbove(): HTMLDivElement | null;
+    readonly stickyAbove: HTMLDivElement | null;
     // (undocumented)
-    get stickyBelow(): HTMLDivElement | null;
+    readonly stickyBelow: HTMLDivElement | null;
     // (undocumented)
     subscribe: (handler: Function) => void;
     // (undocumented)
@@ -8964,7 +8964,7 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
     // (undocumented)
     render(): React.ReactElement<{}>;
     // (undocumented)
-    get value(): number | undefined;
+    readonly value: number | undefined;
 }
 
 // @public (undocumented)
@@ -8979,7 +8979,7 @@ export class SpinButton extends React.Component<ISpinButtonProps, ISpinButtonSta
     // (undocumented)
     render(): JSX.Element;
     UNSAFE_componentWillReceiveProps(newProps: ISpinButtonProps): void;
-    get value(): string | undefined;
+    readonly value: string | undefined;
     }
 
 // @public (undocumented)
@@ -9026,9 +9026,9 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
     // (undocumented)
     addSticky(stickyContent: HTMLDivElement): void;
     // (undocumented)
-    get canStickyBottom(): boolean;
+    readonly canStickyBottom: boolean;
     // (undocumented)
-    get canStickyTop(): boolean;
+    readonly canStickyTop: boolean;
     // (undocumented)
     componentDidMount(): void;
     // (undocumented)
@@ -9040,23 +9040,23 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
     // (undocumented)
     static defaultProps: IStickyProps;
     // (undocumented)
-    get nonStickyContent(): HTMLDivElement | null;
+    readonly nonStickyContent: HTMLDivElement | null;
     // (undocumented)
-    get placeholder(): HTMLDivElement | null;
+    readonly placeholder: HTMLDivElement | null;
     // (undocumented)
     render(): JSX.Element;
     // (undocumented)
     resetSticky(): void;
     // (undocumented)
-    get root(): HTMLDivElement | null;
+    readonly root: HTMLDivElement | null;
     // (undocumented)
     setDistanceFromTop(container: HTMLDivElement): void;
     // (undocumented)
     shouldComponentUpdate(nextProps: IStickyProps, nextState: IStickyState): boolean;
     // (undocumented)
-    get stickyContentBottom(): HTMLDivElement | null;
+    readonly stickyContentBottom: HTMLDivElement | null;
     // (undocumented)
-    get stickyContentTop(): HTMLDivElement | null;
+    readonly stickyContentTop: HTMLDivElement | null;
     // (undocumented)
     syncScroll: (container: HTMLElement) => void;
 }
@@ -9130,9 +9130,9 @@ export class SuggestionsControl<T> extends BaseComponent<ISuggestionsControlProp
     // (undocumented)
     componentWillUnmount(): void;
     // (undocumented)
-    get currentSuggestion(): ISuggestionModel<T>;
+    readonly currentSuggestion: ISuggestionModel<T>;
     // (undocumented)
-    get currentSuggestionIndex(): number;
+    readonly currentSuggestionIndex: number;
     // (undocumented)
     executeSelectedAction(): void;
     // (undocumented)
@@ -9158,7 +9158,7 @@ export class SuggestionsControl<T> extends BaseComponent<ISuggestionsControlProp
     // (undocumented)
     protected _searchForMoreButton: IButton;
     // (undocumented)
-    get selectedElement(): HTMLDivElement | undefined;
+    readonly selectedElement: HTMLDivElement | undefined;
     // (undocumented)
     protected _selectedElement: HTMLDivElement;
     protected selectFirstItem(): void;
@@ -9230,7 +9230,7 @@ export class SuggestionsCore<T> extends BaseComponent<ISuggestionsCoreProps<T>, 
     // (undocumented)
     scrollSelected(): void;
     // (undocumented)
-    get selectedElement(): HTMLDivElement | undefined;
+    readonly selectedElement: HTMLDivElement | undefined;
     // (undocumented)
     protected _selectedElement: HTMLDivElement;
     // (undocumented)
@@ -9392,12 +9392,12 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
     // (undocumented)
     render(): JSX.Element;
     select(): void;
-    get selectionEnd(): number | null;
-    get selectionStart(): number | null;
+    readonly selectionEnd: number | null;
+    readonly selectionStart: number | null;
     setSelectionEnd(value: number): void;
     setSelectionRange(start: number, end: number): void;
     setSelectionStart(value: number): void;
-    get value(): string | undefined;
+    readonly value: string | undefined;
     }
 
 // @public (undocumented)
@@ -9432,7 +9432,7 @@ export const Toggle: React.StatelessComponent<IToggleProps>;
 // @public (undocumented)
 export class ToggleBase extends BaseComponent<IToggleProps, IToggleState> implements IToggle {
     constructor(props: IToggleProps);
-    get checked(): boolean;
+    readonly checked: boolean;
     // (undocumented)
     focus(): void;
     // (undocumented)
@@ -9520,7 +9520,7 @@ export class VirtualizedComboBox extends BaseComponent<IComboBoxProps, {}> imple
     protected _onScrollToItem: (itemIndex: number) => void;
     // (undocumented)
     render(): JSX.Element;
-    get selectedOptions(): IComboBoxOption[];
+    readonly selectedOptions: IComboBoxOption[];
 }
 
 

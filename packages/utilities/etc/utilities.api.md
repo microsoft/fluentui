@@ -83,13 +83,13 @@ export class AutoScroll {
 // @public
 export class BaseComponent<TProps extends IBaseProps = {}, TState = {}> extends React.Component<TProps, TState> {
     constructor(props: TProps, context?: any);
-    protected get _async(): Async;
-    get className(): string;
+    protected readonly _async: Async;
+    readonly className: string;
     componentDidMount(): void;
     componentDidUpdate(prevProps: TProps, prevState: TState): void;
     componentWillUnmount(): void;
-    protected get _disposables(): IDisposable[];
-    protected get _events(): EventGroup;
+    protected readonly _disposables: IDisposable[];
+    protected readonly _events: EventGroup;
     // @deprecated (undocumented)
     static onError: (errorMessage?: string, ex?: any) => void;
     // @deprecated
@@ -983,14 +983,14 @@ export class Rectangle {
     // (undocumented)
     bottom: number;
     equals(rect: Rectangle): boolean;
-    get height(): number;
+    readonly height: number;
     // (undocumented)
     left: number;
     // (undocumented)
     right: number;
     // (undocumented)
     top: number;
-    get width(): number;
+    readonly width: number;
 }
 
 // @public (undocumented)

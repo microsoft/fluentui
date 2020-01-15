@@ -115,7 +115,6 @@ export class Router extends React.Component<IRouterProps, IRouterState> {
           const componentChildren = this._resolveRoute(route.props.children || []);
           return React.createElement(component, { key: route.key! }, componentChildren);
         } else {
-          // TODO: the 'else if' check was redundant... right?
           // We are asynchronously fetching this component.
           return null;
         }
