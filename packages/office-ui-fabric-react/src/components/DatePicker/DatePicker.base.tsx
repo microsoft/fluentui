@@ -433,6 +433,7 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
   private _validateTextInput = (): void => {
     const { isRequired, allowTextInput, strings, parseDateFromString, onSelectDate, formatDate, minDate, maxDate } = this.props;
     const inputValue = this.state.formattedDate;
+    console.log('_validateTextInput', inputValue);
 
     // Do validation only if DatePicker's popup is dismissed
     if (this.state.isDatePickerShown) {
@@ -441,54 +442,54 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
 
     if (allowTextInput) {
       let date = null;
-      if (inputValue) {
-        // Don't parse if the selected date has the same formatted string as what we're about to parse.
-        // The formatted string might be ambiguous (ex: "1/2/3" or "New Year Eve") and the parser might
-        // not be able to come up with the exact same date.
-        if (this.state.selectedDate && formatDate && formatDate(this.state.selectedDate) === inputValue) {
-          return;
-        } else {
-          date = parseDateFromString!(inputValue);
+      // Don't parse if the selected date has the same formatted string as what we're about to parse.
+      // The formatted string might be ambiguous (ex: "1/2/3" or "New Year Eve") and the parser might
+      // not be able to come up with the exact same date.
+      if (inputValue && !(this.state.selectedDate && formatDate && formatDate(this.state.selectedDate) === inputValue)) {
+        date = parseDateFromString!(inputValue);
 
-          // Check if date is null, or date is Invalid Date
-          if (!date || isNaN(date.getTime())) {
-            // Reset invalid input field, if formatting is available
-            if (formatDate) {
-              date = this.state.selectedDate;
-              this.setState({
-                formattedDate: formatDate(date!).toString()
-              });
-            }
-
+        // Check if date is null, or date is Invalid Date
+        if (!date || isNaN(date.getTime())) {
+          // Reset invalid input field, if formatting is available
+          if (formatDate) {
+            date = this.state.selectedDate;
             this.setState({
-              errorMessage: strings!.invalidInputErrorMessage || ' '
+              formattedDate: formatDate(date!).toString()
+            });
+          }
+
+          console.log('_validateTextInput 1', strings!.invalidInputErrorMessage || ' ');
+          this.setState({
+            errorMessage: strings!.invalidInputErrorMessage || ' '
+          });
+        } else {
+          // Check against optional date boundaries
+          if (this._isDateOutOfBounds(date, minDate, maxDate)) {
+            console.log('_validateTextInput 2', strings!.isOutOfBoundsErrorMessage || ' ');
+            this.setState({
+              errorMessage: strings!.isOutOfBoundsErrorMessage || ' '
             });
           } else {
-            // Check against optional date boundaries
-            if (this._isDateOutOfBounds(date, minDate, maxDate)) {
-              this.setState({
-                errorMessage: strings!.isOutOfBoundsErrorMessage || ' '
-              });
-            } else {
-              this.setState({
-                selectedDate: date,
-                errorMessage: ''
-              });
+            console.log('_validateTextInput 3', 'empty string');
+            this.setState({
+              selectedDate: date,
+              errorMessage: ''
+            });
 
-              // When formatting is available. If formatted date is valid, but is different from input, update with formatted date
-              // This occurs when an invalid date is entered twice
-              if (formatDate && formatDate(date) !== inputValue) {
-                this.setState({
-                  formattedDate: formatDate(date).toString()
-                });
-              }
+            // When formatting is available. If formatted date is valid, but is different from input, update with formatted date
+            // This occurs when an invalid date is entered twice
+            if (formatDate && formatDate(date) !== inputValue) {
+              this.setState({
+                formattedDate: formatDate(date).toString()
+              });
             }
           }
         }
       } else {
         // Only show error for empty inputValue if it is a required field
+        console.log('_validateTextInput 4', isRequired && !inputValue ? strings!.isRequiredErrorMessage || ' ' : '');
         this.setState({
-          errorMessage: isRequired ? strings!.isRequiredErrorMessage || ' ' : ''
+          errorMessage: isRequired && !inputValue ? strings!.isRequiredErrorMessage || ' ' : ''
         });
       }
 
@@ -499,6 +500,7 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
         onSelectDate(date);
       }
     } else if (isRequired && !inputValue) {
+      console.log('_validateTextInput 5', isRequired && !inputValue ? strings!.isRequiredErrorMessage || ' ' : '');
       // Check when DatePicker is a required field but has NO input value
       this.setState({
         errorMessage: strings!.isRequiredErrorMessage || ' '
