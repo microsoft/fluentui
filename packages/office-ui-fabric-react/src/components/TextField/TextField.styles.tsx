@@ -153,12 +153,17 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
             }
           }
         },
-        focused &&
+        focused && [
+          {
+            position: 'relative'
+          },
           getInputFocusStyle(
             !hasErrorMessage ? semanticColors.inputFocusBorderAlt : semanticColors.errorText,
             effects.roundedCorner2,
-            'borderBottom'
+            'borderBottom',
+            -2
           )
+        ]
       ]
     ],
     fieldGroup: [
