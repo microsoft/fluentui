@@ -118,9 +118,9 @@ describe('DatePicker', () => {
   it('should clear error message when required input has date text and allowTextInput is true', () => {
     const datePicker = mount(<DatePickerBase isRequired={true} allowTextInput={true} strings={DayPickerStrings} />);
     const textField = datePicker.find('input');
-
     expect(textField).toBeDefined();
     expect(datePicker.state('errorMessage')).toBeUndefined();
+
     textField.simulate('click').simulate('click'); // open the datepicker then dismiss
     expect(datePicker.state('errorMessage')).toBe(DayPickerStrings.isRequiredErrorMessage);
     textField.simulate('change', { target: { value: 'Jan 1 2030' } }).simulate('blur');
@@ -132,18 +132,16 @@ describe('DatePicker', () => {
   it('should clear error message when required input has date selected from calendar and allowTextInput is true', () => {
     const datePicker = mount(<DatePickerBase isRequired={true} allowTextInput={true} strings={DayPickerStrings} />);
     const textField = datePicker.find('input');
-
     expect(textField).toBeDefined();
     expect(datePicker.state('errorMessage')).toBeUndefined();
+
     textField.simulate('click').simulate('click'); // open the datepicker then dismiss
     expect(datePicker.state('errorMessage')).toBe(DayPickerStrings.isRequiredErrorMessage);
 
     // open calendar and select first day
     textField.simulate('click');
-    datePicker
-      .find('.ms-DatePicker td')
-      .at(0)
-      .simulate('click');
+    const selectableDateInCalender = datePicker.find('.ms-DatePicker td button[data-is-focusable=true]').at(0);
+    selectableDateInCalender.simulate('click');
 
     expect(datePicker.state('errorMessage')).toBe('');
 
