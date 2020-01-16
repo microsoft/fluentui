@@ -57,7 +57,6 @@ export class DatePickerRequiredExample extends React.Component<{}, IDatePickerRe
           strings={DayPickerStrings}
           placeholder="Select a date..."
           ariaLabel="Select a date"
-          allowTextInput
         />
         <DatePicker
           className={controlClass.control}
