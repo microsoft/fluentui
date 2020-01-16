@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "DatePicker: error message for required field is not cleared when date is selected from calendar",
+  "packageName": "office-ui-fabric-react",
+  "email": "xgao@microsoft.com",
+  "commit": "bfc640d963af3c6979046b32ae78d6f732f68135",
+  "date": "2020-01-16T01:50:48.337Z"
+}
