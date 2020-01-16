@@ -40,8 +40,8 @@ export enum FabricSlots {
   neutralTertiaryAlt, // BaseSlots.backgroundColor, Shade[Shade.Shade6]); // bg6 or fg2
   neutralTertiary, // BaseSlots.foregroundColor, Shade[Shade.Shade3]);
   // deprecated: neutralSecondaryAlt, // BaseSlots.foregroundColor, Shade[Shade.Shade4]);
-  neutralSecondary, // BaseSlots.foregroundColor, Shade[Shade.Shade4]);
-  neutralPrimaryAlt, // BaseSlots.foregroundColor, Shade[Shade.Shade5]);
+  neutralSecondary, // BaseSlots.foregroundColor, Shade[Shade.Shade5]);
+  neutralPrimaryAlt, // BaseSlots.foregroundColor, Shade[Shade.Shade6]);
   neutralPrimary, // BaseSlots.foregroundColor, Shade[Shade.Unshaded]);
   neutralDark, // BaseSlots.foregroundColor, Shade[Shade.Shade7]);
 
