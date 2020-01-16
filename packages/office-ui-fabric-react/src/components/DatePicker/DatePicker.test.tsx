@@ -12,6 +12,27 @@ import { Callout } from 'office-ui-fabric-react/lib/Callout';
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 
 describe('DatePicker', () => {
+  const DayPickerStrings: IDatePickerStrings = {
+    months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+
+    shortMonths: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+
+    days: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+
+    shortDays: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
+
+    goToToday: 'Go to today',
+    prevMonthAriaLabel: 'Go to previous month',
+    nextMonthAriaLabel: 'Go to next month',
+    prevYearAriaLabel: 'Go to previous year',
+    nextYearAriaLabel: 'Go to next year',
+    closeButtonAriaLabel: 'Close date picker',
+
+    isRequiredErrorMessage: 'Field is required.',
+
+    invalidInputErrorMessage: 'Invalid date format.'
+  };
+
   beforeEach(() => {
     resetIds();
   });
@@ -79,7 +100,7 @@ describe('DatePicker', () => {
     expect(wrapper.state('isDatePickerShown')).toBe(false);
   });
 
-  it('should call onSelectDate even when required input is empty when allowTextInput is true', () => {
+  xit('should call onSelectDate even when required input is empty when allowTextInput is true', () => {
     const onSelectDate = jest.fn();
     const datePicker = mount(<DatePickerBase isRequired={true} allowTextInput={true} onSelectDate={onSelectDate} />);
     const textField = datePicker.find('input');
@@ -90,6 +111,42 @@ describe('DatePicker', () => {
     textField.simulate('change', { target: { value: '' } }).simulate('blur');
 
     expect(onSelectDate).toHaveBeenCalledTimes(2);
+
+    datePicker.unmount();
+  });
+
+  it('should clear error message when required input has date text and allowTextInput is true', () => {
+    const datePicker = mount(<DatePickerBase isRequired={true} allowTextInput={true} strings={DayPickerStrings} />);
+    const textField = datePicker.find('input');
+
+    expect(textField).toBeDefined();
+    expect(datePicker.state('errorMessage')).toBeUndefined();
+    textField.simulate('click').simulate('click'); // open the datepicker then dismiss
+    expect(datePicker.state('errorMessage')).toBe(DayPickerStrings.isRequiredErrorMessage);
+    textField.simulate('change', { target: { value: 'Jan 1 2030' } }).simulate('blur');
+    expect(datePicker.state('errorMessage')).toBe('');
+
+    datePicker.unmount();
+  });
+
+  // datePicker.find('.ms-DatePicker')
+  it('should clear error message when required input has date selected from calendar and allowTextInput is true', () => {
+    const datePicker = mount(<DatePickerBase isRequired={true} allowTextInput={true} strings={DayPickerStrings} />);
+    const textField = datePicker.find('input');
+
+    expect(textField).toBeDefined();
+    expect(datePicker.state('errorMessage')).toBeUndefined();
+    textField.simulate('click').simulate('click'); // open the datepicker then dismiss
+    expect(datePicker.state('errorMessage')).toBe(DayPickerStrings.isRequiredErrorMessage);
+
+    // open calendar and select first day
+    textField.simulate('click');
+    datePicker
+      .find('.ms-DatePicker td')
+      .at(0)
+      .simulate('click');
+
+    expect(datePicker.state('errorMessage')).toBe('');
 
     datePicker.unmount();
   });
