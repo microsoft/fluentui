@@ -1,7 +1,14 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Mon, 13 Jan 2020 12:28:56 GMT and should not be manually modified.
+This log was last generated on Thu, 16 Jan 2020 12:28:58 GMT and should not be manually modified.
 
+## 7.11.2
+Thu, 16 Jan 2020 12:28:58 GMT
+
+### Patches
+
+- Upgrade repo to TS3.7. (jagore@microsoft.com)
+- Router: don't render routes without component or getComponent. Also make INavPage.url optional since categories don't have a url. (elcraig@microsoft.com)
 ## 7.11.1
 Mon, 13 Jan 2020 12:28:56 GMT
 

@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Use standard postprocess task for get/set transforms, and remove readonly parameters",
-  "packageName": "@uifabric/monaco-editor",
-  "email": "elcraig@microsoft.com",
-  "commit": "8c1cc1f80cc5797db9f652aca313d8a51b8f108b",
-  "date": "2020-01-16T00:07:53.146Z"
-}

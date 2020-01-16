@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fixing click handling for colorrectangle for bug #11680",
-  "packageName": "office-ui-fabric-react",
-  "email": "anuku@microsoft.com",
-  "commit": "3594dd074bebb4aacda53676f628986a887dd32c",
-  "date": "2020-01-14T15:02:34.147Z"
-}

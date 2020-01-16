@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Upgrade repo to TS3.7.",
-  "packageName": "office-ui-fabric-react",
-  "email": "jagore@microsoft.com",
-  "commit": "e04fd44af0b978bc0c8c55658bf6b9d0ff3eac49",
-  "date": "2020-01-10T22:23:06.320Z"
-}

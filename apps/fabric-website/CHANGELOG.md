@@ -1,7 +1,13 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Mon, 13 Jan 2020 12:28:56 GMT and should not be manually modified.
+This log was last generated on Thu, 16 Jan 2020 12:28:58 GMT and should not be manually modified.
 
+## 7.7.7
+Thu, 16 Jan 2020 12:28:58 GMT
+
+### Patches
+
+- Don't make routes for page categories (elcraig@microsoft.com)
 ## 7.7.6
 Mon, 13 Jan 2020 12:28:56 GMT
 
