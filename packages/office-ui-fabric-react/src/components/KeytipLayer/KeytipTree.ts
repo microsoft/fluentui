@@ -73,7 +73,11 @@ export class KeytipTree {
       // If the ID of the node has changed, update node's parent's array of children with new ID
       if (parent && node.id !== nodeID) {
         const index = parent.children.indexOf(node.id);
-        index >= 0 && (parent.children[index] = nodeID);
+        if (index >= 0) {
+          parent.children[index] = nodeID;
+        } else {
+          parent.children.push(nodeID);
+        }
       }
       // Update values
       node.id = nodeID;

@@ -205,6 +205,36 @@ describe('KeytipTree', () => {
       expect(updatedNode.keySequences).toEqual(updatedKeytipSequence);
       expect(updatedNodeParent.children).toContain(updatedNode.id);
     });
+
+    it('correctly updates when the keytips parent has changed', () => {
+      // Add all nodes to the tree
+      keytipTree.addNode(keytipPropsC, uniqueIdC);
+      keytipTree.addNode(keytipPropsE, uniqueIdE);
+      keytipTree.addNode(keytipPropsB, uniqueIdB);
+      keytipTree.addNode(keytipPropsD, uniqueIdD);
+      keytipTree.addNode(keytipPropsF, uniqueIdF);
+      verifySampleTree();
+
+      // Change node 'd' to have parent 'c' instead of parent 'e'
+      const updatedKeytipId = KTP_FULL_PREFIX + 'c' + KTP_SEPARATOR + 'd';
+      const updatedKeytipSequence = ['c', 'd'];
+      const updatedKeytipProps = createKeytipProps(updatedKeytipSequence);
+      keytipTree.updateNode(updatedKeytipProps, uniqueIdD);
+      const updatedNode = keytipTree.getNode(updatedKeytipId)!;
+      const updatedParent = keytipTree.getNode(keytipIdC)!;
+      const previousParent = keytipTree.getNode(keytipIdE)!;
+      // Validate updated node properties
+      expect(updatedNode.id).toEqual(updatedKeytipId);
+      expect(updatedNode.parent).toEqual(keytipIdC);
+      // Validate new parent properties
+      expect(updatedParent.children).toContain(updatedKeytipId);
+      // Validate old parent properties
+      expect(previousParent.children.indexOf(updatedKeytipId)).toEqual(-1);
+      // We expect the old parent to still have the old keytip as a child.
+      // The implication is that in these scenarios the keytip would be updated back eventually
+      // when the old parent is triggered
+      expect(previousParent.children.indexOf(keytipIdD)).toBeGreaterThan(-1);
+    });
   });
 
   describe('removeNode', () => {

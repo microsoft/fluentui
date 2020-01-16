@@ -478,6 +478,9 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
     const uniqueID = eventArgs.uniqueID;
     this._keytipTree.updateNode(keytipProps, uniqueID);
     this._setKeytips();
+    if (this._keytipTree.isCurrentKeytipParent(keytipProps)) {
+      this._addKeytipToQueue(sequencesToID(keytipProps.keySequences));
+    }
   };
 
   private _onKeytipRemoved = (eventArgs: any) => {
