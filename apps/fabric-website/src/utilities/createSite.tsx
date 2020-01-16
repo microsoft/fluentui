@@ -61,7 +61,11 @@ export function createSite<TPlatforms extends string>(
   function _createRoutes(pages: INavPage<TPlatforms>[]): JSX.Element[] {
     let routes: JSX.Element[] = [];
     pages.forEach((page: INavPage<TPlatforms>) => {
-      routes.push(<Route key={page.url} path={page.url} component={page.component} getComponent={page.getComponent} />);
+      // Create a route for each page and its children.
+      // Categories don't have an actual corresponding URL but may have children.
+      if (page.url && (page.component || page.getComponent)) {
+        routes.push(<Route key={page.url} path={page.url} component={page.component} getComponent={page.getComponent} />);
+      }
       if (page.platforms) {
         Object.keys(page.platforms).forEach((plat: TPlatforms) => {
           const platformPages: INavPage<TPlatforms>[] = page.platforms && page.platforms[plat];

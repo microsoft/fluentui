@@ -76,8 +76,10 @@ export class Router extends React.Component<IRouterProps, IRouterState> {
     const routes = React.Children.toArray(children) as React.ReactElement<IRouteProps>[];
 
     for (const route of routes) {
-      if (!route.props) {
-        continue; // probably some other child type, not a route
+      // If route.props is undefined, it's probably some other child type, not a route.
+      // If neither component nor getComponent is defined, it's an invalid route.
+      if (!route.props || !(route.props.component || route.props.getComponent)) {
+        continue;
       }
       // Use this route if it has no path, or if the path matches the current path (from the hash)
       const routePath = _normalizePath(route.props.path);
