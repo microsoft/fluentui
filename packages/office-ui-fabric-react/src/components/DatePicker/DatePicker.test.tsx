@@ -129,7 +129,6 @@ describe('DatePicker', () => {
     datePicker.unmount();
   });
 
-  // datePicker.find('.ms-DatePicker')
   it('should clear error message when required input has date selected from calendar and allowTextInput is true', () => {
     const datePicker = mount(<DatePickerBase isRequired={true} allowTextInput={true} strings={DayPickerStrings} />);
     const textField = datePicker.find('input');
