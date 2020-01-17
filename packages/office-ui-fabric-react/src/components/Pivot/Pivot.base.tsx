@@ -87,7 +87,7 @@ export class PivotBase extends BaseComponent<IPivotProps, IPivotState> {
     this._classNames = this._getClassNames(this.props);
 
     return (
-      <div role="tablist" {...divProps}>
+      <div role="toolbar" {...divProps}>
         {this._renderPivotLinks(linkCollection, selectedKey)}
         {selectedKey && this._renderPivotItem(linkCollection, selectedKey)}
       </div>
@@ -121,7 +121,9 @@ export class PivotBase extends BaseComponent<IPivotProps, IPivotState> {
 
     return (
       <FocusZone componentRef={this._focusZone} direction={FocusZoneDirection.horizontal}>
-        <div className={this._classNames.root}>{items}</div>
+        <div className={this._classNames.root} role="tablist">
+          {items}
+        </div>
       </FocusZone>
     );
   }

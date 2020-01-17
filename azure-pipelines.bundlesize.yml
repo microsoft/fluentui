@@ -15,7 +15,7 @@ jobs:
       - script: yarn buildto test-bundles
         displayName: yarn build to test-bundles
 
-      - script: yarn workspace test-bundles bundle
+      - script: yarn workspace test-bundles bundle:size
         displayName: yarn bundle test-bundles
 
       - script: yarn workspace office-ui-fabric-react just webpack

@@ -1,7 +1,47 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 10 Jan 2020 12:31:47 GMT and should not be manually modified.
+This log was last generated on Thu, 16 Jan 2020 12:28:58 GMT and should not be manually modified.
 
+## 7.82.2
+Thu, 16 Jan 2020 12:28:58 GMT
+
+### Patches
+
+- Upgrade repo to TS3.7. (jagore@microsoft.com)
+- Add aria role to multi-select dropdown  (xgao@microsoft.com)
+- CommandBar: Do not render empty div if farItems prop is empty array (xgao@microsoft.com)
+- ContextualMenu: Fix disabled item being focusable (xgao@microsoft.com)
+- Dropdown: fix exception when options change due to DropdownSizePosCache (xgao@microsoft.com)
+- Fixing click handling for colorrectangle for bug #11680 (anuku@microsoft.com)
+- Revert "ContextualMenu: Fix disabled item being focusable (#11693)" (xgao@microsoft.com)
+## 7.82.1
+Wed, 15 Jan 2020 00:21:25 GMT
+
+### Patches
+
+- ComboBox: Move autoComplete with no freeform key handling to onKeyUp to get access to key value vs key code to support non latin characters (mgodbolt@microsoft.com)
+- Text: Fixing children check so it can render {0} value. (Humberto.Morimoto@microsoft.com)
+- Reverting moving tablist to be a parent of tabpanel (chiechan@microsoft.com)
+## 7.82.0
+Tue, 14 Jan 2020 12:27:16 GMT
+
+### Minor changes
+
+- Fabric: Properly handle dir being passed into control (mgodbolt@microsoft.com)
+### Patches
+
+- FocusZone: remove keydown listener correctly to avoid a leak with inner zones. (dzearing@microsoft.com)
+## 7.81.0
+Mon, 13 Jan 2020 12:28:56 GMT
+
+### Minor changes
+
+- Change focus class behavior: Alternate between 'hidden' and 'visible' classes (paflakst@microsoft.com)
+### Patches
+
+- Consume compose functions where appropriate (tmichon@microsoft.com)
+- Popup: fix an issue where onBlur would not correctly update focus state (joschect@microsoft.com)
+- Dropdown: fix missing asterisk on focused dropdown (xgao@microsoft.com)
 ## 7.80.0
 Fri, 10 Jan 2020 12:31:47 GMT
 

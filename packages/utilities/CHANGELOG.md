@@ -1,7 +1,20 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Thu, 09 Jan 2020 12:34:52 GMT and should not be manually modified.
+This log was last generated on Thu, 16 Jan 2020 12:28:58 GMT and should not be manually modified.
 
+## 7.11.1
+Thu, 16 Jan 2020 12:28:58 GMT
+
+### Patches
+
+- Upgrade repo to TS3.7. (jagore@microsoft.com)
+## 7.11.0
+Mon, 13 Jan 2020 12:28:56 GMT
+
+### Minor changes
+
+- Add composeComponentAs to compose React decorator components (tmichon@microsoft.com)
+- Change focus class behavior: Alternate between 'hidden' and 'visible' classes (paflakst@microsoft.com)
 ## 7.10.0
 Thu, 09 Jan 2020 12:34:52 GMT
 

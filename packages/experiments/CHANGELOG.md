@@ -1,7 +1,20 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Fri, 10 Jan 2020 12:31:47 GMT and should not be manually modified.
+This log was last generated on Thu, 16 Jan 2020 12:28:58 GMT and should not be manually modified.
 
+## 7.18.14
+Thu, 16 Jan 2020 12:28:58 GMT
+
+### Patches
+
+- Upgrade repo to TS3.7. (jagore@microsoft.com)
+## 7.18.13
+Mon, 13 Jan 2020 12:28:56 GMT
+
+### Patches
+
+- Tile: fix color of text over image in dark mode (prchhaje@microsoft.com)
+- Consume compose functions where appropriate (tmichon@microsoft.com)
 ## 7.18.12
 Fri, 10 Jan 2020 12:31:47 GMT
 

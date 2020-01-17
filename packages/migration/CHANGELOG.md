@@ -1,7 +1,13 @@
 # Change Log - @uifabric/migration
 
-This log was last generated on Fri, 23 Aug 2019 12:35:28 GMT and should not be manually modified.
+This log was last generated on Thu, 16 Jan 2020 12:28:58 GMT and should not be manually modified.
 
+## 7.0.6
+Thu, 16 Jan 2020 12:28:58 GMT
+
+### Patches
+
+- Upgrade repo to TS3.7. (jagore@microsoft.com)
 ## 7.0.5
 Fri, 23 Aug 2019 12:35:28 GMT
 

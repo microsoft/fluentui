@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Basepicker/Suggestions: Fix an issue where hasSuggestedAction would return true incorrectly",
+  "packageName": "office-ui-fabric-react",
+  "email": "joschect@microsoft.com",
+  "commit": "e4793ce1f7232d25f6f3bdd8dd94890d3aa2f0d9",
+  "date": "2020-01-16T21:21:02.724Z"
+}

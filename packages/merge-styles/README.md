@@ -478,14 +478,21 @@ let { html, css } = renderStatic(() => {
 });
 ```
 
-Caveats for server-side rendering (TODOs):
+Caveats for server-side rendering:
 
-- Currently font face definitions and keyframes won't be included in the result.
+- Rules registered in the file scope of code won't be re-evaluated and therefore won't be included in the result. Try to avoid using classes which are not evaluated at runtime.
 
-- Using the `memoizeFunction` utility may short circuit calling merge-styles APIs to register styles, which may cause the helper here to skip returning css. This can be fixed, but it is currently a known limitation.
+For example:
 
-- Until all Fabric components use the merge-styles library, this will only return a subset of the styling. Also a known limitation and work in progress.
+```tsx
+const rootClass = mergeStyles({ background: 'red' });
+const App = () => <div className={rootClass} />;
 
-- The rehydration logic has not yet been implemented, so we may run into issues when you rehydrate.
+// App will render, but "rootClass" is a string which won't get re-evaluated in this call.
+renderStatic(() => ReactDOM.renderToString(<App/>);
+```
 
-- Only components which USE mergeStyles will have their css included. In Fabric, not all components have been converted from using SASS yet.
+- Using `memoizeFunction` around rule calculation can help with excessive rule recalc performance overhead.
+
+- Rehydration on the client may result in mismatched rules. You can apply a namespace on the server side to ensure there aren't name collisions.
+

@@ -4,6 +4,7 @@ import { Icon } from '../../../Icon';
 import { IChoiceGroupOptionProps, IChoiceGroupOptionStyleProps, IChoiceGroupOptionStyles } from './ChoiceGroupOption.types';
 import { classNamesFunction, getNativeProps, inputProperties, css, initializeComponentRef } from '../../../Utilities';
 import { IProcessedStyleSet } from '../../../Styling';
+import { composeRenderFunction } from '@uifabric/utilities';
 
 const getClassNames = classNamesFunction<IChoiceGroupOptionStyleProps, IChoiceGroupOptionStyles>();
 
@@ -94,10 +95,13 @@ export class ChoiceGroupOptionBase extends React.Component<IChoiceGroupOptionPro
   };
 
   private _onRenderField = (props: IChoiceGroupOptionProps): JSX.Element => {
-    const { onRenderLabel = this._onRenderLabel, id, imageSrc, imageAlt = '', selectedImageSrc, iconProps } = props;
+    const { id, imageSrc, imageAlt = '', selectedImageSrc, iconProps } = props;
 
     const imageSize = props.imageSize ? props.imageSize : { width: 32, height: 32 };
-    const label = onRenderLabel!(props, this._onRenderLabel);
+
+    const onRenderLabel = props.onRenderLabel ? composeRenderFunction(props.onRenderLabel, this._onRenderLabel) : this._onRenderLabel;
+
+    const label = onRenderLabel(props);
 
     return (
       <label htmlFor={id} className={this._classNames.field}>

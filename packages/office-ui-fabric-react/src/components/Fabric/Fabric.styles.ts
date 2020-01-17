@@ -24,7 +24,6 @@ export const getStyles = (props: IFabricStyleProps): IFabricStyles => {
       `is-focus${focusVisibility} ms-Fabric--isFocus${focusVisibility}`,
       theme.fonts.medium,
       {
-        direction: theme.rtl ? 'rtl' : undefined,
         color: theme.palette.neutralPrimary,
         selectors: {
           '& button': inheritFont,

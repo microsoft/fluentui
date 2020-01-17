@@ -23,6 +23,7 @@ export * from './array';
 export * from './asAsync';
 export * from './assertNever';
 export * from './classNamesFunction';
+export * from './componentAs/composeComponentAs';
 export * from './controlled';
 export * from './createRef';
 export * from './css';
@@ -52,6 +53,7 @@ export { assign, filteredAssign, mapEnumByName, shallowCompare, values } from '.
 export * from './osDetector';
 export * from './overflow';
 export * from './properties';
+export * from './renderFunction/composeRenderFunction';
 export * from './resources';
 export * from './rtl';
 export * from './safeRequestAnimationFrame';

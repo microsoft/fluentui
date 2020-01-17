@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fix UHF \"skip to main content\" link, and update focus properly when scrolling to anchors",
-  "packageName": "@uifabric/fabric-website",
-  "email": "elcraig@microsoft.com",
-  "commit": "8b8801ab977cc1e8e1e64474ab5f99aefa7d6d47",
-  "date": "2020-01-08T02:52:45.597Z"
-}
