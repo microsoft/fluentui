@@ -1,7 +1,13 @@
 # Change Log - @uifabric/mdl2-theme
 
-This log was last generated on Wed, 04 Sep 2019 04:09:58 GMT and should not be manually modified.
+This log was last generated on Fri, 17 Jan 2020 02:32:17 GMT and should not be manually modified.
 
+## 0.1.6
+Fri, 17 Jan 2020 02:32:17 GMT
+
+### Patches
+
+- Update tslib minver to first version containing __spreadArrays helper due to changes in how TS emits spreads. (jagore@microsoft.com)
 ## 0.1.5
 Wed, 04 Sep 2019 04:09:58 GMT
 

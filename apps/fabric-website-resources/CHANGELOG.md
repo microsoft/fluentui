@@ -1,7 +1,13 @@
 # Change Log - @uifabric/fabric-website-resources
 
-This log was last generated on Thu, 09 Jan 2020 12:34:52 GMT and should not be manually modified.
+This log was last generated on Fri, 17 Jan 2020 02:32:17 GMT and should not be manually modified.
 
+## 7.4.6
+Fri, 17 Jan 2020 02:32:17 GMT
+
+### Patches
+
+- Update tslib minver to first version containing __spreadArrays helper due to changes in how TS emits spreads. (jagore@microsoft.com)
 ## 7.4.5
 Thu, 09 Jan 2020 12:34:52 GMT
 

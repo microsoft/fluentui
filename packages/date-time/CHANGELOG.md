@@ -1,7 +1,19 @@
 # Change Log - @uifabric/date-time
 
-This log was last generated on Wed, 08 Jan 2020 17:02:57 GMT and should not be manually modified.
+This log was last generated on Fri, 17 Jan 2020 02:32:17 GMT and should not be manually modified.
 
+## 7.8.5
+Fri, 17 Jan 2020 02:32:17 GMT
+
+### Patches
+
+- Update tslib minver to first version containing __spreadArrays helper due to changes in how TS emits spreads. (jagore@microsoft.com)
+## 7.8.4
+Fri, 17 Jan 2020 01:24:12 GMT
+
+### Patches
+
+- DatePicker: error message for required field is not cleared when date is selected from calendar (xgao@microsoft.com)
 ## 7.8.3
 Wed, 08 Jan 2020 17:02:57 GMT
 

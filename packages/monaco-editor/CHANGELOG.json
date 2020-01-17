@@ -2,6 +2,20 @@
   "name": "@uifabric/monaco-editor",
   "entries": [
     {
+      "date": "Fri, 17 Jan 2020 02:32:17 GMT",
+      "tag": "@uifabric/monaco-editor_v0.5.2",
+      "version": "0.5.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update tslib minver to first version containing __spreadArrays helper due to changes in how TS emits spreads.",
+            "author": "jagore@microsoft.com",
+            "commit": "52dc239bf89dbe76daa5f4776ee4368957938a1a"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 16 Jan 2020 12:28:58 GMT",
       "tag": "@uifabric/monaco-editor_v0.5.1",
       "version": "0.5.1",
