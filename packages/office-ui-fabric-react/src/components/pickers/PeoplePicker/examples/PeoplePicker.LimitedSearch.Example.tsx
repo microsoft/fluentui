@@ -44,7 +44,7 @@ export const PeoplePickerLimitedSearchExample: React.FunctionComponent = () => {
       let filteredPersonas: IPersonaProps[] = filterPersonasByText(filterText);
 
       filteredPersonas = removeDuplicates(filteredPersonas, currentPersonas);
-      filteredPersonas = limitResults ? filteredPersonas.splice(0, limitResults) : filteredPersonas;
+      filteredPersonas = limitResults ? filteredPersonas.slice(0, limitResults) : filteredPersonas;
       return filterPromise(filteredPersonas);
     } else {
       return [];
@@ -65,7 +65,7 @@ export const PeoplePickerLimitedSearchExample: React.FunctionComponent = () => {
 
   const returnMostRecentlyUsedWithLimit = (currentPersonas: IPersonaProps[]): IPersonaProps[] | Promise<IPersonaProps[]> => {
     setMostRecentlyUsed(removeDuplicates(mostRecentlyUsed, currentPersonas));
-    setMostRecentlyUsed(mostRecentlyUsed.splice(0, 3));
+    setMostRecentlyUsed(mostRecentlyUsed.slice(0, 3));
     return filterPromise(mostRecentlyUsed);
   };
 

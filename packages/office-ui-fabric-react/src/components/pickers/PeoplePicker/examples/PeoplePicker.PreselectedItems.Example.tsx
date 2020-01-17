@@ -31,7 +31,7 @@ export const PeoplePickerPreselectedItemsExample: React.FunctionComponent = () =
       let filteredPersonas: IPersonaProps[] = filterPersonasByText(filterText);
 
       filteredPersonas = removeDuplicates(filteredPersonas, currentPersonas);
-      filteredPersonas = limitResults ? filteredPersonas.splice(0, limitResults) : filteredPersonas;
+      filteredPersonas = limitResults ? filteredPersonas.slice(0, limitResults) : filteredPersonas;
       return filterPromise(filteredPersonas);
     } else {
       return [];
@@ -84,7 +84,7 @@ export const PeoplePickerPreselectedItemsExample: React.FunctionComponent = () =
         onEmptyInputFocus={returnMostRecentlyUsed}
         getTextFromItem={getTextFromItem}
         className={'ms-PeoplePicker'}
-        defaultSelectedItems={people.splice(0, 3)}
+        defaultSelectedItems={peopleList.slice(0, 3)}
         key={'list'}
         pickerSuggestionsProps={suggestionProps}
         onRemoveSuggestion={onRemoveSuggestion}

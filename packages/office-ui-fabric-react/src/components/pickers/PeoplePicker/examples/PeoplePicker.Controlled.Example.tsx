@@ -32,7 +32,7 @@ export const PeoplePickerControlledExample: React.FunctionComponent = () => {
       let filteredPersonas: IPersonaProps[] = filterPersonasByText(filterText);
 
       filteredPersonas = removeDuplicates(filteredPersonas, currentPersonas);
-      filteredPersonas = limitResults ? filteredPersonas.splice(0, limitResults) : filteredPersonas;
+      filteredPersonas = limitResults ? filteredPersonas.slice(0, limitResults) : filteredPersonas;
       return filterPromise(filteredPersonas);
     } else {
       return [];
