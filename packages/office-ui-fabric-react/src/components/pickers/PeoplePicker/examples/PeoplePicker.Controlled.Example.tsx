@@ -1,9 +1,8 @@
 import * as React from 'react';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { IPersonaProps, Persona } from 'office-ui-fabric-react/lib/Persona';
-import { IBasePickerSuggestionsProps, NormalPeoplePicker } from 'office-ui-fabric-react/lib/Pickers';
+import { IBasePickerSuggestionsProps, NormalPeoplePicker, PeoplePickerExampleConfiguration } from 'office-ui-fabric-react/lib/Pickers';
 import { people } from '@uifabric/example-data';
-import { PeoplePickerExampleConfiguration } from './PeoplePickerExampleConfiguration';
 
 const suggestionProps: IBasePickerSuggestionsProps = {
   suggestionsHeaderText: 'Suggested People',

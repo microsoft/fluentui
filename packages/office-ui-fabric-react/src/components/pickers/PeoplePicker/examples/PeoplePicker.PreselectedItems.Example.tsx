@@ -1,8 +1,12 @@
 import * as React from 'react';
 import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
-import { CompactPeoplePicker, IBasePickerSuggestionsProps, ValidationState } from 'office-ui-fabric-react/lib/Pickers';
+import {
+  CompactPeoplePicker,
+  IBasePickerSuggestionsProps,
+  PeoplePickerExampleConfiguration,
+  ValidationState
+} from 'office-ui-fabric-react/lib/Pickers';
 import { people, mru } from '@uifabric/example-data';
-import { PeoplePickerExampleConfiguration } from './PeoplePickerExampleConfiguration';
 
 const suggestionProps: IBasePickerSuggestionsProps = {
   suggestionsHeaderText: 'Suggested People',
