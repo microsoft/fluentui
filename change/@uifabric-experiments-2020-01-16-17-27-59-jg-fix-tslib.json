@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Update tslib minver to first version containing __spreadArrays helper due to changes in how TS emits spreads.",
-  "packageName": "@uifabric/experiments",
-  "email": "jagore@microsoft.com",
-  "commit": "52dc239bf89dbe76daa5f4776ee4368957938a1a",
-  "date": "2020-01-17T01:27:52.591Z"
-}

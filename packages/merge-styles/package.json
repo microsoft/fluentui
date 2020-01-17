@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/merge-styles",
-  "version": "7.8.1",
+  "version": "7.8.2",
   "description": "Style loading utilities.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -31,7 +31,7 @@
     "@uifabric/build": "^7.0.0"
   },
   "dependencies": {
-    "@uifabric/set-version": "^7.0.2",
+    "@uifabric/set-version": "^7.0.3",
     "tslib": "^1.10.0"
   }
 }

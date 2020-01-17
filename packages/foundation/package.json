@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/foundation",
-  "version": "7.5.1",
+  "version": "7.5.2",
   "description": "Foundation library for building Fabric components.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -48,10 +48,10 @@
     "@uifabric/build": "^7.0.0"
   },
   "dependencies": {
-    "@uifabric/merge-styles": "^7.8.1",
-    "@uifabric/set-version": "^7.0.2",
-    "@uifabric/styling": "^7.10.0",
-    "@uifabric/utilities": "^7.11.1",
+    "@uifabric/merge-styles": "^7.8.2",
+    "@uifabric/set-version": "^7.0.3",
+    "@uifabric/styling": "^7.10.1",
+    "@uifabric/utilities": "^7.11.2",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {

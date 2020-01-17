@@ -1,7 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 17 Jan 2020 01:24:12 GMT and should not be manually modified.
+This log was last generated on Fri, 17 Jan 2020 02:32:17 GMT and should not be manually modified.
 
+## 7.83.1
+Fri, 17 Jan 2020 02:32:17 GMT
+
+### Patches
+
+- Update tslib minver to first version containing __spreadArrays helper due to changes in how TS emits spreads. (jagore@microsoft.com)
 ## 7.83.0
 Fri, 17 Jan 2020 01:24:12 GMT
 

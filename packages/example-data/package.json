@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/example-data",
-  "version": "7.0.2",
+  "version": "7.0.3",
   "description": "Data generators for Office UI Fabric React examples.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
