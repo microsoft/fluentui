@@ -2,6 +2,50 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Thu, 16 Jan 2020 12:28:58 GMT",
+      "tag": "office-ui-fabric-react_v7.82.2",
+      "version": "7.82.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Upgrade repo to TS3.7.",
+            "author": "jagore@microsoft.com",
+            "commit": "e04fd44af0b978bc0c8c55658bf6b9d0ff3eac49"
+          },
+          {
+            "comment": "Add aria role to multi-select dropdown ",
+            "author": "xgao@microsoft.com",
+            "commit": "a015ed681c996bfac40b60665abd2191f4d241ed"
+          },
+          {
+            "comment": "CommandBar: Do not render empty div if farItems prop is empty array",
+            "author": "xgao@microsoft.com",
+            "commit": "2dd52014bf8fc9fc2a1ffabef881ac942f172180"
+          },
+          {
+            "comment": "ContextualMenu: Fix disabled item being focusable",
+            "author": "xgao@microsoft.com",
+            "commit": "e07cba4de908eb62656cd8263f2a68782e73f59e"
+          },
+          {
+            "comment": "Dropdown: fix exception when options change due to DropdownSizePosCache",
+            "author": "xgao@microsoft.com",
+            "commit": "6b16c8d6b2858b5b085a1a807ea74c21785f138a"
+          },
+          {
+            "comment": "Fixing click handling for colorrectangle for bug #11680",
+            "author": "anuku@microsoft.com",
+            "commit": "3594dd074bebb4aacda53676f628986a887dd32c"
+          },
+          {
+            "comment": "Revert \"ContextualMenu: Fix disabled item being focusable (#11693)\"",
+            "author": "xgao@microsoft.com",
+            "commit": "ea6136f7d45b6abe94cb972d304909e6010465ce"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 15 Jan 2020 00:21:25 GMT",
       "tag": "office-ui-fabric-react_v7.82.1",
       "version": "7.82.1",

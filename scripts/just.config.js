@@ -46,7 +46,7 @@ module.exports = function preset() {
   task('jest', jest);
   task('jest-watch', jestWatch);
   task('sass', sass);
-  task('ts:postprocess', postprocessTask);
+  task('ts:postprocess', postprocessTask());
   task('postprocess:amd', postprocessAmdTask);
   task('postprocess:commonjs', postprocessCommonjsTask);
   task('ts:commonjs', ts.commonjs);

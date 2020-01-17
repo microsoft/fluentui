@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Theme Designer: adding secondary text to a11y panel, adding neutralSecondaryAlt to Fabric Palette slots table, fixing ThemeRulesStandards & ThemeGenerator producing color inaccuracies",
+  "packageName": "office-ui-fabric-react",
+  "email": "aneeshak@microsoft.com",
+  "commit": "e6e91cc6167f03475d01d5d2a8388a50e14a95ea",
+  "date": "2020-01-10T01:10:52.068Z"
+}

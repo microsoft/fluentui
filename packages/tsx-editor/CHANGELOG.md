@@ -1,7 +1,13 @@
 # Change Log - @uifabric/tsx-editor
 
-This log was last generated on Thu, 09 Jan 2020 12:34:52 GMT and should not be manually modified.
+This log was last generated on Thu, 16 Jan 2020 12:28:58 GMT and should not be manually modified.
 
+## 0.11.1
+Thu, 16 Jan 2020 12:28:58 GMT
+
+### Patches
+
+- Upgrade repo to TS3.7. (jagore@microsoft.com)
 ## 0.11.0
 Thu, 09 Jan 2020 12:34:52 GMT
 

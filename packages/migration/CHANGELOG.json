@@ -2,6 +2,20 @@
   "name": "@uifabric/migration",
   "entries": [
     {
+      "date": "Thu, 16 Jan 2020 12:28:58 GMT",
+      "tag": "@uifabric/migration_v7.0.6",
+      "version": "7.0.6",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Upgrade repo to TS3.7.",
+            "author": "jagore@microsoft.com",
+            "commit": "e04fd44af0b978bc0c8c55658bf6b9d0ff3eac49"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 13 Jan 2020 12:28:56 GMT",
       "tag": "@uifabric/migration_v7.0.5",
       "version": "7.0.5",

@@ -1,7 +1,13 @@
 # Change Log - @uifabric/api-docs
 
-This log was last generated on Wed, 08 Jan 2020 17:02:57 GMT and should not be manually modified.
+This log was last generated on Thu, 16 Jan 2020 12:28:58 GMT and should not be manually modified.
 
+## 7.2.0
+Thu, 16 Jan 2020 12:28:58 GMT
+
+### Minor changes
+
+- Upgrade repo to TS3.7. (jagore@microsoft.com)
 ## 7.1.2
 Wed, 08 Jan 2020 17:02:57 GMT
 

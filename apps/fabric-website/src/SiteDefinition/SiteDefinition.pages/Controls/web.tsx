@@ -207,6 +207,7 @@ function generateCategories() {
     // First page in the category is a non-category version of the parent page
     parentPage.pages = [{ ...parentPage }];
     parentPage.isCategory = true;
+    delete parentPage.url;
 
     for (const pagePath of childPagePaths) {
       // pagePath will be like ./DetailsList/DetailsListBasicPage
@@ -235,15 +236,11 @@ function generateCategories() {
   // Convert the categories to an array (filter out empty categories)
   return categoryNames
     .filter(category => !!pagesByCategory[category].length)
-    .map(category => {
-      const pages = pagesByCategory[category];
-      return {
-        title: category,
-        url: pages[0].url,
-        isCategory: true,
-        pages
-      };
-    });
+    .map(category => ({
+      title: category,
+      isCategory: true,
+      pages: pagesByCategory[category]
+    }));
 }
 
 function _generatePage(

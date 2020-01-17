@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "ContextualMenu: Fix disabled item being focusable",
-  "packageName": "office-ui-fabric-react",
-  "email": "xgao@microsoft.com",
-  "commit": "e07cba4de908eb62656cd8263f2a68782e73f59e",
-  "date": "2020-01-13T23:11:26.708Z"
-}

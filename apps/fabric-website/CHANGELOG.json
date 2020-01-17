@@ -2,6 +2,20 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "date": "Thu, 16 Jan 2020 12:28:58 GMT",
+      "tag": "@uifabric/fabric-website_v7.7.7",
+      "version": "7.7.7",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Don't make routes for page categories",
+            "author": "elcraig@microsoft.com",
+            "commit": "295eeb2ce32d167e5ebac6c0a6eea6053ccfa776"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 13 Jan 2020 12:28:56 GMT",
       "tag": "@uifabric/fabric-website_v7.7.6",
       "version": "7.7.6",

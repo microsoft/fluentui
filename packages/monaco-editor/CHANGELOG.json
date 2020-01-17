@@ -2,6 +2,20 @@
   "name": "@uifabric/monaco-editor",
   "entries": [
     {
+      "date": "Thu, 16 Jan 2020 12:28:58 GMT",
+      "tag": "@uifabric/monaco-editor_v0.5.1",
+      "version": "0.5.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Use standard postprocess task for get/set transforms, and remove readonly parameters",
+            "author": "elcraig@microsoft.com",
+            "commit": "8c1cc1f80cc5797db9f652aca313d8a51b8f108b"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 09 Jan 2020 12:34:52 GMT",
       "tag": "@uifabric/monaco-editor_v0.5.0",
       "version": "0.5.0",
