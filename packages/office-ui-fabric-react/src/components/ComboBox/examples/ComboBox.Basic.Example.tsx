@@ -78,6 +78,7 @@ export class ComboBoxBasicExample extends React.Component<{}, IComboBoxBasicExam
             }}
           />
         </div>
+
         <ComboBox
           multiSelect
           defaultSelectedKey={['C', 'E']}
@@ -86,6 +87,7 @@ export class ComboBoxBasicExample extends React.Component<{}, IComboBoxBasicExam
           autoComplete="on"
           options={INITIAL_OPTIONS}
         />
+
         <ComboBox
           label="ComboBox with placeholder text"
           placeholder="Select or type an option"
@@ -93,6 +95,7 @@ export class ComboBoxBasicExample extends React.Component<{}, IComboBoxBasicExam
           autoComplete="on"
           options={INITIAL_OPTIONS}
         />
+
         <ComboBox
           label="ComboBox with persisted menu"
           defaultSelectedKey="B"
@@ -101,12 +104,14 @@ export class ComboBoxBasicExample extends React.Component<{}, IComboBoxBasicExam
           persistMenu={true}
           options={INITIAL_OPTIONS}
         />
+
         <ComboBox
           label="ComboBox with static error message"
           defaultSelectedKey="B"
           errorMessage="Oh no! This ComboBox has an error!"
           options={INITIAL_OPTIONS}
         />
+
         <ComboBox
           label="ComboBox with dynamic error message"
           onChange={this._onChange}
@@ -114,6 +119,7 @@ export class ComboBoxBasicExample extends React.Component<{}, IComboBoxBasicExam
           errorMessage={this._getErrorMessage(this.state.dynamicErrorValue)}
           options={INITIAL_OPTIONS}
         />
+
         <ComboBox disabled label="Disabled ComboBox" defaultSelectedKey="D" options={INITIAL_OPTIONS} />
       </Fabric>
     );
