@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
+import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import { IPersonaProps, Persona } from 'office-ui-fabric-react/lib/Persona';
-import { IBasePickerSuggestionsProps, NormalPeoplePicker, PeoplePickerExampleConfiguration } from 'office-ui-fabric-react/lib/Pickers';
+import { IBasePickerSuggestionsProps, NormalPeoplePicker } from 'office-ui-fabric-react/lib/Pickers';
 import { people } from '@uifabric/example-data';
 
 const suggestionProps: IBasePickerSuggestionsProps = {
@@ -12,6 +13,12 @@ const suggestionProps: IBasePickerSuggestionsProps = {
   showRemoveButtons: true,
   suggestionsAvailableAlertText: 'People Picker Suggestions available',
   suggestionsContainerAriaLabel: 'Suggested contacts'
+};
+
+const checkboxStyles = {
+  root: {
+    marginTop: 10
+  }
 };
 
 export const PeoplePickerControlledExample: React.FunctionComponent = () => {
@@ -62,13 +69,16 @@ export const PeoplePickerControlledExample: React.FunctionComponent = () => {
     }
   }
 
+  const onDisabledButtonClick = (): void => {
+    setIsPickerDisabled(!isPickerDisabled);
+  };
+
+  const onToggleDelayResultsChange = (): void => {
+    setDelayResults(!delayResults);
+  };
+
   return (
-    <PeoplePickerExampleConfiguration
-      delayResults={delayResults}
-      setDelayResults={setDelayResults}
-      isPickerDisabled={isPickerDisabled}
-      setIsPickerDisabled={setIsPickerDisabled}
-    >
+    <div>
       <div>
         <NormalPeoplePicker
           onResolveSuggestions={onFilterChanged}
@@ -99,7 +109,14 @@ export const PeoplePickerControlledExample: React.FunctionComponent = () => {
           </div>
         ))}
       </div>
-    </PeoplePickerExampleConfiguration>
+      <Checkbox label="Disable People Picker" checked={isPickerDisabled} onChange={onDisabledButtonClick} styles={checkboxStyles} />
+      <Checkbox
+        label="Delay Suggestion Results"
+        defaultChecked={delayResults}
+        onChange={onToggleDelayResultsChange}
+        styles={checkboxStyles}
+      />
+    </div>
   );
 };
 
