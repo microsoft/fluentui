@@ -47,7 +47,6 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
         role="menubar"
       >
         <div
-          aria-orientation="horizontal"
           className=
               ms-OverflowSet
               ms-CommandBar-primaryCommand
@@ -58,7 +57,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                 flex-wrap: nowrap;
                 position: relative;
               }
-          role="menubar"
+          role="group"
         >
           <div
             className=
