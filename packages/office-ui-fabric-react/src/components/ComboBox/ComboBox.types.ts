@@ -250,11 +250,22 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox,
   /**
    * Custom render function for the label text.
    */
-  onRenderLabel?: (
-    props?: IComboBoxProps,
-    multiselectAccessibleText?: string,
-    defaultRender?: (props?: IComboBoxProps) => JSX.Element | null
-  ) => JSX.Element | null;
+  onRenderLabel?: IRenderFunction<IOnRenderComboBoxLabelProps>;
+}
+
+/**
+ * {@docCategory ComboBox}
+ */
+export interface IOnRenderComboBoxLabelProps {
+  /**
+   * Props to render the combobox.
+   */
+  props: IComboBoxProps;
+
+  /**
+   * Accessible text for label when combobox is multiselected.
+   */
+  multiselectAccessibleText?: string;
 }
 
 /**
