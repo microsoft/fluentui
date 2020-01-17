@@ -32,6 +32,6 @@
     "react-app-polyfill": "~1.0.1",
     "react-dom": "16.8.6",
     "typescript": "3.7.4",
-    "tslib": "^1.7.1"
+    "tslib": "^1.10.0"
   }
 }

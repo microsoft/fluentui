@@ -28,7 +28,7 @@
   },
   "dependencies": {
     "loader-utils": "^1.1.0",
-    "tslib": "^1.7.1"
+    "tslib": "^1.10.0"
   },
   "peerDependencies": {
     "webpack": ">=4.0.0",

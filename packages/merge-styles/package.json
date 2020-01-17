@@ -32,6 +32,6 @@
   },
   "dependencies": {
     "@uifabric/set-version": "^7.0.2",
-    "tslib": "^1.7.1"
+    "tslib": "^1.10.0"
   }
 }
