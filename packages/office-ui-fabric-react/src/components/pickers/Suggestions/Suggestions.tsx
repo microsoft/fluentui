@@ -251,7 +251,7 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
   };
 
   public hasSuggestedAction(): boolean {
-    return this._searchForMoreButton.current !== undefined || this._forceResolveButton.current !== undefined;
+    return !!this._searchForMoreButton.current || !!this._forceResolveButton.current;
   }
 
   public hasSuggestedActionSelected(): boolean {

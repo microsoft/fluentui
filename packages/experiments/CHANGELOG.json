@@ -2,6 +2,48 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "date": "Fri, 17 Jan 2020 02:32:17 GMT",
+      "tag": "@uifabric/experiments_v7.18.15",
+      "version": "7.18.15",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update tslib minver to first version containing __spreadArrays helper due to changes in how TS emits spreads.",
+            "author": "jagore@microsoft.com",
+            "commit": "52dc239bf89dbe76daa5f4776ee4368957938a1a"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 17 Jan 2020 01:24:12 GMT",
+      "tag": "@uifabric/experiments_v7.18.14",
+      "version": "7.18.14",
+      "comments": {
+        "none": [
+          {
+            "comment": "Update Snapshots",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "aff25f4bb13c197595a734b500cf9ecdea3e8348"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 16 Jan 2020 12:28:58 GMT",
+      "tag": "@uifabric/experiments_v7.18.14",
+      "version": "7.18.14",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Upgrade repo to TS3.7.",
+            "author": "jagore@microsoft.com",
+            "commit": "e04fd44af0b978bc0c8c55658bf6b9d0ff3eac49"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 13 Jan 2020 12:28:56 GMT",
       "tag": "@uifabric/experiments_v7.18.13",
       "version": "7.18.13",

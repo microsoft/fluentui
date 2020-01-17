@@ -96,28 +96,8 @@ export function themeRulesStandardCreator(): IThemeRules {
 
   // set default colors for the base colors
   slotRules[BaseSlots[BaseSlots.primaryColor]].color = getColorFromString('#0078d4');
-  slotRules[BaseSlots[BaseSlots.backgroundColor]].color = getColorFromString('#fff');
+  slotRules[BaseSlots[BaseSlots.backgroundColor]].color = getColorFromString('#ffffff');
   slotRules[BaseSlots[BaseSlots.foregroundColor]].color = getColorFromString('#323130');
-
-  // set default colors for shades (the slot rules were already created above and will be used if the base colors ever change)
-  slotRules[BaseSlots[BaseSlots.primaryColor] + Shade[Shade.Shade1]].color = getColorFromString('#eff6fc');
-  slotRules[BaseSlots[BaseSlots.primaryColor] + Shade[Shade.Shade2]].color = getColorFromString('#deecf9');
-  slotRules[BaseSlots[BaseSlots.primaryColor] + Shade[Shade.Shade3]].color = getColorFromString('#c7e0f4');
-  slotRules[BaseSlots[BaseSlots.primaryColor] + Shade[Shade.Shade4]].color = getColorFromString('#71afe5');
-  slotRules[BaseSlots[BaseSlots.primaryColor] + Shade[Shade.Shade5]].color = getColorFromString('#2b88d8');
-  slotRules[BaseSlots[BaseSlots.primaryColor] + Shade[Shade.Shade6]].color = getColorFromString('#106ebe');
-  slotRules[BaseSlots[BaseSlots.primaryColor] + Shade[Shade.Shade7]].color = getColorFromString('#005a9e');
-  slotRules[BaseSlots[BaseSlots.primaryColor] + Shade[Shade.Shade8]].color = getColorFromString('#004578');
-
-  // set default colors for shades (the slot rules were already created above and will be used if the base colors ever change)
-  slotRules[BaseSlots[BaseSlots.foregroundColor] + Shade[Shade.Shade1]].color = getColorFromString('#edebe9');
-  slotRules[BaseSlots[BaseSlots.foregroundColor] + Shade[Shade.Shade2]].color = getColorFromString('#c8c6c4');
-  slotRules[BaseSlots[BaseSlots.foregroundColor] + Shade[Shade.Shade3]].color = getColorFromString('#a19f9d');
-  slotRules[BaseSlots[BaseSlots.foregroundColor] + Shade[Shade.Shade4]].color = getColorFromString('#8a8886');
-  slotRules[BaseSlots[BaseSlots.foregroundColor] + Shade[Shade.Shade5]].color = getColorFromString('#605e5c');
-  slotRules[BaseSlots[BaseSlots.foregroundColor] + Shade[Shade.Shade6]].color = getColorFromString('#3b3a39');
-  slotRules[BaseSlots[BaseSlots.foregroundColor] + Shade[Shade.Shade7]].color = getColorFromString('#201f1e');
-  slotRules[BaseSlots[BaseSlots.foregroundColor] + Shade[Shade.Shade8]].color = getColorFromString('#000000');
 
   function _makeFabricSlotRule(slotName: string, inheritedBase: BaseSlots, inheritedShade: Shade, isBackgroundShade = false): void {
     const inherits = slotRules[BaseSlots[inheritedBase]];
@@ -157,42 +137,52 @@ export function themeRulesStandardCreator(): IThemeRules {
   _makeFabricSlotRule(FabricSlots[FabricSlots.black], BaseSlots.foregroundColor, Shade.Shade8);
   _makeFabricSlotRule(FabricSlots[FabricSlots.white], BaseSlots.backgroundColor, Shade.Unshaded, true);
 
-  // manually set initial colors for the primary-based Fabric slots to match the default theme
-  slotRules[FabricSlots[FabricSlots.themeLighterAlt]].color = getColorFromString('#eff6fc');
-  slotRules[FabricSlots[FabricSlots.themeLighter]].color = getColorFromString('#deecf9');
-  slotRules[FabricSlots[FabricSlots.themeLight]].color = getColorFromString('#c7e0f4');
-  slotRules[FabricSlots[FabricSlots.themeTertiary]].color = getColorFromString('#71afe5');
-  slotRules[FabricSlots[FabricSlots.themeSecondary]].color = getColorFromString('#2b88d8');
-  slotRules[FabricSlots[FabricSlots.themeDarkAlt]].color = getColorFromString('#106ebe');
-  slotRules[FabricSlots[FabricSlots.themeDark]].color = getColorFromString('#005a9e');
+  slotRules[FabricSlots[FabricSlots.neutralLighterAlt]].color = getColorFromString('#faf9f8');
+  slotRules[FabricSlots[FabricSlots.neutralLighter]].color = getColorFromString('#f3f2f1');
+  slotRules[FabricSlots[FabricSlots.neutralLight]].color = getColorFromString('#edebe9');
+  slotRules[FabricSlots[FabricSlots.neutralQuaternaryAlt]].color = getColorFromString('#e1dfdd');
+  slotRules[FabricSlots[FabricSlots.neutralDark]].color = getColorFromString('#201f1e');
+  slotRules[FabricSlots[FabricSlots.neutralTertiaryAlt]].color = getColorFromString('#c8c6c4');
+
+  slotRules[FabricSlots[FabricSlots.black]].color = getColorFromString('#000000');
+  slotRules[FabricSlots[FabricSlots.neutralDark]].color = getColorFromString('#201f1e');
+  slotRules[FabricSlots[FabricSlots.neutralPrimaryAlt]].color = getColorFromString('#3b3a39');
+  slotRules[FabricSlots[FabricSlots.neutralSecondary]].color = getColorFromString('#605e5c');
+  slotRules[FabricSlots[FabricSlots.neutralTertiary]].color = getColorFromString('#a19f9d');
+  slotRules[FabricSlots[FabricSlots.white]].color = getColorFromString('#ffffff');
+
   slotRules[FabricSlots[FabricSlots.themeDarker]].color = getColorFromString('#004578');
-  slotRules[FabricSlots[FabricSlots.themeLighterAlt]].isCustomized = true;
-  slotRules[FabricSlots[FabricSlots.themeLighter]].isCustomized = true;
-  slotRules[FabricSlots[FabricSlots.themeLight]].isCustomized = true;
-  slotRules[FabricSlots[FabricSlots.themeTertiary]].isCustomized = true;
-  slotRules[FabricSlots[FabricSlots.themeSecondary]].isCustomized = true;
-  slotRules[FabricSlots[FabricSlots.themeDarkAlt]].isCustomized = true;
-  slotRules[FabricSlots[FabricSlots.themeDark]].isCustomized = true;
+  slotRules[FabricSlots[FabricSlots.themeDark]].color = getColorFromString('#005a9e');
+  slotRules[FabricSlots[FabricSlots.themeDarkAlt]].color = getColorFromString('#106ebe');
+  slotRules[FabricSlots[FabricSlots.themeSecondary]].color = getColorFromString('#2b88d8');
+  slotRules[FabricSlots[FabricSlots.themeTertiary]].color = getColorFromString('#71afe5');
+  slotRules[FabricSlots[FabricSlots.themeLight]].color = getColorFromString('#c7e0f4');
+  slotRules[FabricSlots[FabricSlots.themeLighter]].color = getColorFromString('#deecf9');
+  slotRules[FabricSlots[FabricSlots.themeLighterAlt]].color = getColorFromString('#eff6fc');
+
+  slotRules[FabricSlots[FabricSlots.neutralLighterAlt]].isCustomized = true;
+  slotRules[FabricSlots[FabricSlots.neutralLighter]].isCustomized = true;
+  slotRules[FabricSlots[FabricSlots.neutralLight]].isCustomized = true;
+  slotRules[FabricSlots[FabricSlots.neutralQuaternaryAlt]].isCustomized = true;
+  slotRules[FabricSlots[FabricSlots.neutralDark]].isCustomized = true;
+  slotRules[FabricSlots[FabricSlots.neutralTertiaryAlt]].isCustomized = true;
+
+  slotRules[FabricSlots[FabricSlots.black]].isCustomized = true;
+  slotRules[FabricSlots[FabricSlots.neutralDark]].isCustomized = true;
+  slotRules[FabricSlots[FabricSlots.neutralPrimaryAlt]].isCustomized = true;
+  slotRules[FabricSlots[FabricSlots.neutralSecondary]].isCustomized = true;
+  slotRules[FabricSlots[FabricSlots.neutralTertiary]].isCustomized = true;
+  slotRules[FabricSlots[FabricSlots.white]].isCustomized = true;
+
   slotRules[FabricSlots[FabricSlots.themeDarker]].isCustomized = true;
-
-  /*** SEMANTIC SLOTS */
-  // This code is commented out for now but left for future semantic color customization.
-  // create the SlotRule for a semantic slot
-  // function _makeSemanticSlotRule(semanticSlot: SemanticColorSlots, inheritedFabricSlot: FabricSlots): void {
-  //   const inherits = slotRules[FabricSlots[inheritedFabricSlot]];
-  //   const thisSlotRule = {
-  //     name: SemanticColorSlots[semanticSlot],
-  //     inherits: slotRules[FabricSlots[inheritedFabricSlot]],
-  //     isCustomized: false,
-  //     dependentRules: []
-  //   };
-  //   slotRules[SemanticColorSlots[semanticSlot]] = thisSlotRule;
-  //   inherits.dependentRules.push(thisSlotRule);
-  // }
-
-  // Basic simple slots
-  // _makeSemanticSlotRule(SemanticColorSlots.bodyBackground, FabricSlots.white);
-  // _makeSemanticSlotRule(SemanticColorSlots.bodyText, FabricSlots.neutralPrimary);
+  slotRules[FabricSlots[FabricSlots.themeDark]].isCustomized = true;
+  slotRules[FabricSlots[FabricSlots.themeDarkAlt]].isCustomized = true;
+  slotRules[FabricSlots[FabricSlots.themePrimary]].isCustomized = true;
+  slotRules[FabricSlots[FabricSlots.themeSecondary]].isCustomized = true;
+  slotRules[FabricSlots[FabricSlots.themeTertiary]].isCustomized = true;
+  slotRules[FabricSlots[FabricSlots.themeLight]].isCustomized = true;
+  slotRules[FabricSlots[FabricSlots.themeLighter]].isCustomized = true;
+  slotRules[FabricSlots[FabricSlots.themeLighterAlt]].isCustomized = true;
 
   return slotRules;
 }

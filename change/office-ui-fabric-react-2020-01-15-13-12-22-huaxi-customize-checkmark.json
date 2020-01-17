@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "ContextualMenu: Hide checkmark in ContextualMenuItems if canCheck is false",
+  "packageName": "office-ui-fabric-react",
+  "email": "huaxi@microsoft.com",
+  "commit": "7a3f3bd39492f60ed9edfd9b8c8e51ad4ec891fa",
+  "date": "2020-01-15T21:12:22.849Z"
+}

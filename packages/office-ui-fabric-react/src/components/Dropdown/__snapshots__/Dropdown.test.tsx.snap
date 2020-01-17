@@ -108,6 +108,7 @@ exports[`Dropdown multi-select Renders multiselect Dropdown correctly 1`] = `
     onKeyDown={[Function]}
     onKeyUp={[Function]}
     onMouseDown={[Function]}
+    role="button"
     tabIndex={0}
   >
     <span
