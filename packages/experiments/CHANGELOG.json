@@ -2,6 +2,20 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "date": "Fri, 17 Jan 2020 01:24:12 GMT",
+      "tag": "@uifabric/experiments_v7.18.14",
+      "version": "7.18.14",
+      "comments": {
+        "none": [
+          {
+            "comment": "Update Snapshots",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "aff25f4bb13c197595a734b500cf9ecdea3e8348"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 16 Jan 2020 12:28:58 GMT",
       "tag": "@uifabric/experiments_v7.18.14",
       "version": "7.18.14",

@@ -1,7 +1,19 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 16 Jan 2020 12:28:58 GMT and should not be manually modified.
+This log was last generated on Fri, 17 Jan 2020 01:24:12 GMT and should not be manually modified.
 
+## 7.83.0
+Fri, 17 Jan 2020 01:24:12 GMT
+
+### Minor changes
+
+- OverflowSet: Don't assume role or orientation. Update CommandBar, examples and docs (mgodbolt@microsoft.com)
+### Patches
+
+- Theme Designer: adding secondary text to a11y panel, adding neutralSecondaryAlt to Fabric Palette slots table, fixing ThemeRulesStandards & ThemeGenerator producing color inaccuracies (aneeshak@microsoft.com)
+- DatePicker accessibility: day in calendar is announced with blank role (xgao@microsoft.com)
+- DatePicker: error message for required field is not cleared when date is selected from calendar (xgao@microsoft.com)
+- Basepicker/Suggestions: Fix an issue where hasSuggestedAction would return true incorrectly (joschect@microsoft.com)
 ## 7.82.2
 Thu, 16 Jan 2020 12:28:58 GMT
 

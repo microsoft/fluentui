@@ -2,6 +2,20 @@
   "name": "@uifabric/date-time",
   "entries": [
     {
+      "date": "Fri, 17 Jan 2020 01:24:12 GMT",
+      "tag": "@uifabric/date-time_v7.8.4",
+      "version": "7.8.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "DatePicker: error message for required field is not cleared when date is selected from calendar",
+            "author": "xgao@microsoft.com",
+            "commit": "ab9fe1c2d9033071770cba02c00728f120feac45"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 08 Jan 2020 17:02:57 GMT",
       "tag": "@uifabric/date-time_v7.8.3",
       "version": "7.8.3",
