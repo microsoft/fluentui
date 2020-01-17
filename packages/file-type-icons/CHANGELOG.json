@@ -2,6 +2,20 @@
   "name": "@uifabric/file-type-icons",
   "entries": [
     {
+      "date": "Fri, 17 Jan 2020 02:32:17 GMT",
+      "tag": "@uifabric/file-type-icons_v7.2.4",
+      "version": "7.2.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update tslib minver to first version containing __spreadArrays helper due to changes in how TS emits spreads.",
+            "author": "jagore@microsoft.com",
+            "commit": "52dc239bf89dbe76daa5f4776ee4368957938a1a"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 15 Jan 2020 00:21:25 GMT",
       "tag": "@uifabric/file-type-icons_v7.2.3",
       "version": "7.2.3",

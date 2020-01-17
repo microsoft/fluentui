@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "DatePicker accessibility: day in calendar is announced with blank role",
-  "packageName": "office-ui-fabric-react",
-  "email": "xgao@microsoft.com",
-  "commit": "beb2ad19fd8688e552d6162a1efca8b905f133a5",
-  "date": "2020-01-15T00:43:10.177Z"
-}

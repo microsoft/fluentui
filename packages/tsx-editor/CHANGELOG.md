@@ -1,7 +1,13 @@
 # Change Log - @uifabric/tsx-editor
 
-This log was last generated on Thu, 16 Jan 2020 12:28:58 GMT and should not be manually modified.
+This log was last generated on Fri, 17 Jan 2020 02:32:17 GMT and should not be manually modified.
 
+## 0.11.2
+Fri, 17 Jan 2020 02:32:17 GMT
+
+### Patches
+
+- Update tslib minver to first version containing __spreadArrays helper due to changes in how TS emits spreads. (jagore@microsoft.com)
 ## 0.11.1
 Thu, 16 Jan 2020 12:28:58 GMT
 

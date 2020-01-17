@@ -47,7 +47,7 @@
     "@uifabric/build": "^7.0.0"
   },
   "dependencies": {
-    "@uifabric/set-version": "^7.0.2"
+    "@uifabric/set-version": "^7.0.3"
   },
   "peerDependencies": {
     "@types/react": ">=16.8.0 <17.0.0",

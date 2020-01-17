@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "DatePicker: error message for required field is not cleared when date is selected from calendar",
-  "packageName": "@uifabric/date-time",
-  "email": "xgao@microsoft.com",
-  "commit": "ab9fe1c2d9033071770cba02c00728f120feac45",
-  "date": "2020-01-16T22:57:10.093Z"
-}
