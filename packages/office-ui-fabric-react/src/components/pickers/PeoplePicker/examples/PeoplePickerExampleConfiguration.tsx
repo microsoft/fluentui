@@ -14,6 +14,7 @@ const checkboxStyles = {
   }
 };
 
+/** @internal */
 export const PeoplePickerExampleConfiguration: React.FunctionComponent<IPeoplePickerExampleConfigurationProps> = props => {
   const { children, delayResults, setDelayResults, isPickerDisabled, setIsPickerDisabled } = props;
 
