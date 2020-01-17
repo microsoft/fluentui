@@ -37,6 +37,6 @@
     "@uifabric/merge-styles": "^7.8.1",
     "@uifabric/set-version": "^7.0.2",
     "@uifabric/utilities": "^7.11.1",
-    "tslib": "^1.7.1"
+    "tslib": "^1.10.0"
   }
 }

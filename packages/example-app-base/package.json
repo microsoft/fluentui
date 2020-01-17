@@ -58,6 +58,6 @@
     "office-ui-fabric-react": "^7.83.0",
     "react-custom-scrollbars": "^4.2.1",
     "react-syntax-highlighter": "^10.1.3",
-    "tslib": "^1.7.1"
+    "tslib": "^1.10.0"
   }
 }
