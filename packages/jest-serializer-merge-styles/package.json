@@ -37,7 +37,7 @@
     "@uifabric/build": "^7.0.0"
   },
   "dependencies": {
-    "@uifabric/set-version": "^7.0.2",
-    "@uifabric/merge-styles": "^7.8.1"
+    "@uifabric/set-version": "^7.0.3",
+    "@uifabric/merge-styles": "^7.8.2"
   }
 }

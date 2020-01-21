@@ -153,8 +153,8 @@ const getPanelBreakpoints = (type: PanelType): { [x: string]: IStyle } | undefin
 const commandBarHeight = '44px';
 
 const sharedPaddingStyles = {
-  paddingLeft: '16px',
-  paddingRight: '16px'
+  paddingLeft: '24px',
+  paddingRight: '24px'
 };
 
 // // TODO -Issue #5689: Comment in once Button is converted to mergeStyles
@@ -185,6 +185,7 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
     isOnRightSide,
     isOpen,
     isHiddenOnDismiss,
+    hasCustomNavigation,
     theme,
     type = PanelType.smallFixedFar
   } = props;
@@ -272,17 +273,34 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
       !isOpen && isAnimating && isOnRightSide && AnimationClassNames.slideRightOut40,
       focusTrapZoneClassName
     ],
-    commands: [classNames.commands],
+    commands: [
+      classNames.commands,
+      {
+        marginTop: 18
+      },
+      hasCustomNavigation && {
+        marginTop: 'inherit'
+      }
+    ],
     navigation: [
       classNames.navigation,
       {
-        padding: '0 5px',
-        height: commandBarHeight,
         display: 'flex',
         justifyContent: 'flex-end'
+      },
+      hasCustomNavigation && {
+        height: commandBarHeight
       }
     ],
-    closeButton: [classNames.closeButton],
+    closeButton: [
+      classNames.closeButton,
+      {
+        marginRight: 14
+      },
+      hasCustomNavigation && {
+        marginRight: 0
+      }
+    ],
     contentInner: [
       classNames.contentInner,
       {
@@ -296,14 +314,13 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
       classNames.header,
       sharedPaddingStyles,
       {
-        margin: '14px 0',
+        flexShrink: 1,
+        marginRight: 'auto'
+      },
+      hasCustomNavigation && {
         // Ensure that title doesn't shrink if screen is too small
         flexShrink: 0,
-        selectors: {
-          [`@media (min-width: ${ScreenWidthMinXLarge}px)`]: {
-            marginTop: '30px'
-          }
-        }
+        marginRight: 0
       }
     ],
     headerText: [

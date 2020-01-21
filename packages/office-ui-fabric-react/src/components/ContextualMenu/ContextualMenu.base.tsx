@@ -1202,8 +1202,8 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
         const currentDoc: Document = getDocument(currentElement)!;
         this._target = currentDoc ? (currentDoc.querySelector(target) as Element) : null;
         this._targetWindow = getWindow(currentElement)!;
-      } else if ((target as MouseEvent).stopPropagation) {
-        this._targetWindow = getWindow((target as MouseEvent).toElement as HTMLElement)!;
+      } else if (!!(target as MouseEvent).stopPropagation) {
+        this._targetWindow = getWindow((target as MouseEvent).target as HTMLElement)!;
         this._target = target as MouseEvent;
       } else if ((target as IPoint).x !== undefined && (target as IPoint).y !== undefined) {
         this._targetWindow = getWindow(currentElement)!;

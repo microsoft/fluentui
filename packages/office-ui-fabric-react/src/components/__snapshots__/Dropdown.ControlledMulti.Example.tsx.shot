@@ -140,6 +140,7 @@ exports[`Component Examples renders Dropdown.ControlledMulti.Example.tsx correct
     onKeyDown={[Function]}
     onKeyUp={[Function]}
     onMouseDown={[Function]}
+    role="button"
     tabIndex={0}
   >
     <span

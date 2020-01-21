@@ -554,7 +554,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
 
     // Add additional props to apply on primary action button
     if (primaryActionButtonProps) {
-      assign(buttonProps, { ...primaryActionButtonProps });
+      assign(buttonProps, primaryActionButtonProps);
     }
 
     const SplitButton = (keytipAttributes?: any): JSX.Element => (

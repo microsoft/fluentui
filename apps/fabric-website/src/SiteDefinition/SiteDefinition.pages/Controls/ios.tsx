@@ -11,7 +11,6 @@ export const controlsPagesIos: INavPage[] = [
   },
   {
     title: 'Basic Inputs',
-    url: '#/controls/ios/button',
     isCategory: true,
     pages: [
       {
@@ -24,7 +23,6 @@ export const controlsPagesIos: INavPage[] = [
   },
   {
     title: 'Pickers',
-    url: '#/controls/ios/date-time-picker',
     isCategory: true,
     pages: [
       {
@@ -38,7 +36,6 @@ export const controlsPagesIos: INavPage[] = [
   },
   {
     title: 'Items & Lists',
-    url: '#/controls/ios/avatar',
     isCategory: true,
     pages: [
       {
@@ -70,7 +67,6 @@ export const controlsPagesIos: INavPage[] = [
   },
   {
     title: 'Commands, Menus & Navs',
-    url: '#/controls/ios/navigationbar',
     isCategory: true,
     pages: [
       {
@@ -105,7 +101,6 @@ export const controlsPagesIos: INavPage[] = [
   },
   {
     title: 'Progress',
-    url: '#/controls/ios/shimmer',
     isCategory: true,
     pages: [
       {
@@ -124,7 +119,6 @@ export const controlsPagesIos: INavPage[] = [
   },
   {
     title: 'Surfaces',
-    url: '#/controls/ios/drawer',
     isCategory: true,
     pages: [
       {
@@ -143,7 +137,6 @@ export const controlsPagesIos: INavPage[] = [
   },
   {
     title: 'Utilities',
-    url: '#/controls/ios/separator',
     isCategory: true,
     pages: [
       {
