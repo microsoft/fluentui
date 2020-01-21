@@ -46,7 +46,7 @@ export const PanelLightDismissCustomExample: React.FunctionComponent = () => {
         headerText="Panel with custom light dismiss behavior"
         closeButtonAriaLabel="Close"
       >
-        <span>{explanation}</span>
+        <p>{explanation}</p>
       </Panel>
       <Dialog hidden={!isDialogVisible} onDismiss={hideDialog} dialogContentProps={dialogContentProps} modalProps={dialogModalProps}>
         <DialogFooter>
