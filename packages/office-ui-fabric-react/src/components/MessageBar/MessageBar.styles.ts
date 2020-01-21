@@ -151,7 +151,8 @@ export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
             ...fonts.small,
             selectors: {
               [HighContrastSelector]: {
-                color: 'inherit'
+                color: 'inherit',
+                textDecoration: 'underline'
               }
             }
           },
