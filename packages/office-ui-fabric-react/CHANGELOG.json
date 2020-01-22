@@ -2,6 +2,27 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Wed, 22 Jan 2020 12:36:43 GMT",
+      "tag": "office-ui-fabric-react_v7.84.0",
+      "version": "7.84.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Panel: Restyled Panel's header and navigation sections",
+            "author": "v-mare@microsoft.com",
+            "commit": "b6f36d5fcdc4fd2b494115160336f0a7546484c4"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "TextField: fix focused bottom border mis-alignment when errorMessage is set",
+            "author": "v-jajach@microsoft.com",
+            "commit": "c6ec87ce96332e37c2e6fc723701e29275030c50"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 20 Jan 2020 12:28:43 GMT",
       "tag": "office-ui-fabric-react_v7.83.2",
       "version": "7.83.2",
