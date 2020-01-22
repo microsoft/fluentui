@@ -2,6 +2,7 @@ import * as React from 'react';
 import { ContextualMenuItemType, DirectionalHint, IContextualMenuItem } from 'office-ui-fabric-react/lib/ContextualMenu';
 import { DefaultButton, IconButton } from 'office-ui-fabric-react/lib/Button';
 import { FocusZoneDirection } from 'office-ui-fabric-react/lib/FocusZone';
+import './ContextualMenuExample.scss';
 
 export const ContextualMenuCustomizationExample: React.FunctionComponent = () => {
   return (
@@ -18,7 +19,7 @@ export const ContextualMenuCustomizationExample: React.FunctionComponent = () =>
   );
 };
 
-function renderCharmMenuItem(item: any, dismissMenu: () => void): JSX.Element {
+function renderCharmMenuItem(item: IContextualMenuItem, dismissMenu: () => void): JSX.Element {
   return (
     <IconButton
       iconProps={{ iconName: item.name }}
@@ -29,11 +30,11 @@ function renderCharmMenuItem(item: any, dismissMenu: () => void): JSX.Element {
   );
 }
 
-function renderCategoriesList(item: any): JSX.Element {
+function renderCategoriesList(item: IContextualMenuItem): JSX.Element {
   return (
     <ul className="ms-ContextualMenu-customizationExample-categoriesList">
       <li className="ms-ContextualMenu-item">
-        {item.categoryList.map((category: any) => (
+        {item.categoryList.map((category: ICategoryList) => (
           <DefaultButton
             className="ms-ContextualMenu-link ms-ContextualMenu-customizationExample-button"
             role="menuitem"
@@ -51,6 +52,11 @@ function renderCategoriesList(item: any): JSX.Element {
       </li>
     </ul>
   );
+}
+
+interface ICategoryList {
+  name: string;
+  color: string;
 }
 
 const menuItems: IContextualMenuItem[] = [

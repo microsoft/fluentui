@@ -1,20 +1,23 @@
 import * as React from 'react';
-import { ContextualMenuItemType, IContextualMenuItem, IContextualMenuItemProps } from 'office-ui-fabric-react/lib/ContextualMenu';
+import {
+  ContextualMenuItemType,
+  IContextualMenuProps,
+  IContextualMenuItem,
+  IContextualMenuItemProps
+} from 'office-ui-fabric-react/lib/ContextualMenu';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 
 export const ContextualMenuWithCustomMenuItemExample: React.FunctionComponent = () => {
-  return (
-    <div>
-      <DefaultButton
-        text="Click for ContextualMenu"
-        menuProps={{
-          shouldFocusOnMount: true,
-          items: menuItems,
-          contextualMenuItemAs: (props: IContextualMenuItemProps) => <div>Custom rendered {props.item.text}</div>
-        }}
-      />
-    </div>
+  const menuProps: IContextualMenuProps = React.useMemo(
+    () => ({
+      items: menuItems,
+      shouldFocusOnMount: true,
+      contextualMenuItemAs: (props: IContextualMenuItemProps) => <div>Custom rendered {props.item.text}</div>
+    }),
+    [menuItems]
   );
+
+  return <DefaultButton text="Click for ContextualMenu" menuProps={menuProps} />;
 };
 
 const menuItems: IContextualMenuItem[] = [

@@ -4,15 +4,13 @@ import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 
 export const ContextualMenuDefaultExample: React.FunctionComponent = () => {
   return (
-    <div>
-      <DefaultButton
-        text="Click for ContextualMenu"
-        menuProps={{
-          shouldFocusOnMount: true,
-          items: menuItems
-        }}
-      />
-    </div>
+    <DefaultButton
+      text="Click for ContextualMenu"
+      menuProps={{
+        shouldFocusOnMount: true,
+        items: menuItems
+      }}
+    />
   );
 };
 

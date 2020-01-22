@@ -1,7 +1,8 @@
 import * as React from 'react';
-import { ContextualMenuItemType, IContextualMenuItem, IContextualMenuItemProps } from 'office-ui-fabric-react/lib/ContextualMenu';
-import { Callout } from 'office-ui-fabric-react/lib/Callout';
+import { useConst, useConstCallback } from '@uifabric/react-hooks';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
+import { Callout } from 'office-ui-fabric-react/lib/Callout';
+import { ContextualMenuItemType, IContextualMenuItem, IContextualMenuItemProps } from 'office-ui-fabric-react/lib/ContextualMenu';
 import { Icon } from 'office-ui-fabric-react/lib/Icon';
 import * as stylesImport from './ContextualMenuExample.scss';
 
@@ -11,7 +12,10 @@ const styles: any = stylesImport;
 export const ContextualMenuIconExample: React.FunctionComponent = () => {
   const [showCallout, setShowCallout] = React.useState(false);
 
-  const menuItems: IContextualMenuItem[] = [
+  const onShowCallout = useConstCallback(() => setShowCallout(true));
+  const onHideCallout = useConstCallback(() => setShowCallout(false));
+
+  const menuItems: IContextualMenuItem[] = useConst([
     {
       key: 'openInWord',
       text: 'Open in Word',
@@ -33,9 +37,7 @@ export const ContextualMenuIconExample: React.FunctionComponent = () => {
     },
     {
       key: 'upload',
-      onClick: () => {
-        setShowCallout(true);
-      },
+      onClick: onShowCallout,
       iconProps: {
         iconName: 'Upload',
         style: {
@@ -70,7 +72,7 @@ export const ContextualMenuIconExample: React.FunctionComponent = () => {
       },
       text: 'Music'
     }
-  ];
+  ]);
 
   return (
     <div>
@@ -82,16 +84,8 @@ export const ContextualMenuIconExample: React.FunctionComponent = () => {
         }}
       />
       {showCallout && (
-        <Callout
-          setInitialFocus={true}
-          // tslint:disable-next-line:jsx-no-lambda
-          onDismiss={() => setShowCallout(false)}
-        >
-          <DefaultButton
-            // tslint:disable-next-line:jsx-no-lambda
-            onClick={() => setShowCallout(false)}
-            text="Hello Popup"
-          />
+        <Callout setInitialFocus={true} onDismiss={onHideCallout}>
+          <DefaultButton onClick={onHideCallout} text="Hello Popup" />
         </Callout>
       )}
     </div>

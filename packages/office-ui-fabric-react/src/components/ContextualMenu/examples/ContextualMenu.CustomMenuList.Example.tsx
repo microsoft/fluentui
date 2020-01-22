@@ -1,34 +1,38 @@
 import * as React from 'react';
+import { useConstCallback } from '@uifabric/react-hooks';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
-import { SearchBox } from 'office-ui-fabric-react/lib/SearchBox';
+import { ISearchBoxStyles, SearchBox } from 'office-ui-fabric-react/lib/SearchBox';
 import { Icon } from 'office-ui-fabric-react/lib/Icon';
 import { IContextualMenuListProps, IContextualMenuItem } from 'office-ui-fabric-react/lib/ContextualMenu';
 import { IRenderFunction } from 'office-ui-fabric-react/lib/Utilities';
 
+const wrapperStyle: React.CSSProperties = { borderBottom: '1px solid #ccc' };
+const filteredItemsStyle: React.CSSProperties = {
+  width: '100%',
+  height: '100px',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center'
+};
+const searchBoxStyles: ISearchBoxStyles = {
+  root: { margin: '8px' }
+};
+
 export const ContextualMenuWithCustomMenuListExample: React.FunctionComponent = () => {
   const [items, setItems] = React.useState(menuItems);
 
-  const onAbort = () => {
+  const onAbort = useConstCallback(() => {
     setItems(menuItems);
-  };
+  });
 
-  const onChange = (ev: React.ChangeEvent<HTMLInputElement>, newValue: string) => {
+  const onChange = useConstCallback((ev: React.ChangeEvent<HTMLInputElement>, newValue: string) => {
     const filteredItems = menuItems.filter(item => item.text && item.text.toLowerCase().indexOf(newValue.toLowerCase()) !== -1);
 
     if (!filteredItems || !filteredItems.length) {
       filteredItems.push({
         key: 'no_results',
         onRender: (item, dismissMenu) => (
-          <div
-            key="no_results"
-            style={{
-              width: '100%',
-              height: '100px',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center'
-            }}
-          >
+          <div key="no_results" style={filteredItemsStyle}>
             <Icon iconName="SearchIssue" title="No actions found" />
             <span>No actions found</span>
           </div>
@@ -37,20 +41,18 @@ export const ContextualMenuWithCustomMenuListExample: React.FunctionComponent = 
     }
 
     setItems(filteredItems);
-  };
+  });
 
   const renderMenuList = (menuListProps: IContextualMenuListProps, defaultRender: IRenderFunction<IContextualMenuListProps>) => {
     return (
       <div>
-        <div style={{ borderBottom: '1px solid #ccc' }}>
+        <div style={wrapperStyle}>
           <SearchBox
             ariaLabel="Filter actions by text"
             placeholder="Filter actions"
             onAbort={onAbort}
             onChange={onChange}
-            styles={{
-              root: [{ margin: '8px' }]
-            }}
+            styles={searchBoxStyles}
           />
         </div>
         {defaultRender(menuListProps)}
@@ -59,17 +61,15 @@ export const ContextualMenuWithCustomMenuListExample: React.FunctionComponent = 
   };
 
   return (
-    <div>
-      <DefaultButton
-        text="Click for ContextualMenu"
-        menuProps={{
-          onRenderMenuList: renderMenuList,
-          title: 'Actions',
-          shouldFocusOnMount: true,
-          items
-        }}
-      />
-    </div>
+    <DefaultButton
+      text="Click for ContextualMenu"
+      menuProps={{
+        onRenderMenuList: renderMenuList,
+        title: 'Actions',
+        shouldFocusOnMount: true,
+        items
+      }}
+    />
   );
 };
 

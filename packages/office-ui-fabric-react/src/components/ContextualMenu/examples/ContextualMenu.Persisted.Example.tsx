@@ -4,17 +4,15 @@ import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 
 export const ContextualMenuPersistedExample: React.FunctionComponent = () => {
   return (
-    <div>
-      <DefaultButton
-        text="Click for ContextualMenu"
-        persistMenu={true}
-        menuProps={{
-          shouldFocusOnMount: true,
-          shouldFocusOnContainer: true,
-          items: menuItems
-        }}
-      />
-    </div>
+    <DefaultButton
+      text="Click for ContextualMenu"
+      persistMenu={true}
+      menuProps={{
+        shouldFocusOnMount: true,
+        shouldFocusOnContainer: true,
+        items: menuItems
+      }}
+    />
   );
 };
 

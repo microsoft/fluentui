@@ -2,6 +2,7 @@ import * as React from 'react';
 import { ContextualMenuItemType, DirectionalHint, IContextualMenuItem } from 'office-ui-fabric-react/lib/ContextualMenu';
 import { DefaultButton, IconButton } from 'office-ui-fabric-react/lib/Button';
 import { FocusZoneDirection } from 'office-ui-fabric-react/lib/FocusZone';
+import './ContextualMenuExample.scss';
 
 export const ContextualMenuCustomizationWithNoWrapExample: React.FunctionComponent = () => {
   return (

@@ -4,20 +4,18 @@ import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 
 export const ContextualMenuWithScrollBarExample: React.FunctionComponent = () => {
   return (
-    <div>
-      <DefaultButton
-        text="Click for ContextualMenu"
-        menuProps={{
-          shouldFocusOnMount: true,
-          directionalHint: DirectionalHint.bottomRightEdge,
-          directionalHintFixed: true,
-          items: menuItems,
-          calloutProps: {
-            calloutMaxHeight: 65
-          }
-        }}
-      />
-    </div>
+    <DefaultButton
+      text="Click for ContextualMenu"
+      menuProps={{
+        shouldFocusOnMount: true,
+        directionalHint: DirectionalHint.bottomRightEdge,
+        directionalHintFixed: true,
+        items: menuItems,
+        calloutProps: {
+          calloutMaxHeight: 65
+        }
+      }}
+    />
   );
 };
 

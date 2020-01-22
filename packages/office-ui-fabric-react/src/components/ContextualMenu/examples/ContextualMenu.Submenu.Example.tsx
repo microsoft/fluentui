@@ -1,7 +1,16 @@
 import * as React from 'react';
+import { useConstCallback } from '@uifabric/react-hooks';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { IContextualMenuItem } from 'office-ui-fabric-react/lib/ContextualMenu';
-import { TextField } from 'office-ui-fabric-react/lib/TextField';
+import { TextField, ITextFieldStyles } from 'office-ui-fabric-react/lib/TextField';
+
+const textFieldStyles: Partial<ITextFieldStyles> = {
+  subComponentStyles: {
+    label: { root: { display: 'inline-block', marginRight: '10px' } }
+  },
+  fieldGroup: { display: 'inline-flex', maxWidth: '100px' },
+  wrapper: { display: 'block', marginBottom: '10px' }
+};
 
 export interface IContextualMenuSubmenuExampleState {
   hoverDelay: number;
@@ -10,9 +19,9 @@ export interface IContextualMenuSubmenuExampleState {
 export const ContextualMenuSubmenuExample: React.FunctionComponent = () => {
   const [hoverDelay, setHoverDelay] = React.useState(250);
 
-  const onHoverDelayChanged = (ev: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, newValue: string) => {
+  const onHoverDelayChanged = useConstCallback((ev: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, newValue: string) => {
     setHoverDelay(Number(newValue) || 0);
-  };
+  });
 
   return (
     <div>
@@ -21,13 +30,7 @@ export const ContextualMenuSubmenuExample: React.FunctionComponent = () => {
         label="Hover delay (ms)"
         type="number"
         onChange={onHoverDelayChanged}
-        styles={{
-          subComponentStyles: {
-            label: { root: { display: 'inline-block', marginRight: '10px' } }
-          },
-          fieldGroup: { display: 'inline-flex', maxWidth: '100px' },
-          wrapper: { display: 'block', marginBottom: '10px' }
-        }}
+        styles={textFieldStyles}
       />
       <DefaultButton
         text="Click for ContextualMenu"

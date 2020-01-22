@@ -1,9 +1,11 @@
 import * as React from 'react';
+import { useConstCallback } from '@uifabric/react-hooks';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
-import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
+import { Checkbox, ICheckboxStyles } from 'office-ui-fabric-react/lib/Checkbox';
 import { DirectionalHint, ContextualMenuItemType, IContextualMenuItem } from 'office-ui-fabric-react/lib/ContextualMenu';
 import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
 import { getRTL } from 'office-ui-fabric-react/lib/Utilities';
+import './ContextualMenuExample.scss';
 
 const DIRECTION_OPTIONS = [
   { key: DirectionalHint.topLeftEdge, text: 'Top Left Edge' },
@@ -22,32 +24,42 @@ const DIRECTION_OPTIONS = [
   { key: DirectionalHint.rightBottomEdge, text: 'Right Bottom Edge' }
 ];
 
+const checkboxStyles: ICheckboxStyles = { root: { margin: '10px 0' } };
+
 export const ContextualMenuDirectionalExample: React.FunctionComponent = () => {
   const [isBeakVisible, setIsBeakVisible] = React.useState(false);
   const [useDirectionalHintForRTL, setUseDirectionalHintForRTL] = React.useState(false);
   const [directionalHint, setDirectionalHint] = React.useState<DirectionalHint>(DirectionalHint.bottomLeftEdge);
   const [directionalHintForRTL, setDirectionalHintForRTL] = React.useState<DirectionalHint>(DirectionalHint.bottomLeftEdge);
 
-  const onShowBeakChange = (event: React.FormEvent<HTMLElement>, isVisible: boolean): void => {
-    setIsBeakVisible(isVisible);
-  };
+  const onShowBeakChange = useConstCallback(
+    (event: React.FormEvent<HTMLElement>, isVisible: boolean): void => {
+      setIsBeakVisible(isVisible);
+    }
+  );
 
-  const onUseRtlHintChange = (event: React.FormEvent<HTMLElement>, isVisible: boolean): void => {
-    setUseDirectionalHintForRTL(isVisible);
-  };
+  const onUseRtlHintChange = useConstCallback(
+    (event: React.FormEvent<HTMLElement>, isVisible: boolean): void => {
+      setUseDirectionalHintForRTL(isVisible);
+    }
+  );
 
-  const onDirectionalChanged = (event: React.FormEvent<HTMLDivElement>, option: IDropdownOption): void => {
-    setDirectionalHint(option.key as DirectionalHint);
-  };
+  const onDirectionalChanged = useConstCallback(
+    (event: React.FormEvent<HTMLDivElement>, option: IDropdownOption): void => {
+      setDirectionalHint(option.key as DirectionalHint);
+    }
+  );
 
-  const onDirectionalRtlChanged = (event: React.FormEvent<HTMLDivElement>, option: IDropdownOption): void => {
-    setDirectionalHintForRTL(option.key as DirectionalHint);
-  };
+  const onDirectionalRtlChanged = useConstCallback(
+    (event: React.FormEvent<HTMLDivElement>, option: IDropdownOption): void => {
+      setDirectionalHintForRTL(option.key as DirectionalHint);
+    }
+  );
 
   return (
     <div className="ms-ContextualMenuDirectionalExample">
       <div className="ms-ContextualMenuDirectionalExample-configArea">
-        <Checkbox styles={{ root: { margin: '10px 0' } }} label="Show beak" checked={isBeakVisible} onChange={onShowBeakChange} />
+        <Checkbox styles={checkboxStyles} label="Show beak" checked={isBeakVisible} onChange={onShowBeakChange} />
         <Dropdown label="Directional hint" selectedKey={directionalHint!} options={DIRECTION_OPTIONS} onChange={onDirectionalChanged} />
         {getRTL() && <Checkbox label="Use RTL directional hint" checked={useDirectionalHintForRTL} onChange={onUseRtlHintChange} />}
         {getRTL() && (
