@@ -1,0 +1,9 @@
+{
+  "type": "patch",
+  "comment": "closing callout on pressing esc key",
+  "packageName": "@uifabric/charting",
+  "email": "v-sivsar@microsoft.com",
+  "commit": "ebf2aaa92353d0f95f735bcdfa63161fa968b605",
+  "dependentChangeType": "patch",
+  "date": "2020-01-22T10:59:19.753Z"
+}
