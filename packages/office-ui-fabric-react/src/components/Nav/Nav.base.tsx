@@ -128,6 +128,7 @@ export class NavBase extends BaseComponent<INavProps, INavState> implements INav
     if (this._focusZone && this._focusZone.value) {
       return this._focusZone.value.focus(forceIntoFirstElement);
     }
+
     return false;
   }
 

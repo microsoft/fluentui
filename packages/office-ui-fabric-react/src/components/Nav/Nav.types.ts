@@ -18,7 +18,7 @@ export interface INav {
    * if focus is already in the focus zone.
    * @returns True if focus could be set to an active element, false if no operation was taken.
    */
-  focus(forceIntoFirstElement?: boolean): boolean;
+  focus?: (forceIntoFirstElement?: boolean) => boolean;
 }
 
 export interface INavProps {
