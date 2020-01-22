@@ -1,6 +1,6 @@
 import { IRawStyle } from '@uifabric/merge-styles';
 import { IGetFocusStylesOptions, ITheme } from '../interfaces/index';
-import { HighContrastSelector } from './CommonStyles';
+import { HighContrastSelector, getEdgeChromiumForcedStylesOffSelector } from './CommonStyles';
 import { IsFocusVisibleClassName } from '@uifabric/utilities';
 import { ZIndexes } from './zIndexes';
 
@@ -154,23 +154,26 @@ export const getInputFocusStyle = (
   return {
     borderColor,
     selectors: {
-      ':after': {
-        pointerEvents: 'none',
-        content: "''",
-        position: 'absolute',
-        left: isBorderBottom ? 0 : borderPosition,
-        top: borderPosition,
-        bottom: borderPosition,
-        right: isBorderBottom ? 0 : borderPosition,
-        [borderType]: `2px solid ${borderColor}`,
-        borderRadius,
-        width: borderType === 'borderBottom' ? '100%' : undefined,
-        selectors: {
-          [HighContrastSelector]: {
-            [borderType === 'border' ? 'borderColor' : 'borderBottomColor']: 'Highlight'
+      ':after': [
+        {
+          pointerEvents: 'none',
+          content: "''",
+          position: 'absolute',
+          left: isBorderBottom ? 0 : borderPosition,
+          top: borderPosition,
+          bottom: borderPosition,
+          right: isBorderBottom ? 0 : borderPosition,
+          [borderType]: `2px solid ${borderColor}`,
+          borderRadius,
+          width: borderType === 'borderBottom' ? '100%' : undefined,
+          selectors: {
+            [HighContrastSelector]: {
+              [borderType === 'border' ? 'borderColor' : 'borderBottomColor']: 'Highlight'
+            },
+            ...getEdgeChromiumForcedStylesOffSelector()
           }
         }
-      }
+      ]
     }
   };
 };

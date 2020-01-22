@@ -209,6 +209,8 @@ export interface IRawStyleBase extends IRawFontStyle {
     flexWrap?: ICSSRule | 'nowrap' | 'wrap' | 'wrap-reverse';
     float?: ICSSRule | string;
     flowFrom?: ICSSRule | string;
+    // (undocumented)
+    forcedColorAdjust?: 'auto' | 'none';
     gridArea?: ICSSRule | string;
     gridAutoColumns?: ICSSRule | string;
     gridAutoFlow?: ICSSRule | string;

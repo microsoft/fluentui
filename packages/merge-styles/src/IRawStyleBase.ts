@@ -277,6 +277,7 @@ export interface IFontFace extends IRawFontStyle {
  * {@docCategory IRawStyleBase}
  */
 export interface IRawStyleBase extends IRawFontStyle {
+  forcedColorAdjust?: 'auto' | 'none';
   /**
    * (Ms specific) constrast adjust rule.
    */
