@@ -44,6 +44,7 @@ export class LineChartBase extends React.Component<
   private legendContainer: HTMLDivElement;
   // These margins are necessary for d3Scales to appear without cutting off
   private margins = { top: 20, right: 20, bottom: 35, left: 40 };
+  private minLegendContainerHeight: number = 32;
   constructor(props: ILineChartProps) {
     super(props);
     this.state = {
@@ -154,7 +155,7 @@ export class LineChartBase extends React.Component<
     this._reqID = requestAnimationFrame(() => {
       const legendContainerComputedStyles = getComputedStyle(this.legendContainer);
       const legendContainerHeight =
-        this.legendContainer.getBoundingClientRect().height +
+        (this.legendContainer.getBoundingClientRect().height || this.minLegendContainerHeight) +
         parseFloat(legendContainerComputedStyles.marginTop || '0') +
         parseFloat(legendContainerComputedStyles.marginBottom || '0');
 
