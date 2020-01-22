@@ -96,15 +96,22 @@ export class ResizeGroupOverflowSetExample extends BaseComponent<{}, IResizeGrou
           onRenderData={data => {
             return (
               <OverflowSet
+                role="menubar"
                 items={data.primary}
                 overflowItems={data.overflow.length ? data.overflow : null}
                 onRenderItem={item => {
                   return (
-                    <CommandBarButton text={item.name} iconProps={{ iconName: item.icon }} onClick={item.onClick} checked={item.checked} />
+                    <CommandBarButton
+                      role="menuitem"
+                      text={item.name}
+                      iconProps={{ iconName: item.icon }}
+                      onClick={item.onClick}
+                      checked={item.checked}
+                    />
                   );
                 }}
                 onRenderOverflowButton={overflowItems => {
-                  return <CommandBarButton menuProps={{ items: overflowItems! }} />;
+                  return <CommandBarButton role="menuitem" menuProps={{ items: overflowItems! }} />;
                 }}
                 styles={{ root: { height: 40 } }}
               />

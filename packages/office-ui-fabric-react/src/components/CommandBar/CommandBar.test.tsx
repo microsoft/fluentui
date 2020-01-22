@@ -21,6 +21,12 @@ describe('CommandBar', () => {
     ).toMatchSnapshot();
   });
 
+  it('renders empty farItems correctly', () => {
+    expect(
+      renderer.create(<CommandBar items={[{ key: '1', text: 'asdf' }, { key: '2', text: 'asdf' }]} farItems={[]} />).toJSON()
+    ).toMatchSnapshot();
+  });
+
   it('opens a menu with IContextualMenuItem.subMenuProps.items property', () => {
     const commandBar = mount(
       <CommandBar

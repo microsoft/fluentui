@@ -1,8 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-// FABRIC7TODO these should be richer models
-
 exports[`ContextMenuItemChildren when a checkmark icon renders the component with the checkmark 1`] = `ShallowWrapper {}`;
+
+exports[`ContextMenuItemChildren when hide checkmark icon for toggle command renders the component with the checkmark 1`] = `ShallowWrapper {}`;
 
 exports[`ContextMenuItemChildren when it has a sub menu renders the menu icon 1`] = `ShallowWrapper {}`;
 

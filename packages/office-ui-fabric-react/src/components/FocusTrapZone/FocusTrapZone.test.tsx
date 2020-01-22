@@ -83,14 +83,15 @@ describe('FocusTrapZone', () => {
       isVisible?: boolean;
     }
   ): void {
-    element.getBoundingClientRect = () => ({
-      top: clientRect.top,
-      left: clientRect.left,
-      bottom: clientRect.bottom,
-      right: clientRect.right,
-      width: clientRect.right - clientRect.left,
-      height: clientRect.bottom - clientRect.top
-    });
+    element.getBoundingClientRect = () =>
+      ({
+        top: clientRect.top,
+        left: clientRect.left,
+        bottom: clientRect.bottom,
+        right: clientRect.right,
+        width: clientRect.right - clientRect.left,
+        height: clientRect.bottom - clientRect.top
+      } as DOMRect);
 
     element.setAttribute('data-is-visible', String(isVisible));
 

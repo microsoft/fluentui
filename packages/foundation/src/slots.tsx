@@ -188,7 +188,7 @@ function _constructFinalProps<TProps extends IProcessedSlotProps>(defaultStyles:
 
   for (const props of allProps) {
     classNames.push(props && props.className);
-    assign(finalProps, ...(props as any));
+    assign(finalProps, props);
   }
 
   finalProps.className = mergeStyles(defaultStyles, classNames);

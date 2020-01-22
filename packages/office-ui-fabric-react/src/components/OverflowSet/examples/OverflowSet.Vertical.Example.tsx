@@ -9,6 +9,7 @@ export class OverflowSetVerticalExample extends React.PureComponent {
     return (
       <OverflowSet
         aria-label="Vertical Example"
+        role="menubar"
         vertical
         items={[
           {

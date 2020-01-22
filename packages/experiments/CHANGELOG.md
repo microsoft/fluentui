@@ -1,7 +1,32 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Wed, 08 Jan 2020 17:02:57 GMT and should not be manually modified.
+This log was last generated on Fri, 17 Jan 2020 02:32:17 GMT and should not be manually modified.
 
+## 7.18.15
+Fri, 17 Jan 2020 02:32:17 GMT
+
+### Patches
+
+- Update tslib minver to first version containing __spreadArrays helper due to changes in how TS emits spreads. (jagore@microsoft.com)
+## 7.18.14
+Thu, 16 Jan 2020 12:28:58 GMT
+
+### Patches
+
+- Upgrade repo to TS3.7. (jagore@microsoft.com)
+## 7.18.13
+Mon, 13 Jan 2020 12:28:56 GMT
+
+### Patches
+
+- Tile: fix color of text over image in dark mode (prchhaje@microsoft.com)
+- Consume compose functions where appropriate (tmichon@microsoft.com)
+## 7.18.12
+Fri, 10 Jan 2020 12:31:47 GMT
+
+### Patches
+
+- ComboBox: fix chevron button and focus border styling (xgao@microsoft.com)
 ## 7.18.11
 Wed, 08 Jan 2020 17:02:57 GMT
 

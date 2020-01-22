@@ -1,8 +1,0 @@
-{
-  "type": "none",
-  "comment": "Remove note about using with typescript",
-  "packageName": "@uifabric/monaco-editor",
-  "email": "elcraig@microsoft.com",
-  "commit": "f70e51cc627c99f0b6151f14e7bbca5f07fa5a81",
-  "date": "2020-01-08T23:50:48.392Z"
-}

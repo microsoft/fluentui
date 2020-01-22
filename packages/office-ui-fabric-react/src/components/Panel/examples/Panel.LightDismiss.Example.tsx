@@ -20,7 +20,7 @@ export const PanelLightDismissExample: React.FunctionComponent = () => {
       <br />
       <DefaultButton text="Open panel" onClick={openPanel} />
       <Panel isLightDismiss isOpen={isOpen} onDismiss={dismissPanel} closeButtonAriaLabel="Close" headerText="Light dismiss panel">
-        <span>{explanation}</span>
+        <p>{explanation}</p>
       </Panel>
     </div>
   );
