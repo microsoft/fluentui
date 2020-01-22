@@ -124,7 +124,11 @@ export class NavBase extends BaseComponent<INavProps, INavState> implements INav
    * if focus is already in the focus zone.
    * @returns True if focus could be set to an active element, false if no operation was taken.
    */
-  public focus(forceIntoFirstElement: boolean = false): boolean {
+  public focus(forceIntoFirstElement: boolean): boolean {
+    if (forceIntoFirstElement === undefined) {
+      forceIntoFirstElement = false;
+    }
+
     if (this._focusZone && this._focusZone.value) {
       return this._focusZone.value.focus(forceIntoFirstElement);
     }
