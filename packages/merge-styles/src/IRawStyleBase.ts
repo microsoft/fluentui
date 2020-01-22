@@ -277,7 +277,12 @@ export interface IFontFace extends IRawFontStyle {
  * {@docCategory IRawStyleBase}
  */
 export interface IRawStyleBase extends IRawFontStyle {
+  /**
+   * The property which allows authors to opt particular elements out of forced colors mode, restoring full control over the colors to CSS.
+   * Currently it's only supported in Edge Chromium.
+   */
   forcedColorAdjust?: 'auto' | 'none';
+
   /**
    * (Ms specific) constrast adjust rule.
    */

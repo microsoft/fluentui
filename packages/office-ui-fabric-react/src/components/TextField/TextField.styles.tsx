@@ -39,14 +39,6 @@ function getLabelStyles(props: ITextFieldStyleProps): IStyleFunctionOrObject<ILa
 
   return () => ({
     root: [
-      // {
-      //   selectors: {
-      //     [HighContrastSelector]: {
-      //       background: 'Window',
-      //       color: disabled ? 'GrayText' : 'WindowText'
-      //     }
-      //   }
-      // },
       underlined &&
         disabled && {
           color: palette.neutralTertiary

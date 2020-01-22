@@ -23,6 +23,9 @@ export function getScreenSelector(min: number, max: number): string {
   return `@media only screen and (min-width: ${min}px) and (max-width: ${max}px)`;
 }
 
+/**
+ * The style which turns off high contrast adjustment in (only) Edge Chromium browser
+ */
 export function getEdgeChromiumForcedStylesOffSelector(): { [EdgeChromiumHighContrastSelector]: IStyle } {
   return {
     [EdgeChromiumHighContrastSelector]: {

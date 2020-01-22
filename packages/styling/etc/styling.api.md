@@ -121,7 +121,7 @@ export namespace FontWeights {
     bold: IFontWeight;
 }
 
-// @public (undocumented)
+// @public
 export function getEdgeChromiumForcedStylesOffSelector(): {
     [EdgeChromiumHighContrastSelector]: IStyle;
 };
