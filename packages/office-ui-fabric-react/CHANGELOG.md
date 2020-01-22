@@ -1,7 +1,14 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 17 Jan 2020 02:32:17 GMT and should not be manually modified.
+This log was last generated on Mon, 20 Jan 2020 12:28:43 GMT and should not be manually modified.
 
+## 7.83.2
+Mon, 20 Jan 2020 12:28:43 GMT
+
+### Patches
+
+- ContextualMenu: Hide checkmark in ContextualMenuItems if canCheck is false (huaxi@microsoft.com)
+- PeoplePicker: Splitting one example into multiple examples and converting to Function Components. (Humberto.Morimoto@microsoft.com)
 ## 7.83.1
 Fri, 17 Jan 2020 02:32:17 GMT
 

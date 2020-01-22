@@ -25,7 +25,7 @@ export const PanelNonModalExample: React.FunctionComponent = () => {
         onDismiss={dismissPanel}
         closeButtonAriaLabel="Close"
       >
-        <span>{explanation}</span>
+        <p>{explanation}</p>
       </Panel>
     </div>
   );

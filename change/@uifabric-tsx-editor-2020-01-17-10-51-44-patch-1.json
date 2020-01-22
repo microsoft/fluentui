@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Forward supportedPackages from EditorWrapper to TsxEditor",
+  "packageName": "@uifabric/tsx-editor",
+  "email": "jimkyndemeyer@gmail.com",
+  "commit": "98ecc14cae342612339373063ce7d0ab078f20c0",
+  "date": "2020-01-17T09:51:44.775Z"
+}

@@ -171,7 +171,9 @@ exports[`Panel renders Panel correctly 1`] = `
           <div
             className=
                 ms-Panel-commands
-
+                {
+                  margin-top: 18px;
+                }
             data-is-visible={true}
           >
             <div
@@ -179,14 +181,46 @@ exports[`Panel renders Panel correctly 1`] = `
                   ms-Panel-navigation
                   {
                     display: flex;
-                    height: 44px;
                     justify-content: flex-end;
-                    padding-bottom: 0;
-                    padding-left: 5px;
-                    padding-right: 5px;
-                    padding-top: 0;
                   }
             >
+              <div
+                className=
+                    ms-Panel-header
+                    {
+                      flex-shrink: 1;
+                      margin-right: auto;
+                      padding-left: 24px;
+                      padding-right: 24px;
+                    }
+              >
+                <p
+                  aria-level={2}
+                  className=
+                      ms-Panel-headerText
+                      {
+                        -moz-osx-font-smoothing: grayscale;
+                        -webkit-font-smoothing: antialiased;
+                        color: #323130;
+                        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                        font-size: 20px;
+                        font-weight: 600;
+                        hyphens: auto;
+                        line-height: 27px;
+                        margin-bottom: 0px;
+                        margin-left: 0px;
+                        margin-right: 0px;
+                        margin-top: 0px;
+                        overflow-wrap: break-word;
+                        word-break: break-word;
+                        word-wrap: break-word;
+                      }
+                  id="Panel0-headerText"
+                  role="heading"
+                >
+                  Test Panel
+                </p>
+              </div>
               <button
                 className=
                     ms-Button
@@ -206,7 +240,8 @@ exports[`Panel renders Panel correctly 1`] = `
                       font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                       font-size: 20px;
                       font-weight: 400;
-                      height: auto;
+                      height: 32px;
+                      margin-right: 14px;
                       outline: transparent;
                       padding-bottom: 0;
                       padding-left: 4px;
@@ -217,7 +252,7 @@ exports[`Panel renders Panel correctly 1`] = `
                       text-decoration: none;
                       user-select: none;
                       vertical-align: top;
-                      width: 44px;
+                      width: 32px;
                     }
                     &::-moz-focus-inner {
                       border: 0;
@@ -334,49 +369,6 @@ exports[`Panel renders Panel correctly 1`] = `
           >
             <div
               className=
-                  ms-Panel-header
-                  {
-                    flex-shrink: 0;
-                    margin-bottom: 14px;
-                    margin-left: 0;
-                    margin-right: 0;
-                    margin-top: 14px;
-                    padding-left: 16px;
-                    padding-right: 16px;
-                  }
-                  @media (min-width: 1024px){& {
-                    margin-top: 30px;
-                  }
-            >
-              <p
-                aria-level={2}
-                className=
-                    ms-Panel-headerText
-                    {
-                      -moz-osx-font-smoothing: grayscale;
-                      -webkit-font-smoothing: antialiased;
-                      color: #323130;
-                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                      font-size: 20px;
-                      font-weight: 600;
-                      hyphens: auto;
-                      line-height: 27px;
-                      margin-bottom: 0px;
-                      margin-left: 0px;
-                      margin-right: 0px;
-                      margin-top: 0px;
-                      overflow-wrap: break-word;
-                      word-break: break-word;
-                      word-wrap: break-word;
-                    }
-                id="Panel0-headerText"
-                role="heading"
-              >
-                Test Panel
-              </p>
-            </div>
-            <div
-              className=
                   ms-Panel-scrollableContent
                   {
                     overflow-y: auto;
@@ -389,8 +381,8 @@ exports[`Panel renders Panel correctly 1`] = `
                     {
                       margin-bottom: 0px;
                       padding-bottom: 20px;
-                      padding-left: 16px;
-                      padding-right: 16px;
+                      padding-left: 24px;
+                      padding-right: 24px;
                     }
               >
                 <span>

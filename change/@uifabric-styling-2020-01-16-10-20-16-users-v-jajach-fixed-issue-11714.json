@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "TextField: fix focused bottom border mis-alignment when errorMessage is set",
+  "packageName": "@uifabric/styling",
+  "email": "v-jajach@microsoft.com",
+  "commit": "c6ec87ce96332e37c2e6fc723701e29275030c50",
+  "date": "2020-01-16T09:20:16.288Z"
+}
