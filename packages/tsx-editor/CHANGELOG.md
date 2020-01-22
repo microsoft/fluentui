@@ -1,7 +1,13 @@
 # Change Log - @uifabric/tsx-editor
 
-This log was last generated on Fri, 17 Jan 2020 02:32:17 GMT and should not be manually modified.
+This log was last generated on Wed, 22 Jan 2020 12:36:43 GMT and should not be manually modified.
 
+## 0.11.3
+Wed, 22 Jan 2020 12:36:43 GMT
+
+### Patches
+
+- Forward supportedPackages from EditorWrapper to TsxEditor (jimkyndemeyer@gmail.com)
 ## 0.11.2
 Fri, 17 Jan 2020 02:32:17 GMT
 

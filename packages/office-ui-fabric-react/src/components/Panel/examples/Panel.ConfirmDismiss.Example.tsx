@@ -40,7 +40,7 @@ export const PanelConfirmDismissExample: React.FunctionComponent = () => {
       <br />
       <DefaultButton text="Open panel" onClick={openPanel} />
       <Panel headerText="Panel with custom close behavior" isOpen={isPanelOpen} onDismiss={onDismiss} closeButtonAriaLabel="Close">
-        <span>{explanation}</span>
+        <p>{explanation}</p>
       </Panel>
       <Dialog hidden={!isDialogVisible} onDismiss={hideDialog} dialogContentProps={dialogContentProps} modalProps={dialogModalProps}>
         <DialogFooter>
