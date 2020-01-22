@@ -6,7 +6,8 @@ import {
   IStyle,
   normalize,
   getPlaceholderStyles,
-  IconFontSizes
+  IconFontSizes,
+  getEdgeChromiumForcedStylesOffSelector
 } from '../../Styling';
 import { ILabelStyles, ILabelStyleProps } from '../../Label';
 import { ITextFieldStyleProps, ITextFieldStyles } from './TextField.types';
@@ -38,6 +39,14 @@ function getLabelStyles(props: ITextFieldStyleProps): IStyleFunctionOrObject<ILa
 
   return () => ({
     root: [
+      // {
+      //   selectors: {
+      //     [HighContrastSelector]: {
+      //       background: 'Window',
+      //       color: disabled ? 'GrayText' : 'WindowText'
+      //     }
+      //   }
+      // },
       underlined &&
         disabled && {
           color: palette.neutralTertiary
@@ -92,7 +101,13 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
     padding: '0 10px',
     lineHeight: 1,
     whiteSpace: 'nowrap',
-    flexShrink: 0
+    flexShrink: 0,
+    selectors: {
+      [HighContrastSelector]: {
+        background: 'Window',
+        color: disabled ? 'GrayText' : 'WindowText'
+      }
+    }
   };
 
   // placeholder style constants
@@ -100,12 +115,22 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
     fonts.medium,
     {
       color: semanticColors.inputPlaceholderText,
-      opacity: 1
+      opacity: 1,
+      selectors: {
+        [HighContrastSelector]: {
+          color: 'GrayText'
+        }
+      }
     }
   ];
 
   const disabledPlaceholderStyles: IStyle = {
-    color: semanticColors.disabledText
+    color: semanticColors.disabledText,
+    selectors: {
+      [HighContrastSelector]: {
+        color: 'GrayText'
+      }
+    }
   };
 
   return {
@@ -138,7 +163,8 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
           selectors: {
             [HighContrastSelector]: {
               borderColor: 'GrayText'
-            }
+            },
+            ...getEdgeChromiumForcedStylesOffSelector()
           }
         },
         !disabled && {
@@ -148,7 +174,8 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
               selectors: {
                 [HighContrastSelector]: {
                   borderBottomColor: 'Highlight'
-                }
+                },
+                ...getEdgeChromiumForcedStylesOffSelector()
               }
             }
           }
@@ -189,7 +216,8 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
               selectors: {
                 [HighContrastSelector]: {
                   borderColor: 'Highlight'
-                }
+                },
+                ...getEdgeChromiumForcedStylesOffSelector()
               }
             }
           }
@@ -203,7 +231,8 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
         selectors: {
           [HighContrastSelector]: {
             borderColor: 'GrayText'
-          }
+          },
+          ...getEdgeChromiumForcedStylesOffSelector()
         },
 
         cursor: 'default'
@@ -252,6 +281,7 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
             [HighContrastSelector]: {
               selectors: {
                 ':before': {
+                  color: 'WindowText',
                   right: -14 // moving the * 4 pixel to right to alleviate border clipping in HC mode.
                 }
               }
@@ -278,6 +308,10 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
           '&:active, &:focus, &:hover': { outline: 0 },
           '::-ms-clear': {
             display: 'none'
+          },
+          [HighContrastSelector]: {
+            background: 'Window',
+            color: disabled ? 'GrayText' : 'WindowText'
           }
         }
       },

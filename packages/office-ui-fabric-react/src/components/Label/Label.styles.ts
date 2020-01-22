@@ -1,4 +1,4 @@
-import { HighContrastSelector, FontWeights } from '../../Styling';
+import { HighContrastSelector, FontWeights, getEdgeChromiumForcedStylesOffSelector } from '../../Styling';
 import { ILabelStyleProps, ILabelStyles } from './Label.types';
 
 export const getStyles = (props: ILabelStyleProps): ILabelStyles => {
@@ -24,22 +24,29 @@ export const getStyles = (props: ILabelStyleProps): ILabelStyles => {
         display: 'block',
         padding: '5px 0',
         wordWrap: 'break-word',
-        overflowWrap: 'break-word'
-      },
-      disabled && {
-        color: labelDisabledColor,
+        overflowWrap: 'break-word',
         selectors: {
           [HighContrastSelector]: {
-            color: 'GrayText'
-          }
+            background: 'Window',
+            color: disabled ? 'GrayText' : 'WindowText'
+          },
+          ...getEdgeChromiumForcedStylesOffSelector()
         }
+      },
+      disabled && {
+        color: labelDisabledColor
       },
       required && {
         selectors: {
           '::after': {
             content: `' *'`,
             color: labelRequiredStarColor,
-            paddingRight: 12
+            paddingRight: 12,
+            selectors: {
+              [HighContrastSelector]: {
+                color: 'WindowText'
+              }
+            }
           }
         }
       },
