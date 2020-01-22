@@ -2,6 +2,20 @@
   "name": "@uifabric/tsx-editor",
   "entries": [
     {
+      "date": "Wed, 22 Jan 2020 12:36:43 GMT",
+      "tag": "@uifabric/tsx-editor_v0.11.3",
+      "version": "0.11.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Forward supportedPackages from EditorWrapper to TsxEditor",
+            "author": "jimkyndemeyer@gmail.com",
+            "commit": "98ecc14cae342612339373063ce7d0ab078f20c0"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 17 Jan 2020 02:32:17 GMT",
       "tag": "@uifabric/tsx-editor_v0.11.2",
       "version": "0.11.2",
