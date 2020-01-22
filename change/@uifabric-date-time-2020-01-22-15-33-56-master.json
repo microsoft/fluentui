@@ -1,0 +1,9 @@
+{
+  "type": "patch",
+  "comment": "DatePicker: Fixing issue with formatted dates.",
+  "packageName": "@uifabric/date-time",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "commit": "a215a47453932f4f63827eb343fe2c2995c04ea0",
+  "dependentChangeType": "patch",
+  "date": "2020-01-22T23:33:51.867Z"
+}
