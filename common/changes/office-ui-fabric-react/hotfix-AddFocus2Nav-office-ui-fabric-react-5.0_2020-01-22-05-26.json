@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Add focus to Nav.",
+      "comment": "Nav: Add focus to Nav.",
       "type": "patch"
     }
   ],
