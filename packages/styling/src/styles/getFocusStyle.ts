@@ -148,25 +148,29 @@ export const getInputFocusStyle = (
   borderRadius: string | number,
   borderType: 'border' | 'borderBottom' = 'border',
   borderPosition: number = -1
-): IRawStyle => ({
-  borderColor,
-  selectors: {
-    ':after': {
-      pointerEvents: 'none',
-      content: "''",
-      position: 'absolute',
-      left: borderPosition,
-      top: borderPosition,
-      bottom: borderPosition,
-      right: borderPosition,
-      [borderType]: `2px solid ${borderColor}`,
-      borderRadius,
-      width: borderType === 'borderBottom' ? '100%' : undefined,
-      selectors: {
-        [HighContrastSelector]: {
-          [borderType === 'border' ? 'borderColor' : 'borderBottomColor']: 'Highlight'
+): IRawStyle => {
+  const isBorderBottom = borderType === 'borderBottom';
+
+  return {
+    borderColor,
+    selectors: {
+      ':after': {
+        pointerEvents: 'none',
+        content: "''",
+        position: 'absolute',
+        left: isBorderBottom ? 0 : borderPosition,
+        top: borderPosition,
+        bottom: borderPosition,
+        right: isBorderBottom ? 0 : borderPosition,
+        [borderType]: `2px solid ${borderColor}`,
+        borderRadius,
+        width: borderType === 'borderBottom' ? '100%' : undefined,
+        selectors: {
+          [HighContrastSelector]: {
+            [borderType === 'border' ? 'borderColor' : 'borderBottomColor']: 'Highlight'
+          }
         }
       }
     }
-  }
-});
+  };
+};

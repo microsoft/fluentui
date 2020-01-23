@@ -2,6 +2,20 @@
   "name": "@uifabric/styling",
   "entries": [
     {
+      "date": "Wed, 22 Jan 2020 12:36:43 GMT",
+      "tag": "@uifabric/styling_v7.10.2",
+      "version": "7.10.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "TextField: fix focused bottom border mis-alignment when errorMessage is set",
+            "author": "v-jajach@microsoft.com",
+            "commit": "c6ec87ce96332e37c2e6fc723701e29275030c50"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 17 Jan 2020 02:32:17 GMT",
       "tag": "@uifabric/styling_v7.10.1",
       "version": "7.10.1",

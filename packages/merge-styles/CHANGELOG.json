@@ -2,6 +2,20 @@
   "name": "@uifabric/merge-styles",
   "entries": [
     {
+      "date": "Wed, 22 Jan 2020 12:36:43 GMT",
+      "tag": "@uifabric/merge-styles_v7.8.3",
+      "version": "7.8.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Documentation: Added note to merge-styles readme about working with content security policy (CSP).",
+            "author": "elcraig@microsoft.com",
+            "commit": "204bbe4b92735ff5b7b0298c20142324faa093f5"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 17 Jan 2020 02:32:17 GMT",
       "tag": "@uifabric/merge-styles_v7.8.2",
       "version": "7.8.2",

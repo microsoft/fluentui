@@ -2,6 +2,20 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "date": "Thu, 23 Jan 2020 12:32:26 GMT",
+      "tag": "@uifabric/example-app-base_v7.11.5",
+      "version": "7.11.5",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix export to codepen for fabric 7 (#9450)",
+            "author": "xgao@microsoft.com",
+            "commit": "d9e7b876c4f8e9fa506a2f8e03af880e9dfc4d24"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 17 Jan 2020 02:32:17 GMT",
       "tag": "@uifabric/example-app-base_v7.11.3",
       "version": "7.11.3",
