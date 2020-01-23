@@ -1,0 +1,9 @@
+{
+  "type": "patch",
+  "comment": "Updating text field validation in date-time package to check new value rather than old one.",
+  "packageName": "office-ui-fabric-react",
+  "email": "chce@netcompany.com",
+  "commit": "7065b61c3f1df297a774d42672a21e89f8b88783",
+  "dependentChangeType": "patch",
+  "date": "2020-01-22T10:15:18.479Z"
+}
