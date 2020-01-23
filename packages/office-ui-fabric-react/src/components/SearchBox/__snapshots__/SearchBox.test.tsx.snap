@@ -42,7 +42,6 @@ exports[`SearchBox renders SearchBox correctly 1`] = `
       &:hover .ms-SearchBox-iconContainer {
         color: #005a9e;
       }
-  onBlurCapture={[Function]}
   onFocusCapture={[Function]}
   role="search"
 >
@@ -126,6 +125,7 @@ exports[`SearchBox renders SearchBox correctly 1`] = `
           display: none;
         }
     id="SearchBox0"
+    onBlur={[Function]}
     onChange={[Function]}
     onInput={[Function]}
     onKeyDown={[Function]}
@@ -177,7 +177,6 @@ exports[`SearchBox renders SearchBox without animation correctly 1`] = `
       &:hover .ms-SearchBox-iconContainer {
         color: #005a9e;
       }
-  onBlurCapture={[Function]}
   onFocusCapture={[Function]}
   role="search"
 >
@@ -259,6 +258,7 @@ exports[`SearchBox renders SearchBox without animation correctly 1`] = `
           display: none;
         }
     id="SearchBox5"
+    onBlur={[Function]}
     onChange={[Function]}
     onInput={[Function]}
     onKeyDown={[Function]}

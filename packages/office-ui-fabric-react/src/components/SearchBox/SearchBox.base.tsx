@@ -100,13 +100,7 @@ export class SearchBoxBase extends React.Component<ISearchBoxProps, ISearchBoxSt
     ]);
 
     return (
-      <div
-        role="search"
-        ref={this._rootElement}
-        className={classNames.root}
-        onBlurCapture={this._onBlur}
-        onFocusCapture={this._onFocusCapture}
-      >
+      <div role="search" ref={this._rootElement} className={classNames.root} onFocusCapture={this._onFocusCapture}>
         <div className={classNames.iconContainer} onClick={this._onClickFocus} aria-hidden={true}>
           <Icon iconName="Search" {...iconProps} className={classNames.icon} />
         </div>
@@ -117,6 +111,7 @@ export class SearchBoxBase extends React.Component<ISearchBoxProps, ISearchBoxSt
           placeholder={placeholderValue}
           onChange={this._onInputChange}
           onInput={this._onInputChange}
+          onBlur={this._onBlur}
           onKeyDown={this._onKeyDown}
           value={value}
           disabled={disabled}
@@ -127,6 +122,7 @@ export class SearchBoxBase extends React.Component<ISearchBoxProps, ISearchBoxSt
         {value!.length > 0 && (
           <div className={classNames.clearButton}>
             <IconButton
+              onBlur={this._onBlur}
               styles={{ root: { height: 'auto' }, icon: { fontSize: '12px' } }}
               iconProps={{ iconName: 'Clear' }}
               {...clearButtonProps}
