@@ -1,7 +1,13 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Fri, 17 Jan 2020 02:32:17 GMT and should not be manually modified.
+This log was last generated on Thu, 23 Jan 2020 12:32:26 GMT and should not be manually modified.
 
+## 7.11.5
+Thu, 23 Jan 2020 12:32:26 GMT
+
+### Patches
+
+- Fix export to codepen for fabric 7 (#9450) (xgao@microsoft.com)
 ## 7.11.3
 Fri, 17 Jan 2020 02:32:17 GMT
 

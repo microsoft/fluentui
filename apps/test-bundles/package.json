@@ -29,7 +29,7 @@
     "@uifabric/build": "^7.0.0"
   },
   "dependencies": {
-    "@uifabric/experiments": "^7.18.16",
+    "@uifabric/experiments": "^7.18.17",
     "@uifabric/set-version": "^7.0.3",
     "@uifabric/styling": "^7.10.2",
     "office-ui-fabric-react": "^7.84.0",
