@@ -40,7 +40,7 @@ import { SelectableOptionMenuItemType, getAllSelectedOptions, ISelectableDroppab
 const getClassNames = classNamesFunction<IDropdownStyleProps, IDropdownStyles>();
 
 /** Internal only props interface to support mixing in responsive mode */
-export interface IDropdownInternalProps extends IDropdownProps, IWithResponsiveModeState { }
+export interface IDropdownInternalProps extends IDropdownProps, IWithResponsiveModeState {}
 
 export interface IDropdownState {
   isOpen: boolean;
@@ -223,21 +223,21 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
     const ariaActiveDescendant = disabled
       ? undefined
       : isOpen && selectedIndices.length === 1 && selectedIndices[0] >= 0
-        ? this._listId + selectedIndices[0]
-        : undefined;
+      ? this._listId + selectedIndices[0]
+      : undefined;
 
     const ariaAttrs = multiSelect
       ? {
-        role: 'button'
-      }
+          role: 'button'
+        }
       : // single select
-      {
-        role: 'listbox',
-        childRole: 'option',
-        ariaSetSize: this._sizePosCache.optionSetSize,
-        ariaPosInSet: this._sizePosCache.positionInSet(selectedIndices[0]),
-        ariaSelected: selectedIndices[0] === undefined ? undefined : true
-      };
+        {
+          role: 'listbox',
+          childRole: 'option',
+          ariaSetSize: this._sizePosCache.optionSetSize,
+          ariaPosInSet: this._sizePosCache.positionInSet(selectedIndices[0]),
+          ariaSelected: selectedIndices[0] === undefined ? undefined : true
+        };
 
     this._classNames = getClassNames(propStyles, {
       theme,
@@ -300,9 +300,9 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
                 aria-selected={ariaAttrs.ariaSelected}
               >
                 {// If option is selected render title, otherwise render the placeholder text
-                  selectedOptions.length
-                    ? onRenderTitle(selectedOptions, this._onRenderTitle)
-                    : onRenderPlaceholder(props, this._onRenderPlaceholder)}
+                selectedOptions.length
+                  ? onRenderTitle(selectedOptions, this._onRenderTitle)
+                  : onRenderPlaceholder(props, this._onRenderPlaceholder)}
               </span>
               <span className={this._classNames.caretDownWrapper}>{onRenderCaretDown(props, this._onRenderCaretDown)}</span>
             </div>
@@ -490,23 +490,23 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
         {this._renderFocusableList(props)}
       </Panel>
     ) : (
-        <Callout
-          isBeakVisible={false}
-          gapSpace={0}
-          doNotLayer={false}
-          directionalHintFixed={false}
-          directionalHint={DirectionalHint.bottomLeftEdge}
-          {...calloutProps}
-          className={this._classNames.callout}
-          target={this._dropDown.current}
-          onDismiss={this._onDismiss}
-          onScroll={this._onScroll}
-          onPositioned={this._onPositioned}
-          calloutWidth={dropdownWidth || (this._dropDown.current ? this._dropDown.current.clientWidth : 0)}
-        >
-          {this._renderFocusableList(props)}
-        </Callout>
-      );
+      <Callout
+        isBeakVisible={false}
+        gapSpace={0}
+        doNotLayer={false}
+        directionalHintFixed={false}
+        directionalHint={DirectionalHint.bottomLeftEdge}
+        {...calloutProps}
+        className={this._classNames.callout}
+        target={this._dropDown.current}
+        onDismiss={this._onDismiss}
+        onScroll={this._onScroll}
+        onPositioned={this._onPositioned}
+        calloutWidth={dropdownWidth || (this._dropDown.current ? this._dropDown.current.clientWidth : 0)}
+      >
+        {this._renderFocusableList(props)}
+      </Callout>
+    );
   };
 
   /** Render Caret Down Icon */
@@ -552,10 +552,10 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
     const emptyQueue = (): void => {
       const newGroup = queue.id
         ? [
-          <div role="group" key={queue.id} aria-labelledby={queue.id}>
-            {queue.items}
-          </div>
-        ]
+            <div role="group" key={queue.id} aria-labelledby={queue.id}>
+              {queue.items}
+            </div>
+          ]
         : queue.items;
 
       renderedList = [...renderedList, ...newGroup];
@@ -642,12 +642,12 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
     const itemClassName = item.hidden // predicate: item hidden
       ? this._classNames.dropdownItemHidden
       : isItemSelected && item.disabled === true // predicate: both selected and disabled
-        ? this._classNames.dropdownItemSelectedAndDisabled
-        : isItemSelected // predicate: selected only
-          ? this._classNames.dropdownItemSelected
-          : item.disabled === true // predicate: disabled only
-            ? this._classNames.dropdownItemDisabled
-            : this._classNames.dropdownItem;
+      ? this._classNames.dropdownItemSelectedAndDisabled
+      : isItemSelected // predicate: selected only
+      ? this._classNames.dropdownItemSelected
+      : item.disabled === true // predicate: disabled only
+      ? this._classNames.dropdownItemDisabled
+      : this._classNames.dropdownItem;
 
     const { title = item.text } = item;
 
@@ -677,30 +677,30 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
         {onRenderOption(item, this._onRenderOption)}
       </CommandButton>
     ) : (
-        <Checkbox
-          id={this._listId + item.index}
-          key={item.key}
-          data-index={item.index}
-          data-is-focusable={!item.disabled}
-          disabled={item.disabled}
-          onChange={this._onItemClick(item)}
-          inputProps={{
-            onMouseEnter: this._onItemMouseEnter.bind(this, item),
-            onMouseLeave: this._onMouseItemLeave.bind(this, item),
-            onMouseMove: this._onItemMouseMove.bind(this, item)
-          }}
-          label={item.text}
-          title={title}
-          onRenderLabel={this._onRenderItemLabel.bind(this, item)}
-          className={itemClassName}
-          role="option"
-          aria-selected={isItemSelected ? 'true' : 'false'}
-          checked={isItemSelected}
-          styles={multiSelectItemStyles}
-          ariaPositionInSet={this._sizePosCache.positionInSet(item.index)}
-          ariaSetSize={this._sizePosCache.optionSetSize}
-        />
-      );
+      <Checkbox
+        id={this._listId + item.index}
+        key={item.key}
+        data-index={item.index}
+        data-is-focusable={!item.disabled}
+        disabled={item.disabled}
+        onChange={this._onItemClick(item)}
+        inputProps={{
+          onMouseEnter: this._onItemMouseEnter.bind(this, item),
+          onMouseLeave: this._onMouseItemLeave.bind(this, item),
+          onMouseMove: this._onItemMouseMove.bind(this, item)
+        }}
+        label={item.text}
+        title={title}
+        onRenderLabel={this._onRenderItemLabel.bind(this, item)}
+        className={itemClassName}
+        role="option"
+        aria-selected={isItemSelected ? 'true' : 'false'}
+        checked={isItemSelected}
+        styles={multiSelectItemStyles}
+        ariaPositionInSet={this._sizePosCache.positionInSet(item.index)}
+        ariaSetSize={this._sizePosCache.optionSetSize}
+      />
+    );
   };
 
   /** Render content of item (i.e. text/icon inside of button) */
