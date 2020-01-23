@@ -22,6 +22,7 @@ const generatePackageManifestTask = require('./tasks/generate-package-manifest')
 const { postprocessTask } = require('./tasks/postprocess');
 const { postprocessAmdTask } = require('./tasks/postprocess-amd');
 const { postprocessCommonjsTask } = require('./tasks/postprocess-commonjs');
+const { startStorybookTask, buildStorybookTask } = require('./tasks/storybookTask');
 
 /** Do only the bare minimum setup of options and resolve paths */
 function basicPreset() {
@@ -64,6 +65,8 @@ module.exports = function preset() {
   task('check-for-modified-files', checkForModifiedFiles);
   task('generate-version-files', generateVersionFiles);
   task('generate-package-manifest', generatePackageManifestTask);
+  task('storybook:start', startStorybookTask());
+  task('storybook:build', buildStorybookTask());
   task('ts:compile', () => {
     return argv().commonjs ? 'ts:commonjs-only' : parallel('ts:commonjs', 'ts:esm', condition('ts:amd', () => !!argv().production));
   });
