@@ -456,7 +456,10 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
         this._keytipTree.currentKeytip.hasDynamicChildren &&
         this._keytipTree.currentKeytip.children.indexOf(keytipProps.id) < 0
       ) {
-        this._keytipTree.currentKeytip = this._keytipTree.getNode(this._keytipTree.currentKeytip.id);
+        const currNode = this._keytipTree.getNode(this._keytipTree.currentKeytip.id);
+        if (currNode) {
+          this._keytipTree.currentKeytip = currNode;
+        }
       }
     }
 
