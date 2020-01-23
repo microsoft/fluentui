@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Fix High Contrast in Edge Chromium: TextField and Checkbox",
+  "packageName": "office-ui-fabric-react",
+  "email": "xgao@microsoft.com",
+  "commit": "5de7b877ca1f1038f0e978cb2a8ee3ac7375ad16",
+  "date": "2020-01-23T01:22:52.482Z"
+}
