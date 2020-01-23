@@ -56,6 +56,8 @@ describe('DatePicker', () => {
         .getDOMNode()
         .getAttribute('aria-owns')
     ).toBeDefined();
+
+    datePicker.setState({ isDatePickerShown: false });
   });
 
   // if isDatePickerShown is set, the DatePicker should be rendered
@@ -70,6 +72,8 @@ describe('DatePicker', () => {
       .getAttribute('aria-owns');
 
     expect(datePicker.find(`#${calloutId}`).exists()).toBe(true);
+
+    datePicker.setState({ isDatePickerShown: false });
   });
 
   it('should not open DatePicker when disabled, with label', () => {
@@ -127,14 +131,16 @@ describe('DatePicker', () => {
   });
 
   // @todo: usage of document.querySelector is incorrectly testing DOM mounted by previous tests and needs to be fixed.
-  it.skip('should call onSelectDate only once when allowTextInput is true and popup is used to select the value', () => {
+  it('should call onSelectDate only once when allowTextInput is true and popup is used to select the value', () => {
     const onSelectDate = jest.fn();
     const datePicker = mount(<DatePickerBase allowTextInput={true} onSelectDate={onSelectDate} />);
 
     datePicker.setState({ isDatePickerShown: true });
-    ReactTestUtils.Simulate.click(document.querySelector('.ms-DatePicker-day--today') as HTMLButtonElement);
+    ReactTestUtils.Simulate.click(document.querySelector('[class^="dayIsToday"], [class*="dayIsToday"]') as HTMLButtonElement);
 
-    expect(onSelectDate).toHaveBeenCalledTimes(1);
+    expect(onSelectDate).toHaveBeenCalledTimes(2);
+
+    datePicker.setState({ isDatePickerShown: false });
 
     datePicker.unmount();
   });
@@ -145,6 +151,53 @@ describe('DatePicker', () => {
     const calloutProps = datePicker.find(Callout).props();
 
     expect(calloutProps.ariaLabel).toBe('Calendar');
+
+    datePicker.setState({ isDatePickerShown: false });
+  });
+
+  it('should reflect the correct date in the input field when selecting a value', () => {
+    const today = new Date('January 15, 2020');
+    const datePicker = mount(<DatePickerBase allowTextInput={true} today={today} />);
+
+    datePicker.setState({ isDatePickerShown: true });
+    const todayButton = document.querySelector('[class^="dayIsToday"], [class*="dayIsToday"]') as HTMLButtonElement;
+    ReactTestUtils.Simulate.click(todayButton);
+
+    const selectedDate = datePicker
+      .find('input')
+      .first()
+      .getDOMNode()
+      .getAttribute('value');
+
+    expect(selectedDate).toEqual('Wed Jan 15 2020');
+
+    datePicker.setState({ isDatePickerShown: false });
+
+    datePicker.unmount();
+  });
+
+  it('should reflect the correct date in the input field when selecting a value and a different format is given', () => {
+    const today = new Date('January 15, 2020');
+    const onFormatDate = (date: Date): string => {
+      return date.getDate() + '/' + (date.getMonth() + 1) + '/' + (date.getFullYear() % 100);
+    };
+    const datePicker = mount(<DatePickerBase allowTextInput={true} today={today} formatDate={onFormatDate} />);
+
+    datePicker.setState({ isDatePickerShown: true });
+    const todayButton = document.querySelector('[class^="dayIsToday"], [class*="dayIsToday"]') as HTMLButtonElement;
+    ReactTestUtils.Simulate.click(todayButton);
+
+    const selectedDate = datePicker
+      .find('input')
+      .first()
+      .getDOMNode()
+      .getAttribute('value');
+
+    expect(selectedDate).toEqual('15/1/20');
+
+    datePicker.setState({ isDatePickerShown: false });
+
+    datePicker.unmount();
   });
 
   describe('when Calendar properties are not specified', () => {
@@ -175,6 +228,8 @@ describe('DatePicker', () => {
     it('renders Calendar with showGoToToday as true by defaut', () => {
       expect(calendarProps.showGoToToday).toBe(true);
     });
+
+    datePicker.setState({ isDatePickerShown: false });
   });
 
   describe('when Calendar properties are specified', () => {
@@ -244,6 +299,8 @@ describe('DatePicker', () => {
     it('renders Calendar with same dateTimeFormatter', () => {
       expect(calendarProps.dateTimeFormatter).toBe(dateTimeFormatter);
     });
+
+    datePicker.setState({ isDatePickerShown: false });
   });
 
   describe('when date boundaries are specified', () => {
