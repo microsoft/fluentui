@@ -50,40 +50,38 @@ storiesOf('Signals', module)
       {story()}
     </Screener>
   ))
-  .addStory('You checked out', () => (
+  .add('You checked out', () => (
     <SignalExample name="You checked out" signal={<YouCheckedOutSignal />} />
   ))
-  .addStory('Malware detected', () => (
+  .add('Malware detected', () => (
     <SignalExample name="Malware detected" signal={<MalwareDetectedSignal />} />
   ))
-  .addStory('Blocked', () => <SignalExample name="Blocked" signal={<BlockedSignal />} />)
-  .addStory('Missing metadata', () => (
+  .add('Blocked', () => <SignalExample name="Blocked" signal={<BlockedSignal />} />)
+  .add('Missing metadata', () => (
     <SignalExample name="Missing metadata" signal={<MissingMetadataSignal />} />
   ))
-  .addStory('Warning', () => <SignalExample name="Warning" signal={<WarningSignal />} />)
-  .addStory('Awaiting approval', () => (
+  .add('Warning', () => <SignalExample name="Warning" signal={<WarningSignal />} />)
+  .add('Awaiting approval', () => (
     <SignalExample name="Awaiting approval" signal={<AwaitingApprovalSignal />} />
   ))
-  .addStory('Trending', () => <SignalExample name="Trending" signal={<TrendingSignal />} />)
-  .addStory('Someone checked out', () => (
+  .add('Trending', () => <SignalExample name="Trending" signal={<TrendingSignal />} />)
+  .add('Someone checked out', () => (
     <SignalExample name="Someone checked out" signal={<SomeoneCheckedOutSignal />} />
   ))
-  .addStory('New', () => <SignalExample name="New" signal={<NewSignal />} />)
-  .addStory('New (positioning)', () => <SignalExample name="O" signal={<NewSignal />} />)
-  .addStory('Mention', () => <SignalExample name="Mention" signal={<MentionSignal />} />)
-  .addStory('Comments', () => <SignalExample name="Comments" signal={<CommentsSignal />} />)
-  .addStory('Comments (count)', () => (
+  .add('New', () => <SignalExample name="New" signal={<NewSignal />} />)
+  .add('New (positioning)', () => <SignalExample name="O" signal={<NewSignal />} />)
+  .add('Mention', () => <SignalExample name="Mention" signal={<MentionSignal />} />)
+  .add('Comments', () => <SignalExample name="Comments" signal={<CommentsSignal />} />)
+  .add('Comments (count)', () => (
     <SignalExample name="Comments" signal={<CommentsSignal>2</CommentsSignal>} />
   ))
-  .addStory('Unseen reply', () => (
-    <SignalExample name="Unseen reply" signal={<UnseenReplySignal />} />
-  ))
-  .addStory('Unseen edit', () => <SignalExample name="Unseen edit" signal={<UnseenEditSignal />} />)
-  .addStory('Emailed', () => <SignalExample name="Emailed" signal={<EmailedSignal />} />)
-  .addStory('Record', () => <SignalExample name="Record" signal={<RecordSignal />} />)
-  .addStory('Read-only', () => <SignalExample name="Read-only" signal={<ReadOnlySignal />} />)
-  .addStory('Shared', () => <SignalExample name="Shared" signal={<SharedSignal />} />)
-  .addStory('Follow', () => <SignalExample name="Save for later" signal={<FollowedSignal />} />)
-  .addStory('NotFollow', () => (
+  .add('Unseen reply', () => <SignalExample name="Unseen reply" signal={<UnseenReplySignal />} />)
+  .add('Unseen edit', () => <SignalExample name="Unseen edit" signal={<UnseenEditSignal />} />)
+  .add('Emailed', () => <SignalExample name="Emailed" signal={<EmailedSignal />} />)
+  .add('Record', () => <SignalExample name="Record" signal={<RecordSignal />} />)
+  .add('Read-only', () => <SignalExample name="Read-only" signal={<ReadOnlySignal />} />)
+  .add('Shared', () => <SignalExample name="Shared" signal={<SharedSignal />} />)
+  .add('Follow', () => <SignalExample name="Save for later" signal={<FollowedSignal />} />)
+  .add('NotFollow', () => (
     <SignalExample name="Remove from saved" signal={<NotFollowedSignal />} />
   ));

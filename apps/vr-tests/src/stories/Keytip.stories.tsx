@@ -23,10 +23,10 @@ storiesOf('Keytip', module)
       {story()}
     </Screener>
   )
-  .addStory('Root', () => <Keytip content={'A'} keySequences={['a']} visible={true} />)
-  .addStory('Disabled', () => (
+  .add('Root', () => <Keytip content={'A'} keySequences={['a']} visible={true} />)
+  .add('Disabled', () => (
     <Keytip content={'A'} keySequences={['a']} visible={true} disabled={true} />
   ))
-  .addStory('Offset', () => (
+  .add('Offset', () => (
     <Keytip content={'A'} keySequences={['a']} visible={true} offset={{ x: 15, y: 15 }} />
   ));

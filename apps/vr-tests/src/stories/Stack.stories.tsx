@@ -81,7 +81,7 @@ storiesOf('Stack', module)
       {story()}
     </Screener>
   )
-  .addStory(
+  .add(
     'Vertical Stack - Default',
     () => (
       <Fabric>
@@ -90,7 +90,7 @@ storiesOf('Stack', module)
     ),
     { rtl: true }
   )
-  .addStory(
+  .add(
     'Vertical Stack - Reversed',
     () => (
       <Fabric>
@@ -99,47 +99,47 @@ storiesOf('Stack', module)
     ),
     { rtl: true }
   )
-  .addStory('Vertical Stack - Padding', () => (
+  .add('Vertical Stack - Padding', () => (
     <Fabric>
       <Stack {...defaultProps} padding={10} />
     </Fabric>
   ))
-  .addStory('Vertical Stack - Gap', () => (
+  .add('Vertical Stack - Gap', () => (
     <Fabric>
       <Stack {...defaultProps} tokens={{ childrenGap: 10 }} />
     </Fabric>
   ))
-  .addStory('Vertical Stack - Vertically centered', () => (
+  .add('Vertical Stack - Vertically centered', () => (
     <Fabric>
       <Stack {...defaultProps} verticalAlign="center" className={styles.fixedHeight} />
     </Fabric>
   ))
-  .addStory('Vertical Stack - Bottom-aligned', () => (
+  .add('Vertical Stack - Bottom-aligned', () => (
     <Fabric>
       <Stack {...defaultProps} verticalAlign="end" className={styles.fixedHeight} />
     </Fabric>
   ))
-  .addStory('Vertical Stack - Space around', () => (
+  .add('Vertical Stack - Space around', () => (
     <Fabric>
       <Stack {...defaultProps} verticalAlign="space-around" className={styles.fixedHeight} />
     </Fabric>
   ))
-  .addStory('Vertical Stack - Space between', () => (
+  .add('Vertical Stack - Space between', () => (
     <Fabric>
       <Stack {...defaultProps} verticalAlign="space-between" className={styles.fixedHeight} />
     </Fabric>
   ))
-  .addStory('Vertical Stack - Space evenly', () => (
+  .add('Vertical Stack - Space evenly', () => (
     <Fabric>
       <Stack {...defaultProps} verticalAlign="space-evenly" className={styles.fixedHeight} />
     </Fabric>
   ))
-  .addStory('Vertical Stack - Horizontally centered', () => (
+  .add('Vertical Stack - Horizontally centered', () => (
     <Fabric>
       <Stack {...defaultProps} horizontalAlign="center" />
     </Fabric>
   ))
-  .addStory(
+  .add(
     'Vertical Stack - Right-aligned',
     () => (
       <Fabric>
@@ -148,7 +148,7 @@ storiesOf('Stack', module)
     ),
     { rtl: true }
   )
-  .addStory(
+  .add(
     'Vertical Stack - Item alignments',
     () => (
       <Stack {...defaultProps} tokens={{ childrenGap: 10 }}>
@@ -174,7 +174,7 @@ storiesOf('Stack', module)
     ),
     { rtl: true }
   )
-  .addStory('Vertical Stack - Growing items', () => (
+  .add('Vertical Stack - Growing items', () => (
     <Stack {...defaultProps} tokens={{ childrenGap: 10 }} className={styles.fixedHeight}>
       <Stack.Item grow={3} className={styles.item}>
         Grow is 3
@@ -187,7 +187,7 @@ storiesOf('Stack', module)
       </Stack.Item>
     </Stack>
   ))
-  .addStory('Vertical Stack - Shrinking items', () => (
+  .add('Vertical Stack - Shrinking items', () => (
     <Stack {...defaultProps} tokens={{ childrenGap: 10 }} className={styles.fixedHeight}>
       <Stack.Item className={styles.verticalShrinkItem}>1</Stack.Item>
       <Stack.Item disableShrink className={styles.verticalShrinkItem}>
@@ -198,7 +198,7 @@ storiesOf('Stack', module)
       <Stack.Item className={styles.verticalShrinkItem}>5</Stack.Item>
     </Stack>
   ))
-  .addStory(
+  .add(
     'Vertical Stack - Wrap',
     () => (
       <Fabric>
@@ -228,7 +228,7 @@ storiesOf('Stack', module)
     ),
     { rtl: true }
   )
-  .addStory('Vertical Stack - Box shadow around items', () => (
+  .add('Vertical Stack - Box shadow around items', () => (
     <Fabric>
       <Stack {...defaultProps} tokens={{ childrenGap: 25 }}>
         <span className={styles.shadowItem}>1</span>
@@ -239,7 +239,7 @@ storiesOf('Stack', module)
       </Stack>
     </Fabric>
   ))
-  .addStory(
+  .add(
     'Horizontal Stack - Default',
     () => (
       <Fabric>
@@ -248,7 +248,7 @@ storiesOf('Stack', module)
     ),
     { rtl: true }
   )
-  .addStory(
+  .add(
     'Horizontal Stack - Reversed',
     () => (
       <Fabric>
@@ -257,12 +257,12 @@ storiesOf('Stack', module)
     ),
     { rtl: true }
   )
-  .addStory('Horizontal Stack - Padding', () => (
+  .add('Horizontal Stack - Padding', () => (
     <Fabric>
       <Stack horizontal {...defaultProps} padding={10} />
     </Fabric>
   ))
-  .addStory(
+  .add(
     'Horizontal Stack - Gap',
     () => (
       <Fabric>
@@ -271,12 +271,12 @@ storiesOf('Stack', module)
     ),
     { rtl: true }
   )
-  .addStory('Horizontal Stack - Horizontally centered', () => (
+  .add('Horizontal Stack - Horizontally centered', () => (
     <Fabric>
       <Stack horizontal {...defaultProps} horizontalAlign="center" />
     </Fabric>
   ))
-  .addStory(
+  .add(
     'Horizontal Stack - Right-aligned',
     () => (
       <Fabric>
@@ -285,32 +285,32 @@ storiesOf('Stack', module)
     ),
     { rtl: true }
   )
-  .addStory('Horizontal Stack - Space around', () => (
+  .add('Horizontal Stack - Space around', () => (
     <Fabric>
       <Stack horizontal {...defaultProps} horizontalAlign="space-around" />
     </Fabric>
   ))
-  .addStory('Horizontal Stack - Space between', () => (
+  .add('Horizontal Stack - Space between', () => (
     <Fabric>
       <Stack horizontal {...defaultProps} horizontalAlign="space-between" />
     </Fabric>
   ))
-  .addStory('Horizontal Stack - Space evenly', () => (
+  .add('Horizontal Stack - Space evenly', () => (
     <Fabric>
       <Stack horizontal {...defaultProps} horizontalAlign="space-evenly" />
     </Fabric>
   ))
-  .addStory('Horizontal Stack - Vertically centered', () => (
+  .add('Horizontal Stack - Vertically centered', () => (
     <Fabric>
       <Stack horizontal {...defaultProps} verticalAlign="center" className={styles.fixedHeight} />
     </Fabric>
   ))
-  .addStory('Horizontal Stack - Bottom-aligned', () => (
+  .add('Horizontal Stack - Bottom-aligned', () => (
     <Fabric>
       <Stack horizontal {...defaultProps} verticalAlign="end" className={styles.fixedHeight} />
     </Fabric>
   ))
-  .addStory(
+  .add(
     'Horizontal Stack - Item alignments',
     () => (
       <Stack
@@ -341,7 +341,7 @@ storiesOf('Stack', module)
     ),
     { rtl: true }
   )
-  .addStory('Horizontal Stack - Growing items', () => (
+  .add('Horizontal Stack - Growing items', () => (
     <Stack horizontal {...defaultProps} tokens={{ childrenGap: 10 }}>
       <Stack.Item grow={3} className={styles.item}>
         Grow is 3
@@ -354,7 +354,7 @@ storiesOf('Stack', module)
       </Stack.Item>
     </Stack>
   ))
-  .addStory('Horizontal Stack - Shrinking items', () => (
+  .add('Horizontal Stack - Shrinking items', () => (
     <Stack horizontal {...defaultProps} tokens={{ childrenGap: 10 }}>
       <Stack.Item className={styles.horizontalShrinkItem}>1</Stack.Item>
       <Stack.Item disableShrink className={styles.horizontalShrinkItem}>
@@ -367,7 +367,7 @@ storiesOf('Stack', module)
       <Stack.Item className={styles.horizontalShrinkItem}>7</Stack.Item>
     </Stack>
   ))
-  .addStory(
+  .add(
     'Horizontal Stack - Wrap',
     () => (
       <Fabric>
@@ -406,7 +406,7 @@ storiesOf('Stack', module)
     ),
     { rtl: true }
   )
-  .addStory('Horizontal Stack - Wrap with specified vertical gap', () => (
+  .add('Horizontal Stack - Wrap with specified vertical gap', () => (
     <Fabric>
       <Stack horizontal {...defaultProps} wrap tokens={{ childrenGap: '40 10' }}>
         <span className={styles.boxItem}>1</span>
@@ -441,7 +441,7 @@ storiesOf('Stack', module)
       </Stack>
     </Fabric>
   ))
-  .addStory('Horizontal Stack - Box shadow around items', () => (
+  .add('Horizontal Stack - Box shadow around items', () => (
     <Fabric>
       <Stack horizontal {...defaultProps} tokens={{ childrenGap: 25 }}>
         <span className={styles.shadowItem}>1</span>

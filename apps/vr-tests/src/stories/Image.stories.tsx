@@ -63,7 +63,7 @@ storiesOf('Image', module)
       {story()}
     </Screener>
   )
-  .addStory('No fit, no w/h', () => (
+  .add('No fit, no w/h', () => (
     <div>
       <Label>
         Without a width or height specified, the frame remains at its natural size and the image
@@ -72,7 +72,7 @@ storiesOf('Image', module)
       <Image src={img350x150} />
     </div>
   ))
-  .addStory('No fit, only width', () => (
+  .add('No fit, only width', () => (
     <div>
       <Label>
         If only a width is provided, the frame will be set to that width. The image will scale
@@ -81,7 +81,7 @@ storiesOf('Image', module)
       <Image src={img350x150} width={600} />
     </div>
   ))
-  .addStory('No fit, only height', () => (
+  .add('No fit, only height', () => (
     <div>
       <Label>
         If only a height is provided, the frame will be set to that height. The image will scale
@@ -90,7 +90,7 @@ storiesOf('Image', module)
       <Image src={img350x150} width={100} />
     </div>
   ))
-  .addStory('Fit: none, image larger', () => (
+  .add('Fit: none, image larger', () => (
     <div>
       <Label>
         The image is larger than the frame, so it is cropped to fit. The image is positioned at the
@@ -99,7 +99,7 @@ storiesOf('Image', module)
       <Image {...imagePropsFitNone} />
     </div>
   ))
-  .addStory('Fit: none, image smaller', () => (
+  .add('Fit: none, image smaller', () => (
     <div>
       <Label>
         The image is smaller than the frame, so there is empty space within the frame. The image is
@@ -108,7 +108,7 @@ storiesOf('Image', module)
       <Image {...imagePropsFitNone} src="http://placehold.it/100x100" />
     </div>
   ))
-  .addStory('Fit: center, image larger', () => (
+  .add('Fit: center, image larger', () => (
     <div>
       <Label>
         The image is larger than the frame, so all sides are cropped to center the image.
@@ -116,7 +116,7 @@ storiesOf('Image', module)
       <Image {...imagePropsFitCenter} src="http://placehold.it/800x300" />
     </div>
   ))
-  .addStory('Fit: center, image smaller', () => (
+  .add('Fit: center, image smaller', () => (
     <div>
       <Label>
         The image is smaller than the frame, so there is empty space within the frame. The image is
@@ -125,7 +125,7 @@ storiesOf('Image', module)
       <Image {...imagePropsFitCenter} src="http://placehold.it/100x100" />
     </div>
   ))
-  .addStory('Fit: contain, image wider', () => (
+  .add('Fit: contain, image wider', () => (
     <div>
       <Label>
         The image has a wider aspect ratio (more landscape) than the frame, so the image is scaled
@@ -134,7 +134,7 @@ storiesOf('Image', module)
       <Image {...imagePropsFitContain} width={200} height={200} />
     </div>
   ))
-  .addStory('Fit: contain, image taller', () => (
+  .add('Fit: contain, image taller', () => (
     <div>
       <Label>
         The image has a taller aspect ratio (more portrait) than the frame, so the image is scaled
@@ -143,7 +143,7 @@ storiesOf('Image', module)
       <Image {...imagePropsFitContain} width={300} height={50} />
     </div>
   ))
-  .addStory('Fit: cover, image wider', () => (
+  .add('Fit: cover, image wider', () => (
     <div>
       <Label>
         The image has a wider aspect ratio (more landscape) than the frame, so the image is scaled
@@ -152,7 +152,7 @@ storiesOf('Image', module)
       <Image {...imagePropsFitCover} width={150} height={250} />
     </div>
   ))
-  .addStory('Fit: cover, image taller', () => (
+  .add('Fit: cover, image taller', () => (
     <div>
       <Label>
         The image has a taller aspect ratio (more portrait) than the frame, so the image is scaled
@@ -161,7 +161,7 @@ storiesOf('Image', module)
       <Image {...imagePropsFitCover} width={250} height={150} />
     </div>
   ))
-  .addStory('Fit: CenterContain, image smaller', () => (
+  .add('Fit: CenterContain, image smaller', () => (
     <div>
       <Label>
         The image is smaller than the frame, so the image is centered with empty space within the
@@ -172,7 +172,7 @@ storiesOf('Image', module)
       </div>
     </div>
   ))
-  .addStory('Fit: CenterContain, image larger', () => (
+  .add('Fit: CenterContain, image larger', () => (
     <div>
       <Label>The image is larger than the frame, so the image behaves as "contain".</Label>
       <div style={{ width: 350, height: 250, border }}>
@@ -180,7 +180,7 @@ storiesOf('Image', module)
       </div>
     </div>
   ))
-  .addStory('Fit: CenterContain, image wider', () => (
+  .add('Fit: CenterContain, image wider', () => (
     <div>
       <Label>
         The image has a wider aspect ratio (more landscape) than the frame, so the image is
@@ -191,7 +191,7 @@ storiesOf('Image', module)
       </div>
     </div>
   ))
-  .addStory('Fit: CenterContain, image taller', () => (
+  .add('Fit: CenterContain, image taller', () => (
     <div>
       <Label>
         The image has a taller aspect ratio (more portrait) than the frame, so the image is
@@ -202,7 +202,7 @@ storiesOf('Image', module)
       </div>
     </div>
   ))
-  .addStory('Fit: centerCover, image smaller', () => (
+  .add('Fit: centerCover, image smaller', () => (
     <div>
       <Label>
         The image is smaller than the frame, so the image is centered with empty space within the
@@ -213,7 +213,7 @@ storiesOf('Image', module)
       </div>
     </div>
   ))
-  .addStory('Fit: centerCover, image larger', () => (
+  .add('Fit: centerCover, image larger', () => (
     <div>
       <Label>The image is larger than the frame, so the image behaves as "cover".</Label>
       <div style={{ width: 350, height: 250, border }}>
@@ -221,7 +221,7 @@ storiesOf('Image', module)
       </div>
     </div>
   ))
-  .addStory('Fit: centerCover, image wider', () => (
+  .add('Fit: centerCover, image wider', () => (
     <div>
       <Label>
         The image has a wider aspect ratio (more landscape) than the frame, so the sides are cropped
@@ -232,7 +232,7 @@ storiesOf('Image', module)
       </div>
     </div>
   ))
-  .addStory('Fit: centerCover, image taller', () => (
+  .add('Fit: centerCover, image taller', () => (
     <div>
       <Label>
         The image has a taller aspect ratio (more portrait) than the frame, so the top and bottom
@@ -243,7 +243,7 @@ storiesOf('Image', module)
       </div>
     </div>
   ))
-  .addStory('Maximize frame, landscape container', () => (
+  .add('Maximize frame, landscape container', () => (
     <div>
       <Label>The image is placed within a landscape container.</Label>
       <div style={{ width: '200px', height: '100px' }}>
@@ -251,4 +251,4 @@ storiesOf('Image', module)
       </div>
     </div>
   ))
-  .addStory('Maximize frame, portrait container', () => <Layer>sdfsfdsf</Layer>);
+  .add('Maximize frame, portrait container', () => <Layer>sdfsfdsf</Layer>);

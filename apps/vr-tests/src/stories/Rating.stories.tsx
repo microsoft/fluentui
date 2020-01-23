@@ -18,7 +18,7 @@ storiesOf('Rating', module)
       {story()}
     </Screener>
   ))
-  .addStory('Root', () => <Rating min={1} max={5} />)
-  .addStory('Rated', () => <Rating min={1} max={5} rating={2} />, { rtl: true })
-  .addStory('Large', () => <Rating min={1} max={5} size={RatingSize.Large} />)
-  .addStory('Disabled', () => <Rating min={1} max={5} disabled />);
+  .add('Root', () => <Rating min={1} max={5} />)
+  .add('Rated', () => <Rating min={1} max={5} rating={2} />, { rtl: true })
+  .add('Large', () => <Rating min={1} max={5} size={RatingSize.Large} />)
+  .add('Disabled', () => <Rating min={1} max={5} disabled />);

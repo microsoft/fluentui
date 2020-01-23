@@ -299,16 +299,14 @@ storiesOf('ContextualMenu', module)
       {story()}
     </Screener>
   ))
-  .addStory('Root', () => <ContextualMenu items={items} />)
-  .addStory('With icons', () => <ContextualMenu items={itemsWithIcons} />)
-  .addStory('With secondaryText', () => <ContextualMenu items={itemsWithSecondaryText} />, {
+  .add('Root', () => <ContextualMenu items={items} />)
+  .add('With icons', () => <ContextualMenu items={itemsWithIcons} />)
+  .add('With secondaryText', () => <ContextualMenu items={itemsWithSecondaryText} />, {
     rtl: true
   })
-  .addStory('With submenu', () => <ContextualMenu items={itemsWithSubmenu} />, { rtl: true })
-  .addStory('With headers', () => <ContextualMenu items={itemsWithHeaders} />)
-  .addStory('With split button submenu', () => (
-    <ContextualMenu items={itemsWithSplitButtonSubmenu} />
-  ))
+  .add('With submenu', () => <ContextualMenu items={itemsWithSubmenu} />, { rtl: true })
+  .add('With headers', () => <ContextualMenu items={itemsWithHeaders} />)
+  .add('With split button submenu', () => <ContextualMenu items={itemsWithSplitButtonSubmenu} />)
   .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()
@@ -325,7 +323,7 @@ storiesOf('ContextualMenu', module)
       {story()}
     </Screener>
   ))
-  .addStory('With submenus with hrefs', () => (
+  .add('With submenus with hrefs', () => (
     <DefaultButton
       id="button"
       text="Click for ContextualMenu"

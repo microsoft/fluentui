@@ -14,7 +14,7 @@ storiesOf('Calendar', module)
       {story()}
     </Screener>
   ))
-  .addStory(
+  .add(
     'Root',
     () => (
       <Fabric>
@@ -31,7 +31,7 @@ storiesOf('Calendar - No Month Option', module)
       {story()}
     </Screener>
   ))
-  .addStory('Show Month as Overlay and no Go To Today', () => (
+  .add('Show Month as Overlay and no Go To Today', () => (
     <Fabric>
       <Calendar value={date} showGoToToday={false} showMonthPickerAsOverlay={true} />
     </Fabric>

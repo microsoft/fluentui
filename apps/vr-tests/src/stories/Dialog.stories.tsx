@@ -36,7 +36,7 @@ storiesOf('Dialog', module)
       {story()}
     </Screener>
   )
-  .addStory(
+  .add(
     'Root',
     () => (
       <Dialog
@@ -49,7 +49,7 @@ storiesOf('Dialog', module)
     ),
     { rtl: true }
   )
-  .addStory('Wide Dialog', () => (
+  .add('Wide Dialog', () => (
     <Dialog
       hidden={false}
       dialogContentProps={{ type: DialogType.normal, ...text }}
@@ -60,7 +60,7 @@ storiesOf('Dialog', module)
       {footer}
     </Dialog>
   ))
-  .addStory('Large header', () => (
+  .add('Large header', () => (
     <Dialog
       hidden={false}
       dialogContentProps={{ type: DialogType.largeHeader, ...text }}
@@ -69,7 +69,7 @@ storiesOf('Dialog', module)
       {footer}
     </Dialog>
   ))
-  .addStory('Blocking', () => (
+  .add('Blocking', () => (
     <Dialog
       hidden={false}
       dialogContentProps={{ type: DialogType.normal, ...text }}

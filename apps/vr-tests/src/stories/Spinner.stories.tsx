@@ -12,18 +12,18 @@ storiesOf('Spinner', module)
       {story()}
     </Screener>
   ))
-  .addStory('Extra small', () => <Spinner size={SpinnerSize.xSmall} />)
-  .addStory('Small', () => <Spinner size={SpinnerSize.small} />)
-  .addStory('Medium', () => <Spinner size={SpinnerSize.medium} />)
-  .addStory('Large', () => <Spinner size={SpinnerSize.large} />)
-  .addStory('Label', () => (
+  .add('Extra small', () => <Spinner size={SpinnerSize.xSmall} />)
+  .add('Small', () => <Spinner size={SpinnerSize.small} />)
+  .add('Medium', () => <Spinner size={SpinnerSize.medium} />)
+  .add('Large', () => <Spinner size={SpinnerSize.large} />)
+  .add('Label', () => (
     <Spinner
       styles={{ label: { fontFamily: 'Segoe UI', fontSize: '14px' } }}
       size={SpinnerSize.medium}
       label="Spinner label"
     />
   ))
-  .addStory('Label at top', () => (
+  .add('Label at top', () => (
     <Spinner
       styles={{ label: { fontFamily: 'Segoe UI', fontSize: '14px' } }}
       size={SpinnerSize.medium}
@@ -31,7 +31,7 @@ storiesOf('Spinner', module)
       labelPosition="top"
     />
   ))
-  .addStory('Label on the right', () => (
+  .add('Label on the right', () => (
     <Spinner
       styles={{ label: { fontFamily: 'Segoe UI', fontSize: '14px' } }}
       size={SpinnerSize.medium}
@@ -39,7 +39,7 @@ storiesOf('Spinner', module)
       labelPosition="right"
     />
   ))
-  .addStory('Label on the left', () => (
+  .add('Label on the left', () => (
     <Spinner
       styles={{ label: { fontFamily: 'Segoe UI', fontSize: '14px' } }}
       size={SpinnerSize.medium}

@@ -17,7 +17,7 @@ storiesOf('FocusTrapZones', module)
       {story()}
     </Screener>
   ))
-  .addStory(
+  .add(
     'Dialog nested in Panel',
     () => (
       <div>
@@ -50,7 +50,7 @@ storiesOf('FocusTrapZones', module)
     ),
     { rtl: true }
   )
-  .addStory('Panel on its own', () => (
+  .add('Panel on its own', () => (
     <div>
       <Panel
         isOpen={true}

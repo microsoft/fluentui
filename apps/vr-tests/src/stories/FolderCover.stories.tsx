@@ -50,7 +50,7 @@ storiesOf('FolderCover', module)
       {story()}
     </Screener>
   )
-  .addStory('Large Default Cover', () => (
+  .add('Large Default Cover', () => (
     <FolderCoverWithImage
       originalImageSize={{
         width: 200,
@@ -61,7 +61,7 @@ storiesOf('FolderCover', module)
       signal={<SharedSignal />}
     />
   ))
-  .addStory('Small Default Cover', () => (
+  .add('Small Default Cover', () => (
     <FolderCoverWithImage
       originalImageSize={{
         width: 200,
@@ -71,7 +71,7 @@ storiesOf('FolderCover', module)
       metadata={15}
     />
   ))
-  .addStory('Large Media Cover', () => (
+  .add('Large Media Cover', () => (
     <FolderCoverWithImage
       originalImageSize={{
         width: 200,
@@ -83,7 +83,7 @@ storiesOf('FolderCover', module)
       signal={<SharedSignal />}
     />
   ))
-  .addStory('Small Media Cover', () => (
+  .add('Small Media Cover', () => (
     <FolderCoverWithImage
       originalImageSize={{
         width: 200,
@@ -94,7 +94,7 @@ storiesOf('FolderCover', module)
       metadata={15}
     />
   ))
-  .addStory('Shared Cover', () => (
+  .add('Shared Cover', () => (
     <FolderCoverWithImage
       originalImageSize={{
         width: 200,

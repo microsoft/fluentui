@@ -29,7 +29,7 @@ storiesOf('Link', module)
       {story()}
     </Screener>
   ))
-  .addStory(
+  .add(
     'Root',
     () => (
       <Link href="#" styles={{ root: { fontSize: '14px' } }}>
@@ -38,17 +38,17 @@ storiesOf('Link', module)
     ),
     { rtl: true }
   )
-  .addStory('Disabled', () => (
+  .add('Disabled', () => (
     <Link href="#" disabled styles={{ root: { fontSize: '14px' } }}>
       I'm a disabled link
     </Link>
   ))
-  .addStory('No Href', () => (
+  .add('No Href', () => (
     <Link styles={{ root: { fontSize: '14px' } }}>
       I'm rendered as a button because I have no href
     </Link>
   ))
-  .addStory('No Href Disabled', () => (
+  .add('No Href Disabled', () => (
     <Link disabled styles={{ root: { fontSize: '14px' } }}>
       I'm rendered as a button because I have no href and am disabled
     </Link>

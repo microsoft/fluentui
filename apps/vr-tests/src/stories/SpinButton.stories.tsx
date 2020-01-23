@@ -46,17 +46,17 @@ storiesOf('SpinButton', module)
       {story()}
     </Screener>
   ))
-  .addStory('Root', () => (
+  .add('Root', () => (
     <Fabric>
       <SpinButton {...props} />
     </Fabric>
   ))
-  .addStory('Disabled', () => (
+  .add('Disabled', () => (
     <Fabric>
       <SpinButton {...props} disabled />
     </Fabric>
   ))
-  .addStory(
+  .add(
     'With icon',
     () => (
       <Fabric>
@@ -74,7 +74,7 @@ storiesOf('SpinButton', module)
       {story()}
     </Screener>
   ))
-  .addStory(
+  .add(
     'Label at end',
     () => (
       <Fabric>
@@ -83,7 +83,7 @@ storiesOf('SpinButton', module)
     ),
     { rtl: true }
   )
-  .addStory(
+  .add(
     'Label at end with icon',
     () => (
       <Fabric>
@@ -92,7 +92,7 @@ storiesOf('SpinButton', module)
     ),
     { rtl: true }
   )
-  .addStory('Label on top', () => (
+  .add('Label on top', () => (
     <Fabric>
       <SpinButton
         {...props}
@@ -109,7 +109,7 @@ storiesOf('SpinButton', module)
       />
     </Fabric>
   ))
-  .addStory('Label on top with icon', () => (
+  .add('Label on top with icon', () => (
     <Fabric>
       <SpinButton
         {...props}
@@ -127,12 +127,12 @@ storiesOf('SpinButton', module)
       />
     </Fabric>
   ))
-  .addStory('Label on bottom', () => (
+  .add('Label on bottom', () => (
     <Fabric>
       <SpinButton {...props} styles={styles} labelPosition={Position.bottom} />
     </Fabric>
   ))
-  .addStory('Label on bottom with icon', () => (
+  .add('Label on bottom with icon', () => (
     <Fabric>
       <SpinButton
         {...props}

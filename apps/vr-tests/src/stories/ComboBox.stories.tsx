@@ -54,7 +54,7 @@ storiesOf('ComboBox', module)
       {story()}
     </Screener>
   ))
-  .addStory(
+  .add(
     'Root',
     () => (
       <ComboBox
@@ -68,7 +68,7 @@ storiesOf('ComboBox', module)
       rtl: true
     }
   )
-  .addStory('Styled', () => (
+  .add('Styled', () => (
     <ComboBox
       defaultSelectedKey="A"
       label="Styled with dividers"
@@ -77,7 +77,7 @@ storiesOf('ComboBox', module)
       onRenderOption={onRenderFontOption}
     />
   ))
-  .addStory('Disabled', () =>
+  .add('Disabled', () =>
     // prettier-ignore
     <ComboBox
       defaultSelectedKey="A"
@@ -86,7 +86,7 @@ storiesOf('ComboBox', module)
       disabled
     />
   )
-  .addStory('Placeholder', () =>
+  .add('Placeholder', () =>
     // prettier-ignore
     <ComboBox
       placeholder="Select an option"

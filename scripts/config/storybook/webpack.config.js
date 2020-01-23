@@ -53,6 +53,21 @@ module.exports = ({ config }) => {
     ]
   });
 
+  config.module.rules.push({
+    test: /\.(gif|jpg|jpeg|png|svg)$/,
+    loader: 'file-loader?name=[name].[ext]'
+  });
+
+  config.module.rules.push({
+    test: /\.(woff|woff2|ttf)$/,
+    loader: 'file-loader?name=[name].[ext]'
+  });
+
+  config.module.rules.push({
+    test: /\.md$/,
+    loader: 'raw-loader'
+  });
+
   config.resolve.extensions.push('.ts', '.tsx');
 
   config.plugins.push(new HardSourceWebpackPlugin(), new IgnoreNotFoundExportWebpackPlugin({ include: [/\.tsx?$/] }));

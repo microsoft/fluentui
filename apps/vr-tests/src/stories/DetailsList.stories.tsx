@@ -133,7 +133,7 @@ storiesOf('DetailsList', module)
       {story()}
     </Screener>
   ))
-  .addStory('Root', () => (
+  .add('Root', () => (
     <DetailsList
       items={items}
       compact={false}
@@ -142,7 +142,7 @@ storiesOf('DetailsList', module)
       isHeaderVisible={true}
     />
   ))
-  .addStory('Compact', () => (
+  .add('Compact', () => (
     <DetailsList
       items={items}
       compact
@@ -151,7 +151,7 @@ storiesOf('DetailsList', module)
       isHeaderVisible={true}
     />
   ))
-  .addStory('Single Selection Mode', () => (
+  .add('Single Selection Mode', () => (
     <DetailsList
       items={items}
       compact={false}
@@ -161,7 +161,7 @@ storiesOf('DetailsList', module)
       isHeaderVisible={true}
     />
   ))
-  .addStory('Grouped', () => (
+  .add('Grouped', () => (
     <DetailsList
       items={items}
       groups={groups}
@@ -170,7 +170,7 @@ storiesOf('DetailsList', module)
       isHeaderVisible={true}
     />
   ))
-  .addStory('Grouped with Checkbox Hidden', () => (
+  .add('Grouped with Checkbox Hidden', () => (
     <DetailsList
       items={items}
       groups={groups}
@@ -180,7 +180,7 @@ storiesOf('DetailsList', module)
       isHeaderVisible={true}
     />
   ))
-  .addStory(
+  .add(
     'Checkbox Visible Always',
     () => (
       <DetailsList

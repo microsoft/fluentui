@@ -24,7 +24,7 @@ storiesOf('OverflowSet', module)
       {story()}
     </Screener>
   ))
-  .addStory(
+  .add(
     'Root',
     () => (
       <Fabric>
@@ -58,7 +58,7 @@ storiesOf('OverflowSet variant', module)
       {story()}
     </Screener>
   )
-  .addStory('Vertical Direction', () => (
+  .add('Vertical Direction', () => (
     <Fabric>
       <OverflowSet
         vertical

@@ -23,18 +23,18 @@ storiesOf('MessageBar', module)
       {story()}
     </Screener>
   )
-  .addStory('Root', () => <MessageBar>Info/default message bar. {link}</MessageBar>, { rtl: true })
-  .addStory(
+  .add('Root', () => <MessageBar>Info/default message bar. {link}</MessageBar>, { rtl: true })
+  .add(
     'Root dismiss',
     () => <MessageBar onDismiss={noop}>Info/default message bar. {link}</MessageBar>,
     { rtl: true }
   )
-  .addStory('Root dismiss single line', () => (
+  .add('Root dismiss single line', () => (
     <MessageBar onDismiss={noop} isMultiline={false}>
       Info/default message bar. {link}
     </MessageBar>
   ))
-  .addStory(
+  .add(
     'Root truncated',
     () => (
       <MessageBar truncated={true} isMultiline={false}>
@@ -50,7 +50,7 @@ storiesOf('MessageBar', module)
     ),
     { rtl: true }
   )
-  .addStory(
+  .add(
     'Root actions',
     () => (
       <MessageBar
@@ -66,7 +66,7 @@ storiesOf('MessageBar', module)
     ),
     { rtl: true }
   )
-  .addStory(
+  .add(
     'Root actions single line',
     () => (
       <MessageBar
@@ -83,7 +83,7 @@ storiesOf('MessageBar', module)
     ),
     { rtl: true }
   )
-  .addStory(
+  .add(
     'Root dismiss and action',
     () => (
       <MessageBar
@@ -100,7 +100,7 @@ storiesOf('MessageBar', module)
     ),
     { rtl: true }
   )
-  .addStory(
+  .add(
     'Root dismiss and action single line',
     () => (
       <MessageBar
@@ -118,40 +118,40 @@ storiesOf('MessageBar', module)
     ),
     { rtl: true }
   )
-  .addStory(
+  .add(
     'Root multiline',
     () => <MessageBar isMultiline>Info/default message bar. {longText}</MessageBar>,
     { rtl: true }
   )
-  .addStory(
+  .add(
     'Root overflow',
     () => <MessageBar isMultiline={false}>Info/default message bar. {longText} </MessageBar>,
     { rtl: true }
   )
-  .addStory('Error', () =>
+  .add('Error', () =>
     // prettier-ignore
     <MessageBar messageBarType={MessageBarType.error}>
       Error message bar. {link}
     </MessageBar>
   )
-  .addStory('Blocked', () =>
+  .add('Blocked', () =>
     // prettier-ignore
     <MessageBar messageBarType={MessageBarType.blocked}>
       Blocked message bar. {link}
     </MessageBar>
   )
-  .addStory('Severe Warning', () => (
+  .add('Severe Warning', () => (
     <MessageBar messageBarType={MessageBarType.severeWarning}>
       Severe Warning message bar. {link}
     </MessageBar>
   ))
-  .addStory('Success', () =>
+  .add('Success', () =>
     // prettier-ignore
     <MessageBar messageBarType={MessageBarType.success}>
       Success message bar. {link}
     </MessageBar>
   )
-  .addStory('Warning', () =>
+  .add('Warning', () =>
     // prettier-ignore
     <MessageBar messageBarType={MessageBarType.warning}>
       Warning message bar. {link}

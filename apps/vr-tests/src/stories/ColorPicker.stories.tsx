@@ -17,7 +17,7 @@ storiesOf('ColorPicker', module)
       {story()}
     </Screener>
   )
-  .addStory(
+  .add(
     'Root',
     () => (
       <Fabric>
@@ -33,7 +33,7 @@ storiesOf('ColorPicker', module)
       rtl: true
     }
   )
-  .addStory('Blue', () => (
+  .add('Blue', () => (
     <Fabric>
       <ColorPicker
         color="#48B"

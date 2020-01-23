@@ -280,4 +280,4 @@ storiesOf('ScrollablePane Grouped Details List', module)
       {story()}
     </Screener>
   ))
-  .addStory('ScrollablePane scrollbars visibility', () => <ScrollablePaneDetailsListStory />);
+  .add('ScrollablePane scrollbars visibility', () => <ScrollablePaneDetailsListStory />);

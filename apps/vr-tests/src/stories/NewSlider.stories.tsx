@@ -25,7 +25,7 @@ storiesOf('Experimental Slider', module)
       {story()}
     </Screener>
   ))
-  .addStory('With Tickmarks', () => (
+  .add('With Tickmarks', () => (
     <div style={{ flexDirection: 'column', width: '300px', display: 'flex' }}>
       <Slider
         label="Slider with Tickmarks"
@@ -38,7 +38,7 @@ storiesOf('Experimental Slider', module)
       />
     </div>
   ))
-  .addStory('Vertical With Custom Labels', () => (
+  .add('Vertical With Custom Labels', () => (
     <div style={{ flexDirection: 'row', height: '200px', display: 'flex' }}>
       <Slider
         label="Slider with Custom Labels"

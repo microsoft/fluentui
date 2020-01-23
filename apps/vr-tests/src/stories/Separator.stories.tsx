@@ -20,7 +20,7 @@ storiesOf('Separator', module)
       {story()}
     </Screener>
   ))
-  .addStory(
+  .add(
     'Root',
     () => (
       <div className={horizontalStyles}>
@@ -29,7 +29,7 @@ storiesOf('Separator', module)
     ),
     { rtl: true }
   )
-  .addStory(
+  .add(
     'Horizontal Start Aligned',
     () => (
       <div className={horizontalStyles}>
@@ -38,7 +38,7 @@ storiesOf('Separator', module)
     ),
     { rtl: true }
   )
-  .addStory(
+  .add(
     'Horizontal End Aligned',
     () => (
       <div className={horizontalStyles}>
@@ -47,7 +47,7 @@ storiesOf('Separator', module)
     ),
     { rtl: true }
   )
-  .addStory(
+  .add(
     'Vertical Center Aligned',
     () => (
       <div className={verticalStyles}>
@@ -56,7 +56,7 @@ storiesOf('Separator', module)
     ),
     { rtl: true }
   )
-  .addStory(
+  .add(
     'Vertical Start Aligned',
     () => (
       <div className={verticalStyles}>
@@ -67,7 +67,7 @@ storiesOf('Separator', module)
     ),
     { rtl: true }
   )
-  .addStory(
+  .add(
     'Vertical End Aligned',
     () => (
       <div className={verticalStyles}>

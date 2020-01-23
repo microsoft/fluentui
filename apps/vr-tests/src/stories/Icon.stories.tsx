@@ -27,7 +27,7 @@ storiesOf('Icon', module)
       {story()}
     </Screener>
   )
-  .addStory('Root', () => (
+  .add('Root', () => (
     <Fabric>
       <div>{allIcons}</div>
       <Icon className={getIconClassName('CompassNW')} />
@@ -35,12 +35,12 @@ storiesOf('Icon', module)
       <Icon className={getIconClassName('Share')} />
     </Fabric>
   ))
-  .addStory('Color', () => (
+  .add('Color', () => (
     <Fabric>
       <Icon iconName={'CompassNW'} style={{ color: 'red' }} />
     </Fabric>
   ))
-  .addStory('Image', () => (
+  .add('Image', () => (
     <Fabric>
       <Icon
         iconName={'None'}

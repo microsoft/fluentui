@@ -18,18 +18,14 @@ storiesOf('Toggle', module)
       {story()}
     </Screener>
   ))
-  .addStory('Checked', () => <Toggle {...baseProps} defaultChecked={true} />, { rtl: true })
-  .addStory('Unchecked', () => <Toggle {...baseProps} defaultChecked={false} />, { rtl: true })
-  .addStory('Disabled checked', () => (
-    <Toggle {...baseProps} defaultChecked={true} disabled={true} />
-  ))
-  .addStory('Disabled unchecked', () => (
-    <Toggle {...baseProps} defaultChecked={false} disabled={true} />
-  ))
-  .addStory('With inline label', () => (
+  .add('Checked', () => <Toggle {...baseProps} defaultChecked={true} />, { rtl: true })
+  .add('Unchecked', () => <Toggle {...baseProps} defaultChecked={false} />, { rtl: true })
+  .add('Disabled checked', () => <Toggle {...baseProps} defaultChecked={true} disabled={true} />)
+  .add('Disabled unchecked', () => <Toggle {...baseProps} defaultChecked={false} disabled={true} />)
+  .add('With inline label', () => (
     <Toggle {...baseProps} defaultChecked={true} disabled={false} inlineLabel={true} />
   ))
-  .addStory('With inline label (JSX Element)', () => (
+  .add('With inline label (JSX Element)', () => (
     <Toggle
       label={<p>Toggle label</p>}
       onText="On"
@@ -39,15 +35,15 @@ storiesOf('Toggle', module)
       inlineLabel={true}
     />
   ))
-  .addStory('With inline label disabled', () => (
+  .add('With inline label disabled', () => (
     <Toggle {...baseProps} defaultChecked={true} disabled={true} inlineLabel={true} />
   ))
-  .addStory('With inline label and without onText and offText', () => (
+  .add('With inline label and without onText and offText', () => (
     <Toggle label={'Toggle label'} defaultChecked={true} disabled={false} inlineLabel={true} />
   ))
-  .addStory('With inline label (JSX Element) and without onText and offText', () => (
+  .add('With inline label (JSX Element) and without onText and offText', () => (
     <Toggle label={<p>Toggle label</p>} defaultChecked={true} disabled={false} inlineLabel={true} />
   ))
-  .addStory('With inline label disabled and without onText and offText', () => (
+  .add('With inline label disabled and without onText and offText', () => (
     <Toggle label={'Toggle label'} defaultChecked={true} disabled={true} inlineLabel={true} />
   ));

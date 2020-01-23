@@ -38,9 +38,9 @@ storiesOf('Shimmer', module)
       {story()}
     </Screener>
   )
-  .addStory('Basic', () => <Shimmer />)
-  .addStory('50% width', () => <Shimmer width="50%" />)
-  .addStory(
+  .add('Basic', () => <Shimmer />)
+  .add('50% width', () => <Shimmer width="50%" />)
+  .add(
     'Circle Gap Line',
     () => (
       <Shimmer
@@ -53,7 +53,7 @@ storiesOf('Shimmer', module)
     ),
     { rtl: true }
   )
-  .addStory('Custom elements', () => (
+  .add('Custom elements', () => (
     <Shimmer
       customElementsGroup={
         <div style={{ display: 'flex' }}>
@@ -77,7 +77,7 @@ storiesOf('Shimmer', module)
       width={300}
     />
   ))
-  .addStory('Custom elements on themed background', () => (
+  .add('Custom elements on themed background', () => (
     <div className={wrapperClassName}>
       <Shimmer
         width={300}
@@ -109,12 +109,12 @@ storiesOf('Shimmer', module)
       />
     </div>
   ))
-  .addStory('Data not loaded', () => (
+  .add('Data not loaded', () => (
     <Shimmer isDataLoaded={false} ariaLabel={'Loading content'}>
       <div>Example content</div>
     </Shimmer>
   ))
-  .addStory('Data loaded', () => (
+  .add('Data loaded', () => (
     <Shimmer isDataLoaded={true} ariaLabel={'Loading content'}>
       <div>Example content</div>
     </Shimmer>

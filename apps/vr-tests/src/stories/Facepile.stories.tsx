@@ -64,11 +64,9 @@ storiesOf('Facepile', module)
       {story()}
     </Screener>
   )
-  .addStory('Root', () => <Facepile {...facepileProps} />, { rtl: true })
-  .addStory('Extra extra small', () => (
-    <Facepile {...facepileProps} personaSize={PersonaSize.size24} />
-  ))
-  .addStory('Overflow', () => (
+  .add('Root', () => <Facepile {...facepileProps} />, { rtl: true })
+  .add('Extra extra small', () => <Facepile {...facepileProps} personaSize={PersonaSize.size24} />)
+  .add('Overflow', () => (
     <Facepile
       {...facepileProps}
       maxDisplayablePersonas={3}
@@ -78,8 +76,8 @@ storiesOf('Facepile', module)
       }}
     />
   ))
-  .addStory('Add face', () => <Facepile {...facepileProps} showAddButton={true} />)
-  .addStory('Custom button styles', () => (
+  .add('Add face', () => <Facepile {...facepileProps} showAddButton={true} />)
+  .add('Custom button styles', () => (
     <Facepile
       {...facepileProps}
       showAddButton

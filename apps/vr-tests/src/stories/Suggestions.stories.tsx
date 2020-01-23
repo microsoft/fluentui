@@ -145,6 +145,6 @@ storiesOf('(Dev-Only) Suggestions', module)
       {story()}
     </Screener>
   ))
-  .addStory('Test of closeButton with overflowing wide custom element', () => (
+  .add('Test of closeButton with overflowing wide custom element', () => (
     <SimpleSuggestionsExample />
   ));

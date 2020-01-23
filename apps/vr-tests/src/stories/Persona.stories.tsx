@@ -27,7 +27,7 @@ storiesOf('Persona', module)
       {story()}
     </Screener>
   )
-  .addStory('size10 (tiny)', () => (
+  .add('size10 (tiny)', () => (
     <div>
       <Persona
         {...examplePersona}
@@ -41,7 +41,7 @@ storiesOf('Persona', module)
       />
     </div>
   ))
-  .addStory('size24 (extraExtraSmall)', () => (
+  .add('size24 (extraExtraSmall)', () => (
     <div>
       <Persona
         {...examplePersona}
@@ -55,7 +55,7 @@ storiesOf('Persona', module)
       />
     </div>
   ))
-  .addStory('size28 (extraSmall)', () => (
+  .add('size28 (extraSmall)', () => (
     <div>
       <Persona
         {...examplePersona}
@@ -69,14 +69,14 @@ storiesOf('Persona', module)
       />
     </div>
   ))
-  .addStory('size32', () => (
+  .add('size32', () => (
     <Persona
       {...examplePersona}
       size={PersonaSize.size32}
       presence={PersonaPresence.online}
     />
   ))
-  .addStory('size40 (small)', () => (
+  .add('size40 (small)', () => (
     <div>
       <Persona
         {...examplePersona}
@@ -92,7 +92,7 @@ storiesOf('Persona', module)
       />
     </div>
   ))
-  .addStory('size48 (regular)', () => (
+  .add('size48 (regular)', () => (
     <div>
       <Persona
         {...examplePersona}
@@ -106,7 +106,7 @@ storiesOf('Persona', module)
       />
     </div>
   ))
-  .addStory('default size, presences', () => (
+  .add('default size, presences', () => (
     <div>
       <Persona
         {...examplePersona}
@@ -145,14 +145,14 @@ storiesOf('Persona', module)
       />
     </div>
   ))
-  .addStory('default size, details hidden', () => (
+  .add('default size, details hidden', () => (
     <Persona
       {...examplePersona}
       presence={PersonaPresence.busy}
       hidePersonaDetails
     />
   ))
-  .addStory('size72 (large)', () => (
+  .add('size72 (large)', () => (
     <div>
       <Persona
         {...examplePersona}
@@ -166,7 +166,7 @@ storiesOf('Persona', module)
       />
     </div>
   ))
-  .addStory(
+  .add(
     'size100 (extraLarge)',
     () => (
       <div>
@@ -184,7 +184,7 @@ storiesOf('Persona', module)
     ),
     { rtl: true }
   )
-  .addStory(
+  .add(
     'size120',
     () => (
       <div>
@@ -197,7 +197,7 @@ storiesOf('Persona', module)
     ),
     { rtl: true }
   )
-  .addStory(
+  .add(
     'Initials',
     () => (
       <Persona
@@ -207,7 +207,7 @@ storiesOf('Persona', module)
     ),
     { rtl: true }
   )
-  .addStory('Persona with children', () => (
+  .add('Persona with children', () => (
     <Persona { ...examplePersona }>
       <span>Persona Children</span>
     </Persona>

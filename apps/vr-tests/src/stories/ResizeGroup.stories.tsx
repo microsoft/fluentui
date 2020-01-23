@@ -39,7 +39,7 @@ storiesOf('ResizeGroup', module)
       {story()}
     </Screener>
   ))
-  .addStory(
+  .add(
     'Root',
     () => (
       <ResizeGroup

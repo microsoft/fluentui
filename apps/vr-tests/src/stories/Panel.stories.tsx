@@ -22,14 +22,14 @@ storiesOf('Panel', module)
       {story()}
     </Screener>
   )
-  .addStory(
+  .add(
     'Small left w/ close button',
     () => (
       <Panel {...defaultProps} hasCloseButton type={PanelType.smallFixedNear} headerText="Small" />
     ),
     { rtl: true }
   )
-  .addStory(
+  .add(
     'Small fixed right w/ close button',
     () => (
       <Panel
@@ -41,27 +41,25 @@ storiesOf('Panel', module)
     ),
     { rtl: true }
   )
-  .addStory('Small fluid right', () => (
+  .add('Small fluid right', () => (
     <Panel {...defaultProps} type={PanelType.smallFluid} headerText="Small fluid" />
   ))
-  .addStory(
+  .add(
     'Medium right',
     () => <Panel {...defaultProps} type={PanelType.medium} headerText="Medium" />,
     { rtl: true }
   )
-  .addStory('Large right', () => (
-    <Panel {...defaultProps} type={PanelType.large} headerText="Large" />
-  ))
-  .addStory('Large fixed right', () => (
+  .add('Large right', () => <Panel {...defaultProps} type={PanelType.large} headerText="Large" />)
+  .add('Large fixed right', () => (
     <Panel {...defaultProps} type={PanelType.largeFixed} headerText="Large fixed" />
   ))
-  .addStory('Extra large right', () => (
+  .add('Extra large right', () => (
     <Panel {...defaultProps} type={PanelType.extraLarge} headerText="Extra Large" />
   ))
-  .addStory('Custom', () => (
+  .add('Custom', () => (
     <Panel {...defaultProps} type={PanelType.custom} headerText="Custom" customWidth="200vw" />
   ))
-  .addStory('Custom anchored left', () => (
+  .add('Custom anchored left', () => (
     <Panel
       {...defaultProps}
       type={PanelType.customNear}
@@ -69,7 +67,7 @@ storiesOf('Panel', module)
       customWidth="320px"
     />
   ))
-  .addStory('With no navigation', () => (
+  .add('With no navigation', () => (
     <Panel
       {...defaultProps}
       type={PanelType.smallFixedFar}
@@ -91,7 +89,7 @@ storiesOf('Panel', module)
       {story()}
     </Screener>
   ))
-  .addStory(
+  .add(
     'SearchBox and Right Panel',
     () => (
       <div>

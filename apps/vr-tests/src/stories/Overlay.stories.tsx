@@ -17,13 +17,13 @@ storiesOf('Overlay', module)
       {story()}
     </Screener>
   )
-  .addStory(
+  .add(
     'Root',
     // prettier-ignore
     () => <Overlay>Overlay content</Overlay>,
     { rtl: true }
   )
-  .addStory(
+  .add(
     'Dark',
     // prettier-ignore
     () => <Overlay isDarkThemed>Overlay content</Overlay>

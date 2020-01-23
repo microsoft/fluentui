@@ -134,7 +134,7 @@ const getPeople = () => people;
 // Pickers that are 'disabled' are added before the Screener decorator because css classes for suggestion items won't exist
 storiesOf('PeoplePicker', module)
   .addDecorator(FabricDecorator)
-  .addStory('Normal disabled', () => (
+  .add('Normal disabled', () => (
     <Fabric>
       <NormalPeoplePicker
         onResolveSuggestions={getPeople}
@@ -146,7 +146,7 @@ storiesOf('PeoplePicker', module)
       />
     </Fabric>
   ))
-  .addStory('List disabled', () => (
+  .add('List disabled', () => (
     <Fabric>
       <ListPeoplePicker
         onResolveSuggestions={getPeople}
@@ -158,7 +158,7 @@ storiesOf('PeoplePicker', module)
       />
     </Fabric>
   ))
-  .addStory('Compact disabled', () => (
+  .add('Compact disabled', () => (
     <Fabric>
       <CompactPeoplePicker
         onResolveSuggestions={getPeople}
@@ -170,7 +170,7 @@ storiesOf('PeoplePicker', module)
       />
     </Fabric>
   ))
-  .addStory('Normal with text', () => (
+  .add('Normal with text', () => (
     <Screener
       steps={new Screener.Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
@@ -201,7 +201,7 @@ storiesOf('PeoplePicker', module)
       {story()}
     </Screener>
   ))
-  .addStory('Normal', () => (
+  .add('Normal', () => (
     <Fabric>
       <NormalPeoplePicker
         onResolveSuggestions={getPeople}
@@ -212,7 +212,7 @@ storiesOf('PeoplePicker', module)
       />
     </Fabric>
   ))
-  .addStory(
+  .add(
     'Normal selected',
     () => (
       <Fabric>
@@ -228,7 +228,7 @@ storiesOf('PeoplePicker', module)
     ),
     { rtl: true }
   )
-  .addStory(
+  .add(
     'Normal Overflow selected',
     () => (
       <Fabric>
@@ -245,7 +245,7 @@ storiesOf('PeoplePicker', module)
     ),
     { rtl: true }
   )
-  .addStory('List', () => (
+  .add('List', () => (
     <Fabric>
       <ListPeoplePicker
         onResolveSuggestions={getPeople}
@@ -256,7 +256,7 @@ storiesOf('PeoplePicker', module)
       />
     </Fabric>
   ))
-  .addStory(
+  .add(
     'List selected',
     () => (
       <Fabric>
@@ -272,7 +272,7 @@ storiesOf('PeoplePicker', module)
     ),
     { rtl: true }
   )
-  .addStory('Compact', () => (
+  .add('Compact', () => (
     <Fabric>
       <CompactPeoplePicker
         onResolveSuggestions={getPeople}
@@ -283,7 +283,7 @@ storiesOf('PeoplePicker', module)
       />
     </Fabric>
   ))
-  .addStory(
+  .add(
     'Compact selected',
     () => (
       <Fabric>
