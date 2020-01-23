@@ -17,7 +17,7 @@ storiesOf('Modal', module)
       {story()}
     </Screener>
   )
-  .add('Root', () => (
+  .addStory('Root', () => (
     <Modal isOpen isBlocking={false}>
       Modal content
     </Modal>

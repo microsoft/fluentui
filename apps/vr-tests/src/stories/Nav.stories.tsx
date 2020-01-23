@@ -103,7 +103,7 @@ storiesOf('Nav', module)
       {story()}
     </Screener>
   ))
-  .add(
+  .addStory(
     'Root',
     () => (
       <div style={{ width: '208px' }}>
@@ -112,7 +112,7 @@ storiesOf('Nav', module)
     ),
     { rtl: true }
   )
-  .add(
+  .addStory(
     'Disabled',
     () => (
       <div style={{ width: '208px' }}>

@@ -38,7 +38,7 @@ storiesOf('Breadcrumb', module)
       {story()}
     </Screener>
   ))
-  .add(
+  .addStory(
     'Root',
     () => (
       <Breadcrumb
@@ -55,7 +55,7 @@ storiesOf('Breadcrumb', module)
     ),
     { rtl: true }
   )
-  .add(
+  .addStory(
     'Button',
     () => (
       <Breadcrumb
@@ -95,7 +95,7 @@ storiesOf('Breadcrumb', module)
       {story()}
     </Screener>
   ))
-  .add('Hovering items', () => (
+  .addStory('Hovering items', () => (
     <Breadcrumb
       items={[
         // overflow

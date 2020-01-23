@@ -27,7 +27,7 @@ storiesOf('Dropdown', module)
       {story()}
     </Screener>
   ))
-  .add(
+  .addStory(
     'Root',
     () => (
       <Dropdown
@@ -47,7 +47,7 @@ storiesOf('Dropdown', module)
     ),
     { rtl: true }
   )
-  .add('Disabled', () => (
+  .addStory('Disabled', () => (
     <Dropdown
       placeholder="Select an Option"
       label="Basic example:"
@@ -64,7 +64,7 @@ storiesOf('Dropdown', module)
       ]}
     />
   ))
-  .add('Disabled option selected', () => (
+  .addStory('Disabled option selected', () => (
     <Dropdown
       placeholder="Select an Option"
       label="Basic example:"
@@ -81,7 +81,7 @@ storiesOf('Dropdown', module)
       ]}
     />
   ))
-  .add(
+  .addStory(
     'Multiselect',
     () => (
       <Dropdown
@@ -100,7 +100,7 @@ storiesOf('Dropdown', module)
     ),
     { rtl: true }
   )
-  .add(
+  .addStory(
     'Custom Dropdown',
     () => (
       <Dropdown
@@ -170,7 +170,7 @@ storiesOf('Dropdown', module)
     ),
     { rtl: true }
   )
-  .add('Required', () => (
+  .addStory('Required', () => (
     <Dropdown
       placeholder="Select an Option"
       label="Required dropdown example:"
@@ -178,7 +178,7 @@ storiesOf('Dropdown', module)
       options={[{ key: 'A', text: 'Option a' }, { key: 'B', text: 'Option b' }]}
     />
   ))
-  .add('Required without label', () => (
+  .addStory('Required without label', () => (
     <Dropdown
       placeholder="Select an Option"
       required={true}

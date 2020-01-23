@@ -16,7 +16,7 @@ storiesOf('TeachingBubble', module)
       {story()}
     </Screener>
   ))
-  .add(
+  .addStory(
     'WideIllustration',
     () => {
       return (
@@ -36,7 +36,7 @@ storiesOf('TeachingBubble', module)
     },
     { rtl: true }
   )
-  .add('SmallHeadline', () => {
+  .addStory('SmallHeadline', () => {
     return (
       <TeachingBubble
         hasSmallHeadline={true}

@@ -185,7 +185,7 @@ storiesOf('Card', module)
       {story()}
     </Screener>
   )
-  .add('Vertical Card - Basic - Non hoverable', () => (
+  .addStory('Vertical Card - Basic - Non hoverable', () => (
     <Fabric>
       <Card>
         <Card.Item>
@@ -194,7 +194,7 @@ storiesOf('Card', module)
       </Card>
     </Fabric>
   ))
-  .add('Vertical Card - Basic - Hoverable', () => (
+  .addStory('Vertical Card - Basic - Hoverable', () => (
     <Fabric>
       <Card onClick={cardClicked}>
         <Card.Item>
@@ -203,7 +203,7 @@ storiesOf('Card', module)
       </Card>
     </Fabric>
   ))
-  .add('Vertical Card - Example with contents - Image on top', () => (
+  .addStory('Vertical Card - Example with contents - Image on top', () => (
     <Fabric>
       <Card onClick={cardClicked} tokens={cardTokens}>
         <Card.Item>
@@ -234,7 +234,7 @@ storiesOf('Card', module)
       </Card>
     </Fabric>
   ))
-  .add('Vertical Card - Example with contents - Image in middle', () => (
+  .addStory('Vertical Card - Example with contents - Image in middle', () => (
     <Fabric>
       <Card onClick={cardClicked} tokens={cardTokens}>
         <Card.Section
@@ -280,7 +280,7 @@ storiesOf('Card', module)
       </Card>
     </Fabric>
   ))
-  .add('Horizontal Card - Basic - Non hoverable', () => (
+  .addStory('Horizontal Card - Basic - Non hoverable', () => (
     <Fabric>
       <Card horizontal>
         <Card.Item>
@@ -289,7 +289,7 @@ storiesOf('Card', module)
       </Card>
     </Fabric>
   ))
-  .add('Horizontal Card - Basic - Hoverable', () => (
+  .addStory('Horizontal Card - Basic - Hoverable', () => (
     <Fabric>
       <Card horizontal onClick={cardClicked}>
         <Card.Item>
@@ -298,7 +298,7 @@ storiesOf('Card', module)
       </Card>
     </Fabric>
   ))
-  .add('Horizontal Card - Example with contents', () => (
+  .addStory('Horizontal Card - Example with contents', () => (
     <Fabric>
       <Card horizontal onClick={cardClicked} tokens={cardTokens}>
         <Card.Item fill>
@@ -329,7 +329,7 @@ storiesOf('Card', module)
       </Card>
     </Fabric>
   ))
-  .add('Card with first CardSection filled', () => (
+  .addStory('Card with first CardSection filled', () => (
     <Card styles={cardStyles} tokens={cardTokens}>
       <Card.Section fill styles={firstCardSectionStyles} tokens={cardSectionTokens}>
         <Text>This is a Card Section</Text>
@@ -348,7 +348,7 @@ storiesOf('Card', module)
       </Card.Section>
     </Card>
   ))
-  .add('Card with second CardSection filled', () => (
+  .addStory('Card with second CardSection filled', () => (
     <Card styles={cardStyles} tokens={cardTokens}>
       <Card.Section styles={firstCardSectionStyles} tokens={cardSectionTokens}>
         <Text>This is a Card Section</Text>
@@ -367,7 +367,7 @@ storiesOf('Card', module)
       </Card.Section>
     </Card>
   ))
-  .add('Card with third CardSection filled', () => (
+  .addStory('Card with third CardSection filled', () => (
     <Card styles={cardStyles} tokens={cardTokens}>
       <Card.Section styles={firstCardSectionStyles} tokens={cardSectionTokens}>
         <Text>This is a Card Section</Text>

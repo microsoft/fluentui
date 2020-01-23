@@ -40,14 +40,14 @@ storiesOf('ChoiceGroup', module)
       {story()}
     </Screener>
   ))
-  .add('Root', () =>
+  .addStory('Root', () =>
     // prettier-ignore
     <ChoiceGroup
       options={ options }
       label="Pick one"
     />
   )
-  .add('Required', () =>
+  .addStory('Required', () =>
     // prettier-ignore
     <ChoiceGroup
       options={ options }
@@ -55,7 +55,7 @@ storiesOf('ChoiceGroup', module)
       required
     />
   )
-  .add(
+  .addStory(
     'With icons',
     () => (
       <ChoiceGroup
@@ -82,7 +82,7 @@ storiesOf('ChoiceGroup', module)
     ),
     { rtl: true }
   )
-  .add('With default size images', () => (
+  .addStory('With default size images', () => (
     <ChoiceGroup
       label="Pick one image"
       options={[
@@ -101,7 +101,7 @@ storiesOf('ChoiceGroup', module)
       ]}
     />
   ))
-  .add('With large size images', () => (
+  .addStory('With large size images', () => (
     <ChoiceGroup
       label="Pick one image"
       options={[

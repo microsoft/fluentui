@@ -43,23 +43,23 @@ storiesOf('Callout', module)
       {story()}
     </Screener>
   )
-  .add('Root', () =>
+  .addStory('Root', () =>
     // prettier-ignore
     <Callout {...defaultProps} >
       {calloutContent}
     </Callout>
   )
-  .add('Bottom auto edge', () => (
+  .addStory('Bottom auto edge', () => (
     <Callout {...defaultProps} directionalHint={DirectionalHint.bottomAutoEdge}>
       {calloutContent}
     </Callout>
   ))
-  .add('Bottom center', () => (
+  .addStory('Bottom center', () => (
     <Callout {...defaultProps} directionalHint={DirectionalHint.bottomCenter}>
       {calloutContent}
     </Callout>
   ))
-  .add(
+  .addStory(
     'Bottom left edge',
     () => (
       <Callout {...defaultProps} directionalHint={DirectionalHint.bottomLeftEdge}>
@@ -68,7 +68,7 @@ storiesOf('Callout', module)
     ),
     { rtl: true }
   )
-  .add(
+  .addStory(
     'Bottom right edge',
     () => (
       <Callout {...defaultProps} directionalHint={DirectionalHint.bottomRightEdge}>
@@ -77,72 +77,72 @@ storiesOf('Callout', module)
     ),
     { rtl: true }
   )
-  .add('Left bottom edge', () => (
+  .addStory('Left bottom edge', () => (
     <Callout {...defaultProps} directionalHint={DirectionalHint.leftBottomEdge}>
       {calloutContent}
     </Callout>
   ))
-  .add('Left center', () => (
+  .addStory('Left center', () => (
     <Callout {...defaultProps} directionalHint={DirectionalHint.leftCenter}>
       {calloutContent}
     </Callout>
   ))
-  .add('Left top edge', () => (
+  .addStory('Left top edge', () => (
     <Callout {...defaultProps} directionalHint={DirectionalHint.leftTopEdge}>
       {calloutContent}
     </Callout>
   ))
-  .add('Right bottom edge', () => (
+  .addStory('Right bottom edge', () => (
     <Callout {...defaultProps} directionalHint={DirectionalHint.rightBottomEdge}>
       {calloutContent}
     </Callout>
   ))
-  .add('Right center', () => (
+  .addStory('Right center', () => (
     <Callout {...defaultProps} directionalHint={DirectionalHint.rightCenter}>
       {calloutContent}
     </Callout>
   ))
-  .add('Right top edge', () => (
+  .addStory('Right top edge', () => (
     <Callout {...defaultProps} directionalHint={DirectionalHint.rightTopEdge}>
       {calloutContent}
     </Callout>
   ))
-  .add('Top auto edge', () => (
+  .addStory('Top auto edge', () => (
     <Callout {...defaultProps} directionalHint={DirectionalHint.topAutoEdge}>
       {calloutContent}
     </Callout>
   ))
-  .add('Top center', () => (
+  .addStory('Top center', () => (
     <Callout {...defaultProps} directionalHint={DirectionalHint.topCenter}>
       {calloutContent}
     </Callout>
   ))
-  .add('Top left edge', () => (
+  .addStory('Top left edge', () => (
     <Callout {...defaultProps} directionalHint={DirectionalHint.topLeftEdge}>
       {calloutContent}
     </Callout>
   ))
-  .add('Top right edge', () => (
+  .addStory('Top right edge', () => (
     <Callout {...defaultProps} directionalHint={DirectionalHint.topRightEdge}>
       {calloutContent}
     </Callout>
   ))
-  .add('Beak 25', () => (
+  .addStory('Beak 25', () => (
     <Callout {...defaultProps} beakWidth={25}>
       {calloutContent}
     </Callout>
   ))
-  .add('Gap space 25', () => (
+  .addStory('Gap space 25', () => (
     <Callout {...defaultProps} gapSpace={25}>
       {calloutContent}
     </Callout>
   ))
-  .add('No beak', () => (
+  .addStory('No beak', () => (
     <Callout {...defaultProps} isBeakVisible={false}>
       {calloutContent}
     </Callout>
   ))
-  .add('No callout width specified', () => (
+  .addStory('No callout width specified', () => (
     <Callout {...defaultProps} calloutWidth={undefined}>
       {calloutContent}
     </Callout>

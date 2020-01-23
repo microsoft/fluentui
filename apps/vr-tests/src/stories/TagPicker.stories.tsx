@@ -30,7 +30,7 @@ const getList = () => testTags;
 // Pickers that are 'disabled' are added before the Screener decorator because css classes for suggestion items won't exist
 storiesOf('TagPicker', module)
   .addDecorator(FabricDecorator)
-  .add('TagPicker disabled', () => <TagPicker onResolveSuggestions={getList} disabled />)
+  .addStory('TagPicker disabled', () => <TagPicker onResolveSuggestions={getList} disabled />)
   .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()
@@ -46,7 +46,7 @@ storiesOf('TagPicker', module)
       {story()}
     </Screener>
   ))
-  .add('Root', () => (
+  .addStory('Root', () => (
     <TagPicker
       onResolveSuggestions={getList}
       onEmptyInputFocus={getList}
@@ -59,7 +59,7 @@ storiesOf('TagPicker', module)
       itemLimit={2}
     />
   ))
-  .add(
+  .addStory(
     'Selected',
     () => (
       <Fabric>
@@ -86,7 +86,7 @@ storiesOf('TagPicker', module)
       {story()}
     </Screener>
   ))
-  .add('With long tag', () => (
+  .addStory('With long tag', () => (
     // This example MUST be inside a narrow container which forces the tag to overflow
     <Fabric style={{ width: 180 }}>
       <TagPicker
@@ -120,7 +120,7 @@ storiesOf('TagItem', module)
       {story()}
     </Screener>
   ))
-  .add(
+  .addStory(
     'Selected',
     () => (
       <Fabric>

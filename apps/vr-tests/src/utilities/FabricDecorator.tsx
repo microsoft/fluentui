@@ -3,6 +3,14 @@ import * as React from 'react';
 import { DecoratorFunction } from '@storybook/addons';
 import { StoryFnReactReturnType } from '@storybook/react/dist/client/preview/types';
 
+declare module '@storybook/addons/dist/types' {
+  // tslint:disable-next-line: interface-name
+  interface StoryApi<StoryFnReturnType = unknown> {
+    /** adds a story, but via VR Tests' addon which auto adds variants like RTL */
+    addStory: this['add'];
+  }
+}
+
 export const FabricDecorator: DecoratorFunction<StoryFnReactReturnType> = story => (
   <div style={{ display: 'flex' }}>
     <div className="testWrapper" style={{ padding: '10px', overflow: 'hidden' }}>

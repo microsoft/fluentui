@@ -17,16 +17,9 @@ const defaultConfig = {
   rtl: false
 };
 
-/**
- * Adds a story with different configuration options.
- * By default, only adds a story in LTR.
- * The config parameter can be used to add the story RTL
- *  in addition to LTR.
- * In future, this can add a story with additional configurations
- *  such as theming.
- */
+// Via this addon, we INVENT a new API that automatically adds several stories for you when you call addStory() that adds variants (like RTL)
 storybook.setAddon({
-  add(storyName, storyFn, config = defaultConfig) {
+  addStory: function(storyName, storyFn, config = defaultConfig) {
     this.add(storyName, context => {
       setRTL(false);
       return storyFn(context);

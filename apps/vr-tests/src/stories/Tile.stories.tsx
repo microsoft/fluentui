@@ -140,7 +140,7 @@ storiesOf('Tile', module)
       {story()}
     </Screener>
   )
-  .add('Document tile with fit landscape image', () => (
+  .addStory('Document tile with fit landscape image', () => (
     <DocumentTileWithThumbnail
       item={{
         name: <>Test Name</>,
@@ -152,7 +152,7 @@ storiesOf('Tile', module)
       }}
     />
   ))
-  .add('Document tile with fit portrait image', () => (
+  .addStory('Document tile with fit portrait image', () => (
     <DocumentTileWithThumbnail
       item={{
         name: <>Test Name</>,
@@ -164,7 +164,7 @@ storiesOf('Tile', module)
       }}
     />
   ))
-  .add('Document tile with icon-sized image', () => (
+  .addStory('Document tile with icon-sized image', () => (
     <DocumentTileWithThumbnail
       item={{
         name: <>Test Name</>,
@@ -176,7 +176,7 @@ storiesOf('Tile', module)
       }}
     />
   ))
-  .add('Document tile with icon', () => (
+  .addStory('Document tile with icon', () => (
     <DocumentTileBox>
       <Tile
         itemName={<SignalField before={<NewSignal />}>{'Test Name'}</SignalField>}
@@ -196,7 +196,7 @@ storiesOf('Tile', module)
       />
     </DocumentTileBox>
   ))
-  .add('Tile with no content and long text', () => (
+  .addStory('Tile with no content and long text', () => (
     <DocumentTileBox>
       <Tile
         itemName={
@@ -227,7 +227,7 @@ storiesOf('MediaTile', module)
       {story()}
     </Screener>
   )
-  .add('Media tile with single activity line', () => (
+  .addStory('Media tile with single activity line', () => (
     <MediaTileBox>
       <MediaTileWithThumbnail
         item={{
@@ -242,7 +242,7 @@ storiesOf('MediaTile', module)
       />
     </MediaTileBox>
   ))
-  .add('Media tile with two activity lines', () => (
+  .addStory('Media tile with two activity lines', () => (
     <MediaTileBox>
       <MediaTileWithThumbnail
         item={{
@@ -262,7 +262,7 @@ storiesOf('MediaTile', module)
       />
     </MediaTileBox>
   ))
-  .add('Media tile with very long name and activity', () => (
+  .addStory('Media tile with very long name and activity', () => (
     <MediaTileBox>
       <MediaTileWithThumbnail
         item={{
@@ -285,7 +285,7 @@ storiesOf('MediaTile', module)
       />
     </MediaTileBox>
   ))
-  .add('Media tile with nameplate hidden until hover', () => (
+  .addStory('Media tile with nameplate hidden until hover', () => (
     <MediaTileBox>
       <MediaTileWithThumbnail
         item={{

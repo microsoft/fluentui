@@ -17,4 +17,4 @@ storiesOf('Layer', module)
       {story()}
     </Screener>
   )
-  .add('Root', () => <Layer>Layer content</Layer>, { rtl: true });
+  .addStory('Root', () => <Layer>Layer content</Layer>, { rtl: true });

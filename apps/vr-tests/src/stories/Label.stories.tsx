@@ -17,6 +17,6 @@ storiesOf('Label', module)
       {story()}
     </Screener>
   )
-  .add('Root', () => <Label>I'm a label</Label>, { rtl: true })
-  .add('Disabled', () => <Label disabled>I'm a disabled label</Label>)
-  .add('Required', () => <Label required>I'm a required label</Label>);
+  .addStory('Root', () => <Label>I'm a label</Label>, { rtl: true })
+  .addStory('Disabled', () => <Label disabled>I'm a disabled label</Label>)
+  .addStory('Required', () => <Label required>I'm a required label</Label>);

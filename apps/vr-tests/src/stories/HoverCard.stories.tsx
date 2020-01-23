@@ -34,7 +34,7 @@ storiesOf('HoverCard', module)
       {story()}
     </Screener>
   )
-  .add(
+  .addStory(
     'Root',
     () => (
       <HoverCard

@@ -17,7 +17,7 @@ storiesOf('ActivityItem', module)
       {story()}
     </Screener>
   )
-  .add(
+  .addStory(
     'Root',
     () => (
       <ActivityItem
@@ -29,7 +29,7 @@ storiesOf('ActivityItem', module)
     ),
     { rtl: true }
   )
-  .add(
+  .addStory(
     'Personas',
     () => (
       <ActivityItem
@@ -46,7 +46,7 @@ storiesOf('ActivityItem', module)
     ),
     { rtl: true }
   )
-  .add('Compact', () => (
+  .addStory('Compact', () => (
     <ActivityItem
       activityIcon={<Icon iconName="Message" />}
       isCompact={true}
@@ -55,7 +55,7 @@ storiesOf('ActivityItem', module)
       timeStamp="timeStamp text"
     />
   ))
-  .add('CompactPersonas', () => (
+  .addStory('CompactPersonas', () => (
     <ActivityItem
       activityPersonas={[{ imageInitials: 'AB' }, { imageInitials: 'CD' }, { imageInitials: 'EF' }]}
       isCompact={true}

@@ -19,7 +19,7 @@ storiesOf('Slider', module)
       {story()}
     </Screener>
   ))
-  .add(
+  .addStory(
     'Root',
     () => (
       <div style={{ flexDirection: 'column', width: '300px', display: 'flex' }}>
@@ -28,27 +28,27 @@ storiesOf('Slider', module)
     ),
     { rtl: true }
   )
-  .add('Disabled', () => (
+  .addStory('Disabled', () => (
     <div style={{ flexDirection: 'column', width: '300px', display: 'flex' }}>
       <Slider label="Basic example:" min={1} max={3} step={1} defaultValue={2} showValue disabled />
     </div>
   ))
-  .add('Vertical', () => (
+  .addStory('Vertical', () => (
     <div style={{ flexDirection: 'row', height: '200px', display: 'flex' }}>
       <Slider label="Basic example:" min={1} max={3} step={1} defaultValue={2} showValue vertical />
     </div>
   ))
-  .add('EqualMinMax', () => (
+  .addStory('EqualMinMax', () => (
     <div style={{ flexDirection: 'column', width: '300px', display: 'flex' }}>
       <Slider label="Basic example:" min={1} max={1} step={1} defaultValue={1} showValue />
     </div>
   ))
-  .add('Max not multiple of step', () => (
+  .addStory('Max not multiple of step', () => (
     <div style={{ flexDirection: 'column', width: '300px', display: 'flex' }}>
       <Slider label="Basic example:" min={18} max={48} step={10} defaultValue={48} showValue />
     </div>
   ))
-  .add('Step less than 1', () => (
+  .addStory('Step less than 1', () => (
     <div style={{ flexDirection: 'column', width: '300px', display: 'flex' }}>
       <Slider label="Basic example:" min={1} max={3} step={0.1} defaultValue={1.4} showValue />
     </div>

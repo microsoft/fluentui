@@ -246,6 +246,6 @@ storiesOf('Sticky breadcrumb and sticky details list header', module)
       {story()}
     </Screener>
   ))
-  .add('ScrollablePane Sticky Breadcrumb Details List', () => (
+  .addStory('ScrollablePane Sticky Breadcrumb Details List', () => (
     <ScrollablePaneStickyBreadcrumbExample />
   ));

@@ -97,7 +97,7 @@ storiesOf('DocumentCard', module)
     </Screener>
   )
   // Commenting out this story as it has some racing issues with the truncation logic and causes the test to fail on unrelated PRs
-  // .add('Root', () => (
+  // .addStory('Root', () => (
   //   <Fabric>
   //     <DocumentCard onClickHref="http://bing.com">
   //       <DocumentCardPreview {...previewProps} />
@@ -109,7 +109,7 @@ storiesOf('DocumentCard', module)
   //     </DocumentCard>
   //   </Fabric>
   // ))
-  .add('Not truncated', () => (
+  .addStory('Not truncated', () => (
     <Fabric>
       <DocumentCard onClickHref="http://bing.com">
         <DocumentCardPreview {...previewProps} />
@@ -121,7 +121,7 @@ storiesOf('DocumentCard', module)
       </DocumentCard>
     </Fabric>
   ))
-  .add('With secondary title style', () => (
+  .addStory('With secondary title style', () => (
     <Fabric>
       <DocumentCard onClickHref="http://bing.com">
         <DocumentCardPreview {...previewProps} />
@@ -143,7 +143,7 @@ storiesOf('DocumentCard', module)
       {story()}
     </Screener>
   )
-  .add('Compact with preview list', () => (
+  .addStory('Compact with preview list', () => (
     <Fabric>
       <DocumentCard type={DocumentCardType.compact} onClickHref="http://bing.com">
         <DocumentCardPreview {...previewPropsCompact} />
@@ -154,7 +154,7 @@ storiesOf('DocumentCard', module)
       </DocumentCard>
     </Fabric>
   ))
-  .add('Compact with preview image', () => (
+  .addStory('Compact with preview image', () => (
     <Fabric>
       <DocumentCard type={DocumentCardType.compact} onClickHref="http://bing.com">
         <DocumentCardPreview previewImages={[previewProps.previewImages[0]]} />

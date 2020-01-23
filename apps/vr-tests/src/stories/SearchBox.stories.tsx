@@ -21,7 +21,7 @@ storiesOf('SearchBox', module)
       {story()}
     </Screener>
   ))
-  .add(
+  .addStory(
     'Root',
     () => (
       <Fabric style={{ display: 'flex' }}>
@@ -35,7 +35,7 @@ storiesOf('SearchBox', module)
     ),
     { rtl: true }
   )
-  .add(
+  .addStory(
     'Full',
     () => (
       <Fabric className="testWrapper">

@@ -21,22 +21,22 @@ storiesOf('TextField', module)
       {story()}
     </Screener>
   ))
-  .add('Root', () => <TextField label="Standard" />)
-  .add('Placeholder', () => <TextField label="Standard" placeholder="Placeholder" />, {
+  .addStory('Root', () => <TextField label="Standard" />)
+  .addStory('Placeholder', () => <TextField label="Standard" placeholder="Placeholder" />, {
     rtl: true
   })
-  .add('Disabled', () => <TextField label="Disabled" disabled />)
-  .add('Required', () => <TextField label="Required" required />)
-  .add('Error', () => <TextField label="Error" errorMessage="Error message" />, { rtl: true })
-  .add('Multiline', () => <TextField label="Multiline" multiline rows={4} />, { rtl: true })
-  .add('Multiline nonresizable', () => (
+  .addStory('Disabled', () => <TextField label="Disabled" disabled />)
+  .addStory('Required', () => <TextField label="Required" required />)
+  .addStory('Error', () => <TextField label="Error" errorMessage="Error message" />, { rtl: true })
+  .addStory('Multiline', () => <TextField label="Multiline" multiline rows={4} />, { rtl: true })
+  .addStory('Multiline nonresizable', () => (
     <TextField label="Multiline" multiline rows={4} resizable={false} />
   ))
-  .add('Underlined', () => <TextField label="Underlined" underlined />)
-  .add('Borderless', () => (
+  .addStory('Underlined', () => <TextField label="Underlined" underlined />)
+  .addStory('Borderless', () => (
     <TextField label="Borderless" borderless placeholder="Placeholder text" />
   ))
-  .add(
+  .addStory(
     'Icon',
     () => (
       <TextField
@@ -49,7 +49,7 @@ storiesOf('TextField', module)
       rtl: true
     }
   )
-  .add(
+  .addStory(
     'Prefix with Value, Disabled, and Prefix Style-Override',
     () => (
       <TextField
@@ -64,13 +64,13 @@ storiesOf('TextField', module)
       rtl: true
     }
   )
-  .add(
+  .addStory(
     'Prefix with Value, Disabled',
     () => <TextField label="Prefix" prefix="https://" defaultValue="example.com" disabled />,
     {
       rtl: true
     }
   )
-  .add('Suffix', () => <TextField label="Suffix" suffix=".com" />, {
+  .addStory('Suffix', () => <TextField label="Suffix" suffix=".com" />, {
     rtl: true
   });

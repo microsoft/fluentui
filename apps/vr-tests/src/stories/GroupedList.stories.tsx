@@ -102,7 +102,7 @@ storiesOf('GroupedList', module)
       {story()}
     </Screener>
   ))
-  .add(
+  .addStory(
     'Root',
     () => (
       <GroupedList

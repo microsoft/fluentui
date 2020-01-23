@@ -56,11 +56,11 @@ storiesOf('Button', module)
       {story()}
     </Screener>
   ))
-  .add('Default', () => <Button {...baseProps} />, { rtl: true })
-  .add('Disabled', () => <Button disabled {...baseProps} />)
-  .add('Primary', () => <Button primary {...baseProps} />, { rtl: true })
-  .add('Primary Disabled', () => <Button primary disabled {...baseProps} />)
-  .add(
+  .addStory('Default', () => <Button {...baseProps} />, { rtl: true })
+  .addStory('Disabled', () => <Button disabled {...baseProps} />)
+  .addStory('Primary', () => <Button primary {...baseProps} />, { rtl: true })
+  .addStory('Primary Disabled', () => <Button primary disabled {...baseProps} />)
+  .addStory(
     'Multiline',
     () => (
       <Button icon="Share">
@@ -88,10 +88,10 @@ storiesOf('Button - Circular', module)
       {story()}
     </Screener>
   ))
-  .add('Default', () => <Button circular icon="AddFriend" />)
-  .add('Disabled', () => <Button circular disabled icon="AddFriend" />)
-  .add('Primary', () => <Button circular primary icon="AddFriend" />)
-  .add('Primary Disabled', () => <Button circular primary disabled icon="AddFriend" />);
+  .addStory('Default', () => <Button circular icon="AddFriend" />)
+  .addStory('Disabled', () => <Button circular disabled icon="AddFriend" />)
+  .addStory('Primary', () => <Button circular primary icon="AddFriend" />)
+  .addStory('Primary Disabled', () => <Button circular primary disabled icon="AddFriend" />);
 
 storiesOf('MenuButton', module)
   .addDecorator(FabricDecorator)
@@ -108,10 +108,10 @@ storiesOf('MenuButton', module)
       {story()}
     </Screener>
   ))
-  .add('Default', () => <MenuButton {...menuProps} />, { rtl: true })
-  .add('Disabled', () => <MenuButton disabled {...menuProps} />)
-  .add('Primary', () => <MenuButton primary {...menuProps} />, { rtl: true })
-  .add('Primary Disabled', () => <MenuButton primary disabled {...menuProps} />);
+  .addStory('Default', () => <MenuButton {...menuProps} />, { rtl: true })
+  .addStory('Disabled', () => <MenuButton disabled {...menuProps} />)
+  .addStory('Primary', () => <MenuButton primary {...menuProps} />, { rtl: true })
+  .addStory('Primary Disabled', () => <MenuButton primary disabled {...menuProps} />);
 
 storiesOf('SplitButton', module)
   .addDecorator(FabricDecorator)
@@ -133,10 +133,10 @@ storiesOf('SplitButton', module)
       {story()}
     </Screener>
   ))
-  .add('Default', () => <SplitButton {...menuProps} />, { rtl: true })
-  .add('Disabled', () => <SplitButton disabled {...menuProps} />)
-  .add('Primary', () => <SplitButton primary {...menuProps} />, { rtl: true })
-  .add('Primary Disabled', () => <SplitButton primary disabled {...menuProps} />);
+  .addStory('Default', () => <SplitButton {...menuProps} />, { rtl: true })
+  .addStory('Disabled', () => <SplitButton disabled {...menuProps} />)
+  .addStory('Primary', () => <SplitButton primary {...menuProps} />, { rtl: true })
+  .addStory('Primary Disabled', () => <SplitButton primary disabled {...menuProps} />);
 
 storiesOf('DefaultButton', module)
   .addDecorator(FabricDecorator)
@@ -153,8 +153,8 @@ storiesOf('DefaultButton', module)
       {story()}
     </Screener>
   ))
-  .add('Default', () => <DefaultButton {...baseProps} />, { rtl: true })
-  .add('Disabled', () => <DefaultButton disabled {...baseProps} />);
+  .addStory('Default', () => <DefaultButton {...baseProps} />, { rtl: true })
+  .addStory('Disabled', () => <DefaultButton disabled {...baseProps} />);
 
 storiesOf('PrimaryButton', module)
   .addDecorator(FabricDecorator)
@@ -171,8 +171,8 @@ storiesOf('PrimaryButton', module)
       {story()}
     </Screener>
   ))
-  .add('Default', () => <PrimaryButton {...baseProps} />, { rtl: true })
-  .add('Disabled', () => <PrimaryButton disabled {...baseProps} />);
+  .addStory('Default', () => <PrimaryButton {...baseProps} />, { rtl: true })
+  .addStory('Disabled', () => <PrimaryButton disabled {...baseProps} />);
 
 storiesOf('Actionable', module)
   .addDecorator(FabricDecorator)
@@ -189,8 +189,8 @@ storiesOf('Actionable', module)
       {story()}
     </Screener>
   ))
-  .add('Default', () => <Actionable>Button</Actionable>)
-  .add('Disabled', () => <Actionable disabled>Button</Actionable>);
+  .addStory('Default', () => <Actionable>Button</Actionable>)
+  .addStory('Disabled', () => <Actionable disabled>Button</Actionable>);
 
 storiesOf('ActionButton', module)
   .addDecorator(FabricDecorator)
@@ -207,8 +207,8 @@ storiesOf('ActionButton', module)
       {story()}
     </Screener>
   ))
-  .add('Default', () => <ActionButton {...baseProps} />, { rtl: true })
-  .add('Disabled', () => <ActionButton disabled {...baseProps} />);
+  .addStory('Default', () => <ActionButton {...baseProps} />, { rtl: true })
+  .addStory('Disabled', () => <ActionButton disabled {...baseProps} />);
 
 storiesOf('CommandBarButton', module)
   .addDecorator(FabricDecorator)
@@ -225,8 +225,8 @@ storiesOf('CommandBarButton', module)
       {story()}
     </Screener>
   ))
-  .add('Default', () => <CommandBarButton {...baseProps} />, { rtl: true })
-  .add('Disabled', () => <CommandBarButton disabled {...baseProps} />);
+  .addStory('Default', () => <CommandBarButton {...baseProps} />, { rtl: true })
+  .addStory('Disabled', () => <CommandBarButton disabled {...baseProps} />);
 
 storiesOf('CompoundButton', module)
   .addDecorator(FabricDecorator)
@@ -243,14 +243,14 @@ storiesOf('CompoundButton', module)
       {story()}
     </Screener>
   ))
-  .add('Default', () => <CompoundButton content="Button" secondaryText="Caption" />, {
+  .addStory('Default', () => <CompoundButton content="Button" secondaryText="Caption" />, {
     rtl: true
   })
-  .add('Disabled', () => <CompoundButton disabled content="Button" secondaryText="Caption" />)
-  .add('Primary', () => <CompoundButton primary content="Button" secondaryText="Caption" />, {
+  .addStory('Disabled', () => <CompoundButton disabled content="Button" secondaryText="Caption" />)
+  .addStory('Primary', () => <CompoundButton primary content="Button" secondaryText="Caption" />, {
     rtl: true
   })
-  .add('Primary Disabled', () => (
+  .addStory('Primary Disabled', () => (
     <CompoundButton primary disabled content="Button" secondaryText="Caption" />
   ));
 
@@ -269,8 +269,8 @@ storiesOf('IconButton', module)
       {story()}
     </Screener>
   ))
-  .add('Default', () => <IconButton icon="Emoji2" />, { rtl: true })
-  .add('Disabled', () => <IconButton disabled icon="Emoji2" />);
+  .addStory('Default', () => <IconButton icon="Emoji2" />, { rtl: true })
+  .addStory('Disabled', () => <IconButton disabled icon="Emoji2" />);
 
 storiesOf('MessageBarButton', module)
   .addDecorator(FabricDecorator)
@@ -287,7 +287,7 @@ storiesOf('MessageBarButton', module)
       {story()}
     </Screener>
   ))
-  .add('Default', () => <MessageBarButton {...baseProps} />, { rtl: true })
-  .add('Disabled', () => <MessageBarButton disabled {...baseProps} />)
-  .add('Primary', () => <MessageBarButton primary {...baseProps} />, { rtl: true })
-  .add('Primary Disabled', () => <MessageBarButton primary disabled {...baseProps} />);
+  .addStory('Default', () => <MessageBarButton {...baseProps} />, { rtl: true })
+  .addStory('Disabled', () => <MessageBarButton disabled {...baseProps} />)
+  .addStory('Primary', () => <MessageBarButton primary {...baseProps} />, { rtl: true })
+  .addStory('Primary Disabled', () => <MessageBarButton primary disabled {...baseProps} />);

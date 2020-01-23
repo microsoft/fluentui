@@ -221,6 +221,6 @@ storiesOf('ScrollablePane Details List', module)
       {story()}
     </Screener>
   ))
-  .add('ScrollablePane Details List with sticky header & footer', () => (
+  .addStory('ScrollablePane Details List with sticky header & footer', () => (
     <ScrollablePaneDetailsListStory />
   ));

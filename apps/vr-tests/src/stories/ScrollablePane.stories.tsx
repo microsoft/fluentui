@@ -57,7 +57,7 @@ storiesOf('ScrollablePane', module)
       {story()}
     </Screener>
   ))
-  .add('Default ScrollablePane Example', () => (
+  .addStory('Default ScrollablePane Example', () => (
     <div
       style={{
         height: '600px',

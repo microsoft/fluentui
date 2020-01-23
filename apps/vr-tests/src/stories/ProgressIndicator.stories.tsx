@@ -17,14 +17,14 @@ storiesOf('ProgressIndicator', module)
       {story()}
     </Screener>
   )
-  .add('0%', () => (
+  .addStory('0%', () => (
     <ProgressIndicator
       label="Example title"
       description="Example description"
       percentComplete={0}
     />
   ))
-  .add(
+  .addStory(
     '50%',
     () => (
       <ProgressIndicator
@@ -35,7 +35,7 @@ storiesOf('ProgressIndicator', module)
     ),
     { rtl: true }
   )
-  .add('100%', () => (
+  .addStory('100%', () => (
     <ProgressIndicator
       label="Example title"
       description="Example description"
