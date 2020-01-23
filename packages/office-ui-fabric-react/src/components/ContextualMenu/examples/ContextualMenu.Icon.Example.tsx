@@ -2,7 +2,12 @@ import * as React from 'react';
 import { useConst, useConstCallback } from '@uifabric/react-hooks';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { Callout } from 'office-ui-fabric-react/lib/Callout';
-import { ContextualMenuItemType, IContextualMenuItem, IContextualMenuItemProps } from 'office-ui-fabric-react/lib/ContextualMenu';
+import {
+  ContextualMenuItemType,
+  IContextualMenuProps,
+  IContextualMenuItem,
+  IContextualMenuItemProps
+} from 'office-ui-fabric-react/lib/ContextualMenu';
 import { Icon } from 'office-ui-fabric-react/lib/Icon';
 import * as stylesImport from './ContextualMenuExample.scss';
 
@@ -74,15 +79,14 @@ export const ContextualMenuIconExample: React.FunctionComponent = () => {
     }
   ]);
 
+  const menuProps: IContextualMenuProps = useConst({
+    shouldFocusOnMount: true,
+    items: menuItems
+  });
+
   return (
     <div>
-      <DefaultButton
-        text="Click for ContextualMenu"
-        menuProps={{
-          shouldFocusOnMount: true,
-          items: menuItems
-        }}
-      />
+      <DefaultButton text="Click for ContextualMenu" menuProps={menuProps} />
       {showCallout && (
         <Callout setInitialFocus={true} onDismiss={onHideCallout}>
           <DefaultButton onClick={onHideCallout} text="Hello Popup" />

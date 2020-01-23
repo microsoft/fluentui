@@ -1,19 +1,9 @@
 import * as React from 'react';
-import { ContextualMenuItemType, IContextualMenuItem } from 'office-ui-fabric-react/lib/ContextualMenu';
+import { ContextualMenuItemType, IContextualMenuProps, IContextualMenuItem } from 'office-ui-fabric-react/lib/ContextualMenu';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 
 export const ContextualMenuPersistedExample: React.FunctionComponent = () => {
-  return (
-    <DefaultButton
-      text="Click for ContextualMenu"
-      persistMenu={true}
-      menuProps={{
-        shouldFocusOnMount: true,
-        shouldFocusOnContainer: true,
-        items: menuItems
-      }}
-    />
-  );
+  return <DefaultButton text="Click for ContextualMenu" persistMenu={true} menuProps={menuProps} />;
 };
 
 const menuItems: IContextualMenuItem[] = [
@@ -84,3 +74,9 @@ const menuItems: IContextualMenuItem[] = [
     onClick: () => console.error('Disabled item should not be clickable.')
   }
 ];
+
+const menuProps: IContextualMenuProps = {
+  shouldFocusOnMount: true,
+  shouldFocusOnContainer: true,
+  items: menuItems
+};

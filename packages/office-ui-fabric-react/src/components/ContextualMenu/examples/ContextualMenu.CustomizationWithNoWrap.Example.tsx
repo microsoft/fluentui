@@ -1,22 +1,16 @@
 import * as React from 'react';
-import { ContextualMenuItemType, DirectionalHint, IContextualMenuItem } from 'office-ui-fabric-react/lib/ContextualMenu';
+import {
+  ContextualMenuItemType,
+  DirectionalHint,
+  IContextualMenuProps,
+  IContextualMenuItem
+} from 'office-ui-fabric-react/lib/ContextualMenu';
 import { DefaultButton, IconButton } from 'office-ui-fabric-react/lib/Button';
 import { FocusZoneDirection } from 'office-ui-fabric-react/lib/FocusZone';
 import './ContextualMenuExample.scss';
 
 export const ContextualMenuCustomizationWithNoWrapExample: React.FunctionComponent = () => {
-  return (
-    <DefaultButton
-      className="ContextualMenuButton3"
-      text="Click for ContextualMenu"
-      menuProps={{
-        shouldFocusOnMount: true,
-        directionalHint: DirectionalHint.bottomLeftEdge,
-        className: 'ms-ContextualMenu-customizationExample',
-        items: menuItems
-      }}
-    />
-  );
+  return <DefaultButton className="ContextualMenuButton3" text="Click for ContextualMenu" menuProps={menuProps} />;
 };
 
 function renderCharmMenuItem(item: any, dismissMenu: () => void): JSX.Element {
@@ -36,7 +30,7 @@ function renderCategoriesList(item: any): JSX.Element {
   return (
     <ul className="ms-ContextualMenu-customizationExample-categoriesList">
       <li className="ms-ContextualMenu-item">
-        {item.categoryList.map((category: any) => (
+        {item.categoryList.map((category: ICategoryList) => (
           <DefaultButton
             key={category.name}
             className="ms-ContextualMenu-link ms-ContextualMenu-customizationExample-button"
@@ -54,6 +48,11 @@ function renderCategoriesList(item: any): JSX.Element {
       </li>
     </ul>
   );
+}
+
+interface ICategoryList {
+  name: string;
+  color: string;
 }
 
 const menuItems: IContextualMenuItem[] = [
@@ -228,3 +227,10 @@ const menuItems: IContextualMenuItem[] = [
     }
   }
 ];
+
+const menuProps: IContextualMenuProps = {
+  shouldFocusOnMount: true,
+  directionalHint: DirectionalHint.bottomLeftEdge,
+  className: 'ms-ContextualMenu-customizationExample',
+  items: menuItems
+};

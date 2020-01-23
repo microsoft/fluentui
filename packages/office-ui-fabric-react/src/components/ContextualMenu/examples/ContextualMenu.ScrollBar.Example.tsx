@@ -1,22 +1,9 @@
 import * as React from 'react';
-import { DirectionalHint, IContextualMenuItem } from 'office-ui-fabric-react/lib/ContextualMenu';
+import { DirectionalHint, IContextualMenuProps, IContextualMenuItem } from 'office-ui-fabric-react/lib/ContextualMenu';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 
 export const ContextualMenuWithScrollBarExample: React.FunctionComponent = () => {
-  return (
-    <DefaultButton
-      text="Click for ContextualMenu"
-      menuProps={{
-        shouldFocusOnMount: true,
-        directionalHint: DirectionalHint.bottomRightEdge,
-        directionalHintFixed: true,
-        items: menuItems,
-        calloutProps: {
-          calloutMaxHeight: 65
-        }
-      }}
-    />
-  );
+  return <DefaultButton text="Click for ContextualMenu" menuProps={menuProps} />;
 };
 
 const menuItems: IContextualMenuItem[] = [
@@ -42,3 +29,13 @@ const menuItems: IContextualMenuItem[] = [
     disabled: true
   }
 ];
+
+const menuProps: IContextualMenuProps = {
+  shouldFocusOnMount: true,
+  directionalHint: DirectionalHint.bottomRightEdge,
+  directionalHintFixed: true,
+  items: menuItems,
+  calloutProps: {
+    calloutMaxHeight: 65
+  }
+};

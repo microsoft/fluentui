@@ -1,17 +1,9 @@
 import * as React from 'react';
-import { ContextualMenuItemType, IContextualMenuItem } from 'office-ui-fabric-react/lib/ContextualMenu';
+import { ContextualMenuItemType, IContextualMenuProps, IContextualMenuItem } from 'office-ui-fabric-react/lib/ContextualMenu';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 
 export const ContextualMenuDefaultExample: React.FunctionComponent = () => {
-  return (
-    <DefaultButton
-      text="Click for ContextualMenu"
-      menuProps={{
-        shouldFocusOnMount: true,
-        items: menuItems
-      }}
-    />
-  );
+  return <DefaultButton text="Click for ContextualMenu" menuProps={menuProps} />;
 };
 
 const menuItems: IContextualMenuItem[] = [
@@ -67,3 +59,8 @@ const menuItems: IContextualMenuItem[] = [
     onClick: () => console.error('Disabled item should not be clickable.')
   }
 ];
+
+const menuProps: IContextualMenuProps = {
+  shouldFocusOnMount: true,
+  items: menuItems
+};

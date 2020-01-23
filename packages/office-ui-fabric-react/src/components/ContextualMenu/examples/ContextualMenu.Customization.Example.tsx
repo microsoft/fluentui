@@ -1,22 +1,16 @@
 import * as React from 'react';
-import { ContextualMenuItemType, DirectionalHint, IContextualMenuItem } from 'office-ui-fabric-react/lib/ContextualMenu';
+import {
+  ContextualMenuItemType,
+  DirectionalHint,
+  IContextualMenuProps,
+  IContextualMenuItem
+} from 'office-ui-fabric-react/lib/ContextualMenu';
 import { DefaultButton, IconButton } from 'office-ui-fabric-react/lib/Button';
 import { FocusZoneDirection } from 'office-ui-fabric-react/lib/FocusZone';
 import './ContextualMenuExample.scss';
 
 export const ContextualMenuCustomizationExample: React.FunctionComponent = () => {
-  return (
-    <DefaultButton
-      className="ContextualMenuButton3"
-      text="Click for ContextualMenu"
-      menuProps={{
-        shouldFocusOnMount: true,
-        directionalHint: DirectionalHint.bottomLeftEdge,
-        className: 'ms-ContextualMenu-customizationExample',
-        items: menuItems
-      }}
-    />
-  );
+  return <DefaultButton className="ContextualMenuButton3" text="Click for ContextualMenu" menuProps={menuProps} />;
 };
 
 function renderCharmMenuItem(item: IContextualMenuItem, dismissMenu: () => void): JSX.Element {
@@ -222,3 +216,10 @@ const menuItems: IContextualMenuItem[] = [
     }
   }
 ];
+
+const menuProps: IContextualMenuProps = {
+  shouldFocusOnMount: true,
+  directionalHint: DirectionalHint.bottomLeftEdge,
+  className: 'ms-ContextualMenu-customizationExample',
+  items: menuItems
+};

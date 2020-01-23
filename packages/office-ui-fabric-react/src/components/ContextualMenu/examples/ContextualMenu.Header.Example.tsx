@@ -1,17 +1,9 @@
 import * as React from 'react';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
-import { ContextualMenuItemType, IContextualMenuItem } from 'office-ui-fabric-react/lib/ContextualMenu';
+import { ContextualMenuItemType, IContextualMenuProps, IContextualMenuItem } from 'office-ui-fabric-react/lib/ContextualMenu';
 
 export const ContextualMenuHeaderExample: React.FunctionComponent = () => {
-  return (
-    <DefaultButton
-      text="Click for ContextualMenu"
-      menuProps={{
-        shouldFocusOnMount: true,
-        items: menuItems
-      }}
-    />
-  );
+  return <DefaultButton text="Click for ContextualMenu" menuProps={menuProps} />;
 };
 
 const menuItems: IContextualMenuItem[] = [
@@ -91,3 +83,8 @@ const menuItems: IContextualMenuItem[] = [
     target: '_blank'
   }
 ];
+
+const menuProps: IContextualMenuProps = {
+  shouldFocusOnMount: true,
+  items: menuItems
+};

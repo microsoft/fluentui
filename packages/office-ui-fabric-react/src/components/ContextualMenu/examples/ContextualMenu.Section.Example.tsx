@@ -1,16 +1,9 @@
 import * as React from 'react';
-import { ContextualMenuItemType, IContextualMenuItem } from 'office-ui-fabric-react/lib/ContextualMenu';
+import { ContextualMenuItemType, IContextualMenuProps, IContextualMenuItem } from 'office-ui-fabric-react/lib/ContextualMenu';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 
 export const ContextualMenuSectionExample: React.FunctionComponent = () => {
-  return (
-    <DefaultButton
-      text="Click for ContextualMenu"
-      menuProps={{
-        items: menuItems
-      }}
-    />
-  );
+  return <DefaultButton text="Click for ContextualMenu" menuProps={menuProps} />;
 };
 
 const menuItems: IContextualMenuItem[] = [
@@ -70,3 +63,5 @@ const menuItems: IContextualMenuItem[] = [
     }
   }
 ];
+
+const menuProps: IContextualMenuProps = { items: menuItems };

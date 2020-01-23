@@ -6,18 +6,6 @@ import { Icon } from 'office-ui-fabric-react/lib/Icon';
 import { IContextualMenuListProps, IContextualMenuItem } from 'office-ui-fabric-react/lib/ContextualMenu';
 import { IRenderFunction } from 'office-ui-fabric-react/lib/Utilities';
 
-const wrapperStyle: React.CSSProperties = { borderBottom: '1px solid #ccc' };
-const filteredItemsStyle: React.CSSProperties = {
-  width: '100%',
-  height: '100px',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center'
-};
-const searchBoxStyles: ISearchBoxStyles = {
-  root: { margin: '8px' }
-};
-
 export const ContextualMenuWithCustomMenuListExample: React.FunctionComponent = () => {
   const [items, setItems] = React.useState(menuItems);
 
@@ -43,34 +31,48 @@ export const ContextualMenuWithCustomMenuListExample: React.FunctionComponent = 
     setItems(filteredItems);
   });
 
-  const renderMenuList = (menuListProps: IContextualMenuListProps, defaultRender: IRenderFunction<IContextualMenuListProps>) => {
-    return (
-      <div>
-        <div style={wrapperStyle}>
-          <SearchBox
-            ariaLabel="Filter actions by text"
-            placeholder="Filter actions"
-            onAbort={onAbort}
-            onChange={onChange}
-            styles={searchBoxStyles}
-          />
+  const renderMenuList = useConstCallback(
+    (menuListProps: IContextualMenuListProps, defaultRender: IRenderFunction<IContextualMenuListProps>) => {
+      return (
+        <div>
+          <div style={wrapperStyle}>
+            <SearchBox
+              ariaLabel="Filter actions by text"
+              placeholder="Filter actions"
+              onAbort={onAbort}
+              onChange={onChange}
+              styles={searchBoxStyles}
+            />
+          </div>
+          {defaultRender(menuListProps)}
         </div>
-        {defaultRender(menuListProps)}
-      </div>
-    );
-  };
-
-  return (
-    <DefaultButton
-      text="Click for ContextualMenu"
-      menuProps={{
-        onRenderMenuList: renderMenuList,
-        title: 'Actions',
-        shouldFocusOnMount: true,
-        items
-      }}
-    />
+      );
+    }
   );
+
+  const menuProps = React.useMemo(
+    () => ({
+      onRenderMenuList: renderMenuList,
+      title: 'Actions',
+      shouldFocusOnMount: true,
+      items
+    }),
+    [items]
+  );
+
+  return <DefaultButton text="Click for ContextualMenu" menuProps={menuProps} />;
+};
+
+const wrapperStyle: React.CSSProperties = { borderBottom: '1px solid #ccc' };
+const filteredItemsStyle: React.CSSProperties = {
+  width: '100%',
+  height: '100px',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center'
+};
+const searchBoxStyles: ISearchBoxStyles = {
+  root: { margin: '8px' }
 };
 
 const menuItems: IContextualMenuItem[] = [

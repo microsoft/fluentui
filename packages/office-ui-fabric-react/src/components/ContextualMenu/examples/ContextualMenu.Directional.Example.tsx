@@ -2,7 +2,12 @@ import * as React from 'react';
 import { useConstCallback } from '@uifabric/react-hooks';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { Checkbox, ICheckboxStyles } from 'office-ui-fabric-react/lib/Checkbox';
-import { DirectionalHint, ContextualMenuItemType, IContextualMenuItem } from 'office-ui-fabric-react/lib/ContextualMenu';
+import {
+  ContextualMenuItemType,
+  DirectionalHint,
+  IContextualMenuProps,
+  IContextualMenuItem
+} from 'office-ui-fabric-react/lib/ContextualMenu';
 import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
 import { getRTL } from 'office-ui-fabric-react/lib/Utilities';
 import './ContextualMenuExample.scss';
@@ -56,6 +61,19 @@ export const ContextualMenuDirectionalExample: React.FunctionComponent = () => {
     }
   );
 
+  const menuProps: IContextualMenuProps = React.useMemo(
+    () => ({
+      isBeakVisible: isBeakVisible,
+      directionalHint: directionalHint,
+      directionalHintForRTL: useDirectionalHintForRTL ? directionalHintForRTL : undefined,
+      gapSpace: 0,
+      beakWidth: 20,
+      directionalHintFixed: false,
+      items: menuItems
+    }),
+    [isBeakVisible, directionalHint, directionalHintForRTL]
+  );
+
   return (
     <div className="ms-ContextualMenuDirectionalExample">
       <div className="ms-ContextualMenuDirectionalExample-configArea">
@@ -73,18 +91,7 @@ export const ContextualMenuDirectionalExample: React.FunctionComponent = () => {
         )}
       </div>
       <div className="ms-ContextualMenuDirectionalExample-buttonArea">
-        <DefaultButton
-          text="Show context menu"
-          menuProps={{
-            isBeakVisible: isBeakVisible,
-            directionalHint: directionalHint,
-            directionalHintForRTL: useDirectionalHintForRTL ? directionalHintForRTL : undefined,
-            gapSpace: 0,
-            beakWidth: 20,
-            directionalHintFixed: false,
-            items: menuItems
-          }}
-        />
+        <DefaultButton text="Show context menu" menuProps={menuProps} />
       </div>
     </div>
   );

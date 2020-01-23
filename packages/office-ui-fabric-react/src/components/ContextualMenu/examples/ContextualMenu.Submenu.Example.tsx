@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useConstCallback } from '@uifabric/react-hooks';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
-import { IContextualMenuItem } from 'office-ui-fabric-react/lib/ContextualMenu';
+import { IContextualMenuProps, IContextualMenuItem } from 'office-ui-fabric-react/lib/ContextualMenu';
 import { TextField, ITextFieldStyles } from 'office-ui-fabric-react/lib/TextField';
 
 const textFieldStyles: Partial<ITextFieldStyles> = {
@@ -23,6 +23,15 @@ export const ContextualMenuSubmenuExample: React.FunctionComponent = () => {
     setHoverDelay(Number(newValue) || 0);
   });
 
+  const menuProps: IContextualMenuProps = React.useMemo(
+    () => ({
+      shouldFocusOnMount: true,
+      subMenuHoverDelay: hoverDelay,
+      items: menuItems
+    }),
+    [hoverDelay]
+  );
+
   return (
     <div>
       <TextField
@@ -32,14 +41,7 @@ export const ContextualMenuSubmenuExample: React.FunctionComponent = () => {
         onChange={onHoverDelayChanged}
         styles={textFieldStyles}
       />
-      <DefaultButton
-        text="Click for ContextualMenu"
-        menuProps={{
-          shouldFocusOnMount: true,
-          subMenuHoverDelay: hoverDelay,
-          items: menuItems
-        }}
-      />
+      <DefaultButton text="Click for ContextualMenu" menuProps={menuProps} />
     </div>
   );
 };
