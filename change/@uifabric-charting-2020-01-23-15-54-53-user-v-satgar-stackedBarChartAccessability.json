@@ -1,0 +1,9 @@
+{
+  "type": "patch",
+  "comment": "Provided accessability for stacked bar chart",
+  "packageName": "@uifabric/charting",
+  "email": "v-satgar@microsoft.com",
+  "commit": "3b8960245b8fdd16056d56bda08a43a4adbaee9e",
+  "dependentChangeType": "patch",
+  "date": "2020-01-23T10:24:53.529Z"
+}
