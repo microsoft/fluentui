@@ -330,10 +330,10 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
         this._dismissDatePickerPopup();
       }
 
-      const { isRequired, strings } = this.props;
+      const { isRequired, value, strings } = this.props;
 
       this.setState({
-        errorMessage: isRequired && !newValue ? strings!.isRequiredErrorMessage || ' ' : undefined,
+        errorMessage: isRequired && !value ? strings!.isRequiredErrorMessage || ' ' : undefined,
         formattedDate: newValue
       });
     }
