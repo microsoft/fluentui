@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "Updates textfield validation in Datepicker to validate text input rathundefineder than value",
+  "comment": "Updating text field validation in date-time package to check new value rather than old one.",
   "packageName": "office-ui-fabric-react",
   "email": "chce@netcompany.com",
   "commit": "7065b61c3f1df297a774d42672a21e89f8b88783",
