@@ -1,6 +1,6 @@
 import { IRawStyle } from '@uifabric/merge-styles';
 import { IGetFocusStylesOptions, ITheme } from '../interfaces/index';
-import { HighContrastSelector, getEdgeChromiumForcedStylesOffSelector } from './CommonStyles';
+import { HighContrastSelector, getEdgeChromiumNoHighContrastAdjustSelector } from './CommonStyles';
 import { IsFocusVisibleClassName } from '@uifabric/utilities';
 import { ZIndexes } from './zIndexes';
 
@@ -170,7 +170,7 @@ export const getInputFocusStyle = (
             [HighContrastSelector]: {
               [borderType === 'border' ? 'borderColor' : 'borderBottomColor']: 'Highlight'
             },
-            ...getEdgeChromiumForcedStylesOffSelector()
+            ...getEdgeChromiumNoHighContrastAdjustSelector()
           }
         }
       ]

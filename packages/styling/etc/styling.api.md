@@ -122,7 +122,7 @@ export namespace FontWeights {
 }
 
 // @public
-export function getEdgeChromiumForcedStylesOffSelector(): {
+export function getEdgeChromiumNoHighContrastAdjustSelector(): {
     [EdgeChromiumHighContrastSelector]: IStyle;
 };
 

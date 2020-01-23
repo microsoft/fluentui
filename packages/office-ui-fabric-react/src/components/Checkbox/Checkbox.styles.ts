@@ -1,7 +1,7 @@
 import { ICheckboxStyleProps, ICheckboxStyles } from './Checkbox.types';
 import { HighContrastSelector, getGlobalClassNames, IStyle } from '../../Styling';
 import { IsFocusVisibleClassName } from '../../Utilities';
-import { getEdgeChromiumForcedStylesOffSelector } from '@uifabric/styling';
+import { getEdgeChromiumNoHighContrastAdjustSelector } from '@uifabric/styling';
 
 const GlobalClassNames = {
   root: 'ms-Checkbox',
@@ -234,7 +234,7 @@ export const getStyles = (props: ICheckboxStyleProps): ICheckboxStyles => {
           [HighContrastSelector]: {
             borderColor: 'WindowText'
           },
-          ...getEdgeChromiumForcedStylesOffSelector()
+          ...getEdgeChromiumNoHighContrastAdjustSelector()
         }
       },
       indeterminate && {

@@ -1,4 +1,4 @@
-import { HighContrastSelector, FontWeights, getEdgeChromiumForcedStylesOffSelector } from '../../Styling';
+import { HighContrastSelector, FontWeights, getEdgeChromiumNoHighContrastAdjustSelector } from '../../Styling';
 import { ILabelStyleProps, ILabelStyles } from './Label.types';
 
 export const getStyles = (props: ILabelStyleProps): ILabelStyles => {
@@ -30,7 +30,7 @@ export const getStyles = (props: ILabelStyleProps): ILabelStyles => {
             background: 'Window',
             color: disabled ? 'GrayText' : 'WindowText'
           },
-          ...getEdgeChromiumForcedStylesOffSelector()
+          ...getEdgeChromiumNoHighContrastAdjustSelector()
         }
       },
       disabled && {
