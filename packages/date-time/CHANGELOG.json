@@ -2,6 +2,25 @@
   "name": "@uifabric/date-time",
   "entries": [
     {
+      "date": "Fri, 24 Jan 2020 12:30:27 GMT",
+      "tag": "@uifabric/date-time_v7.8.8",
+      "version": "7.8.8",
+      "comments": {
+        "patch": [
+          {
+            "comment": "DatePicker: Fixing issue with formatted dates.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "a215a47453932f4f63827eb343fe2c2995c04ea0"
+          },
+          {
+            "comment": "Updating text field validation in date-time package to check new value rather than old one.",
+            "author": "chce@netcompany.com",
+            "commit": "981f2259375f3a70e209d032bad4d79d0712261f"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 17 Jan 2020 02:32:17 GMT",
       "tag": "@uifabric/date-time_v7.8.5",
       "version": "7.8.5",

@@ -1,9 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Updating text field validation in date-time package to check new value rather than old one.",
-  "packageName": "@uifabric/date-time",
-  "email": "chce@netcompany.com",
-  "commit": "981f2259375f3a70e209d032bad4d79d0712261f",
-  "dependentChangeType": "patch",
-  "date": "2020-01-23T08:48:17.320Z"
-}

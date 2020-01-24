@@ -2,6 +2,25 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Fri, 24 Jan 2020 12:30:27 GMT",
+      "tag": "office-ui-fabric-react_v7.84.1",
+      "version": "7.84.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Updating text field validation in date-time package to check new value rather than old one.",
+            "author": "chce@netcompany.com",
+            "commit": "7065b61c3f1df297a774d42672a21e89f8b88783"
+          },
+          {
+            "comment": "DatePicker: Fixing issue with formatted dates.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "a215a47453932f4f63827eb343fe2c2995c04ea0"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 22 Jan 2020 12:36:43 GMT",
       "tag": "office-ui-fabric-react_v7.84.0",
       "version": "7.84.0",
