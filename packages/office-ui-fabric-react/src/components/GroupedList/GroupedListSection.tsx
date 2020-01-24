@@ -399,7 +399,7 @@ export class GroupedListSection extends React.Component<IGroupedListSectionProps
   private _getGroupDragDropOptions = (): IDragDropOptions => {
     const { group, groupIndex, dragDropEvents, eventsToRegister } = this.props;
     const canDrag = dragDropEvents && dragDropEvents.canDrag ? dragDropEvents.canDrag : () => false;
-    
+
     const options = {
       eventMap: eventsToRegister,
       selectionIndex: -1,
