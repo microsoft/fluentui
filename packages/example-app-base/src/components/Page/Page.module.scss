@@ -36,9 +36,6 @@ $usageListPadding: 24px;
     &:active:hover {
       color: $linkHoveredColor;
     }
-    @include high-contrast {
-      color: inherit;
-    }
   }
 }
 

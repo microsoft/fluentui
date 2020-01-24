@@ -24,19 +24,19 @@ exports[`Link renders Link correctly 1`] = `
         border-bottom: none;
       }
       &:active {
-        color: inherit;
+        color: #004578;
         text-decoration: underline;
       }
       &:hover {
-        color: inherit;
+        color: #004578;
         text-decoration: underline;
       }
       &:active:hover {
-        color: inherit;
+        color: #004578;
         text-decoration: underline;
       }
       &:focus {
-        color: inherit;
+        color: #0078d4;
       }
   href="#"
   onClick={[Function]}
@@ -93,19 +93,19 @@ exports[`Link renders Link with "as=div" a div element 1`] = `
         color: #00009F;
       }
       &:active {
-        color: inherit;
+        color: #004578;
         text-decoration: underline;
       }
       &:hover {
-        color: inherit;
+        color: #004578;
         text-decoration: underline;
       }
       &:active:hover {
-        color: inherit;
+        color: #004578;
         text-decoration: underline;
       }
       &:focus {
-        color: inherit;
+        color: #0078d4;
       }
   onClick={[Function]}
 >
@@ -138,19 +138,19 @@ exports[`Link renders Link with a custom class name 1`] = `
         border-bottom: none;
       }
       &:active {
-        color: inherit;
+        color: #004578;
         text-decoration: underline;
       }
       &:hover {
-        color: inherit;
+        color: #004578;
         text-decoration: underline;
       }
       &:active:hover {
-        color: inherit;
+        color: #004578;
         text-decoration: underline;
       }
       &:focus {
-        color: inherit;
+        color: #0078d4;
       }
   href="#"
   onClick={[Function]}
@@ -206,19 +206,19 @@ exports[`Link renders Link with no href as a button 1`] = `
         color: #00009F;
       }
       &:active {
-        color: inherit;
+        color: #004578;
         text-decoration: underline;
       }
       &:hover {
-        color: inherit;
+        color: #004578;
         text-decoration: underline;
       }
       &:active:hover {
-        color: inherit;
+        color: #004578;
         text-decoration: underline;
       }
       &:focus {
-        color: inherit;
+        color: #0078d4;
       }
   onClick={[Function]}
   type="button"
@@ -376,19 +376,19 @@ exports[`Link supports non button/anchor html attributes when "as=" is used 1`] 
         color: #00009F;
       }
       &:active {
-        color: inherit;
+        color: #004578;
         text-decoration: underline;
       }
       &:hover {
-        color: inherit;
+        color: #004578;
         text-decoration: underline;
       }
       &:active:hover {
-        color: inherit;
+        color: #004578;
         text-decoration: underline;
       }
       &:focus {
-        color: inherit;
+        color: #0078d4;
       }
   onClick={[Function]}
 >

@@ -35,8 +35,7 @@ exports[`MessageBar renders MessageBar correctly 1`] = `
           font-weight: 400;
         }
         @media screen and (-ms-high-contrast: active){& .ms-Link {
-          color: inherit;
-          text-decoration: underline;
+          -ms-high-contrast-adjust: auto;
         }
         @media screen and (-ms-high-contrast: active){& {
           background: Window;

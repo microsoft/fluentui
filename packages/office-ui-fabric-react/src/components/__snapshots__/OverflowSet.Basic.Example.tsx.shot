@@ -75,19 +75,19 @@ exports[`Component Examples renders OverflowSet.Basic.Example.tsx correctly 1`] 
             color: #00009F;
           }
           &:active {
-            color: inherit;
+            color: #004578;
             text-decoration: underline;
           }
           &:hover {
-            color: inherit;
+            color: #004578;
             text-decoration: underline;
           }
           &:active:hover {
-            color: inherit;
+            color: #004578;
             text-decoration: underline;
           }
           &:focus {
-            color: inherit;
+            color: #0078d4;
           }
       onClick={[Function]}
       role="menuitem"
@@ -150,19 +150,19 @@ exports[`Component Examples renders OverflowSet.Basic.Example.tsx correctly 1`] 
             color: #00009F;
           }
           &:active {
-            color: inherit;
+            color: #004578;
             text-decoration: underline;
           }
           &:hover {
-            color: inherit;
+            color: #004578;
             text-decoration: underline;
           }
           &:active:hover {
-            color: inherit;
+            color: #004578;
             text-decoration: underline;
           }
           &:focus {
-            color: inherit;
+            color: #0078d4;
           }
       onClick={[Function]}
       role="menuitem"
@@ -225,19 +225,19 @@ exports[`Component Examples renders OverflowSet.Basic.Example.tsx correctly 1`] 
             color: #00009F;
           }
           &:active {
-            color: inherit;
+            color: #004578;
             text-decoration: underline;
           }
           &:hover {
-            color: inherit;
+            color: #004578;
             text-decoration: underline;
           }
           &:active:hover {
-            color: inherit;
+            color: #004578;
             text-decoration: underline;
           }
           &:focus {
-            color: inherit;
+            color: #0078d4;
           }
       onClick={[Function]}
       role="menuitem"

@@ -1110,19 +1110,19 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                                   color: #00009F;
                                 }
                                 &:active {
-                                  color: inherit;
+                                  color: #004578;
                                   text-decoration: underline;
                                 }
                                 &:hover {
-                                  color: inherit;
+                                  color: #004578;
                                   text-decoration: underline;
                                 }
                                 &:active:hover {
-                                  color: inherit;
+                                  color: #004578;
                                   text-decoration: underline;
                                 }
                                 &:focus {
-                                  color: inherit;
+                                  color: #0078d4;
                                 }
                             onClick={[Function]}
                             type="button"
@@ -1636,19 +1636,19 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                                   color: #00009F;
                                 }
                                 &:active {
-                                  color: inherit;
+                                  color: #004578;
                                   text-decoration: underline;
                                 }
                                 &:hover {
-                                  color: inherit;
+                                  color: #004578;
                                   text-decoration: underline;
                                 }
                                 &:active:hover {
-                                  color: inherit;
+                                  color: #004578;
                                   text-decoration: underline;
                                 }
                                 &:focus {
-                                  color: inherit;
+                                  color: #0078d4;
                                 }
                             onClick={[Function]}
                             type="button"
@@ -2162,19 +2162,19 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                                   color: #00009F;
                                 }
                                 &:active {
-                                  color: inherit;
+                                  color: #004578;
                                   text-decoration: underline;
                                 }
                                 &:hover {
-                                  color: inherit;
+                                  color: #004578;
                                   text-decoration: underline;
                                 }
                                 &:active:hover {
-                                  color: inherit;
+                                  color: #004578;
                                   text-decoration: underline;
                                 }
                                 &:focus {
-                                  color: inherit;
+                                  color: #0078d4;
                                 }
                             onClick={[Function]}
                             type="button"
@@ -2688,19 +2688,19 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                                   color: #00009F;
                                 }
                                 &:active {
-                                  color: inherit;
+                                  color: #004578;
                                   text-decoration: underline;
                                 }
                                 &:hover {
-                                  color: inherit;
+                                  color: #004578;
                                   text-decoration: underline;
                                 }
                                 &:active:hover {
-                                  color: inherit;
+                                  color: #004578;
                                   text-decoration: underline;
                                 }
                                 &:focus {
-                                  color: inherit;
+                                  color: #0078d4;
                                 }
                             onClick={[Function]}
                             type="button"
@@ -3214,19 +3214,19 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                                   color: #00009F;
                                 }
                                 &:active {
-                                  color: inherit;
+                                  color: #004578;
                                   text-decoration: underline;
                                 }
                                 &:hover {
-                                  color: inherit;
+                                  color: #004578;
                                   text-decoration: underline;
                                 }
                                 &:active:hover {
-                                  color: inherit;
+                                  color: #004578;
                                   text-decoration: underline;
                                 }
                                 &:focus {
-                                  color: inherit;
+                                  color: #0078d4;
                                 }
                             onClick={[Function]}
                             type="button"
@@ -3740,19 +3740,19 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                                   color: #00009F;
                                 }
                                 &:active {
-                                  color: inherit;
+                                  color: #004578;
                                   text-decoration: underline;
                                 }
                                 &:hover {
-                                  color: inherit;
+                                  color: #004578;
                                   text-decoration: underline;
                                 }
                                 &:active:hover {
-                                  color: inherit;
+                                  color: #004578;
                                   text-decoration: underline;
                                 }
                                 &:focus {
-                                  color: inherit;
+                                  color: #0078d4;
                                 }
                             onClick={[Function]}
                             type="button"
@@ -4266,19 +4266,19 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                                   color: #00009F;
                                 }
                                 &:active {
-                                  color: inherit;
+                                  color: #004578;
                                   text-decoration: underline;
                                 }
                                 &:hover {
-                                  color: inherit;
+                                  color: #004578;
                                   text-decoration: underline;
                                 }
                                 &:active:hover {
-                                  color: inherit;
+                                  color: #004578;
                                   text-decoration: underline;
                                 }
                                 &:focus {
-                                  color: inherit;
+                                  color: #0078d4;
                                 }
                             onClick={[Function]}
                             type="button"
@@ -4792,19 +4792,19 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                                   color: #00009F;
                                 }
                                 &:active {
-                                  color: inherit;
+                                  color: #004578;
                                   text-decoration: underline;
                                 }
                                 &:hover {
-                                  color: inherit;
+                                  color: #004578;
                                   text-decoration: underline;
                                 }
                                 &:active:hover {
-                                  color: inherit;
+                                  color: #004578;
                                   text-decoration: underline;
                                 }
                                 &:focus {
-                                  color: inherit;
+                                  color: #0078d4;
                                 }
                             onClick={[Function]}
                             type="button"
@@ -5318,19 +5318,19 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                                   color: #00009F;
                                 }
                                 &:active {
-                                  color: inherit;
+                                  color: #004578;
                                   text-decoration: underline;
                                 }
                                 &:hover {
-                                  color: inherit;
+                                  color: #004578;
                                   text-decoration: underline;
                                 }
                                 &:active:hover {
-                                  color: inherit;
+                                  color: #004578;
                                   text-decoration: underline;
                                 }
                                 &:focus {
-                                  color: inherit;
+                                  color: #0078d4;
                                 }
                             onClick={[Function]}
                             type="button"

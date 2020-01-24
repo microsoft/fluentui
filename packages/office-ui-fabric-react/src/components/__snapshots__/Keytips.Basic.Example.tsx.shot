@@ -1173,19 +1173,19 @@ exports[`Component Examples renders Keytips.Basic.Example.tsx correctly 1`] = `
                     border-bottom: none;
                   }
                   &:active {
-                    color: inherit;
+                    color: #004578;
                     text-decoration: underline;
                   }
                   &:hover {
-                    color: inherit;
+                    color: #004578;
                     text-decoration: underline;
                   }
                   &:active:hover {
-                    color: inherit;
+                    color: #004578;
                     text-decoration: underline;
                   }
                   &:focus {
-                    color: inherit;
+                    color: #0078d4;
                   }
               data-ktp-execute-target="ktp-a-2"
               data-ktp-target="ktp-a-2"

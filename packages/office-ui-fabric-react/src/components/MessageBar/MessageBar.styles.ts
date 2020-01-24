@@ -49,7 +49,10 @@ const getRootBackground = (messageBarType: MessageBarType | undefined, palette: 
   }
   return palette.neutralLighter;
 };
+
 // Returns the background color of the MessageBar root element based on the type of MessageBar when in High Contrast Mode.
+// The fact that the styles don't vary based on the theme is intentional since the objective is to show the message bar type and theme
+// variations would not be appreciated in High Contrast either way.
 const getHighContrastRootBackground = (messageBarType: MessageBarType | undefined): string => {
   switch (messageBarType) {
     case MessageBarType.error:
@@ -151,8 +154,7 @@ export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
             ...fonts.small,
             selectors: {
               [HighContrastSelector]: {
-                color: 'inherit',
-                textDecoration: 'underline'
+                MsHighContrastAdjust: 'auto'
               }
             }
           },

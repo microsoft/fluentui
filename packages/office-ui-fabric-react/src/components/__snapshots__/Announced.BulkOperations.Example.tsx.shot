@@ -1666,19 +1666,19 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
                                       color: #00009F;
                                     }
                                     &:active {
-                                      color: inherit;
+                                      color: #004578;
                                       text-decoration: underline;
                                     }
                                     &:hover {
-                                      color: inherit;
+                                      color: #004578;
                                       text-decoration: underline;
                                     }
                                     &:active:hover {
-                                      color: inherit;
+                                      color: #004578;
                                       text-decoration: underline;
                                     }
                                     &:focus {
-                                      color: inherit;
+                                      color: #0078d4;
                                     }
                                 data-selection-invoke={true}
                                 onClick={[Function]}
@@ -2308,19 +2308,19 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
                                       color: #00009F;
                                     }
                                     &:active {
-                                      color: inherit;
+                                      color: #004578;
                                       text-decoration: underline;
                                     }
                                     &:hover {
-                                      color: inherit;
+                                      color: #004578;
                                       text-decoration: underline;
                                     }
                                     &:active:hover {
-                                      color: inherit;
+                                      color: #004578;
                                       text-decoration: underline;
                                     }
                                     &:focus {
-                                      color: inherit;
+                                      color: #0078d4;
                                     }
                                 data-selection-invoke={true}
                                 onClick={[Function]}
@@ -2950,19 +2950,19 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
                                       color: #00009F;
                                     }
                                     &:active {
-                                      color: inherit;
+                                      color: #004578;
                                       text-decoration: underline;
                                     }
                                     &:hover {
-                                      color: inherit;
+                                      color: #004578;
                                       text-decoration: underline;
                                     }
                                     &:active:hover {
-                                      color: inherit;
+                                      color: #004578;
                                       text-decoration: underline;
                                     }
                                     &:focus {
-                                      color: inherit;
+                                      color: #0078d4;
                                     }
                                 data-selection-invoke={true}
                                 onClick={[Function]}
@@ -3592,19 +3592,19 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
                                       color: #00009F;
                                     }
                                     &:active {
-                                      color: inherit;
+                                      color: #004578;
                                       text-decoration: underline;
                                     }
                                     &:hover {
-                                      color: inherit;
+                                      color: #004578;
                                       text-decoration: underline;
                                     }
                                     &:active:hover {
-                                      color: inherit;
+                                      color: #004578;
                                       text-decoration: underline;
                                     }
                                     &:focus {
-                                      color: inherit;
+                                      color: #0078d4;
                                     }
                                 data-selection-invoke={true}
                                 onClick={[Function]}
@@ -4234,19 +4234,19 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
                                       color: #00009F;
                                     }
                                     &:active {
-                                      color: inherit;
+                                      color: #004578;
                                       text-decoration: underline;
                                     }
                                     &:hover {
-                                      color: inherit;
+                                      color: #004578;
                                       text-decoration: underline;
                                     }
                                     &:active:hover {
-                                      color: inherit;
+                                      color: #004578;
                                       text-decoration: underline;
                                     }
                                     &:focus {
-                                      color: inherit;
+                                      color: #0078d4;
                                     }
                                 data-selection-invoke={true}
                                 onClick={[Function]}
@@ -4876,19 +4876,19 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
                                       color: #00009F;
                                     }
                                     &:active {
-                                      color: inherit;
+                                      color: #004578;
                                       text-decoration: underline;
                                     }
                                     &:hover {
-                                      color: inherit;
+                                      color: #004578;
                                       text-decoration: underline;
                                     }
                                     &:active:hover {
-                                      color: inherit;
+                                      color: #004578;
                                       text-decoration: underline;
                                     }
                                     &:focus {
-                                      color: inherit;
+                                      color: #0078d4;
                                     }
                                 data-selection-invoke={true}
                                 onClick={[Function]}
@@ -5518,19 +5518,19 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
                                       color: #00009F;
                                     }
                                     &:active {
-                                      color: inherit;
+                                      color: #004578;
                                       text-decoration: underline;
                                     }
                                     &:hover {
-                                      color: inherit;
+                                      color: #004578;
                                       text-decoration: underline;
                                     }
                                     &:active:hover {
-                                      color: inherit;
+                                      color: #004578;
                                       text-decoration: underline;
                                     }
                                     &:focus {
-                                      color: inherit;
+                                      color: #0078d4;
                                     }
                                 data-selection-invoke={true}
                                 onClick={[Function]}
@@ -6160,19 +6160,19 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
                                       color: #00009F;
                                     }
                                     &:active {
-                                      color: inherit;
+                                      color: #004578;
                                       text-decoration: underline;
                                     }
                                     &:hover {
-                                      color: inherit;
+                                      color: #004578;
                                       text-decoration: underline;
                                     }
                                     &:active:hover {
-                                      color: inherit;
+                                      color: #004578;
                                       text-decoration: underline;
                                     }
                                     &:focus {
-                                      color: inherit;
+                                      color: #0078d4;
                                     }
                                 data-selection-invoke={true}
                                 onClick={[Function]}
@@ -6802,19 +6802,19 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
                                       color: #00009F;
                                     }
                                     &:active {
-                                      color: inherit;
+                                      color: #004578;
                                       text-decoration: underline;
                                     }
                                     &:hover {
-                                      color: inherit;
+                                      color: #004578;
                                       text-decoration: underline;
                                     }
                                     &:active:hover {
-                                      color: inherit;
+                                      color: #004578;
                                       text-decoration: underline;
                                     }
                                     &:focus {
-                                      color: inherit;
+                                      color: #0078d4;
                                     }
                                 data-selection-invoke={true}
                                 onClick={[Function]}
@@ -7444,19 +7444,19 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
                                       color: #00009F;
                                     }
                                     &:active {
-                                      color: inherit;
+                                      color: #004578;
                                       text-decoration: underline;
                                     }
                                     &:hover {
-                                      color: inherit;
+                                      color: #004578;
                                       text-decoration: underline;
                                     }
                                     &:active:hover {
-                                      color: inherit;
+                                      color: #004578;
                                       text-decoration: underline;
                                     }
                                     &:focus {
-                                      color: inherit;
+                                      color: #0078d4;
                                     }
                                 data-selection-invoke={true}
                                 onClick={[Function]}

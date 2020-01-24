@@ -166,7 +166,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                   border-bottom: none;
                 }
                 &:active {
-                  color: inherit;
+                  color: #004578;
                   text-decoration: underline;
                 }
                 &:hover {
@@ -174,11 +174,11 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                   text-decoration: underline;
                 }
                 &:active:hover {
-                  color: inherit;
+                  color: #004578;
                   text-decoration: underline;
                 }
                 &:focus {
-                  color: inherit;
+                  color: #0078d4;
                 }
                 &::-moz-focus-inner {
                   border: 0;
@@ -274,7 +274,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                   border-bottom: none;
                 }
                 &:active {
-                  color: inherit;
+                  color: #004578;
                   text-decoration: underline;
                 }
                 &:hover {
@@ -282,11 +282,11 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                   text-decoration: underline;
                 }
                 &:active:hover {
-                  color: inherit;
+                  color: #004578;
                   text-decoration: underline;
                 }
                 &:focus {
-                  color: inherit;
+                  color: #0078d4;
                 }
                 &::-moz-focus-inner {
                   border: 0;
@@ -382,7 +382,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                   border-bottom: none;
                 }
                 &:active {
-                  color: inherit;
+                  color: #004578;
                   text-decoration: underline;
                 }
                 &:hover {
@@ -390,11 +390,11 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                   text-decoration: underline;
                 }
                 &:active:hover {
-                  color: inherit;
+                  color: #004578;
                   text-decoration: underline;
                 }
                 &:focus {
-                  color: inherit;
+                  color: #0078d4;
                 }
                 &::-moz-focus-inner {
                   border: 0;
