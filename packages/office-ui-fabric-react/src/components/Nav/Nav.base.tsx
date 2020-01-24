@@ -18,7 +18,7 @@ let _urlResolver: HTMLAnchorElement | undefined;
 
 export function isRelativeUrl(url: string): boolean {
   // A URL is relative if it has no protocol.
-  return !!url && !/^[a-z0-9+-.]:\/\//i.test(url);
+  return !!url && !/^[a-z0-9+-.]+:\/\//i.test(url);
 }
 
 const getClassNames = classNamesFunction<INavStyleProps, INavStyles>();
