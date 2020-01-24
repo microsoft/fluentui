@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "memoizeFunction: The items for which callback method returned null/undefined value, null/undefined was being stored in cache for these items. In this PR, a new flag is introduced based on which the cached undefined/null value can be updated till the time non-undefined/null value is encountered for the first time.",
-  "packageName": "@uifabric/utilities",
-  "email": "vishgup@microsoft.com",
-  "commit": "cee2f1aee7bc1e19362683cb7f2d1f098159b88d",
-  "date": "2019-12-02T12:40:48.530Z"
-}

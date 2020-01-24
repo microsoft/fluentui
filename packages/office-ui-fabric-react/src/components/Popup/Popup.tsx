@@ -146,7 +146,15 @@ export class Popup extends React.Component<IPopupProps, IPopupState> {
   };
 
   private _onBlur = (ev: FocusEvent): void => {
-    if (this._root.current && this._root.current.contains(ev.relatedTarget as HTMLElement)) {
+    /** The popup should update this._containsFocus when:
+     * relatedTarget exists AND
+     * the relatedTarget is not contained within the popup.
+     * If the relatedTarget is within the popup, that means the popup still has focus
+     * and focused moved from one element to another within the popup.
+     * If relatedTarget is undefined or null that usually means that a
+     * keyboard event occured and focus didn't change
+     */
+    if (this._root.current && ev.relatedTarget && !this._root.current.contains(ev.relatedTarget as HTMLElement)) {
       this._containsFocus = false;
     }
   };

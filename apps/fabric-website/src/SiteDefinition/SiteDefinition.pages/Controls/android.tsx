@@ -11,7 +11,6 @@ export const controlsPagesAndroid: INavPage[] = [
   },
   {
     title: 'Basic Inputs',
-    url: '#/controls/android/button',
     isCategory: true,
     pages: [
       {
@@ -24,7 +23,6 @@ export const controlsPagesAndroid: INavPage[] = [
   },
   {
     title: 'Pickers',
-    url: '#/controls/android/calendar',
     isCategory: true,
     pages: [
       {
@@ -52,7 +50,6 @@ export const controlsPagesAndroid: INavPage[] = [
   },
   {
     title: 'Items & Lists',
-    url: '#/controls/android/avatar',
     isCategory: true,
     pages: [
       {
@@ -84,7 +81,6 @@ export const controlsPagesAndroid: INavPage[] = [
   },
   {
     title: 'Commands, Menus & Navs',
-    url: '#/controls/android/popupmenu',
     isCategory: true,
     pages: [
       {
@@ -113,7 +109,6 @@ export const controlsPagesAndroid: INavPage[] = [
   },
   {
     title: 'Notification & Engagement',
-    url: '#/controls/android/snackbar',
     isCategory: true,
     pages: [
       {
@@ -127,7 +122,6 @@ export const controlsPagesAndroid: INavPage[] = [
   },
   {
     title: 'Progress',
-    url: '#/controls/android/spinner',
     isCategory: true,
     pages: [
       {
@@ -140,7 +134,6 @@ export const controlsPagesAndroid: INavPage[] = [
   },
   {
     title: 'Surfaces',
-    url: '#/controls/android/bottomsheet',
     isCategory: true,
     pages: [
       {
@@ -166,7 +159,6 @@ export const controlsPagesAndroid: INavPage[] = [
   },
   {
     title: 'Utilities',
-    url: '#/controls/android/separator',
     isCategory: true,
     pages: [
       {

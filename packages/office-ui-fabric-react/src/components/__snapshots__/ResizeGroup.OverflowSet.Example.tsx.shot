@@ -141,6 +141,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
               onKeyUp={[Function]}
               onMouseDown={[Function]}
               onMouseUp={[Function]}
+              role="menuitem"
               type="button"
             >
               <span
@@ -319,6 +320,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
               onKeyUp={[Function]}
               onMouseDown={[Function]}
               onMouseUp={[Function]}
+              role="menuitem"
               type="button"
             >
               <span
@@ -497,6 +499,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
               onKeyUp={[Function]}
               onMouseDown={[Function]}
               onMouseUp={[Function]}
+              role="menuitem"
               type="button"
             >
               <span
@@ -675,6 +678,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
               onKeyUp={[Function]}
               onMouseDown={[Function]}
               onMouseUp={[Function]}
+              role="menuitem"
               type="button"
             >
               <span
@@ -853,6 +857,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
               onKeyUp={[Function]}
               onMouseDown={[Function]}
               onMouseUp={[Function]}
+              role="menuitem"
               type="button"
             >
               <span
@@ -1031,6 +1036,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
               onKeyUp={[Function]}
               onMouseDown={[Function]}
               onMouseUp={[Function]}
+              role="menuitem"
               type="button"
             >
               <span
@@ -1209,6 +1215,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
               onKeyUp={[Function]}
               onMouseDown={[Function]}
               onMouseUp={[Function]}
+              role="menuitem"
               type="button"
             >
               <span
@@ -1387,6 +1394,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
               onKeyUp={[Function]}
               onMouseDown={[Function]}
               onMouseUp={[Function]}
+              role="menuitem"
               type="button"
             >
               <span
@@ -1565,6 +1573,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
               onKeyUp={[Function]}
               onMouseDown={[Function]}
               onMouseUp={[Function]}
+              role="menuitem"
               type="button"
             >
               <span
@@ -1743,6 +1752,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
               onKeyUp={[Function]}
               onMouseDown={[Function]}
               onMouseUp={[Function]}
+              role="menuitem"
               type="button"
             >
               <span
@@ -1921,6 +1931,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
               onKeyUp={[Function]}
               onMouseDown={[Function]}
               onMouseUp={[Function]}
+              role="menuitem"
               type="button"
             >
               <span
@@ -2099,6 +2110,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
               onKeyUp={[Function]}
               onMouseDown={[Function]}
               onMouseUp={[Function]}
+              role="menuitem"
               type="button"
             >
               <span
@@ -2277,6 +2289,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
               onKeyUp={[Function]}
               onMouseDown={[Function]}
               onMouseUp={[Function]}
+              role="menuitem"
               type="button"
             >
               <span
@@ -2455,6 +2468,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
               onKeyUp={[Function]}
               onMouseDown={[Function]}
               onMouseUp={[Function]}
+              role="menuitem"
               type="button"
             >
               <span
@@ -2633,6 +2647,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
               onKeyUp={[Function]}
               onMouseDown={[Function]}
               onMouseUp={[Function]}
+              role="menuitem"
               type="button"
             >
               <span
@@ -2811,6 +2826,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
               onKeyUp={[Function]}
               onMouseDown={[Function]}
               onMouseUp={[Function]}
+              role="menuitem"
               type="button"
             >
               <span
@@ -2989,6 +3005,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
               onKeyUp={[Function]}
               onMouseDown={[Function]}
               onMouseUp={[Function]}
+              role="menuitem"
               type="button"
             >
               <span
@@ -3167,6 +3184,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
               onKeyUp={[Function]}
               onMouseDown={[Function]}
               onMouseUp={[Function]}
+              role="menuitem"
               type="button"
             >
               <span
@@ -3345,6 +3363,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
               onKeyUp={[Function]}
               onMouseDown={[Function]}
               onMouseUp={[Function]}
+              role="menuitem"
               type="button"
             >
               <span
@@ -3523,6 +3542,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
               onKeyUp={[Function]}
               onMouseDown={[Function]}
               onMouseUp={[Function]}
+              role="menuitem"
               type="button"
             >
               <span

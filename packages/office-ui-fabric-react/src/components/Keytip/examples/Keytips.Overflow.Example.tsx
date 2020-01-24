@@ -108,6 +108,7 @@ export class KeytipsOverflowExample extends React.Component<{}, IKeytipsOverflow
           example triggering 'T' and 'Y' will show off this functionality (see console messages).
         </p>
         <OverflowSet
+          role="menubar"
           styles={{ root: { marginBottom: 28 } }}
           items={this.state.items}
           overflowItems={this.state.overflowItems}
@@ -124,7 +125,7 @@ export class KeytipsOverflowExample extends React.Component<{}, IKeytipsOverflow
 
   private _onRenderItem(item: IOverflowSetItemProps): JSX.Element {
     return (
-      <CommandBarButton {...item} styles={{ root: { padding: '10px' } }} menuProps={item.subMenuProps}>
+      <CommandBarButton role="menuitem" {...item} styles={{ root: { padding: '10px' } }} menuProps={item.subMenuProps}>
         {item.name}
       </CommandBarButton>
     );

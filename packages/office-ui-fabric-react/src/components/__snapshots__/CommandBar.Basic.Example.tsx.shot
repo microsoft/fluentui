@@ -48,7 +48,6 @@ exports[`Component Examples renders CommandBar.Basic.Example.tsx correctly 1`] =
           role="menubar"
         >
           <div
-            aria-orientation="horizontal"
             className=
                 ms-OverflowSet
                 ms-CommandBar-primaryCommand
@@ -59,7 +58,7 @@ exports[`Component Examples renders CommandBar.Basic.Example.tsx correctly 1`] =
                   flex-wrap: nowrap;
                   position: relative;
                 }
-            role="menubar"
+            role="group"
           >
             <div
               className=
@@ -935,6 +934,7 @@ exports[`Component Examples renders CommandBar.Basic.Example.tsx correctly 1`] =
                 onKeyUp={[Function]}
                 onMouseDown={[Function]}
                 onMouseUp={[Function]}
+                role="menuitem"
                 type="button"
               >
                 <span
@@ -993,7 +993,6 @@ exports[`Component Examples renders CommandBar.Basic.Example.tsx correctly 1`] =
             </div>
           </div>
           <div
-            aria-orientation="horizontal"
             className=
                 ms-OverflowSet
                 ms-CommandBar-secondaryCommand
@@ -1004,7 +1003,7 @@ exports[`Component Examples renders CommandBar.Basic.Example.tsx correctly 1`] =
                   flex-wrap: nowrap;
                   position: relative;
                 }
-            role="menubar"
+            role="group"
           >
             <div
               className=

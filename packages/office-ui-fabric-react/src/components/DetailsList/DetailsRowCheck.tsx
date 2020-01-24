@@ -3,6 +3,7 @@ import { IDetailsRowCheckProps, IDetailsCheckboxProps, IDetailsRowCheckStyleProp
 import { css, styled, classNamesFunction } from '../../Utilities';
 import { Check, getCheck } from '../../Check';
 import { getStyles } from './DetailsRowCheck.styles';
+import { composeRenderFunction } from '@uifabric/utilities';
 
 const getClassNames = classNamesFunction<IDetailsRowCheckStyleProps, IDetailsRowCheckStyles>();
 
@@ -23,7 +24,10 @@ const DetailsRowCheckBase: React.FunctionComponent<IDetailsRowCheckProps> = prop
     ...buttonProps
   } = props;
   const defaultCheckboxRender = useFastIcons ? _fastDefaultCheckboxRender : _defaultCheckboxRender;
-  const onRenderCheckbox = onRenderDetailsCheckbox || defaultCheckboxRender;
+
+  const onRenderCheckbox = onRenderDetailsCheckbox
+    ? composeRenderFunction(onRenderDetailsCheckbox, defaultCheckboxRender)
+    : defaultCheckboxRender;
 
   const classNames = getClassNames(styles, {
     theme: theme!,
@@ -50,7 +54,7 @@ const DetailsRowCheckBase: React.FunctionComponent<IDetailsRowCheckProps> = prop
       data-selection-toggle={true}
       data-automationid="DetailsRowCheck"
     >
-      {onRenderCheckbox(detailsCheckboxProps, defaultCheckboxRender)}
+      {onRenderCheckbox(detailsCheckboxProps)}
     </div>
   ) : (
     <div {...buttonProps} className={css(classNames.root, classNames.check)} />
