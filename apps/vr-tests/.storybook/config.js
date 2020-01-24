@@ -31,6 +31,8 @@ storybook.setAddon({
         return storyFn(context);
       });
     }
+
+    return this;
   }
 });
 

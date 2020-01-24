@@ -32,6 +32,14 @@ storiesOf('TagPicker', module)
   .addDecorator(FabricDecorator)
   .addStory('TagPicker disabled', () => <TagPicker onResolveSuggestions={getList} disabled />)
   .addDecorator(story => (
+    <Screener steps={new Screener.Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>
+      {story()}
+    </Screener>
+  ));
+
+storiesOf('TagPicker', module)
+  .addDecorator(FabricDecorator)
+  .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
