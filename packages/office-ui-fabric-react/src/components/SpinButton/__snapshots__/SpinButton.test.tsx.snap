@@ -126,7 +126,6 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
       onInput={[Function]}
       onKeyDown={[Function]}
       onKeyUp={[Function]}
-      readOnly={false}
       role="spinbutton"
       type="text"
       value="0"
@@ -559,7 +558,6 @@ exports[`SpinButton renders SpinButton correctly with values that the user passe
       onInput={[Function]}
       onKeyDown={[Function]}
       onKeyUp={[Function]}
-      readOnly={false}
       role="spinbutton"
       type="text"
       value="0"

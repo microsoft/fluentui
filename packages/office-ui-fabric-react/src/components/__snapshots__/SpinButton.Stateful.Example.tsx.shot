@@ -133,7 +133,6 @@ exports[`Component Examples renders SpinButton.Stateful.Example.tsx correctly 1`
         onInput={[Function]}
         onKeyDown={[Function]}
         onKeyUp={[Function]}
-        readOnly={false}
         role="spinbutton"
         type="text"
         value="7 cm"

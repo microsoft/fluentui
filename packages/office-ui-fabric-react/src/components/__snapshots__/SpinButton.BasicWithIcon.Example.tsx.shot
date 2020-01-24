@@ -155,7 +155,6 @@ exports[`Component Examples renders SpinButton.BasicWithIcon.Example.tsx correct
         onInput={[Function]}
         onKeyDown={[Function]}
         onKeyUp={[Function]}
-        readOnly={false}
         role="spinbutton"
         type="text"
         value="0"

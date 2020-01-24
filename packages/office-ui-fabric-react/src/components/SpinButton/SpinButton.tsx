@@ -213,7 +213,6 @@ export class SpinButton extends React.Component<ISpinButtonProps, ISpinButtonSta
                 onKeyUp={this._handleKeyUp}
                 disabled={disabled}
                 aria-disabled={disabled}
-                readOnly={disabled}
                 data-lpignore={true}
                 data-ktp-execute-target={keytipAttributes['data-ktp-execute-target']}
                 {...inputProps}

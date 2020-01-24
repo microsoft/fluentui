@@ -127,7 +127,6 @@ exports[`Component Examples renders SpinButton.CustomStyled.Example.tsx correctl
         onInput={[Function]}
         onKeyDown={[Function]}
         onKeyUp={[Function]}
-        readOnly={false}
         role="spinbutton"
         type="text"
         value="0"
