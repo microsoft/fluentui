@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, classNamesFunction } from '../../Utilities';
+import { BaseComponent, classNamesFunction, getNativeProps, divProperties, css } from '../../Utilities';
 import { DialogType, IDialogContentProps, IDialogContentStyleProps, IDialogContentStyles } from './DialogContent.types';
 import { IconButton } from '../../Button';
 import { DialogFooter } from './DialogFooter';
@@ -21,6 +21,12 @@ export class DialogContentBase extends BaseComponent<IDialogContentProps, {}> {
 
   constructor(props: IDialogContentProps) {
     super(props);
+
+    if (process.env.NODE_ENV !== 'production') {
+      this._warnDeprecations({
+        titleId: 'titleProps.id'
+      });
+    }
   }
 
   public render(): JSX.Element {
@@ -31,6 +37,7 @@ export class DialogContentBase extends BaseComponent<IDialogContentProps, {}> {
       onDismiss,
       subTextId,
       subText,
+      titleProps = {},
       titleId,
       title,
       type,
@@ -57,12 +64,20 @@ export class DialogContentBase extends BaseComponent<IDialogContentProps, {}> {
       );
     }
 
+    const titleNativeProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(titleProps, divProperties, ['id', 'className']);
+
     return (
       <div className={classNames.content}>
         <div className={classNames.header}>
-          <p className={classNames.title} id={titleId} role="heading" aria-level={2}>
+          <div
+            className={css(classNames.title, titleProps.className)}
+            id={titleProps.id || titleId}
+            role="heading"
+            aria-level={2}
+            {...titleNativeProps}
+          >
             {title}
-          </p>
+          </div>
           <div className={classNames.topButton}>
             {this.props.topButtonsProps!.map((props, index) => (
               <IconButton key={props.uniqueId || index} {...props} />

@@ -69,6 +69,8 @@ export interface IDialogContentProps extends React.ClassAttributes<DialogContent
 
   /**
    * The Id for title container
+   *
+   * @deprecated use titleProps.id instead.
    */
   titleId?: string;
 
@@ -76,6 +78,11 @@ export interface IDialogContentProps extends React.ClassAttributes<DialogContent
    * The title text to display at the top of the dialog.
    */
   title?: string | JSX.Element;
+
+  /**
+   * The props for title container.
+   */
+  titleProps?: IDialogContentTitleProps;
 
   /**
    * Responsive mode passed in from decorator.
@@ -111,6 +118,11 @@ export enum DialogType {
   /** Dialog with an 'x' close button in the upper-right corner */
   close = 2
 }
+
+/**
+ * {@docCategory Dialog}
+ */
+export interface IDialogContentTitleProps extends React.AllHTMLAttributes<HTMLDivElement> {}
 
 /**
  * {@docCategory Dialog}

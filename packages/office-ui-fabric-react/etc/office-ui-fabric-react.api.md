@@ -3759,7 +3759,9 @@ export interface IDialogContentProps extends React.ClassAttributes<DialogContent
     subTextId?: string;
     theme?: ITheme;
     title?: string | JSX.Element;
+    // @deprecated
     titleId?: string;
+    titleProps?: IDialogContentTitleProps;
     topButtonsProps?: IButtonProps[];
     type?: DialogType;
 }
@@ -3795,6 +3797,10 @@ export interface IDialogContentStyles {
     title: IStyle;
     // (undocumented)
     topButton: IStyle;
+}
+
+// @public (undocumented)
+export interface IDialogContentTitleProps extends React.AllHTMLAttributes<HTMLDivElement> {
 }
 
 // @public (undocumented)
