@@ -238,8 +238,8 @@ export class GroupedListSection extends React.Component<IGroupedListSectionProps
             id={this._id}
           />
         ) : (
-            this._onRenderGroup(renderCount)
-          )}
+          this._onRenderGroup(renderCount)
+        )}
         {group && group.isCollapsed ? null : isShowAllVisible && onRenderGroupShowAll(groupShowAllProps, this._onRenderGroupShowAll)}
         {onRenderGroupFooter(groupFooterProps, this._onRenderGroupFooter)}
       </div>
@@ -399,11 +399,7 @@ export class GroupedListSection extends React.Component<IGroupedListSectionProps
   private _getGroupDragDropOptions = (): IDragDropOptions => {
     const { group, groupIndex, dragDropEvents, eventsToRegister } = this.props;
     const canDrag = dragDropEvents && dragDropEvents.canDrag ? dragDropEvents.canDrag : () => false;
-    const onDragStart = dragDropEvents && dragDropEvents.onDragStart ? dragDropEvents.onDragStart : undefined;
-    const onDragEnter = dragDropEvents && dragDropEvents.onDragEnter ? dragDropEvents.onDragEnter : undefined;
-    const onDragLeave = dragDropEvents && dragDropEvents.onDragLeave ? dragDropEvents.onDragLeave : undefined;
-    const onDragEnd = dragDropEvents && dragDropEvents.onDragEnd ? dragDropEvents.onDragEnd : undefined;
-
+    
     const options = {
       eventMap: eventsToRegister,
       selectionIndex: -1,
@@ -412,10 +408,10 @@ export class GroupedListSection extends React.Component<IGroupedListSectionProps
       canDrop: dragDropEvents!.canDrop,
       updateDropState: this._updateDroppingState,
       onDrop: dragDropEvents!.onDrop,
-      onDragStart: onDragStart,
-      onDragEnter: onDragEnter,
-      onDragLeave: onDragLeave,
-      onDragEnd: onDragEnd
+      onDragStart: dragDropEvents!.onDragStart,
+      onDragEnter: dragDropEvents!.onDragEnter,
+      onDragLeave: dragDropEvents!.onDragLeave,
+      onDragEnd: dragDropEvents!.onDragEnd
     };
     return options as IDragDropOptions;
   };
