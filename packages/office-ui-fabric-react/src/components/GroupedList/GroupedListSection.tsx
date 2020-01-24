@@ -398,11 +398,11 @@ export class GroupedListSection extends React.Component<IGroupedListSectionProps
    */
   private _getGroupDragDropOptions = (): IDragDropOptions => {
     const { group, groupIndex, dragDropEvents, eventsToRegister } = this.props;
-    const canDrag=(dragDropEvents && dragDropEvents.canDrag)?dragDropEvents.canDrag:()=>false;
-    const onDragStart=(dragDropEvents && dragDropEvents.onDragStart)?dragDropEvents.onDragStart:undefined;
-    const onDragEnter=(dragDropEvents && dragDropEvents.onDragEnter)?dragDropEvents.onDragEnter:undefined;
-    const onDragLeave=(dragDropEvents && dragDropEvents.onDragLeave)?dragDropEvents.onDragLeave:undefined;
-    const onDragEnd=(dragDropEvents && dragDropEvents.onDragEnd)?dragDropEvents.onDragEnd:undefined;
+    const canDrag = dragDropEvents && dragDropEvents.canDrag ? dragDropEvents.canDrag : () => false;
+    const onDragStart = dragDropEvents && dragDropEvents.onDragStart ? dragDropEvents.onDragStart : undefined;
+    const onDragEnter = dragDropEvents && dragDropEvents.onDragEnter ? dragDropEvents.onDragEnter : undefined;
+    const onDragLeave = dragDropEvents && dragDropEvents.onDragLeave ? dragDropEvents.onDragLeave : undefined;
+    const onDragEnd = dragDropEvents && dragDropEvents.onDragEnd ? dragDropEvents.onDragEnd : undefined;
 
     const options = {
       eventMap: eventsToRegister,
