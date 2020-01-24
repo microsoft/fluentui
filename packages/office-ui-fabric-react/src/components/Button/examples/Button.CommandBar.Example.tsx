@@ -40,6 +40,7 @@ export class ButtonCommandBarExample extends React.Component<IButtonProps, {}> {
             iconProps={{ iconName: 'Add' }}
             text="Create account"
             split={true}
+            splitButtonAriaLabel={'See 2 sample options'}
             onClick={alertClicked}
             menuProps={{
               items: [
