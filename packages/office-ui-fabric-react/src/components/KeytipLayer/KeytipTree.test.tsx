@@ -228,12 +228,23 @@ describe('KeytipTree', () => {
       expect(updatedNode.parent).toEqual(keytipIdC);
       // Validate new parent properties
       expect(updatedParent.children).toContain(updatedKeytipId);
-      // Validate old parent properties
+      // Validate old parent properties, shouldn't have it in children
       expect(previousParent.children.indexOf(updatedKeytipId)).toEqual(-1);
-      // We expect the old parent to still have the old keytip as a child.
-      // The implication is that in these scenarios the keytip would be updated back eventually
-      // when the old parent is triggered
-      expect(previousParent.children.indexOf(keytipIdD)).toBeGreaterThan(-1);
+      expect(previousParent.children.indexOf(keytipIdD)).toEqual(-1);
+
+      // Revert, make node 'd' have parent 'e' again
+      keytipTree.updateNode(keytipPropsD, uniqueIdD);
+      const nodeD = keytipTree.getNode(keytipIdD)!;
+      const nodeC = keytipTree.getNode(keytipIdC)!;
+      const nodeE = keytipTree.getNode(keytipIdE)!;
+      // Node props are back to original
+      expect(nodeD.id).toEqual(keytipIdD);
+      expect(nodeD.parent).toEqual(keytipIdE);
+      // E has D as a child
+      expect(nodeE.children).toContain(keytipIdD);
+      // C does not have D as a child
+      expect(nodeC.children.indexOf(keytipIdD)).toEqual(-1);
+      expect(nodeC.children.indexOf(updatedKeytipId)).toEqual(-1);
     });
   });
 

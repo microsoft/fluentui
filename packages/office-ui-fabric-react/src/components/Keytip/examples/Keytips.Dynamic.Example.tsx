@@ -37,7 +37,7 @@ export class KeytipsDynamicExample extends React.Component<{}, IKeytipsTestState
         />
         <div>
           <DefaultButton
-            text={'Button3, button clicked is: ' + this.state.currButton}
+            text={'Button3, active button is: ' + this.state.currButton}
             keytipProps={{ content: 'GG3', keySequences: [startSequence, 'gg3'] }}
           />
         </div>
