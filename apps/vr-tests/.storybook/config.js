@@ -17,7 +17,19 @@ const defaultConfig = {
   rtl: false
 };
 
-// Via this addon, we INVENT a new API that automatically adds several stories for you when you call addStory() that adds variants (like RTL)
+/**
+ * Via this addon, we INVENT a new API that automatically adds several
+ * stories for you when you call addStory() that adds variants (like RTL)
+ *
+ * addStory() is not an official Storybook API
+ *
+ * Adds a story with different configuration options.
+ * By default, only adds a story in LTR.
+ * The config parameter can be used to add the story RTL
+ *  in addition to LTR.
+ * In future, this can add a story with additional configurations
+ *  such as theming.
+ */
 storybook.setAddon({
   addStory: function(storyName, storyFn, config = defaultConfig) {
     this.add(storyName, context => {
