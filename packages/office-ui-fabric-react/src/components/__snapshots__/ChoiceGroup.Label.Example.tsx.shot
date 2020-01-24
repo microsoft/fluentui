@@ -26,14 +26,51 @@ exports[`Component Examples renders ChoiceGroup.Label.Example.tsx correctly 1`] 
           padding-top: 5px;
           word-wrap: break-word;
         }
-        &::after {
-          color: #a4262c;
-          content: ' *';
-          padding-right: 12px;
-        }
     id="labelElement0"
   >
-    Custom label
+    <div
+      className=
+          ms-Stack
+          {
+            align-items: center;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            height: auto;
+            width: auto;
+          }
+          & > * {
+            text-overflow: ellipsis;
+          }
+          & > *:not(:first-child) {
+            margin-left: 0px;
+          }
+          & > *:not(.ms-StackItem) {
+            flex-shrink: 1;
+          }
+    >
+      <span>
+        Custom label  
+      </span>
+      <i
+        aria-hidden={true}
+        className=
+
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              display: inline-block;
+              font-family: "FabricMDL2Icons";
+              font-style: normal;
+              font-weight: normal;
+              speak: none;
+            }
+        data-icon-name="Filter"
+      >
+        
+      </i>
+    </div>
   </label>
   <div
     className=

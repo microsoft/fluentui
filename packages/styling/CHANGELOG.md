@@ -1,7 +1,13 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Tue, 24 Dec 2019 12:33:51 GMT and should not be manually modified.
+This log was last generated on Tue, 31 Dec 2019 12:31:45 GMT and should not be manually modified.
 
+## 7.8.1
+Tue, 31 Dec 2019 12:31:45 GMT
+
+### Patches
+
+- createTheme: Pass through RTL if specified (mgodbolt@microsoft.com)
 ## 7.8.0
 Tue, 24 Dec 2019 12:33:51 GMT
 
