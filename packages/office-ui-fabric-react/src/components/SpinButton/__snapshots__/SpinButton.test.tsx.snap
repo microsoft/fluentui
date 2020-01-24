@@ -118,6 +118,7 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
             color: HighlightText;
           }
       data-lpignore={true}
+      disabled={false}
       id="input1"
       onBlur={[Function]}
       onChange={[Function]}
@@ -550,6 +551,7 @@ exports[`SpinButton renders SpinButton correctly with values that the user passe
             color: HighlightText;
           }
       data-lpignore={true}
+      disabled={false}
       id="input1"
       onBlur={[Function]}
       onChange={[Function]}
