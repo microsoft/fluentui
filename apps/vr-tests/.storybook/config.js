@@ -31,7 +31,7 @@ const defaultConfig = {
  *  such as theming.
  */
 storybook.setAddon({
-  addStory: function(storyName, storyFn, config = defaultConfig) {
+  addStory(storyName, storyFn, config = defaultConfig) {
     this.add(storyName, context => {
       setRTL(false);
       return storyFn(context);
