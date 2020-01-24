@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Providing drag drop support for GroupedListSection. Previously, GroupedListSection was non-draggable.",
+  "packageName": "office-ui-fabric-react",
+  "email": "vishgup@microsoft.com",
+  "commit": "c775a4c9f8eacb29dd672ab0d37302d93f2e5dca",
+  "date": "2020-01-24T10:59:51.880Z"
+}
