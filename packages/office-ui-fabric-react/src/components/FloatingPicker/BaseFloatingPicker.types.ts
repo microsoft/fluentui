@@ -4,7 +4,7 @@ import { ISuggestionsControlProps } from './Suggestions/Suggestions.types';
 import { SuggestionsStore } from './Suggestions/SuggestionsStore';
 import { IRefObject } from '../../Utilities';
 import { ISuggestionItemProps } from '../pickers/Suggestions/SuggestionsItem.types';
-import { ICalloutProps } from '../Callout';
+import { ICalloutProps } from '../Callout/Callout.types';
 
 export interface IBaseFloatingPicker {
   /** Whether the suggestions are shown */
