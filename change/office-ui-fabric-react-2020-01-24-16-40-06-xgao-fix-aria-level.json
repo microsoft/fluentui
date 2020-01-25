@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "Dialog: allow to set aria-level on content title",
+  "comment": "Dialog/Panel: allow to set aria-level on header title",
   "packageName": "office-ui-fabric-react",
   "email": "xgao@microsoft.com",
   "commit": "ab70836609d88abc730d450a8de1f41225cefb00",
