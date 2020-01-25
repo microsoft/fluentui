@@ -308,13 +308,13 @@ export class GroupedListSection extends React.Component<IGroupedListSectionProps
   }
 
   private _onRenderGroup(renderCount: number): JSX.Element {
-    const { group, items, onRenderCell, listProps, groupNestingDepth, onShouldVirtualize } = this.props;
+    const { group, items, onRenderCell, listProps, groupNestingDepth, onShouldVirtualize, groupProps } = this.props;
     const count = group && !group.isShowingAll ? group.count : items.length;
     const startIndex = group ? group.startIndex : 0;
 
     return (
       <List
-        role="grid"
+        role={groupProps && groupProps.role ? groupProps.role : 'grid'}
         items={items}
         onRenderCell={this._onRenderGroupCell(onRenderCell, groupNestingDepth)}
         ref={this._list}

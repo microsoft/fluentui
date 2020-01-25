@@ -4914,6 +4914,7 @@ export interface IGroupRenderProps {
     onRenderHeader?: IRenderFunction<IGroupHeaderProps>;
     onRenderShowAll?: IRenderFunction<IGroupShowAllProps>;
     onToggleCollapseAll?: (isAllCollapsed: boolean) => void;
+    role?: string;
     showAllProps?: IGroupShowAllProps;
     showEmptyGroups?: boolean;
 }
