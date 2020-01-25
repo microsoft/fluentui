@@ -44,7 +44,7 @@ function getInitialsLatin(displayName: string, isRtl: boolean): string {
     return initials.charAt(1) + initials.charAt(0);
   }
 
-  return 'initials';
+  return initials;
 }
 
 function cleanupDisplayName(displayName: string): string {
