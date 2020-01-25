@@ -35,6 +35,8 @@ function findRepoDeps() {
     });
   }
 
+  result.add(packageJson.name);
+
   return [...result].map(dep => packageInfo[dep]);
 }
 
