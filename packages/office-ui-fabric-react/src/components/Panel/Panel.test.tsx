@@ -19,7 +19,14 @@ describe('Panel', () => {
     });
 
     const component = renderer.create(
-      <Panel isOpen={true} headerText="Test Panel">
+      <Panel
+        isOpen={true}
+        headerText="Test Panel"
+        headerTextProps={{
+          className: 'panel_class',
+          'aria-level': 3
+        }}
+      >
         <span>Content goes here</span>
       </Panel>
     );

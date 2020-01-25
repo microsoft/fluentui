@@ -5859,6 +5859,10 @@ export interface IPanelHeaderRenderer extends IRenderFunction<IPanelProps> {
     (props?: IPanelProps, defaultRender?: IPanelHeaderRenderer, headerTextId?: string | undefined): JSX.Element | null;
 }
 
+// @public (undocumented)
+export interface IPanelHeaderTextProps extends React.AllHTMLAttributes<HTMLDivElement> {
+}
+
 // Warning: (ae-forgotten-export) The symbol "PanelBase" needs to be exported by the entry point index.d.ts
 //
 // @public (undocumented)
@@ -5879,6 +5883,7 @@ export interface IPanelProps extends React.HTMLAttributes<PanelBase> {
     hasCloseButton?: boolean;
     headerClassName?: string;
     headerText?: string;
+    headerTextProps?: IPanelHeaderTextProps;
     // @deprecated
     ignoreExternalFocusing?: boolean;
     isBlocking?: boolean;

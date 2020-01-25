@@ -13,7 +13,8 @@ import {
   elementContains,
   getId,
   getNativeProps,
-  getRTL
+  getRTL,
+  css
 } from '../../Utilities';
 import { FocusTrapZone } from '../FocusTrapZone/index';
 import { IPanel, IPanelProps, IPanelStyleProps, IPanelStyles, PanelType } from './Panel.types';
@@ -347,14 +348,21 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
     defaultRender?: (props?: IPanelProps) => JSX.Element | null,
     headerTextId?: string | undefined
   ): JSX.Element | null => {
-    const { headerText } = props;
+    const { headerText, headerTextProps = {} } = props;
+    const headerTextNativeProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(headerTextProps, divProperties, ['id', 'className']);
 
     if (headerText) {
       return (
         <div className={this._classNames.header}>
-          <p className={this._classNames.headerText} id={headerTextId} role="heading" aria-level={2}>
+          <div
+            className={css(this._classNames.headerText, headerTextProps.className)}
+            id={headerTextProps.id || headerTextId}
+            role="heading"
+            aria-level={2}
+            {...headerTextNativeProps}
+          >
             {headerText}
-          </p>
+          </div>
         </div>
       );
     }
