@@ -1,0 +1,9 @@
+{
+  "type": "patch",
+  "comment": "Dialog: allow to set aria-level on content title",
+  "packageName": "office-ui-fabric-react",
+  "email": "xgao@microsoft.com",
+  "commit": "ab70836609d88abc730d450a8de1f41225cefb00",
+  "dependentChangeType": "patch",
+  "date": "2020-01-25T00:40:06.480Z"
+}
