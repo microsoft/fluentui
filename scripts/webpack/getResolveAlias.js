@@ -2,6 +2,7 @@ const path = require('path');
 
 const findRepoDeps = require('../monorepo/findRepoDeps');
 const findGitRoot = require('../monorepo/findGitRoot');
+const { readConfig } = require('../read-config');
 
 function getResolveAlias() {
   const gitRoot = findGitRoot();
