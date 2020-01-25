@@ -240,9 +240,6 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
       return;
     }
 
-    if (this.props.onOpen) {
-      this.props.onOpen();
-    }
     this.setState({ visibility: PanelVisibilityState.animatingOpen });
   }
 
