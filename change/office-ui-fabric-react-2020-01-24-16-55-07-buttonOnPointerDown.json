@@ -1,0 +1,9 @@
+{
+  "type": "patch",
+  "comment": "Button: Adding support for onPointerDown and onPointerUp.",
+  "packageName": "office-ui-fabric-react",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "commit": "de7423dcbcf1bbe6c7ed90f93554db705c8b38ac",
+  "dependentChangeType": "patch",
+  "date": "2020-01-25T00:55:07.151Z"
+}
