@@ -75,5 +75,7 @@ module.exports = ({ config }) => {
 
   config.plugins.push(new HardSourceWebpackPlugin(), new IgnoreNotFoundExportWebpackPlugin({ include: [/\.tsx?$/] }));
 
+  config.optimization.minimize = false;
+
   return config;
 };

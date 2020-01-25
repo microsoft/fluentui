@@ -67,6 +67,7 @@ module.exports = function preset() {
   task('generate-package-manifest', generatePackageManifestTask);
   task('storybook:start', startStorybookTask());
   task('storybook:build', buildStorybookTask());
+
   task('ts:compile', () => {
     return argv().commonjs ? 'ts:commonjs-only' : parallel('ts:commonjs', 'ts:esm', condition('ts:amd', () => !!argv().production));
   });
@@ -96,7 +97,13 @@ module.exports = function preset() {
     )
   ).cached();
 
-  task('bundle', condition('webpack', () => !!resolveCwd('webpack.config.js')));
+  task(
+    'bundle',
+    parallel(
+      condition('webpack', () => !!resolveCwd('webpack.config.js')),
+      condition('storybook:build', () => !!resolveCwd('./.storybook/main.js'))
+    )
+  );
 
   task('no-op', () => {}).cached();
 };
