@@ -2796,6 +2796,7 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox,
     onMenuDismissed?: () => void;
     onMenuOpen?: () => void;
     onPendingValueChanged?: (option?: IComboBoxOption, index?: number, value?: string) => void;
+    onRenderLabel?: IRenderFunction<IOnRenderComboBoxLabelProps>;
     onRenderLowerContent?: IRenderFunction<IComboBoxProps>;
     onRenderUpperContent?: IRenderFunction<IComboBoxProps>;
     onResolveOptions?: (options: IComboBoxOption[]) => IComboBoxOption[] | PromiseLike<IComboBoxOption[]>;
@@ -5728,6 +5729,12 @@ export interface INavStyles {
 }
 
 export { IObjectWithKey }
+
+// @public (undocumented)
+export interface IOnRenderComboBoxLabelProps {
+    multiselectAccessibleText?: string;
+    props: IComboBoxProps;
+}
 
 // @public (undocumented)
 export interface IOverflowSet {
