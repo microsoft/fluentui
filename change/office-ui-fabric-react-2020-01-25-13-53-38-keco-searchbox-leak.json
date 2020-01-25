@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "SearchBox: Dispose of EventGroup on unmount",
+  "packageName": "office-ui-fabric-react",
+  "email": "KevinTCoughlin@users.noreply.github.com",
+  "commit": "ee1a499fe789b25ec465e2aafda5bd3ad6573f2e",
+  "date": "2020-01-25T21:53:38.303Z"
+}
