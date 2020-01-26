@@ -8324,7 +8324,7 @@ export const PeoplePickerItemSuggestionBase: (props: IPeoplePickerItemSuggestion
 export const Persona: React.StatelessComponent<IPersonaProps>;
 
 // @public
-export class PersonaBase extends BaseComponent<IPersonaProps, {}> {
+export class PersonaBase extends React.Component<IPersonaProps, {}> {
     constructor(props: IPersonaProps);
     // (undocumented)
     static defaultProps: IPersonaProps;
@@ -8336,7 +8336,7 @@ export class PersonaBase extends BaseComponent<IPersonaProps, {}> {
 export const PersonaCoin: React.StatelessComponent<IPersonaCoinProps>;
 
 // @public
-export class PersonaCoinBase extends BaseComponent<IPersonaCoinProps, IPersonaState> {
+export class PersonaCoinBase extends React.Component<IPersonaCoinProps, IPersonaState> {
     constructor(props: IPersonaCoinProps);
     // (undocumented)
     static defaultProps: IPersonaCoinProps;
@@ -8501,7 +8501,7 @@ export namespace personaSize {
 export const Pivot: React.StatelessComponent<IPivotProps>;
 
 // @public
-export class PivotBase extends BaseComponent<IPivotProps, IPivotState> {
+export class PivotBase extends React.Component<IPivotProps, IPivotState> {
     constructor(props: IPivotProps);
     focus(): void;
     // (undocumented)
@@ -8997,7 +8997,7 @@ export class SpinButton extends React.Component<ISpinButtonProps, ISpinButtonSta
 export const Spinner: React.StatelessComponent<ISpinnerProps>;
 
 // @public (undocumented)
-export class SpinnerBase extends BaseComponent<ISpinnerProps, any> {
+export class SpinnerBase extends React.Component<ISpinnerProps, any> {
     // (undocumented)
     static defaultProps: ISpinnerProps;
     // (undocumented)
