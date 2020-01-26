@@ -8767,13 +8767,13 @@ export const SearchBox: React.StatelessComponent<ISearchBoxProps>;
 export class SearchBoxBase extends React.Component<ISearchBoxProps, ISearchBoxState> {
     constructor(props: ISearchBoxProps);
     // (undocumented)
+    componentWillUnmount(): void;
+    // (undocumented)
     static defaultProps: Pick<ISearchBoxProps, 'disableAnimation' | 'clearButtonProps'>;
     focus(): void;
     hasFocus(): boolean;
     // (undocumented)
     render(): JSX.Element;
-    // (undocumented)
-    UNSAFE_componentWillMount(): void;
     // (undocumented)
     UNSAFE_componentWillReceiveProps(newProps: ISearchBoxProps): void;
 }
