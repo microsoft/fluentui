@@ -424,9 +424,13 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
     if (index < 0) {
       index = 0;
     }
-    // Set starting index to last option index if greater than options.length
+    // Set starting index to the first option index if greater than options.length.
+    // The reason is that as the user is pressing the down key without opening
+    // the dropdown, the dropdown will cycle through the options. If
+    // the index is set as the last option, then pressing the down key will
+    // cause the whole window to scroll, if the window can be scrolled.
     if (index >= options.length) {
-      index = options.length - 1;
+      index = 0;
     }
     let stepCounter = 0;
     // If current index is a header or divider, or disabled, increment by step

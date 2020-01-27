@@ -1,0 +1,9 @@
+{
+  "type": "patch",
+  "comment": "Fix a bug where a user pressing the down key without opening the dropdown causes the window to scroll. The dropdown should cycle through the options. This fix changes the index from being the last item in the options to being the starting index, which is 0.",
+  "packageName": "office-ui-fabric-react",
+  "email": "jehawley@microsoft.com",
+  "commit": "ad83dd6338f1d995553f889f96075cba24654e29",
+  "dependentChangeType": "patch",
+  "date": "2020-01-23T01:52:10.608Z"
+}
