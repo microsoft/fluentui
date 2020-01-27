@@ -20,13 +20,13 @@ const getClassNames = classNamesFunction<IFabricStyleProps, IFabricStyles>();
 const getFabricTheme = memoizeFunction((theme?: ITheme, isRTL?: boolean) => createTheme({ ...theme, rtl: isRTL }));
 
 const getAllDir = memoizeFunction((theme?: ITheme, dir?: IFabricProps['dir']) => {
-  const themedRTL = getRTL(theme) ? 'rtl' : 'ltr';
-  const pagedRTL = getRTL() ? 'rtl' : 'ltr';
+  const themeRTL = getRTL(theme) ? 'rtl' : 'ltr';
+  const pageRTL = getRTL() ? 'rtl' : 'ltr';
 
   return {
-    component: dir ? dir : themedRTL,
-    parent: themedRTL,
-    page: pagedRTL
+    component: dir ? dir : themeRTL,
+    parent: themeRTL,
+    page: pageRTL
   };
 });
 
