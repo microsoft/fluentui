@@ -127,6 +127,7 @@ exports[`Component Examples renders SpinButton.BasicDisabled.Example.tsx correct
               color: GrayText;
             }
         data-lpignore={true}
+        disabled={true}
         id="input1"
         onBlur={[Function]}
         onChange={[Function]}
@@ -134,7 +135,6 @@ exports[`Component Examples renders SpinButton.BasicDisabled.Example.tsx correct
         onInput={[Function]}
         onKeyDown={[Function]}
         onKeyUp={[Function]}
-        readOnly={true}
         role="spinbutton"
         type="text"
         value="25"

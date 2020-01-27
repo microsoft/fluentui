@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Add dark theme to fabric resources site.",
+  "packageName": "@uifabric/fabric-website-resources",
+  "email": "marygans@microsoft.com",
+  "commit": "389fa983ef91fb61c3fc8d62b2c1ab7ea2a4a552",
+  "date": "2019-12-12T19:53:17.254Z"
+}

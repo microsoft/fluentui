@@ -1,7 +1,19 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 24 Jan 2020 12:30:27 GMT and should not be manually modified.
+This log was last generated on Mon, 27 Jan 2020 03:59:43 GMT and should not be manually modified.
 
+## 7.85.0
+Mon, 27 Jan 2020 03:59:43 GMT
+
+### Minor changes
+
+- GroupedList: Add role prop to groupProps (erabelle@microsoft.com)
+### Patches
+
+- add icon support to combobox (makopch@microsoft.com)
+- SpinButton: Making disabled SpinButtons non-focusable. (Humberto.Morimoto@microsoft.com)
+- SearchBox: Dispose of EventGroup on unmount (KevinTCoughlin@users.noreply.github.com)
+- PersonaCoin and related components: elliminating BaseComponent usage to reduce bundle size. (dzearing@hotmail.com)
 ## 7.84.1
 Fri, 24 Jan 2020 12:30:27 GMT
 

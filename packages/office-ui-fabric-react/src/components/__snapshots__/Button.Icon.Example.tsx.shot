@@ -333,7 +333,44 @@ exports[`Component Examples renders Button.Icon.Example.tsx correctly 1`] = `
   <p>
     For a list of Icons, visit our 
     <a
+      className=
+          ms-Link
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            color: #0078d4;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: inherit;
+            font-weight: inherit;
+            outline: none;
+            text-decoration: none;
+          }
+          .ms-Fabric--isFocusVisible &:focus {
+            box-shadow: 0 0 0 1px #605e5c inset;
+          }
+          @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
+            outline: 1px solid WindowText;
+          }
+          @media screen and (-ms-high-contrast: active){& {
+            border-bottom: none;
+          }
+          &:active {
+            color: #004578;
+            text-decoration: underline;
+          }
+          &:hover {
+            color: #004578;
+            text-decoration: underline;
+          }
+          &:active:hover {
+            color: #004578;
+            text-decoration: underline;
+          }
+          &:focus {
+            color: #0078d4;
+          }
       href="https://developer.microsoft.com/en-us/fabric#/styles/icons"
+      onClick={[Function]}
     >
       Icon documentation
     </a>

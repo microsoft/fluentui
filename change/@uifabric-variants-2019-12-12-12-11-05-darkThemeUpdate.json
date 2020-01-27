@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Updates to strong semantic slot for menu item and background hovered/pressed states.",
+  "packageName": "@uifabric/variants",
+  "email": "marygans@microsoft.com",
+  "commit": "f4535826159a9efc88ab9e01c9daf97cd7af585c",
+  "date": "2019-12-12T20:11:05.367Z"
+}

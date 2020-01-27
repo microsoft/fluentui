@@ -1,7 +1,13 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Thu, 23 Jan 2020 12:32:26 GMT and should not be manually modified.
+This log was last generated on Mon, 27 Jan 2020 03:59:43 GMT and should not be manually modified.
 
+## 0.139.6
+Mon, 27 Jan 2020 03:59:43 GMT
+
+### Patches
+
+- Provided accessability for stacked bar chart (v-satgar@microsoft.com)
 ## 0.139.4
 Thu, 23 Jan 2020 12:32:26 GMT
 
