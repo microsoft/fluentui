@@ -71,6 +71,8 @@ jobs:
           artifact: Build-PR-$(Build.BuildNumber)
           buildId: $(Build.BuildId)
 
+      - template: azure-pipelines.tools.yml
+
       - script: |
           yarn test
         displayName: test
@@ -124,7 +126,7 @@ jobs:
   - job: Screener
     dependsOn: Build
     pool:
-      vmImage: 'Ubuntu 16.04'
+      vmImage: 'Ubuntu 18.04'
     steps:
       # No need for checkout since we're using build artifacts.
       - checkout: none
@@ -133,6 +135,8 @@ jobs:
         parameters:
           artifact: Build-PR-$(Build.BuildNumber)
           buildId: $(Build.BuildId)
+
+      - template: azure-pipelines.tools.yml
 
       - script: |
           git config --global user.email "fabrictactical@microsoft.com"

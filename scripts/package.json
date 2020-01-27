@@ -17,7 +17,7 @@
     "@microsoft/load-themed-styles": "^1.10.26",
     "@microsoft/loader-load-themed-styles": "^1.7.205",
     "@octokit/rest": "^16.28.2",
-    "@storybook/addon-a11y": "^5.3.8",
+    "@storybook/addon-a11y": "^6.0.0-alpha.1",
     "@storybook/addon-actions": "^5.3.8",
     "@storybook/addon-info": "^5.3.8",
     "@storybook/addon-knobs": "^5.3.8",
