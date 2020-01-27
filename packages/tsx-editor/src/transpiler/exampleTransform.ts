@@ -39,9 +39,9 @@ export interface ITransformExampleParams {
 }
 
 const win = getWindow() as
-  | Window & {
+  | (Window & {
       transformLogging?: boolean;
-    }
+    })
   | undefined;
 
 /**
@@ -91,14 +91,17 @@ export function transformExample(params: ITransformExampleParams): ITransformedC
     // and initialize icons in case the example uses them.
     finalComponent = component + 'Wrapper';
 
+    // rename to avoid conflict with window.Fabric
+    const renamedFabricComponent = 'FabricComponent';
+
     // If eval-ing the code, the component can't use JSX format
     const wrapperCode = returnFunction
-      ? `React.createElement(Fabric, null, React.createElement(${component}, null))`
-      : `<Fabric><${component} /></Fabric>`;
+      ? `React.createElement(${renamedFabricComponent}, null, React.createElement(${component}, null))`
+      : `<${renamedFabricComponent}><${component} /></${renamedFabricComponent}>`;
     lines.push('', `const ${finalComponent} = () => ${wrapperCode};`);
 
     if (identifiersByGlobal.Fabric.indexOf('Fabric') === -1) {
-      identifiersByGlobal.Fabric.push('Fabric');
+      identifiersByGlobal.Fabric.push(`Fabric: ${renamedFabricComponent}`);
     }
 
     if (identifiersByGlobal.Fabric.indexOf('initializeIcons') === -1) {

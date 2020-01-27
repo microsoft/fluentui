@@ -2,6 +2,20 @@
   "name": "@uifabric/tsx-editor",
   "entries": [
     {
+      "date": "Thu, 23 Jan 2020 12:32:26 GMT",
+      "tag": "@uifabric/tsx-editor_v0.11.4",
+      "version": "0.11.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix export to codepen for fabric 7 (#9450)",
+            "author": "xgao@microsoft.com",
+            "commit": "d9e7b876c4f8e9fa506a2f8e03af880e9dfc4d24"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 22 Jan 2020 12:36:43 GMT",
       "tag": "@uifabric/tsx-editor_v0.11.3",
       "version": "0.11.3",

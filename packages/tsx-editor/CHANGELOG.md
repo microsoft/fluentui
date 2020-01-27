@@ -1,7 +1,13 @@
 # Change Log - @uifabric/tsx-editor
 
-This log was last generated on Wed, 22 Jan 2020 12:36:43 GMT and should not be manually modified.
+This log was last generated on Thu, 23 Jan 2020 12:32:26 GMT and should not be manually modified.
 
+## 0.11.4
+Thu, 23 Jan 2020 12:32:26 GMT
+
+### Patches
+
+- Fix export to codepen for fabric 7 (#9450) (xgao@microsoft.com)
 ## 0.11.3
 Wed, 22 Jan 2020 12:36:43 GMT
 

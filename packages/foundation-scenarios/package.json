@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/foundation-scenarios",
-  "version": "0.102.9",
+  "version": "0.102.12",
   "description": "Experimental React components for building experiences for Office 365.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -34,7 +34,7 @@
     "@types/react-dom": "16.8.4",
     "@types/react-test-renderer": "^16.0.0",
     "@types/webpack-env": "1.13.9",
-    "@uifabric/example-app-base": "^7.11.4",
+    "@uifabric/example-app-base": "^7.11.7",
     "@uifabric/jest-serializer-merge-styles": "^7.0.7",
     "@uifabric/prettier-rules": "^7.0.4",
     "@uifabric/tslint-rules": "^7.0.5",
@@ -50,7 +50,7 @@
   "dependencies": {
     "@microsoft/load-themed-styles": "^1.10.26",
     "@uifabric/set-version": "^7.0.3",
-    "office-ui-fabric-react": "^7.84.0",
+    "office-ui-fabric-react": "^7.85.0",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {

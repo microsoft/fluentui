@@ -2,6 +2,39 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "date": "Mon, 27 Jan 2020 03:59:43 GMT",
+      "tag": "@uifabric/charting_v0.139.6",
+      "version": "0.139.6",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Provided accessability for stacked bar chart",
+            "author": "v-satgar@microsoft.com",
+            "commit": "3b8960245b8fdd16056d56bda08a43a4adbaee9e"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 23 Jan 2020 12:32:26 GMT",
+      "tag": "@uifabric/charting_v0.139.4",
+      "version": "0.139.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "adding minimun legend container height",
+            "author": "v-sivsar@microsoft.com",
+            "commit": "8c0f660b6ed8df0a804cc0b4be7e5eea8c7b6c43"
+          },
+          {
+            "comment": "closing callout on pressing esc key",
+            "author": "v-sivsar@microsoft.com",
+            "commit": "ebf2aaa92353d0f95f735bcdfa63161fa968b605"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 17 Jan 2020 02:32:17 GMT",
       "tag": "@uifabric/charting_v0.139.2",
       "version": "0.139.2",

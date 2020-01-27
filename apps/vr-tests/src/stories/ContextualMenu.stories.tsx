@@ -308,7 +308,10 @@ storiesOf('ContextualMenu', module)
   .addStory('With headers', () => <ContextualMenu items={itemsWithHeaders} />)
   .addStory('With split button submenu', () => (
     <ContextualMenu items={itemsWithSplitButtonSubmenu} />
-  ))
+  ));
+
+storiesOf('ContextualMenu', module)
+  .addDecorator(FabricDecorator)
   .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()

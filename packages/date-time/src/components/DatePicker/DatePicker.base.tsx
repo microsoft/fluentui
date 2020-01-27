@@ -330,10 +330,10 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
         this._dismissDatePickerPopup();
       }
 
-      const { isRequired, value, strings } = this.props;
+      const { isRequired, strings } = this.props;
 
       this.setState({
-        errorMessage: isRequired && !value ? strings!.isRequiredErrorMessage || ' ' : undefined,
+        errorMessage: isRequired && !newValue ? strings!.isRequiredErrorMessage || ' ' : undefined,
         formattedDate: newValue
       });
     }
@@ -436,11 +436,16 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
 
     if (allowTextInput) {
       let date = null;
-      // Don't parse if the selected date has the same formatted string as what we're about to parse.
-      // The formatted string might be ambiguous (ex: "1/2/3" or "New Year Eve") and the parser might
-      // not be able to come up with the exact same date.
-      if (inputValue && !(this.state.selectedDate && formatDate && formatDate(this.state.selectedDate) === inputValue)) {
-        date = parseDateFromString!(inputValue);
+
+      if (inputValue) {
+        // Don't parse if the selected date has the same formatted string as what we're about to parse.
+        // The formatted string might be ambiguous (ex: "1/2/3" or "New Year Eve") and the parser might
+        // not be able to come up with the exact same date.
+        if (this.state.selectedDate && formatDate && formatDate(this.state.selectedDate) === inputValue) {
+          date = this.state.selectedDate;
+        } else {
+          date = parseDateFromString!(inputValue);
+        }
 
         // Check if date is null, or date is Invalid Date
         if (!date || isNaN(date.getTime())) {
@@ -479,7 +484,7 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
       } else {
         // Only show error for empty inputValue if it is a required field
         this.setState({
-          errorMessage: isRequired && !inputValue ? strings!.isRequiredErrorMessage || ' ' : ''
+          errorMessage: isRequired ? strings!.isRequiredErrorMessage || ' ' : ''
         });
       }
 
@@ -493,6 +498,11 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
       // Check when DatePicker is a required field but has NO input value
       this.setState({
         errorMessage: strings!.isRequiredErrorMessage || ' '
+      });
+    } else {
+      // Cleanup the error message
+      this.setState({
+        errorMessage: ''
       });
     }
   };

@@ -2,6 +2,68 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Mon, 27 Jan 2020 03:59:43 GMT",
+      "tag": "office-ui-fabric-react_v7.85.0",
+      "version": "7.85.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "add icon support to combobox",
+            "author": "makopch@microsoft.com",
+            "commit": "b0c09c06431bf977fa831caba69d7cd09f091bbe"
+          },
+          {
+            "comment": "SpinButton: Making disabled SpinButtons non-focusable.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "cb1fa5c47a3129523be1062abd14e19b3d962574"
+          },
+          {
+            "comment": "SearchBox: Dispose of EventGroup on unmount",
+            "author": "KevinTCoughlin@users.noreply.github.com",
+            "commit": "ee1a499fe789b25ec465e2aafda5bd3ad6573f2e"
+          },
+          {
+            "comment": "PersonaCoin and related components: elliminating BaseComponent usage to reduce bundle size.",
+            "author": "dzearing@hotmail.com",
+            "commit": "5ea4f4de7953f92965d5ded807f4f12dda08c9c4"
+          }
+        ],
+        "none": [
+          {
+            "comment": "adds storybook task",
+            "author": "kchau@microsoft.com",
+            "commit": "a9396c1caf148b59d23aa8678f8d8aa98a8b8157"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "GroupedList: Add role prop to groupProps",
+            "author": "erabelle@microsoft.com",
+            "commit": "c457462537a257458d2df6571f70e743974036e2"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 24 Jan 2020 12:30:27 GMT",
+      "tag": "office-ui-fabric-react_v7.84.1",
+      "version": "7.84.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Updating text field validation in date-time package to check new value rather than old one.",
+            "author": "chce@netcompany.com",
+            "commit": "7065b61c3f1df297a774d42672a21e89f8b88783"
+          },
+          {
+            "comment": "DatePicker: Fixing issue with formatted dates.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "a215a47453932f4f63827eb343fe2c2995c04ea0"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 22 Jan 2020 12:36:43 GMT",
       "tag": "office-ui-fabric-react_v7.84.0",
       "version": "7.84.0",
