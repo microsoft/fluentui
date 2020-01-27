@@ -18,15 +18,24 @@ import { ITheme, createTheme } from '../../Styling';
 
 const getClassNames = classNamesFunction<IFabricStyleProps, IFabricStyles>();
 const getFabricTheme = memoizeFunction((theme?: ITheme, isRTL?: boolean) => createTheme({ ...theme, rtl: isRTL }));
-const getDir = memoizeFunction((theme?: ITheme, dir?: IFabricProps['dir']) => {
-  if (dir) {
-    return dir;
-  }
-  if (theme && theme.rtl !== undefined) {
-    return theme.rtl ? 'rtl' : 'ltr';
-  }
-  return getRTL() ? 'rtl' : 'ltr';
+
+const getAllDir = memoizeFunction((theme?: ITheme, dir?: IFabricProps['dir']) => {
+  const themedRTL = getRTL(theme) ? 'rtl' : 'ltr';
+  const pagedRTL = getRTL() ? 'rtl' : 'ltr';
+
+  return {
+    component: dir ? dir : themedRTL,
+    parent: themedRTL,
+    page: pagedRTL
+  };
 });
+
+/*
+Scenarios where we modify Fabric theme or dir value:
+1. Page LTR, Fabric inside RTL theme - set dir
+2. Page LTR, Fabric has dir="rtl" - set dir, wrap in RTL theme
+3. Theme LTR, Fabric has dir="rtl" - set dir, wrap in RTL theme
+*/
 
 export class FabricBase extends React.Component<
   IFabricProps,
@@ -47,13 +56,21 @@ export class FabricBase extends React.Component<
     const { as: Root = 'div', theme, dir } = this.props;
     const classNames = this._getClassNames();
     const divProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties, ['dir']);
-    const componentDir = getDir(theme, dir);
-    const parentDir = getDir(theme);
+    const getDir = getAllDir(theme, dir);
+    // If Fabric dir !== theme.RTL
+    // Or If theme.RTL !== page RTL
+    // Then we need to set dir on the Fabric component
+    const setComponentDir = getDir.component !== getDir.parent || getDir.component !== getDir.page;
+    // If dir !== theme.RTL || page RTL
+    // Or If theme.RTL !== page RTL
+    // then set contextual theme around Fabric
+    const setComponentTheme = getDir.component !== getDir.parent;
 
-    let renderedContent = <Root dir={componentDir} {...divProps} className={classNames.root} ref={this._rootElement} />;
+    let renderedContent = (
+      <Root dir={setComponentDir ? getDir.component : undefined} {...divProps} className={classNames.root} ref={this._rootElement} />
+    );
 
-    // Create the contextual theme if component direction does not match parent direction.
-    if (componentDir !== parentDir) {
+    if (setComponentTheme) {
       renderedContent = <Customizer settings={{ theme: getFabricTheme(theme, dir === 'rtl') }}>{renderedContent}</Customizer>;
     }
 
