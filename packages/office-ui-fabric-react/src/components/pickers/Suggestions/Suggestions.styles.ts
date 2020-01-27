@@ -16,7 +16,7 @@ const GlobalClassNames = {
 export function getStyles(props: ISuggestionsStyleProps): ISuggestionsStyles {
   const { className, suggestionsClassName, theme, forceResolveButtonSelected, searchForMoreButtonSelected } = props;
 
-  const { palette, fonts } = theme;
+  const { palette, semanticColors, fonts } = theme;
 
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
@@ -34,7 +34,7 @@ export function getStyles(props: ISuggestionsStyleProps): ISuggestionsStyles {
     fontSize: fonts.small.fontSize,
     selectors: {
       ':hover': {
-        backgroundColor: palette.neutralLight,
+        backgroundColor: semanticColors.menuItemBackgroundPressed,
         cursor: 'pointer'
       },
       ':focus, :active': {
@@ -78,7 +78,7 @@ export function getStyles(props: ISuggestionsStyleProps): ISuggestionsStyles {
         fontSize: fonts.small.fontSize,
         color: palette.themePrimary,
         lineHeight: 40,
-        borderBottom: `1px solid ${palette.neutralLight}`
+        borderBottom: `1px solid ${semanticColors.menuItemBackgroundPressed}`
       }
     ],
     forceResolveButton: [

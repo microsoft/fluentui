@@ -26,7 +26,6 @@ const styles = mergeStyleSets({
       margin: 0,
       height: '100%',
       padding: '24px 20px',
-      color: theme.palette.neutralPrimary,
       fontWeight: FontWeights.semilight
     }
   ]
