@@ -1,7 +1,14 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 06 Jan 2020 12:22:35 GMT and should not be manually modified.
+This log was last generated on Mon, 27 Jan 2020 00:02:37 GMT and should not be manually modified.
 
+## 6.211.2
+Mon, 27 Jan 2020 00:02:37 GMT
+
+### Patches
+
+- FocusZone: remove keydown listener correctly to avoid a leak with inner zones. (dzearing@microsoft.com)
+- Button: Adding aria label to examples with SplitButtons. (Humberto.Morimoto@microsoft.com)
 ## 6.211.1
 Mon, 06 Jan 2020 12:22:35 GMT
 

@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Button: Adding aria label to examples with SplitButtons.",
-  "packageName": "office-ui-fabric-react",
-  "email": "Humberto.Morimoto@microsoft.com",
-  "commit": "87aa8e47ffafffb34804389946283ee10f00495a",
-  "date": "2020-01-24T01:34:59.293Z"
-}
