@@ -40,7 +40,7 @@ module.exports.buildStorybookTask = function buildStorybookTask(options) {
       mode: 'static',
       staticDir: [path.join(process.cwd(), 'static')],
       configDir: path.join(process.cwd(), '.storybook'),
-      outputDir: path.join(process.cwd(), 'dist'),
+      outputDir: path.join(process.cwd(), 'dist-storybook'),
       quiet,
       port: port || 3000,
       ci

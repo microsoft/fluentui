@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Semantic slot conversions for a few components: Persona, ContexualMenu, SplitButton, SpinButton, Tooltip, Dropdown, ComboBox, CommandBar, Suggestions",
+  "packageName": "office-ui-fabric-react",
+  "email": "marygans@microsoft.com",
+  "commit": "389fa983ef91fb61c3fc8d62b2c1ab7ea2a4a552",
+  "date": "2019-12-12T19:57:59.226Z"
+}

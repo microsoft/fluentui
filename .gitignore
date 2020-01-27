@@ -46,6 +46,7 @@ lib-commonjs
 lib-es2015
 coverage
 dist
+dist-storybook
 test-dependencies
 screenshots
 

@@ -112,6 +112,7 @@ exports[`Component Examples renders SpinButton.BasicWithIcon.Example.tsx correct
         className=
             ms-spinButton-input
             {
+              background-color: #ffffff;
               border-radius: 2px 0 0 2px;
               border-style: none;
               box-shadow: none;

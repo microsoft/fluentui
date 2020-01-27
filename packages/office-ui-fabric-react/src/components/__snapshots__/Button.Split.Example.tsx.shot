@@ -98,6 +98,9 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
             background-color: Highlight;
             color: Window;
           }
+          &:hover .ms-Button.is-disabled {
+            color: #a19f9d;
+          }
           @media screen and (-ms-high-contrast: active){&:hover .ms-Button.is-disabled {
             background-color: Window;
             border-color: GrayText;
@@ -430,6 +433,9 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
           @media screen and (-ms-high-contrast: active){&:hover .ms-Button--primary {
             background-color: Highlight;
             color: Window;
+          }
+          &:hover .ms-Button.is-disabled {
+            color: #a19f9d;
           }
           @media screen and (-ms-high-contrast: active){&:hover .ms-Button.is-disabled {
             background-color: Window;
@@ -782,6 +788,9 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
           @media screen and (-ms-high-contrast: active){&:hover .ms-Button--primary {
             background-color: Highlight;
             color: Window;
+          }
+          &:hover .ms-Button.is-disabled {
+            color: #a19f9d;
           }
           @media screen and (-ms-high-contrast: active){&:hover .ms-Button.is-disabled {
             background-color: Window;

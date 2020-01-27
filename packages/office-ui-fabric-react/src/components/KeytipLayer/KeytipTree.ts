@@ -68,12 +68,25 @@ export class KeytipTree {
     // Parent ID is the root if there aren't any more sequences
     const parentID = this._getParentID(fullSequence);
     const node = this.nodeMap[uniqueID];
+    const prevParent = node.parent;
+    const prevParentNode = this.getNode(prevParent);
     const parent = this.getNode(parentID);
     if (node) {
+      if (prevParentNode && prevParent !== parentID) {
+        // If parent has changed, remove child from old parent
+        const childIndex = prevParentNode.children.indexOf(node.id);
+        if (childIndex >= 0) {
+          prevParentNode.children.splice(childIndex, 1);
+        }
+      }
       // If the ID of the node has changed, update node's parent's array of children with new ID
       if (parent && node.id !== nodeID) {
         const index = parent.children.indexOf(node.id);
-        index >= 0 && (parent.children[index] = nodeID);
+        if (index >= 0) {
+          parent.children[index] = nodeID;
+        } else {
+          parent.children.push(nodeID);
+        }
       }
       // Update values
       node.id = nodeID;
