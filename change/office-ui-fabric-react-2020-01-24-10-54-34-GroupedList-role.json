@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "GroupedList: Add role prop to groupProps",
-  "packageName": "office-ui-fabric-react",
-  "email": "erabelle@microsoft.com",
-  "commit": "c457462537a257458d2df6571f70e743974036e2",
-  "date": "2020-01-24T18:54:34.656Z"
-}

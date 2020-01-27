@@ -1,9 +1,0 @@
-{
-  "type": "patch",
-  "comment": "SpinButton: Making disabled SpinButtons non-focusable.",
-  "packageName": "office-ui-fabric-react",
-  "email": "Humberto.Morimoto@microsoft.com",
-  "commit": "cb1fa5c47a3129523be1062abd14e19b3d962574",
-  "dependentChangeType": "patch",
-  "date": "2020-01-24T00:59:44.366Z"
-}
