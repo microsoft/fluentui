@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, classNamesFunction, getNativeProps, divProperties, css } from '../../Utilities';
+import { BaseComponent, classNamesFunction, css } from '../../Utilities';
 import { DialogType, IDialogContentProps, IDialogContentStyleProps, IDialogContentStyles } from './DialogContent.types';
 import { IconButton } from '../../Button';
 import { DialogFooter } from './DialogFooter';
@@ -64,17 +64,15 @@ export class DialogContentBase extends BaseComponent<IDialogContentProps, {}> {
       );
     }
 
-    const titleNativeProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(titleProps, divProperties, ['id', 'className']);
-
     return (
       <div className={classNames.content}>
         <div className={classNames.header}>
           <div
-            className={css(classNames.title, titleProps.className)}
-            id={titleProps.id || titleId}
             role="heading"
             aria-level={2}
-            {...titleNativeProps}
+            {...titleProps}
+            id={titleProps.id || titleId}
+            className={css(classNames.title, titleProps.className)}
           >
             {title}
           </div>

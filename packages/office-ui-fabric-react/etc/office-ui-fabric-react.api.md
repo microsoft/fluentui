@@ -3761,7 +3761,7 @@ export interface IDialogContentProps extends React.ClassAttributes<DialogContent
     title?: string | JSX.Element;
     // @deprecated
     titleId?: string;
-    titleProps?: IDialogContentTitleProps;
+    titleProps?: React.AllHTMLAttributes<HTMLDivElement>;
     topButtonsProps?: IButtonProps[];
     type?: DialogType;
 }
@@ -3797,10 +3797,6 @@ export interface IDialogContentStyles {
     title: IStyle;
     // (undocumented)
     topButton: IStyle;
-}
-
-// @public (undocumented)
-export interface IDialogContentTitleProps extends React.AllHTMLAttributes<HTMLDivElement> {
 }
 
 // @public (undocumented)
@@ -5859,10 +5855,6 @@ export interface IPanelHeaderRenderer extends IRenderFunction<IPanelProps> {
     (props?: IPanelProps, defaultRender?: IPanelHeaderRenderer, headerTextId?: string | undefined): JSX.Element | null;
 }
 
-// @public (undocumented)
-export interface IPanelHeaderTextProps extends React.AllHTMLAttributes<HTMLDivElement> {
-}
-
 // Warning: (ae-forgotten-export) The symbol "PanelBase" needs to be exported by the entry point index.d.ts
 //
 // @public (undocumented)
@@ -5883,7 +5875,7 @@ export interface IPanelProps extends React.HTMLAttributes<PanelBase> {
     hasCloseButton?: boolean;
     headerClassName?: string;
     headerText?: string;
-    headerTextProps?: IPanelHeaderTextProps;
+    headerTextProps?: React.AllHTMLAttributes<HTMLDivElement>;
     // @deprecated
     ignoreExternalFocusing?: boolean;
     isBlocking?: boolean;
