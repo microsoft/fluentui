@@ -30,13 +30,6 @@ const getAllDir = memoizeFunction((theme?: ITheme, dir?: IFabricProps['dir']) =>
   };
 });
 
-/*
-Scenarios where we modify Fabric theme or dir value:
-1. Page LTR, Fabric inside RTL theme - set dir
-2. Page LTR, Fabric has dir="rtl" - set dir, wrap in RTL theme
-3. Theme LTR, Fabric has dir="rtl" - set dir, wrap in RTL theme
-*/
-
 export class FabricBase extends React.Component<
   IFabricProps,
   {
