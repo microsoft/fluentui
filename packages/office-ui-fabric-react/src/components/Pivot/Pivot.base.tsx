@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, KeyCodes, getId, getNativeProps, divProperties, classNamesFunction, warn } from '../../Utilities';
+import { warnDeprecations, KeyCodes, getId, getNativeProps, divProperties, classNamesFunction, warn } from '../../Utilities';
 import { CommandButton } from '../../Button';
 import { IPivotProps, IPivotStyleProps, IPivotStyles } from './Pivot.types';
 import { IPivotItemProps } from './PivotItem.types';
@@ -10,6 +10,7 @@ import { PivotLinkSize } from './Pivot.types';
 import { Icon } from '../../Icon';
 
 const getClassNames = classNamesFunction<IPivotStyleProps, IPivotStyles>();
+const PivotName = 'Pivot';
 
 export interface IPivotState {
   selectedKey: string | undefined;
@@ -36,7 +37,7 @@ type PivotLinkCollection = {
  *       </PivotItem>
  *     </Pivot>
  */
-export class PivotBase extends BaseComponent<IPivotProps, IPivotState> {
+export class PivotBase extends React.Component<IPivotProps, IPivotState> {
   private _pivotId: string;
   private _focusZone = React.createRef<FocusZone>();
   private _classNames: { [key in keyof IPivotStyles]: string };
@@ -44,12 +45,14 @@ export class PivotBase extends BaseComponent<IPivotProps, IPivotState> {
   constructor(props: IPivotProps) {
     super(props);
 
-    this._warnDeprecations({
-      initialSelectedKey: 'defaultSelectedKey',
-      initialSelectedIndex: 'defaultSelectedIndex'
-    });
+    if (process.env.NODE_ENV !== 'production') {
+      warnDeprecations(PivotName, props, {
+        initialSelectedKey: 'defaultSelectedKey',
+        initialSelectedIndex: 'defaultSelectedIndex'
+      });
+    }
 
-    this._pivotId = getId('Pivot');
+    this._pivotId = getId(PivotName);
     const links: IPivotItemProps[] = this._getPivotLinks(props).links;
 
     const { defaultSelectedKey = props.initialSelectedKey, defaultSelectedIndex = props.initialSelectedIndex } = props;
