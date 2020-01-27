@@ -354,11 +354,11 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
       return (
         <div className={this._classNames.header}>
           <div
+            id={headerTextId}
             role="heading"
             aria-level={2}
             {...headerTextProps}
             className={css(this._classNames.headerText, headerTextProps.className)}
-            id={headerTextProps.id || headerTextId}
           >
             {headerText}
           </div>

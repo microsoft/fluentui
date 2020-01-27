@@ -67,13 +67,7 @@ export class DialogContentBase extends BaseComponent<IDialogContentProps, {}> {
     return (
       <div className={classNames.content}>
         <div className={classNames.header}>
-          <div
-            role="heading"
-            aria-level={2}
-            {...titleProps}
-            id={titleProps.id || titleId}
-            className={css(classNames.title, titleProps.className)}
-          >
+          <div id={titleId} role="heading" aria-level={2} {...titleProps} className={css(classNames.title, titleProps.className)}>
             {title}
           </div>
           <div className={classNames.topButton}>
