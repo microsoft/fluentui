@@ -1,0 +1,9 @@
+{
+  "type": "minor",
+  "comment": "BaseFloatingPicker: pass custom props to inner Callout",
+  "packageName": "office-ui-fabric-react",
+  "email": "rezha@microsoft.com",
+  "commit": "038c54870c5f0bb9edb81fc066031c8a1d3c8490",
+  "dependentChangeType": "patch",
+  "date": "2020-01-24T22:28:27.186Z"
+}

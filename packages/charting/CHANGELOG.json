@@ -2,6 +2,20 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "date": "Mon, 27 Jan 2020 03:59:43 GMT",
+      "tag": "@uifabric/charting_v0.139.6",
+      "version": "0.139.6",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Provided accessability for stacked bar chart",
+            "author": "v-satgar@microsoft.com",
+            "commit": "3b8960245b8fdd16056d56bda08a43a4adbaee9e"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 23 Jan 2020 12:32:26 GMT",
       "tag": "@uifabric/charting_v0.139.4",
       "version": "0.139.4",

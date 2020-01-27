@@ -65,8 +65,7 @@ export class SearchBoxBase extends React.Component<ISearchBoxProps, ISearchBoxSt
     }
   }
 
-  // tslint:disable-next-line function-name
-  public UNSAFE_componentWillMount() {
+  public componentWillUnmount() {
     if (this._events) {
       this._events.dispose();
     }

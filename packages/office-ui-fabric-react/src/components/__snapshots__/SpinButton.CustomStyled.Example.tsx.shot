@@ -84,6 +84,7 @@ exports[`Component Examples renders SpinButton.CustomStyled.Example.tsx correctl
         className=
             ms-spinButton-input
             {
+              background-color: #ffffff;
               border-radius: 2px 0 0 2px;
               border-style: none;
               box-shadow: none;
@@ -119,6 +120,7 @@ exports[`Component Examples renders SpinButton.CustomStyled.Example.tsx correctl
               color: HighlightText;
             }
         data-lpignore={true}
+        disabled={false}
         id="input1"
         onBlur={[Function]}
         onChange={[Function]}
@@ -126,7 +128,6 @@ exports[`Component Examples renders SpinButton.CustomStyled.Example.tsx correctl
         onInput={[Function]}
         onKeyDown={[Function]}
         onKeyUp={[Function]}
-        readOnly={false}
         role="spinbutton"
         type="text"
         value="0"
