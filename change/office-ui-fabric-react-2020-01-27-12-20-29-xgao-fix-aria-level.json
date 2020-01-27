@@ -1,0 +1,9 @@
+{
+  "type": "minor",
+  "comment": "Dialog/Panel: allow to set aria-level on header title",
+  "packageName": "office-ui-fabric-react",
+  "email": "xgao@microsoft.com",
+  "commit": "c13defbe454a10ecc4c41e45b112003e911298db",
+  "dependentChangeType": "patch",
+  "date": "2020-01-27T20:20:29.839Z"
+}
