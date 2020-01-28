@@ -241,9 +241,6 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
       return;
     }
 
-    if (this.props.onOpen) {
-      this.props.onOpen();
-    }
     this.setState({ visibility: PanelVisibilityState.animatingOpen });
   }
 
@@ -411,6 +408,10 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
   }
 
   private _animateTo = (newVisibilityState: PanelVisibilityState): void => {
+    if (newVisibilityState === PanelVisibilityState.open && this.props.onOpen) {
+      this.props.onOpen();
+    }
+
     this._animationCallback = this._async.setTimeout(() => {
       this.setState({ visibility: newVisibilityState });
       this._onTransitionComplete();
