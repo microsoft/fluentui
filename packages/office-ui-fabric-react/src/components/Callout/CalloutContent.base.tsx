@@ -269,7 +269,7 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
 
   protected _dismissOnScroll = (ev: Event) => {
     const { preventDismissOnScroll } = this.props;
-    if (this.state.positions && !preventDismissOnScroll && ev.isTrusted == false) {
+    if (this.state.positions && !preventDismissOnScroll && ev.isTrusted !== false) {
       this._dismissOnClickOrScroll(ev);
     }
   };
