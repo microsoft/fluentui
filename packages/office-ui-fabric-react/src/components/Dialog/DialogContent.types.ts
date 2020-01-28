@@ -82,7 +82,7 @@ export interface IDialogContentProps extends React.ClassAttributes<DialogContent
   /**
    * The props for title container.
    */
-  titleProps?: React.AllHTMLAttributes<HTMLDivElement>;
+  titleProps?: React.HTMLAttributes<HTMLDivElement>;
 
   /**
    * Responsive mode passed in from decorator.

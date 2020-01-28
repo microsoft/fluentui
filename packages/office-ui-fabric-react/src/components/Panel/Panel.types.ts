@@ -80,7 +80,7 @@ export interface IPanelProps extends React.HTMLAttributes<PanelBase> {
   /**
    * The props for header text container.
    */
-  headerTextProps?: React.AllHTMLAttributes<HTMLDivElement>;
+  headerTextProps?: React.HTMLAttributes<HTMLDivElement>;
 
   /**
    * A callback function for when the Panel is opened, before the animation completes.

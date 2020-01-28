@@ -3761,7 +3761,7 @@ export interface IDialogContentProps extends React.ClassAttributes<DialogContent
     title?: string | JSX.Element;
     // @deprecated
     titleId?: string;
-    titleProps?: React.AllHTMLAttributes<HTMLDivElement>;
+    titleProps?: React.HTMLAttributes<HTMLDivElement>;
     topButtonsProps?: IButtonProps[];
     type?: DialogType;
 }
@@ -5875,7 +5875,7 @@ export interface IPanelProps extends React.HTMLAttributes<PanelBase> {
     hasCloseButton?: boolean;
     headerClassName?: string;
     headerText?: string;
-    headerTextProps?: React.AllHTMLAttributes<HTMLDivElement>;
+    headerTextProps?: React.HTMLAttributes<HTMLDivElement>;
     // @deprecated
     ignoreExternalFocusing?: boolean;
     isBlocking?: boolean;
