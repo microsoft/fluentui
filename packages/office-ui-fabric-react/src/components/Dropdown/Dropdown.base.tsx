@@ -426,7 +426,7 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
     // at the very end is a check to see if newIndex !== selectedIndex.
     // If the index is less than 0 and we set it back to 0, then
     // newIndex will equal selectedIndex and not stop the action
-    // of the key press happening and vic versa for index greater
+    // of the key press happening and vice versa for index greater
     // than or equal to the options length.
     if (index >= options.length) {
       index = 0;
