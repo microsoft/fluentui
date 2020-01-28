@@ -1,0 +1,9 @@
+{
+  "type": "minor",
+  "comment": "Adding ev.isTrusted == false check for the diss dropdown callout handler.",
+  "packageName": "office-ui-fabric-react",
+  "email": "sabans@microsoft.com",
+  "commit": "a727628ea9e1ff750da418ab57b8c39c0c763c68",
+  "dependentChangeType": "patch",
+  "date": "2020-01-28T06:45:29.628Z"
+}
