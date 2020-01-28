@@ -2,6 +2,59 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Tue, 28 Jan 2020 12:43:24 GMT",
+      "tag": "office-ui-fabric-react_v7.86.0",
+      "version": "7.86.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Semantic slot conversions for a few components: Persona, ContexualMenu, SplitButton, SpinButton, Tooltip, Dropdown, ComboBox, CommandBar, Suggestions",
+            "author": "marygans@microsoft.com",
+            "commit": "389fa983ef91fb61c3fc8d62b2c1ab7ea2a4a552"
+          },
+          {
+            "comment": "Fix a bug where a user pressing the down key without opening the dropdown causes the window to scroll. The dropdown should cycle through the options. This fix changes the index from being the last item in the options to being the starting index, which is 0.",
+            "author": "jehawley@microsoft.com",
+            "commit": "ad83dd6338f1d995553f889f96075cba24654e29"
+          },
+          {
+            "comment": "Support for dynamically updating keytips",
+            "author": "keyou@microsoft.com",
+            "commit": "dcca3d5298e75de4a2c6fe54e281ad997bea41e1"
+          },
+          {
+            "comment": "Button: Adding support for onPointerDown and onPointerUp.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "de7423dcbcf1bbe6c7ed90f93554db705c8b38ac"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "BaseFloatingPicker: pass custom props to inner Callout",
+            "author": "rezha@microsoft.com",
+            "commit": "038c54870c5f0bb9edb81fc066031c8a1d3c8490"
+          },
+          {
+            "comment": "Dialog/Panel: allow to set aria-level on header title",
+            "author": "xgao@microsoft.com",
+            "commit": "c13defbe454a10ecc4c41e45b112003e911298db"
+          }
+        ],
+        "none": [
+          {
+            "comment": "updates yarn start experience to storybook for packages that have examples",
+            "author": "kchau@microsoft.com",
+            "commit": "b907cd26f0ee1d1a52c68a624186d255deaa1893"
+          },
+          {
+            "comment": "Rename all just configs to TS.",
+            "author": "jagore@microsoft.com",
+            "commit": "373c657b0bf9bf5d8e8433d8df8ccdccaec89e45"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 27 Jan 2020 03:59:43 GMT",
       "tag": "office-ui-fabric-react_v7.85.0",
       "version": "7.85.0",

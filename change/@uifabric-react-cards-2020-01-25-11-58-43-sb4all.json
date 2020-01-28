@@ -1,9 +1,0 @@
-{
-  "type": "none",
-  "comment": "updates yarn start experience to storybook for packages that have examples",
-  "packageName": "@uifabric/react-cards",
-  "email": "kchau@microsoft.com",
-  "commit": "b907cd26f0ee1d1a52c68a624186d255deaa1893",
-  "dependentChangeType": "patch",
-  "date": "2020-01-25T19:58:36.545Z"
-}

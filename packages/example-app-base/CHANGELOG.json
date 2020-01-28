@@ -2,6 +2,20 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "date": "Tue, 28 Jan 2020 12:43:24 GMT",
+      "tag": "@uifabric/example-app-base_v7.11.8",
+      "version": "7.11.8",
+      "comments": {
+        "none": [
+          {
+            "comment": "Rename all just configs to TS.",
+            "author": "jagore@microsoft.com",
+            "commit": "373c657b0bf9bf5d8e8433d8df8ccdccaec89e45"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 23 Jan 2020 12:32:26 GMT",
       "tag": "@uifabric/example-app-base_v7.11.5",
       "version": "7.11.5",

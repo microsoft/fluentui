@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Fabric website: Expose theme switcher tab on fabric website",
-  "packageName": "@uifabric/fabric-website",
-  "email": "marygans@microsoft.com",
-  "commit": "19c61ba3c45d103495e07bacf8a4efd41f7d7227",
-  "date": "2020-01-09T19:28:22.188Z"
-}

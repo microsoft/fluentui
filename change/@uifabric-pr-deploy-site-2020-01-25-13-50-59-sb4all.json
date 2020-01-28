@@ -1,9 +1,0 @@
-{
-  "type": "patch",
-  "comment": "adding pr-deploy-site for fabric storybook",
-  "packageName": "@uifabric/pr-deploy-site",
-  "email": "kchau@microsoft.com",
-  "commit": "4cb8d719a8d7e4e66c42d0dc082cbfb22d0e084f",
-  "dependentChangeType": "patch",
-  "date": "2020-01-25T21:50:59.164Z"
-}

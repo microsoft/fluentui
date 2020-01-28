@@ -2,6 +2,27 @@
   "name": "@uifabric/pr-deploy-site",
   "entries": [
     {
+      "date": "Tue, 28 Jan 2020 12:43:24 GMT",
+      "tag": "@uifabric/pr-deploy-site_v7.0.7",
+      "version": "7.0.7",
+      "comments": {
+        "patch": [
+          {
+            "comment": "adding pr-deploy-site for fabric storybook",
+            "author": "kchau@microsoft.com",
+            "commit": "4cb8d719a8d7e4e66c42d0dc082cbfb22d0e084f"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Rename all just configs to TS.",
+            "author": "jagore@microsoft.com",
+            "commit": "373c657b0bf9bf5d8e8433d8df8ccdccaec89e45"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 13 Jan 2020 12:28:56 GMT",
       "tag": "@uifabric/pr-deploy-site_v7.0.2",
       "version": "7.0.2",

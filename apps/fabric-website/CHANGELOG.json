@@ -2,6 +2,27 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "date": "Tue, 28 Jan 2020 12:43:24 GMT",
+      "tag": "@uifabric/fabric-website_v7.8.0",
+      "version": "7.8.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Fabric website: Expose theme switcher tab on fabric website",
+            "author": "marygans@microsoft.com",
+            "commit": "19c61ba3c45d103495e07bacf8a4efd41f7d7227"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Rename all just configs to TS.",
+            "author": "jagore@microsoft.com",
+            "commit": "373c657b0bf9bf5d8e8433d8df8ccdccaec89e45"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 17 Jan 2020 02:32:17 GMT",
       "tag": "@uifabric/fabric-website_v7.7.8",
       "version": "7.7.8",
