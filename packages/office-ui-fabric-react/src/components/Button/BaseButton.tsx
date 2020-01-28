@@ -240,8 +240,13 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     // For split buttons, touching anywhere in the button should drop the dropdown, which should contain the primary action.
     // This gives more hit target space for touch environments. We're setting the onpointerdown here, because React
     // does not support Pointer events yet.
-    if (this._isSplitButton && this._splitButtonContainer.current && 'onpointerdown' in this._splitButtonContainer.current) {
-      this._events.on(this._splitButtonContainer.current, 'pointerdown', this._onPointerDown, true);
+    if (this._isSplitButton && this._splitButtonContainer.current) {
+      if ('onpointerdown' in this._splitButtonContainer.current) {
+        this._events.on(this._splitButtonContainer.current, 'pointerdown', this._onPointerDown, true);
+      }
+      if ('onpointerup' in this._splitButtonContainer.current && this.props.onPointerUp) {
+        this._events.on(this._splitButtonContainer.current, 'pointerup', this.props.onPointerUp, true);
+      }
     }
   }
 
@@ -540,6 +545,8 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
 
     assign(buttonProps, {
       onClick: undefined,
+      onPointerDown: undefined,
+      onPointerUp: undefined,
       tabIndex: -1,
       'data-is-focusable': false
     });
@@ -769,7 +776,14 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     }
   };
 
-  private _onPointerDown(ev: PointerEvent) {
+  private _onPointerDown(
+    ev: PointerEvent & React.PointerEvent<HTMLAnchorElement | HTMLButtonElement | HTMLDivElement | BaseButton | HTMLSpanElement>
+  ) {
+    const { onPointerDown } = this.props;
+    if (onPointerDown) {
+      onPointerDown(ev);
+    }
+
     if (ev.pointerType === 'touch') {
       this._handleTouchAndPointerEvent();
 
