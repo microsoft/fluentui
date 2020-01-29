@@ -167,7 +167,12 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
     ...dropdownItemStyle,
     {
       color: semanticColors.disabledText,
-      cursor: 'default'
+      cursor: 'default',
+      selectors: {
+        [HighContrastSelector]: {
+          color: 'GrayText'
+        }
+      }
     }
   ];
 
@@ -214,20 +219,27 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
               height: '100%',
               // see https://github.com/OfficeDev/office-ui-fabric-react/pull/9182 for semantic color disc
               border: !disabled ? `2px solid ${palette.themePrimary}` : 'none',
-              borderRadius: '2px'
-            },
-            highContrastItemAndTitleStateMixin
+              borderRadius: '2px',
+
+              selectors: {
+                [HighContrastSelector]: {
+                  borderColor: 'Highlight',
+                  color: 'Highlight'
+                }
+              }
+            }
           ],
           ['&:active .' + globalClassnames.title]: [
             !disabled && rootHoverFocusActiveSelectorNeutralDarkMixin,
             { borderColor: palette.themePrimary },
             highContrastBorderState
           ],
+          ['&:focus .' + globalClassnames.title]: [{ selectors: { [HighContrastSelector]: { color: 'Highlight' } } }],
 
           ['&:hover .' + globalClassnames.caretDown]: !disabled && rootHoverFocusActiveSelectorNeutralPrimaryMixin,
           ['&:focus .' + globalClassnames.caretDown]: [
             !disabled && rootHoverFocusActiveSelectorNeutralPrimaryMixin,
-            { selectors: { [HighContrastSelector]: { color: 'HighlightText' }, ...highContrastAdjustMixin } }
+            { selectors: { [HighContrastSelector]: { color: 'Highlight' } } }
           ],
           ['&:active .' + globalClassnames.caretDown]: !disabled && rootHoverFocusActiveSelectorNeutralPrimaryMixin,
 
