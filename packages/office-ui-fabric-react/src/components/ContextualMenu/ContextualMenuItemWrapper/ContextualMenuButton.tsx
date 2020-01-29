@@ -2,7 +2,7 @@ import * as React from 'react';
 import { buttonProperties, getNativeProps, memoizeFunction } from '../../../Utilities';
 import { ContextualMenuItemWrapper } from './ContextualMenuItemWrapper';
 import { KeytipData } from '../../../KeytipData';
-import { getIsChecked, isItemDisabled, hasSubmenu } from '../../../utilities/contextualMenu/index';
+import { getIsChecked, isItemDisabled, hasSubmenu, getMenuItemAriaRole } from '../../../utilities/contextualMenu/index';
 import { ContextualMenuItem } from '../ContextualMenuItem';
 import { IKeytipDataProps } from '../../KeytipData/KeytipData.types';
 import { IKeytipProps } from '../../Keytip/Keytip.types';
@@ -39,7 +39,7 @@ export class ContextualMenuButton extends ContextualMenuItemWrapper {
 
     const isChecked: boolean | null | undefined = getIsChecked(item);
     const canCheck: boolean = isChecked !== null;
-    const defaultRole = canCheck ? 'menuitemcheckbox' : 'menuitem';
+    const defaultRole = getMenuItemAriaRole(item);
     const itemHasSubmenu = hasSubmenu(item);
     const { itemProps, ariaLabel } = item;
 
