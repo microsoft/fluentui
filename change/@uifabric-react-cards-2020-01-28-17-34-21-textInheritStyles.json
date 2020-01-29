@@ -1,0 +1,9 @@
+{
+  "type": "patch",
+  "comment": "Updating examples using Text to add `variant='medium'` attribute.",
+  "packageName": "@uifabric/react-cards",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "commit": "48c5ddb529ac64dd240f221a37018a01f8eff2f3",
+  "dependentChangeType": "patch",
+  "date": "2020-01-29T01:34:21.839Z"
+}
