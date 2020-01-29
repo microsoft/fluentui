@@ -10,11 +10,9 @@ Array [
           -webkit-font-smoothing: antialiased;
           color: inherit;
           display: block;
-          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-          font-size: 14px;
-          font-weight: 400;
-          moz-osx-font-smoothing: grayscale;
-          webkit-font-smoothing: antialiased;
+          font-family: inherit;
+          font-size: inherit;
+          font-weight: inherit;
         }
   >
     I am block text.
@@ -27,11 +25,9 @@ Array [
           -webkit-font-smoothing: antialiased;
           color: inherit;
           display: block;
-          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-          font-size: 14px;
-          font-weight: 400;
-          moz-osx-font-smoothing: grayscale;
-          webkit-font-smoothing: antialiased;
+          font-family: inherit;
+          font-size: inherit;
+          font-weight: inherit;
         }
   >
     Since block is specified,
@@ -44,11 +40,9 @@ Array [
           -webkit-font-smoothing: antialiased;
           color: inherit;
           display: block;
-          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-          font-size: 14px;
-          font-weight: 400;
-          moz-osx-font-smoothing: grayscale;
-          webkit-font-smoothing: antialiased;
+          font-family: inherit;
+          font-size: inherit;
+          font-weight: inherit;
         }
   >
     every block of text
@@ -61,11 +55,9 @@ Array [
           -webkit-font-smoothing: antialiased;
           color: inherit;
           display: block;
-          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-          font-size: 14px;
-          font-weight: 400;
-          moz-osx-font-smoothing: grayscale;
-          webkit-font-smoothing: antialiased;
+          font-family: inherit;
+          font-size: inherit;
+          font-weight: inherit;
         }
   >
     gets its own line.

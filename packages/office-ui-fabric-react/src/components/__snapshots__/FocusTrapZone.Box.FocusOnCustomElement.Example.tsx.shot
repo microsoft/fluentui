@@ -44,11 +44,9 @@ exports[`Component Examples renders FocusTrapZone.Box.FocusOnCustomElement.Examp
             -webkit-font-smoothing: antialiased;
             color: inherit;
             display: inline;
-            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-            font-size: 14px;
-            font-weight: 400;
-            moz-osx-font-smoothing: grayscale;
-            webkit-font-smoothing: antialiased;
+            font-family: inherit;
+            font-size: inherit;
+            font-weight: inherit;
           }
     >
       If this button is used to enable FocusTrapZone, the hyperlink should be focused.
