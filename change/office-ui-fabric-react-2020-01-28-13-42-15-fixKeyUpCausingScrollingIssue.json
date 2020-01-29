@@ -1,0 +1,9 @@
+{
+  "type": "patch",
+  "comment": "Dropdown: Fix issue where pressing key up can cause scrolling of the whole page.",
+  "packageName": "office-ui-fabric-react",
+  "email": "jehawley@microsoft.com",
+  "commit": "ec4f9e60183ddd572046820cea04c0f29c508a68",
+  "dependentChangeType": "patch",
+  "date": "2020-01-28T21:42:15.529Z"
+}
