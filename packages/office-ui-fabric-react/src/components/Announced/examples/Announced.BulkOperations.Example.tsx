@@ -92,8 +92,8 @@ export class AnnouncedBulkOperationsExample extends React.Component<{}, IAnnounc
 
     return (
       <Stack tokens={stackTokens}>
-        <Text>Turn on Narrator and drag and drop the items.</Text>
-        <Text>
+        <Text variant="medium">Turn on Narrator and drag and drop the items.</Text>
+        <Text variant="medium">
           Note: This example is to showcase the concept of copying, uploading, or moving many items and not fully illustrative of the real
           world scenario.
         </Text>

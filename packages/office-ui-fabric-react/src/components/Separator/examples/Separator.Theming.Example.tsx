@@ -21,7 +21,7 @@ export class SeparatorThemingExample extends React.Component<{}, {}> {
 
     return (
       <Stack tokens={stackTokens}>
-        <Text>Horizontal center aligned with custom theme</Text>
+        <Text variant="medium">Horizontal center aligned with custom theme</Text>
         <Separator theme={theme}>{content}</Separator>
       </Stack>
     );

@@ -43,7 +43,7 @@ export const ButtonView: IButtonComponent['view'] = (props, slots) => {
       ref={buttonRef}
     >
       {icon && <slots.icon />}
-      {content && <slots.content />}
+      {content && <slots.content variant="medium" />}
       {children}
     </slots.root>
   );

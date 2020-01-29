@@ -101,7 +101,7 @@ export class CardVerticalExample extends React.Component<{}, {}> {
       <Stack horizontal tokens={sectionStackTokens}>
         <Card aria-label="Basic vertical card">
           <Card.Item>
-            <Text>Basic vertical card</Text>
+            <Text variant="medium">Basic vertical card</Text>
           </Card.Item>
         </Card>
 
@@ -116,7 +116,9 @@ export class CardVerticalExample extends React.Component<{}, {}> {
             <Text variant="small" styles={siteTextStyles}>
               Contoso
             </Text>
-            <Text styles={descriptionTextStyles}>Contoso Denver expansion design marketing hero guidelines</Text>
+            <Text variant="medium" styles={descriptionTextStyles}>
+              Contoso Denver expansion design marketing hero guidelines
+            </Text>
             <Text variant="small" styles={helpfulTextStyles}>
               Is this recommendation helpful?
             </Text>
@@ -144,7 +146,9 @@ export class CardVerticalExample extends React.Component<{}, {}> {
             <Text variant="small" styles={subduedTextStyles}>
               Category
             </Text>
-            <Text styles={descriptionTextStyles}>Contoso marketing customer visit and survey results</Text>
+            <Text variant="medium" styles={descriptionTextStyles}>
+              Contoso marketing customer visit and survey results
+            </Text>
           </Card.Section>
           <Card.Section tokens={agendaCardSectionTokens}>
             <Text variant="small" styles={descriptionTextStyles}>

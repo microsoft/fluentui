@@ -25,7 +25,7 @@ export class FocusTrapZoneBoxExample extends React.Component<{}, IFocusTrapZoneB
     return (
       <Stack tokens={{ childrenGap: 8 }}>
         <Stack.Item>
-          <Text>
+          <Text variant="medium">
             If this button is used to enable FocusTrapZone, focus should return to this button after the FocusTrapZone is disabled.
           </Text>
         </Stack.Item>

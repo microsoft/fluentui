@@ -20,7 +20,11 @@ export const PersonaCoinInitials: React.StatelessComponent<IPersonaCoinInitialsP
   const initials = (typeof props.initials === 'string' && props.initials) || getInitials(props.text, getRTL(), props.allowPhoneInitials);
 
   if (initials) {
-    return <Text className={props.className}>{initials}</Text>;
+    return (
+      <Text className={props.className} variant="medium">
+        {initials}
+      </Text>
+    );
   }
 
   return <Icon iconName="Contact" className={props.className} />;

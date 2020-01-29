@@ -189,7 +189,7 @@ storiesOf('Card', module)
     <Fabric>
       <Card>
         <Card.Item>
-          <Text>Basic vertical card</Text>
+          <Text variant="medium">Basic vertical card</Text>
         </Card.Item>
       </Card>
     </Fabric>
@@ -198,7 +198,7 @@ storiesOf('Card', module)
     <Fabric>
       <Card onClick={cardClicked}>
         <Card.Item>
-          <Text>Basic vertical card</Text>
+          <Text variant="medium">Basic vertical card</Text>
         </Card.Item>
       </Card>
     </Fabric>
@@ -216,7 +216,7 @@ storiesOf('Card', module)
           <Text variant="medium" styles={siteTextStyles}>
             Contoso
           </Text>
-          <Text styles={descriptionTextStyles}>
+          <Text variant="medium" styles={descriptionTextStyles}>
             Contoso Denver expansion design marketing hero guidelines
           </Text>
           <Text variant="medium" styles={helpfulTextStyles}>
@@ -254,7 +254,7 @@ storiesOf('Card', module)
           <Text variant="medium" styles={subduedTextStyles}>
             Category
           </Text>
-          <Text styles={descriptionTextStyles}>
+          <Text variant="medium" styles={descriptionTextStyles}>
             Contoso marketing customer visit and survey results
           </Text>
         </Card.Section>
@@ -284,7 +284,7 @@ storiesOf('Card', module)
     <Fabric>
       <Card horizontal>
         <Card.Item>
-          <Text>Basic horizontal card</Text>
+          <Text variant="medium">Basic horizontal card</Text>
         </Card.Item>
       </Card>
     </Fabric>
@@ -293,7 +293,7 @@ storiesOf('Card', module)
     <Fabric>
       <Card horizontal onClick={cardClicked}>
         <Card.Item>
-          <Text>Basic horizontal card</Text>
+          <Text variant="medium">Basic horizontal card</Text>
         </Card.Item>
       </Card>
     </Fabric>
@@ -308,7 +308,7 @@ storiesOf('Card', module)
           <Text variant="medium" styles={siteTextStyles}>
             Contoso
           </Text>
-          <Text styles={descriptionTextStyles}>
+          <Text variant="medium" styles={descriptionTextStyles}>
             Contoso Denver expansion design marketing hero guidelines
           </Text>
           <Text variant="medium" styles={helpfulTextStyles}>
@@ -332,57 +332,57 @@ storiesOf('Card', module)
   .addStory('Card with first CardSection filled', () => (
     <Card styles={cardStyles} tokens={cardTokens}>
       <Card.Section fill styles={firstCardSectionStyles} tokens={cardSectionTokens}>
-        <Text>This is a Card Section</Text>
-        <Text>This is a Card Section</Text>
-        <Text>This is a Card Section</Text>
+        <Text variant="medium">This is a Card Section</Text>
+        <Text variant="medium">This is a Card Section</Text>
+        <Text variant="medium">This is a Card Section</Text>
       </Card.Section>
       <Card.Section styles={secondCardSectionStyles} tokens={cardSectionTokens}>
-        <Text>This is a Card Section</Text>
-        <Text>This is a Card Section</Text>
-        <Text>This is a Card Section</Text>
+        <Text variant="medium">This is a Card Section</Text>
+        <Text variant="medium">This is a Card Section</Text>
+        <Text variant="medium">This is a Card Section</Text>
       </Card.Section>
       <Card.Section styles={thirdCardSectionStyles} tokens={cardSectionTokens}>
-        <Text>This is a Card Section</Text>
-        <Text>This is a Card Section</Text>
-        <Text>This is a Card Section</Text>
+        <Text variant="medium">This is a Card Section</Text>
+        <Text variant="medium">This is a Card Section</Text>
+        <Text variant="medium">This is a Card Section</Text>
       </Card.Section>
     </Card>
   ))
   .addStory('Card with second CardSection filled', () => (
     <Card styles={cardStyles} tokens={cardTokens}>
       <Card.Section styles={firstCardSectionStyles} tokens={cardSectionTokens}>
-        <Text>This is a Card Section</Text>
-        <Text>This is a Card Section</Text>
-        <Text>This is a Card Section</Text>
+        <Text variant="medium">This is a Card Section</Text>
+        <Text variant="medium">This is a Card Section</Text>
+        <Text variant="medium">This is a Card Section</Text>
       </Card.Section>
       <Card.Section fill styles={secondCardSectionStyles} tokens={cardSectionTokens}>
-        <Text>This is a Card Section</Text>
-        <Text>This is a Card Section</Text>
-        <Text>This is a Card Section</Text>
+        <Text variant="medium">This is a Card Section</Text>
+        <Text variant="medium">This is a Card Section</Text>
+        <Text variant="medium">This is a Card Section</Text>
       </Card.Section>
       <Card.Section styles={thirdCardSectionStyles} tokens={cardSectionTokens}>
-        <Text>This is a Card Section</Text>
-        <Text>This is a Card Section</Text>
-        <Text>This is a Card Section</Text>
+        <Text variant="medium">This is a Card Section</Text>
+        <Text variant="medium">This is a Card Section</Text>
+        <Text variant="medium">This is a Card Section</Text>
       </Card.Section>
     </Card>
   ))
   .addStory('Card with third CardSection filled', () => (
     <Card styles={cardStyles} tokens={cardTokens}>
       <Card.Section styles={firstCardSectionStyles} tokens={cardSectionTokens}>
-        <Text>This is a Card Section</Text>
-        <Text>This is a Card Section</Text>
-        <Text>This is a Card Section</Text>
+        <Text variant="medium">This is a Card Section</Text>
+        <Text variant="medium">This is a Card Section</Text>
+        <Text variant="medium">This is a Card Section</Text>
       </Card.Section>
       <Card.Section styles={secondCardSectionStyles} tokens={cardSectionTokens}>
-        <Text>This is a Card Section</Text>
-        <Text>This is a Card Section</Text>
-        <Text>This is a Card Section</Text>
+        <Text variant="medium">This is a Card Section</Text>
+        <Text variant="medium">This is a Card Section</Text>
+        <Text variant="medium">This is a Card Section</Text>
       </Card.Section>
       <Card.Section fill styles={thirdCardSectionStyles} tokens={cardSectionTokens}>
-        <Text>This is a Card Section</Text>
-        <Text>This is a Card Section</Text>
-        <Text>This is a Card Section</Text>
+        <Text variant="medium">This is a Card Section</Text>
+        <Text variant="medium">This is a Card Section</Text>
+        <Text variant="medium">This is a Card Section</Text>
       </Card.Section>
     </Card>
   ));

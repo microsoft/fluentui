@@ -102,7 +102,7 @@ export class AnnouncedLazyLoadingExample extends React.Component<IAnnouncedLazyL
 
     return (
       <Stack tokens={stackTokens}>
-        <Text>
+        <Text variant="medium">
           Turn on Narrator and press the button to start loading photos. Announced should announce the number of photos loaded every 10
           seconds, as that is the delay chosen for this example.
         </Text>

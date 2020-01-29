@@ -49,7 +49,7 @@ export class AnnouncedSearchResultsExample extends React.Component<{}, IAnnounce
 
     return (
       <Stack tokens={stackTokens}>
-        <Text>
+        <Text variant="medium">
           Turn on Narrator and type a letter or two into the TagPicker. This picker will filter added items from the search suggestions.
         </Text>
         {this._renderAnnounced()}

@@ -275,17 +275,17 @@ export class CardConfigureExample extends React.Component<{}, IExampleState> {
         <Stack horizontal>
           <Card aria-label="Configurable card" styles={cardStyles} tokens={cardTokens}>
             <Card.Section fill={filledSection === '1'} styles={firstCardSectionStyles} tokens={cardSectionTokens}>
-              <Text>This is a Card Section</Text>
-              <Text>This is a Card Section</Text>
-              <Text>This is a Card Section</Text>
+              <Text variant="medium">This is a Card Section</Text>
+              <Text variant="medium">This is a Card Section</Text>
+              <Text variant="medium">This is a Card Section</Text>
             </Card.Section>
             <Card.Item fill={filledSection === '2'} styles={cardItemStyles} tokens={cardItemTokens}>
-              <Text>This is a Card Item</Text>
+              <Text variant="medium">This is a Card Item</Text>
             </Card.Item>
             <Card.Section fill={filledSection === '3'} styles={secondCardSectionStyles} tokens={cardSectionTokens}>
-              <Text>This is a Card Section</Text>
-              <Text>This is a Card Section</Text>
-              <Text>This is a Card Section</Text>
+              <Text variant="medium">This is a Card Section</Text>
+              <Text variant="medium">This is a Card Section</Text>
+              <Text variant="medium">This is a Card Section</Text>
             </Card.Section>
           </Card>
 

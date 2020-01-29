@@ -49,7 +49,7 @@ export class CardHorizontalExample extends React.Component<{}, {}> {
       <Stack tokens={sectionStackTokens}>
         <Card aria-label="Basic horizontal card" horizontal tokens={cardTokens}>
           <Card.Item>
-            <Text>Basic horizontal card</Text>
+            <Text variant="medium">Basic horizontal card</Text>
           </Card.Item>
         </Card>
 
@@ -61,7 +61,9 @@ export class CardHorizontalExample extends React.Component<{}, {}> {
             <Text variant="small" styles={siteTextStyles}>
               Contoso
             </Text>
-            <Text styles={descriptionTextStyles}>Contoso Denver expansion design marketing hero guidelines</Text>
+            <Text variant="medium" styles={descriptionTextStyles}>
+              Contoso Denver expansion design marketing hero guidelines
+            </Text>
             <Text variant="small" styles={helpfulTextStyles}>
               Is this recommendation helpful?
             </Text>

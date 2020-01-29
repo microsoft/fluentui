@@ -3,9 +3,17 @@ import { Text } from 'office-ui-fabric-react/lib/Text';
 
 export const TextBlockExample = () => (
   <>
-    <Text block>I am block text.</Text>
-    <Text block>Since block is specified,</Text>
-    <Text block>every block of text</Text>
-    <Text block>gets its own line.</Text>
+    <Text block variant="medium">
+      I am block text.
+    </Text>
+    <Text block variant="medium">
+      Since block is specified,
+    </Text>
+    <Text block variant="medium">
+      every block of text
+    </Text>
+    <Text block variant="medium">
+      gets its own line.
+    </Text>
   </>
 );

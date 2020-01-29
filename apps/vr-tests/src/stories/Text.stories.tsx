@@ -12,9 +12,9 @@ storiesOf('Text', module)
       {story()}
     </Screener>
   ))
-  .addStory('Root', () => <Text>I'm default text</Text>, { rtl: true })
+  .addStory('Root', () => <Text variant="medium">I'm default text</Text>, { rtl: true })
   .addStory('Wrap', () => (
-    <Text>
+    <Text variant="medium">
       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
       labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
       laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
@@ -23,7 +23,7 @@ storiesOf('Text', module)
     </Text>
   ))
   .addStory('No wrap', () => (
-    <Text nowrap>
+    <Text nowrap variant="medium">
       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
       labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
       laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
@@ -33,9 +33,17 @@ storiesOf('Text', module)
   ))
   .addStory('Block', () => (
     <>
-      <Text block>I am block text.</Text>
-      <Text block>Since block is specified,</Text>
-      <Text block>every block of text</Text>
-      <Text block>gets its own line.</Text>
+      <Text block variant="medium">
+        I am block text.
+      </Text>
+      <Text block variant="medium">
+        Since block is specified,
+      </Text>
+      <Text block variant="medium">
+        every block of text
+      </Text>
+      <Text block variant="medium">
+        gets its own line.
+      </Text>
     </>
   ));

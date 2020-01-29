@@ -38,31 +38,31 @@ export class SeparatorBasicExample extends React.Component<{}, {}> {
       <Stack tokens={stackTokens}>
         <HorizontalSeparatorStack>
           <>
-            <Text>Horizontal center aligned</Text>
+            <Text variant="medium">Horizontal center aligned</Text>
             <Separator>{content}</Separator>
           </>
           <>
-            <Text>Horizontal start aligned</Text>
+            <Text variant="medium">Horizontal start aligned</Text>
             <Separator alignContent="start">{content}</Separator>
           </>
           <>
-            <Text>Horizontal end aligned</Text>
+            <Text variant="medium">Horizontal end aligned</Text>
             <Separator alignContent="end">{content}</Separator>
           </>
           <>
-            <Text>Empty horizontal</Text>
+            <Text variant="medium">Empty horizontal</Text>
             <Separator />
           </>
         </HorizontalSeparatorStack>
         <VerticalSeparatorStack>
           <>
-            <Text>Vertical center aligned</Text>
+            <Text variant="medium">Vertical center aligned</Text>
             <Stack.Item className={verticalStyle}>
               <Separator vertical>{content}</Separator>
             </Stack.Item>
           </>
           <>
-            <Text>Vertical start aligned</Text>
+            <Text variant="medium">Vertical start aligned</Text>
             <Stack.Item className={verticalStyle}>
               <Separator vertical alignContent="start">
                 {content}
@@ -70,13 +70,13 @@ export class SeparatorBasicExample extends React.Component<{}, {}> {
             </Stack.Item>
           </>
           <>
-            <Text>Vertical end aligned</Text>
+            <Text variant="medium">Vertical end aligned</Text>
             <Stack.Item className={verticalStyle}>
               <Separator vertical>{content}</Separator>
             </Stack.Item>
           </>
           <>
-            <Text>Empty vertical</Text>
+            <Text variant="medium">Empty vertical</Text>
             <Stack.Item className={verticalStyle}>
               <Separator vertical />
             </Stack.Item>

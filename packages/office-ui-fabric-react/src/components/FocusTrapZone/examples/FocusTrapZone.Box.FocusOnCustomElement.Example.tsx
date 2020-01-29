@@ -27,7 +27,7 @@ export class FocusTrapZoneBoxCustomElementExample extends React.Component<{}, IF
     return (
       <Stack tokens={{ childrenGap: 8 }}>
         <Stack.Item>
-          <Text>If this button is used to enable FocusTrapZone, the hyperlink should be focused.</Text>
+          <Text variant="medium">If this button is used to enable FocusTrapZone, the hyperlink should be focused.</Text>
         </Stack.Item>
         <Stack.Item>
           <DefaultButton onClick={this._onButtonClickHandler} text="Focus Custom Element" />
