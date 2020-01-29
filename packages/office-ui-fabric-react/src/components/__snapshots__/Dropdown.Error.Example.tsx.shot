@@ -265,6 +265,9 @@ exports[`Component Examples renders Dropdown.Error.Example.tsx correctly 1`] = `
           @media screen and (-ms-high-contrast: active){&:hover .ms-Dropdown-title {
             border-color: Highlight;
           }
+          &:focus .ms-Dropdown-title {
+            color: #201f1e;
+          }
           @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-title {
             color: Highlight;
           }

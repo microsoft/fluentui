@@ -71,6 +71,9 @@ exports[`Component Examples renders Dropdown.ControlledMulti.Example.tsx correct
         @media screen and (-ms-high-contrast: active){&:hover .ms-Dropdown-title {
           border-color: Highlight;
         }
+        &:focus .ms-Dropdown-title {
+          color: #201f1e;
+        }
         @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-title {
           color: Highlight;
         }

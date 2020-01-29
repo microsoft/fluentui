@@ -205,7 +205,10 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
             { borderColor: isOpen ? palette.neutralSecondary : palette.neutralPrimary },
             highContrastBorderState
           ],
-          ['&:focus .' + globalClassnames.title]: [!disabled && rootHoverFocusActiveSelectorNeutralDarkMixin],
+          ['&:focus .' + globalClassnames.title]: [
+            !disabled && rootHoverFocusActiveSelectorNeutralDarkMixin,
+            { selectors: { [HighContrastSelector]: { color: 'Highlight' } } }
+          ],
 
           ['&:focus:after']: [
             {
@@ -234,7 +237,6 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
             { borderColor: palette.themePrimary },
             highContrastBorderState
           ],
-          ['&:focus .' + globalClassnames.title]: [{ selectors: { [HighContrastSelector]: { color: 'Highlight' } } }],
 
           ['&:hover .' + globalClassnames.caretDown]: !disabled && rootHoverFocusActiveSelectorNeutralPrimaryMixin,
           ['&:focus .' + globalClassnames.caretDown]: [
