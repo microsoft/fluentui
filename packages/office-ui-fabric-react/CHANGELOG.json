@@ -2,6 +2,30 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Wed, 29 Jan 2020 12:37:18 GMT",
+      "tag": "office-ui-fabric-react_v7.86.1",
+      "version": "7.86.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "MessageBar: Fix High Contrast Mode issues.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "4674be302267b31c5060c9ee39a5e519b9b901ef"
+          },
+          {
+            "comment": "Panel: Calling onOpen on non-imperative scenarios like its description states.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "1b023adf87d60bf9394ccad4d9554da81731bef8"
+          },
+          {
+            "comment": "Dropdown: Fix issue where pressing key up can cause scrolling of the whole page.",
+            "author": "jehawley@microsoft.com",
+            "commit": "ec4f9e60183ddd572046820cea04c0f29c508a68"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 28 Jan 2020 12:43:24 GMT",
       "tag": "office-ui-fabric-react_v7.86.0",
       "version": "7.86.0",

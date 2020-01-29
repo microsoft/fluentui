@@ -2,6 +2,20 @@
   "name": "@uifabric/tsx-editor",
   "entries": [
     {
+      "date": "Wed, 29 Jan 2020 12:37:18 GMT",
+      "tag": "@uifabric/tsx-editor_v0.11.8",
+      "version": "0.11.8",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix DetailsList export to codepen/live code editing",
+            "author": "xgao@microsoft.com",
+            "commit": "5d1bfca15b9979483e65953ecc872fb809a10875"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 28 Jan 2020 12:43:24 GMT",
       "tag": "@uifabric/tsx-editor_v0.11.7",
       "version": "0.11.7",

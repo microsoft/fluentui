@@ -33,7 +33,7 @@
     "@uifabric/merge-styles": "^7.8.4",
     "@uifabric/set-version": "^7.0.3",
     "es6-promise": "^4.1.0",
-    "office-ui-fabric-react": "^7.86.0",
+    "office-ui-fabric-react": "^7.86.1",
     "react": "16.8.6",
     "react-app-polyfill": "~1.0.1",
     "react-dom": "16.8.6",

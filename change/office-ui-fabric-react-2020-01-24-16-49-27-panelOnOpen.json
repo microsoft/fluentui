@@ -1,9 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Panel: Calling onOpen on non-imperative scenarios like its description states.",
-  "packageName": "office-ui-fabric-react",
-  "email": "Humberto.Morimoto@microsoft.com",
-  "commit": "1b023adf87d60bf9394ccad4d9554da81731bef8",
-  "dependentChangeType": "patch",
-  "date": "2020-01-25T00:49:27.071Z"
-}

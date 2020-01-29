@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "MessageBar: Fix High Contrast Mode issues.",
-  "packageName": "office-ui-fabric-react",
-  "email": "Humberto.Morimoto@microsoft.com",
-  "commit": "4674be302267b31c5060c9ee39a5e519b9b901ef",
-  "date": "2020-01-15T22:08:55.996Z"
-}

@@ -1,7 +1,15 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 28 Jan 2020 12:43:24 GMT and should not be manually modified.
+This log was last generated on Wed, 29 Jan 2020 12:37:18 GMT and should not be manually modified.
 
+## 7.86.1
+Wed, 29 Jan 2020 12:37:18 GMT
+
+### Patches
+
+- MessageBar: Fix High Contrast Mode issues. (Humberto.Morimoto@microsoft.com)
+- Panel: Calling onOpen on non-imperative scenarios like its description states. (Humberto.Morimoto@microsoft.com)
+- Dropdown: Fix issue where pressing key up can cause scrolling of the whole page. (jehawley@microsoft.com)
 ## 7.86.0
 Tue, 28 Jan 2020 12:43:24 GMT
 

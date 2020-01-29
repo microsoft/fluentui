@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/fabric-website",
-  "version": "7.8.0",
+  "version": "7.8.1",
   "description": "The official website for the UI Fabric project.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -45,22 +45,22 @@
     "react-highlight": "0.10.0",
     "write-file-webpack-plugin": "^4.1.0",
     "@uifabric/build": "^7.0.0",
-    "@uifabric/tsx-editor": "^0.11.7"
+    "@uifabric/tsx-editor": "^0.11.8"
   },
   "dependencies": {
     "@microsoft/load-themed-styles": "^1.10.26",
-    "@uifabric/api-docs": "^7.2.5",
-    "@uifabric/example-app-base": "^7.11.8",
-    "@uifabric/experiments": "^7.18.20",
-    "@uifabric/fabric-website-resources": "^7.5.0",
+    "@uifabric/api-docs": "^7.2.6",
+    "@uifabric/example-app-base": "^7.11.9",
+    "@uifabric/experiments": "^7.18.21",
+    "@uifabric/fabric-website-resources": "^7.5.1",
     "@uifabric/file-type-icons": "^7.2.6",
-    "@uifabric/fluent-theme": "^7.1.9",
+    "@uifabric/fluent-theme": "^7.1.10",
     "@uifabric/icons": "^7.3.3",
-    "@uifabric/react-cards": "^0.109.9",
+    "@uifabric/react-cards": "^0.109.10",
     "@uifabric/set-version": "^7.0.3",
-    "@uifabric/theme-samples": "^7.0.10",
+    "@uifabric/theme-samples": "^7.0.11",
     "json-loader": "^0.5.7",
-    "office-ui-fabric-react": "^7.86.0",
+    "office-ui-fabric-react": "^7.86.1",
     "tslib": "^1.10.0",
     "whatwg-fetch": "2.0.4"
   }

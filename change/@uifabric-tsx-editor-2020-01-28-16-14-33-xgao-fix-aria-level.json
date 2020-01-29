@@ -1,9 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fix DetailsList export to codepen/live code editing",
-  "packageName": "@uifabric/tsx-editor",
-  "email": "xgao@microsoft.com",
-  "commit": "5d1bfca15b9979483e65953ecc872fb809a10875",
-  "dependentChangeType": "patch",
-  "date": "2020-01-29T00:14:33.899Z"
-}
