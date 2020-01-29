@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "PeoplePicker: Splitting one example into multiple examples and converting to Function Components.",
-  "packageName": "office-ui-fabric-react",
-  "email": "Humberto.Morimoto@microsoft.com",
-  "commit": "1371c7b6ae462ea7ef2fc0d023e7f9984cd88f4b",
-  "date": "2020-01-16T23:58:40.007Z"
-}

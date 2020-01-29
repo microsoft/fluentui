@@ -20,6 +20,7 @@ interface ICodepenPrefill {
   head: string;
   js: string;
   js_pre_processor: string;
+  css: string;
   css_pre_processor: string;
   // and other options--see https://blog.codepen.io/documentation/api/prefill/
 }
@@ -56,6 +57,7 @@ const CodepenComponentBase: React.FunctionComponent<ICodepenProps> = props => {
       head: headContent,
       js: jsContentStr,
       js_pre_processor: 'typescript',
+      css: '',
       css_pre_processor: 'scss'
     };
 

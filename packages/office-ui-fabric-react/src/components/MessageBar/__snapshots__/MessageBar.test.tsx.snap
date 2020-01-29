@@ -34,9 +34,13 @@ exports[`MessageBar renders MessageBar correctly 1`] = `
           font-size: 12px;
           font-weight: 400;
         }
+        @media screen and (-ms-high-contrast: active){& .ms-Link {
+          -ms-high-contrast-adjust: auto;
+        }
         @media screen and (-ms-high-contrast: active){& {
-          background: WindowText;
-          color: Window;
+          background: Window;
+          border: 1px solid WindowText;
+          color: WindowText;
         }
   >
     <div
@@ -80,7 +84,7 @@ exports[`MessageBar renders MessageBar correctly 1`] = `
               }
               @media screen and (-ms-high-contrast: active){& {
                 -ms-high-contrast-adjust: none;
-                color: Window;
+                color: WindowText;
               }
           data-icon-name="Info"
         >

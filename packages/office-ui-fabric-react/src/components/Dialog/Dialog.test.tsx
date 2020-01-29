@@ -33,6 +33,23 @@ describe('Dialog', () => {
     expect(tree).toMatchSnapshot();
   });
 
+  it('renders DialogContent with titleProps', () => {
+    const component = renderer.create(
+      <DialogContent
+        type={DialogType.normal}
+        title="sample title"
+        subText="Sample subtext"
+        titleProps={{
+          className: 'title_class',
+          'aria-level': 3,
+          title: 'tooltip'
+        }}
+      />
+    );
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
   it('Fires dismissed after closing', () => {
     jest.useFakeTimers();
     let dismissedCalled = false;

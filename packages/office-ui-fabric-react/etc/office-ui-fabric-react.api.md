@@ -1644,6 +1644,7 @@ export interface IBaseFloatingPickerProps<T> extends React.ClassAttributes<any> 
     onSuggestionsShown?: () => void;
     onValidateInput?: (input: string) => boolean;
     onZeroQuerySuggestion?: (selectedItems?: T[]) => T[] | PromiseLike<T[]> | null;
+    pickerCalloutProps?: ICalloutProps;
     pickerSuggestionsProps?: IBaseFloatingPickerSuggestionProps;
     resolveDelay?: number;
     searchingText?: ((props: {
@@ -2796,6 +2797,7 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox,
     onMenuDismissed?: () => void;
     onMenuOpen?: () => void;
     onPendingValueChanged?: (option?: IComboBoxOption, index?: number, value?: string) => void;
+    onRenderLabel?: IRenderFunction<IOnRenderComboBoxLabelProps>;
     onRenderLowerContent?: IRenderFunction<IComboBoxProps>;
     onRenderUpperContent?: IRenderFunction<IComboBoxProps>;
     onResolveOptions?: (options: IComboBoxOption[]) => IComboBoxOption[] | PromiseLike<IComboBoxOption[]>;
@@ -3759,7 +3761,9 @@ export interface IDialogContentProps extends React.ClassAttributes<DialogContent
     subTextId?: string;
     theme?: ITheme;
     title?: string | JSX.Element;
+    // @deprecated
     titleId?: string;
+    titleProps?: React.HTMLAttributes<HTMLDivElement>;
     topButtonsProps?: IButtonProps[];
     type?: DialogType;
 }
@@ -4913,6 +4917,7 @@ export interface IGroupRenderProps {
     onRenderHeader?: IRenderFunction<IGroupHeaderProps>;
     onRenderShowAll?: IRenderFunction<IGroupShowAllProps>;
     onToggleCollapseAll?: (isAllCollapsed: boolean) => void;
+    role?: string;
     showAllProps?: IGroupShowAllProps;
     showEmptyGroups?: boolean;
 }
@@ -5730,6 +5735,12 @@ export interface INavStyles {
 export { IObjectWithKey }
 
 // @public (undocumented)
+export interface IOnRenderComboBoxLabelProps {
+    multiselectAccessibleText?: string;
+    props: IComboBoxProps;
+}
+
+// @public (undocumented)
 export interface IOverflowSet {
     focus(forceIntoFirstElement?: boolean): boolean;
     focusElement(childElement?: HTMLElement): boolean;
@@ -5873,6 +5884,7 @@ export interface IPanelProps extends React.HTMLAttributes<PanelBase> {
     hasCloseButton?: boolean;
     headerClassName?: string;
     headerText?: string;
+    headerTextProps?: React.HTMLAttributes<HTMLDivElement>;
     // @deprecated
     ignoreExternalFocusing?: boolean;
     isBlocking?: boolean;
@@ -5904,6 +5916,7 @@ export interface IPanelStyleProps {
     className?: string;
     focusTrapZoneClassName?: string;
     hasCloseButton?: boolean;
+    hasCustomNavigation?: boolean;
     headerClassName?: string;
     isAnimating?: boolean;
     isFooterAtBottom?: boolean;
@@ -8315,7 +8328,7 @@ export const PeoplePickerItemSuggestionBase: (props: IPeoplePickerItemSuggestion
 export const Persona: React.StatelessComponent<IPersonaProps>;
 
 // @public
-export class PersonaBase extends BaseComponent<IPersonaProps, {}> {
+export class PersonaBase extends React.Component<IPersonaProps, {}> {
     constructor(props: IPersonaProps);
     // (undocumented)
     static defaultProps: IPersonaProps;
@@ -8327,7 +8340,7 @@ export class PersonaBase extends BaseComponent<IPersonaProps, {}> {
 export const PersonaCoin: React.StatelessComponent<IPersonaCoinProps>;
 
 // @public
-export class PersonaCoinBase extends BaseComponent<IPersonaCoinProps, IPersonaState> {
+export class PersonaCoinBase extends React.Component<IPersonaCoinProps, IPersonaState> {
     constructor(props: IPersonaCoinProps);
     // (undocumented)
     static defaultProps: IPersonaCoinProps;
@@ -8492,7 +8505,7 @@ export namespace personaSize {
 export const Pivot: React.StatelessComponent<IPivotProps>;
 
 // @public
-export class PivotBase extends BaseComponent<IPivotProps, IPivotState> {
+export class PivotBase extends React.Component<IPivotProps, IPivotState> {
     constructor(props: IPivotProps);
     focus(): void;
     // (undocumented)
@@ -8758,13 +8771,13 @@ export const SearchBox: React.StatelessComponent<ISearchBoxProps>;
 export class SearchBoxBase extends React.Component<ISearchBoxProps, ISearchBoxState> {
     constructor(props: ISearchBoxProps);
     // (undocumented)
+    componentWillUnmount(): void;
+    // (undocumented)
     static defaultProps: Pick<ISearchBoxProps, 'disableAnimation' | 'clearButtonProps'>;
     focus(): void;
     hasFocus(): boolean;
     // (undocumented)
     render(): JSX.Element;
-    // (undocumented)
-    UNSAFE_componentWillMount(): void;
     // (undocumented)
     UNSAFE_componentWillReceiveProps(newProps: ISearchBoxProps): void;
 }
@@ -8988,7 +9001,7 @@ export class SpinButton extends React.Component<ISpinButtonProps, ISpinButtonSta
 export const Spinner: React.StatelessComponent<ISpinnerProps>;
 
 // @public (undocumented)
-export class SpinnerBase extends BaseComponent<ISpinnerProps, any> {
+export class SpinnerBase extends React.Component<ISpinnerProps, any> {
     // (undocumented)
     static defaultProps: ISpinnerProps;
     // (undocumented)

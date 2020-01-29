@@ -2,6 +2,27 @@
   "name": "@uifabric/theme-samples",
   "entries": [
     {
+      "date": "Tue, 28 Jan 2020 12:43:24 GMT",
+      "tag": "@uifabric/theme-samples_v7.0.10",
+      "version": "7.0.10",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add Dark theme",
+            "author": "marygans@microsoft.com",
+            "commit": "389fa983ef91fb61c3fc8d62b2c1ab7ea2a4a552"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Rename all just configs to TS.",
+            "author": "jagore@microsoft.com",
+            "commit": "373c657b0bf9bf5d8e8433d8df8ccdccaec89e45"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 17 Jan 2020 02:32:17 GMT",
       "tag": "@uifabric/theme-samples_v7.0.6",
       "version": "7.0.6",

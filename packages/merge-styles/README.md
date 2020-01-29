@@ -496,3 +496,22 @@ renderStatic(() => ReactDOM.renderToString(<App/>);
 
 - Rehydration on the client may result in mismatched rules. You can apply a namespace on the server side to ensure there aren't name collisions.
 
+## Working with content security policy (CSP)
+
+Some content security policies prevent style injection without a nonce. To set the nonce used by `merge-styles`:
+
+```ts
+Stylesheet.getInstance().setConfig({
+  cspSettings: { nonce: 'your nonce here' }
+});
+```
+
+If you're working inside a Fabric app, this setting can also be applied using the global `window.FabricConfig.mergeStyles.cspSettings`. Note that this must be set before any Fabric code is loaded, or it may not be applied properly.
+
+```ts
+window.FabricConfig = {
+  mergeStyles: {
+    cspSettings: { nonce: 'your nonce here' }
+  }
+};
+```

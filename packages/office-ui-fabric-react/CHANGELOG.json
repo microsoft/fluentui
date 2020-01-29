@@ -2,6 +2,185 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Wed, 29 Jan 2020 12:37:18 GMT",
+      "tag": "office-ui-fabric-react_v7.86.1",
+      "version": "7.86.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "MessageBar: Fix High Contrast Mode issues.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "4674be302267b31c5060c9ee39a5e519b9b901ef"
+          },
+          {
+            "comment": "Panel: Calling onOpen on non-imperative scenarios like its description states.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "1b023adf87d60bf9394ccad4d9554da81731bef8"
+          },
+          {
+            "comment": "Dropdown: Fix issue where pressing key up can cause scrolling of the whole page.",
+            "author": "jehawley@microsoft.com",
+            "commit": "ec4f9e60183ddd572046820cea04c0f29c508a68"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 28 Jan 2020 12:43:24 GMT",
+      "tag": "office-ui-fabric-react_v7.86.0",
+      "version": "7.86.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Semantic slot conversions for a few components: Persona, ContexualMenu, SplitButton, SpinButton, Tooltip, Dropdown, ComboBox, CommandBar, Suggestions",
+            "author": "marygans@microsoft.com",
+            "commit": "389fa983ef91fb61c3fc8d62b2c1ab7ea2a4a552"
+          },
+          {
+            "comment": "Fix a bug where a user pressing the down key without opening the dropdown causes the window to scroll. The dropdown should cycle through the options. This fix changes the index from being the last item in the options to being the starting index, which is 0.",
+            "author": "jehawley@microsoft.com",
+            "commit": "ad83dd6338f1d995553f889f96075cba24654e29"
+          },
+          {
+            "comment": "Support for dynamically updating keytips",
+            "author": "keyou@microsoft.com",
+            "commit": "dcca3d5298e75de4a2c6fe54e281ad997bea41e1"
+          },
+          {
+            "comment": "Button: Adding support for onPointerDown and onPointerUp.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "de7423dcbcf1bbe6c7ed90f93554db705c8b38ac"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "BaseFloatingPicker: pass custom props to inner Callout",
+            "author": "rezha@microsoft.com",
+            "commit": "038c54870c5f0bb9edb81fc066031c8a1d3c8490"
+          },
+          {
+            "comment": "Dialog/Panel: allow to set aria-level on header title",
+            "author": "xgao@microsoft.com",
+            "commit": "c13defbe454a10ecc4c41e45b112003e911298db"
+          }
+        ],
+        "none": [
+          {
+            "comment": "updates yarn start experience to storybook for packages that have examples",
+            "author": "kchau@microsoft.com",
+            "commit": "b907cd26f0ee1d1a52c68a624186d255deaa1893"
+          },
+          {
+            "comment": "Rename all just configs to TS.",
+            "author": "jagore@microsoft.com",
+            "commit": "373c657b0bf9bf5d8e8433d8df8ccdccaec89e45"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 27 Jan 2020 03:59:43 GMT",
+      "tag": "office-ui-fabric-react_v7.85.0",
+      "version": "7.85.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "add icon support to combobox",
+            "author": "makopch@microsoft.com",
+            "commit": "b0c09c06431bf977fa831caba69d7cd09f091bbe"
+          },
+          {
+            "comment": "SpinButton: Making disabled SpinButtons non-focusable.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "cb1fa5c47a3129523be1062abd14e19b3d962574"
+          },
+          {
+            "comment": "SearchBox: Dispose of EventGroup on unmount",
+            "author": "KevinTCoughlin@users.noreply.github.com",
+            "commit": "ee1a499fe789b25ec465e2aafda5bd3ad6573f2e"
+          },
+          {
+            "comment": "PersonaCoin and related components: elliminating BaseComponent usage to reduce bundle size.",
+            "author": "dzearing@hotmail.com",
+            "commit": "5ea4f4de7953f92965d5ded807f4f12dda08c9c4"
+          }
+        ],
+        "none": [
+          {
+            "comment": "adds storybook task",
+            "author": "kchau@microsoft.com",
+            "commit": "a9396c1caf148b59d23aa8678f8d8aa98a8b8157"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "GroupedList: Add role prop to groupProps",
+            "author": "erabelle@microsoft.com",
+            "commit": "c457462537a257458d2df6571f70e743974036e2"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 24 Jan 2020 12:30:27 GMT",
+      "tag": "office-ui-fabric-react_v7.84.1",
+      "version": "7.84.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Updating text field validation in date-time package to check new value rather than old one.",
+            "author": "chce@netcompany.com",
+            "commit": "7065b61c3f1df297a774d42672a21e89f8b88783"
+          },
+          {
+            "comment": "DatePicker: Fixing issue with formatted dates.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "a215a47453932f4f63827eb343fe2c2995c04ea0"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 22 Jan 2020 12:36:43 GMT",
+      "tag": "office-ui-fabric-react_v7.84.0",
+      "version": "7.84.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Panel: Restyled Panel's header and navigation sections",
+            "author": "v-mare@microsoft.com",
+            "commit": "b6f36d5fcdc4fd2b494115160336f0a7546484c4"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "TextField: fix focused bottom border mis-alignment when errorMessage is set",
+            "author": "v-jajach@microsoft.com",
+            "commit": "c6ec87ce96332e37c2e6fc723701e29275030c50"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 20 Jan 2020 12:28:43 GMT",
+      "tag": "office-ui-fabric-react_v7.83.2",
+      "version": "7.83.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "ContextualMenu: Hide checkmark in ContextualMenuItems if canCheck is false",
+            "author": "huaxi@microsoft.com",
+            "commit": "7a3f3bd39492f60ed9edfd9b8c8e51ad4ec891fa"
+          },
+          {
+            "comment": "PeoplePicker: Splitting one example into multiple examples and converting to Function Components.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "1371c7b6ae462ea7ef2fc0d023e7f9984cd88f4b"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 17 Jan 2020 02:32:17 GMT",
       "tag": "office-ui-fabric-react_v7.83.1",
       "version": "7.83.1",

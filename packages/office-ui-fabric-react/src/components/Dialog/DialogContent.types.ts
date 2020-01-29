@@ -69,6 +69,8 @@ export interface IDialogContentProps extends React.ClassAttributes<DialogContent
 
   /**
    * The Id for title container
+   *
+   * @deprecated use the `id` attribute in `titleProps` instead.
    */
   titleId?: string;
 
@@ -76,6 +78,11 @@ export interface IDialogContentProps extends React.ClassAttributes<DialogContent
    * The title text to display at the top of the dialog.
    */
   title?: string | JSX.Element;
+
+  /**
+   * The props for title container.
+   */
+  titleProps?: React.HTMLAttributes<HTMLDivElement>;
 
   /**
    * Responsive mode passed in from decorator.

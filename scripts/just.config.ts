@@ -22,6 +22,7 @@ const generatePackageManifestTask = require('./tasks/generate-package-manifest')
 const { postprocessTask } = require('./tasks/postprocess');
 const { postprocessAmdTask } = require('./tasks/postprocess-amd');
 const { postprocessCommonjsTask } = require('./tasks/postprocess-commonjs');
+const { startStorybookTask, buildStorybookTask } = require('./tasks/storybookTask');
 
 /** Do only the bare minimum setup of options and resolve paths */
 function basicPreset() {
@@ -64,6 +65,9 @@ module.exports = function preset() {
   task('check-for-modified-files', checkForModifiedFiles);
   task('generate-version-files', generateVersionFiles);
   task('generate-package-manifest', generatePackageManifestTask);
+  task('storybook:start', startStorybookTask());
+  task('storybook:build', buildStorybookTask());
+
   task('ts:compile', () => {
     return argv().commonjs ? 'ts:commonjs-only' : parallel('ts:commonjs', 'ts:esm', condition('ts:amd', () => !!argv().production));
   });
@@ -76,6 +80,8 @@ module.exports = function preset() {
 
   task('code-style', series('prettier', 'tslint'));
   task('update-api', series('clean', 'copy', 'sass', 'ts', 'api-extractor:update'));
+
+  task('dev:storybook', series('clean', 'copy', 'sass', 'storybook:start'));
   task('dev', series('clean', 'copy', 'sass', 'webpack-dev-server'));
 
   task('build:node-lib', series('clean', 'copy', 'ts:commonjs-only')).cached();
@@ -91,7 +97,13 @@ module.exports = function preset() {
     )
   ).cached();
 
-  task('bundle', condition('webpack', () => !!resolveCwd('webpack.config.js')));
+  task(
+    'bundle',
+    parallel(
+      condition('webpack', () => !!resolveCwd('webpack.config.js')),
+      condition('storybook:build', () => !!resolveCwd('./.storybook/main.js'))
+    )
+  );
 
   task('no-op', () => {}).cached();
 };

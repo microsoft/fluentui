@@ -56,7 +56,6 @@ const styles = mergeStyleSets({
     theme.fonts.xLarge,
     {
       margin: 0,
-      color: theme.palette.neutralPrimary,
       fontWeight: FontWeights.semilight
     }
   ],

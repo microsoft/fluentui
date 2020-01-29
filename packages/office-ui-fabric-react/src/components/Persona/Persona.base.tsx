@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, classNamesFunction, divProperties, getNativeProps, IRenderFunction } from '../../Utilities';
+import { warnDeprecations, classNamesFunction, divProperties, getNativeProps, IRenderFunction } from '../../Utilities';
 import { TooltipHost, TooltipOverflowMode, DirectionalHint } from '../../Tooltip';
 import { PersonaCoin } from './PersonaCoin/PersonaCoin';
 import {
@@ -17,7 +17,7 @@ const getClassNames = classNamesFunction<IPersonaStyleProps, IPersonaStyles>();
  * Persona with no default styles.
  * [Use the `styles` API to add your own styles.](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Styling)
  */
-export class PersonaBase extends BaseComponent<IPersonaProps, {}> {
+export class PersonaBase extends React.Component<IPersonaProps, {}> {
   public static defaultProps: IPersonaProps = {
     size: PersonaSize.size48,
     presence: PersonaPresenceEnum.none,
@@ -27,7 +27,9 @@ export class PersonaBase extends BaseComponent<IPersonaProps, {}> {
   constructor(props: IPersonaProps) {
     super(props);
 
-    this._warnDeprecations({ primaryText: 'text' });
+    if (process.env.NODE_ENV !== 'production') {
+      warnDeprecations('Persona', props, { primaryText: 'text' });
+    }
   }
 
   public render(): JSX.Element {
@@ -116,8 +118,7 @@ export class PersonaBase extends BaseComponent<IPersonaProps, {}> {
     return (
       <div {...divProps} className={classNames.root} style={coinSize ? { height: coinSize, minWidth: coinSize } : undefined}>
         {onRenderPersonaCoin(personaCoinProps, this._onRenderPersonaCoin)}
-        {(!hidePersonaDetails || (size === PersonaSize.size8 || size === PersonaSize.size10 || size === PersonaSize.tiny)) &&
-          personaDetails}
+        {(!hidePersonaDetails || size === PersonaSize.size8 || size === PersonaSize.size10 || size === PersonaSize.tiny) && personaDetails}
       </div>
     );
   }

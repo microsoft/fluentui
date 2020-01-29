@@ -4,7 +4,7 @@ import { memoizeFunction } from '../../../Utilities';
 
 export const getStyles = memoizeFunction(
   (theme: ITheme, customStyles?: IButtonStyles): IButtonStyles => {
-    const { effects, palette } = theme;
+    const { effects, palette, semanticColors } = theme;
 
     const buttonHighContrastFocus = {
       left: -2,
@@ -63,6 +63,7 @@ export const getStyles = memoizeFunction(
             }
           },
           '.ms-Button.is-disabled': {
+            color: semanticColors.buttonTextDisabled,
             selectors: {
               [HighContrastSelector]: {
                 color: 'GrayText',
