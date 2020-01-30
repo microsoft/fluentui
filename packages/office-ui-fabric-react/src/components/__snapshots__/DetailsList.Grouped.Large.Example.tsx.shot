@@ -911,6 +911,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                         role="presentation"
                       >
                         <div
+                          aria-expanded={true}
                           aria-label="0"
                           className=
                               ms-GroupHeader

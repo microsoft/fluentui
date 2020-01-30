@@ -90,6 +90,7 @@ export class GroupHeaderBase extends React.Component<IGroupHeaderProps, IGroupHe
         className={this._classNames.root}
         style={viewport ? { minWidth: viewport.width } : {}}
         onClick={this._onHeaderClick}
+        aria-expanded={group ? !group.isCollapsed : undefined}
         aria-label={group.ariaLabel || group.name}
         data-is-focusable={true}
       >
