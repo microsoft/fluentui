@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Added logic to render alpha slider as transparency slider in the color picker control while maintaining backword compatible changes",
+  "packageName": "office-ui-fabric-react",
+  "email": "navkuma@microsoft.com",
+  "commit": "688b920a9dcd25206db2fb167a14216a5b4b8acb",
+  "date": "2020-01-30T09:34:52.520Z"
+}
