@@ -1256,6 +1256,7 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                           role="presentation"
                         >
                           <div
+                            aria-expanded={true}
                             aria-label="Color: \\"red\\""
                             className=
                                 ms-GroupHeader
@@ -2630,6 +2631,7 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                           role="presentation"
                         >
                           <div
+                            aria-expanded={true}
                             aria-label="Color: \\"green\\""
                             className=
                                 ms-GroupHeader
@@ -3038,6 +3040,7 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                           role="presentation"
                         >
                           <div
+                            aria-expanded={true}
                             aria-label="Color: \\"blue\\""
                             className=
                                 ms-GroupHeader

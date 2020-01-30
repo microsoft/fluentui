@@ -1,0 +1,9 @@
+{
+  "type": "patch",
+  "comment": "GroupedList: Adding aria-expanded state to the focus target of groups so that the collapsed/expanded state of the group is announced.",
+  "packageName": "office-ui-fabric-react",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "commit": "e3b68f4911328f99831f98840231c26d1d68da4c",
+  "dependentChangeType": "patch",
+  "date": "2020-01-30T00:53:39.300Z"
+}

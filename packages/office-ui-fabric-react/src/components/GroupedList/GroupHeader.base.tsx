@@ -90,6 +90,7 @@ export class GroupHeaderBase extends React.Component<IGroupHeaderProps, IGroupHe
         className={this._classNames.root}
         style={viewport ? { minWidth: viewport.width } : {}}
         onClick={this._onHeaderClick}
+        aria-expanded={!group.isCollapsed}
         aria-label={group.ariaLabel || group.name}
         data-is-focusable={true}
       >
@@ -119,7 +120,7 @@ export class GroupHeaderBase extends React.Component<IGroupHeaderProps, IGroupHe
             type="button"
             className={this._classNames.expand}
             onClick={this._onToggleCollapse}
-            aria-expanded={group ? !group.isCollapsed : undefined}
+            aria-expanded={!group.isCollapsed}
             aria-controls={group && !group.isCollapsed ? groupedListId : undefined}
             {...expandButtonProps}
           >
