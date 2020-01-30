@@ -54,9 +54,9 @@ export class DetailsListGroupedExample extends React.Component<{}, IDetailsListG
       ],
       // This is based on the definition of items
       groups: [
-        { key: 'groupred0', name: 'Color: "red"', startIndex: 0, count: 2 },
-        { key: 'groupgreen2', name: 'Color: "green"', startIndex: 2, count: 0 },
-        { key: 'groupblue2', name: 'Color: "blue"', startIndex: 2, count: 3 }
+        { key: 'groupred0', name: 'Color: "red"', startIndex: 0, count: 2, level: 0 },
+        { key: 'groupgreen2', name: 'Color: "green"', startIndex: 2, count: 0, level: 0 },
+        { key: 'groupblue2', name: 'Color: "blue"', startIndex: 2, count: 3, level: 0 }
       ],
       showItemIndexInView: false,
       isCompactMode: false
