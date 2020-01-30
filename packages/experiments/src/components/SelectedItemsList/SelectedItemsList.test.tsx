@@ -34,7 +34,10 @@ describe('SelectedItemsList', () => {
         <SelectedItemsList<ISimple>
           ref={listRef}
           onRenderItem={basicItemRenderer}
-          selectedItems={[{ key: '1', name: 'a' }, { key: '2', name: 'b' }]}
+          selectedItems={[
+            { key: '1', name: 'a' },
+            { key: '2', name: 'b' }
+          ]}
           onChange={onChange}
         />
       );
@@ -54,7 +57,10 @@ describe('SelectedItemsList', () => {
       const listRef = React.createRef<ISelectedItemsList<ISimple>>();
       create(<SelectedItemsList<ISimple> ref={listRef} onRenderItem={basicItemRenderer} />);
 
-      const items: ISimple[] = [{ key: '1', name: 'a' }, { key: '2', name: 'b' }];
+      const items: ISimple[] = [
+        { key: '1', name: 'a' },
+        { key: '2', name: 'b' }
+      ];
       if (!listRef.current) {
         throw new Error('listRef was not initialized');
       }

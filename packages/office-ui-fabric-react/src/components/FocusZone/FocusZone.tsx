@@ -232,7 +232,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
           // root props has been deprecated and should get removed.
           // it needs to be marked as "any" since root props expects a div element, but really Tag can
           // be any native element so typescript rightly flags this as a problem.
-          ...rootProps as any
+          ...(rootProps as any)
         }
         // Once the getClassName correctly memoizes inputs this should
         // be replaced so that className is passed to getRootClass and is included there so
@@ -528,11 +528,9 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
         }
       } else if (isElementFocusSubZone(ev.target as HTMLElement)) {
         if (
-          !this.focusElement(getNextElement(
-            ev.target as HTMLElement,
-            (ev.target as HTMLElement).firstChild as HTMLElement,
-            true
-          ) as HTMLElement)
+          !this.focusElement(
+            getNextElement(ev.target as HTMLElement, (ev.target as HTMLElement).firstChild as HTMLElement, true) as HTMLElement
+          )
         ) {
           return;
         }
@@ -761,19 +759,13 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
       this.focusElement(candidateElement);
     } else if (this.props.isCircularNavigation && useDefaultWrap) {
       if (isForward) {
-        return this.focusElement(getNextElement(
-          this._root.current,
-          this._root.current.firstElementChild as HTMLElement,
-          true
-        ) as HTMLElement);
+        return this.focusElement(
+          getNextElement(this._root.current, this._root.current.firstElementChild as HTMLElement, true) as HTMLElement
+        );
       } else {
-        return this.focusElement(getPreviousElement(
-          this._root.current,
-          this._root.current.lastElementChild as HTMLElement,
-          true,
-          true,
-          true
-        ) as HTMLElement);
+        return this.focusElement(
+          getPreviousElement(this._root.current, this._root.current.lastElementChild as HTMLElement, true, true, true) as HTMLElement
+        );
       }
     }
 
@@ -1033,19 +1025,13 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
       this._setFocusAlignment(candidateElement as HTMLElement, false, true);
     } else if (this.props.isCircularNavigation && useDefaultWrap) {
       if (isForward) {
-        return this.focusElement(getNextElement(
-          this._root.current,
-          this._root.current.firstElementChild as HTMLElement,
-          true
-        ) as HTMLElement);
+        return this.focusElement(
+          getNextElement(this._root.current, this._root.current.firstElementChild as HTMLElement, true) as HTMLElement
+        );
       }
-      return this.focusElement(getPreviousElement(
-        this._root.current,
-        this._root.current.lastElementChild as HTMLElement,
-        true,
-        true,
-        true
-      ) as HTMLElement);
+      return this.focusElement(
+        getPreviousElement(this._root.current, this._root.current.lastElementChild as HTMLElement, true, true, true) as HTMLElement
+      );
     }
     return changedFocus;
   }

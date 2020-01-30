@@ -41,7 +41,10 @@ describe('SelectedItemsList', () => {
       const itemsList: TypedBaseSelectedItemsList = (ReactDOM.render(
         <BaseSelectedItemsListWithType
           onRenderItem={basicItemRenderer}
-          selectedItems={[{ key: '1', name: 'a' }, { key: '2', name: 'b' }]}
+          selectedItems={[
+            { key: '1', name: 'a' },
+            { key: '2', name: 'b' }
+          ]}
           onChange={onChange}
         />,
         root
@@ -58,7 +61,10 @@ describe('SelectedItemsList', () => {
         root
       ) as unknown) as TypedBaseSelectedItemsList;
 
-      const items: ISimple[] = [{ key: '1', name: 'a' }, { key: '2', name: 'b' }];
+      const items: ISimple[] = [
+        { key: '1', name: 'a' },
+        { key: '2', name: 'b' }
+      ];
       itemsList.addItems(items);
 
       expect(itemsList.items.length).toEqual(2);

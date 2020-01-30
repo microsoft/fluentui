@@ -270,7 +270,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
               {this.canAddItems() && (
                 <Autofill
                   spellCheck={false}
-                  {...inputProps as any}
+                  {...(inputProps as any)}
                   className={classNames.input}
                   componentRef={this.input}
                   onClick={this.onClick}
@@ -979,7 +979,7 @@ export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BaseP
             role="combobox"
           >
             <Autofill
-              {...inputProps as any}
+              {...(inputProps as any)}
               className={classNames.input}
               componentRef={this.input}
               onFocus={this.onInputFocus}

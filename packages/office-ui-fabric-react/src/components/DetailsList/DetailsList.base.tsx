@@ -482,7 +482,7 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
                   onItemInvoked={onItemInvoked}
                   onItemContextMenu={onItemContextMenu}
                   enterModalOnTouch={this.props.enterModalSelectionOnTouch}
-                  {...selectionZoneProps || {}}
+                  {...(selectionZoneProps || {})}
                 >
                   {list}
                 </SelectionZone>
