@@ -4281,6 +4281,7 @@ export interface IDragDropContext {
 // @public
 export interface IDragDropEvents {
     canDrag?: (item?: any) => boolean;
+    canDragGroups?: boolean;
     canDrop?: (dropContext?: IDragDropContext, dragContext?: IDragDropContext) => boolean;
     onDragEnd?: (item?: any, event?: DragEvent) => void;
     onDragEnter?: (item?: any, event?: DragEvent) => string;
