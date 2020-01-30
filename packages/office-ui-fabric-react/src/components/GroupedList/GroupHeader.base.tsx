@@ -91,6 +91,7 @@ export class GroupHeaderBase extends React.Component<IGroupHeaderProps, IGroupHe
         style={viewport ? { minWidth: viewport.width } : {}}
         onClick={this._onHeaderClick}
         aria-label={group.ariaLabel || group.name}
+        aria-level={groupLevel !== undefined ? groupLevel + 1 : undefined}
         data-is-focusable={true}
       >
         <FocusZone className={this._classNames.groupHeaderContainer} direction={FocusZoneDirection.horizontal}>
