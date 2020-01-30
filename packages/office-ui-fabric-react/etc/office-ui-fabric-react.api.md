@@ -4435,6 +4435,30 @@ export interface IDropHintDetails {
     startX: number;
 }
 
+// @public (undocumented)
+export interface IEditingSelectedPeopleItemProps extends ISelectedPeopleItemProps {
+    // (undocumented)
+    floatingPickerProps?: IBaseFloatingPickerProps<IPersonaProps>;
+    // (undocumented)
+    getEditingItemText?: (item: IExtendedPersonaProps) => string;
+    // (undocumented)
+    onEditingComplete: (oldItem: any, newItem: any) => void;
+    // (undocumented)
+    onRenderFloatingPicker?: React.ComponentType<IBaseFloatingPickerProps<IPersonaProps>>;
+}
+
+// @public (undocumented)
+export interface IEditingSelectedPeopleItemStyles {
+    // (undocumented)
+    input: IStyle;
+    // (undocumented)
+    root: IStyle;
+}
+
+// @public (undocumented)
+export interface IEditingSelectedPeopleItemStylesProps {
+}
+
 // @public
 export interface IEntityRect {
     // (undocumented)
