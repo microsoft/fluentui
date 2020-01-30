@@ -27,7 +27,7 @@ export const allowScrollOnElement: (element: HTMLElement | null, events: EventGr
 export const anchorProperties: string[];
 
 // @public
-export function appendFunction(parent: any, ...functions: (any)[]): () => void;
+export function appendFunction(parent: any, ...functions: any[]): () => void;
 
 // @public
 export function arraysEqual<T>(array1: T[], array2: T[]): boolean;
