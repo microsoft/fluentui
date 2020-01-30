@@ -26,19 +26,26 @@ const classNames = mergeStyleSets({
 export interface IBasicColorPickerExampleState {
   color: IColor;
   alphaSliderHidden: boolean;
+  requireTransparencySlider: boolean;
 }
 
 export class ColorPickerBasicExample extends React.Component<{}, IBasicColorPickerExampleState> {
   public state: IBasicColorPickerExampleState = {
     color: getColorFromString('#ffffff')!,
-    alphaSliderHidden: false
+    alphaSliderHidden: false,
+    requireTransparencySlider: false
   };
 
   public render(): JSX.Element {
-    const { color, alphaSliderHidden } = this.state;
+    const { color, alphaSliderHidden, requireTransparencySlider } = this.state;
     return (
       <div className={classNames.wrapper}>
-        <ColorPicker color={color} onChange={this._updateColor} alphaSliderHidden={alphaSliderHidden} />
+        <ColorPicker
+          color={color}
+          onChange={this._updateColor}
+          alphaSliderHidden={alphaSliderHidden}
+          requireTransparencySlider={requireTransparencySlider}
+        />
 
         <div className={classNames.column2}>
           <div
@@ -48,6 +55,7 @@ export class ColorPickerBasicExample extends React.Component<{}, IBasicColorPick
             }}
           />
           <Toggle label="Hide alpha slider" onChange={this._onHideAlphaClick} checked={alphaSliderHidden} />
+          <Toggle label="Require transparency slider" onChange={this._onRequireTransparencyClick} checked={requireTransparencySlider} />
         </div>
       </div>
     );
@@ -64,5 +72,15 @@ export class ColorPickerBasicExample extends React.Component<{}, IBasicColorPick
       color = updateA(this.state.color, 100);
     }
     this.setState({ alphaSliderHidden: !!checked, color });
+  };
+
+  private _onRequireTransparencyClick = (ev: React.MouseEvent<HTMLElement>, checked?: boolean) => {
+    let color = this.state.color;
+    if (checked) {
+      color = updateA(this.state.color, 0);
+    } else {
+      color = updateA(this.state.color, 100);
+    }
+    this.setState({ requireTransparencySlider: !!checked, color });
   };
 }

@@ -37,6 +37,10 @@ export interface IColorPickerProps {
   alphaSliderHidden?: boolean;
 
   /**
+  whether require a transparency slider.
+   */
+  requireTransparencySlider?: boolean;
+  /**
    * Label for the hex text field.
    * @defaultvalue Hex
    */
@@ -65,6 +69,12 @@ export interface IColorPickerProps {
    * @defaultvalue Alpha
    */
   alphaLabel?: string;
+
+  /**
+  Label for the transparency textfield.
+  * @defaultvalue Transparency
+  */
+  transparencyLabel?: string;
 
   /**
    * Additional CSS class(es) to apply to the ColorPicker.

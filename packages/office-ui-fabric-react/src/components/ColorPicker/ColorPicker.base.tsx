@@ -47,7 +47,8 @@ export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPi
     redLabel: 'Red',
     greenLabel: 'Green',
     blueLabel: 'Blue',
-    alphaLabel: 'Alpha'
+    alphaLabel: 'Alpha',
+    transparencyLabel: 'Transparency'
   };
 
   private _textChangeHandlers: {
@@ -91,9 +92,10 @@ export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPi
 
   public render(): JSX.Element {
     const props = this.props;
-    const { theme, className, styles } = props;
+    const { theme, className, styles, requireTransparencySlider } = props;
     const { color } = this.state;
-
+    const alphaValue = color.a;
+    const sliderValue = alphaValue ? (requireTransparencySlider ? 100 - alphaValue : alphaValue) : 0;
     const classNames = getClassNames(styles!, {
       theme: theme!,
       className
@@ -108,10 +110,14 @@ export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPi
             <ColorSlider
               className="is-alpha"
               isAlpha
-              overlayStyle={{ background: `linear-gradient(to right, transparent 0, #${color.hex} 100%)` }}
+              overlayStyle={
+                requireTransparencySlider
+                  ? { background: `linear-gradient(to right,#${color.hex} , transparent )` }
+                  : { background: `linear-gradient(to right, transparent 0, #${color.hex} 100%)` }
+              }
               minValue={0}
               maxValue={MAX_COLOR_ALPHA}
-              value={color.a}
+              value={sliderValue}
               onChange={this._onAChanged}
             />
           )}
@@ -122,7 +128,8 @@ export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPi
                 <td>{props.redLabel}</td>
                 <td>{props.greenLabel}</td>
                 <td>{props.blueLabel}</td>
-                {!props.alphaSliderHidden && <td>{props.alphaLabel}</td>}
+                {!props.alphaSliderHidden && !requireTransparencySlider && <td>{props.alphaLabel}</td>}
+                {!props.alphaSliderHidden && requireTransparencySlider && <td>{props.transparencyLabel}</td>}
               </tr>
             </thead>
             <tbody>
@@ -152,6 +159,11 @@ export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPi
     );
   }
 
+  //   private _getTransparencyValue():number
+  // {
+  //   return 100- (number){this.color.a} ;
+  // }
+
   private _getDisplayValue(component: keyof IColor): string {
     const { color, editingColor } = this.state;
     if (editingColor && editingColor.component === component) {
@@ -160,7 +172,11 @@ export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPi
     if (color[component] === null || color[component] === undefined) {
       return '';
     } else {
-      return String(color[component]);
+      if (component === 'a' && this.props.requireTransparencySlider) {
+        return color[component] !== undefined ? String(100 - Number(color[component])) : '';
+      } else {
+        return String(color[component]);
+      }
     }
   }
 
@@ -173,15 +189,15 @@ export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPi
   };
 
   private _onAChanged = (ev: React.MouseEvent<HTMLElement>, a: number): void => {
-    this._updateColor(ev, updateA(this.state.color, Math.round(a)));
+    this._updateColor(ev, updateA(this.state.color, this.props.requireTransparencySlider ? 100 - Math.round(a) : Math.round(a)));
   };
 
   private _onTextChange(component: keyof IRGBHex, event: React.FormEvent<HTMLInputElement>, newValue?: string): void {
     const color = this.state.color;
     const isHex = component === 'hex';
     const isAlpha = component === 'a';
+    newValue = newValue && isAlpha && this.props.requireTransparencySlider ? String(100 - Number(newValue)) : newValue;
     newValue = (newValue || '').substr(0, isHex ? MAX_HEX_LENGTH : MAX_RGBA_LENGTH);
-
     // Ignore what the user typed if it contains invalid characters
     const validCharsRegex = isHex ? HEX_REGEX : RGBA_REGEX;
     if (!validCharsRegex.test(newValue)) {

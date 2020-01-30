@@ -605,6 +605,7 @@ export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPi
         greenLabel: string;
         blueLabel: string;
         alphaLabel: string;
+        transparencyLabel: string;
     };
     // (undocumented)
     render(): JSX.Element;
@@ -2528,8 +2529,10 @@ export interface IColorPickerProps {
     hexLabel?: string;
     onChange?: (ev: React.SyntheticEvent<HTMLElement>, color: IColor) => void;
     redLabel?: string;
+    requireTransparencySlider?: boolean;
     styles?: IStyleFunctionOrObject<IColorPickerStyleProps, IColorPickerStyles>;
     theme?: ITheme;
+    transparencyLabel?: string;
 }
 
 // @public (undocumented)
