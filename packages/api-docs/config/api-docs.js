@@ -11,6 +11,7 @@ module.exports = {
     path.resolve(__dirname, '../../styling/dist/styling.api.json'),
     path.resolve(__dirname, '../../utilities/dist/utilities.api.json'),
     path.resolve(__dirname, '../../merge-styles/dist/merge-styles.api.json'),
+    path.resolve(__dirname, '../../react-focus/dist/react-focus.api.json'),
     path.resolve(__dirname, '../../office-ui-fabric-react/dist/office-ui-fabric-react.api.json'),
     path.resolve(__dirname, '../../react-cards/dist/react-cards.api.json')
   ],

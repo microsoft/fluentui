@@ -1,1 +1,1 @@
-export * from '@fluentui/react-focus/lib/index';
+export * from '@fluentui/react-focus';
