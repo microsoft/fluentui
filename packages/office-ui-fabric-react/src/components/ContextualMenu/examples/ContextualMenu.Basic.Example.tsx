@@ -2,10 +2,6 @@ import * as React from 'react';
 import { ContextualMenu, ContextualMenuItemType, IContextualMenuItem } from 'office-ui-fabric-react/lib/ContextualMenu';
 import { useConstCallback } from '@uifabric/react-hooks';
 
-export interface IContextualMenuBasicExampleState {
-  showContextualMenu?: boolean;
-}
-
 export const ContextualMenuBasicExample: React.FunctionComponent = () => {
   const linkRef = React.useRef(null);
   const [showContextualMenu, setShowContextualMenu] = React.useState(false);

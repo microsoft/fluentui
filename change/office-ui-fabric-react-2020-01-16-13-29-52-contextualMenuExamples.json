@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "ContextualMenu: Transforming examples to FunctionComponents and cleaning them up.",
+  "packageName": "office-ui-fabric-react",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "commit": "0cb40ff6bf04a1223bb69615cce07f715cf843d8",
+  "date": "2020-01-16T21:29:52.538Z"
+}
