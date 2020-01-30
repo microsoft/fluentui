@@ -153,9 +153,9 @@ export class DialogBase extends React.Component<IDialogProps, {}> {
         titleAriaId={this._getTitleTextId()}
       >
         <DialogContent
-          titleId={this._defaultTitleTextId}
           subTextId={this._defaultSubTextId}
           title={title}
+          titleProps={{ id: this._defaultTitleTextId }}
           subText={subText}
           showCloseButton={isBlocking !== undefined ? !isBlocking : !mergedModalProps.isBlocking}
           topButtonsProps={topButtonsProps ? topButtonsProps : dialogContentProps!.topButtonsProps}

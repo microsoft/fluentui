@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { classNamesFunction, initializeComponentRef } from '../../Utilities';
-import { IColorPickerProps, IColorPickerStyleProps, IColorPickerStyles, IColorPicker } from './ColorPicker.types';
+import { IColorPickerProps, IColorPickerStyleProps, IColorPickerStyles, IColorPicker, IColorPickerStrings } from './ColorPicker.types';
 import { TextField } from '../../TextField';
 import { ColorRectangle } from './ColorRectangle/ColorRectangle';
 import { ColorSlider } from './ColorSlider/ColorSlider';
@@ -23,8 +23,9 @@ import { updateA } from '../../utilities/color/updateA';
 import { updateH } from '../../utilities/color/updateH';
 import { correctRGB } from '../../utilities/color/correctRGB';
 import { correctHex } from '../../utilities/color/correctHex';
+import { ColorRectangleBase } from './ColorRectangle/ColorRectangle.base';
 
-type IRGBHex = Pick<IColor, 'r' | 'g' | 'b' | 'a' | 'hex'>;
+type IRGBHex = Pick<IColor, 'r' | 'g' | 'b' | 'a' | 'hex' | 't'>;
 
 export interface IColorPickerState {
   color: IColor;
@@ -42,19 +43,32 @@ const colorComponents: Array<keyof IRGBHex> = ['hex', 'r', 'g', 'b', 'a'];
  * {@docCategory ColorPicker}
  */
 export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPickerState> implements IColorPicker {
-  public static defaultProps = {
-    hexLabel: 'Hex',
-    redLabel: 'Red',
-    greenLabel: 'Green',
-    blueLabel: 'Blue',
-    alphaLabel: 'Alpha',
-    transparencyLabel: 'Transparency'
+  public static defaultProps: Partial<IColorPickerProps> = {
+    strings: {
+      rootAriaLabelFormat: 'Color picker, {0} selected.',
+      hex: 'Hex',
+      red: 'Red',
+      green: 'Green',
+      blue: 'Blue',
+      alpha: 'Alpha',
+      hueAriaLabel: 'Hue',
+      transparency: 'Transparency',
+      svAriaLabel: ColorRectangleBase.defaultProps.ariaLabel!,
+      svAriaValueFormat: ColorRectangleBase.defaultProps.ariaValueFormat!,
+      svAriaDescription: ColorRectangleBase.defaultProps.ariaDescription!
+    }
   };
 
   private _textChangeHandlers: {
     [K in keyof IRGBHex]: (event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, newValue?: string) => void
   };
-  private _textLabels: { [K in keyof IRGBHex]?: string };
+  /**
+   * Strings displayed in the UI as text field labels (these are in a separate object for convenient
+   * indexing by short color component name).
+   */
+  private _textLabels: { [K in keyof IRGBHex]: string };
+  /** Strings besides red/green/blue/alpha/hex */
+  private _strings: Required<IColorPickerStrings>;
 
   constructor(props: IColorPickerProps) {
     super(props);
@@ -69,12 +83,22 @@ export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPi
     for (const component of colorComponents) {
       this._textChangeHandlers[component] = this._onTextChange.bind(this, component);
     }
+
+    const strings = props.strings!; // always defined since it's in defaultProps
+    const defaultStrings = ColorPickerBase.defaultProps.strings as Required<IColorPickerStrings>;
+
     this._textLabels = {
-      r: props.redLabel,
-      g: props.greenLabel,
-      b: props.blueLabel,
-      a: props.alphaLabel,
-      hex: props.hexLabel
+      r: props.redLabel || strings.red || defaultStrings.red,
+      g: props.greenLabel || strings.green || defaultStrings.green,
+      b: props.blueLabel || strings.blue || defaultStrings.blue,
+      a: props.alphaLabel || strings.alpha || defaultStrings.alpha,
+      hex: props.hexLabel || strings.hex || defaultStrings.hex,
+      t: props.transparencyLabel || strings.transparency || defaultStrings.transparency
+    };
+
+    this._strings = {
+      ...defaultStrings,
+      ...strings
     };
   }
 
@@ -82,17 +106,21 @@ export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPi
     return this.state.color;
   }
 
-  // tslint:disable-next-line function-name
-  public UNSAFE_componentWillReceiveProps(newProps: IColorPickerProps): void {
-    const color = _getColorFromProps(newProps);
-    if (color) {
-      this._updateColor(undefined, color);
+  public componentDidUpdate(prevProps: Readonly<IColorPickerProps>, prevState: Readonly<IColorPickerState>): void {
+    // if props changed (as opposed to a state update), update the color
+    if (prevProps !== this.props) {
+      const color = _getColorFromProps(this.props);
+      if (color) {
+        this._updateColor(undefined, color);
+      }
     }
   }
 
   public render(): JSX.Element {
     const props = this.props;
-    const { theme, className, styles, requireTransparencySlider } = props;
+    const strings = this._strings;
+    const textLabels = this._textLabels;
+    const { theme, className, styles, alphaSliderHidden, requireTransparencySlider } = props;
     const { color } = this.state;
     const alphaValue = color.a;
     const sliderValue = alphaValue ? (requireTransparencySlider ? 100 - alphaValue : alphaValue) : 0;
@@ -101,41 +129,82 @@ export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPi
       className
     });
 
+    const colorStr = color.str || '';
+    // Space out hex and RGBA colors for more helpful reading
+    const selectedColorAria =
+      colorStr[0] === '#'
+        ? colorStr.split('').join(' ')
+        : colorStr.indexOf('rgba(') === 0
+        ? `R G B A ${color.r} ${color.g} ${color.b} ${color.a!}%`
+        : colorStr;
+    const ariaLabel = strings.rootAriaLabelFormat.replace('{0}', selectedColorAria);
+
     return (
-      <div className={classNames.root}>
+      <div className={classNames.root} role="group" aria-label={ariaLabel}>
         <div className={classNames.panel}>
-          <ColorRectangle color={color} onChange={this._onSVChanged} />
-          <ColorSlider className="is-hue" minValue={0} maxValue={MAX_COLOR_HUE} value={color.h} onChange={this._onHChanged} />
-          {!props.alphaSliderHidden && (
-            <ColorSlider
-              className="is-alpha"
-              isAlpha
-              overlayStyle={
-                requireTransparencySlider
-                  ? { background: `linear-gradient(to right,#${color.hex} , transparent )` }
-                  : { background: `linear-gradient(to right, transparent 0, #${color.hex} 100%)` }
-              }
-              minValue={0}
-              maxValue={MAX_COLOR_ALPHA}
-              value={sliderValue}
-              onChange={this._onAChanged}
-            />
-          )}
-          <table className={classNames.table} cellPadding="0" cellSpacing="0">
+          <ColorRectangle
+            color={color}
+            onChange={this._onSVChanged}
+            ariaLabel={strings.svAriaLabel}
+            ariaDescription={strings.svAriaDescription}
+            ariaValueFormat={strings.svAriaValueFormat}
+            className={classNames.colorRectangle}
+          />
+          <div className={classNames.flexContainer}>
+            <div className={classNames.flexSlider}>
+              <ColorSlider
+                className="is-hue"
+                ariaLabel={strings.hue || strings.hueAriaLabel}
+                minValue={0}
+                maxValue={MAX_COLOR_HUE}
+                value={color.h}
+                onChange={this._onHChanged}
+              />
+              {!alphaSliderHidden && (
+                <ColorSlider
+                  className="is-alpha"
+                  isAlpha
+                  ariaLabel={strings.alphaAriaLabel || textLabels.a}
+                  overlayStyle={
+                    requireTransparencySlider ? { background: `linear-gradient(to right,#${color.hex} , transparent )` } : undefined
+                  }
+                  overlayColor={color.hex}
+                  minValue={0}
+                  maxValue={MAX_COLOR_ALPHA}
+                  value={sliderValue}
+                  onChange={this._onAChanged}
+                />
+              )}
+            </div>
+            {props.showPreview && (
+              <div className={classNames.flexPreviewBox}>
+                <div
+                  className={classNames.colorSquare + ' is-preview'}
+                  style={{
+                    backgroundColor: color.str
+                  }}
+                />
+              </div>
+            )}
+          </div>
+
+          {/* Give the table role=group to prevent it from being read as a table (ideally we should
+          just get rid of the table, but this has the potential of breaking consumers) */}
+          <table className={classNames.table} role="group" cellPadding="0" cellSpacing="0">
             <thead>
               <tr className={classNames.tableHeader}>
-                <td className={classNames.tableHexCell}>{props.hexLabel}</td>
-                <td>{props.redLabel}</td>
-                <td>{props.greenLabel}</td>
-                <td>{props.blueLabel}</td>
-                {!props.alphaSliderHidden && !requireTransparencySlider && <td>{props.alphaLabel}</td>}
-                {!props.alphaSliderHidden && requireTransparencySlider && <td>{props.transparencyLabel}</td>}
+                <td className={classNames.tableHexCell}>{textLabels.hex}</td>
+                <td>{textLabels.r}</td>
+                <td>{textLabels.g}</td>
+                <td>{textLabels.b}</td>
+                {!alphaSliderHidden && !requireTransparencySlider && <td>{textLabels.a}</td>}
+                {!alphaSliderHidden && requireTransparencySlider && <td>{textLabels.t}</td>}
               </tr>
             </thead>
             <tbody>
               <tr>
                 {...colorComponents.map((comp: keyof IRGBHex) => {
-                  if (comp === 'a' && props.alphaSliderHidden) {
+                  if (comp === 'a' && alphaSliderHidden) {
                     return null;
                   }
                   return (
@@ -146,7 +215,8 @@ export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPi
                         onBlur={this._onBlur}
                         value={this._getDisplayValue(comp)}
                         spellCheck={false}
-                        ariaLabel={this._textLabels[comp]}
+                        ariaLabel={textLabels[comp]}
+                        autoComplete="off"
                       />
                     </td>
                   );
@@ -159,25 +229,21 @@ export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPi
     );
   }
 
-  //   private _getTransparencyValue():number
-  // {
-  //   return 100- (number){this.color.a} ;
-  // }
-
   private _getDisplayValue(component: keyof IColor): string {
     const { color, editingColor } = this.state;
     if (editingColor && editingColor.component === component) {
       return editingColor.value;
     }
-    if (color[component] === null || color[component] === undefined) {
-      return '';
-    } else {
+    if (component === 'hex') {
+      return color[component] || '';
+    } else if (typeof color[component] === 'number' && !isNaN(color[component] as number)) {
       if (component === 'a' && this.props.requireTransparencySlider) {
         return color[component] !== undefined ? String(100 - Number(color[component])) : '';
       } else {
         return String(color[component]);
       }
     }
+    return '';
   }
 
   private _onSVChanged = (ev: React.MouseEvent<HTMLElement>, color: IColor): void => {
@@ -291,11 +357,15 @@ export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPi
     const isDifferentColor = newColor.h !== color.h || newColor.str !== color.str;
 
     if (isDifferentColor || editingColor) {
-      this.setState({ color: newColor, editingColor: undefined }, () => {
-        if (ev && this.props.onChange) {
-          this.props.onChange(ev, newColor);
+      // If ev is undefined, it's an update from props (which should be unconditionally respected
+      // and not call onChange).
+      if (ev && this.props.onChange) {
+        this.props.onChange(ev, newColor);
+        if (ev.defaultPrevented) {
+          return;
         }
-      });
+      }
+      this.setState({ color: newColor, editingColor: undefined });
     }
   }
 }

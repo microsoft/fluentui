@@ -28,7 +28,7 @@ export interface ISpinButton {
 /**
  * {@docCategory SpinButton}
  */
-export interface ISpinButtonProps {
+export interface ISpinButtonProps extends React.HTMLAttributes<HTMLDivElement> {
   /**
    * Gets the component ref.
    */
@@ -55,7 +55,7 @@ export interface ISpinButtonProps {
 
   /**
    * The max value of the SpinButton.
-   * @defaultvalue 10
+   * @defaultvalue 100
    */
   max?: number;
 
@@ -257,7 +257,7 @@ export interface ISpinButtonStyles {
   root: IStyle;
 
   /**
-   * Style for the label wrapper element of the component
+   * Style for the label wrapper element of the component.
    * The label wrapper contains the icon and the label.
    */
   labelWrapper: IStyle;

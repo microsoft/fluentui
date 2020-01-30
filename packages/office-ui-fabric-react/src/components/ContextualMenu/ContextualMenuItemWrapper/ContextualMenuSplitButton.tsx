@@ -4,7 +4,7 @@ import { ContextualMenuItem } from '../ContextualMenuItem';
 import { IContextualMenuItem } from '../ContextualMenu.types';
 import { IMenuItemClassNames, getSplitButtonVerticalDividerClassNames } from '../ContextualMenu.classNames';
 import { KeytipData } from '../../../KeytipData';
-import { isItemDisabled, hasSubmenu } from '../../../utilities/contextualMenu/index';
+import { isItemDisabled, hasSubmenu, getMenuItemAriaRole } from '../../../utilities/contextualMenu/index';
 import { VerticalDivider } from '../../../Divider';
 import { ContextualMenuItemWrapper } from './ContextualMenuItemWrapper';
 import { IKeytipProps } from '../../Keytip/Keytip.types';
@@ -57,7 +57,7 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
           <div
             data-ktp-target={keytipAttributes['data-ktp-target']}
             ref={(splitButton: HTMLDivElement) => (this._splitButton = splitButton)}
-            role={'menuitem'}
+            role={getMenuItemAriaRole(item)}
             aria-label={item.ariaLabel}
             className={classNames.splitContainer}
             aria-disabled={isItemDisabled(item)}
@@ -120,8 +120,7 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
       isChecked: item.isChecked,
       checked: item.checked,
       iconProps: item.iconProps,
-      'data-is-focusable': false,
-      'aria-hidden': true
+      'data-is-focusable': false
     };
 
     const { itemProps: itemComponentProps } = item;

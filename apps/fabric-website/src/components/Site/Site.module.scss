@@ -1,26 +1,6 @@
 @import '../../styles/variables';
 @import '../../styles/mixins';
 
-:global {
-  // #headerWrapper is the UHF header wrapper. The p, ul, ol style in _typography.scss was making
-  // the header links larger than they should be, so reset that here.
-  #headerWrapper,
-  #footerWrapper,
-  #socialMediaContainer,
-  .m-back-to-top {
-    p,
-    ul,
-    ol {
-      font-size: inherit;
-    }
-  }
-
-  // Hide UHF back to top button that attempts to go to a nonexistent #main-content page
-  a.m-back-to-top {
-    display: none !important;
-  }
-}
-
 .siteRoot {
   min-height: 100vh;
   display: flex;
@@ -69,6 +49,10 @@
 
 .siteContent {
   position: relative;
+
+  // This element is programmatically focusable to simulate jumping to an anchor,
+  // but it shouldn't have a focus outline
+  outline: none;
 
   @include high-contrast {
     border-right: 1px solid WindowText;

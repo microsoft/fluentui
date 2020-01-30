@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { IPersonaProps, IPersonaSharedProps, Persona, PersonaSize, PersonaPresence } from 'office-ui-fabric-react/lib/Persona';
 import { Stack } from 'office-ui-fabric-react/lib/Stack';
-import { TestImages } from '../../../common/TestImages';
+import { TestImages } from '@uifabric/example-data';
 import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 
 const customCoinClass = mergeStyles({
@@ -25,7 +25,7 @@ export const PersonaCustomCoinRenderExample: React.FunctionComponent = () => {
         size={PersonaSize.size72}
         presence={PersonaPresence.online}
         onRenderCoin={_onRenderCoin}
-        imageAlt="Custom Coin Image"
+        imageAlt="Ted Randall, status is available at 4 PM"
         imageUrl={TestImages.personaMale}
         coinSize={72}
       />

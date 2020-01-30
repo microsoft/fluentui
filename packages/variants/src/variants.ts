@@ -349,12 +349,12 @@ export function getStrongVariant(theme: IPartialTheme): ITheme {
     accentButtonBackground: p.white,
     accentButtonText: !fullTheme.isInverted ? p.themePrimary : p.neutralPrimary,
 
-    menuBackground: p.white,
+    menuBackground: p.themePrimary,
     menuDivider: p.neutralTertiaryAlt,
-    menuItemBackgroundHovered: p.neutralLighter,
-    menuItemBackgroundPressed: p.neutralLight,
+    menuItemBackgroundHovered: p.themeTertiary,
+    menuItemBackgroundPressed: p.themeLight,
     menuItemText: p.neutralPrimary,
-    menuItemTextHovered: !fullTheme.isInverted ? p.neutralDark : p.neutralPrimary
+    menuItemTextHovered: !fullTheme.isInverted ? p.neutralLighter : p.white
   };
 
   // Strong variant is unique here, we've redefined the entire palette and are

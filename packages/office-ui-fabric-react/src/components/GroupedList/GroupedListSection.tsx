@@ -188,7 +188,8 @@ export class GroupedListSection extends React.Component<IGroupedListSectionProps
       onShouldVirtualize,
       groupedListClassNames,
       groups,
-      compact
+      compact,
+      listProps = {}
     } = this.props;
     const { isSelected } = this.state;
     const renderCount = group && getGroupItemLimit ? getGroupItemLimit(group) : Infinity;
@@ -196,11 +197,14 @@ export class GroupedListSection extends React.Component<IGroupedListSectionProps
       group && !group.children && !group.isCollapsed && !group.isShowingAll && (group.count > renderCount || group.hasMoreData);
     const hasNestedGroups = group && group.children && group.children.length > 0;
 
+    const { version } = listProps;
+
     const dividerProps: IGroupDividerProps = {
       group,
       groupIndex,
       groupLevel: group ? group.level : 0,
       isSelected,
+      selected: isSelected,
       viewport,
       selectionMode,
       groups,
@@ -230,6 +234,7 @@ export class GroupedListSection extends React.Component<IGroupedListSectionProps
             onRenderCell={this._renderSubGroup}
             getItemCountForPage={this._returnOne}
             onShouldVirtualize={onShouldVirtualize}
+            version={version}
             id={this._id}
           />
         ) : (
@@ -303,13 +308,13 @@ export class GroupedListSection extends React.Component<IGroupedListSectionProps
   }
 
   private _onRenderGroup(renderCount: number): JSX.Element {
-    const { group, items, onRenderCell, listProps, groupNestingDepth, onShouldVirtualize } = this.props;
+    const { group, items, onRenderCell, listProps, groupNestingDepth, onShouldVirtualize, groupProps } = this.props;
     const count = group && !group.isShowingAll ? group.count : items.length;
     const startIndex = group ? group.startIndex : 0;
 
     return (
       <List
-        role="grid"
+        role={groupProps && groupProps.role ? groupProps.role : 'grid'}
         items={items}
         onRenderCell={this._onRenderGroupCell(onRenderCell, groupNestingDepth)}
         ref={this._list}
@@ -393,13 +398,20 @@ export class GroupedListSection extends React.Component<IGroupedListSectionProps
    */
   private _getGroupDragDropOptions = (): IDragDropOptions => {
     const { group, groupIndex, dragDropEvents, eventsToRegister } = this.props;
+    const canDrag = dragDropEvents!.canDragGroups ? () => dragDropEvents!.canDragGroups : () => false;
+
     const options = {
       eventMap: eventsToRegister,
       selectionIndex: -1,
       context: { data: group, index: groupIndex, isGroup: true },
-      canDrag: () => false, // cannot drag groups
+      canDrag: canDrag,
       canDrop: dragDropEvents!.canDrop,
-      updateDropState: this._updateDroppingState
+      updateDropState: this._updateDroppingState,
+      onDrop: dragDropEvents!.canDragGroups ? dragDropEvents!.onDrop : undefined,
+      onDragStart: dragDropEvents!.canDragGroups ? dragDropEvents!.onDragStart : undefined,
+      onDragEnter: dragDropEvents!.canDragGroups ? dragDropEvents!.onDragEnter : undefined,
+      onDragLeave: dragDropEvents!.canDragGroups ? dragDropEvents!.onDragLeave : undefined,
+      onDragEnd: dragDropEvents!.canDragGroups ? dragDropEvents!.onDragEnd : undefined
     };
     return options as IDragDropOptions;
   };

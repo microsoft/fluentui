@@ -185,7 +185,7 @@ export class DragDropHelper implements IDragDropHelper {
 
         // We need to add in data so that on Firefox we show the ghost element when dragging
         onDragStart = (event: DragEvent) => {
-          const { options } = this._dragData!.dragTarget!;
+          const options = dragDropOptions;
           if (options && options.onDragStart) {
             options.onDragStart(options.context.data, options.context.index, this._selection.getSelection(), event);
           }

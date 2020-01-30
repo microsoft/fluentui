@@ -15,10 +15,13 @@ module.exports = function getAllPackageInfo() {
     .filter(line => line.endsWith('package.json'))
     .forEach(packageJsonFile => {
       const packageJson = readConfig(path.join(gitRoot, packageJsonFile));
-      packageInfo[packageJson.name] = {
-        packagePath: path.dirname(packageJsonFile),
-        packageJson
-      };
+
+      if (packageJson) {
+        packageInfo[packageJson.name] = {
+          packagePath: path.dirname(packageJsonFile),
+          packageJson
+        };
+      }
     });
 
   return packageInfo;

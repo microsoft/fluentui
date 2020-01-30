@@ -1,5 +1,7 @@
 import * as React from 'react';
-import { createComponent, IComponentStyles, IStylesFunction } from '@uifabric/foundation';
+// Temporary import file to experiment with next version of foundation.
+import { composed } from '@uifabric/foundation/lib/next/composed';
+import { IComponentStyles, IStylesFunction } from '@uifabric/foundation';
 import { FontWeights } from '../../../Styling';
 import { useButtonState as state } from '../Button.state';
 import { ButtonStyles } from '../Button.styles';
@@ -12,7 +14,7 @@ import {
   IButtonTokens,
   IButtonViewProps
 } from '../Button.types';
-import { ButtonView } from '../Button.view';
+import { ButtonSlots as slots, ButtonView as view } from '../Button.view';
 
 const baseTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenReturnType => {
   const { effects, palette, semanticColors } = theme;
@@ -94,9 +96,11 @@ const ActionButtonStyles: IButtonComponent['styles'] = (props, theme, tokens): I
   };
 };
 
-export const ActionButton: React.StatelessComponent<IButtonProps> = createComponent(ButtonView, {
+export const ActionButton: React.StatelessComponent<IButtonProps> = composed({
   displayName: 'ActionButton',
+  slots,
   state,
   styles: ActionButtonStyles,
-  tokens: ActionButtonTokens
+  tokens: ActionButtonTokens,
+  view
 });

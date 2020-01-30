@@ -26,7 +26,6 @@ export const styles = (props: IFacepileStyleProps): IFacepileStyles => {
     verticalAlign: 'top',
     display: 'inline',
     backgroundColor: 'transparent',
-    cursor: 'pointer',
     border: 'none',
     selectors: {
       '&::-moz-focus-inner': {

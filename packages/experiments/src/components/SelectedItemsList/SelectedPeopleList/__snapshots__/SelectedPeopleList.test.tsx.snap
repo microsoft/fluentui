@@ -59,7 +59,6 @@ Array [
               font-weight: 400;
               height: 33px;
               margin-right: -17px;
-              min-width: 32px;
               outline: transparent;
               padding-bottom: 0;
               padding-left: 4px;
@@ -168,6 +167,7 @@ Array [
             role="presentation"
             style={
               Object {
+                "fontFamily": "\\"FabricMDL2Icons\\"",
                 "fontSize": "14px",
               }
             }
@@ -237,6 +237,7 @@ Array [
                   font-size: 14px;
                   font-weight: 400;
                 }
+            role="presentation"
           >
             <div
               className=
@@ -248,6 +249,7 @@ Array [
                     text-align: center;
                     width: 32px;
                   }
+              role="presentation"
             >
               <div
                 aria-hidden="true"
@@ -389,13 +391,11 @@ Array [
               color: #ffffff;
               cursor: pointer;
               display: inline-block;
-              flex-basis: 32;
               flex: 0 0 auto;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
               font-weight: 400;
               height: 33px;
-              min-width: 32px;
               outline: transparent;
               padding-bottom: 0;
               padding-left: 4px;
@@ -504,6 +504,7 @@ Array [
             role="presentation"
             style={
               Object {
+                "fontFamily": "\\"FabricMDL2Icons\\"",
                 "fontSize": "14px",
               }
             }
@@ -571,7 +572,6 @@ Array [
               font-weight: 400;
               height: 33px;
               margin-right: -17px;
-              min-width: 32px;
               outline: transparent;
               padding-bottom: 0;
               padding-left: 4px;
@@ -680,6 +680,7 @@ Array [
             role="presentation"
             style={
               Object {
+                "fontFamily": "\\"FabricMDL2Icons\\"",
                 "fontSize": "14px",
               }
             }
@@ -749,6 +750,7 @@ Array [
                   font-size: 14px;
                   font-weight: 400;
                 }
+            role="presentation"
           >
             <div
               className=
@@ -760,6 +762,7 @@ Array [
                     text-align: center;
                     width: 32px;
                   }
+              role="presentation"
             >
               <div
                 aria-hidden="true"
@@ -901,13 +904,11 @@ Array [
               color: #ffffff;
               cursor: pointer;
               display: inline-block;
-              flex-basis: 32;
               flex: 0 0 auto;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
               font-weight: 400;
               height: 33px;
-              min-width: 32px;
               outline: transparent;
               padding-bottom: 0;
               padding-left: 4px;
@@ -1016,6 +1017,7 @@ Array [
             role="presentation"
             style={
               Object {
+                "fontFamily": "\\"FabricMDL2Icons\\"",
                 "fontSize": "14px",
               }
             }

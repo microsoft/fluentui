@@ -286,6 +286,32 @@ describe('Button', () => {
         expect(button.getAttribute('aria-pressed')).toEqual('false');
       });
 
+      it('applies aria-checked to a role=menuitemcheckbox checked button', () => {
+        const button: any = render(
+          <DefaultButton role="menuitemcheckbox" toggle={true} checked={true}>
+            Hello
+          </DefaultButton>
+        );
+
+        expect(button.getAttribute('aria-checked')).toEqual('true');
+      });
+
+      it('applies aria-checked to a role=checkbox checked button', () => {
+        const button: any = render(
+          <DefaultButton role="checkbox" toggle={true} checked={true}>
+            Hello
+          </DefaultButton>
+        );
+
+        expect(button.getAttribute('aria-checked')).toEqual('true');
+      });
+
+      it('applies aria-checked=false to a role=checkbox button even if toggle is not passed', () => {
+        const button: any = render(<DefaultButton role="checkbox">Hello</DefaultButton>);
+
+        expect(button.getAttribute('aria-checked')).toEqual('false');
+      });
+
       it('does not mutate menuprops hidden property', () => {
         const menuProps: IContextualMenuProps = {
           hidden: false,
@@ -975,6 +1001,36 @@ describe('Button', () => {
         expect(contextualMenuElement).not.toBeNull();
         expect(contextualMenuElement.getAttribute('aria-label')).toEqual(explicitLabel);
         expect(contextualMenuElement.getAttribute('aria-labelledBy')).toBeNull();
+      });
+      it('Click on button opens the menu, escape press dismisses menu', () => {
+        const callbackMock = jest.fn();
+        const menuProps = { items: [{ key: 'item', name: 'Item' }], onDismiss: callbackMock };
+        const element: React.ReactElement<any> = (
+          <DefaultButton iconProps={{ iconName: 'Add' }} menuProps={menuProps}>
+            {'Button Text'}
+          </DefaultButton>
+        );
+
+        render(element);
+
+        const button = render(element);
+
+        expect(button).toBeDefined();
+        ReactTestUtils.Simulate.click(button);
+
+        // get the menu id from the button's aria attribute
+        const menuId = button.getAttribute('aria-owns');
+        expect(menuId).toBeDefined();
+
+        const contextualMenuElement = button.ownerDocument!.getElementById(menuId as string);
+        expect(contextualMenuElement).not.toBeNull();
+
+        ReactTestUtils.Simulate.keyDown(contextualMenuElement!, { which: KeyCodes.escape });
+        expect(callbackMock.mock.calls.length).toBe(1);
+
+        // Expect that the menu doesn't exist any more since it's been dismissed
+        const dismissed = button.ownerDocument!.getElementById(menuId as string);
+        expect(dismissed).toBeNull();
       });
 
       it(`If button has text but labelElementId provided in menuProps, contextual menu has

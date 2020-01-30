@@ -44,7 +44,7 @@ export function hasActiveChild<TPlatforms extends string = string>(page: INavPag
 
   if (pages.length > 0) {
     for (const childPage of pages) {
-      if (isPageActive(childPage.url)) {
+      if (childPage.url && isPageActive(childPage.url)) {
         _hasActiveChild = true;
         break;
       }

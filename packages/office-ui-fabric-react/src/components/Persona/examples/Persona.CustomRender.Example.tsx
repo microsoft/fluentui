@@ -2,7 +2,7 @@ import * as React from 'react';
 import { IPersonaProps, IPersonaSharedProps, Persona, PersonaSize, PersonaPresence } from 'office-ui-fabric-react/lib/Persona';
 import { Icon } from 'office-ui-fabric-react/lib/Icon';
 import { Stack } from 'office-ui-fabric-react/lib/Stack';
-import { TestImages } from '../../../common/TestImages';
+import { TestImages } from '@uifabric/example-data';
 
 export const PersonaCustomRenderExample: React.FunctionComponent = () => {
   const examplePersona: IPersonaSharedProps = {
@@ -23,6 +23,7 @@ export const PersonaCustomRenderExample: React.FunctionComponent = () => {
         presence={PersonaPresence.offline}
         onRenderSecondaryText={_onRenderSecondaryText}
         styles={{ root: { margin: '0 0 10px 0' } }}
+        imageAlt="Annie Lindqvist, status is offline."
       />
     </Stack>
   );

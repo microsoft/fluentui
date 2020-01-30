@@ -1,26 +1,7 @@
 import * as React from 'react';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
-import { DatePicker, DayOfWeek, IDatePickerStrings } from '@uifabric/date-time';
+import { DatePicker, DayOfWeek, defaultDayPickerStrings } from '@uifabric/date-time';
 import './DatePicker.Examples.scss';
-
-const DayPickerStrings: IDatePickerStrings = {
-  months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-  shortMonths: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-  days: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
-  shortDays: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
-  goToToday: 'Go to today',
-  weekNumberFormatString: 'Week number {0}',
-  prevMonthAriaLabel: 'Previous month',
-  nextMonthAriaLabel: 'Next month',
-  prevYearAriaLabel: 'Previous year',
-  nextYearAriaLabel: 'Next year',
-  prevYearRangeAriaLabel: 'Previous year range',
-  nextYearRangeAriaLabel: 'Next year range',
-  closeButtonAriaLabel: 'Close',
-
-  isRequiredErrorMessage: 'Start date is required.',
-  invalidInputErrorMessage: 'Invalid date format.'
-};
 
 export interface IDatePickerFormatExampleState {
   firstDayOfWeek?: DayOfWeek;
@@ -53,7 +34,7 @@ export class DatePickerFormatExample extends React.Component<{}, IDatePickerForm
           allowTextInput={true}
           ariaLabel={desc}
           firstDayOfWeek={firstDayOfWeek}
-          strings={DayPickerStrings}
+          strings={defaultDayPickerStrings}
           value={value!}
           onSelectDate={this._onSelectDate}
           formatDate={this._onFormatDate}

@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Memoizing styling in createComponent for components that have their default styling determined entirely by tokens.",
-  "packageName": "@uifabric/experiments",
-  "email": "Humberto.Morimoto@microsoft.com",
-  "commit": "8507da7511cf1a7dd1c9de98568fc5c48fe22ba5",
-  "date": "2019-08-14T21:18:11.759Z"
-}

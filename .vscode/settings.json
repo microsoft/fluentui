@@ -3,6 +3,7 @@
   "editor.tabSize": 2,
   // When opening a file, `editor.tabSize` and `editor.insertSpaces` will NOT be detected based on the file contents.
   "editor.detectIndentation": false,
+  "editor.formatOnSave": true,
   // When enabled, will trim trailing whitespace when you save a file.
   "files.trimTrailingWhitespace": true,
   "files.insertFinalNewline": true,
@@ -43,10 +44,25 @@
   "editor.wordWrapColumn": 140,
   "tslint.enable": true,
   "tslint.rulesDirectory": "./node_modules/tslint-microsoft-contrib",
-  // Defines space handling after opening and before closing JSX expression braces. Requires TypeScript >= 2.0.6.
   "typescript.format.insertSpaceAfterOpeningAndBeforeClosingJsxExpressionBraces": false,
+  "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyParenthesis": false,
   "typescript.preferences.quoteStyle": "single",
-  "editor.formatOnSave": true,
   "typescript.tsdk": "./node_modules/typescript/lib",
-  "tslint.autoFixOnSave": false
+  "tslint.autoFixOnSave": false,
+  "tslint.exclude": "**/*.scss.ts",
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }

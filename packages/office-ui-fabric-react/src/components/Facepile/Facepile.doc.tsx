@@ -14,7 +14,7 @@ export const FacepilePageProps: IDocPageProps = {
   componentUrl: 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Facepile',
   examples: [
     {
-      title: 'Facepile with size and fade in options',
+      title: 'Facepile with size, presence, and fade in options',
       code: FacepileBasicExampleCode,
       view: <FacepileBasicExample />
     },

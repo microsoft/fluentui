@@ -230,7 +230,7 @@ export interface IGroupRenderProps {
 
   /**
    * Flag to indicate whether to ignore the collapsing icon on header.
-   * @defaultvalue CheckboxVisibility.visible
+   * @defaultvalue CollapseAllVisibility.visible
    */
   collapseAllVisibility?: CollapseAllVisibility;
 
@@ -239,6 +239,11 @@ export interface IGroupRenderProps {
    * @defaultvalue false
    */
   showEmptyGroups?: boolean;
+
+  /**
+   * Override which allows the caller to provide a custom aria role
+   */
+  role?: string;
 }
 
 /**

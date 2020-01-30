@@ -7,7 +7,7 @@ const glob = require('glob');
 
 const generateOnly = process.argv.indexOf('-g') > -1;
 const beachballBin = require.resolve('beachball/bin/beachball.js');
-const bumpCmd = [process.execPath, beachballBin];
+const bumpCmd = [process.execPath, beachballBin, 'bump'];
 const findGitRoot = require('../monorepo/findGitRoot');
 const gitRoot = findGitRoot();
 
@@ -21,38 +21,47 @@ function run(args) {
   return null;
 }
 
-module.exports = function generateVersionFiles() {
-  let modified = [];
-  let untracked = [];
+function revertLocalChanges() {
+  const stash = `tmp_bump_${new Date().getTime()}`;
+  run(['git', 'stash', 'push', '-u', '-m', stash]);
+  const results = run(['git', 'stash', 'list']);
+  if (results) {
+    const lines = results.split(/\n/);
+    const foundLine = lines.find(line => line.includes(stash));
 
+    if (foundLine) {
+      const matched = foundLine.match(/^[^:]+/);
+      if (matched) {
+        run(['git', 'stash', 'drop', matched[0]]);
+        return true;
+      }
+    }
+  }
+
+  return false;
+}
+
+/**
+ * Generates version files by bumping
+ *
+ * 1. bumps the versions with `beachball bump`
+ * 2. gather version info
+ * 3. revert all local changes
+ * 4. write out the version files
+ *
+ * "generateOnly" mode takes existing versions and write them out to version files (do this when out of sync)
+ */
+module.exports = function generateVersionFiles() {
   const gitRoot = findGitRoot();
 
   if (!generateOnly) {
-    // Check that no uncommitted changes exist
-    let status = run(['git', 'status', '-s']);
-    if (status) {
-      console.log('Repository needs to contain no changes for version generation to proceed.');
-      process.exit();
-    }
-
+    console.log('bumping');
     // Do a dry-run on all packages
     run(bumpCmd);
-    status = run(['git', 'status', '--porcelain=1']);
-    status.split(/\n/g).forEach(line => {
-      if (line) {
-        const parts = line.trim().split(/\s/);
-
-        if (parts[0] === '??') {
-          // untracked files at this point would be things like CHANGELOG files for a brand new project
-          untracked.push(parts[1]);
-        } else {
-          // modified files include package.json, generated CHANGELOG files from beachball
-          modified.push('"' + parts[1] + '"');
-        }
-      }
-    });
   }
 
+  // 2. gather version info
+  const updatedVersionContents = {};
   const packageJsons = glob.sync('+(packages|apps)/*/package.json', { cwd: gitRoot });
   packageJsons.forEach(packageJsonPath => {
     const versionFile = path.join(gitRoot, path.dirname(packageJsonPath), 'src/version.ts');
@@ -74,24 +83,24 @@ module.exports = function generateVersionFiles() {
     }
 
     if (shouldGenerate) {
-      console.log(`generating ${versionFile}`);
-
-      fs.writeFileSync(
-        versionFile,
-        `// ${packageJson.name}@${packageJson.version}
+      updatedVersionContents[versionFile] = `// ${packageJson.name}@${packageJson.version}
 // Do not modify this file, the file is generated as part of publish. The checked in version is a placeholder only.
 import { setVersion } from '@uifabric/set-version';
-setVersion('${packageJson.name}', '${packageJson.version}');`
-      );
+setVersion('${packageJson.name}', '${packageJson.version}');`;
     }
   });
 
+  // 3. revert bump changes
   if (!generateOnly) {
-    // Undo the dry-run changes, preserve the version file changes
-    console.log(`remove untracked ${untracked.join(' ')}`);
-    untracked.forEach(f => fs.unlinkSync(f));
+    console.log('reverting');
+    revertLocalChanges();
+  }
 
-    console.log(`reset ${modified.join(' ')}`);
-    run(['git', 'checkout', ...modified]);
+  // 4. write version files
+  if (updatedVersionContents) {
+    Object.keys(updatedVersionContents).forEach(versionFile => {
+      console.log(`writing to ${versionFile}`);
+      fs.writeFileSync(versionFile, updatedVersionContents[versionFile]);
+    });
   }
 };

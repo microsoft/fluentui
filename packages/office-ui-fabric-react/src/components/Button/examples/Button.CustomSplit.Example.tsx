@@ -10,7 +10,7 @@ export interface IButtonExampleProps {
 const customSplitButtonStyles: IButtonStyles = {
   splitButtonMenuButton: { backgroundColor: 'white', width: 28, border: 'none' },
   splitButtonMenuIcon: { fontSize: '7px' },
-  splitButtonDivider: { borderLeft: '1px solid #c8c8c8', right: 26 },
+  splitButtonDivider: { backgroundColor: '#c8c8c8', width: 1, right: 26, position: 'absolute', top: 4, bottom: 4 },
   splitButtonContainer: {
     selectors: {
       [HighContrastSelector]: { border: 'none' }
@@ -48,8 +48,7 @@ export const ButtonSplitCustomExample: React.FunctionComponent<IButtonExamplePro
         aria-roledescription="split button"
         styles={customSplitButtonStyles}
         menuProps={menuProps}
-        // This text is hidden by the styles
-        text="New item"
+        ariaLabel="New item"
         onClick={_alertClicked}
         disabled={disabled}
         checked={checked}

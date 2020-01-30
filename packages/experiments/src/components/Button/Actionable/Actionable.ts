@@ -1,15 +1,17 @@
-// Temporary import file to experiment with memoization approach.
-import { createComponent } from '@uifabric/foundation/lib/next/createComponent';
+// Temporary import file to experiment with next version of foundation.
+import { composed } from '@uifabric/foundation/lib/next/composed';
 import { ActionableStyles as styles, ActionableTokens as tokens } from './Actionable.styles';
 import { IActionableProps } from './Actionable.types';
-import { useButtonState as state } from '../Button.state';
-import { ActionableView } from './Actionable.view';
+import { useActionableState as state } from './Actionable.state';
+import { ActionableSlots as slots, ActionableView as view } from './Actionable.view';
 
-export const Actionable: React.StatelessComponent<IActionableProps> = createComponent(ActionableView, {
+export const Actionable: React.StatelessComponent<IActionableProps> = composed({
   displayName: 'Actionable',
+  slots,
   state,
   styles,
-  tokens
+  tokens,
+  view
 });
 
 export default Actionable;

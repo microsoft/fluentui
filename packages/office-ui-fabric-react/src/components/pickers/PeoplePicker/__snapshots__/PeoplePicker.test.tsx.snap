@@ -9,6 +9,8 @@ exports[`PeoplePicker renders correctly 1`] = `
   onKeyDown={[Function]}
 >
   <div
+    aria-expanded={false}
+    aria-haspopup="dialog"
     className=
         ms-FocusZone
         &:focus {
@@ -18,6 +20,7 @@ exports[`PeoplePicker renders correctly 1`] = `
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
+    role="combobox"
   >
     <div
       className="ms-SelectionZone"
@@ -37,7 +40,7 @@ exports[`PeoplePicker renders correctly 1`] = `
             {
               align-items: center;
               border-radius: 2px;
-              border: 1px solid #8a8886;
+              border: 1px solid #605e5c;
               box-sizing: border-box;
               display: flex;
               flex-wrap: wrap;
@@ -52,17 +55,22 @@ exports[`PeoplePicker renders correctly 1`] = `
         <input
           aria-autocomplete="both"
           aria-controls=" "
-          aria-expanded={false}
-          aria-haspopup="true"
           autoCapitalize="off"
           autoComplete="off"
           className=
               ms-BasePicker-input
               {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
                 align-self: flex-end;
+                background-color: transparent;
                 border-radius: 2px;
                 border: none;
+                color: #323130;
                 flex-grow: 1;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
                 height: 30px;
                 outline: none;
                 padding-bottom: 0;
@@ -76,10 +84,11 @@ exports[`PeoplePicker renders correctly 1`] = `
           onClick={[Function]}
           onCompositionEnd={[Function]}
           onCompositionStart={[Function]}
+          onCompositionUpdate={[Function]}
           onFocus={[Function]}
           onInput={[Function]}
           onKeyDown={[Function]}
-          role="combobox"
+          role="textbox"
           spellCheck={false}
           value=""
         />
@@ -98,6 +107,8 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
   onKeyDown={[Function]}
 >
   <div
+    aria-expanded={false}
+    aria-haspopup="dialog"
     className=
         ms-FocusZone
         &:focus {
@@ -107,6 +118,7 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
+    role="combobox"
   >
     <div
       className="ms-SelectionZone"
@@ -126,7 +138,7 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
             {
               align-items: center;
               border-radius: 2px;
-              border: 1px solid #8a8886;
+              border: 1px solid #605e5c;
               box-sizing: border-box;
               display: flex;
               flex-wrap: wrap;
@@ -249,6 +261,7 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
                         font-size: 14px;
                         font-weight: 400;
                       }
+                  role="presentation"
                 >
                   <div
                     className=
@@ -260,6 +273,7 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
                           text-align: center;
                           width: 24px;
                         }
+                    role="presentation"
                   >
                     <div
                       className=
@@ -335,6 +349,7 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
                             background-color: Highlight;
                             border-color: Window;
                           }
+                      role="presentation"
                     />
                   </div>
                 </div>
@@ -490,13 +505,11 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
                     color: #323130;
                     cursor: pointer;
                     display: inline-block;
-                    flex-basis: 24;
                     flex: 0 0 auto;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
                     font-weight: 400;
                     height: 24px;
-                    min-width: 32px;
                     outline: transparent;
                     padding-bottom: 0;
                     padding-left: 4px;
@@ -594,7 +607,6 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
                         vertical-align: middle;
                       }
                   data-icon-name="Cancel"
-                  role="presentation"
                 >
                   
                 </i>
@@ -606,17 +618,22 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
           aria-autocomplete="both"
           aria-controls=" "
           aria-describedby="selected-items-id__0"
-          aria-expanded={false}
-          aria-haspopup="true"
           autoCapitalize="off"
           autoComplete="off"
           className=
               ms-BasePicker-input
               {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
                 align-self: flex-end;
+                background-color: transparent;
                 border-radius: 2px;
                 border: none;
+                color: #323130;
                 flex-grow: 1;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
                 height: 30px;
                 outline: none;
                 padding-bottom: 0;
@@ -630,10 +647,11 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
           onClick={[Function]}
           onCompositionEnd={[Function]}
           onCompositionStart={[Function]}
+          onCompositionUpdate={[Function]}
           onFocus={[Function]}
           onInput={[Function]}
           onKeyDown={[Function]}
-          role="combobox"
+          role="textbox"
           spellCheck={false}
           value=""
         />

@@ -2,7 +2,7 @@
 
 **Charting components for [Office UI Fabric React](https://dev.microsoft.com/fabric)**
 
-These are not production-ready components and **should never be used in product**. This space is useful for testing new components whose APIs might change before final release.
+The charting components here are ready to be used in production environment. However there are might be API revisions before final release.
 
 To import charting components:
 

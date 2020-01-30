@@ -31,7 +31,6 @@ exports[`PersonaCoin renders a coin with a contact icon 1`] = `
           speak: none;
         }
     data-icon-name="Contact"
-    role="presentation"
   >
     
   </i>
@@ -69,7 +68,6 @@ exports[`PersonaCoin renders a coin with a contact icon for a Chinese name 1`] =
           speak: none;
         }
     data-icon-name="Contact"
-    role="presentation"
   >
     
   </i>
@@ -215,7 +213,6 @@ exports[`PersonaCoin renders presence correctly when a very large coin is render
           speak: none;
         }
     data-icon-name="Contact"
-    role="presentation"
   >
     
   </i>
@@ -241,6 +238,7 @@ exports[`PersonaCoin renders presence correctly when a very large coin is render
           background-color: WindowText;
           border-color: Window;
         }
+    role="presentation"
     style={
       Object {
         "height": "33.333333333333336px",
@@ -269,7 +267,6 @@ exports[`PersonaCoin renders presence correctly when a very large coin is render
             color: Window;
           }
       data-icon-name="SkypeMinus"
-      role="presentation"
       style={
         Object {
           "fontSize": "16.666666666666668px",
@@ -314,7 +311,6 @@ exports[`PersonaCoin renders presence when it is passed 1`] = `
           speak: none;
         }
     data-icon-name="Contact"
-    role="presentation"
   >
     
   </i>
@@ -340,6 +336,7 @@ exports[`PersonaCoin renders presence when it is passed 1`] = `
           background-color: WindowText;
           border-color: Window;
         }
+    role="presentation"
     style={
       Object {
         "height": "16px",
@@ -368,7 +365,6 @@ exports[`PersonaCoin renders presence when it is passed 1`] = `
             color: Window;
           }
       data-icon-name="SkypeMinus"
-      role="presentation"
       style={
         Object {
           "fontSize": "8px",

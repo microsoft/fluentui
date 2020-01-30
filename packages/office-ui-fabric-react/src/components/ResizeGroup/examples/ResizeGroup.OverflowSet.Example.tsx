@@ -6,9 +6,22 @@ import { OverflowSet } from 'office-ui-fabric-react/lib/OverflowSet';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import { IContextualMenuItem } from 'office-ui-fabric-react/lib/ContextualMenu';
 import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
+import { mergeStyleSets } from 'office-ui-fabric-react';
 
-import * as stylesImport from './ResizeGroup.Example.scss';
-const styles: any = stylesImport;
+const styles = mergeStyleSets({
+  root: {
+    display: 'block'
+  },
+  resizeIsShort: {
+    width: '400px'
+  },
+  settingsGroup: {
+    paddingTop: '20px'
+  },
+  itemCountDropdown: {
+    width: '180px'
+  }
+});
 
 export interface IOverflowData {
   primary: IContextualMenuItem[];
@@ -83,15 +96,22 @@ export class ResizeGroupOverflowSetExample extends BaseComponent<{}, IResizeGrou
           onRenderData={data => {
             return (
               <OverflowSet
+                role="menubar"
                 items={data.primary}
                 overflowItems={data.overflow.length ? data.overflow : null}
                 onRenderItem={item => {
                   return (
-                    <CommandBarButton text={item.name} iconProps={{ iconName: item.icon }} onClick={item.onClick} checked={item.checked} />
+                    <CommandBarButton
+                      role="menuitem"
+                      text={item.name}
+                      iconProps={{ iconName: item.icon }}
+                      onClick={item.onClick}
+                      checked={item.checked}
+                    />
                   );
                 }}
                 onRenderOverflowButton={overflowItems => {
-                  return <CommandBarButton menuProps={{ items: overflowItems! }} />;
+                  return <CommandBarButton role="menuitem" menuProps={{ items: overflowItems! }} />;
                 }}
                 styles={{ root: { height: 40 } }}
               />

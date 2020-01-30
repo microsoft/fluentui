@@ -326,17 +326,23 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
   };
 
   private _onTextFieldChanged = (ev: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, newValue: string): void => {
-    if (this.props.allowTextInput) {
+    const { allowTextInput, textField } = this.props;
+
+    if (allowTextInput) {
       if (this.state.isDatePickerShown) {
         this._dismissDatePickerPopup();
       }
 
-      const { isRequired, value, strings } = this.props;
+      const { isRequired, strings } = this.props;
 
       this.setState({
-        errorMessage: isRequired && !value ? strings!.isRequiredErrorMessage || ' ' : undefined,
+        errorMessage: isRequired && !newValue ? strings!.isRequiredErrorMessage || ' ' : undefined,
         formattedDate: newValue
       });
+    }
+
+    if (textField && textField.onChange) {
+      textField.onChange(ev, newValue);
     }
   };
 
@@ -367,20 +373,22 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
   };
 
   private _onTextFieldClick = (ev: React.MouseEvent<HTMLElement>): void => {
-    if (!this.state.isDatePickerShown && !this.props.disabled) {
+    if (!this.props.disableAutoFocus && !this.state.isDatePickerShown && !this.props.disabled) {
       this._showDatePickerPopup();
-    } else {
-      if (this.props.allowTextInput) {
-        this.setState({
-          isDatePickerShown: false
-        });
-      }
+      return;
+    }
+    if (this.props.allowTextInput) {
+      this._dismissDatePickerPopup();
     }
   };
 
   private _onIconClick = (ev: React.MouseEvent<HTMLElement>): void => {
     ev.stopPropagation();
-    this._onTextFieldClick(ev);
+    if (!this.state.isDatePickerShown && !this.props.disabled) {
+      this._showDatePickerPopup();
+    } else if (this.props.allowTextInput) {
+      this._dismissDatePickerPopup();
+    }
   };
 
   private _showDatePickerPopup(): void {
@@ -433,47 +441,48 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
 
     if (allowTextInput) {
       let date = null;
+
       if (inputValue) {
         // Don't parse if the selected date has the same formatted string as what we're about to parse.
         // The formatted string might be ambiguous (ex: "1/2/3" or "New Year Eve") and the parser might
         // not be able to come up with the exact same date.
         if (this.state.selectedDate && formatDate && formatDate(this.state.selectedDate) === inputValue) {
-          return;
+          date = this.state.selectedDate;
         } else {
           date = parseDateFromString!(inputValue);
+        }
 
-          // Check if date is null, or date is Invalid Date
-          if (!date || isNaN(date.getTime())) {
-            // Reset invalid input field, if formatting is available
-            if (formatDate) {
-              date = this.state.selectedDate;
-              this.setState({
-                formattedDate: formatDate(date!).toString()
-              });
-            }
-
+        // Check if date is null, or date is Invalid Date
+        if (!date || isNaN(date.getTime())) {
+          // Reset invalid input field, if formatting is available
+          if (formatDate) {
+            date = this.state.selectedDate;
             this.setState({
-              errorMessage: strings!.invalidInputErrorMessage || ' '
+              formattedDate: formatDate(date!).toString()
+            });
+          }
+
+          this.setState({
+            errorMessage: strings!.invalidInputErrorMessage || ' '
+          });
+        } else {
+          // Check against optional date boundaries
+          if (this._isDateOutOfBounds(date, minDate, maxDate)) {
+            this.setState({
+              errorMessage: strings!.isOutOfBoundsErrorMessage || ' '
             });
           } else {
-            // Check against optional date boundaries
-            if (this._isDateOutOfBounds(date, minDate, maxDate)) {
-              this.setState({
-                errorMessage: strings!.isOutOfBoundsErrorMessage || ' '
-              });
-            } else {
-              this.setState({
-                selectedDate: date,
-                errorMessage: ''
-              });
+            this.setState({
+              selectedDate: date,
+              errorMessage: ''
+            });
 
-              // When formatting is available. If formatted date is valid, but is different from input, update with formatted date
-              // This occurs when an invalid date is entered twice
-              if (formatDate && formatDate(date) !== inputValue) {
-                this.setState({
-                  formattedDate: formatDate(date).toString()
-                });
-              }
+            // When formatting is available. If formatted date is valid, but is different from input, update with formatted date
+            // This occurs when an invalid date is entered twice
+            if (formatDate && formatDate(date) !== inputValue) {
+              this.setState({
+                formattedDate: formatDate(date).toString()
+              });
             }
           }
         }
@@ -494,6 +503,11 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
       // Check when DatePicker is a required field but has NO input value
       this.setState({
         errorMessage: strings!.isRequiredErrorMessage || ' '
+      });
+    } else {
+      // Cleanup the error message
+      this.setState({
+        errorMessage: ''
       });
     }
   };

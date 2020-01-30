@@ -17,7 +17,7 @@ exports[`OverflowSet snapshot tests basicSnapshot 1`] = `
   onFocus={[Function]}
   onKeyDown={[Function]}
   onMouseDownCapture={[Function]}
-  role="menubar"
+  role="group"
 />
 `;
 
@@ -39,7 +39,7 @@ exports[`OverflowSet snapshot tests snapshot with classname 1`] = `
   onFocus={[Function]}
   onKeyDown={[Function]}
   onMouseDownCapture={[Function]}
-  role="menubar"
+  role="group"
 />
 `;
 
@@ -62,6 +62,6 @@ exports[`OverflowSet snapshot tests snapshot with classname and vertical layout 
   onFocus={[Function]}
   onKeyDown={[Function]}
   onMouseDownCapture={[Function]}
-  role="menubar"
+  role="group"
 />
 `;

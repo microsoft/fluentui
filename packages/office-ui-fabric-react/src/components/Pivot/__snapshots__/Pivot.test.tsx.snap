@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Pivot renders Pivot correctly when itemCount is a string 1`] = `
-<div>
+<div
+  role="toolbar"
+>
   <div
     className=
         ms-FocusZone
@@ -391,6 +393,7 @@ exports[`Pivot renders Pivot correctly when itemCount is a string 1`] = `
 exports[`Pivot renders Pivot correctly with custom className 1`] = `
 <div
   className="specialClassName"
+  role="toolbar"
 >
   <div
     className=
@@ -769,7 +772,9 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
 `;
 
 exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
-<div>
+<div
+  role="toolbar"
+>
   <div
     className=
         ms-FocusZone
@@ -1308,7 +1313,6 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
                       speak: none;
                     }
                 data-icon-name="Recent"
-                role="presentation"
               >
                 
               </i>
@@ -1339,7 +1343,9 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
 `;
 
 exports[`Pivot renders large link Pivot correctly 1`] = `
-<div>
+<div
+  role="toolbar"
+>
   <div
     className=
         ms-FocusZone
@@ -1716,7 +1722,9 @@ exports[`Pivot renders large link Pivot correctly 1`] = `
 `;
 
 exports[`Pivot renders large tabbed Pivot correctly 1`] = `
-<div>
+<div
+  role="toolbar"
+>
   <div
     className=
         ms-FocusZone
@@ -2110,7 +2118,9 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
 `;
 
 exports[`Pivot renders link Pivot correctly 1`] = `
-<div>
+<div
+  role="toolbar"
+>
   <div
     className=
         ms-FocusZone
@@ -2486,7 +2496,9 @@ exports[`Pivot renders link Pivot correctly 1`] = `
 `;
 
 exports[`Pivot renders tabbed Pivot correctly 1`] = `
-<div>
+<div
+  role="toolbar"
+>
   <div
     className=
         ms-FocusZone
@@ -2879,7 +2891,9 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
 `;
 
 exports[`Pivot supports JSX expressions 1`] = `
-<div>
+<div
+  role="toolbar"
+>
   <div
     className=
         ms-FocusZone

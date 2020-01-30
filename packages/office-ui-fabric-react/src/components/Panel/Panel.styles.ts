@@ -153,8 +153,8 @@ const getPanelBreakpoints = (type: PanelType): { [x: string]: IStyle } | undefin
 const commandBarHeight = '44px';
 
 const sharedPaddingStyles = {
-  paddingLeft: '16px',
-  paddingRight: '16px'
+  paddingLeft: '24px',
+  paddingRight: '24px'
 };
 
 // // TODO -Issue #5689: Comment in once Button is converted to mergeStyles
@@ -185,10 +185,11 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
     isOnRightSide,
     isOpen,
     isHiddenOnDismiss,
+    hasCustomNavigation,
     theme,
     type = PanelType.smallFixedFar
   } = props;
-  const { palette, effects, fonts } = theme;
+  const { effects, fonts, semanticColors } = theme;
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
   const isCustomPanel = type === PanelType.custom || type === PanelType.customNear;
 
@@ -228,7 +229,7 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
     main: [
       classNames.main,
       {
-        backgroundColor: palette.white,
+        backgroundColor: semanticColors.bodyBackground,
         boxShadow: effects.elevation64,
         pointerEvents: 'auto',
         position: 'absolute',
@@ -245,8 +246,8 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
         width: panelWidth.full,
         selectors: {
           [HighContrastSelector]: {
-            borderLeft: `3px solid ${palette.neutralLight}`,
-            borderRight: `3px solid ${palette.neutralLight}`
+            borderLeft: `3px solid ${semanticColors.variantBorder}`,
+            borderRight: `3px solid ${semanticColors.variantBorder}`
           },
           ...getPanelBreakpoints(type)
         }
@@ -272,17 +273,34 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
       !isOpen && isAnimating && isOnRightSide && AnimationClassNames.slideRightOut40,
       focusTrapZoneClassName
     ],
-    commands: [classNames.commands],
+    commands: [
+      classNames.commands,
+      {
+        marginTop: 18
+      },
+      hasCustomNavigation && {
+        marginTop: 'inherit'
+      }
+    ],
     navigation: [
       classNames.navigation,
       {
-        padding: '0 5px',
-        height: commandBarHeight,
         display: 'flex',
         justifyContent: 'flex-end'
+      },
+      hasCustomNavigation && {
+        height: commandBarHeight
       }
     ],
-    closeButton: [classNames.closeButton],
+    closeButton: [
+      classNames.closeButton,
+      {
+        marginRight: 14
+      },
+      hasCustomNavigation && {
+        marginRight: 0
+      }
+    ],
     contentInner: [
       classNames.contentInner,
       {
@@ -296,21 +314,20 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
       classNames.header,
       sharedPaddingStyles,
       {
-        margin: '14px 0',
+        flexShrink: 1,
+        marginRight: 'auto'
+      },
+      hasCustomNavigation && {
         // Ensure that title doesn't shrink if screen is too small
         flexShrink: 0,
-        selectors: {
-          [`@media (min-width: ${ScreenWidthMinXLarge}px)`]: {
-            marginTop: '30px'
-          }
-        }
+        marginRight: 0
       }
     ],
     headerText: [
       classNames.headerText,
       fonts.xLarge,
       {
-        color: palette.neutralPrimary,
+        color: semanticColors.bodyText,
         lineHeight: '27px',
         margin: 0,
         overflowWrap: 'break-word',
@@ -346,8 +363,8 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
         transition: `opacity ${AnimationVariables.durationValue3} ${AnimationVariables.easeFunction2}`
       },
       isFooterSticky && {
-        background: palette.white,
-        borderTopColor: palette.neutralLight
+        background: semanticColors.bodyBackground,
+        borderTopColor: semanticColors.variantBorder
       }
     ],
     footerInner: [

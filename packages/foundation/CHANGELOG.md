@@ -1,7 +1,74 @@
 # Change Log - @uifabric/foundation
 
-This log was last generated on Fri, 23 Aug 2019 12:35:28 GMT and should not be manually modified.
+This log was last generated on Fri, 17 Jan 2020 02:32:17 GMT and should not be manually modified.
 
+## 7.5.2
+Fri, 17 Jan 2020 02:32:17 GMT
+
+### Patches
+
+- Update tslib minver to first version containing __spreadArrays helper due to changes in how TS emits spreads. (jagore@microsoft.com)
+## 7.5.1
+Thu, 16 Jan 2020 12:28:58 GMT
+
+### Patches
+
+- Upgrade repo to TS3.7. (jagore@microsoft.com)
+## 7.5.0
+Thu, 07 Nov 2019 12:26:32 GMT
+
+### Minor changes
+
+- Deprecate IPropsWithChildren type that is redundant with React.PropsWithChildren. (jagore@microsoft.com)
+## 7.4.4
+Thu, 03 Oct 2019 23:14:46 GMT
+
+### Patches
+
+- Fixing a publishing issue with foundation (odbuild@microsoft.com)
+- Fixes broken publish (odbuild@microsoft.com)
+## 7.4.2
+Thu, 03 Oct 2019 01:14:35 GMT
+
+### Patches
+
+- Foundation next requires @uifabric/merge-styles dependency (KevinTCoughlin@users.noreply.github.com)
+## 7.4.1
+Thu, 12 Sep 2019 12:34:15 GMT
+
+### Patches
+
+- Enable api-extractor, and minor import fixes to prevent api-extractor errors (elcraig@microsoft.com)
+## 7.4.0
+Fri, 06 Sep 2019 12:34:51 GMT
+
+### Minor changes
+
+- Foundation: Allowing recomposition in composed. (humbertomakotomorimoto@gmail.com)
+## 7.3.1
+Wed, 04 Sep 2019 04:09:58 GMT
+
+### Patches
+
+- fix version file (kchau@microsoft.com)
+## 7.3.0
+Mon, 02 Sep 2019 12:33:56 GMT
+
+### Minor changes
+
+- Foundation: Moving slots inside composed options. (humbertomakotomorimoto@gmail.com)
+## 7.2.0
+Thu, 29 Aug 2019 12:30:00 GMT
+
+### Minor changes
+
+- Renaming createComponent to compose and moving View inside component options object. (humbertomakotomorimoto@gmail.com)
+## 7.1.0
+Mon, 26 Aug 2019 12:30:49 GMT
+
+### Minor changes
+
+- Memoizing styling in createComponent for components that have their default styling determined entirely by tokens. (Humberto.Morimoto@microsoft.com)
 ## 7.0.4
 Fri, 23 Aug 2019 12:35:28 GMT
 

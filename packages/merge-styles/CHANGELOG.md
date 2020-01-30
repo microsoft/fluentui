@@ -1,7 +1,61 @@
 # Change Log - @uifabric/merge-styles
 
-This log was last generated on Fri, 23 Aug 2019 12:35:28 GMT and should not be manually modified.
+This log was last generated on Wed, 22 Jan 2020 12:36:43 GMT and should not be manually modified.
 
+## 7.8.3
+Wed, 22 Jan 2020 12:36:43 GMT
+
+### Patches
+
+- Documentation: Added note to merge-styles readme about working with content security policy (CSP). (elcraig@microsoft.com)
+## 7.8.2
+Fri, 17 Jan 2020 02:32:17 GMT
+
+### Patches
+
+- Update tslib minver to first version containing __spreadArrays helper due to changes in how TS emits spreads. (jagore@microsoft.com)
+## 7.8.1
+Fri, 08 Nov 2019 12:30:07 GMT
+
+### Patches
+
+- Add px units to flexBasis styling by default. Remove existing styling usage where it had no effect before this PR. (jagore@microsoft.com)
+## 7.8.0
+Mon, 21 Oct 2019 12:33:23 GMT
+
+### Minor changes
+
+- Add `-ms-overflow-style` as a valid CSS property (unindented@gmail.com)
+## 7.7.0
+Thu, 26 Sep 2019 12:32:32 GMT
+
+### Minor changes
+
+- mergeStyles and mergeStyleSets have a companion method which accepts options for setting RTL (jdh@microsoft.com)
+## 7.6.0
+Fri, 20 Sep 2019 12:34:28 GMT
+
+### Minor changes
+
+- Adding `concatStyleSetsWithProps` to help resolve stylesets that are functional, resolving with props. (dzearing@microsoft.com)
+## 7.5.2
+Thu, 12 Sep 2019 12:34:15 GMT
+
+### Patches
+
+- Build the kebabRules map instead of shipping it (mark@thedutchies.com)
+## 7.5.1
+Wed, 04 Sep 2019 04:09:58 GMT
+
+### Patches
+
+- fix version file (kchau@microsoft.com)
+## 7.5.0
+Mon, 26 Aug 2019 12:30:49 GMT
+
+### Minor changes
+
+- merge-styles: Collapsing comma delimited selectors to make styles easy to define for multiple matches. (dzearing@hotmail.com)
 ## 7.4.1
 Fri, 23 Aug 2019 12:35:28 GMT
 

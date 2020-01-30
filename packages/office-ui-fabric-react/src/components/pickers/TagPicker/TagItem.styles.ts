@@ -1,6 +1,7 @@
 import { getGlobalClassNames, getFocusStyle, HighContrastSelector } from '../../../Styling';
 import { ButtonGlobalClassNames } from '../../Button/BaseButton.classNames';
 import { ITagItemStyleProps, ITagItemStyles } from './TagPicker.types';
+import { getRTL } from '../../../Utilities';
 
 const GlobalClassNames = {
   root: 'ms-TagItem',
@@ -14,13 +15,14 @@ const TAG_HEIGHT = 26;
 export function getStyles(props: ITagItemStyleProps): ITagItemStyles {
   const { className, theme, selected, disabled } = props;
 
-  const { palette, effects } = theme;
+  const { palette, effects, fonts, semanticColors } = theme;
 
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
   return {
     root: [
       classNames.root,
+      fonts.medium,
       getFocusStyle(theme),
       {
         boxSizing: 'content-box',
@@ -33,12 +35,15 @@ export function getStyles(props: ITagItemStyleProps): ITagItemStyles {
         display: 'flex',
         flexWrap: 'nowrap',
         maxWidth: 300,
+        minWidth: 0, // needed to prevent long tags from overflowing container
         borderRadius: effects.roundedCorner2,
+        color: semanticColors.inputText,
         background: !selected || disabled ? palette.neutralLighter : palette.themePrimary,
         selectors: {
           ':hover': [
             !disabled &&
               !selected && {
+                color: palette.neutralDark,
                 background: palette.neutralLight,
                 selectors: {
                   '.ms-TagItem-close': {
@@ -94,14 +99,17 @@ export function getStyles(props: ITagItemStyleProps): ITagItemStyles {
         width: 30,
         height: '100%',
         flex: '0 0 auto',
-        borderRadius: `0 ${effects.roundedCorner2} ${effects.roundedCorner2} 0`,
+        borderRadius: getRTL(theme)
+          ? `${effects.roundedCorner2} 0 0 ${effects.roundedCorner2}`
+          : `0 ${effects.roundedCorner2} ${effects.roundedCorner2} 0`,
         selectors: {
           ':hover': {
             background: palette.neutralQuaternaryAlt,
             color: palette.neutralPrimary
           },
           ':active': {
-            color: palette.white
+            color: palette.white,
+            backgroundColor: palette.themeDark
           }
         }
       },
@@ -111,9 +119,6 @@ export function getStyles(props: ITagItemStyleProps): ITagItemStyles {
           ':hover': {
             color: palette.white,
             background: palette.themeDark
-          },
-          [HighContrastSelector]: {
-            color: 'HighlightText'
           }
         }
       },

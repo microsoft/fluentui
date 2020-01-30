@@ -1,0 +1,9 @@
+{
+  "type": "patch",
+  "comment": "ContextualMenu: fix role for checkable split button menu item",
+  "packageName": "office-ui-fabric-react",
+  "email": "xgao@microsoft.com",
+  "commit": "23cb06c1bbe4bdb2b7d756c499c1314474a78de7",
+  "dependentChangeType": "patch",
+  "date": "2020-01-29T20:33:04.046Z"
+}

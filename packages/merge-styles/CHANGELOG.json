@@ -2,6 +2,160 @@
   "name": "@uifabric/merge-styles",
   "entries": [
     {
+      "date": "Tue, 28 Jan 2020 12:43:24 GMT",
+      "tag": "@uifabric/merge-styles_v7.8.4",
+      "version": "7.8.4",
+      "comments": {
+        "none": [
+          {
+            "comment": "Rename all just configs to TS.",
+            "author": "jagore@microsoft.com",
+            "commit": "373c657b0bf9bf5d8e8433d8df8ccdccaec89e45"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 22 Jan 2020 12:36:43 GMT",
+      "tag": "@uifabric/merge-styles_v7.8.3",
+      "version": "7.8.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Documentation: Added note to merge-styles readme about working with content security policy (CSP).",
+            "author": "elcraig@microsoft.com",
+            "commit": "204bbe4b92735ff5b7b0298c20142324faa093f5"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 17 Jan 2020 02:32:17 GMT",
+      "tag": "@uifabric/merge-styles_v7.8.2",
+      "version": "7.8.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update tslib minver to first version containing __spreadArrays helper due to changes in how TS emits spreads.",
+            "author": "jagore@microsoft.com",
+            "commit": "52dc239bf89dbe76daa5f4776ee4368957938a1a"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 08 Jan 2020 17:02:57 GMT",
+      "tag": "@uifabric/merge-styles_v7.8.1",
+      "version": "7.8.1",
+      "comments": {
+        "none": [
+          {
+            "comment": "Break up build task into build, bundle, test and lint tasks. Add parallelization pipeline using new tasks.",
+            "author": "jagore@microsoft.com",
+            "commit": "f1f07695f5d18c2c975eef382c5b777d7ccb52e2"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 08 Nov 2019 12:30:07 GMT",
+      "tag": "@uifabric/merge-styles_v7.8.1",
+      "version": "7.8.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add px units to flexBasis styling by default. Remove existing styling usage where it had no effect before this PR.",
+            "author": "jagore@microsoft.com",
+            "commit": "f907d55f63a68d685743277f1f35188fbe6af62d"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 21 Oct 2019 12:33:23 GMT",
+      "tag": "@uifabric/merge-styles_v7.8.0",
+      "version": "7.8.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add `-ms-overflow-style` as a valid CSS property",
+            "author": "unindented@gmail.com",
+            "commit": "ac7b27aafaa526b44c11d8a2885517a3751ce528"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 26 Sep 2019 12:32:32 GMT",
+      "tag": "@uifabric/merge-styles_v7.7.0",
+      "version": "7.7.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "mergeStyles and mergeStyleSets have a companion method which accepts options for setting RTL",
+            "author": "jdh@microsoft.com",
+            "commit": "db3504b65c6363d9d840d58076a31abe8bade56a"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 20 Sep 2019 12:34:28 GMT",
+      "tag": "@uifabric/merge-styles_v7.6.0",
+      "version": "7.6.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Adding `concatStyleSetsWithProps` to help resolve stylesets that are functional, resolving with props.",
+            "author": "dzearing@microsoft.com",
+            "commit": "8065917a76a5e08b27721e34e13903adba3730f1"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 12 Sep 2019 12:34:15 GMT",
+      "tag": "@uifabric/merge-styles_v7.5.2",
+      "version": "7.5.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Build the kebabRules map instead of shipping it",
+            "author": "mark@thedutchies.com",
+            "commit": "6c2bb6b120a0fca24259bd21bd0a73989bbeff7a"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 04 Sep 2019 04:09:58 GMT",
+      "tag": "@uifabric/merge-styles_v7.5.1",
+      "version": "7.5.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fix version file",
+            "author": "kchau@microsoft.com",
+            "commit": "fbccfaf91bfe3c77d95c614ac2cb69b7c9e1dad1"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 26 Aug 2019 12:30:49 GMT",
+      "tag": "@uifabric/merge-styles_v7.5.0",
+      "version": "7.5.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "merge-styles: Collapsing comma delimited selectors to make styles easy to define for multiple matches.",
+            "author": "dzearing@hotmail.com",
+            "commit": "605ac28702d8c81fc1a735bab7c93f668da4a47c"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 23 Aug 2019 12:35:28 GMT",
       "tag": "@uifabric/merge-styles_v7.4.1",
       "version": "7.4.1",

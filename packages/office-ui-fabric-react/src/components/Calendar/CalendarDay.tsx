@@ -319,7 +319,6 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
                             ['ms-DatePicker-day--disabled ' + styles.dayIsDisabled]: !day.isInBounds,
                             ['ms-DatePicker-day--today ' + styles.dayIsToday]: day.isToday
                           })}
-                          role="gridcell"
                           onKeyDown={this._onDayKeyDown(day.originalDate, weekIndex, dayIndex)}
                           aria-label={dateTimeFormatter.formatMonthDayYear(day.originalDate, strings)}
                           id={isNavigatedDate ? activeDescendantId : undefined}
@@ -499,6 +498,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
     return (ev: React.KeyboardEvent<HTMLElement>): void => {
       if (ev.which === KeyCodes.enter) {
         this._onSelectDate(originalDate, ev);
+        ev.preventDefault();
       } else {
         this._navigateMonthEdge(ev, originalDate, weekIndex, dayIndex);
       }

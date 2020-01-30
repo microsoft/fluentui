@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, classNamesFunction, divProperties, getInitials, getNativeProps, getRTL } from '../../../Utilities';
+import { warnDeprecations, classNamesFunction, divProperties, getInitials, getNativeProps, getRTL } from '../../../Utilities';
 import { mergeStyles } from '../../../Styling';
 import { PersonaPresence } from '../PersonaPresence/index';
 import { Icon } from '../../../Icon';
@@ -26,7 +26,7 @@ export interface IPersonaState {
  * PersonaCoin with no default styles.
  * [Use the `getStyles` API to add your own styles.](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Styling)
  */
-export class PersonaCoinBase extends BaseComponent<IPersonaCoinProps, IPersonaState> {
+export class PersonaCoinBase extends React.Component<IPersonaCoinProps, IPersonaState> {
   public static defaultProps: IPersonaCoinProps = {
     size: PersonaSize.size48,
     presence: PersonaPresenceEnum.none,
@@ -36,7 +36,9 @@ export class PersonaCoinBase extends BaseComponent<IPersonaCoinProps, IPersonaSt
   constructor(props: IPersonaCoinProps) {
     super(props);
 
-    this._warnDeprecations({ primaryText: 'text' });
+    if (process.env.NODE_ENV !== 'production') {
+      warnDeprecations('PersonaCoin', props, { primaryText: 'text' });
+    }
 
     this.state = {
       isImageLoaded: false,
@@ -100,10 +102,10 @@ export class PersonaCoinBase extends BaseComponent<IPersonaCoinProps, IPersonaSt
     );
 
     return (
-      <div {...divProps} className={classNames.coin}>
+      <div role="presentation" {...divProps} className={classNames.coin}>
         {// Render PersonaCoin if size is not size8. size10 and tiny need to removed after a deprecation cleanup.
         size !== PersonaSize.size8 && size !== PersonaSize.size10 && size !== PersonaSize.tiny ? (
-          <div {...divCoinProps} className={classNames.imageArea} style={coinSizeStyle}>
+          <div role="presentation" {...divCoinProps} className={classNames.imageArea} style={coinSizeStyle}>
             {shouldRenderInitials && (
               <div
                 className={mergeStyles(
@@ -179,7 +181,7 @@ export class PersonaCoinBase extends BaseComponent<IPersonaCoinProps, IPersonaSt
       return <Icon iconName="Help" />;
     }
 
-    const isRTL = getRTL();
+    const isRTL = getRTL(this.props.theme);
 
     imageInitials = imageInitials || getInitials(this._getText(), isRTL, allowPhoneInitials);
 

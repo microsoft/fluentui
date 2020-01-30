@@ -11,7 +11,6 @@ export const stylesPagesWeb: INavPage[] = [
   },
   {
     title: 'Colors',
-    url: '#/styles/web/colors',
     isCategory: true,
     pages: [
       {
@@ -77,7 +76,6 @@ export const stylesPagesWeb: INavPage[] = [
   },
   {
     title: 'Iconography',
-    url: '#/styles/web/icons',
     isCategory: true,
     // @TODO: Like with GetStarted page, IconsPage makes a require call
     // with a relative path to its office-ui-fabric-core node_modules
@@ -106,6 +104,13 @@ export const stylesPagesWeb: INavPage[] = [
           require.ensure([], require =>
             cb(require<any>('../../../pages/Styles/OfficeBrandIconsPage/OfficeBrandIconsPage').OfficeBrandIconsPage)
           )
+      },
+      {
+        title: 'File Type Icons',
+        url: '#/styles/web/file-type-icons',
+        component: () => <LoadingComponent title="File Type Icons" />,
+        getComponent: cb =>
+          require.ensure([], require => cb(require<any>('../../../pages/Styles/FileTypeIconsPage/FileTypeIconsPage').FileTypeIconsPage))
       }
     ]
   },

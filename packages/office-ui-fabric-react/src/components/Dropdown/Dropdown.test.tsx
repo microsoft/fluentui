@@ -1,4 +1,5 @@
 import * as React from 'react';
+import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-dom/test-utils';
 import * as renderer from 'react-test-renderer';
 import { mount, ReactWrapper } from 'enzyme';
@@ -14,8 +15,8 @@ const DEFAULT_OPTIONS: IDropdownOption[] = [
   { key: '2', text: '2', title: 'test' },
   { key: '3', text: '3' },
   { key: 'Divider1', text: '-', itemType: DropdownMenuItemType.Divider },
-  { key: 'Header2', text: 'Header 2', itemType: DropdownMenuItemType.Header },
   { key: '4', text: '4' },
+  { key: 'Header2', text: 'Header 2', itemType: DropdownMenuItemType.Header },
   { key: '5', text: '5' },
   { key: '6', text: '6' }
 ];
@@ -37,6 +38,8 @@ describe('Dropdown', () => {
       wrapper.unmount();
       wrapper = undefined;
     }
+
+    document.body.innerHTML = '';
   });
 
   describe('single-select', () => {
@@ -44,6 +47,27 @@ describe('Dropdown', () => {
       component = renderer.create(<Dropdown options={DEFAULT_OPTIONS} />);
       const tree = component.toJSON();
       expect(tree).toMatchSnapshot();
+    });
+
+    it('Renders groups based on header start and divider end', () => {
+      wrapper = mount(<Dropdown options={DEFAULT_OPTIONS} />);
+
+      wrapper.find('.ms-Dropdown').simulate('click');
+      const groups = document.querySelectorAll('[role="group"]');
+      // Expect 2 groups with role=group
+      expect(groups.length).toEqual(2);
+      // Expect first group to have 5 elements
+      expect(groups[0].childElementCount).toEqual(5);
+      // Expect first item to have text Header 1
+      expect(groups[0].childNodes[0].textContent).toEqual('Header 1');
+      // Expect first item (the header) to have id equal to the group's aria-labelledby
+      expect(groups[0].firstElementChild!.getAttribute('id')).toEqual(groups[0].getAttribute('aria-labelledby'));
+      // Expect last item to be the divider
+      expect(groups[0].childNodes[groups[0].childNodes.length - 1].textContent).toEqual('');
+      // Expect option 4 to be a sibling of the first group
+      expect(groups[0].nextSibling!.textContent).toEqual('4');
+      // Expect second group to have 3 elements
+      expect(groups[1].childElementCount).toEqual(3);
     });
 
     it('Can flip between enabled and disabled.', () => {
@@ -259,6 +283,37 @@ describe('Dropdown', () => {
       expect(titleElement.text()).toEqual('1');
     });
 
+    it('is possible to programatically focus on Dropdown when it has tabIndex of `-1, and it will select the first valid item`', () => {
+      const dropdown = React.createRef<IDropdown>();
+
+      const container = document.createElement('div');
+      document.body.appendChild(container);
+
+      // in enzyme, when we call the programatic focus(), it does not trigger the onFocus callback of the div being focused.
+      // Utilize JSDOM instead.
+      ReactDOM.render(<Dropdown componentRef={dropdown} label="testgroup" tabIndex={-1} options={DEFAULT_OPTIONS} />, container);
+
+      dropdown.current!.focus(false);
+
+      const titleElement = container.querySelector('.ms-Dropdown-title') as HTMLElement;
+      // for some reason, JSDOM does not return innerText of 1 so we have to use innerHTML instead.
+      expect(titleElement.innerHTML).toEqual('1');
+    });
+
+    it('calling programatic focus() with `true` opens up the Dropdown and focuses/selects on first selectable option`', () => {
+      const dropdown = React.createRef<IDropdown>();
+
+      const container = document.createElement('div');
+      document.body.appendChild(container);
+      ReactDOM.render(<Dropdown componentRef={dropdown} label="testgroup" options={DEFAULT_OPTIONS} />, container);
+
+      expect(document.body.querySelector('.ms-Dropdown-item')).toBeNull();
+      dropdown.current!.focus(true);
+      const firstDropdownItem = document.body.querySelector('.ms-Dropdown-item');
+      expect(firstDropdownItem).not.toBeNull();
+      expect(firstDropdownItem!.getAttribute('aria-selected')).toBe('true');
+    });
+
     it('selects the first valid item on Home keypress', () => {
       wrapper = mount(<Dropdown label="testgroup" options={DEFAULT_OPTIONS} />);
 
@@ -314,6 +369,16 @@ describe('Dropdown', () => {
       expect(secondItemElement).toBeTruthy();
     });
 
+    it('opens on click if openOnKeyboardFocus is true', () => {
+      wrapper = mount(<Dropdown openOnKeyboardFocus label="testgroup" options={DEFAULT_OPTIONS} />);
+
+      wrapper.find('.ms-Dropdown').simulate('mousedown');
+      wrapper.find('.ms-Dropdown').simulate('click');
+
+      const secondItemElement = document.querySelector('.ms-Dropdown-item[data-index="2"]') as HTMLElement;
+      expect(secondItemElement).toBeTruthy();
+    });
+
     // Debatable whether this is desirable, but in the meantime, the test documents the behavior
     it('uses item text as title attribute if no title provided', () => {
       const options: IDropdownOption[] = [{ key: 'a', text: 'a' }];
@@ -321,8 +386,8 @@ describe('Dropdown', () => {
 
       wrapper.find('.ms-Dropdown').simulate('click');
 
-      const item = document.querySelector('.ms-Dropdown-item') as HTMLElement;
-      expect(item.getAttribute('title')).toBe('a');
+      const item = wrapper.find('.ms-Dropdown-item');
+      expect(item.getElements()[0].props.title).toBe('a');
     });
 
     it('uses item title attribute if provided', () => {
@@ -331,8 +396,8 @@ describe('Dropdown', () => {
 
       wrapper.find('.ms-Dropdown').simulate('click');
 
-      const item = document.querySelector('.ms-Dropdown-item') as HTMLElement;
-      expect(item.getAttribute('title')).toBe('b');
+      const item = wrapper.find('.ms-Dropdown-item');
+      expect(item.getElements()[0].props.title).toBe('b');
     });
 
     // This is a way to effectively disable setting a title
@@ -342,8 +407,8 @@ describe('Dropdown', () => {
 
       wrapper.find('.ms-Dropdown').simulate('click');
 
-      const item = document.querySelector('.ms-Dropdown-item') as HTMLElement;
-      expect(item.getAttribute('title')).toBe('');
+      const item = wrapper.find('.ms-Dropdown-item');
+      expect(item.getElements()[0].props.title).toBe('');
     });
   });
 
@@ -352,6 +417,19 @@ describe('Dropdown', () => {
       component = renderer.create(<Dropdown options={DEFAULT_OPTIONS} multiSelect />);
       const tree = component.toJSON();
       expect(tree).toMatchSnapshot();
+    });
+
+    it('Renders multiselect Dropdown correctly when options change', () => {
+      wrapper = mount(<Dropdown options={DEFAULT_OPTIONS} multiSelect defaultSelectedKeys={['1', '4']} />);
+      const titleElement = wrapper.find('.ms-Dropdown-title');
+
+      expect(titleElement.text()).toEqual('1, 4');
+
+      wrapper.setProps({ options: DEFAULT_OPTIONS.slice(2) });
+
+      wrapper.find('.ms-Dropdown').simulate('click');
+      const options = document.querySelectorAll('.ms-Dropdown-item');
+      expect(options.length).toEqual(5);
     });
 
     it('Renders no selected item in default case', () => {
@@ -571,6 +649,12 @@ describe('Dropdown', () => {
 
       expect(dropdownRoot.attributes.getNamedItem('aria-labelledby')).not.toBeNull();
     });
+
+    it('sets role=error on included error message', () => {
+      wrapper = mount(<Dropdown label="Test label" options={[]} id="sample-dropdown" errorMessage="This is an example error." />);
+      const errorMessage = wrapper.getDOMNode().querySelector('#sample-dropdown-errorMessage') as HTMLElement;
+      expect(errorMessage.getAttribute('role')).toEqual('alert');
+    });
   });
 
   describe('with simulated async loaded options', () => {
@@ -611,14 +695,14 @@ describe('Dropdown', () => {
 
     it('defaultSelectedKey value is respected if Dropdown options change for single-select Dropdown.', () => {
       wrapper = mount(<DropdownWithChangingProps multi={false} />);
-      const dropdownOptionText = wrapper.getDOMNode().querySelector('.ms-Dropdown-title>span') as HTMLSpanElement;
+      const dropdownOptionText = wrapper.getDOMNode().querySelector('.ms-Dropdown-title') as HTMLSpanElement;
 
       expect(dropdownOptionText.innerHTML).toBe('Option b');
     });
 
     it('defaultSelectedKeys value is respected if Dropdown options change for multi-select Dropdown.', () => {
       wrapper = mount(<DropdownWithChangingProps multi={true} />);
-      const dropdownOptionText = wrapper.getDOMNode().querySelector('.ms-Dropdown-title>span') as HTMLSpanElement;
+      const dropdownOptionText = wrapper.getDOMNode().querySelector('.ms-Dropdown-title') as HTMLSpanElement;
 
       expect(dropdownOptionText.innerHTML).toBe('Option b, Option d');
     });

@@ -5,9 +5,7 @@ import { ExtendedPeoplePickerControlledExample } from '../examples/ExtendedPeopl
 import { IDocPageProps } from '../../../common/DocPage.types';
 
 const ExtendedPeoplePickerBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ExtendedPicker/examples/ExtendedPeoplePicker.Basic.Example.tsx') as string;
-const ExtendedPeoplePickerBasicExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/ExtendedPicker/examples/ExtendedPeoplePicker.Basic.Example.tsx') as string;
 const ExtendedPeoplePickerControlledExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ExtendedPicker/examples/ExtendedPeoplePicker.Controlled.Example.tsx') as string;
-const ExtendedPeoplePickerControlledExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/ExtendedPicker/examples/ExtendedPeoplePicker.Controlled.Example.tsx') as string;
 
 export const ExtendedPeoplePickerPageProps: IDocPageProps = {
   title: 'ExtendedPeoplePicker',
@@ -18,13 +16,11 @@ export const ExtendedPeoplePickerPageProps: IDocPageProps = {
     {
       title: 'Extended People Picker (uncontrolled)',
       code: ExtendedPeoplePickerBasicExampleCode,
-      codepenJS: ExtendedPeoplePickerBasicExampleCodepen,
       view: <ExtendedPeoplePickerBasicExample />
     },
     {
       title: 'Extended People Picker (controlled)',
       code: ExtendedPeoplePickerControlledExampleCode,
-      codepenJS: ExtendedPeoplePickerControlledExampleCodepen,
       view: <ExtendedPeoplePickerControlledExample />
     }
   ],

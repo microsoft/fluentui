@@ -205,9 +205,9 @@ exports[`Component Examples renders ChoiceGroup.Custom.Example.tsx correctly 1`]
                   }
             >
               <div
-                aria-describedby="Dropdown2-option"
                 aria-disabled={true}
                 aria-expanded="false"
+                aria-haspopup="listbox"
                 aria-label="Select a time span"
                 className=
                     ms-Dropdown
@@ -240,19 +240,24 @@ exports[`Component Examples renders ChoiceGroup.Custom.Example.tsx correctly 1`]
                     @media screen and (-ms-high-contrast: active){&:hover .ms-Dropdown-title {
                       border-color: Highlight;
                     }
-                    &:focus .ms-Dropdown-title {
-                      border-color: #0078d4;
-                    }
                     @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-title {
-                      background-color: Highlight;
+                      color: Highlight;
+                    }
+                    &:focus:after {
+                      border-radius: 2px;
+                      border: none;
+                      box-sizing: border-box;
+                      content: '';
+                      height: 100%;
+                      left: 0px;
+                      pointer-events: none;
+                      position: absolute;
+                      top: 0px;
+                      width: 100%;
+                    }
+                    @media screen and (-ms-high-contrast: active){&:focus:after {
                       border-color: Highlight;
-                      color: HighlightText;
-                    }
-                    @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-title:hover {
-                      color: HighlightText;
-                    }
-                    @media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: black-on-white){&:focus .ms-Dropdown-title {
-                      -ms-high-contrast-adjust: none;
+                      color: Highlight;
                     }
                     &:active .ms-Dropdown-title {
                       border-color: #0078d4;
@@ -261,18 +266,12 @@ exports[`Component Examples renders ChoiceGroup.Custom.Example.tsx correctly 1`]
                       border-color: Highlight;
                     }
                     @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-caretDown {
-                      color: HighlightText;
-                    }
-                    @media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: black-on-white){&:focus .ms-Dropdown-caretDown {
-                      -ms-high-contrast-adjust: none;
+                      color: Highlight;
                     }
                     &:hover .ms-Dropdown-title--hasError {
                       border-color: #a4262c;
                     }
                     &:active .ms-Dropdown-title--hasError {
-                      border-color: #a4262c;
-                    }
-                    &:focus .ms-Dropdown-title--hasError {
                       border-color: #a4262c;
                     }
                 data-is-focusable={false}
@@ -282,17 +281,22 @@ exports[`Component Examples renders ChoiceGroup.Custom.Example.tsx correctly 1`]
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                role="listbox"
                 tabIndex={-1}
               >
                 <span
                   aria-atomic={true}
-                  aria-label="5 seconds"
-                  aria-live="off"
+                  aria-invalid={false}
+                  aria-live="polite"
+                  aria-posinset={1}
+                  aria-selected={true}
+                  aria-setsize={3}
                   className=
                       ms-Dropdown-title
                       {
                         background-color: #f3f2f1;
-                        border-color: #8a8886;
+                        border-color: #605e5c;
                         border-radius: 2px;
                         border-style: solid;
                         border-width: 1px;
@@ -322,10 +326,9 @@ exports[`Component Examples renders ChoiceGroup.Custom.Example.tsx correctly 1`]
                         color: GrayText;
                       }
                   id="Dropdown2-option"
+                  role="option"
                 >
-                  <span>
-                    5 seconds
-                  </span>
+                  5 seconds
                 </span>
                 <span
                   className=
@@ -358,7 +361,6 @@ exports[`Component Examples renders ChoiceGroup.Custom.Example.tsx correctly 1`]
                           color: GrayText;
                         }
                     data-icon-name="ChevronDown"
-                    role="presentation"
                   >
                     
                   </i>
@@ -536,6 +538,7 @@ exports[`Component Examples renders ChoiceGroup.Custom.Example.tsx correctly 1`]
             checked={false}
             className=
                 ms-ChoiceField-input
+                is-disabled
                 {
                   height: 100%;
                   margin-bottom: 0px;

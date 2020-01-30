@@ -8,7 +8,8 @@ import {
   getDocument,
   IRectangle,
   KeyCodes,
-  shallowCompare
+  shallowCompare,
+  getRTL
 } from '../../Utilities';
 import { IPositionedData, RectangleEdge, getOppositeEdge } from '../../utilities/positioning';
 
@@ -189,7 +190,8 @@ export class CoachmarkBase extends BaseComponent<ICoachmarkProps, ICoachmarkStat
       delayBeforeCoachmarkAnimation,
       styles,
       theme,
-      className
+      className,
+      persistentBeak
     } = this.props;
 
     const {
@@ -252,7 +254,7 @@ export class CoachmarkBase extends BaseComponent<ICoachmarkProps, ICoachmarkStat
           <div className={classNames.translateAnimationContainer} ref={this._translateAnimationContainer}>
             <div className={classNames.scaleAnimationLayer}>
               <div className={classNames.rotateAnimationLayer}>
-                {this._positioningContainer.current && isCollapsed && (
+                {this._positioningContainer.current && (isCollapsed || persistentBeak) && (
                   <Beak
                     left={beakLeft}
                     top={beakTop}
@@ -521,10 +523,18 @@ export class CoachmarkBase extends BaseComponent<ICoachmarkProps, ICoachmarkStat
         }
 
         if (this._beakDirection === RectangleEdge.left) {
-          beakLeft = distanceAdjustment;
+          if (getRTL(this.props.theme)) {
+            beakRight = distanceAdjustment;
+          } else {
+            beakLeft = distanceAdjustment;
+          }
           transformOriginX = 'left';
         } else {
-          beakRight = distanceAdjustment;
+          if (getRTL(this.props.theme)) {
+            beakLeft = distanceAdjustment;
+          } else {
+            beakRight = distanceAdjustment;
+          }
           transformOriginX = 'right';
         }
         break;

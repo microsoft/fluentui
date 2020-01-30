@@ -1,7 +1,37 @@
 # Change Log - @uifabric/azure-themes
 
-This log was last generated on Fri, 23 Aug 2019 12:35:28 GMT and should not be manually modified.
+This log was last generated on Fri, 17 Jan 2020 02:32:17 GMT and should not be manually modified.
 
+## 7.0.11
+Fri, 17 Jan 2020 02:32:17 GMT
+
+### Patches
+
+- Update tslib minver to first version containing __spreadArrays helper due to changes in how TS emits spreads. (jagore@microsoft.com)
+## 7.0.10
+Thu, 07 Nov 2019 12:26:32 GMT
+
+### Patches
+
+- Correct the checked checkbox background in Azure light theme. (xinychen@microsoft.com)
+## 7.0.9
+Wed, 11 Sep 2019 12:35:47 GMT
+
+### Patches
+
+- Checkbox alignment and visual artifact fix (rykelly@microsoft.com)
+## 7.0.8
+Wed, 04 Sep 2019 12:32:15 GMT
+
+### Patches
+
+- DropDown: Fixed dropdownItem and dropdownItemSelected azure-theme styles. (xinychen@microsoft.com)
+## 7.0.7
+Wed, 04 Sep 2019 04:09:58 GMT
+
+### Patches
+
+- fix version file (kchau@microsoft.com)
 ## 7.0.6
 Fri, 23 Aug 2019 12:35:28 GMT
 

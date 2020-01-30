@@ -5,7 +5,7 @@ import * as path from 'path';
 
 import { resetIds } from '../Utilities';
 
-import * as DataUtil from '../utilities/exampleData';
+import * as DataUtil from '@uifabric/example-data';
 import * as mergeStylesSerializer from '@uifabric/jest-serializer-merge-styles';
 
 const ReactDOM = require('react-dom');
@@ -79,7 +79,9 @@ const excludedExampleFiles: string[] = [
   'Picker.CustomResult.Example.tsx',
   'ScrollablePane.Default.Example.tsx',
   'ScrollablePane.DetailsList.Example.tsx',
-  'SelectedPeopleList.Basic.Example.tsx'
+  'SelectedPeopleList.Basic.Example.tsx',
+  // Snapshots of these examples are worthless since the component isn't open by default
+  'Panel.'
 ];
 
 declare const global: any;

@@ -1,8 +1,10 @@
 import { IColorRectangleStyleProps, IColorRectangleStyles } from './ColorRectangle.types';
 import { HighContrastSelector } from '../../../Styling';
+import { IsFocusVisibleClassName } from '../../../Utilities';
+import { hiddenContentStyle } from '@uifabric/styling';
 
 export const getStyles = (props: IColorRectangleStyleProps): IColorRectangleStyles => {
-  const { className, theme } = props;
+  const { className, theme, minSize } = props;
   const { palette, effects } = theme;
 
   return {
@@ -13,9 +15,17 @@ export const getStyles = (props: IColorRectangleStyleProps): IColorRectangleStyl
         marginBottom: 8,
         border: `1px solid ${palette.neutralLighter}`,
         borderRadius: effects.roundedCorner2,
+        minWidth: minSize,
+        minHeight: minSize,
+        outline: 'none',
+
         selectors: {
           [HighContrastSelector]: {
             MsHighContrastAdjust: 'none'
+          },
+
+          [`.${IsFocusVisibleClassName} &:focus`]: {
+            outline: `1px solid ${palette.neutralSecondary}`
           }
         }
       },
@@ -29,7 +39,9 @@ export const getStyles = (props: IColorRectangleStyleProps): IColorRectangleStyl
         right: 0,
         top: 0,
         bottom: 0,
-        background: 'linear-gradient(to right, white 0%, transparent 100%)'
+        // Intentionally DO NOT flip the color picker in RTL: its orientation is not very meaningful,
+        // and getting all the math and styles flipped correctly is tricky
+        background: 'linear-gradient(to right, white 0%, transparent 100%) /*@noflip*/'
       }
     ],
     dark: [
@@ -68,6 +80,7 @@ export const getStyles = (props: IColorRectangleStyleProps): IColorRectangleStyl
           }
         }
       }
-    ]
+    ],
+    description: hiddenContentStyle
   };
 };

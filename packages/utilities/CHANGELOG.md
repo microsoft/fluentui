@@ -1,7 +1,116 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Fri, 23 Aug 2019 12:35:28 GMT and should not be manually modified.
+This log was last generated on Fri, 17 Jan 2020 02:32:17 GMT and should not be manually modified.
 
+## 7.11.2
+Fri, 17 Jan 2020 02:32:17 GMT
+
+### Patches
+
+- Update tslib minver to first version containing __spreadArrays helper due to changes in how TS emits spreads. (jagore@microsoft.com)
+## 7.11.1
+Thu, 16 Jan 2020 12:28:58 GMT
+
+### Patches
+
+- Upgrade repo to TS3.7. (jagore@microsoft.com)
+## 7.11.0
+Mon, 13 Jan 2020 12:28:56 GMT
+
+### Minor changes
+
+- Add composeComponentAs to compose React decorator components (tmichon@microsoft.com)
+- Change focus class behavior: Alternate between 'hidden' and 'visible' classes (paflakst@microsoft.com)
+## 7.10.0
+Thu, 09 Jan 2020 12:34:52 GMT
+
+### Minor changes
+
+- memoizeFunction: The items for which callback method returned null/undefined value, null/undefined was being stored in cache for these items. In this PR, a new flag is introduced based on which the cached undefined/null value can be updated till the time non-undefined/null value is encountered for the first time. (vishgup@microsoft.com)
+## 7.9.0
+Mon, 06 Jan 2020 12:29:10 GMT
+
+### Minor changes
+
+- Selection: accept generic item type (elcraig@microsoft.com)
+### Patches
+
+- getClassNames: fix for LTR in RTL context. (jdh@microsoft.com)
+## 7.8.0
+Fri, 20 Dec 2019 12:32:45 GMT
+
+### Minor changes
+
+- scroll.ts: added allowOverscrollOnElement, alternative to allowScrollOnElement that allows body scroll on touch devices (dmitriy.ravdin@siemens.com)
+## 7.7.1
+Tue, 17 Dec 2019 12:29:42 GMT
+
+### Patches
+
+- add select to be a focusable target for focus utility (joschect@microsoft.com)
+## 7.7.0
+Sun, 15 Dec 2019 23:45:36 GMT
+
+### Minor changes
+
+- getRTL uses RTL flag on theme if present. (jdh@microsoft.com)
+## 7.6.0
+Mon, 18 Nov 2019 12:33:30 GMT
+
+### Minor changes
+
+- AutoScroll: Add horizontal scrolling (v-mare@microsoft.com)
+## 7.5.0
+Mon, 07 Oct 2019 12:33:45 GMT
+
+### Minor changes
+
+- Reverting dependency on ReactDOM findDOMNode in getWindow and getDocument helpers to avoid bundle problems for partners. (dzearing@microsoft.com)
+## 7.4.0
+Thu, 03 Oct 2019 01:14:35 GMT
+
+### Minor changes
+
+- Async methods can now take a React component as the target being passed to `getWindow`. (dzearing@microsoft.com)
+## 7.3.0
+Tue, 01 Oct 2019 12:33:48 GMT
+
+### Minor changes
+
+- Async helpers now take in a target element which will be used to find the window object. (dzearing@microsoft.com)
+## 7.2.0
+Thu, 26 Sep 2019 12:32:32 GMT
+
+### Minor changes
+
+- mergeStyles and mergeStyleSets have a companion method which accepts options for setting RTL (jdh@microsoft.com)
+### Patches
+
+- Minor refinement to mergeAriaAttributeValues to correctly handleu false, therefore allowing (`cond && "something"). (cliff.koh@microsoft.com)
+## 7.1.0
+Mon, 23 Sep 2019 12:33:15 GMT
+
+### Minor changes
+
+- Customizations: add a way to batch updates (phkuo@microsoft.com)
+## 7.0.11
+Fri, 20 Sep 2019 12:34:28 GMT
+
+### Patches
+
+- Consuming latest merge-styles bits with `concatStyleSetsWithProps`. (dzearing@microsoft.com)
+## 7.0.10
+Mon, 16 Sep 2019 12:34:47 GMT
+
+### Patches
+
+- Move getId to its own file (elcraig@microsoft.com)
+## 7.0.9
+Wed, 04 Sep 2019 04:09:58 GMT
+
+### Patches
+
+- fix version file (kchau@microsoft.com)
 ## 7.0.8
 Fri, 23 Aug 2019 12:35:28 GMT
 

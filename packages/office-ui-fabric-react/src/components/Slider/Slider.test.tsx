@@ -28,14 +28,15 @@ describe('Slider', () => {
     const sliderLine = wrapper.find('.ms-Slider-line');
     const sliderThumb = wrapper.find('.ms-Slider-slideBox');
 
-    sliderLine.getDOMNode().getBoundingClientRect = () => ({
-      left: 0,
-      top: 0,
-      right: 100,
-      bottom: 40,
-      width: 100,
-      height: 40
-    });
+    sliderLine.getDOMNode().getBoundingClientRect = () =>
+      ({
+        left: 0,
+        top: 0,
+        right: 100,
+        bottom: 40,
+        width: 100,
+        height: 40
+      } as DOMRect);
 
     sliderThumb.simulate('mousedown', {
       type: 'mousedown',
@@ -88,7 +89,7 @@ describe('Slider', () => {
   it('renders correct aria-valuetext', () => {
     let component = mount(<Slider />);
 
-    expect(component.find('.ms-Slider-slideBox').prop('aria-valuetext')).toBeUndefined();
+    expect(component.find('.ms-Slider-slideBox').prop('aria-valuetext')).toEqual('0');
 
     const values = ['small', 'medium', 'large'];
     const selected = 1;

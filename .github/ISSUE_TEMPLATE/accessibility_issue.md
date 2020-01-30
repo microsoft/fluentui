@@ -6,11 +6,16 @@ about: Have you identified an accessibility issue regarding a Fabric control?
 <!--
 Before submitting an accessibility issue please ensure the following are true:
 
-1. This issue is caused by a Fabric control
-2. You can reproduce this bug in a CodePen
-3. There is documentation or best practice that supports your expected behavior (review https://www.w3.org/TR/wai-aria-1.1/ for accessibility guidance)
+1. Search for dupes! Please make sure the issue is not already present in our issue tracker.
+2. This issue is caused by a Fabric control.
+3. You can reproduce this bug in a CodePen.
+4. There is documentation or best practice that supports your expected behavior (review https://www.w3.org/TR/wai-aria-1.1/ for accessibility guidance.)
+
+PLEASE NOTE:
 
 Do not link to, screenshot or reference a Microsoft product in this description.
+
+Our screen reader support is limited to Edge + Narrator. Please check ARIA component examples to ensure it is not a screen reader or browser issue. Issues that do not reproduce in Edge + Narrator, and aren't caused by obvious invalid aria values, should be filed with the respective screen reading software, not the Fabric repo.
 
 Issues that do not meet these guidelines will be closed.
 -->
@@ -19,8 +24,6 @@ Issues that do not meet these guidelines will be closed.
 
 - **Package version(s)**: (fill this out)
 - **Browser and OS versions**: (fill this out)
-
-> Note that our screen reader support is limited to Edge + Narrator. Issues that do not reproduce in Edge + Narrator, and aren't caused by obvious invalid aria values, should be filed with the respective screen reading software, not the Fabric repo.
 
 ### Describe the issue:
 

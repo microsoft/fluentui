@@ -99,13 +99,13 @@ export class CardVerticalExample extends React.Component<{}, {}> {
 
     return (
       <Stack horizontal tokens={sectionStackTokens}>
-        <Card>
+        <Card aria-label="Basic vertical card">
           <Card.Item>
             <Text>Basic vertical card</Text>
           </Card.Item>
         </Card>
 
-        <Card onClick={alertClicked} tokens={cardTokens}>
+        <Card aria-label="Clickable vertical card with image bleeding at the center of the card" onClick={alertClicked} tokens={cardTokens}>
           <Card.Item>
             <Persona text="Kevin Jameson" secondaryText="Feb 2, 2019" />
           </Card.Item>
@@ -131,7 +131,7 @@ export class CardVerticalExample extends React.Component<{}, {}> {
           </Card.Section>
         </Card>
 
-        <Card onClick={alertClicked} tokens={cardTokens}>
+        <Card aria-label="Clickable vertical card with image bleeding at the top of the card" onClick={alertClicked} tokens={cardTokens}>
           <Card.Section fill verticalAlign="end" styles={backgroundImageCardSectionStyles} tokens={backgroundImageCardSectionTokens}>
             <Text variant="large" styles={dateTextStyles}>
               NOVEMBER

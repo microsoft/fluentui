@@ -34,4 +34,7 @@ export interface IColor extends IRGB, IHSV {
 
   /** CSS color string. If a hex value, it must be prefixed with #. */
   str: string;
+
+  /* transparency*/
+  t: string;
 }

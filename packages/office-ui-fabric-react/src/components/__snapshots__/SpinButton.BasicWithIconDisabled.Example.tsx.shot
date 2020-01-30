@@ -38,7 +38,7 @@ exports[`Component Examples renders SpinButton.BasicWithIconDisabled.Example.tsx
               -webkit-font-smoothing: antialiased;
               color: #a19f9d;
               display: inline-block;
-              font-family: "FabricMDL2Icons-16";
+              font-family: "FabricMDL2Icons-17";
               font-size: 20px;
               font-style: normal;
               font-weight: normal;
@@ -49,7 +49,6 @@ exports[`Component Examples renders SpinButton.BasicWithIconDisabled.Example.tsx
               speak: none;
             }
         data-icon-name="IncreaseIndentLegacy"
-        role="presentation"
       >
         
       </i>
@@ -93,9 +92,9 @@ exports[`Component Examples renders SpinButton.BasicWithIconDisabled.Example.tsx
 
           {
             background-color: #f3f2f1;
-            border-color: transparent;
+            border-color: #f3f2f1;
             border-radius: 2px;
-            border: 1px solid #8a8886;
+            border: 1px solid #605e5c;
             box-sizing: border-box;
             color: #a19f9d;
             cursor: default;
@@ -103,6 +102,7 @@ exports[`Component Examples renders SpinButton.BasicWithIconDisabled.Example.tsx
             height: 32px;
             min-width: 86px;
             pointer-events: none;
+            position: relative;
           }
           @media screen and (-ms-high-contrast: active){& {
             color: GrayText;
@@ -119,7 +119,7 @@ exports[`Component Examples renders SpinButton.BasicWithIconDisabled.Example.tsx
             ms-spinButton-input
             {
               background-color: #f3f2f1;
-              border-color: transparent;
+              border-color: #f3f2f1;
               border-radius: 2px 0 0 2px;
               border-style: none;
               box-shadow: none;
@@ -134,7 +134,7 @@ exports[`Component Examples renders SpinButton.BasicWithIconDisabled.Example.tsx
               margin-left: 0px;
               margin-right: 0px;
               margin-top: 0px;
-              min-width: 72px;
+              min-width: 61px;
               outline: 0px;
               overflow: hidden;
               padding-bottom: 0;
@@ -150,6 +150,7 @@ exports[`Component Examples renders SpinButton.BasicWithIconDisabled.Example.tsx
               color: GrayText;
             }
         data-lpignore={true}
+        disabled={true}
         id="input1"
         onBlur={[Function]}
         onChange={[Function]}
@@ -157,7 +158,6 @@ exports[`Component Examples renders SpinButton.BasicWithIconDisabled.Example.tsx
         onInput={[Function]}
         onKeyDown={[Function]}
         onKeyUp={[Function]}
-        readOnly={true}
         role="spinbutton"
         type="text"
         value="0"
@@ -167,7 +167,7 @@ exports[`Component Examples renders SpinButton.BasicWithIconDisabled.Example.tsx
 
             {
               background-color: #f3f2f1;
-              border-color: transparent;
+              border-color: #f3f2f1;
               color: #a19f9d;
               cursor: default;
               display: block;
@@ -201,7 +201,6 @@ exports[`Component Examples renders SpinButton.BasicWithIconDisabled.Example.tsx
                 font-size: 14px;
                 font-weight: 400;
                 height: 50%;
-                min-width: 32px;
                 opacity: 0.5;
                 outline: transparent;
                 padding-bottom: 0px;
@@ -315,6 +314,11 @@ exports[`Component Examples renders SpinButton.BasicWithIconDisabled.Example.tsx
                   }
               data-icon-name="ChevronUpSmall"
               role="presentation"
+              style={
+                Object {
+                  "fontFamily": "\\"FabricMDL2Icons-2\\"",
+                }
+              }
             >
               
             </i>
@@ -343,7 +347,6 @@ exports[`Component Examples renders SpinButton.BasicWithIconDisabled.Example.tsx
                 font-size: 14px;
                 font-weight: 400;
                 height: 50%;
-                min-width: 32px;
                 opacity: 0.5;
                 outline: transparent;
                 padding-bottom: 0px;
@@ -437,7 +440,7 @@ exports[`Component Examples renders SpinButton.BasicWithIconDisabled.Example.tsx
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
-                    font-family: "FabricMDL2Icons-2";
+                    font-family: "FabricMDL2Icons-3";
                     font-style: normal;
                     font-weight: normal;
                     speak: none;
@@ -457,6 +460,11 @@ exports[`Component Examples renders SpinButton.BasicWithIconDisabled.Example.tsx
                   }
               data-icon-name="ChevronDownSmall"
               role="presentation"
+              style={
+                Object {
+                  "fontFamily": "\\"FabricMDL2Icons-3\\"",
+                }
+              }
             >
               
             </i>

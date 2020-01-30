@@ -12,7 +12,7 @@ exports[`Component Examples renders SearchBox.Underlined.Example.tsx correctly 1
         background-color: #ffffff;
         border-radius: 0px;
         border-width: 0 0 1px 0;
-        border: 1px solid #8a8886;
+        border: 1px solid #605e5c;
         box-shadow: none;
         box-sizing: border-box;
         color: #323130;
@@ -33,7 +33,7 @@ exports[`Component Examples renders SearchBox.Underlined.Example.tsx correctly 1
         padding-top: 1px;
       }
       @media screen and (-ms-high-contrast: active){& {
-        border: 1px solid WindowText;
+        border-color: WindowText;
       }
       &:hover {
         border-color: #323130;
@@ -45,6 +45,7 @@ exports[`Component Examples renders SearchBox.Underlined.Example.tsx correctly 1
         color: #005a9e;
       }
   onFocusCapture={[Function]}
+  role="search"
 >
   <div
     aria-hidden={true}
@@ -80,13 +81,11 @@ exports[`Component Examples renders SearchBox.Underlined.Example.tsx correctly 1
             transition: opacity 0.167s 0s;
           }
       data-icon-name="Search"
-      role="presentation"
     >
       
     </i>
   </div>
   <input
-    aria-label="Search"
     className=
         ms-SearchBox-field
         {
@@ -132,6 +131,7 @@ exports[`Component Examples renders SearchBox.Underlined.Example.tsx correctly 1
     onInput={[Function]}
     onKeyDown={[Function]}
     placeholder="Search"
+    role="searchbox"
     value=""
   />
 </div>

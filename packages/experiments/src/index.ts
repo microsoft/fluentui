@@ -11,6 +11,7 @@ export * from './Persona';
 export * from './PersonaCoin';
 export * from './Sidebar';
 export * from './Signals';
+export * from './Slider';
 export * from './SplitButton';
 export * from './StaticList';
 export * from './Text';

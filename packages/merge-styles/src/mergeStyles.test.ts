@@ -1,6 +1,6 @@
 import { mergeStyles } from './mergeStyles';
 import { Stylesheet, InjectionMode } from './Stylesheet';
-import { setRTL } from './transforms/rtlifyRules';
+import { setRTL } from './StyleOptionsState';
 
 const _stylesheet: Stylesheet = Stylesheet.getInstance();
 

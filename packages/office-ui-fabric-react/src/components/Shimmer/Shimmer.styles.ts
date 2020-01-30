@@ -35,7 +35,7 @@ export function getStyles(props: IShimmerStyleProps): IShimmerStyles {
   const { semanticColors } = theme;
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
-  const isRTL = getRTL();
+  const isRTL = getRTL(theme);
 
   return {
     root: [

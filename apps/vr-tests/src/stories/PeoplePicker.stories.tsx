@@ -12,7 +12,7 @@ import {
   PersonaPresence
 } from 'office-ui-fabric-react';
 
-import { TestImages } from '../common/TestImages';
+import { TestImages } from '@uifabric/example-data';
 
 const overflowPersona: IPersonaProps & { key: string | number } = {
   key: 2,
@@ -169,7 +169,10 @@ storiesOf('PeoplePicker', module)
         disabled
       />
     </Fabric>
-  ))
+  ));
+
+storiesOf('PeoplePicker', module)
+  .addDecorator(FabricDecorator)
   .addStory('Normal with text', () => (
     <Screener
       steps={new Screener.Steps()
@@ -188,7 +191,10 @@ storiesOf('PeoplePicker', module)
         />
       </Fabric>
     </Screener>
-  ))
+  ));
+
+storiesOf('PeoplePicker', module)
+  .addDecorator(FabricDecorator)
   .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()

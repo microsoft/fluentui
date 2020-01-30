@@ -47,11 +47,15 @@ export class PivotRemoveExample extends React.Component<any, IPivotOnChangeExamp
 
     return (
       <div>
-        <Pivot linkSize={PivotLinkSize.large} linkFormat={PivotLinkFormat.tabs}>
+        <Pivot aria-label="Remove Pivot Example" linkSize={PivotLinkSize.large} linkFormat={PivotLinkFormat.tabs}>
           {pivotArray}
         </Pivot>
         <div>
-          <DefaultButton onClick={this._handleClick} text={`${this.state.shouldShowFirstPivotItem ? 'Hide' : 'Show'} First Pivot Item`} />
+          <DefaultButton
+            aria-live="polite"
+            onClick={this._handleClick}
+            text={`${this.state.shouldShowFirstPivotItem ? 'Hide' : 'Show'} First Pivot Item`}
+          />
         </div>
       </div>
     );

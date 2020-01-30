@@ -8,12 +8,10 @@ import { SearchBoxCustomIconExample } from './examples/SearchBox.CustomIcon.Exam
 import { SearchBoxSmallExample } from './examples/SearchBox.Small.Example';
 
 const SearchBoxFullSizeExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/SearchBox/examples/SearchBox.FullSize.Example.tsx') as string;
-const SearchBoxFullSizeExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/SearchBox/examples/SearchBox.FullSize.Example.tsx') as string;
 const SearchBoxUnderlinedExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/SearchBox/examples/SearchBox.Underlined.Example.tsx') as string;
 const SearchBoxDisabledExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/SearchBox/examples/SearchBox.Disabled.Example.tsx') as string;
 const SearchBoxCustomIconExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/SearchBox/examples/SearchBox.CustomIcon.Example.tsx') as string;
 const SearchBoxSmallExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/SearchBox/examples/SearchBox.Small.Example.tsx') as string;
-const SearchBoxSmallExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/SearchBox/examples/SearchBox.Small.Example.tsx') as string;
 
 export const SearchBoxPageProps: IDocPageProps = {
   title: 'SearchBox',
@@ -23,8 +21,7 @@ export const SearchBoxPageProps: IDocPageProps = {
     {
       title: 'Default SearchBox',
       code: SearchBoxFullSizeExampleCode,
-      view: <SearchBoxFullSizeExample />,
-      codepenJS: SearchBoxFullSizeExampleCodepen
+      view: <SearchBoxFullSizeExample />
     },
     {
       title: 'Underlined SearchBox',
@@ -44,7 +41,6 @@ export const SearchBoxPageProps: IDocPageProps = {
     {
       title: 'SearchBox with fixed width and custom event handling',
       code: SearchBoxSmallExampleCode,
-      codepenJS: SearchBoxSmallExampleCodepen,
       view: <SearchBoxSmallExample />
     }
   ],

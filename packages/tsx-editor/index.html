@@ -27,6 +27,11 @@
       var useMinified = minParam !== '0' && (minParam === '1' || location.pathname === '/fabric-react/master/');
       var jsSuffix = useMinified ? '.min.js' : '.js';
 
+      window.MonacoConfig = {
+        baseUrl: '.',
+        useMinified: useMinified
+      };
+
       function loadScript(n) {
         for (var i = 0; i < n.length; i++) {
           var s = document.createElement('script');
@@ -49,15 +54,6 @@
       scripts.push('demo-app' + jsSuffix);
 
       loadScript(scripts);
-
-      // Required configuration to make Monaco work (this is simpler than the fabric-website version
-      // since demo app JS is never served cross-domain from a CDN)
-      window.MonacoEnvironment = {
-        getWorkerUrl: function(workerId, label) {
-          var workerName = label === 'typescript' || label === 'javascript' ? 'ts.worker' : 'editor.worker';
-          return workerName + jsSuffix;
-        }
-      };
     </script>
   </body>
 </html>

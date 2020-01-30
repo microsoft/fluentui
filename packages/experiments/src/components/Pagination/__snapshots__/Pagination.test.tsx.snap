@@ -34,7 +34,6 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
             font-size: 14px;
             font-weight: 400;
             height: 32px;
-            min-width: 32px;
             outline: transparent;
             padding-bottom: 0;
             padding-left: 4px;
@@ -46,6 +45,7 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
             text-decoration: none;
             user-select: none;
             vertical-align: top;
+            width: 32px;
           }
           &::-moz-focus-inner {
             border: 0;
@@ -137,6 +137,11 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
               }
           data-icon-name="Previous"
           role="presentation"
+          style={
+            Object {
+              "fontFamily": "\\"FabricMDL2Icons-1\\"",
+            }
+          }
         >
           
         </i>
@@ -164,7 +169,6 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
             font-size: 14px;
             font-weight: 400;
             height: 32px;
-            min-width: 32px;
             outline: transparent;
             padding-bottom: 0;
             padding-left: 4px;
@@ -176,6 +180,7 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
             text-decoration: none;
             user-select: none;
             vertical-align: top;
+            width: 32px;
           }
           &::-moz-focus-inner {
             border: 0;
@@ -267,6 +272,11 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
               }
           data-icon-name="CaretSolidLeft"
           role="presentation"
+          style={
+            Object {
+              "fontFamily": "\\"FabricMDL2Icons-8\\"",
+            }
+          }
         >
           
         </i>
@@ -826,7 +836,6 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
             font-size: 14px;
             font-weight: 400;
             height: 32px;
-            min-width: 32px;
             outline: transparent;
             padding-bottom: 0;
             padding-left: 4px;
@@ -837,6 +846,7 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
             text-decoration: none;
             user-select: none;
             vertical-align: top;
+            width: 32px;
           }
           &::-moz-focus-inner {
             border: 0;
@@ -929,6 +939,11 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
               }
           data-icon-name="CaretSolidRight"
           role="presentation"
+          style={
+            Object {
+              "fontFamily": "\\"FabricMDL2Icons-8\\"",
+            }
+          }
         >
           
         </i>
@@ -965,7 +980,6 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
               font-size: 14px;
               font-weight: 400;
               height: 32px;
-              min-width: 32px;
               outline: transparent;
               padding-bottom: 0;
               padding-left: 4px;
@@ -976,6 +990,7 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
               text-decoration: none;
               user-select: none;
               vertical-align: top;
+              width: 32px;
             }
             &::-moz-focus-inner {
               border: 0;
@@ -1068,6 +1083,11 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
                 }
             data-icon-name="Next"
             role="presentation"
+            style={
+              Object {
+                "fontFamily": "\\"FabricMDL2Icons-1\\"",
+              }
+            }
           >
             
           </i>
@@ -1116,7 +1136,6 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
           font-size: 14px;
           font-weight: 400;
           height: 32px;
-          min-width: 32px;
           outline: transparent;
           padding-bottom: 0;
           padding-left: 4px;
@@ -1128,6 +1147,7 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
           text-decoration: none;
           user-select: none;
           vertical-align: top;
+          width: 32px;
         }
         &::-moz-focus-inner {
           border: 0;
@@ -1219,6 +1239,11 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
             }
         data-icon-name="Previous"
         role="presentation"
+        style={
+          Object {
+            "fontFamily": "\\"FabricMDL2Icons-1\\"",
+          }
+        }
       >
         
       </i>
@@ -1246,7 +1271,6 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
           font-size: 14px;
           font-weight: 400;
           height: 32px;
-          min-width: 32px;
           outline: transparent;
           padding-bottom: 0;
           padding-left: 4px;
@@ -1258,6 +1282,7 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
           text-decoration: none;
           user-select: none;
           vertical-align: top;
+          width: 32px;
         }
         &::-moz-focus-inner {
           border: 0;
@@ -1349,6 +1374,11 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
             }
         data-icon-name="CaretSolidLeft"
         role="presentation"
+        style={
+          Object {
+            "fontFamily": "\\"FabricMDL2Icons-8\\"",
+          }
+        }
       >
         
       </i>
@@ -1370,10 +1400,6 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
             background-color: #ffffff;
-            border-color: #8a8886;
-            border-radius: 2px;
-            border-style: solid;
-            border-width: 1px;
             box-shadow: none;
             box-sizing: border-box;
             color: #323130;
@@ -1385,11 +1411,8 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
             height: 32px;
             margin-left: 0;
             outline: 0;
-            overflow: hidden;
-            padding-bottom: 1px;
-            padding-left: 8px;
+            padding-left: 9px;
             padding-right: 32px;
-            padding-top: 1px;
             position: relative;
             text-overflow: ellipsis;
             user-select: none;
@@ -1399,24 +1422,28 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
             display: inline-block;
             margin-bottom: 8px;
           }
-          &.is-open {
-            border-color: #8a8886;
-          }
           @media screen and (-ms-high-contrast: active){&.is-open {
             -ms-high-contrast-adjust: none;
             background-color: Window;
-            border-color: Highlight;
-            border-width: 2px;
             color: HighlightText;
-            padding-bottom: 0;
-            padding-left: 11px;
-            padding-top: 0;
           }
-          @media screen and (-ms-high-contrast: active){&.is-open .ms-ComboBox-CaretDown-button {
-            right: -2px;
-            top: -2px;
+          @media screen and (-ms-high-contrast: active){&.is-open:after {
+            border-color: Highlight;
           }
-          &:hover {
+          &:after {
+            border-color: #605e5c;
+            border-radius: 2px;
+            border-style: solid;
+            border-width: 1px;
+            bottom: 0px;
+            content: '';
+            left: 0px;
+            pointer-events: none;
+            position: absolute;
+            right: 0px;
+            top: 0px;
+          }
+          &:hover:after {
             border-color: #323130;
           }
           &:hover .ms-ComboBox-Input {
@@ -1425,34 +1452,44 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
           &:hover .ms-ComboBox-Input::placeholder {
             color: #201f1e;
           }
+          @media screen and (-ms-high-contrast: active){&:hover .ms-ComboBox-Input::placeholder {
+            color: GrayText;
+          }
           &:hover .ms-ComboBox-Input:-ms-input-placeholder {
             color: #201f1e;
+          }
+          @media screen and (-ms-high-contrast: active){&:hover .ms-ComboBox-Input:-ms-input-placeholder {
+            color: GrayText;
           }
           &:hover .ms-ComboBox-Input::-ms-input-placeholder {
             color: #201f1e;
           }
+          @media screen and (-ms-high-contrast: active){&:hover .ms-ComboBox-Input::-ms-input-placeholder {
+            color: GrayText;
+          }
+          @media screen and (-ms-high-contrast: active){&:hover .ms-ComboBox-Input {
+            -ms-high-contrast-adjust: none;
+            background-color: Window;
+            color: WindowText;
+          }
           @media screen and (-ms-high-contrast: active){&:hover {
             -ms-high-contrast-adjust: none;
             background-color: Window;
-            border-color: Highlight;
             color: HighlightText;
           }
+          @media screen and (-ms-high-contrast: active){&:hover:after {
+            border-color: Highlight;
+          }
           &:active {
-            border-color: #0078d4;
+            position: relative;
           }
           @media screen and (-ms-high-contrast: active){&:active {
             -ms-high-contrast-adjust: none;
             background-color: Window;
-            border-color: Highlight;
-            border-width: 2px;
             color: HighlightText;
-            padding-bottom: 0;
-            padding-left: 11px;
-            padding-top: 0;
           }
-          @media screen and (-ms-high-contrast: active){&:active .ms-ComboBox-CaretDown-button {
-            right: -2px;
-            top: -2px;
+          @media screen and (-ms-high-contrast: active){&:active:after {
+            border-color: Highlight;
           }
           &:focus {
             border-color: #0078d4;
@@ -1460,19 +1497,29 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
           &:focus .ms-ComboBox-Input {
             color: #201f1e;
           }
+          @media screen and (-ms-high-contrast: active){&:focus .ms-ComboBox-Input {
+            -ms-high-contrast-adjust: none;
+            background-color: Window;
+            color: WindowText;
+          }
           @media screen and (-ms-high-contrast: active){&:focus {
             -ms-high-contrast-adjust: none;
             background-color: Window;
-            border-color: Highlight;
-            border-width: 2px;
             color: HighlightText;
-            padding-bottom: 0;
-            padding-left: 11px;
-            padding-top: 0;
           }
-          @media screen and (-ms-high-contrast: active){&:focus .ms-ComboBox-CaretDown-button {
-            right: -2px;
-            top: -2px;
+          @media screen and (-ms-high-contrast: active){&:focus:after {
+            border-color: Highlight;
+          }
+          &:focus:after {
+            border-radius: 2px;
+            border: 2px solid #0078d4;
+            bottom: 0px;
+            content: '';
+            left: 0px;
+            pointer-events: none;
+            position: absolute;
+            right: 0px;
+            top: 0px;
           }
       id="ComboBox6wrapper"
     >
@@ -1489,7 +1536,7 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
               box-sizing: border-box;
               color: #323130;
               font: inherit;
-              height: 28px;
+              height: 100%;
               outline: none;
               padding-bottom: 0;
               padding-left: 0;
@@ -1501,14 +1548,28 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
             &::placeholder {
               color: #605e5c;
             }
+            @media screen and (-ms-high-contrast: active){&::placeholder {
+              color: GrayText;
+            }
             &:-ms-input-placeholder {
               color: #605e5c;
+            }
+            @media screen and (-ms-high-contrast: active){&:-ms-input-placeholder {
+              color: GrayText;
             }
             &::-ms-input-placeholder {
               color: #605e5c;
             }
+            @media screen and (-ms-high-contrast: active){&::-ms-input-placeholder {
+              color: GrayText;
+            }
             &::-ms-clear {
               display: none;
+            }
+            @media screen and (-ms-high-contrast: active){& {
+              -ms-high-contrast-adjust: none;
+              background-color: Window;
+              color: WindowText;
             }
         data-is-interactable={true}
         data-lpignore={true}
@@ -1518,6 +1579,7 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
         onClick={[Function]}
         onCompositionEnd={[Function]}
         onCompositionStart={[Function]}
+        onCompositionUpdate={[Function]}
         onFocus={[Function]}
         onInput={[Function]}
         onKeyDown={[Function]}
@@ -1548,19 +1610,17 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 12px;
               font-weight: 400;
-              height: 32px;
+              height: 100%;
               line-height: 30px;
-              min-width: 32px;
               outline: transparent;
               padding-bottom: 0;
               padding-left: 4px;
               padding-right: 4px;
               padding-top: 0;
               position: absolute;
-              right: -1px;
               text-align: center;
               text-decoration: none;
-              top: -1px;
+              top: 0px;
               user-select: none;
               vertical-align: top;
               width: 32px;
@@ -1604,12 +1664,20 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
               cursor: pointer;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
+              -ms-high-contrast-adjust: none;
+              background-color: Highlight;
               border-color: Highlight;
-              color: Highlight;
+              color: HighlightText;
             }
             &:active {
               background-color: #edebe9;
               color: #201f1e;
+            }
+            @media screen and (-ms-high-contrast: active){&:active {
+              -ms-high-contrast-adjust: none;
+              background-color: Highlight;
+              border-color: Highlight;
+              color: HighlightText;
             }
         data-is-focusable={false}
         onBlur={[Function]}
@@ -1665,11 +1733,25 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
                 }
             data-icon-name="ChevronDown"
             role="presentation"
+            style={
+              Object {
+                "fontFamily": "\\"FabricMDL2Icons\\"",
+              }
+            }
           >
             
           </i>
         </span>
       </button>
+    </div>
+    <div
+      aria-atomic="true"
+      aria-live="polite"
+      className=""
+      id="ComboBox6-error"
+      role="region"
+    >
+      
     </div>
   </div>
   <button
@@ -1691,7 +1773,6 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
           font-size: 14px;
           font-weight: 400;
           height: 32px;
-          min-width: 32px;
           outline: transparent;
           padding-bottom: 0;
           padding-left: 4px;
@@ -1702,6 +1783,7 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
           text-decoration: none;
           user-select: none;
           vertical-align: top;
+          width: 32px;
         }
         &::-moz-focus-inner {
           border: 0;
@@ -1793,6 +1875,11 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
             }
         data-icon-name="CaretSolidRight"
         role="presentation"
+        style={
+          Object {
+            "fontFamily": "\\"FabricMDL2Icons-8\\"",
+          }
+        }
       >
         
       </i>
@@ -1817,7 +1904,6 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
           font-size: 14px;
           font-weight: 400;
           height: 32px;
-          min-width: 32px;
           outline: transparent;
           padding-bottom: 0;
           padding-left: 4px;
@@ -1828,6 +1914,7 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
           text-decoration: none;
           user-select: none;
           vertical-align: top;
+          width: 32px;
         }
         &::-moz-focus-inner {
           border: 0;
@@ -1919,6 +2006,11 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
             }
         data-icon-name="Next"
         role="presentation"
+        style={
+          Object {
+            "fontFamily": "\\"FabricMDL2Icons-1\\"",
+          }
+        }
       >
         
       </i>

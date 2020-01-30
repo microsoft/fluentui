@@ -1,19 +1,16 @@
 import * as React from 'react';
 import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
 import { Slider } from 'office-ui-fabric-react/lib/Slider';
-import { Stack } from '../Stack';
-import { IStackStyles, IStackTokens } from '../Stack.types';
+import { Stack, IStackProps, IStackStyles, IStackTokens } from 'office-ui-fabric-react/lib/Stack';
 import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 
-export type HorizontalAlignment = 'start' | 'center' | 'end' | 'space-around' | 'space-between' | 'space-evenly';
-export type VerticalAlignment = 'start' | 'center' | 'end';
 export type Overflow = 'visible' | 'auto' | 'hidden';
 
-export interface IExampleState {
+export interface IExampleOptions {
   stackWidth: number;
   containerHeight: number;
-  horizontalAlignment: HorizontalAlignment;
-  verticalAlignment: VerticalAlignment;
+  horizontalAlignment: IStackProps['horizontalAlign'];
+  verticalAlignment: IStackProps['verticalAlign'];
   overflow: Overflow;
 }
 
@@ -33,30 +30,77 @@ const sectionStackTokens: IStackTokens = { childrenGap: 10 };
 const configureStackTokens: IStackTokens = { childrenGap: 20 };
 const wrapStackTokens: IStackTokens = { childrenGap: 30 };
 
-export class HorizontalStackWrapAdvancedExample extends React.Component<{}, IExampleState> {
-  constructor(props: {}) {
-    super(props);
-    this.state = {
-      stackWidth: 100,
-      containerHeight: 150,
-      horizontalAlignment: 'start',
-      verticalAlignment: 'start',
-      overflow: 'visible'
-    };
+const HorizontalStackWrapAdvancedExampleContent: React.FunctionComponent<IExampleOptions> = props => {
+  const { stackWidth, containerHeight, overflow, horizontalAlignment, verticalAlignment } = props;
+
+  // Mutating styles definition
+  const stackStyles: IStackStyles = {
+    root: {
+      background: DefaultPalette.themeTertiary,
+      width: `${stackWidth}%`,
+      overflow
+    }
+  };
+  const containerStyles: React.CSSProperties = { height: containerHeight };
+
+  return (
+    <div style={containerStyles}>
+      <Stack
+        horizontal
+        verticalFill
+        wrap
+        horizontalAlign={horizontalAlignment}
+        verticalAlign={verticalAlignment}
+        styles={stackStyles}
+        tokens={wrapStackTokens}
+      >
+        {_range(1, 10).map(n => (
+          <span style={itemStyles} key={n}>
+            {n}
+          </span>
+        ))}
+      </Stack>
+    </div>
+  );
+};
+
+function _range(start: number, end: number): number[] {
+  const result = [];
+  for (let i = start; i <= end; i++) {
+    result.push(i);
   }
+  return result;
+}
+
+export class HorizontalStackWrapAdvancedExample extends React.Component<{}, IExampleOptions> {
+  public state: IExampleOptions = {
+    stackWidth: 100,
+    containerHeight: 150,
+    horizontalAlignment: 'start',
+    verticalAlignment: 'start',
+    overflow: 'visible'
+  };
+  private _horizontalAlignmentOptions: IDropdownOption[] = [
+    { key: 'start', text: 'Left' },
+    { key: 'center', text: 'Center' },
+    { key: 'end', text: 'Right' },
+    { key: 'space-around', text: 'Space around' },
+    { key: 'space-between', text: 'Space between' },
+    { key: 'space-evenly', text: 'Space evenly' }
+  ];
+  private _verticalAlignmentOptions: IDropdownOption[] = [
+    { key: 'start', text: 'Top' },
+    { key: 'center', text: 'Center' },
+    { key: 'end', text: 'Bottom' }
+  ];
+  private _overflowOptions: IDropdownOption[] = [
+    { key: 'visible', text: 'Visible' },
+    { key: 'auto', text: 'Auto' },
+    { key: 'hidden', text: 'Hidden' }
+  ];
 
   public render(): JSX.Element {
-    const { stackWidth, containerHeight, overflow, horizontalAlignment, verticalAlignment } = this.state;
-
-    // Mutating styles definition
-    const stackStyles: IStackStyles = {
-      root: {
-        background: DefaultPalette.themeTertiary,
-        width: `${stackWidth}%`,
-        overflow
-      }
-    };
-    const containerStyles: React.CSSProperties = { height: containerHeight };
+    const { overflow, horizontalAlignment, verticalAlignment } = this.state;
 
     return (
       <Stack tokens={sectionStackTokens}>
@@ -83,14 +127,7 @@ export class HorizontalStackWrapAdvancedExample extends React.Component<{}, IExa
               selectedKey={horizontalAlignment}
               placeholder="Select Horizontal Alignment"
               label="Horizontal alignment:"
-              options={[
-                { key: 'start', text: 'Left' },
-                { key: 'center', text: 'Center' },
-                { key: 'end', text: 'Right' },
-                { key: 'space-around', text: 'Space around' },
-                { key: 'space-between', text: 'Space between' },
-                { key: 'space-evenly', text: 'Space evenly' }
-              ]}
+              options={this._horizontalAlignmentOptions}
               onChange={this._onHorizontalAlignChange}
             />
           </Stack.Item>
@@ -99,7 +136,7 @@ export class HorizontalStackWrapAdvancedExample extends React.Component<{}, IExa
               selectedKey={verticalAlignment}
               placeholder="Select Vertical Alignment"
               label="Vertical alignment:"
-              options={[{ key: 'start', text: 'Top' }, { key: 'center', text: 'Center' }, { key: 'end', text: 'Bottom' }]}
+              options={this._verticalAlignmentOptions}
               onChange={this._onVerticalAlignChange}
             />
           </Stack.Item>
@@ -108,34 +145,13 @@ export class HorizontalStackWrapAdvancedExample extends React.Component<{}, IExa
               selectedKey={overflow}
               placeholder="Select Overflow"
               label="Overflow:"
-              options={[{ key: 'visible', text: 'Visible' }, { key: 'auto', text: 'Auto' }, { key: 'hidden', text: 'Hidden' }]}
+              options={this._overflowOptions}
               onChange={this._onOverflowChange}
             />
           </Stack.Item>
         </Stack>
 
-        <div style={containerStyles}>
-          <Stack
-            horizontal
-            verticalFill
-            wrap
-            horizontalAlign={horizontalAlignment}
-            verticalAlign={verticalAlignment}
-            styles={stackStyles}
-            tokens={wrapStackTokens}
-          >
-            <span style={itemStyles}>1</span>
-            <span style={itemStyles}>2</span>
-            <span style={itemStyles}>3</span>
-            <span style={itemStyles}>4</span>
-            <span style={itemStyles}>5</span>
-            <span style={itemStyles}>6</span>
-            <span style={itemStyles}>7</span>
-            <span style={itemStyles}>8</span>
-            <span style={itemStyles}>9</span>
-            <span style={itemStyles}>10</span>
-          </Stack>
-        </div>
+        <HorizontalStackWrapAdvancedExampleContent {...this.state} />
       </Stack>
     );
   }
@@ -149,11 +165,11 @@ export class HorizontalStackWrapAdvancedExample extends React.Component<{}, IExa
   };
 
   private _onHorizontalAlignChange = (ev: React.FormEvent<HTMLDivElement>, option: IDropdownOption): void => {
-    this.setState({ horizontalAlignment: option.key as HorizontalAlignment });
+    this.setState({ horizontalAlignment: option.key as IStackProps['horizontalAlign'] });
   };
 
   private _onVerticalAlignChange = (ev: React.FormEvent<HTMLDivElement>, option: IDropdownOption): void => {
-    this.setState({ verticalAlignment: option.key as VerticalAlignment });
+    this.setState({ verticalAlignment: option.key as IStackProps['verticalAlign'] });
   };
 
   private _onOverflowChange = (ev: React.FormEvent<HTMLDivElement>, option: IDropdownOption): void => {

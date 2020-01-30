@@ -65,8 +65,7 @@ export class SearchBoxBase extends React.Component<ISearchBoxProps, ISearchBoxSt
     }
   }
 
-  // tslint:disable-next-line function-name
-  public UNSAFE_componentWillMount() {
+  public componentWillUnmount() {
     if (this._events) {
       this._events.dispose();
     }
@@ -109,7 +108,7 @@ export class SearchBoxBase extends React.Component<ISearchBoxProps, ISearchBoxSt
     ]);
 
     return (
-      <div ref={this._rootElement} className={classNames.root} onFocusCapture={this._onFocusCapture}>
+      <div role="search" ref={this._rootElement} className={classNames.root} onFocusCapture={this._onFocusCapture}>
         <div className={classNames.iconContainer} onClick={this._onClickFocus} aria-hidden={true}>
           <Icon iconName="Search" {...iconProps} className={classNames.icon} />
         </div>
@@ -123,7 +122,8 @@ export class SearchBoxBase extends React.Component<ISearchBoxProps, ISearchBoxSt
           onKeyDown={this._onKeyDown}
           value={value}
           disabled={disabled}
-          aria-label={ariaLabel ? ariaLabel : placeholder}
+          role="searchbox"
+          aria-label={ariaLabel}
           ref={this._inputElement}
         />
         {value!.length > 0 && (

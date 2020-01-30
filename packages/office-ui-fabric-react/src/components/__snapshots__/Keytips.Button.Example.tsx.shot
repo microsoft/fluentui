@@ -307,6 +307,7 @@ exports[`Component Examples renders Keytips.Button.Example.tsx correctly 1`] = `
       className=
           ms-Button
           ms-Button--default
+          ms-Button--hasMenu
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
@@ -450,6 +451,11 @@ exports[`Component Examples renders Keytips.Button.Example.tsx correctly 1`] = `
               }
           data-icon-name="ChevronDown"
           role="presentation"
+          style={
+            Object {
+              "fontFamily": "\\"FabricMDL2Icons\\"",
+            }
+          }
         >
           
         </i>
@@ -475,13 +481,13 @@ exports[`Component Examples renders Keytips.Button.Example.tsx correctly 1`] = `
           }
           .ms-Fabric--isFocusVisible &:focus:after {
             border: 1px solid #ffffff;
-            bottom: 1px;
+            bottom: 3px;
             content: "";
-            left: 1px;
+            left: 3px;
             outline: 1px solid #605e5c;
             position: absolute;
-            right: 1px;
-            top: 1px;
+            right: 3px;
+            top: 3px;
             z-index: 1;
           }
           @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -513,6 +519,9 @@ exports[`Component Examples renders Keytips.Button.Example.tsx correctly 1`] = `
             background-color: Highlight;
             color: Window;
           }
+          &:hover .ms-Button.is-disabled {
+            color: #a19f9d;
+          }
           @media screen and (-ms-high-contrast: active){&:hover .ms-Button.is-disabled {
             background-color: Window;
             border-color: GrayText;
@@ -541,6 +550,7 @@ exports[`Component Examples renders Keytips.Button.Example.tsx correctly 1`] = `
           className=
               ms-Button
               ms-Button--default
+              ms-Button--hasMenu
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -760,6 +770,11 @@ exports[`Component Examples renders Keytips.Button.Example.tsx correctly 1`] = `
                   }
               data-icon-name="ChevronDown"
               role="presentation"
+              style={
+                Object {
+                  "fontFamily": "\\"FabricMDL2Icons\\"",
+                }
+              }
             >
               
             </i>
@@ -776,6 +791,9 @@ exports[`Component Examples renders Keytips.Button.Example.tsx correctly 1`] = `
                 right: 31px;
                 top: 8px;
                 width: 1px;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                background-color: WindowText;
               }
         />
       </span>
@@ -1105,7 +1123,7 @@ exports[`Component Examples renders Keytips.Button.Example.tsx correctly 1`] = `
         role="switch"
         type="button"
       >
-        <div
+        <span
           className=
               ms-Toggle-thumb
               {
@@ -1115,6 +1133,7 @@ exports[`Component Examples renders Keytips.Button.Example.tsx correctly 1`] = `
                 border-style: solid;
                 border-width: .28em;
                 box-sizing: border-box;
+                display: block;
                 height: 12px;
                 transition: all 0.1s ease;
                 width: 12px;

@@ -88,7 +88,6 @@ exports[`DocumentCard renders DocumentCardImage correctly with a valid image 1`]
             width: 42px;
           }
       data-icon-name="OneNoteLogo"
-      role="presentation"
     >
       
     </i>
@@ -177,7 +176,6 @@ exports[`DocumentCard renders DocumentCardImage correctly with an invalid image 
             width: 120px;
           }
       data-icon-name="OneNoteLogo"
-      role="presentation"
     >
       
     </i>
@@ -221,7 +219,6 @@ exports[`DocumentCard renders DocumentCardImage correctly without an image or ic
             height: 42px;
             width: 42px;
           }
-      role="presentation"
     />
   </div>
 </div>
@@ -271,7 +268,6 @@ exports[`DocumentCard renders DocumentCardImage correctly without an image provi
             width: 120px;
           }
       data-icon-name="OneNoteLogo"
-      role="presentation"
     >
       
     </i>

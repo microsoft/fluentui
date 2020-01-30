@@ -6,7 +6,7 @@ export class PivotTabsExample extends React.Component<any, any> {
   public render(): JSX.Element {
     return (
       <div>
-        <Pivot linkFormat={PivotLinkFormat.tabs}>
+        <Pivot aria-label="Links of Tab Style Pivot Example" linkFormat={PivotLinkFormat.tabs}>
           <PivotItem headerText="Foo">
             <Label>Pivot #1</Label>
           </PivotItem>

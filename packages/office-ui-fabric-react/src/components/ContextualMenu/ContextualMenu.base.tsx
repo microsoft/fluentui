@@ -97,6 +97,7 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
     beakWidth: 16
   };
 
+  private _id: string;
   private _host: HTMLElement;
   private _previousActiveElement: HTMLElement | null;
   private _isFocusingPreviousElement: boolean;
@@ -127,6 +128,7 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
       getMenuClassNames: 'styles'
     });
 
+    this._id = props.id || getId('ContextualMenu');
     this._isFocusingPreviousElement = false;
     this._isScrollIdle = true;
     this._shouldUpdateFocusOnMouseEvent = !this.props.delayUpdateFocusOnHover;
@@ -142,7 +144,7 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
   };
 
   public shouldComponentUpdate(newProps: IContextualMenuProps, newState: IContextualMenuState): boolean {
-    if (this.props.hidden && newProps.hidden) {
+    if (!newProps.shouldUpdateWhenHidden && this.props.hidden && newProps.hidden) {
       // Do not update when hidden.
       return false;
     }
@@ -156,8 +158,9 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
       const newTarget = newProps.target;
       this._setTargetWindowAndElement(newTarget!);
     }
-    if (newProps.hidden !== this.props.hidden) {
-      if (newProps.hidden) {
+
+    if (this._isHidden(newProps) !== this._isHidden(this.props)) {
+      if (this._isHidden(newProps)) {
         this._onMenuClosed();
       } else {
         this._onMenuOpened();
@@ -297,10 +300,9 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
         }
       }
 
-      const calloutStyles =
-        !getMenuClassNames && this._classNames.subComponentStyles
-          ? (this._classNames.subComponentStyles.callout as IStyleFunctionOrObject<ICalloutContentStyleProps, ICalloutContentStyles>)
-          : undefined;
+      const calloutStyles = this._classNames.subComponentStyles
+        ? (this._classNames.subComponentStyles.callout as IStyleFunctionOrObject<ICalloutContentStyleProps, ICalloutContentStyles>)
+        : undefined;
 
       return (
         <Callout
@@ -361,6 +363,15 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
     } else {
       return null;
     }
+  }
+
+  /**
+   * Return whether the contextual menu is hidden.
+   * Undefined value for hidden is equivalent to hidden being false.
+   * @param props - Props for the component
+   */
+  private _isHidden(props: IContextualMenuProps) {
+    return !!props.hidden;
   }
 
   private _onMenuOpened() {
@@ -552,11 +563,18 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
     }
 
     let headerItem;
+    let groupProps;
     if (sectionProps.title) {
+      const id = this._id + sectionProps.title;
       const headerContextualMenuItem: IContextualMenuItem = {
         key: `section-${sectionProps.title}-title`,
         itemType: ContextualMenuItemType.Header,
-        text: sectionProps.title
+        text: sectionProps.title,
+        id: id
+      };
+      groupProps = {
+        role: 'group',
+        'aria-labelledby': id
       };
       headerItem = this._renderHeaderMenuItem(headerContextualMenuItem, menuClassNames, index, hasCheckmarks, hasIcons);
     }
@@ -564,7 +582,7 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
     if (sectionProps.items && sectionProps.items.length > 0) {
       return (
         <li role="presentation" key={sectionProps.key || sectionItem.key || `section-${index}`}>
-          <div role="group">
+          <div {...groupProps}>
             <ul className={this._classNames.list}>
               {sectionProps.topDivider && this._renderSeparator(index, menuClassNames, true, true)}
               {headerItem && this._renderListItem(headerItem, sectionItem.key || index, menuClassNames, sectionItem.title)}
@@ -632,10 +650,10 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
     hasIcons: boolean
   ): React.ReactNode {
     const { contextualMenuItemAs: ChildrenRenderer = ContextualMenuItem } = this.props;
-    const { itemProps } = item;
+    const { itemProps, id } = item;
     const divHtmlProperties = itemProps && getNativeProps<React.HTMLAttributes<HTMLDivElement>>(itemProps, divProperties);
     return (
-      <div className={this._classNames.header} {...divHtmlProperties} style={item.style}>
+      <div id={id} className={this._classNames.header} {...divHtmlProperties} style={item.style}>
         <ChildrenRenderer
           item={item}
           classNames={classNames}
@@ -829,9 +847,9 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
 
     if (shouldHandleKey(ev)) {
       this._isFocusingPreviousElement = true;
+      this.dismiss(ev, dismissAllMenus);
       ev.preventDefault();
       ev.stopPropagation();
-      this.dismiss(ev, dismissAllMenus);
       handled = true;
     }
 
@@ -842,7 +860,7 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
    * Checks if the submenu should be closed
    */
   private _shouldCloseSubMenu = (ev: React.KeyboardEvent<HTMLElement>): boolean => {
-    const submenuCloseKey = getRTL() ? KeyCodes.right : KeyCodes.left;
+    const submenuCloseKey = getRTL(this.props.theme) ? KeyCodes.right : KeyCodes.left;
 
     if (ev.which !== submenuCloseKey || !this.props.isSubMenu) {
       return false;
@@ -1070,7 +1088,7 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
   };
 
   private _onItemKeyDown = (item: any, ev: React.KeyboardEvent<HTMLElement>): void => {
-    const openKey = getRTL() ? KeyCodes.left : KeyCodes.right;
+    const openKey = getRTL(this.props.theme) ? KeyCodes.left : KeyCodes.right;
 
     if (
       !item.disabled &&
@@ -1122,7 +1140,7 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
         id: this.state.subMenuId,
         shouldFocusOnMount: true,
         shouldFocusOnContainer: this.state.expandedByMouseClick,
-        directionalHint: getRTL() ? DirectionalHint.leftTopEdge : DirectionalHint.rightTopEdge,
+        directionalHint: getRTL(this.props.theme) ? DirectionalHint.leftTopEdge : DirectionalHint.rightTopEdge,
         className: this.props.className,
         gapSpace: 0,
         isBeakVisible: false
@@ -1177,16 +1195,18 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
   };
 
   private _setTargetWindowAndElement(target: Target): void {
+    const currentElement = this._host;
+
     if (target) {
       if (typeof target === 'string') {
-        const currentDoc: Document = getDocument()!;
+        const currentDoc: Document = getDocument(currentElement)!;
         this._target = currentDoc ? (currentDoc.querySelector(target) as Element) : null;
-        this._targetWindow = getWindow()!;
-      } else if ((target as MouseEvent).stopPropagation) {
-        this._targetWindow = getWindow((target as MouseEvent).toElement as HTMLElement)!;
+        this._targetWindow = getWindow(currentElement)!;
+      } else if (!!(target as MouseEvent).stopPropagation) {
+        this._targetWindow = getWindow((target as MouseEvent).target as HTMLElement)!;
         this._target = target as MouseEvent;
       } else if ((target as IPoint).x !== undefined && (target as IPoint).y !== undefined) {
-        this._targetWindow = getWindow()!;
+        this._targetWindow = getWindow(currentElement)!;
         this._target = target as IPoint;
       } else if ((target as React.RefObject<Element>).current !== undefined) {
         this._target = (target as React.RefObject<Element>).current;
@@ -1197,7 +1217,7 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
         this._target = target as Element;
       }
     } else {
-      this._targetWindow = getWindow()!;
+      this._targetWindow = getWindow(currentElement)!;
     }
   }
 

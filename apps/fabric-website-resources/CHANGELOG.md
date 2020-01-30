@@ -1,7 +1,80 @@
 # Change Log - @uifabric/fabric-website-resources
 
-This log was last generated on Fri, 23 Aug 2019 12:35:28 GMT and should not be manually modified.
+This log was last generated on Tue, 28 Jan 2020 12:43:24 GMT and should not be manually modified.
 
+## 7.5.0
+Tue, 28 Jan 2020 12:43:24 GMT
+
+### Minor changes
+
+- Add dark theme to fabric resources site. (marygans@microsoft.com)
+## 7.4.6
+Fri, 17 Jan 2020 02:32:17 GMT
+
+### Patches
+
+- Update tslib minver to first version containing __spreadArrays helper due to changes in how TS emits spreads. (jagore@microsoft.com)
+## 7.4.5
+Thu, 09 Jan 2020 12:34:52 GMT
+
+### Patches
+
+- Fix bundling issues (elcraig@microsoft.com)
+## 7.4.4
+Wed, 08 Jan 2020 17:02:57 GMT
+
+### Patches
+
+- bumping load-themed-styles to take advantage of es6 version of it (kchau@microsoft.com)
+- For API reference pages, show all property tables on page load (elcraig@microsoft.com)
+## 7.4.3
+Tue, 10 Dec 2019 12:34:47 GMT
+
+### Patches
+
+- Theme Designer: use createTheme and Customizations.applySettings instead of loadTheme (aneeshak@microsoft.com)
+## 7.4.2
+Thu, 28 Nov 2019 12:32:23 GMT
+
+### Patches
+
+- Update fabric core dependency in other package.json files (v-mare@microsoft.com)
+## 7.4.1
+Wed, 06 Nov 2019 12:34:07 GMT
+
+### Patches
+
+- Remove some unused things (elcraig@microsoft.com)
+## 7.4.0
+Mon, 28 Oct 2019 22:25:45 GMT
+
+### Minor changes
+
+- Enable live editor and update bundling (elcraig@microsoft.com)
+## 7.3.2
+Thu, 03 Oct 2019 23:14:46 GMT
+
+### Patches
+
+- Fixes publish issue from beachball (odbuild@microsoft.com)
+## 7.3.0
+Fri, 13 Sep 2019 12:34:39 GMT
+
+### Minor changes
+
+- add accessibility section and add content for modal (mgodbolt@microsoft.com)
+## 7.2.7
+Wed, 04 Sep 2019 04:09:58 GMT
+
+### Patches
+
+- fix version file (kchau@microsoft.com)
+## 7.2.6
+Tue, 27 Aug 2019 12:33:51 GMT
+
+### Patches
+
+- Update how DemoPage creates ExampleCards (elcraig@microsoft.com)
 ## 7.2.5
 Fri, 23 Aug 2019 12:35:28 GMT
 

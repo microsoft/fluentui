@@ -23,7 +23,8 @@ export class TeachingBubbleSmallHeadlineExample extends React.Component<{}, ITea
   public render(): JSX.Element {
     const { isTeachingBubbleVisible } = this.state;
     const examplePrimaryButton: IButtonProps = {
-      children: 'Try it out'
+      children: 'Try it out',
+      onClick: this._onDismiss
     };
 
     return (
@@ -40,7 +41,7 @@ export class TeachingBubbleSmallHeadlineExample extends React.Component<{}, ITea
               target={this._menuButtonElement}
               hasSmallHeadline={true}
               onDismiss={this._onDismiss}
-              hasCloseIcon={true}
+              hasCloseButton={true}
               closeButtonAriaLabel="Close"
               primaryButtonProps={examplePrimaryButton}
               headline="Discover what’s trending around you"

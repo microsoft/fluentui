@@ -46,6 +46,7 @@ lib-commonjs
 lib-es2015
 coverage
 dist
+dist-storybook
 test-dependencies
 screenshots
 
@@ -129,3 +130,6 @@ rush.json
 
 # package manifest
 /package-manifest.json
+
+# Copied monaco-editor files
+/packages/monaco-editor/esm

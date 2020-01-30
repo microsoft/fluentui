@@ -1,7 +1,98 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Fri, 23 Aug 2019 12:35:28 GMT and should not be manually modified.
+This log was last generated on Mon, 27 Jan 2020 03:59:43 GMT and should not be manually modified.
 
+## 0.139.6
+Mon, 27 Jan 2020 03:59:43 GMT
+
+### Patches
+
+- Provided accessability for stacked bar chart (v-satgar@microsoft.com)
+## 0.139.4
+Thu, 23 Jan 2020 12:32:26 GMT
+
+### Patches
+
+- adding minimun legend container height (v-sivsar@microsoft.com)
+- closing callout on pressing esc key (v-sivsar@microsoft.com)
+## 0.139.2
+Fri, 17 Jan 2020 02:32:17 GMT
+
+### Patches
+
+- Update tslib minver to first version containing __spreadArrays helper due to changes in how TS emits spreads. (jagore@microsoft.com)
+## 0.139.1
+Wed, 08 Jan 2020 17:02:57 GMT
+
+### Patches
+
+- bumping load-themed-styles to take advantage of es6 version of it (kchau@microsoft.com)
+## 0.139.0
+Tue, 26 Nov 2019 12:32:11 GMT
+
+### Minor changes
+
+- removing the sticky={true} property from the hover card as the card should hide when the mouse goes away from the target element, and also added the gap space 12 to avoid the flickering issue of the hover card (v-sivsar@microsoft.com)
+## 0.138.1
+Tue, 19 Nov 2019 12:29:10 GMT
+
+### Patches
+
+- Fix the bug that x-axis for linechart does not display properly (dajiang@microsoft.com)
+## 0.138.0
+Tue, 05 Nov 2019 12:25:16 GMT
+
+### Minor changes
+
+- Enabled wrap lines for legends (dajiang@microsoft.com)
+## 0.137.2
+Thu, 24 Oct 2019 12:31:42 GMT
+
+### Patches
+
+- Change gapSpace to 10 to resolve line chart flickering issue (v-ragor@microsoft.com)
+## 0.137.1
+Tue, 22 Oct 2019 12:32:05 GMT
+
+### Patches
+
+- Fix getDerivedStateFromProps signatures (elcraig@microsoft.com)
+## 0.137.0
+Wed, 09 Oct 2019 22:25:09 GMT
+
+### Minor changes
+
+- Add placeholder mode to StackedBarChart (dajiang@microsoft.com)
+## 0.136.2
+Thu, 03 Oct 2019 23:14:46 GMT
+
+### Patches
+
+- Fixes publish issue from beachball (odbuild@microsoft.com)
+## 0.136.0
+Thu, 03 Oct 2019 01:14:35 GMT
+
+### Minor changes
+
+- Add benchmark triangle in stackedBarChart (dajiang@microsoft.com)
+## 0.135.0
+Wed, 11 Sep 2019 12:35:47 GMT
+
+### Minor changes
+
+- Expose hideLegend prop for stacked bar chart (v-ragor@microsoft.com)
+## 0.134.4
+Wed, 04 Sep 2019 04:09:58 GMT
+
+### Patches
+
+- fix version file (kchau@microsoft.com)
+## 0.134.3
+Tue, 27 Aug 2019 12:33:51 GMT
+
+### Patches
+
+- Remove relative imports from examples and fix incorrectly named example files (elcraig@microsoft.com)
 ## 0.134.2
 Fri, 23 Aug 2019 12:35:28 GMT
 

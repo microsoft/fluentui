@@ -144,6 +144,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                   font-size: 14px;
                   font-weight: 400;
                 }
+            role="presentation"
           >
             <div
               className=
@@ -170,6 +171,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                     border: 1px solid WindowText;
                     top: 9px;
                   }
+              role="presentation"
             />
           </div>
           <div
@@ -292,6 +294,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                   font-size: 14px;
                   font-weight: 400;
                 }
+            role="presentation"
           >
             <div
               className=
@@ -303,6 +306,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                     text-align: center;
                     width: 24px;
                   }
+              role="presentation"
             >
               <div
                 className=
@@ -333,7 +337,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                 }
               >
                 <img
-                  alt=""
+                  alt="Annie Lindqvist, status is online."
                   className=
                       ms-Image-image
                       ms-Image-image--cover
@@ -378,6 +382,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                       background-color: Highlight;
                       border-color: Window;
                     }
+                role="presentation"
               />
             </div>
           </div>
@@ -425,6 +430,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                   font-size: 14px;
                   font-weight: 400;
                 }
+            role="presentation"
           >
             <div
               className=
@@ -436,6 +442,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                     text-align: center;
                     width: 48px;
                   }
+              role="presentation"
             >
               <div
                 className=
@@ -466,7 +473,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                 }
               >
                 <img
-                  alt=""
+                  alt="Annie Lindqvist, status is online."
                   className=
                       ms-Image-image
                       ms-Image-image--cover
@@ -511,6 +518,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                       background-color: Highlight;
                       border-color: Window;
                     }
+                role="presentation"
               >
                 <i
                   aria-hidden={true}
@@ -533,7 +541,6 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                         color: Window;
                       }
                   data-icon-name="SkypeCheck"
-                  role="presentation"
                 >
                   
                 </i>
@@ -584,6 +591,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                   font-size: 14px;
                   font-weight: 400;
                 }
+            role="presentation"
           >
             <div
               className=
@@ -595,6 +603,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                     text-align: center;
                     width: 72px;
                   }
+              role="presentation"
             >
               <div
                 className=
@@ -625,7 +634,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                 }
               >
                 <img
-                  alt=""
+                  alt="Annie Lindqvist, status is online."
                   className=
                       ms-Image-image
                       ms-Image-image--cover
@@ -670,6 +679,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                       background-color: Highlight;
                       border-color: Window;
                     }
+                role="presentation"
               >
                 <i
                   aria-hidden={true}
@@ -692,7 +702,6 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                         color: Window;
                       }
                   data-icon-name="SkypeCheck"
-                  role="presentation"
                 >
                   
                 </i>
@@ -814,6 +823,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                   font-size: 14px;
                   font-weight: 400;
                 }
+            role="presentation"
           >
             <div
               className=
@@ -858,6 +868,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                     top: 1px;
                     width: calc(100% - 2px);
                   }
+              role="presentation"
             />
           </div>
           <div
@@ -980,6 +991,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                   font-size: 14px;
                   font-weight: 400;
                 }
+            role="presentation"
           >
             <div
               className=
@@ -991,6 +1003,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                     text-align: center;
                     width: 24px;
                   }
+              role="presentation"
             >
               <div
                 className=
@@ -1021,7 +1034,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                 }
               >
                 <img
-                  alt=""
+                  alt="Annie Lindqvist, status is online and out of office."
                   className=
                       ms-Image-image
                       ms-Image-image--cover
@@ -1084,6 +1097,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                       top: 1px;
                       width: calc(100% - 2px);
                     }
+                role="presentation"
               />
             </div>
           </div>
@@ -1131,6 +1145,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                   font-size: 14px;
                   font-weight: 400;
                 }
+            role="presentation"
           >
             <div
               className=
@@ -1142,6 +1157,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                     text-align: center;
                     width: 48px;
                   }
+              role="presentation"
             >
               <div
                 className=
@@ -1172,7 +1188,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                 }
               >
                 <img
-                  alt=""
+                  alt="Annie Lindqvist, status is online and out of office."
                   className=
                       ms-Image-image
                       ms-Image-image--cover
@@ -1235,6 +1251,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                       top: 1px;
                       width: calc(100% - 2px);
                     }
+                role="presentation"
               >
                 <i
                   aria-hidden={true}
@@ -1258,7 +1275,6 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                         color: Window;
                       }
                   data-icon-name="SkypeCheck"
-                  role="presentation"
                 >
                   
                 </i>
@@ -1309,6 +1325,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                   font-size: 14px;
                   font-weight: 400;
                 }
+            role="presentation"
           >
             <div
               className=
@@ -1320,6 +1337,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                     text-align: center;
                     width: 72px;
                   }
+              role="presentation"
             >
               <div
                 className=
@@ -1350,7 +1368,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                 }
               >
                 <img
-                  alt=""
+                  alt="Annie Lindqvist, status is online and out of office."
                   className=
                       ms-Image-image
                       ms-Image-image--cover
@@ -1413,6 +1431,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                       top: 1px;
                       width: calc(100% - 2px);
                     }
+                role="presentation"
               >
                 <i
                   aria-hidden={true}
@@ -1436,7 +1455,6 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                         color: Window;
                       }
                   data-icon-name="SkypeCheck"
-                  role="presentation"
                 >
                   
                 </i>
@@ -1580,6 +1598,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                   font-size: 14px;
                   font-weight: 400;
                 }
+            role="presentation"
           >
             <div
               className=
@@ -1606,6 +1625,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                     border: 1px solid WindowText;
                     top: 9px;
                   }
+              role="presentation"
             />
           </div>
           <div
@@ -1728,6 +1748,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                   font-size: 14px;
                   font-weight: 400;
                 }
+            role="presentation"
           >
             <div
               className=
@@ -1739,6 +1760,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                     text-align: center;
                     width: 24px;
                   }
+              role="presentation"
             >
               <div
                 className=
@@ -1769,7 +1791,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                 }
               >
                 <img
-                  alt=""
+                  alt="Annie Lindqvist, status is away."
                   className=
                       ms-Image-image
                       ms-Image-image--cover
@@ -1814,6 +1836,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                       background-color: WindowText;
                       border-color: Window;
                     }
+                role="presentation"
               />
             </div>
           </div>
@@ -1861,6 +1884,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                   font-size: 14px;
                   font-weight: 400;
                 }
+            role="presentation"
           >
             <div
               className=
@@ -1872,6 +1896,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                     text-align: center;
                     width: 48px;
                   }
+              role="presentation"
             >
               <div
                 className=
@@ -1902,7 +1927,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                 }
               >
                 <img
-                  alt=""
+                  alt="Annie Lindqvist, status is away."
                   className=
                       ms-Image-image
                       ms-Image-image--cover
@@ -1947,6 +1972,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                       background-color: WindowText;
                       border-color: Window;
                     }
+                role="presentation"
               >
                 <i
                   aria-hidden={true}
@@ -1971,7 +1997,6 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                         color: Window;
                       }
                   data-icon-name="SkypeClock"
-                  role="presentation"
                 >
                   
                 </i>
@@ -2022,6 +2047,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                   font-size: 14px;
                   font-weight: 400;
                 }
+            role="presentation"
           >
             <div
               className=
@@ -2033,6 +2059,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                     text-align: center;
                     width: 72px;
                   }
+              role="presentation"
             >
               <div
                 className=
@@ -2063,7 +2090,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                 }
               >
                 <img
-                  alt=""
+                  alt="Annie Lindqvist, status is away."
                   className=
                       ms-Image-image
                       ms-Image-image--cover
@@ -2108,6 +2135,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                       background-color: WindowText;
                       border-color: Window;
                     }
+                role="presentation"
               >
                 <i
                   aria-hidden={true}
@@ -2132,7 +2160,6 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                         color: Window;
                       }
                   data-icon-name="SkypeClock"
-                  role="presentation"
                 >
                   
                 </i>
@@ -2254,6 +2281,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                   font-size: 14px;
                   font-weight: 400;
                 }
+            role="presentation"
           >
             <div
               className=
@@ -2298,6 +2326,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                     top: 1px;
                     width: calc(100% - 2px);
                   }
+              role="presentation"
             />
           </div>
           <div
@@ -2420,6 +2449,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                   font-size: 14px;
                   font-weight: 400;
                 }
+            role="presentation"
           >
             <div
               className=
@@ -2431,6 +2461,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                     text-align: center;
                     width: 24px;
                   }
+              role="presentation"
             >
               <div
                 className=
@@ -2461,7 +2492,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                 }
               >
                 <img
-                  alt=""
+                  alt="Annie Lindqvist, status is away and out of office."
                   className=
                       ms-Image-image
                       ms-Image-image--cover
@@ -2524,6 +2555,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                       top: 1px;
                       width: calc(100% - 2px);
                     }
+                role="presentation"
               />
             </div>
           </div>
@@ -2571,6 +2603,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                   font-size: 14px;
                   font-weight: 400;
                 }
+            role="presentation"
           >
             <div
               className=
@@ -2582,6 +2615,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                     text-align: center;
                     width: 48px;
                   }
+              role="presentation"
             >
               <div
                 className=
@@ -2612,7 +2646,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                 }
               >
                 <img
-                  alt=""
+                  alt="Annie Lindqvist, status is away and out of office."
                   className=
                       ms-Image-image
                       ms-Image-image--cover
@@ -2675,6 +2709,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                       top: 1px;
                       width: calc(100% - 2px);
                     }
+                role="presentation"
               >
                 <i
                   aria-hidden={true}
@@ -2686,7 +2721,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                         border-color: #B4009E;
                         color: #B4009E;
                         display: inline-block;
-                        font-family: "FabricMDL2Icons-15";
+                        font-family: "FabricMDL2Icons-16";
                         font-size: 6px;
                         font-style: normal;
                         font-weight: normal;
@@ -2699,7 +2734,6 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                         color: Window;
                       }
                   data-icon-name="SkypeArrow"
-                  role="presentation"
                 >
                   
                 </i>
@@ -2750,6 +2784,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                   font-size: 14px;
                   font-weight: 400;
                 }
+            role="presentation"
           >
             <div
               className=
@@ -2761,6 +2796,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                     text-align: center;
                     width: 72px;
                   }
+              role="presentation"
             >
               <div
                 className=
@@ -2791,7 +2827,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                 }
               >
                 <img
-                  alt=""
+                  alt="Annie Lindqvist, status is away and out of office."
                   className=
                       ms-Image-image
                       ms-Image-image--cover
@@ -2854,6 +2890,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                       top: 1px;
                       width: calc(100% - 2px);
                     }
+                role="presentation"
               >
                 <i
                   aria-hidden={true}
@@ -2865,7 +2902,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                         border-color: #B4009E;
                         color: #B4009E;
                         display: inline-block;
-                        font-family: "FabricMDL2Icons-15";
+                        font-family: "FabricMDL2Icons-16";
                         font-size: 12px;
                         font-style: normal;
                         font-weight: normal;
@@ -2878,7 +2915,6 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                         color: Window;
                       }
                   data-icon-name="SkypeArrow"
-                  role="presentation"
                 >
                   
                 </i>
@@ -3022,6 +3058,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                   font-size: 14px;
                   font-weight: 400;
                 }
+            role="presentation"
           >
             <div
               className=
@@ -3048,6 +3085,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                     border: 1px solid WindowText;
                     top: 9px;
                   }
+              role="presentation"
             />
           </div>
           <div
@@ -3170,6 +3208,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                   font-size: 14px;
                   font-weight: 400;
                 }
+            role="presentation"
           >
             <div
               className=
@@ -3181,6 +3220,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                     text-align: center;
                     width: 24px;
                   }
+              role="presentation"
             >
               <div
                 className=
@@ -3211,7 +3251,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                 }
               >
                 <img
-                  alt=""
+                  alt="Annie Lindqvist, status is busy"
                   className=
                       ms-Image-image
                       ms-Image-image--cover
@@ -3256,6 +3296,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                       background-color: WindowText;
                       border-color: Window;
                     }
+                role="presentation"
               />
             </div>
           </div>
@@ -3303,6 +3344,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                   font-size: 14px;
                   font-weight: 400;
                 }
+            role="presentation"
           >
             <div
               className=
@@ -3314,6 +3356,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                     text-align: center;
                     width: 48px;
                   }
+              role="presentation"
             >
               <div
                 className=
@@ -3344,7 +3387,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                 }
               >
                 <img
-                  alt=""
+                  alt="Annie Lindqvist, status is busy"
                   className=
                       ms-Image-image
                       ms-Image-image--cover
@@ -3389,6 +3432,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                       background-color: WindowText;
                       border-color: Window;
                     }
+                role="presentation"
               >
                 <i
                   aria-hidden={true}
@@ -3407,7 +3451,6 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                         color: Window;
                       }
                   data-icon-name=""
-                  role="presentation"
                 />
               </div>
             </div>
@@ -3456,6 +3499,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                   font-size: 14px;
                   font-weight: 400;
                 }
+            role="presentation"
           >
             <div
               className=
@@ -3467,6 +3511,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                     text-align: center;
                     width: 72px;
                   }
+              role="presentation"
             >
               <div
                 className=
@@ -3497,7 +3542,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                 }
               >
                 <img
-                  alt=""
+                  alt="Annie Lindqvist, status is busy"
                   className=
                       ms-Image-image
                       ms-Image-image--cover
@@ -3542,6 +3587,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                       background-color: WindowText;
                       border-color: Window;
                     }
+                role="presentation"
               >
                 <i
                   aria-hidden={true}
@@ -3560,7 +3606,6 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                         color: Window;
                       }
                   data-icon-name=""
-                  role="presentation"
                 />
               </div>
             </div>
@@ -3680,6 +3725,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                   font-size: 14px;
                   font-weight: 400;
                 }
+            role="presentation"
           >
             <div
               className=
@@ -3724,6 +3770,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                     top: 1px;
                     width: calc(100% - 2px);
                   }
+              role="presentation"
             />
           </div>
           <div
@@ -3846,6 +3893,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                   font-size: 14px;
                   font-weight: 400;
                 }
+            role="presentation"
           >
             <div
               className=
@@ -3857,6 +3905,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                     text-align: center;
                     width: 24px;
                   }
+              role="presentation"
             >
               <div
                 className=
@@ -3887,7 +3936,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                 }
               >
                 <img
-                  alt=""
+                  alt="Annie Lindqvist, status is busy and out of office"
                   className=
                       ms-Image-image
                       ms-Image-image--cover
@@ -3950,6 +3999,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                       top: 1px;
                       width: calc(100% - 2px);
                     }
+                role="presentation"
               />
             </div>
           </div>
@@ -3997,6 +4047,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                   font-size: 14px;
                   font-weight: 400;
                 }
+            role="presentation"
           >
             <div
               className=
@@ -4008,6 +4059,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                     text-align: center;
                     width: 48px;
                   }
+              role="presentation"
             >
               <div
                 className=
@@ -4038,7 +4090,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                 }
               >
                 <img
-                  alt=""
+                  alt="Annie Lindqvist, status is busy and out of office"
                   className=
                       ms-Image-image
                       ms-Image-image--cover
@@ -4101,6 +4153,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                       top: 1px;
                       width: calc(100% - 2px);
                     }
+                role="presentation"
               >
                 <i
                   aria-hidden={true}
@@ -4120,7 +4173,6 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                         color: Window;
                       }
                   data-icon-name=""
-                  role="presentation"
                 />
               </div>
             </div>
@@ -4169,6 +4221,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                   font-size: 14px;
                   font-weight: 400;
                 }
+            role="presentation"
           >
             <div
               className=
@@ -4180,6 +4233,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                     text-align: center;
                     width: 72px;
                   }
+              role="presentation"
             >
               <div
                 className=
@@ -4210,7 +4264,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                 }
               >
                 <img
-                  alt=""
+                  alt="Annie Lindqvist, status is busy and out of office"
                   className=
                       ms-Image-image
                       ms-Image-image--cover
@@ -4273,6 +4327,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                       top: 1px;
                       width: calc(100% - 2px);
                     }
+                role="presentation"
               >
                 <i
                   aria-hidden={true}
@@ -4292,7 +4347,6 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                         color: Window;
                       }
                   data-icon-name=""
-                  role="presentation"
                 />
               </div>
             </div>
@@ -4434,6 +4488,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                   font-size: 14px;
                   font-weight: 400;
                 }
+            role="presentation"
           >
             <div
               className=
@@ -4460,6 +4515,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                     border: 1px solid WindowText;
                     top: 9px;
                   }
+              role="presentation"
             />
           </div>
           <div
@@ -4582,6 +4638,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                   font-size: 14px;
                   font-weight: 400;
                 }
+            role="presentation"
           >
             <div
               className=
@@ -4593,6 +4650,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                     text-align: center;
                     width: 24px;
                   }
+              role="presentation"
             >
               <div
                 className=
@@ -4623,7 +4681,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                 }
               >
                 <img
-                  alt=""
+                  alt="Annie Lindqvist, status is do not disturb"
                   className=
                       ms-Image-image
                       ms-Image-image--cover
@@ -4668,6 +4726,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                       background-color: WindowText;
                       border-color: Window;
                     }
+                role="presentation"
               />
             </div>
           </div>
@@ -4715,6 +4774,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                   font-size: 14px;
                   font-weight: 400;
                 }
+            role="presentation"
           >
             <div
               className=
@@ -4726,6 +4786,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                     text-align: center;
                     width: 48px;
                   }
+              role="presentation"
             >
               <div
                 className=
@@ -4756,7 +4817,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                 }
               >
                 <img
-                  alt=""
+                  alt="Annie Lindqvist, status is do not disturb"
                   className=
                       ms-Image-image
                       ms-Image-image--cover
@@ -4801,6 +4862,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                       background-color: WindowText;
                       border-color: Window;
                     }
+                role="presentation"
               >
                 <i
                   aria-hidden={true}
@@ -4823,7 +4885,6 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                         color: Window;
                       }
                   data-icon-name="SkypeMinus"
-                  role="presentation"
                 >
                   
                 </i>
@@ -4874,6 +4935,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                   font-size: 14px;
                   font-weight: 400;
                 }
+            role="presentation"
           >
             <div
               className=
@@ -4885,6 +4947,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                     text-align: center;
                     width: 72px;
                   }
+              role="presentation"
             >
               <div
                 className=
@@ -4915,7 +4978,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                 }
               >
                 <img
-                  alt=""
+                  alt="Annie Lindqvist, status is do not disturb"
                   className=
                       ms-Image-image
                       ms-Image-image--cover
@@ -4960,6 +5023,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                       background-color: WindowText;
                       border-color: Window;
                     }
+                role="presentation"
               >
                 <i
                   aria-hidden={true}
@@ -4982,7 +5046,6 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                         color: Window;
                       }
                   data-icon-name="SkypeMinus"
-                  role="presentation"
                 >
                   
                 </i>
@@ -5104,6 +5167,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                   font-size: 14px;
                   font-weight: 400;
                 }
+            role="presentation"
           >
             <div
               className=
@@ -5148,6 +5212,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                     top: 1px;
                     width: calc(100% - 2px);
                   }
+              role="presentation"
             />
           </div>
           <div
@@ -5270,6 +5335,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                   font-size: 14px;
                   font-weight: 400;
                 }
+            role="presentation"
           >
             <div
               className=
@@ -5281,6 +5347,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                     text-align: center;
                     width: 24px;
                   }
+              role="presentation"
             >
               <div
                 className=
@@ -5311,7 +5378,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                 }
               >
                 <img
-                  alt=""
+                  alt="Annie Lindqvist, status is do not disturb and out of office"
                   className=
                       ms-Image-image
                       ms-Image-image--cover
@@ -5374,6 +5441,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                       top: 1px;
                       width: calc(100% - 2px);
                     }
+                role="presentation"
               />
             </div>
           </div>
@@ -5421,6 +5489,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                   font-size: 14px;
                   font-weight: 400;
                 }
+            role="presentation"
           >
             <div
               className=
@@ -5432,6 +5501,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                     text-align: center;
                     width: 48px;
                   }
+              role="presentation"
             >
               <div
                 className=
@@ -5462,7 +5532,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                 }
               >
                 <img
-                  alt=""
+                  alt="Annie Lindqvist, status is do not disturb and out of office"
                   className=
                       ms-Image-image
                       ms-Image-image--cover
@@ -5525,6 +5595,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                       top: 1px;
                       width: calc(100% - 2px);
                     }
+                role="presentation"
               >
                 <i
                   aria-hidden={true}
@@ -5548,7 +5619,6 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                         color: Window;
                       }
                   data-icon-name="SkypeMinus"
-                  role="presentation"
                 >
                   
                 </i>
@@ -5599,6 +5669,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                   font-size: 14px;
                   font-weight: 400;
                 }
+            role="presentation"
           >
             <div
               className=
@@ -5610,6 +5681,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                     text-align: center;
                     width: 72px;
                   }
+              role="presentation"
             >
               <div
                 className=
@@ -5640,7 +5712,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                 }
               >
                 <img
-                  alt=""
+                  alt="Annie Lindqvist, status is do not disturb and out of office"
                   className=
                       ms-Image-image
                       ms-Image-image--cover
@@ -5703,6 +5775,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                       top: 1px;
                       width: calc(100% - 2px);
                     }
+                role="presentation"
               >
                 <i
                   aria-hidden={true}
@@ -5726,7 +5799,6 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                         color: Window;
                       }
                   data-icon-name="SkypeMinus"
-                  role="presentation"
                 >
                   
                 </i>
@@ -5828,6 +5900,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
               font-size: 14px;
               font-weight: 400;
             }
+        role="presentation"
       >
         <div
           className=
@@ -5877,6 +5950,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                 top: 1px;
                 width: calc(100% - 2px);
               }
+          role="presentation"
         />
       </div>
       <div
@@ -5999,6 +6073,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
               font-size: 14px;
               font-weight: 400;
             }
+        role="presentation"
       >
         <div
           className=
@@ -6010,6 +6085,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                 text-align: center;
                 width: 24px;
               }
+          role="presentation"
         >
           <div
             className=
@@ -6040,7 +6116,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
             }
           >
             <img
-              alt=""
+              alt="Annie Lindqvist, status is blocked"
               className=
                   ms-Image-image
                   ms-Image-image--cover
@@ -6108,6 +6184,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                   top: 1px;
                   width: calc(100% - 2px);
                 }
+            role="presentation"
           />
         </div>
       </div>
@@ -6155,6 +6232,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
               font-size: 14px;
               font-weight: 400;
             }
+        role="presentation"
       >
         <div
           className=
@@ -6166,6 +6244,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                 text-align: center;
                 width: 48px;
               }
+          role="presentation"
         >
           <div
             className=
@@ -6196,7 +6275,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
             }
           >
             <img
-              alt=""
+              alt="Annie Lindqvist, status is blocked"
               className=
                   ms-Image-image
                   ms-Image-image--cover
@@ -6274,6 +6353,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                   top: 1px;
                   width: calc(100% - 2px);
                 }
+            role="presentation"
           >
             <i
               aria-hidden={true}
@@ -6292,7 +6372,6 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                     color: Window;
                   }
               data-icon-name=""
-              role="presentation"
             />
           </div>
         </div>
@@ -6341,6 +6420,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
               font-size: 14px;
               font-weight: 400;
             }
+        role="presentation"
       >
         <div
           className=
@@ -6352,6 +6432,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                 text-align: center;
                 width: 72px;
               }
+          role="presentation"
         >
           <div
             className=
@@ -6382,7 +6463,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
             }
           >
             <img
-              alt=""
+              alt="Annie Lindqvist, status is blocked"
               className=
                   ms-Image-image
                   ms-Image-image--cover
@@ -6460,6 +6541,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                   top: 1px;
                   width: calc(100% - 2px);
                 }
+            role="presentation"
           >
             <i
               aria-hidden={true}
@@ -6478,7 +6560,6 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                     color: Window;
                   }
               data-icon-name=""
-              role="presentation"
             />
           </div>
         </div>
@@ -6618,6 +6699,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                   font-size: 14px;
                   font-weight: 400;
                 }
+            role="presentation"
           >
             <div
               className=
@@ -6662,6 +6744,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                     top: 1px;
                     width: calc(100% - 2px);
                   }
+              role="presentation"
             />
           </div>
           <div
@@ -6784,6 +6867,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                   font-size: 14px;
                   font-weight: 400;
                 }
+            role="presentation"
           >
             <div
               className=
@@ -6795,6 +6879,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                     text-align: center;
                     width: 24px;
                   }
+              role="presentation"
             >
               <div
                 className=
@@ -6825,7 +6910,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                 }
               >
                 <img
-                  alt=""
+                  alt="Annie Lindqvist, status is offline"
                   className=
                       ms-Image-image
                       ms-Image-image--cover
@@ -6888,6 +6973,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                       top: 1px;
                       width: calc(100% - 2px);
                     }
+                role="presentation"
               />
             </div>
           </div>
@@ -6935,6 +7021,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                   font-size: 14px;
                   font-weight: 400;
                 }
+            role="presentation"
           >
             <div
               className=
@@ -6946,6 +7033,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                     text-align: center;
                     width: 48px;
                   }
+              role="presentation"
             >
               <div
                 className=
@@ -6976,7 +7064,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                 }
               >
                 <img
-                  alt=""
+                  alt="Annie Lindqvist, status is offline"
                   className=
                       ms-Image-image
                       ms-Image-image--cover
@@ -7039,6 +7127,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                       top: 1px;
                       width: calc(100% - 2px);
                     }
+                role="presentation"
               >
                 <i
                   aria-hidden={true}
@@ -7058,7 +7147,6 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                         color: Window;
                       }
                   data-icon-name=""
-                  role="presentation"
                 />
               </div>
             </div>
@@ -7107,6 +7195,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                   font-size: 14px;
                   font-weight: 400;
                 }
+            role="presentation"
           >
             <div
               className=
@@ -7118,6 +7207,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                     text-align: center;
                     width: 72px;
                   }
+              role="presentation"
             >
               <div
                 className=
@@ -7148,7 +7238,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                 }
               >
                 <img
-                  alt=""
+                  alt="Annie Lindqvist, status is offline"
                   className=
                       ms-Image-image
                       ms-Image-image--cover
@@ -7211,6 +7301,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                       top: 1px;
                       width: calc(100% - 2px);
                     }
+                role="presentation"
               >
                 <i
                   aria-hidden={true}
@@ -7230,7 +7321,6 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                         color: Window;
                       }
                   data-icon-name=""
-                  role="presentation"
                 />
               </div>
             </div>
@@ -7350,6 +7440,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                   font-size: 14px;
                   font-weight: 400;
                 }
+            role="presentation"
           >
             <div
               className=
@@ -7394,6 +7485,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                     top: 1px;
                     width: calc(100% - 2px);
                   }
+              role="presentation"
             />
           </div>
           <div
@@ -7516,6 +7608,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                   font-size: 14px;
                   font-weight: 400;
                 }
+            role="presentation"
           >
             <div
               className=
@@ -7527,6 +7620,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                     text-align: center;
                     width: 24px;
                   }
+              role="presentation"
             >
               <div
                 className=
@@ -7557,7 +7651,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                 }
               >
                 <img
-                  alt=""
+                  alt="Annie Lindqvist, status is offline and out of office"
                   className=
                       ms-Image-image
                       ms-Image-image--cover
@@ -7620,6 +7714,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                       top: 1px;
                       width: calc(100% - 2px);
                     }
+                role="presentation"
               />
             </div>
           </div>
@@ -7667,6 +7762,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                   font-size: 14px;
                   font-weight: 400;
                 }
+            role="presentation"
           >
             <div
               className=
@@ -7678,6 +7774,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                     text-align: center;
                     width: 48px;
                   }
+              role="presentation"
             >
               <div
                 className=
@@ -7708,7 +7805,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                 }
               >
                 <img
-                  alt=""
+                  alt="Annie Lindqvist, status is offline and out of office"
                   className=
                       ms-Image-image
                       ms-Image-image--cover
@@ -7771,6 +7868,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                       top: 1px;
                       width: calc(100% - 2px);
                     }
+                role="presentation"
               >
                 <i
                   aria-hidden={true}
@@ -7782,7 +7880,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                         border-color: #B4009E;
                         color: #B4009E;
                         display: inline-block;
-                        font-family: "FabricMDL2Icons-15";
+                        font-family: "FabricMDL2Icons-16";
                         font-size: 6px;
                         font-style: normal;
                         font-weight: normal;
@@ -7794,7 +7892,6 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                         color: Window;
                       }
                   data-icon-name="SkypeArrow"
-                  role="presentation"
                 >
                   
                 </i>
@@ -7845,6 +7942,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                   font-size: 14px;
                   font-weight: 400;
                 }
+            role="presentation"
           >
             <div
               className=
@@ -7856,6 +7954,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                     text-align: center;
                     width: 72px;
                   }
+              role="presentation"
             >
               <div
                 className=
@@ -7886,7 +7985,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                 }
               >
                 <img
-                  alt=""
+                  alt="Annie Lindqvist, status is offline and out of office"
                   className=
                       ms-Image-image
                       ms-Image-image--cover
@@ -7949,6 +8048,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                       top: 1px;
                       width: calc(100% - 2px);
                     }
+                role="presentation"
               >
                 <i
                   aria-hidden={true}
@@ -7960,7 +8060,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                         border-color: #B4009E;
                         color: #B4009E;
                         display: inline-block;
-                        font-family: "FabricMDL2Icons-15";
+                        font-family: "FabricMDL2Icons-16";
                         font-size: 12px;
                         font-style: normal;
                         font-weight: normal;
@@ -7972,7 +8072,6 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                         color: Window;
                       }
                   data-icon-name="SkypeArrow"
-                  role="presentation"
                 >
                   
                 </i>

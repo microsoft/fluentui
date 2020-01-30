@@ -74,12 +74,14 @@ export class ResizeGroupVerticalOverflowSetExample extends BaseComponent {
         onRenderData={data => {
           return (
             <OverflowSet
+              role="menubar"
               vertical={true}
               items={data.primary}
               overflowItems={data.overflow.length ? data.overflow : null}
               onRenderItem={item => {
                 return (
                   <CommandBarButton
+                    role="menuitem"
                     text={item.name}
                     iconProps={{ iconName: item.icon }}
                     onClick={item.onClick}
@@ -91,6 +93,7 @@ export class ResizeGroupVerticalOverflowSetExample extends BaseComponent {
               onRenderOverflowButton={overflowItems => {
                 return (
                   <CommandBarButton
+                    role="menuitem"
                     styles={buttonStyles}
                     menuIconProps={{ iconName: 'ChevronRight' }}
                     menuProps={{ items: overflowItems!, directionalHint: DirectionalHint.rightCenter }}

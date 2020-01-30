@@ -9,6 +9,8 @@ export class OverflowSetBasicExample extends React.PureComponent {
   public render(): JSX.Element {
     return (
       <OverflowSet
+        aria-label="Basic Menu Example"
+        role="menubar"
         items={[
           {
             key: 'item1',
@@ -46,7 +48,7 @@ export class OverflowSetBasicExample extends React.PureComponent {
 
   private _onRenderItem = (item: IOverflowSetItemProps): JSX.Element => {
     return (
-      <Link styles={{ root: { marginRight: 10 } }} onClick={item.onClick}>
+      <Link role="menuitem" styles={{ root: { marginRight: 10 } }} onClick={item.onClick}>
         {item.name}
       </Link>
     );
@@ -61,6 +63,14 @@ export class OverflowSetBasicExample extends React.PureComponent {
         height: 'auto'
       }
     };
-    return <IconButton styles={buttonStyles} menuIconProps={{ iconName: 'More' }} menuProps={{ items: overflowItems! }} />;
+    return (
+      <IconButton
+        role="menuitem"
+        title="More options"
+        styles={buttonStyles}
+        menuIconProps={{ iconName: 'More' }}
+        menuProps={{ items: overflowItems! }}
+      />
+    );
   };
 }

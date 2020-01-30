@@ -2,13 +2,16 @@ import * as React from 'react';
 
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
-import { people } from './PeopleExampleData';
-import { SelectedPeopleList, ISelectedPeopleList } from '../SelectedPeopleList';
 import { Selection } from 'office-ui-fabric-react/lib/Selection';
-import { SelectedPersona } from '../Items/SelectedPersona';
-import { ItemWithContextMenu } from '../../Items/ItemWithContextMenu';
-import { copyToClipboard } from '../../utils/copyToClipboard';
-import { TriggerOnContextMenu } from '../../Items/TriggerOnContextMenu';
+import { people } from '@uifabric/example-data';
+import {
+  SelectedPeopleList,
+  ISelectedPeopleList,
+  SelectedPersona,
+  ItemWithContextMenu,
+  TriggerOnContextMenu,
+  copyToClipboard
+} from '@uifabric/experiments/lib/SelectedItemsList';
 
 export interface IPeopleSelectedItemsListExampleState {
   currentSelectedItems: IPersonaProps[];

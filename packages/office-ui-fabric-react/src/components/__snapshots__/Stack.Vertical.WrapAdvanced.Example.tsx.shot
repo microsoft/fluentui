@@ -115,6 +115,7 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
             aria-valuemax={420}
             aria-valuemin={1}
             aria-valuenow={420}
+            aria-valuetext="420"
             className=
                 ms-Slider-slideBox
                 ms-Slider-showValue
@@ -391,6 +392,7 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
             aria-valuemax={100}
             aria-valuemin={1}
             aria-valuenow={100}
+            aria-valuetext="100"
             className=
                 ms-Slider-slideBox
                 ms-Slider-showValue
@@ -662,15 +664,14 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
                 padding-top: 5px;
                 word-wrap: break-word;
               }
-          htmlFor="Dropdown2"
           id="Dropdown2-label"
         >
           Horizontal alignment:
         </label>
         <div
-          aria-describedby="Dropdown2-option"
           aria-expanded="false"
-          aria-labelledby="Dropdown2-label"
+          aria-haspopup="listbox"
+          aria-labelledby="Dropdown2-label Dropdown2-option"
           className=
               ms-Dropdown
               {
@@ -703,19 +704,26 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
                 border-color: Highlight;
               }
               &:focus .ms-Dropdown-title {
-                border-color: #0078d4;
                 color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-title {
-                background-color: Highlight;
+                color: Highlight;
+              }
+              &:focus:after {
+                border-radius: 2px;
+                border: 2px solid #0078d4;
+                box-sizing: border-box;
+                content: '';
+                height: 100%;
+                left: 0px;
+                pointer-events: none;
+                position: absolute;
+                top: 0px;
+                width: 100%;
+              }
+              @media screen and (-ms-high-contrast: active){&:focus:after {
                 border-color: Highlight;
-                color: HighlightText;
-              }
-              @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-title:hover {
-                color: HighlightText;
-              }
-              @media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: black-on-white){&:focus .ms-Dropdown-title {
-                -ms-high-contrast-adjust: none;
+                color: Highlight;
               }
               &:active .ms-Dropdown-title {
                 border-color: #0078d4;
@@ -731,10 +739,7 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
                 color: #323130;
               }
               @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-caretDown {
-                color: HighlightText;
-              }
-              @media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: black-on-white){&:focus .ms-Dropdown-caretDown {
-                -ms-high-contrast-adjust: none;
+                color: Highlight;
               }
               &:active .ms-Dropdown-caretDown {
                 color: #323130;
@@ -754,9 +759,6 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
               &:active .ms-Dropdown-title--hasError {
                 border-color: #a4262c;
               }
-              &:focus .ms-Dropdown-title--hasError {
-                border-color: #a4262c;
-              }
           data-is-focusable={true}
           id="Dropdown2"
           onBlur={[Function]}
@@ -765,13 +767,14 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
           onFocus={[Function]}
           onKeyDown={[Function]}
           onKeyUp={[Function]}
+          onMouseDown={[Function]}
           role="listbox"
           tabIndex={0}
         >
           <span
             aria-atomic={true}
-            aria-label="Left"
-            aria-live="off"
+            aria-invalid={false}
+            aria-live="polite"
             aria-posinset={1}
             aria-selected={true}
             aria-setsize={3}
@@ -779,7 +782,7 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
                 ms-Dropdown-title
                 {
                   background-color: #ffffff;
-                  border-color: #8a8886;
+                  border-color: #605e5c;
                   border-radius: 2px;
                   border-style: solid;
                   border-width: 1px;
@@ -805,9 +808,7 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
             id="Dropdown2-option"
             role="option"
           >
-            <span>
-              Left
-            </span>
+            Left
           </span>
           <span
             className=
@@ -838,7 +839,6 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
                     speak: none;
                   }
               data-icon-name="ChevronDown"
-              role="presentation"
             >
               
             </i>
@@ -891,15 +891,14 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
                 padding-top: 5px;
                 word-wrap: break-word;
               }
-          htmlFor="Dropdown3"
           id="Dropdown3-label"
         >
           Vertical alignment:
         </label>
         <div
-          aria-describedby="Dropdown3-option"
           aria-expanded="false"
-          aria-labelledby="Dropdown3-label"
+          aria-haspopup="listbox"
+          aria-labelledby="Dropdown3-label Dropdown3-option"
           className=
               ms-Dropdown
               {
@@ -932,19 +931,26 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
                 border-color: Highlight;
               }
               &:focus .ms-Dropdown-title {
-                border-color: #0078d4;
                 color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-title {
-                background-color: Highlight;
+                color: Highlight;
+              }
+              &:focus:after {
+                border-radius: 2px;
+                border: 2px solid #0078d4;
+                box-sizing: border-box;
+                content: '';
+                height: 100%;
+                left: 0px;
+                pointer-events: none;
+                position: absolute;
+                top: 0px;
+                width: 100%;
+              }
+              @media screen and (-ms-high-contrast: active){&:focus:after {
                 border-color: Highlight;
-                color: HighlightText;
-              }
-              @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-title:hover {
-                color: HighlightText;
-              }
-              @media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: black-on-white){&:focus .ms-Dropdown-title {
-                -ms-high-contrast-adjust: none;
+                color: Highlight;
               }
               &:active .ms-Dropdown-title {
                 border-color: #0078d4;
@@ -960,10 +966,7 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
                 color: #323130;
               }
               @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-caretDown {
-                color: HighlightText;
-              }
-              @media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: black-on-white){&:focus .ms-Dropdown-caretDown {
-                -ms-high-contrast-adjust: none;
+                color: Highlight;
               }
               &:active .ms-Dropdown-caretDown {
                 color: #323130;
@@ -983,9 +986,6 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
               &:active .ms-Dropdown-title--hasError {
                 border-color: #a4262c;
               }
-              &:focus .ms-Dropdown-title--hasError {
-                border-color: #a4262c;
-              }
           data-is-focusable={true}
           id="Dropdown3"
           onBlur={[Function]}
@@ -994,13 +994,14 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
           onFocus={[Function]}
           onKeyDown={[Function]}
           onKeyUp={[Function]}
+          onMouseDown={[Function]}
           role="listbox"
           tabIndex={0}
         >
           <span
             aria-atomic={true}
-            aria-label="Top"
-            aria-live="off"
+            aria-invalid={false}
+            aria-live="polite"
             aria-posinset={1}
             aria-selected={true}
             aria-setsize={6}
@@ -1008,7 +1009,7 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
                 ms-Dropdown-title
                 {
                   background-color: #ffffff;
-                  border-color: #8a8886;
+                  border-color: #605e5c;
                   border-radius: 2px;
                   border-style: solid;
                   border-width: 1px;
@@ -1034,9 +1035,7 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
             id="Dropdown3-option"
             role="option"
           >
-            <span>
-              Top
-            </span>
+            Top
           </span>
           <span
             className=
@@ -1067,7 +1066,6 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
                     speak: none;
                   }
               data-icon-name="ChevronDown"
-              role="presentation"
             >
               
             </i>
@@ -1120,15 +1118,14 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
                 padding-top: 5px;
                 word-wrap: break-word;
               }
-          htmlFor="Dropdown4"
           id="Dropdown4-label"
         >
           Overflow:
         </label>
         <div
-          aria-describedby="Dropdown4-option"
           aria-expanded="false"
-          aria-labelledby="Dropdown4-label"
+          aria-haspopup="listbox"
+          aria-labelledby="Dropdown4-label Dropdown4-option"
           className=
               ms-Dropdown
               {
@@ -1161,19 +1158,26 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
                 border-color: Highlight;
               }
               &:focus .ms-Dropdown-title {
-                border-color: #0078d4;
                 color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-title {
-                background-color: Highlight;
+                color: Highlight;
+              }
+              &:focus:after {
+                border-radius: 2px;
+                border: 2px solid #0078d4;
+                box-sizing: border-box;
+                content: '';
+                height: 100%;
+                left: 0px;
+                pointer-events: none;
+                position: absolute;
+                top: 0px;
+                width: 100%;
+              }
+              @media screen and (-ms-high-contrast: active){&:focus:after {
                 border-color: Highlight;
-                color: HighlightText;
-              }
-              @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-title:hover {
-                color: HighlightText;
-              }
-              @media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: black-on-white){&:focus .ms-Dropdown-title {
-                -ms-high-contrast-adjust: none;
+                color: Highlight;
               }
               &:active .ms-Dropdown-title {
                 border-color: #0078d4;
@@ -1189,10 +1193,7 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
                 color: #323130;
               }
               @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-caretDown {
-                color: HighlightText;
-              }
-              @media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: black-on-white){&:focus .ms-Dropdown-caretDown {
-                -ms-high-contrast-adjust: none;
+                color: Highlight;
               }
               &:active .ms-Dropdown-caretDown {
                 color: #323130;
@@ -1212,9 +1213,6 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
               &:active .ms-Dropdown-title--hasError {
                 border-color: #a4262c;
               }
-              &:focus .ms-Dropdown-title--hasError {
-                border-color: #a4262c;
-              }
           data-is-focusable={true}
           id="Dropdown4"
           onBlur={[Function]}
@@ -1223,13 +1221,14 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
           onFocus={[Function]}
           onKeyDown={[Function]}
           onKeyUp={[Function]}
+          onMouseDown={[Function]}
           role="listbox"
           tabIndex={0}
         >
           <span
             aria-atomic={true}
-            aria-label="Visible"
-            aria-live="off"
+            aria-invalid={false}
+            aria-live="polite"
             aria-posinset={1}
             aria-selected={true}
             aria-setsize={3}
@@ -1237,7 +1236,7 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
                 ms-Dropdown-title
                 {
                   background-color: #ffffff;
-                  border-color: #8a8886;
+                  border-color: #605e5c;
                   border-radius: 2px;
                   border-style: solid;
                   border-width: 1px;
@@ -1263,9 +1262,7 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
             id="Dropdown4-option"
             role="option"
           >
-            <span>
-              Visible
-            </span>
+            Visible
           </span>
           <span
             className=
@@ -1296,7 +1293,6 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
                     speak: none;
                   }
               data-icon-name="ChevronDown"
-              role="presentation"
             >
               
             </i>

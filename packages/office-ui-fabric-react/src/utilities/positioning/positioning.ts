@@ -472,6 +472,7 @@ function _finalizeReturnEdge(elementRectangle: Rectangle, returnEdge: RectangleE
  * @param {RectangleEdge} bounds
  * @param {RectangleEdge} [alignmentEdge]
  * @param {boolean} coverTarget
+ * @param {boolean} doNotFinalizeReturnEdge
  * @returns {IPartialIRectangle}
  */
 function _finalizeElementPosition(
@@ -480,18 +481,18 @@ function _finalizeElementPosition(
   targetEdge: RectangleEdge,
   bounds?: Rectangle,
   alignmentEdge?: RectangleEdge,
-  coverTarget?: boolean
+  coverTarget?: boolean,
+  doNotFinalizeReturnEdge?: boolean
 ): IPartialIRectangle {
   const returnValue: IPartialIRectangle = {};
 
   const hostRect: Rectangle = _getRectangleFromElement(hostElement);
   const elementEdge = coverTarget ? targetEdge : targetEdge * -1;
   const elementEdgeString = RectangleEdge[elementEdge];
-  const returnEdge = _finalizeReturnEdge(
-    elementRectangle,
-    alignmentEdge ? alignmentEdge : _getFlankingEdges(targetEdge).positiveEdge,
-    bounds
-  );
+  let returnEdge = alignmentEdge ? alignmentEdge : _getFlankingEdges(targetEdge).positiveEdge;
+  if (!doNotFinalizeReturnEdge) {
+    returnEdge = _finalizeReturnEdge(elementRectangle, returnEdge, bounds);
+  }
 
   returnValue[elementEdgeString] = _getRelativeEdgeDifference(elementRectangle, hostRect, elementEdge);
   returnValue[RectangleEdge[returnEdge]] = _getRelativeEdgeDifference(elementRectangle, hostRect, returnEdge);
@@ -672,10 +673,10 @@ function _getRectangleFromIRect(rect: IRectangle): Rectangle {
 function _getTargetRect(bounds: Rectangle, target: Element | MouseEvent | IPoint | undefined): Rectangle {
   let targetRectangle: Rectangle;
   if (target) {
-    if ((target as MouseEvent).preventDefault) {
+    if (!!(target as MouseEvent).preventDefault) {
       const ev = target as MouseEvent;
       targetRectangle = new Rectangle(ev.clientX, ev.clientX, ev.clientY, ev.clientY);
-    } else if ((target as Element).getBoundingClientRect) {
+    } else if (!!(target as Element).getBoundingClientRect) {
       targetRectangle = _getRectangleFromElement(target as Element);
       // HTMLImgElements can have x and y values. The check for it being a point must go last.
     } else {
@@ -759,7 +760,8 @@ function _finalizePositionData(
   positionedElement: IElementPosition,
   hostElement: HTMLElement,
   bounds?: Rectangle,
-  coverTarget?: boolean
+  coverTarget?: boolean,
+  doNotFinalizeReturnEdge?: boolean
 ): IPositionedData {
   const finalizedElement: IPartialIRectangle = _finalizeElementPosition(
     positionedElement.elementRectangle,
@@ -767,7 +769,8 @@ function _finalizePositionData(
     positionedElement.targetEdge,
     bounds,
     positionedElement.alignmentEdge,
-    coverTarget
+    coverTarget,
+    doNotFinalizeReturnEdge
   );
   return {
     elementPosition: finalizedElement,
@@ -793,7 +796,8 @@ function _positionCallout(
   props: ICalloutPositionProps,
   hostElement: HTMLElement,
   callout: HTMLElement,
-  previousPositions?: ICalloutPositionedInfo
+  previousPositions?: ICalloutPositionedInfo,
+  doNotFinalizeReturnEdge?: boolean
 ): ICalloutPositionedInfo {
   const beakWidth: number = props.isBeakVisible ? props.beakWidth || 0 : 0;
   const gap: number = _calculateActualBeakWidthInPixels(beakWidth) / 2 + (props.gapSpace ? props.gapSpace : 0);
@@ -806,9 +810,18 @@ function _positionCallout(
   const beakPositioned: Rectangle = _positionBeak(beakWidth, positionedElement);
   const finalizedBeakPosition: ICalloutBeakPositionedInfo = _finalizeBeakPosition(positionedElement, beakPositioned, boundingRect);
   return {
-    ..._finalizePositionData(positionedElement, hostElement, boundingRect, props.coverTarget),
+    ..._finalizePositionData(positionedElement, hostElement, boundingRect, props.coverTarget, doNotFinalizeReturnEdge),
     beakPosition: finalizedBeakPosition
   };
+}
+
+function _positionCard(
+  props: ICalloutPositionProps,
+  hostElement: HTMLElement,
+  callout: HTMLElement,
+  previousPositions?: ICalloutPositionedInfo
+): ICalloutPositionedInfo {
+  return _positionCallout(props, hostElement, callout, previousPositions, true);
 }
 // END PRIVATE FUNCTIONS
 
@@ -855,6 +868,15 @@ export function positionCallout(
   return _positionCallout(props, hostElement, elementToPosition, previousPositions);
 }
 
+export function positionCard(
+  props: IPositionProps,
+  hostElement: HTMLElement,
+  elementToPosition: HTMLElement,
+  previousPositions?: ICalloutPositionedInfo
+): ICalloutPositionedInfo {
+  return _positionCard(props, hostElement, elementToPosition, previousPositions);
+}
+
 /**
  * Get's the maximum height that a rectangle can have in order to fit below or above a target.
  * If the directional hint specifies a left or right edge (i.e. leftCenter) it will limit the height to the topBorder
@@ -876,7 +898,7 @@ export function getMaxHeight(
     ? _getRectangleFromIRect(bounds)
     : new Rectangle(0, window.innerWidth - getScrollbarWidth(), 0, window.innerHeight);
 
-  if (mouseTarget.stopPropagation) {
+  if (!!mouseTarget.stopPropagation) {
     targetRect = new Rectangle(mouseTarget.clientX, mouseTarget.clientX, mouseTarget.clientY, mouseTarget.clientY);
   } else if (pointTarget.x !== undefined && pointTarget.y !== undefined) {
     targetRect = new Rectangle(pointTarget.x, pointTarget.x, pointTarget.y, pointTarget.y);

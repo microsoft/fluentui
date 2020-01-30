@@ -4,10 +4,6 @@ import { DetailsListBasicExample } from 'office-ui-fabric-react/lib/components/D
 import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 import { AppCustomizations } from './customizations/customizations';
 
-export interface IReferencesList {
-  pages: string[];
-}
-
 const propertiesTableMargins = mergeStyles({
   marginLeft: '40px',
   marginRight: '40px'
@@ -19,7 +15,7 @@ function loadReferences(): IAppLink[] {
   return requireContext.keys().map(pagePath => {
     const pageName = pagePath.match(/(\w+)\.page\.json/)![1];
     return {
-      component: () => <ApiReferencesTableSet className={propertiesTableMargins} jsonDocs={requireContext(pagePath)} />,
+      component: () => <ApiReferencesTableSet className={propertiesTableMargins} jsonDocs={requireContext(pagePath)} showAll />,
       key: pageName,
       name: pageName,
       url: '#/examples/references/' + pageName.toLowerCase()

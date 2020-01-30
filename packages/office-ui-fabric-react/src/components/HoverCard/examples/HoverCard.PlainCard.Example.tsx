@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { HoverCard, IPlainCardProps, HoverCardType } from 'office-ui-fabric-react/lib/HoverCard';
 import { DetailsList, buildColumns, IColumn } from 'office-ui-fabric-react/lib/DetailsList';
-import { createListItems, IExampleItem } from 'office-ui-fabric-react/lib/utilities/exampleData';
+import { createListItems, IExampleItem } from '@uifabric/example-data';
 import { Image, ImageFit } from 'office-ui-fabric-react/lib/Image';
 import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
 import { getColorFromString } from 'office-ui-fabric-react/lib/Color';

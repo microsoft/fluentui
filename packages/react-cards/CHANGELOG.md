@@ -1,7 +1,55 @@
 # Change Log - @uifabric/react-cards
 
-This log was last generated on Fri, 23 Aug 2019 12:35:28 GMT and should not be manually modified.
+This log was last generated on Fri, 17 Jan 2020 02:32:17 GMT and should not be manually modified.
 
+## 0.109.4
+Fri, 17 Jan 2020 02:32:17 GMT
+
+### Patches
+
+- Update tslib minver to first version containing __spreadArrays helper due to changes in how TS emits spreads. (jagore@microsoft.com)
+## 0.109.3
+Wed, 08 Jan 2020 17:02:57 GMT
+
+### Patches
+
+- bumping load-themed-styles to take advantage of es6 version of it (kchau@microsoft.com)
+## 0.109.2
+Thu, 12 Dec 2019 12:29:56 GMT
+
+### Patches
+
+- Card: Adding keyboard navigation and interaction on clickable Cards and fixing example styling. (Humberto.Morimoto@microsoft.com)
+## 0.109.1
+Wed, 16 Oct 2019 12:33:21 GMT
+
+### Patches
+
+- Relax child item type checks (elcraig@microsoft.com)
+## 0.109.0
+Mon, 14 Oct 2019 12:30:37 GMT
+
+### Minor changes
+
+- Card: Renamed compact prop to horizontal and updated examples and tests accordingly. (Humberto.Morimoto@microsoft.com)
+## 0.108.2
+Thu, 03 Oct 2019 23:14:46 GMT
+
+### Patches
+
+- Fixes broken publish (odbuild@microsoft.com)
+## 0.108.1
+Wed, 04 Sep 2019 04:09:58 GMT
+
+### Patches
+
+- fix version file (kchau@microsoft.com)
+## 0.108.0
+Tue, 27 Aug 2019 12:33:51 GMT
+
+### Minor changes
+
+- Card: fixing vertical and horizontal alignment to start rather than space-between. (dzearing@hotmail.com)
 ## 0.107.9
 Fri, 23 Aug 2019 12:35:28 GMT
 
