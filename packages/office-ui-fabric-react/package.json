@@ -72,6 +72,7 @@
     "@uifabric/build": "^7.0.0"
   },
   "dependencies": {
+    "@fluentui/react-focus": "^0.1.0",
     "@microsoft/load-themed-styles": "^1.10.26",
     "@uifabric/foundation": "^7.5.4",
     "@uifabric/icons": "^7.3.3",

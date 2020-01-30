@@ -14,7 +14,10 @@ module.exports = resources.createConfig(BUNDLE_NAME, IS_PRODUCTION, {
     library: 'FluentUIReactFocus'
   },
 
-  externals: [{ react: 'React' }, { 'react-dom': 'ReactDOM' }],
+  externals: {
+    react: 'React',
+    'react-dom': 'ReactDOM'
+  },
 
   resolve: {
     alias: {

@@ -6,7 +6,7 @@ import { setRTL, KeyCodes } from '@uifabric/utilities';
 import { FocusZone } from './FocusZone';
 import { FocusZoneDirection, FocusZoneTabbableElements, IFocusZone } from './FocusZone.types';
 
-// tslint:disable:typedef jsx-no-lambda
+// tslint:disable:typedef jsx-no-lambda no-any
 
 describe('FocusZone', () => {
   let lastFocusedElement: HTMLElement | undefined;
@@ -15,12 +15,10 @@ describe('FocusZone', () => {
   afterEach(() => {
     if (host) {
       ReactDOM.unmountComponentAtNode(host);
-      // tslint:disable:no-any
       (host as any) = undefined;
     }
   });
 
-  // tslint:disable:no-any
   function _onFocus(ev: any): void {
     lastFocusedElement = ev.target;
   }

@@ -1,31 +1,29 @@
-// @ts-check
+import { task, series, parallel, condition, option, argv, addResolvePath, resolveCwd } from 'just-scripts';
 
-const { task, series, parallel, condition, option, argv, addResolvePath, resolveCwd } = require('just-scripts');
+import path from 'path';
+import fs from 'fs';
 
-const path = require('path');
-const fs = require('fs');
-
-const { clean } = require('./tasks/clean');
-const { copy } = require('./tasks/copy');
-const { jest, jestWatch } = require('./tasks/jest');
-const { sass } = require('./tasks/sass');
-const { ts } = require('./tasks/ts');
-const { tslint } = require('./tasks/tslint');
-const { webpack, webpackDevServer } = require('./tasks/webpack');
-const { verifyApiExtractor, updateApiExtractor } = require('./tasks/api-extractor');
-const lintImports = require('./tasks/lint-imports');
-const prettier = require('./tasks/prettier');
-const bundleSizeCollect = require('./tasks/bundle-size-collect');
-const checkForModifiedFiles = require('./tasks/check-for-modified-files');
-const generateVersionFiles = require('./tasks/generate-version-files');
-const generatePackageManifestTask = require('./tasks/generate-package-manifest');
-const { postprocessTask } = require('./tasks/postprocess');
-const { postprocessAmdTask } = require('./tasks/postprocess-amd');
-const { postprocessCommonjsTask } = require('./tasks/postprocess-commonjs');
-const { startStorybookTask, buildStorybookTask } = require('./tasks/storybookTask');
+import { clean } from './tasks/clean';
+import { copy } from './tasks/copy';
+import { jest, jestWatch } from './tasks/jest';
+import { sass } from './tasks/sass';
+import { ts } from './tasks/ts';
+import { tslint } from './tasks/tslint';
+import { webpack, webpackDevServer } from './tasks/webpack';
+import { verifyApiExtractor, updateApiExtractor } from './tasks/api-extractor';
+import lintImports from './tasks/lint-imports';
+import prettier from './tasks/prettier';
+import bundleSizeCollect from './tasks/bundle-size-collect';
+import checkForModifiedFiles from './tasks/check-for-modified-files';
+import generateVersionFiles from './tasks/generate-version-files';
+import generatePackageManifestTask from './tasks/generate-package-manifest';
+import { postprocessTask } from './tasks/postprocess';
+import { postprocessAmdTask } from './tasks/postprocess-amd';
+import { postprocessCommonjsTask } from './tasks/postprocess-commonjs';
+import { startStorybookTask, buildStorybookTask } from './tasks/storybookTask';
 
 /** Do only the bare minimum setup of options and resolve paths */
-function basicPreset() {
+export function basic() {
   // this adds a resolve path for the build tooling deps like TS from the scripts folder
   addResolvePath(__dirname);
 
@@ -39,8 +37,8 @@ function basicPreset() {
   option('cached', { default: false });
 }
 
-module.exports = function preset() {
-  basicPreset();
+export function preset() {
+  basic();
 
   task('clean', clean);
   task('copy', copy);
@@ -106,6 +104,4 @@ module.exports = function preset() {
   );
 
   task('no-op', () => {}).cached();
-};
-
-module.exports.basic = basicPreset;
+}

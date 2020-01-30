@@ -78,7 +78,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
   };
 
   private _disposables: Function[] = [];
-  private _root = React.createRef<HTMLElement>();
+  private _root: React.RefObject<HTMLElement> = React.createRef();
   private _id: string;
 
   /** The most recently focused child element. */
@@ -210,7 +210,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
     delete this._disposables;
   }
 
-  public render(): JSX.Element {
+  public render(): React.ReactNode {
     const { rootProps, ariaDescribedBy, ariaLabelledBy, className } = this.props;
     const divProps = getNativeProps(this.props, htmlElementProperties);
 
@@ -232,7 +232,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
           // root props has been deprecated and should get removed.
           // it needs to be marked as "any" since root props expects a div element, but really Tag can
           // be any native element so typescript rightly flags this as a problem.
-          // tslint:disable:no-any
+          // tslint:disable-next-line:no-any
           ...rootProps as any
         }
         // Once the getClassName correctly memoizes inputs this should
