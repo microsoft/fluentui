@@ -1,0 +1,9 @@
+{
+  "type": "none",
+  "comment": "Prevent the ComponentExamples test from eating errors",
+  "packageName": "office-ui-fabric-react",
+  "email": "elcraig@microsoft.com",
+  "commit": "f6fdd3eefc61817a53077b45f37dd3d7da8d3420",
+  "dependentChangeType": "patch",
+  "date": "2020-01-31T20:45:47.571Z"
+}
