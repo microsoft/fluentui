@@ -20,7 +20,7 @@ export interface IBasicColorPickerExampleState {
   color: IColor;
   alphaSliderHidden: boolean;
   showPreview: boolean;
-  requireTransparencySlider: boolean;
+  showAlphaAsTransparencySlider: boolean;
 }
 
 export class ColorPickerBasicExample extends React.Component<{}, IBasicColorPickerExampleState> {
@@ -28,11 +28,11 @@ export class ColorPickerBasicExample extends React.Component<{}, IBasicColorPick
     color: getColorFromString('#ffffff')!,
     alphaSliderHidden: false,
     showPreview: true,
-    requireTransparencySlider: false
+    showAlphaAsTransparencySlider: false
   };
 
   public render(): JSX.Element {
-    const { color, alphaSliderHidden, showPreview: showPreview, requireTransparencySlider } = this.state;
+    const { color, alphaSliderHidden, showPreview: showPreview, showAlphaAsTransparencySlider } = this.state;
     return (
       <div className={classNames.wrapper}>
         <ColorPicker
@@ -41,7 +41,7 @@ export class ColorPickerBasicExample extends React.Component<{}, IBasicColorPick
           alphaSliderHidden={alphaSliderHidden}
           showPreview={showPreview}
           styles={colorPickerStyles}
-          requireTransparencySlider={requireTransparencySlider}
+          showAlphaAsTransparencySlider={showAlphaAsTransparencySlider}
           // The ColorPicker provides default English strings for visible text.
           // If your app is localized, you MUST provide the `strings` prop with localized strings.
           // Below are the recommended aria labels for the hue and alpha slider
@@ -54,7 +54,11 @@ export class ColorPickerBasicExample extends React.Component<{}, IBasicColorPick
         <div className={classNames.column2}>
           <Toggle label="Hide alpha slider" onChange={this._onHideAlphaClick} checked={alphaSliderHidden} />
           <Toggle label="Show Preview Box" onChange={this._onShowPreviewBoxClick} checked={showPreview} />
-          <Toggle label="Require transparency slider" onChange={this._onRequireTransparencyClick} checked={requireTransparencySlider} />
+          <Toggle
+            label="Show alpha as transparency slider"
+            onChange={this._onRequireTransparencyClick}
+            checked={showAlphaAsTransparencySlider}
+          />
         </div>
       </div>
     );
@@ -79,11 +83,6 @@ export class ColorPickerBasicExample extends React.Component<{}, IBasicColorPick
 
   private _onRequireTransparencyClick = (ev: React.MouseEvent<HTMLElement>, checked?: boolean) => {
     let color = this.state.color;
-    if (checked) {
-      color = updateA(this.state.color, 0);
-    } else {
-      color = updateA(this.state.color, 100);
-    }
-    this.setState({ requireTransparencySlider: !!checked, color });
+    this.setState({ showAlphaAsTransparencySlider: !!checked, color });
   };
 }

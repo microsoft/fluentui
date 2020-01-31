@@ -82,6 +82,12 @@ export interface IColorSliderProps {
    * Call to provide customized styling that will layer on top of the variant rules.
    */
   styles?: IStyleFunctionOrObject<IColorSliderStyleProps, IColorSliderStyles>;
+
+  /**
+   * If true, the alpha slider represents a transparency slider
+   * @defaultvalue false
+   */
+  showAlphaAsTransparencySlider?: boolean;
 }
 
 /**
