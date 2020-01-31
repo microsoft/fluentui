@@ -20,7 +20,12 @@ export class PieChartDynamicExample extends React.Component<IPieChartProps, IExa
   constructor(props: IPieChartProps) {
     super(props);
     this.state = {
-      dynamicData: [{ x: 'A', y: 25 }, { x: 'B', y: 10 }, { x: 'C', y: 60 }, { x: 'D', y: 5 }],
+      dynamicData: [
+        { x: 'A', y: 25 },
+        { x: 'B', y: 10 },
+        { x: 'C', y: 60 },
+        { x: 'D', y: 5 }
+      ],
       colors: [DefaultPalette.blueLight, DefaultPalette.purpleLight, DefaultPalette.yellowLight, DefaultPalette.neutralLight]
     };
 
@@ -45,7 +50,12 @@ export class PieChartDynamicExample extends React.Component<IPieChartProps, IExa
     const d = 100 - a - b - c;
 
     this.setState({
-      dynamicData: [{ x: 'A', y: a }, { x: 'B', y: b }, { x: 'C', y: c }, { x: 'D', y: d }]
+      dynamicData: [
+        { x: 'A', y: a },
+        { x: 'B', y: b },
+        { x: 'C', y: c },
+        { x: 'D', y: d }
+      ]
     });
   }
 

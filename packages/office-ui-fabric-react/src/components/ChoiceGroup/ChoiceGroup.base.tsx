@@ -106,7 +106,7 @@ export class ChoiceGroupBase extends React.Component<IChoiceGroupProps, IChoiceG
     // `applicationRole` class (but the div structure will stay the same by necessity)
     return (
       <div className={classNames.applicationRole} {...divProps}>
-        <div className={classNames.root} role="radiogroup" {...ariaLabelledBy && { 'aria-labelledby': ariaLabelledBy }}>
+        <div className={classNames.root} role="radiogroup" {...(ariaLabelledBy && { 'aria-labelledby': ariaLabelledBy })}>
           {label && (
             <Label className={classNames.label} required={required} id={labelId} disabled={disabled}>
               {label}
