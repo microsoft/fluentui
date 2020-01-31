@@ -63,7 +63,9 @@ export class GroupHeaderBase extends React.Component<IGroupHeaderProps, IGroupHe
       styles,
       className,
       groupedListId,
-      compact
+      compact,
+      ariaPosInSet,
+      ariaSetSize
     } = this.props;
 
     const { isCollapsed, isLoadingVisible } = this.state;
@@ -93,6 +95,8 @@ export class GroupHeaderBase extends React.Component<IGroupHeaderProps, IGroupHe
         aria-expanded={!group.isCollapsed}
         aria-label={group.ariaLabel || group.name}
         aria-level={groupLevel !== undefined ? groupLevel + 1 : undefined}
+        aria-setsize={ariaSetSize}
+        aria-posinset={ariaPosInSet}
         data-is-focusable={true}
       >
         <FocusZone className={this._classNames.groupHeaderContainer} direction={FocusZoneDirection.horizontal}>
