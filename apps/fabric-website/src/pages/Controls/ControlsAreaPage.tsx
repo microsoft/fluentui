@@ -6,16 +6,21 @@ import { IPageJson } from 'office-ui-fabric-react/lib/common/DocPage.types';
 
 export interface IControlsPageProps extends IPageProps<Platforms> {}
 
-const apiRequireContext = require.context('@uifabric/api-docs/lib/pages/office-ui-fabric-react');
+const apiRequireContext = [
+  require.context('@uifabric/api-docs/lib/pages/office-ui-fabric-react'),
+  require.context('@uifabric/api-docs/lib/pages/react-cards')
+];
 
 const ControlsAreaPageBase: React.StatelessComponent<IControlsPageProps> = props => {
   let jsonDocs: IPageJson;
   if (props.platform === 'web' && !props.jsonDocs) {
     // Get the control's .page.json file for API docs if it exists
-    for (const path of apiRequireContext.keys()) {
-      if (path.indexOf(`/${props.title}.page.json`) !== -1) {
-        jsonDocs = apiRequireContext<IPageJson>(path);
-        break;
+    for (const context of apiRequireContext) {
+      for (const path of context.keys()) {
+        if (path.indexOf(`/${props.title}.page.json`) !== -1) {
+          jsonDocs = context<IPageJson>(path);
+          break;
+        }
       }
     }
   }
