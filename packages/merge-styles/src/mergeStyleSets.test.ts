@@ -57,7 +57,10 @@ describe('mergeStyleSets', () => {
     expect(result.subComponentStyles).toBeDefined();
     const mergedLabelStyles = result.subComponentStyles!.labelStyles({});
     expect(mergedLabelStyles).toEqual({
-      root: [{ background: 'green', fontSize: 12 }, { background: 'yellow', color: 'pink' }]
+      root: [
+        { background: 'green', fontSize: 12 },
+        { background: 'yellow', color: 'pink' }
+      ]
     });
 
     expect(_stylesheet.getRules()).toEqual(

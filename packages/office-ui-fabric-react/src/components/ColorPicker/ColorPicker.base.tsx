@@ -59,7 +59,7 @@ export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPi
   };
 
   private _textChangeHandlers: {
-    [K in keyof IRGBHex]: (event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, newValue?: string) => void
+    [K in keyof IRGBHex]: (event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, newValue?: string) => void;
   };
   /**
    * Strings displayed in the UI as text field labels (these are in a separate object for convenient

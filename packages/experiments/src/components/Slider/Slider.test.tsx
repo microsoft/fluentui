@@ -138,7 +138,11 @@ describe('Slider', () => {
   });
 
   it('should be able to display the correct custom labels & tickmarks at the correct positions', () => {
-    const labelsArray = [{ label: '20°C', value: 20 }, { label: '80°C', value: 80 }, { label: '100°C', value: 100 }];
+    const labelsArray = [
+      { label: '20°C', value: 20 },
+      { label: '80°C', value: 80 },
+      { label: '100°C', value: 100 }
+    ];
     const expectedValuesArray = [20, 80, 100];
     const component = mount(<Slider marks={labelsArray} min={0} max={100} showValue={true} step={10} />);
 
@@ -157,7 +161,10 @@ describe('Slider', () => {
   });
 
   it('custom labels should be able to handle values that are out of bounds', () => {
-    const labelsArray = [{ label: '-20°C', value: -20 }, { label: '1000°C', value: 1000 }];
+    const labelsArray = [
+      { label: '-20°C', value: -20 },
+      { label: '1000°C', value: 1000 }
+    ];
     const component = mount(<Slider marks={labelsArray} min={0} max={100} showValue={true} step={10} />);
     const expectedLabelsArray = [-20, 1000];
     const expectedValuesArray = [0, 100];

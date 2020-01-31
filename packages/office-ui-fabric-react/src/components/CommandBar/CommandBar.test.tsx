@@ -17,13 +17,33 @@ describe('CommandBar', () => {
 
   it('renders commands correctly', () => {
     expect(
-      renderer.create(<CommandBar items={[{ key: '1', text: 'asdf' }, { key: '2', text: 'asdf' }]} className={'TestClassName'} />).toJSON()
+      renderer
+        .create(
+          <CommandBar
+            items={[
+              { key: '1', text: 'asdf' },
+              { key: '2', text: 'asdf' }
+            ]}
+            className={'TestClassName'}
+          />
+        )
+        .toJSON()
     ).toMatchSnapshot();
   });
 
   it('renders empty farItems correctly', () => {
     expect(
-      renderer.create(<CommandBar items={[{ key: '1', text: 'asdf' }, { key: '2', text: 'asdf' }]} farItems={[]} />).toJSON()
+      renderer
+        .create(
+          <CommandBar
+            items={[
+              { key: '1', text: 'asdf' },
+              { key: '2', text: 'asdf' }
+            ]}
+            farItems={[]}
+          />
+        )
+        .toJSON()
     ).toMatchSnapshot();
   });
 

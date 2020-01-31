@@ -226,7 +226,7 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
 
   protected onChange(item: T): void {
     if (this.props.onChange) {
-      (this.props.onChange as ((items: T) => void))(item);
+      (this.props.onChange as (items: T) => void)(item);
     }
   }
 
@@ -237,7 +237,7 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
 
   protected onSuggestionRemove = (ev: React.MouseEvent<HTMLElement>, item: T, index: number): void => {
     if (this.props.onRemoveSuggestion) {
-      (this.props.onRemoveSuggestion as ((item: T) => void))(item);
+      (this.props.onRemoveSuggestion as (item: T) => void)(item);
     }
 
     if (this.suggestionsControl.current) {
@@ -278,7 +278,7 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
           this.suggestionsControl.current.currentSuggestion &&
           ev.shiftKey
         ) {
-          (this.props.onRemoveSuggestion as ((item: T) => void))(this.suggestionsControl.current.currentSuggestion!.item);
+          (this.props.onRemoveSuggestion as (item: T) => void)(this.suggestionsControl.current.currentSuggestion!.item);
 
           this.suggestionsControl.current.removeSuggestion();
           this.forceUpdate();
@@ -324,12 +324,9 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
 
   private _onValidateInput = (): void => {
     if (this.state.queryString && this.props.onValidateInput && this.props.createGenericItem) {
-      const itemToConvert: ISuggestionModel<T> = (this.props.createGenericItem as ((
-        input: string,
-        isValid: boolean
-      ) => ISuggestionModel<T>))(
+      const itemToConvert: ISuggestionModel<T> = (this.props.createGenericItem as (input: string, isValid: boolean) => ISuggestionModel<T>)(
         this.state.queryString,
-        (this.props.onValidateInput as ((input: string) => boolean))(this.state.queryString)
+        (this.props.onValidateInput as (input: string) => boolean)(this.state.queryString)
       );
       const convertedItems = this.suggestionStore.convertSuggestionsToSuggestionItems([itemToConvert]);
       this.onChange(convertedItems[0].item);

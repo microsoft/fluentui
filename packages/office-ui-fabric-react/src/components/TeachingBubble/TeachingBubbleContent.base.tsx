@@ -85,7 +85,7 @@ export class TeachingBubbleContentBase extends BaseComponent<ITeachingBubbleProp
     if (illustrationImage && illustrationImage.src) {
       imageContent = (
         <div className={classNames.imageContent}>
-          <Image {...illustrationImage as any} />
+          <Image {...(illustrationImage as any)} />
         </div>
       );
     }

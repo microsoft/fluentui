@@ -1071,7 +1071,11 @@ describe('ContextualMenu', () => {
           key: 'Item 3',
           sectionProps: {
             key: 'Section1',
-            items: [{ text: 'Item 1', key: 'Item 1' }, { text: 'Item 2', key: 'Item 2', canCheck: true }, { text: 'Item 3', key: 'Item 3' }]
+            items: [
+              { text: 'Item 1', key: 'Item 1' },
+              { text: 'Item 2', key: 'Item 2', canCheck: true },
+              { text: 'Item 3', key: 'Item 3' }
+            ]
           }
         }
       ];

@@ -1,0 +1,9 @@
+{
+  "type": "patch",
+  "comment": "Nav: Fixing regular expression used to determine if URL is protocol relative or not.",
+  "packageName": "office-ui-fabric-react",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "commit": "eadbfa6f02f782e8252c37dfe577d4000ff741dd",
+  "dependentChangeType": "patch",
+  "date": "2020-01-24T19:45:33.986Z"
+}

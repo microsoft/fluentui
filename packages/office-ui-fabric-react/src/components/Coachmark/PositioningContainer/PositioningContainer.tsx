@@ -212,7 +212,8 @@ export class PositioningContainer extends BaseComponent<IPositioningContainerPro
       (ev.target !== this._targetWindow &&
         clickedOutsideCallout &&
         ((this._target as MouseEvent).stopPropagation ||
-          (!this._target || (target !== this._target && !elementContains(this._target as HTMLElement, target)))))
+          !this._target ||
+          (target !== this._target && !elementContains(this._target as HTMLElement, target))))
     ) {
       this.onResize(ev);
     }

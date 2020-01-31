@@ -37,7 +37,7 @@ export const TileLayoutSizes: {
     nameplateMargin: number;
     nameplateActivityHeight: number;
     foregroundMargin: number;
-  }
+  };
 } = {
   small: {
     nameplatePadding: TileLayoutValues.nameplatePadding,

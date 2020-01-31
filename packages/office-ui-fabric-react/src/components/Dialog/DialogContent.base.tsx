@@ -8,7 +8,7 @@ import { withResponsiveMode } from '../../utilities/decorators/withResponsiveMod
 
 const getClassNames = classNamesFunction<IDialogContentStyleProps, IDialogContentStyles>();
 
-const DialogFooterType = (<DialogFooter /> as React.ReactElement<IDialogFooterProps>).type;
+const DialogFooterType = ((<DialogFooter />) as React.ReactElement<IDialogFooterProps>).type;
 
 @withResponsiveMode
 export class DialogContentBase extends BaseComponent<IDialogContentProps, {}> {

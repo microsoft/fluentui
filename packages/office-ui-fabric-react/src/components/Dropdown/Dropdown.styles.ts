@@ -167,7 +167,12 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
     ...dropdownItemStyle,
     {
       color: semanticColors.disabledText,
-      cursor: 'default'
+      cursor: 'default',
+      selectors: {
+        [HighContrastSelector]: {
+          color: 'GrayText'
+        }
+      }
     }
   ];
 
@@ -200,7 +205,10 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
             { borderColor: isOpen ? palette.neutralSecondary : palette.neutralPrimary },
             highContrastBorderState
           ],
-          ['&:focus .' + globalClassnames.title]: [!disabled && rootHoverFocusActiveSelectorNeutralDarkMixin],
+          ['&:focus .' + globalClassnames.title]: [
+            !disabled && rootHoverFocusActiveSelectorNeutralDarkMixin,
+            { selectors: { [HighContrastSelector]: { color: 'Highlight' } } }
+          ],
 
           ['&:focus:after']: [
             {
@@ -214,9 +222,15 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
               height: '100%',
               // see https://github.com/OfficeDev/office-ui-fabric-react/pull/9182 for semantic color disc
               border: !disabled ? `2px solid ${palette.themePrimary}` : 'none',
-              borderRadius: '2px'
-            },
-            highContrastItemAndTitleStateMixin
+              borderRadius: '2px',
+
+              selectors: {
+                [HighContrastSelector]: {
+                  borderColor: 'Highlight',
+                  color: 'Highlight'
+                }
+              }
+            }
           ],
           ['&:active .' + globalClassnames.title]: [
             !disabled && rootHoverFocusActiveSelectorNeutralDarkMixin,
@@ -227,7 +241,7 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
           ['&:hover .' + globalClassnames.caretDown]: !disabled && rootHoverFocusActiveSelectorNeutralPrimaryMixin,
           ['&:focus .' + globalClassnames.caretDown]: [
             !disabled && rootHoverFocusActiveSelectorNeutralPrimaryMixin,
-            { selectors: { [HighContrastSelector]: { color: 'HighlightText' }, ...highContrastAdjustMixin } }
+            { selectors: { [HighContrastSelector]: { color: 'Highlight' } } }
           ],
           ['&:active .' + globalClassnames.caretDown]: !disabled && rootHoverFocusActiveSelectorNeutralPrimaryMixin,
 

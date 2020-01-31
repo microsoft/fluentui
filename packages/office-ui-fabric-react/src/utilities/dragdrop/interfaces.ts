@@ -63,6 +63,10 @@ export interface IDragDropEvents {
    * On drag end event callback.
    */
   onDragEnd?: (item?: any, event?: DragEvent) => void;
+  /**
+   * Whether drag operation is allowed on groups
+   */
+  canDragGroups?: boolean;
 }
 
 /**

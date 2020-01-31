@@ -443,22 +443,13 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
         // Since the callout cannot measure it's border size it must be taken into account here. Otherwise it will
         // overlap with the target.
         const totalGap = gapSpace + beakWidth!;
-        this._async.requestAnimationFrame(
-          () => {
-            if (this._target) {
-              this._maxHeight = getMaxHeight(
-                this._target,
-                this.props.directionalHint!,
-                totalGap,
-                this._getBounds(),
-                this.props.coverTarget
-              );
-              this._blockResetHeight = true;
-              this.forceUpdate();
-            }
-          },
-          this._target as Element
-        );
+        this._async.requestAnimationFrame(() => {
+          if (this._target) {
+            this._maxHeight = getMaxHeight(this._target, this.props.directionalHint!, totalGap, this._getBounds(), this.props.coverTarget);
+            this._blockResetHeight = true;
+            this.forceUpdate();
+          }
+        }, this._target as Element);
       } else {
         this._maxHeight = this._getBounds().height!;
       }
