@@ -1,0 +1,9 @@
+{
+  "type": "none",
+  "comment": "Remove unused test config from test-utilities",
+  "packageName": "@uifabric/test-utilities",
+  "email": "elcraig@microsoft.com",
+  "commit": "e154f874b8c8d4bc5dffeccd2389447b7e355e3d",
+  "dependentChangeType": "patch",
+  "date": "2020-01-31T18:38:06.738Z"
+}
