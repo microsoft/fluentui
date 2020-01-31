@@ -18,6 +18,6 @@ function customError(type, ...args) {
     // If the "message" was an exception, re-throw it to get the full stack trace
     throw args[0];
   } else {
-    throw new Error(`[console ${type}] ${args.join(' ')}`);
+    throw new Error(`[console.${type}] ${args.join(' ')}`);
   }
 }
