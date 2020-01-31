@@ -1,0 +1,9 @@
+{
+  "type": "patch",
+  "comment": "Dialog: Fix DialogContent titleProps",
+  "packageName": "office-ui-fabric-react",
+  "email": "xgao@microsoft.com",
+  "commit": "9e0dd8e0c13cba7a7dc0ba4bb636c837c17440e9",
+  "dependentChangeType": "patch",
+  "date": "2020-01-31T20:51:46.578Z"
+}
