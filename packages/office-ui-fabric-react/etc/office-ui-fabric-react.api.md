@@ -3277,7 +3277,7 @@ export interface IDetailsColumnProps extends React.ClassAttributes<DetailsColumn
     isDropped?: boolean;
     onColumnClick?: (ev: React.MouseEvent<HTMLElement>, column: IColumn) => void;
     onColumnContextMenu?: (column: IColumn, ev: React.MouseEvent<HTMLElement>) => void;
-    onRenderColumnHeaderTooltip?: IRenderFunction<ITooltipHostProps>;
+    onRenderColumnHeaderTooltip?: IRenderFunction<IDetailsColumnRenderTooltipProps>;
     parentId?: string;
     // @deprecated (undocumented)
     setDraggedItemIndex?: (itemIndex: number) => void;
@@ -3287,6 +3287,11 @@ export interface IDetailsColumnProps extends React.ClassAttributes<DetailsColumn
         itemIndex: number;
     }, event?: MouseEvent) => void;
     useFastIcons?: boolean;
+}
+
+// @public (undocumented)
+export interface IDetailsColumnRenderTooltipProps extends ITooltipHostProps {
+    column?: IColumn;
 }
 
 // @public (undocumented)
@@ -3367,7 +3372,7 @@ export interface IDetailsHeaderBaseProps extends React.ClassAttributes<DetailsHe
     onColumnContextMenu?: (column: IColumn, ev: React.MouseEvent<HTMLElement>) => void;
     onColumnIsSizingChanged?: (column: IColumn, isSizing: boolean) => void;
     onColumnResized?: (column: IColumn, newWidth: number, columnIndex: number) => void;
-    onRenderColumnHeaderTooltip?: IRenderFunction<ITooltipHostProps>;
+    onRenderColumnHeaderTooltip?: IRenderFunction<IDetailsColumnRenderTooltipProps>;
     onRenderDetailsCheckbox?: IRenderFunction<IDetailsCheckboxProps>;
     onToggleCollapseAll?: (isAllCollapsed: boolean) => void;
     selectAllVisibility?: SelectAllVisibility;
