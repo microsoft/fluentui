@@ -1,6 +1,7 @@
 import { IShimmerStyleProps, IShimmerStyles } from './Shimmer.types';
 import { keyframes, getGlobalClassNames, hiddenContentStyle, HighContrastSelector } from '../../Styling';
 import { getRTL } from '../../Utilities';
+import { getEdgeChromiumNoHighContrastAdjustSelector } from '@uifabric/styling';
 
 const GlobalClassNames = {
   root: 'ms-Shimmer-container',
@@ -68,7 +69,8 @@ export function getStyles(props: IShimmerStyleProps): IShimmerStyles {
                           transparent 100%)
                         0 0 / 90% 100%
                         no-repeat`
-          }
+          },
+          ...getEdgeChromiumNoHighContrastAdjustSelector()
         }
       },
       isDataLoaded && {
