@@ -43,7 +43,6 @@ const colorComponents: Array<keyof IRGBHex> = ['hex', 'r', 'g', 'b', 'a'];
  * {@docCategory ColorPicker}
  */
 export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPickerState> implements IColorPicker {
-  // const { showAlphaAsTransparencySlider } = this.props;
   public static defaultProps: Partial<IColorPickerProps> = {
     strings: {
       rootAriaLabelFormat: 'Color picker, {0} selected.',
@@ -263,6 +262,7 @@ export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPi
     const isAlpha = component === 'a';
     newValue = isAlpha ? String(this._getSliderValue(Number(newValue))) : newValue;
     newValue = (newValue || '').substr(0, isHex ? MAX_HEX_LENGTH : MAX_RGBA_LENGTH);
+
     // Ignore what the user typed if it contains invalid characters
     const validCharsRegex = isHex ? HEX_REGEX : RGBA_REGEX;
     if (!validCharsRegex.test(newValue)) {
