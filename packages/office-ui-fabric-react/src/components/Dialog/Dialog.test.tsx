@@ -170,8 +170,7 @@ describe('Dialog', () => {
           dialogContentProps={{
             titleId,
             type: DialogType.normal,
-            title: 'sample title',
-            subText: 'Sample subtext'
+            title: 'sample title'
           }}
         />
       );
@@ -190,7 +189,6 @@ describe('Dialog', () => {
             titleId,
             type: DialogType.normal,
             title: 'sample title',
-            subText: 'Sample subtext',
             titleProps: { id: undefined }
           }}
         />
@@ -210,7 +208,6 @@ describe('Dialog', () => {
             titleId: `${titleId}_deprecated`,
             type: DialogType.normal,
             title: 'sample title',
-            subText: 'Sample subtext',
             titleProps: { id: titleId }
           }}
         />
