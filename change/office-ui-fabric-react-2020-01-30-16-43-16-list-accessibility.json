@@ -1,0 +1,9 @@
+{
+  "type": "minor",
+  "comment": "Add ability to customize DetailsHeader tooltip based on column data",
+  "packageName": "office-ui-fabric-react",
+  "email": "tmichon@microsoft.com",
+  "commit": "2abe8243a70877dcdfa0b7417f27bac812326b46",
+  "dependentChangeType": "patch",
+  "date": "2020-01-31T00:43:16.062Z"
+}
