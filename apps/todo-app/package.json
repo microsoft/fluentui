@@ -19,15 +19,15 @@
     "@types/react-dom": "16.8.4",
     "@types/webpack-env": "1.13.9",
     "@uifabric/prettier-rules": "^7.0.4",
-    "@uifabric/tslint-rules": "^7.0.5",
+    "@uifabric/tslint-rules": "^7.0.6",
     "@uifabric/build": "^7.0.0"
   },
   "dependencies": {
-    "@uifabric/set-version": "^7.0.3",
+    "@uifabric/set-version": "^7.0.4",
     "@microsoft/load-themed-styles": "^1.10.26",
     "es6-promise": "^4.1.0",
     "immutability-helper": "~2.8.1",
-    "office-ui-fabric-react": "^7.86.1",
+    "office-ui-fabric-react": "^7.88.0",
     "react": "16.8.6",
     "react-app-polyfill": "~1.0.1",
     "react-dom": "16.8.6",

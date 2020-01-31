@@ -2,6 +2,79 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Fri, 31 Jan 2020 19:00:10 GMT",
+      "tag": "office-ui-fabric-react_v7.88.0",
+      "version": "7.88.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add styles file and type files for EditItem component",
+            "author": "sanredd@microsoft.com",
+            "commit": "63189772debfd4d113bcd9675a79af790e620023"
+          },
+          {
+            "comment": "FacePile: Use default semantic html instead of aria attributes and roles",
+            "author": "mark@thedutchies.com",
+            "commit": "89fb078f6fe0ca85832f005d8fb70f7c9a500c04"
+          },
+          {
+            "comment": "ContextualMenu: Transforming examples to FunctionComponents and cleaning them up.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "0cb40ff6bf04a1223bb69615cce07f715cf843d8"
+          },
+          {
+            "comment": "Nav: Fixing regular expression used to determine if URL is protocol relative or not.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "eadbfa6f02f782e8252c37dfe577d4000ff741dd"
+          },
+          {
+            "comment": "Dropdown: Fixing various High Contrast issues.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "d48f33791519c5363b4365cece4bd6d8509382e9"
+          },
+          {
+            "comment": "ContextualMenu: fix role for checkable split button menu item",
+            "author": "xgao@microsoft.com",
+            "commit": "23cb06c1bbe4bdb2b7d756c499c1314474a78de7"
+          },
+          {
+            "comment": "GroupedList: Adding aria-expanded state to the focus target of groups so that the collapsed/expanded state of the group is announced.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "e3b68f4911328f99831f98840231c26d1d68da4c"
+          },
+          {
+            "comment": "GroupedList: Adding aria-level to indicate nested level of groups.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "ee88c9473cd7cb6eac5709883930a7bd798951af"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Providing drag drop support for GroupedListSection. Previously, GroupedListSection was non-draggable.",
+            "author": "vishgup@microsoft.com",
+            "commit": "c775a4c9f8eacb29dd672ab0d37302d93f2e5dca"
+          },
+          {
+            "comment": "Add ability to customize DetailsHeader tooltip based on column data",
+            "author": "tmichon@microsoft.com",
+            "commit": "2abe8243a70877dcdfa0b7417f27bac812326b46"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Fix prettier error after upgrade prettier to 1.19.1",
+            "author": "xgao@microsoft.com",
+            "commit": "2242effd3e5226f313ef16f9c18ed3db87d548c4"
+          },
+          {
+            "comment": "bumping versions to fix broken publishes",
+            "author": "kchau@microsoft.com",
+            "commit": "1fd6f0a289e8f0f126c9609b8e775ac0ced03b81"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 29 Jan 2020 12:37:18 GMT",
       "tag": "office-ui-fabric-react_v7.86.1",
       "version": "7.86.1",

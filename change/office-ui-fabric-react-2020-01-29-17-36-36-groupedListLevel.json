@@ -1,9 +1,0 @@
-{
-  "type": "patch",
-  "comment": "GroupedList: Adding aria-level to indicate nested level of groups.",
-  "packageName": "office-ui-fabric-react",
-  "email": "Humberto.Morimoto@microsoft.com",
-  "commit": "ee88c9473cd7cb6eac5709883930a7bd798951af",
-  "dependentChangeType": "patch",
-  "date": "2020-01-30T01:36:36.884Z"
-}

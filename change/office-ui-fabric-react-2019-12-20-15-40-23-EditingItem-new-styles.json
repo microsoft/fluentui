@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Add styles file and type files for EditItem component",
-  "packageName": "office-ui-fabric-react",
-  "email": "sanredd@microsoft.com",
-  "commit": "63189772debfd4d113bcd9675a79af790e620023",
-  "date": "2019-12-20T23:40:23.463Z"
-}

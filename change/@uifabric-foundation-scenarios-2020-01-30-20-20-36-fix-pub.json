@@ -1,9 +1,0 @@
-{
-  "type": "none",
-  "comment": "bumping versions to fix broken publishes",
-  "packageName": "@uifabric/foundation-scenarios",
-  "email": "kchau@microsoft.com",
-  "commit": "1fd6f0a289e8f0f126c9609b8e775ac0ced03b81",
-  "dependentChangeType": "patch",
-  "date": "2020-01-31T04:19:57.026Z"
-}

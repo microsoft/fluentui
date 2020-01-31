@@ -1,7 +1,24 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 29 Jan 2020 12:37:18 GMT and should not be manually modified.
+This log was last generated on Fri, 31 Jan 2020 19:00:10 GMT and should not be manually modified.
 
+## 7.88.0
+Fri, 31 Jan 2020 19:00:10 GMT
+
+### Minor changes
+
+- Providing drag drop support for GroupedListSection. Previously, GroupedListSection was non-draggable. (vishgup@microsoft.com)
+- Add ability to customize DetailsHeader tooltip based on column data (tmichon@microsoft.com)
+### Patches
+
+- Add styles file and type files for EditItem component (sanredd@microsoft.com)
+- FacePile: Use default semantic html instead of aria attributes and roles (mark@thedutchies.com)
+- ContextualMenu: Transforming examples to FunctionComponents and cleaning them up. (Humberto.Morimoto@microsoft.com)
+- Nav: Fixing regular expression used to determine if URL is protocol relative or not. (Humberto.Morimoto@microsoft.com)
+- Dropdown: Fixing various High Contrast issues. (Humberto.Morimoto@microsoft.com)
+- ContextualMenu: fix role for checkable split button menu item (xgao@microsoft.com)
+- GroupedList: Adding aria-expanded state to the focus target of groups so that the collapsed/expanded state of the group is announced. (Humberto.Morimoto@microsoft.com)
+- GroupedList: Adding aria-level to indicate nested level of groups. (Humberto.Morimoto@microsoft.com)
 ## 7.86.1
 Wed, 29 Jan 2020 12:37:18 GMT
 
