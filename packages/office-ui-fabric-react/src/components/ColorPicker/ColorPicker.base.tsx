@@ -52,7 +52,6 @@ export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPi
       blue: 'Blue',
       alpha: 'Alpha',
       hueAriaLabel: 'Hue',
-      transparency: 'Transparency',
       svAriaLabel: ColorRectangleBase.defaultProps.ariaLabel!,
       svAriaValueFormat: ColorRectangleBase.defaultProps.ariaValueFormat!,
       svAriaDescription: ColorRectangleBase.defaultProps.ariaDescription!
@@ -119,11 +118,10 @@ export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPi
     const props = this.props;
     const strings = this._strings;
     const textLabels = this._textLabels;
-    const { theme, className, styles, alphaSliderHidden, showAlphaAsTransparencySlider } = props;
+    const { theme, className, styles, alphaSliderHidden, useTransparencySlider } = props;
     const { color } = this.state;
     const alphaValue = color.a;
-    const sliderValue = alphaValue ? this._getSliderValue(alphaValue) : 100;
-    textLabels.a = showAlphaAsTransparencySlider ? props.transparencyLabel || strings.transparency : props.alphaLabel || strings.alpha;
+    const sliderValue = alphaValue ? this._getAlphaOrTransValue(alphaValue) : 100;
 
     const classNames = getClassNames(styles!, {
       theme: theme!,
@@ -166,7 +164,7 @@ export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPi
                   className="is-alpha"
                   isAlpha
                   ariaLabel={strings.alphaAriaLabel || textLabels.a}
-                  showAlphaAsTransparencySlider={showAlphaAsTransparencySlider}
+                  useTransparencySlider={useTransparencySlider}
                   overlayColor={color.hex}
                   minValue={0}
                   maxValue={MAX_COLOR_ALPHA}
@@ -196,7 +194,7 @@ export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPi
                 <td>{textLabels.r}</td>
                 <td>{textLabels.g}</td>
                 <td>{textLabels.b}</td>
-                {!alphaSliderHidden && <td>{textLabels.a}</td>}
+                {!alphaSliderHidden && <td>{useTransparencySlider ? props.alphaLabel : textLabels.a}</td>}
               </tr>
             </thead>
             <tbody>
@@ -236,7 +234,7 @@ export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPi
       return color[component] || '';
     } else if (typeof color[component] === 'number' && !isNaN(color[component] as number)) {
       if (component === 'a') {
-        return String(this._getSliderValue(Number(color[component])));
+        return String(this._getAlphaOrTransValue(Number(color[component])));
       } else {
         return String(color[component]);
       }
@@ -253,14 +251,13 @@ export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPi
   };
 
   private _onAChanged = (ev: React.MouseEvent<HTMLElement>, a: number): void => {
-    this._updateColor(ev, updateA(this.state.color, this._getSliderValue(Math.round(a))));
+    this._updateColor(ev, updateA(this.state.color, this._getAlphaOrTransValue(Math.round(a))));
   };
 
   private _onTextChange(component: keyof IRGBHex, event: React.FormEvent<HTMLInputElement>, newValue?: string): void {
     const color = this.state.color;
     const isHex = component === 'hex';
     const isAlpha = component === 'a';
-    newValue = isAlpha ? String(this._getSliderValue(Number(newValue))) : newValue;
     newValue = (newValue || '').substr(0, isHex ? MAX_HEX_LENGTH : MAX_RGBA_LENGTH);
 
     // Ignore what the user typed if it contains invalid characters
@@ -297,6 +294,7 @@ export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPi
         this.setState({ editingColor: undefined });
       }
     } else {
+      newValue = isAlpha ? String(this._getAlphaOrTransValue(Number(newValue))) : newValue;
       // Should be a valid color. Update the value.
       const newColor = isHex
         ? getColorFromString('#' + newValue)
@@ -368,8 +366,8 @@ export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPi
     }
   }
 
-  private _getSliderValue(alpha: number): number {
-    return this.props.showAlphaAsTransparencySlider ? 100 - alpha : alpha;
+  private _getAlphaOrTransValue(alpha: number): number {
+    return this.props.useTransparencySlider ? 100 - alpha : alpha;
   }
 }
 

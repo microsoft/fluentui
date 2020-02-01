@@ -42,9 +42,12 @@ export interface IColorPickerProps {
   alphaSliderHidden?: boolean;
 
   /**
-  whether require a transparency slider.
+   * When useTransparencySlider is true, this will change the alpha slider to transparency slider.
+   * Alpha value represents the opacity of the color whereas transparency reperesnts the tranparentness of the color,
+   * i.e. 30% transparent color has 70% opaqueness.
    */
-  showAlphaAsTransparencySlider?: boolean;
+  useTransparencySlider?: boolean;
+
   /**
    * Label for the hex text field.
    * @defaultvalue Hex
@@ -75,16 +78,11 @@ export interface IColorPickerProps {
 
   /**
    * Label for the alpha textfield.
+   * Also used for transparency when useTransparencySlider is true.
    * @defaultvalue Alpha
    * @deprecated Use `strings`
    */
   alphaLabel?: string;
-
-  /**
-  Label for the transparency textfield.
-  * @defaultvalue Transparency
-  */
-  transparencyLabel?: string;
 
   /**
    * Additional CSS class(es) to apply to the ColorPicker.
@@ -142,19 +140,15 @@ export interface IColorPickerStrings {
 
   /**
    * Label for the alpha text field.
+   * Also used as transparency when useTransparencySlider is true.
    * Also used as the aria label for the alpha slider if `alphaAriaLabel` is not provided.
    * @defaultvalue Alpha
    */
   alpha?: string;
 
   /**
-  Label for the transparency text field.
-  * @defaultvalue Transparency
-  */
-  transparency?: string;
-
-  /**
    * Customized aria-label for the alpha slider.
+   * Also used as transparency aria label when useTransparencySlider is true.
    */
   alphaAriaLabel?: string;
 

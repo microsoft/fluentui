@@ -2555,12 +2555,11 @@ export interface IColorPickerProps {
     onChange?: (ev: React.SyntheticEvent<HTMLElement>, color: IColor) => void;
     // @deprecated
     redLabel?: string;
-    showAlphaAsTransparencySlider?: boolean;
     showPreview?: boolean;
     strings?: IColorPickerStrings;
     styles?: IStyleFunctionOrObject<IColorPickerStyleProps, IColorPickerStyles>;
     theme?: ITheme;
-    transparencyLabel?: string;
+    useTransparencySlider?: boolean;
 }
 
 // @public (undocumented)
@@ -2589,7 +2588,6 @@ export interface IColorPickerStrings {
     svAriaDescription?: string;
     svAriaLabel?: string;
     svAriaValueFormat?: string;
-    transparency?: string;
 }
 
 // @public (undocumented)
@@ -2665,11 +2663,11 @@ export interface IColorSliderProps {
     overlayColor?: string;
     // @deprecated
     overlayStyle?: React.CSSProperties;
-    showAlphaAsTransparencySlider?: boolean;
     styles?: IStyleFunctionOrObject<IColorSliderStyleProps, IColorSliderStyles>;
     theme?: ITheme;
     // @deprecated
     thumbColor?: string;
+    useTransparencySlider?: boolean;
     value?: number;
 }
 

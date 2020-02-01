@@ -20,7 +20,7 @@ export interface IBasicColorPickerExampleState {
   color: IColor;
   alphaSliderHidden: boolean;
   showPreview: boolean;
-  showAlphaAsTransparencySlider: boolean;
+  useTransparencySlider: boolean;
 }
 
 export class ColorPickerBasicExample extends React.Component<{}, IBasicColorPickerExampleState> {
@@ -28,11 +28,12 @@ export class ColorPickerBasicExample extends React.Component<{}, IBasicColorPick
     color: getColorFromString('#ffffff')!,
     alphaSliderHidden: false,
     showPreview: true,
-    showAlphaAsTransparencySlider: false
+    useTransparencySlider: false
   };
 
   public render(): JSX.Element {
-    const { color, alphaSliderHidden, showPreview: showPreview, showAlphaAsTransparencySlider } = this.state;
+    const { color, alphaSliderHidden, showPreview: showPreview, useTransparencySlider } = this.state;
+
     return (
       <div className={classNames.wrapper}>
         <ColorPicker
@@ -41,12 +42,13 @@ export class ColorPickerBasicExample extends React.Component<{}, IBasicColorPick
           alphaSliderHidden={alphaSliderHidden}
           showPreview={showPreview}
           styles={colorPickerStyles}
-          showAlphaAsTransparencySlider={showAlphaAsTransparencySlider}
+          useTransparencySlider={useTransparencySlider}
+          alphaLabel={this._getAlphaLabel()}
           // The ColorPicker provides default English strings for visible text.
           // If your app is localized, you MUST provide the `strings` prop with localized strings.
           // Below are the recommended aria labels for the hue and alpha slider
           strings={{
-            alphaAriaLabel: 'Alpha Slider: Use left and right arrow keys to change value, hold shift for a larger jump',
+            alphaAriaLabel: '${this._getAlphaLabel} Slider: Use left and right arrow keys to change value, hold shift for a larger jump',
             hueAriaLabel: 'Hue Slider: Use left and right arrow keys to change value, hold shift for a larger jump'
           }}
         />
@@ -54,11 +56,7 @@ export class ColorPickerBasicExample extends React.Component<{}, IBasicColorPick
         <div className={classNames.column2}>
           <Toggle label="Hide alpha slider" onChange={this._onHideAlphaClick} checked={alphaSliderHidden} />
           <Toggle label="Show Preview Box" onChange={this._onShowPreviewBoxClick} checked={showPreview} />
-          <Toggle
-            label="Show alpha as transparency slider"
-            onChange={this._onRequireTransparencyClick}
-            checked={showAlphaAsTransparencySlider}
-          />
+          <Toggle label="Use transparency slider" onChange={this._onUseTransparencySliderClick} checked={useTransparencySlider} />
         </div>
       </div>
     );
@@ -81,8 +79,12 @@ export class ColorPickerBasicExample extends React.Component<{}, IBasicColorPick
     this.setState({ showPreview: !!checked });
   };
 
-  private _onRequireTransparencyClick = (ev: React.MouseEvent<HTMLElement>, checked?: boolean) => {
+  private _onUseTransparencySliderClick = (ev: React.MouseEvent<HTMLElement>, checked?: boolean) => {
     let color = this.state.color;
-    this.setState({ showAlphaAsTransparencySlider: !!checked, color });
+    this.setState({ useTransparencySlider: !!checked, color });
+  };
+
+  private _getAlphaLabel = (): string => {
+    return this.state.useTransparencySlider ? 'Transparency' : 'Alpha';
   };
 }

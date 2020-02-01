@@ -55,7 +55,7 @@ export class ColorSliderBase extends React.Component<IColorSliderProps, IColorSl
   }
 
   public render(): JSX.Element {
-    const { isAlpha, minValue, maxValue, overlayStyle, overlayColor, theme, className, styles, showAlphaAsTransparencySlider } = this.props;
+    const { isAlpha, minValue, maxValue, overlayStyle, overlayColor, theme, className, styles, useTransparencySlider } = this.props;
     const { ariaLabel = isAlpha ? 'Alpha' : 'Hue' } = this.props;
     const currentValue = this.value;
 
@@ -88,7 +88,7 @@ export class ColorSliderBase extends React.Component<IColorSliderProps, IColorSl
             className={classNames.sliderOverlay}
             // this isn't included in getStyles because it may change frequently
             style={
-              overlayStyle || showAlphaAsTransparencySlider
+              overlayStyle || useTransparencySlider
                 ? { background: `linear-gradient(to right,#${overlayColor} , transparent )` }
                 : { background: `linear-gradient(to right, transparent 0, #${overlayColor} 100%)` }
             }
