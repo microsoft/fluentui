@@ -1,0 +1,9 @@
+{
+  "type": "none",
+  "comment": "Remove unused config files",
+  "packageName": "@uifabric/file-type-icons",
+  "email": "elcraig@microsoft.com",
+  "commit": "33b1c3474b1b8e899a1c24a4c1ee973908686df1",
+  "dependentChangeType": "patch",
+  "date": "2020-02-01T00:48:14.788Z"
+}
