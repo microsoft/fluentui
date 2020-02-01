@@ -38,7 +38,7 @@
     "@types/es6-promise": "0.0.32",
     "@types/glob": "^7.1.1",
     "@types/jest": "~24.9.0",
-    "@types/node": "^8.10.29",
+    "@types/node": "^10.0.0",
     "@types/prop-types": "15.5.9",
     "@types/react": "16.8.11",
     "@types/react-dom": "16.8.4",
