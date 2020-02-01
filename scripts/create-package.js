@@ -54,7 +54,6 @@ const steps = [
   { template: 'JustConfig', output: 'just.config.js' },
   { template: 'JestConfig', output: 'jest.config.js' },
   { template: 'PackageJson', output: 'package.json' },
-  { template: 'PrettierConfig', output: 'prettier.config.js' },
   { template: 'TsConfig', output: 'tsconfig.json' },
   { template: 'TsLint', output: 'tslint.json' },
   { template: 'WebpackConfig', output: 'webpack.config.js' },
