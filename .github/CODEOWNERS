@@ -18,6 +18,7 @@
 #### Core build stuff
 scripts/ @dzearing @kenotron @ecraig12345
 package.json @kenotron @ecraig12345 @dzearing
+prettier.config.js @ecraig12345 @kenotron
 webpack.config.js @kenotron @ecraig12345
 webpack.serve.config.js @kenotron @ecraig12345
 jest.config.js @kenotron @ecraig12345
@@ -59,7 +60,6 @@ packages/lists/ @dzearing @KevinTCoughlin @aditima
 packages/merge-styles/ @dzearing
 packages/migration/ @ecraig12345 @kenotron
 packages/monaco-editor/ @ecraig12345 @kenotron
-packages/prettier-rules/ @ecraig12345 @kenotron
 packages/react-hooks/ @ecraig12345
 packages/styling/ @dzearing
 packages/styling/src/interfaces/ @phkuo
