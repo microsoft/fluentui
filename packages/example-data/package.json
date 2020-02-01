@@ -23,7 +23,6 @@
   "devDependencies": {
     "@types/webpack-env": "1.13.9",
     "@uifabric/build": "^7.0.0",
-    "@uifabric/prettier-rules": "^7.0.4",
     "@uifabric/tslint-rules": "^7.0.6"
   },
   "dependencies": {
