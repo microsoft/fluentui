@@ -37,6 +37,8 @@ export interface ITagItemProps extends IPickerItemProps<ITag> {
    */
   enableTagFocusInDisabledPicker?: boolean;
 
+  title?: string;
+
   /** Call to provide customized styling that will layer on top of the variant rules. */
   styles?: IStyleFunctionOrObject<ITagItemStyleProps, ITagItemStyles>;
 
