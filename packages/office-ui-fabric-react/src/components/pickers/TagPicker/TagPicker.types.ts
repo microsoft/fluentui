@@ -37,6 +37,10 @@ export interface ITagItemProps extends IPickerItemProps<ITag> {
    */
   enableTagFocusInDisabledPicker?: boolean;
 
+  /**
+   * The title (and aria-label) attribute used by the TagItem text element.
+   * @defaultvalue item.name
+   */
   title?: string;
 
   /** Call to provide customized styling that will layer on top of the variant rules. */
