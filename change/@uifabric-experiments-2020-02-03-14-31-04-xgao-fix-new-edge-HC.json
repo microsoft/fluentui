@@ -1,0 +1,9 @@
+{
+  "type": "patch",
+  "comment": "Fix High Contrast in Edge Chromium: TextField and Checkbox",
+  "packageName": "@uifabric/experiments",
+  "email": "xgao@microsoft.com",
+  "commit": "09d7f66b6e6d4ef6aa853b5f378e77745bd6f696",
+  "dependentChangeType": "patch",
+  "date": "2020-02-03T22:31:04.263Z"
+}
