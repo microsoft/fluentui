@@ -108,12 +108,14 @@ async function getRecentPrsByAuthor(author, count = 10) {
       console.log(`Getting ${count} most recent PRs by ${author}...`);
       // (this is not quite the right type, since merge_commit_sha doesn't exist on the real response)
       /** @type {GitHubApi.PullsGetResponse[]} */
-      const result = (await github.search.issuesAndPullRequests({
-        q: ['type:pr', 'is:merged', 'author:' + author, 'user:' + repoDetails.owner, 'repo:' + repoDetails.repo].join('+'),
-        sort: 'updated',
-        order: 'desc',
-        per_page: count
-      })).data.items;
+      const result = (
+        await github.search.issuesAndPullRequests({
+          q: ['type:pr', 'is:merged', 'author:' + author, 'user:' + repoDetails.owner, 'repo:' + repoDetails.repo].join('+'),
+          sort: 'updated',
+          order: 'desc',
+          per_page: count
+        })
+      ).data.items;
 
       // Add commit info
       const prs = result.map(processPr);

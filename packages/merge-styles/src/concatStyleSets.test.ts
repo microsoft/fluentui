@@ -85,7 +85,10 @@ describe('concatStyleSets', () => {
     expect(typeof result.subComponentStyles!.a === 'function').toBe(true);
     const aExpanded = result.subComponentStyles!.a({});
     expect(aExpanded).toEqual({
-      root: [{ background: 'green', fontSize: 12 }, { background: 'yellow', color: 'pink' }]
+      root: [
+        { background: 'green', fontSize: 12 },
+        { background: 'yellow', color: 'pink' }
+      ]
     });
   });
 

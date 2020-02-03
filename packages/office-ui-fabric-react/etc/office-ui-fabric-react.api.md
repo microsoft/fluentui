@@ -1644,6 +1644,7 @@ export interface IBaseFloatingPickerProps<T> extends React.ClassAttributes<any> 
     onSuggestionsShown?: () => void;
     onValidateInput?: (input: string) => boolean;
     onZeroQuerySuggestion?: (selectedItems?: T[]) => T[] | PromiseLike<T[]> | null;
+    pickerCalloutProps?: ICalloutProps;
     pickerSuggestionsProps?: IBaseFloatingPickerSuggestionProps;
     resolveDelay?: number;
     searchingText?: ((props: {
@@ -3276,7 +3277,7 @@ export interface IDetailsColumnProps extends React.ClassAttributes<DetailsColumn
     isDropped?: boolean;
     onColumnClick?: (ev: React.MouseEvent<HTMLElement>, column: IColumn) => void;
     onColumnContextMenu?: (column: IColumn, ev: React.MouseEvent<HTMLElement>) => void;
-    onRenderColumnHeaderTooltip?: IRenderFunction<ITooltipHostProps>;
+    onRenderColumnHeaderTooltip?: IRenderFunction<IDetailsColumnRenderTooltipProps>;
     parentId?: string;
     // @deprecated (undocumented)
     setDraggedItemIndex?: (itemIndex: number) => void;
@@ -3286,6 +3287,11 @@ export interface IDetailsColumnProps extends React.ClassAttributes<DetailsColumn
         itemIndex: number;
     }, event?: MouseEvent) => void;
     useFastIcons?: boolean;
+}
+
+// @public (undocumented)
+export interface IDetailsColumnRenderTooltipProps extends ITooltipHostProps {
+    column?: IColumn;
 }
 
 // @public (undocumented)
@@ -3366,7 +3372,7 @@ export interface IDetailsHeaderBaseProps extends React.ClassAttributes<DetailsHe
     onColumnContextMenu?: (column: IColumn, ev: React.MouseEvent<HTMLElement>) => void;
     onColumnIsSizingChanged?: (column: IColumn, isSizing: boolean) => void;
     onColumnResized?: (column: IColumn, newWidth: number, columnIndex: number) => void;
-    onRenderColumnHeaderTooltip?: IRenderFunction<ITooltipHostProps>;
+    onRenderColumnHeaderTooltip?: IRenderFunction<IDetailsColumnRenderTooltipProps>;
     onRenderDetailsCheckbox?: IRenderFunction<IDetailsCheckboxProps>;
     onToggleCollapseAll?: (isAllCollapsed: boolean) => void;
     selectAllVisibility?: SelectAllVisibility;
@@ -3760,7 +3766,9 @@ export interface IDialogContentProps extends React.ClassAttributes<DialogContent
     subTextId?: string;
     theme?: ITheme;
     title?: string | JSX.Element;
+    // @deprecated
     titleId?: string;
+    titleProps?: React.HTMLAttributes<HTMLDivElement>;
     topButtonsProps?: IButtonProps[];
     type?: DialogType;
 }
@@ -4278,6 +4286,7 @@ export interface IDragDropContext {
 // @public
 export interface IDragDropEvents {
     canDrag?: (item?: any) => boolean;
+    canDragGroups?: boolean;
     canDrop?: (dropContext?: IDragDropContext, dragContext?: IDragDropContext) => boolean;
     onDragEnd?: (item?: any, event?: DragEvent) => void;
     onDragEnter?: (item?: any, event?: DragEvent) => string;
@@ -4430,6 +4439,30 @@ export interface IDropHintDetails {
     originX: number;
     // (undocumented)
     startX: number;
+}
+
+// @public (undocumented)
+export interface IEditingSelectedPeopleItemProps extends ISelectedPeopleItemProps {
+    // (undocumented)
+    floatingPickerProps?: IBaseFloatingPickerProps<IPersonaProps>;
+    // (undocumented)
+    getEditingItemText?: (item: IExtendedPersonaProps) => string;
+    // (undocumented)
+    onEditingComplete: (oldItem: any, newItem: any) => void;
+    // (undocumented)
+    onRenderFloatingPicker?: React.ComponentType<IBaseFloatingPickerProps<IPersonaProps>>;
+}
+
+// @public (undocumented)
+export interface IEditingSelectedPeopleItemStyles {
+    // (undocumented)
+    input: IStyle;
+    // (undocumented)
+    root: IStyle;
+}
+
+// @public (undocumented)
+export interface IEditingSelectedPeopleItemStylesProps {
 }
 
 // @public
@@ -5881,6 +5914,7 @@ export interface IPanelProps extends React.HTMLAttributes<PanelBase> {
     hasCloseButton?: boolean;
     headerClassName?: string;
     headerText?: string;
+    headerTextProps?: React.HTMLAttributes<HTMLDivElement>;
     // @deprecated
     ignoreExternalFocusing?: boolean;
     isBlocking?: boolean;

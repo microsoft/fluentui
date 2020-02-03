@@ -1,6 +1,7 @@
 const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
 const IgnoreNotFoundExportWebpackPlugin = require('ignore-not-found-export-webpack-plugin');
 const path = require('path');
+const getResolveAlias = require('../../webpack/getResolveAlias');
 
 module.exports = ({ config }) => {
   config.module.rules.push({
@@ -70,7 +71,11 @@ module.exports = ({ config }) => {
 
   config.resolve.extensions.push('.ts', '.tsx');
 
+  config.resolve.alias = getResolveAlias();
+
   config.plugins.push(new HardSourceWebpackPlugin(), new IgnoreNotFoundExportWebpackPlugin({ include: [/\.tsx?$/] }));
+
+  config.optimization.minimize = false;
 
   return config;
 };

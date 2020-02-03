@@ -67,18 +67,30 @@ module.exports = function preset() {
   task('generate-package-manifest', generatePackageManifestTask);
   task('storybook:start', startStorybookTask());
   task('storybook:build', buildStorybookTask());
+
   task('ts:compile', () => {
-    return argv().commonjs ? 'ts:commonjs-only' : parallel('ts:commonjs', 'ts:esm', condition('ts:amd', () => !!argv().production));
+    return argv().commonjs
+      ? 'ts:commonjs-only'
+      : parallel(
+          'ts:commonjs',
+          'ts:esm',
+          condition('ts:amd', () => !!argv().production)
+        );
   });
 
   task('ts', series('ts:compile', 'ts:postprocess'));
 
-  task('test', condition('jest', () => fs.existsSync(path.join(process.cwd(), 'jest.config.js'))));
+  task(
+    'test',
+    condition('jest', () => fs.existsSync(path.join(process.cwd(), 'jest.config.js')))
+  );
 
   task('lint', parallel('lint-imports', 'tslint'));
 
   task('code-style', series('prettier', 'tslint'));
   task('update-api', series('clean', 'copy', 'sass', 'ts', 'api-extractor:update'));
+
+  task('dev:storybook', series('clean', 'copy', 'sass', 'storybook:start'));
   task('dev', series('clean', 'copy', 'sass', 'webpack-dev-server'));
 
   task('build:node-lib', series('clean', 'copy', 'ts:commonjs-only')).cached();
@@ -94,7 +106,13 @@ module.exports = function preset() {
     )
   ).cached();
 
-  task('bundle', condition('webpack', () => !!resolveCwd('webpack.config.js')));
+  task(
+    'bundle',
+    parallel(
+      condition('webpack', () => !!resolveCwd('webpack.config.js')),
+      condition('storybook:build', () => !!resolveCwd('./.storybook/main.js'))
+    )
+  );
 
   task('no-op', () => {}).cached();
 };

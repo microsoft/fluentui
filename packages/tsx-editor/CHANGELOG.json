@@ -2,6 +2,48 @@
   "name": "@uifabric/tsx-editor",
   "entries": [
     {
+      "date": "Fri, 31 Jan 2020 19:00:10 GMT",
+      "tag": "@uifabric/tsx-editor_v0.11.10",
+      "version": "0.11.10",
+      "comments": {
+        "none": [
+          {
+            "comment": "bumping versions to fix broken publishes",
+            "author": "kchau@microsoft.com",
+            "commit": "1fd6f0a289e8f0f126c9609b8e775ac0ced03b81"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 29 Jan 2020 12:37:18 GMT",
+      "tag": "@uifabric/tsx-editor_v0.11.8",
+      "version": "0.11.8",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix DetailsList export to codepen/live code editing",
+            "author": "xgao@microsoft.com",
+            "commit": "5d1bfca15b9979483e65953ecc872fb809a10875"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 28 Jan 2020 12:43:24 GMT",
+      "tag": "@uifabric/tsx-editor_v0.11.7",
+      "version": "0.11.7",
+      "comments": {
+        "none": [
+          {
+            "comment": "Rename all just configs to TS.",
+            "author": "jagore@microsoft.com",
+            "commit": "373c657b0bf9bf5d8e8433d8df8ccdccaec89e45"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 23 Jan 2020 12:32:26 GMT",
       "tag": "@uifabric/tsx-editor_v0.11.4",
       "version": "0.11.4",

@@ -1,0 +1,9 @@
+{
+  "type": "patch",
+  "comment": "Text: Updating docs and style logic to remove 'inherit' by default behavior.",
+  "packageName": "office-ui-fabric-react",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "commit": "ef797d1a598395ea8fddf5c275b01bf043c5840f",
+  "dependentChangeType": "patch",
+  "date": "2020-01-29T21:52:30.492Z"
+}

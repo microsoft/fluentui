@@ -6,7 +6,7 @@ import { CollapsibleSection, ICollapsibleSectionProps } from '../../CollapsibleS
 import { IAccordionComponent, IAccordionProps, IAccordionSlots } from './Accordion.types';
 import { styles } from './Accordion.styles';
 
-const AccordionItemType = (<CollapsibleSection /> as React.ReactElement<ICollapsibleSectionProps>).type;
+const AccordionItemType = ((<CollapsibleSection />) as React.ReactElement<ICollapsibleSectionProps>).type;
 
 const AccordionView: IAccordionComponent['view'] = props => {
   const { collapseItems } = props;

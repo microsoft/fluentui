@@ -2,12 +2,9 @@ import { isIOS } from './mobileDetector';
 
 const mockNavigator = (agent: string): void => {
   // tslint:disable-next-line:no-any
-  (navigator as any).__defineGetter__(
-    'userAgent',
-    (): string => {
-      return agent;
-    }
-  );
+  (navigator as any).__defineGetter__('userAgent', (): string => {
+    return agent;
+  });
 };
 
 describe('isIOS', () => {

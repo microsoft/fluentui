@@ -1,7 +1,13 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Fri, 17 Jan 2020 02:32:17 GMT and should not be manually modified.
+This log was last generated on Tue, 28 Jan 2020 12:43:24 GMT and should not be manually modified.
 
+## 7.8.0
+Tue, 28 Jan 2020 12:43:24 GMT
+
+### Minor changes
+
+- Fabric website: Expose theme switcher tab on fabric website (marygans@microsoft.com)
 ## 7.7.8
 Fri, 17 Jan 2020 02:32:17 GMT
 

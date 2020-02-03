@@ -130,7 +130,10 @@ export class ShimmerStylingExample extends React.Component<{}, {}> {
       <div style={{ display: 'flex' }}>
         <ShimmerElementsGroup
           backgroundColor={backgroundColor}
-          shimmerElements={[{ type: ShimmerElementType.circle, height: 40 }, { type: ShimmerElementType.gap, width: 16, height: 40 }]}
+          shimmerElements={[
+            { type: ShimmerElementType.circle, height: 40 },
+            { type: ShimmerElementType.gap, width: 16, height: 40 }
+          ]}
         />
         <ShimmerElementsGroup
           backgroundColor={backgroundColor}

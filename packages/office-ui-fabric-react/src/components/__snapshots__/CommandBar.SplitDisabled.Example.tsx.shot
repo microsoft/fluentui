@@ -126,6 +126,9 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                       background-color: Highlight;
                       color: Window;
                     }
+                    &:hover .ms-Button.is-disabled {
+                      color: #a19f9d;
+                    }
                     @media screen and (-ms-high-contrast: active){&:hover .ms-Button.is-disabled {
                       background-color: Window;
                       border-color: GrayText;

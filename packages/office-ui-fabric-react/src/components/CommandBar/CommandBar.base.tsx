@@ -185,7 +185,7 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
     }
 
     // Always pass the default implementation to the override so it may be composed.
-    return <Type {...props as ICommandBarItemProps} />;
+    return <Type {...(props as ICommandBarItemProps)} />;
   };
 
   private _onButtonClick(item: ICommandBarItemProps): (ev: React.MouseEvent<HTMLButtonElement>) => void {
@@ -223,7 +223,7 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
       ? composeComponentAs(this.props.overflowButtonAs, CommandBarButton)
       : CommandBarButton;
 
-    return <OverflowButtonType {...overflowProps as IButtonProps} />;
+    return <OverflowButtonType {...(overflowProps as IButtonProps)} />;
   };
 
   private _computeCacheKey(data: ICommandBarData): string {

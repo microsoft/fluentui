@@ -15,7 +15,7 @@ repoDeps.forEach(dep => {
   if (fs.existsSync(distPath)) {
     let sourcePath = distPath;
 
-    // NOTE for backwards compatibility: @uifabric/* projects gets the dist folders themselvescopied
+    // NOTE for backwards compatibility: @uifabric/* projects gets the dist folders themselves copied
     // otherwise copy the contents not the dist directory itself
     if (dep.packageJson.name.includes('@uifabric')) {
       instructions = instructions.concat(
@@ -26,6 +26,15 @@ repoDeps.forEach(dep => {
         copyInstructions.copyFilesInDirectory(sourcePath, path.join('dist', path.basename(dep.packagePath)))
       );
     }
+  }
+
+  const distStorybookPath = path.join(gitRoot, dep.packagePath, 'dist-storybook');
+
+  if (fs.existsSync(distStorybookPath)) {
+    let sourcePath = distStorybookPath;
+    instructions = instructions.concat(
+      copyInstructions.copyFilesToDestinationDirectory(sourcePath, path.join('dist', path.basename(dep.packagePath)))
+    );
   }
 });
 

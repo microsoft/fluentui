@@ -1,7 +1,13 @@
 # Change Log - @uifabric/theme-samples
 
-This log was last generated on Fri, 17 Jan 2020 02:32:17 GMT and should not be manually modified.
+This log was last generated on Tue, 28 Jan 2020 12:43:24 GMT and should not be manually modified.
 
+## 7.0.10
+Tue, 28 Jan 2020 12:43:24 GMT
+
+### Patches
+
+- Add Dark theme (marygans@microsoft.com)
 ## 7.0.6
 Fri, 17 Jan 2020 02:32:17 GMT
 
