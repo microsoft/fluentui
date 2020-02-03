@@ -6,6 +6,7 @@ import { classNamesFunction, find } from 'office-ui-fabric-react/lib/Utilities';
 import { ResizeGroup } from 'office-ui-fabric-react/lib/ResizeGroup';
 import { IProcessedStyleSet } from 'office-ui-fabric-react/lib/Styling';
 import { OverflowSet, IOverflowSetItemProps } from 'office-ui-fabric-react/lib/OverflowSet';
+import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react/lib/FocusZone';
 import { ILegend, ILegendsProps, LegendShape, ILegendsStyles, ILegendStyleProps, ILegendOverflowData } from './Legends.types';
 
 const getClassNames = classNamesFunction<ILegendStyleProps, ILegendsStyles>();
@@ -24,8 +25,10 @@ interface ILegendItem {
 
 export interface ILegendState {
   selectedLegend: string;
+  selecetedLegendInHoverCard: string;
   selectedState: boolean;
   hoverState: boolean;
+  isHoverCardVisible: boolean;
 }
 export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
   private _classNames: IProcessedStyleSet<ILegendsStyles>;
@@ -35,7 +38,9 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
     this.state = {
       selectedLegend: 'none',
       selectedState: false,
-      hoverState: false
+      hoverState: false,
+      isHoverCardVisible: false,
+      selecetedLegendInHoverCard: 'none'
     };
   }
 
@@ -126,12 +131,20 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
 
   private _onClick = (legend: ILegend): void => {
     if (this.state.selectedState === true && this.state.selectedLegend === legend.title) {
-      this.setState({ selectedLegend: 'none', selectedState: false });
+      this.setState({
+        selectedLegend: 'none',
+        selectedState: false,
+        selecetedLegendInHoverCard: this.state.isHoverCardVisible ? legend.title : 'none'
+      });
       if (legend.action) {
         legend.action();
       }
     } else {
-      this.setState({ selectedState: true, selectedLegend: legend.title });
+      this.setState({
+        selectedState: true,
+        selectedLegend: legend.title,
+        selecetedLegendInHoverCard: this.state.isHoverCardVisible ? legend.title : 'none'
+      });
       if (legend.action) {
         legend.action();
       }
@@ -144,7 +157,11 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
       const hoverCardElement = this._renderButton(legend, index, true);
       overflowHoverCardLegends.push(hoverCardElement);
     });
-    const hoverCardData = <div className="hoverCardRoot">{overflowHoverCardLegends}</div>;
+    const hoverCardData = (
+      <FocusZone className="hoverCardRoot" direction={FocusZoneDirection.vertical}>
+        {overflowHoverCardLegends}
+      </FocusZone>
+    );
     return hoverCardData;
   };
 
@@ -162,32 +179,53 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
     const plainCardProps = {
       onRenderPlainCard: this._onRenderCompactCard,
       renderData: renderOverflowData,
-      gapSpace: 12
+      gapSpace: 8
     };
 
     // execute similar to "_onClick" and "_onLeave" logic at HoverCard onCardHide event
     const onHoverCardHideHandler = () => {
-      if (this.state.selectedState) {
-        const selectedOverflowItem = find(legends, (legend: ILegend) => legend.title === this.state.selectedLegend);
-        if (selectedOverflowItem) {
-          this.setState({ selectedLegend: 'none', selectedState: false }, () => {
-            if (selectedOverflowItem.action) {
-              selectedOverflowItem.action();
-            }
-            this.setState({ hoverState: false }, () => {
-              if (selectedOverflowItem.onMouseOutAction) {
-                selectedOverflowItem.onMouseOutAction();
+      const selectedOverflowItem = find(
+        legends,
+        (legend: ILegend) => legend.title === this.state.selecetedLegendInHoverCard || legend.title === this.state.selectedLegend
+      );
+      this.setState(
+        {
+          isHoverCardVisible: false
+        },
+        () => {
+          if (selectedOverflowItem) {
+            this.setState({ selectedLegend: 'none', selectedState: false }, () => {
+              if (selectedOverflowItem.action) {
+                selectedOverflowItem.action();
               }
+              this.setState({ hoverState: false }, () => {
+                if (selectedOverflowItem.onMouseOutAction) {
+                  selectedOverflowItem.onMouseOutAction(true);
+                }
+              });
             });
-          });
+          }
         }
-      }
+      );
     };
     return (
-      <HoverCard type={HoverCardType.plain} plainCardProps={plainCardProps} instantOpenOnClick={true} onCardHide={onHoverCardHideHandler}>
+      <HoverCard
+        type={HoverCardType.plain}
+        plainCardProps={plainCardProps}
+        instantOpenOnClick={true}
+        onCardHide={onHoverCardHideHandler}
+        setInitialFocus={true}
+        trapFocus={true}
+        onCardVisible={this._hoverCardVisible}
+        styles={classNames.subComponentStyles.hoverCardStyles}
+      >
         <div className={classNames.overflowIndicationTextStyle}>{items.length} more</div>
       </HoverCard>
     );
+  };
+
+  private _hoverCardVisible = () => {
+    this.setState({ isHoverCardVisible: true });
   };
 
   private _onHoverOverLegend = (legend: ILegend) => {
@@ -237,7 +275,7 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
       this._onLeave(legend);
     };
     return (
-      <div
+      <button
         key={index}
         className={classNames.legend}
         onClick={onClickHandler}
@@ -245,11 +283,10 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
         onMouseOut={onMouseOut}
         onFocus={onHoverHandler}
         onBlur={onMouseOut}
-        data-is-focusable={true}
       >
         <div className={this._getShapeClass(classNames, legend)} />
         <div className={classNames.text}>{legend.title}</div>
-      </div>
+      </button>
     );
   };
 
