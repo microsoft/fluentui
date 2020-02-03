@@ -2,6 +2,37 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Mon, 03 Feb 2020 20:04:10 GMT",
+      "tag": "office-ui-fabric-react_v7.88.1",
+      "version": "7.88.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Text: Updating docs and style logic to remove 'inherit' by default behavior.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "ef797d1a598395ea8fddf5c275b01bf043c5840f"
+          },
+          {
+            "comment": "Dialog: Fix DialogContent titleProps",
+            "author": "xgao@microsoft.com",
+            "commit": "9e0dd8e0c13cba7a7dc0ba4bb636c837c17440e9"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Prevent the ComponentExamples test from eating errors",
+            "author": "elcraig@microsoft.com",
+            "commit": "f6fdd3eefc61817a53077b45f37dd3d7da8d3420"
+          },
+          {
+            "comment": "DateTime: fix broken test",
+            "author": "joschect@microsoft.com",
+            "commit": "65e124a96e3d37e81a0a9cadf5ad36ec36a2df60"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 31 Jan 2020 19:00:10 GMT",
       "tag": "office-ui-fabric-react_v7.88.0",
       "version": "7.88.0",

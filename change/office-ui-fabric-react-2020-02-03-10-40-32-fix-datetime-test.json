@@ -1,9 +1,0 @@
-{
-  "type": "none",
-  "comment": "DateTime: fix broken test",
-  "packageName": "office-ui-fabric-react",
-  "email": "joschect@microsoft.com",
-  "commit": "65e124a96e3d37e81a0a9cadf5ad36ec36a2df60",
-  "dependentChangeType": "patch",
-  "date": "2020-02-03T18:40:32.220Z"
-}

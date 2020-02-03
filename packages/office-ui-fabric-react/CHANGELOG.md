@@ -1,7 +1,14 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 31 Jan 2020 19:00:10 GMT and should not be manually modified.
+This log was last generated on Mon, 03 Feb 2020 20:04:10 GMT and should not be manually modified.
 
+## 7.88.1
+Mon, 03 Feb 2020 20:04:10 GMT
+
+### Patches
+
+- Text: Updating docs and style logic to remove 'inherit' by default behavior. (Humberto.Morimoto@microsoft.com)
+- Dialog: Fix DialogContent titleProps (xgao@microsoft.com)
 ## 7.88.0
 Fri, 31 Jan 2020 19:00:10 GMT
 
