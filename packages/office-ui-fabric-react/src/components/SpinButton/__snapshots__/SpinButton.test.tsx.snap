@@ -48,6 +48,13 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
             pointer-events: none;
             word-wrap: break-word;
           }
+          @media screen and (-ms-high-contrast: active){& {
+            background: Window;
+            color: WindowText;
+          }
+          @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+            forced-color-adjust: none;
+          }
       htmlFor="input1"
       id="Label0"
     >
@@ -478,6 +485,13 @@ exports[`SpinButton renders SpinButton correctly with values that the user passe
             padding-top: 5px;
             pointer-events: none;
             word-wrap: break-word;
+          }
+          @media screen and (-ms-high-contrast: active){& {
+            background: Window;
+            color: WindowText;
+          }
+          @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+            forced-color-adjust: none;
           }
       htmlFor="input1"
       id="Label0"

@@ -82,8 +82,14 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
           &:hover .ms-Checkbox-text {
             color: #201f1e;
           }
+          @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-text {
+            color: WindowText;
+          }
           &:focus .ms-Checkbox-text {
             color: #201f1e;
+          }
+          @media screen and (-ms-high-contrast: active){&:focus .ms-Checkbox-text {
+            color: WindowText;
           }
     >
       <input
@@ -157,6 +163,12 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
                 transition-timing-function: cubic-bezier(.4, 0, .23, 1);
                 width: 20px;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                border-color: WindowText;
+              }
+              @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                forced-color-adjust: none;
+              }
         >
           <i
             aria-hidden={true}
@@ -191,6 +203,12 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
                 font-size: 14px;
                 line-height: 20px;
                 margin-left: 4px;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                color: WindowText;
+              }
+              @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                forced-color-adjust: none;
               }
         >
           I am in ltr
@@ -248,8 +266,14 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
             &:hover .ms-Checkbox-text {
               color: #201f1e;
             }
+            @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-text {
+              color: WindowText;
+            }
             &:focus .ms-Checkbox-text {
               color: #201f1e;
+            }
+            @media screen and (-ms-high-contrast: active){&:focus .ms-Checkbox-text {
+              color: WindowText;
             }
       >
         <input
@@ -323,6 +347,12 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
                   transition-timing-function: cubic-bezier(.4, 0, .23, 1);
                   width: 20px;
                 }
+                @media screen and (-ms-high-contrast: active){& {
+                  border-color: WindowText;
+                }
+                @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                  forced-color-adjust: none;
+                }
           >
             <i
               aria-hidden={true}
@@ -357,6 +387,12 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
                   font-size: 14px;
                   line-height: 20px;
                   margin-right: 4px;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  color: WindowText;
+                }
+                @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                  forced-color-adjust: none;
                 }
           >
             I am in rtl, inside of ltr
@@ -414,8 +450,14 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
               &:hover .ms-Checkbox-text {
                 color: #201f1e;
               }
+              @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-text {
+                color: WindowText;
+              }
               &:focus .ms-Checkbox-text {
                 color: #201f1e;
+              }
+              @media screen and (-ms-high-contrast: active){&:focus .ms-Checkbox-text {
+                color: WindowText;
               }
         >
           <input
@@ -489,6 +531,12 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
                     transition-timing-function: cubic-bezier(.4, 0, .23, 1);
                     width: 20px;
                   }
+                  @media screen and (-ms-high-contrast: active){& {
+                    border-color: WindowText;
+                  }
+                  @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                    forced-color-adjust: none;
+                  }
             >
               <i
                 aria-hidden={true}
@@ -523,6 +571,12 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
                     font-size: 14px;
                     line-height: 20px;
                     margin-left: 4px;
+                  }
+                  @media screen and (-ms-high-contrast: active){& {
+                    color: WindowText;
+                  }
+                  @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                    forced-color-adjust: none;
                   }
             >
               I am in ltr, inside of rtl, inside of ltr
@@ -583,8 +637,14 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
           &:hover .ms-Checkbox-text {
             color: #201f1e;
           }
+          @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-text {
+            color: WindowText;
+          }
           &:focus .ms-Checkbox-text {
             color: #201f1e;
+          }
+          @media screen and (-ms-high-contrast: active){&:focus .ms-Checkbox-text {
+            color: WindowText;
           }
     >
       <input
@@ -658,6 +718,12 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
                 transition-timing-function: cubic-bezier(.4, 0, .23, 1);
                 width: 20px;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                border-color: WindowText;
+              }
+              @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                forced-color-adjust: none;
+              }
         >
           <i
             aria-hidden={true}
@@ -692,6 +758,12 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
                 font-size: 14px;
                 line-height: 20px;
                 margin-right: 4px;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                color: WindowText;
+              }
+              @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                forced-color-adjust: none;
               }
         >
           I am in rtl
@@ -749,8 +821,14 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
             &:hover .ms-Checkbox-text {
               color: #201f1e;
             }
+            @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-text {
+              color: WindowText;
+            }
             &:focus .ms-Checkbox-text {
               color: #201f1e;
+            }
+            @media screen and (-ms-high-contrast: active){&:focus .ms-Checkbox-text {
+              color: WindowText;
             }
       >
         <input
@@ -824,6 +902,12 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
                   transition-timing-function: cubic-bezier(.4, 0, .23, 1);
                   width: 20px;
                 }
+                @media screen and (-ms-high-contrast: active){& {
+                  border-color: WindowText;
+                }
+                @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                  forced-color-adjust: none;
+                }
           >
             <i
               aria-hidden={true}
@@ -858,6 +942,12 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
                   font-size: 14px;
                   line-height: 20px;
                   margin-left: 4px;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  color: WindowText;
+                }
+                @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                  forced-color-adjust: none;
                 }
           >
             I am in ltr, inside of rtl
@@ -915,8 +1005,14 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
               &:hover .ms-Checkbox-text {
                 color: #201f1e;
               }
+              @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-text {
+                color: WindowText;
+              }
               &:focus .ms-Checkbox-text {
                 color: #201f1e;
+              }
+              @media screen and (-ms-high-contrast: active){&:focus .ms-Checkbox-text {
+                color: WindowText;
               }
         >
           <input
@@ -990,6 +1086,12 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
                     transition-timing-function: cubic-bezier(.4, 0, .23, 1);
                     width: 20px;
                   }
+                  @media screen and (-ms-high-contrast: active){& {
+                    border-color: WindowText;
+                  }
+                  @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                    forced-color-adjust: none;
+                  }
             >
               <i
                 aria-hidden={true}
@@ -1024,6 +1126,12 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
                     font-size: 14px;
                     line-height: 20px;
                     margin-right: 4px;
+                  }
+                  @media screen and (-ms-high-contrast: active){& {
+                    color: WindowText;
+                  }
+                  @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                    forced-color-adjust: none;
                   }
             >
               I am in rtl, inside of rtl, inside of rtl
@@ -1089,8 +1197,14 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
           &:hover .ms-Checkbox-text {
             color: #201f1e;
           }
+          @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-text {
+            color: WindowText;
+          }
           &:focus .ms-Checkbox-text {
             color: #201f1e;
+          }
+          @media screen and (-ms-high-contrast: active){&:focus .ms-Checkbox-text {
+            color: WindowText;
           }
     >
       <input
@@ -1164,6 +1278,12 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
                 transition-timing-function: cubic-bezier(.4, 0, .23, 1);
                 width: 20px;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                border-color: WindowText;
+              }
+              @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                forced-color-adjust: none;
+              }
         >
           <i
             aria-hidden={true}
@@ -1198,6 +1318,12 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
                 font-size: 14px;
                 line-height: 20px;
                 margin-left: 4px;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                color: WindowText;
+              }
+              @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                forced-color-adjust: none;
               }
         >
           I am in ltr
@@ -1255,8 +1381,14 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
             &:hover .ms-Checkbox-text {
               color: #201f1e;
             }
+            @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-text {
+              color: WindowText;
+            }
             &:focus .ms-Checkbox-text {
               color: #201f1e;
+            }
+            @media screen and (-ms-high-contrast: active){&:focus .ms-Checkbox-text {
+              color: WindowText;
             }
       >
         <input
@@ -1330,6 +1462,12 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
                   transition-timing-function: cubic-bezier(.4, 0, .23, 1);
                   width: 20px;
                 }
+                @media screen and (-ms-high-contrast: active){& {
+                  border-color: WindowText;
+                }
+                @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                  forced-color-adjust: none;
+                }
           >
             <i
               aria-hidden={true}
@@ -1364,6 +1502,12 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
                   font-size: 14px;
                   line-height: 20px;
                   margin-right: 4px;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  color: WindowText;
+                }
+                @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                  forced-color-adjust: none;
                 }
           >
             I am in rtl, inside of ltr
@@ -1421,8 +1565,14 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
               &:hover .ms-Checkbox-text {
                 color: #201f1e;
               }
+              @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-text {
+                color: WindowText;
+              }
               &:focus .ms-Checkbox-text {
                 color: #201f1e;
+              }
+              @media screen and (-ms-high-contrast: active){&:focus .ms-Checkbox-text {
+                color: WindowText;
               }
         >
           <input
@@ -1496,6 +1646,12 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
                     transition-timing-function: cubic-bezier(.4, 0, .23, 1);
                     width: 20px;
                   }
+                  @media screen and (-ms-high-contrast: active){& {
+                    border-color: WindowText;
+                  }
+                  @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                    forced-color-adjust: none;
+                  }
             >
               <i
                 aria-hidden={true}
@@ -1530,6 +1686,12 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
                     font-size: 14px;
                     line-height: 20px;
                     margin-left: 4px;
+                  }
+                  @media screen and (-ms-high-contrast: active){& {
+                    color: WindowText;
+                  }
+                  @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                    forced-color-adjust: none;
                   }
             >
               I am in ltr, inside of rtl, inside of ltr
@@ -1590,8 +1752,14 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
           &:hover .ms-Checkbox-text {
             color: #201f1e;
           }
+          @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-text {
+            color: WindowText;
+          }
           &:focus .ms-Checkbox-text {
             color: #201f1e;
+          }
+          @media screen and (-ms-high-contrast: active){&:focus .ms-Checkbox-text {
+            color: WindowText;
           }
     >
       <input
@@ -1665,6 +1833,12 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
                 transition-timing-function: cubic-bezier(.4, 0, .23, 1);
                 width: 20px;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                border-color: WindowText;
+              }
+              @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                forced-color-adjust: none;
+              }
         >
           <i
             aria-hidden={true}
@@ -1699,6 +1873,12 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
                 font-size: 14px;
                 line-height: 20px;
                 margin-right: 4px;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                color: WindowText;
+              }
+              @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                forced-color-adjust: none;
               }
         >
           I am in rtl
@@ -1756,8 +1936,14 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
             &:hover .ms-Checkbox-text {
               color: #201f1e;
             }
+            @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-text {
+              color: WindowText;
+            }
             &:focus .ms-Checkbox-text {
               color: #201f1e;
+            }
+            @media screen and (-ms-high-contrast: active){&:focus .ms-Checkbox-text {
+              color: WindowText;
             }
       >
         <input
@@ -1831,6 +2017,12 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
                   transition-timing-function: cubic-bezier(.4, 0, .23, 1);
                   width: 20px;
                 }
+                @media screen and (-ms-high-contrast: active){& {
+                  border-color: WindowText;
+                }
+                @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                  forced-color-adjust: none;
+                }
           >
             <i
               aria-hidden={true}
@@ -1865,6 +2057,12 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
                   font-size: 14px;
                   line-height: 20px;
                   margin-left: 4px;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  color: WindowText;
+                }
+                @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                  forced-color-adjust: none;
                 }
           >
             I am in ltr, inside of rtl
@@ -1922,8 +2120,14 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
               &:hover .ms-Checkbox-text {
                 color: #201f1e;
               }
+              @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-text {
+                color: WindowText;
+              }
               &:focus .ms-Checkbox-text {
                 color: #201f1e;
+              }
+              @media screen and (-ms-high-contrast: active){&:focus .ms-Checkbox-text {
+                color: WindowText;
               }
         >
           <input
@@ -1997,6 +2201,12 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
                     transition-timing-function: cubic-bezier(.4, 0, .23, 1);
                     width: 20px;
                   }
+                  @media screen and (-ms-high-contrast: active){& {
+                    border-color: WindowText;
+                  }
+                  @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                    forced-color-adjust: none;
+                  }
             >
               <i
                 aria-hidden={true}
@@ -2031,6 +2241,12 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
                     font-size: 14px;
                     line-height: 20px;
                     margin-right: 4px;
+                  }
+                  @media screen and (-ms-high-contrast: active){& {
+                    color: WindowText;
+                  }
+                  @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                    forced-color-adjust: none;
                   }
             >
               I am in rtl, inside of rtl, inside of rtl
@@ -2096,8 +2312,14 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
           &:hover .ms-Checkbox-text {
             color: #201f1e;
           }
+          @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-text {
+            color: WindowText;
+          }
           &:focus .ms-Checkbox-text {
             color: #201f1e;
+          }
+          @media screen and (-ms-high-contrast: active){&:focus .ms-Checkbox-text {
+            color: WindowText;
           }
     >
       <input
@@ -2171,6 +2393,12 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
                 transition-timing-function: cubic-bezier(.4, 0, .23, 1);
                 width: 20px;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                border-color: WindowText;
+              }
+              @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                forced-color-adjust: none;
+              }
         >
           <i
             aria-hidden={true}
@@ -2205,6 +2433,12 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
                 font-size: 14px;
                 line-height: 20px;
                 margin-left: 4px;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                color: WindowText;
+              }
+              @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                forced-color-adjust: none;
               }
         >
           I am in ltr
@@ -2262,8 +2496,14 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
             &:hover .ms-Checkbox-text {
               color: #201f1e;
             }
+            @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-text {
+              color: WindowText;
+            }
             &:focus .ms-Checkbox-text {
               color: #201f1e;
+            }
+            @media screen and (-ms-high-contrast: active){&:focus .ms-Checkbox-text {
+              color: WindowText;
             }
       >
         <input
@@ -2337,6 +2577,12 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
                   transition-timing-function: cubic-bezier(.4, 0, .23, 1);
                   width: 20px;
                 }
+                @media screen and (-ms-high-contrast: active){& {
+                  border-color: WindowText;
+                }
+                @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                  forced-color-adjust: none;
+                }
           >
             <i
               aria-hidden={true}
@@ -2371,6 +2617,12 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
                   font-size: 14px;
                   line-height: 20px;
                   margin-right: 4px;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  color: WindowText;
+                }
+                @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                  forced-color-adjust: none;
                 }
           >
             I am in rtl, inside of ltr
@@ -2428,8 +2680,14 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
               &:hover .ms-Checkbox-text {
                 color: #201f1e;
               }
+              @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-text {
+                color: WindowText;
+              }
               &:focus .ms-Checkbox-text {
                 color: #201f1e;
+              }
+              @media screen and (-ms-high-contrast: active){&:focus .ms-Checkbox-text {
+                color: WindowText;
               }
         >
           <input
@@ -2503,6 +2761,12 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
                     transition-timing-function: cubic-bezier(.4, 0, .23, 1);
                     width: 20px;
                   }
+                  @media screen and (-ms-high-contrast: active){& {
+                    border-color: WindowText;
+                  }
+                  @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                    forced-color-adjust: none;
+                  }
             >
               <i
                 aria-hidden={true}
@@ -2537,6 +2801,12 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
                     font-size: 14px;
                     line-height: 20px;
                     margin-left: 4px;
+                  }
+                  @media screen and (-ms-high-contrast: active){& {
+                    color: WindowText;
+                  }
+                  @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                    forced-color-adjust: none;
                   }
             >
               I am in ltr, inside of rtl, inside of ltr
@@ -2597,8 +2867,14 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
           &:hover .ms-Checkbox-text {
             color: #201f1e;
           }
+          @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-text {
+            color: WindowText;
+          }
           &:focus .ms-Checkbox-text {
             color: #201f1e;
+          }
+          @media screen and (-ms-high-contrast: active){&:focus .ms-Checkbox-text {
+            color: WindowText;
           }
     >
       <input
@@ -2672,6 +2948,12 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
                 transition-timing-function: cubic-bezier(.4, 0, .23, 1);
                 width: 20px;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                border-color: WindowText;
+              }
+              @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                forced-color-adjust: none;
+              }
         >
           <i
             aria-hidden={true}
@@ -2706,6 +2988,12 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
                 font-size: 14px;
                 line-height: 20px;
                 margin-right: 4px;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                color: WindowText;
+              }
+              @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                forced-color-adjust: none;
               }
         >
           I am in rtl
@@ -2763,8 +3051,14 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
             &:hover .ms-Checkbox-text {
               color: #201f1e;
             }
+            @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-text {
+              color: WindowText;
+            }
             &:focus .ms-Checkbox-text {
               color: #201f1e;
+            }
+            @media screen and (-ms-high-contrast: active){&:focus .ms-Checkbox-text {
+              color: WindowText;
             }
       >
         <input
@@ -2838,6 +3132,12 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
                   transition-timing-function: cubic-bezier(.4, 0, .23, 1);
                   width: 20px;
                 }
+                @media screen and (-ms-high-contrast: active){& {
+                  border-color: WindowText;
+                }
+                @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                  forced-color-adjust: none;
+                }
           >
             <i
               aria-hidden={true}
@@ -2872,6 +3172,12 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
                   font-size: 14px;
                   line-height: 20px;
                   margin-left: 4px;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  color: WindowText;
+                }
+                @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                  forced-color-adjust: none;
                 }
           >
             I am in ltr, inside of rtl
@@ -2929,8 +3235,14 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
               &:hover .ms-Checkbox-text {
                 color: #201f1e;
               }
+              @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-text {
+                color: WindowText;
+              }
               &:focus .ms-Checkbox-text {
                 color: #201f1e;
+              }
+              @media screen and (-ms-high-contrast: active){&:focus .ms-Checkbox-text {
+                color: WindowText;
               }
         >
           <input
@@ -3004,6 +3316,12 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
                     transition-timing-function: cubic-bezier(.4, 0, .23, 1);
                     width: 20px;
                   }
+                  @media screen and (-ms-high-contrast: active){& {
+                    border-color: WindowText;
+                  }
+                  @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                    forced-color-adjust: none;
+                  }
             >
               <i
                 aria-hidden={true}
@@ -3038,6 +3356,12 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
                     font-size: 14px;
                     line-height: 20px;
                     margin-right: 4px;
+                  }
+                  @media screen and (-ms-high-contrast: active){& {
+                    color: WindowText;
+                  }
+                  @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                    forced-color-adjust: none;
                   }
             >
               I am in rtl, inside of rtl, inside of rtl

@@ -96,6 +96,13 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
                 padding-top: 0px;
                 word-wrap: break-word;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                background: Window;
+                color: WindowText;
+              }
+              @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                forced-color-adjust: none;
+              }
           htmlFor="Slider0"
         >
           Stack height:
@@ -314,6 +321,13 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
                   width: 40px;
                   word-wrap: break-word;
                 }
+                @media screen and (-ms-high-contrast: active){& {
+                  background: Window;
+                  color: WindowText;
+                }
+                @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                  forced-color-adjust: none;
+                }
           >
             420
           </label>
@@ -372,6 +386,13 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
                 padding-right: 0px;
                 padding-top: 0px;
                 word-wrap: break-word;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                background: Window;
+                color: WindowText;
+              }
+              @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                forced-color-adjust: none;
               }
           htmlFor="Slider1"
         >
@@ -591,6 +612,13 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
                   width: 40px;
                   word-wrap: break-word;
                 }
+                @media screen and (-ms-high-contrast: active){& {
+                  background: Window;
+                  color: WindowText;
+                }
+                @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                  forced-color-adjust: none;
+                }
           >
             100
           </label>
@@ -663,6 +691,13 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
                 padding-right: 0;
                 padding-top: 5px;
                 word-wrap: break-word;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                background: Window;
+                color: WindowText;
+              }
+              @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                forced-color-adjust: none;
               }
           id="Dropdown2-label"
         >
@@ -891,6 +926,13 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
                 padding-top: 5px;
                 word-wrap: break-word;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                background: Window;
+                color: WindowText;
+              }
+              @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                forced-color-adjust: none;
+              }
           id="Dropdown3-label"
         >
           Vertical alignment:
@@ -1117,6 +1159,13 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
                 padding-right: 0;
                 padding-top: 5px;
                 word-wrap: break-word;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                background: Window;
+                color: WindowText;
+              }
+              @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                forced-color-adjust: none;
               }
           id="Dropdown4-label"
         >

@@ -1521,6 +1521,9 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
             right: 0px;
             top: 0px;
           }
+          @media screen and (-ms-high-contrast: active) and (forced-colors: active){&:focus:after {
+            forced-color-adjust: none;
+          }
       id="ComboBox6wrapper"
     >
       <input

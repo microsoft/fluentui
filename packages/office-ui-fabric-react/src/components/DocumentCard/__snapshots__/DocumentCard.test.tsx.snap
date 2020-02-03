@@ -33,6 +33,9 @@ exports[`DocumentCard renders DocumentCard correctly 1`] = `
       @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
         border-color: Highlight;
       }
+      @media screen and (-ms-high-contrast: active) and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+        forced-color-adjust: none;
+      }
       & .ms-DocumentCardLocation + .ms-DocumentCardTitle {
         padding-top: 4px;
       }

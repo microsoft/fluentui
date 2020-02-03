@@ -117,6 +117,13 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                   padding-top: 0px;
                   word-wrap: break-word;
                 }
+                @media screen and (-ms-high-contrast: active){& {
+                  background: Window;
+                  color: WindowText;
+                }
+                @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                  forced-color-adjust: none;
+                }
             htmlFor="Slider0"
           >
             Number of items:
@@ -335,6 +342,13 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     width: 40px;
                     word-wrap: break-word;
                   }
+                  @media screen and (-ms-high-contrast: active){& {
+                    background: Window;
+                    color: WindowText;
+                  }
+                  @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                    forced-color-adjust: none;
+                  }
             >
               5
             </label>
@@ -389,8 +403,14 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                 &:hover .ms-Checkbox-text {
                   color: #201f1e;
                 }
+                @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-text {
+                  color: WindowText;
+                }
                 &:focus .ms-Checkbox-text {
                   color: #201f1e;
+                }
+                @media screen and (-ms-high-contrast: active){&:focus .ms-Checkbox-text {
+                  color: WindowText;
                 }
           >
             <input
@@ -464,6 +484,12 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       transition-timing-function: cubic-bezier(.4, 0, .23, 1);
                       width: 20px;
                     }
+                    @media screen and (-ms-high-contrast: active){& {
+                      border-color: WindowText;
+                    }
+                    @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                      forced-color-adjust: none;
+                    }
               >
                 <i
                   aria-hidden={true}
@@ -499,6 +525,12 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       line-height: 20px;
                       margin-left: 4px;
                     }
+                    @media screen and (-ms-high-contrast: active){& {
+                      color: WindowText;
+                    }
+                    @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                      forced-color-adjust: none;
+                    }
               >
                 Shadow around items
               </span>
@@ -532,8 +564,14 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                 &:hover .ms-Checkbox-text {
                   color: #201f1e;
                 }
+                @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-text {
+                  color: WindowText;
+                }
                 &:focus .ms-Checkbox-text {
                   color: #201f1e;
+                }
+                @media screen and (-ms-high-contrast: active){&:focus .ms-Checkbox-text {
+                  color: WindowText;
                 }
           >
             <input
@@ -607,6 +645,12 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       transition-timing-function: cubic-bezier(.4, 0, .23, 1);
                       width: 20px;
                     }
+                    @media screen and (-ms-high-contrast: active){& {
+                      border-color: WindowText;
+                    }
+                    @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                      forced-color-adjust: none;
+                    }
               >
                 <i
                   aria-hidden={true}
@@ -642,6 +686,12 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       line-height: 20px;
                       margin-left: 4px;
                     }
+                    @media screen and (-ms-high-contrast: active){& {
+                      color: WindowText;
+                    }
+                    @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                      forced-color-adjust: none;
+                    }
               >
                 Prevent item overflow
               </span>
@@ -675,8 +725,14 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                 &:hover .ms-Checkbox-text {
                   color: #201f1e;
                 }
+                @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-text {
+                  color: WindowText;
+                }
                 &:focus .ms-Checkbox-text {
                   color: #201f1e;
+                }
+                @media screen and (-ms-high-contrast: active){&:focus .ms-Checkbox-text {
+                  color: WindowText;
                 }
           >
             <input
@@ -750,6 +806,12 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       transition-timing-function: cubic-bezier(.4, 0, .23, 1);
                       width: 20px;
                     }
+                    @media screen and (-ms-high-contrast: active){& {
+                      border-color: WindowText;
+                    }
+                    @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                      forced-color-adjust: none;
+                    }
               >
                 <i
                   aria-hidden={true}
@@ -785,6 +847,12 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       line-height: 20px;
                       margin-left: 4px;
                     }
+                    @media screen and (-ms-high-contrast: active){& {
+                      color: WindowText;
+                    }
+                    @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                      forced-color-adjust: none;
+                    }
               >
                 Shrink items
               </span>
@@ -817,8 +885,14 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                 &:hover .ms-Checkbox-text {
                   color: #201f1e;
                 }
+                @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-text {
+                  color: WindowText;
+                }
                 &:focus .ms-Checkbox-text {
                   color: #201f1e;
+                }
+                @media screen and (-ms-high-contrast: active){&:focus .ms-Checkbox-text {
+                  color: WindowText;
                 }
           >
             <input
@@ -892,6 +966,12 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       transition-timing-function: cubic-bezier(.4, 0, .23, 1);
                       width: 20px;
                     }
+                    @media screen and (-ms-high-contrast: active){& {
+                      border-color: WindowText;
+                    }
+                    @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                      forced-color-adjust: none;
+                    }
               >
                 <i
                   aria-hidden={true}
@@ -926,6 +1006,12 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       font-size: 14px;
                       line-height: 20px;
                       margin-left: 4px;
+                    }
+                    @media screen and (-ms-high-contrast: active){& {
+                      color: WindowText;
+                    }
+                    @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                      forced-color-adjust: none;
                     }
               >
                 Wrap items
@@ -1010,7 +1096,11 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                   word-wrap: break-word;
                 }
                 @media screen and (-ms-high-contrast: active){& {
+                  background: Window;
                   color: GrayText;
+                }
+                @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                  forced-color-adjust: none;
                 }
             htmlFor="Slider5"
           >
@@ -1184,7 +1274,11 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     word-wrap: break-word;
                   }
                   @media screen and (-ms-high-contrast: active){& {
+                    background: Window;
                     color: GrayText;
+                  }
+                  @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                    forced-color-adjust: none;
                   }
             >
               200
@@ -1208,10 +1302,6 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                 background: #005a9e;
                 border-color: #005a9e;
               }
-              & .ms-Checkbox-checkbox {
-                background: #0078d4;
-                border-color: #0078d4;
-              }
               @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
                 background: Window;
                 border-color: Highlight;
@@ -1231,8 +1321,14 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
               &:hover .ms-Checkbox-text {
                 color: #201f1e;
               }
+              @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-text {
+                color: WindowText;
+              }
               &:focus .ms-Checkbox-text {
                 color: #201f1e;
+              }
+              @media screen and (-ms-high-contrast: active){&:focus .ms-Checkbox-text {
+                color: WindowText;
               }
         >
           <input
@@ -1312,6 +1408,9 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     background: Highlight;
                     border-color: Highlight;
                   }
+                  @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                    forced-color-adjust: none;
+                  }
             >
               <i
                 aria-hidden={true}
@@ -1346,6 +1445,12 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     font-size: 14px;
                     line-height: 20px;
                     margin-left: 4px;
+                  }
+                  @media screen and (-ms-high-contrast: active){& {
+                    color: WindowText;
+                  }
+                  @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                    forced-color-adjust: none;
                   }
             >
               Automatic height (based on items)
@@ -1449,6 +1554,13 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                   padding-right: 0px;
                   padding-top: 0px;
                   word-wrap: break-word;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  background: Window;
+                  color: WindowText;
+                }
+                @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                  forced-color-adjust: none;
                 }
             htmlFor="Slider7"
           >
@@ -1668,6 +1780,13 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     width: 40px;
                     word-wrap: break-word;
                   }
+                  @media screen and (-ms-high-contrast: active){& {
+                    background: Window;
+                    color: WindowText;
+                  }
+                  @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                    forced-color-adjust: none;
+                  }
             >
               0
             </label>
@@ -1739,6 +1858,13 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       padding-right: 0;
                       padding-top: 5px;
                       word-wrap: break-word;
+                    }
+                    @media screen and (-ms-high-contrast: active){& {
+                      background: Window;
+                      color: WindowText;
+                    }
+                    @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                      forced-color-adjust: none;
                     }
                 id="Dropdown8-label"
               >
@@ -1967,6 +2093,13 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       padding-top: 5px;
                       word-wrap: break-word;
                     }
+                    @media screen and (-ms-high-contrast: active){& {
+                      background: Window;
+                      color: WindowText;
+                    }
+                    @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                      forced-color-adjust: none;
+                    }
                 id="Dropdown9-label"
               >
                 Horizontal alignment:
@@ -2190,8 +2323,14 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                   &:hover .ms-Checkbox-text {
                     color: #201f1e;
                   }
+                  @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-text {
+                    color: WindowText;
+                  }
                   &:focus .ms-Checkbox-text {
                     color: #201f1e;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:focus .ms-Checkbox-text {
+                    color: WindowText;
                   }
             >
               <input
@@ -2265,6 +2404,12 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                         transition-timing-function: cubic-bezier(.4, 0, .23, 1);
                         width: 20px;
                       }
+                      @media screen and (-ms-high-contrast: active){& {
+                        border-color: WindowText;
+                      }
+                      @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                        forced-color-adjust: none;
+                      }
                 >
                   <i
                     aria-hidden={true}
@@ -2299,6 +2444,12 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                         font-size: 14px;
                         line-height: 20px;
                         margin-left: 4px;
+                      }
+                      @media screen and (-ms-high-contrast: active){& {
+                        color: WindowText;
+                      }
+                      @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                        forced-color-adjust: none;
                       }
                 >
                   Hide empty children
@@ -2372,6 +2523,13 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                         padding-top: 5px;
                         word-wrap: break-word;
                       }
+                      @media screen and (-ms-high-contrast: active){& {
+                        background: Window;
+                        color: WindowText;
+                      }
+                      @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                        forced-color-adjust: none;
+                      }
                   htmlFor="TextField11"
                   id="TextFieldLabel13"
                 >
@@ -2406,6 +2564,9 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       }
                       @media screen and (-ms-high-contrast: active){&:hover {
                         border-color: Highlight;
+                      }
+                      @media screen and (-ms-high-contrast: active) and (forced-colors: active){&:hover {
+                        forced-color-adjust: none;
                       }
                 >
                   <input
@@ -2451,6 +2612,10 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                         &::-ms-clear {
                           display: none;
                         }
+                        @media screen and (-ms-high-contrast: active){& {
+                          background: Window;
+                          color: WindowText;
+                        }
                         &::placeholder {
                           -moz-osx-font-smoothing: grayscale;
                           -webkit-font-smoothing: antialiased;
@@ -2459,6 +2624,9 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                           font-size: 14px;
                           font-weight: 400;
                           opacity: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active){&::placeholder {
+                          color: GrayText;
                         }
                         &:-ms-input-placeholder {
                           -moz-osx-font-smoothing: grayscale;
@@ -2469,6 +2637,9 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                           font-weight: 400;
                           opacity: 1;
                         }
+                        @media screen and (-ms-high-contrast: active){&:-ms-input-placeholder {
+                          color: GrayText;
+                        }
                         &::-ms-input-placeholder {
                           -moz-osx-font-smoothing: grayscale;
                           -webkit-font-smoothing: antialiased;
@@ -2477,6 +2648,9 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                           font-size: 14px;
                           font-weight: 400;
                           opacity: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active){&::-ms-input-placeholder {
+                          color: GrayText;
                         }
                     id="TextField11"
                     onBlur={[Function]}
@@ -2566,6 +2740,13 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                   padding-right: 0px;
                   padding-top: 0px;
                   word-wrap: break-word;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  background: Window;
+                  color: WindowText;
+                }
+                @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                  forced-color-adjust: none;
                 }
             htmlFor="Slider14"
           >
@@ -2785,6 +2966,13 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     width: 40px;
                     word-wrap: break-word;
                   }
+                  @media screen and (-ms-high-contrast: active){& {
+                    background: Window;
+                    color: WindowText;
+                  }
+                  @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                    forced-color-adjust: none;
+                  }
             >
               0
             </label>
@@ -2827,6 +3015,13 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                   padding-right: 0px;
                   padding-top: 0px;
                   word-wrap: break-word;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  background: Window;
+                  color: WindowText;
+                }
+                @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                  forced-color-adjust: none;
                 }
             htmlFor="Slider15"
           >
@@ -3046,6 +3241,13 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     width: 40px;
                     word-wrap: break-word;
                   }
+                  @media screen and (-ms-high-contrast: active){& {
+                    background: Window;
+                    color: WindowText;
+                  }
+                  @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                    forced-color-adjust: none;
+                  }
             >
               0
             </label>
@@ -3126,6 +3328,13 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                   padding-right: 0px;
                   padding-top: 0px;
                   word-wrap: break-word;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  background: Window;
+                  color: WindowText;
+                }
+                @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                  forced-color-adjust: none;
                 }
             htmlFor="Slider16"
           >
@@ -3345,6 +3554,13 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     width: 40px;
                     word-wrap: break-word;
                   }
+                  @media screen and (-ms-high-contrast: active){& {
+                    background: Window;
+                    color: WindowText;
+                  }
+                  @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                    forced-color-adjust: none;
+                  }
             >
               0
             </label>
@@ -3387,6 +3603,13 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                   padding-right: 0px;
                   padding-top: 0px;
                   word-wrap: break-word;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  background: Window;
+                  color: WindowText;
+                }
+                @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                  forced-color-adjust: none;
                 }
             htmlFor="Slider17"
           >
@@ -3605,6 +3828,13 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     white-space: nowrap;
                     width: 40px;
                     word-wrap: break-word;
+                  }
+                  @media screen and (-ms-high-contrast: active){& {
+                    background: Window;
+                    color: WindowText;
+                  }
+                  @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                    forced-color-adjust: none;
                   }
             >
               0
