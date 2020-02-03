@@ -1,7 +1,13 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Fri, 17 Jan 2020 02:32:17 GMT and should not be manually modified.
+This log was last generated on Mon, 03 Feb 2020 20:04:10 GMT and should not be manually modified.
 
+## 7.18.24
+Mon, 03 Feb 2020 20:04:10 GMT
+
+### Patches
+
+- Updating snapshots in experiments package. (Humberto.Morimoto@microsoft.com)
 ## 7.18.15
 Fri, 17 Jan 2020 02:32:17 GMT
 

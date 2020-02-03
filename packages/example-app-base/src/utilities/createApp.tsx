@@ -84,7 +84,7 @@ export function createApp(
 }
 
 function _getComponent<TProps extends React.Props<{}>>(props: TProps): JSX.Element {
-  return <div {...props as React.HTMLAttributes<HTMLDivElement>} />;
+  return <div {...(props as React.HTMLAttributes<HTMLDivElement>)} />;
 }
 
 function _getDefinition(groups: ExampleGroup[]): IAppDefinition {

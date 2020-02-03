@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Support for dynamically updating keytips",
-  "packageName": "office-ui-fabric-react",
-  "email": "keyou@microsoft.com",
-  "commit": "dcca3d5298e75de4a2c6fe54e281ad997bea41e1",
-  "date": "2020-01-24T22:33:51.668Z"
-}

@@ -70,7 +70,10 @@ describe('KeytipLayer', () => {
 
   it('constructor initializes the keytips state from KeytipManager.keytips', () => {
     // Add some keytips to the Manager
-    ktpMgr.keytips = [{ keytip: keytipB, uniqueID: '1' }, { keytip: keytipG, uniqueID: '2' }];
+    ktpMgr.keytips = [
+      { keytip: keytipB, uniqueID: '1' },
+      { keytip: keytipG, uniqueID: '2' }
+    ];
 
     // Create layer
     ktpLayer = mount(<KeytipLayerBase content="Alt Windows" />);

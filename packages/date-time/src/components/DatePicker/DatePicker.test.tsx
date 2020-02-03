@@ -157,7 +157,10 @@ describe('DatePicker', () => {
 
   it('should reflect the correct date in the input field when selecting a value', () => {
     const today = new Date('January 15, 2020');
-    const datePicker = mount(<DatePickerBase allowTextInput={true} today={today} />);
+    const initiallySelectedDate = new Date('January 10, 2020');
+    // initialPickerDate defaults to Date.now() if not provided so it must be given to ensure
+    // that the datepicker opens on the correct month
+    const datePicker = mount(<DatePickerBase allowTextInput={true} today={today} initialPickerDate={initiallySelectedDate} />);
 
     datePicker.setState({ isDatePickerShown: true });
     const todayButton = document.querySelector('[class^="dayIsToday"], [class*="dayIsToday"]') as HTMLButtonElement;
@@ -178,10 +181,15 @@ describe('DatePicker', () => {
 
   it('should reflect the correct date in the input field when selecting a value and a different format is given', () => {
     const today = new Date('January 15, 2020');
+    const initiallySelectedDate = new Date('January 10, 2020');
     const onFormatDate = (date: Date): string => {
       return date.getDate() + '/' + (date.getMonth() + 1) + '/' + (date.getFullYear() % 100);
     };
-    const datePicker = mount(<DatePickerBase allowTextInput={true} today={today} formatDate={onFormatDate} />);
+    // initialPickerDate defaults to Date.now() if not provided so it must be given to ensure
+    // that the datepicker opens on the correct month
+    const datePicker = mount(
+      <DatePickerBase allowTextInput={true} today={today} formatDate={onFormatDate} initialPickerDate={initiallySelectedDate} />
+    );
 
     datePicker.setState({ isDatePickerShown: true });
     const todayButton = document.querySelector('[class^="dayIsToday"], [class*="dayIsToday"]') as HTMLButtonElement;

@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/webpack-utils",
-  "version": "7.0.5",
+  "version": "7.0.6",
   "description": "Office UI Fabric utilities for Webpack bundler.",
   "repository": {
     "type": "git",
@@ -23,7 +23,7 @@
     "@types/webpack": "4.4.0",
     "@uifabric/build": "^7.0.0",
     "@uifabric/prettier-rules": "^7.0.4",
-    "@uifabric/tslint-rules": "^7.0.5",
+    "@uifabric/tslint-rules": "^7.0.6",
     "webpack": "4.29.5"
   },
   "dependencies": {

@@ -69,12 +69,21 @@ module.exports = function preset() {
   task('storybook:build', buildStorybookTask());
 
   task('ts:compile', () => {
-    return argv().commonjs ? 'ts:commonjs-only' : parallel('ts:commonjs', 'ts:esm', condition('ts:amd', () => !!argv().production));
+    return argv().commonjs
+      ? 'ts:commonjs-only'
+      : parallel(
+          'ts:commonjs',
+          'ts:esm',
+          condition('ts:amd', () => !!argv().production)
+        );
   });
 
   task('ts', series('ts:compile', 'ts:postprocess'));
 
-  task('test', condition('jest', () => fs.existsSync(path.join(process.cwd(), 'jest.config.js'))));
+  task(
+    'test',
+    condition('jest', () => fs.existsSync(path.join(process.cwd(), 'jest.config.js')))
+  );
 
   task('lint', parallel('lint-imports', 'tslint'));
 

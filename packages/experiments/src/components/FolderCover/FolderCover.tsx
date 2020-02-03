@@ -38,8 +38,8 @@ const ASSETS: {
     [T in FolderCoverType]: {
       back: string;
       front: string;
-    }
-  }
+    };
+  };
 } = {
   small: {
     default: {

@@ -21,7 +21,7 @@ function runPrettierForFiles(filePaths) {
 }
 
 const numberOfCpus = cpus().length / 2;
-console.log(`Running prettier on ${runOnAllFiles ? 'changed' : 'all'} files (on ${numberOfCpus} processes):`);
+console.log(`Running prettier on ${runOnAllFiles ? 'all' : 'changed'} files (on ${numberOfCpus} processes):`);
 
 const queue = new PQueue({ concurrency: numberOfCpus });
 if (runOnAllFiles) {
