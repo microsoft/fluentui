@@ -85,8 +85,8 @@ export class TeachingBubbleBase extends BaseComponent<ITeachingBubbleProps, ITea
       <Callout
         target={target || targetElement}
         onDismiss={onDismiss}
-        className={classNames.root}
         {...calloutProps}
+        className={classNames.root}
         styles={calloutStyles}
         hideOverflow
       >

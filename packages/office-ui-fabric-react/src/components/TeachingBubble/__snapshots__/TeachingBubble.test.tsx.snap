@@ -11,6 +11,7 @@ exports[`TeachingBubble renders TeachingBubble correctly 1`] = `
   <div
     className=
         ms-Callout
+        ms-TeachingBubble
         specialClassName
         {
           -moz-osx-font-smoothing: grayscale;
