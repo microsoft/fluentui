@@ -400,8 +400,8 @@ export const getStyles = (props: IChoiceGroupOptionStyleProps): IChoiceGroupOpti
         height: labelWrapperHeight,
         lineHeight: labelWrapperLineHeight,
         maxWidth: imageSize!.width * 2, // using non-null assertion because we have a default in `ChoiceGroupOptionBase` class.
-        whiteSpace: 'pre-wrap',
-        overflow: 'hidden'
+        overflow: 'hidden',
+        whiteSpace: 'pre-wrap'
       }
     ]
   };
