@@ -88,6 +88,7 @@ export const getStyles = (props: ITeachingBubbleStyleProps): ITeachingBubbleStyl
     hasCondensedHeadline,
     hasSmallHeadline,
     hasCloseButton,
+    hasHeadline,
     isWide,
     primaryButtonClassName,
     secondaryButtonClassName,
@@ -101,6 +102,7 @@ export const getStyles = (props: ITeachingBubbleStyleProps): ITeachingBubbleStyl
     root: [classNames.root, fonts.medium, calloutClassName],
     body: [
       classNames.body,
+      hasCloseButton && !hasHeadline && { marginRight: 24 },
       {
         selectors: {
           ':not(:last-child)': {
