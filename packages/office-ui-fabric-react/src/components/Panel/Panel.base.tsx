@@ -395,7 +395,7 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
 
   private _dismissOnOuterClick(ev: any): void {
     const panel = this._panel.current;
-    if (this.isActive && panel && !ev.defaultPrevented()) {
+    if (this.isActive && panel && !ev.defaultPrevented) {
       if (!elementContains(panel, ev.target)) {
         if (this.props.onOuterClick) {
           this.props.onOuterClick();
