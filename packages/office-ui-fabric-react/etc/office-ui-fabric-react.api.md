@@ -7589,7 +7589,7 @@ export interface ITeachingBubbleState {
 
 // @public (undocumented)
 export type ITeachingBubbleStyleProps = Required<Pick<ITeachingBubbleProps, 'theme'>> & Pick<ITeachingBubbleProps, 'hasCondensedHeadline' | 'hasSmallHeadline' | 'isWide'> & {
-    calloutClassName?: string;
+    calloutProps?: ICalloutContentStyleProps;
     primaryButtonClassName?: string;
     secondaryButtonClassName?: string;
     hasCloseButton?: boolean;
