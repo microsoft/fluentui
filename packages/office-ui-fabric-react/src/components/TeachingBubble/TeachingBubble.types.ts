@@ -134,6 +134,8 @@ export type ITeachingBubbleStyleProps = Required<Pick<ITeachingBubbleProps, 'the
     secondaryButtonClassName?: string;
     /** If the close button is visible. */
     hasCloseButton?: boolean;
+    /** If a headline has been specified. */
+    hasHeadline?: boolean;
   };
 
 /**

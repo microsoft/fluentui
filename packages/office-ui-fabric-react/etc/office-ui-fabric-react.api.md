@@ -7593,6 +7593,7 @@ export type ITeachingBubbleStyleProps = Required<Pick<ITeachingBubbleProps, 'the
     primaryButtonClassName?: string;
     secondaryButtonClassName?: string;
     hasCloseButton?: boolean;
+    hasHeadline?: boolean;
 };
 
 // @public (undocumented)
