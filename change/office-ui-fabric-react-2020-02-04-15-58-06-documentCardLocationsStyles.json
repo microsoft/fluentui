@@ -1,0 +1,9 @@
+{
+  "type": "patch",
+  "comment": "DocumentCard: Updating DocumentCardLocations styles to latest Fluent specs.",
+  "packageName": "office-ui-fabric-react",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "commit": "7c633354c815d882a1eae4f1a5ecf0b9000199a2",
+  "dependentChangeType": "patch",
+  "date": "2020-02-04T23:58:06.010Z"
+}
