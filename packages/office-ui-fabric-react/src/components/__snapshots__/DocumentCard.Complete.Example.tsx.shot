@@ -443,11 +443,11 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
-          color: #323130;
+          color: #0078d4;
           display: block;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 12px;
-          font-weight: 400;
+          font-weight: 600;
           overflow: hidden;
           padding-bottom: 8px;
           padding-left: 16px;
