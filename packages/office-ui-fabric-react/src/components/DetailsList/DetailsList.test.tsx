@@ -402,7 +402,7 @@ describe('DetailsList', () => {
     columns[0].onColumnResize = jest.fn();
     columns[1].onColumnResize = jest.fn();
 
-    mount(
+    const list = mount(
       <DetailsList
         items={mockData(2)}
         columns={columns}
@@ -410,6 +410,13 @@ describe('DetailsList', () => {
         onShouldVirtualize={() => false}
       />,
     );
+
+    list.setProps({
+      viewport: {
+        width: 600,
+        height: 400
+      }
+    });
 
     expect(columns[0].onColumnResize).toHaveBeenCalledTimes(1);
     expect(columns[1].onColumnResize).toHaveBeenCalledTimes(1);
