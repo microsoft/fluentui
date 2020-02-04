@@ -1,0 +1,9 @@
+{
+  "type": "patch",
+  "comment": "Convert withViewport decorator to use hooks and memoization",
+  "packageName": "office-ui-fabric-react",
+  "email": "tmichon@microsoft.com",
+  "commit": "355038c22ab9e7b91db9ff1893085a5e517ce1be",
+  "dependentChangeType": "patch",
+  "date": "2020-02-04T20:44:21.590Z"
+}
