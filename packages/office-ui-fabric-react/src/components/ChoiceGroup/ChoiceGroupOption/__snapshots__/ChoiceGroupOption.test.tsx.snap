@@ -1256,16 +1256,15 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
-                height: 30px;
+                height: 32px;
                 line-height: 15px;
-                margin-bottom: 4px;
+                margin-bottom: 2px;
                 margin-left: 8px;
                 margin-right: 8px;
                 margin-top: 4px;
                 max-width: 64px;
                 overflow: hidden;
                 position: relative;
-                text-overflow: ellipsis;
                 white-space: pre-wrap;
               }
         >
@@ -1482,16 +1481,15 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
-                height: 30px;
+                height: 32px;
                 line-height: 15px;
-                margin-bottom: 4px;
+                margin-bottom: 2px;
                 margin-left: 8px;
                 margin-right: 8px;
                 margin-top: 4px;
                 max-width: 64px;
                 overflow: hidden;
                 position: relative;
-                text-overflow: ellipsis;
                 white-space: pre-wrap;
               }
         >
@@ -1706,16 +1704,15 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
-                height: 30px;
+                height: 32px;
                 line-height: 15px;
-                margin-bottom: 4px;
+                margin-bottom: 2px;
                 margin-left: 8px;
                 margin-right: 8px;
                 margin-top: 4px;
                 max-width: 64px;
                 overflow: hidden;
                 position: relative;
-                text-overflow: ellipsis;
                 white-space: pre-wrap;
               }
         >
@@ -1907,16 +1904,15 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
-                height: 30px;
+                height: 32px;
                 line-height: 15px;
-                margin-bottom: 4px;
+                margin-bottom: 2px;
                 margin-left: 8px;
                 margin-right: 8px;
                 margin-top: 4px;
                 max-width: 64px;
                 overflow: hidden;
                 position: relative;
-                text-overflow: ellipsis;
                 white-space: pre-wrap;
               }
         >
