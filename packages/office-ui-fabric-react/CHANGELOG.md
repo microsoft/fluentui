@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 31 Dec 2019 11:15:26 GMT and should not be manually modified.
+This log was last generated on Wed, 05 Feb 2020 11:13:35 GMT and should not be manually modified.
+
+## 5.135.5
+Wed, 05 Feb 2020 11:13:35 GMT
+
+### Patches
+
+- Nav: Add focus to Nav.
 
 ## 5.135.4
 Tue, 31 Dec 2019 11:15:26 GMT

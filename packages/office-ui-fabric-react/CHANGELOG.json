@@ -2,6 +2,20 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "5.135.5",
+      "tag": "office-ui-fabric-react_v5.135.5",
+      "date": "Wed, 05 Feb 2020 11:13:35 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "matthew <lqb198612@126.com>",
+            "commit": "a62910a58bec8368b07fef875ac27bfeab63668c",
+            "comment": "Nav: Add focus to Nav."
+          }
+        ]
+      }
+    },
+    {
       "version": "5.135.4",
       "tag": "office-ui-fabric-react_v5.135.4",
       "date": "Tue, 31 Dec 2019 11:15:26 GMT",
