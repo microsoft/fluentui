@@ -44,6 +44,7 @@
     "@types/gulp-cache": "^0.4.4",
     "@types/gulp-remember": "^0.0.31",
     "@types/gulp-util": "^3.0.34",
+    "@types/lodash": "^4.14.149",
     "@types/jest": "^24.0.19",
     "@types/jest-axe": "^3.2.1",
     "@types/lerna-alias": "^3.0.0",

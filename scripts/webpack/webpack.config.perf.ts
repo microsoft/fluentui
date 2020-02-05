@@ -4,7 +4,7 @@ import { webpack as lernaAliases } from 'lerna-alias';
 import { argv } from 'yargs';
 import webpack from 'webpack';
 
-import config from './config';
+import config from '../config';
 
 const { paths } = config;
 
@@ -44,7 +44,7 @@ const webpackConfig: webpack.Configuration = {
   },
   plugins: [
     new ForkTsCheckerWebpackPlugin({ tsconfig: paths.perf('tsconfig.json') }),
-    new CopyWebpackPlugin([
+    new (CopyWebpackPlugin as any)([
       {
         from: paths.perfSrc('index.html'),
         to: paths.perfDist()

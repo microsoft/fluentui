@@ -2,7 +2,7 @@ import CleanWebpackPlugin from 'clean-webpack-plugin';
 import fs from 'fs';
 import path from 'path';
 import webpack from 'webpack';
-import config from './config';
+import config from '../config';
 
 const { paths } = config;
 

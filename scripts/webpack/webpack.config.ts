@@ -7,7 +7,7 @@ import TerserPlugin from 'terser-webpack-plugin';
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 
-import config from './config';
+import config from '../config';
 
 const { paths } = config;
 const { __DEV__, __PROD__ } = config.compiler_globals;
@@ -73,7 +73,7 @@ const webpackConfig: webpack.Configuration = {
     }),
     new webpack.DefinePlugin(config.compiler_globals),
     new webpack.ContextReplacementPlugin(/node_modules[\\|/]typescript[\\|/]lib/, /typescript\.js/, false),
-    new CopyWebpackPlugin([
+    new (CopyWebpackPlugin as any)([
       {
         from: paths.docsSrc('public'),
         to: paths.docsDist('public')
