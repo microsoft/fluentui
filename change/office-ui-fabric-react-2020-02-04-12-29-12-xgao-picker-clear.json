@@ -1,0 +1,9 @@
+{
+  "type": "patch",
+  "comment": "Pickers: remove input X button in Edge",
+  "packageName": "office-ui-fabric-react",
+  "email": "xgao@microsoft.com",
+  "commit": "a1db103bb541a92da7c754be85c823daedddca57",
+  "dependentChangeType": "patch",
+  "date": "2020-02-04T20:29:12.073Z"
+}
