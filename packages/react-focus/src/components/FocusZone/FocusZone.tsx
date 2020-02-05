@@ -211,10 +211,12 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
   }
 
   public render(): React.ReactNode {
+    // tslint:disable:deprecation
     const { rootProps, ariaDescribedBy, ariaLabelledBy, className } = this.props;
     const divProps = getNativeProps(this.props, htmlElementProperties);
 
     const Tag = this.props.as || this.props.elementType || 'div';
+    // tslint:enable:deprecation
 
     // Note, right before rendering/reconciling proceeds, we need to record if focus
     // was in the zone before the update. This helper will track this and, if focus
@@ -428,7 +430,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
    * Handle global tab presses so that we can patch tabindexes on the fly.
    */
   private _onKeyDownCapture = (ev: KeyboardEvent): void => {
-    if (ev.which === KeyCodes.tab) {
+    if (ev.key === 'Tab') {
       _outerZones.forEach((zone: FocusZone) => zone._updateTabIndexes());
     }
   };
@@ -584,6 +586,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
 
         case KeyCodes.tab:
           if (
+            // tslint:disable-next-line:deprecation
             this.props.allowTabKey ||
             this.props.handleTabKey === FocusZoneTabbableElements.all ||
             (this.props.handleTabKey === FocusZoneTabbableElements.inputOnly && this._isElementInput(ev.target as HTMLElement))
