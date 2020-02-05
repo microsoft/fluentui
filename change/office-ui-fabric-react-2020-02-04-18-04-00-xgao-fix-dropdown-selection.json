@@ -1,0 +1,9 @@
+{
+  "type": "patch",
+  "comment": "Dropdown: remove unnecessary focus calls",
+  "packageName": "office-ui-fabric-react",
+  "email": "xgao@microsoft.com",
+  "commit": "47776890deb9f54dfa633c72114a51c071367319",
+  "dependentChangeType": "patch",
+  "date": "2020-02-05T02:04:00.420Z"
+}
