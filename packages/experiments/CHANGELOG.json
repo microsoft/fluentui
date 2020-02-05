@@ -2,6 +2,39 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "date": "Mon, 03 Feb 2020 20:04:10 GMT",
+      "tag": "@uifabric/experiments_v7.18.24",
+      "version": "7.18.24",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Updating snapshots in experiments package.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "1be065b85f29c28ee7a316ab93a263f09e32f1db"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 31 Jan 2020 19:00:10 GMT",
+      "tag": "@uifabric/experiments_v7.18.23",
+      "version": "7.18.23",
+      "comments": {
+        "none": [
+          {
+            "comment": "Fix prettier error after upgrade prettier to 1.19.1",
+            "author": "xgao@microsoft.com",
+            "commit": "2242effd3e5226f313ef16f9c18ed3db87d548c4"
+          },
+          {
+            "comment": "bumping versions to fix broken publishes",
+            "author": "kchau@microsoft.com",
+            "commit": "1fd6f0a289e8f0f126c9609b8e775ac0ced03b81"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 28 Jan 2020 12:43:24 GMT",
       "tag": "@uifabric/experiments_v7.18.20",
       "version": "7.18.20",

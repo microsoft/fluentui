@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "FacePile: Use default semantic html instead of aria attributes and roles",
-  "packageName": "office-ui-fabric-react",
-  "email": "mark@thedutchies.com",
-  "commit": "89fb078f6fe0ca85832f005d8fb70f7c9a500c04",
-  "date": "2020-01-09T11:35:47.330Z"
-}
