@@ -2,6 +2,37 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Wed, 05 Feb 2020 12:43:32 GMT",
+      "tag": "office-ui-fabric-react_v7.89.0",
+      "version": "7.89.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "TeachingBubble: Applying Callout style-related props like calloutWidth and calloutMaxWidth.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "3bca52530977d30df2b647d1605f683bbb6ca090"
+          },
+          {
+            "comment": "ChoiceGroup: fix option label text being cutoff",
+            "author": "xgao@microsoft.com",
+            "commit": "3d48d2e62a81654795aba1ea59f8e2e1641d6400"
+          },
+          {
+            "comment": "Pickers: remove input X button in Edge",
+            "author": "xgao@microsoft.com",
+            "commit": "a1db103bb541a92da7c754be85c823daedddca57"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "TeachingBubble: Fixing styling when TeachingBubble has close button but no headline.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "010803b8e84dbdbf0a3081975fc9725bbfaf2a4c"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 03 Feb 2020 20:04:10 GMT",
       "tag": "office-ui-fabric-react_v7.88.1",
       "version": "7.88.1",

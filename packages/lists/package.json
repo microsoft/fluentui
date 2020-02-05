@@ -36,7 +36,7 @@
     "@types/react-dom": "16.8.4",
     "@types/react-test-renderer": "^16.0.0",
     "@types/webpack-env": "1.13.9",
-    "@uifabric/example-app-base": "^7.11.12",
+    "@uifabric/example-app-base": "^7.11.13",
     "@uifabric/jest-serializer-merge-styles": "^7.0.9",
     "@uifabric/prettier-rules": "^7.0.4",
     "@uifabric/tslint-rules": "^7.0.6",
@@ -52,7 +52,7 @@
   "dependencies": {
     "@microsoft/load-themed-styles": "^1.10.26",
     "@uifabric/set-version": "^7.0.4",
-    "office-ui-fabric-react": "^7.88.1",
+    "office-ui-fabric-react": "^7.89.0",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {
