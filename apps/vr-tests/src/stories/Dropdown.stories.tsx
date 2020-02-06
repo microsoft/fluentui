@@ -22,6 +22,8 @@ storiesOf('Dropdown', module)
         .click('.ms-Dropdown')
         .hover('.ms-Dropdown')
         .snapshot('click', { cropTo: '.ms-Layer' })
+        .hover('.ms-Dropdown-item')
+        .snapshot('hover item', { cropTo: '.ms-Layer' })
         .end()}
     >
       {story()}
