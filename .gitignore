@@ -1,3 +1,8 @@
+# FluentUI code
+*.source.json
+*.info.json
+*.tsbuildinfo
+
 # Windows image file caches
 Thumbs.db
 ehthumbs.db
