@@ -17,15 +17,12 @@
     "build": "just-scripts build",
     "bundle": "just-scripts bundle",
     "lint": "just-scripts lint",
-    "test": "just-scripts test",
     "just": "just-scripts",
     "code-style": "just-scripts code-style",
     "clean": "just-scripts clean"
   },
   "devDependencies": {
-    "@types/jest": "23.0.0",
     "@uifabric/build": "^7.0.0",
-    "@uifabric/prettier-rules": "^7.0.4",
     "@uifabric/tslint-rules": "^7.0.6"
   },
   "dependencies": {

@@ -17,7 +17,6 @@
     "build": "just-scripts build",
     "bundle": "just-scripts bundle",
     "lint": "just-scripts lint",
-    "test": "just-scripts test",
     "just": "just-scripts",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
@@ -26,26 +25,17 @@
     "update-snapshots": "just-scripts jest -u"
   },
   "devDependencies": {
-    "@types/enzyme": "3.1.13",
-    "@types/enzyme-adapter-react-16": "1.0.3",
     "@types/es6-promise": "0.0.32",
-    "@types/jest": "23.0.0",
     "@types/react": "16.8.11",
     "@types/react-dom": "16.8.4",
-    "@types/react-test-renderer": "^16.0.0",
     "@types/webpack-env": "1.13.9",
     "@uifabric/build": "^7.0.0",
     "@uifabric/example-app-base": "^7.11.14",
-    "@uifabric/jest-serializer-merge-styles": "^7.0.9",
-    "@uifabric/prettier-rules": "^7.0.4",
     "@uifabric/tslint-rules": "^7.0.6",
-    "enzyme": "~3.9.0",
-    "enzyme-adapter-react-16": "^1.2.0",
     "es6-weak-map": "^2.0.2",
     "react": "16.8.6",
     "react-app-polyfill": "~1.0.1",
-    "react-dom": "16.8.6",
-    "react-test-renderer": "^16.3.0"
+    "react-dom": "16.8.6"
   },
   "dependencies": {
     "@microsoft/load-themed-styles": "^1.10.26",

@@ -1,0 +1,9 @@
+{
+  "type": "none",
+  "comment": "Remove unused config files",
+  "packageName": "@uifabric/react-cards",
+  "email": "elcraig@microsoft.com",
+  "commit": "96ccf88b8f44981d21a3903789874a13a2f79b1d",
+  "dependentChangeType": "patch",
+  "date": "2020-02-01T00:28:24.711Z"
+}
