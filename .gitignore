@@ -2,6 +2,7 @@
 *.source.json
 *.info.json
 *.tsbuildinfo
+packages/fluentui/ability-attributes/src/schema.ts
 
 # Windows image file caches
 Thumbs.db
@@ -52,7 +53,6 @@ lib-es2015
 coverage
 dist
 dist-storybook
-test-dependencies
 screenshots
 
 *.tar.gz
