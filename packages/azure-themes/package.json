@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/azure-themes",
-  "version": "7.0.20",
+  "version": "7.0.21",
   "description": "Azure themes for Office UI Components",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -17,22 +17,18 @@
     "build": "just-scripts build",
     "bundle": "just-scripts bundle",
     "lint": "just-scripts lint",
-    "test": "just-scripts test",
     "just": "just-scripts",
     "code-style": "just-scripts code-style",
     "clean": "just-scripts clean"
   },
   "devDependencies": {
-    "@types/jest": "24.0.25",
     "@uifabric/build": "^7.0.0",
-    "@uifabric/jest-serializer-merge-styles": "^7.0.9",
-    "@uifabric/prettier-rules": "^7.0.4",
     "@uifabric/tslint-rules": "^7.0.6"
   },
   "dependencies": {
     "@uifabric/merge-styles": "^7.8.5",
     "@uifabric/set-version": "^7.0.4",
-    "office-ui-fabric-react": "^7.89.0",
+    "office-ui-fabric-react": "^7.89.1",
     "tslib": "^1.10.0"
   }
 }

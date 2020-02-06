@@ -6,7 +6,7 @@ import { IPageJson } from 'office-ui-fabric-react/lib/common/DocPage.types';
 
 export interface IControlsPageProps extends IPageProps<Platforms> {}
 
-const apiRequireContext = require.context('@uifabric/api-docs/lib/pages/office-ui-fabric-react');
+const apiRequireContext = require.context('@uifabric/api-docs/lib/pages/', true, /^(?!references).*/);
 
 const ControlsAreaPageBase: React.StatelessComponent<IControlsPageProps> = props => {
   let jsonDocs: IPageJson;

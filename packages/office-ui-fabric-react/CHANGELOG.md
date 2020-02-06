@@ -1,7 +1,16 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 05 Feb 2020 12:43:32 GMT and should not be manually modified.
+This log was last generated on Thu, 06 Feb 2020 12:37:34 GMT and should not be manually modified.
 
+## 7.89.1
+Thu, 06 Feb 2020 12:37:34 GMT
+
+### Patches
+
+- ev.defaultPrevented is not a function, remove errant () (mahelles@microsoft.com)
+- DocumentCard: Updating DocumentCardLocations styles to latest Fluent specs. (Humberto.Morimoto@microsoft.com)
+- MaskedTextField: fix MaskedTextField captures focus on re-render on Edge (xgao@microsoft.com)
+- Dropdown: remove unnecessary focus calls (xgao@microsoft.com)
 ## 7.89.0
 Wed, 05 Feb 2020 12:43:32 GMT
 

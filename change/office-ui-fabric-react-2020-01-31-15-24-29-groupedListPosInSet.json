@@ -1,0 +1,9 @@
+{
+  "type": "minor",
+  "comment": "GroupedList: Announcing position in set.",
+  "packageName": "office-ui-fabric-react",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "commit": "666329aad1b362ee3d57ed8134f8398bab2347aa",
+  "dependentChangeType": "patch",
+  "date": "2020-01-31T23:24:29.313Z"
+}

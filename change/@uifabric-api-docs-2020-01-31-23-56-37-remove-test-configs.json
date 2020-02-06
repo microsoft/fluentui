@@ -1,0 +1,9 @@
+{
+  "type": "none",
+  "comment": "Remove unused config files",
+  "packageName": "@uifabric/api-docs",
+  "email": "elcraig@microsoft.com",
+  "commit": "75385949f9a552bdf64ac4f0b074b28cdd530ddb",
+  "dependentChangeType": "patch",
+  "date": "2020-02-01T07:56:37.677Z"
+}

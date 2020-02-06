@@ -2,6 +2,35 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Thu, 06 Feb 2020 12:37:34 GMT",
+      "tag": "office-ui-fabric-react_v7.89.1",
+      "version": "7.89.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "ev.defaultPrevented is not a function, remove errant ()",
+            "author": "mahelles@microsoft.com",
+            "commit": "5f39660dd3f6fe2a7fb8b938c7cce0bff1961321"
+          },
+          {
+            "comment": "DocumentCard: Updating DocumentCardLocations styles to latest Fluent specs.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "7c633354c815d882a1eae4f1a5ecf0b9000199a2"
+          },
+          {
+            "comment": "MaskedTextField: fix MaskedTextField captures focus on re-render on Edge",
+            "author": "xgao@microsoft.com",
+            "commit": "9df0b75a75911657f62c81e2a3c8ec418ddbbc47"
+          },
+          {
+            "comment": "Dropdown: remove unnecessary focus calls",
+            "author": "xgao@microsoft.com",
+            "commit": "47776890deb9f54dfa633c72114a51c071367319"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 05 Feb 2020 12:43:32 GMT",
       "tag": "office-ui-fabric-react_v7.89.0",
       "version": "7.89.0",

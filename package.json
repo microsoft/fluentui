@@ -10,6 +10,7 @@
   "scripts": {
     "preinstall": "node ./scripts/use-yarn-please.js",
     "postinstall": "node ./scripts/postinstall.js",
+    "gulpbuild": "gulp build",
     "buildto": "node ./scripts/monorepo/buildTo.js",
     "builddemo": "node ./scripts/monorepo/buildTo.js fabric-website-resources",
     "bundle": "lerna run bundle --stream",

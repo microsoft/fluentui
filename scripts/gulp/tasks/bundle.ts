@@ -41,8 +41,8 @@ task('bundle:package:es', () =>
     .pipe(dest(paths.packageDist(packageName, 'es')))
 );
 
-task('bundle:package:types:tsc', async () => {
-  return await sh('tsc -b', paths.packages(packageName));
+task('bundle:package:types:tsc', () => {
+  return sh('tsc -b', paths.packages(packageName));
 });
 task('bundle:package:types:copy', () => {
   return src(paths.packageDist(packageName, 'dts/src/**/*.d.ts')).pipe(dest(paths.packageDist(packageName, 'es')));
