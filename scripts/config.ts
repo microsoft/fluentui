@@ -28,7 +28,7 @@ const envConfig = {
   dir_e2e: 'packages/fluentui/e2e',
   dir_e2e_src: 'packages/fluentui/e2e/server',
   dir_e2e_dist: 'packages/fluentui/e2e/dist',
-  dir_packages: 'packages',
+  dir_packages: 'packages/fluentui',
   dir_perf: 'packages/fluentui/perf',
   dir_perf_dist: 'packages/fluentui/perf/dist',
   dir_perf_src: 'packages/fluentui/perf/src',

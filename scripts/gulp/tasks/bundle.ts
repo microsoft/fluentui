@@ -41,8 +41,8 @@ task('bundle:package:es', () =>
     .pipe(dest(paths.packageDist(packageName, 'es')))
 );
 
-task('bundle:package:types:tsc', () => {
-  return sh('tsc -b', paths.packages(packageName));
+task('bundle:package:types:tsc', async () => {
+  return await sh('tsc -b', paths.packages(packageName));
 });
 task('bundle:package:types:copy', () => {
   return src(paths.packageDist(packageName, 'dts/src/**/*.d.ts')).pipe(dest(paths.packageDist(packageName, 'es')));
@@ -86,6 +86,6 @@ task(
 task('bundle:package', series('bundle:package:no-umd', 'bundle:package:umd'));
 
 task('bundle:all-packages', async () => {
-  await sh('lerna run build --scope packages/fluentui/*');
+  await sh('lerna run build --scope @fluentui/*');
   return del(`${config.paths.packages()}/*/dist/dts`);
 });

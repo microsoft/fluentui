@@ -82,7 +82,8 @@
     "packages": [
       "apps/*",
       "packages/*",
-      "scripts"
+      "scripts",
+      "packages/fluentui/*"
     ]
   },
   "beachball": {
