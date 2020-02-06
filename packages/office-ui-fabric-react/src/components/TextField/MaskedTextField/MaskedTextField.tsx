@@ -105,7 +105,7 @@ export class MaskedTextField extends React.Component<ITextFieldProps, IMaskedTex
 
   public componentDidUpdate() {
     // Move the cursor to the start of the mask format on update
-    if (this.state.maskCursorPosition !== undefined && this._textField.current) {
+    if (this._isFocused && this.state.maskCursorPosition !== undefined && this._textField.current) {
       this._textField.current.setSelectionRange(this.state.maskCursorPosition, this.state.maskCursorPosition);
     }
   }
