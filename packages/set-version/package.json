@@ -19,7 +19,7 @@
     "just": "just-scripts"
   },
   "devDependencies": {
-    "@types/jest": "23.0.0",
+    "@types/jest": "24.0.25",
     "@uifabric/prettier-rules": "^7.0.4",
     "@uifabric/tslint-rules": "^7.0.6",
     "@uifabric/build": "^7.0.0"
