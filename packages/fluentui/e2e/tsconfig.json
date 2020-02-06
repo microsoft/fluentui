@@ -1,0 +1,15 @@
+{
+  "extends": "@uifabric/build/typescript/tsconfig.common",
+  "compilerOptions": {
+    "module": "esnext",
+    "allowSyntheticDefaultImports": true,
+    "types": [
+      "node",
+      "jest",
+      "webpack-env"
+    ]
+  },
+  "include": [
+    "."
+  ]
+}
