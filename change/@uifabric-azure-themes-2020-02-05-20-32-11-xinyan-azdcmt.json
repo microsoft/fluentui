@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fix incorrect icon color for disabled contextual menu icon.",
-  "packageName": "@uifabric/azure-themes",
-  "email": "xinychen@microsoft.com",
-  "commit": "a8cc3ded60b29cc19e088d44b486055037752d1f",
-  "date": "2020-02-05T12:32:11.621Z"
-}
