@@ -13,7 +13,7 @@ const fabricReactIcons = require('@uifabric/icons/lib/data/AllIconNames.json');
 // en dashes look like regular dashes in a monospace font
 const enDash = '–';
 
-export const FabricIconsPage: React.StatelessComponent<IStylesPageProps> = props => {
+export const FabricIconsPage: React.FunctionComponent<IStylesPageProps> = props => {
   const { platform } = props;
   return <StylesAreaPage {...props} {...FabricIconsPageProps[platform]} otherSections={_otherSections(platform) as IPageSectionProps[]} />;
 };

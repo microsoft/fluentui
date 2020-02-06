@@ -41,7 +41,7 @@ const PersonaCoinImageView = (props: IPersonaCoinImageProps): JSX.Element | null
   );
 };
 
-export const PersonaCoinImage: React.StatelessComponent<IPersonaCoinImageProps> = createComponent(PersonaCoinImageView, {
+export const PersonaCoinImage: React.FunctionComponent<IPersonaCoinImageProps> = createComponent(PersonaCoinImageView, {
   displayName: 'PersonaCoinImage',
   styles: personaCoinImageStyles
 });

@@ -1,4 +1,5 @@
 import { ITeachingBubbleStyleProps, ITeachingBubbleStyles } from './TeachingBubble.types';
+import { ICalloutContentStyleProps } from '../../Callout';
 import { AnimationVariables, FontWeights, getGlobalClassNames, GlobalClassNames, IStyle, keyframes } from '../../Styling';
 
 const globalClassNames = {
@@ -36,21 +37,23 @@ const opacityFadeIn: string = keyframes({
   }
 });
 
-const rootStyle = (isWide?: boolean): IStyle[] => {
+const rootStyle = (isWide?: boolean, calloutProps?: ICalloutContentStyleProps): IStyle[] => {
+  const { calloutWidth, calloutMaxWidth } = calloutProps || {};
+
   return [
     {
       display: 'block',
       maxWidth: 364,
       border: 0,
       outline: 'transparent',
-      width: 'calc(100% + 1px)',
+      width: calloutWidth || 'calc(100% + 1px)',
       animationName: `${opacityFadeIn}`,
       animationDuration: '300ms',
       animationTimingFunction: 'linear',
       animationFillMode: 'both'
     },
     isWide && {
-      maxWidth: 456
+      maxWidth: calloutMaxWidth || 456
     }
   ];
 };
@@ -84,7 +87,6 @@ const headerStyle = (
 
 export const getStyles = (props: ITeachingBubbleStyleProps): ITeachingBubbleStyles => {
   const {
-    calloutClassName,
     hasCondensedHeadline,
     hasSmallHeadline,
     hasCloseButton,
@@ -92,14 +94,15 @@ export const getStyles = (props: ITeachingBubbleStyleProps): ITeachingBubbleStyl
     isWide,
     primaryButtonClassName,
     secondaryButtonClassName,
-    theme
+    theme,
+    calloutProps = { className: undefined, theme }
   } = props;
   const hasLargeHeadline: boolean = !hasCondensedHeadline && !hasSmallHeadline;
   const { palette, semanticColors, fonts } = theme;
   const classNames = getGlobalClassNames(globalClassNames, theme);
 
   return {
-    root: [classNames.root, fonts.medium, calloutClassName],
+    root: [classNames.root, fonts.medium, calloutProps.className],
     body: [
       classNames.body,
       hasCloseButton && !hasHeadline && { marginRight: 24 },
@@ -262,7 +265,7 @@ export const getStyles = (props: ITeachingBubbleStyleProps): ITeachingBubbleStyl
     ],
     subComponentStyles: {
       callout: {
-        root: [...rootStyle(isWide), fonts.medium],
+        root: [...rootStyle(isWide, calloutProps), fonts.medium],
         beak: [
           {
             background: palette.themePrimary

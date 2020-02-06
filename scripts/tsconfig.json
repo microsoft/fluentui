@@ -1,0 +1,9 @@
+{
+  "extends": "./typescript/tsconfig.common.json",
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "typeRoots": ["../typings", "../node_modules/@types"],
+    "types": ["node", "webpack-env", "screener-runner"]
+  }
+}

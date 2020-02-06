@@ -27,7 +27,7 @@ interface ISemanticSlotsDetailsList {
   strongSlot: JSX.Element;
 }
 
-export const SemanticSlotsDetailsList: React.StatelessComponent<ISemanticSlotsDetailsListProps> = (
+export const SemanticSlotsDetailsList: React.FunctionComponent<ISemanticSlotsDetailsListProps> = (
   props: ISemanticSlotsDetailsListProps
 ) => {
   let countDefaults = 17;

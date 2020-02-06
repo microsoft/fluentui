@@ -3,7 +3,7 @@ import { IShimmerTileProps, IShimmerTileStyleProps, IShimmerTileStyles } from '.
 import { ShimmerTileBase } from './ShimmerTile.base';
 import { getStyles } from './ShimmerTile.styles';
 
-export const ShimmerTile: React.StatelessComponent<IShimmerTileProps> = styled<
+export const ShimmerTile: React.FunctionComponent<IShimmerTileProps> = styled<
   IShimmerTileProps,
   IShimmerTileStyleProps,
   IShimmerTileStyles

@@ -301,7 +301,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   }
 
   protected renderSuggestions(): JSX.Element | null {
-    const StyledTypedSuggestions: React.StatelessComponent<ISuggestionsProps<T>> = this._styledSuggestions;
+    const StyledTypedSuggestions: React.FunctionComponent<ISuggestionsProps<T>> = this._styledSuggestions;
 
     return this.state.suggestionsVisible && this.input ? (
       <Callout
