@@ -5,7 +5,7 @@ import webpackConfig from './webpack.config';
 const { paths } = config;
 
 const webpackUMDConfig = (packageName: string): webpack.Configuration => {
-  const pkg = require(`../packages/${packageName}/package.json`);
+  const pkg = require(`../../packages/fluentui/${packageName}/package.json`);
 
   return {
     target: 'web',

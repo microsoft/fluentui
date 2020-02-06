@@ -51,7 +51,7 @@ task('bundle:package:types', series('bundle:package:types:tsc', 'bundle:package:
 
 task('bundle:package:umd', cb => {
   process.env.NODE_ENV = 'build';
-  const webpackUMDConfig = require('../../webpack.config.umd').default;
+  const webpackUMDConfig = require('../../webpack/webpack.config.umd').default;
   const compiler = webpack(webpackUMDConfig(packageName));
 
   compiler.run((err, stats) => {

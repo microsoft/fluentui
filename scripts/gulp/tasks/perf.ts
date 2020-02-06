@@ -110,7 +110,7 @@ const createMarkdownTable = (perExamplePerfMeasures: PerExamplePerfMeasures) => 
 task('perf:clean', () => del(paths.perfDist()));
 
 task('perf:build', cb => {
-  webpackPlugin(require('../../webpack.config.perf').default, cb);
+  webpackPlugin(require('../../webpack/webpack.config.perf').default, cb);
 });
 
 task('perf:run', async () => {
