@@ -393,10 +393,10 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
     }
   }
 
-  private _dismissOnOuterClick(ev: any): void {
+  private _dismissOnOuterClick(ev: React.MouseEvent<HTMLDivElement>): void {
     const panel = this._panel.current;
-    if (this.isActive && panel && !ev.defaultPrevented()) {
-      if (!elementContains(panel, ev.target)) {
+    if (this.isActive && panel && !ev.defaultPrevented) {
+      if (!elementContains(panel, ev.target as HTMLElement)) {
         if (this.props.onOuterClick) {
           this.props.onOuterClick();
           ev.preventDefault();

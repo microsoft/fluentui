@@ -4832,6 +4832,8 @@ export interface IGroupFooterStyles {
 
 // @public (undocumented)
 export interface IGroupHeaderProps extends IGroupDividerProps {
+    ariaPosInSet?: number;
+    ariaSetSize?: number;
     expandButtonProps?: React.HTMLAttributes<HTMLButtonElement>;
     groupedListId?: string;
     selectAllButtonProps?: React.HTMLAttributes<HTMLButtonElement>;

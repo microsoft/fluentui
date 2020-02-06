@@ -1,9 +1,0 @@
-{
-  "type": "minor",
-  "comment": "TeachingBubble: Fixing styling when TeachingBubble has close button but no headline.",
-  "packageName": "office-ui-fabric-react",
-  "email": "Humberto.Morimoto@microsoft.com",
-  "commit": "010803b8e84dbdbf0a3081975fc9725bbfaf2a4c",
-  "dependentChangeType": "patch",
-  "date": "2020-02-04T01:24:12.246Z"
-}

@@ -10,6 +10,7 @@
   "scripts": {
     "preinstall": "node ./scripts/use-yarn-please.js",
     "postinstall": "node ./scripts/postinstall.js",
+    "gulpbuild": "gulp build",
     "buildto": "node ./scripts/monorepo/buildTo.js",
     "builddemo": "node ./scripts/monorepo/buildTo.js fabric-website-resources",
     "bundle": "lerna run bundle --stream",
@@ -21,6 +22,7 @@
     "start": "yarn workspace office-ui-fabric-react start",
     "start-exp": "yarn workspace @uifabric/experiments start",
     "build": "lerna run build --stream",
+    "build:fluent": "gulp build",
     "build:prod": "lerna run build --stream -- --production",
     "buildci": "yarn build && yarn test && yarn lint && yarn bundle",
     "buildci:prod": "yarn build:prod && yarn test && yarn lint && yarn bundle:prod",
@@ -49,7 +51,11 @@
   "devDependencies": {
     "beachball": "^1.18.4",
     "lerna": "^3.15.0",
-    "lint-staged": "^7.0.5"
+    "lint-staged": "^7.0.5",
+    "cross-env": "^5.1.4",
+    "danger": "^6.0.5",
+    "gulp": "^4.0.2",
+    "tsconfig-paths": "^3.7.0"
   },
   "license": "MIT",
   "lint-staged": {
@@ -77,7 +83,8 @@
     "packages": [
       "apps/*",
       "packages/*",
-      "scripts"
+      "scripts",
+      "packages/fluentui/*"
     ]
   },
   "beachball": {

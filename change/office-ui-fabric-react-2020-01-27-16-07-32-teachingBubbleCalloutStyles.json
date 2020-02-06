@@ -1,9 +1,0 @@
-{
-  "type": "patch",
-  "comment": "TeachingBubble: Applying Callout style-related props like calloutWidth and calloutMaxWidth.",
-  "packageName": "office-ui-fabric-react",
-  "email": "Humberto.Morimoto@microsoft.com",
-  "commit": "3bca52530977d30df2b647d1605f683bbb6ca090",
-  "dependentChangeType": "patch",
-  "date": "2020-01-28T00:07:32.244Z"
-}

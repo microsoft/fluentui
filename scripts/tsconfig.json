@@ -1,11 +1,9 @@
 {
+  "extends": "./typescript/tsconfig.common.json",
   "compilerOptions": {
-    "target": "es2015",
-    "module": "commonjs",
-    "moduleResolution": "node",
-    "lib": ["es2015"],
-    "forceConsistentCasingInFileNames": true,
     "esModuleInterop": true,
-    "types": ["node"]
+    "allowSyntheticDefaultImports": true,
+    "typeRoots": ["../typings", "../node_modules/@types"],
+    "types": ["node", "webpack-env", "screener-runner"]
   }
 }

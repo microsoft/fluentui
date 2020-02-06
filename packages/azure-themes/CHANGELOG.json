@@ -2,6 +2,20 @@
   "name": "@uifabric/azure-themes",
   "entries": [
     {
+      "date": "Thu, 06 Feb 2020 12:37:34 GMT",
+      "tag": "@uifabric/azure-themes_v7.0.21",
+      "version": "7.0.21",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix incorrect icon color for disabled contextual menu icon.",
+            "author": "xinychen@microsoft.com",
+            "commit": "a8cc3ded60b29cc19e088d44b486055037752d1f"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 31 Jan 2020 19:00:10 GMT",
       "tag": "@uifabric/azure-themes_v7.0.18",
       "version": "7.0.18",
