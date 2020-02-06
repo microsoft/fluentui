@@ -1,0 +1,9 @@
+{
+  "type": "patch",
+  "comment": "Website: Fixing Card API reference tables not appearing on the component docs page.",
+  "packageName": "@uifabric/fabric-website",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "commit": "f5298bd0b9ddcbe8e4257c2092a95ebd81500f7c",
+  "dependentChangeType": "patch",
+  "date": "2020-01-31T00:12:29.806Z"
+}
