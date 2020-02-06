@@ -3,6 +3,7 @@ const path = require('path');
 const os = require('os');
 const findGitRoot = require('../monorepo/findGitRoot');
 const { spawnSync } = require('child_process');
+const glob = require('glob');
 
 const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'fluent-import'));
 console.log(`using temp dir: ${tmp}`);
@@ -45,6 +46,36 @@ function importFuiTopLevelPackages(outputPath) {
   }
 }
 
+function importGithubMD(root) {
+  const mdFiles = [
+    '.github/CONTRIBUTING.md',
+    '.github/setup-local-development.md',
+    '.github/add-a-feature.md',
+    '.github/document-a-feature.md',
+    '.github/test-a-feature.md'
+  ];
+  for (let mdFile of mdFiles) {
+    if (mdFile.endsWith('.md')) {
+      const src = path.join(tmp, mdFile);
+      const dest = path.join(root, mdFile);
+      fs.copyFileSync(src, dest);
+    }
+  }
+}
+
+function rewriteImports(outputPath) {
+  const files = glob.sync('**/*.+(js|ts|json)', { cwd: outputPath });
+
+  for (let file of files) {
+    const fullPath = path.join(outputPath, file);
+    const content = fs.readFileSync(fullPath, 'utf-8');
+    if (content.includes('@fluentui/internal-tooling')) {
+      console.log(`patching up ${fullPath}`);
+      fs.writeFileSync(fullPath, content.replace('@fluentui/internal-tooling', '@uifabric/build'));
+    }
+  }
+}
+
 function importFluent() {
   console.log('cloning FUI');
   git(['clone', '--depth=1', 'https://github.com/microsoft/fluent-ui-react.git', '.']);
@@ -55,6 +86,9 @@ function importFluent() {
 
   importFuiPackages(outputPath);
   importFuiTopLevelPackages(outputPath);
+  importGithubMD(root);
+
+  rewriteImports(outputPath);
 
   console.log('removing tmp');
   fs.removeSync(tmp);

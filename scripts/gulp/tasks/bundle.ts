@@ -86,6 +86,6 @@ task(
 task('bundle:package', series('bundle:package:no-umd', 'bundle:package:umd'));
 
 task('bundle:all-packages', async () => {
-  await sh('lerna run build');
+  await sh('lerna run build --scope packages/fluentui/*');
   return del(`${config.paths.packages()}/*/dist/dts`);
 });

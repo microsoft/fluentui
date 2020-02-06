@@ -1,6 +1,6 @@
 // @ts-check
 
-require('@fluentui/internal-tooling/babel/register');
+require('@uifabric/build/babel/register');
 
 const config = require('../config').default;
 

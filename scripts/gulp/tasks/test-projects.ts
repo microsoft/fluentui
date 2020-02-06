@@ -11,7 +11,7 @@ import del from 'del';
 import config from '../../config';
 import tmp from 'tmp';
 import http from 'http';
-import { safeLaunchOptions } from 'build/puppeteer.config';
+import { safeLaunchOptions } from '../../puppeteer/puppeteer.config';
 
 type PackedPackages = Record<string, string>;
 
@@ -48,7 +48,7 @@ const packProjectPackages = async (logger: Function): Promise<PackedPackages> =>
   delete projectPackages['@fluentui/docs'];
   delete projectPackages['@fluentui/e2e'];
   delete projectPackages['@fluentui/eslint-plugin'];
-  delete projectPackages['@fluentui/internal-tooling'];
+  delete projectPackages['@uifabric/build'];
   delete projectPackages['@fluentui/perf'];
   delete projectPackages['@fluentui/perf-test'];
   delete projectPackages['@fluentui/scripts'];

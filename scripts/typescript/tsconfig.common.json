@@ -5,10 +5,10 @@
     "lib": ["es2015", "dom"],
     "baseUrl": "../",
     "paths": {
-      "@fluentui/docs": ["docs"],
-      "@fluentui/e2e": ["e2e"],
-      "@fluentui/internal-tooling": ["build"],
-      "@fluentui/perf": ["perf"],
+      "@fluentui/docs": ["packages/fluentui/docs"],
+      "@fluentui/e2e": ["packages/fluentui/e2e"],
+      "@uifabric/build": ["scripts"],
+      "@fluentui/perf": ["packages/fluentui/perf"],
       "@fluentui/*": ["packages/*/src"]
     },
     "types": ["node", "jest"],
