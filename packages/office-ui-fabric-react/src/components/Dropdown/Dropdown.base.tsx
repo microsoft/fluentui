@@ -179,10 +179,6 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
     if (prevState.isOpen === true && this.state.isOpen === false) {
       this._gotMouseMove = false;
 
-      if (this._dropDown.current) {
-        this._dropDown.current.focus();
-      }
-
       if (this.props.onDismiss) {
         this.props.onDismiss();
       }
@@ -820,10 +816,6 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
 
   private _onDismiss = (): void => {
     this.setState({ isOpen: false });
-
-    if (this._dropDown.current) {
-      this._dropDown.current.focus();
-    }
   };
 
   /** Get all selected indexes for multi-select mode */

@@ -77,6 +77,7 @@ export class TeachingBubbleContentBase extends BaseComponent<ITeachingBubbleProp
       hasCondensedHeadline,
       hasSmallHeadline,
       hasCloseButton,
+      hasHeadline: !!headline,
       isWide,
       primaryButtonClassName: primaryButtonProps ? primaryButtonProps.className : undefined,
       secondaryButtonClassName: secondaryButtonProps ? secondaryButtonProps.className : undefined

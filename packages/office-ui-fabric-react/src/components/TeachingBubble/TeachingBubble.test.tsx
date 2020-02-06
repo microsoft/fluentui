@@ -94,6 +94,14 @@ describe('TeachingBubble', () => {
     expect(treeContent).toMatchSnapshot();
   });
 
+  it('renders TeachingBubbleContent with calloutProps that deal with styles', () => {
+    const componentContent = renderer.create(
+      <TeachingBubbleContent calloutProps={{ beakWidth: 50, calloutWidth: 100 }}>Content</TeachingBubbleContent>
+    );
+    const treeContent = componentContent.toJSON();
+    expect(treeContent).toMatchSnapshot();
+  });
+
   it('merges callout classNames', () => {
     ReactTestUtils.renderIntoDocument(<TeachingBubbleContent headline="Title" calloutProps={{ className: 'foo' }} />);
     setTimeout(() => {

@@ -41,7 +41,7 @@ export const ContextualMenuStyles = (props: IContextualMenuStyleProps): Partial<
           divider: {
             backgroundColor: semanticColors.inputBorder
           },
-          icon: {
+          iconColor: {
             color: semanticColors.focusBorder
           },
           item: {

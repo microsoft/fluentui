@@ -212,7 +212,9 @@ export class GroupedListSection extends React.Component<IGroupedListSectionProps
     };
 
     const ariaControlsProps: IGroupHeaderProps = {
-      groupedListId: this._id
+      groupedListId: this._id,
+      ariaSetSize: groups ? groups.length : undefined,
+      ariaPosInSet: groupIndex !== undefined ? groupIndex + 1 : undefined
     };
 
     const groupHeaderProps: IGroupHeaderProps = { ...headerProps, ...dividerProps, ...ariaControlsProps };

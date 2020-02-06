@@ -2,6 +2,20 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "date": "Mon, 03 Feb 2020 20:04:10 GMT",
+      "tag": "@uifabric/experiments_v7.18.24",
+      "version": "7.18.24",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Updating snapshots in experiments package.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "1be065b85f29c28ee7a316ab93a263f09e32f1db"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 31 Jan 2020 19:00:10 GMT",
       "tag": "@uifabric/experiments_v7.18.23",
       "version": "7.18.23",
