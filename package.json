@@ -22,6 +22,7 @@
     "start": "yarn workspace office-ui-fabric-react start",
     "start-exp": "yarn workspace @uifabric/experiments start",
     "build": "lerna run build --stream",
+    "build:fluent": "gulp build",
     "build:prod": "lerna run build --stream -- --production",
     "buildci": "yarn build && yarn test && yarn lint && yarn bundle",
     "buildci:prod": "yarn build:prod && yarn test && yarn lint && yarn bundle:prod",
@@ -82,7 +83,8 @@
     "packages": [
       "apps/*",
       "packages/*",
-      "scripts"
+      "scripts",
+      "packages/fluentui/*"
     ]
   },
   "beachball": {

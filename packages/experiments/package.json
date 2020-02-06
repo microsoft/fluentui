@@ -27,11 +27,11 @@
   },
   "devDependencies": {
     "@types/deep-assign": "^0.1.1",
-    "@types/enzyme": "3.1.13",
+    "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
     "@types/es6-promise": "0.0.32",
     "@types/jest": "~24.9.0",
-    "@types/prop-types": "15.5.9",
+    "@types/prop-types": "15.7.1",
     "@types/react": "16.8.11",
     "@types/react-addons-test-utils": "0.14.18",
     "@types/react-dom": "16.8.4",

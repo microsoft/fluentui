@@ -9,10 +9,17 @@ import del from 'del';
 import { argv } from 'yargs';
 import markdownTable from 'markdown-table';
 
-import { MeasuredValues, PerExamplePerfMeasures, ProfilerMeasure, ProfilerMeasureCycle, ReducedMeasures } from '../../../perf/types';
+// TODO (fui repo merge): scripts should not have relative imports of things inside packages
+import {
+  MeasuredValues,
+  PerExamplePerfMeasures,
+  ProfilerMeasure,
+  ProfilerMeasureCycle,
+  ReducedMeasures
+} from '../../../packages/fluentui/perf/types';
 import config from '../../config';
 import webpackPlugin from '../plugins/gulp-webpack';
-import { safeLaunchOptions } from 'build/puppeteer.config';
+import { safeLaunchOptions } from '../../puppeteer/puppeteer.config';
 
 const { paths } = config;
 
@@ -103,7 +110,7 @@ const createMarkdownTable = (perExamplePerfMeasures: PerExamplePerfMeasures) => 
 task('perf:clean', () => del(paths.perfDist()));
 
 task('perf:build', cb => {
-  webpackPlugin(require('../../webpack.config.perf').default, cb);
+  webpackPlugin(require('../../webpack/webpack.config.perf').default, cb);
 });
 
 task('perf:run', async () => {

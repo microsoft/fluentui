@@ -18,7 +18,7 @@ const argv = yargs
 task('test:e2e:clean', () => del(paths.e2eDist()));
 
 task('test:e2e:build', cb => {
-  webpackPlugin(require('../../webpack.config.e2e').default, cb);
+  webpackPlugin(require('../../webpack/webpack.config.e2e').default, cb);
 });
 
 let server: Server;
