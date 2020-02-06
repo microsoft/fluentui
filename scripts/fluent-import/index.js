@@ -222,6 +222,23 @@ function fixPrivatePackageFlag(outputPath) {
   }
 }
 
+/** this has to be fixed because keyboard-keys has incompatible typings in the latest release */
+function fixKeyboardKeys(outputPath) {
+  const files = glob.sync('**/package.json', { cwd: outputPath });
+
+  for (let file of files) {
+    const fullPath = path.join(outputPath, file);
+    console.log(`fixing ${fullPath} for private packages (for now)`);
+    const pkgJson = fs.readJSONSync(fullPath);
+
+    if (pkgJson.dependencies && pkgJson.dependencies['keyboard-key']) {
+      pkgJson.dependencies['keyboard-key'] = '1.0.1';
+    }
+
+    fs.writeJSONSync(fullPath, pkgJson, { spaces: 2 });
+  }
+}
+
 function fixPlayground(outputPath) {
   const devDeps = { '@types/jest-environment-puppeteer': '^4.3.1', '@types/expect-puppeteer': '^4.4.0' };
 
@@ -258,6 +275,7 @@ function importFluent() {
   fixTypings(outputPath);
   fixPrivatePackageFlag(outputPath);
   fixPlayground(outputPath);
+  fixKeyboardKeys(outputPath);
 
   console.log('removing tmp');
   fs.removeSync(tmp);
