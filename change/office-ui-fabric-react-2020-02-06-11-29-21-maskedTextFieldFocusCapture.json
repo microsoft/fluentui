@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "MaskedTextField: Fixing focus capture on input in re-renders on IE11 and Edge.",
-  "packageName": "office-ui-fabric-react",
-  "email": "Humberto.Morimoto@microsoft.com",
-  "commit": "df03e220e37a8189bdf5391c381b031411b8c8fa",
-  "date": "2020-02-06T19:29:21.086Z"
-}

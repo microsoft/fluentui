@@ -1,7 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 27 Jan 2020 00:02:37 GMT and should not be manually modified.
+This log was last generated on Fri, 07 Feb 2020 12:20:01 GMT and should not be manually modified.
 
+## 6.211.3
+Fri, 07 Feb 2020 12:20:01 GMT
+
+### Patches
+
+- MaskedTextField: Fixing focus capture on input in re-renders on IE11 and Edge. (Humberto.Morimoto@microsoft.com)
 ## 6.211.2
 Mon, 27 Jan 2020 00:02:37 GMT
 
