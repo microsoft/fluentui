@@ -1,0 +1,9 @@
+{
+  "type": "patch",
+  "comment": "Combobox: fix selected item not appearing with different background color",
+  "packageName": "office-ui-fabric-react",
+  "email": "joschect@microsoft.com",
+  "commit": "84410c47013bc59c4e79c9676ee1f74c41c3f877",
+  "dependentChangeType": "patch",
+  "date": "2020-02-07T19:59:59.414Z"
+}
