@@ -1,0 +1,9 @@
+{
+  "type": "minor",
+  "comment": "Removing use of some deprecated things by replacing them.",
+  "packageName": "office-ui-fabric-react",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "commit": "8327cbafb8cede2043608f0dd80a17fe7d71e5bc",
+  "dependentChangeType": "patch",
+  "date": "2020-02-07T01:42:11.192Z"
+}
