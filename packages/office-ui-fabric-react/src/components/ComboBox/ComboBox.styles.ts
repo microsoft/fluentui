@@ -81,6 +81,7 @@ export const getOptionStyles = memoizeFunction(
       textSelectedColor: palette.neutralDark,
       textDisabledColor: semanticColors.disabledText,
       backgroundHoveredColor: semanticColors.menuItemBackgroundHovered,
+      backgroundSelectedColor: semanticColors.menuItemBackgroundChecked,
       backgroundPressedColor: semanticColors.menuItemBackgroundPressed
     };
 
@@ -131,7 +132,7 @@ export const getOptionStyles = memoizeFunction(
       },
       rootChecked: [
         {
-          backgroundColor: 'transparent',
+          backgroundColor: option.backgroundSelectedColor,
           color: option.textSelectedColor,
           selectors: {
             ':hover': [

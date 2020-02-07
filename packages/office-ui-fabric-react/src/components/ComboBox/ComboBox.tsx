@@ -1359,16 +1359,9 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    * we do not have a valid index and we currently have a pending input value,
    * otherwise use the selected index
    * */
+  // return index === this._getFirstSelectedIndex() || this._getPendingSelectedIndex(true /* includePendingValue */) === index;
   private _isOptionSelected(index: number | undefined): boolean {
-    const { currentPendingValueValidIndexOnHover } = this.state;
-
-    // If the hover state is set to clearAll, don't show a selected index.
-    // Note, this happens when the user moused out of the menu items
-    if (currentPendingValueValidIndexOnHover === HoverStatus.clearAll) {
-      return false;
-    }
-
-    return this._getPendingSelectedIndex(true /* includePendingValue */) === index ? true : false;
+    return index === this._getFirstSelectedIndex() || this._getPendingSelectedIndex(true /* includePendingValue */) === index;
   }
 
   private _isOptionChecked(index: number | undefined): boolean {
