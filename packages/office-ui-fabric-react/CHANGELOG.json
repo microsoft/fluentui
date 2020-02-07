@@ -2,6 +2,37 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Fri, 07 Feb 2020 12:41:31 GMT",
+      "tag": "office-ui-fabric-react_v7.90.0",
+      "version": "7.90.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "GroupedList: Announcing position in set.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "666329aad1b362ee3d57ed8134f8398bab2347aa"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Remove unused config files",
+            "author": "elcraig@microsoft.com",
+            "commit": "96ccf88b8f44981d21a3903789874a13a2f79b1d"
+          },
+          {
+            "comment": "moved storybook config",
+            "author": "kchau@microsoft.com",
+            "commit": "5612f0eff3ea9ce3f6d367979b208f3c2489d330"
+          },
+          {
+            "comment": "uniting build across fluent and fabric",
+            "author": "kchau@microsoft.com",
+            "commit": "f9503d808bc0971e843024c9fb679c0ed5a67fbb"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 06 Feb 2020 12:37:34 GMT",
       "tag": "office-ui-fabric-react_v7.89.1",
       "version": "7.89.1",

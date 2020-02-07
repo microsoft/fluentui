@@ -2,6 +2,20 @@
   "name": "@uifabric/azure-themes",
   "entries": [
     {
+      "date": "Fri, 07 Feb 2020 12:41:31 GMT",
+      "tag": "@uifabric/azure-themes_v7.0.22",
+      "version": "7.0.22",
+      "comments": {
+        "none": [
+          {
+            "comment": "Remove unused config files",
+            "author": "elcraig@microsoft.com",
+            "commit": "96ccf88b8f44981d21a3903789874a13a2f79b1d"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 06 Feb 2020 12:37:34 GMT",
       "tag": "@uifabric/azure-themes_v7.0.21",
       "version": "7.0.21",
