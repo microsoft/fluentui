@@ -1,7 +1,7 @@
 const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
 const IgnoreNotFoundExportWebpackPlugin = require('ignore-not-found-export-webpack-plugin');
 const path = require('path');
-const getResolveAlias = require('../../webpack/getResolveAlias');
+const getResolveAlias = require('../webpack/getResolveAlias');
 
 module.exports = ({ config }) => {
   config.module.rules.push({

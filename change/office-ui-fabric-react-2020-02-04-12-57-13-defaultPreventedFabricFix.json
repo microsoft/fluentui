@@ -1,9 +1,0 @@
-{
-  "type": "patch",
-  "comment": "ev.defaultPrevented is not a function, remove errant ()",
-  "packageName": "office-ui-fabric-react",
-  "email": "mahelles@microsoft.com",
-  "commit": "5f39660dd3f6fe2a7fb8b938c7cce0bff1961321",
-  "dependentChangeType": "patch",
-  "date": "2020-02-04T20:57:13.783Z"
-}
