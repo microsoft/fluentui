@@ -216,7 +216,6 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
     const divProps = getNativeProps(this.props, htmlElementProperties);
 
     const Tag = this.props.as || this.props.elementType || 'div';
-    // tslint:enable:deprecation
 
     // Note, right before rendering/reconciling proceeds, we need to record if focus
     // was in the zone before the update. This helper will track this and, if focus
@@ -235,7 +234,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
           // it needs to be marked as "any" since root props expects a div element, but really Tag can
           // be any native element so typescript rightly flags this as a problem.
           // tslint:disable-next-line:no-any
-          ...(rootProps as any)
+          ...rootProps as any
         }
         // Once the getClassName correctly memoizes inputs this should
         // be replaced so that className is passed to getRootClass and is included there so
@@ -430,7 +429,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
    * Handle global tab presses so that we can patch tabindexes on the fly.
    */
   private _onKeyDownCapture = (ev: KeyboardEvent): void => {
-    if (ev.key === 'Tab') {
+    if (ev.which === KeyCodes.tab) {
       _outerZones.forEach((zone: FocusZone) => zone._updateTabIndexes());
     }
   };
@@ -531,9 +530,11 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
         }
       } else if (isElementFocusSubZone(ev.target as HTMLElement)) {
         if (
-          !this.focusElement(
-            getNextElement(ev.target as HTMLElement, (ev.target as HTMLElement).firstChild as HTMLElement, true) as HTMLElement
-          )
+          !this.focusElement(getNextElement(
+            ev.target as HTMLElement,
+            (ev.target as HTMLElement).firstChild as HTMLElement,
+            true
+          ) as HTMLElement)
         ) {
           return;
         }
@@ -586,7 +587,6 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
 
         case KeyCodes.tab:
           if (
-            // tslint:disable-next-line:deprecation
             this.props.allowTabKey ||
             this.props.handleTabKey === FocusZoneTabbableElements.all ||
             (this.props.handleTabKey === FocusZoneTabbableElements.inputOnly && this._isElementInput(ev.target as HTMLElement))
@@ -763,13 +763,19 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
       this.focusElement(candidateElement);
     } else if (this.props.isCircularNavigation && useDefaultWrap) {
       if (isForward) {
-        return this.focusElement(
-          getNextElement(this._root.current, this._root.current.firstElementChild as HTMLElement, true) as HTMLElement
-        );
+        return this.focusElement(getNextElement(
+          this._root.current,
+          this._root.current.firstElementChild as HTMLElement,
+          true
+        ) as HTMLElement);
       } else {
-        return this.focusElement(
-          getPreviousElement(this._root.current, this._root.current.lastElementChild as HTMLElement, true, true, true) as HTMLElement
-        );
+        return this.focusElement(getPreviousElement(
+          this._root.current,
+          this._root.current.lastElementChild as HTMLElement,
+          true,
+          true,
+          true
+        ) as HTMLElement);
       }
     }
 
@@ -1029,13 +1035,19 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
       this._setFocusAlignment(candidateElement as HTMLElement, false, true);
     } else if (this.props.isCircularNavigation && useDefaultWrap) {
       if (isForward) {
-        return this.focusElement(
-          getNextElement(this._root.current, this._root.current.firstElementChild as HTMLElement, true) as HTMLElement
-        );
+        return this.focusElement(getNextElement(
+          this._root.current,
+          this._root.current.firstElementChild as HTMLElement,
+          true
+        ) as HTMLElement);
       }
-      return this.focusElement(
-        getPreviousElement(this._root.current, this._root.current.lastElementChild as HTMLElement, true, true, true) as HTMLElement
-      );
+      return this.focusElement(getPreviousElement(
+        this._root.current,
+        this._root.current.lastElementChild as HTMLElement,
+        true,
+        true,
+        true
+      ) as HTMLElement);
     }
     return changedFocus;
   }
