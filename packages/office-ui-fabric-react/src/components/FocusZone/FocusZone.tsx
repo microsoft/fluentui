@@ -28,6 +28,7 @@ import {
   findScrollableParent
 } from '../../Utilities';
 import { mergeStyles } from '@uifabric/merge-styles';
+import { EventListener } from '@fluentui/react-component-event-listener';
 
 const IS_FOCUSABLE_ATTRIBUTE = 'data-is-focusable';
 const IS_ENTER_DISABLED_ATTRIBUTE = 'data-disable-click-on-enter';
