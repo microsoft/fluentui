@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { findDOMNode } from 'react-dom';
 import { BaseDecorator } from './BaseDecorator';
-import { getWindow, hoistStatics, EventGroup } from '../../Utilities';
+import { EventGroup, getWindow, css } from '../../Utilities';
+import * as WithResponsiveModeStyles from './withResponsiveMode.scss';
 
 export interface IWithResponsiveModeState {
   responsiveMode?: ResponsiveMode;
@@ -53,53 +53,82 @@ export function initializeResponsiveMode(element?: HTMLElement): void {
 export function withResponsiveMode<TProps extends { responsiveMode?: ResponsiveMode }, TState>(
   ComposedComponent: new (props: TProps, ...args: any[]) => React.Component<TProps, TState>,
 ): any {
-  const resultClass = class WithResponsiveMode extends BaseDecorator<TProps, IWithResponsiveModeState> {
-    private _events: EventGroup;
+  // tslint:disable-next-line:function-name
+  function WithResponsiveModeBase(
+    props: TProps,
+    forwardedRef: React.Ref<React.Component<TProps, TState>>
+  ): JSX.Element | null {
+    const [responsiveMode = ResponsiveMode.unknown, setCurrentResponsiveMode] = React.useState<ResponsiveMode>(
+      _defaultMode || _lastMode || ResponsiveMode.large
+    );
 
-    constructor(props: TProps) {
-      super(props);
-      this._events = new EventGroup(this);
-      this._updateComposedComponentRef = this._updateComposedComponentRef.bind(this);
+    const setCurrentResponsiveModeRef = React.useRef<typeof setCurrentResponsiveMode>();
+    setCurrentResponsiveModeRef.current = setCurrentResponsiveMode;
 
-      this.state = {
-        responsiveMode: _defaultMode || _lastMode || ResponsiveMode.large,
+    React.useEffect(() => {
+      return () => {
+        setCurrentResponsiveModeRef.current = undefined;
       };
-    }
+    }, []);
 
-    public componentDidMount(): void {
-      this._events.on(window, 'resize', this._onResize);
-      this._onResize();
-    }
+    const rootRef = React.useRef<HTMLDivElement | null>(null);
 
-    public componentWillUnmount(): void {
-      this._events.dispose();
-    }
+    React.useLayoutEffect(() => {
+      // Use a layout effect instead of a newer effect to ensure compatibility with existing unit tests.
+      if (typeof window !== 'undefined') {
+        const events = new EventGroup(null);
 
-    public render(): JSX.Element | null {
-      const { responsiveMode } = this.state;
+        const onResize = () => {
+          const element = rootRef.current;
+          const currentWindow = (element && getWindow(element)) || window;
 
-      return responsiveMode === ResponsiveMode.unknown ? null : (
-        <ComposedComponent
-          ref={this._updateComposedComponentRef}
-          responsiveMode={responsiveMode}
-          {...(this.props as any)}
-        />
-      );
-    }
+          if (currentWindow) {
+            if (setCurrentResponsiveModeRef.current) {
+              setCurrentResponsiveModeRef.current(getResponsiveMode(currentWindow));
+            }
+          }
+        };
 
-    private _onResize = () => {
-      const element = findDOMNode(this) as Element;
-      const currentWindow = (element && getWindow(element)) || window;
-      const responsiveMode = getResponsiveMode(currentWindow);
+        onResize();
 
-      if (responsiveMode !== this.state.responsiveMode) {
-        this.setState({
-          responsiveMode,
-        });
+        // There is not a good way to subscribe to the component instance window.
+        events.on(window, 'resize', onResize);
+
+        return () => {
+          events.dispose();
+        };
       }
-    };
-  };
-  return hoistStatics(ComposedComponent, resultClass);
+    }, []);
+
+    const componentElement = React.useMemo(() => {
+      return responsiveMode === ResponsiveMode.unknown ? null : (
+        <>
+          <ComposedComponent {...(props as any)} ref={forwardedRef} responsiveMode={responsiveMode} />
+          {
+            // Mark the element with a class name so that it is clear in snapshots what has been added.
+          }
+          <div className={css('ms-withResponsiveMode', WithResponsiveModeStyles.root)} ref={rootRef} />
+        </>
+      );
+    }, [forwardedRef, props, responsiveMode]);
+
+    return componentElement;
+  }
+
+  const WithResponsiveMode = React.forwardRef(WithResponsiveModeBase);
+
+  /**
+   * Old-style component wrapper for consumption by existing callers.
+   * The contract of the decorator interface expects a component instance from the ref, not
+   * a function component.
+   */
+  class WithResponsiveModeComponent extends BaseDecorator<TProps, IWithResponsiveModeState> {
+    public render(): JSX.Element | null {
+      return <WithResponsiveMode {...(this.props as any)} ref={this._updateComposedComponentRef} />;
+    }
+  }
+
+  return WithResponsiveModeComponent;
 }
 
 function getResponsiveMode(currentWindow: Window | undefined): ResponsiveMode {
@@ -124,7 +153,7 @@ function getResponsiveMode(currentWindow: Window | undefined): ResponsiveMode {
     } else {
       throw new Error(
         'Content was rendered in a server environment without providing a default responsive mode. ' +
-          'Call setResponsiveMode to define what the responsive mode is.',
+        'Call setResponsiveMode to define what the responsive mode is.'
       );
     }
   }
