@@ -10,9 +10,7 @@
     "serve": "node ./server.js"
   },
   "dependencies": {
-    "@fluentui/react": "^0.44.0",
-    "react": "^16.8.0",
-    "react-dom": "^16.8.0"
+    "@fluentui/react": "^0.44.0"
   },
   "devDependencies": {
     "babel-loader": "^8.0.6",
@@ -23,7 +21,9 @@
     "typescript": "~3.7.2",
     "webpack": "^4.35.0",
     "webpack-bundle-analyzer": "^3.6.0",
-    "webpack-cli": "^3.3.10"
+    "webpack-cli": "^3.3.10",
+    "react": "16.8.6",
+    "react-dom": "16.8.6"
   },
   "publishConfig": {
     "access": "public"

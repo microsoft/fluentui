@@ -249,6 +249,35 @@ function fixPlayground(outputPath) {
   fs.writeJSONSync(fullPath, pkgJson, { spaces: 2 });
 }
 
+function fixReactDep(outputPath) {
+  const files = glob.sync('**/package.json', { cwd: outputPath });
+
+  for (let file of files) {
+    const fullPath = path.join(outputPath, file);
+    console.log(`fixing ${fullPath} for react`);
+    const pkgJson = fs.readJSONSync(fullPath);
+    if (pkgJson.dependencies && pkgJson.dependencies.react) {
+      delete pkgJson.dependencies.react;
+      pkgJson.devDependencies.react = '16.8.6';
+    }
+
+    if (pkgJson.dependencies && pkgJson.dependencies['react-dom']) {
+      delete pkgJson.dependencies['react-dom'];
+      pkgJson.devDependencies['react-dom'] = '16.8.6';
+    }
+
+    if (pkgJson.devDependencies && pkgJson.devDependencies.react) {
+      pkgJson.devDependencies.react = '16.8.6';
+    }
+
+    if (pkgJson.devDependencies && pkgJson.devDependencies['react-dom']) {
+      pkgJson.devDependencies['react-dom'] = '16.8.6';
+    }
+
+    fs.writeJSONSync(fullPath, pkgJson, { spaces: 2 });
+  }
+}
+
 function importFluent() {
   console.log('cloning FUI');
   git(['clone', '--depth=1', 'https://github.com/microsoft/fluent-ui-react.git', '.']);
@@ -276,6 +305,7 @@ function importFluent() {
   fixPrivatePackageFlag(outputPath);
   fixPlayground(outputPath);
   fixKeyboardKeys(outputPath);
+  fixReactDep(outputPath);
 
   console.log('removing tmp');
   fs.removeSync(tmp);
