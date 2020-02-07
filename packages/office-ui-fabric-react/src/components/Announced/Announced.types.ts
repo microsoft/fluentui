@@ -1,12 +1,11 @@
 import * as React from 'react';
-import { AnnouncedBase } from './Announced.base';
 import { IStyle } from '../../Styling';
 import { IStyleFunctionOrObject } from '../../Utilities';
 
 /**
  * {@docCategory Announced}
  */
-export interface IAnnouncedProps extends React.Props<AnnouncedBase>, React.HTMLAttributes<HTMLDivElement> {
+export interface IAnnouncedProps extends React.HTMLAttributes<HTMLDivElement> {
   /**
    * The status message provided as screen reader output
    */

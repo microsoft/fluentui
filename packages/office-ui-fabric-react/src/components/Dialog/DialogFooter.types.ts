@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { DialogFooterBase } from './DialogFooter.base';
 import { IStyle, ITheme } from '../../Styling';
 import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 
@@ -11,7 +10,7 @@ export interface IDialogFooter {}
 /**
  * {@docCategory Dialog}
  */
-export interface IDialogFooterProps extends React.Props<DialogFooterBase> {
+export interface IDialogFooterProps extends React.PropsWithChildren<{}> {
   /**
    * Gets the component ref.
    */

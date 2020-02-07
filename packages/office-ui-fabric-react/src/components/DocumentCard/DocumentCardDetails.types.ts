@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { IStyle, ITheme } from '../../Styling';
 import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
-import { DocumentCardDetailsBase } from './DocumentCardDetails.base';
 
 /**
  * {@docCategory DocumentCard}
@@ -11,7 +10,7 @@ export interface IDocumentCardDetails {}
 /**
  * {@docCategory DocumentCard}
  */
-export interface IDocumentCardDetailsProps extends React.Props<DocumentCardDetailsBase> {
+export interface IDocumentCardDetailsProps extends React.PropsWithChildren<{}> {
   /**
    * Gets the component ref.
    */

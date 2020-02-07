@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Icon, FontIcon } from '../../Icon';
-import { initializeComponentRef, EventGroup, Async, IDisposable, classNamesFunction, IClassNames } from '../../Utilities';
+import { IProcessedStyleSet } from '../../Styling';
+import { initializeComponentRef, EventGroup, Async, IDisposable, classNamesFunction } from '../../Utilities';
 import { ColumnActionsMode } from './DetailsList.types';
 import { IDragDropOptions } from './../../utilities/dragdrop/interfaces';
 import { DEFAULT_CELL_STYLE_PROPS } from './DetailsRow.styles';
@@ -28,7 +29,7 @@ export class DetailsColumnBase extends React.Component<IDetailsColumnProps> {
   private _events: EventGroup;
   private _root = React.createRef<HTMLDivElement>();
   private _dragDropSubscription: IDisposable;
-  private _classNames: IClassNames<IDetailsColumnStyles>;
+  private _classNames: IProcessedStyleSet<IDetailsColumnStyles>;
 
   constructor(props: IDetailsColumnProps) {
     super(props);

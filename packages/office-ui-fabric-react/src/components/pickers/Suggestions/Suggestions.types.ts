@@ -38,7 +38,7 @@ export interface ISuggestions<T> {
  * Type T is the type of the items that are displayed.
  * {@docCategory Pickers}
  */
-export interface ISuggestionsProps<T> extends React.Props<any> {
+export interface ISuggestionsProps<T> extends React.PropsWithChildren<{}> {
   /**
    * Optional callback to access the ISuggestions interface. Use this instead of ref for accessing
    * the public methods and properties of the component.

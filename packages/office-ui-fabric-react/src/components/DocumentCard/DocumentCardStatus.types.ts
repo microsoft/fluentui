@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { IStyle, ITheme } from '../../Styling';
 import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
-import { DocumentCardStatusBase } from './DocumentCardStatus.base';
 
 /**
  * {@docCategory DocumentCard}
@@ -11,7 +10,7 @@ export interface IDocumentCardStatus {}
 /**
  * {@docCategory DocumentCard}
  */
-export interface IDocumentCardStatusProps extends React.Props<DocumentCardStatusBase> {
+export interface IDocumentCardStatusProps extends React.PropsWithChildren<{}> {
   /**
    * Gets the component ref.
    */

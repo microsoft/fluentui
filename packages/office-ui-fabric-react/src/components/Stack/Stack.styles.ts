@@ -13,11 +13,11 @@ const GlobalClassNames = {
 };
 
 export const styles: IStackComponent['styles'] = (props, theme, tokens): IStackStylesReturnType => {
-  const { verticalFill, horizontal, reversed, gap, grow, wrap, horizontalAlign, verticalAlign, disableShrink, className } = props;
+  const { verticalFill, horizontal, reversed, grow, wrap, horizontalAlign, verticalAlign, disableShrink, className } = props;
 
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
-  const childrenGap = tokens && tokens.childrenGap ? tokens.childrenGap : gap;
+  const childrenGap = tokens && tokens.childrenGap ? tokens.childrenGap : props.gap;
   const maxHeight = tokens && tokens.maxHeight ? tokens.maxHeight : props.maxHeight;
   const maxWidth = tokens && tokens.maxWidth ? tokens.maxWidth : props.maxWidth;
   const padding = tokens && tokens.padding ? tokens.padding : props.padding;

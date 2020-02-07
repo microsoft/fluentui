@@ -44,7 +44,7 @@ export interface ITextProps
   /**
    * Optionally render the component as another component type or primitive.
    */
-  as?: React.ReactType<React.HTMLAttributes<HTMLElement>>;
+  as?: React.ElementType<React.HTMLAttributes<HTMLElement>>;
 
   /**
    * Optional font type for Text.

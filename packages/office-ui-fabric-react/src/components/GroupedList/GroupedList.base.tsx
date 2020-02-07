@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { initializeComponentRef, classNamesFunction, IClassNames, initializeFocusRects } from '../../Utilities';
+import { IProcessedStyleSet } from '../../Styling';
+import { initializeComponentRef, classNamesFunction, initializeFocusRects } from '../../Utilities';
 import { IGroupedList, IGroupedListProps, IGroup, IGroupedListStyleProps, IGroupedListStyles } from './GroupedList.types';
 import { GroupedListSection } from './GroupedListSection';
 import { List, ScrollToMode, IListProps } from '../../List';
@@ -30,7 +31,7 @@ export class GroupedListBase extends React.Component<IGroupedListProps, IGrouped
     [key: string]: React.ReactInstance;
   };
 
-  private _classNames: IClassNames<IGroupedListStyles>;
+  private _classNames: IProcessedStyleSet<IGroupedListStyles>;
 
   private _list = React.createRef<List>();
 
