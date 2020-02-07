@@ -2,6 +2,20 @@
   "name": "@uifabric/jest-serializer-merge-styles",
   "entries": [
     {
+      "date": "Fri, 07 Feb 2020 12:41:31 GMT",
+      "tag": "@uifabric/jest-serializer-merge-styles_v7.0.10",
+      "version": "7.0.10",
+      "comments": {
+        "none": [
+          {
+            "comment": "Remove unused config files",
+            "author": "elcraig@microsoft.com",
+            "commit": "33b1c3474b1b8e899a1c24a4c1ee973908686df1"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 31 Jan 2020 19:00:10 GMT",
       "tag": "@uifabric/jest-serializer-merge-styles_v7.0.9",
       "version": "7.0.9",

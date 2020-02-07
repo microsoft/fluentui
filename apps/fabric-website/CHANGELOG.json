@@ -2,6 +2,20 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "date": "Fri, 07 Feb 2020 12:41:31 GMT",
+      "tag": "@uifabric/fabric-website_v7.8.7",
+      "version": "7.8.7",
+      "comments": {
+        "none": [
+          {
+            "comment": "Remove unused config files",
+            "author": "elcraig@microsoft.com",
+            "commit": "96ccf88b8f44981d21a3903789874a13a2f79b1d"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 06 Feb 2020 12:37:34 GMT",
       "tag": "@uifabric/fabric-website_v7.8.6",
       "version": "7.8.6",

@@ -1,9 +1,0 @@
-{
-  "type": "none",
-  "comment": "uniting build across fluent and fabric",
-  "packageName": "@uifabric/tsx-editor",
-  "email": "kchau@microsoft.com",
-  "commit": "f9503d808bc0971e843024c9fb679c0ed5a67fbb",
-  "dependentChangeType": "patch",
-  "date": "2020-02-06T23:02:26.092Z"
-}
