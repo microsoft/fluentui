@@ -6,10 +6,11 @@ import { ISemanticTextColors } from './ISemanticTextColors';
  * The collection of all semantic slots for colors used in themes.
  *
  * Note: text colors are defined in ISemanticTextColors.ts.
- * We are aware that the usage of semantic slots vs. palette slots is not consistent across the Fabric controls code.
- * Both offerings need updates such as adding/removing slots. We've been actively making some of these changes.
- * And we're working on a a better solution that satisfies a lot of different factors including avoiding bloat
- * of the already sizable offering. We'll update this page when that's ready. Thank you for your patience.
+ * The plan is to move completely to semantic slots and replace all usage of fabric palette slots.
+ * We still have a ways to go to complete this plan and we've been actively making some of these changes.
+ * At present, we're not adding any more slots to avoid bloating the already sizeable offering.
+ * We're also working on a better solution for design tokens overall in our next iteration, Fluent.
+ * We'll provide an update on this site when that's ready. Thank you for your patience.
  *
  * #### Naming Convention
  *
