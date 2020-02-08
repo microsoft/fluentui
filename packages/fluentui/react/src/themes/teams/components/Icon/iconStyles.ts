@@ -1,71 +1,65 @@
-import * as _ from 'lodash'
-import {
-  callable,
-  ComponentSlotStylesPrepared,
-  FontIconSpec,
-  ICSSInJSStyle,
-  ThemeIconSpec,
-} from '@fluentui/styles'
+import * as _ from 'lodash';
+import { callable, ComponentSlotStylesPrepared, FontIconSpec, ICSSInJSStyle, ThemeIconSpec } from '@fluentui/styles';
 
-import { pxToRem, SizeValue } from '../../../../utils'
-import { StrictColorScheme, ItemType } from '../../../types'
-import { IconXSpacing, IconProps } from '../../../../components/Icon/Icon'
-import { getStyle as getSvgStyle } from './svg'
-import { IconVariables, iconColorAreas } from './iconVariables'
+import { pxToRem, SizeValue } from '../../../../utils';
+import { StrictColorScheme, ItemType } from '../../../types';
+import { IconXSpacing, IconProps } from '../../../../components/Icon/Icon';
+import { getStyle as getSvgStyle } from './svg';
+import { IconVariables, iconColorAreas } from './iconVariables';
 
-export const emptyIcon: ThemeIconSpec = { icon: { content: '?' } }
+export type IconStylesProps = Pick<
+  IconProps,
+  'bordered' | 'circular' | 'color' | 'disabled' | 'name' | 'outline' | 'rotate' | 'size' | 'xSpacing'
+> & { isFontIcon: boolean; isSvgIcon: boolean };
+
+export const emptyIcon: ThemeIconSpec = { icon: { content: '?' } };
 
 const getPaddedStyle = (): ICSSInJSStyle => ({
-  padding: pxToRem(4),
-})
+  padding: pxToRem(4)
+});
 
 const getBorderedStyles = (boxShadowColor: string): ICSSInJSStyle => {
   return {
     ...getPaddedStyle(),
 
-    boxShadow: `0 0 0 .05rem ${boxShadowColor} inset`,
-  }
-}
+    boxShadow: `0 0 0 .05rem ${boxShadowColor} inset`
+  };
+};
 
 const getIconSize = (size: SizeValue, v: IconVariables): string => {
   const modifiedSizes = {
     large: {
       x: 24,
-      xx: 28,
-    },
-  }
+      xx: 28
+    }
+  };
 
   return v.sizeModifier && modifiedSizes[size] && modifiedSizes[size][v.sizeModifier]
     ? pxToRem(modifiedSizes[size][v.sizeModifier])
-    : v[`${size}Size`]
-}
+    : v[`${size}Size`];
+};
 
 const getIconColor = (variables, colors: StrictColorScheme<ItemType<typeof iconColorAreas>>) => {
-  return _.get(colors, 'foreground', variables.color || 'currentColor')
-}
+  return _.get(colors, 'foreground', variables.color || 'currentColor');
+};
 
 const getXSpacingStyles = (xSpacing: IconXSpacing, horizontalSpace: string): ICSSInJSStyle => {
   switch (xSpacing) {
     case 'none':
-      return { marginLeft: 0, marginRight: 0 }
+      return { marginLeft: 0, marginRight: 0 };
     case 'before':
-      return { marginLeft: horizontalSpace, marginRight: 0 }
+      return { marginLeft: horizontalSpace, marginRight: 0 };
     case 'after':
-      return { marginLeft: 0, marginRight: horizontalSpace }
+      return { marginLeft: 0, marginRight: horizontalSpace };
     case 'both':
-      return { marginLeft: horizontalSpace, marginRight: horizontalSpace }
+      return { marginLeft: horizontalSpace, marginRight: horizontalSpace };
   }
-}
+};
 
-const iconStyles: ComponentSlotStylesPrepared<IconProps, IconVariables> = {
+const iconStyles: ComponentSlotStylesPrepared<IconStylesProps, IconVariables> = {
   root: ({ props: p, variables: v, theme: t, rtl }): ICSSInJSStyle => {
-    const iconSpec: ThemeIconSpec = t.icons[p.name] || emptyIcon
-    const isFontIcon = !iconSpec.isSvg
-
-    const colors = v.colorScheme[p.color]
-
-    const maybeIcon = t.icons[p.name]
-    const isSvgIcon = maybeIcon && maybeIcon.isSvg
+    const iconSpec: ThemeIconSpec = t.icons[p.name] || emptyIcon;
+    const colors = v.colorScheme[p.color];
 
     return {
       speak: 'none',
@@ -75,15 +69,14 @@ const iconStyles: ComponentSlotStylesPrepared<IconProps, IconVariables> = {
 
       ...(p.circular && { ...getPaddedStyle(), borderRadius: '50%' }),
       ...(p.disabled && {
-        color: v.disabledColor,
+        color: v.disabledColor
       }),
       display: 'inline-block', // we overriding this for Base theme
 
       // overriding base theme border handling
-      ...((p.bordered || v.borderColor) &&
-        getBorderedStyles(v.borderColor || getIconColor(v, colors))),
+      ...((p.bordered || v.borderColor) && getBorderedStyles(v.borderColor || getIconColor(v, colors))),
 
-      ...(isFontIcon && {
+      ...(p.isFontIcon && {
         fontWeight: 900, // required for the fontAwesome to render
         alignItems: 'center',
         boxSizing: 'content-box',
@@ -97,13 +90,13 @@ const iconStyles: ComponentSlotStylesPrepared<IconProps, IconVariables> = {
         height: v[`${p.size}Size`],
 
         '::before': {
-          content: (iconSpec.icon as FontIconSpec).content,
+          content: (iconSpec.icon as FontIconSpec).content
         },
 
-        transform: rtl ? `scaleX(-1) rotate(${-1 * p.rotate}deg)` : `rotate(${p.rotate}deg)`,
+        transform: rtl ? `scaleX(-1) rotate(${-1 * p.rotate}deg)` : `rotate(${p.rotate}deg)`
       }),
-      ...(isSvgIcon && { backgroundColor: v.backgroundColor }),
-    }
+      ...(p.isSvgIcon && { backgroundColor: v.backgroundColor })
+    };
   },
 
   outlinePart: ({ props: p }): ICSSInJSStyle => {
@@ -111,22 +104,22 @@ const iconStyles: ComponentSlotStylesPrepared<IconProps, IconVariables> = {
       display: 'none',
 
       ...(p.outline && {
-        display: 'block',
-      }),
-    }
+        display: 'block'
+      })
+    };
   },
 
   filledPart: ({ props: p }): ICSSInJSStyle => {
     return {
       ...(p.outline && {
-        display: 'none',
-      }),
-    }
+        display: 'none'
+      })
+    };
   },
 
   svg: ({ props: { size, color, disabled, rotate }, variables: v }): ICSSInJSStyle => {
-    const colors = v.colorScheme[color]
-    const iconSizeInRems = getIconSize(size, v)
+    const colors = v.colorScheme[color];
+    const iconSizeInRems = getIconSize(size, v);
 
     return {
       display: 'block',
@@ -135,30 +128,30 @@ const iconStyles: ComponentSlotStylesPrepared<IconProps, IconVariables> = {
       fill: getIconColor(v, colors),
 
       ...(disabled && {
-        fill: v.disabledColor,
+        fill: v.disabledColor
       }),
 
       transform: `rotate(${rotate}deg)`,
 
-      ...getSvgStyle('svg'),
-    }
+      ...getSvgStyle('svg')
+    };
   },
 
   svgFlippingInRtl: config => {
-    const { props, rtl } = config
+    const { props, rtl } = config;
     return {
       ...callable(iconStyles.svg)(config),
       ...(rtl && {
-        transform: `scaleX(-1) rotate(${-1 * props.rotate}deg)`,
-      }),
-    }
+        transform: `scaleX(-1) rotate(${-1 * props.rotate}deg)`
+      })
+    };
   },
 
   g: getSvgStyle('g'),
 
   path: getSvgStyle('path'),
 
-  secondaryPath: getSvgStyle('secondaryPath'),
-}
+  secondaryPath: getSvgStyle('secondaryPath')
+};
 
-export default iconStyles
+export default iconStyles;

@@ -1,6 +1,6 @@
-import * as keyboardKey from 'keyboard-key'
-import { Accessibility } from '../../types'
-import { IS_FOCUSABLE_ATTRIBUTE } from '../../attributes'
+import * as keyboardKey from 'keyboard-key';
+import { Accessibility } from '../../types';
+import { IS_FOCUSABLE_ATTRIBUTE } from '../../attributes';
 
 /**
  * @specification
@@ -17,23 +17,23 @@ const checkboxBehavior: Accessibility<CheckboxBehaviorProps> = props => ({
       'aria-disabled': props.disabled,
       role: 'checkbox',
       tabIndex: 0,
-      [IS_FOCUSABLE_ATTRIBUTE]: true,
-    },
+      [IS_FOCUSABLE_ATTRIBUTE]: true
+    }
   },
   keyActions: {
     root: {
       performClick: {
-        keyCombinations: [{ keyCode: keyboardKey.Spacebar }],
-      },
-    },
-  },
-})
+        keyCombinations: [{ keyCode: keyboardKey.Spacebar }]
+      }
+    }
+  }
+});
 
-export default checkboxBehavior
+export default checkboxBehavior;
 
-type CheckboxBehaviorProps = {
+export type CheckboxBehaviorProps = {
   /** Whether or not item is checked. */
-  checked: boolean
+  checked?: boolean;
   /** If the checkbox is in disabled state. */
-  disabled?: boolean
-}
+  disabled?: boolean;
+};

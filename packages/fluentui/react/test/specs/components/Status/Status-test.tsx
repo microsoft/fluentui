@@ -1,7 +1,7 @@
-import { isConformant } from 'test/specs/commonTests'
+import { isConformant } from 'test/specs/commonTests';
 
-import Status from 'src/components/Status/Status'
+import Status from 'src/components/Status/Status';
 
 describe('Status', () => {
-  isConformant(Status)
-})
+  isConformant(Status, { constructorName: 'Status' });
+});

@@ -11,121 +11,121 @@ import {
   Input,
   Segment,
   Text,
-  ShorthandValue,
-} from '@fluentui/react'
-import { CopyToClipboard } from '@fluentui/docs-components'
-import Logo from '../Logo/Logo'
-import { getComponentPathname } from '../../utils'
-import keyboardKey from 'keyboard-key'
-import * as _ from 'lodash'
-import * as PropTypes from 'prop-types'
-import * as React from 'react'
-import { NavLink, NavLinkProps, withRouter } from 'react-router-dom'
+  ShorthandValue
+} from '@fluentui/react';
+import { CopyToClipboard } from '@fluentui/docs-components';
+import Logo from '../Logo/Logo';
+import { getComponentPathname } from '../../utils';
+import keyboardKey from 'keyboard-key';
+import * as _ from 'lodash';
+import * as PropTypes from 'prop-types';
+import * as React from 'react';
+import { NavLink, NavLinkProps, withRouter } from 'react-router-dom';
 
-type ComponentMenuItem = { displayName: string; type: string }
+type ComponentMenuItem = { displayName: string; type: string };
 
-const pkg = require('../../../../packages/react/package.json')
-const componentMenu: ComponentMenuItem[] = require('../../componentMenu')
-const behaviorMenu: ComponentMenuItem[] = require('../../behaviorMenu')
+const pkg = require('../../../../packages/react/package.json');
+const componentMenu: ComponentMenuItem[] = require('../../componentMenu');
+const behaviorMenu: ComponentMenuItem[] = require('../../behaviorMenu');
 
-const componentsBlackList = ['Debug', 'Design']
+const componentsBlackList = ['Debug', 'Design'];
 
 class Sidebar extends React.Component<any, any> {
   static propTypes = {
     match: PropTypes.object.isRequired,
     location: PropTypes.object.isRequired,
     history: PropTypes.object.isRequired,
-    style: PropTypes.object,
-  }
-  state: any = { query: '', activeCategoryIndex: 0 }
-  searchInputRef = React.createRef<HTMLInputElement>()
+    style: PropTypes.object
+  };
+  state: any = { query: '', activeCategoryIndex: 0 };
+  searchInputRef = React.createRef<HTMLInputElement>();
 
   componentDidMount() {
-    document.addEventListener('keydown', this.handleDocumentKeyDown)
+    document.addEventListener('keydown', this.handleDocumentKeyDown);
 
-    const at = this.props.location.pathname
-    const categoryIndex = this.findActiveCategoryIndex(at, this.getSectionsWithoutSearchFilter())
-    this.setState({ activeCategoryIndex: categoryIndex })
+    const at = this.props.location.pathname;
+    const categoryIndex = this.findActiveCategoryIndex(at, this.getSectionsWithoutSearchFilter());
+    this.setState({ activeCategoryIndex: categoryIndex });
   }
 
   componentWillUnmount() {
-    document.removeEventListener('keydown', this.handleDocumentKeyDown)
+    document.removeEventListener('keydown', this.handleDocumentKeyDown);
   }
 
   findActiveCategoryIndex = (at: string, sections: ShorthandValue<any>[]): number => {
-    let newAt = at
+    let newAt = at;
     if (at.startsWith('/components')) {
-      newAt = newAt.replace(/[^\/]*$/, '')
+      newAt = newAt.replace(/[^\/]*$/, '');
     }
     if (newAt[newAt.length - 1] === '/') {
-      newAt = newAt.substr(0, newAt.length - 1)
+      newAt = newAt.substr(0, newAt.length - 1);
     }
 
     return _.findIndex(sections, (section: ShorthandValue<HierarchicalTreeItemProps>) => {
-      return _.find((section as any).items, item => item.title.to.startsWith(newAt))
-    })
-  }
+      return _.find((section as any).items, item => item.title.to.startsWith(newAt));
+    });
+  };
 
   handleDocumentKeyDown = e => {
-    const code = keyboardKey.getCode(e)
-    const isAZ = code >= 65 && code <= 90
-    const hasModifier = e.altKey || e.ctrlKey || e.metaKey
-    const bodyHasFocus = document.activeElement === document.body
+    const code = keyboardKey.getCode(e);
+    const isAZ = code >= 65 && code <= 90;
+    const hasModifier = e.altKey || e.ctrlKey || e.metaKey;
+    const bodyHasFocus = document.activeElement === document.body;
 
-    if (!hasModifier && isAZ && bodyHasFocus) this.searchInputRef.current.focus()
-  }
+    if (!hasModifier && isAZ && bodyHasFocus) this.searchInputRef.current.focus();
+  };
 
   handleItemClick = (e: React.SyntheticEvent, data: HierarchicalTreeItemProps) => {
-    const { query } = this.state
+    const { query } = this.state;
 
     if (query) {
-      this.setState({ query: '' })
-      const at = (data.title as NavLinkProps).to as string
-      const categoryIndex = this.findActiveCategoryIndex(at, this.getSectionsWithoutSearchFilter())
-      this.setState({ activeCategoryIndex: categoryIndex })
+      this.setState({ query: '' });
+      const at = (data.title as NavLinkProps).to as string;
+      const categoryIndex = this.findActiveCategoryIndex(at, this.getSectionsWithoutSearchFilter());
+      this.setState({ activeCategoryIndex: categoryIndex });
     }
-  }
+  };
 
   treeActiveIndexChanged = (e: React.SyntheticEvent, props: HierarchicalTreeProps) => {
-    this.setState({ activeCategoryIndex: props.activeIndex })
-  }
+    this.setState({ activeCategoryIndex: props.activeIndex });
+  };
 
   keyDownCallback(e) {
     if (keyboardKey.getCode(e) !== keyboardKey.Enter) {
-      return
+      return;
     }
-    e.stopPropagation()
-    e.target.click()
+    e.stopPropagation();
+    e.target.click();
   }
 
   addItemKeyCallbacks(sections: ShorthandValue<any>[]) {
     for (let i = 0; i < sections.length; i++) {
-      const category = sections[i]
+      const category = sections[i];
       if ('items' in category) {
-        this.addItemKeyCallbacks(category.items)
+        this.addItemKeyCallbacks(category.items);
       } else {
         if (!('title' in category)) {
-          continue
+          continue;
         }
         category['onKeyDown'] = e => {
-          this.keyDownCallback(e)
-        }
+          this.keyDownCallback(e);
+        };
       }
     }
   }
 
   addItemOnClickCallbacks(sections: ShorthandValue<any>[]) {
     for (let i = 0; i < sections.length; i++) {
-      const category = sections[i]
+      const category = sections[i];
       if ('items' in category) {
-        this.addItemOnClickCallbacks(category.items)
+        this.addItemOnClickCallbacks(category.items);
       } else {
         if (!('title' in category)) {
-          continue
+          continue;
         }
         category['onTitleClick'] = (e, data) => {
-          this.handleItemClick(e, data)
-        }
+          this.handleItemClick(e, data);
+        };
       }
     }
   }
@@ -143,8 +143,8 @@ class Sidebar extends React.Component<any, any> {
               exact: true,
               activeClassName: 'active',
               as: NavLink,
-              to: '/',
-            },
+              to: '/'
+            }
           },
           {
             key: 'composition',
@@ -152,8 +152,8 @@ class Sidebar extends React.Component<any, any> {
               as: NavLink,
               content: 'Composition',
               activeClassName: 'active',
-              to: '/composition',
-            },
+              to: '/composition'
+            }
           },
           {
             key: 'shorthand',
@@ -161,8 +161,8 @@ class Sidebar extends React.Component<any, any> {
               as: NavLink,
               content: 'Shorthand Props',
               activeClassName: 'active',
-              to: '/shorthand-props',
-            },
+              to: '/shorthand-props'
+            }
           },
           {
             key: 'component-architecture',
@@ -170,10 +170,23 @@ class Sidebar extends React.Component<any, any> {
               as: NavLink,
               content: 'Component Architecture',
               activeClassName: 'active',
-              to: '/component-architecture',
-            },
+              to: '/component-architecture'
+            }
           },
-        ],
+          ...(process.env.NODE_ENV !== 'production'
+            ? [
+                {
+                  key: 'theming-specification',
+                  title: {
+                    as: NavLink,
+                    content: 'Theming Specification',
+                    activeClassName: 'active',
+                    to: '/theming-specification'
+                  }
+                }
+              ]
+            : [])
+        ]
       },
       {
         key: 'guides',
@@ -185,12 +198,12 @@ class Sidebar extends React.Component<any, any> {
               content: 'QuickStart',
               as: NavLink,
               activeClassName: 'active',
-              to: '/quick-start',
-            },
+              to: '/quick-start'
+            }
           },
           {
             key: 'faq',
-            title: { content: 'FAQ', as: NavLink, activeClassName: 'active', to: '/faq' },
+            title: { content: 'FAQ', as: NavLink, activeClassName: 'active', to: '/faq' }
           },
           {
             key: 'accessiblity',
@@ -198,12 +211,12 @@ class Sidebar extends React.Component<any, any> {
               content: 'Accessibility',
               as: NavLink,
               activeClassName: 'active',
-              to: '/accessibility',
-            },
+              to: '/accessibility'
+            }
           },
           {
             key: 'theming',
-            title: { content: 'Theming', as: NavLink, activeClassName: 'active', to: '/theming' },
+            title: { content: 'Theming', as: NavLink, activeClassName: 'active', to: '/theming' }
           },
           {
             key: 'theming-examples',
@@ -211,16 +224,16 @@ class Sidebar extends React.Component<any, any> {
               content: 'Theming Examples',
               as: NavLink,
               activeClassName: 'active',
-              to: '/theming-examples',
-            },
+              to: '/theming-examples'
+            }
           },
           {
             key: 'colorpalette',
-            title: { content: 'Colors', as: NavLink, activeClassName: 'active', to: '/colors' },
+            title: { content: 'Colors', as: NavLink, activeClassName: 'active', to: '/colors' }
           },
           {
             key: 'layout',
-            title: { content: 'Layout', as: NavLink, activeClassName: 'active', to: '/layout' },
+            title: { content: 'Layout', as: NavLink, activeClassName: 'active', to: '/layout' }
           },
           {
             key: 'integrate-custom',
@@ -228,8 +241,8 @@ class Sidebar extends React.Component<any, any> {
               content: 'Integrate Custom Components',
               as: NavLink,
               activeClassName: 'active',
-              to: '/integrate-custom-components',
-            },
+              to: '/integrate-custom-components'
+            }
           },
           {
             key: 'performance',
@@ -237,42 +250,39 @@ class Sidebar extends React.Component<any, any> {
               content: 'Performance',
               as: NavLink,
               activeClassName: 'active',
-              to: '/performance',
-            },
-          },
-        ],
-      },
-    ]
+              to: '/performance'
+            }
+          }
+        ]
+      }
+    ];
   }
 
   getSectionsWithPrototypeSectionIfApplicable(currentSections, allPrototypes) {
-    let prototypes =
-      process.env.NODE_ENV === 'production'
-        ? _.filter(allPrototypes, { public: true })
-        : allPrototypes
+    let prototypes = process.env.NODE_ENV === 'production' ? _.filter(allPrototypes, { public: true }) : allPrototypes;
 
     if (prototypes.length === 0) {
-      return currentSections
+      return currentSections;
     }
-    prototypes = this.removePublicTags(prototypes)
+    prototypes = this.removePublicTags(prototypes);
     const prototypeTreeSection = {
       key: 'prototypes',
       title: 'Prototypes',
-      items: prototypes,
-    }
-    return currentSections.concat(prototypeTreeSection)
+      items: prototypes
+    };
+    return currentSections.concat(prototypeTreeSection);
   }
 
   removePublicTags(prototyptesTreeItems) {
     return prototyptesTreeItems.map(p => {
-      delete p.public
-      return p
-    })
+      delete p.public;
+      return p;
+    });
   }
 
   handleQueryChange = (e, data) => {
-    this.setState({ query: data.value })
-  }
+    this.setState({ query: data.value });
+  };
 
   getSectionsWithoutSearchFilter = (): HierarchicalTreeItemProps[] => {
     const treeItemsByType = _.map(constants.typeOrder, nextType => {
@@ -281,138 +291,138 @@ class Sidebar extends React.Component<any, any> {
         .filter(({ displayName }) => !_.includes(componentsBlackList, displayName))
         .map(info => ({
           key: info.displayName.concat(nextType),
-          title: { content: info.displayName, as: NavLink, to: getComponentPathname(info) },
+          title: { content: info.displayName, as: NavLink, to: getComponentPathname(info) }
         }))
-        .value()
+        .value();
 
-      return { items }
-    })
+      return { items };
+    });
 
     const prototypesTreeItems: (ShorthandValue<{}> & { key: string; public: boolean })[] = [
       {
         key: 'chatpane',
         title: { content: 'Chat Pane', as: NavLink, to: '/prototype-chat-pane' },
-        public: false,
+        public: false
       },
       {
         key: 'chatMssages',
         title: { content: 'Chat Messages', as: NavLink, to: '/prototype-chat-messages' },
-        public: true,
+        public: true
       },
       {
         key: 'customscrollbar',
         title: { content: 'Custom Scrollbar', as: NavLink, to: '/prototype-custom-scrollbar' },
-        public: true,
+        public: true
       },
       {
         key: 'customtoolbar',
         title: { content: 'Custom Styled Toolbar', as: NavLink, to: '/prototype-custom-toolbar' },
-        public: true,
+        public: true
       },
       {
         key: 'editor-toolbar',
         title: { content: 'Editor Toolbar', as: NavLink, to: '/prototype-editor-toolbar' },
-        public: true,
+        public: true
       },
       {
         key: 'dropdowns',
         title: { content: 'Dropdowns', as: NavLink, to: '/prototype-dropdowns' },
-        public: false,
+        public: false
       },
       {
         key: 'alerts',
         title: { content: 'Alerts', as: NavLink, to: '/prototype-alerts' },
-        public: false,
+        public: false
       },
       {
         key: 'asyncshorthand',
         title: { content: 'Async Shorthand', as: NavLink, to: '/prototype-async-shorthand' },
-        public: false,
+        public: false
       },
       {
         key: 'employeecard',
         title: { content: 'Employee Card', as: NavLink, to: '/prototype-employee-card' },
-        public: false,
+        public: false
       },
       {
         key: 'meetingoptions',
         title: { content: 'Meeting Options', as: NavLink, to: '/prototype-meeting-options' },
-        public: false,
+        public: false
       },
       {
         key: 'mentions',
         title: { content: 'Mentions', as: NavLink, to: '/prototype-mentions' },
-        public: true,
+        public: true
       },
       {
         key: 'participants-list',
         title: { content: 'Participants list', as: NavLink, to: '/prototype-participants-list' },
-        public: true,
+        public: true
       },
       {
         key: 'searchpage',
         title: { content: 'Search Page', as: NavLink, to: '/prototype-search-page' },
-        public: false,
+        public: false
       },
       {
         key: 'popups',
         title: { content: 'Popups', as: NavLink, to: '/prototype-popups' },
-        public: false,
+        public: false
       },
       {
         key: 'nested-popups-and-dialogs',
         title: {
           content: 'Nested Popups & Dialogs',
           as: NavLink,
-          to: '/prototype-nested-popups-and-dialogs',
+          to: '/prototype-nested-popups-and-dialogs'
         },
-        public: true,
+        public: true
       },
       {
         key: 'iconviewer',
         title: { content: 'Processed Icons', as: NavLink, to: '/icon-viewer' },
-        public: false,
+        public: false
       },
       {
         key: 'virtualized-tree',
         title: { content: 'VirtualizedTree', as: NavLink, to: '/virtualized-tree' },
-        public: true,
+        public: true
       },
       {
         key: 'copy-to-clipboard',
         title: { content: 'Copy to Clipboard', as: NavLink, to: '/prototype-copy-to-clipboard' },
-        public: true,
+        public: true
       },
       {
         key: 'hexagonal-avatar',
         title: {
           content: 'Hexagonal Avatar',
           as: NavLink,
-          to: '/prototype-hexagonal-avatar',
+          to: '/prototype-hexagonal-avatar'
         },
-        public: true,
+        public: true
       },
       {
         key: 'table',
         title: {
           content: 'Table',
           as: NavLink,
-          to: '/prototype-table',
+          to: '/prototype-table'
         },
-        public: true,
-      },
-    ]
+        public: true
+      }
+    ];
 
     const componentTreeSection = {
       key: 'components',
       title: 'Components',
-      items: treeItemsByType[0].items,
-    }
+      items: treeItemsByType[0].items
+    };
 
-    const treeItems = this.getTreeItems()
-    const withComponents = treeItems.concat(componentTreeSection)
-    return this.getSectionsWithPrototypeSectionIfApplicable(withComponents, prototypesTreeItems)
-  }
+    const treeItems = this.getTreeItems();
+    const withComponents = treeItems.concat(componentTreeSection);
+    return this.getSectionsWithPrototypeSectionIfApplicable(withComponents, prototypesTreeItems);
+  };
 
   render() {
     const sidebarStyles: ICSSInJSStyle = {
@@ -424,64 +434,58 @@ class Sidebar extends React.Component<any, any> {
       left: 0,
       padding: 0,
       height: '100%',
-      zIndex: 1000,
-    }
+      zIndex: 1000
+    };
 
     const logoStyles: ICSSInJSStyle = {
       marginRight: '0.5rem',
-      width: '36px',
-    }
+      width: '36px'
+    };
 
-    const changeLogUrl: string = `${constants.repoURL}/blob/master/CHANGELOG.md`
-    const allSectionsWithoutSearchFilter = this.getSectionsWithoutSearchFilter()
+    const changeLogUrl: string = `${constants.repoURL}/blob/master/CHANGELOG.md`;
+    const allSectionsWithoutSearchFilter = this.getSectionsWithoutSearchFilter();
 
-    const escapedQuery = _.escapeRegExp(this.state.query)
-    const regexQuery = new RegExp(`^${escapedQuery}`, 'i')
-    const allSectionsWithPossibleEmptySections = _.map(
-      allSectionsWithoutSearchFilter,
-      (section: HierarchicalTreeItemProps) => {
-        return {
-          ...section,
-          items: _.filter(section.items as HierarchicalTreeItemProps[], item =>
-            regexQuery.test((item.title as HierarchicalTreeTitleProps).content as string),
-          ),
-        }
-      },
-    )
+    const escapedQuery = _.escapeRegExp(this.state.query);
+    const regexQuery = new RegExp(`^${escapedQuery}`, 'i');
+    const allSectionsWithPossibleEmptySections = _.map(allSectionsWithoutSearchFilter, (section: HierarchicalTreeItemProps) => {
+      return {
+        ...section,
+        items: _.filter(section.items as HierarchicalTreeItemProps[], item =>
+          regexQuery.test((item.title as HierarchicalTreeTitleProps).content as string)
+        )
+      };
+    });
 
     let allSections = _.filter(
       allSectionsWithPossibleEmptySections,
-      (section: HierarchicalTreeItemProps) =>
-        Array.isArray(section.items) && section.items.length > 0,
-    )
+      (section: HierarchicalTreeItemProps) => Array.isArray(section.items) && section.items.length > 0
+    );
 
     if (this.state.query !== '') {
       allSections = _.map(allSections, (section: HierarchicalTreeItemProps) => {
-        return { ...section, open: true }
-      })
+        return { ...section, open: true };
+      });
     }
 
     // TODO: remove after the issue with TreeItem will be fixed
     // https://github.com/microsoft/fluent-ui-react/issues/1613
-    this.addItemKeyCallbacks(allSections)
+    this.addItemKeyCallbacks(allSections);
 
-    this.addItemOnClickCallbacks(allSections)
+    this.addItemOnClickCallbacks(allSections);
 
     const titleRenderer = (Component, { content, open, hasSubtree, ...restProps }) => (
       <Component open={open} hasSubtree={hasSubtree} {...restProps}>
         <span>{content}</span>
-        {hasSubtree && this.state.query === '' && (
-          <Icon name={open ? 'icon-arrow-up' : 'icon-arrow-down'} />
-        )}
+        {hasSubtree && this.state.query === '' && <Icon name={open ? 'icon-arrow-up' : 'icon-arrow-down'} />}
       </Component>
-    )
+    );
 
     const topItemTheme = {
       ...this.props.treeItemStyle,
       padding: undefined,
       margin: '0.5em 0em 0.5em 1em',
-      width: `${0.9 * this.props.width}px`,
-    }
+      width: `${0.9 * this.props.width}px`
+    };
 
     const gradientTextStyles: React.CSSProperties = {
       background: 'linear-gradient(45deg, rgb(138, 255, 124), rgb(123, 226, 251))',
@@ -489,8 +493,8 @@ class Sidebar extends React.Component<any, any> {
 
       WebkitBackgroundClip: 'text',
       WebkitTextFillColor: 'transparent',
-      fontWeight: 100,
-    }
+      fontWeight: 100
+    };
 
     // TODO: bring back the active elements indicators
     return (
@@ -504,7 +508,7 @@ class Sidebar extends React.Component<any, any> {
               fontSize: '1.25rem',
               color: 'white',
               fontWeight: 600,
-              textAlign: 'center',
+              textAlign: 'center'
             }}
           >
             Fluent <span style={gradientTextStyles}>UI</span>
@@ -524,9 +528,9 @@ class Sidebar extends React.Component<any, any> {
                   cursor: 'pointer',
                   ...(!active && {
                     ':hover': {
-                      opacity: 0.75,
-                    },
-                  }),
+                      opacity: 0.75
+                    }
+                  })
                 }}
               >
                 {active ? 'Copied! Happy coding :)' : `yarn add ${pkg.name}@${pkg.version}`}
@@ -535,12 +539,7 @@ class Sidebar extends React.Component<any, any> {
           </CopyToClipboard>
         </Flex>
         <Flex column>
-          <a
-            href={constants.repoURL}
-            target="_blank"
-            rel="noopener noreferrer"
-            style={topItemTheme}
-          >
+          <a href={constants.repoURL} target="_blank" rel="noopener noreferrer" style={topItemTheme}>
             <Box>
               GitHub
               <Icon name="github" styles={{ float: 'right' }} />
@@ -573,8 +572,8 @@ class Sidebar extends React.Component<any, any> {
           onActiveIndexChange={this.treeActiveIndexChanged}
         />
       </Segment>
-    )
+    );
   }
 }
 
-export default withRouter(Sidebar)
+export default withRouter(Sidebar);

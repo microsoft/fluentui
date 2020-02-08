@@ -64,7 +64,7 @@ function importGithubMD(root) {
 }
 
 function rewriteImports(outputPath) {
-  const files = glob.sync('**/*.+(js|ts|json)', { cwd: outputPath });
+  const files = glob.sync('**/*.+(js|ts|tsx|json)', { cwd: outputPath });
 
   for (let file of files) {
     const fullPath = path.join(outputPath, file);
@@ -72,6 +72,10 @@ function rewriteImports(outputPath) {
     if (content.includes('@fluentui/internal-tooling')) {
       console.log(`patching up ${fullPath}`);
       fs.writeFileSync(fullPath, content.replace('@fluentui/internal-tooling', '@uifabric/build'));
+    }
+    if (content.includes('../../../docs/')) {
+      console.log(`patching up ${fullPath}`);
+      fs.writeFileSync(fullPath, content.replace('../../../docs/', '../../docs/'));
     }
   }
 }

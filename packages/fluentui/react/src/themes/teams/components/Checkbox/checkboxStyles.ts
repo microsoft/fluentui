@@ -1,12 +1,11 @@
-import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles'
-import Checkbox, { CheckboxProps, CheckboxState } from '../../../../components/Checkbox/Checkbox'
-import { CheckboxVariables } from './checkboxVariables'
-import getBorderFocusStyles from '../../getBorderFocusStyles'
+import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+import Checkbox, { CheckboxProps } from '../../../../components/Checkbox/Checkbox';
+import { CheckboxVariables } from './checkboxVariables';
+import getBorderFocusStyles from '../../getBorderFocusStyles';
 
-const checkboxStyles: ComponentSlotStylesPrepared<
-  CheckboxProps & CheckboxState,
-  CheckboxVariables
-> = {
+export type CheckboxStylesProps = Pick<CheckboxProps, 'checked' | 'disabled' | 'labelPosition' | 'toggle'>;
+
+const checkboxStyles: ComponentSlotStylesPrepared<CheckboxStylesProps, CheckboxVariables> = {
   root: ({ props: p, variables: v, theme: t }): ICSSInJSStyle => ({
     position: 'relative',
 
@@ -28,28 +27,28 @@ const checkboxStyles: ComponentSlotStylesPrepared<
 
       [`& .${Checkbox.slotClassNames.indicator}`]: {
         ...(p.checked && {
-          background: v.checkedBackgroundHover,
+          background: v.checkedBackgroundHover
         }),
 
         ...(!p.checked && {
           borderColor: v.borderColorHover,
 
           ...(p.toggle && {
-            color: v.borderColorHover,
-          }),
-        }),
-      },
+            color: v.borderColorHover
+          })
+        })
+      }
     },
 
     ...(p.checked && {
-      color: v.checkedTextColor,
+      color: v.checkedTextColor
     }),
 
     ...(p.disabled && {
       cursor: 'default',
       pointerEvents: 'none',
-      color: v.disabledColor,
-    }),
+      color: v.disabledColor
+    })
   }),
 
   checkbox: ({ props: p, variables: v }): ICSSInJSStyle => ({
@@ -70,20 +69,20 @@ const checkboxStyles: ComponentSlotStylesPrepared<
     ...(p.checked && {
       background: v.checkedBackground,
       borderColor: v.checkedBorderColor,
-      color: v.checkedIndicatorColor,
+      color: v.checkedIndicatorColor
     }),
 
     ...(p.disabled && {
       background: v.disabledBackground,
-      borderColor: v.disabledBorderColor,
+      borderColor: v.disabledBorderColor
     }),
 
     ...(p.disabled &&
       p.checked && {
         color: v.disabledCheckedIndicatorColor,
         background: v.disabledBackgroundChecked,
-        borderColor: 'transparent',
-      }),
+        borderColor: 'transparent'
+      })
   }),
 
   toggle: ({ props: p, variables: v }): ICSSInJSStyle => ({
@@ -106,34 +105,34 @@ const checkboxStyles: ComponentSlotStylesPrepared<
 
     [`& svg`]: {
       width: v.toggleIndicatorSize,
-      height: v.toggleIndicatorSize,
+      height: v.toggleIndicatorSize
     },
 
     ...(p.checked && {
       background: v.checkedBackground,
       borderColor: v.checkedBorderColor,
       color: v.checkedIndicatorColor,
-      padding: v.toggleCheckedPadding,
+      padding: v.toggleCheckedPadding
     }),
 
     ...(p.disabled && {
       color: v.disabledToggleIndicatorColor,
       background: v.disabledBackground,
-      borderColor: v.disabledBorderColor,
+      borderColor: v.disabledBorderColor
     }),
 
     ...(p.disabled &&
       p.checked && {
         color: v.disabledCheckedIndicatorColor,
         background: v.disabledBackgroundChecked,
-        borderColor: 'transparent',
-      }),
+        borderColor: 'transparent'
+      })
   }),
 
   label: ({ props: p }): ICSSInJSStyle => ({
     display: 'block', // IE11: should be forced to be block, as inline-block is not supported
-    gridColumn: p.labelPosition === 'start' ? 1 : 3,
-  }),
-}
+    gridColumn: p.labelPosition === 'start' ? 1 : 3
+  })
+};
 
-export default checkboxStyles
+export default checkboxStyles;

@@ -1,14 +1,14 @@
-import * as React from 'react'
+import * as React from 'react';
 
-import { isConformant } from 'test/specs/commonTests'
-import { mountWithProvider } from 'test/utils'
+import { isConformant } from 'test/specs/commonTests';
+import { mountWithProvider } from 'test/utils';
 
-import Text from 'src/components/Text/Text'
+import Text from 'src/components/Text/Text';
 
 describe('Text', () => {
-  isConformant(Text)
+  isConformant(Text, { constructorName: 'Text' });
 
   test('renders children', () => {
-    expect(mountWithProvider(<Text>children</Text>).text()).toEqual('children')
-  })
-})
+    expect(mountWithProvider(<Text>children</Text>).text()).toEqual('children');
+  });
+});

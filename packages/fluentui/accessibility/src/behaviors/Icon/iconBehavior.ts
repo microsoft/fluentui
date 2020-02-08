@@ -1,4 +1,4 @@
-import { Accessibility, AccessibilityAttributes } from '../../types'
+import { Accessibility, AccessibilityAttributes } from '../../types';
 
 /**
  * @description
@@ -13,15 +13,14 @@ const iconBehavior: Accessibility<IconBehaviorProps> = props => ({
   attributes: {
     root: {
       role: 'img',
-      'aria-hidden': props.alt || props['aria-label'] ? undefined : 'true',
-    },
-  },
-})
+      'aria-hidden': props.alt || props['aria-label'] ? undefined : 'true'
+    }
+  }
+});
 
-export default iconBehavior
+export default iconBehavior;
 
-type IconBehaviorProps = {
+export type IconBehaviorProps = {
   /** Alternative text. */
-  alt?: string
-  'aria-label'?: string
-} & Pick<AccessibilityAttributes, 'aria-label'>
+  alt?: string;
+} & Pick<AccessibilityAttributes, 'aria-label'>;

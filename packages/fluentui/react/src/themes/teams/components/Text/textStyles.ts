@@ -1,86 +1,84 @@
-import { ComponentStyleFunctionParam, ICSSInJSStyle } from '@fluentui/styles'
-import { TeamsTextVariables } from './textVariables'
-import { TextProps } from '../../../../components/Text/Text'
-import { getColorSchemeKey } from '../../colors'
-import translateAlignProp from '../../../../styles/translateAlignProp'
-import { WithAsProp } from '../../../../types'
+import { ComponentStyleFunctionParam, ICSSInJSStyle } from '@fluentui/styles';
+import { TeamsTextVariables } from './textVariables';
+import { TextProps } from '../../../../components/Text/Text';
+import { getColorSchemeKey } from '../../colors';
+import translateAlignProp from '../../../../styles/translateAlignProp';
+
+export type TextStylesProps = Pick<
+  TextProps,
+  | 'atMention'
+  | 'color'
+  | 'important'
+  | 'timestamp'
+  | 'truncated'
+  | 'disabled'
+  | 'error'
+  | 'success'
+  | 'temporary'
+  | 'align'
+  | 'weight'
+  | 'size'
+>;
 
 export default {
-  root: ({
-    props: {
-      as,
-      atMention,
-      color,
-      important,
-      timestamp,
-      truncated,
-      disabled,
-      error,
-      success,
-      temporary,
-      align,
-      weight,
-      size,
-    },
-    variables: v,
-  }: ComponentStyleFunctionParam<WithAsProp<TextProps>, TeamsTextVariables>): ICSSInJSStyle => {
-    const colors = v.colorScheme[getColorSchemeKey(color)]
+  root: ({ props: p, variables: v }: ComponentStyleFunctionParam<TextStylesProps, TeamsTextVariables>): ICSSInJSStyle => {
+    const colors = v.colorScheme[getColorSchemeKey(p.color)];
     return {
-      ...(color && { color: colors.foreground }),
-      ...(atMention === true && { color: v.atMentionOtherColor }),
-      ...(truncated && { overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }),
-      ...(disabled && { color: v.disabledColor }),
-      ...(error && { color: v.errorColor }),
-      ...(success && { color: v.successColor }),
-      ...(temporary && { fontStyle: 'italic' }),
-      ...(align && { display: 'block', textAlign: translateAlignProp(align) }), // textAlign makes sense only for block elements
+      ...(p.color && { color: colors.foreground }),
+      ...(p.atMention === true && { color: v.atMentionOtherColor }),
+      ...(p.truncated && { overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }),
+      ...(p.disabled && { color: v.disabledColor }),
+      ...(p.error && { color: v.errorColor }),
+      ...(p.success && { color: v.successColor }),
+      ...(p.temporary && { fontStyle: 'italic' }),
+      ...(p.align && { display: 'block', textAlign: translateAlignProp(p.align) }), // textAlign makes sense only for block elements
 
-      ...(weight === 'light' && { fontWeight: v.fontWeightLight }),
-      ...(weight === 'semilight' && { fontWeight: v.fontWeightSemilight }),
-      ...(weight === 'regular' && { fontWeight: v.fontWeightRegular }),
-      ...(weight === 'semibold' && { fontWeight: v.fontWeightSemibold }),
-      ...(weight === 'bold' && { fontWeight: v.fontWeightBold }),
+      ...(p.weight === 'light' && { fontWeight: v.fontWeightLight }),
+      ...(p.weight === 'semilight' && { fontWeight: v.fontWeightSemilight }),
+      ...(p.weight === 'regular' && { fontWeight: v.fontWeightRegular }),
+      ...(p.weight === 'semibold' && { fontWeight: v.fontWeightSemibold }),
+      ...(p.weight === 'bold' && { fontWeight: v.fontWeightBold }),
 
-      ...(size === 'smallest' && {
+      ...(p.size === 'smallest' && {
         fontSize: v.fontSizeSmallest,
-        lineHeight: v.fontLineHeightSmallest,
+        lineHeight: v.fontLineHeightSmallest
       }),
-      ...(size === 'smaller' && {
+      ...(p.size === 'smaller' && {
         fontSize: v.fontSizeSmaller,
-        lineHeight: v.fontLineHeightSmaller,
+        lineHeight: v.fontLineHeightSmaller
       }),
-      ...(size === 'small' && {
+      ...(p.size === 'small' && {
         fontSize: v.fontSizeSmall,
-        lineHeight: v.fontLineHeightSmall,
+        lineHeight: v.fontLineHeightSmall
       }),
-      ...(size === 'medium' && {
+      ...(p.size === 'medium' && {
         fontSize: v.fontSizeMedium,
-        lineHeight: v.fontLineHeightMedium,
+        lineHeight: v.fontLineHeightMedium
       }),
-      ...(size === 'large' && {
+      ...(p.size === 'large' && {
         fontSize: v.fontSizeLarge,
-        lineHeight: v.fontLineHeightLarge,
+        lineHeight: v.fontLineHeightLarge
       }),
-      ...(size === 'larger' && {
+      ...(p.size === 'larger' && {
         fontSize: v.fontSizeLarger,
-        lineHeight: v.fontLineHeightLarger,
+        lineHeight: v.fontLineHeightLarger
       }),
-      ...(size === 'largest' && {
+      ...(p.size === 'largest' && {
         fontSize: v.fontSizeLargest,
-        lineHeight: v.fontLineHeightLargest,
+        lineHeight: v.fontLineHeightLargest
       }),
-      ...(atMention === 'me' && {
+      ...(p.atMention === 'me' && {
         color: v.atMentionMeColor,
-        fontWeight: v.atMentionMeFontWeight,
+        fontWeight: v.atMentionMeFontWeight
       }),
-      ...(timestamp && {
+      ...(p.timestamp && {
         color: v.timestampColor,
-        ':hover': { color: v.timestampHoverColor },
+        ':hover': { color: v.timestampHoverColor }
       }),
-      ...(important && {
+      ...(p.important && {
         color: v.importantColor,
-        fontWeight: v.importantWeight,
-      }),
-    }
-  },
-}
+        fontWeight: v.importantWeight
+      })
+    };
+  }
+};

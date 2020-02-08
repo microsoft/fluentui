@@ -1,16 +1,18 @@
-import * as React from 'react'
-import { SliderVariables } from './sliderVariables'
-import Slider, { SliderProps, SliderState } from '../../../../components/Slider/Slider'
-import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles'
-import getBorderFocusStyles from '../../getBorderFocusStyles'
+import * as React from 'react';
+import { SliderVariables } from './sliderVariables';
+import Slider, { SliderProps } from '../../../../components/Slider/Slider';
+import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+import getBorderFocusStyles from '../../getBorderFocusStyles';
+
+export type SliderStylesProps = Pick<SliderProps, 'fluid' | 'disabled' | 'vertical'>;
 
 const selectors = {
   WEBKIT_THUMB: '::-webkit-slider-thumb',
   MOZ_THUMB: '::-moz-range-thumb',
   MS_FILL_LOWER: '::-ms-fill-lower',
   MS_FILL_UPPER: '::-ms-fill-upper',
-  MS_THUMB: '::-ms-thumb',
-}
+  MS_THUMB: '::-ms-thumb'
+};
 
 const getCommonSlotStyles = (p: SliderProps, v: SliderVariables): ICSSInJSStyle => ({
   cursor: 'pointer',
@@ -18,21 +20,21 @@ const getCommonSlotStyles = (p: SliderProps, v: SliderVariables): ICSSInJSStyle 
   position: 'absolute',
   border: 0,
   height: v.railHeight,
-  marginTop: `calc(${v.height} / 2 - ${v.railHeight} / 2)`,
-})
+  marginTop: `calc(${v.height} / 2 - ${v.railHeight} / 2)`
+});
 
 // this selector is used to identify the thumb slot from a previous sibling
-const thumbFromPreviousSiblingSelector = `&+ .${Slider.slotClassNames.thumb}`
+const thumbFromPreviousSiblingSelector = `&+ .${Slider.slotClassNames.thumb}`;
 
-const getFluidStyles = (p: SliderProps) => p.fluid && !p.vertical && { width: '100%' }
+const getFluidStyles = (p: SliderProps) => p.fluid && !p.vertical && { width: '100%' };
 
-const sliderStyles: ComponentSlotStylesPrepared<SliderProps & SliderState, SliderVariables> = {
+const sliderStyles: ComponentSlotStylesPrepared<SliderStylesProps, SliderVariables> = {
   root: ({ props: p, variables: v }): ICSSInJSStyle => ({
     height: v.height,
 
     ...(p.disabled && { pointerEvents: 'none' }),
     ...(p.vertical && { height: v.length, width: v.height }),
-    ...getFluidStyles(p),
+    ...getFluidStyles(p)
   }),
 
   input: ({ props: p, variables: v, theme: { siteVariables } }): ICSSInJSStyle => {
@@ -41,13 +43,13 @@ const sliderStyles: ComponentSlotStylesPrepared<SliderProps & SliderState, Slide
       width: v.activeThumbWidth,
       background: v.activeThumbColor,
       marginTop: `calc(${v.height} / 2  - ${v.activeThumbHeight} / 2)`,
-      marginLeft: `calc(-${v.activeThumbWidth} / 2)`,
-    }
+      marginLeft: `calc(-${v.activeThumbWidth} / 2)`
+    };
     const borderFocusStyles = getBorderFocusStyles({
       siteVariables,
-      borderPadding: v.thumbBorderPadding,
-    })
-    const thumbStyles = { border: 0, width: '1px' }
+      borderPadding: v.thumbBorderPadding
+    });
+    const thumbStyles = { border: 0, width: '1px' };
 
     return {
       '-webkit-appearance': 'none',
@@ -71,19 +73,19 @@ const sliderStyles: ComponentSlotStylesPrepared<SliderProps & SliderState, Slide
 
       ':focus': {
         outline: 0, // TODO: check if this is correct
-        [thumbFromPreviousSiblingSelector]: borderFocusStyles[':focus'],
+        [thumbFromPreviousSiblingSelector]: borderFocusStyles[':focus']
       },
       ':focus-visible': {
         [thumbFromPreviousSiblingSelector]: {
           ...borderFocusStyles[':focus-visible'],
-          ...activeThumbStyles,
-        },
-      },
-    }
+          ...activeThumbStyles
+        }
+      }
+    };
   },
 
   inputWrapper: ({ props: p, variables: v }) => {
-    const transformOriginValue = `calc(${v.length} / 2)`
+    const transformOriginValue = `calc(${v.length} / 2)`;
 
     return {
       position: 'relative',
@@ -92,10 +94,10 @@ const sliderStyles: ComponentSlotStylesPrepared<SliderProps & SliderState, Slide
       width: v.length,
       ...(p.vertical && {
         transform: 'rotate(-90deg)',
-        transformOrigin: `${transformOriginValue} ${transformOriginValue}`,
+        transformOrigin: `${transformOriginValue} ${transformOriginValue}`
       }),
-      ...getFluidStyles(p),
-    }
+      ...getFluidStyles(p)
+    };
   },
 
   rail: ({ props: p, variables: v }) => ({
@@ -103,14 +105,14 @@ const sliderStyles: ComponentSlotStylesPrepared<SliderProps & SliderState, Slide
     background: v.railColor,
 
     ...getCommonSlotStyles(p, v),
-    ...(p.disabled && { background: v.disabledRailColor }),
+    ...(p.disabled && { background: v.disabledRailColor })
   }),
 
   track: ({ props: p, variables: v }) => ({
     background: v.trackColor,
 
     ...getCommonSlotStyles(p, v),
-    ...(p.disabled && { background: v.disabledTrackColor }),
+    ...(p.disabled && { background: v.disabledTrackColor })
   }),
 
   thumb: ({ props: p, variables: v }) => ({
@@ -126,8 +128,8 @@ const sliderStyles: ComponentSlotStylesPrepared<SliderProps & SliderState, Slide
     marginTop: `calc(${v.height} / 2  - ${v.thumbHeight} / 2)`,
     marginLeft: `calc(-${v.thumbWidth} / 2)`,
 
-    ...(p.disabled && { background: v.disabledThumbColor }),
-  }),
-}
+    ...(p.disabled && { background: v.disabledThumbColor })
+  })
+};
 
-export default sliderStyles
+export default sliderStyles;
