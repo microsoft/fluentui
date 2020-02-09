@@ -3,6 +3,7 @@ import * as renderer from 'react-test-renderer';
 
 import { TagItem } from './TagItem';
 import { resetIds } from '@uifabric/utilities';
+import { FontIcon } from '../../Icon';
 
 describe('TagItem', () => {
   beforeEach(() => {
@@ -12,17 +13,17 @@ describe('TagItem', () => {
   it('renders correctly', () => {
     const component = renderer.create(
       <TagItem item={{ name: 'Red', key: 'red' }} index={0}>
-        Red
+        Red color
       </TagItem>
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
-  it('renders custom children correctly', () => {
+  it('defaults title to item name for non string children', () => {
     const component = renderer.create(
       <TagItem item={{ name: 'Red', key: 'red' }} index={0}>
-        <span>Red</span>
+        <FontIcon iconName="SquareShapeSolid" style={{ color: 'red' }} />
       </TagItem>
     );
     const tree = component.toJSON();
@@ -32,7 +33,7 @@ describe('TagItem', () => {
   it('accepts title override', () => {
     const component = renderer.create(
       <TagItem item={{ name: 'Red', key: 'red' }} title="Red color" index={0}>
-        Red color
+        Red
       </TagItem>
     );
     const tree = component.toJSON();

@@ -39,7 +39,7 @@ export interface ITagItemProps extends IPickerItemProps<ITag> {
 
   /**
    * The title (and aria-label) attribute used by the TagItem text element.
-   * @defaultvalue item.name
+   * @defaultvalue children if of type string or item.name
    */
   title?: string;
 

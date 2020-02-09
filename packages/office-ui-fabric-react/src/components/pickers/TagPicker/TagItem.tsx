@@ -23,7 +23,7 @@ export const TagItemBase = (props: ITagItemProps) => {
     index,
     onRemoveItem,
     removeButtonAriaLabel,
-    title = props.item.name
+    title = typeof props.children === 'string' ? props.children : props.item.name
   } = props;
 
   const classNames = getClassNames(styles, {
