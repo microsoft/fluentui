@@ -24,7 +24,6 @@ describe('asAsync', () => {
     expect(_resolve).toBeTruthy();
 
     _resolve(() => <div>thing</div>);
-    // console.log('text: ', wrapper.find('#root').text());
 
     process.nextTick(() => {
       wrapper.update();
