@@ -92,5 +92,9 @@
     "disallowedChangeTypes": [
       "major"
     ]
+  },
+  "resolutions": {
+    "webpack": "4.29.5",
+    "autoprefixer": "7.2.6"
   }
 }
