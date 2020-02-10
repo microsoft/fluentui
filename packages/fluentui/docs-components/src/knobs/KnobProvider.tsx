@@ -1,49 +1,46 @@
-import * as React from 'react'
+import * as React from 'react';
 
-import defaultComponents from './defaultComponents'
-import { KnobContext, KnobContextValue, LogContext, LogContextValue } from './KnobContexts'
-import { KnobComponents, KnobDefinition, KnobName, KnobSet } from './types'
+import defaultComponents from './defaultComponents';
+import { KnobContext, KnobContextValue, LogContextFunctions, LogContextFunctionsValue, LogContextItems } from './KnobContexts';
+import { KnobComponents, KnobDefinition, KnobName, KnobSet } from './types';
 
 type KnobProviderProps = {
-  components?: Partial<KnobComponents>
-}
+  components?: Partial<KnobComponents>;
+};
 
 const KnobProvider: React.FunctionComponent<KnobProviderProps> = props => {
-  const { children, components } = props
+  const { children, components } = props;
 
-  const [knobs, setKnobs] = React.useState<KnobSet>({})
-  const [items, setItems] = React.useState<string[]>([])
+  const [knobs, setKnobs] = React.useState<KnobSet>({});
+  const [items, setItems] = React.useState<string[]>([]);
 
   const registerKnob = (knob: KnobDefinition) => {
     setKnobs(prevKnobs => {
       if (process.env.NODE_ENV !== 'production') {
         if (prevKnobs[knob.name]) {
-          throw new Error(`Knob with name "${knob.name}" has been already registered`)
+          throw new Error(`Knob with name "${knob.name}" has been already registered`);
         }
       }
-      return { ...prevKnobs, [knob.name]: knob }
-    })
-  }
+      return { ...prevKnobs, [knob.name]: knob };
+    });
+  };
   const setKnobValue = (knobName: KnobName, knobValue: any) => {
     setKnobs(prevKnob => ({
       ...prevKnob,
-      [knobName]: { ...prevKnob[knobName], value: knobValue },
-    }))
-  }
+      [knobName]: { ...prevKnob[knobName], value: knobValue }
+    }));
+  };
   const unregisterKnob = (knobName: KnobName) => {
     setKnobs(prevKnobs => {
-      const newKnobs = { ...prevKnobs }
-      delete newKnobs[knobName]
+      const newKnobs = { ...prevKnobs };
+      delete newKnobs[knobName];
 
-      return newKnobs
-    })
-  }
+      return newKnobs;
+    });
+  };
 
-  const appendLog = React.useCallback(
-    (value: string) => setItems(prevLog => [...prevLog, value]),
-    [],
-  )
-  const clearLog = React.useCallback(() => setItems([]), [])
+  const appendLog = React.useCallback((value: string) => setItems(prevLog => [...prevLog, value]), []);
+  const clearLog = React.useCallback(() => setItems([]), []);
 
   const knobValue: KnobContextValue = React.useMemo(
     () => ({
@@ -51,21 +48,23 @@ const KnobProvider: React.FunctionComponent<KnobProviderProps> = props => {
       knobs,
       registerKnob,
       setKnobValue,
-      unregisterKnob,
+      unregisterKnob
     }),
-    [knobs, components],
-  )
-  const logValue: LogContextValue = React.useMemo(() => ({ appendLog, clearLog, items }), [items])
+    [knobs, components]
+  );
+  const logValue: LogContextFunctionsValue = React.useMemo(() => ({ appendLog, clearLog }), [appendLog, clearLog]);
 
   return (
     <KnobContext.Provider value={knobValue}>
-      <LogContext.Provider value={logValue}>{children}</LogContext.Provider>
+      <LogContextFunctions.Provider value={logValue}>
+        <LogContextItems.Provider value={items}>{children}</LogContextItems.Provider>
+      </LogContextFunctions.Provider>
     </KnobContext.Provider>
-  )
-}
+  );
+};
 
 KnobProvider.defaultProps = {
-  components: {},
-}
+  components: {}
+};
 
-export default KnobProvider
+export default KnobProvider;

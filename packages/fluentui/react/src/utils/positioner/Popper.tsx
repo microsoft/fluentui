@@ -1,11 +1,13 @@
-import { Ref, isRefObject } from '@fluentui/react-component-ref'
-import * as _ from 'lodash'
-import PopperJS, * as _PopperJS from 'popper.js'
-import * as React from 'react'
+import { useIsomorphicLayoutEffect } from '@fluentui/react-bindings';
+import { Ref, isRefObject } from '@fluentui/react-component-ref';
+import * as _ from 'lodash';
+import PopperJS, * as _PopperJS from 'popper.js';
+import * as React from 'react';
 
-import getScrollParent from './getScrollParent'
-import { getPlacement, applyRtlToOffset } from './positioningHelper'
-import { PopperProps } from './types'
+import isBrowser from '../isBrowser';
+import getScrollParent from './getScrollParent';
+import { getPlacement, applyRtlToOffset } from './positioningHelper';
+import { PopperProps } from './types';
 
 /**
  * Memoize a result using deep equality. This hook has two advantages over
@@ -17,43 +19,39 @@ import { PopperProps } from './types'
  * Copied from https://github.com/apollographql/react-apollo/blob/master/packages/hooks/src/utils/useDeepMemo.ts.
  */
 function useDeepMemo<TKey, TValue>(memoFn: () => TValue, key: TKey): TValue {
-  const ref = React.useRef<{ key: TKey; value: TValue }>()
+  const ref = React.useRef<{ key: TKey; value: TValue }>();
 
   if (!ref.current || !_.isEqual(key, ref.current.key)) {
-    ref.current = { key, value: memoFn() }
+    ref.current = { key, value: memoFn() };
   }
 
-  return ref.current.value
+  return ref.current.value;
 }
 
 // `popper.js` has a UMD build without `.default`, it breaks CJS builds:
 // https://github.com/rollup/rollup/issues/1267#issuecomment-446681320
-const createPopper = (
-  reference: Element | _PopperJS.ReferenceObject,
-  popper: HTMLElement,
-  options?: PopperJS.PopperOptions,
-): PopperJS => {
+const createPopper = (reference: Element | _PopperJS.ReferenceObject, popper: HTMLElement, options?: PopperJS.PopperOptions): PopperJS => {
   const instance = new ((_PopperJS as any).default || _PopperJS)(reference, popper, {
     ...options,
-    eventsEnabled: false,
-  })
+    eventsEnabled: false
+  });
 
-  const originalUpdate = instance.update
+  const originalUpdate = instance.update;
   instance.update = () => {
     // Fix Popper.js initial positioning display issue
     // https://github.com/popperjs/popper.js/issues/457#issuecomment-367692177
-    popper.style.left = '0'
-    popper.style.top = '0'
+    popper.style.left = '0';
+    popper.style.top = '0';
 
-    originalUpdate()
-  }
+    originalUpdate();
+  };
 
-  const actualWindow = popper.ownerDocument.defaultView
-  instance.scheduleUpdate = () => actualWindow.requestAnimationFrame(instance.update)
-  instance.enableEventListeners()
+  const actualWindow = popper.ownerDocument.defaultView;
+  instance.scheduleUpdate = () => actualWindow.requestAnimationFrame(instance.update);
+  instance.enableEventListeners();
 
-  return instance
-}
+  return instance;
+};
 
 /**
  * Popper relies on the 3rd party library [Popper.js](https://github.com/FezVrasta/popper.js) for positioning.
@@ -71,24 +69,27 @@ const Popper: React.FunctionComponent<PopperProps> = props => {
     positioningDependencies = [],
     rtl,
     targetRef,
-    unstable_pinned,
-  } = props
+    unstable_pinned
+  } = props;
 
-  const proposedPlacement = getPlacement({ align, position, rtl })
+  const proposedPlacement = getPlacement({ align, position, rtl });
 
-  const popperRef = React.useRef<PopperJS>()
-  const contentRef = React.useRef<HTMLElement>(null)
+  const popperRef = React.useRef<PopperJS>();
+  const contentRef = React.useRef<HTMLElement>(null);
 
-  const latestPlacement = React.useRef<PopperJS.Placement>(proposedPlacement)
-  const [computedPlacement, setComputedPlacement] = React.useState<PopperJS.Placement>(
-    proposedPlacement,
-  )
+  const latestPlacement = React.useRef<PopperJS.Placement>(proposedPlacement);
+  const [computedPlacement, setComputedPlacement] = React.useState<PopperJS.Placement>(proposedPlacement);
 
+  const hasDocument = isBrowser();
   const hasScrollableElement = React.useMemo(() => {
-    const scrollParentElement = getScrollParent(contentRef.current)
+    if (hasDocument) {
+      const scrollParentElement = getScrollParent(contentRef.current);
 
-    return scrollParentElement !== scrollParentElement.ownerDocument.body
-  }, [contentRef])
+      return scrollParentElement !== scrollParentElement.ownerDocument.body;
+    }
+
+    return false;
+  }, [contentRef, hasDocument]);
   // Is a broken dependency and can cause potential bugs, we should rethink this as all other refs
   // in this component.
 
@@ -108,7 +109,7 @@ const Popper: React.FunctionComponent<PopperProps> = props => {
 
         offset && {
           offset: { offset: rtl ? applyRtlToOffset(offset, position) : offset },
-          keepTogether: { enabled: false },
+          keepTogether: { enabled: false }
         },
 
         /**
@@ -119,7 +120,7 @@ const Popper: React.FunctionComponent<PopperProps> = props => {
          */
         hasScrollableElement && {
           preventOverflow: { escapeWithReference: true },
-          flip: { boundariesElement: 'scrollParent' },
+          flip: { boundariesElement: 'scrollParent' }
         },
 
         userModifiers,
@@ -130,49 +131,47 @@ const Popper: React.FunctionComponent<PopperProps> = props => {
          * the values of `align` and `position` props, regardless of the size of the component, the
          * reference element or the viewport.
          */
-        unstable_pinned && { flip: { enabled: false } },
+        unstable_pinned && { flip: { enabled: false } }
       ),
-    [hasScrollableElement, position, offset, rtl, unstable_pinned, userModifiers],
-  )
+    [hasScrollableElement, position, offset, rtl, unstable_pinned, userModifiers]
+  );
 
   const scheduleUpdate = React.useCallback(() => {
     if (popperRef.current) {
-      popperRef.current.scheduleUpdate()
+      popperRef.current.scheduleUpdate();
     }
-  }, [])
+  }, []);
 
   const destroyInstance = React.useCallback(() => {
     if (popperRef.current) {
-      popperRef.current.destroy()
+      popperRef.current.destroy();
       if (popperRef.current.popper) {
         // Popper keeps a reference to the DOM node, which needs to be cleaned up
         // temporarily fix it here until fixed properly in popper
-        popperRef.current.popper = null
+        popperRef.current.popper = null;
       }
-      popperRef.current = null
+      popperRef.current = null;
     }
-  }, [])
+  }, []);
 
   const createInstance = React.useCallback(() => {
-    destroyInstance()
+    destroyInstance();
 
     const reference =
-      targetRef && isRefObject(targetRef)
-        ? (targetRef as React.RefObject<Element>).current
-        : (targetRef as _PopperJS.ReferenceObject)
+      targetRef && isRefObject(targetRef) ? (targetRef as React.RefObject<Element>).current : (targetRef as _PopperJS.ReferenceObject);
 
     if (!enabled || !reference || !contentRef.current) {
-      return
+      return;
     }
 
     const handleUpdate = (data: PopperJS.Data) => {
       // PopperJS performs computations that might update the computed placement: auto positioning, flipping the
       // placement in case the popper box should be rendered at the edge of the viewport and does not fit
       if (data.placement !== latestPlacement.current) {
-        latestPlacement.current = data.placement
-        setComputedPlacement(data.placement)
+        latestPlacement.current = data.placement;
+        setComputedPlacement(data.placement);
       }
-    }
+    };
 
     const options: PopperJS.PopperOptions = {
       placement: proposedPlacement,
@@ -186,14 +185,14 @@ const Popper: React.FunctionComponent<PopperProps> = props => {
          */
         arrow: {
           enabled: !!(pointerTargetRef && pointerTargetRef.current),
-          element: pointerTargetRef && pointerTargetRef.current,
-        },
+          element: pointerTargetRef && pointerTargetRef.current
+        }
       },
       onCreate: handleUpdate,
-      onUpdate: handleUpdate,
-    }
+      onUpdate: handleUpdate
+    };
 
-    popperRef.current = createPopper(reference, contentRef.current, options)
+    popperRef.current = createPopper(reference, contentRef.current, options);
   }, [
     // TODO review dependencies for popperHasScrollableParent
     enabled,
@@ -202,28 +201,26 @@ const Popper: React.FunctionComponent<PopperProps> = props => {
     positionFixed,
     proposedPlacement,
     targetRef,
-    unstable_pinned,
-  ])
+    unstable_pinned
+  ]);
 
-  React.useLayoutEffect(() => {
-    createInstance()
-    return destroyInstance
-  }, [createInstance])
+  useIsomorphicLayoutEffect(() => {
+    createInstance();
+    return destroyInstance;
+  }, [createInstance]);
 
-  React.useEffect(scheduleUpdate, [...positioningDependencies, computedPlacement])
+  React.useEffect(scheduleUpdate, [...positioningDependencies, computedPlacement]);
 
   const child =
-    typeof children === 'function'
-      ? children({ placement: computedPlacement, scheduleUpdate })
-      : (children as React.ReactElement)
+    typeof children === 'function' ? children({ placement: computedPlacement, scheduleUpdate }) : (children as React.ReactElement);
 
-  return <Ref innerRef={contentRef}>{React.Children.only(child)}</Ref>
-}
+  return <Ref innerRef={contentRef}>{React.Children.only(child)}</Ref>;
+};
 
 Popper.defaultProps = {
   enabled: true,
   positionFixed: false,
-  positioningDependencies: [],
-}
+  positioningDependencies: []
+};
 
-export default Popper
+export default Popper;

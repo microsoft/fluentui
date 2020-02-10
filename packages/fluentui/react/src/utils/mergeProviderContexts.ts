@@ -1,96 +1,99 @@
-import { Renderer } from '@fluentui/react-bindings'
-import { mergeThemes } from '@fluentui/styles'
+import { Renderer } from '@fluentui/react-bindings';
+import { mergeThemes } from '@fluentui/styles';
 
-import { ProviderContextPrepared, ProviderContextInput } from '../types'
-import { createRenderer, felaRenderer } from './felaRenderer'
+import { ProviderContextPrepared, ProviderContextInput } from '../types';
+import { createRenderer, felaRenderer } from './felaRenderer';
+import isBrowser from './isBrowser';
 
-const registeredRenderers = new WeakMap<Document, Renderer>()
+const registeredRenderers = new WeakMap<Document, Renderer>();
 
-export const mergeRenderers = (
-  current: Renderer,
-  next?: Renderer,
-  target: Document = document, // eslint-disable-line no-undef
-): Renderer => {
+export const mergeRenderers = (current: Renderer, next?: Renderer, target?: Document): Renderer => {
   if (next) {
-    return next
+    return next;
   }
 
-  // A valid comparison, default renderer will be used
+  // A valid comparisons, default renderer will be used
+  if (!isBrowser() || typeof target === 'undefined') {
+    return felaRenderer;
+  }
+
+  // SSR logic will be handled by condition above
   // eslint-disable-next-line no-undef
   if (target === document) {
-    return felaRenderer
+    return felaRenderer;
   }
 
   if (registeredRenderers.has(target)) {
-    return registeredRenderers.get(target)
+    return registeredRenderers.get(target);
   }
 
-  const createdRenderer = createRenderer()
-  registeredRenderers.set(target, createdRenderer)
+  const createdRenderer = createRenderer();
+  registeredRenderers.set(target, createdRenderer);
 
-  return createdRenderer
-}
+  return createdRenderer;
+};
+
+export const mergePerformanceOptions = (target, ...sources) => {
+  return Object.assign(target, ...sources);
+};
 
 export const mergeBooleanValues = (target, ...sources) => {
   return sources.reduce((acc, next) => {
-    return typeof next === 'boolean' ? next : acc
-  }, target)
-}
+    return typeof next === 'boolean' ? next : acc;
+  }, target);
+};
 
-const mergeProviderContexts = (
-  ...contexts: (ProviderContextInput | ProviderContextPrepared)[]
-): ProviderContextPrepared => {
+const mergeProviderContexts = (...contexts: (ProviderContextInput | ProviderContextPrepared)[]): ProviderContextPrepared => {
   const emptyContext: ProviderContextPrepared = {
     theme: {
       siteVariables: {
-        fontSizes: {},
+        fontSizes: {}
       },
       componentVariables: {},
       componentStyles: {},
       fontFaces: [],
       staticStyles: [],
       icons: {},
-      animations: {},
+      animations: {}
     },
     rtl: false,
     disableAnimations: false,
-    target: document, // eslint-disable-line no-undef
-    telemetry: undefined,
-    _internal_resolvedComponentVariables: {},
-    renderer: undefined,
-  }
-
-  return contexts.reduce<ProviderContextPrepared>(
-    (acc: ProviderContextPrepared, next: ProviderContextInput | ProviderContextPrepared) => {
-      if (!next) return acc
-
-      acc.theme = mergeThemes(acc.theme, next.theme)
-
-      // Latest RTL value wins
-      const mergedRTL = mergeBooleanValues(acc.rtl, next.rtl)
-      if (typeof mergedRTL === 'boolean') {
-        acc.rtl = mergedRTL
-      }
-
-      // Use provided renderer if it is defined
-      acc.target = next.target || acc.target
-      acc.renderer = mergeRenderers(acc.renderer, next.renderer, acc.target)
-
-      // Latest disableAnimations value wins
-      const mergedDisableAnimations = mergeBooleanValues(
-        acc.disableAnimations,
-        next.disableAnimations,
-      )
-      if (typeof mergedDisableAnimations === 'boolean') {
-        acc.disableAnimations = mergedDisableAnimations
-      }
-
-      acc.telemetry = next.telemetry || acc.telemetry
-
-      return acc
+    target: isBrowser() ? document : undefined, // eslint-disable-line no-undef
+    performance: {
+      enableStylesCaching: true,
+      enableVariablesCaching: true
     },
-    emptyContext,
-  )
-}
+    telemetry: undefined,
+    renderer: undefined
+  };
 
-export default mergeProviderContexts
+  return contexts.reduce<ProviderContextPrepared>((acc: ProviderContextPrepared, next: ProviderContextInput | ProviderContextPrepared) => {
+    if (!next) return acc;
+
+    acc.theme = mergeThemes(acc.theme, next.theme);
+
+    // Latest RTL value wins
+    const mergedRTL = mergeBooleanValues(acc.rtl, next.rtl);
+    if (typeof mergedRTL === 'boolean') {
+      acc.rtl = mergedRTL;
+    }
+
+    // Use provided renderer if it is defined
+    acc.target = next.target || acc.target;
+    acc.renderer = mergeRenderers(acc.renderer, next.renderer, acc.target);
+
+    // Latest disableAnimations value wins
+    const mergedDisableAnimations = mergeBooleanValues(acc.disableAnimations, next.disableAnimations);
+    if (typeof mergedDisableAnimations === 'boolean') {
+      acc.disableAnimations = mergedDisableAnimations;
+    }
+
+    acc.performance = mergePerformanceOptions(acc.performance, next.performance || {});
+
+    acc.telemetry = next.telemetry || acc.telemetry;
+
+    return acc;
+  }, emptyContext);
+};
+
+export default mergeProviderContexts;

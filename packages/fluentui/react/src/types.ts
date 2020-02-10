@@ -1,55 +1,49 @@
-import { StylesContextInputValue, StylesContextValue, Telemetry } from '@fluentui/react-bindings'
-import * as React from 'react'
+import { StylesContextInputValue, StylesContextValue, StylesContextPerformance, Telemetry } from '@fluentui/react-bindings';
+import * as React from 'react';
 
-import { ShorthandFactory } from './utils/factories'
+import { ShorthandFactory } from './utils/factories';
 
 // Temporary workaround for @lodash dependency
 
 export type DebounceResultFn<T> = T & {
-  cancel: () => void
-  flush: () => void
-}
+  cancel: () => void;
+  flush: () => void;
+};
 
 // ========================================================
 // Utilities
 // ========================================================
 
-export type ResultOf<T> = T extends (...arg: any[]) => infer TResult ? TResult : never
+export type ResultOf<T> = T extends (...arg: any[]) => infer TResult ? TResult : never;
 
-export type ObjectOf<T> = { [key: string]: T }
+export type ObjectOf<T> = { [key: string]: T };
 
-export type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>
+export type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
 
 // ========================================================
 // Components
 // ========================================================
 
 export type FluentComponentStaticProps<P = {}> = {
-  className: string
-  handledProps: (keyof P)[]
-  create: ShorthandFactory<P>
-}
+  className: string;
+  handledProps: (keyof P)[];
+  create: ShorthandFactory<P>;
+};
 
 // ========================================================
 // Props
 // ========================================================
 
-export type Props<T = {}> = T & ObjectOf<any>
-export type ReactChildren = React.ReactNodeArray | React.ReactNode
+export type Props<T = {}> = T & ObjectOf<any>;
+export type ReactChildren = React.ReactNodeArray | React.ReactNode;
 
-export type WithAsProp<T> = T & { as?: any }
+export type WithAsProp<T> = T & { as?: any };
 
-export type ComponentEventHandler<TProps> = (
-  event: React.SyntheticEvent<HTMLElement>,
-  data?: TProps,
-) => void
+export type ComponentEventHandler<TProps> = (event: React.SyntheticEvent<HTMLElement>, data?: TProps) => void;
 
-export type ComponentKeyboardEventHandler<TProps> = (
-  event: React.KeyboardEvent<any>,
-  data?: TProps,
-) => void
+export type ComponentKeyboardEventHandler<TProps> = (event: React.KeyboardEvent<any>, data?: TProps) => void;
 
-export type InstanceOf<T> = T extends { new (...args: any[]): infer TInstance } ? TInstance : never
+export type InstanceOf<T> = T extends { new (...args: any[]): infer TInstance } ? TInstance : never;
 
 export type PropsOf<T> = T extends React.Component<infer TProps>
   ? TProps
@@ -57,39 +51,25 @@ export type PropsOf<T> = T extends React.Component<infer TProps>
   ? TProps
   : T extends keyof JSX.IntrinsicElements
   ? JSX.IntrinsicElements[T]
-  : never
+  : never;
 
 // ========================================================
 // Shorthand Factories
 // ========================================================
 
-export type ShorthandRenderFunction<P> = (
-  Component: React.ReactType,
-  props: P,
-) => React.ReactElement<any>
+export type ShorthandRenderFunction<P> = (Component: React.ReactType, props: P) => React.ReactElement<any>;
 
-export type ShorthandRenderer<P> = (
-  value: ShorthandValue<P>,
-  renderTree?: ShorthandRenderFunction<P>,
-) => React.ReactElement<any>
+export type ShorthandRenderer<P> = (value: ShorthandValue<P>, renderTree?: ShorthandRenderFunction<P>) => React.ReactElement<any>;
 
-export type ShorthandRenderCallback<P> = (render: ShorthandRenderer<P>) => React.ReactElement<any>
+export type ShorthandRenderCallback<P> = (render: ShorthandRenderer<P>) => React.ReactElement<any>;
 
 // The ReactFragment here is replaced from the original typings with ReactNodeArray because of incorrect inheriting of the type when it is defined as {}
-type ReactNode =
-  | React.ReactChild
-  | React.ReactNodeArray
-  | React.ReactPortal
-  | boolean
-  | null
-  | undefined
+type ReactNode = React.ReactChild | React.ReactNodeArray | React.ReactPortal | boolean | null | undefined;
 
-export type ShorthandRenderProp<P> = (Component: React.ElementType, props: P) => React.ReactNode
+export type ShorthandRenderProp<P> = (Component: React.ElementType, props: P) => React.ReactNode;
 
-export type ShorthandValue<P extends Props> =
-  | ReactNode
-  | (Props<P> & { children?: P['children'] | ShorthandRenderProp<P> })
-export type ShorthandCollection<P, K = never> = ShorthandValue<P & { kind?: K }>[]
+export type ShorthandValue<P extends Props> = ReactNode | (Props<P> & { children?: P['children'] | ShorthandRenderProp<P> });
+export type ShorthandCollection<P, K = never> = ShorthandValue<P & { kind?: K }>[];
 
 // ========================================================
 // Types for As prop support
@@ -99,9 +79,9 @@ type ValueOf<TFirst, TSecond, TKey extends keyof (TFirst & TSecond)> = TKey exte
   ? TFirst[TKey]
   : TKey extends keyof TSecond
   ? TSecond[TKey]
-  : {}
+  : {};
 
-type Extended<TFirst, TSecond> = { [K in keyof (TFirst & TSecond)]: ValueOf<TFirst, TSecond, K> }
+type Extended<TFirst, TSecond> = { [K in keyof (TFirst & TSecond)]: ValueOf<TFirst, TSecond, K> };
 
 /**
  * TODO: introduce back this path once TS compiler issue that leads to
@@ -116,26 +96,20 @@ type Extended<TFirst, TSecond> = { [K in keyof (TFirst & TSecond)]: ValueOf<TFir
  * TODO: restrict type further once TS compiler issue that leads to
  * 'JS Heap Out Of Memory' exception will be fixed
  */
-type AsComponent<C, TProps> = { as: C } & TProps & { [K: string]: any } // & PropsOf<InstanceOf<C>>
+type AsComponent<C, TProps> = { as: C } & TProps & { [K: string]: any }; // & PropsOf<InstanceOf<C>>
 
-type HoistedStaticPropsOf<T> =
-  | Exclude<keyof T, keyof React.ComponentType | 'prototype'>
-  | 'displayName'
+type HoistedStaticPropsOf<T> = Exclude<keyof T, keyof React.ComponentType | 'prototype'> | 'displayName';
 
 type Intersect<First extends string | number | symbol, Second extends string | number | symbol> = {
-  [K in First]: K extends Second ? K : never
-}[First]
+  [K in First]: K extends Second ? K : never;
+}[First];
 
 type PickProps<T, Props extends string | number | symbol> = {
-  [K in Intersect<Props, keyof T>]: T[K]
-}
+  [K in Intersect<Props, keyof T>]: T[K];
+};
 
-export const withSafeTypeForAs = <
-  TComponentType extends React.ComponentType,
-  TProps,
-  TAs extends keyof JSX.IntrinsicElements = 'div'
->(
-  componentType: TComponentType,
+export const withSafeTypeForAs = <TComponentType extends React.ComponentType, TProps, TAs extends keyof JSX.IntrinsicElements = 'div'>(
+  componentType: TComponentType
 ) => {
   /**
    * TODO: introduce overload once TS compiler issue that leads to
@@ -144,40 +118,38 @@ export const withSafeTypeForAs = <
   // function overloadedComponentType<Tag extends keyof JSX.IntrinsicElements>(
   //   x: AsHtmlElement<Tag, TProps>,
   // ): JSX.Element
-  function overloadedComponentType<Tag>(x: AsComponent<Tag, TProps>): JSX.Element
-  function overloadedComponentType(x: Extended<TProps, JSX.IntrinsicElements[TAs]>): JSX.Element
+  function overloadedComponentType<Tag>(x: AsComponent<Tag, TProps>): JSX.Element;
+  function overloadedComponentType(x: Extended<TProps, JSX.IntrinsicElements[TAs]>): JSX.Element;
   function overloadedComponentType(): never {
-    throw new Error('Defines unreachable execution scenario')
+    throw new Error('Defines unreachable execution scenario');
   }
 
-  return (componentType as any) as typeof overloadedComponentType &
-    PickProps<TComponentType, HoistedStaticPropsOf<TComponentType>>
-}
+  return (componentType as any) as typeof overloadedComponentType & PickProps<TComponentType, HoistedStaticPropsOf<TComponentType>>;
+};
 
-export type UNSAFE_TypedComponent<TComponentType, TProps> = React.FunctionComponent<
-  TProps & { [K: string]: any }
-> &
-  PickProps<TComponentType, keyof TComponentType>
+export type UNSAFE_TypedComponent<TComponentType, TProps> = React.FunctionComponent<TProps & { [K: string]: any }> &
+  PickProps<TComponentType, keyof TComponentType>;
 
 export const UNSAFE_typed = <TComponentType>(componentType: TComponentType) => {
   return {
-    withProps: <TProps>() =>
-      (componentType as any) as UNSAFE_TypedComponent<TComponentType, TProps>,
-  }
-}
+    withProps: <TProps>() => (componentType as any) as UNSAFE_TypedComponent<TComponentType, TProps>
+  };
+};
 
 // ========================================================
 // Provider's context
 // ========================================================
 
 export interface ProviderContextInput extends StylesContextInputValue {
-  rtl?: boolean
-  target?: Document
-  telemetry?: Telemetry
+  rtl?: boolean;
+  target?: Document;
+  telemetry?: Telemetry;
+  performance?: StylesContextPerformance;
 }
 
 export interface ProviderContextPrepared extends StylesContextValue {
-  rtl: boolean
-  target: Document
-  telemetry: Telemetry | undefined
+  rtl: boolean;
+  // `target` can be undefined for SSR
+  target: Document | undefined;
+  telemetry: Telemetry | undefined;
 }

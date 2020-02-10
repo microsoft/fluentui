@@ -41,6 +41,7 @@ import {
   gridHorizontalBehavior,
   statusBehavior,
   alertWarningBehavior,
+  alertBaseBehavior,
   accordionBehavior,
   accordionTitleBehavior,
   accordionContentBehavior,
@@ -125,6 +126,7 @@ testHelper.addBehavior('gridHorizontalBehavior', gridHorizontalBehavior);
 testHelper.addBehavior('dialogBehavior', dialogBehavior);
 testHelper.addBehavior('statusBehavior', statusBehavior);
 testHelper.addBehavior('alertWarningBehavior', alertWarningBehavior);
+testHelper.addBehavior('alertBaseBehavior', alertBaseBehavior);
 testHelper.addBehavior('accordionBehavior', accordionBehavior);
 testHelper.addBehavior('accordionTitleBehavior', accordionTitleBehavior);
 testHelper.addBehavior('accordionContentBehavior', accordionContentBehavior);

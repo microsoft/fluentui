@@ -7,81 +7,64 @@ import {
   ReactAccessibilityBehavior,
   unstable_getAccessibility as getAccessibility,
   unstable_getStyles as getStyles,
-  useTelemetry,
-} from '@fluentui/react-bindings'
+  useTelemetry
+} from '@fluentui/react-bindings';
 import {
   emptyTheme,
   ComponentSlotStylesResolved,
   ComponentVariablesObject,
   DebugData,
   PropsWithVarsAndStyles,
-  ThemePrepared,
-} from '@fluentui/styles'
-import * as _ from 'lodash'
-import * as React from 'react'
+  ThemePrepared
+} from '@fluentui/styles';
+import * as _ from 'lodash';
+import * as React from 'react';
 
-import { Props, ProviderContextPrepared } from '../types'
-import logProviderMissingWarning from './providerMissingHandler'
+import { Props, ProviderContextPrepared } from '../types';
+import logProviderMissingWarning from './providerMissingHandler';
 
 export interface RenderResultConfig<P> {
-  ElementType: React.ElementType<P>
-  classes: ComponentSlotClasses
-  unhandledProps: Props
-  variables: ComponentVariablesObject
-  styles: ComponentSlotStylesResolved
-  accessibility: ReactAccessibilityBehavior
-  rtl: boolean
-  theme: ThemePrepared
+  ElementType: React.ElementType<P>;
+  classes: ComponentSlotClasses;
+  unhandledProps: Props;
+  variables: ComponentVariablesObject;
+  styles: ComponentSlotStylesResolved;
+  accessibility: ReactAccessibilityBehavior;
+  rtl: boolean;
+  theme: ThemePrepared;
 }
 
-export type RenderComponentCallback<P> = (config: RenderResultConfig<P>) => any
+export type RenderComponentCallback<P> = (config: RenderResultConfig<P>) => any;
 
 export interface RenderConfig<P> {
-  className?: string
-  displayName: string
-  handledProps: string[]
-  props: PropsWithVarsAndStyles
-  state: Record<string, any>
-  actionHandlers: AccessibilityActionHandlers
-  render: RenderComponentCallback<P>
-  saveDebug: (debug: DebugData | null) => void
+  className?: string;
+  displayName: string;
+  handledProps: string[];
+  props: PropsWithVarsAndStyles;
+  state: Record<string, any>;
+  actionHandlers: AccessibilityActionHandlers;
+  render: RenderComponentCallback<P>;
+  saveDebug: (debug: DebugData | null) => void;
 }
 
-const renderComponent = <P extends {}>(
-  config: RenderConfig<P>,
-  context?: ProviderContextPrepared,
-): React.ReactElement<P> => {
-  const {
-    className,
-    displayName,
-    handledProps,
-    props,
-    state,
-    actionHandlers,
-    render,
-    saveDebug = () => {},
-  } = config
+const renderComponent = <P extends {}>(config: RenderConfig<P>, context?: ProviderContextPrepared): React.ReactElement<P> => {
+  const { className, displayName, handledProps, props, state, actionHandlers, render, saveDebug = () => {} } = config;
 
   if (_.isEmpty(context)) {
-    logProviderMissingWarning()
+    logProviderMissingWarning();
   }
 
-  const { setStart, setEnd } = useTelemetry(displayName, context.telemetry)
-  const rtl = context.rtl || false
+  const { setStart, setEnd } = useTelemetry(displayName, context.telemetry);
+  const rtl = context.rtl || false;
+  const enableVariablesCaching = context.performance?.enableVariablesCaching;
 
-  setStart()
+  setStart();
 
-  const ElementType = getElementType(props) as React.ReactType<P>
-  const unhandledProps = getUnhandledProps(handledProps, props)
-  const stateAndProps = { ...state, ...props }
+  const ElementType = getElementType(props) as React.ReactType<P>;
+  const unhandledProps = getUnhandledProps(handledProps, props);
+  const stateAndProps = { ...state, ...props };
 
-  const accessibility: ReactAccessibilityBehavior = getAccessibility(
-    displayName,
-    props.accessibility,
-    stateAndProps,
-    rtl,
-    actionHandlers,
-  )
+  const accessibility: ReactAccessibilityBehavior = getAccessibility(displayName, props.accessibility, stateAndProps, rtl, actionHandlers);
   const { classes, variables, styles, theme } = getStyles({
     className,
     disableAnimations: context.disableAnimations || false,
@@ -91,8 +74,11 @@ const renderComponent = <P extends {}>(
     rtl,
     saveDebug,
     theme: context.theme || emptyTheme,
-    _internal_resolvedComponentVariables: context._internal_resolvedComponentVariables || {},
-  })
+    performance: {
+      enableVariablesCaching: typeof enableVariablesCaching === 'boolean' ? enableVariablesCaching : true,
+      enableStylesCaching: false // we cannot enable caching for class components
+    }
+  });
 
   const resolvedConfig: RenderResultConfig<P> = {
     ElementType,
@@ -102,25 +88,25 @@ const renderComponent = <P extends {}>(
     styles,
     accessibility,
     rtl,
-    theme,
-  }
+    theme
+  };
 
   if (accessibility.focusZone) {
-    const originalElementType = resolvedConfig.ElementType
+    const originalElementType = resolvedConfig.ElementType;
 
-    resolvedConfig.ElementType = FocusZone as any
+    resolvedConfig.ElementType = FocusZone as any;
     resolvedConfig.unhandledProps = {
       ...resolvedConfig.unhandledProps,
-      ...accessibility.focusZone.props,
-    }
-    resolvedConfig.unhandledProps.as = originalElementType
-    resolvedConfig.unhandledProps.isRtl = resolvedConfig.rtl
+      ...accessibility.focusZone.props
+    };
+    resolvedConfig.unhandledProps.as = originalElementType;
+    resolvedConfig.unhandledProps.isRtl = resolvedConfig.rtl;
   }
 
-  const element = render(resolvedConfig)
-  setEnd()
+  const element = render(resolvedConfig);
+  setEnd();
 
-  return element
-}
+  return element;
+};
 
-export default renderComponent
+export default renderComponent;

@@ -1,22 +1,22 @@
-import * as React from 'react'
-import { KnobComponents, KnobDefinition, KnobName, KnobSet } from './types'
+import * as React from 'react';
+import { KnobComponents, KnobDefinition, KnobName, KnobSet } from './types';
 
 export type KnobContextValue = {
-  components: KnobComponents
-  knobs: KnobSet
+  components: KnobComponents;
+  knobs: KnobSet;
 
-  registerKnob: (knob: KnobDefinition) => void
-  setKnobValue: (knobName: KnobName, knobValue: any) => void
-  unregisterKnob: (knobName: KnobName) => void
-}
+  registerKnob: (knob: KnobDefinition) => void;
+  setKnobValue: (knobName: KnobName, knobValue: any) => void;
+  unregisterKnob: (knobName: KnobName) => void;
+};
 
-export type LogContextValue = {
-  appendLog: (value: string) => void
-  clearLog: () => void
-  items: string[]
-}
+export type LogContextFunctionsValue = {
+  appendLog: (value: string) => void;
+  clearLog: () => void;
+};
+export type LogContextItemsValue = string[];
 
-const noop = () => null
+const noop = () => null;
 
 export const KnobContext = React.createContext<KnobContextValue>({
   components: {} as any,
@@ -24,11 +24,11 @@ export const KnobContext = React.createContext<KnobContextValue>({
 
   registerKnob: noop,
   setKnobValue: noop,
-  unregisterKnob: noop,
-})
+  unregisterKnob: noop
+});
 
-export const LogContext = React.createContext<LogContextValue>({
+export const LogContextFunctions = React.createContext<LogContextFunctionsValue>({
   appendLog: noop,
-  clearLog: noop,
-  items: [],
-})
+  clearLog: noop
+});
+export const LogContextItems = React.createContext<LogContextItemsValue>([]);

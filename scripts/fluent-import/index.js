@@ -244,7 +244,12 @@ function fixKeyboardKeys(outputPath) {
 }
 
 function fixPlayground(outputPath) {
-  const devDeps = { '@types/jest-environment-puppeteer': '^4.3.1', '@types/expect-puppeteer': '^4.4.0' };
+  const devDeps = {
+    '@types/jest-environment-puppeteer': '^4.3.1',
+    '@types/expect-puppeteer': '^4.4.0',
+    enzyme: '~3.10.0',
+    'enzyme-adapter-react-16': '^1.15.0'
+  };
 
   const fullPath = path.join(outputPath, 'playground', 'package.json');
   console.log(`fixing ${fullPath} for devdeps`);
