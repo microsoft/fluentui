@@ -287,6 +287,22 @@ function fixReactDep(outputPath) {
   }
 }
 
+function fixJestMapping(outputPath) {
+  const files = glob.sync('**/jest.config.js', { cwd: outputPath });
+
+  for (let file of files) {
+    const fullPath = path.join(outputPath, file);
+    console.log(`fixing ${fullPath} to fix docs links`);
+    let jestConfig = fs.readFileSync(fullPath, 'utf-8');
+
+    if (jestConfig.includes('<rootDir>/../../docs/$1')) {
+      jestConfig = jestConfig.replace('<rootDir>/../../docs/$1', '<rootDir>/../docs/$1');
+    }
+
+    fs.writeFileSync(fullPath, jestConfig);
+  }
+}
+
 function importFluent() {
   console.log('cloning FUI');
   git(['clone', '--depth=1', 'https://github.com/microsoft/fluent-ui-react.git', '.']);
@@ -315,6 +331,7 @@ function importFluent() {
   fixPlayground(outputPath);
   fixKeyboardKeys(outputPath);
   fixReactDep(outputPath);
+  fixJestMapping(outputPath);
 
   console.log('removing tmp');
   fs.removeSync(tmp);
