@@ -248,11 +248,7 @@ function fixPlayground(outputPath) {
     '@types/jest-environment-puppeteer': '^4.3.1',
     '@types/expect-puppeteer': '^4.4.0',
     enzyme: '~3.10.0',
-    'enzyme-adapter-react-16': '^1.15.0',
-    // Brute force remove storybook__addon to prevent newer version (9.7.4) of autoprefixer from getting hoisted over 7.2.6
-    // and generating sass 'Replace Autoprefixer browsers option to Browserslist config.' warning in Fabric builds.
-    // This most likely breaks playground somehow but seems to build fine.
-    '@types/storybook__addon-info': undefined
+    'enzyme-adapter-react-16': '^1.15.0'
   };
 
   const fullPath = path.join(outputPath, 'playground', 'package.json');
