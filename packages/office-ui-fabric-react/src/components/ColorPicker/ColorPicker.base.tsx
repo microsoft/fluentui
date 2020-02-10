@@ -121,7 +121,7 @@ export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPi
     const { theme, className, styles, alphaSliderHidden, useTransparencySlider } = props;
     const { color } = this.state;
     const alphaValue = color.a;
-    const sliderValue = alphaValue ? this._getAlphaOrTransValue(alphaValue) : 100;
+    const sliderValue = alphaValue == null ? 100 : this._getAlphaOrTransValue(alphaValue);
 
     const classNames = getClassNames(styles!, {
       theme: theme!,
