@@ -6,6 +6,12 @@ import { ISemanticTextColors } from './ISemanticTextColors';
  * The collection of all semantic slots for colors used in themes.
  *
  * Note: text colors are defined in ISemanticTextColors.ts.
+ * We plan to move completely to semantic slots and replace all usage of Fabric palette slots.
+ * We've been actively making some of these changes but still have a ways to go. At present,
+ * we're only adding slots if absolutely necessary because we are trying to avoid bloating
+ * the already sizeable offering. We're also working on a better solution for design tokens
+ * overall in our next iteration. We'll provide an update on this site when that's ready.
+ * Thank you for your patience.
  *
  * #### Naming Convention
  *
@@ -52,6 +58,7 @@ import { ISemanticTextColors } from './ISemanticTextColors';
  * Lists differ from menus in that they are designed to show infinite amounts of items, often scroll,
  * and have a large and complex interaction surface.
  * This category covers all kinds of lists, whether they're typical one-item-per-row lists (like DetailsList) or ones with a tiled layout.
+ *
  * {@docCategory ISemanticColors}
  */
 export interface ISemanticColors extends ISemanticTextColors {
