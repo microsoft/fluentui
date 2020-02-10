@@ -1,9 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Dropdown: fix item hover style",
-  "packageName": "office-ui-fabric-react",
-  "email": "xgao@microsoft.com",
-  "commit": "d46c6727c4f1682f8efc1d4a5565eb4092084271",
-  "dependentChangeType": "patch",
-  "date": "2020-02-06T21:29:40.910Z"
-}

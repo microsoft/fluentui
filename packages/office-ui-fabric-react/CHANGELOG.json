@@ -2,6 +2,25 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Mon, 10 Feb 2020 12:39:35 GMT",
+      "tag": "office-ui-fabric-react_v7.90.1",
+      "version": "7.90.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Dropdown: fix item hover style",
+            "author": "xgao@microsoft.com",
+            "commit": "d46c6727c4f1682f8efc1d4a5565eb4092084271"
+          },
+          {
+            "comment": "SpinButton: remove unneeded validation on tab key",
+            "author": "xgao@microsoft.com",
+            "commit": "1726b7d2ef8b6da56cd26b56e832eb8afb9ca7cf"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 07 Feb 2020 12:41:31 GMT",
       "tag": "office-ui-fabric-react_v7.90.0",
       "version": "7.90.0",
