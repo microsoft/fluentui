@@ -2,6 +2,20 @@
   "name": "@uifabric/api-docs",
   "entries": [
     {
+      "date": "Fri, 07 Feb 2020 12:41:31 GMT",
+      "tag": "@uifabric/api-docs_v7.2.12",
+      "version": "7.2.12",
+      "comments": {
+        "none": [
+          {
+            "comment": "Remove unused config files",
+            "author": "elcraig@microsoft.com",
+            "commit": "75385949f9a552bdf64ac4f0b074b28cdd530ddb"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 31 Jan 2020 19:00:10 GMT",
       "tag": "@uifabric/api-docs_v7.2.8",
       "version": "7.2.8",

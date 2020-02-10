@@ -1,7 +1,47 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 31 Jan 2020 19:00:10 GMT and should not be manually modified.
+This log was last generated on Mon, 10 Feb 2020 12:39:35 GMT and should not be manually modified.
 
+## 7.90.1
+Mon, 10 Feb 2020 12:39:35 GMT
+
+### Patches
+
+- Dropdown: fix item hover style (xgao@microsoft.com)
+- SpinButton: remove unneeded validation on tab key (xgao@microsoft.com)
+## 7.90.0
+Fri, 07 Feb 2020 12:41:31 GMT
+
+### Minor changes
+
+- GroupedList: Announcing position in set. (Humberto.Morimoto@microsoft.com)
+## 7.89.1
+Thu, 06 Feb 2020 12:37:34 GMT
+
+### Patches
+
+- ev.defaultPrevented is not a function, remove errant () (mahelles@microsoft.com)
+- DocumentCard: Updating DocumentCardLocations styles to latest Fluent specs. (Humberto.Morimoto@microsoft.com)
+- MaskedTextField: fix MaskedTextField captures focus on re-render on Edge (xgao@microsoft.com)
+- Dropdown: remove unnecessary focus calls (xgao@microsoft.com)
+## 7.89.0
+Wed, 05 Feb 2020 12:43:32 GMT
+
+### Minor changes
+
+- TeachingBubble: Fixing styling when TeachingBubble has close button but no headline. (Humberto.Morimoto@microsoft.com)
+### Patches
+
+- TeachingBubble: Applying Callout style-related props like calloutWidth and calloutMaxWidth. (Humberto.Morimoto@microsoft.com)
+- ChoiceGroup: fix option label text being cutoff (xgao@microsoft.com)
+- Pickers: remove input X button in Edge (xgao@microsoft.com)
+## 7.88.1
+Mon, 03 Feb 2020 20:04:10 GMT
+
+### Patches
+
+- Text: Updating docs and style logic to remove 'inherit' by default behavior. (Humberto.Morimoto@microsoft.com)
+- Dialog: Fix DialogContent titleProps (xgao@microsoft.com)
 ## 7.88.0
 Fri, 31 Jan 2020 19:00:10 GMT
 

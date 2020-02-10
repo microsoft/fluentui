@@ -1,4 +1,4 @@
-const custom = require('@uifabric/build/config/storybook/webpack.config');
+const custom = require('@uifabric/build/storybook/webpack.config');
 
 module.exports = {
   webpackFinal: config => {

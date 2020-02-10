@@ -4904,6 +4904,8 @@ export interface IGroupFooterStyles {
 
 // @public (undocumented)
 export interface IGroupHeaderProps extends IGroupDividerProps {
+    ariaPosInSet?: number;
+    ariaSetSize?: number;
     expandButtonProps?: React.HTMLAttributes<HTMLButtonElement>;
     groupedListId?: string;
     selectAllButtonProps?: React.HTMLAttributes<HTMLButtonElement>;
@@ -7589,10 +7591,11 @@ export interface ITeachingBubbleState {
 
 // @public (undocumented)
 export type ITeachingBubbleStyleProps = Required<Pick<ITeachingBubbleProps, 'theme'>> & Pick<ITeachingBubbleProps, 'hasCondensedHeadline' | 'hasSmallHeadline' | 'isWide'> & {
-    calloutClassName?: string;
+    calloutProps?: ICalloutContentStyleProps;
     primaryButtonClassName?: string;
     secondaryButtonClassName?: string;
     hasCloseButton?: boolean;
+    hasHeadline?: boolean;
 };
 
 // @public (undocumented)
