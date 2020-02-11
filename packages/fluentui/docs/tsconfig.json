@@ -3,30 +3,13 @@
   "compilerOptions": {
     "module": "esnext",
     "paths": {
-      "@fluentui/*": [
-        "packages/fluentui/*/src"
-      ],
-      "docs/*": [
-        "packages/fluentui/docs/*"
-      ],
-      "src/*": [
-        "packages/fluentui/react/src/*"
-      ],
-      "test/*": [
-        "packages/fluentui/react/test/*"
-      ]
+      "@fluentui/*": ["packages/fluentui/*/src"],
+      "docs/*": ["packages/fluentui/docs/*"],
+      "src/*": ["packages/fluentui/react/src/*"],
+      "test/*": ["packages/fluentui/react/test/*"]
     },
-    "typeRoots": [
-      "../types",
-      "../node_modules/@types"
-    ],
-    "types": [
-      "node",
-      "webpack-env",
-      "screener-runner"
-    ]
+    "typeRoots": ["../../../typings", "../node_modules/@types"],
+    "types": ["node", "webpack-env", "screener-runner"]
   },
-  "include": [
-    "./src"
-  ]
+  "include": ["./src"]
 }
