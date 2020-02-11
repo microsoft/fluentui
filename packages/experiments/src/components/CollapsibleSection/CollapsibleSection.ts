@@ -4,14 +4,14 @@ import { collapsibleSectionStyles } from './CollapsibleSection.styles';
 import { ICollapsibleSectionProps } from './CollapsibleSection.types';
 import { createComponent } from '../../Foundation';
 
-export const CollapsibleSection: React.StatelessComponent<ICollapsibleSectionProps> = createComponent(CollapsibleSectionView, {
+export const CollapsibleSection: React.FunctionComponent<ICollapsibleSectionProps> = createComponent(CollapsibleSectionView, {
   displayName: 'CollapsibleSection',
   state: useCollapsibleSectionState,
   styles: collapsibleSectionStyles
 });
 
 // TODO: This is only here for testing createComponent and should be removed before promoting to production
-export const CollapsibleSectionStateless: React.StatelessComponent<ICollapsibleSectionProps> = createComponent(CollapsibleSectionView, {
+export const CollapsibleSectionStateless: React.FunctionComponent<ICollapsibleSectionProps> = createComponent(CollapsibleSectionView, {
   displayName: 'CollapsibleSection',
   styles: collapsibleSectionStyles
 });

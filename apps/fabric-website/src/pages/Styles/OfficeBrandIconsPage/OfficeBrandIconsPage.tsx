@@ -16,7 +16,7 @@ const productIcons = require('@uifabric/fabric-website/lib/data/brand-icons-prod
 const documentIcons = require('@uifabric/fabric-website/lib/data/brand-icons-documents.json');
 const monochromeIcons = require('@uifabric/fabric-website/lib/data/brand-icons-monochrome.json');
 
-export const OfficeBrandIconsPage: React.StatelessComponent<IStylesPageProps> = props => {
+export const OfficeBrandIconsPage: React.FunctionComponent<IStylesPageProps> = props => {
   const { platform } = props;
   return (
     <StylesAreaPage {...props} {...OfficeBrandIconsPageProps[platform]} otherSections={_otherSections(platform) as IPageSectionProps[]} />

@@ -44,7 +44,7 @@ interface IFolderTileWithThumbnailProps {
   item: typeof ITEMS[0];
 }
 
-const FolderTileWithThumbnail: React.StatelessComponent<IFolderTileWithThumbnailProps> = (
+const FolderTileWithThumbnail: React.FunctionComponent<IFolderTileWithThumbnailProps> = (
   props: IFolderTileWithThumbnailProps
 ): JSX.Element => {
   const folderCover = (

@@ -65,7 +65,7 @@ const CommandBarButtonTokens: IButtonComponent['tokens'] = (props, theme): IButt
   props.disabled && disabledTokens
 ];
 
-export const CommandBarButton: React.StatelessComponent<IButtonProps> = composed({
+export const CommandBarButton: React.FunctionComponent<IButtonProps> = composed({
   displayName: 'CommandBarButton',
   slots,
   state,

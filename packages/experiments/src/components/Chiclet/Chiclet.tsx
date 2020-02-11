@@ -3,7 +3,7 @@ import { IChicletProps, IChicletStyleProps, IChicletStyles } from './Chiclet.typ
 import { getStyles } from './Chiclet.styles';
 import { ChicletBase } from './Chiclet.base';
 
-export const Chiclet: React.StatelessComponent<IChicletProps> = styled<IChicletProps, IChicletStyleProps, IChicletStyles>(
+export const Chiclet: React.FunctionComponent<IChicletProps> = styled<IChicletProps, IChicletStyleProps, IChicletStyles>(
   ChicletBase,
   getStyles,
   undefined,

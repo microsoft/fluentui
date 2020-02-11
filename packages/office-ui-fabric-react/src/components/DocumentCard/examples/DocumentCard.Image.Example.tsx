@@ -18,7 +18,7 @@ const people: IDocumentCardActivityPerson[] = [
   { name: 'Christian Bergqvist', profileImageSrc: '', initials: 'CB' }
 ];
 
-export const DocumentCardImageExample: React.StatelessComponent = () => {
+export const DocumentCardImageExample: React.FunctionComponent = () => {
   const cardStyles: IDocumentCardStyles = {
     root: { display: 'inline-block', marginRight: 20, marginBottom: 20, width: 320 }
   };
