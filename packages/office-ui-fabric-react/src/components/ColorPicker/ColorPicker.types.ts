@@ -78,7 +78,6 @@ export interface IColorPickerProps {
 
   /**
    * Label for the alpha textfield.
-   * Also used for transparency when useTransparencySlider is true.
    * @defaultvalue Alpha
    * @deprecated Use `strings`
    */
@@ -140,7 +139,6 @@ export interface IColorPickerStrings {
 
   /**
    * Label for the alpha text field.
-   * Also used as transparency when useTransparencySlider is true.
    * Also used as the aria label for the alpha slider if `alphaAriaLabel` is not provided.
    * @defaultvalue Alpha
    */
@@ -154,9 +152,13 @@ export interface IColorPickerStrings {
 
   /**
    * Customized aria-label for the alpha slider.
-   * Also used as transparency aria label when useTransparencySlider is true.
    */
   alphaAriaLabel?: string;
+
+  /**
+   * Customized aria-label for the transparency slider.
+   */
+  transparencyAriaLabel?: string;
 
   /**
    * Aria label for the hue slider.

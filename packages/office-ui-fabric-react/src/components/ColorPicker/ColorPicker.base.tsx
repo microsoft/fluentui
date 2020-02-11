@@ -94,7 +94,7 @@ export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPi
       b: props.blueLabel || strings.blue || defaultStrings.blue,
       a: props.alphaLabel || strings.alpha || defaultStrings.alpha,
       hex: props.hexLabel || strings.hex || defaultStrings.hex,
-      transparency: props.alphaLabel || strings.transparency || defaultStrings.transparency
+      transparency: strings.transparency || defaultStrings.transparency
     };
 
     this._strings = {
@@ -166,7 +166,11 @@ export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPi
                 <ColorSlider
                   className="is-alpha"
                   isAlpha
-                  ariaLabel={strings.alphaAriaLabel || useTransparencySlider ? textLabels.transparency : textLabels.a}
+                  ariaLabel={
+                    useTransparencySlider
+                      ? strings.transparencyAriaLabel || textLabels.transparency
+                      : strings.alphaAriaLabel || textLabels.a
+                  }
                   useTransparencySlider={useTransparencySlider}
                   overlayColor={color.hex}
                   minValue={0}
