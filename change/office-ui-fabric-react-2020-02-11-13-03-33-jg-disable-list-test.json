@@ -1,5 +1,5 @@
 {
-  "type": "patch",
+  "type": "none",
   "comment": "Disable List test causing intermittent test failures.",
   "packageName": "office-ui-fabric-react",
   "email": "jagore@microsoft.com",
