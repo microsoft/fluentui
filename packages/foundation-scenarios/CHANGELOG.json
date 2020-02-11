@@ -2,6 +2,20 @@
   "name": "@uifabric/foundation-scenarios",
   "entries": [
     {
+      "date": "Tue, 11 Feb 2020 18:37:59 GMT",
+      "tag": "@uifabric/foundation-scenarios_v0.102.23",
+      "version": "0.102.23",
+      "comments": {
+        "none": [
+          {
+            "comment": "fixing released versions",
+            "author": "kchau@microsoft.com",
+            "commit": "207521eb85f200e2cda239d06eacdf5f49efdadc"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 07 Feb 2020 12:41:31 GMT",
       "tag": "@uifabric/foundation-scenarios_v0.102.20",
       "version": "0.102.20",

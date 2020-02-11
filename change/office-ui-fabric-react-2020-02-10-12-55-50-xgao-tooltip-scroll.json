@@ -1,9 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Tooltip: allow scrolling tooltip content",
-  "packageName": "office-ui-fabric-react",
-  "email": "xgao@microsoft.com",
-  "commit": "75d729ac4e0e00ad8b52f27b3da05f03cd6ed24b",
-  "dependentChangeType": "patch",
-  "date": "2020-02-10T20:55:50.865Z"
-}

@@ -324,7 +324,7 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
 
     let { suggestions } = this.props;
 
-    const StyledTypedSuggestionsItem: React.StatelessComponent<ISuggestionItemProps<T>> = StyledSuggestionsItem;
+    const StyledTypedSuggestionsItem: React.FunctionComponent<ISuggestionItemProps<T>> = StyledSuggestionsItem;
 
     let selectedIndex = -1;
     suggestions.some((element, index) => {

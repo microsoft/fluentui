@@ -15,7 +15,7 @@ export interface ISignalFieldProps extends React.HTMLAttributes<HTMLSpanElement>
  * Pass `<Signal />` or related components in for the `before` and `after` fields.
  * Pass the main value as the children.
  */
-export const SignalField: React.StatelessComponent<ISignalFieldProps> = (props: ISignalFieldProps): JSX.Element => {
+export const SignalField: React.FunctionComponent<ISignalFieldProps> = (props: ISignalFieldProps): JSX.Element => {
   const { before, after, className, signalsFieldMode = 'compact', ...spanProps } = props;
   return (
     <span

@@ -6,7 +6,7 @@ import { getStyles } from './DetailsHeader.styles';
 
 export { IDetailsHeaderProps, IDetailsHeaderBaseProps };
 
-export const DetailsHeader: React.StatelessComponent<IDetailsHeaderBaseProps> = styled<
+export const DetailsHeader: React.FunctionComponent<IDetailsHeaderBaseProps> = styled<
   IDetailsHeaderBaseProps,
   IDetailsHeaderStyleProps,
   IDetailsHeaderStyles

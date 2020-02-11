@@ -2,6 +2,20 @@
   "name": "@uifabric/test-utilities",
   "entries": [
     {
+      "date": "Tue, 11 Feb 2020 18:37:59 GMT",
+      "tag": "@uifabric/test-utilities_v7.0.10",
+      "version": "7.0.10",
+      "comments": {
+        "none": [
+          {
+            "comment": "update enzyme",
+            "author": "kchau@microsoft.com",
+            "commit": "495983aec20488918f3d1ee87a8af92cb93d208f"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 07 Feb 2020 12:41:31 GMT",
       "tag": "@uifabric/test-utilities_v7.0.10",
       "version": "7.0.10",

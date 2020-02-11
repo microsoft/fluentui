@@ -18,7 +18,7 @@ export interface IContrastRatioPair {
   colorPair: string;
 }
 
-export const AccessibilityChecker: React.StatelessComponent<IAccessibilityCheckerProps> = (props: IAccessibilityCheckerProps) => {
+export const AccessibilityChecker: React.FunctionComponent<IAccessibilityCheckerProps> = (props: IAccessibilityCheckerProps) => {
   let nonAccessiblePairs: IContrastRatioPair[] = [];
   let accessiblePairs: IContrastRatioPair[] = [];
 

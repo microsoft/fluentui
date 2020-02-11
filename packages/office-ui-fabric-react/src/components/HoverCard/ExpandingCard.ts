@@ -4,7 +4,7 @@ import { IExpandingCardProps, IExpandingCardStyles, IExpandingCardStyleProps } f
 import { getStyles } from './ExpandingCard.styles';
 import { ExpandingCardBase } from './ExpandingCard.base';
 
-export const ExpandingCard: React.StatelessComponent<IExpandingCardProps> = styled<
+export const ExpandingCard: React.FunctionComponent<IExpandingCardProps> = styled<
   IExpandingCardProps,
   IExpandingCardStyleProps,
   IExpandingCardStyles

@@ -2,6 +2,20 @@
   "name": "@uifabric/theme-samples",
   "entries": [
     {
+      "date": "Tue, 11 Feb 2020 18:37:59 GMT",
+      "tag": "@uifabric/theme-samples_v7.0.20",
+      "version": "7.0.20",
+      "comments": {
+        "none": [
+          {
+            "comment": "fixing released versions",
+            "author": "kchau@microsoft.com",
+            "commit": "207521eb85f200e2cda239d06eacdf5f49efdadc"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 07 Feb 2020 12:41:31 GMT",
       "tag": "@uifabric/theme-samples_v7.0.17",
       "version": "7.0.17",

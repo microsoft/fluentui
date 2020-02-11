@@ -298,7 +298,7 @@ function _idFromSectionTitle(title: string): string {
   return title.replace(/[^\w-]/g, '');
 }
 
-export const ComponentPage: React.StatelessComponent<IComponentPageProps> = styled<
+export const ComponentPage: React.FunctionComponent<IComponentPageProps> = styled<
   IComponentPageProps,
   IComponentPageStyleProps,
   IComponentPageStyles

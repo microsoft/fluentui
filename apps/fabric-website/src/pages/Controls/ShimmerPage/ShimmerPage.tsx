@@ -6,7 +6,7 @@ import { IPageSectionProps } from '@uifabric/example-app-base/lib/index2';
 
 const baseUrl = 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/apps/fabric-website/src/pages/Controls/ShimmerPage/';
 
-export const ShimmerPage: React.StatelessComponent<IControlsPageProps> = props => {
+export const ShimmerPage: React.FunctionComponent<IControlsPageProps> = props => {
   const { platform } = props;
   return <ControlsAreaPage {...props} title="Shimmer" {...ShimmerPageProps[platform]} otherSections={_otherSections(platform) as any} />;
 };

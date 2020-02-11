@@ -5,7 +5,7 @@ import { getSubTitle } from '../../../utilities/index';
 import * as styles from './StylesPage.module.scss';
 import { Platforms } from '../../../interfaces/Platforms';
 
-const StylesPageBase: React.StatelessComponent<IPageProps<Platforms>> = props => {
+const StylesPageBase: React.FunctionComponent<IPageProps<Platforms>> = props => {
   const { platform } = props;
   return (
     <Page
@@ -126,6 +126,6 @@ function _otherSections(platform: Platforms): IPageSectionProps[] {
   }
 }
 
-export const StylesPage: React.StatelessComponent<IPageProps<Platforms>> = (props: IPageProps<Platforms>) => (
+export const StylesPage: React.FunctionComponent<IPageProps<Platforms>> = (props: IPageProps<Platforms>) => (
   <PlatformContext.Consumer>{(platform: Platforms) => <StylesPageBase platform={platform} {...props} />}</PlatformContext.Consumer>
 );
