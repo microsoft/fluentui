@@ -11,6 +11,7 @@ packages/tslint-rules/tslint.json
 *.api.md
 *.scss.ts
 _*.scss
+.github/*.md
 
 lib
 lib-amd
