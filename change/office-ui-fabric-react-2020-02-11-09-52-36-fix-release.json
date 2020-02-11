@@ -1,9 +1,0 @@
-{
-  "type": "none",
-  "comment": "fixing released versions",
-  "packageName": "office-ui-fabric-react",
-  "email": "kchau@microsoft.com",
-  "commit": "207521eb85f200e2cda239d06eacdf5f49efdadc",
-  "dependentChangeType": "patch",
-  "date": "2020-02-11T17:52:30.284Z"
-}

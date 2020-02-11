@@ -2,6 +2,25 @@
   "name": "@uifabric/styling",
   "entries": [
     {
+      "date": "Tue, 11 Feb 2020 18:37:59 GMT",
+      "tag": "@uifabric/styling_v7.10.7",
+      "version": "7.10.7",
+      "comments": {
+        "none": [
+          {
+            "comment": "Adding note to SemanticColors page on Fabric site to clarify status on our semantic slots and palette slots.",
+            "author": "aneeshak@microsoft.com",
+            "commit": "4faa49feeb708afb0aeaa5994eb652d9f2081804"
+          },
+          {
+            "comment": "fixing released versions",
+            "author": "kchau@microsoft.com",
+            "commit": "207521eb85f200e2cda239d06eacdf5f49efdadc"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 07 Feb 2020 12:41:31 GMT",
       "tag": "@uifabric/styling_v7.10.5",
       "version": "7.10.5",

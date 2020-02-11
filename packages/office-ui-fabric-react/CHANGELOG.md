@@ -1,7 +1,17 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 10 Feb 2020 12:39:35 GMT and should not be manually modified.
+This log was last generated on Tue, 11 Feb 2020 18:37:59 GMT and should not be manually modified.
 
+## 7.92.0
+Tue, 11 Feb 2020 18:37:59 GMT
+
+### Minor changes
+
+- TagItem accepts title and defaults either children or item name (#11845) (yann.normand@gmail.com)
+### Patches
+
+- Tooltip: allow scrolling tooltip content (xgao@microsoft.com)
+- Dropdown: fix SubComponentStyles interfaces (xgao@microsoft.com)
 ## 7.90.1
 Mon, 10 Feb 2020 12:39:35 GMT
 

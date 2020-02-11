@@ -1,9 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Dropdown: fix SubComponentStyles interfaces",
-  "packageName": "office-ui-fabric-react",
-  "email": "xgao@microsoft.com",
-  "commit": "bd136863b3efb04911cd1214f87848ca1ae219d9",
-  "dependentChangeType": "patch",
-  "date": "2020-02-10T23:36:57.623Z"
-}
