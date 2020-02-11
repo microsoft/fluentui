@@ -1,7 +1,20 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 06 Feb 2020 12:37:34 GMT and should not be manually modified.
+This log was last generated on Mon, 10 Feb 2020 12:39:35 GMT and should not be manually modified.
 
+## 7.90.1
+Mon, 10 Feb 2020 12:39:35 GMT
+
+### Patches
+
+- Dropdown: fix item hover style (xgao@microsoft.com)
+- SpinButton: remove unneeded validation on tab key (xgao@microsoft.com)
+## 7.90.0
+Fri, 07 Feb 2020 12:41:31 GMT
+
+### Minor changes
+
+- GroupedList: Announcing position in set. (Humberto.Morimoto@microsoft.com)
 ## 7.89.1
 Thu, 06 Feb 2020 12:37:34 GMT
 

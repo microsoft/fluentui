@@ -21,17 +21,17 @@ const envConfig = {
   // Project Structure
   // ----------------------------------
   path_base: path.resolve(__dirname, '..'),
-  dir_build: 'build',
-  dir_docs: 'docs',
-  dir_docs_dist: 'docs/dist',
-  dir_docs_src: 'docs/src',
-  dir_e2e: 'e2e',
-  dir_e2e_src: 'e2e/server',
-  dir_e2e_dist: 'e2e/dist',
-  dir_packages: 'packages',
-  dir_perf: 'perf',
-  dir_perf_dist: 'perf/dist',
-  dir_perf_src: 'perf/src',
+  dir_build: 'scripts',
+  dir_docs: 'packages/fluentui/docs',
+  dir_docs_dist: 'packages/fluentui/docs/dist',
+  dir_docs_src: 'packages/fluentui/docs/src',
+  dir_e2e: 'packages/fluentui/e2e',
+  dir_e2e_src: 'packages/fluentui/e2e/server',
+  dir_e2e_dist: 'packages/fluentui/e2e/dist',
+  dir_packages: 'packages/fluentui',
+  dir_perf: 'packages/fluentui/perf',
+  dir_perf_dist: 'packages/fluentui/perf/dist',
+  dir_perf_src: 'packages/fluentui/perf/src',
   dir_umd_dist: 'dist/umd',
   dir_ci_artifacts: 'dist/artifacts'
 };

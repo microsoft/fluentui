@@ -2,6 +2,20 @@
   "name": "@uifabric/variants",
   "entries": [
     {
+      "date": "Fri, 07 Feb 2020 12:41:31 GMT",
+      "tag": "@uifabric/variants_v7.1.7",
+      "version": "7.1.7",
+      "comments": {
+        "none": [
+          {
+            "comment": "Remove unused config files",
+            "author": "elcraig@microsoft.com",
+            "commit": "96ccf88b8f44981d21a3903789874a13a2f79b1d"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 31 Jan 2020 19:00:10 GMT",
       "tag": "@uifabric/variants_v7.1.3",
       "version": "7.1.3",

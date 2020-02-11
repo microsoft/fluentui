@@ -117,19 +117,21 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
     }
   ];
 
+  const selectedItemBackgroundColor = semanticColors.menuItemBackgroundPressed;
+
   const itemSelectors = (isSelected: boolean = false) => {
     return {
       selectors: {
         '&:hover:focus': [
           {
             color: semanticColors.menuItemTextHovered,
-            backgroundColor: !isSelected ? semanticColors.menuBackground : semanticColors.menuItemBackgroundHovered
+            backgroundColor: !isSelected ? semanticColors.menuItemBackgroundHovered : selectedItemBackgroundColor
           },
           highContrastItemAndTitleStateMixin
         ],
         '&:focus': [
           {
-            backgroundColor: !isSelected ? 'transparent' : semanticColors.menuItemBackgroundHovered
+            backgroundColor: !isSelected ? 'transparent' : selectedItemBackgroundColor
           },
           highContrastItemAndTitleStateMixin
         ],
@@ -156,7 +158,7 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
   const dropdownItemSelected: IStyle = [
     ...dropdownItemStyle,
     {
-      backgroundColor: semanticColors.menuItemBackgroundPressed,
+      backgroundColor: selectedItemBackgroundColor,
       color: semanticColors.menuItemTextHovered
     },
     itemSelectors(true),

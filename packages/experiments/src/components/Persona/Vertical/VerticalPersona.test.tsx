@@ -17,9 +17,9 @@ const testVerticalPersonaStyles: IVerticalPersonaComponent['styles'] = {
 describe('VerticalPersona', () => {
   beforeAll(() => {
     // Prevent canvas usage from failing test
-    jest.spyOn(TextHelpers, 'isSingleLineText').mockImplementation(() => {
+    jest.spyOn(TextHelpers, 'isSingleLineText').mockImplementation((() => {
       /** no impl **/
-    });
+    }) as any);
   });
 
   afterAll(() => {

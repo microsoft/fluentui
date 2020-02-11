@@ -2,6 +2,25 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "date": "Fri, 07 Feb 2020 12:41:31 GMT",
+      "tag": "@uifabric/utilities_v7.11.6",
+      "version": "7.11.6",
+      "comments": {
+        "none": [
+          {
+            "comment": "Remove unused config files",
+            "author": "elcraig@microsoft.com",
+            "commit": "33b1c3474b1b8e899a1c24a4c1ee973908686df1"
+          },
+          {
+            "comment": "uniting build across fluent and fabric",
+            "author": "kchau@microsoft.com",
+            "commit": "f9503d808bc0971e843024c9fb679c0ed5a67fbb"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 31 Jan 2020 19:00:10 GMT",
       "tag": "@uifabric/utilities_v7.11.5",
       "version": "7.11.5",

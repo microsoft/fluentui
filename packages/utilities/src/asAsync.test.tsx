@@ -20,12 +20,13 @@ describe('asAsync', () => {
     const wrapper = mount(<AsyncThing />);
 
     expect(_loadCalled).toBe(true);
-    expect(wrapper.text()).toBeNull();
+    expect(wrapper.text()).toBeFalsy();
     expect(_resolve).toBeTruthy();
 
     _resolve(() => <div>thing</div>);
 
     process.nextTick(() => {
+      wrapper.update();
       expect(wrapper.text()).toEqual('thing');
       _loadCalled = false;
 
@@ -61,6 +62,7 @@ describe('asAsync', () => {
     _resolve(() => <div>thing</div>);
 
     process.nextTick(() => {
+      wrapper.update();
       expect(wrapper.text()).toEqual('thing');
       done();
     });

@@ -136,9 +136,9 @@ describe('withSlots', () => {
   let reactCalls: number;
 
   beforeEach(() => {
-    jest.spyOn(React, 'createElement').mockImplementation(() => {
+    jest.spyOn(React, 'createElement').mockImplementation((() => {
       reactCalls += 1;
-    });
+    }) as any);
     reactCalls = 0;
   });
 

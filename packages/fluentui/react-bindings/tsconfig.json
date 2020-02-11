@@ -1,0 +1,33 @@
+{
+  "extends": "@uifabric/build/typescript/tsconfig.fluentui",
+  "compilerOptions": {
+    "composite": true,
+    "outDir": "dist/dts",
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noImplicitAny": true,
+    "noUnusedParameters": true,
+    "strictNullChecks": true
+  },
+  "include": [
+    "src",
+    "test"
+  ],
+  "references": [
+    {
+      "path": "../accessibility"
+    },
+    {
+      "path": "../state"
+    },
+    {
+      "path": "../styles"
+    },
+    {
+      "path": "../react-component-event-listener"
+    },
+    {
+      "path": "../react-component-ref"
+    }
+  ]
+}
