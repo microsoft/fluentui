@@ -51,7 +51,7 @@ task('bundle:package:types', series('bundle:package:types:tsc', 'bundle:package:
 
 task('bundle:package:umd', cb => {
   process.env.NODE_ENV = 'build';
-  const webpackUMDConfig = require('../../webpack.config.umd').default;
+  const webpackUMDConfig = require('../../webpack/webpack.config.umd').default;
   const compiler = webpack(webpackUMDConfig(packageName));
 
   compiler.run((err, stats) => {
@@ -86,6 +86,6 @@ task(
 task('bundle:package', series('bundle:package:no-umd', 'bundle:package:umd'));
 
 task('bundle:all-packages', async () => {
-  await sh('lerna run build');
+  await sh('lerna run build --scope @fluentui/*');
   return del(`${config.paths.packages()}/*/dist/dts`);
 });

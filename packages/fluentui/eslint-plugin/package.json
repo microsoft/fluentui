@@ -1,0 +1,15 @@
+{
+  "name": "@fluentui/eslint-plugin",
+  "version": "0.44.0",
+  "dependencies": {
+    "@typescript-eslint/eslint-plugin": "^2.5.0",
+    "@typescript-eslint/experimental-utils": "^2.5.0"
+  },
+  "files": [
+    "rules"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "private": true
+}

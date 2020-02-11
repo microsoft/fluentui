@@ -143,7 +143,7 @@ task('build:docs:schema', () =>
 );
 
 task('build:docs:webpack', cb => {
-  webpackPlugin(require('../../webpack.config').default, cb);
+  webpackPlugin(require('../../webpack/webpack.config').default, cb);
 });
 
 task(
@@ -173,7 +173,7 @@ task('serve:docs', async () => {
 });
 
 task('serve:docs:hot', async () => {
-  const webpackConfig = require('../../webpack.config').default;
+  const webpackConfig = require('../../webpack/webpack.config').default;
   const compiler = webpack(webpackConfig);
 
   server = await serve(paths.docsDist(), config.server_host, config.server_port, app =>
