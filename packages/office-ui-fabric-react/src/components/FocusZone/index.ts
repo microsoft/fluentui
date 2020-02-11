@@ -1,1 +1,2 @@
-export * from '@fluentui/react-focus';
+export * from './FocusZone';
+export * from './FocusZone.types';
