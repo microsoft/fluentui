@@ -489,10 +489,15 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
     }
   }
 
+  private _handleDocumentKeyDown = () => {
+    console.log('hi!');
+  };
+
   /**
    * Handle the keystrokes.
    */
   private _onKeyDown = (ev: React.KeyboardEvent<HTMLElement>): boolean | undefined => {
+    let event_listener = <EventListener listener={this._handleDocumentKeyDown} target={this.context.target} type="keydown" capture />;
     if (this._portalContainsElement(ev.target as HTMLElement)) {
       // If the event target is inside a portal do not process the event.
       return;
