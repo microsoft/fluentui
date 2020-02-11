@@ -1262,7 +1262,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
     focusElement(element: HTMLElement): boolean;
     static getOuterZones(): number;
     // (undocumented)
-    render(): JSX.Element;
+    render(): React.ReactNode;
     setFocusAlignment(point: IPoint): void;
     }
 
