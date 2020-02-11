@@ -1,0 +1,37 @@
+{
+  "name": "@fluentui/code-sandbox",
+  "description": "Fluent UI tools for CodeSandbox.",
+  "version": "0.44.0",
+  "author": "Oleksandr Fediashov <a@fedyashov.com>",
+  "bugs": "https://github.com/microsoft/fluent-ui-react/issues",
+  "dependencies": {
+    "@fluentui/docs-components": "^0.44.0"
+  },
+  "devDependencies": {
+    "@fluentui/react": "^0.44.0"
+  },
+  "files": [
+    "dist"
+  ],
+  "homepage": "https://github.com/microsoft/fluent-ui-react/tree/master/packages/code-sandbox",
+  "jsnext:main": "dist/es/index.js",
+  "license": "MIT",
+  "main": "dist/commonjs/index.js",
+  "module": "dist/es/index.js",
+  "peerDependencies": {
+    "@fluentui/react": "*",
+    "react": "^16.8.0",
+    "react-dom": "^16.8.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": "microsoft/fluent-ui-react.git",
+  "scripts": {
+    "build": "gulp bundle:package:no-umd",
+    "clean": "gulp bundle:package:clean"
+  },
+  "sideEffects": false,
+  "types": "dist/es/index.d.ts",
+  "private": true
+}

@@ -64,7 +64,7 @@ function importGithubMD(root) {
 }
 
 function rewriteImports(outputPath) {
-  const files = glob.sync('**/*.+(js|ts|json)', { cwd: outputPath });
+  const files = glob.sync('**/*.+(js|ts|tsx|json)', { cwd: outputPath });
 
   for (let file of files) {
     const fullPath = path.join(outputPath, file);
@@ -72,6 +72,10 @@ function rewriteImports(outputPath) {
     if (content.includes('@fluentui/internal-tooling')) {
       console.log(`patching up ${fullPath}`);
       fs.writeFileSync(fullPath, content.replace('@fluentui/internal-tooling', '@uifabric/build'));
+    }
+    if (content.includes('../../../docs/')) {
+      console.log(`patching up ${fullPath}`);
+      fs.writeFileSync(fullPath, content.replace('../../../docs/', '../../docs/'));
     }
   }
 }
@@ -240,13 +244,63 @@ function fixKeyboardKeys(outputPath) {
 }
 
 function fixPlayground(outputPath) {
-  const devDeps = { '@types/jest-environment-puppeteer': '^4.3.1', '@types/expect-puppeteer': '^4.4.0' };
+  const devDeps = {
+    '@types/jest-environment-puppeteer': '^4.3.1',
+    '@types/expect-puppeteer': '^4.4.0',
+    enzyme: '~3.10.0',
+    'enzyme-adapter-react-16': '^1.15.0'
+  };
 
   const fullPath = path.join(outputPath, 'playground', 'package.json');
   console.log(`fixing ${fullPath} for devdeps`);
   const pkgJson = fs.readJSONSync(fullPath);
   pkgJson.devDependencies = { ...pkgJson.devDependencies, ...devDeps };
   fs.writeJSONSync(fullPath, pkgJson, { spaces: 2 });
+}
+
+function fixReactDep(outputPath) {
+  const files = glob.sync('**/package.json', { cwd: outputPath });
+
+  for (let file of files) {
+    const fullPath = path.join(outputPath, file);
+    console.log(`fixing ${fullPath} for react`);
+    const pkgJson = fs.readJSONSync(fullPath);
+    if (pkgJson.dependencies && pkgJson.dependencies.react) {
+      delete pkgJson.dependencies.react;
+      pkgJson.devDependencies.react = '16.8.6';
+    }
+
+    if (pkgJson.dependencies && pkgJson.dependencies['react-dom']) {
+      delete pkgJson.dependencies['react-dom'];
+      pkgJson.devDependencies['react-dom'] = '16.8.6';
+    }
+
+    if (pkgJson.devDependencies && pkgJson.devDependencies.react) {
+      pkgJson.devDependencies.react = '16.8.6';
+    }
+
+    if (pkgJson.devDependencies && pkgJson.devDependencies['react-dom']) {
+      pkgJson.devDependencies['react-dom'] = '16.8.6';
+    }
+
+    fs.writeJSONSync(fullPath, pkgJson, { spaces: 2 });
+  }
+}
+
+function fixJestMapping(outputPath) {
+  const files = glob.sync('**/jest.config.js', { cwd: outputPath });
+
+  for (let file of files) {
+    const fullPath = path.join(outputPath, file);
+    console.log(`fixing ${fullPath} to fix docs links`);
+    let jestConfig = fs.readFileSync(fullPath, 'utf-8');
+
+    if (jestConfig.includes('<rootDir>/../../docs/$1')) {
+      jestConfig = jestConfig.replace('<rootDir>/../../docs/$1', '<rootDir>/../docs/$1');
+    }
+
+    fs.writeFileSync(fullPath, jestConfig);
+  }
 }
 
 function importFluent() {
@@ -276,6 +330,8 @@ function importFluent() {
   fixPrivatePackageFlag(outputPath);
   fixPlayground(outputPath);
   fixKeyboardKeys(outputPath);
+  fixReactDep(outputPath);
+  fixJestMapping(outputPath);
 
   console.log('removing tmp');
   fs.removeSync(tmp);

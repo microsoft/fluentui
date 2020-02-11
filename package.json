@@ -55,6 +55,7 @@
     "cross-env": "^5.1.4",
     "danger": "^6.0.5",
     "gulp": "^4.0.2",
+    "sass-loader": "^6.0.6",
     "tsconfig-paths": "^3.7.0"
   },
   "license": "MIT",
@@ -91,5 +92,9 @@
     "disallowedChangeTypes": [
       "major"
     ]
+  },
+  "resolutions": {
+    "webpack": "4.29.5",
+    "autoprefixer": "7.2.6"
   }
 }

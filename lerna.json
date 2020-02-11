@@ -1,5 +1,10 @@
 {
-  "packages": ["packages/*", "apps/*", "scripts", "packages/fluentui/*"],
+  "packages": [
+    "packages/*",
+    "apps/*",
+    "scripts",
+    "packages/fluentui/*"
+  ],
   "npmClient": "yarn",
   "useWorkspaces": true,
   "version": "0.0.0"
