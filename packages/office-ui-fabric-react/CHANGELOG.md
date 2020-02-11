@@ -1,7 +1,30 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 06 Feb 2020 12:37:34 GMT and should not be manually modified.
+This log was last generated on Tue, 11 Feb 2020 18:37:59 GMT and should not be manually modified.
 
+## 7.92.0
+Tue, 11 Feb 2020 18:37:59 GMT
+
+### Minor changes
+
+- TagItem accepts title and defaults either children or item name (#11845) (yann.normand@gmail.com)
+### Patches
+
+- Tooltip: allow scrolling tooltip content (xgao@microsoft.com)
+- Dropdown: fix SubComponentStyles interfaces (xgao@microsoft.com)
+## 7.90.1
+Mon, 10 Feb 2020 12:39:35 GMT
+
+### Patches
+
+- Dropdown: fix item hover style (xgao@microsoft.com)
+- SpinButton: remove unneeded validation on tab key (xgao@microsoft.com)
+## 7.90.0
+Fri, 07 Feb 2020 12:41:31 GMT
+
+### Minor changes
+
+- GroupedList: Announcing position in set. (Humberto.Morimoto@microsoft.com)
 ## 7.89.1
 Thu, 06 Feb 2020 12:37:34 GMT
 

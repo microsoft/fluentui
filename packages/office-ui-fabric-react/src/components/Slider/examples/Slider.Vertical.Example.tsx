@@ -7,7 +7,7 @@ export interface ISliderVerticalExampleState {
 }
 
 // tslint:disable:jsx-no-lambda
-export const SliderVerticalExample: React.StatelessComponent = () => {
+export const SliderVerticalExample: React.FunctionComponent = () => {
   const stackTokens: IStackTokens = { childrenGap: 20 };
 
   return (

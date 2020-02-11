@@ -14,14 +14,14 @@ import * as fs from 'fs';
  * Any conditions that Fabric components should fulfill can be added to this test suite.
  */
 
-// Common props required by List-based components in order for tests to pass
+/** Common props required by List-based components in order for tests to pass */
 const listProps = {
   items: [],
   skipViewportMeasures: true,
   onShouldVirtualize: () => false
 };
 
-// Props required by certain components in order for tests to pass
+/** Props required by certain components in order for tests to pass */
 const requiredProps: { [key: string]: any } = {
   PlainCard: {
     onRenderPlainCard: () => null
@@ -92,8 +92,10 @@ const requiredProps: { [key: string]: any } = {
   }
 };
 
-// Some components inject the className prop on a child DOM element rather than the root,
-// so the test needs to look for className on the child props object that has the given class name
+/**
+ * Some components inject the className prop on a child DOM element rather than the root,
+ * so the test needs to look for className on the child props object that has the given class name
+ */
 const classNameSelectors: { [key: string]: string } = {
   Breadcrumb: 'ms-Breadcrumb',
   Callout: 'ms-Callout',
@@ -137,8 +139,13 @@ const excludedComponents: string[] = [
   'ThemeGenerator' // not intended to be tested
 ];
 
-// Some components require nodes to be mocked when creating the test component (e.g. components that use refs)
+/** Some components require nodes to be mocked when creating the test component (e.g. components that use refs) */
 const mockNodeComponents = ['ScrollablePane'];
+
+/** Map from component name to alternative package name from which it should import a version file */
+const componentPackageMap: { [componentName: string]: string } = {
+  // FocusZone: '@fluentui/react-focus'
+};
 
 /**
  * Automatically consume and test any components that are exported
@@ -279,11 +286,12 @@ describe('Top Level Component File Conformance', () => {
   // make sure that there is a version import in each corresponding top level component file
   topLevelComponentFiles.forEach(file => {
     const componentName = path.basename(file).split('.')[0];
+    const packageName = componentPackageMap[componentName] || 'office-ui-fabric-react';
 
-    it(componentName + ' imports the OUFR version file', () => {
+    it(`${componentName} imports the ${packageName} version file`, () => {
       (window as any).__packages__ = null;
       require(file);
-      expect((window as any).__packages__['office-ui-fabric-react']).not.toBeUndefined();
+      expect((window as any).__packages__[packageName]).not.toBeUndefined();
     });
   });
 });

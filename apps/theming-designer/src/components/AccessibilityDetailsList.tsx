@@ -25,7 +25,7 @@ interface IAccessibilityDetailsList {
   colorPair: String;
 }
 
-export const AccessibilityDetailsList: React.StatelessComponent<IAccessibilityDetailsListProps> = (
+export const AccessibilityDetailsList: React.FunctionComponent<IAccessibilityDetailsListProps> = (
   props: IAccessibilityDetailsListProps
 ) => {
   let allContrastRatioPairs = props.nonAccessiblePairs.concat(props.accessiblePairs);

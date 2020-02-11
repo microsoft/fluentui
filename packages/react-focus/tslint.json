@@ -1,0 +1,6 @@
+{
+  "extends": ["@uifabric/tslint-rules"],
+  "rules": {
+    "typedef": [true, "call-signature", "parameter", "property-declaration", "member-variable-declaration"]
+  }
+}

@@ -142,6 +142,6 @@ export class AppBase extends React.Component<IAppProps, IAppState> {
   };
 }
 
-export const App: React.StatelessComponent<IAppProps> = styled<IAppProps, IAppStyleProps, IAppStyles>(AppBase, getStyles, undefined, {
+export const App: React.FunctionComponent<IAppProps> = styled<IAppProps, IAppStyleProps, IAppStyles>(AppBase, getStyles, undefined, {
   scope: 'App'
 });

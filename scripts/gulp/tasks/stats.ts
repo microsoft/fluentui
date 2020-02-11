@@ -115,7 +115,7 @@ const currentStatsFilePath = paths.docsSrc('currentBundleStats.json');
 
 task('stats:build:bundle', async () => {
   process.env.NODE_ENV = 'build';
-  const webpackStatsConfig = require('../../webpack.config.stats').default;
+  const webpackStatsConfig = require('../../webpack/webpack.config.stats').default;
 
   const assets = await compileOneByOne(webpackStatsConfig);
   const results = _(assets)

@@ -25,7 +25,7 @@ export const PrimaryButtonTokens: IButtonComponent['tokens'] = (props, theme): I
   props.disabled && disabledTokens
 ];
 
-export const PrimaryButton: React.StatelessComponent<IButtonProps> = composed({
+export const PrimaryButton: React.FunctionComponent<IButtonProps> = composed({
   displayName: 'PrimaryButton',
   slots,
   state,

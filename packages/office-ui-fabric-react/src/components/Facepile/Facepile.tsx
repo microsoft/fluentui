@@ -7,7 +7,7 @@ import { styles } from './Facepile.styles';
 /**
  * The Facepile shows a list of faces or initials in a horizontal lockup. Each circle represents a person.
  */
-export const Facepile: React.StatelessComponent<IFacepileProps> = styled<IFacepileProps, IFacepileStyleProps, IFacepileStyles>(
+export const Facepile: React.FunctionComponent<IFacepileProps> = styled<IFacepileProps, IFacepileStyleProps, IFacepileStyles>(
   FacepileBase,
   styles,
   undefined,

@@ -8,7 +8,7 @@ import { Platforms } from '../../../interfaces/Platforms';
 
 const baseUrl = 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/apps/fabric-website/src/pages/Styles/ElevationPage/docs';
 
-export const ElevationPage: React.StatelessComponent<IStylesPageProps> = props => {
+export const ElevationPage: React.FunctionComponent<IStylesPageProps> = props => {
   const { platform } = props;
   return <StylesAreaPage {...props} {...ElevationPageProps[platform]} otherSections={_otherSections(platform) as IPageSectionProps[]} />;
 };
