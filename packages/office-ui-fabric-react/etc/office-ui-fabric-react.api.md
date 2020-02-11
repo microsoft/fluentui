@@ -7522,6 +7522,7 @@ export interface ITagItemProps extends IPickerItemProps<ITag> {
     enableTagFocusInDisabledPicker?: boolean;
     styles?: IStyleFunctionOrObject<ITagItemStyleProps, ITagItemStyles>;
     theme?: ITheme;
+    title?: string;
 }
 
 // @public
