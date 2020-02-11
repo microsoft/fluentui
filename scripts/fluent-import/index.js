@@ -134,8 +134,9 @@ function fixTsConfigs(outputPath) {
 
     // TODO (fui repo merge): we need to unify behind a single set of tsconfig (as it is, we will have 3)
     if (tsconfig.extends) {
-      if (tsconfig.extends.includes('../../build')) {
-        tsconfig.extends = '@uifabric/build/typescript/tsconfig.fluentui';
+      if (tsconfig.extends.includes('../build')) {
+        // TODO (fui repo merge): we need to switch to using @uifabric/build for this later
+        tsconfig.extends = '../../../scripts/typescript/tsconfig.fluentui';
       } else {
         tsconfig.extends = '@uifabric/build/typescript/tsconfig.common';
       }

@@ -82,14 +82,14 @@ task('build:docs:component-info', () =>
 
 task('build:docs:component-menu', () =>
   src(componentsSrc, { since: lastRun('build:docs:component-menu') })
-    .pipe(gulpComponentMenu())
+    .pipe(cache(gulpComponentMenu()))
     .pipe(dest(paths.docsSrc()))
 );
 
 task('build:docs:component-menu-behaviors', () =>
   src(behaviorSrc, { since: lastRun('build:docs:component-menu-behaviors') })
     .pipe(remember('component-menu-behaviors'))
-    .pipe(gulpComponentMenuBehaviors())
+    .pipe(cache(gulpComponentMenuBehaviors()))
     .pipe(dest(paths.docsSrc()))
 );
 
