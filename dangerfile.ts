@@ -1,8 +1,8 @@
 import { danger, fail, warn, markdown, message } from 'danger';
-import checkChangelog from '../fluent/build/dangerjs/checkChangelog';
-import detectChangedDependencies from '../fluent/build/dangerjs/detectChangedDependencies';
-import detectNonApprovedDependencies from '../fluent/build/dangerjs/detectNonApprovedDependencies';
-import checkPerfRegressions from '../fluent/build/dangerjs/checkPerfRegressions';
+import checkChangelog from './scripts/dangerjs/checkChangelog';
+import detectChangedDependencies from './scripts/dangerjs/detectChangedDependencies';
+import detectNonApprovedDependencies from './scripts/dangerjs/detectNonApprovedDependencies';
+import checkPerfRegressions from './scripts/dangerjs/checkPerfRegressions';
 
 /**
  * This trick (of explicitly passing Danger JS utils as function arg, instead of importing them at places where needed)
