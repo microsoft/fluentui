@@ -2,6 +2,147 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Mon, 10 Feb 2020 12:39:35 GMT",
+      "tag": "office-ui-fabric-react_v7.90.1",
+      "version": "7.90.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Dropdown: fix item hover style",
+            "author": "xgao@microsoft.com",
+            "commit": "d46c6727c4f1682f8efc1d4a5565eb4092084271"
+          },
+          {
+            "comment": "SpinButton: remove unneeded validation on tab key",
+            "author": "xgao@microsoft.com",
+            "commit": "1726b7d2ef8b6da56cd26b56e832eb8afb9ca7cf"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 07 Feb 2020 12:41:31 GMT",
+      "tag": "office-ui-fabric-react_v7.90.0",
+      "version": "7.90.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "GroupedList: Announcing position in set.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "666329aad1b362ee3d57ed8134f8398bab2347aa"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Remove unused config files",
+            "author": "elcraig@microsoft.com",
+            "commit": "96ccf88b8f44981d21a3903789874a13a2f79b1d"
+          },
+          {
+            "comment": "moved storybook config",
+            "author": "kchau@microsoft.com",
+            "commit": "5612f0eff3ea9ce3f6d367979b208f3c2489d330"
+          },
+          {
+            "comment": "uniting build across fluent and fabric",
+            "author": "kchau@microsoft.com",
+            "commit": "f9503d808bc0971e843024c9fb679c0ed5a67fbb"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 06 Feb 2020 12:37:34 GMT",
+      "tag": "office-ui-fabric-react_v7.89.1",
+      "version": "7.89.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "ev.defaultPrevented is not a function, remove errant ()",
+            "author": "mahelles@microsoft.com",
+            "commit": "5f39660dd3f6fe2a7fb8b938c7cce0bff1961321"
+          },
+          {
+            "comment": "DocumentCard: Updating DocumentCardLocations styles to latest Fluent specs.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "7c633354c815d882a1eae4f1a5ecf0b9000199a2"
+          },
+          {
+            "comment": "MaskedTextField: fix MaskedTextField captures focus on re-render on Edge",
+            "author": "xgao@microsoft.com",
+            "commit": "9df0b75a75911657f62c81e2a3c8ec418ddbbc47"
+          },
+          {
+            "comment": "Dropdown: remove unnecessary focus calls",
+            "author": "xgao@microsoft.com",
+            "commit": "47776890deb9f54dfa633c72114a51c071367319"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 05 Feb 2020 12:43:32 GMT",
+      "tag": "office-ui-fabric-react_v7.89.0",
+      "version": "7.89.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "TeachingBubble: Applying Callout style-related props like calloutWidth and calloutMaxWidth.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "3bca52530977d30df2b647d1605f683bbb6ca090"
+          },
+          {
+            "comment": "ChoiceGroup: fix option label text being cutoff",
+            "author": "xgao@microsoft.com",
+            "commit": "3d48d2e62a81654795aba1ea59f8e2e1641d6400"
+          },
+          {
+            "comment": "Pickers: remove input X button in Edge",
+            "author": "xgao@microsoft.com",
+            "commit": "a1db103bb541a92da7c754be85c823daedddca57"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "TeachingBubble: Fixing styling when TeachingBubble has close button but no headline.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "010803b8e84dbdbf0a3081975fc9725bbfaf2a4c"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 03 Feb 2020 20:04:10 GMT",
+      "tag": "office-ui-fabric-react_v7.88.1",
+      "version": "7.88.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Text: Updating docs and style logic to remove 'inherit' by default behavior.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "ef797d1a598395ea8fddf5c275b01bf043c5840f"
+          },
+          {
+            "comment": "Dialog: Fix DialogContent titleProps",
+            "author": "xgao@microsoft.com",
+            "commit": "9e0dd8e0c13cba7a7dc0ba4bb636c837c17440e9"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Prevent the ComponentExamples test from eating errors",
+            "author": "elcraig@microsoft.com",
+            "commit": "f6fdd3eefc61817a53077b45f37dd3d7da8d3420"
+          },
+          {
+            "comment": "DateTime: fix broken test",
+            "author": "joschect@microsoft.com",
+            "commit": "65e124a96e3d37e81a0a9cadf5ad36ec36a2df60"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 31 Jan 2020 19:00:10 GMT",
       "tag": "office-ui-fabric-react_v7.88.0",
       "version": "7.88.0",

@@ -475,7 +475,6 @@ export class SpinButton extends React.Component<ISpinButtonProps, ISpinButtonSta
         this._updateValue(false /* shouldSpin */, this._initialStepDelay, this._onDecrement!);
         break;
       case KeyCodes.enter:
-      case KeyCodes.tab:
         this._validate(event);
         break;
       case KeyCodes.escape:

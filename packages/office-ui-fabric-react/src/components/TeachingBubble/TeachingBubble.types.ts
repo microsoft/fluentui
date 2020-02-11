@@ -5,7 +5,7 @@ import { TeachingBubbleContentBase } from './TeachingBubbleContent.base';
 import { IImageProps } from '../../Image';
 import { IButtonProps } from '../../Button';
 import { IAccessiblePopupProps } from '../../common/IAccessiblePopupProps';
-import { ICalloutProps, Target } from '../../Callout';
+import { ICalloutProps, ICalloutContentStyleProps, Target } from '../../Callout';
 import { IStyle, ITheme } from '../../Styling';
 import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 
@@ -126,14 +126,16 @@ export interface ITeachingBubbleProps extends React.ClassAttributes<TeachingBubb
  */
 export type ITeachingBubbleStyleProps = Required<Pick<ITeachingBubbleProps, 'theme'>> &
   Pick<ITeachingBubbleProps, 'hasCondensedHeadline' | 'hasSmallHeadline' | 'isWide'> & {
-    /** Class name for callout. */
-    calloutClassName?: string;
+    /** Style props for callout. */
+    calloutProps?: ICalloutContentStyleProps;
     /** Class name for primary button. */
     primaryButtonClassName?: string;
     /** Class name for secondary button. */
     secondaryButtonClassName?: string;
     /** If the close button is visible. */
     hasCloseButton?: boolean;
+    /** If a headline has been specified. */
+    hasHeadline?: boolean;
   };
 
 /**

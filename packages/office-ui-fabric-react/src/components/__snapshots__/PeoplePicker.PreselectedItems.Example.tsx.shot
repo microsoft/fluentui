@@ -1450,6 +1450,9 @@ exports[`Component Examples renders PeoplePicker.PreselectedItems.Example.tsx co
                   padding-right: 6px;
                   padding-top: 0;
                 }
+                &::-ms-clear {
+                  display: none;
+                }
             data-lpignore={true}
             disabled={false}
             onBlur={[Function]}

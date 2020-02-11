@@ -4424,9 +4424,9 @@ export interface IDropdownStyles {
 
 // @public (undocumented)
 export interface IDropdownSubComponentStyles {
-    label: IStyleFunctionOrObject<ILabelStyleProps, any>;
-    multiSelectItem: IStyleFunctionOrObject<ICheckboxStyleProps, any>;
-    panel: IStyleFunctionOrObject<IPanelStyleProps, any>;
+    label: IStyleFunctionOrObject<ILabelStyleProps, ILabelStyles>;
+    multiSelectItem: IStyleFunctionOrObject<ICheckboxStyleProps, ICheckboxStyles>;
+    panel: IStyleFunctionOrObject<IPanelStyleProps, IPanelStyles>;
 }
 
 // @public (undocumented)
@@ -4904,6 +4904,8 @@ export interface IGroupFooterStyles {
 
 // @public (undocumented)
 export interface IGroupHeaderProps extends IGroupDividerProps {
+    ariaPosInSet?: number;
+    ariaSetSize?: number;
     expandButtonProps?: React.HTMLAttributes<HTMLButtonElement>;
     groupedListId?: string;
     selectAllButtonProps?: React.HTMLAttributes<HTMLButtonElement>;
@@ -7520,6 +7522,7 @@ export interface ITagItemProps extends IPickerItemProps<ITag> {
     enableTagFocusInDisabledPicker?: boolean;
     styles?: IStyleFunctionOrObject<ITagItemStyleProps, ITagItemStyles>;
     theme?: ITheme;
+    title?: string;
 }
 
 // @public
@@ -7589,10 +7592,11 @@ export interface ITeachingBubbleState {
 
 // @public (undocumented)
 export type ITeachingBubbleStyleProps = Required<Pick<ITeachingBubbleProps, 'theme'>> & Pick<ITeachingBubbleProps, 'hasCondensedHeadline' | 'hasSmallHeadline' | 'isWide'> & {
-    calloutClassName?: string;
+    calloutProps?: ICalloutContentStyleProps;
     primaryButtonClassName?: string;
     secondaryButtonClassName?: string;
     hasCloseButton?: boolean;
+    hasHeadline?: boolean;
 };
 
 // @public (undocumented)

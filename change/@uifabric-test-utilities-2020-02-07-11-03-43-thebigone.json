@@ -1,0 +1,9 @@
+{
+  "type": "none",
+  "comment": "update enzyme",
+  "packageName": "@uifabric/test-utilities",
+  "email": "kchau@microsoft.com",
+  "commit": "495983aec20488918f3d1ee87a8af92cb93d208f",
+  "dependentChangeType": "patch",
+  "date": "2020-02-07T19:03:40.730Z"
+}
