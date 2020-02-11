@@ -147,6 +147,12 @@ export interface IColorPickerStrings {
   alpha?: string;
 
   /**
+   * Label for the transparency text field.
+   * @defaultvalue Transparency
+   */
+  transparency?: string;
+
+  /**
    * Customized aria-label for the alpha slider.
    * Also used as transparency aria label when useTransparencySlider is true.
    */

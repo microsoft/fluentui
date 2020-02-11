@@ -2588,6 +2588,7 @@ export interface IColorPickerStrings {
     svAriaDescription?: string;
     svAriaLabel?: string;
     svAriaValueFormat?: string;
+    transparency?: string;
 }
 
 // @public (undocumented)

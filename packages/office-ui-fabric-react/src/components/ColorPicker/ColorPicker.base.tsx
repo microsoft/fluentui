@@ -51,6 +51,7 @@ export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPi
       green: 'Green',
       blue: 'Blue',
       alpha: 'Alpha',
+      transparency: 'Transparency',
       hueAriaLabel: 'Hue',
       svAriaLabel: ColorRectangleBase.defaultProps.ariaLabel!,
       svAriaValueFormat: ColorRectangleBase.defaultProps.ariaValueFormat!,
@@ -65,7 +66,8 @@ export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPi
    * Strings displayed in the UI as text field labels (these are in a separate object for convenient
    * indexing by short color component name).
    */
-  private _textLabels: { [K in keyof IRGBHex]: string };
+  private _textLabels: { [K in keyof IRGBHex | 'transparency']: string };
+
   /** Strings besides red/green/blue/alpha/hex */
   private _strings: Required<IColorPickerStrings>;
 
@@ -91,7 +93,8 @@ export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPi
       g: props.greenLabel || strings.green || defaultStrings.green,
       b: props.blueLabel || strings.blue || defaultStrings.blue,
       a: props.alphaLabel || strings.alpha || defaultStrings.alpha,
-      hex: props.hexLabel || strings.hex || defaultStrings.hex
+      hex: props.hexLabel || strings.hex || defaultStrings.hex,
+      transparency: props.alphaLabel || strings.transparency || defaultStrings.transparency
     };
 
     this._strings = {
@@ -163,7 +166,7 @@ export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPi
                 <ColorSlider
                   className="is-alpha"
                   isAlpha
-                  ariaLabel={strings.alphaAriaLabel || textLabels.a}
+                  ariaLabel={strings.alphaAriaLabel || useTransparencySlider ? textLabels.transparency : textLabels.a}
                   useTransparencySlider={useTransparencySlider}
                   overlayColor={color.hex}
                   minValue={0}
@@ -194,7 +197,7 @@ export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPi
                 <td>{textLabels.r}</td>
                 <td>{textLabels.g}</td>
                 <td>{textLabels.b}</td>
-                {!alphaSliderHidden && <td>{useTransparencySlider ? props.alphaLabel : textLabels.a}</td>}
+                {!alphaSliderHidden && <td>{useTransparencySlider ? textLabels.transparency : textLabels.a}</td>}
               </tr>
             </thead>
             <tbody>
@@ -211,7 +214,7 @@ export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPi
                         onBlur={this._onBlur}
                         value={this._getDisplayValue(comp)}
                         spellCheck={false}
-                        ariaLabel={textLabels[comp]}
+                        ariaLabel={useTransparencySlider ? textLabels.transparency : textLabels[comp]}
                         autoComplete="off"
                       />
                     </td>
