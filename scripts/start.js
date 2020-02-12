@@ -19,11 +19,15 @@ const projectsWithStartCommand = Object.entries(allPackages)
   .filter(n => n && !defaults.includes(n.title))
   .sort((a, b) => (a.title === b.title ? 0 : a.title > b.title ? 1 : -1));
 
+const suggest = (input, choices) => Promise.resolve(choices.filter(i => i.title.includes(input)));
+
 (async () => {
   const response = await prompts({
-    type: 'select',
+    type: 'autocomplete',
     name: 'project',
-    message: 'Which project to start?',
+
+    message: 'Which project to start (select or type partial name)?',
+    suggest,
     choices: [...defaults.map(p => ({ title: p, value: p })), ...projectsWithStartCommand]
   });
 
