@@ -2,6 +2,7 @@ import * as React from 'react';
 import { IPickerItemProps } from './PickerItem.types';
 import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 import { ISuggestionModel, ISuggestionsProps } from './Suggestions/Suggestions.types';
+import { Autofill } from '../Autofill';
 import { ICalloutProps } from '../../Callout';
 import { ITheme, IStyle } from '../../Styling';
 import { ISuggestionItemProps } from '../pickers/Suggestions/SuggestionsItem.types';
@@ -35,7 +36,7 @@ export interface IBasePicker<T> {
  * displaying persona's then type T could either be of Persona or IPersona props
  * {@docCategory Pickers}
  */
-export interface IBasePickerProps<T> extends React.PropsWithChildren<{}> {
+export interface IBasePickerProps<T> extends React.Props<any> {
   /**
    * Optional callback to access the IBasePicker interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
@@ -95,12 +96,12 @@ export interface IBasePickerProps<T> extends React.PropsWithChildren<{}> {
    * A callback for when the user put focus on the picker
    * @deprecated Use `inputProps.onFocus` instead
    */
-  onFocus?: React.FocusEventHandler<HTMLInputElement>;
+  onFocus?: React.FocusEventHandler<HTMLInputElement | Autofill>;
 
   /**
    * A callback for when the user moves the focus away from the picker
    */
-  onBlur?: React.FocusEventHandler<HTMLInputElement>;
+  onBlur?: React.FocusEventHandler<HTMLInputElement | Autofill>;
 
   /**
    * A callback to get text from an item. Used to autofill text in the pickers.

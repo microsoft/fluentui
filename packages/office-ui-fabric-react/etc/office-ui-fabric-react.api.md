@@ -1504,7 +1504,7 @@ export interface IActivityItemStyles {
 }
 
 // @public (undocumented)
-export interface IAnnouncedProps extends React.PropsWithChildren<React.HTMLAttributes<HTMLDivElement>> {
+export interface IAnnouncedProps extends React.Props<AnnouncedBase>, React.HTMLAttributes<HTMLDivElement> {
     'aria-live'?: 'off' | 'polite' | 'assertive';
     as?: React.ElementType;
     message?: string;
@@ -1678,7 +1678,7 @@ export interface IBasePicker<T> {
 }
 
 // @public
-export interface IBasePickerProps<T> extends React.PropsWithChildren<{}> {
+export interface IBasePickerProps<T> extends React.Props<any> {
     className?: string;
     componentRef?: IRefObject<IBasePicker<T>>;
     createGenericItem?: (input: string, ValidationState: ValidationState) => ISuggestionModel<T> | T;
@@ -1688,14 +1688,14 @@ export interface IBasePickerProps<T> extends React.PropsWithChildren<{}> {
     getTextFromItem?: (item: T, currentValue?: string) => string;
     inputProps?: IInputProps;
     itemLimit?: number;
-    onBlur?: React.FocusEventHandler<HTMLInputElement>;
+    onBlur?: React.FocusEventHandler<HTMLInputElement | Autofill>;
     onChange?: (items?: T[]) => void;
     onDismiss?: (ev?: any, selectedItem?: T) => void;
     // @deprecated
     onEmptyInputFocus?: (selectedItems?: T[]) => T[] | PromiseLike<T[]>;
     onEmptyResolveSuggestions?: (selectedItems?: T[]) => T[] | PromiseLike<T[]>;
     // @deprecated
-    onFocus?: React.FocusEventHandler<HTMLInputElement>;
+    onFocus?: React.FocusEventHandler<HTMLInputElement | Autofill>;
     onGetMoreResults?: (filter: string, selectedItems?: T[]) => T[] | PromiseLike<T[]>;
     onInputChange?: (input: string) => string;
     onItemSelected?: (selectedItem?: T) => T | PromiseLike<T> | null;
@@ -3811,7 +3811,7 @@ export interface IDialogFooter {
 }
 
 // @public (undocumented)
-export interface IDialogFooterProps extends React.PropsWithChildren<{}> {
+export interface IDialogFooterProps extends React.Props<DialogFooterBase> {
     className?: string;
     componentRef?: IRefObject<IDialogFooter>;
     styles?: IStyleFunctionOrObject<IDialogFooterStyleProps, IDialogFooterStyles>;
@@ -4017,8 +4017,10 @@ export interface IDocumentCardActivityStyles {
 export interface IDocumentCardDetails {
 }
 
+// Warning: (ae-forgotten-export) The symbol "DocumentCardDetailsBase" needs to be exported by the entry point index.d.ts
+//
 // @public (undocumented)
-export interface IDocumentCardDetailsProps extends React.PropsWithChildren<{}> {
+export interface IDocumentCardDetailsProps extends React.Props<DocumentCardDetailsBase> {
     className?: string;
     componentRef?: IRefObject<IDocumentCardDetails>;
     styles?: IStyleFunctionOrObject<IDocumentCardDetailsStyleProps, IDocumentCardDetailsStyles>;
@@ -4206,8 +4208,10 @@ export interface IDocumentCardProps extends IBaseProps<IDocumentCard>, React.HTM
 export interface IDocumentCardStatus {
 }
 
+// Warning: (ae-forgotten-export) The symbol "DocumentCardStatusBase" needs to be exported by the entry point index.d.ts
+//
 // @public (undocumented)
-export interface IDocumentCardStatusProps extends React.PropsWithChildren<{}> {
+export interface IDocumentCardStatusProps extends React.Props<DocumentCardStatusBase> {
     className?: string;
     componentRef?: IRefObject<IDocumentCardStatus>;
     status: string;
@@ -7248,7 +7252,7 @@ export interface IStickyContext {
 }
 
 // @public (undocumented)
-export interface IStickyProps extends React.PropsWithChildren<{}> {
+export interface IStickyProps extends React.Props<Sticky> {
     componentRef?: IRefObject<IStickyProps>;
     isScrollSynced?: boolean;
     stickyBackgroundColor?: string;
@@ -7383,7 +7387,7 @@ export interface ISuggestionsItemStyles {
 }
 
 // @public
-export interface ISuggestionsProps<T> extends React.PropsWithChildren<{}> {
+export interface ISuggestionsProps<T> extends React.Props<any> {
     className?: string;
     componentRef?: IRefObject<ISuggestions<T>>;
     createGenericItem?: () => void;
