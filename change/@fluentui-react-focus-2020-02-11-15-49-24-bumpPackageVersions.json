@@ -1,0 +1,9 @@
+{
+  "type": "patch",
+  "comment": "Making package dependency versions in react-focus be consistent with other packages.",
+  "packageName": "@fluentui/react-focus",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "commit": "364cfc4e5ff88925d5bf1c8af3264ba895fe4aaa",
+  "dependentChangeType": "patch",
+  "date": "2020-02-11T23:49:24.813Z"
+}
