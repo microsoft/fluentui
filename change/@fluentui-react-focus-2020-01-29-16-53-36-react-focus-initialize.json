@@ -1,9 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Initial package check-in",
-  "packageName": "@fluentui/react-focus",
-  "email": "dzearing@microsoft.com",
-  "commit": "4f2d8efea3622ba8c9d844c68e5ed5088b858f6f",
-  "dependentChangeType": "patch",
-  "date": "2020-01-30T00:53:36.322Z"
-}
