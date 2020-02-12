@@ -46,7 +46,7 @@ export class IconBase extends React.Component<IIconProps, IIconState> {
     };
     const ImageType = (imageLoadError && imageErrorAs) || Image;
 
-    const ariaLabel = this.props['aria-label'] || this.props.ariaLabel;
+    const ariaLabel = this.props.ariaLabel || this.props['aria-label'];
     const containerProps = ariaLabel
       ? {
           'aria-label': ariaLabel

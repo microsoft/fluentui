@@ -1504,7 +1504,7 @@ export interface IActivityItemStyles {
 }
 
 // @public (undocumented)
-export interface IAnnouncedProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface IAnnouncedProps extends React.PropsWithChildren<React.HTMLAttributes<HTMLDivElement>> {
     'aria-live'?: 'off' | 'polite' | 'assertive';
     as?: React.ElementType;
     message?: string;

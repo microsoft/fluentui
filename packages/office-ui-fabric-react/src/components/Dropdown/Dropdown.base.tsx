@@ -849,7 +849,7 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
       if (selectedKey != null) {
         return option.key === selectedKey;
       } else {
-        return !!option.selected || !!option.isSelected;
+        return !!option.isSelected || !!option.selected;
       }
     });
   }
@@ -1142,7 +1142,7 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
     const { isDisabled } = this.props;
 
     // Remove this deprecation workaround at 1.0.0
-    if (disabled === undefined) {
+    if (isDisabled !== undefined) {
       disabled = isDisabled;
     }
 

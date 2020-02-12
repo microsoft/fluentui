@@ -5,7 +5,7 @@ import { IStyleFunctionOrObject } from '../../Utilities';
 /**
  * {@docCategory Announced}
  */
-export interface IAnnouncedProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface IAnnouncedProps extends React.PropsWithChildren<React.HTMLAttributes<HTMLDivElement>> {
   /**
    * The status message provided as screen reader output
    */
