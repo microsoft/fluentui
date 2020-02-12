@@ -1,6 +1,7 @@
 {
   "name": "@fluentui/react-focus",
   "version": "0.1.0",
+  "private": true,
   "description": "Focus helpers to be used in React applications.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
