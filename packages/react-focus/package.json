@@ -50,6 +50,7 @@
   "dependencies": {
     "@uifabric/merge-styles": "^7.8.6",
     "@uifabric/set-version": "^7.0.5",
+    "@uifabric/styling": "^7.10.8",
     "@uifabric/utilities": "^7.12.0",
     "tslib": "^1.10.0"
   },
