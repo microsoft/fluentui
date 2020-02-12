@@ -1,9 +1,0 @@
-{
-  "type": "minor",
-  "comment": "ContextualMenu: change role of category options to menuitemcheckbox",
-  "packageName": "office-ui-fabric-react",
-  "email": "aneeshak@microsoft.com",
-  "commit": "7b3f82f7ee65ffdec8a34bed75932904f0e690d0",
-  "dependentChangeType": "patch",
-  "date": "2020-02-11T22:25:44.796Z"
-}

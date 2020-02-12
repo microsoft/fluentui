@@ -1,9 +1,0 @@
-{
-  "type": "patch",
-  "comment": "TextField example: fix onChange typing error when strictFunctionType is true",
-  "packageName": "office-ui-fabric-react",
-  "email": "xgao@microsoft.com",
-  "commit": "3602dd11de72d6b10d60bc5eeb624175d8cec8eb",
-  "dependentChangeType": "patch",
-  "date": "2020-02-12T03:45:19.262Z"
-}
