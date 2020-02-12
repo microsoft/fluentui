@@ -31,5 +31,8 @@ const suggest = (input, choices) => Promise.resolve(choices.filter(i => i.title.
     choices: [...defaults.map(p => ({ title: p, value: p })), ...projectsWithStartCommand]
   });
 
-  spawnSync('yarn', ['workspace', response.project, 'start', ...(extraArgs.length > 0 ? [extraArgs] : [])], { stdio: 'inherit' });
+  spawnSync('yarn', ['workspace', response.project, 'start', ...(extraArgs.length > 0 ? [extraArgs] : [])], {
+    shell: true,
+    stdio: 'inherit'
+  });
 })();
