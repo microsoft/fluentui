@@ -720,7 +720,7 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
         const selectedIndices = this.state.selectedIndices;
         if (this._focusZone.current) {
           if (selectedIndices && selectedIndices[0] && !this.props.options[selectedIndices[0]].disabled) {
-            const element: HTMLElement = getDocument()!.getElementById(`${this._id}-list${selectedIndices[0]}`);
+            const element: HTMLElement | null = getDocument()!.getElementById(`${this._id}-list${selectedIndices[0]}`);
             if (element) {
               this._focusZone.current.focusElement(element);
             }
