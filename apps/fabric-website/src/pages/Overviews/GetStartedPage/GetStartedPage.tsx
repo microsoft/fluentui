@@ -10,7 +10,7 @@ const baseUrl = 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master
 // en dashes look like regular dashes in a monospace font
 const enDash = '–';
 
-const GetStartedPageBase: React.StatelessComponent<IGetStartedPageProps> = props => {
+const GetStartedPageBase: React.FunctionComponent<IGetStartedPageProps> = props => {
   const { platform } = props;
   return (
     <Page
@@ -63,6 +63,6 @@ function _otherSections(platform: Platforms): IPageSectionProps[] {
   }
 }
 
-export const GetStartedPage: React.StatelessComponent<IGetStartedPageProps> = (props: IGetStartedPageProps) => (
+export const GetStartedPage: React.FunctionComponent<IGetStartedPageProps> = (props: IGetStartedPageProps) => (
   <PlatformContext.Consumer>{(platform: Platforms) => <GetStartedPageBase platform={platform} {...props} />}</PlatformContext.Consumer>
 );

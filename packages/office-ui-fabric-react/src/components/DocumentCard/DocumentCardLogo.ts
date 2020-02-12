@@ -4,7 +4,7 @@ import { DocumentCardLogoBase } from './DocumentCardLogo.base';
 import { getStyles } from './DocumentCardLogo.styles';
 import { IDocumentCardLogoProps, IDocumentCardLogoStyleProps, IDocumentCardLogoStyles } from './DocumentCardLogo.types';
 
-export const DocumentCardLogo: React.StatelessComponent<IDocumentCardLogoProps> = styled<
+export const DocumentCardLogo: React.FunctionComponent<IDocumentCardLogoProps> = styled<
   IDocumentCardLogoProps,
   IDocumentCardLogoStyleProps,
   IDocumentCardLogoStyles

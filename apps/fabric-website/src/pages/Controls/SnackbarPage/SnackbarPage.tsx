@@ -6,7 +6,7 @@ import { Platforms } from '../../../interfaces/Platforms';
 
 const baseUrl = 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/apps/fabric-website/src/pages/Controls/SnackbarPage/';
 
-export const SnackbarPage: React.StatelessComponent<IControlsPageProps> = props => {
+export const SnackbarPage: React.FunctionComponent<IControlsPageProps> = props => {
   const { platform } = props;
   return <ControlsAreaPage {...props} {...SnackbarPageProps[platform]} otherSections={_otherSections(platform) as IPageSectionProps[]} />;
 };

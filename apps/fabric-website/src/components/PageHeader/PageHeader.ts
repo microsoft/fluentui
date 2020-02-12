@@ -1,1 +1,1 @@
-export const PageHeader: React.StatelessComponent<any> = () => null;
+export const PageHeader: React.FunctionComponent<any> = () => null;

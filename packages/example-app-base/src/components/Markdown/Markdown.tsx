@@ -24,7 +24,7 @@ const getStyles: IStyleFunction<IMarkdownStyleProps, IMarkdownStyles> = props =>
 
 const getClassNames = classNamesFunction<IMarkdownStyleProps, IMarkdownStyles>();
 
-const MarkdownBase: React.StatelessComponent<IMarkdownProps> & { displayName?: string } = props => {
+const MarkdownBase: React.FunctionComponent<IMarkdownProps> & { displayName?: string } = props => {
   const { styles, theme, children } = props;
   const classNames = getClassNames(styles, { theme: theme! });
   return (
@@ -112,7 +112,7 @@ function getMarkdownProps(subComponentStyles: IMarkdownSubComponentStyles): Mark
   };
 }
 
-export const Markdown: React.StatelessComponent<IMarkdownProps> = styled<IMarkdownProps, IMarkdownStyleProps, IMarkdownStyles>(
+export const Markdown: React.FunctionComponent<IMarkdownProps> = styled<IMarkdownProps, IMarkdownStyleProps, IMarkdownStyles>(
   MarkdownBase,
   getStyles,
   undefined,

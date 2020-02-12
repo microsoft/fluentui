@@ -23,7 +23,7 @@ export const DefaultButtonTokens: IButtonComponent['tokens'] = (props, theme): I
   props.disabled && disabledTokens
 ];
 
-export const DefaultButton: React.StatelessComponent<IButtonProps> = composed({
+export const DefaultButton: React.FunctionComponent<IButtonProps> = composed({
   displayName: 'DefaultButton',
   slots,
   state,

@@ -53,20 +53,18 @@ const steps = [
   { template: 'Readme', output: 'README.md' },
   { template: 'JustConfig', output: 'just.config.js' },
   { template: 'JestConfig', output: 'jest.config.js' },
-  { template: 'JsConfig', output: 'jsconfig.json' },
   { template: 'PackageJson', output: 'package.json' },
-  { template: 'PrettierConfig', output: 'prettier.config.js' },
   { template: 'TsConfig', output: 'tsconfig.json' },
   { template: 'TsLint', output: 'tslint.json' },
   { template: 'WebpackConfig', output: 'webpack.config.js' },
   { template: 'WebpackServeConfig', output: 'webpack.serve.config.js' },
-  { template: 'Tests', output: path.join('config', 'tests.js') },
-  { template: 'PreCopy', output: path.join('config', 'pre-copy.json') },
-  { template: 'IndexTs', output: path.join('src', 'index.ts') },
-  { template: 'Version', output: path.join('src', 'version.ts') },
-  { template: 'AppDefinition', output: path.join('src', 'demo', 'AppDefinition.tsx') },
-  { template: 'GettingStartedPage', output: path.join('src', 'demo', 'GettingStartedPage.tsx') },
-  { template: 'Demo', output: path.join('src', 'demo', 'index.tsx') }
+  { template: 'Tests', output: 'config/tests.js' },
+  { template: 'PreCopy', output: 'config/pre-copy.json' },
+  { template: 'IndexTs', output: 'src/index.ts' },
+  { template: 'Version', output: 'src/version.ts' },
+  { template: 'AppDefinition', output: 'src/demo/AppDefinition.tsx' },
+  { template: 'GettingStartedPage', output: 'src/demo/GettingStartedPage.tsx' },
+  { template: 'Demo', output: 'src/demo/index.tsx' }
 ];
 
 // Strings

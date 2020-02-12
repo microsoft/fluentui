@@ -34,7 +34,7 @@ export interface IDragOptions {
   /**
    * The Draggable Control Menu so that the draggable zone can be moved via the keyboard
    */
-  menu: React.StatelessComponent<IContextualMenuProps>;
+  menu: React.FunctionComponent<IContextualMenuProps>;
 }
 
 /**

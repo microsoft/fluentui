@@ -9,7 +9,7 @@ import { Spinner, Stack, IStackProps } from 'office-ui-fabric-react';
 
 const stackProps: IStackProps = { tokens: { childrenGap: 16 }, padding: 8, maxWidth: 400 };
 
-const SpinnerButton: React.StatelessComponent<IButtonProps> = composed<IButtonProps, IButtonTokens, IButtonStyles>(Button, {
+const SpinnerButton: React.FunctionComponent<IButtonProps> = composed<IButtonProps, IButtonTokens, IButtonStyles>(Button, {
   slots: { icon: Spinner }
 });
 
@@ -47,11 +47,11 @@ const IconAtEndButtonView: IButtonComponent['view'] = (props, slots) => {
   );
 };
 
-const IconAtEndButton: React.StatelessComponent<IButtonProps> = composed(Button, {
+const IconAtEndButton: React.FunctionComponent<IButtonProps> = composed(Button, {
   view: IconAtEndButtonView
 });
 
-const SpinnerAtEndButton: React.StatelessComponent<IButtonProps> = composed<IButtonProps, IButtonTokens, IButtonStyles>(IconAtEndButton, {
+const SpinnerAtEndButton: React.FunctionComponent<IButtonProps> = composed<IButtonProps, IButtonTokens, IButtonStyles>(IconAtEndButton, {
   slots: { icon: Spinner }
 });
 

@@ -2,7 +2,7 @@ import * as React from 'react';
 import { TextField, MaskedTextField } from 'office-ui-fabric-react/lib/TextField';
 import { Stack, IStackProps } from 'office-ui-fabric-react/lib/Stack';
 
-export const TextFieldBasicExample: React.StatelessComponent = () => {
+export const TextFieldBasicExample: React.FunctionComponent = () => {
   // TextFields don't have to be inside Stacks, we're just using Stacks for layout
   const columnProps: Partial<IStackProps> = {
     tokens: { childrenGap: 15 },

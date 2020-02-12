@@ -6,7 +6,7 @@ export interface ISignalProps extends React.HTMLAttributes<HTMLSpanElement> {
   ariaLabel?: string;
 }
 
-export type Signal = React.StatelessComponent<ISignalProps>;
+export type Signal = React.FunctionComponent<ISignalProps>;
 
 export const Signal: Signal = (props: ISignalProps): JSX.Element => {
   const { ariaLabel, className, children, ...spanProps } = props;

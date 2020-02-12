@@ -154,7 +154,7 @@ function _isElement(x: any): x is JSX.Element {
   return !!(x && (x as JSX.Element).props && (x as JSX.Element).type);
 }
 
-export const SideRail: React.StatelessComponent<ISideRailProps> = styled<ISideRailProps, ISideRailStyleProps, ISideRailStyles>(
+export const SideRail: React.FunctionComponent<ISideRailProps> = styled<ISideRailProps, ISideRailStyleProps, ISideRailStyles>(
   SideRailBase,
   getStyles,
   undefined,

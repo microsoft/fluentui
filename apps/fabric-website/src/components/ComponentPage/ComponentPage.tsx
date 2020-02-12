@@ -28,7 +28,7 @@ const componentPageStyles: IStyleSet<Partial<IComponentPageStyles>> = {
   }
 };
 
-export const ComponentPage: React.StatelessComponent = props => {
+export const ComponentPage: React.FunctionComponent = props => {
   return (
     <Customizer
       scopedSettings={{
