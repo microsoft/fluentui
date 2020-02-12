@@ -187,6 +187,14 @@ function fixEslint(outputPath) {
     content.extends = ['../../../scripts/eslint/index'];
     fs.writeJSONSync(fullPath, content, { spaces: 2 });
   }
+
+  const eslintPkgJsonFile = path.join(outputPath, 'eslint-plugin/package.json');
+  let eslintPkgJson = fs.readJsonSync(eslintPkgJsonFile);
+  eslintPkgJson.dependencies = {
+    '@typescript-eslint/eslint-plugin': '2.8.0',
+    '@typescript-eslint/experimental-utils': '2.8.0'
+  };
+  fs.writeJsonSync(eslintPkgJsonFile, eslintPkgJson, { spaces: 2 });
 }
 
 function fixScriptsPackageName(outputPath) {
