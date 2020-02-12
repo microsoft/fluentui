@@ -4058,6 +4058,11 @@
   resolved "https://registry.yarnpkg.com/@types/parse-json/-/parse-json-4.0.0.tgz#2f8bb441434d163b35fb8ffdccd7138927ffb8c0"
   integrity sha512-//oorEZjL6sbPcKUaCdIGlIUeH26mgzimjBB77G6XRgnDl/L5wOnpyBGRe/Mmf5CVW3PwEBE1NjiMZ/ssFh4wA==
 
+"@types/prompts@^2.0.3":
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/@types/prompts/-/prompts-2.0.3.tgz#9928714a7a5c2017919f8fecef517369d27dd5df"
+  integrity sha512-5+r923liPATAzRQhLTGfrRuel9vv7Mk1DZ/CJkgRrLctmM9QeOIbuVolA7wAACaw+m0Ysug85CjPbkb5ZgE1Ag==
+
 "@types/prop-types@*", "@types/prop-types@15.7.1":
   version "15.7.1"
   resolved "https://registry.yarnpkg.com/@types/prop-types/-/prop-types-15.7.1.tgz#f1a11e7babb0c3cad68100be381d1e064c68f1f6"

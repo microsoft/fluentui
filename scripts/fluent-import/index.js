@@ -334,6 +334,43 @@ function fixDocs(outputPath) {
 
     fs.writeFileSync(fullPath, contents);
   }
+
+  const docsPackageJsonFile = path.join(outputPath, 'docs/package.json');
+  const docsPackageJson = fs.readJsonSync(docsPackageJsonFile);
+  docsPackageJson.scripts = {
+    start: 'gulp docs'
+  };
+  fs.writeJsonSync(docsPackageJsonFile, docsPackageJson, { spaces: 2 });
+}
+
+function fixInternalPackageDeps(outputPath) {
+  const getAllPackageInfo = require('../monorepo/getAllPackageInfo');
+  const files = glob.sync('**/package.json', { cwd: outputPath });
+
+  const allPackages = getAllPackageInfo();
+  const fabricPackages = Object.keys(allPackages)
+    .filter(p => !p.startsWith('@fluentui'))
+    .reduce((pkgs, pkg) => {
+      return { ...pkgs, [pkg]: allPackages[pkg] };
+    }, {});
+
+  for (let file of files) {
+    const fullPath = path.join(outputPath, file);
+    const pkgJson = fs.readJsonSync(fullPath);
+
+    for (const depType of ['dependencies', 'devDependencies']) {
+      if (pkgJson[depType]) {
+        for (let dep of Object.keys(pkgJson[depType])) {
+          if (fabricPackages[dep]) {
+            const range = pkgJson[depType][dep][0];
+            pkgJson[depType][dep] = `${/^[^~]/.test(range) ? range : ''}${fabricPackages[dep].packageJson.version}`;
+          }
+        }
+      }
+    }
+
+    fs.writeJsonSync(fullPath, pkgJson, { spaces: 2 });
+  }
 }
 
 function importFluent() {
@@ -366,6 +403,7 @@ function importFluent() {
   fixReactDep(outputPath);
   fixJestMapping(outputPath);
   fixDocs(outputPath);
+  fixInternalPackageDeps(outputPath);
 
   console.log('removing tmp');
   fs.removeSync(tmp);

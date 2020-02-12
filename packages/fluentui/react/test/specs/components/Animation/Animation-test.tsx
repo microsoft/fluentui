@@ -1,12 +1,13 @@
-import * as React from 'react'
-import { isConformant } from 'test/specs/commonTests'
+import * as React from 'react';
+import { isConformant } from 'test/specs/commonTests';
 
-import Animation from 'src/components/Animation/Animation'
+import Animation from 'src/components/Animation/Animation';
 
 describe('Animation', () => {
   isConformant(Animation, {
+    constructorName: 'Animation',
     hasAccessibilityProp: false,
     requiredProps: { children: <div /> },
-    handlesAsProp: false,
-  })
-})
+    handlesAsProp: false
+  });
+});
