@@ -1,0 +1,9 @@
+{
+  "type": "patch",
+  "comment": "Add react-focus support",
+  "packageName": "@uifabric/tsx-editor",
+  "email": "elcraig@microsoft.com",
+  "commit": "5e6d8c691d23f7881afe569ec1f19edd56242656",
+  "dependentChangeType": "patch",
+  "date": "2020-01-30T02:32:10.527Z"
+}

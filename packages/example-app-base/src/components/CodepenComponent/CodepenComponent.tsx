@@ -84,7 +84,7 @@ const CodepenComponentBase: React.FunctionComponent<ICodepenProps> = props => {
   );
 };
 
-export const CodepenComponent: React.StatelessComponent<ICodepenProps> = styled<ICodepenProps, ICodepenStyleProps, ICodepenStyles>(
+export const CodepenComponent: React.FunctionComponent<ICodepenProps> = styled<ICodepenProps, ICodepenStyleProps, ICodepenStyles>(
   CodepenComponentBase,
   getStyles,
   undefined,

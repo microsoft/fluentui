@@ -226,7 +226,7 @@ export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, IWith
    * Method to override the render of the individual menu items
    * @defaultvalue ContextualMenuItem
    */
-  contextualMenuItemAs?: React.ComponentClass<IContextualMenuItemProps> | React.StatelessComponent<IContextualMenuItemProps>;
+  contextualMenuItemAs?: React.ComponentClass<IContextualMenuItemProps> | React.FunctionComponent<IContextualMenuItemProps>;
 
   /**
    * Props to pass down to the FocusZone.

@@ -19,7 +19,7 @@ export interface ITemplatePageProps extends IPageProps<Platforms> {}
 // For an example which uses a class component (and state), see ProductsPage.
 
 // Define the base component.
-const TemplatePageBase: React.StatelessComponent<ITemplatePageProps> = props => {
+const TemplatePageBase: React.FunctionComponent<ITemplatePageProps> = props => {
   const { platform } = props;
   return (
     // The Page component is a flexible wrapper for content sections and a siderail.
@@ -101,6 +101,6 @@ function _otherSections(platform: Platforms): IPageSectionProps[] {
 }
 
 // Use the `PlatformContext.Consumer` component to ensure the platform prop is passed to the page from App correctly using react context.
-export const TemplatePage: React.StatelessComponent<IPageProps<Platforms>> = (props: IPageProps<Platforms>) => (
+export const TemplatePage: React.FunctionComponent<IPageProps<Platforms>> = (props: IPageProps<Platforms>) => (
   <PlatformContext.Consumer>{(platform: Platforms) => <TemplatePageBase platform={platform} {...props} />}</PlatformContext.Consumer>
 );

@@ -1,9 +1,0 @@
-{
-  "type": "none",
-  "comment": "Adding note to SemanticColors page on Fabric site to clarify status on our semantic slots and palette slots.",
-  "packageName": "@uifabric/styling",
-  "email": "aneeshak@microsoft.com",
-  "commit": "4faa49feeb708afb0aeaa5994eb652d9f2081804",
-  "dependentChangeType": "patch",
-  "date": "2020-02-07T19:50:01.783Z"
-}

@@ -2,6 +2,20 @@
   "name": "@uifabric/api-docs",
   "entries": [
     {
+      "date": "Tue, 11 Feb 2020 18:37:59 GMT",
+      "tag": "@uifabric/api-docs_v7.2.15",
+      "version": "7.2.15",
+      "comments": {
+        "none": [
+          {
+            "comment": "fixing released versions",
+            "author": "kchau@microsoft.com",
+            "commit": "207521eb85f200e2cda239d06eacdf5f49efdadc"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 07 Feb 2020 12:41:31 GMT",
       "tag": "@uifabric/api-docs_v7.2.12",
       "version": "7.2.12",

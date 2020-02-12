@@ -2,6 +2,44 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Tue, 11 Feb 2020 18:37:59 GMT",
+      "tag": "office-ui-fabric-react_v7.92.0",
+      "version": "7.92.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "TagItem accepts title and defaults either children or item name (#11845)",
+            "author": "yann.normand@gmail.com",
+            "commit": "f52414de3b9e691f456b0276a81039ed641fd561"
+          }
+        ],
+        "none": [
+          {
+            "comment": "update enzyme",
+            "author": "kchau@microsoft.com",
+            "commit": "495983aec20488918f3d1ee87a8af92cb93d208f"
+          },
+          {
+            "comment": "fixing released versions",
+            "author": "kchau@microsoft.com",
+            "commit": "207521eb85f200e2cda239d06eacdf5f49efdadc"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Tooltip: allow scrolling tooltip content",
+            "author": "xgao@microsoft.com",
+            "commit": "75d729ac4e0e00ad8b52f27b3da05f03cd6ed24b"
+          },
+          {
+            "comment": "Dropdown: fix SubComponentStyles interfaces",
+            "author": "xgao@microsoft.com",
+            "commit": "bd136863b3efb04911cd1214f87848ca1ae219d9"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 10 Feb 2020 12:39:35 GMT",
       "tag": "office-ui-fabric-react_v7.90.1",
       "version": "7.90.1",

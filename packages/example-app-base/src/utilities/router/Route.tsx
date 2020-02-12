@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-/** A component function which doesn't explicitly declare itself as React.StatelessComponent/SFC/FunctionComponent */
+/** A component function which doesn't explicitly declare itself as React.FunctionComponent/SFC/FunctionComponent */
 export type ComponentLike<P = {}> = React.ComponentClass<P> | ((props?: P) => React.ReactElement<P> | null);
 // ^^ This is needed so we don't break consumers who may not explicitly declare their
 // functional components as one of React's functional component types.

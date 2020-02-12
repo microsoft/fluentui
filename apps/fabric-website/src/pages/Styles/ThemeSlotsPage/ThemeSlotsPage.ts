@@ -4,7 +4,7 @@ import { IThemeSlotsPageProps, IThemeSlotsPageStyles, IThemeSlotsPageStyleProps 
 import { getStyles } from './ThemeSlotsPage.styles';
 import { ThemeSlotsPageBase } from './ThemeSlotsPage.base';
 
-export const ThemeSlotsPage: React.StatelessComponent<IThemeSlotsPageProps> = styled<
+export const ThemeSlotsPage: React.FunctionComponent<IThemeSlotsPageProps> = styled<
   IThemeSlotsPageProps,
   IThemeSlotsPageStyleProps,
   IThemeSlotsPageStyles

@@ -10,7 +10,7 @@ import {
 } from '@uifabric/example-app-base';
 import * as React from 'react';
 
-export const DemoPage: React.StatelessComponent<IDemoPageProps> = demoPageProps => {
+export const DemoPage: React.FunctionComponent<IDemoPageProps> = demoPageProps => {
   const {
     exampleKnobs,
     examples,

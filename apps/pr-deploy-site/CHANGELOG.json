@@ -2,6 +2,20 @@
   "name": "@uifabric/pr-deploy-site",
   "entries": [
     {
+      "date": "Tue, 11 Feb 2020 18:37:59 GMT",
+      "tag": "@uifabric/pr-deploy-site_v7.0.17",
+      "version": "7.0.17",
+      "comments": {
+        "none": [
+          {
+            "comment": "fixing released versions",
+            "author": "kchau@microsoft.com",
+            "commit": "207521eb85f200e2cda239d06eacdf5f49efdadc"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 31 Jan 2020 19:00:10 GMT",
       "tag": "@uifabric/pr-deploy-site_v7.0.10",
       "version": "7.0.10",

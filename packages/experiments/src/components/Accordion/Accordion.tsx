@@ -41,8 +41,8 @@ const AccordionStatics = {
   defaultProps: {}
 };
 
-export const Accordion: React.StatelessComponent<IAccordionProps> & {
-  Item: React.StatelessComponent<ICollapsibleSectionProps>;
+export const Accordion: React.FunctionComponent<IAccordionProps> & {
+  Item: React.FunctionComponent<ICollapsibleSectionProps>;
 } = createComponent(AccordionView, {
   displayName: 'Accordion',
   styles,

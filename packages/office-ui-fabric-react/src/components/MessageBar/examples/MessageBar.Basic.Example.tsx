@@ -169,7 +169,7 @@ const choiceOptions = [
   }
 ];
 
-export const MessageBarBasicExample: React.StatelessComponent = () => {
+export const MessageBarBasicExample: React.FunctionComponent = () => {
   const [choice, setChoice] = React.useState<string | undefined>(undefined);
   const showAll = choice === 'all';
 

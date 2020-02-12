@@ -5,7 +5,7 @@ import { ITextFieldProps, ITextFieldStyles, ITextFieldStyleProps } from './TextF
 import { getStyles } from './TextField.styles';
 export { ITextField } from './TextField.types';
 
-export const TextField: React.StatelessComponent<ITextFieldProps> = styled<ITextFieldProps, ITextFieldStyleProps, ITextFieldStyles>(
+export const TextField: React.FunctionComponent<ITextFieldProps> = styled<ITextFieldProps, ITextFieldStyleProps, ITextFieldStyles>(
   TextFieldBase,
   getStyles,
   undefined,

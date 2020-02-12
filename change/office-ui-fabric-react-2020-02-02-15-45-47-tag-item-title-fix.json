@@ -1,9 +1,0 @@
-{
-  "type": "minor",
-  "comment": "TagItem accepts title and defaults either children or item name (#11845)",
-  "packageName": "office-ui-fabric-react",
-  "email": "yann.normand@gmail.com",
-  "commit": "f52414de3b9e691f456b0276a81039ed641fd561",
-  "dependentChangeType": "patch",
-  "date": "2020-02-02T05:45:47.168Z"
-}
