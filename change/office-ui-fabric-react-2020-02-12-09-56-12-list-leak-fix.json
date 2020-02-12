@@ -1,0 +1,9 @@
+{
+  "type": "patch",
+  "comment": "List: clearing scrollElement on unmount to avoid retaining an edge to a dom element and leaking.",
+  "packageName": "office-ui-fabric-react",
+  "email": "dzearing@microsoft.com",
+  "commit": "8a1f887f42f85fcbdbea98970b8751411b79954a",
+  "dependentChangeType": "patch",
+  "date": "2020-02-12T17:56:12.130Z"
+}
