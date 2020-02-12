@@ -24,7 +24,7 @@ import { NavLink, NavLinkProps, withRouter } from 'react-router-dom';
 
 type ComponentMenuItem = { displayName: string; type: string };
 
-const pkg = require('../../../../packages/react/package.json');
+const pkg = require('@fluentui/react/package.json');
 const componentMenu: ComponentMenuItem[] = require('../../componentMenu');
 const behaviorMenu: ComponentMenuItem[] = require('../../behaviorMenu');
 

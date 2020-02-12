@@ -113,7 +113,7 @@ function fixTsConfigs(outputPath) {
   const files = glob.sync('**/tsconfig.json', { cwd: outputPath });
 
   const mapping = {
-    '@fluentui/*': ['packages/fluentui/*/src'],
+    '@fluentui/*': ['packages/fluentui/*/src/index'],
     'docs/*': ['packages/fluentui/docs/*'],
     'src/*': ['packages/fluentui/react/src/*'],
     'test/*': ['packages/fluentui/react/test/*']
@@ -134,10 +134,18 @@ function fixTsConfigs(outputPath) {
 
     // TODO (fui repo merge): we need to unify behind a single set of tsconfig (as it is, we will have 3)
     if (tsconfig.extends) {
-      if (tsconfig.extends.includes('../../build')) {
-        tsconfig.extends = '@uifabric/build/typescript/tsconfig.fluentui';
+      if (tsconfig.extends.includes('../build')) {
+        // TODO (fui repo merge): we need to switch to using @uifabric/build for this later
+        tsconfig.extends = '../../../scripts/typescript/tsconfig.fluentui';
       } else {
         tsconfig.extends = '@uifabric/build/typescript/tsconfig.common';
+      }
+    }
+
+    if (tsconfig.compilerOptions && tsconfig.compilerOptions.typeRoots) {
+      const typesIndex = tsconfig.compilerOptions.typeRoots.indexOf('../types');
+      if (typesIndex > -1) {
+        tsconfig.compilerOptions.typeRoots[typesIndex] = '../../../typings';
       }
     }
 
@@ -179,6 +187,14 @@ function fixEslint(outputPath) {
     content.extends = ['../../../scripts/eslint/index'];
     fs.writeJSONSync(fullPath, content, { spaces: 2 });
   }
+
+  const eslintPkgJsonFile = path.join(outputPath, 'eslint-plugin/package.json');
+  let eslintPkgJson = fs.readJsonSync(eslintPkgJsonFile);
+  eslintPkgJson.dependencies = {
+    '@typescript-eslint/eslint-plugin': '2.8.0',
+    '@typescript-eslint/experimental-utils': '2.8.0'
+  };
+  fs.writeJsonSync(eslintPkgJsonFile, eslintPkgJson, { spaces: 2 });
 }
 
 function fixScriptsPackageName(outputPath) {
@@ -303,6 +319,23 @@ function fixJestMapping(outputPath) {
   }
 }
 
+function fixDocs(outputPath) {
+  const files = glob.sync('**/docs/**/*.+(ts|tsx)', { cwd: outputPath });
+
+  for (let file of files) {
+    const fullPath = path.join(outputPath, file);
+
+    let contents = fs.readFileSync(fullPath, 'utf-8');
+
+    if (contents.includes('packages/react/package.json')) {
+      console.log(`fixing ${fullPath} to fix docs import of @fluentui/react/package.json`);
+      contents = contents.replace(/'[\.\/]+packages\/react\/package\.json'/, "'@fluentui/react/package.json'");
+    }
+
+    fs.writeFileSync(fullPath, contents);
+  }
+}
+
 function importFluent() {
   console.log('cloning FUI');
   git(['clone', '--depth=1', 'https://github.com/microsoft/fluent-ui-react.git', '.']);
@@ -332,9 +365,14 @@ function importFluent() {
   fixKeyboardKeys(outputPath);
   fixReactDep(outputPath);
   fixJestMapping(outputPath);
+  fixDocs(outputPath);
 
   console.log('removing tmp');
   fs.removeSync(tmp);
+
+  spawnSync('yarn', { cwd: root, stdio: 'inherit' });
+  spawnSync('git', ['add', '.'], { cwd: root });
+  spawnSync('yarn', ['lint-staged'], { cwd: root, stdio: 'inherit' });
 }
 
 importFluent();

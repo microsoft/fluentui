@@ -54,6 +54,7 @@
     "@types/webpack-env": "^1.14.1",
     "@types/webpack-hot-middleware": "^2.16.3",
     "@typescript-eslint/eslint-plugin": "2.8.0",
+    "@typescript-eslint/experimental-utils": "2.8.0",
     "@typescript-eslint/parser": "2.8.0",
     "@uifabric/prettier-rules": "^7.0.4",
     "async": "^2.6.1",
