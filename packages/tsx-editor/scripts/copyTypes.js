@@ -17,16 +17,16 @@ module.exports = function copyTypes() {
     const package = packagesToResolve.shift();
     resolvedPackages.push(package);
 
-    const packageMatch = package.match(/^(@uifabric\/)?([\w-]+)/);
+    const packageMatch = package.match(/^(@uifabric\/|@fluentui\/)?([\w-]+)/);
     const dtsPath = expandSourcePath(`${package}/dist/${packageMatch[2]}.d.ts`);
 
     if (fs.existsSync(dtsPath)) {
       // copy this .d.ts
       pathsToCopy.push(dtsPath);
 
-      // add any other @uifabric packages it references for processing (ignore React imports and other imports)
+      // add any other @uifabric or @fluentui packages it references for processing (ignore React imports and other imports)
       const dtsContents = fs.readFileSync(dtsPath).toString();
-      const importRegex = /(?:import|export) .*? from ['"](@uifabric\/[\w-]+)/gm;
+      const importRegex = /(?:import|export) .*? from ['"](@(?:uifabric|fluentui)\/[\w-]+)/gm;
       let importMatch;
       while ((importMatch = importRegex.exec(dtsContents))) {
         const packageName = importMatch[1];

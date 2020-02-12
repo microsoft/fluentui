@@ -2,6 +2,20 @@
   "name": "@uifabric/api-docs",
   "entries": [
     {
+      "date": "Wed, 12 Feb 2020 12:24:27 GMT",
+      "tag": "@uifabric/api-docs_v7.2.16",
+      "version": "7.2.16",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add react-focus support",
+            "author": "elcraig@microsoft.com",
+            "commit": "5e6d8c691d23f7881afe569ec1f19edd56242656"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 11 Feb 2020 18:37:59 GMT",
       "tag": "@uifabric/api-docs_v7.2.15",
       "version": "7.2.15",

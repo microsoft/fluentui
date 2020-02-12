@@ -1,7 +1,7 @@
-import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles'
-import { InputProps } from '../../../../components/Input/Input'
-import { InputVariables } from './inputVariables'
-import { PositionProperty } from 'csstype'
+import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+import { InputProps } from '../../../../components/Input/Input';
+import { InputVariables } from './inputVariables';
+import { PositionProperty } from 'csstype';
 
 const inputStyles: ComponentSlotStylesPrepared<InputProps, InputVariables> = {
   root: ({ props: p }): ICSSInJSStyle => ({
@@ -10,14 +10,16 @@ const inputStyles: ComponentSlotStylesPrepared<InputProps, InputVariables> = {
     position: 'relative',
     outline: 0,
 
-    ...(p.fluid && { width: '100%' }),
+    ...(p.fluid && { width: '100%' })
   }),
 
   input: ({ props: p, variables: v }): ICSSInJSStyle => ({
     backgroundColor: v.backgroundColor,
     ...(p.inverted && {
-      backgroundColor: v.backgroundColorInverted,
+      backgroundColor: v.backgroundColorInverted
     }),
+
+    lineHeight: 'unset',
 
     color: v.fontColor,
 
@@ -35,17 +37,16 @@ const inputStyles: ComponentSlotStylesPrepared<InputProps, InputVariables> = {
 
     '::placeholder': {
       color: v.placeholderColor,
-      opacity: 1, // undo Firefox default opacity
+      opacity: 1 // undo Firefox default opacity
     },
 
     ':focus': {
-      borderColor: v.inputFocusBorderColor,
+      borderColor: v.inputFocusBorderColor
     },
     ...(p.clearable && { padding: v.inputPaddingWithIconAtEnd }),
     ...(p.icon && {
-      padding:
-        p.iconPosition === 'start' ? v.inputPaddingWithIconAtStart : v.inputPaddingWithIconAtEnd,
-    }),
+      padding: p.iconPosition === 'start' ? v.inputPaddingWithIconAtStart : v.inputPaddingWithIconAtEnd
+    })
   }),
 
   icon: ({ props: p, variables: v }): ICSSInJSStyle => ({
@@ -54,12 +55,12 @@ const inputStyles: ComponentSlotStylesPrepared<InputProps, InputVariables> = {
     position: v.iconPosition as PositionProperty,
 
     ...(p.iconPosition === 'start' && {
-      left: v.iconLeft,
+      left: v.iconLeft
     }),
     ...(p.iconPosition === 'end' && {
-      right: v.iconRight,
-    }),
-  }),
-}
+      right: v.iconRight
+    })
+  })
+};
 
-export default inputStyles
+export default inputStyles;

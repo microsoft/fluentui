@@ -9,8 +9,8 @@ import { IconVariables, iconColorAreas } from './iconVariables';
 
 export type IconStylesProps = Pick<
   IconProps,
-  'bordered' | 'circular' | 'color' | 'disabled' | 'name' | 'outline' | 'rotate' | 'size' | 'xSpacing'
-> & { isFontIcon: boolean; isSvgIcon: boolean };
+  'bordered' | 'circular' | 'color' | 'disabled' | 'outline' | 'rotate' | 'size' | 'xSpacing'
+> & { isFontIcon: boolean; isSvgIcon: boolean; name?: IconProps['name'] };
 
 export const emptyIcon: ThemeIconSpec = { icon: { content: '?' } };
 
@@ -58,7 +58,7 @@ const getXSpacingStyles = (xSpacing: IconXSpacing, horizontalSpace: string): ICS
 
 const iconStyles: ComponentSlotStylesPrepared<IconStylesProps, IconVariables> = {
   root: ({ props: p, variables: v, theme: t, rtl }): ICSSInJSStyle => {
-    const iconSpec: ThemeIconSpec = t.icons[p.name] || emptyIcon;
+    const iconSpec: ThemeIconSpec = (p.name && t.icons[p.name]) || emptyIcon;
     const colors = v.colorScheme[p.color];
 
     return {

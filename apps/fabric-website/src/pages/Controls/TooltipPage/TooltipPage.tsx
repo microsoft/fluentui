@@ -6,7 +6,7 @@ import { Platforms } from '../../../interfaces/Platforms';
 
 const baseUrl = 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/apps/fabric-website/src/pages/Controls/TooltipPage/';
 
-export const TooltipPage: React.StatelessComponent<IControlsPageProps> = props => {
+export const TooltipPage: React.FunctionComponent<IControlsPageProps> = props => {
   return (
     <ControlsAreaPage
       {...props}

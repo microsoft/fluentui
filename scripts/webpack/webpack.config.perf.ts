@@ -55,7 +55,7 @@ const webpackConfig: webpack.Configuration = {
     extensions: ['.ts', '.tsx', '.js', '.json'],
     alias: {
       ...lernaAliases(),
-      docs: paths.base('docs'),
+      docs: paths.docs(),
       src: paths.packageSrc('react'),
 
       // We are using React in production mode with tracing.

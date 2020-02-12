@@ -5,7 +5,7 @@ const maskFormat: { [key: string]: RegExp } = {
   '*': /[a-zA-Z0-9_]/
 };
 
-export const TextFieldMaskedExample: React.StatelessComponent = () => {
+export const TextFieldMaskedExample: React.FunctionComponent = () => {
   return (
     <Stack tokens={{ maxWidth: 300 }}>
       <p>The mask has been modified here to allow "_"</p>

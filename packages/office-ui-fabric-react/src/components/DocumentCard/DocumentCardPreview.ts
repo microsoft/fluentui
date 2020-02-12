@@ -4,7 +4,7 @@ import { DocumentCardPreviewBase } from './DocumentCardPreview.base';
 import { getStyles } from './DocumentCardPreview.styles';
 import { IDocumentCardPreviewProps, IDocumentCardPreviewStyleProps, IDocumentCardPreviewStyles } from './DocumentCardPreview.types';
 
-export const DocumentCardPreview: React.StatelessComponent<IDocumentCardPreviewProps> = styled<
+export const DocumentCardPreview: React.FunctionComponent<IDocumentCardPreviewProps> = styled<
   IDocumentCardPreviewProps,
   IDocumentCardPreviewStyleProps,
   IDocumentCardPreviewStyles

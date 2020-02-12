@@ -1,9 +1,0 @@
-{
-  "type": "none",
-  "comment": "Disable List test causing intermittent test failures.",
-  "packageName": "office-ui-fabric-react",
-  "email": "jagore@microsoft.com",
-  "commit": "079a40a86a1562d1fa558957cee86997e97bea8a",
-  "dependentChangeType": "patch",
-  "date": "2020-02-11T21:03:33.500Z"
-}

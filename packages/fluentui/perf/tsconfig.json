@@ -1,13 +1,8 @@
 {
-  "extends": "@uifabric/build/typescript/tsconfig.common",
+  "extends": "../../../scripts/typescript/tsconfig.fluentui",
   "compilerOptions": {
     "module": "esnext",
-    "types": [
-      "node",
-      "webpack-env"
-    ]
+    "types": ["node", "webpack-env"]
   },
-  "include": [
-    "./src"
-  ]
+  "include": ["./src"]
 }

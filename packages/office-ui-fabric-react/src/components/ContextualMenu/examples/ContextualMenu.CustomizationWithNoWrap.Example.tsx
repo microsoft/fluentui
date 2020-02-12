@@ -34,7 +34,7 @@ function renderCategoriesList(item: any): JSX.Element {
           <DefaultButton
             key={category.name}
             className="ms-ContextualMenu-link ms-ContextualMenu-customizationExample-button"
-            role="menuitem"
+            role="menuitemcheckbox"
           >
             <div>
               <span

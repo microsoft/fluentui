@@ -30,11 +30,11 @@ export class TextFieldControlledExample extends React.Component<{}, ITextFieldCo
     );
   }
 
-  private _onChange1 = (ev: React.FormEvent<HTMLInputElement>, newValue?: string) => {
+  private _onChange1 = (event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, newValue?: string) => {
     this.setState({ value1: newValue || '' });
   };
 
-  private _onChange2 = (ev: React.FormEvent<HTMLInputElement>, newValue?: string) => {
+  private _onChange2 = (event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, newValue?: string) => {
     if (!newValue || newValue.length <= 5) {
       this.setState({ value2: newValue || '' });
     } else {
