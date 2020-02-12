@@ -156,7 +156,8 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
         _outerZones.add(this);
 
         if (windowElement && _outerZones.size === 1) {
-          _disposeGlobalKeyDownListener = on(windowElement, 'keydown', this._onKeyDownCapture, true);
+          // _disposeGlobalKeyDownListener = on(windowElement, 'keydown', this._onKeyDownCapture, true);
+          windowElement.addEventListener('keydown', this._onKeyDownCapture, true);
         }
       }
 
