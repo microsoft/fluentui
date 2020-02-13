@@ -66,9 +66,6 @@ const _allInstances: {
 } = {};
 const _outerZones: Set<FocusZone> = new Set();
 
-// Track the 1 global keydown listener we hook to window.
-let _disposeGlobalKeyDownListener: () => void | undefined;
-
 const ALLOWED_INPUT_TYPES = ['text', 'number', 'password', 'email', 'tel', 'url', 'search'];
 
 const ALLOW_VIRTUAL_ELEMENTS = false;
@@ -157,11 +154,13 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
         _outerZones.add(this);
 
         if (windowElement && _outerZones.size === 1) {
-          _disposeGlobalKeyDownListener = on(windowElement, 'keydown', this._onKeyDownCapture, true);
+          windowElement.addEventListener('keydown', this._onKeyDownCapture, true);
         }
       }
 
-      this._disposables.push(on(root, 'blur', this._onBlur, true));
+      if (windowElement) {
+        windowElement.addEventListener('blur', this._onBlur, true);
+      }
 
       // Assign initial tab indexes so that we can set initial focus as appropriate.
       this._updateTabIndexes();
@@ -195,13 +194,16 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
 
   public componentWillUnmount(): void {
     delete _allInstances[this._id];
+    const { current: root } = this._root;
 
-    if (!this._isInnerZone) {
+    if (!this._isInnerZone && root) {
+      const windowElement = getWindow(root);
+
       _outerZones.delete(this);
 
       // If this is the last outer zone, remove the keydown listener.
-      if (_outerZones.size === 0 && _disposeGlobalKeyDownListener) {
-        _disposeGlobalKeyDownListener();
+      if (_outerZones.size === 0 && windowElement) {
+        windowElement.removeEventListener('keydown', this._onKeyDownCapture, true);
       }
     }
 
