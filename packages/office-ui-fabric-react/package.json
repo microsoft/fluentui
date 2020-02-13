@@ -79,7 +79,6 @@
     "@uifabric/set-version": "^7.0.5",
     "@uifabric/styling": "^7.10.8",
     "@uifabric/utilities": "^7.12.0",
-    "@fluentui/react-focus": "^0.1.0",
     "prop-types": "^15.5.10",
     "tslib": "^1.10.0"
   },
