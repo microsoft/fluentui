@@ -1,0 +1,9 @@
+{
+  "type": "none",
+  "comment": "Delete new prettier rules references",
+  "packageName": "@fluentui/react-focus",
+  "email": "elcraig@microsoft.com",
+  "commit": "ab2a5a693a3846e78b11355e8af1943e63c826f6",
+  "dependentChangeType": "patch",
+  "date": "2020-02-12T05:16:22.882Z"
+}

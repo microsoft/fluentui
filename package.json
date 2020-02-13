@@ -19,7 +19,7 @@
     "vrtest": "cd apps && cd vr-tests && npm run screener",
     "a11ytest": "cd apps && cd a11y-tests && npm run test",
     "start:legacy": "yarn workspace @uifabric/fabric-website-resources start",
-    "start": "yarn workspace office-ui-fabric-react start",
+    "start": "node scripts/start.js",
     "start-exp": "yarn workspace @uifabric/experiments start",
     "build": "lerna run build --stream",
     "build:fluent": "gulp build",

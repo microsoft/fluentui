@@ -1,7 +1,13 @@
 # Change Log - @uifabric/fabric-website-resources
 
-This log was last generated on Tue, 28 Jan 2020 12:43:24 GMT and should not be manually modified.
+This log was last generated on Wed, 12 Feb 2020 12:24:27 GMT and should not be manually modified.
 
+## 7.6.0
+Wed, 12 Feb 2020 12:24:27 GMT
+
+### Minor changes
+
+- Replacing deprecated StatelessComponent references with FunctionComponent. (Humberto.Morimoto@microsoft.com)
 ## 7.5.0
 Tue, 28 Jan 2020 12:43:24 GMT
 
