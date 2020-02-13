@@ -35,7 +35,7 @@ export class FacepileBase extends BaseComponent<IFacepileProps, {}> {
   }
 
   public render(): JSX.Element {
-    let { overflowButtonProps, domRef } = this.props;
+    let { overflowButtonProps } = this.props;
     const { chevronButtonProps, maxDisplayablePersonas, personas, overflowPersonas, showAddButton, ariaLabel } = this.props;
 
     const { _classNames } = this;
@@ -54,7 +54,7 @@ export class FacepileBase extends BaseComponent<IFacepileProps, {}> {
     const personasOverflow: IFacepilePersona[] = (hasOverflowPersonas ? overflowPersonas : personas.slice(numPersonasToShow)) || [];
 
     return (
-      <div className={_classNames.root} ref={domRef}>
+      <div className={_classNames.root} ref={this.props.domRef}>
         {this.onRenderAriaDescription()}
         <div className={_classNames.itemContainer}>
           {showAddButton ? this._getAddNewElement() : null}
