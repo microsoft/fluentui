@@ -18,7 +18,6 @@ import {
   isElementFocusSubZone,
   isElementFocusZone,
   isElementTabbable,
-  on,
   raiseClick,
   shouldWrapFocus,
   warnDeprecations,
