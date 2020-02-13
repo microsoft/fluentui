@@ -1,9 +1,0 @@
-{
-  "type": "patch",
-  "comment": "react-focus package being added to move out focus utilities from the main package.",
-  "packageName": "@fluentui/react-focus",
-  "email": "dzearing@microsoft.com",
-  "commit": "11cd4d92381ce732d63ec48199a430dcf7c47a3d",
-  "dependentChangeType": "patch",
-  "date": "2020-02-12T17:42:06.273Z"
-}
