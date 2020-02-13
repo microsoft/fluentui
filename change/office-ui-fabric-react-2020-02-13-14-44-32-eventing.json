@@ -1,0 +1,9 @@
+{
+  "type": "patch",
+  "comment": "List & FocusZone: use EventListener or native eventing only, not EventGroup",
+  "packageName": "office-ui-fabric-react",
+  "email": "aneeshak@microsoft.com",
+  "commit": "bb0b6865e926ea7d6647593063853b106e0a9bf2",
+  "dependentChangeType": "patch",
+  "date": "2020-02-13T22:44:32.918Z"
+}
