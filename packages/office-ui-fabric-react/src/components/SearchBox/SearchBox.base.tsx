@@ -3,13 +3,13 @@ import { ISearchBoxProps, ISearchBoxStyleProps, ISearchBoxStyles } from './Searc
 import {
   initializeComponentRef,
   warnDeprecations,
-  EventGroup,
   getId,
   KeyCodes,
   classNamesFunction,
   getNativeProps,
   inputProperties
 } from '../../Utilities';
+import { EventListener } from '@fluentui/react-component-event-listener';
 
 import { IconButton } from '../../Button';
 import { Icon } from '../../Icon';
@@ -32,7 +32,6 @@ export class SearchBoxBase extends React.Component<ISearchBoxProps, ISearchBoxSt
   private _inputElement = React.createRef<HTMLInputElement>();
   private _latestValue: string;
   private _fallbackId: string;
-  private _events: EventGroup | undefined;
 
   public constructor(props: ISearchBoxProps) {
     super(props);
@@ -62,12 +61,6 @@ export class SearchBoxBase extends React.Component<ISearchBoxProps, ISearchBoxSt
       this.setState({
         value: newProps.value || ''
       });
-    }
-  }
-
-  public componentWillUnmount() {
-    if (this._events) {
-      this._events.dispose();
     }
   }
 
@@ -108,35 +101,38 @@ export class SearchBoxBase extends React.Component<ISearchBoxProps, ISearchBoxSt
     ]);
 
     return (
-      <div role="search" ref={this._rootElement} className={classNames.root} onFocusCapture={this._onFocusCapture}>
-        <div className={classNames.iconContainer} onClick={this._onClickFocus} aria-hidden={true}>
-          <Icon iconName="Search" {...iconProps} className={classNames.icon} />
-        </div>
-        <input
-          {...nativeProps}
-          id={id}
-          className={classNames.field}
-          placeholder={placeholderValue}
-          onChange={this._onInputChange}
-          onInput={this._onInputChange}
-          onKeyDown={this._onKeyDown}
-          value={value}
-          disabled={disabled}
-          role="searchbox"
-          aria-label={ariaLabel}
-          ref={this._inputElement}
-        />
-        {value!.length > 0 && (
-          <div className={classNames.clearButton}>
-            <IconButton
-              styles={{ root: { height: 'auto' }, icon: { fontSize: '12px' } }}
-              iconProps={{ iconName: 'Clear' }}
-              {...clearButtonProps}
-              onClick={this._onClearClick}
-            />
+      <>
+        <div role="search" ref={this._rootElement} className={classNames.root} onFocusCapture={this._onFocusCapture}>
+          <div className={classNames.iconContainer} onClick={this._onClickFocus} aria-hidden={true}>
+            <Icon iconName="Search" {...iconProps} className={classNames.icon} />
           </div>
-        )}
-      </div>
+          <input
+            {...nativeProps}
+            id={id}
+            className={classNames.field}
+            placeholder={placeholderValue}
+            onChange={this._onInputChange}
+            onInput={this._onInputChange}
+            onKeyDown={this._onKeyDown}
+            value={value}
+            disabled={disabled}
+            role="searchbox"
+            aria-label={ariaLabel}
+            ref={this._inputElement}
+          />
+          {value!.length > 0 && (
+            <div className={classNames.clearButton}>
+              <IconButton
+                styles={{ root: { height: 'auto' }, icon: { fontSize: '12px' } }}
+                iconProps={{ iconName: 'Clear' }}
+                {...clearButtonProps}
+                onClick={this._onClearClick}
+              />
+            </div>
+          )}
+        </div>
+        <EventListener target={window} type="focus" listener={this._onBlur} />
+      </>
     );
   }
 
@@ -183,11 +179,6 @@ export class SearchBoxBase extends React.Component<ISearchBoxProps, ISearchBoxSt
     this.setState({
       hasFocus: true
     });
-
-    if (!this._events) {
-      this._events = new EventGroup(this);
-    }
-    this._events.on(ev.currentTarget, 'blur', this._onBlur, true);
 
     if (this.props.onFocus) {
       this.props.onFocus(ev as React.FocusEvent<HTMLInputElement>);
@@ -236,17 +227,10 @@ export class SearchBoxBase extends React.Component<ISearchBoxProps, ISearchBoxSt
     ev.stopPropagation();
   };
 
-  private _onBlur = (ev: React.FocusEvent<HTMLInputElement>): void => {
-    if (this._events) {
-      this._events.off();
-    }
+  private _onBlur = (): void => {
     this.setState({
       hasFocus: false
     });
-
-    if (this.props.onBlur) {
-      this.props.onBlur(ev);
-    }
   };
 
   private _onInputChange = (ev: React.ChangeEvent<HTMLInputElement>) => {
