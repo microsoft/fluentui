@@ -96,6 +96,11 @@ export interface IColorPickerProps {
    * @defaultvalue false
    */
   showPreview?: boolean;
+
+  /**
+   * Provides a React reference to the underlying DOM element
+   */
+  domRef?: IRefObject<HTMLDivElement>;
 }
 
 export interface IColorPickerStrings {

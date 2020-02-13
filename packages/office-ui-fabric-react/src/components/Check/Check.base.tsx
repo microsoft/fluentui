@@ -7,13 +7,13 @@ import { ICheckStyleProps, ICheckStyles } from './Check.types';
 const getClassNames = classNamesFunction<ICheckStyleProps, ICheckStyles>();
 
 export const CheckBase: React.FunctionComponent<ICheckProps> = props => {
-  const { checked = false, className, theme, styles, useFastIcons = true } = props;
+  const { checked = false, className, theme, styles, domRef, useFastIcons = true } = props;
 
   const classNames = getClassNames(styles!, { theme: theme!, className, checked });
   const IconComponent = useFastIcons ? FontIcon : Icon;
 
   return (
-    <div className={classNames.root}>
+    <div className={classNames.root} ref={domRef}>
       <IconComponent iconName="CircleRing" className={classNames.circle} />
       <IconComponent iconName="StatusCircleCheckmark" className={classNames.check} />
     </div>

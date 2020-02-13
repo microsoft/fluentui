@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { classNamesFunction, getNativeProps, imageProperties } from '../../Utilities';
+import { classNamesFunction, getNativeProps, imageProperties, mergeRefs } from '../../Utilities';
 import { IImageProps, IImageStyleProps, IImageStyles, ImageCoverStyle, ImageFit, ImageLoadState } from './Image.types';
 
 const getClassNames = classNamesFunction<IImageStyleProps, IImageStyles>();
@@ -64,7 +64,8 @@ export class ImageBase extends React.Component<IImageProps, IImageState> {
       role,
       maximizeFrame,
       styles,
-      theme
+      theme,
+      domRef
     } = this.props;
     const { loadState } = this.state;
     const coverStyle = this.props.coverStyle !== undefined ? this.props.coverStyle : this._coverStyle;
@@ -90,7 +91,7 @@ export class ImageBase extends React.Component<IImageProps, IImageState> {
 
     // If image dimensions aren't specified, the natural size of the image is used.
     return (
-      <div className={classNames.root} style={{ width: width, height: height }} ref={this._frameElement}>
+      <div className={classNames.root} style={{ width: width, height: height }} ref={mergeRefs(this._frameElement, domRef)}>
         <img
           {...imageProps}
           onLoad={this._onImageLoaded}

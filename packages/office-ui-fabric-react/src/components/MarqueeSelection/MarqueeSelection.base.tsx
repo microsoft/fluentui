@@ -8,7 +8,8 @@ import {
   classNamesFunction,
   findScrollableParent,
   getDistanceBetweenPoints,
-  getRTL
+  getRTL,
+  mergeRefs
 } from '../../Utilities';
 
 import { IMarqueeSelectionProps, IMarqueeSelectionStyleProps, IMarqueeSelectionStyles } from './MarqueeSelection.types';
@@ -79,7 +80,7 @@ export class MarqueeSelectionBase extends BaseComponent<IMarqueeSelectionProps, 
   }
 
   public render(): JSX.Element {
-    const { rootProps, children, theme, className, styles } = this.props;
+    const { rootProps, children, theme, className, styles, domRef } = this.props;
     const { dragRect } = this.state;
 
     const classNames = getClassNames(styles!, {
@@ -88,7 +89,7 @@ export class MarqueeSelectionBase extends BaseComponent<IMarqueeSelectionProps, 
     });
 
     return (
-      <div {...rootProps} className={classNames.root} ref={this._root}>
+      <div {...rootProps} className={classNames.root} ref={mergeRefs(this._root, domRef)}>
         {children}
         {dragRect && <div className={classNames.dragMask} />}
         {dragRect && (

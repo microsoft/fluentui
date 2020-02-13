@@ -166,6 +166,11 @@ export interface IPositioningContainerProps extends IBaseProps<IPositioningConta
    * When not set the positioningContainer will expand with contents up to the bottom of the screen
    */
   positioningContainerMaxHeight?: number;
+
+  /**
+   * Provides a React reference to the underlying DOM element
+   */
+  domRef?: IRefObject<HTMLDivElement>;
 }
 
 /**

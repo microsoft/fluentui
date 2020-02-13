@@ -14,7 +14,8 @@ import {
   isMac,
   KeyCodes,
   shallowCompare,
-  mergeAriaAttributeValues
+  mergeAriaAttributeValues,
+  mergeRefs
 } from '../../Utilities';
 import { Callout } from '../../Callout';
 import { Checkbox } from '../../Checkbox';
@@ -341,7 +342,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       autofill,
       persistMenu,
       iconButtonProps,
-      multiSelect
+      multiSelect,
+      domRef
     } = this.props;
     const { isOpen, focused, suggestedDisplayValue } = this.state;
     this._currentVisibleValue = this._getVisibleValue();
@@ -377,7 +379,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         );
 
     return (
-      <div {...divProps} ref={this._root} className={this._classNames.container}>
+      <div {...divProps} ref={mergeRefs(this._root, domRef)} className={this._classNames.container}>
         {onRenderLabel({ props: this.props, multiselectAccessibleText }, this._onRenderLabel)}
         <KeytipData keytipProps={keytipProps} disabled={disabled}>
           {(keytipAttributes: any): JSX.Element => (

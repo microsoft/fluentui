@@ -74,6 +74,11 @@ export interface IDocumentCardProps extends IBaseProps<IDocumentCard>, React.HTM
    * Optional override class name
    */
   className?: string;
+
+  /**
+   * Provides a React reference to the underlying DOM element
+   */
+  domRef?: IRefObject<HTMLDivElement>;
 }
 
 /**

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { IProcessedStyleSet } from '../../Styling';
-import { BaseComponent, classNamesFunction, KeyCodes, getNativeProps, divProperties } from '../../Utilities';
+import { BaseComponent, classNamesFunction, KeyCodes, getNativeProps, divProperties, mergeRefs } from '../../Utilities';
 import { DocumentCardType, IDocumentCard, IDocumentCardProps, IDocumentCardStyleProps, IDocumentCardStyles } from './DocumentCard.types';
 
 const getClassNames = classNamesFunction<IDocumentCardStyleProps, IDocumentCardStyles>();
@@ -25,7 +25,7 @@ export class DocumentCardBase extends BaseComponent<IDocumentCardProps, any> imp
   }
 
   public render(): JSX.Element {
-    const { onClick, onClickHref, children, type, accentColor, styles, theme, className } = this.props;
+    const { onClick, onClickHref, children, type, accentColor, styles, theme, className, domRef } = this.props;
     const nativeProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties, [
       'className',
       'onClick',
@@ -55,7 +55,7 @@ export class DocumentCardBase extends BaseComponent<IDocumentCardProps, any> imp
 
     return (
       <div
-        ref={this._rootElement}
+        ref={mergeRefs(this._rootElement, domRef)}
         tabIndex={tabIndex}
         data-is-focusable={actionable}
         role={role}

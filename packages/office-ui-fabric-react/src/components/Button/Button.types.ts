@@ -330,6 +330,11 @@ export interface IButtonProps
    * Optional props to be applied only to the primary action button of SplitButton and not to the overall SplitButton container
    */
   primaryActionButtonProps?: IButtonProps;
+
+  /**
+   * Provides a React reference to the underlying DOM element
+   */
+  domRef?: IRefObject<HTMLButtonElement | HTMLAnchorElement>;
 }
 
 /**

@@ -11,7 +11,8 @@ import {
   getNativeProps,
   getParent,
   getWindow,
-  initializeComponentRef
+  initializeComponentRef,
+  mergeRefs
 } from '../../Utilities';
 import { IList, IListProps, IPage, IPageProps, ScrollToMode } from './List.types';
 
@@ -388,7 +389,7 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
   }
 
   public render(): JSX.Element {
-    const { className, role = 'list' } = this.props;
+    const { className, role = 'list', domRef } = this.props;
     const { pages = [] } = this.state;
     const pageElements: JSX.Element[] = [];
     const divProps = getNativeProps<React.HTMLAttributes<HTMLSpanElement>>(this.props, divProperties);
@@ -398,7 +399,12 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
     }
 
     return (
-      <div ref={this._root} {...divProps} role={pageElements.length > 0 ? role : undefined} className={css('ms-List', className)}>
+      <div
+        ref={mergeRefs(this._root, domRef)}
+        {...divProps}
+        role={pageElements.length > 0 ? role : undefined}
+        className={css('ms-List', className)}
+      >
         <div ref={this._surface} className={'ms-List-surface'} role="presentation">
           {pageElements}
         </div>

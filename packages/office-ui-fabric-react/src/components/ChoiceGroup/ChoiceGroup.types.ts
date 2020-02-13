@@ -78,6 +78,11 @@ export interface IChoiceGroupProps extends React.InputHTMLAttributes<HTMLElement
    * ID of an element to use as the aria label for this ChoiceGroup.
    */
   ariaLabelledBy?: string;
+
+  /**
+   * Provides a React reference to the underlying DOM element
+   */
+  domRef?: IRefObject<HTMLDivElement>;
 }
 
 /**

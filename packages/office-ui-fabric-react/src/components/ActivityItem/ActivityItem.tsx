@@ -27,7 +27,7 @@ export class ActivityItem extends React.Component<IActivityItemProps, {}> {
     const classNames = this._getClassNames(this.props);
 
     return (
-      <div className={classNames.root} style={this.props.style}>
+      <div className={classNames.root} style={this.props.style} ref={this.props.domRef}>
         {(this.props.activityPersonas || this.props.activityIcon || this.props.onRenderIcon) && (
           <div className={classNames.activityTypeIcon}>
             {animateBeaconSignal && isCompact && <div className={classNames.pulsingBeacon} />}

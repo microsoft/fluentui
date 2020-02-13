@@ -109,6 +109,11 @@ export interface IOverflowSetProps extends React.ClassAttributes<OverflowSetBase
    * Call to provide customized styling that will layer on top of the variant rules.
    */
   styles?: IStyleFunctionOrObject<IOverflowSetProps, IOverflowSetStyles>;
+
+  /**
+   * Provides a React reference to the underlying DOM element
+   */
+  domRef?: IRefObject<HTMLDivElement>;
 }
 
 /**

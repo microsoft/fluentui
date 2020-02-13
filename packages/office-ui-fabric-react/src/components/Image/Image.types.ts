@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { IStyle, ITheme } from '../../Styling';
-import { IStyleFunctionOrObject } from '../../Utilities';
+import { IStyleFunctionOrObject, IRefObject } from '../../Utilities';
 
 /**
  * {@docCategory Image}
@@ -73,6 +73,11 @@ export interface IImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
    * aspect ratio for the image.
    */
   coverStyle?: ImageCoverStyle;
+
+  /**
+   * Provides a React reference to the underlying DOM element
+   */
+  domRef?: IRefObject<HTMLDivElement>;
 }
 
 /**

@@ -114,6 +114,11 @@ export interface IAutofillProps extends React.InputHTMLAttributes<HTMLInputEleme
    * In IE11, selecting a input will also focus the input, causing other element's focus to be stolen.
    */
   preventValueSelection?: boolean;
+
+  /**
+   * Provides a React reference to the underlying DOM element
+   */
+  domRef?: IRefObject<HTMLInputElement>;
 }
 
 /**

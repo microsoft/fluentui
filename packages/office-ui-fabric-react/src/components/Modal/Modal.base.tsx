@@ -164,7 +164,8 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
       topOffsetFixed,
       onLayerDidMount,
       isModeless,
-      dragOptions
+      dragOptions,
+      domRef
     } = this.props;
     const { isOpen, isVisible, hasBeenOpened, modalRectangleTop, x, y, isInKeyboardMoveMode } = this.state;
 
@@ -249,6 +250,7 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
             ariaDescribedBy={subtitleAriaId}
             onDismiss={onDismiss}
             shouldRestoreFocus={!ignoreExternalFocusing}
+            domRef={domRef}
           >
             <div className={classNames.root}>
               {!isModeless && (

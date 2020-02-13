@@ -116,6 +116,11 @@ export interface IGroupedListProps extends React.ClassAttributes<GroupedListBase
    * Optional function to override default group height calculation used by list virtualization.
    */
   getGroupHeight?: (group: IGroup, groupIndex: number) => number;
+
+  /**
+   * Provides a React reference to the underlying DOM element
+   */
+  domRef?: IRefObject<HTMLDivElement>;
 }
 
 /**

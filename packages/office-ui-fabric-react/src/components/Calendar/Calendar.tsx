@@ -137,7 +137,8 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
       showCloseButton,
       allFocusable,
       yearPickerHidden,
-      today
+      today,
+      domRef
     } = this.props;
     const nativeProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties, ['value']);
 
@@ -157,7 +158,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
     }
 
     return (
-      <div className={css(rootClass, styles.root, className)} role="application">
+      <div className={css(rootClass, styles.root, className)} role="application" ref={domRef}>
         <div
           {...nativeProps}
           className={css(

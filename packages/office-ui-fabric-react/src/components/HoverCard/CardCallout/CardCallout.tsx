@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { divProperties, getNativeProps } from '../../../Utilities';
+import { divProperties, getNativeProps, IRefObject } from '../../../Utilities';
 import { DirectionalHint } from '../../../common/DirectionalHint';
 import { IBaseCardProps } from '../BaseCard.types';
 import { Callout, FocusTrapCallout, ICalloutProps } from '../../../Callout';
@@ -8,6 +8,11 @@ import { Callout, FocusTrapCallout, ICalloutProps } from '../../../Callout';
 export interface ICardCalloutProps extends IBaseCardProps<{}, {}, {}> {
   finalHeight?: number;
   content?: JSX.Element;
+
+  /**
+   * Provides a React reference to the underlying DOM element
+   */
+  domRef?: IRefObject<HTMLDivElement>;
 }
 
 export const CardCallout = (props: ICardCalloutProps) => {
@@ -22,7 +27,8 @@ export const CardCallout = (props: ICardCalloutProps) => {
     className,
     finalHeight,
     content,
-    calloutProps
+    calloutProps,
+    domRef
   } = props;
 
   const mergedCalloutProps: ICalloutProps = {
@@ -49,11 +55,14 @@ export const CardCallout = (props: ICardCalloutProps) => {
             isClickableOutsideFocusTrap: true,
             disableFirstFocus: !firstFocus
           }}
+          domRef={domRef}
         >
           {content}
         </FocusTrapCallout>
       ) : (
-        <Callout {...mergedCalloutProps}>{content}</Callout>
+        <Callout {...mergedCalloutProps} domRef={domRef}>
+          {content}
+        </Callout>
       )}
     </React.Fragment>
   );

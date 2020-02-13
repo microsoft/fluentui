@@ -163,6 +163,11 @@ export interface IDialogProps extends React.ClassAttributes<DialogBase>, IWithRe
    * than the value specified in max-width.
    */
   maxWidth?: ICSSRule | ICSSPixelUnitRule;
+
+  /**
+   * Provides a React reference to the underlying DOM element
+   */
+  domRef?: IRefObject<HTMLDivElement>;
 }
 
 /**

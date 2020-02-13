@@ -11,7 +11,7 @@ import { getCalloutStyles, getCalloutOffsetStyles } from './Keytip.styles';
  */
 export class Keytip extends React.Component<IKeytipProps, {}> {
   public render(): JSX.Element {
-    const { keySequences, offset, overflowSetSequence } = this.props;
+    const { keySequences, offset, overflowSetSequence, domRef } = this.props;
     let { calloutProps } = this.props;
 
     let keytipTarget: string;
@@ -49,6 +49,7 @@ export class Keytip extends React.Component<IKeytipProps, {}> {
         styles={offset ? getCalloutOffsetStyles(offset) : getCalloutStyles}
         preventDismissOnScroll={true}
         target={keytipTarget}
+        domRef={domRef}
       >
         <KeytipContent {...this.props} />
       </Callout>

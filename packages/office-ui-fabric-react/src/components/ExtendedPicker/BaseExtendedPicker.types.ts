@@ -132,4 +132,9 @@ export interface IBaseExtendedPickerProps<T> {
    * Current rendered query string that's corealte to current rendered result
    **/
   currentRenderedQueryString?: string;
+
+  /**
+   * Provides a React reference to the underlying DOM element
+   */
+  domRef?: IRefObject<HTMLDivElement>;
 }

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, divProperties, getNativeProps } from '../../Utilities';
+import { BaseComponent, divProperties, getNativeProps, mergeRefs } from '../../Utilities';
 import { IResizeGroupProps, ResizeGroupDirection } from './ResizeGroup.types';
 
 const RESIZE_DELAY = 16;
@@ -339,7 +339,7 @@ export class ResizeGroupBase extends BaseComponent<IResizeGroupProps, IResizeGro
     // we mount a second version of the component just for measurement purposes and leave the rendered content untouched until we know the
     // next state sto show to the user.
     return (
-      <div {...divProps} className={className} ref={this._root}>
+      <div {...divProps} className={className} ref={mergeRefs(this._root, this.props.domRef)}>
         <div style={hiddenParentStyles}>
           {dataNeedsMeasuring && !isInitialMeasure && (
             <div style={hiddenDivStyles} ref={this._updateHiddenDiv}>

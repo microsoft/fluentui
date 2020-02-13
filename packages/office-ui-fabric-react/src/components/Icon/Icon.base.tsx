@@ -23,7 +23,7 @@ export class IconBase extends React.Component<IIconProps, IIconState> {
   }
 
   public render() {
-    const { className, styles, iconName, imageErrorAs, theme } = this.props;
+    const { className, styles, iconName, imageErrorAs, theme, domRef } = this.props;
     const isPlaceholder = typeof iconName === 'string' && iconName.length === 0;
     const isImage = this.props.iconType === IconType.image || this.props.iconType === IconType.Image || !!this.props.imageProps;
     const iconContent = getIconContent(iconName) || {};
@@ -56,7 +56,7 @@ export class IconBase extends React.Component<IIconProps, IIconState> {
         };
 
     return (
-      <RootType data-icon-name={iconName} {...containerProps} {...nativeProps} className={classNames.root}>
+      <RootType data-icon-name={iconName} {...containerProps} {...nativeProps} className={classNames.root} ref={domRef}>
         {isImage ? <ImageType {...imageProps} /> : children}
       </RootType>
     );

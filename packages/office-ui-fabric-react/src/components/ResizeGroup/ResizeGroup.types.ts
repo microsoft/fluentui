@@ -89,6 +89,11 @@ export interface IResizeGroupProps extends React.HTMLAttributes<ResizeGroupBase 
    * onReduceData triggers.
    */
   dataDidRender?: (renderedData: any) => void;
+
+  /**
+   * Provides a React reference to the underlying DOM element
+   */
+  domRef?: IRefObject<HTMLDivElement>;
 }
 
 /**

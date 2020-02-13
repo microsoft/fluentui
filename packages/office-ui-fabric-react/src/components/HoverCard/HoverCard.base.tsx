@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { BaseComponent, divProperties, getNativeProps, getId, KeyCodes, getDocument, classNamesFunction } from '../../Utilities';
+import { BaseComponent, divProperties, getNativeProps, getId, KeyCodes, getDocument, classNamesFunction, mergeRefs } from '../../Utilities';
 import { IHoverCardProps, IHoverCardStyles, IHoverCardStyleProps, OpenCardMode, HoverCardType, IHoverCard } from './HoverCard.types';
 import { ExpandingCard } from './ExpandingCard';
 import { ExpandingCardMode, IExpandingCardProps } from './ExpandingCard.types';
@@ -108,7 +108,8 @@ export class HoverCardBase extends BaseComponent<IHoverCardProps, IHoverCardStat
       type,
       plainCardProps,
       trapFocus,
-      setInitialFocus
+      setInitialFocus,
+      domRef
     } = this.props;
     const { isHoverCardVisible, mode, openMode } = this.state;
     const hoverCardId = id || getId('hoverCard');
@@ -135,7 +136,7 @@ export class HoverCardBase extends BaseComponent<IHoverCardProps, IHoverCardStat
     return (
       <div
         className={this._classNames.host}
-        ref={this._hoverCard}
+        ref={mergeRefs(this._hoverCard, domRef)}
         aria-describedby={setAriaDescribedBy && isHoverCardVisible ? hoverCardId : undefined}
         data-is-focusable={!Boolean(this.props.target)}
       >

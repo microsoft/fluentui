@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, KeyCodes, css } from '../../Utilities';
+import { BaseComponent, KeyCodes, css, mergeRefs } from '../../Utilities';
 import { Autofill } from '../../Autofill';
 import { IInputProps } from '../../Pickers';
 import * as stylesImport from './BaseExtendedPicker.scss';
@@ -96,7 +96,7 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
   }
 
   public render(): JSX.Element {
-    const { className, inputProps, disabled, focusZoneProps } = this.props;
+    const { className, inputProps, disabled, focusZoneProps, domRef } = this.props;
     const activeDescendant =
       this.floatingPicker.current && this.floatingPicker.current.currentSelectedSuggestionIndex !== -1
         ? 'sug-' + this.floatingPicker.current.currentSelectedSuggestionIndex
@@ -105,7 +105,7 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
 
     return (
       <div
-        ref={this.root}
+        ref={mergeRefs(this.root, domRef)}
         className={css('ms-BasePicker ms-BaseExtendedPicker', className ? className : '')}
         onKeyDown={this.onBackspace}
         onCopy={this.onCopy}

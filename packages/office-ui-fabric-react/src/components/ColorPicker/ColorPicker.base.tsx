@@ -118,7 +118,7 @@ export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPi
     const props = this.props;
     const strings = this._strings;
     const textLabels = this._textLabels;
-    const { theme, className, styles, alphaSliderHidden } = props;
+    const { theme, className, styles, alphaSliderHidden, domRef } = props;
     const { color } = this.state;
 
     const classNames = getClassNames(styles!, {
@@ -137,7 +137,7 @@ export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPi
     const ariaLabel = strings.rootAriaLabelFormat.replace('{0}', selectedColorAria);
 
     return (
-      <div className={classNames.root} role="group" aria-label={ariaLabel}>
+      <div className={classNames.root} role="group" aria-label={ariaLabel} ref={domRef}>
         <div className={classNames.panel}>
           <ColorRectangle
             color={color}

@@ -149,6 +149,11 @@ export interface IHoverCardProps extends React.HTMLAttributes<HTMLDivElement> {
    * @defaultvalue HoverCardType.expanding
    */
   type?: HoverCardType;
+
+  /**
+   * Provides a React reference to the underlying DOM element
+   */
+  domRef?: IRefObject<HTMLDivElement>;
 }
 
 /**

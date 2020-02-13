@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { IImageProps } from '../Image/Image.types';
 import { IStyle, ITheme } from '../../Styling';
-import { IBaseProps, IStyleFunctionOrObject } from '../../Utilities';
+import { IBaseProps, IStyleFunctionOrObject, IRefObject } from '../../Utilities';
 
 /**
  * @deprecated Icon type is inferred based on presence of `IIconProps.imageProps`
@@ -70,6 +70,11 @@ export interface IIconProps extends IBaseProps, React.HTMLAttributes<HTMLElement
    */
   styles?: IStyleFunctionOrObject<IIconStyleProps, IIconStyles>;
   theme?: ITheme;
+
+  /**
+   * Provides a React reference to the underlying DOM element
+   */
+  domRef?: IRefObject<HTMLSpanElement | HTMLImageElement>;
 }
 
 /**

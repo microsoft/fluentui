@@ -1,5 +1,15 @@
 import * as React from 'react';
-import { Async, KeyCodes, divProperties, doesElementContainFocus, getDocument, getNativeProps, on, getWindow } from '../../Utilities';
+import {
+  Async,
+  KeyCodes,
+  divProperties,
+  doesElementContainFocus,
+  getDocument,
+  getNativeProps,
+  on,
+  getWindow,
+  mergeRefs
+} from '../../Utilities';
 import { IPopupProps } from './Popup.types';
 
 export interface IPopupState {
@@ -72,11 +82,11 @@ export class Popup extends React.Component<IPopupProps, IPopupState> {
   }
 
   public render(): JSX.Element {
-    const { role, className, ariaLabel, ariaLabelledBy, ariaDescribedBy, style } = this.props;
+    const { role, className, ariaLabel, ariaLabelledBy, ariaDescribedBy, style, domRef } = this.props;
 
     return (
       <div
-        ref={this._root}
+        ref={mergeRefs(this._root, domRef)}
         {...getNativeProps(this.props, divProperties)}
         className={className}
         role={role}

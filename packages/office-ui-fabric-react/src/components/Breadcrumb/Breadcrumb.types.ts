@@ -96,6 +96,11 @@ export interface IBreadcrumbProps extends React.HTMLAttributes<HTMLElement> {
    * Extra props for the TooltipHost which wraps each breadcrumb item.
    */
   tooltipHostProps?: ITooltipHostProps;
+
+  /**
+   * Provides a React reference to the underlying DOM element
+   */
+  domRef?: IRefObject<HTMLDivElement>;
 }
 
 /**

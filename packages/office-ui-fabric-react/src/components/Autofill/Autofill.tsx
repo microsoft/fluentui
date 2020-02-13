@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { IAutofillProps, IAutofill } from './Autofill.types';
-import { BaseComponent, KeyCodes, getNativeProps, inputProperties, isIE11 } from '../../Utilities';
+import { BaseComponent, KeyCodes, getNativeProps, inputProperties, isIE11, mergeRefs } from '../../Utilities';
 
 export interface IAutofillState {
   displayValue?: string;
@@ -123,7 +123,7 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
         autoComplete="off"
         aria-autocomplete={'both'}
         {...nativeProps}
-        ref={this._inputElement}
+        ref={mergeRefs(this._inputElement, this.props.domRef)}
         value={displayValue}
         onCompositionStart={this._onCompositionStart}
         onCompositionUpdate={this._onCompositionUpdate}

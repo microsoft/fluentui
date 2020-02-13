@@ -199,6 +199,11 @@ export interface ICoachmarkProps extends React.ClassAttributes<CoachmarkBase> {
    * Theme provided by higher order component.
    */
   theme?: ITheme;
+
+  /**
+   * Provides a React reference to the underlying DOM element
+   */
+  domRef?: IRefObject<HTMLDivElement>;
 }
 
 /**

@@ -54,6 +54,7 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
       styles,
       theme,
       dataDidRender,
+      domRef,
       onReduceData = this._onReduceData,
       onGrowData = this._onGrowData
     } = this.props;
@@ -81,6 +82,7 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
         onGrowData={onGrowData}
         onRenderData={this._onRenderData}
         dataDidRender={dataDidRender}
+        domRef={domRef}
       />
     );
   }

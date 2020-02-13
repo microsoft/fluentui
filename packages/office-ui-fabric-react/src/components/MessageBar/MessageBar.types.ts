@@ -94,6 +94,11 @@ export interface IMessageBarProps extends React.HTMLAttributes<HTMLElement> {
    * If unset, default will be the icon set by messageBarType.
    */
   messageBarIconProps?: IIconProps;
+
+  /**
+   * Provides a React reference to the underlying DOM element
+   */
+  domRef?: IRefObject<HTMLDivElement>;
 }
 
 /**

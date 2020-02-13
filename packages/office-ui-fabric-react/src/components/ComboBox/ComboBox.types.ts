@@ -251,6 +251,11 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox,
    * Custom render function for the label text.
    */
   onRenderLabel?: IRenderFunction<IOnRenderComboBoxLabelProps>;
+
+  /**
+   * Provides a React reference to the underlying DOM element
+   */
+  domRef?: IRefObject<HTMLDivElement>;
 }
 
 /**

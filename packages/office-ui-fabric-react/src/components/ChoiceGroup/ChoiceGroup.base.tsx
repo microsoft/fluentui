@@ -88,7 +88,7 @@ export class ChoiceGroupBase extends React.Component<IChoiceGroupProps, IChoiceG
   }
 
   public render(): JSX.Element {
-    const { className, theme, styles, options = [], label, required, disabled, name } = this.props;
+    const { className, theme, styles, options = [], label, required, disabled, name, domRef } = this.props;
     const { keyChecked, keyFocused } = this.state;
 
     const divProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties, ['onChange', 'className', 'required']);
@@ -105,7 +105,7 @@ export class ChoiceGroupBase extends React.Component<IChoiceGroupProps, IChoiceG
     // TODO (Fabric 8?) - if possible, move `root` class to the actual root and eliminate
     // `applicationRole` class (but the div structure will stay the same by necessity)
     return (
-      <div className={classNames.applicationRole} {...divProps}>
+      <div className={classNames.applicationRole} {...divProps} ref={domRef}>
         <div className={classNames.root} role="radiogroup" {...(ariaLabelledBy && { 'aria-labelledby': ariaLabelledBy })}>
           {label && (
             <Label className={classNames.label} required={required} id={labelId} disabled={disabled}>

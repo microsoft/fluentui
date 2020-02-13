@@ -1,5 +1,5 @@
 import { ITheme, IStyle } from '../../Styling';
-import { IStyleFunctionOrObject } from '../../Utilities';
+import { IStyleFunctionOrObject, IRefObject } from '../../Utilities';
 
 /**
  * {@docCategory VerticalDivider}
@@ -23,6 +23,11 @@ export interface IVerticalDividerProps {
    * className that will be placed on the divider wrapper div
    */
   className?: string;
+
+  /**
+   * Provides a React reference to the underlying DOM element
+   */
+  domRef?: IRefObject<HTMLSpanElement>;
 }
 
 /**

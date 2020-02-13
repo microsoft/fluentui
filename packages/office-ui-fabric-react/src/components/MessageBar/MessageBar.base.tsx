@@ -112,10 +112,10 @@ export class MessageBarBase extends BaseComponent<IMessageBarProps, IMessageBarS
   }
 
   private _renderMultiLine(): React.ReactElement<React.HTMLAttributes<HTMLAreaElement>> {
-    const { theme } = this.props;
+    const { theme, domRef } = this.props;
 
     return (
-      <div style={{ background: theme!.semanticColors.bodyBackground }}>
+      <div style={{ background: theme!.semanticColors.bodyBackground }} ref={domRef}>
         <div className={this._classNames.root} {...this._getRegionProps()}>
           <div className={this._classNames.content}>
             {this._getIconSpan()}
@@ -129,9 +129,9 @@ export class MessageBarBase extends BaseComponent<IMessageBarProps, IMessageBarS
   }
 
   private _renderSingleLine(): React.ReactElement<React.HTMLAttributes<HTMLAreaElement>> {
-    const { theme } = this.props;
+    const { theme, domRef } = this.props;
     return (
-      <div style={{ background: theme!.semanticColors.bodyBackground }}>
+      <div style={{ background: theme!.semanticColors.bodyBackground }} ref={domRef}>
         <div className={this._classNames.root} {...this._getRegionProps()}>
           <div className={this._classNames.content}>
             {this._getIconSpan()}

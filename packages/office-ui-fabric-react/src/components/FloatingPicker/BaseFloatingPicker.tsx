@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as stylesImport from './BaseFloatingPicker.scss';
-import { BaseComponent, css, KeyCodes } from '../../Utilities';
+import { BaseComponent, css, KeyCodes, mergeRefs } from '../../Utilities';
 import { Callout, DirectionalHint } from '../../Callout';
 import { IBaseFloatingPicker, IBaseFloatingPickerProps } from './BaseFloatingPicker.types';
 import { ISuggestionModel } from '../../Pickers';
@@ -145,9 +145,9 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
   }
 
   public render(): JSX.Element {
-    const { className } = this.props;
+    const { className, domRef } = this.props;
     return (
-      <div ref={this.root} className={css('ms-BasePicker ms-BaseFloatingPicker', className ? className : '')}>
+      <div ref={mergeRefs(this.root, domRef)} className={css('ms-BasePicker ms-BaseFloatingPicker', className ? className : '')}>
         {this.renderSuggestions()}
       </div>
     );

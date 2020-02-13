@@ -1,5 +1,5 @@
 import { IBaseCardProps, IBaseCardStyles, IBaseCardStyleProps } from '../BaseCard.types';
-import { IRenderFunction } from '../../../Utilities';
+import { IRenderFunction, IRefObject } from '../../../Utilities';
 
 /**
  * {@docCategory HoverCard}
@@ -15,6 +15,11 @@ export interface IPlainCardProps extends IBaseCardProps<IPlainCard, IPlainCardSt
    *  Render function to populate compact content area
    */
   onRenderPlainCard?: IRenderFunction<any>;
+
+  /**
+   * Provides a React reference to the underlying DOM element
+   */
+  domRef?: IRefObject<HTMLDivElement>;
 }
 
 /**

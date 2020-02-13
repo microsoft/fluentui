@@ -39,7 +39,7 @@ export class ExpandingCardBase extends BaseComponent<IExpandingCardProps, IExpan
   }
 
   public render(): JSX.Element {
-    const { styles, compactCardHeight, expandedCardHeight, theme, mode, className } = this.props;
+    const { styles, compactCardHeight, expandedCardHeight, theme, mode, className, domRef } = this.props;
     const { needsScroll, firstFrameRendered } = this.state;
 
     const finalHeight = compactCardHeight! + expandedCardHeight!;
@@ -60,7 +60,7 @@ export class ExpandingCardBase extends BaseComponent<IExpandingCardProps, IExpan
       </div>
     );
 
-    return <CardCallout {...this.props} content={content} finalHeight={finalHeight} className={this._classNames.root} />;
+    return <CardCallout {...this.props} content={content} finalHeight={finalHeight} className={this._classNames.root} domRef={domRef} />;
   }
 
   private _onKeyDown = (ev: React.KeyboardEvent<HTMLElement>): void => {

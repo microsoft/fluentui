@@ -46,7 +46,7 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
   }
 
   public render(): JSX.Element | null {
-    const { styles, groups, className, isOnTop, theme } = this.props;
+    const { styles, groups, className, isOnTop, theme, domRef } = this.props;
 
     if (!groups) {
       return null;
@@ -56,8 +56,16 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
 
     const classNames = getClassNames(styles!, { theme: theme!, className, isOnTop, groups });
 
+    const focusZoneAs =
+      domRef &&
+      ((props: React.HTMLAttributes<HTMLDivElement>) => (
+        <div {...props} ref={domRef}>
+          {props.children}
+        </div>
+      ));
+
     return (
-      <FocusZone direction={FocusZoneDirection.vertical} componentRef={this._focusZone}>
+      <FocusZone direction={FocusZoneDirection.vertical} componentRef={this._focusZone} as={focusZoneAs}>
         <nav role="navigation" className={classNames.root} aria-label={this.props.ariaLabel}>
           {groupElements}
         </nav>

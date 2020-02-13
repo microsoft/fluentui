@@ -87,7 +87,9 @@ export class BreadcrumbBase extends React.Component<IBreadcrumbProps, any> {
       theme: theme!
     });
 
-    return <ResizeGroup onRenderData={this._onRenderBreadcrumb} onReduceData={onReduceData} data={breadcrumbData} />;
+    return (
+      <ResizeGroup onRenderData={this._onRenderBreadcrumb} onReduceData={onReduceData} data={breadcrumbData} domRef={this.props.domRef} />
+    );
   }
 
   private _onReduceData = (data: IBreadcrumbData): IBreadcrumbData | undefined => {

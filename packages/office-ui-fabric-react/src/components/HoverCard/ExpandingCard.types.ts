@@ -1,5 +1,5 @@
 import { IBaseCardProps, IBaseCardStyles, IBaseCardStyleProps } from './BaseCard.types';
-import { IRenderFunction } from '../../Utilities';
+import { IRenderFunction, IRefObject } from '../../Utilities';
 import { IStyle } from '../../Styling';
 
 /**
@@ -39,6 +39,11 @@ export interface IExpandingCardProps extends IBaseCardProps<IExpandingCard, IExp
    *  Render function to populate expanded content area
    */
   onRenderExpandedCard?: IRenderFunction<any>;
+
+  /**
+   * Provides a React reference to the underlying DOM element
+   */
+  domRef?: IRefObject<HTMLDivElement>;
 }
 
 /**

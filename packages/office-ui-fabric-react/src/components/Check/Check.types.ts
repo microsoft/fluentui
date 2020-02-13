@@ -42,6 +42,11 @@ export interface ICheckProps {
    * @defaultvalue true
    */
   useFastIcons?: boolean;
+
+  /**
+   * Provides a React reference to the underlying DOM element
+   */
+  domRef?: IRefObject<HTMLDivElement>;
 }
 
 /**

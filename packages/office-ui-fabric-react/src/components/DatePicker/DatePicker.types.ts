@@ -241,6 +241,11 @@ export interface IDatePickerProps extends IBaseProps<IDatePicker>, React.HTMLAtt
    * The tabIndex of the TextField
    */
   tabIndex?: number;
+
+  /**
+   * Provides a React reference to the underlying DOM element
+   */
+  domRef?: IRefObject<HTMLDivElement>;
 }
 
 /**

@@ -184,6 +184,11 @@ export interface IListProps<T = any> extends React.HTMLAttributes<List<T> | HTML
    * An object which can be passed in as a fresh instance to 'force update' the list.
    */
   version?: {};
+
+  /**
+   * Provides a React reference to the underlying DOM element
+   */
+  domRef?: IRefObject<HTMLDivElement>;
 }
 
 /**

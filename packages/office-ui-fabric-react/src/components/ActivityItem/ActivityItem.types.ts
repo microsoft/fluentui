@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { IStyle } from '../../Styling';
-import { IRenderFunction } from '../../Utilities';
+import { IRenderFunction, IRefObject } from '../../Utilities';
 import { IPersonaSharedProps } from '../../Persona';
 
 /**
@@ -94,6 +94,11 @@ export interface IActivityItemProps extends React.AllHTMLAttributes<HTMLElement>
    * @defaultvalue false
    */
   animateBeaconSignal?: boolean;
+
+  /**
+   * Provides a React reference to the underlying DOM element
+   */
+  domRef?: IRefObject<HTMLDivElement>;
 }
 
 /**

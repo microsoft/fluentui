@@ -261,6 +261,11 @@ export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, IWith
    * @defaultvalue null
    */
   delayUpdateFocusOnHover?: boolean;
+
+  /**
+   * Provides a React reference to the underlying DOM element
+   */
+  domRef?: IRefObject<HTMLDivElement>;
 }
 
 /**

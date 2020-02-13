@@ -159,6 +159,11 @@ export interface IModalProps extends React.ClassAttributes<ModalBase>, IWithResp
    * @defaultvalue false
    */
   allowTouchBodyScroll?: boolean;
+
+  /**
+   * Provides a React reference to the underlying DOM element
+   */
+  domRef?: IRefObject<HTMLDivElement>;
 }
 
 /**

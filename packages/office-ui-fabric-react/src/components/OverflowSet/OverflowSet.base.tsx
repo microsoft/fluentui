@@ -2,7 +2,15 @@ import * as React from 'react';
 
 import { FocusZone, FocusZoneDirection, IFocusZone } from '../../FocusZone';
 import { IKeytipProps } from '../../Keytip';
-import { BaseComponent, classNamesFunction, divProperties, elementContains, focusFirstChild, getNativeProps } from '../../Utilities';
+import {
+  BaseComponent,
+  classNamesFunction,
+  divProperties,
+  elementContains,
+  focusFirstChild,
+  getNativeProps,
+  mergeRefs
+} from '../../Utilities';
 import { IProcessedStyleSet } from '../../Styling';
 import { KeytipManager } from '../../utilities/keytips/KeytipManager';
 import { IOverflowSet, IOverflowSetItemProps, IOverflowSetProps, IOverflowSetStyles, IOverflowSetStyleProps } from './OverflowSet.types';
@@ -27,7 +35,7 @@ export class OverflowSetBase extends BaseComponent<IOverflowSetProps, {}> implem
   }
 
   public render(): JSX.Element {
-    const { items, overflowItems, className, focusZoneProps, styles, vertical, doNotContainWithinFocusZone, role } = this.props;
+    const { items, overflowItems, className, focusZoneProps, styles, vertical, doNotContainWithinFocusZone, role, domRef } = this.props;
 
     this._classNames = getClassNames(styles, { className, vertical });
 
@@ -38,7 +46,7 @@ export class OverflowSetBase extends BaseComponent<IOverflowSetProps, {}> implem
       Tag = 'div';
       uniqueComponentProps = {
         ...getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties),
-        ref: this._divContainer
+        ref: mergeRefs(this._divContainer, domRef)
       };
     } else {
       Tag = FocusZone;
@@ -46,7 +54,8 @@ export class OverflowSetBase extends BaseComponent<IOverflowSetProps, {}> implem
         ...getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties),
         ...focusZoneProps,
         componentRef: this._focusZone,
-        direction: vertical ? FocusZoneDirection.vertical : FocusZoneDirection.horizontal
+        direction: vertical ? FocusZoneDirection.vertical : FocusZoneDirection.horizontal,
+        domRef
       };
     }
 

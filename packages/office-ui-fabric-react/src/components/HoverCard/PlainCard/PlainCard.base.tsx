@@ -10,7 +10,7 @@ export class PlainCardBase extends BaseComponent<IPlainCardProps, {}> {
   private _classNames: { [key in keyof IPlainCardStyles]: string };
 
   public render(): JSX.Element {
-    const { styles, theme, className } = this.props;
+    const { styles, theme, className, domRef } = this.props;
 
     this._classNames = getClassNames(styles!, {
       theme: theme!,
@@ -23,7 +23,7 @@ export class PlainCardBase extends BaseComponent<IPlainCardProps, {}> {
       </div>
     );
 
-    return <CardCallout {...this.props} content={content} className={this._classNames.root} />;
+    return <CardCallout {...this.props} content={content} className={this._classNames.root} domRef={domRef} />;
   }
 
   private _onKeyDown = (ev: React.KeyboardEvent<HTMLElement>): void => {

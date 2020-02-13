@@ -191,7 +191,8 @@ export class CoachmarkBase extends BaseComponent<ICoachmarkProps, ICoachmarkStat
       styles,
       theme,
       className,
-      persistentBeak
+      persistentBeak,
+      domRef
     } = this.props;
 
     const {
@@ -242,6 +243,7 @@ export class CoachmarkBase extends BaseComponent<ICoachmarkProps, ICoachmarkStat
         finalHeight={finalHeight}
         onPositioned={this._onPositioned}
         bounds={this._getBounds()}
+        domRef={domRef}
         {...positioningContainerProps}
       >
         <div className={classNames.root}>

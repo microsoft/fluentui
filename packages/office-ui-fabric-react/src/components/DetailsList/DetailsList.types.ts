@@ -328,6 +328,11 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
    * @defaultvalue true
    */
   useFastIcons?: boolean;
+
+  /**
+   * Provides a React reference to the underlying DOM element
+   */
+  domRef?: IRefObject<HTMLDivElement>;
 }
 
 /**

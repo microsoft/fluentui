@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { IStyle, ITheme } from '../../Styling';
 import { DirectionalHint } from '../../common/DirectionalHint';
-import { IPoint, IRectangle, IStyleFunctionOrObject } from '../../Utilities';
+import { IPoint, IRectangle, IStyleFunctionOrObject, IRefObject } from '../../Utilities';
 import { ICalloutPositionedInfo } from '../../utilities/positioning';
 import { ILayerProps } from '../../Layer';
 
@@ -249,6 +249,11 @@ export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement> {
    * @defaultvalue true;
    */
   shouldRestoreFocus?: boolean;
+
+  /**
+   * Provides a React reference to the underlying DOM element
+   */
+  domRef?: IRefObject<HTMLDivElement>;
 }
 
 /**

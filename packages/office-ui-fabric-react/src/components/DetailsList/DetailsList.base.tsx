@@ -9,7 +9,8 @@ import {
   getRTLSafeKeyCode,
   IRenderFunction,
   classNamesFunction,
-  memoizeFunction
+  memoizeFunction,
+  mergeRefs
 } from '../../Utilities';
 import {
   CheckboxVisibility,
@@ -335,7 +336,8 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
       theme,
       cellStyleProps = DEFAULT_CELL_STYLE_PROPS,
       onRenderCheckbox,
-      useFastIcons
+      useFastIcons,
+      domRef
     } = this.props;
     const { adjustedColumns, isCollapsed, isSizing, isSomeGroupExpanded } = this.state;
     const { _selection: selection, _dragDropHelper: dragDropHelper } = this;
@@ -415,7 +417,7 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
       // If shouldApplyApplicationRole is true, role application will be applied to make arrow keys work
       // with JAWS.
       <div
-        ref={this._root}
+        ref={mergeRefs(this._root, domRef)}
         className={classNames.root}
         data-automationid="DetailsList"
         data-is-scrollable="false"

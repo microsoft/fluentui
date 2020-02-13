@@ -238,7 +238,8 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
       onRenderSubMenu = this._onRenderSubMenu,
       onRenderMenuList = this._onRenderMenuList,
       focusZoneProps,
-      getMenuClassNames
+      getMenuClassNames,
+      domRef
     } = this.props;
 
     this._classNames = getMenuClassNames
@@ -324,6 +325,7 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
           directionalHintFixed={directionalHintFixed}
           alignTargetEdge={alignTargetEdge}
           hidden={this.props.hidden}
+          domRef={domRef}
         >
           <div
             aria-label={ariaLabel}

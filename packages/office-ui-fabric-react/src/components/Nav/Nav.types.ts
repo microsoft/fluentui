@@ -114,6 +114,11 @@ export interface INavProps {
    * (Optional) The nav link selected state aria label.
    */
   selectedAriaLabel?: string;
+
+  /**
+   * Provides a React reference to the underlying DOM element
+   */
+  domRef?: IRefObject<HTMLDivElement>;
 }
 
 /**

@@ -9,7 +9,8 @@ import {
   getDocument,
   focusAsync,
   initializeComponentRef,
-  on
+  on,
+  mergeRefs
 } from '../../Utilities';
 import { IFocusTrapZone, IFocusTrapZoneProps } from './FocusTrapZone.types';
 
@@ -90,7 +91,7 @@ export class FocusTrapZone extends React.Component<IFocusTrapZoneProps, {}> impl
   }
 
   public render(): JSX.Element {
-    const { className, disabled = false, ariaLabelledBy } = this.props;
+    const { className, disabled = false, ariaLabelledBy, domRef } = this.props;
     const divProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties);
 
     const bumperProps = {
@@ -106,7 +107,7 @@ export class FocusTrapZone extends React.Component<IFocusTrapZoneProps, {}> impl
       <div
         {...divProps}
         className={className}
-        ref={this._root}
+        ref={mergeRefs(this._root, domRef)}
         aria-labelledby={ariaLabelledBy}
         onFocusCapture={this._onFocusCapture}
         onFocus={this._onRootFocus}

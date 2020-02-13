@@ -119,6 +119,11 @@ export interface ICommandBarProps extends React.HTMLAttributes<HTMLDivElement> {
    * Theme provided by HOC.
    */
   theme?: ITheme;
+
+  /**
+   * Provides a React reference to the underlying DOM element
+   */
+  domRef?: IRefObject<HTMLDivElement>;
 }
 
 /**

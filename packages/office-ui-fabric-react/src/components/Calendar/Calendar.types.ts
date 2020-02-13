@@ -189,6 +189,11 @@ export interface ICalendarProps extends IBaseProps<ICalendar>, React.HTMLAttribu
    * @defaultvalue false
    */
   yearPickerHidden?: boolean;
+
+  /**
+   * Provides a React reference to the underlying DOM element
+   */
+  domRef?: IRefObject<HTMLDivElement>;
 }
 
 /**

@@ -142,6 +142,11 @@ export interface ICheckboxProps extends React.ButtonHTMLAttributes<HTMLElement |
    * and after the user's first click it will be removed exposing the true state of the checkbox.
    */
   defaultIndeterminate?: boolean;
+
+  /**
+   * Provides a React reference to the underlying DOM element
+   */
+  domRef?: IRefObject<HTMLDivElement>;
 }
 
 /**

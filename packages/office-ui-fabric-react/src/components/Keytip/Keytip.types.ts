@@ -1,6 +1,6 @@
 import { ICalloutProps } from '../../Callout';
 import { IStyle, ITheme } from '../../Styling';
-import { IStyleFunctionOrObject, IPoint } from '../../Utilities';
+import { IStyleFunctionOrObject, IPoint, IRefObject } from '../../Utilities';
 
 /**
  * {@docCategory Keytips}
@@ -78,6 +78,11 @@ export interface IKeytipProps {
    * Keytip mode will stay on when a menu is opened, even if the items in that menu have no keytips
    */
   hasMenu?: boolean;
+
+  /**
+   * Provides a React reference to the underlying DOM element
+   */
+  domRef?: IRefObject<HTMLDivElement>;
 }
 
 /**

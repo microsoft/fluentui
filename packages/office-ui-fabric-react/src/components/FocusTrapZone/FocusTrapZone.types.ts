@@ -78,4 +78,9 @@ export interface IFocusTrapZoneProps extends React.HTMLAttributes<HTMLDivElement
    * @defaultvalue false
    */
   focusPreviouslyFocusedInnerElement?: boolean;
+
+  /**
+   * Provides a React reference to the underlying DOM element
+   */
+  domRef?: IRefObject<HTMLDivElement>;
 }

@@ -86,7 +86,8 @@ export class DialogBase extends React.Component<IDialogProps, {}> {
       type,
       minWidth,
       maxWidth,
-      modalProps
+      modalProps,
+      domRef
     } = this.props;
 
     const mergedLayerProps: ILayerProps = {
@@ -155,6 +156,7 @@ export class DialogBase extends React.Component<IDialogProps, {}> {
         onDismiss={onDismiss ? onDismiss : mergedModalProps.onDismiss}
         subtitleAriaId={this._getSubTextId()}
         titleAriaId={this._getTitleTextId()}
+        domRef={domRef}
       >
         <DialogContent
           subTextId={this._defaultSubTextId}

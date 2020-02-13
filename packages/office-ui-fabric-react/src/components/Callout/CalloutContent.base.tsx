@@ -14,7 +14,8 @@ import {
   getNativeProps,
   getWindow,
   on,
-  shallowCompare
+  shallowCompare,
+  mergeRefs
 } from '../../Utilities';
 import {
   positionCallout,
@@ -195,6 +196,7 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
       backgroundColor,
       calloutMaxHeight,
       onScroll,
+      domRef,
       shouldRestoreFocus = true
     } = this.props;
     target = this._getTarget();
@@ -226,7 +228,7 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
     const visibilityStyle: React.CSSProperties | undefined = this.props.hidden ? { visibility: 'hidden' } : undefined;
     // React.CSSProperties does not understand IRawStyle, so the inline animations will need to be cast as any for now.
     const content = (
-      <div ref={this._hostElement} className={this._classNames.container} style={visibilityStyle}>
+      <div ref={mergeRefs(this._hostElement, domRef)} className={this._classNames.container} style={visibilityStyle}>
         <div
           {...getNativeProps(this.props, divProperties, ARIA_ROLE_ATTRIBUTES)}
           className={css(this._classNames.root, positions && positions.targetEdge && ANIMATIONS[positions.targetEdge!])}

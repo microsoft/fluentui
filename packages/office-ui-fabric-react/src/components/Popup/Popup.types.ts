@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Popup } from './Popup';
+import { IRefObject } from '../../Utilities';
 
 /**
  * {@docCategory Popup}
@@ -41,4 +42,9 @@ export interface IPopupProps extends React.HTMLAttributes<Popup> {
    * @defaultvalue true
    */
   shouldRestoreFocus?: boolean;
+
+  /**
+   * Provides a React reference to the underlying DOM element
+   */
+  domRef?: IRefObject<HTMLDivElement>;
 }

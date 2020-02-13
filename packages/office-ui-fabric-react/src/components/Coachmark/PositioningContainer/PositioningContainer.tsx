@@ -14,7 +14,8 @@ import {
   elementContains,
   focusFirstChild,
   getWindow,
-  getDocument
+  getDocument,
+  mergeRefs
 } from '../../../Utilities';
 
 import { getMaxHeight, positionElement, IPositionedData, IPositionProps, IPosition, RectangleEdge } from '../../../utilities/positioning';
@@ -138,7 +139,7 @@ export class PositioningContainer extends BaseComponent<IPositioningContainerPro
       return null;
     }
 
-    const { className, positioningContainerWidth, positioningContainerMaxHeight, children } = this.props;
+    const { className, positioningContainerWidth, positioningContainerMaxHeight, children, domRef } = this.props;
     const { positions } = this.state;
 
     const styles = getClassNames();
@@ -152,7 +153,7 @@ export class PositioningContainer extends BaseComponent<IPositioningContainerPro
         ? getContentMaxHeight
         : positioningContainerMaxHeight!;
     const content = (
-      <div ref={this._positionedHost} className={css('ms-PositioningContainer', styles.container)}>
+      <div ref={mergeRefs(domRef, this._positionedHost)} className={css('ms-PositioningContainer', styles.container)}>
         <div
           className={mergeStyles(
             'ms-PositioningContainer-layerHost',

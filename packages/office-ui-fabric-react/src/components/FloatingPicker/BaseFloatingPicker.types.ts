@@ -147,6 +147,11 @@ export interface IBaseFloatingPickerProps<T> extends React.ClassAttributes<any> 
    * If using as a controlled component, the items to show in the suggestion list
    */
   suggestionItems?: T[];
+
+  /**
+   * Provides a React reference to the underlying DOM element
+   */
+  domRef?: IRefObject<HTMLDivElement>;
 }
 
 /**
