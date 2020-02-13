@@ -306,7 +306,6 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
 
   public componentWillUnmount(): void {
     this._async.dispose();
-    // this._events.dispose();
   }
 
   // tslint:disable-next-line function-name
