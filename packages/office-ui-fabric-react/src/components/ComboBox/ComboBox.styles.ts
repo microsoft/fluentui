@@ -71,7 +71,7 @@ export const getOptionStyles = memoizeFunction(
     theme: ITheme,
     customStylesForAllOptions?: Partial<IComboBoxOptionStyles>,
     customOptionStylesForCurrentOption?: Partial<IComboBoxOptionStyles>,
-    isPending?: boolean,
+    isSelected?: boolean,
     isHidden?: boolean
   ): Partial<IComboBoxOptionStyles> => {
     const { palette, semanticColors } = theme;
@@ -89,7 +89,7 @@ export const getOptionStyles = memoizeFunction(
       root: [
         theme.fonts.medium,
         {
-          backgroundColor: isPending ? option.backgroundHoveredColor : 'transparent',
+          backgroundColor: isSelected ? option.backgroundSelectedColor : 'transparent',
           boxSizing: 'border-box',
           cursor: 'pointer',
           display: isHidden ? 'none' : 'block',
@@ -127,20 +127,14 @@ export const getOptionStyles = memoizeFunction(
         backgroundColor: option.backgroundHoveredColor,
         color: option.textHoveredColor
       },
-      rootFocused: {
-        backgroundColor: option.backgroundHoveredColor
-      },
       rootChecked: [
         {
-          backgroundColor: option.backgroundSelectedColor,
+          // The currently selected item should always have a background color. Otherwise it should be transparent.
+          // Root can be checked to indicate the current pending option that will be selected when enter is pressed.
+          backgroundColor: isSelected ? option.backgroundSelectedColor : 'transparent',
           color: option.textSelectedColor,
           selectors: {
-            ':hover': [
-              {
-                backgroundColor: option.backgroundHoveredColor
-              },
-              listOptionHighContrastStyles
-            ]
+            ':hover': [{ backgroundColor: option.backgroundHoveredColor }, listOptionHighContrastStyles]
           }
         },
         getFocusStyle(theme, { inset: -1, isFocusedOnly: false }),

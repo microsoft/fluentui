@@ -1277,7 +1277,9 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   private _renderOption = (item: IComboBoxOption): JSX.Element => {
     const { onRenderOption = this._onRenderOptionContent } = this.props;
     const id = this._id;
-    const isSelected: boolean = this._isOptionSelected(item.index);
+    // In single select this is passed into the button for styling purposes
+    // for both hover and keyboard status
+    const isSelected: boolean = this._isPendingOption(item.index);
     const isChecked: boolean = this._isOptionChecked(item.index);
     const optionStyles = this._getCurrentOptionStyles(item);
     const optionClassNames = getComboBoxOptionClassNames(this._getCurrentOptionStyles(item));
@@ -1352,16 +1354,22 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    * there is no visible selected option.
    *
    * Else if We are hovering over an item:
-   * that gets the selected look.
+   * that gets the hovered look.
    *
-   * Else:
+   * Else if keyboarding:
    * Use the current valid pending index if it exists OR
    * we do not have a valid index and we currently have a pending input value,
    * otherwise use the selected index
    * */
-  // return index === this._getFirstSelectedIndex() || this._getPendingSelectedIndex(true /* includePendingValue */) === index;
-  private _isOptionSelected(index: number | undefined): boolean {
-    return index === this._getFirstSelectedIndex() || this._getPendingSelectedIndex(true /* includePendingValue */) === index;
+  private _isPendingOption(index: number | undefined): boolean {
+    const { currentPendingValueValidIndexOnHover } = this.state;
+
+    // If the hover state is set to clearAll, don't show a selected index.
+    // Note, this happens when the user moused out of the menu items
+    if (currentPendingValueValidIndexOnHover === HoverStatus.clearAll) {
+      return false;
+    }
+    return this._getPendingSelectedIndex(true /* includePendingValue */) === index;
   }
 
   private _isOptionChecked(index: number | undefined): boolean {
@@ -2076,7 +2084,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       this.props.theme!,
       customStylesForAllOptions,
       customStylesForCurrentOption,
-      this._isPendingOption(item),
+      this._isCurrentlySelectedOption(item),
       item.hidden
     );
   }
@@ -2106,8 +2114,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     return autoComplete ? (this.props.allowFreeform ? 'inline' : 'both') : 'none';
   }
 
-  private _isPendingOption(item: IComboBoxOption): boolean {
-    return item && item.index === this.state.currentPendingValueValidIndex;
+  private _isCurrentlySelectedOption(item: IComboBoxOption): boolean {
+    return item.index === this._getFirstSelectedIndex() && !this.props.multiSelect;
   }
 
   /**
