@@ -28,7 +28,6 @@ import {
   findScrollableParent
 } from '../../Utilities';
 import { mergeStyles } from '@uifabric/merge-styles';
-import { EventListener } from '@fluentui/react-component-event-listener';
 
 const IS_FOCUSABLE_ATTRIBUTE = 'data-is-focusable';
 const IS_ENTER_DISABLED_ATTRIBUTE = 'data-disable-click-on-enter';
@@ -156,8 +155,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
         _outerZones.add(this);
 
         if (windowElement && _outerZones.size === 1) {
-          // _disposeGlobalKeyDownListener = on(windowElement, 'keydown', this._onKeyDownCapture, true);
-          windowElement.addEventListener('keydown', this._onKeyDownCapture, true);
+          _disposeGlobalKeyDownListener = on(windowElement, 'keydown', this._onKeyDownCapture, true);
         }
       }
 
@@ -303,7 +301,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
     }
 
     if (element) {
-      // when we Set focus to a specific child, we should recalculate the alignment depend on its position
+      // when we Set focus to a specific child, we should recalculate the alignment depend on its position
       this._setActiveElement(element);
       if (this._activeElement) {
         this._activeElement.focus();
@@ -492,15 +490,10 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
     }
   }
 
-  private _handleDocumentKeyDown = () => {
-    console.log('hi!');
-  };
-
   /**
    * Handle the keystrokes.
    */
   private _onKeyDown = (ev: React.KeyboardEvent<HTMLElement>): boolean | undefined => {
-    let event_listener = <EventListener listener={this._handleDocumentKeyDown} target={this.context.target} type="keydown" capture />;
     if (this._portalContainsElement(ev.target as HTMLElement)) {
       // If the event target is inside a portal do not process the event.
       return;
