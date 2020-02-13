@@ -1,9 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Replacing deprecated StatelessComponent references with FunctionComponent.",
-  "packageName": "@uifabric/utilities",
-  "email": "Humberto.Morimoto@microsoft.com",
-  "commit": "a2d743b178cecab012e4a7335c7e518d0c9b26c7",
-  "dependentChangeType": "patch",
-  "date": "2020-02-06T21:27:00.562Z"
-}

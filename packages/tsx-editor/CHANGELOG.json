@@ -2,6 +2,20 @@
   "name": "@uifabric/tsx-editor",
   "entries": [
     {
+      "date": "Wed, 12 Feb 2020 12:24:27 GMT",
+      "tag": "@uifabric/tsx-editor_v0.11.18",
+      "version": "0.11.18",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add react-focus support",
+            "author": "elcraig@microsoft.com",
+            "commit": "5e6d8c691d23f7881afe569ec1f19edd56242656"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 11 Feb 2020 18:37:59 GMT",
       "tag": "@uifabric/tsx-editor_v0.11.17",
       "version": "0.11.17",

@@ -1,7 +1,18 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 11 Feb 2020 18:37:59 GMT and should not be manually modified.
+This log was last generated on Wed, 12 Feb 2020 12:24:27 GMT and should not be manually modified.
 
+## 7.93.0
+Wed, 12 Feb 2020 12:24:27 GMT
+
+### Minor changes
+
+- Re-export react-focus's FocusZone from OUFR (elcraig@microsoft.com)
+- Replacing deprecated StatelessComponent references with FunctionComponent. (Humberto.Morimoto@microsoft.com)
+- ContextualMenu: change role of category options to menuitemcheckbox (aneeshak@microsoft.com)
+### Patches
+
+- TextField example: fix onChange typing error when strictFunctionType is true (xgao@microsoft.com)
 ## 7.92.0
 Tue, 11 Feb 2020 18:37:59 GMT
 

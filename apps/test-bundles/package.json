@@ -28,10 +28,10 @@
     "@uifabric/build": "^7.0.0"
   },
   "dependencies": {
-    "@uifabric/experiments": "^7.18.30",
+    "@uifabric/experiments": "^7.19.0",
     "@uifabric/set-version": "^7.0.5",
-    "@uifabric/styling": "^7.10.7",
-    "office-ui-fabric-react": "^7.92.0",
+    "@uifabric/styling": "^7.10.8",
+    "office-ui-fabric-react": "^7.93.0",
     "react": "16.8.6",
     "react-app-polyfill": "~1.0.1",
     "react-dom": "16.8.6",

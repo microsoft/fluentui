@@ -2,6 +2,44 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Wed, 12 Feb 2020 12:24:27 GMT",
+      "tag": "office-ui-fabric-react_v7.93.0",
+      "version": "7.93.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Re-export react-focus's FocusZone from OUFR",
+            "author": "elcraig@microsoft.com",
+            "commit": "4f2d8efea3622ba8c9d844c68e5ed5088b858f6f"
+          },
+          {
+            "comment": "Replacing deprecated StatelessComponent references with FunctionComponent.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "a2d743b178cecab012e4a7335c7e518d0c9b26c7"
+          },
+          {
+            "comment": "ContextualMenu: change role of category options to menuitemcheckbox",
+            "author": "aneeshak@microsoft.com",
+            "commit": "7b3f82f7ee65ffdec8a34bed75932904f0e690d0"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Disable List test causing intermittent test failures.",
+            "author": "jagore@microsoft.com",
+            "commit": "079a40a86a1562d1fa558957cee86997e97bea8a"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "TextField example: fix onChange typing error when strictFunctionType is true",
+            "author": "xgao@microsoft.com",
+            "commit": "3602dd11de72d6b10d60bc5eeb624175d8cec8eb"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 11 Feb 2020 18:37:59 GMT",
       "tag": "office-ui-fabric-react_v7.92.0",
       "version": "7.92.0",
