@@ -92,6 +92,7 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
     const { styles, groups, theme } = this.props;
     const isLinkWithIcon = link.icon || link.iconProps;
     const isSelectedLink = this._isLinkSelected(link);
+    const { ariaCurrent = 'page' } = link;
     const classNames = getClassNames(styles!, {
       theme: theme!,
       isSelected: isSelectedLink,
@@ -118,7 +119,7 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
         target={link.target}
         rel={rel}
         disabled={link.disabled}
-        aria-current={isSelectedLink ? 'page' : undefined}
+        aria-current={isSelectedLink ? ariaCurrent : undefined}
         aria-label={link.ariaLabel ? link.ariaLabel : undefined}
         link={link}
       >
