@@ -1,0 +1,9 @@
+{
+  "type": "minor",
+  "comment": "Add `domRef` property to most components, allowing access to underlying DOMElements without using the deprecated `ReactDOM.findDOMNode()`",
+  "packageName": "office-ui-fabric-react",
+  "email": "miclo@microsoft.com",
+  "commit": "a9a43652e0200a11ac209b1921c383016ce515e9",
+  "dependentChangeType": "patch",
+  "date": "2020-02-13T18:34:30.669Z"
+}

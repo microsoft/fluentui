@@ -1,0 +1,9 @@
+{
+  "type": "minor",
+  "comment": "Add utility to merge several `IRefObject`s into one `IRefObject` to pass to a JSX.Element",
+  "packageName": "@uifabric/utilities",
+  "email": "miclo@microsoft.com",
+  "commit": "a9a43652e0200a11ac209b1921c383016ce515e9",
+  "dependentChangeType": "patch",
+  "date": "2020-02-13T18:35:17.650Z"
+}
