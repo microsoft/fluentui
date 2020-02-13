@@ -46,7 +46,9 @@
     "codepen": "cd packages/office-ui-fabric-react && node ../../scripts/local-codepen.js",
     "dom-test": "cd apps/dom-tests && just-scripts jest-dom-with-webpack",
     "lint": "lerna run lint --parallel",
-    "test": "lerna run test --stream"
+    "test": "lerna run test --stream",
+    "release:minor": "yarn workspace @uifabric/build just fluentui:publish:minor --registry http://localhost:4873",
+    "release:patch": "yarn workspace @uifabric/build just fluentui:publish:patch --registry http://localhost:4873"
   },
   "devDependencies": {
     "beachball": "^1.18.4",
