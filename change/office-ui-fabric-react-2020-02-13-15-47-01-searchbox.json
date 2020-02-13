@@ -1,0 +1,9 @@
+{
+  "type": "patch",
+  "comment": "SearchBox: use EventListener, not EventGroup to reduce bundle size",
+  "packageName": "office-ui-fabric-react",
+  "email": "aneeshak@microsoft.com",
+  "commit": "daf56b7b65d70eb23c11017fa90792daabff50b0",
+  "dependentChangeType": "patch",
+  "date": "2020-02-13T23:47:01.903Z"
+}
