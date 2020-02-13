@@ -1,7 +1,6 @@
 import * as React from 'react';
 import {
   Async,
-  EventGroup,
   IRectangle,
   IRenderFunction,
   css,
@@ -14,6 +13,7 @@ import {
   initializeComponentRef
 } from '../../Utilities';
 import { IList, IListProps, IPage, IPageProps, ScrollToMode } from './List.types';
+import { EventListener } from '@fluentui/react-component-event-listener';
 
 const RESIZE_DELAY = 16;
 const MIN_SCROLL_UPDATE_DELAY = 100;
@@ -97,7 +97,6 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
   private _root = React.createRef<HTMLDivElement>();
   private _surface = React.createRef<HTMLDivElement>();
   private _async: Async;
-  private _events: EventGroup;
   private _estimatedPageHeight: number;
   private _totalEstimates: number;
   private _cachedPageHeights: {
@@ -144,7 +143,6 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
     };
 
     this._async = new Async(this);
-    this._events = new EventGroup(this);
     this._estimatedPageHeight = 0;
     this._totalEstimates = 0;
     this._requiredWindowsAhead = 0;
@@ -304,20 +302,11 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
     this._updatePages();
     this._measureVersion++;
     this._scrollElement = findScrollableParent(this._root.current) as HTMLElement;
-
-    this._events.on(window, 'resize', this._onAsyncResize);
-    if (this._root.current) {
-      this._events.on(this._root.current, 'focus', this._onFocus, true);
-    }
-    if (this._scrollElement) {
-      this._events.on(this._scrollElement, 'scroll', this._onScroll);
-      this._events.on(this._scrollElement, 'scroll', this._onAsyncScroll);
-    }
   }
 
   public componentWillUnmount(): void {
     this._async.dispose();
-    this._events.dispose();
+    // this._events.dispose();
   }
 
   // tslint:disable-next-line function-name
@@ -398,11 +387,17 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
     }
 
     return (
-      <div ref={this._root} {...divProps} role={pageElements.length > 0 ? role : undefined} className={css('ms-List', className)}>
-        <div ref={this._surface} className={'ms-List-surface'} role="presentation">
-          {pageElements}
+      <>
+        <div ref={this._root} {...divProps} role={pageElements.length > 0 ? role : undefined} className={css('ms-List', className)}>
+          <div ref={this._surface} className={'ms-List-surface'} role="presentation">
+            {pageElements}
+          </div>
         </div>
-      </div>
+        <EventListener target={window} type="resize" listener={this._onAsyncResize} />
+        <EventListener capture targetRef={this._root} type="focus" listener={this._onFocus} />
+        <EventListener capture targetRef={this._root} type="scroll" listener={this._onScroll} />
+        <EventListener capture targetRef={this._root} type="scroll" listener={this._onAsyncScroll} />
+      </>
     );
   }
 
