@@ -5,8 +5,6 @@ import { classNamesFunction, getNativeProps, divProperties } from '../../Utiliti
 import { Label } from 'office-ui-fabric-react/lib/Label';
 import { TooltipHost } from 'office-ui-fabric-react/lib/Tooltip';
 import { DirectionalHint } from 'office-ui-fabric-react/lib/common/DirectionalHint';
-import { EventListener } from '@fluentui/react-component-event-listener';
-
 export interface ISliderState {
   value?: number;
   renderedValue?: number;
@@ -94,103 +92,97 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
       />
     );
     return (
-      <>
-        <div className={classNames.root}>
-          {label && (
-            <Label className={classNames.titleLabel} {...(ariaLabel ? {} : { htmlFor: this._id })} disabled={disabled}>
-              {label}
-            </Label>
-          )}
-          {this._getValueLabel(classNames.valueLabel)}
-          <div className={classNames.container}>
-            <div
-              aria-valuenow={value}
-              aria-valuemin={min}
-              aria-valuemax={max}
-              aria-valuetext={this._getAriaValueText(value)}
-              aria-label={ariaLabel || label}
-              aria-disabled={disabled}
-              {...onMouseDownProp}
-              {...onTouchStartProp}
-              {...onKeyDownProp}
-              {...divButtonProps}
-              className={css(classNames.slideBox, buttonProps!.className)}
-              id={this._id}
-              role="slider"
-              tabIndex={disabled ? undefined : 0}
-              data-is-focusable={!disabled}
-            >
-              <div ref={this._sliderLine} className={classNames.line}>
-                {originFromZero && (
-                  <span className={classNames.zeroTick} style={this._getStyleUsingOffsetPercent(vertical, zeroOffsetPercent)} />
-                )}
-                {marks && this._addTickmarks(classNames.regularTick)}
-                {Array.isArray(marks) ? (
-                  this._addLabels(classNames.regularLabel, marks)
-                ) : (
-                  <>
-                    <span className={classNames.regularLabel} style={this._getStyleUsingOffsetPercent(vertical, 0)}>
-                      {min}
-                    </span>
-                    <span className={classNames.regularLabel} style={this._getStyleUsingOffsetPercent(vertical, 100)}>
-                      {max}
-                    </span>
-                  </>
-                )}
+      <div className={classNames.root}>
+        {label && (
+          <Label className={classNames.titleLabel} {...(ariaLabel ? {} : { htmlFor: this._id })} disabled={disabled}>
+            {label}
+          </Label>
+        )}
+        {this._getValueLabel(classNames.valueLabel)}
+        <div className={classNames.container}>
+          <div
+            aria-valuenow={value}
+            aria-valuemin={min}
+            aria-valuemax={max}
+            aria-valuetext={this._getAriaValueText(value)}
+            aria-label={ariaLabel || label}
+            aria-disabled={disabled}
+            {...onMouseDownProp}
+            {...onTouchStartProp}
+            {...onKeyDownProp}
+            {...divButtonProps}
+            className={css(classNames.slideBox, buttonProps!.className)}
+            id={this._id}
+            role="slider"
+            tabIndex={disabled ? undefined : 0}
+            data-is-focusable={!disabled}
+          >
+            <div ref={this._sliderLine} className={classNames.line}>
+              {originFromZero && (
+                <span className={classNames.zeroTick} style={this._getStyleUsingOffsetPercent(vertical, zeroOffsetPercent)} />
+              )}
+              {marks && this._addTickmarks(classNames.regularTick)}
+              {Array.isArray(marks) ? (
+                this._addLabels(classNames.regularLabel, marks)
+              ) : (
+                <>
+                  <span className={classNames.regularLabel} style={this._getStyleUsingOffsetPercent(vertical, 0)}>
+                    {min}
+                  </span>
+                  <span className={classNames.regularLabel} style={this._getStyleUsingOffsetPercent(vertical, 100)}>
+                    {max}
+                  </span>
+                </>
+              )}
 
-                {showThumbTooltip ? (
-                  <TooltipHost
-                    content={`${value}`}
-                    id={this._hostId}
-                    calloutProps={{
-                      gapSpace: 5,
-                      beakWidth: 8,
-                      target: `#${this._buttonId}`,
-                      directionalHint: vertical ? DirectionalHint.leftCenter : DirectionalHint.topCenter
-                    }}
-                  >
-                    {thumbButton}
-                  </TooltipHost>
-                ) : (
-                  thumbButton
-                )}
-                {originFromZero ? (
-                  <>
-                    <span
-                      className={css(classNames.lineContainer, classNames.inactiveSection)}
-                      style={{ [lengthString]: Math.min(thumbOffsetPercent, zeroOffsetPercent) + '%' }}
-                    />
-                    <span
-                      className={css(classNames.lineContainer, classNames.activeSection)}
-                      style={{ [lengthString]: Math.abs(zeroOffsetPercent - thumbOffsetPercent) + '%' }}
-                    />
-                    <span
-                      className={css(classNames.lineContainer, classNames.inactiveSection)}
-                      style={{ [lengthString]: Math.min(100 - thumbOffsetPercent, 100 - zeroOffsetPercent) + '%' }}
-                    />
-                  </>
-                ) : (
-                  <>
-                    <span
-                      className={css(classNames.lineContainer, classNames.activeSection)}
-                      style={{ [lengthString]: thumbOffsetPercent + '%' }}
-                    />
-                    <span
-                      className={css(classNames.lineContainer, classNames.inactiveSection)}
-                      style={{ [lengthString]: 100 - thumbOffsetPercent + '%' }}
-                    />
-                  </>
-                )}
-              </div>
+              {showThumbTooltip ? (
+                <TooltipHost
+                  content={`${value}`}
+                  id={this._hostId}
+                  calloutProps={{
+                    gapSpace: 5,
+                    beakWidth: 8,
+                    target: `#${this._buttonId}`,
+                    directionalHint: vertical ? DirectionalHint.leftCenter : DirectionalHint.topCenter
+                  }}
+                >
+                  {thumbButton}
+                </TooltipHost>
+              ) : (
+                thumbButton
+              )}
+              {originFromZero ? (
+                <>
+                  <span
+                    className={css(classNames.lineContainer, classNames.inactiveSection)}
+                    style={{ [lengthString]: Math.min(thumbOffsetPercent, zeroOffsetPercent) + '%' }}
+                  />
+                  <span
+                    className={css(classNames.lineContainer, classNames.activeSection)}
+                    style={{ [lengthString]: Math.abs(zeroOffsetPercent - thumbOffsetPercent) + '%' }}
+                  />
+                  <span
+                    className={css(classNames.lineContainer, classNames.inactiveSection)}
+                    style={{ [lengthString]: Math.min(100 - thumbOffsetPercent, 100 - zeroOffsetPercent) + '%' }}
+                  />
+                </>
+              ) : (
+                <>
+                  <span
+                    className={css(classNames.lineContainer, classNames.activeSection)}
+                    style={{ [lengthString]: thumbOffsetPercent + '%' }}
+                  />
+                  <span
+                    className={css(classNames.lineContainer, classNames.inactiveSection)}
+                    style={{ [lengthString]: 100 - thumbOffsetPercent + '%' }}
+                  />
+                </>
+              )}
             </div>
           </div>
-          <div />
         </div>
-        <EventListener capture target={window} type="mousemove" listener={this._onMouseMoveOrTouchMove} />
-        <EventListener capture target={window} type="mouseup" listener={this._onMouseUpOrTouchEnd} />
-        <EventListener capture target={window} type="touchmove" listener={this._onMouseMoveOrTouchMove} />
-        <EventListener capture target={window} type="touchend" listener={this._onMouseUpOrTouchEnd} />
-      </>
+        <div />
+      </div>
     ) as React.ReactElement<{}>;
   }
 
@@ -240,6 +232,13 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
   }
 
   private _onMouseDownOrTouchStart = (event: MouseEvent | TouchEvent): void => {
+    if (event.type === 'mousedown') {
+      this._events.on(window, 'mousemove', this._onMouseMoveOrTouchMove, true);
+      this._events.on(window, 'mouseup', this._onMouseUpOrTouchEnd, true);
+    } else if (event.type === 'touchstart') {
+      this._events.on(window, 'touchmove', this._onMouseMoveOrTouchMove, true);
+      this._events.on(window, 'touchend', this._onMouseUpOrTouchEnd, true);
+    }
     this._onMouseMoveOrTouchMove(event, true);
   };
 
