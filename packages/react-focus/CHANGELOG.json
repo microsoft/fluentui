@@ -1,4 +1,19 @@
 {
   "name": "@fluentui/react-focus",
-  "entries": []
+  "entries": [
+    {
+      "date": "Thu, 13 Feb 2020 12:20:22 GMT",
+      "tag": "@fluentui/react-focus_v0.1.0",
+      "version": "0.1.0",
+      "comments": {
+        "none": [
+          {
+            "comment": "Delete new prettier rules references",
+            "author": "elcraig@microsoft.com",
+            "commit": "ab2a5a693a3846e78b11355e8af1943e63c826f6"
+          }
+        ]
+      }
+    }
+  ]
 }
