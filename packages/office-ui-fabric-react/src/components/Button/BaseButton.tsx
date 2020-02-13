@@ -12,7 +12,8 @@ import {
   mergeAriaAttributeValues,
   portalContainsElement,
   memoizeFunction,
-  nullRender
+  nullRender,
+  mergeRefs
 } from '../../Utilities';
 import { Icon, FontIcon, ImageIcon } from '../../Icon';
 import { DirectionalHint } from '../../common/DirectionalHint';
@@ -273,7 +274,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     this._openMenu(shouldFocusOnContainer, shouldFocusOnMount);
   }
 
-  private _onRenderContent(tag: any, buttonProps: IButtonProps): JSX.Element {
+  private _onRenderContent(tag: any, buttonProps: IButtonProps & { ref?: any }): JSX.Element {
     const props = this.props;
     const Tag = tag;
     const {
@@ -292,7 +293,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     }
 
     const Button = (keytipAttributes?: any): JSX.Element => (
-      <Tag {...buttonProps} {...keytipAttributes} ref={buttonProps.domRef}>
+      <Tag {...buttonProps} {...keytipAttributes} ref={mergeRefs(buttonProps.domRef, buttonProps.ref)}>
         <span className={this._classNames.flexContainer} data-automationid="splitbuttonprimary">
           {onRenderIcon(props, this._onRenderIcon)}
           {this._onRenderTextContents()}
