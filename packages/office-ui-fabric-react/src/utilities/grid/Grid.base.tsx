@@ -22,7 +22,8 @@ export class GridBase extends BaseComponent<IGridProps, {}> implements IGrid {
       ariaPosInSet = props.positionInSet,
       ariaSetSize = props.setSize,
       styles,
-      doNotContainWithinFocusZone
+      doNotContainWithinFocusZone,
+      domRef
     } = props;
 
     const htmlProps = getNativeProps<React.HTMLAttributes<HTMLTableElement>>(
@@ -38,7 +39,15 @@ export class GridBase extends BaseComponent<IGridProps, {}> implements IGrid {
     const rowsOfItems: any[][] = toMatrix(items, columnCount);
 
     const content = (
-      <table aria-posinset={ariaPosInSet} aria-setsize={ariaSetSize} id={this._id} role="grid" {...htmlProps} className={classNames.root}>
+      <table
+        aria-posinset={ariaPosInSet}
+        aria-setsize={ariaSetSize}
+        id={this._id}
+        role="grid"
+        {...htmlProps}
+        className={classNames.root}
+        ref={domRef}
+      >
         <tbody>
           {rowsOfItems.map((rows: any[], rowIndex: number) => {
             return (

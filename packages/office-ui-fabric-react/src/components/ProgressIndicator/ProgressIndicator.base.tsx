@@ -28,6 +28,7 @@ export class ProgressIndicatorBase extends React.Component<IProgressIndicatorPro
       styles,
       theme,
       progressHidden,
+      domRef,
       onRenderProgress = this._onRenderProgress
     } = this.props;
 
@@ -42,7 +43,7 @@ export class ProgressIndicatorBase extends React.Component<IProgressIndicatorPro
     });
 
     return (
-      <div className={classNames.root}>
+      <div className={classNames.root} ref={domRef}>
         {label ? <div className={classNames.itemName}>{label}</div> : null}
         {!progressHidden
           ? onRenderProgress(

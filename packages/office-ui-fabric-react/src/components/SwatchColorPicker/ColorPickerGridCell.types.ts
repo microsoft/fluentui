@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { IStyle, ITheme } from '../../Styling';
-import { IStyleFunctionOrObject } from '../../Utilities';
+import { IStyleFunctionOrObject, IRefObject } from '../../Utilities';
 
 /**
  * {@docCategory SwatchColorPicker}
@@ -106,6 +106,11 @@ export interface IColorPickerGridCellProps {
   onWheel?: (ev: React.MouseEvent<HTMLButtonElement>) => void;
 
   onKeyDown?: (ev: React.KeyboardEvent<HTMLButtonElement>) => void;
+
+  /**
+   * Provides a React reference to the underlying DOM element
+   */
+  domRef?: IRefObject<HTMLButtonElement | HTMLAnchorElement>;
 }
 
 /**

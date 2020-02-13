@@ -89,7 +89,8 @@ export class ColorPickerGridCellBase extends React.PureComponent<IColorPickerGri
       onKeyDown,
       height,
       width,
-      borderWidth
+      borderWidth,
+      domRef
     } = this.props;
 
     this._classNames = getClassNames(styles!, {
@@ -124,6 +125,7 @@ export class ColorPickerGridCellBase extends React.PureComponent<IColorPickerGri
         onMouseLeave={onMouseLeave}
         onWheel={onWheel}
         onKeyDown={onKeyDown}
+        domRef={domRef}
       />
     );
   }

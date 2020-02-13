@@ -47,6 +47,11 @@ export interface IScrollablePaneProps extends React.HTMLAttributes<HTMLElement |
   initialScrollPosition?: number;
 
   scrollbarVisibility?: ScrollbarVisibility;
+
+  /**
+   * Provides a React reference to the underlying DOM element
+   */
+  domRef?: IRefObject<HTMLDivElement>;
 }
 
 /**

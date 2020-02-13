@@ -163,6 +163,11 @@ export interface IPersonaSharedProps extends React.HTMLAttributes<PersonaBase | 
    * @deprecated Use `text` instead.
    */
   primaryText?: string;
+
+  /**
+   * Provides a React reference to the underlying DOM element
+   */
+  domRef?: IRefObject<HTMLDivElement>;
 }
 
 /**

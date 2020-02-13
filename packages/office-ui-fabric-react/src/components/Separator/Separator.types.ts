@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IStyleFunctionOrObject } from '../../Utilities';
+import { IStyleFunctionOrObject, IRefObject } from '../../Utilities';
 import { IStyle, ITheme } from '../../Styling';
 
 /**
@@ -31,6 +31,11 @@ export interface ISeparatorProps extends React.HTMLAttributes<HTMLElement> {
    * @defaultValue 'center'
    */
   alignContent?: 'start' | 'center' | 'end';
+
+  /**
+   * Provides a React reference to the underlying DOM element
+   */
+  domRef?: IRefObject<HTMLDivElement>;
 }
 
 /**

@@ -78,6 +78,11 @@ export interface IGridProps extends React.TableHTMLAttributes<HTMLTableElement> 
    * Optional styles for the component.
    */
   styles?: IStyleFunctionOrObject<IGridStyleProps, IGridStyles>;
+
+  /**
+   * Provides a React reference to the underlying DOM element
+   */
+  domRef?: IRefObject<HTMLTableElement>;
 }
 
 /**

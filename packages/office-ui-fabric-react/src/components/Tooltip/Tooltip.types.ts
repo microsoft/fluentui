@@ -75,6 +75,11 @@ export interface ITooltipProps extends React.HTMLAttributes<HTMLDivElement | Too
    * Call to provide customized styling that will layer on top of the variant rules.
    */
   styles?: IStyleFunctionOrObject<ITooltipStyleProps, ITooltipStyles>;
+
+  /**
+   * Provides a React reference to the underlying DOM element
+   */
+  domRef?: IRefObject<HTMLDivElement>;
 }
 
 /**

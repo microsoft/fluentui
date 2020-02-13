@@ -103,7 +103,8 @@ export class SwatchColorPickerBase extends React.Component<ISwatchColorPickerPro
       className,
       doNotContainWithinFocusZone,
       styles,
-      cellMargin
+      cellMargin,
+      domRef
     } = this.props;
 
     const classNames = getClassNames(styles!, {
@@ -133,6 +134,7 @@ export class SwatchColorPickerBase extends React.Component<ISwatchColorPickerPro
           tableCell: classNames.tableCell,
           focusedContainer: classNames.focusedContainer
         }}
+        domRef={domRef}
       />
     );
   }

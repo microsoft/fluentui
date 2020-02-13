@@ -158,7 +158,8 @@ export class SpinButton extends React.Component<ISpinButtonProps, ISpinButtonSta
       keytipProps,
       className,
       inputProps,
-      iconButtonProps
+      iconButtonProps,
+      domRef
     } = this.props as ISpinButtonInternalProps;
 
     const { isFocused, value, keyboardSpinDirection } = this.state;
@@ -170,7 +171,7 @@ export class SpinButton extends React.Component<ISpinButtonProps, ISpinButtonSta
     const nativeProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties, ['onBlur', 'onFocus', 'className']);
 
     return (
-      <div className={classNames.root}>
+      <div className={classNames.root} ref={domRef}>
         {labelPosition !== Position.bottom && (iconProps || label) && (
           <div className={classNames.labelWrapper}>
             {iconProps && <Icon {...iconProps} className={classNames.icon} aria-hidden="true" />}

@@ -67,6 +67,11 @@ export interface ISpinnerProps extends React.HTMLAttributes<HTMLElement> {
    * @defaultvalue SpinnerLabelPosition.bottom
    */
   labelPosition?: SpinnerLabelPosition;
+
+  /**
+   * Provides a React reference to the underlying DOM element
+   */
+  domRef?: IRefObject<HTMLDivElement>;
 }
 
 /**

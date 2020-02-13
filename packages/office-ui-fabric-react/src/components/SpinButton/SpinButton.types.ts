@@ -245,6 +245,11 @@ export interface ISpinButtonProps extends React.HTMLAttributes<HTMLDivElement> {
    * Optional iconButton props on spin button
    */
   iconButtonProps?: IButtonProps;
+
+  /**
+   * Provides a React reference to the underlying DOM element
+   */
+  domRef?: IRefObject<HTMLDivElement>;
 }
 
 /**

@@ -14,7 +14,8 @@ import {
   getId,
   getNativeProps,
   getRTL,
-  css
+  css,
+  mergeRefs
 } from '../../Utilities';
 import { FocusTrapZone } from '../FocusTrapZone/index';
 import { IPanel, IPanelProps, IPanelStyleProps, IPanelStyles, PanelType } from './Panel.types';
@@ -142,6 +143,7 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
       styles,
       theme,
       customWidth,
+      domRef,
       onLightDismissClick = this._onPanelClick,
       onRenderNavigation = this._onRenderNavigation,
       onRenderHeader = this._onRenderHeader,
@@ -203,7 +205,7 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
           onDismiss={this.dismiss}
           className={_classNames.hiddenPanel}
         >
-          <div aria-hidden={!isOpen && isAnimating} {...nativeProps} ref={this._panel} className={_classNames.root}>
+          <div aria-hidden={!isOpen && isAnimating} {...nativeProps} ref={mergeRefs(this._panel, domRef)} className={_classNames.root}>
             {overlay}
             <FocusTrapZone
               ignoreExternalFocusing={ignoreExternalFocusing}

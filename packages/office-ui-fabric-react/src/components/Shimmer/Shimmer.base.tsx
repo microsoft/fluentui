@@ -74,7 +74,8 @@ export class ShimmerBase extends React.Component<IShimmerProps, IShimmerState> {
       customElementsGroup,
       theme,
       ariaLabel,
-      shimmerColors
+      shimmerColors,
+      domRef
     } = this.props;
 
     const { contentLoaded } = this.state;
@@ -91,7 +92,7 @@ export class ShimmerBase extends React.Component<IShimmerProps, IShimmerState> {
     const divProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties);
 
     return (
-      <div {...divProps} className={this._classNames.root}>
+      <div {...divProps} className={this._classNames.root} ref={domRef}>
         {!contentLoaded && (
           <div style={{ width: width ? width : '100%' }} className={this._classNames.shimmerWrapper}>
             <div className={this._classNames.shimmerGradient} />

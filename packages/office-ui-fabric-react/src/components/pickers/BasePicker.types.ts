@@ -211,6 +211,11 @@ export interface IBasePickerProps<T> extends React.Props<any> {
    * Theme provided by styled() function.
    */
   theme?: ITheme;
+
+  /**
+   * Provides a React reference to the underlying DOM element
+   */
+  domRef?: IRefObject<HTMLDivElement>;
 }
 
 /**

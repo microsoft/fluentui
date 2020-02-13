@@ -90,7 +90,7 @@ export class PivotBase extends React.Component<IPivotProps, IPivotState> {
     this._classNames = this._getClassNames(this.props);
 
     return (
-      <div role="toolbar" {...divProps}>
+      <div role="toolbar" {...divProps} ref={this.props.domRef}>
         {this._renderPivotLinks(linkCollection, selectedKey)}
         {selectedKey && this._renderPivotItem(linkCollection, selectedKey)}
       </div>

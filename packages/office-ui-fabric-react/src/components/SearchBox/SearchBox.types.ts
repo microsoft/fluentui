@@ -119,6 +119,11 @@ export interface ISearchBoxProps extends React.InputHTMLAttributes<HTMLInputElem
    * @defaultvalue false
    */
   disableAnimation?: boolean;
+
+  /**
+   * Provides a React reference to the underlying DOM element
+   */
+  domRef?: IRefObject<HTMLDivElement>;
 }
 
 /**

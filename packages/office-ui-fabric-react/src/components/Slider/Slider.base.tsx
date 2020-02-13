@@ -60,7 +60,8 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
       valueFormat,
       styles,
       theme,
-      originFromZero
+      originFromZero,
+      domRef
     } = this.props;
     const value = this.value;
     const renderedValue = this.renderedValue;
@@ -81,7 +82,7 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
     const divButtonProps = buttonProps ? getNativeProps<React.HTMLAttributes<HTMLDivElement>>(buttonProps, divProperties) : undefined;
 
     return (
-      <div className={classNames.root}>
+      <div className={classNames.root} ref={domRef}>
         {label && (
           <Label className={classNames.titleLabel} {...(ariaLabel ? {} : { htmlFor: this._id })} disabled={disabled}>
             {label}

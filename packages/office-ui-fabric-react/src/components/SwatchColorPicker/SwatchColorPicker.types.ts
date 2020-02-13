@@ -1,5 +1,5 @@
 import { IStyle, ITheme } from '../../Styling';
-import { IStyleFunctionOrObject } from '../../Utilities';
+import { IStyleFunctionOrObject, IRefObject } from '../../Utilities';
 import { IColorCellProps, IColorPickerGridCellStyleProps, IColorPickerGridCellStyles } from './ColorPickerGridCell.types';
 
 /**
@@ -159,6 +159,11 @@ export interface ISwatchColorPickerProps {
    * Selector to focus on mouse leave. Should only be used in conjunction with `focusOnHover`.
    */
   mouseLeaveParentSelector?: string | undefined;
+
+  /**
+   * Provides a React reference to the underlying DOM element
+   */
+  domRef?: IRefObject<HTMLTableElement>;
 }
 
 /**

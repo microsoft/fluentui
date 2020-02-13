@@ -99,6 +99,11 @@ export interface IRatingProps extends React.AllHTMLAttributes<HTMLElement> {
    * Theme (provided through customization.)
    */
   theme?: ITheme;
+
+  /**
+   * Provides a React reference to the underlying DOM element
+   */
+  domRef?: IRefObject<HTMLDivElement>;
 }
 
 /**

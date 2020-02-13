@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, classNamesFunction, divProperties, getNativeProps, getRTL } from '../../Utilities';
+import { BaseComponent, classNamesFunction, divProperties, getNativeProps, getRTL, mergeRefs } from '../../Utilities';
 import {
   IScrollablePane,
   IScrollablePaneContext,
@@ -164,7 +164,7 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
   }
 
   public render(): JSX.Element {
-    const { className, theme, styles } = this.props;
+    const { className, theme, styles, domRef } = this.props;
     const { stickyTopHeight, stickyBottomHeight } = this.state;
     const classNames = getClassNames(styles!, {
       theme: theme!,
@@ -173,7 +173,7 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
     });
 
     return (
-      <div {...getNativeProps(this.props, divProperties)} ref={this._root} className={classNames.root}>
+      <div {...getNativeProps(this.props, divProperties)} ref={mergeRefs(this._root, domRef)} className={classNames.root}>
         <div
           aria-hidden="true"
           ref={this._stickyAboveRef}

@@ -185,6 +185,7 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
       theme,
       styles,
       autoAdjustHeight,
+      domRef,
       onRenderPrefix = this._onRenderPrefix,
       onRenderSuffix = this._onRenderSuffix,
       onRenderLabel = this._onRenderLabel,
@@ -211,7 +212,7 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
     });
 
     return (
-      <div className={this._classNames.root}>
+      <div className={this._classNames.root} ref={domRef}>
         <div className={this._classNames.wrapper}>
           {onRenderLabel(this.props, this._onRenderLabel)}
           <div className={this._classNames.fieldGroup}>

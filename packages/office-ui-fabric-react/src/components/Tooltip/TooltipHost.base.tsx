@@ -10,7 +10,8 @@ import {
   hasOverflow,
   portalContainsElement,
   classNamesFunction,
-  KeyCodes
+  KeyCodes,
+  mergeRefs
 } from '../../Utilities';
 import { ITooltipHostProps, TooltipOverflowMode, ITooltipHostStyles, ITooltipHostStyleProps, ITooltipHost } from './TooltipHost.types';
 import { Tooltip } from './Tooltip';
@@ -66,7 +67,8 @@ export class TooltipHostBase extends React.Component<ITooltipHostProps, ITooltip
       setAriaDescribedBy = true,
       tooltipProps,
       styles,
-      theme
+      theme,
+      domRef
     } = this.props;
 
     this._classNames = getClassNames(styles!, {
@@ -83,7 +85,7 @@ export class TooltipHostBase extends React.Component<ITooltipHostProps, ITooltip
     return (
       <div
         className={this._classNames.root}
-        ref={this._tooltipHost}
+        ref={mergeRefs(this._tooltipHost, domRef)}
         {...{ onFocusCapture: this._onTooltipMouseEnter }}
         {...{ onBlurCapture: this._hideTooltip }}
         onMouseEnter={this._onTooltipMouseEnter}

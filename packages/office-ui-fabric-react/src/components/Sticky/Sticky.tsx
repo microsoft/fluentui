@@ -1,6 +1,6 @@
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-import { BaseComponent } from '../../Utilities';
+import { BaseComponent, mergeRefs } from '../../Utilities';
 import { hiddenContentStyle } from '../../Styling';
 import { IScrollablePaneContext, ScrollablePaneContext } from '../ScrollablePane/ScrollablePane.types';
 import { IStickyProps, StickyPositionType } from './Sticky.types';
@@ -143,14 +143,14 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
 
   public render(): JSX.Element {
     const { isStickyTop, isStickyBottom } = this.state;
-    const { stickyClassName, children } = this.props;
+    const { stickyClassName, children, domRef } = this.props;
 
     if (!this.context.scrollablePane) {
-      return <div>{this.props.children}</div>;
+      return <div ref={domRef}>{this.props.children}</div>;
     }
 
     return (
-      <div ref={this._root}>
+      <div ref={mergeRefs(this._root, domRef)}>
         {this.canStickyTop && (
           <div ref={this._stickyContentTop} aria-hidden={!isStickyTop} style={{ pointerEvents: isStickyTop ? 'auto' : 'none' }}>
             <div style={this._getStickyPlaceholderHeight(isStickyTop)} />

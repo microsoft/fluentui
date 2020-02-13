@@ -81,6 +81,8 @@ export class TeachingBubbleBase extends BaseComponent<ITeachingBubbleProps, ITea
       ? (classNames.subComponentStyles as ITeachingBubbleSubComponentStyles).callout
       : undefined;
 
+    const { domRef, ...contentProps } = this.props;
+
     return (
       <Callout
         target={target || targetElement}
@@ -89,9 +91,10 @@ export class TeachingBubbleBase extends BaseComponent<ITeachingBubbleProps, ITea
         className={classNames.root}
         styles={calloutStyles}
         hideOverflow
+        domRef={domRef}
       >
         <div ref={this.rootElement}>
-          <TeachingBubbleContent {...this.props} />
+          <TeachingBubbleContent {...contentProps} />
         </div>
       </Callout>
     );

@@ -119,6 +119,11 @@ export interface ITeachingBubbleProps extends React.ClassAttributes<TeachingBubb
    * Defines the element id referencing the element containing the description for the TeachingBubble.
    */
   ariaDescribedBy?: string;
+
+  /**
+   * Provides a React reference to the underlying DOM element
+   */
+  domRef?: IRefObject<HTMLDivElement>;
 }
 
 /**

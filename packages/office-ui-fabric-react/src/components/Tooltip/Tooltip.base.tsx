@@ -34,7 +34,8 @@ export class TooltipBase extends React.Component<ITooltipProps, any> {
       maxWidth,
       onRenderContent = this._onRenderContent,
       targetElement,
-      theme
+      theme,
+      domRef
     } = this.props;
 
     this._classNames = getClassNames(styles!, {
@@ -50,6 +51,7 @@ export class TooltipBase extends React.Component<ITooltipProps, any> {
         target={targetElement}
         directionalHint={directionalHint}
         directionalHintForRTL={directionalHintForRTL}
+        domRef={domRef}
         {...calloutProps}
         {...getNativeProps(this.props, divProperties, ['id'])} // omitting ID due to it being used in the div below
         className={this._classNames.root}

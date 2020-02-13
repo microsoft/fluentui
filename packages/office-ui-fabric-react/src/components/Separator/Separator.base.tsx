@@ -5,7 +5,7 @@ import { ISeparatorProps, ISeparatorStyles, ISeparatorStyleProps } from './Separ
 const getClassNames = classNamesFunction<ISeparatorStyleProps, ISeparatorStyles>();
 
 export const SeparatorBase: React.FunctionComponent<ISeparatorProps> = (props: ISeparatorProps): JSX.Element => {
-  const { styles, theme, className, vertical, alignContent } = props;
+  const { styles, theme, className, vertical, alignContent, domRef } = props;
 
   const _classNames = getClassNames(styles!, {
     theme: theme!,
@@ -15,7 +15,7 @@ export const SeparatorBase: React.FunctionComponent<ISeparatorProps> = (props: I
   });
 
   return (
-    <div className={_classNames.root}>
+    <div className={_classNames.root} ref={domRef}>
       <div className={_classNames.content} role="separator" aria-orientation={vertical ? 'vertical' : 'horizontal'}>
         {props.children}
       </div>

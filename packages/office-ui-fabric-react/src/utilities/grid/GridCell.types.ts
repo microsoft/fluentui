@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { IButtonClassNames } from '../../components/Button/BaseButton.classNames';
 import { ITheme } from '../../Styling';
+import { IRefObject } from '../../Utilities';
 
 export interface IGridCellProps<T> {
   /**
@@ -118,4 +119,9 @@ export interface IGridCellProps<T> {
    * Optional, onkeydown handler
    */
   onKeyDown?: (ev: React.KeyboardEvent<HTMLButtonElement>) => void;
+
+  /**
+   * Provides a React reference to the underlying DOM element
+   */
+  domRef?: IRefObject<HTMLButtonElement | HTMLAnchorElement>;
 }

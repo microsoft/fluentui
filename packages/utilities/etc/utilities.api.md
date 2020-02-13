@@ -948,6 +948,9 @@ export function mergeAriaAttributeValues(...ariaAttributes: (string | undefined 
 // @public
 export function mergeCustomizations(props: ICustomizerProps, parentContext: ICustomizerContext): ICustomizerContext;
 
+// @public
+export function mergeRefs<T>(...refs: (IRefObject<T> | undefined)[]): IRefObject<T>;
+
 // @public (undocumented)
 export function mergeScopedSettings(oldSettings?: ISettings, newSettings?: ISettings | ISettingsFunction): ISettings;
 

@@ -71,7 +71,8 @@ export class PersonaBase extends React.Component<IPersonaProps, {}> {
       presenceTitle,
       showInitialsUntilImageLoads,
       showSecondaryText,
-      theme
+      theme,
+      domRef
     } = this.props;
 
     const personaCoinProps: IPersonaCoinProps = {
@@ -116,7 +117,7 @@ export class PersonaBase extends React.Component<IPersonaProps, {}> {
     );
 
     return (
-      <div {...divProps} className={classNames.root} style={coinSize ? { height: coinSize, minWidth: coinSize } : undefined}>
+      <div {...divProps} className={classNames.root} style={coinSize ? { height: coinSize, minWidth: coinSize } : undefined} ref={domRef}>
         {onRenderPersonaCoin(personaCoinProps, this._onRenderPersonaCoin)}
         {(!hidePersonaDetails || size === PersonaSize.size8 || size === PersonaSize.size10 || size === PersonaSize.tiny) && personaDetails}
       </div>

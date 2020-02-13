@@ -133,6 +133,11 @@ export interface ITooltipHostProps extends React.HTMLAttributes<HTMLDivElement |
   theme?: ITheme;
 
   /**
+   * Provides a React reference to the underlying DOM element
+   */
+  domRef?: IRefObject<HTMLDivElement>;
+
+  /**
    * Notifies when tooltip becomes visible or hidden, whatever the trigger was.
    */
   onTooltipToggle?(isTooltipVisible: boolean): void;

@@ -12,7 +12,7 @@ export class SpinnerBase extends React.Component<ISpinnerProps, any> {
   };
 
   public render() {
-    const { type, size, ariaLabel, ariaLive, styles, label, theme, className, labelPosition } = this.props;
+    const { type, size, ariaLabel, ariaLive, styles, label, theme, className, labelPosition, domRef } = this.props;
     const statusMessage = ariaLabel;
     const nativeProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties, ['size']);
 
@@ -31,7 +31,7 @@ export class SpinnerBase extends React.Component<ISpinnerProps, any> {
     });
 
     return (
-      <div {...nativeProps} className={classNames.root}>
+      <div {...nativeProps} className={classNames.root} ref={domRef}>
         <div className={classNames.circle} />
         {label && <div className={classNames.label}>{label}</div>}
         {statusMessage && (

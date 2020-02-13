@@ -281,6 +281,11 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
    * \}
    */
   maskFormat?: { [key: string]: RegExp };
+
+  /**
+   * Provides a React reference to the underlying DOM element
+   */
+  domRef?: IRefObject<HTMLDivElement>;
 }
 
 /**

@@ -130,6 +130,11 @@ export interface ISliderProps extends React.ClassAttributes<SliderBase> {
    * @defaultvalue false
    */
   originFromZero?: boolean;
+
+  /**
+   * Provides a React reference to the underlying DOM element
+   */
+  domRef?: IRefObject<HTMLDivElement>;
 }
 
 /**

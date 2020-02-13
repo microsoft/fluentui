@@ -1474,6 +1474,7 @@ export interface IActivityItemProps extends React.AllHTMLAttributes<HTMLElement>
     comments?: React.ReactNode[] | React.ReactNode;
     // @deprecated
     commentText?: string;
+    domRef?: IRefObject<HTMLDivElement>;
     isCompact?: boolean;
     onRenderActivityDescription?: IRenderFunction<IActivityItemProps>;
     onRenderComments?: IRenderFunction<IActivityItemProps>;
@@ -1536,6 +1537,7 @@ export interface IAutofill {
 export interface IAutofillProps extends React.InputHTMLAttributes<HTMLInputElement | Autofill> {
     componentRef?: IRefObject<IAutofill>;
     defaultVisibleValue?: string;
+    domRef?: IRefObject<HTMLInputElement>;
     enableAutofillOnKeyPress?: KeyCodes[];
     onInputChange?: (value: string, composing: boolean) => string;
     onInputValueChange?: (newValue?: string, composing?: boolean) => void;
@@ -1587,6 +1589,7 @@ export interface IBaseExtendedPickerProps<T> {
     currentRenderedQueryString?: string;
     defaultSelectedItems?: T[];
     disabled?: boolean;
+    domRef?: IRefObject<HTMLDivElement>;
     floatingPickerProps: IBaseFloatingPickerProps<T>;
     focusZoneProps?: IFocusZoneProps;
     headerComponent?: JSX.Element;
@@ -1633,6 +1636,7 @@ export interface IBaseFloatingPickerProps<T> extends React.ClassAttributes<any> 
     // (undocumented)
     componentRef?: IRefObject<IBaseFloatingPicker>;
     createGenericItem?: (input: string, isValid: boolean) => ISuggestionModel<T>;
+    domRef?: IRefObject<HTMLDivElement>;
     getTextFromItem?: (item: T, currentValue?: string) => string;
     inputElement?: HTMLInputElement | null;
     onChange?: (item: T) => void;
@@ -1684,6 +1688,7 @@ export interface IBasePickerProps<T> extends React.Props<any> {
     createGenericItem?: (input: string, ValidationState: ValidationState) => ISuggestionModel<T> | T;
     defaultSelectedItems?: T[];
     disabled?: boolean;
+    domRef?: IRefObject<HTMLDivElement>;
     enableSelectedSuggestionAlert?: boolean;
     getTextFromItem?: (item: T, currentValue?: string) => string;
     inputProps?: IInputProps;
@@ -1825,6 +1830,7 @@ export interface IBreadcrumbProps extends React.HTMLAttributes<HTMLElement> {
     className?: string;
     componentRef?: IRefObject<IBreadcrumb>;
     dividerAs?: IComponentAs<IDividerAsProps>;
+    domRef?: IRefObject<HTMLDivElement>;
     focusZoneProps?: IFocusZoneProps;
     items: IBreadcrumbItem[];
     maxDisplayedItems?: number;
@@ -1891,6 +1897,7 @@ export interface IButtonProps extends React.AllHTMLAttributes<HTMLAnchorElement 
     // @deprecated
     description?: IStyle;
     disabled?: boolean;
+    domRef?: IRefObject<HTMLButtonElement | HTMLAnchorElement>;
     // Warning: (ae-forgotten-export) The symbol "IButtonClassNames" needs to be exported by the entry point index.d.ts
     getClassNames?: (theme: ITheme, className: string, variantClassName: string, iconClassName: string | undefined, menuIconClassName: string | undefined, disabled: boolean, checked: boolean, expanded: boolean, hasMenu: boolean, isSplit: boolean | undefined, allowDisabledFocus: boolean) => IButtonClassNames;
     // Warning: (ae-forgotten-export) The symbol "ISplitButtonClassNames" needs to be exported by the entry point index.d.ts
@@ -2019,6 +2026,7 @@ export interface ICalendarProps extends IBaseProps<ICalendar>, React.HTMLAttribu
     componentRef?: IRefObject<ICalendar>;
     dateRangeType?: DateRangeType;
     dateTimeFormatter?: ICalendarFormatDateCallbacks;
+    domRef?: IRefObject<HTMLDivElement>;
     firstDayOfWeek?: DayOfWeek;
     firstWeekOfYear?: FirstWeekOfYear;
     highlightCurrentMonth?: boolean;
@@ -2111,6 +2119,7 @@ export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement> {
     directionalHint?: DirectionalHint;
     directionalHintFixed?: boolean;
     directionalHintForRTL?: DirectionalHint;
+    domRef?: IRefObject<HTMLDivElement>;
     doNotLayer?: boolean;
     finalHeight?: number;
     gapSpace?: number;
@@ -2168,6 +2177,7 @@ export interface ICheckboxProps extends React.ButtonHTMLAttributes<HTMLElement |
     defaultChecked?: boolean;
     defaultIndeterminate?: boolean;
     disabled?: boolean;
+    domRef?: IRefObject<HTMLDivElement>;
     indeterminate?: boolean;
     inputProps?: React.ButtonHTMLAttributes<HTMLElement | HTMLButtonElement>;
     keytipProps?: IKeytipProps;
@@ -2220,6 +2230,7 @@ export interface ICheckProps {
     checked?: boolean;
     className?: string;
     componentRef?: IRefObject<ICheckProps>;
+    domRef?: IRefObject<HTMLDivElement>;
     styles?: IStyleFunctionOrObject<ICheckStyleProps, ICheckStyles>;
     theme?: ITheme;
     useFastIcons?: boolean;
@@ -2323,6 +2334,7 @@ export interface IChoiceGroupProps extends React.InputHTMLAttributes<HTMLElement
     ariaLabelledBy?: string;
     componentRef?: IRefObject<IChoiceGroup>;
     defaultSelectedKey?: string | number;
+    domRef?: IRefObject<HTMLDivElement>;
     label?: string;
     onChange?: (ev?: React.FormEvent<HTMLElement | HTMLInputElement>, option?: IChoiceGroupOption) => void;
     // @deprecated
@@ -2390,6 +2402,7 @@ export interface ICoachmarkProps extends React.ClassAttributes<CoachmarkBase> {
     componentRef?: IRefObject<ICoachmark>;
     delayBeforeCoachmarkAnimation?: number;
     delayBeforeMouseOpen?: number;
+    domRef?: IRefObject<HTMLDivElement>;
     // @deprecated
     height?: number;
     isCollapsed?: boolean;
@@ -2494,6 +2507,7 @@ export interface IColorPickerGridCellProps {
     circle?: boolean;
     color?: string;
     disabled?: boolean;
+    domRef?: IRefObject<HTMLButtonElement | HTMLAnchorElement>;
     height?: number;
     // @deprecated
     id?: string;
@@ -2548,6 +2562,7 @@ export interface IColorPickerProps {
     className?: string;
     color: IColor | string;
     componentRef?: IRefObject<IColorPicker>;
+    domRef?: IRefObject<HTMLDivElement>;
     // @deprecated
     greenLabel?: string;
     // @deprecated
@@ -2784,6 +2799,7 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox,
     caretDownButtonStyles?: Partial<IButtonStyles>;
     comboBoxOptionStyles?: Partial<IComboBoxOptionStyles>;
     componentRef?: IRefObject<IComboBox>;
+    domRef?: IRefObject<HTMLDivElement>;
     dropdownMaxWidth?: number;
     dropdownWidth?: number;
     // Warning: (ae-forgotten-export) The symbol "IComboBoxClassNames" needs to be exported by the entry point index.d.ts
@@ -2879,6 +2895,7 @@ export interface ICommandBarProps extends React.HTMLAttributes<HTMLDivElement> {
     className?: string;
     componentRef?: IRefObject<ICommandBar>;
     dataDidRender?: (renderedData: any) => void;
+    domRef?: IRefObject<HTMLDivElement>;
     farItems?: ICommandBarItemProps[];
     items: ICommandBarItemProps[];
     onDataGrown?: (movedItem: ICommandBarItemProps) => void;
@@ -3061,6 +3078,7 @@ export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, IWith
     directionalHint?: DirectionalHint;
     directionalHintFixed?: boolean;
     directionalHintForRTL?: DirectionalHint;
+    domRef?: IRefObject<HTMLDivElement>;
     doNotLayer?: boolean;
     focusZoneProps?: IFocusZoneProps;
     gapSpace?: number;
@@ -3186,6 +3204,7 @@ export interface IDatePickerProps extends IBaseProps<IDatePicker>, React.HTMLAtt
     dateTimeFormatter?: ICalendarFormatDateCallbacks;
     disableAutoFocus?: boolean;
     disabled?: boolean;
+    domRef?: IRefObject<HTMLDivElement>;
     firstDayOfWeek?: DayOfWeek;
     firstWeekOfYear?: FirstWeekOfYear;
     formatDate?: (date?: Date) => string;
@@ -3496,6 +3515,7 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
     componentRef?: IRefObject<IDetailsList>;
     constrainMode?: ConstrainMode;
     disableSelectionZone?: boolean;
+    domRef?: IRefObject<HTMLDivElement>;
     dragDropEvents?: IDragDropEvents;
     enableUpdateAnimations?: boolean;
     enterModalSelectionOnTouch?: boolean;
@@ -3848,6 +3868,7 @@ export interface IDialogProps extends React.ClassAttributes<DialogBase>, IWithRe
     // @deprecated
     contentClassName?: string;
     dialogContentProps?: IDialogContentProps;
+    domRef?: IRefObject<HTMLDivElement>;
     hidden?: boolean;
     // @deprecated
     isBlocking?: boolean;
@@ -4196,6 +4217,7 @@ export interface IDocumentCardProps extends IBaseProps<IDocumentCard>, React.HTM
     children?: React.ReactNode;
     className?: string;
     componentRef?: IRefObject<IDocumentCard>;
+    domRef?: IRefObject<HTMLDivElement>;
     onClick?: (ev?: React.SyntheticEvent<HTMLElement>) => void;
     onClickHref?: string;
     role?: string;
@@ -4352,6 +4374,7 @@ export interface IDropdownOption extends ISelectableOption {
 // @public (undocumented)
 export interface IDropdownProps extends ISelectableDroppableTextProps<IDropdown, HTMLDivElement> {
     defaultSelectedKeys?: string[] | number[];
+    domRef?: IRefObject<HTMLDivElement>;
     dropdownWidth?: number;
     // @deprecated
     isDisabled?: boolean;
@@ -4482,6 +4505,7 @@ export interface IExpandingCard {
 // @public
 export interface IExpandingCardProps extends IBaseCardProps<IExpandingCard, IExpandingCardStyles, IExpandingCardStyleProps> {
     compactCardHeight?: number;
+    domRef?: IRefObject<HTMLDivElement>;
     expandedCardHeight?: number;
     mode?: ExpandingCardMode;
     onRenderCompactCard?: IRenderFunction<any>;
@@ -4590,6 +4614,7 @@ export interface IFacepileProps extends React.ClassAttributes<FacepileBase> {
     chevronButtonProps?: IButtonProps;
     className?: string;
     componentRef?: IRefObject<IFacepile>;
+    domRef?: IRefObject<HTMLDivElement>;
     getPersonaProps?: (persona: IFacepilePersona) => IPersonaSharedProps;
     maxDisplayablePersonas?: number;
     onRenderPersona?: IRenderFunction<IFacepilePersona>;
@@ -4650,6 +4675,7 @@ export interface IFocusTrapZoneProps extends React.HTMLAttributes<HTMLDivElement
     componentRef?: IRefObject<IFocusTrapZone>;
     disabled?: boolean;
     disableFirstFocus?: boolean;
+    domRef?: IRefObject<HTMLDivElement>;
     elementToFocusOnDismiss?: HTMLElement;
     firstFocusableSelector?: string | (() => string);
     focusPreviouslyFocusedInnerElement?: boolean;
@@ -4727,6 +4753,7 @@ export interface IGridCellProps<T> {
     cellIsSelectedStyle?: string[];
     className?: string;
     disabled?: boolean;
+    domRef?: IRefObject<HTMLButtonElement | HTMLAnchorElement>;
     getClassNames?: (theme: ITheme, className: string, variantClassName: string, iconClassName: string | undefined, menuIconClassName: string | undefined, disabled: boolean, checked: boolean, expanded: boolean, isSplit: boolean | undefined) => IButtonClassNames;
     id: string;
     index?: number;
@@ -4753,6 +4780,7 @@ export interface IGridProps extends React.TableHTMLAttributes<HTMLTableElement> 
     componentRef?: IRefObject<IGrid>;
     // @deprecated
     containerClassName?: string;
+    domRef?: IRefObject<HTMLTableElement>;
     doNotContainWithinFocusZone?: boolean;
     items: any[];
     onBlur?: () => void;
@@ -4838,6 +4866,7 @@ export interface IGroupedListProps extends React.ClassAttributes<GroupedListBase
     className?: string;
     compact?: boolean;
     componentRef?: IRefObject<IGroupedList>;
+    domRef?: IRefObject<HTMLDivElement>;
     dragDropEvents?: IDragDropEvents;
     dragDropHelper?: IDragDropHelper;
     eventsToRegister?: {
@@ -5001,6 +5030,7 @@ export interface IHoverCardProps extends React.HTMLAttributes<HTMLDivElement> {
     cardOpenDelay?: number;
     className?: string;
     componentRef?: IRefObject<IHoverCard>;
+    domRef?: IRefObject<HTMLDivElement>;
     eventListenerTarget?: HTMLElement | string | null;
     expandedCardOpenDelay?: number;
     expandingCardProps?: IExpandingCardProps;
@@ -5070,6 +5100,7 @@ export interface IIconContent {
 export interface IIconProps extends IBaseProps, React.HTMLAttributes<HTMLElement> {
     // @deprecated
     ariaLabel?: string;
+    domRef?: IRefObject<HTMLSpanElement | HTMLImageElement>;
     iconName?: string;
     // @deprecated
     iconType?: IconType;
@@ -5124,6 +5155,7 @@ export interface IImageIconProps extends React.HTMLAttributes<HTMLElement> {
 export interface IImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
     className?: string;
     coverStyle?: ImageCoverStyle;
+    domRef?: IRefObject<HTMLDivElement>;
     // @deprecated
     errorSrc?: string;
     imageFit?: ImageFit;
@@ -5221,6 +5253,7 @@ export interface IKeytipProps {
     calloutProps?: ICalloutProps;
     content: string;
     disabled?: boolean;
+    domRef?: IRefObject<HTMLDivElement>;
     hasDynamicChildren?: boolean;
     hasMenu?: boolean;
     keySequences: string[];
@@ -5406,6 +5439,7 @@ export interface IList {
 export interface IListProps<T = any> extends React.HTMLAttributes<List<T> | HTMLDivElement> {
     className?: string;
     componentRef?: IRefObject<IList>;
+    domRef?: IRefObject<HTMLDivElement>;
     getItemCountForPage?: (itemIndex?: number, visibleRect?: IRectangle) => number;
     getKey?: (item: T, index?: number) => string;
     getPageHeight?: (itemIndex?: number, visibleRect?: IRectangle, itemCount?: number) => number;
@@ -5490,6 +5524,7 @@ export interface IMarqueeSelection {
 export interface IMarqueeSelectionProps extends React.HTMLAttributes<HTMLDivElement> {
     className?: string;
     componentRef?: IRefObject<IMarqueeSelection>;
+    domRef?: IRefObject<HTMLDivElement>;
     isDraggingConstrainedToRoot?: boolean;
     isEnabled?: boolean;
     onShouldStartSelection?: (ev: MouseEvent) => boolean;
@@ -5549,6 +5584,7 @@ export interface IMessageBarProps extends React.HTMLAttributes<HTMLElement> {
     componentRef?: IRefObject<IMessageBar>;
     dismissButtonAriaLabel?: string;
     dismissIconProps?: IIconProps;
+    domRef?: IRefObject<HTMLDivElement>;
     isMultiline?: boolean;
     messageBarIconProps?: IIconProps;
     messageBarType?: MessageBarType;
@@ -5607,6 +5643,7 @@ export interface IModalProps extends React.ClassAttributes<ModalBase>, IWithResp
     className?: string;
     componentRef?: IRefObject<IModal>;
     containerClassName?: string;
+    domRef?: IRefObject<HTMLDivElement>;
     dragOptions?: IDragOptions;
     isBlocking?: boolean;
     isDarkOverlay?: boolean;
@@ -5703,6 +5740,7 @@ export interface INavProps {
     ariaLabel?: string;
     className?: string;
     componentRef?: IRefObject<INav>;
+    domRef?: IRefObject<HTMLDivElement>;
     // @deprecated
     expandButtonAriaLabel?: string;
     groups: INavLinkGroup[] | null;
@@ -5789,6 +5827,7 @@ export interface IOverflowSetItemProps {
 export interface IOverflowSetProps extends React.ClassAttributes<OverflowSetBase> {
     className?: string;
     componentRef?: IRefObject<IOverflowSet>;
+    domRef?: IRefObject<HTMLDivElement>;
     // @deprecated
     doNotContainWithinFocusZone?: boolean;
     // @deprecated
@@ -5823,6 +5862,7 @@ export interface IOverlayProps extends React.HTMLAttributes<HTMLElement> {
     allowTouchBodyScroll?: boolean;
     className?: string;
     componentRef?: IRefObject<IOverlay>;
+    domRef?: IRefObject<HTMLDivElement>;
     isDarkThemed?: boolean;
     // (undocumented)
     onClick?: () => void;
@@ -5907,6 +5947,7 @@ export interface IPanelProps extends React.HTMLAttributes<PanelBase> {
     componentId?: string;
     componentRef?: IRefObject<IPanel>;
     customWidth?: string;
+    domRef?: IRefObject<HTMLDivElement>;
     elementToFocusOnDismiss?: HTMLElement;
     // @deprecated
     firstFocusableSelector?: string;
@@ -6117,6 +6158,7 @@ export interface IPersonaSharedProps extends React.HTMLAttributes<PersonaBase | 
     allowPhoneInitials?: boolean;
     coinProps?: IPersonaCoinProps;
     coinSize?: number;
+    domRef?: IRefObject<HTMLDivElement>;
     hidePersonaDetails?: boolean;
     imageAlt?: string;
     imageInitials?: string;
@@ -6220,6 +6262,7 @@ export interface IPivot {
 export interface IPivotItemProps extends React.HTMLAttributes<HTMLDivElement> {
     ariaLabel?: string;
     componentRef?: IRefObject<{}>;
+    domRef?: IRefObject<HTMLDivElement>;
     headerButtonProps?: {
         [key: string]: string | number | boolean;
     };
@@ -6239,6 +6282,7 @@ export interface IPivotProps extends React.ClassAttributes<PivotBase>, React.HTM
     componentRef?: IRefObject<IPivot>;
     defaultSelectedIndex?: number;
     defaultSelectedKey?: string;
+    domRef?: IRefObject<HTMLDivElement>;
     getTabId?: (itemKey: string, index: number) => string;
     headersOnly?: boolean;
     // @deprecated
@@ -6291,6 +6335,7 @@ export interface IPlainCard {
 
 // @public
 export interface IPlainCardProps extends IBaseCardProps<IPlainCard, IPlainCardStyles, IPlainCardStyleProps> {
+    domRef?: IRefObject<HTMLDivElement>;
     onRenderPlainCard?: IRenderFunction<any>;
 }
 
@@ -6308,6 +6353,7 @@ export interface IPopupProps extends React.HTMLAttributes<Popup> {
     ariaLabel?: string;
     ariaLabelledBy?: string;
     className?: string;
+    domRef?: IRefObject<HTMLDivElement>;
     onDismiss?: (ev?: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>) => any;
     role?: string;
     shouldRestoreFocus?: boolean;
@@ -6336,6 +6382,7 @@ export interface IPositioningContainerProps extends IBaseProps<IPositioningConta
     directionalHint?: DirectionalHint;
     directionalHintFixed?: boolean;
     directionalHintForRTL?: DirectionalHint;
+    domRef?: IRefObject<HTMLDivElement>;
     doNotLayer?: boolean;
     finalHeight?: number;
     minPagePadding?: number;
@@ -6371,6 +6418,7 @@ export interface IProgressIndicatorProps extends React.ClassAttributes<ProgressI
     barHeight?: number;
     className?: string;
     description?: React.ReactNode;
+    domRef?: IRefObject<HTMLDivElement>;
     label?: React.ReactNode;
     onRenderProgress?: IRenderFunction<IProgressIndicatorProps>;
     percentComplete?: number;
@@ -6417,6 +6465,7 @@ export interface IRatingProps extends React.AllHTMLAttributes<HTMLElement> {
     // @deprecated
     ariaLabelId?: string;
     componentRef?: IRefObject<IRating>;
+    domRef?: IRefObject<HTMLDivElement>;
     // (undocumented)
     getAriaLabel?: (rating: number, max: number) => string;
     icon?: string;
@@ -6488,6 +6537,7 @@ export interface IResizeGroupProps extends React.HTMLAttributes<ResizeGroupBase 
     data: any;
     dataDidRender?: (renderedData: any) => void;
     direction?: ResizeGroupDirection;
+    domRef?: IRefObject<HTMLDivElement>;
     onGrowData?: (prevData: any) => any;
     onReduceData: (prevData: any) => any;
     onRenderData: (data: any) => JSX.Element;
@@ -6548,6 +6598,7 @@ export interface IScrollablePaneContext {
 export interface IScrollablePaneProps extends React.HTMLAttributes<HTMLElement | ScrollablePaneBase> {
     className?: string;
     componentRef?: IRefObject<IScrollablePane>;
+    domRef?: IRefObject<HTMLDivElement>;
     initialScrollPosition?: number;
     // (undocumented)
     scrollbarVisibility?: ScrollbarVisibility;
@@ -6602,6 +6653,7 @@ export interface ISearchBoxProps extends React.InputHTMLAttributes<HTMLInputElem
     // @deprecated
     defaultValue?: string;
     disableAnimation?: boolean;
+    domRef?: IRefObject<HTMLDivElement>;
     iconProps?: Pick<IIconProps, Exclude<keyof IIconProps, 'className'>>;
     // @deprecated
     labelText?: string;
@@ -6769,6 +6821,7 @@ export interface ISeparator {
 // @public (undocumented)
 export interface ISeparatorProps extends React.HTMLAttributes<HTMLElement> {
     alignContent?: 'start' | 'center' | 'end';
+    domRef?: IRefObject<HTMLDivElement>;
     styles?: IStyleFunctionOrObject<ISeparatorStyleProps, ISeparatorStyles>;
     theme?: ITheme;
     vertical?: boolean;
@@ -6941,6 +6994,7 @@ export interface IShimmerProps extends React.AllHTMLAttributes<HTMLElement> {
     className?: string;
     componentRef?: IRefObject<IShimmer>;
     customElementsGroup?: React.ReactNode;
+    domRef?: IRefObject<HTMLDivElement>;
     isDataLoaded?: boolean;
     shimmerColors?: IShimmerColors;
     shimmerElements?: IShimmerElement[];
@@ -6990,6 +7044,7 @@ export interface ISliderProps extends React.ClassAttributes<SliderBase> {
     componentRef?: IRefObject<ISlider>;
     defaultValue?: number;
     disabled?: boolean;
+    domRef?: IRefObject<HTMLDivElement>;
     label?: string;
     max?: number;
     min?: number;
@@ -7057,6 +7112,7 @@ export interface ISpinButtonProps extends React.HTMLAttributes<HTMLDivElement> {
     decrementButtonIcon?: IIconProps;
     defaultValue?: string;
     disabled?: boolean;
+    domRef?: IRefObject<HTMLDivElement>;
     downArrowButtonStyles?: Partial<IButtonStyles>;
     // Warning: (ae-forgotten-export) The symbol "ISpinButtonClassNames" needs to be exported by the entry point index.d.ts
     getClassNames?: (theme: ITheme, disabled: boolean, isFocused: boolean, keyboardSpinDirection: KeyboardSpinDirection, labelPosition?: Position, className?: string) => ISpinButtonClassNames;
@@ -7129,6 +7185,7 @@ export interface ISpinnerProps extends React.HTMLAttributes<HTMLElement> {
     ariaLive?: 'assertive' | 'polite' | 'off';
     className?: string;
     componentRef?: IRefObject<ISpinner>;
+    domRef?: IRefObject<HTMLDivElement>;
     label?: string;
     labelPosition?: SpinnerLabelPosition;
     size?: SpinnerSize;
@@ -7254,6 +7311,7 @@ export interface IStickyContext {
 // @public (undocumented)
 export interface IStickyProps extends React.Props<Sticky> {
     componentRef?: IRefObject<IStickyProps>;
+    domRef?: IRefObject<HTMLDivElement>;
     isScrollSynced?: boolean;
     stickyBackgroundColor?: string;
     stickyClassName?: string;
@@ -7471,6 +7529,7 @@ export interface ISwatchColorPickerProps {
     colorCells: IColorCellProps[];
     columnCount: number;
     disabled?: boolean;
+    domRef?: IRefObject<HTMLTableElement>;
     doNotContainWithinFocusZone?: boolean;
     focusOnHover?: boolean;
     getColorGridCellStyles?: IStyleFunctionOrObject<IColorPickerGridCellStyleProps, IColorPickerGridCellStyles>;
@@ -7565,6 +7624,7 @@ export interface ITeachingBubbleProps extends React.ClassAttributes<TeachingBubb
     ariaLabelledBy?: string;
     calloutProps?: ICalloutProps;
     componentRef?: IRefObject<ITeachingBubble>;
+    domRef?: IRefObject<HTMLDivElement>;
     footerContent?: string | JSX.Element;
     hasCloseButton?: boolean;
     // @deprecated (undocumented)
@@ -7662,6 +7722,7 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
     deferredValidationTime?: number;
     description?: string;
     disabled?: boolean;
+    domRef?: IRefObject<HTMLDivElement>;
     errorMessage?: string | JSX.Element;
     iconProps?: IIconProps;
     inputClassName?: string;
@@ -7868,6 +7929,7 @@ export interface ITooltipHostProps extends React.HTMLAttributes<HTMLDivElement |
     delay?: TooltipDelay;
     directionalHint?: DirectionalHint;
     directionalHintForRTL?: DirectionalHint;
+    domRef?: IRefObject<HTMLDivElement>;
     hostClassName?: string;
     id?: string;
     onTooltipToggle?(isTooltipVisible: boolean): void;
@@ -7907,6 +7969,7 @@ export interface ITooltipProps extends React.HTMLAttributes<HTMLDivElement | Too
     delay?: TooltipDelay;
     directionalHint?: DirectionalHint;
     directionalHintForRTL?: DirectionalHint;
+    domRef?: IRefObject<HTMLDivElement>;
     maxWidth?: string | null;
     onRenderContent?: IRenderFunction<ITooltipProps>;
     styles?: IStyleFunctionOrObject<ITooltipStyleProps, ITooltipStyles>;
@@ -7943,6 +8006,7 @@ export interface IVerticalDividerClassNames {
 // @public
 export interface IVerticalDividerProps {
     className?: string;
+    domRef?: IRefObject<HTMLSpanElement>;
     // @deprecated (undocumented)
     getClassNames?: (theme: ITheme) => IVerticalDividerClassNames;
     styles?: IStyleFunctionOrObject<IVerticalDividerPropsStyles, IVerticalDividerStyles>;

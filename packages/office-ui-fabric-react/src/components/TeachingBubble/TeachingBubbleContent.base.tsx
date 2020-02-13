@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, classNamesFunction, KeyCodes } from '../../Utilities';
+import { BaseComponent, classNamesFunction, KeyCodes, mergeRefs } from '../../Utilities';
 import { ITeachingBubbleProps, ITeachingBubbleStyleProps, ITeachingBubbleStyles } from './TeachingBubble.types';
 import { ITeachingBubbleState } from './TeachingBubble.base';
 import { PrimaryButton, DefaultButton, IconButton } from '../../Button';
@@ -63,6 +63,7 @@ export class TeachingBubbleContentBase extends BaseComponent<ITeachingBubbleProp
       theme,
       ariaDescribedBy,
       ariaLabelledBy,
+      domRef,
       footerContent: customFooterContent
     } = this.props;
 
@@ -142,7 +143,7 @@ export class TeachingBubbleContentBase extends BaseComponent<ITeachingBubbleProp
     return (
       <div
         className={classNames.content}
-        ref={this.rootElement}
+        ref={mergeRefs(this.rootElement, domRef)}
         role={'dialog'}
         tabIndex={-1}
         aria-labelledby={ariaLabelledBy}

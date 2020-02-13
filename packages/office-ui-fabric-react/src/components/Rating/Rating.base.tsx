@@ -78,6 +78,7 @@ export class RatingBase extends React.Component<IRatingProps, IRatingState> {
       readOnly,
       size,
       theme,
+      domRef,
       icon = 'FavoriteStarFill',
       unselectedIcon = 'FavoriteStar'
     } = this.props;
@@ -152,6 +153,7 @@ export class RatingBase extends React.Component<IRatingProps, IRatingState> {
         aria-label={!readOnly ? ariaLabel : ''}
         id={id}
         {...divProps}
+        ref={domRef}
       >
         <FocusZone
           direction={FocusZoneDirection.horizontal}

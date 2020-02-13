@@ -23,7 +23,7 @@ export class OverlayBase extends BaseComponent<IOverlayProps, {}> {
   }
 
   public render(): JSX.Element {
-    const { isDarkThemed: isDark, className, theme, styles } = this.props;
+    const { isDarkThemed: isDark, className, theme, styles, domRef } = this.props;
 
     const divProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties);
 
@@ -33,6 +33,6 @@ export class OverlayBase extends BaseComponent<IOverlayProps, {}> {
       isDark
     });
 
-    return <div {...divProps} className={classNames.root} />;
+    return <div {...divProps} className={classNames.root} ref={domRef} />;
   }
 }

@@ -64,6 +64,11 @@ export interface IShimmerProps extends React.AllHTMLAttributes<HTMLElement> {
    * Defines an object with possible colors to pass for Shimmer customization used on different backgrounds.
    */
   shimmerColors?: IShimmerColors;
+
+  /**
+   * Provides a React reference to the underlying DOM element
+   */
+  domRef?: IRefObject<HTMLDivElement>;
 }
 
 /**

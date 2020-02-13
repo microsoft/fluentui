@@ -29,6 +29,11 @@ export interface IStickyProps extends React.Props<Sticky> {
    * @defaultvalue true
    */
   isScrollSynced?: boolean;
+
+  /**
+   * Provides a React reference to the underlying DOM element
+   */
+  domRef?: IRefObject<HTMLDivElement>;
 }
 
 export enum StickyPositionType {

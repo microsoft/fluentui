@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ProgressIndicatorBase } from './ProgressIndicator.base';
 import { IStyle, ITheme } from '../../Styling';
-import { IStyleFunctionOrObject, IRenderFunction } from '../../Utilities';
+import { IStyleFunctionOrObject, IRenderFunction, IRefObject } from '../../Utilities';
 
 /**
  * {@docCategory ProgressIndicator}
@@ -65,6 +65,11 @@ export interface IProgressIndicatorProps extends React.ClassAttributes<ProgressI
    * @defaultvalue 2
    */
   barHeight?: number;
+
+  /**
+   * Provides a React reference to the underlying DOM element
+   */
+  domRef?: IRefObject<HTMLDivElement>;
 }
 
 /**

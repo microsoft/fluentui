@@ -64,6 +64,7 @@ export * from './string';
 export * from './styled';
 export * from './warn';
 export * from './ie11Detector';
+export * from './mergeRefs';
 export { IStyleFunctionOrObject, Omit } from '@uifabric/merge-styles';
 export { setFocusVisibility } from './setFocusVisibility';
 export { setSSR } from './dom/setSSR';

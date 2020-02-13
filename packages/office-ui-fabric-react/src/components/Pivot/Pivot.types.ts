@@ -106,6 +106,11 @@ export interface IPivotProps extends React.ClassAttributes<PivotBase>, React.HTM
    * Useful if you're rendering content outside and need to connect aria-labelledby.
    */
   getTabId?: (itemKey: string, index: number) => string;
+
+  /**
+   * Provides a React reference to the underlying DOM element
+   */
+  domRef?: IRefObject<HTMLDivElement>;
 }
 
 /**

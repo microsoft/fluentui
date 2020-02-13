@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, KeyCodes, css, elementContains, getId, classNamesFunction, styled } from '../../Utilities';
+import { BaseComponent, KeyCodes, css, elementContains, getId, classNamesFunction, styled, mergeRefs } from '../../Utilities';
 import { IProcessedStyleSet } from '../../Styling';
 import { IFocusZone, FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { Callout, DirectionalHint } from '../../Callout';
@@ -214,7 +214,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
 
   public render(): JSX.Element {
     const { suggestedDisplayValue, isFocused, items } = this.state;
-    const { className, inputProps, disabled, theme, styles } = this.props;
+    const { className, inputProps, disabled, theme, styles, domRef } = this.props;
 
     const selectedSuggestionAlertId = this.props.enableSelectedSuggestionAlert ? this._ariaMap.selectedSuggestionAlert : '';
     const suggestionsAvailable = this.state.suggestionsVisible ? this._ariaMap.suggestionList : '';
@@ -245,7 +245,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
         };
 
     return (
-      <div ref={this.root} className={classNames.root} onKeyDown={this.onKeyDown} onBlur={this.onBlur}>
+      <div ref={mergeRefs(this.root, domRef)} className={classNames.root} onKeyDown={this.onKeyDown} onBlur={this.onBlur}>
         <FocusZone
           componentRef={this.focusZone}
           direction={FocusZoneDirection.bidirectional}

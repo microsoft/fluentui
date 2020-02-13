@@ -62,4 +62,9 @@ export interface IPivotItemProps extends React.HTMLAttributes<HTMLDivElement> {
    * Optional keytip for this PivotItem
    */
   keytipProps?: IKeytipProps;
+
+  /**
+   * Provides a React reference to the underlying DOM element
+   */
+  domRef?: IRefObject<HTMLDivElement>;
 }
