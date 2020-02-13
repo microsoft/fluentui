@@ -1,6 +1,8 @@
 import { ITheme, IStyle } from 'office-ui-fabric-react/lib/Styling';
 import { IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
 import { IHoverCardStyleProps, IHoverCardStyles } from 'office-ui-fabric-react/lib/HoverCard';
+import { IOverflowSetProps } from 'office-ui-fabric-react/lib/OverflowSet';
+import { IFocusZoneProps } from 'office-ui-fabric-react/lib/FocusZone';
 
 export interface ILegendOverflowData {
   primary: ILegend[];
@@ -54,7 +56,7 @@ export interface ILegendsStyles {
   subComponentStyles: ILegendSubComponentStyles;
 }
 
-export interface ILegend {
+export interface ILegend extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   /**
    * Defines the title of the legend
    */
@@ -124,6 +126,16 @@ export interface ILegendsProps {
    * Enable the legends to wrap lines if there is not enough space to show all legends on a single line
    */
   enabledWrapLines?: boolean;
+
+  /**
+   * props for the overflow set component
+   */
+  overflowProps?: Partial<IOverflowSetProps>;
+
+  /**
+   * focus zone props in hover card
+   */
+  focusZonePropsInHoverCard?: IFocusZoneProps;
 }
 
 /**

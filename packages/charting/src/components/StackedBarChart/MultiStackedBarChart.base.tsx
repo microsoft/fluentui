@@ -296,7 +296,13 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
         });
       }
     });
-    return <Legends legends={actions} />;
+    return (
+      <Legends
+        legends={actions}
+        overflowProps={this.props.legendsOverflowProps}
+        focusZonePropsInHoverCard={this.props.focusZonePropsForLegendsInHoverCard}
+      />
+    );
   };
 
   private _onClick(customMessage: string): void {

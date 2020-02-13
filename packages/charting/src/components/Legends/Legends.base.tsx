@@ -12,7 +12,7 @@ import { ILegend, ILegendsProps, LegendShape, ILegendsStyles, ILegendStyleProps,
 const getClassNames = classNamesFunction<ILegendStyleProps, ILegendsStyles>();
 
 // This is an internal interface used for rendering the legends with unique key
-interface ILegendItem {
+interface ILegendItem extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   name?: string;
   title: string;
   action: VoidFunction;
@@ -71,6 +71,8 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
     const dataItems: ILegend[] = [];
     this.props.legends.map((legend: ILegend, index: number) => {
       const legendItem: ILegendItem = {
+        'aria-setsize': this.props.legends.length,
+        'aria-posinset': index + 1,
         title: legend.title,
         action: legend.action!,
         hoverAction: legend.hoverAction!,
@@ -89,8 +91,11 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
   }
 
   private _onRenderData = (data: IOverflowSetItemProps | ILegendOverflowData): JSX.Element => {
+    const { overflowProps } = this.props;
     return (
       <OverflowSet
+        role={'listbox'}
+        {...overflowProps}
         items={data.primary}
         overflowItems={data.overflow}
         onRenderItem={this._renderButton}
@@ -158,7 +163,12 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
       overflowHoverCardLegends.push(hoverCardElement);
     });
     const hoverCardData = (
-      <FocusZone className="hoverCardRoot" direction={FocusZoneDirection.vertical}>
+      <FocusZone
+        direction={FocusZoneDirection.vertical}
+        role={'listbox'}
+        {...this.props.focusZonePropsInHoverCard}
+        className="hoverCardRoot"
+      >
         {overflowHoverCardLegends}
       </FocusZone>
     );
@@ -190,7 +200,8 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
       );
       this.setState(
         {
-          isHoverCardVisible: false
+          isHoverCardVisible: false,
+          selecetedLegendInHoverCard: 'none'
         },
         () => {
           if (selectedOverflowItem) {
@@ -276,6 +287,11 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
     };
     return (
       <button
+        aria-selected={this.state.selectedLegend === legend.title}
+        role={'option'}
+        aria-label={legend.title}
+        aria-setsize={data['aria-setsize']}
+        aria-posinset={data['aria-posinset']}
         key={index}
         className={classNames.legend}
         onClick={onClickHandler}
