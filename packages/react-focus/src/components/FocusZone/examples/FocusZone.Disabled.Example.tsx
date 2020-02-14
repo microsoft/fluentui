@@ -4,18 +4,40 @@ import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
 import { mergeStyles, IStyle } from '@uifabric/styling';
 
 const flexStyles: IStyle = {
+  boxSizing: 'border-box',
+  display: 'flex',
+  flexWrap: 'nowrap',
+  height: 'auto',
+  width: 'auto',
   selectors: {
     '> *': {
       flexShrink: 1,
       textOverflow: 'ellipsis'
-    },
+    }
+  }
+};
+const outerWrapStyles = mergeStyles({
+  ...flexStyles,
+  alignItems: 'flex-start',
+  flexDirection: 'column',
+  selectors: {
+    ...flexStyles.selectors,
     '> *:not(:first-child)': {
       marginTop: 20
     }
   }
-};
-const outerWrapStyles = mergeStyles({ ...flexStyles, alignItems: 'flex-start' });
-const innerWrapStyles = mergeStyles({ ...flexStyles });
+});
+const innerWrapStyles = mergeStyles({
+  ...flexStyles,
+  alignItems: 'center',
+  flexDirection: 'row',
+  selectors: {
+    ...flexStyles.selectors,
+    '> *:not(:first-child)': {
+      marginLeft: 20
+    }
+  }
+});
 
 export const FocusZoneDisabledExample: React.FunctionComponent = () => {
   return (
