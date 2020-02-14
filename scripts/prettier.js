@@ -2,23 +2,10 @@
 const { execSync } = require('child_process');
 const path = require('path');
 const { EOL, cpus } = require('os');
-const { runPrettierMultiProject, runPrettierForProject, prettierExtensions } = require('./prettier/prettier-helpers');
+const { runPrettier, runPrettierForProject, prettierExtensions } = require('./prettier/prettier-helpers');
 const { default: PQueue } = require('p-queue');
 const getAllPackageInfo = require('./monorepo/getAllPackageInfo');
 const runOnAllFiles = require('yargs').argv.all;
-
-/**
- * Run prettier for some files.
- * @param {string[]} filePaths Run for these file paths
- */
-function runPrettierForFiles(filePaths) {
-  if (filePaths.length === 0) {
-    return Promise.resolve();
-  }
-
-  console.log(`Running for ${filePaths.length} files!`);
-  return runPrettierMultiProject(filePaths, true /*async*/);
-}
 
 const numberOfCpus = cpus().length / 2;
 console.log(`Running prettier on ${runOnAllFiles ? 'all' : 'changed'} files (on ${numberOfCpus} processes):`);
@@ -46,7 +33,12 @@ if (runOnAllFiles) {
     fileGroups.push(files.slice(chunkStart, chunkStart + numberOfCpus));
   }
 
-  queue.addAll(fileGroups.map(group => () => runPrettierForFiles(group)));
+  queue.addAll(
+    fileGroups.map(group => () => {
+      console.log(`Running for ${group.length} files!`);
+      runPrettier(group, true /*async*/);
+    })
+  );
 }
 
 queue
