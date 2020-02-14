@@ -42,7 +42,7 @@ function gitTagAndPush(root) {
   const lernaJsonFile = path.join(root, 'lerna.json');
   const lernaJson = fs.readJSONSync(lernaJsonFile);
   const version = lernaJson.version;
-  const tag = `v${version}`;
+  const tag = `fluentui_v${version}`;
   // spawnSync('git', ['tag', '-a', '-f', tag, '-m', tag], { cwd: root });
   // spawnSync('git', ['push', '--no-verify', '--follow-tags', '--verbose', 'origin', `HEAD:master`], { cwd: root });
 }
@@ -65,26 +65,8 @@ module.exports.fluentuiPostpublish = function() {
 module.exports.fluentuiLernaPublish = function(bumpType) {
   return function() {
     const root = findGitRoot();
-    const lernaVersionArgs = ['lerna', 'version', bumpType, '--no-push', '--no-git-tag-version', '--yes'];
 
-    logger.info(`Running this command: npx ${lernaVersionArgs.join(' ')}`);
-
-    spawnSync('npx', lernaVersionArgs, {
-      cwd: root,
-      shell: true,
-      stdio: 'inherit'
-    });
-
-    const lernaPublishArgs = [
-      'lerna',
-      'publish',
-      '--no-push',
-      '--no-git-tag-version',
-      '--yes',
-      '--registry',
-      argv().registry,
-      'from-package'
-    ];
+    const lernaPublishArgs = ['lerna', 'publish', '--no-push', '--no-git-tag-version', '--yes', '--registry', argv().registry, bumpType];
 
     logger.info(`Running this command: npx ${lernaPublishArgs.join(' ')}`);
 
