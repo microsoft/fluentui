@@ -1,0 +1,42 @@
+pr: none
+trigger: none
+
+# Customize build number to include major version
+# Example: fluentui_20190626.1
+name: 'fluentui_$(Date:yyyyMMdd)$(Rev:.r)'
+
+variables:
+  - group: 'Github and NPM secrets'
+
+pool: 'Self Host Ubuntu'
+
+steps:
+  - task: NodeTool@0
+    inputs:
+      versionSpec: '10.x'
+    displayName: 'Install Node.js'
+
+  - script: |
+      git config user.name "UI Fabric Build"
+      git config user.email "fabrictactical@service.microsoft.com"
+      git remote set-url origin https://$(githubUser):$(githubPAT)@github.com/OfficeDev/office-ui-fabric-react.git
+    displayName: Authenticate git for pushes
+
+  - script: |
+      yarn
+    displayName: yarn
+
+  - script: |
+      PRODUCTION=true yarn build
+    displayName: yarn build
+
+  - script: |
+      yarn test
+    displayName: yarn test
+
+  - script: |
+      yarn lint
+    displayName: yarn lint
+
+  - scirpt: |
+      yarn fluentui:release:$(bumpType)
