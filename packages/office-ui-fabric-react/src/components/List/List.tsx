@@ -394,9 +394,9 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
           </div>
         </div>
         <EventListener target={window} type="resize" listener={this._onAsyncResize} />
-        <EventListener capture targetRef={this._root} type="focus" listener={this._onFocus} />
-        <EventListener capture targetRef={this._root} type="scroll" listener={this._onScroll} />
-        <EventListener capture targetRef={this._root} type="scroll" listener={this._onAsyncScroll} />
+        <EventListener capture target={this._scrollElement} type="focus" listener={this._onFocus} />
+        <EventListener capture target={this._scrollElement} type="scroll" listener={this._onScroll} />
+        <EventListener capture target={this._scrollElement} type="scroll" listener={this._onAsyncScroll} />
       </>
     );
   }
