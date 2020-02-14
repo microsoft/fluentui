@@ -40,6 +40,8 @@ function basicPreset() {
   option('cached', { default: false });
 
   option('registry', { default: 'https://registry.npmjs.org' });
+
+  option('push', { default: true });
 }
 
 module.exports = function preset() {

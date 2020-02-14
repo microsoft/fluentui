@@ -44,7 +44,10 @@ function gitTagAndPush(root) {
   const version = lernaJson.version;
   const tag = `fluentui_v${version}`;
   spawnSync('git', ['tag', '-a', '-f', tag, '-m', tag], { cwd: root });
-  spawnSync('git', ['push', '--no-verify', '--follow-tags', '--verbose', 'origin', `HEAD:master`], { cwd: root });
+
+  if (argv().push) {
+    spawnSync('git', ['push', '--no-verify', '--follow-tags', '--verbose', 'origin', `HEAD:master`], { cwd: root });
+  }
 }
 
 module.exports.fluentuiPrepublish = function() {
