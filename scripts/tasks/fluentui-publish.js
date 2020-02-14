@@ -31,8 +31,11 @@ function setLernaPackages(root, packages) {
 
   const packageJsonFile = path.join(root, 'package.json');
   const packageJson = fs.readJSONSync(packageJsonFile);
-  packageJson.workspace.packages = packages;
-  fs.writeJSONSync(packageJsonFile, packageJson, { spaces: 2 });
+
+  if (packageJson.workspaces) {
+    packageJson.workspaces.packages = packages;
+    fs.writeJSONSync(packageJsonFile, packageJson, { spaces: 2 });
+  }
 }
 
 function gitTagAndPush(root) {
