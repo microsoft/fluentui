@@ -5,7 +5,7 @@ export interface EventListenerOptions<T extends EventTypes = 'click'> {
   capture?: boolean;
 
   /** A function which receives a notification when an event of the specified type occurs. */
-  listener: EventHandler<T> | ((ev: Event) => void);
+  listener: EventHandler<T>;
 
   /** A target node. Use `target` or `targetRef` prop. */
   target?: Target;
