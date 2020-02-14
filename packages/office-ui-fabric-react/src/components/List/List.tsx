@@ -308,6 +308,10 @@ export class List<T = any> extends BaseComponent<IListProps<T>, IListState<T>> i
     }
   }
 
+  public componentWillUnmount(): void {
+    delete this._scrollElement;
+  }
+
   public componentWillReceiveProps(newProps: IListProps<T>): void {
     if (
       newProps.items !== this.props.items ||
