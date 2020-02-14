@@ -64,7 +64,10 @@ function importGithubMD(root) {
 }
 
 function rewriteImports(outputPath) {
-  const files = glob.sync('**/*.+(js|ts|tsx|json)', { cwd: outputPath });
+  let files = glob.sync('**/*.+(js|ts|tsx|json)', { cwd: outputPath });
+
+  // Include finely scoped hidden files.
+  files = files.concat(glob.sync('**/.digest/*.+(js|ts|tsx|json)', { cwd: outputPath }));
 
   for (let file of files) {
     const fullPath = path.join(outputPath, file);
