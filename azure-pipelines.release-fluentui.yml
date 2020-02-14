@@ -2,7 +2,7 @@ pr: none
 trigger: none
 
 # Customize build number to include major version
-# Example: v7_20190626.1
+# Example: fluentui_20190626.1
 name: 'fluentui_$(Date:yyyyMMdd)$(Rev:.r)'
 
 variables:
@@ -28,7 +28,6 @@ steps:
 
   - script: |
       PRODUCTION=true yarn build
-       && yarn lint
     displayName: yarn build
 
   - script: |
