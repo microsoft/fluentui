@@ -36,6 +36,8 @@
     "postinstall": "node ./scripts/postinstall.js",
     "prettier": "node scripts/prettier.js",
     "rebuild": "node ./scripts/invalidate-just-cache.js && npx lerna build --stream",
+    "release:minor": "yarn workspace @uifabric/build just fluentui:publish:minor",
+    "release:patch": "yarn workspace @uifabric/build just fluentui:publish:patch",
     "scrub": "node ./scripts/scrub.js",
     "start:legacy": "yarn workspace @uifabric/fabric-website-resources start",
     "start": "node scripts/start.js",
