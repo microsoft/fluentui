@@ -66,7 +66,17 @@ module.exports.fluentuiLernaPublish = function(bumpType) {
   return function() {
     const root = findGitRoot();
 
-    const lernaPublishArgs = ['lerna', 'publish', '--no-push', '--no-git-tag-version', '--yes', '--registry', argv().registry, bumpType];
+    const lernaPublishArgs = [
+      'lerna',
+      'publish',
+      '--no-git-reset',
+      '--no-push',
+      '--no-git-tag-version',
+      '--yes',
+      '--registry',
+      argv().registry,
+      bumpType
+    ];
 
     logger.info(`Running this command: npx ${lernaPublishArgs.join(' ')}`);
 
