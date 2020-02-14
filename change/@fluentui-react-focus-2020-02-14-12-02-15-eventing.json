@@ -1,0 +1,9 @@
+{
+  "type": "patch",
+  "comment": "List: remove EventGroup, use EventListener instead.",
+  "packageName": "@fluentui/react-focus",
+  "email": "aneeshak@microsoft.com",
+  "commit": "8f035cdecc7a95e0a9890dba094e969d6d1dfb0c",
+  "dependentChangeType": "patch",
+  "date": "2020-02-14T20:02:15.797Z"
+}
