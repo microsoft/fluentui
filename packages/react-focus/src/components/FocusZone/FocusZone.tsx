@@ -197,10 +197,14 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
     if (!this._isInnerZone) {
       _outerZones.delete(this);
 
-      // If this is the last outer zone, remove the keydown listener.
+      // If this is the last outer zone, remove the keydown and blur listener.
       if (_outerZones.size === 0 && windowElement) {
         windowElement.removeEventListener('keydown', this._onKeyDownCapture, true);
       }
+    }
+
+    if (windowElement) {
+      windowElement.removeEventListener('blur', this._onBlur, true);
     }
 
     // Dispose all events.
