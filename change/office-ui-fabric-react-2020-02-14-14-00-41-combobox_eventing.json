@@ -1,0 +1,9 @@
+{
+  "type": "patch",
+  "comment": "Combobox: use EventListener, not EventGroup",
+  "packageName": "office-ui-fabric-react",
+  "email": "aneeshak@microsoft.com",
+  "commit": "bfa7f643abb70949345f1636e8595376f00a5d7e",
+  "dependentChangeType": "patch",
+  "date": "2020-02-14T22:00:41.941Z"
+}
