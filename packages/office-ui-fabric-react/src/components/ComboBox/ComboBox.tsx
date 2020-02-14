@@ -28,6 +28,7 @@ import { Label } from '../../Label';
 import { SelectableOptionMenuItemType, getAllSelectedOptions } from '../../utilities/selectableOption/index';
 import { BaseButton, Button } from '../Button/index';
 import { ICalloutProps } from '../../Callout';
+import { EventListener } from '@fluentui/react-component-event-listener';
 
 export interface IComboBoxState {
   /** The open state */
@@ -216,12 +217,12 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   public componentDidMount(): void {
     if (this._comboBoxWrapper.current) {
       // hook up resolving the options if needed on focus
-      this._events.on(this._comboBoxWrapper.current, 'focus', this._onResolveOptions, true);
+      <EventListener target={this._comboBoxWrapper.current} type="focus" listener={this._onResolveOptions} />;
       if ('onpointerdown' in this._comboBoxWrapper.current) {
         // For ComboBoxes, touching anywhere in the combo box should drop the dropdown, including the input element.
         // This gives more hit target space for touch environments. We're setting the onpointerdown here, because React
         // does not support Pointer events yet.
-        this._events.on(this._comboBoxWrapper.current, 'pointerdown', this._onPointerDown, true);
+        <EventListener target={this._comboBoxWrapper.current} type="pointerdown" listener={this._onPointerDown} />;
       }
     }
   }
@@ -307,9 +308,6 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
   public componentWillUnmount(): void {
     super.componentWillUnmount();
-
-    // remove the eventHanlder that was added in componentDidMount
-    this._events.off(this._comboBoxWrapper.current);
   }
 
   // Primary Render
