@@ -227,10 +227,14 @@ export class SearchBoxBase extends React.Component<ISearchBoxProps, ISearchBoxSt
     ev.stopPropagation();
   };
 
-  private _onBlur = (): void => {
+  private _onBlur = (ev: React.FocusEvent<HTMLInputElement>): void => {
     this.setState({
       hasFocus: false
     });
+
+    if (this.props.onBlur) {
+      this.props.onBlur(ev);
+    }
   };
 
   private _onInputChange = (ev: React.ChangeEvent<HTMLInputElement>) => {
