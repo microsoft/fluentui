@@ -43,8 +43,8 @@ function gitTagAndPush(root) {
   const lernaJson = fs.readJSONSync(lernaJsonFile);
   const version = lernaJson.version;
   const tag = `fluentui_v${version}`;
-  // spawnSync('git', ['tag', '-a', '-f', tag, '-m', tag], { cwd: root });
-  // spawnSync('git', ['push', '--no-verify', '--follow-tags', '--verbose', 'origin', `HEAD:master`], { cwd: root });
+  spawnSync('git', ['tag', '-a', '-f', tag, '-m', tag], { cwd: root });
+  spawnSync('git', ['push', '--no-verify', '--follow-tags', '--verbose', 'origin', `HEAD:master`], { cwd: root });
 }
 
 module.exports.fluentuiPrepublish = function() {
@@ -59,7 +59,9 @@ module.exports.fluentuiPostpublish = function() {
   setLernaPackages(root, ['packages/*', 'apps/*', 'scripts', 'packages/fluentui/*']);
   spawnSync('git', ['add', 'packages/fluentui', 'lerna.json'], { cwd: root });
   spawnSync('git', ['commit', '-m', 'bumping @fluentui packages'], { cwd: root });
-  gitTagAndPush(root);
+
+  // TODO (fui repo merge): enable tag and push when we're ready to do so
+  // gitTagAndPush(root);
 };
 
 module.exports.fluentuiLernaPublish = function(bumpType) {
