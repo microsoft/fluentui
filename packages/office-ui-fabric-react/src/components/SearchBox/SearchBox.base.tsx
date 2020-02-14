@@ -131,7 +131,7 @@ export class SearchBoxBase extends React.Component<ISearchBoxProps, ISearchBoxSt
             </div>
           )}
         </div>
-        <EventListener target={window} type="focus" listener={this._onBlur} />
+        {hasFocus && <EventListener targetRef={this._rootElement} type="blur" capture listener={this._onBlur} />}
       </>
     );
   }
@@ -227,7 +227,7 @@ export class SearchBoxBase extends React.Component<ISearchBoxProps, ISearchBoxSt
     ev.stopPropagation();
   };
 
-  private _onBlur = (ev: React.FocusEvent<HTMLInputElement>): void => {
+  private _onBlur = (ev: FocusEvent): void => {
     this.setState({
       hasFocus: false
     });

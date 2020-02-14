@@ -6605,6 +6605,7 @@ export interface ISearchBoxProps extends React.InputHTMLAttributes<HTMLInputElem
     iconProps?: Pick<IIconProps, Exclude<keyof IIconProps, 'className'>>;
     // @deprecated
     labelText?: string;
+    onBlur?: (ev?: any) => void;
     onChange?: (event?: React.ChangeEvent<HTMLInputElement>, newValue?: string) => void;
     // @deprecated
     onChanged?: (newValue: any) => void;
@@ -8804,8 +8805,6 @@ export const SearchBox: React.FunctionComponent<ISearchBoxProps>;
 // @public (undocumented)
 export class SearchBoxBase extends React.Component<ISearchBoxProps, ISearchBoxState> {
     constructor(props: ISearchBoxProps);
-    // (undocumented)
-    componentWillUnmount(): void;
     // (undocumented)
     static defaultProps: Pick<ISearchBoxProps, 'disableAnimation' | 'clearButtonProps'>;
     focus(): void;
