@@ -1,0 +1,9 @@
+{
+  "type": "minor",
+  "comment": "FocusZone: Re-exporting FocusZone from react-focus package and removing duplication in OUFR package.",
+  "packageName": "office-ui-fabric-react",
+  "email": "humbertomakotomorimoto@gmail.com",
+  "commit": "56c46b39778efcefbb8f7401c86b5c60183ade9f",
+  "dependentChangeType": "patch",
+  "date": "2020-02-14T20:20:06.251Z"
+}
