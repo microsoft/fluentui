@@ -60,8 +60,7 @@ module.exports.fluentuiPostpublish = function() {
   spawnSync('git', ['add', 'packages/fluentui', 'lerna.json'], { cwd: root });
   spawnSync('git', ['commit', '-m', 'bumping @fluentui packages'], { cwd: root });
 
-  // TODO (fui repo merge): enable tag and push when we're ready to do so
-  // gitTagAndPush(root);
+  gitTagAndPush(root);
 };
 
 module.exports.fluentuiLernaPublish = function(bumpType) {
