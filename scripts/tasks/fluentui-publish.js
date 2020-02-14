@@ -56,7 +56,7 @@ module.exports.fluentuiPrepublish = function() {
 module.exports.fluentuiPostpublish = function() {
   const root = findGitRoot();
   setPrivateFlagOnFluentuiPackages(root, true);
-  setLernaPackages(root, ['packages/*', 'apps/*', 'scripts', 'packages/fluentui/*']);
+  setLernaPackages(root, ['apps/*', 'packages/*', 'scripts', 'packages/fluentui/*']);
   spawnSync('git', ['add', 'packages/fluentui', 'lerna.json'], { cwd: root });
   spawnSync('git', ['commit', '-m', 'bumping @fluentui packages'], { cwd: root });
 
