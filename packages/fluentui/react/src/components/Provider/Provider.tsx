@@ -1,13 +1,20 @@
 import { IStyle } from 'fela';
 import * as _ from 'lodash';
-import { getUnhandledProps, Renderer, StylesContextPerformance, Telemetry, useIsomorphicLayoutEffect } from '@fluentui/react-bindings';
+import {
+  getElementType,
+  getUnhandledProps,
+  Renderer,
+  StylesContextPerformance,
+  Telemetry,
+  unstable_getStyles,
+  useIsomorphicLayoutEffect
+} from '@fluentui/react-bindings';
 import {
   mergeSiteVariables,
   StaticStyleObject,
   StaticStyle,
   StaticStyleFunction,
   FontFace,
-  ComponentVariablesInput,
   ThemeInput,
   SiteVariablesPrepared
 } from '@fluentui/styles';
@@ -16,14 +23,14 @@ import * as React from 'react';
 // @ts-ignore
 import { RendererProvider, ThemeProvider, ThemeContext } from 'react-fela';
 
-import { ChildrenComponentProps, setUpWhatInput, tryCleanupWhatInput } from '../../utils';
+import { ChildrenComponentProps, setUpWhatInput, tryCleanupWhatInput, UIComponentProps } from '../../utils';
 
-import ProviderConsumer from './ProviderConsumer';
-import ProviderBox, { ProviderBoxProps } from './ProviderBox';
 import { WithAsProp, ProviderContextInput, ProviderContextPrepared, withSafeTypeForAs } from '../../types';
 import mergeContexts from '../../utils/mergeProviderContexts';
+import ProviderConsumer from './ProviderConsumer';
+import usePortalBox, { PortalBoxContext } from './usePortalBox';
 
-export interface ProviderProps extends ChildrenComponentProps {
+export interface ProviderProps extends ChildrenComponentProps, UIComponentProps {
   renderer?: Renderer;
   rtl?: boolean;
   disableAnimations?: boolean;
@@ -31,7 +38,6 @@ export interface ProviderProps extends ChildrenComponentProps {
   overwrite?: boolean;
   target?: Document;
   theme?: ThemeInput;
-  variables?: ComponentVariablesInput;
   telemetryRef?: React.MutableRefObject<Telemetry>;
 }
 
@@ -82,11 +88,13 @@ const renderStaticStyles = (renderer: Renderer, theme: ThemeInput, siteVariables
  * The Provider passes the CSS-in-JS renderer, theme styles and other settings to Fluent UI components.
  */
 const Provider: React.FC<WithAsProp<ProviderProps>> & {
-  Box: typeof ProviderBox;
+  className: string;
   Consumer: typeof ProviderConsumer;
   handledProps: (keyof ProviderProps)[];
 } = props => {
-  const { as, children, overwrite, variables, telemetryRef } = props;
+  const { children, className, design, overwrite, styles, variables, telemetryRef } = props;
+
+  const ElementType = getElementType(props);
   const unhandledProps = getUnhandledProps(Provider.handledProps, props);
 
   const telemetry = React.useMemo<Telemetry | undefined>(() => {
@@ -123,6 +131,30 @@ const Provider: React.FC<WithAsProp<ProviderProps>> & {
     rtlProps.dir = outgoingContext.rtl ? 'rtl' : 'ltr';
   }
 
+  const { classes } = unstable_getStyles({
+    className: Provider.className,
+    displayName: Provider.displayName,
+    props: {
+      className,
+      design,
+      styles,
+      variables
+    },
+
+    disableAnimations: outgoingContext.disableAnimations,
+    performance: outgoingContext.performance,
+    renderer: outgoingContext.renderer,
+    rtl: outgoingContext.rtl,
+    theme: outgoingContext.theme,
+    saveDebug: _.noop
+  });
+
+  const element = usePortalBox({
+    className: classes.root,
+    target: outgoingContext.target,
+    rtl: outgoingContext.rtl
+  });
+
   useIsomorphicLayoutEffect(() => {
     renderFontFaces(outgoingContext.renderer, props.theme);
     renderStaticStyles(outgoingContext.renderer, props.theme, outgoingContext.theme.siteVariables);
@@ -138,17 +170,28 @@ const Provider: React.FC<WithAsProp<ProviderProps>> & {
     };
   }, []);
 
+  // do not spread anything - React.Fragment can only have `key` and `children` props
+  const elementProps =
+    ElementType === React.Fragment
+      ? {}
+      : {
+          className: classes.root,
+          ...rtlProps,
+          ...unhandledProps
+        };
+
   return (
     <RendererProvider renderer={outgoingContext.renderer} {...{ rehydrate: false, targetDocument: outgoingContext.target }}>
       <ThemeProvider theme={outgoingContext} overwrite>
-        <ProviderBox as={as} variables={variables} {...unhandledProps} {...rtlProps}>
-          {children}
-        </ProviderBox>
+        <PortalBoxContext.Provider value={element}>
+          <ElementType {...elementProps}>{children}</ElementType>
+        </PortalBoxContext.Provider>
       </ThemeProvider>
     </RendererProvider>
   );
 };
 
+Provider.className = 'ui-provider';
 Provider.displayName = 'Provider';
 
 Provider.defaultProps = {
@@ -156,7 +199,9 @@ Provider.defaultProps = {
 };
 Provider.propTypes = {
   as: PropTypes.elementType,
+  design: PropTypes.object,
   variables: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
+  styles: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
   theme: PropTypes.shape({
     siteVariables: PropTypes.object,
     componentVariables: PropTypes.object,
@@ -195,6 +240,5 @@ Provider.propTypes = {
 Provider.handledProps = Object.keys(Provider.propTypes) as any;
 
 Provider.Consumer = ProviderConsumer;
-Provider.Box = ProviderBox;
 
-export default withSafeTypeForAs<typeof Provider, ProviderProps & ProviderBoxProps>(Provider);
+export default withSafeTypeForAs<typeof Provider, ProviderProps>(Provider);

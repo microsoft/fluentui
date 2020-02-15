@@ -31,12 +31,24 @@ steps:
     displayName: yarn build
 
   - script: |
+      PRODUCTION=true yarn build:fluentuidocs
+    displayName: yarn build:fluentuidocs
+
+  - task: AzureUpload@1
+    displayName: Upload docs site
+    inputs:
+      SourcePath: 'packages/fluentui/docs/dist'
+      azureSubscription: 'UI Fabric (bac044cf-49e1-4843-8dda-1ce9662606c8)'
+      storage: fluentsite
+      ContainerName: '$web'
+      BlobPrefix: ''
+
+  - script: |
       yarn test
     displayName: yarn test
 
   - script: |
       yarn lint
     displayName: yarn lint
-
-  - scirpt: |
-      yarn fluentui:release:$(bumpType)
+  # - script: |
+  #     yarn fluentui:release:$(bumpType)

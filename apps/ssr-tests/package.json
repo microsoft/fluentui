@@ -16,7 +16,7 @@
     "@microsoft/load-themed-styles": "^1.10.26",
     "@types/es6-promise": "0.0.32",
     "@types/mocha": "2.2.39",
-    "@types/webpack-env": "1.13.9",
+    "@types/webpack-env": "1.15.1",
     "@uifabric/build": "^7.0.0",
     "@uifabric/fabric-website-resources": "^7.6.0",
     "just-scripts-utils": "^0.8.3",
