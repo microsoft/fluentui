@@ -1,7 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 07 Feb 2020 12:20:01 GMT and should not be manually modified.
+This log was last generated on Sat, 15 Feb 2020 05:32:42 GMT and should not be manually modified.
 
+## 6.211.4
+Sat, 15 Feb 2020 05:32:42 GMT
+
+### Patches
+
+- List: clearing scrollElement on unmount to avoid retaining an edge to a dom element and leaking. (dzearing@microsoft.com)
 ## 6.211.3
 Fri, 07 Feb 2020 12:20:01 GMT
 

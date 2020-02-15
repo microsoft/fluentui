@@ -2,6 +2,20 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Sat, 15 Feb 2020 05:32:42 GMT",
+      "tag": "office-ui-fabric-react_v6.211.4",
+      "version": "6.211.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "List: clearing scrollElement on unmount to avoid retaining an edge to a dom element and leaking.",
+            "author": "dzearing@microsoft.com",
+            "commit": "8a1f887f42f85fcbdbea98970b8751411b79954a"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 07 Feb 2020 12:20:01 GMT",
       "tag": "office-ui-fabric-react_v6.211.3",
       "version": "6.211.3",
