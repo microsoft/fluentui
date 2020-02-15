@@ -31,15 +31,8 @@ steps:
     displayName: yarn build
 
   - script: |
-      yarn test
-    displayName: yarn test
-
-  - script: |
-      yarn lint
-    displayName: yarn lint
-
-  # - script: |
-  #     yarn fluentui:release:$(bumpType)
+      PRODUCTION=true yarn build:fluentuidocs
+    displayName: yarn build:fluentuidocs
 
   - task: AzureUpload@1
     displayName: Upload docs site
@@ -49,3 +42,13 @@ steps:
       storage: fluentsite
       ContainerName: '$web'
       BlobPrefix: ''
+
+  - script: |
+      yarn test
+    displayName: yarn test
+
+  - script: |
+      yarn lint
+    displayName: yarn lint
+  # - script: |
+  #     yarn fluentui:release:$(bumpType)
