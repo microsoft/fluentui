@@ -7943,6 +7943,8 @@ export class List<T = any> extends BaseComponent<IListProps<T>, IListState<T>> i
     // (undocumented)
     componentWillReceiveProps(newProps: IListProps<T>): void;
     // (undocumented)
+    componentWillUnmount(): void;
+    // (undocumented)
     static defaultProps: {
         startIndex: number;
         onRenderCell: (item: any, index: number, containsFocus: boolean) => JSX.Element;
