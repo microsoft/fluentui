@@ -1,0 +1,9 @@
+{
+  "type": "patch",
+  "comment": "ShimmeredDetailsList: add aria-busy=true when shimmer is enabled",
+  "packageName": "office-ui-fabric-react",
+  "email": "xgao@microsoft.com",
+  "commit": "3be35a40104099e1b7a35a2dde5d96b9069365cd",
+  "dependentChangeType": "patch",
+  "date": "2020-02-15T00:00:46.900Z"
+}
