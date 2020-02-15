@@ -1,7 +1,6 @@
 import * as React from 'react';
-import { createArray } from 'office-ui-fabric-react/lib/Utilities';
-import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react/lib/FocusZone';
-import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
+import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
+import { createArray } from '@uifabric/utilities';
 
 const ITEMS = createArray(5, index => ({
   key: index.toString(),
@@ -12,9 +11,9 @@ export const FocusZoneHorizontalMenuExample: React.FunctionComponent = () => {
   return (
     <FocusZone direction={FocusZoneDirection.domOrder} role="menubar">
       {ITEMS.map(item => (
-        <DefaultButton key={item.name} role="menuitem">
+        <button key={item.name} role="menuitem">
           {item.name}
-        </DefaultButton>
+        </button>
       ))}
     </FocusZone>
   );

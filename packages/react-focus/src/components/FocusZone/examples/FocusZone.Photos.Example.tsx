@@ -1,9 +1,8 @@
 import * as React from 'react';
-import { FocusZone } from 'office-ui-fabric-react/lib/FocusZone';
-import { Image } from 'office-ui-fabric-react/lib/Image';
-import { getId } from 'office-ui-fabric-react/lib/Utilities';
+import { FocusZone } from '@fluentui/react-focus';
 import { useConst } from '@uifabric/react-hooks';
-import { mergeStyleSets, getTheme } from 'office-ui-fabric-react/lib/Styling';
+import { mergeStyleSets, getTheme } from '@uifabric/styling';
+import { getId } from '@uifabric/utilities';
 
 const theme = getTheme();
 const classNames = mergeStyleSets({
@@ -60,7 +59,7 @@ export const FocusZonePhotosExample: React.FunctionComponent = () => {
           aria-label="Photo"
           data-is-focusable={true}
         >
-          <Image src={item.url} width={item.width} height={item.height} alt={`${item.width} by ${item.height} placeholder image`} />
+          <img src={item.url} width={item.width} height={item.height} alt={`${item.width} by ${item.height} placeholder image`} />
         </li>
       ))}
     </FocusZone>

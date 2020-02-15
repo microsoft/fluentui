@@ -38,6 +38,7 @@ const innerWrapStyles = mergeStyles({
     }
   }
 });
+const textFieldStyles = mergeStyles({ width: 200 });
 
 export const FocusZoneDisabledExample: React.FunctionComponent = () => {
   return (
@@ -47,7 +48,7 @@ export const FocusZoneDisabledExample: React.FunctionComponent = () => {
           <span>Enabled FocusZone: </span>
           <button>Button 1</button>
           <button>Button 2</button>
-          <input type="text" placeholder="FocusZone TextField" style={{ width: 200 }} aria-label="FocusZone TextField" />
+          <input type="text" placeholder="FocusZone TextField" className={textFieldStyles} aria-label="FocusZone TextField" />
           <button>Button 3</button>
         </div>
       </FocusZone>

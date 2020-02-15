@@ -1,21 +1,55 @@
 import * as React from 'react';
-import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
-import { FocusZone, FocusZoneDirection, FocusZoneTabbableElements } from 'office-ui-fabric-react/lib/FocusZone';
-import { TextField } from 'office-ui-fabric-react/lib/TextField';
-import { Stack } from 'office-ui-fabric-react/lib/Stack';
+import { FocusZone, FocusZoneDirection, FocusZoneTabbableElements } from '@fluentui/react-focus';
+import { mergeStyles, IStyle } from '@uifabric/styling';
+
+const flexStyles: IStyle = {
+  boxSizing: 'border-box',
+  display: 'flex',
+  flexWrap: 'nowrap',
+  height: 'auto',
+  width: 'auto',
+  selectors: {
+    '> *': {
+      flexShrink: 1,
+      textOverflow: 'ellipsis'
+    }
+  }
+};
+const outerWrapStyles = mergeStyles({
+  ...flexStyles,
+  alignItems: 'flex-start',
+  flexDirection: 'column',
+  selectors: {
+    ...flexStyles.selectors,
+    '> *:not(:first-child)': {
+      marginTop: 20
+    }
+  }
+});
+const innerWrapStyles = mergeStyles({
+  ...flexStyles,
+  alignItems: 'center',
+  flexDirection: 'row',
+  selectors: {
+    ...flexStyles.selectors,
+    '> *:not(:first-child)': {
+      marginLeft: 20
+    }
+  }
+});
+const textFieldStyles = mergeStyles({ width: 200 });
 
 export const FocusZoneTabbableExample: React.FunctionComponent = () => {
-  const tokens = { childrenGap: 20 };
   return (
-    <Stack tokens={tokens} horizontalAlign="start">
+    <div className={outerWrapStyles}>
       <FocusZone direction={FocusZoneDirection.horizontal} handleTabKey={FocusZoneTabbableElements.all} isCircularNavigation={true}>
-        <Stack tokens={tokens} horizontal verticalAlign="center">
+        <div className={innerWrapStyles}>
           <span>Circular Tabbable FocusZone: </span>
-          <DefaultButton>Button 1</DefaultButton>
-          <DefaultButton>Button 2</DefaultButton>
-          <TextField placeholder="FocusZone TextField" styles={{ root: { width: 200 } }} ariaLabel="FocusZone TextField" />
-          <DefaultButton>Button 3</DefaultButton>
-          <DefaultButton
+          <button>Button 1</button>
+          <button>Button 2</button>
+          <input type="text" placeholder="FocusZone TextField" className={textFieldStyles} aria-label="FocusZone TextField" />
+          <button>Button 3</button>
+          {/* <DefaultButton
             text="Create account"
             split={true}
             onClick={alertClicked}
@@ -34,22 +68,22 @@ export const FocusZoneTabbableExample: React.FunctionComponent = () => {
                 }
               ]
             }}
-          />
-        </Stack>
+          /> */}
+        </div>
       </FocusZone>
       <FocusZone direction={FocusZoneDirection.horizontal} handleTabKey={FocusZoneTabbableElements.inputOnly} isCircularNavigation={false}>
-        <Stack tokens={tokens} horizontal verticalAlign="center">
+        <div className={innerWrapStyles}>
           <span>Input Only FocusZone: </span>
-          <DefaultButton>Button 1</DefaultButton>
-          <DefaultButton>Button 2</DefaultButton>
-          <TextField placeholder="FocusZone TextField" styles={{ root: { width: 200 } }} ariaLabel="FocusZone TextField" />
-          <DefaultButton>Button 3</DefaultButton>
-        </Stack>
+          <button>Button 1</button>
+          <button>Button 2</button>
+          <input type="text" placeholder="FocusZone TextField" className={textFieldStyles} aria-label="FocusZone TextField" />
+          <button>Button 3</button>
+        </div>
       </FocusZone>
-    </Stack>
+    </div>
   );
 };
 
-function alertClicked(): void {
-  alert('Clicked');
-}
+// function alertClicked(): void {
+//   alert('Clicked');
+// }
