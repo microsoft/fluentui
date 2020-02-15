@@ -28,7 +28,7 @@
     "@types/react": "16.8.11",
     "@types/react-custom-scrollbars": "^4.0.5",
     "@types/react-dom": "16.8.4",
-    "@types/webpack-env": "1.13.9",
+    "@types/webpack-env": "1.15.1",
     "@uifabric/build": "^7.0.0",
     "@uifabric/tslint-rules": "^7.0.6",
     "es6-map": "^0.1.5",

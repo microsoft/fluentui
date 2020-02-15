@@ -23,7 +23,7 @@
     "react-app-polyfill": "~1.0.1",
     "react-dom": "16.8.6",
     "tslib": "^1.10.0",
-    "typescript": "3.7.4"
+    "typescript": "3.7.5"
   },
   "devDependencies": {
     "@babel/core": "^7.8.3",
@@ -33,7 +33,7 @@
     "@storybook/react": "^5.3.8",
     "@types/react": "16.8.11",
     "@types/react-dom": "16.8.4",
-    "@types/webpack-env": "1.13.9",
+    "@types/webpack-env": "1.15.1",
     "@uifabric/build": "^7.0.0",
     "@uifabric/date-time": "^7.8.21",
     "@uifabric/tslint-rules": "^7.0.6",

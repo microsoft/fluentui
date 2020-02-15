@@ -95,6 +95,7 @@
   },
   "resolutions": {
     "webpack": "4.29.5",
-    "autoprefixer": "7.2.6"
+    "autoprefixer": "7.2.6",
+    "copy-to-clipboard": "3.2.0"
   }
 }

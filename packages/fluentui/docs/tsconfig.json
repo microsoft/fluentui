@@ -8,7 +8,7 @@
       "src/*": ["packages/fluentui/react/src/*"],
       "test/*": ["packages/fluentui/react/test/*"]
     },
-    "typeRoots": ["../../../typings", "../node_modules/@types"],
+    "typeRoots": ["../../../typings", "../../../node_modules/@types"],
     "types": ["node", "webpack-env", "screener-runner"]
   },
   "include": ["./src"]
