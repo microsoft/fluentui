@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ExampleCard, ComponentPage, PropertiesTableSet } from '@uifabric/example-app-base';
-import { WeeklyDayPickerInlineExample } from '../WeeklyDayPicker/examples/WeeklyDayPicker.Inline.Example';
-import { WeeklyDayPickerInlineExpandableExample } from '../WeeklyDayPicker/examples/WeeklyDayPicker.Inline.Expandable.Example';
+import { WeeklyDayPickerInlineExample } from './examples/WeeklyDayPicker.Inline.Example';
+import { WeeklyDayPickerInlineExpandableExample } from './examples/WeeklyDayPicker.Inline.Expandable.Example';
 
 const WeeklyDayPickerInlineExampleCode = require('!raw-loader!@uifabric/date-time/src/components/WeeklyDayPicker/examples/WeeklyDayPicker.Inline.Example.tsx') as string;
 const WeeklyDayPickerInlineExpandableExampleCode = require('!raw-loader!@uifabric/date-time/src/components/WeeklyDayPicker/examples/WeeklyDayPicker.Inline.Expandable.Example.tsx') as string;

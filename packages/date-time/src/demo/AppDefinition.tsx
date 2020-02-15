@@ -9,19 +9,19 @@ export const AppDefinition: IAppDefinition = {
     {
       links: [
         {
-          component: require<any>('../components/pages/CalendarPage').CalendarPage,
+          component: require<any>('../Calendar/CalendarPage').CalendarPage,
           key: 'Calendar',
           name: 'Calendar',
           url: '#/examples/calendar'
         },
         {
-          component: require<any>('../components/pages/DatePickerPage').DatePickerPage,
+          component: require<any>('../DatePicker/DatePickerPage').DatePickerPage,
           key: 'DatePicker',
           name: 'DatePicker',
           url: '#/examples/datepicker'
         },
         {
-          component: require<any>('../components/pages/WeeklyDayPickerPage').WeeklyDayPickerPage,
+          component: require<any>('../WeeklyDayPicker/WeeklyDayPickerPage').WeeklyDayPickerPage,
           key: 'WeeklyDayPicker',
           name: 'WeeklyDayPicker',
           url: '#/examples/weeklydaypicker'

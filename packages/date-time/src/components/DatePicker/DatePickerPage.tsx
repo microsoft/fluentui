@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { DatePickerBasicExample } from '../DatePicker/examples/DatePicker.Basic.Example';
-import { DatePickerDisabledExample } from '../DatePicker/examples/DatePicker.Disabled.Example';
-import { DatePickerWeekNumbersExample } from '../DatePicker/examples/DatePicker.WeekNumbers.Example';
-import { DatePickerRequiredExample } from '../DatePicker/examples/DatePicker.Required.Example';
-import { DatePickerInputExample } from '../DatePicker/examples/DatePicker.Input.Example';
-import { DatePickerFormatExample } from '../DatePicker/examples/DatePicker.Format.Example';
-import { DatePickerBoundedExample } from '../DatePicker/examples/DatePicker.Bounded.Example';
+import { DatePickerBasicExample } from './examples/DatePicker.Basic.Example';
+import { DatePickerDisabledExample } from './examples/DatePicker.Disabled.Example';
+import { DatePickerWeekNumbersExample } from './examples/DatePicker.WeekNumbers.Example';
+import { DatePickerRequiredExample } from './examples/DatePicker.Required.Example';
+import { DatePickerInputExample } from './examples/DatePicker.Input.Example';
+import { DatePickerFormatExample } from './examples/DatePicker.Format.Example';
+import { DatePickerBoundedExample } from './examples/DatePicker.Bounded.Example';
 import { ExampleCard, ComponentPage, PropertiesTableSet } from '@uifabric/example-app-base';
 import { Markdown } from '@uifabric/example-app-base/lib/index2';
 
