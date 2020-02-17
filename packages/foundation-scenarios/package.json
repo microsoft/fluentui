@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/foundation-scenarios",
-  "version": "0.102.24",
+  "version": "0.102.25",
   "description": "Experimental React components for building experiences for Office 365.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",

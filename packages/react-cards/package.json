@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/react-cards",
-  "version": "0.109.20",
+  "version": "0.109.21",
   "description": "Card container components to help build experiences with the use of Fabric.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
