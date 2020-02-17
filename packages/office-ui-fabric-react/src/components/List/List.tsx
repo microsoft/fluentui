@@ -347,7 +347,7 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
     let shouldComponentUpdate = false;
 
     // Update if the page stops scrolling
-    if (!newState.isScrolling && this.state.isScrolling) {
+    if (!newState.isScrolling && this.state.isScrolling && !this.props.ignoreScrollingState) {
       return true;
     }
 
@@ -527,7 +527,7 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
    * we will call onAsyncIdle which will reset it back to it's correct value.
    */
   private _onScroll(): void {
-    if (!this.state.isScrolling) {
+    if (!this.state.isScrolling && !this.props.ignoreScrollingState) {
       this.setState({ isScrolling: true });
     }
     this._resetRequiredWindows();
@@ -583,7 +583,9 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
    * This function is debounced.
    */
   private _onScrollingDone(): void {
-    this.setState({ isScrolling: false });
+    if (!this.props.ignoreScrollingState) {
+      this.setState({ isScrolling: false });
+    }
   }
 
   private _onAsyncResize(): void {
