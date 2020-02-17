@@ -1,9 +1,0 @@
-{
-  "type": "none",
-  "comment": "upgrading types for webpack-env",
-  "packageName": "@uifabric/test-utilities",
-  "email": "kchau@microsoft.com",
-  "commit": "7d071a411865930641727e54da85d2d601c5722b",
-  "dependentChangeType": "patch",
-  "date": "2020-02-15T17:26:46.571Z"
-}

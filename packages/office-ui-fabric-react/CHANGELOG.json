@@ -2,6 +2,37 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Mon, 17 Feb 2020 17:06:50 GMT",
+      "tag": "office-ui-fabric-react_v7.93.1",
+      "version": "7.93.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "List: clearing scrollElement on unmount to avoid retaining an edge to a dom element and leaking.",
+            "author": "dzearing@microsoft.com",
+            "commit": "8a1f887f42f85fcbdbea98970b8751411b79954a"
+          },
+          {
+            "comment": "Fix: Uncaught SyntaxError: Failed to execute 'querySelector' on 'Document'.",
+            "author": "email not defined",
+            "commit": "be43d86222ecf04fbe747b604941eac9da048195"
+          },
+          {
+            "comment": "ShimmeredDetailsList: add aria-busy=true when shimmer is enabled",
+            "author": "xgao@microsoft.com",
+            "commit": "3be35a40104099e1b7a35a2dde5d96b9069365cd"
+          }
+        ],
+        "none": [
+          {
+            "comment": "upgrading types for webpack-env",
+            "author": "kchau@microsoft.com",
+            "commit": "7d071a411865930641727e54da85d2d601c5722b"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 12 Feb 2020 12:24:27 GMT",
       "tag": "office-ui-fabric-react_v7.93.0",
       "version": "7.93.0",
