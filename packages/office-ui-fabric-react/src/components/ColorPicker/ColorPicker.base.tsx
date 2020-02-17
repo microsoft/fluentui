@@ -241,7 +241,7 @@ export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPi
       return color[component] || '';
     } else if (typeof color[component] === 'number' && !isNaN(color[component] as number)) {
       if (component === 'a') {
-        return String(this._getAlphaOrTransValue(Number(color[component])));
+        return String(this._getAlphaOrTransValue(color[component]!));
       } else {
         return String(color[component]);
       }

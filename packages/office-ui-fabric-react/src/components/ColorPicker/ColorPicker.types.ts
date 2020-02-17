@@ -43,7 +43,7 @@ export interface IColorPickerProps {
 
   /**
    * When useTransparencySlider is true, this will change the alpha slider to transparency slider.
-   * Alpha value represents the opacity of the color whereas transparency reperesnts the transparentness of the color,
+   * Alpha value represents the opacity of the color whereas transparency represents the transparentness of the color,
    * i.e. 30% transparent color has 70% opaqueness.
    */
   useTransparencySlider?: boolean;

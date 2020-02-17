@@ -84,7 +84,7 @@ export interface IColorSliderProps {
   styles?: IStyleFunctionOrObject<IColorSliderStyleProps, IColorSliderStyles>;
 
   /**
-   * If true, the alpha slider represents a transparency slider
+   * If true, this is a transparency slider.
    * @defaultvalue false
    */
   useTransparencySlider?: boolean;

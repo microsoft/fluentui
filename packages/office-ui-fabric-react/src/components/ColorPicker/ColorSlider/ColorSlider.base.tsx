@@ -88,9 +88,10 @@ export class ColorSliderBase extends React.Component<IColorSliderProps, IColorSl
             className={classNames.sliderOverlay}
             // this isn't included in getStyles because it may change frequently
             style={
-              overlayStyle || useTransparencySlider
+              overlayStyle ||
+              (useTransparencySlider
                 ? { background: `linear-gradient(to right,#${overlayColor} , transparent )` }
-                : { background: `linear-gradient(to right, transparent 0, #${overlayColor} 100%)` }
+                : { background: `linear-gradient(to right, transparent 0, #${overlayColor} 100%)` })
             }
           />
         )}

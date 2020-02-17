@@ -6,7 +6,9 @@ export interface IRGB {
   g: number;
   /** Blue, range 0-255. */
   b: number;
-  /** Alpha, range 0 (transparent)-100. Usually assumed to be 100 if not specified. */
+  /** Alpha, range 0 (transparent)-100. Usually assumed to be 100 if not specified.
+   * When useTransparencySlider is true, alpha value represents the transparentness
+   */
   a?: number;
 }
 
