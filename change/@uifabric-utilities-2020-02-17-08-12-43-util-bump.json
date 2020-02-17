@@ -1,0 +1,9 @@
+{
+  "type": "patch",
+  "comment": "Utilities: forcing a publish, as the NPM outage last week did not seem to publish 7.12.1 of utilities.",
+  "packageName": "@uifabric/utilities",
+  "email": "dzearing@hotmail.com",
+  "commit": "71bcef681c8fbb6b01fb74a27b89fc3d0e921f74",
+  "dependentChangeType": "patch",
+  "date": "2020-02-17T16:12:43.275Z"
+}

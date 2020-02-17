@@ -48,7 +48,7 @@ export interface IDeclaredEventsByName {
 
 /** An instance of EventGroup allows anything with a handle to it to trigger events on it.
  *  If the target is an HTMLElement, the event will be attached to the element and can be
- *  triggered as usual (like clicking for onclick).
+ *  triggered as usual (like clicking for onClick).
  *  The event can be triggered by calling EventGroup.raise() here. If the target is an
  *  HTMLElement, the event gets raised and is handled by the browser. Otherwise, it gets
  *  handled here in EventGroup, and the handler is called in the context of the parent
