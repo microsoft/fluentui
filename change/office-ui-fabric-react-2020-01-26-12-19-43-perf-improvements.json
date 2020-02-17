@@ -1,9 +1,0 @@
-{
-  "type": "patch",
-  "comment": "PersonaCoin and related components: elliminating BaseComponent usage to reduce bundle size.",
-  "packageName": "office-ui-fabric-react",
-  "email": "dzearing@hotmail.com",
-  "commit": "5ea4f4de7953f92965d5ded807f4f12dda08c9c4",
-  "dependentChangeType": "patch",
-  "date": "2020-01-26T20:19:43.641Z"
-}
