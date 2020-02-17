@@ -33,7 +33,7 @@ import {
 // Can't use typeof on React.createElement since it's overloaded. Approximate createElement's signature for now and widen as needed.
 export function withSlots<P>(
   type: ISlot<P> | React.FunctionComponent<P> | string,
-  props?: React.Attributes & P | null,
+  props?: (React.Attributes & P) | null,
   // tslint:disable-next-line:missing-optional-annotation
   ...children: React.ReactNode[]
 ): ReturnType<React.FunctionComponent<P>> {

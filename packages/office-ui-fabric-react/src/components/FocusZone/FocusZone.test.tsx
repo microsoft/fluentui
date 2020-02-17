@@ -38,15 +38,17 @@ describe('FocusZone', () => {
       isVisible?: boolean;
     }
   ): void {
-    element.getBoundingClientRect = () =>
-      ({
-        top: clientRect.top,
-        left: clientRect.left,
-        bottom: clientRect.bottom,
-        right: clientRect.right,
-        width: clientRect.right - clientRect.left,
-        height: clientRect.bottom - clientRect.top
-      } as DOMRect);
+    element.getBoundingClientRect = () => ({
+      x: clientRect.left,
+      y: clientRect.top,
+      top: clientRect.top,
+      left: clientRect.left,
+      bottom: clientRect.bottom,
+      right: clientRect.right,
+      width: clientRect.right - clientRect.left,
+      height: clientRect.bottom - clientRect.top,
+      toJSON: () => clientRect
+    });
 
     element.setAttribute('data-is-visible', String(isVisible));
 

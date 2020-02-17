@@ -456,7 +456,10 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
         this._keytipTree.currentKeytip.hasDynamicChildren &&
         this._keytipTree.currentKeytip.children.indexOf(keytipProps.id) < 0
       ) {
-        this._keytipTree.currentKeytip = this._keytipTree.getNode(this._keytipTree.currentKeytip.id);
+        const currNode = this._keytipTree.getNode(this._keytipTree.currentKeytip.id);
+        if (currNode) {
+          this._keytipTree.currentKeytip = currNode;
+        }
       }
     }
 
@@ -478,6 +481,9 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
     const uniqueID = eventArgs.uniqueID;
     this._keytipTree.updateNode(keytipProps, uniqueID);
     this._setKeytips();
+    if (this._keytipTree.isCurrentKeytipParent(keytipProps)) {
+      this._addKeytipToQueue(sequencesToID(keytipProps.keySequences));
+    }
   };
 
   private _onKeytipRemoved = (eventArgs: any) => {

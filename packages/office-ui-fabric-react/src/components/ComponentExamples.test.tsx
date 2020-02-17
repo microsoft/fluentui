@@ -1,5 +1,6 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
+import chalk from 'chalk';
 import * as glob from 'glob';
 import * as path from 'path';
 
@@ -79,9 +80,11 @@ const excludedExampleFiles: string[] = [
   'Picker.CustomResult.Example.tsx',
   'ScrollablePane.Default.Example.tsx',
   'ScrollablePane.DetailsList.Example.tsx',
-  'SelectedPeopleList.Basic.Example.tsx',
+  'SelectedPeopleList.Basic.Example.tsx'
+];
+const excludedExampleFileRegexes: RegExp[] = [
   // Snapshots of these examples are worthless since the component isn't open by default
-  'Panel.'
+  /^Panel\./
 ];
 
 declare const global: any;
@@ -110,7 +113,7 @@ describe('Component Examples', () => {
   const realToLocaleTimeString = global.Date.prototype.toLocaleTimeString;
   const realToLocaleDateString = global.Date.prototype.toLocaleDateString;
   const constantDate = new Date(Date.UTC(2017, 0, 6, 4, 41, 20));
-  const files: string[] = glob.sync(path.resolve(process.cwd(), 'src/components/**/examples/*Example*.tsx'));
+  const examplePaths: string[] = glob.sync(path.resolve(process.cwd(), 'src/components/**/examples/*Example*.tsx'));
   const createPortal = ReactDOM.createPortal;
 
   beforeAll(() => {
@@ -176,41 +179,45 @@ describe('Component Examples', () => {
     });
   });
 
-  files
-    .filter((componentFile: string) => {
-      return !excludedExampleFiles.some(excludedFile => componentFile.indexOf('/' + excludedFile) !== -1);
-    })
-    .forEach((componentFile: string) => {
-      const componentFileName = componentFile.substring(componentFile.lastIndexOf('/') + 1);
-      it('renders ' + componentFileName + ' correctly', () => {
-        try {
-          const ExampleFile = require(componentFile);
-          // This code assumes all exported example functions are React components and attempts to render them.
-          Object.keys(ExampleFile)
-            .filter(key => typeof ExampleFile[key] === 'function')
-            .forEach(key => {
-              // Resetting ids by each object creates predictability in generated ids.
-              resetIds();
-              const ComponentUnderTest: React.ComponentClass = ExampleFile[key];
-              const component = renderer.create(<ComponentUnderTest />);
-              const tree = component.toJSON();
-              (expect(tree) as any).toMatchSpecificSnapshot(componentFileName);
-            });
-        } catch (e) {
-          // If you are getting this error with an example file make sure that the example file only
-          // exports example components. This test attempts to render all exports from an example file and will
-          // generate errors if those exports are functions that are not React components.
-          console.warn(
-            'ERROR: ' +
-              e +
-              ', ' +
-              'TEST NOTE: Failure with ' +
-              componentFile +
-              '. ' +
-              'Have you recently added a component? If so, please see notes in ComponentExamples.test.tsx. ' +
-              'Make sure your example only exports React components and no other functions.'
-          );
-        }
-      });
+  for (const examplePath of examplePaths) {
+    const exampleFile = path.basename(examplePath);
+    if (excludedExampleFiles.includes(exampleFile) || excludedExampleFileRegexes.some(r => r.test(exampleFile))) {
+      continue;
+    }
+
+    it(`renders ${exampleFile} correctly`, () => {
+      // Resetting ids for each example creates predictability in generated ids.
+      resetIds();
+
+      const exampleModule = require(examplePath);
+
+      const exampleExportNames = Object.keys(exampleModule);
+      const ComponentUnderTest: React.ComponentType = exampleModule[exampleExportNames[0]];
+      if (exampleExportNames.length > 1 || typeof ComponentUnderTest !== 'function') {
+        throw new Error(
+          'Examples should export exactly one React component, and nothing else.\n' +
+            `Found: ${exampleExportNames.map(exp => `${exp} (${typeof exampleModule[exp]})`).join(', ')}`
+        );
+      }
+
+      let component: renderer.ReactTestRenderer;
+      try {
+        component = renderer.create(<ComponentUnderTest />);
+      } catch (e) {
+        // Log with console.log so that the console.warn/error overrides from jest-setup.js don't re-throw the
+        // exception in a way that hides the stack/info; and then manually re-throw
+        console.log(
+          chalk.red(
+            `Failure rendering ${exampleExportNames[0]} (from ${examplePath}) as a React component.\n` +
+              'Example files must export exactly one React component, and nothing else.\n' +
+              '(This error may also occur if an exception is thrown while rendering the example component.)'
+          )
+        );
+        throw e;
+      }
+
+      const tree = component.toJSON();
+      (expect(tree) as any).toMatchSpecificSnapshot(exampleFile);
     });
+  }
 });

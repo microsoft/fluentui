@@ -21,7 +21,7 @@ const themeColors = require<IColorSwatch[]>('@uifabric/fabric-website/lib/data/c
 const neutralColors = require<IColorSwatch[]>('@uifabric/fabric-website/lib/data/colors-theme-neutrals.json');
 const accentColors = require<IColorSwatch[]>('@uifabric/fabric-website/lib/data/colors-theme-accents.json');
 
-export const ThemeSlotsPageBase: React.StatelessComponent<IThemeSlotsPageProps> = props => {
+export const ThemeSlotsPageBase: React.FunctionComponent<IThemeSlotsPageProps> = props => {
   const { theme, styles, className } = props;
   const classNames = getClassNames(styles, { theme, className });
 

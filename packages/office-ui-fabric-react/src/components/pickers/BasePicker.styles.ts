@@ -92,7 +92,12 @@ export function getStyles(props: IBasePickerStyleProps): IBasePickerStyles {
         alignSelf: 'flex-end',
         borderRadius: effects.roundedCorner2,
         backgroundColor: 'transparent',
-        color: semanticColors.inputText
+        color: semanticColors.inputText,
+        selectors: {
+          '::-ms-clear': {
+            display: 'none'
+          }
+        }
       },
       inputClassName
     ],

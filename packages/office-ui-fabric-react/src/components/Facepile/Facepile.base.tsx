@@ -58,7 +58,7 @@ export class FacepileBase extends BaseComponent<IFacepileProps, {}> {
         {this.onRenderAriaDescription()}
         <div className={_classNames.itemContainer}>
           {showAddButton ? this._getAddNewElement() : null}
-          <ul className={_classNames.members} role="listbox" aria-label={ariaLabel}>
+          <ul className={_classNames.members} aria-label={ariaLabel}>
             {this._onRenderVisiblePersonas(personasPrimary, personasOverflow.length === 0 && personas.length === 1)}
           </ul>
           {overflowButtonProps ? this._getOverflowElement(personasOverflow) : null}
@@ -90,12 +90,7 @@ export class FacepileBase extends BaseComponent<IFacepileProps, {}> {
         ? onRenderPersona(persona, this._getPersonaControl)
         : onRenderPersonaCoin(persona, this._getPersonaCoinControl);
       return (
-        <li
-          role="option"
-          key={`${singlePersona ? 'persona' : 'personaCoin'}-${index}`}
-          className={this._classNames.member}
-          aria-label={persona['aria-label'] || persona.personaName}
-        >
+        <li key={`${singlePersona ? 'persona' : 'personaCoin'}-${index}`} className={this._classNames.member}>
           {persona.onClick
             ? this._getElementWithOnClickEvent(personaControl, persona, index)
             : this._getElementWithoutOnClickEvent(personaControl, persona, index)}
@@ -172,7 +167,6 @@ export class FacepileBase extends BaseComponent<IFacepileProps, {}> {
     return {
       key: (!!persona.imageUrl ? 'i' : '') + index,
       'data-is-focusable': true,
-      'aria-hidden': true,
       className: _classNames.itemButton,
       title: persona.personaName,
       onMouseMove: this._onPersonaMouseMove.bind(this, persona),

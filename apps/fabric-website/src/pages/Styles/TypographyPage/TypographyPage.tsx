@@ -11,7 +11,7 @@ const typeWeights = require('office-ui-fabric-core/src/data/type-weights.json');
 
 const baseUrl = 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/apps/fabric-website/src/pages/Styles/TypographyPage/docs';
 
-export const TypographyPage: React.StatelessComponent<IStylesPageProps> = props => {
+export const TypographyPage: React.FunctionComponent<IStylesPageProps> = props => {
   const { platform } = props;
   return <StylesAreaPage {...props} {...TypographyPageProps[platform]} otherSections={_otherSections(platform) as IPageSectionProps[]} />;
 };

@@ -266,7 +266,10 @@ describe('BasePicker', () => {
 
     ReactDOM.render(
       <BasePickerWithType
-        selectedItems={[{ key: '1', name: 'blue' }, { key: '2', name: 'black' }]}
+        selectedItems={[
+          { key: '1', name: 'blue' },
+          { key: '2', name: 'black' }
+        ]}
         onResolveSuggestions={onResolveSuggestions}
         onRenderItem={onRenderItem}
         onRenderSuggestionsItem={basicSuggestionRenderer}

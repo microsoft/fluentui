@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "add icon support to combobox",
-  "packageName": "office-ui-fabric-react",
-  "email": "makopch@microsoft.com",
-  "commit": "b0c09c06431bf977fa831caba69d7cd09f091bbe",
-  "date": "2020-01-07T20:42:27.114Z"
-}

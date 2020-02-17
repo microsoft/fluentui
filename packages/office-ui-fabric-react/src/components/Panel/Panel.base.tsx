@@ -13,7 +13,8 @@ import {
   elementContains,
   getId,
   getNativeProps,
-  getRTL
+  getRTL,
+  css
 } from '../../Utilities';
 import { FocusTrapZone } from '../FocusTrapZone/index';
 import { IPanel, IPanelProps, IPanelStyleProps, IPanelStyles, PanelType } from './Panel.types';
@@ -240,9 +241,6 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
       return;
     }
 
-    if (this.props.onOpen) {
-      this.props.onOpen();
-    }
     this.setState({ visibility: PanelVisibilityState.animatingOpen });
   }
 
@@ -347,14 +345,20 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
     defaultRender?: (props?: IPanelProps) => JSX.Element | null,
     headerTextId?: string | undefined
   ): JSX.Element | null => {
-    const { headerText } = props;
+    const { headerText, headerTextProps = {} } = props;
 
     if (headerText) {
       return (
         <div className={this._classNames.header}>
-          <p className={this._classNames.headerText} id={headerTextId} role="heading" aria-level={2}>
+          <div
+            id={headerTextId}
+            role="heading"
+            aria-level={2}
+            {...headerTextProps}
+            className={css(this._classNames.headerText, headerTextProps.className)}
+          >
             {headerText}
-          </p>
+          </div>
         </div>
       );
     }
@@ -389,10 +393,10 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
     }
   }
 
-  private _dismissOnOuterClick(ev: any): void {
+  private _dismissOnOuterClick(ev: React.MouseEvent<HTMLDivElement>): void {
     const panel = this._panel.current;
-    if (this.isActive && panel && !ev.defaultPrevented()) {
-      if (!elementContains(panel, ev.target)) {
+    if (this.isActive && panel && !ev.defaultPrevented) {
+      if (!elementContains(panel, ev.target as HTMLElement)) {
         if (this.props.onOuterClick) {
           this.props.onOuterClick();
           ev.preventDefault();
@@ -404,6 +408,10 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
   }
 
   private _animateTo = (newVisibilityState: PanelVisibilityState): void => {
+    if (newVisibilityState === PanelVisibilityState.open && this.props.onOpen) {
+      this.props.onOpen();
+    }
+
     this._animationCallback = this._async.setTimeout(() => {
       this.setState({ visibility: newVisibilityState });
       this._onTransitionComplete();

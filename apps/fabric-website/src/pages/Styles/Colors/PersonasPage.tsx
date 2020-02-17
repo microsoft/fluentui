@@ -9,7 +9,7 @@ const baseUrl = 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master
 const personaColors = require<IColorSwatch[]>('@uifabric/fabric-website/lib/data/colors-personas.json');
 const personaGroupColors = require<IColorSwatch[]>('@uifabric/fabric-website/lib/data/colors-persona-groups.json');
 
-export const ColorsPersonasPage: React.StatelessComponent<IStylesPageProps> = props => {
+export const ColorsPersonasPage: React.FunctionComponent<IStylesPageProps> = props => {
   const { platform } = props;
   return (
     <StylesAreaPage {...props} {...ColorsPersonasPageProps[platform]} otherSections={_otherSections(platform) as IPageSectionProps[]} />

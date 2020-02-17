@@ -306,10 +306,10 @@ const SelectedDocumentItem: (documentProps: IPickerItemProps<IFullDocumentCardPr
 
   return (
     <DocumentCard onClick={log('You clicked the card.')}>
-      <DocumentCardPreview {...documentPreviewProps as IDocumentCardPreviewProps} />
+      <DocumentCardPreview {...(documentPreviewProps as IDocumentCardPreviewProps)} />
       <DocumentCardLocation location="Marketing Documents" locationHref="http://microsoft.com" ariaLabel="Location, Marketing Documents" />
-      <DocumentCardTitle {...documentTitleProps as IDocumentCardTitleProps} />
-      <DocumentCardActivity {...documentActivityProps as IDocumentCardActivityProps} />
+      <DocumentCardTitle {...(documentTitleProps as IDocumentCardTitleProps)} />
+      <DocumentCardActivity {...(documentActivityProps as IDocumentCardActivityProps)} />
       <DocumentCardActions actions={actions} />
     </DocumentCard>
   );

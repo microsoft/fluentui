@@ -61,7 +61,7 @@ export class LinkBase extends BaseComponent<ILinkProps, any> implements ILink {
   };
 
   private _adjustPropsForRootType(
-    RootType: string | React.ComponentClass | React.StatelessComponent,
+    RootType: string | React.ComponentClass | React.FunctionComponent,
     props: ILinkProps & { getStyles?: any }
   ): Partial<ILinkProps> {
     // Deconstruct the props so we remove props like `as`, `theme` and `styles`
@@ -97,7 +97,7 @@ export class LinkBase extends BaseComponent<ILinkProps, any> implements ILink {
     return { target, href, disabled, ...restProps };
   }
 
-  private _getRootType(props: ILinkProps): string | React.ComponentClass | React.StatelessComponent {
+  private _getRootType(props: ILinkProps): string | React.ComponentClass | React.FunctionComponent {
     if (props.as) {
       return props.as;
     }

@@ -1,7 +1,13 @@
 # Change Log - @uifabric/variants
 
-This log was last generated on Fri, 17 Jan 2020 02:32:17 GMT and should not be manually modified.
+This log was last generated on Tue, 28 Jan 2020 12:43:24 GMT and should not be manually modified.
 
+## 7.1.0
+Tue, 28 Jan 2020 12:43:24 GMT
+
+### Minor changes
+
+- Updates to strong semantic slot for menu item and background hovered/pressed states. (marygans@microsoft.com)
 ## 7.0.6
 Fri, 17 Jan 2020 02:32:17 GMT
 

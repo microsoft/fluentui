@@ -30,7 +30,7 @@ export function withContainsFocus<TProps extends { containsFocus?: boolean }, S>
 
       return (
         <div onFocus={this._handleFocus} onBlur={this._handleBlur}>
-          <ComposedComponent ref={this._updateComposedComponentRef} containsFocus={containsFocus} {...this.props as any} />
+          <ComposedComponent ref={this._updateComposedComponentRef} containsFocus={containsFocus} {...(this.props as any)} />
         </div>
       );
     }

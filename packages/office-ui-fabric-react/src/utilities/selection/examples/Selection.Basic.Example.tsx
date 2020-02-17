@@ -54,7 +54,7 @@ interface ISelectionItemExampleProps {
 /**
  * The SelectionItemExample controls and displays the selection state of a single item
  */
-const SelectionItemExample: React.StatelessComponent<ISelectionItemExampleProps> = (props: ISelectionItemExampleProps) => {
+const SelectionItemExample: React.FunctionComponent<ISelectionItemExampleProps> = (props: ISelectionItemExampleProps) => {
   const { item, itemIndex, selection } = props;
   let isSelected = false;
 

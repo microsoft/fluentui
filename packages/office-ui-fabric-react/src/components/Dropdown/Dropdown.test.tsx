@@ -91,7 +91,15 @@ describe('Dropdown', () => {
     });
 
     it('Renders a selected item if option specifies selected', () => {
-      wrapper = mount(<Dropdown label="testgroup" options={[{ key: '1', text: '1', selected: true }, { key: '2', text: '2' }]} />);
+      wrapper = mount(
+        <Dropdown
+          label="testgroup"
+          options={[
+            { key: '1', text: '1', selected: true },
+            { key: '2', text: '2' }
+          ]}
+        />
+      );
       const titleElement = wrapper.find('.ms-Dropdown-title');
 
       expect(titleElement.text()).toEqual('1');
@@ -198,7 +206,10 @@ describe('Dropdown', () => {
     });
 
     it('sets the selected item even when key is number 0', () => {
-      const options = [{ key: 0, text: 'item1' }, { key: 1, text: 'item2' }];
+      const options = [
+        { key: 0, text: 'item1' },
+        { key: 1, text: 'item2' }
+      ];
       const selectedKey = 0;
       const dropdown = React.createRef<IDropdown>();
 
@@ -215,7 +226,10 @@ describe('Dropdown', () => {
     });
 
     it('selectedIndices should not contains -1 even when selectedKey is not in options', () => {
-      const options = [{ key: 0, text: 'item1' }, { key: 1, text: 'item2' }];
+      const options = [
+        { key: 0, text: 'item1' },
+        { key: 1, text: 'item2' }
+      ];
       let selectedKey = 0;
       const dropdown = React.createRef<IDropdown>();
 
@@ -441,7 +455,14 @@ describe('Dropdown', () => {
 
     it('Renders a selected item if option specifies selected', () => {
       wrapper = mount(
-        <Dropdown label="testgroup" options={[{ key: '1', text: '1', selected: true }, { key: '2', text: '2' }]} multiSelect />
+        <Dropdown
+          label="testgroup"
+          options={[
+            { key: '1', text: '1', selected: true },
+            { key: '2', text: '2' }
+          ]}
+          multiSelect
+        />
       );
 
       const titleElement = wrapper.find('.ms-Dropdown-title');
@@ -449,7 +470,10 @@ describe('Dropdown', () => {
     });
 
     it('sets the selected items even when key is number 0', () => {
-      const options = [{ key: 0, text: 'item1' }, { key: 1, text: 'item2' }];
+      const options = [
+        { key: 0, text: 'item1' },
+        { key: 1, text: 'item2' }
+      ];
       const selectedKeys = [0, 1];
       const dropdown = React.createRef<IDropdown>();
       wrapper = mount(<Dropdown multiSelect componentRef={dropdown} options={options} />);
@@ -463,7 +487,10 @@ describe('Dropdown', () => {
     });
 
     it('selectedIndices should not contains -1 even when selectedKeys item is not in options', () => {
-      const options = [{ key: 0, text: 'item1' }, { key: 1, text: 'item2' }];
+      const options = [
+        { key: 0, text: 'item1' },
+        { key: 1, text: 'item2' }
+      ];
       let selectedKeys = [0];
       const dropdown = React.createRef<IDropdown>();
 
@@ -484,7 +511,10 @@ describe('Dropdown', () => {
       wrapper = mount(
         <Dropdown
           label="testgroup"
-          options={[{ key: '1', text: '1', selected: true }, { key: '2', text: '2', selected: true }]}
+          options={[
+            { key: '1', text: '1', selected: true },
+            { key: '2', text: '2', selected: true }
+          ]}
           multiSelect
         />
       );
@@ -608,7 +638,11 @@ describe('Dropdown', () => {
     });
 
     it('Will skip disabled items on keydown', () => {
-      const options = [{ key: 0, text: '1' }, { key: 1, text: '2', disabled: true }, { key: 2, text: '3' }];
+      const options = [
+        { key: 0, text: '1' },
+        { key: 1, text: '2', disabled: true },
+        { key: 2, text: '3' }
+      ];
 
       wrapper = mount(<Dropdown label="testgroup" options={options} />);
       const dropdownRoot = wrapper.find('.ms-Dropdown');
@@ -624,7 +658,11 @@ describe('Dropdown', () => {
 
   describe('Aria attributes', () => {
     it('does not apply aria-labelledby if no label is provided', () => {
-      const options = [{ key: 0, text: '1' }, { key: 1, text: '2', disabled: true }, { key: 2, text: '3' }];
+      const options = [
+        { key: 0, text: '1' },
+        { key: 1, text: '2', disabled: true },
+        { key: 2, text: '3' }
+      ];
 
       wrapper = mount(<Dropdown options={options} />);
       const dropdownRoot = wrapper.getDOMNode().querySelector('.ms-Dropdown') as HTMLElement;
@@ -633,7 +671,11 @@ describe('Dropdown', () => {
     });
 
     it('does not apply aria-labelledby if an empty label is provided', () => {
-      const options = [{ key: 0, text: '1' }, { key: 1, text: '2', disabled: true }, { key: 2, text: '3' }];
+      const options = [
+        { key: 0, text: '1' },
+        { key: 1, text: '2', disabled: true },
+        { key: 2, text: '3' }
+      ];
 
       wrapper = mount(<Dropdown label="" options={options} />);
       const dropdownRoot = wrapper.getDOMNode().querySelector('.ms-Dropdown') as HTMLElement;
@@ -642,7 +684,11 @@ describe('Dropdown', () => {
     });
 
     it('applies aria-labelledby if a non-empty label is provided', () => {
-      const options = [{ key: 0, text: '1' }, { key: 1, text: '2', disabled: true }, { key: 2, text: '3' }];
+      const options = [
+        { key: 0, text: '1' },
+        { key: 1, text: '2', disabled: true },
+        { key: 2, text: '3' }
+      ];
 
       wrapper = mount(<Dropdown label="Test label" options={options} />);
       const dropdownRoot = wrapper.getDOMNode().querySelector('.ms-Dropdown') as HTMLElement;

@@ -53,7 +53,7 @@ export class LayerBase extends React.Component<ILayerProps, ILayerBaseState> {
       <span className="ms-layer" ref={this._rootRef}>
         {layerElement &&
           ReactDOM.createPortal(
-            <Fabric {...!eventBubblingEnabled && _getFilteredEvents()} className={classNames.content}>
+            <Fabric {...(!eventBubblingEnabled && _getFilteredEvents())} className={classNames.content}>
               {this.props.children}
             </Fabric>,
             layerElement

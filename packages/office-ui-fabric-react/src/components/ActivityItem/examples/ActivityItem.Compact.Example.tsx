@@ -70,7 +70,7 @@ export const ActivityItemCompactExample: React.FunctionComponent = () => {
   return (
     <div>
       {activityItemExamples.map((item: { key: string | number }) => (
-        <ActivityItem {...item as IActivityItemProps} key={item.key} className={classNames.exampleRoot} />
+        <ActivityItem {...(item as IActivityItemProps)} key={item.key} className={classNames.exampleRoot} />
       ))}
     </div>
   );

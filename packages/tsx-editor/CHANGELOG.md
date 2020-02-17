@@ -1,7 +1,19 @@
 # Change Log - @uifabric/tsx-editor
 
-This log was last generated on Thu, 23 Jan 2020 12:32:26 GMT and should not be manually modified.
+This log was last generated on Wed, 12 Feb 2020 12:24:27 GMT and should not be manually modified.
 
+## 0.11.18
+Wed, 12 Feb 2020 12:24:27 GMT
+
+### Patches
+
+- Add react-focus support (elcraig@microsoft.com)
+## 0.11.8
+Wed, 29 Jan 2020 12:37:18 GMT
+
+### Patches
+
+- Fix DetailsList export to codepen/live code editing (xgao@microsoft.com)
 ## 0.11.4
 Thu, 23 Jan 2020 12:32:26 GMT
 

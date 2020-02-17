@@ -289,6 +289,9 @@ exports[`TagPicker renders correctly 1`] = `
                 padding-right: 6px;
                 padding-top: 0;
               }
+              &::-ms-clear {
+                display: none;
+              }
           data-lpignore={true}
           onBlur={[Function]}
           onChange={[Function]}
@@ -597,6 +600,9 @@ exports[`TagPicker renders picker with selected item correctly 1`] = `
                 padding-left: 6px;
                 padding-right: 6px;
                 padding-top: 0;
+              }
+              &::-ms-clear {
+                display: none;
               }
           data-lpignore={true}
           onBlur={[Function]}

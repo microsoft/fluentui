@@ -30,7 +30,8 @@ export class DetailsListGroupedLargeExample extends React.Component<{}, {}> {
         key: i.toString(),
         name: i.toString(),
         startIndex: i * 100,
-        count: 100
+        count: 100,
+        level: 0
       });
     }
 

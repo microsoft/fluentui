@@ -46,12 +46,12 @@ export function styled<
   TStyleProps,
   TStyleSet extends IStyleSet<TStyleSet>
 >(
-  Component: React.ComponentClass<TComponentProps> | React.StatelessComponent<TComponentProps>,
+  Component: React.ComponentClass<TComponentProps> | React.FunctionComponent<TComponentProps>,
   baseStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet>,
   getProps?: (props: TComponentProps) => Partial<TComponentProps>,
   customizable?: ICustomizableProps,
   pure?: boolean
-): React.StatelessComponent<TComponentProps> {
+): React.FunctionComponent<TComponentProps> {
   customizable = customizable || { scope: '', fields: undefined };
 
   const { scope, fields = DefaultFields } = customizable;
