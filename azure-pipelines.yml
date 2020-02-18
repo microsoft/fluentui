@@ -152,34 +152,38 @@ jobs:
           Contents: '**/*'
         condition: always()
 
-  # - job: Danger
-  #   dependsOn: Build
-  #   steps:
-  #     # No need for checkout since we're using build artifacts.
-  #     - checkout: none
+  - job: Danger
+    dependsOn: Build
+    steps:
+      # No need for checkout since we're using build artifacts.
+      - checkout: none
 
-  #     - template: azure-pipelines.artifacts.yml
-  #       parameters:
-  #         artifact: Build-PR-$(Build.BuildNumber)
-  #         buildId: $(Build.BuildId)
+      - template: azure-pipelines.artifacts.yml
+        parameters:
+          artifact: Build-PR-$(Build.BuildNumber)
+          buildId: $(Build.BuildId)
 
-  #     - template: azure-pipelines.tools.yml
+      - template: azure-pipelines.tools.yml
 
-  #     - script: |
-  #         yarn perf:test
-  #       workingDirectory: packages/fluentui/perf-test
-  #       displayName: Perf Test
+      - script: |
+          yarn perf:test
+        workingDirectory: packages/fluentui/perf-test
+        displayName: Perf Test
+        env:
+          STATS_URI: $(STATS_URI)
 
-  #     - script: |
-  #         if [ $BUILD_REASON == "PullRequest" ] && [ ! -z $DANGER_GITHUB_API_TOKEN ]; then
-  #           yarn danger ci
-  #         elif [ $BUILD_REASON != "PullRequest" ]; then
-  #           echo "Skipping Danger JS because BUILD_REASON ${BUILD_REASON} != PullRequest"
-  #         else
-  #           echo "Skipping Danger JS because API token wasn't found"
-  #         fi
+      # - script: |
+      #     if [ $BUILD_REASON == "PullRequest" ] && [ ! -z $DANGER_GITHUB_API_TOKEN ]; then
+      #       yarn danger ci
+      #     elif [ $BUILD_REASON != "PullRequest" ]; then
+      #       echo "Skipping Danger JS because BUILD_REASON ${BUILD_REASON} != PullRequest"
+      #     else
+      #       echo "Skipping Danger JS because API token wasn't found"
+      #     fi
+      #   env:
+      #     DANGER_GITHUB_API_TOKEN: $(DANGER_GITHUB_API_TOKEN)
 
-  #     - script: |
-  #         yarn danger ci
-  #       env:
-  #         DANGER_GITHUB_API_TOKEN: $(DANGER_GITHUB_API_TOKEN)
+      - script: |
+          yarn danger ci
+        env:
+          DANGER_GITHUB_API_TOKEN: $(DANGER_GITHUB_API_TOKEN)
