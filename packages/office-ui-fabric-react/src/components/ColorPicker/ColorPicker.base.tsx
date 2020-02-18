@@ -123,8 +123,7 @@ export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPi
     const textLabels = this._textLabels;
     const { theme, className, styles, alphaSliderHidden, useTransparencySlider } = props;
     const { color } = this.state;
-    const alphaValue = color.a;
-    const sliderValue = alphaValue == null ? 100 : this._getAlphaOrTransValue(alphaValue);
+    const alphaSliderValue = this._getAlphaOrTransValue(color.a || 100);
 
     const classNames = getClassNames(styles!, {
       theme: theme!,
@@ -171,7 +170,7 @@ export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPi
                       ? strings.transparencyAriaLabel || textLabels.transparency
                       : strings.alphaAriaLabel || textLabels.a
                   }
-                  useTransparencySlider={useTransparencySlider}
+                  isTransparency={useTransparencySlider}
                   overlayColor={color.hex}
                   minValue={0}
                   maxValue={MAX_COLOR_ALPHA}

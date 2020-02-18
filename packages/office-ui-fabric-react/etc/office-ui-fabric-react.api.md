@@ -2659,6 +2659,7 @@ export interface IColorSliderProps {
     className?: string;
     componentRef?: IRefObject<IColorSlider>;
     isAlpha?: boolean;
+    isTransparency?: boolean;
     maxValue?: number;
     minValue?: number;
     onChange?: (event: React.MouseEvent | React.KeyboardEvent, newValue?: number) => void;
@@ -2669,7 +2670,6 @@ export interface IColorSliderProps {
     theme?: ITheme;
     // @deprecated
     thumbColor?: string;
-    useTransparencySlider?: boolean;
     value?: number;
 }
 
