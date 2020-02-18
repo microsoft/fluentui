@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "Removing use of some deprecated things by replacing them.",
+  "comment": "Removing use of deprecated props across the office-ui-fabric-react package so we can eventually enable the tslint deprecation rule.",
   "packageName": "office-ui-fabric-react",
   "email": "Humberto.Morimoto@microsoft.com",
   "commit": "8327cbafb8cede2043608f0dd80a17fe7d71e5bc",
