@@ -11,6 +11,7 @@ import { DirectionalHint } from '../../common/DirectionalHint';
 import { FocusZone, FocusZoneDirection, IFocusZoneProps, FocusZoneTabbableElements } from '../../FocusZone';
 import { IMenuItemClassNames, IContextualMenuClassNames } from './ContextualMenu.classNames';
 import { divProperties, getNativeProps, shallowCompare } from '../../Utilities';
+import { EventListener } from '@fluentui/react-component-event-listener';
 
 import {
   assign,
@@ -203,7 +204,6 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
       this.props.onMenuDismissed(this.props);
     }
 
-    this._events.dispose();
     this._async.dispose();
     this._mounted = false;
   }
@@ -357,6 +357,7 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
               </FocusZone>
             ) : null}
             {submenuProps && onRenderSubMenu(submenuProps, this._onRenderSubMenu)}
+            <EventListener target={this._targetWindow} type="resize" listener={this.dismiss} />
           </div>
         </Callout>
       );
@@ -375,14 +376,12 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
   }
 
   private _onMenuOpened() {
-    this._events.on(this._targetWindow, 'resize', this.dismiss);
     this._shouldUpdateFocusOnMouseEvent = !this.props.delayUpdateFocusOnHover;
     this._gotMouseMove = false;
     this.props.onMenuOpened && this.props.onMenuOpened(this.props);
   }
 
   private _onMenuClosed() {
-    this._events.off(this._targetWindow, 'resize', this.dismiss);
     this._tryFocusPreviousActiveElement();
 
     if (this.props.onMenuDismissed) {
