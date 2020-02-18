@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { BaseComponent, KeyCodes, css, getId, getRTL, getRTLSafeKeyCode } from '../../Utilities';
+import { EventListener } from '@fluentui/react-component-event-listener';
 import { ISliderProps, ISlider, ISliderStyleProps, ISliderStyles } from './Slider.types';
 import { classNamesFunction, getNativeProps, divProperties } from '../../Utilities';
 import { Label } from '../../Label';
@@ -187,11 +188,11 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
 
   private _onMouseDownOrTouchStart = (event: MouseEvent | TouchEvent): void => {
     if (event.type === 'mousedown') {
-      this._events.on(window, 'mousemove', this._onMouseMoveOrTouchMove, true);
-      this._events.on(window, 'mouseup', this._onMouseUpOrTouchEnd, true);
+      <EventListener target={window} type="mousemove" listener={this._onMouseMoveOrTouchMove} capture />;
+      <EventListener target={window} type="mouseup" listener={this._onMouseUpOrTouchEnd} capture />;
     } else if (event.type === 'touchstart') {
-      this._events.on(window, 'touchmove', this._onMouseMoveOrTouchMove, true);
-      this._events.on(window, 'touchend', this._onMouseUpOrTouchEnd, true);
+      <EventListener target={window} type="touchmove" listener={this._onMouseMoveOrTouchMove} capture />;
+      <EventListener target={window} type="touchend" listener={this._onMouseUpOrTouchEnd} capture />;
     }
     this._onMouseMoveOrTouchMove(event, true);
   };
@@ -293,8 +294,6 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
     if (this.props.onChanged) {
       this.props.onChanged(event, this.state.value as number);
     }
-
-    this._events.off();
   };
 
   private _onKeyDown = (event: KeyboardEvent): void => {
