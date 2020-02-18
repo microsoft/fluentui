@@ -637,8 +637,6 @@ export enum ColumnDragEndLocation {
 export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     constructor(props: IComboBoxProps);
     // (undocumented)
-    componentDidMount(): void;
-    // (undocumented)
     componentDidUpdate(prevProps: IComboBoxProps, prevState: IComboBoxState): void;
     // (undocumented)
     componentWillUnmount(): void;
