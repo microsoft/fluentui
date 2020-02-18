@@ -49,26 +49,6 @@ export const FocusZoneTabbableExample: React.FunctionComponent = () => {
           <button>Button 2</button>
           <input type="text" placeholder="FocusZone TextField" className={textFieldStyles} aria-label="FocusZone TextField" />
           <button>Button 3</button>
-          {/* <DefaultButton
-            text="Create account"
-            split={true}
-            onClick={alertClicked}
-            splitButtonAriaLabel="See 2 sample options"
-            menuProps={{
-              items: [
-                {
-                  key: 'emailMessage',
-                  text: 'Email message',
-                  iconProps: { iconName: 'Mail' }
-                },
-                {
-                  key: 'calendarEvent',
-                  text: 'Calendar event',
-                  iconProps: { iconName: 'Calendar' }
-                }
-              ]
-            }}
-          /> */}
         </div>
       </FocusZone>
       <FocusZone direction={FocusZoneDirection.horizontal} handleTabKey={FocusZoneTabbableElements.inputOnly} isCircularNavigation={false}>
@@ -83,7 +63,3 @@ export const FocusZoneTabbableExample: React.FunctionComponent = () => {
     </div>
   );
 };
-
-// function alertClicked(): void {
-//   alert('Clicked');
-// }

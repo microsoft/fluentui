@@ -146,9 +146,14 @@ function fixTsConfigs(outputPath) {
     }
 
     if (tsconfig.compilerOptions && tsconfig.compilerOptions.typeRoots) {
-      const typesIndex = tsconfig.compilerOptions.typeRoots.indexOf('../types');
+      let typesIndex = tsconfig.compilerOptions.typeRoots.indexOf('../types');
       if (typesIndex > -1) {
         tsconfig.compilerOptions.typeRoots[typesIndex] = '../../../typings';
+      }
+
+      typesIndex = tsconfig.compilerOptions.typeRoots.indexOf('../node_modules/@types');
+      if (typesIndex > -1) {
+        tsconfig.compilerOptions.typeRoots[typesIndex] = '../../../node_modules/@types';
       }
     }
 

@@ -2,6 +2,20 @@
   "name": "@fluentui/react-focus",
   "entries": [
     {
+      "date": "Mon, 17 Feb 2020 17:06:50 GMT",
+      "tag": "@fluentui/react-focus_v0.0.4",
+      "version": "0.0.4",
+      "comments": {
+        "none": [
+          {
+            "comment": "upgrading types for webpack-env",
+            "author": "kchau@microsoft.com",
+            "commit": "7d071a411865930641727e54da85d2d601c5722b"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 13 Feb 2020 23:22:22 GMT",
       "tag": "@fluentui/react-focus_v0.0.2",
       "version": "0.0.2",

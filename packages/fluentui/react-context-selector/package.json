@@ -1,7 +1,7 @@
 {
   "name": "@fluentui/react-context-selector",
   "description": "React useContextSelector & useContextSelectors hooks in userland",
-  "version": "0.43.0",
+  "version": "0.44.0",
   "author": "Oleksandr Fediashov <a@fedyashov.com>",
   "bugs": "https://github.com/microsoft/fluent-ui-react/issues",
   "dependencies": {

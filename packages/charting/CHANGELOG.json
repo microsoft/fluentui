@@ -2,6 +2,20 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "date": "Mon, 17 Feb 2020 17:06:50 GMT",
+      "tag": "@uifabric/charting_v0.139.20",
+      "version": "0.139.20",
+      "comments": {
+        "none": [
+          {
+            "comment": "upgrading types for webpack-env",
+            "author": "kchau@microsoft.com",
+            "commit": "7d071a411865930641727e54da85d2d601c5722b"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 11 Feb 2020 18:37:59 GMT",
       "tag": "@uifabric/charting_v0.139.17",
       "version": "0.139.17",

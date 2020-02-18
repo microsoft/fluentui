@@ -428,6 +428,7 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
           aria-rowcount={isPlaceholderData ? -1 : rowCount}
           aria-colcount={(selectAllVisibility !== SelectAllVisibility.none ? 1 : 0) + (adjustedColumns ? adjustedColumns.length : 0)}
           aria-readonly="true"
+          aria-busy={isPlaceholderData}
         >
           <div onKeyDown={this._onHeaderKeyDown} role="presentation" className={classNames.headerWrapper}>
             {isHeaderVisible &&

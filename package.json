@@ -10,6 +10,7 @@
   "scripts": {
     "a11ytest": "cd apps && cd a11y-tests && npm run test",
     "build": "lerna run build --stream",
+    "build:fluentuidocs": "gulp build:docs",
     "build:prod": "lerna run build --stream -- --production",
     "buildci": "yarn build && yarn test && yarn lint && yarn bundle",
     "buildci:prod": "yarn build:prod && yarn test && yarn lint && yarn bundle:prod",
@@ -36,6 +37,8 @@
     "postinstall": "node ./scripts/postinstall.js",
     "prettier": "node scripts/prettier.js",
     "rebuild": "node ./scripts/invalidate-just-cache.js && npx lerna build --stream",
+    "release:minor": "yarn workspace @uifabric/build just fluentui:publish:minor",
+    "release:patch": "yarn workspace @uifabric/build just fluentui:publish:patch",
     "scrub": "node ./scripts/scrub.js",
     "start:legacy": "yarn workspace @uifabric/fabric-website-resources start",
     "start": "node scripts/start.js",
@@ -93,6 +96,7 @@
   },
   "resolutions": {
     "webpack": "4.29.5",
-    "autoprefixer": "7.2.6"
+    "autoprefixer": "7.2.6",
+    "copy-to-clipboard": "3.2.0"
   }
 }

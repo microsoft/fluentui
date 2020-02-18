@@ -1,10 +1,8 @@
-import { ComponentStyleFunctionParam, ICSSInJSStyle } from '@fluentui/styles'
-import { ProviderBoxVariables } from './providerBoxVariables'
+import { ComponentStyleFunctionParam, ICSSInJSStyle } from '@fluentui/styles';
+import { ProviderVariables } from './providerVariables';
 
 export default {
-  root: ({
-    variables: v,
-  }: ComponentStyleFunctionParam<never, ProviderBoxVariables>): ICSSInJSStyle => ({
+  root: ({ variables: v }: ComponentStyleFunctionParam<never, ProviderVariables>): ICSSInJSStyle => ({
     background: v.background,
     color: v.color,
     textAlign: 'left',
@@ -14,8 +12,8 @@ export default {
       width: v.scrollbarWidth,
 
       ':disabled': {
-        display: 'none',
-      },
+        display: 'none'
+      }
     },
     '& ::-webkit-scrollbar-thumb': {
       borderRadius: v.scrollbarThumbBorderRadius,
@@ -25,11 +23,11 @@ export default {
 
       ':hover': {
         backgroundColor: v.scrollbarThumbHoverBackgroundColor,
-        border: `solid ${v.scrollbarThumbHoverBorderSize} transparent`,
-      },
+        border: `solid ${v.scrollbarThumbHoverBorderSize} transparent`
+      }
     },
     '& ::-webkit-scrollbar-track': {
-      background: 'transparent',
-    },
-  }),
-}
+      background: 'transparent'
+    }
+  })
+};

@@ -1,14 +1,11 @@
-import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles'
-import { TooltipContentProps } from '../../../../components/Tooltip/TooltipContent'
-import { TooltipContentVariables } from './tooltipContentVariables'
-import getPointerStyles from '../../getPointerStyles'
-import pointerSvg from '../../pointerSvgUrl'
-import { PopperChildrenProps } from '../../../../utils/positioner'
+import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+import { TooltipContentProps } from '../../../../components/Tooltip/TooltipContent';
+import { TooltipContentVariables } from './tooltipContentVariables';
+import getPointerStyles from '../../getPointerStyles';
+import pointerSvg from '../../pointerSvgUrl';
+import { PopperChildrenProps } from '../../../../utils/positioner';
 
-const getPointerOffset = (
-  placement: PopperChildrenProps['placement'],
-  v: TooltipContentVariables,
-) =>
+const getPointerOffset = (placement: PopperChildrenProps['placement'], v: TooltipContentVariables) =>
   placement === 'top-start' ||
   placement === 'top' ||
   placement === 'top-end' ||
@@ -16,20 +13,11 @@ const getPointerOffset = (
   placement === 'bottom' ||
   placement === 'bottom-start'
     ? v.pointerVerticalOffset
-    : v.pointerHorizontalOffset
+    : v.pointerHorizontalOffset;
 
-const tooltipContentStyles: ComponentSlotStylesPrepared<
-  TooltipContentProps,
-  TooltipContentVariables
-> = {
+const tooltipContentStyles: ComponentSlotStylesPrepared<TooltipContentProps, TooltipContentVariables> = {
   root: ({ props: p, variables: v, rtl }): ICSSInJSStyle => {
-    const svgPointerStyles = getPointerStyles(
-      getPointerOffset(p.placement, v),
-      v.pointerMargin,
-      rtl,
-      p.placement,
-      true,
-    )
+    const svgPointerStyles = getPointerStyles(getPointerOffset(p.placement, v), v.pointerMargin, rtl, p.placement, true);
 
     return {
       borderRadius: v.borderRadius,
@@ -37,17 +25,20 @@ const tooltipContentStyles: ComponentSlotStylesPrepared<
       maxWidth: v.maxWidth,
       color: v.color,
       background: v.backgroundColor,
+
+      zIndex: v.zIndex,
+      position: 'absolute',
+      textAlign: 'left',
+
       ...(p.pointing && svgPointerStyles.root),
-    }
+
+      ...(!p.open && {
+        opacity: 0
+      })
+    };
   },
   pointer: ({ props: p, variables: v, rtl }): ICSSInJSStyle => {
-    const svgPointerStyles = getPointerStyles(
-      getPointerOffset(p.placement, v),
-      v.pointerMargin,
-      rtl,
-      p.placement,
-      true,
-    )
+    const svgPointerStyles = getPointerStyles(getPointerOffset(p.placement, v), v.pointerMargin, rtl, p.placement, true);
 
     return {
       display: 'block',
@@ -56,16 +47,16 @@ const tooltipContentStyles: ComponentSlotStylesPrepared<
       width: v.pointerWidth,
       height: v.pointerHeight,
       backgroundImage: pointerSvg(v.backgroundColor),
-      ...svgPointerStyles.pointer,
-    }
+      ...svgPointerStyles.pointer
+    };
   },
-  content: ({ props: p, variables: v }): ICSSInJSStyle => ({
+  content: ({ variables: v }): ICSSInJSStyle => ({
     display: 'block',
     padding: v.padding,
 
     borderRadius: 'inherit',
-    boxShadow: v.boxShadow,
-  }),
-}
+    boxShadow: v.boxShadow
+  })
+};
 
-export default tooltipContentStyles
+export default tooltipContentStyles;

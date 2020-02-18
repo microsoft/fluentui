@@ -2,6 +2,20 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "date": "Mon, 17 Feb 2020 17:06:50 GMT",
+      "tag": "@uifabric/utilities_v7.12.1",
+      "version": "7.12.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Utilities: forcing a publish, as the NPM outage last week did not seem to publish 7.12.1 of utilities.",
+            "author": "dzearing@hotmail.com",
+            "commit": "71bcef681c8fbb6b01fb74a27b89fc3d0e921f74"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 12 Feb 2020 12:24:27 GMT",
       "tag": "@uifabric/utilities_v7.12.0",
       "version": "7.12.0",
