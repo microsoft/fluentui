@@ -14,7 +14,7 @@ export class Arc extends React.Component<IArcProps, IArcState> {
     arc: shape.arc()
   };
 
-  private _curentTarget: SVGPathElement;
+  private currentRef = React.createRef<SVGPathElement>();
 
   public static getDerivedStateFromProps(nextProps: Readonly<IArcProps>): Partial<IArcState> | null {
     _updateChart(nextProps);
@@ -32,11 +32,7 @@ export class Arc extends React.Component<IArcProps, IArcState> {
     const id = this.props.uniqText! + this.props.data!.data.legend!.replace(/\s+/, '') + this.props.data!.data.data;
     const opacity: number = this.props.activeArc === this.props.data!.data.legend || this.props.activeArc === '' ? 1 : 0.1;
     return (
-      <g
-        ref={(e: SVGPathElement) => {
-          this._refCallback(e);
-        }}
-      >
+      <g ref={this.currentRef}>
         <path
           id={id}
           d={arc(this.props.data)}
@@ -54,13 +50,9 @@ export class Arc extends React.Component<IArcProps, IArcState> {
     );
   }
 
-  private _refCallback = (element: SVGPathElement) => {
-    this._curentTarget = element;
-  };
-
   private _onFocus(data: IChartDataPoint): void {
     if (this.props.activeArc === this.props.data!.data.legend || this.props.activeArc === '') {
-      this.props.onFocusCallback!(data, this._curentTarget);
+      this.props.onFocusCallback!(data, this.currentRef.current);
     }
   }
 

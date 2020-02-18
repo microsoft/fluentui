@@ -122,6 +122,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
             directionalHint={DirectionalHint.bottomRightEdge}
             gapSpace={5}
             onDismiss={this._closeCallout}
+            preventDismissOnLostFocus={true}
           >
             <div className={this._classNames.hoverCardRoot}>
               <div className={this._classNames.hoverCardTextStyles}>{this.state.legend}</div>
