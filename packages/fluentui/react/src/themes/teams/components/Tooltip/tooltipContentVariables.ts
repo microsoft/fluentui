@@ -1,22 +1,24 @@
-import { pxToRem } from '../../../../utils'
+import { pxToRem } from '../../../../utils';
 
 export interface TooltipContentVariables {
-  boxShadow: string
+  boxShadow: string;
 
-  borderRadius: string
-  borderSize: string
-  padding: string
+  borderRadius: string;
+  borderSize: string;
+  padding: string;
 
-  maxWidth: string
+  maxWidth: string;
 
-  pointerMargin: string
-  pointerHorizontalOffset: string
-  pointerVerticalOffset: string
-  pointerWidth: string
-  pointerHeight: string
+  pointerMargin: string;
+  pointerHorizontalOffset: string;
+  pointerVerticalOffset: string;
+  pointerWidth: string;
+  pointerHeight: string;
 
-  color: string
-  backgroundColor: string
+  color: string;
+  backgroundColor: string;
+
+  zIndex: number;
 }
 
 export default (siteVars: any): TooltipContentVariables => ({
@@ -35,4 +37,6 @@ export default (siteVars: any): TooltipContentVariables => ({
   pointerHeight: pxToRem(16),
   color: siteVars.colorScheme.default.foreground3,
   backgroundColor: siteVars.colors.grey[500],
-})
+
+  zIndex: siteVars.zIndexes.overlay
+});

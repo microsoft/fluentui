@@ -1,7 +1,13 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Wed, 12 Feb 2020 12:24:27 GMT and should not be manually modified.
+This log was last generated on Mon, 17 Feb 2020 17:06:50 GMT and should not be manually modified.
 
+## 7.12.1
+Mon, 17 Feb 2020 17:06:50 GMT
+
+### Patches
+
+- Utilities: forcing a publish, as the NPM outage last week did not seem to publish 7.12.1 of utilities. (dzearing@hotmail.com)
 ## 7.12.0
 Wed, 12 Feb 2020 12:24:27 GMT
 

@@ -14,7 +14,7 @@ exports[`felaRenderer CSS fallback values are rendered 1`] = `
 exports[`felaRenderer animations are not applied if animations are disabled 1`] = `
 "
 
-<div className=ui-provider__box dir=ltr>
+<div className=ui-provider dir=ltr>
   <div className=ui-box ui-animation />
 </div>;
 "
@@ -62,7 +62,7 @@ exports[`felaRenderer array returned by keyframe results in CSS fallback values 
 }
 
 
-<div className=ui-provider__box dir=ltr>
+<div className=ui-provider dir=ltr>
   <div className=ui-box ui-animation a />
 </div>;
 "
@@ -111,7 +111,7 @@ exports[`felaRenderer keyframe colors are rendered 1`] = `
 }
 
 
-<div className=ui-provider__box dir=ltr>
+<div className=ui-provider dir=ltr>
   <div className=ui-box ui-animation a b />
 </div>;
 "
@@ -123,7 +123,7 @@ exports[`felaRenderer marginLeft is rendered into marginLeft due to RTL with \`n
 }
 
 
-<div className=ui-provider__box dir=rtl>
+<div className=ui-provider dir=rtl>
   <span className=ui-text a dir=auto>
     Hello
   </span>
@@ -137,7 +137,7 @@ exports[`felaRenderer marginLeft is rendered into marginRight due to RTL 1`] = `
 }
 
 
-<div className=ui-provider__box dir=rtl>
+<div className=ui-provider dir=rtl>
   <span className=ui-text a dir=auto>
     Hello
   </span>

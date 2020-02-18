@@ -1,17 +1,21 @@
-import { pxToRem } from '../../../../utils'
+import { pxToRem } from '../../../../utils';
 
 export interface PopupContentVariables {
-  borderColor: string
-  borderRadius: string
-  borderSize: string
+  borderColor: string;
+  borderRadius: string;
+  borderSize: string;
 
-  boxShadow: string
+  backgroundColor: string;
+  color: string;
+  boxShadow: string;
 
-  padding: string
+  padding: string;
 
-  pointerMargin: string
-  pointerOffset: string
-  pointerSize: string
+  pointerMargin: string;
+  pointerOffset: string;
+  pointerSize: string;
+
+  zIndex: number;
 }
 
 export default (siteVars: any): PopupContentVariables => {
@@ -20,6 +24,8 @@ export default (siteVars: any): PopupContentVariables => {
     borderRadius: pxToRem(3),
     borderSize: '1px',
 
+    backgroundColor: siteVars.colorScheme.default.background,
+    color: siteVars.colorScheme.default.foreground,
     boxShadow: siteVars.shadowLevel3,
 
     padding: `${pxToRem(10)} ${pxToRem(14)}`,
@@ -27,5 +33,7 @@ export default (siteVars: any): PopupContentVariables => {
     pointerOffset: pxToRem(5),
     pointerMargin: pxToRem(10),
     pointerSize: pxToRem(10),
-  }
-}
+
+    zIndex: siteVars.zIndexes.overlay
+  };
+};

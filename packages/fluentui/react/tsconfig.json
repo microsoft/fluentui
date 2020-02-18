@@ -30,6 +30,9 @@
       "path": "../react-component-ref"
     },
     {
+      "path": "../react-context-selector"
+    },
+    {
       "path": "../react-proptypes"
     }
   ]

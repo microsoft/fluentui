@@ -2,6 +2,20 @@
   "name": "@uifabric/tsx-editor",
   "entries": [
     {
+      "date": "Mon, 17 Feb 2020 17:06:50 GMT",
+      "tag": "@uifabric/tsx-editor_v0.11.19",
+      "version": "0.11.19",
+      "comments": {
+        "none": [
+          {
+            "comment": "upgrading types for webpack-env",
+            "author": "kchau@microsoft.com",
+            "commit": "7d071a411865930641727e54da85d2d601c5722b"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 12 Feb 2020 12:24:27 GMT",
       "tag": "@uifabric/tsx-editor_v0.11.18",
       "version": "0.11.18",
