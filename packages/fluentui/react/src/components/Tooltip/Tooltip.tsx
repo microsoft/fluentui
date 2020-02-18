@@ -158,9 +158,9 @@ export default class Tooltip extends AutoControlledComponent<TooltipProps, Toolt
     };
   }
 
-  renderComponent({ classes, rtl, accessibility }: RenderResultConfig<TooltipProps>): React.ReactNode {
+  renderComponent({ rtl, accessibility }: RenderResultConfig<TooltipProps>): React.ReactNode {
     const { mountNode, children, trigger } = this.props;
-    const tooltipContent = this.renderTooltipContent(classes.content, rtl, accessibility);
+    const tooltipContent = this.renderTooltipContent(rtl, accessibility);
 
     const triggerNode = childrenExist(children) ? children : trigger;
     const triggerElement = triggerNode && (React.Children.only(triggerNode) as React.ReactElement);
@@ -200,7 +200,7 @@ export default class Tooltip extends AutoControlledComponent<TooltipProps, Toolt
 
     triggerProps.onMouseEnter = (e, ...args) => {
       this.setTooltipOpen(true, e);
-      setWhatInputSource('mouse');
+      setWhatInputSource(this.context.target, 'mouse');
       _.invoke(triggerElement, 'props.onMouseEnter', e, ...args);
     };
     triggerProps.onMouseLeave = (e, ...args) => {
@@ -229,7 +229,7 @@ export default class Tooltip extends AutoControlledComponent<TooltipProps, Toolt
   shouldStayOpen = e =>
     _.invoke(e, 'currentTarget.contains', e.relatedTarget) || _.invoke(this.contentRef.current, 'contains', e.relatedTarget);
 
-  renderTooltipContent(tooltipPositionClasses: string, rtl: boolean, accessibility: ReactAccessibilityBehavior): JSX.Element {
+  renderTooltipContent(rtl: boolean, accessibility: ReactAccessibilityBehavior): JSX.Element {
     const { align, position, target, offset } = this.props;
     const { open } = this.state;
 
@@ -242,24 +242,17 @@ export default class Tooltip extends AutoControlledComponent<TooltipProps, Toolt
         enabled={open}
         rtl={rtl}
         targetRef={target || this.triggerRef}
-        children={this.renderPopperChildren.bind(this, tooltipPositionClasses, rtl, accessibility)}
+        children={this.renderPopperChildren(accessibility)}
       />
     );
   }
 
-  renderPopperChildren = (
-    tooltipPositionClasses: string,
-    rtl: boolean,
-    accessibility: ReactAccessibilityBehavior,
-    { placement }: PopperChildrenProps
-  ) => {
+  renderPopperChildren = (accessibility: ReactAccessibilityBehavior) => ({ placement }: PopperChildrenProps) => {
     const { content, pointing } = this.props;
 
     const tooltipContentAttributes = {
-      ...(rtl && { dir: 'rtl' }),
       ...accessibility.attributes.tooltip,
       ...accessibility.keyHandlers.tooltip,
-      className: tooltipPositionClasses,
       ...this.getContentProps()
     };
 

@@ -10,6 +10,7 @@
   "scripts": {
     "a11ytest": "cd apps && cd a11y-tests && npm run test",
     "build": "lerna run build --stream",
+    "build:fluentuidocs": "gulp build:docs",
     "build:prod": "lerna run build --stream -- --production",
     "buildci": "yarn build && yarn test && yarn lint && yarn bundle",
     "buildci:prod": "yarn build:prod && yarn test && yarn lint && yarn bundle:prod",
@@ -95,6 +96,7 @@
   },
   "resolutions": {
     "webpack": "4.29.5",
-    "autoprefixer": "7.2.6"
+    "autoprefixer": "7.2.6",
+    "copy-to-clipboard": "3.2.0"
   }
 }
