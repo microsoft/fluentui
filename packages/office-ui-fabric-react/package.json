@@ -77,6 +77,8 @@
     "@uifabric/merge-styles": "^7.8.6",
     "@uifabric/react-hooks": "^7.0.11",
     "@uifabric/set-version": "^7.0.5",
+    "@uifabric/styling": "^7.10.10",
+    "@uifabric/utilities": "^7.12.1",
     "prop-types": "^15.7.2",
     "tslib": "^1.10.0"
   },
