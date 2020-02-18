@@ -1,7 +1,6 @@
 {
   "name": "@uifabric/lists",
   "version": "0.102.0",
-  "private": true,
   "description": "Experimental React components for list experiences for Microsoft 365.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",

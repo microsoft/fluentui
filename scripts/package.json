@@ -126,6 +126,7 @@
     "react-hot-loader": "^4.12.15",
     "react-vis": "^1.11.6",
     "read-package-json": "^2.0.13",
+    "replace-in-file": "^5.0.2",
     "request-promise-native": "^1.0.5",
     "resolve": "^1.7.1",
     "riceburn": "^1.3.1",

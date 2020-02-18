@@ -1,0 +1,59 @@
+{
+  "name": "@fluentui/examples",
+  "version": "0.1.0",
+  "description": "Example code and docs for Fluent UI and UI Fabric packages.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/OfficeDev/office-ui-fabric-react"
+  },
+  "license": "MIT",
+  "scripts": {
+    "build": "just-scripts build",
+    "lint": "just-scripts lint",
+    "just": "just-scripts",
+    "clean": "just-scripts clean",
+    "code-style": "just-scripts code-style"
+  },
+  "devDependencies": {
+    "@types/react": "16.8.11",
+    "@types/react-dom": "16.8.4",
+    "@types/webpack-env": "1.13.9",
+    "@uifabric/build": "^7.0.0",
+    "@uifabric/tslint-rules": "^7.0.6",
+    "react": "16.8.6",
+    "react-app-polyfill": "~1.0.1",
+    "react-dom": "16.8.6"
+  },
+  "dependencies": {
+    "@fluentui/react-focus": "^0.0.2",
+    "@microsoft/load-themed-styles": "^1.10.26",
+    "@uifabric/api-docs": "^7.2.16",
+    "@uifabric/azure-themes": "^7.0.26",
+    "@uifabric/charting": "^0.139.18",
+    "@uifabric/date-time": "^7.8.21",
+    "@uifabric/example-app-base": "^7.12.0",
+    "@uifabric/example-data": "^7.0.5",
+    "@uifabric/experiments": "^7.19.0",
+    "@uifabric/fabric-website-resources": "^7.6.0",
+    "@uifabric/file-type-icons": "^7.2.11",
+    "@uifabric/fluent-theme": "^7.1.20",
+    "@uifabric/foundation": "^7.5.9",
+    "@uifabric/icons": "^7.3.8",
+    "@uifabric/lists": "^0.102.0",
+    "@uifabric/mdl2-theme": "^0.1.21",
+    "@uifabric/react-cards": "^0.109.20",
+    "@uifabric/react-hooks": "^7.0.9",
+    "@uifabric/styling": "^7.10.8",
+    "@uifabric/tslint-rules": "^7.0.6",
+    "@uifabric/utilities": "^7.12.0",
+    "@uifabric/variants": "^7.1.11",
+    "office-ui-fabric-react": "^7.93.0",
+    "tslib": "^1.10.0"
+  },
+  "peerDependencies": {
+    "@types/react": ">=16.8.0 <17.0.0",
+    "@types/react-dom": ">=16.8.0 <17.0.0",
+    "react": ">=16.8.0 <17.0.0",
+    "react-dom": ">=16.8.0 <17.0.0"
+  }
+}

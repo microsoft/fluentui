@@ -1,9 +1,12 @@
 const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
 const IgnoreNotFoundExportWebpackPlugin = require('ignore-not-found-export-webpack-plugin');
 const path = require('path');
+const webpack = require('webpack');
 const getResolveAlias = require('../webpack/getResolveAlias');
-
-module.exports = ({ config }) => {
+/**
+ * @param {{ config: webpack.Configuration}} param0
+ */
+function storybookConfig({ config }) {
   config.module.rules.push({
     test: /\.(ts|tsx)$/,
     use: [
@@ -78,4 +81,6 @@ module.exports = ({ config }) => {
   config.optimization.minimize = false;
 
   return config;
-};
+}
+
+module.exports = storybookConfig;
