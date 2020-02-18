@@ -1,127 +1,117 @@
-import { Accessibility, listItemBehavior, ListItemBehaviorProps } from '@fluentui/accessibility'
-import {
-  getElementType,
-  getUnhandledProps,
-  useAccessibility,
-  useStyles,
-  useTelemetry,
-} from '@fluentui/react-bindings'
-import cx from 'classnames'
-import * as _ from 'lodash'
-import * as PropTypes from 'prop-types'
-import * as React from 'react'
+import { Accessibility, listItemBehavior, ListItemBehaviorProps } from '@fluentui/accessibility';
+import { getElementType, getUnhandledProps, useAccessibility, useStyles, useTelemetry } from '@fluentui/react-bindings';
+import { useContextSelectors } from '@fluentui/react-context-selector';
+import cx from 'classnames';
+import * as _ from 'lodash';
+import * as PropTypes from 'prop-types';
+import * as React from 'react';
 // @ts-ignore
-import { ThemeContext } from 'react-fela'
+import { ThemeContext } from 'react-fela';
 
-import Box, { BoxProps } from '../Box/Box'
+import Box, { BoxProps } from '../Box/Box';
 import {
   ShorthandValue,
   WithAsProp,
   ComponentEventHandler,
   withSafeTypeForAs,
   ProviderContextPrepared,
-  FluentComponentStaticProps,
-} from '../../types'
-import {
-  createShorthandFactory,
-  UIComponentProps,
-  commonPropTypes,
-  ContentComponentProps,
-} from '../../utils'
+  FluentComponentStaticProps
+} from '../../types';
+import { createShorthandFactory, UIComponentProps, commonPropTypes, ContentComponentProps } from '../../utils';
+import { ListContext, ListContextSubscribedValue } from './listContext';
 
 export interface ListItemSlotClassNames {
-  header: string
-  headerMedia: string
-  headerWrapper: string
-  content: string
-  contentMedia: string
-  contentWrapper: string
-  main: string
-  media: string
-  endMedia: string
+  header: string;
+  headerMedia: string;
+  headerWrapper: string;
+  content: string;
+  contentMedia: string;
+  contentWrapper: string;
+  main: string;
+  media: string;
+  endMedia: string;
 }
 
-export interface ListItemProps
-  extends UIComponentProps,
-    ContentComponentProps<ShorthandValue<BoxProps>> {
+export interface ListItemProps extends UIComponentProps, ContentComponentProps<ShorthandValue<BoxProps>> {
   /** Accessibility behavior if overridden by the user. */
-  accessibility?: Accessibility<ListItemBehaviorProps>
-  contentMedia?: ShorthandValue<BoxProps>
+  accessibility?: Accessibility<ListItemBehaviorProps>;
+  contentMedia?: ShorthandValue<BoxProps>;
   /** Toggle debug mode. */
-  debug?: boolean
-  header?: ShorthandValue<BoxProps>
-  endMedia?: ShorthandValue<BoxProps>
-  headerMedia?: ShorthandValue<BoxProps>
+  debug?: boolean;
+  header?: ShorthandValue<BoxProps>;
+  endMedia?: ShorthandValue<BoxProps>;
+  headerMedia?: ShorthandValue<BoxProps>;
 
   /** A list item can appear more important and draw the user's attention. */
-  important?: boolean
-  media?: ShorthandValue<BoxProps>
+  important?: boolean;
+  media?: ShorthandValue<BoxProps>;
 
-  index?: number
+  index?: number;
   /** A list item can indicate that it can be selected. */
-  selectable?: boolean
+  selectable?: boolean;
 
   /** A list item can indicate that it can be navigable. */
-  navigable?: boolean
+  navigable?: boolean;
 
   /** Indicates if the current list item is selected. */
-  selected?: boolean
-  truncateContent?: boolean
-  truncateHeader?: boolean
+  selected?: boolean;
+  truncateContent?: boolean;
+  truncateHeader?: boolean;
   /**
    * Called on click.
    *
    * @param event - React's original SyntheticEvent.
    * @param data - All props.
    */
-  onClick?: ComponentEventHandler<ListItemProps>
+  onClick?: ComponentEventHandler<ListItemProps>;
 }
 
 const ListItem: React.FC<WithAsProp<ListItemProps> & { index: number }> &
   FluentComponentStaticProps<ListItemProps> & {
-    slotClassNames: ListItemSlotClassNames
+    slotClassNames: ListItemSlotClassNames;
   } = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext)
-  const { setStart, setEnd } = useTelemetry(ListItem.displayName, context.telemetry)
+  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const { setStart, setEnd } = useTelemetry(ListItem.displayName, context.telemetry);
 
-  setStart()
+  setStart();
 
+  const { accessibility, className, content, contentMedia, design, endMedia, header, important, headerMedia, media, styles } = props;
+
+  const parentProps: ListContextSubscribedValue = useContextSelectors(ListContext, {
+    debug: v => v.debug,
+    navigable: v => v.navigable,
+    selectable: v => v.selectable,
+    truncateContent: v => v.truncateContent,
+    truncateHeader: v => v.truncateHeader,
+    variables: v => v.variables,
+    onItemClick: v => v.onItemClick,
+    selected: v => v.selectedIndex === props.index
+  });
   const {
-    accessibility,
-    className,
-    content,
-    contentMedia,
-    design,
-    endMedia,
-    header,
-    important,
-    headerMedia,
-    media,
-    styles,
-    debug,
-    navigable,
-    selectable,
-    selected,
-    truncateContent,
-    truncateHeader,
-    variables,
-  } = props
+    debug = parentProps.debug,
+    navigable = parentProps.navigable,
+    selectable = parentProps.selectable,
+    selected = parentProps.selected,
+    truncateContent = parentProps.truncateContent,
+    truncateHeader = parentProps.truncateHeader,
+    variables = parentProps.variables
+  } = props;
 
   const getA11Props = useAccessibility(accessibility, {
     debugName: ListItem.displayName,
     actionHandlers: {
       performClick: e => {
-        e.preventDefault()
-        handleClick(e)
-      },
+        e.preventDefault();
+        handleClick(e);
+      }
     },
     mapPropsToBehavior: () => ({
       navigable,
       selectable,
-      selected,
+      selected
     }),
-    rtl: context.rtl,
-  })
+    rtl: context.rtl
+  });
   const { classes, styles: resolvedStyles } = useStyles(ListItem.displayName, {
     className: ListItem.className,
     mapPropsToStyles: () => ({
@@ -136,62 +126,63 @@ const ListItem: React.FC<WithAsProp<ListItemProps> & { index: number }> &
       hasContent: !!content,
       hasContentMedia: !!contentMedia,
       hasHeader: !!header,
-      hasHeaderMedia: !!headerMedia,
+      hasHeaderMedia: !!headerMedia
     }),
     mapPropsToInlineStyles: () => ({ className, design, styles, variables }),
-    rtl: context.rtl,
-  })
+    rtl: context.rtl
+  });
 
-  const ElementType = getElementType(props)
-  const unhandledProps = getUnhandledProps(ListItem.handledProps, props)
+  const ElementType = getElementType(props);
+  const unhandledProps = getUnhandledProps(ListItem.handledProps, props);
 
   const handleClick = (e: React.MouseEvent | React.KeyboardEvent) => {
-    _.invoke(props, 'onClick', e, props)
-  }
+    _.invoke(props, 'onClick', e, props);
+    parentProps.onItemClick(e, props.index);
+  };
 
   const contentElement = Box.create(content, {
     defaultProps: () => ({
       className: ListItem.slotClassNames.content,
-      styles: resolvedStyles.content,
-    }),
-  })
+      styles: resolvedStyles.content
+    })
+  });
   const contentMediaElement = Box.create(contentMedia, {
     defaultProps: () => ({
       className: ListItem.slotClassNames.contentMedia,
-      styles: resolvedStyles.contentMedia,
-    }),
-  })
+      styles: resolvedStyles.contentMedia
+    })
+  });
   const headerElement = Box.create(header, {
     defaultProps: () => ({
       className: ListItem.slotClassNames.header,
-      styles: resolvedStyles.header,
-    }),
-  })
+      styles: resolvedStyles.header
+    })
+  });
   const headerMediaElement = Box.create(headerMedia, {
     defaultProps: () => ({
       className: ListItem.slotClassNames.headerMedia,
-      styles: resolvedStyles.headerMedia,
-    }),
-  })
+      styles: resolvedStyles.headerMedia
+    })
+  });
   const endMediaElement = Box.create(endMedia, {
     defaultProps: () => ({
       className: ListItem.slotClassNames.endMedia,
-      styles: resolvedStyles.endMedia,
-    }),
-  })
+      styles: resolvedStyles.endMedia
+    })
+  });
   const mediaElement = Box.create(media, {
     defaultProps: () => ({
       className: ListItem.slotClassNames.media,
-      styles: resolvedStyles.media,
-    }),
-  })
+      styles: resolvedStyles.media
+    })
+  });
 
   const element = (
     <ElementType
       {...getA11Props('root', {
         className: classes.root,
         onClick: handleClick,
-        ...unhandledProps,
+        ...unhandledProps
       })}
     >
       {mediaElement}
@@ -213,24 +204,24 @@ const ListItem: React.FC<WithAsProp<ListItemProps> & { index: number }> &
 
       {endMediaElement}
     </ElementType>
-  )
+  );
 
-  setEnd()
+  setEnd();
 
-  return element
-}
+  return element;
+};
 
-ListItem.className = 'ui-list__item'
-ListItem.displayName = 'ListItem'
+ListItem.className = 'ui-list__item';
+ListItem.displayName = 'ListItem';
 
 ListItem.defaultProps = {
   as: 'li',
-  accessibility: listItemBehavior,
-}
+  accessibility: listItemBehavior
+};
 
 ListItem.propTypes = {
   ...commonPropTypes.createCommon({
-    content: false,
+    content: false
   }),
   contentMedia: PropTypes.any,
   content: PropTypes.any,
@@ -252,9 +243,9 @@ ListItem.propTypes = {
   truncateContent: PropTypes.bool,
   truncateHeader: PropTypes.bool,
 
-  onClick: PropTypes.func,
-}
-ListItem.handledProps = Object.keys(ListItem.propTypes) as any
+  onClick: PropTypes.func
+};
+ListItem.handledProps = Object.keys(ListItem.propTypes) as any;
 
 ListItem.slotClassNames = {
   header: `${ListItem.className}__header`,
@@ -265,12 +256,12 @@ ListItem.slotClassNames = {
   contentMedia: `${ListItem.className}__contentMedia`,
   contentWrapper: `${ListItem.className}__contentWrapper`,
   media: `${ListItem.className}__media`,
-  endMedia: `${ListItem.className}__endMedia`,
-}
+  endMedia: `${ListItem.className}__endMedia`
+};
 
-ListItem.create = createShorthandFactory({ Component: ListItem, mappedProp: 'content' })
+ListItem.create = createShorthandFactory({ Component: ListItem, mappedProp: 'content' });
 
 /**
  * A ListItem contains a single piece of content within a List.
  */
-export default withSafeTypeForAs<typeof ListItem, ListItemProps, 'li'>(ListItem)
+export default withSafeTypeForAs<typeof ListItem, ListItemProps, 'li'>(ListItem);
