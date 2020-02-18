@@ -1,7 +1,14 @@
 # Change Log - @uifabric/date-time
 
-This log was last generated on Fri, 17 Jan 2020 02:32:17 GMT and should not be manually modified.
+This log was last generated on Fri, 24 Jan 2020 12:30:27 GMT and should not be manually modified.
 
+## 7.8.8
+Fri, 24 Jan 2020 12:30:27 GMT
+
+### Patches
+
+- DatePicker: Fixing issue with formatted dates. (Humberto.Morimoto@microsoft.com)
+- Updating text field validation in date-time package to check new value rather than old one. (chce@netcompany.com)
 ## 7.8.5
 Fri, 17 Jan 2020 02:32:17 GMT
 

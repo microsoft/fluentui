@@ -31,7 +31,7 @@ interface ISignalExampleProps {
   signal: React.ReactNode;
 }
 
-const SignalExample: React.StatelessComponent<ISignalExampleProps> = (
+const SignalExample: React.FunctionComponent<ISignalExampleProps> = (
   props: ISignalExampleProps
 ): JSX.Element => {
   return (

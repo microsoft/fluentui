@@ -35,7 +35,10 @@ if (typesContext) {
     // as the filename.
     // (example path: '!raw-loader!@uifabric/tsx-editor/dist/types/utilities.d.ts')
     const unscopedName = dtsPath.match(/\/(.*?)\.d\.ts$/)![1];
-    const packageName = unscopedName === 'office-ui-fabric-react' ? unscopedName : '@uifabric/' + unscopedName;
+    const packageName =
+      unscopedName === 'office-ui-fabric-react'
+        ? unscopedName
+        : `${unscopedName === 'react-focus' ? '@fluentui' : '@uifabric'}/${unscopedName}`;
     const packageGroup =
       packageName === '@uifabric/example-data' ? exampleDataGroup : packageName === '@uifabric/react-hooks' ? hooksGroup : fabricGroup;
     packageGroup.packages.push({
@@ -54,6 +57,7 @@ if (typesContext) {
     { packageName: '@uifabric/foundation', loadTypes },
     { packageName: '@uifabric/icons', loadTypes },
     { packageName: '@uifabric/merge-styles', loadTypes },
+    { packageName: '@fluentui/react-focus', loadTypes },
     { packageName: '@uifabric/styling', loadTypes },
     { packageName: '@uifabric/utilities', loadTypes }
   );

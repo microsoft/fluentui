@@ -78,6 +78,11 @@ export interface IPanelProps extends React.HTMLAttributes<PanelBase> {
   headerText?: string;
 
   /**
+   * The props for header text container.
+   */
+  headerTextProps?: React.HTMLAttributes<HTMLDivElement>;
+
+  /**
    * A callback function for when the Panel is opened, before the animation completes.
    */
   onOpen?: () => void;
@@ -480,7 +485,7 @@ export interface IPanelStyles {
   header: IStyle;
 
   /**
-   * Style for the header inner p element.
+   * Style for the header text div element.
    */
   headerText: IStyle;
 

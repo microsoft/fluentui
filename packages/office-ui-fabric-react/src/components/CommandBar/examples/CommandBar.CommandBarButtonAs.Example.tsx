@@ -25,7 +25,7 @@ const CoachmarkCommandBarButton: React.FunctionComponent<ICoachmarkCommandBarBut
   return (
     <>
       <div ref={targetButton}>
-        <ButtonComponent {...buttonProps as any} />
+        <ButtonComponent {...(buttonProps as any)} />
       </div>
       {isCoachmarkVisible && (
         <Coachmark

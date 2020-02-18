@@ -232,7 +232,12 @@ describe('Autofill', () => {
 
     ReactTestUtils.Simulate.input(autofill.inputElement!);
 
-    expect(onInputChange.mock.calls).toEqual([['he', false], ['hel', true], ['help', true], ['🆘', false]]);
+    expect(onInputChange.mock.calls).toEqual([
+      ['he', false],
+      ['hel', true],
+      ['help', true],
+      ['🆘', false]
+    ]);
   });
 
   it('will call onInputValueChanged w/ composition events', () => {
@@ -261,6 +266,11 @@ describe('Autofill', () => {
 
     ReactTestUtils.Simulate.input(autofill.inputElement!);
 
-    expect(onInputValueChange.mock.calls).toEqual([['he', false], ['hel', true], ['help', true], ['🆘', false]]);
+    expect(onInputValueChange.mock.calls).toEqual([
+      ['he', false],
+      ['hel', true],
+      ['help', true],
+      ['🆘', false]
+    ]);
   });
 });

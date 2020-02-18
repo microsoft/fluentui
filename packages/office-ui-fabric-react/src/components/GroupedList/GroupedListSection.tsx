@@ -212,7 +212,9 @@ export class GroupedListSection extends React.Component<IGroupedListSectionProps
     };
 
     const ariaControlsProps: IGroupHeaderProps = {
-      groupedListId: this._id
+      groupedListId: this._id,
+      ariaSetSize: groups ? groups.length : undefined,
+      ariaPosInSet: groupIndex !== undefined ? groupIndex + 1 : undefined
     };
 
     const groupHeaderProps: IGroupHeaderProps = { ...headerProps, ...dividerProps, ...ariaControlsProps };
@@ -308,13 +310,13 @@ export class GroupedListSection extends React.Component<IGroupedListSectionProps
   }
 
   private _onRenderGroup(renderCount: number): JSX.Element {
-    const { group, items, onRenderCell, listProps, groupNestingDepth, onShouldVirtualize } = this.props;
+    const { group, items, onRenderCell, listProps, groupNestingDepth, onShouldVirtualize, groupProps } = this.props;
     const count = group && !group.isShowingAll ? group.count : items.length;
     const startIndex = group ? group.startIndex : 0;
 
     return (
       <List
-        role="grid"
+        role={groupProps && groupProps.role ? groupProps.role : 'grid'}
         items={items}
         onRenderCell={this._onRenderGroupCell(onRenderCell, groupNestingDepth)}
         ref={this._list}
@@ -398,13 +400,20 @@ export class GroupedListSection extends React.Component<IGroupedListSectionProps
    */
   private _getGroupDragDropOptions = (): IDragDropOptions => {
     const { group, groupIndex, dragDropEvents, eventsToRegister } = this.props;
+    const canDrag = dragDropEvents!.canDragGroups ? () => dragDropEvents!.canDragGroups : () => false;
+
     const options = {
       eventMap: eventsToRegister,
       selectionIndex: -1,
       context: { data: group, index: groupIndex, isGroup: true },
-      canDrag: () => false, // cannot drag groups
+      canDrag: canDrag,
       canDrop: dragDropEvents!.canDrop,
-      updateDropState: this._updateDroppingState
+      updateDropState: this._updateDroppingState,
+      onDrop: dragDropEvents!.canDragGroups ? dragDropEvents!.onDrop : undefined,
+      onDragStart: dragDropEvents!.canDragGroups ? dragDropEvents!.onDragStart : undefined,
+      onDragEnter: dragDropEvents!.canDragGroups ? dragDropEvents!.onDragEnter : undefined,
+      onDragLeave: dragDropEvents!.canDragGroups ? dragDropEvents!.onDragLeave : undefined,
+      onDragEnd: dragDropEvents!.canDragGroups ? dragDropEvents!.onDragEnd : undefined
     };
     return options as IDragDropOptions;
   };

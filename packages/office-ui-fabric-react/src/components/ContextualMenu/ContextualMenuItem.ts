@@ -7,7 +7,7 @@ import { getItemStyles } from './ContextualMenu.classNames';
 /**
  * ContextualMenuItem description
  */
-export const ContextualMenuItem: React.StatelessComponent<IContextualMenuItemProps> = styled<
+export const ContextualMenuItem: React.FunctionComponent<IContextualMenuItemProps> = styled<
   IContextualMenuItemProps,
   IContextualMenuItemStyleProps,
   IContextualMenuItemStyles

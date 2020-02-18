@@ -1,7 +1,19 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Fri, 17 Jan 2020 02:32:17 GMT and should not be manually modified.
+This log was last generated on Wed, 12 Feb 2020 12:24:27 GMT and should not be manually modified.
 
+## 7.19.0
+Wed, 12 Feb 2020 12:24:27 GMT
+
+### Minor changes
+
+- Replacing deprecated StatelessComponent references with FunctionComponent. (Humberto.Morimoto@microsoft.com)
+## 7.18.24
+Mon, 03 Feb 2020 20:04:10 GMT
+
+### Patches
+
+- Updating snapshots in experiments package. (Humberto.Morimoto@microsoft.com)
 ## 7.18.15
 Fri, 17 Jan 2020 02:32:17 GMT
 

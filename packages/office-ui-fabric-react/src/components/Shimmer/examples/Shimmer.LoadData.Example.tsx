@@ -87,7 +87,10 @@ export class ShimmerLoadDataExample extends React.Component<{}, IShimmerLoadData
     return (
       <div style={{ display: 'flex' }}>
         <ShimmerElementsGroup
-          shimmerElements={[{ type: ShimmerElementType.circle, height: 40 }, { type: ShimmerElementType.gap, width: 16, height: 40 }]}
+          shimmerElements={[
+            { type: ShimmerElementType.circle, height: 40 },
+            { type: ShimmerElementType.gap, width: 16, height: 40 }
+          ]}
         />
         <ShimmerElementsGroup
           flexWrap={true}

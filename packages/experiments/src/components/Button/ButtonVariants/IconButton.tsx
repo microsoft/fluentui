@@ -71,7 +71,7 @@ const IconButtonTokens: IButtonComponent['tokens'] = (props, theme): IButtonToke
   props.disabled && disabledTokens
 ];
 
-export const IconButton: React.StatelessComponent<IButtonProps> = composed({
+export const IconButton: React.FunctionComponent<IButtonProps> = composed({
   displayName: 'IconButton',
   slots,
   state,

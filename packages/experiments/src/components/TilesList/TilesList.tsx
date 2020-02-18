@@ -119,7 +119,7 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
       <FocusZone
         role={role}
         {...divProps}
-        ref={ref as ((element: FocusZone | null) => void)}
+        ref={ref as (element: FocusZone | null) => void}
         componentRef={focusZoneComponentRef}
         className={css('ms-TilesList', className)}
         direction={FocusZoneDirection.bidirectional}

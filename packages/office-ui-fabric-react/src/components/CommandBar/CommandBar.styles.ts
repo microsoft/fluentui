@@ -4,7 +4,7 @@ const COMMAND_BAR_HEIGHT = 44;
 
 export const getStyles = (props: ICommandBarStyleProps): ICommandBarStyles => {
   const { className, theme } = props;
-  const { palette } = theme;
+  const { semanticColors } = theme;
 
   return {
     root: [
@@ -12,7 +12,7 @@ export const getStyles = (props: ICommandBarStyleProps): ICommandBarStyles => {
       'ms-CommandBar',
       {
         display: 'flex',
-        backgroundColor: palette.white,
+        backgroundColor: semanticColors.bodyBackground,
         padding: '0 14px 0 24px',
         height: COMMAND_BAR_HEIGHT
       },

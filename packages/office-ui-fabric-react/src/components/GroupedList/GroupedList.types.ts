@@ -239,6 +239,11 @@ export interface IGroupRenderProps {
    * @defaultvalue false
    */
   showEmptyGroups?: boolean;
+
+  /**
+   * Override which allows the caller to provide a custom aria role
+   */
+  role?: string;
 }
 
 /**

@@ -6,7 +6,7 @@ import { Platforms } from '../../../interfaces/Platforms';
 
 const baseUrl = 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/apps/fabric-website/src/pages/Controls/AvatarPage/';
 
-export const AvatarPage: React.StatelessComponent<IControlsPageProps> = props => {
+export const AvatarPage: React.FunctionComponent<IControlsPageProps> = props => {
   const { platform } = props;
   return (
     <ControlsAreaPage

@@ -10,6 +10,7 @@ import {
   IMultiStackedBarChartStyleProps
 } from './index';
 import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
+import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react/lib/FocusZone';
 
 const getClassNames = classNamesFunction<IMultiStackedBarChartStyleProps, IMultiStackedBarChartStyles>();
 
@@ -142,6 +143,10 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
           ref={(e: SVGGElement) => {
             this._refCallback(e, point.legend!);
           }}
+          data-is-focusable={true}
+          focusable={'true'}
+          onFocus={this._onBarFocus.bind(this, point.legend!, pointData, color)}
+          onBlur={this._onBarLeave}
           onMouseOver={point.placeHolder ? undefined : this._onBarHover.bind(this, point.legend!, pointData, color)}
           onMouseMove={point.placeHolder ? undefined : this._onBarHover.bind(this, point.legend!, pointData, color)}
           onMouseLeave={point.placeHolder ? undefined : this._onBarLeave}
@@ -188,9 +193,29 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
             </div>
           )}
         </div>
-        <svg className={this._classNames.chart}>{bars}</svg>
+        <FocusZone direction={FocusZoneDirection.horizontal}>
+          <div>
+            <svg className={this._classNames.chart}>{bars}</svg>
+          </div>
+        </FocusZone>
       </div>
     );
+  }
+
+  private _onBarFocus(legendText: string, pointData: number, color: string): void {
+    if (this.state.isLegendSelected === false || (this.state.isLegendSelected && this.state.selectedLegendTitle === legendText)) {
+      this.state.refArray.map((obj: IRefArrayData) => {
+        if (obj.legendText === legendText) {
+          this.setState({
+            refSelected: obj.refElement,
+            isCalloutVisible: true,
+            selectedLegendTitle: legendText,
+            dataForHoverCard: pointData,
+            color: color
+          });
+        }
+      });
+    }
   }
 
   private _refCallback(element: SVGGElement, legendTitle: string): void {

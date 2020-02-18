@@ -28,7 +28,7 @@ const PLACEHOLDER_SIZES: {
     nameHeight: number;
     activityWidth: number;
     activityHeight: number;
-  }
+  };
 } = {
   small: {
     squareWidth: ShimmerTileLayoutValues.smallSquareWidth,

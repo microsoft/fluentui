@@ -2,11 +2,14 @@ import * as React from 'react';
 import { Icon, FontIcon } from '../../Icon';
 import { initializeComponentRef, EventGroup, Async, IDisposable, classNamesFunction, IClassNames } from '../../Utilities';
 import { ColumnActionsMode } from './DetailsList.types';
-
-import { ITooltipHostProps } from '../../Tooltip';
 import { IDragDropOptions } from './../../utilities/dragdrop/interfaces';
 import { DEFAULT_CELL_STYLE_PROPS } from './DetailsRow.styles';
-import { IDetailsColumnStyleProps, IDetailsColumnProps, IDetailsColumnStyles } from './DetailsColumn.types';
+import {
+  IDetailsColumnStyleProps,
+  IDetailsColumnProps,
+  IDetailsColumnStyles,
+  IDetailsColumnRenderTooltipProps
+} from './DetailsColumn.types';
 
 const MOUSEDOWN_PRIMARY_BUTTON = 0; // for mouse down event we are using ev.button property, 0 means left button
 
@@ -91,6 +94,7 @@ export class DetailsColumnBase extends React.Component<IDetailsColumnProps> {
               hostClassName: classNames.cellTooltip,
               id: `${parentId}-${column.key}-tooltip`,
               setAriaDescribedBy: false,
+              column,
               content: column.columnActionsMode !== ColumnActionsMode.disabled ? column.ariaLabel : '',
               children: (
                 <span
@@ -191,7 +195,7 @@ export class DetailsColumnBase extends React.Component<IDetailsColumnProps> {
     }
   }
 
-  private _onRenderColumnHeaderTooltip = (tooltipHostProps: ITooltipHostProps): JSX.Element => {
+  private _onRenderColumnHeaderTooltip = (tooltipHostProps: IDetailsColumnRenderTooltipProps): JSX.Element => {
     return <span className={tooltipHostProps.hostClassName}>{tooltipHostProps.children}</span>;
   };
 

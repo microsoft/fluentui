@@ -129,4 +129,40 @@ describe('Nav', () => {
     expect(nav.getDOMNode().querySelectorAll('.ms-Nav-compositeLink.is-selected').length).toBe(1);
     expect(nav.getDOMNode().querySelectorAll('.ms-Nav-compositeLink.is-selected')[0].textContent).toEqual(linkOne.name);
   });
+
+  it('places the correct values on rel depending on the url and target specified', () => {
+    const linkWithNoTargetSpecified: INavLink = {
+      key: 'Link1',
+      name: 'Link1',
+      url: 'https://cdpn.io/bar'
+    };
+    const linkWithRelativeURL: INavLink = {
+      key: 'Link2',
+      name: 'Link2',
+      target: '_blank',
+      url: '/foo'
+    };
+    const linkWithNonRelativeURL: INavLink = {
+      key: 'Link3',
+      name: 'Link3',
+      target: '_blank',
+      url: 'https://cdpn.io/bar'
+    };
+    const linkWithNonRelativeURL2: INavLink = {
+      key: 'Link4',
+      name: 'Link4',
+      target: '_blank',
+      url: 'http://cdpn.io/bar'
+    };
+    const nav = mount<NavBase>(
+      <Nav groups={[{ links: [linkWithNoTargetSpecified, linkWithRelativeURL, linkWithNonRelativeURL, linkWithNonRelativeURL2] }]} />
+    );
+
+    const links = nav.getDOMNode().querySelectorAll('.ms-Nav-link');
+    expect(links.length).toBe(4);
+    expect(links[0].getAttribute('rel')).toBeFalsy();
+    expect(links[1].getAttribute('rel')).toBeFalsy();
+    expect(links[2].getAttribute('rel')).toBe('noopener noreferrer');
+    expect(links[3].getAttribute('rel')).toBe('noopener noreferrer');
+  });
 });

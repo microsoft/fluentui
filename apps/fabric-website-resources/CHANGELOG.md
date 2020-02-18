@@ -1,7 +1,19 @@
 # Change Log - @uifabric/fabric-website-resources
 
-This log was last generated on Fri, 17 Jan 2020 02:32:17 GMT and should not be manually modified.
+This log was last generated on Wed, 12 Feb 2020 12:24:27 GMT and should not be manually modified.
 
+## 7.6.0
+Wed, 12 Feb 2020 12:24:27 GMT
+
+### Minor changes
+
+- Replacing deprecated StatelessComponent references with FunctionComponent. (Humberto.Morimoto@microsoft.com)
+## 7.5.0
+Tue, 28 Jan 2020 12:43:24 GMT
+
+### Minor changes
+
+- Add dark theme to fabric resources site. (marygans@microsoft.com)
 ## 7.4.6
 Fri, 17 Jan 2020 02:32:17 GMT
 

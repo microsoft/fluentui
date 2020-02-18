@@ -179,10 +179,6 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
     if (prevState.isOpen === true && this.state.isOpen === false) {
       this._gotMouseMove = false;
 
-      if (this._dropDown.current) {
-        this._dropDown.current.focus();
-      }
-
       if (this.props.onDismiss) {
         this.props.onDismiss();
       }
@@ -420,14 +416,20 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
       return selectedIndex;
     }
 
-    // Set starting index to 0 if index is < 0
-    if (index < 0) {
-      index = 0;
-    }
-    // Set starting index to last option index if greater than options.length
+    // If the user is pressing the up or down key we want to make
+    // sure that the dropdown cycles through the options without
+    // causing the screen to scroll. In _onDropdownKeyDown
+    // at the very end is a check to see if newIndex !== selectedIndex.
+    // If the index is less than 0 and we set it back to 0, then
+    // newIndex will equal selectedIndex and not stop the action
+    // of the key press happening and vice versa for indexes greater
+    // than or equal to the options length.
     if (index >= options.length) {
+      index = 0;
+    } else if (index < 0) {
       index = options.length - 1;
     }
+
     let stepCounter = 0;
     // If current index is a header or divider, or disabled, increment by step
     while (
@@ -718,8 +720,10 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
         const selectedIndices = this.state.selectedIndices;
         if (this._focusZone.current) {
           if (selectedIndices && selectedIndices[0] && !this.props.options[selectedIndices[0]].disabled) {
-            const element: HTMLElement = getDocument()!.querySelector(`#${this._id}-list${selectedIndices[0]}`) as HTMLElement;
-            this._focusZone.current.focusElement(element);
+            const element: HTMLElement | null = getDocument()!.getElementById(`${this._id}-list${selectedIndices[0]}`);
+            if (element) {
+              this._focusZone.current.focusElement(element);
+            }
           } else {
             this._focusZone.current.focus();
           }
@@ -814,10 +818,6 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
 
   private _onDismiss = (): void => {
     this.setState({ isOpen: false });
-
-    if (this._dropDown.current) {
-      this._dropDown.current.focus();
-    }
   };
 
   /** Get all selected indexes for multi-select mode */

@@ -2,6 +2,128 @@
   "name": "@uifabric/tsx-editor",
   "entries": [
     {
+      "date": "Mon, 17 Feb 2020 17:06:50 GMT",
+      "tag": "@uifabric/tsx-editor_v0.11.19",
+      "version": "0.11.19",
+      "comments": {
+        "none": [
+          {
+            "comment": "upgrading types for webpack-env",
+            "author": "kchau@microsoft.com",
+            "commit": "7d071a411865930641727e54da85d2d601c5722b"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 12 Feb 2020 12:24:27 GMT",
+      "tag": "@uifabric/tsx-editor_v0.11.18",
+      "version": "0.11.18",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add react-focus support",
+            "author": "elcraig@microsoft.com",
+            "commit": "5e6d8c691d23f7881afe569ec1f19edd56242656"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 11 Feb 2020 18:37:59 GMT",
+      "tag": "@uifabric/tsx-editor_v0.11.17",
+      "version": "0.11.17",
+      "comments": {
+        "none": [
+          {
+            "comment": "update enzyme",
+            "author": "kchau@microsoft.com",
+            "commit": "495983aec20488918f3d1ee87a8af92cb93d208f"
+          },
+          {
+            "comment": "fixing released versions",
+            "author": "kchau@microsoft.com",
+            "commit": "207521eb85f200e2cda239d06eacdf5f49efdadc"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 07 Feb 2020 12:41:31 GMT",
+      "tag": "@uifabric/tsx-editor_v0.11.14",
+      "version": "0.11.14",
+      "comments": {
+        "none": [
+          {
+            "comment": "Remove unused config files",
+            "author": "elcraig@microsoft.com",
+            "commit": "96ccf88b8f44981d21a3903789874a13a2f79b1d"
+          },
+          {
+            "comment": "uniting build across fluent and fabric",
+            "author": "kchau@microsoft.com",
+            "commit": "f9503d808bc0971e843024c9fb679c0ed5a67fbb"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 31 Jan 2020 19:00:10 GMT",
+      "tag": "@uifabric/tsx-editor_v0.11.10",
+      "version": "0.11.10",
+      "comments": {
+        "none": [
+          {
+            "comment": "bumping versions to fix broken publishes",
+            "author": "kchau@microsoft.com",
+            "commit": "1fd6f0a289e8f0f126c9609b8e775ac0ced03b81"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 29 Jan 2020 12:37:18 GMT",
+      "tag": "@uifabric/tsx-editor_v0.11.8",
+      "version": "0.11.8",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix DetailsList export to codepen/live code editing",
+            "author": "xgao@microsoft.com",
+            "commit": "5d1bfca15b9979483e65953ecc872fb809a10875"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 28 Jan 2020 12:43:24 GMT",
+      "tag": "@uifabric/tsx-editor_v0.11.7",
+      "version": "0.11.7",
+      "comments": {
+        "none": [
+          {
+            "comment": "Rename all just configs to TS.",
+            "author": "jagore@microsoft.com",
+            "commit": "373c657b0bf9bf5d8e8433d8df8ccdccaec89e45"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 23 Jan 2020 12:32:26 GMT",
+      "tag": "@uifabric/tsx-editor_v0.11.4",
+      "version": "0.11.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix export to codepen for fabric 7 (#9450)",
+            "author": "xgao@microsoft.com",
+            "commit": "d9e7b876c4f8e9fa506a2f8e03af880e9dfc4d24"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 22 Jan 2020 12:36:43 GMT",
       "tag": "@uifabric/tsx-editor_v0.11.3",
       "version": "0.11.3",

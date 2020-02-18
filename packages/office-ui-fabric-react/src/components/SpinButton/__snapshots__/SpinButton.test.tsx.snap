@@ -83,6 +83,7 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
       className=
           ms-spinButton-input
           {
+            background-color: #ffffff;
             border-radius: 2px 0 0 2px;
             border-style: none;
             box-shadow: none;
@@ -118,6 +119,7 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
             color: HighlightText;
           }
       data-lpignore={true}
+      disabled={false}
       id="input1"
       onBlur={[Function]}
       onChange={[Function]}
@@ -125,7 +127,6 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
       onInput={[Function]}
       onKeyDown={[Function]}
       onKeyUp={[Function]}
-      readOnly={false}
       role="spinbutton"
       type="text"
       value="0"
@@ -515,6 +516,7 @@ exports[`SpinButton renders SpinButton correctly with values that the user passe
       className=
           ms-spinButton-input
           {
+            background-color: #ffffff;
             border-radius: 2px 0 0 2px;
             border-style: none;
             box-shadow: none;
@@ -550,6 +552,7 @@ exports[`SpinButton renders SpinButton correctly with values that the user passe
             color: HighlightText;
           }
       data-lpignore={true}
+      disabled={false}
       id="input1"
       onBlur={[Function]}
       onChange={[Function]}
@@ -557,7 +560,6 @@ exports[`SpinButton renders SpinButton correctly with values that the user passe
       onInput={[Function]}
       onKeyDown={[Function]}
       onKeyUp={[Function]}
-      readOnly={false}
       role="spinbutton"
       type="text"
       value="0"

@@ -71,6 +71,8 @@ jobs:
           artifact: Build-PR-$(Build.BuildNumber)
           buildId: $(Build.BuildId)
 
+      - template: azure-pipelines.tools.yml
+
       - script: |
           yarn test
         displayName: test
@@ -124,7 +126,7 @@ jobs:
   - job: Screener
     dependsOn: Build
     pool:
-      vmImage: 'Ubuntu 16.04'
+      vmImage: 'Ubuntu 18.04'
     steps:
       # No need for checkout since we're using build artifacts.
       - checkout: none
@@ -133,6 +135,8 @@ jobs:
         parameters:
           artifact: Build-PR-$(Build.BuildNumber)
           buildId: $(Build.BuildId)
+
+      - template: azure-pipelines.tools.yml
 
       - script: |
           git config --global user.email "fabrictactical@microsoft.com"
@@ -147,3 +151,35 @@ jobs:
           SourceFolder: $(Build.SourcesDirectory)
           Contents: '**/*'
         condition: always()
+
+  # - job: Danger
+  #   dependsOn: Build
+  #   steps:
+  #     # No need for checkout since we're using build artifacts.
+  #     - checkout: none
+
+  #     - template: azure-pipelines.artifacts.yml
+  #       parameters:
+  #         artifact: Build-PR-$(Build.BuildNumber)
+  #         buildId: $(Build.BuildId)
+
+  #     - template: azure-pipelines.tools.yml
+
+  #     - script: |
+  #         yarn perf:test
+  #       workingDirectory: packages/fluentui/perf-test
+  #       displayName: Perf Test
+
+  #     - script: |
+  #         if [ $BUILD_REASON == "PullRequest" ] && [ ! -z $DANGER_GITHUB_API_TOKEN ]; then
+  #           yarn danger ci
+  #         elif [ $BUILD_REASON != "PullRequest" ]; then
+  #           echo "Skipping Danger JS because BUILD_REASON ${BUILD_REASON} != PullRequest"
+  #         else
+  #           echo "Skipping Danger JS because API token wasn't found"
+  #         fi
+
+  #     - script: |
+  #         yarn danger ci
+  #       env:
+  #         DANGER_GITHUB_API_TOKEN: $(DANGER_GITHUB_API_TOKEN)

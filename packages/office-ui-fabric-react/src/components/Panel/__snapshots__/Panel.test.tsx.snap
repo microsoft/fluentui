@@ -194,10 +194,11 @@ exports[`Panel renders Panel correctly 1`] = `
                       padding-right: 24px;
                     }
               >
-                <p
-                  aria-level={2}
+                <div
+                  aria-level={3}
                   className=
                       ms-Panel-headerText
+                      panel_class
                       {
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
@@ -219,7 +220,7 @@ exports[`Panel renders Panel correctly 1`] = `
                   role="heading"
                 >
                   Test Panel
-                </p>
+                </div>
               </div>
               <button
                 className=

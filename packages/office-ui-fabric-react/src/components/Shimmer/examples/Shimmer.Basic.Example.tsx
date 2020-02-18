@@ -12,7 +12,7 @@ const wrapperClass = mergeStyles({
   }
 });
 
-export const ShimmerBasicExample: React.StatelessComponent = () => {
+export const ShimmerBasicExample: React.FunctionComponent = () => {
   return (
     <Fabric className={wrapperClass}>
       Basic Shimmer with no elements provided. It defaults to a line of 16px height.

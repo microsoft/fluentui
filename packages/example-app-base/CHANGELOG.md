@@ -1,7 +1,19 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Fri, 17 Jan 2020 02:32:17 GMT and should not be manually modified.
+This log was last generated on Wed, 12 Feb 2020 12:24:27 GMT and should not be manually modified.
 
+## 7.12.0
+Wed, 12 Feb 2020 12:24:27 GMT
+
+### Minor changes
+
+- Replacing deprecated StatelessComponent references with FunctionComponent. (Humberto.Morimoto@microsoft.com)
+## 7.11.5
+Thu, 23 Jan 2020 12:32:26 GMT
+
+### Patches
+
+- Fix export to codepen for fabric 7 (#9450) (xgao@microsoft.com)
 ## 7.11.3
 Fri, 17 Jan 2020 02:32:17 GMT
 

@@ -1,7 +1,13 @@
 # Change Log - @uifabric/pr-deploy-site
 
-This log was last generated on Mon, 13 Jan 2020 12:28:56 GMT and should not be manually modified.
+This log was last generated on Tue, 28 Jan 2020 12:43:24 GMT and should not be manually modified.
 
+## 7.0.7
+Tue, 28 Jan 2020 12:43:24 GMT
+
+### Patches
+
+- adding pr-deploy-site for fabric storybook (kchau@microsoft.com)
 ## 7.0.2
 Mon, 13 Jan 2020 12:28:56 GMT
 

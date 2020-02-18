@@ -96,7 +96,7 @@ const ActionButtonStyles: IButtonComponent['styles'] = (props, theme, tokens): I
   };
 };
 
-export const ActionButton: React.StatelessComponent<IButtonProps> = composed({
+export const ActionButton: React.FunctionComponent<IButtonProps> = composed({
   displayName: 'ActionButton',
   slots,
   state,

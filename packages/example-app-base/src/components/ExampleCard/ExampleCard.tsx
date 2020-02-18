@@ -275,7 +275,7 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
   };
 }
 
-export const ExampleCard: React.StatelessComponent<IExampleCardProps> = styled<
+export const ExampleCard: React.FunctionComponent<IExampleCardProps> = styled<
   IExampleCardProps,
   IExampleCardStyleProps,
   IExampleCardStyles

@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fix export to codepen for fabric 7 (#9450)",
-  "packageName": "@uifabric/example-app-base",
-  "email": "xgao@microsoft.com",
-  "commit": "d9e7b876c4f8e9fa506a2f8e03af880e9dfc4d24",
-  "date": "2020-01-23T05:30:09.904Z"
-}
