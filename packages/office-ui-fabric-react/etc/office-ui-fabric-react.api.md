@@ -8805,8 +8805,6 @@ export const SearchBox: React.FunctionComponent<ISearchBoxProps>;
 export class SearchBoxBase extends React.Component<ISearchBoxProps, ISearchBoxState> {
     constructor(props: ISearchBoxProps);
     // (undocumented)
-    componentWillUnmount(): void;
-    // (undocumented)
     static defaultProps: Pick<ISearchBoxProps, 'disableAnimation' | 'clearButtonProps'>;
     focus(): void;
     hasFocus(): boolean;
