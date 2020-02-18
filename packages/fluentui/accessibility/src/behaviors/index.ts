@@ -61,6 +61,7 @@ export { default as accordionTitleBehavior } from './Accordion/accordionTitleBeh
 export { default as accordionContentBehavior } from './Accordion/accordionContentBehavior';
 export { default as checkboxBehavior } from './Checkbox/checkboxBehavior';
 export * from './Checkbox/checkboxBehavior';
+export * from './Tooltip/tooltipAsDescriptionBehavior';
 export { default as tooltipAsDescriptionBehavior } from './Tooltip/tooltipAsDescriptionBehavior';
 export { default as tooltipAsLabelBehavior } from './Tooltip/tooltipAsLabelBehavior';
 export { default as sliderBehavior } from './Slider/sliderBehavior';

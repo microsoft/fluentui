@@ -29,7 +29,7 @@
   "devDependencies": {
     "@types/glob": "^7.1.1",
     "@types/jest": "~24.9.0",
-    "@types/node": "^10.0.0",
+    "@types/node": "^10.3.2",
     "@types/puppeteer": "1.12.3",
     "@types/react": "16.8.11",
     "@types/react-dom": "16.8.4",
