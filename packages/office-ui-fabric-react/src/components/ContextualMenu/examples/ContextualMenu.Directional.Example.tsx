@@ -37,29 +37,21 @@ export const ContextualMenuDirectionalExample: React.FunctionComponent = () => {
   const [directionalHint, setDirectionalHint] = React.useState<DirectionalHint>(DirectionalHint.bottomLeftEdge);
   const [directionalHintForRTL, setDirectionalHintForRTL] = React.useState<DirectionalHint>(DirectionalHint.bottomLeftEdge);
 
-  const onShowBeakChange = useConstCallback(
-    (event: React.FormEvent<HTMLElement>, isVisible: boolean): void => {
-      setIsBeakVisible(isVisible);
-    }
-  );
+  const onShowBeakChange = useConstCallback((event: React.FormEvent<HTMLElement>, isVisible: boolean): void => {
+    setIsBeakVisible(isVisible);
+  });
 
-  const onUseRtlHintChange = useConstCallback(
-    (event: React.FormEvent<HTMLElement>, isVisible: boolean): void => {
-      setUseDirectionalHintForRTL(isVisible);
-    }
-  );
+  const onUseRtlHintChange = useConstCallback((event: React.FormEvent<HTMLElement>, isVisible: boolean): void => {
+    setUseDirectionalHintForRTL(isVisible);
+  });
 
-  const onDirectionalChanged = useConstCallback(
-    (event: React.FormEvent<HTMLDivElement>, option: IDropdownOption): void => {
-      setDirectionalHint(option.key as DirectionalHint);
-    }
-  );
+  const onDirectionalChanged = useConstCallback((event: React.FormEvent<HTMLDivElement>, option: IDropdownOption): void => {
+    setDirectionalHint(option.key as DirectionalHint);
+  });
 
-  const onDirectionalRtlChanged = useConstCallback(
-    (event: React.FormEvent<HTMLDivElement>, option: IDropdownOption): void => {
-      setDirectionalHintForRTL(option.key as DirectionalHint);
-    }
-  );
+  const onDirectionalRtlChanged = useConstCallback((event: React.FormEvent<HTMLDivElement>, option: IDropdownOption): void => {
+    setDirectionalHintForRTL(option.key as DirectionalHint);
+  });
 
   const menuProps: IContextualMenuProps = React.useMemo(
     () => ({

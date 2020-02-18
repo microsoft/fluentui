@@ -1,7 +1,19 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Fri, 17 Jan 2020 02:32:17 GMT and should not be manually modified.
+This log was last generated on Mon, 17 Feb 2020 17:06:50 GMT and should not be manually modified.
 
+## 7.12.1
+Mon, 17 Feb 2020 17:06:50 GMT
+
+### Patches
+
+- Utilities: forcing a publish, as the NPM outage last week did not seem to publish 7.12.1 of utilities. (dzearing@hotmail.com)
+## 7.12.0
+Wed, 12 Feb 2020 12:24:27 GMT
+
+### Minor changes
+
+- Replacing deprecated StatelessComponent references with FunctionComponent. (Humberto.Morimoto@microsoft.com)
 ## 7.11.2
 Fri, 17 Jan 2020 02:32:17 GMT
 

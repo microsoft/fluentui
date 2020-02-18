@@ -1,7 +1,19 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Tue, 28 Jan 2020 12:43:24 GMT and should not be manually modified.
+This log was last generated on Wed, 12 Feb 2020 12:24:27 GMT and should not be manually modified.
 
+## 7.9.0
+Wed, 12 Feb 2020 12:24:27 GMT
+
+### Minor changes
+
+- Replacing deprecated StatelessComponent references with FunctionComponent. (Humberto.Morimoto@microsoft.com)
+## 7.8.6
+Thu, 06 Feb 2020 12:37:34 GMT
+
+### Patches
+
+- Website: Fixing Card API reference tables not appearing on the component docs page. (Humberto.Morimoto@microsoft.com)
 ## 7.8.0
 Tue, 28 Jan 2020 12:43:24 GMT
 

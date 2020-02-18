@@ -3,7 +3,7 @@ import { Spinner, SpinnerSize } from 'office-ui-fabric-react/lib/Spinner';
 import { Label } from 'office-ui-fabric-react/lib/Label';
 import { IStackProps, Stack } from 'office-ui-fabric-react/lib/Stack';
 
-export const SpinnerBasicExample: React.StatelessComponent = () => {
+export const SpinnerBasicExample: React.FunctionComponent = () => {
   // This is just for laying out the label and spinner (spinners don't have to be inside a Stack)
   const rowProps: IStackProps = { horizontal: true, verticalAlign: 'center' };
 

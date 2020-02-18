@@ -5125,7 +5125,10 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                         role="presentation"
                       >
                         <div
+                          aria-expanded={true}
                           aria-label="Group 0"
+                          aria-posinset={1}
+                          aria-setsize={2}
                           className=
                               ms-GroupHeader
                               {
@@ -5738,7 +5741,10 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                         role="presentation"
                       >
                         <div
+                          aria-expanded={true}
                           aria-label="Group 1"
+                          aria-posinset={2}
+                          aria-setsize={2}
                           className=
                               ms-GroupHeader
                               {

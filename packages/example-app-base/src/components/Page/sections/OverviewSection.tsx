@@ -5,7 +5,7 @@ import { Markdown } from '../../Markdown/index';
 import { IPageSectionPropsWithSectionName } from '../Page.types';
 import * as styles from '../Page.module.scss';
 
-export const OverviewSection: React.StatelessComponent<IPageSectionPropsWithSectionName> = props => {
+export const OverviewSection: React.FunctionComponent<IPageSectionPropsWithSectionName> = props => {
   const {
     className,
     content: overview,

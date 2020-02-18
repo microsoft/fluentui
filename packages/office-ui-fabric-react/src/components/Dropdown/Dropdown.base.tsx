@@ -179,10 +179,6 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
     if (prevState.isOpen === true && this.state.isOpen === false) {
       this._gotMouseMove = false;
 
-      if (this._dropDown.current) {
-        this._dropDown.current.focus();
-      }
-
       if (this.props.onDismiss) {
         this.props.onDismiss();
       }
@@ -724,8 +720,10 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
         const selectedIndices = this.state.selectedIndices;
         if (this._focusZone.current) {
           if (selectedIndices && selectedIndices[0] && !this.props.options[selectedIndices[0]].disabled) {
-            const element: HTMLElement = getDocument()!.querySelector(`#${this._id}-list${selectedIndices[0]}`) as HTMLElement;
-            this._focusZone.current.focusElement(element);
+            const element: HTMLElement | null = getDocument()!.getElementById(`${this._id}-list${selectedIndices[0]}`);
+            if (element) {
+              this._focusZone.current.focusElement(element);
+            }
           } else {
             this._focusZone.current.focus();
           }
@@ -820,10 +818,6 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
 
   private _onDismiss = (): void => {
     this.setState({ isOpen: false });
-
-    if (this._dropDown.current) {
-      this._dropDown.current.focus();
-    }
   };
 
   /** Get all selected indexes for multi-select mode */

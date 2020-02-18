@@ -63,7 +63,7 @@ export function withResponsiveMode<TProps extends { responsiveMode?: ResponsiveM
       const { responsiveMode } = this.state;
 
       return responsiveMode === ResponsiveMode.unknown ? null : (
-        <ComposedComponent ref={this._updateComposedComponentRef} responsiveMode={responsiveMode} {...this.props as any} />
+        <ComposedComponent ref={this._updateComposedComponentRef} responsiveMode={responsiveMode} {...(this.props as any)} />
       );
     }
 

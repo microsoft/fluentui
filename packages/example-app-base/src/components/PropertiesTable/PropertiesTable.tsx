@@ -188,7 +188,7 @@ class PropertiesTableBase extends React.PureComponent<IPropertiesTableProps> {
   }
 }
 
-export const PropertiesTable: React.StatelessComponent<IPropertiesTableProps> = styled<
+export const PropertiesTable: React.FunctionComponent<IPropertiesTableProps> = styled<
   IPropertiesTableProps,
   IPropertiesTableSetStyleProps,
   IPropertiesTableSetStyles

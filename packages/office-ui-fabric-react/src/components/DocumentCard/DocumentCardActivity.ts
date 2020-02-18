@@ -4,7 +4,7 @@ import { DocumentCardActivityBase } from './DocumentCardActivity.base';
 import { getStyles } from './DocumentCardActivity.styles';
 import { IDocumentCardActivityProps, IDocumentCardActivityStyleProps, IDocumentCardActivityStyles } from './DocumentCardActivity.types';
 
-export const DocumentCardActivity: React.StatelessComponent<IDocumentCardActivityProps> = styled<
+export const DocumentCardActivity: React.FunctionComponent<IDocumentCardActivityProps> = styled<
   IDocumentCardActivityProps,
   IDocumentCardActivityStyleProps,
   IDocumentCardActivityStyles

@@ -3,7 +3,7 @@ import { Dropdown, IDropdown } from 'office-ui-fabric-react/lib/Dropdown';
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 import { IStackTokens, Stack } from 'office-ui-fabric-react/lib/Stack';
 
-export const DropdownRequiredExample: React.StatelessComponent = () => {
+export const DropdownRequiredExample: React.FunctionComponent = () => {
   const dropdownRef = React.createRef<IDropdown>();
   const onSetFocus = () => dropdownRef.current!.focus(true);
 

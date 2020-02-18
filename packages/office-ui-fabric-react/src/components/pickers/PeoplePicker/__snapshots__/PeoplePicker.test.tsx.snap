@@ -78,6 +78,9 @@ exports[`PeoplePicker renders correctly 1`] = `
                 padding-right: 6px;
                 padding-top: 0;
               }
+              &::-ms-clear {
+                display: none;
+              }
           data-lpignore={true}
           onBlur={[Function]}
           onChange={[Function]}
@@ -640,6 +643,9 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
                 padding-left: 6px;
                 padding-right: 6px;
                 padding-top: 0;
+              }
+              &::-ms-clear {
+                display: none;
               }
           data-lpignore={true}
           onBlur={[Function]}

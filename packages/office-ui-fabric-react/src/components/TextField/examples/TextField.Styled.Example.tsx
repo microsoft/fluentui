@@ -5,7 +5,7 @@ import { Text } from 'office-ui-fabric-react/lib/Text';
 import { Stack } from 'office-ui-fabric-react/lib/Stack';
 import './TextField.Styled.Example.scss';
 
-export const TextFieldStyledExample: React.StatelessComponent = () => {
+export const TextFieldStyledExample: React.FunctionComponent = () => {
   return (
     <Stack tokens={{ childrenGap: 15 }}>
       <Text styles={{ root: { maxWidth: 600 } }}>

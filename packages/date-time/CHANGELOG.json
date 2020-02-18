@@ -2,6 +2,96 @@
   "name": "@uifabric/date-time",
   "entries": [
     {
+      "date": "Mon, 17 Feb 2020 17:06:50 GMT",
+      "tag": "@uifabric/date-time_v7.8.23",
+      "version": "7.8.23",
+      "comments": {
+        "none": [
+          {
+            "comment": "upgrading types for webpack-env",
+            "author": "kchau@microsoft.com",
+            "commit": "7d071a411865930641727e54da85d2d601c5722b"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 11 Feb 2020 18:37:59 GMT",
+      "tag": "@uifabric/date-time_v7.8.20",
+      "version": "7.8.20",
+      "comments": {
+        "none": [
+          {
+            "comment": "update enzyme",
+            "author": "kchau@microsoft.com",
+            "commit": "495983aec20488918f3d1ee87a8af92cb93d208f"
+          },
+          {
+            "comment": "fixing released versions",
+            "author": "kchau@microsoft.com",
+            "commit": "207521eb85f200e2cda239d06eacdf5f49efdadc"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 07 Feb 2020 12:41:31 GMT",
+      "tag": "@uifabric/date-time_v7.8.17",
+      "version": "7.8.17",
+      "comments": {
+        "none": [
+          {
+            "comment": "Remove unused config files",
+            "author": "elcraig@microsoft.com",
+            "commit": "96ccf88b8f44981d21a3903789874a13a2f79b1d"
+          },
+          {
+            "comment": "moved storybook config",
+            "author": "kchau@microsoft.com",
+            "commit": "5612f0eff3ea9ce3f6d367979b208f3c2489d330"
+          },
+          {
+            "comment": "uniting build across fluent and fabric",
+            "author": "kchau@microsoft.com",
+            "commit": "f9503d808bc0971e843024c9fb679c0ed5a67fbb"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 03 Feb 2020 20:04:10 GMT",
+      "tag": "@uifabric/date-time_v7.8.14",
+      "version": "7.8.14",
+      "comments": {
+        "none": [
+          {
+            "comment": "DateTime: fix broken test",
+            "author": "joschect@microsoft.com",
+            "commit": "65e124a96e3d37e81a0a9cadf5ad36ec36a2df60"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 31 Jan 2020 19:00:10 GMT",
+      "tag": "@uifabric/date-time_v7.8.13",
+      "version": "7.8.13",
+      "comments": {
+        "none": [
+          {
+            "comment": "Fix prettier error after upgrade prettier to 1.19.1",
+            "author": "xgao@microsoft.com",
+            "commit": "2242effd3e5226f313ef16f9c18ed3db87d548c4"
+          },
+          {
+            "comment": "bumping versions to fix broken publishes",
+            "author": "kchau@microsoft.com",
+            "commit": "1fd6f0a289e8f0f126c9609b8e775ac0ced03b81"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 28 Jan 2020 12:43:24 GMT",
       "tag": "@uifabric/date-time_v7.8.10",
       "version": "7.8.10",

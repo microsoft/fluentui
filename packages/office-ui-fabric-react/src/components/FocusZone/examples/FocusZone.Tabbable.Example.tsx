@@ -4,7 +4,7 @@ import { FocusZone, FocusZoneDirection, FocusZoneTabbableElements } from 'office
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import { Stack } from 'office-ui-fabric-react/lib/Stack';
 
-export const FocusZoneTabbableExample: React.StatelessComponent = () => {
+export const FocusZoneTabbableExample: React.FunctionComponent = () => {
   const tokens = { childrenGap: 20 };
   return (
     <Stack tokens={tokens} horizontalAlign="start">

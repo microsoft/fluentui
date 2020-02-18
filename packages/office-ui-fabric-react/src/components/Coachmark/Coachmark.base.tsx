@@ -323,48 +323,46 @@ export class CoachmarkBase extends BaseComponent<ICoachmarkProps, ICoachmarkStat
   }
 
   public componentDidMount(): void {
-    this._async.requestAnimationFrame(
-      (): void => {
-        if (this._entityInnerHostElement.current && this.state.entityInnerHostRect.width + this.state.entityInnerHostRect.width === 0) {
-          this.setState({
-            isMeasuring: false,
-            entityInnerHostRect: {
-              width: this._entityInnerHostElement.current.offsetWidth,
-              height: this._entityInnerHostElement.current.offsetHeight
-            },
-            isMeasured: true
-          });
-          this._setBeakPosition();
-          this.forceUpdate();
-        }
-
-        this._addListeners();
-
-        // We don't want to the user to immediately trigger the Coachmark when it's opened
-        this._async.setTimeout(() => {
-          this._addProximityHandler(this.props.mouseProximityOffset);
-        }, this.props.delayBeforeMouseOpen!);
-
-        // Need to add setTimeout to have narrator read change in alert container
-        if (this.props.ariaAlertText) {
-          this._async.setTimeout(() => {
-            if (this.props.ariaAlertText && this._ariaAlertContainer.current) {
-              this.setState({
-                alertText: this.props.ariaAlertText
-              });
-            }
-          }, 0);
-        }
-
-        if (!this.props.preventFocusOnMount) {
-          this._async.setTimeout(() => {
-            if (this._entityHost.current) {
-              this._entityHost.current.focus();
-            }
-          }, 1000);
-        }
+    this._async.requestAnimationFrame((): void => {
+      if (this._entityInnerHostElement.current && this.state.entityInnerHostRect.width + this.state.entityInnerHostRect.width === 0) {
+        this.setState({
+          isMeasuring: false,
+          entityInnerHostRect: {
+            width: this._entityInnerHostElement.current.offsetWidth,
+            height: this._entityInnerHostElement.current.offsetHeight
+          },
+          isMeasured: true
+        });
+        this._setBeakPosition();
+        this.forceUpdate();
       }
-    );
+
+      this._addListeners();
+
+      // We don't want to the user to immediately trigger the Coachmark when it's opened
+      this._async.setTimeout(() => {
+        this._addProximityHandler(this.props.mouseProximityOffset);
+      }, this.props.delayBeforeMouseOpen!);
+
+      // Need to add setTimeout to have narrator read change in alert container
+      if (this.props.ariaAlertText) {
+        this._async.setTimeout(() => {
+          if (this.props.ariaAlertText && this._ariaAlertContainer.current) {
+            this.setState({
+              alertText: this.props.ariaAlertText
+            });
+          }
+        }, 0);
+      }
+
+      if (!this.props.preventFocusOnMount) {
+        this._async.setTimeout(() => {
+          if (this._entityHost.current) {
+            this._entityHost.current.focus();
+          }
+        }, 1000);
+      }
+    });
   }
 
   public dismiss = (ev?: Event | React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>): void => {
@@ -421,14 +419,12 @@ export class CoachmarkBase extends BaseComponent<ICoachmarkProps, ICoachmarkStat
   };
 
   private _onPositioned = (positionData: IPositionedData): void => {
-    this._async.requestAnimationFrame(
-      (): void => {
-        this.setState({
-          targetAlignment: positionData.alignmentEdge,
-          targetPosition: positionData.targetEdge
-        });
-      }
-    );
+    this._async.requestAnimationFrame((): void => {
+      this.setState({
+        targetAlignment: positionData.alignmentEdge,
+        targetPosition: positionData.targetEdge
+      });
+    });
   };
 
   private _getBounds(): IRectangle | undefined {
@@ -559,21 +555,18 @@ export class CoachmarkBase extends BaseComponent<ICoachmarkProps, ICoachmarkStat
     }
 
     this._entityInnerHostElement.current &&
-      this._entityInnerHostElement.current.addEventListener(
-        'transitionend',
-        (): void => {
-          // Need setTimeout to trigger narrator
-          this._async.setTimeout(() => {
-            if (this._entityInnerHostElement.current) {
-              focusFirstChild(this._entityInnerHostElement.current);
-            }
-          }, 1000);
-
-          if (this.props.onAnimationOpenEnd) {
-            this.props.onAnimationOpenEnd();
+      this._entityInnerHostElement.current.addEventListener('transitionend', (): void => {
+        // Need setTimeout to trigger narrator
+        this._async.setTimeout(() => {
+          if (this._entityInnerHostElement.current) {
+            focusFirstChild(this._entityInnerHostElement.current);
           }
+        }, 1000);
+
+        if (this.props.onAnimationOpenEnd) {
+          this.props.onAnimationOpenEnd();
         }
-      );
+      });
   };
 
   private _addProximityHandler(mouseProximityOffset: number = 0): void {
@@ -593,23 +586,17 @@ export class CoachmarkBase extends BaseComponent<ICoachmarkProps, ICoachmarkStat
       // Every time the event is triggered we want to
       // setTimeout and then clear any previous instances
       // of setTimeout.
-      this._events.on(
-        window,
-        'resize',
-        (): void => {
-          timeoutIds.forEach(
-            (value: number): void => {
-              clearInterval(value);
-            }
-          );
+      this._events.on(window, 'resize', (): void => {
+        timeoutIds.forEach((value: number): void => {
+          clearInterval(value);
+        });
 
-          timeoutIds.push(
-            this._async.setTimeout((): void => {
-              this._setTargetElementRect();
-            }, 100)
-          );
-        }
-      );
+        timeoutIds.push(
+          this._async.setTimeout((): void => {
+            this._setTargetElementRect();
+          }, 100)
+        );
+      });
     }, 10);
 
     // Every time the document's mouse move is triggered

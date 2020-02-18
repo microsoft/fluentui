@@ -121,7 +121,11 @@ export class DialogBase extends React.Component<IDialogProps, {}> {
     const dialogContentProps: IDialogContentProps = {
       ...DefaultDialogContentProps,
       ...this.props.dialogContentProps,
-      draggableHeaderClassName: dialogDraggableClassName
+      draggableHeaderClassName: dialogDraggableClassName,
+      titleProps: {
+        id: this.props.dialogContentProps?.titleId || this._defaultTitleTextId,
+        ...this.props.dialogContentProps?.titleProps
+      }
     };
 
     const classNames = getClassNames(styles!, {
@@ -155,7 +159,6 @@ export class DialogBase extends React.Component<IDialogProps, {}> {
         <DialogContent
           subTextId={this._defaultSubTextId}
           title={title}
-          titleProps={{ id: this._defaultTitleTextId }}
           subText={subText}
           showCloseButton={isBlocking !== undefined ? !isBlocking : !mergedModalProps.isBlocking}
           topButtonsProps={topButtonsProps ? topButtonsProps : dialogContentProps!.topButtonsProps}
