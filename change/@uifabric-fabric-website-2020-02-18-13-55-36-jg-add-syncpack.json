@@ -1,0 +1,9 @@
+{
+  "type": "none",
+  "comment": "Add syncpack and synchronize dependencies. Refresh fluent import.",
+  "packageName": "@uifabric/fabric-website",
+  "email": "jagore@microsoft.com",
+  "commit": "fb51dde1a365f7aad0cffbe23f01254ba1f31ebf",
+  "dependentChangeType": "patch",
+  "date": "2020-02-18T12:50:17.072Z"
+}
