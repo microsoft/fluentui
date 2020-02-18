@@ -3,6 +3,7 @@
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
+
 - [Propose feature](#propose-feature)
 - [Prototype](#prototype)
 - [Spec out the API](#spec-out-the-api)
@@ -61,13 +62,13 @@ Stateless components should be written as an arrow `function`:
 ```tsx
 const Button: React.FunctionalComponent = props => {
   // ...
-};
+}
 ```
 
 Stateful components should be classes:
 
 ```tsx
-import { AutoControlledComponent as Component } from '../../utils';
+import { AutoControlledComponent as Component } from '../../utils'
 
 class Dropdown extends AutoControlledComponent {
   // ...
@@ -139,8 +140,8 @@ Strive to use stateless functional components when possible:
 export interface MyComponentProps {}
 
 const MyComponent: React.FunctionalComponent<MyComponentProps> = props => {
-  return <div {...props} />;
-};
+  return <div {...props} />
+}
 ```
 
 If you're component requires event handlers, it is a stateful class component. Want to know [why][8]?
@@ -150,11 +151,11 @@ export interface MyComponentProps {}
 
 class MyComponent extends AutoControlledComponent<MyComponentProps> {
   handleClick = e => {
-    console.log('Clicked my component!');
-  };
+    console.log('Clicked my component!')
+  }
 
   render() {
-    return <div onClick={this.handleClick} />;
+    return <div onClick={this.handleClick} />
   }
 }
 ```

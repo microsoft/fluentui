@@ -37,7 +37,7 @@ interface ISignalExampleProps {
   text?: string;
 }
 
-const SignalExample: React.StatelessComponent<ISignalExampleProps> = (props: ISignalExampleProps): JSX.Element => {
+const SignalExample: React.FunctionComponent<ISignalExampleProps> = (props: ISignalExampleProps): JSX.Element => {
   const { text = lorem(4) } = props;
 
   return (

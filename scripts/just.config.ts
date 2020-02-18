@@ -23,6 +23,7 @@ const { postprocessTask } = require('./tasks/postprocess');
 const { postprocessAmdTask } = require('./tasks/postprocess-amd');
 const { postprocessCommonjsTask } = require('./tasks/postprocess-commonjs');
 const { startStorybookTask, buildStorybookTask } = require('./tasks/storybookTask');
+const { fluentuiPrepublish, fluentuiLernaPublish, fluentuiPostpublish } = require('./tasks/fluentui-publish');
 
 /** Do only the bare minimum setup of options and resolve paths */
 function basicPreset() {
@@ -37,6 +38,10 @@ function basicPreset() {
   option('commonjs');
 
   option('cached', { default: false });
+
+  option('registry', { default: 'https://registry.npmjs.org' });
+
+  option('push', { default: true });
 }
 
 module.exports = function preset() {
@@ -67,6 +72,11 @@ module.exports = function preset() {
   task('generate-package-manifest', generatePackageManifestTask);
   task('storybook:start', startStorybookTask());
   task('storybook:build', buildStorybookTask());
+  task('fluentui:prepublish', fluentuiPrepublish);
+  task('fluentui:postpublish', fluentuiPostpublish);
+
+  task('fluentui:publish:patch', series('fluentui:prepublish', fluentuiLernaPublish('patch'), 'fluentui:postpublish'));
+  task('fluentui:publish:minor', series('fluentui:prepublish', fluentuiLernaPublish('minor'), 'fluentui:postpublish'));
 
   task('ts:compile', () => {
     return argv().commonjs

@@ -1,0 +1,33 @@
+{
+  "name": "@fluentui/ability-attributes",
+  "description": "Accessibility attributes schema for Fluent UI",
+  "version": "0.44.0",
+  "author": "Marat Abdullin <marata@microsoft.com>",
+  "bugs": "https://github.com/microsoft/fluent-ui-react/issues",
+  "dependencies": {
+    "ability-attributes": "^0.0.8"
+  },
+  "devDependencies": {
+    "ability-attributes-generator": "^0.0.8"
+  },
+  "files": [
+    "dist"
+  ],
+  "homepage": "https://github.com/microsoft/fluent-ui-react/tree/master/packages/ability-attributes",
+  "jsnext:main": "dist/es/index.js",
+  "license": "MIT",
+  "main": "dist/commonjs/index.js",
+  "module": "dist/es/index.js",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": "microsoft/fluent-ui-react.git",
+  "scripts": {
+    "build": "npm run schema && gulp bundle:package:no-umd",
+    "clean": "gulp bundle:package:clean",
+    "schema": "allyschema -c \"process.env.NODE_ENV !== 'production'\" schema.json > ./src/schema.ts"
+  },
+  "sideEffects": false,
+  "types": "dist/es/index.d.ts",
+  "private": true
+}

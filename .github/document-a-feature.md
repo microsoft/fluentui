@@ -1,7 +1,9 @@
-# Document a feature
+Document a feature
+==================
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
 
 - [Website](#website)
 - [Components](#components)
@@ -32,7 +34,7 @@ A doc block should appear above a component class or function to describe it:
  * @see Dropdown
  */
 function Select(props) {
-  return <Dropdown {...props} selection />;
+  return <Dropdown {...props} selection />
 }
 ```
 
@@ -40,7 +42,7 @@ function Select(props) {
 
 A doc block should appear above each prop in `propTypes` to describe them:
 
-> Limited props shown for brevity.
+>Limited props shown for brevity.
 
 ```tsx
 Label.propTypes = {
@@ -60,11 +62,17 @@ Label.propTypes = {
   color: PropTypes.oneOf(Label._meta.props.color),
 
   /** Place the label in one of the upper corners . */
-  corner: PropTypes.oneOfType([PropTypes.bool, PropTypes.oneOf(Label._meta.props.corner)]),
+  corner: PropTypes.oneOfType([
+    PropTypes.bool,
+    PropTypes.oneOf(Label._meta.props.corner),
+  ]),
 
   /** Add an icon by icon className or pass an <Icon /> */
-  icon: PropTypes.oneOfType([PropTypes.string, PropTypes.element])
-};
+  icon: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.element,
+  ]),
+}
 ```
 
 ## Examples

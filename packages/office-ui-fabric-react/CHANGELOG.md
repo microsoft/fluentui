@@ -1,7 +1,36 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 10 Feb 2020 12:39:35 GMT and should not be manually modified.
+This log was last generated on Mon, 17 Feb 2020 17:06:50 GMT and should not be manually modified.
 
+## 7.93.1
+Mon, 17 Feb 2020 17:06:50 GMT
+
+### Patches
+
+- List: clearing scrollElement on unmount to avoid retaining an edge to a dom element and leaking. (dzearing@microsoft.com)
+- Fix: Uncaught SyntaxError: Failed to execute 'querySelector' on 'Document'. (email not defined)
+- ShimmeredDetailsList: add aria-busy=true when shimmer is enabled (xgao@microsoft.com)
+## 7.93.0
+Wed, 12 Feb 2020 12:24:27 GMT
+
+### Minor changes
+
+- Re-export react-focus's FocusZone from OUFR (elcraig@microsoft.com)
+- Replacing deprecated StatelessComponent references with FunctionComponent. (Humberto.Morimoto@microsoft.com)
+- ContextualMenu: change role of category options to menuitemcheckbox (aneeshak@microsoft.com)
+### Patches
+
+- TextField example: fix onChange typing error when strictFunctionType is true (xgao@microsoft.com)
+## 7.92.0
+Tue, 11 Feb 2020 18:37:59 GMT
+
+### Minor changes
+
+- TagItem accepts title and defaults either children or item name (#11845) (yann.normand@gmail.com)
+### Patches
+
+- Tooltip: allow scrolling tooltip content (xgao@microsoft.com)
+- Dropdown: fix SubComponentStyles interfaces (xgao@microsoft.com)
 ## 7.90.1
 Mon, 10 Feb 2020 12:39:35 GMT
 

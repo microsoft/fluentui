@@ -115,7 +115,7 @@ const webpackConfig: webpack.Configuration = {
     alias: {
       ...lernaAliases(),
       src: paths.packageSrc('react'),
-      docs: paths.base('docs')
+      docs: paths.docs()
     }
   },
   optimization: {

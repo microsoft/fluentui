@@ -7,7 +7,7 @@ import { getSubTitle } from '../../../utilities/index';
 import { ControlsPageProps } from './ControlsPage.doc';
 import { Platforms } from '../../../interfaces/Platforms';
 
-const ControlsPageBase: React.StatelessComponent<IPageProps<Platforms>> = props => {
+const ControlsPageBase: React.FunctionComponent<IPageProps<Platforms>> = props => {
   const { platform } = props;
   return (
     <Page
@@ -70,6 +70,6 @@ function _otherControlsRequestSections(platform: Platforms): IPageSectionProps<P
   }
 }
 
-export const ControlsPage: React.StatelessComponent<IPageProps<Platforms>> = (props: IPageProps<Platforms>) => (
+export const ControlsPage: React.FunctionComponent<IPageProps<Platforms>> = (props: IPageProps<Platforms>) => (
   <PlatformContext.Consumer>{(platform: Platforms) => <ControlsPageBase platform={platform} {...props} />}</PlatformContext.Consumer>
 );

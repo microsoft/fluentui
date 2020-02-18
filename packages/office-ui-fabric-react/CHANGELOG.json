@@ -2,6 +2,113 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Mon, 17 Feb 2020 17:06:50 GMT",
+      "tag": "office-ui-fabric-react_v7.93.1",
+      "version": "7.93.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "List: clearing scrollElement on unmount to avoid retaining an edge to a dom element and leaking.",
+            "author": "dzearing@microsoft.com",
+            "commit": "8a1f887f42f85fcbdbea98970b8751411b79954a"
+          },
+          {
+            "comment": "Fix: Uncaught SyntaxError: Failed to execute 'querySelector' on 'Document'.",
+            "author": "email not defined",
+            "commit": "be43d86222ecf04fbe747b604941eac9da048195"
+          },
+          {
+            "comment": "ShimmeredDetailsList: add aria-busy=true when shimmer is enabled",
+            "author": "xgao@microsoft.com",
+            "commit": "3be35a40104099e1b7a35a2dde5d96b9069365cd"
+          }
+        ],
+        "none": [
+          {
+            "comment": "upgrading types for webpack-env",
+            "author": "kchau@microsoft.com",
+            "commit": "7d071a411865930641727e54da85d2d601c5722b"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 12 Feb 2020 12:24:27 GMT",
+      "tag": "office-ui-fabric-react_v7.93.0",
+      "version": "7.93.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Re-export react-focus's FocusZone from OUFR",
+            "author": "elcraig@microsoft.com",
+            "commit": "4f2d8efea3622ba8c9d844c68e5ed5088b858f6f"
+          },
+          {
+            "comment": "Replacing deprecated StatelessComponent references with FunctionComponent.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "a2d743b178cecab012e4a7335c7e518d0c9b26c7"
+          },
+          {
+            "comment": "ContextualMenu: change role of category options to menuitemcheckbox",
+            "author": "aneeshak@microsoft.com",
+            "commit": "7b3f82f7ee65ffdec8a34bed75932904f0e690d0"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Disable List test causing intermittent test failures.",
+            "author": "jagore@microsoft.com",
+            "commit": "079a40a86a1562d1fa558957cee86997e97bea8a"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "TextField example: fix onChange typing error when strictFunctionType is true",
+            "author": "xgao@microsoft.com",
+            "commit": "3602dd11de72d6b10d60bc5eeb624175d8cec8eb"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 11 Feb 2020 18:37:59 GMT",
+      "tag": "office-ui-fabric-react_v7.92.0",
+      "version": "7.92.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "TagItem accepts title and defaults either children or item name (#11845)",
+            "author": "yann.normand@gmail.com",
+            "commit": "f52414de3b9e691f456b0276a81039ed641fd561"
+          }
+        ],
+        "none": [
+          {
+            "comment": "update enzyme",
+            "author": "kchau@microsoft.com",
+            "commit": "495983aec20488918f3d1ee87a8af92cb93d208f"
+          },
+          {
+            "comment": "fixing released versions",
+            "author": "kchau@microsoft.com",
+            "commit": "207521eb85f200e2cda239d06eacdf5f49efdadc"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Tooltip: allow scrolling tooltip content",
+            "author": "xgao@microsoft.com",
+            "commit": "75d729ac4e0e00ad8b52f27b3da05f03cd6ed24b"
+          },
+          {
+            "comment": "Dropdown: fix SubComponentStyles interfaces",
+            "author": "xgao@microsoft.com",
+            "commit": "bd136863b3efb04911cd1214f87848ca1ae219d9"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 10 Feb 2020 12:39:35 GMT",
       "tag": "office-ui-fabric-react_v7.90.1",
       "version": "7.90.1",

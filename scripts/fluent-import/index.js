@@ -64,7 +64,10 @@ function importGithubMD(root) {
 }
 
 function rewriteImports(outputPath) {
-  const files = glob.sync('**/*.+(js|ts|json)', { cwd: outputPath });
+  let files = glob.sync('**/*.+(js|ts|tsx|json)', { cwd: outputPath });
+
+  // Include finely scoped hidden files.
+  files = files.concat(glob.sync('**/.digest/*.+(js|ts|tsx|json)', { cwd: outputPath }));
 
   for (let file of files) {
     const fullPath = path.join(outputPath, file);
@@ -72,6 +75,10 @@ function rewriteImports(outputPath) {
     if (content.includes('@fluentui/internal-tooling')) {
       console.log(`patching up ${fullPath}`);
       fs.writeFileSync(fullPath, content.replace('@fluentui/internal-tooling', '@uifabric/build'));
+    }
+    if (content.includes('../../../docs/')) {
+      console.log(`patching up ${fullPath}`);
+      fs.writeFileSync(fullPath, content.replace('../../../docs/', '../../docs/'));
     }
   }
 }
@@ -109,7 +116,7 @@ function fixTsConfigs(outputPath) {
   const files = glob.sync('**/tsconfig.json', { cwd: outputPath });
 
   const mapping = {
-    '@fluentui/*': ['packages/fluentui/*/src'],
+    '@fluentui/*': ['packages/fluentui/*/src/index'],
     'docs/*': ['packages/fluentui/docs/*'],
     'src/*': ['packages/fluentui/react/src/*'],
     'test/*': ['packages/fluentui/react/test/*']
@@ -130,10 +137,23 @@ function fixTsConfigs(outputPath) {
 
     // TODO (fui repo merge): we need to unify behind a single set of tsconfig (as it is, we will have 3)
     if (tsconfig.extends) {
-      if (tsconfig.extends.includes('../../build')) {
-        tsconfig.extends = '@uifabric/build/typescript/tsconfig.fluentui';
+      if (tsconfig.extends.includes('../build')) {
+        // TODO (fui repo merge): we need to switch to using @uifabric/build for this later
+        tsconfig.extends = '../../../scripts/typescript/tsconfig.fluentui';
       } else {
         tsconfig.extends = '@uifabric/build/typescript/tsconfig.common';
+      }
+    }
+
+    if (tsconfig.compilerOptions && tsconfig.compilerOptions.typeRoots) {
+      let typesIndex = tsconfig.compilerOptions.typeRoots.indexOf('../types');
+      if (typesIndex > -1) {
+        tsconfig.compilerOptions.typeRoots[typesIndex] = '../../../typings';
+      }
+
+      typesIndex = tsconfig.compilerOptions.typeRoots.indexOf('../node_modules/@types');
+      if (typesIndex > -1) {
+        tsconfig.compilerOptions.typeRoots[typesIndex] = '../../../node_modules/@types';
       }
     }
 
@@ -175,6 +195,14 @@ function fixEslint(outputPath) {
     content.extends = ['../../../scripts/eslint/index'];
     fs.writeJSONSync(fullPath, content, { spaces: 2 });
   }
+
+  const eslintPkgJsonFile = path.join(outputPath, 'eslint-plugin/package.json');
+  let eslintPkgJson = fs.readJsonSync(eslintPkgJsonFile);
+  eslintPkgJson.dependencies = {
+    '@typescript-eslint/eslint-plugin': '2.8.0',
+    '@typescript-eslint/experimental-utils': '2.8.0'
+  };
+  fs.writeJsonSync(eslintPkgJsonFile, eslintPkgJson, { spaces: 2 });
 }
 
 function fixScriptsPackageName(outputPath) {
@@ -240,13 +268,117 @@ function fixKeyboardKeys(outputPath) {
 }
 
 function fixPlayground(outputPath) {
-  const devDeps = { '@types/jest-environment-puppeteer': '^4.3.1', '@types/expect-puppeteer': '^4.4.0' };
+  const devDeps = {
+    '@types/jest-environment-puppeteer': '^4.3.1',
+    '@types/expect-puppeteer': '^4.4.0',
+    enzyme: '~3.10.0',
+    'enzyme-adapter-react-16': '^1.15.0'
+  };
 
   const fullPath = path.join(outputPath, 'playground', 'package.json');
   console.log(`fixing ${fullPath} for devdeps`);
   const pkgJson = fs.readJSONSync(fullPath);
   pkgJson.devDependencies = { ...pkgJson.devDependencies, ...devDeps };
   fs.writeJSONSync(fullPath, pkgJson, { spaces: 2 });
+}
+
+function fixReactDep(outputPath) {
+  const files = glob.sync('**/package.json', { cwd: outputPath });
+
+  for (let file of files) {
+    const fullPath = path.join(outputPath, file);
+    console.log(`fixing ${fullPath} for react`);
+    const pkgJson = fs.readJSONSync(fullPath);
+    if (pkgJson.dependencies && pkgJson.dependencies.react) {
+      delete pkgJson.dependencies.react;
+      pkgJson.devDependencies.react = '16.8.6';
+    }
+
+    if (pkgJson.dependencies && pkgJson.dependencies['react-dom']) {
+      delete pkgJson.dependencies['react-dom'];
+      pkgJson.devDependencies['react-dom'] = '16.8.6';
+    }
+
+    if (pkgJson.devDependencies && pkgJson.devDependencies.react) {
+      pkgJson.devDependencies.react = '16.8.6';
+    }
+
+    if (pkgJson.devDependencies && pkgJson.devDependencies['react-dom']) {
+      pkgJson.devDependencies['react-dom'] = '16.8.6';
+    }
+
+    fs.writeJSONSync(fullPath, pkgJson, { spaces: 2 });
+  }
+}
+
+function fixJestMapping(outputPath) {
+  const files = glob.sync('**/jest.config.js', { cwd: outputPath });
+
+  for (let file of files) {
+    const fullPath = path.join(outputPath, file);
+    console.log(`fixing ${fullPath} to fix docs links`);
+    let jestConfig = fs.readFileSync(fullPath, 'utf-8');
+
+    if (jestConfig.includes('<rootDir>/../../docs/$1')) {
+      jestConfig = jestConfig.replace('<rootDir>/../../docs/$1', '<rootDir>/../docs/$1');
+    }
+
+    fs.writeFileSync(fullPath, jestConfig);
+  }
+}
+
+function fixDocs(outputPath) {
+  const files = glob.sync('**/docs/**/*.+(ts|tsx)', { cwd: outputPath });
+
+  for (let file of files) {
+    const fullPath = path.join(outputPath, file);
+
+    let contents = fs.readFileSync(fullPath, 'utf-8');
+
+    if (contents.includes('packages/react/package.json')) {
+      console.log(`fixing ${fullPath} to fix docs import of @fluentui/react/package.json`);
+      contents = contents.replace(/'[\.\/]+packages\/react\/package\.json'/, "'@fluentui/react/package.json'");
+    }
+
+    fs.writeFileSync(fullPath, contents);
+  }
+
+  const docsPackageJsonFile = path.join(outputPath, 'docs/package.json');
+  const docsPackageJson = fs.readJsonSync(docsPackageJsonFile);
+  docsPackageJson.scripts = {
+    start: 'gulp docs'
+  };
+  fs.writeJsonSync(docsPackageJsonFile, docsPackageJson, { spaces: 2 });
+}
+
+function fixInternalPackageDeps(outputPath) {
+  const getAllPackageInfo = require('../monorepo/getAllPackageInfo');
+  const files = glob.sync('**/package.json', { cwd: outputPath });
+
+  const allPackages = getAllPackageInfo();
+  const fabricPackages = Object.keys(allPackages)
+    .filter(p => !p.startsWith('@fluentui'))
+    .reduce((pkgs, pkg) => {
+      return { ...pkgs, [pkg]: allPackages[pkg] };
+    }, {});
+
+  for (let file of files) {
+    const fullPath = path.join(outputPath, file);
+    const pkgJson = fs.readJsonSync(fullPath);
+
+    for (const depType of ['dependencies', 'devDependencies']) {
+      if (pkgJson[depType]) {
+        for (let dep of Object.keys(pkgJson[depType])) {
+          if (fabricPackages[dep]) {
+            const range = pkgJson[depType][dep][0];
+            pkgJson[depType][dep] = `${/^[^~]/.test(range) ? range : ''}${fabricPackages[dep].packageJson.version}`;
+          }
+        }
+      }
+    }
+
+    fs.writeJsonSync(fullPath, pkgJson, { spaces: 2 });
+  }
 }
 
 function importFluent() {
@@ -276,9 +408,17 @@ function importFluent() {
   fixPrivatePackageFlag(outputPath);
   fixPlayground(outputPath);
   fixKeyboardKeys(outputPath);
+  fixReactDep(outputPath);
+  fixJestMapping(outputPath);
+  fixDocs(outputPath);
+  fixInternalPackageDeps(outputPath);
 
   console.log('removing tmp');
   fs.removeSync(tmp);
+
+  spawnSync('yarn', { cwd: root, stdio: 'inherit' });
+  spawnSync('git', ['add', '.'], { cwd: root });
+  spawnSync('yarn', ['lint-staged'], { cwd: root, stdio: 'inherit' });
 }
 
 importFluent();
