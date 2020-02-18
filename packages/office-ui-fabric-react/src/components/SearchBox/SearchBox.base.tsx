@@ -101,38 +101,36 @@ export class SearchBoxBase extends React.Component<ISearchBoxProps, ISearchBoxSt
     ]);
 
     return (
-      <>
-        <div role="search" ref={this._rootElement} className={classNames.root} onFocusCapture={this._onFocusCapture}>
-          <div className={classNames.iconContainer} onClick={this._onClickFocus} aria-hidden={true}>
-            <Icon iconName="Search" {...iconProps} className={classNames.icon} />
-          </div>
-          <input
-            {...nativeProps}
-            id={id}
-            className={classNames.field}
-            placeholder={placeholderValue}
-            onChange={this._onInputChange}
-            onInput={this._onInputChange}
-            onKeyDown={this._onKeyDown}
-            value={value}
-            disabled={disabled}
-            role="searchbox"
-            aria-label={ariaLabel}
-            ref={this._inputElement}
-          />
-          {value!.length > 0 && (
-            <div className={classNames.clearButton}>
-              <IconButton
-                styles={{ root: { height: 'auto' }, icon: { fontSize: '12px' } }}
-                iconProps={{ iconName: 'Clear' }}
-                {...clearButtonProps}
-                onClick={this._onClearClick}
-              />
-            </div>
-          )}
+      <div role="search" ref={this._rootElement} className={classNames.root} onFocusCapture={this._onFocusCapture}>
+        <div className={classNames.iconContainer} onClick={this._onClickFocus} aria-hidden={true}>
+          <Icon iconName="Search" {...iconProps} className={classNames.icon} />
         </div>
+        <input
+          {...nativeProps}
+          id={id}
+          className={classNames.field}
+          placeholder={placeholderValue}
+          onChange={this._onInputChange}
+          onInput={this._onInputChange}
+          onKeyDown={this._onKeyDown}
+          value={value}
+          disabled={disabled}
+          role="searchbox"
+          aria-label={ariaLabel}
+          ref={this._inputElement}
+        />
+        {value!.length > 0 && (
+          <div className={classNames.clearButton}>
+            <IconButton
+              styles={{ root: { height: 'auto' }, icon: { fontSize: '12px' } }}
+              iconProps={{ iconName: 'Clear' }}
+              {...clearButtonProps}
+              onClick={this._onClearClick}
+            />
+          </div>
+        )}
         {hasFocus && <EventListener targetRef={this._rootElement} type="blur" capture listener={this._onBlur} />}
-      </>
+      </div>
     );
   }
 
@@ -233,7 +231,7 @@ export class SearchBoxBase extends React.Component<ISearchBoxProps, ISearchBoxSt
     });
 
     if (this.props.onBlur) {
-      this.props.onBlur(ev);
+      this.props.onBlur(ev as any);
     }
   };
 

@@ -61,11 +61,6 @@ export interface ISearchBoxProps extends React.InputHTMLAttributes<HTMLInputElem
   onEscape?: (ev?: any) => void;
 
   /**
-   * Callback executed when the user moves focus away from the search box.
-   */
-  onBlur?: (ev?: any) => void;
-
-  /**
    * Deprecated at v0.52.2, use `onChange` instead.
    * @deprecated Use `onChange` instead.
    */

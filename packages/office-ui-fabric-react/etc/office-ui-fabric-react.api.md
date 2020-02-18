@@ -6605,7 +6605,6 @@ export interface ISearchBoxProps extends React.InputHTMLAttributes<HTMLInputElem
     iconProps?: Pick<IIconProps, Exclude<keyof IIconProps, 'className'>>;
     // @deprecated
     labelText?: string;
-    onBlur?: (ev?: any) => void;
     onChange?: (event?: React.ChangeEvent<HTMLInputElement>, newValue?: string) => void;
     // @deprecated
     onChanged?: (newValue: any) => void;
