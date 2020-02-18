@@ -214,19 +214,6 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     return getAllSelectedOptions(currentOptions, selectedIndices!);
   }
 
-  public componentDidMount(): void {
-    if (this._comboBoxWrapper.current) {
-      // hook up resolving the options if needed on focus
-      <EventListener target={this._comboBoxWrapper.current} type="focus" listener={this._onResolveOptions} />;
-      if ('onpointerdown' in this._comboBoxWrapper.current) {
-        // For ComboBoxes, touching anywhere in the combo box should drop the dropdown, including the input element.
-        // This gives more hit target space for touch environments. We're setting the onpointerdown here, because React
-        // does not support Pointer events yet.
-        <EventListener target={this._comboBoxWrapper.current} type="pointerdown" listener={this._onPointerDown} />;
-      }
-    }
-  }
-
   // tslint:disable-next-line function-name
   public UNSAFE_componentWillReceiveProps(newProps: IComboBoxProps): void {
     // Update the selectedIndex and currentOptions state if
@@ -463,6 +450,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         >
           {errorMessage !== undefined ? errorMessage : ''}
         </div>
+        <EventListener targetRef={this._comboBoxWrapper} type="focus" listener={this._onResolveOptions} capture />
+        <EventListener targetRef={this._comboBoxWrapper} type="pointerdown" listener={this._onPointerDown} capture />
       </div>
     );
   }
