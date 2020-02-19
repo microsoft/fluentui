@@ -347,7 +347,7 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
     let shouldComponentUpdate = false;
 
     // Update if the page stops scrolling
-    if (!newState.isScrolling && this.state.isScrolling && !this.props.ignoreScrollingState) {
+    if (!newState.isScrolling && this.state.isScrolling) {
       return true;
     }
 
@@ -498,7 +498,7 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
 
       cells.push(
         <div role={cellRole} className={'ms-List-cell'} key={itemKey} data-list-index={index} data-automationid="ListCell">
-          {onRenderCell && onRenderCell(item, index, this.state.isScrolling)}
+          {onRenderCell && onRenderCell(item, index, !this.props.ignoreScrollingState ? this.state.isScrolling : undefined)}
         </div>
       );
     }

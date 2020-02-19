@@ -186,7 +186,7 @@ export interface IListProps<T = any> extends React.HTMLAttributes<List<T> | HTML
   version?: {};
 
   /**
-   * Boolean value to disable scroll state updates. WARNING: This will cause the isScrolling argument in onRenderCell to always be false.
+   * Boolean value to disable scroll state updates. This will cause the isScrolling argument in onRenderCell to always be undefined.
    * This is a performance optimization to let List skip a render cycle by not updating its scrolling state.
    */
   ignoreScrollingState?: boolean;
