@@ -410,6 +410,10 @@ function fixInternalPackageDeps(outputPath) {
   }
 }
 
+function importChangeLogMD(outputPath) {
+  fs.copyFileSync(path.join(tmp, 'CHANGELOG.md'), path.join(outputPath, 'CHANGELOG.md'));
+}
+
 function importFluent() {
   console.log('cloning FUI');
   git(['clone', '--depth=1', 'https://github.com/microsoft/fluent-ui-react.git', '.']);
@@ -424,6 +428,7 @@ function importFluent() {
   importFuiPackages(outputPath);
   importFuiTopLevelPackages(outputPath);
   importGithubMD(root);
+  importChangeLogMD(outputPath);
 
   updateMonorepoConfigs(root);
 

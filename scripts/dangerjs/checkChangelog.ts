@@ -4,7 +4,7 @@ import config from '../config';
 import { DangerJS } from './types';
 import { DangerDSLType } from 'danger';
 
-const CHANGELOG_FILE = 'CHANGELOG.md';
+const CHANGELOG_FILE = 'packages/fluentui/CHANGELOG.md';
 
 /**
  * This function asserts that added entries into the changelog file are placed in the right section.
