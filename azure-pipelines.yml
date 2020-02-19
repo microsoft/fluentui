@@ -74,7 +74,7 @@ jobs:
       - template: azure-pipelines.tools.yml
 
       - script: |
-          if [ $BUILD_REASON == "PullRequest" ] then
+          if [ $BUILD_REASON == "PullRequest" ]; then
             yarn danger ci
           else
             echo "Skipping Danger JS because API token wasn't found"
