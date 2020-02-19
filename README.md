@@ -78,10 +78,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 
-ReactDOM.render(
-  <PrimaryButton>I am a button.</PrimaryButton>,
-  document.getElementById('root')
-  );
+ReactDOM.render(<PrimaryButton>I am a button.</PrimaryButton>, document.getElementById('root'));
 ```
 
 ### Version policy
