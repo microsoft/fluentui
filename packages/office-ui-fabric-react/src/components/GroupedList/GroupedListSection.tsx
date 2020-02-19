@@ -233,7 +233,7 @@ export class GroupedListSection extends React.Component<IGroupedListSectionProps
           <List
             role="presentation"
             ref={this._list}
-            items={group!.children}
+            items={group ? group.children : []}
             onRenderCell={this._renderSubGroup}
             getItemCountForPage={this._returnOne}
             onShouldVirtualize={onShouldVirtualize}
@@ -294,10 +294,12 @@ export class GroupedListSection extends React.Component<IGroupedListSectionProps
 
   private _onSelectionChange(): void {
     const { group, selection } = this.props;
-    const isSelected = selection!.isRangeSelected(group!.startIndex, group!.count);
+    if (selection && group) {
+      const isSelected = selection.isRangeSelected(group.startIndex, group.count);
 
-    if (isSelected !== this.state.isSelected) {
-      this.setState({ isSelected });
+      if (isSelected !== this.state.isSelected) {
+        this.setState({ isSelected });
+      }
     }
   }
 
@@ -382,7 +384,7 @@ export class GroupedListSection extends React.Component<IGroupedListSectionProps
         onRenderGroupShowAll={onRenderGroupShowAll}
         onRenderGroupFooter={onRenderGroupFooter}
         onShouldVirtualize={onShouldVirtualize}
-        groups={group!.children}
+        groups={group ? group.children : []}
         compact={compact}
       />
     ) : null;
