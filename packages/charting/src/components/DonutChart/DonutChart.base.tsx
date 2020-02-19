@@ -181,7 +181,14 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
         };
         return legend;
       });
-    const legends = <Legends legends={legendDataItems} centerLegends />;
+    const legends = (
+      <Legends
+        legends={legendDataItems}
+        centerLegends
+        overflowProps={this.props.legendsOverflowProps}
+        focusZonePropsInHoverCard={this.props.focusZonePropsForLegendsInHoverCard}
+      />
+    );
     return legends;
   }
 
