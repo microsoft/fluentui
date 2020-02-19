@@ -7573,7 +7573,15 @@ css-color-names@0.0.4:
   resolved "https://registry.yarnpkg.com/css-color-names/-/css-color-names-0.0.4.tgz#808adc2e79cf84738069b646cb20ec27beb629e0"
   integrity sha1-gIrcLnnPhHOAabZGyyDsJ762KeA=
 
-css-in-js-utils@3.0.0, css-in-js-utils@^2.0.0, css-in-js-utils@^3.0.0:
+css-in-js-utils@^2.0.0:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/css-in-js-utils/-/css-in-js-utils-2.0.1.tgz#3b472b398787291b47cfe3e44fecfdd9e914ba99"
+  integrity sha512-PJF0SpJT+WdbVVt0AOYp9C8GnuruRlL/UFW7932nLWmFLQTaWEzTBQEx7/hn4BuV+WON75iAViSUJLiU3PKbpA==
+  dependencies:
+    hyphenate-style-name "^1.0.2"
+    isobject "^3.0.1"
+
+css-in-js-utils@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/css-in-js-utils/-/css-in-js-utils-3.0.0.tgz#4379185f5cc79f9eba39b4e795c317f253ffaa40"
   integrity sha512-FSdC7hZIeSmEPANOZB/VHHeaYh+MiNvqLRP7MWVck6MQs2B5KHH3XmMU9Asb/6BdwDp+JTt1q+cGgSBCuFU1GQ==
@@ -9758,7 +9766,7 @@ fd-slicer@~1.0.1:
   dependencies:
     pend "~1.2.0"
 
-fela-bindings@10.6.1, fela-bindings@^10.6.1:
+fela-bindings@^10.6.1:
   version "10.6.1"
   resolved "https://registry.yarnpkg.com/fela-bindings/-/fela-bindings-10.6.1.tgz#7658915178ec903f8e86d608ffd22f1ca3fca232"
   integrity sha512-VY6PzkVHDpVHSvefa4AnfRYuzw1jgAheU+ePof4m8je3JgkoezKDiadI7uHD0teyzJhajDZ25nr2dOt2yCuMtA==
@@ -9769,7 +9777,7 @@ fela-bindings@10.6.1, fela-bindings@^10.6.1:
     react-addons-shallow-compare "^15.6.2"
     shallow-equal "^1.0.0"
 
-fela-dom@10.6.1, fela-dom@^10.6.1:
+fela-dom@^10.6.1:
   version "10.6.1"
   resolved "https://registry.yarnpkg.com/fela-dom/-/fela-dom-10.6.1.tgz#d249a4380ab1565e73e250fe624a36329fd256a7"
   integrity sha512-J/EbPv7w7GGEBwhwwohTNdBThS1CrVaO5t8eapuKg0GDUCulbpBHuL5fw1+TbpJKEL54h7GwaCV9RZKZPUOXGA==
@@ -9802,7 +9810,7 @@ fela-plugin-fallback-value@^10.6.1:
     css-in-js-utils "^3.0.0"
     isobject "^3.0.1"
 
-fela-plugin-placeholder-prefixer@10.6.1, fela-plugin-placeholder-prefixer@^10.6.1:
+fela-plugin-placeholder-prefixer@^10.6.1:
   version "10.6.1"
   resolved "https://registry.yarnpkg.com/fela-plugin-placeholder-prefixer/-/fela-plugin-placeholder-prefixer-10.6.1.tgz#c55b27cb32c61eefeee660ebcac39c64c0de1d6b"
   integrity sha512-yZcTYsjRXjNrDFeDvML5QalgeO9hHN6sqC3geAwC44GTpaw9BG22BKiuCInvzhkSYWuT+q8XSgPrW7wDwL1TRQ==
@@ -9810,7 +9818,7 @@ fela-plugin-placeholder-prefixer@10.6.1, fela-plugin-placeholder-prefixer@^10.6.
     fast-loops "^1.0.0"
     fela-plugin-custom-property "^10.6.1"
 
-fela-plugin-prefixer@10.6.1, fela-plugin-prefixer@^10.6.1:
+fela-plugin-prefixer@^10.6.1:
   version "10.6.1"
   resolved "https://registry.yarnpkg.com/fela-plugin-prefixer/-/fela-plugin-prefixer-10.6.1.tgz#a13c358446ac563520672f277fa0273380bf6713"
   integrity sha512-1QXNzwlkos5Ezi8mpYY6jJVrN1KzZdCWTjqm2yWj32zF5SFUVAFPF1/4+Shld7iFPZMshl7ijDdK1zLM/H/fuw==
@@ -9828,7 +9836,7 @@ fela-plugin-rtl@^10.6.1:
   dependencies:
     rtl-css-js "^1.1.3"
 
-fela-tools@10.6.1, fela-tools@^10.6.1:
+fela-tools@^10.6.1:
   version "10.6.1"
   resolved "https://registry.yarnpkg.com/fela-tools/-/fela-tools-10.6.1.tgz#77306a79ede0defc518c4617bba5c932d81808e0"
   integrity sha512-fywHZDZPY2jQoNA+COPn5ge4rq4uFYVEeNVsT/AKW/RtQNnr18JsHoO1kbn/n4N76NJcNKP6R8OM6jOcOdLiYQ==
@@ -9846,7 +9854,7 @@ fela-utils@^10.6.1:
     css-in-js-utils "^3.0.0"
     fast-loops "^1.0.0"
 
-fela@10.6.1, fela@^10.6.1:
+fela@^10.6.1:
   version "10.6.1"
   resolved "https://registry.yarnpkg.com/fela/-/fela-10.6.1.tgz#66a8349018a5c06908deca7fc18a83b0df9d63a6"
   integrity sha512-Fp07Wst/BchfJAufCF+sfeMeIsB8hq+EHObpjUMrLfXcweqRtcJ5gg+47ncYO6W/HnRi1NBUzV+fY4tnMVm+MA==
@@ -12724,7 +12732,7 @@ jest-environment-puppeteer@^4.2.0:
     jest-dev-server "^4.2.0"
     merge-deep "^3.0.2"
 
-jest-fela-bindings@10.6.1, jest-fela-bindings@^10.6.1:
+jest-fela-bindings@^10.6.1:
   version "10.6.1"
   resolved "https://registry.yarnpkg.com/jest-fela-bindings/-/jest-fela-bindings-10.6.1.tgz#7813de822e8d50b2b58478716e7821fbf727e725"
   integrity sha512-vHDmx12nUAKVKGKnak8TsBhT8cKE081cqBFhDLCQ0kuQCcPWeJKBJ9kxkshCNoreg/HCi7e/qFvNEg4NZ39SYQ==
@@ -12855,7 +12863,7 @@ jest-puppeteer@^4.0.0:
     expect-puppeteer "^4.1.1"
     jest-environment-puppeteer "^4.2.0"
 
-jest-react-fela@10.6.1, jest-react-fela@^10.6.1:
+jest-react-fela@^10.6.1:
   version "10.6.1"
   resolved "https://registry.yarnpkg.com/jest-react-fela/-/jest-react-fela-10.6.1.tgz#8851fa3ed70b9908b7f8f7cef254926ffc4fad72"
   integrity sha512-LRRw+Ub1czDZHL71bOMftQ17IlFVQmgUiaQw82RoeKc2Cp0COWOzTuGTQCeT5cPbgBJ75wTSgdG4Egvx5TpACA==
@@ -17619,7 +17627,7 @@ react-fast-compare@^2.0.4:
   resolved "https://registry.yarnpkg.com/react-fast-compare/-/react-fast-compare-2.0.4.tgz#e84b4d455b0fec113e0402c329352715196f81f9"
   integrity sha512-suNP+J1VU1MWFKcyt7RtjiSWUjvidmQSlqu+eHslq+342xCbGTYmC0mEhPCOHxlW0CywylOC1u2DFAT+bv4dBw==
 
-react-fela@10.6.1, react-fela@^10.6.1:
+react-fela@^10.6.1:
   version "10.6.1"
   resolved "https://registry.yarnpkg.com/react-fela/-/react-fela-10.6.1.tgz#7d76246d073d93eefc08084345e81193a1e510c6"
   integrity sha512-HEtJXkvmwvvPJ4lbYrbttudgmacXnWSU9H3Syx4KiyiUBq9y/f0bn1YW/BLh4jQVVxAsbI6s6hSNornX/sdEzw==
