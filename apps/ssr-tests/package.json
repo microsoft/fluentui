@@ -26,7 +26,7 @@
     "react": "16.8.6",
     "react-app-polyfill": "~1.0.1",
     "react-dom": "16.8.6",
-    "webpack": "4.29.5"
+    "webpack": "4.35.0"
   },
   "dependencies": {
     "es6-promise": "^4.1.0",

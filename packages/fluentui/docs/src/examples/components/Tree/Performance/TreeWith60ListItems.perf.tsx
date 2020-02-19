@@ -60,9 +60,9 @@ const titleRenderer = (Component, { content, header, headerMedia, media, ...rest
   );
 };
 
-const Tree60WithListItems = () => <Tree items={items} defaultActiveItemIds={['1', '2', '3']} renderItemTitle={titleRenderer} />;
+const TreeWith60ListItems = () => <Tree items={items} defaultActiveItemIds={['1', '2', '3']} renderItemTitle={titleRenderer} />;
 
-Tree60WithListItems.iterations = 1;
-Tree60WithListItems.filename = 'Tree60WithListItems.perf.tsx';
+TreeWith60ListItems.iterations = 1;
+TreeWith60ListItems.filename = 'TreeWith60ListItems.perf.tsx';
 
-export default Tree60WithListItems;
+export default TreeWith60ListItems;

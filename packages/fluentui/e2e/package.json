@@ -6,7 +6,7 @@
   "devDependencies": {
     "@uifabric/build": "^7.0.0",
     "@fluentui/react": "^0.44.0",
-    "@types/puppeteer": "^1.11.1",
+    "@types/puppeteer": "1.12.3",
     "@types/react-router-dom": "^4.3.4",
     "puppeteer": "^1.13.0",
     "react-router-dom": "^5.0.1",
