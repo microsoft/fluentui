@@ -79,6 +79,7 @@ jobs:
           else
             echo "Skipping Danger JS because BUILD_REASON ${BUILD_REASON} != PullRequest"
           fi
+        displayName: danger
         env:
           DANGER_GITHUB_API_TOKEN: $(DANGER_GITHUB_API_TOKEN)
 
