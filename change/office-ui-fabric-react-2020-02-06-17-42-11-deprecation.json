@@ -1,9 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Removing use of deprecated props across the office-ui-fabric-react package so we can eventually enable the tslint deprecation rule.",
-  "packageName": "office-ui-fabric-react",
-  "email": "Humberto.Morimoto@microsoft.com",
-  "commit": "8327cbafb8cede2043608f0dd80a17fe7d71e5bc",
-  "dependentChangeType": "patch",
-  "date": "2020-02-07T01:42:11.192Z"
-}
