@@ -1,7 +1,7 @@
 import { danger, fail, warn, markdown, message } from 'danger';
-// import checkChangelog from './scripts/dangerjs/checkChangelog';
+
 import detectNonApprovedDependencies from './scripts/dangerjs/detectNonApprovedDependencies';
-import checkPerfRegressions from './scripts/dangerjs/checkPerfRegressions';
+// import checkPerfRegressions from './scripts/dangerjs/checkPerfRegressions';
 
 /**
  * This trick (of explicitly passing Danger JS utils as function arg, instead of importing them at places where needed)
@@ -17,5 +17,6 @@ export default async () => {
 
   await detectNonApprovedDependencies(dangerJS);
 
-  await checkPerfRegressions(dangerJS);
+  // TODO: Enable and integrate with Fabric pipeline
+  // await checkPerfRegressions(dangerJS);
 };
