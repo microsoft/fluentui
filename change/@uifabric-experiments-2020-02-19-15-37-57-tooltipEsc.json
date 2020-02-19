@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Updating snapshots.",
+  "packageName": "@uifabric/experiments",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "commit": "01167a8a185c67c11c236ac71d44f4d30e42ff15",
+  "date": "2020-02-19T23:37:57.636Z"
+}
