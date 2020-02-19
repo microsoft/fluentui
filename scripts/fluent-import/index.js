@@ -1,3 +1,4 @@
+// @ts-check
 const fs = require('fs-extra');
 const path = require('path');
 const os = require('os');
@@ -189,7 +190,7 @@ function fixEslint(outputPath) {
   for (let file of files) {
     console.log(`fixing ${file}`);
     const fullPath = path.join(outputPath, file);
-    const content = fs.readJSONSync(fullPath, 'utf-8');
+    const content = fs.readJSONSync(fullPath);
 
     // TODO (fui repo merge): create a @uifabric/eslint-config package to host this per: https://eslint.org/docs/developer-guide/shareable-configs
     content.extends = ['../../../scripts/eslint/index'];
@@ -322,15 +323,7 @@ function fixDeps(outputPath) {
       if (pkgJson.devDependencies && pkgJson.devDependencies[devDep]) {
         pkgJson.devDependencies[devDep] = devDeps[devDep];
       }
-    });
 
-    const deps = {
-      // align with Fabric for syncpack
-      'just-scripts': '0.35.0',
-      webpack: '4.35.0'
-    };
-
-    Object.keys(devDeps).forEach(devDep => {
       if (pkgJson.dependencies && pkgJson.dependencies[devDep]) {
         pkgJson.dependencies[devDep] = devDeps[devDep];
       }
