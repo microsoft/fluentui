@@ -153,8 +153,8 @@ export class DraggableZone extends React.Component<IDraggableZoneProps, IDraggab
     // hook up the appropriate mouse/touch events to the body to ensure
     // smooth dragging
     this._events = [
-      on(document.body, this._currentEventType.move, this._onDrag),
-      on(document.body, this._currentEventType.stop, this._onDragStop)
+      on(document.body, this._currentEventType.move, this._onDrag, true /* use capture phase */),
+      on(document.body, this._currentEventType.stop, this._onDragStop, true /* use capture phase */)
     ];
   };
 
