@@ -77,7 +77,7 @@ jobs:
           if [ $BUILD_REASON == "PullRequest" ]; then
             yarn danger ci
           else
-            echo "Skipping Danger JS because API token wasn't found"
+            echo "Skipping Danger JS because BUILD_REASON ${BUILD_REASON} != PullRequest"
           fi
         env:
           DANGER_GITHUB_API_TOKEN: $(DANGER_GITHUB_API_TOKEN)
