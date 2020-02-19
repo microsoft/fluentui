@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { classNamesFunction, IClassNames, getRTL } from '../../Utilities';
+import { IProcessedStyleSet } from '../../Styling';
+import { classNamesFunction, getRTL } from '../../Utilities';
 import { SelectionMode } from '../../utilities/selection/index';
 import { Check } from '../../Check';
 import { Icon } from '../../Icon';
@@ -20,7 +21,7 @@ export class GroupHeaderBase extends React.Component<IGroupHeaderProps, IGroupHe
     expandButtonProps: { 'aria-label': 'expand collapse group' }
   };
 
-  private _classNames: IClassNames<IGroupHeaderStyles>;
+  private _classNames: IProcessedStyleSet<IGroupHeaderStyles>;
 
   constructor(props: IGroupHeaderProps) {
     super(props);

@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Sticky } from './Sticky';
 import { IRefObject } from '../../Utilities';
+import { Sticky } from './Sticky';
 
 export interface IStickyProps extends React.Props<Sticky> {
   /**
