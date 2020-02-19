@@ -1,17 +1,17 @@
-import * as React from 'react'
-import { Provider, Animation, Button, Icon } from '@fluentui/react'
-import { useLogKnob } from '@fluentui/docs-components'
+import * as React from 'react';
+import { Provider, Animation, Button, Icon } from '@fluentui/react';
+import { useLogKnob } from '@fluentui/docs-components';
 
 const AnimationExampleVisible = () => {
-  const [visible, setVisible] = React.useState(false)
+  const [visible, setVisible] = React.useState(false);
 
-  const onEnter = useLogKnob('onEnter')
-  const onEntering = useLogKnob('onEntering')
-  const onEntered = useLogKnob('onEntered')
+  const onEnter = useLogKnob('onEnter');
+  const onEntering = useLogKnob('onEntering');
+  const onEntered = useLogKnob('onEntered');
 
-  const onExit = useLogKnob('onExit')
-  const onExiting = useLogKnob('onExiting')
-  const onExited = useLogKnob('onExited')
+  const onExit = useLogKnob('onExit');
+  const onExiting = useLogKnob('onExiting');
+  const onExited = useLogKnob('onExited');
 
   return (
     <Provider
@@ -20,32 +20,28 @@ const AnimationExampleVisible = () => {
           fadeEnterSlow: {
             keyframe: {
               '0%': { opacity: 0 },
-              '100%': { opacity: 1 },
+              '100%': { opacity: 1 }
             },
             duration: '500ms',
             timingFunction: 'cubic-bezier(0.33,0.00,0.67,1.00)',
-            fillMode: 'forwards',
+            fillMode: 'forwards'
           },
           fadeExitSlow: {
             keyframe: {
               '0%': { opacity: 1 },
-              '100%': { opacity: 0 },
+              '100%': { opacity: 0 }
             },
             duration: '500ms',
             timingFunction: 'cubic-bezier(0.33,0.00,0.67,1.00)',
-            fillMode: 'forwards',
-          },
-        },
+            fillMode: 'forwards'
+          }
+        }
       }}
     >
       <Button onClick={() => setVisible(!visible)}>{visible ? 'Hide' : 'Show'}</Button>&emsp;
       {/* Children as function */}
       <Animation
         visible={visible}
-        timeout={{
-          enter: 1000,
-          exit: 2000,
-        }}
         onEnter={onEnter}
         onEntering={onEntering}
         onEntered={onEntered}
@@ -61,10 +57,6 @@ const AnimationExampleVisible = () => {
       {/* Children as element */}
       <Animation
         visible={visible}
-        timeout={{
-          enter: 1000,
-          exit: 2000,
-        }}
         onEnter={onEnter}
         onEntering={onEntering}
         onEntered={onEntered}
@@ -78,7 +70,7 @@ const AnimationExampleVisible = () => {
         <Icon name="mention" />
       </Animation>
     </Provider>
-  )
-}
+  );
+};
 
-export default AnimationExampleVisible
+export default AnimationExampleVisible;
