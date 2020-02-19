@@ -68,8 +68,8 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
     const thumbOffsetPercent: number = min === max ? 0 : ((renderedValue! - min!) / (max! - min!)) * 100;
     const zeroOffsetPercent: number = min! >= 0 ? 0 : (-min! / (max! - min!)) * 100;
     const lengthString = vertical ? 'height' : 'width';
-    const onMouseDownProp: {} = disabled ? {} : { onMouseDown: this._onMouseDownOrTouchStart };
-    const onTouchStartProp: {} = disabled ? {} : { onTouchStart: this._onMouseDownOrTouchStart };
+    // const onMouseDownProp: {} = disabled ? {} : { onMouseDown: this._onMouseDownOrTouchStart };
+    // const onTouchStartProp: {} = disabled ? {} : { onTouchStart: this._onMouseDownOrTouchStart };
     const onKeyDownProp: {} = disabled ? {} : { onKeyDown: this._onKeyDown };
     const classNames = getClassNames(styles, {
       className,
@@ -96,8 +96,8 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
             aria-valuetext={this._getAriaValueText(value)}
             aria-label={ariaLabel || label}
             aria-disabled={disabled}
-            {...onMouseDownProp}
-            {...onTouchStartProp}
+            // {...onMouseDownProp}
+            // {...onTouchStartProp}
             {...onKeyDownProp}
             {...divButtonProps}
             className={css(classNames.slideBox, buttonProps!.className)}
@@ -146,6 +146,10 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
             </Label>
           )}
         </div>
+        <EventListener target={window} type="mousemove" listener={this._onMouseMoveOrTouchMove} capture />;
+        <EventListener target={window} type="mouseup" listener={this._onMouseUpOrTouchEnd} capture />;
+        <EventListener target={window} type="touchmove" listener={this._onMouseMoveOrTouchMove} capture />;
+        <EventListener target={window} type="touchend" listener={this._onMouseUpOrTouchEnd} capture />;
       </div>
     ) as React.ReactElement<{}>;
   }
@@ -186,16 +190,16 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
     };
   }
 
-  private _onMouseDownOrTouchStart = (event: MouseEvent | TouchEvent): void => {
-    if (event.type === 'mousedown') {
-      <EventListener target={window} type="mousemove" listener={this._onMouseMoveOrTouchMove} capture />;
-      <EventListener target={window} type="mouseup" listener={this._onMouseUpOrTouchEnd} capture />;
-    } else if (event.type === 'touchstart') {
-      <EventListener target={window} type="touchmove" listener={this._onMouseMoveOrTouchMove} capture />;
-      <EventListener target={window} type="touchend" listener={this._onMouseUpOrTouchEnd} capture />;
-    }
-    this._onMouseMoveOrTouchMove(event, true);
-  };
+  // private _onMouseDownOrTouchStart = (event: MouseEvent | TouchEvent): void => {
+  //   if (event.type === 'mousedown') {
+  //     <EventListener target={window} type="mousemove" listener={this._onMouseMoveOrTouchMove} capture />;
+  //     <EventListener target={window} type="mouseup" listener={this._onMouseUpOrTouchEnd} capture />;
+  //   } else if (event.type === 'touchstart') {
+  //     <EventListener target={window} type="touchmove" listener={this._onMouseMoveOrTouchMove} capture />;
+  //     <EventListener target={window} type="touchend" listener={this._onMouseUpOrTouchEnd} capture />;
+  //   }
+  //   this._onMouseMoveOrTouchMove(event, true);
+  // };
 
   private _onMouseMoveOrTouchMove = (event: MouseEvent | TouchEvent, suppressEventCancelation?: boolean): void => {
     if (!this._sliderLine.current) {
