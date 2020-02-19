@@ -1,91 +1,88 @@
-import * as _ from 'lodash'
-import { Box, Flex, RadioGroup, Text, Checkbox } from '@fluentui/react'
-import { PerfChart, usePerfData } from '../PerfChart'
-import * as React from 'react'
-import { PerfData, PerfSample } from '../PerfChart/PerfDataContext'
+import * as _ from 'lodash';
+import { Box, Flex, RadioGroup, Text, Checkbox } from '@fluentui/react';
+import { PerfChart, usePerfData } from '../PerfChart';
+import * as React from 'react';
+import { PerfData, PerfSample } from '../PerfChart/PerfDataContext';
 
 enum FILTER_BY {
   CI_BUILD = 'ci build',
   RELEASE = 'release',
   DAY = 'day',
-  MONTH = 'month',
+  MONTH = 'month'
 }
 
 export const ComponentPerfChart = ({ perfTestName }) => {
-  const { loading, error, data } = usePerfData(perfTestName)
+  const { loading, error, data } = usePerfData(perfTestName);
 
-  const [filterBy, setFilterBy] = React.useState(FILTER_BY.CI_BUILD)
-  const [withExtremes, setWithExtremes] = React.useState(false)
+  const [filterBy, setFilterBy] = React.useState(FILTER_BY.CI_BUILD);
+  const [withExtremes, setWithExtremes] = React.useState(false);
 
-  let filteredData: PerfData = data
+  let filteredData: PerfData = data;
 
   switch (filterBy) {
     case FILTER_BY.CI_BUILD:
-      filteredData = data
-      break
+      filteredData = data;
+      break;
 
     case FILTER_BY.RELEASE:
-      filteredData = data.filter(entry => entry.tag)
+      filteredData = data.filter(entry => entry.tag);
 
-      if (!data[0].tag) {
-        const unreleased = { ...data[0], tag: 'UNRELEASED' }
-        filteredData.unshift(unreleased)
+      if (!data[0]?.tag) {
+        const unreleased = { ...data[0], tag: 'UNRELEASED' };
+        filteredData.unshift(unreleased);
       }
-      break
+      break;
 
     case FILTER_BY.DAY:
-      filteredData = []
+      filteredData = [];
       _.forEachRight(data, (sample: PerfSample, i, arr) => {
-        const prevSample = arr[i - 1]
+        const prevSample = arr[i - 1];
 
         if (!prevSample) {
-          filteredData.push(sample)
-          return
+          filteredData.push(sample);
+          return;
         }
 
-        const lastDate = new Date(prevSample.ts)
-        const nextDate = new Date(sample.ts)
+        const lastDate = new Date(prevSample.ts);
+        const nextDate = new Date(sample.ts);
 
         if (
           lastDate.getDate() !== nextDate.getDate() ||
           lastDate.getMonth() !== nextDate.getMonth() ||
           lastDate.getFullYear() !== nextDate.getFullYear()
         ) {
-          filteredData.push(sample)
+          filteredData.push(sample);
         }
-      })
-      break
+      });
+      break;
 
     case FILTER_BY.MONTH:
-      filteredData = []
+      filteredData = [];
 
       _.forEachRight(data, (sample: PerfSample, i, arr) => {
-        const prevSample = arr[i - 1]
+        const prevSample = arr[i - 1];
 
         if (!prevSample) {
-          filteredData.push(sample)
-          return
+          filteredData.push(sample);
+          return;
         }
 
-        const lastDate = new Date(prevSample.ts)
-        const nextDate = new Date(sample.ts)
+        const lastDate = new Date(prevSample.ts);
+        const nextDate = new Date(sample.ts);
 
-        if (
-          lastDate.getMonth() !== nextDate.getMonth() ||
-          lastDate.getFullYear() !== nextDate.getFullYear()
-        ) {
-          filteredData.push(sample)
+        if (lastDate.getMonth() !== nextDate.getMonth() || lastDate.getFullYear() !== nextDate.getFullYear()) {
+          filteredData.push(sample);
         }
-      })
-      break
+      });
+      break;
 
     default:
-      break
+      break;
   }
 
   const handleFilterChange = React.useCallback((e, props) => {
-    setFilterBy(props.value)
-  }, [])
+    setFilterBy(props.value);
+  }, []);
 
   return (
     <div>
@@ -98,15 +95,11 @@ export const ComponentPerfChart = ({ perfTestName }) => {
               { key: 'ci-build', label: FILTER_BY.CI_BUILD, value: FILTER_BY.CI_BUILD },
               { key: 'release', label: FILTER_BY.RELEASE, value: FILTER_BY.RELEASE },
               { key: 'day', label: FILTER_BY.DAY, value: FILTER_BY.DAY },
-              { key: 'month', label: FILTER_BY.MONTH, value: FILTER_BY.MONTH },
+              { key: 'month', label: FILTER_BY.MONTH, value: FILTER_BY.MONTH }
             ]}
           />
         )}
-        <Checkbox
-          label="Show extremes"
-          defaultChecked={withExtremes}
-          onChange={(e, { checked }) => setWithExtremes(checked)}
-        />
+        <Checkbox label="Show extremes" defaultChecked={withExtremes} onChange={(e, { checked }) => setWithExtremes(checked)} />
       </Flex>
 
       <Box
@@ -114,10 +107,10 @@ export const ComponentPerfChart = ({ perfTestName }) => {
           '::before': {
             paddingTop: '50%',
             content: '""',
-            display: 'block',
+            display: 'block'
           },
           overflow: 'hidden',
-          position: 'relative',
+          position: 'relative'
         }}
       >
         <Flex
@@ -128,7 +121,7 @@ export const ComponentPerfChart = ({ perfTestName }) => {
             top: '1rem',
             bottom: 0,
             left: 0,
-            right: 0,
+            right: 0
           }}
         >
           {loading ? (
@@ -141,5 +134,5 @@ export const ComponentPerfChart = ({ perfTestName }) => {
         </Flex>
       </Box>
     </div>
-  )
-}
+  );
+};

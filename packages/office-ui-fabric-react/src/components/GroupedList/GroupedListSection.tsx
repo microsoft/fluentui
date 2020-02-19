@@ -6,7 +6,8 @@ import { IGroupShowAllProps } from './GroupShowAll.types';
 
 import { IDragDropContext, IDragDropEvents, IDragDropHelper } from '../../utilities/dragdrop/index';
 
-import { initializeComponentRef, IRenderFunction, IDisposable, IClassNames, css, getId, EventGroup } from '../../Utilities';
+import { IProcessedStyleSet } from '../../Styling';
+import { initializeComponentRef, IRenderFunction, IDisposable, css, getId, EventGroup } from '../../Utilities';
 
 import { ISelection, SelectionMode, SELECTION_CHANGE } from '../../utilities/selection/index';
 
@@ -21,7 +22,7 @@ import { IListProps } from '../List/index';
 
 export interface IGroupedListSectionProps extends React.ClassAttributes<GroupedListSection> {
   /** GroupedList resolved class names */
-  groupedListClassNames?: IClassNames<IGroupedListStyles>;
+  groupedListClassNames?: IProcessedStyleSet<IGroupedListStyles>;
 
   /**
    * Gets the component ref.

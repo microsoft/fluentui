@@ -38,7 +38,7 @@
     "@types/es6-promise": "0.0.32",
     "@types/glob": "^7.1.1",
     "@types/jest": "~24.9.0",
-    "@types/node": "^10.0.0",
+    "@types/node": "^10.3.2",
     "@types/prop-types": "15.7.1",
     "@types/react": "16.8.11",
     "@types/react-dom": "16.8.4",
@@ -47,7 +47,7 @@
     "@types/sinon": "2.2.2",
     "@types/webpack-env": "1.15.1",
     "@uifabric/build": "^7.0.0",
-    "@uifabric/example-data": "7.0.5",
+    "@uifabric/example-data": "^7.0.5",
     "@uifabric/jest-serializer-merge-styles": "^7.0.10",
     "@uifabric/test-utilities": "^7.0.10",
     "@uifabric/tslint-rules": "^7.0.6",
@@ -79,7 +79,7 @@
     "@uifabric/set-version": "^7.0.5",
     "@uifabric/styling": "^7.10.10",
     "@uifabric/utilities": "^7.12.1",
-    "prop-types": "^15.5.10",
+    "prop-types": "^15.7.2",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {

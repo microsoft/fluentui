@@ -2,6 +2,7 @@ import {
   ComponentAnimationProp,
   getUnhandledProps,
   unstable_createAnimationStyles as createAnimationStyles,
+  unstable_calculateAnimationTimeout as calculateAnimationTimeout,
   unstable_getStyles as getStyles,
   useTelemetry
 } from '@fluentui/react-bindings';
@@ -171,7 +172,7 @@ const Animation: React.FC<AnimationProps> & {
     _.invoke(props, event, null, props);
   };
 
-  const { classes } = React.useMemo(() => {
+  const { classes, styles: animationStyles } = React.useMemo(() => {
     const animation: ComponentAnimationProp = {
       name,
       keyframeParams,
@@ -206,6 +207,9 @@ const Animation: React.FC<AnimationProps> & {
     return null;
   }
 
+  const { animationDuration, animationDelay } = animationStyles.root;
+  const timeoutResult = timeout || calculateAnimationTimeout(animationDuration, animationDelay) || 0;
+
   const unhandledProps = getUnhandledProps(Animation.handledProps, props);
 
   const isChildrenFunction = typeof children === 'function';
@@ -217,7 +221,7 @@ const Animation: React.FC<AnimationProps> & {
       appear={appear}
       mountOnEnter={mountOnEnter}
       unmountOnExit={unmountOnExit}
-      timeout={timeout}
+      timeout={timeoutResult}
       onEnter={handleAnimationEvent('onEnter')}
       onEntering={handleAnimationEvent('onEntering')}
       onEntered={handleAnimationEvent('onEntered')}
@@ -238,9 +242,6 @@ const Animation: React.FC<AnimationProps> & {
 Animation.className = 'ui-animation';
 Animation.displayName = 'Animation';
 
-Animation.defaultProps = {
-  timeout: 0
-};
 Animation.propTypes = {
   ...commonPropTypes.createCommon({
     accessibility: false,

@@ -943,8 +943,9 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
   tryRemoveItemFromValue = () => {
     const { multiple } = this.props;
     const { searchQuery, value } = this.state;
+    const inputElement = this.inputRef.current;
 
-    if (multiple && (searchQuery === '' || this.inputRef.current.selectionStart === 0) && value.length > 0) {
+    if (multiple && (searchQuery === '' || (inputElement.selectionStart === 0 && inputElement.selectionEnd === 0)) && value.length > 0) {
       this.removeItemFromValue();
     }
   };

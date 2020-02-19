@@ -66,6 +66,7 @@ export class PersonaCoinBase extends React.Component<IPersonaCoinProps, IPersona
       imageUrl,
       isOutOfOffice,
       onRenderCoin = this._onRenderCoin,
+      onRenderPersonaCoin = onRenderCoin,
       onRenderInitials = this._onRenderInitials,
       presence,
       presenceTitle,
@@ -118,7 +119,7 @@ export class PersonaCoinBase extends React.Component<IPersonaCoinProps, IPersona
                 {onRenderInitials(this.props, this._onRenderInitials)}
               </div>
             )}
-            {!hideImage && onRenderCoin(this.props, this._onRenderCoin)}
+            {!hideImage && onRenderPersonaCoin(this.props, this._onRenderCoin)}
             <PersonaPresence {...personaPresenceProps} />
           </div>
         ) : // Otherwise, render just PersonaPresence.

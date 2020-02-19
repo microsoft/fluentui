@@ -23,7 +23,7 @@
     "react-app-polyfill": "~1.0.1",
     "react-dom": "16.8.6",
     "tslib": "^1.10.0",
-    "typescript": "3.7.5"
+    "typescript": "3.7.2"
   },
   "devDependencies": {
     "@babel/core": "^7.8.3",
@@ -40,11 +40,11 @@
     "awesome-typescript-loader": "^3.2.3",
     "babel-loader": "^8.0.6",
     "css-loader": "^0.28.7",
-    "csstype": "2.6.3",
+    "csstype": "^2.6.7",
     "file-loader": "^0.11.1",
     "postcss-loader": "^2.0.9",
     "raw-loader": "^0.5.1",
-    "screener-runner": "^0.10.41",
+    "screener-runner": "^0.10.43",
     "screener-storybook": "^0.18.6",
     "storybook-readme": "^3.3.0",
     "style-loader": "^0.21.0"

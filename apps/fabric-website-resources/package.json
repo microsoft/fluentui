@@ -80,7 +80,7 @@
     "jest-environment-node": "~24.9.0",
     "jest-environment-puppeteer": "^4.1.0",
     "jest-puppeteer": "^4.0.0",
-    "prop-types": "^15.5.10",
+    "prop-types": "^15.7.2",
     "puppeteer": "^1.13.0",
     "tslib": "^1.10.0"
   },

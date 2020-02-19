@@ -269,6 +269,7 @@ function fixKeyboardKeys(outputPath) {
 
 function fixPlayground(outputPath) {
   const devDeps = {
+    '@types/jest': '~24.9.0', // align with Fabric for syncpack
     '@types/jest-environment-puppeteer': '^4.3.1',
     '@types/expect-puppeteer': '^4.4.0',
     enzyme: '~3.10.0',
@@ -282,7 +283,7 @@ function fixPlayground(outputPath) {
   fs.writeJSONSync(fullPath, pkgJson, { spaces: 2 });
 }
 
-function fixReactDep(outputPath) {
+function fixDeps(outputPath) {
   const files = glob.sync('**/package.json', { cwd: outputPath });
 
   for (let file of files) {
@@ -299,13 +300,41 @@ function fixReactDep(outputPath) {
       pkgJson.devDependencies['react-dom'] = '16.8.6';
     }
 
-    if (pkgJson.devDependencies && pkgJson.devDependencies.react) {
-      pkgJson.devDependencies.react = '16.8.6';
-    }
+    const devDeps = {
+      // align with Fabric for syncpack
+      '@types/enzyme': '3.10.3',
+      '@types/enzyme-adapter-react-16': '1.0.3',
+      '@types/puppeteer': '1.12.3',
+      '@types/react': '16.8.11',
+      '@types/react-dom': '16.8.4',
+      '@types/webpack': '4.4.0',
+      '@types/webpack-env': '1.15.1',
+      flamegrill: '0.1.3',
+      'just-scripts': '0.35.0',
+      'fork-ts-checker-webpack-plugin': '1.3.3',
+      react: '16.8.6',
+      'react-dom': '16.8.6',
+      typescript: '3.7.2',
+      webpack: '4.35.0'
+    };
 
-    if (pkgJson.devDependencies && pkgJson.devDependencies['react-dom']) {
-      pkgJson.devDependencies['react-dom'] = '16.8.6';
-    }
+    Object.keys(devDeps).forEach(devDep => {
+      if (pkgJson.devDependencies && pkgJson.devDependencies[devDep]) {
+        pkgJson.devDependencies[devDep] = devDeps[devDep];
+      }
+    });
+
+    const deps = {
+      // align with Fabric for syncpack
+      'just-scripts': '0.35.0',
+      webpack: '4.35.0'
+    };
+
+    Object.keys(devDeps).forEach(devDep => {
+      if (pkgJson.dependencies && pkgJson.dependencies[devDep]) {
+        pkgJson.dependencies[devDep] = devDeps[devDep];
+      }
+    });
 
     fs.writeJSONSync(fullPath, pkgJson, { spaces: 2 });
   }
@@ -408,7 +437,7 @@ function importFluent() {
   fixPrivatePackageFlag(outputPath);
   fixPlayground(outputPath);
   fixKeyboardKeys(outputPath);
-  fixReactDep(outputPath);
+  fixDeps(outputPath);
   fixJestMapping(outputPath);
   fixDocs(outputPath);
   fixInternalPackageDeps(outputPath);
