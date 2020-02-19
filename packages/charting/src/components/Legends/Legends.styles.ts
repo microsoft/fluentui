@@ -1,9 +1,18 @@
 import { ILegendsStyles, ILegendStyleProps } from './Legends.types';
-import { HighContrastSelector } from 'office-ui-fabric-react/lib/Styling';
+import { HighContrastSelector, getFocusStyle, IGetFocusStylesOptions } from 'office-ui-fabric-react/lib/Styling';
 
 export const getStyles = (props: ILegendStyleProps): ILegendsStyles => {
   const { className, theme } = props;
   const { palette, fonts } = theme!;
+  const options: IGetFocusStylesOptions = {
+    inset: undefined,
+    position: undefined,
+    highContrastStyle: {
+      outlineColor: theme!.semanticColors.focusBorder
+    },
+    borderColor: 'transparent',
+    outlineColor: undefined
+  };
   return {
     root: [
       {
@@ -13,12 +22,18 @@ export const getStyles = (props: ILegendStyleProps): ILegendsStyles => {
       },
       className
     ],
-    legend: {
-      display: 'flex',
-      alignItems: 'center',
-      cursor: 'pointer',
-      margin: props.overflow ? '16px 0px 16px 16px' : ''
-    },
+    legend: [
+      getFocusStyle(theme!, options),
+      {
+        display: 'flex',
+        alignItems: 'center',
+        cursor: 'pointer',
+        margin: props.overflow ? '16px 5px 16px 16px' : '',
+        border: 'none',
+        padding: '0px',
+        background: 'none'
+      }
+    ],
     rect: {
       selectors: {
         [HighContrastSelector]: {
@@ -63,6 +78,11 @@ export const getStyles = (props: ILegendStyleProps): ILegendsStyles => {
       color: palette.themePrimary,
       ...fonts.small,
       lineHeight: '14px'
+    },
+    subComponentStyles: {
+      hoverCardStyles: {
+        host: [getFocusStyle(theme!, options)]
+      }
     }
   };
 };

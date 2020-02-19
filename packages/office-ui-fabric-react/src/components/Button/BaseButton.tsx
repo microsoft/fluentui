@@ -464,7 +464,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   private _onRenderMenu = (menuProps: IContextualMenuProps): JSX.Element => {
     const { persistMenu } = this.props;
     const { menuHidden } = this.state;
-    const MenuType = this.props.menuAs || (ContextualMenu as React.ReactType<IContextualMenuProps>);
+    const MenuType = this.props.menuAs || (ContextualMenu as React.ElementType<IContextualMenuProps>);
 
     // the accessible menu label (accessible name) has a relationship to the button.
     // If the menu props do not specify an explicit value for aria-label or aria-labelledBy,

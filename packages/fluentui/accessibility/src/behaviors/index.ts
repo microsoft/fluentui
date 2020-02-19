@@ -46,7 +46,9 @@ export { default as radioGroupBehavior } from './Radio/radioGroupBehavior';
 export { default as radioGroupItemBehavior } from './Radio/radioGroupItemBehavior';
 export { default as popupBehavior } from './Popup/popupBehavior';
 export { default as chatBehavior } from './Chat/chatBehavior';
+export * from './Chat/chatBehavior';
 export { default as chatMessageBehavior } from './Chat/chatMessageBehavior';
+export * from './Chat/chatMessageBehavior';
 export { default as gridBehavior } from './Grid/gridBehavior';
 export { default as gridHorizontalBehavior } from './Grid/gridHorizontalBehavior';
 export { default as hierarchicalTreeBehavior } from './HierarchicalTree/hierarchicalTreeBehavior';
@@ -61,6 +63,7 @@ export { default as accordionTitleBehavior } from './Accordion/accordionTitleBeh
 export { default as accordionContentBehavior } from './Accordion/accordionContentBehavior';
 export { default as checkboxBehavior } from './Checkbox/checkboxBehavior';
 export * from './Checkbox/checkboxBehavior';
+export * from './Tooltip/tooltipAsDescriptionBehavior';
 export { default as tooltipAsDescriptionBehavior } from './Tooltip/tooltipAsDescriptionBehavior';
 export { default as tooltipAsLabelBehavior } from './Tooltip/tooltipAsLabelBehavior';
 export { default as sliderBehavior } from './Slider/sliderBehavior';

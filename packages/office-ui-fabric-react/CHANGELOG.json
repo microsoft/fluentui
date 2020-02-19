@@ -2,6 +2,32 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Wed, 19 Feb 2020 12:21:05 GMT",
+      "tag": "office-ui-fabric-react_v7.94.0",
+      "version": "7.94.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Removing use of deprecated props across the office-ui-fabric-react package so we can eventually enable the tslint deprecation rule.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "8327cbafb8cede2043608f0dd80a17fe7d71e5bc"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Add syncpack and synchronize dependencies. Refresh fluent import.",
+            "author": "jagore@microsoft.com",
+            "commit": "fb51dde1a365f7aad0cffbe23f01254ba1f31ebf"
+          },
+          {
+            "comment": "Set touchmove and touchend event handlers to get caught in the capture phase",
+            "author": "catalina@microsoft.com",
+            "commit": "a7a7262fee8f15d105564c44c4a20c55417302a9"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 17 Feb 2020 17:06:50 GMT",
       "tag": "office-ui-fabric-react_v7.93.1",
       "version": "7.93.1",

@@ -53,7 +53,7 @@ export class SuggestionsStore<T> {
           this.getAriaLabel !== undefined
             ? this.getAriaLabel(suggestion)
             : // tslint:disable-next-line:no-any
-              ((suggestion as any) as ITag).name || (<IPersonaProps>suggestion).primaryText
+              ((suggestion as any) as ITag).name || (<IPersonaProps>suggestion).text || (<IPersonaProps>suggestion).primaryText
       };
     }
   };

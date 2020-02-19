@@ -1,9 +1,9 @@
 /* tslint:disable-next-line:no-unused-variable */
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
+import { TestImages } from '@uifabric/example-data';
 import { ActivityItem } from './ActivityItem';
 import { Icon } from '../../Icon';
-import { TestImages } from '../../common/TestImages';
 import { IPersonaSharedProps } from '../../Persona';
 
 const defaultProps = {

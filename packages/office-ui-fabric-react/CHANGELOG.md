@@ -1,7 +1,17 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 17 Feb 2020 17:06:50 GMT and should not be manually modified.
+This log was last generated on Wed, 19 Feb 2020 12:21:05 GMT and should not be manually modified.
 
+## 7.94.0
+Wed, 19 Feb 2020 12:21:05 GMT
+
+### Minor changes
+
+- Removing use of deprecated props across the office-ui-fabric-react package so we can eventually enable the tslint deprecation rule. (Humberto.Morimoto@microsoft.com)
+### Patches
+
+- Add syncpack and synchronize dependencies. Refresh fluent import. (jagore@microsoft.com)
+- Set touchmove and touchend event handlers to get caught in the capture phase (catalina@microsoft.com)
 ## 7.93.1
 Mon, 17 Feb 2020 17:06:50 GMT
 

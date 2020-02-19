@@ -1,81 +1,115 @@
-import { Accessibility, chatBehavior } from '@fluentui/accessibility'
-import * as customPropTypes from '@fluentui/react-proptypes'
-import * as _ from 'lodash'
-import * as PropTypes from 'prop-types'
-import * as React from 'react'
+import { Accessibility, chatBehavior, ChatBehaviorProps } from '@fluentui/accessibility';
+import { getElementType, getUnhandledProps, useAccessibility, useStyles, useTelemetry } from '@fluentui/react-bindings';
+import * as customPropTypes from '@fluentui/react-proptypes';
+import * as _ from 'lodash';
+import * as PropTypes from 'prop-types';
+import * as React from 'react';
+// @ts-ignore
+import { ThemeContext } from 'react-fela';
 
 import {
   childrenExist,
-  UIComponent,
+  ChildrenComponentProps,
   commonPropTypes,
+  createShorthandFactory,
   rtlTextContainer,
-  applyAccessibilityKeyHandlers,
-} from '../../utils'
-import ChatItem, { ChatItemProps } from './ChatItem'
-import ChatMessage from './ChatMessage'
-import { WithAsProp, withSafeTypeForAs, ShorthandCollection } from '../../types'
-import { UIComponentProps, ChildrenComponentProps } from '../../utils/commonPropInterfaces'
+  UIComponentProps
+} from '../../utils';
+import { WithAsProp, withSafeTypeForAs, ShorthandCollection, FluentComponentStaticProps, ProviderContextPrepared } from '../../types';
+import ChatItem, { ChatItemProps } from './ChatItem';
+import ChatMessage from './ChatMessage';
 
 export interface ChatSlotClassNames {
-  item: string
+  item: string;
 }
 
 export interface ChatProps extends UIComponentProps, ChildrenComponentProps {
   /** Accessibility behavior if overridden by the user. */
-  accessibility?: Accessibility
+  accessibility?: Accessibility<ChatBehaviorProps>;
 
   /** Shorthand array of the items inside the chat. */
-  items?: ShorthandCollection<ChatItemProps>
+  items?: ShorthandCollection<ChatItemProps>;
 }
 
-class Chat extends UIComponent<WithAsProp<ChatProps>, any> {
-  static displayName = 'Chat'
+export type ChatStylesProps = {};
 
-  static className = 'ui-chat'
+const Chat: React.FC<WithAsProp<ChatProps>> &
+  FluentComponentStaticProps<ChatProps> & {
+    slotClassNames: ChatSlotClassNames;
+    Item: typeof ChatItem;
+    Message: typeof ChatMessage;
+  } = props => {
+  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const { setStart, setEnd } = useTelemetry(Chat.displayName, context.telemetry);
+  setStart();
 
-  static slotClassNames: ChatSlotClassNames = {
-    item: `${Chat.className}__item`,
-  }
+  const { accessibility, children, className, design, items, styles, variables } = props;
 
-  static propTypes = {
-    ...commonPropTypes.createCommon({
-      content: false,
+  const getA11Props = useAccessibility(accessibility, {
+    debugName: Chat.displayName,
+    rtl: context.rtl
+  });
+  const { classes } = useStyles<ChatStylesProps>(Chat.displayName, {
+    className: Chat.className,
+    mapPropsToInlineStyles: () => ({
+      className,
+      design,
+      styles,
+      variables
     }),
-    items: PropTypes.arrayOf(customPropTypes.itemShorthand),
-  }
+    rtl: context.rtl
+  });
 
-  static defaultProps = {
-    accessibility: chatBehavior,
-    as: 'ul',
-  }
+  const ElementType = getElementType(props);
+  const unhandledProps = getUnhandledProps(Chat.handledProps, props);
 
-  static Item = ChatItem
-  static Message = ChatMessage
+  const element = getA11Props.unstable_wrapWithFocusZone(
+    <ElementType
+      {...getA11Props('root', {
+        className: classes.root,
+        ...rtlTextContainer.getAttributes({ forElements: [children] }),
+        ...unhandledProps
+      })}
+    >
+      {childrenExist(children)
+        ? children
+        : _.map(items, item =>
+            ChatItem.create(item, {
+              defaultProps: () => ({ className: Chat.slotClassNames.item })
+            })
+          )}
+    </ElementType>
+  );
+  setEnd();
 
-  renderComponent({ ElementType, classes, accessibility, unhandledProps }) {
-    const { children, items } = this.props
+  return element;
+};
 
-    return (
-      <ElementType
-        className={classes.root}
-        {...accessibility.attributes.root}
-        {...rtlTextContainer.getAttributes({ forElements: [children] })}
-        {...unhandledProps}
-        {...applyAccessibilityKeyHandlers(accessibility.keyHandlers.root, unhandledProps)}
-      >
-        {childrenExist(children)
-          ? children
-          : _.map(items, item =>
-              ChatItem.create(item, {
-                defaultProps: () => ({ className: Chat.slotClassNames.item }),
-              }),
-            )}
-      </ElementType>
-    )
-  }
-}
+Chat.className = 'ui-chat';
+Chat.displayName = 'Chat';
+
+Chat.slotClassNames = {
+  item: `${Chat.className}__item`
+};
+
+Chat.defaultProps = {
+  accessibility: chatBehavior,
+  as: 'ul'
+};
+Chat.propTypes = {
+  ...commonPropTypes.createCommon({
+    content: false
+  }),
+  items: PropTypes.arrayOf(customPropTypes.itemShorthand)
+};
+Chat.handledProps = Object.keys(Chat.propTypes) as any;
+
+Chat.Item = ChatItem;
+Chat.Message = ChatMessage;
+
+Chat.create = createShorthandFactory({ Component: Chat });
 
 /**
  * A Chat displays messages from a conversation between multiple users.
  */
-export default withSafeTypeForAs<typeof Chat, ChatProps, 'ul'>(Chat)
+export default withSafeTypeForAs<typeof Chat, ChatProps, 'ul'>(Chat);

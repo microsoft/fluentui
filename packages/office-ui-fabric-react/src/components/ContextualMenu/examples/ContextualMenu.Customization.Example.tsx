@@ -16,7 +16,7 @@ export const ContextualMenuCustomizationExample: React.FunctionComponent = () =>
 function renderCharmMenuItem(item: IContextualMenuItem, dismissMenu: () => void): JSX.Element {
   return (
     <IconButton
-      iconProps={{ iconName: item.name }}
+      iconProps={{ iconName: item.text }}
       className="ms-ContextualMenu-customizationExample-icon ms-ContextualMenu-link"
       data-is-focusable={true}
       onClick={dismissMenu}

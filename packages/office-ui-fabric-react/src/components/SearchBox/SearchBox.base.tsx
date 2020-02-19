@@ -87,7 +87,7 @@ export class SearchBoxBase extends React.Component<ISearchBoxProps, ISearchBoxSt
       id = this._fallbackId
     } = this.props;
     const { value, hasFocus } = this.state;
-    const placeholderValue = labelText === undefined ? placeholder : labelText;
+    const placeholderValue = placeholder !== undefined ? placeholder : labelText;
 
     const classNames = getClassNames(styles!, {
       theme: theme!,

@@ -108,7 +108,7 @@ export class BreadcrumbBase extends React.Component<IBreadcrumbProps, any> {
   private _onRenderBreadcrumb = (data: IBreadcrumbData) => {
     const {
       ariaLabel,
-      dividerAs: DividerType = Icon as React.ReactType<IDividerAsProps>,
+      dividerAs: DividerType = Icon as React.ElementType<IDividerAsProps>,
       onRenderItem = this._onRenderItem,
       overflowAriaLabel,
       overflowIndex,

@@ -1,5 +1,5 @@
-import * as keyboardKey from 'keyboard-key'
-import { Accessibility } from '../../types'
+import * as keyboardKey from 'keyboard-key';
+import { Accessibility, AccessibilityAttributes } from '../../types';
 
 /**
  * @description
@@ -12,44 +12,44 @@ import { Accessibility } from '../../types'
  * Triggers 'close' action with 'Escape' on 'trigger'.
  */
 const tooltipAsDescriptionBehavior: Accessibility<TooltipBehaviorProps> = props => {
-  const defaultAriaDescribedBy = getDefaultAriaDescribedBy(props)
+  const defaultAriaDescribedBy = getDefaultAriaDescribedBy(props);
 
   return {
     attributes: {
       trigger: {
-        'aria-describedby': defaultAriaDescribedBy || props['aria-describedby'],
+        'aria-describedby': defaultAriaDescribedBy || props['aria-describedby']
       },
       tooltip: {
         role: 'tooltip',
         id: defaultAriaDescribedBy,
-        'aria-hidden': !props.open,
-      },
+        'aria-hidden': !props.open
+      }
     },
     keyActions: {
       trigger: {
         close: {
-          keyCombinations: [{ keyCode: keyboardKey.Escape }],
-        },
-      },
-    },
-  }
-}
+          keyCombinations: [{ keyCode: keyboardKey.Escape }]
+        }
+      }
+    }
+  };
+};
 
-export default tooltipAsDescriptionBehavior
+export default tooltipAsDescriptionBehavior;
 
 /**
  * Returns the element id of the tooltip, it is used when user does not provide aria-describedby as props.
  */
 const getDefaultAriaDescribedBy = (props: TooltipBehaviorProps) => {
   if (props['aria-describedby']) {
-    return undefined
+    return undefined;
   }
-  return props.contentId
-}
+  return props.contentId;
+};
 
 export type TooltipBehaviorProps = {
   /** If tooltip is visible. */
-  open: boolean
+  open: boolean;
   /** Tooltip's container id. */
-  contentId: string
-}
+  contentId: string;
+} & Pick<AccessibilityAttributes, 'aria-label' | 'aria-labelledby' | 'aria-describedby'>;
