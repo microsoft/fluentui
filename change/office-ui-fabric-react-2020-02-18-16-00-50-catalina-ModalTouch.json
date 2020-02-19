@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Set touchmove and touchend event handlers to get caught in the capture phase",
-  "packageName": "office-ui-fabric-react",
-  "email": "catalina@microsoft.com",
-  "commit": "a7a7262fee8f15d105564c44c4a20c55417302a9",
-  "date": "2020-02-19T00:00:50.309Z"
-}

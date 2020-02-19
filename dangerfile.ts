@@ -1,7 +1,7 @@
 import { danger, fail, warn, markdown, message } from 'danger';
-// import checkChangelog from './scripts/dangerjs/checkChangelog';
-// import detectNonApprovedDependencies from './scripts/dangerjs/detectNonApprovedDependencies';
-import checkPerfRegressions from './scripts/dangerjs/checkPerfRegressions';
+
+import detectNonApprovedDependencies from './scripts/dangerjs/detectNonApprovedDependencies';
+// import checkPerfRegressions from './scripts/dangerjs/checkPerfRegressions';
 
 /**
  * This trick (of explicitly passing Danger JS utils as function arg, instead of importing them at places where needed)
@@ -15,9 +15,8 @@ export default async () => {
   // TODO: Consolidate approach with Fabric's change/checkchange functionality. Remove script implementation if unused.
   // await checkChangelog(dangerJS);
 
-  // TODO: Determine whether this is still needed given that Component Governance is running in ADO and doing similar checks.
-  // TODO: Remove script implementation if unused.
-  // await detectNonApprovedDependencies(dangerJS);
+  await detectNonApprovedDependencies(dangerJS);
 
-  await checkPerfRegressions(dangerJS);
+  // TODO: Enable and integrate with Fabric pipeline
+  // await checkPerfRegressions(dangerJS);
 };

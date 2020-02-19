@@ -74,6 +74,16 @@ jobs:
       - template: azure-pipelines.tools.yml
 
       - script: |
+          if [ $BUILD_REASON == "PullRequest" ]; then
+            yarn danger ci
+          else
+            echo "Skipping Danger JS because BUILD_REASON ${BUILD_REASON} != PullRequest"
+          fi
+        displayName: danger
+        env:
+          DANGER_GITHUB_API_TOKEN: $(DANGER_GITHUB_API_TOKEN)
+
+      - script: |
           yarn test
         displayName: test
 
