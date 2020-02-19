@@ -81,7 +81,7 @@ export default async function getPerfRegressions(baselineOnly: boolean = false) 
       .filter(storyKey => typeof stories[kindKey][storyKey] === 'function')
       .forEach(storyKey => {
         const scenarioName = `${kindKey}.${storyKey}`;
-        // TODO: revert (scenarios limited for testing)
+        // TODO: revert by rerunning fluent-import script (scenarios limited for testing)
         if (scenarioName === 'Avatar.Fluent' || scenarioName === 'Avatar.Fabric' || scenarioName === 'ChatDuplicateMessagesPerf.default') {
           scenarioList.push(scenarioName);
           scenarios[scenarioName] = {
