@@ -42,7 +42,9 @@ const getAddedLinesFromChangelog = async (danger: DangerDSLType): Promise<{ cont
 
 export default async ({ danger, fail, warn }: DangerJS) => {
   // Check for a CHANGELOG entry for changes inside /packages/fluentui
-  const changes = [...danger.git.created_files, ...danger.git.deleted_files, ...danger.git.modified_files];
+  const changes = [...danger.git.created_files, ...danger.git.deleted_files, ...danger.git.modified_files].filter(
+    f => f !== CHANGELOG_FILE
+  );
 
   if (changes.some(f => f.startsWith('packages/fluentui'))) {
     const hasChangelog = danger.git.modified_files.some(f => f === CHANGELOG_FILE);

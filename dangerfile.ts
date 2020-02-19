@@ -16,7 +16,7 @@ export default async () => {
   // TODO: Consolidate approach with Fabric's change/checkchange functionality. Remove script implementation if unused.
   await checkChangelog(dangerJS);
 
-  await detectNonApprovedDependencies(dangerJS);
+  //await detectNonApprovedDependencies(dangerJS);
 
   // TODO: Enable and integrate with Fabric pipeline
   // await checkPerfRegressions(dangerJS);
