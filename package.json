@@ -34,7 +34,7 @@
     "publish:beachball": "beachball publish",
     "check-for-changed-files": "cd scripts && just-scripts check-for-modified-files",
     "preinstall": "node ./scripts/use-yarn-please.js",
-    "pretest": "yarn satisfied && yarn syncpack list-mismatches --prod --dev",
+    "prelint": "yarn satisfied && yarn syncpack list-mismatches --prod --dev",
     "postinstall": "node ./scripts/postinstall.js",
     "prettier": "node scripts/prettier.js",
     "rebuild": "node ./scripts/invalidate-just-cache.js && npx lerna build --stream",

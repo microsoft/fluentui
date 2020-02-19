@@ -23,7 +23,7 @@
     "react-app-polyfill": "~1.0.1",
     "react-dom": "16.8.6",
     "tslib": "^1.10.0",
-    "typescript": "~3.7.2"
+    "typescript": "3.7.2"
   },
   "devDependencies": {
     "@babel/core": "^7.8.3",

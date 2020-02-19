@@ -300,53 +300,41 @@ function fixDeps(outputPath) {
       pkgJson.devDependencies['react-dom'] = '16.8.6';
     }
 
-    if (pkgJson.devDependencies && pkgJson.devDependencies.react) {
-      pkgJson.devDependencies.react = '16.8.6';
-    }
-
-    if (pkgJson.devDependencies && pkgJson.devDependencies['react-dom']) {
-      pkgJson.devDependencies['react-dom'] = '16.8.6';
-    }
-
-    if (pkgJson.devDependencies && pkgJson.devDependencies['flamegrill']) {
+    const devDeps = {
       // align with Fabric for syncpack
-      pkgJson.devDependencies['flamegrill'] = '0.1.3';
-    }
+      '@types/enzyme': '3.10.3',
+      '@types/enzyme-adapter-react-16': '1.0.3',
+      '@types/puppeteer': '1.12.3',
+      '@types/react': '16.8.11',
+      '@types/react-dom': '16.8.4',
+      '@types/webpack': '4.4.0',
+      '@types/webpack-env': '1.15.1',
+      flamegrill: '0.1.3',
+      'just-scripts': '0.35.0',
+      'fork-ts-checker-webpack-plugin': '1.3.3',
+      react: '16.8.6',
+      'react-dom': '16.8.6',
+      typescript: '3.7.2',
+      webpack: '4.35.0'
+    };
 
-    if (pkgJson.devDependencies && pkgJson.devDependencies['@types/enzyme']) {
-      // align with Fabric for syncpack
-      pkgJson.devDependencies['@types/enzyme'] = '3.10.3';
-    }
+    Object.keys(devDeps).forEach(devDep => {
+      if (pkgJson.devDependencies && pkgJson.devDependencies[devDep]) {
+        pkgJson.devDependencies[devDep] = devDeps[devDep];
+      }
+    });
 
-    if (pkgJson.devDependencies && pkgJson.devDependencies['@types/enzyme-adapter-react-16']) {
+    const deps = {
       // align with Fabric for syncpack
-      pkgJson.devDependencies['@types/enzyme-adapter-react-16'] = '1.0.3';
-    }
+      'just-scripts': '0.35.0',
+      webpack: '4.35.0'
+    };
 
-    if (pkgJson.devDependencies && pkgJson.devDependencies['@types/puppeteer']) {
-      // align with Fabric for syncpack
-      pkgJson.devDependencies['@types/puppeteer'] = '1.12.3';
-    }
-
-    if (pkgJson.devDependencies && pkgJson.devDependencies['@types/react']) {
-      // align with Fabric for syncpack
-      pkgJson.devDependencies['@types/react'] = '16.8.11';
-    }
-
-    if (pkgJson.devDependencies && pkgJson.devDependencies['@types/react-dom']) {
-      // align with Fabric for syncpack
-      pkgJson.devDependencies['@types/react-dom'] = '16.8.4';
-    }
-
-    if (pkgJson.devDependencies && pkgJson.devDependencies['@types/webpack']) {
-      // align with Fabric for syncpack
-      pkgJson.devDependencies['@types/webpack'] = '4.4.0';
-    }
-
-    if (pkgJson.devDependencies && pkgJson.devDependencies['@types/webpack-env']) {
-      // align with Fabric for syncpack
-      pkgJson.devDependencies['@types/webpack-env'] = '1.15.1';
-    }
+    Object.keys(devDeps).forEach(devDep => {
+      if (pkgJson.dependencies && pkgJson.dependencies[devDep]) {
+        pkgJson.dependencies[devDep] = devDeps[devDep];
+      }
+    });
 
     fs.writeJSONSync(fullPath, pkgJson, { spaces: 2 });
   }
