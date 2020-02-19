@@ -63,7 +63,10 @@ How to integrate components into your project depends heavily on your setup. The
 Within an npm project, you should install the package and save it as a dependency:
 
 ```
-npm install --save office-ui-fabric-react
+npm i office-ui-fabric-react
+
+# Or, use yarn
+yarn add office-ui-fabric-react
 ```
 
 This will add the package as a dependency in your `package.json` file and download it under `node_modules/office-ui-fabric-react`.
@@ -71,11 +74,14 @@ This will add the package as a dependency in your `package.json` file and downlo
 The library includes ES2015 module entry points under the `lib` folder (use `lib-amd` if you need AMD, or `lib-commonjs` if you need commonjs). To use a control, import it and then use it in your render method:
 
 ```js
-import * as React from 'react';
-import * as ReactDOM from 'react-dom';
+import React from 'react';
+import ReactDOM from 'react-dom';
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 
-ReactDOM.render(<PrimaryButton>I am a button.</PrimaryButton>, document.body.firstChild);
+ReactDOM.render(
+  <PrimaryButton>I am a button.</PrimaryButton>,
+  document.getElementById('root')
+  );
 ```
 
 ### Version policy
