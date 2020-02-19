@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Tooltip: Enable dismissing the Tooltip via pressing ESC key.",
+  "packageName": "office-ui-fabric-react",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "commit": "163eff20c5426ab4999ad92eb833d6ecd7e65372",
+  "date": "2020-02-19T22:46:49.567Z"
+}
