@@ -1,0 +1,9 @@
+{
+  "type": "minor",
+  "comment": "Slider: use EventListener, not _events",
+  "packageName": "office-ui-fabric-react",
+  "email": "aneeshak@microsoft.com",
+  "commit": "cb049b63dd93fdcf19e8dc7e04d6440b17d011bf",
+  "dependentChangeType": "patch",
+  "date": "2020-02-19T00:20:54.258Z"
+}
