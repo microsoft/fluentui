@@ -162,6 +162,35 @@ jobs:
           Contents: '**/*'
         condition: always()
 
+  - job: ScreenerFluentUI
+    dependsOn: Build
+    pool:
+      vmImage: 'Ubuntu 18.04'
+    steps:
+      # No need for checkout since we're using build artifacts.
+      - checkout: none
+
+      - template: azure-pipelines.artifacts.yml
+        parameters:
+          artifact: Build-PR-$(Build.BuildNumber)
+          buildId: $(Build.BuildId)
+
+      - template: azure-pipelines.tools.yml
+
+      - script: |
+          git config --global user.email "fabrictactical@microsoft.com"
+          git config --global user.name "Fabric Tactical"
+          yarn test:fluentui:visual
+        displayName: run FUI VR Test
+        env:
+          SCREENER_API_KEY: $(screener.key)
+
+      - task: DeleteFiles@1
+        inputs:
+          SourceFolder: $(Build.SourcesDirectory)
+          Contents: '**/*'
+        condition: always()
+
   # - job: Danger
   #   dependsOn: Build
   #   steps:
