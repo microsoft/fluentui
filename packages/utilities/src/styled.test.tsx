@@ -347,7 +347,7 @@ describe('styled', () => {
     );
   });
 
-  it('do not re-render if styles has not changed', () => {
+  it('will not re-render if styles have not changed', () => {
     component = mount(<Test styles={{ root: { background: 'red' } }} />);
     expect(_renderCount).toEqual(1);
     const stylesProp = lastStylesInBaseComponent;
