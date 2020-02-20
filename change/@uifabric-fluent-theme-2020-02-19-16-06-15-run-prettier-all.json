@@ -1,0 +1,9 @@
+{
+  "type": "none",
+  "comment": "Run prettier on all files",
+  "packageName": "@uifabric/fluent-theme",
+  "email": "elcraig@microsoft.com",
+  "commit": "94ec43ecdf89e0ef4071a028d0f2926ee5e4bf2b",
+  "dependentChangeType": "patch",
+  "date": "2020-02-20T00:05:52.348Z"
+}
