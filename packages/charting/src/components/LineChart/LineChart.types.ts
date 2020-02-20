@@ -1,5 +1,7 @@
 import { ITheme, IStyle } from 'office-ui-fabric-react/lib/Styling';
 import { IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
+import { IOverflowSetProps } from 'office-ui-fabric-react/lib/OverflowSet';
+import { IFocusZoneProps } from 'office-ui-fabric-react/lib/FocusZone';
 import { IChartProps } from '../../types/IDataPoint';
 
 export { IChartProps, IDataPoint, ILineChartDataPoint, ILineChartPoints } from '../../types/IDataPoint';
@@ -64,6 +66,16 @@ export interface ILineChartProps {
    * Enable the legends to wrap lines if there is not enough space to show all legends on a single line
    */
   enabledLegendsWrapLines?: boolean;
+
+  /**
+   * overflow props for the legends
+   */
+  legendsOverflowProps?: Partial<IOverflowSetProps>;
+
+  /**
+   * focus zone props in hover card for legends
+   */
+  focusZonePropsForLegendsInHoverCard?: IFocusZoneProps;
 }
 
 export interface ILineChartStyleProps {

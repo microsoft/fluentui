@@ -3,7 +3,6 @@ import { ISearchBoxProps, ISearchBoxStyleProps, ISearchBoxStyles } from './Searc
 import {
   initializeComponentRef,
   warnDeprecations,
-  EventGroup,
   getId,
   KeyCodes,
   classNamesFunction,
@@ -32,7 +31,6 @@ export class SearchBoxBase extends React.Component<ISearchBoxProps, ISearchBoxSt
   private _inputElement = React.createRef<HTMLInputElement>();
   private _latestValue: string;
   private _fallbackId: string;
-  private _events: EventGroup | undefined;
 
   public constructor(props: ISearchBoxProps) {
     super(props);
@@ -62,12 +60,6 @@ export class SearchBoxBase extends React.Component<ISearchBoxProps, ISearchBoxSt
       this.setState({
         value: newProps.value || ''
       });
-    }
-  }
-
-  public componentWillUnmount() {
-    if (this._events) {
-      this._events.dispose();
     }
   }
 
@@ -119,6 +111,7 @@ export class SearchBoxBase extends React.Component<ISearchBoxProps, ISearchBoxSt
           placeholder={placeholderValue}
           onChange={this._onInputChange}
           onInput={this._onInputChange}
+          onBlur={this._onBlur}
           onKeyDown={this._onKeyDown}
           value={value}
           disabled={disabled}
@@ -129,6 +122,7 @@ export class SearchBoxBase extends React.Component<ISearchBoxProps, ISearchBoxSt
         {value!.length > 0 && (
           <div className={classNames.clearButton}>
             <IconButton
+              onBlur={this._onBlur}
               styles={{ root: { height: 'auto' }, icon: { fontSize: '12px' } }}
               iconProps={{ iconName: 'Clear' }}
               {...clearButtonProps}
@@ -184,11 +178,6 @@ export class SearchBoxBase extends React.Component<ISearchBoxProps, ISearchBoxSt
       hasFocus: true
     });
 
-    if (!this._events) {
-      this._events = new EventGroup(this);
-    }
-    this._events.on(ev.currentTarget, 'blur', this._onBlur, true);
-
     if (this.props.onFocus) {
       this.props.onFocus(ev as React.FocusEvent<HTMLInputElement>);
     }
@@ -237,9 +226,6 @@ export class SearchBoxBase extends React.Component<ISearchBoxProps, ISearchBoxSt
   };
 
   private _onBlur = (ev: React.FocusEvent<HTMLInputElement>): void => {
-    if (this._events) {
-      this._events.off();
-    }
     this.setState({
       hasFocus: false
     });

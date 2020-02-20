@@ -265,8 +265,8 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
               hoverAction: () => {
                 this._onHover(point.legend!);
               },
-              onMouseOutAction: () => {
-                this._onLeave();
+              onMouseOutAction: (isLegendSelected?: boolean) => {
+                this._onLeave(isLegendSelected);
               }
             };
             actions.push(legend);
@@ -288,15 +288,21 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
             hoverAction: () => {
               this._onHover(point.legend!);
             },
-            onMouseOutAction: () => {
-              this._onLeave();
+            onMouseOutAction: (isLegendSelected?: boolean) => {
+              this._onLeave(isLegendSelected);
             }
           };
           actions.push(legend);
         });
       }
     });
-    return <Legends legends={actions} />;
+    return (
+      <Legends
+        legends={actions}
+        overflowProps={this.props.legendsOverflowProps}
+        focusZonePropsInHoverCard={this.props.focusZonePropsForLegendsInHoverCard}
+      />
+    );
   };
 
   private _onClick(customMessage: string): void {
@@ -319,11 +325,12 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
     }
   }
 
-  private _onLeave(): void {
-    if (this.state.isLegendSelected === false) {
+  private _onLeave(isLegendFocused?: boolean): void {
+    if (!!isLegendFocused || this.state.isLegendSelected === false) {
       this.setState({
         isLegendHovered: false,
-        selectedLegendTitle: ''
+        selectedLegendTitle: '',
+        isLegendSelected: !!isLegendFocused ? false : this.state.isLegendSelected
       });
     }
   }

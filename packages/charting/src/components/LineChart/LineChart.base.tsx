@@ -199,7 +199,14 @@ export class LineChartBase extends React.Component<
       };
       return legend;
     });
-    const legends = <Legends legends={legendDataItems} enabledWrapLines={this.props.enabledLegendsWrapLines} />;
+    const legends = (
+      <Legends
+        legends={legendDataItems}
+        enabledWrapLines={this.props.enabledLegendsWrapLines}
+        overflowProps={this.props.legendsOverflowProps}
+        focusZonePropsInHoverCard={this.props.focusZonePropsForLegendsInHoverCard}
+      />
+    );
     return legends;
   }
 
