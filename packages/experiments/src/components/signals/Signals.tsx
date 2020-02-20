@@ -46,7 +46,7 @@ export const NeedsRepublishingSignal: Signal = (props: ISignalProps): JSX.Elemen
 };
 
 export const ItemScheduledSignal: Signal = (props: ISignalProps): JSX.Element => {
-  return <IconSignal {...props} signalClass={SignalsStyles.itemScheduled} iconName="datetime" />;
+  return <IconSignal {...props} signalClass={SignalsStyles.itemScheduled} iconName="datetime2" />;
 };
 
 /**
