@@ -8,41 +8,60 @@
     "url": "https://github.com/OfficeDev/office-ui-fabric-react"
   },
   "scripts": {
-    "preinstall": "node ./scripts/use-yarn-please.js",
-    "postinstall": "node ./scripts/postinstall.js",
-    "buildto": "node ./scripts/monorepo/buildTo.js",
-    "builddemo": "node ./scripts/monorepo/buildTo.js fabric-website-resources --min",
-    "scrub": "node ./scripts/scrub.js",
-    "vrtest": "cd apps && cd vr-tests && npm run screener",
     "a11ytest": "cd apps && cd a11y-tests && npm run test",
-    "start": "yarn workspace @uifabric/fabric-website-resources start",
-    "start-exp": "yarn workspace @uifabric/experiments start",
-    "build": "lerna run build --stream -- --production --lint",
-    "buildci": "lerna run build --stream -- --lint",
-    "rebuild": "node ./scripts/invalidate-just-cache.js && npx lerna build --stream",
-    "buildfast": "lerna run build -- --min",
-    "code-style": "lerna run code-style --stream",
-    "change": "beachball change",
+    "build": "lerna run build --stream",
+    "build:fluentuidocs": "gulp build:docs",
+    "build:prod": "lerna run build --stream -- --production",
+    "buildci": "yarn build && yarn test && yarn lint && yarn bundle",
+    "buildci:prod": "yarn build:prod && yarn test && yarn lint && yarn bundle:prod",
+    "builddemo": "node ./scripts/monorepo/buildTo.js fabric-website-resources",
+    "buildto": "node ./scripts/monorepo/buildTo.js",
+    "bundle": "lerna run bundle --stream",
+    "bundle:prod": "lerna run bundle --stream -- --production",
     "bundlesize": "cd scripts && npm run bundlesize",
     "bundlesizecollect": "cd scripts && just-scripts bundle-size-collect",
+    "checkchange": "beachball check --changehint \"Run 'yarn change' to generate a change file\"",
+    "clean": "lerna run clean --parallel",
+    "codepen": "cd packages/office-ui-fabric-react && node ../../scripts/local-codepen.js",
+    "code-style": "lerna run code-style --stream",
     "create-component": "node scripts/create-component.js",
     "create-package": "node scripts/create-package.js",
     "create-page": "node scripts/create-page.js",
-    "checkchange": "beachball check --changehint \"Run 'yarn change' to generate a change file\"",
+    "change": "beachball change",
+    "dom-test": "cd apps/dom-tests && just-scripts jest-dom-with-webpack",
+    "generate-version-files": "yarn workspace @uifabric/build just generate-version-files",
+    "lint": "lerna run lint --parallel",
     "publish:beachball": "beachball publish",
+    "check-for-changed-files": "cd scripts && just-scripts check-for-modified-files",
+    "preinstall": "node ./scripts/use-yarn-please.js",
+    "prelint": "yarn satisfied && yarn syncpack list-mismatches --prod --dev",
+    "postinstall": "node ./scripts/postinstall.js",
+    "prettier": "node scripts/prettier.js",
+    "rebuild": "node ./scripts/invalidate-just-cache.js && npx lerna build --stream",
+    "release:minor": "yarn workspace @uifabric/build just fluentui:publish:minor",
+    "release:patch": "yarn workspace @uifabric/build just fluentui:publish:patch",
+    "satisfied": "satisfied --skip-invalid",
+    "scrub": "node ./scripts/scrub.js",
+    "start:legacy": "yarn workspace @uifabric/fabric-website-resources start",
+    "start": "node scripts/start.js",
+    "start-exp": "yarn workspace @uifabric/experiments start",
+    "test": "lerna run test --stream",
     "update-api": "cd packages/office-ui-fabric-react && npm run update-api",
     "update-snapshots": "lerna run update-snapshots --stream",
     "update-a11y": "cd apps/a11y-tests && npm run update-snapshots",
-    "check-for-changed-files": "cd scripts && just-scripts check-for-modified-files",
-    "prettier": "node scripts/prettier.js",
-    "generate-version-files": "yarn workspace @uifabric/build just generate-version-files",
-    "codepen": "cd packages/office-ui-fabric-react && node ../../scripts/local-codepen.js",
-    "dom-test": "cd apps/dom-tests && just-scripts jest-dom-with-webpack"
+    "vrtest": "cd apps && cd vr-tests && npm run screener"
   },
   "devDependencies": {
-    "beachball": "^1.14.2",
+    "beachball": "^1.18.4",
     "lerna": "^3.15.0",
-    "lint-staged": "^7.0.5"
+    "lint-staged": "^7.0.5",
+    "cross-env": "^5.1.4",
+    "danger": "^6.0.5",
+    "gulp": "^4.0.2",
+    "sass-loader": "^6.0.6",
+    "satisfied": "^1.1.1",
+    "syncpack": "^4.5.4",
+    "tsconfig-paths": "^3.7.0"
   },
   "license": "MIT",
   "lint-staged": {
@@ -52,7 +71,7 @@
         "node ./scripts/lint-staged/tslint",
         "git add"
       ],
-      "*.{js,jsx,json,scss,html,md}": [
+      "*.{js,jsx,json,scss,css,html,md,yml}": [
         "node ./scripts/lint-staged/prettier",
         "node ./scripts/lint-staged/auto-convert-change-files",
         "git add"
@@ -70,12 +89,18 @@
     "packages": [
       "apps/*",
       "packages/*",
-      "scripts"
+      "scripts",
+      "packages/fluentui/*"
     ]
   },
   "beachball": {
     "disallowedChangeTypes": [
       "major"
     ]
+  },
+  "resolutions": {
+    "webpack": "^4.35.0",
+    "autoprefixer": "7.2.6",
+    "copy-to-clipboard": "3.2.0"
   }
 }

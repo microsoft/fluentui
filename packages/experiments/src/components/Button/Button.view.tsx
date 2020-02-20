@@ -17,7 +17,7 @@ export const ButtonView: IButtonComponent['view'] = (props, slots) => {
 
   const { htmlType, propertiesType } = _deriveRootType(props);
 
-  const buttonProps = { ...getNativeProps(rest, propertiesType) };
+  const buttonProps = { ...getNativeProps<React.ButtonHTMLAttributes<HTMLButtonElement>>(rest, propertiesType) };
 
   const _onClick = (ev: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement | HTMLDivElement>) => {
     if (!disabled && onClick) {

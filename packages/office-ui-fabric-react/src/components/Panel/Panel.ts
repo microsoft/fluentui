@@ -7,7 +7,7 @@ import { getStyles } from './Panel.styles';
 /**
  * Panel description
  */
-export const Panel: React.StatelessComponent<IPanelProps> = styled<IPanelProps, IPanelStyleProps, IPanelStyles>(
+export const Panel: React.FunctionComponent<IPanelProps> = styled<IPanelProps, IPanelStyleProps, IPanelStyles>(
   PanelBase,
   getStyles,
   undefined,

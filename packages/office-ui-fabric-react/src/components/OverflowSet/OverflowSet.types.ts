@@ -49,7 +49,7 @@ export interface IOverflowSetProps extends React.ClassAttributes<OverflowSetBase
 
   /**
    * Change item layout direction to vertical/stacked.
-   * Setting vertical to true also changes default role to "menu".
+   * If role is set to `menubar`, `vertical={true}` will also add proper `aria-orientation`.
    * @defaultvalue false
    */
   vertical?: boolean;
@@ -74,6 +74,7 @@ export interface IOverflowSetProps extends React.ClassAttributes<OverflowSetBase
    * Custom properties for OverflowSet's FocusZone.
    * If doNotContainWithinFocusZone is set to true focusZoneProps will be ignored.
    * Use one or the other.
+   * @deprecated In 8.0 the OverflowSet will no longer be wrapped in a FocusZone
    */
   focusZoneProps?: IFocusZoneProps;
 
@@ -82,12 +83,13 @@ export interface IOverflowSetProps extends React.ClassAttributes<OverflowSetBase
    * otherwise the OverflowSet will contain a FocusZone.
    * If this is set to true focusZoneProps will be ignored.
    * Use one or the other.
+   * @deprecated In 8.0 the OverflowSet will no longer be wrapped in a FocusZone
    */
   doNotContainWithinFocusZone?: boolean;
 
   /**
    * The role for the OverflowSet.
-   * @defaultvalue 'menubar'
+   * @defaultvalue 'group'
    */
   role?: string;
 

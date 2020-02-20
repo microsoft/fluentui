@@ -1,7 +1,19 @@
 # Change Log - @uifabric/foundation-scenarios
 
-This log was last generated on Thu, 03 Oct 2019 23:14:46 GMT and should not be manually modified.
+This log was last generated on Fri, 17 Jan 2020 02:32:17 GMT and should not be manually modified.
 
+## 0.102.8
+Fri, 17 Jan 2020 02:32:17 GMT
+
+### Patches
+
+- Update tslib minver to first version containing __spreadArrays helper due to changes in how TS emits spreads. (jagore@microsoft.com)
+## 0.102.7
+Wed, 08 Jan 2020 17:02:57 GMT
+
+### Patches
+
+- bumping load-themed-styles to take advantage of es6 version of it (kchau@microsoft.com)
 ## 0.102.6
 Thu, 03 Oct 2019 23:14:46 GMT
 

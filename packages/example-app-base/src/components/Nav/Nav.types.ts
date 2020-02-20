@@ -32,9 +32,9 @@ export interface INavPage<TPlatform extends string = string> extends Pick<IRoute
   title: string;
 
   /**
-   * URL for this page, relative to the site's root.
+   * URL for this page, relative to the site's root. Undefined for categories.
    */
-  url: string;
+  url?: string;
 
   /**
    * Unique CSS class name for this page.

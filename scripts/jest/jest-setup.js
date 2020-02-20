@@ -1,13 +1,23 @@
+// @ts-check
+
 // Fail on warnings.
+const consoleWarn = console.warn;
 const consoleError = console.error;
 
-console.error = console.warn = message => {
-  consoleError(message);
+console.error = customError.bind(null, 'error');
+console.warn = customError.bind(null, 'warn');
 
-  if (typeof message === 'object' && message.stack) {
-    // If the "message" was an exception, re-throw it to get the full stack trace
-    throw message;
+function customError(type, ...args) {
+  if (type === 'warn') {
+    consoleWarn(...args);
   } else {
-    throw new Error('Caught: ' + message);
+    consoleError(...args);
   }
-};
+
+  if (args.length === 1 && typeof args[0] === 'object' && args[0].stack) {
+    // If the "message" was an exception, re-throw it to get the full stack trace
+    throw args[0];
+  } else {
+    throw new Error(`[console.${type}] ${args.join(' ')}`);
+  }
+}

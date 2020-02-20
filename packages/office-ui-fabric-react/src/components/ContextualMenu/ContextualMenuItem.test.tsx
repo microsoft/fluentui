@@ -48,6 +48,49 @@ describe('ContextMenuItemChildren', () => {
     });
   });
 
+  describe('when hide checkmark icon for toggle command', () => {
+    let onCheckmarkClick: jest.Mock;
+    let menuItem: IContextualMenuItem;
+    let menuClassNames: IMenuItemClassNames;
+    let wrapper: ShallowWrapper<IContextualMenuItemProps, {}>;
+
+    beforeEach(() => {
+      menuItem = { key: '123', canCheck: false };
+      menuClassNames = getMenuItemClassNames();
+      onCheckmarkClick = jest.fn();
+
+      wrapper = shallow(
+        <ContextualMenuItemBase
+          item={menuItem}
+          classNames={menuClassNames}
+          index={1}
+          hasIcons={undefined}
+          onCheckmarkClick={onCheckmarkClick}
+        />
+      );
+    });
+
+    it('renders the component with the checkmark', () => {
+      expect(wrapper).toMatchSnapshot();
+    });
+
+    describe('when the checkmark is clicked', () => {
+      let event: jest.Mock;
+      beforeEach(() => {
+        event = jest.fn();
+        wrapper.find('.checkmarkIcon').simulate('click', event);
+      });
+
+      it('invokes the onCheckmarkClick callback', () => {
+        expect(onCheckmarkClick).toHaveBeenCalledWith(menuItem, event);
+      });
+
+      it('should not show checkmark', () => {
+        expect(wrapper.find('.ms-ContextualMenu-checkmarkIcon').length).toEqual(0);
+      });
+    });
+  });
+
   describe('when it has icons', () => {
     describe('when it has iconProps', () => {
       let menuItem: IContextualMenuItem;

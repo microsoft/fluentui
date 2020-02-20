@@ -281,6 +281,11 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                         }
                     data-icon-name="CircleRing"
                     role="presentation"
+                    style={
+                      Object {
+                        "fontFamily": "\\"FabricMDL2Icons\\"",
+                      }
+                    }
                   >
                     
                   </i>
@@ -320,6 +325,11 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                         }
                     data-icon-name="StatusCircleCheckmark"
                     role="presentation"
+                    style={
+                      Object {
+                        "fontFamily": "\\"FabricMDL2Icons\\"",
+                      }
+                    }
                   >
                     
                   </i>
@@ -428,6 +438,11 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                   }
               data-icon-name="ChevronRightMed"
               role="presentation"
+              style={
+                Object {
+                  "fontFamily": "\\"FabricMDL2Icons-3\\"",
+                }
+              }
             >
               
             </i>
@@ -778,6 +793,7 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                     padding-right: 0px;
                                     padding-top: 0px;
                                     text-align: left;
+                                    text-decoration: none;
                                     text-overflow: inherit;
                                     user-select: text;
                                   }
@@ -843,6 +859,7 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                     padding-right: 0px;
                                     padding-top: 0px;
                                     text-align: left;
+                                    text-decoration: none;
                                     text-overflow: inherit;
                                     user-select: text;
                                   }
@@ -1162,6 +1179,11 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                               }
                                           data-icon-name="CircleRing"
                                           role="presentation"
+                                          style={
+                                            Object {
+                                              "fontFamily": "\\"FabricMDL2Icons\\"",
+                                            }
+                                          }
                                         >
                                           
                                         </i>
@@ -1201,6 +1223,11 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                               }
                                           data-icon-name="StatusCircleCheckmark"
                                           role="presentation"
+                                          style={
+                                            Object {
+                                              "fontFamily": "\\"FabricMDL2Icons\\"",
+                                            }
+                                          }
                                         >
                                           
                                         </i>
@@ -1566,6 +1593,11 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                               }
                                           data-icon-name="CircleRing"
                                           role="presentation"
+                                          style={
+                                            Object {
+                                              "fontFamily": "\\"FabricMDL2Icons\\"",
+                                            }
+                                          }
                                         >
                                           
                                         </i>
@@ -1605,6 +1637,11 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                               }
                                           data-icon-name="StatusCircleCheckmark"
                                           role="presentation"
+                                          style={
+                                            Object {
+                                              "fontFamily": "\\"FabricMDL2Icons\\"",
+                                            }
+                                          }
                                         >
                                           
                                         </i>
@@ -1970,6 +2007,11 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                               }
                                           data-icon-name="CircleRing"
                                           role="presentation"
+                                          style={
+                                            Object {
+                                              "fontFamily": "\\"FabricMDL2Icons\\"",
+                                            }
+                                          }
                                         >
                                           
                                         </i>
@@ -2009,6 +2051,11 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                               }
                                           data-icon-name="StatusCircleCheckmark"
                                           role="presentation"
+                                          style={
+                                            Object {
+                                              "fontFamily": "\\"FabricMDL2Icons\\"",
+                                            }
+                                          }
                                         >
                                           
                                         </i>
@@ -2374,6 +2421,11 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                               }
                                           data-icon-name="CircleRing"
                                           role="presentation"
+                                          style={
+                                            Object {
+                                              "fontFamily": "\\"FabricMDL2Icons\\"",
+                                            }
+                                          }
                                         >
                                           
                                         </i>
@@ -2413,6 +2465,11 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                               }
                                           data-icon-name="StatusCircleCheckmark"
                                           role="presentation"
+                                          style={
+                                            Object {
+                                              "fontFamily": "\\"FabricMDL2Icons\\"",
+                                            }
+                                          }
                                         >
                                           
                                         </i>
@@ -2778,6 +2835,11 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                               }
                                           data-icon-name="CircleRing"
                                           role="presentation"
+                                          style={
+                                            Object {
+                                              "fontFamily": "\\"FabricMDL2Icons\\"",
+                                            }
+                                          }
                                         >
                                           
                                         </i>
@@ -2817,6 +2879,11 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                               }
                                           data-icon-name="StatusCircleCheckmark"
                                           role="presentation"
+                                          style={
+                                            Object {
+                                              "fontFamily": "\\"FabricMDL2Icons\\"",
+                                            }
+                                          }
                                         >
                                           
                                         </i>
@@ -3182,6 +3249,11 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                               }
                                           data-icon-name="CircleRing"
                                           role="presentation"
+                                          style={
+                                            Object {
+                                              "fontFamily": "\\"FabricMDL2Icons\\"",
+                                            }
+                                          }
                                         >
                                           
                                         </i>
@@ -3221,6 +3293,11 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                               }
                                           data-icon-name="StatusCircleCheckmark"
                                           role="presentation"
+                                          style={
+                                            Object {
+                                              "fontFamily": "\\"FabricMDL2Icons\\"",
+                                            }
+                                          }
                                         >
                                           
                                         </i>
@@ -3586,6 +3663,11 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                               }
                                           data-icon-name="CircleRing"
                                           role="presentation"
+                                          style={
+                                            Object {
+                                              "fontFamily": "\\"FabricMDL2Icons\\"",
+                                            }
+                                          }
                                         >
                                           
                                         </i>
@@ -3625,6 +3707,11 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                               }
                                           data-icon-name="StatusCircleCheckmark"
                                           role="presentation"
+                                          style={
+                                            Object {
+                                              "fontFamily": "\\"FabricMDL2Icons\\"",
+                                            }
+                                          }
                                         >
                                           
                                         </i>
@@ -3990,6 +4077,11 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                               }
                                           data-icon-name="CircleRing"
                                           role="presentation"
+                                          style={
+                                            Object {
+                                              "fontFamily": "\\"FabricMDL2Icons\\"",
+                                            }
+                                          }
                                         >
                                           
                                         </i>
@@ -4029,6 +4121,11 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                               }
                                           data-icon-name="StatusCircleCheckmark"
                                           role="presentation"
+                                          style={
+                                            Object {
+                                              "fontFamily": "\\"FabricMDL2Icons\\"",
+                                            }
+                                          }
                                         >
                                           
                                         </i>
@@ -4394,6 +4491,11 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                               }
                                           data-icon-name="CircleRing"
                                           role="presentation"
+                                          style={
+                                            Object {
+                                              "fontFamily": "\\"FabricMDL2Icons\\"",
+                                            }
+                                          }
                                         >
                                           
                                         </i>
@@ -4433,6 +4535,11 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                               }
                                           data-icon-name="StatusCircleCheckmark"
                                           role="presentation"
+                                          style={
+                                            Object {
+                                              "fontFamily": "\\"FabricMDL2Icons\\"",
+                                            }
+                                          }
                                         >
                                           
                                         </i>
@@ -4798,6 +4905,11 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                               }
                                           data-icon-name="CircleRing"
                                           role="presentation"
+                                          style={
+                                            Object {
+                                              "fontFamily": "\\"FabricMDL2Icons\\"",
+                                            }
+                                          }
                                         >
                                           
                                         </i>
@@ -4837,6 +4949,11 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                               }
                                           data-icon-name="StatusCircleCheckmark"
                                           role="presentation"
+                                          style={
+                                            Object {
+                                              "fontFamily": "\\"FabricMDL2Icons\\"",
+                                            }
+                                          }
                                         >
                                           
                                         </i>

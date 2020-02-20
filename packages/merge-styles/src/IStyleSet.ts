@@ -27,7 +27,7 @@ export type IStyleSet<TStyleSet extends IStyleSet<TStyleSet>> = { [P in keyof Om
  * A concatenated style set differs from `IStyleSet` in that subComponentStyles will always be a style function.
  */
 export type IConcatenatedStyleSet<TStyleSet extends IStyleSet<TStyleSet>> = {
-  [P in keyof Omit<TStyleSet, 'subComponentStyles'>]: IStyle
+  [P in keyof Omit<TStyleSet, 'subComponentStyles'>]: IStyle;
 } & {
   subComponentStyles?: { [P in keyof TStyleSet['subComponentStyles']]: IStyleFunction<any, IStyleSet<any>> };
 };
@@ -40,6 +40,6 @@ export type IProcessedStyleSet<TStyleSet extends IStyleSet<TStyleSet>> = { [P in
   subComponentStyles: {
     [P in keyof TStyleSet['subComponentStyles']]: __MapToFunctionType<
       TStyleSet['subComponentStyles'] extends infer J ? (P extends keyof J ? J[P] : never) : never
-    >
+    >;
   };
 };

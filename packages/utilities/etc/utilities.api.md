@@ -27,7 +27,7 @@ export const allowScrollOnElement: (element: HTMLElement | null, events: EventGr
 export const anchorProperties: string[];
 
 // @public
-export function appendFunction(parent: any, ...functions: (any)[]): () => void;
+export function appendFunction(parent: any, ...functions: any[]): () => void;
 
 // @public
 export function arraysEqual<T>(array1: T[], array2: T[]): boolean;
@@ -123,10 +123,19 @@ export const colGroupProperties: string[];
 export const colProperties: string[];
 
 // @public
+export function composeComponentAs<TProps>(outer: IComponentAs<TProps>, inner: IComponentAs<TProps>): IComponentAs<TProps>;
+
+// @public
+export function composeRenderFunction<TProps>(outer: IRenderFunction<TProps>, inner: IRenderFunction<TProps>): IRenderFunction<TProps>;
+
+// @public
 export function createArray<T>(size: number, getItem: (index: number) => T): T[];
 
+// @public
+export function createMemoizer<F extends (input: any) => any>(getValue: F): F;
+
 // Warning: (ae-incompatible-release-tags) The symbol "css" is marked as @public, but its signature references "ICssInput" which is marked as @internal
-// 
+//
 // @public
 export function css(...args: ICssInput[]): string;
 
@@ -168,7 +177,7 @@ export const DATA_IS_SCROLLABLE_ATTRIBUTE = "data-is-scrollable";
 export const DATA_PORTAL_ATTRIBUTE = "data-portal-element";
 
 // Warning: (ae-incompatible-release-tags) The symbol "DelayedRender" is marked as @public, but its signature references "IDelayedRenderState" which is marked as @internal
-// 
+//
 // @public
 export class DelayedRender extends React.Component<IDelayedRenderProps, IDelayedRenderState> {
     constructor(props: IDelayedRenderProps);
@@ -236,7 +245,7 @@ export class FabricPerformance {
     // (undocumented)
     static setPeriodicReset(): void;
     // Warning: (ae-incompatible-release-tags) The symbol "summary" is marked as @public, but its signature references "IPerfSummary" which is marked as @internal
-    // 
+    //
     // (undocumented)
     static summary: IPerfSummary;
     }
@@ -439,7 +448,7 @@ export type IComponentAsProps<T> = T & {
 };
 
 // Warning: (ae-internal-missing-underscore) The name "ICssInput" should be prefixed with an underscore because the declaration is marked as @internal
-// 
+//
 // @internal
 export type ICssInput = string | ISerializableObject | IDictionary | null | undefined | boolean;
 
@@ -476,7 +485,7 @@ export type ICustomizerProps = IBaseProps & Partial<{
 };
 
 // Warning: (ae-internal-missing-underscore) The name "IDeclaredEventsByName" should be prefixed with an underscore because the declaration is marked as @internal
-// 
+//
 // @internal
 export interface IDeclaredEventsByName {
     // (undocumented)
@@ -489,14 +498,14 @@ export interface IDelayedRenderProps extends React.Props<{}> {
 }
 
 // Warning: (ae-internal-missing-underscore) The name "IDelayedRenderState" should be prefixed with an underscore because the declaration is marked as @internal
-// 
+//
 // @internal
 export interface IDelayedRenderState {
     isRendered: boolean;
 }
 
 // Warning: (ae-internal-missing-underscore) The name "IDictionary" should be prefixed with an underscore because the declaration is marked as @internal
-// 
+//
 // @internal
 export interface IDictionary {
     // (undocumented)
@@ -510,7 +519,7 @@ export interface IDisposable {
 }
 
 // Warning: (ae-internal-missing-underscore) The name "IEventRecord" should be prefixed with an underscore because the declaration is marked as @internal
-// 
+//
 // @internal
 export interface IEventRecord {
     // (undocumented)
@@ -530,7 +539,7 @@ export interface IEventRecord {
 }
 
 // Warning: (ae-internal-missing-underscore) The name "IEventRecordList" should be prefixed with an underscore because the declaration is marked as @internal
-// 
+//
 // @internal
 export interface IEventRecordList {
     // (undocumented)
@@ -540,7 +549,7 @@ export interface IEventRecordList {
 }
 
 // Warning: (ae-internal-missing-underscore) The name "IEventRecordsByName" should be prefixed with an underscore because the declaration is marked as @internal
-// 
+//
 // @internal
 export interface IEventRecordsByName {
     // (undocumented)
@@ -580,7 +589,7 @@ export interface IObjectWithKey {
 }
 
 // Warning: (ae-internal-missing-underscore) The name "IPerfData" should be prefixed with an underscore because the declaration is marked as @internal
-// 
+//
 // @internal
 export interface IPerfData {
     // (undocumented)
@@ -590,7 +599,7 @@ export interface IPerfData {
 }
 
 // Warning: (ae-internal-missing-underscore) The name "IPerfMeasurement" should be prefixed with an underscore because the declaration is marked as @internal
-// 
+//
 // @internal
 export interface IPerfMeasurement {
     // (undocumented)
@@ -602,7 +611,7 @@ export interface IPerfMeasurement {
 }
 
 // Warning: (ae-internal-missing-underscore) The name "IPerfSummary" should be prefixed with an underscore because the declaration is marked as @internal
-// 
+//
 // @internal
 export interface IPerfSummary {
     // (undocumented)
@@ -660,19 +669,19 @@ export function isControlled<P>(props: P, valueProp: keyof P): boolean;
 export function isDirectionalKeyCode(which: number): boolean;
 
 // @public (undocumented)
-export interface ISelection {
+export interface ISelection<TItem = IObjectWithKey> {
     // (undocumented)
-    canSelectItem: (item: IObjectWithKey, index?: number) => boolean;
+    canSelectItem: (item: TItem, index?: number) => boolean;
     // (undocumented)
     count: number;
     // (undocumented)
-    getItems(): IObjectWithKey[];
+    getItems(): TItem[];
     // (undocumented)
     getSelectedCount(): number;
     // (undocumented)
     getSelectedIndices(): number[];
     // (undocumented)
-    getSelection(): IObjectWithKey[];
+    getSelection(): TItem[];
     // (undocumented)
     isAllSelected(): boolean;
     // (undocumented)
@@ -696,7 +705,7 @@ export interface ISelection {
     // (undocumented)
     setIndexSelected(index: number, isSelected: boolean, shouldAnchor: boolean): void;
     // (undocumented)
-    setItems(items: IObjectWithKey[], shouldClear: boolean): void;
+    setItems(items: TItem[], shouldClear: boolean): void;
     // (undocumented)
     setKeySelected(key: string, isSelected: boolean, shouldAnchor: boolean): void;
     // (undocumented)
@@ -712,16 +721,18 @@ export interface ISelection {
 }
 
 // @public (undocumented)
-export interface ISelectionOptions {
+export interface ISelectionOptions<TItem = IObjectWithKey> {
     // (undocumented)
-    canSelectItem?: (item: IObjectWithKey, index?: number) => boolean;
-    // (undocumented)
-    getKey?: (item: IObjectWithKey, index?: number) => string | number;
+    canSelectItem?: (item: TItem, index?: number) => boolean;
+    getKey?: (item: TItem, index?: number) => string | number;
     // (undocumented)
     onSelectionChanged?: () => void;
     // (undocumented)
     selectionMode?: SelectionMode;
 }
+
+// @public
+export type ISelectionOptionsWithRequiredGetKey<TItem> = ISelectionOptions<TItem> & Required<Pick<ISelectionOptions<TItem>, 'getKey'>>;
 
 // @public
 export function isElementFocusSubZone(element?: HTMLElement): boolean;
@@ -736,7 +747,7 @@ export function isElementTabbable(element: HTMLElement, checkTabIndex?: boolean)
 export function isElementVisible(element: HTMLElement | undefined | null): boolean;
 
 // Warning: (ae-internal-missing-underscore) The name "ISerializableObject" should be prefixed with an underscore because the declaration is marked as @internal
-// 
+//
 // @internal
 export interface ISerializableObject {
     // (undocumented)
@@ -926,7 +937,7 @@ export function memoize<T extends Function>(target: any, key: string, descriptor
 };
 
 // @public
-export function memoizeFunction<T extends (...args: any[]) => RET_TYPE, RET_TYPE>(cb: T, maxCacheSize?: number): T;
+export function memoizeFunction<T extends (...args: any[]) => RET_TYPE, RET_TYPE>(cb: T, maxCacheSize?: number, ignoreNullOrUndefinedResult?: boolean): T;
 
 // @public
 export function merge<T = {}>(target: Partial<T>, ...args: (Partial<T> | null | undefined | false)[]): T;
@@ -1010,22 +1021,21 @@ export const safeRequestAnimationFrame: (component: React.Component<{}, {}, any>
 export const safeSetTimeout: (component: React.Component<{}, {}, any>) => (cb: Function, duration: number) => void;
 
 // @public (undocumented)
-export class Selection implements ISelection {
-    constructor(options?: ISelectionOptions);
+export class Selection<TItem = IObjectWithKey> implements ISelection<TItem> {
+    constructor(...options: TItem extends IObjectWithKey ? [] | [ISelectionOptions<TItem>] : [ISelectionOptionsWithRequiredGetKey<TItem>]);
     // (undocumented)
-    canSelectItem(item: IObjectWithKey, index?: number): boolean;
-    // (undocumented)
+    canSelectItem(item: TItem, index?: number): boolean;
     count: number;
     // (undocumented)
-    getItems(): IObjectWithKey[];
+    getItems(): TItem[];
     // (undocumented)
-    getKey(item: IObjectWithKey, index?: number): string;
+    getKey(item: TItem, index?: number): string;
     // (undocumented)
     getSelectedCount(): number;
     // (undocumented)
     getSelectedIndices(): number[];
     // (undocumented)
-    getSelection(): IObjectWithKey[];
+    getSelection(): TItem[];
     // (undocumented)
     isAllSelected(): boolean;
     // (undocumented)
@@ -1048,7 +1058,7 @@ export class Selection implements ISelection {
     setChangeEvents(isEnabled: boolean, suppressChange?: boolean): void;
     // (undocumented)
     setIndexSelected(index: number, isSelected: boolean, shouldAnchor: boolean): void;
-    setItems(items: IObjectWithKey[], shouldClear?: boolean): void;
+    setItems(items: TItem[], shouldClear?: boolean): void;
     // (undocumented)
     setKeySelected(key: string, isSelected: boolean, shouldAnchor: boolean): void;
     // (undocumented)
@@ -1097,7 +1107,7 @@ export function setFocusVisibility(enabled: boolean, target?: Element): void;
 export function setLanguage(language: string, avoidPersisting?: boolean): void;
 
 // Warning: (ae-internal-missing-underscore) The name "setMemoizeWeakMap" should be prefixed with an underscore because the declaration is marked as @internal
-// 
+//
 // @internal
 export function setMemoizeWeakMap(weakMap: any): void;
 
@@ -1129,7 +1139,7 @@ export function shallowCompare<TA, TB>(a: TA, b: TB): boolean;
 export function shouldWrapFocus(element: HTMLElement, noWrapDataAttribute: 'data-no-vertical-wrap' | 'data-no-horizontal-wrap'): boolean;
 
 // @public
-export function styled<TComponentProps extends IPropsWithStyles<TStyleProps, TStyleSet>, TStyleProps, TStyleSet extends IStyleSet<TStyleSet>>(Component: React.ComponentClass<TComponentProps> | React.StatelessComponent<TComponentProps>, baseStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet>, getProps?: (props: TComponentProps) => Partial<TComponentProps>, customizable?: ICustomizableProps, pure?: boolean): React.StatelessComponent<TComponentProps>;
+export function styled<TComponentProps extends IPropsWithStyles<TStyleProps, TStyleSet>, TStyleProps, TStyleSet extends IStyleSet<TStyleSet>>(Component: React.ComponentClass<TComponentProps> | React.FunctionComponent<TComponentProps>, baseStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet>, getProps?: (props: TComponentProps) => Partial<TComponentProps>, customizable?: ICustomizableProps, pure?: boolean): React.FunctionComponent<TComponentProps>;
 
 // @public
 export const tableProperties: string[];

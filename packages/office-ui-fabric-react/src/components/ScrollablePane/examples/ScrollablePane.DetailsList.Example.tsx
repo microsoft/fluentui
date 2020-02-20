@@ -164,7 +164,7 @@ function onRenderDetailsFooter(props: IDetailsFooterProps, defaultRender?: IRend
           itemIndex={-1}
           selection={props.selection}
           selectionMode={(props.selection && props.selection.mode) || SelectionMode.none}
-          viewport={props.viewport}
+          rowWidth={props.rowWidth}
         />
       </div>
     </Sticky>

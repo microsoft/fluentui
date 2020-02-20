@@ -50,6 +50,23 @@ const getRootBackground = (messageBarType: MessageBarType | undefined, palette: 
   return palette.neutralLighter;
 };
 
+// Returns the background color of the MessageBar root element based on the type of MessageBar when in High Contrast Mode.
+// The fact that the styles don't vary based on the theme is intentional since the objective is to show the message bar type and theme
+// variations would not be appreciated in High Contrast either way.
+const getHighContrastRootBackground = (messageBarType: MessageBarType | undefined): string => {
+  switch (messageBarType) {
+    case MessageBarType.error:
+    case MessageBarType.blocked:
+    case MessageBarType.severeWarning:
+      return 'rgba(255, 0, 0, 0.3)';
+    case MessageBarType.success:
+      return 'rgba(48, 241, 73, 0.3)';
+    case MessageBarType.warning:
+      return 'rgba(255, 254, 57, 0.3)';
+  }
+  return 'Window';
+};
+
 // Returns the icon color based on the type of MessageBar.
 const getIconColor = (messageBarType: MessageBarType | undefined, palette: IPalette, semanticColors: ISemanticColors): string => {
   switch (messageBarType) {
@@ -81,7 +98,7 @@ export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
     selectors: {
       [HighContrastSelector]: {
         MsHighContrastAdjust: 'none',
-        color: 'Window'
+        color: 'WindowText'
       }
     }
   };
@@ -134,11 +151,17 @@ export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
         selectors: {
           '& .ms-Link': {
             color: palette.themeDark,
-            ...fonts.small
+            ...fonts.small,
+            selectors: {
+              [HighContrastSelector]: {
+                MsHighContrastAdjust: 'auto'
+              }
+            }
           },
           [HighContrastSelector]: {
-            background: 'WindowText',
-            color: 'Window'
+            background: getHighContrastRootBackground(messageBarType),
+            border: '1px solid WindowText',
+            color: 'WindowText'
           }
         }
       },
@@ -171,7 +194,7 @@ export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
       selectors: {
         [HighContrastSelector]: {
           MsHighContrastAdjust: 'none',
-          color: 'Window'
+          color: 'WindowText'
         }
       }
     },

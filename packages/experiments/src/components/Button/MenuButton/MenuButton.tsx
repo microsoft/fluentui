@@ -5,7 +5,7 @@ import { MenuButtonStyles as styles, MenuButtonTokens as tokens } from './MenuBu
 import { IMenuButtonProps } from './MenuButton.types';
 import { MenuButtonSlots as slots, MenuButtonView as view } from './MenuButton.view';
 
-export const MenuButton: React.StatelessComponent<IMenuButtonProps> = composed({
+export const MenuButton: React.FunctionComponent<IMenuButtonProps> = composed({
   displayName: 'MenuButton',
   slots,
   state,

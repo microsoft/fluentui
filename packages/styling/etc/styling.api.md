@@ -140,6 +140,9 @@ export function getIcon(name?: string): IIconRecord | undefined;
 export function getIconClassName(name: string): string;
 
 // @public
+export const getInputFocusStyle: (borderColor: string, borderRadius: string | number, borderType?: "border" | "borderBottom", borderPosition?: number) => IRawStyle;
+
+// @public
 export function getPlaceholderStyles(styles: IStyle): IStyle;
 
 // @public (undocumented)
@@ -343,8 +346,6 @@ export interface IIconOptions {
 export interface IIconRecord {
     // (undocumented)
     code: string | undefined;
-    // Warning: (ae-forgotten-export) The symbol "IIconSubsetRecord" needs to be exported by the entry point index.d.ts
-    // 
     // (undocumented)
     subset: IIconSubsetRecord;
 }
@@ -359,6 +360,14 @@ export interface IIconSubset {
     };
     // (undocumented)
     style?: IRawStyle;
+}
+
+// @public (undocumented)
+export interface IIconSubsetRecord extends IIconSubset {
+    // (undocumented)
+    className?: string;
+    // (undocumented)
+    isRegistered?: boolean;
 }
 
 export { InjectionMode }

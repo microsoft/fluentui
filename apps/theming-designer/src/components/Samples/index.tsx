@@ -193,7 +193,10 @@ export class Samples extends React.Component<ISamplesProps, ISamplesState> {
                   <Dropdown
                     selectedKey="content"
                     label="Select one"
-                    options={[{ key: 'content', text: 'Content' }, { key: 'morecontent', text: 'More content' }]}
+                    options={[
+                      { key: 'content', text: 'Content' },
+                      { key: 'morecontent', text: 'More content' }
+                    ]}
                     disabled={this.state.selectOneDropdownDisabled}
                   />
                   <TextField disabled={this.state.textFieldDisabled} label="Enter text here" placeholder="Placeholder" />

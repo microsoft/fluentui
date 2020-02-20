@@ -60,7 +60,7 @@ const MediaTileBox = (props: { children: React.ReactNode }): JSX.Element => {
   );
 };
 
-const DocumentTileWithThumbnail: React.StatelessComponent<IDocumentTileWithThumbnailProps> = (
+const DocumentTileWithThumbnail: React.FunctionComponent<IDocumentTileWithThumbnailProps> = (
   props: IDocumentTileWithThumbnailProps
 ): JSX.Element => {
   function renderForeground(foregroundProps: { foregroundSize?: ISize }) {
@@ -100,7 +100,7 @@ const DocumentTileWithThumbnail: React.StatelessComponent<IDocumentTileWithThumb
   );
 };
 
-const MediaTileWithThumbnail: React.StatelessComponent<IMediaTileWithThumbnailProps> = (
+const MediaTileWithThumbnail: React.FunctionComponent<IMediaTileWithThumbnailProps> = (
   props: IMediaTileWithThumbnailProps
 ): JSX.Element => {
   const { imageSize, item, nameplateOnlyOnHover } = props;

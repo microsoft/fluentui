@@ -167,6 +167,7 @@ Array [
             role="presentation"
             style={
               Object {
+                "fontFamily": "\\"FabricMDL2Icons\\"",
                 "fontSize": "14px",
               }
             }
@@ -503,6 +504,7 @@ Array [
             role="presentation"
             style={
               Object {
+                "fontFamily": "\\"FabricMDL2Icons\\"",
                 "fontSize": "14px",
               }
             }
@@ -678,6 +680,7 @@ Array [
             role="presentation"
             style={
               Object {
+                "fontFamily": "\\"FabricMDL2Icons\\"",
                 "fontSize": "14px",
               }
             }
@@ -1014,6 +1017,7 @@ Array [
             role="presentation"
             style={
               Object {
+                "fontFamily": "\\"FabricMDL2Icons\\"",
                 "fontSize": "14px",
               }
             }

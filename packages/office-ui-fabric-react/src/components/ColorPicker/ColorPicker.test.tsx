@@ -155,7 +155,7 @@ describe('ColorPicker', () => {
       svAriaLabel: 'custom rectangle',
       svAriaDescription: 'custom rectangle description',
       svAriaValueFormat: 'custom rectangle value', // missing placeholders but code doesn't check for that
-      hue: 'custom hue'
+      hueAriaLabel: 'custom hue'
     };
 
     wrapper = mount(
@@ -180,7 +180,7 @@ describe('ColorPicker', () => {
     expect(rectangleHtml).toContain(customAria.svAriaValueFormat);
 
     const sliders = wrapper.find(ColorSliderBase);
-    expect(sliders.at(0).html()).toContain(customAria.hue);
+    expect(sliders.at(0).html()).toContain(customAria.hueAriaLabel);
     expect(sliders.at(1).html()).toContain('Custom Alpha');
   });
 

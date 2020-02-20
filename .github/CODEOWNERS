@@ -18,17 +18,22 @@
 #### Core build stuff
 scripts/ @dzearing @kenotron @ecraig12345
 package.json @kenotron @ecraig12345 @dzearing
+prettier.config.js @ecraig12345 @kenotron
 webpack.config.js @kenotron @ecraig12345
 webpack.serve.config.js @kenotron @ecraig12345
 jest.config.js @kenotron @ecraig12345
 tsconfig.json @kenotron @ecraig12345
 lerna.json @kenotron @ecraig12345
 LICENSE @kenotron @ecraig12345
-azure-pipelines.yml @ecraig12345 @kenotron
+azure-pipelines.yml @ecraig12345 @kenotron @JasonGore
+azure-pipelines.*.yml @ecraig12345 @kenotron @JasonGore
 .appveyor.yml @kenotron @ecraig12345
 .npmrc @kenotron @ecraig12345
 .npmignore @kenotron @ecraig12345
 sizeauditor.json @aftab-hassan
+
+#### Fluent UI
+packages/fluentui/ @JasonGore @kenotron
 
 #### Deprecated API Files
 *.api.ts @natalieethell
@@ -55,7 +60,6 @@ packages/lists/ @dzearing @KevinTCoughlin @aditima
 packages/merge-styles/ @dzearing
 packages/migration/ @ecraig12345 @kenotron
 packages/monaco-editor/ @ecraig12345 @kenotron
-packages/prettier-rules/ @ecraig12345 @kenotron
 packages/react-hooks/ @ecraig12345
 packages/styling/ @dzearing
 packages/styling/src/interfaces/ @phkuo
@@ -86,7 +90,7 @@ Callout/ @joschect
 react-cards/Card/  @khmakoto
 Check/ @KevinTCoughlin
 Checkbox/ @cliffkoh
-ChoiceGroup/ @srideshpande @ecraig12345
+ChoiceGroup/ @ecraig12345
 Coachmark/ @leddie24
 CollapsibleSection/ @JasonGore
 ColorPicker/ @ecraig12345
@@ -102,7 +106,8 @@ Fabric/ @dzearing
 Facepile/ @markionium @mtennoe
 FolderCover/ @ThomasMichon @bigbadcapers
 FocusTrapZone/ @JasonGore
-FocusZone/ @JasonGore
+office-ui-fabric-react/src/components/FocusZone/ @JasonGore
+react-focus/src/components/FocusZone/ @khmakoto
 GroupedList/  @aditima @KevinTCoughlin
 HoverCard/   @atneik @Jahnp @Vitalius1
 Icon/ @dzearing

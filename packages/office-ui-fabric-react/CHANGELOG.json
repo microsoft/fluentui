@@ -2,6 +2,1004 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Thu, 20 Feb 2020 12:20:16 GMT",
+      "tag": "office-ui-fabric-react_v7.94.1",
+      "version": "7.94.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "SearchBox: Use native input onBlur to fix blur getting called twice",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "e07d7d3a1fc807e7bf47e04477e5251759d0e301"
+          },
+          {
+            "comment": "DatePicker: Fixing onSelectDate event being called twice when allowTextInput is set to true.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "14fa26d0ce716ddb08a64adeb81e1e3507cd2493"
+          },
+          {
+            "comment": "GroupedList: Adding checks for group and selection being undefined.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "e8b1bf416fe51e14c69d5733d31996c27f092374"
+          },
+          {
+            "comment": "FocusZone: fix memory leak caused by closure",
+            "author": "xgao@microsoft.com",
+            "commit": "e2c990cb0670a4a6bf86562eb804d8774721da15"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 19 Feb 2020 12:21:05 GMT",
+      "tag": "office-ui-fabric-react_v7.94.0",
+      "version": "7.94.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Removing use of deprecated props across the office-ui-fabric-react package so we can eventually enable the tslint deprecation rule.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "8327cbafb8cede2043608f0dd80a17fe7d71e5bc"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Add syncpack and synchronize dependencies. Refresh fluent import.",
+            "author": "jagore@microsoft.com",
+            "commit": "fb51dde1a365f7aad0cffbe23f01254ba1f31ebf"
+          },
+          {
+            "comment": "Set touchmove and touchend event handlers to get caught in the capture phase",
+            "author": "catalina@microsoft.com",
+            "commit": "a7a7262fee8f15d105564c44c4a20c55417302a9"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 17 Feb 2020 17:06:50 GMT",
+      "tag": "office-ui-fabric-react_v7.93.1",
+      "version": "7.93.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "List: clearing scrollElement on unmount to avoid retaining an edge to a dom element and leaking.",
+            "author": "dzearing@microsoft.com",
+            "commit": "8a1f887f42f85fcbdbea98970b8751411b79954a"
+          },
+          {
+            "comment": "Fix: Uncaught SyntaxError: Failed to execute 'querySelector' on 'Document'.",
+            "author": "email not defined",
+            "commit": "be43d86222ecf04fbe747b604941eac9da048195"
+          },
+          {
+            "comment": "ShimmeredDetailsList: add aria-busy=true when shimmer is enabled",
+            "author": "xgao@microsoft.com",
+            "commit": "3be35a40104099e1b7a35a2dde5d96b9069365cd"
+          }
+        ],
+        "none": [
+          {
+            "comment": "upgrading types for webpack-env",
+            "author": "kchau@microsoft.com",
+            "commit": "7d071a411865930641727e54da85d2d601c5722b"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 12 Feb 2020 12:24:27 GMT",
+      "tag": "office-ui-fabric-react_v7.93.0",
+      "version": "7.93.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Re-export react-focus's FocusZone from OUFR",
+            "author": "elcraig@microsoft.com",
+            "commit": "4f2d8efea3622ba8c9d844c68e5ed5088b858f6f"
+          },
+          {
+            "comment": "Replacing deprecated StatelessComponent references with FunctionComponent.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "a2d743b178cecab012e4a7335c7e518d0c9b26c7"
+          },
+          {
+            "comment": "ContextualMenu: change role of category options to menuitemcheckbox",
+            "author": "aneeshak@microsoft.com",
+            "commit": "7b3f82f7ee65ffdec8a34bed75932904f0e690d0"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Disable List test causing intermittent test failures.",
+            "author": "jagore@microsoft.com",
+            "commit": "079a40a86a1562d1fa558957cee86997e97bea8a"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "TextField example: fix onChange typing error when strictFunctionType is true",
+            "author": "xgao@microsoft.com",
+            "commit": "3602dd11de72d6b10d60bc5eeb624175d8cec8eb"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 11 Feb 2020 18:37:59 GMT",
+      "tag": "office-ui-fabric-react_v7.92.0",
+      "version": "7.92.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "TagItem accepts title and defaults either children or item name (#11845)",
+            "author": "yann.normand@gmail.com",
+            "commit": "f52414de3b9e691f456b0276a81039ed641fd561"
+          }
+        ],
+        "none": [
+          {
+            "comment": "update enzyme",
+            "author": "kchau@microsoft.com",
+            "commit": "495983aec20488918f3d1ee87a8af92cb93d208f"
+          },
+          {
+            "comment": "fixing released versions",
+            "author": "kchau@microsoft.com",
+            "commit": "207521eb85f200e2cda239d06eacdf5f49efdadc"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Tooltip: allow scrolling tooltip content",
+            "author": "xgao@microsoft.com",
+            "commit": "75d729ac4e0e00ad8b52f27b3da05f03cd6ed24b"
+          },
+          {
+            "comment": "Dropdown: fix SubComponentStyles interfaces",
+            "author": "xgao@microsoft.com",
+            "commit": "bd136863b3efb04911cd1214f87848ca1ae219d9"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 10 Feb 2020 12:39:35 GMT",
+      "tag": "office-ui-fabric-react_v7.90.1",
+      "version": "7.90.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Dropdown: fix item hover style",
+            "author": "xgao@microsoft.com",
+            "commit": "d46c6727c4f1682f8efc1d4a5565eb4092084271"
+          },
+          {
+            "comment": "SpinButton: remove unneeded validation on tab key",
+            "author": "xgao@microsoft.com",
+            "commit": "1726b7d2ef8b6da56cd26b56e832eb8afb9ca7cf"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 07 Feb 2020 12:41:31 GMT",
+      "tag": "office-ui-fabric-react_v7.90.0",
+      "version": "7.90.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "GroupedList: Announcing position in set.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "666329aad1b362ee3d57ed8134f8398bab2347aa"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Remove unused config files",
+            "author": "elcraig@microsoft.com",
+            "commit": "96ccf88b8f44981d21a3903789874a13a2f79b1d"
+          },
+          {
+            "comment": "moved storybook config",
+            "author": "kchau@microsoft.com",
+            "commit": "5612f0eff3ea9ce3f6d367979b208f3c2489d330"
+          },
+          {
+            "comment": "uniting build across fluent and fabric",
+            "author": "kchau@microsoft.com",
+            "commit": "f9503d808bc0971e843024c9fb679c0ed5a67fbb"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 06 Feb 2020 12:37:34 GMT",
+      "tag": "office-ui-fabric-react_v7.89.1",
+      "version": "7.89.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "ev.defaultPrevented is not a function, remove errant ()",
+            "author": "mahelles@microsoft.com",
+            "commit": "5f39660dd3f6fe2a7fb8b938c7cce0bff1961321"
+          },
+          {
+            "comment": "DocumentCard: Updating DocumentCardLocations styles to latest Fluent specs.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "7c633354c815d882a1eae4f1a5ecf0b9000199a2"
+          },
+          {
+            "comment": "MaskedTextField: fix MaskedTextField captures focus on re-render on Edge",
+            "author": "xgao@microsoft.com",
+            "commit": "9df0b75a75911657f62c81e2a3c8ec418ddbbc47"
+          },
+          {
+            "comment": "Dropdown: remove unnecessary focus calls",
+            "author": "xgao@microsoft.com",
+            "commit": "47776890deb9f54dfa633c72114a51c071367319"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 05 Feb 2020 12:43:32 GMT",
+      "tag": "office-ui-fabric-react_v7.89.0",
+      "version": "7.89.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "TeachingBubble: Applying Callout style-related props like calloutWidth and calloutMaxWidth.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "3bca52530977d30df2b647d1605f683bbb6ca090"
+          },
+          {
+            "comment": "ChoiceGroup: fix option label text being cutoff",
+            "author": "xgao@microsoft.com",
+            "commit": "3d48d2e62a81654795aba1ea59f8e2e1641d6400"
+          },
+          {
+            "comment": "Pickers: remove input X button in Edge",
+            "author": "xgao@microsoft.com",
+            "commit": "a1db103bb541a92da7c754be85c823daedddca57"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "TeachingBubble: Fixing styling when TeachingBubble has close button but no headline.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "010803b8e84dbdbf0a3081975fc9725bbfaf2a4c"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 03 Feb 2020 20:04:10 GMT",
+      "tag": "office-ui-fabric-react_v7.88.1",
+      "version": "7.88.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Text: Updating docs and style logic to remove 'inherit' by default behavior.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "ef797d1a598395ea8fddf5c275b01bf043c5840f"
+          },
+          {
+            "comment": "Dialog: Fix DialogContent titleProps",
+            "author": "xgao@microsoft.com",
+            "commit": "9e0dd8e0c13cba7a7dc0ba4bb636c837c17440e9"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Prevent the ComponentExamples test from eating errors",
+            "author": "elcraig@microsoft.com",
+            "commit": "f6fdd3eefc61817a53077b45f37dd3d7da8d3420"
+          },
+          {
+            "comment": "DateTime: fix broken test",
+            "author": "joschect@microsoft.com",
+            "commit": "65e124a96e3d37e81a0a9cadf5ad36ec36a2df60"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 31 Jan 2020 19:00:10 GMT",
+      "tag": "office-ui-fabric-react_v7.88.0",
+      "version": "7.88.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add styles file and type files for EditItem component",
+            "author": "sanredd@microsoft.com",
+            "commit": "63189772debfd4d113bcd9675a79af790e620023"
+          },
+          {
+            "comment": "FacePile: Use default semantic html instead of aria attributes and roles",
+            "author": "mark@thedutchies.com",
+            "commit": "89fb078f6fe0ca85832f005d8fb70f7c9a500c04"
+          },
+          {
+            "comment": "ContextualMenu: Transforming examples to FunctionComponents and cleaning them up.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "0cb40ff6bf04a1223bb69615cce07f715cf843d8"
+          },
+          {
+            "comment": "Nav: Fixing regular expression used to determine if URL is protocol relative or not.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "eadbfa6f02f782e8252c37dfe577d4000ff741dd"
+          },
+          {
+            "comment": "Dropdown: Fixing various High Contrast issues.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "d48f33791519c5363b4365cece4bd6d8509382e9"
+          },
+          {
+            "comment": "ContextualMenu: fix role for checkable split button menu item",
+            "author": "xgao@microsoft.com",
+            "commit": "23cb06c1bbe4bdb2b7d756c499c1314474a78de7"
+          },
+          {
+            "comment": "GroupedList: Adding aria-expanded state to the focus target of groups so that the collapsed/expanded state of the group is announced.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "e3b68f4911328f99831f98840231c26d1d68da4c"
+          },
+          {
+            "comment": "GroupedList: Adding aria-level to indicate nested level of groups.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "ee88c9473cd7cb6eac5709883930a7bd798951af"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Providing drag drop support for GroupedListSection. Previously, GroupedListSection was non-draggable.",
+            "author": "vishgup@microsoft.com",
+            "commit": "c775a4c9f8eacb29dd672ab0d37302d93f2e5dca"
+          },
+          {
+            "comment": "Add ability to customize DetailsHeader tooltip based on column data",
+            "author": "tmichon@microsoft.com",
+            "commit": "2abe8243a70877dcdfa0b7417f27bac812326b46"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Fix prettier error after upgrade prettier to 1.19.1",
+            "author": "xgao@microsoft.com",
+            "commit": "2242effd3e5226f313ef16f9c18ed3db87d548c4"
+          },
+          {
+            "comment": "bumping versions to fix broken publishes",
+            "author": "kchau@microsoft.com",
+            "commit": "1fd6f0a289e8f0f126c9609b8e775ac0ced03b81"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 29 Jan 2020 12:37:18 GMT",
+      "tag": "office-ui-fabric-react_v7.86.1",
+      "version": "7.86.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "MessageBar: Fix High Contrast Mode issues.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "4674be302267b31c5060c9ee39a5e519b9b901ef"
+          },
+          {
+            "comment": "Panel: Calling onOpen on non-imperative scenarios like its description states.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "1b023adf87d60bf9394ccad4d9554da81731bef8"
+          },
+          {
+            "comment": "Dropdown: Fix issue where pressing key up can cause scrolling of the whole page.",
+            "author": "jehawley@microsoft.com",
+            "commit": "ec4f9e60183ddd572046820cea04c0f29c508a68"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 28 Jan 2020 12:43:24 GMT",
+      "tag": "office-ui-fabric-react_v7.86.0",
+      "version": "7.86.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Semantic slot conversions for a few components: Persona, ContexualMenu, SplitButton, SpinButton, Tooltip, Dropdown, ComboBox, CommandBar, Suggestions",
+            "author": "marygans@microsoft.com",
+            "commit": "389fa983ef91fb61c3fc8d62b2c1ab7ea2a4a552"
+          },
+          {
+            "comment": "Fix a bug where a user pressing the down key without opening the dropdown causes the window to scroll. The dropdown should cycle through the options. This fix changes the index from being the last item in the options to being the starting index, which is 0.",
+            "author": "jehawley@microsoft.com",
+            "commit": "ad83dd6338f1d995553f889f96075cba24654e29"
+          },
+          {
+            "comment": "Support for dynamically updating keytips",
+            "author": "keyou@microsoft.com",
+            "commit": "dcca3d5298e75de4a2c6fe54e281ad997bea41e1"
+          },
+          {
+            "comment": "Button: Adding support for onPointerDown and onPointerUp.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "de7423dcbcf1bbe6c7ed90f93554db705c8b38ac"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "BaseFloatingPicker: pass custom props to inner Callout",
+            "author": "rezha@microsoft.com",
+            "commit": "038c54870c5f0bb9edb81fc066031c8a1d3c8490"
+          },
+          {
+            "comment": "Dialog/Panel: allow to set aria-level on header title",
+            "author": "xgao@microsoft.com",
+            "commit": "c13defbe454a10ecc4c41e45b112003e911298db"
+          }
+        ],
+        "none": [
+          {
+            "comment": "updates yarn start experience to storybook for packages that have examples",
+            "author": "kchau@microsoft.com",
+            "commit": "b907cd26f0ee1d1a52c68a624186d255deaa1893"
+          },
+          {
+            "comment": "Rename all just configs to TS.",
+            "author": "jagore@microsoft.com",
+            "commit": "373c657b0bf9bf5d8e8433d8df8ccdccaec89e45"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 27 Jan 2020 03:59:43 GMT",
+      "tag": "office-ui-fabric-react_v7.85.0",
+      "version": "7.85.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "add icon support to combobox",
+            "author": "makopch@microsoft.com",
+            "commit": "b0c09c06431bf977fa831caba69d7cd09f091bbe"
+          },
+          {
+            "comment": "SpinButton: Making disabled SpinButtons non-focusable.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "cb1fa5c47a3129523be1062abd14e19b3d962574"
+          },
+          {
+            "comment": "SearchBox: Dispose of EventGroup on unmount",
+            "author": "KevinTCoughlin@users.noreply.github.com",
+            "commit": "ee1a499fe789b25ec465e2aafda5bd3ad6573f2e"
+          },
+          {
+            "comment": "PersonaCoin and related components: elliminating BaseComponent usage to reduce bundle size.",
+            "author": "dzearing@hotmail.com",
+            "commit": "5ea4f4de7953f92965d5ded807f4f12dda08c9c4"
+          }
+        ],
+        "none": [
+          {
+            "comment": "adds storybook task",
+            "author": "kchau@microsoft.com",
+            "commit": "a9396c1caf148b59d23aa8678f8d8aa98a8b8157"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "GroupedList: Add role prop to groupProps",
+            "author": "erabelle@microsoft.com",
+            "commit": "c457462537a257458d2df6571f70e743974036e2"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 24 Jan 2020 12:30:27 GMT",
+      "tag": "office-ui-fabric-react_v7.84.1",
+      "version": "7.84.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Updating text field validation in date-time package to check new value rather than old one.",
+            "author": "chce@netcompany.com",
+            "commit": "7065b61c3f1df297a774d42672a21e89f8b88783"
+          },
+          {
+            "comment": "DatePicker: Fixing issue with formatted dates.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "a215a47453932f4f63827eb343fe2c2995c04ea0"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 22 Jan 2020 12:36:43 GMT",
+      "tag": "office-ui-fabric-react_v7.84.0",
+      "version": "7.84.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Panel: Restyled Panel's header and navigation sections",
+            "author": "v-mare@microsoft.com",
+            "commit": "b6f36d5fcdc4fd2b494115160336f0a7546484c4"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "TextField: fix focused bottom border mis-alignment when errorMessage is set",
+            "author": "v-jajach@microsoft.com",
+            "commit": "c6ec87ce96332e37c2e6fc723701e29275030c50"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 20 Jan 2020 12:28:43 GMT",
+      "tag": "office-ui-fabric-react_v7.83.2",
+      "version": "7.83.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "ContextualMenu: Hide checkmark in ContextualMenuItems if canCheck is false",
+            "author": "huaxi@microsoft.com",
+            "commit": "7a3f3bd39492f60ed9edfd9b8c8e51ad4ec891fa"
+          },
+          {
+            "comment": "PeoplePicker: Splitting one example into multiple examples and converting to Function Components.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "1371c7b6ae462ea7ef2fc0d023e7f9984cd88f4b"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 17 Jan 2020 02:32:17 GMT",
+      "tag": "office-ui-fabric-react_v7.83.1",
+      "version": "7.83.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update tslib minver to first version containing __spreadArrays helper due to changes in how TS emits spreads.",
+            "author": "jagore@microsoft.com",
+            "commit": "52dc239bf89dbe76daa5f4776ee4368957938a1a"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 17 Jan 2020 01:24:12 GMT",
+      "tag": "office-ui-fabric-react_v7.83.0",
+      "version": "7.83.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "OverflowSet: Don't assume role or orientation. Update CommandBar, examples and docs",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "46f7a701adaa56fd999a6bdb4ed6c485aa7ee7cb"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Theme Designer: adding secondary text to a11y panel, adding neutralSecondaryAlt to Fabric Palette slots table, fixing ThemeRulesStandards & ThemeGenerator producing color inaccuracies",
+            "author": "aneeshak@microsoft.com",
+            "commit": "e6e91cc6167f03475d01d5d2a8388a50e14a95ea"
+          },
+          {
+            "comment": "DatePicker accessibility: day in calendar is announced with blank role",
+            "author": "xgao@microsoft.com",
+            "commit": "beb2ad19fd8688e552d6162a1efca8b905f133a5"
+          },
+          {
+            "comment": "DatePicker: error message for required field is not cleared when date is selected from calendar",
+            "author": "xgao@microsoft.com",
+            "commit": "bfc640d963af3c6979046b32ae78d6f732f68135"
+          },
+          {
+            "comment": "Basepicker/Suggestions: Fix an issue where hasSuggestedAction would return true incorrectly",
+            "author": "joschect@microsoft.com",
+            "commit": "e4793ce1f7232d25f6f3bdd8dd94890d3aa2f0d9"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 16 Jan 2020 12:28:58 GMT",
+      "tag": "office-ui-fabric-react_v7.82.2",
+      "version": "7.82.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Upgrade repo to TS3.7.",
+            "author": "jagore@microsoft.com",
+            "commit": "e04fd44af0b978bc0c8c55658bf6b9d0ff3eac49"
+          },
+          {
+            "comment": "Add aria role to multi-select dropdown ",
+            "author": "xgao@microsoft.com",
+            "commit": "a015ed681c996bfac40b60665abd2191f4d241ed"
+          },
+          {
+            "comment": "CommandBar: Do not render empty div if farItems prop is empty array",
+            "author": "xgao@microsoft.com",
+            "commit": "2dd52014bf8fc9fc2a1ffabef881ac942f172180"
+          },
+          {
+            "comment": "ContextualMenu: Fix disabled item being focusable",
+            "author": "xgao@microsoft.com",
+            "commit": "e07cba4de908eb62656cd8263f2a68782e73f59e"
+          },
+          {
+            "comment": "Dropdown: fix exception when options change due to DropdownSizePosCache",
+            "author": "xgao@microsoft.com",
+            "commit": "6b16c8d6b2858b5b085a1a807ea74c21785f138a"
+          },
+          {
+            "comment": "Fixing click handling for colorrectangle for bug #11680",
+            "author": "anuku@microsoft.com",
+            "commit": "3594dd074bebb4aacda53676f628986a887dd32c"
+          },
+          {
+            "comment": "Revert \"ContextualMenu: Fix disabled item being focusable (#11693)\"",
+            "author": "xgao@microsoft.com",
+            "commit": "ea6136f7d45b6abe94cb972d304909e6010465ce"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 15 Jan 2020 00:21:25 GMT",
+      "tag": "office-ui-fabric-react_v7.82.1",
+      "version": "7.82.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "ComboBox: Move autoComplete with no freeform key handling to onKeyUp to get access to key value vs key code to support non latin characters",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "88e33cb68a8ae63e40b3cb05ca8233df4eb1a960"
+          },
+          {
+            "comment": "Text: Fixing children check so it can render {0} value.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "dc2170110070272040a4bf7c0508d725dfa61eec"
+          },
+          {
+            "comment": "Reverting moving tablist to be a parent of tabpanel",
+            "author": "chiechan@microsoft.com",
+            "commit": "e68a3b6aedc1d1a497b0015c938d0ce058804791"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 14 Jan 2020 12:27:16 GMT",
+      "tag": "office-ui-fabric-react_v7.82.0",
+      "version": "7.82.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Fabric: Properly handle dir being passed into control",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "be6be1df20d4faf7a209deb271dc89fc645d7a89"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "FocusZone: remove keydown listener correctly to avoid a leak with inner zones.",
+            "author": "dzearing@microsoft.com",
+            "commit": "37992c637e8071f70a85d23aee51da9f7cbbdf46"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 13 Jan 2020 12:28:56 GMT",
+      "tag": "office-ui-fabric-react_v7.81.0",
+      "version": "7.81.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Consume compose functions where appropriate",
+            "author": "tmichon@microsoft.com",
+            "commit": "d9eaef588f46c10fe8c1791957571a8eb467d02e"
+          },
+          {
+            "comment": "Popup: fix an issue where onBlur would not correctly update focus state",
+            "author": "joschect@microsoft.com",
+            "commit": "bf10fc8ca151deb07bcc5ba33993f8c849eb9e14"
+          },
+          {
+            "comment": "Dropdown: fix missing asterisk on focused dropdown",
+            "author": "xgao@microsoft.com",
+            "commit": "355a5a9a5b0f23ec5779a19ac1646eee4c2098e1"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Change focus class behavior: Alternate between 'hidden' and 'visible' classes",
+            "author": "paflakst@microsoft.com",
+            "commit": "bee187d4f1dec7d264a9dea28ffd3b93fc56302e"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 10 Jan 2020 12:31:47 GMT",
+      "tag": "office-ui-fabric-react_v7.80.0",
+      "version": "7.80.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "FocusZone:add page down/up feature",
+            "author": "nasabek@microsoft.com",
+            "commit": "584355c35881f70b8992e1ad453425f36c6c5232"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Update snapshot test after fixing combobox styling",
+            "author": "xgao@microsoft.com",
+            "commit": "b1f23673efec6c713219c81d02be736f3dc7a373"
+          },
+          {
+            "comment": "Remove onBlur from being excluded in grid",
+            "author": "chiechan@microsoft.com",
+            "commit": "ea8f7234b54a21f593e35d501885052bf92278a3"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 09 Jan 2020 12:34:52 GMT",
+      "tag": "office-ui-fabric-react_v7.79.1",
+      "version": "7.79.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Icon: update null/undefinedcached icons till the time non-null/undefined icons are available for the first time. Then cache the non-null/undefined icons.",
+            "author": "vishgup@microsoft.com",
+            "commit": "cee2f1aee7bc1e19362683cb7f2d1f098159b88d"
+          },
+          {
+            "comment": "Popup: Fix disposables and element ref memory leaks",
+            "author": "KevinTCoughlin@users.noreply.github.com",
+            "commit": "721006ed4c2f5f95e8d2f126d2e79a03af2f02a8"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 08 Jan 2020 17:02:57 GMT",
+      "tag": "office-ui-fabric-react_v7.79.0",
+      "version": "7.79.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update focus border styles for SearchBox, BasePicker",
+            "author": "xgao@microsoft.com",
+            "commit": "da8b56f6167485f487c59130be4f85fe46728bc6"
+          },
+          {
+            "comment": "bumping load-themed-styles to take advantage of es6 version of it",
+            "author": "kchau@microsoft.com",
+            "commit": "9041aee981e0ad058920172d078af2d2cc2292db"
+          },
+          {
+            "comment": "For API reference pages, show all property tables on page load",
+            "author": "elcraig@microsoft.com",
+            "commit": "0d8e4da2a7c3d0f4855b3dfade06654c1def6cfb"
+          },
+          {
+            "comment": "Calendar: Fixing text color of 'today's day cell' when in High Contrast Mode.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "92cfe30b9cc98ceaeab52d4bd95eb17d98a0dfe2"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Break up build task into build, bundle, test and lint tasks. Add parallelization pipeline using new tasks.",
+            "author": "jagore@microsoft.com",
+            "commit": "f1f07695f5d18c2c975eef382c5b777d7ccb52e2"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Button: Use aria-checked for checkbox and menuitemcheckbox roles",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "e86bd78988b374a38420a4ed08089b081e246af8"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 07 Jan 2020 12:31:36 GMT",
+      "tag": "office-ui-fabric-react_v7.78.3",
+      "version": "7.78.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Pickers: fix multiple enter presses selecting same option many times",
+            "author": "joschect@microsoft.com",
+            "commit": "3f526ca3afd4baa4e36e166ac451d3c2ef6135cc"
+          },
+          {
+            "comment": "FocusTrapZone: Release event handlers and element references for garbage-collection",
+            "author": "KevinTCoughlin@users.noreply.github.com",
+            "commit": "48919fcf5f091b25b4b21931164e5572084f2e98"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 06 Jan 2020 12:29:10 GMT",
+      "tag": "office-ui-fabric-react_v7.78.2",
+      "version": "7.78.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Modal ignoreExternalFocusing prop should also affect Popup",
+            "author": "elcraig@microsoft.com",
+            "commit": "30f3293eb58cb16866a2005a6ef54fceef24dd5d"
+          },
+          {
+            "comment": "Combobox: Clicks to headers and scrollbars no longer cause onBlur",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "399896de32fe539ce1bab0bc7b7d0503710e4fa5"
+          },
+          {
+            "comment": "FocusZone: Delete function references on unmount",
+            "author": "KevinTCoughlin@users.noreply.github.com",
+            "commit": "35c50bbe030217627f9f5df3b577129bace2edf4"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 03 Jan 2020 12:27:16 GMT",
+      "tag": "office-ui-fabric-react_v7.78.1",
+      "version": "7.78.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "ChoiceGroup: update docs and examples",
+            "author": "elcraig@microsoft.com",
+            "commit": "df9d42f327766a33456b5599eccc4df977a8c06e"
+          },
+          {
+            "comment": "Remove duplicate ChoiceGroupOption export",
+            "author": "elcraig@microsoft.com",
+            "commit": "871ba269748259eed69b43106d8b1a1f5e320408"
+          },
+          {
+            "comment": "TagPicker: Define `title` for TagItem in case text overflows.",
+            "author": "jdh@microsoft.com",
+            "commit": "1305118f16f025f9517b4a25ad0fc3df16b7f882"
+          },
+          {
+            "comment": "update callout docs comment",
+            "author": "joschect@microsoft.com",
+            "commit": "37acc2d517d3a5d2d7feceff4ca26975df927c3a"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 01 Jan 2020 12:30:43 GMT",
+      "tag": "office-ui-fabric-react_v7.78.0",
+      "version": "7.78.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Pass the original renderer to onRenderLabel in ChoiceGroupOption (#11575)",
+            "author": "dagoltz@microsoft.com",
+            "commit": "3841e791314110fdd74be38aa2500b10f251987c"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 31 Dec 2019 12:31:45 GMT",
+      "tag": "office-ui-fabric-react_v7.77.0",
+      "version": "7.77.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "SwatchColorPicker: properly apply ID; doc updates",
+            "author": "elcraig@microsoft.com",
+            "commit": "7be84c9391cdbc832cca9f4325b2814b2c92bcdf"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Fabric control: listen for rtl in theme",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "75306dc096b49d26b0e3f3310343fbe267b7f1f9"
+          },
+          {
+            "comment": "DetailsList: Update examples to work in strictFunctionTypes",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "4b7738397411b203ef516b28f9c8f00c569dcc2e"
+          },
+          {
+            "comment": "Combobox: Focus returns to input after item click",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "c45255bca111b40e965ed67540aaf1461f4163d8"
+          },
+          {
+            "comment": "Layer: add touch events to filtering to stop those that are bubbling up",
+            "author": "aneeshak@microsoft.com",
+            "commit": "992537473a22e8d7f7ef217e17ab4da31ceef3db"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 30 Dec 2019 12:25:00 GMT",
+      "tag": "office-ui-fabric-react_v7.76.3",
+      "version": "7.76.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "add firstFocusableSelector to example FocusTrapZone to resolve Edge issue",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "8cabe7e25ae40ef46dca35f9fc3189c04f370b54"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 24 Dec 2019 12:33:51 GMT",
+      "tag": "office-ui-fabric-react_v7.76.2",
+      "version": "7.76.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Ensure icon font family isn't overridden by Fabric Core",
+            "author": "elcraig@microsoft.com",
+            "commit": "a80d9e640f4655674a2e17a29adc6043d6048dae"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 23 Dec 2019 12:34:01 GMT",
+      "tag": "office-ui-fabric-react_v7.76.1",
+      "version": "7.76.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Align color system in Tooltip",
+            "author": "nif_tony@outlook.com",
+            "commit": "4060b633d91a4d6bd063876d5d87d36d0d5fcd41"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 20 Dec 2019 12:32:45 GMT",
+      "tag": "office-ui-fabric-react_v7.76.0",
+      "version": "7.76.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Modal, Panel, Overlay: added optional prop allowTouchBodyScroll that allows body scroll on touch devices",
+            "author": "dmitriy.ravdin@siemens.com",
+            "commit": "00c16da9f0d9ee3de29c6de6a0aa32d50397cdcc"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "ScrollablePane: Fixing tabbing navigation with Sticky headers.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "c98780c3071c6804444fb1b019a9d6d213268967"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 19 Dec 2019 12:33:02 GMT",
       "tag": "office-ui-fabric-react_v7.75.0",
       "version": "7.75.0",

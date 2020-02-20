@@ -13,7 +13,8 @@ import {
   elementContains,
   getId,
   getNativeProps,
-  getRTL
+  getRTL,
+  css
 } from '../../Utilities';
 import { FocusTrapZone } from '../FocusTrapZone/index';
 import { IPanel, IPanelProps, IPanelStyleProps, IPanelStyles, PanelType } from './Panel.types';
@@ -46,6 +47,8 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
   private _classNames: IProcessedStyleSet<IPanelStyles>;
   private _scrollableContent: HTMLDivElement | null;
   private _animationCallback: number | null = null;
+  private _hasCustomNavigation: boolean = !!(this.props.onRenderNavigation || this.props.onRenderNavigationContent);
+  private _headerTextId: string | undefined;
   private _allowTouchBodyScroll: boolean;
 
   public static getDerivedStateFromProps(nextProps: Readonly<IPanelProps>, prevState: Readonly<IPanelState>): Partial<IPanelState> | null {
@@ -149,11 +152,12 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
     const isLeft = type === PanelType.smallFixedNear || type === PanelType.customNear ? true : false;
     const isRTL = getRTL(theme);
     const isOnRightSide = isRTL ? isLeft : !isLeft;
-    const headerTextId = headerText && id + '-headerText';
     const customWidthStyles = type === PanelType.custom || type === PanelType.customNear ? { width: customWidth } : {};
     const nativeProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties);
     const isOpen = this.isActive;
     const isAnimating = visibility === PanelVisibilityState.animatingClosed || visibility === PanelVisibilityState.animatingOpen;
+
+    this._headerTextId = headerText && id + '-headerText';
 
     if (!isOpen && !isAnimating && !isHiddenOnDismiss) {
       return null;
@@ -171,7 +175,8 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
       isOnRightSide,
       isOpen,
       isHiddenOnDismiss,
-      type
+      type,
+      hasCustomNavigation: this._hasCustomNavigation
     });
 
     const { _classNames, _allowTouchBodyScroll } = this;
@@ -189,14 +194,12 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
       );
     }
 
-    const header = onRenderHeader(this.props, this._onRenderHeader, headerTextId);
-
     return (
       <Layer {...layerProps}>
         <Popup
           role="dialog"
           aria-modal="true"
-          ariaLabelledBy={header ? headerTextId : undefined}
+          ariaLabelledBy={this._headerTextId ? this._headerTextId : undefined}
           onDismiss={this.dismiss}
           className={_classNames.hiddenPanel}
         >
@@ -216,7 +219,7 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
                 {onRenderNavigation(this.props, this._onRenderNavigation)}
               </div>
               <div className={_classNames.contentInner}>
-                {header}
+                {(this._hasCustomNavigation || !hasCloseButton) && onRenderHeader(this.props, this._onRenderHeader, this._headerTextId)}
                 <div ref={this._allowScrollOnPanel} className={_classNames.scrollableContent} data-is-scrollable={true}>
                   {onRenderBody(this.props, this._onRenderBody)}
                 </div>
@@ -238,9 +241,6 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
       return;
     }
 
-    if (this.props.onOpen) {
-      this.props.onOpen();
-    }
     this.setState({ visibility: PanelVisibilityState.animatingOpen });
   }
 
@@ -298,35 +298,43 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
   };
 
   private _onRenderNavigationContent = (props: IPanelProps): JSX.Element | null => {
-    const { closeButtonAriaLabel, hasCloseButton } = props;
+    const { closeButtonAriaLabel, hasCloseButton, onRenderHeader = this._onRenderHeader } = props;
     const theme = getTheme();
     if (hasCloseButton) {
       // TODO -Issue #5689: Comment in once Button is converted to mergeStyles
       // const iconButtonStyles = this._classNames.subComponentStyles
       // ? (this._classNames.subComponentStyles.iconButton as IStyleFunctionOrObject<IButtonStyleProps, IButtonStyles>)
       // : undefined;
+
       return (
-        <IconButton
-          // TODO -Issue #5689: Comment in once Button is converted to mergeStyles
-          // className={iconButtonStyles}
-          styles={{
-            root: {
-              height: 'auto',
-              width: '44px',
-              color: theme.palette.neutralSecondary,
-              fontSize: IconFontSizes.large
-            },
-            rootHovered: {
-              color: theme.palette.neutralPrimary
-            }
-          }}
-          className={this._classNames.closeButton}
-          onClick={this._onPanelClick}
-          ariaLabel={closeButtonAriaLabel}
-          title={closeButtonAriaLabel}
-          data-is-visible={true}
-          iconProps={{ iconName: 'Cancel' }}
-        />
+        <React.Fragment>
+          {!this._hasCustomNavigation && onRenderHeader(this.props, this._onRenderHeader, this._headerTextId)}
+          <IconButton
+            // TODO -Issue #5689: Comment in once Button is converted to mergeStyles
+            // className={iconButtonStyles}
+            styles={{
+              root: [
+                this._hasCustomNavigation && {
+                  height: 'auto',
+                  width: '44px'
+                },
+                {
+                  color: theme.palette.neutralSecondary,
+                  fontSize: IconFontSizes.large
+                }
+              ],
+              rootHovered: {
+                color: theme.palette.neutralPrimary
+              }
+            }}
+            className={this._classNames.closeButton}
+            onClick={this._onPanelClick}
+            ariaLabel={closeButtonAriaLabel}
+            title={closeButtonAriaLabel}
+            data-is-visible={true}
+            iconProps={{ iconName: 'Cancel' }}
+          />
+        </React.Fragment>
       );
     }
     return null;
@@ -337,14 +345,20 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
     defaultRender?: (props?: IPanelProps) => JSX.Element | null,
     headerTextId?: string | undefined
   ): JSX.Element | null => {
-    const { headerText } = props;
+    const { headerText, headerTextProps = {} } = props;
 
     if (headerText) {
       return (
         <div className={this._classNames.header}>
-          <p className={this._classNames.headerText} id={headerTextId} role="heading" aria-level={2}>
+          <div
+            id={headerTextId}
+            role="heading"
+            aria-level={2}
+            {...headerTextProps}
+            className={css(this._classNames.headerText, headerTextProps.className)}
+          >
             {headerText}
-          </p>
+          </div>
         </div>
       );
     }
@@ -379,10 +393,10 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
     }
   }
 
-  private _dismissOnOuterClick(ev: any): void {
+  private _dismissOnOuterClick(ev: React.MouseEvent<HTMLDivElement>): void {
     const panel = this._panel.current;
-    if (this.isActive && panel && !ev.defaultPrevented()) {
-      if (!elementContains(panel, ev.target)) {
+    if (this.isActive && panel && !ev.defaultPrevented) {
+      if (!elementContains(panel, ev.target as HTMLElement)) {
         if (this.props.onOuterClick) {
           this.props.onOuterClick();
           ev.preventDefault();
@@ -394,6 +408,10 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
   }
 
   private _animateTo = (newVisibilityState: PanelVisibilityState): void => {
+    if (newVisibilityState === PanelVisibilityState.open && this.props.onOpen) {
+      this.props.onOpen();
+    }
+
     this._animationCallback = this._async.setTimeout(() => {
       this.setState({ visibility: newVisibilityState });
       this._onTransitionComplete();

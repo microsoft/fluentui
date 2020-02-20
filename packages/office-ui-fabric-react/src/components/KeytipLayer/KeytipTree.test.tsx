@@ -205,6 +205,47 @@ describe('KeytipTree', () => {
       expect(updatedNode.keySequences).toEqual(updatedKeytipSequence);
       expect(updatedNodeParent.children).toContain(updatedNode.id);
     });
+
+    it('correctly updates when the keytips parent has changed', () => {
+      // Add all nodes to the tree
+      keytipTree.addNode(keytipPropsC, uniqueIdC);
+      keytipTree.addNode(keytipPropsE, uniqueIdE);
+      keytipTree.addNode(keytipPropsB, uniqueIdB);
+      keytipTree.addNode(keytipPropsD, uniqueIdD);
+      keytipTree.addNode(keytipPropsF, uniqueIdF);
+      verifySampleTree();
+
+      // Change node 'd' to have parent 'c' instead of parent 'e'
+      const updatedKeytipId = KTP_FULL_PREFIX + 'c' + KTP_SEPARATOR + 'd';
+      const updatedKeytipSequence = ['c', 'd'];
+      const updatedKeytipProps = createKeytipProps(updatedKeytipSequence);
+      keytipTree.updateNode(updatedKeytipProps, uniqueIdD);
+      const updatedNode = keytipTree.getNode(updatedKeytipId)!;
+      const updatedParent = keytipTree.getNode(keytipIdC)!;
+      const previousParent = keytipTree.getNode(keytipIdE)!;
+      // Validate updated node properties
+      expect(updatedNode.id).toEqual(updatedKeytipId);
+      expect(updatedNode.parent).toEqual(keytipIdC);
+      // Validate new parent properties
+      expect(updatedParent.children).toContain(updatedKeytipId);
+      // Validate old parent properties, shouldn't have it in children
+      expect(previousParent.children.indexOf(updatedKeytipId)).toEqual(-1);
+      expect(previousParent.children.indexOf(keytipIdD)).toEqual(-1);
+
+      // Revert, make node 'd' have parent 'e' again
+      keytipTree.updateNode(keytipPropsD, uniqueIdD);
+      const nodeD = keytipTree.getNode(keytipIdD)!;
+      const nodeC = keytipTree.getNode(keytipIdC)!;
+      const nodeE = keytipTree.getNode(keytipIdE)!;
+      // Node props are back to original
+      expect(nodeD.id).toEqual(keytipIdD);
+      expect(nodeD.parent).toEqual(keytipIdE);
+      // E has D as a child
+      expect(nodeE.children).toContain(keytipIdD);
+      // C does not have D as a child
+      expect(nodeC.children.indexOf(keytipIdD)).toEqual(-1);
+      expect(nodeC.children.indexOf(updatedKeytipId)).toEqual(-1);
+    });
   });
 
   describe('removeNode', () => {

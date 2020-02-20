@@ -88,7 +88,7 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
   };
 
   const rootHoverFocusActiveSelectorNeutralPrimaryMixin: IStyle = {
-    color: palette.neutralPrimary
+    color: semanticColors.menuItemText
   };
 
   const borderColorError: IStyle = {
@@ -117,26 +117,28 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
     }
   ];
 
+  const selectedItemBackgroundColor = semanticColors.menuItemBackgroundPressed;
+
   const itemSelectors = (isSelected: boolean = false) => {
     return {
       selectors: {
         '&:hover:focus': [
           {
-            color: palette.neutralDark,
-            backgroundColor: !isSelected ? palette.neutralLighter : palette.neutralLight
+            color: semanticColors.menuItemTextHovered,
+            backgroundColor: !isSelected ? semanticColors.menuItemBackgroundHovered : selectedItemBackgroundColor
           },
           highContrastItemAndTitleStateMixin
         ],
         '&:focus': [
           {
-            backgroundColor: !isSelected ? 'transparent' : palette.neutralLight
+            backgroundColor: !isSelected ? 'transparent' : selectedItemBackgroundColor
           },
           highContrastItemAndTitleStateMixin
         ],
         '&:active': [
           {
-            color: palette.neutralDark,
-            backgroundColor: !isSelected ? palette.neutralLighter : palette.neutralLight
+            color: semanticColors.menuItemTextHovered,
+            backgroundColor: !isSelected ? semanticColors.menuBackground : semanticColors.menuItemBackgroundHovered
           },
           highContrastItemAndTitleStateMixin
         ],
@@ -156,8 +158,8 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
   const dropdownItemSelected: IStyle = [
     ...dropdownItemStyle,
     {
-      backgroundColor: palette.neutralLight,
-      color: palette.neutralDark
+      backgroundColor: selectedItemBackgroundColor,
+      color: semanticColors.menuItemTextHovered
     },
     itemSelectors(true),
     highContrastItemAndTitleStateMixin
@@ -167,7 +169,12 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
     ...dropdownItemStyle,
     {
       color: semanticColors.disabledText,
-      cursor: 'default'
+      cursor: 'default',
+      selectors: {
+        [HighContrastSelector]: {
+          color: 'GrayText'
+        }
+      }
     }
   ];
 
@@ -189,18 +196,21 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
       normalize,
       fonts.medium,
       {
-        color: palette.neutralPrimary,
-        borderColor: palette.neutralSecondary,
+        color: semanticColors.menuItemText,
+        borderColor: semanticColors.focusBorder,
         position: 'relative',
         outline: 0,
         userSelect: 'none',
         selectors: {
           ['&:hover .' + globalClassnames.title]: [
             !disabled && rootHoverFocusActiveSelectorNeutralDarkMixin,
-            { borderColor: !isOpen ? palette.neutralPrimary : palette.themePrimary },
+            { borderColor: isOpen ? palette.neutralSecondary : palette.neutralPrimary },
             highContrastBorderState
           ],
-          ['&:focus .' + globalClassnames.title]: [!disabled && rootHoverFocusActiveSelectorNeutralDarkMixin],
+          ['&:focus .' + globalClassnames.title]: [
+            !disabled && rootHoverFocusActiveSelectorNeutralDarkMixin,
+            { selectors: { [HighContrastSelector]: { color: 'Highlight' } } }
+          ],
 
           ['&:focus:after']: [
             {
@@ -214,9 +224,15 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
               height: '100%',
               // see https://github.com/OfficeDev/office-ui-fabric-react/pull/9182 for semantic color disc
               border: !disabled ? `2px solid ${palette.themePrimary}` : 'none',
-              borderRadius: '2px'
-            },
-            highContrastItemAndTitleStateMixin
+              borderRadius: '2px',
+
+              selectors: {
+                [HighContrastSelector]: {
+                  borderColor: 'Highlight',
+                  color: 'Highlight'
+                }
+              }
+            }
           ],
           ['&:active .' + globalClassnames.title]: [
             !disabled && rootHoverFocusActiveSelectorNeutralDarkMixin,
@@ -227,7 +243,7 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
           ['&:hover .' + globalClassnames.caretDown]: !disabled && rootHoverFocusActiveSelectorNeutralPrimaryMixin,
           ['&:focus .' + globalClassnames.caretDown]: [
             !disabled && rootHoverFocusActiveSelectorNeutralPrimaryMixin,
-            { selectors: { [HighContrastSelector]: { color: 'HighlightText' }, ...highContrastAdjustMixin } }
+            { selectors: { [HighContrastSelector]: { color: 'Highlight' } } }
           ],
           ['&:active .' + globalClassnames.caretDown]: !disabled && rootHoverFocusActiveSelectorNeutralPrimaryMixin,
 
@@ -245,7 +261,7 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
       required &&
         !hasLabel && {
           selectors: {
-            ':after': {
+            ':before': {
               content: `'*'`,
               color: semanticColors.errorText,
               position: 'absolute',

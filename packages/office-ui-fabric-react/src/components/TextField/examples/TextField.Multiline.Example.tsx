@@ -38,7 +38,7 @@ export class TextFieldMultilineExample extends React.Component<{}, ITextFieldMul
     );
   }
 
-  private _onChange = (ev: any, newText: string): void => {
+  private _onChange = (ev: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, newText: string): void => {
     const newMultiline = newText.length > 50;
     if (newMultiline !== this.state.multiline) {
       this.setState({ multiline: newMultiline });

@@ -173,12 +173,6 @@ $Calendar-dayPicker-margin: 10px;
   @include high-contrast {
     background-color: highlight;
   }
-  span {
-    @include high-contrast {
-      -ms-high-contrast-adjust: none;
-      color: window;
-    }
-  }
   &:hover {
     border-radius: 100%;
   }

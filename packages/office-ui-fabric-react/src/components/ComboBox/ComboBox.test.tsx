@@ -10,14 +10,29 @@ import { IComboBox, IComboBoxOption, IComboBoxProps } from './ComboBox.types';
 import { SelectableOptionMenuItemType } from '../../utilities/selectableOption/SelectableOption.types';
 import { expectOne, expectMissing, renderIntoDocument } from '../../common/testUtilities';
 
-const DEFAULT_OPTIONS: IComboBoxOption[] = [{ key: '1', text: '1' }, { key: '2', text: '2' }, { key: '3', text: '3' }];
+const DEFAULT_OPTIONS: IComboBoxOption[] = [
+  { key: '1', text: '1' },
+  { key: '2', text: '2' },
+  { key: '3', text: '3' }
+];
 
-const DEFAULT_OPTIONS2: IComboBoxOption[] = [{ key: '1', text: 'One' }, { key: '2', text: 'Foo' }, { key: '3', text: 'Bar' }];
+const DEFAULT_OPTIONS2: IComboBoxOption[] = [
+  { key: '1', text: 'One' },
+  { key: '2', text: 'Foo' },
+  { key: '3', text: 'Bar' }
+];
 const DEFAULT_OPTIONS3: IComboBoxOption[] = [
   { key: '0', text: 'Zero', itemType: SelectableOptionMenuItemType.Header },
   { key: '1', text: 'One' },
   { key: '2', text: 'Foo' },
   { key: '3', text: 'Bar' }
+];
+
+const RUSSIAN_OPTIONS: IComboBoxOption[] = [
+  { key: '0', text: 'сестра' },
+  { key: '1', text: 'брат' },
+  { key: '2', text: 'мама' },
+  { key: '3', text: 'папа' }
 ];
 
 const returnUndefined = () => undefined;
@@ -103,7 +118,10 @@ describe('ComboBox', () => {
   });
 
   it('Renders a selected item with zero key', () => {
-    const options: IComboBoxOption[] = [{ key: 0, text: 'zero' }, { key: 1, text: 'one' }];
+    const options: IComboBoxOption[] = [
+      { key: 0, text: 'zero' },
+      { key: 1, text: 'one' }
+    ];
     wrapper = mount(<ComboBox selectedKey={0} options={options} />);
 
     const inputElement: InputElementWrapper = wrapper.find('.ms-ComboBox input');
@@ -111,7 +129,10 @@ describe('ComboBox', () => {
   });
 
   it('changes to a selected key change the input', () => {
-    const options: IComboBoxOption[] = [{ key: 0, text: 'zero' }, { key: 1, text: 'one' }];
+    const options: IComboBoxOption[] = [
+      { key: 0, text: 'zero' },
+      { key: 1, text: 'one' }
+    ];
     wrapper = mount(<ComboBox selectedKey={0} options={options} />);
 
     expect(wrapper.find('input').props().value).toEqual('zero');
@@ -122,7 +143,10 @@ describe('ComboBox', () => {
   });
 
   it('changes to a selected item on key change', () => {
-    const options: IComboBoxOption[] = [{ key: 0, text: 'zero' }, { key: 1, text: 'one' }];
+    const options: IComboBoxOption[] = [
+      { key: 0, text: 'zero' },
+      { key: 1, text: 'one' }
+    ];
     wrapper = mount(<ComboBox selectedKey={0} options={options} />);
 
     expect(wrapper.find('input').props().value).toEqual('zero');
@@ -229,6 +253,14 @@ describe('ComboBox', () => {
     wrapper.find('input').simulate('input', { target: { value: 'f' } });
     wrapper.update();
     expect(wrapper.find('input').props().value).toEqual('Foo');
+  });
+
+  it('Can insert non latin text in uncontrolled case with autoComplete on and allowFreeform off', () => {
+    wrapper = mount(<ComboBox defaultSelectedKey="0" options={RUSSIAN_OPTIONS} autoComplete="on" allowFreeform={false} />);
+
+    wrapper.find('input').simulate('input', { target: { value: 'п' } });
+    wrapper.update();
+    expect(wrapper.find('input').props().value).toEqual('папа');
   });
 
   it('Can insert text in uncontrolled case with autoComplete off and allowFreeform on', () => {

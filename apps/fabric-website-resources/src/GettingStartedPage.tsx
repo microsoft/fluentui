@@ -19,7 +19,7 @@ const classNames = mergeStyleSets({
   }
 });
 
-export const GettingStartedPage: React.StatelessComponent = () => {
+export const GettingStartedPage: React.FunctionComponent = () => {
   return (
     <div className={classNames.root}>
       <div className={classNames.banner}>

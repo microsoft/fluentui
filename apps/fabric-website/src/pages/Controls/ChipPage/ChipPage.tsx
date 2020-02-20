@@ -6,7 +6,7 @@ import { Platforms } from '../../../interfaces/Platforms';
 
 const baseUrl = 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/apps/fabric-website/src/pages/Controls/ChipPage/';
 
-export const ChipPage: React.StatelessComponent<IControlsPageProps> = props => {
+export const ChipPage: React.FunctionComponent<IControlsPageProps> = props => {
   const { platform } = props;
   return <ControlsAreaPage {...props} {...ChipPageProps[platform]} otherSections={_otherSections(platform) as IPageSectionProps[]} />;
 };

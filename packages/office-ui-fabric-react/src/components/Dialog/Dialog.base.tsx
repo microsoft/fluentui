@@ -121,7 +121,11 @@ export class DialogBase extends React.Component<IDialogProps, {}> {
     const dialogContentProps: IDialogContentProps = {
       ...DefaultDialogContentProps,
       ...this.props.dialogContentProps,
-      draggableHeaderClassName: dialogDraggableClassName
+      draggableHeaderClassName: dialogDraggableClassName,
+      titleProps: {
+        id: this.props.dialogContentProps?.titleId || this._defaultTitleTextId,
+        ...this.props.dialogContentProps?.titleProps
+      }
     };
 
     const classNames = getClassNames(styles!, {
@@ -153,7 +157,6 @@ export class DialogBase extends React.Component<IDialogProps, {}> {
         titleAriaId={this._getTitleTextId()}
       >
         <DialogContent
-          titleId={this._defaultTitleTextId}
           subTextId={this._defaultSubTextId}
           title={title}
           subText={subText}

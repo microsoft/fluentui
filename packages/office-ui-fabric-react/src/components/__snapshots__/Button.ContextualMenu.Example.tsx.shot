@@ -125,6 +125,11 @@ exports[`Component Examples renders Button.ContextualMenu.Example.tsx correctly 
           }
       data-icon-name="Add"
       role="presentation"
+      style={
+        Object {
+          "fontFamily": "\\"FabricMDL2Icons\\"",
+        }
+      }
     >
       
     </i>
@@ -183,6 +188,11 @@ exports[`Component Examples renders Button.ContextualMenu.Example.tsx correctly 
           }
       data-icon-name="ChevronDown"
       role="presentation"
+      style={
+        Object {
+          "fontFamily": "\\"FabricMDL2Icons\\"",
+        }
+      }
     >
       
     </i>

@@ -22,6 +22,7 @@ import {
   SiteMessageBar
 } from '@uifabric/example-app-base/lib/index2';
 import { Nav } from '../Nav/index';
+import { AppCustomizations } from './customizations';
 import { AppCustomizationsContext, extractAnchorLink } from '@uifabric/example-app-base/lib/index';
 import * as styles from './Site.module.scss';
 import { appMaximumWidthLg } from '../../styles/constants';
@@ -151,7 +152,14 @@ export class Site<TPlatforms extends string = string> extends React.Component<IS
         {this._renderMessageBar()}
         <div className={css(styles.siteWrapper, isContentFullBleed && styles.fullWidth)}>
           {this._renderPageNav()}
-          <div className={styles.siteContent} data-is-scrollable="true" data-app-content-div="true" role="main">
+          <div
+            className={styles.siteContent}
+            data-is-scrollable="true"
+            data-app-content-div="true"
+            // This needs to be programmatically focusable for "jump to main content" functionality
+            tabIndex={-1}
+            role="main"
+          >
             {childrenWithPlatform}
           </div>
         </div>
@@ -161,13 +169,15 @@ export class Site<TPlatforms extends string = string> extends React.Component<IS
 
     return (
       <PlatformContext.Provider value={platform}>
-        {customizations ? (
-          <Customizer {...customizations}>
+        <AppCustomizationsContext.Provider value={AppCustomizations}>
+          {customizations ? (
+            <Customizer {...customizations}>
+              <SiteContent />
+            </Customizer>
+          ) : (
             <SiteContent />
-          </Customizer>
-        ) : (
-          <SiteContent />
-        )}
+          )}
+        </AppCustomizationsContext.Provider>
       </PlatformContext.Provider>
     );
   }

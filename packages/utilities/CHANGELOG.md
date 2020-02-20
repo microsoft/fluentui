@@ -1,7 +1,71 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Tue, 17 Dec 2019 12:29:42 GMT and should not be manually modified.
+This log was last generated on Thu, 20 Feb 2020 12:20:16 GMT and should not be manually modified.
 
+## 7.12.3
+Thu, 20 Feb 2020 12:20:16 GMT
+
+### Patches
+
+- fix memory leak caused by closure in scroll util (xgao@microsoft.com)
+## 7.12.2
+Wed, 19 Feb 2020 12:21:05 GMT
+
+### Patches
+
+- Add syncpack and synchronize dependencies. Refresh fluent import. (jagore@microsoft.com)
+## 7.12.1
+Mon, 17 Feb 2020 17:06:50 GMT
+
+### Patches
+
+- Utilities: forcing a publish, as the NPM outage last week did not seem to publish 7.12.1 of utilities. (dzearing@hotmail.com)
+## 7.12.0
+Wed, 12 Feb 2020 12:24:27 GMT
+
+### Minor changes
+
+- Replacing deprecated StatelessComponent references with FunctionComponent. (Humberto.Morimoto@microsoft.com)
+## 7.11.2
+Fri, 17 Jan 2020 02:32:17 GMT
+
+### Patches
+
+- Update tslib minver to first version containing __spreadArrays helper due to changes in how TS emits spreads. (jagore@microsoft.com)
+## 7.11.1
+Thu, 16 Jan 2020 12:28:58 GMT
+
+### Patches
+
+- Upgrade repo to TS3.7. (jagore@microsoft.com)
+## 7.11.0
+Mon, 13 Jan 2020 12:28:56 GMT
+
+### Minor changes
+
+- Add composeComponentAs to compose React decorator components (tmichon@microsoft.com)
+- Change focus class behavior: Alternate between 'hidden' and 'visible' classes (paflakst@microsoft.com)
+## 7.10.0
+Thu, 09 Jan 2020 12:34:52 GMT
+
+### Minor changes
+
+- memoizeFunction: The items for which callback method returned null/undefined value, null/undefined was being stored in cache for these items. In this PR, a new flag is introduced based on which the cached undefined/null value can be updated till the time non-undefined/null value is encountered for the first time. (vishgup@microsoft.com)
+## 7.9.0
+Mon, 06 Jan 2020 12:29:10 GMT
+
+### Minor changes
+
+- Selection: accept generic item type (elcraig@microsoft.com)
+### Patches
+
+- getClassNames: fix for LTR in RTL context. (jdh@microsoft.com)
+## 7.8.0
+Fri, 20 Dec 2019 12:32:45 GMT
+
+### Minor changes
+
+- scroll.ts: added allowOverscrollOnElement, alternative to allowScrollOnElement that allows body scroll on touch devices (dmitriy.ravdin@siemens.com)
 ## 7.7.1
 Tue, 17 Dec 2019 12:29:42 GMT
 

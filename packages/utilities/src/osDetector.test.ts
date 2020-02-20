@@ -4,12 +4,9 @@ import { isMac } from './osDetector';
 
 function testIsMac(agent: string, result: boolean): void {
   // tslint:disable-next-line:no-any
-  (navigator as any).__defineGetter__(
-    'userAgent',
-    (): string => {
-      return agent;
-    }
-  );
+  (navigator as any).__defineGetter__('userAgent', (): string => {
+    return agent;
+  });
   expect(isMac(true)).toBe(result);
 }
 

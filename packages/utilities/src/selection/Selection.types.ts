@@ -19,23 +19,23 @@ export enum SelectionMode {
 /**
  * {@docCategory Selection}
  */
-export interface ISelection {
+export interface ISelection<TItem = IObjectWithKey> {
   count: number;
   mode: SelectionMode;
 
-  canSelectItem: (item: IObjectWithKey, index?: number) => boolean;
+  canSelectItem: (item: TItem, index?: number) => boolean;
 
   // Obesrvable methods.
   setChangeEvents(isEnabled: boolean, suppressChange?: boolean): void;
 
   // Initialization methods.
 
-  setItems(items: IObjectWithKey[], shouldClear: boolean): void;
-  getItems(): IObjectWithKey[];
+  setItems(items: TItem[], shouldClear: boolean): void;
+  getItems(): TItem[];
 
   // Read selection methods.
 
-  getSelection(): IObjectWithKey[];
+  getSelection(): TItem[];
   getSelectedIndices(): number[];
   getSelectedCount(): number;
   isRangeSelected(fromIndex: number, count: number): boolean;

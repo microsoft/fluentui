@@ -8,10 +8,11 @@ export interface IStoryConfig {
   rtl?: boolean;
 }
 
-declare module '@storybook/react' {
-  // tslint:disable-next-line:interface-name
-  interface Story {
-    addStory(storyName: string, callback: RenderFunction, config?: IStoryConfig): this;
+declare module '@storybook/addons/dist/types' {
+  // tslint:disable-next-line: interface-name
+  interface StoryApi<StoryFnReturnType = unknown> {
+    /** adds a story, but via VR Tests' addon which auto adds variants like RTL */
+    addStory: this['add'];
   }
 }
 

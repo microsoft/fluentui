@@ -2,6 +2,104 @@
   "name": "@uifabric/azure-themes",
   "entries": [
     {
+      "date": "Tue, 11 Feb 2020 18:37:59 GMT",
+      "tag": "@uifabric/azure-themes_v7.0.25",
+      "version": "7.0.25",
+      "comments": {
+        "none": [
+          {
+            "comment": "fixing released versions",
+            "author": "kchau@microsoft.com",
+            "commit": "207521eb85f200e2cda239d06eacdf5f49efdadc"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 07 Feb 2020 12:41:31 GMT",
+      "tag": "@uifabric/azure-themes_v7.0.22",
+      "version": "7.0.22",
+      "comments": {
+        "none": [
+          {
+            "comment": "Remove unused config files",
+            "author": "elcraig@microsoft.com",
+            "commit": "96ccf88b8f44981d21a3903789874a13a2f79b1d"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 06 Feb 2020 12:37:34 GMT",
+      "tag": "@uifabric/azure-themes_v7.0.21",
+      "version": "7.0.21",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix incorrect icon color for disabled contextual menu icon.",
+            "author": "xinychen@microsoft.com",
+            "commit": "a8cc3ded60b29cc19e088d44b486055037752d1f"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 31 Jan 2020 19:00:10 GMT",
+      "tag": "@uifabric/azure-themes_v7.0.18",
+      "version": "7.0.18",
+      "comments": {
+        "none": [
+          {
+            "comment": "bumping versions to fix broken publishes",
+            "author": "kchau@microsoft.com",
+            "commit": "1fd6f0a289e8f0f126c9609b8e775ac0ced03b81"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 28 Jan 2020 12:43:24 GMT",
+      "tag": "@uifabric/azure-themes_v7.0.15",
+      "version": "7.0.15",
+      "comments": {
+        "none": [
+          {
+            "comment": "Rename all just configs to TS.",
+            "author": "jagore@microsoft.com",
+            "commit": "373c657b0bf9bf5d8e8433d8df8ccdccaec89e45"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 17 Jan 2020 02:32:17 GMT",
+      "tag": "@uifabric/azure-themes_v7.0.11",
+      "version": "7.0.11",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update tslib minver to first version containing __spreadArrays helper due to changes in how TS emits spreads.",
+            "author": "jagore@microsoft.com",
+            "commit": "52dc239bf89dbe76daa5f4776ee4368957938a1a"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 08 Jan 2020 17:02:57 GMT",
+      "tag": "@uifabric/azure-themes_v7.0.10",
+      "version": "7.0.10",
+      "comments": {
+        "none": [
+          {
+            "comment": "Break up build task into build, bundle, test and lint tasks. Add parallelization pipeline using new tasks.",
+            "author": "jagore@microsoft.com",
+            "commit": "f1f07695f5d18c2c975eef382c5b777d7ccb52e2"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 07 Nov 2019 12:26:32 GMT",
       "tag": "@uifabric/azure-themes_v7.0.10",
       "version": "7.0.10",
