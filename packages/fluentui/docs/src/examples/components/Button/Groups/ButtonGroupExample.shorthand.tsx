@@ -1,5 +1,5 @@
-import * as React from 'react'
-import { Button } from '@fluentui/react'
+import * as React from 'react';
+import { Button } from '@fluentui/react';
 
 const ButtonGroupExampleShorthand = () => (
   <Button.Group
@@ -9,6 +9,6 @@ const ButtonGroupExampleShorthand = () => (
       { key: 'play', icon: 'play', iconOnly: true, title: 'Play' },
     ]}
   />
-)
+);
 
-export default ButtonGroupExampleShorthand
+export default ButtonGroupExampleShorthand;

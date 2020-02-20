@@ -10,7 +10,7 @@ import {
   commonPropTypes,
   SizeValue,
   ShorthandFactory,
-  getOrGenerateIdFromShorthand
+  getOrGenerateIdFromShorthand,
 } from '../../utils';
 import { WithAsProp, ShorthandValue, withSafeTypeForAs } from '../../types';
 import Box, { BoxProps } from '../Box/Box';
@@ -63,13 +63,13 @@ class Loader extends UIComponent<WithAsProp<LoaderProps>, LoaderState> {
   static slotClassNames: LoaderSlotClassNames = {
     indicator: `${Loader.className}__indicator`,
     label: `${Loader.className}__label`,
-    svg: `${Loader.className}__svg`
+    svg: `${Loader.className}__svg`,
   };
 
   static propTypes = {
     ...commonPropTypes.createCommon({
       children: false,
-      content: false
+      content: false,
     }),
     delay: PropTypes.number,
     indicator: customPropTypes.itemShorthand,
@@ -77,7 +77,7 @@ class Loader extends UIComponent<WithAsProp<LoaderProps>, LoaderState> {
     label: customPropTypes.itemShorthand,
     labelPosition: PropTypes.oneOf(['above', 'below', 'start', 'end']),
     size: customPropTypes.size,
-    svg: customPropTypes.itemShorthand
+    svg: customPropTypes.itemShorthand,
   };
 
   static defaultProps = {
@@ -86,7 +86,7 @@ class Loader extends UIComponent<WithAsProp<LoaderProps>, LoaderState> {
     indicator: {},
     labelPosition: 'below',
     svg: '',
-    size: 'medium'
+    size: 'medium',
   };
 
   delayTimer: number;
@@ -96,13 +96,13 @@ class Loader extends UIComponent<WithAsProp<LoaderProps>, LoaderState> {
 
     this.state = {
       visible: this.props.delay === 0,
-      labelId: ''
+      labelId: '',
     };
   }
 
   static getDerivedStateFromProps(props, state) {
     return {
-      labelId: getOrGenerateIdFromShorthand('loader-label-', props.label, state.labelId)
+      labelId: getOrGenerateIdFromShorthand('loader-label-', props.label, state.labelId),
     };
   }
 
@@ -126,7 +126,7 @@ class Loader extends UIComponent<WithAsProp<LoaderProps>, LoaderState> {
     const { visible, labelId } = this.state;
 
     const svgElement = Box.create(svg, {
-      defaultProps: () => ({ className: Loader.slotClassNames.svg, styles: styles.svg })
+      defaultProps: () => ({ className: Loader.slotClassNames.svg, styles: styles.svg }),
     });
 
     return (
@@ -136,15 +136,15 @@ class Loader extends UIComponent<WithAsProp<LoaderProps>, LoaderState> {
             defaultProps: () => ({
               children: svgElement,
               className: Loader.slotClassNames.indicator,
-              styles: styles.indicator
-            })
+              styles: styles.indicator,
+            }),
           })}
           {Text.create(label, {
             defaultProps: () => ({
               className: Loader.slotClassNames.label,
               styles: styles.label,
-              id: labelId
-            })
+              id: labelId,
+            }),
           })}
         </ElementType>
       )

@@ -1,8 +1,8 @@
-import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles'
-import { pxToRem } from '../../../../utils'
-import getBorderFocusStyles from '../../getBorderFocusStyles'
-import { TreeItemProps } from '../../../../components/Tree/TreeItem'
-import TreeTitle from '../../../../components/Tree/TreeTitle'
+import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+import { pxToRem } from '../../../../utils';
+import getBorderFocusStyles from '../../getBorderFocusStyles';
+import { TreeItemProps } from '../../../../components/Tree/TreeItem';
+import TreeTitle from '../../../../components/Tree/TreeTitle';
 
 const treeItemStyles: ComponentSlotStylesPrepared<TreeItemProps> = {
   root: ({ theme: { siteVariables }, props: p }): ICSSInJSStyle => ({
@@ -17,6 +17,6 @@ const treeItemStyles: ComponentSlotStylesPrepared<TreeItemProps> = {
       },
     },
   }),
-}
+};
 
-export default treeItemStyles
+export default treeItemStyles;

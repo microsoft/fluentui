@@ -1,22 +1,20 @@
-import { FontWeightProperty } from 'csstype'
-import { pxToRem, stringLiteralsArray } from '../../../../utils'
-import { ItemType } from '../../../types'
-import { TeamsSchemeMappingWithAreas } from '../../types'
-import { pickValuesFromColorScheme } from '../../../colorUtils'
+import { FontWeightProperty } from 'csstype';
+import { pxToRem, stringLiteralsArray } from '../../../../utils';
+import { ItemType } from '../../../types';
+import { TeamsSchemeMappingWithAreas } from '../../types';
+import { pickValuesFromColorScheme } from '../../../colorUtils';
 
-export const dividerColorAreas = stringLiteralsArray('foreground')
-export type DividerColorSchemeMapping = TeamsSchemeMappingWithAreas<
-  ItemType<typeof dividerColorAreas>
->
+export const dividerColorAreas = stringLiteralsArray('foreground');
+export type DividerColorSchemeMapping = TeamsSchemeMappingWithAreas<ItemType<typeof dividerColorAreas>>;
 
 export interface DividerVariables {
-  colorScheme: DividerColorSchemeMapping
-  dividerColor: string
-  textColor: string
-  textFontSize: string
-  textLineHeight: string
-  importantFontWeight: FontWeightProperty
-  dividerPadding: string
+  colorScheme: DividerColorSchemeMapping;
+  dividerColor: string;
+  textColor: string;
+  textFontSize: string;
+  textLineHeight: string;
+  importantFontWeight: FontWeightProperty;
+  dividerPadding: string;
 }
 
 export default (siteVars: any): DividerVariables => ({
@@ -27,4 +25,4 @@ export default (siteVars: any): DividerVariables => ({
   textLineHeight: siteVars.lineHeightSmall,
   importantFontWeight: siteVars.fontWeightBold,
   dividerPadding: pxToRem(4),
-})
+});

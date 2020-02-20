@@ -1,5 +1,5 @@
-import * as React from 'react'
-import { Button, Grid, Popup } from '@fluentui/react'
+import * as React from 'react';
+import { Button, Grid, Popup } from '@fluentui/react';
 
 const PopupWithButton = props => (
   <Popup
@@ -14,15 +14,9 @@ const PopupWithButton = props => (
     }
     pointing
     position={props.position}
-    trigger={
-      <Button
-        icon={props.icon}
-        styles={{ padding: props.padding, height: '64px', minWidth: '64px' }}
-        title="Show popup"
-      />
-    }
+    trigger={<Button icon={props.icon} styles={{ padding: props.padding, height: '64px', minWidth: '64px' }} title="Show popup" />}
   />
-)
+);
 
 const triggers = [
   {
@@ -97,20 +91,14 @@ const triggers = [
     icon: { name: 'arrow-right', circular: true, bordered: true },
     padding: '18px 5px 5px 42px',
   },
-]
+];
 
 const PopupExamplePointing = () => (
   <Grid columns="repeat(3, 30px)" variables={{ padding: '30px', gridGap: '80px' }}>
     {triggers.map(({ position, align, icon, padding }) => (
-      <PopupWithButton
-        align={align}
-        icon={icon}
-        key={`${position}-${align}`}
-        padding={padding}
-        position={position}
-      />
+      <PopupWithButton align={align} icon={icon} key={`${position}-${align}`} padding={padding} position={position} />
     ))}
   </Grid>
-)
+);
 
-export default PopupExamplePointing
+export default PopupExamplePointing;

@@ -9,9 +9,9 @@ import { AlertProps } from './alertWarningBehavior';
 const alertBaseBehavior: Accessibility<AlertProps> = props => ({
   attributes: {
     dismissAction: {
-      'aria-describedby': props.bodyId
-    }
-  }
+      'aria-describedby': props.bodyId,
+    },
+  },
 });
 
 export default alertBaseBehavior;

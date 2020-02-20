@@ -17,7 +17,7 @@ import {
   ChildrenComponentProps,
   getOrGenerateIdFromShorthand,
   AutoControlledComponent,
-  isFromKeyboard
+  isFromKeyboard,
 } from '../../utils';
 import { WithAsProp, withSafeTypeForAs, DebounceResultFn, ShorthandCollection, ShorthandValue, ComponentEventHandler } from '../../types';
 import Button, { ButtonProps } from '../Button/Button';
@@ -117,12 +117,12 @@ class Carousel extends AutoControlledComponent<WithAsProp<CarouselProps>, Carous
     paddleNext: `${Carousel.className}__paddlenext`,
     paddlePrevious: `${Carousel.className}__paddleprevious`,
     pagination: `${Carousel.className}__pagination`,
-    navigation: `${Carousel.className}__navigation`
+    navigation: `${Carousel.className}__navigation`,
   };
 
   static propTypes = {
     ...commonPropTypes.createCommon({
-      content: false
+      content: false,
     }),
     activeIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     ariaRoleDescription: PropTypes.string,
@@ -135,7 +135,7 @@ class Carousel extends AutoControlledComponent<WithAsProp<CarouselProps>, Carous
     onActiveIndexChange: PropTypes.func,
     paddleNext: customPropTypes.itemShorthand,
     paddlesPosition: PropTypes.string,
-    paddlePrevious: customPropTypes.itemShorthand
+    paddlePrevious: customPropTypes.itemShorthand,
   };
 
   static autoControlledProps = ['activeIndex'];
@@ -143,7 +143,7 @@ class Carousel extends AutoControlledComponent<WithAsProp<CarouselProps>, Carous
   static defaultProps = {
     accessibility: carouselBehavior as Accessibility,
     paddlePrevious: {},
-    paddleNext: {}
+    paddleNext: {},
   };
 
   static Item = CarouselItem;
@@ -159,7 +159,7 @@ class Carousel extends AutoControlledComponent<WithAsProp<CarouselProps>, Carous
     }
 
     return {
-      itemIds: items.map((item, index) => getOrGenerateIdFromShorthand('carousel-item-', item, itemIds[index]))
+      itemIds: items.map((item, index) => getOrGenerateIdFromShorthand('carousel-item-', item, itemIds[index])),
     };
   }
 
@@ -199,7 +199,7 @@ class Carousel extends AutoControlledComponent<WithAsProp<CarouselProps>, Carous
       if (!navigation && activeIndex <= 1 && !circular) {
         this.paddleNextRef.current.focus();
       }
-    }
+    },
   };
 
   getInitialAutoControlledState(): CarouselState {
@@ -209,7 +209,7 @@ class Carousel extends AutoControlledComponent<WithAsProp<CarouselProps>, Carous
       ariaLiveOn: false,
       itemIds: [] as string[],
       shouldFocusContainer: false,
-      isFromKeyboard: false
+      isFromKeyboard: false,
     };
   }
 
@@ -241,7 +241,7 @@ class Carousel extends AutoControlledComponent<WithAsProp<CarouselProps>, Carous
 
     this.setState({
       prevActiveIndex: this.state.activeIndex,
-      activeIndex
+      activeIndex,
     });
 
     _.invoke(this.props, 'onActiveIndexChange', e, this.props);
@@ -255,17 +255,17 @@ class Carousel extends AutoControlledComponent<WithAsProp<CarouselProps>, Carous
     onFocus: (e, itemProps) => {
       this.setState({
         shouldFocusContainer: e.currentTarget === e.target,
-        isFromKeyboard: isFromKeyboard()
+        isFromKeyboard: isFromKeyboard(),
       });
       _.invoke(predefinedProps, 'onFocus', e, itemProps);
     },
     onBlur: (e, itemProps) => {
       this.setState({
         shouldFocusContainer: e.currentTarget.contains(e.relatedTarget),
-        isFromKeyboard: false
+        isFromKeyboard: false,
       });
       _.invoke(predefinedProps, 'onBlur', e, itemProps);
-    }
+    },
   });
 
   renderContent = (accessibility, classes, unhandledProps) => {
@@ -322,10 +322,10 @@ class Carousel extends AutoControlledComponent<WithAsProp<CarouselProps>, Carous
                         id: itemIds[index],
                         navigation: !!this.props.navigation,
                         ...(getItemPositionText && {
-                          itemPositionText: getItemPositionText(index, items.length)
-                        })
+                          itemPositionText: getItemPositionText(index, items.length),
+                        }),
                       }),
-                      overrideProps: this.overrideItemProps
+                      overrideProps: this.overrideItemProps,
                     })}
                   </Ref>
                 </Animation>
@@ -361,9 +361,9 @@ class Carousel extends AutoControlledComponent<WithAsProp<CarouselProps>, Carous
     onFocus: (e: React.SyntheticEvent, buttonProps: ButtonProps) => {
       _.invoke(predefinedProps, 'onFocus', e, buttonProps);
       this.setState({
-        ariaLiveOn: true
+        ariaLiveOn: true,
       });
-    }
+    },
   });
 
   renderPaddles = (accessibility, styles) => {
@@ -379,9 +379,9 @@ class Carousel extends AutoControlledComponent<WithAsProp<CarouselProps>, Carous
               icon: 'icon-chevron-start',
               styles: styles.paddlePrevious,
               ...accessibility.attributes.paddlePrevious,
-              ...applyAccessibilityKeyHandlers(accessibility.keyHandlers.paddlePrevious, paddlePrevious)
+              ...applyAccessibilityKeyHandlers(accessibility.keyHandlers.paddlePrevious, paddlePrevious),
             }),
-            overrideProps: (predefinedProps: ButtonProps) => this.handlePaddleOverrides(predefinedProps, 'paddlePrevious')
+            overrideProps: (predefinedProps: ButtonProps) => this.handlePaddleOverrides(predefinedProps, 'paddlePrevious'),
           })}
         </Ref>
         <Ref innerRef={this.paddleNextRef}>
@@ -392,9 +392,9 @@ class Carousel extends AutoControlledComponent<WithAsProp<CarouselProps>, Carous
               icon: 'icon-chevron-end',
               styles: styles.paddleNext,
               ...accessibility.attributes.paddleNext,
-              ...applyAccessibilityKeyHandlers(accessibility.keyHandlers.paddleNext, paddleNext)
+              ...applyAccessibilityKeyHandlers(accessibility.keyHandlers.paddleNext, paddleNext),
             }),
-            overrideProps: (predefinedProps: ButtonProps) => this.handlePaddleOverrides(predefinedProps, 'paddleNext')
+            overrideProps: (predefinedProps: ButtonProps) => this.handlePaddleOverrides(predefinedProps, 'paddleNext'),
           })}
         </Ref>
       </>
@@ -415,7 +415,7 @@ class Carousel extends AutoControlledComponent<WithAsProp<CarouselProps>, Carous
         defaultProps: () => ({
           className: Carousel.slotClassNames.navigation,
           iconOnly: true,
-          activeIndex
+          activeIndex,
         }),
         overrideProps: (predefinedProps: CarouselNavigationItemProps) => ({
           onItemClick: (e: React.SyntheticEvent, itemProps: CarouselNavigationItemProps) => {
@@ -424,8 +424,8 @@ class Carousel extends AutoControlledComponent<WithAsProp<CarouselProps>, Carous
             this.setActiveIndex(e, index, true);
 
             _.invoke(predefinedProps, 'onClick', e, itemProps);
-          }
-        })
+          },
+        }),
       })
     ) : (
       <Text className={Carousel.slotClassNames.pagination} content={getItemPositionText(activeIndex, items.length)} />
@@ -457,7 +457,7 @@ class Carousel extends AutoControlledComponent<WithAsProp<CarouselProps>, Carous
 
 Carousel.create = createShorthandFactory({
   Component: Carousel,
-  mappedArrayProp: 'items'
+  mappedArrayProp: 'items',
 });
 
 /**

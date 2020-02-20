@@ -20,7 +20,7 @@ import {
   commonPropTypes,
   isFromKeyboard,
   doesNodeContainClick,
-  setWhatInputSource
+  setWhatInputSource,
 } from '../../utils';
 import { ComponentEventHandler, ShorthandValue } from '../../types';
 import { ALIGNMENTS, POSITIONS, Popper, PositioningProps, PopperChildrenProps } from '../../utils/positioner';
@@ -125,7 +125,7 @@ export default class Popup extends AutoControlledComponent<PopupProps, PopupStat
   static create: ShorthandFactory<PopupProps>;
 
   static slotClassNames: PopupSlotClassNames = {
-    content: `${Popup.className}__content`
+    content: `${Popup.className}__content`,
   };
 
   static Content = PopupContent;
@@ -133,7 +133,7 @@ export default class Popup extends AutoControlledComponent<PopupProps, PopupStat
   static propTypes = {
     ...commonPropTypes.createCommon({
       as: false,
-      content: false
+      content: false,
     }),
     align: PropTypes.oneOf(ALIGNMENTS),
     defaultOpen: PropTypes.bool,
@@ -144,7 +144,7 @@ export default class Popup extends AutoControlledComponent<PopupProps, PopupStat
     on: PropTypes.oneOfType([
       PropTypes.oneOf(['hover', 'click', 'focus', 'context']),
       PropTypes.arrayOf(PropTypes.oneOf(['click', 'focus', 'context'])),
-      PropTypes.arrayOf(PropTypes.oneOf(['hover', 'focus', 'context']))
+      PropTypes.arrayOf(PropTypes.oneOf(['hover', 'focus', 'context'])),
     ]),
     open: PropTypes.bool,
     onOpenChange: PropTypes.func,
@@ -158,7 +158,7 @@ export default class Popup extends AutoControlledComponent<PopupProps, PopupStat
     content: customPropTypes.shorthandAllowingChildren,
     contentRef: customPropTypes.ref,
     trapFocus: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
-    autoFocus: PropTypes.oneOfType([PropTypes.bool, PropTypes.object])
+    autoFocus: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
   };
 
   static defaultProps: PopupProps = {
@@ -167,7 +167,7 @@ export default class Popup extends AutoControlledComponent<PopupProps, PopupStat
     position: 'above',
     on: 'click',
     mouseLeaveDelay: 500,
-    tabbableTrigger: true
+    tabbableTrigger: true,
   };
 
   static autoControlledProps = ['open'];
@@ -199,7 +199,7 @@ export default class Popup extends AutoControlledComponent<PopupProps, PopupStat
     },
     preventScroll: e => {
       e.preventDefault();
-    }
+    },
   };
 
   componentDidMount() {
@@ -216,7 +216,7 @@ export default class Popup extends AutoControlledComponent<PopupProps, PopupStat
       }
       if (!inline && autoFocus) {
         console.warn(
-          'Beware, "autoFocus" prop will just grab focus at the moment of mount and will not trap it. As user is able to TAB out from popup, better use "inline" prop to keep correct tab order.'
+          'Beware, "autoFocus" prop will just grab focus at the moment of mount and will not trap it. As user is able to TAB out from popup, better use "inline" prop to keep correct tab order.',
         );
       }
     }
@@ -434,7 +434,7 @@ export default class Popup extends AutoControlledComponent<PopupProps, PopupStat
           {React.cloneElement(triggerElement, {
             ...accessibility.attributes.trigger,
             ...triggerProps,
-            ...applyAccessibilityKeyHandlers(accessibility.keyHandlers.trigger, triggerProps)
+            ...applyAccessibilityKeyHandlers(accessibility.keyHandlers.trigger, triggerProps),
           })}
         </Ref>
       )
@@ -471,9 +471,9 @@ export default class Popup extends AutoControlledComponent<PopupProps, PopupStat
         pointing,
         pointerRef: this.pointerTargetRef,
         trapFocus,
-        autoFocus
+        autoFocus,
       }),
-      overrideProps: this.getContentProps
+      overrideProps: this.getContentProps,
     });
 
     return (

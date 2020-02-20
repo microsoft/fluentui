@@ -14,7 +14,7 @@ import {
   ChildrenComponentProps,
   ContentComponentProps,
   commonPropTypes,
-  rtlTextContainer
+  rtlTextContainer,
 } from '../../utils';
 
 import { PopperChildrenProps } from '../../utils/positioner';
@@ -48,22 +48,22 @@ const TooltipContent: React.FC<WithAsProp<TooltipContentProps>> & FluentComponen
 
   const getA11Props = useAccessibility(accessibility, {
     debugName: TooltipContent.displayName,
-    rtl: context.rtl
+    rtl: context.rtl,
   });
   const { classes } = useStyles(TooltipContent.displayName, {
     className: TooltipContent.className,
     mapPropsToStyles: () => ({
       open,
       placement,
-      pointing
+      pointing,
     }),
     mapPropsToInlineStyles: () => ({
       className,
       design,
       styles,
-      variables
+      variables,
     }),
-    rtl: context.rtl
+    rtl: context.rtl,
   });
 
   const ElementType = getElementType(props);
@@ -74,7 +74,7 @@ const TooltipContent: React.FC<WithAsProp<TooltipContentProps>> & FluentComponen
       {...getA11Props('root', {
         className: classes.root,
         ...rtlTextContainer.getAttributes({ forElements: [children, content] }),
-        ...unhandledProps
+        ...unhandledProps,
       })}
     >
       {open && pointing && <div className={classes.pointer} ref={pointerRef} />}
@@ -107,10 +107,10 @@ TooltipContent.propTypes = {
     'bottom-start',
     'left-end',
     'left',
-    'left-start'
+    'left-start',
   ]),
   pointing: PropTypes.bool,
-  pointerRef: customPropTypes.ref
+  pointerRef: customPropTypes.ref,
 };
 TooltipContent.handledProps = Object.keys(TooltipContent.propTypes) as any;
 

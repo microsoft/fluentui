@@ -1,8 +1,8 @@
-import * as React from 'react'
+import * as React from 'react';
 
-import Types from './Types'
-import Usage from './Usage'
-import Performance from './Performance'
+import Types from './Types';
+import Usage from './Usage';
+import Performance from './Performance';
 
 const ProviderExamples = () => (
   <>
@@ -10,6 +10,6 @@ const ProviderExamples = () => (
     <Usage />
     <Performance />
   </>
-)
+);
 
-export default ProviderExamples
+export default ProviderExamples;

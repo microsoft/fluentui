@@ -1,8 +1,5 @@
-import {
-  toolbarColorAreas,
-  ToolbarVariables,
-} from '../../../teams/components/Toolbar/toolbarVariables'
-import { extendColorScheme, pickValuesFromColorScheme } from '../../../colorUtils'
+import { toolbarColorAreas, ToolbarVariables } from '../../../teams/components/Toolbar/toolbarVariables';
+import { extendColorScheme, pickValuesFromColorScheme } from '../../../colorUtils';
 
 export default (siteVars: any): Partial<ToolbarVariables> => ({
   colorScheme: pickValuesFromColorScheme(
@@ -22,4 +19,4 @@ export default (siteVars: any): Partial<ToolbarVariables> => ({
   borderRadius: undefined,
 
   menuBoxShadow: undefined,
-})
+});

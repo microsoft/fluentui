@@ -1,4 +1,4 @@
-const commonConfig = require('@uifabric/build/jest')
+const commonConfig = require('@uifabric/build/jest');
 
 module.exports = {
   ...commonConfig,
@@ -8,4 +8,4 @@ module.exports = {
   name: 'e2e',
   testRegex: '.*-test\\.tsx?$',
   setupFilesAfterEnv: ['./setup.test.ts'],
-}
+};

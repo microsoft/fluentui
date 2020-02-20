@@ -1,6 +1,6 @@
-import { Accessibility } from '../../types'
-import * as keyboardKey from 'keyboard-key'
-import { IS_FOCUSABLE_ATTRIBUTE } from '../../attributes'
+import { Accessibility } from '../../types';
+import * as keyboardKey from 'keyboard-key';
+import { IS_FOCUSABLE_ATTRIBUTE } from '../../attributes';
 
 /**
  * @specification
@@ -29,13 +29,13 @@ const radioGroupItemBehavior: Accessibility<RadioGroupItemBehaviorProps> = props
       },
     },
   },
-})
+});
 
-export default radioGroupItemBehavior
+export default radioGroupItemBehavior;
 
 type RadioGroupItemBehaviorProps = {
   /** Indicates if radio item is selected. */
-  checked?: boolean
+  checked?: boolean;
   /** Indicates if radio item is disabled. */
-  disabled?: boolean
-}
+  disabled?: boolean;
+};

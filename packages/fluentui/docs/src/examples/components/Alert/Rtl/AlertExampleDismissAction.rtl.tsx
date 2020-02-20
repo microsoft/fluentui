@@ -1,5 +1,5 @@
-import * as React from 'react'
-import { Alert } from '@fluentui/react'
+import * as React from 'react';
+import { Alert } from '@fluentui/react';
 
 const AlertExampleDismissActionRtl = () => (
   <Alert
@@ -15,6 +15,6 @@ const AlertExampleDismissActionRtl = () => (
     icon="exclamation-triangle"
     content="مرحبا العالم"
   />
-)
+);
 
-export default AlertExampleDismissActionRtl
+export default AlertExampleDismissActionRtl;

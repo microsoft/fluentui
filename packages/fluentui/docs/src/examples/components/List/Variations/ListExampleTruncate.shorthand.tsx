@@ -1,6 +1,6 @@
-import { useBooleanKnob, useRangeKnob } from '@fluentui/docs-components'
-import { List, Image, ButtonGroup } from '@fluentui/react'
-import * as React from 'react'
+import { useBooleanKnob, useRangeKnob } from '@fluentui/docs-components';
+import { List, Image, ButtonGroup } from '@fluentui/react';
+import * as React from 'react';
 
 const actions = (
   <ButtonGroup
@@ -19,7 +19,7 @@ const actions = (
       },
     ]}
   />
-)
+);
 
 const items = [
   {
@@ -49,24 +49,19 @@ const items = [
     contentMedia: '!!',
     endMedia: actions,
   },
-]
+];
 
 const ListExample = () => {
-  const [debug] = useBooleanKnob({ name: 'debug' })
-  const [truncateContent] = useBooleanKnob({ name: 'truncateContent', initialValue: true })
-  const [truncateHeader] = useBooleanKnob({ name: 'truncateHeader', initialValue: true })
-  const [width] = useRangeKnob({ name: 'width', initialValue: '25rem' })
+  const [debug] = useBooleanKnob({ name: 'debug' });
+  const [truncateContent] = useBooleanKnob({ name: 'truncateContent', initialValue: true });
+  const [truncateHeader] = useBooleanKnob({ name: 'truncateHeader', initialValue: true });
+  const [width] = useRangeKnob({ name: 'width', initialValue: '25rem' });
 
   return (
     <div style={{ width }}>
-      <List
-        debug={debug}
-        truncateHeader={truncateHeader}
-        truncateContent={truncateContent}
-        items={items}
-      />
+      <List debug={debug} truncateHeader={truncateHeader} truncateContent={truncateContent} items={items} />
     </div>
-  )
-}
+  );
+};
 
-export default ListExample
+export default ListExample;

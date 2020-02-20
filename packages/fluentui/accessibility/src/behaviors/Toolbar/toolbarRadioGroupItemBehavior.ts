@@ -1,5 +1,5 @@
-import { Accessibility, AccessibilityDefinition } from '../../types'
-import buttonBehavior, { ButtonBehaviorProps } from '../Button/buttonBehavior'
+import { Accessibility, AccessibilityDefinition } from '../../types';
+import buttonBehavior, { ButtonBehaviorProps } from '../Button/buttonBehavior';
 
 /**
  * @specification
@@ -18,21 +18,21 @@ const toolbarRadioGroupItemBehavior: Accessibility<ToolbarRadioGroupItemBehavior
       },
     },
     keyActions: buttonBehavior(props).keyActions,
-  }
+  };
 
   if (process.env.NODE_ENV !== 'production') {
     // Override the default trigger's accessibility schema class.
-    definition.attributes.root['data-aa-class'] = 'RadioGroupItem'
+    definition.attributes.root['data-aa-class'] = 'RadioGroupItem';
   }
 
-  return definition
-}
+  return definition;
+};
 
-export default toolbarRadioGroupItemBehavior
+export default toolbarRadioGroupItemBehavior;
 
 type ToolbarRadioGroupItemBehaviorProps = {
   /** Indicates if radio item is selected. */
-  active?: boolean
+  active?: boolean;
   /** Indicates if radio item is disabled. */
-  disabled?: boolean
-} & ButtonBehaviorProps
+  disabled?: boolean;
+} & ButtonBehaviorProps;

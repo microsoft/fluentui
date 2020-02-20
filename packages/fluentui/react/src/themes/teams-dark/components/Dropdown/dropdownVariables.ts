@@ -1,4 +1,4 @@
-import { DropdownVariables } from '../../../teams/components/Dropdown/dropdownVariables'
+import { DropdownVariables } from '../../../teams/components/Dropdown/dropdownVariables';
 
 export default (siteVars): Partial<DropdownVariables> => ({
   backgroundColor: siteVars.colors.grey[650],
@@ -20,4 +20,4 @@ export default (siteVars): Partial<DropdownVariables> => ({
   listItemSelectedColor: siteVars.colors.white,
   selectedItemBackgroundColorFocus: siteVars.colors.brand[200],
   triggerButtonColorHover: siteVars.colors.grey[250],
-})
+});

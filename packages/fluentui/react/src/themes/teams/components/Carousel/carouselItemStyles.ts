@@ -7,9 +7,9 @@ const carouselItemStyles: ComponentSlotStylesPrepared<CarouselProps & CarouselSt
   root: ({ variables: v }): ICSSInJSStyle => ({
     width: pxToRem(v.width),
     ':focus': {
-      outline: 'none'
-    }
-  })
+      outline: 'none',
+    },
+  }),
 };
 
 export default carouselItemStyles;

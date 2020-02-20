@@ -1,6 +1,6 @@
-import * as React from 'react'
-import * as _ from 'lodash'
-import { Flex, Icon, Grid, Text, ProviderConsumer } from '@fluentui/react'
+import * as React from 'react';
+import * as _ from 'lodash';
+import { Flex, Icon, Grid, Text, ProviderConsumer } from '@fluentui/react';
 
 const IconExampleColor = () => (
   <Grid
@@ -40,9 +40,7 @@ const IconExampleColor = () => (
     <Flex gap="gap.smaller">
       <ProviderConsumer
         render={({ siteVariables: { contextualColors, naturalColors } }) =>
-          _.keys({ ...contextualColors, ...naturalColors }).map(color => (
-            <Icon color={color} name="calendar" title={color} key={color} />
-          ))
+          _.keys({ ...contextualColors, ...naturalColors }).map(color => <Icon color={color} name="calendar" title={color} key={color} />)
         }
       />
     </Flex>
@@ -60,6 +58,6 @@ const IconExampleColor = () => (
     </Flex>
     <Text weight="bold" size="small" content={'*hover the icons to see the color prop value'} />
   </Grid>
-)
+);
 
-export default IconExampleColor
+export default IconExampleColor;

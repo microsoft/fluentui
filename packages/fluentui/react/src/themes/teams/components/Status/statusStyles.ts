@@ -44,7 +44,7 @@ const sizeToPxValue: Record<SizeValue, number> = {
   medium: 10,
   large: 12,
   larger: 14,
-  largest: 16
+  largest: 16,
 };
 
 export const getSizeStyles = (sizeInPx: number, variables: StatusVariables) => {
@@ -53,7 +53,7 @@ export const getSizeStyles = (sizeInPx: number, variables: StatusVariables) => {
 
   return {
     height: sizeInRem,
-    width: sizeInRem
+    width: sizeInRem,
   };
 };
 
@@ -69,15 +69,15 @@ const statusStyles: ComponentSlotStylesPrepared<StatusStylesProps, StatusVariabl
       ...(variables.borderColor && {
         borderColor: variables.borderColor,
         borderWidth: pxToRem(variables.borderWidth),
-        borderStyle: 'solid'
+        borderStyle: 'solid',
       }),
-      backgroundColor: color || getBackgroundColor(state, variables)
+      backgroundColor: color || getBackgroundColor(state, variables),
     };
   },
 
   icon: ({ props: { state }, variables }): ICSSInJSStyle => ({
-    color: getTextColor(state, variables)
-  })
+    color: getTextColor(state, variables),
+  }),
 };
 
 export default statusStyles;

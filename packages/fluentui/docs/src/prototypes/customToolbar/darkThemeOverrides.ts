@@ -7,54 +7,54 @@ import {
   ToolbarDividerProps,
   StatusProps,
   pxToRem,
-} from '@fluentui/react'
+} from '@fluentui/react';
 
 export type CustomStatusVariables = {
-  isRecordingIndicator?: boolean
+  isRecordingIndicator?: boolean;
 
-  recordingIndicatorBorderColor?: string
-  recordingIndicatorBorderStyle?: string
-  recordingIndicatorBorderWidth?: string
-}
+  recordingIndicatorBorderColor?: string;
+  recordingIndicatorBorderStyle?: string;
+  recordingIndicatorBorderWidth?: string;
+};
 
 export type CustomToolbarVariables = {
-  isCt?: boolean
+  isCt?: boolean;
 
-  isCtItemDanger?: boolean
-  isCtItemPrimary?: boolean
-  isCtItemIconNoFill?: boolean
-  isCtItemIndicator?: boolean
-  isCtItemWithNotification?: boolean
+  isCtItemDanger?: boolean;
+  isCtItemPrimary?: boolean;
+  isCtItemIconNoFill?: boolean;
+  isCtItemIndicator?: boolean;
+  isCtItemWithNotification?: boolean;
 
-  ctBorderRadius: string
-  ctBorderStyle: string
-  ctBorderWidth: string
-  ctHeight: string
+  ctBorderRadius: string;
+  ctBorderStyle: string;
+  ctBorderWidth: string;
+  ctHeight: string;
 
-  ctItemBackground: string
-  ctItemBackgroundHover: string
-  ctItemBorderColorFocus: string
-  ctItemColor: string
-  ctItemColorFocus: string
-  ctItemColorHover: string
+  ctItemBackground: string;
+  ctItemBackgroundHover: string;
+  ctItemBorderColorFocus: string;
+  ctItemColor: string;
+  ctItemColorFocus: string;
+  ctItemColorHover: string;
 
-  ctItemActiveColor: string
-  ctItemActiveBackground: string
-  ctItemActiveBackgroundOverlay: string
+  ctItemActiveColor: string;
+  ctItemActiveBackground: string;
+  ctItemActiveBackgroundOverlay: string;
 
-  ctItemDangerBackground: string
-  ctItemDangerColorHover: string
-  ctItemDangerBackgroundHover: string
+  ctItemDangerBackground: string;
+  ctItemDangerColorHover: string;
+  ctItemDangerBackgroundHover: string;
 
-  ctItemIndicatorPadding: string
+  ctItemIndicatorPadding: string;
 
-  ctItemNotificationBackgroundColor: string
-  ctItemNotificationSize: string
+  ctItemNotificationBackgroundColor: string;
+  ctItemNotificationSize: string;
 
-  ctItemPrimaryBackground: string
-  ctItemPrimaryBackgroundHover: string
-  ctItemPrimaryColorHover: string
-}
+  ctItemPrimaryBackground: string;
+  ctItemPrimaryBackgroundHover: string;
+  ctItemPrimaryColorHover: string;
+};
 
 export const darkThemeOverrides: ThemeInput = {
   componentVariables: {
@@ -100,9 +100,7 @@ export const darkThemeOverrides: ThemeInput = {
 
   componentStyles: {
     Status: {
-      root: ({
-        variables: v,
-      }: ComponentStyleFunctionParam<StatusProps, CustomStatusVariables>) => ({
+      root: ({ variables: v }: ComponentStyleFunctionParam<StatusProps, CustomStatusVariables>) => ({
         ...(v.isRecordingIndicator && {
           boxSizing: 'content-box',
           borderColor: v.recordingIndicatorBorderColor,
@@ -112,9 +110,7 @@ export const darkThemeOverrides: ThemeInput = {
       }),
     },
     Toolbar: {
-      root: ({
-        variables: v,
-      }: ComponentStyleFunctionParam<ToolbarProps, CustomToolbarVariables>) => ({
+      root: ({ variables: v }: ComponentStyleFunctionParam<ToolbarProps, CustomToolbarVariables>) => ({
         ...(v.isCt && {
           borderRadius: v.ctBorderRadius,
           height: v.ctHeight,
@@ -124,10 +120,7 @@ export const darkThemeOverrides: ThemeInput = {
     },
 
     ToolbarCustomItem: {
-      root: ({
-        props: p,
-        variables: v,
-      }: ComponentStyleFunctionParam<ToolbarCustomItemProps, CustomToolbarVariables>) => ({
+      root: ({ props: p, variables: v }: ComponentStyleFunctionParam<ToolbarCustomItemProps, CustomToolbarVariables>) => ({
         ...(v.isCt && {
           background: v.ctItemBackground,
           borderStyle: v.ctBorderStyle,
@@ -147,10 +140,7 @@ export const darkThemeOverrides: ThemeInput = {
     },
 
     ToolbarItem: {
-      root: ({
-        props: p,
-        variables: v,
-      }: ComponentStyleFunctionParam<ToolbarItemProps, CustomToolbarVariables>) => {
+      root: ({ props: p, variables: v }: ComponentStyleFunctionParam<ToolbarItemProps, CustomToolbarVariables>) => {
         return {
           ...(v.isCt && {
             alignItems: 'center',
@@ -255,19 +245,16 @@ export const darkThemeOverrides: ThemeInput = {
               display: 'block',
             },
           }),
-        }
+        };
       },
     },
 
     ToolbarDivider: {
-      root: ({
-        props: p,
-        variables: v,
-      }: ComponentStyleFunctionParam<ToolbarDividerProps, CustomToolbarVariables>) => ({
+      root: ({ props: p, variables: v }: ComponentStyleFunctionParam<ToolbarDividerProps, CustomToolbarVariables>) => ({
         ...(v.isCt && {
           margin: 0,
         }),
       }),
     },
   },
-}
+};

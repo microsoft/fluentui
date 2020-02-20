@@ -1,4 +1,4 @@
-import { StatusVariables } from '../../../teams/components/Status/statusVariables'
+import { StatusVariables } from '../../../teams/components/Status/statusVariables';
 
 export default (siteVariables): Partial<StatusVariables> => ({
   successBackgroundColor: siteVariables.accessibleGreen,
@@ -11,4 +11,4 @@ export default (siteVariables): Partial<StatusVariables> => ({
   errorTextColor: siteVariables.colors.black,
   defaultBackgroundColor: siteVariables.colors.white,
   defaultTextColor: siteVariables.colors.black,
-})
+});

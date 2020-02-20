@@ -1,8 +1,8 @@
-import { Accessibility, buttonBehavior } from '@fluentui/accessibility'
-import * as customPropTypes from '@fluentui/react-proptypes'
-import * as PropTypes from 'prop-types'
-import * as React from 'react'
-import * as _ from 'lodash'
+import { Accessibility, buttonBehavior } from '@fluentui/accessibility';
+import * as customPropTypes from '@fluentui/react-proptypes';
+import * as PropTypes from 'prop-types';
+import * as React from 'react';
+import * as _ from 'lodash';
 
 import {
   childrenExist,
@@ -13,10 +13,10 @@ import {
   commonPropTypes,
   rtlTextContainer,
   SizeValue,
-} from '../../utils'
-import Icon, { IconProps } from '../Icon/Icon'
-import Box, { BoxProps } from '../Box/Box'
-import Loader, { LoaderProps } from '../Loader/Loader'
+} from '../../utils';
+import Icon, { IconProps } from '../Icon/Icon';
+import Box, { BoxProps } from '../Box/Box';
+import Loader, { LoaderProps } from '../Loader/Loader';
 import {
   ComponentEventHandler,
   WithAsProp,
@@ -24,84 +24,74 @@ import {
   withSafeTypeForAs,
   FluentComponentStaticProps,
   ProviderContextPrepared,
-} from '../../types'
-import ButtonGroup from './ButtonGroup'
-import {
-  getElementType,
-  getUnhandledProps,
-  useAccessibility,
-  useStyles,
-  useTelemetry,
-} from '@fluentui/react-bindings'
+} from '../../types';
+import ButtonGroup from './ButtonGroup';
+import { getElementType, getUnhandledProps, useAccessibility, useStyles, useTelemetry } from '@fluentui/react-bindings';
 // @ts-ignore
-import { ThemeContext } from 'react-fela'
+import { ThemeContext } from 'react-fela';
 
-export interface ButtonProps
-  extends UIComponentProps,
-    ContentComponentProps<ShorthandValue<BoxProps>>,
-    ChildrenComponentProps {
+export interface ButtonProps extends UIComponentProps, ContentComponentProps<ShorthandValue<BoxProps>>, ChildrenComponentProps {
   /** Accessibility behavior if overridden by the user. */
-  accessibility?: Accessibility
+  accessibility?: Accessibility;
 
   /** A button can appear circular. */
-  circular?: boolean
+  circular?: boolean;
 
   /** A button can show that it cannot be interacted with. */
-  disabled?: boolean
+  disabled?: boolean;
 
   /** A button can fill the width of its container. */
-  fluid?: boolean
+  fluid?: boolean;
 
   /** A button can have an icon. */
-  icon?: ShorthandValue<IconProps>
+  icon?: ShorthandValue<IconProps>;
 
   /** A button can contain only an icon. */
-  iconOnly?: boolean
+  iconOnly?: boolean;
 
   /** An icon button can format its Icon to appear before or after its content */
-  iconPosition?: 'before' | 'after'
+  iconPosition?: 'before' | 'after';
 
   /** Shorthand to customize a button's loader. */
-  loader?: ShorthandValue<LoaderProps>
+  loader?: ShorthandValue<LoaderProps>;
 
   /** A button can show a loading indicator. */
-  loading?: boolean
+  loading?: boolean;
 
   /**
    * Called after a user clicks the button.
    * @param event - React's original SyntheticEvent.
    * @param data - All props.
    */
-  onClick?: ComponentEventHandler<ButtonProps>
+  onClick?: ComponentEventHandler<ButtonProps>;
 
   /**
    * Called after a user focuses the button.
    * @param event - React's original SyntheticEvent.
    * @param data - All props.
    */
-  onFocus?: ComponentEventHandler<ButtonProps>
+  onFocus?: ComponentEventHandler<ButtonProps>;
 
   /** A button can emphasize that it represents the primary action. */
-  primary?: boolean
+  primary?: boolean;
 
   /** A button can be formatted to show only text in order to indicate a less-pronounced action. */
-  text?: boolean
+  text?: boolean;
 
   /** A button can emphasize that it represents an alternative action. */
-  secondary?: boolean
+  secondary?: boolean;
 
   /** A button that inherits its background and has a subtle appearance */
-  inverted?: boolean
+  inverted?: boolean;
 
   /** A button can be sized. */
-  size?: SizeValue
+  size?: SizeValue;
 }
 
-const Button: React.FC<WithAsProp<ButtonProps>> &
-  FluentComponentStaticProps<ButtonProps> & { Group: typeof ButtonGroup } = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext)
-  const { setStart, setEnd } = useTelemetry(Button.displayName, context.telemetry)
-  setStart()
+const Button: React.FC<WithAsProp<ButtonProps>> & FluentComponentStaticProps<ButtonProps> & { Group: typeof ButtonGroup } = props => {
+  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const { setStart, setEnd } = useTelemetry(Button.displayName, context.telemetry);
+  setStart();
 
   const {
     accessibility,
@@ -126,9 +116,9 @@ const Button: React.FC<WithAsProp<ButtonProps>> &
     styles,
     variables,
     design,
-  } = props
+  } = props;
 
-  const hasChildren = childrenExist(children)
+  const hasChildren = childrenExist(children);
 
   const getA11Props = useAccessibility(accessibility, {
     debugName: Button.displayName,
@@ -140,12 +130,12 @@ const Button: React.FC<WithAsProp<ButtonProps>> &
     }),
     actionHandlers: {
       performClick: event => {
-        event.preventDefault()
-        handleClick(event)
+        event.preventDefault();
+        handleClick(event);
       },
     },
     rtl: context.rtl,
-  })
+  });
   const { classes, styles: resolvedStyles } = useStyles(Button.displayName, {
     className: Button.className,
     mapPropsToStyles: () => ({
@@ -167,10 +157,10 @@ const Button: React.FC<WithAsProp<ButtonProps>> &
       variables,
     }),
     rtl: context.rtl,
-  })
+  });
 
-  const unhandledProps = getUnhandledProps(Button.handledProps, props)
-  const ElementType = getElementType(props)
+  const unhandledProps = getUnhandledProps(Button.handledProps, props);
+  const ElementType = getElementType(props);
 
   const renderIcon = () => {
     return Icon.create(icon, {
@@ -179,8 +169,8 @@ const Button: React.FC<WithAsProp<ButtonProps>> &
           styles: resolvedStyles.icon,
           xSpacing: !content ? 'none' : iconPosition === 'after' ? 'before' : 'after',
         }),
-    })
-  }
+    });
+  };
 
   const renderLoader = () => {
     return Loader.create(loader || {}, {
@@ -189,21 +179,21 @@ const Button: React.FC<WithAsProp<ButtonProps>> &
           role: undefined,
           styles: resolvedStyles.loader,
         }),
-    })
-  }
+    });
+  };
 
   const handleClick = (e: React.SyntheticEvent) => {
     if (disabled) {
-      e.preventDefault()
-      return
+      e.preventDefault();
+      return;
     }
 
-    _.invoke(props, 'onClick', e, props)
-  }
+    _.invoke(props, 'onClick', e, props);
+  };
 
   const handleFocus = (e: React.SyntheticEvent) => {
-    _.invoke(props, 'onFocus', e, props)
-  }
+    _.invoke(props, 'onFocus', e, props);
+  };
 
   const result = (
     <ElementType
@@ -223,28 +213,27 @@ const Button: React.FC<WithAsProp<ButtonProps>> &
           {loading && renderLoader()}
           {iconPosition !== 'after' && renderIcon()}
           {Box.create(content, {
-            defaultProps: () =>
-              getA11Props('content', { as: 'span', styles: resolvedStyles.content }),
+            defaultProps: () => getA11Props('content', { as: 'span', styles: resolvedStyles.content }),
           })}
           {iconPosition === 'after' && renderIcon()}
         </>
       )}
     </ElementType>
-  )
+  );
 
-  setEnd()
+  setEnd();
 
-  return result
-}
+  return result;
+};
 
 Button.defaultProps = {
   as: 'button',
   accessibility: buttonBehavior,
   size: 'medium',
-}
+};
 
-Button.displayName = 'Button'
-Button.className = 'ui-button'
+Button.displayName = 'Button';
+Button.className = 'ui-button';
 
 Button.propTypes = {
   ...commonPropTypes.createCommon({
@@ -264,13 +253,13 @@ Button.propTypes = {
   text: PropTypes.bool,
   secondary: customPropTypes.every([customPropTypes.disallow(['primary']), PropTypes.bool]),
   size: customPropTypes.size,
-}
+};
 
-Button.handledProps = Object.keys(Button.propTypes) as any
+Button.handledProps = Object.keys(Button.propTypes) as any;
 
-Button.Group = ButtonGroup
+Button.Group = ButtonGroup;
 
-Button.create = createShorthandFactory({ Component: Button, mappedProp: 'content' })
+Button.create = createShorthandFactory({ Component: Button, mappedProp: 'content' });
 
 /**
  * A Button enables users to take an action, such as submitting a form, opening a dialog, etc.
@@ -278,4 +267,4 @@ Button.create = createShorthandFactory({ Component: Button, mappedProp: 'content
  * @accessibility
  * Implements [ARIA Button](https://www.w3.org/TR/wai-aria-practices-1.1/#button) design pattern.
  */
-export default withSafeTypeForAs<typeof Button, ButtonProps, 'button'>(Button)
+export default withSafeTypeForAs<typeof Button, ButtonProps, 'button'>(Button);

@@ -41,44 +41,44 @@ export default {
 
       ...(p.size === 'smallest' && {
         fontSize: v.fontSizeSmallest,
-        lineHeight: v.fontLineHeightSmallest
+        lineHeight: v.fontLineHeightSmallest,
       }),
       ...(p.size === 'smaller' && {
         fontSize: v.fontSizeSmaller,
-        lineHeight: v.fontLineHeightSmaller
+        lineHeight: v.fontLineHeightSmaller,
       }),
       ...(p.size === 'small' && {
         fontSize: v.fontSizeSmall,
-        lineHeight: v.fontLineHeightSmall
+        lineHeight: v.fontLineHeightSmall,
       }),
       ...(p.size === 'medium' && {
         fontSize: v.fontSizeMedium,
-        lineHeight: v.fontLineHeightMedium
+        lineHeight: v.fontLineHeightMedium,
       }),
       ...(p.size === 'large' && {
         fontSize: v.fontSizeLarge,
-        lineHeight: v.fontLineHeightLarge
+        lineHeight: v.fontLineHeightLarge,
       }),
       ...(p.size === 'larger' && {
         fontSize: v.fontSizeLarger,
-        lineHeight: v.fontLineHeightLarger
+        lineHeight: v.fontLineHeightLarger,
       }),
       ...(p.size === 'largest' && {
         fontSize: v.fontSizeLargest,
-        lineHeight: v.fontLineHeightLargest
+        lineHeight: v.fontLineHeightLargest,
       }),
       ...(p.atMention === 'me' && {
         color: v.atMentionMeColor,
-        fontWeight: v.atMentionMeFontWeight
+        fontWeight: v.atMentionMeFontWeight,
       }),
       ...(p.timestamp && {
         color: v.timestampColor,
-        ':hover': { color: v.timestampHoverColor }
+        ':hover': { color: v.timestampHoverColor },
       }),
       ...(p.important && {
         color: v.importantColor,
-        fontWeight: v.importantWeight
-      })
+        fontWeight: v.importantWeight,
+      }),
     };
-  }
+  },
 };

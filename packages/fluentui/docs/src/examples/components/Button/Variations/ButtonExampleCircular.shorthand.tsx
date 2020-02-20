@@ -1,5 +1,5 @@
-import * as React from 'react'
-import { Button, Flex } from '@fluentui/react'
+import * as React from 'react';
+import { Button, Flex } from '@fluentui/react';
 
 const ButtonExampleCircular = () => (
   <Flex gap="gap.smaller">
@@ -7,5 +7,5 @@ const ButtonExampleCircular = () => (
     <Button circular icon="emoji" title="Emoji" />
     <Button circular icon="broadcast" primary title="Broadcast" />
   </Flex>
-)
-export default ButtonExampleCircular
+);
+export default ButtonExampleCircular;

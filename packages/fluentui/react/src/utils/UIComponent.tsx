@@ -63,9 +63,9 @@ class UIComponent<P, S = {}> extends React.Component<P, S> {
         state: this.state,
         actionHandlers: this.actionHandlers,
         render: this.renderComponent,
-        saveDebug: updatedDebug => (this.fluentUIDebug = updatedDebug)
+        saveDebug: updatedDebug => (this.fluentUIDebug = updatedDebug),
       },
-      this.context
+      this.context,
     );
   }
 }

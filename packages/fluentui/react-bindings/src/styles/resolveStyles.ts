@@ -9,7 +9,7 @@ import {
   isDebugEnabled,
   mergeComponentStyles,
   ThemePrepared,
-  withDebugId
+  withDebugId,
 } from '@fluentui/styles';
 import { ComponentSlotClasses, RendererParam, ResolveStylesOptions } from '@fluentui/react-bindings';
 import * as _ from 'lodash';
@@ -41,7 +41,7 @@ const stylesCache = new WeakMap<ThemePrepared, Record<string, ICSSInJSStyle>>();
 const resolveStyles = (
   options: ResolveStylesOptions,
   resolvedVariables: ComponentVariablesObject,
-  renderStylesInput?: (styles: ICSSInJSStyle) => string
+  renderStylesInput?: (styles: ICSSInJSStyle) => string,
 ): ResolveStylesResult => {
   const { className: componentClassName, theme, displayName, props, rtl, disableAnimations, renderer, performance = {} } = options || {};
 
@@ -52,7 +52,7 @@ const resolveStyles = (
 
   // Merge theme styles with inline overrides if any
   let mergedStyles: ComponentSlotStylesPrepared = theme.componentStyles[displayName] || {
-    root: () => ({})
+    root: () => ({}),
   };
   const hasInlineStylesOverrides = !_.isNil(props.design) || !_.isNil(props.styles);
 
@@ -60,7 +60,7 @@ const resolveStyles = (
     mergedStyles = mergeComponentStyles(
       mergedStyles,
       props.design && withDebugId({ root: props.design }, 'props.design'),
-      props.styles && withDebugId({ root: props.styles } as ComponentSlotStylesInput, 'props.styles')
+      props.styles && withDebugId({ root: props.styles } as ComponentSlotStylesInput, 'props.styles'),
     );
   }
 
@@ -70,7 +70,7 @@ const resolveStyles = (
     variables: resolvedVariables,
     theme,
     rtl,
-    disableAnimations
+    disableAnimations,
   };
 
   // Fela plugins rely on `direction` param in `theme` prop instead of RTL
@@ -80,7 +80,7 @@ const resolveStyles = (
   const felaParam: RendererParam = {
     theme: { direction },
     disableAnimations,
-    displayName // does not affect styles, only used by useEnhancedRenderer in docs
+    displayName, // does not affect styles, only used by useEnhancedRenderer in docs
   };
 
   const renderStyles = renderStylesInput || ((style: ICSSInJSStyle) => renderer.renderRule(() => style, felaParam));
@@ -116,7 +116,7 @@ const resolveStyles = (
         if (cacheEnabled && theme) {
           stylesCache.set(theme, {
             ...stylesCache.get(theme),
-            [slotCacheKey]: val
+            [slotCacheKey]: val,
           });
         }
 
@@ -141,7 +141,7 @@ const resolveStyles = (
         if (cacheEnabled && theme) {
           stylesCache.set(theme, {
             ...stylesCache.get(theme),
-            [slotCacheKey]: resolvedStyles[lazyEvaluationKey]
+            [slotCacheKey]: resolvedStyles[lazyEvaluationKey],
           });
         }
 
@@ -151,7 +151,7 @@ const resolveStyles = (
         }
 
         return resolvedStyles[lazyEvaluationKey];
-      }
+      },
     });
 
     Object.defineProperty(classes, slotName, {
@@ -161,7 +161,7 @@ const resolveStyles = (
         if (cacheEnabled && theme) {
           classesCache.set(theme, {
             ...classesCache.get(theme),
-            [slotCacheKey]: val
+            [slotCacheKey]: val,
           });
         }
 
@@ -190,20 +190,20 @@ const resolveStyles = (
           if (cacheEnabled && theme) {
             classesCache.set(theme, {
               ...classesCache.get(theme),
-              [slotCacheKey]: classes[lazyEvaluationKey]
+              [slotCacheKey]: classes[lazyEvaluationKey],
             });
           }
         }
 
         return slotName === 'root' ? cx(componentClassName, classes[lazyEvaluationKey], className) : classes[lazyEvaluationKey];
-      }
+      },
     });
   });
 
   return {
     resolvedStyles,
     resolvedStylesDebug,
-    classes
+    classes,
   };
 };
 

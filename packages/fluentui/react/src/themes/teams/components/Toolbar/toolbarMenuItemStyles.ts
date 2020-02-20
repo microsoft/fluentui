@@ -8,7 +8,7 @@ const toolbarMenuItemStyles = {
     const colors = getColorScheme(v.colorScheme);
     const borderFocusStyles = getBorderFocusStyles({
       siteVariables,
-      borderRadius: 0
+      borderRadius: 0,
     });
 
     return {
@@ -26,12 +26,12 @@ const toolbarMenuItemStyles = {
       cursor: 'pointer',
 
       ':focus': {
-        outline: 0
+        outline: 0,
       },
 
       ':hover': {
         color: v.menuItemForegroundHover || colors.menuItemForegroundHover,
-        backgroundColor: v.menuItemBackgroundHover || colors.menuItemBackgroundHover
+        backgroundColor: v.menuItemBackgroundHover || colors.menuItemBackgroundHover,
       },
 
       ':focus-visible': borderFocusStyles[':focus-visible'],
@@ -42,26 +42,26 @@ const toolbarMenuItemStyles = {
         backgroundColor: v.menuItemBackgroundDisabled,
         ':hover': {
           // empty to overwrite all existing hover styles
-        }
-      })
+        },
+      }),
     };
   },
 
   activeIndicator: ({ variables: v }): ICSSInJSStyle => ({
     position: 'absolute',
     right: pxToRem(7),
-    top: pxToRem(7)
+    top: pxToRem(7),
   }),
 
   submenuIndicator: ({ variables: v }): ICSSInJSStyle => ({
     position: 'absolute',
     right: pxToRem(7),
-    top: pxToRem(7)
+    top: pxToRem(7),
   }),
 
   wrapper: () => ({
-    display: 'block'
-  })
+    display: 'block',
+  }),
 };
 
 export default toolbarMenuItemStyles;

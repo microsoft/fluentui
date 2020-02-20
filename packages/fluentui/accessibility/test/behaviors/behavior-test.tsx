@@ -79,7 +79,7 @@ import {
   gridRowNestedBehavior,
   gridCellBehavior,
   gridCellMultipleFocusableBehavior,
-  gridCellWithFocusableElementBehavior
+  gridCellWithFocusableElementBehavior,
 } from '@fluentui/accessibility';
 import { TestHelper } from './testHelper';
 import definitions from './testDefinitions';

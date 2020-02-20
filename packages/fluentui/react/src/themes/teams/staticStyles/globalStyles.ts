@@ -1,4 +1,4 @@
-import { StaticStyleFunction } from '@fluentui/styles'
+import { StaticStyleFunction } from '@fluentui/styles';
 
 const globalStyles: StaticStyleFunction = siteVars => ({
   body: {
@@ -17,6 +17,6 @@ const globalStyles: StaticStyleFunction = siteVars => ({
   '*:after': {
     boxSizing: 'border-box',
   },
-})
+});
 
-export default globalStyles
+export default globalStyles;

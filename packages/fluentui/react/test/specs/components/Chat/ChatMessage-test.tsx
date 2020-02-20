@@ -8,7 +8,7 @@ const chatMessageImplementsShorthandProp = implementsShorthandProp(ChatMessage);
 
 describe('ChatMessage', () => {
   isConformant(ChatMessage, {
-    constructorName: 'ChatMessage'
+    constructorName: 'ChatMessage',
   });
 
   chatMessageImplementsShorthandProp('author', Text);

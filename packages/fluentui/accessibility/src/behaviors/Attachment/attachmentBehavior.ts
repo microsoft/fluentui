@@ -1,7 +1,7 @@
-import * as keyboardKey from 'keyboard-key'
+import * as keyboardKey from 'keyboard-key';
 
-import { IS_FOCUSABLE_ATTRIBUTE } from '../../attributes'
-import { Accessibility } from '../../types'
+import { IS_FOCUSABLE_ATTRIBUTE } from '../../attributes';
+import { Accessibility } from '../../types';
 
 /**
  * @specification
@@ -22,6 +22,6 @@ const attachmentBehavior: Accessibility = () => ({
       },
     },
   },
-})
+});
 
-export default attachmentBehavior
+export default attachmentBehavior;

@@ -1,13 +1,13 @@
-import * as React from 'react'
-import { Alert, Button, Flex, MenuButton } from '@fluentui/react'
+import * as React from 'react';
+import { Alert, Button, Flex, MenuButton } from '@fluentui/react';
 
 class MenuButtonExampleOn extends React.Component {
-  state = { alert: false }
+  state = { alert: false };
 
   showAlert = () => {
-    this.setState({ alert: true })
-    setTimeout(() => this.setState({ alert: false }), 2000)
-  }
+    this.setState({ alert: true });
+    setTimeout(() => this.setState({ alert: false }), 2000);
+  };
 
   render() {
     return (
@@ -29,27 +29,15 @@ class MenuButtonExampleOn extends React.Component {
             on="focus"
           />
           <MenuButton
-            trigger={
-              <Button
-                icon="expand"
-                content="Context"
-                aria-label="Context button"
-                onClick={this.showAlert}
-              />
-            }
+            trigger={<Button icon="expand" content="Context" aria-label="Context button" onClick={this.showAlert} />}
             menu={['1', '2', '3', { content: 'submenu', menu: { items: ['4', '5'] } }]}
             on="context"
           />
         </Flex>
-        {this.state.alert && (
-          <Alert
-            warning
-            content="Right, you can still click the button! Right click opens the MenuButton."
-          />
-        )}
+        {this.state.alert && <Alert warning content="Right, you can still click the button! Right click opens the MenuButton." />}
       </>
-    )
+    );
   }
 }
 
-export default MenuButtonExampleOn
+export default MenuButtonExampleOn;

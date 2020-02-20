@@ -8,9 +8,9 @@ const chatItemStyles: ComponentSlotStylesPrepared<ChatItemStylesProps, ChatItemV
     position: 'relative',
     ...((!p.attached || p.attached === 'top') && { paddingTop: pxToRem(16) }),
     ...((p.attached === 'bottom' || p.attached === true) && {
-      paddingTop: pxToRem(2)
+      paddingTop: pxToRem(2),
     }),
-    paddingBottom: 0
+    paddingBottom: 0,
   }),
 
   gutter: ({ props: p, variables: v }): ICSSInJSStyle => ({
@@ -18,16 +18,16 @@ const chatItemStyles: ComponentSlotStylesPrepared<ChatItemStylesProps, ChatItemV
     marginTop: v.gutterMargin,
     [p.contentPosition === 'end' ? 'right' : 'left']: 0,
     ...((p.attached === 'bottom' || p.attached === true) && {
-      display: 'none'
-    })
+      display: 'none',
+    }),
   }),
 
   message: ({ props: p, variables: v }): ICSSInJSStyle => ({
     position: 'relative',
     float: p.contentPosition === 'end' ? 'right' : 'left',
     marginLeft: v.messageMargin,
-    marginRight: v.messageMargin
-  })
+    marginRight: v.messageMargin,
+  }),
 };
 
 export default chatItemStyles;

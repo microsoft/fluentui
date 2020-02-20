@@ -1,6 +1,6 @@
-import { Accessibility, menuDividerBehavior } from '@fluentui/accessibility'
-import * as React from 'react'
-import * as PropTypes from 'prop-types'
+import { Accessibility, menuDividerBehavior } from '@fluentui/accessibility';
+import * as React from 'react';
+import * as PropTypes from 'prop-types';
 
 import {
   createShorthandFactory,
@@ -12,33 +12,30 @@ import {
   ContentComponentProps,
   rtlTextContainer,
   ShorthandFactory,
-} from '../../utils'
-import { WithAsProp, withSafeTypeForAs } from '../../types'
+} from '../../utils';
+import { WithAsProp, withSafeTypeForAs } from '../../types';
 
-export interface MenuDividerProps
-  extends UIComponentProps,
-    ChildrenComponentProps,
-    ContentComponentProps {
+export interface MenuDividerProps extends UIComponentProps, ChildrenComponentProps, ContentComponentProps {
   /** Accessibility behavior if overridden by the user. */
-  accessibility?: Accessibility
+  accessibility?: Accessibility;
 
-  vertical?: boolean
-  primary?: boolean
-  secondary?: boolean
-  inSubmenu?: boolean
+  vertical?: boolean;
+  primary?: boolean;
+  secondary?: boolean;
+  inSubmenu?: boolean;
 }
 
 class MenuDivider extends UIComponent<WithAsProp<MenuDividerProps>> {
-  static displayName = 'MenuDivider'
+  static displayName = 'MenuDivider';
 
-  static create: ShorthandFactory<MenuDividerProps>
+  static create: ShorthandFactory<MenuDividerProps>;
 
-  static className = 'ui-menu__divider'
+  static className = 'ui-menu__divider';
 
   static defaultProps = {
     as: 'li',
     accessibility: menuDividerBehavior as Accessibility,
-  }
+  };
 
   static propTypes = {
     ...commonPropTypes.createCommon(),
@@ -46,10 +43,10 @@ class MenuDivider extends UIComponent<WithAsProp<MenuDividerProps>> {
     secondary: PropTypes.bool,
     vertical: PropTypes.bool,
     inSubmenu: PropTypes.bool,
-  }
+  };
 
   renderComponent({ ElementType, classes, unhandledProps, accessibility }) {
-    const { children, content } = this.props
+    const { children, content } = this.props;
 
     return (
       <ElementType
@@ -60,13 +57,13 @@ class MenuDivider extends UIComponent<WithAsProp<MenuDividerProps>> {
       >
         {childrenExist(children) ? children : content}
       </ElementType>
-    )
+    );
   }
 }
 
-MenuDivider.create = createShorthandFactory({ Component: MenuDivider, mappedProp: 'content' })
+MenuDivider.create = createShorthandFactory({ Component: MenuDivider, mappedProp: 'content' });
 
 /**
  * A MenuDivider is non-actionable element that visually segments items of Menu.
  */
-export default withSafeTypeForAs<typeof MenuDivider, MenuDividerProps, 'li'>(MenuDivider)
+export default withSafeTypeForAs<typeof MenuDivider, MenuDividerProps, 'li'>(MenuDivider);

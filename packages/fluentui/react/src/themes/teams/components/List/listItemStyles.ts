@@ -1,31 +1,25 @@
-import { pxToRem } from '../../../../utils'
-import { screenReaderContainerStyles } from '../../../../utils/accessibility/Styles/accessibilityStyles'
-import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles'
-import { default as ListItem, ListItemProps } from '../../../../components/List/ListItem'
-import getBorderFocusStyles from '../../getBorderFocusStyles'
-import { ListItemVariables } from './listItemVariables'
+import { pxToRem } from '../../../../utils';
+import { screenReaderContainerStyles } from '../../../../utils/accessibility/Styles/accessibilityStyles';
+import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+import { default as ListItem, ListItemProps } from '../../../../components/List/ListItem';
+import getBorderFocusStyles from '../../getBorderFocusStyles';
+import { ListItemVariables } from './listItemVariables';
 
 export type ListItemStylesProps = Pick<
   ListItemProps,
-  | 'debug'
-  | 'important'
-  | 'navigable'
-  | 'selectable'
-  | 'selected'
-  | 'truncateContent'
-  | 'truncateHeader'
+  'debug' | 'important' | 'navigable' | 'selectable' | 'selected' | 'truncateContent' | 'truncateHeader'
 > & {
-  hasContent?: boolean
-  hasContentMedia?: boolean
-  hasHeader?: boolean
-  hasHeaderMedia?: boolean
-}
+  hasContent?: boolean;
+  hasContentMedia?: boolean;
+  hasHeader?: boolean;
+  hasHeaderMedia?: boolean;
+};
 
 const truncateStyle: ICSSInJSStyle = {
   overflow: 'hidden',
   textOverflow: 'ellipsis',
   whiteSpace: 'nowrap',
-}
+};
 
 const selectableHoverStyle = (p: ListItemStylesProps, v): ICSSInJSStyle => ({
   background: v.selectableFocusHoverBackgroundColor,
@@ -44,18 +38,18 @@ const selectableHoverStyle = (p: ListItemStylesProps, v): ICSSInJSStyle => ({
 
   // show the end media on hover
   [`& .${ListItem.slotClassNames.endMedia}`]: { display: 'block', color: 'inherit' },
-})
+});
 
 const selectedStyle = variables => ({
   background: variables.selectedBackgroundColor,
   color: variables.selectedColor,
-})
+});
 
 const listItemStyles: ComponentSlotStylesPrepared<ListItemStylesProps, ListItemVariables> = {
   root: ({ props: p, variables: v, theme: { siteVariables } }): ICSSInJSStyle => {
     const borderFocusStyles = getBorderFocusStyles({
       siteVariables,
-    })
+    });
 
     return {
       display: 'flex',
@@ -80,7 +74,7 @@ const listItemStyles: ComponentSlotStylesPrepared<ListItemStylesProps, ListItemV
       ...(p.important && {
         fontWeight: 'bold',
       }),
-    }
+    };
   },
 
   media: ({ props: p }): ICSSInJSStyle => ({
@@ -152,6 +146,6 @@ const listItemStyles: ComponentSlotStylesPrepared<ListItemStylesProps, ListItemV
     flexGrow: 1,
     minWidth: 0, // needed for the truncate styles to work
   }),
-}
+};
 
-export default listItemStyles
+export default listItemStyles;

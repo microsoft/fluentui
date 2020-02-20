@@ -16,7 +16,7 @@ import {
   partitionHTMLProps,
   UIComponentProps,
   setWhatInputSource,
-  createShorthandFactory
+  createShorthandFactory,
 } from '../../utils';
 import {
   ComponentEventHandler,
@@ -25,13 +25,13 @@ import {
   withSafeTypeForAs,
   Omit,
   FluentComponentStaticProps,
-  ProviderContextPrepared
+  ProviderContextPrepared,
 } from '../../types';
 import { SupportedIntrinsicInputProps } from '../../utils/htmlPropsUtils';
 import Box, { BoxProps } from '../Box/Box';
 
 const processInputValues = (
-  p: Pick<SliderProps, 'min' | 'max'> & { value: string }
+  p: Pick<SliderProps, 'min' | 'max'> & { value: string },
 ): { min: number; max: number; value: number; valueAsPercentage: string } => {
   let min = _.toNumber(p.min);
   let max = _.toNumber(p.max);
@@ -126,22 +126,22 @@ const Slider: React.FC<WithAsProp<SliderProps>> & FluentComponentStaticProps & {
     design,
     fluid,
     vertical,
-    disabled
+    disabled,
   } = props;
   const inputRef = React.createRef<HTMLElement>();
 
   const { state, actions } = useStateManager(createSliderManager, {
     mapPropsToInitialState: () => ({
-      value: defaultValue as string
+      value: defaultValue as string,
     }),
     mapPropsToState: () => ({
-      value: value as string
-    })
+      value: value as string,
+    }),
   });
   const { min: numericMin, max: numericMax, value: numericValue, valueAsPercentage } = processInputValues({
     min,
     max,
-    value: state.value || ''
+    value: state.value || '',
   });
 
   const getA11Props = useAccessibility(accessibility, {
@@ -153,23 +153,23 @@ const Slider: React.FC<WithAsProp<SliderProps>> & FluentComponentStaticProps & {
       max: numericMax,
       min: numericMax,
       value: numericValue,
-      vertical
-    })
+      vertical,
+    }),
   });
   const { classes, styles: resolvedStyles } = useStyles(Slider.displayName, {
     className: Slider.className,
     mapPropsToStyles: () => ({
       fluid,
       vertical,
-      disabled
+      disabled,
     }),
     mapPropsToInlineStyles: () => ({
       className,
       styles,
       variables,
-      design
+      design,
     }),
-    rtl: context.rtl
+    rtl: context.rtl,
   });
 
   const handleInputOverrides = () => ({
@@ -181,7 +181,7 @@ const Slider: React.FC<WithAsProp<SliderProps>> & FluentComponentStaticProps & {
     onMouseDown: (e: React.MouseEvent<HTMLInputElement>) => {
       setWhatInputSource(context.target, 'mouse');
       _.invoke(props, 'onMouseDown', e, props);
-    }
+    },
   });
 
   const ElementType = getElementType(props);
@@ -204,16 +204,16 @@ const Slider: React.FC<WithAsProp<SliderProps>> & FluentComponentStaticProps & {
         styles: resolvedStyles.input,
         type,
         value: numericValue,
-        vertical
+        vertical,
       }),
-    overrideProps: handleInputOverrides
+    overrideProps: handleInputOverrides,
   });
 
   const element = (
     <ElementType {...getA11Props('root', { className: classes.root, ...restProps })}>
       <div
         {...getA11Props('inputWrapper', {
-          className: cx(Slider.slotClassNames.inputWrapper, classes.inputWrapper)
+          className: cx(Slider.slotClassNames.inputWrapper, classes.inputWrapper),
         })}
       >
         <span {...getA11Props('rail', { className: cx(Slider.slotClassNames.rail, classes.rail) })} />
@@ -250,7 +250,7 @@ Slider.slotClassNames = {
   inputWrapper: `${Slider.className}__input-wrapper`,
   rail: `${Slider.className}__rail`,
   thumb: `${Slider.className}__thumb`,
-  track: `${Slider.className}__track`
+  track: `${Slider.className}__track`,
 };
 
 Slider.defaultProps = {
@@ -258,7 +258,7 @@ Slider.defaultProps = {
   getA11yValueMessageOnChange: ({ value }) => String(value),
   max: 100,
   min: 0,
-  step: 1
+  step: 1,
 };
 Slider.propTypes = {
   ...commonPropTypes.createCommon({ content: false }),
@@ -272,7 +272,7 @@ Slider.propTypes = {
   onChange: PropTypes.func,
   step: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  vertical: PropTypes.bool
+  vertical: PropTypes.bool,
 };
 Slider.handledProps = Object.keys(Slider.propTypes) as any;
 

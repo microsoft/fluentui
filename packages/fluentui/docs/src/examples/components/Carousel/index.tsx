@@ -1,13 +1,13 @@
-import * as React from 'react'
+import * as React from 'react';
 
-import Types from './Types'
-import Variations from './Variations'
+import Types from './Types';
+import Variations from './Variations';
 
 const CarouselExamples = () => (
   <>
     <Types />
     <Variations />
   </>
-)
+);
 
-export default CarouselExamples
+export default CarouselExamples;

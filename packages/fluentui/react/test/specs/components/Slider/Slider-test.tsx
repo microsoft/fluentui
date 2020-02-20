@@ -8,8 +8,8 @@ describe('Slider', () => {
       onChange: 'input',
       onKeyDown: 'input',
       onKeyPress: 'input',
-      onKeyUp: 'input'
-    }
+      onKeyUp: 'input',
+    },
   });
 
   describe('accessibility', () => {

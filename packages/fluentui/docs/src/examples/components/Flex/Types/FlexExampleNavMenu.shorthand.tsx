@@ -1,5 +1,5 @@
-import * as React from 'react'
-import { Flex, Button } from '@fluentui/react'
+import * as React from 'react';
+import { Flex, Button } from '@fluentui/react';
 
 const FlexExampleNavMenu = () => (
   <Flex gap="gap.small" debug>
@@ -12,6 +12,6 @@ const FlexExampleNavMenu = () => (
     <Button content="Page 2" />
     <Button content="Page 3" />
   </Flex>
-)
+);
 
-export default FlexExampleNavMenu
+export default FlexExampleNavMenu;

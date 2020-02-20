@@ -1,7 +1,7 @@
-import * as keyboardKey from 'keyboard-key'
+import * as keyboardKey from 'keyboard-key';
 
-import { IS_FOCUSABLE_ATTRIBUTE } from '../../attributes'
-import { Accessibility, AccessibilityAttributes } from '../../types'
+import { IS_FOCUSABLE_ATTRIBUTE } from '../../attributes';
+import { Accessibility, AccessibilityAttributes } from '../../types';
 
 /**
  * @specification
@@ -42,16 +42,13 @@ const tabBehavior: Accessibility<TabBehaviorProps> = props => ({
       },
     },
   },
-})
+});
 
-export default tabBehavior
+export default tabBehavior;
 
 type TabBehaviorProps = {
   /** Indicates if tab is selected. */
-  active?: boolean
+  active?: boolean;
   /** Indicates if tab is disabled. */
-  disabled?: boolean
-} & Pick<
-  AccessibilityAttributes,
-  'aria-label' | 'aria-labelledby' | 'aria-describedby' | 'aria-controls'
->
+  disabled?: boolean;
+} & Pick<AccessibilityAttributes, 'aria-label' | 'aria-labelledby' | 'aria-describedby' | 'aria-controls'>;

@@ -1,12 +1,12 @@
-import { colors } from '../teams/siteVariables'
-import { TeamsCategoryColorSchemeMapping } from '../teams/types'
-import { ColorSchemeMapping } from '../../themes/types'
-import { createColorScheme as createEmptyColorScheme } from '../teams/colors'
+import { colors } from '../teams/siteVariables';
+import { TeamsCategoryColorSchemeMapping } from '../teams/types';
+import { ColorSchemeMapping } from '../../themes/types';
+import { createColorScheme as createEmptyColorScheme } from '../teams/colors';
 
-export const accessibleYellow = '#ffff01'
-export const accessibleGreen = '#3ff23f' // always disabled color in high contrast
-export const accessibleCyan = '#1aebff'
-export const red = '#f00'
+export const accessibleYellow = '#ffff01';
+export const accessibleGreen = '#3ff23f'; // always disabled color in high contrast
+export const accessibleCyan = '#1aebff';
+export const red = '#f00';
 
 // COLOR SCHEME
 const createColorScheme = (customValues = {}) => {
@@ -41,8 +41,8 @@ const createColorScheme = (customValues = {}) => {
     borderDisabled: colors.black,
     shadowDisabled: colors.black,
     ...customValues,
-  }
-}
+  };
+};
 
 export const colorScheme: ColorSchemeMapping = {
   default: createEmptyColorScheme({
@@ -278,7 +278,7 @@ export const colorScheme: ColorSchemeMapping = {
     backgroundHover1: accessibleYellow,
     backgroundActive: accessibleCyan,
   }),
-}
+};
 
 const createCategoryColorScheme = (customValues = {}) => {
   return {
@@ -286,8 +286,8 @@ const createCategoryColorScheme = (customValues = {}) => {
     foreground1: accessibleYellow,
     background: accessibleYellow,
     ...customValues,
-  }
-}
+  };
+};
 
 export const categoryColorScheme: TeamsCategoryColorSchemeMapping = {
   redDark: createCategoryColorScheme(),
@@ -334,4 +334,4 @@ export const categoryColorScheme: TeamsCategoryColorSchemeMapping = {
     foreground8: undefined,
     background8: undefined,
   },
-}
+};

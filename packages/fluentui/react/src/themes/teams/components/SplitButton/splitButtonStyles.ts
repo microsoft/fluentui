@@ -1,6 +1,6 @@
-import { ICSSInJSStyle } from '@fluentui/styles'
-import getBorderFocusStyles from '../../getBorderFocusStyles'
-import getIconFillOrOutlineStyles from '../../getIconFillOrOutlineStyles'
+import { ICSSInJSStyle } from '@fluentui/styles';
+import getBorderFocusStyles from '../../getBorderFocusStyles';
+import getIconFillOrOutlineStyles from '../../getIconFillOrOutlineStyles';
 
 const splitButtonStyles = {
   menuButton: ({ props: p, variables: v }): ICSSInJSStyle => ({
@@ -76,7 +76,7 @@ const splitButtonStyles = {
   root: ({ props: p, variables: v, theme: { siteVariables } }): ICSSInJSStyle => {
     const borderFocusStyles = getBorderFocusStyles({
       siteVariables,
-    })
+    });
 
     return {
       borderRadius: v.borderRadius,
@@ -91,8 +91,8 @@ const splitButtonStyles = {
           ...borderFocusStyles[':focus-visible'],
         }),
       },
-    }
+    };
   },
-}
+};
 
-export default splitButtonStyles
+export default splitButtonStyles;

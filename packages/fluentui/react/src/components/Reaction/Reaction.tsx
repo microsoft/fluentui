@@ -1,5 +1,5 @@
-import * as customPropTypes from '@fluentui/react-proptypes'
-import * as React from 'react'
+import * as customPropTypes from '@fluentui/react-proptypes';
+import * as React from 'react';
 
 import {
   UIComponent,
@@ -11,17 +11,17 @@ import {
   createShorthandFactory,
   ContentComponentProps,
   ShorthandFactory,
-} from '../../utils'
-import { Accessibility } from '@fluentui/accessibility'
+} from '../../utils';
+import { Accessibility } from '@fluentui/accessibility';
 
-import { WithAsProp, ShorthandValue, withSafeTypeForAs } from '../../types'
-import Icon, { IconProps } from '../Icon/Icon'
-import Box, { BoxProps } from '../Box/Box'
-import ReactionGroup from './ReactionGroup'
+import { WithAsProp, ShorthandValue, withSafeTypeForAs } from '../../types';
+import Icon, { IconProps } from '../Icon/Icon';
+import Box, { BoxProps } from '../Box/Box';
+import ReactionGroup from './ReactionGroup';
 
 export interface ReactionSlotClassNames {
-  icon: string
-  content: string
+  icon: string;
+  content: string;
 }
 
 export interface ReactionProps
@@ -31,36 +31,36 @@ export interface ReactionProps
   /**
    * Accessibility behavior if overridden by the user.
    */
-  accessibility?: Accessibility
+  accessibility?: Accessibility;
 
   /** A reaction can have icon for the indicator of the reaction. */
-  icon?: ShorthandValue<IconProps>
+  icon?: ShorthandValue<IconProps>;
 }
 
 class Reaction extends UIComponent<WithAsProp<ReactionProps>> {
-  static create: ShorthandFactory<ReactionProps>
+  static create: ShorthandFactory<ReactionProps>;
 
-  static className = 'ui-reaction'
+  static className = 'ui-reaction';
 
-  static slotClassNames: ReactionSlotClassNames
+  static slotClassNames: ReactionSlotClassNames;
 
-  static displayName = 'Reaction'
+  static displayName = 'Reaction';
 
   static propTypes = {
     ...commonPropTypes.createCommon({
       content: 'shorthand',
     }),
     icon: customPropTypes.itemShorthandWithoutJSX,
-  }
+  };
 
   static defaultProps = {
     as: 'span',
-  }
+  };
 
-  static Group = ReactionGroup
+  static Group = ReactionGroup;
 
   renderComponent({ accessibility, ElementType, classes, styles, unhandledProps }) {
-    const { children, icon, content } = this.props
+    const { children, icon, content } = this.props;
 
     return (
       <ElementType
@@ -88,18 +88,18 @@ class Reaction extends UIComponent<WithAsProp<ReactionProps>> {
           </>
         )}
       </ElementType>
-    )
+    );
   }
 }
 
-Reaction.create = createShorthandFactory({ Component: Reaction, mappedProp: 'content' })
+Reaction.create = createShorthandFactory({ Component: Reaction, mappedProp: 'content' });
 Reaction.slotClassNames = {
   icon: `${Reaction.className}__icon`,
   content: `${Reaction.className}__content`,
-}
+};
 
 /**
  * A Reaction indicates user's emotion or perception.
  * Used to display user's reaction for entity in Chat (e.g. message).
  */
-export default withSafeTypeForAs<typeof Reaction, ReactionProps, 'span'>(Reaction)
+export default withSafeTypeForAs<typeof Reaction, ReactionProps, 'span'>(Reaction);

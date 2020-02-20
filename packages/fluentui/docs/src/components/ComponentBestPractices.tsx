@@ -1,25 +1,15 @@
-import * as React from 'react'
-import * as _ from 'lodash'
-import {
-  Extendable,
-  Box,
-  Flex,
-  Header,
-  Icon,
-  List,
-  ListItemProps,
-  Segment,
-  ShorthandCollection,
-} from '@fluentui/react'
+import * as React from 'react';
+import * as _ from 'lodash';
+import { Extendable, Box, Flex, Header, Icon, List, ListItemProps, Segment, ShorthandCollection } from '@fluentui/react';
 
 export type ComponentBestPracticesProps = Extendable<{
-  doList?: ShorthandCollection<ListItemProps>
-  dontList?: ShorthandCollection<ListItemProps>
-}>
+  doList?: ShorthandCollection<ListItemProps>;
+  dontList?: ShorthandCollection<ListItemProps>;
+}>;
 
 const ComponentBestPractices: React.FC<ComponentBestPracticesProps> = ({ doList, dontList }) => {
-  const updatedDoList: ShorthandCollection<ListItemProps> = []
-  const updatedDontList: ShorthandCollection<ListItemProps> = []
+  const updatedDoList: ShorthandCollection<ListItemProps> = [];
+  const updatedDontList: ShorthandCollection<ListItemProps> = [];
 
   if (_.size(doList) > 0) {
     _.map(doList, element => {
@@ -27,8 +17,8 @@ const ComponentBestPractices: React.FC<ComponentBestPracticesProps> = ({ doList,
         key: doList.indexOf(element),
         content: element,
         media: <Icon name="checkmark" styles={{ color: 'green' }} />,
-      })
-    })
+      });
+    });
   }
 
   if (_.size(dontList) > 0) {
@@ -37,8 +27,8 @@ const ComponentBestPractices: React.FC<ComponentBestPracticesProps> = ({ doList,
         key: dontList.indexOf(element),
         content: element,
         media: <Icon name="close" styles={{ color: 'red' }} />,
-      })
-    })
+      });
+    });
   }
   return (
     <>
@@ -81,7 +71,7 @@ const ComponentBestPractices: React.FC<ComponentBestPracticesProps> = ({ doList,
         )}
       </Segment>
     </>
-  )
-}
+  );
+};
 
-export default ComponentBestPractices
+export default ComponentBestPractices;

@@ -1,30 +1,30 @@
-import { createRenderer } from 'fela'
-import { renderToString } from 'fela-tools'
-import { RULE_TYPE } from 'fela-utils'
+import { createRenderer } from 'fela';
+import { renderToString } from 'fela-tools';
+import { RULE_TYPE } from 'fela-utils';
 
-import felaFocusVisibleEnhancer from 'src/utils/felaFocusVisibleEnhancer'
+import felaFocusVisibleEnhancer from 'src/utils/felaFocusVisibleEnhancer';
 
 describe('felaFocusVisibleEnhancer', () => {
   test('replaces :focus-visible', () => {
     const renderer = createRenderer({
       enhancers: [felaFocusVisibleEnhancer],
-    })
+    });
 
-    renderer.renderRule(() => ({ borderColor: 'green' }), null)
-    renderer.renderRule(() => ({ ':focus': { borderColor: 'yellow' } } as any), null)
-    renderer.renderRule(() => ({ ':focus-visible': { borderColor: 'red' } } as any), null)
+    renderer.renderRule(() => ({ borderColor: 'green' }), null);
+    renderer.renderRule(() => ({ ':focus': { borderColor: 'yellow' } } as any), null);
+    renderer.renderRule(() => ({ ':focus-visible': { borderColor: 'red' } } as any), null);
 
-    expect(renderToString(renderer)).toMatchSnapshot()
-  })
+    expect(renderToString(renderer)).toMatchSnapshot();
+  });
 
   test('replaces :focus-visible', () => {
     const renderer = createRenderer({
       enhancers: [felaFocusVisibleEnhancer],
-    })
-    const subscription = jest.fn()
+    });
+    const subscription = jest.fn();
 
-    renderer.subscribe(subscription)
-    renderer.renderRule(() => ({ ':focus-visible': { borderColor: 'red' } } as any), null)
+    renderer.subscribe(subscription);
+    renderer.renderRule(() => ({ ':focus-visible': { borderColor: 'red' } } as any), null);
 
     expect(subscription).toBeCalledWith(
       expect.objectContaining({
@@ -32,6 +32,6 @@ describe('felaFocusVisibleEnhancer', () => {
         selector: 'html[data-whatinput="keyboard"] .a:focus',
         type: RULE_TYPE,
       }),
-    )
-  })
-})
+    );
+  });
+});

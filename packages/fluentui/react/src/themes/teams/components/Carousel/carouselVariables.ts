@@ -13,5 +13,5 @@ export default (siteVars): CarouselVariables => ({
   paddlePreviousSize: 32,
   paddleNextSize: 32,
   focusOuterBorderColor: siteVars.focusOuterBorderColor,
-  focusOuterBorderRadius: siteVars.borderRadius
+  focusOuterBorderRadius: siteVars.borderRadius,
 });

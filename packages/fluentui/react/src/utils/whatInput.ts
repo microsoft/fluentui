@@ -28,7 +28,7 @@ const ignoreMap = [
   17, // control
   18, // alt
   91, // Windows key / left Apple cmd
-  93 // Windows menu / right Apple cmd
+  93, // Windows menu / right Apple cmd
 ];
 // used to count how many Providers needed to initialize whatinput.
 const whatInputInitialized = 'whatInputInitialized';
@@ -43,7 +43,7 @@ const inputMap = {
   MSPointerMove: 'pointer',
   pointerdown: 'pointer',
   pointermove: 'pointer',
-  touchstart: 'touch'
+  touchstart: 'touch',
 };
 
 // boolean: true if touch buffer is active
@@ -53,7 +53,7 @@ let isBuffering = false;
 const pointerMap = {
   2: 'touch',
   3: 'touch', // treat pen like touch
-  4: 'mouse'
+  4: 'mouse',
 };
 
 // check support for passive event listeners
@@ -63,7 +63,7 @@ try {
   const opts = Object.defineProperty({}, 'passive', {
     get: () => {
       supportsPassive = true;
-    }
+    },
   });
 
   window.addEventListener('test', null, opts);

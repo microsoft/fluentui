@@ -1,21 +1,21 @@
-import { ICSSInJSStyle, SiteVariablesPrepared } from '@fluentui/styles'
-import * as React from 'react'
+import { ICSSInJSStyle, SiteVariablesPrepared } from '@fluentui/styles';
+import * as React from 'react';
 
-type CSSBorderStyles = Pick<React.CSSProperties, 'borderWidth' | 'borderRadius'>
+type CSSBorderStyles = Pick<React.CSSProperties, 'borderWidth' | 'borderRadius'>;
 
 type BorderFocusStyles = CSSBorderStyles & {
-  siteVariables?: SiteVariablesPrepared
-  focusInnerBorderColor?: string
-  focusOuterBorderColor?: string
-  borderPadding?: React.CSSProperties['padding']
-}
+  siteVariables?: SiteVariablesPrepared;
+  focusInnerBorderColor?: string;
+  focusOuterBorderColor?: string;
+  borderPadding?: React.CSSProperties['padding'];
+};
 
-type BorderPseudoElementStyles = CSSBorderStyles & { borderEdgeValue: string }
+type BorderPseudoElementStyles = CSSBorderStyles & { borderEdgeValue: string };
 
-const defaultColor = 'transparent'
+const defaultColor = 'transparent';
 
 const getPseudoElementStyles = (args: BorderPseudoElementStyles): ICSSInJSStyle => {
-  const { borderEdgeValue, ...styles } = args
+  const { borderEdgeValue, ...styles } = args;
 
   return {
     content: '""',
@@ -27,8 +27,8 @@ const getPseudoElementStyles = (args: BorderPseudoElementStyles): ICSSInJSStyle 
     bottom: borderEdgeValue,
     left: borderEdgeValue,
     ...styles,
-  }
-}
+  };
+};
 
 /**
  * Returns style object that can be used for styling components on focus state.
@@ -36,16 +36,16 @@ const getPseudoElementStyles = (args: BorderPseudoElementStyles): ICSSInJSStyle 
  * pseudo elements created on focus can be properly positioned.
  */
 const getBorderFocusStyles = (args: BorderFocusStyles): ICSSInJSStyle => {
-  const sv = args.siteVariables
+  const sv = args.siteVariables;
   const {
     borderWidth = sv.borderWidth,
     borderRadius = sv.borderRadius,
     focusInnerBorderColor = sv.focusInnerBorderColor || defaultColor,
     focusOuterBorderColor = sv.focusOuterBorderColor || defaultColor,
     borderPadding,
-  } = args
+  } = args;
 
-  const defaultBorderStyles: React.CSSProperties = { borderWidth, borderRadius }
+  const defaultBorderStyles: React.CSSProperties = { borderWidth, borderRadius };
 
   return {
     ':focus': {
@@ -63,15 +63,12 @@ const getBorderFocusStyles = (args: BorderFocusStyles): ICSSInJSStyle => {
 
       ':after': getPseudoElementStyles({
         zIndex: sv.zIndexes.foreground,
-        borderEdgeValue:
-          borderPadding == null
-            ? `-${borderWidth}`
-            : `calc(0px - ${borderPadding} - ${borderWidth})`,
+        borderEdgeValue: borderPadding == null ? `-${borderWidth}` : `calc(0px - ${borderPadding} - ${borderWidth})`,
         borderColor: focusOuterBorderColor,
         ...defaultBorderStyles,
       }),
     },
-  }
-}
+  };
+};
 
-export default getBorderFocusStyles
+export default getBorderFocusStyles;

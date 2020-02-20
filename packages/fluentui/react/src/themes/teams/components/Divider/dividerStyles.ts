@@ -1,10 +1,10 @@
-import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles'
-import * as _ from 'lodash'
+import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+import * as _ from 'lodash';
 
-import { childrenExist, pxToRem } from '../../../../utils'
-import { StrictColorScheme, ItemType } from '../../../types'
-import { DividerVariables, dividerColorAreas } from './dividerVariables'
-import { DividerProps } from '../../../../components/Divider/Divider'
+import { childrenExist, pxToRem } from '../../../../utils';
+import { StrictColorScheme, ItemType } from '../../../types';
+import { DividerVariables, dividerColorAreas } from './dividerVariables';
+import { DividerProps } from '../../../../components/Divider/Divider';
 
 const beforeAndAfter = (
   size: number,
@@ -16,12 +16,12 @@ const beforeAndAfter = (
   flex: 1,
   ...(props.vertical ? { width: `${size + 1}px`, height: '100%' } : { height: `${size + 1}px` }),
   background: _.get(colors, 'foreground', variables.dividerColor),
-})
+});
 
 const dividerStyles: ComponentSlotStylesPrepared<DividerProps, DividerVariables> = {
   root: ({ props, variables }): ICSSInJSStyle => {
-    const { children, color, fitted, size, important, content, vertical } = props
-    const colors = variables.colorScheme[color]
+    const { children, color, fitted, size, important, content, vertical } = props;
+    const colors = variables.colorScheme[color];
     return {
       color: _.get(colors, 'foreground', variables.textColor),
       display: 'flex',
@@ -52,8 +52,8 @@ const dividerStyles: ComponentSlotStylesPrepared<DividerProps, DividerVariables>
               ...beforeAndAfter(size, variables, colors, props),
             },
           }),
-    }
+    };
   },
-}
+};
 
-export default dividerStyles
+export default dividerStyles;

@@ -10,15 +10,7 @@ import { hsl2rgb } from './color.hsl';
  * value, an rgba value, and so on.
  */
 export function cssColor(color: string): IRGB | undefined {
-  return (
-    _named(color) ||
-    _hex3(color) ||
-    _hex6(color) ||
-    _rgb(color) ||
-    _rgba(color) ||
-    _hsl(color) ||
-    (_hsla(color) as IRGB)
-  );
+  return _named(color) || _hex3(color) || _hex6(color) || _rgb(color) || _rgba(color) || _hsl(color) || (_hsla(color) as IRGB);
 }
 
 /**

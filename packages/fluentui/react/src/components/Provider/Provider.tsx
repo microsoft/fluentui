@@ -7,7 +7,7 @@ import {
   StylesContextPerformance,
   Telemetry,
   unstable_getStyles,
-  useIsomorphicLayoutEffect
+  useIsomorphicLayoutEffect,
 } from '@fluentui/react-bindings';
 import {
   mergeSiteVariables,
@@ -16,7 +16,7 @@ import {
   StaticStyleFunction,
   FontFace,
   ThemeInput,
-  SiteVariablesPrepared
+  SiteVariablesPrepared,
 } from '@fluentui/styles';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
@@ -115,7 +115,7 @@ const Provider: React.FC<WithAsProp<ProviderProps>> & {
     performance: props.performance,
     renderer: props.renderer,
     target: props.target,
-    telemetry
+    telemetry,
   };
 
   const consumedContext: ProviderContextPrepared = React.useContext(ThemeContext);
@@ -138,7 +138,7 @@ const Provider: React.FC<WithAsProp<ProviderProps>> & {
       className,
       design,
       styles,
-      variables
+      variables,
     },
 
     disableAnimations: outgoingContext.disableAnimations,
@@ -146,13 +146,13 @@ const Provider: React.FC<WithAsProp<ProviderProps>> & {
     renderer: outgoingContext.renderer,
     rtl: outgoingContext.rtl,
     theme: outgoingContext.theme,
-    saveDebug: _.noop
+    saveDebug: _.noop,
   });
 
   const element = usePortalBox({
     className: classes.root,
     target: outgoingContext.target,
-    rtl: outgoingContext.rtl
+    rtl: outgoingContext.rtl,
   });
 
   useIsomorphicLayoutEffect(() => {
@@ -177,7 +177,7 @@ const Provider: React.FC<WithAsProp<ProviderProps>> & {
       : {
           className: classes.root,
           ...rtlProps,
-          ...unhandledProps
+          ...unhandledProps,
         };
 
   return (
@@ -195,7 +195,7 @@ Provider.className = 'ui-provider';
 Provider.displayName = 'Provider';
 
 Provider.defaultProps = {
-  theme: {}
+  theme: {},
 };
 Provider.propTypes = {
   as: PropTypes.elementType,
@@ -216,12 +216,12 @@ Provider.propTypes = {
           fontVariant: PropTypes.string,
           fontWeight: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
           localAlias: PropTypes.string,
-          unicodeRange: PropTypes.string
-        })
-      })
+          unicodeRange: PropTypes.string,
+        }),
+      }),
     ),
     staticStyles: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.object, PropTypes.func])),
-    animations: PropTypes.object
+    animations: PropTypes.object,
   }),
   renderer: PropTypes.object as PropTypes.Validator<Renderer>,
   rtl: PropTypes.bool,
@@ -230,12 +230,12 @@ Provider.propTypes = {
   // Keep in sync with packages/react-bindings/src/styles/types.ts
   performance: PropTypes.shape({
     enableStylesCaching: PropTypes.bool,
-    enableVariablesCaching: PropTypes.bool
+    enableVariablesCaching: PropTypes.bool,
   }),
   children: PropTypes.node.isRequired,
   overwrite: PropTypes.bool,
   target: PropTypes.object as PropTypes.Validator<Document>,
-  telemetryRef: PropTypes.object as PropTypes.Validator<React.MutableRefObject<Telemetry>>
+  telemetryRef: PropTypes.object as PropTypes.Validator<React.MutableRefObject<Telemetry>>,
 };
 Provider.handledProps = Object.keys(Provider.propTypes) as any;
 

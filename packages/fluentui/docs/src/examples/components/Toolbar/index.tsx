@@ -1,9 +1,9 @@
-import * as React from 'react'
+import * as React from 'react';
 
-import Types from './Types'
-import Content from './Content'
-import Usage from './Usage'
-import Performance from './Performance'
+import Types from './Types';
+import Content from './Content';
+import Usage from './Usage';
+import Performance from './Performance';
 
 const ToolbarExamples = () => (
   <>
@@ -12,6 +12,6 @@ const ToolbarExamples = () => (
     <Usage />
     <Performance />
   </>
-)
+);
 
-export default ToolbarExamples
+export default ToolbarExamples;

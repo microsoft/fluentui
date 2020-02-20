@@ -1,22 +1,15 @@
-import * as React from 'react'
-import {
-  Avatar,
-  AvatarProps,
-  Chat,
-  Provider,
-  ReactionProps,
-  ShorthandCollection,
-} from '@fluentui/react'
+import * as React from 'react';
+import { Avatar, AvatarProps, Chat, Provider, ReactionProps, ShorthandCollection } from '@fluentui/react';
 
 const reactions: ShorthandCollection<ReactionProps> = [
   { key: 'up', icon: 'like', content: '1K' },
   { key: 'smile', icon: 'emoji', content: 5 },
-]
+];
 
 const janeAvatar: AvatarProps = {
   image: 'public/images/avatar/small/ade.jpg',
   status: { color: 'green', icon: 'icon-checkmark' },
-}
+};
 
 const content = (
   <div>
@@ -27,7 +20,7 @@ const content = (
     <br />
     <a href="#">www.goodFood3.com</a>
   </div>
-)
+);
 
 const slotLabelStyles: any = (label, beforeStyles?, slotStyles?) => ({
   position: 'relative',
@@ -47,7 +40,7 @@ const slotLabelStyles: any = (label, beforeStyles?, slotStyles?) => ({
     lineHeight: '9px',
     ...beforeStyles,
   },
-})
+});
 
 const ChatMessageExampleStyled = () => (
   <Provider
@@ -76,11 +69,7 @@ const ChatMessageExampleStyled = () => (
             backgroundColor: '#FFFFE0',
           },
           badge: {
-            ...slotLabelStyles(
-              'badge',
-              { textAlign: 'center', left: '0px' },
-              { position: 'absolute', overflow: 'visible' },
-            ),
+            ...slotLabelStyles('badge', { textAlign: 'center', left: '0px' }, { position: 'absolute', overflow: 'visible' }),
             backgroundColor: '#FFFF00',
           },
           reactionGroup: {
@@ -133,6 +122,6 @@ const ChatMessageExampleStyled = () => (
       ]}
     />
   </Provider>
-)
+);
 
-export default ChatMessageExampleStyled
+export default ChatMessageExampleStyled;

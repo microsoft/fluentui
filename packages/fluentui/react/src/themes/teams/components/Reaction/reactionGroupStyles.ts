@@ -1,6 +1,6 @@
-import { ComponentSlotStylesPrepared } from '@fluentui/styles'
-import { ReactionProps } from '../../../../components/Reaction/Reaction'
-import { ReactionGroupVariables } from './reactionGroupVariables'
+import { ComponentSlotStylesPrepared } from '@fluentui/styles';
+import { ReactionProps } from '../../../../components/Reaction/Reaction';
+import { ReactionGroupVariables } from './reactionGroupVariables';
 
 const reactionStyles: ComponentSlotStylesPrepared<ReactionProps, ReactionGroupVariables> = {
   root: () => ({}),
@@ -9,6 +9,6 @@ const reactionStyles: ComponentSlotStylesPrepared<ReactionProps, ReactionGroupVa
       marginRight: v.reactionSpacing,
     },
   }),
-}
+};
 
-export default reactionStyles
+export default reactionStyles;

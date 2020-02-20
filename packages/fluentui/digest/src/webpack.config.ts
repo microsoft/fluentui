@@ -1,14 +1,14 @@
-import * as path from 'path'
-import * as webpack from 'webpack'
+import * as path from 'path';
+import * as webpack from 'webpack';
 
 // TODO: remove just as a dependency. should only be a dev dependency when used.
-import { webpackConfig, webpackMerge, htmlOverlay } from 'just-scripts'
+import { webpackConfig, webpackMerge, htmlOverlay } from 'just-scripts';
 
-const IgnoreNotFoundExportWebpackPlugin = require('ignore-not-found-export-webpack-plugin')
+const IgnoreNotFoundExportWebpackPlugin = require('ignore-not-found-export-webpack-plugin');
 
 export interface DigestConfig {
-  configDir: string
-  outputDir: string
+  configDir: string;
+  outputDir: string;
 }
 
 // This is the default webpack config for creating story bundles for consumers.
@@ -50,7 +50,7 @@ export const defaultConfig = (digestConfig: DigestConfig): webpack.Configuration
         new IgnoreNotFoundExportWebpackPlugin({ include: [/\.tsx?$/] }),
       ],
     },
-  )
+  );
 
   // This config creates a bundle that can be imported directly by the perf-test script to see all available stories.
   // Currently this is bundling all stories and their dependencies when all the script really needs is the story information.
@@ -85,7 +85,7 @@ export const defaultConfig = (digestConfig: DigestConfig): webpack.Configuration
       // This plugin was added to ignore warnings wherever types are imported.
       new IgnoreNotFoundExportWebpackPlugin({ include: [/\.tsx?$/] }),
     ],
-  })
+  });
 
-  return [bundle, stories]
-}
+  return [bundle, stories];
+};

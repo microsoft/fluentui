@@ -1,6 +1,6 @@
-import { Accessibility } from '../../types'
-import { FocusZoneDirection } from '../../focusZone/types'
-import { ListBehaviorProps } from './listBehavior'
+import { Accessibility } from '../../types';
+import { FocusZoneDirection } from '../../focusZone/types';
+import { ListBehaviorProps } from './listBehavior';
 
 /**
  * @description
@@ -28,6 +28,6 @@ const selectableListBehavior: Accessibility<ListBehaviorProps> = props => ({
       direction: FocusZoneDirection.bidirectionalDomOrder,
     },
   },
-})
+});
 
-export default selectableListBehavior
+export default selectableListBehavior;

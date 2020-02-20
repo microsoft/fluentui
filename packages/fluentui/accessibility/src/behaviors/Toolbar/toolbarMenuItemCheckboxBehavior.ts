@@ -1,4 +1,4 @@
-import { Accessibility } from '../../types'
+import { Accessibility } from '../../types';
 
 /**
  * @specification
@@ -18,11 +18,11 @@ const toolbarMenuItemCheckboxBehavior: Accessibility<ToolbarMenuItemCheckboxBeha
       role: 'menuitemcheckbox',
     },
   },
-})
+});
 
-export default toolbarMenuItemCheckboxBehavior
+export default toolbarMenuItemCheckboxBehavior;
 
 type ToolbarMenuItemCheckboxBehaviorProps = {
-  active?: boolean
-  disabled?: boolean
-}
+  active?: boolean;
+  disabled?: boolean;
+};

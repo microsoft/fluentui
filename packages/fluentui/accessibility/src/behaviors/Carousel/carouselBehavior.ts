@@ -1,5 +1,5 @@
-import { Accessibility } from '../../types'
-import * as keyboardKey from 'keyboard-key'
+import { Accessibility } from '../../types';
+import * as keyboardKey from 'keyboard-key';
 
 /**
  * @specification
@@ -57,12 +57,12 @@ const carouselBehavior: Accessibility<CarouselBehaviorProps> = props => ({
       },
     },
   },
-})
+});
 
 export type CarouselBehaviorProps = {
   /** Element type. */
-  navigation: Object | Object[]
-  ariaLiveOn: boolean
-}
+  navigation: Object | Object[];
+  ariaLiveOn: boolean;
+};
 
-export default carouselBehavior
+export default carouselBehavior;

@@ -1,14 +1,14 @@
-import { pxToRem, SizeValue } from '../../../../utils'
-import svgContent from './loaderSvgDataUrl'
+import { pxToRem, SizeValue } from '../../../../utils';
+import svgContent from './loaderSvgDataUrl';
 
 export interface LoaderVariables {
-  containerHeights: Record<SizeValue, string>
-  containerWidths: Record<SizeValue, string>
+  containerHeights: Record<SizeValue, string>;
+  containerWidths: Record<SizeValue, string>;
 
-  svgContent: string
-  svgHeights: Record<SizeValue, string>
-  svgTranslatePosition: Record<SizeValue, string>
-  svgWidths: Record<SizeValue, string>
+  svgContent: string;
+  svgHeights: Record<SizeValue, string>;
+  svgTranslatePosition: Record<SizeValue, string>;
+  svgWidths: Record<SizeValue, string>;
 }
 
 export default (): LoaderVariables => ({
@@ -59,4 +59,4 @@ export default (): LoaderVariables => ({
     larger: pxToRem(72),
     largest: pxToRem(72),
   },
-})
+});

@@ -1,5 +1,5 @@
-import * as _ from 'lodash'
-import * as React from 'react'
+import * as _ from 'lodash';
+import * as React from 'react';
 import {
   Button,
   Text,
@@ -11,7 +11,7 @@ import {
   ToolbarItemShorthandKinds,
   SizeValue,
   ShorthandValue,
-} from '@fluentui/react'
+} from '@fluentui/react';
 
 const tooltips = {
   videoOn: 'Turn camera off',
@@ -26,37 +26,37 @@ const tooltips = {
   addParticipants: 'Add participants',
   pptNext: 'Navigate forward',
   pptPrevious: 'Navigate back',
-}
+};
 
 export interface CustomToolbarProps {
-  layout?: 'standard' | 'desktop-share' | 'powerpoint-presenter'
+  layout?: 'standard' | 'desktop-share' | 'powerpoint-presenter';
 
-  isRecording?: boolean
+  isRecording?: boolean;
 
-  cameraActive?: boolean
-  onCameraChange?: (state: boolean) => void
+  cameraActive?: boolean;
+  onCameraChange?: (state: boolean) => void;
 
-  micActive?: boolean
-  onMicChange?: (state: boolean) => void
+  micActive?: boolean;
+  onMicChange?: (state: boolean) => void;
 
-  screenShareActive?: boolean
-  onScreenShareChange?: (state: boolean) => void
+  screenShareActive?: boolean;
+  onScreenShareChange?: (state: boolean) => void;
 
-  sidebarSelected: false | 'chat' | 'participant-add'
-  onSidebarChange?: (state: false | 'chat' | 'participant-add') => void
+  sidebarSelected: false | 'chat' | 'participant-add';
+  onSidebarChange?: (state: false | 'chat' | 'participant-add') => void;
 
-  chatHasNotification?: boolean
+  chatHasNotification?: boolean;
 
-  pptSlide?: string
-  onPptPrevClick?: () => void
-  onPptNextClick?: () => void
+  pptSlide?: string;
+  onPptPrevClick?: () => void;
+  onPptNextClick?: () => void;
 
-  onEndCallClick?: () => void
+  onEndCallClick?: () => void;
 }
 
 type CustomToolbarLayout = (
   props: CustomToolbarProps,
-) => ShorthandCollection<ToolbarItemProps | ToolbarCustomItemProps, ToolbarItemShorthandKinds>
+) => ShorthandCollection<ToolbarItemProps | ToolbarCustomItemProps, ToolbarItemShorthandKinds>;
 
 const commonLayout: CustomToolbarLayout = props =>
   [
@@ -64,9 +64,7 @@ const commonLayout: CustomToolbarLayout = props =>
       key: 'recording',
       kind: 'custom' as ToolbarItemShorthandKinds,
       focusable: true,
-      content: (
-        <Status state="error" title="Recording" variables={{ isRecordingIndicator: true }} />
-      ),
+      content: <Status state="error" title="Recording" variables={{ isRecordingIndicator: true }} />,
       variables: { isCtItemPrimary: true, isCtItemIndicator: true },
     },
 
@@ -126,7 +124,7 @@ const commonLayout: CustomToolbarLayout = props =>
       onClick: () => _.invoke(props, 'onMoreClick'),
       variables: { isCtItemPrimary: true },
     },
-  ].filter(Boolean)
+  ].filter(Boolean);
 
 const sidebarButtons: CustomToolbarLayout = props => [
   {
@@ -138,8 +136,7 @@ const sidebarButtons: CustomToolbarLayout = props => [
       size: 'large' as SizeValue,
     },
     key: 'chat',
-    onClick: () =>
-      _.invoke(props, 'onSidebarChange', props.sidebarSelected === 'chat' ? false : 'chat'),
+    onClick: () => _.invoke(props, 'onSidebarChange', props.sidebarSelected === 'chat' ? false : 'chat'),
     variables: { isCtItemWithNotification: props.chatHasNotification, isCtItemIconNoFill: true },
   },
   {
@@ -151,15 +148,10 @@ const sidebarButtons: CustomToolbarLayout = props => [
       size: 'large' as SizeValue,
     },
     key: 'participant-add',
-    onClick: () =>
-      _.invoke(
-        props,
-        'onSidebarChange',
-        props.sidebarSelected === 'participant-add' ? false : 'participant-add',
-      ),
+    onClick: () => _.invoke(props, 'onSidebarChange', props.sidebarSelected === 'participant-add' ? false : 'participant-add'),
     variables: { isCtItemIconNoFill: true },
   },
-]
+];
 
 const layoutItems: ShorthandValue<ToolbarItemProps> = {
   endCall: props => ({
@@ -172,7 +164,7 @@ const layoutItems: ShorthandValue<ToolbarItemProps> = {
     onClick: () => _.invoke(props, 'onEndCallClick'),
     variables: { isCtItemDanger: true },
   }),
-}
+};
 
 const layouts: Record<CustomToolbarProps['layout'], CustomToolbarLayout> = {
   standard: props => [...commonLayout(props), ...sidebarButtons(props), layoutItems.endCall(props)],
@@ -238,12 +230,12 @@ const layouts: Record<CustomToolbarProps['layout'], CustomToolbarLayout> = {
 
     layoutItems.endCall(props),
   ],
-}
+};
 
 const CustomToolbar: React.FunctionComponent<CustomToolbarProps> = props => {
-  const { layout = 'standard' } = props
+  const { layout = 'standard' } = props;
 
-  return <Toolbar variables={{ isCt: true }} items={layouts[layout](props)} />
-}
+  return <Toolbar variables={{ isCt: true }} items={layouts[layout](props)} />;
+};
 
-export default CustomToolbar
+export default CustomToolbar;

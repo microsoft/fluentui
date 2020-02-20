@@ -1,50 +1,50 @@
-import { Accessibility, Menu, menuAsToolbarBehavior } from '@fluentui/react'
-import * as React from 'react'
-import cx from 'classnames'
+import { Accessibility, Menu, menuAsToolbarBehavior } from '@fluentui/react';
+import * as React from 'react';
+import cx from 'classnames';
 
 export interface PopoverProps {
-  className?: string
-  onForceShowActionMenuChange?: (val: boolean) => void
-  onShowActionMenuChange?: (val: boolean) => void
-  chatMessageElement?: HTMLElement
+  className?: string;
+  onForceShowActionMenuChange?: (val: boolean) => void;
+  onShowActionMenuChange?: (val: boolean) => void;
+  chatMessageElement?: HTMLElement;
 }
 
 interface PopoverState {
-  focused: boolean
+  focused: boolean;
 }
 
 const popoverBehavior: Accessibility = (props: any) => {
-  const behavior = menuAsToolbarBehavior(props)
+  const behavior = menuAsToolbarBehavior(props);
 
   behavior.focusZone.props.defaultTabbableElement = (root: HTMLElement): HTMLElement => {
-    return root.querySelector('[aria-label="thumbs up"]')
-  }
+    return root.querySelector('[aria-label="thumbs up"]');
+  };
 
-  return behavior
-}
+  return behavior;
+};
 
 class Popover extends React.Component<PopoverProps, PopoverState> {
   state = {
     focused: false,
-  }
+  };
 
-  handleFocus = () => this.setState({ focused: true })
+  handleFocus = () => this.setState({ focused: true });
 
   handleBlur = e => {
-    this.setState({ focused: e.currentTarget.contains(e.relatedTarget) })
-  }
+    this.setState({ focused: e.currentTarget.contains(e.relatedTarget) });
+  };
 
   handleActionableItemClick = e => {
-    const { onShowActionMenuChange, chatMessageElement } = this.props
-    onShowActionMenuChange(false)
+    const { onShowActionMenuChange, chatMessageElement } = this.props;
+    onShowActionMenuChange(false);
     // Currently when the action menu is closed because of some actionable item is clicked, we focus the ChatMessage
     // this was not in the spec, so it may be changed if the requirement is different
-    e.type === 'keydown' && chatMessageElement && chatMessageElement.focus()
-  }
+    e.type === 'keydown' && chatMessageElement && chatMessageElement.focus();
+  };
 
   render() {
-    const { onShowActionMenuChange, onForceShowActionMenuChange, ...rest } = this.props
-    delete rest.chatMessageElement
+    const { onShowActionMenuChange, onForceShowActionMenuChange, ...rest } = this.props;
+    delete rest.chatMessageElement;
     return (
       <Menu
         {...rest}
@@ -83,8 +83,8 @@ class Popover extends React.Component<PopoverProps, PopoverState> {
             key: 'c',
             icon: 'ellipsis horizontal',
             onMenuOpenChange: (e, { menuOpen }) => {
-              onShowActionMenuChange(true)
-              onForceShowActionMenuChange(menuOpen)
+              onShowActionMenuChange(true);
+              onForceShowActionMenuChange(menuOpen);
             },
             'aria-label': 'more options',
             indicator: false,
@@ -102,8 +102,8 @@ class Popover extends React.Component<PopoverProps, PopoverState> {
         onBlur={this.handleBlur}
         data-is-focusable={true}
       />
-    )
+    );
   }
 }
 
-export default Popover
+export default Popover;

@@ -1,7 +1,7 @@
-import { Accessibility } from '../../types'
-import { FocusZoneDirection } from '../../focusZone/types'
-import toolbarMenuItemBehavior from './toolbarMenuItemBehavior'
-import * as keyboardKey from 'keyboard-key'
+import { Accessibility } from '../../types';
+import { FocusZoneDirection } from '../../focusZone/types';
+import toolbarMenuItemBehavior from './toolbarMenuItemBehavior';
+import * as keyboardKey from 'keyboard-key';
 
 /**
  * @description
@@ -35,6 +35,6 @@ const toolbarMenuBehavior: Accessibility = () => ({
     },
   },
   childBehaviors: { item: toolbarMenuItemBehavior },
-})
+});
 
-export default toolbarMenuBehavior
+export default toolbarMenuBehavior;

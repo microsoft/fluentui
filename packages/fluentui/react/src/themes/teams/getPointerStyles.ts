@@ -1,9 +1,9 @@
-import { PopperChildrenProps } from '../../utils/positioner'
+import { PopperChildrenProps } from '../../utils/positioner';
 
 const rtlMapping = {
   left: 'right',
   right: 'left',
-}
+};
 
 const getPointerStyles = (
   pointerOffset: string,
@@ -12,8 +12,8 @@ const getPointerStyles = (
   popperPlacement?: PopperChildrenProps['placement'],
   isSvg?: boolean,
 ) => {
-  const placementValue = (popperPlacement || '').split('-', 1).pop()
-  const placement = (rtl && rtlMapping[placementValue]) || placementValue
+  const placementValue = (popperPlacement || '').split('-', 1).pop();
+  const placement = (rtl && rtlMapping[placementValue]) || placementValue;
 
   const rootStyles = {
     top: {
@@ -28,7 +28,7 @@ const getPointerStyles = (
     left: {
       marginRight: pointerMargin,
     },
-  }
+  };
   const pointerStyles = {
     top: {
       bottom: `-${pointerOffset}`,
@@ -46,12 +46,12 @@ const getPointerStyles = (
       right: `-${pointerOffset}`,
       transform: isSvg ? `rotate(${rtl ? 0 : 180}deg)` : 'rotate(-45deg)',
     },
-  }
+  };
 
   return {
     root: rootStyles[placement],
     pointer: pointerStyles[placement],
-  }
-}
+  };
+};
 
-export default getPointerStyles
+export default getPointerStyles;

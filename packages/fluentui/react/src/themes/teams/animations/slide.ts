@@ -6,36 +6,36 @@ const slideAnimations = {
     keyframe: ({ distance }) => ({
       '0%': {
         transform: `translateY(-${distance})`,
-        opacity: 0
+        opacity: 0,
       },
       '100%': {
         transform: 'translateY(0px)',
-        opacity: 1
-      }
+        opacity: 1,
+      },
     }),
     keyframeParams: { distance: '20px' },
     duration: '400ms',
     timingFunction: easeOut,
     direction: 'forward',
-    fillMode: 'forwards'
+    fillMode: 'forwards',
   },
   // Slides object in from top to bottom
   slideDownEnterMedium: {
     keyframe: ({ distance }) => ({
       '0%': {
         transform: `translateY(-${distance})`,
-        opacity: 0
+        opacity: 0,
       },
       '100%': {
         transform: 'translateY(0px)',
-        opacity: 1
-      }
+        opacity: 1,
+      },
     }),
     keyframeParams: { distance: '20px' },
     duration: '500ms',
     timingFunction: easeOut,
     direction: 'forward',
-    fillMode: 'forwards'
+    fillMode: 'forwards',
   },
 
   // Slides object in from top to bottom
@@ -43,18 +43,18 @@ const slideAnimations = {
     keyframe: ({ distance }) => ({
       '0%': {
         transform: `translateY(-${distance})`,
-        opacity: 0
+        opacity: 0,
       },
       '100%': {
         transform: 'translateY(0px)',
-        opacity: 1
-      }
+        opacity: 1,
+      },
     }),
     keyframeParams: { distance: '20px' },
     duration: '700ms',
     timingFunction: easeOut,
     direction: 'forward',
-    fillMode: 'forwards'
+    fillMode: 'forwards',
   },
 
   // Slides object in from top to bottom
@@ -62,36 +62,36 @@ const slideAnimations = {
     keyframe: ({ distance }) => ({
       '0%': {
         transform: `translateY(${distance})`,
-        opacity: 0
+        opacity: 0,
       },
       '100%': {
         transform: 'translateY(0px)',
-        opacity: 1
-      }
+        opacity: 1,
+      },
     }),
     keyframeParams: { distance: '20px' },
     duration: '400ms',
     timingFunction: easeOut,
     direction: 'forward',
-    fillMode: 'forwards'
+    fillMode: 'forwards',
   },
   // Slides object in from down to up
   slideUpEnterMedium: {
     keyframe: ({ distance }) => ({
       '0%': {
         transform: `translateY(${distance})`,
-        opacity: 0
+        opacity: 0,
       },
       '100%': {
         transform: 'translateY(0px)',
-        opacity: 1
-      }
+        opacity: 1,
+      },
     }),
     keyframeParams: { distance: '20px' },
     duration: '500ms',
     timingFunction: easeOut,
     direction: 'forward',
-    fillMode: 'forwards'
+    fillMode: 'forwards',
   },
 
   // Slides object in from bottom to top
@@ -99,18 +99,18 @@ const slideAnimations = {
     keyframe: ({ distance }) => ({
       '0%': {
         transform: `translateY(${distance})`,
-        opacity: 0
+        opacity: 0,
       },
       '100%': {
         transform: 'translateY(0px)',
-        opacity: 1
-      }
+        opacity: 1,
+      },
     }),
     keyframeParams: { distance: '20px' },
     duration: '700ms',
     timingFunction: easeOut,
     direction: 'forward',
-    fillMode: 'forwards'
+    fillMode: 'forwards',
   },
 
   // ---Horizontal Slide Animations---- //
@@ -120,108 +120,108 @@ const slideAnimations = {
     keyframe: ({ distance }) => ({
       '0%': {
         transform: `translateX(${distance})`,
-        opacity: 0
+        opacity: 0,
       },
       '100%': {
         transform: 'translateX(0px)',
-        opacity: 1
-      }
+        opacity: 1,
+      },
     }),
     keyframeParams: { distance: '20px' },
     duration: '400ms',
     timingFunction: easeOut,
     direction: 'forward',
-    fillMode: 'forwards'
+    fillMode: 'forwards',
   },
   // Slides object in from right to left
   slideLeftEnterMedium: {
     keyframe: ({ distance }) => ({
       '0%': {
         transform: `translateX(${distance})`,
-        opacity: 0
+        opacity: 0,
       },
       '100%': {
         transform: 'translateX(0px)',
-        opacity: 1
-      }
+        opacity: 1,
+      },
     }),
     keyframeParams: { distance: '20px' },
     duration: '500ms',
     timingFunction: easeOut,
     direction: 'forward',
-    fillMode: 'forwards'
+    fillMode: 'forwards',
   },
   // Slides object in from right to left
   slideLeftEnterSlow: {
     keyframe: ({ distance }) => ({
       '0%': {
         transform: `translateX(${distance})`,
-        opacity: 0
+        opacity: 0,
       },
       '100%': {
         transform: 'translateX(0px)',
-        opacity: 1
-      }
+        opacity: 1,
+      },
     }),
     keyframeParams: { distance: '20px' },
     duration: '700ms',
     timingFunction: easeOut,
     direction: 'forward',
-    fillMode: 'forwards'
+    fillMode: 'forwards',
   },
   // Slides object in from left to right
   slideRightEnterFast: {
     keyframe: ({ distance }) => ({
       '0%': {
         transform: `translateX(-${distance})`,
-        opacity: 0
+        opacity: 0,
       },
       '100%': {
         transform: 'translateX(0px)',
-        opacity: 1
-      }
+        opacity: 1,
+      },
     }),
     keyframeParams: { distance: '20px' },
     duration: '400ms',
     timingFunction: easeOut,
     direction: 'forward',
-    fillMode: 'forwards'
+    fillMode: 'forwards',
   },
   // Slides object in from left to right
   slideRightEnterMedium: {
     keyframe: ({ distance }) => ({
       '0%': {
         transform: `translateX(-${distance})`,
-        opacity: 0
+        opacity: 0,
       },
       '100%': {
         transform: 'translateX(0px)',
-        opacity: 1
-      }
+        opacity: 1,
+      },
     }),
     keyframeParams: { distance: '20px' },
     duration: '500ms',
     timingFunction: easeOut,
     direction: 'forward',
-    fillMode: 'forwards'
+    fillMode: 'forwards',
   },
   // Slides object in from left to right
   slideRightEnterSlow: {
     keyframe: ({ distance }) => ({
       '0%': {
         transform: `translateX(-${distance})`,
-        opacity: 0
+        opacity: 0,
       },
       '100%': {
         transform: 'translateX(0px)',
-        opacity: 1
-      }
+        opacity: 1,
+      },
     }),
     keyframeParams: { distance: '20px' },
     duration: '700ms',
     timingFunction: easeOut,
     direction: 'forward',
-    fillMode: 'forwards'
+    fillMode: 'forwards',
   },
 
   // Slide Exit Animation///
@@ -229,207 +229,207 @@ const slideAnimations = {
     keyframe: ({ distance }) => ({
       '0%': {
         transform: 'translateY(0px)',
-        opacity: 1
+        opacity: 1,
       },
       '100%': {
         transform: `translateY(${distance})`,
-        opacity: 0
-      }
+        opacity: 0,
+      },
     }),
     keyframeParams: { distance: '20px' },
     duration: '400ms',
     timingFunction: easeIn,
     direction: 'forward',
-    fillMode: 'forwards'
+    fillMode: 'forwards',
   },
 
   slideDownExitMedium: {
     keyframe: ({ distance }) => ({
       '0%': {
         transform: 'translateY(0px)',
-        opacity: 1
+        opacity: 1,
       },
       '100%': {
         transform: `translateY(${distance})`,
-        opacity: 0
-      }
+        opacity: 0,
+      },
     }),
     keyframeParams: { distance: '20px' },
     duration: '400ms',
     timingFunction: easeIn,
     direction: 'forward',
-    fillMode: 'forwards'
+    fillMode: 'forwards',
   },
   slideDownExitSlow: {
     keyframe: ({ distance }) => ({
       '0%': {
         transform: 'translateY(0px)',
-        opacity: 1
+        opacity: 1,
       },
       '100%': {
         transform: `translateY(${distance})`,
-        opacity: 0
-      }
+        opacity: 0,
+      },
     }),
     keyframeParams: { distance: '20px' },
     duration: '500ms',
     timingFunction: easeIn,
     direction: 'forward',
-    fillMode: 'forwards'
+    fillMode: 'forwards',
   },
   slideUpExitFast: {
     keyframe: ({ distance }) => ({
       '0%': {
         transform: 'translateY(0px)',
-        opacity: 1
+        opacity: 1,
       },
       '100%': {
         transform: `translateY(-${distance})`,
-        opacity: 0
-      }
+        opacity: 0,
+      },
     }),
     keyframeParams: { distance: '20px' },
     duration: '300ms',
     timingFunction: easeIn,
     direction: 'forward',
-    fillMode: 'forwards'
+    fillMode: 'forwards',
   },
   slideUpExitMedium: {
     keyframe: ({ distance }) => ({
       '0%': {
         transform: 'translateY(0px)',
-        opacity: 1
+        opacity: 1,
       },
       '100%': {
         transform: `translateY(-${distance})`,
-        opacity: 0
-      }
+        opacity: 0,
+      },
     }),
     keyframeParams: { distance: '20px' },
     duration: '400ms',
     timingFunction: easeIn,
     direction: 'forward',
-    fillMode: 'forwards'
+    fillMode: 'forwards',
   },
   slideUpExitSlow: {
     keyframe: ({ distance }) => ({
       '0%': {
         transform: 'translateY(0px)',
-        opacity: 1
+        opacity: 1,
       },
       '100%': {
         transform: `translateY(-${distance})`,
-        opacity: 0
-      }
+        opacity: 0,
+      },
     }),
     keyframeParams: { distance: '20px' },
     duration: '500ms',
     timingFunction: easeIn,
     direction: 'forward',
-    fillMode: 'forwards'
+    fillMode: 'forwards',
   },
   slideRightExitFast: {
     keyframe: ({ distance }) => ({
       '0%': {
         transform: 'translateX(0px)',
-        opacity: 1
+        opacity: 1,
       },
       '100%': {
         transform: `translateX(${distance})`,
-        opacity: 0
-      }
+        opacity: 0,
+      },
     }),
     keyframeParams: { distance: '20px' },
     duration: '300ms',
     timingFunction: easeIn,
     direction: 'forward',
-    fillMode: 'forwards'
+    fillMode: 'forwards',
   },
   slideRightExitMedium: {
     keyframe: ({ distance }) => ({
       '0%': {
         transform: 'translateX(0px)',
-        opacity: 1
+        opacity: 1,
       },
       '100%': {
         transform: `translateX(${distance})`,
-        opacity: 0
-      }
+        opacity: 0,
+      },
     }),
     keyframeParams: { distance: '20px' },
     duration: '400ms',
     timingFunction: easeIn,
     direction: 'forward',
-    fillMode: 'forwards'
+    fillMode: 'forwards',
   },
   slideRightExitSlow: {
     keyframe: ({ distance }) => ({
       '0%': {
         transform: 'translateX(0px)',
-        opacity: 1
+        opacity: 1,
       },
       '100%': {
         transform: `translateX(${distance})`,
-        opacity: 0
-      }
+        opacity: 0,
+      },
     }),
     keyframeParams: { distance: '20px' },
     duration: '500ms',
     timingFunction: easeIn,
     direction: 'forward',
-    fillMode: 'forwards'
+    fillMode: 'forwards',
   },
   slideLeftExitFast: {
     keyframe: ({ distance }) => ({
       '0%': {
         transform: 'translateX(0px)',
-        opacity: 1
+        opacity: 1,
       },
       '100%': {
         transform: `translateX(-${distance})`,
-        opacity: 0
-      }
+        opacity: 0,
+      },
     }),
     keyframeParams: { distance: '20px' },
     duration: '300ms',
     timingFunction: easeIn,
     direction: 'forward',
-    fillMode: 'forwards'
+    fillMode: 'forwards',
   },
   slideLeftExitMedium: {
     keyframe: ({ distance }) => ({
       '0%': {
         transform: 'translateX(0px)',
-        opacity: 1
+        opacity: 1,
       },
       '100%': {
         transform: `translateX(-${distance})`,
-        opacity: 0
-      }
+        opacity: 0,
+      },
     }),
     keyframeParams: { distance: '20px' },
     duration: '400ms',
     timingFunction: easeIn,
     direction: 'forward',
-    fillMode: 'forwards'
+    fillMode: 'forwards',
   },
   slideLeftExitSlow: {
     keyframe: ({ distance }) => ({
       '0%': {
         transform: 'translateX(0px)',
-        opacity: 1
+        opacity: 1,
       },
       '100%': {
         transform: `translateX(-${distance})`,
-        opacity: 0
-      }
+        opacity: 0,
+      },
     }),
     keyframeParams: { distance: '20px' },
     duration: '500ms',
     timingFunction: easeIn,
     direction: 'forward',
-    fillMode: 'forwards'
-  }
+    fillMode: 'forwards',
+  },
 };
 
 export default slideAnimations;

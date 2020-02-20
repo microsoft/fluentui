@@ -1,5 +1,5 @@
-import { TextAlignProperty as RealTextAlignProperty } from 'csstype'
-import { AlignValue } from '../utils'
+import { TextAlignProperty as RealTextAlignProperty } from 'csstype';
+import { AlignValue } from '../utils';
 
 /** Copy of TextAlignProperty from csstype (works around TS error) */
 // This is probably removable if we turn off isolatedModules in the future (then we can just
@@ -16,19 +16,19 @@ export type TextAlignProperty =
   | 'left'
   | 'match-parent'
   | 'right'
-  | 'start'
+  | 'start';
 
 const translateAlignProp: (textAlignProp: AlignValue) => TextAlignProperty = textAlignProp => {
   // This assignment verifies that the copy of TextAlignProperty matches up with the real one.
-  const alignProp: RealTextAlignProperty = textAlignProp
+  const alignProp: RealTextAlignProperty = textAlignProp;
   switch (alignProp) {
     case 'start':
-      return 'left'
+      return 'left';
     case 'end':
-      return 'right'
+      return 'right';
     default:
-      return alignProp as TextAlignProperty
+      return alignProp as TextAlignProperty;
   }
-}
+};
 
-export default translateAlignProp
+export default translateAlignProp;

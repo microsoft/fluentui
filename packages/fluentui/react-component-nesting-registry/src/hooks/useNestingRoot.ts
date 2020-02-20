@@ -1,15 +1,15 @@
-import * as React from 'react'
+import * as React from 'react';
 
-import NestingContext from '../NestingContext'
-import { NestedContextProps } from '../types'
-import RefStack from '../utils/RefStack'
-import { UseNestingHookResult } from './types'
+import NestingContext from '../NestingContext';
+import { NestedContextProps } from '../types';
+import RefStack from '../utils/RefStack';
+import { UseNestingHookResult } from './types';
 
-const registrySet = new RefStack()
+const registrySet = new RefStack();
 
 const useNestingRoot = <T extends Node>(): UseNestingHookResult<T> => {
-  const [registry] = React.useState(registrySet)
-  const parentRef = React.useRef<T>(null)
+  const [registry] = React.useState(registrySet);
+  const parentRef = React.useRef<T>(null);
 
   const nestedProps: NestedContextProps = React.useMemo(
     () => ({
@@ -20,16 +20,16 @@ const useNestingRoot = <T extends Node>(): UseNestingHookResult<T> => {
       },
     }),
     [],
-  )
+  );
   const getRefs = React.useCallback(() => {
-    return registry.getContextRefs(parentRef as any)
-  }, [])
+    return registry.getContextRefs(parentRef as any);
+  }, []);
 
   React.useEffect(() => {
-    registry.register(parentRef as any)
+    registry.register(parentRef as any);
 
-    return () => registry.unregister(parentRef as any)
-  }, [])
+    return () => registry.unregister(parentRef as any);
+  }, []);
 
   return {
     NestedComponent: NestingContext.Provider,
@@ -38,7 +38,7 @@ const useNestingRoot = <T extends Node>(): UseNestingHookResult<T> => {
     getRefs,
     isRoot: true,
     ref: parentRef,
-  }
-}
+  };
+};
 
-export default useNestingRoot
+export default useNestingRoot;

@@ -16,7 +16,7 @@ import {
   ChildrenComponentProps,
   commonPropTypes,
   ColorComponentProps,
-  ShorthandFactory
+  ShorthandFactory,
 } from '../../utils';
 import { mergeComponentVariables } from '@fluentui/styles';
 
@@ -99,13 +99,13 @@ class Toolbar extends UIComponent<WithAsProp<ToolbarProps>> {
     overflowItem: customPropTypes.shorthandAllowingChildren,
     onOverflow: PropTypes.func,
     onOverflowOpenChange: PropTypes.func,
-    getOverflowItems: PropTypes.func
+    getOverflowItems: PropTypes.func,
   };
 
   static defaultProps = {
     accessibility: toolbarBehavior,
     items: [],
-    overflowItem: {}
+    overflowItem: {},
   };
 
   static CustomItem = ToolbarCustomItem;
@@ -129,7 +129,7 @@ class Toolbar extends UIComponent<WithAsProp<ToolbarProps>> {
   rtl: boolean;
 
   handleItemOverrides = variables => predefinedProps => ({
-    variables: mergeComponentVariables(variables, predefinedProps.variables)
+    variables: mergeComponentVariables(variables, predefinedProps.variables),
   });
 
   renderItems(items: ShorthandCollection<ToolbarItemProps, ToolbarItemShorthandKinds>, variables) {
@@ -145,7 +145,7 @@ class Toolbar extends UIComponent<WithAsProp<ToolbarProps>> {
         case 'toggle':
           return ToolbarItem.create(item, {
             defaultProps: () => ({ accessibility: toggleButtonBehavior }),
-            overrideProps: itemOverridesFn
+            overrideProps: itemOverridesFn,
           });
         case 'custom':
           return ToolbarCustomItem.create(item, { overrideProps: itemOverridesFn });
@@ -248,7 +248,7 @@ class Toolbar extends UIComponent<WithAsProp<ToolbarProps>> {
     $lastVisibleItem: HTMLElement | undefined,
     lastVisibleItemRect: ClientRect | undefined,
     containerBoundingRect: ClientRect,
-    absolutePositioningOffset: PositionOffset
+    absolutePositioningOffset: PositionOffset,
   ) {
     const actualWindow: Window = this.context.target.defaultView;
 
@@ -311,7 +311,7 @@ class Toolbar extends UIComponent<WithAsProp<ToolbarProps>> {
       horizontal: this.rtl
         ? offsetMeasureBoundingRect.right - overflowContainerBoundingRect.right
         : overflowContainerBoundingRect.left - offsetMeasureBoundingRect.left,
-      vertical: overflowContainerBoundingRect.top - offsetMeasureBoundingRect.top
+      vertical: overflowContainerBoundingRect.top - offsetMeasureBoundingRect.top,
     };
 
     let isOverflowing = false;
@@ -370,7 +370,7 @@ class Toolbar extends UIComponent<WithAsProp<ToolbarProps>> {
         $lastVisibleItem,
         lastVisibleItemRect,
         overflowContainerBoundingRect,
-        absolutePositioningOffset
+        absolutePositioningOffset,
       );
       this.show($overflowItem);
     } else {
@@ -429,7 +429,7 @@ class Toolbar extends UIComponent<WithAsProp<ToolbarProps>> {
     if (this.props.overflowOpen) {
       _.invoke(this.props, 'onOverflowOpenChange', e, {
         ...this.props,
-        overflowOpen: false
+        overflowOpen: false,
       });
     }
   }, 16);
@@ -439,7 +439,7 @@ class Toolbar extends UIComponent<WithAsProp<ToolbarProps>> {
       <Ref innerRef={this.overflowItemRef}>
         {ToolbarItem.create(overflowItem, {
           defaultProps: () => ({
-            icon: { name: 'more', outline: true }
+            icon: { name: 'more', outline: true },
           }),
           overrideProps: {
             menu: this.props.overflowOpen ? this.getOverflowItems() : [],
@@ -447,10 +447,10 @@ class Toolbar extends UIComponent<WithAsProp<ToolbarProps>> {
             onMenuOpenChange: (e, { menuOpen }) => {
               _.invoke(this.props, 'onOverflowOpenChange', e, {
                 ...this.props,
-                overflowOpen: menuOpen
+                overflowOpen: menuOpen,
               });
-            }
-          }
+            },
+          },
         })}
       </Ref>
     );

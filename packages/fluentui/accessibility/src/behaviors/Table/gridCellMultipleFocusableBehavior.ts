@@ -1,7 +1,7 @@
-import { Accessibility } from '../../types'
-import { IS_FOCUSABLE_ATTRIBUTE } from '../../attributes'
-import { FocusZoneDirection } from '../../focusZone/types'
-import * as keyboardKey from 'keyboard-key'
+import { Accessibility } from '../../types';
+import { IS_FOCUSABLE_ATTRIBUTE } from '../../attributes';
+import { FocusZoneDirection } from '../../focusZone/types';
+import * as keyboardKey from 'keyboard-key';
 
 /**
  * @specification
@@ -29,6 +29,6 @@ const gridCellMultipleFocusableBehavior: Accessibility = props => ({
       },
     },
   },
-})
+});
 
-export default gridCellMultipleFocusableBehavior
+export default gridCellMultipleFocusableBehavior;

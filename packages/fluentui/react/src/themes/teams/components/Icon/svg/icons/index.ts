@@ -367,5 +367,5 @@ export default {
   'word-color': filesWordBrand,
   yammer,
   visio: filesVisio,
-  'visio-color': filesVisioBrand
+  'visio-color': filesVisioBrand,
 } as { [iconName: string]: TeamsSvgIconSpec };

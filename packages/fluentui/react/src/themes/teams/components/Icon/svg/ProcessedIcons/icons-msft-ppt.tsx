@@ -1,5 +1,5 @@
-import * as React from 'react'
-import { TeamsProcessedSvgIconSpec } from '../types'
+import * as React from 'react';
+import { TeamsProcessedSvgIconSpec } from '../types';
 
 export default {
   icon: ({ classes }) => (
@@ -9,4 +9,4 @@ export default {
   ),
   styles: {},
   exportedAs: 'powerpoint, powerpoint-color',
-} as TeamsProcessedSvgIconSpec
+} as TeamsProcessedSvgIconSpec;
