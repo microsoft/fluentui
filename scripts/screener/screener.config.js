@@ -37,9 +37,12 @@ require('tsconfig-paths').register({
 
 const baseBranch = 'master';
 const sourceBranch = process.env.BUILD_SOURCEBRANCH;
+const buildNumber = process.env.BUILD_BUILDNUMBER;
 
 // https://github.com/screener-io/screener-runner
 module.exports = {
+  build: `${buildNumber}-fluentui`,
+
   projectRepo: 'OfficeDev/office-ui-fabric-react',
 
   apiKey: process.env.SCREENER_API_KEY,
@@ -78,7 +81,7 @@ module.exports = {
 
   alwaysAcceptBaseBranch: true,
 
-  disableBranchBaseline: true,
+  failureExitCode: 0,
 
   baseBranch,
 
