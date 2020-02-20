@@ -6,6 +6,9 @@ import config from '../../../scripts/config';
 
 // TODO: add regression analysis output to Fluent report
 // TODO: test when fluent perf-test has not been run (should show warning)
+// TODO: test with regressions
+// TODO: check false positive potential regression reports in fluent ui repo and fix
+// TODO: alphabetize scenarios
 
 type Reporter = {
   markdown: (markdown: string) => void;
@@ -16,12 +19,11 @@ export function getFluentPerfRegressions() {
   const output: string[] = [];
 
   const markdown = (text: string) => {
-    console.log(text);
     output.push(text);
   };
 
   const warn = (text: string) => {
-    console.warn(text);
+    output.push(`:warning: ${text}\n`);
   };
 
   checkPerfRegressions({ markdown, warn });
@@ -29,7 +31,7 @@ export function getFluentPerfRegressions() {
   return output.join('\n');
 }
 
-function linkToFlamegraph(value: number, filename: string) {
+function linkToFlamegraph(value: string, filename: string) {
   const urlForDeployPath = process.env.BUILD_SOURCEBRANCH
     ? `http://fabricweb.z5.web.core.windows.net/pr-deploy-site/${process.env.BUILD_SOURCEBRANCH}/perf-test/fluentui`
     : 'file://' + config.paths.packageDist('perf-test');
@@ -58,7 +60,7 @@ function fluentFabricComparison(perfCounts: any, reporter: Reporter) {
 
   reporter.markdown(
     [
-      '### Perf comparison',
+      '<details><summary>Perf comparison</summary>',
       '',
       'Status | Scenario | Fluent TPI | Fabric TPI | Ratio | Iterations | Ticks',
       ':---: | :--- | ---:| ---:| ---:| ---:| ---:',
@@ -73,11 +75,13 @@ function fluentFabricComparison(perfCounts: any, reporter: Reporter) {
           value.numTicks
         ].join(' | ')
       ),
-      '>🔧 Needs work &nbsp; &nbsp; 🎯 On target &nbsp; &nbsp; 🦄 Amazing'
+      '>🔧 Needs work &nbsp; &nbsp; 🎯 On target &nbsp; &nbsp; 🦄 Amazing',
+      '',
+      '</details>'
     ].join('\n')
   );
 }
-function currentToMasterComparison(perfCounts: any, reporter: Reporter) {
+function reportResults(perfCounts: any, reporter: Reporter) {
   const results = _.map(
     _.pickBy(perfCounts, value => _.has(value, 'analysis.regression')),
     (stats, name) => {
@@ -93,6 +97,7 @@ function currentToMasterComparison(perfCounts: any, reporter: Reporter) {
           flamegraphFile: _.get(stats, 'processed.baseline.output.flamegraphFile')
         },
         isRegression: _.get(stats, 'analysis.regression.isRegression'),
+        regressionFile: _.get(stats, 'analysis.regression.regressionFile'),
         currentToBaseline: Math.round((currentTicks / baselineTicks) * 100) / 100
       };
     }
@@ -101,24 +106,27 @@ function currentToMasterComparison(perfCounts: any, reporter: Reporter) {
   const regressions = _.sortBy(_.filter(results, 'isRegression'), stats => stats.currentToBaseline * -1);
 
   if (regressions.length > 0) {
-    reporter.warn(`${regressions.length} perf regressions detected`);
+    reporter.warn(`${regressions.length} potential perf regressions detected`);
     reporter.markdown(
       [
         '### Potential regressions comparing to master',
         '',
-        'Scenario | Current PR Ticks | Baseline Ticks | Ratio',
-        ':--- | ---:| ---:| ---:',
+        'Scenario | Current PR Ticks | Baseline Ticks | Ratio | Regression Analysis',
+        ':--- | ---:| ---:| ---: | ---: ',
         ..._.map(regressions, (value, key) =>
           [
             value.name,
             linkToFlamegraph(value.numTicks, value.flamegraphFile),
             linkToFlamegraph(value.baseline.numTicks, value.baseline.flamegraphFile),
-            `${value.currentToBaseline}:1`
+            `${value.currentToBaseline}:1`,
+            linkToFlamegraph('analysis', value.regressionFile)
           ].join(' | ')
         )
       ].join('\n')
     );
   }
+
+  fluentFabricComparison(perfCounts, reporter);
 
   const noRegressions = _.sortBy(
     _.filter(results, stats => !stats.isRegression),
@@ -146,6 +154,9 @@ function currentToMasterComparison(perfCounts: any, reporter: Reporter) {
 
 const checkPerfRegressions = (reporter: Reporter) => {
   let perfCounts;
+
+  reporter.markdown('## Perf Analysis (Fluent)');
+
   try {
     perfCounts = require(config.paths.packageDist('perf-test', 'perfCounts.json'));
   } catch {
@@ -153,8 +164,5 @@ const checkPerfRegressions = (reporter: Reporter) => {
     return;
   }
 
-  reporter.markdown('## Perf Analysis (Fluent)');
-
-  fluentFabricComparison(perfCounts, reporter);
-  currentToMasterComparison(perfCounts, reporter);
+  reportResults(perfCounts, reporter);
 };
