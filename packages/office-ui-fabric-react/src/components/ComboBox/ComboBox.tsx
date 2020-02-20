@@ -293,10 +293,6 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     }
   }
 
-  public componentWillUnmount(): void {
-    super.componentWillUnmount();
-  }
-
   // Primary Render
   public render(): JSX.Element {
     const id = this._id;

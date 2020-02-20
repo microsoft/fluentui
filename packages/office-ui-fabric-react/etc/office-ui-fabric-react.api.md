@@ -639,8 +639,6 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     // (undocumented)
     componentDidUpdate(prevProps: IComboBoxProps, prevState: IComboBoxState): void;
     // (undocumented)
-    componentWillUnmount(): void;
-    // (undocumented)
     static defaultProps: IComboBoxProps;
     dismissMenu: () => void;
     // Warning: (ae-unresolved-inheritdoc-base) The @inheritDoc tag needs a TSDoc declaration reference; signature matching is not supported yet
