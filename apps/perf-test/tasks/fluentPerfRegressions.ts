@@ -5,8 +5,6 @@ import * as path from 'path';
 import config from '../../../scripts/config';
 
 // TODO: add regression analysis output to Fluent report
-// TODO: test when fluent perf-test has not been run (should show warning)
-// TODO: test with regressions
 // TODO: check false positive potential regression reports in fluent ui repo and fix
 // TODO: alphabetize scenarios
 

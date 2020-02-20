@@ -81,18 +81,15 @@ export default async function getPerfRegressions(baselineOnly: boolean = false) 
       .filter(storyKey => typeof stories[kindKey][storyKey] === 'function')
       .forEach(storyKey => {
         const scenarioName = `${kindKey}.${storyKey}`;
-        // TODO: revert by rerunning fluent-import script (scenarios limited for testing)
-        if (scenarioName === 'Avatar.Fluent' || scenarioName === 'Avatar.Fabric' || scenarioName === 'ChatDuplicateMessagesPerf.default') {
-          scenarioList.push(scenarioName);
-          scenarios[scenarioName] = {
-            scenario: generateUrl(urlForDeploy, kindKey, storyKey, getIterations(stories, kindKey, storyKey)),
-            ...(!baselineOnly &&
-              storyKey !== 'Fabric' && {
-                // Optimization: skip baseline comparision for Fabric
-                baseline: generateUrl(urlForMaster, kindKey, storyKey, getIterations(stories, kindKey, storyKey))
-              })
-          };
-        }
+        scenarioList.push(scenarioName);
+        scenarios[scenarioName] = {
+          scenario: generateUrl(urlForDeploy, kindKey, storyKey, getIterations(stories, kindKey, storyKey)),
+          ...(!baselineOnly &&
+            storyKey !== 'Fabric' && {
+              // Optimization: skip baseline comparision for Fabric
+              baseline: generateUrl(urlForMaster, kindKey, storyKey, getIterations(stories, kindKey, storyKey))
+            })
+        };
       });
   });
 
@@ -135,8 +132,6 @@ export default async function getPerfRegressions(baselineOnly: boolean = false) 
 }
 
 function extendCookResults(stories, testResults: CookResults): ExtendedCookResults {
-  console.log('testResults:');
-  console.dir(testResults);
   return _.mapValues(testResults, (testResult, resultKey) => {
     const kind = getKindKey(resultKey);
     const story = getStoryKey(resultKey);
