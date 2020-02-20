@@ -287,7 +287,7 @@ module.exports = async function getPerfRegressions() {
  * @returns {string}
  */
 function createReport(testResults) {
-  const report = '### [Component Perf Analysis](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Perf-Testing)\n'
+  const report = '## [Perf Analysis](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Perf-Testing)\n'
 
     // Show only significant changes by default.
     .concat(createScenarioTable(testResults, false))

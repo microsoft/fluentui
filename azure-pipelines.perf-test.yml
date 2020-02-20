@@ -19,8 +19,8 @@ steps:
   # Last PR Build: https://uifabric.visualstudio.com/fabricpublic/_build/results?buildId=53232&view=logs&jobId=92058b04-f16a-5035-546c-cae3ad5e2f5f&j=ca395085-040a-526b-2ce8-bdc85f692774&t=25a453a0-e716-5e6e-0bee-a24e8e541880
   - template: azure-pipelines.artifacts.yml
     parameters:
-      artifact: Build-PR-$(Build.BuildNumber)
-      buildId: $(Build.BuildId)
+      artifact: $(artifact)
+      buildId: $(buildId)
 
   - template: azure-pipelines.tools.yml
 

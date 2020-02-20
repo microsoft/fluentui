@@ -69,7 +69,7 @@ function fluentFabricComparison(perfCounts: any, reporter: Reporter) {
 
   reporter.markdown(
     [
-      '## Perf comparison',
+      '### Perf comparison',
       '',
       'Status | Scenario | Fluent TPI | Fabric TPI | Ratio | Iterations | Ticks',
       ':---: | :--- | ---:| ---:| ---:| ---:| ---:',
@@ -115,7 +115,7 @@ function currentToMasterComparison(perfCounts: any, reporter: Reporter) {
     reporter.warn(`${regressions.length} perf regressions detected`);
     reporter.markdown(
       [
-        '## Potential regressions comparing to master',
+        '### Potential regressions comparing to master',
         '',
         'Scenario | Current PR Ticks | Baseline Ticks | Ratio',
         ':--- | ---:| ---:| ---:',
@@ -163,6 +163,8 @@ const checkPerfRegressions = (reporter: Reporter) => {
     reporter.warn('No perf measurements available');
     return;
   }
+
+  reporter.markdown('## Fluent Perf Analysis');
 
   fluentFabricComparison(perfCounts, reporter);
   currentToMasterComparison(perfCounts, reporter);
