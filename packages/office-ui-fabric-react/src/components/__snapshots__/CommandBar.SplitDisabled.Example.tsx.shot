@@ -48,7 +48,6 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
           role="menubar"
         >
           <div
-            aria-orientation="horizontal"
             className=
                 ms-OverflowSet
                 ms-CommandBar-primaryCommand
@@ -59,7 +58,7 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                   flex-wrap: nowrap;
                   position: relative;
                 }
-            role="menubar"
+            role="group"
           >
             <div
               className=
@@ -126,6 +125,9 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                     @media screen and (-ms-high-contrast: active){&:hover .ms-Button--primary {
                       background-color: Highlight;
                       color: Window;
+                    }
+                    &:hover .ms-Button.is-disabled {
+                      color: #a19f9d;
                     }
                     @media screen and (-ms-high-contrast: active){&:hover .ms-Button.is-disabled {
                       background-color: Window;
@@ -289,6 +291,11 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                             }
                         data-icon-name="Add"
                         role="presentation"
+                        style={
+                          Object {
+                            "fontFamily": "\\"FabricMDL2Icons\\"",
+                          }
+                        }
                       >
                         
                       </i>
@@ -436,6 +443,11 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                             }
                         data-icon-name="ChevronDown"
                         role="presentation"
+                        style={
+                          Object {
+                            "fontFamily": "\\"FabricMDL2Icons\\"",
+                          }
+                        }
                       >
                         
                       </i>
@@ -671,6 +683,11 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                             }
                         data-icon-name="Upload"
                         role="presentation"
+                        style={
+                          Object {
+                            "fontFamily": "\\"FabricMDL2Icons\\"",
+                          }
+                        }
                       >
                         
                       </i>
@@ -833,6 +850,11 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                             }
                         data-icon-name="ChevronDown"
                         role="presentation"
+                        style={
+                          Object {
+                            "fontFamily": "\\"FabricMDL2Icons\\"",
+                          }
+                        }
                       >
                         
                       </i>
@@ -995,6 +1017,11 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                         }
                     data-icon-name="Share"
                     role="presentation"
+                    style={
+                      Object {
+                        "fontFamily": "\\"FabricMDL2Icons\\"",
+                      }
+                    }
                   >
                     
                   </i>
@@ -1178,6 +1205,11 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                           }
                       data-icon-name="Download"
                       role="presentation"
+                      style={
+                        Object {
+                          "fontFamily": "\\"FabricMDL2Icons\\"",
+                        }
+                      }
                     >
                       
                     </i>

@@ -4,7 +4,7 @@ import { IShimmerElementsGroupProps, IShimmerElementsGroupStyleProps, IShimmerEl
 import { ShimmerElementsGroupBase } from './ShimmerElementsGroup.base';
 import { getStyles } from './ShimmerElementsGroup.styles';
 
-export const ShimmerElementsGroup: React.StatelessComponent<IShimmerElementsGroupProps> = styled<
+export const ShimmerElementsGroup: React.FunctionComponent<IShimmerElementsGroupProps> = styled<
   IShimmerElementsGroupProps,
   IShimmerElementsGroupStyleProps,
   IShimmerElementsGroupStyles

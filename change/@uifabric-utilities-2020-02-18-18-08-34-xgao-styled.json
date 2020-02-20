@@ -1,0 +1,9 @@
+{
+  "type": "patch",
+  "comment": "styled: do not create new styles function if styles prop is not changed",
+  "packageName": "@uifabric/utilities",
+  "email": "xgao@microsoft.com",
+  "commit": "33fd9733154fab69a3ed29f39fea34d8f07bc632",
+  "dependentChangeType": "patch",
+  "date": "2020-02-19T02:08:34.722Z"
+}

@@ -7,6 +7,8 @@ exports[`Layer renders Layer correctly 1`] = `
   <div
     className=
         ms-Fabric
+        is-focusHidden
+        ms-Fabric--isFocusHidden
         ms-Layer-content
         {
           -moz-osx-font-smoothing: grayscale;
@@ -26,6 +28,7 @@ exports[`Layer renders Layer correctly 1`] = `
         & textarea {
           font-family: inherit;
         }
+    dir="ltr"
     onBlur={[Function]}
     onChange={[Function]}
     onClick={[Function]}
@@ -52,6 +55,10 @@ exports[`Layer renders Layer correctly 1`] = `
     onMouseOver={[Function]}
     onMouseUp={[Function]}
     onSubmit={[Function]}
+    onTouchCancel={[Function]}
+    onTouchEnd={[Function]}
+    onTouchMove={[Function]}
+    onTouchStart={[Function]}
   >
     Content
   </div>

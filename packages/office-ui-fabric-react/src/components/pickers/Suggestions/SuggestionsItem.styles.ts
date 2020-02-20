@@ -11,7 +11,7 @@ export const SuggestionsItemGlobalClassNames = {
 export function getStyles(props: ISuggestionsItemStyleProps): ISuggestionsItemStyles {
   const { className, theme, suggested } = props;
 
-  const { palette } = theme;
+  const { palette, semanticColors } = theme;
 
   const classNames = getGlobalClassNames(SuggestionsItemGlobalClassNames, theme);
 
@@ -26,7 +26,7 @@ export function getStyles(props: ISuggestionsItemStyleProps): ISuggestionsItemSt
         position: 'relative',
         selectors: {
           '&:hover': {
-            background: palette.neutralLighter
+            background: semanticColors.menuItemBackgroundHovered
           },
           '&:hover .ms-Suggestions-closeButton': {
             display: 'block'
@@ -60,17 +60,17 @@ export function getStyles(props: ISuggestionsItemStyleProps): ISuggestionsItemSt
             }
           },
           ':hover': {
-            color: palette.neutralDark
+            color: semanticColors.menuItemTextHovered
           }
         }
       },
       suggested && [
         classNames.isSuggested,
         {
-          background: palette.neutralLight,
+          background: semanticColors.menuItemBackgroundPressed,
           selectors: {
             ':hover': {
-              background: palette.neutralTertiaryAlt
+              background: semanticColors.menuDivider
             },
             [HighContrastSelector]: {
               background: 'Highlight',

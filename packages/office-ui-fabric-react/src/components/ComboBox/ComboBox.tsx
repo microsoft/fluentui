@@ -22,11 +22,12 @@ import { CommandButton, IButtonStyles, IconButton } from '../../Button';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { getCaretDownButtonStyles, getOptionStyles, getStyles } from './ComboBox.styles';
 import { getClassNames, getComboBoxOptionClassNames, IComboBoxClassNames } from './ComboBox.classNames';
-import { IComboBoxOption, IComboBoxOptionStyles, IComboBoxProps } from './ComboBox.types';
+import { IComboBoxOption, IComboBoxOptionStyles, IComboBoxProps, IOnRenderComboBoxLabelProps } from './ComboBox.types';
 import { KeytipData } from '../../KeytipData';
 import { Label } from '../../Label';
 import { SelectableOptionMenuItemType, getAllSelectedOptions } from '../../utilities/selectableOption/index';
 import { BaseButton, Button } from '../Button/index';
+import { ICalloutProps } from '../../Callout';
 
 export interface IComboBoxState {
   /** The open state */
@@ -324,6 +325,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       required,
       errorMessage,
       onRenderContainer = this._onRenderContainer,
+      onRenderLabel = this._onRenderLabel,
       onRenderList = this._onRenderList,
       onRenderItem = this._onRenderItem,
       onRenderOption = this._onRenderOptionContent,
@@ -376,12 +378,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
     return (
       <div {...divProps} ref={this._root} className={this._classNames.container}>
-        {label && (
-          <Label id={id + '-label'} disabled={disabled} required={required} className={this._classNames.label}>
-            {label}
-            {multiselectAccessibleText && <span className={this._classNames.screenReaderText}>{multiselectAccessibleText}</span>}
-          </Label>
-        )}
+        {onRenderLabel({ props: this.props, multiselectAccessibleText }, this._onRenderLabel)}
         <KeytipData keytipProps={keytipProps} disabled={disabled}>
           {(keytipAttributes: any): JSX.Element => (
             <div
@@ -1173,6 +1170,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         className={css(this._classNames.callout, calloutProps ? calloutProps.className : undefined)}
         target={this._comboBoxWrapper.current}
         onDismiss={this._onDismiss}
+        onMouseDown={this._onCalloutMouseDown}
         onScroll={this._onScroll}
         setInitialFocus={false}
         calloutWidth={useComboBoxAsMenuWidth && this._comboBoxWrapper.current ? comboBoxMenuWidth && comboBoxMenuWidth : dropdownWidth}
@@ -1203,6 +1201,23 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     if (this.props.calloutProps && this.props.calloutProps.onLayerMounted) {
       this.props.calloutProps.onLayerMounted();
     }
+  };
+
+  private _onRenderLabel = (onRenderLabelProps: IOnRenderComboBoxLabelProps): JSX.Element | null => {
+    const { label, disabled, required } = onRenderLabelProps.props;
+
+    if (label) {
+      return (
+        <Label id={this._id + '-label'} disabled={disabled} required={required} className={this._classNames.label}>
+          {label}
+          {onRenderLabelProps.multiselectAccessibleText && (
+            <span className={this._classNames.screenReaderText}>{onRenderLabelProps.multiselectAccessibleText}</span>
+          )}
+        </Label>
+      );
+    }
+
+    return null;
   };
 
   // Render List of items
@@ -1385,6 +1400,13 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   }
 
   /**
+   * Mouse clicks to headers, dividers and scrollbar should not make input lose focus
+   */
+  private _onCalloutMouseDown: ICalloutProps['onMouseDown'] = ev => {
+    ev.preventDefault();
+  };
+
+  /**
    * Scroll handler for the callout to make sure the mouse events
    * for updating focus are not interacting during scroll
    */
@@ -1461,8 +1483,11 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     return (ev: any): void => {
       onItemClick && onItemClick(ev, item, index);
       this._setSelectedIndex(index as number, ev);
+
+      // only close the callout when it's in single-select mode
       if (!this.props.multiSelect) {
-        // only close the callout when it's in single-select mode
+        // ensure that focus returns to the input, not the button
+        this._autofill.current && this._autofill.current.focus();
         this.setState({
           isOpen: false
         });
@@ -1850,7 +1875,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         // allowing autoComplete, handle the input here
         // since we have marked the input as readonly
         if (!allowFreeform && autoComplete === 'on') {
-          this._onInputChange(String.fromCharCode(ev.which));
+          this._onInputChange(ev.key);
           break;
         }
 

@@ -6,7 +6,7 @@ interface IFolderCoverWithImageProps extends IFolderCoverProps {
   originalImageSize: ISize;
 }
 
-const FolderCoverWithImage: React.StatelessComponent<IFolderCoverWithImageProps> = (props: IFolderCoverWithImageProps): JSX.Element => {
+const FolderCoverWithImage: React.FunctionComponent<IFolderCoverWithImageProps> = (props: IFolderCoverWithImageProps): JSX.Element => {
   const { originalImageSize, ...folderCoverProps } = props;
 
   const folderCover = <FolderCover {...folderCoverProps} />;

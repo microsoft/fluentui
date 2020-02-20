@@ -1,0 +1,9 @@
+{
+  "type": "minor",
+  "comment": "add signal for item scheduled",
+  "packageName": "@uifabric/experiments",
+  "email": "amshan@microsoft.com",
+  "commit": "ae7312e56ec2c8e7d7424a758405700243f15035",
+  "dependentChangeType": "patch",
+  "date": "2020-02-20T01:28:53.072Z"
+}

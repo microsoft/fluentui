@@ -36,7 +36,7 @@ type IMapping = {
 
 type ISlotNames = string[];
 
-export const SemanticSlots: React.StatelessComponent<ISemanticSlotsProps> = (props: ISemanticSlotsProps) => {
+export const SemanticSlots: React.FunctionComponent<ISemanticSlotsProps> = (props: ISemanticSlotsProps) => {
   let slotNames: ISlotNames = [];
   let noneSlots: JSX.Element[] = [];
   let neutralSlots: JSX.Element[] = [];

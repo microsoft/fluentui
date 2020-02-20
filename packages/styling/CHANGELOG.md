@@ -1,7 +1,46 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Fri, 06 Dec 2019 12:33:21 GMT and should not be manually modified.
+This log was last generated on Wed, 22 Jan 2020 12:36:43 GMT and should not be manually modified.
 
+## 7.10.2
+Wed, 22 Jan 2020 12:36:43 GMT
+
+### Patches
+
+- TextField: fix focused bottom border mis-alignment when errorMessage is set (v-jajach@microsoft.com)
+## 7.10.1
+Fri, 17 Jan 2020 02:32:17 GMT
+
+### Patches
+
+- Update tslib minver to first version containing __spreadArrays helper due to changes in how TS emits spreads. (jagore@microsoft.com)
+## 7.10.0
+Fri, 10 Jan 2020 12:31:47 GMT
+
+### Minor changes
+
+- add borderPosition param to getInputFocusStyle (xgao@microsoft.com)
+## 7.9.0
+Wed, 08 Jan 2020 17:02:57 GMT
+
+### Minor changes
+
+- add getInputFocusStyle function to build styles for text input on focus (xgao@microsoft.com)
+### Patches
+
+- bumping load-themed-styles to take advantage of es6 version of it (kchau@microsoft.com)
+## 7.8.1
+Tue, 31 Dec 2019 12:31:45 GMT
+
+### Patches
+
+- createTheme: Pass through RTL if specified (mgodbolt@microsoft.com)
+## 7.8.0
+Tue, 24 Dec 2019 12:33:51 GMT
+
+### Minor changes
+
+- Export IIconSubsetRecord (elcraig@microsoft.com)
 ## 7.7.4
 Fri, 06 Dec 2019 12:33:21 GMT
 

@@ -2,7 +2,7 @@ import * as React from 'react';
 import { IPickerItemProps } from './PickerItem.types';
 import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 import { ISuggestionModel, ISuggestionsProps } from './Suggestions/Suggestions.types';
-import { BaseAutoFill } from './AutoFill/BaseAutoFill';
+import { Autofill } from '../../Autofill';
 import { ICalloutProps } from '../../Callout';
 import { ITheme, IStyle } from '../../Styling';
 import { ISuggestionItemProps } from '../pickers/Suggestions/SuggestionsItem.types';
@@ -96,12 +96,12 @@ export interface IBasePickerProps<T> extends React.Props<any> {
    * A callback for when the user put focus on the picker
    * @deprecated Use `inputProps.onFocus` instead
    */
-  onFocus?: React.FocusEventHandler<HTMLInputElement | BaseAutoFill>;
+  onFocus?: React.FocusEventHandler<HTMLInputElement | Autofill>;
 
   /**
    * A callback for when the user moves the focus away from the picker
    */
-  onBlur?: React.FocusEventHandler<HTMLInputElement | BaseAutoFill>;
+  onBlur?: React.FocusEventHandler<HTMLInputElement | Autofill>;
 
   /**
    * A callback to get text from an item. Used to autofill text in the pickers.

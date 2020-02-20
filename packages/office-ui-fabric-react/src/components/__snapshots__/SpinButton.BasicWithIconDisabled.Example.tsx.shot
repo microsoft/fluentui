@@ -150,6 +150,7 @@ exports[`Component Examples renders SpinButton.BasicWithIconDisabled.Example.tsx
               color: GrayText;
             }
         data-lpignore={true}
+        disabled={true}
         id="input1"
         onBlur={[Function]}
         onChange={[Function]}
@@ -157,7 +158,6 @@ exports[`Component Examples renders SpinButton.BasicWithIconDisabled.Example.tsx
         onInput={[Function]}
         onKeyDown={[Function]}
         onKeyUp={[Function]}
-        readOnly={true}
         role="spinbutton"
         type="text"
         value="0"
@@ -314,6 +314,11 @@ exports[`Component Examples renders SpinButton.BasicWithIconDisabled.Example.tsx
                   }
               data-icon-name="ChevronUpSmall"
               role="presentation"
+              style={
+                Object {
+                  "fontFamily": "\\"FabricMDL2Icons-2\\"",
+                }
+              }
             >
               
             </i>
@@ -455,6 +460,11 @@ exports[`Component Examples renders SpinButton.BasicWithIconDisabled.Example.tsx
                   }
               data-icon-name="ChevronDownSmall"
               role="presentation"
+              style={
+                Object {
+                  "fontFamily": "\\"FabricMDL2Icons-3\\"",
+                }
+              }
             >
               
             </i>

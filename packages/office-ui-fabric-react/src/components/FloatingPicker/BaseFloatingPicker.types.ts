@@ -4,6 +4,7 @@ import { ISuggestionsControlProps } from './Suggestions/Suggestions.types';
 import { SuggestionsStore } from './Suggestions/SuggestionsStore';
 import { IRefObject } from '../../Utilities';
 import { ISuggestionItemProps } from '../pickers/Suggestions/SuggestionsItem.types';
+import { ICalloutProps } from '../Callout/Callout.types';
 
 export interface IBaseFloatingPicker {
   /** Whether the suggestions are shown */
@@ -87,6 +88,12 @@ export interface IBaseFloatingPickerProps<T> extends React.ClassAttributes<any> 
    * The properties that will get passed to the Suggestions component.
    */
   pickerSuggestionsProps?: IBaseFloatingPickerSuggestionProps;
+
+  /**
+   * The properties that will get passed to the Callout component.
+   */
+  pickerCalloutProps?: ICalloutProps;
+
   /**
    * A callback for when an item is removed from the suggestion list
    */

@@ -40,7 +40,7 @@ export const MessageBarButtonTokens: IButtonComponent['tokens'] = (props, theme)
   return [regularTokens, baseTokens, props.disabled && disabledTokens];
 };
 
-export const MessageBarButton: React.StatelessComponent<IButtonProps> = composed({
+export const MessageBarButton: React.FunctionComponent<IButtonProps> = composed({
   displayName: 'MessageBarButton',
   slots,
   state,

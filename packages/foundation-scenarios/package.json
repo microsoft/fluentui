@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/foundation-scenarios",
-  "version": "0.102.6",
+  "version": "0.102.28",
   "description": "Experimental React components for building experiences for Office 365.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -15,6 +15,8 @@
   "license": "MIT",
   "scripts": {
     "build": "just-scripts build",
+    "bundle": "just-scripts bundle",
+    "lint": "just-scripts lint",
     "just": "just-scripts",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
@@ -23,32 +25,23 @@
     "update-snapshots": "just-scripts jest -u"
   },
   "devDependencies": {
-    "@types/enzyme": "3.1.13",
-    "@types/enzyme-adapter-react-16": "1.0.3",
     "@types/es6-promise": "0.0.32",
-    "@types/jest": "23.0.0",
     "@types/react": "16.8.11",
     "@types/react-dom": "16.8.4",
-    "@types/react-test-renderer": "^16.0.0",
-    "@types/webpack-env": "1.13.9",
-    "@uifabric/example-app-base": "^7.10.3",
-    "@uifabric/jest-serializer-merge-styles": "^7.0.6",
-    "@uifabric/prettier-rules": "^7.0.4",
-    "@uifabric/tslint-rules": "^7.0.5",
-    "enzyme": "~3.9.0",
-    "enzyme-adapter-react-16": "^1.2.0",
+    "@types/webpack-env": "1.15.1",
+    "@uifabric/build": "^7.0.0",
+    "@uifabric/example-app-base": "^7.12.4",
+    "@uifabric/tslint-rules": "^7.0.6",
     "es6-weak-map": "^2.0.2",
     "react": "16.8.6",
     "react-app-polyfill": "~1.0.1",
-    "react-dom": "16.8.6",
-    "react-test-renderer": "^16.3.0",
-    "@uifabric/build": "^7.0.0"
+    "react-dom": "16.8.6"
   },
   "dependencies": {
-    "@microsoft/load-themed-styles": "^1.7.13",
-    "@uifabric/set-version": "^7.0.2",
-    "office-ui-fabric-react": "^7.75.0",
-    "tslib": "^1.7.1"
+    "@microsoft/load-themed-styles": "^1.10.26",
+    "@uifabric/set-version": "^7.0.5",
+    "office-ui-fabric-react": "^7.94.1",
+    "tslib": "^1.10.0"
   },
   "peerDependencies": {
     "@types/react": ">=16.8.0 <17.0.0",

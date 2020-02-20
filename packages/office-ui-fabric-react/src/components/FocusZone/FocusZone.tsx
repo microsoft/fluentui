@@ -24,7 +24,8 @@ import {
   warnDeprecations,
   portalContainsElement,
   IPoint,
-  getWindow
+  getWindow,
+  findScrollableParent
 } from '../../Utilities';
 import { mergeStyles } from '@uifabric/merge-styles';
 
@@ -64,7 +65,7 @@ const _allInstances: {
 const _outerZones: Set<FocusZone> = new Set();
 
 // Track the 1 global keydown listener we hook to window.
-let _disposeGlobalKeyDownListener: () => void | undefined;
+let _disposeGlobalKeyDownListener: (() => void) | undefined;
 
 const ALLOWED_INPUT_TYPES = ['text', 'number', 'password', 'email', 'tel', 'url', 'search'];
 
@@ -77,7 +78,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
   };
 
   private _disposables: Function[] = [];
-  private _root = React.createRef<HTMLElement>();
+  private _root: React.RefObject<HTMLElement> = React.createRef();
   private _id: string;
 
   /** The most recently focused child element. */
@@ -152,11 +153,12 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
 
       if (!this._isInnerZone) {
         _outerZones.add(this);
+
+        if (windowElement && _outerZones.size === 1) {
+          _disposeGlobalKeyDownListener = on(windowElement, 'keydown', this._onKeyDownCapture, true);
+        }
       }
 
-      if (windowElement && _outerZones.size === 1) {
-        _disposeGlobalKeyDownListener = on(windowElement, 'keydown', this._onKeyDownCapture, true);
-      }
       this._disposables.push(on(root, 'blur', this._onBlur, true));
 
       // Assign initial tab indexes so that we can set initial focus as appropriate.
@@ -189,23 +191,28 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
     }
   }
 
-  public componentWillUnmount() {
+  public componentWillUnmount(): void {
     delete _allInstances[this._id];
-
     if (!this._isInnerZone) {
       _outerZones.delete(this);
+
+      // If this is the last outer zone, remove the keydown listener.
+      if (_outerZones.size === 0 && _disposeGlobalKeyDownListener) {
+        _disposeGlobalKeyDownListener();
+        // Clear reference so closure can be garbage-collected.
+        _disposeGlobalKeyDownListener = undefined;
+      }
     }
 
     // Dispose all events.
-    this._disposables.forEach(d => d());
+    this._disposables.forEach((d: () => void) => d());
 
-    // If this is the last outer zone, remove the keydown listener.
-    if (_outerZones.size === 0 && _disposeGlobalKeyDownListener) {
-      _disposeGlobalKeyDownListener();
-    }
+    // Clear function references so their closures can be garbage-collected.
+    delete this._disposables;
   }
 
-  public render() {
+  public render(): React.ReactNode {
+    // tslint:disable:deprecation
     const { rootProps, ariaDescribedBy, ariaLabelledBy, className } = this.props;
     const divProps = getNativeProps(this.props, htmlElementProperties);
 
@@ -227,7 +234,8 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
           // root props has been deprecated and should get removed.
           // it needs to be marked as "any" since root props expects a div element, but really Tag can
           // be any native element so typescript rightly flags this as a problem.
-          ...rootProps as any
+          // tslint:disable-next-line:no-any
+          ...(rootProps as any)
         }
         // Once the getClassName correctly memoizes inputs this should
         // be replaced so that className is passed to getRootClass and is included there so
@@ -423,7 +431,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
    */
   private _onKeyDownCapture = (ev: KeyboardEvent): void => {
     if (ev.which === KeyCodes.tab) {
-      _outerZones.forEach(zone => zone._updateTabIndexes());
+      _outerZones.forEach((zone: FocusZone) => zone._updateTabIndexes());
     }
   };
 
@@ -523,11 +531,9 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
         }
       } else if (isElementFocusSubZone(ev.target as HTMLElement)) {
         if (
-          !this.focusElement(getNextElement(
-            ev.target as HTMLElement,
-            (ev.target as HTMLElement).firstChild as HTMLElement,
-            true
-          ) as HTMLElement)
+          !this.focusElement(
+            getNextElement(ev.target as HTMLElement, (ev.target as HTMLElement).firstChild as HTMLElement, true) as HTMLElement
+          )
         ) {
           return;
         }
@@ -564,6 +570,16 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
 
         case KeyCodes.down:
           if (direction !== FocusZoneDirection.horizontal && this._moveFocusDown()) {
+            break;
+          }
+          return;
+        case KeyCodes.pageDown:
+          if (this._moveFocusPaging(true)) {
+            break;
+          }
+          return;
+        case KeyCodes.pageUp:
+          if (this._moveFocusPaging(false)) {
             break;
           }
           return;
@@ -746,19 +762,13 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
       this.focusElement(candidateElement);
     } else if (this.props.isCircularNavigation && useDefaultWrap) {
       if (isForward) {
-        return this.focusElement(getNextElement(
-          this._root.current,
-          this._root.current.firstElementChild as HTMLElement,
-          true
-        ) as HTMLElement);
+        return this.focusElement(
+          getNextElement(this._root.current, this._root.current.firstElementChild as HTMLElement, true) as HTMLElement
+        );
       } else {
-        return this.focusElement(getPreviousElement(
-          this._root.current,
-          this._root.current.lastElementChild as HTMLElement,
-          true,
-          true,
-          true
-        ) as HTMLElement);
+        return this.focusElement(
+          getPreviousElement(this._root.current, this._root.current.lastElementChild as HTMLElement, true, true, true) as HTMLElement
+        );
       }
     }
 
@@ -925,7 +935,111 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
     return false;
   }
 
-  private _setFocusAlignment(element: HTMLElement, isHorizontal?: boolean, isVertical?: boolean) {
+  private _getHorizontalDistanceFromCenter = (isForward: boolean, activeRect: ClientRect, targetRect: ClientRect): number => {
+    const leftAlignment = this._focusAlignment.x;
+    // ClientRect values can be floats that differ by very small fractions of a decimal.
+    // If the difference between top and bottom are within a pixel then we should treat
+    // them as equivalent by using Math.floor. For instance 5.2222 and 5.222221 should be equivalent,
+    // but without Math.Floor they will be handled incorrectly.
+    const targetRectTop = Math.floor(targetRect.top);
+    const activeRectBottom = Math.floor(activeRect.bottom);
+    const targetRectBottom = Math.floor(targetRect.bottom);
+    const activeRectTop = Math.floor(activeRect.top);
+    const isValidCandidateOnpagingDown = isForward && targetRectTop > activeRectBottom;
+    const isValidCandidateOnpagingUp = !isForward && targetRectBottom < activeRectTop;
+
+    if (isValidCandidateOnpagingDown || isValidCandidateOnpagingUp) {
+      if (leftAlignment >= targetRect.left && leftAlignment <= targetRect.left + targetRect.width) {
+        return 0;
+      }
+      return Math.abs(targetRect.left + targetRect.width / 2 - leftAlignment);
+    } else {
+      if (!this._shouldWrapFocus(this._activeElement as HTMLElement, NO_VERTICAL_WRAP)) {
+        return LARGE_NEGATIVE_DISTANCE_FROM_CENTER;
+      }
+      return LARGE_DISTANCE_FROM_CENTER;
+    }
+  };
+
+  private _moveFocusPaging(isForward: boolean, useDefaultWrap: boolean = true): boolean {
+    if (useDefaultWrap === void 0) {
+      useDefaultWrap = true;
+    }
+    let element = this._activeElement;
+    if (!element || !this._root.current) {
+      return false;
+    }
+    if (this._isElementInput(element)) {
+      if (!this._shouldInputLoseFocus(element as HTMLInputElement, isForward)) {
+        return false;
+      }
+    }
+    const scrollableParent = findScrollableParent(element);
+    if (!scrollableParent) {
+      return false;
+    }
+    let candidateDistance = -1;
+    let candidateElement = undefined;
+    let targetTop = -1;
+    let targetBottom = -1;
+    const pagesize = scrollableParent.clientHeight;
+    const activeRect = element.getBoundingClientRect();
+    do {
+      element = isForward ? getNextElement(this._root.current, element) : getPreviousElement(this._root.current, element);
+      if (element) {
+        const targetRect = element.getBoundingClientRect();
+        const targetRectTop = Math.floor(targetRect.top);
+        const activeRectBottom = Math.floor(activeRect.bottom);
+        const targetRectBottom = Math.floor(targetRect.bottom);
+        const activeRectTop = Math.floor(activeRect.top);
+        const elementDistance = this._getHorizontalDistanceFromCenter(isForward, activeRect, targetRect);
+        const isElementPassedPageSizeOnPagingDown = isForward && targetRectTop > activeRectBottom + pagesize;
+        const isElementPassedPageSizeOnPagingUp = !isForward && targetRectBottom < activeRectTop - pagesize;
+
+        if (isElementPassedPageSizeOnPagingDown || isElementPassedPageSizeOnPagingUp) {
+          break;
+        }
+        if (elementDistance > -1) {
+          // for paging down
+          if (isForward && targetRectTop > targetTop) {
+            targetTop = targetRectTop;
+            candidateDistance = elementDistance;
+            candidateElement = element;
+          } else if (!isForward && targetRectBottom < targetBottom) {
+            // for paging up
+            targetBottom = targetRectBottom;
+            candidateDistance = elementDistance;
+            candidateElement = element;
+          } else {
+            if (candidateDistance === -1 || elementDistance <= candidateDistance) {
+              candidateDistance = elementDistance;
+              candidateElement = element;
+            }
+          }
+        }
+      }
+    } while (element);
+
+    let changedFocus = false;
+    // Focus the closest candidate
+    if (candidateElement && candidateElement !== this._activeElement) {
+      changedFocus = true;
+      this.focusElement(candidateElement);
+      this._setFocusAlignment(candidateElement as HTMLElement, false, true);
+    } else if (this.props.isCircularNavigation && useDefaultWrap) {
+      if (isForward) {
+        return this.focusElement(
+          getNextElement(this._root.current, this._root.current.firstElementChild as HTMLElement, true) as HTMLElement
+        );
+      }
+      return this.focusElement(
+        getPreviousElement(this._root.current, this._root.current.lastElementChild as HTMLElement, true, true, true) as HTMLElement
+      );
+    }
+    return changedFocus;
+  }
+
+  private _setFocusAlignment(element: HTMLElement, isHorizontal?: boolean, isVertical?: boolean): void {
     if (this.props.direction === FocusZoneDirection.bidirectional && (!this._focusAlignment || isHorizontal || isVertical)) {
       const rect = element.getBoundingClientRect();
       const left = rect.left + rect.width / 2;
@@ -966,7 +1080,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
     return parentElement;
   }
 
-  private _updateTabIndexes(element?: HTMLElement) {
+  private _updateTabIndexes(element?: HTMLElement): void {
     if (!element && this._root.current) {
       this._defaultFocusElement = null;
       element = this._root.current;
@@ -1029,7 +1143,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
     return false;
   }
 
-  private _shouldInputLoseFocus(element: HTMLInputElement, isForward?: boolean) {
+  private _shouldInputLoseFocus(element: HTMLInputElement, isForward?: boolean): boolean {
     // If a tab was used, we want to focus on the next element.
     if (!this._processingTabKey && element && element.type && ALLOWED_INPUT_TYPES.indexOf(element.type.toLowerCase()) > -1) {
       const selectionStart = element.selectionStart;

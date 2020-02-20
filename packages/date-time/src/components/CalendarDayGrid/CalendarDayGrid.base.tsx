@@ -664,9 +664,13 @@ export class CalendarDayGridBase extends BaseComponent<ICalendarDayGridProps, IC
     const dateRangeHoverType = this.getDateRangeTypeToUse(dateRangeType, workWeekDays);
 
     // gets all the dates for the given date range type that are in the same date range as the given day
-    const dateRange = getDateRangeArray(day.originalDate, dateRangeHoverType, firstDayOfWeek, workWeekDays, daysToSelectInDayView).map(
-      (date: Date) => date.getTime()
-    );
+    const dateRange = getDateRangeArray(
+      day.originalDate,
+      dateRangeHoverType,
+      firstDayOfWeek,
+      workWeekDays,
+      daysToSelectInDayView
+    ).map((date: Date) => date.getTime());
 
     // gets all the day refs for the given dates
     const dayInfosInRange = weeks!.reduce((accumulatedValue: IDayInfo[], currentWeek: IDayInfo[]) => {

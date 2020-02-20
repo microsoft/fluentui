@@ -211,7 +211,7 @@ export class SpinButton extends React.Component<ISpinButtonProps, ISpinButtonSta
                 onFocus={this._onFocus}
                 onKeyDown={this._handleKeyDown}
                 onKeyUp={this._handleKeyUp}
-                readOnly={disabled}
+                disabled={disabled}
                 aria-disabled={disabled}
                 data-lpignore={true}
                 data-ktp-execute-target={keytipAttributes['data-ktp-execute-target']}
@@ -475,7 +475,6 @@ export class SpinButton extends React.Component<ISpinButtonProps, ISpinButtonSta
         this._updateValue(false /* shouldSpin */, this._initialStepDelay, this._onDecrement!);
         break;
       case KeyCodes.enter:
-      case KeyCodes.tab:
         this._validate(event);
         break;
       case KeyCodes.escape:

@@ -29,6 +29,7 @@ export function createTableRowJson(collectedData: ICollectedData, apiItem: ApiIt
         apiProperty.excerptTokens,
         apiProperty.propertyTypeExcerpt.tokenRange
       );
+      break;
     }
 
     case ApiItemKind.Constructor:
@@ -41,6 +42,7 @@ export function createTableRowJson(collectedData: ICollectedData, apiItem: ApiIt
         // The constructor is similar to a method, but we have to manually add the name.
         tableRowJson.name = 'constructor';
       }
+      break;
     }
 
     case ApiItemKind.Function:

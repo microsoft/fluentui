@@ -3,6 +3,7 @@
 const fs = require('fs');
 const path = require('path');
 const flamegrill = require('flamegrill');
+const scenarioIterations = require('../src/scenarioIterations');
 const scenarioNames = require('../src/scenarioNames');
 const { argv } = require('@uifabric/build').just;
 
@@ -188,7 +189,11 @@ const urlForDeployPath = process.env.BUILD_SOURCEBRANCH
   ? `http://fabricweb.z5.web.core.windows.net/pr-deploy-site/${process.env.BUILD_SOURCEBRANCH}/perf-test`
   : 'file://' + path.resolve(__dirname, '../dist/');
 
-const urlForDeploy = urlForDeployPath + '/index.html';
+// Temporarily comment out deploy site usage to speed up CI build time and support parallelization.
+// At some point perf test should be broken out from CI default pipeline entirely and then can go back to using deploy site.
+// For now, use local perf-test bundle so that perf-test job can run ASAP instead of waiting for the perf-test bundle to be deployed.
+// const urlForDeploy = urlForDeployPath + '/index.html';
+const urlForDeploy = 'file://' + path.resolve(__dirname, '../dist/') + '/index.html';
 
 const urlForMaster = process.env.SYSTEM_PULLREQUEST_TARGETBRANCH
   ? `http://fabricweb.z5.web.core.windows.net/pr-deploy-site/refs/heads/${process.env.SYSTEM_PULLREQUEST_TARGETBRANCH}/perf-test/index.html`
@@ -200,7 +205,6 @@ const tempDir = path.join(__dirname, '../logfiles');
 module.exports = async function getPerfRegressions() {
   const iterationsArgv = /** @type {number} */ (argv().iterations);
   const iterationsArg = Number.isInteger(iterationsArgv) && iterationsArgv;
-  const iterations = iterationsArg || iterationsDefault;
 
   const scenariosAvailable = fs
     .readdirSync(path.join(__dirname, '../src/scenarios'))
@@ -223,6 +227,7 @@ module.exports = async function getPerfRegressions() {
     if (!scenariosAvailable.includes(scenarioName)) {
       throw new Error(`Invalid scenario: ${scenarioName}.`);
     }
+    const iterations = iterationsArg || scenarioIterations[scenarioName] || iterationsDefault;
     // These lines can be used to check for consistency.
     // Array.from({ length: 20 }, (entry, index) => {
     scenarios[scenarioName] = {
@@ -233,7 +238,8 @@ module.exports = async function getPerfRegressions() {
   });
   // });
 
-  console.log(`\nRunning ${iterations} iterations for each of these scenarios: ${scenarioList}\n`);
+  console.log(`\nRunning scenarios:`);
+  console.dir(scenarios);
 
   if (fs.existsSync(tempDir)) {
     const tempContents = fs.readdirSync(tempDir);

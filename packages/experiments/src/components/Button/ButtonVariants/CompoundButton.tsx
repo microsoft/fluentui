@@ -195,7 +195,7 @@ const CompoundButtonView: ICompoundButtonComponent['view'] = (props, slots) => {
   return ButtonView(compoundButtonProps, slots);
 };
 
-export const CompoundButton: React.StatelessComponent<ICompoundButtonProps> = composed({
+export const CompoundButton: React.FunctionComponent<ICompoundButtonProps> = composed({
   displayName: 'CompoundButton',
   slots: ButtonSlots,
   state,

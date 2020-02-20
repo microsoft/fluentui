@@ -58,7 +58,7 @@ export function classNamesFunction<TStyleProps extends {}, TStyleSet extends ISt
   ): IProcessedStyleSet<TStyleSet> => {
     let current: Map<any, any> = map;
     const { theme } = styleProps as any;
-    const rtl = (theme && theme.rtl) || getRTL();
+    const rtl = theme && theme.rtl !== undefined ? theme.rtl : getRTL();
 
     const disableCaching = options.disableCaching;
 

@@ -333,10 +333,10 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
         this._dismissDatePickerPopup();
       }
 
-      const { isRequired, value, strings } = this.props;
+      const { isRequired, strings } = this.props;
 
       this.setState({
-        errorMessage: isRequired && !value ? strings!.isRequiredErrorMessage || ' ' : undefined,
+        errorMessage: isRequired && !newValue ? strings!.isRequiredErrorMessage || ' ' : undefined,
         formattedDate: newValue
       });
     }
@@ -441,47 +441,51 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
 
     if (allowTextInput) {
       let date = null;
+
       if (inputValue) {
         // Don't parse if the selected date has the same formatted string as what we're about to parse.
         // The formatted string might be ambiguous (ex: "1/2/3" or "New Year Eve") and the parser might
         // not be able to come up with the exact same date.
         if (this.state.selectedDate && formatDate && formatDate(this.state.selectedDate) === inputValue) {
+          this.setState({
+            errorMessage: ''
+          });
           return;
         } else {
           date = parseDateFromString!(inputValue);
+        }
 
-          // Check if date is null, or date is Invalid Date
-          if (!date || isNaN(date.getTime())) {
-            // Reset invalid input field, if formatting is available
-            if (formatDate) {
-              date = this.state.selectedDate;
-              this.setState({
-                formattedDate: formatDate(date!).toString()
-              });
-            }
-
+        // Check if date is null, or date is Invalid Date
+        if (!date || isNaN(date.getTime())) {
+          // Reset invalid input field, if formatting is available
+          if (formatDate) {
+            date = this.state.selectedDate;
             this.setState({
-              errorMessage: strings!.invalidInputErrorMessage || ' '
+              formattedDate: formatDate(date!).toString()
+            });
+          }
+
+          this.setState({
+            errorMessage: strings!.invalidInputErrorMessage || ' '
+          });
+        } else {
+          // Check against optional date boundaries
+          if (this._isDateOutOfBounds(date, minDate, maxDate)) {
+            this.setState({
+              errorMessage: strings!.isOutOfBoundsErrorMessage || ' '
             });
           } else {
-            // Check against optional date boundaries
-            if (this._isDateOutOfBounds(date, minDate, maxDate)) {
-              this.setState({
-                errorMessage: strings!.isOutOfBoundsErrorMessage || ' '
-              });
-            } else {
-              this.setState({
-                selectedDate: date,
-                errorMessage: ''
-              });
+            this.setState({
+              selectedDate: date,
+              errorMessage: ''
+            });
 
-              // When formatting is available. If formatted date is valid, but is different from input, update with formatted date
-              // This occurs when an invalid date is entered twice
-              if (formatDate && formatDate(date) !== inputValue) {
-                this.setState({
-                  formattedDate: formatDate(date).toString()
-                });
-              }
+            // When formatting is available. If formatted date is valid, but is different from input, update with formatted date
+            // This occurs when an invalid date is entered twice
+            if (formatDate && formatDate(date) !== inputValue) {
+              this.setState({
+                formattedDate: formatDate(date).toString()
+              });
             }
           }
         }
@@ -502,6 +506,11 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
       // Check when DatePicker is a required field but has NO input value
       this.setState({
         errorMessage: strings!.isRequiredErrorMessage || ' '
+      });
+    } else {
+      // Cleanup the error message
+      this.setState({
+        errorMessage: ''
       });
     }
   };

@@ -1,7 +1,57 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Tue, 17 Dec 2019 12:29:42 GMT and should not be manually modified.
+This log was last generated on Wed, 19 Feb 2020 12:21:05 GMT and should not be manually modified.
 
+## 7.19.3
+Wed, 19 Feb 2020 12:21:05 GMT
+
+### Patches
+
+- Add syncpack and synchronize dependencies. Refresh fluent import. (jagore@microsoft.com)
+## 7.19.0
+Wed, 12 Feb 2020 12:24:27 GMT
+
+### Minor changes
+
+- Replacing deprecated StatelessComponent references with FunctionComponent. (Humberto.Morimoto@microsoft.com)
+## 7.18.24
+Mon, 03 Feb 2020 20:04:10 GMT
+
+### Patches
+
+- Updating snapshots in experiments package. (Humberto.Morimoto@microsoft.com)
+## 7.18.15
+Fri, 17 Jan 2020 02:32:17 GMT
+
+### Patches
+
+- Update tslib minver to first version containing __spreadArrays helper due to changes in how TS emits spreads. (jagore@microsoft.com)
+## 7.18.14
+Thu, 16 Jan 2020 12:28:58 GMT
+
+### Patches
+
+- Upgrade repo to TS3.7. (jagore@microsoft.com)
+## 7.18.13
+Mon, 13 Jan 2020 12:28:56 GMT
+
+### Patches
+
+- Tile: fix color of text over image in dark mode (prchhaje@microsoft.com)
+- Consume compose functions where appropriate (tmichon@microsoft.com)
+## 7.18.12
+Fri, 10 Jan 2020 12:31:47 GMT
+
+### Patches
+
+- ComboBox: fix chevron button and focus border styling (xgao@microsoft.com)
+## 7.18.11
+Wed, 08 Jan 2020 17:02:57 GMT
+
+### Patches
+
+- Update snapshots from combobox style update (xgao@microsoft.com)
+- bumping load-themed-styles to take advantage of es6 version of it (kchau@microsoft.com)
 ## 7.18.10
 Tue, 17 Dec 2019 12:29:42 GMT
 

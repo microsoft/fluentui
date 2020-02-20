@@ -59,7 +59,10 @@ export class ShimmerCustomElementsExample extends React.Component<{}, {}> {
         style={{ display: 'flex' }}
       >
         <ShimmerElementsGroup
-          shimmerElements={[{ type: ShimmerElementType.circle, height: 40 }, { type: ShimmerElementType.gap, width: 10, height: 40 }]}
+          shimmerElements={[
+            { type: ShimmerElementType.circle, height: 40 },
+            { type: ShimmerElementType.gap, width: 10, height: 40 }
+          ]}
         />
         <ShimmerElementsGroup
           flexWrap={true}
@@ -91,7 +94,10 @@ export class ShimmerCustomElementsExample extends React.Component<{}, {}> {
           style={{ display: 'flex', flexWrap: 'wrap', width: '100%' }}
         >
           <ShimmerElementsGroup
-            shimmerElements={[{ type: ShimmerElementType.circle, height: 40 }, { type: ShimmerElementType.gap, width: 10, height: 40 }]}
+            shimmerElements={[
+              { type: ShimmerElementType.circle, height: 40 },
+              { type: ShimmerElementType.gap, width: 10, height: 40 }
+            ]}
           />
           <ShimmerElementsGroup
             flexWrap={true}

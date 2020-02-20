@@ -34,7 +34,7 @@ const getStyles: IStyleFunction<IMarkdownParagraphStyleProps, IMarkdownParagraph
 
 const getClassNames = classNamesFunction<IMarkdownParagraphStyleProps, IMarkdownParagraphStyles>();
 
-const MarkdownParagraphBase: React.StatelessComponent<IMarkdownParagraphProps> = props => {
+const MarkdownParagraphBase: React.FunctionComponent<IMarkdownParagraphProps> = props => {
   const { children, theme } = props;
   const classNames: IClassNames<IMarkdownParagraphStyles> = getClassNames(props.styles, {
     theme: theme!,
@@ -44,7 +44,7 @@ const MarkdownParagraphBase: React.StatelessComponent<IMarkdownParagraphProps> =
   return <p className={classNames.root}>{children}</p>;
 };
 
-export const MarkdownParagraph: React.StatelessComponent<IMarkdownParagraphProps> = styled<
+export const MarkdownParagraph: React.FunctionComponent<IMarkdownParagraphProps> = styled<
   IMarkdownParagraphProps,
   IMarkdownParagraphStyleProps,
   IMarkdownParagraphStyles

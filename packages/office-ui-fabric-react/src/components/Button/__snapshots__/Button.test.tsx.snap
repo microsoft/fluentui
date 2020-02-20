@@ -262,6 +262,11 @@ exports[`Button renders CommandBarButton correctly 1`] = `
           }
       data-icon-name="Add"
       role="presentation"
+      style={
+        Object {
+          "fontFamily": "\\"FabricMDL2Icons\\"",
+        }
+      }
     >
       
     </i>
@@ -321,6 +326,11 @@ exports[`Button renders CommandBarButton correctly 1`] = `
           }
       data-icon-name="ChevronDown"
       role="presentation"
+      style={
+        Object {
+          "fontFamily": "\\"FabricMDL2Icons\\"",
+        }
+      }
     >
       
     </i>
@@ -724,6 +734,11 @@ exports[`Button renders IconButton correctly 1`] = `
           }
       data-icon-name="Emoji2"
       role="presentation"
+      style={
+        Object {
+          "fontFamily": "\\"FabricMDL2Icons-0\\"",
+        }
+      }
     >
       
     </i>

@@ -33,15 +33,15 @@ const _getDisabledStyles = memoizeFunction(
 
 export const getArrowButtonStyles = memoizeFunction(
   (theme: ITheme, isUpArrow: boolean, customSpecificArrowStyles?: Partial<IButtonStyles>): IButtonStyles => {
-    const { palette, effects } = theme;
+    const { palette, semanticColors, effects } = theme;
 
     // TODO: after updating the semanticColor slots all this need to be reevaluated.
     const ArrowButtonTextColor = palette.neutralSecondary;
-    const ArrowButtonTextColorHovered = palette.neutralPrimary;
-    const ArrowButtonTextColorPressed = palette.neutralPrimary;
+    const ArrowButtonTextColorHovered = semanticColors.buttonText;
+    const ArrowButtonTextColorPressed = semanticColors.buttonText;
 
-    const ArrowButtonBackgroundHovered = palette.neutralLighter;
-    const ArrowButtonBackgroundPressed = palette.neutralLight;
+    const ArrowButtonBackgroundHovered = semanticColors.buttonBackgroundHovered;
+    const ArrowButtonBackgroundPressed = semanticColors.buttonBackgroundPressed;
 
     const defaultArrowButtonStyles: IButtonStyles = {
       root: {
@@ -123,12 +123,13 @@ export const getStyles = memoizeFunction(
     const { palette, semanticColors, effects, fonts } = theme;
 
     const SpinButtonRootBorderColor = semanticColors.inputBorder;
+    const SpinButtonRootBackgroundColor = semanticColors.inputBackground;
     const SpinButtonRootBorderColorHovered = semanticColors.inputBorderHovered;
     const SpinButtonRootBorderColorFocused = semanticColors.inputFocusBorderAlt;
 
-    const SpinButtonInputTextColor = semanticColors.bodyText;
+    const SpinButtonInputTextColor = semanticColors.inputText;
     const SpinButtonInputTextColorSelected = palette.white;
-    const SpinButtonInputBackgroundColorSelected = palette.themePrimary;
+    const SpinButtonInputBackgroundColorSelected = semanticColors.inputBackgroundChecked;
 
     const SpinButtonIconDisabledColor = semanticColors.disabledText;
 
@@ -221,6 +222,7 @@ export const getStyles = memoizeFunction(
         margin: 0,
         fontSize: fonts.medium.fontSize,
         color: SpinButtonInputTextColor,
+        backgroundColor: SpinButtonRootBackgroundColor,
         height: '100%',
         padding: '0 8px',
         outline: 0,

@@ -12,14 +12,14 @@ export interface IBestPracticesSectionProps extends IPageSectionPropsWithSection
   donts?: string;
 }
 
-export const BestPracticesSection: React.StatelessComponent<IBestPracticesSectionProps> = props => {
+export const BestPracticesSection: React.FunctionComponent<IBestPracticesSectionProps> = props => {
   const {
     className,
     fileNamePrefix,
     componentUrl,
     platform,
     sectionName,
-    readableSectionName,
+    readableSectionName = sectionName,
     bestPractices,
     dos,
     donts,
@@ -39,8 +39,9 @@ export const BestPracticesSection: React.StatelessComponent<IBestPracticesSectio
     <div className={className} style={style}>
       <div className={styles.subSection}>
         <div className={styles.sectionHeader}>
-          <h2 className={styles.subHeading} id={id}>
-            {readableSectionName || sectionName}
+          {/* This heading must be programmatically focusable for simulating jumping to an anchor */}
+          <h2 className={styles.subHeading} id={id} tabIndex={-1}>
+            {readableSectionName}
           </h2>
           {!!(bestPractices && bestPracticesUrl) && (
             <EditSection className={styles.edit} title={title} section="Best Practices" url={bestPracticesUrl} />

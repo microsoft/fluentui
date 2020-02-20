@@ -201,6 +201,11 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
                   }
               data-icon-name="Info"
               role="presentation"
+              style={
+                Object {
+                  "fontFamily": "\\"FabricMDL2Icons\\"",
+                }
+              }
             >
               
             </i>

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { classNamesFunction, getNativeProps, imageProperties } from '../../Utilities';
+import { classNamesFunction, getNativeProps, imgProperties } from '../../Utilities';
 import { IImageProps, IImageStyleProps, IImageStyles, ImageCoverStyle, ImageFit, ImageLoadState } from './Image.types';
 
 const getClassNames = classNamesFunction<IImageStyleProps, IImageStyles>();
@@ -51,7 +51,7 @@ export class ImageBase extends React.Component<IImageProps, IImageState> {
   }
 
   public render(): JSX.Element {
-    const imageProps = getNativeProps<React.ImgHTMLAttributes<HTMLImageElement>>(this.props, imageProperties, ['width', 'height']);
+    const imageProps = getNativeProps<React.ImgHTMLAttributes<HTMLImageElement>>(this.props, imgProperties, ['width', 'height']);
     const {
       src,
       alt,
@@ -131,7 +131,7 @@ export class ImageBase extends React.Component<IImageProps, IImageState> {
       // for some browsers, SVG images do not have a naturalWidth or naturalHeight, so fall back
       // to checking .complete for these images.
       const isLoaded: boolean = this._imageElement.current
-        ? (src && (this._imageElement.current.naturalWidth > 0 && this._imageElement.current.naturalHeight > 0)) ||
+        ? (src && this._imageElement.current.naturalWidth > 0 && this._imageElement.current.naturalHeight > 0) ||
           (this._imageElement.current.complete && ImageBase._svgRegex.test(src!))
         : false;
 

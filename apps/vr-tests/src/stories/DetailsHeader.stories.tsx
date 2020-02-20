@@ -142,7 +142,7 @@ storiesOf('DetailsHeader', module)
     </Screener>
   ))
 
-  .add('Root', () => (
+  .addStory('Root', () => (
     <DetailsHeader
       selection={_selection}
       selectionMode={SelectionMode.multiple}

@@ -1404,6 +1404,11 @@ exports[`Breadcrumb rendering renders correctly with maxDisplayedItems and overf
                         }
                     data-icon-name="More"
                     role="presentation"
+                    style={
+                      Object {
+                        "fontFamily": "\\"FabricMDL2Icons\\"",
+                      }
+                    }
                   >
                     
                   </i>
@@ -1635,6 +1640,11 @@ exports[`Breadcrumb rendering renders correctly with maxDisplayedItems and overf
                         }
                     data-icon-name="More"
                     role="presentation"
+                    style={
+                      Object {
+                        "fontFamily": "\\"FabricMDL2Icons\\"",
+                      }
+                    }
                   >
                     
                   </i>
@@ -1866,6 +1876,11 @@ exports[`Breadcrumb rendering renders correctly with overflow 1`] = `
                         }
                     data-icon-name="More"
                     role="presentation"
+                    style={
+                      Object {
+                        "fontFamily": "\\"FabricMDL2Icons\\"",
+                      }
+                    }
                   >
                     
                   </i>
@@ -2361,6 +2376,11 @@ exports[`Breadcrumb rendering renders correctly with overflow and overflowIndex 
                         }
                     data-icon-name="More"
                     role="presentation"
+                    style={
+                      Object {
+                        "fontFamily": "\\"FabricMDL2Icons\\"",
+                      }
+                    }
                   >
                     
                   </i>

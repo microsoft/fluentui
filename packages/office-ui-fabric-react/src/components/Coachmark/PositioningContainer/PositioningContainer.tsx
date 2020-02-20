@@ -212,7 +212,8 @@ export class PositioningContainer extends BaseComponent<IPositioningContainerPro
       (ev.target !== this._targetWindow &&
         clickedOutsideCallout &&
         ((this._target as MouseEvent).stopPropagation ||
-          (!this._target || (target !== this._target && !elementContains(this._target as HTMLElement, target)))))
+          !this._target ||
+          (target !== this._target && !elementContains(this._target as HTMLElement, target))))
     ) {
       this.onResize(ev);
     }
@@ -363,8 +364,8 @@ export class PositioningContainer extends BaseComponent<IPositioningContainerPro
         const currentDoc: Document = getDocument()!;
         this._target = currentDoc ? (currentDoc.querySelector(target) as HTMLElement) : null;
         this._targetWindow = getWindow(currentElement)!;
-      } else if ((target as MouseEvent).stopPropagation) {
-        this._targetWindow = getWindow((target as MouseEvent).toElement as HTMLElement)!;
+      } else if (!!(target as MouseEvent).stopPropagation) {
+        this._targetWindow = getWindow((target as MouseEvent).target as HTMLElement)!;
         this._target = target;
       } else if ((target as IPoint).x !== undefined && (target as IPoint).y !== undefined) {
         this._targetWindow = getWindow(currentElement)!;

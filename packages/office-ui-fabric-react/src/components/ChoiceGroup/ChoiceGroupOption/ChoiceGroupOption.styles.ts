@@ -15,6 +15,7 @@ const GlobalClassNames = {
 };
 
 const labelWrapperLineHeight = 15;
+const labelWrapperHeight = labelWrapperLineHeight * 2 + 2; // adding 2px height to ensure text doesn't get cutoff
 const iconSize = 32;
 const choiceFieldSize = 20;
 const choiceFieldTransitionDuration = '200ms';
@@ -395,13 +396,12 @@ export const getStyles = (props: IChoiceGroupOptionStyleProps): IChoiceGroupOpti
       (hasIcon || hasImage) && {
         display: 'block',
         position: 'relative',
-        margin: '4px 8px',
-        height: labelWrapperLineHeight * 2,
+        margin: '4px 8px 2px 8px',
+        height: labelWrapperHeight,
         lineHeight: labelWrapperLineHeight,
         maxWidth: imageSize!.width * 2, // using non-null assertion because we have a default in `ChoiceGroupOptionBase` class.
         overflow: 'hidden',
-        whiteSpace: 'pre-wrap',
-        textOverflow: 'ellipsis'
+        whiteSpace: 'pre-wrap'
       }
     ]
   };

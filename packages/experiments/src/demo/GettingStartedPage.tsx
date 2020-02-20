@@ -7,7 +7,7 @@ const rootClass = mergeStyles({
   padding: 40
 });
 
-export const GettingStartedPage: React.StatelessComponent = () => {
+export const GettingStartedPage: React.FunctionComponent = () => {
   return (
     <div className={rootClass}>
       <Markdown>{require<string>('!raw-loader!../../README.md')}</Markdown>

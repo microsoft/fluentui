@@ -195,9 +195,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
 
   public completeSuggestion(forceComplete?: boolean) {
     if (this.suggestionStore.hasSelectedSuggestion() && this.input.current) {
-      this.addItem(this.suggestionStore.currentSuggestion!.item);
-      this.updateValue('');
-      this.input.current.clear();
+      this.completeSelection(this.suggestionStore.currentSuggestion!.item);
     } else if (forceComplete) {
       this._completeGenericSuggestion();
     }
@@ -272,7 +270,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
               {this.canAddItems() && (
                 <Autofill
                   spellCheck={false}
-                  {...inputProps as any}
+                  {...(inputProps as any)}
                   className={classNames.input}
                   componentRef={this.input}
                   onClick={this.onClick}
@@ -303,7 +301,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   }
 
   protected renderSuggestions(): JSX.Element | null {
-    const StyledTypedSuggestions: React.StatelessComponent<ISuggestionsProps<T>> = this._styledSuggestions;
+    const StyledTypedSuggestions: React.FunctionComponent<ISuggestionsProps<T>> = this._styledSuggestions;
 
     return this.state.suggestionsVisible && this.input ? (
       <Callout
@@ -481,7 +479,6 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   protected onSuggestionClick = (ev: React.MouseEvent<HTMLElement>, item: any, index: number): void => {
     this.addItemByIndex(index);
     this._requestSuggestionsOnClick = false;
-    this.setState({ suggestionsVisible: false });
   };
 
   protected onSuggestionRemove = (ev: React.MouseEvent<HTMLElement>, item: T, index: number): void => {
@@ -746,12 +743,17 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     );
   };
 
-  protected addItemByIndex = (index: number): void => {
-    this.addItem(this.suggestionStore.getSuggestionAtIndex(index).item);
+  protected completeSelection = (item: T) => {
+    this.addItem(item);
+    this.updateValue('');
     if (this.input.current) {
       this.input.current.clear();
     }
-    this.updateValue('');
+    this.setState({ suggestionsVisible: false });
+  };
+
+  protected addItemByIndex = (index: number): void => {
+    this.completeSelection(this.suggestionStore.getSuggestionAtIndex(index).item);
   };
 
   protected addItem = (item: T): void => {
@@ -977,7 +979,7 @@ export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BaseP
             role="combobox"
           >
             <Autofill
-              {...inputProps as any}
+              {...(inputProps as any)}
               className={classNames.input}
               componentRef={this.input}
               onFocus={this.onInputFocus}

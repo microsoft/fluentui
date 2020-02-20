@@ -1,5 +1,5 @@
-import { IsFocusVisibleClassName, initializeFocusRects } from './initializeFocusRects';
-import { setFocusVisibility } from './setFocusVisibility';
+import { initializeFocusRects } from './initializeFocusRects';
+import { IsFocusHiddenClassName, IsFocusVisibleClassName, setFocusVisibility } from './setFocusVisibility';
 import * as getWindow from './dom/getWindow';
 
 describe('setFocusVisibility', () => {
@@ -14,8 +14,8 @@ describe('setFocusVisibility', () => {
       body: {
         classList: {
           contains: (name: string) => classNames.indexOf(name) > -1,
-          add: (name: string) => classNames.push(name),
-          remove: (name: string) => classNames.splice(classNames.indexOf(name), 1),
+          add: (name: string) => classNames.indexOf(name) < 0 && classNames.push(name),
+          remove: (name: string) => classNames.indexOf(name) > -1 && classNames.splice(classNames.indexOf(name), 1),
           toggle: (name: string, val: boolean) => {
             const hasClass = classNames.indexOf(name) > -1;
             if (hasClass !== val) {
@@ -42,27 +42,33 @@ describe('setFocusVisibility', () => {
     initializeFocusRects(mockWindow as Window);
   });
 
-  it('sets focus', () => {
+  it('hints to show focus', () => {
     setFocusVisibility(true);
+    expect(classNames.indexOf(IsFocusHiddenClassName) > -1).toEqual(false);
     expect(classNames.indexOf(IsFocusVisibleClassName) > -1).toEqual(true);
   });
 
-  it('removes focus', () => {
+  it('hints to hide focus', () => {
     setFocusVisibility(true);
+    expect(classNames.indexOf(IsFocusHiddenClassName) > -1).toEqual(false);
     expect(classNames.indexOf(IsFocusVisibleClassName) > -1).toEqual(true);
     setFocusVisibility(false);
+    expect(classNames.indexOf(IsFocusHiddenClassName) > -1).toEqual(true);
     expect(classNames.indexOf(IsFocusVisibleClassName) > -1).toEqual(false);
   });
 
-  it('sets focus with target specified', () => {
+  it('hints to show focus with target specified', () => {
     setFocusVisibility(true, mockTarget as Element);
+    expect(classNames.indexOf(IsFocusHiddenClassName) > -1).toEqual(false);
     expect(classNames.indexOf(IsFocusVisibleClassName) > -1).toEqual(true);
   });
 
-  it('removes focus with target specified', () => {
+  it('hints to hide focus with target specified', () => {
     setFocusVisibility(true, mockTarget as Element);
+    expect(classNames.indexOf(IsFocusHiddenClassName) > -1).toEqual(false);
     expect(classNames.indexOf(IsFocusVisibleClassName) > -1).toEqual(true);
     setFocusVisibility(false, mockTarget as Element);
+    expect(classNames.indexOf(IsFocusHiddenClassName) > -1).toEqual(true);
     expect(classNames.indexOf(IsFocusVisibleClassName) > -1).toEqual(false);
   });
 });

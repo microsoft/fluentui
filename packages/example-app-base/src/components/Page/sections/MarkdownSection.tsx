@@ -6,7 +6,7 @@ import { Markdown } from '../../Markdown/index';
 import { IPageSectionProps } from '../Page.types';
 import * as styles from '../Page.module.scss';
 
-export const MarkdownSection: React.StatelessComponent<IPageSectionProps> = props => {
+export const MarkdownSection: React.FunctionComponent<IPageSectionProps> = props => {
   const {
     className,
     content: markdown,
@@ -32,7 +32,8 @@ export const MarkdownSection: React.StatelessComponent<IPageSectionProps> = prop
     <div className={className} style={style}>
       {readableSectionName ? (
         <div className={styles.sectionHeader}>
-          <h2 className={styles.subHeading} id={id}>
+          {/* This heading must be programmatically focusable for simulating jumping to an anchor */}
+          <h2 className={styles.subHeading} id={id} tabIndex={-1}>
             {readableSectionName}
           </h2>
           {editSection}

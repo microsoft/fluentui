@@ -14,11 +14,12 @@ export class OverflowSetCustomExample extends React.PureComponent {
     return (
       <OverflowSet
         aria-label="Custom Example"
+        role="menubar"
         items={[
           {
             key: 'checkbox',
             onRender: () => {
-              return <Checkbox role="menuitem" label="A Checkbox" styles={checkboxStyles} />;
+              return <Checkbox inputProps={{ role: 'menuitemcheckbox' }} label="A Checkbox" styles={checkboxStyles} />;
             }
           },
           {

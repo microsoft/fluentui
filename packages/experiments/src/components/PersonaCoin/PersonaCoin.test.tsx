@@ -88,7 +88,7 @@ describe('PersonaCoin', () => {
     wrapper = mount(<PersonaCoin text="+1 (555) 6789" styles={testPersonaCoinStyles} />);
     result = wrapper.find(Icon);
     expect(result).toHaveLength(1);
-    expect(result.props().iconName).toEqual('Contact');
+    expect((result.props() as any).iconName).toEqual('Contact');
     wrapper.unmount();
 
     wrapper = mount(<PersonaCoin text="+1 (555) 6789" allowPhoneInitials={true} styles={testPersonaCoinStyles} />);

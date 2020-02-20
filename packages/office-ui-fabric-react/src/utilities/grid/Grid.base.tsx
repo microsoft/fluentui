@@ -10,15 +10,27 @@ export class GridBase extends BaseComponent<IGridProps, {}> implements IGrid {
 
   constructor(props: IGridProps) {
     super(props);
-    this._id = getId();
+    this._id = props.id || getId();
   }
 
   public render(): JSX.Element {
-    const { items, columnCount, onRenderItem, positionInSet, setSize, styles } = this.props;
+    const props = this.props;
+    const {
+      items,
+      columnCount,
+      onRenderItem,
+      ariaPosInSet = props.positionInSet,
+      ariaSetSize = props.setSize,
+      styles,
+      doNotContainWithinFocusZone
+    } = props;
 
-    const htmlProps = getNativeProps<React.HTMLAttributes<HTMLTableElement>>(this.props, htmlElementProperties, [
-      'onBlur, aria-posinset, aria-setsize'
-    ]);
+    const htmlProps = getNativeProps<React.HTMLAttributes<HTMLTableElement>>(
+      this.props,
+      htmlElementProperties,
+      // avoid applying onBlur on the table if it's being used in the FocusZone
+      doNotContainWithinFocusZone ? [] : ['onBlur']
+    );
 
     const classNames = getClassNames(styles!, { theme: this.props.theme! });
 
@@ -26,7 +38,7 @@ export class GridBase extends BaseComponent<IGridProps, {}> implements IGrid {
     const rowsOfItems: any[][] = toMatrix(items, columnCount);
 
     const content = (
-      <table {...htmlProps} aria-posinset={positionInSet} aria-setsize={setSize} id={this._id} role={'grid'} className={classNames.root}>
+      <table aria-posinset={ariaPosInSet} aria-setsize={ariaSetSize} id={this._id} role="grid" {...htmlProps} className={classNames.root}>
         <tbody>
           {rowsOfItems.map((rows: any[], rowIndex: number) => {
             return (
@@ -46,7 +58,7 @@ export class GridBase extends BaseComponent<IGridProps, {}> implements IGrid {
     );
 
     // Create the table/grid
-    return this.props.doNotContainWithinFocusZone ? (
+    return doNotContainWithinFocusZone ? (
       content
     ) : (
       <FocusZone
