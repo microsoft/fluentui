@@ -24,7 +24,7 @@ steps:
 
   - template: azure-pipelines.tools.yml
 
-  # TODO: include perf:test:base
+  # TODO: include perf:test:base (if here make sure this pipeline triggers on master builds)
   # Fluent perf-test must run before Fabric perf-test until they are consolidated.
   - script: |
       yarn perf:test

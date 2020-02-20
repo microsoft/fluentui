@@ -1,4 +1,3 @@
-// TODO: make sure lodash is dep of perf-test package
 import * as _ from 'lodash';
 import * as path from 'path';
 
@@ -6,8 +5,6 @@ import * as path from 'path';
 import config from '../../../scripts/config';
 
 // TODO: add regression analysis output to Fluent report
-// TODO: copy fluent perf-test output to blob storage
-// TODO: replace circleci links
 // TODO: test when fluent perf-test has not been run (should show warning)
 
 type Reporter = {
@@ -17,7 +14,6 @@ type Reporter = {
 
 export function getFluentPerfRegressions() {
   const output: string[] = [];
-  // const outDir = path.join(__dirname, '.');
 
   const markdown = (text: string) => {
     console.log(text);
@@ -30,22 +26,15 @@ export function getFluentPerfRegressions() {
 
   checkPerfRegressions({ markdown, warn });
 
-  // Write results to file
-  // fs.writeFileSync(path.join(outDir, 'perfCounts.html'), output.join());
-
   return output.join('\n');
 }
 
 function linkToFlamegraph(value: number, filename: string) {
-  // This as well as the whole flamegrill URL is hardcoded to only work with CircleCI.
-  const build = process.env.CIRCLE_BUILD_NUM;
-  const GITHUB_REPO_ID = '141743704';
+  const urlForDeployPath = process.env.BUILD_SOURCEBRANCH
+    ? `http://fabricweb.z5.web.core.windows.net/pr-deploy-site/${process.env.BUILD_SOURCEBRANCH}/perf-test/fluentui`
+    : 'file://' + config.paths.packageDist('perf-test');
 
-  if (_.isUndefined(build) || _.isUndefined(filename)) {
-    return value;
-  }
-
-  return `[${value}](https://${build}-${GITHUB_REPO_ID}-gh.circle-artifacts.com/0/artifacts/perf/${path.basename(filename)})`;
+  return `[${value}](${urlForDeployPath}/${path.basename(filename)})`;
 }
 
 function fluentFabricComparison(perfCounts: any, reporter: Reporter) {
