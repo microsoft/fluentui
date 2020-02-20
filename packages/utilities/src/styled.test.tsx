@@ -21,6 +21,7 @@ let _lastProps: ITestProps | undefined;
 let _renderCount: number;
 let _styleEval: number;
 let component: ReturnType<typeof mount> | undefined;
+let lastStylesInBaseComponent: IStyleFunctionOrObject<{}, ITestStyles> | undefined;
 
 const getClassNames = classNamesFunction<{}, ITestStyles>();
 
@@ -35,6 +36,7 @@ class TestBase extends React.Component<ITestProps> {
     _lastProps = this.props;
 
     const classNames = getClassNames(this.props.styles, { cool: this.props.cool });
+    lastStylesInBaseComponent = this.props.styles;
 
     return <div className={classNames.root}>{this.props.children}</div>;
   }
@@ -74,6 +76,8 @@ describe('styled', () => {
       component.unmount();
       component = undefined;
     }
+
+    lastStylesInBaseComponent = undefined;
   });
 
   it('can create pure components', () => {
@@ -341,5 +345,16 @@ describe('styled', () => {
         expect(_renderCount).toEqual(4);
       }
     );
+  });
+
+  it('will not re-render if styles have not changed', () => {
+    component = mount(<Test styles={{ root: { background: 'red' } }} />);
+    expect(_renderCount).toEqual(1);
+    const stylesProp = lastStylesInBaseComponent;
+
+    component.setProps({ cool: true });
+
+    expect(_renderCount).toEqual(2);
+    expect(stylesProp).toBe(lastStylesInBaseComponent);
   });
 });
