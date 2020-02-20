@@ -21,7 +21,8 @@ export default migration(getWarningNote('SearchBox onChange callback signature c
       for (const prop of node.attributes.properties) {
         if (ts.isJsxAttribute(prop) && prop && prop.name && prop.name.getText() === propName && prop.initializer) {
           opts.warn(
-            `${sourceFileName}:${lineAndCharacter.line}:${lineAndCharacter.character} - ${propName} signature has changed; DOM event is now passed as first argument.`,
+            `${sourceFileName}:${lineAndCharacter.line}:${lineAndCharacter.character} - ${propName} signature has changed; ` +
+              `DOM event is now passed as first argument.`,
           );
         }
       }

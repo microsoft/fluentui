@@ -21,10 +21,8 @@ export default migration(getWarningNote('ComboBox onChanged prop was removed'), 
       for (const prop of node.attributes.properties) {
         if (ts.isJsxAttribute(prop) && prop && prop.name && prop.name.getText() === propName && prop.initializer) {
           opts.warn(
-            `${sourceFileName}:${lineAndCharacter.line}:${
-              lineAndCharacter.character
-              // tslint:disable-next-line: max-line-length
-            } - ${propName} is removed; please use onChange instead (NOTE: the arguments have changed from ${propName} to onChange; please update accordingly)`,
+            `${sourceFileName}:${lineAndCharacter.line}:${lineAndCharacter.character} - ${propName} is removed; ` +
+              `please use onChange instead (NOTE: the arguments have changed from ${propName} to onChange; please update accordingly)`,
           );
         }
       }

@@ -28,7 +28,8 @@ export default migration(getWarningNote('Autobind decorator (@autobind) removed'
         const sourceFileName = sourceFile.fileName;
         const lineAndCharacter = sourceFile.getLineAndCharacterOfPosition(node.getStart());
         opts.warn(
-          `${sourceFileName}:${lineAndCharacter.line}:${lineAndCharacter.character} - autobind decorator (@autobind) no longer available; consider using lambdas instead.`,
+          `${sourceFileName}:${lineAndCharacter.line}:${lineAndCharacter.character} - ` +
+            `autobind decorator (@autobind) no longer available; consider using lambdas instead.`,
         );
       }
     }
